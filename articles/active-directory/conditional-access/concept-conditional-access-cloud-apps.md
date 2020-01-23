@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb291f33d2b757ca381e1d675ddc386c78a55d52
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170838"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544059"
 ---
 # <a name="conditional-access-cloud-apps-and-actions"></a>Dostęp warunkowy: aplikacje i akcje w chmurze
 
@@ -79,7 +79,6 @@ Najważniejsze aplikacje, które są zawarte w aplikacji klienckiej pakietu Offi
 
    - Microsoft Flow
    - Microsoft Forms
-   - Portal Microsoft Office 365
    - Microsoft Stream
    - Microsoft To-Do
    - Microsoft Teams
@@ -89,6 +88,7 @@ Najważniejsze aplikacje, które są zawarte w aplikacji klienckiej pakietu Offi
    - Usługa Yammer pakietu Office 365
    - Office Delve
    - Office Online
+   - Office.com
    - OneDrive
    - Aplikacje PowerApp
    - Skype dla firm Online

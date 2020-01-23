@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 860c277e88918dc37eceb496d852691ced2af114
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277902"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549057"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>PRZESTARZAŁE Pełny potok ciągłej integracji/ciągłego wdrażania, który umożliwia wdrażanie aplikacji wielokontenerowych na Azure Container Service przy użyciu rozwiązania Docker Swarm z Azure DevOps Services
 
@@ -50,7 +50,7 @@ Przed rozpoczęciem tego samouczka należy wykonać następujące zadania:
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-Potrzebna jest również maszyna z systemem Ubuntu (14,04 lub 16,04) z zainstalowanym platformą Docker. Ta maszyna jest używana przez Azure DevOps Services w trakcie procesów Azure Pipelines. Jednym ze sposobów tworzenia tego komputera jest użycie obrazu dostępnego w [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
+Potrzebna jest również maszyna z systemem Ubuntu (14,04 lub 16,04) z zainstalowanym platformą Docker. Ta maszyna jest używana przez Azure DevOps Services w trakcie procesów Azure Pipelines. Jednym ze sposobów tworzenia tego komputera jest użycie obrazu dostępnego w portalu Azure Marketplace. 
 
 ## <a name="step-1-configure-your-azure-devops-services-organization"></a>Krok 1. Konfigurowanie organizacji Azure DevOps Services 
 

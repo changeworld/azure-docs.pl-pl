@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: ee52f3a0bec058f1b94820123ac5514e4e855c05
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 7c2618f7703ba1a9803952efabcfbd800149ada4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311397"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548343"
 ---
 # <a name="two-class-logistic-regression-module"></a>Moduł regresji logistycznej dla dwóch klas
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj tego modułu, aby utworzyć model regresji logistycznej, który może służyć do przewidywania dwóch (i tylko dwóch) wyników. 
 

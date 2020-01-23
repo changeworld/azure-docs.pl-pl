@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: bf7ff356af343667133c0226b6b31df8fc9e32b8
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 35ecb5c4e3987676d235fc6fd09f58c046301cda
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563636"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548037"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Szybki Start: Rozpoczynanie pracy z platformą Azure — wskaźnikiem
 
@@ -91,7 +91,7 @@ Możesz utworzyć nowy skoroszyt od podstaw lub użyć wbudowanego skoroszytu ja
 
 Poniższe przykładowe zapytanie umożliwia porównanie trendów ruchu w tygodniach. Można łatwo przełączać dostawcę urządzenia i źródło danych, na których uruchomiono zapytanie. W tym przykładzie używamy SecurityEvent z systemu Windows, możesz przełączyć go do uruchamiania w usłudze Azure lub CommonSecurityLog na dowolnej innej zaporze.
 
-     |where DeviceVendor = = "Palo Alto Networks":
+     |where DeviceVendor == "Palo Alto Networks":
       // week over week query
       SecurityEvent
       | where TimeGenerated > ago(14d)

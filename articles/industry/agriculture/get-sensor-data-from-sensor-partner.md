@@ -5,20 +5,20 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 7c40cfc8fbc6a9957281be842f6714fa9289a3c8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122223"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513743"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Pobierz dane czujnika z partnerów czujników
 
 Usługa Azure FarmBeats ułatwia przenoszenie strumieniowych danych z urządzeń IoT i czujników do Datahub. Obecnie obsługiwane są następujące partnerzy urządzeń czujnika.
 
-  ![Partnerzy FarmBeats](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![Partnerzy FarmBeats](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
 
-Integrowanie danych urządzenia z usługą Azure FarmBeats ułatwia uzyskiwanie danych naziemnych z czujników IoT wdrożonych w farmie do datahub. Dane, które są dostępne, można wizualizować za pomocą akceleratora FarmBeats. Dane mogą służyć do kompilowania modelu i uczenia maszynowego/sztucznej analizy danych (ML/AI) przy użyciu FarmBeats.
+Integrowanie danych urządzenia z usługą Azure FarmBeats ułatwia pobieranie danych z czujników IoT wdrożonych w farmie do centrum danych. Dane, które są dostępne, można wizualizować za pomocą akceleratora FarmBeats. Dane mogą służyć do kompilowania modelu i uczenia maszynowego/sztucznej analizy danych (ML/AI) przy użyciu FarmBeats.
 
 Aby rozpocząć przesyłanie strumieniowe danych z czujnika, upewnij się, że:
 
@@ -44,7 +44,7 @@ Alternatywnie można wygenerować poświadczenia, uruchamiając ten skrypt z Azu
 1. Pobierz [plik zip](https://aka.ms/farmbeatspartnerscriptv2)i wyodrębnij go na dysk lokalny. Plik zip będzie zawierać jeden plik.
 2. Zaloguj się do https://portal.azure.com/ i przejdź do pozycji Azure Active Directory-> rejestracji aplikacji
 
-3. Kliknij rejestrację aplikacji, która została utworzona w ramach wdrożenia FarmBeats. Ma taką samą nazwę jak FarmBeats Datahub.
+3. Kliknij rejestrację aplikacji, która została utworzona w ramach wdrożenia FarmBeats. Będzie ona mieć taką samą nazwę jak centrum danych FarmBeats.
 
 4. Kliknij pozycję "Uwidacznianie interfejsu API" — > kliknij pozycję "Dodaj aplikację kliencką" i wprowadź **04b07795-8ddb-461a-bbee-02f9e1bf7b46** i zaznacz pole wyboru Autoryzuj zakres. Zapewni to dostęp do interfejsu wiersza polecenia platformy Azure (Cloud Shell), aby wykonać poniższe kroki.
 

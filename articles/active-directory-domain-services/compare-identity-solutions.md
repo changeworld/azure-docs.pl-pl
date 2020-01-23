@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 04a1f19ddf894467a9129e8a16c951298a6af529
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474713"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544280"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porównaj Active Directory Domain Services samozarządzane, Azure Active Directory i zarządzane Azure Active Directory Domain Services
 
@@ -28,7 +28,7 @@ Chociaż trzy rozwiązania do obsługi tożsamości oparte na Active Directory k
 * **Azure Active Directory (Azure AD)** — tożsamość oparta na chmurze i zarządzanie urządzeniami przenośnymi, które udostępniają usługi kont użytkowników i uwierzytelniania dla zasobów takich jak Office 365, Azure Portal lub aplikacje SaaS.
     * Usługę Azure AD można synchronizować z lokalnym środowiskiem AD DS w celu zapewnienia pojedynczej tożsamości użytkownikom, którzy działają natywnie w chmurze.
 * **Azure Active Directory Domain Services (Azure AD DS)** — oferuje zarządzane usługi domenowe z podzbiorem w pełni zgodnych tradycyjnych funkcji AD DS, takich jak przyłączanie do domeny, zasady grupy, LDAP i uwierzytelnianie Kerberos/NTLM.
-    * Platforma Azure AD DS integruje się z usługą Azure AD, którą sama można synchronizować z lokalnym środowiskiem AD DS, aby zwiększyć centralne przypadki użycia tożsamości do tradycyjnych aplikacji sieci Web, które działają na platformie Azure w ramach strategii podnoszenia i przesunięcia.
+    * Platforma Azure AD DS integruje się z usługą Azure AD, którą sama można synchronizować z lokalnym środowiskiem AD DS. Ta możliwość rozszerza centralne przypadki użycia tożsamości na tradycyjne aplikacje sieci Web, które działają na platformie Azure w ramach strategii podnoszenia i przesunięcia.
 
 W tym artykule omówiono porównanie i różnice między tym, jak te rozwiązania tożsamości mogą współdziałać, lub mogą być używane niezależnie, w zależności od potrzeb organizacji.
 
@@ -47,8 +47,8 @@ W przypadku wdrażania i uruchamiania samozarządzanego środowiska AD DS należ
 
 Typowe modele wdrażania dla samozarządzanego środowiska AD DS, które zapewniają tożsamość do aplikacji i usług w chmurze, obejmują następujące elementy:
 
-* **Autonomiczna AD DS tylko w chmurze** — maszyny wirtualne platformy Azure są skonfigurowane jako kontrolery domeny i tworzone jest oddzielne środowisko AD DS tylko w chmurze. To środowisko AD DS nie jest integrowane z lokalnym środowiskiem AD DS. Inny zestaw poświadczeń służy do logowania się do maszyn wirtualnych w chmurze i administrowania nimi.
-* **Wdrożenie lasu zasobów** — maszyny wirtualne platformy Azure są skonfigurowane jako kontrolery domeny i zostanie utworzona domena AD DS w ramach istniejącego lasu. Relacja zaufania jest następnie konfigurowana do lokalnego środowiska AD DS. Inne maszyny wirtualne platformy Azure mogą przyłączać do domeny do tego lasu zasobów w chmurze. Uwierzytelnianie użytkowników odbywa się za pośrednictwem połączenia VPN/ExpressRoute do lokalnego środowiska AD DS.
+* **Autonomiczna AD DS tylko w chmurze** — maszyny wirtualne platformy Azure są skonfigurowane jako kontrolery domeny i zostanie utworzone oddzielne środowisko AD DS tylko w chmurze. To środowisko AD DS nie jest integrowane z lokalnym środowiskiem AD DS. Inny zestaw poświadczeń służy do logowania i administrowania maszynami wirtualnymi w chmurze.
+* **Wdrożenie lasu zasobów** — maszyny wirtualne platformy Azure są skonfigurowane jako kontrolery domeny i jest tworzony AD DS domeny, która jest częścią istniejącego lasu. Relacja zaufania jest następnie konfigurowana do lokalnego środowiska AD DS. Inne maszyny wirtualne platformy Azure mogą przyłączać do domeny do tego lasu zasobów w chmurze. Uwierzytelnianie użytkowników odbywa się za pośrednictwem połączenia VPN/ExpressRoute do lokalnego środowiska AD DS.
 * **Rozszerzona domena lokalna na platformę Azure** — Sieć wirtualna platformy Azure łączy się z siecią lokalną za pomocą połączenia VPN/ExpressRoute. Maszyny wirtualne platformy Azure łączą się z tą siecią wirtualną platformy Azure, która umożliwia im przyłączanie do domeny w środowisku lokalnym AD DS.
     * Alternatywą jest tworzenie maszyn wirtualnych platformy Azure i ich podwyższenie poziomu jako repliki kontrolerów domeny z lokalnej domeny AD DS. Te kontrolery domeny są replikowane za pośrednictwem połączenia VPN/ExpressRoute do środowiska lokalnego AD DS. Lokalna domena AD DS jest efektywnie rozszerzona na platformę Azure.
 
@@ -66,7 +66,7 @@ W poniższej tabeli przedstawiono niektóre funkcje, które mogą być potrzebne
 | **Niestandardowa struktura jednostki organizacyjnej**                           | **&#x2713;** | **&#x2713;** |
 | **zasady grupy**                                  | **&#x2713;** | **&#x2713;** |
 | **Rozszerzenia schematu**                             | **&#x2715;** | **&#x2713;** |
-| **Relacje zaufania domen/lasów usługi AD**                     | **&#x2715;** | **&#x2713;** |
+| **Relacje zaufania domen/lasów usługi AD**                     | **&#x2713;** (jednokierunkowe zaufania lasów wychodzących) | **&#x2713;** |
 | **Secure LDAP (LDAPs)**                           | **&#x2713;** | **&#x2713;** |
 | **Odczyt LDAP**                                     | **&#x2713;** | **&#x2713;** |
 | **Zapis LDAP**                                    | **&#x2713;** (w domenie zarządzanej) | **&#x2713;** |
@@ -74,7 +74,7 @@ W poniższej tabeli przedstawiono niektóre funkcje, które mogą być potrzebne
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS i Azure AD
 
-Usługa Azure AD umożliwia zarządzanie tożsamościami urządzeń używanych w organizacji oraz kontrolowanie dostępu do zasobów firmy z tych urządzeń. Użytkownicy mogą również rejestrować swoje urządzenia osobiste ("BYOD" lub "model") za pomocą usługi Azure AD, które udostępniają urządzenie tożsamością. Usługa Azure AD następnie uwierzytelnia urządzenie, gdy użytkownik zaloguje się do usługi Azure AD i użyje urządzenia, aby uzyskać dostęp do zabezpieczonych zasobów. Urządzeniem można zarządzać za pomocą oprogramowania do zarządzania urządzeniami przenośnymi (MDM), takiego jak Microsoft Intune. Ta możliwość zarządzania pozwala ograniczyć dostęp do poufnych zasobów do urządzeń zarządzanych i zgodnych z zasadami.
+Usługa Azure AD umożliwia zarządzanie tożsamościami urządzeń używanych w organizacji oraz kontrolowanie dostępu do zasobów firmy z tych urządzeń. Użytkownicy mogą również rejestrować swoje urządzenia osobiste (BYOD) przy użyciu usługi Azure AD, która zapewnia urządzeniu tożsamość. Usługa Azure AD następnie uwierzytelnia urządzenie, gdy użytkownik zaloguje się do usługi Azure AD i użyje urządzenia, aby uzyskać dostęp do zabezpieczonych zasobów. Urządzeniem można zarządzać za pomocą oprogramowania do zarządzania urządzeniami przenośnymi (MDM), takiego jak Microsoft Intune. Ta możliwość zarządzania pozwala ograniczyć dostęp do poufnych zasobów do urządzeń zarządzanych i zgodnych z zasadami.
 
 Tradycyjne komputery i laptopy mogą również przyłączać się do usługi Azure AD. Ten mechanizm oferuje te same korzyści związane z rejestrowaniem urządzenia osobistego w usłudze Azure AD, takie jak umożliwienie użytkownikom logowania się na urządzeniu przy użyciu poświadczeń firmowych.
 
@@ -90,7 +90,7 @@ Urządzenia mogą być przyłączone do usługi Azure AD z wdrożeniem hybrydowy
 
 | **Typ urządzenia**                                        | **Platformy urządzeń**             | **Ustanawia**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
-| Urządzenia osobiste                                          | Windows 10, iOS, Android, Mac OS | Zarejestrowane usługi Azure AD    |
+| Urządzenia osobiste                                          | Windows 10, iOS, Android, Mac OS | Zarejestrowane w usłudze Azure AD    |
 | Urządzenie należące do organizacji nie jest przyłączone do AD DS lokalnego | Windows 10                       | Przyłączone do usługi Azure AD        |
 | Urządzenie należące do organizacji przyłączone do AD DS lokalnego  | Windows 10                       | Dołączona hybrydowa usługa Azure AD |
 
@@ -103,7 +103,7 @@ W przypadku urządzeń przyłączonych do usługi Azure AD DS aplikacje mogą u�
 | Urządzenie kontrolowane przez            | Azure AD                                            | Domena zarządzana AD DS platformy Azure                                                |
 | Reprezentacja w katalogu | Obiekty urządzeń w katalogu usługi Azure AD            | Obiekty komputerów w domenie zarządzanej AD DS platformy Azure                        |
 | Authentication                  | Protokoły oparte na połączeniach OAuth/OpenID Connect              | Protokoły Kerberos i NTLM                                               |
-| Zarządzanie                      | Oprogramowanie do zarządzania urządzeniami przenośnymi (MDM), takie jak usługa Intune | zasady grupy                                                              |
+| Zarządzanie                      | Oprogramowanie do zarządzania urządzeniami przenośnymi (MDM), takie jak usługa Intune | Zasady grupy                                                              |
 | Networking                      | Działa za pośrednictwem Internetu                             | Połączenie z siecią wirtualną, w której wdrożono domenę zarządzaną, musi być połączone z usługą lub za pomocą komunikacji równorzędnej |
 | Doskonały dla...                    | Urządzenia mobilne lub stacjonarne użytkowników końcowych                  | Maszyny wirtualne serwera wdrożone na platformie Azure                                              |
 

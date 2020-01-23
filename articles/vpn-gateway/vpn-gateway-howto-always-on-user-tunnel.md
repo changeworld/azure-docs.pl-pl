@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: bff2ed48a78bfbae984dea5e5474971817023bc6
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: a22ba5d8b33dd41fcc76c65fcddaf60c1c0ed5e3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75729325"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514752"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>Konfigurowanie zawsze włączonego tunelu VPN użytkownika
 
@@ -39,7 +39,7 @@ Bramę sieci VPN można skonfigurować tak, aby korzystała z protokołu IKEv2 i
 
 1. Zainstaluj certyfikaty klienta na kliencie systemu Windows 10, jak pokazano w tym artykule dotyczącym [klienta sieci VPN typu punkt-lokacja](point-to-site-how-to-vpn-client-install-azure-cert.md) . Certyfikat musi znajdować się w magazynie bieżący użytkownik.
 
-1. Skonfiguruj opcję zawsze włączone klienta VPN za pomocą programu PowerShell, System Center Configuration Manager lub Intune, postępując zgodnie z instrukcjami w temacie [Konfigurowanie klienta systemu Windows 10 zawsze włączone połączenia sieci VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
+1. Skonfiguruj opcję zawsze włączone klienta VPN za pomocą programu PowerShell, Configuration Manager lub Intune, postępując zgodnie z instrukcjami w temacie [Konfigurowanie klienta systemu Windows 10 zawsze włączone połączenia sieci VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections).
 
 ### <a name="example-configuration-for-the-user-tunnel"></a>Przykładowa konfiguracja dla tunelu użytkownika
 

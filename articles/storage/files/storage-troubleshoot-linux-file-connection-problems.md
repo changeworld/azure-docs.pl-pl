@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8b7a743ebcdf74f6ad740e4e4193bbd98da1536d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291128"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544943"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Rozwiązywanie problemów z Azure Files w systemie Linux
 
@@ -131,9 +131,8 @@ Funkcja szyfrowania dla protokołu SMB 3.0 dla systemu Linux została wprowadzon
 Jeśli Twój klient SMB w systemie Linux nie obsługuje szyfrowania, zainstaluj usługę Azure Files przy użyciu protokołu SMB 2.1 z maszyny wirtualnej platformy Azure z systemem Linux, która znajduje się w tym samym centrum danych co udział plików. Upewnij się, że ustawienie [Wymagany bezpieczny transfer]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) jest wyłączone na koncie magazynu. 
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>Błąd "Brak dostępu" podczas przeglądania udziału plików platformy Azure w portalu
-
-Po przejściu do udziału plików platformy Azure w portalu może zostać wyświetlony następujący błąd:
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Błąd "Brak dostępu" podczas próby uzyskania dostępu do udziału plików platformy Azure lub usunięcie go  
+W przypadku próby uzyskania dostępu do udziału plików platformy Azure w portalu lub usunięcia go z niego może zostać wyświetlony następujący błąd:
 
 Brak dostępu  
 Kod błędu: 403 

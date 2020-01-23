@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42fa4dfb3e373eac4167ea1fecbd84ff3a7cca0d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 204026825a5132464e1adda611227db2ac7cf91f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977998"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543991"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Dostęp warunkowy: Blokuj dostęp według lokalizacji
 
@@ -25,7 +25,7 @@ Z warunkiem lokalizacji w polu dostęp warunkowy można kontrolować dostęp do 
 ## <a name="define-locations"></a>Definiuj lokalizacje
 
 1. Zaloguj się do **Azure Portal** jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
-1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy**.
+1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **dostęp warunkowy** > **nazwanych lokalizacji**.
 1. Wybierz pozycję **Nowa lokalizacja**.
 1. Nadaj lokalizacji nazwę.
 1. Wybierz pozycję **zakresy adresów IP** , jeśli znasz określone zewnętrznie zakresy adresów IPv4, które składają się na tę lokalizację lub **kraje/regiony**.

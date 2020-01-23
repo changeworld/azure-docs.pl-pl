@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a9719ec7db4dead94478225cc47130b289a539c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5e66632fab0306da7766f079733cd1d8cb3edc8d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442340"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544093"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Szybki start: bezpośredni ruch internetowy w usłudze Azure Application Gateway — Azure Portal
 
@@ -66,7 +66,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu da
 
 1. Na karcie **frontony** Sprawdź, czy **Typ adresu IP frontonu** jest ustawiony na wartość **Public**. <br>Adres IP frontonu można skonfigurować tak, aby był publiczny lub prywatny jak w przypadku użycia. W tym przykładzie wybrano publiczny adres IP frontonu.
    > [!NOTE]
-   > W przypadku jednostki SKU Application Gateway v2 można wybrać tylko **publiczną** konfigurację adresu IP frontonu. Tylko konfiguracja prywatnego adresu IP frontonu (tylko tryb ILB) nie jest obecnie włączona dla tej jednostki SKU w wersji 2. Można skonfigurować publiczną i prywatną konfigurację adresu IP frontonu.
+   > W przypadku jednostki SKU Application Gateway v2 musi istnieć **publiczna** Konfiguracja adresu IP frontonu. Nadal można skonfigurować publiczną i prywatną konfigurację adresu IP frontonu, ale tylko prywatna Konfiguracja adresu IP frontonu (tylko tryb ILB) nie jest obecnie włączona dla jednostki SKU w wersji 2. 
 
 2. Wybierz opcję **Utwórz nowy** dla **publicznego adresu IP** i wprowadź *MYAGPUBLICIPADDRESS* dla nazwy publicznego adresu IP, a następnie wybierz przycisk **OK**. 
 

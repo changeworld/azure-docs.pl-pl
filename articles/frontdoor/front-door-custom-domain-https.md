@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 40ec859802da2f00154e750ea717da3da0f46568
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907840"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512865"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w niestandardowej domenie usługi Front Door
 
@@ -31,9 +31,9 @@ Niektóre z kluczowych atrybutów niestandardowej funkcji HTTPS to:
 
 - Proste włączanie: w witrynie [Azure Portal](https://portal.azure.com) jest dostępna aprowizacja przy użyciu jednego kliknięcia. Aby włączyć tę funkcję, można użyć interfejsu API REST lub innych narzędzi dla deweloperów.
 
-- Dostępne jest kompletne zarządzanie certyfikatami: wszystkie operacje nabywania certyfikatów i zarządzania nimi są obsługiwane za użytkownika. Certyfikaty są automatycznie aprowizowane i odnawiane przed wygaśnięciem ważności, co powoduje wyeliminowanie ryzyka przerwania działania usługi z powodu wygaśnięcia ważności certyfikatu.
+- Dostępne jest kompletne zarządzanie certyfikatami: użytkownik obsługuje wszystkie operacje nabywania certyfikatów i zarządzania nimi. Certyfikaty są automatycznie aprowizowane i odnawiane przed wygaśnięciem ważności, co powoduje wyeliminowanie ryzyka przerwania działania usługi z powodu wygaśnięcia ważności certyfikatu.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > - Włączanie protokołu HTTPS w domenie niestandardowej
 > - Używanie certyfikatu zarządzanego przez usługę AFD 
@@ -46,14 +46,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć usługę Front Door z co najmniej jedną dołączoną domeną niestandardową. Aby uzyskać więcej informacji, zobacz [Samouczek: Dodawanie do usługi Front Door domeny niestandardowej](front-door-custom-domain.md).
+Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć usługę Front Door z co najmniej jedną dołączoną domeną niestandardową. Aby uzyskać więcej informacji, zobacz [Samouczek: dodawanie do usługi Front Door domeny niestandardowej](front-door-custom-domain.md).
 
 ## <a name="ssl-certificates"></a>Certyfikaty SSL
 
 Aby włączyć protokół HTTPS w celu bezpiecznego dostarczania zawartości w niestandardowej domenie usługi Front Door, należy użyć certyfikatu SSL. Możesz użyć certyfikatu zarządzanego przez usługę Azure Front Door lub własnego certyfikatu.
 
 
-### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Opcja 1 (domyślna): użycie certyfikatu zarządzanego przez usługę Front Door
+### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Opcja 1 (ustawienie domyślne): użycie certyfikatu zarządzanego przez usługę Front Door
 
 Korzystając z certyfikatu zarządzanego przez usługę Azure Front Door Service, można włączyć funkcję protokołu HTTPS za pomocą kilku kliknięć. Usługa Azure Front Door w pełni obsługuje zadania zarządzania certyfikatami, takie jak nabywanie i odnawianie. Po włączeniu funkcji proces rozpocznie się automatycznie. Jeśli domena niestandardowa jest już zamapowana do domyślnego hosta frontonu usługi Front Door (`{hostname}.azurefd.net`), nie są wymagane żadne dalsze działania. Usługa Front Door przetworzy kroki i wykona żądanie automatycznie. Jeśli jednak domena niestandardowa jest zmapowana w innej lokalizacji, należy użyć widomości e-mail, aby zweryfikować własność domeny.
 
@@ -70,7 +70,7 @@ Aby włączyć protokół HTTPS w domenie niestandardowej, wykonaj następujące
 5. Przejdź do kroku [Weryfikowanie domeny](#validate-the-domain).
 
 
-### <a name="option-2-use-your-own-certificate"></a>Opcja 2: Używanie własnego certyfikatu
+### <a name="option-2-use-your-own-certificate"></a>Opcja 2: użycie własnego certyfikatu
 
 Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces odbywa się dzięki integracji z usługą Azure Key Vault, umożliwiającą bezpieczne przechowywanie certyfikatów. Ten bezpieczny mechanizm, używany w usłudze Azure Front Door do pobrania certyfikatu, wymaga wykonania kilku dodatkowych czynności. Tworząc certyfikat SSL, musisz korzystać z dozwolonego urzędu certyfikacji (CA). W przeciwnym razie, jeśli skorzystasz z niedozwolonego urzędu certyfikacji, żądanie zostanie odrzucone. Aby uzyskać listę dozwolonych urzędów certyfikacji, zobacz [Dozwolone urzędy certyfikacji umożliwiające korzystanie z niestandardowego protokołu HTTPS w usłudze Azure Front Door Service](front-door-troubleshoot-allowed-ca.md).
 
@@ -91,7 +91,7 @@ Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces
 Zarejestruj jednostkę usługi dla usługi Azure Front Door Service jako aplikację w usłudze Azure Active Directory za pomocą programu PowerShell.
 
 > [!NOTE]
-> Tę akcję należy wykonać tylko **raz** dla każdego dzierżawcy.
+> Ta akcja wymaga uprawnień administratora globalnego i musi zostać wykonana tylko **raz** dla każdego dzierżawy.
 
 1. Jeśli to konieczne, zainstaluj program [Azure PowerShell](/powershell/azure/install-az-ps) za pomocą programu PowerShell na komputerze lokalnym.
 
@@ -105,7 +105,7 @@ Udziel uprawnienia usługi Azure front-drzwi do uzyskiwania dostępu do certyfik
 
 1. Na koncie magazynu kluczy w obszarze USTAWIENIA wybierz pozycję **Zasady dostępu**, a następnie wybierz pozycję **Dodaj nową**, aby utworzyć nową zasadę.
 
-2. W obszarze **Wybierz podmiot zabezpieczeń** wyszukaj wartość **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** i wybierz pozycję **Microsoft.Azure.Frontdoor**. Kliknij przycisk **wybierz**.
+2. W obszarze **Wybierz podmiot zabezpieczeń** wyszukaj wartość **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** i wybierz pozycję **Microsoft.Azure.Frontdoor**. Kliknij pozycję **Wybierz**.
 
 3. W obszarze **uprawnienia do klucza tajnego**wybierz pozycję **Pobierz** , aby umożliwić przednim drzwiom pobranie certyfikatu.
 
@@ -147,7 +147,7 @@ Jeśli używasz własnego certyfikatu, walidacja domeny nie jest wymagana.
 
 Rekord CNAME powinien mieć następujący format, gdzie *Nazwa* to nazwa domeny niestandardowej, a *Wartość* to domyślna nazwa hosta .azurefd.net usługi Front Door:
 
-| Name            | Typ  | Value                 |
+| Nazwa            | Typ  | Wartość                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -171,12 +171,12 @@ Po włączeniu protokołu HTTPS w domenie niestandardowej urząd certyfikacji Di
 Firma DigiCert wysyła również weryfikacyjną wiadomość e-mail na dodatkowe adresy e-mail. Jeśli informacje o rejestratorze WHOIS są prywatne, sprawdź, czy możesz zatwierdzić bezpośrednio z jednego z następujących adresów:
 
 admin@&lt;nazwa-domeny.com&gt;  
-administrator@&lt;your-domain-name.com&gt;  
-webmaster@&lt;your-domain-name.com&gt;  
-hostmaster@&lt;your-domain-name.com&gt;  
+administrator@&lt;nazwa-domeny.com&gt;  
+webmaster@&lt;nazwa-domeny.com&gt;  
+hostmaster@&lt;nazwa-domeny.com&gt;  
 postmaster@&lt;nazwa-domeny.com&gt;  
 
-W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, Dodaj admin@digicert.com go do listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.
+W ciągu kilku minut otrzymasz wiadomość e-mail (podobną do poniższego przykładu) z prośbą o zatwierdzenie żądania. Jeśli używasz filtru spamu, Dodaj admin@digicert.com do listy dozwolonych. Jeśli w ciągu 24 godzin nie otrzymasz wiadomości e-mail, skontaktuj się z działem pomocy technicznej firmy Microsoft.
 
 Po kliknięciu linku zatwierdzania następuje przekierowanie do formularza zatwierdzania online. Postępuj zgodnie z instrukcjami w formularzu. Dostępne są dwie opcje weryfikacji:
 

@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8022304af0f429024a796e02e64f6e23b938bd57
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912284"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514259"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -105,7 +105,7 @@ W systemie Windows:
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Jeśli Menedżer zabezpieczeń IoT Edge nie jest uruchomiona, sprawdź plik konfiguracji yaml
 
 > [!WARNING]
-> Pliki YAML nie mogą zawierać tabulatorów jako wcięcia. Zamiast tego użyj 2 spacje.
+> Pliki YAML nie mogą zawierać tabulatorów jako wcięcia. Zamiast tego użyj 2 spacje. Elementy najwyższego poziomu nie powinny zawierać spacji wiodących.
 
 W systemie Linux:
 
@@ -121,7 +121,7 @@ W systemie Windows:
 
 ### <a name="check-container-logs-for-issues"></a>Sprawdź dzienniki kontenerów w przypadku problemów
 
-Gdy demona zabezpieczeń IoT Edge jest uruchomiona, sprawdź dzienniki kontenerów, aby wykryć problemy. Zacznij od wdrożonych kontenerów, a następnie Przyjrzyj się kontenerom, które składają się na IoT Edge środowisko uruchomieniowe: edgeAgent i edgeHub. Dzienniki agenta IoT Edge zwykle zawierają informacje dotyczące cyklu życia każdego kontenera. Dzienniki Centrum IoT Edge zawierają informacje dotyczące komunikatów i routingu. 
+Gdy demona zabezpieczeń IoT Edge jest uruchomiona, sprawdź dzienniki kontenerów, aby wykryć problemy. Zacznij od wdrożonych kontenerów, a następnie Przyjrzyj się kontenerom, które składają się na IoT Edge środowisko uruchomieniowe: edgeAgent i edgeHub. Dzienniki agenta IoT Edge zwykle zawierają informacje dotyczące cyklu życia każdego kontenera. Dzienniki Centrum IoT Edge zawierają informacje dotyczące komunikatów i routingu.
 
    ```cmd
    iotedge logs <container name>
@@ -163,7 +163,7 @@ Zastąp `env: {}` za pomocą:
    ```
 
    > [!WARNING]
-   > Pliki kodu YAML nie może zawierać karty jako identation. Zamiast tego użyj 2 spacje.
+   > Pliki kodu YAML nie może zawierać karty jako identation. Zamiast tego użyj 2 spacje. Elementy najwyższego poziomu nie mogą zawierać odstępów wiodących.
 
 Zapisz plik i ponownie uruchom Menedżera zabezpieczeń usługi IoT Edge.
 
@@ -249,7 +249,7 @@ Nie można uruchomić kontenera, a w dziennikach edgeAgent jest wyświetlany bł
 
 **Główna przyczyna**
 
-Agent programu IoT Edge nie ma uprawnień dostępu do obrazu modułu.
+Agent IoT Edge nie ma uprawnień dostępu do obrazu modułu.
 
 **Rozdzielczość**
 
@@ -435,6 +435,6 @@ Upewnij się również, że dla modułów *edgeAgent* i *edgeHub* została wybra
 
 ## <a name="next-steps"></a>Następne kroki
 
-Uważasz, że znaleziono usterkę platformy IoT Edge? [Prześlij problem](https://github.com/Azure/iotedge/issues) tak, aby mogli dalej ulepszać. 
+Uważasz, że znaleziono usterkę platformy IoT Edge? [Prześlij problem](https://github.com/Azure/iotedge/issues) tak, aby mogli dalej ulepszać.
 
 Jeśli masz więcej pytań, Utwórz [żądania pomocy technicznej](https://portal.azure.com/#create/Microsoft.Support) Aby uzyskać pomoc.

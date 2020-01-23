@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: cc5c7b9f26d74f32c9f6042e3a1deddc57171860
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2acde4efa1dc118498f3c7da29c75e48c0478ac0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274252"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543141"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Szybki start: tworzenie zestawu skalowania maszyn wirtualnych w witrynie Azure Portal
 
@@ -31,7 +31,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
 [Moduł równoważenia obciążenia](../load-balancer/load-balancer-overview.md) platformy Azure dystrybuuje ruch przychodzący z wystąpieniami maszyn wirtualnych w dobrej kondycji. 
 
-Najpierw utwórz publiczny podstawowy moduł równoważenia obciążenia przy użyciu portalu. Utworzona przez Ciebie nazwa i publiczny adres IP są automatycznie konfigurowane jako fronton modułu równoważenia obciążenia.
+Najpierw utwórz publiczną usługa Load Balancer w warstwie Standardowa przy użyciu portalu. Utworzona przez Ciebie nazwa i publiczny adres IP są automatycznie konfigurowane jako fronton modułu równoważenia obciążenia.
 
 1. W polu wyszukiwania wpisz **moduł równoważenia obciążenia**. W obszarze **Marketplace** w wynikach wyszukiwania wybierz pozycję **moduł równoważenia obciążenia**.
 1. Na karcie **podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz następujące informacje:

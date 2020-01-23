@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 79a8119f1cd43e36ad639cd292afef5c4a4ed740
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 6e2c1af03d5d6ccfbcb15a2dd33bc2e987be4d48
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513545"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543124"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Co to jest łącze prywatne platformy Azure? (Wersja zapoznawcza)
 Link prywatny platformy Azure umożliwia dostęp do usług Azure PaaS Services (na przykład Azure Storage, Azure Cosmos DB i SQL Database) oraz hostowanych usług klienta i partnerskich platformy Azure za pośrednictwem [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej. Ruch między siecią wirtualną a usługą odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Możesz również utworzyć własną [prywatną usługę linku](private-link-service-overview.md) w sieci wirtualnej (VNET) i dostarczyć ją prywatnie do klientów. Środowisko instalacji i użycia korzystające z prywatnego linku platformy Azure jest spójne w przypadku usługi Azure PaaS, należącej do klienta i udostępnionych usług partnerskich.
@@ -50,6 +50,7 @@ Połączenie prywatne platformy Azure zapewnia następujące korzyści:
 |  |  Azure Database for PostgreSQL — pojedynczy serwer         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
 |  |  Azure Database for MySQL         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
 |  |  Azure Database for MariaDB         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
+
 Aby zapoznać się z najbardziej aktualnymi powiadomieniami, zapoznaj się ze [stroną usługi Azure Virtual Network Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="logging-and-monitoring"></a>Rejestrowanie i monitorowanie

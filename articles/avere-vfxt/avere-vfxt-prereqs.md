@@ -4,14 +4,14 @@ description: Wymagania wstępne dotyczące programu avere vFXT for Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152990"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547510"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Przygotowanie do utworzenia systemu Avere vFXT
 
@@ -23,10 +23,10 @@ Zacznij od utworzenia nowej subskrypcji platformy Azure. Użyj oddzielnej subskr
 
 Aby utworzyć nową subskrypcję platformy Azure w Azure Portal:
 
-* Przejdź do [bloku subskrypcje](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
-* Kliknij przycisk **+ Dodaj** w górnej części strony
-* Zaloguj się, jeśli zostanie wyświetlony monit
-* Wybierz ofertę i zapoznaj się z instrukcjami, aby utworzyć nową subskrypcję
+1. Przejdź do [bloku subskrypcje](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
+1. Kliknij przycisk **+ Dodaj** w górnej części strony
+1. Zaloguj się, jeśli zostanie wyświetlony monit
+1. Wybierz ofertę i zapoznaj się z instrukcjami, aby utworzyć nową subskrypcję
 
 ## <a name="configure-subscription-owner-permissions"></a>Konfigurowanie uprawnień właściciela subskrypcji
 
@@ -104,6 +104,6 @@ Utwórz punkt końcowy usługi magazynu na podstawie Azure Portal.
 
    ![Zrzut ekranu Azure Portal z adnotacjami dotyczącymi kroków tworzenia punktu końcowego usługi](media/avere-vfxt-service-endpoint.png)
 
-## <a name="next-step-create-the-vfxt-cluster"></a>Następny krok: Tworzenie klastra vFXT
+## <a name="next-steps"></a>Następne kroki
 
 Po wykonaniu tych wymagań wstępnych można utworzyć klaster. Aby uzyskać instrukcje, zapoznaj [się z artykułem wdrażanie klastra vFXT](avere-vfxt-deploy.md) .

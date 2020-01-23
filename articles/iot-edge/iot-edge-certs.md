@@ -8,22 +8,22 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e4fd0203d68ef1f39d6efbb9d17d3e517969bff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a222f72e705184c5a7ba6701cfda41073c7eba57
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457280"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548751"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Dowiedz się, jak Azure IoT Edge używa certyfikatów
 
-Certyfikaty IoT Edge są używane w modułach i podrzędnych urządzeniach IoT do weryfikowania tożsamości i poprawności modułu środowiska uruchomieniowego [centrum IoT Edge](iot-edge-runtime.md#iot-edge-hub) , z którym się łączą. Tych weryfikacji włączenia protokołu TLS (transport layer zabezpieczeń) bezpiecznego połączenia między środowiska uruchomieniowego, moduły i urządzeń IoT. Takich jak usługi IoT Hub sam IoT Edge wymaga bezpiecznego i szyfrowane połączenie z IoT podrzędne (lub liści) urządzeń i moduły usługi IoT Edge. Aby nawiązać bezpieczne połączenie TLS, moduł IoT Edge Hub przedstawia łańcuch certyfikatów serwera do łączenia klientów, aby zweryfikować swoją tożsamość.
+IoT Edge certyfikaty są używane przez moduły i podrzędne urządzenia IoT do weryfikacji tożsamości i poprawności modułu [IoT Edge centrum](iot-edge-runtime.md#iot-edge-hub) środowiska uruchomieniowego. Tych weryfikacji włączenia protokołu TLS (transport layer zabezpieczeń) bezpiecznego połączenia między środowiska uruchomieniowego, moduły i urządzeń IoT. Takich jak usługi IoT Hub sam IoT Edge wymaga bezpiecznego i szyfrowane połączenie z IoT podrzędne (lub liści) urządzeń i moduły usługi IoT Edge. Aby nawiązać bezpieczne połączenie TLS, moduł IoT Edge Hub przedstawia łańcuch certyfikatów serwera do łączenia klientów, aby zweryfikować swoją tożsamość.
 
 W tym artykule wyjaśniono, jak IoT Edge certyfikaty mogą funkcjonować w scenariuszach produkcyjnych, deweloperskich i testowych. Skrypty są różne (program Powershell i bash), koncepcje są takie same, między systemami Linux i Windows.
 
 ## <a name="iot-edge-certificates"></a>Certyfikaty usługi IoT Edge
 
-Zwykle producenci nie są użytkownikami końcowymi urządzenia IoT Edge. Czasami jedyną relacją między nimi jest czas, w którym użytkownik końcowy lub operator nabywa urządzenie ogólne wykonane przez producenta. W innych przypadkach producent działa w ramach kontraktu, aby zbudować niestandardowe urządzenie w imieniu operatora. Projekt certyfikatu usługi IoT Edge próbuje uwzględnić oba scenariusze.
+Zwykle producenci nie są użytkownikami końcowymi urządzenia IoT Edge. Czasami jedyną relacją między nimi jest czas, w którym użytkownik końcowy lub operator nabywa urządzenie ogólne wykonane przez producenta. W innych przypadkach producent działa w ramach kontraktu, aby zbudować niestandardowe urządzenie dla operatora. Projekt certyfikatu usługi IoT Edge próbuje uwzględnić oba scenariusze.
 
 Na poniższym rysunku przedstawiono użycie usługi IoT Edge certyfikatów. Między certyfikatem głównego urzędu certyfikacji a certyfikatem urzędu certyfikacji urządzenia może istnieć zero, jeden lub wiele pośrednich certyfikatów podpisywania, w zależności od liczby powiązanych jednostek. W tym miejscu pokazujemy jeden przypadek.
 
@@ -51,7 +51,7 @@ W każdym przypadku producenta używa certyfikat pośredniego urzędu certyfikac
 
 ### <a name="device-ca-certificate"></a>Certyfikat dostępu Warunkowego do urządzeń
 
-Certyfikat urzędu certyfikacji urządzenia jest generowany na podstawie i podpisem ostatecznego certyfikat pośredniego urzędu certyfikacji w procesie. Ten certyfikat jest instalowany na urządzeniu IoT Edge, najlepiej w bezpiecznym magazynie, takim jak sprzętowy moduł zabezpieczeń (HSM). Ponadto certyfikat urzędu certyfikacji urządzenia jednoznacznie identyfikuje urządzenia usługi IoT Edge. Certyfikat urzędu certyfikacji urządzenia może podpisać inne certyfikaty. 
+Certyfikat urzędu certyfikacji urządzenia jest generowany na podstawie i podpisem ostatecznego certyfikat pośredniego urzędu certyfikacji w procesie. Ten certyfikat jest instalowany na urządzeniu IoT Edge, najlepiej w bezpiecznym magazynie, takim jak sprzętowy moduł zabezpieczeń (HSM). Ponadto certyfikat urzędu certyfikacji urządzenia jednoznacznie identyfikuje urządzenia usługi IoT Edge. Certyfikat urzędu certyfikacji urządzenia może podpisać inne certyfikaty.
 
 ### <a name="iot-edge-workload-ca"></a>Obciążenie usługi IoT Edge urzędu certyfikacji
 
@@ -59,7 +59,7 @@ Program [IoT Edge Security Manager](iot-edge-security-manager.md) generuje certy
 
 ### <a name="iot-edge-hub-server-certificate"></a>Certyfikat serwera IoT Edge Hub
 
-Certyfikat serwera Centrum IoT Edge jest rzeczywistym certyfikatem przedstawianym urządzeniom liściowym i modułom w celu weryfikacji tożsamości podczas ustanawiania połączenia TLS wymaganego przez IoT Edge. Ten certyfikat przedstawia całego łańcucha certyfikatów podpisywania używanych do jego wygenerowania maksymalnie certyfikat głównego urzędu certyfikacji, który musi mieć relację zaufania z urządzenia IoT typu liść. Po wygenerowaniu przez program IoT Edge Security Manager, nazwa pospolita (CN) tego certyfikatu Centrum IoT Edge jest ustawiona na Właściwość hostname w pliku config. YAML po konwersji na niższą literę. Jest to wspólne źródło popełnienia błędu za pomocą usługi IoT Edge.
+Certyfikat serwera Centrum IoT Edge jest rzeczywistym certyfikatem przedstawianym urządzeniom liściowym i modułom w celu weryfikacji tożsamości podczas ustanawiania połączenia TLS wymaganego przez IoT Edge. Ten certyfikat przedstawia całego łańcucha certyfikatów podpisywania używanych do jego wygenerowania maksymalnie certyfikat głównego urzędu certyfikacji, który musi mieć relację zaufania z urządzenia IoT typu liść. Po wygenerowaniu przez program IoT Edge Security Manager, nazwa pospolita (CN) tego certyfikatu Centrum IoT Edge jest ustawiona na Właściwość hostname w pliku config. YAML po konwersji na niższą literę. Ta konfiguracja jest wspólnym źródłem pomyłek w IoT Edge.
 
 ## <a name="production-implications"></a>Implikacje produkcji
 
@@ -94,9 +94,9 @@ Możesz zobaczyć hierarchię głębokość certyfikatu reprezentowane na zrzuci
 | Certyfikat głównego urzędu certyfikacji         | Usługa Azure IoT Hub urzędu certyfikacji certyfikatu tylko do testów                                                                           |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------|
 | Certyfikat pośredniego urzędu certyfikacji | Usługa Azure IoT Hub pośredniego certyfikatu tylko testowanie                                                                 |
-| Certyfikat dostępu Warunkowego do urządzeń       | iotgateway.CA ("iotgateway" została przekazana jako < nazwa hosta bramy > do skryptów wygody)      |
+| Certyfikat dostępu Warunkowego do urządzeń       | iotgateway.CA ("iotgateway" została przekazana jako < nazwa hosta bramy > do skryptów wygody)   |
 | Certyfikat urzędu certyfikacji obciążenia     | iotedge obciążenia z urzędu certyfikacji                                                                                       |
-| Certyfikat serwera IoT Edge Hub | iotedgegw.Local (odpowiada nazwę hosta z config.yaml)                                                |
+| Certyfikat serwera IoT Edge Hub | iotedgegw.Local (odpowiada nazwę hosta z config.yaml)                                            |
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure Relay standardowych interfejsów API platformy .NET | Dokumentacja firmy Microsoft
-description: Omówienie usługi Azure Standard interfejsu API .NET usługi Relay
+title: Omówienie .NET Standard interfejsów API Azure Relay | Microsoft Docs
+description: W tym artykule przedstawiono podsumowanie jednego z najważniejszych informacji o interfejsie API Azure Relay Połączenia hybrydowe .NET Standard.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: 78ad3ab49db162af060b4273deea717cd3472668
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18eaf2d2daae817107be6cdb0da9359bb5f9b4e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749023"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514539"
 ---
-# <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Omówienie usługi Azure Relay .NET Standard interfejsowi API połączeń hybrydowych
+# <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Omówienie interfejsu API Azure Relay Połączenia hybrydowe .NET Standard
 
-Ten artykuł zawiera podsumowanie niektórych klucza usługi Azure Relay hybrydowego połączenia .NET Standard [interfejsów API klienta](/dotnet/api/microsoft.azure.relay).
+W tym artykule przedstawiono podsumowanie niektórych kluczowych Azure Relay Połączenia hybrydowe .NET Standard [interfejsów API klienta](/dotnet/api/microsoft.azure.relay).
   
-## <a name="relay-connection-string-builder-class"></a>Klasa konstruktora parametrów połączenia usługi Relay
+## <a name="relay-connection-string-builder-class"></a>Klasa konstruktora parametrów połączenia przekaźnika
 
-[RelayConnectionStringBuilder] [ RelayConnectionStringBuilder] klasy formaty ciągów połączeń, które są specyficzne dla połączeń hybrydowych usługi Relay. Służy do Sprawdź format parametrów połączenia lub Tworzenie parametrów połączenia od podstaw. Zobacz poniższy kod przykładowy:
+Klasa [RelayConnectionStringBuilder][RelayConnectionStringBuilder] formatuje parametry połączenia specyficzne dla przekaźnika połączenia hybrydowe. Można go użyć do sprawdzenia formatu parametrów połączenia lub utworzenia parametrów połączenia od podstaw. Zapoznaj się z poniższym kodem na przykład:
 
 ```csharp
 var endpoint = "[Relay namespace]";
@@ -44,7 +44,7 @@ var connectionStringBuilder = new RelayConnectionStringBuilder()
 };
 ```
 
-Można również przekazać parametry połączenia bezpośrednio do `RelayConnectionStringBuilder` metody. Tej operacji można sprawdzić, czy ciąg połączenia jest w prawidłowym formacie. Jeśli dowolny z parametrów jest nieprawidłowy, generuje konstruktora `ArgumentException`.
+Parametry połączenia można również przekazać bezpośrednio do metody `RelayConnectionStringBuilder`. Ta operacja umożliwia zweryfikowanie, czy parametry połączenia mają prawidłowy format. Jeśli którykolwiek z parametrów jest nieprawidłowy, Konstruktor generuje `ArgumentException`.
 
 ```csharp
 var myConnectionString = "[RelayConnectionString]";
@@ -63,13 +63,13 @@ catch (ArgumentException ae)
 
 ## <a name="hybrid-connection-stream"></a>Strumień połączenia hybrydowego
 
-[HybridConnectionStream] [ HCStream] klasa jest podstawowy obiekt używany do wysyłania i odbierania danych z punktu końcowego usługi Azure Relay, czy pracujesz z [HybridConnectionClient] [ HCClient], lub [HybridConnectionListener][HCListener].
+Klasa [HybridConnectionStream][HCStream] jest obiektem podstawowym używanym do wysyłania i odbierania danych z punktu końcowego Azure Relay, bez względu na to, czy pracujesz z [HybridConnectionClient][HCClient], czy [HybridConnectionListener][HCListener].
 
-### <a name="getting-a-hybrid-connection-stream"></a>Wprowadzenie strumienia połączenia hybrydowego
+### <a name="getting-a-hybrid-connection-stream"></a>Pobieranie strumienia połączenia hybrydowego
 
 #### <a name="listener"></a>Odbiornik
 
-Za pomocą [HybridConnectionListener] [ HCListener] obiektu, można uzyskać `HybridConnectionStream` obiektu w następujący sposób:
+Za pomocą obiektu [HybridConnectionListener][HCListener] można uzyskać `HybridConnectionStream` obiektu w następujący sposób:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -82,7 +82,7 @@ var hybridConnectionStream = await listener.AcceptConnectionAsync();
 
 #### <a name="client"></a>Klient
 
-Za pomocą [HybridConnectionClient] [ HCClient] obiektu, można uzyskać `HybridConnectionStream` obiektu w następujący sposób:
+Za pomocą obiektu [HybridConnectionClient][HCClient] można uzyskać `HybridConnectionStream` obiektu w następujący sposób:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -91,11 +91,11 @@ var client = new HybridConnectionClient(csb.ToString());
 var hybridConnectionStream = await client.CreateConnectionAsync();
 ```
 
-### <a name="receiving-data"></a>Odbieranie danych
+### <a name="receiving-data"></a>Pobieranie danych
 
-[HybridConnectionStream] [ HCStream] klasy umożliwia komunikację dwukierunkową. W większości przypadków ciągle otrzymujesz ze strumienia. Jeśli czytasz tekst ze strumienia, można także używać [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) obiektu, który umożliwia łatwiejsze analizy danych. Na przykład może odczytywać dane jako tekst, a nie jako `byte[]`.
+Klasa [HybridConnectionStream][HCStream] umożliwia komunikację dwukierunkową. W większości przypadków ciągle otrzymujesz ze strumienia. W przypadku odczytywania tekstu ze strumienia warto również użyć obiektu [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) , który umożliwia łatwiejsze analizowanie danych. Można na przykład odczytywać dane jako tekst, a nie jako `byte[]`.
 
-Poniższy kod odczytuje pojedyncze wiersze tekstu ze strumienia, dopóki nie zażądano anulowania:
+Poniższy kod odczytuje poszczególne wiersze tekstu ze strumienia do momentu żądania anulowania:
 
 ```csharp
 // Create a CancellationToken, so that we can cancel the while loop
@@ -120,14 +120,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>Wysyłanie danych
 
-Po połączeniu możesz wysłać komunikat do punktu końcowego usługi Relay. Ponieważ dziedziczy obiektu połączenia [Stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx), wysyłanie danych jako `byte[]`. Poniższy przykład pokazuje, jak to zrobić:
+Po nawiązaniu połączenia można wysłać komunikat do punktu końcowego usługi Relay. Ponieważ obiekt Connection dziedziczy [strumień](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx), Wyślij dane jako `byte[]`. Poniższy przykład pokazuje, jak to zrobić:
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-Jednakże, jeśli chcesz wysłać tekst bezpośrednio, bez konieczności kodowania ciąg za każdym razem można opakować `hybridConnectionStream` obiekt z [StreamWriter —](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) obiektu.
+Jeśli jednak chcesz wysłać tekst bezpośrednio, bez konieczności kodowania ciągu za każdym razem, możesz otoczyć obiekt `hybridConnectionStream` obiektem [StreamWriter —](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) .
 
 ```csharp
 // The StreamWriter object only needs to be created once
@@ -135,13 +135,13 @@ var textWriter = new StreamWriter(hybridConnectionStream);
 await textWriter.WriteLineAsync("hello");
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usługi Azure Relay, skorzystaj z następujących linków:
+Aby dowiedzieć się więcej na temat Azure Relay, odwiedź następujące linki:
 
-* [Odwołanie Microsoft.Azure.Relay](/dotnet/api/microsoft.azure.relay)
+* [Dokumentacja Microsoft. Azure. Relay](/dotnet/api/microsoft.azure.relay)
 * [Co to jest usługa Azure Relay?](relay-what-is-it.md)
-* [Interfejsy API dostępne usługi Relay](relay-api-overview.md)
+* [Dostępne interfejsy API przekazywania](relay-api-overview.md)
 
 [RelayConnectionStringBuilder]: /dotnet/api/microsoft.azure.relay.relayconnectionstringbuilder
 [HCStream]: /dotnet/api/microsoft.azure.relay.hybridconnectionstream

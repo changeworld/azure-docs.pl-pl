@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2430d7e6fa74438c148d3cb849510be06243faa0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826180"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543158"
 ---
 # <a name="azure-application-skus-tab"></a>Karta jednostki SKU aplikacji platformy Azure
 
@@ -47,7 +47,7 @@ Podaj następujące wartości jednostki SKU.  Pola dołączone do gwiazdki są w
 |    Pole         |       Opis                                                            |
 |  ---------       |     ---------------                                                          |
 |  **\* tytułu**     | Tytuł jednostki SKU. Ten tytuł jest wyświetlany w galerii dla tego elementu.   |
-| **\* podsumowania**    | Krótki opis podsumowania jednostki SKU. (Maksymalna długość to 100 znaków).  |
+| **Podsumowanie\***    | Krótki opis podsumowania jednostki SKU. (Maksymalna długość to 100 znaków).  |
 | **\* opisu** | Szczegółowy opis jednostki SKU. Podstawowy kod HTML jest obsługiwany.                 | 
 | **\* typu jednostki SKU**   | Typ rozwiązania aplikacji platformy Azure, wybierz pozycję ***szablon rozwiązania** dla tego scenariusza. |
 | **Dostępność w chmurze\*** | Lokalizacja jednostki SKU. Wartość domyślna to **publiczna platforma Azure**.  <b/>**publiczną platformę Azure** — aplikacja zostanie wdrożona dla klientów we wszystkich publicznych regionach świadczenia usługi Azure z integracją z portalu Marketplace.  <b/>**Azure Government Cloud** — aplikacja zostanie wdrożona w chmurze Azure Government. Przed opublikowaniem w [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), firma Microsoft zaleca, aby wydawcy przetestować i sprawdzali, czy rozwiązanie działa zgodnie z oczekiwaniami w tym środowisku. Aby przygotować się do etapu i przetestowania, zażądaj [konta próbnego](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).  |
@@ -69,7 +69,7 @@ Skonfiguruj następujące ustawienia jednostki SKU. Pola dołączone do gwiazdki
 |    Pole         |       Opis                                                            |
 |  ---------       |     ---------------                                                          |
 |  **\* tytułu**     | Tytuł jednostki SKU. Ten tytuł jest wyświetlany w galerii dla tego elementu.   |
-| **\* podsumowania**    | Krótki opis podsumowania jednostki SKU. (Maksymalna długość to 100 znaków).  |
+| **Podsumowanie\***    | Krótki opis podsumowania jednostki SKU. (Maksymalna długość to 100 znaków).  |
 | **\* opisu** | Szczegółowy opis jednostki SKU. Podstawowy kod HTML jest obsługiwany.                 | 
 | **\* typu jednostki SKU**   | Typ rozwiązania aplikacji platformy Azure, wybierz pozycję ***zarządzana aplikacja** dla tego scenariusza. 
 | **Dostępność w chmurze\*** | Lokalizacja jednostki SKU. Wartość domyślna to **publiczna platforma Azure**.  <b/>**publiczną platformę Azure** — aplikacja zostanie wdrożona dla klientów we wszystkich publicznych regionach świadczenia usługi Azure z integracją z portalu Marketplace.  <b/>**Azure Government Cloud** — aplikacja zostanie wdrożona w chmurze Azure Government. Przed opublikowaniem w [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), firma Microsoft zaleca, aby wydawcy przetestować i sprawdzali, czy rozwiązanie działa zgodnie z oczekiwaniami w tym środowisku. Aby przygotować się do etapu i przetestowania, zażądaj [konta próbnego](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).   Microsoft Azure Government to chmura dla instytucji rządowych, której dostęp jest kontrolowany przez klientów ze stanów USA, stan, lokalny lub plemienne oraz partnerzy kwalifikowania się do korzystania z tych jednostek. |
@@ -82,17 +82,19 @@ Skonfiguruj następujące ustawienia jednostki SKU. Pola dołączone do gwiazdki
 
 ### <a name="package-details-for-solution-template"></a>Szczegóły pakietu dla szablonu rozwiązania
 
-   ![Szczegóły pakietu dla szablonu rozwiązania](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
+![Szczegóły pakietu dla szablonu rozwiązania](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 Podaj następujące wartości **szczegółów pakietu** .  Pola dołączone do gwiazdki są wymagane.
 
 - **Wersja\*** — wersja pakietu, który zostanie przekazany. Tagi wersji muszą mieć postać X. Y. Z, gdzie X, Y i Z są liczbami całkowitymi.
 - **\*pliku pakietu (zip)** — ten pakiet zawiera następujące pliki zapisane w pliku zip.
-  - MainTemplate. JSON — plik szablonu wdrożenia używany do wdrożenia rozwiązania/aplikacji i tworzenia zasobów zdefiniowanych dla rozwiązania. Aby uzyskać więcej informacji, zobacz [jak tworzyć pliki szablonów wdrożenia](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
-  - createUIDefinition. JSON — ten plik jest używany przez Azure Portal do generowania interfejsu użytkownika na potrzeby aprowizacji tego rozwiązania/aplikacji. Aby uzyskać więcej informacji, zobacz [Tworzenie interfejsu użytkownika Azure Portal dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - **mainTemplate. json\*** — plik szablonu wdrożenia używany do wdrożenia rozwiązania/aplikacji i tworzenia zasobów zdefiniowanych dla rozwiązania. Aby uzyskać więcej informacji, zobacz [jak tworzyć pliki szablonów wdrożenia](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
+  - **createUIDefinition. json\*** — ten plik jest używany przez Azure Portal do generowania interfejsu użytkownika na potrzeby aprowizacji tego rozwiązania/aplikacji. Aby uzyskać więcej informacji, zobacz [Tworzenie interfejsu użytkownika Azure Portal dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - Skrypty (jeśli są wymagane) — wszelkie dodatkowe skrypty, które mogą być wymagane podczas uruchamiania szablonu, na przykład `Microsoft.Compute/virtualMachines/extensions`.
+  - Szablony zagnieżdżone (w razie potrzeby) — wszystkie dodatkowe zagnieżdżone szablony.
 
-  >[!IMPORTANT] 
-  >Ten pakiet powinien zawierać wszelkie zagnieżdżone szablony lub skrypty, które są potrzebne do aprowizacji tej aplikacji. Plik MainTemplate. JSON i plik createUIDefinition. JSON muszą znajdować się w folderze głównym.
+  > [!IMPORTANT] 
+  > Ten pakiet powinien zawierać wszelkie zagnieżdżone szablony lub skrypty, które są potrzebne do aprowizacji tej aplikacji. Plik mainTemplate. JSON i plik createUIDefinition. JSON muszą znajdować się w folderze głównym. Aby uzyskać więcej informacji na temat artefaktów wdrożenia, zobacz [szablony Azure Resource Manager — przewodnik po najlepszych rozwiązaniach](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#deployment-artifacts-nested-templates-scripts).
 
 
 ### <a name="package-details-for-managed-application"></a>Szczegóły pakietu dla aplikacji zarządzanej

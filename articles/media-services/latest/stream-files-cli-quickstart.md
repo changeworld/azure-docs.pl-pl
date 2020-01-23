@@ -1,5 +1,5 @@
 ---
-title: Przesyłanie strumieniowe plików wideo za pomocą Azure Media Services i interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+title: Przesyłanie strumieniowe plików wideo przy użyciu Azure Media Services i interfejsu wiersza polecenia platformy Azure
 description: Wykonaj kroki tego samouczka, aby utworzyć nowe konto Azure Media Services, zakodować plik i przesłać go strumieniowo do Azure Media Player.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 58193a94d09dee5df611acf5d98c8661dd18abbb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a51b30ad2af29871ed6998e60bb64adf91dfdbbd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639966"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514378"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>Samouczek: Kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — interfejs wiersza polecenia
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — interfejs wiersza polecenia
 
 W tym samouczku przedstawiono sposób łatwego kodowania i strumieniowego przesyłania filmów wideo w różnych przeglądarkach i urządzeniach przy użyciu Azure Media Services i interfejsu wiersza polecenia platformy Azure. Możesz określić zawartość wejściową, używając adresów URL lub ścieżek protokołu HTTPS lub SAS do plików w usłudze Azure Blob Storage.
 
@@ -28,7 +28,7 @@ W przykładzie w tym artykule zakodowana jest zawartość, którą można uzyska
 
 Po zakończeniu tego samouczka będziesz mieć możliwość przesyłania strumieniowego wideo.  
 
-![Odtwarzanie wideo](./media/stream-files-dotnet-quickstart/final-video.png)
+![Odtwórz wideo](./media/stream-files-dotnet-quickstart/final-video.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +44,7 @@ Twoje konto Media Services i wszystkie powiązane konta magazynu muszą znajdowa
 az group create -n amsResourceGroup -l westus2
 ```
 
-### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure storage
+### <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
 W tym przykładzie utworzymy standardowe konto LRS w wersji 2.
 
@@ -193,7 +193,7 @@ Po uruchomieniu polecenia `az ams job start` można ustawić etykietę dla danyc
 - W przypadku przypisywania wartości do etykiety ustaw wartość "--Output-Assets" na "assetname = Label".
 - Jeśli nie przypiszesz wartości do etykiety, ustaw wartość "--Output-Assets" na "assetname =".
 
-  Zwróć uwagę, że dodajemy "=" `output-assets`do.
+  Zwróć uwagę, że do `output-assets`zostanie dodana wartość "=".
 
 ```azurecli
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
@@ -309,7 +309,7 @@ Otrzymujesz odpowiedź w następujący sposób:
 }
 ```
 
-Skopiuj ścieżkę HTTP Live Streaming (HLS). W tym przypadku jest `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`to.
+Skopiuj ścieżkę HTTP Live Streaming (HLS). W tym przypadku jest `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`.
 
 ## <a name="build-the-url"></a>Tworzenie adresu URL 
 
@@ -318,7 +318,7 @@ Skopiuj ścieżkę HTTP Live Streaming (HLS). W tym przypadku jest `/e01b2be1-5e
 ```azurecli
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
-Skopiuj wartość `hostName`. W tym przypadku jest `amsaccount-usw22.streaming.media.azure.net`to.
+Skopiuj wartość `hostName`. W tym przypadku jest `amsaccount-usw22.streaming.media.azure.net`.
 
 ### <a name="assemble-the-url"></a>Złóż adres URL
 

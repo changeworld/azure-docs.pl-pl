@@ -1,56 +1,56 @@
 ---
-title: Operator najlepsze rozwiązania — tożsamości w usłudze Azure Kubernetes usługi (AKS)
-description: Dowiedz się, operator klastra najlepsze rozwiązania dotyczące sposobów zarządzania uwierzytelniania i autoryzacji dla klastrów w usłudze Azure Kubernetes Service (AKS)
+title: Najlepsze praktyki dla operatorów — tożsamość w usłudze Azure Kubernetes Services (AKS)
+description: Poznaj najlepsze rozwiązania operatora klastra dotyczące zarządzania uwierzytelnianiem i autoryzacją klastrów w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 82bf59dddeecab0addf00a935f55be8d1d7952d3
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 06d15d66df0b2ec0049d4b2fffae6a9909b05dca
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614775"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549142"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w usłudze Azure Kubernetes Service (AKS)
 
-Wdrażanie i obsługa klastrów w usłudze Azure Kubernetes Service (AKS), należy zaimplementować sposobów, aby zarządzać dostępem do zasobów i usług. Bez tych kontrolek konta mogą mieć dostęp do zasobów i usług, które nie potrzebują. Również może być trudne do śledzenia, który zestaw poświadczeń użytych do zmiany.
+Podczas wdrażania i konserwowania klastrów w usłudze Azure Kubernetes Service (AKS) należy zaimplementować metody zarządzania dostępem do zasobów i usług. Bez tych kontrolek konta mogą mieć dostęp do zasobów i usług, których nie potrzebują. Może być również trudno śledzić, który zestaw poświadczeń był używany do wprowadzania zmian.
 
-Najlepsze rozwiązania dotyczące tej koncentruje się na jak operator klastra można zarządzanie dostępem i tożsamością dla klastrów usługi AKS. W tym artykule omówiono sposób wykonywania następujących zadań:
+Te najlepsze rozwiązania koncentrują się na sposobie zarządzania dostępem i tożsamością klastrów AKS przez operator klastra. W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Uwierzytelnianie użytkowników klaster AKS za pomocą usługi Azure Active Directory
-> * Kontrola dostępu do zasobów przy użyciu kontroli dostępu opartej na rolach (RBAC)
-> * Korzystania z zarządzanych tożsamości do uwierzytelniania się z innymi usługami
+> * Uwierzytelnianie użytkowników klastrów AKS za pomocą Azure Active Directory
+> * Kontrola dostępu do zasobów za pomocą kontroli dostępu opartej na rolach (RBAC)
+> * Używanie tożsamości zarządzanej do samodzielnego uwierzytelniania z innymi usługami
 
-## <a name="use-azure-active-directory"></a>Use Azure Active Directory
+## <a name="use-azure-active-directory"></a>Korzystanie z usługi Azure Active Directory
 
-**Najważniejsze wskazówki** -AKS wdrażanie klastrów przy użyciu integracji z usługą Azure AD. Używanie programu Azure AD centralizuje składnika zarządzania tożsamościami. Każda zmiana stanu konta lub grupy użytkowników jest automatycznie aktualizowana w dostęp do klastra usługi AKS. Zgodnie z opisem w następnej sekcji, ustal zakres użytkowników lub grup w celu najmniejszą ilością uprawnień niezbędnych, należy użyć ról lub ClusterRoles i powiązań.
+**Wskazówki dotyczące najlepszych** rozwiązań — wdrażanie klastrów AKS z integracją z usługą Azure AD. Za pomocą usługi Azure AD scentralizowano składnik zarządzania tożsamościami. Wszelkie zmiany stanu konta użytkownika lub grupy są automatycznie aktualizowane w dostępie do klastra AKS. Użyj ról lub ClusterRoles i powiązań, jak opisano w następnej sekcji, aby ograniczyć liczbę użytkowników lub grup do najmniejszych wymaganych uprawnień.
 
-Deweloperzy i właściciele aplikacji klastra Kubernetes muszą mieć dostęp do różnych zasobów. Rozwiązanie Kubernetes nie zapewnia rozwiązanie zarządzania tożsamościami, aby określić, które użytkownicy mogą korzystać z zasobów. Zamiast tego możesz zazwyczaj integracja klastra z istniejącego rozwiązania tożsamości. Usługa Azure Active Directory (AD) zapewnia rozwiązanie zarządzania tożsamościami w przedsiębiorstwach i można zintegrować z klastrami usługi AKS.
+Deweloperzy i właściciele aplikacji klastra Kubernetes potrzebują dostępu do różnych zasobów. Kubernetes nie oferuje rozwiązania do zarządzania tożsamościami, które pozwala kontrolować, którzy użytkownicy mogą korzystać z zasobów. Zamiast tego zwykle integrujesz klaster z istniejącym rozwiązaniem tożsamości. Azure Active Directory (AD) zapewnia rozwiązanie do zarządzania tożsamościami gotowe do używania w przedsiębiorstwie i można je zintegrować z klastrami AKS.
 
-Dzięki usłudze Azure zintegrowanych z usługą AD klastrów w usłudze AKS, można tworzyć *role* lub *ClusterRoles* definiują uprawnienia dostępu do zasobów. Następnie *powiązać* ról do użytkowników lub grup z usługi Azure AD. W następnej sekcji omówiono te rozwiązania Kubernetes kontroli dostępu opartej na rolach (RBAC). Integracja usługi Azure AD i jak kontrolować dostęp do zasobów są widoczne na poniższym diagramie:
+W przypadku klastrów zintegrowanych z usługą Azure AD w programie AKS tworzysz *role* lub *ClusterRoles* , które definiują uprawnienia dostępu do zasobów. Następnie można *powiązać* role z użytkownikami lub grupami z usługi Azure AD. Te Kubernetes kontroli dostępu opartej na rolach (RBAC) zostały omówione w następnej sekcji. Integrację usługi Azure AD i sposób kontrolowania dostępu do zasobów można zobaczyć na poniższym diagramie:
 
-![Uwierzytelnianie poziomu klastra na potrzeby integracji usługi Azure Active Directory za pomocą usługi AKS](media/operator-best-practices-identity/cluster-level-authentication-flow.png)
+![Uwierzytelnianie na poziomie klastra dla integracji Azure Active Directory z usługą AKS](media/operator-best-practices-identity/cluster-level-authentication-flow.png)
 
-1. Deweloper uwierzytelnia się za pomocą usługi Azure AD.
-1. Punkt końcowy wystawiania tokenu usługi Azure AD wystawia token dostępu.
-1. Deweloper wykonuje akcję przy użyciu tokenu usługi Azure AD, takich jak `kubectl create pod`
-1. Kubernetes weryfikuje token z usługi Azure Active Directory i pobiera członkostwa w grupach dla deweloperów.
-1. Kubernetes opartej na rolach kontrola dostępu (RBAC) i klaster są stosowane zasady.
-1. Żądanie dewelopera jest pomyślnie lub nie w zależności od poprzednich weryfikacji członkostwa w grupie usługi Azure AD, RBAC platformy Kubernetes i zasad.
+1. Deweloperzy są uwierzytelniani za pomocą usługi Azure AD.
+1. Punkt końcowy wystawiania tokenów usługi Azure AD wystawia token dostępu.
+1. Deweloper wykonuje akcję przy użyciu tokenu usługi Azure AD, takiego jak `kubectl create pod`
+1. Kubernetes sprawdza token w Azure Active Directory i pobiera członkostwa w grupach deweloperów.
+1. Są stosowane Kubernetes kontroli dostępu opartej na rolach (RBAC) i zasad klastra.
+1. Żądanie dewelopera zakończyło się powodzeniem lub nie jest oparte na poprzedniej weryfikacji członkostwa w grupach usługi Azure AD oraz Kubernetes RBAC i zasadach.
 
-Aby utworzyć klaster AKS, która używa usługi Azure AD, zobacz [integracji usługi Azure Active Directory za pomocą usługi AKS][aks-aad].
+Aby utworzyć klaster AKS, który używa usługi Azure AD, zobacz [integrowanie Azure Active Directory z usługą AKS][aks-aad].
 
 ## <a name="use-role-based-access-controls-rbac"></a>Korzystanie z kontroli dostępu opartej na rolach (RBAC)
 
-**Najważniejsze wskazówki** — Użyj Kubernetes RBAC do definiowania, które użytkownicy lub grupy mają uprawnienia do zasobów w klastrze. Tworzenie ról i powiązań, które przypisać najmniejszą ilością uprawnień wymaganych. Integracja z usługą Azure AD, więc wszelkie zmiany w stan użytkownika lub członkostwa w grupie jest automatycznie aktualizowana i dostępu do zasobów klastra jest aktualny.
+**Wskazówki dotyczące najlepszych** rozwiązań — Użyj Kubernetes RBAC, aby zdefiniować uprawnienia, które użytkownicy lub grupy mają do zasobów w klastrze. Utwórz role i powiązania, które przypisują najmniej wymagane uprawnienia. Integruj z usługą Azure AD, aby wszelkie zmiany stanu użytkownika lub członkostwa w grupie były automatycznie aktualizowane, a dostęp do zasobów klastra jest aktualny.
 
-W usłudze Kubernetes możesz podać szczegółową kontrolę dostępu do zasobów w klastrze. Można zdefiniować uprawnienia na poziomie klastra lub określonych obszarów nazw. Można określić, jakie zasoby mogą być zarządzane i z jakimi uprawnieniami. Te role są stosowane do użytkowników lub grup z powiązaniem. Aby uzyskać więcej informacji na temat *role*, *ClusterRoles*, i *powiązania*, zobacz [opcje dostęp i tożsamość dla usługi Azure Kubernetes Service (AKS)][aks-concepts-identity].
+W programie Kubernetes można zapewnić szczegółową kontrolę dostępu do zasobów w klastrze. Uprawnienia można definiować na poziomie klastra lub do określonych przestrzeni nazw. Można zdefiniować zasoby, które mogą być zarządzane, oraz z uprawnieniami. Te role są następnie stosowane do użytkowników lub grup z powiązaniem. Aby uzyskać więcej informacji na temat *ról*, *ClusterRoles*i *powiązań*, zobacz [Opcje dostępu i tożsamości dla usługi Azure Kubernetes Service (AKS)][aks-concepts-identity].
 
-Na przykład możesz utworzyć rolę, która przyznaje pełny dostęp do zasobów w przestrzeni nazw o nazwie *aplikacji finansowych*, jak pokazano w manifeście YAML następujący przykład:
+Przykładowo można utworzyć rolę, która przyznaje pełen dostęp do zasobów w przestrzeni nazw o nazwie *finanse-aplikacja*, jak pokazano w poniższym przykładzie YAML manifestu:
 
 ```yaml
 kind: Role
@@ -64,7 +64,7 @@ rules:
   verbs: ["*"]
 ```
 
-RoleBinding wiążąca użytkownika usługi Azure AD zostanie utworzona *developer1\@contoso.com* do RoleBinding, jak pokazano w poniższym manifest YAML:
+Następnie zostanie utworzony element Rolebinding, który wiąże użytkownika usługi Azure AD *developer1\@contoso.com* z roląbinding, jak pokazano w następującym manifeście YAML:
 
 ```yaml
 kind: RoleBinding
@@ -82,49 +82,49 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-Gdy *developer1\@contoso.com* jest uwierzytelniany względem klastra AKS mają pełne uprawnienia do zasobów w *aplikacji finansowych* przestrzeni nazw. W tym sposób, możesz logicznie oddzielne i kontroli dostępu do zasobów. Kubernetes RBAC należy używać w połączeniu z platformą Azure — integracji z usługą AD, zgodnie z opisem w poprzedniej sekcji.
+Po uwierzytelnieniu *developer1\@contoso.com* względem klastra AKS mają one pełne uprawnienia do zasobów w przestrzeni nazw *"Finanse aplikacji"* . Dzięki temu można logicznie oddzielić i kontrolować dostęp do zasobów. Kubernetes RBAC należy używać w połączeniu z usługą Azure AD — integrację, zgodnie z opisem w poprzedniej sekcji.
 
-Aby zobaczyć, jak kontrolować dostęp do zasobów usługi Kubernetes przy użyciu funkcji RBAC za pomocą grup usługi Azure AD, zobacz [kontrolować dostęp do zasobów klastra przy użyciu tożsamości usługi Azure Active Directory i kontroli dostępu opartej na rolach w usłudze AKS][azure-ad-rbac].
+Aby dowiedzieć się, jak za pomocą grup usługi Azure AD kontrolować dostęp do zasobów Kubernetes za pomocą RBAC, zobacz [Kontrola dostępu do zasobów klastra przy użyciu kontroli dostępu opartej na rolach i tożsamości Azure Active Directory w AKS][azure-ad-rbac].
 
-## <a name="use-pod-identities"></a>Użyj tożsamości zasobników
+## <a name="use-pod-identities"></a>Użyj tożsamości pod
 
-**Najważniejsze wskazówki** — nie należy używać stałych poświadczeń w obrębie zasobników lub obrazów kontenerów, ponieważ są one ryzyko ujawnienia lub nadużycia związane. Zamiast tego należy użyć zasobnika tożsamości do automatycznego żądania dostępu przy użyciu centralnego rozwiązania z tożsamością usługi Azure AD. Zasobnik tożsamości jest przeznaczona dla systemu Linux zasobników i tylko obrazy kontenerów.
+**Wskazówki dotyczące najlepszych** rozwiązań — nie używaj stałych poświadczeń w obrębie zasobników ani obrazów kontenerów, ponieważ są one zagrożone ekspozycją lub nadużyciami. Zamiast tego należy użyć tożsamości pod, aby automatycznie żądać dostępu przy użyciu centralnego rozwiązania do obsługi tożsamości usługi Azure AD. Tożsamości pod są przeznaczone wyłącznie do użytku z magazynem systemu Linux i obrazami kontenerów.
 
-Gdy zasobników muszą mieć dostęp do innych usług platformy Azure, takich jak usługi Cosmos DB, usługa Key Vault lub usługi Blob Storage zasobnik musi poświadczenia dostępu. Te poświadczenia dostępu można zdefiniować przy użyciu obrazu kontenera lub wprowadzony jako wpisu tajnego rozwiązania Kubernetes, ale musisz ręcznie utworzone i przypisane. Często poświadczenia są używane ponownie na zasobników i nie są regularnie obracać.
+Gdy wymagane jest uzyskanie dostępu do innych usług platformy Azure, takich jak Cosmos DB, Key Vault lub Blob Storage, wymaga to poświadczeń dostępu. Te poświadczenia dostępu można zdefiniować za pomocą obrazu kontenera lub wstrzyknąć jako wpis tajny Kubernetes, ale należy go ręcznie utworzyć i przypisać. Często poświadczenia są ponownie używane między zasobnikami i nie są regularnie obracane.
 
-Zarządzanych tożsamości dla zasobów platformy Azure (obecnie implementowane jako projekt typu open source AKS skojarzona) pozwalają na automatyczne żądanie dostępu do usług za pośrednictwem usługi Azure AD. Nie można ręcznie zdefiniować poświadczeń dla zasobników, zamiast tego są żądania tokenu dostępu w czasie rzeczywistym i można używać tylko w ich przypisanej usługi dostępu do. W usłudze AKS dwa składniki są wdrażane przez operator klastra umożliwia zasobników w celu używania tożsamości zarządzanej:
+Zarządzane tożsamości dla zasobów platformy Azure (obecnie zaimplementowane jako skojarzony projekt AKS Open Source) pozwalają na automatyczne zażądanie dostępu do usług za pomocą usługi Azure AD. Nie Definiuj ręcznie poświadczeń dla zasobników, zamiast tego żądają tokenu dostępu w czasie rzeczywistym i mogą używać go do uzyskiwania dostępu do przypisanych do nich usług. W programie AKS dwa składniki są wdrażane przez operatora klastra w celu zezwolenia na używanie tożsamości zarządzanych przez y:
 
-* **Serwer węzła zarządzania tożsamościami (NMI)** jest zasobników, która działa jako DaemonSet w każdym węźle w klastrze AKS. Serwer NMI nasłuchuje żądań zasobnika do usług platformy Azure.
-* **Kontroler zarządzanych tożsamości (MIC)** jest centralna zasobnik za pomocą uprawnień, aby wysyłać zapytań do serwera interfejsu API rozwiązania Kubernetes i sprawdza, czy dla usługi Azure identity mapowania, który odnosi się do zasobników.
+* **Serwer tożsamości zarządzania węzłami (NMI)** jest systemem, który działa jako elementu daemonset w każdym WĘŹLE klastra AKS. Serwer NMI nasłuchuje żądań pod względem usług platformy Azure.
+* **Zarządzany kontroler tożsamości (MIC)** jest centralnym pod względem uprawnień do wysyłania zapytań do serwera interfejsu API Kubernetes i sprawdza mapowanie tożsamości platformy Azure, które odnosi się do pod.
 
-Zasobników żądania dostępu do usługi platformy Azure, reguł sieci przekierować ruch do serwera węzła zarządzania tożsamościami (NMI). Serwer NMI identyfikuje zasobników, żądających dostępu do usług platformy Azure na podstawie ich adresu zdalnego i zapytanie kontrolera zarządzanych tożsamości (MIC). MIC sprawdza, czy mapowania tożsamości platformy Azure w klastrze AKS i serwera NMI, a następnie żąda tokenu dostępu z usługi Azure Active Directory (AD) w oparciu zasobnika mapowania tożsamości. Usługa Azure AD zapewnia dostęp do serwera NMI, który jest zwracany do zasobników. Ten token dostępu może służyć przez zasobnik, aby następnie zażądać dostępu do usług na platformie Azure.
+Gdy usługa podst żąda dostępu do usługi platformy Azure, reguły sieci przekierowują ruch do serwera tożsamości zarządzania węzłami (NMI). Serwer NMI identyfikuje zasobniki, które żądają dostępu do usług platformy Azure na podstawie ich adresów zdalnych, a następnie wysyła zapytanie do zarządzanego kontrolera tożsamości (MIC). MIKROFON sprawdza mapowania tożsamości platformy Azure w klastrze AKS, a następnie serwer NMI żąda tokenu dostępu od Azure Active Directory (AD) w oparciu o mapowanie tożsamości pod. Usługa Azure AD zapewnia dostęp do serwera NMI, który jest zwracany do usługi pod. Ten token dostępu może być używany przez usługę pod, a następnie żądać dostępu do usług na platformie Azure.
 
-W poniższym przykładzie deweloper tworzy zasobnik, który korzysta z tożsamości zarządzanej umożliwia zażądanie dostępu do wystąpienia serwera SQL Azure:
+W poniższym przykładzie deweloper tworzy pod, który używa tożsamości zarządzanej, aby zażądać dostępu do wystąpienia usługi Azure SQL Server:
 
-![Zasobnik tożsamości, umożliwiają zasobników w celu automatycznego żądania dostępu do innych usług](media/operator-best-practices-identity/pod-identities.png)
+![Tożsamości pod pozwalają na automatyczne zażądanie dostępu do innych usług](media/operator-best-practices-identity/pod-identities.png)
 
-1. Operator klastra najpierw tworzy konto usługi, który może służyć do mapowania tożsamości, gdy zasobników żądanie dostępu do usług.
-1. Serwer NMI i sprawdzanie integralności komunikatu są wdrażane do przekazywania żądań zasobnika dla tokenów dostępu do usługi Azure AD.
-1. Deweloper wdraża zasobnik za pomocą tożsamości zarządzanej, który żąda tokenu dostępu za pośrednictwem serwera NMI.
-1. Token jest zwracana do zasobnika ustawiany i umożliwiają dostęp do wystąpienia programu SQL Server Azure.
+1. Operator klastra najpierw tworzy konto usługi, które może służyć do mapowania tożsamości, gdy identyfikatory zasobów żądają dostępu do usług.
+1. Serwer NMI i mikrofon są wdrażane w celu przekazywania żądań dostępu do usługi Azure AD na żądanie.
+1. Deweloper wdraża usługę pod za pomocą tożsamości zarządzanej, która żąda tokenu dostępu za pomocą serwera NMI.
+1. Token jest zwracany do i używany do uzyskiwania dostępu do wystąpienia usługi Azure SQL Server.
 
 > [!NOTE]
-> Tożsamości zarządzanej zasobnik to projekt typu open source, a nie jest obsługiwana przez pomoc techniczną systemu Azure.
+> Tożsamości zarządzane pod to projekt open source, który nie jest obsługiwany przez pomoc techniczną platformy Azure.
 
-Aby użyć tożsamości zasobników, zobacz [tożsamości usługi Azure Active Directory dla aplikacji platformy Kubernetes][aad-pod-identity].
+Aby korzystać z tożsamości pod, zobacz [Azure Active Directory tożsamości dla aplikacji Kubernetes][aad-pod-identity].
 
 ## <a name="next-steps"></a>Następne kroki
 
-Najlepsze rozwiązania dotyczące tej koncentruje się na uwierzytelnianie i autoryzacja dla klastra i zasoby. Aby zaimplementować niektórych z tych najlepszych rozwiązań, zobacz następujące artykuły:
+W tym artykule dotyczącym najlepszych rozwiązań opisano uwierzytelnianie i autoryzację klastra i zasobów. Aby zaimplementować niektóre z tych najlepszych rozwiązań, zobacz następujące artykuły:
 
-* [Integrowanie usługi Azure Active Directory za pomocą usługi AKS][aks-aad]
-* [Użyj zarządzanych tożsamości dla zasobów platformy Azure za pomocą usługi AKS][aad-pod-identity]
+* [Integracja Azure Active Directory z usługą AKS][aks-aad]
+* [Korzystanie z tożsamości zarządzanych dla zasobów platformy Azure z usługą AKS][aad-pod-identity]
 
-Aby uzyskać więcej informacji na temat operacji klastra w usłudze AKS zobacz poniższe najlepsze rozwiązania:
+Aby uzyskać więcej informacji na temat operacji klastra w programie AKS, zobacz następujące najlepsze rozwiązania:
 
-* [Izolację wielodostępu i klastra][aks-best-practices-scheduler]
-* [Podstawowe funkcje usługi scheduler rozwiązania Kubernetes][aks-best-practices-scheduler]
-* [Zaawansowane funkcje usługi scheduler rozwiązania Kubernetes][aks-best-practices-advanced-scheduler]
+* [Obsługa wielu dzierżawców i izolowania klastrów][aks-best-practices-scheduler]
+* [Podstawowe funkcje usługi Kubernetes Scheduler][aks-best-practices-scheduler]
+* [Zaawansowane funkcje usługi Scheduler Kubernetes][aks-best-practices-advanced-scheduler]
 
 <!-- EXTERNAL LINKS -->
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity

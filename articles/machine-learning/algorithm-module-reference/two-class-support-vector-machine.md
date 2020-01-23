@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: ca47bed45f8d726010dde40a936da6f93eb0b140
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c5ad269bf9cfa43ebad7163c858ef20bc8641878
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76315018"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548326"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Moduł maszyny wektorowej obsługujący dwie klasy
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do tworzenia modelu opartego na algorytmie maszyny wektorowej obsługi. 
 

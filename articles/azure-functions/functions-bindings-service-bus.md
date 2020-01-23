@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 4deae28d172bf717f527824be4be050975614c7d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 424d797410c091dc53687284c2b32e2f1f0358e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277398"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549074"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Service Bus dla usługi Azure Functions
 
@@ -40,16 +40,7 @@ Użyj wyzwalacza usługi Service Bus, aby odpowiadać na komunikaty z kolejki us
 
 ## <a name="trigger---example"></a>Wyzwalacz — przykład
 
-Zobacz przykład specyficzny dla języka:
-
-* [C#](#trigger---c-example)
-* [Skryptu C# (csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , odczytuje [metadanych komunikat](#trigger---message-metadata) i rejestruje komunikatu w kolejce usługi Service Bus:
 
@@ -70,7 +61,7 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Wyzwalacz — przykładowy skrypt w języku C#
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
 W poniższym przykładzie pokazano wyzwalaczem usługi Service Bus, powiązanie w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja odczytuje [metadanych komunikat](#trigger---message-metadata) i rejestruje komunikatu w kolejce usługi Service Bus.
 
@@ -110,90 +101,7 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Wyzwalacz - F# przykład
-
-W poniższym przykładzie pokazano wyzwalaczem usługi Service Bus, powiązanie w *function.json* pliku i [ F# funkcja](functions-reference-fsharp.md) powiązania, który używa. Funkcja rejestruje komunikatu w kolejce usługi Service Bus. 
-
-Oto powiązanie danych w *function.json* pliku:
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-Oto F# kod skryptu:
-
-```fsharp
-let Run(myQueueItem: string, log: ILogger) =
-    log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
-```
-
-### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
-
-Następująca funkcja języka Java używa adnotacji `@ServiceBusQueueTrigger` z [biblioteki środowiska uruchomieniowego usługi Java Functions](/java/api/overview/azure/functions/runtime) do opisywania konfiguracji dla wyzwalacza Service Bus kolejki. Funkcja poniesie komunikat umieszczony w kolejce i dodaje ją do dzienników.
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
-```
-
-Następująca funkcja języka Java pokazuje Pobieranie metadanych zdefiniowanych we _właściwościach użytkownika_ Service Bus komunikatu: 
-```java
-public class ServiceBusQueueTriggerJava {
-    @FunctionName("ServiceBusQueueTriggerJava")
-    public void run(
-            @ServiceBusQueueTrigger(name = "message", queueName = "myqueue", connection = "AzureWebJobsStorage") String message,
-            @BindingName("UserProperties") UserProperties userProperties,
-            final ExecutionContext context
-    ) {
-        context.getLogger().info("Java Service Bus Queue trigger function executed.");
-        context.getLogger().info(message);
-        context.getLogger().info(userProperties.key1);
-        context.getLogger().info(userProperties.key2);
-    }
-}
-
-public class UserProperties {
-    public String key1;
-    public String key2;
-}
-```
-
-Funkcje języka Java mogą być również wyzwalane, gdy komunikat zostanie dodany do tematu Service Bus. Poniższy przykład używa adnotacji `@ServiceBusTopicTrigger`, aby opisać konfigurację wyzwalacza.
-
-```java
-@FunctionName("sbtopicprocessor")
-    public void run(
-        @ServiceBusTopicTrigger(
-            name = "message",
-            topicName = "mytopicname",
-            subscriptionName = "mysubscription",
-            connection = "ServiceBusConnection"
-        ) String message,
-        final ExecutionContext context
-    ) {
-        context.getLogger().info(message);
-    }
-```
-
-### <a name="trigger---javascript-example"></a>Wyzwalacz — przykład JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 W poniższym przykładzie pokazano wyzwalaczem usługi Service Bus, powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja odczytuje [metadanych komunikat](#trigger---message-metadata) i rejestruje komunikatu w kolejce usługi Service Bus. 
 
@@ -226,7 +134,7 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Wyzwalacz — przykład w języku Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Poniższy przykład ilustruje sposób odczytywania Service Bus komunikatu kolejki za pośrednictwem wyzwalacza.
 
@@ -277,7 +185,44 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Następująca funkcja języka Java używa adnotacji `@ServiceBusQueueTrigger` z [biblioteki środowiska uruchomieniowego usługi Java Functions](/java/api/overview/azure/functions/runtime) do opisywania konfiguracji dla wyzwalacza Service Bus kolejki. Funkcja poniesie komunikat umieszczony w kolejce i dodaje ją do dzienników.
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+```
+
+Funkcje języka Java mogą być również wyzwalane, gdy komunikat zostanie dodany do tematu Service Bus. Poniższy przykład używa adnotacji `@ServiceBusTopicTrigger`, aby opisać konfigurację wyzwalacza.
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+```
+
+---
+
+## <a name="trigger---attributes-and-annotations"></a>Wyzwalacz — atrybuty i adnotacje
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyć następujących atrybutów, aby skonfigurować wyzwalacz usługi Service Bus:
 
@@ -308,7 +253,7 @@ W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyć następ
   }
   ```
 
-  Aby uzyskać kompletny przykład, zobacz [wyzwalacza — przykład w języku C#](#trigger---c-example).
+  Aby zapoznać się z kompletnym przykładem, zobacz [wyzwalacz-example](#trigger---example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
@@ -336,6 +281,28 @@ Konto usługi Service Bus do użycia, jest określana w następującej kolejnoś
 * `ServiceBusAccount` Zastosowany do klasy.
 * Ustawienie aplikacji "AzureWebJobsServiceBus".
 
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Atrybuty nie są obsługiwane przez C# skrypt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atrybuty nie są obsługiwane przez język JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Atrybuty nie są obsługiwane przez język Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Adnotacja `ServiceBusQueueTrigger` pozwala utworzyć funkcję, która jest uruchamiana, gdy zostanie utworzony komunikat Service Bus Queue. Dostępne opcje konfiguracji obejmują nazwę kolejki i nazwę parametrów połączenia.
+
+Adnotacja `ServiceBusTopicTrigger` pozwala wyznaczyć temat i subskrypcję, aby wskazać, jakie dane są wyzwalane przez funkcję.
+
+Zobacz [przykład](#trigger---example) wyzwalacza, aby uzyskać więcej szczegółów.
+
+---
+
 ## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
 W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `ServiceBusTrigger` atrybutu.
@@ -356,7 +323,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
-W języku C# i skrypt języka C# można użyć następujących typów parametrów dla kolejki lub tematu wiadomości:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Następujące typy parametrów są dostępne dla komunikatu kolejki lub tematu:
 
 * `string` -Jeśli ten komunikat jest tekst.
 * `byte[]` -Przydatne dla danych binarnych.
@@ -365,7 +334,32 @@ W języku C# i skrypt języka C# można użyć następujących typów parametró
 
 Te typy parametrów są przeznaczone dla Azure Functions wersja 1. x; dla 2. x i wyższych Użyj [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) zamiast `BrokeredMessage`.
 
-W języku JavaScript, dostęp do kolejki lub tematu wiadomości przy użyciu `context.bindings.<name from function.json>`. Komunikat usługi Service Bus jest przekazywany do funkcji jako ciąg lub obiekt JSON.
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Następujące typy parametrów są dostępne dla komunikatu kolejki lub tematu:
+
+* `string` -Jeśli ten komunikat jest tekst.
+* `byte[]` -Przydatne dla danych binarnych.
+* Niestandardowy typ — Jeśli wiadomość zawiera JSON, usługi Azure Functions próbuje deserializowanie danych JSON.
+* `BrokeredMessage` — zawiera deserializowany komunikat z metodą [BrokeredMessage. GetBody\<t > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+
+Te parametry dotyczą Azure Functions wersji 1. x; dla 2. x i wyższych Użyj [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) zamiast `BrokeredMessage`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Uzyskaj dostęp do kolejki lub komunikatu tematu za pomocą `context.bindings.<name from function.json>`. Komunikat usługi Service Bus jest przekazywany do funkcji jako ciąg lub obiekt JSON.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Komunikat kolejki jest dostępny dla funkcji za pośrednictwem parametru, który został określony jako `func.ServiceBusMessage`. Komunikat usługi Service Bus jest przekazywany do funkcji jako ciąg lub obiekt JSON.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Service Bus komunikat przychodzący jest dostępny za pośrednictwem `ServiceBusQueueMessage` lub `ServiceBusTopicMessage` parametru.
+
+[Zobacz przykład, aby uzyskać szczegółowe informacje](#trigger).
+
+---
 
 ## <a name="trigger---poison-messages"></a>Wyzwalacz - skażone wiadomości
 
@@ -404,18 +398,9 @@ Zobacz [przykłady kodu](#trigger---example) używające tych właściwości we 
 
 Użyj powiązania danych wyjściowych usługi Azure Service Bus, aby wysyłać komunikaty do kolejki lub tematu.
 
-## <a name="output---example"></a>Dane wyjściowe — przykład
+### <a name="output---example"></a>Dane wyjściowe — przykład
 
-Zobacz przykład specyficzny dla języka:
-
-* [C#](#output---c-example)
-* [Skryptu C# (csx)](#output---c-script-example)
-* [F#](#output---f-example)
-* [Java](#output---java-example)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , wysyła komunikat z kolejki usługi Service Bus:
 
@@ -429,7 +414,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>Dane wyjściowe — przykładowy skrypt w języku C#
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
 Poniższy przykład pokazuje usługi Service Bus powiązania danych wyjściowych usługi w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja korzysta z wyzwalacza czasomierza, aby wysłać komunikatu w kolejce, co 15 sekund.
 
@@ -480,79 +465,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>Dane wyjściowe — F# przykład
-
-Poniższy przykład pokazuje usługi Service Bus powiązania danych wyjściowych usługi w *function.json* pliku i [ F# skryptu funkcja](functions-reference-fsharp.md) powiązania, który używa. Funkcja korzysta z wyzwalacza czasomierza, aby wysłać komunikatu w kolejce, co 15 sekund.
-
-Oto powiązanie danych w *function.json* pliku:
-
-```json
-{
-    "bindings": [
-        {
-            "schedule": "0/15 * * * * *",
-            "name": "myTimer",
-            "runsOnStartup": true,
-            "type": "timerTrigger",
-            "direction": "in"
-        },
-        {
-            "name": "outputSbQueue",
-            "type": "serviceBus",
-            "queueName": "testqueue",
-            "connection": "MyServiceBusConnection",
-            "direction": "out"
-        }
-    ],
-    "disabled": false
-}
-```
-
-Oto F# kod, który tworzy jeden komunikat o skryptu:
-
-```fsharp
-let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
-    let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
-    log.LogInformation(message)
-    outputSbQueue = message
-```
-
-### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
-
-Poniższy przykład pokazuje funkcję języka Java, która wysyła komunikat do kolejki Service Bus, `myqueue` wyzwalane przez żądanie HTTP.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@ServiceBusQueueOutput` adnotacja dla parametrów funkcji, której wartość będzie zapisany do kolejki usługi Service Bus.  Typ parametru musi być `OutputBinding<T>`, gdzie T jest dowolnego natywnego języka Java typu obiektu typu POJO.
-
-Funkcje języka Java mogą również zapisywać w temacie Service Bus. Poniższy przykład używa adnotacji `@ServiceBusTopicOutput`, aby opisać konfigurację dla powiązania danych wyjściowych. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
-### <a name="output---javascript-example"></a>Dane wyjściowe — przykład JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Poniższy przykład pokazuje usługi Service Bus powiązania danych wyjściowych usługi w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja korzysta z wyzwalacza czasomierza, aby wysłać komunikatu w kolejce, co 15 sekund.
 
@@ -604,7 +517,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>Dane wyjściowe — przykład w języku Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Poniższy przykład ilustruje sposób zapisywania do kolejki Service Bus w języku Python.
 
@@ -654,7 +567,46 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+W poniższym przykładzie pokazano funkcję języka Java, która wysyła komunikat do kolejki usługi Service Bus `myqueue` po wyzwoleniu przez żądanie HTTP.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ W [Java funkcje biblioteki środowiska uruchomieniowego](/java/api/overview/azure/functions/runtime), użyj `@QueueOutput` adnotacja dla parametrów funkcji, której wartość będzie zapisany do kolejki usługi Service Bus.  Typ parametru musi być `OutputBinding<T>`, gdzie T jest dowolnego natywnego języka Java typu obiektu typu POJO.
+
+Funkcje języka Java mogą również zapisywać w temacie Service Bus. Poniższy przykład używa adnotacji `@ServiceBusTopicOutput`, aby opisać konfigurację dla powiązania danych wyjściowych. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Dane wyjściowe — atrybuty i adnotacje
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyj [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -680,9 +632,27 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-Aby uzyskać kompletny przykład, zobacz [dane wyjściowe — przykład w języku C#](#output---c-example).
+Aby uzyskać pełny przykład, zobacz [Output-example](#output---example).
 
-Można użyć atrybutu `ServiceBusAccount`, aby określić konto Service Bus do użycia na poziomie klasy, metody lub parametru.  Aby uzyskać więcej informacji, zobacz [wyzwalacza — atrybuty](#trigger---attributes).
+Możesz użyć `ServiceBusAccount` atrybutu, aby określić konto usługi Service Bus do użycia na poziomie klasy, metody lub parametru.  Aby uzyskać więcej informacji, zobacz [wyzwalacza — atrybuty](#trigger---attributes-and-annotations).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Atrybuty nie są obsługiwane przez C# skrypt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atrybuty nie są obsługiwane przez język JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Atrybuty nie są obsługiwane przez język Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Adnotacje `ServiceBusQueueOutput` i `ServiceBusTopicOutput` są dostępne do zapisania komunikatu jako dane wyjściowe funkcji. Parametr z tymi adnotacjami musi być zadeklarowany jako `OutputBinding<T>`, gdzie `T` jest typem odpowiadającym typowi komunikatu.
+
+---
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
@@ -704,7 +674,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 W usłudze Azure Functions 1.x, środowisko uruchomieniowe tworzy kolejkę, jeśli nie istnieje, i zostały ustawione `accessRights` do `manage`. W funkcjach w wersji 2. x i nowszych Kolejka lub temat muszą już istnieć; w przypadku określenia kolejki lub tematu, który nie istnieje, funkcja zakończy się niepowodzeniem. 
 
-W języku C# i skrypt języka C# można użyć następujących typów parametrów dla powiązania danych wyjściowych:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Użyj następujących typów parametrów dla powiązania danych wyjściowych:
 
 * `out T paramName` - `T` mogą być dowolnego typu serializacji JSON. Jeśli wartość parametru ma wartość null, jeśli funkcja kończy działanie, funkcje tworzy komunikat z obiektem o wartości null.
 * `out string` — Jeśli wartość parametru ma wartość null, jeśli funkcja kończy działanie, funkcje nie powoduje utworzenia wiadomości.
@@ -719,9 +691,36 @@ Podczas pracy z C# funkcjami:
 
 * Aby uzyskać dostęp do identyfikatora sesji, powiąż z typem [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) i użyj właściwości `sessionId`.
 
-W języku JavaScript, dostęp do kolejki lub tematu przy użyciu `context.bindings.<name from function.json>`. Do `context.binding.<name>`można przypisać ciąg, tablicę bajtową lub obiekt JavaScript (deserializowany w formacie JSON).
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
-Aby wysłać komunikat do kolejki z obsługą sesji wC# języku innym niż język, użyj [zestawu SDK Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging) , a nie wbudowanego powiązania danych wyjściowych.
+Użyj następujących typów parametrów dla powiązania danych wyjściowych:
+
+* `out T paramName` - `T` mogą być dowolnego typu serializacji JSON. Jeśli wartość parametru ma wartość null, jeśli funkcja kończy działanie, funkcje tworzy komunikat z obiektem o wartości null.
+* `out string` — Jeśli wartość parametru ma wartość null, jeśli funkcja kończy działanie, funkcje nie powoduje utworzenia wiadomości.
+* `out byte[]` — Jeśli wartość parametru ma wartość null, jeśli funkcja kończy działanie, funkcje nie powoduje utworzenia wiadomości.
+* `out BrokeredMessage` — Jeśli wartość parametru ma wartość null, gdy funkcja zostanie zakończona, funkcja nie tworzy komunikatu (dla funkcji 1. x)
+* `out Message` — Jeśli wartość parametru ma wartość null, gdy funkcja zostanie zakończona, funkcja nie tworzy komunikatu (dla funkcji 2. x i wyższych)
+* `ICollector<T>` lub `IAsyncCollector<T>` — w przypadku tworzenia wielu wiadomości. Komunikat jest tworzone, gdy wywołujesz `Add` metody.
+
+Podczas pracy z C# funkcjami:
+
+* Funkcje asynchroniczne wymagają wartości zwracanej lub `IAsyncCollector` zamiast parametru `out`.
+
+* Aby uzyskać dostęp do identyfikatora sesji, powiąż z typem [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) i użyj właściwości `sessionId`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Dostęp do kolejki lub tematu za pomocą `context.bindings.<name from function.json>`. Do `context.binding.<name>`można przypisać ciąg, tablicę bajtową lub obiekt JavaScript (deserializowany w formacie JSON).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Użyj [zestawu SDK Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging) , a nie wbudowanego powiązania danych wyjściowych.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Użyj [zestawu SDK Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging) , a nie wbudowanego powiązania danych wyjściowych.
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 

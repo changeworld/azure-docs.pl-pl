@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707664"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515126"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Przywracanie bazy danych SQL w wystąpieniu zarządzanym do wcześniejszego punktu w czasie
 
@@ -136,7 +136,7 @@ Szczegółowe wyjaśnienie dostępnych parametrów można znaleźć w [dokumenta
 
 ## <a name="restore-a-deleted-database"></a>Przywracanie usuniętej bazy danych
 
-Przywracanie usuniętej bazy danych można wykonać tylko przy użyciu programu PowerShell. Bazę danych można przywrócić do tego samego wystąpienia lub innego wystąpienia.
+Przywracanie usuniętej bazy danych można wykonać przy użyciu programu PowerShell lub witryny Azure Portal. Aby to zrobić, użyj tego dokumentu w [witrynie Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1). Bazę danych można przywrócić do tego samego wystąpienia lub innego wystąpienia.
 
 Aby przywrócić usuniętą bazę danych za pomocą programu PowerShell, określ wartości parametrów w następującym poleceniu. Następnie uruchom polecenie:
 

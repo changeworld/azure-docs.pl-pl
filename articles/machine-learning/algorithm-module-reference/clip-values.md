@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: ca35af997834a897572555e752597026b5159712
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 5f695bf739a6e096083cd6d8271b6936f24c16da
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314457"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546830"
 ---
 # <a name="clip-values"></a>Obcinanie wartości
 
-W tym artykule opisano moduł programu Azure Machine Learning Designer.
+W tym artykule opisano moduł programu Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj modułu wartości klipów, aby identyfikować i opcjonalnie zamieniać wartości danych powyżej lub poniżej określonego progu ze średnią, stałą lub inną wartością zastępczą.  
 
@@ -116,7 +116,7 @@ Teraz Wypróbuj ten sam potok, używając 60 jako progu górnego percentylu i 30
   
 |Oryginalne dane|Zamień na brak|Zamień na próg|  
 |-------------------|--------------------------|----------------------------|  
-|1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|TRUE<br /><br /> TRUE<br /><br /> 3, FAŁSZ<br /><br /> 4, FAŁSZ<br /><br /> 5, FAŁSZ<br /><br /> 6, FAŁSZ<br /><br /> 7, FAŁSZ<br /><br /> 8, FAŁSZ<br /><br /> 9, FAŁSZ<br /><br /> TRUE|4, PRAWDA<br /><br /> 4, PRAWDA<br /><br /> 4, PRAWDA<br /><br /> 4, PRAWDA<br /><br /> 5, FAŁSZ<br /><br /> 6, FAŁSZ<br /><br /> 7, PRAWDA<br /><br /> 7, PRAWDA<br /><br /> 7, PRAWDA<br /><br /> 7, PRAWDA| 
+|1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|PRAWDA<br /><br /> PRAWDA<br /><br /> 3, FAŁSZ<br /><br /> 4, FAŁSZ<br /><br /> 5, FAŁSZ<br /><br /> 6, FAŁSZ<br /><br /> 7, FAŁSZ<br /><br /> 8, FAŁSZ<br /><br /> 9, FAŁSZ<br /><br /> PRAWDA|4, PRAWDA<br /><br /> 4, PRAWDA<br /><br /> 4, PRAWDA<br /><br /> 4, PRAWDA<br /><br /> 5, FAŁSZ<br /><br /> 6, FAŁSZ<br /><br /> 7, PRAWDA<br /><br /> 7, PRAWDA<br /><br /> 7, PRAWDA<br /><br /> 7, PRAWDA| 
  
 ## <a name="next-steps"></a>Następne kroki
 

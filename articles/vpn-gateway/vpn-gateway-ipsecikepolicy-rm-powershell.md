@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: ed7b12b24e6129d6cf609f4345203abc783e9f62
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864064"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514922"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurowanie zasad protokołu IPsec/IKE dla połączeń sieci VPN S2S lub Sieć wirtualna-sieć wirtualna
 
@@ -341,7 +341,7 @@ DhGroup             : DHGroup24
 PfsGroup            : PFS24
 ```
 
-Jeśli nie skonfigurowano zasad protokołu IPsec/IKE, polecenie (PS > $connection 6. Policy) pobierze pusty zwrot. Nie oznacza to, że protokół IPsec/IKE nie jest skonfigurowany w ramach połączenia, ale nie ma niestandardowych zasad protokołu IPsec/IKE. Rzeczywiste połączenie używa zasad domyślnych negocjowanych między lokalnym urządzeniem sieci VPN i bramą sieci VPN platformy Azure.
+Jeśli nie skonfigurowano zasad protokołu IPsec/IKE, polecenie (PS > $connection 6. IpsecPolicies) Pobiera pusty zwrot. Nie oznacza to, że protokół IPsec/IKE nie jest skonfigurowany w ramach połączenia, ale nie ma niestandardowych zasad protokołu IPsec/IKE. Rzeczywiste połączenie używa zasad domyślnych negocjowanych między lokalnym urządzeniem sieci VPN i bramą sieci VPN platformy Azure.
 
 #### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2. Dodaj lub zaktualizuj zasady protokołu IPsec/IKE dla połączenia
 

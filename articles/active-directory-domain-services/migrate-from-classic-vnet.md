@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893063"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544161"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Wersja zapoznawcza — Migruj Azure AD Domain Services z klasycznego modelu sieci wirtualnej do Menedżer zasobów
 
-Azure Active Directory Domain Services (AD DS) obsługuje jednorazowe przeniesienie dla klientów korzystających obecnie z klasycznego modelu sieci wirtualnej do modelu sieci wirtualnej Menedżer zasobów.
+Azure Active Directory Domain Services (AD DS) obsługuje jednorazowe przeniesienie dla klientów korzystających obecnie z klasycznego modelu sieci wirtualnej do modelu sieci wirtualnej Menedżer zasobów. Domeny zarządzane AD DS platformy Azure korzystające z modelu wdrażania Menedżer zasobów oferują dodatkowe funkcje, takie jak szczegółowe zasady haseł, dzienniki inspekcji i ochrona blokady konta.
 
-W tym artykule przedstawiono zalety i kwestie związane z migracją, a następnie wymagane kroki w celu pomyślnego przeprowadzenia migracji istniejącego wystąpienia usługi Azure AD DS. Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
+W tym artykule przedstawiono zalety i kwestie związane z migracją, a następnie wymagane kroki w celu pomyślnego przeprowadzenia migracji istniejącego wystąpienia usługi Azure AD DS. Ta funkcja migracji jest obecnie dostępna w wersji zapoznawczej.
 
 ## <a name="overview-of-the-migration-process"></a>Omówienie procesu migracji
 
@@ -106,7 +106,7 @@ Podczas przygotowywania i migrowania domeny zarządzanej AD DS platformy Azure i
 
 ### <a name="ip-addresses"></a>Adresy IP
 
-Adresy IP kontrolera domeny dla domeny zarządzanej AD DS platformy Azure zmienią się po migracji. Obejmuje to publiczny adres IP dla punktu końcowego bezpiecznego protokołu LDAP. Nowe adresy IP znajdują się w zakresie adresów dla nowej podsieci w sieci wirtualnej Menedżer zasobów.
+Adresy IP kontrolera domeny dla domeny zarządzanej AD DS platformy Azure zmienią się po migracji. Ta zmiana obejmuje publiczny adres IP dla punktu końcowego bezpiecznego protokołu LDAP. Nowe adresy IP znajdują się w zakresie adresów dla nowej podsieci w sieci wirtualnej Menedżer zasobów.
 
 W przypadku wycofania adresy IP mogą ulec zmianie po wycofaniu.
 
@@ -122,13 +122,13 @@ Na platformie Azure AD DS domeny zarządzane, które działają w klasycznych si
 
 Domyślnie 5 nieudanych prób wprowadzenia hasła przez 2 minuty zablokowanie konta przez 30 minut.
 
-Nie można zalogować się do zablokowanego konta, co może zakłócać możliwość zarządzania domeną zarządzaną przez usługę Azure AD DS lub aplikacjami zarządzanymi przez konto. Po przeprowadzeniu migracji domeny zarządzanej za pomocą usługi Azure AD DS na kontach mogą wystąpić informacje, które są takie same, jak stałe blokady, z powodu powtórzonych nieudanych prób logowania. Dwa typowe scenariusze po migracji obejmują następujące elementy:
+Nie można użyć zablokowanego konta do logowania, co może zakłócać możliwość zarządzania domeną zarządzaną przez usługę Azure AD DS lub aplikacjami zarządzanymi przez konto. Po przeprowadzeniu migracji domeny zarządzanej za pomocą usługi Azure AD DS na kontach mogą wystąpić informacje, które są takie same, jak stałe blokady, z powodu powtórzonych nieudanych prób logowania. Dwa typowe scenariusze po migracji obejmują następujące elementy:
 
 * Konto usługi korzystające z wygasłego hasła.
     * Konto usługi wielokrotnie próbuje zalogować się przy użyciu wygasłego hasła, które blokuje konto. Aby rozwiązać ten problem, Znajdź aplikację lub maszynę wirtualną z wygasłymi poświadczeniami i zaktualizuj hasło.
 * Złośliwa jednostka używa prób zalogowania się do kont.
     * Gdy maszyny wirtualne są uwidocznione w Internecie, atakujący często próbują użyć wspólnych kombinacji nazwy użytkownika i hasła podczas próby podpisania. Te powtórzone nieudane próby logowania mogą blokować konta. Nie zaleca się używania kont administratorów z nazwami ogólnymi, takimi jak *administrator* czy *administrator*, na przykład w celu zminimalizowania blokowania kont administracyjnych.
-    * Zminimalizuj liczbę maszyn wirtualnych, które są dostępne w Internecie. Możesz użyć [usługi Azure bastionu (obecnie w wersji zapoznawczej)][azure-bastion] , aby bezpiecznie połączyć się z maszynami wirtualnymi przy użyciu Azure Portal.
+    * Zminimalizuj liczbę maszyn wirtualnych, które są dostępne w Internecie. Możesz użyć [usługi Azure bastionu][azure-bastion] , aby bezpiecznie połączyć się z maszynami wirtualnymi przy użyciu Azure Portal.
 
 Jeśli podejrzewasz, że niektóre konta mogą być zablokowane po migracji, końcowa procedura migracji w zarysie przedstawia sposób włączania inspekcji lub zmiany szczegółowych ustawień zasad haseł.
 
@@ -153,7 +153,7 @@ Migracja do modelu wdrażania Menedżer zasobów i sieci wirtualnej jest podziel
 
 | Czynność    | Wykonywane przez  | Szacowany czas  | Przestój  | Czy wycofać/przywrócić? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Krok 1 — aktualizowanie i lokalizowanie nowej sieci wirtualnej](#update-and-verify-virtual-network-settings) | Azure Portal | 15 minut | Brak wymaganego przestoju | ND |
+| [Krok 1 — aktualizowanie i lokalizowanie nowej sieci wirtualnej](#update-and-verify-virtual-network-settings) | Portal Azure | 15 minut | Brak wymaganego przestoju | ND |
 | [Krok 2. Przygotowanie domeny zarządzanej AD DS platformy Azure do migracji](#prepare-the-managed-domain-for-migration) | PowerShell | średnio 15 – 30 minut | Czas przestoju AD DS platformy Azure zostanie uruchomiony po zakończeniu tego polecenia. | Wycofaj i Przywróć dostępne. |
 | [Krok 3. Przenoszenie domeny zarządzanej platformy Azure AD DS do istniejącej sieci wirtualnej](#migrate-the-managed-domain) | PowerShell | 1 – 3 godziny średnio | Po zakończeniu tego polecenia jest dostępny jeden kontroler domeny, przestoje zakończy się. | W przypadku niepowodzenia dostępne są zarówno wycofywanie (samoobsługowe), jak i przywracanie. |
 | [Krok 4. testowanie i oczekiwanie na replikę kontrolera domeny](#test-and-verify-connectivity-after-the-migration)| PowerShell i Azure Portal | 1 godzina lub więcej, w zależności od liczby testów | Oba kontrolery domeny są dostępne i powinny działać normalnie. | Nie dotyczy. Po pomyślnym przeprowadzeniu migracji pierwszej maszyny wirtualnej nie jest dostępna opcja wycofywania ani przywracania. |
@@ -164,11 +164,11 @@ Migracja do modelu wdrażania Menedżer zasobów i sieci wirtualnej jest podziel
 
 ## <a name="update-and-verify-virtual-network-settings"></a>Aktualizowanie i weryfikowanie ustawień sieci wirtualnej
 
-Przed rozpoczęciem migracji wykonaj następujące wstępne sprawdzenia i aktualizacje. Te kroki mogą wystąpić w dowolnym momencie przed migracją i nie wpływają na działanie domeny zarządzanej AD DS platformy Azure.
+Przed rozpoczęciem procesu migracji wykonaj następujące wstępne sprawdzenia i aktualizacje. Te kroki mogą wystąpić w dowolnym momencie przed migracją i nie wpływają na działanie domeny zarządzanej AD DS platformy Azure.
 
 1. Zaktualizuj lokalne środowisko Azure PowerShell do najnowszej wersji. Aby wykonać kroki migracji, musisz mieć co najmniej wersję *2.3.2*.
 
-    Aby uzyskać informacje na temat sprawdzania i aktualizowania, zobacz [Azure PowerShell Omówienie][azure-powershell].
+    Aby uzyskać informacje na temat sprawdzania i aktualizowania wersji programu PowerShell, zobacz [Azure PowerShell Omówienie][azure-powershell].
 
 1. Utwórz lub wybierz istniejącą Menedżer zasobów sieci wirtualnej.
 
@@ -210,7 +210,8 @@ Aby przygotować domenę zarządzaną platformy Azure AD DS na potrzeby migracji
 
     ```powershell
     Migrate-Aadds `
-        -Prepare -ManagedDomainFqdn contoso.com `
+        -Prepare `
+        -ManagedDomainFqdn contoso.com `
         -Credentials $creds
     ```
 
@@ -273,27 +274,27 @@ Drugi kontroler domeny powinien być dostępny 1-2 godzin po zakończeniu migrac
 
 Po pomyślnym zakończeniu procesu migracji niektóre opcjonalne czynności konfiguracyjne obejmują włączenie dzienników inspekcji lub powiadomień e-mail lub zaktualizowanie szczegółowych zasad haseł.
 
-#### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Subskrybowanie dzienników inspekcji przy użyciu Azure Monitor
+### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Subskrybowanie dzienników inspekcji przy użyciu Azure Monitor
 
 Usługa Azure AD DS udostępnia dzienniki inspekcji w celu ułatwienia rozwiązywania problemów i wyświetlania zdarzeń na kontrolerach domeny. Aby uzyskać więcej informacji, zobacz [Włączanie i używanie dzienników inspekcji][security-audits].
 
 Za pomocą szablonów można monitorować ważne informacje uwidocznione w dziennikach. Na przykład szablon skoroszyt dziennika inspekcji może monitorować możliwe blokady konta w domenie zarządzanej AD DS platformy Azure.
 
-#### <a name="configure-azure-ad-domain-services-email-notifications"></a>Konfigurowanie Azure AD Domain Services powiadomień e-mail
+### <a name="configure-azure-ad-domain-services-email-notifications"></a>Konfigurowanie Azure AD Domain Services powiadomień e-mail
 
 Aby otrzymywać powiadomienia o wykryciu problemu w domenie zarządzanej AD DS platformy Azure, zaktualizuj ustawienia powiadomień e-mail w Azure Portal. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień powiadomień][notifications].
 
-#### <a name="update-fine-grained-password-policy"></a>Aktualizuj szczegółowe zasady haseł
+### <a name="update-fine-grained-password-policy"></a>Aktualizuj szczegółowe zasady haseł
 
 W razie potrzeby można zaktualizować szczegółowe zasady haseł w taki sposób, aby były mniej restrykcyjne niż konfiguracja domyślna. Możesz użyć dzienników inspekcji, aby określić, czy ustawienie mniej restrykcyjne ma sens, a następnie skonfiguruj zasady zgodnie z potrzebami. Poniższe kroki wysokiego poziomu służą do przeglądania i aktualizowania ustawień zasad dla kont, które są wielokrotnie blokowane po migracji:
 
 1. [Skonfiguruj zasady haseł][password-policy] dla mniejszej liczby ograniczeń w domenie zarządzanej AD DS platformy Azure i obserwuj zdarzenia w dziennikach inspekcji.
 1. Jeśli jakieś konta usług używają wygasłych haseł określonych w dziennikach inspekcji, zaktualizuj te konta przy użyciu poprawnego hasła.
-1. Jeśli maszyna wirtualna jest udostępniona w Internecie, przejrzyj nazwy kont ogólnych, takich jak *administrator*, *użytkownik*lub *gość* z dużymi próbami logowania. Jeśli to możliwe, zaktualizuj te maszyny wirtualne tak, aby używały mniej ogólnych nazw kont.
+1. Jeśli maszyna wirtualna jest dostępna w Internecie, przejrzyj nazwy kont ogólnych, takich jak *administrator*, *użytkownik*lub *gość* z dużymi próbami logowania. Jeśli to możliwe, zaktualizuj te maszyny wirtualne tak, aby używały mniej ogólnych nazw kont.
 1. Użyj funkcji śledzenia sieci na maszynie wirtualnej, aby zlokalizować źródło ataków i zablokować te adresy IP, aby umożliwić podejmowanie prób logowania.
 1. W przypadku wystąpienia minimalnych problemów z blokadą należy zaktualizować szczegółowe zasady haseł, aby były tak restrykcyjne, jak to konieczne.
 
-#### <a name="creating-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
+### <a name="creating-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
 Aby zabezpieczyć porty wymagane dla domeny zarządzanej i zablokować cały ruch przychodzący, usługa Azure AD DS wymaga sieciowej grupy zabezpieczeń. Ta sieciowa Grupa zabezpieczeń działa jako dodatkowa warstwa ochrony w celu blokowania dostępu do domeny zarządzanej i nie jest tworzona automatycznie. Aby utworzyć grupę zabezpieczeń sieci i otworzyć wymagane porty, zapoznaj się z następującymi krokami:
 
@@ -301,6 +302,8 @@ Aby zabezpieczyć porty wymagane dla domeny zarządzanej i zablokować cały ruc
 1. W przypadku używania bezpiecznego protokołu LDAP Dodaj regułę do sieciowej grupy zabezpieczeń, aby zezwalać na ruch przychodzący dla portu *TCP* *636*. Aby uzyskać więcej informacji, zobacz [Konfigurowanie bezpiecznego protokołu LDAP][secure-ldap].
 
 ## <a name="roll-back-and-restore-from-migration"></a>Wycofywanie i przywracanie z migracji
+
+Do pewnego momentu w procesie migracji można wycofać lub przywrócić domenę zarządzaną platformy Azure AD DS.
 
 ### <a name="roll-back"></a>Wycofywanie
 

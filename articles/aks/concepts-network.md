@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913880"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547969"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -115,7 +115,7 @@ Niezależnie od modelu sieci, z którego korzystasz, zarówno korzystającą wty
 * Platforma Azure może automatycznie tworzyć i konfigurować zasoby sieci wirtualnej podczas tworzenia klastra AKS.
 * Możesz ręcznie utworzyć i skonfigurować zasoby sieci wirtualnej i dołączyć je do tych zasobów podczas tworzenia klastra AKS.
 
-Mimo że funkcje, takie jak punkty końcowe usługi lub UDR, są obsługiwane zarówno w korzystającą wtyczki kubenet, jak i na platformie Azure CNI, [zasady pomocy technicznej dla AKS][support-policies] określają, jakie zmiany można wprowadzić. Na przykład:
+Mimo że funkcje, takie jak punkty końcowe usługi lub UDR, są obsługiwane zarówno w korzystającą wtyczki kubenet, jak i na platformie Azure CNI, [zasady pomocy technicznej dla AKS][support-policies] określają, jakie zmiany można wprowadzić. Przykład:
 
 * Jeśli ręcznie utworzysz zasoby sieci wirtualnej dla klastra AKS, jest ono obsługiwane podczas konfigurowania własnych UDR lub punktów końcowych usługi.
 * Jeśli platforma Azure automatycznie tworzy zasoby sieci wirtualnej dla klastra AKS, nie jest obsługiwane ręczne zmienianie tych zasobów zarządzanych przez AKS w celu skonfigurowania własnych UDR lub punktów końcowych usługi.

@@ -1,6 +1,6 @@
 ---
 title: Gruba relokalizacja w SWIFT
-description: Szczegółowe wyjaśnienie sposobu tworzenia i lokalizowania kotwic przy użyciu czujników na urządzeniach w SWIFT.
+description: Szczegółowe informacje na temat sposobu tworzenia i lokalizowania kotwic przy użyciu grubej relokalizacji w SWIFT.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,20 +8,20 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1381f6340d1b85376ad5be9e00c596aa921d957f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7b568c43f8420b5a2f994b4cba145bf4d70b9010
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277177"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546167"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-swift"></a>Jak utworzyć i zlokalizować kotwice przy użyciu czujników na urządzeniach w SWIFT
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Jak utworzyć i zlokalizować kotwice przy użyciu grubej relokalizacji w SWIFT
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
 > * [Objective-C](set-up-coarse-reloc-objc.md)
 > * [Swift](set-up-coarse-reloc-swift.md)
-> * [System Android Java](set-up-coarse-reloc-java.md)
+> * [Android Java](set-up-coarse-reloc-java.md)
 > * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f434afdd02d15f98e005b44f5563847f4c5847d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278208"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544790"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Wersja zapoznawcza: maszyny wirtualne platformy Azure dla zestawów skalowania maszyn wirtualnych 
 
@@ -91,50 +91,20 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="resource-manager-templates"></a>Szablony Menedżera zasobów
 
-Proces tworzenia zestawu skalowania, który korzysta z maszyn wirtualnych, jest taki sam jak szczegółowy w artykule wprowadzenie do systemu [Linux](quick-create-template-linux.md) lub [Windows](quick-create-template-windows.md). Dodaj właściwość "Priority" do typu zasobu *Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachineProfile* w szablonie *i określ jako* wartość. Upewnij się, że korzystasz z wersji interfejsu API *2019-03-01* lub nowszej. 
+Proces tworzenia zestawu skalowania, który korzysta z maszyn wirtualnych, jest taki sam jak szczegółowy w artykule wprowadzenie do systemu [Linux](quick-create-template-linux.md) lub [Windows](quick-create-template-windows.md). 
 
-Aby ustawić zasady wykluczania do usunięcia, Dodaj parametr "evictionPolicy" i ustaw go na wartość *delete*.
-
-Poniższy przykład tworzy zestaw skalowania w systemie Linux o nazwie *myScaleSet* w regionie *zachodnio-środkowe stany USA*, co spowoduje *usunięcie* maszyn wirtualnych w zestawie skalowania podczas wykluczania:
+W przypadku wdrożeń szablonów dodatkowych Użyj`"apiVersion": "2019-03-01"` lub nowszych. Dodaj właściwości `priority`, `evictionPolicy` i `billingProfile` do sekcji `"virtualMachineProfile":` w szablonie: 
 
 ```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US 2",
-  "apiVersion": "2019-03-01",
-  "sku": {
-    "name": "Standard_DS2_v2",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-       "priority": "Spot",
-       "evictionPolicy": "delete",
-       "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "Canonical",
-          "offer": "UbuntuServer",
-          "sku": "16.04-LTS",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
+                "priority": "Spot",
+                "evictionPolicy": "Deallocate",
+                "billingProfile": {
+                    "maxPrice": -1
+                }
 ```
+
+Aby usunąć wystąpienie po jego wykluczeniu, Zmień parametr `evictionPolicy` na `Delete`.
+
 ## <a name="faq"></a>Często zadawane pytania
 
 **P:** Po utworzeniu, czy to wystąpienie jest takie samo jak standardowe wystąpienie?

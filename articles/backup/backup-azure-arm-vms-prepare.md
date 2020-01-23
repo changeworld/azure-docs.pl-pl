@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie
 description: Zawiera opis sposobu tworzenia kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services przy użyciu Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 95c185c09558f3d1a525c9bcf15f3957118c4311
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: e5ff3a00d8cb3bf0c5fa3cb4929b7c22d92c7834
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294035"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513817"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services
 
@@ -36,16 +36,15 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 Ponadto istnieje kilka rzeczy, które mogą być konieczne w pewnych okolicznościach:
 
 * **Zainstaluj agenta maszyny wirtualnej na maszynie wirtualnej**: Azure Backup tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przez zainstalowanie rozszerzenia agenta maszyny wirtualnej platformy Azure uruchomionego na tym komputerze. Jeśli maszyna wirtualna została utworzona na podstawie obrazu portalu Azure Marketplace, Agent jest zainstalowany i uruchomiony. Jeśli tworzysz niestandardową maszynę wirtualną lub migrujesz maszynę lokalną, może być konieczne [ręczne zainstalowanie agenta](#install-the-vm-agent).
-* **Jawnie Zezwalaj na dostęp wychodzący**: Ogólnie rzecz biorąc, nie musisz jawnie zezwalać na wychodzący dostęp sieciowy dla maszyny wirtualnej platformy Azure w celu komunikowania się z Azure Backup. Niektóre maszyny wirtualne mogą jednak powodować problemy z połączeniem, wyświetlając błąd **ExtensionSnapshotFailedNoNetwork** podczas próby nawiązania połączenia. W takim przypadku należy [jawnie zezwolić na dostęp wychodzący](#explicitly-allow-outbound-access), aby rozszerzenie Azure Backup mogły komunikować się z publicznymi adresami IP platformy Azure na potrzeby tworzenia kopii zapasowych.
 
 ## <a name="create-a-vault"></a>Tworzenie magazynu
 
  Magazyn przechowuje kopie zapasowe i punkty odzyskiwania utworzone wraz z upływem czasu, a następnie przechowuje zasady tworzenia kopii w programie skojarzonych z maszynami z kopii zapasowej. Utwórz magazyn w następujący sposób:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. W polu wyszukiwania wpisz **Recovery Services**. W obszarze **usługi**kliknij pozycję **magazyny Recovery Services**.
 
-     ![Wyszukaj Recovery Services magazyny](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
+     ![Wyszukaj Recovery Services magazyny](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
 
 3. W menu **magazyny Recovery Services** kliknij pozycję **+ Dodaj**.
 
@@ -121,6 +120,7 @@ Po włączeniu kopii zapasowej:
 * Gdy wykonywane są kopie zapasowe, należy pamiętać, że:
   * Uruchomiona maszyna wirtualna ma największą szansę na przechwycenie punktu odzyskiwania spójnego na poziomie aplikacji.
   * Jednak nawet jeśli maszyna wirtualna jest wyłączona, zostanie utworzona jej kopia zapasowa. Taka maszyna wirtualna jest nazywana maszyną wirtualną w trybie offline. W takim przypadku punkt odzyskiwania będzie spójny z awarią.
+* Bezpośrednie połączenie wychodzące nie jest wymagane, aby można było tworzyć kopie zapasowe maszyn wirtualnych platformy Azure.
 
 ### <a name="create-a-custom-policy"></a>Tworzenie zasad niestandardowych
 
@@ -177,7 +177,7 @@ Niepowodzenie | Niepowodzenie | Niepowodzenie
 Teraz dzięki tej możliwości dla tej samej maszyny wirtualnej dwa kopie zapasowe mogą działać równolegle, ale w każdej fazie (migawka, transfer danych do magazynu) można uruchomić tylko jedno zadanie podrzędne. W związku z tym w przypadku zadania tworzenia kopii zapasowej w toku zakończyło się niepowodzeniem wykonywania kopii zapasowej w następnym dniu. Kopie zapasowe kolejnych dni mogą mieć ukończoną migawkę **,** podczas gdy zadanie tworzenia kopii zapasowej w danym dniu jest w toku.
 Przyrostowy punkt odzyskiwania utworzony w magazynie będzie przechwytywał wszystkie zmiany z ostatniego punktu odzyskiwania utworzonego w magazynie. Użytkownik nie ma wpływu na koszty.
 
-## <a name="optional-steps-install-agentallow-outbound"></a>Kroki opcjonalne (Instalacja agenta/Zezwalaj na ruch wychodzący)
+## <a name="optional-steps"></a>Kroki opcjonalne
 
 ### <a name="install-the-vm-agent"></a>Zainstaluj agenta maszyny wirtualnej
 
@@ -187,114 +187,6 @@ Azure Backup tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przez
 --- | ---
 **Windows** | 1. [Pobierz i zainstaluj](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) plik msi agenta.<br/><br/> 2. Zainstaluj program z uprawnieniami administratora na komputerze.<br/><br/> 3. Sprawdź instalację. W *C:\WindowsAzure\Packages* na maszynie wirtualnej kliknij prawym przyciskiem myszy pozycję **WaAppAgent. exe** > **Właściwości**. Na karcie **szczegóły** **Wersja produktu** powinna mieć wartość 2.6.1198.718 lub wyższą.<br/><br/> Jeśli aktualizujesz agenta, upewnij się, że nie są uruchomione żadne operacje tworzenia kopii zapasowej, a [następnie ponownie zainstaluj agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Zainstaluj program przy użyciu KCO lub pakietu DEB z repozytorium pakietu dystrybucji. Jest to preferowana metoda instalowania i uaktualniania agenta systemu Linux platformy Azure. Wszyscy [pozatwierdzeni dostawcy dystrybucji](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrują pakiet agenta platformy Azure z systemem Linux z obrazami i repozytoriami. Agent jest dostępny w serwisie [GitHub](https://github.com/Azure/WALinuxAgent), ale nie zalecamy instalacji.<br/><br/> Jeśli aktualizujesz agenta, upewnij się, że nie są uruchomione żadne operacje tworzenia kopii zapasowej, i zaktualizuj pliki binarne.
-
-### <a name="explicitly-allow-outbound-access"></a>Jawnie Zezwalaj na dostęp wychodzący
-
-Rozszerzenie kopii zapasowej uruchomione na maszynie wirtualnej wymaga dostępu wychodzącego do publicznych adresów IP platformy Azure.
-
-* Zazwyczaj nie trzeba jawnie zezwalać na wychodzący dostęp sieciowy dla maszyny wirtualnej platformy Azure w celu komunikowania się z Azure Backup.
-* Jeśli wystąpią problemy z nawiązywaniem połączenia z maszynami wirtualnymi lub jeśli podczas próby nawiązania połączenia zobaczysz błąd **ExtensionSnapshotFailedNoNetwork** , należy jawnie zezwolić na dostęp, aby rozszerzenie kopii zapasowej mogły komunikować się z publicznymi adresami IP platformy Azure na potrzeby tworzenia kopii zapasowych. Metody dostępu są podsumowane w poniższej tabeli.
-
-**Opcja** | **Akcja** | **Szczegóły**
---- | --- | ---
-**Konfigurowanie reguł sieciowej grupy zabezpieczeń** | Zezwalaj na [zakresy adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/> Zamiast zezwalać na każdy zakres adresów i zarządzać nim, można dodać regułę, która umożliwia dostęp do usługi Azure Backup przy użyciu [tagu usługi](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure). | [Dowiedz się więcej](../virtual-network/security-overview.md#service-tags) o tagach usługi.<br/><br/> Tagi usług upraszczają zarządzanie dostępem i nie wiążą się z dodatkowymi kosztami.
-**Wdrażanie serwera proxy** | Wdróż serwer proxy HTTP na potrzeby routingu ruchu. | Zapewnia dostęp do całego systemu Azure, a nie tylko magazynu.<br/><br/> Szczegółowa kontrola nad adresami URL magazynu jest dozwolona.<br/><br/> Pojedynczy punkt dostępu do Internetu dla maszyn wirtualnych.<br/><br/> Dodatkowe koszty dla serwera proxy.
-**Konfigurowanie zapory platformy Azure** | Zezwalanie na ruch przez zaporę platformy Azure na maszynie wirtualnej przy użyciu znacznika nazwy FQDN dla usługi Azure Backup | Prosta do użycia, jeśli masz skonfigurowaną zaporę platformy Azure w podsieci sieci wirtualnej.<br/><br/> Nie można utworzyć własnych tagów FQDN ani zmodyfikować nazw FQDN w tagu.<br/><br/> Jeśli maszyny wirtualne platformy Azure mają dyski zarządzane, może być konieczne otwarcie dodatkowego portu (8443) na zaporach.
-
-#### <a name="establish-network-connectivity"></a>Ustawianie łączności sieciowej
-
-Nawiązywanie łączności z sieciowej grupy zabezpieczeń, przez serwer proxy lub przez zaporę
-
-##### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Konfigurowanie reguły sieciowej grupy zabezpieczeń w celu zezwalania na dostęp wychodzący do platformy Azure
-
-Jeśli sieciowej grupy zabezpieczeń zarządza dostępem do maszyny wirtualnej, Zezwól na dostęp wychodzący dla magazynu kopii zapasowych do wymaganych zakresów i portów.
-
-1. We właściwościach maszyny wirtualnej > **sieci**wybierz pozycję **Dodaj regułę portu wychodzącego**.
-2. W obszarze **Dodawanie reguły zabezpieczeń ruchu wychodzącego**wybierz pozycję **Zaawansowane**.
-3. W obszarze **Źródło**wybierz pozycję **VirtualNetwork**.
-4. W obszarze **zakresy portów źródłowych**Wprowadź gwiazdkę (*), aby zezwolić na dostęp wychodzący z dowolnego portu.
-5. W obszarze **Lokalizacja docelowa**wybierz pozycję **tag usługi**. Z listy wybierz pozycję **Storage. region**. Region polega na tym, że magazyn i maszyny wirtualne, których kopię zapasową chcesz utworzyć, znajdują się w lokalizacji.
-6. W obszarze **zakresy portów docelowych**wybierz port.
-    * Maszyna wirtualna korzystająca z dysków niezarządzanych z niezaszyfrowanym kontem magazynu: 80
-    * Maszyna wirtualna korzystająca z dysków niezarządzanych z zaszyfrowanego konta magazynu: 443 (ustawienie domyślne)
-    * Maszyna wirtualna z użyciem dysków zarządzanych: 8443.
-7. W obszarze **Protokół**wybierz pozycję **TCP**.
-8. W obszarze **priorytet**Określ wartość priorytetu mniejszą niż wszelkie wyższe reguły odmowy.
-
-   Jeśli masz regułę odmawiającą dostępu, Nowa reguła zezwalania musi być wyższa. Na przykład jeśli masz zestaw reguł **Deny_All** w priorytecie 1000, Nowa reguła musi być ustawiona na wartość mniejszą niż 1000.
-9. Podaj nazwę i opis reguły, a następnie wybierz **przycisk OK**.
-
-Regułę sieciowej grupy zabezpieczeń można zastosować do wielu maszyn wirtualnych, aby zezwolić na dostęp wychodzący. Ten film wideo przeprowadzi Cię przez proces.
-
->[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
-
-##### <a name="route-backup-traffic-through-a-proxy"></a>Kierowanie ruchu kopii zapasowej za pomocą serwera proxy
-
-Możesz kierować ruchem kopii zapasowej za pomocą serwera proxy, a następnie nadawać serwerowi proxy dostęp do wymaganych zakresów platformy Azure. Skonfiguruj maszynę wirtualną serwera proxy, aby zezwolić na następujące:
-
-* Maszyna wirtualna platformy Azure powinna kierować cały ruch HTTP związany z publicznym Internetem za pośrednictwem serwera proxy.
-* Serwer proxy powinien zezwalać na ruch przychodzący z maszyn wirtualnych w odpowiedniej sieci wirtualnej.
-* **Sieciowej grupy zabezpieczeń musi mieć regułę** zezwalającą na ruch wychodzący z maszyny wirtualnej serwera proxy.
-
-###### <a name="set-up-the-proxy"></a>Konfigurowanie serwera proxy
-
-Jeśli nie masz serwera proxy konta systemowego, skonfiguruj go w następujący sposób:
-
-1. Pobierz [PsExec](https://technet.microsoft.com/sysinternals/bb897553).
-2. Uruchom **PsExec. exe-i-s cmd. exe** , aby uruchomić wiersz polecenia w ramach konta systemowego.
-3. Uruchom przeglądarkę w kontekście systemu. Na przykład użyj **użycie ścieżki%ProgramFiles%\Internet Explorer\iexplore.exe** dla programu Internet Explorer.  
-4. Zdefiniuj ustawienia serwera proxy.
-   * Na komputerach z systemem Linux:
-     * Dodaj ten wiersz do pliku **/etc/environment** :
-       * **http_proxy = http:\//proxy adres IP: Port serwera proxy**
-     * Dodaj te wiersze do pliku **/etc/waagent.conf** :
-         * **HttpProxy. host = adres IP serwera proxy**
-         * **HttpProxy. Port = port serwera proxy**
-   * Na komputerach z systemem Windows w ustawieniach przeglądarki Określ, czy powinien być używany serwer proxy. Jeśli obecnie używasz serwera proxy na koncie użytkownika, możesz użyć tego skryptu, aby zastosować ustawienie na poziomie konta systemowego.
-
-       ```powershell
-      $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
-      $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
-
-       ```
-
-###### <a name="allow-incoming-connections-on-the-proxy"></a>Zezwalaj na połączenia przychodzące na serwerze proxy
-
-Zezwalaj na połączenia przychodzące w ustawieniach serwera proxy.
-
-1. W zaporze systemu Windows Otwórz **zaporę systemu Windows z zabezpieczeniami zaawansowanymi**.
-2. Kliknij prawym przyciskiem myszy **reguły ruchu przychodzącego** > **nowej reguły**.
-3. W obszarze **Typ reguły**wybierz pozycję **niestandardowy** > **dalej**.
-4. W **programie**wybierz kolejno pozycje **Wszystkie programy** > **dalej**.
-5. W obszarze **Protokoły i porty**:
-   * Ustaw typ na **TCP**.
-   * Ustawianie **portów lokalnych** dla **określonych portów**.
-   * Ustaw **Port zdalny** na **wszystkie porty**.
-
-6. Zakończ pracę kreatora i określ nazwę reguły.
-
-###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Dodawanie reguły wyjątku do sieciowej grupy zabezpieczeń dla serwera proxy
-
-W sieciowej grupy zabezpieczeń **-Blokada**niedostępności Zezwalaj na ruch z dowolnego portu w 10.0.0.5 do dowolnego adresu internetowego na porcie 80 (http) lub 443 (https).
-
-Poniższy skrypt programu PowerShell zawiera przykład do zezwalania na ruch.
-Zamiast zezwalać na ruch wychodzący do wszystkich publicznych adresów internetowych, możesz określić zakres adresów IP (`-DestinationPortRange`) lub użyć znacznika usługi Storage. region.
-
-```powershell
-Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
-Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
-```
-
-##### <a name="allow-firewall-access-with-an-fqdn-tag"></a>Zezwalaj na dostęp przez zaporę za pomocą znacznika nazwy FQDN
-
-Zaporę platformy Azure można skonfigurować tak, aby zezwalała na dostęp wychodzący dla ruchu sieciowego do Azure Backup.
-
-* [Dowiedz się więcej o](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) wdrażaniu zapory platformy Azure.
-* [Przeczytaj informacje](https://docs.microsoft.com/azure/firewall/fqdn-tags) Tagi FQDN.
 
 >[!NOTE]
 > Azure Backup teraz obsługuje selektywne tworzenie kopii zapasowych i przywracanie dysków przy użyciu rozwiązania do tworzenia kopii zapasowych maszyny wirtualnej platformy Azure.

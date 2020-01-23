@@ -1,6 +1,6 @@
 ---
-title: Omówienie interfejsów API węzła usługi Azure Relay | Dokumentacja firmy Microsoft
-description: Omówienie interfejsu API węzła przekazywania
+title: Omówienie interfejsów API węzła Azure Relay | Microsoft Docs
+description: Ten artykuł zawiera omówienie interfejsu API środowiska Node. js dla usługi Azure Relay. Przedstawiono w nim również, jak używać pakietu węzła Hyco-WS.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699397"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514514"
 ---
-# <a name="relay-hybrid-connections-node-api-overview"></a>Przekazywania Przegląd węzła interfejsowi API połączeń hybrydowych
+# <a name="relay-hybrid-connections-node-api-overview"></a>Omówienie interfejsu API usługi Relay Połączenia hybrydowe Node
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-[ `hyco-ws` ](https://www.npmjs.com/package/hyco-ws) Pakiet Node dla połączeń hybrydowych usługi Azure Relay działa w oparciu i rozszerza ["ws"](https://www.npmjs.com/package/ws) pakietów Menedżera NPM. Ten pakiet ponownie eksportuje wszystkich eksporty tego samego podstawowego pakietu i dodaje nowe eksportu, które umożliwiają integrację z funkcją połączeń hybrydowych usługi Azure Relay. 
+Pakiet węzła [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) dla Azure Relay połączenia hybrydowe jest oparty i rozszerza pakiet npm ["ws"](https://www.npmjs.com/package/ws) . Ten pakiet ponownie eksportuje wszystkie eksporty tego pakietu podstawowego i dodaje nowe eksporty, które umożliwiają integrację z funkcją Azure Relay Połączenia hybrydowe Service. 
 
-Istniejące aplikacje, `require('ws')` mogą używać tego pakietu przy użyciu `require('hyco-ws')` zamiast tego, co pozwala także scenariusze hybrydowe, w których aplikacja może nasłuchiwać połączeń protokołu WebSocket przy użyciu połączeń hybrydowych i lokalnie z "wewnątrz zapory" wszystko na tym samym czasie.
+Istniejące aplikacje, które `require('ws')` mogą używać tego pakietu z `require('hyco-ws')` zamiast tego, które umożliwiają również scenariusze hybrydowe, w których aplikacja może nasłuchiwać połączeń protokołu WebSocket lokalnie z "wewnątrz zapory" i przez Połączenia hybrydowe wszystkie w tym samym czasie.
   
 ## <a name="documentation"></a>Dokumentacja
 
-Interfejsy API są [udokumentowane w pakiecie głównej ws](https://github.com/websockets/ws/blob/master/doc/ws.md). W tym artykule opisano, jak ten pakiet różni się od tej linii bazowej. 
+Interfejsy API są [udokumentowane w głównym pakiecie "ws"](https://github.com/websockets/ws/blob/master/doc/ws.md). W tym artykule opisano, jak ten pakiet różni się od tej linii bazowej. 
 
-Podstawowe różnice między pakiet podstawowy i to "hyco-ws" jest dodaje nową klasę serwera eksportowania za pomocą `require('hyco-ws').RelayedServer`oraz kilka metod pomocniczych.
+Kluczowe różnice między pakietem podstawowym a tym "Hyco-WS" jest dodanie nowej klasy serwera, wyeksportowanej przez `require('hyco-ws').RelayedServer`i kilku metod pomocnika.
 
 ### <a name="package-helper-methods"></a>Metody pomocnika pakietu
 
-Brak dostępnych kilka metod narzędzie Eksportuj pakiet, którego można się odwoływać w następujący sposób:
+Istnieje kilka metod narzędzi dostępnych w ramach eksportu pakietu, do których można się odwołać w następujący sposób:
 
 ```JavaScript
 const WebSocket = require('hyco-ws');
@@ -48,7 +48,7 @@ listenUri = WebSocket.appendRelayToken(listenUri, 'ruleName', '...key...')
 
 ```
 
-Metody pomocnicze są przeznaczone do użytku z tym pakietem, ale można również przez serwer węzłów włączania klientów sieci web lub urządzenia do tworzenia obiektów nasłuchujących lub nadawcy. Serwer używa tych metod, przekazując je identyfikatory URI, które krótkotrwałe tokeny osadzania. Te identyfikatory URI mogą również za pomocą wspólnego stosów protokołu WebSocket, które nie obsługują nagłówków HTTP ustawienie uzgadnianie protokołu WebSocket. Osadzanie tokenach autoryzacji w identyfikatorze URI jest obsługiwane głównie dla tych scenariuszy użycia biblioteki zewnętrznej. 
+Metody pomocnika są przeznaczone do użycia z tym pakietem, ale mogą być również używane przez serwer węzła do umożliwienia klientom sieci Web lub do tworzenia odbiorników lub nadawców. Serwer używa tych metod przez przekazanie ich identyfikatorów URI, które osadzają tokeny krótkotrwałe. Te identyfikatory URI mogą być również używane z typowymi stosami protokołu WebSocket, które nie obsługują ustawiania nagłówków HTTP dla uzgadniania protokołu WebSocket. Osadzanie tokenów autoryzacji w identyfikatorze URI jest obsługiwane głównie dla tych scenariuszy użycia w bibliotece. 
 
 #### <a name="createrelaylistenuri"></a>createRelayListenUri
 
@@ -56,14 +56,14 @@ Metody pomocnicze są przeznaczone do użytku z tym pakietem, ale można równie
 var uri = createRelayListenUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Tworzy prawidłowy odbiornika połączenie hybrydowe usługi Azure Relay identyfikator URI dla danej przestrzeni nazw i ścieżkę. Następnie można ten identyfikator URI przekazywania wersję klasy WebSocketServer.
+Tworzy prawidłowy identyfikator URI odbiornika połączenia hybrydowego Azure Relay dla danego obszaru nazw i ścieżki. Ten identyfikator URI może być następnie używany z wersją przekaźnika klasy WebSocketServer.
 
-- `namespaceName` (wymagane) — nazwa kwalifikowana domeny przestrzeni nazw usługi Azure Relay do użycia.
-- `path` (wymagane) — nazwa istniejącego połączenia hybrydowego przekaźnika usługi Azure w tej przestrzeni nazw.
-- `token` (opcjonalnie) — wcześniej wydanych przekazywania tokenu dostępu, zostanie osadzony w odbiornika identyfikatora URI (zobacz poniższy przykład).
-- `id` (opcjonalnie) — identyfikator śledzenia, który umożliwia śledzenia end-to-end diagnostyki żądań.
+- `namespaceName` (wymagane) — kwalifikowana dla domeny nazwa przestrzeni nazw Azure Relay, która ma być używana.
+- `path` (wymagane) — nazwa istniejącego Azure Relay połączenia hybrydowego w tej przestrzeni nazw.
+- `token` (opcjonalnie) — wcześniej wystawiony token dostępu przekaźnikowego, który jest osadzony w identyfikatorze URI odbiornika (zobacz Poniższy przykład).
+- `id` (opcjonalnie) — identyfikator śledzenia, który umożliwia kompleksowe śledzenie procesów diagnostycznych.
 
-`token` Wartość jest opcjonalna i powinna służyć wyłącznie, gdy nie jest możliwe do wysyłania nagłówków HTTP wraz z uzgadniania protokołu WebSocket, tak jak w przypadku ze stosem W3C WebSocket.                  
+Wartość `token` jest opcjonalna i powinna być używana tylko wtedy, gdy nie jest możliwe wysyłanie nagłówków HTTP wraz z uzgadnianiem protokołu WebSocket, podobnie jak w przypadku stosu protokołu WebSocket w formacie W3C.                  
 
 
 #### <a name="createrelaysenduri"></a>createRelaySendUri
@@ -72,14 +72,14 @@ Tworzy prawidłowy odbiornika połączenie hybrydowe usługi Azure Relay identyf
 var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Tworzy prawidłowy wysyłania połączenie hybrydowe usługi Azure Relay identyfikatora URI do danej przestrzeni nazw i ścieżkę. Ten identyfikator URI może służyć za pomocą dowolnego klienta protokołu WebSocket.
+Tworzy prawidłowy identyfikator URI Azure Relay wysyłania połączenia hybrydowego dla danego obszaru nazw i ścieżki. Ten identyfikator URI może być używany z dowolnym klientem protokołu WebSocket.
 
-- `namespaceName` (wymagane) — nazwa kwalifikowana domeny przestrzeni nazw usługi Azure Relay do użycia.
-- `path` (wymagane) — nazwa istniejącego połączenia hybrydowego przekaźnika usługi Azure w tej przestrzeni nazw.
-- `token` (opcjonalnie) — wcześniej wydanych przekazywania tokenu dostępu, zostanie osadzony w wysyłanie identyfikatora URI (zobacz poniższy przykład).
-- `id` (opcjonalnie) — identyfikator śledzenia, który umożliwia śledzenia end-to-end diagnostyki żądań.
+- `namespaceName` (wymagane) — kwalifikowana dla domeny nazwa przestrzeni nazw Azure Relay, która ma być używana.
+- `path` (wymagane) — nazwa istniejącego Azure Relay połączenia hybrydowego w tej przestrzeni nazw.
+- `token` (opcjonalnie) — wcześniej wystawiony token dostępu przekaźnikowego, który został osadzony w wysyłającym identyfikatorze URI (zobacz Poniższy przykład).
+- `id` (opcjonalnie) — identyfikator śledzenia, który umożliwia kompleksowe śledzenie procesów diagnostycznych.
 
-`token` Wartość jest opcjonalna i powinna służyć wyłącznie, gdy nie jest możliwe do wysyłania nagłówków HTTP wraz z uzgadniania protokołu WebSocket, tak jak w przypadku ze stosem W3C WebSocket.                   
+Wartość `token` jest opcjonalna i powinna być używana tylko wtedy, gdy nie jest możliwe wysyłanie nagłówków HTTP wraz z uzgadnianiem protokołu WebSocket, podobnie jak w przypadku stosu protokołu WebSocket w formacie W3C.                   
 
 
 #### <a name="createrelaytoken"></a>createRelayToken 
@@ -88,14 +88,14 @@ Tworzy prawidłowy wysyłania połączenie hybrydowe usługi Azure Relay identyf
 var token = createRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Tworzy token usługi Azure Relay sygnatury dostępu współdzielonego (SAS) dla danego obiektu docelowego identyfikatora URI, reguły sygnatury dostępu Współdzielonego i klucz sygnatury dostępu Współdzielonego reguły, która obowiązuje dla danej liczby sekund lub bieżącą godzinę w przypadku pominięcia argumentu wygaśnięcia.
+Tworzy token sygnatury dostępu współdzielonego (SAS) Azure Relay dla danego docelowego identyfikatora URI, reguły SAS i klucza reguły SAS, który jest ważny przez daną liczbę sekund lub godzinę od bieżącego momentu, gdy argument wygaśnięcia zostanie pominięty.
 
-- `uri` (wymagana): identyfikator URI, dla którego ma zostać wystawiony token. Identyfikator URI jest znormalizować do użycia schemat HTTP i informacji o ciągu zapytania jest usuwany.
-- `ruleName` (wymagana): nazwa dla jednostki reprezentowanej przez dany identyfikator URI lub przestrzeni nazw, reprezentowany przez identyfikator URI części hosta są reguły dla sygnatury dostępu Współdzielonego.
-- `key` (wymagane) - prawidłowy klucz dla reguły sygnatury dostępu Współdzielonego. 
-- `expirationSeconds` (opcjonalnie) — liczba sekund do wygaśnięcia wygenerowany token. Jeśli nie zostanie określony, wartość domyślna to 1 godziny (3600).
+- `uri` (wymagane) — identyfikator URI, dla którego ma zostać wystawiony token. Identyfikator URI jest znormalizowany do korzystania ze schematu HTTP, a informacje o ciągu zapytania są usuwane.
+- `ruleName` (wymagane) — Nazwa reguły SAS dla jednostki reprezentowanej przez dany identyfikator URI lub dla przestrzeni nazw reprezentowanej przez część hosta identyfikatora URI.
+- `key` (wymagane) — prawidłowy klucz dla reguły sygnatury dostępu współdzielonego. 
+- `expirationSeconds` (opcjonalnie) — liczba sekund do wygaśnięcia wygenerowanego tokenu. Jeśli nie zostanie określony, wartość domyślna to 1 godzina (3600).
 
-Wystawiony token przyznaje praw skojarzonych z określoną regułą sygnatury dostępu Współdzielonego w danym okresie.
+Wystawiony token przyznaje prawa skojarzone z określoną regułą SAS dla danego czasu trwania.
 
 #### <a name="appendrelaytoken"></a>appendRelayToken
 
@@ -103,13 +103,13 @@ Wystawiony token przyznaje praw skojarzonych z określoną regułą sygnatury do
 var uri = appendRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Ta metoda jest funkcjonalnym odpowiednikiem `createRelayToken` metoda opisany wcześniej, ale zwraca token poprawnie dołączone do wprowadzania identyfikatora URI.
+Ta metoda jest funkcjonalnie równoważna metodzie `createRelayToken` udokumentowanej wcześniej, ale zwraca token prawidłowo dołączony do wejściowego identyfikatora URI.
 
-### <a name="class-wsrelayedserver"></a>Klasa ws. RelayedServer
+### <a name="class-wsrelayedserver"></a>Klasa WS. RelayedServer
 
-`hycows.RelayedServer` Klasy stanowi alternatywę `ws.Server` klasę, która nie będzie nasłuchiwać w sieci lokalnej, ale delegaty nasłuchiwanie usługi Azure Relay.
+Klasa `hycows.RelayedServer` jest alternatywą dla klasy `ws.Server`, która nie nasłuchuje w sieci lokalnej, ale deleguje dostęp do usługi Azure Relay.
 
-Przede wszystkim kontraktu niezgodne, co oznacza, że istniejących aplikacji za pomocą są dwie klasy `ws.Server` klasy można łatwo zmienić, aby użyć wersji obsługiwanych przez przekaźnik. Główne różnice są w Konstruktorze i dostępne opcje.
+Dwie klasy są najczęściej zgodne z umową, co oznacza, że istniejąca Aplikacja korzystająca z klasy `ws.Server` można łatwo zmienić, aby używać przekazanej wersji. Główne różnice znajdują się w konstruktorze i dostępnych opcjach.
 
 #### <a name="constructor"></a>Konstruktor  
 
@@ -124,24 +124,24 @@ var wss = new server(
     });
 ```
 
-`RelayedServer` Konstruktor obsługuje inny zbiór argumentów niż `Server`, ponieważ nie jest odbiornik autonomicznego lub mógł zostać osadzone w istniejącej struktury odbiornika HTTP. Brak dostępnych również mniej opcji ponieważ zarządzanie WebSocket stopniu jest delegowane do usługi przekazywania.
+Konstruktor `RelayedServer` obsługuje inny zestaw argumentów niż `Server`, ponieważ nie jest odbiornikiem autonomicznym lub może być osadzony w istniejącej platformie odbiornika HTTP. Dostępne są również mniej opcji, ponieważ zarządzanie przy użyciu protokołu WebSocket jest w dużym stopniu delegowane do usługi przekazywania.
 
 Argumenty konstruktora:
 
-- `server` (wymagane) — w pełni kwalifikowany identyfikator URI dla nazwy połączenia hybrydowego do nasłuchiwania, zwykle skonstruowane, za pomocą metody pomocnika WebSocket.createRelayListenUri().
-- `token` (wymagane) - tego argumentu przechowuje wcześniej wydanych ciąg tokenu lub funkcja wywołania zwrotnego, która może być wywoływana w celu uzyskania tokenu ciągu. Opcja wywołania zwrotnego jest preferowane, ponieważ dzięki niej odnowienia tokenu.
+- `server` (wymagane) — w pełni kwalifikowany identyfikator URI dla nazwy połączenia hybrydowego, na którym nasłuchuje, zwykle skonstruowany za pomocą metody pomocnika WebSocket. createRelayListenUri ().
+- `token` (wymagane) — ten argument zawiera wcześniej wystawiony ciąg tokenu lub funkcję wywołania zwrotnego, która może zostać wywołana w celu uzyskania takiego ciągu tokenu. Opcja wywołania zwrotnego jest preferowana, ponieważ umożliwia odnowienie tokenu.
 
-#### <a name="events"></a>Events
+#### <a name="events"></a>Wydarzenia
 
-`RelayedServer` wystąpienia emitować trzy zdarzenia, które umożliwiają obsłużyć żądań przychodzących, nawiązywać połączenia i wykrywania warunków błędów. Należy zasubskrybować `connect` zdarzeń do obsługi wiadomości. 
+wystąpienia `RelayedServer` emitują trzy zdarzenia, które umożliwiają obsługę żądań przychodzących, ustanawianie połączeń i wykrywanie warunków błędu. Musisz subskrybować zdarzenie `connect`, aby obsługiwać komunikaty. 
 
-##### <a name="headers"></a>Nagłówki
+##### <a name="headers"></a>nagłówki
 
 ```JavaScript 
 function(headers)
 ```
 
-`headers` Zdarzenie jest wywoływane przed akceptowane połączenia przychodzące, umożliwiając modyfikację te nagłówki, aby wysłać do klienta. 
+Zdarzenie `headers` jest wywoływane tuż przed zaakceptowaniem połączenia przychodzącego, co umożliwia modyfikację nagłówków do wysłania do klienta. 
 
 ##### <a name="connection"></a>połączenie
 
@@ -149,7 +149,7 @@ function(headers)
 function(socket)
 ```
 
-Emitowane po zaakceptowaniu nowe połączenie protokołu WebSocket. Obiekt jest typu `ws.WebSocket`, jest taka sama, jak przy użyciu podstawowego pakietu.
+Emitowane po zaakceptowaniu nowego połączenia z użyciem protokołu WebSocket. Obiekt jest typu `ws.WebSocket`, tak samo jak z pakietem podstawowym.
 
 
 ##### <a name="error"></a>error
@@ -158,11 +158,11 @@ Emitowane po zaakceptowaniu nowe połączenie protokołu WebSocket. Obiekt jest 
 function(error)
 ```
 
-Jeśli podstawowy serwer generuje błąd, są przekazywane w tym miejscu.  
+Jeśli serwer źródłowy emituje błąd, jest przekazywany w tym miejscu.  
 
 #### <a name="helpers"></a>Pomocnicy
 
-Aby uprościć uruchamianie serwera obsługiwanych przez przekaźnik i od razu Subskrybuj połączeń przychodzących, pakiet udostępnia proste funkcji pomocnika, która, który jest również używany w przykładach w następujący sposób:
+W celu uproszczenia uruchamiania przekazywanego serwera i natychmiastowego subskrybowania połączeń przychodzących pakiet ujawnia prostą funkcję pomocnika, która również jest używana w przykładach w następujący sposób:
 
 ##### <a name="createrelayedlistener"></a>createRelayedListener
 
@@ -191,11 +191,11 @@ var wss = WebSocket.createRelayedServer(
 var server = createRelayedServer([options], [connectCallback] )
 ```
 
-Ta metoda wywołuje konstruktora, aby utworzyć nowe wystąpienie klasy RelayedServer i następnie jest podłączone podanego wywołania zwrotnego do zdarzenia "połączenia".
+Ta metoda wywołuje konstruktora w celu utworzenia nowego wystąpienia RelayedServer, a następnie subskrybuje podane wywołanie zwrotne do zdarzenia "Connection".
  
 ##### <a name="relayedconnect"></a>relayedConnect
 
-Po prostu dublowania `createRelayedServer` pomocnika w funkcji `relayedConnect` tworzy połączenie klienta i subskrybuje zdarzenie "Otwórz" na gniazdo wynikowe.
+Po prostu dublowanie `createRelayedServer` pomocnika w funkcji `relayedConnect` tworzy połączenie z klientem i subskrybuje zdarzenie "Open" w wytworzonym gnieździe.
 
 ```JavaScript
 var uri = WebSocket.createRelaySendUri(ns, path);
@@ -208,7 +208,7 @@ WebSocket.relayedConnect(
 );
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej na temat usługi Azure Relay, skorzystaj z następujących linków:
+## <a name="next-steps"></a>Następne kroki
+Aby dowiedzieć się więcej na temat Azure Relay, odwiedź następujące linki:
 * [Co to jest usługa Azure Relay?](relay-what-is-it.md)
-* [Interfejsy API dostępne usługi Relay](relay-api-overview.md)
+* [Dostępne interfejsy API przekazywania](relay-api-overview.md)

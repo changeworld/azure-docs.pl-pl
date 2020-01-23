@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 01/23/2019
-ms.openlocfilehash: 254517cc1d9cc042387b63147b2a3fd9bdeece5e
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.lastreviewed: 12/04/2019
+ms.openlocfilehash: b1162e6070deba7f645298b59ffeb1898eb030a8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263782"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545776"
 ---
 # <a name="routing-and-tag-expressions"></a>Routing i wyrażenia tagów
 
@@ -31,7 +31,7 @@ Wyrażenia tagów umożliwiają kierowanie określonych zestawów urządzeń lub
 
 ## <a name="targeting-specific-registrations"></a>Kierowanie określonych rejestracji
 
-Jedynym sposobem na kierowanie określonych rejestracji powiadomień jest skojarzenie z nimi tagów, a następnie określenie ich jako docelowej. Zgodnie z opisem w temacie [Zarządzanie rejestracją](notification-hubs-push-notification-registration-management.md)w celu otrzymywania powiadomień wypychanych aplikacja musi zarejestrować dojście urządzenia w centrum powiadomień. Po utworzeniu rejestracji w centrum powiadomień zaplecza aplikacji może wysyłać do niej powiadomienia wypychane. Zaplecze aplikacji może wybrać rejestracje docelowe dla określonego powiadomienia w następujący sposób:
+Jedynym sposobem na kierowanie określonych rejestracji powiadomień jest skojarzenie z nimi tagów, a następnie określenie ich jako docelowej. Zgodnie z opisem w temacie [Zarządzanie rejestracją](notification-hubs-push-notification-registration-management.md)w celu otrzymywania powiadomień wypychanych, aplikacja musi zarejestrować dojście urządzenia w centrum powiadomień. Gdy aplikacja utworzy rejestrację w centrum powiadomień, zaplecze aplikacji może wysyłać do niej powiadomienia wypychane. Zaplecze aplikacji może wybrać rejestracje docelowe dla określonego powiadomienia w następujący sposób:
 
 1. **Broadcast**: Wszystkie rejestracje w centrum powiadomień otrzymują powiadomienie.
 2. **Tag**: Wszystkie rejestracje zawierające określony tag otrzymują powiadomienie.
@@ -39,11 +39,11 @@ Jedynym sposobem na kierowanie określonych rejestracji powiadomień jest skojar
 
 ## <a name="tags"></a>Tagi
 
-Tag może być dowolnym ciągiem, do 120 znaków, zawierający alfanumeryczne i następujące znaki inne niż alfanumeryczne: "_", "@", "#", ".", ":", "-". W poniższym przykładzie przedstawiono aplikację, z której można otrzymywać wyskakujące powiadomienia dotyczące określonych grup utworów muzycznych. W tym scenariuszu prostym sposobem na kierowanie powiadomień jest etykietowanie rejestracji ze znacznikami reprezentującymi różne grupy, jak na poniższej ilustracji:
+Tag może być dowolnym ciągiem, do 120 znaków, zawierający alfanumeryczne i następujące znaki inne niż alfanumeryczne: "`_`", "`@`", "`#`", "`.`", "`:`", "`-`". W poniższym przykładzie przedstawiono aplikację, z której można otrzymywać wyskakujące powiadomienia dotyczące określonych grup utworów muzycznych. W tym scenariuszu prostym sposobem na kierowanie powiadomień jest etykietowanie rejestracji ze znacznikami reprezentującymi różne grupy, jak na poniższej ilustracji:
 
 ![Przegląd tagów](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
-Na tym rysunku komunikat oznaczony **Beatles** osiągnie tylko tablet zarejestrowany z tagiem **Beatles**.
+Na rysunku komunikat oznaczony za pomocą **Beatles** osiągnie tylko tablet zarejestrowany z tagiem **Beatles**.
 
 Aby uzyskać więcej informacji o tworzeniu rejestracji dla tagów, zobacz [Zarządzanie rejestracją](notification-hubs-push-notification-registration-management.md).
 
@@ -63,13 +63,13 @@ toast = @"<toast><visual><binding template=""ToastGeneric""><text id=""1"">" +
 outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, "Wailers");
 ```
 
-Tagi nie muszą być wstępnie udostępniane i mogą odwoływać się do wielu koncepcji specyficznych dla aplikacji. Na przykład użytkownicy tej przykładowej aplikacji mogą komentować paski i chcą otrzymywać wyskakujące okienka, nie tylko w przypadku komentarzy do ich ulubionych grup, ale także dla wszystkich komentarzy od ich znajomych, niezależnie od pasma, do którego są komentowane. Na poniższej ilustracji przedstawiono przykład tego scenariusza:
+Nie można wstępnie zainicjować obsługi tagów i można odwoływać się do wielu koncepcji specyficznych dla aplikacji. Na przykład użytkownicy tej przykładowej aplikacji mogą komentować paski i chcą otrzymywać wyskakujące okienka, nie tylko w przypadku komentarzy do ich ulubionych grup, ale także dla wszystkich komentarzy od ich znajomych, niezależnie od pasma, do którego są komentowane. Na poniższej ilustracji przedstawiono przykład tego scenariusza:
 
 ![Znajomi z tagami](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
-Na tym obrazie Alicja chce mieć aktualizacje dla Beatles, a Robert interesuje aktualizacje dla Wailers. Robert jest również zainteresowany komentarzami Charlie, a Charlie jest zainteresowane Wailers. Po wysłaniu powiadomienia dla komentarza Charlie na Beatles, zarówno Alicja, jak i Robert otrzymują tę wiadomość.
+W tym przykładzie Alicja jest zainteresowana aktualizacjami Beatles, a Robert interesuje aktualizacje dla Wailers. Robert jest również zainteresowany komentarzami Charlie, a Charlie interesuje Wailers. Po wysłaniu powiadomienia dla komentarza Charlie na Beatles, Notification Hubs wysyła je do Alicja i Roberta.
 
-Chociaż można kodować wiele obaw w tagach (na przykład "band_Beatles" lub "follows_Charlie"), Tagi są prostymi ciągami i nie są właściwościami z wartościami. Rejestracja jest zgodna tylko z obecnością lub brakiem określonego tagu.
+Chociaż można kodować wiele obaw w tagach (na przykład `band_Beatles` lub `follows_Charlie`), Tagi są prostymi ciągami i nie są właściwościami z wartościami. Rejestracja pasuje tylko do obecności lub braku określonego tagu.
 
 Aby uzyskać pełny samouczek krok po kroku dotyczący sposobu używania tagów do wysyłania do grup zainteresowań, zobacz artykuł dotyczący [najświeższych wiadomości](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
@@ -78,15 +78,15 @@ Aby uzyskać pełny samouczek krok po kroku dotyczący sposobu używania tagów 
 
 ## <a name="using-tags-to-target-users"></a>Używanie tagów do użytkowników docelowych
 
-Innym sposobem używania tagów jest zidentyfikowanie wszystkich urządzeń danego użytkownika. Rejestracje mogą być otagowane za pomocą tagu, który zawiera identyfikator użytkownika, jak na poniższej ilustracji:
+Innym sposobem używania tagów jest zidentyfikowanie wszystkich urządzeń skojarzonych z określonym użytkownikiem. Można oznaczyć rejestrację za pomocą tagu, który zawiera identyfikator użytkownika, tak jak na poniższym rysunku:
 
 ![Użytkownicy tagów](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
-Na tym rysunku komunikat oznaczony UID: Alicja osiągnie wszystkie zarejestrowane rejestracje "UID: Alicja"; w związku z tym wszystkie urządzenia programu Alicja.
+Na rysunku komunikat oznaczony `user_Alice` osiągnie wszystkie urządzenia oznaczone `user_Alice`.
 
 ## <a name="tag-expressions"></a>Wyrażenia tagów
 
-Istnieją przypadki, w których powiadomienie musi kierować zestawem rejestracji, które są identyfikowane nie przez pojedynczy tag, ale przez wyrażenie logiczne dla tagów.
+Istnieją przypadki, w których powiadomienia muszą kierować zestawem rejestracji identyfikowanych nie przez pojedynczy tag, ale przez wyrażenie logiczne używające tagów.
 
 Rozważmy aplikację sportową, która wysyła do wszystkich użytkowników w Boston informacje o grze między czerwoną SOX a Kardynalnami. Jeśli aplikacja kliencka rejestruje znaczniki dotyczące zainteresowania w zespołach i w lokalizacji, to powiadomienie powinno być skierowane do wszystkich osób w Boston, które interesują się czerwoną SOX lub Kardynalnami. Ten stan można wyrazić za pomocą następującego wyrażenia logicznego:
 
@@ -96,9 +96,9 @@ Rozważmy aplikację sportową, która wysyła do wszystkich użytkowników w Bo
 
 ![Wyrażenia tagów](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
-Wyrażenia tagów mogą zawierać wszystkie operatory logiczne, takie jak i (& &), lub (| |), a nie (!). Mogą również zawierać nawiasy. Wyrażenia tagów są ograniczone do 20 tagów, jeśli zawierają tylko ORs; w przeciwnym razie są ograniczone do 6 tagów.
+Wyrażenia tagów obsługują Typowe operatory logiczne, takie jak `AND` (`&&`), `OR` (`||`) i `NOT` (`!`); mogą również zawierać nawiasy. Wyrażenia tagów używające tylko operatorów `OR` mogą odwoływać się do 20 tagów; wyrażenia tagów w przeciwnym wypadku są ograniczone do 6 tagów.
 
-Oto przykład wysyłania powiadomień z wyrażeniami tagów przy użyciu zestawu SDK.
+Oto przykład wysyłania powiadomień z wyrażeniami tagów przy użyciu zestawu SDK:
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;

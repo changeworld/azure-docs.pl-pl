@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych i Przywracanie zaszyfrowanych maszyn wirtualny
 description: Opisuje sposób tworzenia kopii zapasowych i przywracania zaszyfrowanych maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449979"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513783"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanej maszyny wirtualnej platformy Azure
 
@@ -53,7 +53,6 @@ Przed rozpoczęciem wykonaj następujące czynności:
 Ponadto istnieje kilka rzeczy, które mogą być konieczne w pewnych okolicznościach:
 
 - **Zainstaluj agenta maszyny wirtualnej na maszynie wirtualnej**: Azure Backup tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przez zainstalowanie rozszerzenia agenta maszyny wirtualnej platformy Azure uruchomionego na tym komputerze. Jeśli maszyna wirtualna została utworzona na podstawie obrazu portalu Azure Marketplace, Agent jest zainstalowany i uruchomiony. Jeśli tworzysz niestandardową maszynę wirtualną lub migrujesz maszynę lokalną, może być konieczne [ręczne zainstalowanie agenta](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-- **Jawnie Zezwalaj na dostęp wychodzący**: Ogólnie rzecz biorąc, nie musisz jawnie zezwalać na wychodzący dostęp sieciowy dla maszyny wirtualnej platformy Azure w celu komunikowania się z Azure Backup. Niektóre maszyny wirtualne mogą jednak powodować problemy z połączeniem, wyświetlając błąd **ExtensionSnapshotFailedNoNetwork** podczas próby nawiązania połączenia. W takim przypadku należy [jawnie zezwolić na dostęp wychodzący](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access), aby rozszerzenie Azure Backup mogły komunikować się z publicznymi adresami IP platformy Azure na potrzeby tworzenia kopii zapasowych.
 
 ## <a name="configure-a-backup-policy"></a>Konfigurowanie zasad kopii zapasowych
 

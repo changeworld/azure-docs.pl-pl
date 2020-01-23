@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612874"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514650"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Samouczek: Konfigurowanie urządzenia IoT Edge
 
@@ -262,7 +262,7 @@ Następnie będziemy aktualizować certyfikaty i nazwy hostów przez bezpośredn
       trusted_ca_certs: "/edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem"
     ```
 
-    Upewnij się, że "certyfikaty:" nie zawierają poprzedzających odstępów i że każdy z certyfikatów jest poprzedzony dwiema spacjami.
+    Upewnij się, że w wierszu **Certyfikaty:** nie ma poprzedzającego odstępu, a każdy z zagnieżdżonych certyfikatów jest wcięty o dwie spacje.
 
     Kliknięcie prawym przyciskiem myszy w programie nano spowoduje wklejenie zawartości schowka do bieżącego położenia kursora. Aby zastąpić ciąg, użyj strzałek klawiatury, aby przejść do ciągu, który ma zostać zamieniony, usuń ciąg, a następnie kliknij prawym przyciskiem myszy, aby wkleić go do buforu.
 

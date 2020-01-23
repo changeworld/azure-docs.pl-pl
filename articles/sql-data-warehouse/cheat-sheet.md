@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9355ae1522c653924574b94594e894fdaf3f764e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: ea6e5b5ac829c95a0eca328e8f7f40e7d4a9a94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646651"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547986"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Arkusz Ściągawka dla usługi Azure Synapse Analytics (dawniej SQL DW)
 
@@ -23,7 +23,7 @@ Ten arkusz Ściągawka zawiera pomocne wskazówki i najlepsze rozwiązania dotyc
 
 Na poniższym rysunku przedstawiono proces projektowania magazynu danych:
 
-![Szkic]
+![Szkic](media/sql-data-warehouse-cheat-sheet/picture-flow.png)
 
 ## <a name="queries-and-operations-across-tables"></a>Zapytania i operacje między tabelami
 
@@ -36,16 +36,16 @@ Wcześniejsza znajomość typów operacji pomaga zoptymalizować projekt tabel.
 
 ## <a name="data-migration"></a>Migracja danych
 
-Najpierw Załaduj dane do [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) lub BLOB Storage platformy Azure. Następnie użyj podstawy, aby załadować dane do tabel przemieszczania. Użyj następującej konfiguracji:
+Najpierw Załaduj dane do [Azure Data Lake Storage](../data-factory/connector-azure-data-lake-store.md) lub BLOB Storage platformy Azure. Następnie użyj podstawy, aby załadować dane do tabel przemieszczania. Użyj następującej konfiguracji:
 
-| Projekt | Zalecenie |
+| Projektowanie | Zalecenie |
 |:--- |:--- |
 | Dystrybucja | Działanie okrężne |
 | Indeksowanie | Sterta |
 | Partycjonowanie | Brak |
 | Klasa zasobów | largerc lub xlargerc |
 
-Dowiedz się więcej o [migracji danych], [ładowaniu danych] i [proces wyodrębniania, przekształcania i ładowania (ELT)](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading). 
+Dowiedz się więcej o [migracji danych](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [ładowaniu danych](design-elt-data-loading.md) i [proces wyodrębniania, przekształcania i ładowania (ELT)](design-elt-data-loading.md). 
 
 ## <a name="distributed-or-replicated-tables"></a>Tabele rozproszone lub replikowane
 
@@ -62,10 +62,10 @@ Użyj następujących strategii, w zależności od właściwości tabeli:
 * Upewnij się, że typowe klucze skrótów mają ten sam format danych.
 * Nie przeprowadzaj dystrybucji w formacie varchar.
 * Tabele wymiarów ze wspólnym kluczem skrótu do tabeli faktów z częstymi operacjami sprzężenia mogą być rozproszonymi tabelami skrótów.
-* Użyj elementu *[sys.dm_pdw_nodes_db_partition_stats]* , aby analizować skośność danych.
-* Użyj elementu *[sys.dm_pdw_request_steps]* , aby analizować operacje przenoszenia danych w powiązaniu z zapytaniami i monitorować czas emisji oraz operacji mieszania. Jest to przydatne w przypadku przeglądu strategii dystrybucji.
+* Użyj elementu *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql)* , aby analizować skośność danych.
+* Użyj elementu *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)* , aby analizować operacje przenoszenia danych w powiązaniu z zapytaniami i monitorować czas emisji oraz operacji mieszania. Jest to przydatne w przypadku przeglądu strategii dystrybucji.
 
-Dowiedz się więcej o [tabelach replikowanych] i [tabelach rozproszonych].
+Dowiedz się więcej o [tabelach replikowanych](design-guidance-for-replicated-tables.md) i [tabelach rozproszonych](sql-data-warehouse-tables-distribute.md).
 
 ## <a name="index-your-table"></a>Indeksowanie tabeli
 
@@ -85,7 +85,7 @@ Indeksowanie ułatwia szybkie odczytywanie tabel. W zależności od potrzeb moż
 * Na podstawie rozmiaru i częstotliwości ładowania przyrostowego chcesz zautomatyzować reorganizację lub ponowną kompilację indeksów. Gruntowne porządki będą zawsze pomocne.
 * Jeśli chcesz przyciąć grupę wierszy, podejdź do tego strategicznie. Jak duże są otwarte grupy wierszy? Ile danych planujesz załadować w ciągu nadchodzących dni?
 
-Dowiedz się więcej o [indeksach].
+Dowiedz się więcej o [indeksach](sql-data-warehouse-tables-index.md).
 
 ## <a name="partitioning"></a>Partycjonowanie
 Tabelę możesz partycjonować, gdy jest to duża tabela faktów (większa niż 1 miliard wierszy). W 99% przypadków klucz partycji powinien opierać się na dacie. Uważaj, aby nie partycjonować nadmiernie, szczególnie gdy korzystasz z klastrowanego indeksu magazynu kolumn.
@@ -93,22 +93,22 @@ Tabelę możesz partycjonować, gdy jest to duża tabela faktów (większa niż 
 Partycjonowanie może przynieść korzyści w przypadku tabel przejściowych, które wymagają procesu ELT. Ułatwia ono zarządzanie cyklem życia danych.
 Uważaj, aby nadmiernie nie partycjonować danych, szczególnie w przypadku klastrowanego indeksu magazynu kolumn.
 
-Dowiedz się więcej o [partycjach].
+Dowiedz się więcej o [partycjach](sql-data-warehouse-tables-partition.md).
 
 ## <a name="incremental-load"></a>Ładowanie przyrostowe
 
-Jeśli planujesz ładować dane przyrostowo, najpierw upewnij się, że przydzielasz większe klasy zasobów na potrzeby ładowania danych.  Jest to szczególnie ważne podczas ładowania do tabel z klastrowanymi indeksami magazynu kolumn.  Zobacz [klasy zasobów](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) , aby uzyskać więcej szczegółów.  
+Jeśli planujesz ładować dane przyrostowo, najpierw upewnij się, że przydzielasz większe klasy zasobów na potrzeby ładowania danych.  Jest to szczególnie ważne podczas ładowania do tabel z klastrowanymi indeksami magazynu kolumn.  Zobacz [klasy zasobów](resource-classes-for-workload-management.md) , aby uzyskać więcej szczegółów.  
 
 Zalecamy korzystanie z aplikacji wielobase i ADF v2 w celu automatyzacji potoków usługi ELT w magazynie danych.
 
-W przypadku dużej partii aktualizacji danych historycznych Rozważ użycie [CTAs](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) , aby napisać dane, które mają być przechowywane w tabeli, a nie za pomocą instrukcji INSERT, Update i DELETE.
+W przypadku dużej partii aktualizacji danych historycznych Rozważ użycie [CTAs](sql-data-warehouse-develop-ctas.md) , aby napisać dane, które mają być przechowywane w tabeli, a nie za pomocą instrukcji INSERT, Update i DELETE.
 
 ## <a name="maintain-statistics"></a>Prowadzenie statystyk
  Do momentu, gdy funkcja autostatystyka jest ogólnie dostępna, wymagana jest ręczna konserwacja statystyk. Ważne jest aktualizowanie statystyk w miarę pojawiania się kolejnych *znaczących* zmian danych. Ułatwia to optymalizowanie planów zapytań. Jeśli okaże się, że obsługa wszystkich statystyk trwa zbyt długo, należy przemyśleć dokładnie wybór kolumn ze statystykami. 
 
 Można również zdefiniować częstotliwość aktualizacji. Można na przykład codziennie aktualizować kolumny danych, w których mogą być dodawane nowe wartości. Największe korzyści można osiągnąć, prowadząc statystyki dla kolumn uczestniczących w sprzężeniach, kolumn używanych w ramach klauzuli WHERE i kolumn z klauzuli GROUP BY.
 
-Dowiedz się więcej o [statystykach].
+Dowiedz się więcej o [statystykach](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="resource-class"></a>Klasa zasobów
 Grupy zasobów są używane jako sposób przydzielania pamięci do zapytań. Jeśli potrzeba większej ilości pamięci w celu zwiększenia szybkości zapytań lub ładowania, należy przydzielić wyższe klasy zasobów. Z drugiej strony użycie większych klas zasobów wpływa na współbieżność. Należy o tym pamiętać przed przeniesieniem wszystkich użytkowników do dużej klasy zasobów.
@@ -117,7 +117,7 @@ Jeśli zauważysz, że wykonywanie zapytań trwa zbyt długo, sprawdź, czy uży
 
 Na koniec przy użyciu Gen2 [puli SQL](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)każda klasa zasobów otrzymuje 2,5 razy więcej pamięci niż Gen1.
 
-Dowiedz się więcej, jak pracować z [klasami zasobów i współbieżnością].
+Dowiedz się więcej, jak pracować z [klasami zasobów i współbieżnością](resource-classes-for-workload-management.md).
 
 ## <a name="lower-your-cost"></a>Obniżanie kosztów
 Kluczową cechą usługi Azure Synapse jest możliwość [zarządzania zasobami obliczeniowymi](sql-data-warehouse-manage-compute-overview.md). Pulę SQL można wstrzymać, gdy nie jest używana, co powoduje zatrzymanie rozliczeń zasobów obliczeniowych. Zasoby można skalować zgodnie ze swoimi wymaganiami dotyczącymi wydajności. W celu wstrzymania użyj witryny [Azure Portal](pause-and-resume-compute-portal.md) lub programu [PowerShell](pause-and-resume-compute-powershell.md). W celu skalowania użyj witryny [Azure Portal](quickstart-scale-compute-portal.md), programu [PowerShell](quickstart-scale-compute-powershell.md), języka [T-SQL](quickstart-scale-compute-tsql.md) lub [interfejsu API REST](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
@@ -139,29 +139,3 @@ Wdróż aplikację w jednym kliknięciem szprych w bazach danych SQL z puli SQL:
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
-
-
-<!--Image references-->
-[Szkic]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
-
-<!--Article references-->
-[ładowaniu danych]:design-elt-data-loading.md
-[deeper guidance]:guidance-for-loading-data.md
-[indeksach]:sql-data-warehouse-tables-index.md
-[partycjach]:sql-data-warehouse-tables-partition.md
-[statystykach]:sql-data-warehouse-tables-statistics.md
-[klasami zasobów i współbieżnością]:resource-classes-for-workload-management.md
-[tabelach replikowanych]:design-guidance-for-replicated-tables.md
-[tabelach rozproszonych]:sql-data-warehouse-tables-distribute.md
-
-<!--MSDN references-->
-
-
-<!--Other Web references-->
-[typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
-[is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[migracji danych]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
-
-[Azure Data Lake Storage]: ../data-factory/connector-azure-data-lake-store.md
-[sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
-[sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

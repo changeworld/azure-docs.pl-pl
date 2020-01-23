@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 478a7ae8d6938ee4d4ef5c30c8126c3e95f35305
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: da05dc7136a75d519660412f2ce176f7530eb392
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121288"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547442"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Powiązania Azure Cosmos DB dla Azure Functions 2. x
 
@@ -41,19 +41,7 @@ Powiązania Azure Cosmos DB dla funkcji w wersji 2. x są dostępne w pakiecie N
 
 Wyzwalacz usługi Azure Cosmos DB używa [usługi Azure Cosmos DB kanału informacyjnego zmian](../cosmos-db/change-feed.md) do nasłuchiwania pod kątem operacji wstawienia i aktualizacje w różnych partycjach. Kanał informacyjny zmian publikuje wstawienia i aktualizacje, nie do usunięcia.
 
-## <a name="trigger---example"></a>Wyzwalacz — przykład
-
-Zobacz przykład specyficzny dla języka:
-
-* [C#](#trigger---c-example)
-* [Skryptu C# (csx)](#trigger---c-script-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-[Pomiń przykłady wyzwalacza](#trigger---c-attributes)
-
-### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , wywoływany, gdy istnieją wstawia lub aktualizuje w określonej bazy danych i kolekcji.
 
@@ -87,9 +75,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykłady wyzwalacza](#trigger---c-attributes)
-
-### <a name="trigger---c-script-example"></a>Wyzwalacz — przykładowy skrypt w języku C#
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
 W poniższym przykładzie pokazano wyzwalacz usługi Cosmos DB, powiązania w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja zapisuje komunikaty dziennika po dodaniu lub zmodyfikowaniu Cosmos DB rekordów.
 
@@ -125,9 +111,7 @@ Poniżej przedstawiono kod skryptu języka C#:
     }
 ```
 
-[Pomiń przykłady wyzwalacza](#trigger---c-attributes)
-
-### <a name="trigger---javascript-example"></a>Wyzwalacz — przykład JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 W poniższym przykładzie pokazano wyzwalacz usługi Cosmos DB, powiązania w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja zapisuje komunikaty dziennika po dodaniu lub zmodyfikowaniu Cosmos DB rekordów.
 
@@ -156,9 +140,38 @@ Poniżej przedstawiono kod JavaScript:
     }
 ```
 
-[Pomiń przykłady wyzwalacza](#trigger---c-attributes)
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
+Poniższy przykład przedstawia powiązanie wyzwalacza Cosmos DB w pliku *Function. JSON* i [funkcji języka Python](functions-reference-python.md) , która używa powiązania. Funkcja zapisuje komunikaty dziennika, po zmodyfikowaniu rekordy usługi Cosmos DB.
+
+Oto powiązanie danych w *function.json* pliku:
+
+```json
+{
+    "name": "documents",
+    "type": "cosmosDBTrigger",
+    "direction": "in",
+    "leaseCollectionName": "leases",
+    "connectionStringSetting": "<connection-app-setting>",
+    "databaseName": "Tasks",
+    "collectionName": "Items",
+    "createLeaseCollectionIfNotExists": true
+}
+```
+
+Oto kod języka Python:
+
+```python
+    import logging
+    import azure.functions as func
+
+
+    def main(documents: func.DocumentList) -> str:
+        if documents:
+            logging.info('First document Id modified: %s', documents[0]['id'])
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 Poniższy przykład przedstawia powiązanie wyzwalacza Cosmos DB w pliku *Function. JSON* i [funkcję języka Java](functions-reference-java.md) , która używa powiązania. Funkcja jest wywoływana, gdy w określonej bazie danych i kolekcji są wstawiane lub aktualizowane aktualizacje.
 
@@ -192,44 +205,13 @@ Oto kodu Java:
 ```
 
 
-W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@CosmosDBTrigger` w przypadku parametrów, których wartość pochodzi z Cosmos DB.  Tej adnotacji można używać w przypadku natywnych typów Java, Pojo lub wartości null przy użyciu opcjonalnych >\<T.
+W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@CosmosDBTrigger` w przypadku parametrów, których wartość pochodzi z Cosmos DB.  Tej adnotacji można używać w przypadku natywnych typów Java, Pojo lub wartości null przy użyciu `Optional<T>`.
 
+---
 
-[Pomiń przykłady wyzwalacza](#trigger---c-attributes)
+## <a name="trigger---attributes-and-annotations"></a>Wyzwalacz — atrybuty i adnotacje
 
-
-### <a name="trigger---python-example"></a>Wyzwalacz — przykład w języku Python
-
-Poniższy przykład przedstawia powiązanie wyzwalacza Cosmos DB w pliku *Function. JSON* i [funkcji języka Python](functions-reference-python.md) , która używa powiązania. Funkcja zapisuje komunikaty dziennika po dodaniu lub zmodyfikowaniu Cosmos DB rekordów.
-
-Oto powiązanie danych w *function.json* pliku:
-
-```json
-{
-    "name": "documents",
-    "type": "cosmosDBTrigger",
-    "direction": "in",
-    "leaseCollectionName": "leases",
-    "connectionStringSetting": "<connection-app-setting>",
-    "databaseName": "Tasks",
-    "collectionName": "Items",
-    "createLeaseCollectionIfNotExists": true
-}
-```
-
-Oto kod języka Python:
-
-```python
-    import logging
-    import azure.functions as func
-
-
-    def main(documents: func.DocumentList) -> str:
-        if documents:
-            logging.info('First document Id modified: %s', documents[0]['id'])
-```
-
-## <a name="trigger---c-attributes"></a>Wyzwalacz — C# atrybuty
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W [bibliotek klas języka C#](functions-dotnet-class-library.md), użyj [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) atrybutu.
 
@@ -246,8 +228,25 @@ Konstruktor atrybutu ma nazwę bazy danych i nazwę kolekcji. Aby uzyskać infor
     }
 ```
 
-Aby uzyskać kompletny przykład, zobacz [wyzwalacza — przykład w języku C#](#trigger---c-example).
+Pełny przykład można znaleźć w temacie [Trigger](#trigger).
 
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Atrybuty nie są obsługiwane przez C# skrypt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atrybuty nie są obsługiwane przez język JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Atrybuty nie są obsługiwane przez język Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+W [bibliotece środowiska uruchomieniowego usługi Java Functions](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)Użyj adnotacji `@CosmosDBInput` dla parametrów, które odczytują dane z Cosmos DB.
+
+---
 
 ## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
@@ -265,15 +264,15 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**leaseDatabaseName** |**LeaseDatabaseName** | (Opcjonalnie) Nazwa bazy danych, który zawiera kolekcję używaną do przechowywania dzierżaw. Jeśli nie ustawiona, wartość `databaseName` ustawienie jest używane. Ten parametr jest automatycznie ustawiana podczas tworzenia powiązania w portalu. |
 |**leaseCollectionName** | **LeaseCollectionName** | (Opcjonalnie) Nazwa kolekcji, używany do przechowywania dzierżaw. Kiedy nie ustawiona, wartość `leases` jest używany. |
 |**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Opcjonalnie) Po ustawieniu `true`, kolekcję dzierżaw zostało automatycznie utworzone po już nie istnieje. Wartością domyślną jest `false`. |
-|**leasesCollectionThroughput**| **leasesCollectionThroughput**| (Opcjonalnie) Definiuje liczbę jednostek żądania do przypisania, po utworzeniu kolekcji dzierżaw. To ustawienie jest tylko wtedy, gdy używane `createLeaseCollectionIfNotExists` ustawiono `true`. Ten parametr jest automatycznie ustawiana, jeśli wiązanie jest tworzony przy użyciu portalu.
-|**leaseCollectionPrefix**| **leaseCollectionPrefix**| (Opcjonalnie) Po ustawieniu dodaje prefiks do dzierżawy utworzone w kolekcję dzierżaw dla tej funkcji, co skutecznie dwie oddzielne funkcje platformy Azure na udostępnianie tej samej kolekcji dzierżawy przy użyciu różnych prefiksów.
-|**feedPollDelay**| **feedPollDelay**| (Opcjonalnie) Gdy zestaw, definiuje, w milisekundach, opóźnienie między sondowaniem partycji dla nowych zmian w źródle danych, gdy wszystkie bieżące zmiany są opróżniane. Wartością domyślną jest 5000 (5 sekund).
+|**leasesCollectionThroughput**| **leasesCollectionThroughput**| Obowiązkowe Określa liczbę jednostek żądania, które mają zostać przypisane podczas tworzenia kolekcji dzierżaw. To ustawienie jest używane tylko wtedy, gdy `createLeaseCollectionIfNotExists` jest ustawiona na `true`. Ten parametr jest automatycznie ustawiana, jeśli wiązanie jest tworzony przy użyciu portalu.
+|**leaseCollectionPrefix**| **leaseCollectionPrefix**| Obowiązkowe Po ustawieniu wartość jest dodawana jako prefiks do dzierżaw utworzonych w kolekcji dzierżawy dla tej funkcji. Użycie prefiksu umożliwia dwóm osobom Azure Functions współużytkowanie tej samej kolekcji dzierżawy przy użyciu różnych prefiksów.
+|**feedPollDelay**| **feedPollDelay**| Obowiązkowe Czas (w milisekundach) opóźnienia między sondowaniem partycji o nowe zmiany w strumieniu, po opróżnieniu wszystkich bieżących zmian. Wartość domyślna to 5 000 milisekund lub 5 sekund.
 |**leaseAcquireInterval**| **leaseAcquireInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał można uruchamiać zadania obliczeniowe, jeśli partycje są dystrybuowane równomiernie między wystąpieniami znanych hostów. Wartość domyślna to 13000 (w sekundach 13).
 |**leaseExpirationInterval**| **leaseExpirationInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał, dla której dzierżawy jest pobierany podczas dzierżawy, reprezentujący partycji. Jeśli dzierżawa nie zostanie odnowiony w tym przedziale czasu, spowoduje jego wygaśnięcia i własność partycji przejdzie do innego wystąpienia. Domyślna to 60 000 (60 sekund).
 |**leaseRenewInterval**| **leaseRenewInterval**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał odnawiania dla wszystkich dzierżaw dla partycji aktualnie trzymana przez wystąpienie. Wartość domyślna to 17000 (17 w sekundach).
 |**checkpointFrequency**| **checkpointFrequency**| (Opcjonalnie) Po ustawieniu definiuje, w milisekundach, interwał między punktami kontrolnymi dzierżawy. Wartość domyślna to zawsze po każdym wywołaniu funkcji.
-|**maxItemsPerInvocation**| **maxItemsPerInvocation**| Obowiązkowe Po ustawieniu ta właściwość ustawia maksymalną ilość elementów odebranych na wywołanie funkcji. Jeśli operacje w monitorowanej kolekcji są wykonywane za pomocą procedur składowanych, [zakres transakcji](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) jest zachowywany podczas odczytywania elementów ze źródła zmian. W związku z tym jest możliwe, że ilość elementów, które otrzymasz, jest większa niż określona wartość, tak aby elementy zmienione przez tę samą transakcję zostały zwrócone w ramach jednej partii niepodzielnej.
-|**startFromBeginning**| **StartFromBeginning**| Obowiązkowe Po ustawieniu nakazuje wyzwalaczowi rozpoczęcie odczytywania zmian od początku historii kolekcji zamiast bieżącego czasu. Działa to tylko po pierwszym uruchomieniu wyzwalacza, tak jak w kolejnych uruchomieniach, punkty kontrolne są już przechowywane. Ustawienie tej opcji na `true`, jeśli już utworzono dzierżawy, nie ma żadnego wpływu.
+|**maxItemsPerInvocation**| **maxItemsPerInvocation**| Obowiązkowe Po ustawieniu ta właściwość ustawia maksymalną liczbę elementów odebranych na wywołanie funkcji. Jeśli operacje w monitorowanej kolekcji są wykonywane za pomocą procedur składowanych, [zakres transakcji](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) jest zachowywany podczas odczytywania elementów ze źródła zmian. W związku z tym liczba odebranych elementów może być wyższa niż określona wartość, dzięki czemu elementy zmienione przez tę samą transakcję są zwracane jako część jednej niepodzielnej partii.
+|**startFromBeginning**| **StartFromBeginning**| Obowiązkowe Ta opcja informuje wyzwalacz, aby odczytał zmiany od początku historii zmian kolekcji zamiast od bieżącego czasu. Odczyt od początku działa tylko podczas pierwszego uruchomienia wyzwalacza, jak w kolejnych uruchomieniach, punkty kontrolne są już przechowywane. Ustawienie tej opcji na `true`, gdy istnieją już utworzone dzierżawy, nie mają żadnego efektu.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -294,20 +293,7 @@ Powiązania danych wejściowych usługi Azure Cosmos DB używa interfejsu API SQ
 > Jeśli kolekcja jest [podzielona na partycje](../cosmos-db/partition-data.md#logical-partitions), operacje wyszukiwania muszą również określać wartość klucza partycji.
 >
 
-## <a name="input---examples"></a>Dane wejściowe — przykłady
-
-Zobacz przykłady specyficzny dla języka, które odczytują pojedynczy dokument, określając wartość Identyfikatora:
-
-* [C#](#input---c-examples)
-* [Skryptu C# (csx)](#input---c-script-examples)
-* [F#](#input---f-examples)
-* [Java](#input---java-examples)
-* [JavaScript](#input---javascript-examples)
-* [Python](#input---python-examples)
-
-[Pomiń przykłady danych wejściowych](#input---attributes)
-
-### <a name="input---c-examples"></a>Dane wejściowe — przykłady w języku C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Ta sekcja zawiera następujące przykłady:
 
@@ -332,9 +318,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="queue-trigger-look-up-id-from-json-c"></a>
 
-#### <a name="queue-trigger-look-up-id-from-json-c"></a>Wyzwalacz kolejki, odnośnika identyfikator z formatu JSON (C#)
+### <a name="queue-trigger-look-up-id-from-json"></a>Wyzwalacz kolejki, wyszukiwanie identyfikatora z poziomu JSON 
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , który pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez komunikatu w kolejce, która zawiera obiekt JSON. Wyzwalacz kolejki analizuje kod JSON w obiekcie typu `ToDoItemLookup`, który zawiera identyfikator i wartość klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu `ToDoItem` z określonej bazy danych i kolekcji.
 
@@ -385,9 +371,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-c"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-c"></a>Wyzwalacz HTTP, Sprawdź identyfikator z ciągu zapytania (C#)
+### <a name="http-trigger-look-up-id-from-query-string"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z ciągu zapytania
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , który pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które używa ciągu zapytania, aby określić identyfikator i wartość klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu `ToDoItem` z określonej bazy danych i kolekcji.
 
@@ -435,9 +421,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-c"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-c"></a>Wyzwalacz HTTP, wyszukiwania Identyfikatora z danych trasy (C#)
+### <a name="http-trigger-look-up-id-from-route-data"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z danych trasy
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , który pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które używa danych trasy do określenia identyfikatora i wartości klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu `ToDoItem` z określonej bazy danych i kolekcji.
 
@@ -481,9 +467,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>Wyzwalacz HTTP, wyszukiwania Identyfikatora z danych trasy, używając SqlQuery (C#)
+### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z danych trasy przy użyciu sqlQuery
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , który pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, że używa kierować dane do określenia Identyfikatora do wyszukania. Identyfikator służy do pobierania `ToDoItem` dokument z określonej bazy danych i kolekcji.
 
@@ -528,9 +514,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-sqlquery-c"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c"></a>HTTP wyzwalacza, Uzyskaj dokumentację wielu, za pomocą SqlQuery (C#)
+### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>Wyzwalacz HTTP, pobieranie wielu dokumentów przy użyciu zapytania sqlQuery
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , który pobiera listę dokumentów. Funkcja jest wyzwalana przez żądanie HTTP. Zapytanie jest określona w `SqlQuery` atrybutu właściwości.
 
@@ -571,9 +557,9 @@ namespace CosmosDBSamplesV2
 
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-documentclient-c"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP wyzwalacza, Uzyskaj dokumentację wielu, za pomocą DocumentClient (C#)
+### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>Wyzwalacz HTTP, pobieranie wielu dokumentów przy użyciu DocumentClient
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , który pobiera listę dokumentów. Funkcja jest wyzwalana przez żądanie HTTP. Kod używa `DocumentClient` podanego przez powiązanie usługi Azure Cosmos DB można odczytać listy dokumentów wystąpienia. `DocumentClient` Wystąpienia może również służyć do operacji zapisu.
 
@@ -636,9 +622,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
-
-### <a name="input---c-script-examples"></a>Dane wejściowe — przykłady skryptów w języku C#
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
 Ta sekcja zawiera następujące przykłady:
 
@@ -662,9 +646,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="queue-trigger-look-up-id-from-string-c-script"></a>
 
-#### <a name="queue-trigger-look-up-id-from-string-c-script"></a>Wyzwalacz kolejki, odnośnika identyfikator ciągu (skrypt języka C#)
+### <a name="queue-trigger-look-up-id-from-string"></a>Wyzwalacz kolejki, wyszukiwanie identyfikatora z ciągu
 
 Poniższy przykład pokazuje usługi Cosmos DB, powiązania danych wejściowych w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja odczytuje pojedynczy dokument i aktualizuje wartość tekstu dokumentu.
 
@@ -696,9 +680,9 @@ Poniżej przedstawiono kod skryptu języka C#:
     }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>Wyzwalacz kolejki, Uzyskaj dokumentację wielu, za pomocą SqlQuery (skrypt języka C#)
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Wyzwalacz kolejki, pobieranie wielu dokumentów przy użyciu zapytania sqlQuery
 
 W poniższym przykładzie pokazano powiązania danych wejściowych usługi Azure Cosmos DB w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja pobiera wiele dokumentów, określonych przez zapytanie SQL, przy użyciu wyzwalacza kolejki, aby dostosować parametry zapytania.
 
@@ -737,9 +721,9 @@ Poniżej przedstawiono kod skryptu języka C#:
     }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-c-script"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-c-script"></a>Wyzwalacz HTTP, Sprawdź identyfikator z ciągu zapytania (skrypt języka C#)
+### <a name="http-trigger-look-up-id-from-query-string"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z ciągu zapytania
 
 W poniższym przykładzie przedstawiono [funkcji skryptu w języku C#](functions-reference-csharp.md) , który pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które używa ciągu zapytania, aby określić identyfikator i wartość klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu `ToDoItem` z określonej bazy danych i kolekcji.
 
@@ -800,9 +784,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-c-script"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-c-script"></a>Wyzwalacz HTTP, wyszukiwania Identyfikatora z danych trasy (skrypt języka C#)
+### <a name="http-trigger-look-up-id-from-route-data"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z danych trasy
 
 W poniższym przykładzie przedstawiono [funkcji skryptu w języku C#](functions-reference-csharp.md) , który pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które używa danych trasy do określenia identyfikatora i wartości klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu `ToDoItem` z określonej bazy danych i kolekcji.
 
@@ -864,9 +848,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>HTTP wyzwalacza, Uzyskaj dokumentację wielu, za pomocą SqlQuery (skrypt języka C#)
+### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>Wyzwalacz HTTP, pobieranie wielu dokumentów przy użyciu zapytania sqlQuery
 
 W poniższym przykładzie przedstawiono [funkcji skryptu w języku C#](functions-reference-csharp.md) , który pobiera listę dokumentów. Funkcja jest wyzwalana przez żądanie HTTP. Zapytanie jest określona w `SqlQuery` atrybutu właściwości.
 
@@ -922,9 +906,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoIt
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>HTTP wyzwalacza, Uzyskaj dokumentację wielu, za pomocą DocumentClient (skrypt języka C#)
+### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>Wyzwalacz HTTP, pobieranie wielu dokumentów przy użyciu DocumentClient
 
 W poniższym przykładzie przedstawiono [funkcji skryptu w języku C#](functions-reference-csharp.md) , który pobiera listę dokumentów. Funkcja jest wyzwalana przez żądanie HTTP. Kod używa `DocumentClient` podanego przez powiązanie usługi Azure Cosmos DB można odczytać listy dokumentów wystąpienia. `DocumentClient` Wystąpienia może również służyć do operacji zapisu.
 
@@ -1001,9 +985,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
-
-### <a name="input---javascript-examples"></a>Dane wejściowe — przykłady kodu JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Ta sekcja zawiera następujące przykłady odczytywania pojedynczego dokumentu przez określenie wartości identyfikatora z różnych źródeł:
 
@@ -1012,9 +994,9 @@ Ta sekcja zawiera następujące przykłady odczytywania pojedynczego dokumentu p
 * [Wyzwalacz HTTP, wyszukiwania Identyfikatora z danych trasy](#http-trigger-look-up-id-from-route-data-javascript)
 * [Wyzwalacz kolejki, Uzyskaj dokumentację wielu, za pomocą SqlQuery](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="queue-trigger-look-up-id-from-json-javascript"></a>
 
-#### <a name="queue-trigger-look-up-id-from-json-javascript"></a>Wyzwalacz kolejki, odnośnika identyfikator z formatu JSON (JavaScript)
+### <a name="queue-trigger-look-up-id-from-json"></a>Wyzwalacz kolejki, wyszukiwanie identyfikatora z poziomu JSON
 
 Poniższy przykład pokazuje usługi Cosmos DB, powiązania danych wejściowych w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja odczytuje pojedynczy dokument i aktualizuje wartość tekstu dokumentu.
 
@@ -1042,6 +1024,7 @@ Oto powiązanie danych w *function.json* pliku:
     "direction": "out"
 }
 ```
+
 [Konfiguracji](#input---configuration) sekcji opisano te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
@@ -1055,9 +1038,9 @@ Poniżej przedstawiono kod JavaScript:
     };
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-javascript"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-javascript"></a>Wyzwalacz HTTP, Sprawdź identyfikator z ciągu zapytania (JavaScript)
+### <a name="http-trigger-look-up-id-from-query-string"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z ciągu zapytania
 
 W poniższym przykładzie przedstawiono [funkcji JavaScript](functions-reference-node.md) , który pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które używa ciągu zapytania, aby określić identyfikator i wartość klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu `ToDoItem` z określonej bazy danych i kolekcji.
 
@@ -1114,9 +1097,9 @@ module.exports = function (context, req, toDoItem) {
 };
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-javascript"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-javascript"></a>Wyzwalacz HTTP, wyszukiwania Identyfikatora z danych trasy (JavaScript)
+### <a name="http-trigger-look-up-id-from-route-data"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z danych trasy
 
 W poniższym przykładzie przedstawiono [funkcji JavaScript](functions-reference-node.md) , który pobiera pojedynczego dokumentu. Funkcja jest wyzwalana przez żądanie HTTP, które używa danych trasy do określenia identyfikatora i wartości klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu `ToDoItem` z określonej bazy danych i kolekcji.
 
@@ -1174,9 +1157,9 @@ module.exports = function (context, req, toDoItem) {
 };
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>Wyzwalacz kolejki, Uzyskaj dokumentację wielu, za pomocą SqlQuery (JavaScript)
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Wyzwalacz kolejki, pobieranie wielu dokumentów przy użyciu zapytania sqlQuery
 
 W poniższym przykładzie pokazano powiązania danych wejściowych usługi Azure Cosmos DB w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja pobiera wiele dokumentów, określonych przez zapytanie SQL, przy użyciu wyzwalacza kolejki, aby dostosować parametry zapytania.
 
@@ -1211,9 +1194,7 @@ Poniżej przedstawiono kod JavaScript:
     };
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
-
-### <a name="input---python-examples"></a>Przykłady wejścia-Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Ta sekcja zawiera następujące przykłady odczytywania pojedynczego dokumentu przez określenie wartości identyfikatora z różnych źródeł:
 
@@ -1222,9 +1203,9 @@ Ta sekcja zawiera następujące przykłady odczytywania pojedynczego dokumentu p
 * [Wyzwalacz HTTP, wyszukiwania Identyfikatora z danych trasy](#http-trigger-look-up-id-from-route-data-python)
 * [Wyzwalacz kolejki, Uzyskaj dokumentację wielu, za pomocą SqlQuery](#queue-trigger-get-multiple-docs-using-sqlquery-python)
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="queue-trigger-look-up-id-from-json-python"></a>
 
-#### <a name="queue-trigger-look-up-id-from-json-python"></a>Wyzwalacz kolejki, wyszukiwanie identyfikatora z poziomu JSON (Python)
+### <a name="queue-trigger-look-up-id-from-json"></a>Wyzwalacz kolejki, wyszukiwanie identyfikatora z poziomu JSON
 
 Poniższy przykład przedstawia Cosmos DB dane wejściowe w pliku *Function. JSON* oraz [funkcja języka Python](functions-reference-python.md) , która używa powiązania. Funkcja odczytuje pojedynczy dokument i aktualizuje wartość tekstu dokumentu.
 
@@ -1268,9 +1249,9 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Docu
         return document
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-python"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-python"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z ciągu zapytania (Python)
+### <a name="http-trigger-look-up-id-from-query-string"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z ciągu zapytania
 
 Poniższy przykład pokazuje funkcję języka [Python](functions-reference-python.md) , która pobiera pojedynczy dokument. Funkcja jest wyzwalana przez żądanie HTTP, które używa ciągu zapytania, aby określić identyfikator i wartość klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu `ToDoItem` z określonej bazy danych i kolekcji.
 
@@ -1327,9 +1308,9 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
     return 'OK'
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-python"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-python"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z danych tras (Python)
+### <a name="http-trigger-look-up-id-from-route-data"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z danych trasy
 
 Poniższy przykład pokazuje funkcję języka [Python](functions-reference-python.md) , która pobiera pojedynczy dokument. Funkcja jest wyzwalana przez żądanie HTTP, które używa danych trasy do określenia identyfikatora i wartości klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu `ToDoItem` z określonej bazy danych i kolekcji.
 
@@ -1386,9 +1367,9 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
     return 'OK'
 ```
 
-[Pomiń przykłady danych wejściowych](#input---attributes)
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>Wyzwalacz kolejki, pobieranie wielu dokumentów przy użyciu sqlQuery (Python)
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Wyzwalacz kolejki, pobieranie wielu dokumentów przy użyciu zapytania sqlQuery
 
 W poniższym przykładzie pokazano powiązanie danych wejściowych Azure Cosmos DB w pliku *Function. JSON* oraz funkcja języka [Python](functions-reference-python.md) , która używa powiązania. Funkcja pobiera wiele dokumentów, określonych przez zapytanie SQL, przy użyciu wyzwalacza kolejki, aby dostosować parametry zapytania.
 
@@ -1420,58 +1401,7 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
         # operate on each document
 ```
 
-
-[Pomiń przykłady danych wejściowych](#input---attributes)
-
-<a name="infsharp"></a>
-
-### <a name="input---f-examples"></a>Dane wejściowe - F# przykłady
-
-Poniższy przykład pokazuje usługi Cosmos DB, powiązania danych wejściowych w *function.json* pliku i [ F# funkcja](functions-reference-fsharp.md) powiązania, który używa. Funkcja odczytuje pojedynczy dokument i aktualizuje wartość tekstu dokumentu.
-
-Oto powiązanie danych w *function.json* pliku:
-
-```json
-{
-    "name": "inputDocument",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger}",
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "in"
-}
-```
-
-[Konfiguracji](#input---configuration) sekcji opisano te właściwości.
-
-Oto F# kodu:
-
-```fsharp
-    (* Change input document contents using Azure Cosmos DB input binding *)
-    open FSharp.Interop.Dynamic
-    let Run(myQueueItem: string, inputDocument: obj) =
-    inputDocument?text <- "This has changed."
-```
-
-W tym przykładzie wymaga `project.json` pliku, który określa `FSharp.Interop.Dynamic` i `Dynamitey` zależności NuGet:
-
-```json
-{
-    "frameworks": {
-        "net46": {
-            "dependencies": {
-                "Dynamitey": "1.0.2",
-                "FSharp.Interop.Dynamic": "3.0.0"
-            }
-        }
-    }
-}
-```
-
-Aby dodać `project.json` plików, zobacz [ F# Zarządzanie pakietami](functions-reference-fsharp.md#package).
-
-### <a name="input---java-examples"></a>Input — przykłady dla środowiska Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 Ta sekcja zawiera następujące przykłady:
 
@@ -1504,7 +1434,9 @@ public class ToDoItem {
 }
 ```
 
-#### <a name="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z parametrów ciągu zapytania (Java)
+<a id="http-trigger-look-up-id-from-query-string---string-parameter-java"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string---string-parameter"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora na podstawie parametru ciągu zapytania
 
 Poniższy przykład pokazuje funkcję języka Java, która pobiera pojedynczy dokument. Funkcja jest wyzwalana przez żądanie HTTP, które używa ciągu zapytania, aby określić identyfikator i wartość klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu z określonej bazy danych i kolekcji w postaci ciągu.
 
@@ -1548,9 +1480,11 @@ public class DocByIdFromQueryString {
 }
  ```
 
-W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@CosmosDBInput` w przypadku parametrów funkcji, których wartość pochodzi z Cosmos DB.  Tej adnotacji można używać w przypadku natywnych typów Java, Pojo lub wartości null przy użyciu opcjonalnych >\<T.
+W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@CosmosDBInput` w przypadku parametrów funkcji, których wartość pochodzi z Cosmos DB.  Tej adnotacji można używać w przypadku natywnych typów Java, Pojo lub wartości null przy użyciu `Optional<T>`.
 
-#### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z ciągu zapytania — parametr POJO (Java)
+<a id="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>
+
+### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z ciągu zapytania — parametr POJO
 
 Poniższy przykład pokazuje funkcję języka Java, która pobiera pojedynczy dokument. Funkcja jest wyzwalana przez żądanie HTTP, które używa ciągu zapytania, aby określić identyfikator i wartość klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji używane do pobierania dokumentu z określonej bazy danych i kolekcji. Dokument zostanie następnie przekonwertowany do instancji ```ToDoItem``` POJO poprzednio utworzone i przeszedł jako argument do funkcji.
 
@@ -1592,7 +1526,9 @@ public class DocByIdFromQueryStringPojo {
 }
  ```
 
-#### <a name="http-trigger-look-up-id-from-route-data-java"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z danych tras (Java)
+<a id="http-trigger-look-up-id-from-route-data-java"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z danych trasy
 
 Poniższy przykład pokazuje funkcję języka Java, która pobiera pojedynczy dokument. Funkcja jest wyzwalana przez żądanie HTTP, które korzysta z parametru trasy, aby określić identyfikator i wartość klucza partycji do wyszukania. Ten identyfikator i wartość klucza partycji są używane do pobierania dokumentu z określonej bazy danych i kolekcji, zwracając ją jako ```Optional<String>```.
 
@@ -1637,7 +1573,9 @@ public class DocByIdFromRoute {
 }
  ```
 
-#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z danych trasy przy użyciu sqlQuery (Java)
+ <a id="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>Wyzwalacz HTTP, wyszukiwanie identyfikatora z danych trasy przy użyciu sqlQuery
 
 Poniższy przykład pokazuje funkcję języka Java, która pobiera pojedynczy dokument. Funkcja jest wyzwalana przez żądanie HTTP, które używa parametru trasy do określenia identyfikatora do wyszukania. Ten identyfikator jest używany do pobierania dokumentu z określonej bazy danych i kolekcji, co umożliwia przekonwertowanie zestawu wyników na ```ToDoItem[]```, ponieważ w zależności od kryteriów zapytania można zwrócić wiele dokumentów.
 
@@ -1683,7 +1621,9 @@ public class DocByIdFromRouteSqlQuery {
 }
  ```
 
-#### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>Wyzwalacz HTTP, pobieranie wielu dokumentów z danych tras przy użyciu sqlQuery (Java)
+ <a id="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>
+
+### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery"></a>Wyzwalacz HTTP, pobieranie wielu dokumentów z danych trasy przy użyciu sqlQuery
 
 Poniższy przykład pokazuje funkcję języka Java, która pobiera wiele dokumentów. Funkcja jest wyzwalana przez żądanie HTTP, które używa ```desc``` parametru trasy, aby określić ciąg do wyszukania w polu ```description```. Termin wyszukiwania służy do pobrania kolekcji dokumentów z określonej bazy danych i kolekcji, przekonwertowanie zestawu wyników na ```ToDoItem[]``` i przekazanie go jako argumentu do funkcji.
 
@@ -1725,11 +1665,33 @@ public class DocsFromRouteSqlQuery {
 }
  ```
 
-## <a name="input---attributes"></a>Dane wejściowe — atrybuty
+ ---
+
+## <a name="input---attributes-and-annotations"></a>Input — atrybuty i adnotacje
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) .
 
 Konstruktor atrybutu ma nazwę bazy danych i nazwę kolekcji. Aby uzyskać informacje o tych ustawieniach i inne właściwości, które można skonfigurować, zobacz [w poniższej sekcji konfiguracji](#input---configuration).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Atrybuty nie są obsługiwane przez C# skrypt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atrybuty nie są obsługiwane przez język JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Atrybuty nie są obsługiwane przez język Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+W [bibliotece środowiska uruchomieniowego usługi Java Functions](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)Użyj adnotacji `@CosmosDBOutput` dla parametrów, które zapisują w Cosmos DB. Typ parametru adnotacji powinien mieć wartość `OutputBinding<T>`, gdzie `T` jest natywnym typem Java lub POJO.
+
+---
 
 ## <a name="input---configuration"></a>Dane wejściowe — Konfiguracja
 
@@ -1742,8 +1704,8 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**Nazwa**     | nd. | Nazwa parametru powiązania, który reprezentuje dokument w funkcji.  |
 |**databaseName** |**DatabaseName** |Baza danych zawiera dokument.        |
 |**collectionName** |**collectionName** | Nazwa kolekcji, która zawiera dokument. |
-|**id**    | **Identyfikator** | Identyfikator dokumentu do pobrania. Ta właściwość obsługuje [powiązania wyrażeń](./functions-bindings-expressions-patterns.md). Nie należy ustawiać zarówno **identyfikator** i **sqlQuery** właściwości. Jeśli nie ustawisz pojedynczo, zostanie pobrana całą kolekcję. |
-|**sqlQuery**  |**SqlQuery**  | Zapytania SQL usługi Azure Cosmos DB używane do pobierania wiele dokumentów. Właściwość obsługuje powiązań środowiska uruchomieniowego, jak w poniższym przykładzie: `SELECT * FROM c where c.departmentId = {departmentId}`. Nie należy ustawiać zarówno **identyfikator** i **sqlQuery** właściwości. Jeśli nie ustawisz pojedynczo, zostanie pobrana całą kolekcję.|
+|**id**    | **Identyfikator** | Identyfikator dokumentu do pobrania. Ta właściwość obsługuje [powiązania wyrażeń](./functions-bindings-expressions-patterns.md). Nie ustawiaj właściwości `id` i **sqlQuery** . Jeśli nie ustawisz pojedynczo, zostanie pobrana całą kolekcję. |
+|**sqlQuery**  |**SqlQuery**  | Zapytania SQL usługi Azure Cosmos DB używane do pobierania wiele dokumentów. Właściwość obsługuje powiązań środowiska uruchomieniowego, jak w poniższym przykładzie: `SELECT * FROM c where c.departmentId = {departmentId}`. Nie ustawiaj właściwości `id` i `sqlQuery`. Jeśli nie ustawisz pojedynczo, zostanie pobrana całą kolekcję.|
 |**connectionStringSetting**     |**ConnectionStringSetting**|Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Azure Cosmos DB.        |
 |**partitionKey**|**PartitionKey**|Określa wartość klucza partycji do wyszukiwania. Może zawierać parametrów wiązania. Jest to wymagane w przypadku wyszukiwań w kolekcjach [partycjonowanych](../cosmos-db/partition-data.md#logical-partitions) .|
 
@@ -1751,35 +1713,38 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="input---usage"></a>Dane wejściowe — użycie
 
-W C# i F# funkcji, jeśli funkcja kończy działanie pomyślnie, wszelkie zmiany wprowadzone do dokument wejściowy za pośrednictwem danych wejściowych o nazwie parametry są automatycznie zachowywane.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-W funkcji języka JavaScript nie zostało zaktualizowane automatycznie po wyjściu z funkcji. Zamiast tego należy użyć `context.bindings.<documentName>In` i `context.bindings.<documentName>Out` Aby wprowadzić aktualizacje. Zapoznaj się z przykładem JavaScript.
+Gdy funkcja zostanie zakończona pomyślnie, wszelkie zmiany wprowadzone w dokumencie wejściowym za pośrednictwem nazwanych parametrów wejściowych są utrwalane automatycznie.
+
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Gdy funkcja zostanie zakończona pomyślnie, wszelkie zmiany wprowadzone w dokumencie wejściowym za pośrednictwem nazwanych parametrów wejściowych są utrwalane automatycznie.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Aktualizacje nie są wykonywane automatycznie po zamknięciu funkcji. Zamiast tego należy użyć `context.bindings.<documentName>In` i `context.bindings.<documentName>Out` Aby wprowadzić aktualizacje. Zapoznaj się z przykładem JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Dane są udostępniane funkcji za pośrednictwem parametru `DocumentList`. Zmiany wprowadzone do dokumentu nie są automatycznie utrwalane.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+W [bibliotece środowiska uruchomieniowego usługi Java Functions](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)adnotacja [@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) uwidacznia Cosmos DB dane do funkcji. Tej adnotacji można używać w przypadku natywnych typów Java, Pojo lub wartości null przy użyciu `Optional<T>`.
+
+---
 
 ## <a name="output"></a>Dane wyjściowe
 
 Dane wyjściowe usługi Azure Cosmos DB, powiązania pozwala zapisać nowy dokument z bazą danych Azure Cosmos DB przy użyciu interfejsu API SQL.
 
-## <a name="output---examples"></a>Dane wyjściowe — przykłady
-
-Zobacz przykłady specyficzny dla języka:
-
-* [C#](#output---c-examples)
-* [Skryptu C# (csx)](#output---c-script-examples)
-* [F#](#output---f-examples)
-* [Java](#output---java-examples)
-* [JavaScript](#output---javascript-examples)
-* [Python](#output---python-examples)
-
-Zobacz też [wejściowych przykład](#input---c-examples) , który używa `DocumentClient`.
-
-[Pomiń przykładowe dane wyjściowe](#output---attributes)
-
-### <a name="output---c-examples"></a>Dane wyjściowe — C# przykłady
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Ta sekcja zawiera następujące przykłady:
 
-* Wyzwalacz kolejki, doc jeden zapisu
-* Wyzwalacz kolejki, dokumentacja zapisu przy użyciu IAsyncCollector
+* [Wyzwalacz kolejki, napisz jeden dokument](#queue-trigger-write-one-doc-c)
+* [Wyzwalacz kolejki, Zapisz dokumenty przy użyciu IAsyncCollector](#queue-trigger-write-docs-using-iasynccollector-c)
 
 Przykłady dotyczą prostego `ToDoItem` typu:
 
@@ -1794,9 +1759,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykładowe dane wyjściowe](#output---attributes)
+<a id="queue-trigger-write-one-doc-c"></a>
 
-#### <a name="queue-trigger-write-one-doc-c"></a>Wyzwalacz kolejki, doc jeden zapis (C#)
+### <a name="queue-trigger-write-one-doc"></a>Wyzwalacz kolejki, doc jeden zapisu
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , dodanie dokumentu do bazy danych przy użyciu danych podany w wiadomości z usługi Queue storage.
 
@@ -1828,9 +1793,9 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykładowe dane wyjściowe](#output---attributes)
+<a id="queue-trigger-write-docs-using-iasynccollector-c"></a>
 
-#### <a name="queue-trigger-write-docs-using-iasynccollector-c"></a>Wyzwalacz kolejki, dokumentacja zapisu przy użyciu IAsyncCollector (C#)
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Wyzwalacz kolejki, dokumentacja zapisu przy użyciu IAsyncCollector
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) kolekcji dokumentów, który dodaje w bazie danych, przy użyciu danych w komunikatu w kolejce JSON.
 
@@ -1866,18 +1831,17 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Pomiń przykładowe dane wyjściowe](#output---attributes)
-
-### <a name="output---c-script-examples"></a>Dane wyjściowe — przykłady skryptów w języku C#
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
 Ta sekcja zawiera następujące przykłady:
 
-* Wyzwalacz kolejki, doc jeden zapisu
-* Wyzwalacz kolejki, dokumentacja zapisu przy użyciu IAsyncCollector
+* [Wyzwalacz kolejki, napisz jeden dokument](#queue-trigger-write-one-doc-c-script)
+* [Wyzwalacz kolejki, Zapisz dokumenty przy użyciu IAsyncCollector](#queue-trigger-write-docs-using-iasynccollector-c-script)
 
-[Pomiń przykładowe dane wyjściowe](#output---attributes)
 
-#### <a name="queue-trigger-write-one-doc-c-script"></a>Wyzwalacz kolejki, doc jeden zapisu (skrypt języka C#)
+<a id="queue-trigger-write-one-doc-c-script"></a>
+
+### <a name="queue-trigger-write-one-doc"></a>Wyzwalacz kolejki, doc jeden zapisu
 
 W poniższym przykładzie pokazano powiązania w danych wyjściowych usługi Azure Cosmos DB *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja używa powiązania danych wejściowych w kolejce dla kolejki, która odbiera JSON w następującym formacie:
 
@@ -1940,7 +1904,9 @@ Poniżej przedstawiono kod skryptu języka C#:
     }
 ```
 
-#### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Wyzwalacz kolejki, dokumentacja zapisu przy użyciu IAsyncCollector
+<a id="queue-trigger-write-docs-using-iasynccollector-c-script"></a>
+
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Wyzwalacz kolejki, dokumentacja zapisu przy użyciu IAsyncCollector
 
 Aby utworzyć wiele dokumentów, można powiązać `ICollector<T>` lub `IAsyncCollector<T>` gdzie `T` jest jednym z obsługiwanych typów.
 
@@ -2000,9 +1966,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-[Pomiń przykładowe dane wyjściowe](#output---attributes)
-
-### <a name="output---javascript-examples"></a>Dane wyjściowe — przykłady kodu JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 W poniższym przykładzie pokazano powiązania w danych wyjściowych usługi Azure Cosmos DB *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja używa powiązania danych wejściowych w kolejce dla kolejki, która odbiera JSON w następującym formacie:
 
@@ -2057,240 +2021,7 @@ Poniżej przedstawiono kod JavaScript:
     };
 ```
 
-[Pomiń przykładowe dane wyjściowe](#output---attributes)
-
-### <a name="output---f-examples"></a>Dane wyjściowe — F# przykłady
-
-W poniższym przykładzie pokazano powiązania w danych wyjściowych usługi Azure Cosmos DB *function.json* pliku i [ F# funkcja](functions-reference-fsharp.md) powiązania, który używa. Funkcja używa powiązania danych wejściowych w kolejce dla kolejki, która odbiera JSON w następującym formacie:
-
-```json
-{
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-Funkcja tworzy dokumentów usługi Azure Cosmos DB w następującym formacie, dla każdego rekordu:
-
-```json
-{
-    "id": "John Henry-123456",
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-Oto powiązanie danych w *function.json* pliku:
-
-```json
-{
-    "name": "employeeDocument",
-    "type": "cosmosDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": true,
-    "connectionStringSetting": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-[Konfiguracji](#output---configuration) sekcji opisano te właściwości.
-
-Oto F# kodu:
-
-```fsharp
-    open FSharp.Interop.Dynamic
-    open Newtonsoft.Json
-    open Microsoft.Extensions.Logging
-    let Run(myQueueItem: string, employeeDocument: byref<obj>, log: ILogger) =
-      log.LogInformation(sprintf "F# Queue trigger function processed: %s" myQueueItem)
-      let employee = JObject.Parse(myQueueItem)
-      employeeDocument <-
-        { id = sprintf "%s-%s" employee?name employee?employeeId
-          name = employee?name
-          employeeId = employee?employeeId
-          address = employee?address }
-```
-
-W tym przykładzie wymaga `project.json` pliku, który określa `FSharp.Interop.Dynamic` i `Dynamitey` zależności NuGet:
-
-```json
-{
-    "frameworks": {
-        "net46": {
-          "dependencies": {
-            "Dynamitey": "1.0.2",
-            "FSharp.Interop.Dynamic": "3.0.0"
-           }
-        }
-    }
-}
-```
-
-Aby dodać `project.json` plików, zobacz [ F# Zarządzanie pakietami](functions-reference-fsharp.md#package).
-
-### <a name="output---java-examples"></a>Dane wyjściowe — przykłady dla środowiska Java
-
-* [Wyzwalacz kolejki, Zapisz komunikat do bazy danych za pośrednictwem wartości zwracanej](#queue-trigger-save-message-to-database-via-return-value-java)
-* [Wyzwalacz HTTP, Zapisz jeden dokument do bazy danych za pośrednictwem wartości zwracanej](#http-trigger-save-one-document-to-database-via-return-value-java)
-* [Wyzwalacz HTTP, Zapisz jeden dokument do bazy danych za pośrednictwem kodu Wyjściowegobinding](#http-trigger-save-one-document-to-database-via-outputbinding-java)
-* [Wyzwalacz HTTP, zapisanie wielu dokumentów do bazy danych za pośrednictwem kodu Wyjściowegobinding](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
-
-
-#### <a name="queue-trigger-save-message-to-database-via-return-value-java"></a>Wyzwalacz kolejki, Zapisz komunikat do bazy danych za pośrednictwem wartości zwracanej (Java)
-
-Poniższy przykład pokazuje funkcję języka Java, która dodaje dokument do bazy danych z danymi z wiadomości w usłudze queue storage.
-
-```java
-@FunctionName("getItem")
-@CosmosDBOutput(name = "database",
-  databaseName = "ToDoList",
-  collectionName = "Items",
-  connectionStringSetting = "AzureCosmosDBConnection")
-public String cosmosDbQueryById(
-    @QueueTrigger(name = "msg",
-      queueName = "myqueue-items",
-      connection = "AzureWebJobsStorage")
-    String message,
-    final ExecutionContext context)  {
-     return "{ id: \"" + System.currentTimeMillis() + "\", Description: " + message + " }";
-   }
-```
-
-#### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>Wyzwalacz HTTP, Zapisz jeden dokument do bazy danych za pośrednictwem wartości zwracanej (Java)
-
-Poniższy przykład pokazuje funkcję języka Java, której podpis jest oznaczony ```@CosmosDBOutput``` i ma zwracaną wartość typu ```String```. Dokument JSON zwrócony przez funkcję zostanie automatycznie zapisany w odpowiedniej kolekcji CosmosDB.
-
-```java
-    @FunctionName("WriteOneDoc")
-    @CosmosDBOutput(name = "database",
-      databaseName = "ToDoList",
-      collectionName = "Items",
-      connectionStringSetting = "Cosmos_DB_Connection_String")
-    public String run(
-            @HttpTrigger(name = "req",
-              methods = {HttpMethod.GET, HttpMethod.POST},
-              authLevel = AuthorizationLevel.ANONYMOUS)
-            HttpRequestMessage<Optional<String>> request,
-            final ExecutionContext context) {
-
-        // Item list
-        context.getLogger().info("Parameters are: " + request.getQueryParameters());
-
-        // Parse query parameter
-        String query = request.getQueryParameters().get("desc");
-        String name = request.getBody().orElse(query);
-
-        // Generate random ID
-        final int id = Math.abs(new Random().nextInt());
-
-        // Generate document
-        final String jsonDocument = "{\"id\":\"" + id + "\", " +
-                                    "\"description\": \"" + name + "\"}";
-
-        context.getLogger().info("Document to be saved: " + jsonDocument);
-
-        return jsonDocument;
-    }
-```
-
-#### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>Wyzwalacz HTTP, Zapisz jeden dokument do bazy danych za pośrednictwem kodu Wyjściowegobinding (Java)
-
-Poniższy przykład pokazuje funkcję języka Java, która zapisuje dokument do CosmosDB za pośrednictwem parametru wyjściowego ```OutputBinding<T>```. Należy pamiętać, że w tej konfiguracji jest to parametr ```outputItem```, do którego należy dodać adnotację przy użyciu ```@CosmosDBOutput```, a nie sygnatury funkcji. Korzystanie z ```OutputBinding<T>``` umożliwia korzystanie z funkcji powiązania w celu zapisania dokumentu w CosmosDB, a jednocześnie pozwala zwrócić inną wartość do obiektu wywołującego funkcji, takiego jak dokument JSON lub XML.
-
-```java
-    @FunctionName("WriteOneDocOutputBinding")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req",
-              methods = {HttpMethod.GET, HttpMethod.POST},
-              authLevel = AuthorizationLevel.ANONYMOUS)
-            HttpRequestMessage<Optional<String>> request,
-            @CosmosDBOutput(name = "database",
-              databaseName = "ToDoList",
-              collectionName = "Items",
-              connectionStringSetting = "Cosmos_DB_Connection_String")
-            OutputBinding<String> outputItem,
-            final ExecutionContext context) {
-
-        // Parse query parameter
-        String query = request.getQueryParameters().get("desc");
-        String name = request.getBody().orElse(query);
-
-        // Item list
-        context.getLogger().info("Parameters are: " + request.getQueryParameters());
-
-        // Generate random ID
-        final int id = Math.abs(new Random().nextInt());
-
-        // Generate document
-        final String jsonDocument = "{\"id\":\"" + id + "\", " +
-                                    "\"description\": \"" + name + "\"}";
-
-        context.getLogger().info("Document to be saved: " + jsonDocument);
-
-        // Set outputItem's value to the JSON document to be saved
-        outputItem.setValue(jsonDocument);
-
-        // return a different document to the browser or calling client.
-        return request.createResponseBuilder(HttpStatus.OK)
-                      .body("Document created successfully.")
-                      .build();
-    }
-```
-
-#### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>Wyzwalacz HTTP, zapisywanie wielu dokumentów do bazy danych za pośrednictwem kodu Wyjściowegobinding (Java)
-
-Poniższy przykład pokazuje funkcję języka Java, która zapisuje wiele dokumentów do CosmosDB za pośrednictwem parametru wyjściowego ```OutputBinding<T>```. Należy pamiętać, że w tej konfiguracji jest to parametr ```outputItem```, do którego należy dodać adnotację przy użyciu ```@CosmosDBOutput```, a nie sygnatury funkcji. Parametr wyjściowy, ```outputItem``` ma listę obiektów ```ToDoItem``` jako typ parametru szablonu. Używanie ```OutputBinding<T>``` umożliwia korzystanie z funkcji powiązania w celu zapisywania dokumentów w CosmosDB, a jednocześnie pozwala zwrócić inną wartość do obiektu wywołującego funkcji, takiego jak dokument JSON lub XML.
-
-```java
-    @FunctionName("WriteMultipleDocsOutputBinding")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req",
-              methods = {HttpMethod.GET, HttpMethod.POST},
-              authLevel = AuthorizationLevel.ANONYMOUS)
-            HttpRequestMessage<Optional<String>> request,
-            @CosmosDBOutput(name = "database",
-              databaseName = "ToDoList",
-              collectionName = "Items",
-              connectionStringSetting = "Cosmos_DB_Connection_String")
-            OutputBinding<List<ToDoItem>> outputItem,
-            final ExecutionContext context) {
-
-        // Parse query parameter
-        String query = request.getQueryParameters().get("desc");
-        String name = request.getBody().orElse(query);
-
-        // Item list
-        context.getLogger().info("Parameters are: " + request.getQueryParameters());
-
-        // Generate documents
-        List<ToDoItem> items = new ArrayList<>();
-
-        for (int i = 0; i < 5; i ++) {
-          // Generate random ID
-          final int id = Math.abs(new Random().nextInt());
-
-          // Create ToDoItem
-          ToDoItem item = new ToDoItem(String.valueOf(id), name);
-
-          items.add(item);
-        }
-
-        // Set outputItem's value to the list of POJOs to be saved
-        outputItem.setValue(items);
-        context.getLogger().info("Document to be saved: " + items);
-
-        // return a different document to the browser or calling client.
-        return request.createResponseBuilder(HttpStatus.OK)
-                      .body("Documents created successfully.")
-                      .build();
-    }
-```
-
-W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@CosmosDBOutput` w parametrach, które będą zapisywane w Cosmos DB.  Typ parametru adnotacji powinien mieć wartość ```OutputBinding<T>```, gdzie T jest natywnym typem Java lub POJO.
-
-### <a name="output---python-examples"></a>Dane wyjściowe — przykłady dla środowiska Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 W poniższym przykładzie pokazano, jak napisać dokument do bazy danych usługi Azure CosmosDB jako dane wyjściowe funkcji.
 
@@ -2342,7 +2073,178 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+* [Wyzwalacz kolejki, Zapisz komunikat do bazy danych za pośrednictwem wartości zwracanej](#queue-trigger-save-message-to-database-via-return-value-java)
+* [Wyzwalacz HTTP, Zapisz jeden dokument do bazy danych za pośrednictwem wartości zwracanej](#http-trigger-save-one-document-to-database-via-return-value-java)
+* [Wyzwalacz HTTP, Zapisz jeden dokument do bazy danych za pośrednictwem kodu Wyjściowegobinding](#http-trigger-save-one-document-to-database-via-outputbinding-java)
+* [Wyzwalacz HTTP, zapisanie wielu dokumentów do bazy danych za pośrednictwem kodu Wyjściowegobinding](#http-trigger-save-multiple-documents-to-database-via-outputbinding-java)
+
+
+<a id="queue-trigger-save-message-to-database-via-return-value-java"></a>
+
+### <a name="queue-trigger-save-message-to-database-via-return-value"></a>Wyzwalacz kolejki, Zapisz komunikat do bazy danych za pośrednictwem wartości zwracanej
+
+Poniższy przykład pokazuje funkcję języka Java, która dodaje dokument do bazy danych z danymi z wiadomości w usłudze queue storage.
+
+```java
+@FunctionName("getItem")
+@CosmosDBOutput(name = "database",
+  databaseName = "ToDoList",
+  collectionName = "Items",
+  connectionStringSetting = "AzureCosmosDBConnection")
+public String cosmosDbQueryById(
+    @QueueTrigger(name = "msg",
+      queueName = "myqueue-items",
+      connection = "AzureWebJobsStorage")
+    String message,
+    final ExecutionContext context)  {
+     return "{ id: \"" + System.currentTimeMillis() + "\", Description: " + message + " }";
+   }
+```
+<a id="http-trigger-save-one-document-to-database-via-return-value-java"></a>
+
+#### <a name="http-trigger-save-one-document-to-database-via-return-value"></a>Wyzwalacz HTTP, Zapisz jeden dokument do bazy danych za pośrednictwem wartości zwracanej
+
+Poniższy przykład pokazuje funkcję języka Java, której podpis jest oznaczony ```@CosmosDBOutput``` i ma zwracaną wartość typu ```String```. Dokument JSON zwrócony przez funkcję zostanie automatycznie zapisany w odpowiedniej kolekcji CosmosDB.
+
+```java
+    @FunctionName("WriteOneDoc")
+    @CosmosDBOutput(name = "database",
+      databaseName = "ToDoList",
+      collectionName = "Items",
+      connectionStringSetting = "Cosmos_DB_Connection_String")
+    public String run(
+            @HttpTrigger(name = "req",
+              methods = {HttpMethod.GET, HttpMethod.POST},
+              authLevel = AuthorizationLevel.ANONYMOUS)
+            HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Generate random ID
+        final int id = Math.abs(new Random().nextInt());
+
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " +
+                                    "\"description\": \"" + name + "\"}";
+
+        context.getLogger().info("Document to be saved: " + jsonDocument);
+
+        return jsonDocument;
+    }
+```
+
+<a id="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>
+
+### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>Wyzwalacz HTTP, Zapisz jeden dokument do bazy danych za pośrednictwem kodu Wyjściowegobinding
+
+Poniższy przykład pokazuje funkcję języka Java, która zapisuje dokument do CosmosDB za pośrednictwem parametru wyjściowego ```OutputBinding<T>```. W tym przykładzie do parametru ```outputItem``` należy dodać adnotację przy użyciu ```@CosmosDBOutput```, a nie sygnatury funkcji. Korzystanie z ```OutputBinding<T>``` umożliwia korzystanie z funkcji powiązania w celu zapisania dokumentu w CosmosDB, a jednocześnie pozwala zwrócić inną wartość do obiektu wywołującego funkcji, takiego jak dokument JSON lub XML.
+
+```java
+    @FunctionName("WriteOneDocOutputBinding")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req",
+              methods = {HttpMethod.GET, HttpMethod.POST},
+              authLevel = AuthorizationLevel.ANONYMOUS)
+            HttpRequestMessage<Optional<String>> request,
+            @CosmosDBOutput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              connectionStringSetting = "Cosmos_DB_Connection_String")
+            OutputBinding<String> outputItem,
+            final ExecutionContext context) {
+
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+
+        // Generate random ID
+        final int id = Math.abs(new Random().nextInt());
+
+        // Generate document
+        final String jsonDocument = "{\"id\":\"" + id + "\", " +
+                                    "\"description\": \"" + name + "\"}";
+
+        context.getLogger().info("Document to be saved: " + jsonDocument);
+
+        // Set outputItem's value to the JSON document to be saved
+        outputItem.setValue(jsonDocument);
+
+        // return a different document to the browser or calling client.
+        return request.createResponseBuilder(HttpStatus.OK)
+                      .body("Document created successfully.")
+                      .build();
+    }
+```
+
+<a id="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>
+
+### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>Wyzwalacz HTTP, zapisanie wielu dokumentów do bazy danych za pośrednictwem kodu Wyjściowegobinding
+
+Poniższy przykład pokazuje funkcję języka Java, która zapisuje wiele dokumentów do CosmosDB za pośrednictwem parametru wyjściowego ```OutputBinding<T>```. W tym przykładzie parametr ```outputItem``` jest oznaczony przy użyciu ```@CosmosDBOutput```, a nie sygnatury funkcji. Parametr wyjściowy, ```outputItem``` ma listę obiektów ```ToDoItem``` jako typ parametru szablonu. Używanie ```OutputBinding<T>``` umożliwia korzystanie z funkcji powiązania w celu zapisywania dokumentów w CosmosDB, a jednocześnie pozwala zwrócić inną wartość do obiektu wywołującego funkcji, takiego jak dokument JSON lub XML.
+
+```java
+    @FunctionName("WriteMultipleDocsOutputBinding")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req",
+              methods = {HttpMethod.GET, HttpMethod.POST},
+              authLevel = AuthorizationLevel.ANONYMOUS)
+            HttpRequestMessage<Optional<String>> request,
+            @CosmosDBOutput(name = "database",
+              databaseName = "ToDoList",
+              collectionName = "Items",
+              connectionStringSetting = "Cosmos_DB_Connection_String")
+            OutputBinding<List<ToDoItem>> outputItem,
+            final ExecutionContext context) {
+
+        // Parse query parameter
+        String query = request.getQueryParameters().get("desc");
+        String name = request.getBody().orElse(query);
+
+        // Item list
+        context.getLogger().info("Parameters are: " + request.getQueryParameters());
+
+        // Generate documents
+        List<ToDoItem> items = new ArrayList<>();
+
+        for (int i = 0; i < 5; i ++) {
+          // Generate random ID
+          final int id = Math.abs(new Random().nextInt());
+
+          // Create ToDoItem
+          ToDoItem item = new ToDoItem(String.valueOf(id), name);
+
+          items.add(item);
+        }
+
+        // Set outputItem's value to the list of POJOs to be saved
+        outputItem.setValue(items);
+        context.getLogger().info("Document to be saved: " + items);
+
+        // return a different document to the browser or calling client.
+        return request.createResponseBuilder(HttpStatus.OK)
+                      .body("Documents created successfully.")
+                      .build();
+    }
+```
+
+W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@CosmosDBOutput` w parametrach, które będą zapisywane w Cosmos DB.  Typ parametru adnotacji powinien mieć wartość ```OutputBinding<T>```, gdzie T jest natywnym typem Java lub POJO.
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Dane wyjściowe — atrybuty i adnotacje
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) .
 
@@ -2358,7 +2260,23 @@ Konstruktor atrybutu ma nazwę bazy danych i nazwę kolekcji. Aby uzyskać infor
     }
 ```
 
-Aby uzyskać pełny przykład, zobacz Output- C# example.
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Atrybuty nie są obsługiwane przez C# skrypt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atrybuty nie są obsługiwane przez język JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Atrybuty nie są obsługiwane przez język Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Adnotacja `CosmosDBOutput` jest dostępna do zapisywania danych do Cosmos DB. Adnotację można zastosować do funkcji lub do poszczególnych parametrów funkcji. W przypadku użycia na metodzie funkcji zwracana wartość funkcji jest zapisywana w Cosmos DB. Jeśli używasz adnotacji z parametrem, typ parametru musi być zadeklarowany jako `OutputBinding<T>`, gdzie `T` natywny typ Java lub POJO.
+
+---
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
@@ -2372,8 +2290,8 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**databaseName** | **DatabaseName**|Baza danych, zawierający kolekcję, w którym zostanie utworzona dokumentu.     |
 |**collectionName** |**collectionName**  | Nazwa kolekcji jest tworzona dokumentu. |
 |**createIfNotExists**  |**createIfNotExists**    | Wartość logiczna, aby wskazać, czy kolekcja jest tworzona, gdy nie istnieje. Wartość domyślna to *false* ponieważ nowych kolekcji są tworzone z zarezerwowaną przepływnością, co ma koszt skutki. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
-|**partitionKey**|**PartitionKey** |Gdy `CreateIfNotExists` ma wartość true, określa ścieżkę klucza partycji dla utworzonej kolekcji.|
-|**collectionThroughput**|**collectionThroughput**| Gdy `CreateIfNotExists` ma wartość true, określa [przepływności](../cosmos-db/set-throughput.md) utworzonej kolekcji.|
+|**partitionKey**|**PartitionKey** |Gdy `CreateIfNotExists` ma wartość true, definiuje ścieżkę klucza partycji dla utworzonej kolekcji.|
+|**collectionThroughput**|**collectionThroughput**| Gdy `CreateIfNotExists` ma wartość true, definiuje [przepływność](../cosmos-db/set-throughput.md) utworzonej kolekcji.|
 |**connectionStringSetting**    |**ConnectionStringSetting** |Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi Azure Cosmos DB.        |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

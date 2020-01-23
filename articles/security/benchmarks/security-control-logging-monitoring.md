@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: ceb82bf729470f9996bc9ecc766329a0d1242ec4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ae9c678d9dfca895ec74ed92bcb1b541db6b134e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930030"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545504"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Kontrola zabezpieczeń: rejestrowanie i monitorowanie
 
@@ -77,7 +77,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 |--|--|--|
 | 2.4 | 6,2, 6,3 | Klient |
 
-Jeśli zasób obliczeniowy należy do firmy Microsoft, firma Microsoft jest odpowiedzialna za ich monitorowanie. Jeśli zasób obliczeniowy należy do organizacji, odpowiedzialność za jego monitorowanie. Aby monitorować system operacyjny, można użyć Azure Security Center. Dane zbierane przez Security Center z systemu operacyjnego obejmują typ i wersję systemu operacyjnego, system operacyjny (dzienniki zdarzeń systemu Windows), uruchomione procesy, nazwę komputera, adresy IP i zalogowanego użytkownika. Agent Log Analytics również zbiera pliki zrzutu awaryjnego.
+Jeśli zasób obliczeniowy należy do firmy Microsoft, firma Microsoft jest odpowiedzialna za ich monitorowanie. Jeśli zasób obliczeniowy należy do organizacji, odpowiedzialność za jego monitorowanie. Aby monitorować system operacyjny, można użyć Azure Security Center. Dane zbierane przez Security Center z systemu operacyjnego obejmują typ i wersję systemu operacyjnego, Dzienniki systemu operacyjnego (dzienniki zdarzeń systemu Windows), uruchomione procesy, nazwy maszyn, adresy IP i zalogowanego użytkownika. Agent Log Analytics również zbiera pliki zrzutu awaryjnego.
 
 Jak zbierać dzienniki wewnętrznego hosta maszyny wirtualnej platformy Azure z Azure Monitor:
 
@@ -147,7 +147,7 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 | Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
 |--|--|--|
-| 2.8 | 8,6 | Klient |
+| 2.8 | 8.6 | Klient |
 
 Włącz zbieranie zdarzeń chroniących przed złośliwym kodem dla Virtual Machines platformy Azure i Cloud Services.
 

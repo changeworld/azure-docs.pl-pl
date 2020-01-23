@@ -1,18 +1,18 @@
 ---
 title: Używanie Azure Event Grid ze zdarzeniami w schemacie CloudEvents
-description: Opisuje sposób ustawiania schematu CloudEvents dla zdarzeń w Azure Event Grid.
+description: Opisuje sposób używania schematu CloudEvents dla zdarzeń w Azure Event Grid. Usługa obsługuje zdarzenia w implementacji JSON zdarzeń w chmurze.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 78498f06a1ec921813d886b426d62452f850f5e5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922744"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548054"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Używanie schematu CloudEvents v 1.0 z Event Grid
 
@@ -139,11 +139,85 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CloudEventSchemaV1_0
 ```
 
- Obecnie nie można używać wyzwalacza Event Grid dla aplikacji Azure Functions, gdy zdarzenie jest dostarczane w schemacie CloudEvents. Użyj wyzwalacza HTTP. Przykłady implementacji wyzwalacza HTTP, który odbiera zdarzenia w schemacie CloudEvents, można znaleźć w temacie [Używanie wyzwalacza http jako wyzwalacza Event Grid](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger).
+ Obecnie nie można używać wyzwalacza Event Grid dla aplikacji Azure Functions, gdy zdarzenie jest dostarczane w schemacie CloudEvents. Użyj wyzwalacza HTTP. Przykłady implementacji wyzwalacza HTTP, który odbiera zdarzenia w schemacie CloudEvents, można znaleźć w temacie [using CloudEvents with Azure Functions](#azure-functions).
 
  ## <a name="endpoint-validation-with-cloudevents-v10"></a>Walidacja punktu końcowego z CloudEvents v 1.0
 
 Jeśli znasz już Event Grid, możesz mieć świadomość, Event Grid uzgadniania sprawdzania poprawności punktu końcowego w celu zapobiegania nadużyciom. CloudEvents v 1.0 implementuje własną [semantykę ochrony przed nadużyciami](security-authentication.md#webhook-event-delivery) przy użyciu metody http Options. Więcej informacji na ten temat można znaleźć [tutaj](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). W przypadku korzystania ze schematu CloudEvents dla danych wyjściowych Event Grid jest używany z ochroną nadużycia CloudEvents v 1.0 zamiast mechanizmu zdarzenia walidacji Event Grid.
+
+<a name="azure-functions"></a>
+
+## <a name="use-with-azure-functions"></a>Używanie z Azure Functions
+
+[Powiązanie Event Grid Azure Functions](../azure-functions/functions-bindings-event-grid.md) nie obsługuje natywnie CloudEvents, więc funkcje wyzwalane przez protokół HTTP są używane do odczytywania komunikatów CloudEvents. W przypadku korzystania z wyzwalacza HTTP w celu odczytu CloudEvents należy napisać kod, który automatycznie wyzwalacz Event Grid:
+
+* Wysyła odpowiedź weryfikacji do [żądania weryfikacji subskrypcji](../event-grid/security-authentication.md#webhook-event-delivery).
+* Wywołuje funkcję jeden raz dla elementu tablicy zdarzeń zawartej w treści żądania.
+
+Aby uzyskać informacje o adresie URL używanym do wywoływania funkcji lokalnie lub uruchamianej na platformie Azure, zobacz [dokumentację referencyjną powiązania wyzwalacza http](../azure-functions/functions-bindings-http-webhook.md)
+
+Następujący przykładowy C# kod dla wyzwalacza http symuluje działanie wyzwalacza Event Grid.  Użyj tego przykładu dla zdarzeń dostarczonych w schemacie CloudEvents.
+
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+
+    var requestmessage = await req.Content.ReadAsStringAsync();
+    var message = JToken.Parse(requestmessage);
+
+    if (message.Type == JTokenType.Array)
+    {
+        // If the request is for subscription validation, send back the validation code.
+        if (string.Equals((string)message[0]["eventType"],
+        "Microsoft.EventGrid.SubscriptionValidationEvent",
+        System.StringComparison.OrdinalIgnoreCase))
+        {
+            log.LogInformation("Validate request received");
+            return req.CreateResponse<object>(new
+            {
+                validationResponse = message[0]["data"]["validationCode"]
+            });
+        }
+    }
+    else
+    {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        log.LogInformation($"Source: {message["source"]}");
+        log.LogInformation($"Time: {message["eventTime"]}");
+        log.LogInformation($"Event data: {message["data"].ToString()}");
+    }
+
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+Następujący przykładowy kod JavaScript dla wyzwalacza HTTP symuluje działanie wyzwalacza Event Grid. Użyj tego przykładu dla zdarzeń dostarczonych w schemacie CloudEvents.
+
+```javascript
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    var message = req.body;
+    // If the request is for subscription validation, send back the validation code.
+    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+        context.log('Validate request received');
+        var code = message[0].data.validationCode;
+        context.res = { status: 200, body: { "ValidationResponse": code } };
+    }
+    else {
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        var event = JSON.parse(message);
+        context.log('Source: ' + event.source);
+        context.log('Time: ' + event.eventTime);
+        context.log('Data: ' + JSON.stringify(event.data));
+    }
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

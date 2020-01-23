@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: fe09fb47a75ff9d412ffab2daafaf241a43443b4
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 8c2df4854f4cdb93c08e22f7dcdc23b1b69b13d6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75729611"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548785"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Wdrażanie Blob Storage platformy Azure w module IoT Edge na urządzeniu
 
@@ -37,7 +37,7 @@ Azure Portal przeprowadzi Cię przez proces tworzenia manifestu wdrażania i wyp
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrożenia
 
-Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON. Trzy kroki są zorganizowane na kartach: **moduły**, **trasy**i **Przegląd + Utwórz**.
+Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia. Trzy kroki są zorganizowane na kartach: **moduły**, **trasy**i **Przegląd + Utwórz**.
 
 #### <a name="add-modules"></a>Dodaj moduły
 
@@ -57,11 +57,11 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
    > [!IMPORTANT]
    > W Azure IoT Edge jest rozróżniana wielkość liter podczas wykonywania wywołań do modułów, a zestaw SDK magazynu jest również domyślnie pisany małymi literami. Mimo że nazwa modułu w [witrynie Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) to **AzureBlobStorageonIoTEdge**, zmiana nazwy na małe jest pomocne, aby upewnić się, że połączenia z usługą Azure Blob Storage na IoT Edge module nie zostaną przerwane.
 
-3. Na karcie **Opcje tworzenia kontenera** można podać kod JSON w celu udostępnienia informacji o koncie magazynu oraz instalacji magazynu na urządzeniu.
+3. Otwórz kartę **Opcje tworzenia kontenera** .
 
    ![Ustawienia sznurka modułu](./media/how-to-deploy-blob/addmodule-tab3.png)
 
-   Skopiuj i wklej poniższy kod JSON w polu, odwołując się do opisów symboli zastępczych w następnym kroku.
+   Skopiuj i wklej poniższy kod JSON w polu, aby podać informacje o koncie magazynu i instalację magazynu na urządzeniu.
   
    ```json
    {
@@ -80,13 +80,13 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
    }
    ```
 
-4. Zaktualizuj kod JSON skopiowany dla **opcji tworzenia kontenera** z następującymi informacjami:
+4. Zaktualizuj kod JSON skopiowany do **opcji tworzenia kontenera** z następującymi informacjami:
 
    - Zastąp `<your storage account name>` nazwą, którą można zapamiętać. Nazwy kont powinny składać się z od 3 do 24 znaków, z małymi literami i cyframi. Bez spacji.
 
    - Zastąp `<your storage account key>` kluczem Base64 o 64-bajcie. Możesz wygenerować klucz za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów.
 
-   - Zastąp `<storage mount>` zgodnie z systemem operacyjnym kontenera. Podaj nazwę [woluminu](https://docs.docker.com/storage/volumes/) bramy lub bezwzględna do katalogu na urządzeniu usługi IoT Edge, którego moduł obiektu blob do przechowywania swoich danych. Instalacja magazynu mapuje lokalizację na urządzeniu dostarczaną do lokalizacji zestawu w module.
+   - Zastąp `<storage mount>` zgodnie z systemem operacyjnym kontenera. Podaj nazwę [woluminu](https://docs.docker.com/storage/volumes/) lub ścieżkę bezwzględną do istniejącego katalogu na urządzeniu IoT Edge, w którym moduł obiektów BLOB będzie przechowywał swoje dane. Instalacja magazynu mapuje lokalizację na urządzeniu dostarczaną do lokalizacji zestawu w module.
 
      - W przypadku kontenerów systemu Linux format jest *\<ścieżce magazynu lub woluminu >:/blobroot*. Na przykład:
          - Użyj [instalacji woluminu](https://docs.docker.com/storage/volumes/): **My-Volume:/blobroot**
@@ -94,7 +94,7 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
      - W przypadku kontenerów systemu Windows format jest *\<ścieżka do magazynu lub wolumin >: C:/BlobRoot*. Na przykład:
          - Użyj [instalacji woluminu](https://docs.docker.com/storage/volumes/): **My-wolumin: C:/blobroot**.
          - Użyj [instalacji bind](https://docs.docker.com/storage/bind-mounts/): **c:/ContainerData: C:/BlobRoot**.
-         - Zamiast korzystać z dysku lokalnego, można zmapować lokalizację sieciową SMB. Aby uzyskać więcej informacji, zobacz [Używanie udziału SMB jako magazynu lokalnego](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) .
+         - Zamiast korzystać z dysku lokalnego, możesz zmapować lokalizację sieciową SMB, aby uzyskać więcej informacji, zobacz [Używanie udziału SMB jako magazynu lokalnego](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) .
 
      > [!IMPORTANT]
      > Nie należy zmieniać drugiej połowy wartości instalacji magazynu, która wskazuje konkretną lokalizację w module. Instalacja magazynu powinna zawsze kończyć się z **:/blobroot** dla kontenerów systemu Linux i **: C:/blobroot** for Windows Containers.
@@ -261,6 +261,7 @@ Edytowanie **opcji tworzenia kontenera** (w Azure Portal) lub w polu " **isoptio
 Po podłączeniu do modułów magazynu obiektów blob dodatkowe Zmiana punktu końcowego portu zaktualizowanego hosta.
 
 ## <a name="next-steps"></a>Następne kroki
+
 Dowiedz się więcej o [usłudze Azure Blob Storage w systemie IoT Edge](how-to-store-data-blob.md)
 
 Aby uzyskać więcej informacji dotyczących sposobu manifesty wdrożenia pracy i jak je utworzyć, zobacz [zrozumieć, jak moduły usługi IoT Edge mogą być używane, skonfigurowania i ponownie](module-composition.md).

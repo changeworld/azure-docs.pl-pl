@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: bfce7d77f214762a69857e74f0bb533ad1ce0f1b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e98a1f49ebf0fd8811be8efe8d001d450959369a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107642"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549244"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dla deweloperów aplikacji do zarządzania zasobami w usłudze Azure Kubernetes Service (AKS)
 
 Podczas opracowywania i uruchamiania aplikacji w usłudze Azure Kubernetes Service (AKS) istnieje kilka kluczowych zagadnień, które należy wziąć pod uwagę. Zarządzanie wdrożeniami aplikacji może mieć negatywny wpływ na środowisko użytkownika końcowego, które zapewnia usługa. Aby pomóc w pomyślnym zapewnieniu, należy wziąć pod uwagę niektóre najlepsze rozwiązania, które można wykonać podczas tworzenia i uruchamiania aplikacji w AKS.
 
-Ten artykuł dotyczący najlepszych rozwiązań koncentruje się na sposobie uruchamiania klastra i obciążeń z perspektywy deweloperów aplikacji. Aby uzyskać informacje o najlepszych rozwiązaniach administracyjnych, zobacz [najlepsze rozwiązania operatorów klastrów na potrzeby izolacji i zarządzania zasobami w usłudze Azure Kubernetes Service (AKS)][operator-best-practices-isolation]. W tym artykule dowiesz się:
+Ten artykuł dotyczący najlepszych rozwiązań koncentruje się na sposobie uruchamiania klastra i obciążeń z perspektywy deweloperów aplikacji. Aby uzyskać informacje o najlepszych rozwiązaniach administracyjnych, zobacz [najlepsze rozwiązania operatorów klastrów na potrzeby izolacji i zarządzania zasobami w usłudze Azure Kubernetes Service (AKS)][operator-best-practices-isolation]. W tym artykule omówiono następujące zagadnienia:
 
 > [!div class="checklist"]
 > * Co to są żądania zasobów i limity

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 151e7b2ab091959c8b6c08d366318a49987aefd9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848531"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544025"
 ---
 # <a name="what-is-password-writeback"></a>Co to jest zapisywanie zwrotne haseł?
 
@@ -164,7 +164,7 @@ Hasła *nie* są zapisywane z powrotem w żadnej z następujących sytuacji:
    * Wszystkie zainicjowane przez administratora Resetowanie hasła użytkownika końcowego w [centrum administracyjnym Microsoft 365](https://admin.microsoft.com)
 
 > [!WARNING]
-> Użycie pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w lokalnych Active Directory narzędziach administracyjnych, takich jak Active Directory Użytkownicy i komputery, lub Centrum administracyjne usługi Active Directory jest obsługiwana jako funkcja w wersji zapoznawczej programu Azure AD Connect. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Implementacja synchronizacji skrótów haseł z synchronizacją Azure AD Connect](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon).
+> Użycie pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w lokalnych Active Directory narzędziach administracyjnych, takich jak Active Directory Użytkownicy i komputery, lub Centrum administracyjne usługi Active Directory jest obsługiwana jako funkcja w wersji zapoznawczej programu Azure AD Connect. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Implementacja synchronizacji skrótów haseł z synchronizacją Azure AD Connect](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 24a19487567f2753457d5886cbb9fa4bf438bad4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311346"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543311"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Uczenie się z zestawami danych w Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,8 +105,11 @@ experiment_run.wait_for_completion(show_output=True)
 Jeśli chcesz, aby pliki danych były dostępne w celu obliczeń na potrzeby szkoleń, użyj [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) do instalowania lub pobierania plików, do których się odwołuje.
 
 ### <a name="mount-vs-download"></a>V.s. instalacji Pobierz
-Podczas instalowania zestawu danych należy dołączyć pliki, do których odwołuje się zestaw danych, do katalogu (punktu instalacji) i udostępnić je w celu obliczenia. Instalowanie jest obsługiwane w przypadku obliczeń opartych na systemie Linux, w tym Azure Machine Learning obliczeń, maszyn wirtualnych i usługi HDInsight. Jeśli rozmiar danych przekracza rozmiar dysku obliczeniowego lub ładujesz tylko część zestawu danych w skrypcie, zaleca się zainstalowanie. Ponieważ pobieranie zestawu danych, który jest większy niż rozmiar dysku, zakończy się niepowodzeniem, a instalacja spowoduje załadowanie tylko części danych używanych przez skrypt w czasie przetwarzania. Podczas pobierania zestawu danych wszystkie pliki, do których odwołuje się zestaw danych, zostaną pobrane do elementu docelowego obliczeń. Pobieranie jest obsługiwane dla wszystkich typów obliczeń. Jeśli skrypt przetwarza wszystkie pliki, do których odwołuje się zestaw danych, a dysk obliczeniowy może pasować do pełnego zestawu danych, zaleca się pobieranie, aby uniknąć naliczania danych przesyłanych strumieniowo z usług magazynu.
+Podczas instalowania zestawu danych należy dołączyć pliki, do których odwołuje się zestaw danych, do katalogu (punktu instalacji) i udostępnić je w celu obliczenia. Instalowanie jest obsługiwane w przypadku obliczeń opartych na systemie Linux, w tym Azure Machine Learning obliczeń, maszyn wirtualnych i usługi HDInsight. Jeśli rozmiar danych przekracza rozmiar dysku obliczeniowego lub ładujesz tylko część zestawu danych w skrypcie, zaleca się zainstalowanie. Ponieważ pobieranie zestawu danych, który jest większy niż rozmiar dysku, zakończy się niepowodzeniem, a instalacja spowoduje załadowanie tylko części danych używanych przez skrypt w czasie przetwarzania. 
 
+Podczas pobierania zestawu danych wszystkie pliki, do których odwołuje się zestaw danych, zostaną pobrane do elementu docelowego obliczeń. Pobieranie jest obsługiwane dla wszystkich typów obliczeń. Jeśli skrypt przetwarza wszystkie pliki, do których odwołuje się zestaw danych, a dysk obliczeniowy może pasować do pełnego zestawu danych, zaleca się pobieranie, aby uniknąć naliczania danych przesyłanych strumieniowo z usług magazynu.
+
+Instalowanie lub pobieranie plików dowolnego formatu jest obsługiwane w przypadku zestawów danych utworzonych z usługi Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database i Azure Database for PostgreSQL. 
 
 ### <a name="create-a-filedataset"></a>Utwórz FileDataset
 

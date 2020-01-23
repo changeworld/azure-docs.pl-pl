@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: b6a019fbea2ebfed67db4f7c2a9b0f8085438aa8
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311652"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546694"
 ---
 # <a name="evaluate-model-module"></a>Oceń moduł modelu
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do mierzenia dokładności nauczonego modelu. Dostarczasz zestaw danych zawierający wyniki wygenerowane na podstawie modelu, a moduł **oceny modelu** obliczy zestaw metryk oceny standardowej w branży.
   

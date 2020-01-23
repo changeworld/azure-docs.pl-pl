@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 4dd2cd89e8edb4e636bf46d2a8125a0f1d00f2f3
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d15da0c0cb00f640d2ffc647475f66b76119f609
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312247"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548377"
 ---
 # <a name="tune-model-hyperparameters"></a>Dostrajanie hiperparametrów modelu
 
-W tym artykule opisano, jak używać modułu dostrajania parametrów modelu w programie Azure Machine Learning Designer. Celem jest określenie optymalnych parametrów dla modelu uczenia maszynowego. Moduł kompiluje i testuje wiele modeli przy użyciu różnych kombinacji ustawień. Porównuje metryki dla wszystkich modeli w celu uzyskania kombinacji ustawień. 
+W tym artykule opisano, jak używać modułu dostrajania parametrów modelu w programie Azure Machine Learning Designer (wersja zapoznawcza). Celem jest określenie optymalnych parametrów dla modelu uczenia maszynowego. Moduł kompiluje i testuje wiele modeli przy użyciu różnych kombinacji ustawień. Porównuje metryki dla wszystkich modeli w celu uzyskania kombinacji ustawień. 
 
 *Parametr* terms i *parametr preparameter* mogą być mylące. *Parametry* modelu są ustawiane w okienku właściwości. Zasadniczo ten moduł wykonuje *odczyszczenie parametrów* względem określonych ustawień parametrów. Poznasz optymalny zestaw _parametrów_, które mogą być różne dla każdego określonego drzewa decyzyjnego, zestawu danych lub metody regresji. Proces znajdowania optymalnej konfiguracji jest czasami nazywany *dostrajaniem*. 
 

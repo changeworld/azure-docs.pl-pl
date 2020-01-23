@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e85738c344189486726b4e7b7f5a76ab03c0ffa9
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 7dff2a88da2e12388bfb3a97cfdad236045170cf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991442"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543889"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Wdrażanie modułu zabezpieczeń na urządzeniu IoT Edge
 
@@ -66,15 +66,15 @@ Wykonaj następujące kroki, aby wdrożyć Azure Security Center dla modułu zab
     >[!Note] 
     >W przypadku wybrania **wdrożenia w odpowiedniej skali**należy dodać nazwę i szczegóły urządzenia przed przejściem do karty **Dodawanie modułów** w poniższych instrukcjach.     
 
-Istnieją trzy kroki umożliwiające utworzenie wdrożenia IoT Edge dla Azure Security Center dla IoT. W poniższych sekcjach omówiono każdy z nich. 
+Wykonaj każdy krok, aby ukończyć wdrożenie IoT Edge dla Azure Security Center dla IoT. 
 
-#### <a name="step-1-add-modules"></a>Krok 1. Dodawanie modułów
+#### <a name="step-1-modules"></a>Krok 1: moduły
 
-1. Na karcie **Dodawanie modułów** w obszarze **moduły wdrażania** kliknij opcję **Konfiguruj** dla **AzureSecurityCenterforIoT**. 
-   
-1. Zmień **nazwę** na **azureiotsecurity**.
-1. Zmień **Identyfikator URI obrazu** na **MCR.Microsoft.com/ascforiot/azureiotsecurity:1.0.0**.
-1. Sprawdź, czy **opcja tworzenia kontenera** ma ustawioną wartość:      
+1. Wybierz moduł **AzureSecurityCenterforIoT** .
+1. Na karcie **Ustawienia modułu** Zmień **nazwę** na **azureiotsecurity**.
+1. Na karcie **zmienne środowiskowe** , w razie potrzeby Dodaj zmienną (na przykład poziom debugowania).
+1. Na karcie **Opcje tworzenia kontenera** Dodaj następującą konfigurację:
+
     ``` json
     {
         "NetworkingConfig": {
@@ -92,24 +92,20 @@ Istnieją trzy kroki umożliwiające utworzenie wdrożenia IoT Edge dla Azure Se
         }
     }    
     ```
-1. Upewnij się, że wybrano **odpowiednie właściwości zestawu splotu modułu** i Zmień obiekt konfiguracji na:
+    
+1. Na karcie **Ustawienia sznurka modułu** Dodaj następującą konfigurację:
       
     ``` json
-    { 
-       "properties.desired":{ 
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{ 
-
-          }
-       }
-    }
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{}
     ```
 
-1. Kliknij przycisk **Save** (Zapisz).
-1. Przewiń w dół karty i wybierz pozycję **Konfiguruj zaawansowane ustawienia środowiska uruchomieniowego Edge**. 
-   
-1. Zmień **obraz** pod **węzłem Edge Hub** na **MCR.Microsoft.com/azureiotedge-Hub:1.0.8.3**.
+1. Wybierz pozycję **Update** (Aktualizuj).
 
-1. Sprawdź, czy **Opcje tworzenia** są ustawione na: 
+#### <a name="step-2-runtime-settings"></a>Krok 2. Ustawienia środowiska uruchomieniowego
+
+1. Wybierz pozycję **Ustawienia środowiska uruchomieniowego**.
+1. W obszarze **centrum brzegowe**Zmień **obraz** na **MCR.Microsoft.com/azureiotedge-Hub:1.0.8.3**.
+1. Sprawdź, czy **opcja Utwórz** jest ustawiona na następującą konfigurację: 
          
     ``` json
     { 
@@ -134,25 +130,30 @@ Istnieją trzy kroki umożliwiające utworzenie wdrożenia IoT Edge dla Azure Se
        }
     }
     ```
-1. Kliknij przycisk **Save** (Zapisz).
+    
+1. Wybierz pozycję **Zapisz**.
    
-1. Kliknij przycisk **Dalej**.
+1. Wybierz opcję **Dalej**.
 
-#### <a name="step-2-specify-routes"></a>Krok 2. Określanie tras 
+#### <a name="step-3-specify-routes"></a>Krok 3. Określanie tras 
 
-1. Na karcie **Określanie tras** upewnij się, że masz trasę (jawną lub niejawną), która przekaże komunikaty z modułu **azureiotsecurity** do **$upstream** zgodnie z poniższymi przykładami, a następnie kliknij przycisk **dalej**. 
+1. Na karcie **Określanie tras** upewnij się, że masz trasę (jawną lub niejawną), która przekaże komunikaty z modułu **azureiotsecurity** do **$upstream** zgodnie z poniższymi przykładami. Tylko wtedy, gdy trasa jest na miejscu, wybierz pozycję **dalej**.
 
-~~~Default implicit route
-"route": "FROM /messages/* INTO $upstream" 
-~~~
+   Przykładowe trasy:
 
-~~~Explicit route
-"ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-~~~
+    ~~~Default implicit route
+    "route": "FROM /messages/* INTO $upstream" 
+    ~~~
 
-#### <a name="step-3-review-deployment"></a>Krok 3. przegląd wdrożenia
+    ~~~Explicit route
+    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
+    ~~~
 
-- Na karcie **Przegląd wdrożenia** Przejrzyj informacje dotyczące wdrożenia, a następnie wybierz pozycję **Prześlij** , aby zakończyć wdrażanie.
+1. Wybierz opcję **Dalej**.
+
+#### <a name="step-4-review-deployment"></a>Krok 4. przegląd wdrożenia
+
+- Na karcie **Przegląd wdrożenia** Przejrzyj informacje o wdrożeniu, a następnie wybierz pozycję **Utwórz** , aby zakończyć wdrażanie.
 
 ## <a name="diagnostic-steps"></a>Kroki diagnostyczne
 
@@ -166,7 +167,7 @@ Jeśli wystąpi problem, dzienniki kontenerów są najlepszym sposobem poznania 
    
 1. Sprawdź, czy są uruchomione następujące kontenery:
    
-   | Nazwa | IMAGE |
+   | Nazwa | OBRAZ |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.1 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421961"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549091"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu SDK Azure WebJobs na potrzeby przetwarzania w tle opartego na zdarzeniach
 
@@ -681,8 +681,8 @@ Aby uzyskać więcej informacji, zobacz temat [Powiązywanie w środowisku uruch
 Dokumentacja Azure Functions zawiera informacje referencyjne dotyczące każdego typu powiązania. Poniższe informacje znajdują się w każdym artykule referencyjnym powiązania. (Ten przykład jest oparty na kolejce magazynu).
 
 * [Pakiety](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Pakiet, który należy zainstalować w celu uwzględnienia obsługi powiązania w projekcie zestawu SDK zadań WebJob.
-* [Przykłady](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Przykłady kodu. Przykład C# biblioteki klas dotyczy zestawu SDK zadań WebJob. Po prostu Pomiń atrybut `FunctionName`.
-* [Atrybuty](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). Atrybuty, które mają być używane dla typu powiązania.
+* [Przykłady](../azure-functions/functions-bindings-storage-queue.md#trigger). Przykłady kodu. Przykład C# biblioteki klas dotyczy zestawu SDK zadań WebJob. Po prostu Pomiń atrybut `FunctionName`.
+* [Atrybuty](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations). Atrybuty, które mają być używane dla typu powiązania.
 * [Konfiguracja](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Wyjaśnienia właściwości atrybutów i parametrów konstruktorów.
 * [Użycie](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Typy, do których można powiązać i informacje o sposobie działania powiązania. Na przykład: algorytm sondowania, przetwarzanie w kolejce trującej.
   

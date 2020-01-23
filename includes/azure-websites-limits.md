@@ -4,29 +4,29 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: a05229f22e1682d73b627e3b4644ba64e653335f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 17d6947efcbaf8a01aeca70bf7a88dcc7b65cd0a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414603"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548226"
 ---
-| Zasób | Bezpłatna | Udostępnione | Podstawowa | Standardowa (Standard) | Premium (v2) | Izolowane </th> |
+| Zasób | Bezpłatnie | Współdzielona | Basic | Standardowa | Premium (v2) | Izolowane </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Aplikacje internetowe, mobilne lub API](https://azure.microsoft.com/services/app-service/) na [Azure App Service plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Bez ograniczeń<sup>2</sup> |Bez ograniczeń<sup>2</sup> |Bez ograniczeń<sup>2</sup> |Bez ograniczeń<sup>2</sup>|
 | [Plan usługi App Service](../articles/app-service/overview-hosting-plans.md) |10 na region |10 na grupę zasobów |100 na grupę zasobów |100 na grupę zasobów |100 na grupę zasobów |100 na grupę zasobów|
-| Typ wystąpienia obliczeniowego |Udostępnione |Udostępnione |Dedykowane<sup>3</sup> |Dedykowane<sup>3</sup> |Dedykowane<sup>3</sup></p> |Dedykowane<sup>3</sup>|
+| Typ wystąpienia obliczeniowego |Współdzielona |Współdzielona |Dedykowane<sup>3</sup> |Dedykowane<sup>3</sup> |Dedykowane<sup>3</sup></p> |Dedykowane<sup>3</sup>|
 | [Skalowanie w poziomie](../articles/app-service/manage-scale-up.md) (maksymalna liczba wystąpień) |1 udostępniony |1 udostępniony |3 dedykowane<sup>3</sup> |10 dedykowanych<sup>3</sup> |30 dedykowanych<sup>3</sup>|100 dedykowany<sup>4</sup>|
 | Magazyn<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | Czas procesora CPU (5 minut)<sup>6</sup> |3 minuty |3 minuty |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a>|
 | Czas procesora CPU (dzień)<sup>6</sup> |60 minut |240 minut |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |
-| Pamięć (1 godzina) |1 024 MB na plan App Service |1 024 MB na aplikację |Nie dotyczy |Nie dotyczy |Nie dotyczy |Nie dotyczy |
+| Pamięć (1 godzina) |1 024 MB na plan App Service |1 024 MB na aplikację |ND |ND |ND |ND |
 | Przepustowość |165 MB |Nieograniczone, [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) są naliczane |Nieograniczone, [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) są naliczane |Nieograniczone, [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) są naliczane |Nieograniczone, [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) są naliczane |Nieograniczone, [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) są naliczane |
-| Architektura aplikacji |32 — bit |32 — bit |32-bitowa/64-bitowa |32-bitowa/64-bitowa |32-bitowa/64-bitowa |32-bitowa/64-bitowa |
-| Gniazda sieci Web na wystąpienie<sup>7</sup> |5 |35 |350 |Nieograniczona liczba |Nieograniczona liczba |Nieograniczona liczba |
-| Połączenia IP | 600 | 600 | Zależy od rozmiaru wystąpienia<sup>8</sup> | Zależy od rozmiaru wystąpienia<sup>8</sup> | Zależy od rozmiaru wystąpienia<sup>8</sup> | 64,000 |
+| Architektura aplikacji |32-bitowa |32-bitowa |32-bitowa/64-bitowa |32-bitowa/64-bitowa |32-bitowa/64-bitowa |32-bitowa/64-bitowa |
+| Gniazda sieci Web na wystąpienie<sup>7</sup> |5 |35 |350 |Bez ograniczeń |Bez ograniczeń |Bez ograniczeń |
+| Połączenia IP | 600 | 600 | Zależy od rozmiaru wystąpienia<sup>8</sup> | Zależy od rozmiaru wystąpienia<sup>8</sup> | Zależy od rozmiaru wystąpienia<sup>8</sup> | 16,000 |
 | Współbieżne [połączenia debugera](../articles/app-service/troubleshoot-dotnet-visual-studio.md) na aplikację |1 |1 |1 |5 |5 |5 |
-| App Service certyfikatów na subskrypcję<sup>9</sup>| Nieobsługiwane | Nieobsługiwane |10 |10 |10 |10 |
+| App Service certyfikatów na subskrypcję<sup>9</sup>| Brak obsługi | Brak obsługi |10 |10 |10 |10 |
 | Domeny niestandardowe na</a> aplikacji |0 (tylko poddomena azurewebsites.net)|500 |500 |500 |500 |500 |
 | [Obsługa protokołu SSL](../articles/app-service/configure-ssl-certificate.md) domeny niestandardowej |Nieobsługiwane, certyfikat wieloznaczny dla *. azurewebsites.net jest domyślnie dostępny|Nieobsługiwane, certyfikat wieloznaczny dla *. azurewebsites.net jest domyślnie dostępny|Nieograniczone połączenia SNI SSL |Uwzględniono nieograniczone SNI SSL i 1 Połączenie SSL z adresu IP połączeń |Uwzględniono nieograniczone SNI SSL i 1 Połączenie SSL z adresu IP połączeń | Uwzględniono nieograniczone SNI SSL i 1 Połączenie SSL z adresu IP połączeń|
 | Połączenia hybrydowe na plan | | | 5 | 25 | 200 | 200 |
@@ -38,7 +38,7 @@ ms.locfileid: "74414603"
 | Obsługa [usługi Azure Scheduler](https://azure.microsoft.com/services/scheduler/) | |X |X |X |X |X |
 | [Monitorowanie punktu końcowego](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | [Miejsca przejściowe](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
-| Umowa SLA | |  |99.95%|99.95%|99.95%|99.95%|  
+| Umowa SLA | |  |99,95%|99,95%|99,95%|99,95%|  
 
 <sup>1</sup> Aplikacje i przydziały magazynu są na App Service plan, chyba że zaznaczono inaczej.  
 <sup>2</sup> Rzeczywista liczba aplikacji, które można hostować na tych komputerach, zależy od aktywności aplikacji, rozmiaru wystąpień maszyn i odpowiedniego wykorzystania zasobów.  

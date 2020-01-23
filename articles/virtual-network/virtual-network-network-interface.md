@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2017
+ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: df2eb0886b71a2d5daaa95f33ef29a2afc7e112a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 11e6285ef70ffde5344add951801997f8541eaad
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980713"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543107"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
@@ -90,7 +90,7 @@ Można wyświetlać i zmieniać większość ustawień interfejsu sieciowego po 
    - **Właściwości:** Wyświetla ustawienia klucza dotyczące interfejsu sieciowego, w tym jego adres MAC (puste, jeśli interfejs sieciowy nie jest dołączony do maszyny wirtualnej) i subskrypcję, w której istnieje.
    - **Obowiązujące reguły zabezpieczeń:**  Reguły zabezpieczeń są wyświetlane, jeśli interfejs sieciowy jest dołączony do uruchomionej maszyny wirtualnej, a sieciowej grupy zabezpieczeń jest skojarzony z interfejsem sieciowym, podsiecią, do której jest przypisana, lub obie. Aby dowiedzieć się więcej na temat informacji, zobacz temat [Wyświetlanie obowiązujących reguł zabezpieczeń](#view-effective-security-rules). Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, zobacz [Network Security Groups](security-overview.md).
    - **Efektywne trasy:** Trasy są wyświetlane, jeśli interfejs sieciowy jest podłączony do uruchomionej maszyny wirtualnej. Trasy są kombinacją domyślnych tras platformy Azure, wszelkich tras zdefiniowanych przez użytkownika i wszelkich tras BGP, które mogą istnieć dla podsieci, do której jest przypisany interfejs sieciowy. Aby dowiedzieć się więcej na temat tego, co jest wyświetlane, zobacz [Wyświetlanie efektywnych tras](#view-effective-routes). Aby dowiedzieć się więcej na temat domyślnych tras platformy Azure i tras zdefiniowanych przez użytkownika, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
-   - **Typowe ustawienia Azure Resource Manager:**  Aby dowiedzieć się więcej o typowych ustawieniach Azure Resource Manager, zobacz [Dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md), [Kontrola dostępu (IAM)](../role-based-access-control/overview.md), [Tagi](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [blokady](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)i [skrypt automatyzacji](../azure-resource-manager/templates/export-template-portal.md).
+Typowe ustawienia Azure Resource Manager: Aby dowiedzieć się więcej o typowych ustawieniach Azure Resource Manager, zobacz [Dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md), [Kontrola dostępu (IAM)](../role-based-access-control/overview.md), [Tagi](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [blokady](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)i [skrypt automatyzacji](../azure-resource-manager/templates/export-template-portal.md).
 
 <a name="view-settings-commands"></a>**Polecenia**
 
@@ -168,7 +168,7 @@ Można zmienić podsieć, ale nie sieć wirtualną, do której przypisany jest i
 Możesz dodać interfejs sieciowy do lub usunąć interfejs sieciowy z grupy zabezpieczeń aplikacji przy użyciu portalu, jeśli interfejs sieciowy jest podłączony do maszyny wirtualnej. Możesz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby dodać interfejs sieciowy do lub usunąć interfejs sieciowy z grupy zabezpieczeń aplikacji, niezależnie od tego, czy interfejs sieciowy jest dołączony do maszyny wirtualnej, czy nie. Dowiedz się więcej o [grupach zabezpieczeń aplikacji](security-overview.md#application-security-groups) oraz o sposobie [tworzenia grupy zabezpieczeń aplikacji](manage-network-security-group.md).
 
 1. W polu *Wyszukaj zasoby, usługi i dokumenty* w górnej części portalu zacznij pisać nazwę maszyny wirtualnej, która ma interfejs sieciowy, do którego chcesz dodać lub usunąć z grupy zabezpieczeń aplikacji. Gdy nazwa maszyny wirtualnej zostanie wyświetlona w wynikach wyszukiwania, wybierz ją.
-2. W obszarze **USTAWIENIA** wybierz pozycję **Sieć**.  Wybierz pozycję **Konfiguruj grupy zabezpieczeń aplikacji**, wybierz grupy zabezpieczeń aplikacji, do których chcesz dodać interfejs sieciowy, lub usuń zaznaczenie grup zabezpieczeń aplikacji, z których chcesz usunąć interfejs sieciowy, a następnie wybierz pozycję **Zapisz**. Tylko interfejsy sieciowe, które znajdują się w tej samej sieci wirtualnej, można dodać do tej samej grupy zabezpieczeń aplikacji. Grupa zabezpieczeń aplikacji musi znajdować się w tej samej lokalizacji co interfejs sieciowy.
+2. W obszarze **USTAWIENIA** wybierz pozycję **Sieć**.  Wybierz pozycję **grupy zabezpieczeń aplikacji** , a następnie **Skonfiguruj grupy zabezpieczeń**aplikacji wybierz grupy zabezpieczeń aplikacji, do których chcesz dodać interfejs sieciowy, lub usuń zaznaczenie grup zabezpieczeń aplikacji, z których chcesz usunąć interfejs sieciowy, a następnie wybierz pozycję **Zapisz**. Tylko interfejsy sieciowe, które znajdują się w tej samej sieci wirtualnej, można dodać do tej samej grupy zabezpieczeń aplikacji. Grupa zabezpieczeń aplikacji musi znajdować się w tej samej lokalizacji co interfejs sieciowy.
 
 **Polecenia**
 
@@ -196,8 +196,8 @@ Możesz dodać interfejs sieciowy do lub usunąć interfejs sieciowy z grupy zab
 Możesz usunąć interfejs sieciowy, o ile nie jest on dołączony do maszyny wirtualnej. Jeśli interfejs sieciowy jest podłączony do maszyny wirtualnej, należy najpierw umieścić maszynę wirtualną w stanie zatrzymania (bez przydziału), a następnie odłączyć interfejs sieciowy od maszyny wirtualnej. Aby odłączyć interfejs sieciowy od maszyny wirtualnej, wykonaj kroki opisane w temacie [Odłącz interfejs sieciowy od maszyny wirtualnej](virtual-network-network-interface-vm.md#remove-a-network-interface-from-a-vm). Nie można odłączyć interfejsu sieciowego od maszyny wirtualnej, jeśli jest to jedyny interfejs sieciowy dołączony do maszyny wirtualnej. Do maszyny wirtualnej musi być zawsze dołączony co najmniej jeden interfejs sieciowy. Usunięcie maszyny wirtualnej powoduje odłączenie wszystkich podłączonych do niej interfejsów sieciowych, ale nie powoduje usunięcia interfejsów sieciowych.
 
 1. W polu zawierającym *zasoby wyszukiwania* tekstu w górnej części Azure Portal wpisz *interfejsy sieciowe*. Gdy **interfejsy sieciowe** pojawiają się w wynikach wyszukiwania, wybierz je.
-2. Wybierz pozycję **...** po prawej stronie interfejsu sieciowego, który chcesz usunąć z listy interfejsów sieciowych.
-3. Wybierz pozycję **Usuń**.
+2. Wybierz z listy interfejs sieciowy, który chcesz usunąć.
+3. W obszarze **Przegląd** wybierz pozycję **Usuń**.
 4. Wybierz pozycję **tak** , aby potwierdzić usunięcie interfejsu sieciowego.
 
 Po usunięciu interfejsu sieciowego zostaną wydane wszystkie przypisane adresy MAC lub IP.

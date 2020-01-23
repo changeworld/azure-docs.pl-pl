@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 111581def3ed0c366898534ee6b6c5f5b6d9e756
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 9c4f0a72cb598a8e38fc69f23f62f0f456cccb04
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293117"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543923"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
@@ -124,7 +124,7 @@ Zastrzeżenie: Jeśli istnieją zsynchronizowane konta, które muszą mieć niew
 > [!NOTE]
 > Ta funkcja jest teraz dostępna w publicznej wersji zapoznawczej.
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon"></a>Publiczna wersja zapoznawcza synchronizacji haseł tymczasowych i "Wymuś hasło przy następnym logowaniu"
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon"></a>Publiczna wersja zapoznawcza synchronizacji haseł tymczasowych i "Wymuś resetowania hasła przy następnym logowaniu"
 
 Typowo, aby wymusić zmianę hasła przez użytkownika podczas pierwszego logowania, szczególnie po wystąpieniu resetowania hasła administratora.  Jest on często znany jako ustawienie "tymczasowego" hasła i jest wykonywane przez sprawdzenie flagi "użytkownik musi zmienić hasło przy następnym logowaniu" w obiekcie użytkownika w Active Directory (AD).
   

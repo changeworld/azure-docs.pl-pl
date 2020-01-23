@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/09/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e52a859c86ff451293ac6ff795c7fe427a383b9d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835300"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548989"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Samouczek: Tworzenie certyfikatu z podpisem własnym (wersja zapoznawcza) za pomocą skryptów wdrażania
 
@@ -267,7 +267,7 @@ Skrypt wdrażania dodaje certyfikat do magazynu kluczy. Skonfiguruj zasady dost�
     * **scriptContent**: Określ zawartość skryptu. Aby uruchomić zewnętrzny skrypt, zamiast tego należy użyć **primaryScriptURI** . Aby uzyskać więcej informacji, zobacz [Korzystanie z zewnętrznego skryptu](./deployment-script-template.md#use-external-scripts).
         Deklarowanie **$DeploymentScriptOutputs** jest wymagane tylko podczas testowania skryptu na komputerze lokalnym. Deklarowanie zmiennej pozwala na uruchomienie skryptu na maszynie lokalnej i w zasobie deploymentScript bez konieczności wprowadzania zmian. Wartość przypisana do $DeploymentScriptOutputs jest dostępna jako dane wyjściowe we wdrożeniach. Aby uzyskać więcej informacji, zobacz artykuł [Pracuj z wynikami ze skryptów wdrażania](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
     * **cleanupPreference**: Określ preferencję po usunięciu zasobów skryptu wdrażania.  Wartość domyślna to **zawsze**, co oznacza, że zasoby skryptu wdrożenia są usuwane pomimo stanu terminalu (powodzenie, zakończone niepowodzeniem, anulowane). W tym samouczku zostanie użyta wartość **onSuccess** , aby uzyskać szansę na wyświetlenie wyników wykonywania skryptu.
-    * **retentionInterval**: Określ interwał, dla którego usługa zachowuje zasoby skryptu po osiągnięciu stanu terminalu. Zasoby zostaną usunięte po upływie tego czasu trwania. Czas trwania jest oparty na wzorcu ISO 8601. W tym samouczku jest używany P1D, co oznacza jeden dzień.  Ta właściwość jest używana, gdy **retentionInterval** jest ustawiony na **onwygaśnięcia**. Ta właściwość nie jest obecnie włączona.
+    * **retentionInterval**: Określ interwał, dla którego usługa zachowuje zasoby skryptu po osiągnięciu stanu terminalu. Zasoby zostaną usunięte po upływie tego czasu trwania. Czas trwania jest oparty na wzorcu ISO 8601. W tym samouczku jest używany P1D, co oznacza jeden dzień.  Ta właściwość jest używana, gdy **cleanupPreference** jest ustawiony na **onwygaśnięcia**. Ta właściwość nie jest obecnie włączona.
 
     Skrypt wdrożenia przyjmuje trzy parametry: nazwę magazynu kluczy, nazwę certyfikatu i nazwę podmiotu.  Tworzy certyfikat, a następnie dodaje certyfikat do magazynu kluczy.
 

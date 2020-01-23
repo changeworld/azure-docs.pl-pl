@@ -3,12 +3,12 @@ title: Funkcje szablonu — zasoby
 description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Manager można pobrać wartości dotyczące zasobów.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 56ace8c75ea27eb4d730b1630115b6fcbdc3f575
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310544"
+ms.locfileid: "76513868"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -32,7 +32,7 @@ Aby uzyskać wartości parametrów, zmienne lub bieżącego wdrożenia, zobacz [
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Zwraca identyfikator zasobu dla [zasobu rozszerzenia](extension-resource-types.md), który jest typem zasobu, który jest stosowany do innego zasobu, aby można go było dodać do jego możliwości.
+Zwraca identyfikator zasobu dla [zasobu rozszerzenia](../management/extension-resource-types.md), który jest typem zasobu, który jest stosowany do innego zasobu, aby można go było dodać do jego możliwości.
 
 ### <a name="parameters"></a>Parametry
 
@@ -536,7 +536,7 @@ Przykład:
 
 ### <a name="get-managed-identity"></a>Pobierz tożsamość zarządzaną
 
-[Zarządzane tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md) to [typy zasobów rozszerzeń](extension-resource-types.md) , które są tworzone niejawnie dla niektórych zasobów. Ponieważ zarządzana tożsamość nie jest jawnie zdefiniowana w szablonie, należy odwołać się do zasobu, do którego jest stosowana tożsamość. Użyj `Full`, aby pobrać wszystkie właściwości, w tym niejawnie utworzoną tożsamość.
+[Zarządzane tożsamości dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md) to [typy zasobów rozszerzeń](../management/extension-resource-types.md) , które są tworzone niejawnie dla niektórych zasobów. Ponieważ zarządzana tożsamość nie jest jawnie zdefiniowana w szablonie, należy odwołać się do zasobu, do którego jest stosowana tożsamość. Użyj `Full`, aby pobrać wszystkie właściwości, w tym niejawnie utworzoną tożsamość.
 
 Na przykład aby uzyskać identyfikator dzierżawy dla tożsamości zarządzanej, która została zastosowana do zestawu skalowania maszyn wirtualnych, użyj:
 

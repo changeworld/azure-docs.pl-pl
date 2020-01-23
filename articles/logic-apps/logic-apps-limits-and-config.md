@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 12/16/2019
-ms.openlocfilehash: 3c921bda1b839ee18a91b28f875ba7c84c0dd944
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/18/2020
+ms.openlocfilehash: 95960a0af628526eb11335ea5c2fcec51f3c66b5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515041"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548547"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -47,8 +47,8 @@ Poniżej przedstawiono limity dla pojedynczego uruchomienia aplikacji logiki:
 
 | Nazwa | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
 |------|--------------------|---------------------------------------|-------|
-| Czas trwania przebiegu | 90 dni | 366 dni | Aby zmienić domyślny limit, zobacz [zmiana czasu trwania](#change-duration). |
-| Przechowywanie w magazynie | 90 dni od czasu rozpoczęcia przebiegu | 366 dni | Aby zmienić domyślny limit, zobacz [zmiana przechowywania magazynu](#change-retention). |
+| Czas trwania przebiegu | 90 dni | 366 dni | Czas wykonywania jest obliczany przy użyciu czasu rozpoczęcia przebiegu i limitu określonego *w czasie rozpoczęcia* według ustawienia przepływu pracy, [**w ciągu dni**](#change-duration). <p><p>Aby zmienić domyślny limit, który jest 90 dni, zobacz [zmiana czasu trwania](#change-duration). |
+| Uruchom przechowywanie w magazynie | 90 dni | 366 dni | Przechowywanie danych jest obliczane przy użyciu czasu rozpoczęcia przebiegu i limitu, który jest określony *w bieżącym czasie* przez ustawienie przepływu pracy, [**w ciągu dni przechowywania historii uruchamiania**](#change-retention). Niezależnie od tego, czy uruchomienie przebiegu lub przekroczenia limitu czasu, obliczenia przechowywania zawsze używają czasu rozpoczęcia uruchomienia. Gdy czas trwania uruchomienia przekracza *bieżący* limit przechowywania, przebieg zostanie usunięty z historii uruchamiania. <p><p>Jeśli zmienisz to ustawienie, bieżący limit jest zawsze używany do obliczania przechowywania, niezależnie od poprzedniego limitu. Jeśli na przykład obniży się limit przechowywania z 90 dni do 30 dni, w historii uruchamiania zostanie usunięte uruchomienie o 60 dni starszej. Jeśli okres przechowywania zostanie zwiększony z 30 dni do 60 dni, w 40 historii uruchomień zostanie uruchomionych 20 dni, które zostały już starsze. <p><p>Aby zmienić domyślny limit, który jest 90 dni, zobacz [zmiana przebiegu przechowywania w magazynie](#change-retention). |
 | Minimalny interwał cyklu | 1 sekunda | 1 sekunda ||
 | Maksymalny interwał cyklu | 500 dni | 500 dni ||
 |||||
@@ -56,9 +56,13 @@ Poniżej przedstawiono limity dla pojedynczego uruchomienia aplikacji logiki:
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-storage-retention"></a>Czas trwania przebiegu zmian i przechowywanie magazynu
+### <a name="change-run-duration-and-run-retention-in-storage"></a>Zmień czas trwania przebiegu i uruchom przechowywanie w magazynie
 
-Aby zmienić domyślny limit czasu wykonywania i przechowywania magazynu, wykonaj następujące czynności. Aby zwiększyć maksymalny limit, [skontaktuj się z zespołem Logic Apps](mailto://logicappsemail@microsoft.com) , aby uzyskać pomoc dotyczącą Twoich wymagań.
+Aby zmienić domyślny limit czasu wykonywania i uruchomić przechowywanie w magazynie, wykonaj następujące kroki. Aby zwiększyć maksymalny limit, [skontaktuj się z zespołem Logic Apps](mailto://logicappsemail@microsoft.com) , aby uzyskać pomoc dotyczącą Twoich wymagań.
+
+> [!NOTE]
+> W przypadku aplikacji logiki na platformie Azure z wieloma dzierżawcami domyślny limit 90 dni jest taki sam, jak maksymalny limit. Tę wartość można zmniejszyć tylko.
+> W przypadku aplikacji logiki w środowisku usługi integracji można obniżyć lub zwiększyć 90-dniowy limit.
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com). W polu wyszukiwania portalu Znajdź i wybierz pozycję **Aplikacje logiki**.
 
@@ -68,11 +72,9 @@ Aby zmienić domyślny limit czasu wykonywania i przechowywania magazynu, wykona
 
 1. W obszarze **Opcje środowiska uruchomieniowego**na liście **przechowywanie historii uruchamiania w dniach** wybierz pozycję **niestandardowa**.
 
-1. Wprowadź lub przeciągnij suwak, aby określić żądaną liczbę dni.
+1. Przeciągnij suwak, aby zmienić żądaną liczbę dni.
 
-   > [!NOTE]
-   > W przypadku aplikacji logiki na platformie Azure z wieloma dzierżawcami domyślny limit 90 dni jest taki sam, jak maksymalny limit. Tę wartość można zmniejszyć tylko.
-   > W przypadku aplikacji logiki w środowisku usługi integracji można obniżyć lub zwiększyć 90-dniowy limit.
+1. Gdy skończysz, na pasku narzędzi **Ustawienia przepływu pracy** wybierz pozycję **Zapisz**.
 
 <a name="looping-debatching-limits"></a>
 
@@ -82,11 +84,11 @@ Poniżej przedstawiono limity dla pojedynczego uruchomienia aplikacji logiki:
 
 | Nazwa | Limit | Uwagi |
 | ---- | ----- | ----- |
-| Współbieżność wyzwalacza | * Nieograniczone, gdy kontrola współbieżności jest wyłączona <p><p>* 25 jest domyślnym limitem, gdy włączony jest formant współbieżności, którego nie można cofnąć po włączeniu formantu. Można zmienić wartość domyślną z przedziału od 1 do 50 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które mogą być uruchamiane w tym samym czasie lub równolegle. <p><p>**Uwaga**: po włączeniu współbieżności limit SplitOn zostaje zredukowany do 100 elementów na potrzeby tworzenia [wsadowych tablic](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Aby zmienić domyślny limit na wartość z przedziału od 1 do 50 włącznie, zobacz [Zmienianie wyzwalacza współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [wystąpień wyzwalaczy sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
-| Maksymalna liczba oczekujących przebiegów | Po włączeniu kontroli współbieżności minimalna liczba oczekujących uruchomień wynosi 10 i liczbę współbieżnych uruchomień (współbieżność wyzwalacza). Można zmienić maksymalną liczbę do 100 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które mogą czekać na uruchomienie, gdy w aplikacji logiki jest już uruchomiona Maksymalna liczba wystąpień współbieżnych. <p><p>Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
+| Współbieżność wyzwalacza | -Nieograniczone, gdy kontrola współbieżności jest wyłączona <p><p>-25 jest domyślnym limitem, gdy włączony jest formant współbieżności, którego nie można cofnąć po włączeniu formantu. Można zmienić wartość domyślną z przedziału od 1 do 50 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które mogą być uruchamiane w tym samym czasie lub równolegle. <p><p>**Uwaga**: po włączeniu współbieżności limit SplitOn zostaje zredukowany do 100 elementów na potrzeby tworzenia [wsadowych tablic](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Aby zmienić domyślny limit na wartość z przedziału od 1 do 50 włącznie, zobacz [Zmienianie wyzwalacza współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [wystąpień wyzwalaczy sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Maksymalna liczba oczekujących przebiegów | -Bez współbieżności minimalna liczba oczekujących uruchomień wynosi 1, a maksymalna liczba to 50. <p><p>— Za pomocą współbieżności minimalna liczba oczekujących uruchomień wynosi 10 i liczbę współbieżnych uruchomień (współbieżność wyzwalacza). Można zmienić maksymalną liczbę do 100 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które mogą czekać na uruchomienie, gdy w aplikacji logiki jest już uruchomiona Maksymalna liczba wystąpień współbieżnych. <p><p>Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | Elementy tablicy foreach | 100 000 | Ten limit opisuje największą liczbę elementów tablicy, które może przetworzyć pętla for each. <p><p>Aby filtrować większe tablice, można użyć [akcji zapytania](logic-apps-perform-data-operations.md#filter-array-action). |
 | Współbieżność foreach | 20 jest domyślnym limitem, gdy kontrola współbieżności jest wyłączona. Można zmienić wartość domyślną z przedziału od 1 do 50 włącznie. | Ten limit to największą liczbę iteracji pętli "for each", które mogą być uruchamiane w tym samym czasie lub równolegle. <p><p>Aby zmienić domyślny limit na wartość z przedziału od 1 do 50 włącznie, zobacz [zmiana "dla każdego" ograniczenia współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [uruchomienie "dla każdej" pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
-| Elementy SplitOn | * 100 000 bez współbieżności wyzwalacza <p><p>* 100 z współbieżnością wyzwalacza | Dla wyzwalaczy, które zwracają tablicę, można określić wyrażenie używające właściwości "SplitOn", które [dzieli lub departia elementy tablicy w wielu wystąpieniach przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) do przetworzenia, zamiast używać pętli "foreach". To wyrażenie odwołuje się do tablicy, która ma zostać użyta do utworzenia i uruchomienia wystąpienia przepływu pracy dla każdego elementu tablicy. <p><p>**Uwaga**: po włączeniu współbieżności limit SplitOn zostanie zmniejszony do 100 elementów. |
+| Elementy SplitOn | -100 000 bez współbieżności wyzwalacza <p><p>-100 z współbieżnością wyzwalacza | Dla wyzwalaczy, które zwracają tablicę, można określić wyrażenie używające właściwości "SplitOn", które [dzieli lub departia elementy tablicy w wielu wystąpieniach przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) do przetworzenia, zamiast używać pętli "foreach". To wyrażenie odwołuje się do tablicy, która ma zostać użyta do utworzenia i uruchomienia wystąpienia przepływu pracy dla każdego elementu tablicy. <p><p>**Uwaga**: po włączeniu współbieżności limit SplitOn zostanie zmniejszony do 100 elementów. |
 | Iteracje Until | 5000 | |
 ||||
 

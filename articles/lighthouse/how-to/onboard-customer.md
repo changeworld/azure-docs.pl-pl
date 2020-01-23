@@ -1,14 +1,14 @@
 ---
 title: Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 description: Dowiedz się, jak dołączyć klienta do zarządzania zasobami delegowanymi przez platformę Azure, umożliwiając dostęp do zasobów i zarządzanie nimi za pomocą własnej dzierżawy.
-ms.date: 01/09/2020
+ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca9e17a9ee4e83492eccf63e4c7d353891071f27
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b3868987fa76d4ce0d4c34e81b46301ea106203d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314627"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543413"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 
@@ -236,7 +236,7 @@ az deployment create --name <deploymentName> \
                      --verbose
 
 # Deploy external Azure Resource Manager template, with local parameter file
-az deployment create --name <deploymentName \
+az deployment create --name <deploymentName> \
                      --location <AzureRegion> \
                      --template-uri <templateUri> \
                      --parameters <parameterFile> \
@@ -302,6 +302,12 @@ W poniższym przykładzie przedstawiono przypisanie przyznanie **roli usuwania p
 ```
 
 Użytkownik mający to uprawnienie może usunąć delegowanie w jeden z następujących sposobów.
+
+### <a name="azure-portal"></a>Portal Azure
+
+1. Przejdź do [strony moi klienci](view-manage-customers.md).
+2. Wybierz pozycję **delegacje**.
+3. Znajdź delegowanie, które chcesz usunąć, a następnie wybierz ikonę kosza, która pojawia się w jego wierszu.
 
 ### <a name="powershell"></a>PowerShell
 

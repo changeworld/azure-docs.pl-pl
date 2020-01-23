@@ -4,14 +4,14 @@ description: Wyjaśnia planowanie przed wdrożeniem programu avere vFXT dla plat
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 5ffa28a0f6080b94bd47519df578fd15309dbab5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153647"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547544"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planowanie systemu Avere vFXT
 
@@ -175,6 +175,6 @@ W przypadku maszyn wirtualnych avere vFXT są używane dwie wbudowane role platf
 
 Jeśli musisz dostosować role dostępu dla składników avere vFXT, musisz zdefiniować własną rolę, a następnie przypisać ją do maszyn wirtualnych w momencie ich tworzenia. Nie można użyć szablonu wdrożenia w portalu Azure Marketplace. Skontaktuj się z działem obsługi klienta i pomocy technicznej firmy Microsoft, otwierając bilet w Azure Portal zgodnie z opisem w artykule [Uzyskiwanie pomocy dotyczącej systemu](avere-vfxt-open-ticket.md).
 
-## <a name="next-step-understand-the-deployment-process"></a>Następny krok: zrozumienie procesu wdrażania
+## <a name="next-steps"></a>Następne kroki
 
 [Omówienie wdrażania](avere-vfxt-deploy-overview.md) zawiera widok Big-Picture kroków wymaganych do utworzenia avere vFXT dla systemu Azure i przygotowania do obsługi danych.

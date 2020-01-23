@@ -11,19 +11,19 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fda29e432fbd952261893f3c32a4df7b9990ae66
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 706c68cb7a139a5c4f6def5aed7ad67e49090ede
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692935"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545147"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Uwierzytelnianie do Azure SQL Data Warehouse
 Dowiedz się, jak uwierzytelniać się w Azure SQL Data Warehouse przy użyciu usługi Azure Active Directory (AAD) lub SQL Server uwierzytelniania.
 
 Aby nawiązać połączenie z SQL Data Warehouse, musisz przekazać poświadczenia zabezpieczeń w celu uwierzytelnienia. Podczas ustanawiania połączenia niektóre ustawienia połączeń są konfigurowane w ramach ustanawiania sesji zapytań.  
 
-Aby uzyskać więcej informacji na temat zabezpieczeń i sposobu włączania połączeń z magazynem danych, zobacz temat [Zabezpieczanie bazy danych w SQL Data Warehouse][Secure a database in SQL Data Warehouse].
+Aby uzyskać więcej informacji na temat zabezpieczeń i sposobu włączania połączeń z magazynem danych, zobacz temat [Zabezpieczanie bazy danych w SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md).
 
 ## <a name="sql-authentication"></a>Uwierzytelnianie SQL
 Aby nawiązać połączenie z SQL Data Warehouse, należy podać następujące informacje:
@@ -40,12 +40,12 @@ Domyślnie połączenie jest nawiązywane z bazą danych *Master* , a nie z baz�
 * Wyróżnij bazę danych użytkownika przed utworzeniem sesji w programie SSDT.
 
 > [!NOTE]
-> Instrukcja języka Transact-SQL **Użyj elementu webdatabase;** nie jest obsługiwana w przypadku zmiany bazy danych dla połączenia. Aby uzyskać wskazówki dotyczące łączenia się z SQL Data Warehouse za pomocą SSDT, zobacz [zapytanie z programem Visual Studio][Query with Visual Studio] .
+> Instrukcja języka Transact-SQL **Użyj elementu webdatabase;** nie jest obsługiwana w przypadku zmiany bazy danych dla połączenia. Aby uzyskać wskazówki dotyczące łączenia się z SQL Data Warehouse za pomocą SSDT, zobacz [zapytanie z programem Visual Studio](sql-data-warehouse-query-visual-studio.md) .
 > 
 > 
 
 ## <a name="azure-active-directory-aad-authentication"></a>Uwierzytelnianie Azure Active Directory (AAD)
-[Azure Active Directory][What is Azure Active Directory] uwierzytelnianiem jest mechanizm łączenia się z Microsoft Azure SQL Data Warehouse przy użyciu tożsamości w Azure Active Directory (Azure AD). Przy użyciu uwierzytelniania Azure Active Directory można centralnie zarządzać tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji. Centralne zarządzanie IDENTYFIKATORami umożliwia zarządzanie SQL Data Warehouse użytkownikami i upraszcza zarządzanie uprawnieniami. 
+[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) uwierzytelnianiem jest mechanizm łączenia się z Microsoft Azure SQL Data Warehouse przy użyciu tożsamości w Azure Active Directory (Azure AD). Przy użyciu uwierzytelniania Azure Active Directory można centralnie zarządzać tożsamościami użytkowników bazy danych i innych usług firmy Microsoft w jednej centralnej lokalizacji. Centralne zarządzanie IDENTYFIKATORami umożliwia zarządzanie SQL Data Warehouse użytkownikami i upraszcza zarządzanie uprawnieniami. 
 
 ### <a name="benefits"></a>Korzyści
 Korzyści Azure Active Directory obejmują:
@@ -60,7 +60,7 @@ Korzyści Azure Active Directory obejmują:
 * Obsługuje uwierzytelnianie wieloskładnikowe za Active Directory uniwersalnego uwierzytelniania dla różnych narzędzi, w tym [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) i [SQL Server narzędzi](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json)do obsługi danych.
 
 > [!NOTE]
-> Azure Active Directory nadal jest stosunkowo nowy i ma pewne ograniczenia. Aby upewnić się, że Azure Active Directory jest dobrze dopasowane do danego środowiska, zobacz [funkcje i ograniczenia usługi Azure AD][Azure AD features and limitations], w tym dodatkowe zagadnienia.
+> Azure Active Directory nadal jest stosunkowo nowy i ma pewne ograniczenia. Aby upewnić się, że Azure Active Directory jest dobrze dopasowane do danego środowiska, zobacz [funkcje i ograniczenia usługi Azure AD](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations), w tym dodatkowe zagadnienia.
 > 
 > 
 
@@ -74,17 +74,11 @@ Wykonaj następujące kroki, aby skonfigurować uwierzytelnianie Azure Active Di
 5. Utwórz użytkowników zawartej bazy danych w bazie danych zamapowanej na tożsamości usługi Azure AD
 6. Nawiązywanie połączenia z magazynem danych przy użyciu tożsamości usługi Azure AD
 
-Obecnie Azure Active Directory użytkownicy nie są wyświetlani w Eksplorator obiektów SSDT. Aby obejść ten element, Wyświetl użytkowników w pliku [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+Obecnie Azure Active Directory użytkownicy nie są wyświetlani w Eksplorator obiektów SSDT. Aby obejść ten element, Wyświetl użytkowników w obszarze [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
 
 ### <a name="find-the-details"></a>Znajdź szczegóły
 * Kroki konfigurowania i używania uwierzytelniania Azure Active Directory są niemal identyczne w przypadku Azure SQL Database i Azure SQL Data Warehouse. Postępuj zgodnie ze szczegółowymi instrukcjami w temacie [nawiązywanie połączenia z usługą SQL Database lub SQL Data Warehouse przy użyciu uwierzytelniania Azure Active Directory](../sql-database/sql-database-aad-authentication.md).
 * Utwórz niestandardowe role bazy danych i Dodaj użytkowników do ról. Następnie przyznaj uprawnienia szczegółowe do ról. Aby uzyskać więcej informacji, zobacz [wprowadzenie z uprawnieniami aparatu bazy danych](https://msdn.microsoft.com/library/mt667986.aspx).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby rozpocząć tworzenie zapytań względem magazynu danych przy użyciu programu Visual Studio i innych aplikacji, zobacz artykuł [Query with Visual Studio][Query with Visual Studio] (Wykonywanie zapytań przy użyciu programu Visual Studio).
-
-<!-- Article references -->
-[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-[Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
-[What is Azure Active Directory]:../active-directory/fundamentals/active-directory-whatis.md
-[Azure AD features and limitations]: ../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations
+Aby rozpocząć tworzenie zapytań względem magazynu danych przy użyciu programu Visual Studio i innych aplikacji, zobacz artykuł [Query with Visual Studio](sql-data-warehouse-query-visual-studio.md) (Wykonywanie zapytań przy użyciu programu Visual Studio).

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: e4c18f1148259d246445b94ac6117ebefa9470a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975370"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543039"
 ---
 # <a name="virtual-network-service-tags"></a>Tagi usługi sieci wirtualnej 
 <a name="network-service-tags"></a>
@@ -51,7 +51,7 @@ Domyślnie Tagi usług odzwierciedlają zakresy dla całej chmury. Niektóre Tag
 | **AzureAdvancedThreatProtection** | Zaawansowana ochrona przed zagrożeniami na platformie Azure. | Wychodzące | Nie | Nie |
 | **AzureBackup** |Azure Backup.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **Storage** i **usługi azureactivedirectory** . | Wychodzące | Nie | Tak |
 | **AzureBotService** | Azure Bot Service. | Wychodzące | Nie | Nie |
-| **AzureCloud** | Wszystkie [publiczne adresy IP centrum](https://www.microsoft.com/download/details.aspx?id=41653)danych. | Wychodzące | Tak | Tak |
+| **AzureCloud** | Wszystkie [publiczne adresy IP centrum](https://www.microsoft.com/download/details.aspx?id=56519)danych. | Wychodzące | Tak | Tak |
 | **AzureCognitiveSearch** | Wyszukiwanie poznawcze platformy Azure (Jeśli używasz indeksatorów z zestawu umiejętności). | Oba | Nie | Nie |
 | **AzureConnectors** | Azure Logic Apps łączniki dla połączeń sondy/zaplecza. | Przychodzące | Tak | Tak |
 | **AzureContainerRegistry** | Azure Container Registry. | Wychodzące | Tak | Tak |

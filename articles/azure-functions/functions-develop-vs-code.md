@@ -3,12 +3,12 @@ title: Opracowywanie Azure Functions przy użyciu Visual Studio Code
 description: Dowiedz się, jak opracowywać i testować Azure Functions przy użyciu rozszerzenia Azure Functions dla Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667544"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547425"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Opracowywanie Azure Functions przy użyciu Visual Studio Code
 
@@ -146,7 +146,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 `msg` parametr jest typu `ICollector<T>`, który reprezentuje kolekcję komunikatów, które są zapisywane do powiązania danych wyjściowych po zakończeniu działania funkcji. Do kolekcji dodasz co najmniej jeden komunikat. Te komunikaty są wysyłane do kolejki po zakończeniu działania funkcji.
 
-Aby dowiedzieć się więcej, zobacz dokumentację [powiązania danych wyjściowych kolejki magazynu](functions-bindings-storage-queue.md#output---c-example) .
+Aby dowiedzieć się więcej, zobacz dokumentację [powiązania danych wyjściowych kolejki magazynu](functions-bindings-storage-queue.md#output) .
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -184,7 +184,7 @@ W kodzie funkcji można uzyskać dostęp do powiązania `msg` z `context`, jak w
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-Aby dowiedzieć się więcej, zobacz informacje o [powiązaniach wyjściowych magazynu kolejki](functions-bindings-storage-queue.md#output---javascript-example) .
+Aby dowiedzieć się więcej, zobacz informacje o [powiązaniach wyjściowych magazynu kolejki](functions-bindings-storage-queue.md#output) .
 
 ---
 

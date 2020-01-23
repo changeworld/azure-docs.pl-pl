@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944421"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547255"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Usuwanie i przywracanie obszaru roboczego usługi Azure Log Analytics
 
@@ -57,6 +57,29 @@ Obszar roboczy można usunąć przy użyciu [programu PowerShell](https://docs.m
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+## <a name="permanent-workspace-delete"></a>Trwałe usuwanie obszaru roboczego
+Metoda usuwania nietrwałego może nie mieścić się w niektórych scenariuszach, takich jak programowanie i testowanie, gdzie trzeba powtórzyć wdrożenie z tymi samymi ustawieniami i nazwą obszaru roboczego. W takich przypadkach można trwale usunąć obszar roboczy i "przesłonić" okres usuwania nietrwałego. Operacja usuwania trwałego obszaru roboczego zwalnia nazwę miejsca pracy i można utworzyć nowy obszar roboczy przy użyciu tej samej nazwy.
+
+
+> [!IMPORTANT]
+> Należy zachować ostrożność podczas trwałego usuwania obszaru roboczego, ponieważ operacja jest nieodwracalna i nie będzie można odzyskać obszaru roboczego i jego danych.
+
+Trwałe usuwanie obszaru roboczego można obecnie wykonać za pośrednictwem interfejsu API REST.
+
+> [!NOTE]
+> Wszystkie żądania interfejsu API muszą zawierać Token autoryzacji okaziciela w nagłówku żądania.
+>
+> Token można uzyskać przy użyciu:
+> - [Rejestracje aplikacji](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
+> - Przejdź do Azure Portal przy użyciu konsoli dewelopera (F12) w przeglądarce. Zapoznaj się z jedną z **partii?** wystąpień dla ciągu uwierzytelniania w obszarze **nagłówki żądania**. Będzie to miało *autoryzację wzorca: okaziciela <token>* . Skopiuj i Dodaj do wywołania interfejsu API, jak pokazano w przykładach.
+> - Przejdź do witryny dokumentacji REST platformy Azure. Naciśnij przycisk **Wypróbuj** na dowolnym interfejsie API, skopiuj token okaziciela i dodaj go do wywołania interfejsu API.
+Aby trwale usunąć obszar roboczy, użyj [obszarów roboczych — Usuń]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) wywołanie interfejsu API REST z tagiem Force:
+>
+> ```rst
+> DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
+> ```
 
 ## <a name="recover-workspace"></a>Odzyskiwanie obszaru roboczego
 

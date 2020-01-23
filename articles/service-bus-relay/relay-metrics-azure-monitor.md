@@ -1,6 +1,6 @@
 ---
 title: Metryki Azure Relay w Azure Monitor (wersja zapoznawcza) | Microsoft Docs
-description: Monitorowanie Azure Relay przy użyciu monitorowania platformy Azure
+description: Ten artykuł zawiera informacje dotyczące monitorowania stanu Azure Relay za pomocą Azure Monitor.
 services: service-bus-relay
 documentationcenter: .NET
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9933b7857580f29cbb6a54ebc82d4e7207456ad4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5c548186ec51cf86f34942cb15d8f984afa60268
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261788"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514939"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Metryki Azure Relay w Azure Monitor (wersja zapoznawcza)
 Metryki Azure Relay umożliwiają udostępnienie stanu zasobów w ramach subskrypcji platformy Azure. Dzięki bogatemu zestawowi danych metryk można ocenić ogólną kondycję zasobów przekazywania, nie tylko na poziomie przestrzeni nazw, ale również na poziomie jednostki. Te dane statystyczne mogą być ważne, ponieważ ułatwiają monitorowanie stanu Azure Relay. Metryki może również pomóc główną przyczynę problemów bez konieczności skontaktuj się z działem pomocy technicznej platformy Azure.
@@ -60,24 +60,24 @@ Wszystkie wartości metryk są wysyłane do usługi Azure Monitor na minutę. St
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-| ListenerConnections — sukces (wersja zapoznawcza) | Liczba pomyślnych połączeń odbiornika wykonanych w celu Azure Relay w określonym przedziale czasu. <br/><br/> Jednostka Count <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|ListenerConnections-błąd clienterror (wersja zapoznawcza)|Liczba błędów klienta w połączeniach odbiornika w określonym przedziale czasu.<br/><br/> Jednostka Count <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|ListenerConnections-błąd servererror (wersja zapoznawcza)|Liczba błędów serwera w połączeniach odbiornika w określonym przedziale czasu.<br/><br/> Jednostka Count <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|SenderConnections — sukces (wersja zapoznawcza)|Liczba pomyślnych połączeń nadawcy wykonanych w określonym przedziale czasu.<br/><br/> Jednostka Count <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|SenderConnections-błąd clienterror (wersja zapoznawcza)|Liczba błędów klienta w połączeniach nadawcy w określonym przedziale czasu.<br/><br/> Jednostka Count <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|SenderConnections-błąd servererror (wersja zapoznawcza)|Liczba błędów serwera w połączeniach nadawcy w określonym przedziale czasu.<br/><br/> Jednostka Count <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|ListenerConnections-TotalRequests (wersja zapoznawcza)|Całkowita liczba połączeń odbiornika w określonym przedziale czasu.<br/><br/> Jednostka Count <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|SenderConnections-TotalRequests (wersja zapoznawcza)|Żądania połączenia wykonywane przez nadawców w określonym przedziale czasu.<br/><br/> Jednostka Count <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|Połączeń ActiveConnections (wersja zapoznawcza)|Liczba aktywnych połączeń w określonym przedziale czasu.<br/><br/> Jednostka Count <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|ActiveListeners (wersja zapoznawcza)|Liczba aktywnych odbiorników w określonym przedziale czasu.<br/><br/> Jednostka Count <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|ListenerDisconnects (wersja zapoznawcza)|Liczba odłączonych odbiorników w określonym przedziale czasu.<br/><br/> Jednostka Bajty <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
-|SenderDisconnects (wersja zapoznawcza)|Liczba odłączonych nadawców w określonym przedziale czasu.<br/><br/> Jednostka Bajty <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
+| ListenerConnections — sukces (wersja zapoznawcza) | Liczba pomyślnych połączeń odbiornika wykonanych w celu Azure Relay w określonym przedziale czasu. <br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|ListenerConnections-błąd clienterror (wersja zapoznawcza)|Liczba błędów klienta w połączeniach odbiornika w określonym przedziale czasu.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|ListenerConnections-błąd servererror (wersja zapoznawcza)|Liczba błędów serwera w połączeniach odbiornika w określonym przedziale czasu.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|SenderConnections — sukces (wersja zapoznawcza)|Liczba pomyślnych połączeń nadawcy wykonanych w określonym przedziale czasu.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|SenderConnections-błąd clienterror (wersja zapoznawcza)|Liczba błędów klienta w połączeniach nadawcy w określonym przedziale czasu.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|SenderConnections-błąd servererror (wersja zapoznawcza)|Liczba błędów serwera w połączeniach nadawcy w określonym przedziale czasu.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|ListenerConnections-TotalRequests (wersja zapoznawcza)|Całkowita liczba połączeń odbiornika w określonym przedziale czasu.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|SenderConnections-TotalRequests (wersja zapoznawcza)|Żądania połączenia wykonywane przez nadawców w określonym przedziale czasu.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|Połączeń ActiveConnections (wersja zapoznawcza)|Liczba aktywnych połączeń w określonym przedziale czasu.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|ActiveListeners (wersja zapoznawcza)|Liczba aktywnych odbiorników w określonym przedziale czasu.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|ListenerDisconnects (wersja zapoznawcza)|Liczba odłączonych odbiorników w określonym przedziale czasu.<br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|SenderDisconnects (wersja zapoznawcza)|Liczba odłączonych nadawców w określonym przedziale czasu.<br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
 
 ## <a name="memory-usage-metrics"></a>Metryki użycia pamięci
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|BytesTransferred (wersja zapoznawcza)|Liczba bajtów transferowanych w określonym przedziale czasu.<br/><br/> Jednostka Bajty <br/> Typ agregacji: Łącznie <br/> Elementów EntityName|
+|BytesTransferred (wersja zapoznawcza)|Liczba bajtów transferowanych w określonym przedziale czasu.<br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
 
 ## <a name="metrics-dimensions"></a>Wymiary metryki
 

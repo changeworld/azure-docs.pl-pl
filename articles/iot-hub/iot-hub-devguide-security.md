@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429304"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546949"
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do usługi IoT Hub
 
@@ -347,7 +347,7 @@ W efekcie można udzielić dostępu do odczytu wszystkich tożsamości urządze�
 
 ## <a name="supported-x509-certificates"></a>Obsługiwane certyfikaty X. 509
 
-Można użyć dowolnego certyfikatu X. 509 w celu uwierzytelnienia urządzenia za pomocą IoT Hub przez przekazanie odcisku palca certyfikatu lub urzędu certyfikacji do usługi Azure IoT Hub. Uwierzytelnianie za pomocą odcisków palca certyfikatu weryfikuje, czy przedstawiony odcisk palca pasuje do skonfigurowanego odcisku palca. Uwierzytelnianie przy użyciu urzędu certyfikacji sprawdza łańcuch certyfikatów. 
+Można użyć dowolnego certyfikatu X. 509 w celu uwierzytelnienia urządzenia za pomocą IoT Hub przez przekazanie odcisku palca certyfikatu lub urzędu certyfikacji do usługi Azure IoT Hub. Uwierzytelnianie przy użyciu odcisków palców certyfikatów weryfikuje, czy przedstawiony odcisk palca jest zgodny ze skonfigurowanym odciskiem palca. Uwierzytelnianie przy użyciu urzędu certyfikacji sprawdza łańcuch certyfikatów. W obu przypadkach uzgadnianie protokołu TLS wymaga, aby urządzenie miało prawidłowy certyfikat i klucz prywatny. Aby uzyskać szczegółowe informacje, zobacz specyfikację protokołu TLS, na przykład: [RFC 5246-protokół Transport Layer Security (TLS) w wersji 1,2](https://tools.ietf.org/html/rfc5246/).
 
 Obsługiwane są następujące certyfikaty:
 
@@ -461,6 +461,8 @@ Inne tematy referencyjne w przewodniku dewelopera IoT Hub obejmują:
 * [Język zapytań IoT Hub](iot-hub-devguide-query-language.md) zawiera opis języka zapytań, za pomocą którego można pobrać informacje z IoT Hub dotyczące bliźniaczych reprezentacji i zadań urządzenia.
 
 * [IoT Hub obsługa MQTT](iot-hub-mqtt-support.md) zawiera więcej informacji na temat obsługi IoT Hub protokołu MQTT.
+
+* [RFC 5246 — protokół Transport Layer Security (TLS) w wersji 1,2](https://tools.ietf.org/html/rfc5246/) zawiera więcej informacji na temat uwierzytelniania TLS.
 
 ## <a name="next-steps"></a>Następne kroki
 

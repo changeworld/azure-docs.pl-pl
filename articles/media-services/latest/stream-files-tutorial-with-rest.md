@@ -1,5 +1,5 @@
 ---
-title: Kodowanie pliku zdalnego na podstawie adresu URL i przesyłanie strumieniowe przy użyciu usługi Azure Media Services — usługa REST | Microsoft Docs
+title: Kodowanie zdalnego pliku i strumienia przy użyciu Azure Media Services v3
 description: Wykonaj kroki opisane w tym samouczku, aby zakodować plik na podstawie adresu URL i przesłać strumieniowo zawartość za pośrednictwem usługi Azure Media Services, korzystając z usługi REST.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685109"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514344"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — REST
 
@@ -25,13 +25,13 @@ Usługa Azure Media Services umożliwia kodowanie plików multimedialnych do for
 
 Ten samouczek zawiera instrukcje pozwalające zakodować plik na podstawie adresu URL i przesłać strumieniowo zawartość wideo za pośrednictwem usługi Azure Media Services, korzystając z usługi REST. 
 
-![Odtwarzanie wideo](./media/stream-files-tutorial-with-api/final-video.png)
+![Odtwórz wideo](./media/stream-files-tutorial-with-api/final-video.png)
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:    
 
 > [!div class="checklist"]
 > * Tworzenie konta usługi Media Services
-> * Dostęp do interfejsu API usługi Media Services
+> * Uzyskiwanie dostępu do interfejsu API usługi Media Services
 > * Pobieranie plików Postman
 > * Konfigurowanie programu Postman
 > * Wysyłanie żądań przy użyciu programu Postman
@@ -248,7 +248,7 @@ W tym przykładzie dane wejściowe zadania są oparte na adresie URL HTTPS ("htt
         }
         ```
 
-Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Aby wyświetlić postęp zadania, zaleca się użycie usługi Event Grid. Zaprojektowano ją pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń pochodzących z praktycznie wszystkich usług platformy Azure i ze źródeł niestandardowych oraz reagować na nie. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń.  Zobacz [Kierowanie zdarzeń do niestandardowego internetowego punktu końcowego](job-state-events-cli-how-to.md).
+Ukończenie zadania zajmuje trochę czasu, a Ty chcesz otrzymać powiadomienie o tym fakcie. Aby wyświetlić postęp zadania, zaleca się użycie usługi Event Grid. Zaprojektowano ją pod kątem wysokiej dostępności, stałego poziomu wydajności i dynamicznej skalowalności. Dzięki usłudze Event Grid Twoje aplikacje mogą nasłuchiwać zdarzeń i reagować na zdarzenia w praktycznie wszystkich usługach platformy Azure, a także źródłach niestandardowych. Prosta, reaktywna obsługa zdarzeń oparta na protokole HTTP pomaga w tworzeniu wydajnych rozwiązań za pośrednictwem inteligentnego filtrowania i routingu zdarzeń.  Zobacz [Kierowanie zdarzeń do niestandardowego internetowego punktu końcowego](job-state-events-cli-how-to.md).
 
 **Zadanie** zwykle przechodzi przez następujące stany: **Scheduled (Zaplanowane)** , **Queued (W kolejce)** , **Processing (Przetwarzane)** , **Finished (Zakończone)** (stan końcowy). Jeśli zadanie napotka błąd, może być w stanie **Error (Błąd)** . Jeśli zadanie jest w trakcie anulowania, może być w stanie **Canceling (Anulowanie)** , a po zakończeniu tej operacji w stanie **Canceled (Anulowane)** .
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 7451758e758d597bfe63d92fe4789c8fa81b3dff
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 000db771f27c7063aee120f06e13eec3575c8ef5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311482"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546643"
 ---
 # <a name="module-k-means-clustering"></a>Moduł: K-oznacza klastrowanie
 
-W tym artykule opisano, jak używać modułu *k-oznaczania klastrowania* w programie Azure Machine Learning Designer do tworzenia nauczenia modelu k-to-klastrów. 
+W tym artykule opisano, jak używać modułu *k-oznaczania klastrowania* w programie Azure Machine Learning Designer (wersja zapoznawcza) w celu utworzenia pośredniego modelu klastrowania. 
  
 K-oznacza to jeden z najprostszych i najlepszych znanych *nienadzorowanych* algorytmów uczenia. Można użyć algorytmu dla różnych zadań uczenia maszynowego, takich jak: 
 

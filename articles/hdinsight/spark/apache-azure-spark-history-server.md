@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 8e0fcdc97475053dcf285b562b28784deffff28c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552733"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548938"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Użyj rozszerzonych funkcji serwera historii Apache Spark, aby debugować i diagnozować aplikacje Spark
 
@@ -163,7 +163,7 @@ Wybierz kartę **pochylanie danych** . Odpowiednie skośne zadania są wyświetl
 
 #### <a name="specify-parameters"></a>Określ parametry
 
-W sekcji **Określanie parametrów** są wyświetlane parametry, które są używane do wykrywania pochylenia danych. Reguła domyślna to: odczyt danych zadania jest dłuższy niż trzy razy średniego odczytania danych zadania, a odczytane dane zadania są większe niż 10 MB. Jeśli chcesz zdefiniować własną regułę dla zadań skośnych, możesz wybrać parametry. Sekcje **skośne** i **pochylone znaki** zostaną odpowiednio zaktualizowane.
+W sekcji **Określanie parametrów** są wyświetlane parametry, które są używane do wykrywania pochylenia danych. Reguła domyślna to: odczyt danych zadania jest dłuższy niż trzy razy średniego odczytania danych zadania, a odczytane dane zadania są większe niż 10 MB. Jeśli chcesz zdefiniować własną regułę dla zadań skośnych, możesz wybrać parametry. Sekcje **skośne** i **ukośne wykresu** zostaną odpowiednio zaktualizowane.
 
 #### <a name="skewed-stage"></a>Skośny etap
 

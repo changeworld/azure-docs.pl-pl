@@ -4,15 +4,15 @@ description: Rozwiązywanie typowych problemów dotyczących Azure File Sync.
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/8/2019
+ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027784"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545045"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -41,8 +41,28 @@ W przypadku próby zainstalowania agenta synchronizacji na kontrolerze domeny Ac
 
 Aby rozwiązać ten problem, Przenieś rolę PDC na inny kontroler domeny z systemem Windows Server 2012 R2 lub nowszy, a następnie Zainstaluj synchronizację.
 
-<a id="server-registration-prerequisites"></a>**Rejestracja serwera wyświetla następujący komunikat: "Brak wymagań wstępnych"**
+<a id="parameter-is-incorrect"></a>**Uzyskiwanie dostępu do woluminu w systemie Windows Server 2012 R2 kończy się niepowodzeniem z powodu błędu: parametr jest niepoprawny**  
+Po utworzeniu punktu końcowego serwera w systemie Windows Server 2012 R2 wystąpił następujący błąd podczas uzyskiwania dostępu do woluminu:
 
+litera dysku: \ nie jest dostępny.  
+Parametr jest nieprawidłowy.
+
+Aby rozwiązać ten problem, zainstaluj najnowsze aktualizacje systemu Windows Server 2012 R2 i ponownie uruchom serwer.
+
+<a id="server-registration-missing-subscriptions"></a>**Rejestracja serwera nie zawiera wszystkich subskrypcji platformy Azure**  
+Podczas rejestrowania serwera przy użyciu programu ServerRegistration. exe subskrypcje nie są wyświetlane po kliknięciu listy rozwijanej subskrypcja platformy Azure.
+
+Ten problem występuje, ponieważ program ServerRegistration. exe nie obsługuje obecnie środowisk wielodostępnych. Ten problem zostanie rozwiązany w przyszłej aktualizacji agenta Azure File Sync.
+
+Aby obejść ten problem, należy użyć następujących poleceń programu PowerShell do zarejestrowania serwera:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+Login-AzureRmStorageSync -SubscriptionID "<guid>" -TenantID "<guid>"
+Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<string>" -StorageSyncServiceName "<string>"
+```
+
+<a id="server-registration-prerequisites"></a>**Rejestracja serwera wyświetla następujący komunikat: "Brak wymagań wstępnych"**  
 Ten komunikat jest wyświetlany, gdy nie zainstalowano modułu PowerShell AZ lub AzureRM w programie PowerShell 5,1. 
 
 > [!Note]  
@@ -304,6 +324,7 @@ Aby wyświetlić te błędy, uruchom skrypt programu PowerShell **FileSyncErrors
 | 0x8000ffff | -2147418113 | E_UNEXPECTED | Nie można zsynchronizować pliku z powodu nieoczekiwanego błędu. | Jeśli błąd będzie się powtarzać przez kilka dni, Otwórz przypadek pomocy technicznej. |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie będzie już używany. | Żadna akcja nie jest wymagana. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi zostać ponownie zsynchronizowany. | Żadna akcja nie jest wymagana. |
+| 0x80070017 | -2147024873 | ERROR_CRC | Nie można zsynchronizować pliku z powodu błędu CRC. Ten błąd może wystąpić, jeśli plik warstwowy nie został odwywoływany przed usunięciem punktu końcowego serwera lub jeśli plik jest uszkodzony. | Aby rozwiązać ten problem, zobacz [pliki warstwowe nie są dostępne na serwerze po usunięciu punktu końcowego serwera](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) , aby usunąć oddzielone pliki warstwowe. Jeśli błąd nadal występuje po usunięciu plików warstwowych oprhaned, uruchom [program CHKDSK](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) na woluminie. |
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Nie można zsynchronizować pliku, ponieważ osiągnięto maksymalną liczbę plików konfliktów. Azure File Sync obsługuje pliki konfliktów 100 na plik. Aby dowiedzieć się więcej na temat konfliktów plików, zobacz Azure File Sync [często zadawane pytania](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | Aby rozwiązać ten problem, zmniejsz liczbę plików konfliktów. Plik zostanie zsynchronizowany, gdy liczba plików konfliktów jest mniejsza niż 100. |
 
 #### <a name="handling-unsupported-characters"></a>Obsługa nieobsługiwanych znaków
@@ -435,6 +456,17 @@ Ten błąd występuje, ponieważ agent Azure File Sync nie ma uprawnień dostęp
 
 1. [Sprawdź, czy konto magazynu istnieje.](#troubleshoot-storage-account)
 2. [Sprawdź, czy ustawienia zapory i sieci wirtualnej na koncie magazynu są prawidłowo skonfigurowane (jeśli włączono)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364014"></a>**Synchronizacja nie powiodła się, ponieważ konto magazynu zostało zablokowane.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83092 |
+| **HRESULT (dziesiętny)** | -2134364014 |
+| **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_LOCKED |
+| **Wymagana korekta** | Tak |
+
+Ten błąd występuje, ponieważ konto magazynu ma [blokadę zasobów](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)tylko do odczytu. Aby rozwiązać ten problem, Usuń blokadę zasobów tylko do odczytu na koncie magazynu. 
 
 <a id="-1906441138"></a>**Synchronizacja nie powiodła się z powodu problemu z bazą danych synchronizacji.**  
 

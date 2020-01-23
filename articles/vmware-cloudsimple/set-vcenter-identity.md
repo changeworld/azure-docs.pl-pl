@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d2986acc47087c267193eee43136e030abcc422
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: eeced5205b836a15a43fbccfb8c6cb60b4bec29f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990322"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76542869"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Skonfiguruj źródła tożsamości vCenter do użycia Active Directory
 
@@ -33,7 +33,7 @@ W tym przewodniku opisano zadania służące do konfigurowania Active Directory 
 Przed [dodaniem źródła tożsamości](#add-an-identity-source-on-vcenter)tymczasowo [Eskalacja uprawnień programu vCenter](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Nowi użytkownicy muszą zostać dodani tylko *do chmury-właściciel-Grupa*, *chmura-Global-Cluster-admin-* Group, Cloud- *Global-Storage-Administrator-* Group, *Cloud-Global-Network-admin* -Group  Użytkownicy dodani do grupy *administratorzy* zostaną usunięci automatycznie.  Tylko konta usług należy dodać do grupy *administratorów* .  
+> Nowi użytkownicy muszą zostać dodani tylko *do chmury-właściciel-Grupa*, *chmura-Global-Cluster-admin-* Group, Cloud- *Global-Storage-Administrator-* Group, *Cloud-Global-Network-admin* -Group  Użytkownicy dodani do grupy *administratorzy* zostaną usunięci automatycznie.  Tylko konta usług należy dodać do grupy *administratorzy* , a konta usług nie mogą być używane do logowania się do interfejsu użytkownika sieci Web vSphere.   
 
 
 ## <a name="identity-source-options"></a>Opcje źródła tożsamości
@@ -51,7 +51,7 @@ Aby skonfigurować Active Directory lokalne jako źródło tożsamości logowani
 
 Podczas konfigurowania domeny Active Directory należy skorzystać z informacji podanych w poniższej tabeli.
 
-| **Option** | **Opis** |
+| **Opcja** | **Opis** |
 |------------|-----------------|
 | **Nazwa** | Nazwa źródła tożsamości. |
 | **Podstawowa nazwa wyróżniająca dla użytkowników** | Podstawowa nazwa wyróżniająca dla użytkowników. |

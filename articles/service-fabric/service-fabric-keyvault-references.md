@@ -3,12 +3,12 @@ title: Service Fabric platformy Azure — korzystanie z Service Fabric odwołań
 description: W tym artykule wyjaśniono, jak używać obsługi KeyVaultReference usługi Service-Fabric dla wpisów tajnych aplikacji.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167123"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545487"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Obsługa KeyVaultReference dla aplikacji Service Fabric (wersja zapoznawcza)
 
@@ -22,7 +22,7 @@ Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób bezpiecz
 
 - Magazyn centralnych wpisów tajnych (CSS).
 
-    Magazyn centralnych wpisów tajnych (CSS) to pamięć podręczna szyfrowanych lokalnych kluczy tajnych usługi Service Fabric, KeyVaultReference po pobraniu są buforowane w CSS.
+    Magazyn centralnych wpisów tajnych (CSS) jest Service Fabric zaszyfrowanych lokalnych kluczy tajnych. CSS to lokalna pamięć podręczna magazynu lokalnego wpisu tajnego, która przechowuje dane poufne, takie jak hasło, tokeny i klucze, szyfrowane w pamięci. KeyVaultReference, po pobraniu znajdują się w pamięci podręcznej w CSS.
 
     Dodaj poniżej do konfiguracji klastra w obszarze `fabricSettings`, aby włączyć wszystkie funkcje wymagane do obsługi KeyVaultReference.
 

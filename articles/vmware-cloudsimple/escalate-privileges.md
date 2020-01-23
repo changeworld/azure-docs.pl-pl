@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 524772578ad724e969bbeab0be0a3edcf32a845f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619614"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76542852"
 ---
 # <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>Eskalacja uprawnień CloudSimple do wykonywania funkcji administracyjnych w programie vCenter Private Cloud
 
@@ -33,5 +33,8 @@ Przyczyny eskalacji uprawnień mogą być następujące:
 W portalu CloudSimple należy [eskalować uprawnienia](escalate-private-cloud-privileges.md) dla lokalnego użytkownika CloudOwner na serwerze vCenter SSO.  Możesz eskalować uprawnienia użytkownika zdalnego tylko wtedy, gdy na serwerze vCenter jest skonfigurowany dodatkowy dostawca tożsamości.  Eskalacja uprawnień obejmuje dodanie wybranego użytkownika do wbudowanej grupy administratorów vSphere.  Tylko jeden użytkownik może mieć uprawnienia eskalacji.  Jeśli musisz eskalować uprawnienia innego użytkownika, najpierw Anuluj eskalację uprawnień bieżących użytkowników.
 
 Użytkownicy z dodatkowych źródeł tożsamości muszą zostać dodani jako członkowie grupy CloudOwner.
+
+> [!CAUTION]
+> Nowi użytkownicy muszą zostać dodani tylko *do chmury-właściciel-Grupa*, *chmura-Global-Cluster-admin-* Group, Cloud- *Global-Storage-Administrator-* Group, *Cloud-Global-Network-admin* -Group  Użytkownicy dodani do grupy *administratorzy* zostaną usunięci automatycznie.  Tylko konta usług należy dodać do grupy *administratorzy* , a konta usług nie mogą być używane do logowania się do interfejsu użytkownika sieci Web vSphere.
 
 W okresie eskalacji CloudSimple korzysta ze zautomatyzowanego monitorowania ze skojarzonymi powiadomieniami o alertach, aby identyfikować wszelkie niezamierzone zmiany w środowisku.

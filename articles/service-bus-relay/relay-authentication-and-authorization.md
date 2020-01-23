@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Relay uwierzytelnianie i autoryzacja | Dokumentacja firmy Microsoft
-description: Omówienie uwierzytelniania sygnatury dostępu współdzielonego (SAS) w usłudze Azure Relay
+title: Azure Relay uwierzytelniania i autoryzacji | Microsoft Docs
+description: Ten artykuł zawiera omówienie uwierzytelniania sygnatury dostępu współdzielonego (SAS) w usłudze Azure Relay.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,44 +12,44 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 206cca95c590a01f69d3664fb87398bc2fcb4ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aac5c973a99b13d5918a0162feb7f1ede443463b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595513"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514582"
 ---
-# <a name="azure-relay-authentication-and-authorization"></a>Usługa Azure Relay uwierzytelnianie i autoryzacja
+# <a name="azure-relay-authentication-and-authorization"></a>Azure Relay uwierzytelnianie i autoryzacja
 
-Aplikacje mogą uwierzytelniać się do usługi Azure Relay przy użyciu uwierzytelniania sygnatury dostępu współdzielonego (SAS). Uwierzytelniania sygnatury dostępu Współdzielonego umożliwia aplikacjom uwierzytelnianie w usłudze Azure Relay przy użyciu klucza dostępu skonfigurowane na przestrzeń nazw usługi Relay. Ten klucz służy następnie do wygenerowania tokenu sygnatura dostępu współdzielonego, której klienci mogą używać do uwierzytelniania w usłudze relay.
+Aplikacje mogą uwierzytelniać się w celu Azure Relay przy użyciu uwierzytelniania sygnatury dostępu współdzielonego (SAS). Uwierzytelnianie SAS umożliwia aplikacjom uwierzytelnianie w usłudze Azure Relay przy użyciu klucza dostępu skonfigurowanego w przestrzeni nazw usługi Relay. Następnie można użyć tego klucza do wygenerowania tokenu sygnatury dostępu współdzielonego, którego klienci mogą używać do uwierzytelniania w usłudze przekazywania.
 
-## <a name="shared-access-signature-authentication"></a>Uwierzytelniania sygnatury dostępu współużytkowanego
+## <a name="shared-access-signature-authentication"></a>Uwierzytelnianie sygnatury dostępu współdzielonego
 
-[Uwierzytelniania sygnatury dostępu Współdzielonego](../service-bus-messaging/service-bus-sas.md) umożliwia udzielenie użytkownikom dostępu do zasobów usługi Azure Relay przy użyciu określonych praw. Uwierzytelniania sygnatury dostępu Współdzielonego obejmuje konfigurację klucza kryptograficznego ze skojarzonymi prawami do zasobu. Klienci mogą zatem uzyskiwać dostęp do tego zasobu, prezentując tokenu sygnatury dostępu Współdzielonego, który składa się z identyfikatora URI, dostęp do zasobu i wygaśnięcia podpisany przy użyciu skonfigurowanego klucza.
+[Uwierzytelnianie za pomocą sygnatury dostępu współdzielonego](../service-bus-messaging/service-bus-sas.md) umożliwia użytkownikowi dostęp do Azure Relay zasobów przy użyciu określonych praw. Uwierzytelnianie za pomocą sygnatury dostępu współdzielonego obejmuje konfigurację klucza kryptograficznego ze skojarzonymi prawami do zasobu. Klienci mogą następnie uzyskać dostęp do tego zasobu przez przedstawienie tokenu sygnatury dostępu współdzielonego, który składa się z identyfikatora URI zasobu, do którego jest uzyskiwany dostęp, i podpisanego kluczem.
 
-Klucze sygnatur dostępu współdzielonego można skonfigurować w przestrzeni nazw usługi Relay. W przeciwieństwie do komunikatów usługi Service Bus, [połączeń hybrydowych usługi Relay](relay-hybrid-connections-protocol.md) obsługuje nadawców nieautoryzowani lub anonimowe. Możesz włączyć anonimowy dostęp do jednostki podczas tworzenia, jak pokazano na poniższym zrzucie ekranu z portalu:
+Klucze dla sygnatury dostępu współdzielonego można skonfigurować w przestrzeni nazw usługi Relay. W przeciwieństwie do Service Bus Messaging [połączenia hybrydowe Relay](relay-hybrid-connections-protocol.md) obsługuje nadawcy nieautoryzowanych lub anonimowych. Można włączyć dostęp anonimowy dla jednostki podczas tworzenia, jak pokazano na poniższym zrzucie ekranu z portalu:
 
 ![][0]
 
-Aby korzystać z sygnatury dostępu Współdzielonego, można skonfigurować [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) obiektu w przestrzeni nazw usługi Relay, który składa się z następujących czynności:
+Aby użyć sygnatury dostępu współdzielonego, można skonfigurować obiekt [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) w przestrzeni nazw przekaźnika, która składa się z następujących elementów:
 
-* *KeyName* określający reguły.
-* *PrimaryKey* jest klucz kryptograficzny używany do logowania i weryfikacji tokenów sygnatur dostępu Współdzielonego.
-* *Klucz pomocniczy* jest klucz kryptograficzny używany do logowania i weryfikacji tokenów sygnatur dostępu Współdzielonego.
-* *Prawa* reprezentujący kolekcję nasłuchiwania, wysyłania lub zarządzania prawa.
+* *NazwaKlucza* , która identyfikuje regułę.
+* *PrimaryKey* to klucz kryptograficzny używany do podpisywania/weryfikowania tokenów SAS.
+* *SecondaryKey* to klucz kryptograficzny używany do podpisywania/weryfikowania tokenów SAS.
+* *Prawa* reprezentujące kolekcję przyznanych praw nasłuchujących, wysyłania lub zarządzania.
 
-Reguły autoryzacji konfigurowane na poziomie przestrzeni nazw można przyznać dostęp do wszystkich połączeń w przestrzeni nazw usługi relay dla klientów z tokenami podpisany przy użyciu odpowiedniego klucza. Maksymalnie 12 takiego upoważnienia można skonfigurować reguły w przestrzeni nazw usługi Relay. Domyślnie [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) z wszelkie prawa, które jest konfigurowana dla każdej przestrzeni nazw podczas najpierw jest zainicjowany.
+Reguły autoryzacji skonfigurowane na poziomie przestrzeni nazw mogą udzielić dostępu do wszystkich połączeń przekaźnika w przestrzeni nazw dla klientów z tokenami podpisanymi przy użyciu odpowiedniego klucza. Do 12 takich reguł autoryzacji można skonfigurować w przestrzeni nazw przekaźnika. Domyślnie [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) z wszelkimi prawami jest konfigurowana dla każdej przestrzeni nazw, gdy jest ona najpierw inicjowana.
 
-Aby uzyskać dostęp do jednostki, klient wymaga tokenu sygnatury dostępu Współdzielonego, wygenerowane za pomocą określonego [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Token sygnatury dostępu Współdzielonego jest generowana z użyciem HMAC-funkcję skrótu SHA256 o ciągu zasobu, który składa się z identyfikatora URI zasobu, do której dostęp jest zgłoszone i utraty ważności za pomocą klucza kryptograficznego skojarzony z regułą autoryzacji.
+Aby uzyskać dostęp do jednostki, klient wymaga tokenu sygnatury dostępu współdzielonego wygenerowanego przy użyciu określonego [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Token sygnatury dostępu współdzielonego jest generowany przy użyciu HMAC-SHA256 ciągu zasobu, który składa się z identyfikatora URI zasobu, do którego odnosi się dostęp, oraz wygaśnięcia klucza kryptograficznego skojarzonego z regułą autoryzacji.
 
-Obsługa uwierzytelniania sygnatury dostępu Współdzielonego dla usługi Azure Relay jest dostępne w ramach zestawu Azure .NET SDK w wersji 2.0 lub nowszej. Sygnatury dostępu Współdzielonego obejmuje obsługę [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Wszystkie interfejsy API, które akceptują parametry połączenia jako parametru obejmują obsługę parametrów połączenia sygnatury dostępu Współdzielonego.
+Obsługa uwierzytelniania SAS dla Azure Relay jest zawarta w zestawie SDK platformy Azure w wersji 2,0 lub nowszej. Sygnatura dostępu współdzielonego obejmuje obsługę [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Wszystkie interfejsy API, które akceptują parametry połączenia jako parametr obejmują obsługę ciągów połączeń sygnatury dostępu współdzielonego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Czytaj dalej [uwierzytelniania usługi Service Bus za pomocą sygnatur dostępu współdzielonego](../service-bus-messaging/service-bus-sas.md) Aby uzyskać więcej informacji na temat sygnatury dostępu Współdzielonego.
-- Zobacz [przewodnik dotyczący protokołu połączeń hybrydowych usługi Azure Relay](relay-hybrid-connections-protocol.md) szczegółowe informacje dotyczące możliwości połączeń hybrydowych.
-- Dla odpowiednich informacji o usłudze Service BUS do uwierzytelniania i autoryzacji, zobacz [usługi Service Bus, uwierzytelnianie i autoryzacja](../service-bus-messaging/service-bus-authentication-and-authorization.md). 
+- Aby uzyskać więcej informacji na temat SYGNATURy [dostępu współdzielonego, Kontynuuj odczytywanie Service Busgo uwierzytelniania za pomocą sygnatur dostęp](../service-bus-messaging/service-bus-sas.md)
+- Szczegółowe informacje na temat możliwości Połączenia hybrydowe można znaleźć w [przewodniku po protokole Połączenia hybrydowe Azure Relay](relay-hybrid-connections-protocol.md) .
+- Aby uzyskać odpowiednie informacje dotyczące Service Bus uwierzytelniania i autoryzacji komunikatów, zobacz [Service Bus uwierzytelnianie i autoryzacja](../service-bus-messaging/service-bus-authentication-and-authorization.md). 
 
 [0]: ./media/relay-authentication-and-authorization/hcanon.png

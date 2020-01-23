@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 3ba4ac665df45ab6d53d2195ab59ec577f8bab05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422283"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547935"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące zabezpieczeń aplikacji i klastrów w usłudze Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,7 @@ W tym artykule przedstawiono podstawowe koncepcje zabezpieczania aplikacji w pro
 
 W programie AKS główne składniki programu Kubernetes są częścią usługi zarządzanej zapewnianej przez firmę Microsoft. Każdy klaster AKS ma własny, dedykowany główny Kubernetes, który zapewnia serwer interfejsu API, harmonogram itd. Ten główny serwer jest zarządzany i konserwowany przez firmę Microsoft.
 
-Domyślnie serwer interfejsu API Kubernetes używa publicznego adresu IP i z w pełni kwalifikowaną nazwą domeny (FQDN). Dostęp do serwera interfejsu API można kontrolować za pomocą kontroli dostępu opartej na rolach Kubernetes i Azure Active Directory. Aby uzyskać więcej informacji, zobacz [integracja z usługą Azure AD za pomocą AKS][aks-aad].
+Domyślnie serwer interfejsu API Kubernetes używa publicznego adresu IP i w pełni kwalifikowanej nazwy domeny (FQDN). Dostęp do serwera interfejsu API można kontrolować za pomocą kontroli dostępu opartej na rolach Kubernetes i Azure Active Directory. Aby uzyskać więcej informacji, zobacz [integracja z usługą Azure AD za pomocą AKS][aks-aad].
 
 ## <a name="node-security"></a>Zabezpieczenia węzła
 

@@ -1,6 +1,6 @@
 ---
 title: Duże relokalizacja w C++/WinRT
-description: Szczegółowe wyjaśnienie sposobu tworzenia i lokalizowania kotwic przy użyciu czujników na urządzeniach w C++/WinRT.
+description: Szczegółowe informacje na temat sposobu tworzenia i lokalizowania kotwic przy użyciu grubej relokalizacji w C++/WinRT.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,20 +8,20 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: dd759ed4cbda936b00ce2ac0946184f9f6581c78
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790366"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548292"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cwinrt"></a>Jak utworzyć i zlokalizować kotwice przy użyciu czujników na urządzeniach w C++/WinRT
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>Jak utworzyć i zlokalizować kotwice przy użyciu grubej relokalizacji C++w/WinRT
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
 > * [Objective-C](set-up-coarse-reloc-objc.md)
 > * [Swift](set-up-coarse-reloc-swift.md)
-> * [System Android Java](set-up-coarse-reloc-java.md)
+> * [Android Java](set-up-coarse-reloc-java.md)
 > * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 

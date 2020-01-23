@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 97fdb0b243f71701491f2d2424c04dbd19208ef0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291197"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544977"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z Azure Files w systemie Windows
 
@@ -140,9 +140,8 @@ Aby zamknąć otwarte uchwyty dla udziału plików, katalogu lub pliku, należy 
 > Polecenia cmdlet Get-AzStorageFileHandle i Close-AzStorageFileHandle są zawarte w programie AZ PowerShell module w wersji 2,4 lub nowszej. Aby zainstalować najnowszy moduł AZ PowerShell module, zobacz [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>Błąd "Brak dostępu" podczas przeglądania udziału plików platformy Azure w portalu
-
-Po przejściu do udziału plików platformy Azure w portalu może zostać wyświetlony następujący błąd:
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Błąd "Brak dostępu" podczas próby uzyskania dostępu do udziału plików platformy Azure lub usunięcie go  
+W przypadku próby uzyskania dostępu do udziału plików platformy Azure w portalu lub usunięcia go z niego może zostać wyświetlony następujący błąd:
 
 Brak dostępu  
 Kod błędu: 403 

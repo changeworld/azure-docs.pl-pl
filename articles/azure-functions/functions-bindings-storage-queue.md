@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 70254e42b5964c7c7a3bf15c396f4c118f68a5ed
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ea213921c736bc3b6bf88c0bdd81a96656ecbe5b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121237"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547289"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Powiązania usługi Azure queue storage dla Azure Functions
 
@@ -40,17 +40,7 @@ Funkcja oczekuje ciągu zakodowanego w *formacie base64* . Wszelkie zmiany typu 
 
 Użyj wyzwalacza kolejki, aby uruchomić funkcję po odebraniu nowego elementu w kolejce. Komunikat w kolejce jest przekazywany do funkcji jako dane wejściowe.
 
-## <a name="trigger---example"></a>Wyzwalacz — przykład
-
-Zobacz przykład specyficzny dla języka:
-
-* [C#](#trigger---c-example)
-* [Skryptu C# (csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
-* [Java](#trigger---java-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Wyzwalacz — przykład w języku C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która sonduje kolejkę `myqueue-items` i zapisuje dziennik za każdym razem, gdy element kolejki jest przetwarzany.
 
@@ -67,7 +57,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Wyzwalacz — przykładowy skrypt w języku C#
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
 Poniższy przykład przedstawia powiązanie wyzwalacza kolejki w pliku *Function. JSON* i [ C# kodzie skryptu (. CSX)](functions-reference-csharp.md) , który używa powiązania. Funkcja sonduje kolejkę `myqueue-items` i zapisuje dziennik za każdym razem, gdy element kolejki jest przetwarzany.
 
@@ -122,7 +112,7 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 W sekcji [użycie](#trigger---usage) objaśniono `myQueueItem`, który jest nazwany przez właściwość `name` w funkcji Function. JSON.  W [sekcji metadane wiadomości](#trigger---message-metadata) objaśniono wszystkie inne wyświetlane zmienne.
 
-### <a name="trigger---javascript-example"></a>Wyzwalacz — przykład JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza kolejki w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja sonduje kolejkę `myqueue-items` i zapisuje dziennik za każdym razem, gdy element kolejki jest przetwarzany.
 
@@ -167,23 +157,7 @@ module.exports = async function (context, message) {
 
 W sekcji [użycie](#trigger---usage) objaśniono `myQueueItem`, który jest nazwany przez właściwość `name` w funkcji Function. JSON.  W [sekcji metadane wiadomości](#trigger---message-metadata) objaśniono wszystkie inne wyświetlane zmienne.
 
-### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
-
-Poniższy przykład języka Java przedstawia funkcje wyzwalacza kolejki magazynu, które rejestrują wyzwolony komunikat umieszczony do kolejki `myqueuename`.
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
-
-### <a name="trigger---python-example"></a>Wyzwalacz — przykład w języku Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Poniższy przykład ilustruje sposób odczytywania komunikatu kolejki przekazanego do funkcji za pośrednictwem wyzwalacza.
 
@@ -231,7 +205,27 @@ def main(msg: func.QueueMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Poniższy przykład Java pokazuje funkcję wyzwalacza kolejki magazynu, która rejestruje wyzwolony komunikat umieszczony w kolejce `myqueuename`.
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
+ ---
+
+## <a name="trigger---attributes-and-annotations"></a>Wyzwalacz — atrybuty i adnotacje
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj następujących atrybutów, aby skonfigurować wyzwalacz kolejki:
 
@@ -261,7 +255,7 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj następującyc
   }
   ```
 
-  Aby uzyskać kompletny przykład, zobacz [wyzwalacza — przykład w języku C#](#trigger---c-example).
+  Aby uzyskać kompletny przykład, zobacz [wyzwalacza — przykład w języku C#](#trigger).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -287,6 +281,47 @@ Konto magazynu do użycia jest określane w następującej kolejności:
 * `StorageAccount` Zastosowany do klasy.
 * Ustawienie aplikacji "AzureWebJobsStorage".
 
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Atrybuty nie są obsługiwane przez C# skrypt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atrybuty nie są obsługiwane przez skrypt języka Java.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Atrybuty nie są obsługiwane przez język Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Adnotacja `QueueTrigger` zapewnia dostęp do kolejki, która wyzwala funkcję. Poniższy przykład powoduje, że komunikat kolejki jest dostępny dla funkcji za pośrednictwem parametru `message`.
+
+```java
+package com.function;
+import com.microsoft.azure.functions.annotation.*;
+import java.util.Queue;
+import com.microsoft.azure.functions.*;
+
+public class QueueTriggerDemo {
+    @FunctionName("QueueTriggerDemo")
+    public void run(
+        @QueueTrigger(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Queue message: " + message);
+    }
+}
+```
+
+| Właściwość    | Opis |
+|-------------|-----------------------------|
+|`name`       | Deklaruje nazwę parametru w podpisie funkcji. Gdy funkcja jest wyzwalana, wartość tego parametru ma zawartość komunikatu w kolejce. |
+|`queueName`  | Deklaruje nazwę kolejki na koncie magazynu. |
+|`connection` | Wskazuje na parametry połączenia konta magazynu. |
+
+---
+
 ## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
 W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `QueueTrigger` atrybutu.
@@ -303,7 +338,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
-W C# skryptach i C# Uzyskuj dostęp do danych komunikatów przy użyciu parametru metody, takiego jak `string paramName`. W C# skrypcie `paramName` jest wartością określoną we właściwości `name` *funkcji Function. JSON*. Można powiązać z dowolnym z następujących typów:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Uzyskaj dostęp do danych komunikatów przy użyciu parametru metody, takiego jak `string paramName`. Można powiązać z dowolnym z następujących typów:
 
 * Object — środowisko uruchomieniowe funkcji deserializacji ładunek JSON do wystąpienia dowolnej klasy zdefiniowanej w kodzie. 
 * `string`
@@ -312,7 +349,30 @@ W C# skryptach i C# Uzyskuj dostęp do danych komunikatów przy użyciu parametr
 
 Jeśli próbujesz powiązać z `CloudQueueMessage` i otrzymać komunikat o błędzie, upewnij się, że masz odwołanie do [odpowiedniej wersji zestawu SDK magazynu](#azure-storage-sdk-version-in-functions-1x).
 
-W języku JavaScript Użyj `context.bindings.<name>`, aby uzyskać dostęp do ładunku elementu kolejki. Jeśli ładunek jest w formacie JSON, jest deserializowany do obiektu. Ten ładunek jest również przenoszona jako drugi parametr do funkcji.
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Uzyskaj dostęp do danych komunikatów przy użyciu parametru metody, takiego jak `string paramName`. `paramName` jest wartością określoną we właściwości `name` *funkcji Function. JSON*. Można powiązać z dowolnym z następujących typów:
+
+* Object — środowisko uruchomieniowe funkcji deserializacji ładunek JSON do wystąpienia dowolnej klasy zdefiniowanej w kodzie. 
+* `string`
+* `byte[]`
+* [CloudQueueMessage]
+
+Jeśli próbujesz powiązać z `CloudQueueMessage` i otrzymać komunikat o błędzie, upewnij się, że masz odwołanie do [odpowiedniej wersji zestawu SDK magazynu](#azure-storage-sdk-version-in-functions-1x).
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Ładunek elementu kolejki jest dostępny za pośrednictwem `context.bindings.<NAME>`, gdzie `<NAME>` pasuje do nazwy zdefiniowanej w *funkcji Function. JSON*. Jeśli ładunek jest w formacie JSON, wartość jest deserializowana do obiektu.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Uzyskaj dostęp do komunikatu kolejki za pośrednictwem parametru, który został określony jako [QueueMessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python).
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Adnotacja [QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) daje dostęp do komunikatu kolejki, który wyzwolił funkcję.
+
+---
 
 ## <a name="trigger---message-metadata"></a>Wyzwalacz — komunikat metadanych
 
@@ -365,22 +425,12 @@ Plik [host. JSON](functions-host-json.md#queues) zawiera ustawienia sterujące z
 
 Użyj powiązania danych wyjściowych usługi Azure queue storage do zapisu komunikatów w kolejce.
 
-## <a name="output---example"></a>Dane wyjściowe — przykład
-
-Zobacz przykład specyficzny dla języka:
-
-* [C#](#output---c-example)
-* [Skryptu C# (csx)](#output---c-script-example)
-* [JavaScript](#output---javascript-example)
-* [Java](#output---java-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Dane wyjściowe — przykład w języku C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która tworzy komunikat kolejki dla każdego odebranego żądania HTTP.
 
 ```csharp
-[StorageAccount("AzureWebJobsStorage")]
+[StorageAccount("MyStorageConnectionAppSetting")]
 public static class QueueFunctions
 {
     [FunctionName("QueueOutput")]
@@ -393,7 +443,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="output---c-script-example"></a>Dane wyjściowe — przykładowy skrypt w języku C#
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
 Poniższy przykład pokazuje powiązanie wyzwalacza http w pliku *Function. JSON* i [ C# kodzie skryptu (. CSX)](functions-reference-csharp.md) , który używa powiązania. Funkcja tworzy element kolejki z ładunkiem obiektu **CustomQueueMessage** dla każdego odebranego żądania HTTP.
 
@@ -454,7 +504,7 @@ public static void Run(
 }
 ```
 
-### <a name="output---javascript-example"></a>Dane wyjściowe — przykład JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza HTTP w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja tworzy element kolejki dla każdego odebranego żądania HTTP.
 
@@ -504,25 +554,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>Dane wyjściowe — przykładzie w języku Java
-
- Poniższy przykład pokazuje funkcję języka Java, która tworzy komunikat w kolejce, gdy jest wyzwalany przez żądanie HTTP.
-
-```java
-@FunctionName("httpToQueue")
-@QueueOutput(name = "item", queueName = "myqueue-items", connection = "AzureWebJobsStorage")
- public String pushToQueue(
-     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-     final String message,
-     @HttpOutput(name = "response") final OutputBinding<String> result) {
-       result.setValue(message + " has been added.");
-       return message;
- }
-```
-
-W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@QueueOutput` w przypadku parametrów, których wartość zostałaby zapisywana w usłudze queue storage.  Typ parametru musi być `OutputBinding<T>`, gdzie T jest dowolnego natywnego języka Java typu obiektu typu POJO.
-
-### <a name="output---python-example"></a>Dane wyjściowe — przykład w języku Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Poniższy przykład ilustruje sposób wyprowadzania pojedynczych i wielu wartości do kolejek magazynu. Konfiguracja wymagana dla *funkcji Function. JSON* jest taka sama jak w obu kierunkach.
 
@@ -585,7 +617,29 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Dane wyjściowe — atrybuty
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+ Poniższy przykład pokazuje funkcję języka Java, która tworzy komunikat w kolejce dla wyzwalane przez żądanie HTTP.
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+```
+
+W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@QueueOutput` w przypadku parametrów, których wartość zostałaby zapisywana w usłudze queue storage.  Typ parametru powinien być `OutputBinding<T>`, gdzie `T` jest dowolnym natywnym typem języka Java POJO.
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Dane wyjściowe — atrybuty i adnotacje
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj klasy [queueattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
 
@@ -611,9 +665,54 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Aby uzyskać kompletny przykład, zobacz [dane wyjściowe — przykład w języku C#](#output---c-example).
+Aby uzyskać kompletny przykład, zobacz [dane wyjściowe — przykład w języku C#](#output).
 
 Można użyć atrybutu `StorageAccount`, aby określić konto magazynu na poziomie klasy, metody lub parametru. Aby uzyskać więcej informacji, zobacz wyzwalacz-atrybuty.
+
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Atrybuty nie są obsługiwane przez C# skrypt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atrybuty nie są obsługiwane przez skrypt języka Java.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Atrybuty nie są obsługiwane przez język Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Adnotacja `QueueOutput` umożliwia dostęp do zapisu wiadomości wyjściowej funkcji. Poniższy przykład pokazuje funkcję wyzwalaną przez protokół HTTP, która tworzy komunikat w kolejce.
+
+```java
+package com.function;
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class HttpTriggerQueueOutput {
+    @FunctionName("HttpTriggerQueueOutput")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @QueueOutput(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") OutputBinding<String> message,
+            final ExecutionContext context) {
+
+        message.setValue(request.getQueryParameters().get("name"));
+        return request.createResponseBuilder(HttpStatus.OK).body("Done").build();
+    }
+}
+```
+
+| Właściwość    | Opis |
+|-------------|-----------------------------|
+|`name`       | Deklaruje nazwę parametru w podpisie funkcji. Gdy funkcja jest wyzwalana, wartość tego parametru ma zawartość komunikatu w kolejce. |
+|`queueName`  | Deklaruje nazwę kolejki na koncie magazynu. |
+|`connection` | Wskazuje na parametry połączenia konta magazynu. |
+
+Parametr skojarzony z adnotacją `QueueOutput` jest wpisywany jako wystąpienie elementu [wyjściowego\<t\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) .
+
+---
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
@@ -631,7 +730,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="output---usage"></a>Dane wyjściowe — użycie
 
-W C# programie C# i skrypcie Napisz pojedynczy komunikat kolejki przy użyciu parametru metody, takiego jak `out T paramName`. W C# skrypcie `paramName` jest wartością określoną we właściwości `name` *funkcji Function. JSON*. Można użyć typu zwracanego metody zamiast parametru `out`, a `T` może być jednym z następujących typów:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Napisz pojedynczy komunikat w kolejce przy użyciu parametru metody, takiego jak `out T paramName`. Można użyć typu zwracanego metody zamiast parametru `out`, a `T` może być jednym z następujących typów:
 
 * Obiekt możliwy do serializacji jako plik JSON
 * `string`
@@ -645,8 +746,43 @@ W C# programie C# i skrypcie Napisz wiele komunikatów w kolejce przy użyciu je
 * `ICollector<T>` lub `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-W funkcjach języka JavaScript Użyj `context.bindings.<name>`, aby uzyskać dostęp do komunikatu w kolejce wyjściowej. Dla ładunku elementu kolejki można użyć ciągu lub obiektu możliwego do serializacji w formacie JSON.
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
+Napisz pojedynczy komunikat w kolejce przy użyciu parametru metody, takiego jak `out T paramName`. `paramName` jest wartością określoną we właściwości `name` *funkcji Function. JSON*. Można użyć typu zwracanego metody zamiast parametru `out`, a `T` może być jednym z następujących typów:
+
+* Obiekt możliwy do serializacji jako plik JSON
+* `string`
+* `byte[]`
+* [CloudQueueMessage] 
+
+Jeśli próbujesz powiązać z `CloudQueueMessage` i otrzymać komunikat o błędzie, upewnij się, że masz odwołanie do [odpowiedniej wersji zestawu SDK magazynu](#azure-storage-sdk-version-in-functions-1x).
+
+W C# programie C# i skrypcie Napisz wiele komunikatów w kolejce przy użyciu jednego z następujących typów: 
+
+* `ICollector<T>` lub `IAsyncCollector<T>`
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Element kolejki wyjściowej jest dostępny za pośrednictwem `context.bindings.<NAME>`, gdzie `<NAME>` pasuje do nazwy zdefiniowanej w *funkcji Function. JSON*. Dla ładunku elementu kolejki można użyć ciągu lub obiektu możliwego do serializacji w formacie JSON.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Istnieją dwie opcje wyprowadzania komunikatu centrum zdarzeń z funkcji:
+
+- **Wartość zwracana**: ustaw właściwość `name` w *funkcji Function. JSON* na `$return`. W przypadku tej konfiguracji wartość zwracana przez funkcję jest utrwalana jako komunikat magazynu kolejki.
+
+- Bezwzględnie **: Przekaż**wartość do metody [Set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) parametru zadeklarowanego jako typ [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) . Wartość przeniesiona do `set` jest utrwalana jako komunikat magazynu kolejki.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Istnieją dwie opcje wyprowadzania komunikatu centrum zdarzeń z funkcji przy użyciu adnotacji [QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) :
+
+- **Wartość zwracana**: przez zastosowanie adnotacji do samej funkcji, wartość zwracana funkcji jest utrwalana jako komunikat centrum zdarzeń.
+
+- Bezwzględnie **: aby**jawnie ustawić wartość komunikatu, Zastosuj adnotację do określonego parametru typu [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), gdzie `T` jest Pojo lub dowolnym natywnym typem języka Java. W przypadku tej konfiguracji przekazywanie wartości do metody `setValue` utrzymuje wartość jako komunikat centrum zdarzeń.
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 
@@ -679,7 +815,6 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
     }
 }
 ```
-
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|

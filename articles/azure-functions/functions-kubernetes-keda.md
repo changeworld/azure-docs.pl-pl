@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 9978bd567b1b07e8dd0e22e1f02834626281a5dd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 83c57b27c1cd1d524805a92381a1ba9eb2e1fbd6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920678"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549040"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions w Kubernetes z KEDA
 
@@ -26,15 +26,9 @@ Funkcje oparte na Kubernetes udostępniają środowisko uruchomieniowe funkcji w
 
 Aby uruchomić funkcje w klastrze Kubernetes, należy zainstalować składnik KEDA. Ten składnik można zainstalować przy użyciu [Azure Functions Core Tools](functions-run-local.md).
 
-### <a name="installing-with-the-azure-functions-core-tools"></a>Instalowanie przy użyciu Azure Functions Core Tools
+### <a name="installing-with-helm"></a>Instalowanie za pomocą Helm
 
-Domyślnie podstawowe narzędzia instalują zarówno składniki KEDA, jak i Osiris, które obsługują odpowiednio skalowanie oparte na zdarzeniach i HTTP.  Instalacja używa `kubectl` uruchomione w bieżącym kontekście.
-
-Zainstaluj KEDA w klastrze, uruchamiając następujące polecenie instalacji:
-
-```cli
-func kubernetes install --namespace keda
-```
+Istnieją różne sposoby instalowania KEDA w dowolnym klastrze Kubernetes, w tym Helm.  Opcje wdrażania są udokumentowane w [witrynie KEDA](https://keda.sh/deploy/).
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Wdrażanie aplikacji funkcji do Kubernetes
 
@@ -73,11 +67,7 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>Odinstalowywanie KEDA z Kubernetes
 
-Aby usunąć KEDA z klastra Kubernetes, można uruchomić następujące podstawowe narzędzia:
-
-```cli
-func kubernetes remove --namespace keda
-```
+Kroki odinstalowywania KEDA są udokumentowane [w witrynie KEDA](https://keda.sh/deploy/).
 
 ## <a name="supported-triggers-in-keda"></a>Obsługiwane Wyzwalacze w KEDA
 
@@ -91,7 +81,7 @@ KEDA obsługuje następujące wyzwalacze usługi Azure Functions:
 
 ### <a name="http-trigger-support"></a>Obsługa wyzwalacza HTTP
 
-Można użyć Azure Functions, które uwidaczniają wyzwalacze HTTP, ale KEDA nie zarządzać nimi bezpośrednio.  Azure Functions Core Tools zainstaluje powiązany projekt, Osiris, który umożliwia skalowanie punktów końcowych HTTP z przedziału od 0 do 1.  Skalowanie od 1 do *n* będzie oparte na tradycyjnych zasadach skalowania Kubernetes.
+Można użyć Azure Functions, które uwidaczniają wyzwalacze HTTP, ale KEDA nie zarządzać nimi bezpośrednio.  Można użyć wyzwalacza Prometheus KEDA do [skalowania Azure Functions http od 1 do *n* wystąpień](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42).
 
 ## <a name="next-steps"></a>Następne kroki
 Więcej informacji zawierają następujące zasoby:

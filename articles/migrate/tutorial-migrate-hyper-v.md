@@ -4,12 +4,12 @@ description: Dowiedz się, jak przeprowadzić migrację lokalnych maszyn wirtual
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028974"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545912"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrowanie maszyn wirtualnych funkcji Hyper-V do platformy Azure 
 
@@ -181,7 +181,7 @@ Jeśli jest to pierwsza maszyna wirtualna, która jest replikowana w projekcie A
 - **Service Bus**: Azure Migrate: Migracja serwera używa Service Bus do wysyłania komunikatów aranżacji replikacji do urządzenia.
 - **Konto magazynu bramy**: Azure Migrate: Migracja serwera używa konta magazynu bramy do przechowywania informacji o stanie dotyczących replikowanych maszyn wirtualnych.
 - **Konto magazynu dzienników**: urządzenie Azure Migrate przekazuje dzienniki replikacji dla maszyn wirtualnych do konta magazynu dzienników. Azure Migrate stosuje informacje o replikacji do dysków zarządzanych przez replikę.
-- **Magazyn kluczy**: urządzenie Azure Migrate używa magazynu kluczy do zarządzania parametrami połączenia dla magistrali usług i kluczy dostępu dla kont magazynu używanych w replikacji. Należy skonfigurować uprawnienia, które Magazyn kluczy musi uzyskać dostęp do konta magazynu podczas przygotowywania. [przygotowano platformę Azure](tutorial-prepare-hyper-v.md#prepare-azure) do oceny i migracji maszyn wirtualnych funkcji Hyper-V. 
+- **Magazyn kluczy**: urządzenie Azure Migrate używa magazynu kluczy do zarządzania parametrami połączenia dla magistrali usług i kluczy dostępu dla kont magazynu używanych w replikacji. Należy skonfigurować uprawnienia wymagane przez Magazyn kluczy do uzyskiwania dostępu do konta magazynu podczas [przygotowywania usługi Azure](tutorial-prepare-hyper-v.md#prepare-azure) do oceny i migracji maszyn wirtualnych funkcji Hyper-V. 
 
 
 ## <a name="track-and-monitor"></a>Śledzenie i monitorowanie

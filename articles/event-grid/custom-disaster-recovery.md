@@ -1,18 +1,18 @@
 ---
 title: Odzyskiwanie po awarii dla tematów niestandardowych w Azure Event Grid
-description: Dowiedz się, jak przetrwać regionalne przerwy w działaniu Azure Event Grid.
+description: Ten samouczek przeprowadzi Cię przez proces konfigurowania architektury zdarzeń do odzyskania, jeśli usługa Event Grid stanie się zła w danym regionie.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 7020fb167539e8ad16cc6c386f58e38326dec43b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790279"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511522"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Tworzenie własnego odzyskiwania po awarii dla tematów niestandardowych w programie Event Grid
 Odzyskiwanie po awarii powinno być skoncentrowane na odzyskiwaniu po poważnej utracie funkcjonalności aplikacji. Ten samouczek przeprowadzi Cię przez konfigurowanie architektury obsługi zdarzeń pod kątem odzyskiwania w przypadku pogorszenia kondycji usługi Event Grid w konkretnym regionie.

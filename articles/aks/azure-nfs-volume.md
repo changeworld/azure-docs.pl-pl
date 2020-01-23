@@ -1,38 +1,38 @@
 ---
-title: Utwórz serwer systemu plików NFS (systemu plików NFS) Ubuntu do użycia przez zasobników Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak ręcznie utworzyć wolumin systemu plików NFS Ubuntu Linux Server do użytku z zasobników w usłudze Azure Kubernetes Service (AKS)
+title: Utwórz serwer Ubuntu NFS (sieciowy system plików) do użycia przez usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak ręcznie utworzyć wolumin serwera Ubuntu Linux NFS do użycia z identyfikatorami platformy Azure Kubernetes Service (AKS)
 services: container-service
 author: ozboms
 ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 55eb5b0b98a4097d2f300bacabbfef3b0a32b27b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65468502"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549261"
 ---
-# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i korzystać z woluminu systemu plików NFS (systemu plików NFS) Linux Server za pomocą usługi Azure Kubernetes Service (AKS)
-Udostępnianie danych między kontenerów jest często niezbędnych składników usług opartych na kontenerach i aplikacji. Zazwyczaj mają różne zasobników, którzy potrzebują dostępu do tych samych informacji w zewnętrznych trwały wolumin.    
-Usługa Azure files jest to możliwe, tworzenia serwera systemu plików NFS na Maszynie wirtualnej platformy Azure jest inna forma trwałego magazynu udostępnionego. 
+# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Ręczne tworzenie i używanie woluminu systemu plików NFS (sieciowy system plików) z systemem Linux za pomocą usługi Azure Kubernetes Service (AKS)
+Udostępnianie danych między kontenerami jest często niezbędnym składnikiem usług i aplikacji opartych na kontenerach. Zwykle istnieją różne zasobniki, które wymagają dostępu do tych samych informacji na zewnętrznym woluminie trwałym.    
+Podczas gdy usługa Azure Files jest opcją, Tworzenie serwera NFS na maszynie wirtualnej platformy Azure jest inną formą trwałego magazynu udostępnionego. 
 
-W tym artykule pokazano sposób tworzenia serwera systemu plików NFS na maszynie wirtualnej systemu Ubuntu. A także zapewnij dostęp kontenerów AKS do tego udostępnionego systemu plików.
+W tym artykule przedstawiono sposób tworzenia serwera NFS na maszynie wirtualnej Ubuntu. Ponadto nadajemy kontenerom AKS dostęp do tego współużytkowanego systemu plików.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
+W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zapoznaj się z przewodnikiem Szybki Start AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub [przy użyciu Azure Portal][aks-quickstart-portal].
 
-Klaster AKS musi znajdować się w tej samej lub równorzędnej sieci wirtualnych jako serwer systemu plików NFS. Klaster musi zostać utworzona w istniejącej sieci Wirtualnej, który może być tej samej sieci Wirtualnej jako maszyny Wirtualnej.
+Klaster AKS będzie musiał być aktywny w tych samych lub równorzędnych sieciach wirtualnych co serwer NFS. Klaster musi zostać utworzony w istniejącej sieci wirtualnej, która może być tą samą siecią wirtualną co maszyna wirtualna.
 
-Procedura konfigurowania za pomocą istniejącej sieci Wirtualnej są opisane w dokumentacji: [Tworzenie klastra AKS w istniejącej sieci Wirtualnej] [ aks-virtual-network] i [łączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci Wirtualnej][peer-virtual-networks]
+Procedurę konfigurowania z istniejącą siecią wirtualną opisano w dokumentacji: [Tworzenie klastra AKS w istniejącej sieci wirtualnej][aks-virtual-network] i [łączenie sieci wirtualnych za pomocą komunikacji równorzędnej][peer-virtual-networks]
 
-Przyjęto również założenie, że utworzono maszyny wirtualnej systemu Linux Ubuntu (na przykład 18.04 LTS). Ustawienia rozmiaru może być do swoich potrzeb i można wdrażać za pośrednictwem platformy Azure. Linux — Szybki Start można zobaczyć [zarządzania maszyną Wirtualną systemu linux][linux-create].
+Przyjęto również założenie, że utworzono Ubuntu Linux maszynę wirtualną (na przykład 18,04 LTS). Ustawienia i rozmiar mogą być używane w Twoim wdrożeniu i mogą być wdrażane za pomocą platformy Azure. W przypadku szybkiego startu systemu Linux zobacz [zarządzanie maszyną wirtualną z systemem Linux][linux-create].
 
-W przypadku wdrożenia klastra usługi AKS najpierw, Azure zostaną wypełnione automatycznie pola sieci wirtualnej podczas wdrażania na maszynie z systemem Ubuntu, dzięki czemu na żywo w ramach tej samej sieci Wirtualnej. Ale jeśli chcesz pracować w sieciach równorzędnych zamiast tego zapoznaj się z dokumentacją powyżej.
+Jeśli klaster AKS jest wdrażany jako pierwszy, platforma Azure automatycznie wypełni pole sieci wirtualnej podczas wdrażania maszyny Ubuntu, udostępniając je na żywo w tej samej sieci wirtualnej. Jeśli jednak chcesz korzystać z sieci równorzędnej, zapoznaj się z powyższą dokumentacją.
 
-## <a name="deploying-the-nfs-server-onto-a-virtual-machine"></a>Wdrażanie serwera systemu plików NFS na maszynie wirtualnej
-Oto skrypt, aby skonfigurować serwer NFS maszynie wirtualnej systemu Ubuntu:
+## <a name="deploying-the-nfs-server-onto-a-virtual-machine"></a>Wdrażanie serwera NFS na maszynie wirtualnej
+Oto skrypt służący do konfigurowania serwera NFS w ramach maszyny wirtualnej Ubuntu:
 ```bash
 #!/bin/bash
 
@@ -74,31 +74,31 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-Serwer zostanie ponownie uruchomiony (ze względu na skrypt) i można zainstalować serwer systemu plików NFS w usłudze AKS
+Serwer zostanie uruchomiony ponownie (ze względu na skrypt), a serwer NFS można zainstalować do AKS
 
 >[!IMPORTANT]  
->Upewnij się zastąpić **AKS_SUBNET** poprawne plikiem z klastra lub "*" spowoduje otwarcie serwer systemu plików NFS do wszystkich portów i połączeń.
+>Pamiętaj, aby zastąpić **AKS_SUBNET** poprawną z nich w klastrze, lub inny "*" spowoduje otwarcie serwera NFS do wszystkich portów i połączeń.
 
-Po utworzeniu maszyny Wirtualnej, skopiuj skrypt powyżej do pliku. Następnie można go przenieść, korzystając z komputera lokalnego lub wszędzie tam, gdzie skrypt jest do maszyny Wirtualnej przy użyciu: 
+Po utworzeniu maszyny wirtualnej Skopiuj skrypt powyżej do pliku. Następnie można przenieść ją z komputera lokalnego lub wszędzie tam, gdzie jest to skrypt, do maszyny wirtualnej przy użyciu: 
 ```console
 scp /path/to/script_file username@vm-ip-address:/home/{username}
 ```
-Po umieszczeniu skryptu na maszynie wirtualnej możesz ssh z maszyną wirtualną i uruchomić go za pomocą polecenia:
+Gdy skrypt znajduje się na maszynie wirtualnej, można przeprowadzić protokół SSH do maszyny wirtualnej i wykonać ją za pomocą polecenia:
 ```console
 sudo ./nfs-server-setup.sh
 ```
-Jeśli jej wykonanie nie powiedzie się ze względu na błąd odmowy uprawnień, należy ustawić uprawnień wykonywanie za pomocą polecenia:
+Jeśli wykonanie nie powiedzie się z powodu błędu odmowy uprawnień, Ustaw uprawnienie do wykonywania za pomocą polecenia:
 ```console
 chmod +x ~/nfs-server-setup.sh
 ```
 
-## <a name="connecting-aks-cluster-to-nfs-server"></a>Połączenie klastra AKS, serwer systemu plików NFS
-Możemy połączyć serwer NFS do klastra, aprowizując trwały wolumin i oświadczenia trwały wolumin, który określa sposób dostępu do woluminu.  
-Niezbędne jest połączenie obydwu usług w tej samej lub równorzędnej sieci wirtualnych. Instrukcje dotyczące konfigurowania klastra w tej samej sieci Wirtualnej są w tym miejscu: [Tworzenie klastra AKS w istniejącej sieci Wirtualnej][aks-virtual-network]
+## <a name="connecting-aks-cluster-to-nfs-server"></a>Łączenie klastra AKS z serwerem NFS
+Serwer systemu plików NFS można połączyć z naszym klastrem, udostępniając wolumin trwały i liczbę trwałych roszczeń, która określa, jak uzyskać dostęp do woluminu.  
+Konieczne jest połączenie dwóch usług w tych samych lub równorzędnych sieciach wirtualnych. Instrukcje dotyczące konfigurowania klastra w tej samej sieci wirtualnej są następujące: [Tworzenie klastra AKS w istniejącej sieci wirtualnej][aks-virtual-network]
 
-Po ich znajdują się w tej samej sieci wirtualnej (lub równorzędnej), należy aprowizować, które trwały wolumin i trwały wolumin oświadczenia w klastrze AKS. Kontenery mogą następnie zainstalować dysku systemu plików NFS do swojego katalogu lokalnego.
+Gdy znajdują się w tej samej sieci wirtualnej (lub komunikacji równorzędnej), należy zainicjować obsługę woluminu trwałego i trwałego w klastrze AKS. Kontenery mogą następnie zainstalować dysk NFS w katalogu lokalnym.
 
-Oto przykład definicji kubernetes trwały wolumin (Ta definicja przyjęto założenie, że Twoje klastrów i maszyn wirtualnych znajdują się w tej samej sieci Wirtualnej):
+Oto przykładowa definicja Kubernetes dla woluminu trwałego (w tej definicji przyjęto, że klaster i maszyna wirtualna znajdują się w tej samej sieci wirtualnej):
 
 ```yaml
 apiVersion: v1
@@ -116,12 +116,12 @@ spec:
     server: <NFS_INTERNAL_IP>
     path: <NFS_EXPORT_FILE_PATH>
 ```
-Zastąp **NFS_INTERNAL_IP**, **NFS_NAME** i **NFS_EXPORT_FILE_PATH** informacje o serwerze systemu plików NFS.
+Zastąp **NFS_INTERNAL_IP**, **NFS_NAME** i **NFS_EXPORT_FILE_PATH** informacjami o serwerze NFS.
 
-Należy także plik oświadczenia trwały wolumin. Oto przykład tego, co do uwzględnienia:
+Wymagany jest również trwały plik żądania woluminu. Oto przykład, co należy uwzględnić:
 
 >[!IMPORTANT]  
->**"storageClassName"** musi pozostać pusty ciąg lub oświadczenia nie będą działać.
+>**"storageClassName"** musi pozostać pustym ciągiem lub nie będzie działać.
 
 ```yaml
 apiVersion: v1
@@ -141,22 +141,22 @@ spec:
 ```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Jeśli nie możesz połączyć z serwerem z klastra, problem może być eksportowanego katalogu lub jego element nadrzędny, nie ma wystarczających uprawnień dostępu do serwera.
+Jeśli nie można nawiązać połączenia z serwerem z klastra, może to być problem z wyeksportowanym katalogiem lub jego elementem nadrzędnym, który nie ma wystarczających uprawnień dostępu do serwera.
 
-Upewnij się, że zarówno w katalogu eksportu, jak i w katalogu nadrzędnym ma 777 uprawnień.
+Sprawdź, czy katalog eksportu i jego katalog nadrzędny mają uprawnienia 777.
 
-Sprawdź uprawnienia, uruchamiając poniższe polecenie, a powinien mieć katalogi *"drwxrwxrwx"* uprawnienia:
+Uprawnienia można sprawdzić, uruchamiając poniższe polecenie, a katalogi powinny mieć uprawnienia *"drwxrwxrwx"* :
 ```console
 ls -l
 ```
 
 ## <a name="more-information"></a>Więcej informacji
-Aby uzyskać pełny przewodnik lub ułatwienia debugowania konfiguracji serwera NFS, poniżej przedstawiono szczegółowy samouczek:
-  - [Samouczek systemu plików NFS][nfs-tutorial]
+Aby zapoznać się z pełnym przewodnikiem lub ułatwić debugowanie instalacji serwera NFS, Oto szczegółowy samouczek:
+  - [Samouczek NFS][nfs-tutorial]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Najlepsze rozwiązania dotyczące skojarzone, zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze AKS][operator-best-practices-storage].
+W przypadku skojarzonych najlepszych rozwiązań zobacz [najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w AKS][operator-best-practices-storage].
 
 <!-- LINKS - external -->
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/

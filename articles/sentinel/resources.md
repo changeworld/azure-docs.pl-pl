@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2ce8b9e82907402538ca2d14b864c02bb8bc2d82
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771295"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548003"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Przydatne zasoby do pracy z platformą Azure — wskaźnikiem
 
@@ -46,13 +46,13 @@ Możliwe jest przeprowadzenie inspekcji następujących obsługiwanych operacji.
 |Usuń zapisane wyszukiwanie    |Microsoft. OperationalInsights/Workspaces/savedSearches|
 |Aktualizowanie reguł alertów |Microsoft. SecurityInsights/alertRules|
 |Usuń reguły alertów |Microsoft. SecurityInsights/alertRules|
-|Aktualizuj akcje odpowiedzi reguły alertu |Microsoft. SecurityInsights/alertRules|
-|Usuń akcje odpowiedzi reguły alertu |Microsoft. SecurityInsights/alertRules|
+|Aktualizuj akcje odpowiedzi reguły alertu |Microsoft. SecurityInsights/alertRules/Actions|
+|Usuń akcje odpowiedzi reguły alertu |Microsoft. SecurityInsights/alertRules/Actions|
 |Aktualizuj zakładki   |Microsoft. SecurityInsights/zakładki|
 |Usuń zakładki   |Microsoft. SecurityInsights/zakładki|
 |Przypadki aktualizacji   |Microsoft. SecurityInsights/sprawy|
-|Aktualizacja badania przypadku  |Microsoft. SecurityInsights/sprawy|
-|Utwórz Komentarze do wielkości liter   |Microsoft. SecurityInsights/sprawy|
+|Aktualizacja badania przypadku  |Microsoft. SecurityInsights/sprawy/badania|
+|Utwórz Komentarze do wielkości liter   |Microsoft. SecurityInsights/sprawy/Komentarze|
 |Aktualizuj łączniki danych |Microsoft. SecurityInsights/dataconnecters|
 |Usuń łączniki danych |Microsoft. SecurityInsights/dataconnecters|
 |Aktualizuj ustawienia    |Microsoft. SecurityInsights/ustawienia|

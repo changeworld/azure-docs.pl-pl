@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: a97a03f7ef20ae56cec04341fe76b79ee657547b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.custom: hdinsightactive
+ms.date: 01/21/2020
+ms.openlocfilehash: 102ae56bb9dce2898c14bdc710420759a527a9e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748476"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514701"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurowanie harmonogramu poprawek systemu operacyjnego dla klastrów usługi HDInsight opartych na systemie Linux
 
@@ -28,13 +28,26 @@ Usługa HDInsight zapewnia obsługę typowych zadań w klastrze, takich jak inst
 > [!NOTE]  
 > Akcje skryptu nie będą automatycznie stosowały aktualizacji dla wszystkich przyszłych cykli aktualizacji. Uruchom skrypty za każdym razem, gdy trzeba zastosować nowe aktualizacje, aby zainstalować aktualizacje, a następnie uruchom ponownie maszynę wirtualną.
 
+## <a name="preparation"></a>Przygotowywanie
+
+Przed wdrożeniem w środowisku produkcyjnym należy zastosować poprawkę do reprezentatywnego środowiska nieprodukcyjnego. Opracowywanie planu w celu odpowiedniego przetestowania systemu przed rzeczywistą poprawką.
+
+Od czasu do czasu z sesji SSH z klastrem może zostać wyświetlony komunikat informujący o tym, że uaktualnienie jest dostępne. Komunikat może wyglądać mniej więcej tak:
+
+```
+New release '18.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade it
+```
+
+Stosowanie poprawek jest opcjonalne i według własnego uznania.
+
 ## <a name="restart-nodes"></a>Uruchom ponownie węzły
   
 Harmonogram skryptów [—](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh)ponowny rozruch, ustawia typ ponownego uruchomienia, który będzie wykonywany na maszynach w klastrze. Podczas przesyłania akcji skryptu ustaw jej wartość na wszystkie trzy typy węzłów: węzeł główny, węzeł procesu roboczego i dozorcy. Jeśli skrypt nie zostanie zastosowany do typu węzła, maszyny wirtualne dla tego typu węzła nie zostaną zaktualizowane ani uruchomione ponownie.
 
 `schedule-reboots script` akceptuje jeden parametr liczbowy:
 
-| Parametr | Akceptowane wartości | Definicja |
+| Parametr | Dopuszczalne wartości | Definicja |
 | --- | --- | --- |
 | Typ ponownego uruchomienia do wykonania | 1 lub 2 | Wartość 1 włącza zaplanowanie ponownego uruchomienia (zaplanowane w 12-24 godzinach). Wartość 2 włącza natychmiastowe ponowne uruchomienie (w ciągu 5 minut). Jeśli parametr nie zostanie określony, wartość domyślna to 1. |  
 
@@ -44,7 +57,7 @@ Skrypt [Install-Updates-Schedule-Reboots.sh](https://hdiconfigactions.blob.core.
 
 Skrypt `install-updates-schedule-reboots` akceptuje dwa parametry liczbowe, zgodnie z opisem w poniższej tabeli:
 
-| Parametr | Akceptowane wartości | Definicja |
+| Parametr | Dopuszczalne wartości | Definicja |
 | --- | --- | --- |
 | Typ aktualizacji do zainstalowania | 0, 1 lub 2 | Wartość 0 powoduje zainstalowanie tylko aktualizacji jądra. Wartość 1 powoduje zainstalowanie wszystkich aktualizacji, a 2 instaluje tylko aktualizacje jądra i zabezpieczeń. Jeśli parametr nie zostanie podany, wartość domyślna to 0. |
 | Typ ponownego uruchomienia do wykonania | 0, 1 lub 2 | Wartość 0 powoduje wyłączenie ponownego uruchomienia. Wartość 1 włącza ponowne uruchomienie harmonogramu, a 2 włącza natychmiastowe ponowne uruchomienie. Jeśli parametr nie zostanie podany, wartość domyślna to 0. Użytkownik musi zmienić parametr wejściowy 1 na parametr wejściowy 2. |
@@ -56,5 +69,5 @@ Skrypt `install-updates-schedule-reboots` akceptuje dwa parametry liczbowe, zgod
 
 Aby zapoznać się z konkretnymi krokami dotyczącymi używania akcji skryptu, zobacz następujące sekcje w temacie [Dostosowywanie klastrów usługi HDInsight opartych na systemie Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md):
 
-* [Używanie akcji skryptu podczas tworzenia klastra](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [Zastosuj akcję skryptu do działającego klastra](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+- [Używanie akcji skryptu podczas tworzenia klastra](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
+- [Zastosuj akcję skryptu do działającego klastra](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

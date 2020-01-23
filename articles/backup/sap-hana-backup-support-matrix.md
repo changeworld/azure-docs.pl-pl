@@ -3,14 +3,14 @@ title: Tabela obsługi kopii zapasowych platformy SAP HANA
 description: W tym artykule omówiono obsługiwane scenariusze i ograniczenia dotyczące tworzenia kopii zapasowych SAP HANA baz danych na maszynach wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 0d847d2131a9a9c21fde14cae40a184de4195223
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a0a7c25ec718dcd6a903d2149a8b3930fb25941e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288232"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514300"
 ---
-# <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Macierz obsługi dla tworzenia kopii zapasowych baz danych SAP HANA na maszynach wirtualnych platformy Azure
+# <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Macierz obsługi dla kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
 
 Azure Backup obsługuje tworzenie kopii zapasowych baz danych SAP HANA na platformie Azure. W tym artykule przedstawiono podsumowanie obsługiwanych scenariuszy i ograniczeń występujących podczas tworzenia kopii zapasowych SAP HANA baz danych na maszynach wirtualnych platformy Azure za pomocą Azure Backup.
 
@@ -39,7 +39,7 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **Wdrożenia HANA**       | SAP HANA pojedynczej maszynie wirtualnej platformy Azure — skalowanie w górę               | Skalowanie w poziomie                                                    |
 | **Wystąpienia HANA**         | Pojedyncze wystąpienie SAP HANA na pojedynczej maszynie wirtualnej platformy Azure — skalowanie w górę | Wiele wystąpień SAP HANA na jednej maszynie wirtualnej                  |
 | **Typy baz danych HANA**    | Kontener pojedyncza baza danych (SDC) na 1. x, kontener wielobaza danych (MDC) w 2. x | MDC w HANA 1. x                                              |
-| **Rozmiar bazy danych HANA**     | 2 TB rozmiaru pełnej kopii zapasowej po kompresji (Seria M serii 2 TB, 4 TB pamięci RAM) |                                                              |
+| **Rozmiar bazy danych HANA**     | 2 TB rozmiaru pełnej kopii zapasowej zgodnie z informacjami raportowanymi przez platformę HANA) |                                                              |
 | **Typy kopii zapasowych**           | Pełne, różnicowe i dzienniki kopii zapasowych                           | Przyrostowe, migawki                                       |
 | **Przywróć typy**          | Zapoznaj się z SAP HANA Uwaga [1642148](https://launchpad.support.sap.com/#/notes/1642148) , aby dowiedzieć się więcej o obsługiwanych typach przywracania |                                                              |
 | **Limity kopii zapasowych**          | Do 2 TB rozmiaru pełnej kopii zapasowej na wystąpienie SAP HANA  |                                                              |

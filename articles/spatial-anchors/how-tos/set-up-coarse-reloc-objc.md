@@ -1,6 +1,6 @@
 ---
 title: Niestandardowa relokalizacja w zamierzeniu C
-description: Szczegółowe wyjaśnienie sposobu tworzenia i lokalizowania kotwic przy użyciu czujników na urządzeniach w celu-C.
+description: Szczegółowe informacje na temat sposobu tworzenia i lokalizowania kotwic przy użyciu grubej relokalizacji w celu założenia języka C.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,20 +8,20 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d60bb9dbb546db1af6f689dbdcb485354fb7174e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 251f0d8609921bd1d0222d9e30c537ecbb2a04bd
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277237"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548275"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-objective-c"></a>Jak utworzyć i zlokalizować kotwice przy użyciu czujników na urządzeniach w celu-C
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-objective-c"></a>Jak utworzyć i zlokalizować kotwice przy użyciu bardzo dużej lokalizacji w celu założenia języka C
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
 > * [Objective-C](set-up-coarse-reloc-objc.md)
 > * [Swift](set-up-coarse-reloc-swift.md)
-> * [System Android Java](set-up-coarse-reloc-java.md)
+> * [Android Java](set-up-coarse-reloc-java.md)
 > * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 

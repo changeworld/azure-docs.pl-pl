@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892740"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545895"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Osadź Video Indexer widżety w aplikacjach
 
@@ -32,7 +32,7 @@ Widżet analizy poznawczej zawiera wszystkie informacje wizualne, które został
 |Nazwa|Definicja|Opis|
 |---|---|---|
 |`widgets`|Ciągi rozdzielone przecinkami|Umożliwia kontrolowanie szczegółowych informacji, które mają być renderowane. <br/> Przykład: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` renderuje tylko osoby i informacje o interfejsie użytkownika marki.<br/>Dostępne opcje: people, keywords, annotations, brands, sentiments, transcript, search.<br/>Należy pamiętać, że parametr adresu URL `widgets` nie jest obsługiwany w wersji 2.<br/>|
-|`locale`|Kod w języku krótkim|Steruje językiem usługi Insights. Wartość domyślna to `en`. <br/> Przykład: `locale=de`.|
+|`locale`|Kod w języku krótkim|Steruje językiem usługi Insights. Wartością domyślną jest `en`. <br/> Przykład: `locale=de`.|
 |`tab`|Domyślna wybrana karta|Steruje kartą usługi **Insights** , która jest renderowana domyślnie. <br/> Przykład: `tab=timeline` renderuje szczegółowe informacje z wybraną kartą **oś czasu** .|
 
 ### <a name="player-widget"></a>Widżet Player
@@ -45,8 +45,8 @@ Możesz użyć widżetu odtwarzacza do przesyłania strumieniowego wideo przy u�
 |`captions`|Kod języka|Pobiera podpis w określonym języku podczas ładowania elementu widget, aby był dostępny w menu **podpisy** .<br/> Przykład: `captions=en-US`.|
 |`showCaptions`|Wartość logiczna|Powoduje załadowanie już włączonych napisów.<br/> Przykład: `showCaptions=true`.|
 |`type`||Aktywuje karnację odtwarzacza audio (część wideo jest usuwana).<br/> Przykład: `type=audio`.|
-|`autoplay`|Wartość logiczna|Wskazuje, czy odtwarzacz powinien rozpocząć odtwarzanie wideo po załadowaniu. Wartość domyślna to `true`.<br/> Przykład: `autoplay=false`.|
-|`language`|Kod języka|Kontroluje język odtwarzacza. Wartość domyślna to `en-US`.<br/>Przykład: `language=de-DE`.|
+|`autoplay`|Wartość logiczna|Wskazuje, czy odtwarzacz powinien rozpocząć odtwarzanie wideo po załadowaniu. Wartością domyślną jest `true`.<br/> Przykład: `autoplay=false`.|
+|`language`|Kod języka|Kontroluje język odtwarzacza. Wartością domyślną jest `en-US`.<br/>Przykład: `language=de-DE`.|
 
 ### <a name="editor-widget"></a>Widżet edytora
 
@@ -55,8 +55,8 @@ Za pomocą widżetu edytora można tworzyć nowe projekty i zarządzać szczegó
 |Nazwa|Definicja|Opis|
 |---|---|---|
 |`accessToken`<sup>*</sup>|Ciąg|Zapewnia dostęp do filmów wideo tylko na koncie, które jest używane do osadzenia widżetu.<br> Widżet edytora wymaga parametru `accessToken`.|
-|`language`|Kod języka|Kontroluje język odtwarzacza. Wartość domyślna to `en-US`.<br/>Przykład: `language=de-DE`.|
-|`locale`|Kod w języku krótkim|Steruje językiem usługi Insights. Wartość domyślna to `en`.<br/>Przykład: `language=de`.|
+|`language`|Kod języka|Kontroluje język odtwarzacza. Wartością domyślną jest `en-US`.<br/>Przykład: `language=de-DE`.|
+|`locale`|Kod w języku krótkim|Steruje językiem usługi Insights. Wartością domyślną jest `en`.<br/>Przykład: `language=de`.|
 
 <sup>*</sup> Właściciel powinien zapewnić `accessToken` z zachowaniem ostrożności.
 
@@ -159,7 +159,8 @@ W tej sekcji przedstawiono sposób osiągnięcia interakcji między widżetem an
             this.videobreakdown({
             videoId: "c4c1ad4c9a",
             syncTranscript: true,
-            syncLanguage: true
+            syncLanguage: true,
+            location: "trial" /* location option for paid accounts (default is trial) */
             });
 
             // Set the source dynamically.
@@ -186,7 +187,7 @@ Jeśli używasz odtwarzacza wideo innego niż Azure Media Player, musisz ręczni
         </video>    
 
 2. Osadź widżet Cognitive Insights.
-3. Zaimplementuj komunikację dla odtwarzacza z nasłuchiwaniem w oczekiwaniu na zdarzenie „message”. Na przykład:
+3. Zaimplementuj komunikację dla odtwarzacza z nasłuchiwaniem w oczekiwaniu na zdarzenie „message”. Przykład:
 
         <script>
     
@@ -247,7 +248,7 @@ Ta opcja ma zastosowanie tylko w przypadkach, gdy trzeba otworzyć szczegółowe
 
 W przypadku osadzania widżetu Player usługi Video Indexer można wybrać rozmiar odtwarzacza, określając rozmiar elementu iframe.
 
-Na przykład:
+Przykład:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 

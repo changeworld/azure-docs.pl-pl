@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 10724407b8ba5568b38a844f2bf475060e2b7699
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227665"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515109"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Wiele sesji systemu Windows 10 Enterprise — często zadawane pytania
 
@@ -44,7 +44,7 @@ Dostosuj obraz do swoich potrzeb przez zainstalowanie aplikacji biznesowych i ob
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>Jak mogę zarządzać wielosesyjną obsługą systemu Windows 10 Enterprise po wdrożeniu?
 
-Można użyć dowolnego obsługiwanego narzędzia konfiguracji, ale zalecamy System Center Configuration Manager 1906, ponieważ obsługuje wiele sesji systemu Windows 10 Enterprise. Obecnie pracujemy nad Microsoft Intune pomocą techniczną.
+Możesz użyć dowolnego obsługiwanego narzędzia konfiguracji, ale zalecamy Configuration Manager wersji 1906, ponieważ obsługuje wielosesyjny system Windows 10 Enterprise. Obecnie pracujemy nad Microsoft Intune pomocą techniczną.
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Czy dla wielu sesji systemu Windows 10 Enterprise można przyłączyć Azure Active Directory (AD)?
 

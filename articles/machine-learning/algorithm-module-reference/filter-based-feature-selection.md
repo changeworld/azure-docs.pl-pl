@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: e4e09ca77de00b7f189db2cbbcaca2e090dd7e72
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: bd1a6d4009181056ff0f91fc115d59851539bbe8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311635"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548479"
 ---
 # <a name="filter-based-feature-selection"></a>Wybór funkcji oparty na filtrze
 
-W tym artykule opisano, jak używać modułu wyboru funkcji opartego na filtrze w programie Azure Machine Learning Designer. Ten moduł pomaga identyfikować kolumny w wejściowym zestawie danych, które mają największą siłę predykcyjną. 
+W tym artykule opisano, jak używać modułu wyboru funkcji opartego na filtrze w programie Azure Machine Learning Designer (wersja zapoznawcza). Ten moduł pomaga identyfikować kolumny w wejściowym zestawie danych, które mają największą siłę predykcyjną. 
 
 Ogólnie rzecz biorąc, *wybór funkcji* odnosi się do procesu zastosowania testów statystycznych do danych wejściowych, z uwzględnieniem określonych danych wyjściowych. Celem jest określenie, które kolumny są bardziej predykcyjne w danych wyjściowych. Moduł wyboru funkcji oparty na filtrze zawiera wiele algorytmów wyboru funkcji do wyboru. Moduł zawiera metody korelacji, takie jak korelacja Pearsona i wartości chi-kwadrat. 
 

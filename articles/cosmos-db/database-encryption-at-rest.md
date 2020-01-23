@@ -1,63 +1,63 @@
 ---
-title: Szyfrowanie w spoczynku w Azure Cosmos DB
-description: Dowiedz się, jak Azure Cosmos DB zapewnia szyfrowanie danych w czasie spoczynku i sposób ich implementacji.
+title: Szyfrowanie w spoczynku w usłudze Azure Cosmos DB
+description: Dowiedz się, jak usługa Azure Cosmos DB udostępnia szyfrowanie nieużywanych danych i jak jest zaimplementowana.
 author: markjbrown
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9e89336973b0b13544c5bc0bccec41652c6952e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 366a8cc2d8b08c9508053eaeb8bf70622fd870cf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755103"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548105"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Szyfrowanie danych w Azure Cosmos DB 
 
-Szyfrowanie w spoczynku to fraza, która często odnosi się do szyfrowania danych na nietrwałych urządzeniach magazynujących, takich jak dyski półprzewodnikowe (dysków SSD) i dyski twarde (HDD). Cosmos DB przechowuje podstawowe bazy danych w dysków SSD. Jego załączniki i kopie zapasowe są przechowywane w usłudze Azure Blob Storage, która jest zazwyczaj tworzona przy użyciu HDD. Dzięki wykorzystaniu szyfrowania dla Cosmos DB wszystkie bazy danych, załączniki multimedialne i kopie zapasowe są szyfrowane. Dane są teraz szyfrowane w trakcie przesyłania (za pośrednictwem sieci) i w spoczynku (w magazynie nietrwałym), co zapewnia kompleksowe szyfrowanie.
+Szyfrowanie w spoczynku jest frazę, która często odnosi się do szyfrowania danych na urządzeniach nieulotnej pamięci masowej, takich jak dyski półprzewodnikowe (SSD) i dysków twardych (HDD). Usługa cosmos DB przechowuje jego podstawowych baz danych na dyskach SSD. Jego załączniki nośników i kopii zapasowych są przechowywane w usłudze Azure Blob storage, zazwyczaj kopia zapasowa jest tworzona dysków twardych. Wraz z wydaniem szyfrowanie danych magazynowanych na potrzeby usługi Cosmos DB wszystkie bazy danych, załączniki nośników i kopii zapasowych są szyfrowane. Dane są teraz szyfrowane podczas przesyłania (za pośrednictwem sieci) i magazynowanych (składnik pamięci nieulotnej), umożliwiając end-to-end szyfrowania.
 
-Cosmos DB usługa PaaS jest bardzo łatwa w użyciu. Ponieważ wszystkie dane użytkownika przechowywane w Cosmos DB są szyfrowane w spoczynku i w transporcie, nie trzeba podejmować żadnych działań. Innym sposobem na umieszczenie tego ustawienia jest to, że szyfrowanie w stanie spoczynku jest domyślnie włączone. Brak kontrolek do wyłączenia lub włączenia. Azure Cosmos DB używa szyfrowania AES-256 we wszystkich regionach, w których konto jest uruchomione. Udostępniamy tę funkcję, gdy będziemy nadal sprostać naszym [umowy slaom dostępności i wydajności](https://azure.microsoft.com/support/legal/sla/cosmos-db).
+Ponieważ usługa PaaS, usługa Cosmos DB jest bardzo łatwa w użyciu. Ponieważ wszystkie dane użytkownika przechowywane w usłudze Cosmos DB są szyfrowane podczas przechowywania i podczas transportu, nie trzeba podejmować żadnych działań. Należy umieścić następujące polecenia w inny sposób jest to, że szyfrowanie danych magazynowanych jest "włączone" domyślnie. Nie istnieją żadne formantów, aby go włączyć lub wyłączyć. Azure Cosmos DB używa szyfrowania AES-256 we wszystkich regionach, w których konto jest uruchomione. Firma Microsoft zapewnia tę funkcję, podczas gdy my będziemy w celu spełnienia naszych [dostępność i wydajność umowy SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db).
 
-## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Implementacja szyfrowania w stanie spoczynku dla Azure Cosmos DB
+## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Implementacja szyfrowania danych magazynowanych na potrzeby usługi Azure Cosmos DB
 
-Szyfrowanie w spoczynku jest implementowane przy użyciu wielu technologii zabezpieczeń, w tym bezpiecznych systemów magazynowania kluczy, szyfrowanych sieci i kryptograficznych interfejsów API. Systemy, które odszyfrowują i przetwarzają dane, muszą komunikować się z systemami zarządzanymi kluczami. Na diagramie przedstawiono sposób przechowywania zaszyfrowanych danych i zarządzania kluczami. 
+Szyfrowanie w spoczynku jest implementowany przy użyciu wielu technologii zabezpieczeń, w tym systemów bezpiecznego magazynu kluczy, sieci szyfrowane i interfejsów API usług kryptograficznych. Systemy, odszyfrowywania i przetwarzania danych, które mają do komunikacji z systemami zarządzania kluczami. Na diagramie przedstawiono, jak przechowywanie zaszyfrowanych danych i zarządzanie kluczami jest oddzielony. 
 
 ![Diagram projektu](./media/database-encryption-at-rest/design-diagram.png)
 
-Podstawowy przepływ żądania użytkownika jest następujący:
-- Konto bazy danych użytkownika jest gotowe, a klucze magazynu są pobierane za pośrednictwem żądania do dostawcy zasobów usługi zarządzania.
-- Użytkownik tworzy połączenie do Cosmos DB za pośrednictwem protokołu HTTPS/Secure transport. (Zestawy SDK deabstrakcyjne szczegóły).
-- Użytkownik wysyła dokument JSON, który będzie przechowywany za pośrednictwem wcześniej utworzonego bezpiecznego połączenia.
-- Dokument JSON jest indeksowany, chyba że użytkownik wyłączył indeksowanie.
-- Zarówno dokument JSON, jak i dane indeksu są zapisywane w bezpiecznym magazynie.
-- Okresowo dane są odczytywane z bezpiecznego magazynu i tworzone przy użyciu kopii zapasowej w zaszyfrowanym magazynie obiektów blob platformy Azure.
+Podstawowy przepływ żądania użytkownika jest następująca:
+- Konto bazy danych użytkownika staje się gotowy i klucze magazynu są pobierane za pośrednictwem żądania na potrzeby dostawcy zasobów usługi zarządzania.
+- Użytkownik tworzy połączenie za pośrednictwem protokołu HTTPS/zabezpieczenia transportu usługi Cosmos DB. (Zestawy SDK abstrakcyjna szczegóły).
+- Użytkownik wysyła dokument JSON, który ma być przechowywany w utworzonej wcześniej bezpiecznego połączenia.
+- Dokument JSON jest indeksowana, chyba że użytkownik wyłączył indeksowania.
+- Zarówno dokumentu i indeks dane JSON są zapisywane do bezpiecznego magazynu.
+- Okresowo dane są odczytywane bezpiecznego magazynu i kopie zapasowe Store obiektu Blob zaszyfrowanego Azure.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>P: ile więcej kosztuje usługa Azure Storage, jeśli szyfrowanie usługi Storage jest włączony?
-Odp.: nie ma dodatkowych kosztów.
+### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>P: jak dużo bardziej kosztuje się usługa Azure Storage, jeśli włączono szyfrowanie usługi Storage?
+Odp.: nie ma żadnych dodatkowych kosztów.
 
 ### <a name="q-who-manages-the-encryption-keys"></a>P: kto zarządza kluczami szyfrowania?
 Odp.: klucze są zarządzane przez firmę Microsoft.
 
-### <a name="q-how-often-are-encryption-keys-rotated"></a>P: jak często są obracane klucze szyfrowania?
-Odp.: Firma Microsoft ma zestaw wewnętrznych wytycznych dotyczących rotacji kluczy szyfrowania, który Cosmos DB poniżej. Określone wskazówki nie są publikowane. Firma Microsoft publikuje [cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/sdl/default.aspx), który jest traktowany jako podzbiór wskazówek wewnętrznych i ma przydatne najlepsze rozwiązania dla deweloperów.
+### <a name="q-how-often-are-encryption-keys-rotated"></a>P: jak często są obracane klucze szyfrowania
+Odp.: Firma Microsoft ma zbiór wewnętrzne wytyczne dla wymiany kluczy szyfrowania, który jest zgodny z usługi Cosmos DB. Konkretne wskazówki nie są publikowane. Publikowanie Microsoft [cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/sdl/default.aspx), który jest widoczny jako część wewnętrzne wskazówki i zawiera przydatne wskazówki dla deweloperów.
 
-### <a name="q-can-i-use-my-own-encryption-keys"></a>P: Czy mogę użyć własnych kluczy szyfrowania?
-Odp.: Cosmos DB jest usługą PaaS, a firma Microsoft pracowała nad tym, aby usługa była łatwa do użycia. Zauważyliśmy, że to pytanie jest często pytane jako pytanie serwera proxy w celu spełnienia wymagań dotyczących zgodności, takich jak PCI-DSS. W ramach tworzenia tej funkcji współpracowały z audytorami zgodności, aby upewnić się, że klienci, którzy korzystają z Cosmos DB spełniają wymagania, bez konieczności zarządzania kluczami.
+### <a name="q-can-i-use-my-own-encryption-keys"></a>P: czy można użyć własnych kluczy szyfrowania?
+Odp.: tak teraz ta funkcja jest dostępna dla nowych kont usługi Cosmos. należy to zrobić w czasie tworzenia konta. Aby uzyskać więcej informacji, przejdź do dokumentu z [kluczami zarządzanymi przez klienta](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk) .
 
-### <a name="q-what-regions-have-encryption-turned-on"></a>P: w jakich regionach włączono szyfrowanie?
-Odp.: wszystkie regiony Azure Cosmos DB mają włączone szyfrowanie dla wszystkich danych użytkownika.
+### <a name="q-what-regions-have-encryption-turned-on"></a>Pytanie: jakie regiony z włączonym szyfrowaniem?
+Odp.: wszystkie regiony usługi Azure Cosmos DB ma szyfrowania włączone dla wszystkich danych użytkownika.
 
-### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>P: czy szyfrowanie ma wpływ na opóźnienia wydajności i umowy SLA przepływności?
-Odp.: nie ma żadnego wpływu lub zmiany wydajności umowy SLA teraz, że szyfrowanie w spoczynku jest włączone dla wszystkich istniejących i nowych kont. Więcej informacji można znaleźć na stronie [SLA dla Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db) , aby zobaczyć najnowsze gwarancje.
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>P: szyfrowania wpływa na wydajność opóźnienia i przepływności umów SLA?
+Odp.: nie ma wpływu na lub zmiany wydajności umowy SLA, skoro szyfrowanie w spoczynku jest włączona dla wszystkich istniejących i nowych kont. Więcej informacji o [umowa SLA dla usługi Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db) strony, aby zobaczyć najnowsze gwarancji.
 
-### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>P: czy emulator lokalny obsługuje szyfrowanie w spoczynku?
-Odp.: emulator jest autonomicznym narzędziem deweloperskim/testowym i nie korzysta z usług zarządzania kluczami, których używa usługa zarządzana Cosmos DB. Naszym zaleceniem jest włączenie funkcji BitLocker na dyskach, na których przechowywane są poufne dane testów emulatora. [Emulator obsługuje Zmienianie domyślnego katalogu danych](local-emulator.md) , a także przy użyciu dobrze znanej lokalizacji.
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>P: czy lokalnego emulatora obsługuje szyfrowanie w spoczynku?
+Odp.: emulator to autonomiczne narzędzie tworzenia i testowania i nie używa usługi zarządzania kluczami, które używa zarządzanej usługi Cosmos DB. Nasze zalecenie, jest włączenie funkcji BitLocker na dyskach, gdzie będą przechowywane dane testowe poufnych emulatora. [Emulator obsługuje zmiana domyślnego katalogu danych](local-emulator.md) oraz przy użyciu dobrze znanej lokalizacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Omówienie zabezpieczeń Cosmos DB i najnowszych ulepszeń można znaleźć w temacie [zabezpieczenia usługi Azure Cosmos Database](database-security.md).
-Aby uzyskać więcej informacji o certyfikatach firmy Microsoft, zobacz [Centrum zaufania Azure](https://azure.microsoft.com/support/trust-center/).
+Aby uzyskać więcej informacji o certyfikaty firmy Microsoft, zobacz [Centrum zaufania systemu Azure](https://azure.microsoft.com/support/trust-center/).

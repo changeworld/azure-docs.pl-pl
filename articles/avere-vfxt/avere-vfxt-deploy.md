@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153597"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547527"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Wdrażanie klastra vFXT
 
-Ta procedura przeprowadzi Cię przez użytkownika za pomocą Kreatora wdrażania dostępnego w portalu Azure Marketplace. Kreator automatycznie wdraża klaster przy użyciu szablonu Azure Resource Manager. Po wprowadzeniu parametrów w formularzu i kliknięciu przycisku **Utwórz**platforma Azure automatycznie wykonuje następujące czynności:
+Ta procedura przeprowadzi Cię przez użytkownika za pomocą Kreatora wdrażania dostępnego w portalu Azure Marketplace. Kreator automatycznie wdraża klaster przy użyciu szablonu Azure Resource Manager. Po wprowadzeniu parametrów w formularzu i kliknięciu przycisku **Utwórz**platforma Azure automatycznie uzupełnia następujące zadania:
 
 * Tworzy kontroler klastra, który jest podstawową maszyną wirtualną, która zawiera oprogramowanie wymagające wdrożenia klastra i zarządzania nim.
 * Konfiguruje grupę zasobów i infrastrukturę sieci wirtualnej, w tym tworzenie nowych elementów.
@@ -28,10 +28,10 @@ Po wykonaniu instrukcji przedstawionych w tym dokumencie będzie dostępna sieć
 
 Przed użyciem szablonu tworzenia upewnij się, że zostały spełnione następujące wymagania wstępne:  
 
-1. [Nowa subskrypcja](avere-vfxt-prereqs.md#create-a-new-subscription)
-1. [Uprawnienia właściciela subskrypcji](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
-1. [Przydział dla klastra vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Punkt końcowy usługi magazynu (w razie potrzeby)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) — jest to wymagane w przypadku wdrożeń korzystających z istniejącej sieci wirtualnej i tworzenia magazynu obiektów BLOB
+* [Nowa subskrypcja](avere-vfxt-prereqs.md#create-a-new-subscription)
+* [Uprawnienia właściciela subskrypcji](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
+* [Przydział dla klastra vFXT](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+* [Punkt końcowy usługi magazynu (w razie potrzeby)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) — jest to wymagane w przypadku wdrożeń korzystających z istniejącej sieci wirtualnej i tworzenia magazynu obiektów BLOB
 
 Aby uzyskać więcej informacji o krokach i planowaniu wdrożenia klastra, przeczytaj artykuł Planowanie systemu i [wdrożenia](avere-vfxt-deploy-overview.md) [programu avere vFXT](avere-vfxt-deploy-plan.md) .
 

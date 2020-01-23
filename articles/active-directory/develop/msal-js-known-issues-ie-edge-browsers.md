@@ -14,12 +14,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c75162cc66e9277d111def92842f5a67a132f59
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424325"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548156"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Znane problemy w programie Internet Explorer i przeglądarki Microsoft Edge (MSAL. js)
 
@@ -38,10 +38,6 @@ Przyczyny większości tych problemów są następujące. Magazyn sesji i magazy
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
 - **Okno podręczne nie jest zamykane lub jest zablokowane w przypadku używania logowania za pośrednictwem menu podręcznego do uwierzytelniania**. W przypadku uwierzytelniania za pomocą okna podręcznego w przeglądarce Microsoft Edge lub IE (InPrivate) po wprowadzeniu poświadczeń i zalogowaniu się w przypadku korzystania z wielu domen w obszarze nawigacji okno podręczne nie jest zamykane, ponieważ MSAL. js utraci dojście do okno podręczne.  
-
-    Poniżej znajdują się linki do tych problemów w oknie śledzenia problemów z programem Microsoft Edge:  
-    - [Usterka 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
-    - [Usterka 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Aktualizacja: Poprawka dostępna w MSAL. js 0.2.3
 Poprawki dotyczące problemów z pętlą przekierowania uwierzytelniania zostały wydane w [MSAL. js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases). Aby skorzystać z tej poprawki, Włącz `storeAuthStateInCookie` flagi w konfiguracji MSAL. js. Domyślnie ta flaga jest ustawiona na wartość false.

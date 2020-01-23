@@ -7,24 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/22/2020
+ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979118"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548819"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Tworzenie klastra Apache Hadoop z kontami magazynu Secure transfer w usłudze Azure HDInsight
 
 Funkcja [Wymagany bezpieczny transfer](../storage/common/storage-require-secure-transfer.md) poprawia bezpieczeństwo konta usługi Azure Storage poprzez wymuszanie kierowania wszystkich zapytań do konta przez zabezpieczone połączenie. Funkcja ta oraz schemat wasbs są obsługiwane tylko w klastrze usługi HDInsight w wersji 3.6 lub nowszym.
+
+**Włączenie bezpiecznego transferu magazynu po utworzeniu klastra może spowodować błędy przy użyciu konta magazynu i nie jest to zalecane. Lepszym rozwiązaniem jest utworzenie nowego klastra z włączoną właściwością.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem tego artykułu musisz dysponować:
 
 * Subskrypcja platformy Azure: Aby utworzyć bezpłatne konto próbne miesięczne, przejdź do [Azure.Microsoft.com/Free](https://azure.microsoft.com/free).
-* Konto usługi Azure Storage z włączonym bezpiecznym transferem. Aby uzyskać instrukcje, zobacz [Tworzenie konta magazynu](../storage/common/storage-account-create.md) oraz [Wymaganie bezpiecznego transferu](../storage/common/storage-require-secure-transfer.md). Włączenie bezpiecznego transferu magazynu po utworzeniu klastra wymaga wykonania dodatkowych czynności, które nie zostały omówione w tym artykule.
+* Konto usługi Azure Storage z włączonym bezpiecznym transferem. Aby uzyskać instrukcje, zobacz [Tworzenie konta magazynu](../storage/common/storage-account-create.md) oraz [Wymaganie bezpiecznego transferu](../storage/common/storage-require-secure-transfer.md). 
 * Kontener obiektów BLOB na koncie magazynu.
 
 ## <a name="create-cluster"></a>Tworzenie klastra

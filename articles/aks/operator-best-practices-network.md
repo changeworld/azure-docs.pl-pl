@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: mlearned
-ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5b138849538cb9bbd6af6cbcf3e7a11b0cf66395
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614754"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549125"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Te najlepsze rozwiązania koncentrują się na łączności sieciowej i zabezpie
 > [!div class="checklist"]
 > * Porównanie trybów sieci korzystającą wtyczki kubenet i Azure CNI w systemie AKS
 > * Planowanie wymaganych adresów IP i połączeń
-> * Dystrybuuj ruch przy użyciu modułów równoważenia obciążenia, kontrolerów transferu danych przychodzących lub zapór aplikacji sieci Web (WAF)
+> * Dystrybuuj ruch przy użyciu modułów równoważenia obciążenia, kontrolerów transferu danych przychodzących lub zapory aplikacji sieci Web (WAF)
 > * Bezpieczne łączenie z węzłami klastra
 
 ## <a name="choose-the-appropriate-network-model"></a>Wybierz odpowiedni model sieci
@@ -41,13 +41,13 @@ Interfejs sieciowy kontenera (CNI) to protokół neutralny od dostawcy, który u
 
 W przypadku większości wdrożeń produkcyjnych należy używać sieci Azure CNI. Ten model sieci umożliwia rozdzielenie kontroli i zarządzanie zasobami. Z punktu widzenia zabezpieczeń często chcesz, aby inne zespoły zarządzali i zabezpieczali te zasoby. Usługa Azure CNI Networking umożliwia łączenie się z istniejącymi zasobami platformy Azure, zasobami lokalnymi lub innymi usługami bezpośrednio za pośrednictwem adresów IP przypisanych do każdego z nich.
 
-W przypadku korzystania z sieci Azure CNI, zasób sieci wirtualnej znajduje się w osobnej grupie zasobów do klastra AKS. Delegowanie uprawnień dla jednostki usługi AKS w celu uzyskania dostępu do tych zasobów i zarządzania nimi. Nazwa główna usługi używana przez klaster AKS musi mieć co najmniej uprawnienia [współautora sieci](../role-based-access-control/built-in-roles.md#network-contributor) w podsieci w sieci wirtualnej. Jeśli chcesz zdefiniować [rolę](../role-based-access-control/custom-roles.md) niestandardową, zamiast korzystać z wbudowanej roli współautor sieci, wymagane są następujące uprawnienia:
+W przypadku korzystania z sieci Azure CNI, zasób sieci wirtualnej znajduje się w osobnej grupie zasobów do klastra AKS. Delegowanie uprawnień dla jednostki usługi AKS w celu uzyskania dostępu do tych zasobów i zarządzania nimi. Nazwa główna usługi używana przez klaster AKS musi mieć co najmniej uprawnienia [współautora sieci](../role-based-access-control/built-in-roles.md#network-contributor) w podsieci w sieci wirtualnej. Jeśli chcesz zdefiniować [rolę niestandardową](../role-based-access-control/custom-roles.md) , zamiast korzystać z wbudowanej roli współautor sieci, wymagane są następujące uprawnienia:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 Aby uzyskać więcej informacji na temat delegowania nazwy głównej usługi AKS, zobacz [delegowanie dostępu do innych zasobów platformy Azure][sp-delegation].
 
-Ponieważ każdy węzeł i pod otrzymają własny adres IP, Zaplanuj zakresy adresów dla podsieci AKS. Podsieć musi być wystarczająco duża, aby zapewnić adresy IP dla wszystkich wdrażanych zasobów w węźle, w poszczególnych zasobach i w sieci. Każdy klaster AKS musi być umieszczony w własnej podsieci. Aby umożliwić łączność z lokalnymi lub sieciami równorzędnymi na platformie Azure, nie używaj zakresów adresów IP, które pokrywają się z istniejącymi zasobami sieciowymi. Istnieją domyślne limity liczby kart sieciowych, które są uruchamiane w każdym węźle, zarówno w korzystającą wtyczki kubenet, jak i na platformie Azure CNI. Aby obsługiwać zdarzenia skalowania w górę lub uaktualnienia klastra, potrzebne są również dodatkowe adresy IP do użycia w przypisanej podsieci. Ta dodatkowa przestrzeń adresowa jest szczególnie ważna w przypadku używania kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS), ponieważ te pule węzłów wymagają uaktualnienia w celu zastosowania najnowszych poprawek zabezpieczeń. Aby uzyskać więcej informacji na temat węzłów systemu Windows Server, zobacz [uaktualnianie puli węzłów w AKS][nodepool-upgrade].
+Ponieważ każdy węzeł i pod otrzymają własny adres IP, Zaplanuj zakresy adresów dla podsieci AKS. Podsieć musi być wystarczająco duża, aby zapewnić adresy IP dla wszystkich wdrażanych zasobów w węźle, w poszczególnych zasobach i w sieci. Każdy klaster AKS musi być umieszczony w własnej podsieci. Aby umożliwić łączność z lokalnymi lub sieciami równorzędnymi na platformie Azure, nie używaj zakresów adresów IP, które pokrywają się z istniejącymi zasobami sieciowymi. Istnieją domyślne limity liczby kart sieciowych, które są uruchamiane w każdym węźle, zarówno w korzystającą wtyczki kubenet, jak i na platformie Azure CNI. Aby obsłużyć zdarzenia skalowania w poziomie lub uaktualnienia klastra, potrzebne są również dodatkowe adresy IP do użycia w przypisanej podsieci. Ta dodatkowa przestrzeń adresowa jest szczególnie ważna w przypadku używania kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS), ponieważ te pule węzłów wymagają uaktualnienia w celu zastosowania najnowszych poprawek zabezpieczeń. Aby uzyskać więcej informacji na temat węzłów systemu Windows Server, zobacz [uaktualnianie puli węzłów w AKS][nodepool-upgrade].
 
 Aby obliczyć wymagany adres IP, zobacz [Konfigurowanie usługi Azure CNI Networking w AKS][advanced-networking].
 
@@ -73,7 +73,7 @@ Moduł równoważenia obciążenia platformy Azure może dystrybuować ruch klie
  * *Zasób*transferu danych przychodzących i
  * *Kontroler* transferu danych przychodzących
 
-Zasób transferu danych przychodzących to YAML manifest `kind: Ingress` , który definiuje host, certyfikaty i reguły do kierowania ruchu do usług uruchomionych w klastrze AKS. Poniższy przykład manifestu YAML dystrybuuje ruch dla *MyApp.com* do jednej z dwóch usług, *blogservice* lub *storeservice*. Klient jest kierowany do jednej usługi lub innej w zależności od adresu URL, do którego uzyskuje dostęp.
+Zasób transferu danych przychodzących to YAML manifest `kind: Ingress`, który definiuje hosta, certyfikaty i reguły w celu kierowania ruchu do usług uruchomionych w klastrze AKS. Poniższy przykład manifestu YAML dystrybuuje ruch dla *MyApp.com* do jednej z dwóch usług, *blogservice* lub *storeservice*. Klient jest kierowany do jednej usługi lub innej w zależności od adresu URL, do którego uzyskuje dostęp.
 
 ```yaml
 kind: Ingress
@@ -118,7 +118,7 @@ Kontroler transferu danych przychodzących, który dystrybuuje ruch do usług i 
 
 ![Zapora aplikacji sieci Web (WAF), taka jak Azure App Gateway, umożliwia ochronę i dystrybucję ruchu dla klastra AKS](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Zapora aplikacji sieci Web (WAF) zapewnia dodatkową warstwę zabezpieczeń przez filtrowanie ruchu przychodzącego. Projekt Open Web Application Security Project (OWASP) zawiera zestaw reguł służących do oglądania ataków, takich jak skrypty między lokacjami lub zatrucie plików cookie. [Application Gateway platformy Azure][app-gateway] (obecnie w wersji zapoznawczej w programie AKS) to WAF, którą można zintegrować z klastrami AKS w celu zapewnienia tych funkcji zabezpieczeń, zanim ruch osiągnie klaster AKS i aplikacje. Inne rozwiązania innych firm również wykonują te funkcje, więc można nadal korzystać z istniejących inwestycji lub wiedzy w danym produkcie.
+Zapora aplikacji sieci Web (WAF) zapewnia dodatkową warstwę zabezpieczeń przez filtrowanie ruchu przychodzącego. Projekt Open Web Application Security Project (OWASP) zawiera zestaw reguł służących do oglądania ataków, takich jak skrypty między lokacjami lub zatrucie plików cookie. [Usługa Azure Application Gateway][app-gateway] (obecnie dostępna w wersji zapoznawczej w AKS) to WAF, którą można zintegrować z klastrami AKS w celu zapewnienia tych funkcji zabezpieczeń, zanim ruch osiągnie klaster AKS i aplikacje. Inne rozwiązania innych firm również wykonują te funkcje, więc można nadal korzystać z istniejących inwestycji lub wiedzy w danym produkcie.
 
 Usługa równoważenia obciążenia lub zasoby związane z ruchem przychodzącym nadal działają w klastrze AKS, aby dodatkowo udoskonalić dystrybucję ruchu. Brama aplikacji może być centralnie zarządzana jako kontroler transferu danych przychodzących z definicją zasobu. Aby rozpocząć, [utwórz Application Gateway kontroler][app-gateway-ingress]transferu danych przychodzących.
 
@@ -130,7 +130,7 @@ Zasady sieciowe to funkcja Kubernetes, która umożliwia sterowanie przepływem 
 
 Aby można było używać zasad sieciowych, funkcja musi być włączona podczas tworzenia klastra AKS. Nie można włączyć zasad sieciowych w istniejącym klastrze AKS. Zaplanuj z wyprzedzeniem, aby upewnić się, że zasady sieciowe są włączone w klastrach i mogą być używane w razie potrzeby. Zasady sieciowe powinny być używane tylko dla węzłów i zasobników opartych na systemie Linux w AKS.
 
-Zasada sieciowa jest tworzona jako zasób Kubernetes przy użyciu manifestu YAML. Zasady są stosowane do określonych zasobników, a następnie reguły ruchu przychodzącego lub wychodzącego definiują sposób, w jaki ruch może przepływać. W poniższym przykładzie zastosowano zasady sieciowe do programu z *aplikacją:* etykieta zaplecza zastosowana do nich. Reguła transferu danych przychodzących zezwala tylko na ruch z *aplikacji:* etykieta frontonu:
+Zasada sieciowa jest tworzona jako zasób Kubernetes przy użyciu manifestu YAML. Zasady są stosowane do określonych zasobników, a następnie reguły ruchu przychodzącego lub wychodzącego definiują sposób, w jaki ruch może przepływać. W poniższym przykładzie zastosowano zasady sieciowe do programu z *aplikacją: etykieta zaplecza* zastosowana do nich. Reguła transferu danych przychodzących zezwala tylko na ruch z *aplikacji: etykieta frontonu* :
 
 ```yaml
 kind: NetworkPolicy

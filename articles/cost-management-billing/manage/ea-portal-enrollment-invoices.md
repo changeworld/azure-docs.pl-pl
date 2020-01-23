@@ -4,16 +4,16 @@ description: W tym artykule wyjaśniono, jak zarządzać fakturami za usługę A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/02/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 95df54eb096588fe23da87f7334f9d693e54cf9d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7cb2966c94485d0a05febf3085ab367fcba97434
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75992324"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514361"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za rejestracje w usłudze Azure Enterprise
 
@@ -370,7 +370,7 @@ Dla porównania — w przypadku korzystania z programu Excel do modelowania regu
 | Ceny zaokrąglone (2 miejsca dziesiętne) | =MROUND({_source_}, 0.02) |
 | Ceny zaokrąglone (0 miejsc dziesiętnych) | =MROUND({_source_}, 2) |
 
-**Tabela**  **2**  **— Konwersja na usługę w chmurze i czas maszyn wirtualnych**
+**Tabela**  **2**  **— Usługa w chmurze i konwersja godzin maszyny wirtualnej**
 
 ### <a name="conversion-between-download-usage-file-and-usage-summary-portal-view"></a>Konwersja między plikiem dostępnym za pomocą polecenia Pobierz zestawienie użycia i widokiem Podsumowanie użycia w portalu
 
@@ -417,7 +417,7 @@ Dla usług, w przypadku których strefa i region mają wpływ na ceny, poniższa
 | Strefa 2 | Azja i Pacyfik, część wschodnia <br> Azja i Pacyfik, część południowo-wschodnia <br> Japonia Wschodnia <br> Japonia Zachodnia <br> Australia Wschodnia <br> Australia Południowo-Wschodnia | Azja i Pacyfik <br> Japonia <br> Ameryka Łacińska <br> Bliski Wschód/Afryka <br> Australia Wschodnia <br> Australia Południowo-Wschodnia |
 | Strefa 3 | Brazylia Południowa |   |
 
-**Tabela**  **4**  **— transfer danych regionów**
+**Tabela**  **4**  **— Regiony transferu danych**
 
 Nie ma opłat za ruch wychodzący między usługami (np. O365 i Azure) hostowanymi w tym samym centrum danych.
 
@@ -557,7 +557,7 @@ Aby uzyskać więcej informacji, zobacz następujące dodatkowe źródła. Te pl
 | [**Przyjazne nazwy usług**](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Zawiera listę wszystkich aktywnych usług z kategorią usługi, przyjazną nazwą usługi, nazwą i numerem katalogowym zobowiązania, nazwą i numerem katalogowym użycia, jednostkami miary i współczynnikiem konwersji między zgłoszonym użyciem a użyciem wyświetlanymi w witrynie Enterprise Portal. | Friendly\_Service\_Names.xlsx |
 | [**Pola pobierania usługi**](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Ten arkusz kalkulacyjny zawiera listę wszystkich możliwych kombinacji pól dotyczących usługi w pobieranym raporcie użycia. | Service\_Download\_Fields.xlsx |
 
-**Tabela**  **5**  **— dodatkowe źródła informacji**
+**Tabela**  **5**  **— Dodatkowe źródła informacji**
 
 ## <a name="power-bi-reporting"></a>Raportowanie usługi Power BI
 
@@ -585,7 +585,7 @@ Aby zarejestrować się w celu uzyskania bezpłatnej wersji próbnej, przejdź d
 1. Podaj klucz dostępu interfejsu API, aby nawiązać połączenie. Klucz rejestracji można znaleźć w [witrynie Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Kliknij pozycję **Zaloguj**.
 1. Proces importowania rozpocznie się automatycznie. Po jego zakończeniu nowy pulpit nawigacyjny, raport i model pojawią się w okienku nawigacji. Kliknij pulpit nawigacyjny, aby wyświetlić zaimportowane dane.
 
-Aby uzyskać więcej informacji na temat generowania klucza interfejsu API dla rejestracji, zobacz plik pomocy dotyczący raportów interfejsu API w [witrynie Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Aby uzyskać więcej informacji na temat nowego pakietu zawartości, pobierz dokument [Microsoft Azure Consumption Insights](https://automaticbillingspec.blob.core.windows.net/spec/Microsoft%20Azure%20Consumption%20Insights.docx?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26).
+Aby uzyskać więcej informacji na temat generowania klucza interfejsu API dla rejestracji, zobacz plik pomocy dotyczący raportów interfejsu API w [witrynie Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Aby uzyskać więcej informacji na temat nowego pakietu zawartości, zobacz [Microsoft Azure Consumption Insights](/power-bi/desktop-connect-azure-cost-management).
 
 ### <a name="to-access-the-legacy-power-bi-ea-content-pack"></a>Aby uzyskać dostęp do starszego pakietu zawartości usługi Power BI w ramach umowy EA:
 

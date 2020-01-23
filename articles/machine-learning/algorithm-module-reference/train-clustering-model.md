@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 1f1a508e6188b68f932993eb60e13228b56f8e7e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: ea247af871b06bd21c2733272b3d938c536d16ec
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313950"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546456"
 ---
 # <a name="train-clustering-model"></a>Trenowanie modelu klastrowania
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do uczenia modelu klastrowania.
 

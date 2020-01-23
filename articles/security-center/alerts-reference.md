@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 322b7656a5e8cb5d0fd0274cc9f09adec2c2c5e1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277010"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514769"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Alerty zabezpieczeń — Podręcznik referencyjny
 
@@ -27,27 +27,16 @@ Aby dowiedzieć się, jak odpowiedzieć na te alerty, zobacz temat [Zarządzanie
 
 Aby dowiedzieć się więcej na temat eksportowania alertów (i rekomendacji), zobacz temat [Eksportowanie alertów zabezpieczeń i zaleceń (wersja zapoznawcza)](continuous-export.md).
 
-Poniżej tabeli alertów znajduje się tabela opisująca łańcuch kasowania Azure Security Center, który jest używany do kategoryzowania intencji tych alertów. 
+Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcucha kasowania, który jest używany do kategoryzowania intencji tych alertów. 
 
-Typy alertów uwzględnionych w tej tabeli:
-* [Alerty dla maszyn z systemem Windows](#alerts-windows)
-* [Alerty dla maszyn z systemem Linux](#alerts-linux)
-* [Alerty dla Azure App Service](#alerts-azureappserv)
-* [Alerty dla poziomu klastra AKS](#alerts-akscluster)
-* [Alerty na poziomie hosta kontenera](#alerts-containerhost)
-* [Alerty dla SQL Database i SQL Data Warehouse](#alerts-sql-db-and-warehouse)
-* [Alerty dotyczące usługi Azure Storage](#alerts-azurestorage)
-* [Alerty dla Azure Cosmos DB](#alerts-azurecosmos)
-* [Alerty dla warstwy sieci platformy Azure](#alerts-azurenetlayer)
-* [Alerty dla Azure Resource Manager (wersja zapoznawcza)](#alerts-azureresourceman)
-* [Alerty dla Azure Key Vault (wersja zapoznawcza)](#alerts-azurekv)
-* [Alerty dla Azure DDoS Protection](#alerts-azureddos)
 
-## <a name="azure-security-center-alerts"></a>Alerty Azure Security Center
+
+## <a name="alerts-windows"></a>Alerty dla maszyn z systemem Windows
+
+[Dalsze szczegóły i uwagi](security-center-alerts-iaas.md#windows-)
 
 |Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
-||<a name="alerts-windows"></a><h3>Maszyny z systemem Windows</h3> [Dalsze szczegóły i uwagi](security-center-alerts-iaas.md#windows-)||
 |**Wykryto logowanie ze złośliwego adresu IP**|Wystąpiło pomyślne uwierzytelnienie zdalne dla konta "Tristan. schleining" i procesu "Advapi", jednak adres IP logowania [adres IP] był wcześniej raportowany jako złośliwy lub wysoce nietypowy. Prawdopodobnie wystąpił skuteczny atak.|-|
 |**Wykryto logowanie ze złośliwego adresu IP. [widoczne wiele razy]**|Wystąpiło pomyślne uwierzytelnienie zdalne dla konta "IUSR_10001" i procesu "Advapi", jednak adres IP logowania [adres IP] był wcześniej raportowany jako złośliwy lub wysoce nietypowy. Prawdopodobnie wystąpił skuteczny atak. Pliki z rozszerzeniami SCR są plikami wygaszaczy ekranu i są zwykle przechowywane i uruchamiane z katalogu systemu Windows.|-|
 |**Dodawanie konta gościa do lokalnej grupy administratorów**|Analiza danych hosta wykryła dodanie wbudowanego konta gościa do lokalnej grupy administratorów na hoście% {złamany problem}, który jest silnie skojarzony z działaniem osoby atakującej.|-|
@@ -129,7 +118,15 @@ Typy alertów uwzględnionych w tej tabeli:
 |**Wykryto podejrzany segment kodu**|Wskazuje, że segment kodu został przydzielony przy użyciu metod niestandardowych, takich jak iniekcja odbicia i puste przetwarzanie. Alert zawiera dodatkowe cechy segmentu kodu, który został przetworzony w celu zapewnienia kontekstu dla możliwości i zachowań zgłoszonego segmentu kodu.|-|
 |**Wykryto kod powłoki odnalezione**|Kod powłoki to ładunek uruchamiany po wykorzystaniu przez złośliwe oprogramowanie luki w zabezpieczeniach oprogramowania.<br>Ten alert oznacza, że analiza zrzutu awaryjnego wykryła kod wykonywalny, który wykazuje zachowanie zwykle wykonywane przez złośliwe ładunki. Chociaż niezłośliwe oprogramowanie może również wykonywać takie zachowanie, nie jest to typowe w normalnych praktykach programistycznych.|-|
 |**Wykryto bezplikową technikę ataków**|Określona pamięć procesu zawiera zestaw narzędzi ataku bezplikowego: [nazwa zestawu narzędzi]. Zestaw narzędzi ataku bez plików zazwyczaj nie ma obecności w systemie plików, dzięki czemu wykrywanie przez tradycyjne oprogramowanie antywirusowe jest trudne.|DefenseEvasion/wykonywanie|
-||<a name="alerts-linux"></a><h3>Maszyny z systemem Linux</h3> [Dalsze szczegóły i uwagi](security-center-alerts-iaas.md#linux-)||
+||||
+
+
+## <a name="alerts-linux"></a>Alerty dla maszyn z systemem Linux
+
+[Dalsze szczegóły i uwagi](security-center-alerts-iaas.md#linux-)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**Proces uzyskiwania dostępu do pliku kluczy autoryzowanych SSH w nietypowy sposób**|Dostęp do pliku kluczy autoryzowanych przez protokół SSH został uzyskany w metodzie podobnej do znanych kampanii złośliwego oprogramowania. Ten dostęp może wskazywać, że osoba atakująca próbuje uzyskać trwały dostęp do komputera.|-|
 |**Wykryto próbę trwałości**|Analiza danych hosta wykryła, że zainstalowano skrypt uruchamiania dla trybu pojedynczego użytkownika.<br>Ze względu na to, że każdy legalny proces będzie wymagany do uruchomienia w tym trybie, może to wskazywać, że osoba atakująca dodała złośliwy proces do każdego poziomu uruchomienia w celu zagwarantowania trwałości. |Trwałość|
 |**Modyfikowanie sygnatury czasowej podejrzanych plików**|Analiza danych hosta wykryła podejrzaną modyfikację sygnatury czasowej. Osoby atakujące często kopiują sygnatury czasowe z istniejących, uprawnionych plików do nowych narzędzi, aby uniknąć wykrywania nowo usuniętych plików.|Trwałość/DefenseEvasion|
@@ -210,7 +207,15 @@ Typy alertów uwzględnionych w tej tabeli:
 |**Podejrzany dostęp do hasła [pojawia się wiele razy]**|Analiza danych hosta wykryła podejrzany dostęp do zaszyfrowanych haseł użytkowników na hoście% {naruszony problem. To zachowanie było widoczne [x] razy dzisiaj na następujących komputerach: [nazwy maszyn]|-|
 |**Wykryto podejrzane wykonanie w języku PHP**|Dzienniki maszyn wskazują, że jest uruchomiony podejrzany proces PHP. Akcja obejmowała próbę uruchomienia poleceń systemu operacyjnego lub kodu PHP z wiersza polecenia przy użyciu procesu PHP. Chociaż to zachowanie może być wiarygodne, w aplikacjach sieci Web takie zachowanie jest również zaobserwowane w złośliwych działaniach, takich jak próby zainfekowania witryn internetowych za pomocą powłoki sieci Web.|-|
 |**Podejrzane żądanie do interfejsu API Kubernetes**|Dzienniki maszyn wskazują, że zostało wysłane podejrzane żądanie do interfejsu API Kubernetes. Żądanie zostało wysłane z węzła Kubernetes, prawdopodobnie z jednego z kontenerów uruchomionych w węźle. Chociaż takie zachowanie może być zamierzone, może to wskazywać na to, że węzeł korzysta z uszkodzonego kontenera.|-|
-||<a name="alerts-azureappserv"></a><h3>Azure App Service</h3> [Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-app-service-)||
+||||
+
+
+## <a name="alerts-azureappserv"></a>Alerty dla Azure App Service
+
+[Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-app-service-)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**Wykryto podejrzane wywołanie w ramach platformy WordPress**|App Service dziennik aktywności wskazuje możliwe działanie iniekcji kodu w zasobie App Service.<br>To podejrzane działanie przypomina aktywność, która manipuluje kompozycją WordPress w celu obsługi wykonywania kodu po stronie serwera, a następnie bezpośredniego żądania sieci Web w celu wywołania pliku motywu, który został przekierowany. Ten typ działania może być częścią kampanii ataków za pośrednictwem platformy WordPress.|-|
 |**Wykryto odciskiem palca sieci Web**<br>(NMAP/niewidomy słoni)|App Service dziennik aktywności wskazuje możliwe działanie odciskiem palca sieci Web w zasobie App Service.<br>To podejrzane działanie jest skojarzone z narzędziem o nazwie Blind słoni. Na serwerach sieci Web odciski palców narzędzia i próby wykrycia zainstalowanych aplikacji i ich wersji. Osoby atakujące często używają tego narzędzia do sondowania aplikacji sieci Web w celu znalezienia luk w zabezpieczeniach. |-|
 |**Wykryto podejrzany dostęp do potencjalnie narażonej strony sieci Web**|Dziennik aktywności App Service wskazuje, że dostęp do strony sieci Web, która jest niezależna.<br>To podejrzane działanie pochodzi z adresu źródłowego, którego wzorzec dostępu jest podobny do skanera sieci Web. Ten rodzaj działania jest często związany z próbą skanowania sieci przez osobę atakującą w celu uzyskania dostępu do poufnych lub narażonych stron sieci Web. |-|
@@ -226,7 +231,15 @@ Typy alertów uwzględnionych w tej tabeli:
 |**Wykryto podejrzanego agenta użytkownika**|Azure App Service dziennik aktywności wskazuje żądania z podejrzanym agentem użytkownika. Takie zachowanie może wskazywać na próby wykorzystania luki w zabezpieczeniach aplikacji App Service.|-|
 |**Plik PHP w folderze przekazywania**|Dziennik aktywności Azure App Service wskazuje dostęp do podejrzanej strony PHP znajdującej się w folderze przekazywania. Ten typ folderu zwykle nie zawiera plików PHP. Istnienie tego typu pliku może wskazywać na wykorzystanie zalet dowolnych luk w zabezpieczeniach przekazywania plików.|-|
 |**Wykryto wzorzec żądań anomalii**|Dziennik aktywności Azure App Service wskazuje nietypowe działanie HTTP dla App Service z% {source IP}. To działanie jest podobne do wzorca operacji rozmytego wymuszania.|-|
-||<a name="alerts-akscluster"></a><h3>Poziom klastra AKS</h3> [Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+
+## <a name="alerts-akscluster"></a>Alerty dla poziomu klastra AKS
+
+[Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-containers-)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**WERSJA zapoznawcza — wykryto powiązanie roli z rolą administratora klastra**|Analiza dzienników inspekcji Kubernetes wykryła nowe powiązanie z rolą administratora klastra, które wynikają z uprawnień administratora. Niepotrzebnie zapewnianie uprawnień administratora może spowodować problemy z eskalacją uprawnień w klastrze.|Trwałość|
 |**Wykryto narażony pulpit nawigacyjny Kubernetes**|Analiza dzienników inspekcji Kubernetes wykryła narażenie pulpitu nawigacyjnego Kubernetes przez usługę równoważenia obciążenia. Uwidocznione pulpity nawigacyjne umożliwiają nieuwierzytelnionego dostępu do zarządzania klastrem i stanowią zagrożenie bezpieczeństwa.|Trwałość|
 |**WERSJA zapoznawcza — Wykryto nową rolę o wysokim poziomie uprawnień**|Analiza dzienników inspekcji Kubernetes wykryła nową rolę o wysokim poziomie uprawnień. Powiązanie z rolą o wysokim poziomie uprawnień daje użytkownikowi/grupie podwyższone uprawnienia w klastrze. Niepotrzebne zapewnianie podwyższonych uprawnień może spowodować problemy z eskalacją uprawnień w klastrze.|Trwałość|
@@ -234,7 +247,14 @@ Typy alertów uwzględnionych w tej tabeli:
 |**WERSJA zapoznawcza — wykryto kontener wyszukiwania w walucie cyfrowej**|Analiza dziennika inspekcji Kubernetes wykryła kontener, który ma obraz skojarzony z narzędziem wyszukiwania waluty cyfrowej.|Wykonanie|
 |**Wykryto zapoznawczy kontener uprzywilejowany**|Analiza dziennika inspekcji Kubernetes wykryła nowy kontener uprzywilejowany. Kontener uprzywilejowany ma dostęp do zasobów węzła i przerywa izolację między kontenerami. W przypadku naruszenia zabezpieczeń, osoba atakująca może korzystać z kontenera uprzywilejowanego w celu uzyskania dostępu do węzła.|PrivilegeEscalation|
 |**WERSJA zapoznawcza — wykryto kontener z rozinstalowaną wrażliwą objętością**|Analiza dziennika inspekcji Kubernetes wykryła nowy kontener z instalowanym woluminem wrażliwym. Wykryty wolumin jest typem hostPath, który instaluje poufne pliki lub foldery z węzła do kontenera. Jeśli naruszyć bezpieczeństwo kontenera, osoba atakująca może użyć tej instalacji do uzyskania dostępu do węzła.|PrivilegeEscalation|
-||<a name="alerts-containerhost"></a><h3>Poziom hosta kontenera</h3> [Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+## <a name="alerts-containerhost"></a>Alerty na poziomie hosta kontenerów
+
+[Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-containers-)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**Wykryto uprzywilejowany kontener**|Dzienniki maszyn wskazują, że jest uruchomiony uprzywilejowany kontener platformy Docker. Kontener uprzywilejowany ma pełny dostęp do zasobów hosta. W przypadku naruszenia zabezpieczeń, osoba atakująca może korzystać z kontenera uprzywilejowanego w celu uzyskania dostępu do komputera hosta.|PrivilegeEscalation/wykonywanie|
 |**Uruchomione uprzywilejowane polecenie w kontenerze**|Dzienniki maszyn wskazują, że polecenie uprzywilejowane zostało uruchomione w kontenerze platformy Docker. Uprzywilejowane polecenie ma rozszerzone uprawnienia na komputerze-hoście.|PrivilegeEscalation|
 |**Wykryto uwidocznioną demona platformy Docker**|Dzienniki maszyn wskazują, że demon platformy Docker (dockerd) uwidacznia gniazdo TCP. Domyślnie konfiguracja platformy Docker nie korzysta z szyfrowania ani uwierzytelniania, gdy gniazdo TCP jest włączone. Każda osoba mająca dostęp do odpowiedniego portu może uzyskać pełen dostęp do demona platformy Docker.|Wykorzystanie/wykonanie|
@@ -242,7 +262,15 @@ Typy alertów uwzględnionych w tej tabeli:
 |**Wykryto kontener z obrazem Miner**|Dzienniki maszyn wskazują wykonywanie kontenera Docker z obrazem skojarzonym z wyszukiwaniem w walucie cyfrowej. Takie zachowanie może wskazywać na to, że zasoby są nadmiarowe.|Wykonanie|
 |**Podejrzane żądanie do interfejsu API Kubernetes**|Dzienniki maszyn wskazują, że zostało wysłane podejrzane żądanie do interfejsu API Kubernetes. Żądanie zostało wysłane z węzła Kubernetes, prawdopodobnie z jednego z kontenerów uruchomionych w węźle. Chociaż takie zachowanie może być zamierzone, może to wskazywać na to, że węzeł korzysta z uszkodzonego kontenera.|Wykonanie|
 |**Podejrzane żądanie do pulpitu nawigacyjnego Kubernetes**|Dzienniki maszyn wskazują, że zostało wysłane podejrzane żądanie do pulpitu nawigacyjnego Kubernetes. Żądanie zostało wysłane z węzła Kubernetes, prawdopodobnie z jednego z kontenerów uruchomionych w węźle. Chociaż takie zachowanie może być zamierzone, może to wskazywać na to, że węzeł korzysta z uszkodzonego kontenera.|-|
-||<a name="alerts-sql-db-and-warehouse"></a><h3>SQL Database i SQL Data Warehouse</h3> [Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-) ||
+||||
+
+
+## <a name="alerts-sql-db-and-warehouse"></a>Alerty dla SQL Database i SQL Data Warehouse
+
+[Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**Możliwa Luka w zabezpieczeniach iniekcji SQL**|Aplikacja wygenerowała błędną instrukcję SQL w bazie danych. Może to wskazywać na ewentualną lukę w zabezpieczeniach ataków iniekcji SQL. Istnieją dwie możliwe przyczyny błędnej instrukcji. Usterka w kodzie aplikacji mogła skonstruować błędną instrukcję języka SQL. Lub kod aplikacji lub procedury składowane nie oczyszczają danych wejściowych użytkownika podczas konstruowania nieprawidłowej instrukcji SQL, która może zostać wykorzystana do iniekcji SQL.|-|
 |**Potencjalna iniekcja SQL**|Nastąpiło aktywne wykorzystanie oprogramowania w odniesieniu do zidentyfikowanych aplikacji narażonych na wstrzyknięcie kodu SQL. Oznacza to, że osoba atakująca próbuje wstrzyknąć złośliwe instrukcje SQL, korzystając z kodu aplikacji lub procedur składowanych.|-|
 |**Logowanie się z nietypowej lokalizacji**|Wzorzec dostępu został zmieniony na SQL Server, w którym ktoś zalogował się na serwerze z nietypowej lokalizacji geograficznej. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja lub konserwacja przeprowadzana przez deweloperów). W innych przypadkach alert wykrywa złośliwe działanie (byłego pracownika lub ataku zewnętrznego).|Wykorzystywanie|
@@ -252,7 +280,15 @@ Typy alertów uwzględnionych w tej tabeli:
 |**Logowanie się z nietypowego centrum danych platformy Azure**|Wzorzec dostępu został zmieniony na SQL Server, w którym ktoś zalogował się na serwerze z nietypowego centrum danych platformy Azure. W niektórych przypadkach alert wykrywa legalną akcję (nową aplikację lub usługę platformy Azure). W innych przypadkach alert wykrywa złośliwą akcję (atakujący z naruszenia zasobów na platformie Azure).|Badanie|
 |**Potencjalnie niebezpieczna akcja**|Wysoce uprzywilejowane polecenie SQL, które jest często używane w złośliwych sesjach, zostało wykonane w SQL Server. Te polecenia są zalecane, aby można je było domyślnie wyłączyć. W niektórych przypadkach alert wykrywa legalną akcję (uruchomiony skrypt administratora). W innych przypadkach ten alert wykrywa złośliwą akcję (atakujący przy użyciu zaufania SQL do naruszenia warstwy systemu Windows).|Wykonanie|
 |**Nietypowa lokalizacja eksportu**|Wprowadzono zmianę w docelowym magazynie eksportu dla operacji importu i eksportu SQL. W niektórych przypadkach alert wykrywa legalną zmianę (Nowa lokalizacja docelowa kopii zapasowej). W innych przypadkach alert wykrywa złośliwe działanie (osoba atakująca łatwo exfiltrated dane do pliku).|Wyprowadzanie|
-||<a name="alerts-azurestorage"></a><h3>Azure Storage</h3> [Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#azure-storage-)||
+||||
+
+
+## <a name="alerts-azurestorage"></a>Alerty dotyczące usługi Azure Storage
+
+[Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#azure-storage-)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**Dostęp z nietypowej lokalizacji do konta magazynu**|Wskazuje, że wprowadzono zmianę wzorca dostępu do konta usługi Azure Storage. Ktoś uzyska dostęp do tego konta z adresu IP uznanego za nieznane w porównaniu z ostatnim działaniem. Osoba atakująca uzyskała dostęp do konta lub uprawniony użytkownik nawiązał połączenie z nowej lub nietypowej lokalizacji geograficznej. Przykładem tej ostatniej usługi jest zdalna konserwacja z nowej aplikacji lub dewelopera.|Wykorzystywanie|
 |**Nietypowa aplikacja uzyskała dostęp do konta magazynu**|Wskazuje, że nietypowa aplikacja uzyskuje dostęp do tego konta magazynu. Potencjalną przyczyną jest to, że osoba atakująca uzyskuje dostęp do konta magazynu przy użyciu nowej aplikacji.|Wykorzystywanie|
 |**Anonimowy dostęp do konta magazynu**|Wskazuje, że istnieje zmiana wzorca dostępu do konta magazynu. Na przykład konto jest uzyskiwane anonimowo (bez uwierzytelniania), które jest nieoczekiwane w porównaniu z ostatnim wzorcem dostępu na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca korzystała z publicznego dostępu do odczytu do kontenera, który przechowuje magazyn obiektów BLOB.|Wykorzystywanie|
@@ -265,10 +301,26 @@ Typy alertów uwzględnionych w tej tabeli:
 |**Nietypowa Inspekcja dostępu na koncie magazynu**|Wskazuje, że uprawnienia dostępu do konta magazynu zostały sprawdzone w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że atakujący wykonał rekonesans w celu przyszłego ataku.|Collection|
 |**Nietypowa Eksploracja danych na koncie magazynu**|Wskazuje, że obiekty blob lub kontenery na koncie magazynu zostały wyliczone w nietypowy sposób, w porównaniu do ostatnich działań na tym koncie. Potencjalną przyczyną jest to, że atakujący wykonał rekonesans w celu przyszłego ataku.|Collection|
 |**WERSJA zapoznawcza — potencjalne złośliwe oprogramowanie przekazane do konta magazynu**|Wskazuje, że obiekt BLOB zawierający potencjalne złośliwe oprogramowanie zostało przekazane do konta magazynu. Potencjalne przyczyny mogą obejmować zamierzone złośliwe oprogramowanie przez osobę atakującą lub niezamierzone przekazywanie, potencjalnie złośliwego obiektu BLOB przez uprawnionego użytkownika.|LateralMovement|
-||<a name="alerts-azurecosmos"></a><h3>Azure Cosmos DB</h3> [Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#azure-cosmos-db)||
+||||
+
+
+## <a name="alerts-azurecosmos"></a>Azure Cosmos DB
+
+[Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#azure-cosmos-db)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**Dostęp z nietypowej lokalizacji do konta Cosmos DB**|Wskazuje, że w wzorcu dostępu wprowadzono zmianę dla konta Azure Cosmos DB. Ktoś uzyskał dostęp do tego konta z nieznanego adresu IP w porównaniu z ostatnio używanymi działaniami. Osoba atakująca uzyskała dostęp do konta lub uzyskała dostęp do niego z nowej i nietypowej lokalizacji geograficznej. Przykładem tej ostatniej usługi jest zdalna konserwacja z nowej aplikacji lub dewelopera.|Wykorzystywanie|
 |**Nietypowa ilość danych wyodrębnionych z konta Cosmos DB**|Wskazuje, że wystąpił zmiana wzorca wyodrębniania danych z konta Azure Cosmos DB. Ktoś wyodrębnił nietypową ilość danych w porównaniu do ostatnich działań. Osoba atakująca mogła wyodrębnić znaczną ilość danych z bazy danych Azure Cosmos DB (na przykład eksfiltracji danych lub wyciek lub nieautoryzowany transfer danych). Lub uprawniony użytkownik lub aplikacja wykryła nietypową ilość danych z kontenera (na przykład dla działania tworzenia kopii zapasowej konserwacji).|Wyprowadzanie|
-||<a name="alerts-azurenetlayer"></a><h3>Warstwa sieci platformy Azure</h3> [Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-network-layer)||
+||||
+
+
+## <a name="alerts-azurenetlayer"></a>Alerty dla warstwy sieci platformy Azure
+
+[Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-network-layer)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**Wykryto ruch z adresów IP zalecany do blokowania**|Azure Security Center wykryć ruch przychodzący z adresów IP, które są zalecane do zablokowania. Zwykle jest to spowodowane tym, że ten adres IP nie komunikuje się regularnie z tym zasobem. Alternatywnie adres IP został oflagowany jako złośliwy przez Security Center źródłami analizy zagrożeń.|Badanie|
 |**Wykryto komunikację sieciową ze złośliwą maszyną**|Analiza ruchu sieciowego wskazuje, że komputer (IP% {poszkodowany adres IP}) komunikuje się z tym, co jest prawdopodobnie centrum poleceń i kontroli. Gdy naruszony zasób jest modułem równoważenia obciążenia lub bramą aplikacji, podejrzane działanie może wskazywać, że co najmniej jeden zasób w puli zaplecza (modułu równoważenia obciążenia lub bramy aplikacji) komunikuje się z tym, co może być poleceniem i Centrum sterowania.|-|
 |**Wykryto możliwy naruszony komputer**|Analiza zagrożeń wskazuje, że komputer (pod adresem IP% {Machine IP}) mógł zostać naruszony przez złośliwe oprogramowanie typu Conficker. Robakiem Conficker był komputer, który jest przeznaczony dla systemu operacyjnego Microsoft Windows i został najpierw wykryty w listopadzie 2008. Robak Worm zainfekowany przez komputery, w tym komputery rządowe, firmowe i domowe w ponad 200 krajach, sprawia, że jest to największe zainfekowane robaki komputera, od Welchia robaka 2003.|-|
@@ -285,7 +337,15 @@ Typy alertów uwzględnionych w tej tabeli:
 |**Podejrzane działanie sieci wychodzącej RDP z wieloma lokalizacjami docelowymi**|Analiza ruchu w sieci wykryła nietypową komunikację wychodzącą Remote Desktop Protocol (RDP) z wieloma lokalizacjami docelowymi pochodzącymi z hosta% {złamanego przez atakującego} (% {atakowany adres IP}), zasobu we wdrożeniu. Gdy naruszony zasób jest usługą równoważenia obciążenia lub bramą aplikacji, podejrzany ruch wychodzący pochodzi z do co najmniej jednego zasobu w puli zaplecza (modułu równoważenia obciążenia lub bramy aplikacji). W odniesieniu do przykładowych danych sieciowych jest wyświetlana liczba unikatowych adresów IP, które są traktowane jako nietypowe dla tego środowiska. To działanie może wskazywać na naruszenie bezpieczeństwa zasobów i teraz służy do rozłączenia zewnętrznych punktów końcowych protokołu RDP. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|-|
 |**Podejrzane wychodzące działanie sieci SSH**|Analiza ruchu w sieci wykryła nietypową wychodzącą komunikację SSH z% {ofiarą IP} pochodzącą z% {naruszonego hosta} (% {atakującego), zasobu we wdrożeniu. Gdy naruszony zasób jest usługą równoważenia obciążenia lub bramą aplikacji, podejrzany ruch wychodzący pochodzi z do co najmniej jednego zasobu w puli zaplecza (modułu równoważenia obciążenia lub bramy aplikacji). W odniesieniu do próbkowanych danych sieciowych jest pokazywana liczba połączeń wychodzących (% {Number)}, które są uznawane za nietypowe w przypadku tego środowiska. To działanie może wskazywać na naruszenie bezpieczeństwa zasobów i jest teraz używane do rozłączenia zewnętrznych punktów końcowych protokołu SSH. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|-|
 |**Podejrzane wychodzące działanie sieci SSH z wieloma lokalizacjami docelowymi**|Analiza ruchu w sieci wykryła nietypową wychodzącą komunikację SSH z wieloma lokalizacjami docelowymi pochodzącymi z hosta% {złamanego przez lukę} (% {atakującego), zasobu we wdrożeniu. Gdy naruszony zasób jest usługą równoważenia obciążenia lub bramą aplikacji, podejrzany ruch wychodzący pochodzi z do co najmniej jednego zasobu w puli zaplecza (modułu równoważenia obciążenia lub bramy aplikacji). W odniesieniu do danych sieciowych z próbką pokazuje się, że zasób nawiązuje połączenie z% {liczbą zaatakowanych adresów IP} unikatowych adresów IP, które są traktowane jako nietypowe dla tego środowiska. To działanie może wskazywać na naruszenie bezpieczeństwa zasobów i jest teraz używane do rozłączenia zewnętrznych punktów końcowych protokołu SSH. Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|-|
-||<a name="alerts-azureresourceman"></a><h3>Azure Resource Manager (wersja zapoznawcza)</h3> [Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)||
+||||
+
+
+## <a name="alerts-azureresourceman"></a>Alerty dla Azure Resource Manager (wersja zapoznawcza)
+
+[Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**WERSJA zapoznawcza — wykryto uruchomienie funkcji mikroserii zestawu narzędzi**|W Twoim środowisku wykryto znane uruchomienie zestawu narzędzi Cloud-Environment rekonesans. Mikroseria [](https://github.com/NetSPI/MicroBurst) narzędzi może być używana przez osobę atakującą (lub przeprowadzającą testy) do mapowania zasobów subskrypcji, identyfikowania niezabezpieczonych konfiguracji i przecieku poufnych informacji.|-|
 |**WERSJA zapoznawcza — wykryto uruchomienie zestawu narzędzi azurite**|W Twoim środowisku wykryto znane uruchomienie zestawu narzędzi Cloud-Environment rekonesans. Narzędzie [azurite](https://github.com/mwrlabs/Azurite) może być używane przez osobę atakującą (lub przeprowadzającą testy) do mapowania zasobów subskrypcji i identyfikowania niezabezpieczonych konfiguracji.|-|
 |**WERSJA zapoznawcza — wykryto podejrzaną sesję zarządzania przy użyciu nieaktywnego konta**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który nie jest używany przez długi czas, wykonuje teraz akcje, które mogą zapewnić ochronę trwałości dla osoby atakującej.|Trwałość|
@@ -295,7 +355,15 @@ Typy alertów uwzględnionych w tej tabeli:
 |**Aktywność z rzadko występującego kraju**|Wystąpiło działanie z lokalizacji, która nie była ostatnio lub kiedykolwiek odwiedzana przez dowolnego użytkownika w organizacji.<br>Wykrywanie uwzględnia ostatnie lokalizacje działań do określenia lokalizacji nowych i rzadkie. Aparatu wykrywania anomalii są przechowywane informacje o powyższych lokalizacjach, które posługują się użytkownicy w organizacji.|-|
 |**Aktywność z anonimowych adresów IP**|Wykryto aktywność użytkowników z adresu IP, który został zidentyfikowany jako anonimowy adres IP serwera proxy.<br>Te serwery proxy są używane przez osoby, które chcą ukryć adres IP urządzenia i mogą być używane do złośliwego celu. Ta funkcja wykrywania używa algorytmu uczenia maszynowego, który zmniejsza liczbę fałszywych dodatnich, takich jak źle otagowane adresy IP, które są szeroko używane przez użytkowników w organizacji.|-|
 |**Niemożliwa podróż**|Wystąpiły dwa działania użytkownika (w jednej lub wielu sesjach) pochodzące z lokalizacji geograficznie odległej. Dzieje się tak w przedziale czasowym krótszym niż czas, przez który użytkownik mógł podróżować z pierwszej lokalizacji do drugiej. Oznacza to, że inny użytkownik korzysta z tych samych poświadczeń.<br>Ta funkcja wykrywania używa algorytmu uczenia maszynowego, który ignoruje oczywistych fałszywych zwracanych wyników, takich jak sieci VPN i lokalizacje regularnie używane przez innych użytkowników w organizacji. Wykrycie ma początkowy okres uczenia wynoszący siedem dni, podczas którego nauczy się wzorca aktywności nowego użytkownika. |-|
-||<a name="alerts-azurekv"></a><h3>Azure Key Vault (wersja zapoznawcza)</h3> [Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-keyvault)||
+||||
+
+
+## <a name="alerts-azurekv"></a>Alerty dla Azure Key Vault (wersja zapoznawcza)
+
+[Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-keyvault)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**Dostęp z węzła wyjścia TOR do Key Vault**|Dostęp do Key Vault został uzyskany przez kogoś przy użyciu systemu zachowywanie anonimowości IP sieci w celu ukrycia ich lokalizacji. Złośliwe osoby często próbują ukryć swoje lokalizacje podczas próby uzyskania nieautoryzowanego dostępu do zasobów połączonych z Internetem.|-|
 |**Podejrzana zmiana zasad i tajne zapytanie w Key Vault**|Została wprowadzona zmiana zasad Key Vault, a następnie wystąpiły operacje wyświetlania i/lub pobierania wpisów tajnych. Ponadto ten wzorzec operacji nie jest zwykle wykonywany przez użytkownika w tym magazynie. Jest to wysoce wskaźnik, że zabezpieczenia Key Vault zostały naruszone i wpisy tajne w ramach programu zostały skradzione przez złośliwy aktor.|-|
 |**Lista podejrzanych wpisów tajnych i zapytanie w Key Vault**|Po operacji na liście wpisów tajnych wykonano wiele tajnych operacji get. Ponadto ten wzorzec operacji nie jest zwykle wykonywany przez użytkownika w tym magazynie. Oznacza to, że ktoś może zatopić wpisy tajne przechowywane w Key Vault dla potencjalnie złośliwych celów.|-|
@@ -305,11 +373,18 @@ Typy alertów uwzględnionych w tej tabeli:
 |**Wzorzec nietypowej operacji w Key Vault**|Przeprowadzono nietypowy zestaw operacji Key Vault w porównaniu z danymi historycznymi. Działania Key Vault są zwykle takie same w czasie. Może to być legalna zmiana w działaniu. Alternatywnie można naruszyć bezpieczeństwo infrastruktury i zapewnić dalsze badania.|-|
 |**Duża liczba operacji w Key Vault**|W porównaniu z danymi historycznymi przeprowadzono większą liczbę operacji Key Vault. Działania Key Vault są zwykle takie same w czasie. Może to być legalna zmiana w działaniu. Alternatywnie można naruszyć bezpieczeństwo infrastruktury i zapewnić dalsze badania.|-|
 |**Użytkownik uzyskał wysoką ilość magazynów kluczy**|Liczba magazynów, do których dostęp użytkownik lub aplikacja została zmieniona w porównaniu z danymi historycznymi. Działania Key Vault są zwykle takie same w czasie. Może to być legalna zmiana w działaniu. Alternatywnie można naruszyć bezpieczeństwo infrastruktury i zapewnić dalsze badania.|-|
-||<a name="alerts-azureddos"></a><h3>Ochrona przed atakami DDoS na platformie Azure</h3> [Dalsze szczegóły i uwagi](security-center-alerts-integration.md#azure-ddos)||
+||||
+
+
+## <a name="alerts-azureddos"></a>Alerty dla Azure DDoS Protection
+
+[Dalsze szczegóły i uwagi](security-center-alerts-integration.md#azure-ddos)
+
+|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|----|----|:----:|
 |**Wykryto atak DDoS dla publicznego adresu IP**|Wykryto atak DDoS dla publicznego adresu IP (adres IP) i jest on zmniejszany.|Badanie|
 |**Atak DDoS został skorygowany dla publicznego adresu IP**|Atak DDoS został skorygowany dla publicznego adresu IP (adres IP).|Badanie|
 ||||
-
 
 ## <a name="intentions"></a>Cele
 

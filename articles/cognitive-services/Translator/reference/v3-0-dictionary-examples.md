@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: daa3ff7cb9006a0ec940a57a4db31746dcb0550a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b3551a8df19e47178c7bacd9218cfa60b66d81f9
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888100"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548071"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: przykłady słownika
 
@@ -33,45 +33,20 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 Parametry żądania przesłane na ciągu zapytania są następujące:
 
-<table width="100%">
-  <th width="20%">Parametr zapytania</th>
-  <th>Opis</th>
-  <tr>
-    <td>wersja interfejsu API</td>
-    <td>*Wymagany parametr*.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`.</td>
-  </tr>
-  <tr>
-    <td>wniosek</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) znajdujących się w zakresie `dictionary`.</td>
-  </tr>
-  <tr>
-    <td>na</td>
-    <td>*Wymagany parametr*.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) uwzględnionych w zakresie `dictionary`.</td>
-  </tr>
-</table>
+| Parametr zapytania | Opis |
+| --------- | ----------- |
+| api-version <img width=200/> | **Wymagany parametr**.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`. |
+| z | **Wymagany parametr**.<br/>Określa język tekstu wejściowego. Język źródłowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) znajdujących się w zakresie `dictionary`. |
+| na | **Wymagany parametr**.<br/>Określa język tekstu wyjściowego. Język docelowy musi być jednym z [obsługiwanych języków](./v3-0-languages.md) uwzględnionych w zakresie `dictionary`.  | 
 
 Nagłówki żądań obejmują:
 
-<table width="100%">
-  <th width="20%">Nagłówki</th>
-  <th>Opis</th>
-  <tr>
-    <td>Nagłówki uwierzytelniania</td>
-    <td><em>Wymagany nagłówek żądania</em>.<br/>Zobacz <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostępne opcje uwierzytelniania</a>.</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>*Wymagany nagłówek żądania*.<br/>Określa typ zawartości ładunku. Możliwe wartości to: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>Długość zawartości</td>
-    <td>*Wymagany nagłówek żądania*.<br/>Długość treści żądania.</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Opcjonalnie*.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Możesz pominąć ten nagłówek, jeśli dołączysz identyfikator śledzenia w ciągu zapytania przy użyciu parametru zapytania o nazwie `ClientTraceId`.</td>
-  </tr>
-</table> 
+| Nagłówki  | Opis |
+| ------ | ----------- |
+| Nagłówki uwierzytelniania <img width=200/>  | **Wymagany nagłówek żądania**.<br/>Zobacz <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostępne opcje uwierzytelniania</a>. |
+| Content-Type | **Wymagany nagłówek żądania**.<br/>Określa typ zawartości ładunku. Możliwe wartości to: `application/json`. |
+| Długość zawartości   | **Wymagany nagłówek żądania**.<br/>Długość treści żądania. |
+| X-ClientTraceId   | **Opcjonalnie**.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Możesz pominąć ten nagłówek, jeśli dołączysz identyfikator śledzenia w ciągu zapytania przy użyciu parametru zapytania o nazwie `ClientTraceId`. |
 
 ## <a name="request-body"></a>Treść żądania
 
@@ -89,7 +64,7 @@ Przykład:
 ]
 ```
 
-Obowiązują następujące ograniczenia:
+Mają zastosowanie następujące ograniczenia:
 
 * Tablica może zawierać co najwyżej 10 elementów.
 * Wartość tekstowa elementu tablicy nie może być dłuższa niż 100 znaków, w tym spacje.

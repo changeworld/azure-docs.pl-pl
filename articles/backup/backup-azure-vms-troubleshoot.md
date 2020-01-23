@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak rozwiązywać problemy z tworzenie
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 9828309b080f5831a073fb7c5149455dc649fa13
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664637"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513800"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Rozwiązywanie problemów dotyczących błędów kopii zapasowych w usłudze Azure Virtual Machines
 
@@ -262,7 +262,6 @@ Sprawdź wersję agenta maszyny wirtualnej na maszynach wirtualnych z systemem W
 
 Kopia zapasowa maszyny wirtualnej polega na wystawianiu poleceń migawek do magazynu bazowego. Brak dostępu do magazynu lub opóźnień w ramach zadania migawki uruchomienie może spowodować niepowodzenie zadania tworzenia kopii zapasowej. Następujące warunki mogą spowodować niepowodzenie zadania migawki:
 
-* **Dostęp sieciowy do magazynu jest blokowany przy użyciu sieciowej grupy zabezpieczeń**. Dowiedz się więcej na temat sposobu [nawiązywania dostępu sieciowego](backup-azure-arm-vms-prepare.md#establish-network-connectivity) do magazynu przy użyciu listy dozwolonych adresów IP lub serwera proxy.
 * **Maszyny wirtualne z skonfigurowanym SQL Server kopii zapasowej mogą spowodować opóźnienie zadania migawki**. Domyślnie kopia zapasowa maszyny wirtualnej tworzy pełną kopię zapasową VSS na maszynach wirtualnych z systemem Windows. W przypadku maszyn wirtualnych z systemem SQL Server z konfiguracją SQL Server Backup mogą wystąpić opóźnienia migawek. Jeśli w przypadku migawek są opóźniane błędy kopii zapasowych, Ustaw następujący klucz rejestru:
 
    ```text
@@ -276,29 +275,9 @@ Kopia zapasowa maszyny wirtualnej polega na wystawianiu poleceń migawek do maga
 
 ## <a name="networking"></a>Networking
 
-Podobnie jak w przypadku wszystkich rozszerzeń, rozszerzenia kopii zapasowej muszą mieć dostęp do publicznej sieci Internet. Brak dostępu do publicznej sieci Internet może być w sposób niezgodny z różnymi sposobami:
+Aby tworzenie kopii zapasowej maszyny wirtualnej IaaS było możliwe, należy włączyć protokół DHCP wewnątrz gościa. Jeśli potrzebujesz statycznego prywatnego adresu IP, skonfiguruj go za pomocą Azure Portal lub programu PowerShell. Upewnij się, że opcja DHCP wewnątrz maszyny wirtualnej jest włączona.
+Uzyskaj więcej informacji na temat konfigurowania statycznego adresu IP za pomocą programu PowerShell:
 
-* Instalacja rozszerzenia może zakończyć się niepowodzeniem.
-* Operacje kopii zapasowej, takie jak migawka dysku, mogą zakończyć się niepowodzeniem
-* Wyświetlanie stanu operacji tworzenia kopii zapasowej może zakończyć się niepowodzeniem.
+* [Jak dodać statyczny wewnętrzny adres IP do istniejącej maszyny wirtualnej](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [Zmień metodę alokacji dla prywatnego adresu IP przypisanego do interfejsu sieciowego](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 
-Należy rozwiązać problemy z publicznymi adresami internetowymi w [tym blogu pomocy technicznej systemu Azure](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx). Sprawdź konfiguracje systemu DNS dla sieci wirtualnej i upewnij się, że można rozpoznać identyfikatory URI platformy Azure.
-
-Po poprawnym zakończeniu rozpoznawania nazw należy również podać dostęp do adresów IP platformy Azure. Aby odblokować dostęp do infrastruktury platformy Azure, wykonaj jedną z następujących czynności:
-
-* Lista dozwolonych zakresów adresów IP centrum danych platformy Azure:
-   1. Pobierz listę [adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) na liście dozwolonych.
-   1. Odblokuj adresy IP przy użyciu polecenia cmdlet [New-Route](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) . Uruchom to polecenie cmdlet w ramach maszyny wirtualnej platformy Azure, w oknie programu PowerShell z podwyższonym poziomem uprawnień. Uruchom jako administrator.
-   1. Aby zezwolić na dostęp do adresów IP, Dodaj reguły do sieciowej grupy zabezpieczeń, jeśli są one dostępne.
-* Utwórz ścieżkę dla ruchu HTTP do przepływu:
-   1. W przypadku ograniczenia sieci należy wdrożyć serwer proxy HTTP, aby skierować ruch. Przykładem jest Grupa zabezpieczeń sieci. Zapoznaj się z instrukcjami wdrażania serwera proxy HTTP w programie [ustanawianie łączności sieciowej](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
-   1. Aby zezwolić na dostęp do Internetu z serwera proxy HTTP, należy dodać reguły do sieciowej grupy zabezpieczeń.
-
-> [!NOTE]
-> Aby tworzenie kopii zapasowej maszyny wirtualnej IaaS było możliwe, należy włączyć protokół DHCP wewnątrz gościa. Jeśli potrzebujesz statycznego prywatnego adresu IP, skonfiguruj go za pomocą Azure Portal lub programu PowerShell. Upewnij się, że opcja DHCP wewnątrz maszyny wirtualnej jest włączona.
-> Uzyskaj więcej informacji na temat konfigurowania statycznego adresu IP za pomocą programu PowerShell:
->
-> * [Jak dodać statyczny wewnętrzny adres IP do istniejącej maszyny wirtualnej](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
-> * [Zmień metodę alokacji dla prywatnego adresu IP przypisanego do interfejsu sieciowego](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
->
->

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 4629e4e9cfd5c8f9861b692b2aec89057f83587c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2377cc2e0824911217fbc2783fdf8e86fd7b9405
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442918"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549210"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Ten artykuł koncentruje się na sposób zabezpieczania klastra usługi AKS. Oma
 > * Bezpieczny dostęp do serwera interfejsu API za pomocą usługi Azure Active Directory i kontroli dostępu opartej na rolach
 > * Zabezpieczanie dostępu do kontenera do węzła zasobów
 > * Uaktualnianie klastra usługi AKS do najnowszej wersji platformy Kubernetes
-> * Zachowaj aktualizacji węzłów do daty i automatyczne stosowanie poprawek zabezpieczeń
+> * Utrzymywanie Aktualności węzłów i automatyczne stosowanie poprawek zabezpieczeń
 
 Można także zapoznać się z najlepszymi rozwiązaniami dotyczącymi [zarządzania obrazami kontenerów][best-practices-container-image-management] i [zabezpieczenia pod][best-practices-pod-security].
 

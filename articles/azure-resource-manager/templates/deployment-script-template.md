@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 01/22/2020
 ms.author: jgao
-ms.openlocfilehash: 5475f49acfdcd74a792a9a0f2f16cf1ea3272232
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 125fefbb1d83db8b6114b2d09f5bd6da885159ba
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121900"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547646"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Używanie skryptów wdrażania w szablonach (wersja zapoznawcza)
 
@@ -42,7 +42,7 @@ Zalety skryptu wdrażania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Tożsamość zarządzana przypisana przez użytkownika z rolą współautor na poziomie subskrypcji**. Ta tożsamość jest używana do wykonywania skryptów wdrażania. Aby go utworzyć, zobacz [tożsamość zarządzana przypisana przez użytkownika](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity). Identyfikator tożsamości jest wymagany podczas wdrażania szablonu. Format tożsamości:
+- **Tożsamość zarządzana przypisana przez użytkownika z rolą współautor na poziomie subskrypcji**. Ta tożsamość jest używana do wykonywania skryptów wdrażania. Aby go utworzyć, zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)lub przy [użyciu interfejsu wiersza polecenia platformy Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)lub przy [użyciu Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). Identyfikator tożsamości jest wymagany podczas wdrażania szablonu. Format tożsamości:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>

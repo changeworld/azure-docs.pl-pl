@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 1dd88eaa9c92a4f8ff5d491da950f7bb1cc48c20
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: ac99b95e3cece09c5bdeb0986a11a999603707e6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314508"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548530"
 ---
 # <a name="module-assign-data-to-clusters"></a>Moduł: przypisywanie danych do klastrów
 
-W tym artykule opisano sposób korzystania z modułu *przypisywanie danych do klastrów* w programie Azure Machine Learning Designer. Moduł generuje przewidywania za pośrednictwem modelu klastrowania, który został przeszkolony przy użyciu *tego algorytmu.*
+W tym artykule opisano sposób korzystania z modułu *przypisywanie danych do klastrów* w programie Azure Machine Learning Designer (wersja zapoznawcza). Moduł generuje przewidywania za pośrednictwem modelu klastrowania, który został przeszkolony przy użyciu *tego algorytmu.*
 
 Moduł przypisz dane do klastrów zwraca zestaw danych, który zawiera prawdopodobne przypisania dla każdego nowego punktu danych. 
 

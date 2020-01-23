@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 82426c0093550864b421d7acc35780c4173895a8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a794a9ed35cbbdd36c2cf136b8afc208c3ea0692
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824735"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549017"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Szybki Start: Tworzenie aplikacji w języku Python przy użyciu Azure Cosmos DB konta interfejsu API SQL
 
@@ -49,7 +49,26 @@ Ten przewodnik Szybki Start używa wersji 4 [zestawu SDK języka Python](https:/
 
 ## <a name="add-a-container"></a>Dodawanie kontenera
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+Teraz można użyć narzędzia Eksplorator danych w Azure Portal, aby utworzyć bazę danych i kontener. 
+
+1. Wybierz pozycję **Eksplorator danych** > **Nowy kontener**. 
+    
+    Obszar **Dodaj kontener** jest wyświetlany po prawej stronie, może być konieczne przewinięcie w prawo w celu wyświetlenia go.
+
+    ![Eksplorator danych w witrynie Azure Portal, okienko Dodawanie kontenera](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
+
+2. Na stronie **Dodawanie kontenera** wprowadź ustawienia dla nowego kontenera.
+
+    |Ustawienie|Sugerowana wartość|Opis
+    |---|---|---|
+    |**Identyfikator bazy danych**|Zadania|Wprowadź *todolist* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu. Sprawdź opcję **zainicjuj przepływność bazy danych** , która umożliwia udostępnianie przepływności dla bazy danych we wszystkich kontenerach w bazie danych. Ta opcja pomaga również w obniżyć kosztów. |
+    |**Przepływność**|400|Pozostaw przepływność na 400 jednostek żądań na sekundę (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.| 
+    |**Identyfikator kontenera**|Items|Wprowadź *elementy* jako nazwę nowego kontenera. W przypadku identyfikatorów kontenerów obowiązują takie same wymagania dotyczące znaków jak dla nazw baz danych.|
+    |**Klucz partycji**| /category| W przykładzie opisanym w tym artykule jest stosowany */Category* jako klucz partycji.|
+    
+    Oprócz powyższych ustawień można opcjonalnie dodać **unikatowe klucze** dla kontenera. W tym przykładzie pozostawmy pole puste. Unikatowe klucze umożliwiają deweloperom dodanie warstwy integralności danych do bazy danych. Tworząc unikatowe Zasady kluczy podczas tworzenia kontenera, należy zapewnić unikatowość jednej lub więcej wartości na klucz partycji. Aby dowiedzieć się więcej, zapoznaj się z artykułem [Unique keys in Azure Cosmos DB (Unikatowe klucze w usłudze Azure Cosmos DB)](unique-keys.md).
+    
+    Kliknij przycisk **OK**. W Eksploratorze danych zostanie wyświetlona nowa baza danych i nowy kontener.
 
 ## <a name="add-sample-data"></a>Dodawanie danych przykładowych
 
@@ -74,13 +93,13 @@ Teraz sklonujemy aplikację interfejsu API SQL z serwisu GitHub, ustawimy parame
    mkdir "git-samples"
    ```
 
-2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "git-samples"
     ```
 
-3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię przykładowej aplikacji na komputerze. 
+3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię aplikacji przykładowej na komputerze. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-python-getting-started.git
@@ -135,7 +154,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku `cosmos_get_started.py`.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-app"></a>Uruchomienie aplikacji
 
 1. W programie Visual Studio Code wybierz pozycję **Widok** > **Paleta poleceń**. 
 

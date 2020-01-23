@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446693"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548122"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Interfejs API tłumaczenia tekstu w usłudze Translator 3,0: BreakSentence
 
@@ -33,45 +33,20 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 Parametry żądania przesłane na ciągu zapytania są następujące:
 
-<table width="100%">
-  <th width="20%">Parametr zapytania</th>
-  <th>Opis</th>
-  <tr>
-    <td>api-version</td>
-    <td>*Wymagany parametr zapytania*.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`.</td>
-  </tr>
-  <tr>
-    <td>language</td>
-    <td>*Opcjonalny parametr zapytania*.<br/>Tag języka identyfikujący język tekstu wejściowego. Jeśli kod nie zostanie określony, zostanie zastosowane automatyczne wykrywanie języka.</td>
-  </tr>
-  <tr>
-    <td>script</td>
-    <td>*Opcjonalny parametr zapytania*.<br/>Tag skryptu identyfikujący skrypt używany przez tekst wejściowy. Jeśli skrypt nie jest określony, zostanie przyjęty domyślny skrypt języka.</td>
-  </tr>
-</table> 
+| Parametr zapytania | Opis |
+| -------| ----------- |
+| api-version <img width=200/>   | **Wymagany parametr zapytania**.<br/>Wersja interfejsu API żądana przez klienta. Wartość musi być `3.0`. |
+| language | **Opcjonalny parametr zapytania**.<br/>Tag języka identyfikujący język tekstu wejściowego. Jeśli kod nie zostanie określony, zostanie zastosowane automatyczne wykrywanie języka. |
+| script    | **Opcjonalny parametr zapytania**.<br/>Tag skryptu identyfikujący skrypt używany przez tekst wejściowy. Jeśli skrypt nie jest określony, zostanie przyjęty domyślny skrypt języka.  | 
 
 Nagłówki żądań obejmują:
 
-<table width="100%">
-  <th width="20%">Nagłówki</th>
-  <th>Opis</th>
-  <tr>
-    <td>Nagłówki uwierzytelniania</td>
-    <td><em>Wymagany nagłówek żądania</em>.<br/>Zobacz <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostępne opcje uwierzytelniania</a>.</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>*Wymagany nagłówek żądania*.<br/>Określa typ zawartości ładunku. Możliwe wartości to: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>Długość zawartości</td>
-    <td>*Wymagany nagłówek żądania*.<br/>Długość treści żądania.</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Opcjonalnie*.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Należy pamiętać, że ten nagłówek można pominąć, jeśli w ciągu zapytania zostanie uwzględniony identyfikator śledzenia, przy użyciu parametru zapytania o nazwie `ClientTraceId`.</td>
-  </tr>
-</table> 
+| Nagłówki | Opis |
+| ------- | ----------- |
+| Nagłówki uwierzytelniania <img width=200/>  | **Wymagany nagłówek żądania**.<br/>Zobacz <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostępne opcje uwierzytelniania</a>. |
+| Content-Type | **Wymagany nagłówek żądania**.<br/>Określa typ zawartości ładunku. Możliwe wartości to: `application/json`. |
+| Długość zawartości    | **Wymagany nagłówek żądania**.<br/>Długość treści żądania.  | 
+| X-ClientTraceId   | **Opcjonalnie**.<br/>Wygenerowany przez klienta identyfikator GUID służący do unikatowej identyfikacji żądania. Należy pamiętać, że ten nagłówek można pominąć, jeśli w ciągu zapytania zostanie uwzględniony identyfikator śledzenia, przy użyciu parametru zapytania o nazwie `ClientTraceId`.  | 
 
 ## <a name="request-body"></a>Treść żądania
 

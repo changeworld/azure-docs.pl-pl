@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 01/21/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1cd9ca07aab1953d114caf748ca99170fae6b876
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293202"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546354"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
@@ -25,18 +25,39 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
 
 ## <a name="2020-01-21"></a>2020-01-21
 
-### <a name="azure-machine-learning-designer-generally-available-ga"></a>Projektant Azure Machine Learning jest ogólnie dostępny (GA)
-
-Projektant jest teraz ogólnie dostępny.
+### <a name="azure-machine-learning-sdk-for-python-v1085"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.85
 
 + **Nowe funkcje**
-    + Dodano opcję modułu `Regenerate Output`, aby wymusić ignorowanie buforowanych wyników przez projektanta.
-    + Dodano nowe widoki do szczegółów uruchomienia potoku:
-        + Widok listy potoków.
-        + Widok dziennika w przeglądarce.
-    + Dodano etykiety do portów wejściowych i wyjściowych modułu.
-    + Dodano opcję potoku `Set as Default` na [karcie punkty końcowe](how-to-run-batch-predictions-designer.md#versioning-endpoints).
-    + Dodano skróty klawiaturowe i [funkcje ułatwień dostępu](designer-accessibility.md)czytnika ekranu.
+  + **azureml-core**
+    + Pobierz bieżące podstawowe ograniczenie użycia i przydziału dla zasobów AmlCompute w danym obszarze roboczym i subskrypcji
+  
+  + **Azure-contrib-Pipeline-kroki**
+    + Zezwól użytkownikowi na przekazanie tabelarycznego zestawu danych jako wynik pośredni z poprzedniego kroku do parallelrunstep
+
++ **Poprawki i ulepszenia błędów**
+  + **Azure automl — środowisko uruchomieniowe**
+    + Usunięto wymaganie kolumny y_query w żądaniu do wdrożonej usługi prognozowania. 
+    + "Y_query" został usunięty z sekcji żądania usługi notesu pomarańczowego Dominick.
+    + Naprawiono usterkę uniemożliwiającą prognozowanie wdrożonych modeli, działającą na zestawach danych z kolumnami daty i godziny.
+    + Dodano współczynnik korelacji Matthews jako metrykę klasyfikacji dla klasyfikacji binarnej i wieloklasowej.
+  + **Azure-contrib — interpretacja**
+    + Usunięto wyjaśnienie tekstu z platformy Azure-contrib-interpretuj jako wyjaśnienie tekstu zostało przeniesione do repozytorium interpretacji tekstu, które zostanie wkrótce udostępnione.
+  + **azureml-core**
+    + DataSet: użycie zestawu danych dla plików nie jest już zależne od numpy i Pandas do zainstalowania w ENV.
+    + Zmieniono LocalWebservice. wait_for_deployment (), aby sprawdzić stan lokalnego kontenera platformy Docker przed próbą wysłania polecenia ping do punktu końcowego kondycji, znacznie skracając czas potrzebny na zgłoszenie niepowodzenia wdrożenia.
+    + Naprawiono inicjalizację wewnętrznej właściwości używanej w LocalWebservice. reload (), gdy obiekt usługi jest tworzony na podstawie istniejącego wdrożenia przy użyciu konstruktora LocalWebservice ().
+    + Edytowano komunikat o błędzie w celu wyjaśnienia.
+    + Dodano nową metodę o nazwie get_access_token () do AksWebservice, która zwróci obiekt AksServiceAccessToken, który zawiera token dostępu, Odśwież po sygnaturze czasowej, wygasa przy użyciu sygnatury czasowej i typu tokenu. 
+    + Przestarzała istniejąca Metoda get_token () w AksWebservice, ponieważ nowa metoda zwraca wszystkie informacje zwracane przez tę metodę.
+    + Zmodyfikowano dane wyjściowe polecenia AZ ml Service Get-Access-token. Zmieniono nazwę tokenu na accessToken i refreshBy na refreshAfter. Dodano właściwości expiryOn i TokenType.
+    + Stały get_active_runs
+  + **azureml-explain-model**
+    + Zaktualizowano kształt 0.33.0 i Interpretuj — społeczność do 0,4. *
+  + **Azure — interpretowanie**
+    + Zaktualizowano kształt 0.33.0 i Interpretuj — społeczność do 0,4. *
+  + **Azure-uczenie-automl — środowisko uruchomieniowe**
+    + Dodano współczynnik korelacji Matthews jako metrykę klasyfikacji dla klasyfikacji binarnej i wieloklasowej.
+    + Wycofaj flagę preprocesora z kodu i zamieniono ją na cechowania-cechowania jest domyślnie włączona
 
 ## <a name="2020-01-06"></a>2020-01-06
 
@@ -44,6 +65,7 @@ Projektant jest teraz ogólnie dostępny.
 
 + **Nowe funkcje**
   + Zestaw danych: Dodaj dwie opcje `on_error` i `out_of_range_datetime`, aby `to_pandas_dataframe` się nie powieść, gdy dane zawierają wartości błędów zamiast wypełniania przy użyciu `None`.
+  + Obszar roboczy: dodano flagę `hbi_workspace` dla obszarów roboczych z danymi poufnymi, które umożliwiają dalsze szyfrowanie i wyłącza zaawansowaną diagnostykę w obszarze roboczym. Dodano również obsługę tworzenia własnych kluczy dla skojarzonego wystąpienia Cosmos DB przez określenie parametrów `cmk_keyvault` i `resource_cmk_uri` podczas tworzenia obszaru roboczego, który tworzy wystąpienie Cosmos DB w subskrypcji podczas aprowizacji obszaru roboczego. [Przeczytaj więcej tutaj.](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#azure-cosmos-db)
 
 + **Poprawki i ulepszenia błędów**
   + **Azure automl — środowisko uruchomieniowe**
@@ -64,7 +86,6 @@ Projektant jest teraz ogólnie dostępny.
   + **Azure-pociąg-automl-Client**
     + Skorygowane wyrównanie danych wyjściowych z konsoli dla uruchomień automl
     + Rozwiązano problem polegający na tym, że w zdalnej amlcompute można zainstalować niepoprawną wersję programu Pandas.
-
 
 ## <a name="2019-12-23"></a>2019-12-23
 

@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 8bfbc6783df4f902d25b2a4791708990a327edc8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663064"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514871"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura odzyskiwania po awarii oprogramowania VMware na platformę Azure
 
@@ -28,7 +28,7 @@ Poniższa tabela i grafika zawierają ogólny widok składników służących do
 **Azure** | Subskrypcja platformy Azure, konto usługi Azure Storage na potrzeby pamięci podręcznej, dysku zarządzanego i sieci platformy Azure. | Zreplikowane dane z lokalnych maszyn wirtualnych są przechowywane w usłudze Azure Storage. Maszyny wirtualne platformy Azure są tworzone przy użyciu replikowanych danych podczas pracy w trybie failover z poziomu lokalnego na platformę Azure. Maszyny wirtualne platformy Azure nawiązują połączenie z siecią wirtualną platformy Azure, gdy są tworzone.
 **Komputer serwera konfiguracji** | Pojedyncza maszyna lokalna. Firma Microsoft zaleca, aby uruchomić ją jako maszynę wirtualną VMware, którą można wdrożyć przy użyciu pobranego szablonu OVF.<br/><br/> Na maszynie działa wszystkie lokalne składniki Site Recovery, takie jak serwer konfiguracji, serwer przetwarzania oraz główny serwer docelowy. | **Serwer konfiguracji**: koordynuje komunikację między środowiskiem lokalnym i platformą Azure oraz zarządza replikacją danych.<br/><br/> **Serwer przetwarzania**: program jest instalowany domyślnie na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Serwer przetwarzania instaluje także usługę Azure Site Recovery Mobility Service na maszynach wirtualnych, które będą replikowane, i przeprowadza automatycznie odnajdywanie lokalnych maszyn wirtualnych. Wraz z rozwojem wdrożenia można dodać dodatkowe, oddzielne serwery przetwarzania do obsługi większych woluminów ruchu związanego z replikacją.<br/><br/> **Główny serwer docelowy**: domyślnie zainstalowany na serwerze konfiguracji. Obsługuje dane replikacji podczas powrotu po awarii z platformy Azure. W przypadku dużych wdrożeń można dodać dodatkowy, oddzielny główny serwer docelowy na potrzeby powrotu po awarii.
 **Serwery VMware** | Maszyny wirtualne VMware są hostowane na lokalnych serwerach vSphere ESXi. Zalecamy serwer vCenter do zarządzania hostami. | Podczas wdrażania Site Recovery należy dodać serwery VMware do magazynu Recovery Services.
-**Zreplikowane maszyny** | Usługa mobilności jest instalowana na wszystkich zreplikowanych maszynach wirtualnych VMware. | Zalecamy, aby zezwalać na automatyczną instalację z serwera przetwarzania. Alternatywnie możesz zainstalować usługę ręcznie lub użyć zautomatyzowanej metody wdrażania, takiej jak System Center Configuration Manager.
+**Zreplikowane maszyny** | Usługa mobilności jest instalowana na wszystkich zreplikowanych maszynach wirtualnych VMware. | Zalecamy, aby zezwalać na automatyczną instalację z serwera przetwarzania. Alternatywnie możesz zainstalować usługę ręcznie lub użyć zautomatyzowanej metody wdrażania, takiej jak Configuration Manager.
 
 **Architektura VMware–Azure**
 

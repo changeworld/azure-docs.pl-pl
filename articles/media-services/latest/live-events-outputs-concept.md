@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: cd1f55a4ca94aae73a56334c76f211afff6e9622
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c1b72f2a84f8cafa1767639cae64fb420b0a997c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514055"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546048"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Zdarzenia na żywo i wyjście na żywo w Media Services
 
@@ -36,7 +36,7 @@ Azure Media Services pozwala na dostarczanie na żywo wydarzeń klientom w chmur
 
 [Wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents) może być jednym z dwóch typów: kodowanie przekazywane lub na żywo. Typy są ustawiane podczas tworzenia przy użyciu [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
 
-* **LiveEventEncodingType. None**: lokalny koder na żywo wysyła strumień o wielokrotnej szybkości transmisji bitów. Pozyskiwany strumień przeszedł przez wydarzenie na żywo bez dalszej obróbki. 
+* **LiveEventEncodingType. None**: lokalny koder na żywo wysyła strumień o wielokrotnej szybkości transmisji bitów. Pozyskiwany strumień przeszedł przez wydarzenie na żywo bez dalszej obróbki. Nazywana również trybem przekazywania.
 * **LiveEventEncodingType. Standard**: lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do zdarzenia na żywo, a Media Services tworzy wiele strumieni szybkości transmisji bitów. Jeśli kanał informacyjny udziału ma rozdzielczość 720 lub wyższą, ustawienie wstępne **Default720p** będzie kodować zestaw par rozdzielczości/szybkości transmisji bitów.
 * **LiveEventEncodingType. Premium1080p**: lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do zdarzenia na żywo, a Media Services tworzy wiele strumieni szybkości transmisji bitów. Ustawienie wstępne Default1080p określa wyjściowy zestaw par rozdzielczości/szybkości transmisji bitów.
 
@@ -81,6 +81,8 @@ Podczas tworzenia zdarzenia na żywo można określić następujące opcje:
 * Ograniczenia dotyczące adresów IP w pozyskiwaniu i podglądzie. Można zdefiniować adresy IP, które mogą pozyskiwać pliki wideo w tym wydarzeniu na żywo. Jako dozwolone adresy IP można podać pojedynczy adres IP (na przykład „10.0.0.1”), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (na przykład „10.0.0.1/22”) lub zakres adresów IP przy użyciu adresu IP i maski podsieci w notacji z kropką dziesiętną (na przykład, „10.0.0.1(255.255.252.0)”).<br/>Jeśli nie określono adresów IP i nie ma definicji reguły, adres IP nie będzie dozwolony. Aby zezwolić na jakikolwiek adres IP, utwórz regułę i ustaw wartość 0.0.0.0/0.<br/>Adresy IP muszą znajdować się w jednym z następujących formatów: adres IpV4 z czterema numerami lub zakresem adresów CIDR.
 
     Jeśli chcesz włączyć niektóre adresy IP na własnych zaporach lub chcesz ograniczyć dane wejściowe do zdarzeń na żywo do adresów IP platformy Azure, Pobierz plik JSON z [zakresów adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). Aby uzyskać szczegółowe informacje na temat tego pliku, wybierz sekcję **szczegóły** na stronie.
+    
+* Podczas tworzenia zdarzenia można włączyć transkrypcje na żywo. <br/> Domyślnie transkrypcja dynamiczna jest wyłączona. Nie można zmienić tej właściwości, gdy działa zdarzenie na żywo lub skojarzone z nim wyjście na żywo. 
 
 ### <a name="naming-rules"></a>Reguły nazewnictwa
 

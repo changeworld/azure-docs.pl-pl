@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 91434a5392f37a297e474fedf00fac6b1e4d8362
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 6e5c1a1bfc82460ad7e53cc8444a4bb42aa4ef19
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314168"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548394"
 ---
 # <a name="remove-duplicate-rows-module"></a>Usuń moduł zduplikowanych wierszy
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do usuwania potencjalnych duplikatów z zestawu danych.
 

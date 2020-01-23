@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 318b73011901e9ab07643bc2ecec28e5016e8702
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613911"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514825"
 ---
 # <a name="automate-mobility-service-installation"></a>Automatyzowanie instalacji usługi mobilności
 
@@ -19,8 +19,8 @@ W tym artykule opisano sposób automatyzowania instalacji i aktualizacji agenta 
 Podczas wdrażania Site Recovery na potrzeby odzyskiwania po awarii lokalnych maszyn wirtualnych VMware i serwerów fizycznych do platformy Azure należy zainstalować agenta usługi mobilności na każdej maszynie, która ma być replikowana. Usługa mobilności przechwytuje operacje zapisu danych na komputerze i przekazuje je do serwera przetwarzania Site Recovery na potrzeby replikacji. Usługę mobilności można wdrożyć na kilka sposobów:
 
 - **Instalacja wypychana**: Pozwól Site Recovery zainstalować agenta usługi mobilności po włączeniu replikacji dla maszyny w Azure Portal.
-- **Instalacja ręczna**: należy ręcznie zainstalować usługę mobilności na poszczególnych komputerach. [Dowiedz się więcej](vmware-physical-mobility-service-overview.md) o instalacji wypychanej i ręcznej.
-- **Zautomatyzowane wdrażanie**: Automatyzowanie instalacji przy użyciu narzędzi do wdrażania oprogramowania, takich jak System Center Configuration Manager, lub narzędzi innych firm, takich jak Intigua JetPatch.
+- **Instalacja ręczna**: należy ręcznie zainstalować usługę mobilności na poszczególnych komputerach. [Dowiedz się więcej](/vmware-physical-mobility-service-overview.md) o instalacji wypychanej i ręcznej.
+- **Zautomatyzowane wdrażanie**: Automatyzowanie instalacji przy użyciu narzędzi do wdrażania oprogramowania, takich jak Microsoft Endpoint Configuration Manager, lub narzędzi innych firm, takich jak Intigua JetPatch.
 
 Automatyczne instalowanie i aktualizowanie zapewnia rozwiązanie, jeśli:
 

@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 08/9/2019
+ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 9c72c8431907c52dab338114ce09be139608ab0a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f9d00cff5d910d6bbbb4c436249283cca87b91e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768592"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549108"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -36,14 +36,14 @@ Następujące ograniczenia są stosowane podczas tworzenia klastrów AKS i zarz�
 * Klaster AKS musi używać usługi równoważenia obciążenia standardowej jednostki SKU do korzystania z wielu pul węzłów, ale ta funkcja nie jest obsługiwana w przypadku podstawowych modułów równoważenia obciążenia SKU.
 * Klaster AKS musi używać zestawów skalowania maszyn wirtualnych dla węzłów.
 * Nazwa puli węzłów może zawierać tylko małe znaki alfanumeryczne i musi zaczynać się małą literą. W przypadku pul węzłów systemu Linux długość musi należeć do zakresu od 1 do 12 znaków, długość musi mieć od 1 do 6 znaków.
-* Klaster AKS może mieć maksymalnie osiem pul węzłów.
-* Klaster AKS może mieć maksymalnie 800 węzłów w ramach tych ośmiu pul węzłów.
+* Klaster AKS może mieć maksymalnie 10 pul węzłów.
+* Klaster AKS może mieć maksymalnie 1000 węzłów w ramach tych pul 10 węzłów.
 * Wszystkie pule węzłów muszą znajdować się w tej samej sieci wirtualnej i podsieci.
 * Podczas tworzenia wielu pul węzłów podczas tworzenia klastra wszystkie wersje Kubernetes używane przez pule węzłów muszą być zgodne z wersją ustawioną dla płaszczyzny kontroli. Tę aktualizację można zaktualizować po zainicjowaniu obsługi administracyjnej klastra przy użyciu operacji dla puli węzłów.
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
-Aby rozpocząć, Utwórz klaster AKS z pulą jednego węzła. W poniższym przykładzie za pomocą polecenia [AZ Group Create][az-group-create] można utworzyć grupę zasobów o nazwie Moja *zasobów* w regionie *wschodnim* . Klaster AKS o nazwie *myAKSCluster* jest tworzony przy użyciu polecenia [AZ AKS Create][az-aks-create] . A *--Kubernetes-Version* of *1.13.10* służy do pokazywania sposobu aktualizowania puli węzłów w następnym kroku. Można określić dowolną [obsługiwaną wersję Kubernetes][supported-versions].
+Aby rozpocząć, Utwórz klaster AKS z pulą jednego węzła. W poniższym przykładzie za pomocą polecenia [AZ Group Create][az-group-create] można utworzyć grupę zasobów o nazwie Moja *zasobów* w regionie *wschodnim* . Klaster AKS o nazwie *myAKSCluster* jest tworzony przy użyciu polecenia [AZ AKS Create][az-aks-create] . A *--Kubernetes-Version* of *1.15.7* służy do pokazywania sposobu aktualizowania puli węzłów w następnym kroku. Można określić dowolną [obsługiwaną wersję Kubernetes][supported-versions].
 
 > [!NOTE]
 > Jednostka SKU usługi równoważenia obciążenia w warstwie *podstawowa* **nie jest obsługiwana** w przypadku używania wielu pul węzłów. Domyślnie klastry AKS są tworzone z użyciem jednostki SKU modułu *równoważenia obciążenia z poziomu interfejsu* wiersza polecenia platformy Azure i Azure Portal.
@@ -59,7 +59,7 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.10 \
+    --kubernetes-version 1.15.7 \
     --load-balancer-sku standard
 ```
 
@@ -84,7 +84,7 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --name mynodepool \
     --node-count 3 \
-    --kubernetes-version 1.12.7
+    --kubernetes-version 1.15.5
 ```
 
 > [!NOTE]
@@ -107,7 +107,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.12.7",
+    "orchestratorVersion": "1.15.5",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -117,7 +117,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -126,32 +126,32 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ```
 
 > [!TIP]
-> Jeśli podczas dodawania puli węzłów nie określono *OrchestratorVersion* ani *VmSize* , węzły są tworzone na podstawie ustawień domyślnych klastra AKS. W tym przykładzie Kubernetes w wersji *1.13.10* i rozmiar węzła *Standard_DS2_v2*.
+> Jeśli *VmSize* nie zostanie określony podczas dodawania puli węzłów, domyślny rozmiar jest *Standard_DS2_v3* dla pul węzłów systemu Windows i *Standard_DS2_v2* dla pul węzłów w systemie Linux. Jeśli *OrchestratorVersion* nie jest określony, domyślnie jest to taka sama wersja, jak płaszczyzna kontroli.
 
 ## <a name="upgrade-a-node-pool"></a>Uaktualnianie puli węzłów
- 
+
 > [!NOTE]
 > Operacje uaktualniania i skalowania w klastrze lub puli węzłów nie mogą występować jednocześnie, jeśli zostanie zwrócony błąd. W zamian każdy typ operacji musi zakończyć się w odniesieniu do zasobu docelowego przed następnym żądaniem tego samego zasobu. Więcej informacji na ten temat znajdziesz w naszym [przewodniku rozwiązywania problemów](https://aka.ms/aks-pending-upgrade).
 
-Po utworzeniu klastra AKS w pierwszym kroku został określony `--kubernetes-version` *1.13.10* . Spowoduje to ustawienie wersji Kubernetes dla płaszczyzny kontroli i domyślnej puli węzłów. W poleceniach w tej sekcji wyjaśniono, jak uaktualnić pojedynczą określoną pulę węzłów.
+Po utworzeniu klastra AKS w pierwszym kroku został określony `--kubernetes-version` *1.15.7* . Spowoduje to ustawienie wersji Kubernetes dla płaszczyzny kontroli i domyślnej puli węzłów. W poleceniach w tej sekcji wyjaśniono, jak uaktualnić pojedynczą określoną pulę węzłów.
 
 Relacja między uaktualnianiem wersji Kubernetes płaszczyzny kontroli a pulą węzłów znajduje się w [sekcji poniżej](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 > [!NOTE]
 > Wersja obrazu systemu operacyjnego puli węzłów jest powiązana z wersją Kubernetes klastra. Uaktualnienia obrazu systemu operacyjnego są uzyskiwane tylko po uaktualnieniu klastra.
 
-Ponieważ w tym przykładzie istnieją dwa pule węzłów, należy użyć [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] , aby uaktualnić pulę węzłów. Uaktualnimy *mynodepool* do Kubernetes *1.13.10*. Użyj polecenia [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] , aby uaktualnić pulę węzłów, jak pokazano w następującym przykładzie:
+Ponieważ w tym przykładzie istnieją dwa pule węzłów, należy użyć [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] , aby uaktualnić pulę węzłów. Uaktualnimy *mynodepool* do Kubernetes *1.15.7*. Użyj polecenia [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] , aby uaktualnić pulę węzłów, jak pokazano w następującym przykładzie:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.13.10 \
+    --kubernetes-version 1.15.7 \
     --no-wait
 ```
 
-Ponownie utwórz listę stan pul węzłów za pomocą polecenia [AZ AKS Node Pool list][az-aks-nodepool-list] . Poniższy przykład pokazuje, że *mynodepool* jest w stanie *uaktualnienia* do *1.13.10*:
+Ponownie utwórz listę stan pul węzłów za pomocą polecenia [AZ AKS Node Pool list][az-aks-nodepool-list] . Poniższy przykład pokazuje, że *mynodepool* jest w stanie *uaktualnienia* do *1.15.7*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -162,7 +162,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Upgrading",
     ...
@@ -174,7 +174,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -240,7 +240,7 @@ az aks nodepool scale \
 Ponownie utwórz listę stan pul węzłów za pomocą polecenia [AZ AKS Node Pool list][az-aks-nodepool-list] . Poniższy przykład pokazuje, że *mynodepool* jest w stanie *skalowania* z nową liczbą *5* węzłów:
 
 ```console
-$ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 [
   {
@@ -248,7 +248,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
     "count": 5,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Scaling",
     ...
@@ -260,7 +260,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -298,7 +298,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 5,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Deleting",
     ...
@@ -310,7 +310,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -351,7 +351,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 1,
     ...
     "name": "gpunodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Creating",
     ...
@@ -363,7 +363,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -383,8 +383,8 @@ W klastrze znajdują się teraz dwa pule węzłów — domyślna pula węzłów 
 $ kubectl get nodes
 
 NAME                                 STATUS   ROLES   AGE     VERSION
-aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.13.10
-aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.10
+aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
+aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
 ```
 
 Harmonogram Kubernetes może używać przyniesień i tolerowanych elementów w celu ograniczenia obciążeń, które mogą być uruchamiane w węzłach.
@@ -461,7 +461,7 @@ W przypadku tworzenia i zarządzania zasobami przy użyciu szablonu Azure Resour
 Utwórz szablon, taki jak `aks-agentpools.json`, i wklej następujący przykładowy manifest. Ten przykładowy szablon służy do konfigurowania następujących ustawień:
 
 * Aktualizuje pulę węzłów systemu *Linux* o nazwie *myagentpool* , aby uruchamiać trzy węzły.
-* Ustawia węzły w puli węzłów do uruchomienia Kubernetes w wersji *1.13.10*.
+* Ustawia węzły w puli węzłów do uruchomienia Kubernetes w wersji *1.15.7*.
 * Określa rozmiar węzła jako *Standard_DS2_v2*.
 
 W razie potrzeby należy edytować te wartości jako wymagające aktualizacji, dodania lub usunięcia pul węzłów:
@@ -500,7 +500,7 @@ W razie potrzeby należy edytować te wartości jako wymagające aktualizacji, d
     },
     "variables": {
         "apiVersion": {
-            "aks": "2019-04-01"
+            "aks": "2020-01-01"
         },
         "agentPoolProfiles": {
             "maxPods": 30,
@@ -513,7 +513,7 @@ W razie potrzeby należy edytować te wartości jako wymagające aktualizacji, d
     },
     "resources": [
         {
-            "apiVersion": "2019-04-01",
+            "apiVersion": "2020-01-01",
             "type": "Microsoft.ContainerService/managedClusters/agentPools",
             "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
             "location": "[parameters('location')]",
@@ -526,7 +526,7 @@ W razie potrzeby należy edytować te wartości jako wymagające aktualizacji, d
                 "storageProfile": "ManagedDisks",
                 "type": "VirtualMachineScaleSets",
                 "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
-                "orchestratorVersion": "1.13.10"
+                "orchestratorVersion": "1.15.7"
             }
         }
     ]
@@ -540,6 +540,25 @@ az group deployment create \
     --resource-group myResourceGroup \
     --template-file aks-agentpools.json
 ```
+
+> [!TIP]
+> Możesz dodać tag do puli węzłów, dodając Właściwość *tag* w szablonie, jak pokazano w poniższym przykładzie.
+> 
+> ```json
+> ...
+> "resources": [
+> {
+>   ...
+>   "properties": {
+>     ...
+>     "tags": {
+>       "name1": "val1"
+>     },
+>     ...
+>   }
+> }
+> ...
+> ```
 
 Zaktualizowanie klastra AKS może potrwać kilka minut, w zależności od ustawień puli węzłów i operacji zdefiniowanych w szablonie Menedżer zasobów.
 

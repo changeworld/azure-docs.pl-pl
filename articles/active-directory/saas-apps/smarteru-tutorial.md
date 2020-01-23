@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 61d7a2a7e4a60794710d602dab6b54e894bfc475
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232025"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549295"
 ---
+> [!NOTE]
+> Proces integrowania SmarterU z Azure Active Directory jest również udokumentowany i konserwowany w [systemie pomocy SmarterU](https://help.smarteru.com/ID2053086).
+
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Samouczek: integracja Azure Active Directory z usługą SmarterU
 
 W tym samouczku dowiesz się, jak zintegrować usługę SmarterU z usługą Azure Active Directory (Azure AD).
@@ -69,7 +72,7 @@ Aby skonfigurować integrację programu SmarterU z usługą Azure AD, musisz dod
 
      ![SmarterU na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą SmarterU na podstawie użytkownika testowego o nazwie **Britta Simon**.
 Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w SmarterU.
@@ -91,7 +94,7 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą SmarterU, w
 
 1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **SmarterU** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -109,7 +112,7 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą SmarterU, w
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
 6. W sekcji **Konfigurowanie SmarterU** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
@@ -119,7 +122,7 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą SmarterU, w
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
 ### <a name="configure-smarteru-single-sign-on"></a>Konfigurowanie logowania jednokrotnego SmarterU
 
@@ -137,7 +140,7 @@ Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą SmarterU, w
   
     b. W sekcji **główny formant logowania** wybierz kartę **SmarterU** .
   
-    c. W sekcji **Domyślna nazwa logowania użytkownika** wybierz kartę **SmarterU** .
+    d. W sekcji **Domyślna nazwa logowania użytkownika** wybierz kartę **SmarterU** .
   
     d. Wybierz pozycję **Enable SAML** (Włącz SAML).
   
@@ -153,22 +156,22 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "All users" linki](common/users.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
 2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
     ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące czynności.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    ![Okno dialogowe użytkownika](common/user-properties.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
     b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
@@ -216,7 +219,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze Smarter
 
     b. Wpisz powiązane wartości atrybutów konta użytkownika usługi Azure AD w następujących polach tekstowych: **podstawowy adres e-mail**, **identyfikator pracownika**, **hasło**, **Zweryfikuj hasło** **, imię i** **nazwisko**.
 
-    c. Kliknij pozycję **aktywne**.
+    d. Kliknij pozycję **aktywne**.
 
     d. Kliknij pozycję **Zapisz**.
 
@@ -225,14 +228,14 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze Smarter
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka SmarterU w panelu dostępu należy automatycznie zalogować się do SmarterU, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

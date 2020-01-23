@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dd5c0782e1132f8592d9c6381b541c6f1a7d84cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7c73d7d07bdfaa4fbbd7eeca4f00895c5add354
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "67183222"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548224"
 ---
-**HDD w warstwie Standardowa dyski zarządzane**
+**HDD w warstwie Standardowa Managed disks**  
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**SSD w warstwie Standardowa dyski zarządzane**
+**SSD w warstwie Standardowa Managed disks**  
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**SSD w warstwie Premium dyski zarządzane: limity dla dysku**
+**SSD w warstwie Premium dyski zarządzane: limity dla dysku**  
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 **SSD w warstwie Premium Managed disks: limity dla maszyn wirtualnych**

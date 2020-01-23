@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: b8cf7992617b7263b86fd98e5def8be1d43ca68c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293372"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514559"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co to jest Azure SQL Database wystąpienie zarządzane?
 
@@ -72,7 +72,7 @@ W poniższej tabeli przedstawiono najważniejsze funkcje wystąpień zarządzany
 
 ## <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
-[Model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md) dla wystąpień zarządzanych zapewnia elastyczność, kontrolę, przejrzystość i prostą metodę tłumaczenia lokalnych wymagań obciążeń do chmury. Ten model umożliwia zmianę zasobów obliczeniowych, pamięci i magazynu w zależności od potrzeb związanych z obciążeniem. Model rdzeń wirtualny jest również uprawniony do 30% oszczędności przy użyciu [Korzyść użycia hybrydowego platformy Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
+[Model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md) dla wystąpień zarządzanych zapewnia elastyczność, kontrolę, przejrzystość i prostą metodę tłumaczenia lokalnych wymagań obciążeń do chmury. Ten model umożliwia zmianę zasobów obliczeniowych, pamięci i magazynu w zależności od potrzeb związanych z obciążeniem. Model rdzeń wirtualny jest również uprawniony do 55% oszczędności przy użyciu [Korzyść użycia hybrydowego platformy Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 W modelu rdzeń wirtualny można wybrać między generacjami sprzętu.
 
