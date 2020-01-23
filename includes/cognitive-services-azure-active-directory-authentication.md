@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: fb3795ff807a87e9bac4d95400f5e446c68d1e4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b08ffa79e012344cad6cf72df98a0f1ba5240ce0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73897533"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76508667"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Uwierzytelnianie za pomocą usługi Azure Active Directory
 
@@ -25,10 +25,10 @@ W poniższych sekcjach użyjesz środowiska Azure Cloud Shell lub interfejsu wie
 
 Pierwszym krokiem jest utworzenie niestandardowej domeny podrzędnej. Jeśli chcesz użyć istniejącego zasobu Cognitive Services, który nie ma niestandardowej nazwy domeny podrzędnej, postępuj zgodnie z instrukcjami w temacie [Cognitive Services Custom subpoddomens](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources) , aby włączyć niestandardową domenę poddomenową dla zasobu.
 
-1. Zacznij od otworzenia Azure Cloud Shell. następnie [Wybierz subskrypcję](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
+1. Zacznij od otworzenia Azure Cloud Shell. Następnie [Wybierz subskrypcję](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
 
    ```azurecli-interactive
-   Select-AzureSubscription -SubscriptionName <YOUR_SUBCRIPTION>
+   Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
 2. Następnie [Utwórz zasób Cognitive Services](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) z poddomeną niestandardową. Nazwa poddomeny musi być globalnie unikatowa i nie może zawierać znaków specjalnych, takich jak: ".", "!", ",".

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1c14d1dd171f9bca6b6bdc61e35c0d541b29cb3c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026158"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511216"
 ---
 # <a name="what-is-azure-iot-edge"></a>Co to jest usługa Azure IoT Edge
 
@@ -26,7 +26,7 @@ Dzięki analizie wzrasta wartość biznesowa w rozwiązaniach IoT, ale nie wszys
 Usługa Azure IoT Edge obejmuje trzy składniki:
 
 * **Moduły IoT Edge** są kontenerami, w których działają usługi platformy Azure, usługi innych firm lub własny kod. Moduły są wdrażane na urządzeniach usługi IoT Edge i wykonywane lokalnie na tych urządzeniach.
-* **Środowisko uruchomieniowe IoT Edge** działa na każdym urządzeniu IoT Edge i zarządza modułami wdrożonymi na poszczególnych urządzeniach. 
+* **Środowisko uruchomieniowe IoT Edge** działa na każdym urządzeniu IoT Edge i zarządza modułami wdrożonymi na poszczególnych urządzeniach.
 * **Interfejs oparty na chmurze** umożliwia zdalne monitorowanie IoT Edge urządzeń i zarządzanie nimi.
 
 >[!NOTE]
@@ -62,7 +62,7 @@ Sposób używania urządzenia usługi Azure IoT Edge zależy od Ciebie. Środowi
 
 ## <a name="iot-edge-cloud-interface"></a>Interfejs chmurowy usługi IoT Edge
 
-Trudno jest zarządzać cyklem życia oprogramowania dla milionów urządzeń IoT, które często różnią się od siebie i są modelami lub geograficznie rozproszonymi. Obciążenia są tworzone i konfigurowane dla określonego typu urządzenia, wdrażane na wszystkich urządzeniach i monitorowane w celu przechwycenia wszystkich urządzeń błędna. Tych działań nie można wykonywać dla poszczególnych urządzeń. Muszą być wykonywane na dużą skalę.
+Trudno jest zarządzać cyklem życia oprogramowania dla milionów urządzeń IoT, które często różnią się od siebie i są modelami lub geograficznie rozproszonymi. Obciążenia są tworzone i konfigurowane dla konkretnego typu urządzenia, wdrażane na wszystkich urządzeniach i monitorowane, aby wyłapywać nieprawidłowo funkcjonujące urządzenia. Tych działań nie można wykonywać dla poszczególnych urządzeń. Muszą być wykonywane na dużą skalę.
 
 Usługa Azure IoT Edge bezproblemowo integruje się z akceleratorami rozwiązań Azure IoT w celu zapewnienia jednej warstwy kontroli na potrzeby rozwiązania. Usługi w chmurze umożliwiają:
 

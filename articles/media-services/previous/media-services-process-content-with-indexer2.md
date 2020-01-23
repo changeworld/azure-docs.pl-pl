@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: 60458365fd9ed3a9a72f5c2da82431fb55792a50
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 9c463095612b1540cc593b17a0e52bfd24db30d2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464069"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514497"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Indeksowanie plików multimedialnych z Azure Media Indexer 2 wersja zapoznawcza
 
 > [!NOTE]
-> Procesor multimediów [Azure Media Indexer 2](media-services-process-content-with-indexer2.md) zostanie wycofany 1 stycznia 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje ten starszy procesor nośnika. Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer i Azure Media Indexer 2 do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
+> Procesor multimediów [Azure Media Indexer 2](media-services-process-content-with-indexer2.md) zostanie wycofany. Aby uzyskać daty wycofania, zobacz temat ten [starszy składnik](legacy-components.md) . [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje ten starszy procesor nośnika. Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer i Azure Media Indexer 2 do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
 
 Procesor **Azure Media Indexer 2 (wersja zapoznawcza** ) umożliwia udostępnianie plików multimedialnych i zawartości, a także generowanie ścieżek napisów. W porównaniu do poprzedniej wersji [Azure Media Indexer](media-services-index-content.md), **Azure Media Indexer 2 wersja zapoznawcza** wykonuje szybsze indeksowanie i oferuje szersze wsparcie w zakresie języków. Obsługiwane języki to angielski, hiszpański, francuski, niemiecki, włoski, chiński (mandarynki, uproszczony), portugalski, arabski, rosyjski i japoński.
 
@@ -34,7 +34,7 @@ W tym artykule przedstawiono sposób tworzenia zadań indeksowania przy użyciu 
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Stosuje się następujące zagadnienia:
+Obowiązują następujące zastrzeżenia:
  
 * Indeksator 2 nie jest obsługiwany w przypadku usług 21Vianet i Azure Government platformy Azure w Chinach.
 * Podczas indeksowania zawartości upewnij się, że używasz plików multimedialnych, które mają bardzo jasne mowę (bez muzyki w tle, szumu, efektów lub HISS mikrofonu). Oto kilka przykładów odpowiedniej zawartości: zarejestrowane spotkania, wykłady lub prezentacje. Następująca zawartość może nie być odpowiednia do indeksowania: filmy, programy telewizyjne, wszystko z mieszaniem dźwięku i dYwiękiem, źle zarejestrowano zawartość z hałasem w tle (HISS).
@@ -47,7 +47,7 @@ Pliki audio lub wideo
 Zadanie indeksowania może generować pliki napisów w następujących formatach:  
 
 * **TTML**
-* **Ścieżka**
+* **WebVTT**
 
 Pliki napisów (DW) w tych formatach mogą służyć do udostępniania plików audio i wideo osobom niepełnosprawnym.
 
@@ -294,7 +294,7 @@ namespace IndexContent
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki

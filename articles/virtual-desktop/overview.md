@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: 44430f5a150952ba7cfc32b3e54d004cb0d0b761
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312349"
+ms.locfileid: "76514276"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co to jest Windows Virtual Desktop? 
 
@@ -105,8 +105,8 @@ Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windo
 >Należy użyć symbolu wieloznacznego (*) dla adresów URL związanych z ruchem usługi. Jeśli wolisz używać * w przypadku ruchu związanego z agentem, Oto jak znaleźć adresy URL bez symboli wieloznacznych:
 >
 >1. Zarejestruj maszyny wirtualne w puli hostów systemu Windows Virtual Desktop.
->2. Otwórz **Podgląd zdarzeń** i przejdź do **dziennika aplikacji** **systemu Windows** > i poszukaj zdarzenia o identyfikatorze 3712.
->3. Dozwolonych adresy URL Znalezione w obszarze zdarzenia o IDENTYFIKATORze 3712. Adresy URL pod IDENTYFIKATORem zdarzenia 3712 są specyficzne dla regionu. Należy powtórzyć proces listy dozwolonych z odpowiednimi adresami URL dla każdego regionu, w którym mają zostać wdrożone maszyny wirtualne.
+>2. Otwórz **Podgląd zdarzeń** i przejdź do **dziennika aplikacji** **systemu Windows** > i poszukaj zdarzenia o identyfikatorze 3702.
+>3. Dozwolonych adresy URL Znalezione w obszarze zdarzenia o IDENTYFIKATORze 3702. Adresy URL pod IDENTYFIKATORem zdarzenia 3702 są specyficzne dla regionu. Należy powtórzyć proces listy dozwolonych z odpowiednimi adresami URL dla każdego regionu, w którym mają zostać wdrożone maszyny wirtualne.
 
 Pulpit wirtualny systemu Windows składa się z komputerów stacjonarnych i aplikacji z systemem Windows dostarczanych użytkownikom i rozwiązanie do zarządzania, które jest hostowane jako usługa na platformie Azure przez firmę Microsoft. Komputery stacjonarne i aplikacje można wdrażać na maszynach wirtualnych w dowolnym regionie świadczenia usługi Azure, a rozwiązanie do zarządzania i dane dla tych maszyn wirtualnych będą znajdować się w Stany Zjednoczone. Może to spowodować transfer danych do Stany Zjednoczone.
 

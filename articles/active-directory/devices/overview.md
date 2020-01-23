@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d593e5f27dbcd676e2b42975251778a6c48a7d79
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423118"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511879"
 ---
 # <a name="what-is-a-device-identity"></a>Co to jest tożsamość urządzenia?
 
@@ -54,7 +54,7 @@ Aby uzyskać urządzenie w usłudze Azure AD, masz wiele opcji:
 
 ## <a name="device-management"></a>Zarządzanie urządzeniami
 
-Urządzeniami w usłudze Azure AD można zarządzać przy użyciu narzędzi do zarządzania urządzeniami przenośnymi (MDM), takich jak Microsoft Intune, System Center Configuration Manager, zasady grupy (sprzężenie hybrydowe usługi Azure AD), narzędzi do zarządzania aplikacjami mobilnymi (MAM) lub innych narzędzi innych firm.
+Urządzeniami w usłudze Azure AD można zarządzać przy użyciu narzędzi do zarządzania urządzeniami przenośnymi (MDM), takich jak Microsoft Intune, Microsoft Endpoint Configuration Manager, zasady grupy (dołączanie hybrydowej usługi Azure AD), narzędzia do zarządzania aplikacjami mobilnymi (MAM) lub innych narzędzi innych firm.
 
 ## <a name="resource-access"></a>Dostęp do zasobów
 

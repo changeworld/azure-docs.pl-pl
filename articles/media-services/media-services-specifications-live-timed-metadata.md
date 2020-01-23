@@ -1,5 +1,5 @@
 ---
-title: Przesyłanie strumieniowe metadanych Azure Media Services Microsoft Docs
+title: Przesyłanie strumieniowe metadanych z Azure Media Servicesami
 description: Ta specyfikacja zawiera opis metod sygnalizujących metadane czasowe podczas pozyskiwania i przesyłania strumieniowego do Azure Media Services. Obejmuje to obsługę ogólnych sygnałów metadanych (ID3), a także SCTE-35 sygnalizowanie dla operacji wstawiania AD i nałączenia warunków.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: fd8533ff310e307604e5ce25a4285cc90f3ea4ab
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933981"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514242"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych w czasie przesyłania strumieniowego na żywo 
 
@@ -46,7 +46,7 @@ Ta specyfikacja zawiera kilka trybów, które są obsługiwane przez Media Servi
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Przerwanie usługi AD            | Lokalizacja lub punkt w czasie, w którym co najmniej jedna usługa ads może zostać zaplanowana do dostarczenia; taka sama jak w przypadku możliwości dostępn i umieszczania.                                                                                                                     |
 | Usługa decyzji usługi AD | Usługa zewnętrzna, która decyduje, które reklamy i czas trwania będą widoczne dla użytkownika. Usługi są zwykle udostępniane przez partnera i poza zakresem tego dokumentu.                                                                    |
-| Kontrol                 | Wskazanie czasu i parametrów nadchodzącego przerwania usługi AD. Należy zauważyć, że wskaźniki mogą wskazywać oczekujące przełączenie do przerwania usługi AD, oczekujące przełączenie do następnej usługi AD w ramach przerwy w usłudze AD i oczekujące przełączenie z usługi AD do głównej zawartości.           |
+| kontrol                 | Wskazanie czasu i parametrów nadchodzącego przerwania usługi AD. Należy zauważyć, że wskaźniki mogą wskazywać oczekujące przełączenie do przerwania usługi AD, oczekujące przełączenie do następnej usługi AD w ramach przerwy w usłudze AD i oczekujące przełączenie z usługi AD do głównej zawartości.           |
 | Pakowarki            | Azure Media Services "punkt końcowy przesyłania strumieniowego" zapewnia dynamiczne możliwości tworzenia pakietów dla ŁĄCZNIKów i HLS oraz jest określana jako "Pakowarka" w branży multimedialnej.                                                                              |
 | Godzina prezentacji   | Godzina, o której zdarzenie jest prezentowane w przeglądarce. Czas przedstawia chwilę na osi czasu nośnika, w której podgląd zobaczy zdarzenie. Na przykład godzina prezentacji SCTE-35 splice_info () komunikat polecenia jest splice_time (). |
 | Czas przybycia        | Godzina nadejścia komunikatu o zdarzeniu. Czas jest zwykle różny od czasu prezentacji zdarzenia, ponieważ komunikaty zdarzeń są wysyłane przed czasem prezentacji zdarzenia.                                                    |

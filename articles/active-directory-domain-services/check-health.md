@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 501214f87a65c71436e262608f7e9b3471cc9775
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705406"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509142"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Sprawdzanie kondycji domeny zarządzanej Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (Azure AD DS) uruchamia niektóre zadania w tle, aby zachować kondycję i aktualność domeny zarządzanej. Te zadania obejmują tworzenie kopii zapasowych, stosowanie aktualizacji zabezpieczeń i synchronizowanie danych z usługi Azure AD. Jeśli wystąpią problemy z domeną zarządzaną platformy Azure AD DS, te zadania mogą nie zostać pomyślnie uruchomione. Aby przejrzeć i rozwiązać wszelkie problemy, można sprawdzić stan kondycji domeny zarządzanej AD DS platformy Azure przy użyciu Azure Portal.
+Azure Active Directory Domain Services (Azure AD DS) uruchamia niektóre zadania w tle, aby zachować kondycję i aktualność domeny zarządzanej. Te zadania obejmują tworzenie kopii zapasowych, stosowanie aktualizacji zabezpieczeń i synchronizowanie danych z usługi Azure AD. Jeśli wystąpią problemy z domeną zarządzaną platformy Azure AD DS, te zadania mogą nie zostać pomyślnie ukończone. Aby przejrzeć i rozwiązać wszelkie problemy, można sprawdzić stan kondycji domeny zarządzanej AD DS platformy Azure przy użyciu Azure Portal.
 
 W tym artykule pokazano, jak wyświetlić stan kondycji usługi Azure AD DS i poznać wyświetlone informacje lub alerty.
 
@@ -38,7 +38,7 @@ Stan kondycji domeny zarządzanej AD DS platformy Azure jest wyświetlany przy u
 
 Stan w prawym górnym rogu wskazuje ogólną kondycję domeny zarządzanej AD DS platformy Azure. Stan wszystkich istniejących alertów w domenie. W poniższej tabeli przedstawiono szczegółowe informacje o dostępnych wskaźnikach stanu:
 
-| Stan | ikona | Wyjaśnienie |
+| Stan | Ikona | Wyjaśnienie |
 | --- | :----: | --- |
 | Działanie | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Domena zarządzana AD DS platformy Azure działa prawidłowo i nie ma alertów krytycznych ani ostrzeżeń. Domena może mieć alerty informacyjne. |
 | Wymaga uwagi (ostrzeżenie) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Brak alertów krytycznych w domenie zarządzanej platformy Azure AD DS, ale istnieje co najmniej jeden Alert ostrzegawczy, który powinien zostać rozkierowany. |
@@ -47,13 +47,13 @@ Stan w prawym górnym rogu wskazuje ogólną kondycję domeny zarządzanej AD DS
 
 ## <a name="understand-monitors-and-alerts"></a>Informacje o monitorach i alertach
 
-Stan kondycji domeny zarządzanej AD DS platformy Azure przedstawia dwa typy monitorów informacji i alertów. Monitory przedstawiają czas ukończenia podstawowych zadań w tle. Alerty zawierają informacje lub sugestie dotyczące zwiększenia stabilności domeny zarządzanej.
+Stan kondycji domeny zarządzanej AD DS platformy Azure przedstawia dwa typy *monitorów*informacji i *alertów*. Monitory przedstawiają czas ukończenia podstawowych zadań w tle. Alerty zawierają informacje lub sugestie dotyczące zwiększenia stabilności domeny zarządzanej.
 
 ### <a name="monitors"></a>Monitory
 
-Monitory to obszary domeny zarządzanej AD DS platformy Azure, które są regularnie sprawdzane. Jeśli istnieją aktywne alerty dla domeny zarządzanej usługi Azure AD DS, może to spowodować zgłoszenie problemu przez jeden z monitorów. Azure AD Domain Services obecnie monitoruje następujące obszary:
+Monitory to obszary domeny zarządzanej AD DS platformy Azure, które są regularnie sprawdzane. Jeśli istnieją aktywne alerty dla domeny zarządzanej usługi Azure AD DS, może to spowodować zgłoszenie problemu przez jeden z monitorów. Azure AD Domain Services aktualnie ma monitory dla następujących obszarów:
 
-* Backup
+* Tworzenie kopii zapasowych
 * Synchronizacja z usługą Azure AD
 
 #### <a name="backup-monitor"></a>Monitor kopii zapasowych
@@ -68,7 +68,7 @@ Monitor kopii zapasowej sprawdza, czy pomyślnie uruchomiono automatyczne regula
 
 #### <a name="synchronization-with-azure-ad-monitor"></a>Synchronizacja z usługą Azure AD monitor
 
-Domena zarządzana AD DS platformy Azure regularnie synchronizuje się z Azure Active Directory. Liczba użytkowników i obiektów grup oraz liczba zmian wprowadzonych w katalogu usługi Azure AD od momentu ostatniej synchronizacji wpływa na czas synchronizacji. Jeśli domena zarządzana AD DS platformy Azure była ostatnio synchronizowana przez trzy dni temu, sprawdź i Rozwiąż wszystkie aktywne alerty. Jeśli monitor synchronizacji nie aktualizuje stanu, aby wyświetlić ostatnią synchronizację, [Otwórz żądanie pomocy technicznej platformy Azure][azure-support].
+Domena zarządzana AD DS platformy Azure regularnie synchronizuje się z Azure Active Directory. Liczba użytkowników i obiektów grup oraz liczba zmian wprowadzonych w katalogu usługi Azure AD od momentu ostatniej synchronizacji wpływa na czas synchronizacji. Jeśli domena zarządzana AD DS platformy Azure była ostatnio synchronizowana przez trzy dni temu, sprawdź i Rozwiąż wszystkie aktywne alerty. Jeśli monitor synchronizacji nie aktualizuje stanu, aby wyświetlić ostatnią synchronizację po rozpoczęciu wszystkich aktywnych alertów, [Otwórz żądanie pomocy technicznej platformy Azure][azure-support].
 
 ### <a name="alerts"></a>Alerty
 

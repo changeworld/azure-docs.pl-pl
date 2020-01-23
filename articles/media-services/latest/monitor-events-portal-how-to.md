@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie zdarzeń dotyczących usługi Azure Media Services za pomocą usługi Event Grid przy użyciu portalu | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono sposób subskrybowania usługi Event Grid, aby można było monitorować zdarzenia usługi Azure Media Services.
+title: Monitorowanie zdarzeń Azure Media Services przy użyciu Event Grid z portalem
+description: W tym artykule pokazano, jak subskrybować Event Grid w celu monitorowania zdarzeń Azure Media Services.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -13,20 +13,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/15/2018
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326533"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509227"
 ---
-# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Tworzenie i monitorowanie zdarzeń usługi Media Services za pomocą usługi Event Grid przy użyciu witryny Azure portal
+# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Tworzenie i monitorowanie zdarzeń Media Services za pomocą Event Grid przy użyciu Azure Portal
 
-Azure Event Grid to usługa obsługi zdarzeń dla chmury. Ta usługa używa [subskrypcji zdarzeń](../../event-grid/concepts.md#event-subscriptions) aby komunikaty o zdarzeniach trasy dla subskrybentów. Zdarzenia usługi Media Services zawierają wszystkie informacje potrzebne do reagowania na zmiany w danych. Zdarzenia usługi Media Services można zidentyfikować, ponieważ właściwość Typ zdarzenia, który rozpoczyna się od "Microsoft.Media.". Aby uzyskać więcej informacji, zobacz [schematów zdarzeń usługi Media Services](media-services-event-schemas.md).
+Azure Event Grid to usługa obsługi zdarzeń dla chmury. Ta usługa używa [subskrypcji zdarzeń](../../event-grid/concepts.md#event-subscriptions) do kierowania komunikatów o zdarzeniach do subskrybentów. Zdarzenia Media Services zawierają wszystkie informacje potrzebne do reagowania na zmiany danych. Możesz zidentyfikować zdarzenie Media Services, ponieważ właściwość eventType zaczyna się od "Microsoft. Media.". Aby uzyskać więcej informacji, zobacz [Media Services schematów zdarzeń](media-services-event-schemas.md).
 
-W tym artykule używasz witryny Azure portal do subskrybowania zdarzenia dla swojego konta usługi Azure Media Services. Następnie możesz wyzwolić zdarzeń w celu wyświetlenia wyniku. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. W artykule firma Microsoft wysyła zdarzenia do aplikacji sieci web, która gromadzi i wyświetla komunikaty.
+W tym artykule zasubskrybujesz zdarzenia dla Azure Media Services konta za pomocą Azure Portal. Następnie Wyzwalasz zdarzenia w celu wyświetlenia wyniku. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. W tym artykule wysyłamy zdarzenia do aplikacji sieci Web, która gromadzi i wyświetla komunikaty.
 
 Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikacji internetowej.
 
@@ -37,7 +37,7 @@ Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikac
 
 ## <a name="create-a-message-endpoint"></a>Tworzenie punktu końcowego komunikatów
 
-Przed zasubskrybowaniem zdarzeń dla konta usługi Media Services, Utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Zazwyczaj w punkcie końcowym akcje są wykonywane na podstawie danych zdarzenia. W tym artykule wdrożysz [aplikacji sieci web wstępnie skompilowanych](https://github.com/Azure-Samples/azure-event-grid-viewer) która wyświetla komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi App Service, aplikację internetową usługi App Service i kod źródłowy z repozytorium GitHub.
+Przed zasubskrybowaniem zdarzeń dla konta Media Services Utwórzmy punkt końcowy dla komunikatu o zdarzeniu. Zazwyczaj w punkcie końcowym akcje są wykonywane na podstawie danych zdarzenia. W tym artykule opisano wdrożenie [wstępnie skompilowanej aplikacji sieci Web](https://github.com/Azure-Samples/azure-event-grid-viewer) , która wyświetla komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi App Service, aplikację internetową usługi App Service i kod źródłowy z repozytorium GitHub.
 
 1. Wybierz pozycję **Wdróż na platformie Azure** w celu wdrożenia rozwiązania w subskrypcji. W witrynie Azure Portal podaj wartości parametrów.
 
@@ -45,27 +45,27 @@ Przed zasubskrybowaniem zdarzeń dla konta usługi Media Services, Utwórzmy pun
 
 1. Wdrożenie może potrwać kilka minut. Po pomyślnym wdrożeniu należy wyświetlić aplikację sieci Web i upewnić się, że jest uruchomiona. W przeglądarce sieci Web przejdź do: `https://<your-site-name>.azurewebsites.net`
 
-Jeśli przełączysz się do witryny "Przeglądarka usługi Azure Event Grid" widoczne jeszcze nie żadnych zdarzeń.
+Jeśli przełączysz się do witryny "Azure Event Grid Viewer", zobaczysz, że nie ma jeszcze żadnych zdarzeń.
    
 [!INCLUDE [event-grid-register-provider-portal.md](../../../includes/event-grid-register-provider-portal.md)]
 
-## <a name="subscribe-to-media-services-events"></a>Subskrybowanie zdarzeń usługi Media Services
+## <a name="subscribe-to-media-services-events"></a>Subskrybowanie zdarzeń Media Services
 
 Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzenia chcesz śledzić i gdzie mają być one wysyłane.
 
-1. W portalu wybierz konto usługi Media Services, a następnie wybierz **zdarzenia**.
+1. W portalu wybierz konto Media Services i wybierz pozycję **zdarzenia**.
 1. W celu wysłania zdarzeń do aplikacji przeglądarki użyj elementu webhook w punkcie końcowym. 
 
    ![Wybieranie elementu webhook](./media/monitor-events-portal/select-web-hook.png)
 
-1. Subskrypcja zdarzeń jest wstępnie wartościami dla konta usługi Media Services. 
-1. Wybierz pozycję "Webhook dla **typ punktu końcowego**.
-1. W tym temacie pozostawimy **Subskrybuj wszystkie typy zdarzeń** zaznaczone. Jednakże możesz usunąć zaznaczenie go i filtr dla określonych typów zdarzeń. 
-1. Kliknij pozycję **wybierz punkt końcowy** łącza.
+1. Subskrypcja zdarzeń jest wstępnie wypełniona wartościami dla konta Media Services. 
+1. Wybierz pozycję "element webhook" dla **typu punktu końcowego**.
+1. W tym temacie pozostawiamy zaznaczone pole **subskrybowanie wszystkich typów zdarzeń** . Można jednak usunąć jego zaznaczenie i odfiltrować dla określonych typów zdarzeń. 
+1. Kliknij link **Wybierz punkt końcowy** .
 
     Dla punktu końcowego elementu webhook podaj adres URL aplikacji internetowej i dodaj element `api/updates` do adresu URL strony głównej. 
 
-1. Naciśnij klawisz **potwierdzenie wyboru**.
+1. Naciśnij pozycję **Potwierdź wybór**.
 1. Kliknij przycisk **Utwórz**.
 1. Nadaj swojej subskrypcji nazwę.
 
@@ -73,19 +73,19 @@ Subskrybowanie tematu ma poinformować usługę Event Grid o tym, które zdarzen
 
 1. Wyświetl aplikację sieci Web ponownie i zwróć uwagę, że zdarzenie sprawdzania poprawności subskrypcji zostało do niej wysłane. 
 
-    Usługa Event Grid wysyła zdarzenie weryfikacji, aby w punkcie końcowym mogło nastąpić sprawdzenie, czy dane zdarzenia mają być odbierane. Punkt końcowy musi ustawić `validationResponse` do `validationCode`. Aby uzyskać więcej informacji, zobacz [usługi Event Grid zabezpieczeń i uwierzytelniania](../../event-grid/security-authentication.md). Można wyświetlić kodu aplikacji sieci web, aby zobaczyć, jak sprawdza poprawność subskrypcji.
+    Usługa Event Grid wysyła zdarzenie weryfikacji, aby w punkcie końcowym mogło nastąpić sprawdzenie, czy dane zdarzenia mają być odbierane. Punkt końcowy musi ustawić `validationResponse`, aby `validationCode`. Aby uzyskać więcej informacji, zobacz [usługi Event Grid zabezpieczeń i uwierzytelniania](../../event-grid/security-authentication.md). Możesz wyświetlić kod aplikacji sieci Web, aby zobaczyć, w jaki sposób sprawdzać poprawność subskrypcji.
 
-Teraz wyzwólmy zdarzeń, aby zobaczyć, jak usługa Event Grid dystrybuuje komunikat do punktu końcowego usługi.
+Teraz Wyzwólmy zdarzenia, aby zobaczyć, jak Event Grid dystrybuuje komunikat do punktu końcowego.
 
 ## <a name="send-an-event-to-your-endpoint"></a>Wysyłanie zdarzenia do punktu końcowego
 
-Uruchamiając zadania kodowania, możesz wyzwolić zdarzeń dla konta usługi Media Services. Możesz wykonać [ten przewodnik Szybki Start](stream-files-dotnet-quickstart.md) kodowanie pliku i Rozpocznij wysyłanie zdarzeń. Jeśli masz subskrypcję do wszystkich zdarzeń, zostanie wyświetlony ekran podobny do następującego:
+Zdarzenia dla konta Media Services można wyzwolić, uruchamiając zadanie kodowania. Możesz skorzystać z [tego przewodnika Szybki Start](stream-files-dotnet-quickstart.md) , aby kodować plik i zacząć wysyłać zdarzenia. Jeśli zasubskrybujesz wszystkie zdarzenia, zobaczysz ekran podobny do poniższego:
 
 > [!TIP]
 > Wybierz ikonę oka, aby rozwinąć dane zdarzenia. Nie odświeżaj strony, jeśli chcesz wyświetlić wszystkie zdarzenia.
 
 ![Wyświetlanie zdarzenia subskrypcji](./media/monitor-events-portal/view-subscription-event.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Przekazywanie, kodowanie i przesyłanie strumieniowe](stream-files-tutorial-with-api.md)

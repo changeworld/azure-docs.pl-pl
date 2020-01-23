@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: a24ff1d5f94a50dc30819e6ab86318592da72e45
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f51744d79d34b734c9cc24cf72785a076a91a4f5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705207"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509057"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Konfigurowanie Azure Active Directory Domain Services do obsługi synchronizacji profilu użytkownika dla programu SharePoint Server
 
-Program SharePoint Server zawiera usługę umożliwiającą synchronizowanie profilów użytkowników. Ta funkcja umożliwia przechowywanie profilów użytkowników w centralnej lokalizacji i dostępnych w wielu witrynach i farmach programu SharePoint. Aby skonfigurować usługę profilu użytkownika programu SharePoint Server, należy przyznać odpowiednie uprawnienia w domenie zarządzanej Azure Active Directory Domain Services (Azure AD DS). Aby uzyskać więcej informacji, zobacz [Synchronizacja profilu użytkownika w programie SharePoint Server](https://technet.microsoft.com/library/hh296982.aspx).
+Program SharePoint Server zawiera usługę umożliwiającą synchronizowanie profilów użytkowników. Ta funkcja umożliwia przechowywanie profilów użytkowników w centralnej lokalizacji i dostęp w wielu witrynach i farmach programu SharePoint. Aby skonfigurować usługę profilu użytkownika programu SharePoint Server, należy przyznać odpowiednie uprawnienia w domenie zarządzanej Azure Active Directory Domain Services (Azure AD DS). Aby uzyskać więcej informacji, zobacz [Synchronizacja profilu użytkownika w programie SharePoint Server](https://technet.microsoft.com/library/hh296982.aspx).
 
 W tym artykule opisano sposób konfigurowania AD DS platformy Azure w taki sposób, aby zezwalała na usługę synchronizacji profilu użytkownika programu SharePoint Server.
 

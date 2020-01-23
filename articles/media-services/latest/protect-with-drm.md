@@ -1,5 +1,5 @@
 ---
-title: Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM
+title: Azure Media Services szyfrowanie DRM i usługa dostarczania licencji
 titleSuffix: Azure Media Services
 description: Dowiedz się, jak korzystać z szyfrowania dynamicznego DRM i usługi dostarczania licencji, aby dostarczać strumienie szyfrowane za pomocą licencji firmy Microsoft PlayReady, Google Widevine lub Apple FairPlay.
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3d2dc7793c25fb20e267332beaa683f11ddcbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bd5c026da27c68e249532b70629ba01afea655fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974074"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513069"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Samouczek: używanie dynamicznego szyfrowania DRM i usługi dostarczania licencji
 
@@ -150,7 +150,7 @@ Element ContentKeyIdentifierClaim jest używany w zasadach ContentKeyPolicy, co 
 
 ## <a name="build-a-streaming-url"></a>Tworzenie adresu URL przesyłania strumieniowego
 
-Teraz, po utworzeniu obiektu [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators), możesz pobrać adresy URL przesyłania strumieniowego. Aby utworzyć adres URL, należy połączyć nazwę hosta [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) i ścieżkę **lokalizatora przesyłania strumieniowego** . W tym przykładzie jest używany *domyślny* **punkt końcowy przesyłania strumieniowego**. Po pierwszym utworzeniu konta usługi Media Service ten *domyślny* **punkt końcowy przesyłania strumieniowego** będzie zatrzymany, więc należy wywołać metodę **Start**.
+Teraz, po utworzeniu obiektu [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators), możesz pobrać adresy URL przesyłania strumieniowego. Aby utworzyć adres URL, należy połączyć nazwę hosta [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) i ścieżkę **lokalizatora przesyłania strumieniowego** . W tym przykładzie używany jest *domyślny* **punkt końcowy przesyłania strumieniowego** . Podczas pierwszego tworzenia konta usługi multimediów ten *domyślny* **punkt końcowy przesyłania strumieniowego** będzie w stanie zatrzymania, dlatego należy wywołać polecenie **Uruchom**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
