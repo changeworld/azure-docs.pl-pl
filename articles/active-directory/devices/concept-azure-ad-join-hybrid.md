@@ -1,6 +1,6 @@
 ---
-title: Co to jest hybrydowa usługa Azure AD przyłączone urządzenie?
-description: Dowiedz się, jak Zarządzanie tożsamościami urządzeń może ułatwić Ci zarządzanie urządzeniami, które uzyskują dostęp do zasobów w danym środowisku.
+title: Co to jest urządzenie dołączone do hybrydowej usługi Azure AD?
+description: Dowiedz się, jak zarządzanie tożsamościami urządzeń może ułatwić zarządzanie urządzeniami, które uzyskują dostęp do zasobów w danym środowisku.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c57180ba10322cb790c05b3f8f48043ca08b545
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462748"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512253"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Urządzenia dołączone hybrydowo do usługi Azure AD
 
@@ -25,45 +25,45 @@ Przez ponad dekadę wiele organizacji używało przyłączania do domeny lokalne
 - Zarządzanie urządzeniami firmowymi z centralnej lokalizacji przez działy IT.
 - Logowanie się przez użytkowników na urządzeniach przy użyciu kont służbowych usługi Active Directory.
 
-Zazwyczaj organizacje z dużą ilością zasobów lokalnych polegają na metodach obrazowania w przypadku aprowizacji urządzeń, a także często używają programu **System Center Configuration Manager (SCCM)** lub **zasad grupy** do zarządzania nimi.
+Zazwyczaj Organizacje korzystające z zasobów lokalnych korzystają z metod tworzenia obrazu w celu aprowizacji urządzeń i często używają **Configuration Manager** lub **zasad grupy (GP)** do zarządzania nimi.
 
-Jeśli środowisko ma lokalną infrastrukturę usługi AD i chcesz również wykorzystać możliwości zapewniane przez usługę Azure Active Directory, możesz wdrożyć urządzenia dołączone hybrydowo do usługi Azure AD. Urządzenia te to urządzenia, które są przyłączone do lokalnej usługi Active Directory i zarejestrowane w usłudze Azure Active Directory.
+Jeśli środowisko ma lokalną infrastrukturę usługi AD i chcesz również wykorzystać możliwości zapewniane przez usługę Azure Active Directory, możesz wdrożyć urządzenia dołączone hybrydowo do usługi Azure AD. Urządzenia te są przyłączone do lokalnego Active Directory i rejestrowane przy użyciu Azure Active Directory.
 
-|   | Dołączenie do hybrydowej usługi Azure AD |
+|   | Sprzężenie hybrydowe usługi Azure AD |
 | --- | --- |
-| **Definicja** | Przyłączone do środowiska lokalnego usługi AD i usługi Azure AD wymaga konta organizacyjnego, zaloguj się do urządzenia |
-| **Głównymi odbiorcami** | Odpowiednia dla organizacji hybrydowych przy użyciu istniejącej infrastruktury usługi Active Directory lokalnych |
-|   | Ma zastosowanie do wszystkich użytkowników w organizacji |
-| **Własność urządzeń** | Organizacja |
-| **Systemy operacyjne** | Windows 10, 8.1 i 7 |
-|   | Windows Server 2008 R2, 2012/R2 2016 i 2019 r |
-| **Aprowizacja** | System Windows 10, Windows Server 2016/2019 |
-|   | Przyłączanie do domeny przez IT i autosprzęganie za pośrednictwem usługi Azure AD Connect lub usług AD FS konfiguracji |
-|   | Przyłączanie do domeny przez rozwiązania Windows Autopilot i autosprzęganie za pomocą konfiguracji usługi Azure AD Connect lub usług AD FS |
-|   | Windows 8.1, Windows 7, Windows Server 2012 R2, Windows Server 2012 i Windows Server 2008 R2 — wymagają pliku MSI |
-| **Opcje logowania urządzenia** | Przy użyciu konta organizacji: |
+| **Definicja** | Przyłączone do lokalnej usługi AD i usługi Azure AD wymagające konta organizacyjnego do logowania się na urządzeniu |
+| **Odbiorcy podstawowe** | Odpowiednie dla organizacji hybrydowych z istniejącą lokalną infrastrukturą usługi AD |
+|   | Dotyczy wszystkich użytkowników w organizacji |
+| **Własność urządzenia** | Organizacja |
+| **Systemy operacyjne** | Windows 10, 8,1 i 7 |
+|   | Windows Server 2008/R2, 2012/R2, 2016 i 2019 |
+| **Aprowizacja** | Windows 10, Windows Server 2016/2019 |
+|   | Przyłączanie do domeny i autosprzęganie za pośrednictwem Azure AD Connect lub z konfiguracji ADFS |
+|   | Przyłączanie do domeny za pomocą funkcji autopilotażu systemu Windows i autosprzęganie za pośrednictwem Azure AD Connect lub z |
+|   | Windows 8.1, Windows 7, Windows Server 2012 R2, Windows Server 2012 i Windows Server 2008 R2-Wymagaj MSI |
+| **Opcje logowania urządzenia** | Konta organizacyjne przy użyciu: |
 |   | Hasło |
-|   | Funkcja Windows Hello dla firm dla Windows 10 |
+|   | Funkcja Windows Hello dla firm dla usługi Win10 |
 | **Zarządzanie urządzeniami** | Zasady grupy |
-|   | Autonomiczny program Configuration Manager w programie System Center lub współzarządzania w usłudze Microsoft Intune |
-| **Najważniejsze funkcje** | Logowanie Jednokrotne do zasobów w chmurze i lokalnych |
-|   | Warunkowy dostęp za pośrednictwem przyłączania do domeny lub usługi Intune, jeśli zarządzane |
-|   | Samoobsługowe Resetowanie hasła i numeru PIN Windows Hello zresetować na ekranie blokady |
-|   | Roaming stanu dla przedsiębiorstw na urządzeniach |
+|   | Configuration Manager autonomiczną lub współzarządzaną z Microsoft Intune |
+| **Kluczowe możliwości** | Logowanie jednokrotne do zasobów w chmurze i lokalnych |
+|   | Dostęp warunkowy przez przyłączenie do domeny lub przez usługę Intune, jeśli współzarządzana |
+|   | Samoobsługowe resetowanie haseł i funkcja resetowania numeru PIN funkcji Windows Hello na ekranie blokady |
+|   | Enterprise State Roaming między urządzeniami |
 
 ![Urządzenia dołączone hybrydowo do usługi Azure AD](./media/concept-azure-ad-join-hybrid/azure-ad-hybrid-joined-device.png)
 
 ## <a name="scenarios"></a>Scenariusze
 
-Użyj usługi Azure AD urządzenia przyłączone do hybrydowej jeśli:
+Użyj hybrydowych urządzeń usługi Azure AD, jeśli:
 
 - Masz aplikacje Win32 wdrożone na tych urządzeniach, które polegają na uwierzytelnianiu maszynowym usługi Active Directory.
-- Chcesz zarządzać konfiguracją urządzenia przy użyciu zasad grupy w dalszym ciągu.
-- Chcesz nadal używać istniejących rozwiązań do przetwarzania obrazów, wdrażania i konfigurowania urządzenia.
-- Musi obsługiwać niższego poziomu Windows 7 i urządzenia w wersji 8.1 oprócz systemu Windows 10
+- Chcesz nadal używać zasady grupy do zarządzania konfiguracją urządzeń.
+- Chcesz nadal używać istniejących rozwiązań do tworzenia obrazu do wdrażania i konfigurowania urządzeń.
+- Oprócz systemu Windows 10 należy obsługiwać urządzenia z systemem Windows 7 i 8,1 na poziomie niższego poziomu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Planowanie implementacji przyłączania do hybrydowej usługi Azure AD](hybrid-azuread-join-plan.md)
-- [Zarządzanie tożsamościami urządzeń przy użyciu witryny Azure portal](device-management-azure-portal.md)
-- [Zarządzanie urządzeniami starych w usłudze Azure AD](manage-stale-devices.md)
+- [Zarządzanie tożsamościami urządzeń przy użyciu Azure Portal](device-management-azure-portal.md)
+- [Zarządzanie przestarzałymi urządzeniami w usłudze Azure AD](manage-stale-devices.md)

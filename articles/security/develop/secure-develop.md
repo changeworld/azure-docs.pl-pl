@@ -13,22 +13,22 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928068"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513987"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Opracowywanie bezpiecznych aplikacji na platformie Azure
 W tym artykule opisano działania związane z bezpieczeństwem i kontrolki, które należy wziąć pod uwagę podczas opracowywania aplikacji w chmurze. Pytania zabezpieczające i pojęcia, które należy wziąć pod uwagę podczas fazy wdrażania i weryfikacji [cyklu życia programu Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Celem jest ułatwienie zdefiniowania działań i usług platformy Azure, których można użyć do tworzenia bezpieczniejszej aplikacji.
 
 Następujące fazy SDL zostały omówione w tym artykule:
 
-- Implementacja
+- Wdrażanie
 - Weryfikacja
 
-## <a name="implementation"></a>Implementacja
+## <a name="implementation"></a>Wdrażanie
 Celem fazy implementacji jest ustanowienie najlepszych rozwiązań w zakresie wczesnego zapobiegania oraz wykrywanie i usuwanie problemów z zabezpieczeniami w kodzie.
 Załóżmy, że aplikacja zostanie użyta w sposób, który nie był używany. Pomaga to chronić przed przypadkowym lub zamierzonym nieprawidłowym użyciem aplikacji.
 
@@ -36,9 +36,9 @@ Załóżmy, że aplikacja zostanie użyta w sposób, który nie był używany. P
 
 Przed zapisaniem kodu Przeprowadź [przeglądy kodu](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) w celu zwiększenia ogólnej jakości kodu i zmniejszenia ryzyka związanego z tworzeniem błędów. Możesz użyć [programu Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) , aby zarządzać procesem przeglądu kodu.
 
-### <a name="perform-static-code-analysis"></a>Wykonaj analizę kodu statycznego
+### <a name="perform-static-code-analysis"></a>Wykonywanie statycznej analizy kodu
 
-[Statyczna analiza kodu](https://www.owasp.org/index.php/Static_Code_Analysis) (znana także jako *Analiza kodu źródłowego*) jest zwykle wykonywane w ramach przeglądu kodu. Statyczna analiza kodu często dotyczy uruchamiania narzędzi do analizy kodu statycznego, aby znaleźć potencjalne luki w zabezpieczeniach w nieuruchomionym kodzie przy użyciu technik takich jak [Sprawdzanie](https://en.wikipedia.org/wiki/Taint_checking) zmian i [Analiza przepływu danych](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statyczna analiza kodu](https://www.owasp.org/index.php/Static_Code_Analysis) (znana również jako *Analiza kodu źródłowego*) jest zwykle wykonywana w ramach przeglądu kodu. Statyczna analiza kodu często dotyczy uruchamiania narzędzi do analizy kodu statycznego, aby znaleźć potencjalne luki w zabezpieczeniach w nieuruchomionym kodzie przy użyciu technik takich jak [Sprawdzanie](https://en.wikipedia.org/wiki/Taint_checking) zmian i [Analiza przepływu danych](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
 Portal Azure Marketplace oferuje [Narzędzia programistyczne](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) , które wykonują analizę kodu statycznego i pomagają w przeglądach kodu.
 
@@ -77,7 +77,7 @@ Zamiast tego należy użyć sparametryzowanych zapytań lub procedur składowany
 ### <a name="remove-standard-server-headers"></a>Usuń nagłówki serwera standardowego
 
 Nagłówki, takie jak Server, X-by i X-AspNet-Version, ujawniają informacje o serwerze i podstawowych technologiach. Zaleca się, aby pominąć te nagłówki, aby uniknąć używania odcisku palca aplikacji.
-Zobacz [usuwanie nagłówków standardowego serwera w usłudze Azure](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)websites.
+Zobacz [usuwanie nagłówków standardowego serwera w usłudze Azure Websites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/).
 
 ### <a name="segregate-your-production-data"></a>Segregowanie danych produkcyjnych
 
@@ -99,13 +99,13 @@ Jeśli aplikacja musi automatycznie generować hasła, należy się upewnić, ż
 
 Jeśli aplikacja zezwala na [przekazywanie plików](https://www.owasp.org/index.php/Unrestricted_File_Upload), należy wziąć pod uwagę środki ostrożności, które można podjąć w celu zapewnienia ryzykownej aktywności. Pierwszym krokiem w wielu atakach jest uzyskanie złośliwego kodu w systemie, który jest w trakcie ataku. Zastosowanie przekazywania plików pomaga atakującemu. OWASP oferuje rozwiązania do walidacji pliku, aby upewnić się, że przekazywany plik jest bezpieczny.
 
-Ochrona przed złośliwym oprogramowaniem pomaga identyfikować i usuwać wirusy, programy szpiegujące oraz inne złośliwe oprogramowanie. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](../fundamentals/antimalware.md) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)i [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)).
+Ochrona przed złośliwym oprogramowaniem pomaga identyfikować i usuwać wirusy, programy szpiegujące oraz inne złośliwe oprogramowanie. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](../fundamentals/antimalware.md) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)i [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)).
 
 [Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft](../fundamentals/antimalware.md) oferuje takie funkcje jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowanie złośliwego oprogramowania, aktualizacje sygnatur, aktualizacje aparatu, raportowanie przykładów i zbieranie zdarzeń wykluczania. Możesz zintegrować rozwiązania firmy Microsoft chroniące przed złośliwym oprogramowaniem i partnerzy [Azure Security Center](../../security-center/security-center-partner-integration.md) , aby ułatwić wdrażanie i wbudowane wykrywanie (alerty i zdarzenia).
 
 ### <a name="dont-cache-sensitive-content"></a>Nie Buforuj zawartości poufnej
 
-Nie Buforuj poufnej zawartości w przeglądarce. Przeglądarki mogą przechowywać informacje o pamięci podręcznej i historii. Buforowane pliki są przechowywane w folderze, takim jak folder Temporary Internet Files, w przypadku programu Internet Explorer. Gdy te strony są ponownie określane, przeglądarka wyświetla strony z jej pamięci podręcznej. Jeśli użytkownik wyświetli informacje poufne (adres, szczegóły karty kredytowej, numer ubezpieczenia społecznego, nazwa użytkownika), informacje mogą być przechowywane w pamięci podręcznej przeglądarki i można je pobrać, przeglądając pamięć podręczną przeglądarki lub po prostu naciskając pozycję przeglądarki  **Przycisk Wstecz** .
+Nie Buforuj poufnej zawartości w przeglądarce. Przeglądarki mogą przechowywać informacje o pamięci podręcznej i historii. Buforowane pliki są przechowywane w folderze, takim jak folder Temporary Internet Files, w przypadku programu Internet Explorer. Gdy te strony są ponownie określane, przeglądarka wyświetla strony z jej pamięci podręcznej. Jeśli użytkownik wyświetli informacje poufne (adres, szczegóły karty kredytowej, numer ubezpieczenia społecznego, nazwa użytkownika), informacje mogą być przechowywane w pamięci podręcznej przeglądarki i można je pobrać, przeglądając pamięć podręczną przeglądarki lub po prostu naciskając przycisk **Wstecz** w przeglądarce.
 
 ## <a name="verification"></a>Weryfikacja
 Faza weryfikacji obejmuje kompleksowe wysiłki w celu upewnienia się, że kod spełnia wymagania w zakresie bezpieczeństwa i ochrony prywatności, które zostały określone w poprzednich fazach.
@@ -114,7 +114,7 @@ Faza weryfikacji obejmuje kompleksowe wysiłki w celu upewnienia się, że kod s
 
 Przeskanujesz aplikację i jej biblioteki zależne, aby zidentyfikować wszystkie znane składniki zagrożone. Produkty, które są dostępne do wykonania tego skanowania, obejmują [OWASPą kontrolę zależności](https://www.owasp.org/index.php/OWASP_Dependency_Check),[Snyk](https://snyk.io/)i [czarną kaczkę](https://www.blackducksoftware.com/).
 
-Skanowanie luk w zabezpieczeniach obsługiwane przez [Usługa TINFOIL Security](https://www.tinfoilsecurity.com/) jest dostępne dla Web Apps Azure App Service. [Usługa TINFOIL skanowania zabezpieczeń dzięki App Service](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) oferuje deweloperom i administratorom szybki, zintegrowany i ekonomiczny sposób odnajdywania i rozwiązywania luk w zabezpieczeniach, zanim złośliwy aktor nie będzie mógł korzystać z nich.
+Skanowanie luk w [zabezpieczeniach obsługiwane przez usługa TINFOIL Security](https://www.tinfoilsecurity.com/) jest dostępne dla Web Apps Azure App Service. [Usługa TINFOIL skanowania zabezpieczeń dzięki App Service](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) oferuje deweloperom i administratorom szybki, zintegrowany i ekonomiczny sposób odnajdywania i rozwiązywania luk w zabezpieczeniach, zanim złośliwy aktor nie będzie mógł korzystać z nich.
 
 > [!NOTE]
 > Możesz także [zintegrować zabezpieczenia usługa TINFOIL z usługą Azure AD](../../active-directory/saas-apps/tinfoil-security-tutorial.md). Integracja zabezpieczeń usługa TINFOIL z usługą Azure AD zapewnia następujące korzyści:
@@ -144,11 +144,11 @@ Możesz utworzyć zdjęcie obszaru ataków, skanując aplikację. Firma Microsof
 
 ### <a name="perform-security-penetration-testing"></a>Przeprowadź testowanie penetracji zabezpieczeń
 
-Upewnienie się, że aplikacja jest zabezpieczona, jest tak ważne jak testowanie wszelkich innych funkcji. Przetestowanie [penetracji](../fundamentals/pen-testing.md) standardowej części procesu kompilowania i wdrażania. Zaplanuj regularne testy zabezpieczeń i skanowania w poszukiwaniu wdrożonych aplikacji oraz monitoruj otwarte porty, punkty końcowe i ataki.
+Upewnienie się, że aplikacja jest zabezpieczona, jest tak ważne jak testowanie wszelkich innych funkcji. [Przetestowanie penetracji](../fundamentals/pen-testing.md) standardowej części procesu kompilowania i wdrażania. Zaplanuj regularne testy zabezpieczeń i skanowania w poszukiwaniu wdrożonych aplikacji oraz monitoruj otwarte porty, punkty końcowe i ataki.
 
 ### <a name="run-security-verification-tests"></a>Uruchom testy weryfikacyjne zabezpieczeń
 
-[Secure DevOps Kit dla platformy Azure](https://azsk.azurewebsites.net/index.html) (AzSK) zawiera SVTs dla wielu usług platformy Azure. Te SVTs są uruchamiane okresowo, aby mieć pewność, że Twoja subskrypcja platformy Azure i różne zasoby wchodzące w skład Twojej aplikacji są w stanie bezpiecznym. Możesz również zautomatyzować te testy przy użyciu funkcji rozszerzeń ciągłej integracji/ciągłego wdrażania (CI/CD) AzSK, która sprawia, że SVTs jest dostępna jako rozszerzenie programu Visual Studio.
+Pakiet [Secure DevOps Kit dla platformy Azure](https://azsk.azurewebsites.net/index.html) (AzSK) zawiera SVTs dla wielu usług platformy Azure. Te SVTs są uruchamiane okresowo, aby mieć pewność, że Twoja subskrypcja platformy Azure i różne zasoby wchodzące w skład Twojej aplikacji są w stanie bezpiecznym. Możesz również zautomatyzować te testy przy użyciu funkcji rozszerzeń ciągłej integracji/ciągłego wdrażania (CI/CD) AzSK, która sprawia, że SVTs jest dostępna jako rozszerzenie programu Visual Studio.
 
 ## <a name="next-steps"></a>Następne kroki
 W poniższych artykułach zalecamy mechanizmy kontroli zabezpieczeń i działania, które mogą pomóc w projektowaniu i wdrażaniu bezpiecznych aplikacji.

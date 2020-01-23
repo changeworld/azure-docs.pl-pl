@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: 96e7cbd09873192d8b73b57cb2b46bf5b7679742
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 3c921bda1b839ee18a91b28f875ba7c84c0dd944
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263459"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515041"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -160,7 +160,7 @@ Niektóre operacje łączników powodują wywołania asynchroniczne lub Nasłuch
 | Nazwa | Uwagi |
 |------|-------|
 | Limit oceniania wyrażeń | 131 072 znaki | Wyrażenia `@concat()`, `@base64()``@string()` nie mogą być dłuższe niż ten limit. |
-| Limit znaków w adresie URL żądania | 32 znaki |
+| Limit znaków w adresie URL żądania | 16 384 znaków |
 |||
 
 #### <a name="retry-policy"></a>Zasady ponawiania

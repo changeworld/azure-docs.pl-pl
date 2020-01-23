@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848497"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512576"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Ukończ wdrażanie uwierzytelniania przy użyciu hasła
 
@@ -108,7 +108,7 @@ Włączenie logowania systemu Windows 10 przy użyciu kluczy zabezpieczeń FIDO2
    - Zalecanym rozwiązaniem jest wdrożenie usługi Intune.
 - [Włączanie dostawcy poświadczeń z pakietem aprowizacji](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Jeśli wdrożenie usługi Intune nie jest możliwe, Administratorzy muszą wdrożyć pakiet na każdej maszynie, aby włączyć funkcję dostawcy poświadczeń. Instalację pakietu można przeprowadzić za pomocą jednej z następujących opcji:
-      - Zasady grupy lub System Center Configuration Manager (SCCM)
+      - zasady grupy lub Configuration Manager
       - Instalacja lokalna na komputerze z systemem Windows 10
 
 ### <a name="register-security-keys"></a>Rejestrowanie kluczy zabezpieczeń

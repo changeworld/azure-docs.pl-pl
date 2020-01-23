@@ -3,12 +3,12 @@ title: Często zadawane pytania — odnajdywanie, Ocena i analiza zależności w
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności w programie Azure Migrate.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 5afda40f4953b8eb51a757034661eb5a3349cd10
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292369"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513290"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności
 
@@ -99,7 +99,7 @@ Nie, nie można wyeksportować wizualizacji zależności. Jednak Azure Migrate u
 
 Ten [skrypt służy do instalowania agenta zależności](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Postępuj zgodnie [z tymi instrukcjami, aby zainstalować MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) za pomocą wiersza polecenia lub automatyzacji. W przypadku MMA Użyj [tego skryptu](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
-Oprócz skryptów można także użyć narzędzi wdrażania, takich jak System Center Configuration Manager i [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) , aby wdrożyć agentów.
+Oprócz skryptów można także użyć narzędzi wdrażania, takich jak Microsoft Endpoint Configuration Manager i [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) , aby wdrożyć agentów.
 
 
 ## <a name="what-operating-systems-does-mma-support"></a>Jakie systemy operacyjne są obsługiwane przez MMA?

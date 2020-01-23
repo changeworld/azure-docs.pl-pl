@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d4d9d2ff899a169ee81544761fe87fed3cca06c4
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912327"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511148"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Łączenie urządzeń Modbus TCP za pośrednictwem bramy urządzeń usługi IoT Edge
 
@@ -26,6 +26,7 @@ W tym artykule opisano sposób tworzenia własnego obrazu kontenera dla modułu 
 W tym artykule założono, że użytkownik korzysta z protokołu Modbus TCP. Więcej informacji o sposobie konfigurowania modułu do obsługi Modbus RTU można znaleźć w projekcie [modułu Azure IoT Edge Modbus](https://github.com/Azure/iot-edge-modbus) w witrynie GitHub.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 * Urządzenie usługi Azure IoT Edge. Aby zapoznać się z przewodnikiem dotyczącym konfigurowania jednego z nich, zobacz [wdrażanie Azure IoT Edge w systemie Windows](quickstart.md) lub [Linux](quickstart-linux.md).
 * Parametry połączenia klucza podstawowego dla urządzenia usługi IoT Edge.
 * Fizyczne lub symulowane urządzenie Modbus obsługujące protokół Modbus TCP. Musisz znać swój adres IPv4.
