@@ -1,7 +1,7 @@
 ---
 title: MLflow śledzenie dla eksperymentów ML
 titleSuffix: Azure Machine Learning
-description: Skonfiguruj MLflow z Azure Machine Learning, aby rejestrować metryki & artefakty i wdrażać modele z zestawów danych, środowiska lokalnego lub środowiska maszyn wirtualnych.
+description: Skonfiguruj MLflow z Azure Machine Learning, aby rejestrować metryki i artefakty z modeli ML utworzonych w klastrach datas, środowisku lokalnym lub środowisku maszyny wirtualnej.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,32 +9,33 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 47d4c1de12823eaf0aae5beeff776d50f8f5a6a7
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a1263ecacc2af0559c726fb12c799d0e6d2f1014
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896364"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543345"
 ---
-# <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Śledzenie metryk i wdrażanie modeli przy użyciu MLflow i Azure Machine Learning (wersja zapoznawcza)
+# <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>Śledzenie metryk modeli przy użyciu MLflow i Azure Machine Learning (wersja zapoznawcza)
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym artykule pokazano, jak włączyć śledzenie identyfikatorów URI MLflow i interfejsów API rejestrowania, wspólnie znane jako [śledzenie MLflow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), przy użyciu Azure Machine Learning. Dzięki temu można:
+W tym artykule pokazano, jak włączyć śledzenie MLflow identyfikatorów URI i interfejsów API rejestrowania, wspólnie znane jako [śledzenie MLflow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), aby połączyć eksperymenty MLflow i Azure Machine Learning. Dzięki temu można śledzić i rejestrować metryki i artefakty eksperymentów w [obszarze roboczym Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces). Jeśli już używasz śledzenia MLflow do eksperymentów, obszar roboczy zapewnia scentralizowaną, bezpieczną i skalowalną lokalizację do przechowywania metryk i modeli szkoleniowych.
 
-+ Śledź i Rejestruj metryki eksperymentów i artefakty w [obszarze roboczym Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces). Jeśli już używasz śledzenia MLflow do eksperymentów, obszar roboczy zapewnia scentralizowaną, bezpieczną i skalowalną lokalizację do przechowywania metryk i modeli szkoleniowych.
+<!--
++ Deploy your MLflow experiments as an Azure Machine Learning web service. By deploying as a web service, you can apply the Azure Machine Learning monitoring and data drift detection functionalities to your production models. 
+-->
 
-+ Wdróż eksperymenty MLflow jako usługę sieci Web Azure Machine Learning. Wdrażając jako usługę sieci Web, można zastosować funkcje monitorowania Azure Machine Learning i wykrywania dryfowania danych do modeli produkcyjnych. 
-
-[MLflow](https://www.mlflow.org) to biblioteka typu open source służąca do zarządzania cyklem życia eksperymentów uczenia maszynowego. Śledzenie MLFlow to składnik MLflow, który rejestruje i śledzi przebiegi szkoleniowe i artefakty modelu, bez względu na środowisko eksperymentu — na zdalnym serwerze docelowym obliczeń na maszynie wirtualnej, lokalnie na komputerze lub w klastrze Azure Databricks.
+[MLflow](https://www.mlflow.org) to biblioteka typu open source służąca do zarządzania cyklem życia eksperymentów uczenia maszynowego. Śledzenie MLFlow jest składnikiem MLflow, który rejestruje i śledzi przebiegi szkoleniowe i artefakty modelu, niezależnie od środowiska eksperymentu — lokalnie na komputerze, na zdalnym serwerze docelowym obliczeń, maszynie wirtualnej lub klastrze Azure Databricks. 
 
 Na poniższym diagramie przedstawiono, że śledzenie MLflow umożliwia śledzenie metryk uruchamiania i modeli magazynu eksperymentu w obszarze roboczym Azure Machine Learning.
 
 ![mlflow z diagramem usługi Azure Machine Learning](./media/how-to-use-mlflow/mlflow-diagram-track.png)
 
 > [!TIP]
-> Informacje przedstawione w tym dokumencie są przeznaczone głównie dla analityków danych i deweloperów, którzy chcą monitorować proces szkolenia modelu. Jeśli jesteś administratorem zainteresowani monitorowaniem użycia zasobów i zdarzeń z usługi Azure Machine Learning, takich jak przydziały, ukończone przebiegi szkoleniowe lub wdrożone wdrożenia modelu, zobacz [Azure Machine Learning monitorowania](monitor-azure-machine-learning.md).
+> Informacje przedstawione w tym dokumencie są przeznaczone głównie dla analityków danych i deweloperów, którzy chcą monitorować proces szkolenia modelu. Jeśli jesteś administratorem zainteresowani monitorowaniem użycia zasobów i zdarzeń z Azure Machine Learning, takich jak przydziały, ukończone przebiegi szkoleniowe lub wdrożone wdrożenia modelu, zobacz [Azure Machine Learning monitorowania](monitor-azure-machine-learning.md).
 
 ## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>Porównanie klientów MLflow i Azure Machine Learning
 
@@ -43,7 +44,7 @@ Na poniższym diagramie przedstawiono, że śledzenie MLflow umożliwia śledzen
  Śledzenie MLflow oferuje funkcje rejestrowania metryk i magazynu artefaktów, które są dostępne tylko w innym przypadku za pośrednictwem [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 
-| | MLflow śledzenie & | Azure Machine Learning Python SDK |  Interfejs wiersza polecenia Azure Machine Learning | Studio uczenia maszynowego Azure|
+| | Śledzenie&nbsp;MLflow <!--& Deployment--> | Azure Machine Learning Python SDK |  Interfejs wiersza polecenia Azure Machine Learning | Studio uczenia maszynowego Azure|
 |---|---|---|---|---|
 | Zarządzanie obszarem roboczym |   | ✓ | ✓ | ✓ |
 | Korzystanie z magazynów danych  |   | ✓ | ✓ | |
@@ -51,10 +52,11 @@ Na poniższym diagramie przedstawiono, że śledzenie MLflow umożliwia śledzen
 | Przekaż artefakty | ✓ | ✓ |   | |
 | Wyświetlanie metryk     | ✓ | ✓ | ✓ | ✓ |
 | Zarządzanie obliczeniami   |   | ✓ | ✓ | ✓ |
-| Wdrażanie modeli    | ✓ | ✓ | ✓ | ✓ |
-|Monitorowanie wydajności modelu||✓|  |   |
-| Wykrywanie dryfu danych |   | ✓ |   | ✓ |
 
+<!--| Deploy models    | ✓ | ✓ | ✓ | ✓ |
+|Monitor model performance||✓|  |   |
+| Detect data drift |   | ✓ |   | ✓ |
+-->
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Zainstaluj MLflow.](https://mlflow.org/docs/latest/quickstart.html)
@@ -65,7 +67,7 @@ Na poniższym diagramie przedstawiono, że śledzenie MLflow umożliwia śledzen
 
 Śledzenie MLflow za pomocą Azure Machine Learning umożliwia przechowywanie zarejestrowanych metryk i artefaktów z lokalnych przebiegów w obszarze roboczym Azure Machine Learning.
 
-Zainstaluj pakiet `azureml-contrib-run`, aby korzystać z funkcji śledzenia MLflow z Azure Machine Learning na eksperymentach uruchomionych lokalnie w Jupyter Notebook lub edytorze kodu.
+Zainstaluj pakiet `azureml-mlflow`, aby korzystać z funkcji śledzenia MLflow z Azure Machine Learning na eksperymentach uruchomionych lokalnie w Jupyter Notebook lub edytorze kodu.
 
 ```shell
 pip install azureml-mlflow
@@ -145,12 +147,11 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>Śledź uruchomienia Azure Databricks
 
-Śledzenie MLflow za pomocą Azure Machine Learning umożliwia przechowywanie zarejestrowanych metryk i artefaktów z kostek danych w obszarze roboczym Azure Machine Learning.
+Śledzenie MLflow za pomocą Azure Machine Learning umożliwia przechowywanie zarejestrowanych metryk i artefaktów z Azure Databricks uruchomionych w obszarze roboczym Azure Machine Learning.
 
-Aby uruchamiać eksperymenty Mlflow z Azure Databricks, musisz najpierw utworzyć [Azure Databricks obszar roboczy i klaster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)
+Aby uruchamiać eksperymenty Mlflow z Azure Databricks, musisz najpierw utworzyć [Azure Databricks obszar roboczy i klaster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Upewnij się, że w klastrze została zainstalowana Biblioteka usługi *Azure mlflow* z poziomu programu PyPi, aby zapewnić, że klaster ma dostęp do wymaganych funkcji i klas.
 
-Upewnij się, że w klastrze została zainstalowana Biblioteka usługi *Azure mlflow* z poziomu programu PyPi, aby zapewnić, że klaster ma dostęp do wymaganych funkcji i klas.
-W tym miejscu zaimportuj Notes eksperymentu, Dołącz do niego klaster i uruchom eksperyment. 
+W tym miejscu zaimportuj Notes eksperymentu, dołącz go do klastra Azure Databricks i uruchom eksperyment. 
 
 ### <a name="install-libraries"></a>Zainstaluj biblioteki
 
@@ -388,12 +389,12 @@ If you don't plan to use the logged metrics and artifacts in your workspace, the
 
 1. Enter the resource group name. Then select **Delete**.
 
-
-## Example notebooks
-
-The [MLflow with Azure ML notebooks](https://aka.ms/azureml-mlflow-examples) demonstrate and expand upon concepts presented in this article.
-
-## Next steps
-* [Manage your models](concept-model-management-and-deployment.md).
-* Monitor your production models for [data drift](how-to-monitor-data-drift.md).
  -->
+
+ ## <a name="example-notebooks"></a>Przykład notesów
+
+[MLflow z usługami Azure ml notesy](https://aka.ms/azureml-mlflow-examples) pokazują i rozszerzają w oparciu o koncepcje przedstawione w tym artykule.
+
+## <a name="next-steps"></a>Następne kroki
+* [Zarządzaj modelami](concept-model-management-and-deployment.md).
+* Monitoruj modele produkcyjne pod kątem [dryfowania danych](how-to-monitor-data-drift.md).

@@ -7,12 +7,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 0cb875122c63be18f7c39cdfea7986d705ed434e
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 610b1e0112b8135aa09ade5c800eaed987635cb4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539270"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545640"
 ---
 # <a name="azure-red-hat-openshift-customer-administrator-role"></a>Rola Administrator klienta Red Hat OpenShift na platformie Azure
 
@@ -22,7 +22,6 @@ Jeśli dla konta jest powiązana rola autoryzacji klient-administrator-klaster, 
 
 > [!Note] 
 > Rola klastra klient-administrator-klaster nie jest taka sama jak rola klastra-administratora klastra.
-
 
 Na przykład można wykonać akcje skojarzone z zestawem czasowników (`create`) do działania na zestawie nazw zasobów (`templates`). Aby wyświetlić szczegóły tych ról i ich zestawów zleceń i zasobów, uruchom następujące polecenie:
 
@@ -34,7 +33,13 @@ Na przykład, jeśli zlecenie `list` oznacza, że można wyświetlić listę wsz
 
 ## <a name="configure-the-customer-administrator-role"></a>Konfigurowanie roli administratora klienta
 
-Rolę klastra klient-administrator-klaster można skonfigurować tylko podczas tworzenia klastra, dostarczając flagę `--customer-admin-group-id`. Aby dowiedzieć się, jak skonfigurować Azure Active Directory i grupę administratorów, zobacz [Azure Active Directory Integration for Azure Red Hat OpenShift](howto-aad-app-configuration.md).
+Rolę klastra klient-administrator-klaster można skonfigurować tylko podczas tworzenia klastra, dostarczając flagę `--customer-admin-group-id`. To pole nie jest obecnie konfigurowalne w Azure Portal. Aby dowiedzieć się, jak skonfigurować Azure Active Directory i grupę administratorów, zobacz [Azure Active Directory Integration for Azure Red Hat OpenShift](howto-aad-app-configuration.md).
+
+## <a name="confirm-membership-in-the-customer-administrator-role"></a>Potwierdzenie członkostwa w roli administratora klienta
+
+Aby potwierdzić członkostwo w grupie administratorów klienta, spróbuj użyć poleceń interfejsu wiersza polecenia OpenShift `oc get nodes` lub `oc projects`. `oc get nodes` pokaże listę węzłów, jeśli masz rolę klient-administrator-klaster, a błąd uprawnień, jeśli masz tylko rolę klient-administrator-projekt. w `oc projects` zostaną wyświetlone wszystkie projekty w klastrze, a nie tylko projekty, w których pracujesz.
+
+Aby dowiedzieć się więcej o rolach i uprawnieniach w klastrze, można użyć [`oc policy who-can <verb> <resource>`](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_rbac.html#managing-role-bindings) polecenie.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b4a567bc0495595da77ef7d6cd240ee7fb30f0ed
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170151"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513936"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Pozyskiwanie historycznych danych telemetrycznych
 
@@ -20,7 +20,7 @@ Pozyskiwanie danych historycznych z zasobów Internet rzeczy (IoT), takich jak u
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Przed przejściem do tego artykułu upewnij się, że zainstalowano FarmBeats i zebrano dane historyczne z usługi IoT.
+Przed przejściem do tego artykułu upewnij się, że zainstalowano FarmBeats i zebrano dane historyczne z urządzeń IoT.
 Należy również włączyć dostęp partnera, jak wspomniano w poniższych krokach.
 
 ## <a name="enable-partner-access"></a>Włącz dostęp partnera
@@ -38,31 +38,36 @@ Wykonaj następujące kroki.
 >[!NOTE]
 > Musisz być administratorem, aby wykonać następujące czynności.
 
-1. Pobierz ten [skrypt](https://aka.ms/farmbeatspartnerscript)i wyodrębnij go na dysku lokalnym. Dwa pliki znajdują się w pliku zip.
-2. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) i otwórz usługę Azure Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu portalu.
+1. Pobierz [plik zip](https://aka.ms/farmbeatspartnerscriptv2)i wyodrębnij go na dysk lokalny. Plik zip będzie zawierać jeden plik.
+2. Zaloguj się do https://portal.azure.com/ i przejdź do pozycji Azure Active Directory-> rejestracji aplikacji
 
-    ![Azure Portal pasek narzędzi](./media/for-tutorials/navigation-bar-1.png)
+3. Kliknij rejestrację aplikacji, która została utworzona w ramach wdrożenia FarmBeats. Ma taką samą nazwę jak FarmBeats Datahub.
 
-3. Upewnij się, że środowisko jest ustawione na **PowerShell**.
+4. Kliknij pozycję "Uwidacznianie interfejsu API" — > kliknij pozycję "Dodaj aplikację kliencką" i wprowadź **04b07795-8ddb-461a-bbee-02f9e1bf7b46** i zaznacz pole wyboru Autoryzuj zakres. Zapewni to dostęp do interfejsu wiersza polecenia platformy Azure (Cloud Shell), aby wykonać poniższe kroki.
 
-    ![Ustawienie programu PowerShell](./media/for-tutorials/power-shell-new-1.png)
+5. Otwórz usługę Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu Azure Portal.
 
-4. Przekaż dwa pliki pobrane z kroku 1 w wystąpieniu Cloud Shell.
+    ![Azure Portal pasek narzędzi](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![Przycisk Przekaż na pasku narzędzi](./media/for-tutorials/power-shell-two-1.png)
+6. Upewnij się, że środowisko jest ustawione na **PowerShell**. Domyślnie jest ono ustawione na bash.
 
-5. Przejdź do katalogu, do którego pliki zostały przekazane.
+    ![Ustawienie paska narzędzi programu PowerShell](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-   >[!NOTE]
-   > Domyślnie pliki są przekazywane do katalogu macierzystego/home/username.
-6. Uruchom skrypt za pomocą tego polecenia:
+7. Przekaż plik z kroku 1 w wystąpieniu Cloud Shell.
 
-    ```azurepowershell-interactive
-    ./generateCredentials.ps1
+    ![Przekaż przycisk paska narzędzi](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+
+8. Przejdź do katalogu, w którym plik został przekazany. Domyślnie pliki są przekazywane do katalogu macierzystego w ramach nazwy użytkownika.
+
+9. Uruchom następujący skrypt. Skrypt pyta o identyfikator dzierżawy, który można uzyskać ze strony Przegląd Azure Active Directory->.
+
+    ```azurepowershell-interactive 
+
+    ./generatePartnerCredentials.ps1   
+
     ```
 
-7. Postępuj zgodnie z instrukcjami na ekranie, aby przechwycić wartości dla **punktów końcowych interfejsu API**, **identyfikatora dzierżawy**, **identyfikatora klienta**, **klucza tajnego klienta**i **parametrów połączenia centrum EventHub**. Parametry połączenia EventHub są dostępne jako część odpowiedzi interfejsu API w strukturze Swagger.
-
+10. Postępuj zgodnie z instrukcjami na ekranie, aby przechwycić wartości dla **punktów końcowych interfejsu API**, **identyfikatora dzierżawy**, **identyfikatora klienta**, **klucza tajnego klienta**i **parametrów połączenia centrum EventHub**.
 ## <a name="create-device-or-sensor-metadata"></a>Tworzenie metadanych urządzenia lub czujnika
 
  Teraz, gdy masz wymagane poświadczenia, możesz zdefiniować urządzenie i czujniki. W tym celu Utwórz metadane, wywołując interfejsy API FarmBeats. Należy pamiętać, że należy wywołać interfejsy API jako aplikację kliencką utworzoną w powyższej sekcji

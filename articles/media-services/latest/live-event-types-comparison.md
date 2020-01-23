@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888397"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543056"
 ---
 # <a name="live-event-types-comparison"></a>Porównanie typów zdarzeń na żywo
 
@@ -28,7 +28,7 @@ W Azure Media Services wydarzenie na [żywo](https://docs.microsoft.com/rest/api
 
 Poniższa tabela zawiera porównanie funkcji typów zdarzeń na żywo. Typy są ustawiane podczas tworzenia przy użyciu [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
 
-* **LiveEventEncodingType. None** — lokalny koder na żywo wysyła strumień o wielokrotnej szybkości transmisji bitów. Pozyskiwane strumienie są przekazywane przez wydarzenie na żywo bez dalszej obróbki. 
+* **LiveEventEncodingType. None** — lokalny koder na żywo wysyła strumień o wielokrotnej szybkości transmisji bitów. Pozyskiwane strumienie są przekazywane przez wydarzenie na żywo bez dalszej obróbki. Nazywana również zdarzeniem przekazującym.
 * **LiveEventEncodingType. Standard** — lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do zdarzenia na żywo, a Media Services tworzy wiele strumieni szybkości transmisji bitów. Jeśli kanał informacyjny udziału ma rozdzielczość 720 lub wyższą, ustawienia wstępne **Default720p** zakodują zestaw par rozdzielczości i szybkości transmisji bitów (szczegóły znajdują się w dalszej części artykułu).
 * **LiveEventEncodingType. Premium1080p** — lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do zdarzenia na żywo, a Media Services tworzy wiele strumieni szybkości transmisji bitów. Ustawienie wstępne Default1080p określa zestaw danych wyjściowych par rozdzielczości/szybkości transmisji bitów (szczegóły znajdują się w dalszej części artykułu). 
 
@@ -52,6 +52,7 @@ Poniższa tabela zawiera porównanie funkcji typów zdarzeń na żywo. Typy są 
 | Cena|Zobacz [stronę cennika](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "wideo na żywo"|Zobacz [stronę cennika](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "wideo na żywo"|
 | Maksymalny czas działania| 24 godz. x 365 dni, na żywo liniowe | 24 godz. x 365 dni, na żywo liniowe (wersja zapoznawcza)|
 | Możliwość przekazywania osadzonych podpisów CEA 608/708|Tak|Tak|
+| Możliwość włączenia transkrypcji na żywo|Tak|Tak|
 | Obsługa wstawiania przednich|Nie|Nie|
 | Obsługa sygnałów usługi AD za pośrednictwem interfejsu API| Nie|Nie|
 | Obsługa sygnałów usługi AD przy użyciu komunikatów SCTE-35 w paśmie|Tak|Tak|

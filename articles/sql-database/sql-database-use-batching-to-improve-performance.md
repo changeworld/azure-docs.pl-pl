@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822419"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545028"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak zwiększyć wydajność SQL Database aplikacji za pomocą tworzenia pakietów wsadowych
 
@@ -91,13 +91,13 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Transakcje są faktycznie używane w obu tych przykładach. W pierwszym przykładzie każde pojedyncze wywołanie jest niejawną transakcją. W drugim przykładzie transakcja jawna otacza wszystkie wywołania. Zgodnie z dokumentacją [dziennika transakcji zapisu](https://msdn.microsoft.com/library/ms186259.aspx)rekordy dziennika są opróżniane do dysku podczas zatwierdzania transakcji. Tak więc, dołączając więcej wywołań w transakcji, zapis w dzienniku transakcji może opóźnić się do momentu zatwierdzenia transakcji. W efekcie w dzienniku transakcji serwera jest włączana partia operacji zapisu.
+Transakcje są faktycznie używane w obu tych przykładach. W pierwszym przykładzie każde pojedyncze wywołanie jest niejawną transakcją. W drugim przykładzie transakcja jawna otacza wszystkie wywołania. Zgodnie z dokumentacją [dziennika transakcji zapisu](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)rekordy dziennika są opróżniane do dysku podczas zatwierdzania transakcji. Tak więc, dołączając więcej wywołań w transakcji, zapis w dzienniku transakcji może opóźnić się do momentu zatwierdzenia transakcji. W efekcie w dzienniku transakcji serwera jest włączana partia operacji zapisu.
 
 W poniższej tabeli przedstawiono niektóre wyniki testów ad hoc. Testy przeprowadzono te same sekwencyjne Wstawianie z i bez transakcji. W celu uzyskania większej perspektywy pierwszy zestaw testów działał zdalnie z poziomu laptopa do bazy danych w Microsoft Azure. Drugi zestaw testów został uruchomiony z poziomu usługi w chmurze i bazy danych, która znajduje się w tym samym Microsoft Azure Datacenter (Zachodnie stany USA). W poniższej tabeli przedstawiono czas trwania operacji wstawiania sekwencyjnego z i bez transakcji w milisekundach.
 
 **Lokalne na platformę Azure**:
 
-| Operacje | Brak transakcji (MS) | Transakcja (MS) |
+| Operations | Brak transakcji (MS) | Transakcja (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -106,7 +106,7 @@ W poniższej tabeli przedstawiono niektóre wyniki testów ad hoc. Testy przepro
 
 **Azure na platformę Azure (to samo centrum danych)** :
 
-| Operacje | Brak transakcji (MS) | Transakcja (MS) |
+| Operations | Brak transakcji (MS) | Transakcja (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -124,7 +124,7 @@ W poprzednim przykładzie pokazano, że można dodać transakcję lokalną do do
 
 Aby uzyskać więcej informacji o transakcjach w programie ADO.NET, zobacz [lokalne transakcje w ADO.NET](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>parametry z wartościami przechowywanymi w tabeli
+### <a name="table-valued-parameters"></a>Parametry z wartościami przechowywanymi w tabeli
 
 Parametry z wartościami przechowywanymi w tabeli obsługują typy tabel zdefiniowane przez użytkownika jako parametry w instrukcjach języka Transact-SQL, procedurach składowanych i funkcjach. Ta technika wsadowa po stronie klienta umożliwia wysyłanie wielu wierszy danych w ramach parametru z wartościami przechowywanymi w tabeli. Aby użyć parametrów z wartościami przechowywanymi w tabeli, należy najpierw zdefiniować typ tabeli. Poniższa instrukcja języka Transact-SQL tworzy typ tabeli o nazwie **Webtabletype**.
 
@@ -193,7 +193,7 @@ W większości przypadków parametry z wartościami przechowywanymi w tabeli maj
 
 W poniższej tabeli przedstawiono wyniki testów ad hoc służące do używania parametrów z wartościami przechowywanymi w tabeli w milisekundach.
 
-| Operacje | Lokalne na platformę Azure (MS) | To samo centrum danych platformy Azure (MS) |
+| Operations | Lokalne na platformę Azure (MS) | To samo centrum danych platformy Azure (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -233,7 +233,7 @@ Istnieją przypadki, w których kopie zbiorcze są preferowane za pośrednictwem
 
 Poniższe wyniki testu ad hoc przedstawiają wydajność przetwarzania wsadowego za pomocą **SqlBulkCopy** w milisekundach.
 
-| Operacje | Lokalne na platformę Azure (MS) | To samo centrum danych platformy Azure (MS) |
+| Operations | Lokalne na platformę Azure (MS) | To samo centrum danych platformy Azure (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -278,7 +278,7 @@ Ten przykład jest przeznaczony do wyświetlania koncepcji podstawowej. Bardziej
 
 Poniższe wyniki testu ad hoc pokazują wydajność tego typu instrukcji INSERT w milisekundach.
 
-| Operacje | Parametry z wartościami przechowywanymi w tabeli (MS) | Wstawianie pojedynczej instrukcji (MS) |
+| Operations | Parametry z wartościami przechowywanymi w tabeli (MS) | Wstawianie pojedynczej instrukcji (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -291,7 +291,7 @@ Poniższe wyniki testu ad hoc pokazują wydajność tego typu instrukcji INSERT 
 
 Takie podejście może być nieco szybsze dla partii, które są mniejsze niż 100 wierszy. Chociaż poprawa jest mała, ta technika jest kolejną opcją, która może współpracować z konkretnym scenariuszem aplikacji.
 
-### <a name="dataadapter"></a>Element
+### <a name="dataadapter"></a>DataAdapter
 
 Klasa **DataAdapter** pozwala modyfikować obiekt **DataSet** , a następnie przesyłać zmiany jako operacje INSERT, Update i DELETE. Jeśli używasz elementu **DataAdapter** w ten sposób, należy pamiętać, że osobne wywołania są wykonywane dla każdej operacji DISTINCT. Aby zwiększyć wydajność, należy użyć właściwości **UpdateBatchSize** do liczby operacji, które powinny być przetwarzane wsadowo w danym momencie. Aby uzyskać więcej informacji, zobacz [wykonywanie operacji wsadowych za pomocą adapterów](https://msdn.microsoft.com/library/aadf8fk2.aspx)danych.
 
@@ -299,7 +299,7 @@ Klasa **DataAdapter** pozwala modyfikować obiekt **DataSet** , a następnie prz
 
 Entity Framework obecnie nie obsługuje przetwarzania wsadowego. Różni deweloperzy w społeczności próbują przedstawić obejścia, takie jak zastąpienie metody **metody SaveChanges** . Jednak rozwiązania są zwykle złożone i dostosowane do aplikacji i modelu danych. Projekt Entity Framework CodePlex ma obecnie stronę dyskusji na tym żądaniu funkcji. Aby wyświetlić tę dyskusję, zobacz [Design uwagi dotyczące spotkania — 2 sierpnia 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
-### <a name="xml"></a>DOKUMENT
+### <a name="xml"></a>XML
 
 W celu zapewnienia kompletności należy zwrócić uwagę na informacje dotyczące XML jako strategię przetwarzania wsadowego. Jednak użycie kodu XML nie ma żadnych korzyści w porównaniu z innymi metodami i kilkoma wadami. Podejście jest podobne do parametrów z wartościami przechowywanymi w tabeli, ale plik XML lub ciąg jest przesyłany do procedury składowanej zamiast tabeli zdefiniowanej przez użytkownika. Procedura składowana analizuje polecenia w procedurze składowanej.
 
@@ -321,11 +321,11 @@ W zależności od architektury przetwarzanie wsadowe może stanowić kompromis m
 
 Ze względu na te kompromisy należy oszacować typ operacji wykonywanych przez użytkownika. Przetwarzaj wsadowo bardziej agresywnie (większe partie i dłuższy czas w systemie Windows), które mają mniej krytyczne dane.
 
-### <a name="batch-size"></a>Rozmiar wsadu
+### <a name="batch-size"></a>Rozmiar partii
 
 W naszych testach zwykle nie ma możliwości dzielenia dużych partii na mniejsze fragmenty. W rzeczywistości ta częściowa część często spowodowało wolniejszą wydajność niż przesyłanie pojedynczej dużej partii. Rozważmy na przykład scenariusz, w którym chcesz wstawić 1000 wierszy. W poniższej tabeli pokazano, jak długo należy używać parametrów z wartościami przechowywanymi w tabeli do wstawiania wierszy 1000 w przypadku dzielenia na mniejsze partie.
 
-| Rozmiar wsadu | Iteracji | Parametry z wartościami przechowywanymi w tabeli (MS) |
+| Rozmiar partii | Iteracje | Parametry z wartościami przechowywanymi w tabeli (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |
