@@ -7,20 +7,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: aeb00b84ac254232e0d68fd9631fb539a928e67d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931891"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513562"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informacje o usłudze mobilności dla maszyn wirtualnych VMware i serwerów fizycznych
 
 Po skonfigurowaniu odzyskiwania po awarii dla maszyn wirtualnych VMware i serwerów fizycznych przy użyciu [Azure Site Recovery](site-recovery-overview.md)należy zainstalować usługę mobilności Site Recovery na wszystkich lokalnych maszynach wirtualnych VMware i na serwerze fizycznym.  Usługa mobilności przechwytuje operacje zapisu danych na komputerze i przekazuje je do serwera przetwarzania Site Recovery. Usługę mobilności można wdrożyć przy użyciu następujących metod:
 
 - [Instalacja wypychana](#push-installation): Site Recovery instaluje agenta mobilności na serwerze, gdy ochrona jest włączona za pośrednictwem Azure Portal.
-- Zainstaluj ręcznie: Usługę mobilności można zainstalować ręcznie na każdym komputerze za pomocą [interfejsu użytkownika](#install-mobility-agent-through-ui) lub [wiersza polecenia](#install-mobility-agent-through-command-prompt).
-- [Automatyczne wdrażanie](vmware-azure-mobility-install-configuration-mgr.md): Instalację można zautomatyzować za pomocą narzędzi do wdrażania oprogramowania, takich jak System Center Configuration Manager.
+- Zainstaluj ręcznie: usługę mobilności można zainstalować ręcznie na każdym komputerze za pomocą [interfejsu użytkownika](#install-mobility-agent-through-ui) lub [wiersza polecenia](#install-mobility-agent-through-command-prompt).
+- [Automatyczne wdrażanie](vmware-azure-mobility-install-configuration-mgr.md): można zautomatyzować instalację za pomocą narzędzi do wdrażania oprogramowania, takich jak Configuration Manager.
 
 ## <a name="anti-virus-on-replicated-machines"></a>Oprogramowanie antywirusowe na replikowanych maszynach
 
@@ -55,7 +55,7 @@ Podczas instalacji wypychanej agenta mobilności wykonywane są następujące cz
 
 ## <a name="install-mobility-agent-through-ui"></a>Instalowanie agenta mobilności przy użyciu interfejsu użytkownika
 
-### <a name="prerequisite"></a>Wymagania wstępne
+### <a name="prerequisite"></a>Warunek wstępny
 
 - Upewnij się, że wszystkie konfiguracje serwerów znajdują się w obszarze [macierzy obsługi programu VMware na platformie Azure](vmware-physical-azure-support-matrix.md).
 - [Zlokalizuj Instalatora](#locate-installer-files) na podstawie systemu operacyjnego serwera.
@@ -83,7 +83,7 @@ Podczas instalacji wypychanej agenta mobilności wykonywane są następujące cz
 
 ## <a name="install-mobility-agent-through-command-prompt"></a>Instalowanie agenta mobilności przy użyciu wiersza polecenia
 
-### <a name="prerequisite"></a>Wymagania wstępne
+### <a name="prerequisite"></a>Warunek wstępny
 
 - Upewnij się, że wszystkie konfiguracje serwerów znajdują się w obszarze [macierzy obsługi programu VMware na platformie Azure](vmware-physical-azure-support-matrix.md).
 - [Zlokalizuj Instalatora](#locate-installer-files) na podstawie systemu operacyjnego serwera.
@@ -115,12 +115,12 @@ Podczas instalacji wypychanej agenta mobilności wykonywane są następujące cz
 #### <a name="installation-settings"></a>Ustawienia instalacji
 **Ustawienie** | **Szczegóły**
 --- | ---
-Użycie | UnifiedAgent. exe/role \<MS/MT >/InstallLocation \<lokalizacja instalacji >/platform "VMware"/Silent
+Użycie | UnifiedAgent. exe/role \<MS/MT >/InstallLocation \<lokalizacji instalacji >/platform "VmWare"/Silent
 Dzienniki instalacji | W obszarze%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 /Role | Obowiązkowy parametr instalacji. Określa, czy należy zainstalować usługę mobilności (MS), czy główny cel (MT).
-/InstallLocation| Opcjonalny parametr. Określa lokalizację instalacji usługi mobilności (dowolny folder).
+/InstallLocation| Parametr opcjonalny. Określa lokalizację instalacji usługi mobilności (dowolny folder).
 /Platform | Obowiązkowy. Określa platformę, na której zainstalowano usługę mobilności. **Oprogramowanie VMware** dla maszyn wirtualnych VMware/serwerów fizycznych; **Platforma Azure** dla maszyn wirtualnych platformy Azure.<br/><br/> W przypadku traktowania maszyn wirtualnych platformy Azure jako maszyn fizycznych należy określić program **VMware**.
-/Silent| Opcjonalna. Określa, czy Instalator ma być uruchamiany w trybie dyskretnym.
+/Silent| Element opcjonalny. Określa, czy Instalator ma być uruchamiany w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji
 **Ustawienie** | **Szczegóły**
@@ -154,11 +154,11 @@ Dzienniki konfiguracji agenta | W obszarze%ProgramData%\ASRSetupLogs\ASRUnifiedA
 #### <a name="installation-settings"></a>Ustawienia instalacji
 **Ustawienie** | **Szczegóły**
 --- | ---
-Użycie | ./Install-d \<lokalizacja instalacji >-r \<MS/MT >-v VMware-q
+Użycie | ./Install-d \<lokalizacja instalacji >-r \<MS/MT >-v VmWare-q
 -r | Obowiązkowy parametr instalacji. Określa, czy należy zainstalować usługę mobilności (MS), czy główny cel (MT).
--c | Opcjonalny parametr. Określa lokalizację instalacji usługi mobilności:/usr/local/ASR.
+-d | Parametr opcjonalny. Określa lokalizację instalacji usługi mobilności:/usr/local/ASR.
 -v | Obowiązkowy. Określa platformę, na której zainstalowano usługę mobilności. **Oprogramowanie VMware** dla maszyn wirtualnych VMware/serwerów fizycznych; **Platforma Azure** dla maszyn wirtualnych platformy Azure.
--q | Opcjonalny. Określa, czy Instalator ma być uruchamiany w trybie dyskretnym.
+-q | Element opcjonalny. Określa, czy Instalator ma być uruchamiany w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji
 **Ustawienie** | **Szczegóły**
@@ -169,8 +169,8 @@ Użycie | /usr/local/ASR/Vx/bin CD<br/><br/> UnifiedAgentConfigurator.sh-i \<CSI
 
 ## <a name="azure-virtual-machine-agent"></a>Agent maszyny wirtualnej platformy Azure
 
-- **Maszyny wirtualne z systemem Windows**: W wersji 9.7.0.0 usługi mobilności [Agent maszyny wirtualnej platformy Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) jest instalowany przez Instalatora usługi mobilności. Dzięki temu w przypadku przełączenia maszyny do trybu failover na platformie Azure maszyna wirtualna platformy Azure spełnia wymagania wstępne instalacji agenta dotyczące korzystania z dowolnego rozszerzenia maszyny wirtualnej.
-- **Maszyny wirtualne z systemem Linux**: [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) należy ręcznie zainstalować na maszynie wirtualnej platformy Azure po przejściu do trybu failover.
+- **Maszyny wirtualne z systemem Windows**: z wersji 9.7.0.0 usługi mobilności [Agent maszyny wirtualnej platformy Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) jest instalowany przez Instalatora usługi mobilności. Dzięki temu w przypadku przełączenia maszyny do trybu failover na platformie Azure maszyna wirtualna platformy Azure spełnia wymagania wstępne instalacji agenta dotyczące korzystania z dowolnego rozszerzenia maszyny wirtualnej.
+- **Maszyny wirtualne z systemem Linux**: [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) należy instalować ręcznie na maszynie wirtualnej platformy Azure po przejściu do trybu failover.
 
 ## <a name="locate-installer-files"></a>Lokalizowanie plików Instalatora
 

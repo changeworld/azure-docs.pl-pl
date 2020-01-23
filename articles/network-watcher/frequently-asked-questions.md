@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 570b8057fc09e3f054152d09467519a167d938e9
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 856c249b72e9e0ff8667d10821ad14b3432b0775
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280785"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509193"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Często zadawane pytania dotyczące usługi Azure Network Watcher
 Usługa [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) udostępnia zestaw narzędzi do monitorowania, diagnozowania, wyświetlania metryk i włączania i wyłączania dzienników dla zasobów w sieci wirtualnej platformy Azure. W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące usługi.
@@ -75,11 +75,11 @@ Zasoby sieciowe platformy Azure można łączyć i zarządzać nimi za pomocą [
 
 Aby korzystać z konta magazynu z zaporą, należy podać wyjątek dla zaufanych usług firmy Microsoft w celu uzyskania dostępu do konta magazynu:
 
-* Znajdź nazwę konta magazynu, lokalizując sieciową grupę zabezpieczeń na [stronie przeglądu dzienników przepływu sieciowych grup zabezpieczeń](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)
-* Przejdź do konta magazynu, wpisując jego nazwę w polu wyszukiwania globalnego w portalu
+* Przejdź do konta magazynu, wpisując nazwę konta magazynu w wyszukiwaniu globalnym w portalu lub na [stronie konta magazynu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) .
 * W sekcji **USTAWIENIA** wybierz pozycję **Zapory i sieci wirtualne**
 * W obszarze "Zezwalaj na dostęp z" Wybierz pozycję **wybrane sieci**. Następnie w obszarze **wyjątki**zaznacz pole wyboru obok pozycji **"Zezwalaj zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu"** . 
 * Jeśli jest ona już zaznaczona, nie trzeba wprowadzać żadnych zmian.  
+* Znajdź swój docelowy sieciowej grupy zabezpieczeń na [stronie Przegląd dzienników przepływów sieciowej grupy zabezpieczeń](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) i Włącz dzienniki przepływu sieciowej grupy zabezpieczeń z wybranym powyższym kontem magazynu.
 
 Możesz sprawdzić dzienniki magazynu po kilku minutach — powinna być widoczna zaktualizowana sygnatura czasowa lub utworzony nowy plik JSON.
 

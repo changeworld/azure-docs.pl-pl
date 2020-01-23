@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: d7cff4e2afff4678bf7aa437aefa9d8deea220bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428949"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515007"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Przewodnik konfigurowania komputera z szablonem systemu Windows w Azure Lab Services
 
@@ -142,7 +142,7 @@ Jeśli komputer szablonu wymaga pakietu Office, zalecamy instalację pakietu Off
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>Zmienianie kanału aktualizacji Microsoft Office 365
 
-Za pomocą narzędzia konfiguracji pakietu Office można ustawić, jak często pakiet Office otrzymuje aktualizacje.  Jeśli jednak chcesz zmodyfikować częstotliwość otrzymywania aktualizacji przez pakiet Office po instalacji, możesz zmienić adres URL kanału aktualizacji.  Adresy URL kanału aktualizacji można znaleźć w lokalizacji [Zmień kanał aktualizacji po włączeniu klientów pakietu Office 365 do odbierania aktualizacji z Configuration Manager]/ConfigMgr/sum/Deploy-use/Manage-Office-365-ProPlus-Updates # bkmk_channel). W poniższym przykładzie pokazano, jak ustawić pakiet Office 365 do korzystania z kanału aktualizacji miesięcznej.
+Za pomocą narzędzia konfiguracji pakietu Office można ustawić, jak często pakiet Office otrzymuje aktualizacje. Jeśli jednak chcesz zmodyfikować częstotliwość otrzymywania aktualizacji przez pakiet Office po instalacji, możesz zmienić adres URL kanału aktualizacji. Adresy URL kanału aktualizacji można znaleźć w temacie [Zmienianie kanału usługi Office 365 ProPlus Update dla urządzeń w organizacji](https://docs.microsoft.com/deployoffice/change-update-channels). W poniższym przykładzie pokazano, jak ustawić pakiet Office 365 do korzystania z kanału aktualizacji miesięcznej.
 
 ```powershell
 # Update to the Office 365 Monthly Channel

@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425535"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512780"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Zagadnienia dotyczące projektowania sieci wirtualnej i opcje konfiguracji Azure AD Domain Services
 
-Jako Azure Active Directory Domain Services (AD DS) zapewnia usługi uwierzytelniania i zarządzania dla innych aplikacji i obciążeń, połączenie sieciowe to kluczowy składnik. Bez odpowiednio skonfigurowanych zasobów sieci wirtualnej aplikacje i obciążenia nie mogą komunikować się z programem i korzystać z funkcji udostępnianych przez usługę Azure AD DS. W przypadku prawidłowego planowania sieci wirtualnej upewnij się, że usługa Azure AD DS może obsłużyć Twoje aplikacje i obciążenia zgodnie z potrzebami.
+Jako Azure Active Directory Domain Services (AD DS) zapewnia usługi uwierzytelniania i zarządzania dla innych aplikacji i obciążeń, połączenie sieciowe to kluczowy składnik. Bez prawidłowo skonfigurowanych zasobów sieci wirtualnej nie można komunikować się z aplikacjami i obciążeniami oraz korzystać z funkcji udostępnianych przez usługę Azure AD DS. Zaplanuj wymagania dotyczące sieci wirtualnej, aby upewnić się, że usługa Azure AD DS może obsłużyć Twoje aplikacje i obciążenia zgodnie z potrzebami.
 
-W tym artykule przedstawiono zagadnienia dotyczące projektowania i wymagania dotyczące sieci wirtualnej platformy Azure, która obsługuje platformę Azure AD DS.
+W tym artykule przedstawiono zagadnienia dotyczące projektowania i wymagania dotyczące sieci wirtualnej platformy Azure w celu obsługi AD DS platformy Azure.
 
 ## <a name="azure-virtual-network-design"></a>Projekt sieci wirtualnej platformy Azure
 
@@ -33,7 +33,7 @@ Podczas projektowania sieci wirtualnej dla usługi Azure AD DS są stosowane nas
 * Usługę Azure AD DS należy wdrożyć w tym samym regionie świadczenia usługi Azure, w którym znajduje się Twoja sieć wirtualna.
     * W tej chwili można wdrożyć tylko jedną domenę zarządzaną platformy Azure AD DS dla dzierżawy usługi Azure AD. Domena zarządzana AD DS platformy Azure została wdrożona w jednym regionie. Upewnij się, że tworzysz lub wybrano sieć wirtualną w [regionie, który obsługuje usługę Azure AD DS](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all).
 * Rozważ bliskość innych regionów świadczenia usługi Azure i sieci wirtualnych, które obsługują obciążenia aplikacji.
-    * Aby zminimalizować opóźnienie, należy utrzymać podstawowe aplikacje w pobliżu lub w tym samym regionie, w którym znajduje się podsieć sieci wirtualnej dla domeny zarządzanej platformy Azure AD DS. Między sieciami wirtualnymi platformy Azure można używać połączeń równorzędnych sieci wirtualnych lub wirtualnych sieci prywatnych (VPN).
+    * Aby zminimalizować opóźnienie, należy utrzymać podstawowe aplikacje w pobliżu lub w tym samym regionie, w którym znajduje się podsieć sieci wirtualnej dla domeny zarządzanej platformy Azure AD DS. Między sieciami wirtualnymi platformy Azure można używać połączeń równorzędnych sieci wirtualnych lub wirtualnych sieci prywatnych (VPN). Te opcje połączenia zostały omówione w poniższej sekcji.
 * Sieć wirtualna nie może polegać na usługach DNS innych niż udostępniane przez usługę Azure AD DS.
     * Usługa Azure AD DS udostępnia własną usługę DNS. Sieć wirtualna musi być skonfigurowana do używania tych adresów usługi DNS. Rozpoznawanie nazw dla dodatkowych przestrzeni nazw można wykonać przy użyciu usług przesyłania dalej warunkowego.
     * Nie można użyć niestandardowych ustawień serwera DNS, aby kierować zapytania z innych serwerów DNS, w tym na maszynach wirtualnych. Zasoby w sieci wirtualnej muszą korzystać z usługi DNS dostępnej w usłudze Azure AD DS.
@@ -62,7 +62,7 @@ Możesz połączyć obciążenia aplikacji hostowane w innych sieciach wirtualny
 * Wirtualne sieci równorzędne
 * Wirtualne sieci prywatne (VPN)
 
-### <a name="virtual-network-peering"></a>Virtual Network komunikacji równorzędnej
+### <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
 Komunikacja równorzędna sieci wirtualnych jest mechanizmem, który łączy dwie sieci wirtualne w tym samym regionie za pomocą sieci szkieletowej platformy Azure. Globalne wirtualne sieci równorzędne mogą łączyć się z siecią wirtualną w różnych regionach platformy Azure. Po nawiązaniu połączenia równorzędnego dwie sieci wirtualne zezwalają na zasoby, takie jak maszyny wirtualne, komunikują się ze sobą bezpośrednio przy użyciu prywatnych adresów IP. Za pomocą komunikacji równorzędnej sieci wirtualnej można wdrożyć domenę zarządzaną platformy Azure AD DS przy użyciu obciążeń aplikacji wdrożonych w innych sieciach wirtualnych.
 
@@ -70,7 +70,7 @@ Komunikacja równorzędna sieci wirtualnych jest mechanizmem, który łączy dwi
 
 Aby uzyskać więcej informacji, zobacz temat [Omówienie komunikacji równorzędnej sieci wirtualnej platformy Azure](../virtual-network/virtual-network-peering-overview.md).
 
-### <a name="virtual-private-networking"></a>Wirtualna sieć prywatna
+### <a name="virtual-private-networking-vpn"></a>Wirtualna sieć prywatna (VPN)
 
 Można połączyć sieć wirtualną z inną siecią wirtualną (VNet-to-VNet) w taki sam sposób, w jaki można skonfigurować sieć wirtualną do lokalizacji lokacji lokalnej. Oba połączenia wykorzystują bramę sieci VPN do tworzenia bezpiecznego tunelu przy użyciu protokołu IPsec/IKE. Ten model połączenia umożliwia wdrażanie AD DS platformy Azure w sieci wirtualnej platformy Azure, a następnie łączenie lokalizacji lokalnych lub innych chmur.
 
@@ -91,8 +91,8 @@ W przypadku domeny zarządzanej AD DS platformy Azure tworzone są pewne zasoby 
 | Zasób platformy Azure                          | Opis |
 |:----------------------------------------|:---|
 | Karta sieciowa                  | Usługa Azure AD DS hostuje domenę zarządzaną na dwóch kontrolerach domeny (DC) działających w systemie Windows Server jako maszyn wirtualnych platformy Azure. Każda maszyna wirtualna ma interfejs sieci wirtualnej, który łączy się z podsiecią sieci wirtualnej. |
-| Dynamiczny publiczny adres IP w warstwie Standardowa         | Usługa Azure AD DS komunikuje się z usługą synchronizacji i zarządzania przy użyciu publicznego adresu IP jednostki SKU. Aby uzyskać więcej informacji o publicznych adresach IP, zobacz [typy adresów IP i metody alokacji na platformie Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
-| Moduł równoważenia obciążenia w warstwie Standardowa platformy Azure               | Usługa Azure AD DS korzysta ze standardowego modułu równoważenia obciążenia jednostki SKU do translacji adresów sieciowych (NAT) i równoważenia obciążenia (gdy jest używany z bezpiecznym protokołem LDAP). Aby uzyskać więcej informacji na temat modułów równoważenia obciążenia platformy Azure, zobacz [co to jest Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
+| Dynamiczny publiczny adres IP w warstwie Standardowa      | Usługa Azure AD DS komunikuje się z usługą synchronizacji i zarządzania przy użyciu publicznego adresu IP jednostki SKU. Aby uzyskać więcej informacji o publicznych adresach IP, zobacz [typy adresów IP i metody alokacji na platformie Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
+| Moduł równoważenia obciążenia w warstwie Standardowa platformy Azure            | Usługa Azure AD DS korzysta ze standardowego modułu równoważenia obciążenia jednostki SKU do translacji adresów sieciowych (NAT) i równoważenia obciążenia (gdy jest używany z bezpiecznym protokołem LDAP). Aby uzyskać więcej informacji na temat modułów równoważenia obciążenia platformy Azure, zobacz [co to jest Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
 | Reguły translatora adresów sieciowych (NAT) | Usługa Azure AD DS tworzy i używa trzech reguł translatora adresów sieciowych w ramach modułu równoważenia obciążenia — jednej reguły dla bezpiecznego ruchu HTTP i dwóch reguł bezpiecznego komunikacji zdalnej programu PowerShell. |
 | Reguły modułu równoważenia obciążenia                     | W przypadku skonfigurowania domeny zarządzanej AD DS platformy Azure pod kątem bezpiecznego protokołu LDAP na porcie TCP 636, trzy reguły są tworzone i używane w module równoważenia obciążenia do dystrybucji ruchu. |
 
@@ -160,7 +160,3 @@ Aby uzyskać więcej informacji na temat niektórych zasobów sieciowych i opcji
 * [Komunikacja równorzędna sieci wirtualnej platformy Azure](../virtual-network/virtual-network-peering-overview.md)
 * [Bramy sieci VPN platformy Azure](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
 * [Sieciowe grupy zabezpieczeń platformy Azure](../virtual-network/security-overview.md)
-
-<!-- INTERNAL LINKS -->
-
-<!-- EXTERNAL LINKS -->

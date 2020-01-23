@@ -1,5 +1,5 @@
 ---
-title: Dostosowywanie modelu języka na platformie Azure za pomocą witryny sieci Web Video Indexer
+title: Dostosowywanie modeli języków za pomocą witryny sieci Web Video Indexer — Azure
 titleSuffix: Azure Media Services
 description: W tym artykule pokazano, jak dostosować model języka za pomocą witryny sieci Web Video Indexer.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 5d92cb02a0ac52b317cf9d4b6c8e0278f9291910
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 329da39914ef957d3a5376ba59e0c7103ad6a5dd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838458"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513919"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Dostosowywanie modelu języka za pomocą witryny sieci Web Video Indexer
 
@@ -61,10 +61,10 @@ Aby użyć modelu języka na nowym filmie wideo, wykonaj jedną z następującyc
 
 * Kliknij przycisk **Przekaż** w górnej części strony. 
 
-    ![Upload](./media/customize-language-model/upload.png)
+    ![Przekazywanie](./media/customize-language-model/upload.png)
 * Porzuć plik audio lub wideo w okręgu lub Wyszukaj plik
 
-    ![Upload](./media/customize-language-model/upload2.png)
+    ![Przekazywanie](./media/customize-language-model/upload2.png)
 
 Umożliwi to wybranie **języka źródła wideo**. Kliknij listę rozwijaną i wybierz model języka, który został utworzony na podstawie listy. Powinien on wypowiedzieć język modelu języka i nazwę nadaną w nawiasach.
 

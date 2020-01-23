@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f60ec802af0c88ee8cb3809bf27feef89e11570a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769799"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513273"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z Update Management
 
@@ -376,7 +376,7 @@ Jeśli nie możesz rozwiązać problemu z poprawkami, Utwórz kopię następują
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Wiemy, że aktualizacje są dostępne, ale nie są wyświetlane jako dostępne na moich maszynach
 
-* Często zdarza się to, gdy maszyny są skonfigurowane do pobierania aktualizacji z usług WSUS lub System Center Configuration Manager (SCCM), ale programy WSUS i SCCM nie zaakceptowały aktualizacji.
+* Często zdarza się to, gdy maszyny są skonfigurowane do pobierania aktualizacji z usług WSUS lub Microsoft Endpoint Configuration Manager ale WSUS i Configuration Manager nie zaakceptowały aktualizacji.
 * Możesz sprawdzić, czy maszyny są skonfigurowane pod kątem usług WSUS i SCCM, przez [krzyżowe odwołując klucz rejestru UseWUServer do kluczy rejestru w sekcji "Konfigurowanie aktualizacji automatycznych przez edytowanie rejestru" w tym artykule](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s).
 * Jeśli aktualizacje nie są zatwierdzone w programie WSUS, nie będą instalowane. Niezatwierdzone aktualizacje można sprawdzić w Log Analytics, uruchamiając następujące zapytanie:
 

@@ -9,45 +9,47 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: gregman
-ms.openlocfilehash: b32bbfa5e849c1a0490bba5d09d1838268033b26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 99474246bf1ff5cbcc39861d56f05aa38f177f31
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964655"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510043"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Uruchom Azure IoT Edge w systemie Windows Server Virtual Machines
 
-Środowisko uruchomieniowe Azure IoT Edge to włączenie urządzenia do urządzenia IoT Edge. Środowisko uruchomieniowe można wdrożyć na urządzeniach jako niewielkich jako Raspberry Pi lub jako serwer przemysłowy. Po skonfigurowaniu urządzenia przy użyciu środowiska uruchomieniowego IoT Edge można rozpocząć wdrażanie logiki biznesowej z poziomu chmury.
+Środowisko uruchomieniowe usługi Azure IoT Edge to, co jest przekształcany urządzenia urządzenia usługi IoT Edge. Środowisko uruchomieniowe można wdrożyć na urządzeniach jako małej, jak Raspberry Pi lub tak duże jak serwer przemysłowe. Gdy urządzenie zostanie skonfigurowany ze środowiskiem uruchomieniowym usługi IoT Edge, możesz rozpocząć wdrażanie logikę biznesową w chmurze.
 
-Aby dowiedzieć się więcej o tym, jak działa środowisko uruchomieniowe IoT Edge i jakie składniki są uwzględnione, zobacz [Omówienie środowiska uruchomieniowego Azure IoT Edge i jego architektury](iot-edge-runtime.md).
+Aby dowiedzieć się więcej na temat sposobu działania środowiska uruchomieniowego usługi IoT Edge i jakie składniki wchodzą, zobacz [zrozumieć środowisko uruchomieniowe usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md).
 
 W tym artykule przedstawiono procedurę uruchamiania środowiska uruchomieniowego Azure IoT Edge na maszynie wirtualnej z systemem Windows Server 2019 przy użyciu oferty [systemu Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace. Postępuj zgodnie z instrukcjami w obszarze [Instalowanie środowiska uruchomieniowego Azure IoT Edge](how-to-install-iot-edge-windows.md) w systemie Windows, aby używać go z innymi wersjami.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Wdrażanie z poziomu portalu Azure Marketplace
 
-1.  Przejdź do oferty [systemu Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace lub wyszukiwania "Windows Server" w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/)
-2.  Wybierz pozycję **Pobierz teraz** 
-3.  W **planie oprogramowania**Znajdź pozycję "Windows Server 2019 Datacenter Server Core with Containers", a następnie wybierz pozycję **Kontynuuj** w następnym oknie dialogowym.
+1. Przejdź do oferty [systemu Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace lub wyszukiwania "Windows Server" w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/)
+2. Wybierz pozycję **Pobierz teraz**
+3. W **planie oprogramowania**Znajdź pozycję "Windows Server 2019 Datacenter Server Core with Containers", a następnie wybierz pozycję **Kontynuuj** w następnym oknie dialogowym.
     * Możesz również użyć tych instrukcji dla innych wersji systemu Windows Server z kontenerami
-4.  Raz w Azure Portal wybierz pozycję **Utwórz** i postępuj zgodnie z instrukcjami kreatora, aby wdrożyć maszynę wirtualną. 
-    *   Jeśli po raz pierwszy wypróbuje maszynę wirtualną, najłatwiej jest użyć hasła i włączyć protokół RDP i SSH w menu Publiczny port wejściowy. 
-    *   W przypadku obciążeń intensywnie korzystających z zasobów należy uaktualnić rozmiar maszyny wirtualnej, dodając więcej procesorów CPU i/lub pamięć.
-5.  Po wdrożeniu maszyny wirtualnej skonfiguruj ją w celu nawiązania połączenia z IoT Hub:
-    1.  Skopiuj parametry połączenia z urządzeniem IoT Edge utworzone w IoT Hub. Zobacz procedurę [pobieranie parametrów połączenia w Azure Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
-    1.  Wybierz nowo utworzony zasób maszyny wirtualnej z Azure Portal i Otwórz opcję **Uruchom polecenie**
-    1.  Wybierz opcję **RunPowerShellScript**
-    1.  Skopiuj ten skrypt do okna poleceń z parametrami połączenia urządzenia: 
+4. Raz w Azure Portal wybierz pozycję **Utwórz** i postępuj zgodnie z instrukcjami kreatora, aby wdrożyć maszynę wirtualną.
+    * Jeśli po raz pierwszy wypróbuje maszynę wirtualną, najłatwiej jest użyć hasła i włączyć protokół RDP i SSH w menu Publiczny port wejściowy.
+    * W przypadku obciążeń intensywnie korzystających z zasobów należy uaktualnić rozmiar maszyny wirtualnej, dodając więcej procesorów CPU i/lub pamięć.
+5. Po wdrożeniu maszyny wirtualnej skonfiguruj ją w celu nawiązania połączenia z IoT Hub:
+    1. Skopiuj parametry połączenia z urządzeniem IoT Edge utworzone w IoT Hub. Zobacz procedurę [pobieranie parametrów połączenia w Azure Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
+    1. Wybierz nowo utworzony zasób maszyny wirtualnej z Azure Portal i Otwórz opcję **Uruchom polecenie**
+    1. Wybierz opcję **RunPowerShellScript**
+    1. Skopiuj ten skrypt do okna poleceń z parametrami połączenia urządzenia:
+
         ```powershell
         . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
         Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'
         ```
-    1.  Wykonaj skrypt, aby zainstalować środowisko uruchomieniowe IoT Edge i ustawić parametry połączenia, wybierając pozycję **Uruchom** .
-    1.  Po minucie lub dwóch powinien zostać wyświetlony komunikat informujący o pomyślnym zainstalowaniu środowiska uruchomieniowego Edge i zainicjowaniu obsługi administracyjnej.
+
+    1. Wykonaj skrypt, aby zainstalować środowisko uruchomieniowe IoT Edge i ustawić parametry połączenia, wybierając pozycję **Uruchom** .
+    1. Po minucie lub dwóch powinien zostać wyświetlony komunikat informujący o pomyślnym zainstalowaniu środowiska uruchomieniowego Edge i zainicjowaniu obsługi administracyjnej.
 
 ## <a name="deploy-from-the-azure-portal"></a>Wdróż z Azure Portal
 
-1. W Azure Portal Wyszukaj ciąg "Windows Server" i wybierz pozycję **Windows server 2019 Datacenter** , aby rozpocząć przepływ pracy tworzenia maszyny wirtualnej. 
+1. W Azure Portal Wyszukaj ciąg "Windows Server" i wybierz pozycję **Windows server 2019 Datacenter** , aby rozpocząć przepływ pracy tworzenia maszyny wirtualnej.
 2. W obszarze **Wybierz plan oprogramowania** wybierz pozycję "Windows Server 2019 Datacenter Server Core with Containers", a następnie wybierz pozycję **Utwórz** .
 3. Ukończ krok 5 w sekcji "wdrażanie z poziomu portalu Azure Marketplace" powyżej.
 
@@ -69,7 +71,7 @@ W tym artykule przedstawiono procedurę uruchamiania środowiska uruchomienioweg
    1. Skopiuj pole identyfikatora subskrypcji, którego chcesz użyć
    1. Uruchom to polecenie z skopiowanym IDENTYFIKATORem:
 
-      ```azurecli-interactive 
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
 
@@ -96,7 +98,7 @@ W tym artykule przedstawiono procedurę uruchamiania środowiska uruchomienioweg
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy masz zainstalowaną IoT Edge urządzenie z zainstalowanym środowiskiem uruchomieniowym, możesz [wdrożyć moduły IoT Edge](how-to-deploy-modules-portal.md).
+Teraz, gdy masz urządzenia usługi IoT Edge zaopatrzony zainstalowanego środowiska uruchomieniowego, można [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md).
 
 Jeśli masz problemy z instalacją środowiska uruchomieniowego Edge prawidłowo, zapoznaj się ze stroną [rozwiązywania problemów](troubleshoot.md) .
 

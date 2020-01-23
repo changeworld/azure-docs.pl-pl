@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d3dc951c8cb2948a4cd0b9d9f5c2a9b213c6e7e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186537"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514990"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Pracuj z poprzednią wersją Azure Migrate
 
@@ -76,7 +76,7 @@ Komputer jest przenoszony tylko do późniejszego etapu, jeśli przekaże poprze
 
 Widok gotowości platformy Azure w ocenie przedstawia stan gotowości każdej maszyny wirtualnej.
 
-**Gotowości** | **Państwu** | **Szczegóły**
+**Gotowości** | **State** | **Szczegóły**
 --- | --- | ---
 Gotowa na platformę Azure | Brak problemów ze zgodnością. Maszynę można migrować na platformę Azure i uruchamiać ją na platformie Azure z pełną pomocą techniczną platformy Azure. | W przypadku maszyn wirtualnych, które są gotowe do migracji, usługa Azure Migrate wyświetla zalecany rozmiar maszyny wirtualnej na platformie Azure.
 Warunkowo gotowa na platformę Azure | Komputer może przeprowadzić rozruch na platformie Azure, ale może nie mieć pełnej pomocy technicznej platformy Azure. Na przykład maszyna ze starszą wersją systemu Windows Server, która nie jest obsługiwana na platformie Azure. | Azure Migrate objaśnia problemy z gotowością i zawiera czynności zaradcze.
@@ -92,7 +92,7 @@ Gotowość uwzględnia wiele właściwości maszyn wirtualnych, aby określić, 
 --- | --- | ---
 **Typ rozruchu** | Obsługiwane przez system BIOS. Interfejs UEFI nie jest obsługiwany. | Warunkowo gotowe, jeśli typ rozruchu to UEFI.
 **Rdzeni** | Komputery Core < = Maksymalna liczba rdzeni (128) obsługiwana przez maszynę wirtualną platformy Azure.<br/><br/> Jeśli historia wydajności jest dostępna, Azure Migrate traktuje wykorzystane rdzenie.<br/>Jeśli czynnik komfortu jest określony w ustawieniach oceny, Liczba użytych rdzeni jest mnożona przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii wydajności, Azure Migrate używa przyznanych rdzeni, bez zastosowania współczynnika komfortu. | Gotowe, jeśli jest mniejsze lub równe limitom.
-**Rozmiar** | Rozmiar pamięci maszyny < = Maksymalna ilość pamięci (3892 GB na platformie Azure M Series Standard_M128m&nbsp;<sup>2</sup>) dla maszyny wirtualnej platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Jeśli historia wydajności jest dostępna, Azure Migrate uważa wykorzystanie pamięci.<br/><br/>W przypadku określenia współczynnika komfortu wykorzystanie pamięci jest mnożone przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii, przydzieloną pamięć jest używana, bez zastosowania współczynnika komfortu.<br/><br/> | Gotowe, jeśli w ramach limitów.
+**Pamięć** | Rozmiar pamięci maszyny < = Maksymalna ilość pamięci (3892 GB na platformie Azure M Series Standard_M128m&nbsp;<sup>2</sup>) dla maszyny wirtualnej platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Jeśli historia wydajności jest dostępna, Azure Migrate uważa wykorzystanie pamięci.<br/><br/>W przypadku określenia współczynnika komfortu wykorzystanie pamięci jest mnożone przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii, przydzieloną pamięć jest używana, bez zastosowania współczynnika komfortu.<br/><br/> | Gotowe, jeśli w ramach limitów.
 **Dysk magazynu** | Przydzielony rozmiar dysku musi mieć wartość 4 TB (4096 GB) lub mniejszą.<br/><br/> Liczba dysków dołączonych do maszyny musi być 65 lub mniejsza, łącznie z dyskiem systemu operacyjnego. | Gotowe, jeśli w ramach limitów.
 **Sieć** | Maszyna musi mieć dołączoną 32 lub mniej kart sieciowych. | Gotowe, jeśli w ramach limitów.
 
@@ -130,7 +130,7 @@ System operacyjny określony jako **inny** w vCenter Server | W takim przypadku 
 - Jeśli ustalanie rozmiaru jest oparte na wydajności, zalecenie dotyczące rozmiaru traktuje historię wydajności maszyn wirtualnych (procesora i pamięci) oraz dysków (IOPS i przepływność).
 - Jeśli kryterium ustalania rozmiaru jest "jako lokalne", zalecenie dotyczące rozmiaru na platformie Azure jest zależne od rozmiaru maszyny wirtualnej w środowisku lokalnym. Rozmiar dysku jest oparty na typie magazynu określonym we właściwościach oceny (domyślnie są to dyski w warstwie Premium). Azure Migrate nie uwzględnia danych wydajności dla maszyny wirtualnej i dysków.
 
-### <a name="review-cost-estimates"></a>Przejrzyj oszacowania kosztów
+### <a name="review-cost-estimates"></a>Przegląd szacowanych kosztów
 
 Szacunkowe koszty przedstawiają łączny koszt obliczeń i magazynu na potrzeby uruchamiania maszyn wirtualnych na platformie Azure wraz ze szczegółami dla każdej maszyny.
 
@@ -216,7 +216,7 @@ Po skonfigurowaniu obszaru roboczego należy pobrać i zainstalować agentów na
 4. Skopiuj identyfikator i klucz obszaru roboczego. Są one potrzebne po zainstalowaniu MMA na maszynie lokalnej.
 
 > [!NOTE]
-> Aby zautomatyzować instalację agentów, można użyć narzędzia do wdrażania, takiego jak System Center Configuration Manager lub narzędzia partnerskiego, takiego jak [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), które zapewnia rozwiązanie do wdrażania agentów dla Azure Migrate.
+> Aby zautomatyzować instalację agentów, można użyć narzędzia do wdrażania, takiego jak Configuration Manager lub narzędzia partnerskiego, takiego jak [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), które zapewnia rozwiązanie do wdrażania agentów dla Azure Migrate.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>Instalowanie agenta MMA na komputerze z systemem Windows
@@ -229,7 +229,7 @@ Aby zainstalować agenta na komputerze z systemem Windows:
 4. W obszarze **Opcje instalacji agenta**wybierz pozycję **Azure log Analytics** > **dalej**.
 5. Kliknij przycisk **Dodaj** , aby dodać nowy obszar roboczy log Analytics. Wklej w obszarze Identyfikator i klucz obszaru roboczego skopiowane z portalu. Kliknij przycisk **Dalej**.
 
-Agenta można zainstalować z poziomu wiersza polecenia lub przy użyciu metody zautomatyzowanej, takiej jak System Center Configuration Manager. [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) na temat korzystania z tych metod w celu zainstalowania agenta MMA.
+Agenta można zainstalować z poziomu wiersza polecenia lub przy użyciu metody zautomatyzowanej, takiej jak Configuration Manager. [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) na temat korzystania z tych metod w celu zainstalowania agenta MMA.
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Instalowanie agenta MMA na komputerze z systemem Linux
 

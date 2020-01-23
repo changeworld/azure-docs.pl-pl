@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424816"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512593"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Instrukcje: wymaganie zarządzanych urządzeń dla dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 
@@ -69,7 +69,7 @@ To ustawienie dotyczy tylko urządzeń z systemem Windows 10 lub niższego pozio
 
 ![Warunki oparte na urządzeniach](./media/require-managed-devices/45.png)
 
-Co sprawia, że urządzenie dołączone do hybrydowej usługi Azure AD jest urządzeniem zarządzanym?  W przypadku urządzeń, które są przyłączone do lokalnej usługi AD, zakłada się, że kontrola nad tymi urządzeniami jest wymuszana przy użyciu rozwiązań do zarządzania, takich jak **System Center Configuration Manager (SCCM)** lub **zasady grupy (GP)** w celu zarządzania nimi. Ponieważ nie ma metody usługi Azure AD w celu ustalenia, czy którakolwiek z tych metod została zastosowana do urządzenia, wymaganie hybrydowego urządzenia dołączonego do usługi Azure AD jest stosunkowo słabym mechanizmem wymaganym przez urządzenie zarządzane. Administratorzy mogą ocenić, czy metody, które są stosowane do lokalnych urządzeń przyłączonych do domeny, są wystarczająco duże, aby stanowiły urządzenie zarządzane, jeśli takie urządzenie jest również urządzeniem przyłączonym do hybrydowej usługi Azure AD.
+Co sprawia, że urządzenie dołączone do hybrydowej usługi Azure AD jest urządzeniem zarządzanym?  W przypadku urządzeń, które są przyłączone do lokalnej usługi AD, zakłada się, że kontrola nad tymi urządzeniami jest wymuszana przy użyciu rozwiązań do zarządzania, takich jak **Configuration Manager** lub **zasady grupy (GP)** w celu zarządzania nimi. Ponieważ nie ma metody usługi Azure AD w celu ustalenia, czy którakolwiek z tych metod została zastosowana do urządzenia, wymaganie hybrydowego urządzenia dołączonego do usługi Azure AD jest stosunkowo słabym mechanizmem wymaganym przez urządzenie zarządzane. Administratorzy mogą ocenić, czy metody, które są stosowane do lokalnych urządzeń przyłączonych do domeny, są wystarczająco duże, aby stanowiły urządzenie zarządzane, jeśli takie urządzenie jest również urządzeniem przyłączonym do hybrydowej usługi Azure AD.
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>Wymagaj, aby urządzenie było oznaczone jako zgodne
 

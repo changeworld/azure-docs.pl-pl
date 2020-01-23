@@ -1,5 +1,5 @@
 ---
-title: Używanie interfejsów API Video Indexer do dostosowywania modelu języka — Azure
+title: Używanie interfejsów API Video Indexer do dostosowywania modeli języków — Azure
 titlesuffix: Azure Media Services
 description: W tym artykule pokazano, jak dostosować model języka za pomocą interfejsów API Video Indexer.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: b7517c8a8745569635a9570c02c851854eebeb96
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: e8df7ffd285b0d49f5d4a87585e769b5b0bbafe9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289496"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513154"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Dostosowywanie modelu języka za pomocą interfejsów API Video Indexer
 

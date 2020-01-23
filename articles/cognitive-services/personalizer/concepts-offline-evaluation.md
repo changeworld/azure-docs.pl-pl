@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953087"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513613"
 ---
 # <a name="offline-evaluation"></a>Ocena w trybie offline
 
-Ocena w trybie offline to metoda, która umożliwia testowanie i ocenianie skuteczności usługi personalizacji bez zmiany kodu lub wpływu na środowisko użytkownika. W ocenie w trybie offline są używane wcześniejsze dane wysyłane z aplikacji do interfejsu API rangi w celu porównania, w jaki sposób różne Range zostały wykonane.
+Ocena w trybie offline to metoda, która umożliwia testowanie i ocenianie skuteczności usługi personalizacji bez zmiany kodu lub wpływu na środowisko użytkownika. W ocenie w trybie offline są używane wcześniejsze dane wysyłane z aplikacji do interfejsów API rangi i nagradzania w celu porównania, jak różne Range zostały wykonane.
 
 Ocena w trybie offline jest wykonywana w zakresie dat. Zakres może kończyć się najpóźniej jako bieżący czas. Początek zakresu nie może być większy niż liczba dni określona do [przechowywania danych](how-to-settings.md).
 
@@ -56,9 +56,9 @@ Po uruchomieniu oceny w trybie offline bardzo ważne jest przeanalizowanie _gran
 
 ## <a name="how-offline-evaluations-are-done"></a>Jak są wykonywane oceny w trybie offline
 
-Oceny w trybie offline są wykonywane przy użyciu metody o nazwie **Counterfactual Evaluation**. 
+Oceny w trybie offline są wykonywane przy użyciu metody o nazwie **Counterfactual Evaluation**.
 
-Personalizacja jest oparta na założeniu, że zachowanie użytkowników (i w ten sposób jest niemożliwy do przewidzenia z mocą wsteczną) (personalizowanie nie może wiedzieć, co się stało, jeśli użytkownik wykazał coś innego niż zobaczysz) i tylko poznanie mierzone nagrody. 
+Personalizacja jest oparta na założeniu, że zachowanie użytkowników (i w ten sposób jest niemożliwy do przewidzenia z mocą wsteczną) (personalizowanie nie może wiedzieć, co się stało, jeśli użytkownik wykazał coś innego niż zobaczysz) i tylko poznanie mierzone nagrody.
 
 Jest to proces koncepcyjny używany do oceny:
 
@@ -70,11 +70,11 @@ Jest to proces koncepcyjny używany do oceny:
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.

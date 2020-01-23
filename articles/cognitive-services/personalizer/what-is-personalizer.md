@@ -8,68 +8,97 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 756363d0c46dee6f7d0037fda48ab22dbdaeb0b0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707947"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514308"
 ---
 # <a name="what-is-personalizer"></a>Co to jest usługa Personalizacja?
 
-Personalizacja Azure to oparta na chmurze usługa interfejsu API, która umożliwia aplikacji wybranie najlepszego środowiska do wyświetlania użytkownikom, uczenie się od ich zbiorczego zachowania w czasie rzeczywistym.
+Personalizacja Azure to oparta na chmurze usługa interfejsu API, która pomaga aplikacji klienckiej wybrać najlepszy, pojedynczy element _zawartości_ , aby wyświetlić każdego użytkownika. Usługa wybiera najlepszy element z elementów zawartości w oparciu o zbiorowe informacje w czasie rzeczywistym, które zapewnia zawartość i kontekst.
 
-* Podaj informacje o użytkownikach i zawartości oraz Odbierz najważniejsze akcje, aby pokazać użytkowników. 
-* Nie ma potrzeby czyszczenia i etykietowania danych przed użyciem narzędzia Personalizacja.
-* Prześlij opinię na temat personalizowania, gdy jest to wygodne. 
-* Wyświetlanie analizy w czasie rzeczywistym. 
+Po zaprezentowaniu elementu zawartości użytkownikowi system monitoruje zachowanie użytkownika i raportuje wynik odnoszący się do personalizacji, aby zwiększyć jego zdolność do wybierania najlepszej zawartości na podstawie otrzymanych informacji kontekstowych.
 
-Zobacz pokaz działania narzędzia [Personalizacja](https://personalizercontentdemo.azurewebsites.net/)
+**Zawartość** może być dowolną jednostką informacji, taką jak tekst, obrazy, adresy URL lub wiadomości e-mail, które chcesz wybrać, aby pokazać użytkownikowi.
 
-## <a name="how-does-personalizer-work"></a>Jak działa program Personalizuj?
+<!--
+![What is personalizer animation](./media/what-is-personalizer.gif)
+-->
 
-Personalizacja korzysta z modeli uczenia maszynowego w celu ustalenia, jakie działania mają najwyższy rangę w kontekście. Aplikacja kliencka zawiera listę możliwych akcji z informacjami o nich; i informacje o kontekście, które mogą zawierać informacje o użytkowniku, urządzeniu itp. Personalizacja określa akcję do wykonania. Gdy aplikacja kliencka użyje wybranej akcji, zapewnia ona informacje zwrotne do personalizacji w formie nagrody. Po otrzymaniu opinii Personalizowanie automatycznie aktualizuje własny model używany do przyszłych rangi. W miarę upływu czasu Personalizacja będzie szkolić jeden model, który może sugerować najlepszą akcję do wyboru w każdym kontekście na podstawie ich funkcji.
+## <a name="how-does-personalizer-select-the-best-content-item"></a>Jak Personalizował wybór najlepszego elementu zawartości?
 
-## <a name="how-do-i-use-the-personalizer"></a>Jak mogę użyć personalizacji?
+Personalizacja korzysta z **uczenia wzmacniania** , aby wybrać najlepszy element (_akcję_) w oparciu o wspólne zachowanie i nagrody dla wszystkich użytkowników. Akcje to elementy zawartości, takie jak artykuły z wiadomościami, określone filmy lub produkty do wyboru.
 
-![Używanie narzędzia personalizacji do wybierania wideo, które ma być wyświetlane użytkownikowi](media/what-is-personalizer/personalizer-example-highlevel.png)
+Wywołanie **rangi** przyjmuje element akcji, a także funkcje akcji i funkcji kontekstu, aby wybrać górny element akcji:
 
-1. Wybierz środowisko w aplikacji, aby spersonalizować.
-1. Utwórz i skonfiguruj wystąpienie usługi personalizacji w Azure Portal. Każde wystąpienie jest pętlą personalizacji.
-1. Użyj [interfejsu API rangi](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) , aby wywołać narzędzia do personalizowania z informacjami (_funkcjami_) dotyczącymi użytkowników i zawartością (_Akcje_). Nie musisz podawać czystych danych z etykietami przed użyciem narzędzia Personalizacja. Interfejsy API mogą być wywoływane bezpośrednio lub przy użyciu zestawów SDK dostępnych dla różnych języków programowania.
-1. W aplikacji klienckiej Pokaż użytkownika akcję wybraną przez program Personalizujer.
-1. Za pomocą [interfejsu API nagradzania](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) można przekazać Opinie do programu Personalizacja wskazujące, czy użytkownik zaznaczył akcję Personalizuj. To jest _[wynik nagrody](concept-rewards.md)_ .
-1. Wyświetl analizę w Azure Portal, aby oszacować, jak działa system oraz jak dane pomagają w personalizacji.
+* **Akcje z funkcjami** — elementy zawartości z funkcjami specyficznymi dla każdego elementu
+* **Funkcje kontekstu** — funkcje użytkowników, ich kontekst lub środowisko w przypadku korzystania z aplikacji
 
-## <a name="where-can-i-use-personalizer"></a>Gdzie mogę używać personalizacji?
+Wywołanie rangi zwraca identyfikator, dla którego element zawartości, __akcję__, która ma być wyświetlana użytkownikowi, w polu **Identyfikator akcji nagrody** .
+__Akcja__ pokazywana użytkownikowi jest wybierana z modelami uczenia maszynowego, co pozwala zwiększyć łączną ilość korzyści w czasie.
 
-Na przykład aplikacja kliencka może dodać personalizację do:
+Oto kilka przykładowych scenariuszy:
 
-* Personalizowanie artykułu wyróżnionego w witrynie sieci Web wiadomości.    
-* Optymalizacja umieszczania w usłudze AD w witrynie sieci Web.
-* Wyświetl spersonalizowany "zalecany element" w witrynie internetowej dotyczącej zakupów.
-* Sugeruj elementy interfejsu użytkownika, takie jak filtry, aby zastosować je do określonego zdjęcia.
-* Wybierz odpowiedź bot rozmowy, aby wyjaśnić intencję użytkownika lub zasugerować akcję.
-* Ustalanie priorytetów sugestii, jakie użytkownik powinien wykonać w następnym kroku w procesie biznesowym.
+|Typ zawartości|**Akcje (z funkcjami)**|**Funkcje kontekstu**|Identyfikator akcji zwrotu<br>(Wyświetl tę zawartość)|
+|--|--|--|--|
+|Lista wiadomości|a. `The president...` (National, polityka, [text])<br>b. `Premier League ...` (globalne, sportowe, [tekst, obraz, wideo])<br> d. `Hurricane in the ...` (regionalny, Pogoda, [tekst, obraz]|Wiadomości z urządzenia są odczytywane z<br>Miesiąc lub sezon<br>|`The president...`|
+|Lista filmów|1. `Star Wars` (1977, [Action, Adventure, fantastykę], George Lucas)<br>2. `Hoop Dreams` (1994, [dokumentacja, Sport], Steve Kuba<br>3. `Casablanca` (1942, [Romański, dramat, War], Michael Curtiz)|Film urządzenia jest oglądany z<br>rozmiar ekranu<br>Typ użytkownika<br>|3. `Casablanca`|
+|Lista produktów|i. `Product A` (3 kg, $ $ $, Dostarcz w ciągu 24 godzin)<br>ii. `Product B` (20 kg, $ $, 2 tygodnie wysyłki z cłem)<br>iii. `Product C` (3 kg, $ $ $, dostarczenie w ciągu 48 godzin)|Odczytane są zakupy urządzeń<br>Warstwa wydatków użytkownika<br>Miesiąc lub sezon|ii. `Product B`|
 
-Program personalizujer nie jest usługą do utrwalania informacji o profilu użytkownika i zarządzania nimi, a także do rejestrowania preferencji lub historii poszczególnych użytkowników. Personalizacja uczy się od funkcji każdej interakcji w akcji kontekstu w jednym modelu, który może uzyskać maksymalne nagrody w przypadku wystąpienia podobnych funkcji. 
+Personalizacja wykorzystuje uczenie wzmacniające, aby wybrać jedną najlepszą akcję, znaną jako _premiowy Identyfikator akcji_, na podstawie kombinacji:
+* Przeszkolony model — przeszła informacja, że odebrano usługę personalizacji
+* Bieżące akcje specyficzne dla danych z funkcjami i funkcjami kontekstu
 
-## <a name="personalization-for-developers"></a>Personalizacja dla deweloperów
+## <a name="when-to-call-personalizer"></a>Kiedy można wywołać personalizację
 
-Usługa personalizacji ma dwa interfejsy API:
+[Interfejs API](https://go.microsoft.com/fwlink/?linkid=2092082) **rangi** personalizacji jest wywoływany za _każdym razem, gdy_ zawartość jest wyświetlana w czasie rzeczywistym. Jest to znane jako **zdarzenie**z _identyfikatorem zdarzenia_.
 
-* *Ranga*: Użyj interfejsu API rangi, aby określić, która _Akcja_ ma być wyświetlana w bieżącym _kontekście_. Akcje są wysyłane jako tablica obiektów JSON, z IDENTYFIKATORem i informacjami o każdej znich. kontekst jest wysyłany jako inny obiekt JSON. Interfejs API zwraca identyfikator akcji, że aplikacja powinna być renderowana dla użytkownika.
-* *Wynagrodzenie*: gdy użytkownik współdziała z Twoją aplikacją, mierzę, jak dobrze działa Personalizacja jako liczbę z zakresu od 0 do 1 i wyślij ją jako [wynik nagrody](concept-rewards.md). 
+[Interfejs API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) **nagradzania** personalizacji może być wywoływany w czasie rzeczywistym lub w celu lepszego dopasowania do infrastruktury. Możesz określić wynik nagrody w zależności od potrzeb firmy. Może to być pojedyncza wartość, taka jak 1 dla dobra, i 0 dla nieprawidłowych lub liczba generowana przez algorytm, który ma wpływ na cele biznesowe i metryki.
 
-![Podstawowa sekwencja zdarzeń dla personalizacji](media/what-is-personalizer/personalization-intro.png)
+## <a name="personalizer-content-requirements"></a>Wymagania dotyczące zawartości dla personalizacji
+
+Użyj personalizacji, gdy Twoja zawartość:
+
+* Ma ograniczony zestaw elementów (maks. ~ 50) do wyboru. Jeśli masz większą listę, [Użyj aparatu rekomendacji](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines) , aby zmniejszyć listę do 50 elementów.
+* Zawiera informacje opisujące zawartość, którą chcesz klasyfikować: _akcje z funkcjami_ i _funkcjami kontekstu_.
+* Ma co najmniej ~ KB/dzień zdarzeń związanych z zawartością dla personalizacji, aby można było efektywnie. Jeśli Personalizacja nie odbiera minimalnych wymagań dotyczących ruchu, usługa zajmuje więcej czasu na ustalenie pojedynczego elementu zawartości.
+
+Ponieważ program Personalizujer używa informacji zbiorczych niemal w czasie rzeczywistym w celu zwrócenia jednego najlepszego elementu zawartości, usługa nie:
+* Utrwalanie informacji o profilu użytkownika i zarządzanie nimi
+* Rejestruj preferencje lub historię poszczególnych użytkowników
+* Wymagaj oczyszczonej i oznaczonej etykietą zawartości
+
+## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Jak projektować i implementować Personalizowanie dla aplikacji klienckiej
+
+1. [Projektuj](concepts-features.md) i planuj zawartość, **_Akcje_** i **_kontekst_** . Ustal algorytm nagrody dla wyniku **_nagrody_** .
+1. Każdy utworzony [zasób Personalizuj](how-to-settings.md) jest uznawany za 1 pętlę uczenia. Pętla otrzyma zarówno wywołania rangi, jak i nagrody dla tej zawartości lub środowiska użytkownika.
+1. Dodaj personalizację do witryny sieci Web lub systemu zawartości:
+    1. Dodaj wywołanie **rangi** do personalizacji w aplikacji, w witrynie sieci Web lub w systemie, aby określić najlepsze, pojedyncze elementy _zawartości_ przed wyświetleniem zawartości dla użytkownika.
+    1. Wyświetlaj najlepsze, pojedyncze elementy _zawartości_ , które są ZWRÓCONYm _identyfikatorem akcji z wynagrodzeniem_do użytkownika.
+    1. Zastosuj _algorytm_ do zebranych informacji o sposobie zachowania użytkownika, aby określić wynik **nagrody** , na przykład:
+
+        |Zachowanie|Obliczony wynik nagrody|
+        |--|--|
+        |Wybrany użytkownik: najlepszy, pojedynczy element _zawartości_ (Identyfikator akcji nagradzania)|**1**|
+        |Użytkownik zaznaczył inną zawartość|**0**|
+        |Użytkownik wstrzymał pracę, przewijając się w sposób niedecydujący, przed wybraniem najlepszego, pojedynczego elementu _zawartości_ (Identyfikator akcji nagradzania)|**0,5**|
+
+    1. Dodaj wywołanie **zarobkowe** wysyłające wynik nagrody z zakresu od 0 do 1
+        * Natychmiast po pokazywania zawartości
+        * Lub w późniejszym czasie w systemie offline
+    1. [Oceń pętlę](concepts-offline-evaluation.md) z oceną w trybie offline po upływie okresu użytkowania. Ocena w trybie offline umożliwia testowanie i ocenianie skuteczności usługi personalizacji bez zmiany kodu lub wpływu na środowisko użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Co nowego w personalizacji?](whats-new.md)
-* [Jak działa program Personalizuj?](how-personalizer-works.md)
+
+* [Jak działa Personalizacja](how-personalizer-works.md)
 * [Co to jest uczenie wzmacniania?](concepts-reinforcement-learning.md)
 * [Informacje o funkcjach i akcjach dotyczących żądania rangi](concepts-features.md)
 * [Dowiedz się więcej na temat określania wyniku żądania nagrody](concept-rewards.md)
+* [Przewodniki Szybki start]()
+* [Samouczek]()
 * [Korzystanie z demonstracji interaktywnej](https://personalizationdemo.azurewebsites.net/)

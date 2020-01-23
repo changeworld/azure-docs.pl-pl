@@ -3,14 +3,14 @@ title: Update Management rozwiązanie na platformie Azure
 description: W tym artykule opisano sposób korzystania z rozwiązania Update Management platformy Azure do zarządzania aktualizacjami komputerów z systemami Windows i Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 01/14/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945123"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513324"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -71,8 +71,9 @@ W poniższej tabeli wymieniono systemy operacyjne obsługiwane w przypadku ocen 
 
 |System operacyjny  |Uwagi  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (wersja RTM i SP1 standard)||
-|CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Stosowanie poprawek opartych na klasyfikacji wymaga, aby `yum` zwracały dane zabezpieczeń, które nie są dostępne w jego wersjach RTM. Aby uzyskać więcej informacji na temat stosowania poprawek opartych na klasyfikacji na CentOS, zobacz [Aktualizacja klasyfikacji w systemie Linux](#linux-2).          |
+|Windows Server 2019 (Datacenter/Datacenter/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012 || 
+|Windows Server 2008 R2 (wersja RTM i SP1 standard)| Update Management obsługuje tylko wykonywanie ocen dla tego systemu operacyjnego, stosowanie poprawek nie jest obsługiwane, ponieważ [hybrydowy proces roboczy elementu Runbook](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) nie jest obsługiwany w przypadku systemu Windows Server 2008 R2. |
+|CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Stosowanie poprawek opartych na klasyfikacji wymaga, aby `yum` zwracały dane zabezpieczeń, które nie są dostępne w jego wersjach RTM. Aby uzyskać więcej informacji na temat stosowania poprawek opartych na klasyfikacji na CentOS, zobacz [Aktualizacja klasyfikacji w systemie Linux](automation-view-update-assessments.md#linux-2).          |
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |Ubuntu 14,04 LTS, 16,04 LTS i 18,04 (x86/x64)      |Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.         |
@@ -99,7 +100,7 @@ Poniższe informacje opisują wymagania klienta specyficzne dla systemu operacyj
 
 Agenci systemu Windows muszą być skonfigurowani do komunikowania się z serwerem WSUS lub muszą mieć dostęp do Microsoft Update.
 
-Możesz użyć Update Management z System Center Configuration Manager. Aby dowiedzieć się więcej na temat scenariuszy integracji, zobacz [integracja System Center Configuration Manager z Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration). Wymagany jest [Agent systemu Windows](../azure-monitor/platform/agent-windows.md) . Agent zostanie zainstalowany automatycznie, jeśli dołączysz maszynę wirtualną platformy Azure.
+Możesz użyć Update Management z Configuration Manager. Aby dowiedzieć się więcej na temat scenariuszy integracji, zobacz [integracja Configuration Manager z Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration). Wymagany jest [Agent systemu Windows](../azure-monitor/platform/agent-windows.md) . Agent zostanie zainstalowany automatycznie, jeśli dołączysz maszynę wirtualną platformy Azure.
 
 Domyślnie maszyny wirtualne z systemem Windows wdrożone z portalu Azure Marketplace są ustawione tak, aby otrzymywać aktualizacje automatyczne z usługi Windows Update. To zachowanie nie zmienia się po dodaniu tego rozwiązania lub dodaniu maszyn wirtualnych z systemem Windows do obszaru roboczego. Jeśli aktualizacje nie są aktywnie zarządzane przy użyciu tego rozwiązania, mają zastosowanie domyślne zachowanie (aby automatycznie zastosować aktualizacje).
 
@@ -241,15 +242,15 @@ Obecnie nie jest obsługiwana metoda umożliwiająca natywną klasyfikację — 
 
 Aby sklasyfikować aktualizacje w systemie Red Hat Enterprise w wersji 6, należy zainstalować wtyczkę yum-Security. W Red Hat Enterprise Linux 7 wtyczka jest już częścią yum, nie ma potrzeby instalowania żadnych elementów. Aby uzyskać więcej informacji, zobacz następujący [artykuł merytoryczny](https://access.redhat.com/solutions/10021)firmy Red Hat.
 
-## <a name="integrate-with-system-center-configuration-manager"></a>Integracja z programem System Center Configuration Manager
+## <a name="integrate-with-configuration-manager"></a>Integracja z programem Configuration Manager
 
-Klienci, którzy zainwestowali w System Center Configuration Manager do zarządzania komputerami, serwerami i urządzeniami przenośnymi, również opierają się na sile i dojrzałości Configuration Manager, aby ułatwić im zarządzanie aktualizacjami oprogramowania. Configuration Manager jest częścią cyklu zarządzania aktualizacjami oprogramowania (SUM).
+Klienci, którzy zainwestowali w Configuration Manager Microsoft Endpoint Protection w celu zarządzania komputerami, serwerami i urządzeniami przenośnymi, również opierają się na sile i dojrzałości Configuration Manager, aby ułatwić im zarządzanie aktualizacjami oprogramowania. Configuration Manager jest częścią cyklu zarządzania aktualizacjami oprogramowania (SUM).
 
-Aby dowiedzieć się, jak zintegrować rozwiązanie do zarządzania z System Center Configuration Manager, zobacz [integrowanie System Center Configuration Manager z Update Management](oms-solution-updatemgmt-sccmintegration.md).
+Aby dowiedzieć się, jak zintegrować rozwiązanie do zarządzania z Configuration Manager, zobacz [integrowanie Configuration Manager z Update Management](oms-solution-updatemgmt-sccmintegration.md).
 
 ### <a name="third-party-patches-on-windows"></a>Poprawki innych firm w systemie Windows
 
-Update Management opiera się na lokalnie skonfigurowanym repozytorium aktualizacji w celu zastosowania poprawek obsługiwanych systemów Windows. Jest to program WSUS lub Windows Update. Narzędzia, takie jak [System Center Updates Publisher](/sccm/sum/tools/updates-publisher) (aktualizacje wydawcy), umożliwiają publikowanie niestandardowych aktualizacji w usługach WSUS. Ten scenariusz umożliwia Update Management poprawek maszyn, które używają System Center Configuration Manager jako repozytorium aktualizacji z oprogramowaniem innych firm. Aby dowiedzieć się, jak skonfigurować program Updates Publisher, zobacz [Install Updates Publisher](/sccm/sum/tools/install-updates-publisher).
+Update Management opiera się na lokalnie skonfigurowanym repozytorium aktualizacji w celu zastosowania poprawek obsługiwanych systemów Windows. Jest to program WSUS lub Windows Update. Narzędzia, takie jak [System Center Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) (aktualizacje wydawcy), umożliwiają publikowanie niestandardowych aktualizacji w usługach WSUS. Ten scenariusz umożliwia Update Management poprawek maszyn, które używają Configuration Manager jako repozytorium aktualizacji z oprogramowaniem innych firm. Aby dowiedzieć się, jak skonfigurować program Updates Publisher, zobacz [Install Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher).
 
 ## <a name="patch-linux-machines"></a>Poprawianie maszyn z systemem Linux
 

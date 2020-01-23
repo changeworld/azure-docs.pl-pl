@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z witryny sieci Web Video Indexer do dostosowywania modeli marek — Azure
+title: Dostosowywanie modeli marek na platformie Azure za pomocą witryny sieci Web Video Indexer
 titleSuffix: Azure Media Services
 description: W tym artykule pokazano, jak dostosować model marek przy użyciu witryny sieci Web Video Indexer.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: f4b2f7a8b43c1723beb0dd8da82814f74cd7b135
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 956ca7af055768398392045ecf9b383d2eb1060f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838343"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513902"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Dostosowywanie modelu marek przy użyciu witryny sieci Web Video Indexer
 

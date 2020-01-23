@@ -3,14 +3,16 @@ title: Korzystanie z usługi Azure Update Management z klientami Configuration M
 description: Ten artykuł ma na celu ułatwienie konfiguracji programu Microsoft Endpoint Configuration Manager przy użyciu tego rozwiązania w celu wdrażania aktualizacji oprogramowania na klientach programu ConfigMgr.
 services: automation
 ms.subservice: update-management
-ms.date: 03/19/2018
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9df401ec9c6d11bfef5d1d60833c855029f8ca01
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f0ca836e3b53c3cce755d45b50fe168073f0bbaa
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769952"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513137"
 ---
 # <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>Wdrażanie aktualizacji na klientach programu Microsoft Endpoint Configuration Manager z Update Management
 
@@ -25,7 +27,7 @@ Można zgłaszać i aktualizować zarządzane serwery Windows, tworząc i wstęp
 * Ta funkcja jest włączona w Configuration Manager bieżącej gałęzi w wersji 1606 lub nowszej. Aby zintegrować Configuration Manager centralną lokację administracyjną lub autonomiczną lokację główną z dziennikami Azure Monitor i importować kolekcje, przejrzyj [Configuration Manager połączenia w celu Azure monitor dzienników](../azure-monitor/platform/collect-sccm.md).  
 * Agenci dla systemu Windows muszą być skonfigurowani do komunikowania się z serwerem Windows Server Update Services (WSUS) albo mieć dostęp do usługi Microsoft Update, jeśli nie otrzymują aktualizacji zabezpieczeń z programu Configuration Manager.   
 
-To, w jaki sposób zarządzasz klientami hostowanymi w usłudze Azure IaaS za pomocą istniejącego środowiska programu Configuration Manager, zależy głównie od połączenia istniejącego między centrami danych platformy Azure a Twoją infrastrukturą. Połączenie to ma wpływ na wszelkie zmiany projektowe, których wprowadzenie do infrastruktury programu Configuration Manager może być konieczne, oraz wpływa na powiązane koszty obsługi tych niezbędnych zmian. Aby zrozumieć, jakie kwestie planowania należy ocenić przed kontynuowaniem, zobacz [Menedżer konfiguracji Azure — często zadawane pytania](/sccm/core/understand/configuration-manager-on-azure#networking).
+To, w jaki sposób zarządzasz klientami hostowanymi w usłudze Azure IaaS za pomocą istniejącego środowiska programu Configuration Manager, zależy głównie od połączenia istniejącego między centrami danych platformy Azure a Twoją infrastrukturą. Połączenie to ma wpływ na wszelkie zmiany projektowe, których wprowadzenie do infrastruktury programu Configuration Manager może być konieczne, oraz wpływa na powiązane koszty obsługi tych niezbędnych zmian. Aby zrozumieć, jakie kwestie planowania należy ocenić przed kontynuowaniem, zobacz [Menedżer konfiguracji Azure — często zadawane pytania](https://docs.microsoft.com/configmgr/core/understand/configuration-manager-on-azure#networking).
 
 ## <a name="configuration"></a>Konfigurowanie
 
@@ -33,7 +35,7 @@ To, w jaki sposób zarządzasz klientami hostowanymi w usłudze Azure IaaS za po
 
 Jeśli chcesz kontynuować zarządzanie wdrożeniami aktualizacji z programu Configuration Manager, wykonaj następujące kroki. Usługa Azure Automation nawiązuje połączenie z programem Configuration Manager do stosowania aktualizacji na komputerach klienckich, połączonego z obszarem roboczym usługi Log Analytics. Zawartość aktualizacji jest dostępna w pamięci podręcznej komputera klienckiego tak, jakby wdrożenie było zarządzane przez program Configuration Manager.
 
-1. Tworzenie wdrożenia aktualizacji oprogramowania z lokacji najwyższego poziomu w hierarchii programu Configuration Manager przy użyciu procesu opisanego w [procesie wdrażania aktualizacji oprogramowania](/sccm/sum/deploy-use/deploy-software-updates). Jedynym ustawieniem, które musi być skonfigurowane inaczej niż dla standardowego wdrożenia, jest opcja **Nie instaluj aktualizacji oprogramowania** służąca do sterowania zachowaniem pakietu wdrożeniowego podczas pobierania. To zachowanie jest zarządzane przez rozwiązanie do zarządzania aktualizacjami poprzez utworzenie planowego wdrożenia aktualizacji w następnym kroku.
+1. Utwórz wdrożenie aktualizacji oprogramowania z lokacji najwyższego poziomu w hierarchii Configuration Manager przy użyciu procesu opisanego w temacie [wdrażanie aktualizacji oprogramowania](https://docs.microsoft.com/configmgr/sum/deploy-use/deploy-software-updates). Jedynym ustawieniem, które musi być skonfigurowane inaczej niż dla standardowego wdrożenia, jest opcja **Nie instaluj aktualizacji oprogramowania** służąca do sterowania zachowaniem pakietu wdrożeniowego podczas pobierania. To zachowanie jest zarządzane przez rozwiązanie do zarządzania aktualizacjami poprzez utworzenie planowego wdrożenia aktualizacji w następnym kroku.
 
 1. W usłudze Azure Automation, wybierz **rozwiązania Update Management**. Utwórz nowe wdrożenie wykonując kroki opisane w [tworzenie wdrożenia aktualizacji](automation-tutorial-update-management.md#schedule-an-update-deployment) i wybierz **zaimportowane grupy** na **typu** listy rozwijanej można wybrać odpowiednią Kolekcja programu Configuration Manager. Należy pamiętać o następujących kwestiach:. Jeśli okno obsługi jest zdefiniowane w wybranej kolekcji urządzeń programu Configuration Manager, elementy członkowskie kolekcji przestrzegać go zamiast **czas trwania** ustawień zdefiniowanych w zaplanowanym wdrożeniu.
     b. Członkowie kolekcji docelowej muszą mieć połączenie z Internetem (bezpośrednio, za pośrednictwem serwera proxy lub za pośrednictwem bramy usługi Log Analytics).
@@ -42,7 +44,7 @@ Po zakończeniu wdrażania aktualizacji za pomocą usługi Azure Automation, kom
 
 ### <a name="manage-software-updates-from-azure-automation"></a>Zarządzanie aktualizacjami oprogramowania z usługi Azure Automation
 
-Do zarządzania aktualizacjami maszyn wirtualnych z systemem Windows Server, które są klientami programu Configuration Manager, należy skonfigurować zasady klienta, aby wyłączyć funkcję zarządzania aktualizacjami oprogramowania dla wszystkich klientów zarządzanych przez to rozwiązanie. Domyślnie ustawienia klienta dotyczą wszystkich urządzeń w hierarchii. Aby uzyskać więcej informacji na temat tego ustawienia, zasad i sposobu ich konfigurowania, przejrzyj artykuł [Jak skonfigurować ustawienia klienta w programie System Center Configuration Manager](/sccm/core/clients/deploy/configure-client-settings).
+Do zarządzania aktualizacjami maszyn wirtualnych z systemem Windows Server, które są klientami programu Configuration Manager, należy skonfigurować zasady klienta, aby wyłączyć funkcję zarządzania aktualizacjami oprogramowania dla wszystkich klientów zarządzanych przez to rozwiązanie. Domyślnie ustawienia klienta dotyczą wszystkich urządzeń w hierarchii. Aby uzyskać więcej informacji na temat tego ustawienia zasad i sposobu jego konfiguracji, zobacz [jak skonfigurować ustawienia klienta w Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/configure-client-settings).
 
 Po wprowadzeniu tej zmiany konfiguracji, możesz utworzyć nowe wdrożenie wykonując kroki opisane w [tworzenie wdrożenia aktualizacji](automation-tutorial-update-management.md#schedule-an-update-deployment) i wybierz **zaimportowane grupy** na **typu** listy rozwijanej można wybrać odpowiednią kolekcję programu Configuration Manager.
 

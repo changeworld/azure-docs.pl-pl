@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 060d94d6181e894c18d268845b48eb802c52730c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e5ce43e7cdf70c1f552a8f5bbed28ce47f1826fc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838288"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513222"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Dostosowywanie modelu osoby za pomocą witryny sieci Web Video Indexer
 
@@ -91,7 +91,7 @@ Możesz usunąć dowolny model osoby utworzony na Twoim koncie. Nie można jedna
 
     ![Usuwanie osoby](./media/customize-face-model/delete-person.png)
     
-    Zostanie wyświetlone okno podręczne, a następnie zostanie wyświetlony komunikat z informacją, że ta akcja spowoduje usunięcie modelu osoby i wszystkich osób i plików, które zawiera. Tej akcji nie można cofnąć. 
+    Zostanie wyświetlone okno podręczne, a następnie zostanie wyświetlony komunikat z informacją, że ta akcja spowoduje usunięcie modelu osoby i wszystkich osób i plików, które zawiera. Nie będzie można tego cofnąć. 
 
     ![Usuwanie osoby](./media/customize-face-model/delete-person2.png)
 1. Jeśli masz pewność, kliknij ponownie przycisk Usuń.
@@ -134,14 +134,14 @@ Aby skorzystać z modelu osoby na nowym filmie wideo, wykonaj następujące czyn
 
 1. Kliknij przycisk **Przekaż** w górnej części strony.
 
-    ![Upload](./media/customize-face-model/upload.png)
+    ![Przekazywanie](./media/customize-face-model/upload.png)
 1. Upuść plik wideo w okręgu lub Wyszukaj plik.
 1. Kliknij strzałkę opcje zaawansowane.
 
-    ![Upload](./media/customize-face-model/upload2.png)
+    ![Przekazywanie](./media/customize-face-model/upload2.png)
 1. Kliknij listę rozwijaną i wybierz utworzony przez siebie model osoby.
 
-    ![Upload](./media/customize-face-model/upload3.png)
+    ![Przekazywanie](./media/customize-face-model/upload3.png)
 1. Kliknij opcję Przekaż w dolnej części strony, a nowe wideo zostanie indeksowane przy użyciu modelu osoby.
 
 Jeśli model osoby nie zostanie określony podczas przekazywania, Video Indexer będzie indeksować wideo przy użyciu domyślnego modelu osoby na Twoim koncie.

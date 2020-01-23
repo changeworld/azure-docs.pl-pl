@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6cc37875b84e215066c52ca8daef0fa0d879c54f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12aa78d0ba7c9300fc012958660e2282e91568aa
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434472"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510825"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy
 
@@ -40,7 +40,7 @@ W tym artykule omówiono następujące cztery kroki konfigurowania urządzenia I
 
 4. **Dla wszystkich przyszłych wdrożeń modułu należy ustawić zmienne środowiskowe dla dowolnego modułu, który komunikuje się za pomocą serwera proxy.**
 
-   Gdy urządzenie IoT Edge zostanie skonfigurowane i połączone z IoT Hub za pomocą serwera proxy, należy zachować połączenie we wszystkich przyszłych wdrożeniach modułów. Szczegółowe instrukcje znajdują się w sekcji [Konfigurowanie manifestów wdrożenia](#configure-deployment-manifests) w tym artykule. 
+   Gdy urządzenie IoT Edge zostanie skonfigurowane i połączone z IoT Hub za pomocą serwera proxy, należy zachować połączenie we wszystkich przyszłych wdrożeniach modułów. Szczegółowe instrukcje znajdują się w sekcji [Konfigurowanie manifestów wdrożenia](#configure-deployment-manifests) w tym artykule.
 
    Ten krok to proces wykonywany zdalnie w taki sposób, że każdy nowy moduł lub aktualizacja wdrożenia utrzymuje zdolność urządzenia do komunikowania się za pomocą serwera proxy.
 
@@ -70,7 +70,7 @@ Jeśli instalujesz środowisko uruchomieniowe IoT Edge na urządzeniu z systemem
 
 Poniższe kroki przedstawiają przykład instalacji systemu Windows przy użyciu argumentu `-proxy`:
 
-1. Polecenie Invoke-WebRequest wymaga informacji o serwerze proxy w celu uzyskania dostępu do skryptu Instalatora. Następnie polecenie Deploy-IoTEdge wymaga informacji o serwerze proxy do pobrania plików instalacyjnych. 
+1. Polecenie Invoke-WebRequest wymaga informacji o serwerze proxy w celu uzyskania dostępu do skryptu Instalatora. Następnie polecenie Deploy-IoTEdge wymaga informacji o serwerze proxy do pobrania plików instalacyjnych.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
@@ -164,13 +164,13 @@ Restart-Service iotedge
 
 Agent IoT Edge to pierwszy moduł do uruchomienia na dowolnym IoT Edge urządzeniu. Jest ona uruchomiona po raz pierwszy, na podstawie informacji w pliku config.yaml usługi IoT Edge. Agent IoT Edge następnie łączy się z IoT Hub, aby pobrać manifesty wdrożenia, które deklarują, jakie inne moduły należy wdrożyć na urządzeniu.
 
-Ten krok odbywa się raz na urządzeniu IoT Edge podczas początkowego konfigurowania urządzenia. 
+Ten krok odbywa się raz na urządzeniu IoT Edge podczas początkowego konfigurowania urządzenia.
 
-1. Otwórz plik config.yaml na urządzeniu usługi IoT Edge. W systemach Linux, ten plik znajduje się w **/etc/iotedge/config.yaml**. W systemach Windows, ten plik znajduje się w **C:\ProgramData\iotedge\config.yaml**. Plik konfiguracji jest chroniony, dzięki czemu niezbędne są uprawnienia administracyjne do niego dostęp. W systemach Linux Użyj polecenia `sudo` przed otwarciem pliku w preferowanym edytorze tekstu. W systemie Windows otwórz Edytor tekstu, na przykład Notepad jako administrator, a następnie otwórz plik. 
+1. Otwórz plik config.yaml na urządzeniu usługi IoT Edge. W systemach Linux, ten plik znajduje się w **/etc/iotedge/config.yaml**. W systemach Windows, ten plik znajduje się w **C:\ProgramData\iotedge\config.yaml**. Plik konfiguracji jest chroniony, dzięki czemu niezbędne są uprawnienia administracyjne do niego dostęp. W systemach Linux Użyj polecenia `sudo` przed otwarciem pliku w preferowanym edytorze tekstu. W systemie Windows otwórz Edytor tekstu, na przykład Notepad jako administrator, a następnie otwórz plik.
 
-2. W pliku config.yaml Znajdź **Specyfikacja modułu Agent usługi Edge** sekcji. Definicja agenta IoT Edge zawiera parametr **ENV** , w którym można dodać zmienne środowiskowe. 
+2. W pliku config.yaml Znajdź **Specyfikacja modułu Agent usługi Edge** sekcji. Definicja agenta IoT Edge zawiera parametr **ENV** , w którym można dodać zmienne środowiskowe.
 
-3. Usuń nawiasów klamrowych, które są symbole zastępcze dla parametru env, a następnie dodaj nową zmienną w nowym wierszu. Należy pamiętać, że wcięcia w YAML są dwie spacje. 
+3. Usuń nawiasów klamrowych, które są symbole zastępcze dla parametru env, a następnie dodaj nową zmienną w nowym wierszu. Należy pamiętać, że wcięcia w YAML są dwie spacje.
 
    ```yaml
    https_proxy: "<proxy URL>"
@@ -184,7 +184,7 @@ Ten krok odbywa się raz na urządzeniu IoT Edge podczas początkowego konfiguro
 
    ![Definicja edgeAgent ze zmiennymi środowiskowymi](./media/how-to-configure-proxy-support/edgeagent-edited.png)
 
-5. Config.yaml zapisać zmiany i zamknąć Edytor. Uruchom ponownie IoT Edge, aby zmiany zaczęły obowiązywać. 
+5. Config.yaml zapisać zmiany i zamknąć Edytor. Uruchom ponownie IoT Edge, aby zmiany zaczęły obowiązywać.
 
    * W systemie Linux:
 

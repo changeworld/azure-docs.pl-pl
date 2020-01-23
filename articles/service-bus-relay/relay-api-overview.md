@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure Relay interfejsu API | Dokumentacja firmy Microsoft
-description: Omówienie dostępnych interfejsów API usługi Azure Relay
+title: Omówienie interfejsu API Azure Relay | Microsoft Docs
+description: Ten artykuł zawiera omówienie dostępnych Azure Relay interfejsów API (.NET Standard, .NET Framework, Node. js itp.).
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -12,51 +12,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593342"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513970"
 ---
-# <a name="available-relay-apis"></a>Interfejsy API dostępne usługi Relay
+# <a name="available-relay-apis"></a>Dostępne interfejsy API przekazywania
 
-## <a name="runtime-apis"></a>Interfejsów API środowiska wykonawczego
+## <a name="runtime-apis"></a>Interfejsy API środowiska uruchomieniowego
 
-Poniższa tabela zawiera listę wszystkich dostępnych klientów środowiska uruchomieniowego przekazywania.
+W poniższej tabeli wymieniono wszystkie aktualnie dostępne klientów środowiska uruchomieniowego przekaźnika.
 
-[Dodatkowe informacje](#additional-information) sekcja zawiera więcej informacji o stanie wszystkich bibliotek środowiska uruchomieniowego.
+Sekcja [dodatkowe informacje](#additional-information) zawiera więcej informacji o stanie każdej biblioteki środowiska uruchomieniowego.
 
-| Języka/platformy | Funkcja dostępna | Pakiet klienta | Repozytorium |
+| Język/platforma | Dostępna funkcja | Pakiet klienta | Repozytorium |
 | --- | --- | --- | --- |
-| .NET Standard | Połączenia hybrydowe | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
-| .NET Framework | Przekaźnik WCF | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | ND |
-| Węzeł | Połączenia hybrydowe | [Gniazda Websocket: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Gniazda Websocket: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[Żądania HTTP: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
+| .NET Standard | Hybrydowe | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
+| .NET Framework | WCF Relay | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | ND |
+| Węzeł | Hybrydowe | [Obiekty WebSockets: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Obiekty WebSockets: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[Żądania HTTP: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>Dodatkowe informacje
 
 #### <a name="net"></a>.NET
 
-Ekosystem platformy .NET ma wielu modułów wykonawczych, więc istnieje wiele bibliotek platformy .NET dla usługi Relay. Biblioteki .NET Standard mogą być uruchamiane przy użyciu platformy .NET Core lub .NET Framework, natomiast biblioteka .NET Framework można uruchomić tylko w środowisku .NET Framework. Aby uzyskać więcej informacji na temat platformy .NET, zobacz [framework w wersji](/dotnet/articles/standard/frameworks).
+Ekosystem .NET ma wiele środowisk uruchomieniowych, dlatego istnieje wiele bibliotek .NET dla przekaźnika. Bibliotekę .NET Standard można uruchomić przy użyciu platformy .NET Core lub .NET Framework, podczas gdy biblioteka .NET Framework może być uruchamiana tylko w środowisku .NET Framework. Aby uzyskać więcej informacji na temat platformy .NET Framework, zobacz [wersje architektury](/dotnet/articles/standard/frameworks).
 
-Biblioteka programu .NET Framework tylko obsługuje model programowania usług WCF i zależy od własności protokołu binarne oparte na WCF `net.tcp` transportu. Ten protokół i biblioteka jest zachowywana na potrzeby zapewnienia zgodności z istniejącymi aplikacjami.
+Biblioteka .NET Framework obsługuje tylko model programowania WCF i opiera się na zastrzeżonym protokole binarnym opartym na transportie `net.tcp` WCF. Ten protokół i Biblioteka są utrzymywane w celu zapewnienia zgodności z poprzednimi wersjami z istniejącymi aplikacjami.
 
-Biblioteki .NET Standard opiera się na otwartym protokole definicji przekaźnik połączeń hybrydowych, który opiera się na HTTP i Websocket. Biblioteka obsługuje pozyskiwania strumienia, przez protokół Websockets i gest proste odpowiedź na żądanie interfejsu API dla odpowiadanie na żądania HTTP. [Interfejsu API sieci Web](https://github.com/Azure/azure-relay-dotnet) przykład pokazuje, jak zintegrować połączeń hybrydowych przy użyciu platformy ASP.NET Core dla usług sieci web.
+Biblioteka .NET Standard jest oparta na otwartej definicji protokołu dla przekaźnika Połączenia hybrydowe, który kompiluje w przypadku połączeń HTTP i WebSockets. Biblioteka obsługuje abstrakcję strumienia za pośrednictwem obiektów WebSockets i prostego gestu interfejsu API odpowiedzi na żądanie w celu odpowiedzi na żądania HTTP. Przykład [interfejsu Web API](https://github.com/Azure/azure-relay-dotnet) pokazuje, jak zintegrować Połączenia hybrydowe z ASP.NET Core dla usług sieci Web.
 
 #### <a name="nodejs"></a>Node.js
 
-Moduły połączeń hybrydowych, wymienione w powyższej tabeli zastąpienia lub zmiany istniejących modułów Node.js z alternatywnych implementacji, które nasłuchują usługi Azure Relay, a nie lokalny stosu sieciowego.
+Moduły Połączenia hybrydowe wymienione w powyższej tabeli zastępują lub zmieniają istniejące Moduły Node. js z alternatywnymi implementacjami, które nasłuchują w usłudze Azure Relay, a nie na stosie sieci lokalnych.
 
-`hyco-https` Moduł zmienia i częściowo zastępuje modułów Node.js core `http` i `https`, udostępniając implementacji odbiornika protokołu HTTPS, który jest zgodny z wielu istniejących modułów Node.js i aplikacje, które zależą od tych podstawowych moduły.
+Moduł `hyco-https` zmienia i częściowo zastępuje podstawowe Moduły Node. js `http` i `https`, dostarczając implementację odbiornika HTTPS zgodną z wieloma istniejącymi modułami Node. js i aplikacjami zależnymi od tych modułów podstawowych.
 
-`hyco-ws` i `hyco-websocket` modułów zmiany popularnej `ws` i `websocket` modułów dla środowiska Node.js, dostarczając implementacje odbiornika alternatywne, umożliwiające modułów i aplikacje, opierając się na obu modułu w tle rozwiązania hybrydowego Połączenia usługi Relay.
+Moduły `hyco-ws` i `hyco-websocket` zmieniają popularne moduły `ws` i `websocket` dla środowiska Node. js, zapewniając alternatywne implementacje odbiorników, które umożliwiają modułom i aplikacjom korzystanie z każdego z modułów, aby działały za Połączenia hybrydowe Relay.
 
-Szczegółowe informacje o tych modułów, które można znaleźć w [azure relay węzłów](https://github.com/Azure/azure-relay-node) repozytorium GitHub.
+Szczegółowe informacje o tych modułach znajdują się w repozytorium GitHub [Azure-Relay-Node](https://github.com/Azure/azure-relay-node) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usługi Azure Relay, skorzystaj z następujących linków:
+Aby dowiedzieć się więcej na temat Azure Relay, odwiedź następujące linki:
 * [Co to jest usługa Azure Relay?](relay-what-is-it.md)
 * [Często zadawane pytania dotyczące usługi Relay](relay-faq.md)

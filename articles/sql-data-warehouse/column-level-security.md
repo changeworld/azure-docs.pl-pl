@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia na poziomie kolumny
-description: Zabezpieczenia na poziomie kolumny (CLS) umożliwiają klientom kontrolowanie dostępu do kolumn tabeli bazy danych na podstawie kontekstu wykonywania użytkownika lub ich przynależności do grupy. CLS upraszcza projektowanie i kodowanie zabezpieczeń w aplikacji. Specyfikacja CLS umożliwia implementowanie ograniczeń dostępu do kolumn.
+title: Co to jest zabezpieczenia na poziomie kolumny dla SQL Data Warehouse?
+description: Zabezpieczenia na poziomie kolumny umożliwiają klientom kontrolowanie dostępu do kolumn tabeli bazy danych na podstawie kontekstu wykonywania użytkownika lub członkostwa w grupie, upraszczając projektowanie i kodowanie zabezpieczeń w aplikacji oraz pozwalające na implementację ograniczeń w kolumnie niego.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,21 +11,24 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85f705022a0ff5970d30c61206d4f2631254b7ce
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 344701989a753e17d8a026f6bb771a6030bdb71f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077101"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513052"
 ---
 # <a name="column-level-security"></a>Zabezpieczenia na poziomie kolumny
-Zabezpieczenia na poziomie kolumny (CLS) umożliwiają klientom kontrolowanie dostępu do kolumn tabeli bazy danych na podstawie kontekstu wykonywania użytkownika lub ich przynależności do grupy.
-Zaktualizuj do filmu wideo poniżej — ponieważ to wideo zostało ogłoszone, [zabezpieczenia na poziomie wiersza](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) są również dostępne w SQL Data Warehouse. 
+
+Zabezpieczenia na poziomie kolumny umożliwiają klientom kontrolowanie dostępu do kolumn tabeli na podstawie kontekstu wykonywania użytkownika lub członkostwa w grupie.
+
+
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
+Ponieważ to wideo zostało ogłoszone, [zabezpieczenia na poziomie wiersza](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) stały się dostępne dla SQL Data Warehouse. 
 
-CLS upraszcza projektowanie i kodowanie zabezpieczeń w aplikacji. Specyfikacja CLS umożliwia implementowanie ograniczeń dostępu do kolumn w celu ochrony poufnych danych. Na przykład w celu zapewnienia, że określeni użytkownicy będą mieli dostęp tylko do niektórych kolumn tabeli odnoszących się do ich działu. Logika ograniczeń dostępu znajduje się w warstwie bazy danych, a nie na danych w innej warstwie aplikacji. Baza danych stosuje ograniczenia dostępu przy każdej próbie dostępu do danych z dowolnej warstwy. To ograniczenie sprawia, że system zabezpieczeń jest bardziej niezawodny i niezawodny poprzez zmniejszenie powierzchni ogólnego systemu zabezpieczeń. Ponadto CLS eliminuje również potrzebę wprowadzenia widoków do filtrowania kolumn w celu nakładania ograniczeń dostępu dla użytkowników.
+Zabezpieczenia na poziomie kolumny upraszczają projektowanie i kodowanie zabezpieczeń w aplikacji, co pozwala ograniczyć dostęp do kolumn w celu ochrony poufnych danych. Na przykład w celu zapewnienia, że określeni użytkownicy będą mieli dostęp tylko do niektórych kolumn tabeli odnoszących się do ich działu. Logika ograniczeń dostępu znajduje się w warstwie bazy danych, a nie na danych w innej warstwie aplikacji. Baza danych stosuje ograniczenia dostępu przy każdym próbie dostępu do danych z dowolnej warstwy. To ograniczenie sprawia, że zabezpieczenia są bardziej niezawodne i niezawodne przez zredukowanie obszaru ogólnego systemu zabezpieczeń. Ponadto zabezpieczenia na poziomie kolumny eliminują również konieczność wprowadzenia widoków do filtrowania kolumn w celu nakładania ograniczeń dostępu dla użytkowników.
 
-Specyfikację CLS można zaimplementować przy użyciu instrukcji [Grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) języka T-SQL. Dzięki temu mechanizmowi obsługiwane jest uwierzytelnianie SQL i Azure Active Directory (AAD).
+Zabezpieczenia na poziomie kolumny można zaimplementować przy użyciu instrukcji [Grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) języka T-SQL. Dzięki temu mechanizmowi obsługiwane jest uwierzytelnianie SQL i Azure Active Directory (AAD).
 
 ![ze specyfikacją CLS](./media/column-level-security/cls.png)
 
@@ -48,9 +51,9 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>Przykład
-Poniższy przykład pokazuje, jak ograniczyć dostęp "Użytkownik testowy" do kolumny "SSN" tabeli "Membership":
+Poniższy przykład pokazuje, jak ograniczyć dostęp `TestUser` do kolumny `SSN` tabeli `Membership`:
 
-Utwórz tabelę "Membership" z kolumną SSN służącą do przechowywania numerów ubezpieczenia społecznego:
+Utwórz tabelę `Membership` z kolumną SSN służącą do przechowywania numerów PESEL:
 
 ```sql
 CREATE TABLE Membership
@@ -62,13 +65,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-Zezwalaj Użytkownik testowy ' na dostęp do wszystkich kolumn z wyjątkiem kolumny SSN zawierającej poufne dane:
+Zezwalaj `TestUser` na dostęp do wszystkich kolumn z wyjątkiem kolumny SSN, która ma poufne dane:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-Zapytania wykonane jako "Użytkownik testowy" zakończą się niepowodzeniem, jeśli zawierają kolumnę SSN:
+Zapytania wykonane jako `TestUser` zakończą się niepowodzeniem, jeśli zawierają kolumnę SSN:
 
 ```sql
 SELECT * FROM Membership;
@@ -78,6 +81,8 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="use-cases"></a>Przypadki użycia
-Kilka przykładów użycia CLS jest dzisiaj:
+
+Przykłady sposobu używania zabezpieczeń na poziomie kolumny:
+
 - Firma Financial Services zezwala tylko menedżerom kont na dostęp do numerów PESEL (SSN) klienta, numerów telefonów i innych informacji umożliwiających identyfikację użytkownika.
-- Dostawca opieki zdrowotnej umożliwia tylko lekarzy i pielęgniarkom dostęp do poufnych rekordów medycznych bez zezwalania członkom działu rozliczeniowego na wyświetlanie tych danych.
+- Dostawca opieki zdrowotnej umożliwia tylko lekarzy i pielęgniarkom dostęp do poufnych rekordów medycznych, jednocześnie uniemożliwiając członkom działu rozliczania wyświetlanie tych danych.

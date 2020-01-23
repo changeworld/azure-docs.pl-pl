@@ -8,17 +8,17 @@ ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8232a71140dcded907562a4f1c0f2196ff012c12
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cf073572cd5b371ec484c99f14cbefb4cba75ce7
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486250"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509907"
 ---
 # <a name="install-production-certificates-on-an-iot-edge-device"></a>Instalowanie certyfikatów produkcyjnych na urządzeniu IoT Edge
 
 Wszystkie urządzenia IoT Edge używają certyfikatów do tworzenia bezpiecznych połączeń między środowiskiem uruchomieniowym i wszystkimi modułami uruchomionymi na urządzeniu.
-IoT Edge urządzenia działające jako bramy używają tych samych certyfikatów do łączenia się z urządzeniami podrzędnymi. 
+IoT Edge urządzenia działające jako bramy używają tych samych certyfikatów do łączenia się z urządzeniami podrzędnymi.
 
 Podczas pierwszej instalacji IoT Edge i aprowizacji urządzenia urządzenie zostanie skonfigurowane z certyfikatami tymczasowymi, aby umożliwić przetestowanie usługi.
 Te certyfikaty tymczasowe wygasną przez 90 dni lub można je zresetować przez ponowne uruchomienie komputera.
@@ -28,9 +28,9 @@ W tym artykule przedstawiono procedurę instalowania certyfikatów na IoT Edge u
 Aby dowiedzieć się więcej o różnych typach certyfikatów i ich rolach w IoT Edge scenariuszu, zobacz [Opis sposobu, w jaki Azure IoT Edge używa certyfikatów](iot-edge-certs.md).
 
 >[!NOTE]
->Termin "główny urząd certyfikacji" używany w tym artykule odnosi się do certyfikatu publicznego urzędu łańcucha certyfikatów dla rozwiązania IoT. Nie trzeba używać certyfikatu głównego urzędu certyfikacji z certyfikatem lub administratorem urzędu certyfikacji w organizacji. W wielu przypadkach jest to pośredni certyfikat publiczny urzędu certyfikacji. 
+>Termin "główny urząd certyfikacji" używany w tym artykule odnosi się do certyfikatu publicznego urzędu łańcucha certyfikatów dla rozwiązania IoT. Nie trzeba używać certyfikatu głównego urzędu certyfikacji z certyfikatem lub administratorem urzędu certyfikacji w organizacji. W wielu przypadkach jest to pośredni certyfikat publiczny urzędu certyfikacji.
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+## <a name="prerequisites"></a>Wymagania wstępne
 
 * Urządzenie IoT Edge uruchomione w [systemie Windows](how-to-install-iot-edge-windows.md) lub [Linux](how-to-install-iot-edge-linux.md).
 * Posiadanie certyfikatu głównego urzędu certyfikacji (CA) z podpisem własnym lub zakupionego od zaufanego komercyjnego urzędu certyfikacji, takiego jak Baltimore, VeriSign, DigiCert lub GlobalSign.
@@ -40,17 +40,18 @@ Jeśli nie masz jeszcze głównego urzędu certyfikacji, ale chcesz wypróbować
 ## <a name="create-production-certificates"></a>Tworzenie certyfikatów produkcyjnych
 
 Aby utworzyć następujące pliki, należy użyć własnego urzędu certyfikacji:
+
 * Główny urząd certyfikacji
 * Certyfikat dostępu Warunkowego do urządzeń
 * Klucz prywatny urzędu certyfikacji urządzenia
 
-Ten artykuł zawiera informacje o tym, jako że *główny urząd certyfikacji* nie jest najwyższym urzędem certyfikatu dla organizacji. Jest to najwyższy urząd certyfikacji dla scenariusza IoT Edge, do którego moduł IoT Edge Hub, moduły użytkownika i wszystkie urządzenia podrzędne używają do ustanawiania relacji zaufania między sobą. 
+Ten artykuł zawiera informacje o tym, jako że *główny urząd certyfikacji* nie jest najwyższym urzędem certyfikatu dla organizacji. Jest to najwyższy urząd certyfikacji dla scenariusza IoT Edge, do którego moduł IoT Edge Hub, moduły użytkownika i wszystkie urządzenia podrzędne używają do ustanawiania relacji zaufania między sobą.
 
-Aby zapoznać się z przykładem tych certyfikatów, przejrzyj skrypty, które tworzą certyfikaty demonstracyjne w [zarządzaniu testowymi certyfikatami urzędu certyfikacji dla przykładów i samouczków](https://github.com/Azure/iotedge/tree/master/tools/CACertificates). 
+Aby zapoznać się z przykładem tych certyfikatów, przejrzyj skrypty, które tworzą certyfikaty demonstracyjne w [zarządzaniu testowymi certyfikatami urzędu certyfikacji dla przykładów i samouczków](https://github.com/Azure/iotedge/tree/master/tools/CACertificates).
 
 ## <a name="install-certificates-on-the-device"></a>Instalowanie certyfikatów na urządzeniu
 
-Zainstaluj łańcuch certyfikatów na urządzeniu IoT Edge i skonfiguruj środowisko uruchomieniowe IoT Edge, aby odwoływać się do nowych certyfikatów. 
+Zainstaluj łańcuch certyfikatów na urządzeniu IoT Edge i skonfiguruj środowisko uruchomieniowe IoT Edge, aby odwoływać się do nowych certyfikatów.
 
 Na przykład jeśli użyto przykładowych skryptów do [tworzenia certyfikatów demonstracyjnych](how-to-create-test-certificates.md), trzy pliki, które należy skopiować na urządzenie IoT Edge, są następujące:
 
@@ -62,12 +63,12 @@ Na przykład jeśli użyto przykładowych skryptów do [tworzenia certyfikatów 
 
    Do przenoszenia plików certyfikatów można użyć usługi, takiej jak [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) lub funkcja, taka jak [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) .  Jeśli certyfikaty zostały wygenerowane na urządzeniu IoT Edge, możesz pominąć ten krok i użyć ścieżki do katalogu roboczego.
 
-2. Otwórz plik konfiguracji demona zabezpieczeń usługi IoT Edge. 
+2. Otwórz plik konfiguracji demona zabezpieczeń usługi IoT Edge.
 
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-3. Ustaw właściwości **certyfikatu** w pliku config. YAML na identyfikator URI pliku certyfikatu i plików kluczy na urządzeniu IoT Edge. Usuń znak `#` przed właściwościami certyfikatu, aby usunąć komentarz z czterech wierszy. Należy pamiętać, że wcięcia w YAML to dwie spacje. Przykład:
+3. Ustaw właściwości **certyfikatu** w pliku config. YAML na identyfikator URI pliku certyfikatu i plików kluczy na urządzeniu IoT Edge. Usuń znak `#` przed właściwościami certyfikatu, aby usunąć komentarz z czterech wierszy. Upewnij się, że w wierszu **Certyfikaty:** nie ma powyższego odstępu, a elementy zagnieżdżone są wcięte o dwie spacje. Przykład:
 
    * W systemie Windows:
 
@@ -77,8 +78,9 @@ Na przykład jeśli użyto przykładowych skryptów do [tworzenia certyfikatów 
         device_ca_pk: "file:///c:/path/device-ca.key.pem"
         trusted_ca_certs: "file:///c:/path/root-ca.root.ca.cert.pem"
       ```
-   
-   * W systemie Linux: 
+
+   * W systemie Linux:
+
       ```yaml
       certificates:
         device_ca_cert: "file:///path/device-ca.cert.pem"
@@ -86,7 +88,7 @@ Na przykład jeśli użyto przykładowych skryptów do [tworzenia certyfikatów 
         trusted_ca_certs: "file:///path/root-ca.root.ca.cert.pem"
       ```
 
-4. Na urządzeniach z systemem Linux upewnij się, że użytkownik **iotedge** ma uprawnienia do odczytu w katalogu zawierającym certyfikaty. 
+4. Na urządzeniach z systemem Linux upewnij się, że użytkownik **iotedge** ma uprawnienia do odczytu w katalogu zawierającym certyfikaty.
 
 ## <a name="next-steps"></a>Następne kroki
 

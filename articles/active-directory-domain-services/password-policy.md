@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704525"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512763"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zasady blokowania haseł i kont w domenach zarządzanych
 
@@ -65,7 +65,7 @@ W przypadku tych domyślnych ustawień konta użytkowników są blokowane przez 
 
 Blokada konta występuje tylko w domenie zarządzanej. Konta użytkowników są blokowane tylko na platformie Azure AD DS i tylko z powodu nieudanych prób logowania do domeny zarządzanej. Konta użytkowników, które zostały zsynchronizowane z usługą Azure AD lub lokalnie, nie są blokowane w katalogach źródłowych tylko w usłudze Azure AD DS.
 
-Jeśli masz zasady haseł usługi Azure AD, które określają maksymalny wiek hasła większy niż 90 dni, ten wiek hasła zostanie zastosowany do domyślnych zasad na platformie Azure AD DS. Można skonfigurować niestandardowe zasady haseł w celu zdefiniowania innego maksymalnego wieku hasła w usłudze Azure AD DS. Weź pod uwagę, że masz krótszy maksymalny wiek hasła skonfigurowany w zasadach haseł usługi Azure AD DS niż w przypadku usługi Azure AD lub lokalnego środowiska AD DS. W tym scenariuszu hasło użytkownika może wygasnąć na platformie Azure AD DS zanim zostanie wyświetlony monit o zmianę w usłudze Azure AD w środowisku lokalnym AD DS.
+Jeśli masz zasady haseł usługi Azure AD, które określają maksymalny wiek hasła większy niż 90 dni, ten wiek hasła zostanie zastosowany do domyślnych zasad na platformie Azure AD DS. Można skonfigurować niestandardowe zasady haseł w celu zdefiniowania innego maksymalnego wieku hasła w usłudze Azure AD DS. Weź pod uwagę, że masz krótszy maksymalny wiek hasła skonfigurowany w zasadach haseł usługi Azure AD DS niż w przypadku usługi Azure AD lub lokalnego środowiska AD DS. W tym scenariuszu hasło użytkownika może wygasnąć na platformie Azure AD DS zanim zostanie wyświetlony monit o zmianę w usłudze Azure AD lub w środowisku lokalnym AD DS.
 
 W przypadku kont użytkowników utworzonych ręcznie w domenie zarządzanej AD DS platformy Azure są również stosowane następujące dodatkowe ustawienia hasła. Te ustawienia nie dotyczą kont użytkowników synchronizowanych z usługą Azure AD, ponieważ użytkownik nie może zaktualizować hasła bezpośrednio w usłudze Azure AD DS.
 
@@ -103,12 +103,12 @@ Aby utworzyć niestandardowe zasady haseł, użyj Active Directory narzędzi adm
 1. Edytuj inne ustawienia zasad haseł zgodnie z potrzebami. Należy pamiętać o następujących najważniejszych punktach:
 
     * Ustawienia, takie jak złożoność hasła, wiek lub czas wygaśnięcia, są tworzone ręcznie tylko dla użytkowników w domenie zarządzanej AD DS platformy Azure.
-    * Ustawienia blokady konta są stosowane do wszystkich użytkowników, ale działają tylko w obrębie domeny zarządzanej.
+    * Ustawienia blokady konta mają zastosowanie do wszystkich użytkowników, ale zaczną obowiązywać tylko w domenie zarządzanej, a nie w samej usłudze Azure AD.
 
     ![Tworzenie niestandardowych zasad haseł szczegółowych](./media/how-to/custom-fgpp.png)
 
 1. Usuń zaznaczenie pola **Chroń przed przypadkowym usunięciem**. W przypadku wybrania tej opcji nie można zapisać szczegółowych zasad haseł.
-1. W sekcji **bezpośrednio stosuje się do** wybierz przycisk **Dodaj** . W oknie dialogowym **Wybieranie użytkowników lub grup** kliknij przycisk **lokalizacje** .
+1. W sekcji **bezpośrednio stosuje się do** wybierz przycisk **Dodaj** . W oknie dialogowym **Wybieranie użytkowników lub grup** wybierz przycisk **lokalizacje** .
 
     ![Wybierz użytkowników i grupy, do których mają zostać zastosowane zasady haseł](./media/how-to/fgpp-applies-to.png)
 

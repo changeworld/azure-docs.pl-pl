@@ -1,5 +1,5 @@
 ---
-title: Video Indexer ciągłość działania i odzyskiwanie po awarii (BCDR) — Azure | Microsoft Docs
+title: Video Indexer ciągłość działania i odzyskiwanie po awarii — Azure
 description: Dowiedz się, jak przełączyć się w tryb failover na pomocnicze konto Video Indexer, jeśli wystąpi awaria lub niepowodzenie centrum danych.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: ce788b4640f0a6c6f25b3280ce4f52fd018d1699
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2f54c340226a9ea78643df8e0a984c8ed8475c94
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668315"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513579"
 ---
 # <a name="handle-video-indexer-business-continuity-and-disaster-recovery"></a>Obsłuż Video Indexer ciągłość działania i odzyskiwanie po awarii
 
@@ -40,7 +40,7 @@ Aby wdrożyć BCDR, musisz mieć dwa konta Video Indexer, aby obsłużyć nadmia
 > [!TIP]
 > Możesz zautomatyzować BCDR przez skonfigurowanie alertów dziennika aktywności dla powiadomień o kondycji usługi, jak na potrzeby [tworzenia alertów dziennika aktywności w powiadomieniach usługi](../../service-health/alerts-activity-log-service-notifications.md).
 
-Aby uzyskać informacje o używaniu wielu dzierżawców, zobacz [Zarządzanie wieloma dzierżawcami](manage-multiple-tenants.md). Aby zaimplementować BCDR, wybierz jedną z następujących opcji: [Konto Video Indexer na dzierżawcę](manage-multiple-tenants.md#video-indexer-account-per-tenant) lub [subskrypcję platformy Azure dla dzierżawy](manage-multiple-tenants.md#azure-subscription-per-tenant).
+Aby uzyskać informacje o używaniu wielu dzierżawców, zobacz [Zarządzanie wieloma dzierżawcami](manage-multiple-tenants.md). Aby zaimplementować BCDR, wybierz jedną z następujących opcji: [Video Indexer konto na dzierżawcę](manage-multiple-tenants.md#video-indexer-account-per-tenant) lub [subskrypcję platformy Azure dla dzierżawy](manage-multiple-tenants.md#azure-subscription-per-tenant).
 
 ## <a name="next-steps"></a>Następne kroki
 

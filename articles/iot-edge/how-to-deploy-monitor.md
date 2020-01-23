@@ -9,12 +9,12 @@ ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1e15f237bddd586f81c3b04483111f7e211bfb10
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 0a20ea4236683e26c51bc75309435c65e24271d7
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563415"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510264"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu witryny Azure portal
 
@@ -24,7 +24,7 @@ Aby uzyskać więcej informacji, zobacz [opis IoT Edge wdrożenia automatyczne d
 
 ## <a name="identify-devices-using-tags"></a>Identyfikowanie urządzeń za pomocą tagów
 
-Przed utworzeniem wdrożenia, musisz mieć możliwość określenia urządzeń, które mają wpływ na. Usługa Azure IoT Edge identyfikuje urządzenia przy użyciu **tagi** w bliźniaczej reprezentacji urządzenia. Każde urządzenie może mieć wiele tagów zdefiniowanych w dowolny sposób, który ma sens dla danego rozwiązania. 
+Przed utworzeniem wdrożenia, musisz mieć możliwość określenia urządzeń, które mają wpływ na. Usługa Azure IoT Edge identyfikuje urządzenia przy użyciu **tagi** w bliźniaczej reprezentacji urządzenia. Każde urządzenie może mieć wiele tagów zdefiniowanych w dowolny sposób, który ma sens dla danego rozwiązania.
 
 Na przykład, Jeśli zarządzasz kampusami z inteligentnymi budynkami, możesz dodać do urządzenia następujące znaczniki lokalizacji, typu pokoju i środowiska:
 
@@ -63,7 +63,7 @@ Istnieje pięć kroków, aby utworzyć wdrożenie. Poniższe sekcje przeprowadz�
 
 Do wdrożenia można dodać maksymalnie 20 modułów. Jeśli utworzysz wdrożenie bez modułów, spowoduje to usunięcie wszystkich bieżących modułów z urządzeń docelowych.
 
-W obszarze wdrożenia można zarządzać ustawieniami agenta IoT Edge i IoT Edge modułów centrów. Wybierz pozycję **Ustawienia środowiska uruchomieniowego** , aby skonfigurować dwa moduły środowiska uruchomieniowego. W przypadku wdrażania warstwowego moduły środowiska uruchomieniowego nie są uwzględniane, więc nie można ich skonfigurować. 
+W obszarze wdrożenia można zarządzać ustawieniami agenta IoT Edge i IoT Edge modułów centrów. Wybierz pozycję **Ustawienia środowiska uruchomieniowego** , aby skonfigurować dwa moduły środowiska uruchomieniowego. W przypadku wdrażania warstwowego moduły środowiska uruchomieniowego nie są uwzględniane, więc nie można ich skonfigurować.
 
 Można dodać trzy typy modułów:
 
@@ -80,12 +80,12 @@ Aby dodać niestandardowy kod jako moduł lub ręcznie Dodaj moduł usługi Azur
 1. Wybierz **moduł IoT Edge** z menu rozwijanego.
 1. Nadaj modułowi **IoT Edge nazwę modułu**.
 1. Aby uzyskać **identyfikator URI obrazu** wprowadź obrazu kontenera dla modułu.
-1. Użyj menu rozwijanego, aby wybrać **zasady ponownego uruchamiania**. Wybierz spośród następujących opcji:
+1. Użyj menu rozwijanego, aby wybrać **zasady ponownego uruchamiania**. Wybierz jedną z następujących opcji:
    * **zawsze** — moduł zawsze jest uruchamiany ponownie, jeśli z jakiegoś powodu zostanie zamknięty.
    * **nigdy** — moduł nigdy nie jest ponownie uruchamiany, jeśli z jakiegoś powodu zostanie zamknięty.
-   * w przypadku niepowodzenia — moduł jest uruchamiany ponownie w przypadku awarii, ale nie w przypadku jego **nieprawidłowego** zamknięcia. 
-   * **w złej kondycji** — moduł jest uruchamiany ponownie, jeśli ulegnie awarii lub zwróci stan złej kondycji. To Ty każdego modułu, aby zaimplementować funkcję stan kondycji. 
-1. Użyj menu rozwijanego, aby wybrać **żądanego stanu** dla modułu. Wybierz spośród następujących opcji:
+   * w przypadku niepowodzenia — moduł jest uruchamiany ponownie w przypadku awarii, ale nie w przypadku jego **nieprawidłowego** zamknięcia.
+   * **w złej kondycji** — moduł jest uruchamiany ponownie, jeśli ulegnie awarii lub zwróci stan złej kondycji. To Ty każdego modułu, aby zaimplementować funkcję stan kondycji.
+1. Użyj menu rozwijanego, aby wybrać **żądanego stanu** dla modułu. Wybierz jedną z następujących opcji:
    * **uruchomiona** jest opcja domyślna. Moduł zostanie uruchomione natychmiast po wdrożeniu.
    * **zatrzymano** — po wdrożeniu moduł pozostanie bezczynny do momentu wywołania przez użytkownika lub innego modułu.
 1. Określ dowolne **opcje tworzenia kontenera** powinien zostać przekazany do kontenera. Aby uzyskać więcej informacji, zobacz [docker Utwórz](https://docs.docker.com/engine/reference/commandline/create/).
@@ -113,9 +113,9 @@ Aby dodać moduł z usługi Azure Stream Analytics, wykonaj następujące kroki:
 
 #### <a name="configure-module-settings"></a>Konfigurowanie ustawień modułu
 
-Po dodaniu modułu do wdrożenia można wybrać jego nazwę, aby otworzyć stronę **modułu aktualizacji IoT Edge** . Na tej stronie można edytować ustawienia modułu, zmienne środowiskowe, opcje tworzenia i sznurki modułowe. Jeśli dodano moduł z portalu Marketplace, może on mieć już wypełnione niektóre parametry. 
+Po dodaniu modułu do wdrożenia można wybrać jego nazwę, aby otworzyć stronę **modułu aktualizacji IoT Edge** . Na tej stronie można edytować ustawienia modułu, zmienne środowiskowe, opcje tworzenia i sznurki modułowe. Jeśli dodano moduł z portalu Marketplace, może on mieć już wypełnione niektóre parametry.
 
-W przypadku tworzenia wdrożenia warstwowego można skonfigurować moduł, który istnieje w innych wdrożeniach przeznaczonych dla tych samych urządzeń. Aby zaktualizować splot modułu bez zastępowania innych wersji, Otwórz kartę **Ustawienia sznurka modułu** . Utwórz nową **Właściwość sznurka modułu** o unikatowej nazwie dla podsekcji w odpowiednich właściwościach sznurka modułu, na przykład `properties.desired.settings`. Jeśli zdefiniujesz właściwości w tylko `properties.desired` polu, spowoduje to zastąpienie żądanych właściwości modułu zdefiniowanego we wdrożeniach o niższym priorytecie. 
+W przypadku tworzenia wdrożenia warstwowego można skonfigurować moduł, który istnieje w innych wdrożeniach przeznaczonych dla tych samych urządzeń. Aby zaktualizować splot modułu bez zastępowania innych wersji, Otwórz kartę **Ustawienia sznurka modułu** . Utwórz nową **Właściwość sznurka modułu** o unikatowej nazwie dla podsekcji w odpowiednich właściwościach sznurka modułu, na przykład `properties.desired.settings`. Jeśli zdefiniujesz właściwości w tylko `properties.desired` polu, spowoduje to zastąpienie żądanych właściwości modułu zdefiniowanego we wdrożeniach o niższym priorytecie.
 
 ![Ustaw właściwość sznurka modułu dla wdrożenia warstwowego](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -154,9 +154,9 @@ Użyj właściwości tagi z urządzeniami pod kątem konkretnych urządzeń, kt�
 
 Ponieważ wielu wdrożeń będących częścią mogą odnosić się do tego samego urządzenia, należy nadać kontu każdego wdrożenia numer priorytetu. Jeśli kiedykolwiek wystąpi konflikt, wdrożenie o najwyższym priorytecie (większe wartości wskazują wyższy priorytet) WINS. Jeśli dwa wdrożenia mają ten sam numer priorytet, ten, który został utworzony w większości ostatnio wins.
 
-Jeśli wiele wdrożeń jest przeznaczonych dla tego samego urządzenia, zostanie zastosowany tylko ten z wyższym priorytetem. Jeśli wiele wdrożeń warstwowych jest przeznaczonych dla tego samego urządzenia, zostaną one zastosowane. Jednakże jeśli wszystkie właściwości są zduplikowane, na przykład jeśli istnieją dwie trasy o tej samej nazwie, to jeden z wyższych priorytetów wdrożenia warstwowego zastępuje resztę. 
+Jeśli wiele wdrożeń jest przeznaczonych dla tego samego urządzenia, zostanie zastosowany tylko ten z wyższym priorytetem. Jeśli wiele wdrożeń warstwowych jest przeznaczonych dla tego samego urządzenia, zostaną one zastosowane. Jednakże jeśli wszystkie właściwości są zduplikowane, na przykład jeśli istnieją dwie trasy o tej samej nazwie, to jeden z wyższych priorytetów wdrożenia warstwowego zastępuje resztę.
 
-Każde wdrożenie warstwowe ukierunkowane na urządzenie musi mieć wyższy priorytet niż wdrożenie podstawowe, aby można je było zastosować. 
+Każde wdrożenie warstwowe ukierunkowane na urządzenie musi mieć wyższy priorytet niż wdrożenie podstawowe, aby można je było zastosować.
 
 1. Wprowadź dodatnią liczbę całkowitą dla wdrożenia **priorytet**.
 1. Wprowadź **warunek docelowy** do określenia urządzeń, które zostaną objęte tego wdrożenia. Warunek jest oparty na tagach bliźniaczych urządzeń lub w raportowanych właściwościach urządzenia i powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.devicemodel='4000x'`.
@@ -179,7 +179,7 @@ Aby wyświetlić szczegóły wdrożenia i monitorowania urządzeń, w których j
 
 1. Sprawdź, czy lista wdrożenia. Dla każdego wdrożenia można wyświetlić następujące informacje:
    * **Identyfikator** — Nazwa wdrożenia.
-   * **Typ** — **typ wdrożenia, wdrożenie lub** **wdrożenie warstwowe**. 
+   * **Typ** — **typ wdrożenia, wdrożenie lub** **wdrożenie warstwowe**.
    * **Warunek docelowy** — tag używany do definiowania urządzeń docelowych.
    * **Priorytet** — numer priorytetu, przypisanych do wdrożenia.
    * **Metryki systemu** - **docelowych** określa liczbę bliźniaczych reprezentacji urządzeń w usłudze IoT Hub, który odpowiada warunkowi określania wartości docelowej i **zastosowano** określa liczbę urządzeń, które mają Gdyby zawartości wdrożenia są stosowane do ich bliźniaczych reprezentacjach modułów usługi IoT Hub.

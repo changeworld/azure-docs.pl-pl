@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12c5bf66de966faf8dc31c7265fdfb0180a95323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970842"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509822"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Przechowuj dane na krawędzi za pomocą usługi Azure Blob Storage na IoT Edge
 
@@ -85,7 +85,6 @@ Nazwa tego ustawienia jest `deviceToCloudUploadProperties`. Jeśli używasz symu
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Pozwala określić nazwy kontenerów, które mają zostać przekazane na platformę Azure. Ten moduł pozwala określić źródłową i docelową nazwę kontenera. Jeśli nie określisz nazwy kontenera docelowego, automatycznie przypiszesz nazwę kontenera jako `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. Można utworzyć ciągi szablonów dla docelowej nazwy kontenera, zapoznaj się z kolumną możliwe wartości. <br>*% h-> IoT Hub nazwy (3-50 znaków). <br>*% d-> IoT Edge identyfikator urządzenia (od 1 do 129 znaków). <br>*% m-> Nazwa modułu (od 1 do 64 znaków). <br>*% c-> nazwę kontenera źródłowego (od 3 do 63 znaków). <br><br>Maksymalny rozmiar nazwy kontenera to 63 znaków, podczas gdy automatyczne przypisanie nazwy kontenera docelowego, jeśli rozmiar kontenera przekracza 63 znaków, spowoduje to przycinanie każdej sekcji (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) do 15 znaków. <br><br> Zmienna środowiskowa: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | wartość true, false | Domyślnie Ustaw wartość `false`. Gdy jest ustawiona na `true`, automatycznie usunie dane po zakończeniu przekazywania do magazynu w chmurze. <br><br> **Uwaga**: Jeśli używasz dołączanych obiektów blob, to ustawienie spowoduje usunięcie dołączanych obiektów blob z magazynu lokalnego po pomyślnym przekazaniu, a wszelkie przyszłe operacje dołączania bloków do tych obiektów BLOB zakończą się niepowodzeniem. Użyj tego ustawienia z zachowaniem ostrożności, nie należy włączać tej opcji, jeśli aplikacja wykonuje rzadko wykonywane operacje dołączania lub nie obsługuje ciągłych operacji dołączania<br><br> Zmienna środowiskowa: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
 
-
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
 Nazwa tego ustawienia jest `deviceAutoDeleteProperties`. Jeśli używasz symulatora IoT Edge, ustaw wartości w powiązanych zmiennych środowiskowych dla tych właściwości, które można znaleźć w sekcji wyjaśnienie.
@@ -97,6 +96,7 @@ Nazwa tego ustawienia jest `deviceAutoDeleteProperties`. Jeśli używasz symulat
 | retainWhileUploading | wartość true, false | Domyślnie jest ono ustawione na `true`i zachowa obiekt BLOB podczas przekazywania go do magazynu w chmurze, jeśli deleteAfterMinutes wygasa. Można ją ustawić na `false` i spowoduje to usunięcie danych zaraz po wygaśnięciu deleteAfterMinutes. Uwaga: aby ta właściwość działała, uploadOn powinna mieć wartość true.  <br><br> **Uwaga**: Jeśli używasz dołączanych obiektów blob, to ustawienie spowoduje usunięcie dołączanych obiektów blob z magazynu lokalnego, gdy wartość wygaśnie, a wszelkie przyszłe operacje dołączania bloków do tych obiektów BLOB zakończą się niepowodzeniem. Warto upewnić się, że wartość wygaśnięcia jest wystarczająco duża dla oczekiwanej częstotliwości operacji dołączania wykonywanych przez aplikację.<br><br> Zmienna środowiskowa: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>Używanie udziału SMB jako magazynu lokalnego
+
 Udział SMB można dostarczyć jako ścieżkę do magazynu lokalnego, podczas wdrażania kontenera systemu Windows tego modułu na hoście z systemem Windows.
 
 Upewnij się, że udział SMB i urządzenie IoT należą do wzajemnie zaufanych domen.
@@ -104,48 +104,58 @@ Upewnij się, że udział SMB i urządzenie IoT należą do wzajemnie zaufanych 
 Można uruchomić polecenie `New-SmbGlobalMapping` PowerShell, aby mapować udział SMB lokalnie na urządzeniu IoT z systemem Windows.
 
 Poniżej przedstawiono kroki konfiguracji:
+
 ```PowerShell
 $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
-Przykład: <br>
-`$creds = Get-Credential` <br>
-`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:`
 
-To polecenie użyje poświadczeń do uwierzytelnienia na zdalnym serwerze SMB. Następnie zmapuj ścieżkę udziału zdalnego na G: litera dysku (może to być jakakolwiek inna dostępna litera dysku). Urządzenie IoT ma teraz wolumin danych zamapowany na ścieżkę na dysku G:. 
+Przykład:
+
+```powershell
+$creds = Get-Credential
+New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
+```
+
+To polecenie użyje poświadczeń do uwierzytelnienia na zdalnym serwerze SMB. Następnie zmapuj ścieżkę udziału zdalnego na G: litera dysku (może to być jakakolwiek inna dostępna litera dysku). Urządzenie IoT ma teraz wolumin danych zamapowany na ścieżkę na dysku G:.
 
 Upewnij się, że użytkownik w urządzeniu IoT może odczytywać i zapisywać dane w zdalnym udziale SMB.
 
-W przypadku wdrożenia wartością `<storage mount>` może być **G:/ContainerData: C:/BlobRoot**. 
+W przypadku wdrożenia wartością `<storage mount>` może być **G:/ContainerData: C:/BlobRoot**.
 
 ## <a name="granting-directory-access-to-container-user-on-linux"></a>Udzielanie dostępu do katalogu użytkownikowi kontenera w systemie Linux
+
 Jeśli używasz [instalacji woluminu](https://docs.docker.com/storage/volumes/) dla magazynu w opcjach tworzenia dla kontenerów systemu Linux, nie musisz wykonywać żadnych dodatkowych czynności, ale jeśli korzystasz z [instalacji bind](https://docs.docker.com/storage/bind-mounts/) , te kroki są wymagane do poprawnego uruchomienia usługi.
 
-Zgodnie z zasadą najniższych uprawnień, aby ograniczyć dostęp użytkowników do minimalnych uprawnień, których potrzebują do wykonania swojej pracy, ten moduł zawiera użytkownika (Name: Absie, ID: 11000) i grupę użytkowników (Name: Absie, ID: 11000). Jeśli kontener zostanie uruchomiony jako **główny** (domyślny użytkownik jest **katalogiem głównym**), Nasza usługa zostanie uruchomiona jako użytkownik z niskim poziomem uprawnień **Absie** . 
+Zgodnie z zasadą najniższych uprawnień, aby ograniczyć dostęp użytkowników do minimalnych uprawnień, których potrzebują do wykonania swojej pracy, ten moduł zawiera użytkownika (Name: Absie, ID: 11000) i grupę użytkowników (Name: Absie, ID: 11000). Jeśli kontener zostanie uruchomiony jako **główny** (domyślny użytkownik jest **katalogiem głównym**), Nasza usługa zostanie uruchomiona jako użytkownik z niskim poziomem uprawnień **Absie** .
 
 Takie zachowanie powoduje, że konfiguracja uprawnień na ścieżka hosta wiąże się z tym, że usługa działa prawidłowo, w przeciwnym razie usługa ulegnie awarii z błędami odmowy dostępu. Ścieżka używana w powiązaniu katalogu musi być dostępna dla użytkownika kontenera (przykład: Absie 11000). Można udzielić użytkownikowi kontenera dostępu do katalogu, wykonując polecenia znajdujące się poniżej na hoście:
 
 ```terminal
-sudo chown -R 11000:11000 <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R 11000:11000 <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
-Przykład:<br>
-`sudo chown -R 11000:11000 /srv/containerdata` <br>
-`sudo chmod -R 700 /srv/containerdata`
+Przykład:
 
+```terminal
+sudo chown -R 11000:11000 /srv/containerdata
+sudo chmod -R 700 /srv/containerdata
+```
 
 Jeśli potrzebujesz uruchomić usługę jako użytkownik inny niż **Absie**, możesz określić niestandardowy identyfikator użytkownika w obszarze Opcje w obszarze właściwości "użytkownik" w manifeście wdrożenia. W takim przypadku należy użyć domyślnego lub głównego identyfikatora grupy `0`.
 
 ```json
-"createOptions": { 
-  "User": "<custom user ID>:0" 
-} 
+"createOptions": {
+  "User": "<custom user ID>:0"
+}
 ```
+
 Teraz Udziel użytkownikowi kontenera dostępu do katalogu
+
 ```terminal
-sudo chown -R <user ID>:<group ID> <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R <user ID>:<group ID> <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
 ## <a name="configure-log-files"></a>Konfigurowanie plików dziennika
@@ -158,11 +168,11 @@ Można użyć nazwy konta i klucz konta, które skonfigurowano dla modułu dost�
 
 Określ urządzenia usługi IoT Edge jako punkt końcowy obiektu blob do przechowywania dowolnego żądania, które można wprowadzać w nim. Możesz [utworzyć parametry połączenia dla punktu końcowego magazynu jawne](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) przy użyciu informacji o urządzeniu usługi IoT Edge i nazwę konta, które zostały skonfigurowane.
 
-- W przypadku modułów wdrożonych na tym samym urządzeniu, na których jest uruchomiony Blob Storage platformy Azure w module IoT Edge, punkt końcowy obiektu BLOB to: `http://<module name>:11002/<account name>`.
-- W przypadku modułów lub aplikacji uruchamianych na innym urządzeniu należy wybrać odpowiedni punkt końcowy dla sieci. W zależności od konfiguracji sieci wybierz format punktu końcowego, który umożliwia dostęp danych z modułu zewnętrznego lub aplikacji do urządzenia z uruchomioną Blob Storage platformy Azure na IoT Edge module. Punkt końcowy obiektu BLOB w tym scenariuszu jest jednym z:
-  - `http://<device IP >:11002/<account name>`
-  - `http://<IoT Edge device hostname>:11002/<account name>`
-  - `http://<fully qualified domain name>:11002/<account name>`
+* W przypadku modułów wdrożonych na tym samym urządzeniu, na których jest uruchomiony Blob Storage platformy Azure w module IoT Edge, punkt końcowy obiektu BLOB to: `http://<module name>:11002/<account name>`.
+* W przypadku modułów lub aplikacji uruchamianych na innym urządzeniu należy wybrać odpowiedni punkt końcowy dla sieci. W zależności od konfiguracji sieci wybierz format punktu końcowego, który umożliwia dostęp danych z modułu zewnętrznego lub aplikacji do urządzenia z uruchomioną Blob Storage platformy Azure na IoT Edge module. Punkt końcowy obiektu BLOB w tym scenariuszu jest jednym z:
+  * `http://<device IP >:11002/<account name>`
+  * `http://<IoT Edge device hostname>:11002/<account name>`
+  * `http://<fully qualified domain name>:11002/<account name>`
 
 ## <a name="azure-blob-storage-quickstart-samples"></a>Przykłady szybkiego startu platformy Azure Blob Storage
 
@@ -202,7 +212,7 @@ Za pomocą [Eksplorator usługi Azure Storage](https://azure.microsoft.com/featu
 
 ## <a name="supported-storage-operations"></a>Obsługiwane operacje
 
-Moduły magazynu obiektów BLOB na IoT Edge korzystają z zestawów SDK usługi Azure Storage i są spójne z wersją 2017-04-17 interfejsu API usługi Azure Storage dla punktów końcowych blokowych obiektów BLOB. 
+Moduły magazynu obiektów BLOB na IoT Edge korzystają z zestawów SDK usługi Azure Storage i są spójne z wersją 2017-04-17 interfejsu API usługi Azure Storage dla punktów końcowych blokowych obiektów BLOB.
 
 Ponieważ nie wszystkie operacje Blob Storage platformy Azure są obsługiwane przez usługę Azure Blob Storage w IoT Edge, w tej sekcji przedstawiono stan każdego z nich.
 
@@ -271,6 +281,7 @@ Nieobsługiwane:
 * Dołącz blok z adresu URL
 
 ## <a name="event-grid-on-iot-edge-integration"></a>Event Grid na IoT Edge integrację
+
 > [!CAUTION]
 > Integracja z Event Grid na IoT Edge jest w wersji zapoznawczej
 

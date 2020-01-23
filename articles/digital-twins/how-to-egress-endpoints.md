@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 95dbed72aeca639041d259e9c92c2a3b73ef63fe
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/21/2020
+ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456917"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511573"
 ---
 # <a name="egress-and-endpoints-in-azure-digital-twins"></a>Wyjście i punkty końcowe w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -23,7 +23,7 @@ Zdarzenia są kierowane do punktów końcowych zgodnie ze wstępnie zdefiniowany
 
 Aby dowiedzieć się więcej o zdarzeniach, routingu i typach zdarzeń, zobacz [zdarzenia routingu i komunikaty w usłudze Azure Digital bliźniaczych reprezentacji](./concepts-events-routing.md).
 
-## <a name="events"></a>Zdarzenia
+## <a name="events"></a>Wydarzenia
 
 Zdarzenia są wysyłane przez obiekty IoT (takie jak urządzenia i czujniki) do przetwarzania przez brokerów komunikatów i zdarzeń platformy Azure. Zdarzenia są definiowane przez następujące [Azure Event Grid odwołanie do schematu zdarzenia](../event-grid/event-schema.md).
 
@@ -49,14 +49,14 @@ Zdarzenia są wysyłane przez obiekty IoT (takie jak urządzenia i czujniki) do 
 
 | Atrybut | Typ | Opis |
 | --- | --- | --- |
-| id | ciąg | Unikatowy identyfikator zdarzenia. |
-| subject | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| id | string | Unikatowy identyfikator zdarzenia. |
+| subject | string | Zdefiniowana przez wydawcę ścieżka do tematu zdarzenia. |
 | data | obiekt | Dane zdarzenia specyficzne dla dostawcy zasobów. |
-| eventType | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
-| eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
-| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
-| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
-| topic | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
+| eventType | string | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | string | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
+| dataVersion | string | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | string | Wersja schematu metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Ta wartość jest podawana przez usługę Event Grid. |
+| temat | string | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Ta wartość jest podawana przez usługę Event Grid. |
 
 Aby uzyskać więcej informacji o schemacie zdarzeń Event Grid:
 
@@ -248,7 +248,7 @@ W poniższych przykładach pokazano, jak skonfigurować obsługiwane punkty koń
 
 Uwierzytelnione żądanie HTTP POST względem:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
