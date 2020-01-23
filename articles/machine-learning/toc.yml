@@ -191,6 +191,9 @@
         - name: Etykietowanie obrazów
           displayName: 'data, dataset, labeling'
           href: how-to-label-images.md
+        - name: Tworzenie zestawów danych z etykietami
+          displayName: 'data, labels, torchvision'
+          href: how-to-use-labeled-dataset.md
     - name: Szkolenie modeli
       items:
         - name: Korzystanie z projektanta

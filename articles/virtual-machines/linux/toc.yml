@@ -43,9 +43,11 @@
       href: tutorial-azure-security.md
     - name: 14a — Kompilowanie za pomocą usługi Jenkins
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14b — Wdrażanie za pomocą usługi Azure Pipelines (klasycznie)
+    - name: 14b — Integrowanie rozwiązania Jenkins z usługą Azure DevOps
       href: tutorial-build-deploy-jenkins.md
-    - name: 15 — Ciągła integracja/ciągłe wdrażanie za pomocą usługi Azure Pipelines (YAML)
+    - name: 15a — Usługa DevOps dla rozwiązań IaaS i PaaS na platformie Azure
+      href: tutorial-devops-azure-pipelines-classic.md
+    - name: 15b — Ciągła integracja/ciągłe wdrażanie za pomocą usługi Azure Pipelines (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a — Tworzenie stosu LAMP
       href: tutorial-lamp-stack.md

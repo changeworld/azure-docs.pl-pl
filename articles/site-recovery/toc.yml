@@ -309,7 +309,7 @@
                   href: vmware-physical-mobility-service-overview.md
                 - name: Przygotowywanie do instalacji wypychanej usługi mobilności
                   href: vmware-azure-install-mobility-service.md
-                - name: Wdrażanie usługi mobilności za pomocą programu System Center Configuration Manager
+                - name: Wdrażanie usługi mobilności za pomocą programu Configuration Manager
                   href: vmware-azure-mobility-install-configuration-mgr.md
         - name: Uruchamianie trybu failover i powrotu po awarii
           href: physical-to-azure-failover-failback.md

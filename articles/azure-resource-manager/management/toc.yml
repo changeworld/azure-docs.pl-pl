@@ -16,6 +16,8 @@
       href: azure-resource-manager-security-controls.md
     - name: Dostawcy zasobów według usługi
       href: azure-services-resource-providers.md
+    - name: Typy zasobów rozszerzenia
+      href: extension-resource-types.md
     - name: Limit wystąpień zasobów
       href: resources-without-resource-group-limit.md
 - name: Instrukcje
@@ -68,44 +70,44 @@
           href: tag-resources.md
         - name: Pomoc techniczna dla tagów
           href: tag-support.md
-    - name: Zarządzanie
+    - name: Zarządzanie grupami zasobów
       items:
-        - name: Zarządzanie grupami zasobów
-          items:
-            - name: Korzystanie z witryny Azure Portal
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-portal.md
-            - name: Używanie interfejsu wiersza polecenia platformy Azure
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-cli.md
-            - name: Korzystanie z programu Azure PowerShell
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-powershell.md
-        - name: Zarządzanie zasobami
-          items:
-            - name: Korzystanie z witryny Azure Portal
-              displayName: 'open,delete,deploy,move,lock,tag,monitor'
-              href: manage-resources-portal.md
-            - name: Używanie interfejsu wiersza polecenia platformy Azure
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-cli.md
-            - name: Korzystanie z programu Azure PowerShell
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-powershell.md
-        - name: Usuwanie zasobów i grup zasobów
-          href: delete-resource-group.md
-        - name: Blokowanie zasobów
-          href: lock-resources.md
-        - name: Tworzenie subskrypcji EA
+        - name: Azure Portal
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-cli.md
+        - name: Azure PowerShell
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-powershell.md
+    - name: Zarządzanie zasobami
+      items:
+        - name: Azure Portal
+          displayName: 'open,delete,deploy,move,lock,tag,monitor'
+          href: manage-resources-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-cli.md
+        - name: Azure PowerShell
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-powershell.md
+    - name: Subskrypcje EA
+      items:
+        - name: Utwórz
           href: programmatically-create-subscription.md
-        - name: Przyznawanie dostępu w celu tworzenia subskrypcji EA
+        - name: Udzielanie dostępu do tworzenia
           href: grant-access-to-create-subscription.md
-        - name: Uwierzytelnianie w wielu dzierżawach
-          href: authenticate-multi-tenant.md
-    - name: Wyświetlanie dzienników aktywności
-      href: view-activity-logs.md
     - name: Dostawcy zasobów i ich typy
       href: resource-providers-and-types.md
+    - name: Usuwanie zasobów i grup zasobów
+      href: delete-resource-group.md
+    - name: Blokowanie zasobów
+      href: lock-resources.md
+    - name: Uwierzytelnianie w wielu dzierżawach
+      href: authenticate-multi-tenant.md
+    - name: Wyświetlanie dzienników aktywności
+      href: view-activity-logs.md
     - name: Ograniczanie żądań
       href: request-limits-and-throttling.md
     - name: Śledzenie operacji asynchronicznych
