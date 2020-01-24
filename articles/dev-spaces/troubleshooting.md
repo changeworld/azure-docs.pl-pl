@@ -2,15 +2,15 @@
 title: Rozwiązywanie problemów
 services: azure-dev-spaces
 ms.date: 09/25/2019
-ms.topic: conceptual
+ms.topic: troubleshooting
 description: Dowiedz się, jak rozwiązywać typowe problemy podczas włączania i używania Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a2eb98af2c73b5a920f3e3bcedb7ab18e9f0430
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438108"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548853"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Rozwiązywanie problemów Azure Dev Spaces
 
@@ -252,7 +252,7 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-Ten błąd występuje, ponieważ w węzłach AKS jest uruchomiona Starsza wersja platformy Docker, która nie obsługuje kompilacji wieloetapowych. Aby uniknąć kompilacji wieloetapowych, napisz ponownie pliku dockerfile.
+Ten błąd występuje, ponieważ Azure Dev Spaces nie obsługuje obecnie kompilacji wieloetapowych. Aby uniknąć kompilacji wieloetapowych, napisz ponownie pliku dockerfile.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Ruch sieciowy nie jest przekazywany do klastra AKS podczas nawiązywania połączenia z maszyną deweloperskią
 
@@ -475,3 +475,12 @@ Aby włączyć Azure Dev Spaces w klastrze AKS, dla którego ruch wychodzący z 
 | gcr.io | HTTP: 443 | Aby ściągnąć obrazy Helm/er|
 | storage.googleapis.com | HTTP: 443 | Aby ściągnąć obrazy Helm/er|
 | azds —<guid>.<location>. azds.io | HTTPS:443 | Aby komunikować się z usługami Azure Dev Spaces zaplecza dla Twojego kontrolera. Dokładną nazwę FQDN można znaleźć w "dataplaneFqdn" w% USERPROFILE%\.azds\settings.JSON|
+
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Błąd "nie można odnaleźć klastra \<klastra\> w subskrypcji \<Subscription\>"
+
+Ten błąd może pojawić się, jeśli plik kubeconfig jest przeznaczony dla innego klastra lub subskrypcji niż próbujesz użyć go przy użyciu narzędzi po stronie klienta Azure Dev Spaces. Narzędzia po stronie klienta Azure Dev Spaces replikuje zachowanie *polecenia kubectl*, które używa [co najmniej jednego pliku kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) do wybierania i komunikowania się z klastrem.
+
+Aby rozwiązać ten problem:
+
+* Użyj `az aks use-dev-spaces -g <resource group name> -n <cluster name>`, aby zaktualizować bieżący kontekst. To polecenie umożliwia również Azure Dev Spaces w klastrze AKS, jeśli nie jest jeszcze włączona. Alternatywnie możesz użyć `kubectl config use-context <cluster name>`, aby zaktualizować bieżący kontekst.
+* Użyj `az account show`, aby wyświetlić bieżącą subskrypcję platformy Azure, której dotyczysz, i sprawdź, czy jest ona poprawna. Możesz zmienić subskrypcję docelową przy użyciu `az account set`.

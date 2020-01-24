@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db9b95f82a18072af538d4aa946431dcef8d9cff
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949630"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154645"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosuj interfejs użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -64,7 +64,7 @@ Utwórz zawartość HTML z nazwą marki produktu w tytule.
 
 Aby hostować tę zawartość HTML w usłudze BLOB Storage, wykonaj następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 1. W menu **centrum** wybierz kolejno pozycje **nowy** > **Magazyn** > **konto magazynu**.
 1. Wybierz **subskrypcję** dla konta magazynu.
 1. Utwórz **grupę zasobów** lub wybierz istniejącą.
@@ -106,7 +106,7 @@ Skonfiguruj magazyn obiektów BLOB dla udostępniania zasobów między źródła
 1. Dla **dozwolonych nagłówków**Wprowadź gwiazdkę (*).
 1. W przypadku **widocznych nagłówków**Wprowadź gwiazdkę (*).
 1. W obszarze **Maksymalny wiek**wprowadź 200.
-1. Kliknij przycisk **Save** (Zapisz).
+1. Kliknij pozycję **Zapisz**.
 
 ## <a name="test-cors"></a>Testowanie CORS
 
@@ -120,7 +120,7 @@ Sprawdź, czy wszystko jest gotowe, wykonując następujące czynności:
 
 Aby skonfigurować dostosowanie interfejsu użytkownika, skopiuj **ContentDefinition** i jego elementy podrzędne z pliku podstawowego do pliku rozszerzeń.
 
-1. Otwórz podstawowy plik zasad. Na przykład <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Jest to jeden z plików zasad uwzględnionych w pakiecie startowym zasad niestandardowych, który powinien zostać uzyskany w wymaganiu wstępnym, [Rozpocznij od zasad niestandardowych](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Otwórz podstawowy plik zasad. Na przykład <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Jest to jeden z plików zasad uwzględnionych w pakiecie startowym zasad niestandardowych, który powinien zostać uzyskany w wymaganiu wstępnym, [Rozpocznij od zasad niestandardowych](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Wyszukaj i Skopiuj całą zawartość elementu **ContentDefinitions** .
 1. Otwórz plik rozszerzenia. Na przykład *TrustFrameworkExtensions. XML*. Wyszukaj element **BuildingBlocks** . Jeśli element nie istnieje, Dodaj go.
 1. Wklej całą zawartość elementu **ContentDefinitions** , który został skopiowany jako element podrzędny elementu **BuildingBlocks** .
@@ -146,19 +146,19 @@ Aby skonfigurować dostosowanie interfejsu użytkownika, skopiuj **ContentDefini
 
 1. Zapisz plik rozszerzeń.
 
-## <a name="upload-your-updated-custom-policy"></a>Przekazywanie zaktualizowanych zasad niestandardowych
+## <a name="upload-and-test-your-updated-custom-policy"></a>Przekazywanie i testowanie zaktualizowanych zasad niestandardowych
+
+### <a name="upload-the-custom-policy"></a>Przekazywanie zasad niestandardowych
 
 1. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
-1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
-1. Wybierz pozycję **platforma obsługi tożsamości**.
-1. Kliknij pozycję **wszystkie zasady**.
-1. Kliknij pozycję **Przekaż zasady**.
+1. Wyszukaj i wybierz **Azure AD B2C**.
+1. W obszarze **zasady**wybierz pozycję **platforma obsługi tożsamości**.
+1. Wybierz pozycję **Przekaż zasady niestandardowe**.
 1. Przekaż wcześniej zmieniony plik rozszerzeń.
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>Testowanie zasad niestandardowych za pomocą polecenia **Uruchom teraz**
+### <a name="test-the-custom-policy-by-using-run-now"></a>Testowanie zasad niestandardowych za pomocą polecenia **Uruchom teraz**
 
-1. Na stronie **Azure AD B2C** przejdź do pozycji **wszystkie zasady**.
-1. Wybierz przekazane zasady niestandardowe i kliknij przycisk **Uruchom teraz** .
+1. Wybierz przekazane zasady, a następnie wybierz pozycję **Uruchom teraz**.
 1. Należy mieć możliwość rejestrowania się przy użyciu adresu e-mail.
 
 ## <a name="reference"></a>Informacje ogólne

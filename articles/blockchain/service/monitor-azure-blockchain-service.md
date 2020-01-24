@@ -3,13 +3,13 @@ title: Monitorowanie usługi Azure łańcucha bloków (ABS)
 description: Monitorowanie usługi Azure łańcucha bloków za pomocą Azure Monitor
 ms.date: 01/08/2020
 ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 8c2dc6afeaa00e4c7455940cbdf5a7acd6e17394
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.reviewer: v-umha
+ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780407"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293253"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Monitoruj usługę Azure łańcucha bloków za pomocą Azure Monitor  
 
@@ -38,7 +38,7 @@ Podczas tworzenia ustawienia diagnostycznego należy określić, które kategori
 
 **Dzienniki aplikacji łańcucha bloków** — wybierz kategorię, aby pobrać dzienniki aplikacji łańcucha bloków hostowanej przez usługę zarządzaną. Na przykład dla elementu członkowskiego kworum typu ABS te dzienniki będą dzienniki z samego kworum.  
 
-**Żądania metryk**: wybierz opcję zbierania danych metryk z Azure Cosmos DB do miejsc docelowych w ustawieniu diagnostycznym, które są zbierane automatycznie w ramach metryk platformy Azure. Zbieraj dane metryk z dziennikami zasobów, aby analizować jednocześnie oba rodzaje danych i wysyłać dane metryk poza Azure Monitor.
+**Żądania metryk**: Wybierz opcję zbierania danych metryk z Azure Cosmos DB do miejsc docelowych w ustawieniu diagnostycznym, które są zbierane automatycznie w ramach metryk platformy Azure. Zbieraj dane metryk z dziennikami zasobów, aby analizować jednocześnie oba rodzaje danych i wysyłać dane metryk poza Azure Monitor.
 
 ## <a name="analyze-metric-data"></a>Analizowanie danych metryki  
 
@@ -90,7 +90,7 @@ W poniższej tabeli wymieniono właściwości dzienników serwera proxy usługi 
 | BlockchainNodeName  | Nazwa węzła elementu członkowskiego usługi Azure łańcucha bloków, w którym jest wykonywana operacja.   |
 | EthMethod  | Metoda, która jest wywoływana przez podstawowy protokół łańcucha bloków w kworum, może być eth_sendTransactions, eth_getBlockByNumber itd.  |
 | Agent  | Agent użytkownika działający w imieniu użytkownika, taki jak przeglądarka sieci Web Mozilla, Edge itd. Przykłady wartości to: "Mozilla/5.0 (linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
-| Code   | Kody błędów HTTP. Zazwyczaj 4XX i 5XX są warunkami błędów.  |
+| Kod   | Kody błędów HTTP. Zazwyczaj 4XX i 5XX są warunkami błędów.  |
 | NodeHost  | Nazwa DNS węzła.   |
 | RequestMethodName | Wywoływana metoda HTTP, możliwe wartości w tym miejscu są UMIESZCZAne w celu utworzenia elementu członkowskiego, pobieranie do pobrania szczegółów istniejącego elementu członkowskiego, usuwanie elementu członkowskiego usuwania, poprawka do aktualizacji elementu członkowskiego.   |
 | BlockchainMemberName  | Nazwa członka usługi łańcucha bloków platformy Azure podana przez użytkownika.  |
@@ -133,10 +133,10 @@ Poniższa tabela zawiera listę metryk łańcucha bloków, które są zbierane d
 
 | Nazwa metryki | Jednostka  |  Typ agregacji| Opis   |
 |---|---|---|---|
-| Oczekujące transakcje   | Liczba  |  Średnia | Liczba transakcji, które oczekują na analizowane pod.   |
-| Przetworzone bloki   | Liczba  | Suma  |  Liczba bloków przetworzonych w każdym przedziale czasu. Obecnie rozmiar bloku wynosi 5 sekund, dlatego w minucie każdy węzeł będzie przetwarzać 12 bloków i 60 bloków w ciągu 5 minut.   |
-|Przetworzone transakcje    | Liczba  | Suma  | Liczba transakcji przetworzonych w bloku.    |
-|Transakcje w kolejce    |  Liczba | Średnia  | Liczba transakcji, które nie mogą być natychmiast analizowane pod. Może to być spowodowane faktem, że nie dotarły one do kolejności, a przyszła transakcja oczekuje na nadejście poprzedniej transakcji. Lub może to być dwa transakcje mają tę samą wartość tylko raz (jednorazowy) i tą samą wartością gazu, dlatego drugi nie może być analizowane pod.   |
+| Oczekujące transakcje   | Count  |  Average | Liczba transakcji, które oczekują na analizowane pod.   |
+| Przetworzone bloki   | Count  | Suma  |  Liczba bloków przetworzonych w każdym przedziale czasu. Obecnie rozmiar bloku wynosi 5 sekund, dlatego w minucie każdy węzeł będzie przetwarzać 12 bloków i 60 bloków w ciągu 5 minut.   |
+|Przetworzone transakcje    | Count  | Suma  | Liczba transakcji przetworzonych w bloku.    |
+|Transakcje w kolejce    |  Count | Average  | Liczba transakcji, które nie mogą być natychmiast analizowane pod. Może to być spowodowane faktem, że nie dotarły one do kolejności, a przyszła transakcja oczekuje na nadejście poprzedniej transakcji. Lub może to być dwa transakcje mają tę samą wartość tylko raz (jednorazowy) i tą samą wartością gazu, dlatego drugi nie może być analizowane pod.   |
 
 ### <a name="connection-metrics"></a>Metryki połączeń  
 
@@ -145,10 +145,10 @@ W poniższej tabeli wymieniono różne metryki połączenia, które są zbierane
 
 | Nazwa metryki | Jednostka  |  Typ agregacji| Opis |
 |---|---|---|---|
-| Zaakceptowane połączenia   | Liczba  |  Suma | Całkowita liczba zaakceptowanych połączeń klientów.   |
-| Aktywne połączenia  | Liczba  | Średnia  |  Bieżąca liczba aktywnych połączeń klienta, w tym połączeń oczekujących.    |
-|Obsłużone połączenia    | Liczba  | Suma  | Całkowita liczba obsłużonych połączeń. Ogólnie rzecz biorąc, wartość parametru jest taka sama jak w przypadku akceptowanych połączeń, o ile nie osiągnięto limitów zasobów.     |
-|Obsłużone żądania     |  Liczba | Suma  | Całkowita liczba żądań klientów.  |
+| Zaakceptowane połączenia   | Count  |  Suma | Całkowita liczba zaakceptowanych połączeń klientów.   |
+| Aktywne połączenia  | Count  | Average  |  Bieżąca liczba aktywnych połączeń klienta, w tym połączeń oczekujących.    |
+|Obsłużone połączenia    | Count  | Suma  | Całkowita liczba obsłużonych połączeń. Ogólnie rzecz biorąc, wartość parametru jest taka sama jak w przypadku akceptowanych połączeń, o ile nie osiągnięto limitów zasobów.     |
+|Obsłużone żądania     |  Count | Suma  | Całkowita liczba żądań klientów.  |
 
 
 ### <a name="performance-metrics"></a>Metryki wydajności
@@ -158,13 +158,13 @@ W poniższej tabeli przedstawiono metryki wydajności, które są zbierane dla k
 
 | Nazwa metryki | Jednostka  |  Typ agregacji| Opis   |
 |---|---|---|---|
-| Procent użycia procesora CPU   | Wartość procentowa  |  Maks. | Procent użycia procesora CPU.     |
+| Procent użycia procesora CPU   | Procent  |  Maks. | Procent użycia procesora CPU.     |
 | Bajty odczytu we/wy   | Kilobajtach   | Suma  |  Suma bajtów odczytu we wszystkich węzłach zasobu elementu członkowskiego łańcucha bloków.      |
 |Bajty zapisu we/wy     | Kilobajtach   | Suma  | Suma operacji we/wy zapisuje bajty we wszystkich węzłach zasobu elementu członkowskiego łańcucha bloków.     |
-|Limit pamięci       |  Gigabajtach   | Średnia    | Maksymalna ilość pamięci dostępnej dla procesu łańcucha bloków na węzeł. |
-|Memory Usage (Użycie pamięci)     | Gigabajtach  |  Średnia | Ilość używanej pamięci średnia dla wszystkich węzłów.  |
-| Procent użycia pamięci     | Wartość procentowa   | Średnia  |  Wartość procentowa używanej pamięci (średnia) we wszystkich węzłach.       |
-|Użycie magazynu      | Gigabajtach   | Średnia  | Średnia GB miejsca do magazynowania używana we wszystkich węzłach.       |
+|Limit pamięci       |  Gigabajtach   | Average    | Maksymalna ilość pamięci dostępnej dla procesu łańcucha bloków na węzeł. |
+|Użycie pamięci     | Gigabajtach  |  Average | Ilość używanej pamięci średnia dla wszystkich węzłów.  |
+| Procent użycia pamięci     | Procent   | Average  |  Wartość procentowa używanej pamięci (średnia) we wszystkich węzłach.       |
+|Użycie magazynu      | Gigabajtach   | Average  | Średnia GB miejsca do magazynowania używana we wszystkich węzłach.       |
 
 
 ## <a name="next-steps"></a>Następne kroki

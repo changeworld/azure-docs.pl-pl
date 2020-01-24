@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f915764deaa70117b96a42c5e7310b691125d731
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887536"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979848"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights dla usług Azure Cloud Services
 [Application Insights][start] mogą monitorować [aplikacje usługi w chmurze platformy Azure](https://azure.microsoft.com/services/cloud-services/) pod kątem dostępności, wydajności, błędów i użycia przez połączenie danych z zestawów sdk Application Insights z danymi [Diagnostyka Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) z usług w chmurze. Dzięki uzyskiwanym opiniom dotyczącym wydajności i skuteczności aplikacji możesz dokonać opartych na informacjach wyborów dotyczących kierunku projektu w każdym cyklu życia.
@@ -26,7 +26,7 @@ Przed rozpoczęciem należy:
 * Microsoft Azure Tools 2,9 lub nowszy.
 * Developer Analytics Tools 7,10 lub nowszy.
 
-## <a name="get-started-quickly"></a>Szybkie rozpoczynanie pracy
+## <a name="get-started-quickly"></a>Szybkie rozpoczęcie efektywnej pracy
 Najszybszym i najłatwiejszym sposobem monitorowania usługi w chmurze za pomocą usługi Application Insights jest wybranie tej opcji podczas publikowania usługi na platformie Azure.
 
 ![Przykładowa strona ustawień diagnostyki](./media/cloudservices/azure-cloud-application-insights.png)
@@ -52,7 +52,7 @@ W następnej sekcji dowiesz się, jak dostosować własny projekt usługi w chmu
 ## <a name="plan-resources-and-resource-groups"></a>Planowanie zasobów i grup zasobów
 Dane telemetryczne z aplikacji są przechowywane, analizowane i wyświetlane w zasobie platformy Azure typu Application Insights. 
 
-Każdy zasób należy do grupy zasobów. Grupy zasobów służą do zarządzania kosztami, przyznawania dostępu członkom zespołu i wdrażania aktualizacji w ramach jednej skoordynowanej transakcji. Można na przykład [napisać skrypt służący do wdrażania usługi w](../../azure-resource-manager/resource-group-template-deploy.md) chmurze platformy Azure i jej Application Insights wszystkich zasobów monitorowania w ramach jednej operacji.
+Każdy zasób należy do grupy zasobów. Grupy zasobów służą do zarządzania kosztami, przyznawania dostępu członkom zespołu i wdrażania aktualizacji w ramach jednej skoordynowanej transakcji. Można na przykład [napisać skrypt służący do wdrażania usługi w](../../azure-resource-manager/templates/deploy-powershell.md) chmurze platformy Azure i jej Application Insights wszystkich zasobów monitorowania w ramach jednej operacji.
 
 ### <a name="resources-for-components"></a>Zasoby dla składników
 Zalecamy utworzenie osobnego zasobu dla każdego składnika aplikacji. Oznacza to, że tworzysz zasób dla każdej roli sieci Web i roli procesu roboczego. Każdy składnik można analizować oddzielnie, ale utworzysz [pulpit nawigacyjny](../../azure-monitor/app/overview-dashboard.md) , który łączy kluczowe wykresy ze wszystkich składników, dzięki czemu można je porównywać i monitorować razem w jednym widoku. 
@@ -271,7 +271,7 @@ Jeśli masz klienta aplikacji mobilnej, użyj pakietu [App Center](../../azure-m
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Wyjątek "nie znaleziono metody" w działaniu w usługach Azure Cloud Services
 Czy to kompilacja dla .NET 4.6? Platforma .NET 4,6 nie jest automatycznie obsługiwana w rolach usług Azure Cloud Services. [Zainstaluj program .net 4,6 na każdej roli](../../cloud-services/cloud-services-dotnet-install-dotnet.md) przed uruchomieniem aplikacji.
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
