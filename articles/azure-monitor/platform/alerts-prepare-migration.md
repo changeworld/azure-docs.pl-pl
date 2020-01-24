@@ -1,18 +1,18 @@
 ---
 title: Przygotowanie do Azure Monitor migracji klasycznych alertów przez aktualizację aplikacji logiki i elementów Runbook
+author: yanivlavi
 description: Dowiedz się, jak modyfikować elementy webhook, Logic Apps i Runbook, aby przygotować się do dobrowolnej migracji.
-author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: snmuvva
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5235db5cab39be6e36bdf145d3edc7c73fe9da54
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827394"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705568"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Przygotuj Aplikacje logiki i elementy Runbook do migracji klasycznych reguł alertów
 
@@ -25,7 +25,7 @@ Jeśli zdecydujesz się na dobrowolne Migrowanie reguł alertów klasycznych do 
 
 ## <a name="api-changes"></a>Zmiany interfejsu API
 
-Interfejsy API, które tworzą i zarządzają klasycznymi`microsoft.insights/alertrules`regułami alertów (), różnią się od interfejsów API,`microsoft.insights/metricalerts`które tworzą nowe alerty metryk () i zarządzają nimi. W przypadku programistycznego tworzenia i zarządzania klasycznymi regułami alertów należy zaktualizować skrypty wdrażania, aby współpracowały z nowymi interfejsami API.
+Interfejsy API, które tworzą i zarządzają klasycznymi regułami alertów (`microsoft.insights/alertrules`), różnią się od interfejsów API, które tworzą nowe alerty metryk (`microsoft.insights/metricalerts`) i zarządzają nimi. W przypadku programistycznego tworzenia i zarządzania klasycznymi regułami alertów należy zaktualizować skrypty wdrażania, aby współpracowały z nowymi interfejsami API.
 
 Poniższa tabela zawiera odwołanie do interfejsów programistycznych zarówno dla klasycznego, jak i nowego alertu:
 
@@ -78,7 +78,7 @@ Jeśli używasz usługi Logic Apps z alertami klasycznymi, musisz zmodyfikować 
 
 1. Użyj szablonu "Azure Monitor-Metrics Handler". Ten szablon ma wyzwalacz **żądania HTTP** z zdefiniowanym odpowiednim schematem.
 
-    ![logika — aplikacja — szablon](media/alerts-migration/logic-app-template.png "Szablon alertu metryki")
+    ![Logika — aplikacja — szablon](media/alerts-migration/logic-app-template.png "Szablon alertu metryki")
 
 1. Dodaj akcję do hostowania logiki przetwarzania.
 
@@ -163,7 +163,7 @@ Większość [naszych partnerów, którzy integrują się z klasycznymi alertami
 
 Jeśli używasz integracji partnera, która nie jest wymieniona w tym miejscu, potwierdź u dostawcy integracji, że integracja współpracuje z nowymi alertami metryk.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Jak korzystać z narzędzia do migracji](alerts-using-migration-tool.md)
 - [Informacje o sposobie działania narzędzia do migracji](alerts-understand-migration.md)

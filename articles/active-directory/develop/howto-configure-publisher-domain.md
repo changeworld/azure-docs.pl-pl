@@ -13,13 +13,12 @@ ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2739f5db8c50449e3481ccdfb495b30edba54ce1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966983"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697136"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Instrukcje: Konfigurowanie domeny wydawcy aplikacji
 
@@ -35,7 +34,7 @@ Poniższa tabela zawiera podsumowanie domyślnego zachowania wartości domeny wy
 
 | Domeny zweryfikowane przez dzierżawcę | Domyślna wartość domeny wydawcy |
 |-------------------------|----------------------------|
-| {1&gt;null&lt;1} | {1&gt;null&lt;1} |
+| null | null |
 | *.onmicrosoft.com | *.onmicrosoft.com |
 | -*. onmicrosoft.com<br/>-domain1.com<br/>-domain2.com (podstawowy) | domain2.com |
 

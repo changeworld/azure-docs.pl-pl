@@ -3,22 +3,34 @@ title: Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze
 description: Dowiedz się, jak używać funkcji zabezpieczeń w programie Azure Backup, aby tworzyć kopie zapasowe bardziej bezpieczne.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028212"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705500"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkcje zabezpieczeń pomagające w ochronie obciążeń w chmurze korzystających z Azure Backup
 
-Obawy dotyczące problemów z zabezpieczeniami takich jak złośliwe oprogramowanie, oprogramowanie wymuszające okup oraz włamania wciąż rosną. Te problemy z zabezpieczeniami mogą być kosztowne, zarówno pod względem finansowym, jak i w kwestii danych. Aby ochronić przed takimi atakami, Azure Backup teraz zapewnia funkcje zabezpieczeń, które ułatwiają ochronę danych kopii zapasowej nawet po usunięciu. Jedną z tych funkcji jest usuwanie nietrwałe. W przypadku usuwania nietrwałego, nawet jeśli złośliwy aktor usuwa kopię zapasową maszyny wirtualnej (lub dane kopii zapasowej są przypadkowo usuwane), dane kopii zapasowej są przechowywane przez 14 dodatkowych dni, co pozwala na odzyskanie tego elementu kopii zapasowej bez utraty danych. Te dodatkowe 14 dni przechowywania danych kopii zapasowej w stanie "usuwanie nietrwałe" nie wiążą się z kosztem dla klienta. Platforma Azure szyfruje także wszystkie dane kopii zapasowej przechowywane przy użyciu [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) , aby dodatkowo zabezpieczyć dane.
+Obawy dotyczące problemów z zabezpieczeniami takich jak złośliwe oprogramowanie, oprogramowanie wymuszające okup oraz włamania wciąż rosną. Te problemy z zabezpieczeniami mogą być kosztowne, zarówno pod względem finansowym, jak i w kwestii danych. Aby ochronić przed takimi atakami, Azure Backup teraz zapewnia funkcje zabezpieczeń, które ułatwiają ochronę danych kopii zapasowej nawet po usunięciu.
+
+Jedną z tych funkcji jest usuwanie nietrwałe. W przypadku usuwania nietrwałego, nawet jeśli złośliwy aktor usuwa kopię zapasową maszyny wirtualnej (lub dane kopii zapasowej są przypadkowo usuwane), dane kopii zapasowej są przechowywane przez 14 dodatkowych dni, co pozwala na odzyskanie tego elementu kopii zapasowej bez utraty danych. Dodatkowe 14 dni przechowywania danych kopii zapasowej w stanie "usuwanie nietrwałe" nie wiążą się z kosztem dla klienta. Platforma Azure szyfruje także wszystkie dane kopii zapasowej przechowywane przy użyciu [szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) , aby dodatkowo zabezpieczyć dane.
+
+Ochrona usuwania nietrwałego dla usługi Azure Virtual Machines jest ogólnie dostępna.
+
+>[!NOTE]
+>Nietrwałe usuwanie programu SQL Server na maszynie wirtualnej platformy Azure oraz usuwanie nietrwałe dla SAP HANA w obciążeniach maszyn wirtualnych platformy Azure jest teraz dostępne w wersji zapoznawczej.<br>
+>Aby utworzyć konto w wersji zapoznawczej, Zapisz się do nas na AskAzureBackupTeam@microsoft.com
+
+## <a name="soft-delete"></a>Usuwanie nietrwałe
+
+### <a name="soft-delete-for-vms"></a>Usuwanie nietrwałe dla maszyn wirtualnych
+
+Usuwanie nietrwałe dla maszyn wirtualnych chroni kopie zapasowe maszyn wirtualnych przed niezamierzonym usunięciem. Nawet po usunięciu kopii zapasowych są one zachowywane w stanie nietrwałego usunięcia przez 14 dodatkowych dni.
 
 > [!NOTE]
 > Usuwanie nietrwałe chroni tylko usunięte dane kopii zapasowej. Jeśli maszyna wirtualna zostanie usunięta bez kopii zapasowej, funkcja usuwania nietrwałego nie będzie zachować danych. Wszystkie zasoby powinny być chronione za pomocą Azure Backup, aby zapewnić pełną odporność.
 >
-
-## <a name="soft-delete"></a>Usuwanie nietrwałe
 
 ### <a name="supported-regions"></a>Obsługiwane regiony
 

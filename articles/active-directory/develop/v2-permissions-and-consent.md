@@ -17,13 +17,12 @@ ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ff874ee74864c84c976096ac5f7fa4b20cfab48
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 29e099e1c53f83d038caa697d11158fd5939ca7b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997007"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700315"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Uprawnienia i zgoda w punkcie końcowym platformy tożsamości firmy Microsoft
 
@@ -86,7 +85,7 @@ Implementacja platformy tożsamości firmy Microsoft w programie OpenID Connect 
 
 Jeśli aplikacja wykonuje Logowanie przy użyciu programu [OpenID Connect Connect](active-directory-v2-protocols.md), musi zażądać zakresu `openid`. Zakres `openid` jest wyświetlany na stronie wyrażanie zgody na konto służbowe jako uprawnienie "Logowanie do Ciebie" oraz na stronie zgody na konto Microsoft osobistą jako "Wyświetlanie profilu i łączenie się z aplikacjami i usługami przy użyciu konto Microsoft". Dzięki temu uprawnieniu aplikacja może otrzymać unikatowy identyfikator dla użytkownika w postaci `sub`go żądania. Zapewnia również dostęp aplikacji do punktu końcowego UserInfo. Zakresu `openid` można użyć w punkcie końcowym tokenów platformy tożsamości firmy Microsoft w celu uzyskania tokenów identyfikatorów, które mogą być używane przez aplikację do uwierzytelniania.
 
-### <a name="email"></a>e-mail
+### <a name="email"></a>email
 
 Zakres `email` może być używany z zakresem `openid` i innymi. Daje ona aplikacji dostęp do podstawowego adresu e-mail użytkownika w formie `email`go. `email` oświadczenia jest dołączany do tokenu tylko wtedy, gdy adres e-mail jest skojarzony z kontem użytkownika, które nie zawsze jest przypadkiem. Jeśli używa zakresu `email`, aplikacja powinna zostać przygotowana do obsługi przypadku, w którym `email` nie istnieje w tokenie.
 

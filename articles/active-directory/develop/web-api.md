@@ -16,19 +16,18 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4babb7e869f4fc83bcdb530a580a29dda234293
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e57e027848294cbff570cb64d0ad4bbf05693ffe
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373793"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699805"
 ---
 # <a name="web-api"></a>Internetowy interfejs API
 
 Web API Apps to aplikacje sieci Web, które muszą pobierać zasoby z internetowego interfejsu API. W tym scenariuszu istnieją dwa typy tożsamości, których aplikacja sieci Web może używać do uwierzytelniania i wywoływania internetowego interfejsu API:
 
-- **Tożsamość aplikacji** — w tym scenariuszu są stosowane poświadczenia klienta OAuth 2,0. Przyznaj uwierzytelnianie jako aplikację i dostęp do internetowego interfejsu API. W przypadku korzystania z tożsamości aplikacji interfejs API sieci Web może wykrywać, że aplikacja sieci Web wywołuje ją, ponieważ internetowy interfejs API nie otrzymuje żadnych informacji o użytkowniku. Jeśli aplikacja otrzymuje informacje o użytkowniku, zostanie ona wysłana za pośrednictwem protokołu aplikacji i nie jest podpisana przez usługę Azure AD. Internetowy interfejs API ufa, że aplikacja sieci Web uwierzytelnił użytkownika. Z tego powodu ten wzorzec jest nazywany zaufanym podsystemem.
+- **Tożsamość aplikacji** — w tym scenariuszu są stosowane poświadczenia klienta OAuth 2,0. Przyznaj uwierzytelnianie jako aplikację i dostęp do internetowego interfejsu API. W przypadku korzystania z tożsamości aplikacji interfejs API sieci Web może wykrywać, że aplikacja sieci Web wywołuje ją, ponieważ internetowy interfejs API nie otrzymuje żadnych informacji o użytkowniku. Jeśli aplikacja otrzymuje informacje o użytkowniku, zostanie ona wysłana za pośrednictwem protokołu aplikacji i nie jest podpisana przez usługę Azure AD. Internetowy interfejs API ufa, że aplikacja sieci Web uwierzytelnił użytkownika. Z tego powodu ten wzorzec jest nazywany zaufany podsystem.
 - **Tożsamość delegowanego użytkownika** — ten scenariusz można wykonać na dwa sposoby: OpenID Connect Connect oraz kod autoryzacji OAuth 2,0 przyznaje klientowi poufnemu. Aplikacja sieci Web uzyskuje token dostępu dla użytkownika, który udowadnia internetowy interfejs API, który został pomyślnie uwierzytelniony przez użytkownika do aplikacji sieci Web i że aplikacja sieci Web mogła uzyskać delegowaną tożsamość użytkownika w celu wywołania interfejsu API sieci Web. Ten token dostępu jest wysyłany w żądaniu do internetowego interfejsu API, który autoryzuje użytkownika i zwraca żądany zasób.
 
 Zarówno tożsamość aplikacji, jak i delegowane typy tożsamości użytkownika zostały omówione w poniższym przepływie. Kluczową różnicą jest to, że delegowana tożsamość użytkownika musi najpierw nabyć kod autoryzacji, zanim użytkownik będzie mógł zalogować się i uzyskać dostęp do internetowego interfejsu API.
@@ -42,7 +41,7 @@ Zarówno tożsamość aplikacji, jak i delegowane typy tożsamości użytkownika
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Tożsamość aplikacji z uwierzytelnianiem przy użyciu poświadczeń klienta OAuth 2,0
 
 1. Użytkownik jest zalogowany do usługi Azure AD w aplikacji sieci Web (zobacz sekcję **Web Apps** , aby uzyskać więcej informacji).
-1. Aplikacja sieci Web musi uzyskać token dostępu, aby można było uwierzytelnić się w interfejsie API sieci Web i pobrać żądany zasób. Wysyła żądanie do punktu końcowego tokenu usługi Azure AD, dostarczając poświadczenia, identyfikator aplikacji i identyfikator URI aplikacji interfejsu API sieci Web.
+1. Aplikacja sieci web musi uzyskiwanie tokenu dostępu, dzięki czemu mogą uwierzytelniania interfejsu API sieci web i pobrać żądanego zasobu. Wysyła żądanie do punktu końcowego tokenu usługi Azure AD, dostarczając poświadczenia, identyfikator aplikacji i identyfikator URI aplikacji interfejsu API sieci Web.
 1. Usługa Azure AD uwierzytelnia aplikację i zwraca token dostępu JWT używany do wywoływania interfejsu API sieci Web.
 1. Za pośrednictwem protokołu HTTPS aplikacja sieci Web używa zwróconego tokenu dostępu JWT, aby dodać ciąg JWT z oznaczeniem "Bearer" w nagłówku autoryzacji żądania do internetowego interfejsu API. Interfejs API sieci Web sprawdza poprawność tokenu JWT i jeśli Walidacja zakończyła się pomyślnie, zwraca żądany zasób.
 

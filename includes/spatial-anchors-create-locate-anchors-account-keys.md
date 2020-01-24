@@ -4,17 +4,17 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
-ms.openlocfilehash: 72616d5d79b4dbdb8e14463c706c1626eeb50e97
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9bd213b63b69a25fb2530cd8f6659abf5357616a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182928"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694398"
 ---
 ## <a name="set-up-authentication"></a>Konfigurowanie uwierzytelniania
 
-Aby uzyskać dostęp do usługi, musisz podać klucz konta token dostępu i token uwierzytelniania usługi Azure Active Directory.
+Aby uzyskać dostęp do usługi, musisz podać klucz konta, token dostępu lub token uwierzytelniania Azure Active Directory. Więcej informacji na ten temat można znaleźć na [stronie koncepcji uwierzytelniania](/azure/spatial-anchors/concepts/authentication).
 
 ### <a name="account-keys"></a>Klucze konta
 
-Klucze konta są poświadczeniami, które umożliwia aplikacji do uwierzytelniania za pomocą usługi Azure przestrzenne kotwic. Przeznaczeniem kluczy konta ma pomóc Ci szybko rozpocząć pracę. Szczególnie w fazie opracowywania integracji aplikacji z kotwic przestrzenne platformy Azure. Jako takie można użyć kluczy konta, osadzając je w aplikacjach klienckich podczas programowania. W czasie poza rozwój ma zdecydowanie zalecane można przenieść do mechanizmu uwierzytelniania, który jest poziom produkcji, obsługiwane przez tokeny dostępu ani uwierzytelnienia użytkownika usługi Azure Active Directory. Aby uzyskać klucz konta do tworzenia aplikacji, przejdź do konta Azure przestrzenne kotwice, a następnie przejdź do karty "Klucze".
+Klucze kont to poświadczenia, które umożliwiają aplikacji uwierzytelnianie w usłudze kotwice przestrzenne platformy Azure. Zamierzony cel kluczy konta pomaga szybko rozpocząć pracę. Szczególnie w fazie tworzenia integracji aplikacji z zakotwiczeniami przestrzennymi platformy Azure. W związku z tym możesz użyć kluczy konta, osadzając je w aplikacjach klienckich podczas opracowywania. W miarę postępów poza programowaniem zdecydowanie zaleca się przejście do mechanizmu uwierzytelniania, który jest obsługiwany na poziomie produkcyjnym, obsługiwane przez tokeny dostępu lub Azure Active Directory uwierzytelniania użytkowników. Aby uzyskać klucz konta do celów deweloperskich, odwiedź konto kotwicowe platformy Azure i przejdź do karty "klucze".

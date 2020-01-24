@@ -1,8 +1,8 @@
 ---
-title: FairPlay przesyłania strumieniowego w trybie offline dla systemu iOS z Azure Media Services v3
-description: Ten temat zawiera omówienie i pokazuje, jak używać Azure Media Services do dynamicznego szyfrowania zawartości HTTP Live Streaming (HLS) przy użyciu usługi Apple FairPlay w trybie offline.
+title: Offline FairPlay Streaming for iOS with Azure Media Services v3
+description: This topic gives an overview and shows how to use Azure Media Services to dynamically encrypt your HTTP Live Streaming (HLS) content with Apple FairPlay in offline mode.
 services: media-services
-keywords: HLS, DRM, FairPlay streaming (FPS), offline, iOS 10
+keywords: HLS, DRM, FairPlay Streaming (FPS), Offline, iOS 10
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -15,36 +15,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: c0d87de25cae44f17789dfaf7b1ec805138c351c
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 70256046089a59df1de79b78124c5d60fde77080
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779930"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705942"
 ---
-# <a name="offline-fairplay-streaming-for-ios"></a>FairPlay przesyłania strumieniowego w trybie offline dla systemu iOS 
+# <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Offline FairPlay Streaming for iOS with Media Services v3
 
- Azure Media Services zawiera zestaw dobrze zaprojektowanych [usług ochrony zawartości](https://azure.microsoft.com/services/media-services/content-protection/) , które obejmują:
+ Azure Media Services provides a set of well-designed [content protection services](https://azure.microsoft.com/services/media-services/content-protection/) that cover:
 
 - PlayReady firmy Microsoft
 - Google Widevine
     
-    Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+    Widevine is a service provided by Google Inc. and subject to the terms of service and Privacy Policy of Google, Inc.
 - Technologia FairPlay firmy Apple
 - Szyfrowanie AES-128
 
-Szyfrowanie/Advanced szyfrowania (Digital Rights Management) jest wykonywane dynamicznie na żądanie różnych protokołów przesyłania strumieniowego. Usługi dostarczania kluczy odszyfrowywania licencji DRM/AES są również udostępniane przez Media Services.
+Digital rights management (DRM)/Advanced Encryption Standard (AES) encryption of content is performed dynamically upon request for various streaming protocols. DRM license/AES decryption key delivery services also are provided by Media Services.
 
-Oprócz ochrony zawartości w przypadku przesyłania strumieniowego online przez różne protokoły przesyłania strumieniowego tryb offline dla chronionej zawartości jest również często żądaną funkcją. Obsługa trybu offline jest wymagana w następujących scenariuszach:
+Besides protecting content for online streaming over various streaming protocols, offline mode for protected content is also an often-requested feature. Offline-mode support is needed for the following scenarios:
 
-* Odtwarzanie, gdy połączenie internetowe nie jest dostępne, na przykład podczas podróży.
-* Niektórzy dostawcy zawartości mogą nie zezwalać na dostarczanie licencji DRM poza granicami kraju/regionu. Jeśli użytkownicy chcą oglądać zawartość poza krajem/regionem, wymagane jest pobranie do trybu offline.
-* W niektórych krajach/regionach dostępność i/lub przepustowość Internetu są nadal ograniczone. Użytkownicy mogą najpierw pobrać zawartość, aby obejrzeć ją w rozdzielczości wystarczającej do prawidłowego wyświetlania. W takim przypadku problem zwykle nie jest dostępny w sieci, ale ogranicza przepustowość sieci. Dostawca platformy wideo w trybie offline (OTT) z góry (OVP) ma zażądać pomocy online.
+* Playback when internet connection isn't available, such as during travel.
+* Some content providers might disallow DRM license delivery beyond a country/region's border. If users want to watch content while traveling outside of the country/region, offline download is needed.
+* In some countries/regions, internet availability and/or bandwidth is still limited. Users might choose to download first to be able to watch content in a resolution that is high enough for a satisfactory viewing experience. In this case, the issue typically isn't network availability but limited network bandwidth. Over-the-top (OTT)/online video platform (OVP) providers request offline-mode support.
 
-W tym artykule omówiono obsługę trybu offline FairPlay streaming (FPS), która jest przeznaczona dla urządzeń z systemem iOS 10 lub nowszym. Ta funkcja nie jest obsługiwana przez inne platformy firmy Apple, takie jak systemu watchOS, systemu tvOS lub Safari na macOS.
+This article covers FairPlay Streaming (FPS) offline-mode support that targets devices running iOS 10 or later. This feature isn't supported for other Apple platforms, such as watchOS, tvOS, or Safari on macOS.
 
 > [!NOTE]
-> W przypadku funkcji DRM w trybie offline jest naliczana tylko jedna prośba o licencję podczas pobierania zawartości. Nie są naliczane opłaty za żadne błędy.
+> Offline DRM is only billed for making a single request for a license when you download the content. Any errors are not billed.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

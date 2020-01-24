@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4328ea6145d32616f1784d94976dab29216fbc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 83717f9a78d80923f020ab699be9ddabbbcc12ef
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852006"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700009"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Co się stało z moim projektem MVC (usługa połączona Azure Active Directory Visual Studio)?
 
@@ -31,9 +30,9 @@ Aby uzyskać informacje na temat pracy z połączoną usługą, zobacz [wprowadz
 
 ## <a name="added-references"></a>Dodano odwołania
 
-Dotyczy pliku projektu *. NET References i `packages.config` (odwołania NuGet).
+Wpływa na plik projektu *. NET References) i `packages.config` (odwołania NuGet).
 
-| Type | Tematy pomocy |
+| Typ | Informacje ogólne |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -48,7 +47,7 @@ Dotyczy pliku projektu *. NET References i `packages.config` (odwołania NuGet).
 
 Dodatkowe odwołania w przypadku wybrania opcji **Odczytaj dane katalogu** :
 
-| Type | Tematy pomocy |
+| Typ | Informacje ogólne |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (tylko w programie Visual Studio 2015) |
@@ -62,7 +61,7 @@ Dodatkowe odwołania w przypadku wybrania opcji **Odczytaj dane katalogu** :
 
 Następujące odwołania są usuwane (tylko projekty ASP.NET 4, jak w programie Visual Studio 2015):
 
-| Type | Tematy pomocy |
+| Typ | Informacje ogólne |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -71,8 +70,8 @@ Następujące odwołania są usuwane (tylko projekty ASP.NET 4, jak w programie 
 ## <a name="project-file-changes"></a>Zmiany w pliku projektu
 
 - Ustaw właściwość `IISExpressSSLPort` na wartość DISTINCT.
-- Ustaw właściwość `WebProject_DirectoryAccessLevelKey` na 0 lub 1, jeśli wybrano opcję Odczytaj **dane katalogu** .
-- Ustaw właściwość `IISUrl` na gdzie `https://localhost:<port>/` `<port>` pasuje dowartości.`IISExpressSSLPort`
+- Ustaw właściwość `WebProject_DirectoryAccessLevelKey` na 0 lub 1, jeśli wybrano opcję **Odczytaj dane katalogu** .
+- Ustaw właściwość `IISUrl` na `https://localhost:<port>/`, gdzie `<port>` pasuje do wartości `IISExpressSSLPort`.
 
 ## <a name="webconfig-or-appconfig-changes"></a>zmiany pliku Web. config lub App. config
 
@@ -88,17 +87,17 @@ Następujące odwołania są usuwane (tylko projekty ASP.NET 4, jak w programie 
     </appSettings>
     ```
 
-- Dodano `<dependentAssembly>` `System.IdentityModel.Tokens.Jwt` elementy `<runtime><assemblyBinding>` w węźle dla i `Microsoft.IdentityModel.Protocol.Extensions`.
+- Dodano elementy `<dependentAssembly>` w węźle `<runtime><assemblyBinding>` dla `System.IdentityModel.Tokens.Jwt` i `Microsoft.IdentityModel.Protocol.Extensions`.
 
 Dodatkowe zmiany w przypadku wybrania opcji **Odczytaj dane katalogu** :
 
-- Dodano następujący wpis konfiguracji poniżej `<appSettings>`:
+- Dodano następujący wpis konfiguracji w obszarze `<appSettings>`:
 
     ```xml
     <add key="ida:ClientSecret" value="<Azure AD app's new client secret>" />
     ```
 
-- Dodano następujące elementy w obszarze `<configuration>`; wartości dla pliku Project-MDF-File i Project-Catalog-ID będą się różnić:
+- Dodano następujące elementy w obszarze `<configuration>`; wartości dla programu Project-MDF-File i ID-Catalog będą się różnić:
 
     ```xml
     <configSections>
@@ -122,29 +121,29 @@ Dodatkowe zmiany w przypadku wybrania opcji **Odczytaj dane katalogu** :
     </entityFramework>
     ```
 
-- Dodano `<dependentAssembly>` `Microsoft.Data.Services.Client`elementy `<runtime><assemblyBinding>` w węźle dla ,`Microsoft.Data.Edm`, i `Microsoft.Data.OData`.
+- Dodano elementy `<dependentAssembly>` w węźle `<runtime><assemblyBinding>` dla `Microsoft.Data.Services.Client`, `Microsoft.Data.Edm`i `Microsoft.Data.OData`.
 
 ## <a name="code-changes-and-additions"></a>Zmiany i dodatki kodu
 
-- Dodano atrybut do `Controllers/HomeController.cs` i wszystkich innych istniejących kontrolerów. `[Authorize]`
+- Dodano atrybut `[Authorize]` do `Controllers/HomeController.cs` i innych istniejących kontrolerów.
 
-- Dodano klasę `App_Start/Startup.Auth.cs`uruchamiania uwierzytelniania, zawierającą logikę uruchamiania uwierzytelniania usługi Azure AD. W przypadku wybrania opcji **Czytaj dane katalogu** ten plik zawiera również kod umożliwiający otrzymanie kodu OAuth i wymienianie go z tokenem dostępu.
+- Dodano klasę uruchamiania uwierzytelniania, `App_Start/Startup.Auth.cs`, zawierającą logikę uruchamiania uwierzytelniania usługi Azure AD. W przypadku wybrania opcji **Czytaj dane katalogu** ten plik zawiera również kod umożliwiający otrzymanie kodu OAuth i wymienianie go z tokenem dostępu.
 
-- Dodano klasę `Controllers/AccountController.cs`kontrolera, zawierającą `SignIn` i `SignOut` metody.
+- Dodano klasę kontrolera, `Controllers/AccountController.cs`zawierającą metody `SignIn` i `SignOut`.
 
-- Dodano widok `Views/Shared/_LoginPartial.cshtml`częściowy, zawierający link akcji dla `SignIn` i `SignOut`.
+- Dodano widok częściowy `Views/Shared/_LoginPartial.cshtml`zawierający link akcji dla `SignIn` i `SignOut`.
 
 - Dodano widok częściowy, `Views/Account/SignoutCallback.cshtml`zawierający kod HTML dla interfejsu użytkownika wylogowania.
 
-- Zaktualizowano `ConfigureAuth(app)` `Startup` metodę w celu uwzględnienia wywołania, jeśli Klasa już istnieje; w przeciwnym razie dodaliśmy klasę, która zawiera wywołania metody. `Startup.Configuration`
+- Zaktualizowano metodę `Startup.Configuration` w celu uwzględnienia wywołania `ConfigureAuth(app)`, jeśli Klasa już istnieje; w przeciwnym razie Dodano klasę `Startup`, która zawiera wywołania metody.
 
-- Dodano `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) lub `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) zawierający informacje używane przez program Visual Studio do śledzenia dodawania połączonej usługi.
+- Dodano `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) lub `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) zawierające informacje używane przez program Visual Studio do śledzenia dodawania połączonej usługi.
 
-- Jeśli wybrano opcję **Odczytaj dane katalogu** , dodano `Models/ADALTokenCache.cs` i `Models/ApplicationDbContext.cs` do obsługi buforowania tokenów. Dodano również dodatkowy kontroler i widok, aby zilustrować dostęp do informacji o profilu użytkownika przy użyciu interfejsów API `Controllers/UserProfileController.cs`usługi `Views/UserProfile/Index.cshtml`Azure Graph:, i`Views/UserProfile/Relogin.cshtml`
+- W przypadku wybrania opcji **Odczytaj dane katalogu** dodano `Models/ADALTokenCache.cs` i `Models/ApplicationDbContext.cs` do obsługi buforowania tokenu. Dodano również dodatkowy kontroler i widok, aby zilustrować dostęp do informacji o profilu użytkownika przy użyciu interfejsów API usługi Azure Graph: `Controllers/UserProfileController.cs`, `Views/UserProfile/Index.cshtml`i `Views/UserProfile/Relogin.cshtml`
 
 ### <a name="file-backup-visual-studio-2015"></a>Kopia zapasowa plików (Visual Studio 2015)
 
-Podczas dodawania połączonej usługi program Visual Studio 2015 tworzy kopie zapasowe zmienionych i usuniętych plików. Wszystkie odnośne pliki są zapisywane w folderze `Backup/AzureAD`. Program Visual Studio 2017 i nowsze nie tworzy kopii zapasowych.
+Podczas dodawania połączonej usługi program Visual Studio 2015 tworzy kopie zapasowe zmienionych i usuniętych plików. Wszystkie pliki, których to dotyczy, są zapisywane w folderze `Backup/AzureAD`. Program Visual Studio 2017 i nowsze nie tworzy kopii zapasowych.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

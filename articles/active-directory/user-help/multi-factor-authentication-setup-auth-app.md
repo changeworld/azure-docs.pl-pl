@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a09ccdc867cb6d0e84a6e0f85e532839604f5e
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 078379c52c7e7fe5072ecc19c95d6b7e40b5f876
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619439"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705262"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Konfigurowanie aplikacji uwierzytelniania jako metody weryfikacji dwuskładnikowej
 
@@ -30,9 +29,9 @@ Można skonfigurować aplikację uwierzytelniającej do wysyłania powiadomienia
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>Konfigurowanie aplikacji Microsoft Authenticator do wysyłania powiadomień
 
-1. Na stronie **dodatkowa Weryfikacja zabezpieczeń** wybierz opcję **aplikacja mobilna** z **kroku 1: Jak należy się skontaktować** z Twoim obszarem.
+1. Na stronie **dodatkowa Weryfikacja zabezpieczeń** wybierz pozycję **aplikacja mobilna** z **kroku 1: jak należy się skontaktować** z Twoim obszarem.
 
-2. Wybierz pozycję **Otrzymuj powiadomienia, aby** przeprowadzić weryfikację, w obszarze **jak chcesz korzystać z aplikacji mobilnej** , a następnie wybierz pozycję **Konfiguruj**.
+2. Wybierz pozycję **Otrzymuj powiadomienia, aby przeprowadzić weryfikację** , w obszarze **jak chcesz korzystać z aplikacji mobilnej** , a następnie wybierz pozycję **Konfiguruj**.
 
     ![Strona dodatkowej weryfikacji zabezpieczeń z opcją aplikacji mobilnych i powiadomień](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
@@ -55,11 +54,11 @@ Można skonfigurować aplikację uwierzytelniającej do wysyłania powiadomienia
 
 6. Na urządzeniu przenośnym wybierz pozycję **Zatwierdź**.
 
-7. Na komputerze Dodaj numer telefonu urządzenia przenośnego do **kroku 3: W przypadku utraty dostępu do obszaru aplikacji** mobilnej, a następnie wybierz przycisk **dalej**.
+7. Na komputerze Dodaj numer telefonu urządzenia przenośnego do **kroku 3: w przypadku utraty dostępu do obszaru aplikacji mobilnej** , a następnie wybierz przycisk **dalej**.
 
     Zdecydowanie zalecamy dodanie numeru telefonu urządzenia przenośnego, aby działał jako kopia zapasowa, jeśli nie możesz uzyskać do niej dostępu lub użyć aplikacji mobilnej z dowolnego powodu.
 
-8. **W kroku 4: Kontynuuj korzystanie z istniejących obszarów** aplikacji, skopiuj podane hasło aplikacji i wklej je w bezpiecznym miejscu.
+8. W **kroku 4: nadal korzystać z istniejących aplikacji** Skopiuj podane hasło aplikacji i wklej je w bezpiecznym miejscu.
 
     ![Obszar haseł aplikacji na stronie dodatkowej weryfikacji zabezpieczeń](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -70,7 +69,7 @@ Można skonfigurować aplikację uwierzytelniającej do wysyłania powiadomienia
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Konfigurowanie aplikacji Microsoft Authenticator do używania kodów weryfikacyjnych
 
-1. Na stronie **dodatkowa Weryfikacja zabezpieczeń** wybierz opcję **aplikacja mobilna** z **kroku 1: Jak należy się skontaktować** z Twoim obszarem.
+1. Na stronie **dodatkowa Weryfikacja zabezpieczeń** wybierz pozycję **aplikacja mobilna** z **kroku 1: jak należy się skontaktować** z Twoim obszarem.
 
 2. Wybierz pozycję **Użyj kodu weryfikacyjnego** z obszaru **jak chcesz korzystać z aplikacji mobilnej** , a następnie wybierz pozycję **Konfiguruj**.
 
@@ -93,15 +92,15 @@ Można skonfigurować aplikację uwierzytelniającej do wysyłania powiadomienia
 
     Aplikacja Authenticator wyśle zapytanie o kod weryfikacyjny jako test.
 
-6. W aplikacji Microsoft Authenticator przewiń w dół do swojego konta służbowego, skopiuj i wklej 6-cyfrowy kod z aplikacji do **kroku 2: Wprowadź kod weryfikacyjny z pola aplikacji** mobilnej na komputerze, a następnie wybierz pozycję **Weryfikuj**.
+6. W aplikacji Microsoft Authenticator przewiń w dół do swojego konta służbowego, skopiuj i wklej 6-cyfrowy kod z aplikacji do **kroku 2: Wprowadź kod weryfikacyjny z aplikacji mobilnej** na komputerze, a następnie wybierz pozycję **Weryfikuj**.
 
     ![Strona dodatkowej weryfikacji zabezpieczeń z testem kodu weryfikacyjnego](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-test.png)
 
-7. Na komputerze Dodaj numer telefonu urządzenia przenośnego do **kroku 3: W przypadku utraty dostępu do obszaru aplikacji** mobilnej, a następnie wybierz przycisk **dalej**.
+7. Na komputerze Dodaj numer telefonu urządzenia przenośnego do **kroku 3: w przypadku utraty dostępu do obszaru aplikacji mobilnej** , a następnie wybierz przycisk **dalej**.
 
     Zdecydowanie zalecamy dodanie numeru telefonu urządzenia przenośnego, aby działał jako kopia zapasowa, jeśli nie możesz uzyskać do niej dostępu lub użyć aplikacji mobilnej z dowolnego powodu.
 
-8. **W kroku 4: Kontynuuj korzystanie z istniejących obszarów** aplikacji, skopiuj podane hasło aplikacji i wklej je w bezpiecznym miejscu.
+8. W **kroku 4: nadal korzystać z istniejących aplikacji** Skopiuj podane hasło aplikacji i wklej je w bezpiecznym miejscu.
 
     ![Obszar haseł aplikacji na stronie dodatkowej weryfikacji zabezpieczeń](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 

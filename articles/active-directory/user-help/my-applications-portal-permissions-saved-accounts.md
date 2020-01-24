@@ -12,13 +12,12 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa8bc27f014b794059f30a62d47f298096df2f1
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573798"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705058"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>Edytuj lub Odwołaj uprawnienia aplikacji w portalu My Apps (wersja zapoznawcza)
 
@@ -49,7 +48,7 @@ Po zarządzaniu uprawnieniami aplikacji i zapisanymi kontami w portalu **Moje ap
 
 - Organizuj aplikacje w różnych kategoriach utworzonych i udostępnianych przez organizację. Aby uzyskać więcej informacji, zobacz temat [dostęp i używanie obszarów roboczych w portalu My Apps (wersja zapoznawcza)](my-applications-portal-workspaces.md).
 
-## <a name="related-articles"></a>Pokrewne artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
 - [Aktualizowanie informacji o profilu i koncie](my-account-portal-overview.md). Instrukcje dotyczące aktualizowania danych osobowych, które są wyświetlane w portalu **My profile** (wersja zapoznawcza).
 

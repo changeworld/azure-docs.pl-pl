@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: a78649033b84a726b6e7daee95efc4192ce85c3a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: bb75ea0f8eb3fcf85a06cadd68ae111d51369891
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182941"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694268"
 ---
-Potrzebne są wystarczające dane środowisko przechwytywane zanim spróbujesz tworzenie nowych kotwic chmury.
+Zgodnie z wcześniejszym opisem należy przechwycić wystarczające dane środowiska przed próbą utworzenia nowego zakotwiczenia przestrzennego w chmurze. Oznacza to, że `ReadyForCreateProgress` musi być większa niż 1, ale zalecamy poczekanie do momentu, aż `RecommendedForCreateProgress` jest większy od 1.

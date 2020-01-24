@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545045"
+ms.locfileid: "76704548"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -298,6 +298,15 @@ Należy pamiętać, że w przypadku wprowadzenia zmian bezpośrednio w udziale p
 Jeśli PerItemErrorCount na serwerze lub plikach, które nie są synchronizowane w portalu, są większe niż 0 dla danej sesji synchronizacji, co oznacza, że niektóre elementy nie są synchronizowane. Pliki i foldery mogą mieć właściwości, które uniemożliwiają ich synchronizację. Te cechy mogą być trwałe i wymagać jawnej akcji w celu wznowienia synchronizacji, na przykład usunięcie nieobsługiwanych znaków z nazwy pliku lub folderu. Mogą to być również przejściowe, co oznacza, że plik lub folder zostanie automatycznie wznowione synchronizację; na przykład pliki z otwartymi dojściami spowodują automatyczne wznowienie synchronizacji po zamknięciu pliku. Gdy aparat Azure File Sync wykryje ten problem, zostanie wygenerowany dziennik błędów, który można analizować, aby wyświetlić listę elementów, które aktualnie nie są synchronizowane.
 
 Aby wyświetlić te błędy, uruchom skrypt programu PowerShell **FileSyncErrorsReport. ps1** (znajdujący się w katalogu instalacji agenta agenta Azure File Sync), aby zidentyfikować pliki, których nie można zsynchronizować z powodu otwartych dojść, nieobsługiwanych znaków lub innych problemów. Pole ścieżki elementu informuje o lokalizacji pliku w odniesieniu do głównego katalogu synchronizacji. Zapoznaj się z listą typowych błędów synchronizacji poniżej, aby poznać kroki zaradcze.
+
+> [!Note]  
+> Jeśli skrypt FileSyncErrorsReport. ps1 zwraca "nie znaleziono żadnych błędów plików" lub nie wyświetla listę błędów poszczególnych elementów dla grupy synchronizacji, przyczyna to:
+>
+>- Przyczyna 1: Ostatnia zakończona sesja synchronizacji nie ma błędów poszczególnych elementów. Portal powinien zostać wkrótce zaktualizowany, aby wyświetlić 0 plików, których nie można zsynchronizować. 
+>   - Sprawdź [Identyfikator zdarzenia 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) w dzienniku zdarzeń telemetrii, aby potwierdzić, że PerItemErrorCount wynosi 0. 
+>
+>- Przyczyna 2: dziennik zdarzeń ItemResults na serwerze zawinięty z powodu zbyt dużej liczby błędów poszczególnych elementów, a dziennik zdarzeń nie zawiera już błędów dla tej grupy synchronizacji.
+>   - Aby uniknąć tego problemu, Zwiększ rozmiar dziennika zdarzeń ItemResults. Dziennik zdarzeń ItemResults można znaleźć w sekcji "aplikacje i usługi Logs\Microsoft\FileSync\Agent" w Podgląd zdarzeń. 
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Rozwiązywanie problemów na błędy synchronizacji plików/katalogów
 **Błędy synchronizacji dla elementu dziennika ItemResults**  

@@ -3,12 +3,12 @@ title: Tabela obsługi kopii zapasowych platformy SAP HANA
 description: W tym artykule omówiono obsługiwane scenariusze i ograniczenia dotyczące tworzenia kopii zapasowych SAP HANA baz danych na maszynach wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a0a7c25ec718dcd6a903d2149a8b3930fb25941e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 2063da4c5210cace41454d8bdc5b12e636ba76cd
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514300"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705653"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Macierz obsługi dla kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
 
@@ -33,17 +33,17 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **Scenariusz**               | **Obsługiwane konfiguracje**                                | **Nieobsługiwane konfiguracje**                              |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topologia**               | SAP HANA działa tylko na maszynach wirtualnych z systemem Linux Azure                    | Duże wystąpienia HANA (HLI)                                   |
-| **Georegiony**                   | Australia Południowa Południowo-Wschodnia, Australia Południowo-Wschodnia, Południowe stany USA, Kanada Wschodnia, Południowe stany USA Azja Wschodnia, Azja Wschodnia Wschodnie stany USA, wschód US 2, zachodnio-środkowe Stany Zjednoczone, Europa Zachodnia, zachodnie stany USA 2, Północno-środkowe stany USA, środkowe stany USA, Południowo-środkowe stany USA, Indie Południowo-Wschodnia, Japonia Korea środkowa, Korea Południowa Europa Północna, Europa Zachodnia Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo | Australia Środkowa, Australia Środkowa 2 Chiny Wschodnie, Chiny Północne, Chiny 2, Chiny Północne 2 zachodnie Indie Francja środkowa, Francja Południowa Niemcy Północne, Niemcy Środkowo-Zachodnie Szwajcaria Północna, Szwajcaria Zachodnia Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki, Zjednoczone Emiraty Arabskie, Zjednoczone Emiraty Arabskie Central regiony l Azure Government |
-| **Wersje systemu operacyjnego**            | SLES 12 z dodatkiem SP2, SP3 lub SP4           | SLES 15, RHEL                                                |
-| **Wersje platformy HANA**          | SDC na platformie HANA 1. x, MDC w systemie HANA 2. x < = SPS04 Rev 44           | -                                                            |
+| **Georegiony**                   | **POWSZECHNE**<br />**Europa** — Europa Zachodnia, Europa Północna, Francja środkowa, Francja południowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Niemcy Północne, Niemcy Środkowo-Zachodnie, Szwajcaria Północna, Szwajcaria Zachodnia<br />**Azja i Pacyfik** — Australia Środkowa, Australia Środkowa 2, Australia Wschodnia, Australia Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa<br /><br>**Przeglądania**<br />**Ameryki** — środkowe stany USA, Wschodnie stany USA 2, Wschodnie stany USA, Północno-środkowe stany USA, Południowo-środkowe stany USA, zachodnie stany USA 2, zachodnie stany USA, Europa Zachodnia, Kanada środkowa, Kanada Wschodnia, Brazylia Południowa<br />**Azja i Pacyfik** — Azja Wschodnia, Azja Południowo-Wschodnia, Indie Środkowe, Indie Południowe | Chiny Wschodnie, Chiny Północne, Chiny 2, Chiny Północne 2, Indie Zachodnie, środkowe Szwajcaria Północna, Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki |
+| **Wersje systemu operacyjnego**            | SLES 12 z dodatkiem SP2, SP3 lub SP4                                | SLES 15, RHEL                                                |
+| **Wersje platformy HANA**          | SDC na platformie HANA 1. x, MDC w systemie HANA 2. x < = SPS04 Rev 44            | -                                                            |
 | **Wdrożenia HANA**       | SAP HANA pojedynczej maszynie wirtualnej platformy Azure — skalowanie w górę               | Skalowanie w poziomie                                                    |
 | **Wystąpienia HANA**         | Pojedyncze wystąpienie SAP HANA na pojedynczej maszynie wirtualnej platformy Azure — skalowanie w górę | Wiele wystąpień SAP HANA na jednej maszynie wirtualnej                  |
 | **Typy baz danych HANA**    | Kontener pojedyncza baza danych (SDC) na 1. x, kontener wielobaza danych (MDC) w 2. x | MDC w HANA 1. x                                              |
-| **Rozmiar bazy danych HANA**     | 2 TB rozmiaru pełnej kopii zapasowej zgodnie z informacjami raportowanymi przez platformę HANA) |                                                              |
-| **Typy kopii zapasowych**           | Pełne, różnicowe i dzienniki kopii zapasowych                           | Przyrostowe, migawki                                       |
+| **Rozmiar bazy danych HANA**     | 2 TB rozmiaru pełnej kopii zapasowej zgodnie z informacjami raportowanymi przez platformę HANA)                   |                                                              |
+| **Typy kopii zapasowych**           | Pełne, różnicowe i dzienniki kopii zapasowych                          | Przyrostowe, migawki                                       |
 | **Przywróć typy**          | Zapoznaj się z SAP HANA Uwaga [1642148](https://launchpad.support.sap.com/#/notes/1642148) , aby dowiedzieć się więcej o obsługiwanych typach przywracania |                                                              |
-| **Limity kopii zapasowych**          | Do 2 TB rozmiaru pełnej kopii zapasowej na wystąpienie SAP HANA  |                                                              |
-| **Konfiguracje specjalne** |                                                              | SAP HANA + warstwa dynamiczna <br>  Klonowanie za poorednictwem LaMa            |
+| **Limity kopii zapasowych**          | Do 2 TB rozmiaru pełnej kopii zapasowej na wystąpienie SAP HANA         |                                                              |
+| **Konfiguracje specjalne** |                                                              | SAP HANA + warstwa dynamiczna <br>  Klonowanie za poorednictwem LaMa        |
 
 ------
 

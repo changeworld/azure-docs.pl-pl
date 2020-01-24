@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70a8c97ee1e10d53cd8da9687a9109eb4ce8ae3d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: af4b00a630c2fc7d1b806a98f537e8635807609e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965572"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702253"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scenariusz: aplikacja demona, która wywołuje interfejsy API sieci Web
 
@@ -47,7 +46,7 @@ Istnieje inny typowy przypadek, w którym aplikacje niedemona używają poświad
 
 Aplikacje, które uzyskują token dla własnych tożsamości:
 
-- Są poufnymi aplikacjami klienckimi. Te aplikacje, z uwzględnieniem, że uzyskują dostęp do zasobów niezależnie od użytkownika, muszą udowodnić swoją tożsamość. Są one również raczej poufnymi aplikacjami, które muszą zostać zatwierdzone przez administratorów dzierżawy usługi Azure Active Directory (Azure AD).
+- są poufnymi aplikacjami klienckimi. Te aplikacje, z uwzględnieniem, że uzyskują dostęp do zasobów niezależnie od użytkownika, muszą udowodnić swoją tożsamość. Są one również raczej poufnymi aplikacjami, które muszą zostać zatwierdzone przez administratorów dzierżawy usługi Azure Active Directory (Azure AD).
 - Zarejestrowano wpis tajny (hasło aplikacji lub certyfikat) w usłudze Azure AD. Ten wpis tajny jest przesyłany w trakcie wywołania usługi Azure AD w celu uzyskania tokenu.
 
 ## <a name="specifics"></a>Szczegółowych informacji

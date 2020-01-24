@@ -16,13 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbbcd854434bcc085f1b63fb864755dd0e928fc9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852166"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700298"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) — Omówienie
 
@@ -32,8 +31,8 @@ Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej A
   - Konta służbowe (obsługiwane za pomocą usługi Azure AD)
   - Osobiste konta Microsoft (np. Skype, Xbox i Outlook.com)
   - Konta społecznościowe lub lokalne (za pośrednictwem Azure AD B2C)
-- **Biblioteki Open Source**: Biblioteki uwierzytelniania firmy Microsoft (MSAL) i obsługa innych bibliotek zgodnych ze standardami
-- **Portal zarządzania aplikacjami**: Środowisko rejestracji i konfiguracji wbudowane w Azure Portal wraz z innymi funkcjami zarządzania platformy Azure.
+- **Biblioteki Open Source**: biblioteki uwierzytelniania firmy Microsoft (MSAL) i obsługa innych bibliotek zgodnych ze standardami
+- **Portal zarządzania aplikacjami**: środowisko rejestracji i konfiguracji wbudowane w Azure Portal oraz wszystkie inne możliwości zarządzania platformy Azure.
 - **Interfejs API konfiguracji aplikacji i program PowerShell**: umożliwiające programistyczną konfigurację aplikacji za poorednictwem interfejsu API REST (Microsoft Graph i Azure Active Directory Graph 1,6) i programu PowerShell, dzięki czemu można zautomatyzować zadania DevOps.
 - **Zawartość dla deweloperów**: Dokumentacja dotycząca pojęć i referencyjnych, przykłady przewodnika Szybki Start, przykłady kodu, samouczki i przewodniki dotyczące wykonywania instrukcji.
 
@@ -56,7 +55,7 @@ Praca z tożsamościami nie musi być trudna. Wybierz [scenariusz](authenticatio
 
 Poniższy wykres przedstawia typowe scenariusze aplikacji uwierzytelniania — Użyj go jako odniesienia podczas integracji platformy tożsamości firmy Microsoft z Twoją aplikacją.
 
-[![Scenariusze aplikacji na platformie tożsamości firmy Microsoft](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+[scenariusze aplikacji ![na platformie tożsamości firmy Microsoft](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 

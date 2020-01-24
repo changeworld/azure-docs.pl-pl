@@ -1,19 +1,19 @@
 ---
 title: Wywoływanie elementu webhook przy użyciu klasycznego alertu metryki w Azure Monitor
 description: Dowiedz się, jak przekierować alerty metryki platformy Azure do innych systemów nienależących do platformy Azure.
-author: snehithm
+author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: snmuvva
+ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 88de4464e5b95b49e76e5d9c4f7dc0d6732076e1
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: fd4bf2d404a7152da04e72d323f463c18167f5bf
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286159"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705517"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Wywoływanie elementu webhook przy użyciu klasycznego alertu metryki w Azure Monitor
 Elementy webhook umożliwiają kierowanie powiadomień o alertach platformy Azure do innych systemów w przypadku akcji wykonywanych po przetworzeniu lub po ich wykonaniu. Możesz użyć elementu webhook dla alertu, aby skierować go do usług, które wysyłają wiadomości SMS, aby rejestrować usterki w celu powiadomienia zespołu za pośrednictwem usług rozmowy lub Messaging lub dla różnych innych akcji. 
@@ -79,13 +79,13 @@ Operacja POST zawiera następujący ładunek i schemat JSON dla wszystkich alert
 | description |Tak | |Opis alertu. |
 | conditionType |Tak |Metryka, zdarzenie |Obsługiwane są dwa typy alertów: Metryka i zdarzenie. Alerty metryk są oparte na warunku metryki. Alerty zdarzeń są oparte na zdarzeniu w dzienniku aktywności. Użyj tej wartości, aby sprawdzić, czy alert jest oparty na metryce czy zdarzeniu. |
 | condition |Tak | |Określone pola do sprawdzenia na podstawie wartości **conditiontype** . |
-| metricName |W przypadku alertów dotyczących metryk | |Nazwa metryki, która definiuje elementy monitorowane przez regułę. |
+| MetricName |W przypadku alertów dotyczących metryk | |Nazwa metryki, która definiuje elementy monitorowane przez regułę. |
 | metricUnit |W przypadku alertów dotyczących metryk |Bajty, BytesPerSecond, Count, CountPerSecond, procent, s |Jednostka dozwolona w metryce. Zobacz [dozwolone wartości](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |W przypadku alertów dotyczących metryk | |Rzeczywista wartość metryki, która spowodowała alert. |
 | threshold |W przypadku alertów dotyczących metryk | |Wartość progowa, przy której alert jest aktywowany. |
 | windowSize |W przypadku alertów dotyczących metryk | |Okres czasu, który jest używany do monitorowania aktywności alertu na podstawie progu. Wartość musi mieścić się w przedziale od 5 minut do 1 dnia. Wartość musi być w formacie czasu trwania ISO 8601. |
 | timeAggregation |W przypadku alertów dotyczących metryk |Średnia, Ostatnia, maksimum, minimum, brak, suma |Sposób, w jaki zbierane dane powinny być połączone z upływem czasu. Wartość domyślna to Average. Zobacz [dozwolone wartości](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| zakład |W przypadku alertów dotyczących metryk | |Operator używany do porównywania bieżących danych metryki z progiem zestawu. |
+| operator |W przypadku alertów dotyczących metryk | |Operator używany do porównywania bieżących danych metryki z progiem zestawu. |
 | subscriptionId |Tak | |Identyfikator subskrypcji platformy Azure. |
 | resourceGroupName |Tak | |Nazwa grupy zasobów dla zasobu, którego to dotyczy. |
 | resourceName |Tak | |Nazwa zasobu, którego dotyczy ten zasób. |
@@ -93,7 +93,7 @@ Operacja POST zawiera następujący ładunek i schemat JSON dla wszystkich alert
 | resourceId |Tak | |Identyfikator zasobu, którego dotyczy ten zasób. |
 | resourceRegion |Tak | |Region lub lokalizacja zasobu, którego to dotyczy. |
 | portalLink |Tak | |Bezpośredni link do strony podsumowania zasobów portalu. |
-| properties |Nie |Optional (Opcjonalność) |Zestaw par klucz/wartość, które zawierają szczegółowe informacje o zdarzeniu. Na przykład `Dictionary<String, String>`. Pole właściwości jest opcjonalne. W niestandardowym interfejsie użytkownika lub przepływie pracy opartym na aplikacji logiki użytkownicy mogą wprowadzać pary klucz/wartość, które mogą być przekazane za pośrednictwem ładunku. Alternatywny sposób przekazywania właściwości niestandardowych z powrotem do elementu webhook odbywa się za pośrednictwem samego identyfikatora URI elementu webhook (jako parametrów zapytania). |
+| properties |N |Opcjonalne |Zestaw par klucz/wartość, które zawierają szczegółowe informacje o zdarzeniu. Na przykład `Dictionary<String, String>`. Pole właściwości jest opcjonalne. W niestandardowym interfejsie użytkownika lub przepływie pracy opartym na aplikacji logiki użytkownicy mogą wprowadzać pary klucz/wartość, które mogą być przekazane za pośrednictwem ładunku. Alternatywny sposób przekazywania właściwości niestandardowych z powrotem do elementu webhook odbywa się za pośrednictwem samego identyfikatora URI elementu webhook (jako parametrów zapytania). |
 
 > [!NOTE]
 > Pole **Właściwości** można ustawić tylko przy użyciu [Azure monitor interfejsów API REST](https://msdn.microsoft.com/library/azure/dn933805.aspx).

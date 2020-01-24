@@ -12,13 +12,12 @@ ms.date: 03/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a7376720661e13a03be65df4ee180e0bca20c3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 2987183900ad3232d46b2152bd52808ae96c802b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383064"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704837"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Rozwiązywanie problemów z portalem My Apps
 
@@ -48,11 +47,11 @@ Jeśli masz problemy z instalowaniem rozszerzenia moje aplikacje bezpieczne logo
 
 Jeśli masz problemy z zalogowaniem się do portalu **Moje aplikacje** , możesz spróbować wykonać następujące czynności:
 
-- Upewnij się, że używasz odpowiedniego adresu URL. Powinna być https://myapps.microsoft.com lub dostosowana Strona dla organizacji, https://myapps.microsoft.com/contoso.com na przykład.
+- Upewnij się, że używasz odpowiedniego adresu URL. Powinna być https://myapps.microsoft.com lub dostosowana Strona dla organizacji, np. https://myapps.microsoft.com/contoso.com.
 
 - Upewnij się, że hasło jest poprawne i nie wygasło. Aby uzyskać więcej informacji, zobacz [Resetowanie hasła](active-directory-passwords-update-your-own-password.md)służbowego.
 
-- Upewnij się, że informacje weryfikacyjne są aktualne i dokładne. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure MFA Authentication?](multi-factor-authentication-end-user.md) lub [Zmień metody i informacje zabezpieczające](security-info-add-update-methods-overview.md).
+- Upewnij się, że informacje weryfikacyjne są aktualne i dokładne. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Multi-Factor Authentication dla mnie?](multi-factor-authentication-end-user.md) lub [Zmień metody i informacje zabezpieczające](security-info-add-update-methods-overview.md).
 
 - Dodaj adres URL portalu **aplikacji** do **Właściwości internetowych > Zabezpieczenia > ustawienie zaufanych witryn** .
 
@@ -64,7 +63,7 @@ Jeśli nie pamiętasz hasła, nigdy nie zostało ono odebrane z Twojej organizac
 
 ## <a name="i-want-to-be-able-to-reset-my-own-password"></a>Chcę mieć możliwość zresetowania własnego hasła
 
-Aby móc zresetować własne hasło, administrator musi najpierw włączyć funkcję dla swojej organizacji, a następnie zaktualizować i zweryfikować wymagane metody weryfikacji. Aby uzyskać więcej informacji o sposobach aktualizowania metod weryfikacji, zobacz [Rejestrowanie do](active-directory-passwords-reset-register.md)samoobsługowego resetowania hasła.
+Aby móc zresetować własne hasło, administrator musi najpierw włączyć funkcję dla swojej organizacji, a następnie zaktualizować i zweryfikować wymagane metody weryfikacji. Aby uzyskać więcej informacji o sposobach aktualizowania metod weryfikacji, zobacz [Rejestrowanie do samoobsługowego resetowania hasła](active-directory-passwords-reset-register.md).
 
 ## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>Otrzymuję komunikat o odmowie dostępu podczas uruchamiania aplikacji
 
@@ -76,13 +75,13 @@ Jeśli otrzymujesz komunikat **odmowy dostępu** po uruchomieniu aplikacji z por
 
 - Upewnij się, że hasło jest poprawne i nie wygasło. Aby uzyskać więcej informacji, zobacz [Resetowanie hasła](active-directory-passwords-update-your-own-password.md)służbowego.
 
-- Upewnij się, że informacje weryfikacyjne są aktualne i dokładne. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure MFA Authentication?](multi-factor-authentication-end-user.md) lub [Zmień metody i informacje zabezpieczające](security-info-add-update-methods-overview.md).
+- Upewnij się, że informacje weryfikacyjne są aktualne i dokładne. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Multi-Factor Authentication dla mnie?](multi-factor-authentication-end-user.md) lub [Zmień metody i informacje zabezpieczające](security-info-add-update-methods-overview.md).
 
 - Wyczyść pamięć podręczną przeglądarki, a następnie spróbuj ponownie się zalogować.
 
 Jeśli po wykonaniu tych czynności nadal nie możesz uzyskać dostępu do aplikacji, musisz skontaktować się z działem pomocy technicznej Twojej organizacji w celu uzyskania pomocy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po zalogowaniu się do portalu **Moje aplikacje** możesz także zaktualizować informacje o profilu i koncie, informacje o grupie oraz informacje o przeglądaniu dostępu (Jeśli masz uprawnienia).
 

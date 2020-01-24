@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: db88a166cd59e96b459f8d4dcaa6a6d2b8c4ff99
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5835e4c29fde280bcd00422ff71d28526a7f0f95
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67182943"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694234"
 ---
 ## <a name="set-properties"></a>Ustawianie właściwości
 
-Można dodać niektórych właściwości podczas zapisywania swoje kotwic chmury. Podobnie jak typ obiektu jest zapisana lub podstawowe właściwości, takie jak czy powinno ono zostać włączone do interakcji. Ten sposób mogą być przydatne podczas odnajdywania: natychmiast umożliwiający renderowanie obiektu użytkownika, na przykład ramki obrazu z pustą zawartość. Następnie różnych pobieranie w tle pobiera szczegóły dodatkowy stan, na przykład obraz do wyświetlenia w ramce.
+Podczas zapisywania kotwic w chmurze można dodać niektóre właściwości. Podobnie jak typ zapisywanego obiektu lub właściwości podstawowe, takie jak włączenie dla interakcji. Takie działanie może być przydatne podczas odnajdywania: można natychmiast renderować obiekt dla użytkownika, na przykład ramkę obrazu z pustą zawartością. Następnie inne pobieranie w tle pobiera dodatkowe szczegóły stanu, na przykład obraz, który ma być wyświetlany w ramce.

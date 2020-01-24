@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services z omówieniem szablonu licencji Widevine | Microsoft Docs
+title: Omówienie szablonu licencji Azure Media Services v3 with Widevine
 description: Ten temat zawiera omówienie szablonu licencji Widevine, który służy do konfigurowania licencji Widevine.
 author: juliako
 manager: femila
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: dcfe9c1c3e12aa726f57db29db59732cceb87a69
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 94ce5e45a9a43e81020096ddc0a67429b286d9b1
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967460"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705636"
 ---
-# <a name="widevine-license-template-overview"></a>Przegląd szablonu licencji Widevine 
+# <a name="media-services-v3-with-widevine-license-template-overview"></a>Omówienie szablonu licencji Media Services v3 with Widevine
 
 Azure Media Services umożliwia zaszyfrowanie zawartości za pomocą usługi **Google Widevine**. Media Services udostępnia również usługę do dostarczania licencji Widevine. Za pomocą Azure Media Services interfejsów API można konfigurować licencje Widevine. Gdy gracz podejmie próbę odtworzenia zawartości chronionej przez Widevine, żądanie jest wysyłane do usługi dostarczania licencji w celu uzyskania licencji. Jeśli usługa licencji zatwierdza żądanie, problemy z usługą licencji. Ona są wysyłane do klienta i jest używany do odszyfrowania i odtwarzania określonej zawartości.
 
@@ -62,10 +62,10 @@ Azure Media Services umożliwia zaszyfrowanie zawartości za pomocą usługi **G
 
 | Nazwa | Wartość | Opis |
 | --- | --- | --- |
-| Ładunku |Ciąg zakodowany algorytmem Base64 |Żądanie licencji wysyłane przez klienta. |
+| ładunku |Ciąg zakodowany algorytmem Base64 |Żądanie licencji wysyłane przez klienta. |
 | content_id |Ciąg zakodowany algorytmem Base64 |Identyfikator używany do wygenerowania identyfikatora klucza i klucza zawartości dla każdej content_key_specs. track_type. |
-| Dostawcy |string |Służy do wyszukiwania kluczy zawartości i zasad. Jeśli do dostawy licencji Widevine jest używany program Microsoft Key Delivery, ten parametr jest ignorowany. |
-| policy_name |string |Nazwa wcześniej zarejestrowanych zasad. Opcjonalny. |
+| dostawcy |string |Służy do wyszukiwania kluczy zawartości i zasad. Jeśli do dostawy licencji Widevine jest używany program Microsoft Key Delivery, ten parametr jest ignorowany. |
+| policy_name |string |Nazwa wcześniej zarejestrowanych zasad. Element opcjonalny. |
 | allowed_track_types |Wyliczenia |SD_ONLY lub SD_HD. Kontroluje, które klucze zawartości znajdują się w licencji. |
 | content_key_specs |Tablica struktur JSON, zobacz sekcję "specyfikacje klucza zawartości".  |Dokładniejsza kontrolka, na której klucze zawartości mają być zwracane. Aby uzyskać więcej informacji, zobacz sekcję "specyfikacje klucza zawartości". Można określić tylko jedną z wartości allowed_track_types i content_key_specs. |
 | use_policy_overrides_exclusively |Wartość logiczna, true lub false |Użyj atrybutów zasad określonych przez policy_overrides i Pomiń wszystkie poprzednio przechowywane zasady. |

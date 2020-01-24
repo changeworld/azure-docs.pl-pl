@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9bf5608a44aa19650a507ada3a0a437d34c13277
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513743"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705670"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Pobierz dane czujnika z partnerów czujników
 
@@ -37,9 +37,7 @@ Po rozpoczęciu przesyłania strumieniowego danych czujników można rozpocząć
  - Klucz tajny klienta
  - Parametry połączenia EventHub
 
-Poprzednie informacje są udostępniane przez Integrator systemu. W przypadku problemów, które mogą wystąpić po włączeniu integracji urządzeń, skontaktuj się z integratorem systemu.
-
-Alternatywnie można wygenerować poświadczenia, uruchamiając ten skrypt z Azure Cloud Shell. Wykonaj następujące kroki.
+Powyższe informacje można wygenerować, wykonując następujące czynności: (należy pamiętać, że te kroki muszą zostać wykonane na platformie Azure, aby uzyskać dostęp do subskrypcji platformy Azure, w której wdrożono FarmBeats).
 
 1. Pobierz [plik zip](https://aka.ms/farmbeatspartnerscriptv2)i wyodrębnij go na dysk lokalny. Plik zip będzie zawierać jeden plik.
 2. Zaloguj się do https://portal.azure.com/ i przejdź do pozycji Azure Active Directory-> rejestracji aplikacji

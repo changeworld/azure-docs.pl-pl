@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 88e11adadcc06875964146ad2046828267258038
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389379"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694193"
 ---
 ## <a name="lifecycle"></a>Cykl życia
 
@@ -33,7 +33,7 @@ Na karcie **cykl życia** Określ, kiedy wygasa przypisanie użytkownika do paki
 
 1. Aby zezwolić użytkownikowi na rozszeranie swoich przypisań, ustaw opcję **zezwól użytkownikom na rozszerzone dostęp** na **wartość tak**.
 
-    Jeśli w zasadach są dozwolone rozszerzenia, użytkownik otrzyma wiadomość e-mail 14 dni, a także 1 dzień przed przypisaniem pakietu dostępu zostanie ustawiony na wygaśnięcie monitu o rozszerzenie przypisania.
+    Jeśli w zasadach są dozwolone rozszerzenia, użytkownik otrzyma wiadomość e-mail 14 dni, a także 1 dzień przed przypisaniem pakietu dostępu zostanie ustawiony na wygaśnięcie monitu o rozszerzenie przypisania. Jeśli użytkownik prześle żądanie przedłużenia dostępu, Data rozszerzenia musi być równa lub wcześniejsza od przypisań zgodnie z definicją w zasadach, które zostały użyte do udzielenia użytkownikowi dostępu do pakietu dostępu. Na przykład jeśli zasady wskazują, że dla przypisań ustawiono wygasanie 30 czerwca, Maksymalna długość żądania przez użytkownika to 30 czerwca.
 
     Jeśli dostęp użytkownika zostanie rozszerzony, nie będzie można zażądać pakietu dostępu po określonej dacie rozszerzenia (Data ustawiona w strefie czasowej użytkownika, który utworzył zasady).
 

@@ -1,16 +1,16 @@
 ---
-title: Rozwiązywanie problemów z usługą Azure FarmBeats
+title: Rozwiązywanie problemów z projektem Azure FarmBeats
 description: W tym artykule opisano sposób rozwiązywania problemów z usługą Azure FarmBeats.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: f017b19ef8bd8e4c44d9e2885da6fbaf172808a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485977"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705619"
 ---
 # <a name="troubleshoot"></a>Rozwiązywanie problemów
 
@@ -44,6 +44,38 @@ Aby pobrać plik **Deployer. log** , wykonaj następujące czynności:
    - Jeśli istnieją *przychodzące komunikaty*, skontaktuj się z farmbeatssupport@microsoft.com. Dołącz dzienniki Datahub i akceleratora oraz przechwycone dane telemetryczne.
 
 Aby zrozumieć sposób pobierania dzienników, przejdź do sekcji ["zbieranie dzienników ręcznie"](#collect-logs-manually) .  
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Nie można wyświetlić danych telemetrycznych po pozyskaniu danych historycznych/przesyłanych strumieniowo z czujników
+
+**Objaw**: wdrożono urządzenia lub czujniki, a w usłudze EventHub zostały utworzone urządzenia/czujniki dotyczące FarmBeats i pozyskiwanej telemetrii, ale nie można uzyskać ani wyświetlić danych telemetrycznych w FarmBeats.
+
+**Działanie naprawcze**:
+
+1. Upewnij się, że pomyślnie ukończono rejestrację partnera — możesz to sprawdzić, przechodząc do datahub Swagger, przejdź do interfejsu API/partner, a następnie wybierz pozycję Pobierz i sprawdź, czy partner jest zarejestrowany. Jeśli nie, wykonaj [kroki opisane tutaj](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) , aby dodać partnera.
+2. Upewnij się, że użyto poprawnego formatu komunikatów telemetrycznych:
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
+}
+```
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Nie masz parametrów połączenia usługi Azure Event Hubs
 
@@ -193,7 +225,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 [Zainstaluj i wdróż Eksplorator usługi Azure Storage]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
 
 ### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>Zbieranie dzienników zadań Azure Data Factory w Datahub
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. W polu **wyszukiwania** Wyszukaj grupę zasobów FarmBeats Datahub.
 
     > [!NOTE]
@@ -211,7 +243,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 
 ### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>Zbieranie dzienników zadań Azure Data Factory w akceleratorze
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. W polu **wyszukiwania** Wyszukaj grupę zasobów akceleratora FarmBeats.
 
     > [!NOTE]
@@ -228,7 +260,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 
 ### <a name="collect-datahub-app-service-logs"></a>Zbieranie dzienników usługi App Service Datahub
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. W polu **wyszukiwania** Wyszukaj grupę zasobów FarmBeats Datahub.
 
     > [!NOTE]
@@ -244,7 +276,7 @@ Ten problem może wystąpić, jeśli na serwerze wskaźnikowym są wykonywane ja
 
 ### <a name="collect-accelerator-app-service-logs"></a>Zbieranie dzienników usługi App Service Accelerator
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. W polu **wyszukiwania** Wyszukaj grupę zasobów akceleratora FarmBeats.
 
     > [!NOTE]

@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f03e92c1bfd86d15bf582487e3e92a3713b63e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c01a7a9c5adb050d98840938260c8486ecdeb199
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619355"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705194"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Konfigurowanie urządzenia przenośnego jako metody weryfikacji dwuskładnikowej
 
@@ -27,17 +26,17 @@ Można skonfigurować urządzenie przenośne do działania jako metoda weryfikac
 
 ## <a name="set-up-your-mobile-device-to-use-a-text-message-as-your-verification-method"></a>Konfigurowanie urządzenia przenośnego do używania wiadomości tekstowej jako metody weryfikacji
 
-1. Na stronie **dodatkowa Weryfikacja zabezpieczeń** wybierz pozycję **telefon uwierzytelniania** z **kroku 1: Jak skontaktować się z** Tobą, wybierz swój kraj lub region z listy rozwijanej, a następnie wpisz numer telefonu urządzenia przenośnego.
+1. Na stronie **dodatkowa Weryfikacja zabezpieczeń** wybierz pozycję **telefon uwierzytelniania** z **kroku 1. jak należy się skontaktować** z obszarem, wybierz swój kraj lub region z listy rozwijanej, a następnie wpisz numer telefonu urządzenia przenośnego.
 
 2. W obszarze **Metoda** wybierz opcję **Wyślij do mnie kod przez wiadomość tekstową** , a następnie wybierz przycisk **dalej**.
 
     ![Strona dodatkowej weryfikacji zabezpieczeń z telefonem uwierzytelniania i wiadomością SMS](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
-3. Wpisz kod weryfikacyjny z wiadomości tekstowej wysyłanej przez firmę Microsoft **do kroku 2: Wysłaliśmy wiadomość SMS na Twój obszar telefonu** , a następnie wybierz pozycję **Weryfikuj**.
+3. Wpisz kod weryfikacyjny z wiadomości tekstowej wysyłanej przez firmę Microsoft do **kroku 2: wysłaliśmy wiadomość SMS na Twój obszar telefonu** , a następnie wybierz pozycję **Weryfikuj**.
 
     ![Strona dodatkowej weryfikacji zabezpieczeń z telefonem uwierzytelniania i wiadomością SMS](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message-test.png)
 
-4. **W kroku 3: Kontynuuj korzystanie z istniejących obszarów** aplikacji, skopiuj podane hasło aplikacji i wklej je w bezpiecznym miejscu.
+4. W obszarze **krok 3. nadal korzystać z istniejących aplikacji** Skopiuj podane hasło aplikacji i wklej je w bezpiecznym miejscu.
 
     ![Obszar haseł aplikacji na stronie dodatkowej weryfikacji zabezpieczeń](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -48,9 +47,9 @@ Można skonfigurować urządzenie przenośne do działania jako metoda weryfikac
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>Konfigurowanie urządzenia przenośnego do odbierania połączenia telefonicznego
 
-1. Na stronie **dodatkowa Weryfikacja zabezpieczeń** wybierz pozycję **telefon uwierzytelniania** z **kroku 1: Jak skontaktować się z** Tobą, wybierz swój kraj lub region z listy rozwijanej, a następnie wpisz numer telefonu urządzenia przenośnego.
+1. Na stronie **dodatkowa Weryfikacja zabezpieczeń** wybierz pozycję **telefon uwierzytelniania** z **kroku 1. jak należy się skontaktować** z obszarem, wybierz swój kraj lub region z listy rozwijanej, a następnie wpisz numer telefonu urządzenia przenośnego.
 
-2. Wybierz opcję Zadzwoń do **mnie** w obszarze **metody** , a następnie wybierz przycisk **dalej**.
+2. Wybierz opcję **Zadzwoń do mnie** w obszarze **metody** , a następnie wybierz przycisk **dalej**.
 
     ![Strona dodatkowej weryfikacji zabezpieczeń z numerem telefonu i połączenia telefonicznego uwierzytelniania](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call.png)
 
@@ -58,7 +57,7 @@ Można skonfigurować urządzenie przenośne do działania jako metoda weryfikac
 
     ![Testowanie określonego numeru telefonu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call-test.png)
 
-4. **W kroku 3: Kontynuuj korzystanie z istniejących obszarów** aplikacji, skopiuj podane hasło aplikacji i wklej je w bezpiecznym miejscu.
+4. W obszarze **krok 3. nadal korzystać z istniejących aplikacji** Skopiuj podane hasło aplikacji i wklej je w bezpiecznym miejscu.
 
     ![Obszar haseł aplikacji na stronie dodatkowej weryfikacji zabezpieczeń](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 

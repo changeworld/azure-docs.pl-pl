@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 232a17a21c7172bbf5056ae990679d87600ee6a0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231818"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705092"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Zobacz, jak Twoja organizacja używa danych związanych z prywatnością
 
@@ -33,7 +32,7 @@ Możesz zobaczyć, jak Twoja organizacja korzysta z danych ze strony **prywatno�
 
 3. Przejrzyj informacje, w tym:
 
-    - **Usługi.** Lista Usługi online, z którymi nawiązano połączenie przy użyciu konta służbowego.
+    - **Services.** Lista Usługi online, z którymi nawiązano połączenie przy użyciu konta służbowego.
 
     - **Warunki użytkowania**. Warunki użytkowania organizacji.
 

@@ -2,25 +2,27 @@
 title: Plany odzyskiwania w programie Azure Site Recovery — informacje
 description: Zapoznaj się z planami odzyskiwania w Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 1dd83be03c5b412708e89058ce7667a2ddfef530
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/23/2020
+ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497894"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705857"
 ---
 # <a name="about-recovery-plans"></a>Informacje o planach odzyskiwania
 
 Ten artykuł zawiera Omówienie planów odzyskiwania w programie [Azure Site Recovery](site-recovery-overview.md).
 
-Plan odzyskiwania umożliwia zbieranie maszyn w grupach odzyskiwania. Plan odzyskiwania ułatwia zdefiniowanie systematycznego procesu odzyskiwania przez utworzenie małych niezależnych jednostek, które można przełączyć do trybu failover. Jednostka zazwyczaj reprezentuje aplikację w Twoim środowisku.
+Plan odzyskiwania służy do zbierania maszyn w grupach odzyskiwania w celu przełączenia w tryb failover. Plan odzyskiwania ułatwia zdefiniowanie systematycznego procesu odzyskiwania przez utworzenie małych niezależnych jednostek, które można przełączyć do trybu failover. Jednostka zazwyczaj reprezentuje aplikację w Twoim środowisku.
 
 - Plan odzyskiwania definiuje sposób przełączenia maszyn w tryb failover oraz kolejność, w jakiej zostały one uruchomione po przejściu w tryb pracy awaryjnej.
+- Plany odzyskiwania są używane do przełączania do trybu failover na platformie Azure, ale nie mogą być używane do powrotu po awarii z platformy Azure.
 - Do jednego planu odzyskiwania można dodać do 100 chronionych wystąpień.
 - Możesz dostosować plan, dodając do niego kolejność, instrukcje i zadania.
 - Po zdefiniowaniu planu można uruchomić na nim tryb failover.
 - Do maszyn można odwoływać się w wielu planach odzyskiwania, w których kolejne plany pomijają wdrożenie/uruchomienie komputera, jeśli zostały wcześniej wdrożone przy użyciu innego planu odzyskiwania.
+
 
 
 ### <a name="why-use-a-recovery-plan"></a>Dlaczego warto korzystać z planu odzyskiwania?

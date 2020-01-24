@@ -13,13 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74c02d8a82c27c71ce01cd122082010487b453e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ef042b9eb625a0d0de5d5dcb883b823c3a499aa9
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845046"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698921"
 ---
 # <a name="azure-active-directory-graph-api"></a>Interfejs API programu Graph usługi Azure Active Directory
 
@@ -52,20 +51,20 @@ Usługa Azure AD interfejs API programu Graph udostępnia następujące funkcje:
 * **Zabezpieczone przez zakresy uprawnień**: usługa Azure AD interfejs API programu Graph uwidacznia zakresy uprawnień, które umożliwiają bezpieczny dostęp do danych usługi Azure AD przy użyciu protokołu OAuth 2,0. Obsługuje różne typy aplikacji klienckich, w tym:
   
   * interfejsy użytkownika, które mają delegowany dostęp do danych za pośrednictwem autoryzacji z zalogowanego użytkownika (delegowany)
-  * aplikacje usługi/demona, które działają w tle bez zalogowanego użytkownika i używają kontroli dostępu opartej na rolach zdefiniowanej przez aplikację
+  * service/daemon applications that operate in the background without a signed-in user being present and use application-defined role-based access control
     
-    Uprawnienia delegowane i aplikacje przedstawiają uprawnienia udostępniane przez usługę Azure AD interfejs API programu Graph i mogą być żądane przez aplikacje klienckie za pomocą funkcji uprawnień do rejestracji aplikacji w [Azure Portal](https://portal.azure.com). [Zakresy uprawnień interfejs API programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) zawierają informacje o tym, co jest dostępne do użycia przez aplikację kliencką.
+    Both delegated and application permissions represent a privilege exposed by the Azure AD Graph API and can be requested by client applications through application registration permissions features in the [Azure portal](https://portal.azure.com). [Azure AD Graph API permission scopes](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) provides information on what's available for use by your client application.
 
 ## <a name="scenarios"></a>Scenariusze
 
-Usługa Azure AD interfejs API programu Graph umożliwia wykonywanie wielu scenariuszy aplikacji. Poniżej przedstawiono typowe scenariusze:
+Azure AD Graph API enables many application scenarios. The following scenarios are the most common:
 
-* **Aplikacja biznesowa (z pojedynczym dzierżawcą)** : w tym scenariuszu deweloper przedsiębiorstwa działa w organizacji, która ma subskrypcję pakietu Office 365. Deweloper kompiluje aplikację sieci Web, która współdziała z usługą Azure AD w celu wykonywania zadań, takich jak Przypisywanie licencji do użytkownika. To zadanie wymaga dostępu do interfejs API programu Graph usługi Azure AD, dlatego deweloper rejestruje aplikację pojedynczego dzierżawy w usłudze Azure AD i konfiguruje uprawnienia do odczytu i zapisu dla interfejs API programu Graph usługi Azure AD. Następnie aplikacja jest skonfigurowana do korzystania z własnych poświadczeń lub obecnie zalogowanego użytkownika w celu uzyskania tokenu wywołującego interfejs API programu Graph usługi Azure AD.
-* **Oprogramowanie jako usługa (wiele dzierżawców)** : w tym scenariuszu niezależny dostawca oprogramowania (ISV) opracowuje hostowaną aplikację sieci Web z wieloma dzierżawcami, która udostępnia funkcje zarządzania użytkownikami dla innych organizacji korzystających z usługi Azure AD. Te funkcje wymagają dostępu do obiektów katalogu, dlatego aplikacja musi wywołać interfejs API programu Graph usługi Azure AD. Deweloper rejestruje aplikację w usłudze Azure AD, konfiguruje ją tak, aby wymagała uprawnień do odczytu i zapisu w usłudze Azure AD interfejs API programu Graph, a następnie umożliwia dostęp zewnętrzny, tak aby inne organizacje mogły wyrazić zgodę na korzystanie z aplikacji w swoim katalogu. Gdy użytkownik w innej organizacji uwierzytelnia się do aplikacji po raz pierwszy, są wyświetlane okno dialogowe zgody z uprawnieniami, które aplikacja żąda. Przyznanie zgody spowoduje nadanie aplikacji tych, do których zażądano uprawnień do usługi Azure AD interfejs API programu Graph w katalogu użytkownika. Aby uzyskać więcej informacji na temat struktury zgody, zobacz [Omówienie struktury zgody](consent-framework.md).
+* **Line of Business (Single Tenant) Application**: In this scenario, an enterprise developer works for an organization that has an Office 365 subscription. The developer is building a web application that interacts with Azure AD to perform tasks such as assigning a license to a user. This task requires access to the Azure AD Graph API, so the developer registers the single tenant application in Azure AD and configures read and write permissions for Azure AD Graph API. Then the application is configured to use either its own credentials or those of the currently sign-in user to acquire a token to call the Azure AD Graph API.
+* **Software as a Service Application (Multi-Tenant)** : In this scenario, an independent software vendor (ISV) is developing a hosted multi-tenant web application that provides user management features for other organizations that use Azure AD. These features require access to directory objects, so the application needs to call the Azure AD Graph API. The developer registers the application in Azure AD, configures it to require read and write permissions for Azure AD Graph API, and then enables external access so that other organizations can consent to use the application in their directory. When a user in another organization authenticates to the application for the first time, they are shown a consent dialog with the permissions the application is requesting. Granting consent will then give the application those requested permissions to Azure AD Graph API in the user’s directory. For more information on the consent framework, see [Overview of the consent framework](consent-framework.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć korzystanie z interfejs API programu Graph Azure Active Directory, zobacz następujące tematy:
+To begin using the Azure Active Directory Graph API, see the following topics:
 
-* [Przewodnik Szybki Start dotyczący usługi Azure AD interfejs API programu Graph](active-directory-graph-api-quickstart.md)
-* [Dokumentacja REST programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
+* [Azure AD Graph API quickstart guide](active-directory-graph-api-quickstart.md)
+* [Azure AD Graph REST documentation](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)

@@ -16,13 +16,12 @@ ms.date: 09/26/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae798c6108ec78b92b1ee6ac167b01c2f72c26d9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f2ce993b8fbf2a1b04ea4ad9d992ba278dbc964e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679713"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701420"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>Aplikacje publiczne klienta z jednym i wieloma kontami
 
@@ -47,9 +46,9 @@ Klasa `SingleAccountPublicClientApplication` umożliwia utworzenie aplikacji opa
   - Wartość logiczna wskazująca, czy konto zostało zmienione. Konto może zostać zmienione w wyniku usunięcia z urządzenia, na przykład.
   - Poprzednie konto. Jest to przydatne, jeśli trzeba wykonać wszystkie lokalne czyszczenie danych, gdy konto zostanie usunięte z urządzenia lub gdy nowe konto jest zalogowane.
   - CurrentAccount.
-- `signOut` usuwa wszystkie tokeny skojarzone z klientem z urządzenia.  
+- `signOut` usuwa z urządzenia wszystkie tokeny skojarzone z klientem.  
 
-Gdy na urządzeniu jest zainstalowany Broker uwierzytelniania systemu Android, taki jak Microsoft Authenticator lub Intune — Portal firmy, a Twoja aplikacja jest skonfigurowana do korzystania z brokera, `signOut` nie będzie można usunąć konta z urządzenia.
+Gdy na urządzeniu jest zainstalowany Broker uwierzytelniania systemu Android, taki jak Microsoft Authenticator lub Intune — Portal firmy, a Twoja aplikacja jest skonfigurowana do korzystania z brokera, `signOut` nie usunąć tego konta z urządzenia.
 
 ## <a name="single-account-scenario"></a>Scenariusz pojedynczego konta
 
@@ -112,7 +111,7 @@ if (app.signOut())
 
 ## <a name="multiple-account-public-client-application"></a>Publiczna aplikacja kliencka z wieloma kontami
 
-Klasa `MultipleAccountPublicClientApplication` służy do tworzenia aplikacji opartych na MSAL, które umożliwiają jednoczesne logowanie wielu kont. Umożliwia to pobieranie, Dodawanie i usuwanie kont w następujący sposób:
+Klasa `MultipleAccountPublicClientApplication` służy do tworzenia aplikacji opartych na MSAL, które zezwalają na logowanie wielu kont w tym samym czasie. Umożliwia to pobieranie, Dodawanie i usuwanie kont w następujący sposób:
 
 ### <a name="add-an-account"></a>Dodaj konto
 
@@ -121,7 +120,7 @@ Użyj co najmniej jednego konta w aplikacji, wywołując `acquireToken` jeden lu
 ### <a name="get-accounts"></a>Pobierz konta
 
 - Wywołaj `getAccount`, aby uzyskać określone konto.
-- Wywołaj `getAccounts`To, aby uzyskać listę kont, które są obecnie znane dla aplikacji.
+- Wywołaj `getAccounts`, aby uzyskać listę kont, które są obecnie znane dla aplikacji.
 
 Aplikacja nie będzie mogła wyliczyć wszystkich kont platformy tożsamości firmy Microsoft na urządzeniu znanym przez aplikację brokera. Można tylko wyliczać konta, które były używane przez aplikację.  Te funkcje nie będą zwracały kont, które zostały usunięte z urządzenia.
 
@@ -129,7 +128,7 @@ Aplikacja nie będzie mogła wyliczyć wszystkich kont platformy tożsamości fi
 
 Usuń konto, wywołując `removeAccount` z identyfikatorem konta.
 
-Jeśli Twoja aplikacja jest skonfigurowana do korzystania z brokera, a na urządzeniu jest zainstalowany Broker, konto nie zostanie usunięte z brokera podczas wywoływania `removeAccount`.  Tylko tokeny skojarzone z klientem są usuwane.
+Jeśli aplikacja jest skonfigurowana do korzystania z brokera, a na urządzeniu jest zainstalowany Broker, konto nie zostanie usunięte z brokera podczas wywoływania `removeAccount`.  Tylko tokeny skojarzone z klientem są usuwane.
 
 ## <a name="multiple-account-scenario"></a>Scenariusz z wieloma kontami
 

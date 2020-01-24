@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 12759deb3e1775b5170d40cc609fe8c6226bf0d6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777822"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704582"
 ---
 # <a name="metrics-for-application-gateway"></a>Metryki dla Application Gateway
 
@@ -28,30 +28,30 @@ Dostępne są następujące metryki związane z chronometrażem żądania i odpo
 >
 > Jeśli w Application Gateway znajduje się więcej niż jeden odbiornik, zawsze Przefiltruj według wymiaru *odbiornika* , porównując różne metryki opóźnienia w celu uzyskania zrozumiałego wnioskowania.
 
+- **Czas połączenia z zapleczem**
+
+  Czas nawiązywania połączenia z aplikacją zaplecza. Obejmuje to opóźnienie sieci, a także czas potrzebny przez stos TCP serwera wewnętrznej bazy danych do ustanowienia nowych połączeń. W przypadku protokołu SSL obejmuje również czas spędzony na uzgadnianiu. 
+
+- **Czas odpowiedzi na pierwszy bajt zaplecza**
+
+  Interwał czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania pierwszego bajtu nagłówka odpowiedzi. To przybliżone podsumowanie *czasu* i czasu odpowiedzi aplikacji zaplecza (czasu serwera potrzebowała na wygenerowanie zawartości, potencjalnie pobranie zapytań dotyczących bazy danych i rozpoczęcie przesyłania odpowiedzi z powrotem do Application Gateway)
+
+- **Czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych**
+
+  Przedział czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania ostatniego bajtu treści odpowiedzi. Jest to przybliżona suma *czasu odpowiedzi na pierwszy bajt z zaplecza* i czas transferu danych (ta liczba może się różnić w zależności od rozmiaru żądanych obiektów i opóźnienia sieci serwera).
+
+- **Łączny czas bramy aplikacji**
+
+  Średni czas przetwarzania żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako średnia interwału od momentu, w którym Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi, przybliżona suma czasu przetwarzania Application Gateway i *czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych*
+
 - **Czas RTT klienta**
 
   Średni czas błądzenia między klientami a Application Gateway. Ta Metryka wskazuje, jak długo zajmuje się nawiązaniem połączeń i zwróceniem potwierdzeń. 
 
-- **Łączny czas bramy aplikacji**
+Te metryki mogą służyć do określenia, czy zauważalne spowolnienie jest spowodowane Application Gatewaym, nasyceniu stosu TCP sieci i zaplecza, wydajności aplikacji zaplecza lub dużym rozmiarem pliku.
+Na przykład jeśli w czasie odpowiedzi na pierwszy bajt zaplecze występuje wartość, ale czas połączenia zaplecza jest stały, można wywnioskować, że czas oczekiwania bramy aplikacji na zaplecze, jak również czas potrzebny do ustanowienia połączenia, jest stabilny, a skok jest spowodowany przez n zwiększenie czasu odpowiedzi aplikacji zaplecza. Podobnie, jeśli wartość parametru czas odpowiedzi pierwszego bajtu w zaplecze jest skojarzona z odpowiednim skokiem w czasie łączenia zaplecza, można ustalić, czy stos sieciowy lub TCP serwera został przepełniony. Jeśli zauważysz, że wartość w polu czas odpowiedzi ostatniego bajtu zaplecze, ale czas odpowiedzi pierwszego bajtu zaplecze jest stała, najprawdopodobniej jest to spowodowane większym żądanym plikiem. Analogicznie, jeśli łączny czas bramy aplikacji jest znacznie większy niż czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych, może to być znak wąskiego gardła wydajności w Application Gateway.
 
-  Średni czas przetwarzania żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako średnia interwału od momentu, kiedy Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że zwykle obejmuje to czas przetwarzania Application Gateway, czas, przez który pakiety żądań i odpowiedzi są przesyłane przez sieć i czas odpowiedzi serwera wewnętrznej bazy danych.
-  
-Jeśli po filtrowaniu przez odbiornik wartość *RTT klienta* jest znacznie większa niż *Całkowity czas trwania bramy aplikacji*, można określić, że opóźnienie zaobserwowane przez klienta jest spowodowane łącznością sieciową między klientem a Application Gateway. Jeśli oba opóźnienia są porównywalne, to duże opóźnienie może być spowodowane jedną z następujących czynności: Application Gateway, sieci między Application Gatewayą a aplikacją zaplecza lub wydajnością aplikacji zaplecza.
 
-- **Czas odpowiedzi na pierwszy bajt zaplecza**
-
-  Interwał czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania pierwszego bajtu nagłówka odpowiedzi, który zbliża czas przetwarzania serwera wewnętrznej bazy danych
-
-- **Czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych**
-
-  Interwał czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania ostatniego bajtu treści odpowiedzi
-  
-Jeśli *łączny czas usługi Application Gateway* jest znacznie większy niż *czas odpowiedzi ostatniego bajtu zaplecze* dla określonego odbiornika, można określić, że duże opóźnienie może być spowodowane Application Gateway. Z drugiej strony, jeśli dwie metryki są porównywalne, problem może być spowodowany przez sieć między Application Gateway i aplikacją zaplecza lub wydajnością aplikacji zaplecza.
-
-- **Czas połączenia z zapleczem**
-
-  Czas nawiązywania połączenia z aplikacją zaplecza. W przypadku protokołu SSL obejmuje czas spędzony na uzgadnianiu. Należy zauważyć, że ta Metryka różni się od innych metryk opóźnienia, ponieważ tylko mierzy czas połączenia i w związku z tym nie należy porównywać ich bezpośrednio z innymi opóźnieniami. Jednak porównanie wzorca *czasu połączenia z zapleczem* z wzorcem innych opóźnień może wskazywać, czy można wywnioskować wzrost innych opóźnień z powodu zmiany w sieci między GATWAY aplikacji a aplikacją zaplecza. 
-  
 
 ### <a name="application-gateway-metrics"></a>Metryki Application Gateway
 

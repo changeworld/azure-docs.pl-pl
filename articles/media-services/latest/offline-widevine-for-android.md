@@ -1,8 +1,8 @@
 ---
-title: Widevine strumienia systemu Android w trybie offline z Azure Media Services v3
-description: W tym temacie przedstawiono sposób konfigurowania konta Azure Media Services na potrzeby przesyłania strumieniowego w trybie offline Widevine chronionej zawartości.
+title: Stream Widevine Android Offline with Azure Media Services v3
+description: This topic shows how to configure your Azure Media Services account for offline streaming of Widevine protected content.
 services: media-services
-keywords: ŁĄCZNIK, DRM, Widevine tryb offline, ExoPlayer, Android
+keywords: DASH, DRM, Widevine Offline Mode, ExoPlayer, Android
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 7c7e1ca8c27ba9b5d7558a75106cf6d3f3e2172e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 55ed849b6083435e70d0943a359c83793ca0842d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513103"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705908"
 ---
-# <a name="offline-widevine-streaming-for-android"></a>Widevine przesyłania strumieniowego w trybie offline dla systemu Android
+# <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine streaming for Android with Media Services v3
 
-Oprócz ochrony zawartości w ramach przesyłania strumieniowego online, subskrypcji zawartości multimedialnej i usług najmu można pobrać zawartość, która działa, gdy nie masz połączenia z Internetem. Może być konieczne pobranie zawartości na telefonie lub tablecie do odtwarzania w trybie samolotowym, gdy napływa odłączony od sieci. Dodatkowe scenariusze, w których warto pobrać zawartość:
+In addition to protecting content for online streaming, media content subscription and rental services offer downloadable content that works when you are not connected to the internet. You might need to download content onto your phone or tablet for playback in airplane mode when flying disconnected from the network. Additional scenarios, in which you might want to download content:
 
-- Niektórzy dostawcy zawartości mogą nie zezwalać na dostarczanie licencji DRM poza granicami kraju/regionu. Jeśli użytkownik chce obserwować zawartość w trakcie podróży, konieczne jest pobranie plików w trybie offline.
-- W niektórych krajach/regionach dostępność i/lub przepustowość Internetu są ograniczone. Użytkownicy mogą zdecydować się na pobranie zawartości, aby mogli ją obejrzeć w wysokiej rozdzielczości.
+- Some content providers may disallow DRM license delivery beyond a country/region's border. If a user wants to watch content while traveling abroad, offline download is needed.
+- In some countries/regions, Internet availability and/or bandwidth is limited. Users may choose to download content to be able to watch it in high enough resolution for satisfactory viewing experience.
 
-W tym artykule omówiono sposób wdrażania odtwarzania w trybie offline dla zawartości PAUZy chronionej przez Widevine na urządzeniach z systemem Android. Usługa DRM w trybie offline umożliwia udostępnianie modeli subskrypcji, dzierżaw i zakupów dla zawartości, dzięki czemu klienci usług mogą łatwo z nich korzystać po rozłączeniu z Internetem.
+This article discusses how to implement offline mode playback for DASH content protected by Widevine on Android devices. Offline DRM allows you to provide subscription, rental, and purchase models for your content, enabling customers of your services to easily take content with them when disconnected from the internet.
 
-W przypadku tworzenia aplikacji odtwarzacza dla urządzeń z systemem Android są dostępne trzy opcje:
+For building the Android player apps, we outline three options:
 
 > [!div class="checklist"]
-> * Tworzenie odtwarzacza przy użyciu interfejsu API Java zestawu ExoPlayer SDK
-> * Tworzenie odtwarzacza przy użyciu powiązania Xamarin zestawu ExoPlayer SDK
-> * Tworzenie odtwarzacza przy użyciu rozszerzenia szyfrowane multimedia (EME) i rozszerzenia źródła multimediów (MSE) w przeglądarce Chrome Mobile Browser v62 lub nowszej
+> * Build a player using the Java API of ExoPlayer SDK
+> * Build a player using Xamarin binding of ExoPlayer SDK
+> * Build a player using Encrypted Media Extension (EME) and Media Source Extension (MSE) in Chrome mobile browser v62 or later
 
-Artykuł odnosi się również do niektórych typowych pytań dotyczących przesyłania strumieniowego w trybie offline Widevine chronionej zawartości.
+The article also answers some common questions related to offline streaming of Widevine protected content.
 
 > [!NOTE]
-> W przypadku funkcji DRM w trybie offline jest naliczana tylko jedna prośba o licencję podczas pobierania zawartości. Nie są naliczane opłaty za żadne błędy.
+> Offline DRM is only billed for making a single request for a license when you download the content. Any errors are not billed.
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-Przed wdrożeniem funkcji DRM w trybie offline dla Widevine na urządzeniach z systemem Android należy najpierw:
+Before implementing offline DRM for Widevine on Android devices, you should first:
 
-- Zapoznaj się z pojęciami wprowadzonymi do ochrony zawartości online przy użyciu funkcji DRM Widevine. Opisano to szczegółowo w następujących dokumentach/przykładach:
+- Become familiar with the concepts introduced for online content protection using Widevine DRM. This is covered in detail in the following documents/samples:
     - [Projektowanie systemu ochrony zawartości przy użyciu technologii multi-DRM z kontrolą dostępu](design-multi-drm-system-with-access-control.md)
     - [Używanie usługi dostarczania licencji i szyfrowania dynamicznego w technologii DRM](protect-with-drm.md)
 - Klonowanie https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git.
 
-    Aby dodać konfiguracje Widevine, należy zmodyfikować kod [zaszyfrowany za pomocą technologii DRM przy użyciu platformy .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) .  
+    You will need to modify the code in [Encrypt with DRM using .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) to add Widevine configurations.  
 - Zapoznaj się z zestawem SDK usługi Google ExoPlayer dla systemu Android — zestawem SDK odtwarzacza wideo typu open source, który umożliwia obsługę odtwarzania w trybie offline Widevine funkcji DRM. 
     - [ExoPlayer SDK](https://github.com/google/ExoPlayer)
     - [Przewodnik dewelopera ExoPlayer](https://google.github.io/ExoPlayer/guide.html)
@@ -176,9 +176,9 @@ W przypadku poziomów zabezpieczeń Widevine w dokumentacji doc dotyczącej [arc
 
 W temacie [Omówienie architektury DRM Widevine](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)firmy Google definiujemy następujące trzy poziomy zabezpieczeń:
 
-1.  Poziom zabezpieczeń 1: cała zawartość, Kryptografia i kontrola są wykonywane w ramach zaufanego środowiska wykonawczego (TEE). W niektórych modelach implementacji można wykonać przetwarzanie zabezpieczeń w różnych mikroukładach.
-2.  Poziom zabezpieczeń 2: wykonuje kryptografię (ale nie przetwarzanie wideo) w TEE: odszyfrowane bufory są zwracane do domeny aplikacji i przetwarzane przez oddzielnego sprzętu wideo lub oprogramowania. Jednak na poziomie 2 informacje kryptograficzne są nadal przetwarzane tylko w ramach TEE.
-3.  Poziom zabezpieczeń 3 nie ma TEE na urządzeniu. Odpowiednie środki mogą być podejmowane w celu ochrony informacji kryptograficznych i odszyfrowanej zawartości w systemie operacyjnym hosta. Implementacja poziomu 3 może również obejmować sprzętowy aparat kryptograficzny, ale tylko podnosi wydajność, a nie zabezpieczenia.
+1.  Poziom zabezpieczeń 1: cała zawartość, Kryptografia i kontrola są wykonywane w ramach zaufanego środowiska wykonawczego (TEE). In some implementation models, security processing may be performed in different chips.
+2.  Poziom zabezpieczeń 2: wykonuje kryptografię (ale nie przetwarzanie wideo) w TEE: odszyfrowane bufory są zwracane do domeny aplikacji i przetwarzane przez oddzielnego sprzętu wideo lub oprogramowania. At level 2, however, cryptographic information is still processed only within the TEE.
+3.  Poziom zabezpieczeń 3 nie ma TEE na urządzeniu. Appropriate measures may be taken to protect the cryptographic information and decrypted content on host operating system. A Level 3 implementation may also include a hardware cryptographic engine, but that only enhances performance, not security.
 
 W tym samym czasie, w [Azure Media Services dokumentacji dotyczącej szablonu licencji Widevine](widevine-license-template-overview.md), właściwość security_level content_key_specs może mieć następujące pięć różnych wartości (wymagania dotyczące niezawodności klienta na potrzeby odtwarzania):
 
@@ -190,29 +190,29 @@ W tym samym czasie, w [Azure Media Services dokumentacji dotyczącej szablonu li
 
 Oba poziomy zabezpieczeń są definiowane przez firmę Google Widevine. Różnica jest na poziomie użycia: poziom architektury lub poziom interfejsu API. W interfejsie API Widevine są używane pięć poziomów zabezpieczeń. Obiekt content_key_specs, który zawiera security_level, jest deserializowany i przeszedł do usługi dostarczania globalnego Widevine przez Azure Media Services usługę licencji Widevine. W poniższej tabeli przedstawiono mapowanie między dwoma zestawami poziomów zabezpieczeń.
 
-| **Poziomy zabezpieczeń zdefiniowane w architekturze Widevine** |**Poziomy zabezpieczeń używane w interfejsie API Widevine**|
+| **Poziomy zabezpieczeń zdefiniowane w architekturze Widevine** |**Security Levels Used in Widevine API**|
 |---|---| 
-| **Poziom zabezpieczeń 1**: cała zawartość, Kryptografia i kontrola są wykonywane w ramach zaufanego środowiska wykonawczego (tee). W niektórych modelach implementacji można wykonać przetwarzanie zabezpieczeń w różnych mikroukładach.|**security_level = 5**: Kryptografia, dekodowanie i wszystkie obsługujące nośniki (skompresowane i nieskompresowane) muszą być obsługiwane w ramach SPRZĘTowej TEEowej kopii zapasowej.<br/><br/>**security_level = 4**: Kryptografia i dekodowanie zawartości należy wykonać w ramach SPRZĘTowej TEEowej kopii zapasowej.|
-**Poziom zabezpieczeń 2**: wykonuje kryptografię (ale nie przetwarzanie wideo) w tee: odszyfrowane bufory są zwracane do domeny aplikacji i przetwarzane przez oddzielnego sprzętu wideo lub oprogramowania. Jednak na poziomie 2 informacje kryptograficzne są nadal przetwarzane tylko w ramach TEE.| **security_level = 3**: materiał klucza i operacje kryptograficzne muszą zostać wykonane w ramach sprzętowej tee kopii zapasowej. |
-| **Poziom zabezpieczeń 3**: nie ma tee na urządzeniu. Odpowiednie środki mogą być podejmowane w celu ochrony informacji kryptograficznych i odszyfrowanej zawartości w systemie operacyjnym hosta. Implementacja poziomu 3 może również obejmować sprzętowy aparat kryptograficzny, ale tylko podnosi wydajność, a nie zabezpieczenia. | **security_level = 2**: wymagane jest Kryptografia oprogramowania i niesłonięty dekoder.<br/><br/>**security_level = 1**: wymagane jest Kryptografia Whitebox oparta na oprogramowaniu.|
+| **Security Level 1**: All content processing, cryptography, and control are performed within the Trusted Execution Environment (TEE). In some implementation models, security processing may be performed in different chips.|**security_level=5**: The crypto, decoding, and all handling of the media (compressed and uncompressed) must be handled within a hardware backed TEE.<br/><br/>**security_level=4**: The crypto and decoding of content must be performed within a hardware backed TEE.|
+**Security Level 2**: Performs cryptography (but not video processing) within the TEE: decrypted buffers are returned to the application domain and processed through separate video hardware or software. At level 2, however, cryptographic information is still processed only within the TEE.| **security_level=3**: The key material and crypto operations must be performed within a hardware backed TEE. |
+| **Security Level 3**: Does not have a TEE on the device. Appropriate measures may be taken to protect the cryptographic information and decrypted content on host operating system. A Level 3 implementation may also include a hardware cryptographic engine, but that only enhances performance, not security. | **security_level=2**: Software crypto and an obfuscated decoder are required.<br/><br/>**security_level=1**: Software-based whitebox crypto is required.|
 
 ### <a name="question"></a>Pytanie
 
-Dlaczego pobieranie zawartości trwa tak długo?
+Why does content download take so long?
 
 ### <a name="answer"></a>Odpowiedź
 
-Istnieją dwa sposoby poprawy szybkości pobierania:
+There are two ways to improve download speed:
 
-1.  Włącz usługę CDN, aby użytkownicy końcowi mogli korzystać z usługi CDN zamiast punktu końcowego źródła i przesyłania strumieniowego na potrzeby pobierania zawartości. W przypadku, gdy użytkownik trafi punkt końcowy przesyłania strumieniowego, każdy segment HLS lub fragment KRESKi jest dynamicznie spakowany i szyfrowany. Pomimo tego, że opóźnienie jest skalowane w milisekundach dla każdego segmentu/fragmentu, jeśli masz długi czas wideo, skumulowane opóźnienie może być duże, co powoduje dłuższe pobieranie.
-2.  Zapewnianie użytkownikom końcowym opcji selektywnego pobierania warstw jakości wideo i ścieżek audio zamiast całej zawartości. W przypadku trybu offline nie ma miejsca do pobrania wszystkich warstw jakości. Istnieją dwa sposoby osiągnięcia tego celu:
-    1.  Kontrolowane przez klienta: autowybieranie aplikacji odtwarzacza lub wybór warstwy jakości wideo i ścieżek audio do pobrania;
-    2.  Kontrolowane przez usługę: jeden może używać funkcji manifestu dynamicznego w Azure Media Services, aby utworzyć filtr (globalny), który ogranicza HLS listy odtwarzania lub PAUZy do jednej warstwy jakości wideo i wybrane ścieżki audio. Następnie adres URL pobierania prezentowany użytkownikom końcowym będzie zawierać ten filtr.
+1.  Enable CDN so that end users are more likely to hit CDN instead of origin/streaming endpoint for content download. If user hits streaming endpoint, each HLS segment or DASH fragment is dynamically packaged and encrypted. Even though this latency is in millisecond scale for each segment/fragment, when you have an hour long video, the accumulated latency can be large causing longer download.
+2.  Provide end users the option to selectively download video quality layers and audio tracks instead of all contents. For offline mode, there is no point to download all of the quality layers. There are two ways to achieve this:
+    1.  Client controlled: either player app auto selects or user selects video  quality layer and audio tracks to download;
+    2.  Service controlled: one can use Dynamic Manifest feature in Azure Media Services to create a (global) filter, which limits HLS playlist or DASH MPD to a single video quality layer and selected audio tracks. Then the download URL presented to end users will include this filter.
 
 ## <a name="additional-notes"></a>Uwagi dodatkowe
 
-* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+* Widevine is a service provided by Google Inc. and subject to the terms of service and Privacy Policy of Google, Inc.
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym artykule opisano sposób wdrażania odtwarzania w trybie offline dla zawartości PAUZy chronionej przez Widevine na urządzeniach z systemem Android.  W odpowiedzi na niektóre często zadawane pytania dotyczące przesyłania strumieniowego w trybie offline Widevine chronionej zawartości.
+This article discussed how to implement offline mode playback for DASH content protected by Widevine on Android devices.  It also answered some common questions related to offline streaming of Widevine protected content.

@@ -13,13 +13,12 @@ ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 921c02e682c722a4e96f98fb0fc54d7fcbb82220
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916268"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695878"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Logowanie jednokrotne za pomocą biblioteki MSAL.js
 
@@ -88,7 +87,7 @@ Kroki konfigurowania opcjonalnych oświadczeń w manifeście aplikacji można zn
 
 **Korzystanie z wskazówki logowania**
 
-Jeśli nie masz skonfigurowanego lub nie chcesz pominąć monitu wyboru konta w ramach wywołań uwierzytelniania interakcyjnego, możesz to zrobić, podając `login_hint` w parametrach żądania i opcjonalnie `domain_hint` jako `extraQueryParameters` w metodach interaktywnych MSAL. js (`loginPopup`, `loginRedirect`, `acquireTokenPopup` i `acquireTokenRedirect`). Na przykład:
+Jeśli nie masz skonfigurowanego lub nie chcesz pominąć monitu wyboru konta w ramach wywołań uwierzytelniania interakcyjnego, możesz to zrobić, podając `login_hint` w parametrach żądania i opcjonalnie `domain_hint` jako `extraQueryParameters` w metodach interaktywnych MSAL. js (`loginPopup`, `loginRedirect`, `acquireTokenPopup` i `acquireTokenRedirect`). Przykład:
 
 ```javascript
 var request = {

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a9fd38b857f513ff67ae2fbe4ccd0c6c9540967e
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779165"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705772"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików na konto Media Services przy użyciu usługi REST
+# <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>Przekazywanie plików na konto Media Services v3 przy użyciu usługi REST
 
 W Media Services można przekazać pliki cyfrowe do kontenera obiektów BLOB skojarzonego z elementem zawartości. Jednostka [zasobu](https://docs.microsoft.com/rest/api/media/operations/asset) może zawierać wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów (oraz metadane dotyczące tych plików). Gdy pliki zostaną przekazane do kontenera zasobów, zawartość jest bezpiecznie przechowywana w chmurze w celu dalszej przetwarzania i przesyłania strumieniowego.
 

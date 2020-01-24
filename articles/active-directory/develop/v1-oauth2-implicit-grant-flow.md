@@ -17,13 +17,12 @@ ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2591485c6e528eb9f422ce966ec7738af49dbddc
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532410"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701046"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Informacje o niejawnym przepływie OAuth2 w Azure Active Directory (AD)
 
@@ -33,9 +32,9 @@ Niejawne przyznanie OAuth2 jest Notorious do przyznania z najdłuższym wykazem 
 
 ## <a name="what-is-the-oauth2-implicit-grant"></a>Co to jest niejawne OAuth2?
 
-Przyznanie [kodu autoryzacji Quintessential OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.1) jest przyznawanie autoryzacji, która używa dwóch oddzielnych punktów końcowych. Punkt końcowy autoryzacji jest używany dla fazy interakcji użytkownika, która powoduje kod autoryzacji. Punkt końcowy tokenu jest następnie używany przez klienta do wymiany kodu dla tokenu dostępu i często również tokenu odświeżania. Aplikacje sieci Web są wymagane do zaprezentowania własnych poświadczeń aplikacji do punktu końcowego tokenu, dzięki czemu serwer autoryzacji może uwierzytelniać klienta.
+[Przyznanie kodu autoryzacji Quintessential OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.1) jest przyznawanie autoryzacji, która używa dwóch oddzielnych punktów końcowych. Punkt końcowy autoryzacji jest używany dla fazy interakcji użytkownika, która powoduje kod autoryzacji. Punkt końcowy tokenu jest następnie używany przez klienta do wymiany kodu dla tokenu dostępu i często również tokenu odświeżania. Aplikacje sieci Web są wymagane do zaprezentowania własnych poświadczeń aplikacji do punktu końcowego tokenu, dzięki czemu serwer autoryzacji może uwierzytelniać klienta.
 
-Niejawne [przyznanie OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) jest wariantem innych dotacji do autoryzacji. Umożliwia klientowi uzyskanie tokenu dostępu (i id_token, w przypadku używania [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html)) bezpośrednio z punktu końcowego autoryzacji, bez kontaktowania się z punktem końcowym tokenu ani uwierzytelnianiem klienta. Ten wariant został zaprojektowany dla aplikacji opartych na języku JavaScript działających w przeglądarce sieci Web: w pierwotnej specyfikacji OAuth2 tokeny są zwracane w fragmencie identyfikatora URI. Powoduje to, że bity usługi BITS są dostępne dla kodu JavaScript w kliencie, ale gwarantuje, że nie zostaną uwzględnione w przekierowaniach skierowanych na serwer. W przypadku niejawnego udzielenia OAuth2 punkt końcowy autoryzacji wystawia tokeny dostępu bezpośrednio do klienta przy użyciu identyfikatora URI przekierowania, który został wcześniej dostarczony. Pozwala również wyeliminować wszelkie wymagania dotyczące wywołań między źródłami, które są niezbędne, jeśli aplikacja JavaScript jest wymagana do skontaktowania się z punktem końcowym tokenu.
+[Niejawne przyznanie OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) jest wariantem innych dotacji do autoryzacji. Umożliwia klientowi uzyskanie tokenu dostępu (i id_token, w przypadku korzystania z programu [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html)) bezpośrednio z punktu końcowego autoryzacji, bez kontaktowania się z punktem końcowym tokenu ani uwierzytelnianiem klienta. Ten wariant został zaprojektowany dla aplikacji opartych na języku JavaScript działających w przeglądarce sieci Web: w pierwotnej specyfikacji OAuth2 tokeny są zwracane w fragmencie identyfikatora URI. Powoduje to, że bity usługi BITS są dostępne dla kodu JavaScript w kliencie, ale gwarantuje, że nie zostaną uwzględnione w przekierowaniach skierowanych na serwer. W przypadku niejawnego udzielenia OAuth2 punkt końcowy autoryzacji wystawia tokeny dostępu bezpośrednio do klienta przy użyciu identyfikatora URI przekierowania, który został wcześniej dostarczony. Pozwala również wyeliminować wszelkie wymagania dotyczące wywołań między źródłami, które są niezbędne, jeśli aplikacja JavaScript jest wymagana do skontaktowania się z punktem końcowym tokenu.
 
 Ważną cechą niejawnego udzielenia OAuth2 jest fakt, że takie przepływy nigdy nie zwracają tokenów odświeżania do klienta. W następnej sekcji pokazano, jak to nie jest konieczne i w rzeczywistości występuje problem z zabezpieczeniami.
 
@@ -62,7 +61,7 @@ Ten model przyznaje aplikacji JavaScript możliwość niezależnego odnawiania t
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Czy niejawne przyznanie jest odpowiednie dla mojej aplikacji?
 
-Niejawne przyznanie przedstawia większe ryzyko niż inne dotacje, a obszary, do których należy zwrócić uwagę, są dobrze udokumentowane (na przykład [niewłaściwe użycie tokenu dostępu do personifikacji właściciela zasobu w przepływie][OAuth2-Spec-Implicit-Misuse] niejawnym oraz [model i zabezpieczenia protokołu OAuth 2,0) Zagadnienia][OAuth2-Threat-Model-And-Security-Implications]). Jednak profil wyższego ryzyka jest w dużym stopniu spowodowany tym, że ma to na celu umożliwienie aplikacjom wykonującym kod aktywny, obsługiwanym przez zasób zdalny w przeglądarce. Jeśli planujesz architekturę SPA, nie ma składników zaplecza ani nie ma potrzeby wywoływania internetowego interfejsu API za pośrednictwem języka JavaScript, zaleca się użycie niejawnego przepływu do pozyskiwania tokenów.
+Niejawne przyznanie przedstawia większe ryzyko niż inne dotacje, a obszary, do których należy zwrócić uwagę, są dobrze udokumentowane (na przykład [niewłaściwe użycie tokenu dostępu do personifikacji właściciela zasobu w przepływie niejawnym][OAuth2-Spec-Implicit-Misuse] oraz [Model zagrożenia OAuth 2,0 i zagadnienia dotyczące zabezpieczeń][OAuth2-Threat-Model-And-Security-Implications]). Jednak profil wyższego ryzyka jest w dużym stopniu spowodowany tym, że ma to na celu umożliwienie aplikacjom wykonującym kod aktywny, obsługiwanym przez zasób zdalny w przeglądarce. Jeśli planujesz architekturę SPA, nie ma składników zaplecza ani nie ma potrzeby wywoływania internetowego interfejsu API za pośrednictwem języka JavaScript, zaleca się użycie niejawnego przepływu do pozyskiwania tokenów.
 
 Jeśli aplikacja jest klientem macierzystym, niejawny przepływ nie jest doskonałym rozwiązaniem. Brak pliku cookie sesji usługi Azure AD w kontekście natywnego klienta pozbawia aplikację od środków w celu utrzymania długotrwałych sesji. Oznacza to, że aplikacja będzie kilkukrotnie monitować użytkownika o uzyskanie tokenów dostępu dla nowych zasobów.
 
@@ -70,7 +69,7 @@ Jeśli tworzysz aplikację sieci Web, która zawiera zaplecze i zużywa interfej
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać pełną listę zasobów dla deweloperów, w tym informacje referencyjne dotyczące protokołów i udzielanie przez OAuth2 przepływów autoryzacji przez usługę Azure AD, zapoznaj się z przewodnikiem dewelopera usługi [Azure AD][AAD-Developers-Guide] .
+* Aby uzyskać pełną listę zasobów dla deweloperów, w tym informacje referencyjne dotyczące protokołów i udzielanie przez OAuth2 przepływów autoryzacji przez usługę Azure AD, zapoznaj się z [przewodnikiem dewelopera usługi Azure AD][AAD-Developers-Guide] .
 * Zobacz [Jak zintegrować aplikację z usługą Azure AD][ACOM-How-To-Integrate] , aby uzyskać dodatkową głębokość procesu integracji aplikacji.
 
 <!--Image references-->

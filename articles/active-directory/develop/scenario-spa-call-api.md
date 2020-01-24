@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1171d8c3bc28c7b325cc8daf6cc072965363339c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f3cafb4d2df4d1944f583a99ca2014f3841827d0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965335"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701862"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Aplikacja jednostronicowa: wywoływanie interfejsu API sieci Web
 
@@ -30,7 +29,7 @@ Zalecamy wywołanie metody `acquireTokenSilent`, aby uzyskać lub odnowić token
 
 ### <a name="javascript"></a>JavaScript
 
-Użyj tokenu uzyskanego dostępu jako okaziciela w żądaniu HTTP w celu wywołania dowolnego internetowego interfejsu API, takiego jak Microsoft Graph API. Na przykład:
+Użyj tokenu uzyskanego dostępu jako okaziciela w żądaniu HTTP w celu wywołania dowolnego internetowego interfejsu API, takiego jak Microsoft Graph API. Przykład:
 
 ```javascript
     var headers = new Headers();

@@ -12,13 +12,12 @@ ms.date: 09/05/2019
 ms.author: twhitney
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a0e93c87c50fbc63cddad349ec9b5fbf45d91f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843907"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698003"
 ---
 # <a name="authorization-agents-android"></a>Agenci autoryzacji (Android)
 
@@ -79,15 +78,15 @@ Następujące przeglądarki zostały przetestowane w celu sprawdzenia, czy prawi
 
 | | Wbudowana przeglądarka | Chrome | Opera  | Microsoft Edge | Przeglądarka UC | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
-| Nexus 4 (interfejs API 17) | Chodzenia | Chodzenia |nie dotyczy |nie dotyczy |nie dotyczy |nie dotyczy |
-| Samsung S7 (interfejs API 25) | chodzenia | Chodzenia | Chodzenia | Chodzenia | fail |Chodzenia |
-| Huawei (interfejs API 26) |Pass * * | Chodzenia | fail | Chodzenia | Chodzenia |Chodzenia |
-| Vivo (interfejs API 26) |Chodzenia|Chodzenia|Chodzenia|Chodzenia|Chodzenia|fail|
-| Piksel 2 (interfejs API 26) |Chodzenia | Chodzenia | Chodzenia | Chodzenia | fail |Chodzenia |
-| Oppo | Chodzenia | nie dotyczy * * * |nie dotyczy  |nie dotyczy |nie dotyczy | nie dotyczy|
-| OnePlus (interfejs API 25) |Chodzenia | Chodzenia | Chodzenia | Chodzenia | fail |Chodzenia |
-| Nexus (interfejs API 28) |Chodzenia | Chodzenia | Chodzenia | Chodzenia | fail |Chodzenia |
-|MI | Chodzenia | Chodzenia | Chodzenia | Chodzenia | fail |Chodzenia |
+| Nexus 4 (interfejs API 17) | chodzenia | chodzenia |nie dotyczy |nie dotyczy |nie dotyczy |nie dotyczy |
+| Samsung S7 (interfejs API 25) | chodzenia | chodzenia | chodzenia | chodzenia | fail |chodzenia |
+| Huawei (interfejs API 26) |Pass * * | chodzenia | fail | chodzenia | chodzenia |chodzenia |
+| Vivo (interfejs API 26) |chodzenia|chodzenia|chodzenia|chodzenia|chodzenia|fail|
+| Piksel 2 (interfejs API 26) |chodzenia | chodzenia | chodzenia | chodzenia | fail |chodzenia |
+| Oppo | chodzenia | nie dotyczy * * * |nie dotyczy  |nie dotyczy |nie dotyczy | nie dotyczy|
+| OnePlus (interfejs API 25) |chodzenia | chodzenia | chodzenia | chodzenia | fail |chodzenia |
+| Nexus (interfejs API 28) |chodzenia | chodzenia | chodzenia | chodzenia | fail |chodzenia |
+|MI | chodzenia | chodzenia | chodzenia | chodzenia | fail |chodzenia |
 
 \* Wbudowana przeglądarka Samsung to Samsung Internet.  
 \* * Wbudowana przeglądarka Huawei jest przeglądarką Huawei.  
