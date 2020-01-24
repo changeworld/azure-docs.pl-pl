@@ -5,12 +5,12 @@ metadata:
   title: Dokumentacja dotycząca zespołowego przetwarzania danych dla celów naukowych
   description: 'Dowiedz się, jak korzystać z zespołowego przetwarzania danych dla celów naukowych, czyli elastycznej, iteracyjnej metodologii nauki o danych opartej na współpracy, która umożliwia efektywne dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji. Pomaga to zwiększyć jakość uczenia i współpracy w zespole. Ta metodologia obejmuje wybrane najlepsze rozwiązania i struktury firmy Microsoft oraz innych podmiotów w branży, które ułatwiają pomyślne implementowanie inicjatyw w zakresie nauki o danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.'
   services: machine-learning
-  author: cjgronlund
+  author: marktab
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: cgronlun
+  ms.date: 01/10/2020
+  ms.author: marktab
 abstract:
   description: 'Zespołowe przetwarzanie danych dla celów naukowych to elastyczna, iteracyjna metodologia nauki o danych oparta na współpracy, która umożliwia efektywne dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji. Pomaga to zwiększyć jakość uczenia i współpracy w zespole. Ta metodologia obejmuje wybrane najlepsze rozwiązania i struktury firmy Microsoft oraz innych podmiotów w branży, które ułatwiają pomyślne implementowanie inicjatyw w zakresie nauki o danych. Ma ona na celu pomoc firmom w pełnym wykorzystaniu zalet programu analitycznego.'
 sections:

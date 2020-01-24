@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2020
 ms.author: aschhab
-ms.openlocfilehash: a795aa536e6e72b487abd18e60cfa52d6ab633ee
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 20d9fc141fa19a5c6d01f33c2a5398ca84497b9f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264886"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309969"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Przewodnik rozwiązywania problemów Azure Service Bus
 W tym artykule przedstawiono niektóre wyjątki platformy .NET wygenerowane przez Service Bus .NET Framework interfejsy API, a także inne wskazówki dotyczące rozwiązywania problemów. 
@@ -110,6 +110,23 @@ W przypadku kolejek i tematów limit czasu jest określony we właściwości [Me
 Poniższe kroki mogą pomóc w rozwiązywaniu problemów z łącznością/certyfikatem/przekroczeniem limitu czasu dla wszystkich usług w programie *. servicebus.windows.net. 
 
 - Przejdź do programu lub [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`. Pomaga sprawdzić, czy masz problemy z filtrowaniem adresów IP lub siecią wirtualną lub łańcuchem certyfikatów (najbardziej typowe w przypadku korzystania z zestawu Java SDK).
+
+    Przykład pomyślnego komunikatu:
+    
+    ```xml
+    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
+    ```
+    
+    Przykładowy komunikat o błędzie błędu:
+
+    ```json
+    <Error>
+        <Code>400</Code>
+        <Detail>
+            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
+        </Detail>
+    </Error>
+    ```
 - Uruchom następujące polecenie, aby sprawdzić, czy dowolny port jest zablokowany przez zaporę. Używane porty to 443 (HTTPS), 5671 (AMQP) i 9354 (NET Messaging/SBMP). W zależności od używanej biblioteki używane są również inne porty. Oto przykładowe polecenie, które sprawdza, czy port 5671 jest zablokowany. 
 
     ```powershell

@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 11/14/2019
-ms.openlocfilehash: b3bc99d0fbdb551af0fb3711d74db537d3f9b1a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e1df345fb9a89972ad1857a937c22d6e10ad1fba
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421332"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289411"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopiowanie spójnej transakcyjnie kopii bazy danych Azure SQL Database
 
 Azure SQL Database oferuje kilka metod tworzenia spójnej i niefunkcjonalnej kopii istniejącej bazy danych Azure SQL Database ([pojedyncza baza danych](sql-database-single-database.md)) na tym samym serwerze lub na innym serwerze. Bazę danych SQL można skopiować za pomocą Azure Portal, PowerShell lub T-SQL.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Kopia bazy danych jest migawką źródłowej bazy danych w czasie żądania kopiowania. Możesz wybrać ten sam serwer lub inny serwer. Można również wybrać opcję utrzymania warstwy usługi i rozmiaru obliczeń lub użyć innego rozmiaru obliczeniowego w ramach tej samej warstwy usług (Edition). Po zakończeniu kopiowania zostanie ona w pełni funkcjonalna, niezależna baza danych. W tym momencie można go uaktualnić lub zmienić na starszą wersję. Logowania, użytkownicy i uprawnienia mogą być zarządzane niezależnie. Kopia jest tworzona przy użyciu technologii replikacji geograficznej, a po zakończeniu umieszczania zostanie wykonane automatyczne działanie łącza replikacji geograficznej. Wszystkie wymagania dotyczące korzystania z replikacji geograficznej dotyczą operacji kopiowania bazy danych. Szczegółowe informacje znajdują się w temacie [Omówienie aktywnej replikacji geograficznej](sql-database-active-geo-replication.md) .
 
@@ -151,7 +151,7 @@ Monitoruj proces kopiowania, wykonując zapytania dotyczące widoków sys. datab
 > Jeśli zdecydujesz się anulować kopiowanie w trakcie wykonywania, wykonaj instrukcję [Drop Database](https://msdn.microsoft.com/library/ms178613.aspx) w nowej bazie danych. Alternatywnie wykonanie instrukcji DROP DATABASE w źródłowej bazie danych spowoduje również anulowanie procesu kopiowania.
 
 > [!IMPORTANT]
-> Jeśli konieczne jest utworzenie kopii o znacznie mniejszym przekroczeniu niż źródło, docelowa baza danych może nie mieć wystarczających zasobów do zakończenia procesu tworzenia i może spowodować niepowodzenie operacji kopiowania. W tym scenariuszu Użyj żądania przywracania geograficznego, aby utworzyć kopię na innym serwerze i/lub innym regionie. Więcej informacje można znaleźć w temacie [odzyskiwanie bazy danych Azure SQL Database przy użyciu kopii zapasowych bazy danych](sql-database-recovery-using-backups.md#geo-restore) .
+> Jeśli konieczne jest utworzenie kopii o znacznie mniejszym przekroczeniu niż źródło, docelowa baza danych może nie mieć wystarczających zasobów do zakończenia procesu tworzenia i może spowodować niepowodzenie operacji kopiowania. W tym scenariuszu Użyj żądania przywracania geograficznego, aby utworzyć kopię na innym serwerze i/lub innym regionie. Więcej informacji można znaleźć w temacie [odzyskiwanie bazy danych Azure SQL Database przy użyciu kopii zapasowych bazy danych](sql-database-recovery-using-backups.md#geo-restore) .
 
 ## <a name="resolve-logins"></a>Rozwiązywanie logowań
 

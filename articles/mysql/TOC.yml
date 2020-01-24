@@ -95,6 +95,10 @@
           href: concepts-data-access-security-private-link.md
         - name: Szyfrowanie danych
           href: concepts-data-encryption-mysql.md
+        - name: Szyfrowanie danych
+          href: concepts-data-encryption-mysql.md
+        - name: Uwierzytelnianie w usłudze Azure AD
+          href: concepts-azure-ad-authentication.md
     - name: Ciągłość działalności biznesowej
       items:
         - name: Wprowadzenie do ciągłości działalności biznesowej
@@ -238,6 +242,10 @@
       items:
         - name: Azure Portal
           href: howto-data-encryption-portal.md
+    - name: Integracja z usługą Azure AD
+      items:
+        - name: Konfigurowanie integracji z usługą Azure AD
+          href: howto-configure-sign-in-azure-ad-authentication.md
     - name: Ponowne uruchamianie serwera
       items:
         - name: Azure Portal

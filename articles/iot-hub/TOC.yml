@@ -84,9 +84,9 @@
 - name: Pojęcia
   items:
     - name: Obsługa protokołu TLS
-      href: iot-hub-tls.md
+      href: iot-hub-tls-support.md
     - name: Wycofanie protokołów TLS 1.0 i 1.1
-      href: tls-1.2-everywhere.md
+      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: Przegląd wzbogaceń wiadomości
       href: iot-hub-message-enrichments-overview.md
     - name: Zarządzanie urządzeniami — omówienie
