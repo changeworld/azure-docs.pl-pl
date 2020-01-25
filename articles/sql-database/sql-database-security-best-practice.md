@@ -8,12 +8,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 12/23/2019
 ms.reviewer: ''
-ms.openlocfilehash: f93ab61fcba53ebf39adf8ad56137f4a1df7d5fd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 82297850bf6d03215963a1f81dda166550f2b0d5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615024"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715181"
 ---
 # <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL Database najlepszych praktyk dotyczących zabezpieczeń element PlayBook
 
@@ -260,7 +260,7 @@ Następujące najlepsze rozwiązania są opcjonalne, ale spowodują lepsze zarz�
   - Administrator 
   - Developer 
   - Personel pomocy technicznej 
-  - Audytor 
+  - Kontroler 
   - Zautomatyzowane procesy 
   - Użytkownik końcowy 
 
@@ -339,7 +339,7 @@ W przypadku czytelników, którzy chcą szczegółowe w SoD, zalecamy użycie na
   - [Kontrolowanie i udzielanie dostępu do bazy danych do SQL Database i SQL Data Warehouse](sql-database-manage-logins.md)
   - [Separacja przez silnik obowiązków dla deweloperów aplikacji](https://docs.microsoft.com/previous-versions/sql/sql-server-2008/cc974525(v=sql.100)) 
   - [Rozdzielenie obowiązków w SQL Server 2014](https://www.microsoft.com/download/details.aspx?id=39269)
-  - [Rejestrowanie procedur składowanych w programie SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
+  - [Podpisywanie procedur składowanych w SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - W przypadku usługi Azure Resource Management:
   - [Wbudowane role dla platformy Azure](../role-based-access-control/built-in-roles.md) 
@@ -392,7 +392,7 @@ Ochrona danych to zestaw funkcji służących do ochrony ważnych informacji prz
 
 Chroni dane, gdy dane są przenoszone między klientem i serwerem. Zapoznaj się z [zabezpieczeniami sieciowymi](#network-security).
 
-### <a name="encrypt-data-at-rest"></a>Szyfrowanie danych magazynowanych
+### <a name="encrypt-data-at-rest"></a>Szyfruj dane przechowywane
 
 > [!NOTE]
 > Wymienione w: rozwiązanie OSA #6, Rodzina formantów ISO: Kryptografia
@@ -462,7 +462,7 @@ W przypadku korzystania z CLE:
 - Aby uniknąć używania algorytmu 3DES, należy chronić klucze symetryczne za pomocą kluczy asymetrycznych/certyfikatów (nie hasła). 
 
 - Należy zachować ostrożność podczas migrowania bazy danych za pomocą szyfrowania na poziomie komórki za pomocą eksportu/importu (pliki BACPAC). 
-  - Zapoznaj się z artykułem [zalecenia dotyczące używania szyfrowania na poziomie komórki w Azure SQL Database](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) na temat zapobiegania kluczom utracie podczas migrowania danych oraz innych wskazówek dotyczących najlepszych rozwiązań.
+  - Zapoznaj się z artykułem [zalecenia dotyczące używania szyfrowania na poziomie komórki w Azure SQL Database](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) na temat zapobiegania utracie kluczy podczas migrowania danych oraz innych wskazówek dotyczących najlepszych rozwiązań.
 
 W przypadku korzystania z Always Encrypted należy pamiętać, że Always Encrypted jest przeznaczony głównie do ochrony poufnych danych używanych przez użytkowników z wysokim poziomem uprawnień, Azure SQL Database (operatorzy chmury, przetwarzający) — zobacz [Ochrona poufnych danych używanych przez nieautoryzowanych użytkowników](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Należy pamiętać o następujących kwestiach dotyczących ochrony danych przed użytkownikami aplikacji przy użyciu Always Encrypted:
 

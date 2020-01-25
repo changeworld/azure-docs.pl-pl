@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7d341c7081fef7aee2c33b9a7080d60417ce410d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0e6b87ff34d6555fda50518198f9ae3839aa56e6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895177"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719096"
 ---
 # <a name="build-highly-available-applications-with-zone-redundant-storage-zrs"></a>Tworzenie aplikacji o wysokiej dostępności za pomocą magazynu Strefowo nadmiarowego (ZRS)
 
@@ -34,6 +34,7 @@ W przypadku kont ogólnego przeznaczenia w wersji 2 ZRS jest ogólnie dostępna 
 - Europa Zachodnia
 - Francja Środkowa
 - Japonia Wschodnia
+- Północna Republika Południowej Afryki
 - Południowe Zjednoczone Królestwo
 - Środkowe stany USA
 - Wschodnie stany USA
@@ -88,7 +89,7 @@ Podczas migracji na żywo możesz używać konta magazynu, gdy Twoje dane są mi
 Należy pamiętać o następujących ograniczeniach migracji na żywo:
 
 - Mimo że firma Microsoft obsłuży Twoje żądanie migracji na żywo tak szybko, jak to możliwe, nie ma możliwości określenia, kiedy migracja na żywo zostanie ukończona. Jeśli chcesz, aby migracja Twoich danych została zakończona w określonym terminie, firma Microsoft zaleca przeprowadzenie zamiast tego migracji ręcznej. Ogólnie rzecz biorąc, im więcej danych zawiera Twoje konto, tym dłużej trwa ich migracja. 
-- Migracja na żywo jest obsługiwana tylko w przypadku kont magazynu, które używają replikacji LRS lub GRS. Jeśli Twoje konto używa RA-GRS, przed kontynuowaniem musisz najpierw zmienić typ replikacji konta na LRS lub GRS. Ten krok pośrednika usuwa pomocniczy punkt końcowy tylko do odczytu dostarczony przez RA-GRS przed migracją.
+- Migracja na żywo jest obsługiwana tylko w przypadku kont magazynu, które używają replikacji LRS. Jeśli konto używa GRS lub RA-GRS, przed kontynuowaniem musisz najpierw zmienić typ replikacji konta na LRS. Ten krok pośredniego usuwania pomocniczego punktu końcowego dostarczonego przez GRS/RA-GRS.
 - Twoje konto musi zawierać dane.
 - Dane można migrować tylko w tym samym regionie. Jeśli chcesz przeprowadzić migrację danych do konta ZRS znajdującego się w regionie innym niż konto źródłowe, należy przeprowadzić migrację ręczną.
 - Tylko standardowe typy kont magazynu obsługują migrację na żywo. Konta magazynu w warstwie Premium muszą być migrowane ręcznie.
@@ -130,9 +131,9 @@ Po zakończeniu migracji typ replikacji kont zmieni się na "magazyn strefowo na
 
 ZRS obsługuje tylko konta ogólnego przeznaczenia w wersji 2, dlatego przed przesłaniem żądania migracji na żywo do ZRS upewnij się, że Twoje konta zostały uaktualnione do poziomu ogólnego przeznaczenia w wersji 2. Aby uzyskać więcej informacji, zobacz [Omówienie konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview) i [Uaktualnij do konta magazynu ogólnego przeznaczenia w wersji 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) .
 
-**Czy mogę zażądać migracji na żywo kont magazynu geograficznie nadmiarowego (RA-GRS) z dostępem do odczytu do usługi ZRS?**
+**Czy mogę zażądać migracji na żywo kont geograficznie nadmiarowych (GRS/RA-GRS) z dostępem do odczytu do ZRS?**
 
-Przed przesłaniem żądania migracji na żywo do ZRS upewnij się, że aplikacje lub obciążenia nie wymagają już dostępu do pomocniczego punktu końcowego tylko do odczytu i Zmień typ replikacji kont magazynu na magazyn Geograficznie nadmiarowy (GRS). Aby uzyskać więcej informacji, zobacz [Zmienianie strategii replikacji](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy) .
+Migracja na żywo jest obsługiwana tylko w przypadku kont magazynu, które używają replikacji LRS. Jeśli konto używa GRS lub RA-GRS, przed kontynuowaniem musisz najpierw zmienić typ replikacji konta na LRS. Ten krok pośredniego usuwania pomocniczego punktu końcowego dostarczonego przez GRS/RA-GRS. Przed przesłaniem żądania migracji na żywo w celu ZRS upewnij się, że aplikacje lub obciążenia nie wymagają już dostępu do pomocniczego punktu końcowego tylko do odczytu, a następnie zmień typ replikacji kont magazynu na magazyn lokalnie nadmiarowy (LRS). Aby uzyskać więcej informacji, zobacz [Zmienianie strategii replikacji](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy) .
 
 **Czy mogę zażądać migracji na żywo moich kont magazynu do ZRS do innego regionu?**
 
@@ -146,7 +147,7 @@ Jeśli chcesz przeprowadzić migrację danych do konta ZRS znajdującego się w 
 
 ZRS klasyczny asynchronicznie replikuje dane między centrami danych w jednym lub dwóch regionach. Zreplikowane dane mogą nie być dostępne, jeśli firma Microsoft zainicjuje przejście w tryb failover do pomocniczej. Nie można przekonwertować klasycznego konta ZRS na lub z LRS, GRS lub RA-GRS. Klasyczne konta ZRS również nie obsługują metryk ani rejestrowania.
 
-ZRS klasyczny jest dostępny tylko dla **blokowych obiektów BLOB** w ramach kont magazynu ogólnego przeznaczenia w wersji 1 (GPv1). Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview (Omówienie konta usługi Azure Storage)](storage-account-overview.md).
+ZRS klasyczny jest dostępny tylko dla **blokowych obiektów BLOB** w ramach kont magazynu ogólnego przeznaczenia w wersji 1 (GPv1). Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](storage-account-overview.md) (Omówienie konta usługi Azure Storage).
 
 Aby ręcznie przeprowadzić migrację danych konta ZRS do lub z konta LRS, ZRS klasycznego, GRS lub RA-GRS, użyj jednego z następujących narzędzi: AzCopy, Eksplorator usługi Azure Storage, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Możesz również utworzyć własne rozwiązanie migracji przy użyciu jednej z bibliotek klienckich usługi Azure Storage.
 

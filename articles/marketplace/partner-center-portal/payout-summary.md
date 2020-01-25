@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979697"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715436"
 ---
 # <a name="payout-reporting"></a>Raportowanie wypłaty
 
@@ -37,7 +37,7 @@ Jeśli sprzedajesz oferty w portalu Azure Marketplace, zobaczysz również infor
 | Raport pozyskiwania (w tym dane niemal w czasie rzeczywistym) | Może wyświetlać | Może wyświetlać | Brak dostępu | Brak dostępu | Może wyświetlać | Brak dostępu |
 | Raport/odpowiedzi na Opinie | Może wyświetlać i przesyłać opinie | Może wyświetlać i przesyłać opinie | Może wyświetlać i przesyłać opinie | Brak dostępu | Brak dostępu | Może wyświetlać i przesyłać opinie |
 | Raport o kondycji (łącznie z danymi niemal w czasie rzeczywistym) | Może wyświetlać | Może wyświetlać | Może wyświetlać | Może wyświetlać | Brak dostępu | Brak dostępu |
-| Raport dotyczący użycia | Może wyświetlać | Może wyświetlać | Może wyświetlać | Może wyświetlać | Brak dostępu | Brak dostępu |
+| Raport użycia | Może wyświetlać | Może wyświetlać | Może wyświetlać | Może wyświetlać | Brak dostępu | Brak dostępu |
 | Konto wypłaty | Może aktualizować | Brak dostępu | Brak dostępu | Brak dostępu | Może aktualizować | Brak dostępu |
 | Profil podatkowy | Może aktualizować | Brak dostępu | Brak dostępu | Brak dostępu | Może aktualizować | Brak dostępu |
 | Podsumowanie wypłaty | Może wyświetlać | Brak dostępu | Brak dostępu | Brak dostępu | Może wyświetlać | Brak dostępu |
@@ -46,7 +46,7 @@ Jeśli sprzedajesz oferty w portalu Azure Marketplace, zobaczysz również infor
 
 | | Portal Cloud Partner | Centrum partnerskie |
 |---------|---------|---------|
-| Linki | https://cloudpartner.azure.com/ | https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory i https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| Linki | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) i [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
 | Nawigacja | Raportowanie wypłaty w usłudze Insights | Raportowanie wypłaty w centrum partnerskim — ikona wypłaty |
 | Zakres | <ul> <li>Element Transaction na wiersz jest widoczny dla kolekcji w toku, zebranych i płatnych </li> <li>Raportowanie — pokazuje wszystkie elementy wiersza po utworzeniu zamówienia zakupu, w tym zbieranie w toku i rozliczanie w toku oraz stan kolekcji i elementy wierszy, które nie są jeszcze kwalifikujące się do płatności. </li> </ul> | <ul> <li>Pokazuje elementy wiersza, gdy są one uznawane za kwalifikujące się zyski.</li> <li>Klienci zwracają się najpierw do firmy Microsoft, a następnie dostawcy ISV mogą zobaczyć raport wypłaty.</li> <li>Raport wypłaty nie będzie wyświetlał kolekcji w toku i rozliczeń w toku.  </li> </ul>  |
 | Transakcja nie jest gotowa do wypłaty | Rozliczanie w toku | Następna Szacowana płatność: stan wypłaty jest w stanie nieprzetworzonym.  |
@@ -68,23 +68,23 @@ Na przykład jeśli klient kupi przy użyciu karty kredytowej.
 
 ## <a name="corelation-between-payout-and-usage"></a>Relacja między wypłatami i użyciem
 
-|Opis    |    Data  | Zamówienia/użycie  | Wypłata |
+|Opis    |    Data  | Zamówienia/użycie  | Płat |
 |----------|----------|-----------|-------------|
-|Okres zamówienia   | 15 sierpnia 2019 — 30 sierpnia, 2019 | **Kolejność atrybutów korelacji** <br> <ul> <li>OrderId (Identyfikator zamówienia)</li> <li>CustomerId (Identyfikator klienta)</li> </ul> <br> **Użycie** <br> <ul> <li>CustomerId (Identyfikator klienta) </li> <li>Nazwa klienta</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Szacowana opłata rozszerzona <br> Szacowana wypłata (komputer) </li> </ul> |  |
+|Okres zamówienia   | 15 sierpnia 2019 — 30 sierpnia, 2019 | **Kolejność atrybutów korelacji** <br> <ul> <li>Wartooć</li> <li>Identyfikator</li> </ul> <br> **Użycie** <br> <ul> <li>Identyfikator </li> <li>Nazwa klienta</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Szacowana opłata rozszerzona <br> Szacowana wypłata (komputer) </li> </ul> |  |
 |Zakończenie okresu (miesiąc)   | 30 sie 2019 | | |
 |Data rozliczenia | Września 1, 2019 | | |
 |Data płatności klienta | Września 1, 2019 | | |
-|Okres płatności (tylko karty kredytowe:, 30 dni) | Września 1, 2019 – września 30, 2019 | | **Kolejność atrybutów korelacji:** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>CustomerId (Identyfikator klienta)</li> <li>Nazwa klienta</li> <li>OrderId (Identyfikator zamówienia)</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Nieprzetworzone |
+|Okres płatności (tylko karty kredytowe:, 30 dni) | Września 1, 2019 – września 30, 2019 | | **Kolejność atrybutów korelacji:** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Nieprzetworzone |
 |Początek okresu zbierania | Września 1, 2019 | | |
 |Koniec okresu zbierania danych (maksymalnie 30 dni) | Września 30, 2019 | | |
-|Data wyliczenia wypłaty (co miesiąc 15) | 1 października 2019 | | **Atrybuty korelacji** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li>Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>CustomerId (Identyfikator klienta)</li> <li>Nazwa klienta</li> <li>OrderId (Identyfikator zamówienia)</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Nowego |
-|Data wypłaty | 15 października 2019 | | **Atrybuty korelacji** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>CustomerId (Identyfikator klienta)</li> <li>Nazwa klienta</li> <li>OrderId (Identyfikator zamówienia)</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Płatność wysłana |
+|Data wyliczenia wypłaty (co miesiąc 15) | 1 października 2019 | | **Atrybuty korelacji** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li>Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Nowego |
+|Data wypłaty | 15 października 2019 | | **Atrybuty korelacji** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** Płatność wysłana |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Umowa Enterprise Agreement (kwartalne/miesięczne klienci)
 
-| Opis |    Data  | Użycie | Wypłata |
+| Opis |    Data  | Użycie | Płat |
 |----------|----------|---------|-----------|
-|Okres zamówienia | 15 sierpnia 2019 — 30 sierpnia, 2019 | **Kolejność atrybutów korelacji** <br> <ul> <li>OrderId (Identyfikator zamówienia)</li> <li>CustomerId (Identyfikator klienta)</li> </ul> <br> **Raport użycia** <br> <ul> <li>CustomerId (Identyfikator klienta) </li> <li>Nazwa klienta</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Szacowana opłata rozszerzona <br> Szacowana wypłata (komputer) </li> </ul> | |
+|Okres zamówienia | 15 sierpnia 2019 — 30 sierpnia, 2019 | **Kolejność atrybutów korelacji** <br> <ul> <li>Wartooć</li> <li>Identyfikator</li> </ul> <br> **Raport użycia** <br> <ul> <li>Identyfikator </li> <li>Nazwa klienta</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Szacowana opłata rozszerzona <br> Szacowana wypłata (komputer) </li> </ul> | |
 |Zakończenie okresu (kwartał) | Września 30, 2019 | | |
 |Data rozliczenia | 15 października 2019 | | |
 |Okres płatności (tylko karty kredytowe:, 30 dni) | nd. | | |
@@ -93,7 +93,7 @@ Na przykład jeśli klient kupi przy użyciu karty kredytowej.
 |Koniec okresu zbierania danych (maksymalnie 90 dni) | 15 stycznia 2020 | | |
 |Data płatności klienta | 30 grudnia, 2019 | | |
 |Obliczanie wypłaty | 15 stycznia 2020 | | |
-|Data wypłaty | 15 lutego 2020 | | **Dla kwartalnych klientów** <br> <br> **Raport o zamówieniach** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>CustomerId (Identyfikator klienta)</li> <li>Nazwa klienta</li> <li>OrderId (Identyfikator zamówienia)</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** wysłano |
+|Data wypłaty | 15 lutego 2020 | | **Dla kwartalnych klientów** <br> <br> **Raport o zamówieniach** <br> <ul><li>AssetId</li> <li>Identyfikator klienta</li> <li> Nazwa klienta</li> </ul> <br> **Użycie** <br> <ul> <li>AssetId</li> <li>Identyfikator</li> <li>Nazwa klienta</li> <li>Wartooć</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stan wypłaty:** wysłano |
 
 ## <a name="transaction-history-download-export"></a>Pobieranie historii transakcji — eksport
 
@@ -130,14 +130,14 @@ Ta opcja zapewnia pobranie każdego elementu linii zdobywania, który jest widoc
 | paymentId            | Unikatowy identyfikator płatności. Ta liczba jest widoczna w wyrażeniu bankowym                                            |
 | paymentStatus            | Stan płatności                                            |
 | paymentStatusDescription            | Przyjazny opis stanu płatności                                            |
-| customerId                     | Zawsze będzie puste                                                                                                                     |
+| Identyfikator                     | Zawsze będzie puste                                                                                                                     |
 | customerName                   | Zawsze będzie puste                                                                                                                     |
 | partNumber                     | Zawsze będzie puste                                                                                                                     |
 | productName                    | Nazwa produktu połączona z transakcją                                                                                                       |
 | productId                      | Unikatowy identyfikator produktu                                                                                                                |
 | parentProductId                | Unikatowy identyfikator nadrzędnego produktu. Uwaga: Jeśli nie istnieje produkt nadrzędny dla transakcji, identyfikator produktu nadrzędny = identyfikator produktu. |
 | parentProductName              | Nazwa produktu nadrzędnego. Uwaga: Jeśli nie istnieje produkt nadrzędny dla transakcji, nazwa produktu nadrzędnego = Nazwa produktu.   |
-| productType                    | Typ produktu (na przykład aplikacja, dodatek, gra itp.)                                                                                        |
+| Parametru ProductType                    | Typ produktu (na przykład aplikacja, dodatek, gra itp.)                                                                                        |
 | invoiceNumber                  | Numer faktury (dotyczy tylko EA)                                                                                                  |
 | resellerId                     | Identyfikator odsprzedawcy                                                                                                                      |
 | Nazwa odsprzedawcy                   | Nazwa odsprzedawcy                                                                                                                            |
@@ -165,7 +165,7 @@ Ta opcja zapewnia pobranie każdego elementu linii zdobywania, który jest widoc
 | EarningAmountInLastPaymentCurrency       | Kwota zarobków w ostatniej walucie płatności (pole będzie puste, jeśli nie zostały uiszczone żadne wcześniejsze płatności)                                                                                                                   |
 | lastPaymentCurrency       | Waluta ostatniej płatności (pole będzie puste, jeśli nie zapłacisz żadnej wcześniejszej płatności)                                                                                                                   |
 | AssetId       | Unikatowy identyfikator zamówień klientów dla usługi w portalu Marketplace.  Reprezentuje elementy wiersza zakupu transakcji transakcyjnych. Może istnieć wiele zasobów.                                                                                                                   |
-| OrderId (Identyfikator zamówienia)       | odnosi się do faktury klienta                                                                                                                   |
+| Wartooć       | odnosi się do faktury klienta                                                                                                                   |
 | LineItemId       | pojedynczy wiersz faktury klienta                                                                                                                   |
 | Kraj klienta       | Nazwa kraju podana przez klienta.  Może to być inne niż kraj w subskrypcji platformy Azure klienta.                                                                                                                   |
 | EmailAddress klienta       | Adres e-mail dostarczony przez klienta końcowego.  Może się to różnić od adresu e-mail w subskrypcji platformy Azure klienta.                                                                                                                   |

@@ -2,20 +2,20 @@
 title: Programowanie metodą agile projektów do nauki o danych — danych zespołu dla celów naukowych
 description: Wykonaj projekt analizy danych w systematyczny, kontrolowanym przez siebie wersji i współpracy w obrębie zespołu projektowego, korzystając z procesu nauki o danych zespołowych.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 09c5962e62077fbecc9b327320d0bb5b88416ffa
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260686"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722105"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Programowanie metodą agile projektów do nauki o danych
 
@@ -35,13 +35,13 @@ Na poniższej ilustracji przedstawiono typowe Planowanie przebiegu, kodowanie i 
 
 ##  <a name='Terminology-1'></a>Typy elementów roboczych
 
-W środowisku planowania przetwarzania TDSP przebiegu są cztery często używane typy *elementów roboczych* : *Funkcje*, *historie użytkowników*, *zadania*i *Błędy*. Zaległość wszystkich elementów roboczych jest na poziomie projektu, a nie na poziomie repozytorium git. 
+W środowisku planowania przetwarzania TDSP przebiegu są cztery często używane typy *elementów roboczych* : *funkcje*, *historie użytkowników*, *zadania*i *Błędy*. Zaległość wszystkich elementów roboczych jest na poziomie projektu, a nie na poziomie repozytorium git. 
 
 Poniżej przedstawiono definicje typów elementów roboczych:
 
-- **Funkcja**: Funkcja odnosi się do zaangażowania projektu. Różne zaangażowanie z klientem to różne funkcje i najlepiej wziąć pod uwagę różne etapy projektu jako różne funkcje. W przypadku wybrania schematu, takiego jak  *\<ClientName >\<-engagementname >* do nazywania funkcji, można łatwo rozpoznać kontekst projektu i zaangażowania z samych nazw.
+- **Funkcja**: funkcja odpowiada zakontraktowaniu projektu. Różne zaangażowanie z klientem to różne funkcje i najlepiej wziąć pod uwagę różne etapy projektu jako różne funkcje. W przypadku wybrania schematu, takiego jak *\<clientname >-\<engagementname >* do nazywania funkcji, można łatwo rozpoznać kontekst projektu i zaangażowania z samych nazw.
   
-- **Scenariusz**użycia: Historie użytkowników są elementami roboczymi, które są konieczne do zakończenia funkcji. Przykładami scenariuszy użycia są:
+- **Scenariusz**użycia: historie użytkownika są elementami roboczymi, które są konieczne do zakończenia funkcji. Przykładami scenariuszy użycia są:
   - Pobieranie danych 
   - Eksplorowanie danych 
   - Generuj funkcje
@@ -49,11 +49,11 @@ Poniżej przedstawiono definicje typów elementów roboczych:
   - Operacjonalizowanie modeli 
   - Ponowne szkolenie modeli
   
-- **Zadanie**: Zadania są możliwymi do przypisania elementami roboczymi, które należy wykonać w celu ukończenia określonego scenariusza użytkownika. Na przykład zadania w scenariuszu użytkownika *pobieranie danych* mogą być następujące:
+- **Zadanie**: zadania są możliwy do przypisania elementy robocze, które należy wykonać w celu ukończenia określonego scenariusza użytkownika. Na przykład zadania w scenariuszu użytkownika *pobieranie danych* mogą być następujące:
   - Pobierz poświadczenia SQL Server
   - Przekaż dane do SQL Data Warehouse
   
-- **Usterka**: Usterki to problemy w istniejącym kodzie lub dokumentach, które muszą zostać naprawione, aby można było ukończyć zadanie. Jeśli usterki są spowodowane brakującymi elementami roboczymi, mogą one być eskalacją do scenariuszy użytkownika lub zadań. 
+- **Usterka**: usterki są problemy w istniejącym kodzie lub dokumentach, które muszą zostać naprawione, aby można było ukończyć zadanie. Jeśli usterki są spowodowane brakującymi elementami roboczymi, mogą one być eskalacją do scenariuszy użytkownika lub zadań. 
 
 Analityki danych mogą być bardziej wygodne przy użyciu szablonu Agile, który zastąpi funkcje, historie użytkownika i zadania z etapami cyklu życia przetwarzania TDSP i podetapami. Aby utworzyć szablon pochodny Agile, który jest zgodny z etapami cyklu życia przetwarzania TDSP, zobacz [Korzystanie z szablonu pracy Agile przetwarzania TDSP](#set-up-agile-dsp-6).
 
@@ -72,7 +72,7 @@ Aby uzyskać więcej informacji o planowaniu przebiegu w Azure Boards, zobacz [p
 
 Po utworzeniu projektu i repozytorium kodu projektu można dodać funkcję do zaległości, aby reprezentować prace dla projektu.
 
-1. Na stronie projektu wybierz pozycję **płyty** > **zaległości** na lewym pasku nawigacyjnym. 
+1. Na stronie projektu wybierz pozycję **tablice** > **zaległości** w lewym okienku nawigacji. 
    
 1. Na karcie **zaległości** , jeśli typ elementu pracy na górnym pasku to **historie**, lista rozwijana i wybierz pozycję **funkcje**. Następnie wybierz pozycję **nowy element roboczy.**
    
@@ -86,17 +86,17 @@ Po utworzeniu projektu i repozytorium kodu projektu można dodać funkcję do za
    
    Możesz również połączyć funkcję z repozytorium kodu Azure Repos projektu, wybierając pozycję **Dodaj link** w sekcji **programowanie** . 
    
-   Po zakończeniu edycji funkcji wybierz pozycję **zapisz & Zamknij**.
+   Po edytowaniu funkcji wybierz pozycję **zapisz & Zamknij**.
    
    ![Edytuj funkcję i wybierz pozycję Zapisz & Zamknij](./media/agile-development/3a-add-link-repo.png)
 
 ## <a name='AddStoryunderfeature-4'></a>Dodawanie scenariusza użytkownika do funkcji 
 
-W ramach tej funkcji można dodać historie użytkowników, aby opisać najważniejsze kroki niezbędne do zakończenia projektu. 
+W ramach tej funkcji można dodać historie użytkowników, aby opisać najważniejsze kroki niezbędne do ukończenia projektu. 
 
 Aby dodać nową historię użytkownika do funkcji:
 
-1. Na karcie **zaległości** wybierz pozycję **+** z lewej strony funkcji. 
+1. Na karcie **zaległości** wybierz **+** z lewej strony funkcji. 
    
    ![Dodaj nową historię użytkownika w ramach funkcji](./media/agile-development/4-sprint-add-story.png)
    
@@ -112,7 +112,7 @@ Aby dodać nową historię użytkownika do funkcji:
 
 Zadania są szczegółowymi krokami, które są niezbędne do wykonania każdego scenariusza użytkownika. Po zakończeniu wszystkich zadań ze scenariusza użytkownika należy wykonać również ukończenie scenariusza użytkownika. 
 
-Aby dodać zadanie do scenariusza użytkownika, zaznacz **+** obok elementu scenariusz użytkownika i wybierz **zadanie**. Wypełnij tytuł i inne informacje w zadaniu.
+Aby dodać zadanie do scenariusza użytkownika, zaznacz **+** obok elementu scenariusz użytkownika, a następnie wybierz **zadanie**. Wypełnij tytuł i inne informacje w zadaniu.
 
 ![Dodawanie zadania do scenariusza użytkownika](./media/agile-development/7-sprint-add-task.png)
 
@@ -183,7 +183,7 @@ Za pomocą szablonu procesu analizy danych można tworzyć projekty przetwarzani
    
    ![Tworzenie projektu przetwarzania TDSP](./media/agile-development/15-newproject.png)
    
-1. W nowo utworzonym projekcie wybierz pozycję **płyty** > **zaległości** na lewym pasku nawigacyjnym.
+1. W nowo utworzonym projekcie wybierz pozycję **tablice** > **zaległości** w lewym okienku nawigacji.
    
 1. Aby wyświetlić przetwarzania TDSP projekty, wybierz ikonę **Konfiguruj ustawienia zespołu** . Na ekranie **Ustawienia** zaznacz pole wyboru **projekty przetwarzania TDSP** , a następnie wybierz pozycję **Zapisz i Zamknij**.
    
@@ -201,7 +201,7 @@ Za pomocą szablonu procesu analizy danych można tworzyć projekty przetwarzani
    
 1. Wypełnij szczegóły w nowym elemencie roboczym, a następnie wybierz pozycję **zapisz & Zamknij**.
    
-1. Kontynuuj Wybieranie **+** symboli obok elementów roboczych, aby dodać nowe etapy przetwarzania TDSP, podetapów i zadań. 
+1. Kontynuuj Wybieranie **+** symboli obok pozycji elementy robocze, aby dodać nowe etapy przetwarzania TDSP, podetapów i zadań. 
    
 Oto przykład sposobu wyświetlania elementów roboczych projektu analizy danych w widoku **zaległości** :
 

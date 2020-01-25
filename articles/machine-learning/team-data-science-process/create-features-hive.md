@@ -1,22 +1,22 @@
 ---
-title: Tworzenie funkcji dla danych w klastrze usługi Hadoop — zespołu danych dla celów naukowych
+title: Tworzenie funkcji dla danych w klastrze Azure HDInsight Hadoop — proces nauki danych zespołu
 description: Przykłady zapytań programu Hive, które generują funkcji w danych przechowywanych w klastrze usługi Azure HDInsight Hadoop.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 979652a467ea91c05884d2f7a24781f82035e505
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982041"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721782"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Tworzenie funkcji dla danych w klastrze usługi Hadoop przy użyciu zapytań Hive
 W tym dokumencie przedstawiono sposób tworzenia funkcji — dane przechowywane w klastrze usługi Azure HDInsight Hadoop przy użyciu zapytań programu Hive. Te zapytania programu Hive za pomocą osadzonych funkcji Hive User-Defined przez użytkownika (UDF), skryptów, dla której są dostarczane.
@@ -144,14 +144,14 @@ Domyślne parametry Hive klastra może nie być odpowiednie dla zapytań program
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    Ten parametr przydziela pamięci 4GB miejsca na stercie Java i sprawia, że sortowanie bardziej wydajne przez przydzielanie większej ilości pamięci dla niego. To dobry pomysł, aby odtworzyć za pomocą tych środków w przypadku dowolnego zadania, błędy związane z miejsca na stercie.
+    Ten parametr przypisuje pamięć o pojemności 4 GB do przestrzeni sterty Java, a jednocześnie sortuje bardziej wydajne przez przydzielenie większej ilości pamięci. To dobry pomysł, aby odtworzyć za pomocą tych środków w przypadku dowolnego zadania, błędy związane z miejsca na stercie.
 
 1. **Systemu plików DFS rozmiaru bloku**: ten parametr określa najmniejsza jednostka danych przechowywanych w systemie plików. Na przykład jeśli rozmiar bloku systemu plików DFS jest 128 MB, a następnie dowolnych danych o rozmiarze mniejsza i maksymalnie 128 MB jest przechowywany w jednym bloku. Dane, które są większe niż 128 MB jest przydzielony dodatkowe bloki. 
 2. Wybierając rozmiar małych blokach powoduje dużych kosztów ogólnych na platformie Hadoop, ponieważ węzeł nazw ma do przetworzenia wiele więcej żądań w celu znalezienia odpowiedniego bloku odnoszących się do pliku. Zalecane ustawienie w przypadku, gdy zajmujących się gigabajty (lub więcej) danych:
 
         set dfs.block.size=128m;
 
-2. **Optymalizacja operacji tworzenia sprzężenia w gałęzi**: podczas operacji łączenia w ramach map/reduce zazwyczaj miejsce w fazie Zmniejsz czasami ogromne korzyści można osiągnąć, planowanie sprzężeń w fazie mapy (zwane również "mapjoins"). Aby skierować gałęzi, aby to zrobić, jeśli to możliwe, należy ustawić:
+2. **Optymalizacja operacji tworzenia sprzężenia w gałęzi**: podczas operacji łączenia w ramach map/reduce zazwyczaj miejsce w fazie Zmniejsz czasami ogromne korzyści można osiągnąć, planowanie sprzężeń w fazie mapy (zwane również "mapjoins"). Ustaw tę opcję:
    
        set hive.auto.convert.join=true;
 
@@ -167,7 +167,7 @@ Domyślne parametry Hive klastra może nie być odpowiednie dla zapytań program
 
      Jak widać, uwzględniając rozmiar danych dostosowywania tych parametrów, ustawiając wartość"" ich pozwala nam dostosować liczbę liczby maperów używane.
 
-4. Oto kilka innych kolejnych **zaawansowane opcje** optymalizacji wydajności technologii Hive. Te umożliwiają ustawianie pamięć przydzielona programowi mapowania i redukcji zadań i może być przydatne w Dostosowywanie wydajności. Należy pamiętać, że *mapreduce.reduce.memory.mb* nie może być większa niż rozmiar pamięci fizycznej w każdym węzłem procesu roboczego w klastrze usługi Hadoop.
+4. Oto kilka innych kolejnych **zaawansowane opcje** optymalizacji wydajności technologii Hive. Te opcje umożliwiają ustawienie pamięci przydzieloną na potrzeby mapowania i zmniejszania zadań, co może być przydatne w przypadku dostosowywania wydajności. Należy pamiętać, że *mapreduce.reduce.memory.mb* nie może być większa niż rozmiar pamięci fizycznej w każdym węzłem procesu roboczego w klastrze usługi Hadoop.
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

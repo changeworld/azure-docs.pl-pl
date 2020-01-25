@@ -2,13 +2,13 @@
 title: Zasoby bez limitu liczby 800
 description: Wyświetla listę typów zasobów platformy Azure, które mogą mieć więcej niż 800 wystąpień w grupie zasobów.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: c4f452a13c2059c02bf675ca4fe80243257183d5
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 01/23/2020
+ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659325"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715630"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Zasoby nieograniczone do 800 wystąpień na grupę zasobów
 
@@ -26,6 +26,7 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 * rejestracje
 * rejestracje/customerSubscriptions
 * rejestracje/produkty
+* verificationKeys
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -74,7 +75,7 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 * oparty
-* przestrzenie nazw
+* przestrzeni
 
 ## <a name="microsoftexperimentation"></a>Microsoft. eksperymentowanie
 
@@ -82,16 +83,17 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
+* autoManagedVmConfigurationProfiles
 * configurationProfileAssignments
 * guestConfigurationAssignments
-* oprogramowanie
+* programy
 * softwareUpdateProfile
 * softwareUpdates
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 * integrationAccounts
-* przepływy pracy
+* przebieg
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -150,7 +152,7 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
-* przestrzenie nazw
+* przestrzeni
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
@@ -158,7 +160,7 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
-* przestrzenie nazw
+* przestrzeni
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
@@ -176,8 +178,12 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 * apiManagementAccounts/apis
-* lokacje
+* teren
+
+## <a name="microsoftinsights"></a>Microsoft. Insights
+
+* metricalerts
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać pełną listę przydziałów i limitów, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+Aby uzyskać pełną listę przydziałów i limitów, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](azure-subscription-service-limits.md).

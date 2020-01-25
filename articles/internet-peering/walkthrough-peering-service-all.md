@@ -1,21 +1,21 @@
 ---
-title: Przewodnik po partnerze usługi Komunikacja równorzędna
+title: Przewodnik partnera usługi Peering Service
 titleSuffix: Azure
-description: Przewodnik po partnerze usługi Komunikacja równorzędna
+description: Przewodnik partnera usługi Peering Service
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 28aa9f921de64fcc838935cf65b64a63280ddf16
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d626d98613bd5d988b599d0980c885d7f73bb958
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75774629"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720252"
 ---
-# <a name="peering-service-partner-walkthrough"></a>Przewodnik po partnerze usługi Komunikacja równorzędna
+# <a name="peering-service-partner-walkthrough"></a>Przewodnik partnera usługi Peering Service
 
 W tej sekcji opisano kroki, które dostawca musi wykonać, aby włączyć bezpośrednią komunikację równorzędną dla usługi komunikacji równorzędnej.
 
@@ -25,7 +25,7 @@ Dostawcy usług mogą rozszerzyć ich zasięg geograficzny przez utworzenie nowe
 1. Postępuj zgodnie z instrukcjami, aby [utworzyć lub zmodyfikować bezpośrednią komunikację równorzędną przy użyciu portalu](howto-direct-portal.md). Upewnij się, że spełnia ono wymagania dotyczące wysokiej dostępności.
 1. Następnie wykonaj kroki, aby [włączyć usługę komunikacji równorzędnej w bezpośredniej komunikacji równorzędnej przy użyciu portalu](howto-peering-service-portal.md).
 
-## <a name="use-legacy-direct-peering-conection-for-peering-service"></a>Użyj starszej bezpośredniej komunikacji równorzędnej połączeń dla usługi komunikacji równorzędnej
+## <a name="use-legacy-direct-peering-connection-for-peering-service"></a>Użyj starszego bezpośredniego połączenia komunikacji równorzędnej dla usługi Komunikacja równorzędna
 Jeśli masz starszą bezpośrednią komunikację równorzędną, która ma być używana do obsługi komunikacji równorzędnej,
 1. Jeśli nie jest, Zostań partnerem usługi komunikacji równorzędnej.
 1. Postępuj zgodnie z instrukcjami, aby [skonwertować starszą bezpośrednią komunikację równorzędną do zasobu platformy Azure przy użyciu portalu](howto-legacy-direct-portal.md). W razie potrzeby Zamów dodatkowe obwody w celu spełnienia wymagań dotyczących wysokiej dostępności.

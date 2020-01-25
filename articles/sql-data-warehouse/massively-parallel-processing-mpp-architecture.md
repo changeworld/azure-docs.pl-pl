@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ea9629c63fcab97ba8ba83cd88592c37ae41818a
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646402"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720320"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura usługi Azure Synapse Analytics (dawniej SQL DW) 
 
-Azure Synapse to nieograniczona usługa analizy, która łączy magazyn danych w przedsiębiorstwie i analizę danych Big Data. Zapewnia to swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z niezależnych od serwera zasobów na żądanie lub aprowizacji. Usługa Azure Synapse udostępnia te dwa światy wraz z ujednoliconym doświadczeniem do pozyskiwania, przygotowywania, zarządzania i obsługi danych w celu natychmiastowej analizy biznesowej i uczenia maszynowego.
+Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, przy użyciu bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali. Usługa Azure Synapse łączy te dwa światy w ujednolicone środowisko umożliwiające pozyskiwanie, przygotowywanie i udostępnianie danych oraz zarządzanie nimi na potrzeby natychmiastowej analizy biznesowej oraz uczenia maszynowego.
 
  Usługa Azure Synapse ma cztery składniki:
 - Analiza SQL: Pełna analiza oparta na języku T-SQL 
@@ -33,7 +33,7 @@ Azure Synapse to nieograniczona usługa analizy, która łączy magazyn danych w
 
 ## <a name="sql-analytics-mpp-architecture-components"></a>Składniki architektury MPP usługi SQL Analytics
 
-[Analiza SQL](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) wykorzystuje architekturę skalowania w poziomie do dystrybucji obliczeniowego przetwarzania danych w wielu węzłach. Jednostka skali jest abstrakcją mocy obliczeniowej, która jest znana jako [Jednostka magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). Obliczenia są niezależne od magazynu, co umożliwia skalowanie obliczeniowe niezależnie od danych w systemie.
+[Analiza SQL](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) wykorzystuje architekturę skalowalną w poziomie do dystrybucji obliczeniowego przetwarzania danych w wielu węzłach. Jednostka skali jest abstrakcją mocy obliczeniowej, która jest znana jako [Jednostka magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md). Obliczenia są niezależne od magazynu, co umożliwia skalowanie obliczeniowe niezależnie od danych w systemie.
 
 ![Architektura usługi SQL Analytics](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
@@ -50,7 +50,7 @@ Korzystając z oddzielonego magazynu i obliczeń, w przypadku korzystania z usł
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Usługa SQL Analytics korzysta z usługi Azure Storage, aby zapewnić bezpieczeństwo danych użytkownika.  Ponieważ dane są przechowywane i zarządzane przez usługę Azure Storage, istnieje oddzielna opłata za użycie magazynu. Same dane są podzielonej na fragmenty do **dystrybucji** w celu zoptymalizowania wydajności systemu. Można wybrać, który wzorzec fragmentowania ma być używany do dystrybucji danych podczas definiowania tabeli. Te wzorce fragmentowania są obsługiwane:
+Usługa SQL Analytics korzysta z usługi Azure Storage, aby zapewnić bezpieczeństwo danych użytkownika.  Ponieważ dane są przechowywane i zarządzane przez usługę Azure Storage, istnieje oddzielna opłata za użycie magazynu. Dane są podzielonej na fragmenty do **dystrybucji** w celu zoptymalizowania wydajności systemu. Można wybrać, który wzorzec fragmentowania ma być używany do dystrybucji danych podczas definiowania tabeli. Te wzorce fragmentowania są obsługiwane:
 
 * Skrót
 * Działanie okrężne
@@ -64,7 +64,7 @@ Węzeł kontrolny jest mózgiem architektury. Jest to fronton współdziałając
 
 Węzły obliczeniowe zapewniają moc obliczeniową. Dystrybucje są mapowane na węzły obliczeniowe do przetwarzania. Gdy płacisz za więcej zasobów obliczeniowych, program SQL Analytics ponownie mapuje dystrybucje do dostępnych węzłów obliczeniowych. Liczba węzłów obliczeniowych z zakresu od 1 do 60 i jest określana na podstawie poziomu usług dla usługi SQL Analytics.
 
-Każdy węzeł obliczeniowy ma identyfikator węzła, który jest widoczny w widokach systemu. IDENTYFIKATOR węzła obliczeniowego można zobaczyć, szukając kolumny NODE_ID w widokach systemowych, których nazwy zaczynają się od pliku sys. PDW _nodes. Aby zapoznać się z listą tych widoków systemowych, zobacz [widoki systemowe MPP](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
+Każdy węzeł obliczeniowy ma identyfikator węzła, który jest widoczny w widokach systemu. IDENTYFIKATOR węzła obliczeniowego można zobaczyć, szukając kolumny node_id w widokach systemowych, których nazwy zaczynają się od sys. pdw_nodes. Aby zapoznać się z listą tych widoków systemowych, zobacz [widoki systemowe MPP](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
 
 ### <a name="data-movement-service"></a>Usługa przenoszenia danych
 Usługa przenoszenia danych (DMS) to technologia transportu danych, która koordynuje przenoszenie danych między węzłami obliczeniowymi. Niektóre zapytania wymagają przeniesienia danych, aby upewnić się, że zapytania równoległe zwracają dokładne wyniki. Gdy przenoszenie danych jest wymagane, usługa DMS gwarantuje, że odpowiednie dane będą pobierane do odpowiedniej lokalizacji. 
@@ -93,55 +93,27 @@ Istnieją zagadnienia dotyczące wydajności dla wyboru kolumny dystrybucji, tak
 ## <a name="round-robin-distributed-tables"></a>Rozproszone tabele działające w trybie okrężnym
 Tabela okrężna jest najprostszą tabelą umożliwiającą tworzenie i dostarczanie szybkiej wydajności, gdy jest używana jako tabela przejściowa dla obciążeń.
 
-Rozproszona tabela w trybie okrężnym dystrybuuje dane równomiernie w całej tabeli, ale bez żadnej dalszej optymalizacji. Najpierw wybierana jest dystrybucja, a następnie bufory wierszy są przypisywane sekwencyjnie. Ładowanie danych do tabeli okrężnej jest szybkie, ale wydajność zapytań może być często lepsza w przypadku tabel rozproszonych za pomocą skrótów. Sprzężenia w tabelach działania okrężnego wymagają danych reshuffling i trwają dodatkowy czas.
+Rozproszona tabela w trybie okrężnym dystrybuuje dane równomiernie w całej tabeli, ale bez żadnej dalszej optymalizacji. Najpierw wybierana jest dystrybucja, a następnie bufory wierszy są przypisywane sekwencyjnie. Ładowanie danych do tabeli okrężnej jest szybkie, ale wydajność zapytań może być często lepsza w przypadku tabel rozproszonych za pomocą skrótów. Sprzężenia w tabelach działania okrężnego wymagają danych reshuffling, które pobierają dodatkowy czas.
 
 
 ## <a name="replicated-tables"></a>Zreplikowane tabele
 Replikowana tabela zapewnia najszybszą wydajność zapytań dla małych tabel.
 
-Replikowana pamięć podręczna zawiera pełną kopię tabeli w każdym węźle obliczeniowym. W związku z tym replikowanie tabeli eliminuje konieczność transferu danych między węzłami obliczeniowymi przed przypisaniem lub agregacją. Zreplikowane tabele są najlepiej wykorzystane w małych tabelach. Dodatkowy magazyn jest wymagany i istnieje dodatkowe obciążenie, które są naliczane podczas zapisywania danych, co sprawia, że duże tabele nie są praktyczne.  
+Replikowana pamięć podręczna zawiera pełną kopię tabeli w każdym węźle obliczeniowym. W związku z tym replikowanie tabeli eliminuje konieczność transferu danych między węzłami obliczeniowymi przed przypisaniem lub agregacją. Zreplikowane tabele są najlepiej wykorzystane w małych tabelach. Dodatkowy magazyn jest wymagany i występuje dodatkowe obciążenie związane z zapisywaniem danych, co sprawia, że duże tabele nie są praktyczne.  
 
-Na poniższym diagramie przedstawiono zreplikowaną tabelę, która jest buforowana w pierwszej dystrybucji w każdym węźle obliczeniowym.  
+Na poniższym diagramie przedstawiono zreplikowane tabele, które są buforowane przy pierwszej dystrybucji w każdym węźle obliczeniowym.  
 
 ![Zreplikowane tabele](media/sql-data-warehouse-distributed-data/replicated-table.png "Zreplikowane tabele") 
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, gdy znasz już usługę Azure Synapse, Dowiedz się, jak szybko [utworzyć pulę SQL][create a SQL pool] i [załadować przykładowe dane][load sample data]. Jeśli dopiero zaczynasz korzystać z platformy Azure, [słownik platformy Azure][Azure glossary] może pomóc Ci zaznajomić się z nową terminologią. Lub zapoznaj się z innymi zasobami usługi Azure Synapse.  
+Teraz, gdy znasz już usługę Azure Synapse, Dowiedz się, jak szybko [utworzyć pulę SQL](./sql-data-warehouse-get-started-provision.md) i [załadować przykładowe dane](./sql-data-warehouse-load-sample-databases.md). Jeśli dopiero zaczynasz korzystać z platformy Azure, [słownik platformy Azure](../azure-glossary-cloud-terminology.md) może pomóc Ci zaznajomić się z nową terminologią. Lub zapoznaj się z innymi zasobami usługi Azure Synapse.  
 
-* [Historie sukcesu klientów]
-* [Blogi]
-* [Żądania funkcji]
-* [Filmy wideo]
-* [Blogi zespołu doradczego klientów]
-* [Tworzenie biletu pomocy technicznej]
-* [Forum MSDN]
-* [Forum Stack Overflow]
-* [Twitter]
+* [Historie sukcesu klientów](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+* [Blogi](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+* [Żądania funkcji](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+* [Filmy wideo](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+* [Tworzenie biletu pomocy technicznej](./sql-data-warehouse-get-started-create-support-ticket.md)
+* [Forum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+* [Forum Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw)
+* [Twitter](https://twitter.com/hashtag/SQLDW)
 
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Tworzenie biletu pomocy technicznej]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL pool]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Historie sukcesu klientów]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
-[Blogi]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Blogi zespołu doradczego klientów]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Żądania funkcji]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Forum MSDN]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Forum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Filmy wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

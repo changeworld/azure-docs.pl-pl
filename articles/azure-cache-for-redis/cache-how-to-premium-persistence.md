@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 40cd3467c7a4377427bb8db437e1047382933b1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412828"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714877"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować trwałość danych dla pamięci podręcznej systemu Azure w warstwie Premium dla Redis
 Usługa Azure cache for Redis ma różne oferty pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiaru i funkcji pamięci podręcznej, w tym funkcji warstwy Premium, takich jak klastrowanie, trwałość i obsługa sieci wirtualnej. W tym artykule opisano sposób konfigurowania trwałości w pamięci podręcznej systemu Azure w warstwie Premium dla wystąpienia Redis.
@@ -26,7 +26,13 @@ Usługa Azure cache for Redis oferuje Trwałość Redis przy użyciu następują
 * Trwałość **RDB** — w przypadku skonfigurowania trwałości pliku RDB (Redis Database) usługa Azure cache for Redis utrzymuje migawkę pamięci podręcznej platformy Azure dla Redis w formacie binarnym Redis na dysk na podstawie konfigurowalnej częstotliwości kopii zapasowych. W przypadku wystąpienia krytycznego zdarzenia, które powoduje wyłączenie zarówno podstawowej, jak i pamięci podręcznej repliki, pamięć podręczną jest tworzona przy użyciu najnowszej migawki. Dowiedz się więcej o [zaletach](https://redis.io/topics/persistence#rdb-advantages) i [wadach](https://redis.io/topics/persistence#rdb-disadvantages) trwałości RDB.
 * **Kopia zapasowa AOF trwałość** — w przypadku skonfigurowania trwałości kopia zapasowa AOF (dołączania tylko pliku) pamięć podręczna systemu Azure dla Redis zapisuje każdą operację zapisu do dziennika, który jest zapisywany co najmniej raz na sekundę na koncie usługi Azure Storage. W przypadku wystąpienia krytycznego zdarzenia, które powoduje wyłączenie zarówno podstawowej, jak i pamięci podręcznej repliki, pamięć podręczną jest tworzona przy użyciu przechowywanych operacji zapisu. Dowiedz się więcej o [zaletach](https://redis.io/topics/persistence#aof-advantages) i [wadach](https://redis.io/topics/persistence#aof-disadvantages) trwałości kopia zapasowa AOF.
 
-Trwałość jest konfigurowana z **nowego bloku Azure cache for Redis** podczas tworzenia pamięci podręcznej oraz w **menu zasobów** dla istniejących pamięci podręcznych w warstwie Premium.
+Trwałość zapisuje dane Redis do konta usługi Azure Storage, którego jesteś własnością i którymi zarządzasz. Można skonfigurować z nowego bloku **Azure cache for Redis** podczas tworzenia pamięci podręcznej i w **menu zasób** dla istniejących pamięci podręcznych Premium.
+
+> [!NOTE]
+> 
+> Usługa Azure Storage automatycznie szyfruje dane, gdy są utrwalane. Do szyfrowania można użyć własnych kluczy. Aby uzyskać więcej informacji, zobacz [klucze zarządzane przez klienta z Azure Key Vault](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault).
+> 
+> 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
@@ -38,7 +44,7 @@ Kroki opisane w następnej sekcji opisują sposób konfigurowania trwałości Re
 
 ## <a name="enable-redis-persistence"></a>Włącz Trwałość Redis
 
-Trwałość Redis jest włączona w bloku **trwałość danych Redis** , wybierając pozycję **RDB** lub **kopia zapasowa AOF** trwałość. W przypadku nowych pamięci podręcznych ten blok jest dostępny w procesie tworzenia pamięci podręcznej, zgodnie z opisem w poprzedniej sekcji. W przypadku istniejących pamięci podręcznych blok **trwałości danych Redis** jest dostępny z **menu zasób** dla pamięci podręcznej.
+Trwałość Redis jest włączona w bloku **trwałość danych** przez wybranie opcji trwałość **RDB** lub **kopia zapasowa AOF** . W przypadku nowych pamięci podręcznych ten blok jest dostępny w procesie tworzenia pamięci podręcznej, zgodnie z opisem w poprzedniej sekcji. W przypadku istniejących pamięci podręcznych blok **trwałość danych** jest dostępny z **menu zasób** dla pamięci podręcznej.
 
 ![Ustawienia Redis][redis-cache-settings]
 
@@ -125,7 +131,7 @@ W przypadku trwałości programu RDB i kopia zapasowa AOF:
 * W przypadku skalowania do mniejszego rozmiaru i braku miejsca na mniejszym rozmiarze do przechowywania wszystkich danych z ostatniej kopii zapasowej klucze zostaną wykluczone podczas procesu przywracania, zazwyczaj przy użyciu zasad wykluczania [AllKeys-LRU](https://redis.io/topics/lru-cache) .
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Czy mogę zmienić częstotliwość tworzenia kopii zapasowych RDB po utworzeniu pamięci podręcznej?
-Tak, możesz zmienić częstotliwość tworzenia kopii zapasowych dla trwałości RDB w bloku **trwałości danych Redis** . Aby uzyskać instrukcje, zobacz Konfigurowanie trwałości Redis.
+Tak, możesz zmienić częstotliwość tworzenia kopii zapasowych dla trwałości RDB w bloku **trwałość danych** . Aby uzyskać instrukcje, zobacz Konfigurowanie trwałości Redis.
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Dlaczego jeśli mam częstotliwość tworzenia kopii zapasowych RDB 60 minut między kopiami zapasowymi jest więcej niż 60 minut?
 Interwał częstotliwości kopii zapasowych w przypadku trwałości RDB nie zostanie uruchomiony do momentu pomyślnego zakończenia poprzedniego procesu tworzenia kopii zapasowej. Jeśli częstotliwość tworzenia kopii zapasowych wynosi 60 minut, a proces tworzenia kopii zapasowej trwa 15 minut, kolejna kopia zapasowa nie zostanie uruchomiona do 75 minut od czasu rozpoczęcia poprzedniej kopii zapasowej.

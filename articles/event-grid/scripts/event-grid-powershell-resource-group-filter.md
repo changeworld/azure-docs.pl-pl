@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell — Subskrybuj grupę zasobów
-description: Przykładowy skrypt Azure Event Grid & Azure PowerShell Zasubskrybuj grupę zasobów i przefiltruj według zasobu
+description: Ten artykuł zawiera przykładowy skrypt Azure PowerShell, który pokazuje, jak subskrybować zdarzenia Event Grid dla grupy zasobów i odfiltrować zasób.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -9,14 +9,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 222bf6fb9297afda038b38d3fb528711ad03a3ca
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5d41bfec5978d1baf38eaf1608f50375170d9929
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790730"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720609"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>Subskrybowanie zdarzeń dla grupy zasobów i filtrowanie według zasobu przy użyciu programu PowerShell
 

@@ -3,15 +3,15 @@ title: Informacje o wersji i pobraniu emulatora usługi Azure Cosmos
 description: Zapoznaj się z informacjami o wersji emulatora usługi Azure Cosmos dla różnych wersji i Pobierz informacje.
 ms.service: cosmos-db
 ms.topic: tutorial
-author: markjbrown
-ms.author: mjbrown
+author: milismsft
+ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: e14ee617aca20fc18226651acfadab6ab2bdd939
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3878f6d01a2adfff2adc6a22aad20a5f83992b8d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445306"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719691"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos emulator — informacje o wersji i pobrania
 
@@ -25,6 +25,10 @@ W tym artykule przedstawiono informacje o wersji emulatora usługi Azure Cosmos 
 |**Wprowadzenie**|[Opracowywanie lokalnie za pomocą emulatora usługi Azure Cosmos](local-emulator.md)|
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="290"></a>2.9.0
+
+- W tej wersji dodano opcję ustawiania spójności spójnego prefiksu i zwiększenia maksymalnych limitów dla użytkowników i uprawnień.
 
 ### <a name="272"></a>2.7.2
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979339"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720660"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Administratorzy klasycznej subskrypcji platformy Azure
 
@@ -62,7 +62,7 @@ Aby uzyskać więcej informacji, jak dodać użytkownika-gościa do katalogu, zo
 
 ### <a name="differences-for-guest-users"></a>Różnice dla użytkowników-Gości
 
-Użytkownicy-Goście, którym przypisano rolę współadministrator, mogą zobaczyć pewne różnice w porównaniu z użytkownikami należącymi do roli współadministratora. Rozważmy następujący scenariusz:
+Użytkownicy-Goście, którym przypisano rolę współadministrator, mogą zobaczyć pewne różnice w porównaniu z użytkownikami należącymi do roli współadministratora. Poniżej przedstawiono przykładowy scenariusz:
 
 - Użytkownik A za pomocą konta usługi Azure AD (konto służbowe) to administrator usługi dla subskrypcji platformy Azure.
 - Użytkownik B ma konto Microsoft.
@@ -99,29 +99,11 @@ Aby uzyskać informacje, które porównują użytkowników i użytkowników-Goś
 
 Tylko administrator konta może zmienić administratora usługi dla subskrypcji. Domyślnie podczas rejestrowania się w celu uzyskania subskrypcji platformy Azure administrator usługi jest taki sam jak administrator konta. Użytkownik z rolą administratora konta nie ma dostępu do Azure Portal. Użytkownik z rolą administratora usługi ma pełny dostęp do Azure Portal. Jeśli administrator konta i administrator usługi są tego samego użytkownika, a administrator usługi zostanie zmieniony na innego użytkownika, administrator konta utraci dostęp do Azure Portal. Jednak administrator konta zawsze może użyć centrum kont, aby zmienić administratora usługi z powrotem na siebie.
 
-Istnieją dwa sposoby zmiany administratora usługi. Można zmienić w centrum **Azure Portal** lub **konta**.
-
-### <a name="azure-portal"></a>Portal Azure
-
-1. Upewnij się, że scenariusz jest obsługiwany, sprawdzając ograniczenia dotyczące zmiany administratorów usługi.
-
-1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com) jako administrator konta.
-
-1. Otwórz blok [Subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) i wybierz subskrypcję.
-
-1. Kliknij pozycję **Właściwości**.
-
-    ![Zrzut ekranu przedstawiający administratora konta](./media/classic-administrators/account-admin.png)
-
-1. W górnej części kliknij pozycję **administrator usługi** , aby otworzyć okienko administrator usługi.
-
-    Jeśli przycisk administratora usługi jest wyłączony, nie masz uprawnień. Tylko użytkownik będący administratorem konta może zmienić administratora usługi.
-
-1. Wybierz nowego administratora usługi, a następnie kliknij przycisk **Zapisz**.
+Wykonaj następujące kroki, aby zmienić administratora usługi w **centrum konta**.
 
 ### <a name="account-center"></a>Centrum konta
 
-1. Upewnij się, że scenariusz jest obsługiwany, sprawdzając ograniczenia dotyczące zmiany administratorów usługi.
+1. Upewnij się, że scenariusz jest obsługiwany, sprawdzając [ograniczenia dotyczące zmiany administratora usługi](#limitations-for-changing-the-service-administrator).
 
 1. Zaloguj się do [centrum konta](https://account.windowsazure.com/subscriptions) jako administrator konta.
 

@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008539"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714480"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
 
@@ -30,10 +30,10 @@ Za pomocą raportów usługi Azure Active Directory (Azure AD) możesz uzyskać 
 
 Architektura raportowania składa się z następujących składników:
 
-- **Aktywność** 
+- **Działanie** 
     - **Logowania** — [raport logowania](concept-sign-ins.md) zawiera informacje na temat użycia zarządzanych aplikacji i działań związanych z logowaniem użytkowników.
     - **Dzienniki inspekcji** — udostępnia możliwość śledzenia wszystkich zmian wprowadzanych przez różne funkcje usługi Azure AD za pomocą dzienników. Przykłady dzienników inspekcji obejmują zmiany wprowadzone w zasobach w usłudze Azure AD, takie jak dodawanie lub usuwanie użytkowników, aplikacji, grup, ról i zasad.
-- **Zabezpieczenia** 
+- **Bezpieczeństwo** 
     - **Ryzykowne logowania** — [ryzykowne logowanie](concept-risky-sign-ins.md) jest wskaźnikiem próby logowania, które mogło zostać wykonane przez kogoś, kto nie jest uprawnionym właścicielem konta użytkownika. 
     - **Użytkownicy oflagowani do ryzyka** — [ryzykowny użytkownik](concept-user-at-risk.md) jest wskaźnikiem konta użytkownika, które mogło zostać naruszone.
 
@@ -81,7 +81,7 @@ Dane inspekcji można filtrować w następujących polach:
 - Kategoria
 - Działanie
 - Stan
-- Środowisko docelowe
+- Cel
 - Zainicjowane przez (aktor)
 - Zakres dat
 
@@ -89,7 +89,7 @@ Dane inspekcji można filtrować w następujących polach:
 
 Filtr **usługi** umożliwia wybranie z listy rozwijanej następujących usług:
 
-- Wszystkie
+- Wszystko
 - Przeglądy dostępu
 - Aprowizacja kont 
 - Logowanie jednokrotne aplikacji
@@ -98,7 +98,7 @@ Filtr **usługi** umożliwia wybranie z listy rozwijanej następujących usług:
 - Dostęp warunkowy
 - Katalog podstawowy
 - Zarządzanie upoważnieniami
-- Identity Protection
+- Ochrona tożsamości
 - Zaproszeni użytkownicy
 - PROGRAMÓW
 - Samoobsługowe zarządzanie grupami
@@ -107,7 +107,7 @@ Filtr **usługi** umożliwia wybranie z listy rozwijanej następujących usług:
 
 Filtr **Kategoria** umożliwia wybranie jednego z następujących filtrów:
 
-- Wszystkie
+- Wszystko
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
@@ -130,7 +130,7 @@ Listę wszystkich działań związanych z inspekcją można uzyskać przy użyci
 
 Filtr **stanu** umożliwia filtrowanie na podstawie stanu operacji inspekcji. Może to być jeden z następujących stanów:
 
-- Wszystkie
+- Wszystko
 - Powodzenie
 - Niepowodzenie
 
@@ -144,7 +144,7 @@ Możliwe wartości:
 - 1 miesiąc
 - 7 dni
 - 24 godziny
-- Niestandardowy
+- Niestandardowe
 
 Po wybraniu niestandardowego przedziału czasu możesz skonfigurować godzinę rozpoczęcia i zakończenia.
 

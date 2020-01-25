@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 3579aee46c610e5bb3efc0942944bbfc3fcb801d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790519"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720439"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Obsługa protokołu dla nagłówków HTTP w usłudze Azure front-drzwi
 W tym artykule opisano protokół, który obsługuje usługa front-drzwi z częściami ścieżki wywołania (Zobacz obraz). Poniższe sekcje zawierają więcej informacji na temat nagłówków HTTP obsługiwanych przez usługę front-drzwi.
@@ -38,12 +38,12 @@ Usługa front-drzwi obejmuje nagłówki z przychodzącego żądania, chyba że z
 | Korzystając |  Za pośrednictwem: 1,1 Azure </br> Przód drzwi dodaje wersję HTTP klienta, a następnie *platformę Azure* jako wartość dla nagłówka Via. Oznacza to, że wersja HTTP klienta i drzwi przednich były pośrednim odbiorcą dla żądania między klientem a zapleczem.  |
 | X-Azure-ClientIP | X-Azure-ClientIP: 127.0.0.1 </br> Reprezentuje adres IP klienta skojarzony z przetwarzanym żądaniem. Na przykład żądanie pochodzące z serwera proxy może dodać nagłówek X-Forward-for, aby wskazać adres IP oryginalnego obiektu wywołującego. |
 | X-Azure-SocketIP |  X-Azure-SocketIP: 127.0.0.1 </br> Reprezentuje adres IP gniazda skojarzonego z połączeniem TCP, z którego pochodzi bieżące żądanie. Adres IP klienta żądania może nie być taki sam jak adres IP gniazda, ponieważ może zostać zawolnie nadpisany przez użytkownika.|
-| X-Azure-ref |  X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> Unikatowy ciąg odwołania, który identyfikuje żądanie obsługiwane przez tylne drzwi. Jest on używany do wyszukiwania dzienników dostępu i do rozwiązywania problemów.|
+| X-Azure-Ref |  X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> Unikatowy ciąg odwołania, który identyfikuje żądanie obsługiwane przez tylne drzwi. Jest on używany do wyszukiwania dzienników dostępu i do rozwiązywania problemów.|
 | X-Azure-RequestChain |  X-Azure-RequestChain: przeskoki = 1 </br> Nagłówek, za pomocą którego przede wszystkim wykrywa pętle żądań, a użytkownicy nie powinni na niej korzystać. |
 | X-Forwarded-For | X-Forwarded-For: 127.0.0.1 </br> Pole nagłówka HTTP X-Forwarded-For (XFF) często identyfikuje źródłowy adres IP klienta łączącego się z serwerem sieci Web za pośrednictwem serwera proxy HTTP lub modułu równoważenia obciążenia. Jeśli istnieje nagłówek XFF, następnie drzwi do przodu dołącza do niego adres IP gniazda klienta lub dodaje nagłówek XFF z adresem IP gniazda klienta. |
-| X-Forward-Host | X-Forwarded-Host: contoso.azurefd.net </br> Pole nagłówka HTTP X-forwardd-host jest wspólną metodą służącą do identyfikowania oryginalnego hosta żądanego przez klienta w nagłówku żądania HTTP hosta. Wynika to z faktu, że nazwa hosta z drzwi przednich może się różnić w przypadku serwera wewnętrznej bazy danych obsługującego żądanie. |
-| X-Forwarded-proto | X-Forwarded-proto: http </br> Pole nagłówka HTTP X-Forwarded-proto jest często używane do identyfikowania źródłowego protokołu żądania HTTP, ponieważ przód drzwi na podstawie konfiguracji mogą komunikować się z zapleczem przy użyciu protokołu HTTPS. Jest to prawdziwe, nawet jeśli żądanie do zwrotnego serwera proxy jest HTTP. |
-| X-FD-HealthProbe | Pole nagłówka HTTP X-FD-HealthProbe służy do identyfikowania sondy kondycji z czołowych drzwi. Jeśli ten nagłówek ma ustawioną wartość 1, żądanie jest sondą kondycji. Możesz użyć, gdy chcesz mieć ścisły dostęp z paticular zewnętrznych drzwi przy użyciu pola nagłówka X-forwardd-host. |
+| X-Forwarded-Host | X-Forwarded-Host: contoso.azurefd.net </br> Pole nagłówka HTTP X-forwardd-host jest wspólną metodą służącą do identyfikowania oryginalnego hosta żądanego przez klienta w nagłówku żądania HTTP hosta. Wynika to z faktu, że nazwa hosta z drzwi przednich może się różnić w przypadku serwera wewnętrznej bazy danych obsługującego żądanie. |
+| X-Forwarded-Proto | X-Forwarded-proto: http </br> Pole nagłówka HTTP X-Forwarded-proto jest często używane do identyfikowania źródłowego protokołu żądania HTTP, ponieważ przód drzwi na podstawie konfiguracji mogą komunikować się z zapleczem przy użyciu protokołu HTTPS. Jest to prawdziwe, nawet jeśli żądanie do zwrotnego serwera proxy jest HTTP. |
+| X-FD-HealthProbe | Pole nagłówka HTTP X-FD-HealthProbe służy do identyfikowania sondy kondycji z czołowych drzwi. Jeśli ten nagłówek ma ustawioną wartość 1, żądanie jest sondą kondycji. Można użyć, gdy chcesz ścisły dostęp z konkretnych drzwi z przodu przy użyciu pola nagłówka X-forwardd-host. |
 
 ## <a name="front-door-service-to-client"></a>Usługa front-drzwi do klienta
 
@@ -51,7 +51,7 @@ Wszystkie nagłówki wysyłane do przednich drzwi z zaplecza są również przek
 
 | Nagłówek  | Przykład |
 | ------------- | ------------- |
-| X-Azure-ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> To jest unikatowy ciąg odwołania, który identyfikuje żądanie obsługiwane przez tylne drzwi. Jest to ważne w przypadku rozwiązywania problemów, ponieważ służy do wyszukiwania dzienników dostępu.|
+| X-Azure-Ref |  *X-Azure-ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> To jest unikatowy ciąg odwołania, który identyfikuje żądanie obsługiwane przez tylne drzwi. Jest to ważne w przypadku rozwiązywania problemów, ponieważ służy do wyszukiwania dzienników dostępu.|
 
 ## <a name="next-steps"></a>Następne kroki
 

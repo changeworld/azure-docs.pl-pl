@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 6324fd0e2957aea46fb5876aa8c91f0906205ccc
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ec3a7b6420144278df66f693d9fd9933449b3d80
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76694236"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748958"
 ---
 ## <a name="trigger"></a>Wyzwalacz
 
@@ -394,7 +394,7 @@ Plik [host. JSON](../articles/azure-functions/functions-host-json.md#eventhub) z
 
 ## <a name="output"></a>Dane wyjściowe
 
-Użyj powiązania danych wyjściowych Event Hubs do zapisywania zdarzeń w strumieniu zdarzeń. Musisz mieć uprawnienie do wysłania do centrum zdarzeń, aby zapisywać w nim zdarzenia.
+Użyj powiązania danych wyjściowych Event Hubs do zapisywania zdarzeń w strumieniu zdarzeń. Użytkownik musi mieć uprawnienia do wysyłania do centrum zdarzeń w celu zapisywania do niego zdarzeń.
 
 Przed podjęciem próby wdrożenia powiązania wyjściowego upewnij się, że istnieją odwołania do wymaganych pakietów.
 
@@ -699,6 +699,6 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
-|`maxBatchSize`|64|Maksymalna liczba zdarzeń odebranych na pętlę odbierania.|
-|`prefetchCount`|nd.|Domyślna liczba pobieranych przed pobraniem używana przez bazowe `EventProcessorHost`.|
+|`maxBatchSize`|10|Maksymalna liczba zdarzeń odebranych na pętlę odbierania.|
+|`prefetchCount`|300|Domyślna liczba pobieranych przed pobraniem używana przez bazowe `EventProcessorHost`.|
 |`batchCheckpointFrequency`|1|Liczba partii zdarzeń do przetworzenia przed utworzeniem punktu kontrolnego kursora centrum EventHub.|

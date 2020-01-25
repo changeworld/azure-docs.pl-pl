@@ -3,20 +3,20 @@ title: Równoległy zbiorczy import danych w tabeli partycji SQL - zespołu dany
 description: Twórz partycjonowane tabele, szybkie równoległy zbiorczy importowania danych do bazy danych programu SQL Server.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 253f73cc58292778d88417b693c157fcbd7d92bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61428306"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721340"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Tworzenia i optymalizowania tabele, szybkie równoległe importowania danych do programu SQL Server na Maszynie wirtualnej platformy Azure
 
@@ -57,7 +57,7 @@ Poniższy przykład tworzy nową bazę danych z trzech grup plików innych niż 
 ## <a name="create-a-partitioned-table"></a>Tworzenie tabeli partycjonowanej
 Aby utworzyć partycjonowane tabele według schematu danych mapowany do grupy plików bazy danych utworzone w poprzednim kroku, należy najpierw utworzyć funkcji partycji i schematu. Jeśli dane są zbiorczego importowania do tabel podzielonym na partycje, rekordy są rozłożone grup plików według schematu partycji, zgodnie z poniższym opisem.
 
-### <a name="1-create-a-partition-function"></a>1. Tworzenie funkcji partycji
+### <a name="1-create-a-partition-function"></a>1. Utwórz funkcję partycji
 [Tworzenie funkcji partycji](https://msdn.microsoft.com/library/ms187802.aspx) tę funkcję, definiuje zakres wartości/granic mają zostać uwzględnione w każdej tabeli poszczególnych partycji, na przykład, aby ograniczyć partycje według miesięcy (niektóre\_daty/godziny\_pole) w roku 2013:
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
@@ -99,7 +99,7 @@ Aby uzyskać więcej informacji, zobacz [tworzenie partycjonowane tabele i indek
 * [Instrukcja ALTER database](https://msdn.microsoft.com/library/bb522682.aspx) zmianę schematu rejestrowanie transakcji na BULK_LOGGED, aby zminimalizować obciążenie rejestrowania na przykład:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Aby przyspieszyć ładowanie danych, należy uruchomić operacji importu zbiorczego równolegle. Aby uzyskać wskazówki dotyczące zbiorczego przyspieszając w ten sposób importowania danych big Data do bazy danych programu SQL Server, zobacz [ładowanie 1TB w mniej niż 1 godzinę](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
+* Aby przyspieszyć ładowanie danych, należy uruchomić operacji importu zbiorczego równolegle. Aby uzyskać porady dotyczące przyspieszania importowania zbiorczego danych Big Data do baz danych SQL Server, zobacz [obciążenie 1 TB w czasie krótszym niż 1 godzina](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
 
 Poniższy skrypt programu PowerShell znajduje się przykład danych równoległe ładowanie przy użyciu narzędzia BCP.
 

@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 856c249b72e9e0ff8667d10821ad14b3432b0775
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1cc3664ff8472a6b5a73fa89588611f59ac27e6a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509193"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720273"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Często zadawane pytania dotyczące usługi Azure Network Watcher
 Usługa [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) udostępnia zestaw narzędzi do monitorowania, diagnozowania, wyświetlania metryk i włączania i wyłączania dzienników dla zasobów w sieci wirtualnej platformy Azure. W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące usługi.
 
 ## <a name="general"></a>Ogólne
 
-### <a name="what-is-network-watcher"></a>Co to jest usługa Network Watcher?
+### <a name="what-is-network-watcher"></a>Co to jest Network Watcher?
 Network Watcher służy do monitorowania i naprawiania kondycji sieci składników IaaS (infrastruktura jako usługa), w tym Virtual Machines, sieci wirtualnych, bram aplikacji, modułów równoważenia obciążenia i innych zasobów w sieci wirtualnej platformy Azure. Nie jest to rozwiązanie do monitorowania infrastruktury PaaS (platforma jako usługa) ani pobierania analiz sieci Web i aplikacji mobilnych.
 
 ### <a name="what-tools-does-network-watcher-provide"></a>Jakie narzędzia udostępnia Network Watcher?
@@ -71,9 +71,9 @@ Tylko przechwytywanie pakietów, rozwiązywanie problemów z połączeniami i mo
 ### <a name="what-does-nsg-flow-logs-do"></a>Co robią dzienniki przepływu sieciowej grupy zabezpieczeń?
 Zasoby sieciowe platformy Azure można łączyć i zarządzać nimi za pomocą [sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń)](https://docs.microsoft.com/azure/virtual-network/security-overview). Dzienniki przepływu sieciowej grupy zabezpieczeń umożliwiają rejestrowanie 5-informacje o przepływie krotki na cały ruch przez sieciowych grup zabezpieczeń. Dzienniki nieprzetworzonych przepływów są zapisywane na koncie usługi Azure Storage, z poziomu którego mogą być przetwarzane, analizowane, badane lub eksportowane zgodnie z wymaganiami.
 
-### <a name="how-do-i-use-nsg-flow-logs-on-a-storage-account-with-a-firewall"></a>Jak mogę użyć dzienników przepływu sieciowej grupy zabezpieczeń na koncie magazynu z zaporą?
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>Jak mogę użyć dzienników przepływu sieciowej grupy zabezpieczeń z kontem magazynu za zaporą?
 
-Aby korzystać z konta magazynu z zaporą, należy podać wyjątek dla zaufanych usług firmy Microsoft w celu uzyskania dostępu do konta magazynu:
+Aby użyć konta magazynu za zaporą, musisz podać wyjątek dla zaufanych usług firmy Microsoft, aby uzyskać dostęp do konta magazynu:
 
 * Przejdź do konta magazynu, wpisując nazwę konta magazynu w wyszukiwaniu globalnym w portalu lub na [stronie konta magazynu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) .
 * W sekcji **USTAWIENIA** wybierz pozycję **Zapory i sieci wirtualne**
@@ -83,9 +83,9 @@ Aby korzystać z konta magazynu z zaporą, należy podać wyjątek dla zaufanych
 
 Możesz sprawdzić dzienniki magazynu po kilku minutach — powinna być widoczna zaktualizowana sygnatura czasowa lub utworzony nowy plik JSON.
 
-### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints-for-storage"></a>Jak mogę użyć dzienników przepływu sieciowej grupy zabezpieczeń z punktami końcowymi usługi dla magazynu?
+### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Jak mogę użyć dzienników przepływu sieciowej grupy zabezpieczeń z kontem magazynu za punktem końcowym usługi?
 
-Zapoznaj się z [samouczkiem dotyczącym włączania punktów końcowych usługi](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint). 
+Dzienniki przepływu sieciowej grupy zabezpieczeń są compantible z punktami końcowymi usługi, bez konieczności dodatkowej konfiguracji. Zapoznaj się z [samouczkiem dotyczącym włączania punktów końcowych usługi](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) w sieci wirtualnej.
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Jaka jest różnica między dziennikami przepływów w wersjach 1 & 2?

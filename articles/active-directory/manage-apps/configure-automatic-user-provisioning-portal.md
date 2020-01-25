@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e776ce8a455f2a5b453e23ebb996de9ddb5175a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430198"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711966"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw w Azure Portal
 
@@ -38,7 +38,7 @@ Za pomocą portalu Azure Active Directory można wyświetlać wszystkie aplikacj
 1. Wybierz dowolną aplikację, aby załadować jej okienko zasobów, w której można wyświetlać raporty i zarządzać ustawieniami aplikacji.
 1. Wybierz opcję **aprowizacji** , aby zarządzać ustawieniami aprowizacji konta użytkownika dla wybranej aplikacji.
 
-   ![Ekran aprowizacji do zarządzania ustawieniami aprowizacji konta użytkownika](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![Ekran aprowizacji do zarządzania ustawieniami aprowizacji konta użytkownika](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Tryby aprowizacji
 
@@ -68,7 +68,7 @@ Rozwiń węzeł **mapowania** , aby wyświetlić i edytować atrybuty użytkowni
 
 Istnieje wstępnie skonfigurowany zestaw mapowań między obiektami użytkowników usługi Azure AD i obiektami użytkowników aplikacji SaaS. Niektóre aplikacje zarządzają innymi typami obiektów, takimi jak grupy lub kontakty. Wybierz mapowanie w tabeli, aby otworzyć Edytor mapowania po prawej stronie, gdzie można je przeglądać i dostosowywać.
 
-![Pokazuje ekran mapowania atrybutów](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![Pokazuje ekran mapowania atrybutów](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 Obsługiwane dostosowania obejmują:
 
@@ -88,4 +88,4 @@ Jeśli Inicjowanie obsługi jest włączane po raz pierwszy dla aplikacji, Włą
 
 Zmień **stan aprowizacji** na **wyłączony** , aby wstrzymać usługę aprowizacji. W tym stanie platforma Azure nie tworzy, nie aktualizuje ani nie usuwa żadnych obiektów użytkowników ani grup w aplikacji. Zmień stan z powrotem na **włączony** , a usługa odbiera w miejscu, w którym została przerwana.
 
-**Wyczyść bieżący stan i ponownie uruchom synchronizację** wyzwala cykl początkowy. Następnie usługa ponownie oceni wszystkich użytkowników w systemie źródłowym i określi, czy znajdują się one w zakresie aprowizacji. Może to być przydatne, gdy aplikacja jest obecnie w kwarantannie lub trzeba wprowadzić zmiany mapowań atrybutów. Należy zauważyć, że cykl początkowy trwa dłużej niż typowy przyrostowy cykl ze względu na liczbę obiektów, które należy oszacować. Więcej informacji o wydajności początkowych i przyrostowych cykli można znaleźć [tutaj.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) 
+**Wyczyść bieżący stan i ponownie uruchom synchronizację** wyzwala cykl początkowy. Następnie usługa ponownie oceni wszystkich użytkowników w systemie źródłowym i określi, czy znajdują się one w zakresie aprowizacji. Może to być przydatne, gdy aplikacja jest obecnie w kwarantannie lub trzeba wprowadzić zmiany mapowań atrybutów. Należy zauważyć, że cykl początkowy trwa dłużej niż typowy przyrostowy cykl ze względu na liczbę obiektów, które należy oszacować. Więcej informacji o wydajności początkowych i przyrostowych cykli można znaleźć [tutaj](application-provisioning-when-will-provisioning-finish-specific-user.md). 

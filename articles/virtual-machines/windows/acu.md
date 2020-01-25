@@ -2,24 +2,21 @@
 title: Przegląd jednostki obliczeniowej platformy Azure
 description: Przegląd koncepcji jednostek obliczeniowych platformy Azure dla systemu Windows. ACU umożliwia porównanie wydajności procesora CPU w jednostkach SKU platformy Azure.
 services: virtual-machines-windows
-documentationcenter: ''
 author: jonbeck7
-manager: gwallace
-editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: sizes
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: e977196e5a42eeca66fa64e17eb6e53f28a78720
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 79cfb5db7e6ca927b3a45e36aa2483cf183125c0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033705"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721612"
 ---
 # <a name="azure-compute-unit-acu"></a>Jednostka obliczeniowa platformy Azure (ACU)
 

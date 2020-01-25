@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9b96969027431f289e366b150fbfc6a62ee6a908
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819010"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719912"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Wprowadzenie do Azure SQL Database inspekcji wystąpienia zarządzanego
 

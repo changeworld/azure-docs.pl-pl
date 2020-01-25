@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: b33366b65fed0042eb3024c2264bce1c4a1c4c1d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651633"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715670"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Aplikacje zarządzane przez platformę Azure z powiadomieniami
 
@@ -67,9 +67,9 @@ Aby uzyskać więcej informacji, zobacz [Tworzenie oferty aplikacji platformy Az
 ## <a name="event-triggers"></a>Wyzwalacze zdarzeń
 W poniższej tabeli opisano wszystkie możliwe kombinacje elementów EventType i ProvisioningState oraz ich wyzwalacze:
 
-Typ zdarzenia | ProvisioningState | Wyzwalacz dla powiadomienia
+Klasę | provisioningState | Wyzwalacz dla powiadomienia
 ---|---|---
-PUT | Zaakceptowano | Zarządzana Grupa zasobów została utworzona i została pomyślnie zastawiona po rozpoczęciu aplikacji (przed rozpoczęciem wdrażania w ramach zarządzanej grupy zasobów).
+PUT | Przyjmować | Zarządzana Grupa zasobów została utworzona i została pomyślnie zastawiona po rozpoczęciu aplikacji (przed rozpoczęciem wdrażania w ramach zarządzanej grupy zasobów).
 PUT | Powodzenie | Pełna aprowizacji aplikacji zarządzanej zakończyła się pomyślnie po UMIESZCZENIU.
 PUT | Niepowodzenie | Niepowodzenie inicjowania aprowizacji wystąpienia aplikacji w dowolnym momencie.
 PATCH | Powodzenie | Po pomyślnej poprawek w wystąpieniu aplikacji zarządzanej w celu zaktualizowania tagów, zasad dostępu JIT lub tożsamości zarządzanej.
@@ -179,17 +179,17 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 Parametr | Opis
 ---|---
 eventType | Typ zdarzenia, które wyzwoliło powiadomienie. (Na przykład PUT, PATCH, DELETE.)
-applicationId | W pełni kwalifikowany identyfikator zasobu zarządzanej aplikacji, dla którego zostało wyzwolone powiadomienie.
+Identyfikator | W pełni kwalifikowany identyfikator zasobu zarządzanej aplikacji, dla którego zostało wyzwolone powiadomienie.
 eventTime | Sygnatura czasowa zdarzenia, które wyzwoliło powiadomienie. (Data i godzina w formacie UTC ISO 8601).
 provisioningState | Stan aprowizacji wystąpienia aplikacji zarządzanej. (Na przykład pomyślne, Niepowodzenie, usunięcie, usunięcie.)
 error | *Określany tylko wtedy, gdy provisioningState się nie powiodło*. Zawiera kod błędu, komunikat i szczegóły problemu, który spowodował awarię.
 applicationDefinitionId | *Określony tylko dla aplikacji zarządzanych przez katalog usług*. Reprezentuje w pełni kwalifikowany identyfikator zasobu definicji aplikacji, dla którego Zainicjowano obsługę administracyjną wystąpienia aplikacji zarządzanej.
-plan | *Określona tylko dla aplikacji zarządzanych przez portal Azure Marketplace*. Reprezentuje wydawcę, ofertę, jednostkę SKU i wersję wystąpienia aplikacji zarządzanej.
+zamierza | *Określona tylko dla aplikacji zarządzanych przez portal Azure Marketplace*. Reprezentuje wydawcę, ofertę, jednostkę SKU i wersję wystąpienia aplikacji zarządzanej.
 billingDetails | *Określona tylko dla aplikacji zarządzanych przez portal Azure Marketplace.* Szczegóły rozliczeń wystąpienia aplikacji zarządzanej. Zawiera resourceUsageId, którego można użyć do wysyłania zapytań do witryny Azure Marketplace w celu uzyskania szczegółów dotyczących użycia.
 
 ## <a name="endpoint-authentication"></a>Uwierzytelnianie punktu końcowego
 Aby zabezpieczyć punkt końcowy elementu webhook i zapewnić autentyczność powiadomienia:
-1. Podaj parametr zapytania na górze identyfikatora URI elementu webhook, np.: https://your-endpoint.com?sig=Guid. W przypadku każdego powiadomienia Sprawdź, czy parametr zapytania `sig` ma oczekiwaną wartość `Guid`.
+1. Podaj parametr zapytania na górze identyfikatora URI elementu webhook, np.: https\://Your-Endpoint.com? SIG = GUID. W przypadku każdego powiadomienia Sprawdź, czy parametr zapytania `sig` ma oczekiwaną wartość `Guid`.
 2. Wydaj element GET w wystąpieniu aplikacji zarządzanej przy użyciu aplikacji. Sprawdź, czy provisioningState pasuje do provisioningState powiadomienia, aby zapewnić spójność.
 
 ## <a name="notification-retries"></a>Ponowne próby powiadomień

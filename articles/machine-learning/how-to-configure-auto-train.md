@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c1ebedcf93d66c01c80f7f40171a7aa27441488d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277985"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722156"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -187,11 +187,11 @@ Metryka podstawowa określa metrykę, która ma być używana podczas uczenia mo
 
 Zapoznaj się z określonymi definicjami tych metryk w temacie [Omówienie zautomatyzowanych wyników uczenia maszynowego](how-to-understand-automated-ml.md).
 
-### <a name="data-preprocessing--featurization"></a>Przetwarzanie wstępne danych & cechowania
+### <a name="data-featurization"></a>Cechowania danych
 
-W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są [automatycznie skalowane i znormalizowane](concept-automated-ml.md#preprocess) , aby ułatwić *określonym* algorytmom, które są wrażliwe na funkcje różnej skali.  Można jednak włączyć dodatkowe przetwarzanie wstępne/cechowania, na przykład brakujące wartości, które nie przypisywania, kodowania i transformacji. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-create-portal-experiments.md#preprocess).
+W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są [automatycznie skalowane i znormalizowane](concept-automated-ml.md#preprocess) , aby ułatwić *określonym* algorytmom, które są wrażliwe na funkcje różnej skali.  Można jednak również włączyć dodatkowe cechowania, takie jak brakujące wartości, które nie przypisywania, kodowania i transformacji. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-create-portal-experiments.md#preprocess).
 
-Aby włączyć tę cechowania, określ `"preprocess": True` dla [klasy`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+Aby włączyć tę cechowania, określ `"featurization": 'auto'` dla [klasy`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
 > [!NOTE]
 > Zautomatyzowane kroki wstępnego przetwarzania w usłudze Machine Learning (normalizacja funkcji, obsługa brakujących danych, konwertowanie tekstu na liczbowe itp.) staje się częścią modelu źródłowego. Przy użyciu modelu dla prognoz te same kroki przetwarzania wstępnego zastosowane podczas uczenia są automatycznie stosowane do danych wejściowych.
@@ -240,7 +240,7 @@ Modele kompletów są domyślnie włączone i pojawiają się jako ostateczne it
 
 Istnieje wiele argumentów domyślnych, które mogą być podane jako `kwargs` w obiekcie `AutoMLConfig`, aby zmienić domyślne zachowanie wbudowanego stosu.
 
-* `stack_meta_learner_type`: meta-uczyć jest modelem przeszkolonym w danych wyjściowych poszczególnych modeli heterogenicznych. W przypadku zadań klasyfikacji są `LogisticRegression` domyślne, czyli `LogisticRegressionCV`, jeśli włączono funkcję wzajemnego sprawdzania poprawności) i `ElasticNet` do zadań regresji/prognozowania (lub `ElasticNetCV`, jeśli włączono funkcję wzajemnego sprawdzania poprawności). Ten parametr może być jednym z następujących ciągów: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`lub `LinearRegression`.
+* `stack_meta_learner_type`: meta-uczyć się model przeszkolony w danych wyjściowych poszczególnych modeli heterogenicznych. W przypadku zadań klasyfikacji są `LogisticRegression` domyślne, czyli `LogisticRegressionCV`, jeśli włączono funkcję wzajemnego sprawdzania poprawności) i `ElasticNet` do zadań regresji/prognozowania (lub `ElasticNetCV`, jeśli włączono funkcję wzajemnego sprawdzania poprawności). Ten parametr może być jednym z następujących ciągów: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`lub `LinearRegression`.
 * `stack_meta_learner_train_percentage`: określa proporcję zestawu szkoleniowego (podczas wybierania typu uczenia i walidacji), które mają zostać zarezerwowane do uczenia się. Wartość domyślna to `0.2`.
 * `stack_meta_learner_kwargs`: parametry opcjonalne do przekazania do inicjatora meta. Te parametry i typy parametrów stanowią duplikaty parametrów i typów parametrów z odpowiedniego konstruktora modelu i są przekazywane do konstruktora modelu.
 
@@ -324,7 +324,7 @@ Możesz wyświetlić wyniki szkolenia w widżecie lub inline, jeśli jesteś w n
 ## <a name="understand-automated-ml-models"></a>Zrozumienie zautomatyzowanych modeli ML
 
 Każdy model wygenerowany przy użyciu zautomatyzowanej ML obejmuje następujące kroki:
-+ Zautomatyzowana funkcja inżynierii
++ Zautomatyzowana funkcja inżynierii (jeśli `"featurization": 'auto'`)
 + Skalowanie/Normalizacja i algorytm przy użyciu wartości parametru
 
 Czynimy to przezroczyste, aby uzyskać te informacje z fitted_model danych wyjściowych z zautomatyzowanej ML.
@@ -337,7 +337,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Zautomatyzowana funkcja inżynierii
 
-Zapoznaj się z listą funkcji przetwarzania wstępnego i [zautomatyzowanej automatycznej inżynierii](concept-automated-ml.md#preprocess) , która ma miejsce, gdy feauturization = automatyczne.
+Zapoznaj się z listą funkcji przetwarzania wstępnego i [zautomatyzowanej automatycznej inżynierii](concept-automated-ml.md#preprocess) , która występuje, gdy `"featurization": 'auto'`.
 
 Rozważmy następujący przykład:
 + Istnieją cztery funkcje wejściowe: A (numeryczne), B (numeryczne), C (liczbowe), D (DateTime)

@@ -8,26 +8,26 @@ ms.custom: ''
 titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.devlang: ''
 ms.topic: conceptual
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 7161c5554fe2d4993f3bd30ad82d675a71927f23
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279196"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717682"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasyfikacja & Azure SQL Database i SQL Data Warehouse odnajdywania danych
 
 Klasyfikacja & odnajdywania danych oferuje zaawansowane możliwości wbudowane w Azure SQL Database do **odnajdywania**, **klasyfikowania**i **etykietowania** & **raportowania** poufnych danych w bazach danych.
 
-Odnajdywanie i klasyfikowanie najbardziej poufnych danych (biznes, finanse, opieka, dane osobowe) i tak dalej.) może odgrywać rolę przestawną w schemacieie ochrony informacji organizacji. Może to stanowić infrastrukturę dla następujących działań:
+Odnajdywanie i klasyfikowanie najbardziej poufnych danych (biznes, finanse, opieka, dane osobowe) i tak dalej.) może odgrywać rolę przestawną w schemacieie ochrony informacji organizacji. Może to być infrastruktura dla:
 
-- Pomoc przy spełnianiu standardów dotyczących prywatności danych i wymagań dotyczących zgodności z przepisami.
+- Pomóc spełnić standardy prywatności danych i wymagania dotyczące zgodności z przepisami.
 - Różne scenariusze zabezpieczeń, takie jak monitorowanie (inspekcja) i alerty dotyczące nietypowego dostępu do poufnych danych.
-- Kontrolowanie dostępu do baz danych zawierających wysoce poufne informacje i zwiększanie ich bezpieczeństwa.
+- Kontrolowanie dostępu do i ograniczanie bezpieczeństwa baz danych zawierających wysoce poufne dane.
 
 Funkcja odnajdywania danych & klasyfikacja jest częścią oferty [Advanced Data Security](sql-database-advanced-data-security.md) (ADS), która jest ujednoliconym pakietem zaawansowanych funkcji zabezpieczeń SQL. do funkcji odnajdywania danych & można uzyskać dostęp i zarządzać nimi za pośrednictwem centralnego portalu SQL ADS.
 
@@ -40,11 +40,11 @@ Funkcja odnajdywania danych & Klasyfikacja zawiera zestaw zaawansowanych usług 
 
 - **Zalecenia dotyczące & odnajdywania**
 
-  Aparat klasyfikacji skanuje bazę danych i identyfikuje kolumny zawierające potencjalnie poufne dane. Następnie udostępnia łatwy sposób przeglądania i stosowania odpowiednich rekomendacji dotyczących klasyfikacji za pośrednictwem witryny Azure Portal.
+  Aparat klasyfikacji skanuje bazę danych i identyfikuje kolumny zawierające potencjalnie poufne dane. Dzięki temu można łatwo przejrzeć i zastosować odpowiednie zalecenia klasyfikacji za pośrednictwem Azure Portal.
 
 - **Etykietowania**
 
-  Etykiety klasyfikacji czułości można trwale oznaczyć w kolumnach przy użyciu nowych atrybutów metadanych klasyfikacji wprowadzonych do aparatu SQL. Te metadane można następnie wykorzystać na potrzeby zaawansowanych scenariuszy inspekcji i ochrony opartej na poufności.
+  Etykiety klasyfikacji czułości można trwale oznaczyć w kolumnach przy użyciu nowych atrybutów metadanych klasyfikacji wprowadzonych do aparatu SQL. Te metadane można następnie wykorzystać na potrzeby zaawansowanych scenariuszy inspekcji i ochrony opartej na czułości.
 
 - **Czułość zestawu wyników zapytania**
 
@@ -52,7 +52,7 @@ Funkcja odnajdywania danych & Klasyfikacja zawiera zestaw zaawansowanych usług 
 
 - **Widoczność**
 
-  Stan klasyfikacji bazy danych można wyświetlić na szczegółowym pulpicie nawigacyjnym w portalu. Ponadto można pobierać raporty (w formacie programu Excel), których można używać w celu zapewnienia zgodności i inspekcji, a także do innych celów.
+  Stan klasyfikacji bazy danych można wyświetlić na szczegółowym pulpicie nawigacyjnym w portalu. Ponadto można pobrać raport (w formacie programu Excel), który będzie używany do celów inspekcji &, a także innych potrzeb.
 
 ## <a id="subheading-2"></a>Odkryj, Klasyfikuj & poufne kolumny etykiet
 
@@ -69,7 +69,7 @@ Funkcja SQL Data Discovery & Klasyfikacja zawiera wbudowany zestaw etykiet czuł
 
 Definicja i dostosowanie taksonomii klasyfikacji są wykonywane w jednym centralnym miejscu dla całej dzierżawy platformy Azure. Ta lokalizacja znajduje się w [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)w ramach zasad zabezpieczeń. Tylko ktoś z uprawnieniami administracyjnymi w głównej grupie zarządzania dzierżawcą może wykonać to zadanie.
 
-W ramach zarządzania zasadami Information Protection można definiować etykiety niestandardowe, ustalać ich rangę i kojarzyć je z wybranym zestawem typów informacji. Można również dodawać własne niestandardowe typy informacji i konfigurować je za pomocą wzorców ciągów, które są dodawane do logiki odnajdywania na potrzeby identyfikowania tego typu danych w bazach danych.
+W ramach zarządzania zasadami Information Protection można definiować etykiety niestandardowe, ustalać ich rangę i kojarzyć je z wybranym zestawem typów informacji. Można również dodać własne niestandardowe typy informacji i skonfigurować je za pomocą wzorców ciągów, które są dodawane do logiki odnajdywania w celu identyfikowania tego typu danych w bazach danych.
 Dowiedz się więcej na temat dostosowywania zasad i zarządzania nimi w temacie [zasady Information Protection wskazówki](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
 
 Po zdefiniowaniu zasad dla dzierżawy możesz kontynuować klasyfikację poszczególnych baz danych przy użyciu dostosowanych zasad.
@@ -88,7 +88,7 @@ Po zdefiniowaniu zasad dla dzierżawy możesz kontynuować klasyfikację poszcze
 
 4. Aby pobrać raport w formacie programu Excel, kliknij opcję **eksportu** w górnym menu okna.
 
-   ![Eksportowanie do programu Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
+   ![Eksportuj do programu Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
 5. <a id="step-5"></a>Aby rozpocząć klasyfikowanie danych, kliknij **kartę Klasyfikacja** w górnej części okna.
 

@@ -1,23 +1,22 @@
 ---
 title: Przykładowy skrypt programu Azure PowerShell — tworzenie tematu niestandardowego | Microsoft Docs
-description: Przykładowy skrypt programu Azure PowerShell — tworzenie tematu niestandardowego
+description: Ten artykuł zawiera przykładowy skrypt Azure PowerShell, który pokazuje, jak utworzyć Event Grid temat niestandardowy.
 services: event-grid
 documentationcenter: na
-author: tfitzmac
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 01/23/2020
 ms.author: tomfitz
-ms.openlocfilehash: 20ad58c2e7209f8bed8014d5ce1dff094907590c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117155"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719946"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>Tworzenie tematu niestandardowego usługi Event Grid przy użyciu programu PowerShell
 
@@ -37,9 +36,9 @@ Ten skrypt używa następującego polecenia w celu utworzenia tematu niestandard
 
 | Polecenie | Uwagi |
 |---|---|
-| [Nowe AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | Tworzy niestandardowy temat usługi Event Grid. |
+| [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | Tworzy niestandardowy temat usługi Event Grid. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z wprowadzeniem do aplikacji zarządzanych, zobacz [Azure Managed Application overview](../overview.md) (Omówienie aplikacji zarządzanych platformy Azure).
 * Aby uzyskać więcej informacji na temat programu PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).

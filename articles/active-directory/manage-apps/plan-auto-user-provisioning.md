@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 44ed85ac8171484cccf39c0b048a5c7a026a657d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732454"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711599"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planowanie wdrożenia automatycznego aprowizowania użytkowników
 
@@ -25,7 +25,7 @@ Wiele organizacji korzysta z aplikacji typu oprogramowanie jako usługa (SaaS), 
 
 Usługa Azure Active Directory (Azure AD) automatyczne Inicjowanie obsługi użytkowników upraszcza ten proces, zapewniając bezpieczne automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach SaaS na podstawie reguł firmy. Ta Automatyzacja pozwala efektywnie skalować systemy zarządzania tożsamościami w środowiskach tylko w chmurze i hybrydowych w miarę rozszerzania ich zależności od rozwiązań opartych na chmurze.
 
-Zapoznaj się [z automatyzacją aprowizacji użytkowników i cofaj obsługę administracyjną, aby SaaS aplikacje za pomocą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) w celu lepszego zrozumienia funkcjonalności.
+Zapoznaj się [z automatyzacją aprowizacji użytkowników i cofaj obsługę administracyjną, aby SaaS aplikacje za pomocą Azure Active Directory](user-provisioning.md) w celu lepszego zrozumienia funkcjonalności.
 
 ## <a name="learn"></a>Nauka
 
@@ -59,7 +59,7 @@ W tym artykule są stosowane następujące warunki:
 
 * Logowanie jednokrotne (SSO) — umożliwia użytkownikowi Logowanie jednokrotne i dostęp do wszystkich aplikacji obsługujących Logowanie jednokrotne. W kontekście aprowizacji użytkowników Logowanie jednokrotne jest wynikiem użytkowników, którzy mają pojedyncze konto, aby uzyskać dostęp do wszystkich systemów korzystających z automatycznego aprowizacji użytkowników.
 
-* System źródłowy — repozytorium użytkowników, z których pochodzą postanowienia usługi Azure AD. Usługa Azure AD to system źródłowy dla większości wstępnie zintegrowanych łączników aprowizacji. Istnieją jednak pewne wyjątki dotyczące aplikacji w chmurze, takich jak SAP, Workday i AWS. Na przykład zapoznaj [się z tematem Inicjowanie obsługi użytkowników z produktu Workday do usługi AD](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial).
+* System źródłowy — repozytorium użytkowników, z których pochodzą postanowienia usługi Azure AD. Usługa Azure AD to system źródłowy dla większości wstępnie zintegrowanych łączników aprowizacji. Istnieją jednak pewne wyjątki dotyczące aplikacji w chmurze, takich jak SAP, Workday i AWS. Na przykład zapoznaj [się z tematem Inicjowanie obsługi użytkowników z produktu Workday do usługi AD](../saas-apps/workday-inbound-tutorial.md).
 
 * System docelowy — repozytorium użytkowników, do których mają prawa usługi Azure AD. System docelowy jest zazwyczaj aplikacją SaaS, taką jak usługi ServiceNow, rozwiązania Zscaler i zapasowy. System docelowy może być również systemem lokalnym, takim jak usługi AD.
 
@@ -73,8 +73,8 @@ W tym artykule są stosowane następujące warunki:
 | Filmy| [Co to jest inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/_ZjARPpI6NI) <br> [Jak wdrożyć Inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/pKzyts6kfrw) <br> [Integrowanie usług Salesforce z usługą Azure AD: jak zautomatyzować Inicjowanie obsługi użytkowników](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Kursy online| SkillUp online: [Zarządzanie tożsamościami](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Dowiedz się, jak zintegrować usługę Azure AD z wieloma aplikacjami SaaS i zabezpieczyć dostęp użytkowników do tych aplikacji. |
 | Książki| [Nowoczesne uwierzytelnianie za pomocą Azure Active Directory dla aplikacji sieci Web (Dokumentacja dla deweloperów) wersja 1](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Jest to autorytatywny, głęboki szczegółowe Przewodnik dotyczący tworzenia rozwiązań uwierzytelniania Active Directory dla tych nowych środowisk. |
-| Samouczki| Zapoznaj się z [listą samouczków dotyczących integrowania aplikacji SaaS z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
-| Często zadawane pytania| [Często zadawane pytania](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) dotyczące automatycznej aprowizacji użytkowników |
+| Samouczki| Zapoznaj się z [listą samouczków dotyczących integrowania aplikacji SaaS z usługą Azure AD](../saas-apps/tutorial-list.md). |
+| Często zadawane pytania| [Często zadawane pytania](user-provisioning.md) dotyczące automatycznej aprowizacji użytkowników |
 
 ### <a name="solution-architectures"></a>Architektury rozwiązań
 
@@ -92,9 +92,9 @@ W tym przykładzie użytkownicy i grupy są tworzone w bazie danych kadr połąc
 
 1. **Agent Azure AD Connect** uruchamia zaplanowane synchronizacje tożsamości (użytkowników i grup) z lokalnej usługi AD do usługi Azure AD.
 
-1. **Usługa Azure AD Provisioning** rozpoczyna [cykl początkowy](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) względem systemu źródłowego i systemu docelowego. 
+1. **Usługa Azure AD Provisioning** rozpoczyna [cykl początkowy](user-provisioning.md) względem systemu źródłowego i systemu docelowego. 
 
-1. **Usługa Azure AD Provisioning** sprawdza system źródłowy dla wszystkich użytkowników i grup, które uległy zmianie od pierwszego cyklu i wypycha zmiany w [cyklach przyrostowych](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. **Usługa Azure AD Provisioning** sprawdza system źródłowy dla wszystkich użytkowników i grup, które uległy zmianie od pierwszego cyklu i wypycha zmiany w [cyklach przyrostowych](user-provisioning.md).
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatyczne Inicjowanie obsługi użytkowników dla przedsiębiorstw korzystających tylko z chmury
 
@@ -106,9 +106,9 @@ W tym przykładzie tworzenie użytkowników odbywa się w usłudze Azure AD, a u
 
 1. Użytkownicy/grupy są tworzone w usłudze Azure AD.
 
-1. **Usługa Azure AD Provisioning** rozpoczyna [cykl początkowy](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) względem systemu źródłowego i systemu docelowego. 
+1. **Usługa Azure AD Provisioning** rozpoczyna [cykl początkowy](user-provisioning.md) względem systemu źródłowego i systemu docelowego. 
 
-1. **Usługa Azure AD Provisioning** jest kwerendą systemu źródłowego dla wszystkich użytkowników i grup zaktualizowanych od pierwszego cyklu i wykonuje wszystkie [cykle przyrostowe](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. **Usługa Azure AD Provisioning** jest kwerendą systemu źródłowego dla wszystkich użytkowników i grup zaktualizowanych od pierwszego cyklu i wykonuje wszystkie [cykle przyrostowe](user-provisioning.md).
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Automatyczne Inicjowanie obsługi administracyjnej użytkowników dla aplikacji usługi Cloud kadr 
 
@@ -138,7 +138,7 @@ Komunikacja jest niezwykle ważna dla sukcesu każdej nowej usługi. Proaktywnie
 
 ### <a name="plan-a-pilot"></a>Planowanie pilotażu
 
-Zaleca się, aby początkowa konfiguracja automatycznego aprowizacji użytkowników była w środowisku testowym z małym podzbiorem użytkowników przed ich przeskalowaniem do wszystkich użytkowników w produkcji. Zobacz [najlepsze rozwiązania](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) dotyczące uruchamiania programu pilotażowego.
+Zaleca się, aby początkowa konfiguracja automatycznego aprowizacji użytkowników była w środowisku testowym z małym podzbiorem użytkowników przed ich przeskalowaniem do wszystkich użytkowników w produkcji. Zobacz [najlepsze rozwiązania](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) dotyczące uruchamiania programu pilotażowego.
 
 #### <a name="best-practices-for-a-pilot"></a>Najlepsze rozwiązania dla pilotażu  
 
@@ -146,29 +146,29 @@ Pilotaż umożliwia testowanie z małą grupą przed wdrożeniem możliwości dl
 
 W pierwszej fazie, kierowanie do nich, użyteczność i innych odpowiednich użytkowników, którzy mogą testować i dostarczać Opinie. Skorzystaj z tej opinii, aby dodatkowo opracować komunikację i instrukcje wysyłane do użytkowników oraz uzyskać wgląd w typy problemów, które pracownicy pomocy technicznej mogą zobaczyć.
 
-Poszerzanie wdrożenia do większych grup użytkowników przez zwiększenie zakresu grup przeznaczonych do użycia. Można to zrobić za pomocą [dynamicznej przynależności do grupy](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)lub ręcznie dodając użytkowników do grup przeznaczonych do grupy.
+Poszerzanie wdrożenia do większych grup użytkowników przez zwiększenie zakresu grup przeznaczonych do użycia. Można to zrobić za pomocą [dynamicznej przynależności do grupy](../users-groups-roles/groups-dynamic-membership.md)lub ręcznie dodając użytkowników do grup przeznaczonych do grupy.
 
 ## <a name="plan-application-connections-and-administration"></a>Planowanie połączeń i administrowania aplikacjami
 
-Za pomocą portalu usługi Azure AD można wyświetlać i zarządzać wszystkimi aplikacjami, które obsługują obsługę administracyjną. Zobacz [Znajdowanie aplikacji w portalu](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal).
+Za pomocą portalu usługi Azure AD można wyświetlać i zarządzać wszystkimi aplikacjami, które obsługują obsługę administracyjną. Zobacz [Znajdowanie aplikacji w portalu](configure-automatic-user-provisioning-portal.md).
 
 ### <a name="determine-the-type-of-connector-to-use"></a>Określ typ łącznika do użycia
 
-Rzeczywiste kroki wymagane do włączenia i skonfigurowania automatycznej aprowizacji różnią się w zależności od aplikacji. Jeśli aplikacja, którą chcesz automatycznie udostępnić, jest wymieniona w [galerii aplikacji usługi Azure AD SaaS](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list), należy wybrać [samouczek integracji dla aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) , aby skonfigurować jego wstępnie zintegrowany łącznik aprowizacji użytkowników.
+Rzeczywiste kroki wymagane do włączenia i skonfigurowania automatycznej aprowizacji różnią się w zależności od aplikacji. Jeśli aplikacja, którą chcesz automatycznie udostępnić, jest wymieniona w [galerii aplikacji usługi Azure AD SaaS](../saas-apps/tutorial-list.md), należy wybrać [samouczek integracji dla aplikacji](../saas-apps/tutorial-list.md) , aby skonfigurować jego wstępnie zintegrowany łącznik aprowizacji użytkowników.
 
 Jeśli nie, wykonaj następujące czynności:
 
-1. [Utwórz żądanie](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) dla wstępnie zintegrowanego łącznika aprowizacji użytkowników. Nasz zespół będzie współpracować z ty i deweloperem aplikacji, aby dołączyć swoją aplikację do naszej platformy, jeśli obsługuje standard scim.
+1. [Utwórz żądanie](../develop/howto-app-gallery-listing.md) dla wstępnie zintegrowanego łącznika aprowizacji użytkowników. Nasz zespół będzie współpracować z ty i deweloperem aplikacji, aby dołączyć swoją aplikację do naszej platformy, jeśli obsługuje standard scim.
 
-1. Użyj [BYOA Standard scim](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) ogólnej obsługi administracyjnej użytkowników dla aplikacji. Jest to wymaganie, aby usługa Azure AD mogła udostępnić użytkownikom aplikację bez wstępnie zintegrowanego łącznika aprowizacji.
+1. Użyj [BYOA Standard scim](use-scim-to-provision-users-and-groups.md) ogólnej obsługi administracyjnej użytkowników dla aplikacji. Jest to wymaganie, aby usługa Azure AD mogła udostępnić użytkownikom aplikację bez wstępnie zintegrowanego łącznika aprowizacji.
 
-1. Jeśli aplikacja jest w stanie korzystać z łącznika BYOA Standard scim, zapoznaj się z [samouczkiem integracji BYOA Standard scim](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) , aby skonfigurować łącznik BYOA Standard scim dla aplikacji.
+1. Jeśli aplikacja jest w stanie korzystać z łącznika BYOA Standard scim, zapoznaj się z [samouczkiem integracji BYOA Standard scim](use-scim-to-provision-users-and-groups.md) , aby skonfigurować łącznik BYOA Standard scim dla aplikacji.
 
-Aby uzyskać więcej informacji, zobacz [aplikacje i systemy, których można używać z funkcją automatycznej aprowizacji użytkowników usługi Azure AD?](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
+Aby uzyskać więcej informacji, zobacz [aplikacje i systemy, których można używać z funkcją automatycznej aprowizacji użytkowników usługi Azure AD?](user-provisioning.md)
 
 ### <a name="collect-information-to-authorize-application-access"></a>Zbieranie informacji w celu autoryzowania dostępu do aplikacji
 
-Konfigurowanie automatycznego aprowizacji użytkowników jest procesem dla poszczególnych aplikacji. Dla każdej aplikacji należy podać [poświadczenia administratora](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) , aby połączyć się z punktem końcowym zarządzania użytkownikami systemu docelowego.
+Konfigurowanie automatycznego aprowizacji użytkowników jest procesem dla poszczególnych aplikacji. Dla każdej aplikacji należy podać [poświadczenia administratora](configure-automatic-user-provisioning-portal.md) , aby połączyć się z punktem końcowym zarządzania użytkownikami systemu docelowego.
 
 Na poniższej ilustracji przedstawiono jedną wersję wymaganych poświadczeń administratora:
 
@@ -198,17 +198,17 @@ Dla każdej aplikacji należy udokumentować następujące informacje:
 
 Przed zaimplementowaniem automatycznej aprowizacji użytkowników należy określić użytkowników i grupy, które mają być obsługiwane dla aplikacji.
 
-* [Filtry zakresu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters) umożliwiają definiowanie reguł opartych na atrybutach, które określają, którzy użytkownicy są obsługiwani do aplikacji.
+* [Filtry zakresu](define-conditional-rules-for-provisioning-user-accounts.md) umożliwiają definiowanie reguł opartych na atrybutach, które określają, którzy użytkownicy są obsługiwani do aplikacji.
 
-* Następnie użyj [przypisań użytkowników i grup](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) w miarę potrzeb w celu dodatkowego filtrowania.
+* Następnie użyj [przypisań użytkowników i grup](assign-user-or-group-access-portal.md) w miarę potrzeb w celu dodatkowego filtrowania.
 
 ### <a name="define-user-and-group-attribute-mapping"></a>Definiowanie mapowania atrybutów użytkowników i grup
 
-Aby zaimplementować automatyczne Inicjowanie obsługi użytkowników, należy zdefiniować atrybuty użytkownika i grupy, które są potrzebne dla aplikacji. Istnieje wstępnie skonfigurowany zestaw atrybutów i [mapowań atrybutów](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) między obiektami użytkowników usługi Azure AD i obiektami użytkownika aplikacji SaaS. Nie wszystkie aplikacje SaaS włączają atrybuty grupy.
+Aby zaimplementować automatyczne Inicjowanie obsługi użytkowników, należy zdefiniować atrybuty użytkownika i grupy, które są potrzebne dla aplikacji. Istnieje wstępnie skonfigurowany zestaw atrybutów i [mapowań atrybutów](configure-automatic-user-provisioning-portal.md) między obiektami użytkowników usługi Azure AD i obiektami użytkownika aplikacji SaaS. Nie wszystkie aplikacje SaaS włączają atrybuty grupy.
 
-Usługa Azure AD obsługuje mapowanie między atrybutami i atrybutami, zapewniając wartości stałe lub [pisząc wyrażenia dla mapowań atrybutów](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings). Ta elastyczność zapewnia kontrolę nad tym, co zostanie wypełnione w atrybucie systemu wskazanego. Za pomocą [Microsoft Graph API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration) i Eksploratora grafów można wyeksportować mapowania atrybutów aprowizacji użytkowników i schemat do pliku JSON, a następnie zaimportować je z powrotem do usługi Azure AD.
+Usługa Azure AD obsługuje mapowanie między atrybutami i atrybutami, zapewniając wartości stałe lub [pisząc wyrażenia dla mapowań atrybutów](functions-for-customizing-application-data.md). Ta elastyczność zapewnia kontrolę nad tym, co zostanie wypełnione w atrybucie systemu wskazanego. Za pomocą [Microsoft Graph API](export-import-provisioning-configuration.md) i Eksploratora grafów można wyeksportować mapowania atrybutów aprowizacji użytkowników i schemat do pliku JSON, a następnie zaimportować je z powrotem do usługi Azure AD.
 
-Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowania atrybutu aprowizacji użytkowników dla aplikacji SaaS w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowania atrybutu aprowizacji użytkowników dla aplikacji SaaS w Azure Active Directory](customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>Specjalne zagadnienia dotyczące aprowizacji użytkowników
 
@@ -216,9 +216,9 @@ Aby zmniejszyć liczbę problemów po wdrożeniu, należy wziąć pod uwagę nas
 
 * Upewnij się, że atrybuty używane do mapowania obiektów użytkownika/grupy między aplikacjami źródłową i docelową są odporne na błędy. Nie powinny one spowodować, że użytkownicy/grupy mają być nieprawidłowo inicjowane, jeśli zmienią się atrybuty (na przykład użytkownik przejdzie do innej części firmy).
 
-* Aplikacje mogą mieć określone ograniczenia i/lub wymagania, które należy spełnić w celu poprawnego działania aprowizacji użytkowników. Na przykład zapasowy obcina wartości dla niektórych atrybutów. Zapoznaj się z [automatycznymi samouczkami aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) specyficznymi dla poszczególnych aplikacji.
+* Aplikacje mogą mieć określone ograniczenia i/lub wymagania, które należy spełnić w celu poprawnego działania aprowizacji użytkowników. Na przykład zapasowy obcina wartości dla niektórych atrybutów. Zapoznaj się z [automatycznymi samouczkami aprowizacji użytkowników](../saas-apps/tutorial-list.md) specyficznymi dla poszczególnych aplikacji.
 
-* Potwierdź spójność schematu między systemem źródłowym a docelowym. Typowe problemy obejmują atrybuty, takie jak nazwa UPN lub poczta, która nie jest zgodna. Na przykład nazwa UPN w usłudze Azure AD ustawiona jako *john_smith@contoso.com* i w aplikacji jest *jsmith@contoso.com* . Aby uzyskać więcej informacji, zobacz [Informacje o schemacie użytkownika i grupy](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups).
+* Potwierdź spójność schematu między systemem źródłowym a docelowym. Typowe problemy obejmują atrybuty, takie jak nazwa UPN lub poczta, która nie jest zgodna. Na przykład nazwa UPN w usłudze Azure AD ustawiona jako *john_smith@contoso.com* i w aplikacji jest *jsmith@contoso.com* . Aby uzyskać więcej informacji, zobacz [Informacje o schemacie użytkownika i grupy](use-scim-to-provision-users-and-groups.md).
 
 ## <a name="plan-testing-and-security"></a>Planowanie testowania i zabezpieczeń
 
@@ -233,7 +233,7 @@ Po skonfigurowaniu automatycznej aprowizacji użytkowników dla aplikacji należ
 | Użytkownik jest dodawany do grupy przypisanej do systemu docelowego | Obiekt użytkownika jest zainicjowany w systemie docelowym. <br>Użytkownik może zalogować się do systemu docelowego i wykonać odpowiednie działania. |
 | Użytkownik zostanie usunięty z grupy, która jest przypisana do systemu docelowego | Obiekt użytkownika jest cofany w systemie docelowym.<br>Użytkownik nie może zalogować się do systemu docelowego. |
 | Informacje o użytkowniku zostały zaktualizowane w usłudze Azure AD za pomocą dowolnej metody | Zaktualizowane atrybuty użytkownika są odzwierciedlane w systemie docelowym po przyrostowym cyklu |
-| Użytkownik jest poza zakresem | Obiekt użytkownika jest wyłączony lub usunięty. <br>Uwaga: to zachowanie jest zastępowane na potrzeby aprowizacji w programie [Workday](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions). |
+| Użytkownik jest poza zakresem | Obiekt użytkownika jest wyłączony lub usunięty. <br>Uwaga: to zachowanie jest zastępowane na potrzeby aprowizacji w programie [Workday](skip-out-of-scope-deletions.md). |
 
 ### <a name="plan-security"></a>Planowanie zabezpieczeń
 
@@ -243,7 +243,7 @@ Jest to typowym sposobem, aby Przegląd zabezpieczeń był wymagany w ramach wdr
 
 Jeśli automatyczna implementacja inicjowania obsługi użytkowników nie będzie działać zgodnie z potrzebami w środowisku produkcyjnym, poniższe kroki wycofywania mogą pomóc w powracaniu do poprzedniego znanego dobrego stanu:
 
-1. Przejrzyj [Raport z podsumowaniem aprowizacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting) i [Inicjowanie obsługi administracyjnej](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting) , aby określić, jakie nieprawidłowe operacje wystąpiły na odpowiednich użytkownikach i/lub w grupach.
+1. Przejrzyj [Raport z podsumowaniem aprowizacji](check-status-user-account-provisioning.md) i [Inicjowanie obsługi administracyjnej](check-status-user-account-provisioning.md#provisioning-logs-preview) , aby określić, jakie nieprawidłowe operacje wystąpiły na odpowiednich użytkownikach i/lub w grupach.
 
 1. Użyj dzienników inspekcji aprowizacji, aby określić ostatni znany dobry stan użytkowników i/lub grup, których dotyczy. Zapoznaj się również z systemami źródłowymi (Azure AD lub AD).
 
@@ -257,13 +257,13 @@ Wybierz kroki, które należy dostosować do wymagań dotyczących rozwiązania.
 
 Gdy usługa Azure AD Provisioning jest uruchamiana po raz pierwszy, cykl początkowy względem systemu źródłowego i systemów docelowych tworzy migawkę wszystkich obiektów użytkownika dla każdego systemu docelowego.
 
-Po włączeniu automatycznej aprowizacji aplikacji cykl początkowy może zająć od 20 minut do kilku godzin. Czas trwania zależy od rozmiaru katalogu usługi Azure AD oraz liczby użytkowników w zakresie aprowizacji. Zobacz [, jak zwiększyć wydajność aprowizacji](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish).
+Po włączeniu automatycznej aprowizacji aplikacji cykl początkowy może zająć od 20 minut do kilku godzin. Czas trwania zależy od rozmiaru katalogu usługi Azure AD oraz liczby użytkowników w zakresie aprowizacji. Zobacz [, jak zwiększyć wydajność aprowizacji](application-provisioning-when-will-provisioning-finish.md).
 
 Usługa aprowizacji przechowuje stan obu systemów po początkowym cyklu, poprawiając wydajność kolejnych cykli przyrostowych.
 
 ### <a name="configure-automatic-user-provisioning"></a>Konfigurowanie automatycznej aprowizacji użytkowników
 
-Użyj [Azure Portal](https://portal.azure.com/) , aby zarządzać automatyczną obsługą kont użytkowników i anulowaniem aprowizacji dla aplikacji, które go obsługują. Wykonaj kroki opisane w [Jak mogę skonfigurować automatyczne Inicjowanie obsługi aplikacji?](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
+Użyj [Azure Portal](https://portal.azure.com/) , aby zarządzać automatyczną obsługą kont użytkowników i anulowaniem aprowizacji dla aplikacji, które go obsługują. Wykonaj kroki opisane w [Jak mogę skonfigurować automatyczne Inicjowanie obsługi aplikacji?](user-provisioning.md)
 
 Usługę aprowizacji użytkowników w usłudze Azure AD można także skonfigurować i zarządzać nią za pomocą [interfejsu API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
 
@@ -273,7 +273,7 @@ Po wdrożeniu należy zarządzać rozwiązaniem.
 
 ### <a name="monitor-user-provisioning-operation-health"></a>Monitoruj kondycję operacji aprowizacji użytkowników
 
-Po pomyślnym [cyklu początkowym](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)usługa Azure AD Provisioning będzie uruchamiać aktualizacje przyrostowe w odstępach czasu dla każdej aplikacji, dopóki nie wystąpi jedno z następujących zdarzeń:
+Po pomyślnym [cyklu początkowym](user-provisioning.md)usługa Azure AD Provisioning będzie uruchamiać aktualizacje przyrostowe w odstępach czasu dla każdej aplikacji, dopóki nie wystąpi jedno z następujących zdarzeń:
 
 * Usługa została zatrzymana ręcznie, a nowy cykl początkowy jest wyzwalany przy użyciu [Azure Portal](https://portal.azure.com/)lub przy użyciu odpowiedniego polecenia [API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) .
 
@@ -281,15 +281,15 @@ Po pomyślnym [cyklu początkowym](https://docs.microsoft.com/azure/active-direc
 
 * Proces aprowizacji prowadzi do kwarantanny ze względu na wysoki współczynnik błędów i pozostaje w kwarantannie przez ponad cztery tygodnie, gdy zostanie on automatycznie wyłączony.
 
-Aby przejrzeć te zdarzenia i wszystkie inne działania wykonywane przez usługę aprowizacji, zapoznaj się z [dziennikami aprowizacji](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context)usługi Azure AD.
+Aby przejrzeć te zdarzenia i wszystkie inne działania wykonywane przez usługę aprowizacji, zapoznaj się z [dziennikami aprowizacji](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)usługi Azure AD.
 
-Aby dowiedzieć się, jak długo trwa proces aprowizacji i monitoruje postęp zadania aprowizacji, można [sprawdzić stan aprowizacji użytkownika](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).
+Aby dowiedzieć się, jak długo trwa proces aprowizacji i monitoruje postęp zadania aprowizacji, można [sprawdzić stan aprowizacji użytkownika](application-provisioning-when-will-provisioning-finish-specific-user.md).
 
 ### <a name="gain-insights-from-reports"></a>Uzyskiwanie szczegółowych informacji z raportów
 
-Usługa Azure AD może zapewnić [dodatkowe informacje](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) dotyczące użycia i kondycji operacyjnej w organizacji za pomocą dzienników inspekcji i raportów.
+Usługa Azure AD może zapewnić [dodatkowe informacje](application-provisioning-when-will-provisioning-finish-specific-user.md) dotyczące użycia i kondycji operacyjnej w organizacji za pomocą dzienników inspekcji i raportów.
 
-Administratorzy powinni sprawdzić Raport z podsumowaniem aprowizacji, aby monitorować kondycję operacyjną zadania aprowizacji. Wszystkie działania wykonywane przez usługę aprowizacji są rejestrowane w dziennikach inspekcji usługi Azure AD. Zobacz [Samouczek: Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning).
+Administratorzy powinni sprawdzić Raport z podsumowaniem aprowizacji, aby monitorować kondycję operacyjną zadania aprowizacji. Wszystkie działania wykonywane przez usługę aprowizacji są rejestrowane w dziennikach inspekcji usługi Azure AD. Zobacz [Samouczek: Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](check-status-user-account-provisioning.md).
 
 Zalecamy założenie, że własność i korzystanie z tych raportów w erze, który spełnia wymagania organizacji. Usługa Azure AD zachowuje większość danych inspekcji przez 30 dni.
 
@@ -297,27 +297,27 @@ Zalecamy założenie, że własność i korzystanie z tych raportów w erze, kt�
 
 Skorzystaj z poniższych linków, aby rozwiązać wszelkie problemy, które mogą zostać włączone podczas aprowizacji:
 
-* [Wystąpił problem podczas konfigurowania aprowizacji użytkowników w aplikacji z galerii usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
+* [Wystąpił problem podczas konfigurowania aprowizacji użytkowników w aplikacji z galerii usługi Azure AD](application-provisioning-config-problem.md)
 
-* [Synchronizowanie atrybutu z Active Directory lokalnego z usługą Azure AD w celu aprowizacji aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning-sync-attributes-for-mapping)
+* [Synchronizowanie atrybutu z Active Directory lokalnego z usługą Azure AD w celu aprowizacji aplikacji](user-provisioning-sync-attributes-for-mapping.md)
 
-* [Inicjowanie obsługi administracyjnej użytkowników w aplikacji z galerii usługi Azure AD trwa kilka godzin](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)
+* [Inicjowanie obsługi administracyjnej użytkowników w aplikacji z galerii usługi Azure AD trwa kilka godzin](application-provisioning-when-will-provisioning-finish.md)
 
-* [Wystąpił problem podczas zapisywania poświadczeń administratora podczas konfigurowania aprowizacji użytkowników w aplikacji Galerii Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-storage-limit)
+* [Wystąpił problem podczas zapisywania poświadczeń administratora podczas konfigurowania aprowizacji użytkowników w aplikacji Galerii Azure Active Directory](application-provisioning-config-problem-storage-limit.md)
 
-* [Nie zainicjowano obsługi użytkowników w aplikacji z galerii usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
+* [Nie zainicjowano obsługi użytkowników w aplikacji z galerii usługi Azure AD](application-provisioning-config-problem-no-users-provisioned.md)
 
-* [W aplikacji z galerii usługi Azure AD jest inicjowany niewłaściwy zestaw użytkowników](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-wrong-users-provisioned)
+* [W aplikacji z galerii usługi Azure AD jest inicjowany niewłaściwy zestaw użytkowników](application-provisioning-config-problem-wrong-users-provisioned.md)
 
 ### <a name="helpful-documentation"></a>Przydatna dokumentacja
 
-* [Pisanie wyrażeń do mapowania atrybutów](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)
 
 * [Omówienie interfejsu API synchronizacji usługi Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 
-* [Pomiń usuwanie kont użytkowników, które wykraczają poza zakres](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)
+* [Pomiń usuwanie kont użytkowników, które wykraczają poza zakres](skip-out-of-scope-deletions.md)
 
-* [Azure AD Connect agenta aprowizacji: historia wersji](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history)
+* [Azure AD Connect agenta aprowizacji: historia wersji](provisioning-agent-release-version-history.md)
 
 #### <a name="resources"></a>Zasoby
 
@@ -328,8 +328,8 @@ Skorzystaj z poniższych linków, aby rozwiązać wszelkie problemy, które mog�
 * [Forum usługi Azure AD z przepełnieniem stosu](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="next-steps"></a>Następne kroki
-* [Konfigurowanie automatycznego aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)
+* [Konfigurowanie automatycznego aprowizacji użytkowników](configure-automatic-user-provisioning-portal.md)
 
-* [Eksportowanie lub importowanie konfiguracji aprowizacji za pomocą interfejsu API Microsoft Graph](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration)
+* [Eksportowanie lub importowanie konfiguracji aprowizacji za pomocą interfejsu API Microsoft Graph](export-import-provisioning-configuration.md)
 
-* [Pisanie wyrażeń dla mapowań atrybutów w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [Pisanie wyrażeń dla mapowań atrybutów w usłudze Azure Active Directory](functions-for-customizing-application-data.md)

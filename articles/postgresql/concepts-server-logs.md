@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9d71dd854c9a5059c2d0a48f57ad3ba5bb1eddf9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768218"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721323"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Dzienniki w Azure Database for PostgreSQL — pojedynczy serwer
 Azure Database for PostgreSQL umożliwia konfigurowanie i dostęp do standardowych dzienników Postgres. Dzienniki mogą służyć do identyfikowania, rozwiązywania problemów i naprawiania błędów konfiguracji oraz nieoptymalnej wydajności. Rejestrowane informacje można skonfigurować i uzyskać do nich dostęp, w tym błędy, informacje o zapytaniach, rekordy autopróżniowe, połączenia i punkty kontrolne. (Dostęp do dzienników transakcji nie jest dostępny).
@@ -99,10 +99,10 @@ W poniższej tabeli opisano pola dla typu **PostgreSQLLogs** . W zależności od
 | tenantId | Identyfikator dzierżawy |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
-| Typ | Typ dziennika. Zawsze `AzureDiagnostics` |
+| Typ | Typ dziennika. zawsze `AzureDiagnostics` |
 | SubscriptionId | Identyfikator GUID subskrypcji, do której należy serwer |
 | ResourceGroup | Nazwa grupy zasobów, do której należy serwer |
-| ResourceProvider | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceProvider | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Identyfikator URI zasobu |
 | Zasób | Nazwa serwera |
@@ -111,10 +111,10 @@ W poniższej tabeli opisano pola dla typu **PostgreSQLLogs** . W zależności od
 | Zmienna | Poziom rejestrowania, przykład: LOG, błąd, Uwaga |
 | Wiadomość | Podstawowy komunikat dziennika | 
 | Domain | Wersja serwera, przykład: Postgres-10 |
-| formant | Dodatkowy komunikat dziennika (jeśli dotyczy) |
+| Szczegóły | Dodatkowy komunikat dziennika (jeśli dotyczy) |
 | ColumnName | Nazwa kolumny (jeśli dotyczy) |
 | SchemaName | Nazwa schematu (jeśli dotyczy) |
-| Typ danych | Nazwa typu danych (jeśli dotyczy) |
+| DatatypeName | Nazwa typu danych (jeśli dotyczy) |
 | LogicalServerName | Nazwa serwera | 
 | _ResourceId | Identyfikator URI zasobu |
 | Prefiks | Prefiks wiersza dziennika |

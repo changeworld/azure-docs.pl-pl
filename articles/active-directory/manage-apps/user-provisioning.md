@@ -15,16 +15,16 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d515731b8da186ef7e44a397d5abf87dfa65e83a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433788"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711472"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji przy użyciu Azure Active Directory
 
-W Azure Active Directory (Azure AD) termin **aprowizacji aplikacji** dotyczy automatycznego tworzenia tożsamości i ról użytkowników w aplikacjach w chmurze ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), do których użytkownicy potrzebują dostępu. Oprócz tworzenia tożsamości użytkowników automatyczne Inicjowanie obsługi obejmuje konserwację i usuwanie tożsamości użytkowników jako zmiany stanu lub ról. Typowe scenariusze obejmują Inicjowanie obsługi użytkownika usługi Azure AD w aplikacjach takich jak [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [usługi ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)i inne.
+W Azure Active Directory (Azure AD) termin **aprowizacji aplikacji** dotyczy automatycznego tworzenia tożsamości i ról użytkowników w aplikacjach w chmurze ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), do których użytkownicy potrzebują dostępu. Oprócz tworzenia tożsamości użytkowników automatyczne Inicjowanie obsługi obejmuje konserwację i usuwanie tożsamości użytkowników jako zmiany stanu lub ról. Typowe scenariusze obejmują Inicjowanie obsługi użytkownika usługi Azure AD w aplikacjach takich jak [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [usługi ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)i inne.
 
 ![Diagram omówienia aprowizacji](media/user-provisioning/provisioning-overview.png)
 
@@ -63,7 +63,7 @@ Funkcje usługi Azure AD są wstępnie zintegrowane z obsługą wielu popularnyc
 
    ![Logo usługi Salesforce](media/user-provisioning/gallery-app-logos.png)
 
-   Jeśli chcesz zażądać nowej aplikacji do aprowizacji, możesz [poprosić o integrację aplikacji z naszą galerią aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing). W przypadku żądania aprowizacji użytkowników wymagamy, aby aplikacja miała punkt końcowy zgodny z standard scim. Zażądaj, aby Dostawca aplikacji był zgodny ze standardem Standard scim, dzięki czemu możemy szybko dodać aplikację do naszej platformy.
+   Jeśli chcesz zażądać nowej aplikacji do aprowizacji, możesz [poprosić o integrację aplikacji z naszą galerią aplikacji](../develop/howto-app-gallery-listing.md). W przypadku żądania aprowizacji użytkowników wymagamy, aby aplikacja miała punkt końcowy zgodny z standard scim. Zażądaj, aby Dostawca aplikacji był zgodny ze standardem Standard scim, dzięki czemu możemy szybko dodać aplikację do naszej platformy.
 
 * **Aplikacje obsługujące standard scim 2,0**. Aby uzyskać informacje na temat ogólnych połączeń aplikacji, które implementują interfejsy API zarządzania użytkownikami opartymi na systemie Standard scim 2,0, zobacz [Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników](use-scim-to-provision-users-and-groups.md).
 
@@ -81,7 +81,7 @@ Aplikacje w galerii usługi Azure AD obsługują jeden z dwóch trybów aprowiza
 
 * **Ręczna** obsługa administracyjna oznacza, że aplikacja nie ma jeszcze automatycznego łącznika aprowizacji usługi Azure AD. Konta użytkowników muszą zostać utworzone ręcznie, na przykład przez dodanie użytkowników bezpośrednio do portalu administracyjnego aplikacji lub przekazanie arkusza kalkulacyjnego z informacjami o koncie użytkownika. Zapoznaj się z dokumentacją dostarczoną przez aplikację lub skontaktuj się z deweloperem aplikacji, aby określić, jakie mechanizmy są dostępne.
 
-* **Automatyczne** oznacza, że dla tej aplikacji opracowano łącznik aprowizacji usługi Azure AD. Należy postępować zgodnie z samouczkiem Instalatora specyficznym dla konfigurowania aprowizacji aplikacji. Samouczki aplikacji można znaleźć na [liście samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+* **Automatyczne** oznacza, że dla tej aplikacji opracowano łącznik aprowizacji usługi Azure AD. Należy postępować zgodnie z samouczkiem Instalatora specyficznym dla konfigurowania aprowizacji aplikacji. Samouczki aplikacji można znaleźć na [liście samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](../saas-apps/tutorial-list.md).
 
 W galerii usługi Azure AD aplikacje obsługujące automatyczną obsługę administracyjną są oznaczone ikoną **aprowizacji** . Przejdź do nowego środowiska w wersji zapoznawczej galerii, aby wyświetlić te ikony (na transparencie w górnej części **strony Dodawanie aplikacji**wybierz link, który wskazuje na **kliknięcie tutaj, aby wypróbować nową i udoskonaloną galerię aplikacji**).
 
@@ -91,7 +91,7 @@ Tryb aprowizacji obsługiwany przez aplikację jest również widoczny na karcie
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Jak mogę skonfigurować automatyczne Inicjowanie obsługi administracyjnej aplikacji?
 
-W przypadku wstępnie zintegrowanych aplikacji wymienionych w galerii wskazówki krok po kroku są dostępne w celu skonfigurowania automatycznej aprowizacji. Zapoznaj się z [listą samouczków dotyczących zintegrowanych aplikacji galerii](https://docs.microsoft.com/azure/active-directory/saas-apps/). Poniższy film wideo pokazuje, jak skonfigurować automatyczne Inicjowanie obsługi administracyjnej użytkowników w usłudze SalesForce.
+W przypadku wstępnie zintegrowanych aplikacji wymienionych w galerii wskazówki krok po kroku są dostępne w celu skonfigurowania automatycznej aprowizacji. Zapoznaj się z [listą samouczków dotyczących zintegrowanych aplikacji galerii](../saas-apps/tutorial-list.md). Poniższy film wideo pokazuje, jak skonfigurować automatyczne Inicjowanie obsługi administracyjnej użytkowników w usłudze SalesForce.
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 

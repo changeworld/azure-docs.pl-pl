@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 283bd56b9d9cbe412e9c28127dd9dab7decc2d7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848310"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712523"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS z usługą Azure Multi-Factor Authentication
 
@@ -47,7 +47,7 @@ Serwery sieci VPN rozsyłają żądania uwierzytelniania, dlatego muszą mieć �
 
 Rozszerzenie serwera NPS jest przeznaczone do pracy z istniejącą infrastrukturą. Przed rozpoczęciem upewnij się, że zostały spełnione następujące wymagania wstępne.
 
-### <a name="licenses"></a>Licencje
+### <a name="licenses"></a>Liczba
 
 Rozszerzenie serwera NPS dla usługi Azure MFA jest dostępne dla klientów z [licencjami na usługę azure Multi-Factor Authentication](multi-factor-authentication.md) (uwzględnioną w ramach Azure AD — wersja Premium, EMS lub autonomicznej licencji usługi MFA). Licencje na korzystanie z usługi Azure MFA, takie jak na użytkownika lub licencje uwierzytelniania, są niezgodne z rozszerzeniem serwera NPS. 
 
@@ -273,7 +273,7 @@ Prawidłowymi i prawidłowymi sygnaturami czasowymi, które znajdują się w for
 
 ---
 
-### <a name="why-cant-i-sign-in"></a>Dlaczego nie mogę się zalogować?
+### <a name="why-cannot-i-sign-in"></a>Dlaczego nie mogę się zalogować?
 
 Sprawdź, czy hasło nie wygasło. Rozszerzenie serwera NPS nie obsługuje zmieniania haseł w ramach przepływu pracy logowania. Skontaktuj się z działem IT swojej organizacji, aby uzyskać dalszą pomoc.
 

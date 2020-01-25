@@ -7,20 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 31af550d4f499b4b4440a27037dc210bfdf0cb6f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 01/24/2020
+ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793447"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721578"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak korzystać z wyników wyszukiwania w usłudze Azure Wyszukiwanie poznawcze
 Ten artykuł zawiera wskazówki dotyczące implementowania standardowych elementów strony wyników wyszukiwania, takich jak łączna liczba, pobieranie dokumentów, kolejność sortowania i nawigacja. Opcje dotyczące strony, które tworzą dane lub informacje w wynikach wyszukiwania, są określane za pomocą żądań [przeszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) wysyłanych do usługi Azure wyszukiwanie poznawcze. 
 
 W interfejsie API REST żądania obejmują pobieranie parametrów poleceń, ścieżek i zapytań, które informują o tym, co jest wymagane, i jak sformułować odpowiedź. W zestawie SDK platformy .NET równoważny interfejs API jest [klasą DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
-Kilka przykładów kodu zawiera interfejs frontonu sieci Web, który można znaleźć tutaj: [zadania](https://azjobsdemo.azurewebsites.net/) w języku Warszawa i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Aby szybko wygenerować stronę wyszukiwania dla klienta, zapoznaj się z następującymi opcjami:
+
++ Użyj [generatora aplikacji](search-create-app-portal.md) w portalu, aby utworzyć stronę HTML z paskiem wyszukiwania, nawigacją aspektową i obszarem wyników.
++ Postępuj zgodnie z samouczkiem [Tworzenie C# pierwszej aplikacji w](tutorial-csharp-create-first-app.md) celu utworzenia klienta funkcjonalnego.
+
+Kilka przykładów kodu obejmuje interfejs frontonu sieci Web, który można znaleźć tutaj: [aplikacja demonstracyjna zadań w Nowym Jorku](https://azjobsdemo.azurewebsites.net/), [przykładowy kod JavaScript z aktywną witryną demonstracyjną](https://github.com/liamca/azure-search-javascript-samples)i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
 > Prawidłowe żądanie zawiera wiele elementów, takich jak adres URL usługi i ścieżka, zlecenie HTTP, `api-version`itd. W przypadku zwięzłości zostały przycięte przykłady w celu wyróżnienia tylko składni, która jest istotna dla dzielenia na strony. Aby uzyskać więcej informacji na temat składni żądania, zobacz [interfejsy API REST platformy Azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice).
@@ -88,13 +93,29 @@ Utworzysz metodę, która akceptuje wybraną opcję sortowania jako dane wejści
 > Chociaż domyślne ocenianie jest wystarczające dla wielu scenariuszy, zalecamy oparcie w niestandardowym profilu oceniania. Niestandardowy profil oceniania umożliwia podniesienie poziomu elementów, które są bardziej korzystne dla Twojej firmy. Aby uzyskać więcej informacji, zobacz [Dodawanie profilów oceniania](index-add-scoring-profiles.md) .
 >
 
+## <a name="hit-highlighting"></a>Wyróżnianie trafień
+
+Możesz zastosować formatowanie do dopasowywania terminów w wynikach wyszukiwania, co ułatwia dopasowanie do dopasowania. Instrukcje wyróżniania trafień są dostępne w [żądaniu zapytania](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+
+Formatowanie jest stosowane do zapytań w całym okresie. Zapytania dotyczące częściowych warunków, takich jak Wyszukiwanie rozmyte lub wyszukiwanie przy użyciu symboli wieloznacznych, które powodują rozwinięcie zapytania w aparacie, nie mogą używać wyróżniania trafień.
+
+```http
+POST /indexes/hotels/docs/search?api-version=2019-05-06 
+    {  
+      "search": "something",  
+      "highlight": "Description"  
+    }
+```
+
+
+
 ## <a name="faceted-navigation"></a>Nawigacja aspektowa
 
 Nawigacja wyszukiwania jest wspólna na stronie wyników, często znajdującej się na stronie lub w górnej części strony. Na platformie Azure Wyszukiwanie poznawcze Nawigacja aspektowa udostępnia funkcję wyszukiwania na podstawie wstępnie zdefiniowanych filtrów. Aby uzyskać szczegółowe informacje, zobacz [nawigację aspektową w usłudze Azure wyszukiwanie poznawcze](search-faceted-navigation.md) .
 
 ## <a name="filters-at-the-page-level"></a>Filtry na poziomie strony
 
-Jeśli projekt rozwiązania zawiera dedykowane strony wyszukiwania dla określonych typów zawartości (na przykład aplikacji detalicznej online zawierającej działy w górnej części strony), można wstawić [wyrażenie filtru](search-filters.md) obok zdarzenia **onkliknięcia** do Otwórz stronę w stanie sprzed przefiltrowania.
+Jeśli projekt rozwiązania zawiera dedykowane strony wyszukiwania dla określonych typów zawartości (na przykład aplikacji detalicznej online zawierającej działy w górnej części strony), można wstawić [wyrażenie filtru](search-filters.md) obok zdarzenia **onkliknięcia** , aby otworzyć stronę w stanie sprzed odfiltrowania.
 
 Filtr można wysłać z wyrażeniem wyszukiwania lub bez niego. Na przykład następujące żądanie przefiltruje nazwę marki, zwracając tylko te dokumenty, które pasują do niego.
 

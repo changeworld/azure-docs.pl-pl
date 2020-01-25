@@ -8,65 +8,65 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: b98aebfd7bef3edff8e046d7ef1c388ea57afa04
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 765ee3c737adbe1da89b9e908d0e22e44d0f29ba
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67501259"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748800"
 ---
-Magazyn zoptymalizowanych rozmiarów maszyn wirtualnych zapewniają Wysoka przepływność dysku i we/wy oraz idealnie nadają się do obsługi dużych ilości danych, SQL, NoSQL baz danych, magazynowanie danych i dużych transakcyjnych baz danych.  Przykłady obejmują bazy danych Cassandra, MongoDB, Cloudera i Redis. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu lokalnego dla każdego rozmiaru zoptymalizowane.
+Rozmiary maszyn wirtualnych zoptymalizowane pod kątem magazynu oferują wysoką przepływność dysku i operacje we/wy, a doskonale nadają się do obsługi danych Big Data, SQL, NoSQL, magazynowania danych i dużych transakcyjnych baz danych.  Przykłady obejmują Cassandra, MongoDB, Cloudera i Redis. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych oraz o przepływności lokalnego magazynu i przepustowości sieci dla każdego zoptymalizowanego rozmiaru.
 
-Lsv2 serii funkcje wysokiej przepływności, małego opóźnienia, jest bezpośrednio zamapowany Magazyn lokalny NVMe systemem [AMD EPYC &trade; 7551 procesora](https://www.amd.com/en/products/epyc-7000-series) ze wszystkich rdzeni zwiększanie wyniku 2.55 GHz, a maksymalna boost GHz 3.0. Maszyny wirtualne z serii Lsv2 są dostępne w rozmiarach od 8 do 80 procesorów wirtualnych w konfiguracji jednoczesnej wielowątkowości.  Dostępnych jest 8 GiB pamięci na każdy procesor wirtualny i jedno urządzenie NVMe SSD M.2 o pojemności 1,92 TB na każde 8 procesorów wirtualnych, a w przypadku serii L80s v2 19,2 TB (10x1,92 TB).
+Funkcja serii Lsv2 ma wysoką przepływność, małe opóźnienia, bezpośrednio mapowane lokalne magazyny interfejsu NVMe działające na [procesorze AMD EPYC &trade; 7551](https://www.amd.com/en/products/epyc-7000-series) i wszystkie podstawowe zwiększenie wydajności 2.55 GHz oraz maksymalne zwiększenie wydajności 3,0 GHz. Maszyny wirtualne z serii Lsv2 są dostępne w rozmiarach od 8 do 80 procesorów wirtualnych w konfiguracji jednoczesnej wielowątkowości.  Dostępnych jest 8 GiB pamięci na każdy procesor wirtualny i jedno urządzenie NVMe SSD M.2 o pojemności 1,92 TB na każde 8 procesorów wirtualnych, a w przypadku serii L80s v2 19,2 TB (10x1,92 TB).
 
 > [!NOTE]
-> Maszyny wirtualne z serii Lsv2 są zoptymalizowane pod kątem używania lokalnego dysku w węźle podłączony bezpośrednio do maszyny Wirtualnej, a nie korzystają z dysków danych trwałych. Pozwala to na większą operacje We/Wy / przepływność dla obciążeń. Lsv2 i serii Ls nie obsługują tworzenia lokalnej pamięci podręcznej w celu zwiększenia operacje We/Wy osiągalna dysków danych trwałych.
+> Maszyny wirtualne z serii Lsv2 są zoptymalizowane pod kątem używania dysku lokalnego w węźle dołączonym bezpośrednio do maszyny wirtualnej zamiast korzystania z trwałych dysków danych. Pozwala to na większą liczbę operacji we/wy na sekundę dla obciążeń. Seria Lsv2 i ls nie obsługuje tworzenia lokalnej pamięci podręcznej w celu zwiększenia liczby operacji we/wy osiągalnej przez trwałe dyski danych.
 >
-> Wysoka przepływność i operacje We/Wy dysku lokalnego sprawia, że Lsv2 i maszyny wirtualne z serii Ls idealnym rozwiązaniem dla magazynów NoSQL, takie jak bazy danych Apache Cassandra i bazy danych MongoDB, które replikowanie danych między wieloma maszynami wirtualnymi do osiągnięcia trwałości w przypadku awarii jednej maszyny Wirtualnej.
+> Wysoka przepływność i operacje we/wy na dysku lokalnym sprawia, że maszyny wirtualne z serii Lsv2 i LS są idealne dla magazynów NoSQL, takich jak Apache Cassandra i MongoDB, które replikują dane między wieloma maszynami wirtualnymi w celu osiągnięcia trwałości w przypadku awarii pojedynczej maszyny wirtualnej.
 >
-> Aby dowiedzieć się więcej, zobacz [optymalizacji wydajności na maszynach wirtualnych serii Lsv2](../articles/virtual-machines/linux/storage-performance.md).  
+> Aby dowiedzieć się więcej, zobacz [Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2](../articles/virtual-machines/linux/storage-performance.md).  
 
 
 ## <a name="lsv2-series"></a>Seria Lsv2
 
 ACU: 150-175
 
-Magazyn w warstwie Premium: Obsługiwane
+Premium Storage: obsługiwane
 
-Buforowanie Premium Storage: Nieobsługiwane
+Buforowanie Premium Storage: nieobsługiwane
 
-| Rozmiar          | Procesor wirtualny | Pamięć (GiB) | Dysku tymczasowego<sup>1</sup> (GiB) | Dyski NVMe<sup>2</sup> | Przepływność dysków NVMe<sup>3</sup> (odczytu na SEKUNDĘ / MB/s) | Maksymalna liczba danych przepływność niebuforowanych dysków (na sekundę/MB/s)<sup>4</sup> | Dyski z danymi maksymalna | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar          | vCPU | Pamięć (GiB) | Dysk tymczasowy<sup>1</sup> (GIB) | Dyski interfejsu NVMe<sup>2</sup> | Przepływność dysków interfejsu NVMe<sup>3</sup> (odczyt operacji we/wy/s) | Maksymalna przepływność dysku danych w pamięci podręcznej (IOPs/MB/s)<sup>4</sup> | Maksymalna liczba dysków danych | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 400000 / 2000  | 8000/160   | 16 | 2 / 3200  |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 800000 / 4000  | 16000/320  | 32 | 4 / 6400  |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x1.92 TB  | 1,5 MB / 8000    | 32000/640  | 32 | 8 / 12800 |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x1.92 TB  | 2.2 M / 14000   | 48000/960  | 32 | 8 / 16000+ |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.9 M / 16000   | 64000/1280 | 32 | 8 / 16000+ |
-| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x1.92TB   | 3.8 M / 20000   | 80000/1400 | 32 | 8 / 16000+ |
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200  |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400  |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32 | 8 / 12800 |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6X 1.92 TB  | 2.2 m/14000   | 48000/960  | 32 | 8/16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x 1.92 TB  | 2.9 m/16000   | 64000/1280 | 32 | 8/16000 + |
+| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10X 1.92 TB   | 3.8 m/20000   | 80000/1400 | 32 | 8/16000 + |
 
-<sup>1</sup> maszyny wirtualne z serii Lsv2 ma standardowy dysk na podstawie zasobów temp SCSI dla użycie pliku stronicowania/wymiany systemu operacyjnego (D: na Windows, /dev/sdb w systemie Linux). Ten dysk zapewnia 80 GiB pamięci, 4000 operacje We/Wy i 80 MB/s transferu kurs co 8 wirtualnych procesorów CPU (np. Standard_L80s_v2 zapewnia 800 GiB 40 000 operacji We/Wy i 800 MB/s). Gwarantuje to, że dyski NVMe, które mogą być w pełni przeznaczone do użycia w aplikacji. Ten dysk jest tymczasowych, a wszystkie dane zostaną utracone na Zatrzymaj/Cofnij Przydział.
+<sup>1</sup> maszyny wirtualne z serii Lsv2 mają standardowy dysk zasobów oparty na interfejsie SCSI na potrzeby STRONICOWANIA systemu operacyjnego/użycia pliku wymiany (D: w systemie Windows,/dev/sdb on Linux). Ten dysk udostępnia 80 GiB magazynu, 4 000 IOPS i 80 liczbę MB/s dla każdego 8 procesorów wirtualnych vCPU (np. Standard_L80s_v2 zapewnia 800 GiB w przypadku operacji wejścia/wyjścia na sekundę i 40 000 MB/s). Dzięki temu dyski interfejsu NVMe mogą być w pełni przeznaczone do użytku aplikacji. Ten dysk jest nieulotny i wszystkie dane zostaną utracone przy zatrzymaniu/cofnięciu przydziału.
 
-<sup>2</sup> efemeryczne dyski NVMe lokalne, dane zostaną utracone na tych dyskach, jeśli użytkownik Zatrzymaj/Cofnij Przydział maszyny Wirtualnej.
+<sup>2</sup> lokalne dyski interfejsu NVMe są tymczasowe, dane zostaną utracone na tych dyskach, jeśli zatrzymasz/ZWOLNIsz maszynę wirtualną.
 
-<sup>3</sup> technologii bezpośredniego NVMe funkcji Hyper-V udostępnia bez ograniczania dostępu do lokalnych dysków NVMe bezpiecznie mapowane na miejsce maszyny Wirtualnej gościa.  Osiągnięcie maksymalnej wydajności wymaga, przy użyciu najnowszej kompilacji WS2019 lub Ubuntu 18.04 lub 16.04 w portalu Azure Marketplace.  Wydajność zapisu zależy od rozmiaru operacji We/Wy, obciążenia dysku i wykorzystanie pojemności.
+<sup>3</sup> Technologia bezpośredniego interfejsu NVMe funkcji Hyper-V zapewnia nieograniczoną dostęp do lokalnych dysków interfejsu NVMe, które są bezpiecznie mapowane do przestrzeni maszyny wirtualnej gościa.  Osiągnięcie maksymalnej wydajności wymaga użycia najnowszej WS2019 kompilacja lub Ubuntu 18,04 lub 16,04 z portalu Azure Marketplace.  Wydajność zapisu zależy od rozmiaru operacji we/wy, obciążenia dysku i wykorzystania pojemności.
 
-<sup>4</sup> maszyny wirtualne z serii Lsv2 nie są oferowane pamięci podręcznej hosta dla dysku z danymi, ponieważ nie korzysta obciążeń Lsv2.  Jednak Lsv2 maszyn wirtualnych może obsłużyć opcji dysku Efemeryczne system operacyjny maszyny Wirtualnej platformy Azure (maksymalnie 30 GiB).
+<sup>4</sup> maszyny wirtualne z serii Lsv2 nie zapewniają pamięci podręcznej hosta dla dysku danych, ponieważ nie korzystają z obciążeń Lsv2.  Jednak maszyny wirtualne Lsv2 mogą obsługiwać opcję dysku tymczasowych maszyn wirtualnych systemu Azure (do 30 GiB).
 
-<sup>5</sup> maszyny wirtualne z więcej niż 64 procesorów wirtualnych Vcpu Wymagaj jednej z tych obsługiwanych systemów operacyjnych gościa:
-- Windows Server 2016 lub nowszy
-- Ubuntu 16.04 LTS lub później za pomocą platformy Azure dostosowanych jądra (4.15 jądra lub nowszy)
+<sup>5</sup> maszyny wirtualne z ponad 64 procesorów wirtualnych vCPU wymagają jednego z obsługiwanych systemów operacyjnych gościa:
+- System Windows Server 2016 lub nowszy
+- Ubuntu 16,04 LTS lub nowszy z dostrojonym jądrem platformy Azure (jądrem 4,15 lub nowszym)
 - SLES 12 z dodatkiem SP2 lub nowszym
-- RHEL lub CentOS wersji 6.7 do 6.10 4.3.1 pakietem LIS firmy Microsoft (lub nowszym) zainstalowane
-- RHEL lub CentOS w wersji 7.3, przy użyciu pakietu Microsoft-LIS 4.2.1 (lub nowszym) zainstalowane
-- W wersji RHEL lub CentOS 7.6 lub nowszej
+- RHEL lub CentOS w wersji 6,7 do 6,10 przy użyciu dostarczonej przez firmę Microsoft pakietu LIS (lub nowszego)
+- RHEL lub CentOS w wersji 7,3 z pakietem LIS dostarczonym przez firmę Microsoft (lub nowszym)
+- RHEL lub CentOS w wersji 7,6 lub nowszej
 - Oracle Linux z UEK4 lub nowszym
-- 9 debian backports jądra, Debian, 10 lub nowszym
-- CoreOS z 4.14 jądra lub nowszym
+- Debian 9 z jądrem, Debian 10 lub nowszym
+- CoreOS z jądrem 4,14 lub nowszym
 
 
 ## <a name="size-table-definitions"></a>Definicje tabel rozmiaru
 
 - Pojemność magazynu jest podawana w jednostkach GiB (1024^3 bajtów). Podczas porównywania dysków mierzonych w GB (1000^3 bajtów) z dyskami mierzonymi w GiB (1024^3 bajtów) należy pamiętać, że pojemność podawana w GiB może wydawać się mniejsza. Na przykład 1023 GiB = 1098,4 GB.
 - Przepływność dysku mierzona jest jako liczba operacji wejścia/wyjścia na sekundę i MB/s, gdzie 1 MB/s = 10^6 bajtów/s.
-- Jeśli chcesz uzyskać najlepszą wydajność dla maszyn wirtualnych, należy ograniczyć liczbę dysków z danymi na 2 dyski na procesor wirtualny vCPU.
-- **Oczekiwano przepustowość sieci** maksymalną mają charakter [przydzielonej dla typu maszyny Wirtualnej przepustowości](../articles/virtual-network/virtual-machine-network-throughput.md) we wszystkich kartach sieciowych, dla wszystkich miejsc docelowych. Górne limity nie są gwarantowane, ale mają stanowić wskazówkę do wybierania właściwego typu maszyny wirtualnej dla planowanej aplikacji. Rzeczywista wydajność sieci będzie zależeć od wielu czynników, takich jak przeciążenie sieci, obciążenie aplikacji oraz ustawienia sieci. Aby uzyskać informacje na temat optymalizowania przepływności sieci, zobacz [Optimizing network throughput for Windows and Linux (Optymalizowanie przepływności sieci dla systemów Windows i Linux)](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md). Aby uzyskać oczekiwaną wydajność sieci w systemie Linux lub Windows, konieczne może być wybranie konkretnej wersji maszyny wirtualnej lub jej zoptymalizowanie. Aby uzyskać więcej informacji, zobacz [How to reliably test for virtual machine throughput (Jak wiarygodnie przetestować przepływność maszyny wirtualnej)](../articles/virtual-network/virtual-network-bandwidth-testing.md).
+- Jeśli chcesz uzyskać najlepszą wydajność dla maszyn wirtualnych, należy ograniczyć liczbę dysków danych do 2 dysków na vCPU.
+- **Oczekiwana przepustowość sieci** to maksymalna zagregowana [przepustowość przyalokowana na typ maszyny wirtualnej](../articles/virtual-network/virtual-machine-network-throughput.md) dla wszystkich kart sieciowych dla wszystkich miejsc docelowych. Górne limity nie są gwarantowane, ale mają stanowić wskazówkę do wybierania właściwego typu maszyny wirtualnej dla planowanej aplikacji. Rzeczywista wydajność sieci będzie zależeć od wielu czynników, takich jak przeciążenie sieci, obciążenie aplikacji oraz ustawienia sieci. Aby uzyskać informacje na temat optymalizowania przepływności sieci, zobacz [Optimizing network throughput for Windows and Linux (Optymalizowanie przepływności sieci dla systemów Windows i Linux)](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md). Aby uzyskać oczekiwaną wydajność sieci w systemie Linux lub Windows, konieczne może być wybranie konkretnej wersji maszyny wirtualnej lub jej zoptymalizowanie. Aby uzyskać więcej informacji, zobacz [How to reliably test for virtual machine throughput (Jak wiarygodnie przetestować przepływność maszyny wirtualnej)](../articles/virtual-network/virtual-network-bandwidth-testing.md).

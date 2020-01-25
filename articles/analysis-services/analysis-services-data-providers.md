@@ -4,15 +4,15 @@ description: Zawiera opis bibliotek klienckich wymaganych przez aplikacje klienc
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 01/23/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ad7165b1205921ad324525b9f46a22bec5cebaa9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 006e1fb3fcef1ebcd0e09dffb79149e75eec622a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885311"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713176"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Biblioteki klienckie do łączenia się z Azure Analysis Services
 
@@ -20,21 +20,21 @@ Biblioteki klienckie są niezbędne dla aplikacji i narzędzi klienckich do łą
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Pobierz najnowsze biblioteki klienckie (Instalator Windows)  
 
-|Do pobrania  |Wersja produktu  | 
+|Pobierz  |Wersja produktu  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.10.25    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.10.25       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.2.3.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.2.3.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.21.27    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.21.27       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.4.0.5    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.4.0.5     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>Biblioteki AMO i ADOMD (pakiety NuGet)
 
 Biblioteki ADOMD Management Objects (AMO) i klienckie usługi są dostępne jako pakiety instalowalne z [NuGet.org](https://www.nuget.org/). Analysis Services Zaleca się przeprowadzenie migracji do odwołań NuGet zamiast używania Instalator Windows. 
 
-|Package  | Wersja produktu  | 
+|Pakiet  | Wersja produktu  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.2.3     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.2.3      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.4.0.5     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.4.0.5      |
 
 Zestawy pakietów NuGet AssemblyVersion są zgodne z wersją semantyki: główna. Średni. Wysłana. Pakiet NuGet odwołuje się do załadowania oczekiwanej wersji, nawet jeśli istnieje inna wersja w pamięci GAC (z powodu instalacji MSI). Poprawka jest zwiększana dla każdej wersji. Wersje biblioteki AMO i ADOMD są utrzymywane w synchronizacji.
 

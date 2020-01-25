@@ -1,101 +1,101 @@
 ---
-title: Eksplorowanie danych w SQL Server maszynie wirtualnej — proces nauki o danych zespołu
+title: Eksplorowanie danych na maszynie wirtualnej programu SQL Server — zespołu danych dla celów naukowych
 description: Eksploruj i Przetwarzaj dane oraz Generuj funkcje przy użyciu języka Python lub SQL w SQL Server maszynie wirtualnej na platformie Azure.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 877c639c35378b173b6ec9c8697725e3b3c09290
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d3eb4d2faf58d1861fda9d04437f9f9530c77672
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053615"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718484"
 ---
-# <a name="heading"></a>Przetwarzanie danych w SQL Server maszynie wirtualnej na platformie Azure
-W tym dokumencie opisano, jak eksplorować dane i generować funkcje dla danych przechowywanych na maszynie wirtualnej SQL Server na platformie Azure. Można to zrobić przez przetwarzanie danych przy użyciu programu SQL lub języka programowania, takiego jak Python.
+# <a name="heading"></a>Przetwarzanie danych w maszyną wirtualną programu SQL Server na platformie Azure
+W tym dokumencie opisano, jak eksplorować dane i generować funkcji dla danych przechowywanych na maszynę Wirtualną programu SQL Server na platformie Azure. Ten cel może być wykonany przez przetwarzanie danych przy użyciu programu SQL lub języka programowania, takiego jak Python.
 
 > [!NOTE]
-> Przykładowe instrukcje SQL w tym dokumencie założono, że dane są w SQL Server. Jeśli tak nie jest, zapoznaj się z mapą procesów analizy danych w chmurze, aby dowiedzieć się, jak przenieść dane do SQL Server.
+> Przykładowe instrukcje SQL, w tym dokumencie przyjęto założenie, że dane są w programie SQL Server. Jeśli nie, można znaleźć mapy procesu do nauki o danych chmury dowiesz się, jak przenieść dane do programu SQL Server.
 > 
 > 
 
-## <a name="SQL"></a>Korzystanie z języka SQL
-W tej sekcji opisano następujące zadania dotyczące przetwarzanie danych:
+## <a name="SQL"></a>Przy użyciu języka SQL
+Opisano następujące zadania wrangling danych w tej sekcji przy użyciu języka SQL:
 
 1. [Eksploracja danych](#sql-dataexploration)
 2. [Generowanie funkcji](#sql-featuregen)
 
 ### <a name="sql-dataexploration"></a>Eksploracja danych
-Oto kilka przykładowych skryptów SQL, których można użyć do eksplorowania magazynów danych w SQL Server.
+Poniżej przedstawiono kilka przykładowe skrypty SQL, których można użyć, aby zapoznać się z magazynami danych w programie SQL Server.
 
 > [!NOTE]
-> W przypadku praktycznego przykładu można użyć [zestawu danych NYC taksówki](https://www.andresmh.com/nyctaxitrips/) i odwołać się do IPNB [NYC danych przetwarzanie przy użyciu notesu IPython i SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) w celu uzyskania kompleksowego przewodnika.
+> Na przykład praktycznych, możesz użyć [zestawu danych taksówek NYC](https://www.andresmh.com/nyctaxitrips/) i odnoszą się do IPNB pod tytułem [danych NYC inteligencji przy użyciu IPython Notebook i programu SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) dla przewodnika end-to-end.
 > 
 > 
 
-1. Pobierz liczbę obserwacji dziennie
+1. Zliczanie uwagi na dzień
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. Pobieranie poziomów w kolumnie kategorii
+2. Pobierz poziomy w kolumnie podzielonych na kategorie
    
     `select  distinct <column_name> from <databasename>`
-3. Pobierz liczbę poziomów w połączeniu dwóch kolumn kategorii 
+3. Pobierz liczbę poziomów w połączeniu z dwóch kolumn podzielonych na kategorie 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. Pobieranie dystrybucji dla kolumn liczbowych
+4. Rozpoczynanie dystrybucji dla kolumny liczbowe
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 ### <a name="sql-featuregen"></a>Generowanie funkcji
-W tej sekcji opisano sposoby generowania funkcji przy użyciu programu SQL:  
+W tej sekcji opisano sposób generowania funkcji przy użyciu języka SQL:  
 
-1. [Generowanie funkcji na podstawie liczby](#sql-countfeature)
-2. [Generowanie funkcji pakowania](#sql-binningfeature)
-3. [Wdrażanie funkcji z pojedynczej kolumny](#sql-featurerollout)
+1. [Liczba na podstawie funkcji generowania](#sql-countfeature)
+2. [Kwantowanie generacji funkcji](#sql-binningfeature)
+3. [Wdrażanie funkcji z jednej kolumny](#sql-featurerollout)
 
 > [!NOTE]
-> Po wygenerowaniu dodatkowych funkcji można je dodać jako kolumny do istniejącej tabeli lub utworzyć nową tabelę z dodatkowymi funkcjami i kluczem podstawowym, które mogą być sprzężone z oryginalną tabelą. 
+> Po wygenerowaniu dodatkowe funkcje, możesz dodać je jako kolumny do istniejącej tabeli lub Utwórz nową tabelę z dodatkowych funkcji i klucz podstawowy, który może być łączone z oryginalnej tabeli. 
 > 
 > 
 
-### <a name="sql-countfeature"></a>Generowanie funkcji na podstawie liczby
-W poniższych przykładach pokazano dwa sposoby generowania funkcji count. W pierwszej metodzie jest używana suma warunkowa, a druga metoda używa klauzuli "Where". Mogą one następnie być sprzężone z oryginalną tabelą (przy użyciu kolumn klucza podstawowego) w celu uzyskania funkcji count wraz z oryginalnymi danymi.
+### <a name="sql-countfeature"></a>Liczba na podstawie funkcji generowania
+W poniższych przykładach pokazano dwa sposoby generowania funkcji count. Pierwsza metoda używa sum warunkowych, a druga metoda używa klauzula "where". Te wyniki mogą następnie być sprzężone z oryginalną tabelą (przy użyciu kolumn klucza podstawowego) w celu uzyskania funkcji count wraz z oryginalnymi danymi.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-### <a name="sql-binningfeature"></a>Generowanie funkcji pakowania
-Poniższy przykład pokazuje, jak generować funkcje binned przez pakowania (przy użyciu pięciu zasobników) kolumny liczbowej, która może być używana jako funkcja:
+### <a name="sql-binningfeature"></a>Kwantowanie generacji funkcji
+Poniższy przykład pokazuje, jak można wygenerować kwanty funkcji przez proces pakowania (pojemniki pięć) kolumny liczbowe, która może służyć jako funkcja zamiast tego:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>Wdrażanie funkcji z pojedynczej kolumny
-W tej sekcji pokazano, jak wdrożyć pojedynczą kolumnę w tabeli w celu wygenerowania dodatkowych funkcji. W przykładzie przyjęto założenie, że w tabeli znajduje się kolumna Latitude lub długość geograficzna, z której próbujesz generować funkcje.
+### <a name="sql-featurerollout"></a>Wdrażanie funkcji z jednej kolumny
+W tej sekcji pokażemy, jak wdrażać pojedynczą kolumnę w tabeli, aby wygenerować dodatkowe funkcje. W przykładzie założono, że w tabeli, z którego chcesz wygenerować funkcji znajduje się kolumna szerokości i długości geograficznej.
 
-Poniżej znajduje się krótki początek danych lokalizacji Latitude/długości geograficznej (od StackOverflow [, jak zmierzyć dokładność długości i szerokości](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)geograficznej?). Jest to przydatne do zrozumienia przed featurizing pola lokalizacji:
+Poniżej przedstawiono krótki Podręcznik szerokości/długości geograficznej lokalizacji danych (z zasobami w witrynie stackoverflow [sposób mierzenia dokładności szerokości i długości geograficznej?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Wskazówki te są przydatne do zrozumienia przed dołączeniem lokalizacji jako jednej lub kilku funkcji:
 
-* W tym polu jest wyświetlana informacja o tym, czy mamy północ, południe, wschód czy zachód na świecie.
-* Cyfra różna od zera informuje nas, że używamy długości geograficznej, a nie szerokości geograficznej.
-* Cyfra zawiera pozycję około 1 000 kilometrów. Daje nam to przydatne informacje o tym, co kontynent lub ocean.
-* Cyfra (jeden stopień dziesiętny) daje pozycję do 111 kilometrów (60 mil morskich, około 69 kilometrów). Może on informować o stanie, kraju lub regionie, w którym się znajdujesz.
-* Pierwsze miejsce dziesiętne jest równe 11,1 km: może odróżnić pozycję jednego miasta od sąsiedniego miasta.
-* Drugie miejsce dziesiętne jest równe 1,1 km: może oddzielić jeden Village od następnego.
-* Trzecie miejsce dziesiętne ma wartość do 110 m: może identyfikować duże pole rolnicze lub instytucjonalne.
-* Czwarte miejsce dziesiętne jest warta do 11 m: może identyfikować Działka ziemi. Jest to porównywalne do typowej dokładności niepoprawionej jednostki GPS bez zakłóceń.
-* Piąte miejsce dziesiętne jest równe 1,1 m: odróżnia drzewa od siebie. Dokładność tego poziomu z komercyjnymi jednostkami GPS można osiągnąć tylko przy użyciu korekty różnicowej.
-* Szóste miejsce dziesiętne jest równe 0,11 m: można go użyć do bardziej szczegółowego układania struktur w celu projektowania Landscapes, tworzenia dróg. Powinien być wystarczająco dobry, aby można było śledzić ruchy Glaciers i rzek. Można to osiągnąć, pobierając miary painstaking z GPS, takie jak rozwiązane z różnicą GPS.
+* Znak informuje NAS, czy możemy się północ lub południe, wschód lub zachodnie na całym świecie.
+* Wartość różną od zera setki cyfrę informuje NAS, że firma Microsoft korzysta długość geograficzna, szerokość nie!
+* Dziesiątki cyfrę daje możliwość około 1000 kilometrów. Daje nam przydatnych informacji o jakie kontynent lub ocean jesteśmy na.
+* Cyfra jednostki (jeden stopień dziesiętna) zapewnia pozycji do 111 kilometrów (60 mil, około 69 mil). Może on informować o stanie, kraju lub regionie, w którym się znajdujesz.
+* Pierwsze miejsce dziesiętne, warto maksymalnie 11.1 km: można odróżnić, pozycja jeden duży kolumny city z sąsiednich Miasto dużych.
+* Drugie miejsce dziesiętne, warto maksymalnie 1.1 km: je oddzielić wieś jednego z następnej.
+* Warto do 110 m: można zidentyfikować, duże pole rolnicze lub campus instytucjonalnych jest trzeciego miejsca dziesiętnego.
+* Czwarte miejsce dziesiętne warto m: do 11, że może ono ustalić działka ziemi. Jest ona porównywalna ze typowe dokładność Niepoprawione jednostki GPS bez zakłóceń.
+* Piąty miejsca dziesiętnego jest warte maksymalnie 1.1 m: go odróżnia drzew od siebie nawzajem. Dokładność do tego poziomu przy użyciu komercyjnych jednostek GPS może odbyć się tylko z różnicowego korekty.
+* Szósty miejsce dziesiętne warto m: maksymalnie uwzględnieniu wartości 0,11, których można użyć tego do układania struktury szczegóły dotyczące projektowania krajobrazów, tworzenie drogach. Powinna ona ponad wystarczająco dobre do śledzenia przemieszczania glaciers i rzek. Można to osiągnąć, wykonując painstaking miar z GPS, takich jak GPS differentially poprawiony.
 
-Informacje o lokalizacji można featurized w następujący sposób, oddzielając informacje o regionie, lokalizacji i miejscowości. Należy zauważyć, że można również wywołać punkt końcowy REST, taki jak interfejs API usługi mapy Bing dostępny w [lokalizacji Znajdź lokalizację przez punkt](https://msdn.microsoft.com/library/ff701710.aspx) , aby uzyskać informacje o regionie/okręgu.
+Informacje o lokalizacji można neural następująco, oddzielanie region, lokalizacji i miejscowości. Możesz również wywołać punkt końcowy REST, taki jak interfejs API usługi mapy Bing dostępny w miejscu [wyszukiwania lokalizacji przez punkt](https://msdn.microsoft.com/library/ff701710.aspx) , aby uzyskać informacje o regionie/okręgu.
 
     select 
         <location_columnname>
@@ -108,36 +108,36 @@ Informacje o lokalizacji można featurized w następujący sposób, oddzielając
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-Te funkcje oparte na lokalizacji mogą być dodatkowo używane do generowania dodatkowych funkcji zliczania zgodnie z wcześniejszym opisem. 
+Te funkcje oparte na lokalizacji dalsze można wygenerować liczba dodatkowych funkcji, zgodnie z wcześniejszym opisem. 
 
 > [!TIP]
-> Można programowo wstawić rekordy przy użyciu wybranego języka. Może być konieczne wstawienie danych w fragmentach, aby zwiększyć wydajność zapisu (Przykładowo, jak to zrobić za pomocą moduł pyodbc, zobacz [przykład HelloWorld, aby uzyskać dostęp do programu SqlServer przy użyciu języka Python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Kolejną alternatywą jest wstawianie danych w bazie danych przy użyciu [narzędzia bcp](https://msdn.microsoft.com/library/ms162802.aspx).
+> Programowe można wstawić rekordów przy użyciu wybranego języka. Musisz wstawić dane we fragmentach, aby zwiększyć wydajność zapisu (na przykład jak to zrobić za pomocą moduł pyodbc zobacz [HelloWorld przykładu, aby uzyskać dostęp SQLServer za pomocą języka python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Innym sposobem jest, aby wstawić dane do bazy danych przy użyciu [narzędzie BCP](https://msdn.microsoft.com/library/ms162802.aspx).
 > 
 > 
 
-### <a name="sql-aml"></a>Nawiązywanie połączenia z Azure Machine Learning
-Nowo wygenerowana funkcja może zostać dodana jako kolumna do istniejącej tabeli lub zapisana w nowej tabeli i dołączona do oryginalnej tabeli w celu uczenia maszynowego. Funkcje mogą być generowane lub dostępne, jeśli zostały już utworzone, przy użyciu modułu [Importuj dane][import-data] w Azure Machine Learning jak pokazano poniżej:
+### <a name="sql-aml"></a>Nawiązywanie połączenia z usługi Azure Machine Learning
+Funkcja nowo wygenerowane można dodane jako kolumny do istniejącej tabeli lub przechowywane w nowej tabeli i łączone z oryginalnej tabeli dla usługi machine learning. Funkcje mogą być generowane lub dostępne, jeśli zostały już utworzone, przy użyciu modułu [Importuj dane][import-data] w Azure Machine Learning jak pokazano poniżej:
 
-![Czytelnicy Azure][1] 
+![Czytelnicy usługi Azure ml][1] 
 
-## <a name="python"></a>Korzystanie z języka programowania, takiego jak Python
-Używanie języka Python do eksplorowania danych i generowania funkcji, gdy dane są w SQL Server są podobne do przetwarzania danych w obiekcie blob platformy Azure przy użyciu języka Python zgodnie z opisem w temacie [przetwarzanie danych obiektów blob platformy Azure w środowisku nauki danych](data-blob.md). Dane muszą zostać załadowane z bazy danych do ramki danych Pandas, a następnie można je przetworzyć w dalszej postaci. Dokumentuje proces łączenia się z bazą danych i ładowania danych do ramki danych w tej sekcji.
+## <a name="python"></a>Przy użyciu języka programowania, takich jak Python
+Przy użyciu języka Python, aby eksplorować dane i wygenerować funkcje, gdy dane znajdują się w programie SQL Server jest podobny do przetwarzania danych w usłudze Azure blob przy użyciu języka Python, zgodnie z opisem w [danych obiektów Blob platformy Azure proces w danym środowisku do nauki o danych](data-blob.md). Załaduj dane z bazy danych do ramki danych Pandas w celu przetworzenia. Udokumentowaliśmy proces łączenia z bazą danych i ładowania danych do ramki danych w tej sekcji.
 
-Następujący format parametrów połączenia może służyć do nawiązywania połączenia z bazą danych SQL Server z poziomu języka Python przy użyciu moduł pyodbc (Zastąp wartości ServerName, dbname, username i Password) określonymi wartościami.
+Następujący format parametrów połączenia może służyć do łączenia z bazą danych programu SQL Server za pomocą języka Python za pomocą moduł pyodbc (Zastąp servername, dbname, nazwę użytkownika i hasła o określonej wartości):
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Biblioteka Pandas](https://pandas.pydata.org/) w języku Python oferuje bogaty zestaw struktur danych i narzędzi do analizy danych na potrzeby manipulowania danymi na potrzeby programowania w języku Python. Poniższy kod odczytuje wyniki zwrócone z SQL Server Database do ramki danych Pandas:
+[Biblioteki Pandas](https://pandas.pydata.org/) w języku Python zawiera bogaty zestaw struktur danych i narzędzia do analizy danych do manipulowania danymi programowania Python. Poniższy kod odczytuje wyniki zwracane z bazy danych programu SQL Server do ramki danych Pandas:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-Teraz możesz współpracować z ramką danych Pandas, jak opisano w artykule [przetwarzanie danych obiektów blob platformy Azure w środowisku nauki danych](data-blob.md).
+Teraz możesz pracować z biblioteki Pandas ramki danych zgodnie z opisem w artykule [danych obiektów Blob platformy Azure proces w danym środowisku do nauki o danych](data-blob.md).
 
-## <a name="azure-data-science-in-action-example"></a>Przykładowa analiza danych platformy Azure w ramach akcji
-Aby zapoznać się z kompleksowym przykładem procesu nauki o danych platformy Azure przy użyciu publicznego zestawu danych, zobacz [proces analizy danych platformy Azure w działaniu](sql-walkthrough.md).
+## <a name="azure-data-science-in-action-example"></a>Do nauki o danych platformy Azure, w przykładzie akcji
+Na przykład wskazówki end-to-end procesu do nauki o danych platformy Azure przy użyciu publicznego zestawu danych, zobacz [Azure danych dla celów naukowych w działaniu](sql-walkthrough.md).
 
 [1]: ./media/sql-server-virtual-machine/reader_db_featurizedinput.png
 

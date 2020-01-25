@@ -3,20 +3,20 @@ title: Eksplorowanie danych i modelowanie za pomocą platformy Spark — zespoł
 description: Prezentuje możliwości Eksplorowanie i modelowanie danych zestawu narzędzi Biblioteka MLlib platformy Spark na platformie Azure.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: acc701431afa458efd0768fb3d6898fd1920e333
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 208f176ca942fb382ff2ed81d872602f7229b0a4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811254"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718637"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Eksplorowanie i modelowanie danych za pomocą platformy Spark
 
@@ -30,7 +30,7 @@ Modeli, których używamy obejmują regresji logistycznej liniowego i liniowa, l
 * [Regresja liniowa z SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) model regresji liniowej, który używa metody stochastycznego spadku gradientu (SGD) i do optymalizacji i funkcji skalowania do prognozowania kwoty Porada płatne. 
 * [Regresji logistycznej przy użyciu LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) lub regresji "logit" jest model regresji, który można użyć, gdy zmienna zależnych od ustawień lokalnych jest podzielone na kategorie celu klasyfikacji danych. LBFGS jest algorytm optymalizacji quasi Newton — która przybliża algorytm Broyden — Fletcher — Goldfarb — Shanno (BFGS) przy użyciu ograniczona ilość pamięci komputera i która jest powszechnie używana w usłudze machine learning.
 * [Losowe lasów](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) są decyzyjne drzewa decyzyjne.  Łączą wiele drzewa decyzyjne, aby zmniejszyć ryzyko overfitting. Losowe lasach są używane do regresji i klasyfikacji i mogą obsługiwać funkcje podzielonych na kategorie i można rozszerzyć na ustawienie klasyfikacji wieloklasowej. One skalowanie funkcja nie jest wymagane i są w stanie przechwytywania nieliniowość i są wyposażone w interakcje. Losowe lasy są jednymi z najbardziej popularnych modeli, które w funkcji klasyfikacji i regresji uczenia maszynowego.
-* [Gradient wzmocnione drzewa](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) są decyzyjne drzewa decyzyjne. GBTs uczenie drzew decyzyjnych interakcyjnie, aby zminimalizować funkcję utraty. GBTs służą do regresji i klasyfikacji mogą obsługiwać funkcje podzielonych na kategorie, funkcja skalowanie nie jest wymagane i są w stanie przechwytywania nieliniowość i interakcje są wyposażone w. One można również w ustawieniu kontra klasyfikacji.
+* [Drzewa podwyższające wartości gradientu](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) są kompletnymi drzewami decyzyjnymi. GBTSe drzewa decyzyjne w sposób iteracyjny, aby zminimalizować funkcję strat. GBTS jest używany do regresji i klasyfikacji i może obsługiwać funkcje kategorii, nie wymaga skalowania funkcji, a także może przechwytywać interakcje i funkcje. One można również w ustawieniu kontra klasyfikacji.
 
 Kroki modelowania również zawierać kod, przedstawiający sposób uczenie, ocenę i Zapisz każdego typu modelu. Python został użyty do kodu rozwiązania i wyświetlić odpowiednie wykresy.   
 
@@ -47,14 +47,14 @@ Kroki instalacji i kodu w tym przewodniku dla podano przy użyciu HDInsight Spar
 
 ### <a name="spark-16-notebooks"></a>Notesy platformy Spark 1.6
 
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): Zawiera informacje dotyczące sposobu wykonywania eksploracji danych, modelowania i ocenianie z kilku różnych algorytmów.
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): zawiera informacje na temat wykonywania eksploracji danych, modelowania i ocenianie z kilku różnych algorytmów.
 
 ### <a name="spark-20-notebooks"></a>Notesy platformy Spark w wersji 2.0
 Zadania regresji i klasyfikacji, które są implementowane przy użyciu klastra Spark 2.0 znajdują się w oddzielnych notesów i notesu klasyfikacji korzysta z innego zestawu danych:
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ten plik zawiera informacje na temat wykonywania eksploracji danych, modelowania, oraz do oceniania platformy Spark w wersji 2.0 klastrów za pomocą taksówek NYC podróży i klasie zestawu danych, opisano [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ten notes może być dobry punkt wyjścia do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0. Aby uzyskać bardziej szczegółowy notesu analizuje dane taksówek NYC, zobacz następnego notesu na tej liście. Zobacz uwagi na końcu tej listy pozwalające porównać te notesy. 
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ten plik pokazuje sposób wykonania danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu taksówek NYC podróży i klasie zestawu danych, opisano [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ten plik pokazuje, jak przeprowadzić danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu dobrze znanych linie lotnicze w czasie wyjścia zestawu danych z 2011 i 2012. Zintegrowaliśmy linii lotniczych zestawu danych z danymi pogody Kuwejcie (np. prędkość wiatru, temperatury, wysokość itp.) przed modelowaniu, dzięki czemu te funkcje pogody mogły zostać uwzględnione w modelu.
+- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): ten plik zawiera informacje na temat wykonywania eksploracji danych, modelowania, i ocenianie w Spark 2.0 klastrów, przy użyciu podróży taksówek NYC i Taryfy opisane na zestawie danych [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ten notes może być dobry punkt wyjścia do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0. Aby uzyskać bardziej szczegółowy notesu analizuje dane taksówek NYC, zobacz następnego notesu na tej liście. Zapoznaj się z uwagami poniżej tej listy, która porównuje te notesy. 
+- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): ten plik pokazuje sposób wykonania danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu taksówek NYC podróży i klasie zestawu danych, opisano [tutaj ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): ten plik pokazuje sposób wykonania danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu dobrze znanych wyjścia linie lotnicze w na czas zestaw danych z 2011 i 2012. Zestaw danych linii lotniczych jest zintegrowany z danymi o pogodzie lotniska (na przykład windspeed, temperatura, Wysokość itp.) przed modelem, dzięki czemu funkcje pogodowe mogą zostać uwzględnione w modelu.
 
 <!-- -->
 
@@ -70,7 +70,7 @@ Zadania regresji i klasyfikacji, które są implementowane przy użyciu klastra 
 <!-- -->
 
 > [!NOTE]
-> Notesy platformy Spark 2.0 na NYC taksówek i linie lotnicze lotu opóźnienie-zestawów danych może potrwać 10 minut lub dłużej (w zależności od rozmiaru klastra usługi HDI). Pierwszy notesu na powyższej liście przedstawiono wiele aspektów eksplorację, wizualizację i szkolenie modelu uczenia Maszynowego w notesie, który zajmuje mniej czasu do uruchomienia z próbkowana w dół NYC zestaw danych, w którym zostały wstępnie dołączonym do plików taksówek i klasie: [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) ten notes, trwa znacznie krótszy czas zakończenia (2-3 minuty) i może być dobry punkt początkowy dla szybkie analizowanie kodu zostały zamieszczone dla platformy Spark w wersji 2.0. 
+> Notesy platformy Spark 2.0 na NYC taksówek i linie lotnicze lotu opóźnienie-zestawów danych może potrwać 10 minut lub dłużej (w zależności od rozmiaru klastra usługi HDI). Pierwszy notesu na powyższej liście pokazano wiele aspektów eksplorację danych, wizualizacji i uczenia Maszynowego modelu szkolenia w notesie, który zajmuje mniej czasu do uruchomienia z próbkowana w dół NYC zestaw danych, w którym zostały wstępnie dołączonym do plików taksówek i klasie: [ Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) ten notes, trwa znacznie krótszy czas zakończenia (2-3 minuty) i może być dobry punkt początkowy dla szybkie analizowanie kodu zostały zamieszczone dla platformy Spark w wersji 2.0. 
 
 <!-- -->
 
@@ -129,9 +129,9 @@ Jądra PySpark, które są dostarczane z notesów Jupyter mają wstępnie kontek
 Jądra PySpark zawiera kilka wstępnie zdefiniowanych "poleceń magicznych", które są specjalne polecenia, które można wywoływać za pomocą %%. Istnieją dwa polecenia, które są używane w tych przykładach kodu.
 
 * **%% lokalnego** Określa, że kod w kolejnych wierszy jest wykonywana lokalnie. Kod musi być prawidłowy kod języka Python.
-* **%% sql -o \<nazwa zmiennej >** wykonuje zapytanie programu Hive względem sqlContext. Jeśli parametr -o zostanie przekazana, wynik kwerendy są utrwalane w %% kontekstu Python lokalnego jako Pandas DataFrame.
+* **%% Nazwa zmiennej \<SQL-o >** Wykonuje zapytanie programu Hive względem elementu SqlContext. Jeśli parametr -o zostanie przekazana, wynik kwerendy są utrwalane w %% kontekstu Python lokalnego jako Pandas DataFrame.
 
-Aby więcej informacji na temat jądra notesów programu Jupyter i wstępnie zdefiniowanego "magics", zapewniają one, zobacz [jądra, które są dostępne dla notesów programu Jupyter przy użyciu platformy Spark HDInsight w systemie Linux klastrów HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+Aby uzyskać więcej informacji na temat jądra notesu Jupyter i wstępnie zdefiniowanych "MAGICS", zobacz [jądra dostępne dla notesów Jupyter z klastrami usługi HDInsight Spark Linux w usłudze HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="data-ingestion-from-public-blob"></a>Pozyskiwanie danych z publicznego obiektu blob
 Pierwszym krokiem w procesie nauki o danych jest pozyskiwanie danych do analizy ze źródeł gdzie jest znajduje się w środowisku Eksplorowanie i modelowanie danych. Środowisko jest platforma Spark w tym przewodniku. Ta sekcja zawiera kod, aby wykonać szereg zadań:
@@ -212,7 +212,7 @@ Po wprowadzeniu danych do platformy Spark jest następnym krokiem w procesie nau
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Histogram częstotliwości liczby pasażerów w próbce rund taksówek wykreślania
 Ten kod i kolejne fragmenty umożliwia magicznym wyrażeniem SQL zapytania próbki i magic lokalnych danych.
 
-* **Magicznym wyrażeniem SQL (`%%sql`)** jądra HDInsight PySpark obsługuje zapytania HiveQL łatwe wbudowane względem sqlContext. (-O nazwa_zmiennej) argument będzie się powtarzał wyniki kwerendy SQL jako ramkę danych Pandas na serwerze programu Jupyter. Oznacza to, że jest on dostępny w trybie lokalnym.
+* **Magicznym wyrażeniem SQL (`%%sql`)** jądra HDInsight PySpark obsługuje zapytania HiveQL łatwe wbudowane względem sqlContext. (-O nazwa_zmiennej) argument będzie się powtarzał wyniki kwerendy SQL jako ramkę danych Pandas na serwerze programu Jupyter. To ustawienie powoduje, że dane wyjściowe są dostępne w trybie lokalnym.
 * **`%%local` Magic** służy do uruchamiania kodu lokalnie na serwerze programu Jupyter, który jest węzłem głównym klastra HDInsight. Zazwyczaj można użyć `%%local` magic w połączeniu z `%%sql` magic z parametrem -o. Parametr -o będzie utrwalanie danych wyjściowych, zapytania SQL lokalnie i następnie %% lokalnego magic powodowało kolejny zbiór fragment kodu w celu uruchomienia lokalnie dane wyjściowe zapytań SQL, który jest trwały lokalnie
 
 Dane wyjściowe są automatycznie wizualizowane po uruchomieniu kodu.
@@ -327,7 +327,7 @@ W tej sekcji opisano i zawiera kod dla procedur w celu przygotowywania danych do
 * Utwórz nową funkcję według godzin pakowania do przedziałów czasu ruchu
 * Indeksowanie i kodowanie funkcji podzielonych na kategorie
 * Tworzenie obiektów etykietą punktu wejścia do funkcji uczenia Maszynowego
-* Tworzenie losowego podrzędnych pobierania próbek danych i podziel go na szkolenie i testowanie zestawów
+* Utwórz losowe Podpróbkowanie danych i podziel je na zestawy szkoleniowe i testowe
 * Skalowanie funkcji
 * Obiekty w pamięci podręcznej w pamięci
 
@@ -360,7 +360,7 @@ Ten kod pokazuje, jak utworzyć nową funkcję według godzin pakowania w przedz
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Indeksowanie i kodowanie funkcji podzielonych na kategorie na dane wejściowe do funkcji modelowania
 W tej sekcji przedstawiono sposób indeksu lub zakodować kategorii funkcji dla danych wejściowych do funkcji modelowania. Modelowania i przewidywanie funkcje MLlib wymagają funkcji z podzielonych na kategorie danych wejściowych, które mają być indeksowane lub zakodowane przed użyciem. W zależności od modelu musisz indeksu lub Zakoduj je na różne sposoby:  
 
-* **Oparta na drzewie modelowania** wymaga kategorii do zakodowania jako wartości liczbowych (na przykład funkcji z trzech kategorii mogą być zakodowane przy użyciu 0, 1, 2). To są dostarczane przez firmy MLlib [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) funkcji. Ta funkcja koduje kolumną z ciągami etykiet z kolumną indeksami etykiety są uporządkowane według częstotliwości etykiety. Mimo że indeksowane, za pomocą wartości liczbowe dla danych wejściowych i obsługi danych, algorytmy oparta na drzewie można określić je traktować odpowiednio jako kategorie. 
+* **Oparta na drzewie modelowania** wymaga kategorii do zakodowania jako wartości liczbowych (na przykład funkcji z trzech kategorii mogą być zakodowane przy użyciu 0, 1, 2). Ten algorytm jest dostarczany przez funkcję [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) MLlib. Ta funkcja koduje kolumną z ciągami etykiet z kolumną indeksami etykiety są uporządkowane według częstotliwości etykiety. Mimo że indeksowane, za pomocą wartości liczbowe dla danych wejściowych i obsługi danych, algorytmy oparta na drzewie można określić je traktować odpowiednio jako kategorie. 
 * **Modeli logistyczną i regresji liniowej** wymagają hot jeden kodowania, where, na przykład funkcji z trzech kategorii można rozszerzyć do trzech kolumnach funkcji, z każdego zawierających 0 lub 1 w zależności od kategorii wystąpienia wartości. Udostępnia MLlib [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkcji hot jeden kodowania. Ten koder mapuje kolumny indeksów etykiety z kolumną wektorów binarnych z co najwyżej jeden — wartość typu single. To kodowanie umożliwia algorytmy, które oczekują liczbowe ważnych funkcji, takich jak regresji logistycznej, mają być stosowane do kategorii funkcje.
 
 Poniżej przedstawiono kod, aby zaindeksować i kodowanie funkcji podzielonych na kategorie:
@@ -464,8 +464,8 @@ Poniżej przedstawiono kod w celu kodowania i indeksu funkcji podzielonych na ka
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Tworzenie losowego podrzędnych pobierania próbek danych i podziel go na szkolenie i testowanie zestawów
-Ten kod tworzy losowego próbkowanie danych (25% służy w tym miejscu). Chociaż nie jest wymagane w tym przykładzie ze względu na rozmiar zestawu danych, pokażemy, jak próbkę można pobrać tutaj aby wiedzieć, jak własne problem w razie potrzeby. W przypadku dużych przykłady to można zapisać znaczną ilość czasu podczas szkolenia modeli. Następnie możemy podzielić próbki część szkolenia (w tym miejscu 75%) i testowania część (25% tutaj) do użycia w funkcji klasyfikacji i regresji modelowania.
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Utwórz losowe Podpróbkowanie danych i podziel je na zestawy szkoleniowe i testowe
+Ten kod tworzy losowego próbkowanie danych (25% służy w tym miejscu). Chociaż nie jest wymagane w tym przykładzie ze względu na rozmiar zestawu danych, pokażemy, jak próbkę można pobrać tutaj aby wiedzieć, jak własne problem w razie potrzeby. Gdy próbki są duże, próbkowanie może znacznie zaoszczędzić czas podczas modeli szkoleniowych. Następnie możemy podzielić próbki część szkolenia (w tym miejscu 75%) i testowania część (25% tutaj) do użycia w funkcji klasyfikacji i regresji modelowania.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -503,7 +503,7 @@ Ten kod tworzy losowego próbkowanie danych (25% służy w tym miejscu). Chocia�
 
 **DANE WYJŚCIOWE:**
 
-Czas wykonywania powyżej komórki: 0,24 sekund
+Czas wykonania powyżej komórki: 0,24 sekund
 
 ### <a name="feature-scaling"></a>Skalowanie funkcji
 Funkcja skalowania, nazywana również normalizacji danych ubezpieczycielom, że funkcje o wartościach powszechnie rozchodów są nie udzieliła nadmierne porównać w celu funkcji. Kod funkcji skalowania używa [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) te funkcje, aby odchylenie jednostki skalowania. Jest ona udostępniana przed MLlib do użycia w regresji liniowej z stochastycznego gradientu zejścia (SGD), popularnych algorytmów do trenowania szerokiej gamy innych modeli, takie jak umorzyć regresji lub pomocy technicznej wektor maszyny (SVM) uczenia maszynowego.
@@ -577,7 +577,7 @@ Można zmniejszyć czas potrzebny na szkolenie i testowanie algorytmów uczenia 
 
 **DANE WYJŚCIOWE:** 
 
-Czas wykonywania powyżej komórki: 0,15 sekund
+Czas wykonania powyżej komórki: 0,15 sekund
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Przewidywania, czy porady zostało opłacone przy użyciu modeli klasyfikacji binarnej
 W tej sekcji przedstawiono sposób użycia trzech modeli w przypadku zadanie klasyfikacji binarnej Prognozowanie czy Porada zostało opłacone podróży taksówek. Modele prezentowane są następujące:
@@ -1097,7 +1097,7 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>Co dalej?
 Teraz, modele regresji i klasyfikacji została utworzona przy użyciu MlLib platformy Spark, jesteś gotowy dowiedzieć się, jak ocena i ocenić te modele. Zaawansowane Eksplorowanie danych i modelowania notesu omawia bardziej krzyżowa Weryfikacja, parametrów sprawdzaniu, w tym i ocenę modelu. 
 
-**Użycie modelu:** Aby dowiedzieć się, jak ocena i oceniać modele klasyfikacji i regresji, utworzone w tym temacie, zobacz [wynik i ocena modeli uczenia maszynowego utworzonych na platformie Spark](spark-model-consumption.md).
+**Model użycia:** jak ocena i oceniać modele klasyfikacji i regresji, utworzone w tym temacie można znaleźć [wynik i ocena modeli uczenia maszynowego utworzonych na platformie Spark](spark-model-consumption.md).
 
-**Krzyżowa Weryfikacja i zaczynają hiperparametrycznego**: Zobacz [zaawansowane Eksplorowanie i modelowanie za pomocą platformy Spark danych](spark-advanced-data-exploration-modeling.md) w sposób modeli może być uczony przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów
+**Krzyżowa Weryfikacja i zaczynają hiperparametrycznego**: zobacz [zaawansowane Eksplorowanie i modelowanie za pomocą platformy Spark danych](spark-advanced-data-exploration-modeling.md) w sposób modeli może być uczony przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów
 

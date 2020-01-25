@@ -1,7 +1,7 @@
 ---
 title: 'Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą narzędzia Projektant'
 titleSuffix: Azure Machine Learning
-description: W tym samouczku przedstawiono sposób tworzenia rozwiązania do analizy predykcyjnej w programie Azure Machine Learning Designer. Uczenie, ocenę i wdrożenie modelu uczenia maszynowego przy użyciu modułów przeciągania i upuszczania.
+description: W tym samouczku przedstawiono sposób tworzenia rozwiązania do analizy predykcyjnej w programie Azure Machine Learning Designer (wersja zapoznawcza). Uczenie, ocenę i wdrożenie modelu uczenia maszynowego przy użyciu modułów przeciągania i upuszczania.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 89fdac5e59b59c60d7e20b94799d78b029d236d6
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 470e633b2c64283db9b6a5b1cd777a6a054dad16
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76315001"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719793"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą narzędzia Projektant
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą narzędzia Projektant (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Można wdrożyć model predykcyjny opracowany w pierwszej części [samouczka](tutorial-designer-automobile-price-train-score.md) , aby dać innym osobom szansę korzystania z niego. W części pierwszej został przeszkolony model. Teraz można generować nowe prognozy na podstawie danych wejściowych użytkownika. W tej części samouczka zostaną wykonane następujące czynności:
@@ -55,10 +55,6 @@ Aby wdrożyć potok, należy najpierw skonwertować potok szkoleniowy do potoku 
     >
 
 1. Wybierz pozycję **Uruchom**, a następnie użyj tego samego elementu docelowego obliczeń i eksperymentu, który został użyty w części pierwszej.
-
-1. Wybierz moduł **model oceny** .
-
-1. W okienku właściwości wybierz pozycję **wyjściowe** > **Wizualizacja** , aby sprawdzić, czy model nadal działa. Można zobaczyć oryginalne dane wraz z przewidywaną ceną ("etykiety oceny").
 
 1. Wybierz pozycję **Wdróż**.
 

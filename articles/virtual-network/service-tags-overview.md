@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: dc64570ccf69c321f33b9689362def8c9caf975e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543039"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715399"
 ---
 # <a name="virtual-network-service-tags"></a>Tagi usługi sieci wirtualnej 
 <a name="network-service-tags"></a>
@@ -64,7 +64,7 @@ Domyślnie Tagi usług odzwierciedlają zakresy dla całej chmury. Niektóre Tag
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **usługi azureactivedirectory** i **AzureFrontDoor. frontonu** . Dozwolonych również następujące adresy IP (ta zależność zostanie usunięta wkrótce): 13.107.6.181 & 13.107.9.181. | Wychodzące | Nie | Nie |
 | **AzureIoTHub** | IoT Hub platformy Azure. | Wychodzące | Nie | Nie |
 | **AzureKeyVault** | Usługa Azure Key Vault.<br/><br/>*Uwaga:* Ten tag ma zależność od znacznika **usługi azureactivedirectory** . | Wychodzące | Tak | Tak |
-| **AzureLoadBalancer** | Moduł równoważenia obciążenia infrastruktury platformy Azure. Tag tłumaczy na [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations) (168.63.129.16), z którego pochodzą sondy kondycji platformy Azure. Jeśli nie używasz Azure Load Balancer, możesz zastąpić tę regułę. | Oba | Nie | Nie |
+| **AzureLoadBalancer** | Moduł równoważenia obciążenia infrastruktury platformy Azure. Tag tłumaczy na [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations) (168.63.129.16), z którego pochodzą sondy kondycji platformy Azure. Nie obejmuje to ruchu do zasobu Azure Load Balancer. Jeśli nie używasz Azure Load Balancer, możesz zastąpić tę regułę. | Oba | Nie | Nie |
 | **AzureMachineLearning** | Azure Machine Learning. | Oba | Nie | Tak |
 | **AzureMonitor** | Log Analytics, Application Insights, AzMon i metryki niestandardowe (punkty końcowe rdzeniowym procesorem).<br/><br/>*Uwaga:* W przypadku Log Analytics ten tag ma zależność od tagu **magazynu** . | Wychodzące | Nie | Tak |
 | **AzurePlatformDNS** | Podstawowa infrastruktura (domyślna) usługi DNS.<br/><br>Za pomocą tego tagu można wyłączyć domyślny system DNS. Należy zachować ostrożność w przypadku użycia tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Zalecamy również przeprowadzenie testów przed użyciem tego tagu. | Wychodzące | Nie | Nie |
@@ -83,7 +83,7 @@ Domyślnie Tagi usług odzwierciedlają zakresy dla całej chmury. Niektóre Tag
 | **HDInsight** | Usługa Azure HDInsight. | Przychodzące | Tak | Nie |
 | **Internet** | Przestrzeń adresów IP, która znajduje się poza siecią wirtualną i jest dostępna przez publiczny Internet.<br/><br/>Zakres adresów obejmuje [publiczną przestrzeń adresów IP należącą do platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Oba | Nie | Nie |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Wychodzące | Nie | Nie |
-| **MicrosoftContainerRegistry** | Azure Container Registry. | Wychodzące | Tak | Tak |
+| **MicrosoftContainerRegistry** | Rejestr kontenerów dla obrazów kontenerów firmy Microsoft. <br/><br/>*Uwaga:* Dozwolonych również następujący adres IP (ta zależność zostanie usunięta wkrótce): 204.79.197.219. | Wychodzące | Tak | Tak |
 | **ServiceBus** | Azure Service Bus ruch korzystający z warstwy usługi Premium. | Wychodzące | Tak | Tak |
 | **ServiceFabric** | Service Fabric platformy Azure. | Wychodzące | Nie | Nie |
 | **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL i Azure SQL Data Warehouse.<br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure SQL Database, ale nie konkretną bazę danych lub serwer SQL. | Wychodzące | Tak | Tak |

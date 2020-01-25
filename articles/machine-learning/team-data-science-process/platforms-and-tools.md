@@ -2,34 +2,35 @@
 title: Platformy i narzędzia dla projektów do nauki o danych — danych zespołu dla celów naukowych
 description: Wyszczególniono i omówiono zasoby danych i analiz, które muszą być dostępne dla przedsiębiorstw standaryzacji na procesie nauki o danych zespołu.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978513"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718892"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy i narzędzia dla projektów do nauki o danych
 
-Firma Microsoft udostępnia pełnego zakresu danych i analiz usług i zasobów dla platform zarówno w chmurze, jak i lokalnie. Mogą one wdrażane, umożliwiają wykonywanie swoje projekty do nauki o danych, wydajność i skalowalność. Wskazówki dla zespołów, implementowanie projekty do nauki o danych na słupkowych, wersja kontrolowane i sposób współpracy są dostarczane przez [zespołu danych dla celów naukowych](overview.md) (TDSP).  Konspekt ról pracowników i ich skojarzonych zadań, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu można zobaczyć [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
+Firma Microsoft zapewnia pełen zakres zasobów analitycznych zarówno dla platformy w chmurze, jak i lokalnych. Mogą one wdrażane, umożliwiają wykonywanie swoje projekty do nauki o danych, wydajność i skalowalność. Wskazówki dla zespołów, implementowanie projekty do nauki o danych na słupkowych, wersja kontrolowane i sposób współpracy są dostarczane przez [zespołu danych dla celów naukowych](overview.md) (TDSP).  Konspekt ról pracowników i ich skojarzonych zadań, które są obsługiwane przez zespół do nauki o danych standaryzacji na temat tego procesu można zobaczyć [zespołu danych dla celów naukowych role i zadania](roles-tasks.md).
 
-Usługi danych i analiz dostępnych dla zespołów do nauki o danych przy użyciu przetwarzania TDSP obejmują:
+Zasoby analityczne dostępne dla zespołów analizy danych korzystających z przetwarzania TDSP obejmują:
 
 - Maszyny wirtualne do nauki o danych (Windows i Linux CentOS)
 - Klastry HDInsight Spark
-- Hurtownia danych SQL
+- Synapse Analytics
 - Azure Data Lake
 - Klastry HDInsight Hive
 - Azure File Storage
-- SQL Server 2016 R Services
+- SQL Server 2019 R i usługi Python
+- Azure Databricks
 
 W tym dokumencie firma Microsoft Zwięźle opisz zasoby i udostępniają linki do samouczki i przewodniki zespoły przetwarzania TDSP zostały opublikowane. Mogą one pomóc w Dowiedz się, jak używać ich krok po kroku i Rozpocznij korzystanie z nich do kompilowania inteligentnych aplikacji. Więcej informacji na temat tych zasobów jest dostępna na stronach produktów. 
 
@@ -48,9 +49,9 @@ Obejmuje to również **Narzędzia ml i AI** , takie jak xgboost, Mxnet i Vowpal
 
 Obecnie jest dostępna w DSVM **Windows** i **Linux CentOS** systemów operacyjnych. Wybierz rozmiar maszyny wirtualnej DSVM (liczba rdzeni procesora CPU) i ilość pamięci odpowiednio do potrzeb projektów do nauki o danych, które planujesz wykonać na nim. 
 
-Aby uzyskać więcej informacji na temat wersji Windows wersje maszyny wirtualnej, zobacz [maszyny wirtualnej do nauki o danych Microsoft](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) w witrynie Azure marketplace. Dla wersji systemu Linux maszyny DSVM, zobacz [maszyny wirtualnej do nauki o danych dla systemu Linux](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Aby uzyskać więcej informacji na temat wersji systemu Windows DSVM, zobacz [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) w witrynie Azure Marketplace. Dla wersji systemu Linux maszyny DSVM, zobacz [maszyny wirtualnej do nauki o danych dla systemu Linux](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
-Aby dowiedzieć się, jak wykonywać niektóre typowe zadania wydobywania danych na maszyny DSVM wydajnie, zobacz [dziesięć rzeczy, które można wykonać na maszynie wirtualnej analizy danych](../data-science-virtual-machine/vm-do-ten-things.md)
+Aby dowiedzieć się, jak wykonywać niektóre typowe zadania analizy danych na DSVM wydajnie, zobacz [10 rzeczy, które możesz wykonać na maszynie wirtualnej do analizy danych](../data-science-virtual-machine/vm-do-ten-things.md)
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Klastry usługi Azure HDInsight Spark
@@ -71,7 +72,7 @@ Aby uzyskać więcej informacji na temat usługi Azure SQL Data Warehouse, zobac
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Usługi Azure data lake jest jako repozytorium całego przedsiębiorstwa każdego typu danych zebranych w jednej lokalizacji, przed wszelkie wymagania formalne lub schematu, które są narzucone. Ta elastyczność umożliwia wszystkich typów danych, które mają być przechowywane w usłudze data lake, niezależnie od jego rozmiaru i struktury lub szybkość ich przetwarzania. Organizacje mogą następnie korzystanie z usługi Hadoop lub zaawansowanych analiz, aby znaleźć wzorce w tych danych, jeziora. Data Lake może również służyć jako repozytorium w celu przygotowania danych tańszych przed curating dane i przenosić je do magazynu danych.
+Azure Data Lake jest jako repozytorium w całym przedsiębiorstwie dla każdego typu danych zbieranych w jednej lokalizacji, przed wszelkimi formalnymi wymaganiami lub nakładanymi schematami. Ta elastyczność umożliwia wszystkich typów danych, które mają być przechowywane w usłudze data lake, niezależnie od jego rozmiaru i struktury lub szybkość ich przetwarzania. Organizacje mogą następnie korzystanie z usługi Hadoop lub zaawansowanych analiz, aby znaleźć wzorce w tych danych, jeziora. Data Lake może również służyć jako repozytorium w celu przygotowania danych tańszych przed curating dane i przenosić je do magazynu danych.
 
 Aby uzyskać więcej informacji na temat usługi Azure Data Lake, zobacz [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Aby dowiedzieć się, jak tworzyć rozwiązania do analizy skalowalnych danych end-to-end z usługą Azure Data Lake, zobacz [skalowalna analiza danych w usłudze Azure Data Lake: Instruktaż end-to-end](data-lake-walkthrough.md)
 
@@ -94,11 +95,11 @@ Usługa Azure File Storage to usługa, która oferuje udziały plików w chmurze
 Szczególnie przydatne w przypadku projektów do nauki o danych jest możliwość tworzenia magazynu plików platformy Azure jako miejsce, aby udostępnić dane projektu z członkami swojego zespołu projektu. Następnie każdy z nich ma dostęp do tej samej kopii danych w usłudze Azure file storage. Aby udostępnić zestawy funkcji wygenerowanych podczas realizacji projektu mogą również wykorzystać ten magazyn plików. Jeśli projekt jest zaangażowanie klientów, klientów można utworzyć usługi Azure file storage w ramach własnej subskrypcji platformy Azure, aby udostępnić dane projektu i funkcji z Tobą. W ten sposób klient ma pełną kontrolę nad zasobami danych projektu. Aby uzyskać więcej informacji na temat usługi Azure File Storage, zobacz [Rozpoczynanie pracy z usługą Azure File storage w Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) i [jak używać usługi Azure File Storage z systemem Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
+## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R i usługi Python
 
-Usługi R Services (In-database) zapewnia platformę do tworzenia i wdrażania inteligentne aplikacje, które można Odkrywaj nowe informacje. Rozbudowane i zaawansowane języka R, łącznie z wielu pakietów, dostarczone przez społeczność pasjonatów języka R, można użyć do tworzenia modeli i generować prognozy na podstawie danych programu SQL Server. Usługi R Services (In-database) języka R są zintegrowane z programem SQL Server, analizy są przechowywane w pobliżu danych, co pozwala wyeliminować koszty i zagrożenia bezpieczeństwa związane z przenoszeniem danych.
+Usługa R Services (in-Database) udostępnia platformę do tworzenia i wdrażania inteligentnych aplikacji, które mogą odkrywać nowe informacje. Rozbudowane i zaawansowane języka R, łącznie z wielu pakietów, dostarczone przez społeczność pasjonatów języka R, można użyć do tworzenia modeli i generować prognozy na podstawie danych programu SQL Server. Ponieważ usługi R (in-Database) integrują język R z SQL Server, analiza jest bliska danych, co eliminuje koszty i zagrożenia bezpieczeństwa związane z przeniesieniem danych.
 
-Usługi R Services (In-database) obsługuje języka R typu open source dzięki kompleksowemu zestawowi narzędzi programu SQL Server i technologii. Oferują doskonałą wydajność, bezpieczeństwa, niezawodności i możliwości zarządzania. Można wdrożyć rozwiązania R przy użyciu narzędzia wygodne i znane. Twoje aplikacje produkcyjne można wywołać środowiskiem uruchomieniowym języka r. i pobrać prognozy i wizualizacji przy użyciu języka Transact-SQL. Aby zwiększyć skalę i wydajność swoich rozwiązań języka R możesz także użyć biblioteki programu ScaleR. Aby uzyskać więcej informacji, zobacz [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
+Usługa r Services (in-Database) obsługuje język R typu open source z kompleksowym zestawem SQL Server narzędzi i technologii. Oferują doskonałą wydajność, bezpieczeństwa, niezawodności i możliwości zarządzania. Można wdrożyć rozwiązania R przy użyciu narzędzia wygodne i znane. Twoje aplikacje produkcyjne można wywołać środowiskiem uruchomieniowym języka r. i pobrać prognozy i wizualizacji przy użyciu języka Transact-SQL. Aby zwiększyć skalę i wydajność swoich rozwiązań języka R możesz także użyć biblioteki programu ScaleR. Aby uzyskać więcej informacji, zobacz [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
 
 Przetwarzanie TDSP zespół firmy Microsoft został opublikowany dwa przewodniki end-to-end, które pokazują, jak tworzyć rozwiązania do analizy danych w SQL Server 2016 R Services: jeden dla programistów języka R i jeden dla deweloperów programu SQL. Aby uzyskać **programistom języka R**, zobacz [wskazówki End-to-End do nauki o danych](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). Aby uzyskać **deweloperów SQL**, zobacz [Advanced Analytics w bazie danych dla deweloperów programu SQL (samouczek)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
@@ -135,7 +136,7 @@ Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania poleceń usłu
 
 1. Skopiuj cały ssh w tym klucza *ssh-rsa*. 
 1. Zaloguj się do usługi Azure DevOps. 
-1. Kliknij przycisk **< imię i nazwisko\>**  w prawym górnym rogu strony i kliknij przycisk **zabezpieczeń**. 
+1. Kliknij **< nazwę\>** w prawym górnym rogu strony, a następnie kliknij pozycję **zabezpieczenia**. 
     
    ![Kliknij swoją nazwę użytkownika, a następnie kliknij przycisk zabezpieczeń](./media/platforms-and-tools/resources-2-user-setting.png)
 
@@ -143,7 +144,7 @@ Jeśli używasz maszyny z systemem Linux (CentOS) do uruchamiania poleceń usłu
 
    ![Kliknij przycisk kluczy publicznych SSH, a następnie kliknij pozycję + Dodaj](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. Wklej ssh key właśnie został skopiowany do pola tekstowego, a następnie zapisz.
+1. Wklej klucz SSH skopiowany do pola tekstowego i Zapisz.
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: 32a1ac971edb55c6e162f02b60042056cd0fee0f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: db2e80ebb6cbe5f31f2d99a1403a15daf38fd877
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76315052"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722411"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Wdrażanie modelu w klastrze usługi Azure Kubernetes Service
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Podczas wdrażania w usłudze Azure Kubernetes należy wdrożyć klaster AKS, kt
 * Dołącz istniejący klaster AKS do obszaru roboczego Azure Machine Learning. Klaster może być dołączany przy użyciu zestawu SDK Azure Machine Learning, Machine Learning interfejsu wiersza polecenia lub Azure Machine Learning Studio.
 
 > [!IMPORTANT]
-> Proces tworzenia lub załączników to zadanie jednorazowe. Gdy klaster AKS jest połączony z obszarem roboczym, można go użyć do wdrożeń. Możesz odłączyć lub usunąć klaster AKS, jeśli nie jest już potrzebny. Po detatched lub usunięciu nie będzie już można wdrażać w klastrze.
+> Proces tworzenia lub załączników to zadanie jednorazowe. Gdy klaster AKS jest połączony z obszarem roboczym, można go użyć do wdrożeń. Możesz odłączyć lub usunąć klaster AKS, jeśli nie jest już potrzebny. Po odłączeniu lub usunięciu nie będzie już można wdrażać w klastrze.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

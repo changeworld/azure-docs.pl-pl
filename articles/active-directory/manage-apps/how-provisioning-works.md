@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 910317201275ba1598ed3e4d89815542b88fb108
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 5238f8ca9258e4f7907d9d9755b7252e60f40de8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719974"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711536"
 ---
 # <a name="how-provisioning-works"></a>Jak działa aprowizacja
 
@@ -29,13 +29,13 @@ Automatyczne Inicjowanie obsługi odnosi się do tworzenia tożsamości i ról u
 **Usługa Azure AD Provisioning** udostępnia użytkownikom SaaS aplikacje i inne systemy, łącząc się z systemem dla punktu końcowego interfejsu API zarządzania tożsamościami w wielu domenach (standard scim) 2,0 przez dostawcę aplikacji. Ten punkt końcowy Standard scim umożliwia usłudze Azure AD Programistyczne tworzenie, aktualizowanie i usuwanie użytkowników. W przypadku wybranych aplikacji usługa aprowizacji może również tworzyć, aktualizować i usuwać dodatkowe obiekty powiązane z tożsamościami, takie jak grupy i role. Kanał używany do aprowizacji między usługą Azure AD a aplikacją jest szyfrowany przy użyciu szyfrowania HTTPS SSL.
 
 
-![usługi Azure AD Provisioning](./media/user-provisioning/provisioning0.PNG)
+![usługi Azure AD Provisioning](media/how-provisioning-works/provisioning0.PNG)
 *rysunek 1: usługa Azure AD Provisioning*
 
-![wychodzący przepływ pracy aprowizacji użytkowników](./media/user-provisioning/provisioning1.PNG)
+![wychodzący przepływ pracy aprowizacji użytkowników](media/how-provisioning-works/provisioning1.PNG)
 *rysunek 2: "wychodzące" przepływ pracy aprowizacji użytkowników z usługi Azure AD do popularnych aplikacji SaaS*
 
-![przepływ pracy inicjowania obsługi użytkowników przychodzących](./media/user-provisioning/provisioning2.PNG)
+![przepływ pracy inicjowania obsługi użytkowników przychodzących](media/how-provisioning-works/provisioning2.PNG)
 *rysunek 3: "przychodzący" przepływ pracy aprowizacji użytkowników z popularnych aplikacji do zarządzania stolicą Kadr (HCM) do Azure Active Directory i systemu Windows Server Active Directory*
 
 ## <a name="provisioning-using-scim-20"></a>Inicjowanie obsługi przy użyciu Standard scim 2,0
@@ -73,11 +73,11 @@ W przypadku inicjowania obsługi ruchu wychodzącego z usługi Azure AD do aplik
 
   * Dynamiczne grupy mogą mieć wpływ na wydajność kompleksowego udostępniania z usługi Azure AD do aplikacji SaaS.
 
-  * Jak szybki dostęp użytkownika do grupy dynamicznej jest inicjowany lub dezaktywowany w aplikacji SaaS, zależy od tego, jak szybko Grupa dynamiczna może oszacować zmiany członkostwa. Aby uzyskać informacje na temat sprawdzania stanu przetwarzania grupy dynamicznej, zobacz [Sprawdzanie stanu przetwarzania dla reguły członkostwa](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule).
+  * Jak szybki dostęp użytkownika do grupy dynamicznej jest inicjowany lub dezaktywowany w aplikacji SaaS, zależy od tego, jak szybko Grupa dynamiczna może oszacować zmiany członkostwa. Aby uzyskać informacje na temat sprawdzania stanu przetwarzania grupy dynamicznej, zobacz [Sprawdzanie stanu przetwarzania dla reguły członkostwa](../users-groups-roles/groups-create-rule.md).
 
   * Gdy użytkownik utraci członkostwo w grupie dynamicznej, jest traktowany jako zdarzenie anulowania aprowizacji. Ten scenariusz należy wziąć pod uwagę podczas tworzenia reguł dla grup dynamicznych.
 
-* **Grupy zagnieżdżone.** Usługa aprowizacji użytkowników w usłudze Azure AD nie może odczytać ani zainicjować obsługi użytkowników w grupach zagnieżdżonych. Usługa może odczytywać i inicjować tylko użytkowników, którzy są bezpośrednimi członkami jawnie przypisanej grupy. To ograniczenie "przypisań opartych na grupach do aplikacji" wpływa również na logowanie jednokrotne (zobacz [używanie grupy do zarządzania dostępem do aplikacji SaaS](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps)). Zamiast tego należy bezpośrednio przypisywać lub w inny sposób określić [zakres w](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) grupach, które zawierają użytkowników, którzy muszą zostać zaobsługiwani.
+* **Grupy zagnieżdżone.** Usługa aprowizacji użytkowników w usłudze Azure AD nie może odczytać ani zainicjować obsługi użytkowników w grupach zagnieżdżonych. Usługa może odczytywać i inicjować tylko użytkowników, którzy są bezpośrednimi członkami jawnie przypisanej grupy. To ograniczenie "przypisań opartych na grupach do aplikacji" wpływa również na logowanie jednokrotne (zobacz [używanie grupy do zarządzania dostępem do aplikacji SaaS](../users-groups-roles/groups-saasapps.md)). Zamiast tego należy bezpośrednio przypisywać lub w inny sposób określić [zakres w](define-conditional-rules-for-provisioning-user-accounts.md) grupach, które zawierają użytkowników, którzy muszą zostać zaobsługiwani.
 
 ### <a name="attribute-based-scoping"></a>Określanie zakresu na podstawie atrybutów 
 
@@ -85,7 +85,7 @@ Filtry zakresu umożliwiają definiowanie reguł opartych na atrybutach, które 
 
 ### <a name="b2b-guest-users"></a>Użytkownicy B2B (gość)
 
-Możliwe jest użycie usługi aprowizacji użytkowników w usłudze Azure AD w celu udostępnienia użytkownikom B2B (lub gościa) w usłudze Azure AD w celu SaaS aplikacji. Jednak aby użytkownicy B2B mogli logować się do aplikacji SaaS przy użyciu usługi Azure AD, aplikacja SaaS musi mieć skonfigurowaną funkcję logowania jednokrotnego opartego na protokole SAML. Aby uzyskać więcej informacji na temat sposobu konfigurowania aplikacji SaaS do obsługi logowań użytkowników B2B, zobacz [Konfigurowanie aplikacji SaaS na potrzeby współpracy B2B]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+Możliwe jest użycie usługi aprowizacji użytkowników w usłudze Azure AD w celu udostępnienia użytkownikom B2B (lub gościa) w usłudze Azure AD w celu SaaS aplikacji. Jednak aby użytkownicy B2B mogli logować się do aplikacji SaaS przy użyciu usługi Azure AD, aplikacja SaaS musi mieć skonfigurowaną funkcję logowania jednokrotnego opartego na protokole SAML. Aby uzyskać więcej informacji na temat sposobu konfigurowania aplikacji SaaS do obsługi logowań użytkowników B2B, zobacz [Konfigurowanie aplikacji SaaS na potrzeby współpracy B2B](../b2b/configure-saas-apps.md).
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Cykle aprowizacji: początkowe i przyrostowe
 
@@ -154,13 +154,13 @@ Jeśli błąd w systemie docelowym uniemożliwia dodanie, zaktualizowanie lub us
 
 Usuń te błędy, dostosowując wartości atrybutów dla danego użytkownika w systemie źródłowym lub modyfikując mapowania atrybutów, aby nie powodowały konfliktów.
 
-### <a name="quarantine"></a>Kwarantanna
+### <a name="quarantine"></a>Magazynu
 
 Jeśli większość lub wszystkie wywołania, które są wykonywane względem systemu docelowego, są spójne niepowodzeniem z powodu błędu (na przykład nieprawidłowe poświadczenia administratora) zadanie aprowizacji przejdzie do stanu "Kwarantanna". Ten stan jest wskazany w raporcie dotyczącym [podsumowania aprowizacji](check-status-user-account-provisioning.md) i za pośrednictwem poczty e-mail, jeśli powiadomienia e-mail zostały skonfigurowane w Azure Portal.
 
 W przypadku kwarantanny Częstotliwość cykli przyrostowych jest stopniowo zmniejszana do raz dziennie.
 
-Zadanie aprowizacji kończy kwarantannę po usunięciu wszystkich błędów powodujących problemy, gdy zostanie rozpoczęty następny cykl synchronizacji. Jeśli zadanie aprowizacji pozostaje w kwarantannie przez ponad cztery tygodnie, zadanie aprowizacji jest wyłączone. [Tutaj](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)znajdziesz więcej informacji na temat stanu kwarantanny.
+Zadanie aprowizacji kończy kwarantannę po usunięciu wszystkich błędów powodujących problemy, gdy zostanie rozpoczęty następny cykl synchronizacji. Jeśli zadanie aprowizacji pozostaje w kwarantannie przez ponad cztery tygodnie, zadanie aprowizacji jest wyłączone. [Tutaj](application-provisioning-quarantine-status.md)znajdziesz więcej informacji na temat stanu kwarantanny.
 
 ### <a name="how-long-provisioning-takes"></a>Jak długo trwa aprowizacja
 
@@ -184,7 +184,7 @@ Usługa Azure AD Provisioning spowoduje nietrwałe usunięcie użytkownika w apl
 
 Jeśli wystąpi jedno z powyższych czterech zdarzeń i aplikacja docelowa nie obsługuje usuwania nietrwałego, usługa aprowizacji wyśle żądanie usunięcia, aby trwale usunąć użytkownika z aplikacji. 
 
-po upływie 30 dni od usunięcia użytkownika w usłudze Azure AD zostaną one trwale usunięte z dzierżawy. W tym momencie usługa aprowizacji wyśle żądanie usunięcia, aby trwale usunąć użytkownika w aplikacji. W dowolnym momencie w oknie 30-dniowym można [trwale usunąć użytkownika]( https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore), co spowoduje wysłanie żądania usunięcia do aplikacji.
+po upływie 30 dni od usunięcia użytkownika w usłudze Azure AD zostaną one trwale usunięte z dzierżawy. W tym momencie usługa aprowizacji wyśle żądanie usunięcia, aby trwale usunąć użytkownika w aplikacji. W dowolnym momencie w oknie 30-dniowym można [trwale usunąć użytkownika](../fundamentals/active-directory-users-restore.md), co spowoduje wysłanie żądania usunięcia do aplikacji.
 
 Jeśli w mapowaniu atrybutów zostanie wyświetlony atrybut IsSoftDeleted, jest on używany do określenia stanu użytkownika oraz tego, czy do usuwania nietrwałego ma być wysyłany żądanie aktualizacji z aktywnym = false. 
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658342"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714860"
 ---
 # <a name="application-gateway-configuration-overview"></a>Przegląd konfiguracji Application Gateway
 
@@ -53,7 +53,7 @@ Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) są obsługiwane w 
 - Nie można zablokować wychodzącej łączności z Internetem. Domyślne reguły ruchu wychodzącego w sieciowej grupy zabezpieczeń umożliwiają łączność z Internetem. Zalecamy wykonanie następujących czynności:
 
   - Nie usuwaj domyślnych reguł dla ruchu wychodzącego.
-  - Nie należy tworzyć innych reguł wychodzących, które odrzucają wychodzące połączenia z Internetem.
+  - Nie należy tworzyć innych reguł wychodzących, które odbraniają łączności wychodzącej.
 
 - Ruch ze znacznika **AzureLoadBalancer** musi być dozwolony.
 
@@ -220,7 +220,7 @@ Wybierz wymagany typ przekierowania: *trwały (301)* , *tymczasowy (307)* , *zna
 
 Wybierz inny odbiornik lub lokację zewnętrzną jako cel przekierowania.
 
-##### <a name="listener"></a>Odbiornik
+##### <a name="listener"></a>Odbiornika
 
 Wybierz odbiornik jako miejsce docelowe przekierowania, aby przekierować ruch z jednego odbiornika do innego na bramie. To ustawienie jest wymagane, jeśli chcesz włączyć przekierowywanie HTTP-to-HTTPS. Przekierowuje ruch z odbiornika źródłowego, który sprawdza przychodzące żądania HTTP do odbiornika docelowego, który sprawdza przychodzące żądania HTTPS. Można również dołączyć ciąg zapytania i ścieżkę z oryginalnego żądania w żądaniu, które jest przekazywane do docelowego przekierowania.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 93cdea453050df8899abf9233991715ae237bcd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257237"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719340"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Wdrażanie usługi Azure Cosmos DB i Azure App Service Web Apps przy użyciu szablonu usługi Azure Resource Manager
 W tym samouczku pokazano, jak szablon usługi Azure Resource Manager umożliwia wdrażanie i integrowanie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) aplikacji sieci web i przykładowej aplikacji sieci web.
@@ -33,7 +33,7 @@ Po ukończeniu tego samouczka można odpowiedzieć na następujące pytania:
 
 Przed wykonaniem instrukcji zawartych w ramach tego samouczka, upewnij się, że masz subskrypcję platformy Azure. Azure to platforma z subskrypcji.  Aby uzyskać więcej informacji na temat uzyskiwania subskrypcji, zobacz [opcje zakupu](https://azure.microsoft.com/pricing/purchase-options/), [oferty dla subskrybentów](https://azure.microsoft.com/pricing/member-offers/), lub [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a id="CreateDB"></a>Krok 1. Pobierz pliki szablonów
+## <a id="CreateDB"></a>Krok 1: Pobierz pliki szablonów
 Zacznijmy od pobierania plików szablonów, które wymaga tego samouczka.
 
 1. Pobierz [utworzenia konta usługi Azure Cosmos DB, aplikacje sieci Web i wdrażanie przykładowej aplikacji pokaz](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) szablonu do folderu lokalnego (na przykład C:\Azure Cosmos DBTemplates). Ten szablon wdraża konto usługi Azure Cosmos DB, aplikacja sieci web usługi App Service i aplikację sieci web.  Również automatycznie konfiguruje aplikacji sieci web, które umożliwiają połączenie z kontem usługi Azure Cosmos DB.
@@ -56,9 +56,9 @@ Teraz Zajmijmy się wdrożeniem pierwszego szablonu.
    ![Zrzut ekranu przedstawiający interfejs użytkownika wdrażania szablonu](./media/create-website/TemplateDeployment3.png)
 4. Kliknij przycisk **Edytuj parametry**, podaj wartości dla każdego z parametrów obowiązkowych i kliknij przycisk **OK**.  Parametry są następujące:
    
-   1. NAZWA WITRYNY: Określa nazwę aplikacji sieci web usługi App Service i jest używany do tworzenia adresu URL, który umożliwia dostęp do aplikacji sieci web (na przykład, jeśli określisz "mydemodocdbwebapp", a następnie za pomocą którego można uzyskać dostęp do aplikacji sieci web adres URL jest mydemodocdbwebapp.azurewebsites.net).
+   1. SITEname: Określa nazwę aplikacji sieci Web App Service i służy do konstruowania adresu URL, który jest używany w celu uzyskania dostępu do aplikacji sieci Web (na przykład jeśli określisz wartość "mydemodocdbwebapp", adres URL, do którego uzyskujesz dostęp do aplikacji sieci Web, jest `mydemodocdbwebapp.azurewebsites.net`).
    2. HOSTINGPLANNAME: Określa nazwę planu hostingu usługi App Service, aby utworzyć.
-   3. LOKALIZACJA: Określa lokalizację platformy Azure, w której chcesz utworzyć zasobów aplikacji sieci web i usługi Azure Cosmos DB.
+   3. Lokalizacja: Określa lokalizacji platformy Azure, w której chcesz utworzyć zasobów aplikacji sieci web i usługi Azure Cosmos DB.
    4. DATABASEACCOUNTNAME: Określa nazwę konta usługi Azure Cosmos DB do utworzenia.   
       
       ![Zrzut ekranu przedstawiający interfejs użytkownika wdrażania szablonu](./media/create-website/TemplateDeployment4.png)
@@ -93,9 +93,9 @@ Teraz Zajmijmy się wdrożeniem drugiego szablonu.  Ten szablon jest przydatny d
    ![Zrzut ekranu przedstawiający interfejs użytkownika wdrażania szablonu](./media/create-website/TemplateDeployment3.png)
 4. Kliknij przycisk **Edytuj parametry**, podaj wartości dla każdego z parametrów obowiązkowych i kliknij przycisk **OK**.  Parametry są następujące:
    
-   1. NAZWA WITRYNY: Określa nazwę aplikacji sieci web usługi App Service i jest używany do tworzenia adresu URL używanego do dostępu do aplikacji sieci web, (na przykład, jeśli określisz "mydemodocdbwebapp", a następnie za pomocą którego można uzyskać dostęp do aplikacji sieci web adres URL jest mydemodocdbwebapp.azurewebsites.net).
+   1. Nazwa witryny: Określa nazwę aplikacji sieci web usługi App Service i jest używany do tworzenia adresu URL używanego do dostępu do aplikacji sieci web, (na przykład, jeśli określisz "mydemodocdbwebapp", a następnie za pomocą którego można uzyskać dostęp do aplikacji sieci web adres URL jest mydemodocdbwebapp.azurewebsites.net).
    2. HOSTINGPLANNAME: Określa nazwę planu hostingu usługi App Service, aby utworzyć.
-   3. LOKALIZACJA: Określa lokalizację platformy Azure, w której chcesz utworzyć zasobów aplikacji sieci web i usługi Azure Cosmos DB.
+   3. Lokalizacja: Określa lokalizacji platformy Azure, w której chcesz utworzyć zasobów aplikacji sieci web i usługi Azure Cosmos DB.
    4. DATABASEACCOUNTNAME: Określa nazwę konta usługi Azure Cosmos DB do utworzenia.   
       
       ![Zrzut ekranu przedstawiający interfejs użytkownika wdrażania szablonu](./media/create-website/TemplateDeployment4.png)
@@ -114,18 +114,18 @@ Teraz Zajmijmy się wdrożeniem drugiego szablonu.  Ten szablon jest przydatny d
 
 <a name="NextSteps"></a>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Gratulacje! Udało Ci się wdrożyć usługi Azure Cosmos DB, aplikacji sieci web usługi App Service i przykładowej aplikacji sieci web przy użyciu szablonów usługi Azure Resource Manager.
 
 * Aby dowiedzieć się więcej o usłudze Azure Cosmos DB, kliknij przycisk [tutaj](https://azure.microsoft.com/services/cosmos-db/).
 * Aby dowiedzieć się więcej o usłudze Azure App Service Web apps, kliknij przycisk [tutaj](https://go.microsoft.com/fwlink/?LinkId=325362).
 * Aby dowiedzieć się więcej na temat szablonów usługi Azure Resource Manager, kliknij przycisk [tutaj](https://msdn.microsoft.com/library/azure/dn790549.aspx).
 
-## <a name="whats-changed"></a>Co zostało zmienione
-* Przewodnik dotyczący przejścia od witryn sieci Web w usłudze App Service, zobacz: [Usługa Azure App Service i jej wpływ na istniejące usługi platformy Azure](https://go.microsoft.com/fwlink/?LinkId=529714)
+## <a name="whats-changed"></a>Co się zmieniło
+* Przewodnik dotyczący przejścia od usługi Witryny sieci Web do usługi App Service można znaleźć w temacie [Azure App Service and Its Impact on Existing Azure Services](https://go.microsoft.com/fwlink/?LinkId=529714) (Usługa Azure App Service i jej wpływ na istniejące usługi platformy Azure).
 
 > [!NOTE]
-> Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Try App Service](https://go.microsoft.com/fwlink/?LinkId=523751) (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych i bez zobowiązań.
+> Jeśli chcesz zacząć korzystać z usługi Azure App Service przed utworzeniem konta platformy Azure, przejdź do artykułu [Try App Service](https://go.microsoft.com/fwlink/?LinkId=523751) (Wypróbuj usługę App Service), w którym wyjaśniono, jak od razu utworzyć początkową aplikację internetową o krótkim okresie istnienia w usłudze App Service. Bez kart kredytowych, bez zobowiązań.
 > 
 > 
 

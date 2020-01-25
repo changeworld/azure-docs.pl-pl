@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1f60ce3a23882a48e6008b76c0eedcab99e013b2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a0aa20a8d1ddecfe401a4e099a4f298971779501
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883448"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720116"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Konfigurowanie Azure Key Vault przy użyciu rotacji kluczy i inspekcji
 
@@ -119,7 +119,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-W kodzie aplikacji Utwórz klasę, aby pomieścić metodę uwierzytelniania Azure Active Directory. W tym przykładzie Klasa jest nazywana narzędziami. Dodaj następującą `using` instrukcję:
+W kodzie aplikacji Utwórz klasę, aby pomieścić metodę uwierzytelniania Azure Active Directory. W tym przykładzie Klasa **jest nazywana**narzędziami. Dodaj następującą instrukcję `using`:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -144,13 +144,13 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-Dodaj kod niezbędny do wywołania Key Vault i pobrania wartości klucza tajnego. Najpierw należy dodać następującą `using` instrukcję:
+Dodaj kod niezbędny do wywołania Key Vault i pobrania wartości klucza tajnego. Najpierw należy dodać następującą instrukcję `using`:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
 ```
 
-Dodaj wywołania metody w celu wywołania Key Vault i pobrania klucza tajnego. W tej metodzie podajesz identyfikator URI tajny zapisany w poprzednim kroku. Zwróć uwagę na użycie metody **GetToken** z utworzonej wcześniej klasy narzędzia.
+Dodaj wywołania metody w celu wywołania Key Vault i pobrania klucza tajnego. W tej metodzie podajesz identyfikator URI tajny zapisany w poprzednim kroku. Zwróć uwagę na użycie metody **GetToken** **z utworzonej wcześniej klasy narzędzia** .
 
 ```csharp
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
@@ -163,7 +163,7 @@ Po uruchomieniu aplikacji należy teraz uwierzytelniać się w usłudze Azure Ac
 ## <a name="key-rotation-using-azure-automation"></a>Rotacja kluczy przy użyciu Azure Automation
 
 > [!IMPORTANT]
-> Elementy Runbook Azure Automation nadal wymagają użycia `AzureRM` modułu.
+> Elementy Runbook Azure Automation nadal wymagają użycia modułu `AzureRM`.
 
 Teraz można przystąpić do konfigurowania strategii rotacji dla wartości przechowywanych jako Key Vault Secret. Wpisy tajne można obracać na kilka sposobów:
 
@@ -272,7 +272,7 @@ Następnie [Utwórz funkcję platformy Azure](../azure-functions/functions-creat
 
 Aby utworzyć aplikację funkcji platformy Azure, wybierz pozycję **Utwórz zasób**, Wyszukaj w witrynie Marketplace **aplikacja funkcji**, a następnie wybierz pozycję **Utwórz**. Podczas tworzenia możesz użyć istniejącego planu hostingu lub utworzyć nowy. Możesz również wybrać opcję hostingu dynamicznego. Aby uzyskać więcej informacji na temat opcji hostingu dla Azure Functions, zobacz [Jak skalować Azure Functions](../azure-functions/functions-scale.md).
 
-Po utworzeniu aplikacji funkcji platformy Azure przejdź do niej, a następnie wybierz scenariusz **czasomierz** i **C\#**  dla języka. Następnie wybierz pozycję **Utwórz tę funkcję**.
+Po utworzeniu aplikacji funkcji platformy Azure przejdź do niej, a następnie wybierz scenariusz **czasomierz** i język **C\#** dla tego języka. Następnie wybierz pozycję **Utwórz tę funkcję**.
 
 ![Azure Functions blok początkowy](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -314,7 +314,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
         else
         {
             dtPrev = DateTime.UtcNow;
-            log.Verbose($"Sync point file didnt have a date. Setting to now.");
+            log.Verbose($"Sync point file didn't have a date. Setting to now.");
         }
     }
 
@@ -417,7 +417,7 @@ Dodaj plik o nazwie Project. JSON z następującą zawartością:
 
 Po wybraniu opcji **zapisz**Azure Functions pobierze wymagane pliki binarne.
 
-Przejdź do karty **integracja** i nadaj parametry Czasomierzowi zrozumiałą nazwę, która ma być używana w ramach funkcji. W poprzednim kodzie funkcja oczekuje czasomierza, który ma zostać wywołany. Określ [wyrażenie firmy CRONUS](../app-service/webjobs-create.md#CreateScheduledCRON) dla czasomierza w następujący sposób `0 * * * * *`:. To wyrażenie spowoduje uruchomienie funkcji raz na minutę.
+Przejdź do karty **integracja** i nadaj parametry Czasomierzowi zrozumiałą nazwę, która ma być używana w ramach funkcji. W poprzednim kodzie funkcja oczekuje czasomierza, który ma *zostać wywołany*. Określ [wyrażenie firmy CRONUS](../app-service/webjobs-create.md#CreateScheduledCRON) dla czasomierza w następujący sposób: `0 * * * * *`. To wyrażenie spowoduje uruchomienie funkcji raz na minutę.
 
 Na tej samej karcie **integracja** Dodaj dane wejściowe typu **Azure Blob Storage**. Dane wejściowe będą wskazywały na plik Sync. txt zawierający sygnaturę czasową ostatniego zdarzenia, przeszukiwanego przez funkcję. Te dane wejściowe będą dostępne w ramach funkcji przy użyciu nazwy parametru. W powyższym kodzie dane wejściowe magazynu obiektów blob platformy Azure oczekują nazwy parametru, który ma być *inputBlob*. Wybierz konto magazynu, na którym będzie znajdować się plik Sync. txt (może to być takie samo lub inne konto magazynu). W polu Ścieżka podaj ścieżkę do pliku w formacie `{container-name}/path/to/sync.txt`.
 
@@ -429,7 +429,7 @@ Funkcja jest teraz gotowa. Upewnij się, że przełączono z powrotem do karty *
 
 Następnie musisz utworzyć aplikację logiki platformy Azure, która pobiera zdarzenia, które funkcja jest wypychana do kolejki Service Bus, analizuje zawartość i wysyła wiadomość e-mail na podstawie dopasowanego warunku.
 
-[Utwórz aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md) , wybierając > kolejno pozycje **Utwórz zasób** > **Aplikacje logiki**.
+[Utwórz aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md) , wybierając pozycję **Utwórz zasób** > **integracji** > **aplikacji logiki**.
 
 Po utworzeniu aplikacji logiki przejdź do niej, a następnie wybierz pozycję **Edytuj**. W edytorze aplikacji logiki wybierz **kolejno pozycje Service Bus Queue** i wprowadź poświadczenia Service Bus, aby połączyć je z kolejką.
 

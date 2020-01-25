@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c102941920d2b8746a49be47ef4c5613fa0bc281
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973379"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719079"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
@@ -32,6 +32,7 @@ GZRS i RA-GZRS są obecnie dostępne w wersji zapoznawczej w następujących reg
 - Azja Południowo-wschodnia
 - Europa Północna
 - Europa Zachodnia
+- Japonia Wschodnia
 - Południowe Zjednoczone Królestwo
 - Wschodnie stany USA
 - Wschodnie stany USA 2
@@ -129,6 +130,7 @@ Po zakończeniu migracji ustawienie replikacji konta magazynu zostanie zaktualiz
 Należy pamiętać o następujących ograniczeniach migracji na żywo:
 
 - Mimo że firma Microsoft obsłuży Twoje żądanie migracji na żywo tak szybko, jak to możliwe, nie ma możliwości określenia, kiedy migracja na żywo zostanie ukończona. Jeśli chcesz, aby dane były migrowane do GZRS lub RA-GZRS w określonym dniu, firma Microsoft zaleca przeprowadzenie ręcznej migracji. Ogólnie rzecz biorąc, im więcej danych zawiera Twoje konto, tym dłużej trwa ich migracja.
+- Migracja na żywo jest obsługiwana tylko w przypadku kont magazynu, które używają replikacji GRS lub RA-GRS. Jeśli Twoje konto używa LRS, najpierw należy zmienić typ replikacji konta na GRS lub RA-GRS przed kontynuowaniem. Ten krok pośrednika dodaje pomocniczy punkt końcowy udostępniony przez GRS/RA-GRS.
 - Twoje konto musi zawierać dane.
 - Dane można migrować tylko w tym samym regionie.
 - Tylko standardowe typy kont magazynu obsługują migrację na żywo. Konta magazynu w warstwie Premium muszą być migrowane ręcznie.

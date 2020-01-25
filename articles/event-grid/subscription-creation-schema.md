@@ -1,19 +1,18 @@
 ---
 title: Schemat subskrypcji usługi Azure Event Grid
-description: Opisuje właściwości subskrybowanie zdarzenia za pomocą usługi Azure Event Grid.
+description: W tym artykule opisano właściwości subskrybowania zdarzenia z Azure Event Grid. Event Grid schemat subskrypcji.
 services: event-grid
 author: banisadr
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/02/2019
+ms.date: 01/23/2020
 ms.author: babanisa
-ms.openlocfilehash: 6129c7f498ce6c52fce4266f693c6a304642f8c3
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845457"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720762"
 ---
 # <a name="event-grid-subscription-schema"></a>Schemat subskrypcji siatki zdarzeń
 
@@ -33,21 +32,21 @@ Nazwa subskrypcji zdarzeń musi mieć długość 3 – 64 znaków i może zawier
  
 ## <a name="event-subscription-properties"></a>Właściwości subskrypcji zdarzeń
 
-| Właściwość | Type | Opis |
+| Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| destination | object | Obiekt, który definiuje punkt końcowy. |
-| filter | object | Opcjonalne pole do filtrowania typów zdarzeń. |
+| destination | obiekt | Obiekt, który definiuje punkt końcowy. |
+| filter | obiekt | Opcjonalne pole do filtrowania typów zdarzeń. |
 
 ### <a name="destination-object"></a>obiekt docelowy
 
-| Właściwość | Type | Opis |
+| Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | endpointType | string | Typ punktu końcowego dla subskrypcji (webhook/HTTP, Centrum zdarzeń lub kolejki). | 
 | endpointUrl | string | Docelowy adres URL zdarzenia w tej subskrypcji zdarzeń. | 
 
 ### <a name="filter-object"></a>obiekt filtru
 
-| Właściwość | Type | Opis |
+| Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | includedEventTypes | tablica | Dopasowanie, gdy typ zdarzenia w komunikacie zdarzenia jest dokładne dopasowanie do jednego z tych nazw typu event. Zgłasza błąd, gdy nazwa zdarzenia jest niezgodny z nazwy typu zdarzenia zarejestrowane dla źródła zdarzenia. Domyślna jest zgodna wszystkich typów zdarzeń. |
 | subjectBeginsWith | string | Dopasowanie prefiksu filtr zdarzeń do pola temat wiadomości. Domyślne lub pusty ciąg pasuje do wszystkich. | 
@@ -76,6 +75,6 @@ Nazwa subskrypcji zdarzeń musi mieć długość 3 – 64 znaków i może zawier
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)

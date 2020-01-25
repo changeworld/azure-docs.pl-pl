@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cb3b10ca67ab283b999e4fff8e3bb79ae3b59745
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 72b3349e0ad4fd86b91a7a02f70b2bcf1efbc271
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950820"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712850"
 ---
 # <a name="string-claims-transformations"></a>Przekształcenia oświadczeń ciągów
 
@@ -157,7 +157,7 @@ Ustal, czy jedno z nich jest równe innemu. Wynik jest nowym obiektem logicznym 
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie inputclaim | inputClaim1 | string | Typ pierwszego wystąpienia, który ma zostać porównany. |
 | Oświadczenie inputclaim | inputClaim2 | string | Drugi typ zgłoszenia, który ma zostać porównany. |
-| InputParameter | operator | string | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
+| InputParameter | zakład | string | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
 | InputParameter | ignoreCase | wartość logiczna | Określa, czy to porównanie ma ignorować wielkość liter podczas porównywania ciągów. |
 | Oświadczenie outputclaim | Oświadczenie outputclaim | wartość logiczna | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. |
 
@@ -197,7 +197,7 @@ Określa, czy wartość żądania jest równa wartości parametru wejściowego.
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie inputclaim | inputClaim1 | string | Typ zgłoszenia, który ma zostać porównany. |
-| InputParameter | operator | string | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
+| InputParameter | zakład | string | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
 | InputParameter | compareTo | string | porównanie ciągów, jedna z wartości: numer porządkowy, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | wartość logiczna | Określa, czy to porównanie ma ignorować wielkość liter podczas porównywania ciągów. |
 | Oświadczenie outputclaim | Oświadczenie outputclaim | wartość logiczna | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. |
@@ -379,7 +379,7 @@ Poniższy przykład wyszukuje opis komunikatu o błędzie na podstawie klucza b�
   <DataType>string</DataType>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
@@ -477,7 +477,7 @@ Pobiera część domeny adresu e-mail.
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie inputclaim | emailAddress | string | Wartość oświadczenia, która zawiera adres e-mail. |
-| Oświadczenie outputclaim | domain | string | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń — domena. |
+| Oświadczenie outputclaim | domeny | string | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń — domena. |
 
 Użyj tej transformacji oświadczeń, aby przeanalizować nazwę domeny po znaku @ symbolu użytkownika. Może to być przydatne w przypadku usuwania informacji osobowych z danych inspekcji. Następująca transformacja oświadczeń pokazuje, jak przeanalizować nazwę domeny z oświadczenia **adresu e-mail** .
 

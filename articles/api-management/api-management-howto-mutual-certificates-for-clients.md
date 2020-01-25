@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 60cd9a1454704fae17ccdcf39b9de2745ae4fd2c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121016"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713134"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Jak zabezpieczyć interfejsy API przy użyciu uwierzytelniania certyfikatów klientów w API Management
 
@@ -34,7 +34,7 @@ Aby uzyskać informacje o zabezpieczaniu dostępu do usługi zaplecza interfejsu
 > [!IMPORTANT]
 > Aby otrzymywać i weryfikować certyfikaty klienta w warstwie zużycia, należy włączyć ustawienie "Żądaj certyfikatu klienta" w bloku "domeny niestandardowe", jak pokazano poniżej.
 
-![Zażądaj certyfikatu klienta](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+![Żądaj certyfikatu klienta](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
 ## <a name="checking-the-issuer-and-subject"></a>Sprawdzanie wystawcy i tematu
 

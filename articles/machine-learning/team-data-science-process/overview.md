@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 1/04/2020
+ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: e9d98f03b2c97245517e3fbb6d7dc7624cfb724d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665073"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721391"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co to jest zespołowe przetwarzanie danych dla celów naukowych?
 
@@ -36,11 +36,11 @@ Przetwarzanie TDSP składa się z następujących kluczowych składników:
 
 ## <a name="data-science-lifecycle"></a>Cykl życia analizy danych
 
-Proces do nauki o danych zespołu (TDSP) zawiera cykl życia struktury opracowywania projektów do nauki o danych. Cykl życia zawiera opis kroków, od początku do końca, że projekty zazwyczaj należy wykonać podczas są wykonywane.
+Proces do nauki o danych zespołu (TDSP) zawiera cykl życia struktury opracowywania projektów do nauki o danych. Cykl życia przedstawia pełne kroki, które są wykonywane przez pomyślne projekty.
 
-Jeśli używasz innego cykl życia analizy danych, takich jak [DM WYSOKĄ](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) lub proces niestandardowej w organizacji można nadal używać opartego na zadaniach przetwarzania TDSP w kontekście tych cyklu rozwoju. Na wysokim poziomie te różne metody mają wiele wspólnych. 
+Jeśli jest używany inny cykl życia analizy [danych, taki jak](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining) [KDD,](https://wikipedia.org/wiki/Data_mining#Process) lub własny niestandardowy proces organizacji, można nadal używać przetwarzania TDSP opartego na zadaniach w kontekście tych cykli rozwoju. Na wysokim poziomie te różne metody mają wiele wspólnych. 
 
-Ten cykl życia został zaprojektowany tak, aby uzyskać projekty do nauki o danych, które są dostarczane jako część inteligentnych aplikacji. Te aplikacje wdrażania modeli uczenia i sztucznej inteligencji maszynowego do analizy predykcyjnej. Projekty do nauki o danych eksploracyjnego lub projekty analizy ad-hoc, można również korzystać z tego procesu. W takich przypadkach niektóre procedury opisanej może nie być jednak potrzebna.    
+Ten cykl życia został zaprojektowany tak, aby uzyskać projekty do nauki o danych, które są dostarczane jako część inteligentnych aplikacji. Te aplikacje wdrażania modeli uczenia i sztucznej inteligencji maszynowego do analizy predykcyjnej. Dzięki temu procesowi mogą korzystać projekty analizy danych w nauce lub projekty analiz Improvised. W takich przypadkach niektóre procedury opisanej może nie być jednak potrzebna.    
 
 Cykl życia przedstawia główne etapy, które projekty zazwyczaj są wykonywane, często iteracyjne:
 
@@ -69,7 +69,7 @@ Na poniższym diagramie przedstawiono widoku siatki zadań (na niebiesko) i arte
 
 Wszystkie projekty, udostępniać strukturę katalogów i korzystanie z szablonów projektów dokumentów o ułatwia członkom zespołu znaleźć informacje dotyczące ich projektów. Cały kod i dokumenty są przechowywane w systemie kontroli wersji (klastry Wirtualne), takich jak Git, TFS lub Subversion, umożliwiające współpracę zespołową. Śledzenie zadań i funkcji w projekcie agile śledzenia systemu, np. Jira, wyścigów i DevOps platformy Azure umożliwia bliżej śledzenia kodu dla poszczególnych funkcji. Takie śledzenia umożliwia także zespołów w celu uzyskania lepszego szacunkowy koszt. Przetwarzanie TDSP zaleca się utworzenie oddzielnych repozytorium dla każdego projektu w VC przechowywania wersji, bezpieczeństwo informacji i współpracy. Standardowej struktury dla wszystkich projektów pomaga w tworzeniu instytucjonalnych wiedzy w organizacji.
 
-Firma Microsoft zapewnia szablony dla struktury folderów i dokumentów wymagane w lokalizacjach. Tej struktury folderów organizuje pliki zawierające kod do eksploracji danych i wyodrębniania funkcji, a które Zapisz iteracji modelu. Te szablony ułatwiają członków zespołu, aby zrozumieć pracy wykonanej przez innych użytkowników i dodawać nowych członków zespołów. To ułatwia wyświetlanie i aktualizowanie szablonów dokumentów w formacie markdown. Szablony umożliwiają udostępnianie list kontrolnych kluczowych pytań dla każdego projektu upewnić się, czy problem jest dobrze zdefiniowany i spełniania jakości oczekiwane cele do zrealizowania. Przykłady:
+Firma Microsoft zapewnia szablony dla struktury folderów i dokumentów wymagane w lokalizacjach. Tej struktury folderów organizuje pliki zawierające kod do eksploracji danych i wyodrębniania funkcji, a które Zapisz iteracji modelu. Te szablony ułatwiają członków zespołu, aby zrozumieć pracy wykonanej przez innych użytkowników i dodawać nowych członków zespołów. To ułatwia wyświetlanie i aktualizowanie szablonów dokumentów w formacie markdown. Użyj szablonów, aby podać listy kontrolne z kluczowymi pytaniami dla każdego projektu, aby upewnić się, że problem jest dobrze zdefiniowany i że dostarczane dane spełniają wymagania jakości. Przykłady:
 
 - karty Projekt, aby udokumentować problem biznesowy i zakres projektu
 - dane raportów do dokumentu struktury i statystyki dla danych nieprzetworzonych
@@ -90,7 +90,7 @@ Przetwarzanie TDSP zawiera zalecenia dotyczące zarządzania udostępnionego ana
 - dane big data klastrów (usługi Hadoop lub Spark) 
 - Usługa Machine learning 
 
-Infrastruktura analizy i magazynowania można w chmurze lub lokalnie. Jest to, gdzie są przechowywane nieprzetworzone i będą przetwarzane zestawów danych. Infrastruktura ta umożliwia analizę do odtworzenia. Unika również duplikatów, co może doprowadzić do niespójności i zbędnych kosztów infrastruktury. Inicjowanie obsługi administracyjnej zasobów udostępnionych, ich śledzenie i zezwolić na poszczególnych członków zespołu, bezpieczne łączenie do tych zasobów są dostępne narzędzia. Jest również dobrym rozwiązaniem członkowie projektu utworzenia środowiska obliczeniowego spójne. Różni członkowie zespołu można replikować i weryfikowanie eksperymentów.
+Infrastruktura analizy i magazynu, w której przechowywane są nieprzetworzone i przetworzone zestawy danych, może znajdować się w chmurze lub lokalnie. Infrastruktura ta umożliwia analizę do odtworzenia. Unika również duplikatów, co może doprowadzić do niespójności i zbędnych kosztów infrastruktury. Inicjowanie obsługi administracyjnej zasobów udostępnionych, ich śledzenie i zezwolić na poszczególnych członków zespołu, bezpieczne łączenie do tych zasobów są dostępne narzędzia. Jest również dobrym rozwiązaniem członkowie projektu utworzenia środowiska obliczeniowego spójne. Różni członkowie zespołu można replikować i weryfikowanie eksperymentów.
 
 Oto przykład udostępnianie różne składniki infrastruktury analizy cloud i Praca nad wieloma projektami zespołu.
 

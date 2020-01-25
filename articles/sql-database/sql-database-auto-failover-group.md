@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732420"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722547"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
@@ -71,6 +71,13 @@ Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości baz
 - **Dodawanie baz danych w puli elastycznej do grupy trybu failover**
 
   Wszystkie lub kilka baz danych w puli elastycznej można umieścić w tej samej grupie trybu failover. Jeśli podstawowa baza danych znajduje się w puli elastycznej, zostanie ona automatycznie utworzona w puli elastycznej o tej samej nazwie (puli pomocniczej). Musisz się upewnić, że serwer pomocniczy zawiera pulę elastyczną o tej samej dokładnej nazwie i wystarczającej pojemności do hostowania pomocniczych baz danych, które zostaną utworzone przez grupę trybu failover. W przypadku dodania bazy danych w puli, która ma już pomocniczą bazę danych w puli pomocniczej, to łącze replikacji geograficznej jest dziedziczone przez grupę. Po dodaniu bazy danych, która ma już pomocniczą bazę danych na serwerze, który nie jest częścią grupy trybu failover, w dodatkowej puli zostanie utworzony nowy element pomocniczy.
+  
+- **Początkowe rozpełnianie** 
+
+  Podczas dodawania baz danych, pul elastycznych lub wystąpień zarządzanych do grupy trybu failover istnieje początkowa faza wypełniania, przed rozpoczęciem replikacji danych. Początkowa faza wypełniania jest najdłuższym i najtańszą operacją. Po zakończeniu początkowego umieszczania dane są synchronizowane, a następnie replikowane są tylko kolejne zmiany danych. Czas potrzebny na ukończenie początkowego inicjatora zależy od rozmiaru danych, liczby zreplikowanych baz danych oraz szybkości połączenia między jednostkami w grupie trybu failover. W normalnych warunkach typowa szybkość wypełniania jest 50-500 GB godziny dla pojedynczej bazy danych lub puli elastycznej, a 18-35 GB jest godzina dla wystąpienia zarządzanego. Rozmieszczanie jest wykonywane dla wszystkich baz danych równolegle. Można użyć podanej szybkości wypełniania, wraz z liczbą baz danych i łącznym rozmiarem danych, aby oszacować, jak długo początkowa faza rozpełniania zostanie zastosowana przed rozpoczęciem replikacji danych.
+
+  W przypadku wystąpień zarządzanych należy wziąć pod uwagę szybkość łącza usługi Express Route między dwoma wystąpieniami, która jest również potrzebna podczas szacowania czasu początkowej fazy wstępnego wypełniania. Jeśli szybkość łącza między dwoma wystąpieniami jest mniejsza niż to, co jest konieczne, może to mieć wpływ na czas, w którym jest to możliwe. Można użyć podanej szybkości wypełniania, liczby baz danych, łącznego rozmiaru danych i szybkości łącza, aby oszacować, jak długo początkowa faza rozsadzenia będzie trwać przed rozpoczęciem replikacji danych. Na przykład dla pojedynczej bazy danych 100 GB początkowa faza inicjatora zajmie od 2,8 do 5,5 godz., jeśli link jest w stanie wypchnięciem 35 GB na godzinę. Jeśli link umożliwia transfer 10 GB na godzinę, wówczas wypełnianie bazy danych 100 GB zajmie około 10 godzin. Jeśli istnieje wiele baz danych do replikowania, umieszczanie zostanie wykonane równolegle, a w połączeniu z powolnej szybkością łącza, początkowa faza wypełniania może potrwać znacznie dłużej, zwłaszcza jeśli równoległe umieszczanie danych ze wszystkich baz danych przekroczy dostępne Połącz przepustowość. Jeśli przepustowość sieci między dwoma wystąpieniami jest ograniczona i dodajesz wiele wystąpień zarządzanych do grupy trybu failover, rozważ dodanie wielu wystąpień zarządzanych do grupy trybu failover sekwencyjnie, jeden według jednego.
+
   
 - **Strefa DNS**
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513936"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715526"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Pozyskiwanie historycznych danych telemetrycznych
 
@@ -72,7 +72,7 @@ Wykonaj następujące kroki.
 
  Teraz, gdy masz wymagane poświadczenia, możesz zdefiniować urządzenie i czujniki. W tym celu Utwórz metadane, wywołując interfejsy API FarmBeats. Należy pamiętać, że należy wywołać interfejsy API jako aplikację kliencką utworzoną w powyższej sekcji
 
- FarmBeats Datahub zawiera następujące interfejsy API, które umożliwiają tworzenie metadanych urządzenia lub czujnika i zarządzanie nimi.
+ FarmBeats Datahub zawiera następujące interfejsy API, które umożliwiają tworzenie metadanych urządzenia lub czujnika i zarządzanie nimi. Należy pamiętać, że jako partner masz dostęp tylko do odczytu, tworzenia i aktualizowania metadanych; **Usunięcie nie jest dozwolone przez partnera.**
 
 - /**DeviceModel**: DeviceModel odpowiada metadanych urządzenia, takich jak producent i typ urządzenia, który jest bramą lub węzłem.
 - **urządzenie**/: urządzenie odpowiada urządzeniu fizycznemu znajdującemu się w farmie.
@@ -115,7 +115,7 @@ Wykonaj następujące kroki.
 |  SensorModelId     |    Identyfikator skojarzonego modelu czujnika.   |
 | Lokalizacja          |  Czujnik Latitude (-90 do + 90), Długość geograficzna (-180 do 180) i podniesienie (w metrach).|
 |   Nazwa > portu        |  Nazwa i typ portu, z którym jest połączony czujnik na urządzeniu. Musi to być taka sama nazwa, jak zdefiniowana w modelu urządzenia. |
-|    ID urządzenia  |    Identyfikator urządzenia, z którym jest połączony czujnik.     |
+|    Identyfikator  |    Identyfikator urządzenia, z którym jest połączony czujnik.     |
 | Nazwa            |   Nazwa identyfikująca zasób. Na przykład nazwa czujnika lub nazwa produktu i numer modelu lub kod produktu.|
 |    Opis      | Podaj znaczący opis. |
 |    Właściwości        |Dodatkowe właściwości producenta. |
@@ -381,6 +381,41 @@ Oto przykład komunikatu telemetrii:
       ]
     }
   ]
+}
+```
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Nie można wyświetlić danych telemetrycznych po pozyskaniu danych historycznych/przesyłanych strumieniowo z czujników
+
+**Objaw**: wdrożono urządzenia lub czujniki, a w usłudze EventHub zostały utworzone urządzenia/czujniki dotyczące FarmBeats i pozyskiwanej telemetrii, ale nie można uzyskać ani wyświetlić danych telemetrycznych w FarmBeats.
+
+**Działanie naprawcze**:
+
+1. Upewnij się, że pomyślnie ukończono rejestrację partnera — możesz to sprawdzić, przechodząc do datahub Swagger, przejdź do interfejsu API/partner, a następnie wybierz pozycję Pobierz i sprawdź, czy partner jest zarejestrowany. Jeśli nie, wykonaj [kroki opisane tutaj](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) , aby dodać partnera.
+2. Upewnij się, że zostały utworzone metadane (DeviceModel, Device, SensorModel, sensor) przy użyciu poświadczeń klienta partnera.
+3. Upewnij się, że użyto poprawnego formatu komunikatów telemetrycznych (jak określono poniżej):
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
 }
 ```
 

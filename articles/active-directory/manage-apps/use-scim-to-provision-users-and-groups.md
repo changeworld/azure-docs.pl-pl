@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee241c9b4d26377931e828df60db1c50a9c86b84
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: a6ad3e91b6826680eb8bcc9da4fc9d1cee37564c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940874"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711631"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników przy użyciu Azure Active Directory (Azure AD)
 
@@ -49,7 +49,7 @@ Automatyzacja aprowizacji do aplikacji wymaga skompilowania i integracji punktu 
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>Krok 1. Projektowanie schematu użytkownika i grupy
 
-Każda aplikacja wymaga innych atrybutów do utworzenia użytkownika lub grupy. Rozpocznij integrację, identyfikując obiekty (użytkowników, grupy) i atrybuty (nazwę, Menedżera, stanowisko, itp.) wymagane przez aplikację. Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atrybuty wymagane przez aplikację mogą być mapowane na atrybut w usłudze Azure AD i w Standard scim RFC. Należy pamiętać, że można [dostosować](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) sposób mapowania atrybutów między usługą Azure AD a punktem końcowym Standard scim. 
+Każda aplikacja wymaga innych atrybutów do utworzenia użytkownika lub grupy. Rozpocznij integrację, identyfikując obiekty (użytkowników, grupy) i atrybuty (nazwę, Menedżera, stanowisko, itp.) wymagane przez aplikację. Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atrybuty wymagane przez aplikację mogą być mapowane na atrybut w usłudze Azure AD i w Standard scim RFC. Należy pamiętać, że można [dostosować](customize-application-attributes.md) sposób mapowania atrybutów między usługą Azure AD a punktem końcowym Standard scim. 
 
 Zasoby użytkownika są identyfikowane przez identyfikator schematu, `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, który jest zawarty w specyfikacji protokołu: https://tools.ietf.org/html/rfc7643.  Domyślne mapowanie atrybutów użytkowników w usłudze Azure AD do atrybutów zasobów użytkowników znajduje się w tabeli 1.  
 
@@ -119,14 +119,14 @@ Postępuj zgodnie z ogólnymi wskazówkami dotyczącymi wdrażania punktu końco
     - `and`
 * Nie wymagaj dopasowania uwzględniającego wielkość liter w elementach konstrukcyjnych w Standard scim, w szczególności wartości operacji `op` poprawki, zgodnie z definicją w https://tools.ietf.org/html/rfc7644#section-3.5.2. Usługa Azure AD emituje wartości elementu "op" jako `Add`, `Replace`i `Remove`.
 * Microsoft Azure AD wykonuje żądania pobrania losowego użytkownika i grupy, aby upewnić się, że punkt końcowy i poświadczenia są prawidłowe. Jest również wykonywane w ramach przepływu **połączenia testowego** w [Azure Portal](https://portal.azure.com). 
-* Atrybut, w którym można wykonywać zapytania o zasoby, powinien być ustawiony jako pasujący atrybut w aplikacji w [Azure Portal](https://portal.azure.com). Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+* Atrybut, w którym można wykonywać zapytania o zasoby, powinien być ustawiony jako pasujący atrybut w aplikacji w [Azure Portal](https://portal.azure.com). Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów aprowizacji użytkowników](customize-application-attributes.md)
 
 ### <a name="user-provisioning-and-deprovisioning"></a>Inicjowanie obsługi i cofanie aprowizacji użytkowników
 
 Na poniższej ilustracji przedstawiono komunikaty, które Azure Active Directory wysyła do usługi Standard scim w celu zarządzania cyklem życia użytkownika w magazynie tożsamości aplikacji.  
 
-![przedstawia sekwencję aprowizacji i anulowania obsługi użytkowników][4]<br/>
-*Rysunek 4. sekwencja aprowizacji i anulowania obsługi użytkowników*
+![przedstawia sekwencję aprowizacji i anulowania obsługi użytkowników](media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
+*Sekwencja inicjowania obsługi i anulowania aprowizacji użytkowników*
 
 ### <a name="group-provisioning-and-deprovisioning"></a>Inicjowanie obsługi i cofanie aprowizacji grupy
 
@@ -135,8 +135,8 @@ Inicjowanie obsługi i cofanie aprowizacji grupy jest opcjonalne. Po zaimplement
 * Żądania pobrania grup określają, że atrybut Members ma być wykluczony z dowolnego zasobu dostarczonego w odpowiedzi na żądanie.  
 * Żądania, aby ustalić, czy jest atrybut odwołania, ma określoną wartość są żądania o atrybucie elementów członkowskich.  
 
-![przedstawia sekwencję aprowizacji i anulowania obsługi grup][5]<br/>
-*Rysunek 5. kolejność dostarczania grup i anulowania aprowizacji*
+![przedstawia sekwencję aprowizacji i anulowania obsługi grup](media/use-scim-to-provision-users-and-groups/scim-figure-5.png)<br/>
+*Sekwencjonowanie grup i cofanie aprowizacji*
 
 ### <a name="scim-protocol-requests-and-responses"></a>Żądania i odpowiedzi protokołu Standard scim
 Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta usługi Azure AD Standard scim i przykładowe oczekiwane odpowiedzi. Aby uzyskać najlepsze wyniki, należy zakodować aplikację do obsługi tych żądań w tym formacie i emitować oczekiwane odpowiedzi.
@@ -168,7 +168,7 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
   - [Grupa aktualizacji [Dodaj członków]](#update-group-add-members) ( [żądanie](#request-11) /
 [odpowiedzi](#response-11))
   - [Grupa aktualizacji [usuwanie członków]](#update-group-remove-members) ( [żądanie](#request-12) /
-[odpowiedzi](#response-12)) (
+[odpowiedzi](#response-12))
   - [Usuń grupę](#delete-group) ([żądanie](#request-13) /
 [odpowiedzi](#response-13))
 
@@ -752,7 +752,7 @@ Aby opracować własne usługi sieci web, który jest zgodny ze specyfikacją St
 
 * Wspólne biblioteki Language Infrastructure (CLI) są oferowane do użytku z językami oparte na tej infrastruktury, takich jak C#. Jedna z tych bibliotek, Microsoft. SystemForCrossDomainIdentityManagement. Service, deklaruje interfejs, Microsoft. SystemForCrossDomainIdentityManagement. IProvider, pokazano na poniższej ilustracji. Deweloper korzystający z bibliotek implementuje ten interfejs z klasą, która może odwoływać się ogólnie, jako dostawcę. Biblioteki umożliwiają deweloperowi wdrożenie usługi sieci Web, która jest zgodna ze specyfikacją Standard scim. Usługa sieci Web może być hostowana w ramach Internet Information Services lub dowolnego wykonywalnego zestawu interfejsu wiersza polecenia. Żądanie jest tłumaczony na wywołania metody dostawcy, które będzie zaprogramowane przez projektanta do pracy na niektórych magazynu tożsamości.
   
-   ![Podział: żądanie przetłumaczone na wywołania metod dostawcy][3]
+   ![Podział: żądanie przetłumaczone na wywołania metod dostawcy](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
   
 * [Express route obsługi](https://expressjs.com/guide/routing.html) zostały wprowadzone dostępne do przetwarzania node.js żądania obiektów reprezentująca wywołania (zgodnie z definicją w specyfikacji Standard SCIM), usługą sieci web środowiska node.js.
 
@@ -1328,14 +1328,14 @@ Aplikacje, które obsługują profile Standard SCIM opisane w tym artykule może
 3. Wybierz pozycję **+ Nowa aplikacja** > **wszystkie** > **aplikacji spoza galerii**.
 4. Wprowadź nazwę aplikacji, a następnie wybierz pozycję **Dodaj** , aby utworzyć obiekt aplikacji. Nowa aplikacja zostanie dodana do listy aplikacji dla przedsiębiorstw i zostanie otwarta na swoim ekranie zarządzania aplikacjami.
 
-   Zrzut ekranu ![przedstawia galerię aplikacji usługi Azure AD][1]<br/>
-   *Rysunek 2. Galeria aplikacji usługi Azure AD*
+   Zrzut ekranu ![przedstawia galerię aplikacji usługi Azure AD](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
+   *Galeria aplikacji usługi Azure AD*
 
 5. Na ekranie Zarządzanie aplikacjami wybierz opcję **Inicjowanie obsługi** w lewym panelu.
 6. W **inicjowania obsługi trybu** menu, wybierz opcję **automatyczne**.
 
-   ![przykład: Strona aprowizacji aplikacji w Azure Portal][2]<br/>
-   *Rysunek 3. Konfigurowanie aprowizacji w Azure Portal*
+   ![przykład: Strona aprowizacji aplikacji w Azure Portal](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
+   *Konfigurowanie aprowizacji w Azure Portal*
 
 7. W **adres URL dzierżawy** wprowadź adres URL punktu końcowego Standard SCIM aplikacji. Przykład: https://api.contoso.com/scim/
 8. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługa Azure AD zawiera token okaziciela OAuth wystawiony przez usługę Azure AD za pomocą każdego żądania. Aplikacje korzystające z usługi Azure AD jako dostawca tożsamości mogą sprawdzić poprawność tego tokenu wystawionego przez usługę Azure AD. 
@@ -1347,7 +1347,7 @@ Aplikacje, które obsługują profile Standard SCIM opisane w tym artykule może
     > **Test connection** wysyła zapytanie do punktu końcowego Standard scim dla użytkownika, który nie istnieje, przy użyciu losowego identyfikatora GUID jako pasującej właściwości wybranej w konfiguracji usługi Azure AD. Oczekiwana prawidłowa odpowiedź to HTTP 200 OK z pustym komunikatem Standard scim ListResponse.
 
 10. Jeśli próba nawiązania połączenia z aplikacją zakończyła się pomyślnie, wybierz pozycję **Zapisz** , aby zapisać poświadczenia administratora.
-11. W sekcji **mapowania** istnieją dwa możliwe do wyboru zestawy [mapowań atrybutów](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes): jeden dla obiektów użytkownika i jeden dla obiektów grupy. Wybierz każdą z nich Przejrzyj atrybuty, które są synchronizowane z usługi Azure Active Directory do swojej aplikacji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania użytkowników i grup w Twojej aplikacji dla operacji aktualizowania. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany.
+11. W sekcji **mapowania** istnieją dwa możliwe do wyboru zestawy [mapowań atrybutów](customize-application-attributes.md): jeden dla obiektów użytkownika i jeden dla obiektów grupy. Wybierz każdą z nich Przejrzyj atrybuty, które są synchronizowane z usługi Azure Active Directory do swojej aplikacji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania użytkowników i grup w Twojej aplikacji dla operacji aktualizowania. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany.
 
     > [!NOTE]
     > Opcjonalnie można wyłączyć synchronizację grupy obiektów, wyłączając mapowania "groups".
@@ -1364,7 +1364,7 @@ Po rozpoczęciu pierwszego cyklu możesz wybrać opcję **dzienniki aprowizacji*
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>Krok 5. publikowanie aplikacji w galerii aplikacji usługi Azure AD
 
-Jeśli tworzysz aplikację, która będzie używana przez więcej niż jedną dzierżawę, możesz ją udostępnić w galerii aplikacji usługi Azure AD. Dzięki temu organizacje mogą łatwo odnaleźć aplikację i skonfigurować obsługę administracyjną. Publikowanie aplikacji w galerii usługi Azure AD i udostępnianie jej innym osobom jest proste. Zapoznaj się z opisanymi [tutaj](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)instrukcjami. Firma Microsoft będzie współpracować z klientem w celu zintegrowania aplikacji z naszą galerią, przetestowania punktu końcowego i udostępnienia [dokumentacji](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) do dołączania do klientów. 
+Jeśli tworzysz aplikację, która będzie używana przez więcej niż jedną dzierżawę, możesz ją udostępnić w galerii aplikacji usługi Azure AD. Dzięki temu organizacje mogą łatwo odnaleźć aplikację i skonfigurować obsługę administracyjną. Publikowanie aplikacji w galerii usługi Azure AD i udostępnianie jej innym osobom jest proste. Zapoznaj się z opisanymi [tutaj](../develop/howto-app-gallery-listing.md)instrukcjami. Firma Microsoft będzie współpracować z klientem w celu zintegrowania aplikacji z naszą galerią, przetestowania punktu końcowego i udostępnienia [dokumentacji](../saas-apps/tutorial-list.md) do dołączania do klientów. 
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autoryzacja łączników aprowizacji w galerii aplikacji
@@ -1380,7 +1380,7 @@ Najlepsze rozwiązania (zalecane, ale nie wymagane):
 * Obsługa wielu adresów URL przekierowań. Administratorzy mogą skonfigurować obsługę administracyjną zarówno z "portal.azure.com", jak i "aad.portal.azure.com". Obsługa wielu adresów URL przekierowania gwarantuje, że użytkownicy będą mogli autoryzować dostęp z dowolnego portalu.
 * Obsługa wielu wpisów tajnych w celu zapewnienia bezproblemowego odnawiania tajnego. 
 
-**Tokeny okaziciela OAuth o długim czasie trwania:** Jeśli aplikacja nie obsługuje przepływu przydzielenia kodu autoryzacji OAuth, można również wygenerować token okaziciela OAuth o długim czasie trwania, który może być używany przez administratora do skonfigurowania integracji aprowizacji. Token powinien być tymczasowy lub w przeciwnym razie zadanie aprowizacji zostanie poddane [kwarantannie](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) po wygaśnięciu tokenu. Token musi być poniżej rozmiarze 1 KB w rozmiarze.  
+**Tokeny okaziciela OAuth o długim czasie trwania:** Jeśli aplikacja nie obsługuje przepływu przydzielenia kodu autoryzacji OAuth, można również wygenerować token okaziciela OAuth o długim czasie trwania, który może być używany przez administratora do skonfigurowania integracji aprowizacji. Token powinien być tymczasowy lub w przeciwnym razie zadanie aprowizacji zostanie poddane [kwarantannie](application-provisioning-quarantine-status.md) po wygaśnięciu tokenu. Token musi być poniżej rozmiarze 1 KB w rozmiarze.  
 
 Aby uzyskać dodatkowe metody uwierzytelniania i autoryzacji, daj nam znać w witrynie [UserVoice](https://aka.ms/appprovisioningfeaturerequest).
 
@@ -1396,11 +1396,3 @@ Niektóre aplikacje zezwalają na ruch przychodzący do swojej aplikacji. Aby us
 * [Filtry zakresu dla aprowizacji użytkowników](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Powiadomienia o aprowizacji konta](user-provisioning.md)
 * [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
-
-<!--Image references-->
-[0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png
-[1]: ./media/use-scim-to-provision-users-and-groups/scim-figure-2a.png
-[2]: ./media/use-scim-to-provision-users-and-groups/scim-figure-2b.png
-[3]: ./media/use-scim-to-provision-users-and-groups/scim-figure-3.png
-[4]: ./media/use-scim-to-provision-users-and-groups/scim-figure-4.png
-[5]: ./media/use-scim-to-provision-users-and-groups/scim-figure-5.png

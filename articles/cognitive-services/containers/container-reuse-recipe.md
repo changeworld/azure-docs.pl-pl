@@ -1,21 +1,21 @@
 ---
 title: Przepisy dotyczące kontenerów platformy Docker
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak kompilować, testować i przechowywać kontenery przy użyciu niektórych lub wszystkich ustawień konfiguracji do wdrożenia i ponownego użycia.
+description: Dowiedz się, jak tworzyć, testować i przechowywać kontenery przy użyciu niektórych lub wszystkich ustawień konfiguracji do wdrożenia i ponownego użycia.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: dbe2e288309b6682041bf3db9fe3d39455359806
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 97342f1dd4f6ce343626ba6c294f09dabe3db5c0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647280"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717207"
 ---
 # <a name="create-containers-for-reuse"></a>Tworzenie kontenerów do ponownego użycia
 
@@ -27,9 +27,9 @@ Po utworzeniu nowej warstwy kontenera (z ustawieniami) i przetestowaniu jej loka
 
 Wszystkie `docker run` przykłady w tym dokumencie zakładają konsolę systemu Windows z znakiem kontynuacji wiersza `^`. Do własnego użytku należy wziąć pod uwagę następujące kwestie:
 
-* Nie zmieniaj kolejności argumentów, o ile nie znasz już kontenerów platformy Docker.
+* Nie należy zmieniać kolejność argumentów, jeśli nie znasz bardzo kontenerów platformy docker.
 * Jeśli używasz systemu operacyjnego innego niż Windows lub konsoli innej niż konsola systemu Windows, użyj prawidłowej konsoli/terminalu, składni folderu dla instalacji i znaku kontynuacji wiersza dla konsoli i systemu.  Ponieważ kontener Cognitive Services jest systemem operacyjnym Linux, instalacja docelowa używa składni folderu w stylu systemu Linux.
-* `docker run` przykłady użyj katalogu poza dyskiem `c:`, aby uniknąć konfliktów uprawnień w systemie Windows. Jeśli musisz użyć określonego katalogu jako katalogu wejściowego, może być konieczne przyznanie uprawnienia usługi Docker.
+* `docker run` przykłady użyj katalogu poza dyskiem `c:`, aby uniknąć konfliktów uprawnień w systemie Windows. Jeśli musisz użyć określonego katalogu jako katalog wejściowy może być konieczne przyznanie platformy docker usługi uprawnienia.
 
 ## <a name="store-no-configuration-settings-in-image"></a>Nie przechowuj ustawień konfiguracji w obrazie
 

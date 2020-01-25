@@ -1,19 +1,19 @@
 ---
 title: Mapy niestandardowe pole do schematu usługi Azure Event Grid
-description: W tym artykule opisano sposób konwertowania niestandardowego schematu do schematu usługi Azure Event Grid.
+description: W tym artykule opisano sposób konwertowania niestandardowego schematu na schemat Azure Event Grid, gdy dane zdarzenia nie są zgodne ze schematem Event Grid.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a0e054be3ab7d4818ac323eb5fb93968f57eca4f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565501"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721663"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Mapowanie pól niestandardowych na schemat usługi Event Grid
 
@@ -205,7 +205,7 @@ Drugiej subskrypcji używany schemat danych wejściowych zdarzeń. Format dostar
 
 Należy zauważyć, że oryginalne pola zostały dostarczone.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Informacje o dostarczanie zdarzeń i ponownych prób [dostarczanie komunikatów usługi Event Grid i ponów próbę](delivery-and-retry.md).
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).

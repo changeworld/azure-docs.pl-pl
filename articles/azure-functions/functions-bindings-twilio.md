@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c24e8b6098ba33a2e738a7f5f310ae7e65ee516
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925292"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715064"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio powiązanie dla Azure Functions
 
@@ -31,181 +31,11 @@ Powiązania Twilio są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Ex
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
-## <a name="example---functions-1x"></a>Przykład — Functions 1. x
-
-Zobacz przykład specyficzny dla języka:
-
-* [C#](#c-example)
-* [Skryptu C# (csx)](#c-script-example)
-* [JavaScript](#javascript-example)
-
-### <a name="c-example"></a>C#przyklad
-
-Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która wysyła wiadomość tekstową, gdy jest wyzwalany przez komunikat w kolejce.
-
-```cs
-[FunctionName("QueueTwilio")]
-[return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX" )]
-public static SMSMessage Run(
-    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order,
-    TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {order}");
-
-    var message = new SMSMessage()
-    {
-        Body = $"Hello {order["name"]}, thanks for your order!",
-        To = order["mobileNumber"].ToString()
-    };
-
-    return message;
-}
-```
-
-W tym przykładzie zastosowano atrybut `TwilioSms` z wartością zwracaną metody. Alternatywą jest użycie atrybutu z parametrem `out SMSMessage` lub parametrem `ICollector<SMSMessage>` lub `IAsyncCollector<SMSMessage>`.
-
-### <a name="c-script-example"></a>C#przykład skryptu
-
-Poniższy przykład przedstawia powiązanie danych wyjściowych Twilio w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja używa `out` parametru do wysłania wiadomości tekstowej.
-
-Tutaj podano dane powiązań w pliku *Function. JSON* :
-
-Przykład Function. JSON:
-
-```json
-{
-  "type": "twilioSms",
-  "name": "message",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "+1704XXXXXXX",
-  "from": "+1425XXXXXXX",
-  "direction": "out",
-  "body": "Azure Functions Testing"
-}
-```
-
-Kod C# skryptu:
-
-```cs
-#r "Newtonsoft.Json"
-#r "Twilio.Api"
-
-using System;
-using Newtonsoft.Json;
-using Twilio;
-
-public static void Run(string myQueueItem, out SMSMessage message,  TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
-    dynamic order = JsonConvert.DeserializeObject(myQueueItem);
-    string msg = "Hello " + order.name + ", thank you for your order.";
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the SMSMessage variable.
-    message = new SMSMessage();
-
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
-    message.Body = msg;
-    message.To = order.mobileNumber;
-}
-```
-
-Nie można używać parametrów out w kodzie asynchronicznym. Oto przykład kodu skryptu C# asynchronicznego:
-
-```cs
-#r "Newtonsoft.Json"
-#r "Twilio.Api"
-
-using System;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Twilio;
-
-public static async Task Run(string myQueueItem, IAsyncCollector<SMSMessage> message,  ILogger log)
-{
-    log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
-
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
-    dynamic order = JsonConvert.DeserializeObject(myQueueItem);
-    string msg = "Hello " + order.name + ", thank you for your order.";
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the SMSMessage variable.
-    SMSMessage smsText = new SMSMessage();
-
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
-    smsText.Body = msg;
-    smsText.To = order.mobileNumber;
-
-    await message.AddAsync(smsText);
-}
-```
-
-### <a name="javascript-example"></a>Przykład JavaScript
-
-Poniższy przykład przedstawia powiązanie danych wyjściowych Twilio w pliku *Function. JSON* i [funkcję języka JavaScript](functions-reference-node.md) , która używa powiązania.
-
-Tutaj podano dane powiązań w pliku *Function. JSON* :
-
-Przykład Function. JSON:
-
-```json
-{
-  "type": "twilioSms",
-  "name": "message",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "+1704XXXXXXX",
-  "from": "+1425XXXXXXX",
-  "direction": "out",
-  "body": "Azure Functions Testing"
-}
-```
-
-Poniżej przedstawiono kod JavaScript:
-
-```javascript
-module.exports = function (context, myQueueItem) {
-    context.log('Node.js queue trigger function processed work item', myQueueItem);
-
-    // In this example the queue item is a JSON string representing an order that contains the name of a 
-    // customer and a mobile number to send text updates to.
-    var msg = "Hello " + myQueueItem.name + ", thank you for your order.";
-
-    // Even if you want to use a hard coded message and number in the binding, you must at least 
-    // initialize the message binding.
-    context.bindings.message = {};
-
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use 
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
-    context.bindings.message = {
-        body : msg,
-        to : myQueueItem.mobileNumber
-    };
-
-    context.done();
-};
-```
+<a id="example"></a>
 
 ## <a name="example---functions-2x-and-higher"></a>Przykład — funkcje 2. x i nowsze
 
-Zobacz przykład specyficzny dla języka:
-
-* [2. x +C#](#2x-c-example)
-* [2. x + C# skrypt (. CSX)](#2x-c-script-example)
-* [2. x + JavaScript](#2x-javascript-example)
-
-### <a name="2x-c-example"></a>2. x + C# przykład
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która wysyła wiadomość tekstową, gdy jest wyzwalany przez komunikat w kolejce.
 
@@ -240,7 +70,7 @@ namespace TwilioQueueOutput
 
 W tym przykładzie zastosowano atrybut `TwilioSms` z wartością zwracaną metody. Alternatywą jest użycie atrybutu z parametrem `out CreateMessageOptions` lub parametrem `ICollector<CreateMessageOptions>` lub `IAsyncCollector<CreateMessageOptions>`.
 
-### <a name="2x-c-script-example"></a>Przykładowy skrypt 2. C# x +
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych Twilio w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja używa `out` parametru do wysłania wiadomości tekstowej.
 
@@ -326,7 +156,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 }
 ```
 
-### <a name="2x-javascript-example"></a>przykład 2. x + JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych Twilio w pliku *Function. JSON* i [funkcję języka JavaScript](functions-reference-node.md) , która używa powiązania.
 
@@ -371,7 +201,93 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="attributes"></a>Atrybuty
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Poniższy przykład pokazuje, jak wysłać wiadomość SMS przy użyciu powiązania danych wyjściowych zgodnie z definicją w poniższej *funkcji Function. js*.
+
+```json
+    {
+      "type": "twilioSms",
+      "name": "twilioMessage",
+      "accountSidSetting": "TwilioAccountSID",
+      "authTokenSetting": "TwilioAuthToken",
+      "from": "+1XXXXXXXXXX",
+      "direction": "out",
+      "body": "Azure Functions Testing"
+    }
+```
+
+Można przekazać serializowany obiekt JSON do parametru `func.Out`, aby wysłać wiadomość SMS.
+
+```python
+import logging
+import json
+import azure.functions as func
+
+def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpResponse:
+
+    message = req.params.get('message')
+    to = req.params.get('to')
+
+    value = {
+      "body": message,
+      "to": to
+    }
+
+    twilioMessage.set(json.dumps(value))
+
+    return func.HttpResponse(f"Message sent")
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Poniższy przykład pokazuje, jak wysyłać wiadomości SMS przy użyciu adnotacji [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) . Wartości `to`, `from`i `body` są wymagane w definicji atrybutu, nawet jeśli przesłonisz je programowo.
+
+```java
+package com.function;
+
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class TwilioOutput {
+
+    @FunctionName("TwilioOutput")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = { HttpMethod.GET, HttpMethod.POST },
+                authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @TwilioSmsOutput(
+                name = "twilioMessage",
+                accountSid = "AzureWebJobsTwilioAccountSID",
+                authToken = "AzureWebJobsTwilioAuthToken",
+                to = "+1XXXXXXXXXX",
+                body = "From Azure Functions",
+                from = "+1XXXXXXXXXX") OutputBinding<String> twilioMessage,
+            final ExecutionContext context) {
+
+        String message = request.getQueryParameters().get("message");
+        String to = request.getQueryParameters().get("to");
+
+        StringBuilder builder = new StringBuilder()
+            .append("{")
+            .append("\"body\": \"%s\",")
+            .append("\"to\": \"%s\"")
+            .append("}");
+
+        final String body = String.format(builder.toString(), message, to);
+
+        twilioMessage.setValue(body);
+
+        return request.createResponseBuilder(HttpStatus.OK).body("Message sent").build();
+    }
+}
+```
+
+---
+
+## <a name="attributes-and-annotations"></a>Atrybuty i adnotacje
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) .
 
@@ -387,7 +303,25 @@ public static CreateMessageOptions Run(
 }
  ```
 
-Aby zapoznać się z pełnym przykładem, zobacz [ C# przykład](#c-example).
+Aby zapoznać się z pełnym przykładem, zobacz [ C# przykład](#example).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Atrybuty nie są obsługiwane przez C# skrypt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atrybuty nie są obsługiwane przez język JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Atrybuty nie są obsługiwane przez język Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Umieść adnotację [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) na parametrze [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) , gdzie `T` może być dowolnym natywnym typem Java, takim jak `int`, `String`, `byte[]`lub typu Pojo.
+
+---
 
 ## <a name="configuration"></a>Konfigurowanie
 
@@ -396,10 +330,10 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 | Funkcja v1. JSON — Właściwość | v2 Function. JSON — Właściwość | Właściwość atrybutu |Opis|
 |---------|---------|---------|----------------------|
 |**type**|**type**| musi być ustawiony na `twilioSms`.|
-|**direction**|**direction**| Musi być ustawiony na `out`.|
+|**direction**|**direction**| musi być ustawiony na `out`.|
 |**Nazwa**|**Nazwa**| Nazwa zmiennej używana w kodzie funkcji dla wiadomości tekstowej SMS Twilio. |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ta wartość musi być ustawiona na nazwę ustawienia aplikacji, która zawiera identyfikator SID konta Twilio, np. TwilioAccountSid. Jeśli nie zostanie ustawiona, domyślna nazwa ustawienia aplikacji to "AzureWebJobsTwilioAccountSid". |
-|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Ta wartość musi być ustawiona na nazwę ustawienia aplikacji, która zawiera token uwierzytelniania Twilio, np. TwilioAccountAuthToken. Jeśli nie zostanie ustawiona, domyślna nazwa ustawienia aplikacji to "AzureWebJobsTwilioAuthToken". |
+|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ta wartość musi być ustawiona na nazwę ustawienia aplikacji, która zawiera identyfikator SID konta Twilio (`TwilioAccountSid`). Jeśli nie zostanie ustawiona, domyślna nazwa ustawienia aplikacji to "AzureWebJobsTwilioAccountSid". |
+|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Ta wartość musi być ustawiona na nazwę ustawienia aplikacji, która zawiera token uwierzytelniania Twilio (`TwilioAccountAuthToken`). Jeśli nie zostanie ustawiona, domyślna nazwa ustawienia aplikacji to "AzureWebJobsTwilioAuthToken". |
 |**to**| Nie dotyczy — Określ w kodzie | **Do**| Ta wartość jest ustawiona na numer telefonu, na który jest wysyłany tekst SMS.|
 |**from**|**from** | **From**| Ta wartość jest ustawiona na numer telefonu, z którego jest wysyłany tekst SMS.|
 |**body**|**body** | **Treść**| Ta wartość może służyć do napełnienia kodu wiadomości tekstowej SMS, jeśli nie musisz ustawiać jej dynamicznie w kodzie funkcji. |  

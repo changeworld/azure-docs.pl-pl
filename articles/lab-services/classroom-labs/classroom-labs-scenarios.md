@@ -1,6 +1,6 @@
 ---
-title: Laboratorium na potrzeby zajęć na użytek szkoleniach — usługi Azure Lab Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Azure DevTest Labs na potrzeby scenariuszy szkoleniowych.
+title: Korzystanie z laboratoriów zajęć na potrzeby szkoleń — Azure Lab Services
+description: W tym artykule opisano, jak używać Azure DevTest Labs do tworzenia laboratoriów na platformie Azure na potrzeby scenariuszy szkoleniowych.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,48 +11,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 4d2ba11181977f1976b5ae933e8b93a92424fa96
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60695293"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717988"
 ---
-# <a name="use-classroom-labs-for-trainings"></a>Laboratorium na potrzeby zajęć na użytek szkoleniach
-Można skonfigurować laboratorium na potrzeby szkolenia. Klasa laboratoria usługi Azure Lab Services pozwalają na tworzenie laboratorium na potrzeby szkolenia gdzie każdy szkoleniowych używa identyczne i wyizolowanego środowiska do szkolenia. Można zastosować zasad w celu zapewnienia środowiska szkoleń są dostępne dla każdego szkoleniowych, tylko wtedy, gdy są potrzebne i zawiera za mało zasobów — takich jak virtual machines — wymagana na szkolenia. 
+# <a name="use-classroom-labs-for-trainings"></a>Korzystanie z laboratoriów zajęć na potrzeby szkoleń
+Można skonfigurować laboratorium do szkoleń. Pracowni Labs of Azure Lab Services umożliwiają tworzenie laboratorium dla szkolenia, w którym każda z nich używa tych samych i izolowanych środowisk do szkolenia. Można stosować zasady, aby zapewnić, że środowiska szkoleniowe są dostępne dla każdego z nich tylko wtedy, gdy ich potrzebują, i zawierają wystarczające zasoby, takie jak maszyny wirtualne — wymagane do szkolenia. 
 
-![Laboratorium na potrzeby zajęć](../media/classroom-labs-scenarios/classroom.png)
+![Laboratorium zajęć](../media/classroom-labs-scenarios/classroom.png)
 
-Laboratorium na potrzeby zajęć, spełnia następujące wymagania, które są wymagane do prowadzenia szkoleń w dowolnym środowisku wirtualnym: 
+Laboratorium zajęć spełnia następujące wymagania, które są wymagane do przeprowadzenia szkolenia w dowolnym środowisku wirtualnym: 
 
-- Zaleć można szybko inicjować obsługę środowisk szkolenia
-- Do każdej maszyny szkolenia powinny być identyczne
-- Maszyny wirtualne utworzone przez innych Zaleć Zaleć nie są widoczne.
-- Kontrolowanie kosztów przez zapewnienie, że Zaleć nie można pobrać więcej maszyn wirtualnych, niż jest to wymagane dla szkoleń, a także zamykania maszyn wirtualnych, jeśli ich nie używają
-- Łatwe udostępnianie laboratorium szkolenia każda szkoleniowych
-- Ponowne użycie laboratorium szkolenia ponownego
+- Osoba szkolony może szybko zainicjować swoje środowiska szkoleniowe
+- Każda maszyna szkoleniowa powinna być taka sama
+- Program szkolony nie widzi maszyn wirtualnych utworzonych przez innego program szkolony
+- Kontroluj koszty, upewniając się, że osoba odpowiedzialna nie może uzyskać więcej maszyn wirtualnych niż potrzeba do szkolenia, a także zamknąć maszyny wirtualne, gdy ich nie używają
+- Łatwo udostępniaj laboratorium szkoleniowe każdemu z nich
+- Ponownie Użyj laboratorium szkoleniowego i ponownie
 
-W tym artykule poznasz różne funkcje usługi Azure Lab Services, których można użyć w celu spełnienia wymagań dotyczących szkoleń opisany wcześniej i szczegółowy opis kroków, które można wykonać, aby skonfigurować laboratorium na potrzeby szkolenia.  
+W tym artykule omówiono różne funkcje Azure Lab Services, których można użyć w celu spełnienia opisanych wcześniej wymagań szkoleniowych i szczegółowych czynności, które można wykonać, aby skonfigurować laboratorium do szkolenia.  
 
-## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Utwórz konto laboratorium jako administratora konta laboratorium
-Pierwszym krokiem przy użyciu usługi Azure Lab Services jest utworzenie konta laboratorium w witrynie Azure portal. Gdy administrator konta laboratorium utworzy konto laboratorium, administrator dodaje użytkowników, którzy chcą tworzyć laboratoriów **twórca laboratorium** roli. Wykładowców utworzyć laboratoria z maszynami wirtualnymi dla uczniów lub studentów w celu ćwiczenia dotyczące kursów, które są one przeznaczone. Aby uzyskać więcej informacji, zobacz [tworzenie i zarządzanie kontem laboratorium](how-to-manage-lab-accounts.md).
+## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Utwórz konto laboratorium jako administrator konta laboratorium
+Pierwszym krokiem w programie przy użyciu Azure Lab Services jest utworzenie konta laboratorium w Azure Portal. Po utworzeniu konta laboratorium przez administratora konta laboratorium administrator dodaje użytkowników, którzy chcą utworzyć laboratorium, do roli **twórca laboratorium** . Instruktorzy tworzą laboratoria z maszynami wirtualnymi dla studentów, którzy wykonują ćwiczenia w trakcie nauczania. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie konta laboratorium i zarządzanie nim](how-to-manage-lab-accounts.md).
 
 ## <a name="create-and-manage-classroom-labs"></a>Tworzenie laboratoriów na potrzeby zajęć i zarządzanie nimi
-Trainer, będący członkiem roli Twórca laboratorium na koncie laboratorium, można utworzyć przynajmniej jednego laboratoriów w ramach konta laboratorium. Możesz utworzyć i skonfigurować szablon maszyny Wirtualnej za pomocą całe oprogramowanie wymagane do wykonywania ćwiczeniami z kursu. Wybierz obraz gotowych do użycia z dostępnych obrazów do tworzenia laboratorium na potrzeby zajęć, a następnie dostosuj je, instalując oprogramowanie wymagane do laboratorium. Aby uzyskać więcej informacji, zobacz [tworzenie i zarządzanie laboratorium na potrzeby zajęć](how-to-manage-classroom-labs.md).
+Trainer, który jest członkiem roli twórca laboratorium na koncie laboratorium, może utworzyć jedną lub więcej laboratoriów na koncie laboratorium. Utwórz i skonfiguruj maszynę wirtualną szablonu przy użyciu wszystkich programów wymaganych do wykonywania ćwiczeń w danym kursie. Możesz wybrać gotowy obraz z dostępnych obrazów do utworzenia laboratorium zajęć, a następnie dostosować go, instalując oprogramowanie wymagane do laboratorium. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie laboratoriów zajęć i zarządzanie nimi](how-to-manage-classroom-labs.md).
 
-## <a name="configure-usage-settings-and-policies"></a>Konfigurowanie zasad i ustawień użycia
-Twórca laboratorium można dodawać lub usuwać użytkowników z laboratorium, uzyskać łącze, aby wysłać do użytkowników w laboratorium, skonfiguruj zasady, takie jak przydziały poszczególne ustawienia dla każdego użytkownika, aktualizacji liczbę maszyn wirtualnych dostępnych w laboratorium i nie tylko. Aby uzyskać więcej informacji, zobacz [konfigurowania ustawień użycia i zasad](how-to-configure-student-usage.md).
+## <a name="configure-usage-settings-and-policies"></a>Konfigurowanie ustawień i zasad użytkowania
+Twórca laboratorium może dodawać i usuwać użytkowników z laboratorium, otrzymywać linki do rejestracji w celu wysyłania do użytkowników laboratorium, konfigurować zasady, takie jak Ustawianie poszczególnych przydziałów dla użytkownika, aktualizowanie liczby maszyn wirtualnych dostępnych w laboratorium i innych. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie ustawień i zasad użytkowania](how-to-configure-student-usage.md).
 
 ## <a name="create-and-manage-schedules"></a>Tworzenie harmonogramów i zarządzanie nimi
-Harmonogramy umożliwiają konfigurowanie laboratorium na potrzeby zajęć w taki sposób, że maszyny wirtualne w laboratorium automatycznie uruchom i zamknij o określonej godzinie. Można zdefiniować jednorazowe harmonogramu lub Harmonogram cykliczny. Aby uzyskać więcej informacji, zobacz [tworzenie i zarządzanie nimi harmonogramy dla laboratorium na potrzeby zajęć](how-to-create-schedules.md).
+Harmonogramy umożliwiają skonfigurowanie laboratorium klasy w taki sposób, aby maszyny wirtualne w laboratorium były automatycznie uruchamiane i zamykane w określonym czasie. Można zdefiniować harmonogram jednorazowy lub cykliczny. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie harmonogramów dla laboratoriów zajęć i zarządzanie nimi](how-to-create-schedules.md).
 
-## <a name="set-up-and-publish-a-template-vm"></a>Konfigurowanie i publikowanie szablonu maszyny Wirtualnej
-Szablon w laboratorium to podstawowy obraz maszyny wirtualnej, który służy do tworzenia maszyn wirtualnych wszystkich użytkowników. Szablon maszyny Wirtualnej należy skonfigurować tak, że jest ona skonfigurowana przy użyciu dokładnie co chcesz udostępnić uczestnikom szkolenia. Możesz podać nazwę i opis szablonu, które będą widoczne dla użytkowników laboratorium. Następnie możesz opublikować szablonu, aby udostępnić użytkownikom laboratorium wystąpień szablonu maszyny Wirtualnej. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon. Aby uzyskać więcej informacji, zobacz [Ustaw Konfigurowanie i publikowanie szablonów maszyn wirtualnych](how-to-create-manage-template.md). 
+## <a name="set-up-and-publish-a-template-vm"></a>Konfigurowanie i publikowanie maszyny wirtualnej szablonu
+Szablon w laboratorium to podstawowy obraz maszyny wirtualnej, który służy do tworzenia maszyn wirtualnych wszystkich użytkowników. Skonfiguruj maszynę wirtualną z szablonem, tak aby była skonfigurowana dokładnie dla uczestników szkoleń. Możesz podać nazwę i opis szablonu, które będą widoczne dla użytkowników laboratorium. Następnie należy opublikować szablon w celu udostępnienia dla użytkowników laboratorium wystąpień z szablonową maszyną wirtualną. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie i publikowanie maszyn wirtualnych z szablonem](how-to-create-manage-template.md). 
 
-## <a name="use-vms-in-the-classroom-lab"></a>Używanie maszyn wirtualnych w laboratorium na potrzeby zajęć
-Uczniem, studentem lub uczestnik szkolenia rejestruje na laboratorium, a następnie nawiązuje połączenie z maszyną wirtualną w celu ćwiczenia kurs. Aby uzyskać więcej informacji, zobacz [jak dostęp do laboratorium na potrzeby zajęć](how-to-use-classroom-lab.md).
+## <a name="use-vms-in-the-classroom-lab"></a>Korzystanie z maszyn wirtualnych w laboratorium zajęć
+Uczestnik ucznia lub szkolenia rejestruje się w laboratorium i łączy się z maszyną wirtualną, aby wykonać ćwiczenia. Aby uzyskać szczegółowe informacje, zobacz [jak uzyskać dostęp do laboratorium zajęć](how-to-use-classroom-lab.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-Rozpocznij od utworzenia konta laboratorium w laboratorium na potrzeby zajęć, postępując zgodnie z instrukcjami opisanymi w artykule: [Samouczek: Konfigurowanie konta laboratorium przy użyciu usługi Azure Lab Services](tutorial-setup-lab-account.md).
+## <a name="next-steps"></a>Następne kroki
+Zacznij od utworzenia konta laboratorium w laboratoriach zajęć, postępując zgodnie z instrukcjami w artykule: [Samouczek: Konfigurowanie konta laboratorium przy użyciu Azure Lab Services](tutorial-setup-lab-account.md).

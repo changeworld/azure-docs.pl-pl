@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie użycia i szacowane koszty w Azure Monitor
-description: Przegląd procesu korzystania z Azure Monitor użycia i szacowanych kosztów
+title: Monitorowanie użycia i szacowanych kosztów w usłudze Azure Monitor
+description: Omówienie procesu stosowania optymalizacji użycia usługi Azure Monitor i szacowane koszty strony
 author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,14 +9,14 @@ ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 48abf95e65b6185f5c95a1f5d942091ed0f33122
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3fb51a9dc3f607d89934f6962588195e0f5c83f5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044182"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715769"
 ---
-# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorowanie użycia i szacowane koszty w Azure Monitor
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorowanie użycia i szacowanych kosztów w usłudze Azure Monitor
 
 > [!NOTE]
 > W tym artykule opisano sposób wyświetlania użycia i szacowanych kosztów w ramach wielu funkcji monitorowania platformy Azure. Pokrewne artykuły dla określonych składników Azure Monitor obejmują:
@@ -68,28 +68,28 @@ Spowoduje to wyświetlenie widoku, takiego jak:
 
 W tym miejscu możesz przejść do szczegółów z tego skumulowanego podsumowania kosztów, aby uzyskać bardziej szczegółowe informacje w widoku "koszt według zasobów". W bieżących warstwach cenowych dane dziennika platformy Azure są obciążane tym samym zestawem liczników, niezależnie od tego, czy pochodzą z Log Analytics czy Application Insights. Aby oddzielić koszty Log Analytics lub Application Insights użycie, można dodać filtr dla **typu zasobu**. Aby wyświetlić wszystkie Application Insights koszty, przefiltruj typ zasobu na "Microsoft. Insights/Components" i dla Log Analytics kosztów, filtr typu zasobu do "Microsoft. operationalinsights/Workspaces". 
 
-Więcej szczegółów dotyczących użycia można uzyskać, [pobierając użycie z Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). W pobranym arkuszu kalkulacyjnym można zobaczyć użycie na zasób platformy Azure dziennie. W tym arkuszu kalkulacyjnym programu Excel można znaleźć użycie z zasobów Application Insights, wybierając najpierw filtrowanie w kolumnie "kategoria licznika", aby pokazać "Application Insights" i "Log Analytics", a następnie dodać filtr w kolumnie "identyfikator wystąpienia", która jest "zawiera Microsoft. Insights/Components.  Większość Application Insights użycie jest raportowane na miernikach z kategorią licznika Log Analytics, ponieważ istnieje pojedyncze zaplecze dzienników dla wszystkich składników Azure Monitor.  Tylko zasoby Application Insights ze starszych warstw cenowych i wieloetapowych testów sieci Web są zgłaszane z kategorią miernika Application Insights.  Użycie jest wyświetlane w kolumnie "zużyta ilość", a jednostka dla każdego wpisu jest pokazywana w kolumnie "jednostka miary".  Dostępne są więcej szczegółów, które ułatwiają [zrozumienie Microsoft Azure rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+Więcej szczegółów dotyczących użycia można uzyskać, [pobierając użycie z Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). W pobranym arkuszu kalkulacyjnym można zobaczyć użycie na zasób platformy Azure dziennie. W tym arkuszu kalkulacyjnym programu Excel można sprawdzić użycie zasobów Application Insights przez pierwsze filtrowanie w kolumnie "kategoria licznika", aby pokazać "Application Insights" i "Log Analytics", a następnie dodać filtr w kolumnie "identyfikator wystąpienia", która jest "zawiera Microsoft. Insights/Components".  Większość Application Insights użycie jest raportowane na miernikach z kategorią licznika Log Analytics, ponieważ istnieje pojedyncze zaplecze dzienników dla wszystkich składników Azure Monitor.  Tylko zasoby Application Insights ze starszych warstw cenowych i wieloetapowych testów sieci Web są zgłaszane z kategorią miernika Application Insights.  Użycie jest wyświetlane w kolumnie "zużyta ilość", a jednostka dla każdego wpisu jest pokazywana w kolumnie "jednostka miary".  Dostępne są więcej szczegółów, które ułatwiają [zrozumienie Microsoft Azure rachunku](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
 > [!NOTE]
-> Używanie **Cost Management** w centrum **rozliczeniowym Azure Cost Management i** jest preferowanym podejściem do szerokiego poznania kosztów monitorowania.  **Sposób użycia i szacowane koszty** dla [log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs) i [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#understand-your-usage-and-estimate-costs) zapewniają dokładniejsze informacje dla każdej z tych części Azure monitor.
+> Używanie **Cost Management** w centrum **rozliczeniowym Azure Cost Management i** jest preferowanym podejściem do szerokiego analizowania kosztów monitorowania.  **Sposób użycia i szacowane koszty** dla [log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs) i [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#understand-your-usage-and-estimate-costs) zapewniają dokładniejsze informacje dla każdej z tych części Azure monitor.
 
-Kolejną opcją wyświetlania Azure Monitor użycia jest strona **użycie i szacowane koszty** w centrum monitora. Przedstawiono w nim użycie podstawowych funkcji monitorowania, takich jak [alerty, metryki, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)i [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). W przypadku klientów korzystających z planów cenowych dostępnych przed 2018 kwietnia będzie to również Log Analytics użycie zakupione w ramach oferty usługi Insights i Analytics.
+Kolejną opcją wyświetlania Azure Monitor użycia jest strona **użycie i szacowane koszty** w centrum monitora. Przedstawiono w nim użycie podstawowych funkcji monitorowania, takich jak [alerty, metryki, powiadomienia](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)i [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). W przypadku klientów na plany cenowe dostępne przed kwietnia 2018 r. obejmuje to także użycie usługi Log Analytics, które zostały zakupione w ramach wgląd w dane i Analytics oferuje.
 
-Na tej stronie użytkownicy mogą wyświetlić użycie zasobów przez ostatnie 31 dni, zagregowane na subskrypcję. `Drill-ins` pokazać trendy użycia w okresie 31 dni. Do tego oszacowania należy wiele danych, dlatego należy poczekać, aż strona zostanie załadowana.
+Na tej stronie użytkownicy mogą wyświetlać ich użycia zasobów w ciągu ostatnich 31 dni, zagregowane na subskrypcję. `Drill-ins` pokazać trendy użycia w okresie 31 dni. Dużą ilość danych, trzeba łączą się na te dane szacunkowe, dlatego prosimy o cierpliwość, ponieważ ładowania strony.
 
-W tym przykładzie przedstawiono monitorowanie użycia i szacunkowe koszty:
+Ten przykład przedstawia sposób monitorowania użycia i oszacowanie kosztów wynikowy:
 
-![Zrzut ekranu portalu użycia i szacowanej kosztów](./media/usage-estimated-costs/001.png)
+![Użycie i szacowane koszty portalu zrzut ekranu](./media/usage-estimated-costs/001.png)
 
-Wybierz łącze w kolumnie użycie miesięczne, aby otworzyć wykres pokazujący trendy użycia w ciągu ostatnich 31 dni: 
+Wybierz link w kolumnie miesięczne użycie, aby Otwórz wykres, który pokazuje trendy użycia w ciągu ostatnich 31 dni: 
 
-![Zrzut ekranu przedstawiający wykres słupkowy na węzeł](./media/usage-estimated-costs/002.png)
+![Uwzględnione na węzeł paska wykresu zrzut ekranu](./media/usage-estimated-costs/002.png)
 
 ## <a name="operations-management-suite-subscription-entitlements"></a>Uprawnienia do subskrypcji pakietu Operations Management Suite
 
-Klienci, którzy zakupili Microsoft Operations Management Suite E1 i E2, mają uprawnienia do pozyskiwania danych na węzłach dla [log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) i [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Aby otrzymywać te uprawnienia dla Log Analytics obszarów roboczych lub Application Insights zasobów w ramach danej subskrypcji: 
+Klienci, którzy zakupili pakiet Microsoft Operations Management Suite E1 i E2 kwalifikują się do każdego węzła uprawnień do wprowadzania danych dla [usługi Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) i [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Aby otrzymać te uprawnienia dla obszarów roboczych usługi Log Analytics i zasoby usługi Application Insights w ramach danej subskrypcji: 
 
-- Obszary robocze Log Analytics powinny korzystać z warstwy cenowej "na węzeł (OMS)".
+- Obszary robocze usługi log Analytics, należy używać "za węzeł (OMS)" warstwy cenowej.
 - Zasoby Application Insights powinny korzystać z warstwy cenowej "Enterprise".
 
 W zależności od liczby węzłów pakietu zakupionej przez Twoją organizację przeniesienie niektórych subskrypcji do warstwy cenowej płatność zgodnie z rzeczywistym użyciem (za GB) może być korzystne, ale wymaga to starannej uwagi.

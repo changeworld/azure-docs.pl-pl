@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894018"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720405"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Twórz, eksploruj i wdrażaj zautomatyzowane eksperymenty uczenia maszynowego za pomocą programu Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -153,9 +153,15 @@ Kurtoza| Mierzona, jak silnie naśladowanie danych tej kolumny jest porównywane
 
 <a name="preprocess"></a>
 
-## <a name="advanced-preprocessing-options"></a>Zaawansowane opcje przetwarzania wstępnego
+## <a name="advanced-featurization-options"></a>Zaawansowane opcje cechowania
 
-Podczas konfigurowania eksperymentów można włączyć ustawienie zaawansowane `Preprocess`. Oznacza to, że w ramach wstępnego przetwarzania następujących etapów danych guardrails i cechowania są wykonywane automatycznie.
+Podczas konfigurowania eksperymentów można włączyć ustawienie zaawansowane `feauturization`. 
+
+|Konfiguracja cechowania | Opis |
+| ------------- | ------------- |
+|"feauturization" = "FeaturizationConfig"| Wskazuje dostosowany krok cechowania. [Dowiedz się, jak dostosować cechowania](how-to-configure-auto-train.md#customize-feature-engineering).|
+|"feauturization" = "off"| Wskazuje, że krok cechowania nie powinien być wykonywany automatycznie.|
+|"feauturization" = "Auto"| Wskazuje, że w ramach wstępnego przetwarzania następujących kroków guardrails danych i cechowania są wykonywane automatycznie.|
 
 |Przetwarzanie wstępne&nbsp;kroków| Opis |
 | ------------- | ------------- |
@@ -177,11 +183,11 @@ W poniższej tabeli opisano aktualnie obsługiwane guardrails danych oraz powią
 
 Guardrail|Stan|&nbsp;warunku dla wyzwalacza&nbsp;
 ---|---|---
-Brak wartości&nbsp;&nbsp;ich przypisywaniu |**Przekazany** <br> <br> **Stały**|    Brak wartości w żadnej z&nbsp;wejściowych kolumn <br> <br> Niektóre kolumny mają brakujące wartości
+Brak wartości&nbsp;&nbsp;ich przypisywaniu |**Przekazany** <br> <br> **FIXED**|    Brak wartości w żadnej z&nbsp;wejściowych kolumn <br> <br> Niektóre kolumny mają brakujące wartości
 Krzyżowe sprawdzanie poprawności|**Odbywać**|Jeśli nie podano jawnego zestawu walidacji
 Wysoka&nbsp;kardynalności&nbsp;funkcja wykrywania&nbsp;|  **Przekazany** <br> <br>**Odbywać**|   Nie wykryto żadnych funkcji wysokiej kardynalności <br><br> Wykryto wysoką liczebność kolumn wejściowych
 Wykrywanie balansu klas |**Przekazany** <br><br><br>**Alerty** |Klasy są zrównoważone w danych szkoleniowych; Zestaw danych jest uznawany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, zgodnie z liczbą i stosunkiem próbek <br> <br> Klasy w danych szkoleniowych są niezrównoważone
-Spójność danych szeregów czasowych|**Przekazany** <br><br><br><br> **Stały** |<br> Przeanalizowane wartości wybranych elementów {Horizon, lag, kroczących} i nie wykryto problemów braku związanych z pamięcią. <br> <br>Przeanalizowane zostały wartości wybrane w polu {Horizon, zwłoka, krocząca}, co może spowodować, że w Twoim doświadczeniu zabrakło pamięci. Okno zwłoki lub stopniowe zostało wyłączone.
+Spójność danych szeregów czasowych|**Przekazany** <br><br><br><br> **FIXED** |<br> Przeanalizowane wartości wybranych elementów {Horizon, lag, kroczących} i nie wykryto problemów braku związanych z pamięcią. <br> <br>Przeanalizowane zostały wartości wybrane w polu {Horizon, zwłoka, krocząca}, co może spowodować, że w Twoim doświadczeniu zabrakło pamięci. Okno zwłoki lub stopniowe zostało wyłączone.
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
 
@@ -222,7 +228,7 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
     ----|----
     Nazwa| Wprowadź unikatową nazwę wdrożenia.
     Opis| Wprowadź opis, aby lepiej zidentyfikować to wdrożenie.
-    Typ obliczeń| Wybierz typ punktu końcowego, który chcesz wdrożyć: *Azure Kubernetes Service (AKS)* lub *Azure Container Instance (ACI)* .
+    Typ obliczenia| Wybierz typ punktu końcowego, który chcesz wdrożyć: *Azure Kubernetes Service (AKS)* lub *Azure Container Instance (ACI)* .
     Nazwa| *Dotyczy tylko AKS:* Wybierz nazwę klastra AKS, w którym chcesz wdrożyć.
     Włączanie uwierzytelniania | Wybierz, aby zezwalać na uwierzytelnianie oparte na tokenach lub na podstawie klucza.
     Używanie niestandardowych zasobów wdrażania| Włącz tę funkcję, jeśli chcesz przekazać własny skrypt oceniania i plik środowiska. [Dowiedz się więcej o skryptach oceniania](how-to-deploy-and-where.md#script).

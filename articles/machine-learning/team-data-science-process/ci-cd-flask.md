@@ -3,24 +3,24 @@ title: Tworzenie potoku ciągłej integracji/ciągłego wdrażania za pomocą pr
 description: Utwórz potok ciągłej integracji i ciągłego dostarczania dla aplikacji sztucznej analizy (AI) przy użyciu platformy Docker i Kubernetes.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260663"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721833"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Tworzenie potoków ciągłej integracji/ciągłego wdrażania dla aplikacji AI przy użyciu Azure Pipelines, Docker i Kubernetes
 
-Sztuczna aplikacja (AI) jest kodem aplikacji osadzonym w modelu uczenia maszynowego. Zawsze istnieją dwa strumienie pracy dla aplikacji AI: Analityków danych tworzą model ML, a deweloperzy aplikacji tworzą aplikację i uwidaczniają ją użytkownikom końcowym. W tym artykule opisano sposób implementacji potoku ciągłej integracji i ciągłego dostarczania (CI/CD) dla aplikacji AI, która osadza model ML w kodzie źródłowym aplikacji. Przykładowy kod i samouczek wykorzystują prostą aplikację sieci Web z kolbą Python i pobierają przedszkolny model z prywatnego konta magazynu obiektów blob platformy Azure. Możesz również użyć konta magazynu AWS S3.
+Sztuczna aplikacja (AI) jest kodem aplikacji osadzonym w modelu uczenia maszynowego. Zawsze istnieją dwa strumienie pracy dla aplikacji AI: analityki danych tworzą model ML, a deweloperzy aplikacji tworzą aplikację i uwidaczniają ją użytkownikom końcowym. W tym artykule opisano sposób implementacji potoku ciągłej integracji i ciągłego dostarczania (CI/CD) dla aplikacji AI, która osadza model ML w kodzie źródłowym aplikacji. Przykładowy kod i samouczek wykorzystują aplikację sieci Web z kolbą Python i pobierają przeddany model z prywatnego konta magazynu obiektów blob platformy Azure. Możesz również użyć konta magazynu AWS S3.
 
 > [!NOTE]
 > Poniższy proces to jeden z kilku sposobów na przeprowadzenie ciągłej integracji/ciągłego wdrażania. Istnieją alternatywy dla tego narzędzia i wymagania wstępne.
@@ -64,5 +64,5 @@ Poniższy diagram i kroki opisują architekturę potoku CI/CD:
 
 - [Zespołowe przetwarzanie danych naukowych (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Usługi Azure Machine Learning (AML)](/azure/machine-learning/)
-- [Usługa Azure DevOps](https://azure.microsoft.com/services/devops/)
+- [Azure DevOps](https://azure.microsoft.com/services/devops/)
 - [Usługi Azure Kubernetes (AKS)](/azure/aks/intro-kubernetes)

@@ -1,22 +1,22 @@
 ---
-title: Przykładowe dane w lokalizacjach innego magazynu platformy Azure — zespołu danych dla celów naukowych
+title: Przykładowe dane w różnych lokalizacjach usługi Azure Storage — proces nauki danych zespołu
 description: Przykładowe dane w usłudze Azure blob kontenerów, programu SQL Server i tabel, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w obsłudze programu Hive.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc91aec80f74488125649cfe807757ba5ae49c9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253098"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718607"
 ---
 # <a name="heading"></a>Przykładowe dane w kontenerach obiektów blob platformy Azure, programu SQL Server i tabel programu Hive
 
@@ -30,5 +30,5 @@ To zadanie próbkowania jest krok [Team Data Science naukowych](https://docs.mic
 
 **Dlaczego przykładowe dane?**
 
-Jeśli zestaw danych, która ma zostać analizowanie jest duża, zazwyczaj przyczyną jest dobrym pomysłem jest obniżenie częstotliwości próbkowania danych, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w zarządzaniu. To ułatwia zrozumienie danych, poznawanie i technicznego opracowywania funkcji. Jego rolę w procesie Cortana Analytics jest umożliwienie szybkiego tworzenia prototypów funkcji do przetwarzania danych i modeli uczenia maszynowego.
+Jeśli zestaw danych, która ma zostać analizowanie jest duża, zazwyczaj przyczyną jest dobrym pomysłem jest obniżenie częstotliwości próbkowania danych, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w zarządzaniu. Downsizing mogą ułatwić zrozumienie, eksplorację i inżynierowanie danych. Ta rola próbkowania w procesie Cortana Analytics ma na celu umożliwienie szybkiego tworzenia prototypów funkcji przetwarzania danych i modeli uczenia maszynowego.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c97e10d2785b7dc1a438c95dca9be94fcef82f94
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658121"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714845"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w Azure Automation
 
@@ -71,7 +71,7 @@ else
     }
 ```
 
-### <a name="time-dependant-scripts"></a>Skrypty zależne od czasu
+### <a name="time-dependent-scripts"></a>Skrypty zależne od czasu
 
 Należy uważnie rozważyć podczas tworzenia elementów Runbook. Jak wspomniano wcześniej, elementy Runbook muszą zostać utworzone w taki sposób, że są niezawodne i mogą obsługiwać błędy przejściowe, które mogą spowodować ponowne uruchomienie lub niepowodzenie elementu Runbook. Jeśli element Runbook ulegnie awarii, zostanie ponowiona próba. Jeśli element Runbook jest zwykle uruchamiany w ramach ograniczenia czasu, logika do sprawdzenia czasu wykonania powinna zostać zaimplementowana w elemencie Runbook, aby zapewnić, że operacje takie jak uruchamianie, zamykanie lub skalowanie w poziomie są uruchamiane tylko w określonych godzinach.
 
@@ -173,7 +173,7 @@ catch
 }
 ```
 
-#### <a name="throw"></a>Throw
+#### <a name="throw"></a>Generować
 
 [Throw](/powershell/module/microsoft.powershell.core/about/about_throw) można użyć do wygenerowania błędu kończącego. Może to być przydatne podczas definiowania własnej logiki w elemencie Runbook. Jeśli spełnione są pewne kryteria, które powinny zatrzymać skrypt, można użyć `throw`, aby zatrzymać skrypt. Poniższy przykład pokazuje, że komputer jest parametrem funkcji wymaganym przy użyciu `throw`.
 
@@ -210,7 +210,7 @@ W poniższej tabeli opisano różne stany, które może przyjmować zadanie. Pro
 | Zatrzymane |Zadanie zostało zatrzymane przez użytkownika przed jego ukończeniem. |
 | Zatrzymywanie |System zatrzymuje zadanie. |
 | Suspended |Zadanie zostało zawieszone przez użytkownika, przez system lub za pomocą polecenia w elemencie Runbook. Jeśli element Runbook nie ma punktu kontrolnego, rozpocznie się od początku elementu Runbook. Jeśli ma punkt kontrolny, można go uruchomić ponownie i wznowić od ostatniego punktu kontrolnego. Element Runbook jest zawieszony tylko przez system w przypadku wystąpienia wyjątku. Domyślnie ErrorActionPreference jest ustawiony na **Kontynuuj**, co oznacza, że zadanie zachowuje się w przypadku błędu. Jeśli ta zmienna preferencji ma wartość **Zatrzymaj**, zadanie zawiesza się po błędzie. Dotyczy tylko [elementów Runbook środowiska graficznego i programu PowerShell](automation-runbook-types.md) . |
-| Zawieszanie |System próbuje zawiesić zadanie na żądanie użytkownika. Przez zawieszeniem element Runbook musi dotrzeć do swojego następnego punktu kontrolnego. Jeśli przeszedł już ostatni punkt kontrolny, kończy się przed jego wstrzymaniem. Dotyczy tylko [elementów Runbook środowiska graficznego i programu PowerShell](automation-runbook-types.md) . |
+| Zawieszanie |System próbuje zawiesić zadanie na żądanie użytkownika. Element Runbook musi dotrzeć do swojego następnego punktu kontrolnego, zanim będzie można go wstrzymać. Jeśli przeszedł już ostatni punkt kontrolny, kończy się przed jego wstrzymaniem. Dotyczy tylko [elementów Runbook środowiska graficznego i programu PowerShell](automation-runbook-types.md) . |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Wyświetlanie stanu zadania z Azure Portal
 

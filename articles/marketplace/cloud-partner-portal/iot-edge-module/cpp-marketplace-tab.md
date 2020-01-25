@@ -8,19 +8,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8021b6fe40e006a95b3eeff1031606c38cc47b87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814599"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721629"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Karta Marketplace modułu IoT Edge Portal
 
 Na karcie **Marketplace** na stronie **Nowa oferta** można zapewnić potencjalnym klientom potencjalną obsługę marketingową, sprzedażową i informacje prawne oraz umowy oraz zarządzać klientami wygenerowanymi w portalu Marketplace. Ten długi formularz jest podzielony na cztery sekcje: **Omówienie**, **artefakty marketingowe**, **Zarządzanie potencjalnymi klientami**i warunki **prawne**.
 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tej sekcji wprowadzasz ogólne informacje o ofercie portalu Azure Marketplace.  Gwiazdka (*) dołączona do nazwy pola wskazuje, że jest to wymagane.
 
@@ -33,8 +33,8 @@ W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola
 | **\* tytułu**                 | Tytuł oferty. Zostanie ona wyświetlona w widocznym miejscu w portalu Marketplace.  Maksymalna długość 50 znaków. <!--ADD PICTURE IN ACTION-->|
 | **\* podsumowania**               | Krótkie podsumowanie oferty. Maksymalna długość 100 znaków. <!--ADD PICTURE IN ACTION-->|
 | **Długi\* podsumowujący**          | Dłuższe podsumowanie oferty (chociaż może być takie samo, jak w przypadku **podsumowania**).  Maksymalna długość 256 znaków. <!--ADD PICTURE IN ACTION-->|
-| **\* opisu**           | Opis oferty.  Maksymalna długość 3000 znaków, obsługuje proste formatowanie HTML.<br/> W dolnej części musi znajdować się akapit o *minimalnych wymaganiach dotyczących sprzętu* . na przykład: <br/> <p><u>Minimalne wymagania sprzętowe:</u> Linux x64 i arm32 OS, 1 GB pamięci RAM, 500 MB magazynu</p>
-| **\* identyfikatora marketingu**  | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **\* opisu**           | Opis oferty.  Maksymalna długość 3000 znaków, obsługuje proste formatowanie HTML.<br/> W dolnej części musi znajdować się akapit o *minimalnych wymaganiach dotyczących sprzętu* . Na przykład: <br/> <p><u>Minimalne wymagania sprzętowe:</u> Linux x64 i arm32 OS, 1 GB pamięci RAM, 500 MB magazynu</p>
+| **\* identyfikatora marketingu**  | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków.  Przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Podgląd identyfikatorów subskrypcji** | Dodaj jeden do 100 identyfikatorów subskrypcji dla recenzentów. Te białe subskrypcje będą miały dostęp do oferty po jej opublikowaniu. |
 | **Przydatne linki**          | Można z nich najlepiej skojarzyć wiele wybranych kategorii branżowych i technicznych.  Maksymalnie 10 dozwolonych. Upewnij się, że dodano co najmniej jeden link do dokumentacji i jeden link do zgodnych urządzeń IoT Edge z [wykazu urządzeń usługi Azure IoT](https://catalog.azureiotsolutions.com/). |
 | **Sugerowane kategorie\*** | Wybierz maksymalnie pięć kategorii. Zostaną one wyświetlone na stronie szczegółów produktu. Na stronach przeglądania wszystkie moduły IoT Edge są wyświetlane w kategorii *moduł Internet rzeczy \> IoT Edge* .|
@@ -129,7 +129,7 @@ W przypadku logo Hero należy stosować następujące wytyczne:
 *  Unikaj używania większości tekstu podczas projektowania logo. Nazwa wydawcy, tytuł planu, podsumowanie oferty długiej i przycisk Utwórz są osadzane programowo w logo, gdy zostanie wyświetlona. 
 * Uwzględnij nieużywane prostokątne miejsce po prawej stronie logo Hero. Puste miejsce to 415x100 pikseli i przesunięcie od lewej do 370 pikseli.  
 
-<!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
+<!-- P2: would be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
 
 ![Example hero icon for Azure Container Service](./media/publishvm_010.png)

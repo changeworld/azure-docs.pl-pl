@@ -1,19 +1,18 @@
 ---
 title: Wykonywanie operacji usługi Azure Table Storage za pomocą programu PowerShell | Microsoft Docs
 description: Dowiedz się, jak uruchamiać typowe zadania, takie jak tworzenie, wykonywanie zapytań, usuwanie danych z konta usługi Azure Table Storage za pomocą programu PowerShell.
-services: cosmos-db
 author: roygara
-ms.service: cosmos-db
+ms.service: storage
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
-ms.subservice: cosmosdb-table
-ms.openlocfilehash: 4591cded820bbefb741d55a22d10a91bd4fff383
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.subservice: tables
+ms.openlocfilehash: f1846fae4cbf473df688a2b184c307d72ab2f8d0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868511"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721476"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Wykonywanie operacji usługi Azure Table Storage za pomocą Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]

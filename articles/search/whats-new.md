@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: a9c64f4bafa770de9bbbd97ae9a0295b72d81f54
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921010"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719827"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co nowego w usłudze Azure Wyszukiwanie poznawcze
 
@@ -21,15 +21,13 @@ Dowiedz się, co nowego w usłudze. Oznacz Tę stronę zakładką, aby zapewnić
 
 <a name="new-service-name"></a>
 
-## <a name="new-service-name-for-azure-search"></a>Nowa nazwa usługi dla Azure Search
+## <a name="new-service-name"></a>Nowa nazwa usługi
 
-Azure Search teraz zmieniono nazwę na **platformę Azure wyszukiwanie poznawcze** w celu odzwierciedlenia rozszerzonego użycia umiejętności poznawczych i przetwarzania AI w operacjach podstawowych. Chociaż umiejętności poznawcze dodają nowe możliwości, korzystanie z AI jest absolutnie opcjonalne. Możesz nadal używać platformy Azure Wyszukiwanie poznawcze bez systemu AI do kompilowania rozbudowanych rozwiązań wyszukiwania pełnotekstowego za pośrednictwem prywatnej, heterogenicznychowej zawartości opartej na tekście w indeksie tworzonym i zarządzanym w chmurze. 
-
-Wersje interfejsu API, pakiety NuGet, przestrzenie nazw i punkty końcowe nie są zmieniane. Zmiany nazwy usługi nie wpływają na istniejące rozwiązania wyszukiwania.
+Azure Search teraz zmieniono nazwę na **platformę Azure wyszukiwanie poznawcze** w celu odzwierciedlenia rozszerzonego (nieopcjonalnego) korzystania z umiejętności poznawczych i przetwarzania AI w operacjach podstawowych. Wersje interfejsu API, pakiety NuGet, przestrzenie nazw i punkty końcowe nie są zmieniane. Zmiany nazwy usługi nie wpływają na nowe i istniejące rozwiązania wyszukiwania.
 
 ## <a name="feature-announcements"></a>Anonse funkcji
 
-### <a name="january-2020"></a>Styczeń 2020
+### <a name="january-2020"></a>Styczeń 2020 r.
 
 + [Klucze szyfrowania zarządzane przez klienta](search-security-manage-encryption-keys.md) są teraz ogólnie dostępne. Jeśli używasz usługi REST, możesz uzyskać dostęp do tej funkcji przy użyciu `api-version=2019-05-06`. W przypadku kodu zarządzanego prawidłowy pakiet nadal jest [zestawem SDK .NET w wersji 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , nawet jeśli ta funkcja nie jest dostępna w wersji zapoznawczej. 
 

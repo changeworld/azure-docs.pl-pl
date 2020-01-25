@@ -1,0 +1,92 @@
+---
+title: Obsługa protokołu TLS w usłudze Azure IoT Hub
+description: Najlepsze rozwiązania w zakresie używania bezpiecznych połączeń TLS dla urządzeń i usług komunikujących się z IoT Hub
+services: iot-hub
+author: rezasherafat
+ms.service: iot-fundamentals
+ms.topic: conceptual
+ms.date: 01/10/2020
+ms.author: rezas
+ms.openlocfilehash: ce8ef987adc0cec4fcd8acef4cc075d50c92d62a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722891"
+---
+# <a name="tls-support-in-iot-hub"></a>Obsługa protokołu TLS w IoT Hub
+
+IoT Hub używa Transport Layer Security (TLS) do zabezpieczania połączeń z urządzeń i usług IoT. Obecnie są obsługiwane trzy wersje protokołu TLS, czyli wersje 1,0, 1,1 i 1,2.
+
+Protokoły TLS 1,0 i 1,1 są uznawane za starsze i są planowane jako przestarzałe. Aby uzyskać więcej informacji, zobacz [przestarzałe protokoły TLS 1,0 i 1,1 dla IoT Hub](iot-hub-tls-deprecating-1-0-and-1-1.md). Zdecydowanie zaleca się użycie protokołu TLS 1,2 jako preferowanej wersji protokołu TLS podczas nawiązywania połączenia z usługą IoT Hub.
+
+## <a name="restrict-connections-to-tls-12-in-your-iot-hub-resource"></a>Ogranicz połączenia do protokołu TLS 1,2 w zasobie IoT Hub
+
+W celu zwiększenia bezpieczeństwa zaleca się skonfigurowanie centrów IoT w *taki sposób,* aby zezwalały na połączenia klienckie korzystające z protokołu TLS w wersji 1,2 i wymuszanie użycia [zalecanych szyfrów](#recommended-ciphers).
+
+W tym celu należy udostępnić nowe IoT Hub w którymkolwiek z [obsługiwanych regionów](#supported-regions) i ustawić właściwość `minTlsVersion` na `1.2` w specyfikacji zasobów usługi IoT Hub szablonu Azure Resource Manager:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "Microsoft.Devices/IotHubs",
+            "apiVersion": "2020-01-01",
+            "name": "<provide-a-valid-resource-name>",
+            "location": "<any-of-supported-regions-below>",
+            "properties": {
+                "minTlsVersion": "1.2"
+            },
+            "sku": {
+                "name": "<your-hubs-SKU-name>",
+                "tier": "<your-hubs-SKU-tier>",
+                "capacity": 1
+            }
+        }
+    ]
+}
+```
+
+Utworzony zasób IoT Hub przy użyciu tej konfiguracji będzie odrzucać klientów urządzeń i usług próbujących nawiązać połączenie przy użyciu protokołu TLS w wersji 1,0 i 1,1. Podobnie uzgadnianie protokołu TLS zostanie odrzucone, jeśli wiadomość POWITALNa klienta nie zawiera listy [zalecanych szyfrów](#recommended-ciphers).
+
+> [!NOTE]
+> Właściwość `minTlsVersion` jest tylko do odczytu i nie można jej zmienić po utworzeniu zasobu IoT Hub. W związku z tym należy prawidłowo testować i sprawdzać, czy *wszystkie* urządzenia i usługi IoT są zgodne z protokołem TLS 1,2 i [zalecanymi szyframi](#recommended-ciphers) z wyprzedzeniem.
+
+### <a name="supported-regions"></a>Obsługiwane regiony
+
+Centra IoT, które wymagają użycia protokołu TLS 1,2, można tworzyć w następujących regionach:
+
+* Wschodnie stany USA
+* Południowo-środkowe stany USA
+* Zachodnie stany USA 2
+
+> [!NOTE]
+> Po przełączeniu w tryb failover Właściwość `minTlsVersion` IoT Huba będzie obowiązywać w regionie z parą geograficzną po przejściu w tryb failover.
+
+### <a name="recommended-ciphers"></a>Zalecane szyfry
+
+Centra IoT, które są skonfigurowane do akceptowania tylko protokołu TLS 1,2, będą również wymuszać użycie następujących zalecanych szyfrów:
+
+* `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
+* `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
+* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
+
+### <a name="use-tls-12-in-your-iot-hub-sdks"></a>Korzystanie z protokołu TLS 1,2 w zestawach SDK IoT Hub
+
+Poniższe linki służą do konfigurowania protokołu TLS 1,2 i dozwolonych szyfrów w IoT Hub zestaw SDK klienta.
+
+| Język | Obsługiwane protokoły TLS 1,2 | Dokumentacja |
+|----------|-------------------|---------------|
+| C        | Tak               | [Link](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Tak               | [Link](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Tak               | [Link](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Tak               | [Link](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Tak               | [Link](https://aka.ms/Tls_Node_SDK_IoT) |
+
+
+### <a name="use-tls-12-in-your-iot-edge-setup"></a>Korzystanie z protokołu TLS 1,2 w konfiguracji IoT Edge
+
+Urządzenia IoT Edge można skonfigurować do korzystania z protokołu TLS 1,2 podczas komunikowania się z IoT Hub. W tym celu Skorzystaj ze [strony dokumentacji IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).

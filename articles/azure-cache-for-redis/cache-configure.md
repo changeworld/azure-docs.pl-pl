@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c4d5716c8a31ceccbe23c1f77ad3b88030ff3065
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972125"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714640"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować usługę Azure cache for Redis
 W tym temacie opisano konfiguracje dostępne dla usługi Azure cache dla wystąpień Redis. W tym temacie opisano również domyślną konfigurację serwera Redis dla usługi Azure cache dla wystąpień Redis.
@@ -40,13 +40,13 @@ Poniższe ustawienia można wyświetlać i konfigurować za pomocą **menu zasó
     * [Ustawienia zaawansowane](#advanced-settings)
     * [Usługa Azure cache for Redis Advisor](#azure-cache-for-redis-advisor)
     * [Skalowanie](#scale)
-    * [Rozmiar klastra Redis](#cluster-size)
-    * [Trwałość danych Redis](#redis-data-persistence)
+    * [Rozmiar klastra](#cluster-size)
+    * [Trwałość danych](#redis-data-persistence)
     * [Aktualizacje harmonogramu](#schedule-updates)
     * [Geo-replication](#geo-replication) (Replikacja geograficzna)
     * [Virtual Network](#virtual-network)
     * [Zapora](#firewall)
-    * [Właściwości](#properties)
+    * [Aœciwoœci](#properties)
     * [Zamki](#locks)
     * [Skrypt automatyzacji](#automation-script)
 * Administracja
@@ -70,7 +70,7 @@ Poniższe ustawienia można wyświetlać i konfigurować za pomocą **menu zasó
 
 Kliknij pozycję **Dziennik aktywności** , aby wyświetlić akcje wykonywane w pamięci podręcznej. Możesz również użyć filtru, aby rozwinąć ten widok, aby uwzględnić inne zasoby. Aby uzyskać więcej informacji na temat pracy z dziennikami inspekcji, zobacz [operacje inspekcji przy użyciu Menedżer zasobów](../azure-resource-manager/management/view-activity-logs.md). Aby uzyskać więcej informacji o monitorowaniu pamięci podręcznej platformy Azure dla zdarzeń Redis, zobacz [operacje i alerty](cache-how-to-monitor.md#operations-and-alerts).
 
-### <a name="access-control-iam"></a>Kontrola dostępu (zarządzanie dostępem i tożsamościami)
+### <a name="access-control-iam"></a>Kontrola dostępu (IAM)
 
 Sekcja **Kontrola dostępu (IAM)** zapewnia obsługę kontroli dostępu opartej na ROLACH (RBAC) w Azure Portal. Ta konfiguracja ułatwia organizacjom spełnienie wymagań związanych z zarządzaniem dostępem po prostu i precyzyjnie. Aby uzyskać więcej informacji, zobacz [Kontrola dostępu oparta na rolach w Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
@@ -92,13 +92,13 @@ Sekcja **Ustawienia** umożliwia dostęp do i konfigurowanie następujących ust
 * [Ustawienia zaawansowane](#advanced-settings)
 * [Usługa Azure cache for Redis Advisor](#azure-cache-for-redis-advisor)
 * [Skalowanie](#scale)
-* [Rozmiar klastra Redis](#cluster-size)
-* [Trwałość danych Redis](#redis-data-persistence)
+* [Rozmiar klastra](#cluster-size)
+* [Trwałość danych](#redis-data-persistence)
 * [Aktualizacje harmonogramu](#schedule-updates)
 * [Geo-replication](#geo-replication) (Replikacja geograficzna)
 * [Virtual Network](#virtual-network)
 * [Zapora](#firewall)
-* [Właściwości](#properties)
+* [Aœciwoœci](#properties)
 * [Zamki](#locks)
 * [Skrypt automatyzacji](#automation-script)
 
@@ -201,14 +201,9 @@ Kliknij pozycję **skalowanie** , aby wyświetlić lub zmienić warstwę cenową
 <a name="cluster-size"></a>
 
 ### <a name="redis-cluster-size"></a>Rozmiar klastra Redis
-Kliknij pozycję **(wersja zapoznawcza) Redis rozmiar klastra** , aby zmienić rozmiar klastra dla uruchomionej pamięci podręcznej z włączoną obsługą klastrowania.
+Kliknij pozycję **rozmiar klastra** , aby zmienić rozmiar klastra dla uruchomionej pamięci podręcznej Premium z włączoną obsługą klastrowania.
 
-> [!NOTE]
-> Należy pamiętać, że podczas gdy pamięć podręczna platformy Azure dla usługi Redis Premium została wydana ogólnie dostępna, funkcja rozmiaru klastra Redis jest obecnie w wersji zapoznawczej.
->
->
-
-![Rozmiar klastra Redis](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![Rozmiar klastra](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
 Aby zmienić rozmiar klastra, użyj suwaka lub wpisz liczbę z zakresu od 1 do 10 w polu tekstowym **Liczba fragmentu** , a następnie kliknij przycisk **OK** , aby zapisać.
 
@@ -219,7 +214,7 @@ Aby zmienić rozmiar klastra, użyj suwaka lub wpisz liczbę z zakresu od 1 do 1
 
 
 ### <a name="redis-data-persistence"></a>Trwałość danych Redis
-Kliknij pozycję **Redis trwałość danych** , aby włączyć, wyłączyć lub skonfigurować trwałość danych dla pamięci podręcznej Premium. Usługa Azure cache for Redis oferuje Trwałość Redis przy użyciu trwałości [RDB](cache-how-to-premium-persistence.md#configure-rdb-persistence) lub [trwałości kopia zapasowa AOF](cache-how-to-premium-persistence.md#configure-aof-persistence).
+Kliknij pozycję **trwałość danych** , aby włączyć, wyłączyć lub skonfigurować trwałość danych dla pamięci podręcznej Premium. Usługa Azure cache for Redis oferuje Trwałość Redis przy użyciu trwałości [RDB](cache-how-to-premium-persistence.md#configure-rdb-persistence) lub [trwałości kopia zapasowa AOF](cache-how-to-premium-persistence.md#configure-aof-persistence).
 
 Aby uzyskać więcej informacji, zobacz [jak skonfigurować trwałość dla pamięci podręcznej Premium platformy Azure dla Redis](cache-how-to-premium-persistence.md).
 
@@ -459,7 +454,7 @@ Aby uzyskać więcej informacji na temat baz danych, zobacz [co to są bazy dany
 > * SYGNATUR
 > * DEBUG
 > * DOKONAĆ
-> * ZAPISZ
+> * PISAŁ
 > * WYŁĄCZONY
 > * SLAVEOF
 > * Polecenia zapisu klastra klastrów są wyłączone, ale dozwolone są polecenia klastra tylko do odczytu.

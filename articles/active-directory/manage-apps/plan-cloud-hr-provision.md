@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
-ms.openlocfilehash: 2d2cb113261495b0217d056cf62019b79be7fa27
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8964f710ca4dfdf4710458f857c3a930fd755654
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767861"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711503"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planowanie aplikacji w chmurze w celu Azure Active Directory aprowizacji użytkowników
 
 W przeszłości pracownicy IT korzystali z ręcznych metod tworzenia, aktualizowania i usuwania pracowników. Używają metod, takich jak przekazywanie plików CSV lub skryptów niestandardowych do synchronizowania danych pracownika. Te procesy aprowizacji są podatne na błędy, niezabezpieczone i trudne do zarządzania.
 
-Aby zarządzać cyklem życia tożsamości pracowników, dostawców lub procesów roboczych, [Azure Active Directory (Azure AD) usługa aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) oferuje integrację z aplikacjami ludzkimi opartymi na chmurze (HR). Przykładami aplikacji są: Workday lub SuccessFactors.
+Aby zarządzać cyklem życia tożsamości pracowników, dostawców lub procesów roboczych, [Azure Active Directory (Azure AD) usługa aprowizacji użytkowników](user-provisioning.md) oferuje integrację z aplikacjami ludzkimi opartymi na chmurze (HR). Przykładami aplikacji są: Workday lub SuccessFactors.
 
 Usługa Azure AD używa tej integracji w celu włączenia następujących przepływów pracy aplikacji w chmurze (aplikacji):
 
@@ -86,7 +86,7 @@ Potrzebna jest również ważna licencja subskrypcyjna na Azure AD — wersja Pr
 - Wystąpienie testowe i produkcyjne aplikacji w chmurze.
 - Uprawnienia administratora w aplikacji KADRowej w chmurze umożliwiającej tworzenie użytkownika integracji systemu i wprowadzanie zmian w celu przetestowania danych pracownika na potrzeby testowania.
 - W celu aprowizacji użytkowników do Active Directory, serwer z systemem Windows Server 2012 lub nowszym z programem .NET 4.7.1 + Runtime jest wymagany do hostowania [agenta aprowizacji Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=847801).
-- [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect) synchronizowania użytkowników między Active Directory i Azure AD.
+- [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) synchronizowania użytkowników między Active Directory i Azure AD.
 
 ### <a name="training-resources"></a>Zasoby szkoleniowe
 
@@ -94,10 +94,10 @@ Potrzebna jest również ważna licencja subskrypcyjna na Azure AD — wersja Pr
 |:-|:-|
 | Filmy | [Co to jest inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/_ZjARPpI6NI) |
 | | [Jak wdrożyć Inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure](https://youtu.be/pKzyts6kfrw) |
-| Samouczki | [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) |
-| | [Samouczek: Konfigurowanie produktu Workday do automatycznego aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
-| Często zadawane pytania | [Automatyczne Inicjowanie obsługi użytkowników](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
-| | [Inicjowanie obsługi z poziomu produktu Workday do usługi Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
+| Samouczki | [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure AD](../saas-apps/tutorial-list.md) |
+| | [Samouczek: Konfigurowanie produktu Workday do automatycznego aprowizacji użytkowników](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| Często zadawane pytania | [Automatyczne Inicjowanie obsługi użytkowników](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| | [Inicjowanie obsługi z poziomu produktu Workday do usługi Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Architektura rozwiązania
 
@@ -106,7 +106,7 @@ Poniższy przykład opisuje kompleksową architekturę rozwiązania obsługi uż
 - **Autorytatywny przepływ danych HR z aplikacji usługi Cloud kadr do Active Directory.** W tym przepływie jest inicjowane zdarzenie HR (dla sprzężeń — proces opuszczania i opuszczanie) w dzierżawie aplikacji w chmurze. Usługa Azure AD Provisioning i Agent aprowizacji Azure AD Connect udostępniają dane użytkownika z dzierżawy aplikacji kadr w chmurze do usługi Active Directory. W zależności od zdarzenia może to prowadzić do tworzenia, aktualizowania, włączania i wyłączania operacji w Active Directory.
 - **Synchronizuj z usługą Azure AD i zapisuj pocztę e-mail i nazwę użytkownika z lokalnego Active Directory do aplikacji w chmurze.** Po zaktualizowaniu kont w Active Directory są one synchronizowane z usługą Azure AD za pomocą usługi Azure AD Connect. Adresy e-mail i atrybuty nazwy użytkownika można zapisać z powrotem do dzierżawy aplikacji KADRowej w chmurze.
 
-![Diagram przepływu pracy](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img1.png)
+![Diagram przepływu pracy](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img1.png)
 
 #### <a name="description-of-workflow"></a>Opis przepływu pracy
 
@@ -116,7 +116,7 @@ Na diagramie przedstawiono następujące podstawowe kroki:  
 2. **Usługa Azure AD Provisioning** uruchamia zaplanowane cykle z dzierżawy aplikacji kadr w chmurze i identyfikuje zmiany, które muszą zostać przetworzone w celu synchronizacji z Active Directory.
 3. **Usługa Azure AD Provisioning** wywołuje Azure AD Connect agenta aprowizacji z ładunkiem żądania, który zawiera Active Directory konta tworzenia, aktualizowania, włączania i wyłączania.
 4. **Azure AD Connect Agent aprowizacji** używa konta usługi do zarządzania danymi konta Active Directory.
-5. **Azure AD Connect** uruchamia [synchronizację](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) Delta w celu ściągnięcia aktualizacji w Active Directory.
+5. **Azure AD Connect** uruchamia [synchronizację](../hybrid/how-to-connect-sync-whatis.md) Delta w celu ściągnięcia aktualizacji w Active Directory.
 6. Aktualizacje **Active Directory** są synchronizowane z usługą Azure AD.
 7. **Usługa Azure AD Provisioning** zapisuje z powrotem atrybut poczty e-mail i nazwę użytkownika z usługi Azure AD do dzierżawy aplikacji kadrowej w chmurze.
 
@@ -138,7 +138,7 @@ Komunikacja jest niezwykle ważna dla sukcesu każdej nowej usługi. Aktywnie Ko
 
 Integrowanie procesów biznesowych i przepływów pracy tożsamości z aplikacji w chmurze w usłudze Cloud prod z systemami docelowymi wymaga dużej ilości walidacji danych, transformacji danych, czyszczenia danych i kompleksowego testowania przed wdrożeniem rozwiązania w środowisku produkcyjnym.
 
-Uruchom konfigurację początkową w [środowisku pilotażowym](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) przed przeskalowaniem jej do wszystkich użytkowników w produkcji.
+Uruchom konfigurację początkową w [środowisku pilotażowym](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) przed przeskalowaniem jej do wszystkich użytkowników w produkcji.
 
 ## <a name="select-cloud-hr-provisioning-connector-apps"></a>Wybierz aplikacje łącznika usługi Cloud Personal
 
@@ -150,13 +150,13 @@ Aby ułatwić przepływy pracy aprowizacji usługi Azure AD między aplikacją i
 
 Na przykład na poniższej ilustracji przedstawiono aplikacje łącznika produktu Workday dostępne w galerii aplikacji usługi Azure AD.
 
-![Galeria aplikacji portalu Azure Active Directory](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img2.png)
+![Galeria aplikacji portalu Azure Active Directory](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img2.png)
 
 ### <a name="decision-flow-chart"></a>Wykres przepływu decyzji
 
 Użyj poniższego wykresu przepływu decyzji, aby określić, które aplikacje do obsługi kadr w chmurze są odpowiednie dla Twojego scenariusza.
 
-![Wykres przepływu decyzji](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img3.png)
+![Wykres przepływu decyzji](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img3.png)
 
 ## <a name="design-the-azure-ad-connect-provisioning-agent-deployment-topology"></a>Zaprojektowanie topologii wdrażania agenta aprowizacji Azure AD Connect
 
@@ -184,7 +184,7 @@ Zalecamy zastosowanie następującej konfiguracji produkcyjnej:
 |Liczba aplikacji łącznika aprowizacji do skonfigurowania|Jedna aplikacja na domenę podrzędną|
 |Host serwera dla Azure AD Connect agenta aprowizacji|Windows 2012 R2 + z wierszem wglądu do geozlokalizowane Active Directory kontrolery domeny</br>Może współistnieć z usługą Azure AD Connect|
 
-![Przepływ do agentów lokalnych](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img4.png)
+![Przepływ do agentów lokalnych](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img4.png)
 
 ### <a name="single-cloud-hr-app-tenant---target-multiple-child-domains-in-a-disjoint-active-directory-forest"></a>Dzierżawa pojedynczej aplikacji w chmurze — > celu wielu domen podrzędnych w oddzielnym lesie Active Directory
 
@@ -198,13 +198,13 @@ Zalecamy zastosowanie następującej konfiguracji produkcyjnej:
 |Liczba aplikacji łącznika aprowizacji do skonfigurowania|Jedna aplikacja na domenę podrzędną|
 |Host serwera dla Azure AD Connect agenta aprowizacji|Windows 2012 R2 + z wierszem wglądu do geozlokalizowane Active Directory kontrolery domeny</br>Może współistnieć z usługą Azure AD Connect|
 
-![Dzierżawa usługi Single App Active Directory w chmurze](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img5.png)
+![Dzierżawa usługi Single App Active Directory w chmurze](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img5.png)
 
 ### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Azure AD Connect wymagania dotyczące agenta aprowizacji
 
 Aplikacja Cloud kadr dla Active Directory rozwiązanie do aprowizacji użytkowników wymaga wdrożenia co najmniej jednego Azure AD Connect agentów aprowizacji na serwerach z systemem Windows 2012 R2 lub nowszym. Serwery muszą mieć co najmniej 4 GB pamięci RAM i .NET 4.7.1 + Runtime. Upewnij się, że serwer hosta ma dostęp sieciowy do domeny docelowej Active Directory.
 
-Aby przygotować środowisko lokalne, Kreator konfiguracji agenta aprowizacji Azure AD Connect zarejestruje agenta za pomocą dzierżawy usługi Azure AD, [otwiera porty](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports), [zezwala na dostęp do adresów URL](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#allow-access-to-urls)i obsługuje [konfigurację wychodzącego serwera proxy HTTPS](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
+Aby przygotować środowisko lokalne, Kreator konfiguracji agenta aprowizacji Azure AD Connect zarejestruje agenta za pomocą dzierżawy usługi Azure AD, [otwiera porty](application-proxy-add-on-premises-application.md#open-ports), [zezwala na dostęp do adresów URL](application-proxy-add-on-premises-application.md#allow-access-to-urls)i obsługuje [konfigurację wychodzącego serwera proxy HTTPS](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
 
 Agent aprowizacji używa konta usługi do komunikacji z domenami Active Directory. Przed zainstalowaniem agenta należy utworzyć konto usługi w Active Directory Użytkownicy i komputery, które spełniają następujące wymagania:
 
@@ -221,7 +221,7 @@ Po włączeniu obsługi administracyjnej aplikacji w chmurze w celu Active Direc
 
 ### <a name="define-scoping-filters"></a>Definiowanie filtrów określania zakresu
 
-[Filtry zakresu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters) umożliwiają definiowanie reguł opartych na atrybutach, które określają, którzy użytkownicy powinni być obsługiwani z aplikacji kadrowej w chmurze do Active Directory lub Azure AD.
+[Filtry zakresu](define-conditional-rules-for-provisioning-user-accounts.md) umożliwiają definiowanie reguł opartych na atrybutach, które określają, którzy użytkownicy powinni być obsługiwani z aplikacji kadrowej w chmurze do Active Directory lub Azure AD.
 
 Po zainicjowaniu procesu przyłączania należy zebrać następujące wymagania:
 
@@ -233,7 +233,7 @@ W zależności od wymagań podczas konfigurowania mapowań atrybutów można ust
 
 ### <a name="determine-matching-attributes"></a>Określanie pasujących atrybutów
 
-Dzięki aprowizacji można dopasować istniejące konta między systemem źródłowym a docelowym. Po zintegrowaniu aplikacji usługi Cloud kadr z usługą Azure AD Provisioning można [skonfigurować Mapowanie atrybutów](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal#mappings) , aby określić, jakie dane użytkownika powinny być przepływać z aplikacji w chmurze do Active Directory lub Azure AD.
+Dzięki aprowizacji można dopasować istniejące konta między systemem źródłowym a docelowym. Po zintegrowaniu aplikacji usługi Cloud kadr z usługą Azure AD Provisioning można [skonfigurować Mapowanie atrybutów](configure-automatic-user-provisioning-portal.md#mappings) , aby określić, jakie dane użytkownika powinny być przepływać z aplikacji w chmurze do Active Directory lub Azure AD.
 
 Po zainicjowaniu procesu przyłączania należy zebrać następujące wymagania:
 
@@ -243,13 +243,13 @@ Po zainicjowaniu procesu przyłączania należy zebrać następujące wymagania:
 - W ramach perspektywy cyklu życia tożsamości, w jaki sposób można obsłużyć proces konwersji pracownika na warunkowe lub w inny sposób?
 - Czy przekonwertowani użytkownicy zachowują swoje stare konta Active Directory lub otrzymują nowe?
 
-W zależności od wymagań usługa Azure AD obsługuje bezpośrednie Mapowanie atrybutów między atrybutami, dostarczając wartości stałe lub [pisząc wyrażenia dla mapowań atrybutów](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings). Ta elastyczność zapewnia ostateczną kontrolę nad tym, co jest zapełnione w atrybucie aplikacji Target. Korzystając z [Microsoft Graph API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration) i Eksploratora grafów, można wyeksportować mapowania atrybutów aprowizacji użytkowników i schemat do pliku JSON, a następnie zaimportować je z powrotem do usługi Azure AD.
+W zależności od wymagań usługa Azure AD obsługuje bezpośrednie Mapowanie atrybutów między atrybutami, dostarczając wartości stałe lub [pisząc wyrażenia dla mapowań atrybutów](functions-for-customizing-application-data.md). Ta elastyczność zapewnia ostateczną kontrolę nad tym, co jest zapełnione w atrybucie aplikacji Target. Korzystając z [Microsoft Graph API](export-import-provisioning-configuration.md) i Eksploratora grafów, można wyeksportować mapowania atrybutów aprowizacji użytkowników i schemat do pliku JSON, a następnie zaimportować je z powrotem do usługi Azure AD.
 
 Domyślnie atrybut w aplikacji KADRowej w chmurze reprezentujący unikatowy identyfikator pracownika jest używany jako pasujący atrybut *mapowany na unikatowy atrybut w Active Directory.* Na przykład w scenariuszu aplikacji Workday atrybut **Workday** **WorkerID** jest mapowany na atrybut Active Directory **IDPracownika** .
 
 Można ustawić wiele pasujących atrybutów i przypisać priorytet pasujący. Są one oceniane w oparciu o pasujące pierwszeństwo. Po znalezieniu dopasowania nie są oceniane żadne dalsze pasujące atrybuty.
 
-Można również [dostosować domyślne mapowania atrybutów](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes#understanding-attribute-mapping-types), takie jak zmiana lub usuwanie istniejących mapowań atrybutów. Można również tworzyć nowe mapowania atrybutów zgodnie z potrzebami biznesowymi. Aby uzyskać więcej informacji, zobacz Samouczek dotyczący aplikacji Cloud Kadr (na przykład [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)), aby zapoznać się z listą atrybutów niestandardowych, które mają być mapowane.
+Można również [dostosować domyślne mapowania atrybutów](customize-application-attributes.md#understanding-attribute-mapping-types), takie jak zmiana lub usuwanie istniejących mapowań atrybutów. Można również tworzyć nowe mapowania atrybutów zgodnie z potrzebami biznesowymi. Aby uzyskać więcej informacji, zobacz Samouczek dotyczący aplikacji Cloud Kadr (na przykład [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)), aby zapoznać się z listą atrybutów niestandardowych, które mają być mapowane.
 
 ### <a name="determine-user-account-status"></a>Określanie stanu konta użytkownika
 
@@ -268,7 +268,7 @@ Po zainicjowaniu procesu przyłączania — wypełniania należy zebrać poniżs
 | | W jaki sposób pracownicy i warunkowe konwersje procesów roboczych wpływają na istniejące Active Directory konta? |
 | | Jak przetworzyć operację odwołaj w Active Directory? Operacje odwołaj należy obsługiwać, jeśli w ramach procesu łącznika zostaną utworzone przyszłe zatrudnienie w Active Directory. |
 
-W zależności od wymagań można dostosować logikę mapowania przy użyciu [wyrażeń usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data) , aby konto Active Directory zostało włączone lub wyłączone na podstawie kombinacji punktów danych.
+W zależności od wymagań można dostosować logikę mapowania przy użyciu [wyrażeń usługi Azure AD](functions-for-customizing-application-data.md) , aby konto Active Directory zostało włączone lub wyłączone na podstawie kombinacji punktów danych.
 
 ### <a name="map-cloud-hr-app-to-active-directory-user-attributes"></a>Mapowanie aplikacji KADRowej w chmurze na Active Directory atrybuty użytkownika
 
@@ -286,13 +286,13 @@ Po zainicjowaniu procesu joins-Interleavers należy zebrać poniższe wymagania.
 | | Jakie daty efektywne są brane pod uwagę w przypadku przetwarzania zakończenia użytkownika? |
 | | Jak pracownicy i warunkowe konwersje procesów roboczych wpływają na istniejące Active Directory konta? |
 
-W zależności od wymagań można zmodyfikować mapowania, aby spełniały cele integracji. Aby uzyskać więcej informacji, zobacz Samouczek dotyczący konkretnej aplikacji w chmurze (na przykład [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)), aby zapoznać się z listą atrybutów niestandardowych, które mają być mapowane.
+W zależności od wymagań można zmodyfikować mapowania, aby spełniały cele integracji. Aby uzyskać więcej informacji, zobacz Samouczek dotyczący konkretnej aplikacji w chmurze (na przykład [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)), aby zapoznać się z listą atrybutów niestandardowych, które mają być mapowane.
 
 ### <a name="generate-a-unique-attribute-value"></a>Generuj unikatową wartość atrybutu
 
 Po zainicjowaniu procesu przyłączania może być konieczne wygenerowanie unikatowych wartości atrybutów podczas ustawiania atrybutów, takich jak CN, samAccountName i UPN, z unikatowymi ograniczeniami.
 
-Funkcja Azure AD [SelectUniqueValues](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#selectuniquevalue) oblicza każdą regułę, a następnie sprawdza wartość wygenerowaną w celu zapewnienia unikatowości w systemie docelowym. Aby zapoznać się z przykładem, zobacz [generowanie unikatowej wartości atrybutu userPrincipalName (UPN)](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#generate-unique-value-for-userprincipalname-upn-attribute).
+Funkcja Azure AD [SelectUniqueValues](functions-for-customizing-application-data.md#selectuniquevalue) oblicza każdą regułę, a następnie sprawdza wartość wygenerowaną w celu zapewnienia unikatowości w systemie docelowym. Aby zapoznać się z przykładem, zobacz [generowanie unikatowej wartości atrybutu userPrincipalName (UPN)](functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute).
 
 > [!NOTE]
 > Ta funkcja jest obecnie obsługiwana tylko w celu Active Directory aprowizacji użytkowników w programie Workday. Nie można jej używać z innymi aplikacjami aprowizacji.
@@ -301,7 +301,7 @@ Funkcja Azure AD [SelectUniqueValues](https://docs.microsoft.com/azure/active-di
 
 Jest to typowy wymóg umieszczania Active Directory kont użytkowników w kontenerach w oparciu o jednostki biznesowe, lokalizacje i działy. Po zainicjowaniu procesu firmy przeprowadzkowej, jeśli istnieje zmiana organizacji nadzorczej, może być konieczne przeniesienie użytkownika z jednej jednostki organizacyjnej do innej w Active Directory.
 
-Użyj funkcji [Switch ()](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#switch) , aby skonfigurować logikę biznesową dla przypisania jednostki organizacyjnej i zamapować ją na Active Directory atrybutu **parentDistinguishedName**.
+Użyj funkcji [Switch ()](functions-for-customizing-application-data.md#switch) , aby skonfigurować logikę biznesową dla przypisania jednostki organizacyjnej i zamapować ją na Active Directory atrybutu **parentDistinguishedName**.
 
 Na przykład jeśli chcesz utworzyć użytkowników w jednostce organizacyjnej na **podstawie atrybutu HR**, można użyć następującego wyrażenia:
 
@@ -313,20 +313,20 @@ W tym wyrażeniu, jeśli wartość gminy to Dallas, Austin, Seattle lub Londyn, 
 
 ## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Planowanie dostarczania haseł dla nowych kont użytkowników
 
-Po zainicjowaniu procesu przyłączania należy ustawić i dostarczyć tymczasowe hasło nowych kont użytkowników. Za pomocą usługi Cloud HR dla użytkowników usługi Azure AD można wdrożyć funkcję samoobsługowego [resetowania hasła](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) usługi Azure AD dla użytkownika na dzień.
+Po zainicjowaniu procesu przyłączania należy ustawić i dostarczyć tymczasowe hasło nowych kont użytkowników. Za pomocą usługi Cloud HR dla użytkowników usługi Azure AD można wdrożyć funkcję samoobsługowego [resetowania hasła](../authentication/quickstart-sspr.md) (SSPR) usługi Azure AD dla użytkownika na dzień.
 
 SSPR to prosty środek dla administratorów IT umożliwiający użytkownikom Resetowanie swoich haseł lub odblokowywanie ich kont. Możesz udostępnić atrybut **numeru telefonu komórkowego** z poziomu aplikacji usługi Cloud kadr w celu Active Directory i zsynchronizowania go z usługą Azure AD. Gdy atrybut **numeru komórkowego** jest w usłudze Azure AD, możesz włączyć SSPR dla konta użytkownika. Następnie nowy użytkownik może użyć zarejestrowanego i zweryfikowanego numeru komórkowego na potrzeby uwierzytelniania.
 
 ## <a name="plan-for-initial-cycle"></a>Planowanie cyklu początkowego
 
-Gdy usługa Azure AD Provisioning jest uruchamiana po raz pierwszy, wykonuje [początkowy cykl](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle) względem aplikacji kadrowej w chmurze, aby utworzyć migawkę wszystkich obiektów użytkownika w aplikacji w chmurze. Czas trwania cykli początkowej zależy od liczby użytkowników w systemie źródłowym. Cykl początkowy dla niektórych dzierżawców aplikacji usługi Cloud kadr z ponad 100 000 użytkownikami może zająć dużo czasu.
+Gdy usługa Azure AD Provisioning jest uruchamiana po raz pierwszy, wykonuje [początkowy cykl](how-provisioning-works.md#initial-cycle) względem aplikacji kadrowej w chmurze, aby utworzyć migawkę wszystkich obiektów użytkownika w aplikacji w chmurze. Czas trwania cykli początkowej zależy od liczby użytkowników w systemie źródłowym. Cykl początkowy dla niektórych dzierżawców aplikacji usługi Cloud kadr z ponad 100 000 użytkownikami może zająć dużo czasu.
 
 W **przypadku dużych dzierżawców aplikacji kadrowych w chmurze (> 30000 użytkowników)** Uruchom cykl początkowy w etapach progresywnych. Aktualizacje przyrostowe należy uruchamiać dopiero po sprawdzeniu, czy poprawne atrybuty są ustawione w Active Directory dla różnych scenariuszy aprowizacji użytkowników. Postępuj zgodnie z poniższą kolejnością.
 
 1. Uruchom cykl początkowy tylko dla ograniczonego zestawu użytkowników, ustawiając [Filtr określania zakresu](#plan-scoping-filters-and-attribute-mapping).
 2. Sprawdź, Active Directory aprowizacji konta i wartości atrybutów ustawione dla użytkowników wybranych do pierwszego uruchomienia. Jeśli wynik spełnia Twoje oczekiwania, rozwiń filtr określania zakresu, aby stopniowo obejmować więcej użytkowników i zweryfikować wyniki drugiego przebiegu.
 
-Po spełnieniu wyników cyklu początkowego dla użytkowników testowych Uruchom [Aktualizacje przyrostowe](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#incremental-cycles).
+Po spełnieniu wyników cyklu początkowego dla użytkowników testowych Uruchom [Aktualizacje przyrostowe](how-provisioning-works.md#incremental-cycles).
 
 ## <a name="plan-testing-and-security"></a>Planowanie testowania i zabezpieczeń
 
@@ -366,7 +366,7 @@ Implementacja inicjowania obsługi administracyjnej użytkowników w chmurze mo�
 
 Wybierz aplikację kadr w chmurze, która jest wyrównana do wymagań dotyczących rozwiązania.
 
-**Workday**: Aby zaimportować profile procesów roboczych z produktu Workday do Active Directory i usługi Azure AD, zobacz [Samouczek: Konfigurowanie produktu Workday do automatycznego aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-your-deployment). Opcjonalnie możesz napisać adres e-mail i nazwę użytkownika w usłudze Workday.
+**Workday**: Aby zaimportować profile procesów roboczych z produktu Workday do Active Directory i usługi Azure AD, zobacz [Samouczek: Konfigurowanie produktu Workday do automatycznego aprowizacji użytkowników](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Opcjonalnie możesz napisać adres e-mail i nazwę użytkownika w usłudze Workday.
 
 ## <a name="manage-your-configuration"></a>Zarządzanie konfiguracją
 
@@ -374,21 +374,21 @@ Usługa Azure AD może zapewnić dodatkowe informacje dotyczące użycia i kondy
 
 ### <a name="gain-insights-from-reports-and-logs"></a>Uzyskiwanie szczegółowych informacji z raportów i dzienników
 
-Po pomyślnym [cyklu początkowym](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle)usługa Azure AD Provisioning będzie nadal uruchamiać aktualizacje przyrostowe z powrotem do tyłu, w odstępach czasu zdefiniowanych w samouczkach dotyczących poszczególnych aplikacji, dopóki nie wystąpi jedno z następujących zdarzeń:
+Po pomyślnym [cyklu początkowym](how-provisioning-works.md#initial-cycle)usługa Azure AD Provisioning będzie nadal uruchamiać aktualizacje przyrostowe z powrotem do tyłu, w odstępach czasu zdefiniowanych w samouczkach dotyczących poszczególnych aplikacji, dopóki nie wystąpi jedno z następujących zdarzeń:
 
 - Usługa została zatrzymana ręcznie. Nowy cykl początkowy jest wyzwalany przy użyciu [Azure Portal](https://portal.azure.com/) lub odpowiedniego polecenia [API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) .
 - Nowy cykl początkowy jest wyzwalany ze względu na zmianę mapowań atrybutów lub filtrów określania zakresu.
 - Proces aprowizacji jest kierowany do kwarantanny z powodu wysokiego współczynnika błędów. Pozostaje w kwarantannie przez ponad cztery tygodnie, w których czas jest automatycznie wyłączany.
 
-Aby przejrzeć te zdarzenia i wszystkie inne działania wykonywane przez usługę aprowizacji, [Dowiedz się, jak przejrzeć dzienniki i uzyskać raporty dotyczące działań aprowizacji](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning).
+Aby przejrzeć te zdarzenia i wszystkie inne działania wykonywane przez usługę aprowizacji, [Dowiedz się, jak przejrzeć dzienniki i uzyskać raporty dotyczące działań aprowizacji](check-status-user-account-provisioning.md).
 
 #### <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 
 Wszystkie działania wykonywane przez usługę aprowizacji są rejestrowane w dziennikach inspekcji usługi Azure AD. Dzienniki inspekcji usługi Azure AD można kierować do Azure Monitor dzienników w celu dalszej analizy. Za pomocą dzienników Azure Monitor (znanych także jako Log Analytics obszaru roboczego) można wykonywać zapytania dotyczące danych, aby znaleźć zdarzenia, analizować trendy i wykonywać korelacje w różnych źródłach danych. Obejrzyj ten [film wideo](https://youtu.be/MP5IaCTwkQg) , aby poznać zalety korzystania z dzienników Azure monitor na potrzeby dzienników usługi Azure AD w praktycznych scenariuszach użytkownika.
 
-Zainstaluj [widoki usługi log Analytics dla dzienników aktywności w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views) , aby uzyskać dostęp do [wstępnie skompilowanych raportów](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) dotyczących zdarzeń aprowizacji w Twoim środowisku.
+Zainstaluj [widoki usługi log Analytics dla dzienników aktywności w usłudze Azure AD](../reports-monitoring/howto-install-use-log-analytics-views.md) , aby uzyskać dostęp do [wstępnie skompilowanych raportów](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) dotyczących zdarzeń aprowizacji w Twoim środowisku.
 
-Aby uzyskać więcej informacji, zobacz jak [analizować dzienniki aktywności usługi Azure AD za pomocą dzienników Azure monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics).
+Aby uzyskać więcej informacji, zobacz jak [analizować dzienniki aktywności usługi Azure AD za pomocą dzienników Azure monitor](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md).
 
 ### <a name="manage-personal-data"></a>Zarządzanie danymi osobowymi
 
@@ -400,21 +400,21 @@ Usługa Azure AD Provisioning nie generuje raportów, nie przeprowadza analizy a
 
 Aby rozwiązać problemy, które mogą zostać przełączane podczas aprowizacji, zobacz następujące artykuły:
 
-- [Wystąpił problem podczas konfigurowania aprowizacji użytkowników w aplikacji z galerii usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-- [Synchronizowanie atrybutu z Active Directory lokalnego z usługą Azure AD w celu aprowizacji aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning-sync-attributes-for-mapping)
-- [Inicjowanie obsługi administracyjnej użytkowników w aplikacji z galerii usługi Azure AD trwa kilka godzin](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)
-- [Wystąpił problem podczas zapisywania poświadczeń administratora podczas konfigurowania aprowizacji użytkowników w aplikacji Galerii Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-storage-limit)
-- [Nie zainicjowano obsługi użytkowników w aplikacji z galerii usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
-- [W aplikacji z galerii usługi Azure AD jest inicjowany niewłaściwy zestaw użytkowników](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-wrong-users-provisioned)
-- [Konfigurowanie Podgląd zdarzeń systemu Windows na potrzeby rozwiązywania problemów z agentem](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#setting-up-windows-event-viewer-for-agent-troubleshooting)
-- [Konfigurowanie dzienników inspekcji Azure Portal na potrzeby rozwiązywania problemów z usługą](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
-- [Omówienie dzienników dla operacji tworzenia konta użytkownika usługi AD](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#understanding-logs-for-ad-user-account-create-operations)
-- [Omówienie dzienników dla operacji aktualizacji Menedżera](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#understanding-logs-for-manager-update-operations)
-- [Rozwiązywanie najczęściej występujących błędów](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#resolving-commonly-encountered-errors)
+- [Wystąpił problem podczas konfigurowania aprowizacji użytkowników w aplikacji z galerii usługi Azure AD](application-provisioning-config-problem.md)
+- [Synchronizowanie atrybutu z Active Directory lokalnego z usługą Azure AD w celu aprowizacji aplikacji](user-provisioning-sync-attributes-for-mapping.md)
+- [Inicjowanie obsługi administracyjnej użytkowników w aplikacji z galerii usługi Azure AD trwa kilka godzin](application-provisioning-when-will-provisioning-finish.md)
+- [Wystąpił problem podczas zapisywania poświadczeń administratora podczas konfigurowania aprowizacji użytkowników w aplikacji Galerii Azure Active Directory](application-provisioning-config-problem-storage-limit.md)
+- [Nie zainicjowano obsługi użytkowników w aplikacji z galerii usługi Azure AD](application-provisioning-config-problem-no-users-provisioned.md)
+- [W aplikacji z galerii usługi Azure AD jest inicjowany niewłaściwy zestaw użytkowników](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Konfigurowanie Podgląd zdarzeń systemu Windows na potrzeby rozwiązywania problemów z agentem](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
+- [Konfigurowanie dzienników inspekcji Azure Portal na potrzeby rozwiązywania problemów z usługą](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
+- [Omówienie dzienników dla operacji tworzenia konta użytkownika usługi AD](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
+- [Omówienie dzienników dla operacji aktualizacji Menedżera](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
+- [Rozwiązywanie najczęściej występujących błędów](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
 ### <a name="next-steps"></a>Następne kroki
 
-- [Pisanie wyrażeń do mapowania atrybutów](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+- [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)
 - [Omówienie interfejsu API synchronizacji usługi Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
-- [Pomiń usuwanie kont użytkowników, które wykraczają poza zakres](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)
-- [Azure AD Connect agenta aprowizacji: historia wersji](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history)
+- [Pomiń usuwanie kont użytkowników, które wykraczają poza zakres](skip-out-of-scope-deletions.md)
+- [Azure AD Connect agenta aprowizacji: historia wersji](provisioning-agent-release-version-history.md)

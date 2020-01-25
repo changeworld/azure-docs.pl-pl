@@ -17,12 +17,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8aa8265733128ed3b2ad5ddf16dcebb122b0f054
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87818066a656aa4bcd6f45f1835ca1512a674a9e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443434"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712309"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Jak skonfigurować aprowizacji użytkowników w aplikacji z galerii usługi Azure AD
 
@@ -40,19 +40,19 @@ Jeśli chcesz zażądać obsługi automatycznej aprowizacji dla danej aplikacji,
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Konfigurowanie aplikacji do automatycznej aprowizacji
 
-*Automatyczne* oznacza, że dla tej aplikacji opracowano łącznik aprowizacji usługi Azure AD. Aby uzyskać więcej informacji na temat usługi Azure AD Provisioning i sposobu jej działania, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
+*Automatyczne* oznacza, że dla tej aplikacji opracowano łącznik aprowizacji usługi Azure AD. Aby uzyskać więcej informacji na temat usługi Azure AD Provisioning i sposobu jej działania, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu Azure Active Directory](user-provisioning.md).
 
-Aby uzyskać więcej informacji na temat udostępniania aplikacji dla konkretnych użytkowników i grup, zobacz [Zarządzanie kontami użytkowników w aplikacjach dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
+Aby uzyskać więcej informacji na temat udostępniania aplikacji dla konkretnych użytkowników i grup, zobacz [Zarządzanie kontami użytkowników w aplikacjach dla przedsiębiorstw](configure-automatic-user-provisioning-portal.md).
 
 Rzeczywiste kroki wymagane do włączenia i skonfigurowania automatycznej aprowizacji różnią się w zależności od aplikacji.
 
 > [!NOTE]
-> Należy zacząć od znalezienia samouczka instalacji specyficznego dla konfigurowania aprowizacji dla aplikacji, a następnie wykonując te kroki w celu skonfigurowania aplikacji i usługi Azure AD w celu utworzenia połączenia aprowizacji. 
+> Należy zacząć od znalezienia samouczka instalacji specyficznego dla konfigurowania aprowizacji dla aplikacji, a następnie wykonując te kroki w celu skonfigurowania aplikacji i usługi Azure AD w celu utworzenia połączenia aprowizacji.
 
-Samouczki aplikacji można znaleźć na [liście samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Samouczki aplikacji można znaleźć na [liście samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](../saas-apps/tutorial-list.md).
 
 Ważną kwestią do uwzględnienia podczas konfigurowania aprowizacji jest przejrzenie i skonfigurowanie mapowań atrybutów i przepływów pracy, które definiują, które właściwości użytkownika (lub grupy) będą przepływać z usługi Azure AD do aplikacji. Obejmuje to ustawienie "dopasowania właściwości" służącego do unikatowego identyfikowania i dopasowywania użytkowników/grup między tymi dwoma systemami. Aby uzyskać więcej informacji na temat mapowań atrybutów, zobacz link w *sekcji Następne kroki* .
 
 ## <a name="next-steps"></a>Następne kroki
-[Dostosowywanie mapowań atrybutów aprowizacji użytkowników dla aplikacji SaaS w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+[Dostosowywanie mapowań atrybutów aprowizacji użytkowników dla aplikacji SaaS w Azure Active Directory](customize-application-attributes.md)
 

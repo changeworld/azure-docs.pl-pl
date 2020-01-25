@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953947"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719759"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Skonfiguruj przyspieszenie procesora graficznego (GPU) dla pulpitu wirtualnego systemu Windows
 
@@ -37,9 +37,9 @@ Należy również skonfigurować grupę aplikacji lub użyć domyślnej grupy ap
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Instaluj obsługiwane sterowniki grafiki na maszynie wirtualnej
 
-Aby skorzystać z możliwości procesora GPU maszyn wirtualnych z serii N w systemie Windows, należy zainstalować sterowniki graficzne firmy NVIDIA. Postępuj zgodnie z instrukcjami podanymi w [tematach Instalowanie sterowników NVIDIA GPU na maszynach wirtualnych serii N z systemem Windows](/azure/virtual-machines/windows/n-series-driver-setup) , aby zainstalować sterowniki ręcznie lub przy użyciu [rozszerzenia sterownika NVIDIA GPU](/azure/virtual-machines/extensions/hpccompute-gpu-windows).
+Aby skorzystać z możliwości procesora GPU maszyn wirtualnych z serii N w systemie Windows, należy zainstalować odpowiednie sterowniki grafiki. Postępuj zgodnie z instrukcjami w obszarze [obsługiwane systemy operacyjne i sterowniki](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) , aby zainstalować sterowniki od odpowiedniego dostawcy grafiki, ręcznie lub przy użyciu rozszerzenia maszyny wirtualnej platformy Azure.
 
-Należy pamiętać, że tylko [sterowniki NVIDIA GRID](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) dystrybuowane przez platformę Azure są obsługiwane w przypadku pulpitu wirtualnego systemu Windows.
+Dla pulpitu wirtualnego systemu Windows są obsługiwane tylko sterowniki dystrybuowane przez platformę Azure. Dodatkowo w przypadku maszyn wirtualnych platformy Azure z procesorami GPU w systemie Windows są obsługiwane tylko [sterowniki NVIDIA GRID](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) .
 
 Po zainstalowaniu sterownika wymagane jest ponowne uruchomienie maszyny wirtualnej. Wykonaj kroki weryfikacji opisane powyżej, aby potwierdzić, że sterowniki grafiki zostały pomyślnie zainstalowane.
 
@@ -74,7 +74,7 @@ Pulpit zdalny koduje wszystkie grafiki renderowane przez aplikacje i komputery s
 
 Aby sprawdzić, czy aplikacje używają procesora GPU do renderowania, spróbuj wykonać jedną z następujących czynności:
 
-* Użyj narzędzia `nvidia-smi`, zgodnie z opisem w temacie [Weryfikowanie instalacji sterowników](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) , aby sprawdzić użycie procesora GPU podczas uruchamiania aplikacji.
+* W przypadku maszyn wirtualnych platformy Azure z procesorem GPU firmy NVIDIA Użyj narzędzia `nvidia-smi` zgodnie z opisem w temacie [Weryfikowanie instalacji sterowników](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) , aby sprawdzić użycie procesora GPU podczas uruchamiania aplikacji.
 * W przypadku obsługiwanych wersji systemu operacyjnego można użyć Menedżera zadań do sprawdzenia użycia procesora GPU. Wybierz procesor GPU na karcie "Performance" (wydajność), aby sprawdzić, czy aplikacje korzystają z procesora GPU.
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>Weryfikowanie przyspieszanego procesora GPU
@@ -90,5 +90,5 @@ Aby sprawdzić, czy Pulpit zdalny używa kodowania przyspieszanego przez proceso
 
 Instrukcje te powinny obejmować Przyspieszenie GPU na jednej maszynie wirtualnej hosta pojedynczej sesji. Dodatkowe zagadnienia dotyczące włączania przyspieszenia procesora GPU w większej puli hostów:
 
-* Rozważ użycie [rozszerzenia sterownika GPU NVIDIA](/azure/virtual-machines/extensions/hpccompute-gpu-windows) do uproszczenia instalacji sterowników i aktualizacji na wielu maszynach wirtualnych.
+* Rozważ użycie [rozszerzenia maszyny wirtualnej](/azure/virtual-machines/extensions/overview) w celu uproszczenia instalacji sterowników i aktualizacji na wielu maszynach wirtualnych. Użyj [rozszerzenia sterownika procesora GPU firmy NVIDIA](/azure/virtual-machines/extensions/hpccompute-gpu-windows) dla maszyn wirtualnych z procesorami GPU NVIDIA i Użyj rozszerzenia sterownika procesora GPU AMD (dostępnego wkrótce) dla maszyn wirtualnych z procesorami GPU AMD.
 * Rozważ użycie zasady grupy Active Directory, aby uprościć konfigurację zasad grupy na wielu maszynach wirtualnych. Aby uzyskać informacje na temat wdrażania zasady grupy w domenie Active Directory, zobacz [Praca z obiektami zasady grupy](https://go.microsoft.com/fwlink/p/?LinkId=620889).

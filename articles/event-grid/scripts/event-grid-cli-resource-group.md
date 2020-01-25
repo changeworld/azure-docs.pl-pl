@@ -1,22 +1,22 @@
 ---
 title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — subskrybowanie do grupy zasobów | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — subskrybowanie do grupy zasobów
+description: Ten artykuł zawiera przykładowy skrypt interfejsu wiersza polecenia platformy Azure, który pokazuje, jak subskrybować zdarzenia Azure Event Grid dla grupy zasobów.
 services: event-grid
 documentationcenter: na
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: 7bc07ec294e341c7f96c60fd2c9916b0c6b9f215
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 01/23/2020
+ms.author: spelluru
+ms.openlocfilehash: ff5f317bafd5c59ea4bba8bb6a23b60881cd218f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62118963"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720802"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>Subskrybowanie zdarzeń dla grupy zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -45,7 +45,7 @@ Ten skrypt używa następującego polecenia w celu utworzenia subskrypcji zdarze
 | [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Tworzy subskrypcję usługi Event Grid. |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) — wersja rozszerzenia | Tworzy subskrypcję usługi Event Grid. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Informacje na temat wykonywania zapytań dotyczących subskrypcji można znaleźć w artykule [Query Event Grid subscriptions (Wykonywanie zapytań dotyczących subskrypcji usługi Event Grid)](../query-event-subscriptions.md).
 * Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).

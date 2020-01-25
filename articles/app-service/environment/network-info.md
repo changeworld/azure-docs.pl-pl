@@ -4,15 +4,15 @@ description: Dowiedz się więcej o ruchu sieciowym ASE oraz o sposobie ustawian
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75375019"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713197"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Zagadnienia dotyczące sieci dla App Service Environment #
 
@@ -88,7 +88,7 @@ W przypadku dostępu wychodzącego środowisko ASE jest zależne od wielu system
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
-| 8CRL, aktualizacje systemu Windows, zależności Linux, usługi platformy Azure | 80/443 |
+| Lista CRL, aktualizacje systemu Windows, zależności Linux, usługi platformy Azure | 80/443 |
 | Azure SQL | 1433 | 
 | Monitorowanie | 12000 |
 
@@ -108,7 +108,7 @@ W przypadku zmiany ustawienia DNS sieci wirtualnej, w której znajduje się śro
 
 Oprócz zależności funkcjonalnych, istnieje kilka dodatkowych elementów związanych z korzystaniem z portalu. Niektóre funkcje w Azure Portal zależą od bezpośredniego dostępu do _witryny SCM_. Dla każdej aplikacji w Azure App Service istnieją dwa adresy URL. Pierwszy adres URL ma na celu uzyskanie dostępu do aplikacji. Drugim adresem URL jest dostęp do witryny SCM, która jest również nazywana _konsolą kudu_. Do funkcji korzystających z witryny SCM należą:
 
--   Zadania WebJob
+-   Zadania sieci Web
 -   Functions
 -   Przesyłanie strumieniowe dzienników
 -   Kudu
@@ -152,7 +152,7 @@ Sieciowych grup zabezpieczeń można skonfigurować za pomocą Azure Portal lub 
 
 Wymagane wpisy w sieciowej grupy zabezpieczeń, dla których środowisko ASE ma działać, mają na celu Zezwalanie na ruch:
 
-**Przychodzący**
+**Dotycząc**
 * ze znacznika usługi IP AppServiceManagement na portach 454 455
 * z modułu równoważenia obciążenia na porcie 16001
 * z podsieci środowiska ASE do podsieci środowiska ASE na wszystkich portach

@@ -3,32 +3,32 @@ title: Przykładowe dane na platformie Azure blob storage — zespołu danych dl
 description: Próbkowanie danych przechowywanych w usłudze Azure blob storage, programowo ją pobrać, a następnie próbkowanie go za pomocą procedury napisane w języku Python.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1c455106e5faa4aa20ec56f37788e0b8c324fee1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4832762a88073f4d819925659bf9078e18f60c2d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042918"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720286"
 ---
 # <a name="heading"></a>Przykładowe dane w usłudze Azure blob storage
 
 W tym artykule opisano próbkowania — dane przechowywane w usłudze Azure blob storage, programowo ją pobrać, a następnie próbkowanie go za pomocą procedury napisane w języku Python.
 
 **Dlaczego przykładowe dane?**
-Jeśli zestaw danych, która ma zostać analizowanie jest duża, zazwyczaj przyczyną jest dobrym pomysłem jest obniżenie częstotliwości próbkowania danych, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w zarządzaniu. To ułatwia zrozumienie danych, poznawanie i technicznego opracowywania funkcji. Jego rolę w procesie Cortana Analytics jest umożliwienie szybkiego tworzenia prototypów funkcji do przetwarzania danych i modeli uczenia maszynowego.
+Jeśli zestaw danych, która ma zostać analizowanie jest duża, zazwyczaj przyczyną jest dobrym pomysłem jest obniżenie częstotliwości próbkowania danych, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w zarządzaniu. Próbkowanie ułatwia zrozumienie, eksplorację i inżynierowanie danych. Jego rolę w procesie Cortana Analytics jest umożliwienie szybkiego tworzenia prototypów funkcji do przetwarzania danych i modeli uczenia maszynowego.
 
 To zadanie próbkowania jest krok [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="download-and-down-sample-data"></a>Pobierz i obniżenie częstotliwości próbkowania danych
-1. Pobierz dane z usługi Azure blob storage przy użyciu usługi obiektów blob z następującego przykładowego kodu Python: 
+1. Pobierz dane z usługi Azure Blob Storage przy użyciu Blob service z następującego przykładowego kodu w języku Python: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -61,7 +61,7 @@ To zadanie próbkowania jest krok [Team Data Science naukowych](https://docs.mic
         sample_rows = np.random.choice(dataframe_blobdata.index.values, sample_size)
         dataframe_blobdata_sample = dataframe_blobdata.ix[sample_rows]
 
-Teraz możesz pracować z powyższych ramki danych z przykładu 1 procent potrzeby dalszych badań i generowania funkcji.
+Teraz można korzystać z powyższej ramki danych z jednym procentowym przykładem do dalszej eksploracji i generowania funkcji.
 
 ## <a name="heading"></a>Przekazywanie danych, a wczytywany usługi Azure Machine Learning
 Następujący przykładowy kod umożliwia obniżenie częstotliwości próbkowania danych i używać go bezpośrednio w usłudze Azure Machine Learning:

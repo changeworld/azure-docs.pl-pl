@@ -3,20 +3,20 @@ title: Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do kon
 description: Kompleksowy opis do nauki o danych, zapewniająca rozwiązania do konserwacji zapobiegawczej w wielu branżach pionowy.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5cd16280ba942404ffb23fd1c9d0e1a20af8c7c4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977135"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721816"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -43,7 +43,7 @@ Zawartość BDM nie oczekuje czytnika mieć żadnej wiedzy do nauki o danych z p
 
 Firmy wymagają szczytowej wydajności i maksymalnego użycia od sprzętu o kluczowym znaczeniu, aby móc uzyskać zwrot z inwestycji kapitałowych. Do takich zasobów należą silniki lotnicze, turbiny, windy lub chłodziarki przemysłowe, które kosztują miliony złotych, a także urządzenia do codziennego użytku, takie jak kserokopiarki, ekspresy do kawy i chłodnice wody.
 - Domyślnie większość przedsiębiorstw polega na _naprawcze konserwacji_, której elementy są zastępowane co i kiedy mogą zakończyć się niepowodzeniem. Konserwacja naprawcza pozwala na pełne użycie części (okres używania składnika nie jest marnowany), ale jest kosztowne dla firmy w czasie przestoju, pracy i niezaplanowanej konserwacji (poza godzinami pracy lub w niedogodnych miejscach).
-- W następnej poziomu, rozwiązanie firmy _konserwacji prewencyjnej_, których określić przydatne informacje o czasie dla części i zachować lub zamień go przed awarii. Konserwacja prewencyjna pozwala zapobiec niezaplanowanym i krytycznym awariom. Ale nadal niepełnego wykorzystania składnik przed jego pełna okres istnienia, użytkowania i pracy nadal wysokie koszty zaplanowane przerwy w działaniu.
+- W następnej poziomu, rozwiązanie firmy _konserwacji prewencyjnej_, których określić przydatne informacje o czasie dla części i zachować lub zamień go przed awarii. Konserwacja prewencyjna pozwala zapobiec niezaplanowanym i krytycznym awariom. Jednak wysokie koszty zaplanowanego przestoju, pod względem użycia składnika w trakcie jego okresu istnienia i robocizny nadal pozostają.
 - Celem _konserwacji predykcyjnej_ ma na celu optymalizację równowagę między naprawcze i zapobiegawcze konserwacji, włączając _dokładnie na czas_ zastąpienie elementów. Takie rozwiązanie pozwala wymieniać składniki tylko krótko przed awarią. Dzięki wydłużeniu okresu eksploatacji składników (względem konserwacji prewencyjnej) i obniżeniu kosztów niezaplanowanej konserwacji i pracy (względem konserwacji naprawczej) firmy mogą oszczędzać pieniądze i zwiększyć swoją konkurencyjność.
 
 ## <a name="business-problems-in-pdm"></a>Problemy biznesowe podczas menedżerów PdM
@@ -92,7 +92,7 @@ Ta sekcja koncentruje się na zbiór przypadki użycia program PdM w branżach, 
 |**Finanse** |                         |
 |_Uszkodzenie_ jest to powszechny problem w branży bankowości. Problem polega na tym zgłoszenia prawdopodobieństwo, że ATM środków pieniężnych wycofania transakcji zostanie przerwane z powodu błędu zakleszczenie lub części dokument rozdzielacz środków pieniężnych. Oparte na prognozy błędów transakcji, bankomatami może być obsługiwany aktywnie aby zapobiec występowaniu błędów.| A nie zezwolić na maszynę aby zakończyć się niepowodzeniem przy użyciu transakcji w połowie drogi, pożądane alternatywą jest program maszyny do odmowy usługi oparte na prognozowania.|
 |**Energii** |                          |
-|_Awarie programu wiatru turbin_: turbiny wiatrowe są głównym źródłem energii w krajach/regionach odpowiedzialnych za środowisko i obejmują wysokie koszty. Kluczowym czynnikiem wiatru turbiny jest mechanicznych generator. jego uszkodzenia renderuje turbiny nieefektywne. Jest również bardzo drogie do naprawienia.|Prognozowanie kluczowe wskaźniki wydajności, takich jak MTTF (średniego czasu awarii) może pomóc firmom energetycznym zapobiec błędom turbiny i upewnij się, minimalnym czasem przestojów. Prawdopodobieństwa niepowodzeń informuje pracowników technicznych, aby monitorować turbiny, które mogą wkrótce się nie powieść i planowanie systemów opartych na czas konserwacji. Modele predykcyjne zapewniają wgląd w różne czynniki wpływające na błędy, co pomaga techników lepiej zrozumieć głównych przyczyn problemów.|
+|_Awarie programu wiatru turbin_: turbiny wiatrowe są głównym źródłem energii w krajach/regionach odpowiedzialnych za środowisko i obejmują wysokie koszty. Kluczowy składnik w turbinach wiatru jest silnikiem generatora, którego awaria nieskuteczna renderuje turbinę. Jest również bardzo drogie do naprawienia.|Prognozowanie kluczowe wskaźniki wydajności, takich jak MTTF (średniego czasu awarii) może pomóc firmom energetycznym zapobiec błędom turbiny i upewnij się, minimalnym czasem przestojów. Prawdopodobieństwa niepowodzeń informuje pracowników technicznych, aby monitorować turbiny, które mogą wkrótce się nie powieść i planowanie systemów opartych na czas konserwacji. Modele predykcyjne zapewniają wgląd w różne czynniki wpływające na błędy, co pomaga techników lepiej zrozumieć głównych przyczyn problemów.|
 |_Błędy wyłącznik_: dystrybucja energii elektrycznej do odporności domów i firm wymaga linie zasilania mają działać przez cały czas, aby zagwarantować dostarczanie energii. Wyłączniki pomóc ograniczyć lub uniknąć uszkodzenia power warunki pogodowe wierszy podczas przeciążenie lub niepożądane. W tym miejscu problem biznesowy jest przewiduje awarie wyłącznika.| Program PdM rozwiązania pomagają obniżenie kosztów napraw i zwiększenie cyklem życia urządzeń, takich jak wyłączniki. Pomagają poprawić jakość sieci zasilania, zmniejszając nieoczekiwanych awarii i przerw w działaniu usług.|
 |**Transport i logistyka** |    |
 |_Błędy drzwi elevator_: windy dużych firm oferuje usługi pełnego stosu dla milionów funkcjonalności windy na całym świecie. Windy bezpieczeństwa, niezawodności i czas pracy to główne kwestie dla swoich klientów. Te firmy śledzić te i różnych innych atrybutów za pośrednictwem czujników, aby pomóc im dzięki naprawcze i prewencyjnej konserwacji. W elevator najczęściej występujący problem klienta działa poprawnie drzwi elevator. Problem biznesowy w tym przypadku jest zapewnienie bazy wiedzy knowledge base predykcyjna aplikacja która przewiduje się, że powoduje, że ryzyko błędów drzwi biblioteki.| Windy są inwestycji kapitałowych dla potencjalnie czas 20 – 30 roku. Dlatego może być wysoce konkurencyjnych; każdej potencjalnej sprzedaży Dlatego do obsługi i pomocy technicznej oczekują. Konserwacji predykcyjnej można zapewnić tym firmom z przewagę nad ich konkurentów w swoich produktach i oferty usług.|
@@ -271,7 +271,7 @@ Pytanie, w tym miejscu jest: "co to jest prawdopodobieństwo, że zasób zakońc
 Rysunek 3. Klasyfikacja binarna etykietowania
 
 Poniżej przedstawiono przykłady etykietowania strategii dla niektórych przypadków użycia.
-- _We wdrożeniu pakietu testowego opóźnienia_: X może zostać wybrany jako 1 dzień do prognozowania opóźnień w ciągu 24 godzin. Następnie wszystkie loty znajdujących się w ciągu 24 godzin zanim błędy są oznaczone jako 1.
+- _Opóźnienia lotu_: wartość X można wybrać jako jeden dzień, aby przewidzieć opóźnienia w ciągu następnych 24 godzin. Następnie wszystkie loty znajdujących się w ciągu 24 godzin zanim błędy są oznaczone jako 1.
 - _Środków pieniężnych ATM rozdzielić błędy_: celem może być ustalenie prawdopodobieństwo awarii transakcji w ciągu jednej godziny. W takim przypadku wszystkie transakcje, które wystąpiły w ciągu ostatniej godziny błędu są oznaczone jako 1. Aby przewidzieć prawdopodobieństwo awarii za pośrednictwem dalej waluty N uwagi zbędne, wszystkie informacje o pominięte w ciągu ostatnich uwagi N awarii są oznaczone jako 1.
 - _Błędy wyłącznik_: celem może być do prognozowania następny błąd polecenia wyłącznika. W takim przypadku X jest wybierany jako jednego polecenia w przyszłości.
 - _Szkolenie błędy drzwi_: X może być wybrana jako dwa dni.
@@ -425,7 +425,7 @@ Końcowej części tego przewodnika zawiera listę szablonów rozwiązań mened�
 
 | # | Tytuł | Opis |
 |--:|:------|-------------|
-| 2 | [Szablon rozwiązania konserwacji predykcyjnej platformy Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Szablon rozwiązania typu "open source" demonstrujący modelowanie Azure ML i kompletną infrastrukturę platformy Azure, która umożliwia obsługę predykcyjnych scenariuszy konserwacji w kontekście monitorowania zdalnego IoT. |
+| 2 | [Szablon rozwiązania konserwacji predykcyjnej platformy Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Szablon rozwiązania typu "open source", który demonstruje modelowanie Azure ML i kompletną infrastrukturę platformy Azure, która może obsługiwać scenariusze konserwacji predykcyjnej w kontekście monitorowania zdalnego usługi IoT. |
 | 3 | [Uczenie głębokie dla konserwacji predykcyjnej](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Notesu platformy Azure za pomocą rozwiązania wersji demonstracyjnej, z użyciem sieci LSTM (Long krótkoterminowe pamięci) (klasa sieci neuronowych) pod kątem konserwacji predykcyjnej [wpis w blogu w tym przykładzie](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Podręcznik modelowania konserwacji predykcyjnej w języku R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Podręcznik modelowania menedżerów PdM za pomocą skryptów w języku R.|
 | 5 | [Usługa Azure Konserwacja zapobiegawcza na potrzeby lotnictwa i Kosmonautyki](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Jedna z pierwszym szablony rozwiązań program PdM w oparciu o uczenie Maszynowe Azure w wersji 1.0 samolotu konserwacji. Ten przewodnik pochodziły z tego projektu. |

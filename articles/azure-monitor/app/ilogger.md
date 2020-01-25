@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 86ed494d3a6005ae74ee3f1aa4d5aa53ffc3098e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931154"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716029"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>Dzienniki usługi ApplicationInsightsLoggerProvider dla programu .NET Core ILogger
 
@@ -29,7 +29,7 @@ ApplicationInsightsLoggerProvider jest domyślnie włączona w [Microsoft. Appli
 
 Dzienniki ILogger, które są przechwytywane przez ApplicationInsightsLoggerProvider, podlegają tej samej konfiguracji co inne zebrane dane telemetryczne. Mają ten sam zestaw TelemetryInitializers i TelemetryProcessors, używają tego samego TelemetryChannel i są skorelowane i próbkowane w taki sam sposób jak inne dane telemetryczne. Jeśli używasz wersji 2.7.1 lub nowszej, do przechwytywania dzienników ILogger nie jest wymagana żadna akcja.
 
-Tylko *ostrzeżenia* i więcej dzienników ILogger (ze wszystkich kategorii) są domyślnie wysyłane do Application Insights. Można jednak [zastosować filtry w celu zmodyfikowania tego zachowania](#control-logging-level). Do przechwycenia dzienników ILogger z **program.cs** lub **Startup.cs**jest wymagane wykonanie dodatkowych czynności. (Zobacz [przechwytywanie dzienników ILogger z Startup.cs i program.cs w aplikacjach ASP.NET Core](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
+Tylko *ostrzeżenia* i więcej dzienników ILogger (ze wszystkich [kategorii](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)) są domyślnie wysyłane do Application Insights. Można jednak [zastosować filtry w celu zmodyfikowania tego zachowania](#control-logging-level). Do przechwycenia dzienników ILogger z **program.cs** lub **Startup.cs**jest wymagane wykonanie dodatkowych czynności. (Zobacz [przechwytywanie dzienników ILogger z Startup.cs i program.cs w aplikacjach ASP.NET Core](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
 
 Jeśli używasz starszej wersji programu Microsoft. ApplicationInsights. AspNet SDK lub chcesz tylko korzystać z ApplicationInsightsLoggerProvider bez żadnych innych Application Insights monitorowania, wykonaj następującą procedurę:
 
@@ -108,7 +108,7 @@ public class ValuesController : ControllerBase
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>Przechwytywanie dzienników ILogger z Startup.cs i Program.cs w aplikacjach ASP.NET Core
 
 > [!NOTE]
-> W ASP.NET Core 3,0 i nowszych nie można już wstrzyknąć `ILogger` w Startup.cs i Program.cs. Więcej informacji zawiera plik https://github.com/aspnet/Announcements/issues/353.
+> W ASP.NET Core 3,0 i nowszych nie można już wstrzyknąć `ILogger` w Startup.cs i Program.cs. Aby uzyskać więcej informacji, zobacz https://github.com/aspnet/Announcements/issues/353.
 
 Nowy ApplicationInsightsLoggerProvider może przechwytywać dzienniki wczesne w potoku uruchamiania aplikacji. Mimo że usługa ApplicationInsightsLoggerProvider jest automatycznie włączana w Application Insights (począwszy od wersji 2.7.1), nie ma ustawionego klucza instrumentacji do późniejszego potoku. W związku z tym tylko dzienniki z klas/inne **kontrolera**będą przechwytywane. Aby przechwycić każdy dziennik zaczynający się od **program.cs** i **Startup.cs** , należy jawnie włączyć klucz Instrumentacji dla ApplicationInsightsLoggerProvider. Ponadto *TelemetryConfiguration* nie jest w pełni skonfigurowany podczas rejestrowania się z **program.cs** lub **Startup.cs** . Te dzienniki będą mieć minimalną konfigurację, która używa InMemoryChannel, bez próbkowania ani nie ma standardowych inicjatorów telemetrii ani procesorów.
 
@@ -219,7 +219,7 @@ Nadal możesz używać starego dostawcy. (Zostanie on usunięty tylko w wersji g
 > [!Note]
 > Nowy dostawca jest dostępny dla aplikacji przeznaczonych dla wersji STANDARD 2.0 lub nowszej. Jeśli aplikacja jest przeznaczona dla starszych wersji programu .NET Core, takich jak .NET Core 1,1, lub jeśli jest ona przeznaczona dla .NET Framework, Kontynuuj korzystanie z starego dostawcy.
 
-## <a name="console-application"></a>Aplikacje konsoli
+## <a name="console-application"></a>Aplikacja konsolowa
 
 > [!NOTE]
 > Istnieje nowy Application Insights SDK o nazwie [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , który może służyć do włączania Application Insights (ILogger i innych Application Insights telemetrii) dla każdej aplikacji konsolowej. Zalecane jest korzystanie z tego pakietu i powiązanych instrukcji w [tym miejscu](../../azure-monitor/app/worker-service.md).

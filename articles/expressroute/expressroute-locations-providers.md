@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: cherylmc
-ms.openlocfilehash: 57a066132cbc8812fac95862bd1b02a3fc59ff2f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cbddd912831247e30f2913414c6dfa13131dde99
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293899"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719861"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute
 
@@ -142,7 +142,7 @@ W poniższej tabeli przedstawiono lokalizacje połączeń i dostawców usług dl
 
 ### <a name="national-cloud-environments"></a>Krajowe środowiska chmury
 
-Chmury krajowe platformy Azure są odizolowane od siebie i z globalnego Commerical platformy Azure. ExpressRoute dla jednej chmury platformy Azure nie może połączyć się z regionami platformy Azure w innych.
+Chmury krajowe platformy Azure są odizolowane od siebie i z globalnej komercyjnej platformy Azure. ExpressRoute dla jednej chmury platformy Azure nie może połączyć się z regionami platformy Azure w innych.
 
 ### <a name="us-government-cloud"></a>Chmura administracji USA
 | **Lokalizacja** | **Adres** | **Lokalne regiony platformy Azure**| **ER Direct** | **Dostawcy usług** |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 0d61ad33b97b97c3a45334704544d72809e56848
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903329"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715274"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Usługa Load Balancer w warstwie Standardowa i strefy dostępności
 
@@ -37,7 +37,7 @@ W kontekście stref dostępności zachowanie i właściwości reguły Load Balan
 
 Zarówno publiczne, jak i wewnętrzne Load Balancer obsługują scenariusze nadmiarowe i strefowe, a oba mogą kierować ruchem między strefami w razie potrzeby (*równoważenie obciążenia między strefami*). 
 
-### <a name="frontend"></a>Fronton
+### <a name="frontend"></a>Frontonu
 
 Fronton Load Balancer jest konfiguracją adresów IP frontonu odwołującą się do zasobu publicznego adresu IP lub prywatnego adresu IP w podsieci zasobu sieci wirtualnej.  Tworzy punkt końcowy ze zrównoważonym obciążeniem, w którym jest udostępniana usługa.
 
@@ -143,7 +143,7 @@ Poniższy fragment przedstawia sposób definiowania wewnętrznego usługa Load B
                 ],
 ```
 
-Poprzedzające fragmenty nie są kompletnymi szablonami, ale mają na celu pokazanie sposobu prezentowania właściwości stref dostępności.  Musisz dołączyć te instrukcje do szablonów.
+Poprzednie fragmenty nie są kompletnymi szablonami, ale mają na celu pokazanie sposobu prezentowania właściwości stref dostępności.  Musisz dołączyć te instrukcje do szablonów.
 
 ### <a name="cross-zone-load-balancing"></a>Równoważenie obciążenia między strefami
 
@@ -151,7 +151,7 @@ Równoważenie obciążenia między strefami umożliwia Load Balancer dostępu d
 
 Należy zachować ostrożność konstruowania scenariusza w sposób, który wyraża koncepcję stref dostępności. Na przykład należy zagwarantowaniu wdrożenia maszyny wirtualnej w ramach jednej strefy lub wielu stref, a także wyrównania zasobów frontonu i stref wewnętrznej bazy danych do tej samej strefy.  W przypadku stref obejmujących wiele dostępności zawierających tylko zasoby strefowe scenariusz będzie działał, ale może nie mieć trybu niejawnego uszkodzenia w odniesieniu do stref dostępności. 
 
-### <a name="backend"></a>Zaplecze
+### <a name="backend"></a>Danych
 
 Load Balancer współpracuje z wystąpieniami maszyn wirtualnych.  Mogą to być autonomiczne, zestawy dostępności lub zestawy skalowania maszyn wirtualnych.  Każde wystąpienie maszyny wirtualnej w pojedynczej sieci wirtualnej może być częścią puli zaplecza, niezależnie od tego, czy została ona zagwarantowana do strefy, czy do której zagwarantowana jest strefa.
 

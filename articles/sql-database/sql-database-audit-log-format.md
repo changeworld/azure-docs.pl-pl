@@ -5,16 +5,16 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 13746b86eed75055ceb5203afafb2d27a78ce1d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928633"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722088"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database format dziennika inspekcji
 
@@ -43,7 +43,7 @@ Zdarzenia inspekcji są zapisywane w obszarze roboczym Log Analytics zdefiniowan
 
 ## <a id="subheading-1"></a>Pola dziennika inspekcji
 
-| Nazwa (BLOB) | Nazwa (Event Hubs/Log Analytics) | Opis | Typ obiektu blob | Typ Event Hubs/Log Analytics |
+| Nazwa (BLOB) | Nazwa (Event Hubs/Log Analytics) | Opis | Typ obiektu BLOB | Typ Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | Identyfikator akcji | varchar (4) | string |
 | action_name | action_name_s | Nazwa akcji | ND | string |
@@ -78,8 +78,8 @@ Zdarzenia inspekcji są zapisywane w obszarze roboczym Log Analytics zdefiniowan
 | server_principal_sid | server_principal_sid_s | Bieżący identyfikator SID logowania | varbinary | string |
 | session_id | session_id_d | Identyfikator sesji, w której wystąpiło zdarzenie | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Podmiot zabezpieczeń serwera dla sesji | bazy | string |
-| instrukcja | statement_s | Instrukcja T-SQL, która została wykonana (jeśli istnieje) | nvarchar (4000) | string |
-| Sukces | succeeded_s | Wskazuje, czy akcja, która wywołała zdarzenie, zakończyła się pomyślnie. W przypadku zdarzeń innych niż logowanie i Partia zadań ten raport dotyczy tylko tego, czy sprawdzenie uprawnień zakończyło się powodzeniem czy niepowodzeniem, a nie operacji. 1 = sukces, 0 = niepowodzenie | bit | string |
+| Merge | statement_s | Instrukcja T-SQL, która została wykonana (jeśli istnieje) | nvarchar (4000) | string |
+| Powiodło się | succeeded_s | Wskazuje, czy akcja, która wywołała zdarzenie, zakończyła się pomyślnie. W przypadku zdarzeń innych niż logowanie i Partia zadań ten raport dotyczy tylko tego, czy sprawdzenie uprawnień zakończyło się powodzeniem czy niepowodzeniem, a nie operacji. 1 = sukces, 0 = niepowodzenie | bit | string |
 | target_database_principal_id | target_database_principal_id_d | Podmiot zabezpieczeń bazy danych jest operacją GRANT/DENY/REVOKE. 0, jeśli nie dotyczy | int | int |
 | target_database_principal_name | target_database_principal_name_s | Użytkownik docelowy akcji. Wartość NULL, jeśli nie dotyczy | string | string |
 | target_server_principal_id | target_server_principal_id_d | Podmiot zabezpieczeń serwera, na którym jest wykonywana operacja GRANT/DENY/REVOKE. Zwraca wartość 0, jeśli nie dotyczy | int | int |

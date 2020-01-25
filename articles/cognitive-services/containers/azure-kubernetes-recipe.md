@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: e33aa98939eeb5b5394f1f5cc05e28ae8f6ae4f2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5c8b3ed329c03bd08b2a0b3e26ada7a4e36ceb49
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515233"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716879"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Wdróż kontener wykrywania języka analiza tekstu w usłudze Azure Kubernetes Service
 
@@ -36,7 +36,7 @@ Ta procedura wymaga kilku narzędzi, które muszą być zainstalowane i uruchomi
 
 ## <a name="running-the-sample"></a>Uruchamianie przykładowej aplikacji
 
-Ta procedura polega na załadowaniu i uruchomieniu przykładowego kontenera Cognitive Services na potrzeby wykrywania języka. Przykład ma dwa kontenery, jeden dla aplikacji klienckiej i jeden dla kontenera Cognitive Services. Należy wypchnąć oba te obrazy do własnych Azure Container Registry. Po umieszczeniu ich w Twoim rejestrze Utwórz usługę Azure Kubernetes, aby uzyskać dostęp do tych obrazów i uruchomić kontenery. Gdy kontenery są uruchomione, użyj interfejsu wiersza polecenia **polecenia kubectl** , aby obserwować wydajność kontenerów. Uzyskaj dostęp do aplikacji klienckiej za pomocą żądania HTTP i Zobacz wyniki.
+Ta procedura polega na załadowaniu i uruchomieniu przykładowego kontenera Cognitive Services na potrzeby wykrywania języka. Przykład ma dwa kontenery, jeden dla aplikacji klienckiej i jeden dla kontenera Cognitive Services. Oba te obrazy zostaną wypchnięte do Azure Container Registry. Po umieszczeniu ich w Twoim rejestrze Utwórz usługę Azure Kubernetes, aby uzyskać dostęp do tych obrazów i uruchomić kontenery. Gdy kontenery są uruchomione, użyj interfejsu wiersza polecenia **polecenia kubectl** , aby obserwować wydajność kontenerów. Uzyskaj dostęp do aplikacji klienckiej za pomocą żądania HTTP i Zobacz wyniki.
 
 ![Koncepcja koncepcyjna uruchamiania przykładowych kontenerów](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
@@ -72,13 +72,13 @@ Aby wdrożyć kontener w usłudze Azure Kubernetes, obrazy kontenerów muszą by
     az group create --name cogserv-container-rg --location westus
     ```
 
-1. Utwórz własne Azure Container Registry przy użyciu formatu nazwy, a następnie `registry`, takich jak `pattyregistry`. Nie używaj kresek ani podkreślać znaków w nazwie.
+1. Utwórz własne Azure Container Registry przy użyciu formatu nazwy, a następnie `registry`, takie jak `pattyregistry`. Nie używaj kresek ani podkreślać znaków w nazwie.
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    Zapisz wyniki, aby uzyskać Właściwość **loginServer** . Będzie to część adresu hostowanego kontenera, używana później w pliku `language.yml`.
+    Zapisz wyniki, aby uzyskać Właściwość **loginServer** . Będzie ona częścią adresu hostowanego kontenera, użytego później w pliku `language.yml`.
 
     ```console
     > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -132,7 +132,7 @@ Aby wdrożyć kontener w usłudze Azure Kubernetes, obrazy kontenerów muszą by
     docker push pattyregistry.azurecr.io/language-frontend:v1
     ```
 
-    Jeśli zostanie wyświetlony błąd `unauthorized: authentication required`, zaloguj się za pomocą polecenia `az acr login --name <your-container-registry-name>`. 
+    Jeśli wystąpi błąd `unauthorized: authentication required`, zaloguj się za pomocą polecenia `az acr login --name <your-container-registry-name>`. 
 
     Po zakończeniu procesu wyniki powinny wyglądać podobnie do:
 
@@ -150,7 +150,7 @@ Aby wdrożyć kontener w usłudze Azure Kubernetes, obrazy kontenerów muszą by
 
 ## <a name="get-language-detection-docker-image"></a>Pobierz obraz platformy Docker wykrywania języka
 
-1. Pobierz najnowszą wersję obrazu platformy Docker na komputer lokalny. Może to potrwać kilka minut. Jeśli istnieje nowsza wersja tego kontenera, Zmień wartość z `1.1.006770001-amd64-preview` na nowszą wersję.
+1. Pobierz najnowszą wersję obrazu platformy Docker na komputer lokalny. Może to potrwać kilka minut. Jeśli istnieje nowsza wersja tego kontenera, Zmień wartość z `1.1.006770001-amd64-preview` na nowszą.
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
@@ -178,7 +178,7 @@ Poniższe kroki są niezbędne do uzyskania informacji wymaganych do połączeni
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    Zapisz wyniki `appId` dla parametru przydzielonego w kroku 3, `<appId>`. Zapisz `password` dla parametru Client-Secret w następnej sekcji `<client-secret>`.
+    Zapisz wyniki `appId` wartość dla parametru przydzielonego w kroku 3, `<appId>`. Zapisz `password` dla `<client-secret>`parametru Client-Secret w następnej sekcji.
 
     ```console
     > az ad sp create-for-rbac --skip-assignment
@@ -197,7 +197,7 @@ Poniższe kroki są niezbędne do uzyskania informacji wymaganych do połączeni
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
-    Zapisz dane wyjściowe dla wartości parametru zakresu, `<acrId>`, w następnym kroku. Wygląda na to:
+    Zapisz dane wyjściowe dla wartości parametru zakresu, `<acrId>`w następnym kroku. Wygląda na to:
 
     ```console
     > az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
@@ -214,7 +214,7 @@ Poniższe kroki są niezbędne do uzyskania informacji wymaganych do połączeni
 
 ## <a name="create-azure-kubernetes-service"></a>Tworzenie usługi Azure Kubernetes
 
-1. Utwórz klaster Kubernetes. Wszystkie wartości parametrów pochodzą z poprzednich sekcji, z wyjątkiem parametru name. Wybierz nazwę wskazującą, kto je utworzył, i przeznaczenie, na przykład `patty-kube`.
+1. Utwórz klaster Kubernetes. Wszystkie wartości parametrów pochodzą z poprzednich sekcji, z wyjątkiem parametru name. Wybierz nazwę, która wskazuje, kto utworzył ją i jej przeznaczenie, np. `patty-kube`.
 
     ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
@@ -307,25 +307,25 @@ Ta sekcja używa interfejsu wiersza polecenia **polecenia kubectl** , aby komuni
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
     ```
 
-1. Skopiuj następujący plik i nadaj mu nazwę `language.yml`. Plik zawiera sekcję `service` i sekcję `deployment` dla obu typów kontenerów, kontenera witryny sieci Web `language-frontend` i kontenera wykrywania `language`.
+1. Skopiuj następujący plik i nadaj mu nazwę `language.yml`. Plik zawiera sekcję `service` i sekcję `deployment` dla dwóch typów kontenerów, kontenera `language-frontend` witryny sieci Web i kontenera wykrywania `language`.
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
-1. Aby dodać własne nazwy obrazów rejestru kontenerów, klucza tajnego klienta i ustawienia analizy tekstu, należy zmienić wiersze wdrożenia w języku dla systemu `language.yml`.
+1. Aby dodać własne nazwy obrazów rejestru kontenerów, klucza tajnego klienta i ustawienia analizy tekstu, należy zmienić wiersze wdrożenia w języku `language.yml` w oparciu o poniższą tabelę.
 
     Ustawienia wdrożenia w języku frontonu|Przeznaczenie|
     |--|--|
-    |Wiersz 32<br> Właściwość `image`|Lokalizacja obrazu dla obrazu frontonu w Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |Wiersz 44<br> Właściwość `name`|Container Registry wpis tajny obrazu, określany jako `<client-secret>` w poprzedniej sekcji.|
+    |Wiersz 32<br> `image` Właściwość|Lokalizacja obrazu dla obrazu frontonu w Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
+    |Wiersz 44<br> `name` Właściwość|Container Registry wpis tajny obrazu, określany jako `<client-secret>` w poprzedniej sekcji.|
 
 1. Zmień wiersze wdrożenia języka `language.yml` w oparciu o poniższą tabelę, aby dodać własne nazwy obrazów rejestru kontenerów, klucz tajny klienta i ustawienia analizy tekstu.
 
     |Ustawienia wdrażania języka|Przeznaczenie|
     |--|--|
-    |Wiersz 78<br> Właściwość `image`|Lokalizacja obrazu dla obrazu języka w Container Registry<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |Wiersz 95<br> Właściwość `name`|Container Registry wpis tajny obrazu, określany jako `<client-secret>` w poprzedniej sekcji.|
-    |Wiersz 91<br> Właściwość `apiKey`|Klucz zasobu analizy tekstu|
-    |Wiersz 92<br> Właściwość `billing`|Punkt końcowy rozliczeń dla zasobu analizy tekstu.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |Wiersz 78<br> `image` Właściwość|Lokalizacja obrazu dla obrazu języka w Container Registry<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
+    |Wiersz 95<br> `name` Właściwość|Container Registry wpis tajny obrazu, określany jako `<client-secret>` w poprzedniej sekcji.|
+    |Wiersz 91<br> `apiKey` Właściwość|Klucz zasobu analizy tekstu|
+    |Wiersz 92<br> `billing` Właściwość|Punkt końcowy rozliczeń dla zasobu analizy tekstu.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     Ponieważ **apiKey** i **punkt końcowy rozliczeniowy** są ustawiane w ramach definicji aranżacji Kubernetes, kontener witryny sieci Web nie musi wiedzieć o nich ani przekazać ich w ramach żądania. Kontener witryny sieci Web odnosi się do kontenera wykrywania języka przez jego nazwę programu Orchestrator `language`.
 
@@ -347,7 +347,7 @@ Ta sekcja używa interfejsu wiersza polecenia **polecenia kubectl** , aby komuni
 
 ## <a name="get-external-ips-of-containers"></a>Pobierz zewnętrzne adresy IP kontenerów
 
-W przypadku dwóch kontenerów Sprawdź, czy usługi `language-frontend` i `language` działają i pobierają zewnętrzny adres IP.
+W przypadku dwóch kontenerów Sprawdź, czy `language-frontend` i usługi `language` są uruchomione i uzyskaj zewnętrzny adres IP.
 
 ```console
 kubectl get all
@@ -391,7 +391,7 @@ Otwórz przeglądarkę i przejdź do zewnętrznego adresu IP kontenera `language
 
 ## <a name="test-the-client-application-container"></a>Testowanie kontenera aplikacji klienckiej
 
-Zmień adres URL w przeglądarce na zewnętrzny adres IP kontenera `language-frontend`, używając następującego formatu: `http://<external-ip>/helloworld`. Tekst kultury angielskiej `helloworld` jest przewidywany jako `English`.
+Zmień adres URL w przeglądarce na zewnętrzny adres IP kontenera `language-frontend` przy użyciu następującego formatu: `http://<external-ip>/helloworld`. Tekst kultury angielskiej `helloworld` jest przewidywany jako `English`.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

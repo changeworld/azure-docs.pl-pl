@@ -16,18 +16,18 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55b9b8dae6ff47099935f42f75286b1b4ddd3708
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4da7c874cc5f883d63f8613242c7a7e8b1e83cbd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275759"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712279"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Wystąpił problem podczas konfigurowania aprowizacji użytkowników w aplikacji z galerii usługi Azure AD
 
-Skonfigurowanie [automatycznej aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) dla aplikacji (jeśli jest obsługiwana), wymaga wprowadzenia określonych instrukcji w celu przygotowania aplikacji do automatycznej aprowizacji. Następnie można użyć Azure Portal, aby skonfigurować usługę aprowizacji do synchronizowania kont użytkowników z aplikacją.
+Skonfigurowanie [automatycznej aprowizacji użytkowników](user-provisioning.md) dla aplikacji (jeśli jest obsługiwana), wymaga wprowadzenia określonych instrukcji w celu przygotowania aplikacji do automatycznej aprowizacji. Następnie można użyć Azure Portal, aby skonfigurować usługę aprowizacji do synchronizowania kont użytkowników z aplikacją.
 
-Należy zawsze zacząć od znalezienia samouczka dotyczącego konfiguracji w celu skonfigurowania aprowizacji aplikacji. Następnie wykonaj te kroki, aby skonfigurować aplikację i usługę Azure AD w celu utworzenia połączenia aprowizacji. Listę samouczków dotyczących aplikacji można znaleźć na [liście samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Należy zawsze zacząć od znalezienia samouczka dotyczącego konfiguracji w celu skonfigurowania aprowizacji aplikacji. Następnie wykonaj te kroki, aby skonfigurować aplikację i usługę Azure AD w celu utworzenia połączenia aprowizacji. Listę samouczków dotyczących aplikacji można znaleźć na [liście samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](../saas-apps/tutorial-list.md).
 
 ## <a name="how-to-see-if-provisioning-is-working"></a>Jak sprawdzić, czy obsługa administracyjna działa 
 
@@ -62,11 +62,11 @@ Aby można było zainicjować obsługę administracyjną, usługa Azure AD wymag
 
 Gdy użytkownik wyświetla jako "pominięte" w dziennikach aprowizacji, bardzo ważne jest odczytywanie szczegółowych informacji w komunikacie dziennika w celu ustalenia przyczyny. Poniżej przedstawiono typowe przyczyny i rozwiązania:
 
-- **Skonfigurowano filtr określania zakresu** **, który umożliwia filtrowanie użytkownika na podstawie wartości atrybutu**. Aby uzyskać więcej informacji na temat określania zakresu filtrów, zobacz <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
+- **Skonfigurowano filtr określania zakresu** **, który umożliwia filtrowanie użytkownika na podstawie wartości atrybutu**. Aby uzyskać więcej informacji, zobacz Tworzenie [aplikacji opartych na atrybutach przy użyciu filtrów zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
 
-- **Użytkownik jest "nieefektywnie uprawniony".** Jeśli zobaczysz ten konkretny komunikat o błędzie, przyczyną jest problem z rekordem przypisania użytkownika przechowywanym w usłudze Azure AD. Aby rozwiązać ten problem, Cofnij przypisanie użytkownika (lub grupy) z aplikacji i ponownie przypisz go. Aby uzyskać więcej informacji na temat przypisywania, zobacz <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
+- **Użytkownik jest "nieefektywnie uprawniony".** Jeśli zobaczysz ten konkretny komunikat o błędzie, przyczyną jest problem z rekordem przypisania użytkownika przechowywanym w usłudze Azure AD. Aby rozwiązać ten problem, Cofnij przypisanie użytkownika (lub grupy) z aplikacji i ponownie przypisz go. Aby uzyskać więcej informacji, zobacz [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](assign-user-or-group-access-portal.md).
 
-- **Brak wymaganego atrybutu lub nie został on wypełniony dla użytkownika.** Ważną kwestią do uwzględnienia podczas konfigurowania aprowizacji jest sprawdzenie i skonfigurowanie mapowań atrybutów i przepływów pracy, które definiują, które właściwości użytkownika (lub grupy) będą przepływać z usługi Azure AD do aplikacji. Obejmuje to ustawienie "dopasowania właściwości", który służy do jednoznacznego identyfikowania i dopasowywania użytkowników/grup między tymi dwoma systemami. Aby uzyskać więcej informacji na temat tego ważnego procesu, zobacz <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
+- **Brak wymaganego atrybutu lub nie został on wypełniony dla użytkownika.** Ważną kwestią do uwzględnienia podczas konfigurowania aprowizacji jest sprawdzenie i skonfigurowanie mapowań atrybutów i przepływów pracy, które definiują, które właściwości użytkownika (lub grupy) będą przepływać z usługi Azure AD do aplikacji. Obejmuje to ustawienie "dopasowania właściwości", który służy do jednoznacznego identyfikowania i dopasowywania użytkowników/grup między tymi dwoma systemami. Aby uzyskać więcej informacji na temat tego ważnego procesu, zobacz [Dostosowywanie mapowania atrybutu aprowizacji użytkowników](customize-application-attributes.md).
 
   * **Mapowania atrybutów dla grup:** Inicjowanie obsługi administracyjnej nazw grup i grup, oprócz członków, jeśli są obsługiwane w przypadku niektórych aplikacji. Tę funkcję można włączyć lub wyłączyć, włączając lub wyłączając **Mapowanie** dla obiektów grupy wyświetlanych na karcie **aprowizacji** . Jeśli włączono grupy aprowizacji, należy sprawdzić mapowania atrybutów, aby upewnić się, że odpowiednie pole jest używane dla "zgodnego identyfikatora". Może to być nazwa wyświetlana lub alias adresu e-mail, ponieważ Grupa i jej elementy członkowskie nie są obsługiwane, jeśli właściwość odpowiadająca jest pusta lub nie została wypełniona dla grupy w usłudze Azure AD.
 

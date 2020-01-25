@@ -1,26 +1,26 @@
 ---
 title: Przenoszenie danych do usługi Azure SQL Database — zespołu danych dla celów naukowych
-description: Przenoszenie danych z plików prostych (w formatach plików CSV lub TSV) lub z danych przechowywanych w na lokalnym serwerze SQL Server do usługi Azure SQL database.
+description: Przenoszenie danych z plików prostych (format CSV lub TSV) lub z danych przechowywanych w SQL Server lokalnym do Azure SQL Database.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/04/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6b0f8294899c1ff00c27c2fa82b1228f0e9067af
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f9a1424f2afe6c5153e208601b21dff9651880a8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982399"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722462"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Przenoszenie danych do usługi Azure SQL Database dla usługi Azure Machine Learning
 
-W tym artykule opisano opcje przenoszenia danych z plików prostych (formaty plików CSV lub TSV) albo z danych przechowywanych w na lokalnym serwerze SQL Server do usługi Azure SQL database. Te zadania dotyczące przenoszenia danych do chmury są częścią zespołu danych dla celów naukowych.
+W tym artykule opisano opcje przeniesienia danych z plików prostych (format CSV lub TSV) lub z danych przechowywanych w SQL Server lokalnym do Azure SQL Database. Te zadania dotyczące przenoszenia danych do chmury są częścią zespołu danych dla celów naukowych.
 
 Temat, który przedstawia opcje przenoszenia danych do lokalnego programu SQL Server dla usługi Machine Learning, można zobaczyć [przenoszenie danych do programu SQL Server na maszynie wirtualnej platformy Azure](move-sql-server-virtual-machine.md).
 
@@ -43,32 +43,32 @@ Procedury opisane w tym miejscu wymagają, że masz:
 
 Możesz dostosować procedury opisane w tym miejscu do zestawu danych użytkownika lub zgodnie z opisem przy użyciu zestawu danych taksówek NYC postępuj zgodnie z instrukcjami. Aby przekazać zestaw danych taksówek NYC do lokalnej bazy danych programu SQL Server, wykonaj procedury opisane w [zbiorcze importowanie danych do bazy danych serwera SQL](sql-walkthrough.md#dbload). Te instrukcje są przeznaczone dla programu SQL Server na maszynie wirtualnej platformy Azure, ale procedura przekazywania do lokalnego programu SQL Server jest taka sama.
 
-## <a name="file-to-azure-sql-database"></a> Przenoszenie danych ze źródła pliku prostego do usługi Azure SQL database
-Dane plików prostych (pliku CSV lub TSV sformatowany) mogą być przenoszone do usługi Azure SQL database przy użyciu zapytania SQL wstawiania zbiorczego.
+## <a name="file-to-azure-sql-database"></a>Przeniesienie danych z prostego źródła pliku do Azure SQL Database
+Dane w plikach prostych (CSV lub TSV) można przenieść do Azure SQL Database przy użyciu zbiorczego zapytania SQL.
 
 ### <a name="bulk-insert-sql-query"></a> Zapytanie SQL wstawiania zbiorczego
-Kroki procedury przy użyciu zapytań SQL Wstawianie zbiorcze są podobne do tych opisane w sekcjach przenoszenie danych ze źródła pliku prostego do programu SQL Server na Maszynie wirtualnej platformy Azure. Aby uzyskać więcej informacji, zobacz [zapytania SQL wstawiania zbiorczego](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
+Kroki procedury korzystającej z zapytania BULK INSERT SQL są podobne do wskazówek dotyczących przeniesienia danych z prostego źródła pliku do SQL Server na maszynie wirtualnej platformy Azure. Aby uzyskać więcej informacji, zobacz [zapytania SQL wstawiania zbiorczego](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a> Przenoszenie danych z lokalnego programu SQL Server do usługi Azure SQL database
-Jeśli źródło danych jest przechowywana w programie SQL Server w środowisku lokalnym, istnieją różne możliwości przenoszenia danych do usługi Azure SQL database:
+## <a name="sql-on-prem-to-sazure-sql-database"></a>Przeniesienie danych z SQL Server lokalnego do Azure SQL Database
+Jeśli dane źródłowe są przechowywane w SQL Server lokalnym, istnieją różne możliwości przeniesienia danych do Azure SQL Database:
 
 1. [Eksportuj do pliku prostego](#export-flat-file)
 2. [Kreator migracji bazy danych SQL](#insert-tables-bcp)
 3. [Baza danych kopii zapasowej i przywracanie](#db-migration)
 4. [Azure Data Factory](#adf)
 
-Pierwsze trzy kroki są bardzo podobne do tych sekcjach [przenoszenie danych do programu SQL Server na maszynie wirtualnej platformy Azure](move-sql-server-virtual-machine.md) obejmujących te same procedury. Linki do odpowiednich fragmentów w tym temacie zostały podane w poniższych instrukcjach.
+Kroki dla pierwszych trzech są podobne do tych w sekcjach [Przenieś dane do SQL Server na maszynie wirtualnej platformy Azure](move-sql-server-virtual-machine.md) , która obejmuje te same procedury. Linki do odpowiednich fragmentów w tym temacie zostały podane w poniższych instrukcjach.
 
 ### <a name="export-flat-file"></a>Eksportuj do pliku prostego
-Kroki opisane w tym eksportowania do pliku prostego są podobne do tych omówione w [wyeksportować do pliku prostego](move-sql-server-virtual-machine.md#export-flat-file).
+Kroki związane z tym eksportowaniem do pliku prostego są podobne do tych wskazówek objętych [eksportowaniem do pliku prostego](move-sql-server-virtual-machine.md#export-flat-file).
 
 ### <a name="insert-tables-bcp"></a>Kreator migracji bazy danych SQL
-Kroki dotyczące korzystania z Kreatora migracji bazy danych SQL są podobne do tych objęte [Kreator migracji bazy danych SQL](move-sql-server-virtual-machine.md#sql-migration).
+Kroki opisane w Kreatorze migracji SQL Database są podobne do tych, które opisano w [Kreatorze migracji SQL Database](move-sql-server-virtual-machine.md#sql-migration).
 
 ### <a name="db-migration"></a>Baza danych kopii zapasowej i przywracanie
-Kroki dotyczące korzystania z bazy danych kopii zapasowej i przywracania są podobne do tych objęte [bazy danych kopii zapasowej i przywracanie](move-sql-server-virtual-machine.md#sql-backup).
+Procedura tworzenia kopii zapasowej i przywracania bazy danych przypomina te wskazówki wymienione w temacie [Tworzenie kopii zapasowej i przywracanie bazy danych](move-sql-server-virtual-machine.md#sql-backup).
 
 ### <a name="adf"></a>Usługi Azure Data Factory
-Procedury przenoszenia danych do usługi Azure SQL database za pomocą usługi Azure Data Factory (ADF) znajduje się w temacie [przenoszenie danych z lokalnego programu SQL server do usługi SQL Azure z usługą Azure Data Factory](move-sql-azure-adf.md). W tym temacie pokazano, jak przenieść dane z lokalnej bazy danych programu SQL Server do usługi Azure SQL database za pomocą usługi Azure Blob Storage za pomocą usługi ADF.
+Dowiedz się, jak przenieść dane do Azure SQL Database z Azure Data Factory (ADF) w tym temacie. [Przenieś dane z lokalnego programu SQL Server do usługi SQL Azure za pomocą Azure Data Factory](move-sql-azure-adf.md). W tym temacie pokazano, jak za pomocą funkcji ADF przenieść dane z lokalnej bazy danych SQL Server do Azure SQL Database za pośrednictwem usługi Azure Blob Storage.
 
-Należy rozważyć użycie usługi ADF, gdy dane muszą stale można migrować w scenariuszu hybrydowym, który uzyskuje dostęp do swoich lokalnych i zasobów w chmurze lub w przypadku, gdy dane jest wykonany lub musi być modyfikowany ani logiki biznesowej do niej dodać, gdy migrowane. ADF umożliwia planowanie i monitorowanie zadań przy użyciu prostych skryptów JSON, które zarządzają przenoszenia danych w regularnych odstępach czasu. ADF ma także inne możliwości, takie jak obsługa złożonych operacji.
+Należy rozważyć użycie funkcji ADF, gdy dane wymagają ciągłego migrowania przy użyciu hybrydowych źródeł lokalnych i chmurowych.  Moduł ADF również pomaga, gdy dane wymagają przekształceń lub wymagają nowej logiki biznesowej podczas migracji. ADF umożliwia planowanie i monitorowanie zadań przy użyciu prostych skryptów JSON, które zarządzają przenoszenia danych w regularnych odstępach czasu. ADF ma także inne możliwości, takie jak obsługa złożonych operacji.

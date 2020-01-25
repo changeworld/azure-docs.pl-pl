@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: c0664cbc8097f18ec9722e789ad40d5925781637
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997075"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711658"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Pomiń usuwanie kont użytkowników, które wykraczają poza zakres
 
@@ -37,14 +37,14 @@ Ponieważ ta konfiguracja jest szeroko używana wraz z *produktem Workday do Act
 1. Uruchom [Azure Portal](https://portal.azure.com)i przejdź do sekcji właściwości aplikacji aprowizacji. Na przykład jeśli chcesz wyeksportować swój *dzień roboczy do usługi AD, mapowanie aplikacji do inicjowania obsługi administracyjnej użytkowników* , przejdź do sekcji Właściwości tej aplikacji. 
 1. W sekcji właściwości aplikacji aprowizacji skopiuj wartość identyfikatora GUID skojarzoną z polem *Identyfikator obiektu* . Ta wartość jest również nazywana **ServicePrincipalId** aplikacji i będzie używana w operacjach Eksploratora grafu.
 
-   ![Identyfikator podmiotu zabezpieczeń App Service Workday](./media/export-import-provisioning-mappings/wd_export_01.png)
+   ![Identyfikator podmiotu zabezpieczeń App Service Workday](media/skip-out-of-scope-deletions/wd_export_01.png)
 
 ## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Krok 2. Logowanie do Microsoft Graph Explorer
 
 1. Uruchom [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)
 1. Kliknij przycisk "Zaloguj się za pomocą firmy Microsoft" i zaloguj się przy użyciu poświadczeń administratora globalnego usługi Azure AD lub administratora aplikacji.
 
-    ![Logowanie grafu](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Logowanie grafu](media/skip-out-of-scope-deletions/wd_export_02.png)
 
 1. Po pomyślnym zalogowaniu zobaczysz szczegóły konta użytkownika w okienku po lewej stronie.
 
@@ -56,11 +56,11 @@ W Eksploratorze Microsoft Graph Uruchom następujące polecenie GET Query zastę
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
-   ![Pobierz zapytanie dotyczące zadania](./media/skip-out-of-scope-deletions/skip-03.png)
+   ![Pobierz zapytanie dotyczące zadania](media/skip-out-of-scope-deletions/skip-03.png)
 
 Skopiuj odpowiedź do pliku tekstowego. Będzie wyglądać podobnie do tekstu JSON pokazanego poniżej, z wartościami wyróżnionymi kolorem żółtym specyficznym dla danego wdrożenia. Dodaj wiersze wyróżnione na zielono do końca i zaktualizuj hasło połączenia z produktem Workday wyróżnione kolorem. 
 
-   ![Pobierz odpowiedź na zadanie](./media/skip-out-of-scope-deletions/skip-04.png)
+   ![Pobierz odpowiedź na zadanie](media/skip-out-of-scope-deletions/skip-04.png)
 
 Oto blok JSON, który ma zostać dodany do mapowania. 
 
@@ -82,22 +82,22 @@ W poniższym adresie URL Zamień [servicePrincipalId] na **servicePrincipalId** 
 ```
 Skopiuj zaktualizowany tekst z kroku 3 do "treść żądania" i ustaw dla nagłówka "Content-Type" wartość "Application/JSON" w "nagłówki żądania". 
 
-   ![Żądanie PUT](./media/skip-out-of-scope-deletions/skip-05.png)
+   ![Żądanie PUT](media/skip-out-of-scope-deletions/skip-05.png)
 
 Kliknij pozycję "uruchom zapytanie". 
 
 Dane wyjściowe powinny zostać pobrane jako "powodzenie — kod stanu 204". 
 
-   ![Umieść odpowiedź](./media/skip-out-of-scope-deletions/skip-06.png)
+   ![Umieść odpowiedź](media/skip-out-of-scope-deletions/skip-06.png)
 
 ## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>Krok 5. sprawdzenie, czy użytkownicy spoza zakresu nie są wyłączani
 
 Możesz przetestować tę flagę w oczekiwany sposób, aktualizując reguły określania zakresu, aby pominąć określonego użytkownika. W poniższym przykładzie wykluczamy pracownika z IDENTYFIKATORem 21173 (kto wcześniej miał zakres) przez dodanie nowej reguły określania zakresu: 
 
-   ![Przykład zakresu](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![Przykład zakresu](media/skip-out-of-scope-deletions/skip-07.png)
 
 W następnym cyklu aprowizacji usługa Azure AD Provisioning określi, że użytkownik 21173 został wystawiony poza zakresem i jeśli właściwość SkipOutOfScopeDeletions jest włączona, reguła synchronizacji dla tego użytkownika wyświetli komunikat, jak pokazano poniżej: 
 
-   ![Przykład zakresu](./media/skip-out-of-scope-deletions/skip-08.png)
+   ![Przykład zakresu](media/skip-out-of-scope-deletions/skip-08.png)
 
 

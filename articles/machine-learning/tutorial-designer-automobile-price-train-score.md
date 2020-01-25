@@ -9,19 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 917ded03892f3a8a5812948bcbfe31f029fc5cf8
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314984"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720186"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Samouczek: przewidywanie ceny za samochód przy użyciu narzędzia Projektant
+# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Samouczek: przewidywanie ceny za samochód przy użyciu projektanta (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-W tym dwuczęściowym samouczku dowiesz się, jak za pomocą projektanta Azure Machine Learning utworzyć i wdrożyć rozwiązanie do analizy predykcyjnej, które przewiduje cenę dowolnego samochodu. 
-
-W części pierwszej należy skonfigurować środowisko, przeciągnąć moduły na interaktywną kanwę, a następnie połączyć je ze sobą w celu utworzenia potoku Azure Machine Learning.
+W tym dwuczęściowym samouczku dowiesz się, jak za pomocą projektanta Azure Machine Learning utworzyć i wdrożyć rozwiązanie do analizy predykcyjnej, które przewiduje cenę dowolnego samochodu.
 
 W pierwszej części samouczka dowiesz się, jak:
 
@@ -32,7 +30,7 @@ W pierwszej części samouczka dowiesz się, jak:
 > * Uczenie modelu uczenia maszynowego.
 > * Oceń model uczenia maszynowego.
 
-W [drugiej części](tutorial-designer-automobile-price-deploy.md) samouczka dowiesz się, jak wdrożyć model predykcyjny jako punkt końcowy inferencing w czasie rzeczywistym, aby przewidzieć cenę dowolnego samochodu w oparciu o specyfikacje techniczne, które wysyłasz. 
+W [drugiej części](tutorial-designer-automobile-price-deploy.md) tego samouczka wdrożono model jako punkt końcowy inferencing w czasie rzeczywistym, aby przewidzieć cenę dowolnego samochodu w oparciu o specyfikacje techniczne, które należy wysłać. 
 
 > [!NOTE]
 >Kompletna wersja tego samouczka jest dostępna jako potoku przykładowe.
@@ -41,7 +39,9 @@ W [drugiej części](tutorial-designer-automobile-price-deploy.md) samouczka dow
 
 ## <a name="create-a-new-pipeline"></a>Tworzenie nowego potoku
 
-Potoki Azure Machine Learning organizują wiele zależnych etapów uczenia maszynowego i przetwarzania danych w ramach jednego zasobu. Potoki ułatwiają organizowanie i ponowne używanie złożonych przepływów pracy uczenia maszynowego między projektami i użytkownikami oraz zarządzanie nimi. Do utworzenia potoku Azure Machine Learning jest wymagany obszar roboczy Azure Machine Learning. W tej sekcji dowiesz się, jak utworzyć oba te zasoby.
+Potoki Azure Machine Learning organizują wiele etapów uczenia maszynowego i przetwarzania danych w ramach jednego zasobu. Potoki pozwalają organizować i ponownie używać złożonych przepływów pracy uczenia maszynowego między projektami i użytkownikami.
+
+Do utworzenia potoku Azure Machine Learning jest wymagany obszar roboczy Azure Machine Learning. W tej sekcji dowiesz się, jak utworzyć oba te zasoby.
 
 ### <a name="create-a-new-workspace"></a>Utwórz nowy obszar roboczy
 
@@ -59,7 +59,7 @@ Jeśli masz obszar roboczy Azure Machine Learning z wersją Enterprise, [Przejd�
 
 1. Wybierz **łatwe w użyciu wstępnie skompilowane moduły**.
 
-1. Wybierz domyślny potok Nazwa potoku **— utworzony** w górnej części kanwy. Zmień jej nazwę na zrozumiałą. Przykładem jest *Prognoza cen na urządzeniu przenośnym*. Nazwa nie musi być unikatowa.
+1. W górnej części kanwy wybierz domyślną potoku Nazwa potoku **— utworzony**. Zmień jej nazwę na funkcja *prognozowanie cen na urządzeniu mobilnym*. Nazwa nie musi być unikatowa.
 
 ## <a name="import-data"></a>Importowanie danych
 
@@ -109,7 +109,7 @@ Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W ty
 
 1. Wybierz pozycję **Wybierz kolumny w zestawie danych** .
 
-1. W okienku właściwości po prawej stronie kanwy wybierz pozycję **parametry** > **Edytuj kolumnę**.
+1. W okienku właściwości po prawej stronie kanwy wybierz pozycję **wszystkie kolumny**.
 
 1. Wybierz **+** , aby dodać nową regułę.
 
@@ -120,12 +120,12 @@ Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W ty
 1. W prawym dolnym rogu wybierz pozycję **Zapisz** , aby zamknąć selektor kolumny.
 
     ![Wykluczanie kolumny](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
-        
-    Okienko właściwości pokazuje, że kolumna **znormalizowana strata** jest wykluczona.
 
 1. Wybierz pozycję **Wybierz kolumny w zestawie danych** . 
 
-1. W okienku właściwości wybierz pozycję **parametry** > **komentarz** i wprowadź *wykluczanie znormalizowanych strat*.
+1. W okienku właściwości zaznacz pole tekstowe **komentarz** i wprowadź *wykluczenie normalnych strat*.
+
+    Komentarze będą wyświetlane na grafie, aby ułatwić organizowanie potoku.
 
 ### <a name="clean-missing-data"></a>Wyczyść brakujące dane
 
@@ -148,31 +148,30 @@ Zestaw danych nadal ma brakujące wartości po usunięciu kolumny **znormalizowa
 
 ## <a name="train-a-machine-learning-model"></a>Uczenie modelu uczenia maszynowego
 
-Teraz, gdy dane są przetwarzane, można przeprowadzić uczenie modelu predykcyjnego.
-
-### <a name="select-an-algorithm"></a>Wybieranie algorytmu
-
-Algorytmy *klasyfikacji* i *regresji* to dwa typy nadzorowanego uczenia maszynowego. Klasyfikacja przewiduje odpowiedź ze zdefiniowanego zestawu kategorii, takich jak kolor czerwony, niebieski lub zielony. Regresja służy do prognozowania liczby.
+Teraz, gdy masz moduły do przetwarzania danych, możesz skonfigurować moduły szkoleniowe.
 
 Ponieważ chcesz przewidzieć cenę, która jest liczbą, możesz użyć algorytmu regresji. W tym przykładzie używany jest model regresji liniowej.
 
-### <a name="split-the-data"></a>Dzielenie danych
+### <a name="split-the-data"></a>Podziel dane
 
-Podziel dane na dwa osobne zestawy danych, aby przeanalizować model i przetestować go.
+Dzielenie danych to typowe zadanie w usłudze Machine Learning. Dane zostaną podzielone na dwa oddzielne zestawy danych. Jeden zestaw danych będzie szkolić model, a drugi przetestuje, jak dobrze działa model.
 
-1. Wprowadź **Podziel dane** w polu wyszukiwania, aby znaleźć moduł **Split Data** . Połącz go z lewym portem **czystego brakujących danych** .
+1. Wprowadź **Podziel dane** w polu wyszukiwania, aby znaleźć moduł **Split Data** . Połącz lewy port modułu **czyste brakujące dane** z modułem **Split Data** .
+
+    > [!IMPORTANT]
+    > Upewnij się, że lewe porty wyjściowe **czyste brakujące dane** łączą się, aby **podzielić dane**. Lewy port zawiera oczyszczone dane. Prawidłowy port zawiera dane z przekoszykiem.
 
 1. Wybierz moduł **Split Data** .
 
 1. W okienku właściwości ustaw **ułamek wierszy w pierwszym zestawie danych wyjściowych** na 0,7.
 
-    Ta opcja dzieli na 70 procent danych, aby szkolić model i 30 procent na potrzeby testowania.
+    Ta opcja dzieli na 70 procent danych, aby szkolić model i 30 procent na potrzeby testowania. Zestaw danych 70 procent będzie dostępny przez lewy port wyjściowy. Pozostałe dane będą dostępne przez właściwy port wyjściowy.
 
 1. W **okienku właściwości wpisz polecenie** *Podziel zestaw danych na zestaw szkoleniowy (0,7) i zestaw testów (0,3)* .
 
 ### <a name="train-the-model"></a>Trenowanie modelu
 
-Uczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Model skanuje dane i wyszukuje korelacje między funkcjami samochodu a jego ceną do konstruowania modelu.
+Nauczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Algorytm tworzy model, który objaśnia relacje między funkcjami a ceną zaprezentowaną przez dane szkoleniowe.
 
 1. Aby wybrać algorytm uczenia, usuń zaznaczenie pola wyszukiwania palety modułu.
 
@@ -187,6 +186,9 @@ Uczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Model skan
 1. Połącz dane wyjściowe modułu **regresji liniowej** z lewym wejściem modułu **uczenie modelu** .
 
 1. Połącz Wyjście danych szkoleniowych (lewy port) modułu **Split Data (podział danych** ) z prawym wejściem modułu **uczenie modelu** .
+    
+    > [!IMPORTANT]
+    > Upewnij się, że lewe porty wyjściowe **danych dzielą** łączą się z **modelem uczenia**. Lewy port zawiera zestaw szkoleniowy. Prawidłowy port zawiera zestaw testów.
 
     ![Zrzut ekranu przedstawiający poprawną konfigurację modułu uczenie modelu. Moduł regresja liniowa łączy się z lewym portem modułu uczenia modelowego, a moduł Split Data łączy się z odpowiednim portem modelu uczenia](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
@@ -196,19 +198,23 @@ Uczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Model skan
 
 1. W oknie dialogowym **etykieta kolumny** rozwiń menu rozwijane i wybierz pozycję **nazwy kolumn**. 
 
-1. W polu tekstowym wprowadź *Price*. Cena to wartość, która jest przewidywana przez model.
+1. W polu tekstowym wpisz Price ( *Cena* ), aby określić wartość, którą model ma przewidzieć.
 
     Potok powinien wyglądać następująco:
 
     ![Zrzut ekranu przedstawiający poprawną konfigurację potoku po dodaniu modułu uczenie modelu.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="evaluate-a-machine-learning-model"></a>Oceń model uczenia maszynowego
+## <a name="score-a-machine-learning-model"></a>Ocena modelu uczenia maszynowego
 
 Po nauczeniu modelu przy użyciu 70 procent danych, można użyć go do oceny pozostałych 30 procent, aby zobaczyć, jak dobrze działa model.
 
 1. Wprowadź ciąg " *model oceny* " w polu wyszukiwania, aby znaleźć moduł **modelu oceny** . Przeciągnij moduł do kanwy potoku. 
 
 1. Połącz dane wyjściowe modułu **uczenie modelu** z lewym portem wejściowym **modelu wynikowego**. Połącz dane wyjściowe testu (prawy port) modułu **Split Data (dane** wejściowe) z odpowiednim portem wejściowym **modelu wynikowego**.
+
+## <a name="evaluate-a-machine-learning-model"></a>Oceń model uczenia maszynowego
+
+Użyj modułu **oceny modelu** , aby oszacować, jak dobrze Model przedstawia test zestawu danych.
 
 1. Wprowadź *wartość Oceń* w polu wyszukiwania, aby znaleźć moduł **Oceń model** . Przeciągnij moduł do kanwy potoku. 
 
@@ -218,25 +224,29 @@ Po nauczeniu modelu przy użyciu 70 procent danych, można użyć go do oceny po
 
     ![Zrzut ekranu przedstawiający poprawną konfigurację potoku.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
-### <a name="run-the-pipeline"></a>Uruchamianie potoku
+## <a name="run-the-pipeline"></a>Uruchamianie potoku
 
 [!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
 
-### <a name="view-results"></a>Wyświetlanie wyników
+### <a name="view-scored-labels"></a>Wyświetlanie etykiet z wynikami
 
-Po zakończeniu przebiegu można wyświetlić wyniki uruchomienia potoku. 
+Po zakończeniu przebiegu można wyświetlić wyniki uruchomienia potoku. Najpierw zapoznaj się z przewidywaniami wygenerowanymi przez model regresji.
 
 1. Wybierz moduł **model oceny** , aby wyświetlić jego dane wyjściowe.
 
-1. W okienku właściwości wybierz pozycję **wyjściowe** > **Wizualizacja**.
+1. W okienku właściwości wybierz pozycję **wyjście** > ikonę grafu ![ikona wizualizacji](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png), aby wyświetlić wyniki.
 
     W tym miejscu możesz zobaczyć przewidywane ceny i rzeczywiste ceny z danych testowych.
 
     ![Zrzut ekranu przedstawiający wizualizację danych wyjściowych z wyróżnioną kolumną etykieta z wynikami](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
+### <a name="evaluate-models"></a>Oceń modele
+
+Użyj **modelu szacowania** , aby zobaczyć, jak dobrze szkolony model jest wykonywany na testowym zestawie danych.
+
 1. Wybierz moduł **Oceń model** , aby wyświetlić jego dane wyjściowe.
 
-1. W okienku właściwości wybierz pozycję **Output** > **wizualizator**.
+1. W okienku właściwości wybierz pozycję **wyjście** > ikona Graf ![ikona wizualizacji](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png), aby wyświetlić wyniki.
 
 Następujące statystyki są wyświetlane dla modelu:
 

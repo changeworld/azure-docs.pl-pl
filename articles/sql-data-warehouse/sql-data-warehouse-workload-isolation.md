@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/23/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85987ca1ff7d2dd204d0a501367efffc8277f138
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86390132be0440b197b680803e5b6032670a7d1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939926"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721034"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>Izolacja grupy obciążeń SQL Data Warehouse (wersja zapoznawcza)
 
@@ -32,7 +32,7 @@ W poniższych sekcjach opisano sposób, w jaki grupy obciążeń zapewniają mo�
 
 Izolacja obciążenia oznacza, że zasoby są zarezerwowane wyłącznie dla grupy obciążenia.  Izolacja obciążenia jest uzyskiwana przez skonfigurowanie parametru MIN_PERCENTAGE_RESOURCE do wartości większej niż zero w składni [tworzenia grupy obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  W przypadku obciążeń ciągłego wykonywania, które muszą być zgodne z ścisłą umowy SLA, izolacja gwarantuje, że zasoby są zawsze dostępne dla grupy obciążenia. 
 
-Konfigurowanie izolacji obciążeń niejawnie definiuje gwarantowany poziom współbieżności. W przypadku MIN_PERCENTAGE_RESOURCE ustawionej na wartość 30% i REQUEST_MIN_RESOURCE_GRANT_PERCENT ustawionej na 2% poziom współbieżności jest gwarantowany dla grupy obciążenia.  Rozważmy poniższą metodę określania gwarantowanej współbieżności:
+Konfigurowanie izolacji obciążeń niejawnie definiuje gwarantowany poziom współbieżności. Na przykład grupa obciążeń z `MIN_PERCENTAGE_RESOURCE` ustawionym na 30%, a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ustawiona na 2% ma gwarancję 15 współbieżności.  Poziom współbieżności jest gwarantowany, ponieważ 15-2% gniazd zasobów jest zarezerwowanych w grupie obciążenia przez cały czas (niezależnie od tego, jak `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` jest skonfigurowany).  Jeśli wartość `REQUEST_MAX_RESOURCE_GRANT_PERCENT` jest większa niż `REQUEST_MIN_RESOURCE_GRANT_PERCENT` i `CAP_PERCENTAGE_RESOURCE` jest większa niż `MIN_PERCENTAGE_RESOURCE` dodatkowe zasoby są dodawane dla każdego żądania.  Jeśli `REQUEST_MAX_RESOURCE_GRANT_PERCENT` i `REQUEST_MIN_RESOURCE_GRANT_PERCENT` są równe i `CAP_PERCENTAGE_RESOURCE` jest większa niż `MIN_PERCENTAGE_RESOURCE`, możliwe jest dodatkowe współbieżność.  Rozważmy poniższą metodę określania gwarantowanej współbieżności:
 
 [Gwarantowane współbieżność] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/01/2019
-ms.openlocfilehash: 5e3cc12351313b8fb1dedf795031202070ac7cf7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.date: 01/23/2020
+ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558984"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715090"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database warstw usług
 
@@ -51,7 +51,7 @@ W poniższej tabeli opisano kluczowe różnice między warstwami usług dla najn
 |**Dostępność**|Wszystko| 99,99% |  [99,95% z jedną repliką pomocniczą, 99,99% z więcej replik](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99% <br/> [99,995% ze strefą nadmiarową pojedynczą bazą danych](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Kopii zapasowych**|Wszystko|RA-GRS, 7-35 dni (domyślnie 7 dni)| RA-GRS, 7 dni, stałe odzyskiwanie do czasu w czasie (kopie) | RA-GRS, 7-35 dni (domyślnie 7 dni) |
 |**Przetwarzanie OLTP w pamięci** | | ND | ND | Dostępna |
-|**Repliki tylko do odczytu**| | 0  | 0 - 4 | 1 (wbudowane, wliczone w cenę) |
+|**Repliki tylko do odczytu**| | 0 wbudowane <br> 0-4 przy użyciu [replikacji geograficznej](sql-database-active-geo-replication.md) | 0-4 wbudowane | 1 wbudowana, uwzględniona w cenie <br> 0-4 przy użyciu [replikacji geograficznej](sql-database-active-geo-replication.md) |
 |**Cennik/rozliczenia** | Pojedyncza baza danych | [rdzeń wirtualny, zarezerwowany magazyn i magazyn kopii zapasowych](https://azure.microsoft.com/pricing/details/sql-database/single/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana. | [rdzeń wirtualny dla każdej repliki i używanej pamięci masowej](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>Liczba operacji we/wy nie została jeszcze obciążona. | [rdzeń wirtualny, zarezerwowany magazyn i magazyn kopii zapasowych](https://azure.microsoft.com/pricing/details/sql-database/single/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana. |
 || Wystąpienie zarządzane | [rdzeń wirtualny i zarezerwowany magazyn](https://azure.microsoft.com/pricing/details/sql-database/managed/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana.<br/>Magazyn kopii zapasowych nie jest jeszcze naliczany. | ND | [rdzeń wirtualny i zarezerwowany magazyn](https://azure.microsoft.com/pricing/details/sql-database/managed/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana.<br/>Magazyn kopii zapasowych nie jest jeszcze naliczany. | 
 |**Modele rabatów**| | [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-azure-hybrid-benefit.md) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie| [Korzyść użycia hybrydowego platformy Azure](sql-database-azure-hybrid-benefit.md) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie| [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-azure-hybrid-benefit.md) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie|
@@ -81,7 +81,7 @@ Poniższe czynniki wpływają na ilość miejsca do magazynowania używanego dla
 Aby monitorować bieżący łączny rozmiar plików MDF i LDF, użyj [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql). Aby monitorować bieżący rozmiar poszczególnych plików MDF i LDF, użyj [widoku sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql).
 
 > [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne zmniejszenie bazy danych w celu Odbierz nieużywanej przestrzeni. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
 ## <a name="backups-and-storage"></a>Kopie zapasowe i magazyn
 

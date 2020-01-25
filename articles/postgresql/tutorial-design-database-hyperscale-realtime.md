@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978104"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716317"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Samouczek: projektowanie pulpitu nawigacyjnego analizy w czasie rzeczywistym za pomocą Azure Database for PostgreSQL — Citus
 
@@ -196,7 +196,7 @@ Korzystając z naszej funkcji, wykonaj ją w celu zestawienia danych:
 SELECT rollup_http_request();
 ```
 
-Wraz z naszymi danymi w formie wstępnie zagregowanej możemy zbadać tabelę zestawień, aby uzyskać ten sam raport zgodnie z wcześniejszym użyciem. Uruchom zapytanie:
+Wraz z naszymi danymi w formie wstępnie zagregowanej możemy zbadać tabelę zestawień, aby uzyskać ten sam raport zgodnie z wcześniejszym użyciem. Uruchom następujące zapytanie:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,
@@ -222,7 +222,7 @@ W poprzednich krokach zostały utworzone zasoby platformy Azure w grupie serwer�
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku pokazano, jak zainicjować obsługę administracyjną grupy serwerów Citus. Nawiązano połączenie z usługą PSQL, utworzono schemat i dane rozproszone. Wiesz już, jak wykonywać zapytania dotyczące danych w postaci surowej, regularnie agregować te dane, tworzyć zapytania dotyczące zagregowanych tabel i wygasać stare dane.
+W tym samouczku pokazano, jak zainicjować obsługę administracyjną grupy serwerów Citus. Nawiązano połączenie z usługą PSQL, utworzono schemat i dane rozproszone. Wiesz już, jak wykonywać zapytania dotyczące danych w postaci pierwotnej, regularnie agregować te dane, wysyłać zapytania do zagregowanych tabel i wygasać stare dane.
 
 Następnie Dowiedz się więcej na temat pojęć związanych ze skalą.
 > [!div class="nextstepaction"]

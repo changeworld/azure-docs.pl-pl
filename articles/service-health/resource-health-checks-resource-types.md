@@ -3,12 +3,12 @@ title: Obsługiwane typy zasobów za poorednictwem Azure Resource Health | Micro
 description: Obsługiwane typy zasobów za pomocą usługi Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f25dc32774cb040a2b9873c6811ff184373c5104
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465272"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717074"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kontrole kondycji w usłudze Azure Resource Health
 Poniżej znajduje się kompletna lista wszystkich testów wykonywanych przez zasoby według typów zasobów.
@@ -139,7 +139,7 @@ Poniżej znajduje się kompletna lista wszystkich testów wykonywanych przez zas
 |---|
 |<ul><li>Czy jest podłączony tunel VPN?</li><li>Czy istnieją konflikty konfiguracji w ramach połączenia?</li><li>Czy wstępnie udostępnione klucze są poprawnie skonfigurowane?</li><li>Czy urządzenie sieci VPN jest osiągalne?</li><li>Czy istnieją niezgodności w zasadach zabezpieczeń protokołu IPSec/IKE?</li><li>Czy połączenie sieci VPN S2S zostało prawidłowo zainicjowane lub w stanie niepowodzenia?</li><li>Czy połączenie między sieciami WIRTUALNYmi zostało prawidłowo zainicjowane lub w stanie awarii?</li></ul>|
 
-## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |Wykonane sprawdzenia|
 |---|
 |<ul><li>Czy obwód ExpressRoute jest w dobrej kondycji?</li></ul>|

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: fb0803987428ced688e83a37fae36c61b63a28a8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/23/2020
+ms.openlocfilehash: bb2c83757bd86d02a93c52bacdd03ce89186614e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770122"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719776"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Tworzenie replik odczytu i zarządzanie nimi w interfejsie wiersza polecenia platformy Azure, interfejs API REST
 
@@ -37,20 +37,25 @@ Parametr `azure.replication_support` musi być ustawiony na **replikę** na serw
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
+> [!NOTE]
+> Jeśli zostanie wyświetlony błąd "podano nieprawidłową wartość" podczas próby ustawienia platformy Azure. replication_support z poziomu interfejsu wiersza polecenia platformy Azure, prawdopodobnie serwer ma już ustawioną replikę. Usterka uniemożliwia poprawne odzwierciedlenie tego ustawienia na nowszych serwerach, na których replika jest domyślnie wewnętrzna.
+> Możesz pominąć kroki przygotowywania wzorca i przejść do tworzenia repliki.
+> Jeśli chcesz potwierdzić, że serwer jest w tej kategorii, odwiedź stronę replikacji serwera w Azure Portal. Wartość "Wyłącz replikację" zostanie wyszarzona, a na pasku narzędzi zostanie uaktywniona wartość "Dodaj replikę".
+
 2. Uruchom ponownie serwer, aby zastosować zmianę.
 
    ```azurecli-interactive
    az postgres server restart --name mydemoserver --resource-group myresourcegroup
    ```
 
-### <a name="create-a-read-replica"></a>Tworzenie repliki odczytu
+### <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
 
 Polecenie [AZ Postgres Server Replica Create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) wymaga następujących parametrów:
 
 | Ustawienie | Przykładowa wartość | Opis  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  Grupa zasobów, w której zostanie utworzony serwer repliki.  |
-| name | mydemoserver — replika | Nazwa nowego serwera repliki, który został utworzony. |
+| name | mydemoserver — replika | Nazwa nowego serwera repliki, który jest tworzony. |
 | source-server | mydemoserver | Nazwa lub identyfikator zasobu istniejącego serwera głównego, z którego ma być wykonywana replikacja. |
 
 W poniższym przykładzie interfejsu wiersza polecenia replika jest tworzona w tym samym regionie co główny.
@@ -82,7 +87,7 @@ Listę replik serwera głównego można wyświetlić za pomocą polecenia [AZ Po
 az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>Zatrzymaj replikację do serwera repliki
+### <a name="stop-replication-to-a-replica-server"></a>Zatrzymywanie replikacji na serwer repliki
 Można zatrzymać replikację między serwerem głównym a repliką odczytu przy użyciu polecenia [AZ Postgres Server Replica Stop](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) .
 
 Po zatrzymaniu replikacji na serwer główny i replikę odczytu nie można jej cofnąć. Replika odczytu jest autonomicznym serwerem, który obsługuje zarówno operacje odczytu, jak i zapisu. Serwer autonomiczny nie może zostać ponownie utworzony w replice.
@@ -128,7 +133,7 @@ Parametr `azure.replication_support` musi być ustawiony na **replikę** na serw
    POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/restart?api-version=2017-12-01
    ```
 
-### <a name="create-a-read-replica"></a>Tworzenie repliki odczytu
+### <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
 Replikę odczytu można utworzyć przy użyciu [interfejsu API tworzenia](/rest/api/postgresql/servers/create):
 
 ```http
@@ -163,7 +168,7 @@ Listę replik serwera głównego można wyświetlić za pomocą [interfejsu API 
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>Zatrzymaj replikację do serwera repliki
+### <a name="stop-replication-to-a-replica-server"></a>Zatrzymywanie replikacji na serwer repliki
 Można zatrzymać replikację między serwerem głównym a repliką odczytu przy użyciu [interfejsu API aktualizacji](/rest/api/postgresql/servers/update).
 
 Po zatrzymaniu replikacji na serwer główny i replikę odczytu nie można jej cofnąć. Replika odczytu jest autonomicznym serwerem, który obsługuje zarówno operacje odczytu, jak i zapisu. Serwer autonomiczny nie może zostać ponownie utworzony w replice.

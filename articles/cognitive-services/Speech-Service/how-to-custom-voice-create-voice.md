@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 437b87a3d684d7751adc89ba77b20ea86b3455e4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805998"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717326"
 ---
 # <a name="create-a-custom-voice"></a>Tworzenie niestandardowego głosu
 
@@ -117,7 +117,7 @@ Po pomyślnym skompilowaniu czcionki głosowej możesz ją przetestować przed w
     > [!NOTE]
     > Język tekstu musi być taki sam jak język czcionki głosowej. Testy można testować tylko dla pomyślnie przeszkolonych modeli. W tym kroku jest obsługiwany tylko zwykły tekst.
 
-5.  Kliknij przycisk **Utwórz**.
+5.  Kliknij pozycję **Utwórz**.
 
 Po przesłaniu żądania testowego nastąpi powrót do strony testowej. Tabela zawiera teraz wpis odpowiadający nowemu żądaniu i kolumnie Stan. Wypróbowanie mowy może potrwać kilka minut. Gdy kolumna stanu **powiedzie się**, można odtworzyć dźwięk lub pobrać dane wejściowe tekstu (plik. txt) i dane wyjściowe audio (plik. wav), a następnie Audition je w celu zapewnienia jakości.
 

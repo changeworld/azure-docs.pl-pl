@@ -2,27 +2,27 @@
 title: Zespół danych dla celów naukowych role i zadania
 description: Konspekt najważniejszych składników, ról pracowników i skojarzonych zadań dla grupy nauki o danych.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bbc066f4b01a01a589849ad524b58a9b5d9dfae1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260651"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720014"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Zespół danych dla celów naukowych role i zadania
 
 Proces nauki o danych zespołowych (przetwarzania TDSP) to struktura opracowana przez firmę Microsoft, która oferuje strukturalną metodologię do wydajnego tworzenia rozwiązań do analizy predykcyjnej i inteligentnych aplikacji. W tym artykule przedstawiono podstawowe role pracowników i powiązane zadania dotyczące standaryzacji zespołu ds. analizy danych na tym procesie.
 
-Ten artykuł wprowadzający zawiera linki do samouczków dotyczących konfigurowania środowiska przetwarzania TDSP dla całej grupy nauki o danych, zespołów nauki o danych i projektów przetwarzania TDSP. Samouczki zawierają szczegółowe wskazówki dotyczące używania Azure DevOps Projects, Azure Repos repozytoriów i Azure Boards narzędzi do planowania Agile w celu kontrolowania dostępu, hostowania i udostępniania kodu oraz zarządzania zadaniami zespołu.
+Ten artykuł wprowadzający zawiera linki do samouczków dotyczących konfigurowania środowiska przetwarzania TDSP. Samouczki zawierają szczegółowe wskazówki dotyczące używania Azure DevOps Projects, repozytoriów Azure Repos i Azure Boards.  Celem motywacji jest przechodzenie z koncepcji poprzez modelowanie i wdrażanie.
 
 Samouczki korzystają z usługi Azure DevOps, ponieważ jest to implementacja przetwarzania TDSP w firmie Microsoft. Usługa Azure DevOps ułatwia współpracę poprzez integrację zabezpieczeń opartych na rolach, zarządzanie elementami roboczymi i śledzenie oraz hosting kodu, udostępnianie i kontrola źródła. Samouczki korzystają również z usługi Azure [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) jako pulpitu analitycznego, który ma kilka popularnych narzędzi do nauki o danych, które są wstępnie skonfigurowane i zintegrowane z oprogramowaniem firmy Microsoft i usługami platformy Azure. 
 
@@ -40,13 +40,13 @@ W takiej strukturze istnieją grupy potencjalni klienci i liderzy zespołu. Zazw
 ## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>Definicja i zadania dla czterech ról przetwarzania TDSP
 Z założeniem, że jednostka analizy danych składa się z zespołów w grupie, istnieją cztery odrębne role dla przetwarzania TDSP personel:
 
-1. **Menedżer grupy**: Zarządza całą jednostką analizy danych w przedsiębiorstwie. Jednostka analizy danych może mieć wielu zespołach, z których każdy działa w wielu projektach do nauki o danych w różnych firm branżowych. Menedżer grupy może delegować ich zadań, aby zastępczy, ale nie zmieniaj zadania związane z rolą.
+1. **Menedżer grupy**: zarządza całą jednostką analizy danych w przedsiębiorstwie. Jednostka analizy danych może mieć wielu zespołach, z których każdy działa w wielu projektach do nauki o danych w różnych firm branżowych. Menedżer grupy może delegować ich zadań, aby zastępczy, ale nie zmieniaj zadania związane z rolą.
    
-2. **Lider zespołu**: Zarządza zespołem w jednostce analizy danych przedsiębiorstwa. Zespół składa się z wielu analityków danych. W przypadku małej jednostki analizy danych Menedżer grupy i lider zespołu mogą należeć do tej samej osoby.
+2. **Lider zespołu**: zarządza zespołem w jednostce analizy danych przedsiębiorstwa. Zespół składa się z wielu analityków danych. W przypadku małej jednostki analizy danych Menedżer grupy i lider zespołu mogą należeć do tej samej osoby.
    
-3. **Potencjalny klient projektu**: Zarządza codziennymi działaniami poszczególnych analityków danych w konkretnym projekcie analizy danych.
+3. **Lider projektu**: zarządza codziennymi działaniami poszczególnych naukowców zajmujących się danymi w konkretnym projekcie analizy danych.
    
-4. **Poszczególni Współautorzy projektu**: Badacze danych, analityków biznesowych, inżynierów danych, architektów i innych, którzy wykonują projekt analizy danych.
+4. **Poszczególni Współautorzy projektu**: naukowców danych, analityków biznesowych, inżynierów danych, architektów i innych, którzy wykonują projekt analizy danych.
 
 > [!NOTE]
 > W zależności od struktury i rozmiaru przedsiębiorstwa pojedyncza osoba może odtwarzać więcej niż jedną rolę lub więcej niż jedna osoba może wypełnić rolę.
@@ -116,7 +116,7 @@ Poniższy rysunek przedstawia przepływ pracy przetwarzania TDSP na potrzeby wyk
 Kroki przepływu pracy można grupować w trzy działania:
 
 - Liderzy projektu przeprowadzają Planowanie przebiegu
-- Analitykowie danych tworzą artefakty w odniesieniu `git` do elementów roboczych
+- Analityków danych opracowuje artefakty w odniesieniu do elementów roboczych `git`
 - Potencjalni klienci projektu lub inni członkowie zespołu wykonują przeglądy kodu i scalają gałęzie robocze z gałęzią główną
 
 Aby uzyskać szczegółowe instrukcje dotyczące przepływu pracy wykonywanego w projekcie, zobacz [opracowywanie projektów analizy danych](agile-development.md).

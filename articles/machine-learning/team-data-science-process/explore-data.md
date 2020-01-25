@@ -3,20 +3,20 @@ title: Eksplorowanie danych w zespołowym przetwarzaniu danych dla celów naukow
 description: Eksplorowanie danych w środowiskach innego magazynu, które są zazwyczaj używane w procesie nauki o danych zespołu.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d4d2bc3292926144f13508780885e082f2b1fdc3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca993fd6a449b2655b13da337875fa3f9f27cade
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303625"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721272"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Eksplorowanie danych w zespołowym przetwarzaniu danych dla celów naukowych
 
@@ -28,4 +28,4 @@ Następujące artykuły zawierają opis eksplorować dane w trzech środowiskach
 * Zapoznaj się z [programu SQL Server](explore-data-sql-server.md) danych przy użyciu języka SQL i za pomocą języka programowania, takich jak Python.
 * Zapoznaj się z [tabeli hive za pomocą](explore-data-hive-tables.md) danych przy użyciu zapytań programu Hive.
 
-Ponadto, wideo, [wstępne przetwarzanie danych w usłudze Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/), w tym artykule opisano często używanych modułów czyszczenia i przekształcanie danych w usłudze Azure Machine Learning Studio.
+Ponadto film wideo, [wstępnie przetwarzający dane w Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/), zawiera opis często używanych modułów do czyszczenia i przekształcania danych.

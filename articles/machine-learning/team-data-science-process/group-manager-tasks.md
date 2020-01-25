@@ -1,23 +1,23 @@
 ---
-title: Zadania kierownika ds. przetwarzania danych zespołowych
+title: Zadania menedżera grupy danych dla celów naukowych zespołu
 description: Postępuj zgodnie z szczegółowym opisem zadań wykonywanych przez Menedżera grupy w projekcie zespołu analizy danych.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a3d23950f5cbfaac00b03b25e3c19078c76ad0a5
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053303"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721357"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Zadania kierownika ds. przetwarzania danych zespołowych
+# <a name="team-data-science-process-group-manager-tasks"></a>Zadania menedżera grupy danych dla celów naukowych zespołu
 
 W tym artykule opisano zadania, które *Menedżer grupy* ukończy dla organizacji analizy danych. Menedżer grupy zarządza całą jednostką analizy danych w przedsiębiorstwie. Jednostka do nauki o danych może mieć kilka zespołów, z których każdy pracuje w wielu projektach naukowych w różnych firmach. Celem Menedżera grupy jest ustanowienie środowiska grupy współpracy, które jest standaryzacją w [zespołowym procesie nauki o danych](overview.md) (przetwarzania TDSP). Aby zapoznać się z zarysem wszystkich ról pracowników i skojarzonych zadań obsłużonych przez zespół ds. analizy danych na przetwarzania TDSP, zobacz temat [role i zadania zespołowego procesu nauka danych zespołu](roles-tasks.md).
 
@@ -166,7 +166,7 @@ Aby dostosować zawartość repozytorium:
 Jeśli chcesz wprowadzić zmiany przy użyciu komputera lokalnego lub DSVM i wypchnąć zmiany do repozytoriów grup, upewnij się, że spełniono wymagania wstępne dotyczące pracy z usługami git i DSVMs:
 
 - Subskrypcja platformy Azure, jeśli chcesz utworzyć DSVM.
-- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zapoznaj się z [dodatkiem platformy i narzędzia](platforms-and-tools.md#appendix).
+- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zobacz [dodatku platformami i narzędziami](platforms-and-tools.md#appendix).
 - Jeśli chcesz użyć DSVM, system Windows lub Linux DSVM utworzony i skonfigurowany na platformie Azure. Aby uzyskać więcej informacji i instrukcje, zapoznaj się z [dokumentacją Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - W przypadku systemu Windows DSVM na komputerze zainstalowano program [git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . W pliku *README.MD* przewiń w dół do sekcji **pobieranie i instalacja** , a następnie wybierz **najnowszy Instalator**. Pobierz instalatora *exe* ze strony Instalatora i uruchom go. 
 - W przypadku systemu Linux DSVM klucz publiczny skonfigurowany na DSVM i dodany do usługi Azure DevOps. Aby uzyskać więcej informacji i instrukcje, zobacz sekcję **Tworzenie klucza publicznego SSH** w [dodatku platformy i narzędzia](platforms-and-tools.md#appendix). 
@@ -215,7 +215,7 @@ git push
 ```
 
 > [!NOTE]
-> Jeśli po raz pierwszy zatwierdzisz repozytorium git, może być konieczne skonfigurowanie parametrów globalnych *User.Name* i *User. email* przed uruchomieniem polecenia `git commit`. Uruchom następujące dwa polecenia:
+> Jeśli po raz pierwszy zatwierdzisz repozytorium git, może być konieczne skonfigurowanie parametrów globalnych *User.Name* i *User. email* przed uruchomieniem polecenia `git commit`. Uruchom dwa poniższe polecenia:
 > 
 > `git config --global user.name <your name>`
 > 
@@ -258,6 +258,6 @@ Aby skonfigurować uprawnienia dla członków:
 
 Poniżej znajdują się linki do szczegółowych opisów innych ról i zadań w procesie nauki danych zespołu:
 
-- [Zadania lidera zespołu dla zespołu ds. analizy danych](team-lead-tasks.md)
-- [Zadania lidera projektu dla zespołu ds. analizy danych](project-lead-tasks.md)
+- [Zadania kierownik zespołu dla zespołu do nauki o danych](team-lead-tasks.md)
+- [Zadania potencjalnych klientów dla zespołu do nauki o danych w projekcie](project-lead-tasks.md)
 - [Projekt poszczególnych zadań współautora dla zespołu ds. analizy danych](project-ic-tasks.md)

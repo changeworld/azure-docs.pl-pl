@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie kont laboratorium w Azure Lab Services | Microsoft Docs
-description: Dowiedz się, jak skonfigurować konto laboratorium po jego utworzeniu.
+description: W tym artykule opisano sposób tworzenia konta laboratorium, wyświetlania wszystkich kont laboratorium lub usuwania konta laboratorium w Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 1a1b1e662a2e9adedfc68f1818f868c0a5318652
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 597bbfdc35c556b5c75968084c01ac222fc468f4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428987"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718087"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurowanie kont laboratorium w Azure Lab Services 
 W Azure Lab Services konto laboratorium jest kontenerem dla zarządzanych typów laboratorium, takich jak pracownie. Administrator konfiguruje konto laboratorium przy użyciu Azure Lab Services i zapewnia dostęp do właścicieli laboratorium, którzy mogą tworzyć laboratoria na koncie. W tym artykule opisano sposób tworzenia konta laboratorium, wyświetlania wszystkich kont laboratorium lub usuwania konta laboratorium.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0e1ba6d86778b40f96940c417050e242fde33845
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b98ab8d3c4d03115ea689b4dfd3d8dee753f019d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797584"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715085"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Automatyczne skalowanie AKSów przy użyciu metryk Application Gateway (beta)
 
@@ -94,7 +94,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 Po umożliwieniu udostępnienia `appgw-request-count-metric` za pomocą serwera metryk jesteśmy gotowi do użycia [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) do skalowania wdrożenia docelowego.
 
-W poniższym przykładzie zostanie nadana Przykładowa `aspnet`wdrożenia. Skalowanie w górę skaluje się w górę w przypadku `appgw-request-count-metric` > 200 na poziomie do maksymalnie `10`ch zasobników.
+W poniższym przykładzie zostanie nadana Przykładowa `aspnet`wdrożenia. Skalowanie skaluje się w górę w przypadku `appgw-request-count-metric` > 200 w wysokości do maksymalnej `10` zasobników.
 
 Zastąp docelową nazwę wdrożenia i zastosuj następującą konfigurację automatycznego skalowania:
 ```yaml

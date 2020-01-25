@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: efef578f5c62bef4ae33b98b568fd6d5c1389c4a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672241"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715111"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
@@ -24,9 +24,9 @@ Azure App Service zapewnia wbudowaną obsługę uwierzytelniania i autoryzacji, 
 Bezpieczne uwierzytelnianie i autoryzacja wymagają dokładnego poznania zabezpieczeń, w tym Federacji, szyfrowania, zarządzania [tokenami sieci Web JSON (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) , [typów dotacji](https://oauth.net/2/grant-types/)i tak dalej. App Service udostępnia te narzędzia, dzięki czemu można poświęcać więcej czasu i energii na zapewnienie klientom wartości biznesowej.
 
 > [!IMPORTANT]
-> Nie musisz używać App Service dla AuthN/AuthO. Wiele platform sieci Web jest powiązanych z funkcjami zabezpieczeń i można ich użyć, jeśli chcesz. Jeśli potrzebujesz większej elastyczności niż App Service zapewniasz, możesz również napisać własne narzędzia.  
+> Nie musisz używać App Service dla AuthN/AuthO. Możesz użyć wbudowanych funkcji zabezpieczeń w ramach wybranej platformy sieci Web lub można napisać własne narzędzia. Należy jednak pamiętać, że program [chrome 80 wprowadza istotne zmiany w implementacji SameSite dla plików cookie](https://www.chromestatus.com/feature/5088147346030592) (Data wydania około marca 2020), a niestandardowe uwierzytelnianie zdalne lub inne scenariusze, które opierają się na księgowaniu plików cookie między lokacjami, mogą ulec przerwaniu podczas aktualizowania przeglądarek programu Chrome. Obejście jest złożone, ponieważ musi obsługiwać różne zachowania SameSite dla różnych przeglądarek. 
 >
-> Jeśli jednak korzystasz z dowolnej z opcji innych niż App Service na potrzeby uwierzytelniania zdalnego, pamiętaj, że program [Chrome 80 wprowadza zmiany w implementacji SameSite dla plików cookie](https://www.chromestatus.com/feature/5088147346030592) (Data wydania około marca 2020), a mechanizm uwierzytelniania aplikacji może ulec przerwaniu podczas aktualizowania przeglądarek klienta. Informacje o tym, jak rozwiązać ten problem w aplikacji, można znaleźć na stronie [http: przeglądarka SameSite zmiany mają wpływ na uwierzytelnianie](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). ASP.NET Core Zawiera ona przydatne wskazówki dotyczące testowania dla tej istotnej zmiany w porównaniu z głównymi przeglądarkami niezależnie od tego, czy używasz ASP.NET Core, czy nie.
+> W ASP.NET Core 2,1 i nowszych wersjach hostowanych przez App Service są już zainstalowane poprawki dla tej istotnej zmiany i obsługują odpowiednio program Chrome 80 i starsze przeglądarki. Ponadto ta sama poprawka dla ASP.NET Framework 4.7.2 jest wdrażana w App Service wystąpieniach w styczniu 2020. Aby uzyskać więcej informacji, w tym informacje o tym, czy aplikacja otrzymuje poprawkę, zobacz [Azure App Service SameSite cookie Update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
 
 Aby uzyskać informacje specyficzne dla natywnych aplikacji mobilnych, zobacz [uwierzytelnianie użytkowników i autoryzacja dla aplikacji mobilnych za pomocą Azure App Service](../app-service-mobile/app-service-mobile-auth.md).
@@ -85,7 +85,7 @@ App Service używa [tożsamości federacyjnej](https://en.wikipedia.org/wiki/Fed
 
 Po włączeniu uwierzytelniania i autoryzacji jednego z tych dostawców, jego punkt końcowy logowania jest dostępny do uwierzytelnienia użytkownika i do weryfikacji tokenów uwierzytelniania od dostawcy. Możesz zapewnić użytkownikom dowolną liczbę tych opcji logowania. Możesz także zintegrować innego dostawcę tożsamości lub [własne niestandardowe rozwiązanie do tworzenia tożsamości][custom-auth].
 
-## <a name="authentication-flow"></a>Przepływ uwierzytelniania
+## <a name="authentication-flow"></a>przepływ uwierzytelniania
 
 Przepływ uwierzytelniania jest taki sam dla wszystkich dostawców, ale różni się w zależności od tego, czy chcesz zalogować się przy użyciu zestawu SDK dostawcy:
 

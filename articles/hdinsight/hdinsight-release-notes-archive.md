@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2019
-ms.openlocfilehash: ad9437b135e48dcfaff9efa5f6daf345d78e79ef
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 094d9fe7425a6192ce2af94c3ea18cac20ff9ded
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895332"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720337"
 ---
 # <a name="archived-release-notes"></a>Zarchiwizowane informacje o wersji
 
@@ -52,10 +52,10 @@ Transport Layer Security (TLS) i SSL (SSL) to protokoły kryptograficzne zapewni
 
 Począwszy od kolejnej wersji, będzie można wybrać i skonfigurować nowe klastry usługi HDInsight do akceptowania tylko połączeń TLS 1,2. 
 
-W dalszej części roku, począwszy od 6/30/2020, usługa Azure HDInsight wymusi dla wszystkich połączeń HTTPS wartość TLS 1,2 lub nowszą. Zalecamy, aby upewnić się, że wszyscy klienci są gotowi do obsługi protokołu TLS 1,2 lub jego nowszych wersji.
+W dalszej części roku, począwszy od 6/30/2020, usługa Azure HDInsight wymusi dla wszystkich połączeń HTTPS wartość TLS 1,2 lub nowszą. Zalecamy, aby upewnić się, że wszyscy klienci są gotowi do obsługi protokołu TLS 1.2 lub jego nowszych wersji.
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Przechodzenie do zestawów skalowania maszyn wirtualnych platformy Azure
-Usługa HDInsight teraz używa maszyn wirtualnych platformy Azure do aprowizacji klastra. Rozpoczynając od Feburary 2020 (dokładna data zostanie przekazana później), Usługa HDInsight będzie używać zestawów skalowania maszyn wirtualnych platformy Azure. Zobacz więcej informacji o [zestawach skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+Usługa HDInsight teraz używa maszyn wirtualnych platformy Azure do aprowizacji klastra. Począwszy od lutego 2020 (dokładna data zostanie przekazana później) Usługa HDInsight będzie używać zestawów skalowania maszyn wirtualnych platformy Azure. Zobacz więcej informacji o [zestawach skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
 
 #### <a name="esp-spark-cluster-node-size-change"></a>Zmiana rozmiaru węzła klastra Spark w ramach platformy ESP 
 W nadchodzącym wydaniu:
@@ -772,7 +772,7 @@ W HDP-2.3. x i 2.4. x zamiast dostarczania konkretnej wersji oprogramowania Apac
 
 Punkt poprawki wybrany dla Mahout w HDP 2.3. x i 2.4. x pochodzi z gałęzi "Mahout-0.10. x" platformy Apache Mahout, z 19 grudnia 2014, Poprawka 0f037cb03e77c096 w serwisie GitHub.
 
-W HDP-2.5. x i 2.6. x usunięto bibliotekę "Commons Attribution-HttpClient" z Mahout, ponieważ przeglądamy ją jako przestarzałą bibliotekę z możliwymi problemami z zabezpieczeniami i uaktualniono klienta Hadoop w Mahout do wersji 2.7.3, tę samą wersję używaną w HDP-2,5. W efekcie:
+W HDP-2.5. x i 2.6. x usunięto bibliotekę "Commons Attribution-HttpClient" z Mahout, ponieważ przeglądamy ją jako przestarzałą bibliotekę z możliwymi problemami z zabezpieczeniami i uaktualniono klienta Hadoop w Mahout do wersji 2.7.3, tę samą wersję używaną w HDP-2,5. W związku z tym:
 
 -   Poprzednio skompilowane zadania Mahout muszą zostać ponownie skompilowane w środowisku HDP-2,5 lub 2,6.
 
@@ -1673,7 +1673,7 @@ Rozwiązano problemy przedstawiające wybrane problemy, które zostały wcześni
 
     -   <https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations>
 
-### <a name="upgrading"></a>Uaktualnianie
+### <a name="upgrading"></a>Unowocześnieni
 
 Wszystkie te funkcje są dostępne w usłudze HDInsight 3,6. Aby uzyskać najnowszą wersję platformy Spark, Kafka i R Server (Machine Learning Services), wybierz wersję usługi Spark, Kafka, ML w przypadku [tworzenia klastra HDInsight 3,6](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Aby uzyskać pomoc techniczną dotyczącą usługi ADLS, możesz wybrać typ magazynu ADLS jako opcję. Istniejące klastry nie zostaną automatycznie uaktualnione do tych wersji.
 

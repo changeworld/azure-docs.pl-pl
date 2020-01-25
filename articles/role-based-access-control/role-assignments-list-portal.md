@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934477"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720730"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Wyświetlanie listy przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure Portal
 
@@ -125,6 +125,16 @@ Aby wyświetlić listę dostępu dla użytkownika, grupy, nazwy głównej usług
     ![Przypisania ról dla tożsamości zarządzanej przypisanej do systemu](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
 
 1. Aby zmienić subskrypcję, kliknij listę **subskrypcje** .
+
+## <a name="list-number-of-role-assignments"></a>Liczba przypisań ról
+
+W każdej subskrypcji można korzystać z maksymalnie **2000** przypisań ról. Aby ułatwić śledzenie tych limitów, karta **przypisania ról** zawiera wykres, który wyświetla bieżącą liczbę przypisań ról.
+
+![Kontrola dostępu — liczba wykresów przypisań ról](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
+
+Jeśli zbliżasz się do maksymalnej liczby i podjęto próbę dodania kolejnych przypisań ról, w okienku **Dodaj przypisanie roli** zostanie wyświetlone ostrzeżenie. Możesz zmniejszyć liczbę przypisań ról, usuwając przydziały ról, które nie są już potrzebne, lub przypisując role do grup zamiast poszczególnych użytkowników.
+
+![Kontrola dostępu — ostrzeżenie o przypisaniu roli](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

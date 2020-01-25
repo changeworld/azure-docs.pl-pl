@@ -6,16 +6,16 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 12/20/2019
-ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/21/2020
+ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977564"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715846"
 ---
-# <a name="collect-azure-activity-log-with-legacy-settings"></a>Zbierz dziennik aktywności platformy Azure ze starszymi ustawieniami
-[Dziennik aktywności platformy Azure](platform-logs-overview.md) to [Dziennik platformy](platform-logs-overview.md) , który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Do ostatniego utworzenia profilu dziennika w celu wysłania wpisów dziennika aktywności do [centrum zdarzeń lub konta magazynu](activity-log-export.md) i użycia łącznika w celu zebrania ich w [obszarze roboczym log Analytics](activity-log-collect.md). W tym artykule opisano różnice między metodami, sposób pracy z istniejącymi starszymi ustawieniami oraz sposób czyszczenia starszych ustawień w obszarze przygotowanie do ustawień diagnostycznych.
+# <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualizacja kolekcji i eksportu dzienników aktywności platformy Azure
+[Dziennik aktywności platformy Azure](platform-logs-overview.md) to [Dziennik platformy](platform-logs-overview.md) , który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Metoda wysyłania wpisów dziennika aktywności do [centrum zdarzeń lub konta magazynu](activity-log-export.md) lub do [log Analyticsego obszaru roboczego](activity-log-collect.md) została zmieniona w celu korzystania z [ustawień diagnostycznych](diagnostic-settings.md). W tym artykule opisano różnice między metodami oraz sposób czyszczenia starszych ustawień w obszarze przygotowanie do zmiany ustawień diagnostycznych.
 
 
 ## <a name="differences-between-methods"></a>Różnice między metodami
@@ -39,14 +39,16 @@ Przed włączeniem tej funkcji należy wziąć pod uwagę następujące szczegó
 ### <a name="differences-in-data"></a>Różnice w danych
 Ustawienia diagnostyczne zbierają te same dane, jak poprzednie metody służące do zbierania dziennika aktywności z następującymi bieżącymi różnicami:
 
-Następujące właściwości zostały usunięte:
+Następujące kolumny zostały usunięte. Zastąpienie tych kolumn jest w innym formacie, więc może być konieczne zmodyfikowanie zapytań dziennika, które z nich korzystają. W schemacie mogą być nadal widoczne usunięte kolumny, ale nie będą one wypełniane danymi.
 
-- Element ActivityStatus
-- ActivitySubstatus
-- OperationName
-- ResourceProvider
+| Usunięto kolumnę | Kolumna zastępująca |
+|:---|:---|
+| Element ActivityStatus    | Element ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
-Dodano następujące właściwości:
+Dodano następującą kolumnę:
 
 - Authorization_d
 - Claims_d

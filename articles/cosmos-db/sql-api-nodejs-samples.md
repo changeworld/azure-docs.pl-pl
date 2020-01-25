@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: d79ac0e368ad824f6ceaea7bbcba151ecec72336
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ac3d74cb76a936cc88261a2fedf16764e8ae52f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220149"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718297"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Przykłady środowiska Node. js do zarządzania danymi w Azure Cosmos DB
 
@@ -51,7 +51,7 @@ Potrzebujesz również [zestawu SDK dla języka JavaScript](sql-api-sdk-node.md)
 
 Plik [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) pokazuje, jak wykonać operacje CRUD w bazie danych. Aby dowiedzieć się więcej na temat baz danych usługi Azure Cosmos przed uruchomieniem poniższych przykładów, zobacz [Praca z bazami danych, kontenerami i elementami](databases-containers-items.md) . 
 
-| Zadanie | Dokumentacja interfejsu API |
+| Zadanie | Dokumentacja interfejsów API |
 | --- | --- |
 | [Tworzenie bazy danych, jeśli nie istnieje](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts#L12-L14) |[Databases.createIfNotExists](/javascript/api/@azure/cosmos/databases?view=azure-node-latest#createifnotexists-databaserequest--requestoptions-) |
 | [Wyświetlanie listy baz danych na koncie](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts#L16-L18) |[Databases.readAll](/javascript/api/@azure/cosmos/databases?view=azure-node-latest#readall-feedoptions-) |
@@ -62,7 +62,7 @@ Plik [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/s
 
 Plik [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) pokazuje, jak wykonywać operacje CRUD w kontenerze. Aby dowiedzieć się więcej na temat kolekcji usługi Azure Cosmos przed uruchomieniem poniższych przykładów, zobacz [Praca z bazami danych, kontenerami i elementami](databases-containers-items.md) . 
 
-| Zadanie | Dokumentacja interfejsu API |
+| Zadanie | Dokumentacja interfejsów API |
 | --- | --- |
 | [Tworzenie kontenera, jeśli nie istnieje](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts#L14-L15) |[Containers.createIfNotExists](/javascript/api/@azure/cosmos/containers?view=azure-node-latest#createifnotexists-containerrequest--requestoptions-) |
 | [Wyświetlanie listy kontenerów dla konta](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts#L17-L21) |[Containers.readAll](/javascript/api/@azure/cosmos/containers?view=azure-node-latest#readall-feedoptions-) |
@@ -71,9 +71,9 @@ Plik [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/
 
 ## <a name="item-examples"></a>Przykłady dotyczące elementów
 
-Plik [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) pokazuje, jak wykonać operacje CRUD na elemencie. Aby dowiedzieć się więcej o dokumentach usługi Azure Cosmos przed uruchomieniem poniższych przykładów, zobacz [Praca z bazami danych, kontenerami i elementami](databases-containers-items.md) . 
+Plik [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) pokazuje, jak wykonać operacje CRUD na elemencie. Aby dowiedzieć się więcej o dokumentach usługi Azure Cosmos przed uruchomieniem poniższych przykładów, zobacz [Praca z bazami danych, kontenerami i elementami](databases-containers-items.md) . 
 
-| Zadanie | Dokumentacja interfejsu API |
+| Zadanie | Dokumentacja interfejsów API |
 | --- | --- |
 | [Tworzenie elementów](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts#L18-L21) |[Items.create](/javascript/api/@azure/cosmos/items?view=azure-node-latest#create-t--requestoptions-) |
 | [Odczytywanie wszystkich elementów w kontenerze](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts#L23-L28) |[Items.readAll](/javascript/api/@azure/cosmos/items?view=azure-node-latest#readall-feedoptions-) |
@@ -88,7 +88,7 @@ Plik [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/sampl
 
 Plik [IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts) pokazuje, jak zarządzać indeksowanie. Aby dowiedzieć się więcej na temat indeksowania Azure Cosmos DB przed uruchomieniem poniższych przykładów, zobacz [zasady indeksowania](index-policy.md), [typy indeksowania](index-types.md)i [ścieżki indeksowania](index-paths.md) artykuły koncepcyjne. 
 
-| Zadanie | Dokumentacja interfejsu API |
+| Zadanie | Dokumentacja interfejsów API |
 | --- | --- |
 | [Ręczne indeksowanie określonego elementu](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L52-L75) |[RequestOptions.indexingDirective: „include”](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
 | [Ręcznie Wyklucz określony element z indeksu](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L17-L29) |[RequestOptions.indexingDirective: „exclude”](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
@@ -98,9 +98,9 @@ Plik [IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samp
 
 ## <a name="server-side-programming-examples"></a>Przykłady programowania po stronie serwera
 
-Plik [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) w projekcie [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) pokazuje sposób wykonywania poniższych zadań. Aby dowiedzieć się więcej na temat programowania po stronie serwera w Azure Cosmos DB przed uruchomieniem poniższych przykładów, zobacz artykuł dotyczący [procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika](stored-procedures-triggers-udfs.md) . 
+Plik [index. TS](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/index.ts) projektu [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) pokazuje, jak wykonać poniższe zadania. Aby dowiedzieć się więcej na temat programowania po stronie serwera w Azure Cosmos DB przed uruchomieniem poniższych przykładów, zobacz artykuł dotyczący [procedur składowanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika](stored-procedures-triggers-udfs.md) . 
 
-| Zadanie | Dokumentacja interfejsu API |
+| Zadanie | Dokumentacja interfejsów API |
 | --- | --- |
 | [Tworzenie procedury składowanej](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/upsert.js) |[StoredProcedures.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/storedprocedures?view=azure-node-latest) |
 | [Wykonywanie procedury składowanej](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/index.ts) |[StoredProcedure.execute](https://docs.microsoft.com/javascript/api/%40azure/cosmos/storedprocedure?view=azure-node-latest) |

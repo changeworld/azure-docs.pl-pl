@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433501"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714450"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Jak skalować pamięć podręczną platformy Azure dla Redis
 Usługa Azure cache for Redis ma różne oferty pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiaru i funkcji pamięci podręcznej. Po utworzeniu pamięci podręcznej można skalować rozmiar i warstwę cenową pamięci podręcznej w przypadku zmiany wymagań aplikacji. W tym artykule przedstawiono sposób skalowania pamięci podręcznej przy użyciu Azure Portal i narzędzi, takich jak Azure PowerShell i interfejs wiersza polecenia platformy Azure.
@@ -22,9 +22,9 @@ Można użyć funkcji [monitorowania](cache-how-to-monitor.md) usługi Azure cac
 Można monitorować następujące metryki, aby pomóc w ustaleniu, czy konieczne jest skalowanie.
 
 * Ładowanie serwera Redis
-* Memory Usage (Użycie pamięci)
+* Użycie pamięci
 * Przepustowość sieci
-* Wykorzystanie procesora
+* Użycie procesora CPU
 
 Jeśli okaże się, że pamięć podręczna nie spełnia już wymagań aplikacji, można skalować ją do większej lub mniejszej warstwy cenowej pamięci podręcznej, która jest odpowiednia dla danej aplikacji. Aby uzyskać więcej informacji na temat określania warstwy cenowej pamięci podręcznej, która ma być używana, zobacz [zawartość pamięci podręcznej platformy Azure dla oferty Redis i rozmiar należy używać](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
 
@@ -166,7 +166,7 @@ Jeśli operacja skalowania nie powiedzie się, usługa podejmie próbę przywró
 
 
 ### <a name="how-long-does-scaling-take"></a>Jak długo trwa skalowanie?
-Skalowanie trwa około 20 minut, w zależności od ilości danych znajdujących się w pamięci podręcznej.
+Skalowanie czasu zależy od ilości danych znajdujących się w pamięci podręcznej, dzięki czemu większa ilość danych trwa dłużej. Skalowanie trwa około 20 minut. W przypadku klastrowanych pamięci podręcznych skalowanie trwa około 20 minut na fragmentu.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Jak mogę sprawdzić, czy skalowanie zostało zakończone?
 W Azure Portal można zobaczyć operację skalowania w toku. Po zakończeniu skalowania stan pamięci podręcznej zmieni się na **uruchomiony**.
@@ -176,6 +176,3 @@ W Azure Portal można zobaczyć operację skalowania w toku. Po zakończeniu ska
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
-
-
-

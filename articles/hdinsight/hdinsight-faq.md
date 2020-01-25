@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830381"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720354"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: często zadawane pytania
 
@@ -151,7 +151,7 @@ Tak, możesz udostępnić niestandardowy magazyn metadanych w wielu klastrach, o
 
 Jeśli zablokujesz porty 22 i 23, nie będziesz mieć dostępu do klastra za pośrednictwem protokołu SSH. Te porty nie są używane przez usługę HDInsight.
 
-Więcej informacji można znaleźć w następujących dokumentach:
+Aby uzyskać więcej informacji, zobacz następujące dokumenty:
 
 - [Kontrolowanie ruchu sieciowego](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
 
@@ -233,7 +233,7 @@ Aby uzyskać więcej informacji o konfigurowaniu i uruchamianiu zadania firmy CR
 ### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Dlaczego LLAP są dostępne w klastrach Spark ESP?
 W klastrach ESP Spark LLAP jest włączony ze względów bezpieczeństwa (np. Apache Ranger), a nie wydajności. Należy używać większych maszyn wirtualnych węzłów, aby uwzględnić użycie zasobów LLAP (np. minimum D13V2). 
 
-### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Jak dodać grupy usługi AAD addional po utworzeniu klastra ESP?
+### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>Jak mogę dodać dodatkowe grupy usługi AAD po utworzeniu klastra ESP?
 Istnieją dwa sposoby osiągnięcia tego celu: 1 — można utworzyć ponownie klaster i dodać dodatkową grupę podczas tworzenia klastra. Jeśli używasz synchronizacji w zakresie w usłudze AAD-DS, upewnij się, że Grupa B jest uwzględniona w synchronizacji z zakresem.
 2\. Dodaj grupę jako zagnieżdżoną podgrupę poprzedniej grupy, która została użyta do utworzenia klastra ESP. Jeśli na przykład utworzono klaster ESP z grupą `A`, można później dodać grupę `B` jako zagnieżdżoną podgrupę `A` i po upływie około godziny, będzie ona synchronizowana i dostępna w klastrze automatycznie. 
 

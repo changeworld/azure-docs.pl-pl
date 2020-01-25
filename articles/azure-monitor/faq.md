@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/30/2019
-ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/23/2020
+ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290346"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715939"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor często zadawane pytania
 
@@ -95,6 +95,18 @@ Wszystkie dane dzienników zbierane przez Azure Monitor są przechowywane w Log 
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Czy można przenieść istniejący obszar roboczy Log Analytics do innej subskrypcji platformy Azure?
 Obszar roboczy można przenieść między grupami zasobów lub subskrypcjami, ale nie do innego regionu. Zobacz [przenoszenie obszaru roboczego log Analytics do innej subskrypcji lub grupy zasobów](platform/move-workspace.md).
+
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Dlaczego nie widzę Eksploratora zapytań i nie zapisuj przycisków w Log Analytics?
+
+**Eksplorator zapytań**, przyciski **Zapisz** i **nowe reguły alertu** nie są dostępne, gdy [zakres zapytania](log-query/scope.md) jest ustawiony na określony zasób. Aby utworzyć alerty, Zapisz lub Załaduj zapytanie, Log Analytics musi być objęty zakresem obszaru roboczego. Aby otworzyć Log Analytics w kontekście obszaru roboczego, wybierz pozycję **dzienniki** z menu **Azure monitor** . Wybrano ostatni używanych obszaru roboczego, ale można wybrać inny obszar roboczy. Zobacz [zakres zapytań dzienników i zakres czasu w Azure Monitor Log Analytics](log-query/scope.md)
+
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Dlaczego otrzymuję błąd: "Zarejestruj dostawcę zasobów" Microsoft. Insights "dla tej subskrypcji, aby włączyć to zapytanie" podczas otwierania Log Analytics z maszyny wirtualnej? 
+Wielu dostawców zasobów jest automatycznie rejestrowanych, ale może być konieczne ręczne zarejestrowanie niektórych dostawców zasobów. Zakres do rejestracji jest zawsze subskrypcji. Aby uzyskać więcej informacji, zobacz [Dostawcy zasobów i ich typy](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Dlaczego otrzymuję komunikat o błędzie dostępu podczas otwierania Log Analytics z maszyny wirtualnej? 
+Aby wyświetlić dzienniki maszyn wirtualnych, musisz mieć uprawnienia do odczytu w obszarze roboczym, w którym są przechowywane dzienniki maszyn wirtualnych. W takich przypadkach administrator musi udzielić użytkownikowi uprawnień na platformie Azure.
+
+
 
 
 ## <a name="alerts"></a>Alerty
@@ -180,6 +192,12 @@ Określ istniejącą lub nową [grupę akcji](platform/action-groups.md) w taki 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Jakie są wymagania dotyczące zapory dla Azure Monitor agentów?
 Szczegółowe informacje na temat wymagań zapory można znaleźć w temacie [wymagania dotyczące zapory sieciowej](platform/log-analytics-agent.md#network-firewall-requirements).
 
+
+## <a name="visualizations"></a>Wizualizacje
+
+### <a name="why-cant-i-cant-see-view-designer"></a>Dlaczego nie mogę zobaczyć projektanta widoków?
+
+Projektant widoków jest dostępny tylko dla użytkowników przypisanych z uprawnieniami współautora lub wyższych w obszarze roboczym Log Analytics.
 
 
 ## <a name="application-insights"></a>Application Insights
@@ -322,7 +340,7 @@ Jest to możliwe, jeśli kod wysyła takie dane. Może również wystąpić, je�
 * Może służyć do pochylania alertów dotyczących danych lub wyzwalaczy.
 * Nie wiemy, że każdy klient miał takie problemy.
 
-Można wykonać następujące czynności:
+Możesz:
 
 * Użyj dwóch oddzielnych kluczy Instrumentacji (oddzielnych zasobów Application Insights) dla danych klienta i serwera. Lub
 * Napisz serwer proxy, który działa na serwerze i czy klient sieci Web wyśle dane za pomocą tego serwera proxy.

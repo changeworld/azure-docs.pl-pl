@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: affa182145645b9a91801a9c6b38e682e6bd77ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832914"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720065"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Klucze, wpisy tajne i certyfikaty — informacje
 
@@ -76,7 +76,7 @@ Miejsce:
 |`keyvault-name`|Nazwa magazynu kluczy w usłudze Microsoft Azure Key Vault.<br /><br /> Nazwy Key Vault są wybrane przez użytkownika i są unikatowe globalnie.<br /><br /> Nazwa Key Vault musi być ciągiem znaków 3-24, zawierającym tylko 0-9, a-z, A-Z i-.|  
 |`object-type`|Typ obiektu ("klucze" lub "tajemnice").|  
 |`object-name`|`object-name` to nazwa podana przez użytkownika dla i musi być unikatowa w ramach Key Vault. Nazwa musi być ciągiem znaków 1-127, zawierającym tylko 0-9, a-z, A-Z i-.|  
-|`object-version`|`object-version` to wygenerowany przez system, 32 identyfikator ciągu znaków, który jest opcjonalnie używany * o adres unikatowej wersji obiektu.|  
+|`object-version`|`object-version` to wygenerowany przez system, 32 identyfikator ciągu znaków, który jest opcjonalnie używany do adresowania unikatowej wersji obiektu.|  
 
 ## <a name="key-vault-keys"></a>Klucze Key Vault
 
@@ -230,7 +230,7 @@ Aby uzyskać więcej informacji na temat pracy z kluczami, zobacz [najważniejsz
 
 Z perspektywy deweloperów Key Vault interfejsy API akceptują i zwracają wartości tajne jako ciągi. Wewnętrznie program Key Vault przechowuje klucze tajne i zarządza nimi jako sekwencje oktetów (8-bitowych bajtów), a każdy z nich ma maksymalny rozmiar 25k bajtów. Usługa Key Vault nie zapewnia semantyki dla wpisów tajnych. Tylko akceptuje dane, szyfruje je, zapisuje i zwraca identyfikator tajny ("ID"). Identyfikatora można użyć do pobrania klucza tajnego w późniejszym czasie.  
 
-W przypadku wysoce poufnych danych klienci powinni rozważyć zastosowanie dodatkowych warstw ochrony danych. Jednym z przykładów jest szyfrowanie danych przy użyciu oddzielnego klucza ochrony w celu przechowywania ich w usłudze Key Vault.  
+W przypadku wysoce poufnych danych klienci powinni rozważyć dodatkowe warstwy ochrony danych. Szyfrowanie danych przy użyciu oddzielnego klucza ochrony przed magazynem w Key Vault jest jednym z przykładów.  
 
 Key Vault obsługuje również pole ContentType dla wpisów tajnych. Klienci mogą określić typ zawartości wpisu tajnego, aby pomóc w interpretacji danych tajnych podczas pobierania. Maksymalna długość tego pola to 255 znaków. Brak wstępnie zdefiniowanych wartości. Sugerowane użycie jest wskazówką dotyczącą interpretacji danych tajnych. Na przykład implementacja może przechowywać hasła i certyfikaty jako wpisy tajne, a następnie używać tego pola do rozróżniania. Brak wstępnie zdefiniowanych wartości.  
 

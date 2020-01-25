@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7da3c3de5074df80c676238e4d43dbd677b0a3b4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091825"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720235"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Sesje komunikatów: pierwszy w, pierwszy na zewnątrz (FIFO) 
 
@@ -54,13 +54,13 @@ Sesje umożliwiają jednoczesne usuwanie z przeplotu strumieni komunikatów podc
 
 Odbiorca [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) jest tworzony przez klienta akceptującego sesję. Klient wywołuje [QueueClient. AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) lub [QueueClient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) w C#. W reaktywnym modelu wywołania zwrotnego rejestruje procedurę obsługi sesji.
 
-Gdy obiekt [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) zostanie zaakceptowany i gdy jest przechowywany przez klienta, klient posiada blokadę na wyłączność na wszystkich komunikatach z sesją [sesji, która istnieje](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) w kolejce lub subskrypcji, a także na wszystkich komunikatach z tym **identyfikatorem** to wciąż przychodzą w czasie, gdy sesja jest utrzymywana.
+Gdy obiekt [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) zostanie zaakceptowany i gdy jest przechowywany przez klienta, klient ma zablokowaną blokadę dla wszystkich komunikatów z sesją [sesji, która istnieje](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) w kolejce lub subskrypcji, a także na wszystkich komunikatach z tym **identyfikatorem SessionID** , który nadal dociera podczas sesji.
 
 Blokada jest uwalniana, gdy wywoływana jest wartość **Close** lub **CloseAsync** lub gdy blokada wygaśnie w przypadkach, w których aplikacja nie może wykonać operacji zamknięcia. Blokada sesji powinna być traktowana jak blokada wyłączna dla pliku, co oznacza, że aplikacja powinna zamykać sesję, gdy tylko nie będą potrzebne, i/lub nie oczekuje żadnych dalszych komunikatów.
 
 Gdy wiele współbieżnych odbiorników pobiera z kolejki, komunikaty należące do określonej sesji są wysyłane do określonego odbiornika, który aktualnie przechowuje blokadę dla danej sesji. W przypadku tej operacji, przechodzący strumień komunikatów znajdujący się w jednej kolejce lub subskrypcji jest usuwany z różnych odbiorników, a odbiorcy mogą również być aktywni na różnych komputerach klienckich, ponieważ zarządzanie blokadą odbywa się po stronie usługi, wewnątrz Service Bus.
 
-Poprzednia ilustracja przedstawia trzy współbieżne odbiorniki sesji. Jedna sesja z `SessionId` programem = 4 nie ma aktywnego klienta będącego właścicielem, co oznacza, że żadne komunikaty nie są dostarczane z tej konkretnej sesji. Sesja działa na wiele sposobów, takich jak Kolejka podrzędna.
+Poprzednia ilustracja przedstawia trzy współbieżne odbiorniki sesji. Jedna sesja z `SessionId` = 4 nie ma aktywnego klienta będącego właścicielem, co oznacza, że żadne komunikaty nie są dostarczane z tej konkretnej sesji. Sesja działa na wiele sposobów, takich jak Kolejka podrzędna.
 
 Blokada sesji zatrzymywana przez odbiorcę sesji to parasol dla blokad komunikatów używanych przez tryb rozliczania *blokady wglądu* . Odbiornik nie może jednocześnie korzystać z dwóch komunikatów "w locie", ale komunikaty muszą być przetwarzane w kolejności. Nowy komunikat można uzyskać tylko wtedy, gdy poprzedni komunikat został ukończony lub utracony. Porzucanie komunikatu powoduje ponowne obsłużynie tego samego komunikatu z następną operacją Receive.
 
@@ -82,7 +82,7 @@ Stan sesji w kolejce lub w subskrypcji liczy się na przydział magazynu tego ob
 
 ## <a name="impact-of-delivery-count"></a>Wpływ liczby dostaw
 
-Definicja liczby dostaw na komunikat w kontekście sesji różni się nieco od definicji w absense sesji. Poniżej przedstawiono tabelę podsumowującą, kiedy licznik dostarczania jest zwiększany.
+Definicja liczby dostaw na komunikat w kontekście sesji różni się nieco od definicji w przypadku braku sesji. Poniżej przedstawiono tabelę podsumowującą, kiedy licznik dostarczania jest zwiększany.
 
 | Scenariusz | Czy liczba dostaw komunikatów jest zwiększana |
 |----------|---------------------------------------------|

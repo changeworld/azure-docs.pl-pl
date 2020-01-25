@@ -3,23 +3,23 @@ title: Przykładowe dane w tabelach Azure HDInsight Hive - zespołu danych dla c
 description: Obniżenie częstotliwości próbkowania danych przechowywanych w usłudze Azure HDInsight Hive tabel przy użyciu zapytań programu Hive w celu zmniejszenia ilości danych do rozmiaru łatwiejszych do analizy.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c417950e07ae3c6922aa260a3ef40d862870aa1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042887"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719997"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Przykładowe dane w tabelach usługi Azure HDInsight Hive
-W tym artykule opisano, jak obniżenie częstotliwości próbkowania danych przechowywanych w usłudze Azure HDInsight Hive tabel przy użyciu zapytań programu Hive, aby zmniejszyć jego rozmiar łatwiejszych do analizy. Trzy metody pobierania próbek co jest często używany ona obejmować:
+W tym artykule opisano, jak obniżenie częstotliwości próbkowania danych przechowywanych w usłudze Azure HDInsight Hive tabel przy użyciu zapytań programu Hive, aby zmniejszyć jego rozmiar łatwiejszych do analizy. Obejmuje trzy popularne metody próbkowania:
 
 * Jednolite losowego pobierania próbek
 * Losowego próbkowanie według grup
@@ -31,7 +31,7 @@ Jeśli zestaw danych, która ma zostać analizowanie jest duża, zazwyczaj przyc
 To zadanie próbkowania jest krok [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Jak przesłać zapytania programu Hive
-W konsoli wiersza polecenia usługi Hadoop na węzłem głównym klastra Hadoop można przesłać zapytania hive. Aby to zrobić, zaloguj się do węzła głównego klastra usługi Hadoop, otwórz konsolę wiersza polecenia usługi Hadoop i przesłać zapytania Hive, w tym miejscu. Aby uzyskać instrukcje dotyczące przesyłania zapytań programu Hive w konsoli wiersza polecenia usługi Hadoop, zobacz [jak przesłać zapytania Hive](move-hive-tables.md#submit).
+W konsoli wiersza polecenia usługi Hadoop na węzłem głównym klastra Hadoop można przesłać zapytania hive.  Zaloguj się do węzła głównego klastra Hadoop, Otwórz konsolę wiersza polecenia usługi Hadoop i prześlij do niej zapytania programu Hive. Aby uzyskać instrukcje dotyczące przesyłania zapytań programu Hive w konsoli wiersza polecenia usługi Hadoop, zobacz [jak przesłać zapytania Hive](move-hive-tables.md#submit).
 
 ## <a name="uniform"></a> Jednolite losowego pobierania próbek
 Jednolite losowego próbkowanie oznacza, że każdy wiersz w zestawie danych ma równe szanse na próbkowane. Może być implementowany przez dodanie rand() dodatkowe pola do zestawu danych w "Wybierz" zapytanie wewnętrzne i zewnętrzne zapytania "Wybierz" tego warunku dla tego pola, losowych.
@@ -81,7 +81,7 @@ Poniżej przedstawiono przykładowe zapytanie tego przykłady przez grupę:
     on b.catfield=c.catfield
 
 ## <a name="stratified"></a>Stratyfikowana próbkowania
-Losowego próbkowanie jest uporządkować w odniesieniu do zmiennej podzielonych na kategorie, gdy przykłady uzyskane wartości podzielonych na kategorie, znajdujących się w tej samej proporcji znajdowały się w populacji nadrzędnej. Korzystając z tego samego przykładu, jak powyżej, załóżmy, że dane zawierają następujących obserwacjach według stanów: JORK ma 100 uwagi, NY ma 60 uwagi, a WA ma 300 uwagi. Jeśli określisz stopień stratyfikowana próbkowanie, aby być 0,5, następnie otrzymaną próbkę powinny mieć około 50, 30 i 150 obserwacje JORK, NY i WA odpowiednio.
+Losowego próbkowanie jest uporządkować w odniesieniu do zmiennej podzielonych na kategorie, gdy przykłady uzyskane wartości podzielonych na kategorie, znajdujących się w tej samej proporcji znajdowały się w populacji nadrzędnej. Jak wyżej, przy użyciu tego samego przykładu załóżmy, że dane zawierają następujących obserwacjach według stanów: JORK ma 100 uwagi, NY ma 60 uwagi, a WA ma 300 uwagi. Jeśli określisz stopień stratyfikowana próbkowanie, aby być 0,5, następnie otrzymaną próbkę powinny mieć około 50, 30 i 150 obserwacje JORK, NY i WA odpowiednio.
 
 Oto przykładowe zapytanie:
 

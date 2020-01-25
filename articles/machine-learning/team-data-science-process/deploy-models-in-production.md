@@ -2,20 +2,20 @@
 title: Wdrażanie modeli w środowisku produkcyjnym — zespołu danych dla celów naukowych
 description: Jak wdrażać modele do produkcji, umożliwiając im odtwarzanie aktywną rolę w podejmowaniu decyzji biznesowych.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ed48ab9f85d28bec926120fea87a5ccf8bb6f9af
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526774"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722241"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Wdrażaj modele do produkcji, aby odtworzyć aktywną rolę w podejmowaniu decyzji biznesowych
 
@@ -39,7 +39,7 @@ Istnieją różne podejścia i platformy, aby wdrożyć modele do produkcji. Pon
 
 ## <a name="ab-testing"></a>Testowanie A/B
 
-W przypadku wielu modeli w środowisku produkcyjnym, może być przydatne do wykonania [A / B, testowanie](https://en.wikipedia.org/wiki/A/B_testing) porównywanie wydajności modeli. 
+Gdy wiele modeli jest w środowisku produkcyjnym, [testy A/B](https://en.wikipedia.org/wiki/A/B_testing) mogą służyć do porównywania wydajności modelu. 
  
 ## <a name="next-steps"></a>Następne kroki
 

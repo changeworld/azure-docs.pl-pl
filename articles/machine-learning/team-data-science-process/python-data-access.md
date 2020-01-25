@@ -3,20 +3,20 @@ title: Dostęp do zestawów danych za pomocą biblioteki klienta Python - zespo�
 description: Zainstaluj i dostęp do danych i zarządzanie nimi usługi Azure Machine Learning bezpieczne od lokalnego środowiska Python za pomocą biblioteki klienta języka Python.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 241f804b0519fd744e8b980b2d311a72680aafad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427385"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720983"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Dostęp do zestawów danych z językiem Python za pomocą biblioteki klienta Python usługi Azure Machine Learning
 Biblioteki klienta języka Python usługi Microsoft Azure Machine Learning w wersji zapoznawczej można włączyć bezpieczny dostęp do usługi Azure Machine Learning zestawów danych z lokalnego środowiska Python i umożliwia tworzenie i Zarządzanie zestawami danych w obszarze roboczym.
@@ -26,7 +26,7 @@ Ten temat zawiera instrukcje dotyczące sposobu:
 * Zainstaluj biblioteki klienta języka Python Machine Learning
 * dostęp i przekaż zestawów danych, w tym instrukcje dotyczące sposobu uzyskania autoryzacji dostępu do zestawów danych usługi Azure Machine Learning w lokalnym środowisku Python
 * dostęp do zestawów danych pośrednich z eksperymentów
-* Wyliczanie zestawów danych, dostęp do metadanych, czytać zawartość zestawu danych, tworzyć nowe zestawy danych i zaktualizować istniejące zestawy danych za pomocą biblioteki klienta języka Python
+* za pomocą biblioteki klienta języka Python można wyliczać zestawy danych, uzyskiwać dostęp do metadanych, odczytywać zawartość zestawu danych, tworzyć nowe zestawy danych i aktualizować istniejące zestawy danych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Biblioteki klienta Python został przetestowany w następujących środowiskach:
@@ -43,7 +43,7 @@ Ma zależności na następujące pakiety:
 Firma Microsoft zaleca używanie dystrybucji języka Python, takich jak [Anaconda](http://continuum.io/downloads#all) lub [korony](https://store.enthought.com/downloads/), które pochodzą z języka Python, IPython i zainstalować trzy pakiety wymienione powyżej. Chociaż IPython nie jest bezwzględnie konieczne, to doskonałe środowisko do manipulowania i wizualizowanie danych w interaktywne.
 
 ### <a name="installation"></a>Jak zainstalować biblioteki klienta języka Python usługi Azure Machine Learning
-Należy także zainstalować biblioteki klienta języka Python usługi Azure Machine Learning w celu wykonania zadań opisanych w tym temacie. Jest ona dostępna z [indeksu pakietów języka Python](https://pypi.python.org/pypi/azureml). Aby go zainstalować w środowisku Python, uruchom następujące polecenie ze środowiska lokalnego środowiska Python:
+Zainstaluj bibliotekę kliencką Azure Machine Learning Python, aby wykonać zadania opisane w tym temacie. Ta biblioteka jest dostępna w [indeksie pakietu języka Python](https://pypi.python.org/pypi/azureml). Aby go zainstalować w środowisku Python, uruchom następujące polecenie ze środowiska lokalnego środowiska Python:
 
     pip install azureml
 
@@ -70,13 +70,13 @@ Ze względów bezpieczeństwa funkcji fragment kodu jest dostępna tylko dla uż
 
 Jeśli Twoja rola nie jest ustawiony jako **właściciela**, możesz zażądać można go ponownie zaprosić jako właściciela lub poproś właściciela obszaru roboczego do przedstawienia fragmentu kodu.
 
-Aby uzyskać token autoryzacji, wykonaj jedną z następujących:
+Aby uzyskać Token autoryzacji, można wybrać jedną z następujących opcji:
 
 * Poproś o token od właściciela. Właściciele mogą uzyskać dostęp do tokenów autoryzacji ze strony ustawień obszaru roboczego w Azure Machine Learning Studio (klasyczny). Wybierz **ustawienia** w okienku po lewej stronie, a następnie kliknij **TOKENACH autoryzacji** się tokeny podstawowego i pomocniczego. Mimo że podstawowej lub tokenów pomocniczych autoryzacji można używać we fragmencie kodu, zaleca się, że właścicieli udostępniać tylko tokenów pomocniczych autoryzacji.
 
    ![Tokeny autoryzacji](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Poproś o podniesiony do roli właściciel. Aby to zrobić, bieżący właściciel obszaru roboczego musi najpierw należy usunąć z obszaru roboczego, a następnie ponownie zaprosić do niego jako właściciela.
+* Poproś o podwyższenie poziomu roli właściciela: Bieżący właściciel obszaru roboczego musi najpierw usunąć użytkownika z obszaru roboczego, a następnie ponownie zaprosić użytkownika jako właściciela.
 
 Gdy deweloperzy uzyskali identyfikator obszaru roboczego i token autoryzacji, będą mogli uzyskać dostęp do obszaru roboczego przy użyciu fragmentu kodu, niezależnie od ich roli.
 
@@ -100,7 +100,7 @@ Po uruchomieniu eksperymentu w Machine Learning Studio (klasyczny) możliwe jest
 
 Może zostać oceniony pośrednich zestawów danych, tak długo, jak format danych jest zgodny z biblioteki klienta Python.
 
-Obsługiwane są następujące formaty (stałe te znajdują się w `azureml.DataTypeIds` klasy):
+Obsługiwane są następujące formaty (stałe dla tych formatów znajdują się w klasie `azureml.DataTypeIds`):
 
 * Zwykły tekst
 * GenericCSV
@@ -124,7 +124,7 @@ Poniższe kroki pokazują przykładowi, który tworzy eksperymentu, uruchomi go 
 2. Wstaw **zestawu danych treści dla dorosłych klasyfikacji binarnej dochodu spisu** modułu.
 3. Wstaw moduł [podzielony][split] i Połącz jego dane wejściowe z danymi wyjściowymi modułu DataSet.
 4. Wstaw moduł [Convert to CSV][convert-to-csv] i Połącz jego dane wejściowe z jednym z danych wyjściowych modułu [Split][split] .
-5. Zapisz eksperymentu, uruchom go i poczekaj na zakończenie działania.
+5. Zapisz eksperyment, uruchom go i poczekaj na zakończenie zadania.
 6. Kliknij węzeł wyjście w module [Konwertuj na wolumin CSV][convert-to-csv] .
 7. Po wyświetleniu menu kontekstowego wybierz **Generuj kod dostępu do danych**.
    
@@ -140,7 +140,7 @@ Poniższe kroki pokazują przykładowi, który tworzy eksperymentu, uruchomi go 
     ![Histogram][ipython-histogram]
 
 ## <a name="clientApis"></a>Użyj biblioteki klienta języka Python Machine Learning, aby uzyskać dostęp, Odczyt, tworzenie i Zarządzanie zestawami danych
-### <a name="workspace"></a>Obszar roboczy
+### <a name="workspace"></a>Workspace
 Obszar roboczy jest punkt wejścia dla biblioteki klienta Python. Podaj klasę `Workspace` z IDENTYFIKATORem obszaru roboczego i tokenem autoryzacji, aby utworzyć wystąpienie:
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',

@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: e7296c63a467b2f53550b3e609cf1146244cf933
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681382"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712127"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Sprawdź stan aprowizacji użytkowników
 
@@ -35,7 +35,7 @@ Podczas pierwszej konfiguracji automatycznej aprowizacji, **Bieżąca sekcja sta
 - Typ cyklu aprowizacji (początkowy lub przyrostowy), który jest aktualnie uruchomiony lub ostatnio zakończony.
 - **Pasek postępu** przedstawiający procent cyklu aprowizacji, który został ukończony. Wartość procentowa odzwierciedla liczbę zainicjowanych stron. Należy pamiętać, że każda strona może zawierać wielu użytkowników lub grup, więc wartość procentowa nie jest bezpośrednio skorelowana z liczbą użytkowników, grup lub ról, które są obsługiwane.
 - Przycisk **odświeżania** , którego można użyć, aby zachować zaktualizowany widok.
-- Liczba **użytkowników** i **grup** w magazynie danych łącznika. Liczba rośnie wszędzie po dodaniu obiektu do zakresu aprowizacji. Ta liczba nie zostanie wyłączona, jeśli użytkownik zostanie usunięty lub usunięty trwale, ponieważ nie spowoduje to usunięcia obiektu z magazynu danych łącznika. Liczba zostanie ponownie obliczone pierwszej synchronizacji po [zresetowaniu](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) dysków CD 
+- Liczba **użytkowników** i **grup** w magazynie danych łącznika. Liczba rośnie wszędzie po dodaniu obiektu do zakresu aprowizacji. Ta liczba nie zostanie wyłączona, jeśli użytkownik zostanie usunięty lub usunięty trwale, ponieważ nie spowoduje to usunięcia obiektu z magazynu danych łącznika. Liczba zostanie recaculated pierwszej synchronizacji po [zresetowaniu](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) dysków CD 
 - Łącze **Wyświetl dzienniki inspekcji** , które otwiera dzienniki aprowizacji usługi Azure AD, aby uzyskać szczegółowe informacje o wszystkich operacjach wykonywanych przez usługę aprowizacji użytkowników, w tym o stanie aprowizacji poszczególnych użytkowników (zobacz sekcję korzystanie z [dzienników aprowizacji](#use-provisioning-logs-to-check-a-users-provisioning-status) poniżej).
 
 Po zakończeniu cyklu aprowizacji sekcja **statystyki do daty** pokazuje skumulowaną liczbę użytkowników i grup, których zainicjowano na dzień, wraz z datą ukończenia i czasem trwania ostatniego cyklu. **Identyfikator działania** jednoznacznie identyfikuje najnowszy cykl aprowizacji. **Identyfikator zadania** jest unikatowym identyfikatorem zadania aprowizacji i jest specyficzny dla aplikacji w dzierżawie.
@@ -60,7 +60,7 @@ Dzienniki aprowizacji rejestrują wszystkie operacje wykonywane przez usługę a
 Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji w Azure Portal, zobacz [Przewodnik po raportowaniu obsługi administracyjnej](check-status-user-account-provisioning.md).
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Jak długo trwa inicjowanie obsługi administracyjnej użytkowników?
-W przypadku korzystania z automatycznej aprowizacji użytkowników w aplikacji usługa Azure AD automatycznie inicjuje i aktualizuje konta użytkowników w aplikacji na podstawie takich elementów, jak [przypisywanie użytkowników i grup](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) w regularnych zaplanowanych odstępach czasu, zazwyczaj co 40 minut.
+W przypadku korzystania z automatycznej aprowizacji użytkowników w aplikacji usługa Azure AD automatycznie inicjuje i aktualizuje konta użytkowników w aplikacji na podstawie takich elementów, jak [przypisywanie użytkowników i grup](assign-user-or-group-access-portal.md) w regularnych zaplanowanych odstępach czasu, zazwyczaj co 40 minut.
 
 Czas, w którym dany użytkownik ma zostać zainicjowany, zależy głównie od tego, czy zadanie aprowizacji wykonuje cykl początkowy czy cykl przyrostowy.
 
@@ -102,7 +102,7 @@ Podsumowanie czynników wpływających na czas trwania **cyklu początkowego**:
 
 - Liczba i rozmiary przypisanych grup. Synchronizowanie przypisanych grup trwa dłużej niż synchronizowanie użytkowników. Zarówno liczba, jak i rozmiary przypisanych grup wpływają na wydajność. Jeśli aplikacja ma [mapowania włączone dla synchronizacji obiektów grup](customize-application-attributes.md#editing-group-attribute-mappings), w dodatku do użytkowników są synchronizowane właściwości grupy, takie jak nazwy grup i członkostwa. Te dodatkowe synchronizacje będą trwać dłużej niż tylko synchronizowanie obiektów użytkownika.
 
-- Jeśli wydajność jest problemem i podjęto próbę aprowizacji większości użytkowników i grup w dzierżawie, użyj filtrów zakresu. Filtry zakresu umożliwiają precyzyjne dostosowywanie danych, które usługa aprowizacji wyodrębnia z usługi Azure AD przez filtrowanie użytkowników na podstawie określonych wartości atrybutów. Aby uzyskać więcej informacji na temat określania zakresu filtrów, zobacz Tworzenie [aplikacji opartych na atrybutach przy użyciu filtrów zakresu](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+- Jeśli wydajność jest problemem i podjęto próbę aprowizacji większości użytkowników i grup w dzierżawie, użyj filtrów zakresu. Filtry zakresu umożliwiają precyzyjne dostosowywanie danych, które usługa aprowizacji wyodrębnia z usługi Azure AD przez filtrowanie użytkowników na podstawie określonych wartości atrybutów. Aby uzyskać więcej informacji na temat określania zakresu filtrów, zobacz Tworzenie [aplikacji opartych na atrybutach przy użyciu filtrów zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Następne kroki
-[Automatyzacja aprowizacji i anulowania aprowizacji użytkowników w aplikacjach SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)
+[Automatyzacja aprowizacji i anulowania aprowizacji użytkowników w aplikacjach SaaS przy użyciu usługi Azure Active Directory](user-provisioning.md)

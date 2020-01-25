@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154345"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713324"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Tworzenie prywatnego klastra usługi Azure Kubernetes Service (wersja zapoznawcza)
 
@@ -128,14 +128,16 @@ Punkt końcowy serwera interfejsu API nie ma publicznego adresu IP. W związku z
 
 ## <a name="dependencies"></a>Zależności  
 * Usługa link prywatny jest obsługiwana tylko w przypadku standardowej Azure Load Balancer. Podstawowa Azure Load Balancer nie jest obsługiwana.  
+* Aby użyć niestandardowego serwera DNS, wdróż serwer usługi AD przy użyciu systemu DNS do przesyłania dalej do tego 168.63.129.16 IP
 
 ## <a name="limitations"></a>Ograniczenia 
+* Strefy dostępności nie są obecnie obsługiwane
 * [Ograniczenia usługi Azure Private link][private-link-service] są stosowane do prywatnych klastrów, prywatnych punktów końcowych platformy Azure i punktów końcowych usługi sieci wirtualnej, które nie są obecnie obsługiwane w tej samej sieci wirtualnej.
-* W prywatnej sieci wirtualnej platformy Azure żadna obsługa węzłów wirtualnych w klastrze prywatnym nie jest obsługiwana w przypadku prywatnych Azure Container Instances (ACI).
-* Brak wsparcia dla integracji usługi Azure DevOps z użyciem klastrów prywatnych.
+* Brak obsługi węzłów wirtualnych w klastrze prywatnym do Azure Container Instances prywatnego (ACI) w prywatnej sieci wirtualnej platformy Azure
+* Brak wsparcia dla integracji usługi Azure DevOps z użyciem klastrów prywatnych
 * W przypadku klientów, którzy muszą umożliwić Azure Container Registry pracy z prywatnym AKS, Container Registry sieci wirtualnej musi być połączona z siecią wirtualną klastra agentów.
-* Brak bieżącej obsługi Azure Dev Spaces.
-* Brak obsługi konwertowania istniejących klastrów AKS do klastrów prywatnych.  
+* Brak bieżącej obsługi Azure Dev Spaces
+* Brak obsługi konwertowania istniejących klastrów AKS do klastrów prywatnych
 * Usunięcie lub zmodyfikowanie prywatnego punktu końcowego w podsieci klienta spowoduje, że klaster przestanie działać. 
 * Azure Monitor kontenerów danych na żywo nie są obecnie obsługiwane.
 * *Korzystanie z własnego systemu DNS* nie jest obecnie obsługiwane.

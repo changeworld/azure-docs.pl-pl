@@ -5,20 +5,21 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969657"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715901"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure
 
-> [!WARNING]
-> Teraz można zbierać dane dziennika aktywności w obszarze roboczym Log Analytics przy użyciu ustawienia diagnostycznego podobnego do sposobu zbierania dzienników zasobów. Zobacz [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](diagnostic-settings-legacy.md).
+> [!IMPORTANT]
+> Metoda wysyłania dziennika aktywności platformy Azure do usługi Azure Storage i usługi Azure Event Hubs zmieniła się na [Ustawienia diagnostyczne](diagnostic-settings.md). W tym artykule opisano starszą metodę, która jest w trakcie wycofywania. Zobacz Aktualizacja [kolekcji dzienników aktywności platformy Azure i eksportowanie](diagnostic-settings-legacy.md) do porównania.
+
 
 [Dziennik aktywności platformy Azure](platform-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. Oprócz wyświetlania dziennika aktywności w Azure Portal lub kopiowania go do Log Analytics obszaru roboczego, gdzie można analizować z innymi danymi zebranymi przez Azure Monitor, można utworzyć profil dziennika w celu zarchiwizowania dziennika aktywności na koncie usługi Azure Storage lub przesyłania strumienia do niego  Centrum zdarzeń.
 
@@ -72,9 +73,14 @@ Jeśli zasady przechowywania są ustawione, ale przechowywanie dzienników na ko
 
 Utwórz lub Edytuj profil dziennika za pomocą opcji **Eksportuj do centrum zdarzeń** w Azure Portal.
 
-1. Z menu **monitor** w Azure Portal wybierz pozycję **Eksportuj do centrum zdarzeń**.
+1. Z menu **Azure monitor** w Azure Portal wybierz pozycję **Dziennik aktywności**.
+3. Kliknij pozycję **Ustawienia diagnostyczne**.
 
-    ![Przycisk Eksportuj w portalu](media/activity-log-export/portal-export.png)
+   ![Ustawienia diagnostyczne](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. Kliknij transparent purpurowy dla starszego środowiska.
+
+    ![Starsze środowisko](media/diagnostic-settings-subscription/legacy-experience.png)
 
 3. W wyświetlonym bloku określ następujące elementy:
    * Regiony ze zdarzeniami do eksportowania. Należy zaznaczyć wszystkie regiony, aby upewnić się, że nie zostaną pominięte najważniejsze zdarzenia, ponieważ dziennik aktywności jest dziennikiem globalnym (nieregionalnym), dlatego większość zdarzeń nie ma skojarzonego regionu.
@@ -160,7 +166,7 @@ Jeśli profil dziennika już istnieje, należy najpierw usunąć istniejący pro
     | storage-account-id |Tak |Identyfikator zasobu konta magazynu, do którego mają zostać zapisane dzienniki aktywności. |
     | locations |Tak |Rozdzielana spacjami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Listę wszystkich regionów dla subskrypcji można wyświetlić przy użyciu `az account list-locations --query [].name`. |
     | days |Tak |Liczba dni przechowywania zdarzeń między 1 a 365. Wartość zerowa spowoduje przechowywanie dzienników w nieskończoność (w nieskończoność).  Jeśli wartość jest równa zero, wartość parametru enabled powinna być równa false. |
-    |włączony | Tak |Wartość TRUE lub False.  Służy do włączania lub wyłączania zasad przechowywania.  W przypadku wartości true wartość parametru Days musi być większa niż 0.
+    |dostępny | Tak |Wartość TRUE lub False.  Służy do włączania lub wyłączania zasad przechowywania.  W przypadku wartości true wartość parametru Days musi być większa niż 0.
     | categories |Tak |Rozdzielana spacjami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to Write, DELETE i Action. |
 
 

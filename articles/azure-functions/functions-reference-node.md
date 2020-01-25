@@ -4,12 +4,12 @@ description: Dowiedz się, jak opracowywać funkcje przy użyciu języka JavaScr
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: a34efe20e796570358771ec53fbfb797daa15b93
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921997"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714794"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów Azure Functions JavaScript
 
@@ -232,7 +232,7 @@ Można zdefiniować dane wyjściowe powiązania przy użyciu metody `context.don
 context.bindingData
 ```
 
-Zwraca nazwany obiekt, który zawiera metadane wyzwalacza i dane wywołania funkcji (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Przykład metadanych wyzwalacza zawiera przykład tego centrum [zdarzeń](functions-bindings-event-hubs.md#trigger---javascript-example).
+Zwraca nazwany obiekt, który zawiera metadane wyzwalacza i dane wywołania funkcji (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Przykład metadanych wyzwalacza zawiera przykład tego centrum [zdarzeń](functions-bindings-event-hubs.md#trigger).
 
 ### <a name="contextdone-method"></a>Context. done — Metoda
 
@@ -348,7 +348,7 @@ Obiekt `context.req` (Request) ma następujące właściwości:
 | _nagłówka_     | Obiekt, który zawiera nagłówki żądania.                   |
 | _method_      | Metoda HTTP żądania.                                |
 | _originalUrl_ | Adres URL żądania.                                        |
-| _params_      | Obiekt, który zawiera parametry routingu żądania. |
+| _Krocz_      | Obiekt, który zawiera parametry routingu żądania. |
 | _query_       | Obiekt, który zawiera parametry zapytania.                  |
 | _rawBody_     | Treść komunikatu jako ciąg.                           |
 
@@ -487,7 +487,7 @@ W przypadku uruchamiania lokalnego ustawienia aplikacji są odczytywane z pliku 
 
 Właściwości `function.json` `scriptFile` i `entryPoint` mogą służyć do konfigurowania lokalizacji i nazwy wyeksportowanej funkcji. Te właściwości mogą być ważne w przypadku transsterty języka JavaScript.
 
-### <a name="using-scriptfile"></a>Używanie elementu `scriptFile`
+### <a name="using-scriptfile"></a>Używanie `scriptFile`
 
 Domyślnie funkcja języka JavaScript jest wykonywana z `index.js`, plik, który współużytkuje ten sam katalog nadrzędny co odpowiadający mu `function.json`.
 
@@ -516,7 +516,7 @@ FunctionApp
 }
 ```
 
-### <a name="using-entrypoint"></a>Używanie elementu `entryPoint`
+### <a name="using-entrypoint"></a>Używanie `entryPoint`
 
 W `scriptFile` (lub `index.js`) funkcja musi zostać wyeksportowana przy użyciu `module.exports` w celu znalezienia i uruchomienia. Domyślnie funkcja, która jest wykonywana, gdy wyzwalane jest jedynym eksportem z tego pliku, eksportu o nazwie `run`lub eksportu o nazwie `index`.
 

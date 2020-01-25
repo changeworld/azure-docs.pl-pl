@@ -9,16 +9,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 8cbc067326bf77648d242cadaf91b491f50c3848
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 68771ee3d2ae2d43245bd217bedcf59b987786f1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294273"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716724"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Wyrażenia transformacji danych w mapowaniu przepływu danych 
 
-## <a name="expression-functions"></a>Funkcje wyrażenia
+## <a name="expression-functions"></a>Funkcje wyrażeń
 
 W Data Factory Użyj języka wyrażeń funkcji mapowanie przepływu danych, aby skonfigurować przekształcenia danych.
 ___
@@ -108,37 +108,37 @@ Zwraca pierwszą wartość spoza wartości null z zestawu danych wejściowych. W
 ___
 ### <code>compare</code>
 <code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code><br/><br/>
-Porównuje dwie wartości tego samego typu. Zwraca ujemną liczbę całkowitą, jeśli wartość1 < wartość2, 0 w przypadku Wartość1 = = wartość2, wartość dodatnia, jeśli wartość1 > wartość2 * ``(compare(12, 24) < 1) -> true``
+Porównuje dwie wartości tego samego typu. Returns negative integer if value1 < value2, 0 if value1 == value2, positive value if value1 > value2 * ``(compare(12, 24) < 1) -> true``
 * ``(compare('dumbo', 'dum') > 0) -> true``
 ___
 ### <code>concat</code>
 <code><b>concat(<i>&lt;this&gt;</i> : string, <i>&lt;that&gt;</i> : string, ...) => string</b></code><br/><br/>
-Łączy jednocześnie zmienną liczbę ciągów. Analogicznie jak operator + z ciągami * ``concat('dataflow', 'is', 'awesome') -> 'dataflowisawesome'``
+Concatenates a variable number of strings together. Same as the + operator with strings * ``concat('dataflow', 'is', 'awesome') -> 'dataflowisawesome'``
 * ``'dataflow' + 'is' + 'awesome' -> 'dataflowisawesome'``
 * ``isNull('sql' + null) -> true``
 ___
 ### <code>concatWS</code>
 <code><b>concatWS(<i>&lt;separator&gt;</i> : string, <i>&lt;this&gt;</i> : string, <i>&lt;that&gt;</i> : string, ...) => string</b></code><br/><br/>
-Łączy zmienną liczbę ciągów wraz z separatorem. Pierwszy parametr jest separatorem * ``concatWS(' ', 'dataflow', 'is', 'awesome') -> 'dataflow is awesome'``
+Concatenates a variable number of strings together with a separator. The first parameter is the separator * ``concatWS(' ', 'dataflow', 'is', 'awesome') -> 'dataflow is awesome'``
 * ``isNull(concatWS(null, 'dataflow', 'is', 'awesome')) -> true``
 * ``concatWS(' is ', 'dataflow', 'awesome') -> 'dataflow is awesome'``
 ___
 ### <code>contains</code>
 <code><b>contains(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => boolean</b></code><br/><br/>
-Zwraca wartość true, jeśli dowolny element w podanej tablicy ma wartość true w podanym predykacie. Zawiera oczekiwane odwołanie do jednego elementu w funkcji predykatu jako #item * ``contains([1, 2, 3, 4], #item == 3) -> true``
+Returns true if any element in the provided array evaluates as true in the provided predicate. Contains expects a reference to one element in the predicate function as #item * ``contains([1, 2, 3, 4], #item == 3) -> true``
 * ``contains([1, 2, 3, 4], #item > 5) -> false``
 ___
 ### <code>cos</code>
 <code><b>cos(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Oblicza wartość cosinusa * ``cos(10) -> -0.8390715290764524``
+Calculates a cosine value * ``cos(10) -> -0.8390715290764524``
 ___
 ### <code>cosh</code>
 <code><b>cosh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-Oblicza cosinus hiperboliczny wartości * ``cosh(0) -> 1.0``
+Calculates a hyperbolic cosine of a value * ``cosh(0) -> 1.0``
 ___
 ### <code>crc32</code>
 <code><b>crc32(<i>&lt;value1&gt;</i> : any, ...) => long</b></code><br/><br/>
-Oblicza wartość skrótu CRC32 zestawu kolumn o różnych typach danych pierwotnych o długości bitowej, która może zawierać tylko wartości 0 (256), 224, 256, 384, 512. Można go użyć do obliczenia odcisku palca * ``crc32(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 3630253689L``wiersza 
+Calculates the CRC32 hash of set of column of varying primitive datatypes given a bit length which can only be of values 0(256), 224, 256, 384, 512. Można go użyć do obliczenia odcisku palca * ``crc32(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 3630253689L``wiersza 
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
@@ -485,7 +485,7 @@ Zwraca wartość NULL. Użyj składni funkcji (null ()), jeśli istnieje kolumna
 ___
 ### <code>or</code>
 <code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Logiczny operator LUB. Analogicznie jak | | * ``or(true, false) -> true``
+Operator logiczny OR. Analogicznie jak | | * ``or(true, false) -> true``
 * ``true || false -> true``
 ___
 ### <code>pMod</code>

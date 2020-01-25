@@ -3,20 +3,20 @@ title: Przenoszenie danych do maszyny wirtualnej programu SQL Server — zespoł
 description: Przenoszenie danych z plików prostych lub na lokalnym serwerze SQL Server do programu SQL Server na maszynie Wirtualnej platformy Azure.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ddc732655c7cfb72c4948f83752440608332915d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974086"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721374"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Przenoszenie danych do programu SQL Server na maszynie wirtualnej platformy Azure
 
@@ -31,7 +31,7 @@ Poniższa tabela podsumowuje Opcje przenoszenia danych do programu SQL Server na
 | <b>Plik prosty</b> |1. <a href="#insert-tables-bcp">Narzędzie do kopiowania zbiorczego wiersza polecenia (bcp)</a><br> 2. <a href="#insert-tables-bulkquery">zbiorczo Wstaw zapytanie SQL</a><br> 3. <a href="#sql-builtin-utilities">graficzne wbudowane narzędzia w SQL Server</a> |
 | <b>Na lokalnym serwerze SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Wdróż bazę danych SQL Server w kreatorze Microsoft Azure VM</a><br> 2. <a href="#export-flat-file">wyeksportuj do pliku prostego</a><br> 3. <a href="#sql-migration">Kreator migracji SQL Database</a> <br> 4. <a href="#sql-backup">Tworzenie kopii zapasowej i przywracanie bazy danych</a><br> |
 
-Należy pamiętać, że w tym dokumencie przyjęto założenie, że polecenia SQL są wykonywane z programu SQL Server Management Studio lub Visual Studio Explorer bazy danych.
+W tym dokumencie przyjęto założenie, że polecenia SQL są wykonywane z programu SQL Server Management Studio lub Eksplorator bazy danych programu Visual Studio.
 
 > [!TIP]
 > Alternatywnie, można użyć [usługi Azure Data Factory](https://azure.microsoft.com/services/data-factory/) do tworzenia i zaplanować potok, który spowoduje przeniesienie danych do maszyny Wirtualnej programu SQL Server na platformie Azure. Aby uzyskać więcej informacji, zobacz [kopiowanie danych przy użyciu usługi Azure Data Factory (działanie kopiowania)](../../data-factory/copy-activity-overview.md).
@@ -54,7 +54,7 @@ Jeśli dane pochodzą z pliku prostego (ułożone w formacie wiersza/kolumny), m
 3. [Graficznych narzędzi wbudowanych w programie SQL Server (Import/Export, SSIS)](#sql-builtin-utilities)
 
 ### <a name="insert-tables-bcp"></a>Narzędzie wiersza polecenia zbiorczego kopiowania (BCP)
-Narzędzie BCP jest narzędziem wiersza polecenia, zainstalowane z programem SQL Server i najszybszy sposób przenoszenia danych. Działa we wszystkich trzech wariantów programu SQL Server (On-premises SQL Server, SQL Azure i maszynę Wirtualną SQL Server na platformie Azure).
+Narzędzie BCP jest narzędziem wiersza polecenia, zainstalowane z programem SQL Server i najszybszy sposób przenoszenia danych. Działa on w ramach wszystkich trzech SQL Server wariantów (lokalnych SQL Server, SQL Azure i SQL Server maszyny wirtualnej na platformie Azure).
 
 > [!NOTE]
 > **Gdzie należy Moje dane dla narzędzia BCP**  
@@ -64,21 +64,21 @@ Narzędzie BCP jest narzędziem wiersza polecenia, zainstalowane z programem SQL
 
 1. Upewnij się, że bazy danych i tabele są tworzone w docelowej bazie danych programu SQL Server. Oto przykład sposobu wykonania tego za pomocą `Create Database` i `Create Table` poleceń:
 
-```sql
-CREATE DATABASE <database_name>
+    ```sql
+    CREATE DATABASE <database_name>
+    
+    CREATE TABLE <tablename>
+    (
+        <columnname1> <datatype> <constraint>,
+        <columnname2> <datatype> <constraint>,
+        <columnname3> <datatype> <constraint>
+    )
+    ```
 
-CREATE TABLE <tablename>
-(
-    <columnname1> <datatype> <constraint>,
-    <columnname2> <datatype> <constraint>,
-    <columnname3> <datatype> <constraint>
-)
-```
-
-1. Wygeneruj plik formatu, opisujący schematu dla tabeli, wydając polecenie z wiersza polecenia maszyny zainstalowanym bcp.
+1. Wygeneruj plik formatu, który opisuje schemat tabeli, wydając następujące polecenie z wiersza polecenia na komputerze, na którym zainstalowano Narzędzie bcp.
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-1. Wstawianie danych do bazy danych za pomocą polecenia bcp w następujący sposób. Powinno to działać z wiersza polecenia, przy założeniu, że serwer SQL jest zainstalowany na tym samym komputerze:
+1. Wstaw dane do bazy danych przy użyciu polecenia BCP, które powinny być wykonywane z poziomu wiersza polecenia, gdy SQL Server jest zainstalowana na tym samym komputerze:
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
@@ -87,7 +87,7 @@ CREATE TABLE <tablename>
 >
 
 ### <a name="insert-tables-bulkquery-parallel"></a>Przekształcają wstawia w przypadku przenoszenia danych szybciej
-Jeśli dane, które są przenoszone jest duża, można przyspieszyć rzeczy przez jednoczesne wykonywanie wielu poleceń narzędzia BCP równolegle w skrypcie programu PowerShell.
+Jeśli przenoszone dane są duże, można przyspieszyć wykonywanie wielu poleceń BCP równolegle w skrypcie programu PowerShell.
 
 > [!NOTE]
 > Pozyskiwanie **danych Big Data** Aby zoptymalizować ładowanie danych pod kątem dużych i bardzo dużych zestawów danych, Podziel swoje logiczne i fizyczne tabele bazy z wieloma grupami plików i tabelami partycji. Aby uzyskać więcej informacji na temat tworzenia i ładowanie danych do tabel partycji SQL, zobacz [równoległe tabel partycji SQL obciążenia](parallel-load-sql-partitioned-tables.md).
@@ -139,25 +139,25 @@ Poniżej przedstawiono niektóre przykładowe polecenia dla Bulk Insert są tak 
 
 1. Analizowanie danych i ustaw opcje niestandardowych przed zaimportowaniem, aby upewnić się, że bazy danych programu SQL Server przyjęto założenie, tego samego formatu dla wszystkich pól specjalnych, takich jak daty. Poniżej przedstawiono przykładowy sposób ustawić format daty jako rok, miesiąc, dzień, (Jeśli dane zawierają datę w formacie rok, miesiąc, dzień):
 
-```sql
-SET DATEFORMAT ymd;
-```
-1. Importowanie danych przy użyciu instrukcji importowania zbiorczego:
+    ```sql
+    SET DATEFORMAT ymd;
+    ```
+2. Importowanie danych przy użyciu instrukcji importowania zbiorczego:
 
-```sql
-BULK INSERT <tablename>
-FROM
-'<datafilename>'
-WITH
-(
-    FirstRow = 2,
-    FIELDTERMINATOR = ',', --this should be column separator in your data
-    ROWTERMINATOR = '\n'   --this should be the row separator in your data
-)
-```
+    ```sql
+    BULK INSERT <tablename>
+    FROM
+    '<datafilename>'
+    WITH
+    (
+        FirstRow = 2,
+        FIELDTERMINATOR = ',', --this should be column separator in your data
+        ROWTERMINATOR = '\n'   --this should be the row separator in your data
+    )
+    ```
 
 ### <a name="sql-builtin-utilities"></a>Wbudowane narzędzia w programie SQL Server
-SQL Server integracji Services (SSIS) służy do importowania danych do maszyny Wirtualnej z programu SQL Server na platformie Azure z pliku prostego.
+Do zaimportowania danych do maszyny wirtualnej SQL Server na platformie Azure z poziomu prostego pliku można użyć SQL Server Integration Services (SSIS).
 SSIS jest dostępna w dwóch środowiskach studio. Aby uzyskać więcej informacji, zobacz [Integration Services (SSIS) i Studio środowisk](https://technet.microsoft.com/library/ms140028.aspx):
 
 * Aby uzyskać szczegółowe informacje dotyczące programu SQL Server Data Tools, zobacz [programu Microsoft SQL Server Data Tools](https://msdn.microsoft.com/data/tools.aspx)  
@@ -171,7 +171,7 @@ Można również użyć następujących strategii migracji:
 3. [Kreator migracji bazy danych SQL](#sql-migration)
 4. [Baza danych kopii zapasowej i przywracanie](#sql-backup)
 
-Opisano każdy z nich poniżej:
+Opiszemy każdą z poniższych opcji poniżej:
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Wdrażanie bazy danych programu SQL Server do kreatora Microsoft Azure VM
 **Wdrażanie bazy danych programu SQL Server do kreatora Microsoft Azure VM** jest proste i zalecanym sposobem przenieść dane z lokalnego wystąpienia programu SQL Server do programu SQL Server na Maszynie wirtualnej platformy Azure. Aby uzyskać szczegółowy opis kroków, jak również dyskusję na temat innych rozwiązań alternatywnych, zobacz [migracji bazy danych programu SQL Server na Maszynie wirtualnej platformy Azure](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md).
@@ -203,7 +203,7 @@ Różne metody może służyć do zbiorczego Eksportuj dane z programu SQL Serve
 Obsługa programu SQL Server:
 
 1. [Baza danych kopii zapasowej i przywracania oferowane](https://msdn.microsoft.com/library/ms187048.aspx) (zarówno w lokalnym pliku lub pliku bacpac Eksport do obiektu blob) i [aplikacji warstwy danych](https://msdn.microsoft.com/library/ee210546.aspx) (przy użyciu pliku bacpac).
-2. Możliwość bezpośrednio utworzyć maszyny wirtualne SQL Server na platformie Azure za pomocą skopiowanego bazy danych lub Kopiuj do istniejącej bazy danych SQL Azure. Aby uzyskać więcej informacji, zobacz [za pomocą Kreatora kopiowania bazy danych](https://msdn.microsoft.com/library/ms188664.aspx).
+2. Możliwość bezpośrednio utworzyć maszyny wirtualne SQL Server na platformie Azure za pomocą skopiowanego bazy danych lub Kopiuj do istniejącej bazy danych SQL Azure. Aby uzyskać więcej informacji, zobacz [Korzystanie z Kreatora kopiowania bazy danych](https://msdn.microsoft.com/library/ms188664.aspx).
 
 Zrzut ekranu przedstawiający kopii bazy danych w górę/przywracania opcji dostępnych w programie SQL Server Management Studio znajdują się poniżej.
 

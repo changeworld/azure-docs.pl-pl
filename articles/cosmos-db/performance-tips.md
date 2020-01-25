@@ -4,14 +4,14 @@ description: Dowiedz się więcej na temat opcji konfiguracji klienta, aby zwię
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "71261308"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721000"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności Azure Cosmos DB i .NET
 
@@ -23,14 +23,14 @@ ms.locfileid: "71261308"
 
 Azure Cosmos DB to szybka i elastyczna dystrybuowana baza danych, która bezproblemowo skaluje się do gwarantowanych opóźnień i przepływności. Nie trzeba wprowadzać głównych zmian architektury ani pisać złożonego kodu w celu skalowania bazy danych za pomocą Azure Cosmos DB. Skalowanie w górę i w dół jest tak proste jak w przypadku jednego wywołania interfejsu API. Aby dowiedzieć się więcej, zobacz [jak zainicjować przepływność kontenera](how-to-provision-container-throughput.md) lub [jak zapewnić przepływność bazy danych](how-to-provision-database-throughput.md). Ponieważ jednak dostęp do Azure Cosmos DB jest uzyskiwany za pośrednictwem wywołań sieciowych, istnieją optymalizacje po stronie klienta, które umożliwiają osiągnięcie szczytowej wydajności podczas korzystania z [zestawu SQL .NET SDK](sql-api-sdk-dotnet-standard.md).
 
-Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" należy wziąć pod uwagę następujące opcje:
+Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Należy wziąć pod uwagę następujące opcje:
 
 ## <a name="networking"></a>Networking
 <a id="direct-connection"></a>
 
 1. **Zasady połączenia: Użyj trybu połączenia bezpośredniego**
 
-    Sposób, w jaki klient nawiązuje połączenie z Azure Cosmos DB, ma ważne konsekwencje dotyczące wydajności, szczególnie w odniesieniu do zaobserwowanego opóźnienia po stronie klienta. Dostępne są dwa ustawienia konfiguracji klucza do konfigurowania zasad połączenia klienta — *tryb* połączenia i *Protokół*połączenia.  Dostępne są dwa tryby:
+    Sposób, w jaki klient nawiązuje połączenie z usługą Azure Cosmos DB, ma istotny wpływ na wydajność, szczególnie jeśli chodzi o zaobserwowane opóźnienie po stronie klienta. Dostępne są dwa ustawienia konfiguracji klucza do konfigurowania zasad połączenia klienta — *tryb* połączenia i *Protokół*połączenia.  Dostępne są dwa tryby:
 
    * Tryb bramy
       
@@ -40,18 +40,18 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
    * Tryb bezpośredni
 
-     Tryb bezpośredni obsługuje łączność za pośrednictwem protokołów TCP i HTTPS i jest domyślnym trybem łączności, jeśli używany jest [pakiet Microsoft. Azure. Cosmos/.NET v3 SDK](sql-api-sdk-dotnet-standard.md).
+     Tryb bezpośredni obsługuje łączność za pośrednictwem protokołu TCP i jest domyślnym trybem łączności, jeśli używany jest [pakiet Microsoft. Azure. Cosmos/.NET v3 SDK](sql-api-sdk-dotnet-standard.md).
 
      W przypadku korzystania z trybu bramy Cosmos DB korzysta z portu 443 i portów 10250, 10255 i 10256 przy użyciu interfejsu API Azure Cosmos DB dla MongoDB. Port 10250 jest mapowany na domyślne wystąpienie MongoDB bez replikacji geograficznej i 10255/10256 portów do wystąpienia MongoDB z funkcją replikacji geograficznej. W przypadku korzystania z protokołu TCP w trybie bezpośrednim oprócz portów bramy należy upewnić się, że zakres portów od 10000 do 20000 jest otwarty, ponieważ Azure Cosmos DB używa dynamicznych portów TCP. Jeśli te porty nie są otwarte i podjęto próbę użycia protokołu TCP, zostanie wyświetlony błąd niedostępności usługi 503. W poniższej tabeli przedstawiono tryby łączności dostępne dla różnych interfejsów API i użytkowników portów usługi dla każdego interfejsu API:
 
      |Tryb połączenia  |Obsługiwany protokół  |Obsługiwane zestawy SDK  |Port API/usługi  |
      |---------|---------|---------|---------|
-     |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL (443), Mongo (10250, 10255, 10256), tabela (443), Cassandra (10350), Graph (443)    |
+     |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
      |Direct    |     TCP    |  Zestaw SDK dla platformy .NET    | Porty w zakresie 10000-20000 |
 
-     Azure Cosmos DB oferuje prosty i otwarty model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto oferuje wydajny protokół TCP, który jest również RESTful w swoim modelu komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Zarówno bezpośrednie TCP, jak i HTTPS używają protokołu SSL do uwierzytelniania początkowego i szyfrowania ruchu sieciowego. Aby uzyskać najlepszą wydajność, Użyj protokołu TCP, gdy jest to możliwe.
+     Azure Cosmos DB oferuje prosty i otwarty model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto oferuje wydajny protokół TCP, który jest również RESTful w swoim modelu komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Protokół TCP używa protokołu SSL do uwierzytelniania początkowego i szyfrowania ruchu sieciowego. Aby uzyskać najlepszą wydajność, Użyj protokołu TCP, gdy jest to możliwe.
 
-     W przypadku zestawu SDK v3 tryb łączności jest konfigurowany podczas tworzenia wystąpienia CosmosClient w ramach CosmosClientOptions.
+     W przypadku zestawu SDK v3 tryb łączności jest konfigurowany podczas tworzenia wystąpienia CosmosClient, jako część CosmosClientOptions, należy pamiętać, że tryb bezpośredni jest domyślnie.
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -59,7 +59,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct
+        ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
      });
      ```
 
@@ -71,7 +71,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
      DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
      new ConnectionPolicy
      {
-        ConnectionMode = ConnectionMode.Direct,
+        ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
         ConnectionProtocol = Protocol.Tcp
      });
      ```
@@ -165,7 +165,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
    > [!NOTE] 
    > Właściwość maxItemCount nie powinna być używana tylko do celów stronicowania. Jest to główne użycie, aby zwiększyć wydajność zapytań, zmniejszając maksymalną liczbę elementów zwracanych na jednej stronie.  
 
-   Możesz również ustawić rozmiar strony przy użyciu dostępnych zestawów SDK Azure Cosmos DB. Właściwość [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) w FeedOptions umożliwia ustawienie maksymalnej liczby elementów, które mają być zwracane w operacji wyliczania. Gdy `maxItemCount` ma wartość-1, zestaw SDK automatycznie znajdzie najbardziej optymalną wartość w zależności od rozmiaru dokumentu. Na przykład:
+   Możesz również ustawić rozmiar strony przy użyciu dostępnych zestawów SDK Azure Cosmos DB. Właściwość [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) w FeedOptions umożliwia ustawienie maksymalnej liczby elementów, które mają być zwracane w operacji wyliczania. Gdy `maxItemCount` ma wartość-1, zestaw SDK automatycznie znajdzie najbardziej optymalną wartość w zależności od rozmiaru dokumentu. Przykład:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -185,7 +185,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
     - W przypadku projektów testowych opartych na VSTest można to zrobić, wybierając pozycję **testuj**->**Testuj ustawienia**->**domyślnej architektury procesora jako x64**z opcji menu **test programu Visual Studio** .
 
-    - W przypadku lokalnie wdrożonych aplikacji sieci Web ASP.NET można to zrobić, sprawdzając, czy **używane są 64-bitowe wersje IIS Express dla witryn i projektów sieci Web**, w obszarze **narzędzia**->**opcje**->**projekty i rozwiązania**-> **Projekty sieci Web**.
+    - W przypadku lokalnie wdrożonych aplikacji sieci Web ASP.NET można to zrobić, sprawdzając, czy **używane są 64-bitowe wersje IIS Express dla witryn i projektów sieci Web**, w obszarze **narzędzia**->**opcje**->**projekty i rozwiązania**->**projekty sieci Web**.
 
     - W przypadku aplikacji sieci Web ASP.NET wdrożonych na platformie Azure można to zrobić, wybierając **platformę jako 64-bitową** w **ustawieniach aplikacji** na Azure Portal.
 
@@ -209,13 +209,13 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" na
 
 1. **Mierzenie i dostrajanie dla niższych jednostek żądań/drugiego użycia**
 
-    Azure Cosmos DB oferuje bogaty zestaw operacji bazy danych, w tym relacyjne i hierarchiczne zapytania z UDF, procedurami składowanymi i wyzwalaczami — wszystko to działa na dokumentach w ramach kolekcji baz danych. Koszt związany z każdą z tych operacji różni się w zależności od procesora CPU, operacji we/wy i pamięci wymaganej do ukończenia tej operacji. Zamiast rozważać zasoby sprzętowe i zarządzać nimi, można traktować jednostkę żądania (RU) jako pojedynczą miarę dla zasobów wymaganych do wykonywania różnych operacji bazy danych i obsługi żądania aplikacji.
+    Azure Cosmos DB oferuje bogaty zestaw operacji bazy danych, w tym relacyjne i hierarchiczne zapytania z UDF, procedurami składowanymi i wyzwalaczami — wszystko to działa na dokumentach w ramach kolekcji baz danych. Koszt związany z każdą z tych operacji zależy od procesora, danych We/Wy i pamięci wymaganej do wykonania danej operacji. Zamiast rozważać zasoby sprzętowe i zarządzać nimi, można traktować jednostkę żądania (RU) jako pojedynczą miarę dla zasobów wymaganych do wykonywania różnych operacji bazy danych i obsługi żądania aplikacji.
 
     Obsługa przepływności zależy od liczby [jednostek żądania](request-units.md) ustawionych dla każdego kontenera. Użycie jednostki żądania jest oceniane jako stawka na sekundę. Aplikacje, które przekraczają zainicjowaną stawkę jednostkową żądania dla ich kontenera, są ograniczone do momentu spadku stawki poniżej poziomu aprowizacji kontenera. Jeśli aplikacja wymaga wyższego poziomu przepływności, można zwiększyć przepływność przez zainicjowanie obsługi dodatkowych jednostek żądania. 
 
     Złożoność zapytania wpływa na liczbę jednostek żądań używanych dla operacji. Liczba predykatów, charakter predykatów, liczba UDF i rozmiar zestawu danych źródłowych wpływają na koszt operacji zapytania.
 
-    Aby zmierzyć obciążenie związane z jakąkolwiek operacją (tworzenie, aktualizowanie lub usuwanie), Sprawdź nagłówek [x-MS-Request-obciążeni](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (lub równoważną właściwość RequestCharge w ResourceResponse\<t > lub FeedResponse\<t > w zestawie .NET SDK), aby zmierzyć Liczba jednostek żądań używanych przez te operacje.
+    Aby zmierzyć obciążenie związane z jakąkolwiek operacją (tworzenie, aktualizowanie lub usuwanie), Sprawdź nagłówek [x-MS-Request-opłata](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (lub równoważną właściwość RequestCharge w ResourceResponse\<t > lub FeedResponse\<t > w zestawie .NET SDK), aby zmierzyć liczbę jednostek żądania używanych przez te operacje.
 
     ```csharp
     // Measure the performance (request units) of writes

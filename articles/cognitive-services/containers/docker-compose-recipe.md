@@ -1,5 +1,5 @@
 ---
-title: Używanie Docker Compose do wdrażania wielu kontenerów
+title: Wdrażanie wielu kontenerów za pomocą narzędzia Docker Compose
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak wdrożyć wiele kontenerów Cognitive Services. W tym artykule przedstawiono sposób organizowania wielu obrazów kontenerów platformy Docker za pomocą Docker Compose.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 95ec80af88e0b89f61bebed08f4b96a09947f401
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311553"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716898"
 ---
-# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Używanie Docker Compose do wdrażania wielu kontenerów
+# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Wdrażanie wielu kontenerów za pomocą narzędzia Docker Compose
 
 W tym artykule opisano sposób wdrażania wielu kontenerów Cognitive Services platformy Azure. W tym celu dowiesz się, jak za pomocą Docker Compose organizować wiele obrazów kontenerów platformy Docker.
 
@@ -46,7 +46,7 @@ Ukończ i prześlij [formularz żądania kontenerów mowy Cognitive Services](ht
 
 ## <a name="docker-compose-file"></a>Plik Docker Compose
 
-Plik YAML definiuje wszystkie usługi, które mają zostać wdrożone. Te usługi korzystają `DockerFile` z lub istniejący obraz kontenera. W takim przypadku będziemy używać dwóch obrazów w wersji zapoznawczej. Skopiuj i wklej następujący plik YAML i Zapisz go jako Docker *-redagowanie. YAML*. Podaj odpowiednie wartości **apikey**, rozliczeń i **wartości endpointuri** w pliku.
+Plik YAML definiuje wszystkie usługi, które mają zostać wdrożone. Te usługi polegają na `DockerFile` lub istniejącym obrazie kontenera. W takim przypadku będziemy używać dwóch obrazów w wersji zapoznawczej. Skopiuj i wklej następujący plik YAML i Zapisz go jako *Docker-redagowanie. YAML*. Podaj odpowiednie wartości **apikey**, **rozliczeń**i **wartości endpointuri** w pliku.
 
 ```yaml
 version: '3.7'

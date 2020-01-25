@@ -2,24 +2,24 @@
 title: Wykonywanie zadania wydobywania danych — danych zespołu dla celów naukowych
 description: Jak analitykiem danych można wykonać projektu nauki o danych w słupkowych niepoddany kontroli wersji i sposób współpracy.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 16fb47879daae6bfbf0929e842a3a6227d1524a9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 984b03288b8dae644fc04a2cd78fb03a2e027f62
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772282"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722207"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Wykonania zadań dotyczących nauki o danych: eksploracji, modelowania i wdrożenia
 
-Typowe zadania wydobywania danych obejmują eksplorację danych, modelowania i wdrożenia. W tym artykule pokazano, jak **interakcyjna Eksploracja danych, analizy i raportowania (IDEAR)** i **zautomatyzowane modelowania i raportowania (AMAR)** narzędzia, aby wykonać kilka typowych zadań do nauki o danych Interakcyjna Eksploracja danych, analizy danych, raportowania i tworzenia modelu. Przedstawia opcje wdrażania modelu w środowisku produkcyjnym przy użyciu wielu różnych platformach danych i zestaw narzędzi, takie jak następujące:
+Typowe zadania wydobywania danych obejmują eksplorację danych, modelowania i wdrożenia. W tym artykule pokazano, jak **interakcyjna Eksploracja danych, analizy i raportowania (IDEAR)** i **zautomatyzowane modelowania i raportowania (AMAR)** narzędzia, aby wykonać kilka typowych zadań do nauki o danych Interakcyjna Eksploracja danych, analizy danych, raportowania i tworzenia modelu. Opcje wdrażania modelu w środowisku produkcyjnym mogą obejmować:
 
 - [Azure Machine Learning](../index.yml)
 - [Programu SQL Server z usługami uczenia Maszynowego](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)

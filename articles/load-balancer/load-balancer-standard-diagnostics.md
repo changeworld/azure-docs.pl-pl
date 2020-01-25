@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9fd1e72568b4f0c8813a5d050ce7fa7214ca7cd9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772044"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722445"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostyka usługi Load Balancer w warstwie Standardowa przy użyciu metryk, alertów i kondycji zasobów
 
@@ -27,7 +27,7 @@ Usługa Azure usługa Load Balancer w warstwie Standardowa udostępnia następuj
 
 * **Kondycja zasobów**: Strona Load Balancer na Azure Portal i Resource Health stronie (w obszarze monitor) uwidacznia sekcję Resource Health dla usługa Load Balancer w warstwie Standardowa. 
 
-Ten artykuł zawiera krótki przewodnik po tych możliwościach i oferuje sposoby ich używania do usługa Load Balancer w warstwie Standardowa.
+Ten artykuł zawiera krótki przewodnik po tych możliwościach i oferuje sposoby ich używania do usługa Load Balancer w warstwie Standardowa. 
 
 ## <a name = "MultiDimensionalMetrics"></a>Metryki wielowymiarowe
 
@@ -41,7 +41,7 @@ Różne konfiguracje usługa Load Balancer w warstwie Standardowa zapewniają na
 | Stan sondy kondycji (dostęp DIP) | Publiczny i wewnętrzny moduł równoważenia obciążenia | Usługa Load Balancer w warstwie Standardowa używa rozproszonej usługi badania kondycji, która monitoruje kondycję punktu końcowego aplikacji zgodnie z ustawieniami konfiguracji. Ta Metryka zawiera Zagregowany widok filtrowany lub na punkt końcowy każdego punktu końcowego wystąpienia w puli modułu równoważenia obciążenia. Możesz zobaczyć, jak Load Balancer przegląda kondycję aplikacji zgodnie z konfiguracją sondy kondycji. |  Średnia |
 | Pakiety SYN (Synchronize) | Publiczny i wewnętrzny moduł równoważenia obciążenia | Usługa Load Balancer w warstwie Standardowa nie przerywa połączeń Transmission Control Protocol (TCP) ani nie współdziała z przepływami pakietów TCP lub UDP. Przepływy i ich uzgodnienia są zawsze między wystąpieniem źródłowym a maszyną wirtualną. Aby lepiej rozwiązać problemy ze scenariuszami protokołu TCP, można użyć liczników pakietów SYN, aby zrozumieć, ile prób połączenia TCP zostało nawiązane. Metryka zgłasza liczbę odebranych pakietów TCP SYN.| Średnia |
 | Połączenia z przyłączaniem | Publiczny moduł równoważenia obciążenia |Usługa Load Balancer w warstwie Standardowa raportuje liczbę przepływów wychodzących, które są zamaskowane do frontonu publicznego adresu IP. Porty translatora adresów sieciowych (Resource Address Translation) to zasób exhaustible. Ta Metryka może wskazywać na to, jak silna aplikacja jest zależna od przychodzących przepływów. Są raportowane liczniki dla zakończonych powodzeniem i zakończonych niepowodzeniem przepływów przychodzących obiektów przeruchowych, które mogą służyć do rozwiązywania problemów i zrozumienia kondycji przepływów wychodzących.| Średnia |
-| Liczniki bajtów |  Publiczny i wewnętrzny moduł równoważenia obciążenia | Usługa Load Balancer w warstwie Standardowa raportuje dane przetworzone na fronton.| Średnia |
+| Liczniki bajtów |  Publiczny i wewnętrzny moduł równoważenia obciążenia | Usługa Load Balancer w warstwie Standardowa raportuje dane przetworzone na fronton. Można zauważyć, że bajty nie są równomiernie dystrybuowane między wystąpieniami zaplecza. Jest to oczekiwane, ponieważ algorytm Load Balancer platformy Azure jest oparty na przepływach | Średnia |
 | Liczniki pakietów |  Publiczny i wewnętrzny moduł równoważenia obciążenia | Usługa Load Balancer w warstwie Standardowa zgłasza pakiety przetwarzane na fronton.| Średnia |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Wyświetl metryki modułu równoważenia obciążenia w Azure Portal
@@ -61,7 +61,7 @@ Aby wyświetlić metryki dla zasobów usługa Load Balancer w warstwie Standardo
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Programowe pobieranie metryk wielowymiarowych za pośrednictwem interfejsów API
 
-Aby uzyskać wskazówki dotyczące interfejsu API na potrzeby pobierania wielowymiarowych definicji i wartości metryk, zobacz [Przewodnik po interfejsie API REST monitorowania platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api).
+Aby uzyskać wskazówki dotyczące interfejsu API na potrzeby pobierania wielowymiarowych definicji i wartości metryk, zobacz [Przewodnik po interfejsie API REST monitorowania platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api). Te metryki można zapisywać na koncie magazynu za pośrednictwem tylko opcji "wszystkie metryki". 
 
 ### <a name = "DiagnosticScenarios"></a>Typowe scenariusze diagnostyczne i zalecane widoki
 

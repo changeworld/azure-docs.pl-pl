@@ -2,20 +2,20 @@
 title: Zadania w projekcie przewodzenia w procesie nauki o danych zespołu
 description: Szczegółowy przewodnik dotyczący zadań dla projektu, który prowadzi do zespołu procesów nauki o danych zespołowych
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8a94a2ae5298bbee8bb1c9c0fa044eb3189147be
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244388"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714418"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Zadania lidera projektu w procesie nauki danych zespołu
 
@@ -45,7 +45,7 @@ W tym samouczku przyjęto założenie, że [Menedżer grupy](group-manager-tasks
 - **Repozytoria** szablonów i narzędzi
 - **Uprawnienia** na koncie organizacji umożliwiające tworzenie i edytowanie repozytoriów dla projektu
 
-Aby klonować repozytoria i modyfikować zawartość na komputerze lokalnym lub Data Science Virtual Machine (DSVM) lub skonfigurować usługę Azure File Storage i zainstalować ją w DSVM, potrzebne są również następujące elementy:
+Aby sklonować repozytoria i zmodyfikować zawartość na komputerze lokalnym lub Data Science Virtual Machine (DSVM) lub skonfigurować usługę Azure File Storage i zainstalować ją w DSVM, należy również wziąć pod uwagę tę listę kontrolną:
 
 - Subskrypcja platformy Azure.
 - Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zobacz [dodatku platformami i narzędziami](platforms-and-tools.md#appendix).

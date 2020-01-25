@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 39b3a96ddd3a9007600d1fa956c4e2d48f6adae9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921023"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714809"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie wdrażania w Azure Functions
 
@@ -114,10 +114,10 @@ Użyj narzędzia zip Deploy, aby wypchnąć plik zip, który zawiera aplikację 
 
 Można wdrożyć obraz kontenera systemu Linux zawierający aplikację funkcji.
 
->__Jak z niej korzystać:__ Utwórz aplikację funkcji systemu Linux w planie Premium lub dedykowanym i określ, z którego obrazu kontenera chcesz korzystać. Możesz to zrobić na dwa sposoby:
+>__Jak z niej korzystać:__ Utwórz aplikację funkcji systemu Linux w planie Premium lub dedykowanym i określ, z którego obrazu kontenera chcesz korzystać. Można to zrobić na dwa sposoby:
 >
 >* Utwórz aplikację funkcji systemu Linux na planie Azure App Service w Azure Portal. W obszarze **Publikowanie**wybierz opcję **obraz platformy Docker**, a następnie skonfiguruj kontener. Wprowadź lokalizację, w której jest hostowany obraz.
->* Tworzenie aplikacji funkcji systemu Linux w planie App Service przy użyciu interfejsu wiersza polecenia platformy Azure. Aby dowiedzieć się, jak to zrobić, zobacz [Tworzenie funkcji w systemie Linux przy użyciu obrazu niestandardowego](functions-create-function-linux-custom-image.md#create-a-premium-plan).
+>* Tworzenie aplikacji funkcji systemu Linux w planie App Service przy użyciu interfejsu wiersza polecenia platformy Azure. Aby dowiedzieć się, jak to zrobić, zobacz [Tworzenie funkcji w systemie Linux przy użyciu obrazu niestandardowego](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function).
 >
 >Aby wdrożyć w istniejącej aplikacji przy użyciu niestandardowego kontenera, w [Azure Functions Core Tools](functions-run-local.md)użyj polecenia [`func deploy`](functions-run-local.md#publish) .
 

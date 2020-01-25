@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 355bd75f865e821fa19fba0715cf5eca90a9a2d3
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 69b58b402b49e2346621bf473a0e897809f1c008
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829565"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712830"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Logowanie w sieci Web za pomocą OpenID Connect Connect in Azure Active Directory B2C
 
@@ -267,7 +267,7 @@ Jeśli chcesz podpisać użytkownika poza aplikacją, nie wystarczy wyczyścić 
 Aby wylogować użytkownika, Przekieruj użytkownika do punktu końcowego `end_session`, który znajduje się na liście w dokumencie metadanych OpenID Connect Connect opisanego wcześniej:
 
 ```HTTP
-GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 
 | Parametr | Wymagane | Opis |
@@ -275,7 +275,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | dzierżaw | Tak | Nazwa dzierżawy Azure AD B2C |
 | zasad | Tak | Przepływ użytkownika, którego chcesz użyć do podpisania użytkownika z poziomu aplikacji. |
 | id_token_hint| Nie | Wcześniej wystawiony token ID do przekazania do punktu końcowego wylogowania jako wskazówkę dotyczącą bieżącej uwierzytelnionej sesji użytkownika końcowego z klientem. `id_token_hint` zapewnia, że `post_logout_redirect_uri` jest zarejestrowanym adresem URL odpowiedzi w ustawieniach aplikacji Azure AD B2C. |
-| client_id | Nie* | Identyfikator aplikacji, który [Azure Portal](https://portal.azure.com/) przypisany do aplikacji.<br><br>\**jest to wymagane w przypadku korzystania z `Application` izolacji konfiguracji logowania jednokrotnego i _Wymagaj tokenu identyfikatora_ w żądaniu wylogowania jest ustawiony na `No`.* |
+| client_id | Znaleziono | Identyfikator aplikacji, który [Azure Portal](https://portal.azure.com/) przypisany do aplikacji.<br><br>\**jest to wymagane w przypadku korzystania z `Application` izolacji konfiguracji logowania jednokrotnego i _Wymagaj tokenu identyfikatora_ w żądaniu wylogowania jest ustawiony na `No`.* |
 | post_logout_redirect_uri | Nie | Adres URL, do którego użytkownik powinien zostać przekierowany po pomyślnym wylogowaniu. Jeśli ta wartość nie jest uwzględniona, Azure AD B2C pokazuje, że użytkownik jest komunikatem ogólnym. Jeśli nie podano `id_token_hint`, nie należy rejestrować tego adresu URL jako adresu URL odpowiedzi w ustawieniach aplikacji Azure AD B2C. |
 | state | Nie | Jeśli w żądaniu zostanie uwzględniony parametr `state`, ta sama wartość powinna pojawić się w odpowiedzi. Aplikacja powinna sprawdzić, czy wartości `state` w żądaniu i odpowiedzi są identyczne. |
 

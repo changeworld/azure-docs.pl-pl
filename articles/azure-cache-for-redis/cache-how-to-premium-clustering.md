@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: ddb44a064090a108f77d6a6f9a270fab8c55ec90
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433434"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714468"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować klastrowanie Redis dla pamięci podręcznej systemu Azure w warstwie Premium dla Redis
 Usługa Azure cache for Redis ma różne oferty pamięci podręcznej, które zapewniają elastyczność w wyborze rozmiaru i funkcji pamięci podręcznej, w tym funkcji warstwy Premium, takich jak klastrowanie, trwałość i obsługa sieci wirtualnej. W tym artykule opisano sposób konfigurowania klastrowania w pamięci podręcznej systemu Azure w warstwie Premium dla wystąpienia Redis.
@@ -58,12 +58,7 @@ Przykładowy kod dotyczący pracy z klastrem przy użyciu klienta StackExchange.
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>Zmiana rozmiaru klastra na działającej pamięci podręcznej Premium
-Aby zmienić rozmiar klastra w uruchomionej pamięci podręcznej Premium z włączoną obsługą klastrowania, kliknij pozycję **Redis rozmiar klastra** w **menu zasób**.
-
-> [!NOTE]
-> Gdy pamięć podręczna platformy Azure dla usługi Redis Premium była ogólnie dostępna, funkcja rozmiaru klastra Redis jest obecnie w wersji zapoznawczej.
-> 
-> 
+Aby zmienić rozmiar klastra w uruchomionej pamięci podręcznej Premium z włączoną obsługą klastrowania, kliknij pozycję **rozmiar klastra** w **menu zasób**.
 
 ![Rozmiar klastra Redis][redis-cache-redis-cluster-size]
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 292b53fac6c970fb961e8ad4ce7774c080e52422
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705553"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718875"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Wyłączanie zapory systemu operacyjnego gościa na maszynie wirtualnej platformy Azure
 
@@ -118,9 +118,9 @@ Wykonaj następujące kroki, aby użyć [rejestru zdalnego](https://support.micr
 
 Jeśli masz sytuację, w której nie można nawiązać połączenia z maszyną wirtualną za pomocą żadnej metody, rozszerzenie niestandardowego skryptu zakończy się niepowodzeniem i będzie trzeba pracować w trybie OFFLINE, pracując bezpośrednio na dysku systemowym. W tym celu wykonaj następujące kroki:
 
-1.  [Dołącz dysk systemowy do maszyny wirtualnej odzyskiwania](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Dołącz dysk systemu do odzyskiwania maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Uruchom Pulpit zdalny połączenie z maszyną wirtualną odzyskiwania.
+2.  Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania.
 
 3.  Upewnij się, że dysk jest oflagowany jako online w konsoli Zarządzanie dyskami. Zanotuj literę dysku przypisaną do dołączonego dysku systemowego.
 
@@ -148,7 +148,7 @@ Jeśli masz sytuację, w której nie można nawiązać połączenia z maszyną w
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'BROKENSYSTEM\ControlSet00'+$ControlSet+'\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
-    # To ensure the firewall is not set thru AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
+    # To ensure the firewall is not set through AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
@@ -160,6 +160,6 @@ Jeśli masz sytuację, w której nie można nawiązać połączenia z maszyną w
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [Odłącz dysk systemowy i Utwórz ponownie maszynę wirtualną](troubleshoot-recovery-disks-portal-windows.md).
+10. [Odłączanie dysku systemowego i ponowne utworzenie maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md).
 
 11. Sprawdź, czy problem został rozwiązany.

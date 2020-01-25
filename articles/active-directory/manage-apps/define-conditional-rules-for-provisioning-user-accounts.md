@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778349"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711704"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Inicjowanie obsługi aplikacji opartej na atrybutach przy użyciu filtrów zakresu
 Celem tego artykułu jest wyjaśnienie, jak używać filtrów zakresu do definiowania reguł opartych na atrybutach, które określają, którzy użytkownicy są obsługiwani do aplikacji.
@@ -52,7 +52,7 @@ Każdy użytkownik lub Grupa przetworzona przez usługę Azure AD Provisioning j
 
 Na przykład rozważmy następujący filtr określania zakresu:
 
-![Filtr zakresu](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
+![Filtr zakresu](media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
 
 Zgodnie z tym filtrem określania zakresu użytkownicy muszą spełniać następujące kryteria, aby zapewnić ich zainicjowanie:
 
@@ -117,7 +117,7 @@ Filtry zakresu są konfigurowane jako część mapowań atrybutów dla każdego 
 |----|----|----|----|
 |userPrincipalName|DOPASOWANIE WYRAŻENIA REGULARNEGO|.\*@domain.com |Wszyscy użytkownicy z userPrincipalą z domeną @domain.com będą w zakresie aprowizacji|
 |userPrincipalName|NIE PASUJE DO WYRAŻENIA REGULARNEGO|.\*@domain.com|Wszyscy użytkownicy z userPrincipalą z domeną @domain.com będą poza zakresem aprowizacji|
-|department|UBIEGŁ|sprzedaż|Wszyscy użytkownicy z działu sprzedaży znajdują się w zakresie aprowizacji|
+|department|UBIEGŁ|transakcje|Wszyscy użytkownicy z działu sprzedaży znajdują się w zakresie aprowizacji|
 |workerID|DOPASOWANIE WYRAŻENIA REGULARNEGO|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Wszyscy pracownicy z workerIDsem od 1000000 do 2000000 są w zakresie aprowizacji.|
 
 ## <a name="related-articles"></a>Pokrewne artykuły:

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: e4050dedeb48b19b6848a95fc904f7f37fb5b04a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349393"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722564"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Przykłady manifestu wielokontenerowej aplikacji i usługi
 Poniżej przedstawiono przykłady manifestów aplikacji i usług dla wielokontenerowej aplikacji Service Fabric. Te przykłady przedstawiają, jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usług są oparte na [przykładowych manifestach kontenera systemu Windows Server 2016](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) .
@@ -262,7 +262,7 @@ W sposób deklaratywny opisano typ i wersję aplikacji. Co najmniej jeden manife
 ### <a name="parameters-element"></a>Element parameters
 Deklaruje parametry, które są używane w manifeście aplikacji. Wartość tych parametrów można podać podczas tworzenia wystąpienia aplikacji i może służyć do przesłaniania ustawień konfiguracji aplikacji lub usługi. Aby uzyskać więcej informacji, zobacz [element parameters](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="parameter-element"></a>Element Parameter
+### <a name="parameter-element"></a>Element parametru
 Parametr aplikacji, który ma być używany w tym manifeście. Wartość parametru można zmienić podczas tworzenia wystąpienia aplikacji lub, jeśli nie zostanie podana wartość, zostanie użyta wartość domyślna. Aby uzyskać więcej informacji, zobacz [element parametru](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)
 
 ### <a name="servicemanifestimport-element"></a>ServiceManifestImport, element
@@ -342,7 +342,7 @@ Plik wykonywalny określony przez punkt wejścia jest zwykle długotrwałym host
  Aby uzyskać więcej informacji, zobacz [ContainerHost element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName — element
-Repozytorium i obraz na https://hub.docker.com lub Azure Container Registry. Aby uzyskać więcej informacji, zobacz [element ImageName](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+Repozytorium i obraz na [https://hub.docker.com](https://hub.docker.com) lub Azure Container Registry. Aby uzyskać więcej informacji, zobacz [element ImageName](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables, element
 Przekaż zmienne środowiskowe do kontenera lub exe.  Aby uzyskać więcej informacji, zobacz [EnvironmentVariables element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -386,7 +386,7 @@ Plik wykonywalny określony przez punkt wejścia jest zwykle długotrwałym host
 Aby uzyskać więcej informacji, zobacz [ContainerHost element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName — element
-Repozytorium i obraz na https://hub.docker.com lub Azure Container Registry. Aby uzyskać więcej informacji, zobacz [element ImageName](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+Repozytorium i obraz na [https://hub.docker.com](https://hub.docker.com) lub Azure Container Registry. Aby uzyskać więcej informacji, zobacz [element ImageName](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Commands, element
 Przekaż listę rozdzielonych przecinkami poleceń do kontenera. Aby uzyskać więcej informacji, zobacz [polecenia element](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)

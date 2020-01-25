@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745395"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717777"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Często zadawane pytania dotyczące korzystania z Azure Database Migration Service
 
@@ -96,8 +96,8 @@ Podczas typowej migracji prostej bazy danych:
 1. Tworzenie docelowych baz danych.
 2. Oceń źródłowe bazy danych.
     * W przypadku jednorodnych migracji należy ocenić istniejące bazy danych za pomocą usługi [DMA](https://www.microsoft.com/download/details.aspx?id=53595).
-    * W przypadku migracji heterogenicznych (ze źródeł konkurowania) Oceń istniejące bazy danych za pomocą usługi [Asystencie migracji](https://aka.ms/get-ssma). Program ASYSTENCIE migracji umożliwia również Konwertowanie obiektów bazy danych i migrowanie schematu na platformę docelową.
-3. Utwórz wystąpienie usługi Azure Database Migration Service.
+    * W przypadku migracji heterogenicznych (ze źródeł konkurowania) Oceń istniejące bazy danych za pomocą [Asystencie migracji](https://aka.ms/get-ssma). Program ASYSTENCIE migracji umożliwia również Konwertowanie obiektów bazy danych i migrowanie schematu na platformę docelową.
+3. Utwórz wystąpienie Azure Database Migration Service.
 4. Utwórz projekt migracji określający źródłową bazę danych, docelowe bazy danych i tabele do migracji.
 5. Rozpocznij pełne ładowanie.
 6. Wybierz kolejną weryfikację.

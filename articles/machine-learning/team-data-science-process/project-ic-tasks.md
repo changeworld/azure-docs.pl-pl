@@ -2,20 +2,20 @@
 title: Zadania dla poszczególnych współautora w procesie nauki o danych zespołu
 description: Szczegółowy przewodnik dotyczący zadań dla pojedynczego współautora w projekcie zespołowym analizy danych.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64d9669c11f15de5e6bd616ff7a79f59b748363
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244256"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721255"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Zadania dla poszczególnych współautora w procesie nauki o danych zespołu
 
@@ -42,7 +42,7 @@ W tym samouczku przyjęto założenie, że następujące zasoby i uprawnienia zo
 - Usługa Azure **File Storage** skonfigurowana dla zasobów udostępnionych dla zespołu lub projektu, jeśli ma zastosowanie
 - **Uprawnienia** do klonowania z i wypychania do repozytorium projektu 
 
-Aby klonować repozytoria i modyfikować zawartość na komputerze lokalnym lub DSVM lub zainstalować usługę Azure File Storage w DSVM, potrzebne są następujące elementy:
+Aby sklonować repozytoria i zmodyfikować zawartość na komputerze lokalnym lub DSVM lub zainstalować usługę Azure File Storage w DSVM, należy wziąć pod uwagę tę listę kontrolną:
 
 - Subskrypcja platformy Azure.
 - Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zobacz [dodatku platformami i narzędziami](platforms-and-tools.md#appendix).

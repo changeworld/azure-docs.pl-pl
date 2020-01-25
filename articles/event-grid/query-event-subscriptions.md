@@ -1,31 +1,30 @@
 ---
-title: Kwerenda subskrypcji usługi Azure Event Grid
-description: Opisuje sposób wyświetlenia listy subskrypcji usługi Azure Event Grid.
+title: Zazapytania Azure Event Grid subskrypcje
+description: W tym artykule opisano sposób wyświetlania listy Event Grid subskrypcji w ramach subskrypcji platformy Azure. Podajesz różne parametry w zależności od typu subskrypcji.
 services: event-grid
 author: spelluru
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/04/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 08fa9ada97c652ca609a499da1c8e87f7e4487db
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786625"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721545"
 ---
-# <a name="query-event-grid-subscriptions"></a>Kwerenda subskrypcji usługi Event Grid 
+# <a name="query-event-grid-subscriptions"></a>Zazapytania Event Grid subskrypcje 
 
-W tym artykule opisano sposób wyświetlenia listy subskrypcji usługi Event Grid w subskrypcji platformy Azure. Podczas wykonywania zapytań Twojej istniejącej subskrypcji usługi Event Grid, ważne jest zrozumienie różnych typów subskrypcji. Możesz podać różnych parametrów, w zależności od typu subskrypcji, którą chcesz pobrać.
+W tym artykule opisano sposób wyświetlania listy subskrypcji Event Grid w ramach subskrypcji platformy Azure. Podczas wykonywania zapytania dotyczącego istniejących subskrypcji Event Grid ważne jest zrozumienie różnych typów subskrypcji. Podajesz różne parametry w zależności od typu subskrypcji, którą chcesz uzyskać.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="resource-groups-and-azure-subscriptions"></a>Grupy zasobów i subskrypcji platformy Azure
+## <a name="resource-groups-and-azure-subscriptions"></a>Grupy zasobów i subskrypcje platformy Azure
 
-Subskrypcje platformy Azure i grup zasobów nie są zasobami platformy Azure. W związku z tym subskrypcje usługi event grid do grup zasobów lub subskrypcji platformy Azure nie mają te same właściwości co subskrypcje usługi event grid do zasobów platformy Azure. Subskrypcje usługi Event grid do grup zasobów lub subskrypcji platformy Azure są traktowane jako globalne.
+Subskrypcje platformy Azure i grupy zasobów nie są zasobami platformy Azure. W związku z tym subskrypcje usługi Event Grid do grup zasobów lub subskrypcji platformy Azure nie mają takich samych właściwości, jak subskrypcje usługi Event Grid do zasobów platformy Azure. Subskrypcje usługi Event Grid do grup zasobów lub subskrypcji platformy Azure są uznawane za globalne.
 
-Aby uzyskać subskrypcje usługi event grid dla subskrypcji platformy Azure i jej grupy zasobów, nie trzeba podać parametry. Upewnij się, że wybrano subskrypcji platformy Azure, który chcesz zbadać. Poniższe przykłady nie uzyskasz subskrypcje usługi event grid tematy niestandardowe lub zasobów platformy Azure.
+Aby uzyskać subskrypcje usługi Event Grid dla subskrypcji platformy Azure i jej grup zasobów, nie musisz podawać żadnych parametrów. Upewnij się, że wybrano subskrypcję platformy Azure, którą chcesz zbadać. Poniższe przykłady nie pobierają subskrypcji usługi Event Grid dla tematów niestandardowych ani zasobów platformy Azure.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
@@ -41,7 +40,7 @@ Set-AzContext -Subscription "My Azure Subscription"
 Get-AzEventGridSubscription
 ```
 
-Aby uzyskać subskrypcje usługi event grid dla subskrypcji platformy Azure, należy podać typ tematu **Microsoft.Resources.Subscriptions**.
+Aby uzyskać subskrypcje usługi Event Grid dla subskrypcji platformy Azure, podaj typ tematu **Microsoft. resources. subscriptions**.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
@@ -55,7 +54,7 @@ W przypadku programu PowerShell użyj polecenia:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 ```
 
-Aby uzyskać subskrypcje usługi event grid dla wszystkich grup zasobów w ramach subskrypcji platformy Azure, należy podać typ tematu **Microsoft.Resources.ResourceGroups**.
+Aby uzyskać subskrypcje usługi Event Grid dla wszystkich grup zasobów w ramach subskrypcji platformy Azure, podaj typ tematu **Microsoft. resources. ResourceGroups**.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
@@ -69,7 +68,7 @@ W przypadku programu PowerShell użyj polecenia:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 ```
 
-Aby uzyskać subskrypcje usługi event grid dla określonej grupie zasobów, należy podać nazwę grupy zasobów jako parametr.
+Aby uzyskać subskrypcje usługi Event Grid dla określonej grupy zasobów, podaj nazwę grupy zasobów jako parametr.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
@@ -83,11 +82,11 @@ W przypadku programu PowerShell użyj polecenia:
 Get-AzEventGridSubscription -ResourceGroupName myResourceGroup
 ```
 
-## <a name="custom-topics-and-azure-resources"></a>Tematy niestandardowe i zasobów platformy Azure
+## <a name="custom-topics-and-azure-resources"></a>Tematy niestandardowe i zasoby platformy Azure
 
-Niestandardowe tematy usługi Event grid to zasoby platformy Azure. W związku z tym zapytania subskrypcje usługi event grid tematy niestandardowe i inne zasoby, takie jak konta usługi Blob storage, w taki sam sposób. Aby uzyskać subskrypcje usługi event grid dla tematy niestandardowe, należy podać parametry, które zidentyfikowanie zasobu lub określić lokalizację zasobu. Nie jest możliwe szeroko zapytania subskrypcje usługi event grid dla zasobów w ramach subskrypcji platformy Azure.
+Tematy niestandardowe usługi Event Grid to zasoby platformy Azure. W związku z tym należy wykonać zapytania dotyczące subskrypcji usługi Event Grid dla tematów niestandardowych i innych zasobów, takich jak konto usługi BLOB Storage, w ten sam sposób. Aby uzyskać subskrypcje usługi Event Grid dla tematów niestandardowych, należy podać parametry, które identyfikują zasób lub identyfikują lokalizację zasobu. Nie jest możliwe szerokie badanie subskrypcji usługi Event Grid dla zasobów w ramach subskrypcji platformy Azure.
 
-Aby uzyskać subskrypcje usługi event grid tematy niestandardowe i inne zasoby w lokalizacji, należy podać nazwę lokalizacji.
+Aby uzyskać subskrypcje usługi Event Grid dla tematów niestandardowych i innych zasobów w lokalizacji, podaj nazwę lokalizacji.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
@@ -101,7 +100,7 @@ W przypadku programu PowerShell użyj polecenia:
 Get-AzEventGridSubscription -Location westus2
 ```
 
-Aby uzyskać subskrypcji tematy niestandardowe dla lokalizacji, podaj lokalizację i Typ tematu **Microsoft.EventGrid.Topics**.
+Aby uzyskać subskrypcje niestandardowych tematów dla lokalizacji, podaj lokalizację i typ tematu **Microsoft. EventGrid. temats**.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
@@ -115,7 +114,7 @@ W przypadku programu PowerShell użyj polecenia:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
 ```
 
-Aby uzyskać subskrypcji do konta magazynu dla lokalizacji, podaj lokalizację i Typ tematu **Microsoft.Storage.StorageAccounts**.
+Aby uzyskać subskrypcje dotyczące kont magazynu dla lokalizacji, podaj lokalizację i typ tematu **Microsoft. Storage. StorageAccounts**.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
@@ -129,7 +128,7 @@ W przypadku programu PowerShell użyj polecenia:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
 ```
 
-Aby uzyskać subskrypcje usługi event grid dla tematu niestandardowego, podaj nazwę tematu niestandardowego i nazwę jej grupy zasobów.
+Aby uzyskać subskrypcje usługi Event Grid dla tematu niestandardowego, podaj nazwę tematu niestandardowego i nazwę jego grupy zasobów.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
@@ -143,7 +142,7 @@ W przypadku programu PowerShell użyj polecenia:
 Get-AzEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
 ```
 
-Aby uzyskać subskrypcje usługi event grid dla określonego zasobu, należy podać identyfikator zasobu.
+Aby uzyskać subskrypcje usługi Event Grid dla określonego zasobu, podaj identyfikator zasobu.
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 

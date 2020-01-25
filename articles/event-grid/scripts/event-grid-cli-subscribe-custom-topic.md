@@ -1,22 +1,22 @@
 ---
 title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — subskrybowanie do tematu niestandardowego | Microsoft Docs
-description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — subskrybowanie do tematu niestandardowego
+description: Ten artykuł zawiera przykładowy skrypt interfejsu wiersza polecenia platformy Azure, który pokazuje, jak subskrybować zdarzenia Event Grid dla tematu niestandardowego.
 services: event-grid
 documentationcenter: na
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: a46c348533468ad037ac092037cb34def2b0405c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 01/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 9d82a5c3d9723c26d5a98bb2f0c92a6739ffee25
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580372"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720133"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>Subskrybowanie do zdarzeń związanych z tematem niestandardowym przy użyciu interfejsu wiersza polecenia platformy Azure
 

@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 11/25/2019
+ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ec1b77118f94501363d950d72a65a67ece79ff77
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795599"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748940"
 ---
 Standardowe obrazy maszyn wirtualnych (VM) umożliwiają organizacjom Migrowanie do chmury i zapewnianie spójności we wdrożeniach. Obrazy zwykle obejmują wstępnie zdefiniowane ustawienia zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Skonfigurowanie własnego potoku obrazu wymaga czasu, infrastruktury i konfiguracji, ale za pomocą konstruktora obrazów maszyn wirtualnych platformy Azure wystarczy utworzyć prostą konfigurację opisującą obraz, przesłać ją do usługi, a obraz został skompilowany i rozdystrybuowany.
  
@@ -45,11 +45,13 @@ Usługa Azure Image Builder będzie dostępna w wersji zapoznawczej w tych regio
 Program AIB obsługuje obrazy podstawowej systemu operacyjnego Azure Marketplace:
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7,6
-- CentOS 7,6
+- RHEL 7,6, 7,7
+- CentOS 7,6, 7,7
+- SLES 12 SP4
+- SLES 15, SLES 15 SP1
 - Windows 10 RS5 Enterprise/Professional/Enterprise for Virtual Desktop (EVD) 
 - Windows 2016
-- System Windows 2019
+- Windows 2019
 
 AIB będzie obsługiwał RHEL ISO jako źródło dla:
 - RHEL 7,3
@@ -91,6 +93,13 @@ az role assignment create \
     --role Contributor \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
+
+Dostęp można przypisywać przy użyciu programu PowerShell:
+
+```azurePowerShell-interactive
+New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
+```
+
 
 Jeśli nie można znaleźć konta usługi, może to oznaczać, że subskrypcja, do której dodawane jest przypisanie roli, nie została jeszcze zarejestrowana dla dostawcy zasobów.
 

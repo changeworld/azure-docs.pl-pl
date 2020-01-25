@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: e97a6e1adff02001e36a43d9fb4a917b7e133257
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 11f5c07305fa9192097dbcb1386c13707c0d46f7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922435"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711136"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions wyzwalacze i powiązania HTTP
 
@@ -825,7 +825,7 @@ Klucz może być uwzględniony w zmiennej ciągu zapytania o nazwie `code`, jak 
 Można zezwolić na żądania anonimowe, które nie wymagają kluczy. Możesz również wymagać użycia klucza głównego. Domyślny poziom autoryzacji można zmienić przy użyciu właściwości `authLevel` w kodzie JSON powiązania. Aby uzyskać więcej informacji, zobacz [wyzwalacz-konfiguracja](#trigger---configuration).
 
 > [!NOTE]
-> Podczas lokalnego uruchamiania funkcji Autoryzacja jest wyłączona niezależnie od określonego ustawienia poziomu autoryzacji. Po opublikowaniu na platformie Azure wymuszane jest ustawienie `authLevel` w wyzwalaczu. Klucze są nadal wymagane w przypadku uruchamiania [lokalnego w kontenerze](functions-create-function-linux-custom-image.md#run-the-image-locally).
+> Podczas lokalnego uruchamiania funkcji Autoryzacja jest wyłączona niezależnie od określonego ustawienia poziomu autoryzacji. Po opublikowaniu na platformie Azure wymuszane jest ustawienie `authLevel` w wyzwalaczu. Klucze są nadal wymagane w przypadku uruchamiania [lokalnego w kontenerze](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally).
 
 
 ### <a name="secure-an-http-endpoint-in-production"></a>Zabezpieczanie punktu końcowego HTTP w środowisku produkcyjnym
@@ -872,7 +872,7 @@ Jeśli funkcja, która używa wyzwalacza HTTP, nie zostanie zakończona w ciągu
 
 ## <a name="output"></a>Dane wyjściowe
 
-Użyj powiązania wyjściowego HTTP, aby odpowiedzieć na nadawcę żądania HTTP. To powiązanie wymaga wyzwalacza HTTP i pozwala na dostosowanie odpowiedzi skojarzonej z żądaniem wyzwalacza. Jeśli nie podano powiązania danych wyjściowych HTTP, wyzwalacz HTTP zwróci wartość HTTP 200 OK z pustą treścią w funkcjach 1. x lub HTTP 204 Brak zawartości z pustą treścią w funkcjach 2. x i wyższych.
+Użyj powiązania wyjściowego HTTP, aby odpowiedzieć na nadawcę żądania HTTP. To powiązanie wymaga wyzwalacza HTTP i umożliwia dostosowanie odpowiedzi skojarzonej z żądaniem wyzwalacza. Jeśli nie podano powiązania danych wyjściowych HTTP, wyzwalacz HTTP zwróci wartość HTTP 200 OK z pustą treścią w funkcjach 1. x lub HTTP 204 Brak zawartości z pustą treścią w funkcjach 2. x i wyższych.
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
@@ -921,7 +921,7 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 |---------|---------|---------| 
 | customHeaders|brak|Umożliwia ustawienie niestandardowych nagłówków w odpowiedzi HTTP. Poprzedni przykład dodaje nagłówek `X-Content-Type-Options` do odpowiedzi, aby uniknąć wykrywania typu zawartości. |
 |dynamicThrottlesEnabled|wartość true<sup>\*</sup>|Włączenie tego ustawienia powoduje, że potok przetwarzania żądań okresowo sprawdza liczniki wydajności systemu, takie jak połączenia/wątki/procesy/pamięć/procesor CPU/itp. Jeśli którykolwiek z tych liczników korzysta ze standardowego progu (80%), żądania zostaną odrzucone 429 z odpowiedzią "zbyt zajęte", dopóki licznik nie zwróci normalnych poziomów.<br/><sup>\*</sup> Wartość domyślna w planie zużycia jest `true`. Wartość domyślna w ramach dedykowanego planu to `false`.|
-|HSTS|Niewłączony|Gdy `isEnabled` jest ustawiony na `true`, wymuszane jest [zachowanie zabezpieczeń HTTP Strict Transport (HSTS) dla platformy .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) , zgodnie z definicją w [klasie`HstsOptions`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0). Powyższy przykład ustawia również właściwość [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) na 10 dni. Obsługiwane właściwości `hsts` są następujące: <table><tr><th>Właściwość</th><th>Opis</th></tr><tr><td>excludedHosts</td><td>Tablica ciągów nazw hostów, dla których nie został dodany nagłówek HSTS.</td></tr><tr><td>includeSubDomains</td><td>Wartość logiczna wskazująca, czy jest włączony parametr includeSubDomain nagłówka Strict-Transport-Security.</td></tr><tr><td>Parametru</td><td>Ciąg definiujący maksymalny parametr wieku w nagłówku Strict-Transport-Security.</td></tr><tr><td>preload</td><td>Wartość logiczna wskazująca, czy jest włączony parametr wstępnego ładowania nagłówka zabezpieczeń Strict-Transport-Security.</td></tr></table>|
+|HSTS|Niewłączony|Gdy `isEnabled` jest ustawiony na `true`, wymuszane jest [zachowanie zabezpieczeń HTTP Strict Transport (HSTS) dla platformy .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) , zgodnie z definicją w [klasie`HstsOptions`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0). Powyższy przykład ustawia również właściwość [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) na 10 dni. Obsługiwane właściwości `hsts` są następujące: <table><tr><th>Właściwość</th><th>Opis</th></tr><tr><td>excludedHosts</td><td>Tablica ciągów nazw hostów, dla których nie został dodany nagłówek HSTS.</td></tr><tr><td>includeSubDomains</td><td>Wartość logiczna wskazująca, czy jest włączony parametr includeSubDomain nagłówka Strict-Transport-Security.</td></tr><tr><td>Parametru</td><td>Ciąg definiujący maksymalny parametr wieku w nagłówku Strict-Transport-Security.</td></tr><tr><td>Ładuj</td><td>Wartość logiczna wskazująca, czy jest włączony parametr wstępnego ładowania nagłówka zabezpieczeń Strict-Transport-Security.</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|Maksymalna liczba funkcji HTTP, które są wykonywane równolegle. Pozwala to na kontrolowanie współbieżności, co może ułatwić zarządzanie użyciem zasobów. Na przykład może istnieć funkcja HTTP, która korzysta z dużej ilości zasobów systemowych (pamięć/procesor CPU/gniazda), co powoduje problemy, gdy współbieżność jest zbyt wysoka. Może też istnieć funkcja, która wysyła żądania wychodzące do usługi innej firmy, a te wywołania muszą mieć ograniczoną szybkość. W takich przypadkach można w tym celu zastosować ograniczenie przepustowości. <br/><sup>*</sup> Wartością domyślną planu zużycia jest 100. Wartość domyślna dla dedykowanego planu jest nieograniczona (`-1`).|
 |maxOutstandingRequests|200<sup>\*</sup>|Maksymalna liczba oczekujących żądań, które są przechowywane w danym momencie. Ten limit obejmuje żądania, które są umieszczane w kolejce, ale nie rozpoczęto wykonywania, a także w trakcie wykonywania. Wszystkie żądania przychodzące przez ten limit są odrzucane przez odpowiedź 429 "zbyt zajęta". Dzięki temu obiekty wywołujące mogą korzystać z strategii ponawiania prób, a także kontrolować maksymalne opóźnienia żądania. Tylko kontroluje kolejkowanie, które występuje w ścieżce wykonywania hosta skryptu. Inne kolejki, takie jak Kolejka żądań ASP.NET, nadal będą obowiązywać i nie mają wpływu na to ustawienie. <br/><sup>\*</sup> Wartością domyślną planu zużycia jest 200. Wartość domyślna dla dedykowanego planu jest nieograniczona (`-1`).|
 |routePrefix|api|Prefiks trasy dotyczący wszystkich tras. Użyj pustego ciągu, aby usunąć domyślny prefiks. |

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354280"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720303"
 ---
 # <a name="troubleshoot-input-connections"></a>Rozwiązywanie problemów z połączeniami wejściowymi
 
@@ -24,11 +24,13 @@ Ta strona zawiera opis typowych problemów z połączeniami danych wejściowych 
 
 2.  Sprawdź dane wejściowe.
 
-    Aby sprawdzić, czy dane wejściowe przepływają do Centrum zdarzeń, użyj [Eksploratora usługi Service Bus](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) połączyć się z usługi Azure Event Hub (Jeśli używane są wejścia Centrum zdarzeń).
+    1. Aby sprawdzić, czy dane wejściowe przepływają do Centrum zdarzeń, użyj [Eksploratora usługi Service Bus](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) połączyć się z usługi Azure Event Hub (Jeśli używane są wejścia Centrum zdarzeń).
         
-    Użyj [ **przykładowych danych** ](stream-analytics-sample-data-input.md) znajdujący się na każdym dane wejściowe i Pobierz przykładowe dane wejściowe.
+    1. Użyj przycisku [**przykładowe dane**](stream-analytics-sample-data-input.md) dla każdego elementu wejściowego. Pobierz przykładowe dane wejściowe.
         
-    Sprawdź przykładowe dane, aby zrozumieć układ danych: schemat i [typy danych](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+    1. Sprawdź przykładowe dane, aby zrozumieć kształt danych — to oznacza, że schemat i [typy danych](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+
+3.  Upewnij się, że wybrano zakres czasu w podglądzie danych wejściowych. Wybierz **pozycję Wybierz zakres czasu**, a następnie wprowadź przykładowy czas trwania przed przetestowaniem zapytania.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Źle sformułowane zdarzenia wejściowe powodują błędy deserializacji 
 Deserializacji problemy są spowodowane, gdy strumień wejściowy zadania usługi Stream Analytics zawiera źle sformułowane komunikaty. Na przykład nieprawidłowo sformułowany komunikat może być spowodowane przez brak nawiasu lub nawiasów w obiekcie JSON lub format sygnatury czasowej niepoprawne, w polu czas. 

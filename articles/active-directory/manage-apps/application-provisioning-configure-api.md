@@ -16,21 +16,21 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a891f87c3d03cf95c8051ee684916bb55441cb0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275716"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712218"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurowanie aprowizacji przy użyciu Microsoft Graph interfejsów API
 
-Azure Portal to wygodny sposób konfigurowania aprowizacji pojedynczych aplikacji pojedynczo. Ale jeśli tworzysz kilka, a nawet setki — wystąpienia aplikacji, można łatwiej zautomatyzować tworzenie i konfigurację aplikacji przy użyciu interfejsów API Microsoft Graph. W tym artykule opisano sposób automatyzacji konfigurowania aprowizacji za poorednictwem interfejsów API. Ta metoda jest często używana dla aplikacji, takich jak [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso).
+Azure Portal to wygodny sposób konfigurowania aprowizacji pojedynczych aplikacji pojedynczo. Ale jeśli tworzysz kilka, a nawet setki — wystąpienia aplikacji, można łatwiej zautomatyzować tworzenie i konfigurację aplikacji przy użyciu interfejsów API Microsoft Graph. W tym artykule opisano sposób automatyzacji konfigurowania aprowizacji za poorednictwem interfejsów API. Ta metoda jest często używana dla aplikacji, takich jak [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
 
 **Przegląd kroków dotyczących używania Microsoft Graph interfejsów API do automatyzowania konfigurowania aprowizacji**
 
 
-|Krok  |Szczegóły  |
+|Czynność  |Szczegóły  |
 |---------|---------|
 |[Krok 1. Tworzenie aplikacji galerii](#step-1-create-the-gallery-application)     |Logowanie do klienta interfejsu API <br> Pobierz szablon aplikacji galerii <br> Tworzenie aplikacji galerii         |
 |[Krok 2. Utwórz zadanie aprowizacji na podstawie szablonu](#step-2-create-the-provisioning-job-based-on-the-template)     |Pobieranie szablonu łącznika aprowizacji <br> Tworzenie zadania aprowizacji         |
@@ -48,7 +48,7 @@ Azure Portal to wygodny sposób konfigurowania aprowizacji pojedynczych aplikacj
 1. Uruchom [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)
 1. Wybierz przycisk "Zaloguj się za pomocą firmy Microsoft" i zaloguj się przy użyciu poświadczeń administratora globalnego lub administratora aplikacji usługi Azure AD.
 
-    ![Logowanie grafu](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Logowanie grafu](media/application-provisioning-configure-api/wd_export_02.png)
 
 1. Po pomyślnym zalogowaniu zobaczysz szczegóły konta użytkownika w okienku po lewej stronie.
 
@@ -529,7 +529,7 @@ Content-type: application/json
 }
 
 ```
-## <a name="related-articles"></a>Pokrewne artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
 - [Zapoznaj się z dokumentacją Microsoft Graph synchronizacji](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Integrowanie niestandardowej aplikacji Standard scim z usługą Azure AD](use-scim-to-provision-users-and-groups.md)

@@ -1,7 +1,7 @@
 ---
 title: Metody szkoleń modelu
 titleSuffix: Azure Machine Learning
-description: Poznaj różne metody, których można użyć do uczenia modelu z Azure Machine Learning. Szacowania zapewnia łatwy sposób pracy z popularnymi strukturami, takimi jak Scikit — uczenie się, TensorFlow, Keras, PyTorch i łańcucha. Potoki Machine Learning ułatwiają planowanie nienadzorowanych uruchomień, używanie środowisk obliczeniowych heterogenicznych i ponowne używanie części przepływu pracy. I uruchamiania konfiguracje zapewniają szczegółową kontrolę nad celami obliczeniowymi, na których działa proces szkoleniowy.
+description: Poznaj różne metody, których można użyć do uczenia modelu z Azure Machine Learning. Szacowania zapewnia łatwy sposób pracy z popularnymi strukturami, takimi jak Scikit — uczenie się, TensorFlow, Keras, PyTorch i łańcucha. Potoki Machine Learning ułatwiają planowanie nienadzorowanych uruchomień, używanie heterogenicznych środowisk obliczeniowych i ponowne używanie części przepływu pracy. I uruchamiania konfiguracje zapewniają szczegółową kontrolę nad celami obliczeniowymi, na których działa proces szkoleniowy.
 services: machine-learning
 ms.service: machine-learning
 author: Blackmist
@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 4902c679fa9b8b0140f7da8f32b3382983a635ed
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311329"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721119"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Szkolenie modeli za pomocą usługi Azure Machine Learning
 
@@ -29,7 +29,7 @@ Azure Machine Learning oferuje kilka sposobów uczenia modeli — od pierwszego 
     | [Szacowania](#estimators) | Klasy szacowania ułatwiają **uczenie modeli opartych na popularnych strukturach uczenia maszynowego**. Istnieją klasy szacowania dla **Scikit-uczenia**, **PyTorch**, **TensorFlow**i **łańcucha**. Istnieje również ogólny szacowania, który może być używany z platformami, które nie mają jeszcze dedykowanej klasy szacowania. Nie musisz martwić się o Definiowanie konfiguracji uruchamiania podczas korzystania z szacowania. |
     | [Potok uczenia maszynowego](#machine-learning-pipeline) | Potoki nie są różnymi metodami szkoleniowymi, ale **sposób definiowania przepływu pracy przy użyciu modularnych, wielokrotnych kroków**, które mogą obejmować szkolenie w ramach przepływu pracy. Potoki usługi Machine Learning obsługują korzystanie z funkcji automatycznego uczenia maszynowego, szacowania i uruchamiania konfiguracji w celu uczenia modeli. Ponieważ potoki nie są ukierunkowane na szkolenie, przyczyny użycia potoku są bardziej zróżnicowane niż inne metody uczenia się. Ogólnie rzecz biorąc, można użyć potoku, gdy:<br>* Chcesz **zaplanować procesy nienadzorowane** , takie jak długotrwałe zadania szkoleniowe lub Przygotowywanie danych.<br>* Należy użyć **wielu kroków** , które są skoordynowane w niejednorodnych zasobach obliczeniowych i lokalizacjach magazynu.<br>* Użyj potoku jako **szablonu wielokrotnego użytku** dla konkretnych scenariuszy, takich jak przeszkolenie lub wsadowe ocenianie.<br>* **śledzenie i wersje źródeł danych, wejść i wyjść** dla przepływu pracy.<br>* Przepływ pracy jest **implementowany przez różne zespoły, które pracują niezależnie od konkretnych kroków**. Kroki można następnie połączyć w potoku w celu zaimplementowania przepływu pracy. |
 
-+ **Projektant**: Projektant Azure Machine Learning umożliwia łatwe wprowadzenie do uczenia maszynowego w celu tworzenia weryfikacji koncepcji lub dla użytkowników z niewielkim doświadczeniem związanym z kodowaniem. Pozwala to na uczenie modeli przy użyciu funkcji przeciągania i upuszczania interfejsu użytkownika opartego na sieci Web. Możesz użyć kodu w języku Python jako części projektu lub pouczenia modeli bez pisania kodu.
++ **Projektant**: Program Azure Machine Learning Designer (wersja zapoznawcza) udostępnia łatwą funkcję uczenia maszynowego na potrzeby tworzenia wyników weryfikacji koncepcji lub dla użytkowników z niewielkim doświadczeniem związanym z kodowaniem. Pozwala to na uczenie modeli przy użyciu funkcji przeciągania i upuszczania interfejsu użytkownika opartego na sieci Web. Możesz użyć kodu w języku Python jako części projektu lub pouczenia modeli bez pisania kodu.
 
 + **CLI**: interfejs wiersza polecenia usługi Machine Learning umożliwia wykonywanie typowych zadań przy użyciu Azure Machine Learning i jest często używany do **tworzenia skryptów i automatyzowania zadań**. Na przykład po utworzeniu skryptu szkoleniowego lub potoku można użyć interfejsu wiersza polecenia, aby rozpocząć szkolenie zgodnie z harmonogramem lub w przypadku aktualizowania plików danych używanych do szkoleń. W przypadku modeli szkoleniowych dostępne są polecenia, które przesyłają zadania szkoleniowe. Może przesyłać zadania przy użyciu konfiguracji uruchamiania lub potoków.
 
@@ -59,7 +59,7 @@ Możesz rozpocząć od konfiguracji uruchamiania komputera lokalnego, a następn
 Zdefiniuj iteracje, ustawienia parametrów, cechowania i inne ustawienia. Podczas uczenia Azure Machine Learning próbuje jednocześnie różne algorytmy i parametry. Szkolenie zostaje zatrzymane po trafieniu zdefiniowanych kryteriów zakończenia. Nie musisz martwić się o Definiowanie konfiguracji uruchamiania podczas korzystania z szacowania.
 
 > [!TIP]
-> W polu do zestawu SDK języka Python można także użyć zautomatyzowanej ml do [Azure Machine Learning Studio](https://ml.azure.com).
+> Oprócz zestawu SDK języka Python można także użyć zautomatyzowanej ML za pomocą [Azure Machine Learning Studio](https://ml.azure.com).
 
 * [Co to jest automatyczne Uczenie maszynowe?](concept-automated-ml.md)
 * [Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego](tutorial-first-experiment-automated-ml.md)

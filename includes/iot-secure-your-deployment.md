@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: ea57f8cdf5e1b2460f396445c67cfcab28f07525
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75840662"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748823"
 ---
 Ten artykuł zawiera następny poziom szczegółowości w zakresie zabezpieczania infrastruktury Internet rzeczy (IoT) opartej na usłudze Azure IoT. Łączy się on z szczegółowymi informacjami na temat konfigurowania i wdrażania każdego składnika. Zawiera również porównania i wybory między różnymi metodami konkurującymi.
 
@@ -77,11 +77,11 @@ Podczas ustanawiania bezpiecznego połączenia TLS z IoT Hub urządzenie IoT uwi
 
 ## <a name="securing-the-connection"></a>Zabezpieczanie połączenia
 
-Połączenie internetowe między urządzeniem IoT a IoT Hub jest zabezpieczone przy użyciu standardu Transport Layer Security (TLS). Usługa Azure IoT obsługuje protokoły [tls 1,2](https://tools.ietf.org/html/rfc5246), TLS 1,1 i TLS 1,0 w tej kolejności. Obsługa protokołu TLS 1,0 jest świadczona tylko w celu zapewnienia zgodności z poprzednimi wersjami. Jeśli to możliwe, [Skonfiguruj koncentrator](../articles/iot-hub/iot-hub-tls.md) tak, aby korzystał z protokołu TLS 1,2, ponieważ zapewnia największą ochronę.
+Połączenie internetowe między urządzeniem IoT a IoT Hub jest zabezpieczone przy użyciu standardu Transport Layer Security (TLS). Usługa Azure IoT obsługuje protokoły [tls 1,2](https://tools.ietf.org/html/rfc5246), TLS 1,1 i TLS 1,0 w tej kolejności. Obsługa protokołu TLS 1,0 jest świadczona tylko w celu zapewnienia zgodności z poprzednimi wersjami. Sprawdź [obsługę protokołu TLS w IoT Hub](../articles/iot-hub/iot-hub-tls-support.md) , aby dowiedzieć się, jak skonfigurować koncentrator do korzystania z protokołu TLS 1,2, ponieważ zapewnia największą ochronę.
 
 ## <a name="securing-the-cloud"></a>Zabezpieczanie chmury
 
-Usługa Azure IoT Hub umożliwia definiowanie [zasad kontroli dostępu](../articles/iot-hub/iot-hub-devguide-security.md) dla każdego klucza zabezpieczeń. Używa następującego zestawu uprawnień, aby udzielić dostępu do każdego z punktów końcowych IoT Hub. Uprawnienia ograniczają dostęp do usługi IoT Hub na podstawie funkcjonalności.
+Usługa Azure IoT Hub umożliwia definiowanie [zasad kontroli dostępu](../articles/iot-hub/iot-hub-devguide-security.md) dla każdego klucza zabezpieczeń. Używa następującego zestawu uprawnień, aby udzielić dostępu do każdego z punktów końcowych IoT Hub. Uprawnienia ograniczają dostęp do IoT Hub na podstawie funkcjonalności.
 
 * **RegistryRead**. Przyznaje dostęp do odczytu do rejestru tożsamości. Aby uzyskać więcej informacji, zobacz [Rejestr tożsamości](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
