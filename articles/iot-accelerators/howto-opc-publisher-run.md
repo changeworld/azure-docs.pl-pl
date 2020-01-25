@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66e2cb30dcd58b7ad0c6cedbb547f75c8039bc58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2f99f50ffcccb052526981a712ac5046836a44ae
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824131"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712907"
 ---
 # <a name="run-opc-publisher"></a>Uruchamianie wydawcy OPC
 
@@ -532,7 +532,7 @@ Pamięć i wydajność są wzajemnie zależne i są zależne od konfiguracji lic
 - Rozmiar komunikatu IoT Hub (domyślna `1`): `--ms`
 - Wydajność kolejki monitorowanych elementów: `--mq`
 
-Parametr `--mq` kontroluje górną granicę pojemności kolejki wewnętrznej, która buforuje wszystkie powiadomienia o zmianie wartości węzła OPC. Jeśli program OPC Publisher nie może wysyłać komunikatów do IoT Hub wystarczająco szybko, ta Kolejka buforuje powiadomienia. Parametr ustawia liczbę powiadomień, które mogą być buforowane. Jeśli zobaczysz liczbę elementów w tej kolejce rosnących w przebiegach testowych, aby uniknąć utracie komunikatów, należy:
+Parametr `--mq` kontroluje górną granicę pojemności kolejki wewnętrznej, która buforuje wszystkie powiadomienia o zmianie wartości węzła OPC. Jeśli program OPC Publisher nie może wysyłać komunikatów do IoT Hub wystarczająco szybko, ta Kolejka buforuje powiadomienia. Parametr ustawia liczbę powiadomień, które mogą być buforowane. Jeśli zobaczysz liczbę elementów w tej kolejce rosnących w przebiegach testowych, aby uniknąć utraty komunikatów, należy:
 
 - Zmniejszenie interwału wysyłania IoT Hub
 - Zwiększ rozmiar komunikatu IoT Hub
@@ -579,7 +579,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Konfiguracja domyślna wysyła dane do IoT Hub co 10 sekund, lub gdy dostępna jest 256 kB danych do IoT Hub do pozyskiwania. Ta konfiguracja dodaje Średni czas oczekiwania wynoszący około 10 sekund, ale ma najniższe prawdopodobieństwo utracie danych z powodu dużego rozmiaru wiadomości. Dane wyjściowe diagnostyki pokazują, że nie zostały utracone aktualizacje węzła OPC: `monitored item notifications enqueue failure: 0`.
+Konfiguracja domyślna wysyła dane do IoT Hub co 10 sekund, lub gdy dostępna jest 256 kB danych do IoT Hub do pozyskiwania. Ta konfiguracja dodaje Średni czas oczekiwania wynoszący około 10 sekund, ale ma najniższe prawdopodobieństwo utraty danych z powodu dużego rozmiaru wiadomości. Dane wyjściowe diagnostyki pokazują, że nie zostały utracone aktualizacje węzła OPC: `monitored item notifications enqueue failure: 0`.
 
 #### <a name="constant-send-interval---si-1---ms-0"></a>Stały interwał wysyłania (--si 1--ms 0)
 
@@ -681,7 +681,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Ta partia konfiguracji ma wiele aktualizacji wartości węzłów OPC, jak to możliwe. Maksymalny rozmiar komunikatu IoT Hub to 256 kB, który jest skonfigurowany w tym miejscu. Nie zażądano interwału wysyłania, co oznacza, że ilość danych dla IoT Hub do pozyskiwania określa czas oczekiwania. Ta konfiguracja ma najmniejsze prawdopodobieństwo utracie dowolnych wartości węzła OPC i jest odpowiednia do publikowania dużej liczby węzłów. W przypadku korzystania z tej konfiguracji upewnij się, że w scenariuszu nie ma warunków, w których wprowadzono duże opóźnienia, jeśli rozmiar komunikatu 256 kB nie zostanie osiągnięty.
+Ta partia konfiguracji ma wiele aktualizacji wartości węzłów OPC, jak to możliwe. Maksymalny rozmiar komunikatu IoT Hub to 256 kB, który jest skonfigurowany w tym miejscu. Nie zażądano interwału wysyłania, co oznacza, że ilość danych dla IoT Hub do pozyskiwania określa czas oczekiwania. Ta konfiguracja ma najmniejsze prawdopodobieństwo utraty wartości węzła OPC i jest odpowiednia do publikowania dużej liczby węzłów. W przypadku korzystania z tej konfiguracji upewnij się, że w scenariuszu nie ma warunków, w których wprowadzono duże opóźnienia, jeśli rozmiar komunikatu 256 kB nie zostanie osiągnięty.
 
 ## <a name="debug-the-application"></a>Debugowanie aplikacji
 

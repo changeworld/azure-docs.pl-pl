@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/20/2019
-ms.openlocfilehash: 35b087cdf190585ae98de35bc3f920c2cb66204a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a994a72ae57b39dba8025e7636e0f822f483bc8c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461280"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720677"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Szybki Start: Tworzenie usługi Azure Wyszukiwanie poznawcze poznawcze zestawu umiejętności w Azure Portal
 
@@ -156,7 +156,7 @@ Po utworzeniu pierwszej zestawu umiejętności i zapoznaniu się z ważnymi poj�
 
 Niektóre kluczowe założenia, które, mamy nadzieję, zostały wychwycone, obejmują zależności od źródeł danych platformy Azure. Zestawu umiejętności jest powiązany z indeksatorem, a Indeksatory są oparte na platformie Azure i dla źródła. Mimo że w tym przewodniku Szybki start jest używana usługa Azure Blob Storage, możliwe są inne źródła danych platformy Azure. Aby uzyskać więcej informacji, zobacz [indeksatory w usłudze Azure wyszukiwanie poznawcze](search-indexer-overview.md). 
 
-Innym ważnym pojęciem jest to, że umiejętności pracują nad typami zawartości, a podczas pracy z zawartością heterogenicznych niektóre dane wejściowe zostaną pominięte. Ponadto duże pliki lub pola mogą przekroczyć limity indeksatora warstwy usług. Jest to normalne, aby wyświetlić ostrzeżenia w przypadku wystąpienia tych zdarzeń. 
+Innym ważnym pojęciem jest to, że umiejętności działają nad typami zawartości, a podczas pracy z zawartością heterogeniczną niektóre dane wejściowe zostaną pominięte. Ponadto duże pliki lub pola mogą przekroczyć limity indeksatora warstwy usług. Jest to normalne, aby wyświetlić ostrzeżenia w przypadku wystąpienia tych zdarzeń. 
 
 Dane wyjściowe są kierowane do indeksu wyszukiwania i istnieje mapowanie między parami nazw-wartości utworzonymi podczas indeksowania i poszczególnych pól w indeksie. Wewnętrznie portal konfiguruje [adnotacje](cognitive-search-concept-annotations-syntax.md) i definiuje [zestaw umiejętności](cognitive-search-defining-skillset.md), ustanawiając kolejność operacji i ogólny przepływ. Te kroki są ukryte w portalu, ale po rozpoczęciu pisania kodu te koncepcje stają się istotne.
 
@@ -164,7 +164,7 @@ Na koniec nauczysz się, że można zweryfikować zawartość, badając indeks. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W przypadku pracy w ramach własnej subskrypcji warto sprawdzić po zakończeniu projektu, czy dalej potrzebuje się utworzonych zasobów. Uruchomione zasoby mogą generować koszty. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów w celu usunięcia całego zestawu zasobów.
+Gdy pracujesz nad własną subskrypcją, dobrym pomysłem jest zakończenie projektu w celu ustalenia, czy nadal potrzebujesz utworzonych zasobów. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
 
 Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystkie zasoby** lub **grupy zasobów** w okienku nawigacji po lewej stronie.
 

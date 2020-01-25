@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e7f60335b3e75d93f408dec3386ca0bdcd6a0388
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232317"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711458"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Włącz automatyczne Inicjowanie obsługi administracyjnej użytkowników dla aplikacji wielodostępnej
 
@@ -56,7 +56,7 @@ Aplikacje, które wymagają, aby rekord użytkownika był obecny w aplikacji prz
 
 Usługa Azure AD udostępnia kilka ścieżek integracji, które umożliwiają automatyczne Inicjowanie obsługi użytkowników dla aplikacji.
 
-* [Usługa Azure AD Provisioning](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) zarządza obsługą administracyjną i anulowaniem aprowizacji użytkowników z usługi Azure AD do aplikacji (aprowizacji wychodzące) i z aplikacji do usługi Azure AD (Udostępnianie przychodzące). Usługa nawiązuje połączenie z systemem dla punktów końcowych interfejsu API zarządzania tożsamościami w różnych domenach (standard scim) udostępnianych przez aplikację.
+* [Usługa Azure AD Provisioning](user-provisioning.md) zarządza obsługą administracyjną i anulowaniem aprowizacji użytkowników z usługi Azure AD do aplikacji (aprowizacji wychodzące) i z aplikacji do usługi Azure AD (Udostępnianie przychodzące). Usługa nawiązuje połączenie z systemem dla punktów końcowych interfejsu API zarządzania tożsamościami w różnych domenach (standard scim) udostępnianych przez aplikację.
 
 * W przypadku korzystania z [Microsoft Graph](https://docs.microsoft.com/graph/)aplikacja zarządza przychodzącą i wychodzącą aprowizacji użytkowników i grup z usługi Azure AD do aplikacji przez przeszukiwanie interfejsu API Microsoft Graph.
 
@@ -87,9 +87,9 @@ Aby uzyskać więcej informacji o tym, jak użytkownicy usługi Azure AD Provisi
 
 * [Dowiedz się więcej na temat standardu Standard scim](https://aka.ms/SCIMOverview)
 
-* [Używanie systemu do zarządzania tożsamościami między domenami (standard scim) w celu automatycznego aprowizacji użytkowników i grup z Azure Active Directory do aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Używanie systemu do zarządzania tożsamościami między domenami (standard scim) w celu automatycznego aprowizacji użytkowników i grup z Azure Active Directory do aplikacji](use-scim-to-provision-users-and-groups.md)
 
-* [Opis implementacji usługi Azure AD Standard scim](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Opis implementacji usługi Azure AD Standard scim](use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph do aprowizacji
 
@@ -115,7 +115,7 @@ Protokół SAML JIT używa informacji o oświadczeniach w tokenie SAML do tworze
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Włącz logowanie jednokrotne dla aplikacji](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Włącz logowanie jednokrotne dla aplikacji](isv-sso-content.md)
 
 * [Prześlij swoją listę aplikacji](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) i partnera do firmy Microsoft, aby utworzyć dokumentację witryny firmy Microsoft.
 

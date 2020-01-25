@@ -3,20 +3,20 @@ title: Identyfikowanie scenariuszy i planowanie procesu analizy — proces nauki
 description: Identyfikowanie scenariuszy i planowanie zaawansowanego przetwarzania danych analizy, biorąc pod uwagę szereg pytań kluczowych.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ba87461c6c195a6b483538fd94d8be76239b8dc5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647309"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710312"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Identyfikowanie scenariuszy i planowanie zaawansowanego przetwarzania danych analizy
 
@@ -47,7 +47,7 @@ Czy dane są lokalne lub w chmurze? Możliwe są następujące lokalizacje:
 
 * publicznie dostępny adres HTTP
 * Lokalizacja pliku lokalnego lub sieciowego
-* Baza danych programu SQL Server
+* Baza danych SQL Server
 * kontener usługi Azure Storage
 
 ### <a name="what-is-the-azure-destination"></a>Co to jest miejsce docelowe platformy Azure?
@@ -79,7 +79,7 @@ Aby uzyskać więcej informacji, zobacz [przenoszenie danych z lokalnego program
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Jaka część danych ma zostać przeniesiona na platformę Azure?
 
-Bardzo duże zestawy danych mogą przekroczyć pojemność magazynu w niektórych środowiskach. Aby zapoznać się z przykładem, zobacz Omówienie limitów rozmiaru dla Machine Learning Studio (klasyczny) w następnej sekcji. W takich przypadkach można użyć próbki danych podczas analizy. Aby uzyskać szczegółowe informacje dotyczące obniżenie częstotliwości próbkowania zestawu danych w różnych środowiskach Azure, zobacz [przykładowych danych w procesie nauki o danych zespołu](sample-data.md).
+Duże zestawy danych mogą przekroczyć pojemność magazynu w niektórych środowiskach. Aby zapoznać się z przykładem, zobacz Omówienie limitów rozmiaru dla Machine Learning Studio (klasyczny) w następnej sekcji. W takich przypadkach można użyć próbki danych podczas analizy. Aby uzyskać szczegółowe informacje dotyczące obniżenie częstotliwości próbkowania zestawu danych w różnych środowiskach Azure, zobacz [przykładowych danych w procesie nauki o danych zespołu](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Pytania dotyczące danych cechy: typ, formatu i rozmiar
 
@@ -151,7 +151,7 @@ Istnieje wiele opcji języków, środowisk deweloperskich i narzędzi. Zapoznaj 
 * [Programu RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
-* [Program Jupyter notebooks](https://jupyter.org/)
+* [Notesy programu Jupyter](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>Identyfikowanie własnego scenariusza zaawansowanej analizy

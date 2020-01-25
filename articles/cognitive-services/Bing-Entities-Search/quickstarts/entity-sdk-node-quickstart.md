@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 01/22/2020
 ms.author: aahi
-ms.openlocfilehash: 9fdb1e68a413adcbf5d27ec3a90cd79fdeb29f21
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ece3d7979dc80a2c6c576b3ce279d4fb9bc9472
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384386"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716394"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Szybki Start: wysyłanie żądania wyszukiwania za pomocą zestawu SDK wyszukiwanie jednostek Bing dla środowiska Node. js
 
@@ -25,23 +25,23 @@ Użyj tego poradnika Szybki start, aby zacząć wyszukiwać jednostki za pomocą
 
 * Najnowsza wersja środowiska [Node.js](https://nodejs.org/en/download/).
 
-* [Zestaw SDK wyszukiwania jednostek Bing dla platformy Node.js](https://www.npmjs.com/package/azure-cognitiveservices-entitysearch)
+* [Zestaw SDK wyszukiwania jednostek Bing dla platformy Node.js](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
 
 Aby zainstalować zestaw SDK wyszukiwania jednostek Bing:
 
 1. Uruchom polecenie `npm install ms-rest-azure` w środowisku programistycznym.
-2. Uruchom polecenie `npm install azure-cognitiveservices-entitysearch` w środowisku programistycznym.
+2. Uruchom polecenie `npm install @azure/cognitiveservices-entitysearch` w środowisku programistycznym.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
-1. Utwórz nowy plik w języku JavaScript w ulubionym środowisku IDE lub edytorze i dodaj następujące wymagania. 
-    
+1. Utwórz nowy plik w języku JavaScript w ulubionym środowisku IDE lub edytorze i dodaj następujące wymagania.
+
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-    const EntitySearchAPIClient = require('azure-cognitiveservices-entitysearch');
+    const EntitySearchAPIClient = require('@azure/cognitiveservices-entitysearch');
     ```
 
 2. Utwórz wystąpienie obiektu `CognitiveServicesCredentials` przy użyciu klucza subskrypcji. Następnie za pomocą tego obiektu utwórz wystąpienie klienta wyszukiwania.
@@ -54,7 +54,7 @@ Aby zainstalować zestaw SDK wyszukiwania jednostek Bing:
 ## <a name="send-a-request-and-receive-a-response"></a>Wysyłanie żądania i odbieranie odpowiedzi
 
 1. Wyślij żądanie wyszukiwania jednostek za pomocą funkcji `entitiesOperations.search()`. Po otrzymaniu odpowiedzi wyświetl obiekt `queryContext`, liczbę zwróconych wyników i opis pierwszego wyniku.
-      
+
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
         console.log(result.queryContext);

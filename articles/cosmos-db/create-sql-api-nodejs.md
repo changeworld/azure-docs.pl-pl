@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: dech
-ms.openlocfilehash: 44cdd4307be56d864afb45d619958cc59a3fa978
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8df78df27ffb7e8bb8fc88567bd0b3d37be20488
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220521"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719504"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Szybki Start: Używanie środowiska Node. js do nawiązywania połączenia i wykonywania zapytań dotyczących danych z Azure Cosmos DB konta interfejsu API SQL
 
@@ -32,9 +32,9 @@ Ten przewodnik Szybki Start przedstawia sposób nawiązywania połączenia z kon
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* Ponadto:
+* Dodatkowo:
     * [Node.js](https://nodejs.org/en/) w wersji 6.0.0 lub nowszej
-    * [Usługa Git](https://git-scm.com/)
+    * [Git](https://git-scm.com/)
 
 ## <a name="create-a-database"></a>Tworzenie bazy danych 
 
@@ -68,7 +68,7 @@ Teraz sklonujmy aplikację Node. js z usługi GitHub, ustawimy parametry połąc
     cd "C:\git-samples"
     ```
 
-3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię przykładowej aplikacji na komputerze.
+3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię aplikacji przykładowej na komputerze.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started.git
@@ -142,13 +142,13 @@ Teraz wróć do Azure Portal, aby uzyskać szczegóły parametrów połączenia 
 
 3. Skopiuj wartość identyfikatora URI z portalu (przy użyciu przycisku kopiowania) i przypisz ją do klucza endpoint w pliku `config.js`. 
 
-    `config.endpoint = "https://FILLME.documents.azure.com"`
+    `config.endpoint = "<Your Azure Cosmos account URI>"`
 
 4. Następnie skopiuj wartość klucza podstawowego z portalu i przypisz ją do klucza `config.key` w pliku `config.js`. Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne do nawiązania komunikacji z usługą Azure Cosmos DB. 
 
-    `config.key = "FILLME"`
+    `config.key = "<Your Azure Cosmos account key>"`
     
-## <a name="run-the-app"></a>Uruchamianie aplikacji
+## <a name="run-the-app"></a>Uruchomienie aplikacji
 
 1. Uruchom polecenie `npm install` w terminalu, aby zainstalować wymagane moduły npm.
 

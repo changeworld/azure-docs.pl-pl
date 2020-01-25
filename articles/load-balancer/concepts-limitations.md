@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2019
 ms.author: allensu
-ms.openlocfilehash: 31c247199bfbfc57ffef376649edefd487fd1962
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f570e0cd7361b365a4034e318511cf8227c425a2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263544"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722479"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer składników i ograniczeń
 Azure Load Balancer zawiera kilka kluczowych składników dla operacji.  Te składniki można skonfigurować w ramach subskrypcji za pośrednictwem Azure Portal, interfejsu wiersza polecenia platformy Azure lub Azure PowerShell.  
@@ -58,7 +58,7 @@ Podstawowa Load Balancer nie obsługuje reguł ruchu wychodzącego.
 
 Moduł równoważenia obciążenia zapewnia następujące podstawowe możliwości na potrzeby aplikacji protokołu TCP i UDP:
 
-* **Algorytm równoważenia obciążenia**: w Azure Load Balancer można utworzyć regułę równoważenia obciążenia w celu dystrybucji ruchu przychodzącego do wystąpień puli zaplecza. Load Balancer używa algorytmu wyznaczania wartości skrótu do dystrybucji przepływów przychodzących i ponownie zapisuje nagłówki przepływów do wystąpień puli zaplecza. Serwer jest dostępny do odbierania nowych przepływów, gdy sonda kondycji wskazuje dobry punkt końcowy zaplecza.
+* **Algorytm równoważenia obciążenia**: w Azure Load Balancer można utworzyć regułę równoważenia obciążenia w celu dystrybucji ruchu przychodzącego do wystąpień puli zaplecza. Load Balancer używa algorytmu wyznaczania wartości skrótu do dystrybucji przepływów przychodzących (nie bajtów) i ponownie zapisuje nagłówki przepływów w wystąpieniach puli zaplecza. Serwer jest dostępny do odbierania nowych przepływów, gdy sonda kondycji wskazuje dobry punkt końcowy zaplecza.
 Domyślnie Load Balancer używa skrótu 5-spójnej kolekcji. 
 
    Skrót obejmuje: 

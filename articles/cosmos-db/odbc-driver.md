@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: e8a982a100655934d4ae3ecd64564cf2da82dbbc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035600"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721085"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Połączyć z usługą Azure Cosmos DB za pomocą narzędzi analitycznych do analizy Biznesowej ze sterownikiem ODBC
 
@@ -90,7 +90,7 @@ Zacznijmy od sterownika ODBC.
 
 ## <a id="#container-mapping"></a>Krok 3. Tworzenie definicji schematu przy użyciu metody mapowania kontenera
 
-Istnieją dwa typy metod próbkowania, których można użyć: **mapowania kontenerów** lub **ograniczników tabel**. Sesja próbkowania może wykorzystywać obydwie metody próbkowania, ale każdy kontener może korzystać tylko z określonej metody próbkowania. Poniższe kroki tworzą schemat dla danych w jednym lub większej liczbie kontenerów przy użyciu metody mapowania kontenera. Ta metoda próbkowania pobiera dane na stronie kontenera w celu określenia struktury danych. Powoduje to przełączenie kontenera do tabeli po stronie ODBC. Ta metoda próbkowania jest wydajna i szybka, gdy dane w kontenerze są jednorodne. Jeśli kontener zawiera heterogenicznych typ danych, zalecamy użycie [metody mapowania ograniczników tabel](#table-mapping) , ponieważ zapewnia ona bardziej niezawodną metodę próbkowania, aby określić struktury danych w kontenerze. 
+Istnieją dwa typy metod próbkowania, których można użyć: **mapowania kontenerów** lub **ograniczników tabel**. Sesja próbkowania może wykorzystywać obydwie metody próbkowania, ale każdy kontener może korzystać tylko z określonej metody próbkowania. Poniższe kroki tworzą schemat dla danych w jednym lub większej liczbie kontenerów przy użyciu metody mapowania kontenera. Ta metoda próbkowania pobiera dane na stronie kontenera w celu określenia struktury danych. Powoduje to przełączenie kontenera do tabeli po stronie ODBC. Ta metoda próbkowania jest wydajna i szybka, gdy dane w kontenerze są jednorodne. Jeśli kontener zawiera niejednorodny typ danych, zalecamy użycie [metody mapowania tabeli ograniczników](#table-mapping) , ponieważ zapewnia ona bardziej niezawodną metodę próbkowania w celu określenia struktur danych w kontenerze. 
 
 1. Po wykonaniu kroków 1-4 w [nawiązaniu połączenia z bazą danych Azure Cosmos](#connect)kliknij pozycję **Edytor schematu** w oknie **Konfiguracja DSN sterownika ODBC Azure Cosmos DB** .
 

@@ -3,26 +3,26 @@ title: Analiza danych przy użyciu języka Scala i aparatu Spark na platformie A
 description: Jak korzystać z języka Scala dla zadania uczenia maszynowego nadzorowanych za pomocą platformy Spark skalowalne MLlib i Spark ML pakietów w klastrze usługi Azure HDInsight Spark.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b22d461d327e595908ea8cc18dd0d507fdc83ecd
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907710"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716762"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Analiza danych przy użyciu języka Scala i platformy Spark na platformie Azure
 W tym artykule pokazano, jak korzystać z języka Scala dla zadania uczenia maszynowego nadzorowanych za pomocą platformy Spark skalowalne MLlib i Spark ML pakietów w klastrze usługi Azure HDInsight Spark. Przeprowadzi Cię on zadania, które stanowią [danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): pozyskiwanie danych i eksploracji, wizualizacji, technicznego opracowywania funkcji, modelowania i użycie modelu. Modele w artykule obejmują regresji logistycznej liniowego i liniowa, losowych lasów i wzmocnione gradientu drzew (GBTs), oprócz dwie typowe zadania uczenia maszynowego nadzorowanego:
 
-* Problem z regresją: Przewidywanie kwoty Porada ($) dla podróży z taksówką
-* Klasyfikacja binarna: Przewidywanie porady lub brak porady (1/0) na potrzeby podróży z taksówką
+* Problem regresji: przewidywanie kwota tip ($), komunikacji dwustronnej taksówek
+* Klasyfikacja binarna: prognozowanie porady lub brak porady komunikacji dwustronnej taksówek (1/0)
 
 Proces modelowania wymaga uczenie i Ewaluacja testowego zestawu danych i dokładność istotne metryki. W tym artykule nauczysz się sposobu przechowywania tych modeli usługi Azure Blob Storage oraz jak ocena i oceny wydajności predykcyjne. W tym artykule opisano również bardziej zaawansowanych tematów dotyczących sposobu optymalizacji modeli za pomocą zaczynają krzyżowego sprawdzania poprawności i parametrów. Dane używane jest przykładem 2013 NYC taksówek podróży i klasie zestawu danych dostępne w serwisie GitHub.
 
@@ -41,7 +41,7 @@ Kroki instalacji i kodu w tym artykule dotyczą usługi Azure HDInsight 3.4 Spar
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Wymagana jest subskrypcja platformy Azure. Jeśli nie masz już jeden, [uzyskać bezpłatna wersja próbna platformy](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Potrzebujesz klastra Azure HDInsight 3.4 Spark 1.6 do wykonania poniższych procedur. Aby utworzyć klaster, zobacz instrukcje w [temacie Wprowadzenie: Utwórz Apache Spark w usłudze Azure](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)HDInsight. Ustaw typ klastra i wersji na **wybierz typ klastra** menu.
+* Potrzebujesz klastra Azure HDInsight 3.4 Spark 1.6 do wykonania poniższych procedur. Aby utworzyć klaster, zobacz instrukcje w [wprowadzenie: tworzenie platformy Apache Spark w usłudze Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Ustaw typ klastra i wersji na **wybierz typ klastra** menu.
 
 ![Konfiguracja typu klastra HDInsight](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -66,7 +66,7 @@ Możesz przekazać Notes bezpośrednio z serwisu GitHub, aby serwer notesu Jupyt
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Instalator Wstępnie ustawiony kontekst platformy Spark i programu Hive, Magic Spark i biblioteki platformy Spark
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Instalacji: Konteksty ustawienie wstępne Spark i Hive, poleceń magicznych platformy Spark i biblioteki Spark
 ### <a name="preset-spark-and-hive-contexts"></a>Wstępnie zdefiniowane konteksty Spark i Hive
     # SET THE START TIME
     import java.util.Calendar
@@ -226,7 +226,7 @@ Poniższy przykład kodu Określa dane wejściowe do odczytu i ścieżkę do mag
 
 **Dane wyjściowe:**
 
-Godzina, o której ma zostać uruchomiony komórka: 8 sekund.
+Czas, aby uruchomić komórkę: 8 sekund.
 
 ### <a name="query-the-table-and-import-results-in-a-data-frame"></a>Odpytać tabelę i importowanie wyników w ramce danych.
 Następnie odpytać tabelę w klasie, pasażerskich i danymi Porada; Filtrowanie danych w uszkodzona i odległe; i drukowanie kilka wierszy.
@@ -254,12 +254,12 @@ Następnie odpytać tabelę w klasie, pasażerskich i danymi Porada; Filtrowanie
 |        10.5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>Eksploracja i wizualizacja danych
-Po przekazaniu danych do programu platformy Spark, następnym krokiem w procesie nauki o danych jest lepiej zrozumieć dane za pośrednictwem eksploracji i wizualizacji. W tej sekcji możesz sprawdzić dane taksówek wystosowanie zapytań SQL. Następnie można zaimportować wyników do ramki danych do wykreślenia docelowych zmiennych i potencjalnego funkcji kontroli przy użyciu funkcji automatycznego wizualizacji Jupyter.
+Po przekazaniu danych do programu platformy Spark, następnym krokiem w procesie nauki o danych jest lepiej zrozumieć dane za pośrednictwem eksploracji i wizualizacji. W tej sekcji możesz sprawdzić dane taksówek wystosowanie zapytań SQL. Następnie zaimportuj wyniki do ramki danych, aby wykreślić zmienne docelowe i funkcje potencjalnej kontroli wzrokowej przy użyciu funkcji automatycznej wizualizacji Jupyter.
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>Dane wykresu za pomocą lokalnego i magicznym wyrażeniem SQL
 Domyślnie dane wyjściowe wszystkie fragmenty kodu, który można uruchomić z poziomu notesu programu Jupyter jest dostępna w kontekście sesji, który jest trwały na węzłach procesu roboczego. Jeśli chcesz zapisać podróż do węzłów procesu roboczego dla każdego obliczenia, a jeśli wszystkie dane potrzebne do Twojego obliczeń jest dostępna lokalnie w węźle serwera programu Jupyter, (czyli węzła głównego), możesz użyć `%%local` magic systemem wstawki kodu programu Jupyter serwer.
 
-* **Magicznym wyrażeniem SQL** (`%%sql`). Jądro HDInsight Spark obsługuje proste wbudowane HiveQL zapytania względem SQLContext. (`-o VARIABLE_NAME`) Argument będzie się powtarzał wyniki kwerendy SQL jako Pandas ramki danych na serwerze programu Jupyter. Oznacza to, że będzie ona dostępna w trybie lokalnym.
+* **Magicznym wyrażeniem SQL** (`%%sql`). Jądro HDInsight Spark obsługuje proste wbudowane HiveQL zapytania względem SQLContext. (`-o VARIABLE_NAME`) Argument będzie się powtarzał wyniki kwerendy SQL jako Pandas ramki danych na serwerze programu Jupyter. To ustawienie oznacza, że dane wyjściowe będą dostępne w trybie lokalnym.
 * `%%local` **Magiczna**. `%%local` Magic uruchamia kod lokalnie na serwerze programu Jupyter, który jest węzłem klastra HDInsight. Zazwyczaj można użyć `%%local` magic w połączeniu z `%%sql` magic z `-o` parametru. `-o` Parametr będzie utrwalanie danych wyjściowych, zapytania SQL lokalnie, a następnie `%%local` magic powodowało kolejny zbiór fragment kodu w celu uruchomienia lokalnie dane wyjściowe zapytań SQL, który jest trwały lokalnie.
 
 ### <a name="query-the-data-by-using-sql"></a>Wykonywanie zapytań o dane przy użyciu języka SQL
@@ -411,7 +411,7 @@ W przypadku indeksowanie, użyj `StringIndexer()`w przypadku hot jeden kodowanie
 
 **Dane wyjściowe:**
 
-Godzina, o której ma zostać uruchomiony komórka: 4 sekundy.
+Czas, aby uruchomić komórkę: 4 sekundy.
 
 ### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>Przykładowy skrypt i dzielenia zestawu danych w ułamkach szkolenie i testowanie
 Ten kod tworzy losowej próbki danych (w tym przykładzie 25%). Próbkowanie nie jest wymagany w tym przykładzie ze względu na rozmiar zestawu danych, w tym artykule opisano, jak do przykładowy dzięki czemu będzie wiadomo, jak własne problemów w razie potrzeby. W przypadku dużych przykłady to zapisać znaczną ilość czasu, gdy uczyć modele. Następnie Podziel próbki na część szkolenia (75%, w tym przykładzie) i testowania część (25%, w tym przykładzie) do użycia w funkcji klasyfikacji i regresji modelowania.
@@ -450,7 +450,7 @@ Dodaj losową liczbę (od 0 do 1) do każdego wiersza (w kolumnie "rand"), któr
 
 **Dane wyjściowe:**
 
-Godzina, o której ma zostać uruchomiony komórka: 2 sekundy.
+Czas, aby uruchomić komórkę: 2 sekundy.
 
 ### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>Określ zmienną szkolenia i funkcje, a następnie utwórz indeksowanych lub hot jeden zakodowane szkolenie i testowanie danych wejściowych z etykietą punktu danych lub danych ramek
 Ta sekcja zawiera kod, który pokazuje, jak indeksowanie danych podzielonych na kategorie tekstu jako typ danych oznaczonych punktu i Zakoduj je, aby można było używać szkolenie i testowanie regresji logistycznej MLlib i innych modeli klasyfikacji. Obiekty oznaczone punktu są zestawów danych, które są sformatowane w sposób, które są wymagane jako dane wejściowe przez większość algorytmów w MLlib uczenia maszynowego. A [etykietą punktu](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) lokalnego wektor gęstą lub rozrzedzony, skojarzony z etykiety/odpowiedzi.
@@ -493,7 +493,7 @@ W tym kodzie należy określić (zależnych) Zmienna docelowa i funkcji na potrz
 
 **Dane wyjściowe:**
 
-Godzina, o której ma zostać uruchomiony komórka: 4 sekundy.
+Czas, aby uruchomić komórkę: 4 sekundy.
 
 ### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>Automatyczne kategoryzowanie i vectorize funkcje i obiekty docelowe do użycia jako dane wejściowe dla modeli uczenia maszynowego
 Użyj Spark ML do klasyfikowania obiektu docelowego i funkcji do użycia w funkcji modelowania oparta na drzewie. Kod wykonuje dwie czynności:
@@ -532,7 +532,7 @@ Poniżej przedstawiono kod dla tych dwóch zadań.
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Binarny model klasyfikacji: Przewidywanie, czy Porada powinna być płacona
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Model Klasyfikacja binarna: prognozowanie, czy należy zwrócić Porada
 W tej sekcji utworzysz trzy typy modeli klasyfikacji binarnej w celu przewidywania, czy należy zwrócić Porada:
 
 * A **modelu regresji logistycznej** przy użyciu Spark ML `LogisticRegression()` — funkcja
@@ -723,9 +723,9 @@ Następnie utwórz model klasyfikacji GBT przy użyciu MLlib firmy `GradientBoos
 
 **Dane wyjściowe:**
 
-Obszar pod krzywą ROC: 0.9846895479241554
+Powierzchni pod krzywą ROC: 0.9846895479241554
 
-## <a name="regression-model-predict-tip-amount"></a>Model regresji: Kwota Porada przewidywania
+## <a name="regression-model-predict-tip-amount"></a>Model regresji: przewidywanie kwota Porada
 W tej sekcji utworzysz dwa rodzaje modele regresji, by kwota Porada:
 
 * A **uczenia modelu regresji liniowej umorzyć** przy użyciu Spark ML `LinearRegression()` funkcji. Będzie zapisać model i ocenę modelu na danych testowych.
@@ -775,7 +775,7 @@ W tej sekcji utworzysz dwa rodzaje modele regresji, by kwota Porada:
 
 **Dane wyjściowe:**
 
-Godzina, o której ma zostać uruchomiony komórka: 13 sekund.
+Czas, aby uruchomić komórkę: 13 sekundach.
 
     # LOAD A SAVED LINEAR REGRESSION MODEL FROM BLOB STORAGE AND SCORE A TEST DATA SET
 
@@ -848,12 +848,12 @@ Tworzenie wykresów przy użyciu języka Python matplotlib.
 
 **Dane wyjściowe:**
 
-![Kwota Porada: Rzeczywiste a przewidywane](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![Porada kwota: rzeczywiste a przewidywane](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>Utworzyć model regresji GBT
 Utworzyć model regresji GBT przy użyciu Spark ML `GBTRegressor()` funkcji, a następnie ocenę modelu na danych testowych.
 
-[Wzmocnione gradientu drzew](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) są decyzyjne drzewa decyzyjne. GBTs uczenie drzew decyzyjnych interakcyjnie, aby zminimalizować funkcję utraty. Można użyć GBTs regresji i klasyfikacji. One może obsługiwać funkcje podzielonych na kategorie, skalowanie funkcja nie jest wymagane i przechwytywać nonlinearities i interakcje funkcji. Użytkownik może ich użyć także w ustawieniu kontra klasyfikacji.
+[Drzewa z podwyższeniem gradientu](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) są kompletnymi drzewami decyzyjnymi. GBTS pociąga drzewa decyzyjne iteracyjnie, aby zminimalizować funkcję strat. Można użyć GBTS do regresji i klasyfikacji. One może obsługiwać funkcje podzielonych na kategorie, skalowanie funkcja nie jest wymagane i przechwytywać nonlinearities i interakcje funkcji. Użytkownik może ich użyć także w ustawieniu kontra klasyfikacji.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -881,7 +881,7 @@ Utworzyć model regresji GBT przy użyciu Spark ML `GBTRegressor()` funkcji, a n
 
 **Dane wyjściowe:**
 
-Test R-SQR: 0.7655383534596654
+Jest test R-sqr: 0.7655383534596654
 
 ## <a name="advanced-modeling-utilities-for-optimization"></a>Narzędzia zaawansowane modelowanie optymalizacji
 W tej sekcji użyjesz machine learning narzędzia, które deweloperzy często korzystają z modelu optymalizacji. W szczególności można zoptymalizować modeli uczenia maszynowego trzy różne sposoby, za pomocą parametru zaczynają i krzyżowego sprawdzania poprawności:
@@ -938,7 +938,7 @@ Następnie Podziel dane na szkolenie i sprawdzanie poprawności zestawów, użyj
 
 **Dane wyjściowe:**
 
-Test R-SQR: 0.6226484708501209
+Jest test R-sqr: 0.6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>Optymalizuj model klasyfikacji binarnej za pomocą zaczynają krzyżowego sprawdzania poprawności i parametrów
 W tej sekcji dowiesz się, jak optymalizować model klasyfikacji binarnej przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów. Ta metoda korzysta z uczenia Maszynowego platformy Spark `CrossValidator` funkcji.
@@ -982,7 +982,7 @@ W tej sekcji dowiesz się, jak optymalizować model klasyfikacji binarnej przy u
 
 **Dane wyjściowe:**
 
-Godzina, o której ma zostać uruchomiony komórka: 33 sekund.
+Czas, aby uruchomić komórkę: 33 sekundy.
 
 ### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>Optymalizacja uczenia modelu regresji liniowej przy użyciu niestandardowego kodu krzyżowego sprawdzania poprawności i zaczynają parametru
 Następnie zoptymalizować modelu za pomocą kodu niestandardowego i zidentyfikować najlepszych parametrów modelu przy użyciu kryterium największej dokładności. Następnie utwórz końcowego modelu, ocena modelu na danych testowych i zapisywanie modelu w usłudze Blob storage. Na koniec załadować modelu, ocenianie danych testowych i ocenić dokładności.
@@ -1097,7 +1097,7 @@ Następnie zoptymalizować modelu za pomocą kodu niestandardowego i zidentyfiko
 
 **Dane wyjściowe:**
 
-Godzina, o której ma zostać uruchomiony komórka: 61 sekund.
+Czas, aby uruchomić komórkę: 61 sekund.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Używanie modeli uczenia maszynowego platformy Spark utworzonych automatycznie przy użyciu języka Scala
 Aby uzyskać omówienie tematów, które przeprowadzą Cię przez zadania, wchodzące w skład procesu do nauki o danych na platformie Azure, zobacz [zespołu danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

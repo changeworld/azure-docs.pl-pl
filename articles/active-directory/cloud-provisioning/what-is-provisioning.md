@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 28513c57101af67695d10056b3dc8e6537dcddb2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167629"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712540"
 ---
 # <a name="what-is-identity-provisioning"></a>Co to jest aprowizacja tożsamości?
 
 Obecnie małe i duże firmy w coraz większym stopniu korzystają zarówno z aplikacji lokalnych, jak i aplikacji w chmurze.  Użytkownicy potrzebują dostępu do aplikacji zarówno lokalnie, jak i w chmurze. Konieczne jest posiadanie jednej tożsamości między tymi różnymi aplikacjami (lokalnie i w chmurze).
 
-Inicjowanie obsługi jest procesem tworzenia obiektu na podstawie określonych warunków, zachowywania obiektu do daty i usuwania obiektu, gdy warunki nie są już spełnione. Na przykład gdy nowy użytkownik zostanie przyłączony do organizacji, ten użytkownik jest wprowadzany do systemu kadr.  W tym momencie Inicjowanie obsługi może utworzyć odpowiednie konto użytkownika w chmurze, w Active Directory i różne aplikacje, do których użytkownik będzie potrzebował dostępu.  Dzięki temu użytkownik może uruchamiać pracę i mieć dostęp do aplikacji i systemów, których potrzebują, w ciągu jednego dnia. 
+Inicjowanie obsługi jest procesem tworzenia obiektu na podstawie określonych warunków, utrzymywania aktualnego obiektu i usuwania obiektu, gdy warunki nie są już spełnione. Na przykład gdy nowy użytkownik zostanie przyłączony do organizacji, ten użytkownik jest wprowadzany do systemu kadr.  W tym momencie Inicjowanie obsługi może utworzyć odpowiednie konto użytkownika w chmurze, w Active Directory i różne aplikacje, do których użytkownik będzie potrzebował dostępu.  Dzięki temu użytkownik może uruchamiać pracę i mieć dostęp do aplikacji i systemów, których potrzebują, w ciągu jednego dnia. 
 
 ![Inicjowanie obsługi chmury](media/what-is-provisioning/cloud1.png)
 

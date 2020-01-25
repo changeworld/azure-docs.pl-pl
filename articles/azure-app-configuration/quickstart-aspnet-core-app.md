@@ -6,14 +6,14 @@ author: jpconnock
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 01/04/2020
+ms.date: 01/21/2020
 ms.author: jeconnoc
-ms.openlocfilehash: f625135f036ec8fc816bc3c3eb6c76c635c51fe9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 782c18344732362dee96842bcc7c9a6c4ed14a68
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690218"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711242"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Szybki Start: Tworzenie aplikacji ASP.NET Core przy użyciu konfiguracji aplikacji platformy Azure
 
@@ -102,13 +102,15 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
 1. Dodaj odwołanie do pakietu NuGet `Microsoft.Azure.AppConfiguration.AspNetCore`, uruchamiając następujące polecenie:
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
     ```
+
 1. Uruchom następujące polecenie, aby przywrócić pakiety dla projektu:
 
     ```dotnetcli
     dotnet restore
     ```
+
 1. Dodaj wpis tajny o nazwie *ConnectionStrings:AppConfig* do narzędzia Secret Manager.
 
     Ten wpis tajny zawiera parametry połączenia w celu uzyskania dostępu do magazynu konfiguracji aplikacji. Zastąp wartość w poniższym poleceniu parametrami połączenia dla magazynu konfiguracji aplikacji.
@@ -133,7 +135,7 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
     ```
 
 1. Zaktualizuj metodę `CreateWebHostBuilder`, aby użyć konfiguracji aplikacji przez wywołanie metody `config.AddAzureAppConfiguration()`.
-    
+
     > [!IMPORTANT]
     > `CreateHostBuilder` zastępuje `CreateWebHostBuilder` na platformie .NET Core 3,0.  Wybierz poprawną składnię opartą na Twoim środowisku.
 
@@ -151,7 +153,7 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
     ```
 
     #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
-    
+
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -163,6 +165,7 @@ Narzędzie Secret manager przechowuje poufne dane potrzebne w pracy deweloperski
         })
         .UseStartup<Startup>());
     ```
+
     ---
 
 1. Przejdź do *<app root>/views/Home* i Otwórz *index. cshtml*. Zastąp jego zawartość następującym kodem:

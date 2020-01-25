@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 7/5/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 52d2e3ed59a7ad71177f34909e37ce885d603297
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2fba0a0d64502a30b6dfbc9f4f109bca65cca8b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515276"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716350"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>Wdróż kontener wykrywania anomalii w Azure Container Instances
 
@@ -23,7 +23,7 @@ Dowiedz się, jak wdrożyć kontener [wykrywania anomalii](../anomaly-detector-c
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Zażądaj dostępu do rejestru kontenera prywatnego
+## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
 
 Musisz najpierw zakończyć i przesłać [formularz żądania kontenera wykrywania anomalii](https://aka.ms/adcontainer) , aby zażądać dostępu do kontenera.
 
@@ -38,5 +38,5 @@ Musisz najpierw zakończyć i przesłać [formularz żądania kontenera wykrywan
 ## <a name="next-steps"></a>Następne kroki
 
 * Zapoznaj się z tematem [Instalowanie i uruchamianie kontenerów](../anomaly-detector-container-configuration.md) na potrzeby ściągania obrazu kontenera i uruchamiania kontenera
-* Przegląd [konfigurowania kontenerów](../anomaly-detector-container-configuration.md) dla ustawień konfiguracji
+* Przegląd [skonfigurować kontenery](../anomaly-detector-container-configuration.md) ustawień konfiguracji
 * [Dowiedz się więcej o usłudze interfejsu API wykrywania anomalii](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

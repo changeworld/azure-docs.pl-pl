@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 82d366b3f807e21e3531da00da78520fed90bc66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645257"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720031"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integracja kontroli źródła dla Azure SQL Data Warehouse
 
@@ -37,7 +37,7 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
    ![Zarządzanie połączeniami](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Zarządzanie połączeniami")
 
-   ![Połączenie](media/sql-data-warehouse-source-control-integration/3-connect.png "Połączenie")
+   ![Połączenie](media/sql-data-warehouse-source-control-integration/3-connect.png "Łączenie")
 
 3. Klonowanie repozytorium repozytorium platformy Azure z projektu na komputerze lokalnym
 
@@ -63,7 +63,7 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
    ![Synchronizuj i wypchnij](media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Synchronizuj i wypchnij")  
 
-## <a name="validation"></a>Walidacja
+## <a name="validation"></a>Sprawdzanie poprawności
 
 1. Sprawdź, czy zmiany zostały wypchnięte do repozytorium platformy Azure przez zaktualizowanie kolumny tabeli w projekcie bazy danych za pomocą programu Visual Studio SQL Server Data Tools (SSDT)
 
@@ -82,13 +82,3 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 ## <a name="next-steps"></a>Następne kroki
 
 - [Programowanie dla Azure SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/21/2020
+ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 83744750a664a3a992d823f0b7e76768e249aaba
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514276"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721425"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co to jest Windows Virtual Desktop? 
 
@@ -99,13 +99,15 @@ Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windo
 |kms.core.windows.net|Port TCP 1688|Aktywacja systemu Windows 10|
 
 >[!IMPORTANT]
->Otwieranie tych adresów URL jest niezbędne dla niezawodnego wdrożenia pulpitu wirtualnego systemu Windows. Blokowanie dostępu do tych adresów URL nie jest obsługiwane i wpłynie na funkcjonalność usługi. Te adresy URL odnoszą się tylko do witryn i zasobów pulpitu wirtualnego systemu Windows, a nie obejmują adresów URL dla innych usług, takich jak Azure AD.
+>Otwieranie tych adresów URL jest niezbędne dla niezawodnego wdrożenia pulpitu wirtualnego systemu Windows. Blokowanie dostępu do tych adresów URL nie jest obsługiwane i wpłynie na funkcjonalność usługi. Te adresy URL odnoszą się tylko do witryn i zasobów pulpitu wirtualnego systemu Windows, a nie zawierają adresów URL dla innych usług, takich jak Azure Active Directory.
 
 >[!NOTE]
+>Pulpit wirtualny systemu Windows nie ma obecnie listy zakresów adresów IP, które można dozwolonych, aby zezwalać na ruch sieciowy. W tej chwili obsługujemy tylko określone adresy URL listy dozwolonych.
+>
 >Należy użyć symbolu wieloznacznego (*) dla adresów URL związanych z ruchem usługi. Jeśli wolisz używać * w przypadku ruchu związanego z agentem, Oto jak znaleźć adresy URL bez symboli wieloznacznych:
 >
 >1. Zarejestruj maszyny wirtualne w puli hostów systemu Windows Virtual Desktop.
->2. Otwórz **Podgląd zdarzeń** i przejdź do **dziennika aplikacji** **systemu Windows** > i poszukaj zdarzenia o identyfikatorze 3702.
+>2. Otwórz **Podgląd zdarzeń** i przejdź do **dzienników systemu Windows** > **Application** > **WVD-Agent** i poszukaj zdarzenia o identyfikatorze 3702.
 >3. Dozwolonych adresy URL Znalezione w obszarze zdarzenia o IDENTYFIKATORze 3702. Adresy URL pod IDENTYFIKATORem zdarzenia 3702 są specyficzne dla regionu. Należy powtórzyć proces listy dozwolonych z odpowiednimi adresami URL dla każdego regionu, w którym mają zostać wdrożone maszyny wirtualne.
 
 Pulpit wirtualny systemu Windows składa się z komputerów stacjonarnych i aplikacji z systemem Windows dostarczanych użytkownikom i rozwiązanie do zarządzania, które jest hostowane jako usługa na platformie Azure przez firmę Microsoft. Komputery stacjonarne i aplikacje można wdrażać na maszynach wirtualnych w dowolnym regionie świadczenia usługi Azure, a rozwiązanie do zarządzania i dane dla tych maszyn wirtualnych będą znajdować się w Stany Zjednoczone. Może to spowodować transfer danych do Stany Zjednoczone.

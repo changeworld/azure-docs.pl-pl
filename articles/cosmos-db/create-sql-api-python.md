@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: a794a9ed35cbbdd36c2cf136b8afc208c3ea0692
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1e0016e8ce6bc9178befd1a5ca96aa2554929ac5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549017"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719538"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Szybki Start: Tworzenie aplikacji w języku Python przy użyciu Azure Cosmos DB konta interfejsu API SQL
 
@@ -41,7 +41,7 @@ Ten przewodnik Szybki Start używa wersji 4 [zestawu SDK języka Python](https:/
 
 * Środowisko [Python 3.6 +](https://www.python.org/downloads/)z `python` pliku wykonywalnego dostępnego w `PATH`.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Rozszerzenie języka Python dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
+* [Rozszerzenie języka Python dla Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
 
@@ -51,11 +51,11 @@ Ten przewodnik Szybki Start używa wersji 4 [zestawu SDK języka Python](https:/
 
 Teraz można użyć narzędzia Eksplorator danych w Azure Portal, aby utworzyć bazę danych i kontener. 
 
-1. Wybierz pozycję **Eksplorator danych** > **Nowy kontener**. 
+1. Wybierz pozycję **Eksplorator danych** > **nowy kontener**. 
     
     Obszar **Dodaj kontener** jest wyświetlany po prawej stronie, może być konieczne przewinięcie w prawo w celu wyświetlenia go.
 
-    ![Eksplorator danych w witrynie Azure Portal, okienko Dodawanie kontenera](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
+    ![Azure Portal Eksplorator danych, Dodaj okienko kontenera](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
 
 2. Na stronie **Dodawanie kontenera** wprowadź ustawienia dla nowego kontenera.
 
@@ -63,12 +63,12 @@ Teraz można użyć narzędzia Eksplorator danych w Azure Portal, aby utworzyć 
     |---|---|---|
     |**Identyfikator bazy danych**|Zadania|Wprowadź *todolist* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu. Sprawdź opcję **zainicjuj przepływność bazy danych** , która umożliwia udostępnianie przepływności dla bazy danych we wszystkich kontenerach w bazie danych. Ta opcja pomaga również w obniżyć kosztów. |
     |**Przepływność**|400|Pozostaw przepływność na 400 jednostek żądań na sekundę (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.| 
-    |**Identyfikator kontenera**|Items|Wprowadź *elementy* jako nazwę nowego kontenera. W przypadku identyfikatorów kontenerów obowiązują takie same wymagania dotyczące znaków jak dla nazw baz danych.|
+    |**Identyfikator kontenera**|Items|Wprowadź *elementy* jako nazwę nowego kontenera. Identyfikatory kontenerów mają takie same wymagania dotyczące znaków jak nazwy baz danych.|
     |**Klucz partycji**| /category| W przykładzie opisanym w tym artykule jest stosowany */Category* jako klucz partycji.|
     
     Oprócz powyższych ustawień można opcjonalnie dodać **unikatowe klucze** dla kontenera. W tym przykładzie pozostawmy pole puste. Unikatowe klucze umożliwiają deweloperom dodanie warstwy integralności danych do bazy danych. Tworząc unikatowe Zasady kluczy podczas tworzenia kontenera, należy zapewnić unikatowość jednej lub więcej wartości na klucz partycji. Aby dowiedzieć się więcej, zapoznaj się z artykułem [Unique keys in Azure Cosmos DB (Unikatowe klucze w usłudze Azure Cosmos DB)](unique-keys.md).
     
-    Kliknij przycisk **OK**. W Eksploratorze danych zostanie wyświetlona nowa baza danych i nowy kontener.
+    Kliknij przycisk **OK**. W Eksplorator danych zostanie wyświetlona nowa baza danych i kontener.
 
 ## <a name="add-sample-data"></a>Dodawanie danych przykładowych
 

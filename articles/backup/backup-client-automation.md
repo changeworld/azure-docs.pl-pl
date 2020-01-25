@@ -3,12 +3,12 @@ title: Używanie programu PowerShell do tworzenia kopii zapasowych systemu Windo
 description: W tym artykule dowiesz się, jak używać programu PowerShell do konfigurowania Azure Backup w systemie Windows Server lub kliencie systemu Windows oraz zarządzania kopiami zapasowymi i odzyskiwaniem.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ef5571e6a059eedeba169765785bb0f840c8f256
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689192"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710864"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Wdrażanie kopii zapasowych systemu Windows Server/Windows Client na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 
@@ -113,12 +113,12 @@ Dostępne opcje to:
 
 | Opcja | Szczegóły | Domyślne |
 | --- | --- | --- |
-| parametru |Instalacja cicha |- |
+| /q |Instalacja cicha |- |
 | /p: "Location" |Ścieżka do folderu instalacji agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
 | /s: "lokalizacja" |Ścieżka do folderu pamięci podręcznej dla agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| parametr |Zezwól na Microsoft Update |- |
+| /m |Zezwól na Microsoft Update |- |
 | /nu |Nie sprawdzaj, czy są aktualizacje po zakończeniu instalacji |- |
-| parametr |Odinstalowuje agenta Microsoft Azure Recovery Services |- |
+| /d |Odinstalowuje agenta Microsoft Azure Recovery Services |- |
 | /pH Generuj dyrektywę |Adres hosta serwera proxy |- |
 | /po |Numer portu hosta serwera proxy |- |
 | /pu |Nazwa użytkownika hosta serwera proxy |- |
