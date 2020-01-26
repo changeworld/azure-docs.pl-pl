@@ -1,6 +1,6 @@
 ---
-title: Przenoszenie aplikacji sieci Web wywoływanych interfejsów API sieci Web do produkcji — platforma tożsamości firmy Microsoft | Azure
-description: Dowiedz się, jak przenieść aplikację sieci Web, która wywołuje interfejsy API sieci Web w środowisku produkcyjnym.
+title: Przenieś do środowiska produkcyjnego aplikacji sieci Web, która wywołuje interfejsy API sieci Web — Microsoft Identity platform | Azure
+description: Dowiedz się, jak przejść do środowiska produkcyjnego aplikacji sieci Web, która wywołuje interfejsy API sieci Web.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,28 +14,28 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 439b7e07b2e2aa77afd027fa57cc6f7705626d81
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b1307df8f6dfb0457719b13c9e5cd0bf28660caa
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701641"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758953"
 ---
-# <a name="web-app-that-calls-web-apis---move-to-production"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — Przenieś do środowiska produkcyjnego
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web: Przenieś do środowiska produkcyjnego
 
 Teraz, gdy wiesz już, jak uzyskać token do wywoływania interfejsów API sieci Web, Dowiedz się, jak przejść do środowiska produkcyjnego.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej, pobierając pełny samouczek progresywny ASP.NET Core aplikacji sieci Web, który pokazuje:
+Dowiedz się więcej, pobierając pełny, progresywny samouczek dotyczący ASP.NET Core aplikacji sieci Web. Samouczek:
 
-- Jak logować użytkowników z wieloma odbiorcami, chmurami narodowymi lub tożsamościami społecznościowymi
-- Microsoft Graph wywołań
-- Wywołuje kilka interfejsów API firmy Microsoft
-- Obsługuje przyrostową zgodę
-- Wywołuje własny internetowy interfejs API
+- Pokazuje, jak podpisać użytkowników w wielu odbiorcach lub w chmurach narodowych lub przy użyciu tożsamości społecznościowych.
+- Wywołania Microsoft Graph.
+- Wywołuje kilka interfejsów API firmy Microsoft.
+- Obsługuje przyrostową zgodę.
+- Wywołuje własny internetowy interfejs API.
 
 > [!div class="nextstepaction"]
 > [Samouczek aplikacji sieci Web ASP.NET Core](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)

@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422358"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756304"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: historia wersji
 Zespół Azure Active Directory (Azure AD) regularnie aktualizuje Azure AD Connect za pomocą nowych funkcji i funkcji. Nie wszystkie dodatki są stosowane dla wszystkich odbiorców.
@@ -84,6 +84,8 @@ Ta wersja naprawia usterkę, w której niektóre serwery, które zostały automa
 ### <a name="fixed-issues"></a>Rozwiązane problemy
 
 W pewnych okolicznościach serwery, które były automatycznie uaktualnione do wersji 1.4.18.0, nie włączyły ponownie funkcji samoobsługowego resetowania hasła i zapisywania zwrotnego haseł po zakończeniu uaktualniania. Ta wersja automatycznego uaktualniania rozwiązuje problem i ponownie włącza funkcję samoobsługowego resetowania hasła i zapisywania zwrotnego haseł.
+
+Rozwiązano błąd w narzędziu kompresji błędy synchronizacji, które nie obsługują poprawnie znaków dwuskładnikowych.
 
 ## <a name="14180"></a>1.4.18.0
 
@@ -390,7 +392,7 @@ Status 4/12/2018: wydano tylko do pobrania
 #### <a name="fixed-issues"></a>Rozwiązane problemy
 Rozwiązano problem polegający na tym, że automatyczne odnajdowanie wystąpień platformy Azure dla dzierżawców Chin było sporadyczne niepowodzeniem.  
 
-### <a name="ad-fs-management"></a>Usługi AD FS zarządzania
+### <a name="ad-fs-management"></a>Zarządzanie AD FS
 #### <a name="fixed-issues"></a>Rozwiązane problemy
 
 Wystąpił problem z logiką ponawiania konfiguracji, która spowodowałaby, że ArgumentException wskazuje, że element o tym samym kluczu został już dodany.  Spowoduje to, że wszystkie operacje ponawiania zakończą się niepowodzeniem.
@@ -497,15 +499,15 @@ Zablokuj dostęp do konta AD DS, implementując następujące zmiany uprawnień 
 Typ     | Nazwa                          | Dostęp               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
 Zezwól    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
-Zezwól    | Enterprise Admins             | Pełna kontrola         | Ten obiekt  |
+Zezwól    | Administratorzy przedsiębiorstwa             | Pełna kontrola         | Ten obiekt  |
 Zezwól    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
 Zezwól    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
 Zezwól    | Kontrolery domeny przedsiębiorstwa | Wyświetl zawartość        | Ten obiekt  |
 Zezwól    | Kontrolery domeny przedsiębiorstwa | Odczyt wszystkich właściwości  | Ten obiekt  |
 Zezwól    | Kontrolery domeny przedsiębiorstwa | Uprawnienia do odczytu     | Ten obiekt  |
-Zezwól    | Użytkownicy uwierzytelnieni           | Wyświetl zawartość        | Ten obiekt  |
-Zezwól    | Użytkownicy uwierzytelnieni           | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwól    | Użytkownicy uwierzytelnieni           | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwól    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
+Zezwól    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwól    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
 
 Aby wzmocnić ustawienia dla konta AD DS można uruchomić [ten skrypt programu PowerShell](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978). Skrypt programu PowerShell przypisze uprawnienia wymienione powyżej do konta AD DS.
 
@@ -606,7 +608,7 @@ Stan: październik 19 2017
 
 * Wcześniej, Jeśli podjęto próbę włączenia synchronizacji skrótów haseł, Azure AD Connect nie sprawdza, czy konto łącznika usługi AD ma wymagane uprawnienia do synchronizowania skrótów haseł z lokalnej usługi AD. Teraz Kreator Azure AD Connect sprawdzi i wyświetli ostrzeżenie, jeśli konto łącznika usługi AD nie ma wystarczających uprawnień.
 
-### <a name="ad-fs-management"></a>Usługi AD FS zarządzania
+### <a name="ad-fs-management"></a>Zarządzanie AD FS
 #### <a name="fixed-issue"></a>Rozwiązano problem
 * Rozwiązano problem związany z korzystaniem z [usługi MS-ds-ConsistencyGuid jako funkcji kotwicy źródłowej](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) . Ten problem ma wpływ na klientów, którzy skonfigurowali *Federacji z AD FS* jako metodę logowania użytkownika. Podczas wykonywania zadania *konfigurowania zakotwiczenia źródła* w Kreatorze Azure AD Connect przełącza do używania * MS-ds-ConsistencyGuid jako atrybutu Source dla immutableId. W ramach tej zmiany Azure AD Connect próbuje zaktualizować reguły dotyczące usługi ImmutableId w programie AD FS. Jednak ten krok nie powiódł się, ponieważ Azure AD Connect nie ma poświadczeń administratora wymaganych do skonfigurowania AD FS. W przypadku tej poprawki Azure AD Connect teraz zostanie wyświetlony komunikat z prośbą o wprowadzenie poświadczeń administratora dla AD FS, gdy zostanie wykonane zadanie *konfigurowania kotwicy źródłowej* .
 
@@ -648,7 +650,7 @@ Stan: wrzesień 05 2017
 #### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 * Dodano obsługę Microsoft Azure Government chmury i Microsoft Cloud Niemcy.
 
-### <a name="ad-fs-management"></a>Usługi AD FS zarządzania
+### <a name="ad-fs-management"></a>Zarządzanie AD FS
 #### <a name="fixed-issues"></a>Rozwiązane problemy
 * Polecenie cmdlet Initialize-ADSyncNGCKeysWriteBack w module programu PowerShell do przygotowywania usługi AD nieprawidłowo stosowało listy ACL do kontenera rejestracji urządzeń i w związku z tym dziedziczy tylko istniejące uprawnienia.  Ta aktualizacja została zaktualizowana tak, aby konto usługi synchronizacji miało odpowiednie uprawnienia.
 

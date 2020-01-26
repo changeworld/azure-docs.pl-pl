@@ -1,6 +1,6 @@
 ---
 title: PowerShell — tworzenie roli niestandardowej w laboratorium w Azure DevTest Labs
-description: Ten skrypt programu PowerShell umożliwia dodanie użytkownika zewnętrznego do laboratorium w Azure DevTest Labs.
+description: Ten artykuł zawiera skrypt Azure PowerShell, który dodaje użytkownika zewnętrznego do laboratorium w Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: bcad4e02105bff2dc78a4adc3ca614f997794d52
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9605b3c63877335b8f180ae5fd2b06edc1601096
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166424"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760468"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Używanie programu PowerShell do tworzenia roli niestandardowej w laboratorium w Azure DevTest Labs
 

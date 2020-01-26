@@ -1,6 +1,6 @@
 ---
 title: Azure DevTest Labs często zadawane pytania | Microsoft Docs
-description: Znajdź odpowiedzi na często zadawane pytania dotyczące Azure DevTest Labs.
+description: Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania dotyczące Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: afd6ded6dc027e118694078f8b8eeadfe8dd80e4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981477"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760525"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące Azure DevTest Labs.

@@ -1,6 +1,6 @@
 ---
-title: Asynchroniczna Obsługa komunikatów usługi Service Bus | Dokumentacja firmy Microsoft
-description: Opis asynchronicznej obsługi komunikatów usługi Azure Service Bus.
+title: Service Bus asynchroniczne komunikaty | Microsoft Docs
+description: Dowiedz się, w jaki sposób Azure Service Bus obsługuje asynchronism za pośrednictwem mechanizmu magazynu i przesyłania dalej z kolejkami, tematami i subskrypcjami.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,60 +12,60 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531113"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761036"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Wzorce asynchronicznej obsługi komunikatów i wysoka dostępność
 
-Asynchroniczna Obsługa komunikatów może być implementowany w wiele różnych sposobów. Kolejki, tematy i subskrypcje usługi Azure Service Bus obsługuje asynchronism za pośrednictwem sklepu i mechanizm do przodu. W normalnych operacji (synchroniczne) wysyłanie komunikatów do kolejki i tematy i odbieranie komunikatów z subskrypcji i kolejek. Aplikacje, które piszesz zależą od tych jednostek, które zawsze są dostępne. Kondycja jednostki zmieni się, ze względu na różnych okolicznościach, konieczne jest sposób zapewnienia jednostki ograniczoną możliwość, która może spełnić zastosowaniach.
+Asynchroniczne komunikaty można zaimplementować na różne sposoby. Za pomocą kolejek, tematów i subskrypcji Azure Service Bus obsługuje asynchronism za pośrednictwem mechanizmu magazynu i przesyłania dalej. W normalnej operacji (synchronicznej) wysyłanie komunikatów do kolejek i tematów oraz odbieranie komunikatów z kolejek i subskrypcji. Aplikacje, które zapisujesz, zależą od tych, które są zawsze dostępne. Gdy kondycja jednostki ulegnie zmianie, ze względu na różne okoliczności, trzeba zapewnić ograniczoną jednostkę możliwości, która może spełnić większość potrzeb.
 
-Aplikacje zazwyczaj umożliwiają wzorce asynchronicznej obsługi komunikatów wiele scenariuszy komunikacji. Możesz tworzyć aplikacje, w których klienci mogą wysyłać komunikaty do usług, nawet wtedy, gdy usługa nie jest uruchomiona. Dla aplikacji tego procesu, które mogą pomóc wzrosty komunikacji za pośrednictwem kolejki wyrównania obciążenia, zapewniając miejsce do buforu łączności. Na koniec możesz uzyskać modułu równoważenia obciążenia prosty, lecz skuteczne rozłożenie wiadomości na wielu komputerach.
+Aplikacje zwykle używają asynchronicznych wzorców obsługi komunikatów w celu umożliwienia wielu scenariuszy komunikacji. Można tworzyć aplikacje, w których klienci mogą wysyłać wiadomości do usług, nawet jeśli usługa nie jest uruchomiona. W przypadku aplikacji, które napotykają na rozerwanie komunikacji, kolejka może pomóc w obciążeniu obciążenia, zapewniając w ten sposób miejsce do komunikacji buforowej. Na koniec można skorzystać z prostego, ale efektywnego modułu równoważenia obciążenia do dystrybucji komunikatów na wielu maszynach.
 
-W celu zapewnienia dostępności dowolnej z tych jednostek, należy wziąć pod uwagę wiele różnych sposobów, w którym te jednostki może znajdować się niedostępna w przypadku trwałych system obsługi komunikatów. Ogólnie rzecz biorąc widzimy jednostki stają się niedostępne dla aplikacji, które napiszemy na następujące sposoby:
+Aby zapewnić dostępność którejkolwiek z tych jednostek, należy wziąć pod uwagę różne sposoby, w których te jednostki mogą być niedostępne dla trwałego systemu obsługi komunikatów. Ogólnie mówiąc, zobaczymy, że jednostka staje się niedostępna dla aplikacji, które zapisujemy na następujące różne sposoby:
 
-* Nie można wysłać wiadomości.
-* Nie można odbierać komunikaty.
-* Nie można zarządzać jednostki (Tworzenie, pobieranie, aktualizowanie lub usuwanie jednostek).
+* Nie można wysłać komunikatów.
+* Nie można odebrać komunikatów.
+* Nie można zarządzać jednostkami (tworzenie, pobieranie, aktualizowanie i usuwanie jednostek).
 * Nie można skontaktować się z usługą.
 
-Dla każdego z tych błędów awarii w różnych trybach istnieje, które umożliwiają aplikacji, aby kontynuować do wykonywania pracy na pewien stopień ograniczoną możliwość. Na przykład system, który może wysyłać wiadomości, ale nie ich odbierania, może nadal otrzymywać zamówienia od klientów, ale nie będzie mógł przetworzyć tych zamówień. W tym temacie omówiono potencjalnych problemów, które mogą wystąpić, i jak te problemy zostały skorygowane. Usługa Service Bus ma wprowadzono szereg środki zaradcze, które użytkownik musi wyrazić zgodę, a w tym temacie omówiono również zasad regulujących korzystanie z tych opcjonalnych środki zaradcze.
+Dla każdego z tych błędów istnieją różne tryby awarii, które umożliwiają aplikacji kontynuowanie pracy na pewnym poziomie ograniczonej funkcjonalności. Na przykład system, który może wysyłać wiadomości, ale ich nie odbierać, nadal może otrzymywać zamówienia od klientów, ale nie może przetwarzać tych zamówień. W tym temacie omówiono potencjalne problemy, które mogą wystąpić, oraz sposób, w jaki te problemy zostały skorygowane. W Service Bus wprowadzono wiele środków zaradczych, które należy zadecydować, a w tym temacie omówiono także reguły dotyczące korzystania z tych zasad zaradczych.
 
-## <a name="reliability-in-service-bus"></a>Niezawodność w usłudze Service Bus
-Istnieje kilka sposobów obsługi problemów komunikat i jednostki, a istnieją wytyczne dotyczące właściwego użycia tych środków zaradczych. Zrozumienie wytycznych, musisz najpierw zrozumieć, co może nie działać w usłudze Service Bus. Ze względu na projekt systemy usługi Azure wszystkie te problemy zwykle krótkotrwałe. Na wysokim poziomie inne przyczyny niedostępności wyglądać następująco:
+## <a name="reliability-in-service-bus"></a>Niezawodność w Service Bus
+Istnieje kilka sposobów obsługi problemów z komunikatami i jednostkami, a istnieją wskazówki dotyczące odpowiedniego zastosowania tych środków zaradczych. Aby zrozumieć wytyczne, należy najpierw zrozumieć, co może się nie powieść w Service Bus. Ze względu na projektowanie systemów Azure wszystkie te problemy są zwykle skracane. Na wysokim poziomie różne przyczyny niedostępności są wyświetlane w następujący sposób:
 
-* Ograniczanie przepustowości z systemu zewnętrznego, od których zależy usługa Service Bus. Ograniczanie występuje z interakcji z zasobami magazynu i mocy obliczeniowej.
-* Problem w przypadku systemu, od których zależy usługa Service Bus. Na przykład określona część magazynu mogą wystąpić problemy.
-* Błąd usługi Service Bus w jednym podsystemie. W takiej sytuacji węzła obliczeniowego można uzyskać w niespójnym stanie i należy ponownie uruchomić, powodując wszystkich jednostek, który można załadować saldo do innych węzłów. Z kolei może to spowodować krótkim przetwarzania komunikatów powolne.
-* Błąd usługi Service Bus w obrębie centrum danych platformy Azure. To jest "poważnej awarii" w którym system jest nieosiągalna przez wiele minut lub kilka godzin.
+* Ograniczanie z systemu zewnętrznego, od którego zależy Service Bus. Ograniczanie przepływów odbywa się z interakcji z magazynem i zasobami obliczeniowymi.
+* Problem dotyczący systemu, w którym zależą Service Bus. Na przykład dana część magazynu może napotkać problemy.
+* Niepowodzenie Service Bus w pojedynczym podsystemie. W takiej sytuacji węzeł obliczeniowy może przejść w stan niespójny i uruchomić go ponownie, co spowoduje, że wszystkie jednostki, które obsługują, równoważenia obciążenia z innymi węzłami. To z kolei może spowodować krótkotrwały czas przetwarzania komunikatów.
+* Niepowodzenie Service Bus w centrum danych platformy Azure. Jest to "błąd krytyczny", podczas którego system jest nieosiągalny przez wiele minut lub kilka godzin.
 
 > [!NOTE]
-> Termin **magazynu** może oznaczać zarówno usługi Azure Storage i SQL Azure.
+> Termin **Magazyn** może oznaczać zarówno usługę Azure Storage, jak i SQL Azure.
 > 
 > 
 
-Usługa Service Bus zawiera szereg środki zaradcze w przypadku tych problemów. W poniższych sekcjach omówiono poszczególne problemy i ich odpowiednich środków zaradczych.
+Service Bus zawiera wiele środków zaradczych związanych z tymi problemami. W poniższych sekcjach omówiono każdy problem i odpowiednie środki zaradcze.
 
 ### <a name="throttling"></a>Ograniczanie przepływności
-Usługa Service Bus ograniczania Azure umożliwia zarządzanie współczynnik współpracy wiadomości. Poszczególnych węzłów usługi Service Bus przechowuje wiele jednostek. Każda z tych jednostek temu zapotrzebowanie na system pod kątem procesora CPU, pamięci, magazynu i innymi aspektami. Po wykryciu dowolnego z tych zestawów reguł użycia przekraczający zdefiniowanych progów, Service Bus można odmówić danego żądania. Obiekt wywołujący uzyskuje [ServerBusyException] [ ServerBusyException] i ponownych prób po 10 sekundach.
+Dzięki Service Bus ograniczanie przepustowości umożliwia zarządzanie szybkością komunikatów. Każdy pojedynczy węzeł Service Bus ma wiele jednostek. Każda z tych jednostek wykonuje wymagania dotyczące systemu pod względem procesora CPU, pamięci, magazynu i innych aspektów. Gdy którykolwiek z tych aspektów wykryje użycie, które przekracza zdefiniowane wartości progowe, Service Bus może odmówić określonego żądania. Obiekt wywołujący otrzymuje [wyjątek serverbusyexception][ServerBusyException] i ponawia próbę po 10 sekundach.
 
-Jako ograniczenie kod musi odczytać błędu i zatrzymanie dowolnego powtórzeń komunikatu przez co najmniej 10 sekund. Ponieważ ten błąd może się zdarzyć w różnych rodzajów aplikacji klienta, oczekuje się, że każdy element niezależnie wykonuje Logika ponawiania. Kod może zmniejszyć prawdopodobieństwo, że jest ograniczane przez włączenie partycjonowania na kolejki lub tematu.
+Jako środek zaradczy, kod musi odczytać błąd i zatrzymać wszystkie ponowne próby komunikatu przez co najmniej 10 sekund. Ponieważ przyczyną błędu może być wiele elementów aplikacji klienta, oczekuje się, że każdy element niezależnie wykonuje logikę ponawiania. Kod może zmniejszyć prawdopodobieństwo ograniczenia przepustowości przez włączenie partycjonowania dla kolejki lub tematu.
 
-### <a name="issue-for-an-azure-dependency"></a>Problem w przypadku zależności platformy Azure
-Inne składniki w ramach platformy Azure od czasu do czasu może mieć problemy z usługą. Na przykład po uaktualnieniu systemu, który używa usługi Service Bus tego systemu mogą tymczasowo występować zmniejszenie możliwości. Aby uniknąć tego rodzaju problemy, Service Bus regularnie bada i implementuje środki zaradcze. Efekty uboczne te środki zaradcze są wyświetlane. Na przykład aby obsłużyć przejściowe problemy z usługą storage, Usługa Service Bus implementuje system, który umożliwia wykonywanie operacji wysyłania komunikatu do działać spójnie. Ze względu na charakter środki zaradcze wysyłany komunikat może potrwać do 15 minut, są wyświetlane w usterce kolejki lub subskrypcji i gotowa do operacji odbierania. Ogólnie rzecz biorąc, większość jednostek będzie ten problem nie występuje. Jednak w usłudze Service Bus na platformie Azure, biorąc pod uwagę liczbę jednostek, takie rozwiązanie jest czasami wymagany przez mały podzbiór klientów usługi Service Bus.
+### <a name="issue-for-an-azure-dependency"></a>Problem z zależnością platformy Azure
+Inne składniki na platformie Azure mogą czasami mieć problemy z usługą. Na przykład gdy system, który Service Bus jest uaktualniany, system może tymczasowo obniżyć możliwości. Aby obejść te rodzaje problemów, Service Bus regularnie badać i implementować środki zaradcze. Zostaną wyświetlone efekty uboczne tych środków zaradczych. Aby na przykład obsłużyć przejściowe problemy z magazynem, Service Bus implementuje System, który pozwala na spójne działanie operacji wysyłania komunikatów. Ze względu na charakter środków zaradczych wysłany komunikat może potrwać do 15 minut w kolejce lub subskrypcji, której dotyczy problem, i będzie gotowy do operacji odbierania. Ogólnie mówiąc, większość jednostek nie będzie napotykać tego problemu. Jednakże uwzględniając liczbę jednostek w Service Bus na platformie Azure, takie ograniczenie jest czasami potrzebne dla małego podzbioru Service Bus klientów.
 
-### <a name="service-bus-failure-on-a-single-subsystem"></a>Błąd usługi Service Bus w jednym podsystemie
-Z każdą aplikacją okolicznościach może powodować wewnętrznego składnikiem usługi Service Bus, aby stać się niespójna. Gdy Usługa Service Bus wykryje to, zbiera dane z aplikacji, aby pomóc w zdiagnozowaniu, co się stało. Po zebraniu danych ponownym uruchomieniu aplikacji w celu podjęcia próby przywrócić go do stanu spójności. Ten proces odbywa się dość szybko, a wyniki w jednostce, które pojawiają się jako niedostępny dla maksymalnie kilka minut, chociaż jest to typowy szczegółów czasu są znacznie krótszy.
+### <a name="service-bus-failure-on-a-single-subsystem"></a>Niepowodzenie Service Bus w pojedynczym podsystemie
+W przypadku każdej aplikacji okoliczności mogą spowodować, że wewnętrzny składnik Service Bus stanie się niespójny. Po wykryciu tego Service Bus zbiera dane z aplikacji, aby pomóc w diagnozowaniu tego, co się stało. Po zebraniu danych aplikacja zostanie uruchomiona ponownie w celu uzyskania spójnego stanu. Ten proces odbywa się dość szybko, a wyniki w jednostce, która jest niedostępna przez maksymalnie kilka minut, chociaż typowe czasy są znacznie krótsze.
 
-W takich przypadkach aplikacja kliencka generuje [System.TimeoutException] [ System.TimeoutException] lub [MessagingException] [ MessagingException] wyjątku. Usługa Service Bus zawiera ograniczenia tego problemu w formie klienta automatycznego Logika ponawiania. Po wyczerpaniu okres ponowień i komunikat nie zostanie dostarczony, możesz zapoznać się z innych wymienionych w artykule [Obsługa wyłączeń i awarii][handling outages and disasters].
+W takich przypadkach aplikacja kliencka generuje wyjątek [System. TimeoutException][System.TimeoutException] lub [messagingexception][MessagingException] . Service Bus zawiera środki zaradcze dla tego problemu w postaci zautomatyzowanej logiki ponowienia klienta. Po ponownym przekroczeniu okresu ponowienia próby, gdy wiadomość nie zostanie dostarczona, można zapoznać się z innymi wymienionymi w artykule dotyczącymi [obsługi awarii i katastrof][handling outages and disasters].
 
-## <a name="next-steps"></a>Kolejne kroki
-Teraz, kiedy znasz już podstawy asynchronicznej obsługi komunikatów w usłudze Service Bus, przeczytaj więcej szczegółowych informacji na temat [Obsługa wyłączeń i awarii][handling outages and disasters].
+## <a name="next-steps"></a>Następne kroki
+Teraz, gdy znasz już podstawy asynchronicznej obsługi komunikatów w Service Bus, Przeczytaj więcej szczegółowych informacji na temat [obsługi awarii i katastrof][handling outages and disasters].
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx

@@ -1,18 +1,18 @@
 ---
 title: Tworzenie szablonu programu Azure Image Builder (wersja zapoznawcza)
 description: Dowiedz się, jak utworzyć szablon do użycia z programem Azure Image Builder.
-author: cynthn
-ms.author: cynthn
-ms.date: 07/31/2019
+author: danis
+ms.author: danis
+ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763083"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760015"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Wersja zapoznawcza: Tworzenie szablonu usługi Azure Image Builder 
 
@@ -28,11 +28,15 @@ Jest to podstawowy format szablonu:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             },
+             }
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
         "buildTimeoutInMinutes": <minutes>, 
+        "vmProfile": 
+            {
+            "vmSize": "<vmSize>"
+            },
         "build": {}, 
         "customize": {}, 
         "distribute": {} 
@@ -64,6 +68,24 @@ Lokalizacja to region, w którym zostanie utworzony obraz niestandardowy. W przy
 
 ```json
     "location": "<region>",
+```
+## <a name="vmprofile"></a>vmProfile
+Domyślnie program Image Builder użyje maszyny wirtualnej kompilacji "Standard_D1_v2". można to zastąpić, na przykład jeśli chcesz dostosować obraz dla maszyny wirtualnej procesora GPU, potrzebujesz rozmiaru maszyny wirtualnej procesora GPU. Jest to opcjonalne.
+
+```json
+ {
+    "vmSize": "Standard_D1_v2"
+ },
+```
+
+## <a name="osdisksizegb"></a>osDiskSizeGB
+
+Domyślnie Konstruktor obrazów nie zmieni rozmiaru obrazu, będzie używał rozmiaru z obrazu źródłowego. Można dostosować rozmiar dysku systemu operacyjnego (win i Linux), pamiętając, że nie są one zbyt małe niż minimalne wymagane miejsce dla systemu operacyjnego. Jest to opcjonalne, a wartość 0 oznacza pozostawienie tego samego rozmiaru co obraz źródłowy. Jest to opcjonalne.
+
+```json
+ {
+    "osDiskSizeGB": 100
+ },
 ```
 
 ## <a name="tags"></a>Tagi
@@ -135,13 +157,7 @@ Na liście **instalatorów i obrazów dla serwera Red Hat Enterprise Linux**nale
 > Tokeny dostępu linków są odświeżane w częstych odstępach czasu, dlatego za każdym razem, gdy chcesz przesłać szablon, należy sprawdzić, czy adres linku RH został zmieniony.
  
 ### <a name="platformimage-source"></a>Źródło PlatformImage 
-Usługa Azure Image Builder obsługuje następujące obrazy w portalu Azure Marketplace:
-* Ubuntu 18.04
-* Ubuntu 16.04
-* RHEL 7,6
-* CentOS 7.6
-* Windows 2016
-* Windows 2019
+Usługa Azure Image Builder obsługuje obrazy systemu Windows Server i klienta, a w systemie Linux Azure Marketplace — zobacz [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) , aby zapoznać się z pełną listą. 
 
 ```json
         "source": {
@@ -220,7 +236,8 @@ W przypadku korzystania z `customize`:
             {
                 "type": "Shell",
                 "name": "<name>",
-                "scriptUri": "<path to script>"
+                "scriptUri": "<path to script>",
+                "sha256Checksum": "<sha256 checksum>"
             },
             {
                 "type": "Shell",
@@ -246,7 +263,8 @@ Konfigurator powłoki obsługuje uruchamianie skryptów powłoki, muszą być pu
         { 
             "type": "Shell", 
             "name": "<name>", 
-            "scriptUri": "<link to script>"        
+            "scriptUri": "<link to script>",
+            "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
         "customize": [ 
@@ -266,7 +284,12 @@ Dostosuj właściwości:
 - **Nazwa — nazwa** do śledzenia dostosowania 
 - **scriptUri** -URI do lokalizacji pliku 
 - **wbudowana** tablica poleceń powłoki, rozdzielonych przecinkami.
- 
+- **sha256Checksum** — wartość sumy kontrolnej SHA256 pliku, wygenerowana lokalnie, a następnie Konstruktor obrazów będzie obliczać sumę kontrolną i sprawdzać poprawność.
+    * Aby wygenerować sha256Checksum, przy użyciu terminalu na komputerze Mac/Linux Uruchom: `sha256sum <fileName>`
+
+
+Aby polecenia były uruchamiane z uprawnieniami administratora, muszą być poprzedzone prefiksem `sudo`.
+
 > [!NOTE]
 > Podczas uruchamiania konfiguratora powłoki ze źródłem ISO RHEL należy upewnić się, że pierwsza powłoka dostosowania obsługuje rejestrowanie z serwerem uprawnień Red Hat przed wystąpieniem dostosowania. Po zakończeniu dostosowywania skrypt powinien zostać wyrejestrowany na serwerze uprawnień.
 
@@ -275,12 +298,15 @@ Dostosowywanie ponownego uruchomienia umożliwia ponowne uruchomienie maszyny wi
 
 ```json 
      "customize": [ 
-         {
-            "type": "WindowsRestart", 
-            "restartCommand": "shutdown /r /f /t 0 /c", 
-            "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
-            "restartTimeout": "5m"
-         }],
+
+            {
+                "type": "WindowsRestart",
+                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                "restartTimeout": "5m"
+            }
+  
+        ],
 ```
 
 Obsługa systemu operacyjnego: Windows
@@ -300,13 +326,16 @@ Konfigurator powłoki obsługuje uruchamianie skryptów programu PowerShell i po
         { 
              "type": "PowerShell",
              "name":   "<name>",  
-             "scriptUri": "<path to script>" 
+             "scriptUri": "<path to script>",
+             "runElevated": "<true false>",
+             "sha256Checksum": "<sha256 checksum>" 
         },  
         { 
              "type": "PowerShell", 
              "name": "<name>", 
              "inline": "<PowerShell syntax to run>", 
-             "valid_exit_codes": "<exit code>" 
+             "valid_exit_codes": "<exit code>",
+             "runElevated": "<true or false>" 
          } 
     ], 
 ```
@@ -319,6 +348,10 @@ Dostosuj właściwości:
 - **scriptUri** -URI do lokalizacji pliku skryptu programu PowerShell. 
 - **wbudowane** — polecenia śródwierszowe do uruchomienia, oddzielone przecinkami.
 - **valid_exit_codes** — opcjonalne, prawidłowe kody, które mogą być zwracane z skryptu/polecenia wbudowanego, spowoduje to uniknięcie zgłaszanego błędu skryptu/polecenia wbudowanego.
+- **runElevated** — opcjonalne, wartość logiczna, obsługa uruchamiania poleceń i skryptów z podniesionymi uprawnieniami.
+- **sha256Checksum** — wartość sumy kontrolnej SHA256 pliku, wygenerowana lokalnie, a następnie Konstruktor obrazów będzie obliczać sumę kontrolną i sprawdzać poprawność.
+    * Aby wygenerować sha256Checksum przy użyciu programu PowerShell w systemie Windows [Get-hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+
 
 ### <a name="file-customizer"></a>Konfigurator plików
 
@@ -330,7 +363,8 @@ Program do dostosowywania plików umożliwia programowi Image Builder pobranie p
             "type": "File", 
              "name": "<name>", 
              "sourceUri": "<source location>",
-             "destination": "<destination>" 
+             "destination": "<destination>",
+             "sha256Checksum": "<sha256 checksum>"
          }
      ]
 ```
@@ -398,8 +432,39 @@ Konstruktor obrazów platformy Azure obsługuje trzy cele dystrybucji:
 
 Można dystrybuować obraz do obu typów docelowych w tej samej konfiguracji, zobacz [przykłady](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
 
-Ponieważ możesz mieć więcej niż jeden element docelowy do dystrybucji, Konstruktor obrazów zachowuje stan dla każdego elementu docelowego dystrybucji, do którego można uzyskać dostęp za pomocą zapytania o `runOutputName`.  `runOutputName` jest obiektem, który można wysłać zapytanie o dystrybucję w celu uzyskania informacji o tej dystrybucji. Można na przykład zbadać lokalizację dysku VHD lub regiony, do których została zreplikowana wersja obrazu. Jest to właściwość każdego celu dystrybucji. `runOutputName` musi być unikatowy dla każdego celu dystrybucji.
- 
+Ponieważ możesz mieć więcej niż jeden element docelowy do dystrybucji, Konstruktor obrazów zachowuje stan dla każdego elementu docelowego dystrybucji, do którego można uzyskać dostęp za pomocą zapytania o `runOutputName`.  `runOutputName` jest obiektem, który można wysłać zapytanie o dystrybucję w celu uzyskania informacji o tej dystrybucji. Można na przykład zbadać lokalizację dysku VHD lub regiony, w których została zreplikowana wersja obrazu, lub utworzyć wersję obrazu SIG. Jest to właściwość każdego celu dystrybucji. `runOutputName` musi być unikatowy dla każdego celu dystrybucji. Oto przykład, który wykonuje zapytanie do dystrybucji galerii obrazów udostępnionych:
+
+```bash
+subscriptionID=<subcriptionID>
+imageResourceGroup=<resourceGroup of image template>
+runOutputName=<runOutputName>
+
+az resource show \
+        --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
+        --api-version=2019-05-01-preview
+```
+
+Dane wyjściowe:
+```json
+{
+  "id": "/subscriptions/xxxxxx/resourcegroups/rheltest/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/rhel77",
+  "identity": null,
+  "kind": null,
+  "location": null,
+  "managedBy": null,
+  "name": "rhel77",
+  "plan": null,
+  "properties": {
+    "artifactId": "/subscriptions/xxxxxx/resourceGroups/aibDevOpsImg/providers/Microsoft.Compute/galleries/devOpsSIG/images/rhel/versions/0.24105.52755",
+    "provisioningState": "Succeeded"
+  },
+  "resourceGroup": "rheltest",
+  "sku": null,
+  "tags": null,
+  "type": "Microsoft.VirtualMachineImages/imageTemplates/runOutputs"
+}
+```
+
 ### <a name="distribute-managedimage"></a>Dystrybuuj: managedImage
 
 Wyjście obrazu będzie zasobem obrazu zarządzanego.
@@ -503,13 +568,4 @@ az resource show \
 ## <a name="next-steps"></a>Następne kroki
 
 Istnieją przykładowe pliki JSON dla różnych scenariuszy w witrynie [GitHub usługi Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder).
- 
- 
- 
- 
- 
- 
- 
- 
- 
  

@@ -1,6 +1,6 @@
 ---
 title: Dzienniki diagnostyki Azure Service Bus | Microsoft Docs
-description: Dowiedz się, jak skonfigurować dzienniki diagnostyczne dla Service Bus na platformie Azure.
+description: Ten artykuł zawiera omówienie wszystkich dzienników operacyjnych i diagnostycznych, które są dostępne dla Azure Service Bus.
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 5bdda54ef46085cb1f3e33fe1d9f60937da9706f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355207"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761002"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Włączanie dzienników diagnostycznych dla Service Bus
 
@@ -76,7 +76,7 @@ Następujące operacje zarządzania są przechwytywane w dziennikach operacyjnyc
 
 | Zakres | Operacja|
 |-------| -------- |
-| Przestrzeń nazw | <ul> <li> Tworzenie przestrzeni nazw</li> <li> Aktualizowanie przestrzeni nazw </li> <li> Usuń przestrzeń nazw </li>  </ul> | 
+| Przestrzeń nazw | <ul> <li> Utwórz przestrzeń nazw</li> <li> Aktualizowanie przestrzeni nazw </li> <li> Usuń przestrzeń nazw </li>  </ul> | 
 | Kolejka | <ul> <li> Utwórz kolejkę</li> <li> Aktualizuj kolejkę</li> <li> Usuń kolejkę </li> </ul> | 
 | Temat | <ul> <li> Utwórz temat </li> <li> Aktualizowanie tematu </li> <li> Usuń temat </li> </ul> |
 | Subskrypcja | <ul> <li> Tworzenie subskrypcji </li> <li> Aktualizowanie subskrypcji </li> <li> Usuń subskrypcję </li> </ul> |

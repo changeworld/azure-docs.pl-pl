@@ -1,6 +1,6 @@
 ---
-title: Odroczenie komunikatu Azure Service Bus | Microsoft Docs
-description: Opóźnij dostarczanie komunikatów Service Bus
+title: Azure Service Bus — odroczenie komunikatu
+description: W tym artykule wyjaśniono, jak odroczyć dostarczanie komunikatów Azure Service Bus. Komunikat pozostanie w kolejce lub subskrypcji, ale zostanie odłożony.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: fc7e40661ae345412eb0336322599616dc89d6c4
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 249cf7414143f59540d198bb460d8b215f6a7664
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122189"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756355"
 ---
 # <a name="message-deferral"></a>Odraczanie komunikatów
 

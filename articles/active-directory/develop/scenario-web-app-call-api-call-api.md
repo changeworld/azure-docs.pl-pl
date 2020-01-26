@@ -1,6 +1,6 @@
 ---
 title: Wywoływanie interfejsu API sieci Web z aplikacji sieci Web — platforma tożsamości firmy Microsoft | Azure
-description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje interfejsy API sieci Web (wywołując internetowy interfejs API)
+description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje interfejsy API sieci Web (wywołując chroniony internetowy interfejs API)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,20 +14,20 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a1857117d80c6725f801652606fc2d73067ea9da
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701624"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758975"
 ---
-# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web — wywołuje internetowy interfejs API
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web: wywoływanie interfejsu API sieci Web
 
 Teraz, gdy masz token, możesz wywołać chroniony internetowy interfejs API.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Poniżej przedstawiono uproszczony kod akcji `HomeController`. Ten kod pobiera token, który wywoła Microsoft Graph. Ten kod czasu został dodany, pokazując sposób wywoływania Microsoft Graph jako interfejsu API REST. Adres URL interfejsu API programu Graph jest dostępny w pliku `appsettings.json` i odczytywany w zmiennej o nazwie `webOptions`:
+Oto uproszczony kod dla akcji `HomeController`. Ten kod pobiera token do wywołania Microsoft Graph. Dodano kod, aby pokazać, jak wywołać Microsoft Graph jako interfejs API REST. Adres URL Microsoft Graph interfejsu API jest dostępny w pliku appSettings. JSON i odczytywany w zmiennej o nazwie `webOptions`:
 
 ```JSon
 {
@@ -47,10 +47,10 @@ public async Task<IActionResult> Profile()
  string accountIdentifier = claimsPrincipal.GetMsalAccountId();
  string loginHint = claimsPrincipal.GetLoginHint();
 
- // Get the account
+ // Get the account.
  IAccount account = await application.GetAccountAsync(accountIdentifier);
 
- // Special case for guest users as the Guest iod / tenant id are not surfaced.
+ // Special case for guest users, because the guest ID / tenant ID are not surfaced.
  if (account == null)
  {
   var accounts = await application.GetAccountsAsync();
@@ -62,7 +62,7 @@ public async Task<IActionResult> Profile()
                             .ExecuteAsync();
  var accessToken = result.AccessToken;
 
- // Calls the web API (here the graph)
+ // Calls the web API (Microsoft Graph in this case).
  HttpClient httpClient = new HttpClient();
  httpClient.DefaultRequestHeaders.Authorization =
      new AuthenticationHeaderValue(Constants.BearerAuthorizationScheme,accessToken);
@@ -84,7 +84,7 @@ public async Task<IActionResult> Profile()
 > [!NOTE]
 > Tej samej zasady można użyć do wywołania dowolnego internetowego interfejsu API.
 >
-> Większość interfejsów API sieci Web platformy Azure udostępnia zestaw SDK, który upraszcza jego wywoływanie. Jest to również przypadek Microsoft Graph. Poznasz w następnym artykule, w którym znajdziesz samouczek ilustrujący te aspekty.
+> Większość interfejsów API sieci Web platformy Azure udostępnia zestaw SDK, który upraszcza wywoływanie interfejsu API. Jest to również prawdziwe Microsoft Graph. W następnym artykule dowiesz się, gdzie znaleźć samouczek, który ilustruje użycie interfejsu API.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
@@ -120,7 +120,7 @@ def graphcall():
     token = _get_token_from_cache(app_config.SCOPE)
     if not token:
         return redirect(url_for("login"))
-    graph_data = requests.get(  # Use token to call downstream service
+    graph_data = requests.get(  # Use token to call downstream service.
         app_config.ENDPOINT,
         headers={'Authorization': 'Bearer ' + token['access_token']},
         ).json()

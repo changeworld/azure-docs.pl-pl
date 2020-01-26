@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: jak używać kolejek Azure Service Bus przy użyciu języka Ruby'
-description: 'Szybki Start: Dowiedz się, jak używać kolejek Service Bus na platformie Azure. Przykłady kodu zapisywane w języku Ruby.'
+title: Jak używać kolejek Azure Service Bus przy użyciu języka Ruby
+description: W ramach tego samouczka nauczysz się tworzyć aplikacje Ruby do wysyłania komunikatów do i odbierania komunikatów z kolejki Service Bus.
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 09fdc58254d260b6ffeff958b6bbda50332adfac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718761"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760593"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Szybki Start: jak używać kolejek Service Bus przy użyciu języka Ruby
 
@@ -28,7 +28,7 @@ ms.locfileid: "73718761"
 W ramach tego samouczka nauczysz się tworzyć aplikacje Ruby do wysyłania komunikatów do i odbierania komunikatów z kolejki Service Bus. Przykłady są zapisywane w języku Ruby i korzystają z usługi Azure rozwiązania gem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+1. Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Wykonaj czynności opisane w [Azure Portal Użyj, aby utworzyć artykuł kolejki Service Bus](service-bus-quickstart-portal.md) .
     1. Zapoznaj się z krótkim omówieniem **kolejek**Service Bus. 
     2. Utwórz **przestrzeń nazw**Service Bus. 
@@ -62,7 +62,7 @@ queue = azure_service_bus_service.create_queue(queue)
 ```
 
 ## <a name="how-to-send-messages-to-a-queue"></a>Jak wysyłać komunikaty do kolejki
-Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `send_queue_message()` w obiekcie **Azure:: ServiceBusService** . Komunikaty wysyłane do (i odbieranych z) Service Bus kolejki są na **platformie Azure:: ServiceBus:: BrokeredMessage** i mają zestaw właściwości standardowych (takich jak `label` i `time_to_live`), słownik używany do przechowywania niestandardowych właściwości specyficznych dla aplikacji i treść dowolnych danych aplikacji. Aplikacja może ustawić treść komunikatu przez przekazanie wartości ciągu jako komunikat i wszystkie wymagane właściwości standardowe są wypełniane wartościami domyślnymi.
+Aby wysłać komunikat do kolejki Service Bus, aplikacja wywołuje metodę `send_queue_message()` w obiekcie **Azure:: ServiceBusService** . Komunikaty wysyłane do (i odbieranych z) Service Bus kolejki są typu **Azure:: ServiceBus:: BrokeredMessage** i mają zestaw właściwości standardowych (takich jak `label` i `time_to_live`), słownik używany do przechowywania niestandardowych właściwości specyficznych dla aplikacji oraz treść dowolnych danych aplikacji. Aplikacja może ustawić treść komunikatu przez przekazanie wartości ciągu jako komunikat i wszystkie wymagane właściwości standardowe są wypełniane wartościami domyślnymi.
 
 Poniższy przykład pokazuje, jak wysłać wiadomość testową do kolejki o nazwie `test-queue` przy użyciu `send_queue_message()`:
 

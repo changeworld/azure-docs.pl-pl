@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: korzystanie z Azure Service Bus tematów i subskrypcji w języku Java'
-description: 'Szybki Start: korzystanie z Service Bus tematów i subskrypcji na platformie Azure.'
+title: Korzystanie z Azure Service Bus tematów i subskrypcji w języku Java
+description: W tym przewodniku szybki start napiszesz kod w języku Java służący do wysyłania komunikatów do Azure Service Bus tematu, a następnie odbierania komunikatów z subskrypcji do tego tematu.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9b75b5cd5e674020f41897309a3c69b9371cc768
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720006"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759299"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Szybki Start: korzystanie z Service Bus tematów i subskrypcji w języku Java
 
@@ -30,7 +30,7 @@ W tym przewodniku szybki start napiszesz kod w języku Java służący do wysył
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+1. Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Wykonaj kroki opisane w [przewodniku szybki start: użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) , aby wykonać następujące zadania:
     1. Utwórz **przestrzeń nazw**Service Bus.
     2. Pobierz **Parametry połączenia**.
@@ -46,8 +46,8 @@ Przed skompilowaniem tego przykładu upewnij się, że zainstalowano [zestaw Azu
 Należy również dodać następujący JARs do ścieżki kompilacji Java:
 
 - gson-2.6.2. jar
-- Commons-CLI-1.4. jar
-- Proton-j-0.21.0. jar
+- commons-cli-1.4.jar
+- proton-j-0.21.0.jar
 
 Dodaj klasę przy użyciu metody **Main** , a następnie Dodaj następujące instrukcje `import` w górnej części pliku Java:
 

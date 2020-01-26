@@ -2,13 +2,13 @@
 title: Konfigurowanie hybrydowych klastrów Kubernetes za pomocą Azure Monitor dla kontenerów | Microsoft Docs
 description: W tym artykule opisano sposób konfigurowania Azure Monitor kontenerów do monitorowania klastrów Kubernetes hostowanych w Azure Stack lub innym środowisku.
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: d6218550f4b5a3a59b4addc69b19ff11e282d45a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/24/2020
+ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977734"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759896"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurowanie hybrydowych klastrów Kubernetes za pomocą Azure Monitor dla kontenerów
 
@@ -39,7 +39,7 @@ Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
     |*.blob.core.windows.net |Port 443 |  
     |*. dc.services.visualstudio.com |Port 443 |
 
-* Agent kontenerów wymaga otworzenia `cAdvisor port: 10255` na wszystkich węzłach w klastrze w celu zbierania metryk wydajności.
+* Agent kontenera wymaga, aby Kubelet `cAdvisor secure port: 10250` lub `unsecure port :10255` być otwarty na wszystkich węzłach w klastrze w celu zbierania metryk wydajności. Zalecamy skonfigurowanie `secure port: 10250` w cAdvisor Kubelet, jeśli nie został on jeszcze skonfigurowany.
 
 * Agent kontenerów wymaga określenia następujących zmiennych środowiskowych w kontenerze w celu komunikowania się z usługą interfejsu API Kubernetes w klastrze w celu zbierania danych spisu — `KUBERNETES_SERVICE_HOST` i `KUBERNETES_PORT_443_TCP_PORT`.
 
@@ -290,12 +290,12 @@ Jeśli wystąpi błąd podczas próby włączenia monitorowania dla hybrydowego 
 * Usługa OmsAgent Health jest uruchomiona
 * Identyfikator i klucz obszaru roboczego Log Analytics skonfigurowany na kontenerze kontenera jest zgodny z obszarem roboczym, w którym skonfigurowano szczegółowe informacje.
 * Sprawdź, czy wszystkie węzły procesów roboczych systemu Linux mają etykietę `kubernetes.io/role=agent`, aby zaplanować RS. Jeśli nie istnieje, Dodaj ją.
-* Sprawdź, czy `cAdvisor port: 10255` jest otwarty na wszystkich węzłach w klastrze.
+* Sprawdź poprawność `cAdvisor secure port:10250` lub `unsecure port: 10255` jest otwarty na wszystkich węzłach w klastrze.
 
 Aby wykonać z Azure PowerShell, użyj następujących poleceń w folderze, który zawiera skrypt:
 
 ```powershell
-.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
 ```
 
 ## <a name="next-steps"></a>Następne kroki

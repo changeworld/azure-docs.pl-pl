@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 555a60579c11a7ecb9b39753c5e4b35e801edeb1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 531dc62cacc044187c7800dd8abcdad282c4e633
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422160"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759947"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Samouczek: tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
 
@@ -38,7 +38,7 @@ Aby ukończyć ten samouczek, musisz mieć [Docker Compose](https://docs.docker.
 
 ## <a name="download-the-sample"></a>Pobierz przykład
 
-Na potrzeby tego samouczka będziesz używać pliku Compose platformy [Docker](https://docs.docker.com/compose/wordpress/#define-the-project), modyfikując go w celu uwzględnienia usługi Azure Database for MySQL, magazynu trwałego i usługi Redis. Plik konfiguracji można znaleźć na stronie z [przykładami dla platformy Azure](https://github.com/Azure-Samples/multicontainerwordpress). Aby poznać obsługiwane opcje konfiguracji, zobacz [opcje Docker Compose](configure-custom-container.md#docker-compose-options).
+W tym samouczku użyjesz pliku redagowania z [platformy Docker](https://docs.docker.com/compose/wordpress/#define-the-project), ale zmodyfikujesz go tak, aby obejmował Azure Database for MySQL, magazyn trwały i Redis. Plik konfiguracji można znaleźć na stronie z [przykładami dla platformy Azure](https://github.com/Azure-Samples/multicontainerwordpress). Aby poznać obsługiwane opcje konfiguracji, zobacz [opcje Docker Compose](configure-custom-container.md#docker-compose-options).
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 

@@ -1,6 +1,6 @@
 ---
-title: Przydziały i limity Microsoft Azure Service Bus | Microsoft Docs
-description: Znajdź limity i przydziały dla Azure Service Bus.
+title: Przydziały i limity Microsoft Azure Service Bus
+description: W tym artykule przedstawiono podstawowe limity przydziału i ograniczenia przepustowości w programie Azure Service Bus Messaging. Na przykład maksymalna liczba przestrzeni nazw na subskrypcję.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/27/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: ae2c55486e0489006395a1630eba0b1c3f56b5be
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 7a6d8e56d7f70d637b2c963814b66e6e7cb3a907
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561534"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759571"
 ---
 # <a name="service-bus-quotas"></a>Przydziały usługi Service Bus
 W tej sekcji przedstawiono podstawowe limity przydziału i progi ograniczania przepustowości w programie Azure Service Bus Messaging.

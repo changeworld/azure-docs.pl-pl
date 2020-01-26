@@ -4,14 +4,14 @@ description: Wyświetla listę typów zasobów platformy Azure, które mogą by�
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 11/21/2019
+ms.date: 01/20/2020
 ms.author: raynew
-ms.openlocfilehash: 60b8708458e081d66514e092edc9ef9af7c33494
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485249"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760712"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Obsługa przemieszczania zasobów platformy Azure między regionami
 
@@ -186,7 +186,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | usługa | Nie |
+> | usługa |  Tak | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -259,7 +259,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | oparty | Nie | 
 > | fileservers | Nie | 
 > | zadania | Nie | 
-> | obszary robocze | Nie | 
+> | obszarów roboczych | Nie | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
@@ -439,7 +439,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | koncentratory, | Nie |  
+> | węzłów | Nie |  
 
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
@@ -467,7 +467,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | obszary robocze | Nie | 
+> | obszarów roboczych | Nie | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
@@ -587,7 +587,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | kontrolery | Nie | 
+> | Rejestrowanie | Nie | 
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -595,7 +595,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
 > | labcenters | Nie | 
-> | labs | Nie | 
+> | Labs | Nie | 
 > | laboratoria/środowiska | Nie |  
 > | laboratoria/servicerunner | Nie | 
 > | Labs/virtualmachines | Nie |  
@@ -628,7 +628,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
 > | domeny | Nie |  
-> | — tematy | Nie | 
+> | opisano | Nie | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
@@ -636,7 +636,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
 > | oparty | Nie |  
-> | przestrzenie nazw | Nie | 
+> | przestrzeni | Nie | 
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
@@ -698,14 +698,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | activitylogalerts | Nie | 
 > | alertrules |  Nie | 
 > | autoscalesettings |  Nie | 
-> | składniki |  Nie |  
+> | komponentów |  Nie |  
 > | guestdiagnosticsettings | Nie | 
 > | metricalerts | Nie | 
 > | notificationgroups | Nie | 
 > | notificationrules | Nie | 
 > | scheduledqueryrules |  Nie | 
 > | testów internetowych |  Nie | 
-> | skoroszyty |  Nie |  
+> | otwiera |  Nie |  
 
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
@@ -769,7 +769,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | integrationaccounts |  Nie |  
 > | integrationserviceenvironments | Nie | 
 > | isolatedenvironments | Nie | 
-> | przepływy pracy |  Nie |  
+> | przebieg |  Nie |  
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
@@ -778,7 +778,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | commitmentplans |  Nie | 
 > | WebServices |  Nie | 
-> | obszary robocze |  Nie | 
+> | obszarów roboczych |  Nie | 
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 
@@ -818,7 +818,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | obszary robocze | Nie | 
+> | obszarów roboczych | Nie | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -864,7 +864,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | assessmentprojects | Nie | 
 > | migrateprojects | Nie | 
-> | projekty | Nie | 
+> | projektami | Nie | 
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -887,7 +887,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | applicationsecuritygroups |  Nie |  
 > | azurefirewalls |  Nie |  
 > | bastionhosts | Nie | 
-> | połączenia |  Nie | 
+> | Licznik |  Nie | 
 > | ddoscustompolicies |  Nie | 
 > | ddosprotectionplans | Nie | 
 > | dnszones |  Nie | 
@@ -934,7 +934,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | przestrzenie nazw |  Nie | 
+> | przestrzeni |  Nie | 
 > | przestrzenie nazw/notificationhubs |  Nie |  
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
@@ -942,7 +942,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | obszary robocze |  Nie | 
+> | obszarów roboczych |  Nie | 
 
 
 
@@ -952,7 +952,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
 > | managementconfigurations |  Nie | 
-> | views |  Nie | 
+> | Widoki |  Nie | 
 
 ## <a name="microsoftpeering"></a>Microsoft. Komunikacja równorzędna
 
@@ -966,7 +966,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | pulpity nawigacyjne | Nie | 
+> | pulpitów nawigacyjnych | Nie | 
 
 ## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
@@ -987,7 +987,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | możliwości |  Nie | 
+> | produkcyjnych |  Nie | 
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 
@@ -1001,7 +1001,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | magazynów | Tak (w przypadku magazynów kopii zapasowych myślim? | 
+> | magazynów | Nie. [Wyłącz magazyn i Utwórz ponownie](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) dla Site Recovery  | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1009,7 +1009,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | przestrzenie nazw |  Nie | 
+> | przestrzeni |  Nie | 
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 
@@ -1030,7 +1030,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | flows (przepływy) |  Nie |  
+> | przekazywania |  Nie |  
 > | jobcollections |  Nie | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1062,7 +1062,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | przestrzenie nazw |  Nie | 
+> | przestrzeni |  Nie | 
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
@@ -1142,14 +1142,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | storageaccounts | Tak? | 
+> | storageaccounts | Tak | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | Pamięci podręcznych | Nie | 
+> | pamięci podręcznych | Nie | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
@@ -1192,7 +1192,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | środowiska | Nie | 
+> | wiejski | Nie | 
 > | środowiska/źródła zdarzeń | Nie | 
 > | wystąpienia | Nie | 
 > | wystąpienia/środowiska | Nie | 
@@ -1204,14 +1204,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
 > | providerregistrations | Nie | 
-> | zasoby | Nie | 
+> | produkcyjnych | Nie | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | środowiska |  Nie | 
+> | wiejski |  Nie | 
 > | środowiska/źródła zdarzeń |  Nie |  
 > | środowiska/referencedatasets |  Nie | 
 
@@ -1220,7 +1220,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | magazyny | Nie | 
+> | przechowywać | Nie | 
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 
@@ -1254,13 +1254,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Przeniesienie regionu | 
 > | ------------- | ----------- |
-> | certyfikaty | Nie | 
+> | Przystawki | Nie | 
 > | connectiongateways |  Nie |  
-> | połączenia |  Nie |  
+> | Licznik |  Nie |  
 > | customapis |  Nie | 
 > | hostingenvironments | Nie | 
 > | dopuszczalna |  Nie |  
-> | lokacje |  Nie | 
+> | teren |  Nie | 
 > | Lokacje/premieraddons |  Nie |  
 > | Lokacje/miejsca |  Nie |  
 
@@ -1279,7 +1279,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- |
 > | applicationgroups | Nie | 
 > | hostpools | Nie | 
-> | obszary robocze | Nie | 
+> | obszarów roboczych | Nie | 
 
 ## <a name="third-party-services"></a>Usługi innych firm
 

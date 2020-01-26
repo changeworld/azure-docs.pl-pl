@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490770"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760831"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkcje to informacje o akcjach i kontekście
 
@@ -56,7 +56,7 @@ Personalizacja wykonuje funkcje zorganizowane w przestrzenie nazw. W aplikacji n
 Poniżej przedstawiono przykłady przestrzeni nazw funkcji używanych przez aplikacje:
 
 * User_Profile_from_CRM
-* Time
+* Czas
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -107,6 +107,7 @@ Ciąg używany do nazywania przestrzeni nazw musi spełniać pewne ograniczenia:
 * Nie może być Unicode.
 * Można użyć niektórych symboli drukowalnych z kodami < 256 dla nazw przestrzeni nazw. 
 * Nie można użyć symboli z kodami < 32 (nie do drukowania), 32 (Space), 58 (dwukropek), 124 (potok) i 126 – 140.
+* Nie powinna zaczynać się od znaku podkreślenia "_" lub funkcja zostanie zignorowana.
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Jak zwiększyć efektywność zestawów funkcji dla personalizacji
 
@@ -143,7 +144,7 @@ Sztuczna inteligencja i gotowe do uruchomienia Cognitive Services mogą być bar
 
 Wstępnie przetwarzając elementy przy użyciu sztucznych usług analizy, można automatycznie wyodrębniać informacje, które mogą być odpowiednie do personalizacji.
 
-Na przykład:
+Przykład:
 
 * Plik filmowy można uruchomić za pomocą [Video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) , aby wyodrębnić elementy sceny, tekst, tonacji i wiele innych atrybutów. Te atrybuty mogą następnie stać się bardziej gęste w celu odzwierciedlenia cech, które nie miały metadanych oryginalnego elementu. 
 * Obrazy można uruchamiać za poorednictwem wykrywania obiektów, twarzy przez tonacji itp.
@@ -178,7 +179,7 @@ Akcje wysyłane do interfejsu API rangi zależą od tego, co próbujesz spersona
 
 Oto kilka przykładów:
 
-|Przeznaczenie|Akcja|
+|Przeznaczenie|Działanie|
 |--|--|
 |Personalizowanie artykułu wyróżnionego w witrynie sieci Web z wiadomościami.|Każda akcja jest potencjalnym artykułem z wiadomościami.|
 |Optymalizacja umieszczania w usłudze AD w witrynie sieci Web.|Każda akcja będzie układem lub regułami, aby utworzyć układ dla reklamy (na przykład w górnej części, w prawym, małych obrazach, Big images).|

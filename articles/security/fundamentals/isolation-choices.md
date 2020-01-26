@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121951"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756164"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 System Azure umożliwia uruchamianie aplikacji i maszyn wirtualnych w ramach udostępnionej infrastruktury fizycznej. Jedną z ekonomicznych motywacji do uruchamiania aplikacji w środowisku chmury jest możliwość dystrybucji kosztów zasobów udostępnionych między wieloma klientami. Ta metoda korzystania z wielu dzierżawców zwiększa wydajność dzięki możliwości multipleksowania zasobów między różnymi klientami przy niskich kosztach. Niestety, wprowadza również ryzyko związane z udostępnianiem serwerów fizycznych i innych zasobów infrastruktury w celu uruchamiania poufnych aplikacji i maszyn wirtualnych, które mogą należeć do dowolnego lub potencjalnie złośliwego użytkownika.
@@ -73,7 +73,7 @@ Usługa Azure RBAC ma trzy podstawowe role, które mają zastosowanie do wszystk
 
 - **Czytelnik** może wyświetlać istniejące zasoby platformy Azure.
 
-![Kontrola dostępu oparta na rolach na platformie Azure](./media/isolation-choices/azure-isolation-fig3.png)
+![Access Control oparte na rolach na platformie Azure](./media/isolation-choices/azure-isolation-fig3.png)
 
 Pozostałe role RBAC na platformie Azure umożliwiają zarządzanie określonymi zasobami platformy Azure. Na przykład rola współautor maszyny wirtualnej umożliwia użytkownikowi tworzenie maszyn wirtualnych i zarządzanie nimi. Nie daje im dostępu do Virtual Network platformy Azure lub podsieci, z którą nawiąże połączenie maszyna wirtualna.
 
@@ -111,6 +111,9 @@ Microsoft Azure oferuje różne usługi obliczeniowe oparte na chmurze, które o
 ### <a name="isolated-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych izolowanych
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
+
+### <a name="dedicated-hosts"></a>Dedykowane hosty
+Oprócz izolowanych hostów opisanych w poprzedniej sekcji platforma Azure oferuje również dedykowane hosty. Dedykowane hosty na platformie Azure to usługa udostępniająca serwery fizyczne, które mogą hostować co najmniej jedną maszynę wirtualną, które są przeznaczone dla jednej subskrypcji platformy Azure. Dedykowane hosty zapewniają izolację sprzętową na poziomie serwera fizycznego. Żadne inne maszyny wirtualne nie zostaną umieszczone na hostach. Dedykowane hosty są wdrażane w tych samych centrach danych i korzystają z tej samej sieci i podstawowej infrastruktury magazynu, co inne, nieizolowane hosty. Aby uzyskać więcej informacji, Zobacz szczegółowe omówienie [dedykowanych hostów platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Izolacja głównej systemu operacyjnego funkcji Hyper-V & między głównymi maszynami wirtualnymi & Gości
 Platforma obliczeniowa platformy Azure jest oparta na wirtualizacji maszyn, co oznacza, że cały kod klienta jest wykonywany na maszynie wirtualnej funkcji Hyper-V. W każdym węźle platformy Azure (lub w sieci punkt końcowy) istnieje funkcja hypervisor, która jest uruchamiana bezpośrednio przez sprzęt i dzieli węzeł na zmienną liczbę Virtual Machines Gości (VM).
@@ -196,7 +199,7 @@ Dane magazynu IP mogą być chronione przed nieautoryzowanymi użytkownikami za 
 
 ### <a name="encryption"></a>Szyfrowanie
 Platforma Azure oferuje następujące typy szyfrowania do ochrony danych:
--   Szyfrowanie danych przesyłanych
+-   Szyfrowanie podczas przesyłania
 
 -   Szyfrowanie w spoczynku
 

@@ -1,5 +1,5 @@
 ---
-title: Używanie języka R z Machine Learning Services do wykonywania zapytań
+title: Używanie języka R z Machine Learning Services do wykonywania zapytań względem bazy danych (wersja zapoznawcza)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: W tym artykule pokazano, jak używać skryptu języka R z usługą Azure SQL Database Machine Learning Services do nawiązywania połączeń z bazą danych Azure SQL i wykonywania zapytań przy użyciu instrukcji języka Transact-SQL.
 services: sql-database
@@ -13,64 +13,42 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0288d8c4710d12d8e67658caab93157c534b75ee
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826971"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758363"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Szybki Start: używanie języka R z Machine Learning Services do wykonywania zapytań w bazie danych Azure SQL Database (wersja zapoznawcza)
 
-Ten przewodnik Szybki Start przedstawia sposób używania [języka R](https://www.r-project.org/) z usługą Machine Learning Services do nawiązywania połączeń z bazą danych Azure SQL i używania instrukcji języka Transact-SQL do wykonywania zapytań dotyczących danych. Machine Learning Services to funkcja Azure SQL Database używana do wykonywania skryptów języka R w bazie danych. Aby uzyskać więcej informacji, zobacz [Azure SQL Database Machine Learning Services przy użyciu języka R (wersja zapoznawcza)](sql-database-machine-learning-services-overview.md).
+W tym przewodniku szybki start użyjesz języka R z usługą Machine Learning Services, aby nawiązać połączenie z bazą danych SQL Azure i użyć instrukcji T-SQL do wykonywania zapytań dotyczących danych.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz następującymi elementami:
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Baza danych Azure SQL Database. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
+- [Baza danych SQL Azure](sql-database-single-database-get-started.md)
+  
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) z włączonym językiem R. [Zarejestruj się, aby wypróbować wersję zapoznawczą](sql-database-machine-learning-services-overview.md#signup).
 
-<!-- Managed instance is not supported during the preview
-  || Single database | Managed instance |
-  |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configure | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md) | [Connectivity from a VM](sql-database-managed-instance-configure-vm.md) |
-  ||| [Connectivity from on-site](sql-database-managed-instance-configure-p2s.md) |
-  | Load data | Adventure Works loaded per quickstart | [Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md) |
-  ||| Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) |
-  |||
--->
+- Program [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-  || Pojedyncza baza danych |
-  |:--- |:--- |
-  | Tworzenie| [Portal](sql-database-single-database-get-started.md) |
-  || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) |
-  || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | Konfigurowanie | [Reguła zapory bazująca na adresach IP na poziomie serwera](sql-database-server-level-firewall-rule.md) |
-  | Ładowanie danych | Ładowanie bazy danych Adventure Works na potrzeby samouczka Szybki start |
-  |||
+> [!IMPORTANT]
+> Skrypty w tym artykule są przeznaczone do korzystania z bazy danych firmy **Adventure Works** .
 
-  > [!NOTE]
-  > W wersji zapoznawczej Azure SQL Database Machine Learning Services z językiem R opcja wdrożenia wystąpienia zarządzanego nie jest obsługiwana.
+> [!NOTE]
+> W publicznej wersji zapoznawczej firma Microsoft będzie dołączana i umożliwia włączenie uczenia maszynowego dla istniejącej lub nowej bazy danych, jednak opcja wdrożenia wystąpienia zarządzanego nie jest obecnie obsługiwana.
 
-<!-- Managed instance is not supported during the preview
-  > [!IMPORTANT]
-  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
--->
-
-- Machine Learning Services (z R) włączony. W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowej bazy danych. Postępuj zgodnie z instrukcjami w części [Tworzenie konta na potrzeby korzystania z wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
-
-- Najnowsza [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Skrypty języka R można uruchamiać przy użyciu innych narzędzi do zarządzania bazami danych lub zapytań, ale w tym przewodniku szybki start będziesz używać programu SSMS.
+Machine Learning Services z R to funkcja usługi Azure SQL Database służąca do wykonywania skryptów języka R w bazie danych. Aby uzyskać więcej informacji, zobacz [Projekt R](https://www.r-project.org/).
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
 Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 2. Otwórz stronę **Bazy danych SQL** lub **Wystąpienia zarządzane SQL**.
 

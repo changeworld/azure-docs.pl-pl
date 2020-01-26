@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 07bf3070e42af8a03ce1fd7ea4445fc76557e8a3
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645512"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760763"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co to jest Azure Synapse Analytics (dawniej SQL DW)?
 
-Azure Synapse to nieograniczona usługa analizy, która łączy magazyn danych w przedsiębiorstwie i analizę danych Big Data. Zapewnia to swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z niezależnych od serwera zasobów na żądanie lub aprowizacji. Usługa Azure Synapse udostępnia te dwa światy wraz z ujednoliconym doświadczeniem w zakresie pozyskiwania, przygotowywania i zarządzania danymi oraz do obsługi danych w celu natychmiastowej analizy biznesowej i uczenia maszynowego
+Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, przy użyciu bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali. Usługa Azure Synapse udostępnia te dwa światy wraz z ujednoliconym doświadczeniem w zakresie pozyskiwania, przygotowywania i zarządzania danymi oraz do obsługi danych w celu natychmiastowej analizy biznesowej i uczenia maszynowego
 
 Usługa Azure Synapse ma cztery składniki:
 - Analiza SQL: Kompletna Analiza oparta na języku T-SQL — ogólnie dostępna
@@ -54,43 +54,14 @@ Wyniki analizy można odnieść do ogólnoświatowych baz danych raportowania lu
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Poznaj [architekturę usługi Azure Synapse](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+- Poznaj [architekturę usługi Azure Synapse](massively-parallel-processing-mpp-architecture.md)
 - Szybkie [Tworzenie puli SQL](create-data-warehouse-portal.md)
-- [Ładowanie przykładowych danych][load sample data].
-- Eksploruj [wideo](/azure/sql-data-warehouse/sql-data-warehouse-videos)
+- [Ładowanie przykładowych danych](sql-data-warehouse-load-sample-databases.md).
+- Eksploruj [wideo](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 Lub zapoznaj się z innymi zasobami usługi Azure Synapse.  
-* Wyszukaj [Blogi]
-* Prześlij [żądania funkcji]
-* Wyszukiwanie [Blogi zespołu doradczego klientów]
-* [Tworzenie biletu pomocy technicznej]
-* Wyszukaj [forum MSDN]
-* [Forum Stack Overflow]
-
-
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Tworzenie biletu pomocy technicznej]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a data warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse Analytics solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Blogi]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Blogi zespołu doradczego klientów]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Żądania funkcji]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Forum MSDN]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
-[Forum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse Analytics]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/
+* Wyszukaj [Blogi](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+* Prześlij [żądania funkcji](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+* [Tworzenie biletu pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md)
+* Wyszukaj [forum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+* [Forum wyszukiwania Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw)

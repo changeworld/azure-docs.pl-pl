@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c14bebca775345ab478228f42d9b8416dd223032
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289088"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756198"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: często zadawane pytania
 
@@ -39,7 +39,7 @@ W dzierżawie usługi Azure AD użytkownicy, którzy należą do logowania do dz
 
 W dzierżawie Azure AD B2C większość aplikacji chce, aby użytkownik mógł się zalogować przy użyciu dowolnego adresu e-mail (na przykład joe@comcast.net, bob@gmail.com, sarah@contoso.comlub jim@live.com). Ten typ konta jest kontem lokalnym. Obsługiwane są również dowolne nazwy użytkowników jako konta lokalne (na przykład Jan, Robert, Sarah lub Jim). Podczas konfigurowania dostawców tożsamości dla Azure AD B2C w Azure Portal można wybrać jeden z tych dwóch typów kont lokalnych. W dzierżawie Azure AD B2C wybierz pozycję **dostawcy tożsamości**, wybierz pozycję **konto lokalne**, a następnie wybierz pozycję **Nazwa użytkownika**.
 
-Konta użytkowników dla aplikacji muszą być zawsze tworzone za pośrednictwem przepływu użytkownika, tworzenia konta lub logowania lub korzystania z usługi Azure AD interfejs API programu Graph. Konta użytkowników utworzone w Azure Portal są używane tylko do administrowania dzierżawcą.
+Konta użytkowników dla aplikacji można tworzyć za pomocą przepływu użytkownika tworzenia konta, usługi rejestrowania lub logowania, interfejsu API Microsoft Graph lub Azure Portal.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Którzy dostawcy tożsamości społecznościowej są obecnie obsługiwani? Które z nich planujesz obsługiwać w przyszłości?
 
@@ -77,7 +77,7 @@ Za pomocą [funkcji znakowania firmowego](../active-directory/fundamentals/custo
 Podpis e-mail zawiera nazwę dzierżawy Azure AD B2C podaną podczas pierwszego utworzenia dzierżawy Azure AD B2C. Nazwę można zmienić, korzystając z następujących instrukcji:
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako Administrator globalny.
-1. Otwórz blok **Azure Active Directory**.
+1. Otwórz blok **Azure Active Directory** .
 1. Kliknij przycisk **właściwości** kartę.
 1. Zmień wartość pola **Nazwa** .
 1. Kliknij przycisk **Zapisz** w górnej części strony.
@@ -150,7 +150,7 @@ Możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego systemu 
 1. W obszarze **Zarządzaj**wybierz pozycję **Ustawienia użytkownika**.
 1. Jeśli jest obecny, w obszarze **połączenia konta serwisu LinkedIn**wybierz pozycję **nie**, a następnie wybierz pozycję **Zapisz**.
 1. W obszarze **Zarządzaj**wybierz pozycję **Właściwości** .
-1. W obszarze **Zarządzanie dostępem do zasobów platformy Azure** wybierz pozycję **Tak**, a następnie wybierz przycisk **Zapisz**.
+1. W obszarze **Zarządzanie dostępem do zasobów platformy Azure**wybierz pozycję **tak**, a następnie wybierz pozycję **Zapisz**.
 1. Wyloguj się z Azure Portal a następnie zaloguj się ponownie, aby odświeżyć dostęp.
 1. Wybierz pozycję **Azure Active Directory** w menu po lewej stronie.
 1. Na stronie **Przegląd** wybierz pozycję **Usuń katalog**. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby ukończyć proces.
@@ -170,7 +170,7 @@ Możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego systemu 
 1. W obszarze **Zarządzaj**wybierz pozycję **Ustawienia użytkownika**.
 1. Jeśli jest obecny, w obszarze **połączenia konta serwisu LinkedIn**wybierz pozycję **nie**, a następnie wybierz pozycję **Zapisz**.
 1. W obszarze **Zarządzaj**wybierz pozycję **Właściwości** .
-1. W obszarze **Zarządzanie dostępem do zasobów platformy Azure** wybierz pozycję **Tak**, a następnie wybierz przycisk **Zapisz**.
+1. W obszarze **Zarządzanie dostępem do zasobów platformy Azure**wybierz pozycję **tak**, a następnie wybierz pozycję **Zapisz**.
 1. Wyloguj się z Azure Portal a następnie zaloguj się ponownie, aby odświeżyć dostęp.
 1. Wybierz pozycję **Azure Active Directory** w menu po lewej stronie.
 1. Na stronie **Przegląd** wybierz pozycję **Usuń katalog**. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby ukończyć proces.

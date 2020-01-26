@@ -1,5 +1,5 @@
 ---
-title: Eksperymentalne ustawienie wstępne dla kodowania z obsługą zawartości — Azure | Microsoft Docs
+title: Ustawienie wstępne dla kodowania z obsługą zawartości — Azure Media Services |
 description: W tym artykule omówiono kodowanie oparte na zawartości w Microsoft Azure Media Services v3.
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 34b4386d536a9845c8a48e7e54612548367b52bc
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933480"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759350"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>Eksperymentalne ustawienie wstępne dla kodowania obsługującego zawartość
+# <a name="a-preset-for-content-aware-encoding"></a>Ustawienie wstępne dla kodowania obsługującego zawartość
 
 Aby przygotować zawartość do dostarczenia przez [szybkość przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), należy zakodować wideo przy użyciu wielu szybkości transmisji bitów (wysokiej lub niskiej). W celu zapewnienia płynnej obniżenia jakości szybkość transmisji bitów jest niższa, ponieważ jest to rozdzielczość wideo. W wyniku tego jest to nazywane drabinem kodowania — tabelę rozdzielczości i szybkości transmisji bitów; Zobacz [wbudowane ustawienia wstępne kodowania](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)Media Services.
 

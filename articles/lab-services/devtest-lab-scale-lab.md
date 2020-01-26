@@ -1,6 +1,6 @@
 ---
 title: Skaluj przydziały i limity w laboratorium w Azure DevTest Labs | Microsoft Docs
-description: Dowiedz się, jak skalować laboratorium w Azure DevTest Labs
+description: W tym artykule opisano, jak można skalować laboratorium w Azure DevTest Labs. Wyświetl limity przydziału użycia i ograniczenia oraz Zażądaj zwiększenia.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 231a227cbccaa4cbf74f3b13839c0ba42895cf24
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644855"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761189"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalowanie przydziałów i limitów w laboratoriach DevTest Labs
 Podczas pracy w DevTest Labs można zauważyć, że istnieją pewne domyślne limity niektórych zasobów platformy Azure, które mogą mieć wpływ na usługę DevTest Labs. Limity te są określane jako limity **przydziału**.
@@ -26,7 +26,7 @@ Podczas pracy w DevTest Labs można zauważyć, że istnieją pewne domyślne li
 > [!NOTE]
 > Usługa DevTest Labs nie nakłada żadnych przydziałów. Wszystkie przydziały, które mogą wystąpić, są domyślnymi ograniczeniami ogólnej subskrypcji platformy Azure.
 
-Każdy zasób platformy Azure można użyć do momentu osiągnięcia limitu przydziału. Każda subskrypcja ma oddzielne przydziały, a użycie jest śledzone dla poszczególnych subskrypcji.
+Każdy zasób platformy Azure można użyć do momentu osiągnięcia limitu przydziału. Każda subskrypcja ma oddzielne przydziały, a użycie jest śledzone na subskrypcję.
 
 Na przykład Każda subskrypcja ma domyślny przydział 20 rdzeni. Dlatego, jeśli tworzysz maszyny wirtualne w laboratorium z czterema rdzeniami, możesz utworzyć tylko pięć maszyn wirtualnych.
 

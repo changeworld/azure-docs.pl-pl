@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b3d5aa74705d858349eaca543a7fd86e315a63e6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703001"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758754"
 ---
 # <a name="whats-new-for-authentication"></a>Co nowego w uwierzytelnianiu? 
 
@@ -40,7 +40,20 @@ System uwierzytelniania zmienia i dodaje funkcje na bieżąco w celu poprawy bez
 
 ## <a name="upcoming-changes"></a>Nadchodzące zmiany
 
-Wrzesień 2019: dodatkowe wymuszanie semantyki POST zgodnie z regułami analizowania adresów URL — zduplikowane parametry spowodują wyzwolenie błędu i zignorowano [BOM](https://www.w3.org/International/questions/qa-byte-order-mark) .
+Brak zaplanowanych w tym momencie.  Poniżej znajdują się zmiany, które znajdują się w środowisku produkcyjnym lub znajdują się w nim. 
+
+## <a name="february-2020"></a>Luty 2020: 
+
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>Puste fragmenty zostaną dołączone do każdego przekierowania HTTP z punktu końcowego logowania. 
+
+**Data wprowadzenia**: 8 lutego 2020
+
+**Wpływ na punkty końcowe**: 1.0 i v 2.0
+
+**Wpływ na protokół**: przepływy OAuth i OIDC, które używają response_type = Query — obejmuje to [przepływ kodu autoryzacji](v2-oauth2-auth-code-flow.md) w niektórych przypadkach i [niejawny przepływ](v2-oauth2-implicit-grant-flow.md). 
+
+Po wysłaniu odpowiedzi uwierzytelniania z login.microsoftonline.com do aplikacji za pośrednictwem przekierowania HTTP usługa dołączy pusty fragment do adresu URL odpowiedzi.  Pozwala to zapobiec atakom klasy w celu przekierowania przez zagwarantowanie, że przeglądarka wyczyści wszystkie istniejące fragmenty w żądaniu uwierzytelniania.  Żadne aplikacje nie powinny być zależne od tego zachowania. 
+
 
 ## <a name="august-2019"></a>Sierpień 2019 r.
 

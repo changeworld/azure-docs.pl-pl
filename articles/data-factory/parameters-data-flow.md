@@ -1,5 +1,5 @@
 ---
-title: Parametryzacja — mapowanie przepływów danych
+title: Parametryzacja przepływów mapowania danych
 description: Dowiedz się, jak Sparametryzuj przepływ danych mapowania z potoków usługi Data Factory
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c717d9ab44493d15589030073cd2ab260ef52e1c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746150"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760219"
 ---
-# <a name="parameterizing-mapping-data-flows"></a>Parametryzacja — mapowanie przepływów danych
+# <a name="parameterizing-mapping-data-flows"></a>Parametryzacja przepływów mapowania danych
 
 Mapowanie przepływów danych w Azure Data Factory obsługuje używanie parametrów. Można definiować parametry wewnątrz definicji przepływu danych, których można używać w całym wyrażeniu. Wartości parametrów mogą być ustawiane przez potok wywołujący za pośrednictwem działania wykonaj przepływ danych. Dostępne są trzy opcje ustawiania wartości w wyrażeniach działania przepływu danych:
 
@@ -23,9 +23,6 @@ Mapowanie przepływów danych w Azure Data Factory obsługuje używanie parametr
 * Użyj dowolnego języka wyrażeń, aby ustawić statyczną wartość literału
 
 Użyj tej funkcji, aby zapewnić przepływ danych ogólnego przeznaczenia, elastyczne i wielokrotnego użytku. Za pomocą tych parametrów można Sparametryzuj ustawienia przepływu danych i wyrażenia.
-
-> [!NOTE]
-> Aby użyć wyrażeń przepływu sterowania potokiem, parametr przepływu danych musi być typu String.
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>Tworzenie parametrów w mapowaniu przepływu danych
 

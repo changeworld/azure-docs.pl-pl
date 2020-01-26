@@ -9,12 +9,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665856"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757972"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Zarządzanie zasobami baz danych programu IBM Informix przy użyciu Azure Logic Apps
 
@@ -117,7 +117,7 @@ W tym temacie pokazano, jak za pomocą łącznika w aplikacji logiki przetwarza�
 
 1. Aby wyświetlić dane wejściowe, w obszarze **link danych wejściowych**wybierz link adresu URL. Aby wyświetlić dane wyjściowe, w obszarze link do danych **wyjściowych** wybierz link adresu URL. Oto kilka przykładowych danych wyjściowych:
 
-   * **Pobieranie tabel** zawiera listę tabel:
+   * **Get_tables** wyświetla listę tabel:
 
      ![Wyniki z akcji "Pobierz tabele"](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 

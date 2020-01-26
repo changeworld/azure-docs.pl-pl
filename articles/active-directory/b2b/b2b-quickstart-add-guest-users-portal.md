@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: quickstart
-ms.date: 11/12/2019
+ms.date: 01/23/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 431d2eac6b612bee629df184ed80c5c8a15513db
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 2f3d96926221a69e1cf216be81368a2eb87c938a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273368"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758341"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Szybki start: Dodawanie użytkowników-gości do katalogu w witrynie Azure Portal
 
@@ -29,7 +29,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy:
+Do ukończenia scenariusza zaprezentowanego w tym samouczku potrzebne są następujące elementy:
 
  - Rola umożliwiająca tworzenie użytkowników w Twoim katalogu dzierżawy, na przykład rola administratora globalnego lub dowolna spośród ról administratora katalogu z ograniczonymi uprawnieniami.
  - Ważne konto e-mail, które możesz dodać do swojego katalogu dzierżawy i którego możesz użyć do odebrania wiadomości e-mail z zaproszeniem testowym.

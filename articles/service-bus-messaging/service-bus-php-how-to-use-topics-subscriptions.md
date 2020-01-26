@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: jak używać tematów Service Bus w języku PHP'
-description: 'Szybki Start: informacje dotyczące korzystania z Service Bus tematów w języku PHP na platformie Azure.'
+title: Jak używać tematów Azure Service Bus w języku PHP
+description: W ramach tego samouczka nauczysz się używać tematów i subskrypcji Azure Service Bus z aplikacji PHP.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: b55d3c93f9926b7446dadf069b37a878caa81e15
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92f25f4bdac4942478c93f717c81eadd2c2f5b4a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721654"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760678"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Szybki Start: jak używać tematów Service Bus i subskrypcji w języku PHP
 
@@ -34,7 +34,7 @@ W tym artykule pokazano, jak używać tematów i subskrypcji Service Bus. Przyk�
 - Usuwanie tematów i subskrypcji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+1. Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów programu Visual Studio lub MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Wykonaj kroki opisane w [przewodniku szybki start: użyj Azure Portal, aby utworzyć temat Service Bus i subskrypcje w temacie](service-bus-quickstart-topics-subscriptions-portal.md) w celu utworzenia **przestrzeni nazw** Service Bus i pobrania **parametrów połączenia**.
 
     > [!NOTE]
@@ -98,7 +98,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 Gdzie `Endpoint` jest zazwyczaj formatem `https://[yourNamespace].servicebus.windows.net`.
 
-Aby utworzyć dowolnego klienta usługi platformy Azure, należy użyć klasy `ServicesBuilder`. Możesz:
+Aby utworzyć dowolnego klienta usługi platformy Azure, należy użyć klasy `ServicesBuilder`. Przekonaj się:
 
 * Przekaż parametry połączenia bezpośrednio do niego.
 * Użyj **CloudConfigurationManager (CCM)** , aby sprawdzić wiele zewnętrznych źródeł parametrów połączenia:

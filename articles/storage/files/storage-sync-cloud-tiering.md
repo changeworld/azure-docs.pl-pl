@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 483f13f89acd1bce0ceb8486ac252e6f844d881f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7af4f68417b25b480ea5422eb13d6b2a5748212c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431740"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759707"
 ---
 # <a name="cloud-tiering-overview"></a>Omówienie obsługi warstw w chmurze
 Obsługa warstw w chmurze jest opcjonalną funkcją Azure File Sync, w której często używane pliki są buforowane lokalnie na serwerze, podczas gdy wszystkie inne pliki są warstwami do Azure Files na podstawie ustawień zasad. Gdy plik jest warstwowy, filtr systemu plików Azure File Sync (StorageSync. sys) zastępuje plik lokalnie za pomocą wskaźnika lub punktu ponownej analizy. Punkt ponownej analizy reprezentuje adres URL pliku w Azure Files. Plik warstwowy ma zarówno atrybut "offline", jak i atrybut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ustawiony w systemie plików NTFS, aby aplikacje innych firm mogły bezpiecznie identyfikować pliki warstwowe.
  
-Gdy użytkownik otwiera plik warstwowy, Azure File Sync bezproblemowo oddzwoni dane pliku od Azure Files bez konieczności znajomości, że plik jest rzeczywiście przechowywany na platformie Azure. 
+Gdy użytkownik otwiera plik warstwowy, Azure File Sync bezproblemowo oddzwoni dane pliku od Azure Files bez konieczności znajomości, że plik jest przechowywany na platformie Azure. 
  
  > [!Important]  
  > Obsługa warstw w chmurze nie jest obsługiwana w przypadku punktów końcowych serwera w woluminach systemu Windows, a tylko pliki o rozmiarze większym niż 64 KiB mogą być warstwami dla Azure Files.
@@ -61,7 +61,7 @@ Utrzymywanie większej ilości danych może prowadzić do obniżenia kosztów ru
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Dodaliśmy nowy punkt końcowy serwera. Jak długo do moich plików w tej warstwie serwera?
-W wersji 4,0 i większej od agenta Azure File Sync, gdy pliki zostały przekazane do udziału plików platformy Azure, zostaną warstwowo zgodnie z zasadami, gdy tylko zostanie uruchomiona kolejna sesja warstwowa, co jest wykonywane raz na godzinę. W przypadku starszych agentów może upłynąć nawet 24 godziny.
+W wersji 4,0 i większej od agenta Azure File Sync, gdy pliki zostały przekazane do udziału plików platformy Azure, zostaną warstwowo zgodnie z zasadami, gdy tylko zostanie uruchomiona kolejna sesja warstwowa, co nastąpi po godzinie. W przypadku starszych agentów może upłynąć nawet 24 godziny.
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Jak mogę sprawdzić, czy plik został warstwowy?
@@ -127,6 +127,13 @@ Po włączeniu funkcji obsługi warstw w chmurze usługa Cloud warstws automatyc
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ```
+
+<a id="afs-image-thumbnail"></a>
+### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Dlaczego moje pliki warstwowe nie pokazują miniatur lub podglądów w Eksploratorze Windows?
+W przypadku plików warstwowych miniatury i podglądy nie będą widoczne w punkcie końcowym serwera. To zachowanie jest oczekiwane, ponieważ funkcja pamięci podręcznej miniatur w systemie Windows celowo pomija odczytywanie plików z atrybutem offline. Po włączeniu obsługi warstw w chmurze odczytywanie za pomocą plików warstwowych spowodowałoby ich pobranie (są one wywoływane).
+
+To zachowanie nie jest specyficzne dla Azure File Sync, Eksplorator Windows wyświetla "szary X" dla wszystkich plików, które mają ustawiony atrybut offline. Podczas uzyskiwania dostępu do plików za pośrednictwem protokołu SMB zobaczysz ikonę X. Szczegółowe wyjaśnienie tego zachowania można znaleźć w [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
 
 ## <a name="next-steps"></a>Następne kroki
 * [Planowanie wdrożenia Azure File Sync](storage-sync-files-planning.md)

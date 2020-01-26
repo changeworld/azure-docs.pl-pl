@@ -14,28 +14,28 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a77bb59afa753fa9d1655e787d4f7a18715ed2ca
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ea18538662dc63876a50f52e9e6a8b3fffb3b35a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701590"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758874"
 ---
-# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Usuwanie kont z pamięci podręcznej na globalne wylogowywanie
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web: usuwanie kont z pamięci podręcznej tokenów na globalnym wylogowaniu
 
-Już wiesz, jak dodać logowanie do aplikacji sieci Web. Dowiesz się, że w [aplikacji internetowej, która loguje się do użytkowników, Dodaj logowanie](scenario-web-app-sign-user-sign-in.md).
+Dowiesz się, jak dodać logowanie do aplikacji sieci Web w [aplikacji sieci Web, która loguje się w użytkownikach: Logowanie i](scenario-web-app-sign-user-sign-in.md)wylogowywanie.
 
-Co więcej, jest to, że jeśli użytkownik wyloguje się z tej aplikacji lub z dowolnej aplikacji, należy usunąć tokeny skojarzone z tym użytkownikiem.
+Wylogowywanie jest inne dla aplikacji sieci Web, która wywołuje interfejsy API sieci Web. Gdy użytkownik wyloguje się z aplikacji lub z dowolnej aplikacji, należy usunąć tokeny skojarzone z tym użytkownikiem z pamięci podręcznej tokenów.
 
-## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Przechwytywanie wywołania zwrotnego po wylogowaniu — Rejestracja jednokrotna
+## <a name="intercept-the-callback-after-single-sign-out"></a>Przechwycenie wywołania zwrotnego po wylogowaniu jednokrotnym
 
-Aplikacja może przechwycić zdarzenie po `logout`, aby na przykład wyczyścić wpis pamięci podręcznej tokenów skojarzonej z kontem, które zostało wylogowane. Aplikacja sieci Web będzie przechowywać tokeny dostępu dla użytkownika w pamięci podręcznej. Przechwycenie po `logout` wywołanie zwrotne umożliwia aplikacji sieci Web usunięcie użytkownika z pamięci podręcznej tokenów.
+Aby wyczyścić wpis w pamięci podręcznej token skojarzony z wylogowanym kontem, aplikacja może przechwycić zdarzenie po `logout`. Aplikacje sieci Web przechowują tokeny dostępu dla każdego użytkownika w pamięci podręcznej tokenów. Przechwycenie po `logout` wywołanie zwrotne może usunąć użytkownika z pamięci podręcznej.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Ten mechanizm jest przedstawiony w `AddMsal()` metodzie [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)
+W przypadku ASP.NET Core mechanizm przechwycenia jest przedstawiony w `AddMsal()` metodzie [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157).
 
-**Adres URL wylogowania** , który został zarejestrowany dla aplikacji, umożliwia wdrożenie rejestracji jednokrotnej. Punkt końcowy `logout` platformy tożsamości firmy Microsoft będzie wywoływał **adres URL wylogowania** zarejestrowany w aplikacji. To wywołanie występuje, jeśli wylogowanie zostało zainicjowane z aplikacji sieci Web lub z innej aplikacji sieci Web lub przeglądarki. Aby uzyskać więcej informacji, zobacz [Logowanie](v2-protocols-oidc.md#single-sign-out)jednokrotne.
+Adres URL wylogowania, który został wcześniej zarejestrowany dla aplikacji, umożliwia wdrożenie rejestracji jednokrotnej. Program Microsoft Identity platform `logout` Endpoint wywoła adres URL wylogowania. To wywołanie występuje, jeśli wylogowanie zostało uruchomione z aplikacji sieci Web lub z innej aplikacji sieci Web lub przeglądarki. Aby uzyskać więcej informacji, zobacz [Logowanie](v2-protocols-oidc.md#single-sign-out)jednokrotne.
 
 ```csharp
 public static class WebAppServiceCollectionExtensions
@@ -48,10 +48,10 @@ public static class WebAppServiceCollectionExtensions
   {
    // Code omitted here
 
-   // Handling the sign-out: removing the account from MSAL.NET cache
+   // Handling the sign-out: Remove the account from MSAL.NET cache.
    options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
    {
-    // Remove the account from MSAL.NET token cache
+    // Remove the account from MSAL.NET token cache.
     var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
     await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
    };
@@ -61,19 +61,19 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-Kod dla RemoveAccountAsync jest dostępny w [witrynie Microsoft. Identity. Web/TokenAcquisition. cs # L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288).
+Kod dla `RemoveAccountAsync` jest dostępny w [witrynie Microsoft. Identity. Web/TokenAcquisition. cs # L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288).
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-Przykład ASP.NET nie usuwa kont z pamięci podręcznej po wylogowaniu globalnym
+Przykład ASP.NET nie usuwa kont z pamięci podręcznej na globalnym wylogowaniu.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Przykład Java nie usuwa kont z pamięci podręcznej na globalnym wylogowaniu
+Przykład Java nie usuwa kont z pamięci podręcznej na globalnym wylogowaniu.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Przykład języka Python nie usuwa kont z pamięci podręcznej na globalnym wylogowaniu
+Przykład języka Python nie usuwa kont z pamięci podręcznej na globalnym wylogowaniu.
 
 ---
 

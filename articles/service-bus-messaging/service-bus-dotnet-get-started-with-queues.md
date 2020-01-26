@@ -1,6 +1,6 @@
 ---
 title: Wprowadzenie do kolejek usługi Azure Service Bus | Microsoft Docs
-description: Napisz aplikację konsolową w języku C#, która korzysta z kolejek komunikatów w usłudze Service Bus.
+description: W tym samouczku utworzysz aplikacje konsolowe platformy .NET Core umożliwiające wysyłanie komunikatów do i odbieranie komunikatów z kolejki Service Bus.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/27/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 49abd1b0542b1a658517561cf1ffead402fa93a5
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 60428e3c5be4ac994f83f44c4492ebd80ee65da7
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563398"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760985"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Wprowadzenie do kolejek usługi Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c9d3a876b75e7d3ed8ff43217227db1a524206f2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2ef90e1cb883a2d22b355ff4105ae0ce3c73ad6d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273483"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759857"
 ---
 # <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
@@ -67,7 +67,7 @@ Brak.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-Zaloguj się do [Portalu Azure](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
@@ -133,6 +133,9 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2
 ```
 
+> [!IMPORTANT]
+> Jeśli planujesz używać [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), Dołącz `-EnableHierarchicalNamespace $True` do tej listy parametrów. 
+
 Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z inną opcją replikacji, należy zastąpić żądaną wartość w poniższej tabeli dla parametru **SkuName** .
 
 |Opcja replikacji  |Parametr SkuName  |
@@ -172,6 +175,9 @@ az storage account create \
     --sku Standard_RAGRS \
     --kind StorageV2
 ```
+
+> [!IMPORTANT]
+> Jeśli planujesz używać [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), Dołącz `--enable-hierarchical-namespace true` do tej listy parametrów. 
 
 Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z inną opcją replikacji, należy zastąpić żądaną wartość w poniższej tabeli dla parametru **SKU** .
 
@@ -222,7 +228,7 @@ Usunięcie konta magazynu spowoduje usunięcie całego konta, w tym wszystkich d
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Przejdź do konta magazynu w [Azure Portal](https://portal.azure.com).
-1. Kliknij pozycję **Usuń**.
+1. Kliknij polecenie **Usuń**.
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 

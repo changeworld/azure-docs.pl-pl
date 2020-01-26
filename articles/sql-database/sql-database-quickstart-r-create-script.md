@@ -13,32 +13,37 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: a47e7a81ba486056841bdc0fe65cfd10f1b2c412
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4db4bf7c9d35d9715f24ac0480abfaad7eb7c9e6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123189"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760083"
 ---
-# <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Twórz i uruchamiaj proste skrypty języka R w Azure SQL Database Machine Learning Services (wersja zapoznawcza)
+# <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Szybki Start: Tworzenie i Uruchamianie prostych skryptów języka R w Azure SQL Database Machine Learning Services (wersja zapoznawcza)
 
-W tym przewodniku szybki start utworzysz i uruchomisz zestaw prostych skryptów języka R, korzystając z publicznej wersji zapoznawczej [Machine Learning Services (z językiem R) w Azure SQL Database](sql-database-machine-learning-services-overview.md). Dowiesz się, jak otoczyć poprawnie sformułowany skrypt języka R w procedurze składowanej [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) i wykonać skrypt w bazie danych SQL.
+W tym przewodniku szybki start utworzysz i uruchomisz zestaw skryptów języka R przy użyciu Machine Learning Services (w języku R) w Azure SQL Database.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/).
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Aby uruchomić przykładowy kod w tych ćwiczeniach, musisz najpierw mieć bazę danych SQL Azure z włączoną Machine Learning Services (z R). W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowej bazy danych. Postępuj zgodnie z instrukcjami w części [Tworzenie konta na potrzeby korzystania z wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
+- [Baza danych Azure SQL Database](sql-database-single-database-get-started.md) z [regułą zapory na poziomie serwera](sql-database-server-level-firewall-rule.md)
 
-- Upewnij się, że zainstalowano najnowszą [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Skrypty języka R można uruchamiać przy użyciu innych narzędzi do zarządzania bazami danych lub zapytań, ale w tym przewodniku szybki start będziesz używać programu SSMS.
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) z włączonym językiem R. [Zarejestruj się, aby wypróbować wersję zapoznawczą](sql-database-machine-learning-services-overview.md#signup).
 
-- Ten przewodnik Szybki Start wymaga skonfigurowania reguły zapory na poziomie serwera. Aby uzyskać informacje o tym, jak to zrobić, zobacz [Tworzenie reguły zapory na poziomie serwera](sql-database-server-level-firewall-rule.md).
+- Program [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
+
+> [!NOTE]
+> W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowej bazy danych.
+
+Ten przykład używa procedury składowanej [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) , aby otoczyć poprawnie sformułowany skrypt języka R.
 
 ## <a name="run-a-simple-script"></a>Uruchamianie prostego skryptu
 
-Aby uruchomić skrypt języka R, przekazanie go jako argumentu do procedury składowanej systemowej [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
+Aby uruchomić skrypt języka R, przekazanie go jako argumentu do procedury składowanej systemu [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
 W poniższych krokach opisano uruchamianie tego przykładowego skryptu języka R w usłudze SQL Database:
 
@@ -52,11 +57,11 @@ print(c(c, d))
 
 1. Otwórz program **SQL Server Management Studio** i nawiąż połączenie z usługą SQL Database.
 
-   Jeśli potrzebujesz pomocy przy nawiązywaniu połączenia [, zobacz Szybki Start: Używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych w bazie danych Azure SQL Database](sql-database-connect-query-ssms.md).
+   Jeśli potrzebujesz pomocy przy nawiązywaniu połączenia, zobacz [Szybki Start: użyj SQL Server Management Studio, aby nawiązać połączenie i wysłać zapytanie do bazy danych Azure SQL](sql-database-connect-query-ssms.md).
 
-1. Przekaż kompletny skrypt języka R do procedury składowanej [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
+1. Przekaż kompletny skrypt języka R do [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) procedury składowanej.
 
-   Skrypt jest przesyłany przez `@script` argument. Wszystkie elementy wewnątrz `@script` argumentu muszą być prawidłowym kodem R.
+   Skrypt jest przesyłany za pomocą argumentu `@script`. Wszystkie elementy wewnątrz argumentu `@script` muszą być prawidłowym kodem R.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -73,11 +78,11 @@ print(c(c, d))
 
    > [!NOTE]
    > Jeśli jesteś administratorem, możesz uruchomić kod zewnętrzny automatycznie. Można udzielić uprawnienia innym użytkownikom przy użyciu polecenia:
-   <br>**Przyznaj wykonywanie dowolnego skryptu zewnętrznego** *nazwaużytkownika\>. \<*
+   <br>**Przyznaj wykonaj dowolny skrypt zewnętrzny do** *\<nazwy użytkownika\>* .
 
-2. Obliczany jest prawidłowy wynik, a funkcja `print` R zwraca wynik do okna **komunikatów** .
+2. Obliczany jest prawidłowy wynik, a funkcja R `print` zwraca wynik do okna **komunikatów** .
 
-   Powinien on wyglądać podobnie do tego.
+   powinien on wyglądać podobnie do tego.
 
     **Results**
 
@@ -135,7 +140,7 @@ Na razie Użyjmy domyślnych zmiennych wejściowych i wyjściowych [sp_execute_e
     GO
     ```
 
-1. `SELECT` Użyj instrukcji, aby zbadać tabelę.
+1. Użyj instrukcji `SELECT`, aby zbadać tabelę.
   
     ```sql
     SELECT *
@@ -146,7 +151,7 @@ Na razie Użyjmy domyślnych zmiennych wejściowych i wyjściowych [sp_execute_e
 
     ![Zawartość tabeli RTestData](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
-1. Uruchom następujący skrypt języka R. Pobiera dane z tabeli przy użyciu `SELECT` instrukcji, przekazuje je za pośrednictwem środowiska uruchomieniowego języka R i zwraca dane jako ramkę danych. Klauzula definiuje schemat zwracanej tabeli danych dla SQL Database, dodając nazwę kolumny *NewColName.* `WITH RESULT SETS`
+1. Uruchom następujący skrypt języka R. Pobiera dane z tabeli przy użyciu instrukcji `SELECT`, przekazuje je za pośrednictwem środowiska uruchomieniowego języka R i zwraca dane jako ramkę danych. Klauzula `WITH RESULT SETS` definiuje schemat zwracanej tabeli danych dla SQL Database, dodając nazwę kolumny *NewColName*.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -170,12 +175,12 @@ Na razie Użyjmy domyślnych zmiennych wejściowych i wyjściowych [sp_execute_e
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    Należy pamiętać, że w języku R jest rozróżniana wielkość liter. Zmienne wejściowe i wyjściowe używane w skrypcie języka R (**SQL_out**, **SQL_in**) muszą być zgodne z wartościami zdefiniowanymi w `@input_data_1_name` i `@output_data_1_name`, włącznie z wielkością liter.
+    Należy pamiętać, że w języku R jest rozróżniana wielkość liter. Zmienne wejściowe i wyjściowe używane w skrypcie języka R (**SQL_out**, **SQL_in**) muszą być zgodne z wartościami zdefiniowanymi przy użyciu `@input_data_1_name` i `@output_data_1_name`, w tym z uwzględnieniem wielkości liter.
 
    > [!TIP]
    > Tylko jeden wejściowy zestaw danych może być przekazywany jako parametr i można zwrócić tylko jeden zestaw danych. Jednak można wywoływać inne zestawy danych z wewnątrz kodu języka R i można zwrócić dane wyjściowe innych typów oprócz zestawu danych. Możesz także dodać słowo kluczowe OUTPUT do dowolnego parametru, aby był zwracany z wynikami.
 
-1. Możesz również generować wartości tylko przy użyciu skryptu języka R bez danych wejściowych (`@input_data_1` jest to ustawienie puste).
+1. Możesz również generować wartości tylko przy użyciu skryptu języka R bez danych wejściowych (`@input_data_1` jest ustawiona na wartość puste).
 
    Poniższy skrypt wyświetla tekst "Hello" i "World".
 

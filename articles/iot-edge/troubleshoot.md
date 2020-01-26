@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 255ccb5c8e9529ab9b36186ec0eeb5b3f55ed64f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514259"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759231"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Typowe problemy z usługą Azure IoT Edge i ich rozwiązania
 
@@ -21,7 +21,7 @@ Jeśli wystąpią problemy z uruchamianiem usługi Azure IoT Edge w danym środo
 
 ## <a name="run-the-iotedge-check-command"></a>Uruchom polecenie "Check" iotedge "
 
-Pierwszy krok podczas rozwiązywania problemów IoT Edge powinien używać polecenia `check`, które wykonuje kolekcję testów konfiguracji i łączności dla typowych problemów. Polecenie `check` jest dostępne w [wersji 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) lub nowszej.
+Pierwszy krok podczas rozwiązywania problemów IoT Edge powinien używać polecenia `check`, które uruchamia kolekcję testów konfiguracji i łączności dla typowych problemów. Polecenie `check` jest dostępne w [wersji 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) lub nowszej.
 
 Można uruchomić polecenie `check` w następujący sposób lub dodać flagę `--help`, aby wyświetlić pełną listę opcji:
 
@@ -265,7 +265,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 **Główna przyczyna**
 
-Środowisko uruchomieniowe usługi IoT Edge może obsługiwać tylko nazwy hostów, które są mniej niż 64 znaki. Maszyny fizyczne zwykle nie mają długie nazwy hostów, ale ten problem występuje częściej na maszynie wirtualnej. Automatycznie generowanych nazw hostów dla maszyn wirtualnych Windows hostowanych na platformie Azure, w szczególności, zwykle za długa. 
+Środowisko uruchomieniowe usługi IoT Edge może obsługiwać tylko nazwy hostów, które są mniej niż 64 znaki. Maszyny fizyczne zwykle nie mają długie nazwy hostów, ale ten problem występuje częściej na maszynie wirtualnej. Automatycznie generowanych nazw hostów dla maszyn wirtualnych Windows hostowanych na platformie Azure, w szczególności, zwykle za długa.
 
 **Rozdzielczość**
 
@@ -302,7 +302,7 @@ Centrum IoT Edge, które jest częścią środowiska uruchomieniowego IoT Edge, 
 
 **Rozdzielczość**
 
-W przypadku Centrum IoT Edge Ustaw dla zmiennej środowiskowej **OptimizeForPerformance** **wartość false**. Istnieją dwa sposoby, w tym celu:
+W przypadku Centrum IoT Edge Ustaw dla zmiennej środowiskowej **OptimizeForPerformance** **wartość false**. Istnieją dwa sposoby, aby ustawić zmienne środowiskowe:
 
 W witrynie Azure Portal:
 
@@ -340,7 +340,7 @@ Jeśli otrzymasz EventLogException, korzystając z `Get-WinEvent` na Windows, Sp
 
 Ustaw wpis rejestru demona usługi IoT Edge. Tworzenie **iotedge.reg** pliku o następującej zawartości i importowanie w rejestrze Windows przez dwukrotne kliknięcie go lub za pomocą `reg import iotedge.reg` polecenia:
 
-```
+```reg
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
@@ -351,10 +351,10 @@ Windows Registry Editor Version 5.00
 
 ## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>Moduł usługi IoT Edge nie uda się wysłać wiadomość do edgeHub z powodu błędu 404
 
-Niestandardowy moduł usługi IoT Edge nie uda się wysłać wiadomość do edgeHub z 404 `Module not found` błędu. Demon usługi IoT Edge wyświetla następujący komunikat do dzienników: 
+Niestandardowy moduł usługi IoT Edge nie uda się wysłać wiadomość do edgeHub z 404 `Module not found` błędu. Demon usługi IoT Edge wyświetla następujący komunikat do dzienników:
 
 ```output
-Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
+Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
 ```
 
 **Główna przyczyna**
@@ -401,7 +401,7 @@ Określ serwer DNS dla środowiska w ustawieniach aparatu kontenera, które będ
 
 W powyższym przykładzie serwer DNS jest ustawiany publicznie dostępną usługę DNS. Jeśli urządzenie brzegowe nie może uzyskać dostępu do tego adresu IP ze środowiska, zastąp go adresem serwera DNS, który jest dostępny.
 
-Umieść `daemon.json` w odpowiedniej lokalizacji dla Twojej platformy: 
+Umieść `daemon.json` w odpowiedniej lokalizacji dla Twojej platformy:
 
 | Platforma | Lokalizacja |
 | --------- | -------- |
@@ -410,7 +410,7 @@ Umieść `daemon.json` w odpowiedniej lokalizacji dla Twojej platformy:
 
 Jeśli lokalizacja zawiera już plik `daemon.json`, Dodaj do niego klucz **DNS** i Zapisz plik.
 
-*Uruchom ponownie aparat kontenera, aby aktualizacje zaczęły obowiązywać*
+Aby aktualizacje zaczęły obowiązywać, uruchom ponownie aparat kontenerów.
 
 | Platforma | Polecenie |
 | --------- | -------- |
@@ -431,7 +431,7 @@ Można ustawić serwer DNS dla *opcji* "wszystkie" modułu we wdrożeniu IoT Edg
 }
 ```
 
-Upewnij się również, że dla modułów *edgeAgent* i *edgeHub* została wybrana wartość.
+Należy pamiętać, aby skonfigurować również tę konfigurację dla modułów *edgeAgent* i *edgeHub* .
 
 ## <a name="next-steps"></a>Następne kroki
 

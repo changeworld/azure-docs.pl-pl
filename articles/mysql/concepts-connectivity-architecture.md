@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 812a2b8b5fa0ad2b6e892dc77d4f76d2d22caeec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d4713cba94971971558a72c680e3c8f80331662
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454344"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760338"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura łączności w Azure Database for MySQL
 W tym artykule opisano architekturę Azure Database for MySQL łączności oraz sposób kierowania ruchu do wystąpienia Azure Database for MySQL z klientów zarówno w ramach platformy Azure, jak i poza nią.
@@ -42,7 +42,7 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP bramy Azure Dat
 | Chiny Północne 2 | 40.73.50.0     |
 | Azja Wschodnia | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | Wschodnie stany USA | 40.121.158.30, 191.238.6.43  |
-| Wschodnie stany USA 2 |40.79.84.180, 191.239.224.107, 52.167.104.0     |
+| Wschodnie stany USA 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
 | Francja Środkowa | 40.79.137.0, 40.79.129.1  |
 | Niemcy Środkowe | 51.4.144.100     |
 | Niemcy Północne wschód | 51.5.144.179  |

@@ -1,6 +1,6 @@
 ---
-title: Wygaśnięcie komunikatu Azure Service Bus | Microsoft Docs
-description: Wygaśnięcie i czas na żywo komunikatów Azure Service Bus
+title: Azure Service Bus — wygaśnięcie komunikatu
+description: W tym artykule wyjaśniono, jak wygasa i czas na żywo komunikatów Azure Service Bus. Po upływie tego terminu wiadomość nie zostanie już dostarczona.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 109ecc671b43365c433a626ff8d9fe55a5a626b5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310295"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756338"
 ---
 # <a name="message-expiration-time-to-live"></a>Wygaśnięcie komunikatu (czas wygaśnięcia)
 
@@ -26,7 +26,7 @@ ms.locfileid: "68310295"
 
 W przypadku środowisk deweloperskich i testowych, w których kolejki i tematy często są używane w kontekście częściowych przebiegów aplikacji lub części aplikacji, pożądane jest również, aby komunikaty testowe były automatycznie zbierane jako elementy bezużyteczne, aby następny przebieg testu mógł Rozpocznij czyszczenie.
 
-Wygaśnięcie poszczególnych komunikatów może być kontrolowane przez ustawienie właściwości System [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) , która określa względny czas trwania. Wygaśnięcie jest bezwzględnym chwilą, gdy wiadomość zostanie przejdzie do kolejki w jednostce. W tym czasie Właściwość [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) przyjmuje wartość [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Ustawienie czasu wygaśnięcia (TTL) dla komunikatu obsługiwanego przez brokera nie jest wymuszane w przypadku, gdy żaden klient aktywnie nasłuchuje.
+Wygaśnięcie poszczególnych komunikatów może być kontrolowane przez ustawienie właściwości System [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) , która określa względny czas trwania. Wygaśnięcie jest bezwzględnym chwilą, gdy wiadomość zostanie przejdzie do kolejki w jednostce. W tym czasie Właściwość [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) przyjmuje wartość [(**EnqueuedTimeUtc** ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [ **TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Ustawienie czasu wygaśnięcia (TTL) dla komunikatu obsługiwanego przez brokera nie jest wymuszane w przypadku, gdy żaden klient aktywnie nasłuchuje.
 
 Po **ExpiresAtUtc** natychmiast wiadomości stają się nieodpowiednie do pobrania. Wygaśnięcie nie ma wpływu na komunikaty, które są aktualnie zablokowane na potrzeby dostarczania; te komunikaty są nadal obsługiwane normalnie. Jeśli blokada wygaśnie lub komunikat zostanie porzucony, wygaśnięcie będzie obowiązywać natychmiast.
 
@@ -45,7 +45,7 @@ Wygasłe komunikaty można opcjonalnie przenieść do [kolejki utraconych wiadom
 
 W powyższym przypadku, gdy komunikat jest chroniony przed wygaśnięciem, a w obszarze Zablokuj i jeśli flaga jest ustawiona w jednostce, komunikat jest przenoszony do kolejki utraconych wiadomości, ponieważ blokada została porzucona lub wygaśnie. Nie jest on jednak przenoszony w przypadku pomyślnego rozliczenia komunikatu, a następnie zakłada, że aplikacja została pomyślnie obsłużona, a nie przez wartość nominalną ważności.
 
-Kombinacja [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) i automatycznych (i transakcyjnych) utraconych wiadomości w dniu wygaśnięcia jest cennym narzędziem do ustanowienia pewności, czy zadanie przekazane do procedury obsługi lub grupy programów obsługi w ramach terminu ostatecznego jest pobierane do przetwarzania jako termin ostateczny zostanie osiągnięty.
+Kombinacja [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) i automatycznych (i transakcyjnych) utraconych wiadomości w dniu wygaśnięcia jest cennym narzędziem służącym do ustanowienia pewności, czy zadanie przekazane do procedury obsługi lub grupy programów obsługi w ramach ostatecznego terminu jest pobierane do przetwarzania po osiągnięciu terminu ostatecznego.
 
 Rozważmy na przykład witrynę sieci Web, która wymaga niezawodnego wykonywania zadań w zasobie z ograniczeniami skalowalnymi, a czasami powoduje, że ruch jest osiągany w zależności od dostępności tego zaplecza. W regularnych przypadkach program obsługi po stronie serwera dla przesłanych danych użytkownika wypycha informacje do kolejki, a następnie otrzymuje odpowiedź potwierdzającą pomyślne obsłudze transakcji w kolejce odpowiedzi. W przypadku przepełnienia ruchu, gdy program obsługi zaplecza nie może przetworzyć swoich elementów zaległości w czasie, wygasłe zadania są zwracane w kolejce utraconych wiadomości. Użytkownik interaktywny może zostać powiadomiony o tym, że żądana operacja potrwa nieco dłużej niż zwykle, a żądanie może zostać umieszczone w innej kolejce dla ścieżki przetwarzania, w której wyniki przetwarzania ostatecznego są wysyłane do użytkownika za pośrednictwem poczty e-mail. 
 
@@ -58,7 +58,7 @@ Automatyczne czyszczenie jest przydatne w scenariuszach deweloperskich i testowy
 
 Funkcja jest włączona przy użyciu właściwości [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) . Ta właściwość jest ustawiona na czas trwania, przez który jednostka musi być bezczynna (nieużywana), zanim zostanie automatycznie usunięta. Minimalna wartość tej właściwości to 5.
  
-Właściwość **autoDeleteOnIdle** musi być ustawiona za pośrednictwem operacji Azure Resource Manager lub za pośrednictwem interfejsów [](/dotnet/api/microsoft.servicebus.namespacemanager) API .NET Framework Client NamespaceManager. Nie można go ustawić w portalu.
+Właściwość **autoDeleteOnIdle** musi być ustawiona za pośrednictwem operacji Azure Resource Manager lub za pośrednictwem interfejsów API .NET Framework Client [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) . Nie można go ustawić w portalu.
 
 ## <a name="idleness"></a>Bezczynność
 

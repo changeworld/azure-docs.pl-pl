@@ -1,6 +1,6 @@
 ---
 title: Sesje komunikatów Azure Service Bus | Microsoft Docs
-description: Obsługa sekwencji komunikatów Azure Service Bus z sesjami.
+description: W tym artykule wyjaśniono, jak używać sesji, aby umożliwić wspólną i uporządkowaną obsługę niepowiązanych sekwencji powiązanych komunikatów.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7da3c3de5074df80c676238e4d43dbd677b0a3b4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0338663046c21adad358e8fddec12a3cc8151c79
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720235"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759333"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Sesje komunikatów: pierwszy w, pierwszy na zewnątrz (FIFO) 
 

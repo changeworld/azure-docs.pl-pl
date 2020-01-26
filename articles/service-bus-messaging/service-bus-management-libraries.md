@@ -1,6 +1,6 @@
 ---
 title: Biblioteki zarządzania Azure Service Bus | Microsoft Docs
-description: Zarządzanie przestrzeniami nazw Service Bus i jednostkami komunikatów z platformy .NET.
+description: W tym artykule wyjaśniono, jak za pomocą bibliotek zarządzania Azure Service Bus dynamicznie zainicjować obsługę administracyjną Service Bus przestrzenie nazw i jednostek.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: faf0a5893b7de276b9a411745500daef4d39da6b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816079"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756270"
 ---
 # <a name="service-bus-management-libraries"></a>Biblioteki zarządzania usługi Service Bus
 
@@ -52,7 +52,7 @@ Wzorzec służący do manipulowania dowolnym zasobem Service Bus jest następuj�
 
    var result = await context.AcquireTokenAsync("https://management.azure.com/", new ClientCredential(clientId, clientSecret));
    ```
-2. `ServiceBusManagementClient` Utwórz obiekt:
+2. Utwórz obiekt `ServiceBusManagementClient`:
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -61,7 +61,7 @@ Wzorzec służący do manipulowania dowolnym zasobem Service Bus jest następuj�
        SubscriptionId = SettingsCache["SubscriptionId"]
    };
    ```
-3. `CreateOrUpdate` Ustaw parametry na określone wartości:
+3. Ustaw `CreateOrUpdate` parametry na określone wartości:
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()

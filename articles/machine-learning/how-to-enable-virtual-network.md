@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 8c3265210f6ba5bb291401ce4691581dac8a0325
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 53644066276aa8e9fb57b4802142bca3fe4b342f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289616"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760859"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure ML w ramach Virtual Network platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,11 +179,14 @@ Jeśli nie chcesz używać domyślnych reguł ruchu wychodzącego i chcesz ogran
 
 - Odmowa wychodzącego połączenia internetowego przy użyciu reguł sieciowej grupy zabezpieczeń.
 
-- Ogranicz ruch wychodzący do następujących elementów:
-   - Azure Storage, przy użyciu __znacznika usługi__ __Storage. Region_Name__ (na przykład Storage. wschód)
-   - Azure Container Registry, przy użyciu __znacznika usługi__ __AzureContainerRegistry. Region_Name__ (na przykład AzureContainerRegistry. wschód)
+- W przypadku __wystąpienia obliczeniowego__ lub __klastra obliczeniowego__należy ograniczyć ruch wychodzący do następujących elementów:
+   - Azure Storage, korzystanie z __tagu usługi__ __magazynu__
+   - Azure Container Registry, przy użyciu __tagu usługi__ __AzureContainerRegistry__
    - Azure Machine Learning, przy użyciu __tagu usługi__ __AzureMachineLearning__
-   - W przypadku wystąpienia obliczeniowego, Azure Cloud, przy użyciu __znacznika usługi__ __AzureResourceManager__
+   
+- W przypadku __wystąpienia obliczeniowego__Dodaj również następujące elementy:
+   - Azure Resource Manager, przy użyciu __tagu usługi__ __AzureResourceManager__
+   - Azure Active Directory, przy użyciu __tagu usługi__ __usługi azureactivedirectory__
 
 Konfiguracja reguły sieciowej grupy zabezpieczeń w Azure Portal jest pokazana na poniższym obrazie:
 
@@ -206,12 +209,12 @@ Konfiguracja reguły sieciowej grupy zabezpieczeń w Azure Portal jest pokazana 
 > run_config.environment.python.user_managed_dependencies = True
 > ```
 >
-> Szacowania training__
+> __Szkolenia szacowania__
 > ```python
-> est = Estimator(source_directory='.', 
->                 script_params=script_params, 
->                 compute_target='local', 
->                 entry_script='dummy_train.py', 
+> est = Estimator(source_directory='.',
+>                 script_params=script_params,
+>                 compute_target='local',
+>                 entry_script='dummy_train.py',
 >                 user_managed=True)
 > run = exp.submit(est)
 > ```

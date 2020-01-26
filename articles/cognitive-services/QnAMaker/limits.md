@@ -1,22 +1,14 @@
 ---
 title: Limity i granice — QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Usługa QnA Maker ma meta limity dla części bazy wiedzy knowledge base i usługi. Należy zachować wiedzy w ramach tych limitów w celu testowania i publikowania.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/10/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381124"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760236"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Usługa QnA Maker wiedzy limity i granice
 
@@ -33,6 +25,15 @@ Maksymalna liczba baz wiedzy zależy od [limitów warstwy wyszukiwanie poznawcze
  Na przykład jeśli warstwa ma 15 dozwolonych indeksów, można opublikować 14 baz wiedzy (1 indeks na opublikowaną bazę wiedzy). Piętnasty indeks, `testkb`, jest używany dla wszystkich baz wiedzy na potrzeby tworzenia i testowania.
 
 ## <a name="extraction-limits"></a>Limity wyodrębniania
+
+### <a name="file-naming-constraints"></a>Ograniczenia nazewnictwa plików
+
+Nazwy plików nie mogą zawierać następujących znaków:
+
+|Nie używaj znaku|
+|--|
+|`'` pojedynczego cudzysłowu|
+|`"` podwójnego cudzysłowu|
 
 ### <a name="maximum-file-size"></a>Maksymalna wielkość pliku
 

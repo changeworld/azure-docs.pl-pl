@@ -1,6 +1,6 @@
 ---
-title: Uruchamianie fabryki obrazu z usługi Azure DevOps w Azure DevTest Labs | Microsoft Docs
-description: Dowiedz się, jak utworzyć niestandardową fabrykę obrazów w Azure DevTest Labs.
+title: Uruchamianie fabryki obrazu z usługi Azure DevOps w Azure DevTest Labs
+description: W tym artykule opisano wszystkie przygotowania, które są konieczne do uruchomienia fabryki obrazu z usługi Azure DevOps (dawniej Visual Studio Team Services).
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638956"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758686"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Uruchamianie fabryki obrazów z usługi Azure DevOps
 W tym artykule opisano wszystkie przygotowania, które są konieczne do uruchomienia fabryki obrazu z usługi Azure DevOps (dawniej Visual Studio Team Services).
@@ -32,7 +32,7 @@ Pierwszym krokiem w konfigurowaniu fabryki obrazów jest utworzenie laboratorium
 Następnym krokiem w przyjęciu fabryki obrazu dla zespołu jest zrozumienie, co jest dostępne. Skrypty i szablony fabryki obrazów są dostępne publicznie w [repozytorium GitHub DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory). Oto konspekt elementów:
 
 - Fabryka obrazów. Jest to folder główny.
-    - Konfiguracja. Dane wejściowe do fabryki obrazu
+    - Skonfigurować. Dane wejściowe do fabryki obrazu
         - GoldenImages. Ten folder zawiera pliki JSON, które reprezentują definicje obrazów niestandardowych.
         - Labs.json. Plik, w którym zespoły rejestrują się w celu otrzymywania określonych obrazów niestandardowych.
 - Znajduj. Aparat dla fabryki obrazu.
@@ -52,7 +52,7 @@ Wszystkie środowiska programu PowerShell, szablony i konfiguracje dla fabryki o
 1. Przejdź do projektu usługi Azure DevOps, który został utworzony w poprzednim kroku (adres URL wygląda podobnie do **protokołu https:\//\<accountname >. VisualStudio. com/MyFirstProject**).
 2. Wybierz pozycję **Importuj repozytorium**.
 3. Wprowadź **adres URL klonowania** repozytorium DevTest Labs: `https://github.com/Azure/azure-devtestlab`.
-4. Wybierz pozycję **Import** (Importuj).
+4. Wybierz pozycję **Importuj**.
 
     ![Importuj repozytorium git](./media/set-up-devops-lab/import-git-repo.png)
 

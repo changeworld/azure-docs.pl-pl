@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a73658510111df44c522d88ed5eceb7dcfa80d0d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d0bcf9ca6373984989d24efd2af4ffbbb19c5548
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685536"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759690"
 ---
 # <a name="restore-an-existing-azure-sql-data-warehouse"></a>Przywróć istniejący Azure SQL Data Warehouse
 
@@ -24,16 +24,16 @@ W tym artykule dowiesz się, jak przywrócić istniejące SQL Data Warehouse prz
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Sprawdź pojemność jednostek DTU.** Każdy SQL Data Warehouse jest obsługiwany przez program SQL Server (na przykład myserver.database.windows.net), który ma domyślny limit przydziału jednostek DTU. Sprawdź, czy program SQL Server ma wystarczającą liczbę pozostałych limitów przydziału jednostek DTU dla przywracanej bazy danych. Aby dowiedzieć się, jak obliczyć liczbę jednostek DTU potrzebnych lub aby zażądać większej liczby jednostek DTU, zobacz [żądanie zmiany limitu przydziału jednostek DTU][Request a DTU quota change].
+**Sprawdź pojemność jednostek DTU.** Każdy SQL Data Warehouse jest obsługiwany przez program SQL Server (na przykład myserver.database.windows.net), który ma domyślny limit przydziału jednostek DTU. Sprawdź, czy program SQL Server ma wystarczającą liczbę pozostałych limitów przydziału jednostek DTU dla przywracanej bazy danych. Aby dowiedzieć się, jak obliczyć liczbę jednostek DTU potrzebnych lub aby zażądać większej liczby jednostek DTU, zobacz [żądanie zmiany limitu przydziału jednostek DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-1. Upewnij się, że [zainstalowano Azure PowerShell][Install Azure PowerShell].
-2. Mieć istniejący punkt przywracania, z którego chcesz przeprowadzić przywracanie. Jeśli chcesz utworzyć nowe przywracanie, zapoznaj się z [samouczkiem, aby utworzyć nowy punkt przywracania zdefiniowany przez użytkownika][the tutorial to create a new user-defined restore point].
+1. Upewnij się, że [zainstalowano Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+2. Mieć istniejący punkt przywracania, z którego chcesz przeprowadzić przywracanie. Jeśli chcesz utworzyć nowe przywracanie, zapoznaj się z [samouczkiem, aby utworzyć nowy punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore-points.md).
 
 ## <a name="restore-an-existing-data-warehouse-through-powershell"></a>Przywracanie istniejącego magazynu danych za poorednictwem programu PowerShell
 
-Aby przywrócić istniejący magazyn danych z punktu przywracania, użyj polecenia cmdlet [Restore-AzSqlDatabase][Restore-AzSqlDatabase] programu PowerShell.
+Aby przywrócić istniejący magazyn danych z punktu przywracania, użyj polecenia cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) programu PowerShell.
 
 1. Otwórz program PowerShell.
 
@@ -45,13 +45,13 @@ Aby przywrócić istniejący magazyn danych z punktu przywracania, użyj polecen
 
 5. Wybierz żądany punkt przywracania za pomocą RestorePointCreationDate.
 
-6. Przywróć magazyn danych do żądanego punktu przywracania za pomocą polecenia cmdlet [Restore-AzSqlDatabase][Restore-AzSqlDatabase] programu PowerShell.
+6. Przywróć magazyn danych do żądanego punktu przywracania za pomocą polecenia cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) programu PowerShell.
         1. Aby przywrócić SQL Data Warehouse do innego serwera logicznego, należy określić inną nazwę serwera logicznego.  Ten serwer logiczny może również znajdować się w innej grupie zasobów i regionie.
         2. Aby przywrócić do innej subskrypcji, użyj przycisku "Przenieś", aby przenieść serwer logiczny do innej subskrypcji.
 
 7. Sprawdź, czy przywrócony magazyn danych jest w trybie online.
 
-8. Po zakończeniu przywracania można skonfigurować odzyskany magazyn danych, wykonując następujące czynności: [Skonfiguruj bazę danych po odzyskaniu][Configure your database after recovery].
+8. Po zakończeniu przywracania można skonfigurować odzyskany magazyn danych, wykonując następujące czynności: [Skonfiguruj bazę danych po odzyskaniu](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
 
 ```Powershell
 
@@ -89,7 +89,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-data-warehouse-through-the-azure-portal"></a>Przywróć istniejący magazyn danych za pomocą Azure Portal
 
-1. Zaloguj się w witrynie [Azure Portal][Azure portal].
+1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Przejdź do SQL Data Warehouse, z którego chcesz wykonać przywracanie.
 3. W górnej części bloku przegląd wybierz pozycję **Przywróć**.
 
@@ -100,29 +100,7 @@ $RestoredDatabase.status
     ![Automatyczne punkty przywracania](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Następne kroki
-- [Przywracanie usuniętego magazynu danych][Restore a deleted data warehouse]
-- [Przywracanie z magazynu danych z geograficzną kopią zapasową][Restore from a geo-backup data warehouse]
+- [Przywracanie usuniętego magazynu danych](sql-data-warehouse-restore-deleted-dw.md)
+- [Przywracanie z magazynu danych z geograficzną kopią zapasową](sql-data-warehouse-restore-from-geo-backup.md)
+
  
-<!--Image references-->
-
-<!--Article references-->
-[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Overview]: ./sql-data-warehouse-restore-database-overview.md
-[Portal]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[the tutorial to create a new user-defined restore point]:../sql-data-warehouse/sql-data-warehouse-restore-points.md
-[Install Azure PowerShell]: https://docs.microsoft.com/powershell/azure/overview
-[Restore an existing data warehouse]:./sql-data-warehouse-restore-active-paused-dw.md
-[Restore a deleted data warehouse]:./sql-data-warehouse-restore-deleted-dw.md
-[Restore from a geo-backup data warehouse]:./sql-data-warehouse-restore-from-geo-backup.md
-
-<!--MSDN references-->
-[Restore-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
-
-<!--Other Web references-->
-[Azure Portal]: https://portal.azure.com/

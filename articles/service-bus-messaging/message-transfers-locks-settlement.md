@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus transfery, blokady i rozliczanie komunikatów | Microsoft Docs
-description: Przegląd Service Bus transferów komunikatów i operacji rozliczeń
+title: Azure Service Bus transfery, blokady i rozliczanie komunikatów
+description: Ten artykuł zawiera omówienie Azure Service Bus transferów komunikatów, blokad i operacji rozliczeń.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/24/2019
 ms.author: aschhab
-ms.openlocfilehash: 9aaada1ede8912b8b70f37c628ec918eca9be9d2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676263"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759282"
 ---
-# <a name="message-transfers-locks-and-settlement"></a>Transfery, blokady i rozliczenia komunikatów
+# <a name="message-transfers-locks-and-settlement"></a>Transferowanie, blokady i uzgadnianie komunikatów
 
 Centralną możliwością brokera komunikatów, takiego jak Service Bus, jest akceptowanie komunikatów do kolejki lub tematu i przechowywanie ich w celu późniejszego pobrania. *Send* to termin, który jest często używany do przesyłania wiadomości do brokera komunikatów. *Odbieranie* jest terminem często używanym do przesyłania wiadomości do klienta pobierającego.
 
@@ -34,7 +34,7 @@ Przy użyciu dowolnego z obsługiwanych Service Bus klientów interfejsu API ope
 
 Jeśli komunikat zostanie odrzucony przez Service Bus, odrzucenie zawiera wskaźnik błędu i tekst z "identyfikatorem śledzenia" w tym miejscu. Odrzucanie zawiera również informacje o tym, czy można ponowić próbę wykonania operacji z oczekiwaniami. W kliencie te informacje są włączane do wyjątku i wywoływane do obiektu wywołującego operacji wysyłania. Jeśli wiadomość została zaakceptowana, operacja zostanie dyskretnie ukończona.
 
-W przypadku korzystania z protokołu AMQP, który jest wyłącznym protokołem dla klienta .NET Standard i klienta Java, [który jest opcją dla klienta .NET Framework](service-bus-amqp-dotnet.md), transfery komunikatów i rozliczenia są potoku i całkowicie asynchroniczne. zalecane jest używanie wariantów interfejsu API modelu programowania asynchronicznego.
+W przypadku korzystania z protokołu AMQP, który jest wyłącznym protokołem dla klienta .NET Standard i klienta Java, [który jest opcją dla klienta .NET Framework](service-bus-amqp-dotnet.md), transfery komunikatów i rozliczenia są potoku i są całkowicie asynchroniczne, a zaleca się używanie wariantów interfejsów API modelu programowania asynchronicznego.
 
 Nadawca może umieścić kilka komunikatów w sieci w krótkim czasie, bez konieczności oczekiwania na potwierdzenie poszczególnych komunikatów, tak jak w przypadku protokołu SBMP lub HTTP 1,1. Operacje wysyłania asynchronicznego są ukończone, gdy odpowiednie komunikaty są akceptowane i przechowywane, w jednostkach partycjonowanych lub gdy operacje wysyłania do różnych jednostek nakładają się na siebie. Ukończenie może również wystąpić z oryginalnego zamówienia wysyłania.
 
@@ -116,13 +116,13 @@ Klient odbierający inicjuje rozliczenie otrzymanej wiadomości z pozytywnym pot
 
 Gdy klient otrzymujący nie może przetworzyć komunikatu, ale chce, aby komunikat został ponownie dostarczony, może jawnie poprosił o natychmiastowe zwolnienie i odblokowanie komunikatu przez wywołanie metody [Abandon](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) lub wykonanie operacji blokowania.
 
-Jeśli klient otrzymujący żądanie nie może przetworzyć komunikatu i wie, że ponowne dostarczenie komunikatu i ponowienie próby wykonania tej operacji nie pomoże, może odrzucić komunikat, który przenosi go do kolejki utraconych wiadomości przez wywołanie [utraconych](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)wiadomości, co umożliwia również ustawienie niestandardowego Właściwość uwzględniająca kod przyczyny, który można pobrać z wiadomości z kolejki utraconych wiadomości.
+Jeśli klient odbierający nie może przetworzyć komunikatu i wie, że ponowne dostarczenie komunikatu i ponowienie próby wykonania operacji nie powiedzie się, może odrzucić komunikat, który przenosi go do kolejki utraconych wiadomości przez wywołanie [utraconych](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)wiadomości, co umożliwia również ustawienie niestandardowej właściwości, w tym kodu przyczyny, który można pobrać z wiadomości z kolejki utraconych wiadomości.
 
 Szczególnym przypadkiem rozliczenia jest odroczenie, który został omówiony w osobnym artykule.
 
 **Wykonywanie operacji zakończonych** lub **utraconych** , a także operacji **RenewLock** może zakończyć się niepowodzeniem z powodu problemów z siecią, jeśli zatrzymywana blokada wygasła lub istnieją inne warunki po stronie usługi, które uniemożliwiają rozliczanie. W jednym z tych przypadków usługa wysyła negatywne potwierdzenie, które powierzchnie jako wyjątek w klientach interfejsu API. Jeśli powodem jest przerwane połączenie sieciowe, blokada zostanie porzucona, ponieważ Service Bus nie obsługuje odzyskiwania istniejących linków AMQP w innym połączeniu.
 
-Jeśli **zakończy** się niepowodzeniem, to jest zazwyczaj na bardzo zakończenie obsługi komunikatów, a w niektórych przypadkach po upływie minut działania przetwarzania, aplikacja do odbioru może zdecydować, czy zachowuje stan pracy i ignoruje ten sam komunikat, gdy zostanie on dostarczony drugi raz lub czy tosses wyniki pracy i ponawiania prób po ponownym dostarczeniu komunikatu.
+Jeśli operacja **zakończy** się niepowodzeniem, która zwykle odbywa się na bardzo końcu obsługi komunikatów, a w niektórych przypadkach po upływie kilku minut przetwarzania, aplikacja do odbioru może zdecydować, czy zachowuje stan pracy i ignoruje ten sam komunikat, gdy zostanie dostarczony po raz pierwszy, czy też tosses wynik pracy i ponawia próbę po ponownym dostarczeniu komunikatu.
 
 Typowym mechanizmem służącym do identyfikowania powielonych dostaw komunikatów jest sprawdzenie identyfikatora komunikatu, który może i powinien być ustawiony przez nadawcę na unikatową wartość, ewentualnie wyrównany przy użyciu identyfikatora z procesu źródłowego. Harmonogram zadań prawdopodobnie ustawi Identyfikator komunikatu na identyfikator zadania, które ma zostać przypisane do procesu roboczego przez danego pracownika, a proces roboczy zignoruje drugie wystąpienie przypisania zadania, jeśli to zadanie zostało już wykonane.
 
@@ -138,6 +138,6 @@ Typowym mechanizmem służącym do identyfikowania powielonych dostaw komunikat�
 
 Aby dowiedzieć się więcej na temat Service Bus Messaging, zobacz następujące tematy:
 
-* [Service Bus kolejkami, tematami i subskrypcjami](service-bus-queues-topics-subscriptions.md)
-* [Rozpoczynanie pracy z kolejkami Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Jak używać tematów i subskrypcji Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+* [Kolejki, tematy i subskrypcje usługi Service Bus](service-bus-queues-topics-subscriptions.md)
+* [Wprowadzenie do kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Jak używać tematów i subskrypcji usługi Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)

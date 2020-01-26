@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: jak używać kolejek Service Bus przy użyciu języka PHP'
-description: 'Szybki Start: Dowiedz się, jak używać kolejek Service Bus na platformie Azure. Przykłady kodu zapisywane w języku PHP.'
+title: Jak używać kolejek Azure Service Bus przy użyciu języka PHP
+description: W ramach tego samouczka nauczysz się tworzyć aplikacje PHP do wysyłania komunikatów do i odbierania komunikatów z kolejki Service Bus.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d576c269f4178c7543327c6b75f46f5487d7a205
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719190"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760695"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Szybki Start: jak używać kolejek Service Bus przy użyciu języka PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "73719190"
 W ramach tego samouczka nauczysz się tworzyć aplikacje PHP do wysyłania komunikatów do i odbierania komunikatów z kolejki Service Bus. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+1. Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Jeśli nie masz kolejki do współpracy z programem, postępuj zgodnie z instrukcjami w temacie [Use Azure Portal, aby utworzyć](service-bus-quickstart-portal.md) kolejkę Service Bus w celu utworzenia kolejki.
     1. Zapoznaj się z krótkim omówieniem **kolejek**Service Bus. 
     2. Utwórz **przestrzeń nazw**Service Bus. 
@@ -77,7 +77,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 Gdzie `Endpoint` jest zazwyczaj formatem `[yourNamespace].servicebus.windows.net`.
 
-Aby utworzyć dowolnego klienta usługi platformy Azure, należy użyć klasy `ServicesBuilder`. Możesz:
+Aby utworzyć dowolnego klienta usługi platformy Azure, należy użyć klasy `ServicesBuilder`. Przekonaj się:
 
 * Przekaż parametry połączenia bezpośrednio do niego.
 * Użyj **CloudConfigurationManager (CCM)** , aby sprawdzić wiele zewnętrznych źródeł parametrów połączenia:

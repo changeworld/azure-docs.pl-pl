@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790888"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760797"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Zestawu umiejętności pojęć i kompozycji na platformie Azure Wyszukiwanie poznawcze
 
@@ -37,15 +37,15 @@ Umiejętności są tworzone w formacie JSON. Można tworzyć złożone umiejętn
 ### <a name="enrichment-tree"></a>Drzewo wzbogacania
 
 Aby Envision, w jaki sposób zestawu umiejętności stopniowo wzbogaca swój dokument, Zacznijmy od tego, jak wygląda dokument przed dowolnymi wzbogacaniem. Dane wyjściowe łamania dokumentu są zależne od źródła danych i wybranego trybu analizy. Jest to również stan dokumentu, z którego [mapowania pól](search-indexer-field-mappings.md) mogą źródłowe zawartość podczas dodawania danych do indeksu wyszukiwania.
-![Magazyn wiedzy w diagramie potoku](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "KMagazyn NOWLEDGE na diagramie potoku ")
+![Magazyn wiedzy w diagramie potoku](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Magazyn wiedzy w diagramie potoku")
 
 Gdy dokument znajduje się w potoku wzbogacenia, jest reprezentowany jako drzewo zawartości i powiązane wzbogacania. To drzewo jest tworzone jako dane wyjściowe pęknięcia dokumentu. Format drzewa wzbogacania umożliwia potokowi wzbogacanie dołączenie metadanych do nawet pierwotnych typów danych, ale nie jest prawidłowym obiektem JSON, ale można go umieścić w prawidłowym formacie JSON. W poniższej tabeli przedstawiono stan dokumentu wprowadzanego do potoku wzbogacania:
 
 |Tryb Source\Parsing danych|Domyślne|JSON, wiersze JSON & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|ND |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|ND|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|ND |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|ND|
 
  W miarę wykonywania umiejętności Dodaj nowe węzły do drzewa wzbogacania. Te nowe węzły mogą być następnie używane jako dane wejściowe dla umiejętności podrzędnych, projekcja w sklepie wiedzy lub mapowanie do pól indeksu. Wzbogacania nie są modyfikowalne: po utworzeniu węzły nie mogą być edytowane. Ponieważ umiejętności jest bardziej skomplikowany, to drzewo wzbogacania, ale nie wszystkie węzły w drzewie wzbogacania muszą wprowadzić je do indeksu lub sklepu wiedzy. Można wybiórczo utrwalać tylko podzbiór wzbogaceń do indeksu lub sklepu z bazami danych.
 
@@ -56,7 +56,7 @@ W pozostałej części tego dokumentu przyjęto założenie, że pracujemy z [pr
 Każda umiejętność wymaga kontekstu. Kontekst określa:
 +   Liczba wykonań kwalifikacji na podstawie wybranych węzłów. W przypadku wartości kontekstu typu Collection dodanie ```/*``` na końcu spowoduje, że umiejętność zostanie wywołana raz dla każdego wystąpienia w kolekcji. 
 +   Gdzie w drzewie wzbogacania są dodawane dane wyjściowe umiejętności. Dane wyjściowe są zawsze dodawane do drzewa jako elementy podrzędne węzła kontekstu. 
-+   Kształt danych wejściowych. W przypadku kolekcji wielopoziomowych ustawienie kontekstu dla kolekcji nadrzędnej będzie miało wpływ na kształt danych wejściowych. Na przykład jeśli masz drzewo wzbogacania z listą krajów, z których każda została ulepszona, za pomocą listy Stanów zawierających listę ZipCodes.
++   Kształt danych wejściowych. W przypadku kolekcji wielopoziomowych ustawienie kontekstu dla kolekcji nadrzędnej wpłynie na kształt danych wejściowych dla umiejętności. Na przykład jeśli masz drzewo wzbogacania z listą krajów, z których każda została ulepszona, za pomocą listy Stanów zawierających listę ZipCodes.
 
 |Kontekst|Dane wejściowe|Kształt danych wejściowych|Wywołanie umiejętności|
 |---|---|---|---|
@@ -65,7 +65,7 @@ Każda umiejętność wymaga kontekstu. Kontekst określa:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` jest używana tylko w danych wejściowych i [projekcjach](knowledge-store-projection-overview.md)o umiejętnościach. Służy do konstruowania obiektów zagnieżdżonych na wiele poziomów. Może być konieczne utworzenie nowego oject, aby przekazać go jako dane wejściowe do umiejętności lub projektu w sklepie merytorycznym. Ponieważ węzły wzbogacania nie mogą być prawidłowym obiektem JSON w drzewie wzbogacania i refrencing węzeł w drzewie tylko zwraca ten stan węzła podczas jego tworzenia, przy użyciu wzbogacań jako dane wejściowe umiejętności lub projekcje wymagają utworzenia dobrze sformułowanego obiektu JSON. `sourceContext` umożliwia konstruowanie obiektu hierarchicznego typu anonimowego, który będzie wymagał wielu umiejętności, jeśli używany jest tylko kontekst. Użycie `sourceContext` jest pokazane w następnej sekcji. Spójrz na dane wyjściowe umiejętności, które wygenerowały wzbogacanie, aby określić, czy jest to prawidłowy obiekt JSON, a nie typ pierwotny.
+`sourceContext` jest używana tylko w danych wejściowych i [projekcjach](knowledge-store-projection-overview.md)o umiejętnościach. Służy do konstruowania obiektów zagnieżdżonych na wiele poziomów. Może być konieczne utworzenie nowego obiektu w celu przekazania go jako dane wejściowe do umiejętności lub projektu w sklepie merytorycznym. Ponieważ węzły wzbogacania nie mogą być prawidłowym obiektem JSON w drzewie wzbogacania i odwoływania się do węzła w drzewie tylko zwraca ten stan węzła podczas jego tworzenia, przy użyciu wzbogacania jako dane wejściowe lub projekcje wymagane jest utworzenie dobrze sformułowanego obiektu JSON. `sourceContext` umożliwia konstruowanie obiektu hierarchicznego typu anonimowego, który będzie wymagał wielu umiejętności, jeśli używany jest tylko kontekst. Użycie `sourceContext` jest pokazane w następnej sekcji. Spójrz na dane wyjściowe umiejętności, które wygenerowały wzbogacanie, aby określić, czy jest to prawidłowy obiekt JSON, a nie typ pierwotny.
 
 ### <a name="projections"></a>Projekcje
 
@@ -100,7 +100,7 @@ Węzeł główny dla wszystkich wzbogacań jest `"/document"`. Podczas pracy z i
 
 ### <a name="skill-2-language-detection"></a>Umiejętność #2 wykrywania języka
  Chociaż umiejętność wykrywania języka to trzecia (umiejętności #3) umiejętność zdefiniowana w zestawu umiejętności, jest to kolejna umiejętność wykonania. Ponieważ nie jest on blokowany przez wymaganie żadnych danych wejściowych, zostanie wykonany równolegle z poprzednią umiejętnością. Podobnie jak w przypadku podzielonej umiejętności, która je poprzedza, umiejętność wykrywania języka jest również wywoływana jednokrotnie dla każdego dokumentu. Drzewo wzbogacania ma teraz nowy węzeł dla języka.
- ![drzewo wzbogacania po #2 umiejętności](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Endrzewo rozbudowane po wykonaniu #2 kwalifikacji ")
+ ![drzewo wzbogacania po #2 umiejętności](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Drzewo wzbogacania po wykonaniu #2 kwalifikacji")
  
  ### <a name="skill-3-key-phrases-skill"></a>Kwalifikacja #3: umiejętność kluczowych fraz 
 
@@ -114,7 +114,7 @@ Kolory łączników w powyższym drzewie wskazują, że wzbogacania zostały utw
 
 ## <a name="save-enrichments-in-a-knowledge-store"></a>Zapisz wzbogacenia w sklepie merytorycznym 
 
-Umiejętności również Zdefiniuj magazyn wiedzy, w którym wzbogacone dokumenty mogą być rzutowane jako tabele lub obiekty. Aby zapisać dane wzbogacone w sklepie z bazami informacji, należy zdefiniować zestaw projekcji wzbogaconego dokumentu. Aby dowiedzieć się więcej na temat sklepu z bazami danych, zobacz artykuł [Omówienie sklepu](knowledge-store-concept-intro.md) z informacjami
+Umiejętności również Zdefiniuj magazyn wiedzy, w którym wzbogacone dokumenty mogą być rzutowane jako tabele lub obiekty. Aby zapisać dane wzbogacone w sklepie z bazami informacji, należy zdefiniować zestaw projekcji dla wzbogaconego dokumentu. Aby dowiedzieć się więcej na temat sklepu z bazami danych, zobacz artykuł [Omówienie sklepu](knowledge-store-concept-intro.md) z informacjami
 
 ### <a name="slicing-projections"></a>Projekcje wycinków
 

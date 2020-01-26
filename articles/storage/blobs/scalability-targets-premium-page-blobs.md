@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 39153b05b16395cf2dfc0511efa601d1cc4da550
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749710"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756253"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Cele skalowalności i wydajności dla kont usługi BLOB Storage na stronie Premium
 
@@ -31,7 +31,7 @@ Dla kont magazynu obiektów BLOB na stronie Premium są dostępne następujące 
 
 | Łączna pojemność konta                            | Łączna przepustowość dla lokalnego nadmiarowego konta magazynu                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| Pojemność dysku: 35 TB <br>Pojemność migawki: 10 TB | Do 50 Gigabit na sekundę dla ruchu przychodzącego<sup>1</sup> + wychodzącego<sup>2</sup> |
+| Pojemność dysku: 4 TB (pojedynczy dysk)/35 TB (łączna liczba wszystkich dysków) <br>Pojemność migawki: 10 TB | Do 50 Gigabit na sekundę dla ruchu przychodzącego<sup>1</sup> + wychodzącego<sup>2</sup> |
 
 <sup>1</sup> wszystkie dane (żądania) wysyłane do konta magazynu
 

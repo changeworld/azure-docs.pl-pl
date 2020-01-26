@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046046"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760906"
 ---
 # <a name="create-an-azure-application-offer"></a>Tworzenie oferty aplikacji platformy Azure
 
@@ -156,19 +156,9 @@ Strona **Właściwości** umożliwia definiowanie kategorii i branż używanych 
 
 Wybierz co najmniej jedną i maksymalnie trzy kategorie, które będą używane do umieszczania oferty w odpowiednich obszarach wyszukiwania w portalu Marketplace. Pamiętaj, aby dowiedzieć się, jak Twoja oferta obsługuje te kategorie w opisie oferty. 
 
-### <a name="standard-marketplace-terms-and-conditions"></a>Standardowe warunki i postanowienia portalu Marketplace
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardowa umowa dla komercyjnego portalu Microsoft Marketplace
 
-Aby uprościć proces zakupów dla klientów i zmniejszyć złożoność prawną dla dostawców oprogramowania, firma Microsoft oferuje standardowy szablon kontraktu, aby ułatwić obsługę transakcji w portalu Marketplace.
-
-Zamiast przedstawiać niestandardowe warunki i postanowienia, możesz zaoferować oprogramowanie w ramach standardowej umowy, której klienci muszą jedynie Zweryfikuj i akceptować.
-
-Kontrakt standardowy można znaleźć tutaj: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Aby korzystać z kontraktu standardowego, zaznacz pole wyboru **Użyj kontraktu standardowego?** .
-
-#### <a name="terms-of-use"></a>Warunki użytkowania
-
-Jeśli nie sprawdzisz pola **Używaj standardowej umowy?** , musisz podać własne warunki prawne użytkowania w polu **warunki użytkowania** . Wprowadź do 10 000 znaków tekstu lub, jeśli warunki użytkowania wymagają dłuższego opisu, podaj adres URL, pod którym można znaleźć dodatkowe postanowienia licencyjne. Klienci będą musieli zaakceptować te warunki, aby wypróbować aplikację.
+[!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
 ## <a name="offer-listing"></a>Lista oferty
 
@@ -352,7 +342,7 @@ Istnieje możliwość skonfigurowania każdego planu, który będzie widoczny dl
 
 Jeśli szablon rozwiązania jest przeznaczony do wdrożenia tylko pośrednio, gdy istnieje odwołanie do innego szablonu rozwiązania lub aplikacji zarządzanej, zaznacz to pole wyboru, aby opublikować szablon rozwiązania, ale ukryć go od klientów wyszukiwania bezpośrednio i przeglądania.
 
-## <a name="pricing-and-availability"></a>Ceny i dostępność
+## <a name="pricing-and-availability"></a>Cennik i dostępność
 
 Karta **ceny i dostępność** jest widoczna tylko dla zarządzanych planów aplikacji.  Można skonfigurować rynki, w których będzie dostępny ten plan, cenę za miesiąc zarządzania rozwiązaniem oraz zdecydować, czy plan ma być widoczny dla wszystkich, czy tylko dla określonych klientów (odbiorców prywatnych).
 
@@ -461,7 +451,7 @@ Dla każdego podmiotu zabezpieczeń wybierz jedną z wbudowanych ról usługi Az
 
 Zastosuj [Zasady platformy Azure](https://docs.microsoft.com/azure/governance/policy/overview) do aplikacji zarządzanej, aby określić wymagania dotyczące zgodności dla wdrożonego rozwiązania.  Definicje zasad i format wartości parametrów podano w artykule [Przykłady dla usługi Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/index).  Można skonfigurować maksymalnie pięć zasad i tylko jedno wystąpienie poszczególnych zasad.  Niektóre zasady wymagają dodatkowych parametrów.  Dla zasad inspekcji wymagana jest standardowa jednostka SKU.  Nazwa zasad jest ograniczona do 50 znaków.
 
-## <a name="co-sell"></a>Wspólna sprzedaż
+## <a name="co-sell"></a>Sprzedawanie
 
 Przekazywanie informacji na karcie sprzedaż jest całkowicie opcjonalne w przypadku publikowania oferty. Jest to wymagane do osiągnięcia gotowej do rozsprzedażu i gotowego do zakupu stanu do współdziałania. Te informacje będą używane przez zespoły sprzedaży firmy Microsoft, aby dowiedzieć się więcej na temat rozwiązania podczas oceny jego dopasowania do potrzeb klientów. Nie jest on dostępny bezpośrednio dla klientów.
 

@@ -1,6 +1,6 @@
 ---
-title: Uruchom ponownie Maszynę wirtualną w laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak ponownie uruchomić maszynę wirtualną w usłudze Azure DevTest Labs
+title: Uruchom ponownie maszynę wirtualną w laboratorium w Azure DevTest Labs | Microsoft Docs
+description: W tym artykule przedstawiono kroki umożliwiające szybkie i łatwe ponowne uruchomienie maszyn wirtualnych w programie Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,48 +12,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 34c08a79abf6acb5ae8582ecd0743a890d850fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52d3b92909483a99eb82c86b727261bbeb5f8d46
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60864425"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759998"
 ---
-# <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Uruchom ponownie Maszynę wirtualną w laboratorium Azure DevTest Labs
-Można szybko i łatwo rozpocząć maszynę wirtualną w usłudze DevTest Labs, wykonując kroki opisane w tym artykule. Należy wziąć pod uwagę następujące przed ponownym uruchomieniem maszyny Wirtualnej:
+# <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Uruchom ponownie maszynę wirtualną w laboratorium w Azure DevTest Labs
+Możesz szybko i łatwo uruchomić ponownie maszynę wirtualną w DevTest Labs, wykonując kroki opisane w tym artykule. Przed ponownym uruchomieniem maszyny wirtualnej Rozważ następujące kwestie:
 
-- Maszyna wirtualna musi być uruchomiona, aby włączyć funkcję ponownego uruchamiania.
-- Jeśli użytkownik jest podłączony do uruchomionej maszyny Wirtualnej, gdy wykonują ponowne uruchomienie komputera, ich należy nawiązać ponownie połączenie z maszyną wirtualną po jej ponownym uruchomieniu.
-- Jeśli artefakt jest stosowany po ponownym uruchomieniu maszyny Wirtualnej, pojawi się ostrzeżenie artefaktu nie może być stosowane.
+- Aby można było włączyć funkcję ponownego uruchamiania, maszyna wirtualna musi być uruchomiona.
+- Jeśli użytkownik jest połączony z uruchomioną maszyną wirtualną po ponownym uruchomieniu, musi ponownie nawiązać połączenie z maszyną wirtualną po rozpoczęciu tworzenia kopii zapasowej.
+- Jeśli artefakt jest stosowany po ponownym uruchomieniu maszyny wirtualnej, pojawi się ostrzeżenie, że artefakt może nie zostać zastosowany.
 
     ![Ostrzeżenie podczas ponownego uruchamiania podczas stosowania artefaktów](./media/devtest-lab-restart-vm/devtest-lab-restart-vm-apply-artifacts.png)
 
 
    > [!NOTE]
-   > Jeśli maszyna wirtualna został zatrzymany podczas stosowania artefakt, można użyć funkcji ponownego uruchomienia maszyny Wirtualnej jako potencjalne sposób, aby rozwiązać ten problem.
+   > Jeśli maszyna wirtualna została wstrzymana podczas stosowania artefaktu, można użyć funkcji Uruchom ponownie maszynę wirtualną jako potencjalnego rozwiązania problemu.
    >
    >
 
-## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Kroki, aby ponownie uruchomić Maszynę wirtualną w laboratorium Azure DevTest Labs
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
-1. Zaznacz na liście laboratoriów laboratorium, która zawiera maszyny Wirtualnej, który chcesz ponownie uruchomić.
-1. W panelu po lewej stronie wybierz **Moje maszyny wirtualne**.
-1. Z listy maszyn wirtualnych wybierz uruchomionej maszyny Wirtualnej.
-1. W górnej części okienka zarządzania maszyny Wirtualnej wybierz **ponowne uruchomienie**.
+## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Kroki umożliwiające ponowne uruchomienie maszyny wirtualnej w laboratorium w Azure DevTest Labs
+1. Zaloguj się do [portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
+1. Z listy laboratoriów wybierz laboratorium obejmujące maszynę wirtualną, którą chcesz ponownie uruchomić.
+1. W lewym panelu wybierz pozycję **My Virtual Machines**.
+1. Z listy maszyn wirtualnych wybierz działającą maszynę wirtualną.
+1. W górnej części okienka zarządzanie maszyną wirtualną wybierz pozycję **Uruchom ponownie**.
 
-    ![Ponowne uruchomienie maszyny Wirtualnej, przycisk](./media/devtest-lab-restart-vm/devtest-lab-restart-vm.png)
+    ![Przycisk ponownego uruchamiania maszyny wirtualnej](./media/devtest-lab-restart-vm/devtest-lab-restart-vm.png)
 
-1. Monitorować stan ponownego uruchomienia, wybierając **powiadomienia** ikonę w prawym górnym rogu okna.
+1. Monitoruj stan ponownego uruchomienia, wybierając ikonę **powiadomienia** w prawym górnym rogu okna.
 
-    ![Wyświetlanie stanu ponownego uruchamiania maszyny Wirtualnej](./media/devtest-lab-restart-vm/devtest-lab-restart-notification.png)
+    ![Wyświetlanie stanu ponownego uruchomienia maszyny wirtualnej](./media/devtest-lab-restart-vm/devtest-lab-restart-notification.png)
 
-Można również uruchomić ponownie uruchomionej maszyny Wirtualnej, wybierając jego ikonę wielokropka (...) na liście **Moje maszyny wirtualne**.
+Możesz również ponownie uruchomić uruchomioną maszynę wirtualną, wybierając jej wielokropek (...) na liście **My Virtual Machines**.
 
-![Uruchom ponownie maszynę Wirtualną przy użyciu wielokropka](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
+![Uruchom ponownie maszynę wirtualną przez wielokropek](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-* Po ponownym uruchomieniu, można ponownie połączyć z maszyną wirtualną, wybierając **Connect** w jej okienku zarządzania.
-* Zapoznaj się z [galerii szablonów szybkiego startu usługi DevTest Labs usługi Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)
+## <a name="next-steps"></a>Następne kroki
+* Po ponownym uruchomieniu można ponownie nawiązać połączenie z maszyną wirtualną, wybierając pozycję **Połącz** w jej okienku zarządzania.
+* Poznaj [galerię szablonów DevTest Labs Azure Resource Manager — szybki start](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

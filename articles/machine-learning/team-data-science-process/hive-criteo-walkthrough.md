@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 04bc29fb8a89f6e863f7c009e5299d1c702bf976
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721408"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760814"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Proces nauki danych zespołu w akcji — Używanie klastra Azure HDInsight Hadoop w zestawie danych o pojemności 1 TB
 
@@ -56,7 +56,8 @@ Dwa przykładowe prognozowania problemy zostały rozwiązane w tym przewodniku:
 2. **Regresja**: przewiduje prawdopodobieństwo kliknij ad z funkcji użytkownika.
 
 ## <a name="setup"></a>Ustaw się HDInsight klastra usługi Hadoop do analizy danych
-**Uwaga:** Ten krok to zwykle zadanie **administracyjne** .
+> [!NOTE]
+> Ten krok to zwykle zadanie **administracyjne** .
 
 Konfigurowanie środowiska nauki o danych platformy Azure do tworzenia rozwiązań do analizy predykcyjnej przy użyciu klastrów HDInsight w trzech krokach:
 
@@ -107,10 +108,8 @@ Aby utworzyć tabele programu Hive dla naszych Criteo zestawu danych, otwórz **
 > [!NOTE]
 > Aby wykonać dowolne zapytanie programu Hive, jeden zawsze Użyj następujących poleceń:
 >
->
-
-        cd %hive_home%\bin
-        hive
+>        cd %hive_home%\bin
+>        hive
 
 Po wyświetleniu Hive REPL, za pomocą "gałęzi >"Zaloguj się, po prostu wyciąć i wkleić kwerenda do wykonania go.
 

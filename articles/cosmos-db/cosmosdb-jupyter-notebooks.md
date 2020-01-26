@@ -6,14 +6,14 @@ ms.topic: overview
 ms.date: 09/22/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: 5c6d7ae458c30d462c599042e254f4243daf474c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5b320485001d6cbc457d39ef193ed8c57f7161df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260875"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760287"
 ---
-# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Wbudowana obsługa notesów Jupyter w Azure Cosmos DB
+# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Wbudowana obsługa notesów Jupyter w Azure Cosmos DB (wersja zapoznawcza)
 
 Jupyter Notes to aplikacja sieci Web Open Source, która umożliwia tworzenie i udostępnianie dokumentów zawierających kod na żywo, równania, wizualizacje i tekst opisowy. Azure Cosmos DB obsługuje wbudowane notesy Jupyter dla wszystkich interfejsów API, takich jak Cassandra, MongoDB, SQL, Gremlin i Table. Wbudowana obsługa notesów dla wszystkich Azure Cosmos DB interfejsów API i modeli danych pozwala interaktywnie uruchamiać zapytania. Notesy Jupyter są uruchamiane na kontach usługi Azure Cosmos i umożliwiają deweloperom wykonywanie eksploracji danych, czyszczenie danych, Przekształcanie danych, symulacje liczbowe, modelowanie statystyczne, wizualizację danych i uczenie maszynowe.
 

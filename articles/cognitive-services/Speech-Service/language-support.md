@@ -3,20 +3,20 @@ title: Obsługa języka — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Usługa mowy obsługuje wiele języków w przypadku konwersji mowy na tekst i zamiany tekstu na mowę oraz Tłumaczenie mowy. Ten artykuł zawiera kompleksową listę obsługi języków według funkcji usługi.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: erhopf
+ms.date: 01/23/2020
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381056"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760627"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Obsługa języka i regionu dla usługi mowy
 
@@ -24,49 +24,58 @@ Obsługa języka zależy od funkcjonalności usługi mowy. W poniższych tabelac
 
 ## <a name="speech-to-text"></a>Zamiana mowy na tekst
 
-Zarówno zestaw Microsoft Speech SDK, jak i interfejs API REST obsługują następujące języki (ustawienia regionalne). W celu poprawienia dokładności, dostosowanie jest oferowane dla podzestawu języków za pomocą przekazywania zapisu audio + z etykietami ludzkimi lub powiązanego tekstu: zdania.  Dostosowanie wymowy jest obecnie dostępne tylko dla `en-US` i `de-DE`. Więcej informacji na temat dostosowywania [znajdziesz tutaj](how-to-custom-speech.md).
+Zarówno zestaw Microsoft Speech SDK, jak i interfejs API REST obsługują następujące języki (ustawienia regionalne). W celu poprawienia dokładności, dostosowanie jest oferowane dla podzestawu języków za pomocą przekazywania zapisu audio + z etykietami ludzkimi lub powiązanego tekstu: zdania. Dostosowanie wymowy jest obecnie dostępne tylko dla `en-US` i `de-DE`. Więcej informacji na temat dostosowywania [znajdziesz tutaj](how-to-custom-speech.md).
 
- Ustawienia regionalne | Język | Obsługiwane | Modyfikowalne
+<!--
+To get the AM and ML bits:
+https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
+
+To get pronunciation bits:
+https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
+-->
+
+ Ustawienia regionalne | Język | Obsługiwane | Dostosowania
 ------|------------|-----------|-------------
-`ar-EG` | Arabski (Egipt), standard nowoczesne | Tak | Tak
-`ar-SA` | Arabski (Arabia Saudyjska) | Tak | Tak
-`ar-AE` | Arabski (Zjednoczone Emiraty Arabskie) | Tak | Tak
-`ar-KW` | Arabski (Kuwejt) | Tak | Tak
-`ar-QA` | Arabski (katar) | Tak | Tak
-`ca-ES` | Kataloński | Tak | Nie
-`da-DK` | Duński (Dania) | Tak | Nie
-`de-DE` | Niemiecki (Niemcy) | Tak | Tak
-`en-AU` | Angielski (Australia) | Tak | Tak
-`en-CA` | Angielski (Kanada) | Tak | Tak
-`en-GB` | Angielski (Zjednoczone Królestwo) | Tak | Tak
-`en-IN` | English (India) | Tak | Tak
-`en-NZ` | Angielski (Nowa Zelandia) | Tak | Tak
-`en-US` | Angielski (Stany Zjednoczone) | Tak | Tak
-`es-ES` | Hiszpański (Hiszpania) | Tak | Tak
-`es-MX` | Hiszpański (Meksyk) | Tak | Tak
-`fi-FI` | Fiński (Finlandia) | Tak | Nie
-`fr-CA` | Francuski (Kanada) | Tak | Tak
-`fr-FR` | Francuski (Francja) | Tak | Tak
-`gu-IN` | Gudżarati (Indyjski) | Tak | Tak
-`hi-IN` | Hindi (India) | Tak | Tak
-`it-IT` | Włoski (Włochy) | Tak | Tak
-`ja-JP` | Japoński (Japonia) | Tak | Tak
-`ko-KR` | Koreański (Korea) | Tak | Tak
-`mr-IN` | Marathi (Indie) | Tak | Tak
-`nb-NO` | Norweski (Bokmal) (Norwegia) | Tak | Nie
-`nl-NL` | Holenderski (Holandia) | Tak | Tak
-`pl-PL` | Polski (Polska) | Tak | Nie
-`pt-BR` | Portugalski (Brazylia) | Tak | Tak
-`pt-PT` | Portugalski (Portugalia) | Tak | Tak
-`ru-RU` | Rosyjski (Rosja) | Tak | Tak
-`sv-SE` | Szwedzki (Szwecja) | Tak | Nie
-`ta-IN` | Tamilski (Indie) | Tak | Tak
-`te-IN` | Telugu (Indie) | Tak | Tak
-`zh-CN` | Chiński (mandaryński uproszczony) | Tak | Tak
-`zh-HK` | Chiński (kantoński, tradycyjny) | Tak | Tak
-`zh-TW` | Chiński (mandaryński tajwańskie) | Tak | Tak
+`ar-AE` | Arabski (Zjednoczone Emiraty Arabskie) | Tak | Nie
+`ar-BH` | Arabski (Bahrajn) | Tak | Model języka
+`ar-EG` | Arabski (Egipt), standard nowoczesne | Tak | Model języka
+`ar-KW` | Arabski (Kuwejt) | Tak | Nie
+`ar-QA` | Arabski (katar) | Tak | Nie
+`ar-SA` | Arabski (Arabia Saudyjska) | Tak | Nie
+`ca-ES` | Kataloński | Tak | Model języka
+`da-DK` | Duński (Dania) | Tak | Model języka
+`de-DE` | Niemiecki (Niemcy) | Tak | Model akustyczny<br>Model języka<br>Wymowa
+`en-AU` | Angielski (Australia) | Tak | Model akustyczny<br>Model języka
+`en-CA` | Angielski (Kanada) | Tak | Model akustyczny<br>Model języka
+`en-GB` | Angielski (Zjednoczone Królestwo) | Tak | Model akustyczny<br>Model języka<br>Wymowa
+`en-IN` | English (India) | Tak | Model akustyczny<br>Model języka
+`en-NZ` | Angielski (Nowa Zelandia) | Tak | Model akustyczny<br>Model języka
+`en-US` | Angielski (Stany Zjednoczone) | Tak | Model akustyczny<br>Model języka<br>Wymowa
+`es-ES` | Hiszpański (Hiszpania) | Tak | Model akustyczny<br>Model języka
+`es-MX` | Hiszpański (Meksyk) | Tak | Model akustyczny<br>Model języka
+`fi-FI` | Fiński (Finlandia) | Tak | Model języka
+`fr-CA` | Francuski (Kanada) | Tak | Model akustyczny<br>Model języka
+`fr-FR` | Francuski (Francja) | Tak | Model akustyczny<br>Model języka<br>Wymowa
+`gu-IN` | Gudżarati (Indyjski) | Tak | Model języka
+`hi-IN` | Hindi (India) | Tak | Model akustyczny<br>Model języka
+`it-IT` | Włoski (Włochy) | Tak | Model akustyczny<br>Model języka<br>Wymowa
+`ja-JP` | Japoński (Japonia) | Tak | Model języka
+`ko-KR` | Koreański (Korea) | Tak | Model języka
+`mr-IN` | Marathi (Indie) | Tak | Model języka
+`nb-NO` | Norweski (Bokmal) (Norwegia) | Tak | Model języka
+`nl-NL` | Holenderski (Holandia) | Tak | Model języka
+`pl-PL` | Polski (Polska) | Tak | Model języka
+`pt-BR` | Portugalski (Brazylia) | Tak | Model akustyczny<br>Model języka<br>Wymowa
+`pt-PT` | Portugalski (Portugalia) | Tak | Model języka
+`ru-RU` | Rosyjski (Rosja) | Tak | Model akustyczny<br>Model języka
+`sv-SE` | Szwedzki (Szwecja) | Tak | Model języka
+`ta-IN` | Tamilski (Indie) | Tak | Model języka
+`te-IN` | Telugu (Indie) | Tak | Nie
 `th-TH` | Tajski (Tajlandia) | Tak | Nie
-`tr-TR` | Turcja | Tak | Tak
+`tr-TR` | Turcja | Tak | Nie
+`zh-CN` | Chiński (mandaryński uproszczony) | Tak | Model akustyczny<br>Model języka
+`zh-HK` | Chiński (kantoński, tradycyjny) | Tak | Model języka
+`zh-TW` | Chiński (mandaryński tajwańskie) | Tak | Model języka
 
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
@@ -102,7 +111,7 @@ Ponad 75 standardowych głosów jest dostępnych w ponad 45 językach i ustawien
 
 Ustawienia regionalne | Język | Płeć | Pełne Mapowanie nazw usług | Krótka nazwa
 -------|----------|---------|----------|----------
-<sup>&dagger;</sup>`ar-EG` | Arabski (Egipt) | Kobieta | "Microsoft Server mowy tekstu na głos mowy (ar np Hoda)" | "AR-EG-Hoda"
+<sup>**1**</sup>`ar-EG` | Arabski (Egipt) | Kobieta | "Microsoft Server mowy tekstu na głos mowy (ar np Hoda)" | "AR-EG-Hoda"
 `ar-SA` | Arabski (Arabia Saudyjska) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (ar-SA Naayf)" | "ar-SA-Naayf"
 `bg-BG` | Bułgarski | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (bg-BG Ivanowi)" | "BG-BG-Ivan"
 `ca-ES` | Kataloński | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (Kanada ES, HerenaRUS)" | "CA-ES-HerenaRUS"
@@ -184,7 +193,7 @@ Ustawienia regionalne | Język | Płeć | Pełne Mapowanie nazw usług | Krótka
 | | | Kobieta | "Microsoft Server mowy Text na głos mowy (zh-TW HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | Mężczyzna | "Microsoft Server mowy Text na głos mowy (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *ar np obsługuje nowoczesnych standardowa arabski (MSA).*
+**1** *AR-EG obsługuje nowoczesne standardowe arabski (MSA).*
 
 > [!NOTE]
 > Możesz użyć pełnego mapowania nazw usług lub krótkiej nazwy głosu w żądaniach syntezy mowy.

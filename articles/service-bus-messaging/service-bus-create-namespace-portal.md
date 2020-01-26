@@ -1,6 +1,6 @@
 ---
-title: Jak utworzyć przestrzeń nazw usługi Service Bus w witrynie Azure Portal | Microsoft Docs
-description: Tworzenie przestrzeni nazw usługi Service Bus za pomocą witryny Azure Portal.
+title: Jak utworzyć Service Bus przestrzeń nazw w Azure Portal
+description: Ten artykuł zawiera instrukcje dotyczące tworzenia przestrzeni nazw Azure Service Bus w Azure Portal.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 02/12/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: a893cdf49792a8df624786804ec0ca4d8f043ec4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6351fade23f1671573964f946005d57671d3cc7
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60714493"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761070"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Tworzenie przestrzeni nazw usługi Service Bus za pomocą witryny Azure Portal
 
@@ -29,9 +29,9 @@ Przestrzeń nazw jest kontenerem określania zakresu dla wszystkich składników
 
 Gratulacje! Utworzono przestrzeń nazw obsługi komunikatów usługi Service Bus.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [przykładami w repozytorium GitHub][github-samples] dla usługi Service Bus. Przedstawiono w nich niektóre bardziej zaawansowane funkcje obsługi komunikatów w usłudze Service Bus.
+Zapoznaj się z [przykładami Service Bus GitHub][github-samples], które pokazują niektóre bardziej zaawansowane funkcje Service Bus komunikatów.
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md
 [github-samples]: https://github.com/Azure/azure-service-bus/tree/master/samples

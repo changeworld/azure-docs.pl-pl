@@ -1,6 +1,6 @@
 ---
-title: Zapisz i dystrybuowanie obrazów w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć fabrykę danych obrazu niestandardowego w usłudze Azure DevTest Labs.
+title: Zapisuj i Dystrybuuj obrazy w Azure DevTest Labs | Microsoft Docs
+description: Ten artykuł zawiera instrukcje dotyczące zapisywania obrazów niestandardowych z już utworzonych maszyn wirtualnych w Azure DevTest Labs.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,55 +10,55 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: feabd055833e5f0d850138af528cce1da82cae49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e5bc8e5041bfe6d95e3ff1a93bb3338ccead5bb4
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622685"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759435"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Zapisywanie obrazów niestandardowych i ich dystrybucja do wielu laboratoriów
-Ten artykuł omawia zawiera kroki, aby zapisać obrazy niestandardowe z już utworzonych maszyn wirtualnych (VM). Omówiono również sposób dystrybucji tych obrazów niestandardowych innych użytkownik usługi DevTest Labs w organizacji.
+Ten artykuł zawiera instrukcje dotyczące zapisywania obrazów niestandardowych z już utworzonych maszyn wirtualnych. Omówiono w nim również sposób dystrybuowania tych obrazów niestandardowych do innych laboratoriów DevTest w organizacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Następujące elementy już powinny być stosowane:
+Następujące elementy powinny być już na miejscu:
 
-- Laboratorium na potrzeby fabrycznie obrazu w usłudze Azure DevTest Labs.
-- Projekt DevOps platformy Azure używanej do zautomatyzowania fabrycznie obrazu.
-- Lokalizacji kodu źródłowego, zawierający skrypty i konfiguracji (w tym przykładzie w tym samym projekcie metodyki DevOps, opisane w poprzednim kroku).
-- Tworzenie definicji do koordynowania zadań programu Azure Powershell.
+- Laboratorium dla fabryki obrazów w Azure DevTest Labs.
+- Projekt usługi Azure DevOps używany do automatyzowania fabryki obrazu.
+- Lokalizacja kodu źródłowego zawierająca skrypty i konfigurację (w naszym przykładzie w tym samym projekcie DevOps wymienionym w poprzednim kroku).
+- Definicja kompilacji służąca do organizowania zadań programu Azure PowerShell.
 
-Jeśli to konieczne, wykonaj czynności opisane w [Uruchom fabrykę obrazu z DevOps platformy Azure](image-factory-set-up-devops-lab.md) utworzyć lub skonfigurować te elementy. 
+W razie potrzeby wykonaj kroki opisane w sekcji [Uruchamianie fabryki obrazu z usługi Azure DevOps](image-factory-set-up-devops-lab.md) , aby utworzyć lub skonfigurować te elementy. 
 
-## <a name="save-vms-as-generalized-vhds"></a>Zapisz maszyny wirtualne jako uogólniony wirtualne dyski twarde
-Zapisz istniejących maszyn wirtualnych jako uogólniony wirtualnych dysków twardych.  Brak przykładowy skrypt programu PowerShell, aby zapisać istniejących maszyn wirtualnych jako uogólniony wirtualnych dysków twardych. Aby go użyć, najpierw Dodaj kolejny **programu Azure Powershell** zadań do definicji kompilacji, jak pokazano na poniższej ilustracji:
+## <a name="save-vms-as-generalized-vhds"></a>Zapisuj maszyny wirtualne jako uogólnione dyski VHD
+Zapisz istniejące maszyny wirtualne jako uogólnione wirtualne dyski twarde.  Istnieje przykładowy skrypt programu PowerShell umożliwiający zapisanie istniejących maszyn wirtualnych jako uogólnionych dysków VHD. Aby go użyć, należy najpierw dodać kolejne zadanie **programu Azure PowerShell** do definicji kompilacji, jak pokazano na poniższej ilustracji:
 
-![Dodaj krok programu Azure PowerShell](./media/save-distribute-custom-images/powershell-step.png)
+![Dodaj krok Azure PowerShell](./media/save-distribute-custom-images/powershell-step.png)
 
-Po utworzeniu nowego zadania na liście, wybierz element, aby firma Microsoft może wypełnić wszystkie szczegóły, jak pokazano na poniższej ilustracji: 
+Gdy masz nowe zadanie na liście, wybierz element, aby można było wypełnić wszystkie szczegóły, jak pokazano na poniższej ilustracji: 
 
 ![Ustawienia programu PowerShell](./media/save-distribute-custom-images/powershell-settings.png)
 
 
-## <a name="generalized-vs-specialized-custom-images"></a>Uogólnione a wyspecjalizowane obrazy niestandardowe
-W [witryny Azure portal](https://portal.azure.com), podczas tworzenia obrazu niestandardowego z maszyny wirtualnej, można wybrać uogólnionego lub wyspecjalizowanego obrazu niestandardowego.
+## <a name="generalized-vs-specialized-custom-images"></a>Uogólnione i wyspecjalizowane obrazy niestandardowe
+W [Azure Portal](https://portal.azure.com)podczas tworzenia obrazu niestandardowego z poziomu maszyny wirtualnej można wybrać opcję utworzenia uogólnionego lub wyspecjalizowanego obrazu niestandardowego.
 
-- **Wyspecjalizowany obraz niestandardowy:** Narzędzie Sysprep/anulowania aprowizacji nie została uruchomiona na maszynie. Oznacza to, że obraz jest dokładną kopię dysku systemu operacyjnego na istniejącej maszynie wirtualnej (Migawka).  Tych samych plików, aplikacji, konta użytkowników, nazwy komputera i tak dalej występują wszystkie podczas tworzenia nowej maszyny za pomocą tego niestandardowego obrazu.
-- **Uogólnionego obrazu niestandardowego:** Narzędzie Sysprep/anulowania aprowizacji zostało uruchomione na maszynie.  Po uruchomieniu tego procesu go usuwa konta użytkowników, usuwa nazwę komputera, usuwa gałęzi rejestru użytkownika, itp., z celem uogólnianie obrazu, dzięki czemu można dostosowywać, tworząc inną maszynę wirtualną.  Uogólnienie maszyny wirtualnej (przez uruchomienie narzędzia sysprep), proces niszczy bieżącej maszyny wirtualnej — przestanie być funkcjonalności.
+- **Wyspecjalizowany obraz niestandardowy:** Na maszynie nie uruchomiono narzędzia Sysprep/deaprowizacji. Oznacza to, że obraz jest dokładną kopią dysku systemu operacyjnego na istniejącej maszynie wirtualnej (migawkę).  Te same pliki, aplikacje, konta użytkowników, nazwy komputerów i tak dalej, są obecne podczas tworzenia nowego komputera na podstawie tego obrazu niestandardowego.
+- **Uogólniony obraz niestandardowy:** Na komputerze uruchomiono polecenie Sysprep/cofanie aprowizacji.  Po uruchomieniu tego procesu program usuwa konta użytkowników, usuwa nazwę komputera, przyłączy gałęzie rejestru użytkownika itp., z celem uogólniania obrazu, aby można je było dostosować podczas tworzenia kolejnej maszyny wirtualnej.  Podczas uogólniania maszyny wirtualnej (przez uruchomienie programu Sysprep) proces niszczy bieżącą maszynę wirtualną — nie będzie już działać.
 
-Skrypt przyciągania obrazów niestandardowych w fabryce obraz zostanie zapisany wirtualne dyski twarde na wszystkie maszyny wirtualne utworzone w poprzednim kroku (zidentyfikowane na podstawie tagu zasobu na platformie Azure).
+Skrypt służący do przyciągania obrazów niestandardowych w fabryce obrazu będzie zapisywać wirtualne dyski twarde dla wszystkich maszyn wirtualnych utworzonych w poprzednim kroku (identyfikowanych na podstawie tagu w zasobie na platformie Azure).
 
-## <a name="update-configuration-for-distributing-images"></a>Zaktualizuj konfigurację do dystrybucji obrazów
-Następnym krokiem w procesie jest wypychanie obrazów niestandardowych z laboratorium fabrycznie obrazu się do innych laboratoria, które ich potrzebują. Jest główną częścią tego procesu **labs.json** pliku konfiguracji. Można znaleźć tego pliku w **konfiguracji** folderu znajdującego się w fabryce obrazu.
+## <a name="update-configuration-for-distributing-images"></a>Aktualizacja konfiguracji do dystrybucji obrazów
+Następnym krokiem w procesie jest wypychanie obrazów niestandardowych z laboratorium fabryki obrazu do innych laboratoriów, które ich potrzebują. Podstawowym elementem tego procesu jest plik konfiguracyjny **Labs. JSON** . Ten plik można znaleźć w folderze **konfiguracji** zawartym w fabryce obrazu.
 
-Istnieją dwa kluczowych zagadnień wymienionych w pliku konfiguracyjnym labs.json:
+Istnieją dwa kluczowe elementy wymienione w pliku konfiguracyjnym Labs. JSON:
 
-- Unikatowa identyfikacja laboratorium określonego miejsca docelowego przy użyciu Identyfikatora subskrypcji i nazwę laboratorium.
-- Określony zestaw obrazów, które powinny zostać przeniesiony do laboratorium jako ścieżki względne do głównej konfiguracji. Można określić całego folderu (na przykład aby pobrać wszystkie obrazy w tym folderze) zbyt.
+- Unikatowa identyfikacja określonego laboratorium docelowego przy użyciu identyfikatora subskrypcji i nazwy laboratorium.
+- Określony zestaw obrazów, który powinien zostać wypychany do laboratorium jako ścieżki względne do katalogu głównego konfiguracji. Możesz również określić cały folder (Aby uzyskać wszystkie obrazy znajdujące się w tym folderze).
 
-Oto przykładowy plik labs.json z dwa laboratoria na liście. W tym przypadku jest rozpowszechniana obrazów do dwóch różnych laboratoriów.
+Oto przykładowy plik Labs. JSON z dwiema wymienionymi laboratoriami. W takim przypadku obrazy są dystrybuowane do dwóch różnych laboratoriów.
 
 ```json
 {
@@ -83,16 +83,16 @@ Oto przykładowy plik labs.json z dwa laboratoria na liście. W tym przypadku je
 ```
 
 ## <a name="create-a-build-task"></a>Tworzenie zadania kompilacji
-Za pomocą tych samych kroków, jak już wspomniano wcześniej w tym artykule dodać kolejny **programu Azure Powershell** zadanie kompilacji dla Ciebie definicji kompilacji. Wypełnij szczegóły, jak pokazano na poniższej ilustracji: 
+Korzystając z tych samych kroków opisanych wcześniej w tym artykule, Dodaj dodatkowe zadanie kompilacji **programu Azure PowerShell** do definicji kompilacji. Wypełnij szczegóły, jak pokazano na poniższej ilustracji: 
 
-![Tworzenie zadań do dystrybucji obrazów](./media/save-distribute-custom-images/second-build-task-powershell.png)
+![Kompiluj zadanie w celu dystrybucji obrazów](./media/save-distribute-custom-images/second-build-task-powershell.png)
 
-Dostępne są następujące parametry: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
+Parametry są następujące: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(DevTestLabName) -maxConcurrentJobs 20`
 
-To zadanie pobiera wszelkich niestandardowych obrazów, istnieje w fabryce obrazu i wypychanie ich do dowolnej labs zdefiniowane w pliku Labs.json.
+To zadanie pobiera wszystkie obrazy niestandardowe obecne w fabryce obrazu i wypycha je do wszystkich laboratoriów zdefiniowanych w pliku Labs. JSON.
 
-## <a name="queue-the-build"></a>Dodaj kompilację do kolejki
-Po zakończeniu zadań kompilacji dystrybucji w kolejce kompilację nowy, aby upewnić się, że wszystko działa. Po pomyślnym zakończeniu kompilacji nowe obrazy niestandardowe będą widoczne w środowisku laboratoryjnym w miejsce docelowe, wprowadzonego w pliku konfiguracji Labs.json.
+## <a name="queue-the-build"></a>Kolejkowanie kompilacji
+Po zakończeniu zadania kompilacji dystrybucji Utwórz kolejkę nowej kompilacji, aby upewnić się, że wszystko działa. Po pomyślnym zakończeniu kompilacji nowe obrazy niestandardowe zostaną wyświetlone w laboratorium docelowym, które wprowadzono w pliku konfiguracyjnym Labs. JSON.
 
-## <a name="next-steps"></a>Kolejne kroki
-W następnym artykule z tej serii aktualizacji za pomocą zasad i oczyszczania kroki przechowywania fabrycznie obrazu: [Ustawić zasady przechowywania i uruchamiania skryptów czyszczenia](image-factory-set-retention-policy-cleanup.md).
+## <a name="next-steps"></a>Następne kroki
+W następnym artykule z serii należy zaktualizować fabrykę obrazu przy użyciu zasad przechowywania i kroków czyszczenia: [Ustaw zasady przechowywania i Uruchom skrypty oczyszczania](image-factory-set-retention-policy-cleanup.md).

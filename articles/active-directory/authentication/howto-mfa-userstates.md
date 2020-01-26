@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763236"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756774"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak wymagać weryfikacji dwuetapowej dla użytkownika
 
@@ -62,9 +62,8 @@ Wszyscy użytkownicy zaczynają *wyłączać*. Po zarejestrowaniu użytkowników
 Wykonaj następujące kroki, aby uzyskać dostęp do strony, na której można wyświetlać Stany użytkowników i zarządzać nimi:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Wyszukaj i wybierz *Azure Active Directory*. Wybierz pozycję **Użytkownicy** > **Wszyscy użytkownicy**.
-3. Wybierz pozycję **Multi-Factor Authentication**.
-   ![wybierz Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
+2. Wyszukaj i wybierz *Azure Active Directory*. Wybierz pozycję **Użytkownicy** , > **Wszyscy użytkownicy**.
+3. Wybierz **Multi-Factor Authentication**. Może być konieczne przewinięcie w prawo, aby wyświetlić tę opcję menu. Wybierz Poniższy przykładowy zrzut ekranu, aby zobaczyć pełne okno Azure Portal i lokalizację menu:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Wybierz Multi-Factor Authentication z okna użytkowników w usłudze Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 4. Zostanie wyświetlona nowa strona wyświetlająca Stany użytkownika.
    ![stanu użytkownika usługi uwierzytelniania wieloskładnikowego — zrzut ekranu](./media/howto-mfa-userstates/userstate1.png)
 

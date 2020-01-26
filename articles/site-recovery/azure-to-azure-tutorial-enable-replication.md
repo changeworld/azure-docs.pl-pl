@@ -2,14 +2,15 @@
 title: Konfigurowanie odzyskiwania po awarii maszyny wirtualnej platformy Azure za pomocą Azure Site Recovery
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w innym regionie świadczenia usługi Azure za pomocą usługi Azure Site Recovery.
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 1/24/2020
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7d78064285057f6abd91c3ca95e01ec86f1a1a39
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169336"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759793"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -37,8 +38,8 @@ W celu ukończenia tego samouczka:
 
 Magazyn można utworzyć w dowolnym regionie, z wyjątkiem regionu źródłowego.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
-1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**. Następnie wybierz pozycję **IT & narzędzia do zarządzania** > **kopia zapasowa i Site Recovery**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**. Następnie wybierz pozycję **IT & narzędzia do zarządzania** > **kopia zapasowa i Site Recovery**.
 1. W polu **Nazwa** wprowadź przyjazną nazwę identyfikującą magazyn. Jeśli masz więcej niż jedną subskrypcję, wybierz jedną z nich.
 1. Utwórz grupę zasobów lub wybierz istniejącą grupę. Określ region platformy Azure. Aby sprawdzić obsługiwane regiony, zobacz sekcję dotyczącą dostępności geograficznej w temacie [Szczegóły cennika usługi Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
 1. Aby uzyskać dostęp do magazynu z pulpitu nawigacyjnego, wybierz pozycję **Przypnij do pulpitu nawigacyjnego** , a następnie wybierz pozycję **Utwórz**.
@@ -75,17 +76,6 @@ Jeśli używasz serwera proxy zapory opartego na adresie URL w celu kontrolowani
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Połączenia ruchu wychodzącego dla zakresów adresów IP
 
 Jeśli używasz sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), utwórz reguły sieciowej grupy zabezpieczeń oparte na znacznikach usługi, aby uzyskać dostęp do usługi Azure Storage, Azure Active Directory, Site Recovery i monitorowania Site Recovery. [Dowiedz się więcej](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
-
-> [!NOTE]
-> Zalecane jest, aby zawsze konfigurować reguły sieciowej grupy zabezpieczeń za pomocą tagów usługi dla dostępu wychodzącego.
-
-Aby sterować łącznością wychodzącą przy użyciu adresów IP, Zezwól na te adresy dla zapór opartych na protokole IP, serwera proxy lub reguł sieciowej grupy zabezpieczeń:
-
-- [Zakresy adresów IP centrum danych platformy Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653)
-- [Zakresy adresów IP centrum danych platformy Windows Azure w Niemczech](https://www.microsoft.com/download/details.aspx?id=54770)
-- [Zakresy adresów IP centrum danych platformy Windows Azure w Chinach](https://www.microsoft.com/download/details.aspx?id=42064)
-- [Zakresy adresów URL i IP dla usługi Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
-- [Adresy IP punktów końcowych usługi Site Recovery](https://aka.ms/site-recovery-public-ips)
 
 ## <a name="verify-azure-vm-certificates"></a>Weryfikowanie certyfikatów maszyn wirtualnych platformy Azure
 
