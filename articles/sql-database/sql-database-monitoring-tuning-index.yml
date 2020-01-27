@@ -1,56 +1,116 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Monitorowanie i dostrajanie
+### YamlMime:Landing
+title: Monitorowanie i dostrajanie wydajności usługi Azure SQL Database
+summary: Usługa Azure SQL Database udostępnia narzędzia ułatwiające zbieranie metryk i informacji diagnostycznych w celu monitorowania bazy danych i zwiększania jej wydajności.
 metadata:
-  title: Azure SQL Database — monitorowanie i dostrajanie
-  meta.description: Learn how to monitor and tune your Azure SQL database.
-  services: sql-database
-  ms.subservice: performance
-  author: jovanpop-msft
-  manager: craigg
+  title: Dokumentacja monitorowania i dostrajania usługi Azure SQL Database
+  description: Usługa Azure SQL Database udostępnia narzędzia ułatwiające zbieranie metryk i informacji diagnostycznych w celu monitorowania bazy danych i zwiększania jej wydajności.
   ms.service: sql-database
-  ms.tgt_pltfrm: na
-  ms.devlang: null
-  ms.topic: overview
-  ms.date: 02/08/2019
-  ms.author: jovanpop
-sections:
-  - items:
-      - type: paragraph
-        text: Usługa Azure SQL Database umożliwia łatwe monitorowanie i dostrajanie obciążenia bazy danych.
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - title: Analiza wydajności zapytań
-            href: /azure/sql-database/sql-database-query-performance
-            html: <p>Łatwo monitoruj użycie zasobów w usłudze Azure SQL Database (w pojedynczej bazie danych lub w puli) przy użyciu wbudowanych funkcji monitorowania w witrynie Azure Portal.</p>
-          - title: Azure SQL Analytics
-            href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json'
-            html: '<p>Monitorowanie w usłudze Azure SQL Analytics pozwala łatwo monitorować z jednego miejsca duży zbiór baz danych, pul elastycznych i wystąpień.</p>'
-          - title: Automatyczne dostrajanie
-            href: /azure/sql-database/sql-database-automatic-tuning
-            html: '<p>Automatyczne dostrajanie pozwala zwiększyć wydajność, umożliwiając automatyczne naprawianie problemów z planem zapytań i generowanie zaleceń dotyczących tego planu oraz tworzenie i usuwanie indeksów</p>'
-          - title: Inteligentna analiza wydajności
-            href: /azure/sql-database/sql-database-intelligent-insights
-            html: '<p>Wbudowana analiza w usłudze Azure SQL Database wykrywa zdarzenia zakłócające działanie, które powodują niską wydajność baz danych, i gdy to możliwe, udostępnia rekomendacje pozwalające im zapobiegać.</p>'
-          - title: Zalecenia dotyczące wydajności
-            href: /azure/sql-database/sql-database-advisor
-            html: '<p>Usługa Azure SQL Database udostępnia rekomendacje, które mogą pomóc zoptymalizować bazę danych w witrynie Azure Portal.</p>'
-          - title: Metryki i rejestrowanie
-            href: /azure/sql-database/sql-database-metrics-diag-logging
-            html: '<p>Przesyłaj strumieniowo dane telemetryczne diagnostyki bazy danych do usługi Azure SQL Analytics, Azure Event Hubs lub Azure Blob Storage w celu uzyskania integracji niestandardowych.</p>'
-  - title: Więcej zasobów
-    items:
-      - type: paragraph
-        text: 'Dowiedz się więcej o dodatkowych funkcjach, które mogą pomóc zoptymalizować wydajność bazy danych.'
-      - type: list
-        style: unordered
-        items:
-          - html: Dowiedz się więcej o <a href="sql-database-monitor-tune-overview.md">monitorowaniu i dostrajaniu</a> w usłudze Azure SQL Database.
-          - html: 'Dowiedz się, jak <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">inteligentne przetwarzanie zapytań</a> może poprawić wydajność Twojej bazy danych.'
-          - html: 'Skonfiguruj <a href="sql-database-operate-query-store.md">magazyn zapytań</a> i korzystaj z niego. Jest to podstawowa technologia serwera SQL Server, która umożliwia uzyskiwanie analiz wydajności zapytań w czasie rzeczywistym.'
-          - html: 'Dowiedz się, jak używać <a href="sql-database-operate-query-store.md">dynamicznych widoków zarządzania</a> do analizowania wydajności obciążenia.'
-          - html: 'Dowiedz się, jak monitorować działania bazy danych za pomocą zdarzeń <a href="sql-database-xevent-db-diff-from-svr.md">XEvent</a>.'
-          - html: 'Dowiedz się, jak <a href="sql-database-performance-guidance.md">ręcznie dostosować bazę danych</a>.'
+  ms.subservice: performance
+  ms.topic: landing-page
+  ms.collection: performance
+  author: CarlRabeler
+  ms.author: carlrab
+  ms.date: 01/24/2020
+  ms.openlocfilehash: 237e9dccb84948b9d60ba6d54367d538b90e1d55
+  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 01/24/2020
+  ms.locfileid: "76715220"
+landingContent:
+- title: Informacje o monitorowaniu i dostrajaniu wydajności
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Monitorowanie i dostrajanie wydajności
+      url: sql-database-monitor-tune-overview.md
+  - linkListType: learn
+    links:
+    - text: Podręcznik monitorowania baz danych na platformie Microsoft Azure
+      url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
+- title: Zbieranie metryk i dzienników
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Rejestrowanie metryk i informacji diagnostycznych
+      url: sql-database-metrics-diag-logging.md
+    - text: Opis dziennika diagnostyki wydajności
+      url: sql-database-intelligent-insights-use-diagnostics-log.md
+- title: Limity zasobów
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Limity zasobów rdzenia wirtualnego dla pojedynczej bazy danych
+      url: sql-database-vcore-resource-limits-single-databases.md
+    - text: Limity zasobów jednostki DTU dla pojedynczej bazy danych
+      url: sql-database-dtu-resource-limits-single-databases.md
+    - text: Limity zasobów rdzenia wirtualnego dla elastycznej puli
+      url: sql-database-vcore-resource-limits-elastic-pools.md
+    - text: Limity zasobów jednostki DTU dla elastycznej puli
+      url: sql-database-dtu-resource-limits-elastic-pools.md
+    - text: Limity zasobów wystąpienia zarządzanego
+      url: sql-database-managed-instance-resource-limits.md
+    - text: Limity zasobów pul wystąpień zarządzanych
+      url: sql-database-instance-pools.md#instance-pools-resource-limitations
+- title: Wprowadzenie — witryna Azure Portal
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Dostrajanie wydajności w witrynie Azure Portal przy użyciu sztucznej inteligencji
+      url: sql-database-performance.md
+  - linkListType: concept
+    links:
+    - text: Zalecenia dotyczące dostrajania w funkcji SQL Database Advisor
+      url: sql-database-advisor.md
+    - text: Szczegółowe informacje o wydajności zapytań
+      url: sql-database-query-performance.md
+    - text: Azure SQL Analytics
+      url: ../azure-monitor/insights/azure-sql.md
+    - text: Wyniki analizy
+      url: sql-database-intelligent-insights.md
+    - text: Wykrywalne wzorce wydajności
+      url: sql-database-intelligent-insights-troubleshoot-performance.md
+    - text: Automatyczne dostrajanie
+      url: sql-database-automatic-tuning.md
+  - linkListType: video
+    links:
+    - text: Wyniki analizy
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
+    - text: Automatyczne dostrajanie
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
+- title: Ręczne dostrajanie wydajności
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wskazówki dotyczące ręcznego dostrajania wydajności
+      url: sql-database-performance-guidance.md
+  - linkListType: concept
+    links:
+    - text: Korzystanie z magazynu zapytań
+      url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
+    - text: Korzystanie z dynamicznych widoków zarządzania
+      url: sql-database-monitoring-with-dmvs.md
+    - text: Korzystanie ze zdarzeń rozszerzonych
+      url: sql-database-xevent-db-diff-from-svr.md
+    - text: Diagnostyka wydajności w hiperskali
+      url: sql-database-hyperscale-performance-diagnostics.md
+- title: Skalowanie zasobów
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Dynamiczne skalowanie zasobów
+      url: sql-database-scale-resources.md
+  - linkListType: concept
+    links:
+    - text: Skalowanie zasobów pojedynczej bazy danych
+      url: sql-database-single-database-scale.md
+    - text: Skalowanie zasobów elastycznej puli
+      url: sql-database-elastic-pool-scale.md
+    - text: Skalowanie zasobów wystąpienia zarządzanego
+      url: sql-database-managed-instance.md#managed-instance-management-operations
+    - text: Skalowanie w górę odczytu
+      url: sql-database-read-scale-out.md
+  - linkListType: video
+    links:
+    - text: Skalowalność dynamiczna
+      url: https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player

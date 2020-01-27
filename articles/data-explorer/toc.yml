@@ -27,9 +27,11 @@
       href: visualize-power-bi.md
 - name: Pojęcia
   items:
-    - name: Omówienie pozyskiwania danych
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
+    - name: Wprowadzanie danych
+      items:
+        - name: Omówienie pozyskiwania danych
+          displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+          href: ingest-data-overview.md
     - name: Omówienie wizualizacji danych
       href: viz-overview.md
     - name: Omówienie zabezpieczeń
@@ -84,18 +86,20 @@
           href: ingest-data-one-click.md
         - name: Pozyskiwanie danych za pośrednictwem przesyłania strumieniowego
           href: ingest-data-streaming.md
+        - name: Używanie zestawów SDK
+          items:
+            - name: Python
+              href: python-ingest-data.md
+            - name: Zestaw SDK dla języka Node
+              href: node-ingest-data.md
+            - name: Zestaw .NET Standard SDK
+              href: net-standard-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
-        - name: Python
-          href: python-ingest-data.md
-        - name: Zestaw SDK dla języka Node
-          href: node-ingest-data.md
-        - name: Zestaw .NET Standard SDK
-          href: net-standard-ingest-data.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: Kopiowanie danych za pomocą usługi Azure Data Factory
-          href: data-factory-load-data.md
+        - name: Sformatowane dane json
+          href: ingest-json-formats.md
     - name: Zapytania o dane
       items:
         - name: Pisanie zapytań
@@ -204,6 +208,8 @@
           items:
             - name: Integracja z usługą Data Factory
               href: data-factory-integration.md
+            - name: Kopiowanie danych za pomocą usługi Azure Data Factory
+              href: data-factory-load-data.md
             - name: Zbiorcze kopiowanie danych za pomocą szablonu usługi Azure Data Factory
               href: data-factory-template.md
             - name: Uruchamianie poleceń sterujących przy użyciu usługi Azure Data Factory
