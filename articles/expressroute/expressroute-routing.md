@@ -196,7 +196,7 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Korea Środkowa | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
 | **Republika Południowej Afryki**| |
 | Północna Republika Południowej Afryki | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
-| Północna Republika Południowej Afryki | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
+| Zachodnia Republika Południowej Afryki | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
 | **Emiraty**| |
 | Północne Zjednoczone Emiraty Arabskie | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
 | Środkowe Zjednoczone Emiraty Arabskie | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |

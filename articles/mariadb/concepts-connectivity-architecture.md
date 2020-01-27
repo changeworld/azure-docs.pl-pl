@@ -56,7 +56,7 @@ W poniższej tabeli wymieniono podstawowe i pomocnicze adresy IP bramy Azure Dat
 | Północno-środkowe stany USA | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | Europa Północna | 40.113.93.91, 191.235.193.75    |
 | Północna Republika Południowej Afryki  | 102.133.152.0    |
-| Północna Republika Południowej Afryki | 102.133.24.0   |
+| Zachodnia Republika Południowej Afryki | 102.133.24.0   |
 | Południowo-środkowe stany USA |13.66.62.124, 23.98.162.75   |
 | Azja Południowo-wschodnia | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | Środkowe Zjednoczone Emiraty Arabskie | 20.37.72.64  |

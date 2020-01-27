@@ -46,7 +46,7 @@ Rysunek 1 — pary regionalne platformy Azure
 | Ameryka Północna |Wschodnie stany USA 2 |Środkowe stany USA |
 | Ameryka Północna |Środkowo-północne stany USA |Środkowo-południowe stany USA |
 | Ameryka Północna |Zachodnie stany USA 2 |Środkowo-zachodnie stany USA 
-| Republika Południowej Afryki | Północna Republika Południowej Afryki | Północna Republika Południowej Afryki
+| Republika Południowej Afryki | Północna Republika Południowej Afryki | Zachodnia Republika Południowej Afryki
 | Zjednoczone Królestwo |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
 | Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | Środkowe Zjednoczone Emiraty Arabskie
 | Departament Obrony Stanów Zjednoczonych |US DoD — wschodnie stany |US DoD — środkowe stany |

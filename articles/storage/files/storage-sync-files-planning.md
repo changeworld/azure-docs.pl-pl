@@ -318,8 +318,8 @@ Aby zapewnić obsługę integracji trybu failover między magazynem geograficzni
 | Korea Południowa         | Korea Środkowa      |
 | Europa Północna        | Europa Zachodnia        |
 | Północno-środkowe stany USA    | Południowo-środkowe stany USA   |
-| Północna Republika Południowej Afryki  | Północna Republika Południowej Afryki  |
-| Północna Republika Południowej Afryki   | Północna Republika Południowej Afryki |
+| Północna Republika Południowej Afryki  | Zachodnia Republika Południowej Afryki  |
+| Zachodnia Republika Południowej Afryki   | Północna Republika Południowej Afryki |
 | Południowo-środkowe stany USA    | Północno-środkowe stany USA   |
 | Indie Południowe         | Indie Środkowe      |
 | Azja Południowo-Wschodnia      | Azja Wschodnia          |

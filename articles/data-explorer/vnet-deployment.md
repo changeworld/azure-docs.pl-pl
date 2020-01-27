@@ -125,7 +125,7 @@ Wdrożenie klastra usługi Azure Eksplorator danych w podsieci pozwala na konfig
 | Północno-środkowe stany USA | 40.81.45.254 |
 | Europa Północna | 52.142.91.221 |
 | Północna Republika Południowej Afryki | 102.133.129.138 |
-| Północna Republika Południowej Afryki | 102.133.0.97 |
+| Zachodnia Republika Południowej Afryki | 102.133.0.97 |
 | Południowo-środkowe stany USA | 20.45.3.60 |
 | Azja Południowo-Wschodnia | 40.119.203.252 |
 | Indie Południowe | 40.81.72.110 |

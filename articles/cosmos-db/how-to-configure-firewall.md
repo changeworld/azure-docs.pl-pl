@@ -40,7 +40,7 @@ Po włączeniu programowo zasad kontroli dostępu IP należy dodać adres IP dla
 |------|----------|
 |Niemcy|51.4.229.218|
 |Chiny|139.217.8.252|
-|Rząd USA|52.244.48.71|
+|US Gov|52.244.48.71|
 |Wszystkie pozostałe regiony|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 Dostęp do Azure Portal można włączyć, wybierając opcję **Zezwalaj na dostęp z Azure Portal** , jak pokazano na poniższym zrzucie ekranu:

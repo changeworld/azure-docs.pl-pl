@@ -160,7 +160,7 @@ Tak. pamięć podręczna platformy Azure dla usługi Redis jest dostępna w chmu
 | Chmura   | Sufiks DNS dla Redis            |
 |---------|---------------------------------|
 | Publiczne  | *.redis.cache.windows.net       |
-| Rząd USA  | *.redis.cache.usgovcloudapi.net |
+| US Gov  | *.redis.cache.usgovcloudapi.net |
 | Niemcy | *.redis.cache.cloudapi.de       |
 | Chiny   | *.redis.cache.chinacloudapi.cn  |
 

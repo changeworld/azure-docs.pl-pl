@@ -92,7 +92,7 @@ Tak. Jest to lista regionalnych punktów końcowych, które mogą być używane 
 | | Europa Zachodnia | `https://westeurope.api.cognitive.microsoft.com` |
 | | Zachodnie stany USA | `https://westus.api.cognitive.microsoft.com` |
 | | Zachodnie stany USA 2 | `https://westus2.api.cognitive.microsoft.com` |
-| Rząd USA | Administracja USA — Wirginia | `https://virginia.api.cognitive.microsoft.us` |
+| US Gov | Administracja USA — Wirginia | `https://virginia.api.cognitive.microsoft.us` |
 | Chiny | Chiny Wschodnie 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Chiny Północne | `https://chinanorth.api.cognitive.azure.cn` |
 
