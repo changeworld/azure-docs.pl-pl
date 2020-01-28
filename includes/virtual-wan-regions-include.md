@@ -21,7 +21,7 @@ Połączenie sieci VPN oparte na lokacjach i wirtualnej architekturze sieci WAN 
 
 |Region geopolityczny | Regiony systemu Azure|
 |---|---|
-| Ameryka Północna | Wschodnie stany USA, Zachodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA 2, Środkowe stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, Środkowo-zachodnie stany USA, Kanada Środkowa, Kanada Wschodnia |
+| Ameryka Północna | Wschodnie stany USA, Zachodnie stany USA, Wschodnie stany USA 2, Zachodnie stany USA 2, Środkowe stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, Zachodnio-środkowe stany USA, Kanada Środkowa, Kanada Wschodnia |
 |Ameryka Południowa |Brazylia Południowa |
 | Europa | Europa Północna, Europa Zachodnia, Francja Południowa, Francja Środkowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo |
 | Azja | Azja Wschodnia, Azja Południowo-Wschodnia |
