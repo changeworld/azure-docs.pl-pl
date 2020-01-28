@@ -178,6 +178,10 @@
           items:
             - name: Backup
               href: backup-azure-afs-automation.md
+            - name: Przywracanie
+              href: restore-afs-powershell.md
+            - name: Zarządzanie
+              href: manage-afs-powershell.md
     - name: Kopia zapasowa bazy danych platformy SAP HANA na maszynie wirtualnej platformy Azure
       items:
         - name: Omówienie
