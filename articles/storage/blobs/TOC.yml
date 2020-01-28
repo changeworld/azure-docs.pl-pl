@@ -619,18 +619,6 @@
       items:
         - name: Analizowanie danych przy użyciu usługi Databricks
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Zarządzanie obiektami blob bez kodu
-          items:
-            - name: PowerShell
-              href: storage-quickstart-blobs-powershell.md
-            - name: Interfejs wiersza polecenia
-              href: storage-quickstart-blobs-cli.md
-        - name: Programowanie z zastosowaniem obiektów blob
-          items:
-            - name: .NET
-              href: storage-quickstart-blobs-dotnet.md
-            - name: Python
-              href: storage-quickstart-blobs-python.md
     - name: Samouczki
       items:
         - name: 'Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu usługi Azure Databricks'
@@ -657,36 +645,12 @@
           href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Najlepsze rozwiązania
           href: data-lake-storage-best-practices.md
-        - name: Poziomy dostępu
-          items:
-            - name: Poziomy dostępu
-              href: storage-blob-storage-tiers.md
-            - name: Zarządzanie cyklem życia magazynu usługi Azure Blob Storage
-              href: storage-lifecycle-management-concepts.md
-        - name: Zabezpieczenia
-          items:
-            - name: Omówienie zabezpieczeń magazynu
-              href: ../blobs/security-recommendations.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Kontrola dostępu
-              href: data-lake-storage-access-control.md
-        - name: Rejestrowanie
-          items:
-            - name: Analityka magazynu
-              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Dzienniki analityki magazynu
-              href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Obsługa zdarzeń
-          href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Kontrola dostępu (katalogi i pliki)
+          href: data-lake-storage-access-control.md
     - name: Instrukcje
       items:
-        - name: Tworzenie kont magazynu i zarządzanie nimi
-          items:
-            - name: Tworzenie konta magazynu dla usługi Data Lake
-              href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Zarządzanie danymi przy użyciu Eksploratora usługi Storage
-              href: ../blobs/data-lake-storage-explorer.md
-            - name: Podnoszenie poziomu konta magazynu
-              href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Tworzenie konta magazynu dla usługi Data Lake
+          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'Zarządzanie katalogami, plikami i listami ACL'
           items:
             - name: .NET
@@ -700,43 +664,7 @@
             - name: Interfejs wiersza polecenia
               href: data-lake-storage-directory-file-acl-cli.md
             - name: Storage Explorer
-              href: data-lake-storage-how-to-set-permissions-storage-explorer.md
-        - name: Transfer danych
-          items:
-            - name: Narzędzie AzCopy
-              items:
-                - name: Rozpoczęcie pracy
-                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Używanie z usługą Azure Data Lake Storage Gen2
-                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Konfigurowanie, optymalizowanie i rozwiązywanie problemów'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Za pomocą polecenia Distcp
-              href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Za pomocą usługi Azure Data Factory
-              href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Zabezpieczanie danych
-          items:
-            - name: Konfigurowanie zapór i sieci wirtualnych
-              href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Konfigurowanie zarządzanych przez klienta kluczy szyfrowania usług
-              items:
-                - name: Portal
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Zarządzanie uprawnieniami dostępu przy użyciu kontroli dostępu opartej na rolach
-              items:
-                - name: Portal
-                  href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Ustawianie uprawnień na poziomie pliku i katalogu
-              href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
+              href: data-lake-storage-explorer.md
         - name: Optymalizowanie wydajności
           items:
             - name: Omówienie
@@ -761,43 +689,16 @@
           href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Dokumentacja
       items:
-        - name: PowerShell
-          href: /powershell/module/azure.storage
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: /cli/azure/storage
         - name: .NET
-          items:
-            - name: Obiekty blob (wersja 12.x)
-              href: /dotnet/api/azure.storage.blobs
-            - name: Przenoszenie danych
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: Dostawca zasobów magazynu
-              href: /dotnet/api/overview/azure/storage/management
+          href: /dotnet/api/azure.storage.files.datalake
         - name: Java
-          items:
-            - name: Obiekty blob (wersja 12.x)
-              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
-            - name: Obiekty blob (wersja 8.x)
-              href: /java/api/com.microsoft.azure.storage.blob
-            - name: Dostawca zasobów magazynu
-              href: /java/api/overview/azure/storage/management
-        - name: JavaScript (wersja 12.x)
-          href: /javascript/api/@azure/storage-blob/
-        - name: Python (wersja 12.x)
-          href: /python/api/azure-storage-blob/
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
+        - name: Python
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
+        - name: Javascript
+          href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
-          items:
-            - name: 'Obiekty blob, kolejki, tabele i pliki'
-              href: /rest/api/storageservices
-            - name: Usługa Data Lake Storage 2. generacji
-              href: /rest/api/storageservices/data-lake-storage-gen2
-            - name: Dostawca zasobów
-              href: /rest/api/storagerp
-            - name: Import/Export
-              href: /rest/api/storageimportexport
-        - name: Szablon usługi Resource Manager
-          displayName: ARM
-          href: /azure/templates/microsoft.storage/allversions
+          href: /rest/api/storageservices/data-lake-storage-gen2
     - name: Zasoby
       items:
         - name: Znane problemy
