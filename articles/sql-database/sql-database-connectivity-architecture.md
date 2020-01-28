@@ -102,7 +102,7 @@ Szczegóły dotyczące sposobu migrowania ruchu do nowych bram w określonych re
 | Północno-środkowe stany USA     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Europa Północna         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Północna Republika Południowej Afryki   | 102.133.152.0      |
-| Północna Republika Południowej Afryki    | 102.133.24.0       |
+| Zachodnia Republika Południowej Afryki    | 102.133.24.0       |
 | Południowo-środkowe stany USA     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | Azja Południowo-wschodnia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Środkowe Zjednoczone Emiraty Arabskie          | 20.37.72.64        |
