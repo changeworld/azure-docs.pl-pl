@@ -342,6 +342,9 @@
           href: how-to-schedule-pipelines.md
         - name: Debugowanie potoków i rozwiązywanie związanych z nimi problemów
           href: how-to-debug-pipelines.md
+        - name: Debugowanie potoków w usłudze Application Insights
+          displayname: 'pipelines, log, monitor'
+          href: how-to-debug-pipelines-application-insights.md
         - name: Potoki platformy Azure dla ciągłej integracji i ciągłego wdrażania
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context

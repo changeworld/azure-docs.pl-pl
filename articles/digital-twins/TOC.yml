@@ -33,7 +33,7 @@
       href: concepts-events-routing.md
     - name: Limity usługi w publicznej wersji zapoznawczej
       href: concepts-service-limits.md
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Najlepsze rozwiązania dotyczące zabezpieczeń
           href: security-best-practices.md
@@ -73,6 +73,8 @@
       href: reference-user-defined-functions-client-library.md
 - name: Zasoby
   items:
+    - name: Opcje wsparcia technicznego i pomocy
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 'Przykłady usługi Azure Digital Twins dla języka C# (.NET)'
       href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
     - name: Interfejs API REST usługi Azure Digital Twins
@@ -93,3 +95,31 @@
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Filmy wideo
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true'
+- name: Powiązane
+  items:
+    - name: Rozwiązania
+      items:
+        - name: Akceleratory rozwiązań IoT
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: /azure/iot-central/iot-support-help
+    - name: Usługi platformy
+      items:
+        - name: Usługa IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: Usługa IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Zestawy SDK usług
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Rozwiązania brzegowe
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Zestawy SDK urządzeń IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

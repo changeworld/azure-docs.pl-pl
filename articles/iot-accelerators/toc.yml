@@ -221,6 +221,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zasoby
   items:
+    - name: Opcje wsparcia technicznego i pomocy
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Zdalne monitorowanie
       items:
         - name: Przewodnik informacyjny dla deweloperów (.NET)
@@ -252,7 +254,7 @@
     - name: Architektura referencyjna
       href: iot-accelerators-architecture-overview.md
       items:
-        - name: Do pobrania
+        - name: Pobierz
           href: 'https://aka.ms/iotrefarchitecture'
         - name: Implementacje partnerów
           items:

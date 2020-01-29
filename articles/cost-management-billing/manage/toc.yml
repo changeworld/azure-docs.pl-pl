@@ -75,6 +75,8 @@
           href: pay-by-invoice.md
         - name: Tworzenie dodatkowych subskrypcji
           href: create-subscription.md
+        - name: Przenoszenie subskrypcji dostawcy usług w chmurze
+          href: transfer-subscriptions-subscribers-csp.md
         - name: Eksportowanie informacji o subskrypcji
           href: export-subscriptions.md
     - name: Zarządzanie subskrypcjami umowy Enterprise Agreement

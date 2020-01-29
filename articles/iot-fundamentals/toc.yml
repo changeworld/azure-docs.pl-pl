@@ -6,7 +6,9 @@
       href: iot-introduction.md
     - name: Usługi i technologie Azure IoT
       href: iot-services-and-technologies.md
-- name: Bezpieczeństwo
+    - name: Opcje wsparcia technicznego i pomocy
+      href: iot-support-help.md
+- name: Zabezpieczenia
   items:
     - name: Zalecenia
       href: security-recommendations.md

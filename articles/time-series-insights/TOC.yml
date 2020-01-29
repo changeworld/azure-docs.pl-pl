@@ -137,6 +137,8 @@
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
 - name: Zasoby
   items:
+    - name: Opcje wsparcia technicznego i pomocy
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Żądania danych klienta
       href: time-series-insights-customer-data-requests.md
     - name: Harmonogram działania dla platformy Azure

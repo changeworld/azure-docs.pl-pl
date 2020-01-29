@@ -110,6 +110,8 @@
           href: connect-azure-stack.md
     - name: Wiele dzierżaw (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: Konfigurowanie kluczy zarządzanych przez klienta (CMK)
+      href: customer-managed-keys.md
     - name: Tworzenie zdarzeń na podstawie alertów
       href: create-incidents-from-alerts.md
     - name: Wyszukiwanie zagrożeń

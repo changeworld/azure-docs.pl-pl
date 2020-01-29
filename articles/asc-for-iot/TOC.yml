@@ -37,6 +37,8 @@
       href: concept-security-module.md
     - name: Alerty zabezpieczeń
       href: concept-security-alerts.md
+    - name: Dostosowywalne alerty zabezpieczeń
+      href: concept-customizable-security-alerts.md
     - name: Zalecenia dotyczące zabezpieczeń
       href: concept-recommendations.md
     - name: Punkt odniesienia

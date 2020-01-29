@@ -503,16 +503,20 @@
               href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
             - name: Nieaktualne alerty usługi Apache Ambari
               href: ./hadoop/apache-ambari-troubleshoot-stale-alerts.md
+            - name: Alerty dotyczące katalogów usługi Apache Ambari
+              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
             - name: Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
               href: ./hdinsight-troubleshoot-failed-cluster.md
             - name: Rozwiązywanie problemów z systemem plików HDFS usługi Apache Hadoop
               href: ./hdinsight-troubleshoot-hdfs.md
             - name: Rozwiązywanie problemów z platformą YARN w usłudze Apache Hadoop
               href: ./hdinsight-troubleshoot-yarn.md
+            - name: Nieprawidłowy błąd BCFile z dziennika platformy Yarn
+              href: ./hadoop/troubleshoot-yarn-log-invalid-bcfile.md
             - name: Rozwiązywanie problemów z plikami usługi Data Lake Store
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
-            - name: Alerty dotyczące katalogów usługi Apache Ambari
-              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
+            - name: Konflikt portów podczas uruchamiania usług
+              href: ./hadoop/troubleshoot-port-conflict.md
 - name: Apache Kafka
   items:
     - name: Omówienie
@@ -870,5 +874,5 @@
           items:
             - name: Problemy z uwierzytelnianiem standardu ESP
               href: ./domain-joined/domain-joined-authentication-issues.md
-            - name: Nie można zalogować się do rozwiązania Zeppelin przy użyciu standardu ESP
-              href: ./domain-joined/domain-joined-zeppelin-signin.md
+            - name: Tworzenie klastra kończy się niepowodzeniem z błędem DomainNotFound
+              href: ./domain-joined/troubleshoot-domainnotfound.md

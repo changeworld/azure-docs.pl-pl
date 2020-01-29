@@ -6,6 +6,10 @@
   items:
     - name: Tworzenie maszyny wirtualnej SQL — portal
       href: provision-sql-server-linux-virtual-machine.md
+- name: Samouczki
+  items:
+    - name: Konfigurowanie grupy dostępności maszyn wirtualnych Azure RHEL za pomocą technologii STONITH
+      href: sql-server-linux-rhel-ha-stonith-tutorial.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure
