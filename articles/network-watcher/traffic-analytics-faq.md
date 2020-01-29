@@ -15,7 +15,7 @@ ms.date: 03/08/2018
 ms.author: kumud
 ms.openlocfilehash: 991bb91c5bc1f6d695d5b363cdb08268f1ee83df
 ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 11/11/2019
 ms.locfileid: "73907100"
@@ -67,11 +67,11 @@ Jeśli nie widzisz żadnych danych wyjściowych, skontaktuj się z administrator
 
 Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
 - Kanada Środkowa
-- Środkowo-zachodnie stany USA
+- Zachodnio-środkowe stany USA
 - Wschodnie stany USA
 - Wschodnie stany USA 2
-- Środkowo-północne stany USA
-- Środkowo-południowe stany USA
+- Północno-środkowe stany USA
+- Południowo-środkowe stany USA
 - Środkowe stany USA
 - Zachodnie stany USA
 - Zachodnie stany USA 2
@@ -90,16 +90,16 @@ Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następ
 - Indie Południowe
 - Japonia Wschodnia
 - Japonia Zachodnia
-- Administracja USA — Wirginia
+- US Gov Wirginia
 - Chiny Wschodnie 2
 
 Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 - Kanada Środkowa
-- Środkowo-zachodnie stany USA
+- Zachodnio-środkowe stany USA
 - Wschodnie stany USA
 - Wschodnie stany USA 2
-- Środkowo-północne stany USA
-- Środkowo-południowe stany USA
+- Północno-środkowe stany USA
+- Południowo-środkowe stany USA
 - Środkowe stany USA
 - Zachodnie stany USA
 - Zachodnie stany USA 2
@@ -115,7 +115,7 @@ Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 - Korea Środkowa
 - Indie Środkowe
 - Japonia Wschodnia
-- Administracja USA — Wirginia
+- US Gov Wirginia
 - Chiny Wschodnie 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Czy sieciowych grup zabezpieczeń mogę włączyć dzienniki przepływów w różnych regionach niż mój obszar roboczy?

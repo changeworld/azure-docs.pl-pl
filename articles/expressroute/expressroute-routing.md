@@ -160,9 +160,9 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Wschodnie stany USA 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
 | Zachodnie stany USA | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
 | Zachodnie stany USA 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
-| Środkowo-zachodnie stany USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
-| Środkowo-północne stany USA | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
-| Środkowo-południowe stany USA | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| Zachodnio-środkowe stany USA | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| Północno-środkowe stany USA | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| Południowo-środkowe stany USA | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
 | Środkowe stany USA | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
 | Kanada Środkowa | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
 | Kanada Wschodnia | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
@@ -235,12 +235,12 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | **Region chmur krajowych platformy Azure**| **Wartość społeczności BGP** |
 | --- | --- |
 | **Administracja USA** |  |
-| Administracja USA — Arizona | 12076:51106 |
+| US Gov Arizona | 12076:51106 |
 | US Gov Iowa | 12076:51109 |
-| Administracja USA — Wirginia | 12076:51105 |
-| Administracja USA — Teksas | 12076:51108 |
-| US DoD — środkowe stany | 12076:51209 |
-| US DoD — wschodnie stany | 12076:51205 |
+| US Gov Wirginia | 12076:51105 |
+| US Gov Teksas | 12076:51108 |
+| US DoD (region środkowy) | 12076:51209 |
+| US DoD (region wschodni) | 12076:51205 |
 
 
 | **Usługa w chmurach krajowych** | **Wartość społeczności BGP** |

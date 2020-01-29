@@ -171,10 +171,10 @@ W publicznej wersji zapoznawczej możliwość publikowania metryk niestandardowy
 |Region platformy Azure |Prefiks regionu punktu końcowego|
 |---|---|
 | **Stany Zjednoczone i Kanada** | |
-|Środkowo-zachodnie stany USA | https:\//westcentralus.monitoring.azure.com/ |
+|Zachodnio-środkowe stany USA | https:\//westcentralus.monitoring.azure.com/ |
 |Zachodnie stany USA 2       | https:\//westus2.monitoring.azure.com/ |
-|Środkowo-północne stany USA | https:\//northcentralus.monitoring.azure.com
-|Środkowo-południowe stany USA| https:\//southcentralus.monitoring.azure.com/ |
+|Północno-środkowe stany USA | https:\//northcentralus.monitoring.azure.com
+|Południowo-środkowe stany USA| https:\//southcentralus.monitoring.azure.com/ |
 |Środkowe stany USA      | https:\//centralus.monitoring.azure.com |
 |Kanada Środkowa | https:\//canadacentral.Monitoring.Azure.Comc
 |Wschodnie stany USA| https:\//eastus.monitoring.azure.com/ |

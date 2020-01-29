@@ -90,17 +90,17 @@ Nazwa regionu wypełniana w polu Lokalizacja zasobu w szczegółach użycia ró�
 |    japanwest             |    Japonia Zachodnia                               |
 |    KoreaCentral          |    Korea Środkowa                            |
 |    KoreaSouth            |    Korea Południowa                              |
-|    northcentralus        |    Środkowo-północne stany USA                      |
+|    northcentralus        |    Północno-środkowe stany USA                      |
 |    northeurope           |    Europa Północna                          |
-|    southcentralus        |    Środkowo-południowe stany USA                      |
+|    southcentralus        |    Południowo-środkowe stany USA                      |
 |    southeastasia         |    Azja Południowo-Wschodnia                        |
 |    SouthIndia            |    Indie Południowe                              |
 |    UKNorth               |    Północne stany USA                              |
 |    uksouth               |    Południowe Zjednoczone Królestwo                              |
 |    UKSouth2              |    Południowe Zjednoczone Królestwo 2                            |
 |    ukwest                |    Zachodnie Zjednoczone Królestwo                               |
-|    USDoDCentral          |    US DoD — środkowe stany                        |
-|    USDoDEast             |    US DoD — wschodnie stany                           |
+|    USDoDCentral          |    US DoD (region środkowy)                        |
+|    USDoDEast             |    US DoD (region wschodni)                           |
 |    USGovArizona          |    USGov Arizona                         |
 |    usgoviowa             |    USGov Iowa                            |
 |    USGovTexas            |    USGov Texas                           |

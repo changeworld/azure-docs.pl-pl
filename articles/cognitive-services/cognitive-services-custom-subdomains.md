@@ -82,17 +82,17 @@ Tak. Jest to lista regionalnych punktów końcowych, które mogą być używane 
 | | Indie Środkowe | `https://centralindia.api.cognitive.microsoft.com` |
 | | Japonia Wschodnia | `https://japaneast.api.cognitive.microsoft.com` |
 | | Korea Środkowa | `https://koreacentral.api.cognitive.microsoft.com` |
-| | Środkowo-północne stany USA | `https://northcentralus.api.cognitive.microsoft.com` |
+| | Północno-środkowe stany USA | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Europa Północna | `https://northeurope.api.cognitive.microsoft.com` |
 | | Północna Republika Południowej Afryki | `https://southafricanorth.api.cognitive.microsoft.com` |
-| | Środkowo-południowe stany USA | `https://southcentralus.api.cognitive.microsoft.com` |
+| | Południowo-środkowe stany USA | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Azja Południowo-Wschodnia | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Południowe Zjednoczone Królestwo | `https://uksouth.api.cognitive.microsoft.com` |
-| | Środkowo-zachodnie stany USA | `https://westcentralus.api.cognitive.microsoft.com` |
+| | Zachodnio-środkowe stany USA | `https://westcentralus.api.cognitive.microsoft.com` |
 | | Europa Zachodnia | `https://westeurope.api.cognitive.microsoft.com` |
 | | Zachodnie stany USA | `https://westus.api.cognitive.microsoft.com` |
 | | Zachodnie stany USA 2 | `https://westus2.api.cognitive.microsoft.com` |
-| US Gov | Administracja USA — Wirginia | `https://virginia.api.cognitive.microsoft.us` |
+| US Gov | US Gov Wirginia | `https://virginia.api.cognitive.microsoft.us` |
 | Chiny | Chiny Wschodnie 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Chiny Północne | `https://chinanorth.api.cognitive.azure.cn` |
 

@@ -31,7 +31,7 @@ Rysunek 1 — pary regionalne platformy Azure
 | Azja |Azja Wschodnia |Azja Południowo-Wschodnia |
 | Australia |Australia Wschodnia |Australia Południowo-Wschodnia |
 | Australia |Australia Środkowa |Australia Środkowa 2 |
-| Brazylia |Brazylia Południowa |Środkowo-południowe stany USA |
+| Brazylia |Brazylia Południowa |Południowo-środkowe stany USA |
 | Kanada |Kanada Środkowa |Kanada Wschodnia |
 | Chiny |Chiny Północne |Chiny Wschodnie|
 | Chiny |Chiny Północne 2 |Chiny Wschodnie 2|
@@ -44,15 +44,15 @@ Rysunek 1 — pary regionalne platformy Azure
 | Korea |Korea Środkowa |Korea Południowa |
 | Ameryka Północna |Wschodnie stany USA |Zachodnie stany USA |
 | Ameryka Północna |Wschodnie stany USA 2 |Środkowe stany USA |
-| Ameryka Północna |Środkowo-północne stany USA |Środkowo-południowe stany USA |
-| Ameryka Północna |Zachodnie stany USA 2 |Środkowo-zachodnie stany USA 
+| Ameryka Północna |Północno-środkowe stany USA |Południowo-środkowe stany USA |
+| Ameryka Północna |Zachodnie stany USA 2 |Zachodnio-środkowe stany USA 
 | Republika Południowej Afryki | Północna Republika Południowej Afryki | Zachodnia Republika Południowej Afryki
 | Zjednoczone Królestwo |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
 | Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | Środkowe Zjednoczone Emiraty Arabskie
-| Departament Obrony Stanów Zjednoczonych |US DoD — wschodnie stany |US DoD — środkowe stany |
-| Rząd USA |Administracja USA — Arizona |Administracja USA — Teksas |
-| Rząd USA |US Gov Iowa |Administracja USA — Wirginia |
-| Rząd USA |Administracja USA — Wirginia |Administracja USA — Teksas |
+| Departament Obrony Stanów Zjednoczonych |US DoD (region wschodni) |US DoD (region środkowy) |
+| Rząd USA |US Gov Arizona |US Gov Teksas |
+| Rząd USA |US Gov Iowa |US Gov Wirginia |
+| Rząd USA |US Gov Wirginia |US Gov Teksas |
 
 Tabela 1 — mapowanie par regionalnych platformy Azure
 

@@ -62,11 +62,11 @@ Analiza ruchu analizuje dzienniki nieprzetworzonych przepływów sieciowej grupy
 Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
 
 * Kanada Środkowa
-* Środkowo-zachodnie stany USA
+* Zachodnio-środkowe stany USA
 * Wschodnie stany USA
 * Wschodnie stany USA 2
-* Środkowo-północne stany USA
-* Środkowo-południowe stany USA
+* Północno-środkowe stany USA
+* Południowo-środkowe stany USA
 * Środkowe stany USA
 * Zachodnie stany USA
 * Zachodnie stany USA 2
@@ -85,18 +85,18 @@ Analizy ruchu można użyć dla sieciowych grup zabezpieczeń w jednym z następ
 * Indie Południowe
 * Japonia Wschodnia 
 * Japonia Zachodnia
-* Administracja USA — Wirginia
+* US Gov Wirginia
 * Chiny Wschodnie 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Obsługiwane regiony: Log Analytics obszary robocze
 
 Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 * Kanada Środkowa
-* Środkowo-zachodnie stany USA
+* Zachodnio-środkowe stany USA
 * Wschodnie stany USA
 * Wschodnie stany USA 2
-* Środkowo-północne stany USA
-* Środkowo-południowe stany USA
+* Północno-środkowe stany USA
+* Południowo-środkowe stany USA
 * Środkowe stany USA
 * Zachodnie stany USA
 * Zachodnie stany USA 2
@@ -114,7 +114,7 @@ Obszar roboczy Log Analytics musi istnieć w następujących regionach:
 * Korea Środkowa
 * Indie Środkowe
 * Japonia Wschodnia
-* Administracja USA — Wirginia
+* US Gov Wirginia
 * Chiny Wschodnie 2
 
 ## <a name="prerequisites"></a>Wymagania wstępne

@@ -32,9 +32,9 @@ Pierwsza część migracji ruchu do nowszych bram jest zaplanowana na **14 paźd
 - Wschodnie stany USA
 - Środkowe stany USA
 - Azja Południowo-Wschodnia
-- Środkowo-południowe stany USA
+- Południowo-środkowe stany USA
 - Europa Północna
-- Środkowo-północne stany USA
+- Północno-środkowe stany USA
 - Japonia Zachodnia
 - Japonia Wschodnia
 - Wschodnie stany USA 2

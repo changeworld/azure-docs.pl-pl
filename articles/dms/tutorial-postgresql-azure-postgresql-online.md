@@ -259,7 +259,7 @@ Aby utworzyć wszystkie obiekty bazy danych, takie jak schematy tabel, indeksy o
 
     Na przykład następujące polecenie tworzy projekt przy użyciu tych parametrów:
 
-   * Lokalizacja: Środkowo-zachodnie stany USA
+   * Lokalizacja: Zachodnio-środkowe stany USA
    * Nazwa grupy zasobów: PostgresDemo
    * Nazwa usługi DMS: PostgresCLI
    * Nazwa projektu: PGMigration

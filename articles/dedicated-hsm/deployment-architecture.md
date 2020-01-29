@@ -33,7 +33,7 @@ Sprzętowych modułów zabezpieczeń są dystrybuowane w centrach danych firmy M
 * Wschodnie stany USA 2
 * Zachodnie stany USA
 * Zachodnie stany USA 2
-* Środkowo-południowe stany USA
+* Południowo-środkowe stany USA
 * Azja Południowo-Wschodnia
 * Azja Wschodnia
 * Europa Północna
