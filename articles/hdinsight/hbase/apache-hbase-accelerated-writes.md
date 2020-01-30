@@ -1,19 +1,18 @@
 ---
 title: Usługa Azure HDInsight — przyspieszone zapisy dla oprogramowania Apache HBase
 description: Zawiera omówienie funkcji rejestrowania przyspieszonego usługi Azure HDInsight, która korzysta z dysków zarządzanych w warstwie Premium w celu poprawy wydajności systemu Apache HBase zapis z wyprzedzeniem.
-services: hdinsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/24/2020
+ms.openlocfilehash: 7165bab96d037f6782bc9aa6767cadd9b35f058c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156934"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764579"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Usługa Azure HDInsight — przyspieszone zapisy dla oprogramowania Apache HBase
 
@@ -33,13 +32,13 @@ Jeśli **RegionServer** ulegnie awarii lub stanie się niedostępna przed opró�
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Funkcja zapisu przyspieszonego w usłudze Azure HDInsight dla platformy Apache HBase
 
-Funkcja przyspieszone zapisy rozwiązuje problem z wyższymi opóźnieniami zapisu spowodowanymi przez użycie dzienników zapisu z wyprzedzeniem, które znajdują się w magazynie w chmurze.  Funkcja przyspieszone zapisy dla klastrów usługi HDInsight Apache HBase dołącza dyski zarządzane dysk SSD w warstwie Premium do każdego RegionServer (węzeł procesu roboczego). Dzienniki zapisu z wyprzedzeniem są następnie zapisywane w systemie plików Hadoop (HDFS) zainstalowanym na tych dyskach w warstwie Premium, a nie w magazynie w chmurze.  Dyski zarządzane w warstwie Premium używają dysków półprzewodnikowych (dysków SSD) i oferują doskonałą wydajność we/wy dzięki odporności na uszkodzenia.  W przeciwieństwie do dysków niezarządzanych, jeśli jedna jednostka magazynu ulegnie awarii, nie wpłynie to na inne jednostki magazynowe w tym samym zestawie dostępności.  W związku z tym dyski zarządzane zapewniają małe opóźnienia zapisu i lepszą odporność aplikacji. Aby dowiedzieć się więcej o dyskach zarządzanych przez platformę Azure, zobacz [wprowadzenie do usługi Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md). 
+Funkcja przyspieszone zapisy rozwiązuje problem z wyższymi opóźnieniami zapisu spowodowanymi przez użycie dzienników zapisu z wyprzedzeniem, które znajdują się w magazynie w chmurze.  Funkcja przyspieszone zapisy dla klastrów usługi HDInsight Apache HBase dołącza dyski zarządzane dysk SSD w warstwie Premium do każdego RegionServer (węzeł procesu roboczego). Dzienniki zapisu z wyprzedzeniem są następnie zapisywane w systemie plików Hadoop (HDFS) zainstalowanym na tych dyskach w warstwie Premium, a nie w magazynie w chmurze.  Dyski zarządzane w warstwie Premium używają dysków półprzewodnikowych (dysków SSD) i oferują doskonałą wydajność we/wy dzięki odporności na uszkodzenia.  W przeciwieństwie do dysków niezarządzanych, jeśli jedna Jednostka magazynowa ulegnie awarii, nie wpłynie to na inne jednostki magazynowe w tym samym zestawie dostępności.  W związku z tym dyski zarządzane zapewniają małe opóźnienia zapisu i lepszą odporność aplikacji. Aby dowiedzieć się więcej o dyskach zarządzanych przez platformę Azure, zobacz [wprowadzenie do usługi Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md).
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Jak włączyć przyspieszone zapisy dla HBase w usłudze HDInsight
 
-Aby utworzyć nowy klaster HBase z funkcją szybsze zapisy, wykonaj kroki opisane w temacie [Konfigurowanie klastrów w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) , dopóki nie zostanie osiągnięty **krok 3, magazyn**. W obszarze **ustawienia magazynu metadanych**kliknij pole wyboru obok pozycji **Włącz przyspieszone operacje zapisu**. Następnie kontynuuj pracę z pozostałymi krokami tworzenia klastra.
+Aby utworzyć nowy klaster HBase z funkcją szybsze zapisy, wykonaj kroki opisane w temacie [Konfigurowanie klastrów w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) , dopóki nie zostanie osiągnięty **krok 3, magazyn**. W obszarze **ustawienia magazynu metadanych**zaznacz pole wyboru obok pozycji **Włącz przyspieszone operacje zapisu HBase**. Następnie kontynuuj pracę z pozostałymi krokami tworzenia klastra.
 
-![Włącz opcję szybsze zapisy dla usługi HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
+![Włącz opcję szybsze zapisy dla usługi HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
 
 ## <a name="other-considerations"></a>Inne zagadnienia
 
@@ -55,7 +54,7 @@ flush 'mytable'
 disable 'mytable'
 ```
 
-Postępuj zgodnie z podobnymi krokami podczas skalowania w dół klastra: Opróżniaj tabele i Wyłącz tabele, aby zatrzymać przychodzące dane. Nie można skalować klastra do wartości mniejszej niż trzy węzły.
+Postępuj zgodnie z podobnymi krokami podczas skalowania w dół klastra: Opróżniaj tabele i Wyłącz tabele, aby zatrzymać przychodzące dane. Nie można skalować klastra do mniejszej liczby niż trzy węzły.
 
 Wykonanie tych kroków zapewni pomyślne skalowanie i uniknięcie możliwości namenode do trybu awaryjnego z powodu plików replikowanych lub tymczasowych.
 

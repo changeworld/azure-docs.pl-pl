@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Na tej stronie opisano, jak używać funkcji przechwytywania pakietów Network Watcher z Capanalysis do wizualizacji wzorców ruchu do i z maszyn wirtualnych.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 3baf73eed09e6880820952b8457526b6c21dd83b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: f36db28b58cd57b6407019b378a82632aa6c6228
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277759"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840659"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Wizualizowanie wzorców ruchu sieciowego do i z maszyn wirtualnych za pomocą narzędzi open source
 
@@ -69,13 +66,13 @@ CapAnalysis oferuje różne opcje wizualizacji przechwytywania pakietów, z któ
 
     ![Przegląd protokołu capanalysis][6]
 
-1. Statystyki
+1. Statystyka
 
     To okienko umożliwia wyświetlanie statystyk ruchu sieciowego — liczba bajtów wysłanych i odebranych z źródłowych i docelowych adresów IP, przepływy dla każdego źródłowego i docelowego adresu IP, protokół używany do różnych przepływów oraz czas trwania przepływów.
 
     ![Statystyka capanalysis][7]
 
-1. geomap
+1. Geomap
 
     To okienko zawiera widok mapy ruchu sieciowego, dzięki czemu kolory są skalowane do wielkości ruchu z każdego kraju/regionu. Można wybrać wyróżnione kraje/regiony, aby wyświetlić dodatkowe statystyki przepływu, takie jak część danych wysłanych i odebranych z adresów IP w tym kraju/regionie.
 

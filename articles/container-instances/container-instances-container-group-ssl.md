@@ -3,22 +3,22 @@ title: Włącz protokół SSL w grupie kontenerów
 description: Utwórz punkt końcowy SSL lub TLS dla grupy kontenerów działającej w Azure Container Instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 7578ad6f8c451694a90dde00b74bf2e8c6c61109
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483475"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773076"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Włączanie punktu końcowego protokołu SSL w grupie kontenerów
 
 W tym artykule pokazano, jak utworzyć [grupę kontenerów](container-instances-container-groups.md) z kontenerem aplikacji i kontenerem przyczepki z uruchomionym dostawcą protokołu SSL. Konfigurując grupę kontenerów za pomocą oddzielnego punktu końcowego protokołu SSL, możesz włączyć połączenia SSL dla aplikacji bez konieczności zmiany kodu aplikacji.
 
-Należy skonfigurować grupę kontenerów składającą się z dwóch kontenerów:
+Należy skonfigurować przykładową grupę kontenerów składającą się z dwóch kontenerów:
 * Kontener aplikacji, w którym działa prosta aplikacja internetowa korzystająca z publicznego obrazu programu Microsoft [ACI-HelloWorld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) . 
 * Kontener przyczep z uruchomionym publicznym obrazem [Nginx](https://hub.docker.com/_/nginx) skonfigurowany do korzystania z protokołu SSL. 
 
-W tym przykładzie grupa kontenerów uwidacznia tylko port 443 dla Nginx z jego publicznym adresem IP. Nginx przekierowuje żądania HTTPS do aplikacji sieci Web towarzyszącej, która nasłuchuje wewnętrznie na porcie 80. Możesz dostosować przykład dla aplikacji kontenera, które nasłuchują na innych portach.
+W tym przykładzie grupa kontenerów uwidacznia tylko port 443 dla Nginx z jego publicznym adresem IP. Nginx przekierowuje żądania HTTPS do aplikacji sieci Web towarzyszącej, która nasłuchuje wewnętrznie na porcie 80. Możesz dostosować przykład dla aplikacji kontenera, które nasłuchują na innych portach. Zobacz [następne kroki](#next-steps) , aby poznać inne podejścia do włączenia protokołu SSL w grupie kontenerów.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -38,7 +38,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 Postępuj zgodnie z monitami, aby dodać informacje identyfikacyjne. W polu Nazwa pospolita wprowadź nazwę hosta skojarzoną z certyfikatem. Po wyświetleniu monitu o hasło naciśnij klawisz ENTER bez wpisywania, aby pominąć Dodawanie hasła.
 
-Uruchom następujące polecenie, aby utworzyć certyfikat z podpisem własnym (plik CRT) z żądania certyfikatu. Na przykład:
+Uruchom następujące polecenie, aby utworzyć certyfikat z podpisem własnym (plik CRT) z żądania certyfikatu. Przykład:
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
@@ -235,4 +235,10 @@ W tym artykule pokazano, jak skonfigurować kontener Nginx, aby umożliwić nawi
 
 W tym artykule jest używany Nginx w przyczepie, można użyć innego dostawcy SSL, takiego jak [Caddy](https://caddyserver.com/).
 
-Innym podejściem do włączenia protokołu SSL w grupie kontenerów jest wdrożenie grupy w [sieci wirtualnej platformy Azure](container-instances-vnet.md) za pomocą [usługi Azure Application Gateway](../application-gateway/overview.md). Bramę można skonfigurować jako punkt końcowy protokołu SSL. Zapoznaj się z przykładowym [szablonem wdrożenia](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) , który można dostosować, aby umożliwić zakończenie protokołu SSL na bramie.
+Jeśli grupa kontenerów jest wdrażana w [sieci wirtualnej platformy Azure](container-instances-vnet.md), można rozważyć inne opcje, aby włączyć punkt końcowy protokołu SSL dla wystąpienia kontenera zaplecza, w tym:
+
+* [serwery proxy usługi Azure Functions](../azure-functions/functions-proxies.md)
+* [Azure API Management](../api-management/api-management-key-concepts.md)
+* [Azure Application Gateway](../application-gateway/overview.md)
+
+Aby użyć bramy aplikacji, zobacz przykładowy [szablon wdrożenia](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).

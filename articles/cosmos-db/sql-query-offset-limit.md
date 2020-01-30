@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732590"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771570"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Klauzula limitu przesunięcia w Azure Cosmos DB
 
@@ -37,7 +37,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Uwagi
   
-  W klauzuli LIMIT przesunięcia są wymagane zarówno licznik przesunięcia, jak i liczba LIMITów. Jeśli zostanie użyta opcjonalna klauzula `ORDER BY`, zestaw wyników zostanie wytworzony przez przeskoczenie na uporządkowane wartości. W przeciwnym razie zapytanie zwróci ustaloną kolejność wartości. Ta klauzula jest teraz obsługiwana w przypadku zapytań w ramach jednej partycji, a także zapytań między partycjami.
+  W klauzuli `OFFSET LIMIT` są wymagane zarówno licznik `OFFSET`, jak i liczba `LIMIT`. Jeśli zostanie użyta opcjonalna klauzula `ORDER BY`, zestaw wyników zostanie wytworzony przez przeskoczenie na uporządkowane wartości. W przeciwnym razie zapytanie zwróci ustaloną kolejność wartości.
+
+  Opłata za obiekt RU zapytania z `OFFSET LIMIT` zwiększy się w miarę zwiększania się liczby przesunięć. W przypadku zapytań mających wiele stron wyników zwykle zalecamy użycie tokenów kontynuacji. Tokeny kontynuacji są "zakładkami" dla miejsca, w którym zapytanie może zostać później wznowione. Jeśli używasz `OFFSET LIMIT`, nie ma "zakładki". Jeśli chcesz zwrócić następną stronę zapytania, trzeba zacząć od początku.
+  
+  Należy używać `OFFSET LIMIT` dla przypadków, gdy chcesz całkowicie pominąć dokumenty i zapisać zasoby klienta. Na przykład należy użyć `OFFSET LIMIT`, jeśli chcesz przejść do wyniku zapytania 1000th i nie ma potrzeby wyświetlania wyników od 1 do 999. W zapleczu `OFFSET LIMIT` nadal ładuje każdy dokument, w tym te, które zostały pominięte. Zalety wydajności są oszczędnością w zasobach klientów, unikając przetwarzania dokumentów, które nie są zbędne.
 
 ## <a name="examples"></a>Przykłady
 

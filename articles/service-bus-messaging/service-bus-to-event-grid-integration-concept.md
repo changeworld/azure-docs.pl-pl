@@ -1,10 +1,9 @@
 ---
 title: Omówienie integracji usług Azure Service Bus i Event Grid | Microsoft Docs
-description: Opis integracji wiadomości usługi Service Bus z usługą Event Grid
+description: Ten artykuł zawiera opis sposobu, w jaki program Azure Service Bus Messaging integruje się z Azure Event Grid.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 5d4ece6b631882200c6f98f6de5daa543fdf7ce4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072132"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773481"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Omówienie integracji usług Azure Service Bus i Event Grid
 
@@ -39,7 +38,7 @@ Do włączenia tej funkcji potrzebne są następujące elementy:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Weryfikowanie dostępu współautora
-Przejdź do przestrzeni nazw usługi Service Bus, a następnie wybierz opcję **Kontrola dostępu (IAM)** i kartę **Przypisania ról**. Sprawdź, czy masz dostęp współautora do przestrzeni nazw. 
+Przejdź do przestrzeni nazw Service Bus, a następnie wybierz pozycję **Kontrola dostępu (IAM)** , a następnie wybierz pozycję Karta **przypisania ról** . Sprawdź, czy masz dostęp współautora do przestrzeni nazw. 
 
 ### <a name="events-and-event-schemas"></a>Zdarzenia i schematy zdarzeń
 
@@ -153,7 +152,7 @@ namespaceid=$(az resource show --namespace Microsoft.ServiceBus --resource-type 
 az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" --endpoint "<your_function_url>" --subject-ends-with "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-Jeśli używasz powłoki BASH 
+Jeśli używasz BASH 
 
 ## <a name="powershell-instructions"></a>Instrukcje dotyczące programu PowerShell
 
@@ -175,7 +174,7 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 
 W tym miejscu możesz eksplorować inne opcje instalacji lub przetestować przepływające zdarzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Pobierz [przykłady](service-bus-to-event-grid-integration-example.md) dla usług Service Bus i Event Grid.
 * Dowiedz się więcej o usłudze [Event Grid](https://docs.microsoft.com/azure/event-grid/).

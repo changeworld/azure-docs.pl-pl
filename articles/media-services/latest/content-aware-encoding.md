@@ -1,5 +1,5 @@
 ---
-title: Ustawienie wstępne dla kodowania z obsługą zawartości — Azure Media Services |
+title: Ustawienie wstępne dla kodowania z obsługą zawartości — Azure Media Services
 description: W tym artykule omówiono kodowanie oparte na zawartości w Microsoft Azure Media Services v3.
 services: media-services
 documentationcenter: ''
@@ -9,51 +9,55 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 01/24/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 34b4386d536a9845c8a48e7e54612548367b52bc
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759350"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772082"
 ---
-# <a name="a-preset-for-content-aware-encoding"></a>Ustawienie wstępne dla kodowania obsługującego zawartość
+# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Użyj ustawienia wstępnego kodowania obsługującego zawartość, aby znaleźć optymalną szybkość transmisji bitów dla danego rozwiązania
 
-Aby przygotować zawartość do dostarczenia przez [szybkość przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), należy zakodować wideo przy użyciu wielu szybkości transmisji bitów (wysokiej lub niskiej). W celu zapewnienia płynnej obniżenia jakości szybkość transmisji bitów jest niższa, ponieważ jest to rozdzielczość wideo. W wyniku tego jest to nazywane drabinem kodowania — tabelę rozdzielczości i szybkości transmisji bitów; Zobacz [wbudowane ustawienia wstępne kodowania](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)Media Services.
+Aby przygotować zawartość do dostarczenia przez [szybkość przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), należy zakodować wideo przy użyciu wielu szybkości transmisji bitów (wysokiej lub niskiej). Zapewnia to płynne obniżenie jakości, ponieważ zmniejsza się szybkość transmisji bitów, więc jest to rozdzielczość wideo. Takie wiele kodowania bitów korzysta z tak zwanej drabinki kodowania — tabeli rozdzielczości i szybkości transmisji bitów, zapoznaj się z Media Services [wbudowanych ustawień wstępnych kodowania](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
-## <a name="overview"></a>Przegląd
+Należy pamiętać o przetwarzanej zawartości i dostosowaniu i dostosowywaniu drabiny kodowania do złożoności poszczególnych filmów wideo. W każdej rozdzielczości istnieje szybkość transmisji bitów, która nie jest Perceptive — koder działa z optymalną szybkością transmisji bitów. Następnym poziomem optymalizacji jest wybranie rozwiązań opartych na zawartości — na przykład wideo prezentacji programu PowerPoint nie jest korzystne w przypadku przechodzenia poniżej 720. Następnie można wykonać zadanie kodera w celu zoptymalizowania ustawień dla każdego zrzutu w filmie wideo. 
 
-Zainteresowanie przenoszonym poza wstępnie ustawionym podejściem do wszystkich filmów wideo wzrosło po Netflix opublikowaniu [blogu](https://medium.com/netflix-techblog/per-title-encode-optimization-7e99442b62a2) w grudniu 2015. Od tego momentu w portalu Marketplace wydano wiele rozwiązań dla kodowania obsługującego zawartość. Zobacz [ten artykuł](https://www.streamingmedia.com/Articles/Editorial/Featured-Articles/Buyers-Guide-to-Per-Title-Encoding-130676.aspx) , aby zapoznać się z omówieniem. Pomysłem jest uwzględnienie zawartości — Aby dostosować lub dopasować drabinkę kodowania do złożoności poszczególnych filmów wideo. W każdej rozdzielczości istnieje szybkość transmisji bitów, która nie jest Perceptive — koder działa z optymalną szybkością transmisji bitów. Następnym poziomem optymalizacji jest wybranie rozwiązań opartych na zawartości — na przykład wideo prezentacji programu PowerPoint nie jest korzystne w przypadku przechodzenia poniżej 720. Następnie można wykonać zadanie kodera w celu zoptymalizowania ustawień dla każdego zrzutu w filmie wideo. Netflix to [podejście](https://medium.com/netflix-techblog/optimized-shot-based-encodes-now-streaming-4b9464204830) w 2018.
+[Adaptacyjne ustawienia wstępne przesyłania strumieniowego](autogen-bitrate-ladder.md) firmy Microsoft częściowo odnoszą się do problemu zmienności jakości i rozdzielczości źródłowych filmów wideo. Nasi klienci mają zróżnicowaną zawartość, kilka o godzinie 1080p, inne w firmie 720, a kilka w SD i niższych rozdzielczościach. Ponadto nie cała zawartość źródłowa to Mezzanine o wysokiej jakości — od kliszy i TV Studios. Adaptacyjne ustawienie wstępne przesyłania strumieniowego eliminuje te problemy, upewniając się, że Drabinka szybkości transmisji nigdy nie przekracza rozdzielczości ani średniej szybkości transmisji bitów danych wejściowych Mezzanine. Jednak to ustawienie wstępne nie bada właściwości źródłowych niż rozdzielczość i szybkość transmisji bitów.
 
-Na początku 2017 firma Microsoft udostępniła [adaptacyjne ustawienie wstępne przesyłania strumieniowego](autogen-bitrate-ladder.md) w celu rozwiązania problemu zmienności jakości i rozdzielczości źródłowych filmów wideo. Nasi klienci mają zróżnicowaną zawartość, kilka o godzinie 1080p, inne w firmie 720, a kilka w SD i niższych rozdzielczościach. Ponadto nie cała zawartość źródłowa była wysoka jakość Mezzanine z filmu lub Studios TV. Adaptacyjne ustawienie wstępne przesyłania strumieniowego eliminuje te problemy, upewniając się, że Drabinka szybkości transmisji nigdy nie przekracza rozdzielczości ani średniej szybkości transmisji bitów danych wejściowych Mezzanine.
+## <a name="the-content-aware-encoding"></a>Kodowanie z uwzględnieniem zawartości 
 
-Nowe ustawienie wstępne kodowania obsługujące zawartość rozszerza ten mechanizm przez włączenie logiki niestandardowej, która umożliwia koderowi wyszukiwanie optymalnej szybkości transmisji bitów dla danego rozwiązania, ale bez konieczności przeprowadzania obszernej analizy obliczeniowej. To ustawienie wstępne tworzy zestaw grupę GOP wyrównanych pliki MP4. Mając daną zawartość wejściową, usługa wykonuje wstępną lekkie analizy zawartości wejściowej i używa wyników do określenia optymalnej liczby warstw, odpowiedniej szybkości transmisji bitów i ustawień rozdzielczości do dostarczenia przez adaptacyjne przesyłanie strumieniowe. To ustawienie wstępne jest szczególnie przydatne w przypadku wideo z niską i średnią złożonością, gdzie pliki wyjściowe będą mieć mniejszą szybkość transmisji bitów niż adaptacyjne ustawienie wstępne przesyłania strumieniowego, ale z jakością, która nadal zapewnia dobre doświadczenie dla osób przeglądających. Dane wyjściowe będą zawierać pliki MP4 z przeplotem wideo i audio
+Ustawienia wstępne kodowania z obsługą zawartości rozszerzają mechanizm przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów, włączając logikę niestandardową, która umożliwia koderowi wyszukiwanie optymalnej szybkości transmisji bitów dla danego rozwiązania, ale bez konieczności przeprowadzania obszernej analizy obliczeniowej. To ustawienie wstępne tworzy zestaw grupę GOP wyrównanych pliki MP4. Mając daną zawartość wejściową, usługa wykonuje wstępną lekkie analizy zawartości wejściowej i używa wyników do określenia optymalnej liczby warstw, odpowiedniej szybkości transmisji bitów i ustawień rozdzielczości do dostarczenia przez adaptacyjne przesyłanie strumieniowe. To ustawienie wstępne jest szczególnie przydatne w przypadku wideo z niską i średnią złożonością, gdzie pliki wyjściowe będą mieć mniejszą szybkość transmisji bitów niż adaptacyjne ustawienie wstępne przesyłania strumieniowego, ale z jakością, która nadal zapewnia dobre doświadczenie dla osób przeglądających. Dane wyjściowe będą zawierać pliki MP4 z przeplotem wideo i audio
 
-Zapoznaj się z poniższymi przykładowymi wykresami pokazującymi porównanie przy użyciu metryk jakości, takich jak [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) i [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Źródło zostało utworzone przez połączenie krótkich klipów o wysokiej złożoności z filmów i programów telewizyjnych, które są przeznaczone do podkreślania kodera. Zgodnie z definicją, to ustawienie wstępne daje wyniki, które różnią się w zależności od zawartości — oznacza to również, że w przypadku niektórych zawartości może nie być znacząca Redukcja szybkości transmisji bitów lub poprawy jakości.
+Poniższe przykładowe wykresy przedstawiają porównanie przy użyciu metryk jakości, takich jak [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) i [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Źródło zostało utworzone przez połączenie krótkich klipów o wysokiej złożoności z filmów i programów telewizyjnych, które są przeznaczone do podkreślania kodera. Zgodnie z definicją, to ustawienie wstępne daje wyniki, które różnią się w zależności od zawartości — oznacza to również, że w przypadku niektórych zawartości może nie być znacząca Redukcja szybkości transmisji bitów lub poprawy jakości.
 
-![Krzywa stopnia zniekształcenia (RD) przy użyciu PSNR](media/cae-experimental/msrv1.png)
+![Krzywa stopnia zniekształcenia (RD) przy użyciu PSNR](media/content-aware-encoding/msrv1.png)
 
 **Rysunek 1: Krzywa stopnia zniekształcenia (RD) używająca metryki PSNR dla źródła o dużej złożoności**
 
-![Krzywa stopnia zniekształcenia (RD) przy użyciu VMAF](media/cae-experimental/msrv2.png)
+![Krzywa stopnia zniekształcenia (RD) przy użyciu VMAF](media/content-aware-encoding/msrv2.png)
 
 **Rysunek 2: Krzywa stopnia zniekształcenia (RD) używająca metryki VMAF dla źródła o dużej złożoności**
 
 Poniżej znajdują się wyniki dla innej kategorii zawartości źródłowej, w której koder był w stanie stwierdzić, że dane wejściowe były słabej jakości (wiele artefaktów kompresji z powodu niskiej szybkości transmisji bitów). Należy pamiętać, że w przypadku ustawienia wstępnego z uwzględnieniem zawartości koder zdecydował się utworzyć tylko jedną warstwę wyjściową — z niską szybkością transmisji bitów, dzięki czemu większość klientów będzie mogła odtworzyć strumień bez zawieszania się.
 
-![Krzywa usług pulpitu zdalnego przy użyciu PSNR](media/cae-experimental/msrv3.png)
+![Krzywa usług pulpitu zdalnego przy użyciu PSNR](media/content-aware-encoding/msrv3.png)
 
 **Rysunek 3: Krzywa usług pulpitu zdalnego wykorzystująca PSNR dla danych wejściowych o niskiej jakości (o godzinie 1080p)**
 
-![Krzywa usług pulpitu zdalnego przy użyciu VMAF](media/cae-experimental/msrv4.png)
+![Krzywa usług pulpitu zdalnego przy użyciu VMAF](media/content-aware-encoding/msrv4.png)
 
 **Rysunek 4: Krzywa usług pulpitu zdalnego wykorzystująca VMAF dla danych wejściowych o niskiej jakości (o godzinie 1080p)**
 
-## <a name="use-the-experimental-preset"></a>Użyj eksperymentalnego ustawienia wstępnego
+## <a name="how-to-use-the-content-aware-encoding-preset"></a>Jak używać ustawień predefiniowanych kodowania opartych na zawartości 
 
-Można tworzyć przekształcenia, które używają tego ustawienia wstępnego w następujący sposób. W przypadku korzystania z [tego](stream-files-tutorial-with-api.md)samouczka można zaktualizować kod w następujący sposób:
+Można tworzyć przekształcenia, które używają tego ustawienia wstępnego w następujący sposób. 
+
+> [!TIP]
+> Zobacz sekcję [następne kroki](#next-steps) , aby zapoznać się z samouczkami, które korzystają z danych wyjściowych przekształcenia. Element zawartości wyjściowej można dostarczyć z Media Services punktów końcowych przesyłania strumieniowego w protokołach, takich jak MPEG-myślnik i HLS (jak pokazano w samouczkach).
+
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -72,8 +76,12 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> Algorytmy bazowe podlegają dodatkowym ulepszeniom. W miarę upływu czasu do logiki używanej do generowania drabin o szybkości transmisji bitów można wprowadzać zmiany, które mają na celu zapewnienie niezawodnego algorytmu i dostosowuje się do szerokiej gamy warunków wprowadzania. Zadania kodowania korzystające z tego ustawienia wstępnego będą nadal rozliczane na podstawie minut danych wyjściowych, a element zawartości wyjściowej można dostarczyć z naszych punktów końcowych przesyłania strumieniowego w protokołach, takich jak ŁĄCZNIKi i HLS.
+> Opłaty za zadania kodowania przy użyciu wstępnie zdefiniowanego `ContentAwareEncoding` są rozliczane na podstawie minut danych wyjściowych. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po poznaniu tej nowej opcji optymalizacji filmów wideo Zapraszamy Cię do wypróbowania. Możesz wysłać nam swoją opinię za pomocą linków na końcu tego artykułu.
+* [Samouczek: przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo z Media Services v3](stream-files-tutorial-with-api.md)
+* [Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — REST](stream-files-tutorial-with-rest.md)
+* [Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — interfejs wiersza polecenia](stream-files-cli-quickstart.md)
+* [Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — .NET](stream-files-dotnet-quickstart.md)
+* [Samouczek: kodowanie pliku zdalnego na podstawie adresu URL i strumieniowego wideo — Node. js](stream-files-nodejs-quickstart.md)

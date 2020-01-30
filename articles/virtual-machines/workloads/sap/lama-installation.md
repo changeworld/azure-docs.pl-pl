@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978073"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842439"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Łącznik SAP LaMa dla platformy Azure
 
@@ -87,7 +87,7 @@ Przeczytaj także [Portal pomocy SAP dla oprogramowania SAP Lama](https://help.s
 1. Kliknij pozycję Nowa rejestracja
 1. Wprowadź nazwę i kliknij pozycję Zarejestruj.
 1. Wybierz nową aplikację i kliknij pozycję Certyfikaty & wpisy tajne na karcie Ustawienia.
-1. Utwórz nowy klucz tajny klienta, wprowadź opis nowego klucza, wybierz, kiedy klucz tajny ma być exire, i kliknij przycisk Zapisz.
+1. Utwórz nowy klucz tajny klienta, wprowadź opis nowego klucza, wybierz, kiedy wpis tajny powinien wygasnąć, i kliknij przycisk Zapisz.
 1. Zanotuj wartość. Służy jako hasło dla nazwy głównej usługi
 1. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa główna usługi
 
@@ -294,7 +294,7 @@ ANF udostępnia system plików NFS dla systemu Azure. W kontekście SAP LaMa upr
 
 Australia Wschodnia, środkowe stany USA, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Europa Zachodnia i zachodnie stany USA 2.
 
-#### <a name="network-requirements"></a>Wymagania sieciowe
+#### <a name="network-requirements"></a>Wymagania dotyczące sieci
 
 ANF wymaga delegowanej podsieci, która musi być częścią tej samej sieci wirtualnej, co serwery SAP. Oto przykład dla takiej konfiguracji.
 Ten ekran pokazuje, jak utworzyć sieć wirtualną i pierwszą podsieć:
@@ -438,7 +438,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-as
 
 Uruchom SWPM i Użyj *AS1-ASCS* dla *nazwy hosta wystąpienia ASCS*.
 
-#### <a name="install-sql-server"></a>Instalacja programu SQL Server
+#### <a name="install-sql-server"></a>Zainstaluj SQL Server
 
 Należy dodać adres IP wirtualnej nazwy hosta bazy danych do interfejsu sieciowego. Zalecanym sposobem jest użycie sapacext. Jeśli adres IP jest instalowany przy użyciu sapacext, należy ponownie zainstalować adres IP po ponownym uruchomieniu.
 

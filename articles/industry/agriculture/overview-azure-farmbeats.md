@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b4f0a082ba68ce9de417d196c1f6ea593c5c8feb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473500"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767965"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Omówienie usługi Azure FarmBeats (wersja zapoznawcza)
 
@@ -33,7 +33,7 @@ Korzystając z wersji zapoznawczej usługi Azure FarmBeats, możesz wykonać nas
 ## <a name="datahub"></a>Datahub
 
 Azure FarmBeats Datahub to warstwa interfejsu API, która umożliwia agregację, normalizację i contextualization różnych zestawów danych rolnictwa między dostawcami. Możesz użyć usługi Azure FarmBeats, aby uzyskać następujące korzyści:
-- **Dane czujnika** z [dwóch dostawców czujnika](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/)
+- **Dane czujnika** z dwóch dostawców czujników, [instrumenty](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), [Pessl instrumenty](https://metos.at/)
 - **Przekazy satelitarne z** satelitarnej agencji kosmicznej z firmy The [-2](https://sentinel.esa.int/web/sentinel/home)
 - **Drona** z trzech [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [DJI](https://dji.com/)
 

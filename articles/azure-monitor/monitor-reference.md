@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263425"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765721"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co jest monitorowane przez Azure Monitor?
 W tym artykule opisano różne aplikacje i usługi monitorowane przez program Azure Monitor. 
@@ -42,7 +42,7 @@ Rozwiązania są oparte na zapytaniach i widokach dzienników dostosowanych do o
 |:---|:---|
 | [Kondycja agenta](insights/solution-agenthealth.md) | Analizuj kondycję i konfigurację agentów Log Analytics. |
 | [Zarządzanie alertami](platform/alert-management-solution.md) | Analizuj alerty zebrane z System Center Operations Manager, Nagios lub Zabbix. |
-| [Mapa usługi](insights/service-map.md) | Automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Te same funkcje są dostępne w   |
+| [Mapa usługi](insights/service-map.md) | Automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. |
 
 
 
@@ -63,14 +63,14 @@ W poniższej tabeli wymieniono usługi platformy Azure i zebrane przez nie dane 
 |Advisor | Nie | Nie | Nie |  |
 |Konstruktor sztucznej inteligencji | Nie | Nie | Nie |  |
 |Usługi analityczne | Tak | Tak | Nie |  |
-|Interfejs API dla standardu FHIR | Nie | Nie | Nie |  |
+|Interfejs API dla usługi FHIR | Nie | Nie | Nie |  |
 |API Management | Tak | Tak | Nie |  |
 |App Service | Tak | Tak | Nie |  |
 |AppConfig | Nie | Nie | Nie |  |
 |Application Gateway | Tak | Tak | Nie |  |
 |Usługa zaświadczania | Nie | Nie | Nie |  |
 |Automation | Tak | Tak | Nie |  |
-|Azure Service Manager (fronton RedDog) | Nie | Nie | Nie |  |
+|Azure Service Manager (frontonu reddog) | Nie | Nie | Nie |  |
 |Tworzenie kopii zapasowych | Nie | Tak | Nie |  |
 |Bastion | Nie | Nie | Nie |  |
 |Partia zadań | Tak | Tak | Nie |  |
@@ -91,10 +91,10 @@ W poniższej tabeli wymieniono usługi platformy Azure i zebrane przez nie dane 
 |Eksplorator danych | Tak | Tak | Nie |  |
 |Data Factory | Tak | Tak | Nie |  |
 |Data Factory v2 | Nie | Tak | Nie |  |
-|Data Share | Nie | Nie | Nie |  |
-|Database for MariaDB | Tak | Tak | Nie |  |
-|Database for MySQL | Tak | Tak | Nie |  |
-|Database for PostgreSQL | Tak | Tak | Nie |  |
+|Udział danych | Nie | Nie | Nie |  |
+|Baza danych dla MariaDB | Tak | Tak | Nie |  |
+|Baza danych dla programu MySQL | Tak | Tak | Nie |  |
+|Baza danych dla PostgreSQL | Tak | Tak | Nie |  |
 |Usługa migracji bazy danych | Nie | Nie | Nie |  |
 |Usługa Databricks | Nie | Tak | Nie |  |
 |DDoS Protection | Tak | Tak | Nie |  |
@@ -111,7 +111,7 @@ W poniższej tabeli wymieniono usługi platformy Azure i zebrane przez nie dane 
 |Front Door | Tak | Tak | Nie |  |
 |Functions | Tak | Tak | Nie |  |
 |HDInsight | Nie | Tak | Nie |  |
-|HPC Cache | Nie | Nie | Nie |  |
+|Pamięć podręczna HPC | Nie | Nie | Nie |  |
 |Ochrona informacji | Nie | Tak | Nie |  |
 |Intune | Nie | Tak | Nie |  |
 |IoT Central | Nie | Nie | Nie |  |
@@ -125,7 +125,7 @@ W poniższej tabeli wymieniono usługi platformy Azure i zebrane przez nie dane 
 |Mapy  | Nie | Nie | Nie |  |
 |Media Services | Tak | Tak | Nie |  |
 |Microsoft Flow | Nie | Nie | Nie |  |
-|Microsoft Managed Desktop | Nie | Nie | Nie |  |
+|Program Microsoft Managed Desktop | Nie | Nie | Nie |  |
 |Microsoft PowerApps | Nie | Nie | Nie |  |
 |Microsoft Social Engagement | Nie | Nie | Nie |  |
 |Microsoft Stream | Tak | Tak | Nie |  |
@@ -178,7 +178,7 @@ Usługi i rozwiązania w poniższej tabeli przechowują swoje dane w Log Analyti
 | [Azure Automation](/azure/automation/) | Zarządzaj aktualizacjami systemu operacyjnego i Śledź zmiany na komputerach z systemem Windows i Linux. Zobacz [Change Tracking](../automation/change-tracking.md) i [Update Management](../automation/automation-update-management.md). |
 | [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) | Klasyfikowanie i opcjonalne chronienie dokumentów i wiadomości e-mail. Zobacz [centralne raportowanie dla Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](/azure/security-center/) | Zbieraj i Analizuj zdarzenia zabezpieczeń oraz przeprowadzaj analizę zagrożeń. Zobacz [zbieranie danych w Azure Security Center](/azure/security-center/security-center-enable-data-collection) |
-| [Azure Sentinel](/azure/sentinel/) | Łączy się z różnymi źródłami, w tym z pakietem Office 365 i Amazon Web Services w chmurze. Zobacz [łączenie ze źródłami danych](/azure/sentinel/connect-data-sources). |
+| [Wskaźnik na platformie Azure](/azure/sentinel/) | Łączy się z różnymi źródłami, w tym z pakietem Office 365 i Amazon Web Services w chmurze. Zobacz [łączenie ze źródłami danych](/azure/sentinel/connect-data-sources). |
 | [Analiza usługi Key Vault](insights/azure-key-vault.md) | Analizuj Azure Key Vault dzienniki AuditEvent. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Utwórz ustawienie diagnostyczne, aby wysłać dzienniki do Azure Monitor. Zobacz [wysyłanie danych dzienników do magazynu, centrów zdarzeń lub usługi log Analytics w usłudze Intune (wersja zapoznawcza)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
 | Network (Sieć)  | [Network Performance Monitor](insights/network-performance-monitor.md) — Monitorowanie łączności sieciowej i wydajności do punktów końcowych usługi i aplikacji.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) — analizowanie dzienników i metryk z usługi Azure Application Gateway.<br>[Analiza ruchu](/azure/network-watcher/traffic-analytics) — analizuje dzienniki przepływu sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) Network Watcher, aby uzyskać wgląd w przepływ ruchu w chmurze platformy Azure. |

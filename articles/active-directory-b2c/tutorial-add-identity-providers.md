@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950956"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840166"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dodawanie dostawców tożsamości do aplikacji w Azure Active Directory B2C
 
-W swoich aplikacjach możesz umożliwić użytkownikom logowanie się za pomocą różnych dostawców tożsamości. *Dostawca tożsamości* tworzy, i przechowuje informacje dotyczące tożsamości oraz zarządza nimi, zapewniając jednocześnie aplikacjom usługi uwierzytelniania. Można dodać dostawców tożsamości, które są obsługiwane przez Azure Active Directory B2C (Azure AD B2C) do [przepływów użytkownika](active-directory-b2c-reference-policies.md) przy użyciu Azure Portal.
+W swoich aplikacjach możesz umożliwić użytkownikom logowanie się za pomocą różnych dostawców tożsamości. *Dostawca tożsamości* tworzy, i przechowuje informacje dotyczące tożsamości oraz zarządza nimi, zapewniając jednocześnie aplikacjom usługi uwierzytelniania. Można dodać dostawców tożsamości, które są obsługiwane przez Azure Active Directory B2C (Azure AD B2C) do [przepływów użytkownika](user-flow-overview.md) przy użyciu Azure Portal.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -29,7 +29,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > * Dodawanie dostawców tożsamości do dzierżawy
 > * Dodawanie dostawców tożsamości do przepływu użytkownika
 
-W aplikacjach zwykle używany jest tylko jeden dostawca tożsamości, ale można dodać więcej. W tym samouczku przedstawiono sposób dodawania dostawcy tożsamości usługi Azure AD i dostawcy tożsamości Facebook do aplikacji. Dodawanie obu tych dostawców tożsamości do aplikacji jest opcjonalne. Możesz również dodać innych dostawców tożsamości, takich jak [Amazon](active-directory-b2c-setup-amzn-app.md), [GitHub](active-directory-b2c-setup-github-app.md), [Google](active-directory-b2c-setup-goog-app.md), [LinkedIn](active-directory-b2c-setup-li-app.md), [Microsoft](active-directory-b2c-setup-msa-app.md)lub [Twitter](active-directory-b2c-setup-twitter-app.md).
+W aplikacjach zwykle używany jest tylko jeden dostawca tożsamości, ale można dodać więcej. W tym samouczku przedstawiono sposób dodawania dostawcy tożsamości usługi Azure AD i dostawcy tożsamości Facebook do aplikacji. Dodawanie obu tych dostawców tożsamości do aplikacji jest opcjonalne. Możesz również dodać innych dostawców tożsamości, takich jak [Amazon](identity-provider-amazon.md), [GitHub](identity-provider-github.md), [Google](identity-provider-google.md), [LinkedIn](identity-provider-linkedin.md), [Microsoft](identity-provider-microsoft-account.md)lub [Twitter](identity-provider-twitter.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

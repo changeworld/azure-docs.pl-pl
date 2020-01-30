@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9848e686188288b507a0a74d0f9fa16f8f0e4253
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711472"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841203"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji przy użyciu Azure Active Directory
 
@@ -67,7 +67,7 @@ Funkcje usługi Azure AD są wstępnie zintegrowane z obsługą wielu popularnyc
 
 * **Aplikacje obsługujące standard scim 2,0**. Aby uzyskać informacje na temat ogólnych połączeń aplikacji, które implementują interfejsy API zarządzania użytkownikami opartymi na systemie Standard scim 2,0, zobacz [Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników](use-scim-to-provision-users-and-groups.md).
 
-## <a name="what-is-scim"></a>Co to jest standard scim?
+## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Co to jest system do zarządzania tożsamościami między domenami (standard scim)?
 
 Aby ułatwić automatyzację aprowizacji i anulowania obsługi, aplikacje uwidaczniają zastrzeżone interfejsy API użytkowników i grup. Jednak każda osoba, która podjęła próbę zarządzania użytkownikami w więcej niż jednej aplikacji, powiedzie, że każda aplikacja próbuje wykonać te same proste akcje, takie jak tworzenie lub aktualizowanie użytkowników, Dodawanie użytkowników do grup lub cofanie aprowizacji użytkowników. Jednak wszystkie te proste akcje są implementowane tylko nieco inaczej, przy użyciu różnych ścieżek punktów końcowych, różnych metod, aby określić informacje o użytkownikach i innych schematów do reprezentowania poszczególnych elementów informacji.
 

@@ -4,27 +4,24 @@ titleSuffix: Azure Network Watcher
 description: W tym artykule wyjaśniono, jak korzystać z funkcji sieciowej grupy zabezpieczeń Logs dzienników przepływu pracy w usłudze Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 509545443bc08e8613d5f7a9ba7f33d2a90684b8
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.author: damendo
+ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830517"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840999"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowania przepływu dla sieciowych grup zabezpieczeń
 
-Dzienniki przepływów sieciowych grup zabezpieczeń to funkcja usługi Network Watcher, która umożliwia wyświetlanie informacji dotyczących ruchu IP przychodzącego i wychodzącego przez sieciową grupę zabezpieczeń. Dzienniki przepływów są zapisywane w formacie JSON i przedstawiają przepływy wychodzące i przychodzące dla każdej reguły, interfejs sieciowy, którego dotyczy przepływ, 5-krotkowe informacje o przepływie (źródłowy/docelowy adres IP, port źródłowy/docelowy i protokół), informację o zezwoleniu na ruch albo jego zablokowaniu, a w wersji 2 również informacje o przepływności.
+Dzienniki przepływu sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) są funkcją Network Watcher, która umożliwia wyświetlanie informacji dotyczących ruchu przychodzącego i wychodzącego IP przez sieciowej grupy zabezpieczeń. Dzienniki przepływów są zapisywane w formacie JSON i pokazują przepływy wychodzące i przychodzące dla każdej reguły, interfejs sieciowy (karta sieciowa) odnosi się do, 5-informacje krotki dotyczące przepływu (źródłowy/docelowy adres IP, port źródłowy/docelowy i protokół), jeśli ruch był dozwolony lub zabroniony, a także w wersji 2, informacje o przepływności (bajty i pakiety).
 
 
 ![Dzienniki przepływów — Omówienie](./media/network-watcher-nsg-flow-logging-overview/figure1.png)

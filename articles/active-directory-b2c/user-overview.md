@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620455"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840064"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Omówienie kont użytkowników w Azure Active Directory B2C
 
@@ -76,12 +76,12 @@ Możesz również użyć [interfejsu API Microsoft Graph](https://docs.microsoft
 
 ## <a name="consumer-user"></a>Użytkownik odbiorcy
 
-Użytkownik będący odbiorcą może zalogować się do aplikacji zabezpieczonych przez Azure AD B2C, ale nie może uzyskać dostępu do zasobów platformy Azure, takich jak Azure Portal. Użytkownik odbiorcy może korzystać z konta lokalnego lub kont federacyjnych, takich jak Facebook lub Twitter. Konto użytkownika jest tworzone przy użyciu usługi [rejestracji w](../active-directory-b2c/active-directory-b2c-reference-policies.md)usłudze Azure AD interfejs API programu Graph lub przy użyciu Azure Portal...
+Użytkownik będący odbiorcą może zalogować się do aplikacji zabezpieczonych przez Azure AD B2C, ale nie może uzyskać dostępu do zasobów platformy Azure, takich jak Azure Portal. Użytkownik odbiorcy może korzystać z konta lokalnego lub kont federacyjnych, takich jak Facebook lub Twitter. Konto użytkownika jest tworzone przy użyciu usługi [rejestracji w](user-flow-overview.md)usłudze Azure AD interfejs API programu Graph lub przy użyciu Azure Portal...
 
-Można określić dane, które są zbierane podczas tworzenia konta użytkownika odbiorcy przy użyciu niestandardowych atrybutów użytkownika. Aby uzyskać więcej informacji, zobacz [Definiowanie atrybutów niestandardowych w Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
+Można określić dane, które są zbierane podczas tworzenia konta użytkownika odbiorcy przy użyciu niestandardowych atrybutów użytkownika. Aby uzyskać więcej informacji, zobacz [Definiowanie atrybutów niestandardowych w Azure Active Directory B2C](user-flow-custom-attributes.md).
 
-Możesz użyć informacji z sekcji **Tworzenie kont użytkowników konsumentów** w temacie [Korzystanie z interfejs API programu Graph usługi Azure AD](active-directory-b2c-devquickstarts-graph-dotnet.md) do tworzenia konta klienta Azure AD B2C. Możesz również użyć informacji z sekcji **Aktualizowanie kont użytkowników indywidualnych** w tym samym artykule, aby zarządzać właściwościami konta.
+Możesz użyć informacji z sekcji **Tworzenie kont użytkowników konsumentów** w temacie [Korzystanie z interfejs API programu Graph usługi Azure AD](manage-user-accounts-graph-api.md) do tworzenia konta klienta Azure AD B2C. Możesz również użyć informacji z sekcji **Aktualizowanie kont użytkowników indywidualnych** w tym samym artykule, aby zarządzać właściwościami konta.
 
 ### <a name="migrate-consumer-user-accounts"></a>Migrowanie kont użytkowników indywidualnych
 
-Może być konieczne przeprowadzenie migracji istniejących kont użytkowników konsumentów z dowolnego dostawcy tożsamości do Azure AD B2C. Aby uzyskać więcej informacji, zobacz [Migracja użytkowników](active-directory-b2c-user-migration.md) lub [Migrowanie użytkowników z tożsamościami społecznościowymi](active-directory-b2c-social-migration.md).
+Może być konieczne przeprowadzenie migracji istniejących kont użytkowników konsumentów z dowolnego dostawcy tożsamości do Azure AD B2C. Aby uzyskać więcej informacji, zobacz [Migracja użytkowników](user-migration.md) lub [Migrowanie użytkowników z tożsamościami społecznościowymi](migrate-social-identities.md).

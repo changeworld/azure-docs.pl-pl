@@ -1,10 +1,9 @@
 ---
-title: Omówienie transakcji przetwarzania w usłudze Azure Service Bus | Dokumentacja firmy Microsoft
-description: Omówienie usługi Azure Service Bus transakcje niepodzielne i wysyłania za pomocą
+title: Przegląd przetwarzania transakcji w Azure Service Bus
+description: Ten artykuł zawiera omówienie przetwarzania transakcji i funkcji wysyłania za pośrednictwem programu w Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
 ms.service: service-bus-messaging
@@ -12,47 +11,47 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: a839a4cad824a74bde388317cf3aaddf9c5bd47f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332350"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774518"
 ---
-# <a name="overview-of-service-bus-transaction-processing"></a>Omówienie usługi Service Bus przetwarzanie transakcji
+# <a name="overview-of-service-bus-transaction-processing"></a>Przegląd Service Bus przetwarzania transakcji
 
-W tym artykule omówiono możliwości transakcji usługi Microsoft Azure Service Bus. Większość dyskusji zilustrowane [AMQP transakcji za pomocą usługi Service Bus przykładowe](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia). W tym artykule jest ograniczona do przeglądu przetwarzania transakcji i *wyśle* funkcji w usłudze Service Bus, przykładowe transakcje niepodzielne szersze i bardziej złożone w trakcie zakresu.
+W tym artykule omówiono możliwości transakcji Microsoft Azure Service Bus. Wiele dyskusji jest zilustrowanych przez [transakcje AMQP z przykładem Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia). W tym artykule zawarto informacje dotyczące przetwarzania transakcji i funkcji *wysyłania za pośrednictwem* Service Bus, podczas gdy próbki niepodzielnych transakcji są szersze i bardziej złożone w zakresie.
 
-## <a name="transactions-in-service-bus"></a>Transakcje w usłudze Service Bus
+## <a name="transactions-in-service-bus"></a>Transakcje w Service Bus
 
-A *transakcji* grupowanie dwóch lub więcej operacji w *zakresu wykonywania*. Ze względu na charakter takich transakcji musi zapewnić, że wszystkie operacje należących do danej grupy operacji powodzenie lub niepowodzenie wspólnie. W związku z tym transakcji pełnić jedną jednostkę, która jest często nazywany *niepodzielność*.
+Grupy *transakcji* grupuje dwie lub więcej operacji jednocześnie do *zakresu wykonywania*. O charakterze taka transakcja musi zapewnić, że wszystkie operacje należące do danej grupy operacji kończą się powodzeniem lub niepowodzeniem. W tej kwestii transakcje działają jako jedna jednostka, która jest często określana jako *niepodzielność*.
 
-Usługa Service Bus jest broker wiadomości transakcyjnych i zapewnia integralność transakcji dla wszystkich operacji wewnętrznej względem jego magazynami komunikatów. Wszystkie operacje transferu wiadomości wewnątrz usługi Service Bus, takiego jak przenoszenie wiadomości do [kolejki utraconych wiadomości](service-bus-dead-letter-queues.md) lub [automatyczne przekazywanie](service-bus-auto-forwarding.md) komunikatów między jednostkami, są transakcyjne. Jako takie Jeśli Usługa Service Bus zaakceptuje wiadomość, już został przechowywane i etykietą numer sekwencyjny. Od tego momentu wszelkich transferów komunikatów w ramach usługi Service Bus to operacje skoordynowanego między jednostkami i nie doprowadzi do utraty (źródło zakończy się pomyślnie i docelowym nie powiedzie się) lub dublowania (niepowodzenie dotyczące źródła i docelowych zakończy się powodzeniem) wiadomości.
+Service Bus to transakcyjny Broker komunikatów i zapewnia integralność transakcyjną wszystkich operacji wewnętrznych względem magazynów komunikatów. Wszystkie transfery komunikatów wewnątrz Service Bus, takie jak przenoszenie komunikatów do [kolejki utraconych](service-bus-dead-letter-queues.md) wiadomości lub [Automatyczne przekazywanie](service-bus-auto-forwarding.md) komunikatów między jednostkami, są transakcyjne. W związku z tym, jeśli Service Bus akceptuje komunikat, został już zapisany i oznaczony numerem sekwencyjnym. Z tego miejsca wszystkie transfery komunikatów w ramach Service Bus są koordynowanymi operacjami między jednostkami i nie będą prowadzić do utraty (Źródło zakończy się pomyślnie, nie powiedzie się) lub do duplikacji (Źródło zakończy się niepowodzeniem i obiekt docelowy) komunikatu.
 
-Usługa Service Bus obsługuje grupowanie operacji względem jednej jednostki obsługi komunikatów (kolejki, tematu, subskrypcji) w zakresie transakcji. Na przykład kilka wiadomości można wysyłać do jednej kolejki z zakresu transakcji, a komunikaty tylko zostaną przekazane do kolejki dziennika, po pomyślnym zakończeniu transakcji.
+Usługa Service Bus obsługuje grupowanie operacji względem jednej jednostki obsługi komunikatów (kolejki, tematu, subskrypcji) w zakresie transakcji. Na przykład można wysłać kilka komunikatów do jednej kolejki z zakresu transakcji, a komunikaty zostaną przekazane do dziennika kolejki tylko po pomyślnym ukończeniu transakcji.
 
 ## <a name="operations-within-a-transaction-scope"></a>Operacje w zakresie transakcji
 
-Operacje, które mogą być wykonywane w zakresie transakcji są następujące:
+Operacje, które mogą być wykonywane w ramach zakresu transakcji są następujące:
 
 * **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : Send, SendAsync, SendBatch, SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : Wykonaj CompleteAsync Abandon, AbandonAsync, utraconych wiadomości, DeadletterAsync, odroczone DeferAsync, RenewLock, RenewLockAsync 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : Complete, CompleteAsync, Abandon, AbandonAsync, utracony, DeadletterAsync, Ustąp, DeferAsync, RenewLock, RenewLockAsync 
 
-Odbieranie operacje nie są dołączane, ponieważ zakłada się, że aplikacja uzyskuje komunikatów za pomocą [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) tryb wewnątrz niektórych otrzymywać pętli lub za pomocą [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) wywołanie zwrotne, i dopiero wtedy otwiera zakresu transakcji do przetwarzania wiadomości.
+Operacje odbioru nie są uwzględniane, ponieważ zakłada się, że aplikacja uzyskuje komunikaty przy użyciu trybu [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) w ramach niektórych pętli Receive lub wywołania zwrotnego [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) , a następnie otwiera zakres transakcji w celu przetworzenia komunikatu.
 
-Dyspozycja komunikatu (zakończeniu Odrocz abandon, wiadomości utraconych) to występuje w zakresie i zależne od ogólnej wyniku transakcji.
+Dyspozycja wiadomości (kompletna, Porzuć, utracony, odłóż) następuje w zakresie i zależy od ogólnego wyniku transakcji.
 
-## <a name="transfers-and-send-via"></a>Opłaty za transfery i "Wyślij za pośrednictwem"
+## <a name="transfers-and-send-via"></a>Transfery i "wysyłanie przez"
 
-Aby włączyć transakcyjnych przekazania danych z kolejki procesora, a następnie do innej kolejki, Usługa Service Bus obsługuje *transfery*. W operacji przeniesienia, nadawca wysyła najpierw wiadomości do *kolejki transferu*, i natychmiast przenosi wiadomość do kolejki miejsca docelowego przy użyciu tej samej implementacji niezawodne przesyłanie w kolejce transferu, automatycznego przekazywania dalej Funkcja opiera się na. Komunikat nigdy nie jest zaangażowana w kolejce transferu dziennika w taki sposób, że stają się one widoczne dla klientów w kolejce transferu.
+Aby włączyć transakcyjną przekazują danych z kolejki do procesora, a następnie do innej kolejki, Service Bus obsługuje *transfery*. W operacji transferu nadawca najpierw wysyła komunikat do *kolejki transferu*, a kolejka transferu natychmiast przenosi komunikat do zamierzonej kolejki docelowej przy użyciu tej samej, niezawodnej implementacji transferu, na której opiera się funkcja autoprzesyłania dalej. Komunikat nigdy nie jest przesyłany do dziennika kolejki transferu w taki sposób, aby stał się widoczny dla odbiorców kolejki transferu.
 
-Możliwości tej transakcji funkcji staje się jasne po kolejce transferu, sama jest źródłem nadawcy komunikatów wejściowych. Innymi słowy, usługi Service Bus mogą przesyłać wiadomości do kolejki docelowej "przez" kolejki transferu podczas wykonywania kompletna (lub Odrocz, lub utraconych) operacja komunikat wejściowy, wszystko to w jednej niepodzielnej operacji. 
+Moc tej możliwości transakcyjnej stanie się widoczna, gdy kolejka transferu jest źródłem komunikatów wejściowych nadawcy. Innymi słowy, Service Bus może przetransferować komunikat do kolejki docelowej "za pośrednictwem kolejki transferu podczas wykonywania kompletnej operacji (lub przełożyć lub martwej litery) na wiadomości wejściowej, a wszystko to w jednej operacji niepodzielnej. 
 
 ### <a name="see-it-in-code"></a>Zobacz go w kodzie
 
-Aby skonfigurować takie przeniesienia, należy utworzyć nadawcy wiadomości, który jest przeznaczony dla kolejki docelowej, za pośrednictwem kolejki transferu. Masz również odbiornik, który pobiera komunikaty z tej samej kolejki. Na przykład:
+Aby skonfigurować takie transfery, należy utworzyć nadawcę wiadomości, który jest przeznaczony dla kolejki docelowej za pośrednictwem kolejki transferu. Istnieje również odbiornik, który pobiera wiadomości z tej samej kolejki. Przykład:
 
 ```csharp
 var connection = new ServiceBusConnection(connectionString);
@@ -61,7 +60,7 @@ var sender = new MessageSender(connection, QueueName);
 var receiver = new MessageReceiver(connection, QueueName);
 ```
 
-Następnie proste transakcji korzysta z tych elementów, jak w poniższym przykładzie. Aby odwołać się pełny przykład, można znaleźć [źródła kodu w serwisie GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia):
+Prosta transakcja następnie używa tych elementów, jak w poniższym przykładzie. Aby zapoznać się z pełnym przykładem, zapoznaj się z [kodem źródłowym w witrynie GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia):
 
 ```csharp
 var receivedMessage = await receiver.ReceiveAsync();
@@ -98,14 +97,14 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz następujące artykuły, aby uzyskać więcej informacji na temat usługi Service Bus:
+Więcej informacji o kolejkach Service Bus można znaleźć w następujących artykułach:
 
 * [Jak używać kolejek usługi Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Tworzenie łańcuchów jednostek usługi Service Bus z automatycznym przekazywaniem](service-bus-auto-forwarding.md)
-* [Przykładowe automatycznego przekazywania dalej](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
-* [Transakcje niepodzielne za pomocą przykładowej usługi Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
-* [Kolejek systemu Azure i usługi Service Bus porównaniu kolejek](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+* [Łączenie Service Bus jednostek z autoprzekazywaniem](service-bus-auto-forwarding.md)
+* [Próbkowanie progresywne](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
+* [Transakcje niepodzielne z przykładem Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
+* [Porównanie kolejek platformy Azure i kolejek Service Bus](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 
 

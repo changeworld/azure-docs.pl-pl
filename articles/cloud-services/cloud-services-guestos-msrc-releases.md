@@ -10,44 +10,41 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/15/2020
+ms.date: 01/24/2020
 ms.author: raiye
-ms.openlocfilehash: 85029b5f819a59ffc4934d245778044a94a18d5e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 89fd16b6afadee75678b76381739c12a31dc1a07
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122138"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765374"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Response Center (MSRC) zastosowane do systemu operacyjnego gościa platformy Azure. Przeszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczy systemu operacyjnego gościa, którego używasz. Aktualizacje są zawsze przenoszone dla określonej [rodziny][family-explain] , w której zostały wprowadzone.
 
 ## <a name="january-2020-guest-os"></a>System operacyjny gościa w styczniu 2020
 
->[!NOTE]
->System operacyjny gościa w styczniu jest obecnie wdrażany na maszynach wirtualnych usługi w chmurze skonfigurowanych do aktualizacji automatycznych. Po zakończeniu wprowadzania ta wersja zostanie udostępniona do ręcznego aktualizowania za pomocą plików Azure Portal i konfiguracji. W systemie operacyjnym gościa w styczniu uwzględniono następujące poprawki. Ta lista może ulec zmianie.
-
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-|  Rel 20-01  |  [4532960]  |  Zabezpieczenia Windows  | 2,94 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 2,94 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4534314]  |  Zabezpieczenia Windows  | 2,94 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4532958]  |  Zabezpieczenia Windows  | 3,81 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4532963]  |  Zabezpieczenia Windows  | 3,81 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 3,81 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4534288]  |  Zabezpieczenia Windows  | 3,81 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4532961]  |  Zabezpieczenia Windows  | 4,74 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4532962]  |  Zabezpieczenia Windows  | 4,74 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 4,74 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4534309]  |  Zabezpieczenia Windows  | 4,74 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4494175]  |  Włączenia mikrokodu v3  | 5,39 | 29 sierpnia 2019 r. |
-|  Rel 20-01  |  [4534271]  |  Jednostka LCU  | 5,39 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4494174]  |  Włączenia mikrokodu v4  | 6,15 | 29 sierpnia 2019 r. |
-|  Rel 20-01  |  [4532947]  |  Zabezpieczenia Windows  | 6,15 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4534273]  |  Jednostka LCU  | 6,15 | 14 stycznia 2020 |
-|  Rel 20-01  |  [4530734]  |  Niezwiązane z zabezpieczeniami  | 2,94 | 10 grudnia 2019 |
-|  Rel 20-01  |  [4530691]  |  Niezwiązane z zabezpieczeniami   | 3,81 | 10 grudnia 2019 |
-|  Rel 20-01  |  [4530702]  |  Niezwiązane z zabezpieczeniami  | 4,74 | 10 grudnia 2019 |
+|  Rel 20-01  |  [4532960]  |  Zabezpieczenia systemu Windows  | [2,94] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [2,94] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4534314]  |  Zabezpieczenia systemu Windows  | [2,94] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4532958]  |  Zabezpieczenia systemu Windows  | [3,81] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4532963]  |  Zabezpieczenia systemu Windows  | [3,81] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [3,81] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4534288]  |  Zabezpieczenia systemu Windows  | [3,81] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4532961]  |  Zabezpieczenia systemu Windows  | [4,74] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4532962]  |  Zabezpieczenia systemu Windows  | [4,74] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [4,74] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4534309]  |  Zabezpieczenia systemu Windows  | [4,74] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4494175]  |  Włączenia mikrokodu v3  | [5,39] | 29 sierpnia 2019 |
+|  Rel 20-01  |  [4534271]  |  Jednostka LCU  | [5,39] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4494174]  |  Włączenia mikrokodu v4  | [6,15] | 29 sierpnia 2019 |
+|  Rel 20-01  |  [4532947]  |  Zabezpieczenia systemu Windows  | [6,15] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4534273]  |  Jednostka LCU  | [6,15] | 14 stycznia 2020 |
+|  Rel 20-01  |  [4530734]  |  Niezwiązane z zabezpieczeniami  | [2,94] | 10 grudnia 2019 |
+|  Rel 20-01  |  [4530691]  |  Niezwiązane z zabezpieczeniami   | [3,81] | 10 grudnia 2019 |
+|  Rel 20-01  |  [4530702]  |  Niezwiązane z zabezpieczeniami  | [4,74] | 10 grudnia 2019 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251
@@ -68,17 +65,22 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 [4530734]: https://support.microsoft.com/kb/4530734
 [4530691]: https://support.microsoft.com/kb/4530691
 [4530702]: https://support.microsoft.com/kb/4530702
+[6,15]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,39]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,74]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,94]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="december-2019-guest-os"></a>System operacyjny gościa z grudnia 2019
 
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-|  Rel 19-12  |  [4530692]  |  Zabezpieczenia Windows  | [2,93] | 10 grudnia 2019 |
+|  Rel 19-12  |  [4530692]  |  Zabezpieczenia systemu Windows  | [2,93] | 10 grudnia 2019 |
 |  Rel 19-12  |  [4530677]  |  Internet Explorer  | [2,93] | 10 grudnia 2019 |
 |  Rel 19-12  |  [4530677]  |  Internet Explorer  | [3,80] | 10 grudnia 2019 |
-|  Rel 19-12  |  [4530698]  |  Zabezpieczenia Windows  | [3,80] | 10 grudnia 2019 |
-|  Rel 19-12  |  [4530730]  |  Zabezpieczenia Windows  | [4,73] | 10 grudnia 2019 |
+|  Rel 19-12  |  [4530698]  |  Zabezpieczenia systemu Windows  | [3,80] | 10 grudnia 2019 |
+|  Rel 19-12  |  [4530730]  |  Zabezpieczenia systemu Windows  | [4,73] | 10 grudnia 2019 |
 |  Rel 19-12  |  [4530677]  |  Internet Explorer  | [4,73] | 10 grudnia 2019 |
 |  Rel 19-12  |  [4530689]  |  Najnowsza aktualizacja zbiorcza  | [5,38] | 10 grudnia 2019 |
 |  Rel 19-12  |  [4530715]  |  Najnowsza aktualizacja zbiorcza  | [6,14] | 10 grudnia 2019 |
@@ -120,11 +122,11 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
 |  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [2,92]  |  12 listopada 2019  |
-|  Rel 19-11   |  [4525233]  |  Zabezpieczenia Windows   |  [2,92]  |  12 listopada 2019  |
+|  Rel 19-11   |  [4525233]  |  Zabezpieczenia systemu Windows   |  [2,92]  |  12 listopada 2019  |
 |  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [3,79]  |  12 listopada 2019  |
-|  Rel 19-11   |  [4525253]  |  Zabezpieczenia Windows   |  [3,79]  |  12 listopada 2019  |
+|  Rel 19-11   |  [4525253]  |  Zabezpieczenia systemu Windows   |  [3,79]  |  12 listopada 2019  |
 |  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [4,72]  |  12 listopada 2019  |
-|  Rel 19-11   |  [4525250]  |  Zabezpieczenia Windows   |  [4,72]  |  12 listopada 2019  |
+|  Rel 19-11   |  [4525250]  |  Zabezpieczenia systemu Windows   |  [4,72]  |  12 listopada 2019  |
 |  Rel 19-11   |  [4525236]  |  Najnowsza aktualizacja zbiorcza   |  [5,37]  |  12 listopada 2019  |
 |  Rel 19-11   |  [4523205]  |  Najnowsza aktualizacja zbiorcza   |  [6,13]  |  12 listopada 2019  |
 |  Rel 19-11   |  [4519976]  |  Niezwiązane z zabezpieczeniami   |  [2,92]  |  8 października 2019  |
@@ -161,9 +163,9 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-|  Rel 19-10   |  [4520003]  |  Zabezpieczenia Windows   |  [2,91]  |  8 października 2019  |
-|  Rel 19-10   |  [4519985]  |  Zabezpieczenia Windows   |  [3,78]  |  8 października 2019  |
-|  Rel 19-10   |  [4519990]  |  Zabezpieczenia Windows   |  [4,71]  |  8 października 2019  |
+|  Rel 19-10   |  [4520003]  |  Zabezpieczenia systemu Windows   |  [2,91]  |  8 października 2019  |
+|  Rel 19-10   |  [4519985]  |  Zabezpieczenia systemu Windows   |  [3,78]  |  8 października 2019  |
+|  Rel 19-10   |  [4519990]  |  Zabezpieczenia systemu Windows   |  [4,71]  |  8 października 2019  |
 |  Rel 19-10   |  [4519998]  |  Najnowsza aktualizacja zbiorcza   |  [5,36]  |  8 października 2019  |
 |  Rel 19-10   |  [4519338]  |  Najnowsza aktualizacja zbiorcza   |  [6,12]  |  8 października 2019  |
 |  Rel 19-10   |  [4519974]  |  Internet Explorer   |  [2,91], [3,78], [4,71]  |  8 października 2019  |
@@ -215,13 +217,13 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 |  Rel 19-09   |  [4512578]  |  Najnowsza aktualizacja zbiorcza   |  [6,11]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 i 4.7.2   |  [6,11]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4516044]  |  Najnowsza aktualizacja zbiorcza   |  [5,35]  |  Września 10, 2019  |
-|  Rel 19-09   |  [4516064]  |  Zabezpieczenia Windows   |  [4,70]  |  Września 10, 2019  |
+|  Rel 19-09   |  [4516064]  |  Zabezpieczenia systemu Windows   |  [4,70]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4,70]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4,70]  |  Września 10, 2019  |
-|  Rel 19-09   |  [4516062]  |  Zabezpieczenia Windows   |  [3,77]  |  Września 10, 2019  |
+|  Rel 19-09   |  [4516062]  |  Zabezpieczenia systemu Windows   |  [3,77]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3,77]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3,77]  |  Września 10, 2019  |
-|  Rel 19-09   |  [4516033]  |  Zabezpieczenia Windows   |  [2,90]  |  Września 12, 2019  |
+|  Rel 19-09   |  [4516033]  |  Zabezpieczenia systemu Windows   |  [2,90]  |  Września 12, 2019  |
 |  Rel 19-09   |  [4512488]  |  Niezwiązane z zabezpieczeniami   |  [4,70]  |  13 sierpnia 2019  |
 |  Rel 19-09   |  [4512518]  |  Niezwiązane z zabezpieczeniami   |  [3,77]  |  13 sierpnia 2019  |
 |  Rel 19-09   |  [4512506]  |  Niezwiązane z zabezpieczeniami   |  [2,90]  |  13 sierpnia 2019  |
@@ -252,24 +254,24 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-|  Rel 19-08   |  [4512482]  |  Zabezpieczenia Windows   |  [3,76]  |  13 sierpnia 2019  |
+|  Rel 19-08   |  [4512482]  |  Zabezpieczenia systemu Windows   |  [3,76]  |  13 sierpnia 2019  |
 |  Rel 19-08   |  [4494175]  |  Włączenia mikrokodu Update   |  [5,34]  |  18 Jun 2019  |
 |  Rel 19-08   |  [4512517]  |  Najnowsza aktualizacja zbiorcza   |  [5,34]  |  13 sierpnia 2019  |
 |  Rel 19-08   |  [4494174]  |  Włączenia mikrokodu Update   |  [6,1]  |  18 Jun 2019  |
 |  Rel 19-08   |  [4511553]  |  Najnowsza aktualizacja zbiorcza   |  [6,1]  |  13 sierpnia 2019  |
-|  Rel 19-08   |  [4512486]  |  Zabezpieczenia Windows   |  [2,89]  |  13 sierpnia 2019  |
-|  Rel 19-08   |  [4512489]  |  Zabezpieczenia Windows   |  [4,69]  |  13 sierpnia 2019  |
+|  Rel 19-08   |  [4512486]  |  Zabezpieczenia systemu Windows   |  [2,89]  |  13 sierpnia 2019  |
+|  Rel 19-08   |  [4512489]  |  Zabezpieczenia systemu Windows   |  [4,69]  |  13 sierpnia 2019  |
 |  Rel 19-08   |  [4511872]  |  Internet Explorer    |  [2,89], [3,76], [4,69]  |  15 sie 2019  |
-|  Rel 19-08   |  [4507449]  |  Niezwiązane z zabezpieczeniami   |  [2,89]  |  9 lipca 2019 r.  |
+|  Rel 19-08   |  [4507449]  |  Niezwiązane z zabezpieczeniami   |  [2,89]  |  9 lipca 2019  |
 |  Rel 19-08   |  [4507000]  |  .NET 4.5.2, niezwiązane z zabezpieczeniami   |  [3,76]  |  12 sierpnia 2019  |
 |  Rel 19-08   |  [4507002]  |  .NET 3,5, niezwiązane z zabezpieczeniami   |  [3,76]  |  12 sierpnia 2019  |
-|  Rel 19-08   |  [4507462]  |  Niezwiązane z zabezpieczeniami   |  [3,76]  |  9 lipca 2019 r.  |
+|  Rel 19-08   |  [4507462]  |  Niezwiązane z zabezpieczeniami   |  [3,76]  |  9 lipca 2019  |
 |  Rel 19-08   |  [4506999]  |  .NET 4.5.2, niezwiązane z zabezpieczeniami    |  [4,69]  |  12 sierpnia 2019  |
 |  Rel 19-08   |  [4507005]  |  .NET 3,5, niezwiązane z zabezpieczeniami    |  [4,69]  |  12 sierpnia 2019  |
-|  Rel 19-08   |  [4507448]  |  Niezwiązane z zabezpieczeniami   |  [4,69]  |  9 lipca 2019 r.  |
-|  Rel 19-08   |  [4509091]  |  Obsługa aktualizacji stosu   |  [5,34]  |  9 lipca 2019 r.  |
-|  Rel 19-08   |  [4509095]  |  Obsługa aktualizacji stosu   |  [6,1]  |  9 lipca 2019 r.  |
-|  Rel 19-08   |  [4512937]  |  Obsługa aktualizacji stosu   |  [6,1]  |  29 lipca 2019 r.  |
+|  Rel 19-08   |  [4507448]  |  Niezwiązane z zabezpieczeniami   |  [4,69]  |  9 lipca 2019  |
+|  Rel 19-08   |  [4509091]  |  Obsługa aktualizacji stosu   |  [5,34]  |  9 lipca 2019  |
+|  Rel 19-08   |  [4509095]  |  Obsługa aktualizacji stosu   |  [6,1]  |  9 lipca 2019  |
+|  Rel 19-08   |  [4512937]  |  Obsługa aktualizacji stosu   |  [6,1]  |  29 lipca 2019  |
 |  Rel 19-08   |  [4507004]  |  Środowisko .NET 3.5.1 niezwiązane z zabezpieczeniami    |  [2,89]  |  12 sierpnia 2019  |
 |  Rel 19-08   |  [4504418]  |  Obsługa aktualizacji stosu   |  [3,76], [4,69]  |  11 lipca 2019 r.  |
 |  Rel 19-08   |  [4507001]  |  .NET 4.5.2, niezwiązane z zabezpieczeniami   |  [2,89]  |  12 sierpnia 2019  |
@@ -309,19 +311,19 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-|  Rel 19-07   |  [4507434]  |  Internet Explorer   |  2,88, 3,75, 4,68  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4506966]  |  Zabezpieczenia .NET 4.5.2   |  2,88  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4506976]  |  Zabezpieczenia programu .NET 3.5.1   |  2,88  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4507456]  |  Zabezpieczenia Windows   |  2,88  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4506965]  |  Zabezpieczenia .NET 4.5.2   |  3.75  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4506974]  |  Zabezpieczenia dotyczące programu .NET 3,5   |  3.75  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4507464]  |  Zabezpieczenia Windows   |  3.75  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4506964]  |  Zabezpieczenia .NET 4.5.2   |  4,68  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4506977]  |  Zabezpieczenia dotyczące programu .NET 3,5   |  4,68  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4507457]  |  Zabezpieczenia Windows   |  4,68  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4507460]  |  Zabezpieczenia Windows   |  5.33  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4506998]  |  .NET 3,5 & 4.7.2 Security   |  6.9  |  9 lipca 2019 r.  |
-|  Rel 19-07   |  [4507469]  |  Zabezpieczenia Windows   |  6.9  |  9 lipca 2019 r.  |
+|  Rel 19-07   |  [4507434]  |  Internet Explorer   |  2,88, 3,75, 4,68  |  9 lipca 2019  |
+|  Rel 19-07   |  [4506966]  |  Zabezpieczenia .NET 4.5.2   |  2,88  |  9 lipca 2019  |
+|  Rel 19-07   |  [4506976]  |  Zabezpieczenia programu .NET 3.5.1   |  2,88  |  9 lipca 2019  |
+|  Rel 19-07   |  [4507456]  |  Zabezpieczenia systemu Windows   |  2,88  |  9 lipca 2019  |
+|  Rel 19-07   |  [4506965]  |  Zabezpieczenia .NET 4.5.2   |  3.75  |  9 lipca 2019  |
+|  Rel 19-07   |  [4506974]  |  Zabezpieczenia dotyczące programu .NET 3,5   |  3.75  |  9 lipca 2019  |
+|  Rel 19-07   |  [4507464]  |  Zabezpieczenia systemu Windows   |  3.75  |  9 lipca 2019  |
+|  Rel 19-07   |  [4506964]  |  Zabezpieczenia .NET 4.5.2   |  4,68  |  9 lipca 2019  |
+|  Rel 19-07   |  [4506977]  |  Zabezpieczenia dotyczące programu .NET 3,5   |  4,68  |  9 lipca 2019  |
+|  Rel 19-07   |  [4507457]  |  Zabezpieczenia systemu Windows   |  4,68  |  9 lipca 2019  |
+|  Rel 19-07   |  [4507460]  |  Zabezpieczenia systemu Windows   |  5.33  |  9 lipca 2019  |
+|  Rel 19-07   |  [4506998]  |  .NET 3,5 & 4.7.2 Security   |  6.9  |  9 lipca 2019  |
+|  Rel 19-07   |  [4507469]  |  Zabezpieczenia systemu Windows   |  6.9  |  9 lipca 2019  |
 |  ND  |  [4503537]  |  Czerwiec "19 aktualizacja stosu obsługi dla (serwer 2016)   |  5.33  |  14 maja 2019  |
 |  ND  |  [4504369]  |  Czerwiec "19 aktualizacja stosu obsługi dla (serwer 2019)   |  6.9  |  14 maja 2019  |
 |  ND  |  [4503292]  |  Czerwiec "19 niezabezpieczeń (Serwer 2008 R2)   |  2,88  |  20 maja 2019 r.  |
@@ -353,14 +355,14 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-|  Rel 19-06   |  [4503327]  |  Zabezpieczenia systemu Windows 10   |  6.8  |  11 czerwca 2019 r.  |
-|  Rel 19-06   |  [4503267]  |  Zabezpieczenia systemu Windows 10   |  5,32  |  11 czerwca 2019 r.  |
-|  Rel 19-06   |  [4503290]  |  Zabezpieczenia Windows   |  4,67  |  11 czerwca 2019 r.  |
-|  Rel 19-06   |  [4503263]  |  Zabezpieczenia Windows   |  3,74  |  11 czerwca 2019 r.  |
-|  Rel 19-06   |  [4503269]  |  Zabezpieczenia Windows   |  2,87  |  11 czerwca 2019 r.  |
-|  Rel 19-06   |  [4494174]  |  Włączenia mikrokodu Update   |  6.8  |  11 czerwca 2019 r.  |
+|  Rel 19-06   |  [4503327]  |  Zabezpieczenia systemu Windows 10   |  6.8  |  11 czerwca 2019  |
+|  Rel 19-06   |  [4503267]  |  Zabezpieczenia systemu Windows 10   |  5,32  |  11 czerwca 2019  |
+|  Rel 19-06   |  [4503290]  |  Zabezpieczenia systemu Windows   |  4,67  |  11 czerwca 2019  |
+|  Rel 19-06   |  [4503263]  |  Zabezpieczenia systemu Windows   |  3,74  |  11 czerwca 2019  |
+|  Rel 19-06   |  [4503269]  |  Zabezpieczenia systemu Windows   |  2,87  |  11 czerwca 2019  |
+|  Rel 19-06   |  [4494174]  |  Włączenia mikrokodu Update   |  6.8  |  11 czerwca 2019  |
 |  Rel 19-06   |  [4494175]  |  Włączenia mikrokodu Update   |  5,32  |  3 czerwca 2019  |
-|  Rel 19-06   |  [4503308]  |  Flash   |  3,74, 4,67, 5,32, 6,8  |  11 czerwca 2019 r.  |
+|  Rel 19-06   |  [4503308]  |  Flash   |  3,74, 4,67, 5,32, 6,8  |  11 czerwca 2019  |
 |  Rel 19-06   |  [4503259]  |  Internet Explorer   |  2,87, 3,74, 4,67  |  13 czerwca 2019  |
 |  ND  |  [4499164]  |  Może "19 nie zabezpieczenia  |  2,87  |  14 maja 2019  |
 |  ND  |  [4495606]  |  Maj "19 .NET 3,5 niezwiązane z zabezpieczeniami  |  2,87  |  14 maja 2019  |
@@ -450,18 +452,18 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-| Rel 19-04 | [4493509] | Zabezpieczenia systemu Windows 10 | 6.6 | 9 kwietnia 2019 r. |
-| Rel 19-04 | [4493470] | Zabezpieczenia systemu Windows 10 | 5,30 | 9 kwietnia 2019 r. |
-| Rel 19-04 | [4493467] | Zabezpieczenia Windows | 4,65 | 9 kwietnia 2019 r. |
-| Rel 19-04 | [4493450] | Zabezpieczenia Windows | 3,72 | 9 kwietnia 2019 r. |
-| Rel 19-04 | [4493448] | Zabezpieczenia Windows | 2,85 | 9 kwietnia 2019 r. |
-| Rel 19-04 | [4493478] | Flash | 3,72, 4,65, 5,30, 6,6 | 9 kwietnia 2019 r. |
-| Rel 19-04 | [4493435] | Internet Explorer | 2,85, 3,72, 4,65 | 9 kwietnia 2019 r. |
-| Rel 19-04 | [4490628] | Obsługa aktualizacji stosu | 2,85 | 12 marca 2019 r. |
-| Rel 19-04 | [4474419] | Obsługa algorytmu SHA2 | 2,85 | 12 marca 2019 r. |
-| Rel 19-04 | [4489878] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami | 2,85 | 12 marca 2019 r. |
-| Rel 19-04 | [4489891] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami | 3,72 | 12 marca 2019 r. |
-| Rel 19-04 | [4489881] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami | 4,65 | 12 marca 2019 r. |
+| Rel 19-04 | [4493509] | Zabezpieczenia systemu Windows 10 | 6.6 | 9 kwietnia 2019 |
+| Rel 19-04 | [4493470] | Zabezpieczenia systemu Windows 10 | 5,30 | 9 kwietnia 2019 |
+| Rel 19-04 | [4493467] | Zabezpieczenia systemu Windows | 4,65 | 9 kwietnia 2019 |
+| Rel 19-04 | [4493450] | Zabezpieczenia systemu Windows | 3,72 | 9 kwietnia 2019 |
+| Rel 19-04 | [4493448] | Zabezpieczenia systemu Windows | 2,85 | 9 kwietnia 2019 |
+| Rel 19-04 | [4493478] | Flash | 3,72, 4,65, 5,30, 6,6 | 9 kwietnia 2019 |
+| Rel 19-04 | [4493435] | Internet Explorer | 2,85, 3,72, 4,65 | 9 kwietnia 2019 |
+| Rel 19-04 | [4490628] | Obsługa aktualizacji stosu | 2,85 | 12 marca 2019 |
+| Rel 19-04 | [4474419] | Obsługa algorytmu SHA2 | 2,85 | 12 marca 2019 |
+| Rel 19-04 | [4489878] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami | 2,85 | 12 marca 2019 |
+| Rel 19-04 | [4489891] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami | 3,72 | 12 marca 2019 |
+| Rel 19-04 | [4489881] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami | 4,65 | 12 marca 2019 |
 
 [4493509]: https://support.microsoft.com/kb/4493509
 [4493470]: https://support.microsoft.com/kb/4493470
@@ -480,24 +482,24 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-| Rel 19-03 | [4489873] | Internet Explorer | 2,84, 3,71, 4,64 | 12 marca 2019 r. |
-| Rel 19-03 | [4489907] | Flash | 3,71, 4,64, 5,29, 6,5 | 12 marca 2019 r. |
-| Rel 19-03 | [4489885] | Zabezpieczenia Windows | 2,84 | 12 marca 2019 r. |
-| Rel 19-03 | [4489884] | Zabezpieczenia Windows | 3,71 | 12 marca 2019 r. |
-| Rel 19-03 | [4489883] | Zabezpieczenia Windows | 4,64 | 12 marca 2019 r. |
-| Rel 19-03 | [4489882] | Zabezpieczenia systemu Windows 10 | 5,29 | 12 marca 2019 r. |
-| Rel 19-03 | [4489899] | Zabezpieczenia systemu Windows 10 | 6.5 | 12 marca 2019 r. |
-| Rel 19-03 | [4486563] | Zestawienie niezwiązane z zabezpieczeniami lutego | 2,84 | 12 lutego 2019 r. |
-| Rel 19-03 | [4483458] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 3. x | 2,84 | 12 lutego 2019 r. |
-| Rel 19-03 | [4483455] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 4. x | 2,84 | 12 lutego 2019 r. |
-| Rel 19-03 | [4487025] | Zestawienie niezwiązane z zabezpieczeniami lutego | 3,71 | 12 lutego 2019 r. |
-| Rel 19-03 | [4483456] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 3. x | 3,71 | 12 lutego 2019 r. |
-| Rel 19-03 | [4483454] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 4. x | 3,71 | 12 lutego 2019 r. |
-| Rel 19-03 | [4487000] | Zestawienie niezwiązane z zabezpieczeniami lutego | 4,64 | 12 lutego 2019 r. |
-| Rel 19-03 | [4483459] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 3. x | 4,64 | 12 lutego 2019 r. |
-| Rel 19-03 | [4483453] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 4. x | 4,64 | 12 lutego 2019 r. |
-| Rel 19-03 | [4485447] | Aktualizacja stosu obsługi w lutym | 5,29 | 12 lutego 2019 r. |
-| Rel 19-03 | [4486459] | Aktualizacja strefy czasowej | 2,84, 3,71, 4,64 | 12 lutego 2019 r. |
+| Rel 19-03 | [4489873] | Internet Explorer | 2,84, 3,71, 4,64 | 12 marca 2019 |
+| Rel 19-03 | [4489907] | Flash | 3,71, 4,64, 5,29, 6,5 | 12 marca 2019 |
+| Rel 19-03 | [4489885] | Zabezpieczenia systemu Windows | 2,84 | 12 marca 2019 |
+| Rel 19-03 | [4489884] | Zabezpieczenia systemu Windows | 3,71 | 12 marca 2019 |
+| Rel 19-03 | [4489883] | Zabezpieczenia systemu Windows | 4,64 | 12 marca 2019 |
+| Rel 19-03 | [4489882] | Zabezpieczenia systemu Windows 10 | 5,29 | 12 marca 2019 |
+| Rel 19-03 | [4489899] | Zabezpieczenia systemu Windows 10 | 6.5 | 12 marca 2019 |
+| Rel 19-03 | [4486563] | Zestawienie niezwiązane z zabezpieczeniami lutego | 2,84 | 12 lutego 2019 |
+| Rel 19-03 | [4483458] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 3. x | 2,84 | 12 lutego 2019 |
+| Rel 19-03 | [4483455] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 4. x | 2,84 | 12 lutego 2019 |
+| Rel 19-03 | [4487025] | Zestawienie niezwiązane z zabezpieczeniami lutego | 3,71 | 12 lutego 2019 |
+| Rel 19-03 | [4483456] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 3. x | 3,71 | 12 lutego 2019 |
+| Rel 19-03 | [4483454] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 4. x | 3,71 | 12 lutego 2019 |
+| Rel 19-03 | [4487000] | Zestawienie niezwiązane z zabezpieczeniami lutego | 4,64 | 12 lutego 2019 |
+| Rel 19-03 | [4483459] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 3. x | 4,64 | 12 lutego 2019 |
+| Rel 19-03 | [4483453] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 4. x | 4,64 | 12 lutego 2019 |
+| Rel 19-03 | [4485447] | Aktualizacja stosu obsługi w lutym | 5,29 | 12 lutego 2019 |
+| Rel 19-03 | [4486459] | Aktualizacja strefy czasowej | 2,84, 3,71, 4,64 | 12 lutego 2019 |
 
 [4489873]: https://support.microsoft.com/kb/4489873
 [4489907]: https://support.microsoft.com/kb/4489907
@@ -522,20 +524,20 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-| Rel 19-02 | [4486474] | Internet Explorer | 2,83, 3,70, 4,63 | 12 lutego 2019 r. |
-| Rel 19-02 | [4487038] | Flash | 3,70, 4,63, 5,28, 6,4 | 12 lutego 2019 r. |
-| Rel 19-02 | [4486564] | Zabezpieczenia Windows | 2,83 | 12 lutego 2019 r. |
-| Rel 19-02 | [4483483] | Zabezpieczenia programu .NET 3.5.1 | 2,83 | 12 lutego 2019 r. |
-| Rel 19-02 | [4483474] | Zabezpieczenia .NET 4.5.2 | 2,83 | 12 lutego 2019 r. |
-| Rel 19-02 | [4486993] | Zabezpieczenia Windows | 3,70 | 12 lutego 2019 r. |
-| Rel 19-02 | [4483481] | Zabezpieczenia dotyczące programu .NET 3,5 | 3,70 | 12 lutego 2019 r. |
-| Rel 19-02 | [4483473] | Zabezpieczenia .NET 4.5.2 | 3,70 | 12 lutego 2019 r. |
-| Rel 19-02 | [4487028] | Zabezpieczenia Windows | 4,63 | 12 lutego 2019 r. |
-| Rel 19-02 | [4483484] | Zabezpieczenia dotyczące programu .NET 3,5 | 4,63 | 12 lutego 2019 r. |
-| Rel 19-02 | [4483472] | Zabezpieczenia .NET 4.5.2 | 4,63 | 12 lutego 2019 r. |
-| Rel 19-02 | [4487026] | Zabezpieczenia Windows | 5.28 | 12 lutego 2019 r. |
-| Rel 19-02 | [4487044] | Zabezpieczenia Windows | 6.4 | 12 lutego 2019 r. |
-| Rel 19-02 | [4483452] | .NET 3,5, 4.7.2 Security | 6.4 | 12 lutego 2019 r. |
+| Rel 19-02 | [4486474] | Internet Explorer | 2,83, 3,70, 4,63 | 12 lutego 2019 |
+| Rel 19-02 | [4487038] | Flash | 3,70, 4,63, 5,28, 6,4 | 12 lutego 2019 |
+| Rel 19-02 | [4486564] | Zabezpieczenia systemu Windows | 2,83 | 12 lutego 2019 |
+| Rel 19-02 | [4483483] | Zabezpieczenia programu .NET 3.5.1 | 2,83 | 12 lutego 2019 |
+| Rel 19-02 | [4483474] | Zabezpieczenia .NET 4.5.2 | 2,83 | 12 lutego 2019 |
+| Rel 19-02 | [4486993] | Zabezpieczenia systemu Windows | 3,70 | 12 lutego 2019 |
+| Rel 19-02 | [4483481] | Zabezpieczenia dotyczące programu .NET 3,5 | 3,70 | 12 lutego 2019 |
+| Rel 19-02 | [4483473] | Zabezpieczenia .NET 4.5.2 | 3,70 | 12 lutego 2019 |
+| Rel 19-02 | [4487028] | Zabezpieczenia systemu Windows | 4,63 | 12 lutego 2019 |
+| Rel 19-02 | [4483484] | Zabezpieczenia dotyczące programu .NET 3,5 | 4,63 | 12 lutego 2019 |
+| Rel 19-02 | [4483472] | Zabezpieczenia .NET 4.5.2 | 4,63 | 12 lutego 2019 |
+| Rel 19-02 | [4487026] | Zabezpieczenia systemu Windows | 5.28 | 12 lutego 2019 |
+| Rel 19-02 | [4487044] | Zabezpieczenia systemu Windows | 6.4 | 12 lutego 2019 |
+| Rel 19-02 | [4483452] | .NET 3,5, 4.7.2 Security | 6.4 | 12 lutego 2019 |
 | ND | [4480970] | Pakiet zbiorczy bez zabezpieczeń | 2,83 | 8 stycznia 2019 r. |
 | ND | [4483483] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami — .NET 3.5.1  | 2,83 | 8 stycznia 2019 r. |
 | ND | [4480059] | Pakiet zbiorczy niezwiązanych z zabezpieczeniami, .NET 4.5.2  | 2,83 | 8 stycznia 2019 r. |
@@ -576,9 +578,9 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 | --- | --- | --- | --- | --- |
 | Rel 19-01 | [4480116] | Zabezpieczenia systemu Windows 10 | 6.3 | 8 stycznia 2019 r. |
 | Rel 19-01 | [4480961] | Zabezpieczenia systemu Windows 10 | 5,27 | 8 stycznia 2019 r. |
-| Rel 19-01 | [4480964] | Zabezpieczenia Windows | 4,62 | 8 stycznia 2019 r. |
-| Rel 19-01 | [4480972] | Zabezpieczenia Windows | 3,69 | 8 stycznia 2019 r. |
-| Rel 19-01 | [4480960] | Zabezpieczenia Windows | 2,82 | 8 stycznia 2019 r. |
+| Rel 19-01 | [4480964] | Zabezpieczenia systemu Windows | 4,62 | 8 stycznia 2019 r. |
+| Rel 19-01 | [4480972] | Zabezpieczenia systemu Windows | 3,69 | 8 stycznia 2019 r. |
+| Rel 19-01 | [4480960] | Zabezpieczenia systemu Windows | 2,82 | 8 stycznia 2019 r. |
 | Rel 19-01 | [4480056] | Zabezpieczenia platformy .NET | 6.3 | 8 stycznia 2019 r. |
 | Rel 19-01 | [4480074] | Zabezpieczenia programu .NET 4. x | 4,62 | 8 stycznia 2019 r. |
 | Rel 19-01 | [4480075] | Zabezpieczenia programu .NET 4. x | 3,69 | 8 stycznia 2019 r. |
@@ -627,9 +629,9 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
 | Rel 18-12 | [4471321] | Zabezpieczenia systemu Windows 10 | 5,26 | 11 grudnia 2018 |
-| Rel 18-12 | [4471328] | Zabezpieczenia Windows   | 2,81 | 11 grudnia 2018 |
-| Rel 18-12 | [4471326] | Zabezpieczenia Windows   | 3,68 | 11 grudnia 2018 |
-| Rel 18-12 | [4471322] | Zabezpieczenia Windows   | 4,61 | 11 grudnia 2018 |
+| Rel 18-12 | [4471328] | Zabezpieczenia systemu Windows   | 2,81 | 11 grudnia 2018 |
+| Rel 18-12 | [4471326] | Zabezpieczenia systemu Windows   | 3,68 | 11 grudnia 2018 |
+| Rel 18-12 | [4471322] | Zabezpieczenia systemu Windows   | 4,61 | 11 grudnia 2018 |
 | Rel 18-12 | [4470600] | Zabezpieczenia architektury .NET 3. x  | 2,81 | 11 grudnia 2018 |
 | Rel 18-12 | [4470601] | Zabezpieczenia architektury .NET 3. x  | 3,68 | 11 grudnia 2018|
 | Rel 18-12 | [4470602] | Zabezpieczenia architektury .NET 3. x  | 4,61 | 11 grudnia 2018 |
@@ -666,9 +668,9 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 | --- | --- | --- | --- | --- |
 | Rel 18-11 | [4466536] | Internet Explorer | 2,80, 3,67, 4,60 | 13 listopada 2018 r. |
 | Rel 18-11 | [4467694] | Flash | 3,67, 4,60, 5,25 | 13 listopada 2018 r. |
-| Rel 18-11 | [4467106] | Zabezpieczenia Windows | 2,80 | 13 listopada 2018 r. |
-| Rel 18-11 | [4467678] | Zabezpieczenia Windows | 3,67 | 13 listopada 2018 r. |
-| Rel 18-11 | [4467703] | Zabezpieczenia Windows | 4,60 | 13 listopada 2018 r. |
+| Rel 18-11 | [4467106] | Zabezpieczenia systemu Windows | 2,80 | 13 listopada 2018 r. |
+| Rel 18-11 | [4467678] | Zabezpieczenia systemu Windows | 3,67 | 13 listopada 2018 r. |
+| Rel 18-11 | [4467703] | Zabezpieczenia systemu Windows | 4,60 | 13 listopada 2018 r. |
 | Rel 18-11 | [4467691] | Zabezpieczenia systemu Windows 10 | 5.25 | 13 listopada 2018 r. |
 | ND | [3173426] | Obsługa aktualizacji stosu | 3,67 | 12 lipca 2016 |
 | ND | [4465659] | Obsługa aktualizacji stosu | 5.25 | 13 listopada 2018 r. |
@@ -697,9 +699,9 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
 | Rel 18-10 | [4462917] | Zabezpieczenia systemu Windows 10 | 5,24 | 9 października 2018 r. |
-| Rel 18-10 | [4462915] | Zabezpieczenia Windows | 2,79 | 9 października 2018 r. |
-| Rel 18-10 | [4462931] | Zabezpieczenia Windows | 3,66 | 9 października 2018 r. |
-| Rel 18-10 | [4462941] | Zabezpieczenia Windows | 4,59 | 9 października 2018 r. |
+| Rel 18-10 | [4462915] | Zabezpieczenia systemu Windows | 2,79 | 9 października 2018 r. |
+| Rel 18-10 | [4462931] | Zabezpieczenia systemu Windows | 3,66 | 9 października 2018 r. |
+| Rel 18-10 | [4462941] | Zabezpieczenia systemu Windows | 4,59 | 9 października 2018 r. |
 | Rel 18-10 | [4462930] | Flash | 3,66, 4,59, 5,24 | 9 października 2018 r. |
 | Rel 18-10 | [4462949] | Internet Explorer | 2,79, 3,66, 4,59 | 9 października 2018 r. |
 | ND | [4339284] | Aktualizacja strefy czasowej | 2,79, 3,66, 4,59 | 24 lipca 2018 r. |
@@ -778,14 +780,14 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 ## <a name="july-2018-guest-os"></a>OS systemu operacyjnego gościa 2018
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-| Rel 18-07 | [4338814] |Zabezpieczenia systemu Windows 10 |5.21 |10 lipca 2018 r. |
+| Rel 18-07 | [4338814] |Zabezpieczenia systemu Windows 10 |5,21 |10 lipca 2018 r. |
 | Rel 18-07 | [4338823] |Tylko zabezpieczenia systemu Windows |2,76 |10 lipca 2018 r. |
 | Rel 18-07 | [4338820] |Tylko zabezpieczenia systemu Windows |3,63 |10 lipca 2018 r. |
 | Rel 18-07 | [4338824] |Tylko zabezpieczenia systemu Windows |4,56 |10 lipca 2018 r. |
 | Rel 18-07 | [4345459] |Odświeżanie zbiorcze zabezpieczeń |2,76 |10 lipca 2018 r. |
 | Rel 18-07 | [4345425] |Odświeżanie zbiorcze zabezpieczeń |3,63 |10 lipca 2018 r. |
 | Rel 18-07 | [4345424] |Odświeżanie zbiorcze zabezpieczeń |4,56 |10 lipca 2018 r. |
-| Rel 18-07 | [4345418] |Odświeżanie zbiorcze zabezpieczeń |5.21 |10 lipca 2018 r. |
+| Rel 18-07 | [4345418] |Odświeżanie zbiorcze zabezpieczeń |5,21 |10 lipca 2018 r. |
 | Rel 18-07 | [4338612], [4338602] |.NET 3,5, 4. x — zabezpieczenia |2,76 |10 lipca 2018 r. |
 | Rel 18-07 | [4338601], [4338604] |.NET 3,5, 4. x, zabezpieczenia 4.5 x |3,63 |10 lipca 2018 r. |
 | Rel 18-07 | [4338613], [4338600], [4338605] |.NET 3,5, 4. x, zabezpieczenia 4.5 x |4,56|10 lipca 2018 r. |
@@ -969,23 +971,23 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 | Rel 17-07 | [4025376] |Flash |3.51, 4.44, 5.9 |11 lipca 2017 r. |
 | Rel 17-07 | [4025252] |Internet Explorer |2.64, 3.51, 4.44 |11 lipca 2017 r. |
 | ND | [4020322] |Aktualizacja strefy czasowej |2.64, 3.51, 4.44 |11 lipca 2017 r. |
-| ND | [4022719] |Pakiet zbiorczy bez zabezpieczeń |2.64 |13 czerwca 2017 r. |
-| ND | [4022724] |Pakiet zbiorczy bez zabezpieczeń |3.51 |13 czerwca 2017 r. |
-| ND | [4022726] |Pakiet zbiorczy bez zabezpieczeń |4.44 |13 czerwca 2017 r. |
+| ND | [4022719] |Pakiet zbiorczy bez zabezpieczeń |2.64 |13 czerwca 2017 |
+| ND | [4022724] |Pakiet zbiorczy bez zabezpieczeń |3.51 |13 czerwca 2017 |
+| ND | [4022726] |Pakiet zbiorczy bez zabezpieczeń |4.44 |13 czerwca 2017 |
 
 ## <a name="june-2017-guest-os"></a>OS systemu operacyjnego gościa 2017
 | Kategoria produktów | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
 | Rel 17-06 | [4019472] |Ulepszenia jakości systemu operacyjnego WS 2016 |5.8 |9 maja 2017 |
-| Rel 17-06 | [4022722] |Tylko zabezpieczenia systemu Windows |2.63 |13 czerwca 2017 r. |
-| Rel 17-06 | [4022717] |Tylko zabezpieczenia systemu Windows |4.43 |13 czerwca 2017 r. |
-| Rel 17-06 | [4022718] |Tylko zabezpieczenia systemu Windows |3.50 |13 czerwca 2017 r. |
-| Rel 17-06 | [4021558] |Internet Explorer|2.63, 3.50, 4.43 |13 czerwca 2017 r. |
-| Rel 17-06 | [4022719], [4022724], [4022726] |Miesięczne pakiety zbiorcze systemu Windows |2.63, 3.50, 4.43 |13 czerwca 2017 r. |
-| Rel 17-06 | [4022730] |Aktualizacja zabezpieczeń programu Adobe Flash Player |3.50, 4.43, 5.8 |13 czerwca 2017 r. |
+| Rel 17-06 | [4022722] |Tylko zabezpieczenia systemu Windows |2.63 |13 czerwca 2017 |
+| Rel 17-06 | [4022717] |Tylko zabezpieczenia systemu Windows |4.43 |13 czerwca 2017 |
+| Rel 17-06 | [4022718] |Tylko zabezpieczenia systemu Windows |3.50 |13 czerwca 2017 |
+| Rel 17-06 | [4021558] |Internet Explorer|2.63, 3.50, 4.43 |13 czerwca 2017 |
+| Rel 17-06 | [4022719], [4022724], [4022726] |Miesięczne pakiety zbiorcze systemu Windows |2.63, 3.50, 4.43 |13 czerwca 2017 |
+| Rel 17-06 | [4022730] |Aktualizacja zabezpieczeń programu Adobe Flash Player |3.50, 4.43, 5.8 |13 czerwca 2017 |
 | Rel 17-06 | [4015217], [4015221], [4015583], [4015550], [4015219] |Ponowna wersja CVE-2017-0167 |4.43, 5.8 |11 kwietnia 2017 |
-| ND | [4023136] |Aktualizacja strefy czasowej  |2.63, 3.50, 4.43 |13 czerwca 2017 r. |
-| ND | [4019264] |Pakiet może być niezgodny z zabezpieczeniami |2.63 |13 czerwca 2017 r. |
+| ND | [4023136] |Aktualizacja strefy czasowej  |2.63, 3.50, 4.43 |13 czerwca 2017 |
+| ND | [4019264] |Pakiet może być niezgodny z zabezpieczeniami |2.63 |13 czerwca 2017 |
 | ND | [4014545] |Pakiet może być niezgodny z programem .NET |2.63 |11 kwietnia 2017 |
 | ND | [4014508] |Pakiet może być niezgodny z programem .NET |2.63 |9 maja 2017 |
 | ND | [4014511] |Pakiet może być niezgodny z programem .NET |2.63 |9 maja 2017 |
@@ -1307,14 +1309,14 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 ## <a name="september-2015-guest-os"></a>System operacyjny gościa z września 2015
 | Identyfikator biuletynu | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
 | --- | --- | --- | --- | --- |
-| MS15-093 |[3088903] |Aktualizacja zabezpieczeń programu Internet Explorer |4.24, 3.31, 2.43 |8 września 2015 r. |
-| MS15-094 |[3089548] |Zbiorcza aktualizacja zabezpieczeń dla programu Internet Explorer |4.24, 3.31, 2.43 |8 września 2015 r. |
-| MS15-096 |[3072595] |Luka w zabezpieczeniach w usłudze Active Directory może umożliwić odmowę usługi |4.24, 3.31, 2.43 |8 września 2015 r. |
-| MS15-097 |[3089656] |Luki w zabezpieczeniach składnika Microsoft Graphics mogą pozwolić na podniesienie uprawnień |4.24, 3.31, 2.43 |8 września 2015 r. |
-| MS15-098 |[3089669] |Luki w zabezpieczeniach w programie Windows Journal umożliwiają zdalne wykonywanie kodu |4.24, 3.31, 2.43 |8 września 2015 r. |
-| MS15-101 |[3089662] |Luki w zabezpieczeniach .NET Framework mogą pozwolić na podniesienie uprawnień |4.24, 3.31, 2.43 |8 września 2015 r. |
-| MS15-102 |[3089657] |Luki w zabezpieczeniach w zarządzaniu zadaniami systemu Windows mogą pozwolić na podniesienie uprawnień |4.24, 3.31, 2.43 |8 września 2015 r. |
-| MS15-105 |[3091287] |Luka w zabezpieczeniach w systemie Windows Hyper-V może pozwolić na obejście funkcji zabezpieczeń |4.24 |8 września 2015 r. |
+| MS15-093 |[3088903] |Aktualizacja zabezpieczeń programu Internet Explorer |4.24, 3.31, 2.43 |8 września 2015 |
+| MS15-094 |[3089548] |Zbiorcza aktualizacja zabezpieczeń dla programu Internet Explorer |4.24, 3.31, 2.43 |8 września 2015 |
+| MS15-096 |[3072595] |Luka w zabezpieczeniach w usłudze Active Directory może umożliwić odmowę usługi |4.24, 3.31, 2.43 |8 września 2015 |
+| MS15-097 |[3089656] |Luki w zabezpieczeniach składnika Microsoft Graphics mogą pozwolić na podniesienie uprawnień |4.24, 3.31, 2.43 |8 września 2015 |
+| MS15-098 |[3089669] |Luki w zabezpieczeniach w programie Windows Journal umożliwiają zdalne wykonywanie kodu |4.24, 3.31, 2.43 |8 września 2015 |
+| MS15-101 |[3089662] |Luki w zabezpieczeniach .NET Framework mogą pozwolić na podniesienie uprawnień |4.24, 3.31, 2.43 |8 września 2015 |
+| MS15-102 |[3089657] |Luki w zabezpieczeniach w zarządzaniu zadaniami systemu Windows mogą pozwolić na podniesienie uprawnień |4.24, 3.31, 2.43 |8 września 2015 |
+| MS15-105 |[3091287] |Luka w zabezpieczeniach w systemie Windows Hyper-V może pozwolić na obejście funkcji zabezpieczeń |4.24 |8 września 2015 |
 
 ## <a name="august-2015-guest-os"></a>System operacyjny gościa z sierpnia 2015
 | Identyfikator biuletynu | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |

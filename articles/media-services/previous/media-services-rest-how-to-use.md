@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895810"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773657"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Omówienie interfejsu API REST usługi Media Services Operations 
 
@@ -45,7 +45,7 @@ W przypadku korzystania z usługi REST obowiązują następujące zagadnienia.
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
+        x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
@@ -60,7 +60,7 @@ Dla każdego wywołania, które wprowadzasz do Media Services, istnieje zestaw w
 
 | Nagłówek | Typ | Wartość |
 | --- | --- | --- |
-| Autoryzacja |Bearer |Posiadacz jest jedynym zaakceptowanym mechanizmem autoryzacji. Wartość musi również zawierać token dostępu dostarczony przez Azure Active Directory. |
+| Autoryzacja |Elementu nośnego |Posiadacz jest jedynym zaakceptowanym mechanizmem autoryzacji. Wartość musi również zawierać token dostępu dostarczony przez Azure Active Directory. |
 | x-MS-Version |Decimal |2,17 (lub Najnowsza wersja)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -75,8 +75,8 @@ Poniżej znajduje się zestaw opcjonalnych nagłówków:
 | Nagłówek | Typ | Wartość |
 | --- | --- | --- |
 | Data |Data 1123 |Sygnatura czasowa żądania |
-| Zaakceptuj |Typ zawartości |Żądany typ zawartości dla odpowiedzi, na przykład następujące:<p> -application/json;odata=verbose<p> -Application/Atom + XML<p> Odpowiedzi mogą mieć inny typ zawartości, taki jak pobieranie obiektów blob, gdzie pomyślnie odpowiedź zawiera strumień obiektów BLOB jako ładunek. |
-| Accept-Encoding |Gzip, Wklęśnięcie |Kodowanie GZIP i WKLĘŚNIĘCIE, jeśli ma zastosowanie. Uwaga: w przypadku dużych zasobów Media Services może zignorować ten nagłówek i zwrócić nieskompresowane dane. |
+| Odebrać |Typ zawartości |Żądany typ zawartości dla odpowiedzi, na przykład następujące:<p> -application/json;odata=verbose<p> -Application/Atom + XML<p> Odpowiedzi mogą mieć inny typ zawartości, taki jak pobieranie obiektów blob, gdzie pomyślnie odpowiedź zawiera strumień obiektów BLOB jako ładunek. |
+| Akceptuj — kodowanie |Gzip, Wklęśnięcie |Kodowanie GZIP i WKLĘŚNIĘCIE, jeśli ma zastosowanie. Uwaga: w przypadku dużych zasobów Media Services może zignorować ten nagłówek i zwrócić nieskompresowane dane. |
 | Zaakceptuj — język |"pl", "es" i tak dalej. |Określa preferowany język odpowiedzi. |
 | Accept-Charset |Typ charset, taki jak "UTF-8" |Wartość domyślna to UTF-8. |
 | X-HTTP-Metoda |Metoda HTTP |Zezwala klientom lub zaporom, które nie obsługują metod HTTP, takich jak PUT lub DELETE, do korzystania z tych metod, tunelowanie za pośrednictwem wywołania GET. |
@@ -104,7 +104,7 @@ Poniżej znajduje się kompletna lista zleceń HTTP, które mogą być używane 
 | PUT |Zastępuje obiekt lub tworzy nazwany obiekt (jeśli ma zastosowanie). |
 | DELETE |Usuwa obiekt. |
 | POŁĄCZENIE |Aktualizuje istniejący obiekt o nazwanych zmianach właściwości. |
-| HEAD |Zwraca metadane obiektu dla odpowiedzi GET. |
+| MTP |Zwraca metadane obiektu dla odpowiedzi GET. |
 
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Odnajdywanie i przeglądanie modelu jednostki Media Services
 Aby Media Services jednostki były bardziej wykrywalne, można użyć $metadata operacji. Umożliwia pobranie wszystkich prawidłowych typów jednostek, właściwości jednostek, skojarzeń, funkcji, akcji i tak dalej. Przez dodanie $metadata operacji do końca punktu końcowego interfejsu API REST Media Services, można uzyskać dostęp do tej usługi odnajdywania.

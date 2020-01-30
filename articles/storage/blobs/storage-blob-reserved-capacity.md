@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3f9a1cfa92ffa454758849f52cc1977cef6df63a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981827"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768398"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optymalizowanie kosztów magazynu obiektów BLOB przy użyciu zarezerwowanej pojemności
 
@@ -54,7 +54,7 @@ Aby zakupić zastrzeżoną pojemność:
 
 - Musisz być w roli **właściciela** dla co najmniej jednej subskrypcji przedsiębiorstwa lub indywidualnej, która ma stawki płatność zgodnie z rzeczywistym użyciem.
 - W przypadku subskrypcji przedsiębiorstwa w portalu EA należy włączyć opcję **Dodawanie wystąpień zarezerwowanych** . Jeśli to ustawienie jest wyłączone, musisz być administratorem EA w subskrypcji.
-- W przypadku programu Cloud Solution Provider (CSP) tylko agenci administracyjni lub agenci sprzedaży mogą kupować Azure Cosmos DB zarezerwowaną pojemność.
+- W przypadku programu Cloud Solution Provider (CSP) tylko agenci administracyjni lub agenci sprzedaży mogą kupić zarezerwowaną pojemność platformy Azure Blob Storage.
 
 ## <a name="determine-required-capacity-before-purchase"></a>Określ wymaganą pojemność przed zakupem
 
@@ -85,7 +85,7 @@ Wykonaj następujące kroki, aby zakupić zastrzeżoną pojemność:
    | **Nadmiarowości** | Opcja nadmiarowości dla rezerwacji. Dostępne opcje to *LRS*, *ZRS*, *GRS*i *RA-GZRS*. Aby uzyskać więcej informacji na temat opcji nadmiarowości, zobacz [nadmiarowość usługi Azure Storage](../common/storage-redundancy.md). |
    | **Częstotliwość rozliczeń** | Wskazuje, jak często konto jest rozliczane dla rezerwacji. Opcje obejmują *co miesiąc* lub z *góry*. |
    | **Rozmiar** | Region, w którym rezerwacja jest obowiązująca. |
-   |**Termin**  | Jeden rok lub trzy lata.   |
+   |**Mandat**  | Jeden rok lub trzy lata.   |
 
 1. Po wybraniu parametrów dla rezerwacji Azure Portal zostanie wyświetlony koszt. W portalu jest również pokazywana wartość procentowa rabatu w porównaniu z płatnościami zgodnie z rzeczywistym użyciem.
 

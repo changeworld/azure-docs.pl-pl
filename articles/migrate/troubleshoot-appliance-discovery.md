@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289530"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772029"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Rozwiązywanie problemów z urządzeniem Azure Migrate i odnajdywanie
 
@@ -85,7 +85,7 @@ Jeśli wystąpi błąd połączenia, może nie być możliwe nawiązanie połąc
 Jeśli zostanie wyświetlony błąd 60030 lub 60031, "Azure Key Vault operacji zarządzania nie powiodła się", wykonaj następujące czynności:
 - Upewnij się, że konto użytkownika platformy Azure używane do zarejestrowania urządzenia ma co najmniej uprawnienia współautora w ramach subskrypcji.
 - Upewnij się, że konto ma dostęp do magazynu kluczy określonego w komunikacie o błędzie, a następnie spróbuj ponownie wykonać operację.
-- Jeśli problem będzie się powtarzał, skontaktuj się z pomocą techniczną firmy Microsoft.
+- Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) o wymaganych rolach i uprawnieniach platformy Azure.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Błąd 60028: nie można zainicjować odnajdywania
@@ -131,7 +131,7 @@ Jeśli to nie zadziała, a będziesz odnajdywać serwery VMware:
 
 ## <a name="vm-data-not-in-portal"></a>Dane maszyny wirtualnej nie są w portalu
 
-Jeśli odnalezione maszyny wirtualne nie są wyświetlane w portalu, odczekaj kilka minut. Odnalezienie danych w portalu może potrwać do 30 minut. Jeśli nie ma danych po 30 minutach, spróbuj odświeżyć w następujący sposób.
+Jeśli odnalezione maszyny wirtualne nie są wyświetlane w portalu lub dane maszyny wirtualnej są nieaktualne, odczekaj kilka minut. Zmiany w wykrytych konfiguracjach maszyn wirtualnych mogą pojawić się w portalu dopiero po 30 minutach. Zmiany w danych aplikacji mogą pojawić się dopiero po kilku godzinach. Jeśli po tym czasie nie ma danych, spróbuj odświeżyć w następujący sposób.
 
 1. W obszarze **serwery** > **oceny serwera Azure Migrate**wybierz pozycję **Przegląd**.
 2. W obszarze **Zarządzaj**wybierz pozycję **Agent Health**.
@@ -166,7 +166,8 @@ Typowe błędy odnajdowania aplikacji zostały podsumowane w tabeli.
 9009: "nie można pobrać aplikacji zainstalowanych na serwerze". | Może wystąpić, jeśli ustawienia kontroli konta użytkownika systemu Windows (UAC) na serwerze są restrykcyjne i uniemożliwiają odnajdywanie zainstalowanych aplikacji. | Wyszukaj ustawienia "Kontrola konta użytkownika" na serwerze i skonfiguruj ustawienie UAC na serwerze na jednym z niższych poziomów.
 9010: "nie można pobrać aplikacji zainstalowanych na serwerze". | Może być błędem wewnętrznym.  | TF problem nie rozwiąże się w ciągu 24 godzin, skontaktuj się z pomocą techniczną.
 8084: "nie można odnaleźć aplikacji z powodu błędu VMware: <Exception from VMware>" | Urządzenie Azure Migrate używa interfejsów API VMware do odnajdywania aplikacji. Ten problem może wystąpić, jeśli wyjątek jest zgłaszany przez vCenter Server podczas próby odnalezienia aplikacji. W oknie portalu zostanie wyświetlony komunikat o błędzie z programu VMware. | Wyszukaj komunikat w [dokumentacji programu VMware](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)i postępuj zgodnie z instrukcjami, aby rozwiązać ten problem. Jeśli nie możesz rozwiązać tego problemu, skontaktuj się z pomocą techniczną firmy Microsoft.
-
+9012: "nie można odnaleźć aplikacji zainstalowanych na serwerze" | Problem może wystąpić z powodu błędu wewnętrznego.  | Jeśli problem nie rozwiąże się w ciągu 24 godzin, skontaktuj się z pomocą techniczną.
+9013: "nie można odnaleźć aplikacji zainstalowanych na serwerze" | Nowy profil tymczasowy jest tworzony za każdym razem, gdy loguje się do maszyny wirtualnej.  | Upewnij się, że dla podanego użytkownika-gościa nie został utworzony profil tymczasowy.
 
 
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867666"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841118"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Samouczek: uczenie i wdrażanie modelu z poziomu interfejsu wiersza polecenia
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -246,7 +246,7 @@ Dane wyjściowe tego polecenia są podobne do następujących:
 > [!IMPORTANT]
 > Skopiuj wartość wpisu `id`, ponieważ jest ona używana w następnej sekcji.
 
-Aby zapoznać się z bardziej szczegółowym szablonem pliku JSON opisującym zestaw danych, użyj następującego polecenia:
+Aby wyświetlić bardziej szczegółowy szablon zestawu danych, użyj następującego polecenia:
 ```azurecli-interactive
 az ml dataset register --show-template
 ```
@@ -288,7 +288,7 @@ data:
 
 Zmień wartość wpisu `id`, aby odpowiadała wartości zwróconej podczas rejestrowania zestawu danych. Ta wartość jest używana do ładowania danych do obiektu docelowego obliczeń podczas szkolenia.
 
-YAML wykonuje następujące czynności:
+Ta YAML skutkuje następującymi akcjami podczas szkoleń:
 
 * Instaluje zestaw danych (na podstawie identyfikatora zestawu danych) w środowisku szkoleniowym i zapisuje ścieżkę do punktu instalacji w zmiennej środowiskowej `mnist`.
 * Przekazuje lokalizację danych (punkt instalacji) w środowisku szkoleniowym do skryptu przy użyciu argumentu `--data-folder`.
@@ -298,7 +298,7 @@ Plik runconfig zawiera również informacje służące do konfigurowania środow
 > [!TIP]
 > Chociaż istnieje możliwość ręcznego utworzenia pliku runconfig, w tym przykładzie został utworzony za pomocą pliku `generate-runconfig.py` zawartego w repozytorium. Ten plik pobiera odwołanie do zarejestrowanego zestawu danych, tworzy konfigurację uruchomieniową programowo, a następnie utrwala ją z plikiem.
 
-Aby uzyskać więcej informacji na temat uruchamiania plików konfiguracji, zobacz [Konfigurowanie elementów docelowych obliczeń i używanie ich do uczenia modelu](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)lub odwoływanie się do tego [pliku JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) , aby zobaczyć pełny schemat dla runconfig.
+Aby uzyskać więcej informacji na temat uruchamiania plików konfiguracji, zobacz [Konfigurowanie elementów docelowych obliczeń i używanie ich do uczenia modelu](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). Aby uzyskać pełne odwołanie JSON, zobacz plik [runconfigschema. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
 
 ## <a name="submit-the-training-run"></a>Prześlij przebieg szkolenia
 
@@ -379,7 +379,9 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 To polecenie służy do wdrażania nowej usługi o nazwie `myservice`przy użyciu wersji 1 modelu, który został wcześniej zarejestrowany.
 
-Plik `inferenceConfig.yml` zawiera informacje dotyczące sposobu wykonywania wnioskowania, takie jak skrypt wprowadzania (`score.py`) i zależności oprogramowania. Aby uzyskać więcej informacji na temat struktury tego pliku, zobacz [Schemat konfiguracji wnioskowania](reference-azure-machine-learning-cli.md#inference-configuration-schema). Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
+Plik `inferenceConfig.yml` zawiera informacje dotyczące sposobu używania modelu do wnioskowania. Na przykład odwołuje się do skryptu wejścia (`score.py`) i zależności oprogramowania. 
+
+Aby uzyskać więcej informacji na temat struktury tego pliku, zobacz [Schemat konfiguracji wnioskowania](reference-azure-machine-learning-cli.md#inference-configuration-schema). Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
 
 `aciDeploymentConfig.yml` opisuje środowisko wdrożenia używane do hostowania usługi. Konfiguracja wdrożenia jest specyficzna dla typu obliczenia używanego na potrzeby wdrożenia. W takim przypadku używane jest wystąpienie kontenera platformy Azure. Aby uzyskać więcej informacji, zobacz [Schemat konfiguracji wdrożenia](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 

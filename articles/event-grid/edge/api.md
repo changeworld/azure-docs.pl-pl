@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ee2b3a35b6f1817b89541a31d0bde4adf00ade2a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992537"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841833"
 ---
 # <a name="rest-api"></a>Interfejs API REST
 W tym artykule opisano interfejsy API REST Azure Event Grid na IoT Edge
@@ -183,6 +183,7 @@ Przykłady w tej sekcji wykorzystują `EndpointType=Webhook;`. Przykłady JSON d
             "eventExpiryInMinutes": 120,
             "maxDeliveryAttempts": 50
         },
+        "persistencePolicy": "true",
         "destination":
         {
             "endpointType": "WebHook",
@@ -527,7 +528,7 @@ Przykłady w tej sekcji wykorzystują `EndpointType=Webhook;`. Przykłady JSON d
 
 **Opisy pól ładunku**
 - ```Id``` jest obowiązkowy. Może to być dowolna wartość ciągu, która jest wypełniana przez obiekt wywołujący. Event Grid nie wykonuje żadnych zduplikowanych wykryć ani nie wymusza żadnej semantyki tego pola.
-- ```Topic``` jest opcjonalne, ale jeśli określony musi odpowiadać topic_name z adresu URL żądania
+- ```Topic``` jest opcjonalne, ale jeśli określony musi być zgodny z topic_name z adresu URL żądania
 - ```Subject``` jest obowiązkowy, może być dowolną wartością ciągu
 - ```EventType``` jest obowiązkowy, może być dowolną wartością ciągu
 - ```EventTime``` jest obowiązkowy, nie jest on zweryfikowany, ale powinien być prawidłowym obiektem DateTime.
@@ -686,3 +687,93 @@ SasKey:
 Temat:
 - Jeśli subskrypcja. EventDeliverySchema ma wartość EventGridSchema, wartość z tego pola jest umieszczana w polu tematu każdego zdarzenia przed przekazaniem do Event Grid w chmurze.
 - Jeśli wartość Subscription. EventDeliverySchema jest ustawiona na CustomEventSchema, ta właściwość jest ignorowana, a ładunek zdarzenia niestandardowego jest przekazywany dokładnie tak, jak został odebrany.
+
+## <a name="set-up-event-hubs-as-a-destination"></a>Skonfiguruj Event Hubs jako lokalizację docelową
+
+Aby opublikować w centrum zdarzeń, ustaw `endpointType` na `eventHub` i podaj:
+
+* connectionString: parametry połączenia dla określonego centrum zdarzeń, które są przeznaczone do wygenerowania za pośrednictwem zasad dostępu współdzielonego.
+
+    >[!NOTE]
+    > Parametry połączenia muszą być specyficzne dla jednostki. Używanie parametrów połączenia z przestrzenią nazw nie będzie działało. Parametry połączenia specyficzne dla jednostki można wygenerować, przechodząc do określonego centrum zdarzeń, które chcesz opublikować w witrynie Azure Portal, a następnie klikając pozycję **zasady dostępu współdzielonego** , aby wygenerować nowy ciąg connecection specyficzny dla jednostki.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "eventHub",
+              "properties": {
+                "connectionString": "<your-event-hub-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-queues-as-a-destination"></a>Skonfiguruj kolejki Service Bus jako miejsce docelowe
+
+Aby opublikować w kolejce Service Bus, ustaw `endpointType` na `serviceBusQueue` i podaj:
+
+* connectionString: parametry połączenia dla konkretnej kolejki Service Bus są generowane przez zasady dostępu współdzielonego.
+
+    >[!NOTE]
+    > Parametry połączenia muszą być specyficzne dla jednostki. Używanie parametrów połączenia z przestrzenią nazw nie będzie działało. Wygeneruj parametry połączenia specyficzne dla jednostki, przechodząc do konkretnej kolejki Service Bus, w której chcesz opublikować w witrynie Azure Portal, a następnie klikając pozycję **zasady dostępu współdzielonego** , aby wygenerować nowy ciąg connecection specyficzny dla jednostki.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusQueue",
+              "properties": {
+                "connectionString": "<your-service-bus-queue-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-topics-as-a-destination"></a>Skonfiguruj Service Bus tematy jako miejsce docelowe
+
+Aby opublikować w temacie Service Bus, ustaw `endpointType` na `serviceBusTopic` i podaj:
+
+* connectionString: parametry połączenia dla określonego tematu Service Bus, które są przeznaczone do wygenerowania w ramach zasad dostępu współdzielonego.
+
+    >[!NOTE]
+    > Parametry połączenia muszą być specyficzne dla jednostki. Używanie parametrów połączenia z przestrzenią nazw nie będzie działało. Wygeneruj parametry połączenia specyficzne dla jednostki, przechodząc do określonego tematu Service Bus, w którym chcesz opublikować w witrynie Azure Portal, a następnie klikając pozycję **zasady dostępu współdzielonego** , aby wygenerować nowy ciąg connecection specyficzny dla jednostki.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusTopic",
+              "properties": {
+                "connectionString": "<your-service-bus-topic-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-storage-queues-as-a-destination"></a>Skonfiguruj kolejki magazynu jako lokalizację docelową
+
+Aby opublikować w kolejce magazynu, ustaw `endpointType` na `storageQueue` i podaj:
+
+* QueueName: Nazwa kolejki magazynu, w której jest publikowany.
+* connectionString: parametry połączenia dla konta magazynu, w którym znajduje się kolejka magazynu.
+
+    >[!NOTE]
+    > Nieliniowe Event Hubs, kolejki Service Bus i tematy Service Bus, parametry połączenia używane dla kolejek magazynu nie są specyficzne dla jednostki. Zamiast tego należy użyć parametrów połączenia dla konta magazynu.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "storageQueue",
+              "properties": {
+                "queueName": "<your-storage-queue-name>",
+                "connectionString": "<your-storage-account-connection-string>"
+              }
+            }
+          }
+        }
+    ```

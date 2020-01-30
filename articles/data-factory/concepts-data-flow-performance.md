@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/25/2020
+ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444524"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773844"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący wydajności i dostrajania przepływu danych
 
@@ -129,6 +129,12 @@ Ustawianie przepływności i właściwości partii w ujściach CosmosDB zacznie 
 * Rozmiar wsadu: Oblicz przybliżony rozmiar wiersza danych i upewnij się, że rozmiar wsadu rowSize * jest mniejszy niż 2 000 000. Jeśli tak, Zwiększ rozmiar partii, aby uzyskać lepszą przepływność
 * Przepływność: w tym miejscu ustaw wyższą wartość ustawienia przepływności, aby zezwolić na szybsze pisanie dokumentów w programie CosmosDB. Pamiętaj o wyższych kosztach RU na podstawie ustawień o wysokiej przepływności.
 *   Zapisz budżet przepływności: Użyj wartości, która jest mniejsza niż łączna liczba jednostek ru na minutę. Jeśli istnieje przepływ danych o dużej liczbie partycji platformy Spark, ustawienie przepływności budżetu pozwoli na zwiększenie równowagi między tymi partycjami.
+
+## <a name="join-performance"></a>Przyłączanie wydajności
+
+Zarządzanie wydajnością sprzężeń w przepływie danych jest bardzo powszechną operacją wykonywaną w całym cyklu życia przekształceń danych. W podajniku ADF przepływy danych nie wymagają sortowania danych przed sprzężeniem, ponieważ te operacje są wykonywane jako sprzężenia skrótu w platformie Spark. Można jednak skorzystać z ulepszonej wydajności dzięki optymalizacji sprzężenia "broadcast". Pozwoli to uniknąć przetworzenia wartości losowych przez wypchnięcie zawartości obu stron relacji sprzężenia do węzła Spark. Jest to dobre rozwiązanie w przypadku mniejszych tabel, które są używane do wyszukiwania odwołań. Większe tabele, które mogą nie pasować do pamięci węzła, nie są dobrymi kandydatami do optymalizacji emisji.
+
+Inną optymalizacją sprzężenia jest skompilowanie sprzężeń w taki sposób, aby uniknąć tendencji platformy Spark w celu zaimplementowania sprzężenia krzyżowego. Na przykład po dołączeniu wartości literału w warunkach sprzężenia platforma Spark może zobaczyć, że jako wymaganie najpierw wykonać pełny kartezjańskiego produkt, a następnie odfiltrować połączone wartości. Ale jeśli masz pewność, że masz wartości kolumn po obu stronach warunku sprzężenia, możesz uniknąć tego kartezjańskiegoego produktu platformy Spark i zwiększyć wydajność sprzężeń i przepływów danych.
 
 ## <a name="next-steps"></a>Następne kroki
 

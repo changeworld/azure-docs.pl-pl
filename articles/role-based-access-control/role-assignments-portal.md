@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 17a325e96e9709b60da2f23d1dc68e3300fde80c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4003e11120c13624379cf7dad9334e896cd3a7a8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707863"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774707"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Dodawanie lub usuwanie przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure Portal
 
@@ -33,9 +33,9 @@ Aby dodać lub usunąć przypisania ról, musisz mieć:
 
 - uprawnienia `Microsoft.Authorization/roleAssignments/write` i `Microsoft.Authorization/roleAssignments/delete`, takie jak [administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) lub [właściciel](built-in-roles.md#owner)
 
-## <a name="overview-of-access-control-iam"></a>Przegląd kontroli dostępu (IAM)
+## <a name="access-control-iam"></a>Kontrola dostępu (IAM)
 
-**Kontrola dostępu (IAM)** to blok, który służy do przypisywania ról. Jest on również znany jako Zarządzanie tożsamościami i dostępem i pojawia się w kilku lokalizacjach w Azure Portal. Poniżej przedstawiono przykład bloku kontroli dostępu (IAM) dla subskrypcji.
+**Kontrola dostępu (IAM)** to blok służący do przypisywania ról w celu udzielania dostępu do zasobów platformy Azure. Jest on również znany jako Zarządzanie tożsamościami i dostępem i pojawia się w kilku lokalizacjach w Azure Portal. Poniżej przedstawiono przykład bloku kontroli dostępu (IAM) dla subskrypcji.
 
 ![Blok kontroli dostępu (IAM) dla subskrypcji](./media/role-assignments-portal/access-control-subscription.png)
 
@@ -55,21 +55,25 @@ Aby najbardziej efektywnie korzystać z bloku kontroli dostępu (IAM), można uz
 
 ## <a name="add-a-role-assignment"></a>Dodawanie przypisania roli
 
-Wykonaj następujące kroki, aby przypisać rolę w różnych zakresach.
+W celu udzielenia dostępu do zasobu platformy Azure w usłudze Azure RBAC należy dodać przypisanie roli. Wykonaj następujące kroki, aby przypisać rolę.
 
-1. W Azure Portal kliknij pozycję **wszystkie usługi** , a następnie wybierz zakres. Można na przykład wybrać **grupy zarządzania**, **subskrypcje**, **grupy zasobów**lub zasób.
+1. W Azure Portal kliknij pozycję **wszystkie usługi** , a następnie wybierz zakres, do którego chcesz udzielić dostępu. Można na przykład wybrać **grupy zarządzania**, **subskrypcje**, **grupy zasobów**lub zasób.
 
-1. Kliknij konkretny zasób.
+1. Kliknij konkretny zasób dla tego zakresu.
 
 1. Kliknij pozycję **Kontrola dostępu (IAM)** .
 
-1. Kliknij kartę **przypisania roli** , aby wyświetlić wszystkie przypisania ról w tym zakresie.
+1. Kliknij kartę **przypisania roli** , aby wyświetlić przypisania ról w tym zakresie.
 
-1. Kliknij pozycję **Dodaj** > **Dodaj przypisanie roli**, aby otworzyć okienko Dodawanie przypisania roli.
+    ![Kontrola dostępu (IAM) i przypisywanie ról — karta](./media/role-assignments-portal/role-assignments.png)
+
+1. Kliknij pozycję **dodaj** > **Dodaj przypisanie roli**.
 
    Jeśli nie masz uprawnień do przypisywania ról, opcja Dodaj przypisanie roli będzie wyłączona.
 
    ![Menu Dodaj](./media/role-assignments-portal/add-menu.png)
+
+    Zostanie otwarte okienko Dodawanie przypisania roli.
 
    ![Okienko Dodawanie przypisania roli](./media/role-assignments-portal/add-role-assignment.png)
 
@@ -81,23 +85,29 @@ Wykonaj następujące kroki, aby przypisać rolę w różnych zakresach.
 
    Po kilku chwilach podmiot zabezpieczeń ma przypisaną rolę w wybranym zakresie.
 
+    ![Zapisano dodanie przypisania roli](./media/role-assignments-portal/add-role-assignment-save.png)
+
 ## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Przypisywanie użytkownika jako administratora subskrypcji
 
 Aby użytkownik był administratorem subskrypcji platformy Azure, przypisz im rolę [właściciela](built-in-roles.md#owner) w zakresie subskrypcji. Rola właściciela daje użytkownikowi pełny dostęp do wszystkich zasobów w ramach subskrypcji, w tym uprawnienia do udzielania dostępu innym osobom. Te kroki są takie same jak w przypadku innych przypisań ról.
 
 1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
 
-1. Kliknij subskrypcję, w której chcesz dodać przypisanie roli.
+1. Kliknij subskrypcję, do której chcesz udzielić dostępu.
 
 1. Kliknij pozycję **Kontrola dostępu (IAM)** .
 
-1. Kliknij kartę **Przypisania ról**, aby wyświetlić wszystkie przypisania ról dla tej subskrypcji.
+1. Kliknij kartę **przypisania ról** , aby wyświetlić przypisania ról dla tej subskrypcji.
 
-1. Kliknij pozycję **Dodaj** > **Dodaj przypisanie roli**, aby otworzyć okienko Dodawanie przypisania roli.
+    ![Kontrola dostępu (IAM) i przypisywanie ról — karta](./media/role-assignments-portal/role-assignments.png)
+
+1. Kliknij pozycję **dodaj** > **Dodaj przypisanie roli**.
 
    Jeśli nie masz uprawnień do przypisywania ról, opcja Dodaj przypisanie roli będzie wyłączona.
 
    ![Menu Dodaj](./media/role-assignments-portal/add-menu.png)
+
+    Zostanie otwarte okienko Dodawanie przypisania roli.
 
    ![Okienko Dodawanie przypisania roli](./media/role-assignments-portal/add-role-assignment.png)
 
@@ -111,7 +121,7 @@ Aby użytkownik był administratorem subskrypcji platformy Azure, przypisz im ro
 
 ## <a name="remove-a-role-assignment"></a>Usuwanie przypisania roli
 
-Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się przypisanie roli. Wykonaj następujące kroki, aby usunąć przypisanie roli.
+W celu usunięcia dostępu z zasobów platformy Azure w usłudze Azure RBAC należy usunąć przypisanie roli. Wykonaj następujące kroki, aby usunąć przypisanie roli.
 
 1. Otwórz **kontrolę dostępu (IAM)** w zakresie, na przykład grupy zarządzania, subskrypcji, grupy zasobów lub zasobu, w której chcesz usunąć dostęp.
 
@@ -127,7 +137,7 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 
 1. W wyświetlonym komunikacie dotyczącym usuwania przypisania roli wybierz pozycję **Tak**.
 
-    Dziedziczonych przypisań ról nie można usunąć. Aby usunąć odziedziczone przypisanie roli, należy to zrobić w zakresie, w którym je utworzono. W kolumnie **zakres** obok **(Odziedziczone)** znajduje się łącze umożliwiające przejście do zakresu, w którym ta rola została przypisana. Przejdź do zakresu wskazanego w tym miejscu, aby usunąć przypisanie roli.
+    Jeśli zobaczysz komunikat, że nie można usunąć przypisań ról dziedziczonych, próbujesz usunąć przypisanie roli w zakresie podrzędnym. Należy otworzyć kontrolę dostępu (IAM) w zakresie, w którym rola została przypisana, i ponowić próbę. Szybkim sposobem otwarcia kontroli dostępu (IAM) w prawidłowym zakresie jest Przyjrzyj się kolumnie **zakres** i kliknij łącze obok **(Odziedziczone)** .
 
    ![Komunikat dotyczący usuwania przypisania roli](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 

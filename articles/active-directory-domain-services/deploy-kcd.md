@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705276"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772534"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurowanie ograniczonego delegowania protokołu Kerberos (KCD) w Azure Active Directory Domain Services
 
-Podczas uruchamiania aplikacji może być konieczne, aby te aplikacje miały dostęp do zasobów w kontekście innego użytkownika. Active Directory Domain Services (AD DS) obsługuje mechanizm o nazwie *delegowanie protokołu Kerberos* , który umożliwia użycie tego przypadku. *Ograniczone* delegowanie protokołu Kerberos (KCD) następnie kompiluje ten mechanizm w celu zdefiniowania określonych zasobów, do których można uzyskać dostęp w kontekście użytkownika. Domeny zarządzane Azure Active Directory Domain Services (Azure AD DS) są bezpiecznie zablokowane w tradycyjnych lokalnych środowiskach AD DS, dlatego należy używać bezpieczniejszego KCD *opartego na zasobach* .
+Podczas uruchamiania aplikacji może być konieczne, aby te aplikacje miały dostęp do zasobów w kontekście innego użytkownika. Active Directory Domain Services (AD DS) obsługuje mechanizm o nazwie *delegowanie protokołu Kerberos* , który umożliwia użycie tego przypadku. *Ograniczone* delegowanie protokołu Kerberos (KCD) następnie kompiluje ten mechanizm w celu zdefiniowania określonych zasobów, do których można uzyskać dostęp w kontekście użytkownika. Domeny zarządzane Azure Active Directory Domain Services (Azure AD DS) są bardziej bezpiecznie zablokowane niż tradycyjne środowiska AD DS lokalnego, dlatego należy użyć bezpieczniejszego KCD *opartego na zasobach* .
 
 W tym artykule opisano sposób konfigurowania ograniczonego delegowania protokołu Kerberos opartego na zasobach w domenie zarządzanej AD DS platformy Azure.
 

@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB interfejs API tabel zestawu .NET SDK & zasobów
 description: Dowiedz się wszystkiego o usłudze Azure Cosmos DB interfejsu API tabel tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 5e98c40384207c77b4ea7e9557a7d1ebebd95e47
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5a5305ffd388d2573d250d93131c1fed236008b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058587"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771631"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Interfejs API platformy .NET tabeli Azure Cosmos DB: Informacje dotyczące pobierania i zwalniania
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Interfejs API platformy .NET tabeli Azure Cosmos DB: pobieranie i informacje o wersji
 
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
@@ -27,7 +27,7 @@ ms.locfileid: "71058587"
 |   |   |
 |---|---|
 |**Zestaw SDK do pobrania**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**Szybki start**|[Azure Cosmos DB: Tworzenie aplikacji przy użyciu platformy .NET i interfejs API tabel](create-table-dotnet.md)|
+|**Szybki start**|[Azure Cosmos DB: kompilowanie aplikacji za pomocą platformy .NET i interfejs API tabel](create-table-dotnet.md)|
 |**Samouczek**|[Azure Cosmos DB: Programowanie przy użyciu interfejs API tabel na platformie .NET](tutorial-develop-table-dotnet.md)|
 |**Bieżącej struktury obsługiwanej**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
@@ -80,14 +80,14 @@ ms.locfileid: "71058587"
 
 Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** przed WYCOFANIEM zestawu SDK w celu zapewnienia sprawnego przejścia do nowszej/obsługiwanej wersji.
 
-`Microsoft.Azure.CosmosDB.Table` Biblioteka jest obecnie dostępna tylko dla .NET Framework i jest w trybie konserwacji i zostanie wkrótce wycofana. Nowe funkcje i możliwości i optymalizacje są dodawane tylko do biblioteki .NET Standard [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table). w związku z tym zaleca się uaktualnienie do [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
+Biblioteka `Microsoft.Azure.CosmosDB.Table` jest obecnie dostępna tylko dla .NET Framework i jest w trybie konserwacji i zostanie wkrótce wycofana. Nowe funkcje i możliwości i optymalizacje są dodawane tylko do biblioteki .NET Standard [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table). w związku z tym zaleca się uaktualnienie do [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
 
 Pakiet [windowsazure. Storage-Premium](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) w wersji zapoznawczej został uznany za przestarzały. Zestaw SDK WindowsAzure. Storage-Premium zostanie wycofany 15 listopada 2018, gdy żądania do wycofanego zestawu SDK nie będą dozwolone. 
 
 Wszystkie żądania do Azure Cosmos DB za pomocą wycofanego zestawu SDK są odrzucane przez usługę.
 <br/>
 
-| Version | Data wydania | Data wygaśnięcia |
+| Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
 | [2.1.2](#2.1.2) |16 września 2019| |
 | [2.1.0](#2.1.0) |22 stycznia 2019|01 kwietnia 2020 |

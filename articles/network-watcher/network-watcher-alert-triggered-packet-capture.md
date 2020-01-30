@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: W tym artykule opisano sposób tworzenia alertu wyzwalającego przechwytywanie pakietów przy użyciu usługi Azure Network Watcher
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276133"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842941"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Używanie funkcji przechwytywania pakietów do aktywnego monitorowania sieci z alertami i Azure Functions
 
@@ -349,7 +347,7 @@ Przejdź do istniejącej maszyny wirtualnej, a następnie Dodaj regułę alertu.
   |**Nazwa**|TCP_Segments_Sent_Exceeded|Nazwa reguły alertu.|
   |**Opis**|Liczba wysłanych segmentów TCP przekroczyła próg|Opis reguły alertu.|
   |**Metryka**|Wysłane segmenty TCP| Metryka używana do wyzwalania alertu. |
-  |**Rozgrzewa**|Większe niż| Warunek, który ma być używany podczas oceniania metryki.|
+  |**Rozgrzewa**|Więcej niż| Warunek, który ma być używany podczas oceniania metryki.|
   |**Próg**|100| Wartość metryki wyzwalającej alert. Ta wartość powinna być ustawiona na prawidłową wartość dla danego środowiska.|
   |**Czasu**|W ciągu ostatnich pięciu minut| Określa okres, w którym ma być wyszukiwany próg dla metryki.|
   |**Elementu webhook**|[adres URL elementu webhook z aplikacji funkcji]| Adres URL elementu webhook z aplikacji funkcji, który został utworzony w poprzednich krokach.|

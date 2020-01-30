@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: f05be2725ef766bb1e5fd7f2624e754a2e21698a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563177"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772149"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub adresy IP
 
@@ -30,9 +30,11 @@ Prefiksy adresów IP IoT Hub publicznych punktów końcowych są publikowane okr
 
 * W przypadku dodawania reguł ZEZWALAnia w konfiguracji zapory urządzeń najlepiej jest podać określone [porty używane przez odpowiednie protokoły](./iot-hub-devguide-protocols.md#port-numbers).
 
-* Prefiksy adresów IP w usłudze IoT Hub mogą ulec zmianie. Te zmiany są okresowo publikowane za pośrednictwem tagów usługi przed rozpoczęciem działania. W związku z tym ważne jest, aby opracować procesy do regularnego pobierania i używania najnowszych tagów usługi. Ten proces można zautomatyzować za pomocą [interfejsu API odnajdywania tagów usług](../virtual-network/service-tags-overview.md#service-tags-on-premises).
+* Prefiksy adresów IP w usłudze IoT Hub mogą ulec zmianie. Te zmiany są okresowo publikowane za pośrednictwem tagów usługi przed rozpoczęciem działania. W związku z tym ważne jest, aby opracować procesy do regularnego pobierania i używania najnowszych tagów usługi. Ten proces można zautomatyzować za pomocą [interfejsu API odnajdywania tagów usług](../virtual-network/service-tags-overview.md#service-tags-on-premises). Należy pamiętać, że interfejs API odnajdowania tagów usług jest nadal w wersji zapoznawczej, a w niektórych przypadkach może nie być możliwe utworzenie pełnej listy tagów i adresów IP. Dopóki interfejs API odnajdowania jest ogólnie dostępny, należy rozważyć użycie [tagów usługi w formacie JSON do pobrania](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). 
 
 * Użyj *AzureIoTHub. [ Nazwa regionu]* tag do identyfikowania prefiksów IP używanych przez punkty końcowe Centrum IoT Hub w określonym regionie. W przypadku odzyskiwania po awarii centrum danych lub [regionalnej pracy w trybie failover](iot-hub-ha-dr.md) upewnij się również, że połączenie z PREFIKSAMI adresów IP w regionie pary geograficznej IoT Hub jest włączone.
+
+* Skonfigurowanie reguł zapory w IoT Hub może uniemożliwić nawiązywanie połączeń wymaganych do uruchamiania poleceń interfejsu wiersza polecenia platformy Azure i programu PowerShell w IoT Hub. Aby tego uniknąć, można dodać reguły ZEZWALAnia dla prefiksów adresów IP klientów, aby ponownie włączyć klienta interfejsu wiersza polecenia lub programu PowerShell w celu komunikowania się z IoT Hub.  
 
 
 ## <a name="limitations-and-workarounds"></a>Ograniczenia i obejścia

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 5eeb223601a3990ef899d7eea96378a8b2a28eee
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933527"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775014"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Przenosimy obrazy maszyn wirtualnych (VM) w witrynie Azure Marketplace do magazynu dyskowego zarządzanego
 
@@ -56,6 +56,10 @@ Zalecamy przeniesienie obrazów w zaplanowanym terminie. Jeśli jednak masz prob
 ### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Czy mogę publikować aktualizacje obrazów maszyn wirtualnych podczas przenoszenia?
 
 Podczas przenoszenia nie można wprowadzać aktualizacji obrazów maszyn wirtualnych.
+
+### <a name="will-the-publishing-process-change-after-my-vm-image-is-moved-to-managed-disk"></a>Czy proces publikowania zostanie zmieniony po przeniesieniu obrazu maszyny wirtualnej na dysk zarządzany?
+
+Nie, proces publikowania pozostanie taki sam. 
 
 ## <a name="next-steps"></a>Następne kroki
 

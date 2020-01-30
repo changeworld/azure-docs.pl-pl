@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: c8051126fc4a895c6e72e90942fac65d777afd8e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 01/27/2020
+ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546490"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841271"
 ---
 # <a name="summarize-data"></a>Podsumowywanie danych
 
@@ -59,7 +59,7 @@ Raport z modułu może zawierać następujące dane statystyczne.
 |**1. kwartyl**|Wartość przy pierwszym kwartyl|
 |**Mediana**|Wartość kolumny mediana|
 |**3. kwartyl**|Wartość przy trzecim kwartyl|
-|**Tryb**|Tryb wartości kolumn|
+|**Wyst**|Tryb wartości kolumn|
 |**Zakres**|Liczba całkowita reprezentująca liczbę wartości z zakresu wartości maksymalnej i minimalnej|
 |**WARIANCJA próbki**|WARIANCJA dla kolumny; Zobacz Uwaga|
 |**Przykładowe odchylenie standardowe**|Odchylenie standardowe dla kolumny; Zobacz Uwaga|
@@ -70,6 +70,20 @@ Raport z modułu może zawierać następujące dane statystyczne.
 |**P5**|5% percentyl|
 |**P95**|95% percentyl|
 |**P 99,5**|99,5% percentyl |
+
+## <a name="technical-notes"></a>Uwagi techniczne
+
+- W przypadku kolumn nieliczbowych są obliczane tylko wartości licznika, liczba unikatowych wartości i brakująca wartość. W przypadku innych statystyk zwracana jest wartość null.
+
+- Kolumny zawierające wartości logiczne są przetwarzane przy użyciu następujących reguł:
+
+    - Przy obliczaniu wartości minimalnej jest stosowana wartość logiczna i.
+    
+    - Podczas obliczania wartości Max, wartość logiczna lub jest stosowana
+    
+    - Podczas przetwarzania zakresu moduł najpierw sprawdza, czy liczba unikatowych wartości w kolumnie jest równa 2.
+    
+    - Podczas obliczania statystyk wymagającej obliczeń zmiennoprzecinkowych wartości true są traktowane jako 1,0, a wartości false są traktowane jako 0,0.
 
 ## <a name="next-steps"></a>Następne kroki
 

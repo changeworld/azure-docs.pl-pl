@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432312"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842405"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Rozwiązywanie problemów z uruchamianiem maszyn wirtualnych z systemem Linux z powodu błędów systemu plików
 
@@ -79,7 +79,7 @@ Aby rozwiązać ten problem, wykonaj rozruch maszyny wirtualnej w trybie awaryjn
 
 ## <a name="use-the-serial-console"></a>Korzystanie z konsoli szeregowej
 
-1. Nawiąż połączenie z konsolą szeregową.
+1. Łączenie z konsolą szeregową.
 
    > [!Note]
    > Aby uzyskać więcej informacji o korzystaniu z konsoli szeregowej dla systemu Linux, zobacz:
@@ -110,20 +110,20 @@ Aby rozwiązać ten problem, wykonaj rozruch maszyny wirtualnej w trybie awaryjn
 
    ```
    mkdir /temp
-   mount /dev/sda2 /temp
+   mount /dev/sda1 /temp
    ```
 
 8. Jeśli instalacja dysku nie powiedzie się, uruchom polecenie xfs_repair z opcją-L (Wymuś zero):
 
    ```
-   xfs_repair /dev/sda2 -L
+   xfs_repair /dev/sda1 -L
    ```
 
 9. Następnie spróbuj zainstalować system plików. Po pomyślnym zainstalowaniu dysku zostaną wyświetlone następujące dane wyjściowe:
  
    ```
-   XFS (sda2): Mounting V1 Filesystem
-   XFS (sda2): Ending clean mount
+   XFS (sda1): Mounting V1 Filesystem
+   XFS (sda1): Ending clean mount
    ```
 
 10. Uruchom ponownie maszynę wirtualną, a następnie sprawdź, czy problem został rozwiązany.
@@ -132,7 +132,7 @@ Aby rozwiązać ten problem, wykonaj rozruch maszyny wirtualnej w trybie awaryjn
     Reboot -f
     ```
 
-## <a name="repair-the-vm-offline"></a>Naprawianie maszyny wirtualnej w trybie offline
+## <a name="repair-the-vm-offline"></a>Napraw maszynę Wirtualną w tryb offline
 
 1. Dołącz dysk systemowy maszyny wirtualnej jako dysk danych do maszyny wirtualnej odzyskiwania (dowolna działająca maszyna wirtualna z systemem Linux). W tym celu można użyć [poleceń interfejsu wiersza polecenia](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) lub można zautomatyzować Konfigurowanie maszyny wirtualnej odzyskiwania przy użyciu [poleceń naprawy maszyny wirtualnej](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 

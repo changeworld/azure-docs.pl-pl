@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3401ed08a9332d4bb2735e536df33c201b28ca0e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711704"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841952"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Inicjowanie obsługi aplikacji opartej na atrybutach przy użyciu filtrów zakresu
 Celem tego artykułu jest wyjaśnienie, jak używać filtrów zakresu do definiowania reguł opartych na atrybutach, które określają, którzy użytkownicy są obsługiwani do aplikacji.
@@ -94,7 +94,12 @@ Filtry zakresu są konfigurowane jako część mapowań atrybutów dla każdego 
    g. **dopasowanie wyrażenia regularnego**. Klauzula zwraca wartość "true", jeśli oceniony atrybut pasuje do wzorca wyrażenia regularnego. Na przykład: ([1-9] [0-9]) dopasowuje dowolną liczbę z zakresu od 10 do 99.
 
    h. **nie pasuje do wyrażenia regularnego**. Klauzula zwraca wartość "true", jeśli oceniony atrybut nie jest zgodny ze wzorcem wyrażenia regularnego.
- 
+   
+   i. **Greater_Than.** Klauzula zwraca wartość "true", jeśli obliczony atrybut jest większy niż wartość. Wartość określona w filtrze zakresu musi być liczbą całkowitą, a atrybut na użytkowniku musi być liczbą całkowitą [0, 1, 2,...]. 
+   
+   j. **Greater_Than_OR_EQUALS.** Klauzula zwraca wartość "true", jeśli obliczony atrybut jest większy lub równy wartości. Wartość określona w filtrze zakresu musi być liczbą całkowitą, a atrybut na użytkowniku musi być liczbą całkowitą [0, 1, 2,...]. 
+
+
 >[!IMPORTANT] 
 > Filtry include i IsMemberOf nie są obsługiwane. Wkrótce zostaną usunięte z interfejsu użytkownika.
 

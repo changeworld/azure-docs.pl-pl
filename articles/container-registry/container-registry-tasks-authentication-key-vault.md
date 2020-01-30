@@ -1,14 +1,14 @@
 ---
 title: Uwierzytelnianie zewnętrzne z zadania ACR
-description: Włącz zarządzaną tożsamość zasobów platformy Azure w ramach zadania Azure Container Registry (ACR), aby umożliwić zadanie odczytywanie poświadczeń usługi Docker Hub przechowywanych w magazynie kluczy Azure.
+description: Skonfiguruj zadanie Azure Container Registry (zadanie ACR) w celu odczytania poświadczeń usługi Docker Hub przechowywanych w magazynie kluczy platformy Azure przy użyciu tożsamości zarządzanej dla zasobów platformy Azure.
 ms.topic: article
-ms.date: 07/12/2019
-ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/14/2020
+ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456223"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842524"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Uwierzytelnianie zewnętrzne w ACR zadania przy użyciu tożsamości zarządzanej przez platformę Azure 
 
@@ -20,7 +20,7 @@ Aby utworzyć zasoby platformy Azure, ten artykuł wymaga uruchomienia interfejs
 
 ## <a name="scenario-overview"></a>Omówienie scenariusza
 
-Przykładowe zadanie odczytuje poświadczenia usługi Docker Hub przechowywane w magazynie kluczy Azure. Poświadczenia dla konta usługi Docker Hub z uprawnieniami do zapisu (wypychania) do prywatnego repozytorium w usłudze Docker Hub. Aby odczytać poświadczenia, należy skonfigurować zadanie przy użyciu tożsamości zarządzanej i przypisać do niego odpowiednie uprawnienia. Zadanie skojarzone z tożsamością kompiluje obraz i loguje się do centrum Docker w celu wypchnięcia obrazu do repozytorium prywatnego. 
+Przykładowe zadanie odczytuje poświadczenia usługi Docker Hub przechowywane w magazynie kluczy Azure. Poświadczenia są przeznaczone dla konta usługi Docker Hub z uprawnieniami do zapisu (wypychania) do prywatnego repozytorium usługi Docker Hub. Aby odczytać poświadczenia, należy skonfigurować zadanie przy użyciu tożsamości zarządzanej i przypisać do niego odpowiednie uprawnienia. Zadanie skojarzone z tożsamością kompiluje obraz i loguje się do centrum Docker w celu wypchnięcia obrazu do repozytorium prywatnego. 
 
 W tym przykładzie przedstawiono kroki korzystające z tożsamości zarządzanej przypisanej przez użytkownika lub przypisanej do systemu. Wybór tożsamości zależy od potrzeb organizacji.
 
@@ -71,7 +71,7 @@ W rzeczywistym scenariuszu wpisy tajne byłyby prawdopodobnie ustawione i utrzym
 Kroki tego przykładowego zadania są zdefiniowane w [pliku YAML](container-registry-tasks-reference-yaml.md). Utwórz plik o nazwie `dockerhubtask.yaml` w lokalnym katalogu roboczym i wklej poniższą zawartość. Pamiętaj, aby zastąpić nazwę magazynu kluczy w pliku nazwą magazynu kluczy.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 # Replace mykeyvault with the name of your key vault
 secrets:
   - id: username
@@ -80,12 +80,12 @@ secrets:
     keyvault: https://mykeyvault.vault.azure.net/secrets/Password
 steps:
 # Log in to Docker Hub
-  - cmd: docker login --username '{{.Secrets.username}}' --password '{{.Secrets.password}}'
+  - cmd: bash echo '{{.Secrets.password}}' | docker login --username '{{.Secrets.username}}' --password-stdin 
 # Build image
-  - build: -t {{.Values.PrivateRepo}}:{{.Run.ID}} https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
+  - build: -t {{.Values.PrivateRepo}}:$ID https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
 # Push image to private repo in Docker Hub
   - push:
-    - {{.Values.PrivateRepo}}:{{.Run.ID}}
+    - {{.Values.PrivateRepo}}:$ID
 ```
 
 Kroki zadania wykonaj następujące czynności:
@@ -94,6 +94,7 @@ Kroki zadania wykonaj następujące czynności:
 * Uwierzytelnianie za pomocą narzędzia Docker Hub przez przekazanie wpisów tajnych do polecenia `docker login`.
 * Kompilowanie obrazu przy użyciu przykładowej pliku dockerfile w repozytorium [Azure-Samples/ACR-Tasks](https://github.com/Azure-Samples/acr-tasks.git) .
 * Wypchnij obraz do prywatnego repozytorium centrum platformy Docker.
+
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>Opcja 1. Tworzenie zadania z tożsamością przypisaną przez użytkownika
 
@@ -140,7 +141,10 @@ az acr task create \
 Uruchom następujące polecenie [AZ KeyBinding Set-Policy][az-keyvault-set-policy] , aby ustawić zasady dostępu w magazynie kluczy. Poniższy przykład umożliwia tożsamości odczytywanie wpisów tajnych z magazynu kluczy. 
 
 ```azurecli
-az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
 ```
 
 ## <a name="manually-run-the-task"></a>Ręczne uruchamianie zadania
@@ -148,7 +152,7 @@ az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --obje
 Aby sprawdzić, czy zadanie, w którym włączono tożsamość zarządzaną, zostało pomyślnie uruchomione, ręcznie Wyzwól zadanie przy użyciu polecenia [AZ ACR Task Run][az-acr-task-run] . Parametr `--set` służy do przekazywania nazwy repozytorium prywatnego do zadania. W tym przykładzie nazwa repozytorium zastępczego to *hubuser/hubrepo*.
 
 ```azurecli
-az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
+az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo
 ```
 
 Po pomyślnym uruchomieniu zadania dane wyjściowe pokazują pomyślne uwierzytelnienie w usłudze Docker Hub, a obraz został pomyślnie skompilowany i wypychany do repozytorium prywatnego:

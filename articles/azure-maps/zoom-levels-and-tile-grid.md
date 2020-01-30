@@ -3,26 +3,26 @@ title: Poziomy powiększenia i siatka kafelków | Mapy Microsoft Azure
 description: W tym artykule przedstawiono informacje na temat poziomów powiększenia i siatki kafelków w Microsoft Azure Maps.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6ee697ac9b7849a0231d9916c6fa8bc73ef7f9b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910771"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765838"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Poziomy powiększenia i siatka kafelków
 
-Azure Maps użyć układu współrzędnych rzutowania Merkatora (EPSG: 3857). Projekcja to model matematyczny używany do przekształcania sferycznego świata w mapę płaską. Rzutowanie sferycznej Merkatora rozciąga mapę w Poles w celu utworzenia mapy kwadratowej. Znacznie zniekształca to skalowanie i obszar mapy, ale ma dwie ważne właściwości, które przewyższają to zniekształcenie:
+Azure Maps użyć układu współrzędnych rzutowania Merkatora (EPSG: 3857). Projekcja to model matematyczny używany do przekształcania sferycznego świata w mapę płaską. Rzutowanie sferycznej Merkatora rozciąga mapę w Poles, aby utworzyć mapę kwadratową. Ta projekcja znacznie zniekształca skalę i powierzchnię mapy, ale ma dwie ważne właściwości, które przewyższają to zniekształcenie:
 
-- Jest to nieformalne rzutowanie, co oznacza, że zachowuje kształt stosunkowo małych obiektów. Jest to szczególnie ważne podczas wyświetlania zdjęć lotniczych, ponieważ chcemy unikać zniekształcania kształtu budynków. Budynki kwadratowe powinny być kwadratowe, a nie prostokątne.
-- Jest to projekcja cylindryczna, co oznacza, że północ i południe są zawsze proste i w dół, a Zachodnie i wschodnie są zawsze proste w lewo i w prawo. 
+- Jest to nieformalne rzutowanie, co oznacza, że zachowuje kształt stosunkowo małych obiektów. Zachowanie kształtu małych obiektów jest szczególnie ważne w przypadku wyświetlania zdjęć lotniczych. Na przykład chcemy unikać zniekształcania kształtu budynków. Budynki kwadratowe powinny być kwadratowe, a nie prostokątne.
+- Jest to rzutowanie cylindryczne. Północ i południe są zawsze w górę i w dół, a Zachodnie i wschodnie są zawsze w lewo i w prawo. 
 
-Aby zoptymalizować wydajność pobierania i wyświetlania mapy, mapa jest dzielona na kafelki kwadratowe. Kafelki z zestawu Azure Maps SDK mają rozmiar 512 x 512 pikseli dla map drogowych i mniejszą liczbę pikseli 256 x 256 w przypadku obrazów satelitarnych. Usługa Azure Maps udostępnia kafelki rastrowe i wektorowe na 23 poziomy powiększenia, numerowane od 0 do 22. Na poziomie powiększenia 0 cały świat mieści się na jednym kafelku:
+Aby zoptymalizować wydajność pobierania i wyświetlania mapy, mapa jest dzielona na kafelki kwadratowe. Kafelki z zestawu Azure Maps SDK mają rozmiar 512 x 512 pikseli dla map drogowych i mniejszą liczbę pikseli 256 x 256 w przypadku obrazów satelitarnych. Azure Maps udostępnia kafelki rastrowe i wektorowe dla 23 poziomów powiększenia, numerowane od 0 do 22. Na poziomie powiększenia 0 cały świat mieści się na jednym kafelku:
 
 <center>
 
@@ -36,7 +36,7 @@ Układ kafelka mapy ![2x2](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.p
 
 Każdy dodatkowy poziom powiększenia — dzieli kafelki z poprzedniego, tworząc siatkę<sup>z 2 powiększenia x 2</sup> <sup>powiększenia</sup>. Poziom powiększenia 22 to siatka 2<sup>22</sup> x 2<sup>22</sup>lub 4 194 304 x 4 194 304 (łącznie z 17 592 186 044 416 kafelków).
 
-Azure Maps formanty interaktywnej mapy dla sieci Web i systemu Android obsługują poziom 25 poziomów powiększenia, numerowane od 0 do 24. Chociaż dane dróg będą dostępne tylko na poziomach powiększenia w przypadku, gdy kafelki są dostępne.
+Azure Maps formanty interaktywnej mapy dla sieci Web i Android obsługują 25 poziomów powiększenia, numerowane od 0 do 24. Chociaż dane dróg będą dostępne tylko na poziomach powiększenia w przypadku, gdy kafelki są dostępne.
 
 Poniższa tabela zawiera pełną listę wartości dla poziomów powiększenia, w których rozmiar kafelka wynosi 512 pikseli:
 
@@ -70,7 +70,7 @@ Poniższa tabela zawiera pełną listę wartości dla poziomów powiększenia, w
 
 ## <a name="pixel-coordinates"></a>Współrzędne pikseli
 
-Jeśli wybrano projekcję i skalę do użycia na każdym poziomie powiększenia, możemy przekonwertować współrzędne geograficzne na współrzędne pikseli. Pełna szerokość i wysokość obrazu mapy świata dla określonego poziomu powiększenia można obliczyć jako:
+Jeśli wybrano projekcję i skalę do użycia na każdym poziomie powiększenia, możemy przekonwertować współrzędne geograficzne na współrzędne pikseli. Pełna szerokość i wysokość obrazu mapy świata dla określonego poziomu powiększenia jest obliczana jako:
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -82,9 +82,11 @@ Ponieważ szerokość i wysokość mapy jest różna na każdym poziomie powięk
 
 <center>
 
-Mapa ![pokazująca wymiary pikseli](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+![Mapa pokazująca wymiary pikseli](media/zoom-levels-and-tile-grid/map-width-height.png)
 
-Uwzględniając wartości szerokości i długości geograficznej (w stopniach) i poziom szczegółowości, współrzędne XY można obliczyć w następujący sposób:
+</center>
+
+W stopniach i poziomach szczegółowości danego typu i długości geograficznej, współrzędne XY są obliczane w następujący sposób:
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -94,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-Przyjmuje się, że wartości szerokości i długości geograficznej są WGS 84. Mimo że Azure Maps używa projekcji sferycznej, ważne jest, aby przekonwertować wszystkie współrzędne geograficzne na wspólną podstawę, a WGS 84 został wybrany jako ten Datum. Wartość długości geograficznej jest przyjmowana z zakresu od-180 do + 180 stopni, a wartość szerokości geograficznej musi być przycinana do zakresu od-85,05112878 do 85,05112878. Pozwala to uniknąć Singularity w Poles i powoduje, że projekt mapy jest kwadratowy.
+Przyjmuje się, że wartości szerokości i długości geograficznej są WGS 84. Mimo że Azure Maps używa projekcji sferycznej, ważne jest, aby przekonwertować wszystkie współrzędne geograficzne na wspólną podstawę. WGS 84 jest wybranym podstawą. Wartość długości geograficznej jest przyjmowana z zakresu od-180 stopni do + 180 stopni, a wartość szerokości geograficznej musi być przycinana do zakresu od-85,05112878 do 85,05112878. Przestrzeganie tych wartości pozwala uniknąć Singularity w Poles i gwarantuje, że mapa rzutowana jest kształtem kwadratowym.
 
 ## <a name="tile-coordinates"></a>Współrzędne kafelka
 
-Aby zoptymalizować wydajność pobierania i wyświetlania mapy, renderowane mapa jest obcinana do kafelków. Liczba pikseli zależy od poszczególnych poziomów powiększenia, dlatego liczba kafelków jest różna:
+Aby zoptymalizować wydajność pobierania i wyświetlania mapy, renderowane mapa jest obcinana do kafelków. Liczba pikseli i liczba kafelków różnią się na każdym poziomie powiększenia:
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -120,9 +122,9 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-Kafelki są wywoływane przez poziom powiększenia i współrzędne x i y odpowiadające położeniu kafelka na siatce dla tego poziomu powiększenia.
+Kafelki są wywoływane przez poziom powiększenia. Współrzędne x i y odpowiadają położeniu kafelka w siatce dla tego poziomu powiększenia.
 
-Podczas określania stopnia powiększenia, który ma być używany, pamiętaj, że każda lokalizacja znajduje się w stałej pozycji na kafelku. Oznacza to, że liczba kafelków wymaganych do wyświetlenia danego expanse terytorium zależy od określonego położenia siatki powiększenia na świecie. Na przykład jeśli dwa punkty 900 metrów od siebie, *może* minąć tylko trzy kafelki, aby wyświetlić trasę między nimi na poziomie powiększenia 17. Jeśli jednak punkt zachodni znajduje się po prawej stronie jego kafelka oraz punkt wschodni po lewej stronie jego kafelka, może on przyjmować cztery kafelki:
+Podczas określania stopnia powiększenia, który ma być używany, pamiętaj, że każda lokalizacja znajduje się w stałej pozycji na kafelku. W związku z tym liczba kafelków wymaganych do wyświetlenia danego expanse terytorium zależy od określonego położenia siatki powiększenia na mapie światowej. Na przykład jeśli dwa punkty 900 metrów od siebie, *może* minąć tylko trzy kafelki, aby wyświetlić trasę między nimi na poziomie powiększenia 17. Jeśli jednak punkt zachodni znajduje się po prawej stronie jego kafelka oraz punkt wschodni po lewej stronie jego kafelka, może on przyjmować cztery kafelki:
 
 <center>
 

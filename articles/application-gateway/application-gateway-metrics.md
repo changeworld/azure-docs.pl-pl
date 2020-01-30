@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12759deb3e1775b5170d40cc609fe8c6226bf0d6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a8882a810d18d06b33d6382bd8bd86ffe75b39d8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704582"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766802"
 ---
 # <a name="metrics-for-application-gateway"></a>Metryki dla Application Gateway
 
@@ -22,7 +22,9 @@ Application Gateway publikuje punkty danych o nazwie Metrics, aby [Azure monitor
 
 ### <a name="timing-metrics"></a>Metryki chronometrażu
 
-Dostępne są następujące metryki związane z chronometrażem żądania i odpowiedzi. Analizując te metryki dla określonego odbiornika, można określić, czy spowolnienie w aplikacji w związku z siecią WAN, Application Gateway, sieci między Application Gatewayem a aplikacją zaplecza, czy też wydajnością aplikacji zaplecza.
+Application Gateway zapewnia kilka wbudowanych metryk czasu związanych z żądaniem i odpowiedzią, które są mierzone w milisekundach. 
+
+![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
@@ -30,28 +32,41 @@ Dostępne są następujące metryki związane z chronometrażem żądania i odpo
 
 - **Czas połączenia z zapleczem**
 
-  Czas nawiązywania połączenia z aplikacją zaplecza. Obejmuje to opóźnienie sieci, a także czas potrzebny przez stos TCP serwera wewnętrznej bazy danych do ustanowienia nowych połączeń. W przypadku protokołu SSL obejmuje również czas spędzony na uzgadnianiu. 
+  Czas nawiązywania połączenia z aplikacją zaplecza. 
+
+  Obejmuje to opóźnienie sieci, a także czas potrzebny przez stos TCP serwera wewnętrznej bazy danych do ustanowienia nowych połączeń. W przypadku protokołu SSL obejmuje również czas spędzony na uzgadnianiu. 
 
 - **Czas odpowiedzi na pierwszy bajt zaplecza**
 
-  Interwał czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania pierwszego bajtu nagłówka odpowiedzi. To przybliżone podsumowanie *czasu* i czasu odpowiedzi aplikacji zaplecza (czasu serwera potrzebowała na wygenerowanie zawartości, potencjalnie pobranie zapytań dotyczących bazy danych i rozpoczęcie przesyłania odpowiedzi z powrotem do Application Gateway)
+  Interwał czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania pierwszego bajtu nagłówka odpowiedzi. 
+
+  Jest to przybliżona suma *czasu łączenia zaplecza*, czasu podejmowanego przez żądanie do osiągnięcia wewnętrznej bazy danych z Application Gateway, czas trwania przez aplikację zaplecza (czas, w którym serwer wygenerował zawartość, potencjalnie pobierane kwerendy bazy danych) i czas potrzebny na pierwszy bajt odpowiedzi w celu uzyskania dostępu do Application Gateway z zaplecza.
 
 - **Czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych**
 
-  Przedział czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania ostatniego bajtu treści odpowiedzi. Jest to przybliżona suma *czasu odpowiedzi na pierwszy bajt z zaplecza* i czas transferu danych (ta liczba może się różnić w zależności od rozmiaru żądanych obiektów i opóźnienia sieci serwera).
+  Przedział czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania ostatniego bajtu treści odpowiedzi. 
+
+  Jest to przybliżona suma *czasu odpowiedzi na pierwszy bajt zaplecza* i czas transferu danych (ta liczba może się różnić w zależności od rozmiaru żądanych obiektów i opóźnienia sieci serwera).
 
 - **Łączny czas bramy aplikacji**
 
-  Średni czas przetwarzania żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako średnia interwału od momentu, w którym Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi, przybliżona suma czasu przetwarzania Application Gateway i *czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych*
+  Średni czas odbierania i przetwarzania żądania oraz jego odpowiedź na wysłanie. 
+
+  Jest to interwał od momentu odebrania przez Application Gateway pierwszego bajtu żądania HTTP do momentu wysłania ostatniego bajtu odpowiedzi do klienta. Dotyczy to również czasu przetwarzania wykonywanego przez Application Gateway, *czas odpowiedzi ostatniego bajtu*, czas wykonania przez Application Gateway, aby wysłać całą odpowiedź i *RTT klienta*.
 
 - **Czas RTT klienta**
 
-  Średni czas błądzenia między klientami a Application Gateway. Ta Metryka wskazuje, jak długo zajmuje się nawiązaniem połączeń i zwróceniem potwierdzeń. 
-
-Te metryki mogą służyć do określenia, czy zauważalne spowolnienie jest spowodowane Application Gatewaym, nasyceniu stosu TCP sieci i zaplecza, wydajności aplikacji zaplecza lub dużym rozmiarem pliku.
-Na przykład jeśli w czasie odpowiedzi na pierwszy bajt zaplecze występuje wartość, ale czas połączenia zaplecza jest stały, można wywnioskować, że czas oczekiwania bramy aplikacji na zaplecze, jak również czas potrzebny do ustanowienia połączenia, jest stabilny, a skok jest spowodowany przez n zwiększenie czasu odpowiedzi aplikacji zaplecza. Podobnie, jeśli wartość parametru czas odpowiedzi pierwszego bajtu w zaplecze jest skojarzona z odpowiednim skokiem w czasie łączenia zaplecza, można ustalić, czy stos sieciowy lub TCP serwera został przepełniony. Jeśli zauważysz, że wartość w polu czas odpowiedzi ostatniego bajtu zaplecze, ale czas odpowiedzi pierwszego bajtu zaplecze jest stała, najprawdopodobniej jest to spowodowane większym żądanym plikiem. Analogicznie, jeśli łączny czas bramy aplikacji jest znacznie większy niż czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych, może to być znak wąskiego gardła wydajności w Application Gateway.
+  Średni czas błądzenia między klientami a Application Gateway.
 
 
+
+Te metryki mogą służyć do określenia, czy obserwowane spowolnienie jest spowodowane przez sieć klienta, Application Gateway wydajność, nasycenie stosu TCP sieci i zaplecza, wydajność aplikacji zaplecza lub duży rozmiar pliku.
+
+Na przykład, jeśli występuje wzrost trendu *czasu odpowiedzi na pierwszy bajt z zaplecza* , ale trend *czasu połączenia zaplecza* jest stabilny, można wywnioskować, że czas oczekiwania bramy aplikacji na zaplecze, a termin nawiązywania połączenia jest stabilny, a skok jest spowodowany zwiększeniem czasu odpowiedzi aplikacji zaplecza. Z drugiej strony, jeśli wartość w polu *czas odpowiedzi pierwszego bajtu w zapleczu* jest skojarzona z odpowiednim skokiem w *czasie połączenia zaplecza*, można ustalić, czy sieć między Application Gateway i serwerem zaplecza lub stosem TCP serwera wewnętrznej bazy danych zakończyła się nasyceniem. 
+
+Jeśli zauważysz wzrost w *czasie odpowiedzi ostatniego bajtu* , ale *czas odpowiedzi pierwszego bajtu zaplecze* jest stabilny, można ustalić, że skok jest spowodowany większym żądanym plikiem.
+
+Analogicznie, jeśli *łączny czas w usłudze Application Gateway* ma wartość skok, ale *czas odpowiedzi ostatniego bajtu* w zasobie jest stabilny, może to być znak wąskiego gardła wydajności w Application Gateway lub wąskie gardło w sieci między klientem i Application Gateway. Ponadto, jeśli czas *RTT klienta* ma również odpowiedni skok, oznacza to, że spadek wydajności jest spowodowany przez sieć między klientem a Application Gateway.
 
 ### <a name="application-gateway-metrics"></a>Metryki Application Gateway
 
@@ -112,11 +127,11 @@ W przypadku Application Gateway dostępne są następujące metryki:
 
 - **Liczba hostów w dobrej kondycji**
 
-  Liczba punktów końcowych, które są określone w dobrej kondycji przez sondę kondycji. Można filtrować według jednej puli zaplecza, aby pokazać hosty zdrowe/złej kondycji w określonej puli zaplecza.
+  Liczba punktów końcowych, które są określone w dobrej kondycji przez sondę kondycji. Można filtrować według poszczególnych pul zaplecza, aby wyświetlić liczbę hostów w dobrej kondycji w określonej puli zaplecza.
 
 - **Liczba hostów w złej kondycji**
 
-  Liczba punktów końcowych, które są określone w złej kondycji przez sondę kondycji. Można filtrować według jednej puli zaplecza, aby pokazać hosty w złej kondycji w określonej puli zaplecza.
+  Liczba punktów końcowych, które są określone w złej kondycji przez sondę kondycji. Można filtrować według jednej puli zaplecza, aby wyświetlić liczbę hostów w złej kondycji w określonej puli zaplecza.
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Metryki obsługiwane przez jednostkę SKU Application Gateway v1
 
@@ -158,11 +173,11 @@ W przypadku Application Gateway dostępne są następujące metryki:
 
 - **Liczba hostów w dobrej kondycji**
 
-  Liczba punktów końcowych, które są określone w dobrej kondycji przez sondę kondycji. Można filtrować według jednej puli zaplecza, aby pokazać hosty zdrowe/złej kondycji w określonej puli zaplecza.
+  Liczba punktów końcowych, które są określone w dobrej kondycji przez sondę kondycji. Można filtrować według poszczególnych pul zaplecza, aby wyświetlić liczbę hostów w dobrej kondycji w określonej puli zaplecza.
 
 - **Liczba hostów w złej kondycji**
 
-  Liczba punktów końcowych, które są określone w złej kondycji przez sondę kondycji. Można filtrować według jednej puli zaplecza, aby pokazać hosty w złej kondycji w określonej puli zaplecza.
+  Liczba punktów końcowych, które są określone w złej kondycji przez sondę kondycji. Można filtrować według jednej puli zaplecza, aby wyświetlić liczbę hostów w złej kondycji w określonej puli zaplecza.
 
 ## <a name="metrics-visualization"></a>Wizualizacja metryk
 

@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 38df99f0a4932f477e900382c7ff1ae7b50febe9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b2d388160c6ca744b10c17bda17c59e22940f98b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702474"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775239"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — pozyskiwanie tokenu
 
-Po skonstruowaniu poufnej aplikacji klienckiej można uzyskać token dla aplikacji, wywołując ``AcquireTokenForClient``, przekazując zakres i wymuszanie lub nie odświeżanie tokenu.
+Po skonstruowaniu poufnej aplikacji klienckiej można uzyskać token dla aplikacji, wywołując `AcquireTokenForClient`, przekazując zakres i opcjonalnie wymuszając odświeżanie tokenu.
 
 ## <a name="scopes-to-request"></a>Zakresy do żądania
 
-Zakresem żądania dla przepływu poświadczeń klienta jest nazwa zasobu, po którym następuje `/.default`. Ta notacja nakazuje usłudze Azure AD używanie **uprawnień na poziomie aplikacji** , które są zadeklarowane statycznie podczas rejestrowania aplikacji. Podobnie jak wcześniej, te uprawnienia interfejsu API muszą zostać przyznane przez administratora dzierżawy
+Zakresem żądania dla przepływu poświadczeń klienta jest nazwa zasobu, po którym następuje `/.default`. Ta notacja informuje Azure Active Directory (Azure AD) o korzystaniu z *uprawnień na poziomie aplikacji* , które są zadeklarowane statycznie podczas rejestrowania aplikacji. Ponadto te uprawnienia interfejsu API muszą zostać przyznane przez administratora dzierżawy.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -39,7 +39,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-W MSAL Python plik konfiguracji będzie wyglądać podobnie do następującego fragmentu kodu:
+W MSAL Python plik konfiguracji wygląda podobnie do tego fragmentu kodu:
 
 ```Json
 {
@@ -55,26 +55,26 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ---
 
-### <a name="case-of-azure-ad-v10-resources"></a>Przypadek zasobów usługi Azure AD (v 1.0)
+### <a name="azure-ad-v10-resources"></a>Zasoby usługi Azure AD (v 1.0)
 
-Zakres używany na potrzeby poświadczeń klienta zawsze powinien być identyfikatorem resourceId + "/.default"
+Zakres używany na potrzeby poświadczeń klienta zawsze powinien być IDENTYFIKATORem zasobu, po którym następuje `/.default`.
 
 > [!IMPORTANT]
-> W przypadku MSAL z prośbą o token dostępu dla zasobu akceptującego token dostępu w wersji 1.0 usługa Azure AD analizuje żądanych odbiorców od żądanego zakresu, pobierając wszystko przed ostatnim ukośnikiem i używając go jako identyfikatora zasobu.
-> W związku z tym, jeśli tak, jak Azure SQL ( **https://database.windows.net** ), zasób oczekuje odbiorców kończących się ukośnikiem (w przypadku usługi Azure sql: `https://database.windows.net/` ), należy zażądać zakresu `https://database.windows.net//.default` (należy pamiętać o podwójnym ukośniku). Zobacz również [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)problemu MSAL.NET: zostanie pominięty końcowy ukośnik adresu URL zasobu, co spowodowało błąd uwierzytelniania SQL.
+> Gdy MSAL żąda tokenu dostępu dla zasobu, który akceptuje token dostępu w wersji 1,0, usługa Azure AD analizuje żądanych odbiorców od żądanego zakresu, pobierając wszystko przed ostatnim ukośnikiem i używając go jako identyfikatora zasobu.
+> Jeśli tak, jak Azure SQL Database (**https:\//Database.Windows.NET**), zasób oczekuje odbiorców kończących się ukośnikiem (w przypadku Azure SQL Database `https://database.windows.net/`), należy zażądać zakresu `https://database.windows.net//.default`. (Należy pamiętać o podwójnym ukośniku). Zobacz również #747 problemu MSAL.NET [: zostanie pominięty końcowy ukośnik adresu URL zasobu, co spowodowało błąd uwierzytelniania SQL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>Interfejs API AcquireTokenForClient
 
-Aby uzyskać token dla aplikacji, użyj `AcquireTokenForClient` lub odpowiednika w zależności od platform.
+Aby uzyskać token dla aplikacji, użyj `AcquireTokenForClient` lub jej równoważnej, w zależności od platformy.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ```csharp
 using Microsoft.Identity.Client;
 
-// With client credentials flows the scopes is ALWAYS of the shape "resource/.default", as the
+// With client credentials flows, the scope is always of the shape "resource/.default" because the
 // application permissions need to be set statically (in the portal or by PowerShell), and then granted by
-// a tenant administrator
+// a tenant administrator.
 string[] scopes = new string[] { "https://graph.microsoft.com/.default" };
 
 AuthenticationResult result = null;
@@ -85,14 +85,14 @@ try
 }
 catch (MsalUiRequiredException ex)
 {
-    // The application does not have sufficient permissions
-    // - did you declare enough app permissions in during the app creation?
-    // - did the tenant admin needs to grant permissions to the application.
+    // The application doesn't have sufficient permissions.
+    // - Did you declare enough app permissions during app creation?
+    // - Did the tenant admin grant permissions to the application?
 }
 catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 {
-    // Invalid scope. The scope has to be of the form "https://resourceurl/.default"
-    // Mitigation: change the scope to be as expected !
+    // Invalid scope. The scope has to be in the form "https://resourceurl/.default"
+    // Mitigation: Change the scope to be as expected.
 }
 ```
 
@@ -102,9 +102,9 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 # The pattern to acquire a token looks like this.
 result = None
 
-# Firstly, looks up a token from cache
-# Since we are looking for token for the current app, NOT for an end user,
-# notice we give account parameter as None.
+# First, the code looks up a token from the cache.
+# Because we're looking for a token for the current app, not for a user,
+# use None for the account parameter.
 result = app.acquire_token_silent(config["scope"], account=None)
 
 if not result:
@@ -112,17 +112,17 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 
 if "access_token" in result:
-    # Call a protected API with the access token
+    # Call a protected API with the access token.
     print(result["token_type"])
 else:
     print(result.get("error"))
     print(result.get("error_description"))
-    print(result.get("correlation_id"))  # You may need this when reporting a bug
+    print(result.get("correlation_id"))  # You might need this when reporting a bug.
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Jest to wyciąg z [przykładów deweloperskich MSAL języka Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/).
+Ten kod jest wyodrębniany z [przykładów deweloperskich języka Java MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/).
 
 ```Java
 ClientCredentialParameters clientCredentialParam = ClientCredentialParameters.builder(
@@ -138,7 +138,7 @@ BiConsumer<IAuthenticationResult, Throwable> processAuthResult = (res, ex) -> {
     System.out.println("Returned ok - " + res);
     System.out.println("ID Token - " + res.idToken());
 
-    /* call a protected API with res.accessToken() */
+    /* Call a protected API with res.accessToken() */
 };
 
 future.whenCompleteAsync(processAuthResult);
@@ -151,10 +151,10 @@ future.join();
 
 Jeśli nie masz jeszcze biblioteki dla wybranego języka, możesz chcieć użyć protokołu bezpośrednio:
 
-#### <a name="first-case-access-token-request-with-a-shared-secret"></a>Pierwszy przypadek: żądanie tokenu dostępu przy użyciu wspólnego klucza tajnego
+#### <a name="first-case-access-the-token-request-by-using-a-shared-secret"></a>Pierwszy przypadek: dostęp do żądania tokenu przy użyciu wspólnego klucza tajnego
 
 ```Text
-POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -164,10 +164,10 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: żądanie tokenu dostępu z certyfikatem
+#### <a name="second-case-access-the-token-request-by-using-a-certificate"></a>Drugi przypadek: uzyskiwanie dostępu do żądania tokenu przy użyciu certyfikatu
 
 ```Text
-POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity.
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -182,7 +182,7 @@ Aby uzyskać więcej informacji, zobacz dokumentację protokołu: [Microsoft Ide
 
 ## <a name="application-token-cache"></a>Pamięć podręczna tokenów aplikacji
 
-W MSAL.NET `AcquireTokenForClient` korzysta z **pamięci podręcznej tokenów aplikacji** (wszystkie inne metody AcquireTokenXX używają pamięci podręcznej tokenów użytkowników) nie wywołuj `AcquireTokenSilent` przed wywołaniem `AcquireTokenForClient` jako `AcquireTokenSilent` korzysta z pamięci podręcznej tokenów **użytkownika** . `AcquireTokenForClient` sprawdza sam pamięć podręczną tokenów **aplikacji** i aktualizuje go.
+W programie MSAL.NET `AcquireTokenForClient` używa pamięci podręcznej tokenów aplikacji. (Wszystkie inne metody AcquireToken*XX* używają pamięci podręcznej tokenów użytkowników). Nie wywołuj `AcquireTokenSilent` przed wywołaniem `AcquireTokenForClient`, ponieważ `AcquireTokenSilent` korzysta z pamięci podręcznej tokenów *użytkownika* . `AcquireTokenForClient` sprawdza sam pamięć podręczną tokenów *aplikacji* i aktualizuje go.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -192,8 +192,8 @@ Jeśli zostanie wyświetlony komunikat o błędzie z informacją, że użyto nie
 
 ### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Czy pamiętasz o podaniu zgody administratora? Aplikacje demonów wymagają!
 
-Jeśli wystąpi błąd podczas wywoływania interfejsu API **niewystarczające uprawnienia do ukończenia tej operacji**, Administrator dzierżawy musi udzielić uprawnień do aplikacji. Zobacz Krok 6 rejestracji aplikacji klienckiej powyżej.
-Zwykle zobaczysz i wystąpi błąd podobny do następującego:
+W przypadku uzyskania **niewystarczających uprawnień do ukończenia błędu operacji** podczas wywoływania interfejsu API Administrator dzierżawy musi udzielić uprawnień do aplikacji. Zobacz Krok 6 rejestracji aplikacji klienckiej powyżej.
+Zwykle zobaczysz błąd, który wygląda jak ten błąd:
 
 ```JSon
 Failed to call the web API: Forbidden

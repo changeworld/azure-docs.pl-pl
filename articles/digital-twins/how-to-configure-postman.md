@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933442"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765399"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak skonfigurować usługę Poster dla usługi bliźniaczych reprezentacji Digital
 
@@ -79,7 +79,6 @@ Skonfiguruj aplikację Azure Active Directory tak, aby korzystała z niejawnego 
 
 Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azure Active Directory. Następnie należy wykonać uwierzytelnione żądanie HTTP na platformie Azure Digital bliźniaczych reprezentacji przy użyciu uzyskanego tokenu:
 
-1. Przejdź do [www.getpostman.com](https://www.getpostman.com/) , aby pobrać aplikację.
 1. Sprawdź, czy **adres URL autoryzacji** jest poprawny. Powinien on mieć format:
 
     ```plaintext
@@ -88,13 +87,17 @@ Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azur
 
     | Nazwa  | Zamień na | Przykład |
     |---------|---------|---------|
-    | YOUR_AZURE_TENANT | Nazwa dzierżawy lub organizacji | `microsoft` |
+    | YOUR_AZURE_TENANT | Nazwa dzierżawy lub organizacji. Użyj przyjaznej nazwy, a nie alfanumerycznego **identyfikatora dzierżawy** Azure Active Directory rejestracji aplikacji. | `microsoft` |
 
-1. Wybierz kartę **autoryzacja** , wybierz pozycję **OAuth 2,0**, a następnie wybierz pozycję **Pobierz nowy token dostępu**.
+1. Przejdź do [www.getpostman.com](https://www.getpostman.com/) , aby pobrać aplikację.
+
+1. Otwórz aplikację Postman i kliknij pozycję New | Create new (Nowe | Utwórz nowe), a następnie wybierz pozycję Request (Żądanie). Wprowadź nazwę żądania. Wybierz kolekcję lub folder, w którym chcesz zapisać, a następnie kliknij przycisk Zapisz. 
+
+1. Chcemy wprowadzić żądanie GET. Wybierz kartę **autoryzacja** , wybierz pozycję OAuth 2,0, a następnie wybierz pozycję **Pobierz nowy token dostępu**.
 
     | Pole  | Wartość |
     |---------|---------|
-    | Typ udzielenia | `Implicit` |
+    | Typ udzielania | `Implicit` |
     | Adres URL wywołania zwrotnego | `https://www.getpostman.com/oauth2/callback` |
     | Adres URL uwierzytelniania | Użyj **adresu URL autoryzacji** z **kroku 2** |
     | Identyfikator klienta | Użyj **identyfikatora aplikacji** dla aplikacji Azure Active Directory, która została utworzona lub ponownie użyta w poprzedniej sekcji |
@@ -106,7 +109,7 @@ Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azur
 
     [przykład ![ego tokena klienta w programie Poster](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
-1. Wybierz pozycję **Request Token** (Zażądaj tokenu).
+1. Wybierz **token żądania**.
   
 1. Przewiń w dół i wybierz pozycję **Użyj tokenu**.
 

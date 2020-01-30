@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/09/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 259ce2b1881c31c2558539fed34513575d193a48
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961990"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840421"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Użyj Azure Portal, aby tworzyć i usuwać użytkowników w programie Azure AD B2C
 
@@ -37,7 +37,7 @@ Ten artykuł koncentruje się na pracy z **kontami konsumentów** w Azure Portal
 
 ## <a name="create-a-consumer-user"></a>Tworzenie użytkownika odbiorcy
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
@@ -61,4 +61,4 @@ Aby uzyskać szczegółowe informacje na temat przywracania użytkownika w ciąg
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby zapoznać się z automatycznymi scenariuszami zarządzania użytkownikami, na przykład Migrowanie użytkowników z innego dostawcy tożsamości do katalogu Azure AD B2C, zobacz [Azure AD B2C: migracja użytkownika](active-directory-b2c-user-migration.md).
+Aby zapoznać się z automatycznymi scenariuszami zarządzania użytkownikami, na przykład Migrowanie użytkowników z innego dostawcy tożsamości do katalogu Azure AD B2C, zobacz [Azure AD B2C: migracja użytkownika](user-migration.md).

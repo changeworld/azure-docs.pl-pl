@@ -3,12 +3,12 @@ title: Konfigurowanie Azure Active Directory na potrzeby uwierzytelniania klient
 description: Dowiedz się, jak skonfigurować Azure Active Directory (Azure AD) do uwierzytelniania klientów Service Fabric klastrów.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614693"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843824"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Konfigurowanie Azure Active Directory na potrzeby uwierzytelniania klientów
 
@@ -104,9 +104,19 @@ Podczas próby zalogowania się do usługi Azure AD w Service Fabric Explorer st
 Aplikacja klastra (sieci Web) reprezentująca Service Fabric Explorer próbuje uwierzytelnić się w usłudze Azure AD, a w ramach żądania zawiera adres URL zwrotu przekierowania. Ale adres URL nie jest wyświetlany na liście **adresów URL odpowiedzi** aplikacji usługi Azure AD.
 
 #### <a name="solution"></a>Rozwiązanie
-Wybierz pozycję "Rejestracje aplikacji" na stronie usługi AAD, wybierz aplikację klastra, a następnie wybierz przycisk **adresy URL odpowiedzi** . Na stronie "adresy URL odpowiedzi" Dodaj adres URL Service Fabric Explorer do listy lub Zastąp jeden z elementów na liście. Po zakończeniu Zapisz zmiany.
+Na stronie usługi Azure AD wybierz pozycję **rejestracje aplikacji**, wybierz aplikację klastra, a następnie wybierz pozycję **adresy URL odpowiedzi**. W okienku **adresy URL odpowiedzi** Dodaj adres URL Service Fabric Explorer do listy lub Zastąp jeden z elementów na liście. Zapisz zmiany.
 
 ![Adres URL odpowiedzi aplikacji sieci Web][web-application-reply-url]
+
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>Nawiązywanie połączenia z klastrem przy użyciu uwierzytelniania usługi Azure AD za pomocą programu PowerShell powoduje błąd podczas logowania: "AADSTS50011"
+#### <a name="problem"></a>Problem
+Podczas próby nawiązania połączenia z klastrem Service Fabric przy użyciu usługi Azure AD za pośrednictwem programu PowerShell Strona logowania zwróci błąd: "AADSTS50011: adres URL odpowiedzi określony w żądaniu nie pasuje do adresów URL odpowiedzi skonfigurowanych dla aplikacji: &lt;identyfikator GUID&gt;".
+
+#### <a name="reason"></a>Przyczyna
+Podobnie jak w przypadku powyższego problemu, program PowerShell próbuje uwierzytelnić się w usłudze Azure AD, która zawiera adres URL przekierowania, który nie znajduje się na liście **adresów URL odpowiedzi** aplikacji usługi Azure AD.  
+
+#### <a name="solution"></a>Rozwiązanie
+Użyj tego samego procesu co w poprzednim problemie, ale adres URL musi być ustawiony na `urn:ietf:wg:oauth:2.0:oob`, specjalne przekierowanie do uwierzytelniania w wierszu polecenia.
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>Łączenie klastra przy użyciu uwierzytelniania usługi Azure AD za pomocą programu PowerShell
 Aby połączyć klaster Service Fabric, użyj następującego przykładu polecenia programu PowerShell:

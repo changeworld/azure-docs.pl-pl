@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: de078399a29af1c7eb2ae3fb237e1550ccaeacfa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872302"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843264"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Tworzenie wielu etapów konwersacji za pomocą dodatkowych monitów
 
@@ -65,7 +65,7 @@ W przypadku tworzenia dokumentu z obsługą wielodostępności należy wziąć p
 
 * Użyj nagłówków i nagłówków podrzędnych do określenia hierarchii. Na przykład można H1 do określenia elementu Parent QnA i H2, aby zauważyć QnA, które należy wykonać jako monit. Użyj małego rozmiaru nagłówka, aby zauważyć dalszą hierarchię. Nie używaj stylu, koloru ani innego mechanizmu, aby oznaczać strukturę w dokumencie, QnA Maker nie Wyodrębnij wyświetlonych przez siebie wierszy.
 
-* Pierwszy znak nagłówka musi być wielkimi literami. 
+* Pierwszy znak nagłówka musi być wielkimi literami.
 
 * Nie należy kończyć nagłówka ze znakiem zapytania, `?`.
 
@@ -368,7 +368,7 @@ Możesz dodawać lub usuwać wieloosiowe polecenia przy użyciu [interfejsu API 
 
 ## <a name="export-knowledge-base-for-version-control"></a>Eksportuj bazę wiedzy na potrzeby kontroli wersji
 
-QnA Maker [obsługuje kontrolę wersji](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) w portalu QNA Maker przez dołączenie do wyeksportowanego pliku kroków konwersacji wielokierunkowej.
+QnA Maker obsługuje kontrolę wersji przez dołączenie do wyeksportowanego pliku kroków konwersacji wielokierunkowej.
 
 ## <a name="next-steps"></a>Następne kroki
 

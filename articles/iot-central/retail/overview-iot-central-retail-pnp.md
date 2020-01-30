@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 8b1861b96f7ed53388d49e226bf3880bfcf657cb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895858"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773051"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Tworzenie rozwiązań dla handlu detalicznego za pomocą usługi Azure IoT Central
 
@@ -30,7 +30,7 @@ W poniższych sekcjach opisano możliwości tych szablonów aplikacji:
 
 ## <a name="connected-logistics"></a>Połączona logistyka
 
-Globalne wydatki na logistykę powinny dotrzeć do TN USD w 2020. Transport kont towarów w przypadku większości tego rodzaju wydatków i dostawców wysyłki podlega intensywnej presji konkurencji i ograniczeniom.
+Globalne wydatki na logistykę powinny dotrzeć do $10 600 000 000 000 w 2020. Transport kont towarów w przypadku większości tego rodzaju wydatków i dostawców wysyłki podlega intensywnej presji konkurencji i ograniczeniom.
 
 Za pomocą czujników IoT można zbierać i monitorować warunki otoczenia, takie jak temperatura, wilgotność, pochylenie, wstrząsy, światło i lokalizacja wysyłki. Dane telemetryczne zebrane z czujników i urządzeń IoT można połączyć z innymi źródłami danych, takimi jak pogoda i informacje o ruchu w systemach analizy biznesowej w chmurze.
 

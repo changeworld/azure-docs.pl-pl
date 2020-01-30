@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100709"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841716"
 ---
 # <a name="delivery-and-retry"></a>Dostarczanie i ponawianie prób
 
@@ -27,7 +27,7 @@ Event Grid zapewnia trwałe dostarczanie. Próbuje dostarczyć każdy komunikat 
 
 W przypadku odpowiedzi po dostarczeniu komunikatu Event Grid czekaj do 60 sekund. Jeśli punkt końcowy subskrybenta nie potwierdzą odpowiedzi, komunikat zostanie przesunięty do kolejki w jednej z kolejek wycofania dla kolejnych ponownych prób.
 
-Istnieją dwie wstępnie skonfigurowane kolejki z przywróceniem z powrotem, które określają harmonogram, w którym zostanie podjęta próba ponowienia próby. Są one następujące:-
+Istnieją dwie wstępnie skonfigurowane kolejki z przywróceniem z powrotem, które określają harmonogram, w którym zostanie podjęta próba ponowienia próby. Oto one:
 
 | Harmonogram | Opis |
 | ---------| ------------ |
@@ -43,7 +43,7 @@ Istnieją dwie wstępnie skonfigurowane kolejki z przywróceniem z powrotem, kt�
 
 ## <a name="retry-policy-limits"></a>Limity zasad ponawiania
 
-Istnieją dwie konfiguracje, które określają zasady ponawiania. Są one następujące:-
+Istnieją dwie konfiguracje, które określają zasady ponawiania. Oto one:
 
 * Maksymalna liczba prób
 * Czas wygaśnięcia zdarzenia (TTL)
@@ -52,12 +52,12 @@ Zdarzenie zostanie usunięte, jeśli zostanie osiągnięty jeden z limitów zasa
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>Konfigurowanie wartości domyślnych dla wszystkich subskrybentów
 
-Istnieją dwie właściwości: `brokers:defaultMaxDeliveryAttempts` i `broker:defaultEventTimeToLiveInSeconds`, które można skonfigurować w ramach wdrożenia Event Grid, które sterują ponownymi próbami domyślnymi zasad dla wszystkich subskrybentów.
+Istnieją dwie właściwości: `brokers__defaultMaxDeliveryAttempts` i `broker__defaultEventTimeToLiveInSeconds`, które można skonfigurować w ramach wdrożenia Event Grid, które sterują ponownymi próbami domyślnymi zasad dla wszystkich subskrybentów.
 
 | Nazwa właściwości | Opis |
 | ---------------- | ------------ |
-| `broker:defaultMaxDeliveryAttempts` | Maksymalna liczba prób dostarczenia zdarzenia. Wartość domyślna: 30.
-| `broker:defaultEventTimeToLiveInSeconds` | Czas wygaśnięcia zdarzenia w sekundach, po upływie którego zdarzenie zostanie usunięte, jeśli nie zostanie dostarczone. Wartość domyślna: **7200** s
+| `broker__defaultMaxDeliveryAttempts` | Maksymalna liczba prób dostarczenia zdarzenia. Wartość domyślna: 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Czas wygaśnięcia zdarzenia w sekundach, po upływie którego zdarzenie zostanie usunięte, jeśli nie zostanie dostarczone. Wartość domyślna: **7200** s
 
 ## <a name="configuring-defaults-per-subscriber"></a>Konfigurowanie wartości domyślnych na subskrybenta
 
@@ -71,8 +71,8 @@ Poniższy przykład konfiguruje zasady ponawiania w module Event Grid za pomocą
 ```json
 {
   "Env": [
-    "broker:defaultMaxDeliveryAttempts=3",
-    "broker:defaultEventTimeToLiveInSeconds=1800"
+    "broker__defaultMaxDeliveryAttempts=3",
+    "broker__defaultEventTimeToLiveInSeconds=1800"
   ],
   "HostConfig": {
     "PortBindings": {

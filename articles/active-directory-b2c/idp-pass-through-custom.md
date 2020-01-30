@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f7122035f8d70cb91f4ec4f64e1dd4f7b2842b8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 697c904f98ea29395d5c4e95abe27556c06bb479
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949844"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76839095"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pomocą zasad niestandardowych do aplikacji w Azure Active Directory B2C
 
-[Zasady niestandardowe](active-directory-b2c-get-started-custom.md) w Azure Active Directory B2C (Azure AD B2C) umożliwiają użytkownikom aplikacji rejestrowanie się lub logowanie przy użyciu dostawcy tożsamości. W takim przypadku Azure AD B2C odbiera [token dostępu](active-directory-b2c-reference-tokens.md) od dostawcy tożsamości. Azure AD B2C używa tego tokenu do pobierania informacji o użytkowniku. Aby przekazać token do aplikacji rejestrowanych w Azure AD B2C, należy dodać do zasad niestandardowych typ i zastrzeżenie wyjściowe.
+[Zasady niestandardowe](custom-policy-get-started.md) w Azure Active Directory B2C (Azure AD B2C) umożliwiają użytkownikom aplikacji rejestrowanie się lub logowanie przy użyciu dostawcy tożsamości. W takim przypadku Azure AD B2C odbiera [token dostępu](tokens-overview.md) od dostawcy tożsamości. Azure AD B2C używa tego tokenu do pobierania informacji o użytkowniku. Aby przekazać token do aplikacji rejestrowanych w Azure AD B2C, należy dodać do zasad niestandardowych typ i zastrzeżenie wyjściowe.
 
-Azure AD B2C obsługuje przekazywanie tokenu dostępu dla dostawców tożsamości [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) i [OpenID Connect Connect](active-directory-b2c-reference-oidc.md) . W przypadku wszystkich innych dostawców tożsamości, zgłoszenie jest zwracane puste.
+Azure AD B2C obsługuje przekazywanie tokenu dostępu dla dostawców tożsamości [OAuth 2,0](authorization-code-flow.md) i [OpenID Connect Connect](openid-connect.md) . W przypadku wszystkich innych dostawców tożsamości, zgłoszenie jest zwracane puste.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -82,7 +82,7 @@ Azure AD B2C obsługuje przekazywanie tokenu dostępu dla dostawców tożsamośc
 
 Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token Azure AD B2C został zwrócony do `https://jwt.ms`, aby można było przejrzeć oświadczenia w nim.
 
-### <a name="upload-the-files"></a>Przekazywanie plików
+### <a name="upload-the-files"></a>Przekaż pliki
 
 1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, klikając filtr **Directory + Subscription** w górnym menu i wybierając katalog zawierający dzierżawcę.
@@ -105,4 +105,4 @@ Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token Azur
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o tokenach w [odniesieniu do tokenów Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
+Dowiedz się więcej o tokenach w [odniesieniu do tokenów Azure Active Directory B2C](tokens-overview.md).

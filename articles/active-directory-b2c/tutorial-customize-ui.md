@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950871"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840132"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu środowiska użytkownika w Azure Active Directory B2C
 
-Aby zapoznać się z bardziej typowymi środowiskami użytkowników, takimi jak rejestrowanie, logowanie i edytowanie profilów, można użyć [przepływów użytkowników](active-directory-b2c-reference-policies.md) w Azure Active Directory B2C (Azure AD B2C). Informacje przedstawione w tym samouczku ułatwiają zapoznanie się z informacjami na temat [dostosowywania interfejsu użytkownika](customize-ui-overview.md) do tych środowisk przy użyciu własnych plików HTML i CSS.
+Aby zapoznać się z bardziej typowymi środowiskami użytkowników, takimi jak rejestrowanie, logowanie i edytowanie profilów, można użyć [przepływów użytkowników](user-flow-overview.md) w Azure Active Directory B2C (Azure AD B2C). Informacje przedstawione w tym samouczku ułatwiają zapoznanie się z informacjami na temat [dostosowywania interfejsu użytkownika](customize-ui-overview.md) do tych środowisk przy użyciu własnych plików HTML i CSS.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -71,7 +71,7 @@ Chociaż pliki można przechowywać na wiele sposobów, w tym samouczku można j
 
     ![Strona konfiguracji funkcji CORS w usłudze Azure Blob Storage w Azure Portal](./media/tutorial-customize-ui/enable-cors.png)
 
-5. Kliknij przycisk **Save** (Zapisz).
+5. Kliknij pozycję **Zapisz**.
 
 ### <a name="create-the-customization-files"></a>Tworzenie plików dostosowania
 
@@ -166,4 +166,4 @@ W tym artykule zawarto informacje na temat wykonywania następujących czynnośc
 > * Testowanie dostosowanego interfejsu użytkownika
 
 > [!div class="nextstepaction"]
-> [Dostosowanie języka w Azure Active Directory B2C](active-directory-b2c-reference-language-customization.md)
+> [Dostosowanie języka w Azure Active Directory B2C](user-flow-language-customization.md)

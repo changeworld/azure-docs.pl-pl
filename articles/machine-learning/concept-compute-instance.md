@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974105"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769115"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co to jest wystąpienie obliczeniowe Azure Machine Learning?
 
@@ -117,7 +117,7 @@ W obszarze roboczym programu Azure Machine Learning Studio wybierz pozycję **ob
 
 Można wykonać następujące czynności:
 
-* Utwórz wystąpienie obliczeniowe. Określ nazwę, typ maszyny wirtualnej platformy Azure, w tym GPU, Włącz/Wyłącz dostęp SSH i skonfiguruj ustawienia sieci wirtualnej opcjonalnie. Można również utworzyć wystąpienie bezpośrednio z poziomu zintegrowanych notesów, Azure Portal, szablonu Menedżer zasobów lub zestawu SDK Azure Machine Learning. Przydziały dedykowanych rdzeni na region, które mają zastosowanie do tworzenia wystąpienia obliczeniowego, są ujednolicone i udostępniane Azure Machine Learning przydziału klastra obliczeniowego.
+* Utwórz wystąpienie obliczeniowe. Określ nazwę, typ maszyny wirtualnej platformy Azure, w tym procesory GPU (Uwaga: nie można zmienić typu maszyny wirtualnej po utworzeniu), Włącz/Wyłącz dostęp SSH i skonfiguruj ustawienia sieci wirtualnej opcjonalnie. Można również utworzyć wystąpienie bezpośrednio z poziomu zintegrowanych notesów, Azure Portal, szablonu Menedżer zasobów lub zestawu SDK Azure Machine Learning. Przydziały dedykowanych rdzeni na region, które mają zastosowanie do tworzenia wystąpienia obliczeniowego, są ujednolicone i udostępniane Azure Machine Learning przydziału klastra obliczeniowego.
 * Odśwież kartę wystąpienia obliczeniowe
 * Uruchamianie, zatrzymywanie i ponowne uruchamianie wystąpienia obliczeniowego
 * Usuwanie wystąpienia obliczeniowego
@@ -138,7 +138,7 @@ Można również utworzyć wystąpienie
 
 Przydziały dedykowanych rdzeni na region, które mają zastosowanie do tworzenia wystąpienia obliczeniowego, są ujednolicone i udostępniane przy użyciu Azure Machine Learninggo przydziału klastra szkoleniowego. 
 
-## <a name="compute-target"></a>Docelowy obiekt obliczeniowy
+## <a name="compute-target"></a>Element docelowy obliczeń
 
 Wystąpienia obliczeniowe mogą służyć jako [obiekt docelowy obliczeń szkoleniowych](concept-compute-target.md#train) podobny do klastrów szkoleniowych Azure Machine Learning COMPUTE. Zainicjuj obsługę wieloprocesorowej maszyny wirtualnej w celu uruchamiania zadań szkolenia rozproszonego przy użyciu TensorFlow/PyTorch szacowania. Możesz również utworzyć konfigurację uruchomieniową i użyć jej do uruchomienia eksperymentu w wystąpieniu obliczeniowym. Wystąpienia obliczeniowego można użyć jako lokalnego celu wdrożenia inferencing na potrzeby scenariuszy testowania/debugowania.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037551"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772659"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Konfigurowanie grupy dostępności na platformie Azure SQL Server maszyny wirtualne w różnych regionach
 
@@ -93,9 +93,26 @@ Aby utworzyć replikę w zdalnym centrum danych, wykonaj następujące czynnośc
 
 1. [Dodaj nowe SQL Server do klastra trybu failover z systemem Windows Server](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode).
 
-1. Utwórz zasób adresu IP w klastrze.
+1. Dodawanie zasobu adresu IP do klastra.
 
-   Zasób adresu IP można utworzyć w Menedżer klastra trybu failover. Kliknij prawym przyciskiem myszy rolę grupy dostępności, kliknij pozycję **Dodaj zasób**, **więcej zasobów**, a następnie kliknij pozycję **adres IP**.
+   Zasób adresu IP można utworzyć w Menedżer klastra trybu failover. Wybierz nazwę klastra, a następnie kliknij prawym przyciskiem myszy nazwę klastra w obszarze **zasoby podstawowe klastra** i wybierz polecenie **Właściwości**: 
+
+   ![Właściwości klastra](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
+
+   W oknie dialogowym **Właściwości** wybierz pozycję **Dodaj** w obszarze **adres IP**, a następnie Dodaj adres IP nazwy klastra z regionu sieci zdalnej. W oknie dialogowym **adres IP** wybierz **OK** , a następnie ponownie wybierz przycisk **OK** w oknie dialogowym **właściwości klastra** , aby zapisać nowy adres IP. 
+
+   ![Dodaj adres IP klastra](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+
+
+1. Dodaj adres IP jako zależność dla głównej nazwy klastra.
+
+   Otwórz właściwości klastra jeszcze raz, a następnie wybierz kartę **zależności** . Skonfiguruj zależność dla dwóch adresów IP lub: 
+
+   ![Właściwości klastra](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
+
+1. Dodaj zasób adresu IP do roli grupy dostępności w klastrze. 
+
+   Kliknij prawym przyciskiem myszy rolę grupy dostępności w Menedżer klastra trybu failover, wybierz pozycję **Dodaj zasób**, **więcej zasobów**i wybierz pozycję **adres IP**.
 
    ![Utwórz adres IP](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -103,16 +120,6 @@ Aby utworzyć replikę w zdalnym centrum danych, wykonaj następujące czynnośc
 
    - Użyj sieci z zdalnego centrum danych.
    - Przypisz adres IP z nowego modułu równoważenia obciążenia platformy Azure. 
-
-1. Na nowych SQL Server w SQL Server Configuration Manager [Włącz zawsze włączone grupy dostępności](https://msdn.microsoft.com/library/ff878259.aspx).
-
-1. [Otwórz porty zapory na nowym SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
-
-   Numery portów, które należy otworzyć, zależą od danego środowiska. Otwórz porty dla punktu końcowego dublowania i sondy kondycji modułu równoważenia obciążenia platformy Azure.
-
-1. [Dodaj replikę do grupy dostępności na nowym SQL Server](https://msdn.microsoft.com/library/hh213239.aspx).
-
-   W przypadku repliki w zdalnym regionie świadczenia usługi Azure ustaw ją na replikację asynchroniczną z ręcznym trybem failover.  
 
 1. Dodaj zasób adresu IP jako zależność dla klastra punktu dostępu klienta odbiornika (nazwy sieciowej).
 
@@ -137,6 +144,17 @@ Uruchom skrypt programu PowerShell z nazwą sieci klastra, adresem IP i portem s
 
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
+
+1. Na nowych SQL Server w SQL Server Configuration Manager [Włącz zawsze włączone grupy dostępności](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server).
+
+1. [Otwórz porty zapory na nowym SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
+
+   Numery portów, które należy otworzyć, zależą od danego środowiska. Otwórz porty dla punktu końcowego dublowania i sondy kondycji modułu równoważenia obciążenia platformy Azure.
+
+
+1. [Dodaj replikę do grupy dostępności na nowym SQL Server](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio).
+
+   W przypadku repliki w zdalnym regionie świadczenia usługi Azure ustaw ją na replikację asynchroniczną z ręcznym trybem failover.  
 
 ## <a name="set-connection-for-multiple-subnets"></a>Ustaw połączenie dla wielu podsieci
 
@@ -168,7 +186,7 @@ Po przetestowaniu łączności należy przenieść replikę podstawową z powrot
 | ----- | ----- | ----- | ----- | -----
 | Podstawowe centrum danych | SQL-1 | Podstawowy | Wykonywane | Automatyczny
 | Podstawowe centrum danych | SQL-2 | Pomocniczy | Wykonywane | Automatyczny
-| Pomocnicze lub zdalne centrum danych | SQL-3 | Pomocniczy | Komunikacji | Ręcznie
+| Pomocnicze lub zdalne centrum danych | SQL-3 | Pomocniczy | Komunikacji | Ręczna
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Więcej informacji o planowanym i wymuszonym ręcznym przejściu w tryb failover

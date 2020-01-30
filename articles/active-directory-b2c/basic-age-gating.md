@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7eb4d8e784acc659f6661ef6efbdb06816b142c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064453"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836240"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Włącz kontroli wieku w Azure Active Directory B2C
 
@@ -25,15 +25,15 @@ ms.locfileid: "71064453"
 
 Kontroli wieku w Azure Active Directory B2C (Azure AD B2C) umożliwia zidentyfikowanie małoletnich, które chcą korzystać z aplikacji. Można zablokować, aby uniemożliwić logowanie do aplikacji. Użytkownicy mogą również wrócić do aplikacji i zidentyfikować jej grupę wiekową oraz stan ich zgody rodzicielskiej. Azure AD B2C mogą blokować małoletnie bez zgody rodzicielskiej. Azure AD B2C można również skonfigurować tak, aby umożliwić aplikacji decydowanie o tym, co zrobić z drobnymi wersjami.
 
-Po włączeniu kontroli wieku w [przepływie użytkownika](active-directory-b2c-reference-policies.md)użytkownicy są monitowani o ich pourodzenie i kraj/region, w którym się znajdują. Jeśli użytkownik zaloguje się do programu, który nie wprowadził wcześniej informacji, będzie musiał wprowadzić go przy następnym logowaniu. Reguły są stosowane za każdym razem, gdy użytkownik loguje się.
+Po włączeniu kontroli wieku w [przepływie użytkownika](user-flow-overview.md)użytkownicy są monitowani o ich pourodzenie i kraj/region, w którym się znajdują. Jeśli użytkownik zaloguje się do programu, który nie wprowadził wcześniej informacji, będzie musiał wprowadzić go przy następnym logowaniu. Reguły są stosowane za każdym razem, gdy użytkownik loguje się.
 
-Azure AD B2C korzysta z informacji wprowadzonych przez użytkownika w celu ustalenia, czy są one małoletnim. Pole **grupy wiekowej** zostanie następnie zaktualizowane na swoim koncie. Wartość `null`może być, `Minor`,,, i`NotAdult`. `Adult` `Undefined`  Pola **grupy wiekowej** i **consentProvidedForMinor** są następnie używane do obliczania wartości **legalAgeGroupClassification**.
+Azure AD B2C korzysta z informacji wprowadzonych przez użytkownika w celu ustalenia, czy są one małoletnim. Pole **grupy wiekowej** zostanie następnie zaktualizowane na swoim koncie. Wartość może być `null`, `Undefined`, `Minor`, `Adult`i `NotAdult`.  Pola **grupy wiekowej** i **consentProvidedForMinor** są następnie używane do obliczania wartości **legalAgeGroupClassification**.
 
 Wiek kontroli obejmuje dwie wartości wiekowe: wiek, którego ktoś nie jest już traktowany jako drobny, a okres ważności musi mieć zgodę rodzicielską. W poniższej tabeli wymieniono reguły dotyczące wieku, które są używane do definiowania drobnych i drobnych wyrazów wymagających zgody.
 
 | Kraj/region | Nazwa kraju/regionu | Niewielki wiek zgody | Wiek pomocniczy |
 | -------------- | ------------------- | ----------------- | --------- |
-| Domyślny | Brak | Brak | 18 |
+| Domyślne | Brak | Brak | 18 |
 | AE | Zjednoczone Emiraty Arabskie | Brak | 21 |
 | AT | Austria | 14 | 18 |
 | BE | Belgia | 14 | 18 |
@@ -41,8 +41,8 @@ Wiek kontroli obejmuje dwie wartości wiekowe: wiek, którego ktoś nie jest ju�
 | BH | Bahrajn | Brak | 21 |
 | CM | Kamerun | Brak | 21 |
 | CY | Cypr | 16 | 18 |
-| CZ | Czechy | 16 | 18 |
-| DE | Niemcy | 16 | 18 |
+| CZ | Republika Czeska | 16 | 18 |
+| Niemcy | Niemcy | 16 | 18 |
 | DK | Dania | 16 | 18 |
 | EE | Estonia | 16 | 18 |
 | EG | Egipt | Brak | 21 |
@@ -50,7 +50,7 @@ Wiek kontroli obejmuje dwie wartości wiekowe: wiek, którego ktoś nie jest ju�
 | PW | Francja | 16 | 18 |
 | GB | Zjednoczone Królestwo | 13 | 18 |
 | GR | Grecja | 16 | 18 |
-| HR | Chorwacja | 16 | 18 |
+| Kadry | Chorwacja | 16 | 18 |
 | HU | Węgry | 16 | 18 |
 | IE | Irlandia | 13 | 18 |
 | IT | Włochy | 16 | 18 |
@@ -71,7 +71,7 @@ Wiek kontroli obejmuje dwie wartości wiekowe: wiek, którego ktoś nie jest ju�
 | BADAŃ | Czad | Brak | 21 |
 | TH | Tajlandia | Brak | 20 |
 | TW | Tajwan | Brak | 20 |
-| USA | Stany Zjednoczone | 13 | 18 |
+| Stany Zjednoczone | Stany Zjednoczone | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Opcje kontroli wieku
 
@@ -103,7 +103,7 @@ Po skonfigurowaniu dzierżawy do korzystania z kontroli wieku można użyć tej 
 1. Utwórz przepływ użytkownika z włączonym kontroli wieku.
 2. Po utworzeniu przepływu użytkownika wybierz pozycję **Właściwości** w menu.
 3. W sekcji **kontroli wieku** wybierz pozycję **włączone**.
-4. Następnie zdecyduj, w jaki sposób chcesz zarządzać użytkownikami, które identyfikują jako małoletnie. W przypadku **rejestracji lub logowania**należy wybrać `Allow minors to access your application` lub. `Block minors from accessing your application` W przypadku wybrania opcji blokowania drobnych `Send a JSON back to the application` zaznaczania `Show an error message`lub.
+4. Następnie zdecyduj, w jaki sposób chcesz zarządzać użytkownikami, które identyfikują jako małoletnie. W przypadku **rejestracji lub logowania**należy wybrać `Allow minors to access your application` lub `Block minors from accessing your application`. W przypadku wybrania opcji blokowania drobnych wybierz pozycję `Send a JSON back to the application` lub `Show an error message`.
 
 
 

@@ -5,21 +5,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 05/21/2019
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 74bd22de81e385a4fbd9129a70616e24b594b0b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441323"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771513"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Przewodnik projektowy tabeli usługi Azure Table Storage: skalowalne i wydajne tabele
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Aby zaprojektować skalowalne i wydajne tabele, należy wziąć pod uwagę różne czynniki, w tym koszt. Jeśli wcześniej zaprojektowano schematy dla relacyjnych baz danych, te zagadnienia będą znane użytkownikowi. Chociaż istnieją różne podobieństwa do usługi Azure Table Storage i modeli relacyjnych, istnieje również wiele ważnych różnic. Te różnice zwykle prowadzą do różnych projektów, które mogą wyglądać na intuicyjne lub niewłaściwe dla kogoś, kto zna relacyjne bazy danych, ale mają sens, jeśli projektujesz dla magazynu klucz/wartość NoSQL, na przykład Table Storage.
+Aby zaprojektować skalowalne i wydajne tabele, należy wziąć pod uwagę różne czynniki, w tym koszt. Jeśli posiadasz doświadczenie w projektowaniu schematów na potrzeby relacyjnych baz danych, te zagadnienia będą Ci znane. Mimo że istnieją pewne podobieństwa między usługą Azure Table Storage i modelami relacyjnymi, istnieje również wiele istotnych różnic. Te różnice prowadzą zwykle do różnych projektów, które mogą wyglądać na nieintuicyjne lub błędne dla kogoś, kto ma doświadczenie z relacyjnymi bazami danych, ale mają sens, jeśli projektowanie odbywa się na potrzeby magazynu klucz/wartość bazy danych NoSQL, na przykład usługi Table Storage.
 
 Usługa Table Storage została zaprojektowana do obsługi aplikacji w skali chmury, które mogą zawierać miliardy jednostek ("wiersze" w terminologii relacyjnej bazy danych) lub zestawy danych, które muszą obsługiwać duże ilości transakcji. W związku z tym należy myśleć o sposobie przechowywania danych i zrozumieć, jak działa magazyn tabel. Dobrze zaprojektowany magazyn danych NoSQL może pozwalać na skalowanie rozwiązań znacznie bardziej wydajnych (i niższych kosztów) niż rozwiązanie korzystające z relacyjnej bazy danych. Ten przewodnik ułatwi Ci następujące tematy.  
 

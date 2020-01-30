@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 599becae0225bea623c383ead49cd9abcea6fff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231105"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766230"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązań Azure Functions
 
@@ -26,10 +26,10 @@ Poniższa tabela zawiera informacje o tym, kiedy i w jaki sposób rejestrujesz p
 
 | Środowisko deweloperskie |Rejestracja<br/> w funkcjach 1. x  |Rejestracja<br/> w funkcjach 2. x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure Portal|Automatyczny|Automatyczny|
+|Portal Azure|Automatyczny|Automatyczny|
 |Programowanie w języku Non-.NET lub lokalne podstawowe narzędzia platformy Azure|Automatyczny|[Użyj Azure Functions Core Tools i pakietów rozszerzeń](#extension-bundles)|
 |C#Biblioteka klas przy użyciu programu Visual Studio|[Korzystanie z narzędzi NuGet](#vs)|[Korzystanie z narzędzi NuGet](#vs)|
-|C#Biblioteka klas przy użyciu Visual Studio Code|Nie dotyczy|[Użyj interfejs wiersza polecenia platformy .NET Core](#vs-code)|
+|C#Biblioteka klas przy użyciu Visual Studio Code|ND|[Użyj interfejs wiersza polecenia platformy .NET Core](#vs-code)|
 
 ## <a name="extension-bundles"></a>Zestawy rozszerzeń do lokalnego tworzenia
 
@@ -62,9 +62,6 @@ Zastąp `<TARGET_VERSION>` w przykładzie z określoną wersją pakietu, np. `3.
 Jeśli używasz `Install-Package` do odwoływania się do powiązania, nie musisz używać [pakietów rozszerzeń](#extension-bundles). To podejście jest specyficzne dla bibliotek klas skompilowanych w programie Visual Studio.
 
 ## <a name="vs-code"></a>C# Biblioteka klas z Visual Studio Code
-
-> [!NOTE]
-> Zalecamy używanie [pakietów rozszerzeń](#extension-bundles) w celu automatycznego zainstalowania zgodnego zestawu pakietów rozszerzenia powiązania. 
 
 W **Visual Studio Code**Zainstaluj pakiety dla projektu biblioteki C# klas z wiersza polecenia przy użyciu polecenia [dotnet Add Package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) w interfejs wiersza polecenia platformy .NET Core. Poniższy przykład ilustruje sposób dodawania powiązania:
 

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: b70fcb1d63636984e1d014723b50170651a553d9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0fef7d6f59b8893ff400914f491f421cddf436b7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156883"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842924"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Aby zainstalować środowisko zestawu SDK dla [komputera lokalnego](#local), [Ju
 [Wystąpienie obliczeniowe Azure Machine Learning (wersja zapoznawcza)](concept-compute-instance.md) to bezpieczna, oparta na chmurze stacja robocza platformy Azure, która zapewnia analitykom danych za pomocą serwera Jupyter notesu, JupyterLab i w pełni przygotowanego środowiska ml.
 
 > [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
+> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z **Północno-środkowe stany USA**, * * Wschodnie stany USA 2 * *, **europa Północna** lub **Południowe Zjednoczone Królestwo**.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.
 
 Nie ma nic do zainstalowania lub skonfigurowania wystąpienia obliczeniowego.  Utwórz ją w dowolnym momencie w obszarze roboczym Azure Machine Learning. Podaj tylko nazwę i określ typ maszyny wirtualnej platformy Azure. Wypróbuj teraz ten [Samouczek: Konfigurowanie środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
@@ -291,16 +291,16 @@ Jak Azure Databricks współpracuje z Azure Machine Learning:
 Utwórz [klaster datakostki](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Niektóre ustawienia są stosowane tylko w przypadku instalowania zestawu SDK w celu automatycznego uczenia maszynowego w kostkach.
 **Utworzenie klastra potrwa kilka minut.**
 
-Użyj następujących ustawień:
+Użyj tych ustawień:
 
 | Ustawienie |Informacje zawarte w tym artykule dotyczą| Wartość |
 |----|---|---|
-| Nazwa klastra |zawsze| yourclustername |
-| Środowisko uruchomieniowe usługi Databricks |zawsze|Środowisko uruchomieniowe inne niż ML 6,0 (Scala 2,11, Spark 2.4.3) |
-| Wersja języka Python |zawsze| 3 |
-| Ochotnik |zawsze| 2 lub nowszy |
+| Nazwa klastra |stałego| yourclustername |
+| Środowisko uruchomieniowe usługi Databricks |stałego|Środowisko uruchomieniowe inne niż ML 6,0 (Scala 2,11, Spark 2.4.3) |
+| Wersja języka Python |stałego| 3 |
+| Ochotnik |stałego| 2 lub nowszy |
 | Typy maszyn wirtualnych węzła procesu roboczego <br>(określa maksymalną liczbę współbieżnych iteracji) |Zautomatyzowane uczenie maszynowe<br>jedyn| Preferowana maszyna wirtualna zoptymalizowana pod kątem pamięci |
-| Włączanie skalowania automatycznego |Zautomatyzowane uczenie maszynowe<br>jedyn| Usuń zaznaczenie pola wyboru |
+| Włączanie skalowania automatycznego |Zautomatyzowane uczenie maszynowe<br>jedyn| Usuń zaznaczenie |
 
 Przed kontynuowaniem Zaczekaj, aż klaster zostanie uruchomiony.
 
@@ -341,9 +341,9 @@ Zestaw SDK dla datakostek **_bez_** ZAUTOMATYZOWANEGO zestawu SDK usługi machin
 
 Zestaw SDK dla datakostek **z** automatycznym zestawem machine Learning ![SDK z automatyczną nauką maszynową zainstalowaną w kostkach datakostek](./media/how-to-configure-environment/automlonadb.png)
 
-### <a name="start-exploring"></a>Rozpocznij eksplorację
+### <a name="start-exploring"></a>Zacznij Eksplorowanie
 
-Wypróbuj to:
+Wypróbuj:
 + Chociaż dostępnych jest wiele przykładowych notesów, **tylko [te przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) współpracują z Azure Databricks.**
 
 + Zaimportuj te próbki bezpośrednio z obszaru roboczego. Zobacz poniżej: ![wybierz pozycję Importuj](./media/how-to-configure-environment/azure-db-screenshot.png)

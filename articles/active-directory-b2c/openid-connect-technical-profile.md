@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fdb925f820cad79fe68e7082f4ed63292a7d9444
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bda1d3bcce37cbb7b5306d460bddd4652349fe9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951092"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840353"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny OpenID Connect Connect w zasadach niestandardowych Azure Active Directory B2C
 
@@ -103,6 +103,6 @@ Podczas konfigurowania identyfikatora URI przekierowania dostawcy tożsamości w
 
 Przykłady:
 
-- [Dodawanie konta Microsoft (MSA) jako dostawcy tożsamości przy użyciu zasad niestandardowych](active-directory-b2c-custom-setup-msa-idp.md)
-- [Logowanie przy użyciu kont usługi Azure AD](active-directory-b2c-setup-aad-custom.md)
-- [Zezwalaj użytkownikom na logowanie się do wielodostępnego dostawcy tożsamości usługi Azure AD przy użyciu zasad niestandardowych](active-directory-b2c-setup-commonaad-custom.md)
+- [Dodawanie konta Microsoft (MSA) jako dostawcy tożsamości przy użyciu zasad niestandardowych](identity-provider-microsoft-account-custom.md)
+- [Logowanie przy użyciu kont usługi Azure AD](identity-provider-azure-ad-single-tenant-custom.md)
+- [Zezwalaj użytkownikom na logowanie się do wielodostępnego dostawcy tożsamości usługi Azure AD przy użyciu zasad niestandardowych](identity-provider-azure-ad-multi-tenant-custom.md)

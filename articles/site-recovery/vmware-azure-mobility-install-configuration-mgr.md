@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 50f8b5b4412e02692bf2b5d57b7f0dee27c2a25a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514825"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842703"
 ---
 # <a name="automate-mobility-service-installation"></a>Automatyzowanie instalacji usługi mobilności
 
@@ -19,7 +19,7 @@ W tym artykule opisano sposób automatyzowania instalacji i aktualizacji agenta 
 Podczas wdrażania Site Recovery na potrzeby odzyskiwania po awarii lokalnych maszyn wirtualnych VMware i serwerów fizycznych do platformy Azure należy zainstalować agenta usługi mobilności na każdej maszynie, która ma być replikowana. Usługa mobilności przechwytuje operacje zapisu danych na komputerze i przekazuje je do serwera przetwarzania Site Recovery na potrzeby replikacji. Usługę mobilności można wdrożyć na kilka sposobów:
 
 - **Instalacja wypychana**: Pozwól Site Recovery zainstalować agenta usługi mobilności po włączeniu replikacji dla maszyny w Azure Portal.
-- **Instalacja ręczna**: należy ręcznie zainstalować usługę mobilności na poszczególnych komputerach. [Dowiedz się więcej](/vmware-physical-mobility-service-overview.md) o instalacji wypychanej i ręcznej.
+- **Instalacja ręczna**: należy ręcznie zainstalować usługę mobilności na poszczególnych komputerach. [Dowiedz się więcej](vmware-physical-mobility-service-overview.md) o instalacji wypychanej i ręcznej.
 - **Zautomatyzowane wdrażanie**: Automatyzowanie instalacji przy użyciu narzędzi do wdrażania oprogramowania, takich jak Microsoft Endpoint Configuration Manager, lub narzędzi innych firm, takich jak Intigua JetPatch.
 
 Automatyczne instalowanie i aktualizowanie zapewnia rozwiązanie, jeśli:
@@ -44,7 +44,7 @@ W przypadku instalacji zautomatyzowanej są potrzebne następujące elementy:
 
 W poniższej tabeli zestawiono narzędzia i procesy służące do automatyzowania wdrażania usługi mobilności.
 
-**Narzędzie** | **Szczegóły** | **Instrukcje**
+**Narzędzie** | **Szczegóły** | **Wskazówek**
 --- | --- | ---
 **Configuration Manager** | 1. Sprawdź, czy masz wymienione powyżej [wymagania wstępne](#prerequisites) . <br/><br/>2. Wdróż odzyskiwanie po awarii przez skonfigurowanie środowiska źródłowego, w tym pobranie pliku komórki jajowe do wdrożenia serwera konfiguracji Site Recovery jako maszyny wirtualnej VMware przy użyciu szablonu OVF.<br/><br/> 2. Zarejestruj serwer konfiguracji w usłudze Site Recovery, skonfiguruj docelowe środowisko platformy Azure i skonfiguruj zasady replikacji.<br/><br/> 3. Aby wdrożyć Automatyczne wdrażanie usługi mobilności, należy utworzyć udział sieciowy zawierający hasło serwera konfiguracji i pliki instalacyjne usługi mobilności.<br/><br/> 4. Utwórz pakiet Configuration Manager zawierający instalację lub aktualizacje i przygotuj się do wdrożenia usługi mobilności.<br/><br/> 5. następnie można włączyć replikację na platformie Azure dla maszyn, na których zainstalowano usługę mobilności. | [Automatyzacja przy użyciu Configuration Manager](#automate-with-configuration-manager).
 **JetPatch** | 1. Sprawdź, czy masz wymienione powyżej [wymagania wstępne](#prerequisites) . <br/><br/> 2. Wdróż odzyskiwanie po awarii przez skonfigurowanie środowiska źródłowego, w tym pobieranie i wdrażanie Menedżera agentów JetPatch na potrzeby Azure Site Recovery w środowisku Site Recovery przy użyciu szablonu OVF.<br/><br/> 2. Zarejestruj serwer konfiguracji przy użyciu Site Recovery, skonfiguruj docelowe środowisko platformy Azure i skonfiguruj zasady replikacji.<br/><br/> 3. Aby uzyskać automatyczne wdrażanie, zainicjuj i Ukończ konfigurację Menedżera agentów JetPatch.<br/><br/> 4. w programie JetPatch można utworzyć zasady Site Recovery, aby zautomatyzować wdrażanie i uaktualnianie agenta usługi mobilności. <br/><br/> 5. następnie można włączyć replikację na platformie Azure dla maszyn, na których zainstalowano usługę mobilności. | [Automatyzacja za pomocą Menedżera agentów JetPatch](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/).<br/><br/> [Rozwiązywanie problemów z instalacją agenta](https://kc.jetpatch.com/hc/articles/360035981812) w JetPatch.
@@ -358,7 +358,7 @@ cd /tmp
     --- | --- | ---
     **Nazwa** | Instalowanie usługi mobilności Microsoft Azure (Windows) | Zainstaluj usługę mobilności Microsoft Azure (Linux).
     **Wiersz polecenia** | install.bat | ./install_linux.sh
-    **Program może zostać uruchomiony** | Niezależnie od tego, czy użytkownik jest zalogowany | Niezależnie od tego, czy użytkownik jest zalogowany
+    **Program może zostać uruchomiony** | Bez względu na to, czy użytkownik jest zalogowany | Bez względu na to, czy użytkownik jest zalogowany
     **Inne parametry** | Użyj ustawienia domyślnego | Użyj ustawienia domyślnego
 
    ![Zrzut ekranu przedstawiający Kreatora tworzenia pakietu i programu](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
@@ -372,7 +372,7 @@ cd /tmp
 
 
 
-### <a name="deploy-the-package"></a>Wdrażanie pakietu
+### <a name="deploy-the-package"></a>Wdróż pakiet
 
 1. W konsoli Configuration Manager kliknij prawym przyciskiem myszy pakiet > **Dystrybuuj zawartość**.
    ![zrzut ekranu konsoli Configuration Manager](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)

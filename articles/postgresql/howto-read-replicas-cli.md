@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: bb2c83757bd86d02a93c52bacdd03ce89186614e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719776"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774804"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Tworzenie replik odczytu i zarządzanie nimi w interfejsie wiersza polecenia platformy Azure, interfejs API REST
 
@@ -38,8 +38,8 @@ Parametr `azure.replication_support` musi być ustawiony na **replikę** na serw
    ```
 
 > [!NOTE]
-> Jeśli zostanie wyświetlony błąd "podano nieprawidłową wartość" podczas próby ustawienia platformy Azure. replication_support z poziomu interfejsu wiersza polecenia platformy Azure, prawdopodobnie serwer ma już ustawioną replikę. Usterka uniemożliwia poprawne odzwierciedlenie tego ustawienia na nowszych serwerach, na których replika jest domyślnie wewnętrzna.
-> Możesz pominąć kroki przygotowywania wzorca i przejść do tworzenia repliki.
+> Jeśli zostanie wyświetlony błąd "podano nieprawidłową wartość" podczas próby ustawienia platformy Azure. replication_support z poziomu interfejsu wiersza polecenia platformy Azure, prawdopodobnie serwer ma już ustawioną replikę. Usterka uniemożliwia poprawne odzwierciedlenie tego ustawienia na nowszych serwerach, na których replika jest domyślnie wewnętrzna. <br><br>
+> Możesz pominąć kroki przygotowywania wzorca i przejść do tworzenia repliki. <br><br>
 > Jeśli chcesz potwierdzić, że serwer jest w tej kategorii, odwiedź stronę replikacji serwera w Azure Portal. Wartość "Wyłącz replikację" zostanie wyszarzona, a na pasku narzędzi zostanie uaktywniona wartość "Dodaj replikę".
 
 2. Uruchom ponownie serwer, aby zastosować zmianę.

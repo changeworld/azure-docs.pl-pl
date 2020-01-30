@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6c7981d15acf2b2b71dfb4234f85b738efe62ce0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954645"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767944"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Wizualizowanie danych z czujników w czasie rzeczywistym z poziomu usługi Azure IoT Hub w aplikacji sieci Web
 
@@ -124,7 +124,7 @@ set IotHubConnectionString=YourIoTHubConnectionString
 set EventHubConsumerGroup=YourConsumerGroupName
 ```
 
-## <a name="run-the-web-app"></a>Uruchamianie aplikacji sieci web
+## <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
 
 1. Upewnij się, że urządzenie jest uruchomione i wysyła dane.
 
@@ -165,10 +165,10 @@ W tej sekcji można zainicjować obsługę aplikacji sieci Web w App Service i w
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Teraz Zainicjuj obsługę aplikacji sieci Web w planie App Service. Parametr `--deployment-local-git` umożliwia przekazywanie i wdrażanie kodu aplikacji sieci Web z repozytorium Git na komputerze lokalnym. Nazwa aplikacji sieci Web musi być globalnie unikatowa i może zawierać wielkie i małe litery, cyfry i łączniki.
+2. Teraz Zainicjuj obsługę aplikacji sieci Web w planie App Service. Parametr `--deployment-local-git` umożliwia przekazywanie i wdrażanie kodu aplikacji sieci Web z repozytorium Git na komputerze lokalnym. Nazwa aplikacji sieci Web musi być globalnie unikatowa i może zawierać wielkie i małe litery, cyfry i łączniki. Upewnij się, że dla parametru `--runtime` określono węzeł w wersji 10,6 lub nowszej, w zależności od używanej wersji środowiska uruchomieniowego Node. js. Możesz użyć `az webapp list-runtimes` polecenia, aby uzyskać listę obsługiwanych środowisk uruchomieniowych.
 
    ```azurecli-interactive
-   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
 3. Teraz Dodaj ustawienia aplikacji dla zmiennych środowiskowych, które określają parametry połączenia usługi IoT Hub i grupę odbiorców centrum zdarzeń. Poszczególne ustawienia są oddzielane spacjami w parametrze `-settings`. Użyj parametrów połączenia usługi dla Centrum IoT Hub i grupy konsumentów utworzonej wcześniej w tym samouczku. Nie należy wycudzysłowować wartości.

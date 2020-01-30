@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb8711bc4a6134ec740a55d9f5d5794b2de77ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588592"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773960"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Wizualizuj dane z usługi Azure Eksplorator danych w odkreskowaniu
 
-Polecenie [rekreska](https://www.redash.io/) łączy się ze źródłami danych i wysyła do nich zapytania, kompiluje pulpity nawigacyjne, aby wizualizować dane i udostępniać je równorzędnym. W tym artykule dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla połącznika, a następnie wizualizować dane.
+Polecenie [rekreska](https://redash.io/) łączy się ze źródłami danych i wysyła do nich zapytania, kompiluje pulpity nawigacyjne, aby wizualizować dane i udostępniać je równorzędnym. W tym artykule dowiesz się, jak skonfigurować Eksplorator danych platformy Azure jako źródło danych dla połącznika, a następnie wizualizować dane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

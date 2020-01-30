@@ -15,49 +15,49 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f857cfabfcacc5bb11e152a53fddee612c63d75b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 88062c2134600d5b1460858c3799cfc8daa83744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702440"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775227"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikacja demona, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 
 Dowiedz się, jak skonfigurować kod dla aplikacji demona, która wywołuje interfejsy API sieci Web.
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>Biblioteki MSAL obsługujące aplikacje demona
+## <a name="msal-libraries-that-support-daemon-apps"></a>Biblioteki MSAL obsługujące aplikacje demona
 
-Biblioteki firmy Microsoft obsługujące aplikacje demona są następujące:
+Te biblioteki firmy Microsoft obsługują aplikacje demona:
 
   Biblioteka MSAL | Opis
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Obsługiwane platformy do kompilowania aplikacji demona są .NET Framework i platformy .NET Core (nie platformy UWP, Xamarin. iOS i Xamarin. Android, ponieważ te platformy są używane do tworzenia publicznych aplikacji klienckich).
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Obsługa aplikacji demona w języku Python
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Obsługa aplikacji demona w języku Java
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Platformy .NET Framework i .NET Core są obsługiwane na potrzeby tworzenia aplikacji demona. (Platformy UWP, Xamarin. iOS i Xamarin. Android nie są obsługiwane, ponieważ te platformy są używane do tworzenia publicznych aplikacji klienckich).
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Obsługa aplikacji demona w języku Python.
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Obsługa aplikacji demona w języku Java.
 
-## <a name="configuration-of-the-authority"></a>Konfiguracja urzędu
+## <a name="configure-the-authority"></a>Konfigurowanie urzędu
 
-Ponieważ aplikacje demona nie korzystają z uprawnień delegowanych, ale uprawnienia aplikacji, ich *obsługiwany typ konta* nie mogą być *kontami w żadnym katalogu organizacyjnym i osobistymi kontami Microsoft (na przykład Skype, Xbox, Outlook.com)* . W rzeczywistości nie istnieje Administrator dzierżawy, który może udzielić zgody na aplikację demona dla kont osobistych firmy Microsoft. Musisz wybrać *konta w mojej organizacji* lub *kontach w dowolnej organizacji*.
+Aplikacje demona używają uprawnień aplikacji zamiast uprawnień delegowanych. Typ konta, który jest obsługiwany, nie może być kontem w żadnym katalogu organizacyjnym ani żadnym konto Microsoft osobistym (na przykład Skype, Xbox, Outlook.com). Brak administratora dzierżawy do udzielenia zgody na aplikację demona dla konta osobistego firmy Microsoft. Musisz wybrać *konta w mojej organizacji* lub *kontach w dowolnej organizacji*.
 
-W związku z tym Urząd określony w konfiguracji aplikacji powinien mieć wartość dzierżawca (określając identyfikator dzierżawy lub nazwę domeny skojarzoną z Twoją organizacją).
+W związku z tym Urząd określony w konfiguracji aplikacji powinien być dzierżawcą (określając identyfikator dzierżawy lub nazwę domeny skojarzoną z Twoją organizacją).
 
-Jeśli jesteś niezależnym dostawcą oprogramowania i chcesz udostępnić narzędzie z wieloma dzierżawcami, możesz użyć `organizations`. Należy jednak pamiętać, że należy również wyjaśnić swoim klientom sposób udzielania zgody administratora. Aby uzyskać szczegółowe informacje [, zobacz prośba o zgodę na całą dzierżawę](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) . Istnieje również ograniczenie MSAL: wartość `organizations` jest dozwolona tylko wtedy, gdy poświadczenia klienta to klucz tajny aplikacji (a nie certyfikat).
+Jeśli jesteś niezależnym dostawcą oprogramowania i chcesz udostępnić narzędzie wielodostępne, możesz użyć `organizations`. Należy jednak pamiętać, że należy również wyjaśnić swoim klientom sposób udzielania zgody administratora. Aby uzyskać szczegółowe informacje, zobacz [żądanie zgody dla całej dzierżawy](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Ponadto obecnie obowiązuje ograniczenie MSAL: `organizations` jest dozwolony tylko wtedy, gdy poświadczenia klienta są wpisem tajnym aplikacji (nie certyfikatem).
 
-## <a name="application-configuration-and-instantiation"></a>Konfiguracja i tworzenie aplikacji
+## <a name="configure-and-instantiate-the-application"></a>Konfigurowanie i tworzenie wystąpienia aplikacji
 
 W bibliotekach MSAL poświadczenia klienta (klucz tajny lub certyfikat) są przesyłane jako parametr konstrukcji poufnej aplikacji klienckiej.
 
 > [!IMPORTANT]
-> Nawet jeśli aplikacja jest aplikacją konsolową działającą jako usługa, to aplikacja demona musi być poufną aplikacją kliencką.
+> Nawet jeśli aplikacja jest aplikacją konsolową, która działa jako usługa, jeśli jest to aplikacja demona, musi być poufną aplikacją kliencką.
 
 ### <a name="configuration-file"></a>Plik konfiguracji
 
 Plik konfiguracji definiuje:
 
-- Urząd lub wystąpienie w chmurze i tenantId
-- ClientID, który pochodzi z rejestracji aplikacji
-- wpis tajny klienta lub certyfikat
+- Urząd lub wystąpienie w chmurze i identyfikator dzierżawy.
+- Identyfikator klienta, który został uzyskany z rejestracji aplikacji.
+- Wpis tajny klienta lub certyfikat.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -73,11 +73,11 @@ plik [appSettings. JSON](https://github.com/Azure-Samples/active-directory-dotne
 }
 ```
 
-Podaj wartość clientSecret lub certificateName. Oba ustawienia są na wyłączność.
+Podaj `ClientSecret` lub `CertificateName`. Te ustawienia są wyłączność.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Podczas budowania klienta poufnego z kluczami tajnymi klienta plik config [. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) w przykładzie [demona języka Python](https://github.com/Azure-Samples/ms-identity-python-daemon) jest następujący.
+W przypadku tworzenia poufnego klienta z kluczami tajnymi klienta plik config [. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) w przykładzie [demona języka Python](https://github.com/Azure-Samples/ms-identity-python-daemon) jest następujący:
 
 ```Json
 {
@@ -89,7 +89,7 @@ Podczas budowania klienta poufnego z kluczami tajnymi klienta plik config [. JSO
 }
 ```
 
-Podczas budowania klienta poufnego z certyfikatami plik konfiguracyjny [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) w przykładzie [demona języka Python](https://github.com/Azure-Samples/ms-identity-python-daemon) jest następujący.
+Podczas budowania klienta poufnego za pomocą certyfikatów, plik konfiguracyjny [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) w przykładzie [demona języka Python](https://github.com/Azure-Samples/ms-identity-python-daemon) jest następujący:
 
 ```Json
 {
@@ -104,7 +104,7 @@ Podczas budowania klienta poufnego z certyfikatami plik konfiguracyjny [Paramete
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Oto Klasa używana w przykładach deweloperskich MSAL Java do konfigurowania przykładów: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java) jest klasą używaną do konfigurowania przykładów deweloperskich języka Java MSAL:
 
 ```Java
 public class TestData {
@@ -118,12 +118,11 @@ public class TestData {
 
 ---
 
-### <a name="instantiation-of-the-msal-application"></a>Tworzenie wystąpienia aplikacji MSAL
+### <a name="instantiate-the-msal-application"></a>Tworzenie wystąpienia aplikacji MSAL
 
-Aby utworzyć wystąpienie aplikacji MSAL, należy wykonać następujące:
+Aby utworzyć wystąpienie aplikacji MSAL, należy dodać, odwołać lub zaimportować pakiet MSAL (w zależności od języka).
 
-- Dodawanie, odwoływanie lub Importowanie pakietu MSAL (w zależności od języka)
-- Następnie konstrukcja jest różna w zależności od tego, czy używane są klucze tajne lub certyfikaty klienta (lub, jako zaawansowany scenariusz, podpisane potwierdzenia)
+Konstrukcja różni się w zależności od tego, czy są używane klucze tajne klienta czy certyfikaty (lub, jako zaawansowany scenariusz, podpisane potwierdzenia).
 
 #### <a name="reference-the-package"></a>Odwoływanie się do pakietu
 
@@ -133,7 +132,7 @@ Odwołuje się do pakietu MSAL w kodzie aplikacji.
 
 Dodaj pakiet NuGet [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) do swojej aplikacji.
 W MSAL.NET, poufna aplikacja kliencka jest reprezentowana przez interfejs `IConfidentialClientApplication`.
-Użyj przestrzeni nazw MSAL.NET w kodzie źródłowym
+Użyj przestrzeni nazw MSAL.NET w kodzie źródłowym.
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -157,7 +156,7 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-client-secrets"></a>Tworzenie wystąpienia poufnej aplikacji klienckiej przy użyciu kluczy tajnych klienta
+#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>Tworzenie wystąpienia poufnej aplikacji klienckiej przy użyciu klucza tajnego klienta
 
 Oto kod służący do tworzenia wystąpienia poufnej aplikacji klienckiej przy użyciu klucza tajnego klienta:
 
@@ -175,7 +174,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential=config["secret"],
@@ -197,7 +196,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-client-certificate"></a>Tworzenie wystąpienia poufnej aplikacji klienckiej przy użyciu certyfikatu klienta
+#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>Tworzenie wystąpienia poufnej aplikacji klienckiej przy użyciu certyfikatu klienta
 
 Oto kod służący do kompilowania aplikacji z certyfikatem:
 
@@ -216,7 +215,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
@@ -228,12 +227,12 @@ app = msal.ConfidentialClientApplication(
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-W MSAL. Java istnieją dwóch konstruktorów, które umożliwiają utworzenie wystąpienia poufnej aplikacji klienckiej przy użyciu certyfikatów:
+W MSAL Java istnieją dwóch konstruktorów, które umożliwiają utworzenie wystąpienia poufnej aplikacji klienckiej przy użyciu certyfikatów:
 
 ```Java
 
-InputStream pkcs12Certificate = ... ; /* containing PCKS12 formatted certificate*/
-string certificatePassword = ... ;    /* contains the password to access the certificate */
+InputStream pkcs12Certificate = ... ; /* Containing PCKS12-formatted certificate*/
+string certificatePassword = ... ;    /* Contains the password to access the certificate */
 
 ConfidentialClientApplication app = ConfidentialClientApplication.builder(
         TestData.CONFIDENTIAL_CLIENT_ID,
@@ -257,7 +256,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 ---
 
-#### <a name="advanced-scenario---instantiate-the-confidential-client-application-with-client-assertions"></a>Scenariusz zaawansowany — Tworzenie wystąpienia poufnej aplikacji klienckiej z potwierdzeniami klientów
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>Scenariusz zaawansowany: Tworzenie wystąpienia poufnej aplikacji klienckiej za pomocą potwierdzeń klienta
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -268,7 +267,7 @@ MSAL.NET ma dwie metody, aby zapewnić podpisane potwierdzenia do poufnej aplika
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-W przypadku korzystania z `WithClientAssertion`należy zapewnić podpisany token JWT. Ten zaawansowany scenariusz jest szczegółowo opisany w [potwierdzeniach klienta](msal-net-client-assertions.md)
+W przypadku korzystania z `WithClientAssertion`należy zapewnić podpisany token JWT. Ten zaawansowany scenariusz jest szczegółowy w przypadku [potwierdzeń klientów](msal-net-client-assertions.md).
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -277,8 +276,8 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-W przypadku korzystania z `WithClientClaims`, MSAL.NET będzie same podpisane potwierdzenie zawierające oświadczenia oczekiwane przez usługę Azure AD i dodatkowe oświadczenia klienta, które chcesz wysłać.
-Oto fragment kodu dotyczący sposobu wykonywania tych czynności:
+Gdy używasz `WithClientClaims`, MSAL.NET będzie generował podpisane potwierdzenie zawierające oświadczenia oczekiwane przez usługę Azure AD oraz dodatkowe oświadczenia klienta, które chcesz wysłać.
+Ten kod pokazuje, jak to zrobić:
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -294,12 +293,12 @@ Aby uzyskać szczegółowe informacje, zobacz [potwierdzenia klientów](msal-net
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-W MSAL Python można dostarczyć oświadczenia klienta przy użyciu oświadczeń, które będą podpisane przez klucz prywatny tego `ConfidentialClientApplication`.
+W MSAL Python można zapewnić oświadczenia klienta przy użyciu oświadczeń, które będą podpisane przez klucz prywatny tego `ConfidentialClientApplication`.
 
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
@@ -310,7 +309,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-Aby uzyskać szczegółowe informacje, zobacz dokumentację referencyjną MSAL języka Python dla [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__).
+Aby uzyskać szczegółowe informacje, zobacz dokumentację MSAL języka Python dla [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 

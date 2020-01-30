@@ -3,12 +3,12 @@ title: Wdróż wiele wystąpień zasobów
 description: Użyj operacji kopiowania i tablic w szablonie Azure Resource Manager, aby wielokrotnie wykonywać iteracje podczas wdrażania zasobów.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 0250f5ee64c91d8d75ad246271ab31324a2553f8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121985"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836933"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteracja zasobu, właściwości lub zmiennej w szablonach Azure Resource Manager
 
@@ -205,6 +205,10 @@ Poniższy przykład pokazuje, jak zastosować `copy` do właściwości datadisks
 
 Należy zauważyć, że w przypadku używania `copyIndex` wewnątrz iteracji właściwości należy podać nazwę iteracji. Nie musisz podawać nazwy, jeśli jest używana z iteracją zasobu.
 
+> [!NOTE]
+> Iteracja właściwości obsługuje również argument przesunięcia. Przesunięcie musi następować po nazwie iteracji, takiej jak funkcji copyindex ("datadisks", 1).
+>
+
 Menedżer zasobów rozszerza tablicę `copy` podczas wdrażania. Nazwa tablicy zmieni się na nazwę właściwości. Wartości wejściowe stają się właściwościami obiektu. Wdrożony szablon zostanie:
 
 ```json
@@ -299,6 +303,10 @@ Iteracji zasobów i właściwości można używać razem. Odwołuje się do iter
 ## <a name="variable-iteration"></a>Iteracja zmiennej
 
 Aby utworzyć wiele wystąpień zmiennej, użyj właściwości `copy` w sekcji zmienne. Tworzysz tablicę elementów skonstruowanych na podstawie wartości właściwości `input`. Można użyć właściwości `copy` w ramach zmiennej lub na najwyższym poziomie sekcji zmienne. W przypadku używania `copyIndex` wewnątrz iteracji zmiennej należy podać nazwę iteracji.
+
+> [!NOTE]
+> Iteracja zmiennej obsługuje również argument przesunięcia. Przesunięcie musi następować po nazwie iteracji, takiej jak funkcji copyindex ("diskNames", 1).
+>
 
 Aby zapoznać się z prostym przykładem tworzenia tablicy wartości ciągów, zobacz [copy Array Template](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
 

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92925dc32d7f26b224811aa852112a275f112b35
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3f6d4849b02f320c7479469b4ee56be50e4f8dee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950837"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840098"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Wersje języka JavaScript i układu strony w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C zawiera zestaw spakowanych zawartości zawierający kod HTML, CSS i JavaScript dla elementów interfejsu użytkownika w przepływach użytkownika i zasadach niestandardowych. Aby włączyć obsługę języka JavaScript dla aplikacji, należy dodać element do [zasad niestandardowych](active-directory-b2c-overview-custom.md) lub włączyć go w portalu dla przepływów użytkowników, wybrać układ strony i użyć [b2clogin.com](b2clogin.md) w swoich żądaniach.
+Azure AD B2C zawiera zestaw spakowanych zawartości zawierający kod HTML, CSS i JavaScript dla elementów interfejsu użytkownika w przepływach użytkownika i zasadach niestandardowych. Aby włączyć obsługę języka JavaScript dla aplikacji, należy dodać element do [zasad niestandardowych](custom-policy-overview.md) lub włączyć go w portalu dla przepływów użytkowników, wybrać układ strony i użyć [b2clogin.com](b2clogin.md) w swoich żądaniach.
 
 Jeśli zamierzasz włączyć kod po stronie klienta [JavaScript](javascript-samples.md) , upewnij się, że elementy, które są na pewno są używane w języku JavaScript, są niezmienne. W przeciwnym razie wszelkie zmiany mogą spowodować nieoczekiwane zachowanie na stronach użytkownika. Aby uniknąć tych problemów, można wymusić użycie układu strony i określić wersję układu strony. To gwarantuje, że wszystkie definicje zawartości, na których oparto kod JavaScript, są niezmienne. Nawet jeśli nie zamierzasz włączać języka JavaScript, możesz określić wersję układu strony dla stron.
 

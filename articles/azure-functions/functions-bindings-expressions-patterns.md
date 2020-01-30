@@ -5,20 +5,20 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: a9c45321d12b659febfeb4913d66ea3732813918
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9b9e39776e519a91a4464532e11e85da711087b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769527"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766251"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Wzorce wyrażeń powiązań Azure Functions
 
 Jedną z najbardziej zaawansowanych funkcji [wyzwalaczy i powiązań](./functions-triggers-bindings.md) jest *wyrażenie wiążące*. W pliku *Function. JSON* oraz w parametrach i kodzie funkcji można użyć wyrażeń, które rozwiązują wartości z różnych źródeł.
 
-Większość wyrażeń identyfikuje się przez umieszczenie ich w nawiasach klamrowych. Na przykład w funkcji wyzwalacza kolejki `{queueTrigger}` jest rozpoznawana jako tekst komunikatu w kolejce. Jeśli właściwość `path` dla powiązania danych wyjściowych obiektu BLOB jest `container/{queueTrigger}` i funkcja jest wyzwalana przez `HelloWorld`komunikatu kolejki, tworzony jest obiekt BLOB o nazwie `HelloWorld`.
+Większość wyrażeń jest identyfikowana przez zapakowanie ich w nawiasy klamrowe. Na przykład w funkcji wyzwalacza kolejki `{queueTrigger}` jest rozpoznawana jako tekst komunikatu w kolejce. Jeśli właściwość `path` dla powiązania danych wyjściowych obiektu BLOB jest `container/{queueTrigger}` i funkcja jest wyzwalana przez `HelloWorld`komunikatu kolejki, tworzony jest obiekt BLOB o nazwie `HelloWorld`.
 
-Typy wyrażeń powiązania
+Typy wyrażeń powiązań
 
 * [Ustawienia aplikacji](#binding-expressions---app-settings)
 * [Nazwa pliku wyzwalacza](#trigger-file-name)
@@ -131,7 +131,19 @@ public static void Run(
 
 ```
 
-Można również tworzyć wyrażenia dla części nazwy pliku, takiej jak rozszerzenie. Aby uzyskać więcej informacji na temat używania wyrażeń i wzorców w ciągu ścieżki obiektu BLOB, zobacz [odwołanie do powiązania obiektu blob magazynu](functions-bindings-storage-blob.md).
+Można również tworzyć wyrażenia dla części nazwy pliku. W poniższym przykładzie funkcja jest wyzwalana tylko w nazwach plików, które pasują do wzorca: `anyname-anyfile.csv`
+
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+Aby uzyskać więcej informacji na temat używania wyrażeń i wzorców w ciągu ścieżki obiektu BLOB, zobacz [odwołanie do powiązania obiektu blob magazynu](functions-bindings-storage-blob.md).
 
 ## <a name="trigger-metadata"></a>Metadane wyzwalacza
 

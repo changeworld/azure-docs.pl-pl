@@ -1,21 +1,21 @@
 ---
-title: Interfejs API tabel usługi Azure Cosmos DB dla języka Python
+title: interfejs API tabel Azure Cosmos DB dla języka Python
 description: Dowiedz się wszystkiego o usłudze Azure Cosmos DB interfejsu API tabel tym daty wydania, daty wycofania i zmiany między poszczególnymi wersjami.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: reference
 ms.date: 11/20/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: a26e69d756c0f5b8bb26d85d2901e686aba50771
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: 420c9e5a1e86f54e52905e7d7d2459fa2f68e405
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480154"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771291"
 ---
-# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Usługi Azure Cosmos DB Table API SDK dla języka Python: Informacje o wersji i zasoby
+# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB interfejs API tabel SDK dla języka Python: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -30,7 +30,7 @@ ms.locfileid: "66480154"
 |**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API języka Python](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
 |**Instrukcje dotyczące instalacji zestawu SDK**|[Instrukcje dotyczące instalacji zestawu SDK języka Python](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Przyczynia się do zestawu SDK**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Bieżący obsługiwanych platform**|[Python 2.7](https://www.python.org/downloads/) lub [języka Python 3.3, 3.4, 3.5 i 3.6](https://www.python.org/downloads/)|
+|**Bieżąca obsługiwana platforma**|[Python 2,7](https://www.python.org/downloads/) lub [python 3,3, 3,4, 3,5 lub 3,6](https://www.python.org/downloads/)|
 
 > [!IMPORTANT]
 > Jeśli utworzono konto interfejsu API tabel w trakcie okresu próbnego, utwórz [nowe konto interfejsu API tabel](create-table-dotnet.md#create-a-database-account), aby móc korzystać z ogólnie dostępnych zestawów SDK interfejsu API tabel.
@@ -54,7 +54,7 @@ Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżąceg
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15 listopada 2017 r. |--- |
-| [0.37.1](#0.37.1) |05 października 2017 r. |--- |
+| [0.37.1](#0.37.1) |05, 2017 |--- |
 
 
 ## <a name="faq"></a>Często zadawane pytania

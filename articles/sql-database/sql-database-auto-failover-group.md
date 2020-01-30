@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722547"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768658"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
@@ -326,8 +326,8 @@ Jeśli używasz [punktów końcowych usługi Virtual Network i reguł](sql-datab
 Jeśli plan ciągłości działalności biznesowej wymaga przejścia w tryb failover przy użyciu grup z automatyczną obsługą trybu failover, możesz ograniczyć dostęp do bazy danych SQL przy użyciu tradycyjnych reguł zapory. Aby zapewnić obsługę automatycznego trybu failover, wykonaj następujące kroki:
 
 1. [Tworzenie publicznego adresu IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [Utwórz publiczny moduł równoważenia obciążenia](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) i przypisz do niego publiczny adres IP.
-3. [Tworzenie sieci wirtualnej i maszyn wirtualnych](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) dla składników frontonu
+2. [Utwórz publiczny moduł równoważenia obciążenia](../load-balancer/quickstart-load-balancer-standard-public-portal.md) i przypisz do niego publiczny adres IP.
+3. [Tworzenie sieci wirtualnej i maszyn wirtualnych](../load-balancer/quickstart-load-balancer-standard-public-portal.md) dla składników frontonu
 4. [Utwórz sieciową grupę zabezpieczeń](../virtual-network/security-overview.md) i skonfiguruj połączenia przychodzące.
 5. Upewnij się, że połączenia wychodzące są otwarte w usłudze Azure SQL Database przy użyciu [tagu usługi](../virtual-network/security-overview.md#service-tags)"SQL".
 6. Utwórz [regułę zapory bazy danych SQL](sql-database-firewall-configure.md) , aby zezwolić na ruch przychodzący z publicznego adresu IP utworzonego w kroku 1.

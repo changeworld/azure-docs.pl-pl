@@ -1,12 +1,12 @@
 ---
-title: 'Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa — Azure Portal'
+title: 'Szybki Start: Tworzenie Load Balancer publicznego — Azure Portal'
 titleSuffix: Azure Load Balancer
-description: Ten przewodnik Szybki Start przedstawia sposób tworzenia usługa Load Balancer w warstwie Standardowa przy użyciu Azure Portal.
+description: Ten przewodnik Szybki Start przedstawia sposób tworzenia Load Balancer przy użyciu Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load Balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load Balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 027e05b3fbf7163c4a1b927a2b83db84c7eef1ff
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771465"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843875"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal w celu równoważenia obciążenia maszyn wirtualnych
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki Start: Tworzenie Load Balancer równoważenia obciążenia maszyn wirtualnych przy użyciu Azure Portal
 
-Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między wiele maszyn wirtualnych. Za pomocą witryny Azure Portal można utworzyć moduł równoważenia obciążenia na potrzeby równoważenia obciążenia maszyn wirtualnych. W tym przewodniku Szybki start pokazano, jak zrównoważyć obciążenie maszyn wirtualnych przy użyciu usługi Load Balancer w warstwie Standardowa.
+Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między wiele maszyn wirtualnych. Za pomocą witryny Azure Portal można utworzyć moduł równoważenia obciążenia na potrzeby równoważenia obciążenia maszyn wirtualnych. W tym przewodniku szybki start przedstawiono sposób równoważenia obciążenia maszyn wirtualnych przy użyciu publicznej Load Balancer.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
@@ -32,9 +32,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-standard-load-balancer"></a>Tworzenie usługi Load Balancer w warstwie Standardowa
+## <a name="create-a-load-balancer"></a>Utwórz moduł równoważenia obciążenia
 
-W tej sekcji utworzysz usługa Load Balancer w warstwie Standardowa, która pomaga zrównoważyć obciążenie maszyn wirtualnych. Można utworzyć publiczną usługa Load Balancer w warstwie Standardowa lub usługa Load Balancer w warstwie Standardowa wewnętrzny. Usługa Load Balancer w warstwie Standardowa obsługuje tylko standardowy publiczny adres IP, podstawowe publiczne adresy IP nie są obsługiwane. Podczas tworzenia usługa Load Balancer w warstwie Standardowa publicznego i należy również utworzyć nowy, publiczny adres IP, który jest skonfigurowany jako fronton (domyślnie nazywany *LoadBalancerFrontend* usługa Load Balancer w warstwie Standardowa). 
+W tej sekcji utworzysz Load Balancer, która pomaga zrównoważyć obciążenie maszyn wirtualnych. Można utworzyć publiczną Load Balancer lub Load Balancer wewnętrzny. Podczas tworzenia Load Balancer publicznego i należy również utworzyć nowy publiczny adres IP, który jest skonfigurowany jako fronton (domyślnie *LoadBalancerFrontend* Load Balancer).
 
 1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **sieci** > **Load Balancer**.
 2. Na karcie **Podstawy** na stronie **Tworzenie modułu równoważenia obciążenia** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Przeglądanie + tworzenie**:
@@ -46,10 +46,11 @@ W tej sekcji utworzysz usługa Load Balancer w warstwie Standardowa, która poma
     | Nazwa                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Typ          | Wybierz pozycję **Publiczna**.                                        |
-    | JSZ           | Wybierz pozycję **Standardowy**.                          |
-    | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
+    | JSZ           | Wybierz opcję **standardowa** lub **podstawowa**. Firma Microsoft zaleca standardy dotyczące obciążeń produkcyjnych.  |
+    | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. Jeśli masz istniejący publiczny adres IP, którego chcesz użyć, wybierz pozycję **Użyj istniejącej** |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
-    |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
+    | Strefa dostępności | Wpisz *strefowo nadmiarowe* , aby utworzyć odporną Load Balancer. Aby utworzyć strefę Load Balancer, wybierz określoną strefę z 1, 2 lub 3 |
+
 3. Na karcie **Recenzja i tworzenie** wybierz pozycję **Utwórz**.   
 
     ![Tworzenie usługi Load Balancer w warstwie Standardowa](./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png)
@@ -58,7 +59,7 @@ W tej sekcji utworzysz usługa Load Balancer w warstwie Standardowa, która poma
 
 W tej sekcji skonfigurujesz Load Balancer ustawienia dla puli adresów zaplecza, sondy kondycji i określ regułę modułu równoważenia obciążenia.
 
-### <a name="create-a-backend-address-pool"></a>Tworzenie puli adresów zaplecza
+### <a name="create-a-backend-pool"></a>Tworzenie puli zaplecza
 
 Aby dystrybuować ruch do maszyn wirtualnych, Pula adresów zaplecza zawiera adresy IP wirtualnych (kart sieciowych) podłączonych do Load Balancer. Utwórz pulę adresów zaplecza *myBackendPool* , aby uwzględnić maszyny wirtualne na potrzeby ruchu internetowego związanego z równoważeniem obciążenia.
 
@@ -122,7 +123,7 @@ W tej sekcji utworzysz sieć wirtualną, utworzono trzy maszyny wirtualne dla pu
 1. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
 
 ### <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
-Usługa Load Balancer w warstwie Standardowa obsługuje tylko maszyny wirtualne ze standardowymi adresami IP w puli zaplecza. W tej sekcji utworzysz trzy maszyny wirtualne (*myVM1*, *myVM2* i *myVM3*) ze standardowym publicznym adresem IP w trzech różnych strefach (*Strefa 1*, *strefa 2*i *Strefa 3*), które później zostaną dodane do puli zaplecza usługa Load Balancer w warstwie Standardowa utworzonego wcześniej.
+Jednostki SKU publicznego adresu IP i jednostki SKU Load Balancer muszą być zgodne. Aby uzyskać usługa Load Balancer w warstwie Standardowa, użyj maszyn wirtualnych ze standardowymi adresami IP w puli zaplecza. W tej sekcji utworzysz trzy maszyny wirtualne (*myVM1*, *myVM2* i *myVM3*) ze standardowym publicznym adresem IP w trzech różnych strefach (*Strefa 1*, *strefa 2*i *Strefa 3*), które później zostaną dodane do puli zaplecza Load Balancer utworzonego wcześniej. W przypadku wybrania warstwy Podstawowa Użyj maszyn wirtualnych z podstawowymi adresami IP.
 
 1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **COMPUTE** > **Windows Server 2019 centrum**danych. 
    
@@ -138,7 +139,7 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko maszyny wirtualne 
 1. Na karcie **Sieć** upewnij się, że wybrano następujące elementy:
    - **Sieć wirtualna**: *myVnet*
    - **Podsieć**: *myBackendSubnet*
-   - > **Publicznego adresu IP** wybierz pozycję **Utwórz nowy**, a następnie w oknie **Tworzenie publicznego adresu IP** w obszarze **jednostka SKU**wybierz pozycję **standardowa**, a dla **strefy dostępność**wybierz pozycję **strefa nadmiarowa**, a następnie wybierz przycisk **OK**.
+   - > **Publicznego adresu IP** wybierz pozycję **Utwórz nowy**, a następnie w oknie **Tworzenie publicznego adresu IP** w obszarze **jednostka SKU**wybierz pozycję **standardowa**, a dla **strefy dostępność**wybierz pozycję **strefa nadmiarowa**, a następnie wybierz przycisk **OK**. Jeśli utworzono podstawową Load Balancer, wybierz pozycję podstawowa. Firma Microsoft zaleca używanie standardowej jednostki SKU dla obciążeń produkcyjnych.
    - Aby utworzyć nową sieciową grupę zabezpieczeń (NSG, network security group), czyli pewien typ zapory, w obszarze **Sieciowa grupa zabezpieczeń** wybierz pozycję **Zaawansowane**. 
        1. W polu **Konfigurowanie sieciowej grupy zabezpieczeń** wybierz pozycję **Utwórz nową**. 
        1. Wpisz *myNetworkSecurityGroup*, a następnie wybierz **przycisk OK**.
@@ -167,15 +168,20 @@ W tej sekcji utworzysz regułę sieciowej grupy zabezpieczeń, która zezwala na
 1. Wybierz pozycję **wszystkie usługi** w menu po lewej stronie, wybierz pozycję **wszystkie zasoby**, a następnie na liście zasobów wybierz pozycję **myNetworkSecurityGroup** , która znajduje się w grupie zasobów **myResourceGroupSLB** .
 2. W obszarze **Ustawienia** wybierz pozycję **Reguły zabezpieczeń dla ruchu przychodzącego**, a następnie wybierz pozycję **Dodaj**.
 3. Wprowadź następujące wartości dla reguły zabezpieczeń dla ruchu przychodzącego o nazwie *myHTTPRule*, aby umożliwić obsługę przychodzących połączeń HTTP przy użyciu portu 80:
-    - *Tag usługi* — w polu **Źródło**.
-    - *Internet* — w polu **Tag usługi źródłowej**
-    - *80* — w polu **Docelowe zakresy portów**
-    - *TCP* — w polu **Protokół**
-    - *Zezwalaj* — w polu **Akcja**
-    - *100* — w polu **Priorytet**
-    - *myHTTPRule* — jako nazwę
-    - *Zezwalaj na HTTP* —jako opis
+    - **Źródło**: *tag usługi*
+    -  **Tag usługi źródłowej**: *Internet*
+    - **Docelowe zakresy portów**: *80*
+    - **Protokół**: *TCP*
+    - **Akcja**: *Zezwalaj*
+    - **Priorytet**: *100*
+    - **Nazwa**: *myHTTPRule* 
+    - **Opis**: "*Zezwalaj na http* 
 4. Wybierz pozycję **Dodaj**.
+5. Powtórz kroki dla reguły ruchu przychodzącego RDP, w razie potrzeby, z następującymi różnymi wartościami:
+   - **Zakresy portów docelowych**: wpisz *3389*.
+   - **Priorytet**: wpisz *200*. 
+   - **Nazwa**: wpisz *MyRDPRule*. 
+   - **Opis**: wpisz *Zezwalaj na RDP*. 
  
 ### <a name="install-iis"></a>Instalowanie usług IIS
 
@@ -214,7 +220,6 @@ Gdy grupa zasobów, Load Balancer i wszystkie pokrewne zasoby nie będą już po
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono usługa Load Balancer w warstwie Standardowa, dołączono do niego maszyny wirtualne, skonfigurowano regułę ruchu Load Balancer, sondę kondycji, a następnie przetestowano Load Balancer. Aby dowiedzieć się więcej na temat usługi Azure Load Balancer, przejdź do samouczków dotyczących usługi Azure Load Balancer.
+W tym przewodniku szybki start utworzono usługa Load Balancer w warstwie Standardowa, dołączono do niego maszyny wirtualne, skonfigurowano regułę ruchu Load Balancer, sondę kondycji, a następnie przetestowano Load Balancer. Aby dowiedzieć się więcej na temat Azure Load Balancer, przejdź do [Azure Load Balancer samouczków](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-> [!div class="nextstepaction"]
-> [Samouczki usługi Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+Dowiedz się więcej na temat [stref Load Balancer i dostępności](load-balancer-standard-availability-zones.md).

@@ -16,18 +16,18 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 0cf593ce4ab9e0ba299d10b34422ee30661f38a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 618be4bc2d7669879daa927d5c4392b1097d29af
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228169"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774885"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Samouczek: powiadomienia wypychane do określonych urządzeń z systemem iOS przy użyciu usługi Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym samouczku pokazano, jak za pomocą usługi Azure Notification Hubs rozgłaszać powiadomienia o najświeższych wiadomościach do aplikacji systemu iOS. Po zakończeniu możesz zarejestrować się w celu uzyskania ważnych kategorii wiadomości, które Cię interesują, i odbierać tylko powiadomienia wypychane dla tych kategorii. Ten scenariusz jest typowym wzorcem dla wielu aplikacji wymagających wysyłania powiadomień do grup użytkowników, które wcześniej zadeklarowały zainteresowanie nimi, na przykład czytników danych RSS, aplikacji dla fanów muzyki itp.
 
@@ -159,7 +159,7 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
 9. W metodzie `didRegisterForRemoteNotificationsWithDeviceToken` w `AppDelegate.m`Zastąp kod w metodzie poniższym kodem, aby przekazać token urządzenia do klasy `notifications`. Klasa `notifications` wykonuje rejestrację w celu otrzymywania powiadomień z kategoriami. Jeśli użytkownik zmieni wybrane kategorie, wywołaj metodę `subscribeWithCategories` w odpowiedzi na przycisk **Subskrybuj** , aby je zaktualizować.
 
     > [!NOTE]
-    > Ze względu na to, że token urządzenia przypisany przez Apple Push Notification Service (APNS) może być w dowolnym momencie, należy zarejestrować się w celu otrzymywania powiadomień często, aby uniknąć błędów powiadomień. Poniższy przykład przeprowadza rejestrację w celu otrzymywania powiadomień za każdym razem, gdy aplikacja jest uruchamiana. W przypadku często uruchamianych aplikacji — więcej niż raz dziennie — prawdopodobnie możesz pominąć rejestrację, aby zachować przepustowość, jeśli od poprzedniej rejestracji upłynął czas krótszy niż jeden dzień.
+    > Ponieważ token urządzenia przypisany przez Apple Push Notification Service (APNS) można zmienić w dowolnym momencie, należy regularnie rejestrować powiadomienia, aby uniknąć błędów powiadomień. Poniższy przykład przeprowadza rejestrację w celu otrzymywania powiadomień za każdym razem, gdy aplikacja jest uruchamiana. W przypadku często uruchamianych aplikacji — więcej niż raz dziennie — prawdopodobnie możesz pominąć rejestrację, aby zachować przepustowość, jeśli od poprzedniej rejestracji upłynął czas krótszy niż jeden dzień.
 
     ```objc
     self.notifications.deviceToken = deviceToken;

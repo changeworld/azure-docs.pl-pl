@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: ed0b9450217b06ff145641d9e268ccee28ee49b2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710588"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775116"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Jak ulepszyć aplikację LUIS, przeglądając punkt końcowy wyrażenia długości
 
@@ -27,6 +27,22 @@ Proces recenzowania punktów końcowych wyrażenia długości pod kątem prawid�
 ## <a name="enable-active-learning"></a>Włącz aktywną naukę
 
 Aby włączyć aktywną naukę, należy zarejestrować zapytania użytkownika. Jest to realizowane przez wywołanie [zapytania punktu końcowego](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) z `log=true` ciągu QueryString i wartością.
+
+Użyj portalu LUIS, aby utworzyć poprawną kwerendę punktu końcowego.
+
+1. W [portalu Luis w wersji zapoznawczej](https://preview.luis.ai/)wybierz aplikację z listy aplikacji.
+1. Przejdź do sekcji **Zarządzanie** , a następnie wybierz pozycję **zasoby platformy Azure**.
+1. Dla przypisanego zasobu przewidywania wybierz pozycję **Zmień parametry zapytania**.
+
+    > [!div class="mx-imgBorder"]
+    > ![użyć portalu LUIS do zapisania dzienników wymaganych przez aktywną naukę.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+
+1. Przełącz pozycję **Zapisz dzienniki** i Zapisz, wybierając pozycję **gotowe**.
+
+    > [!div class="mx-imgBorder"]
+    > ![użyć portalu LUIS do zapisania dzienników wymaganych przez aktywną naukę.](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
+
+     Ta akcja powoduje zmianę przykładowego adresu URL przez dodanie parametru `log=true` QueryString. Skopiuj i użyj zmienionego przykładowego adresu URL zapytania podczas tworzenia zapytań prognozowania do punktu końcowego środowiska uruchomieniowego.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>Popraw przewidywania zamierzeń, aby wyrównać wyrażenia długości
 

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 908f02807d5a3f7c2c1391c3c59a54fc88bbd831
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26309bb9a7b9785dbac7f42b0c20de99bca10a17
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884146"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769241"
 ---
 # <a name="certificate-creation-methods"></a>Metody tworzenia certyfikatów
 
@@ -41,10 +41,10 @@ Poniższe opisy odnoszą się do zieloną literę kroków z poprzedniego diagram
 Poniższe opisy odnoszą się do zieloną literę kroków z poprzedniego diagramu.
 
 1. Na powyższym diagramie aplikacja tworzy certyfikat, który wewnętrznie zaczyna od utworzenia klucza w magazynie kluczy.
-2. Key Vault wysyła i przesyła żądanie certyfikatu SSL do urzędu certyfikacji.
+2. Key Vault wysyła do urzędu certyfikacji żądanie certyfikatu TLS/SSL.
 3. Aplikacja sonduje, w pętli i w procesie oczekiwania, do Key Vault do ukończenia certyfikatu. Tworzenie certyfikatu kończy się, gdy Key Vault otrzymuje odpowiedź urzędu certyfikacji z certyfikatem x509.
-4. Urząd certyfikacji reaguje na żądanie certyfikatu SSL Key Vault za pomocą certyfikatu x509 SSL.
-5. Tworzenie nowego certyfikatu zostaje zakończone z połączeniem certyfikatu x509 urzędu certyfikacji.
+4. Urząd certyfikacji odpowiada na żądanie certyfikatu TLS/SSL Key Vault z certyfikatem protokołu TLS/SSL X. 509.
+5. Tworzenie nowego certyfikatu kończy się z połączeniem certyfikatu X. 509 protokołu TLS/SSL dla urzędu certyfikacji.
 
 ## <a name="asynchronous-process"></a>Proces asynchroniczny
 Tworzenie certyfikatu KV jest procesem asynchronicznym. Ta operacja spowoduje utworzenie żądania certyfikatu KV i zwrócenie kodu stanu HTTP 202 (zaakceptowane). Stan żądania może być śledzony przez sondowanie obiektu oczekującego utworzonego przez tę operację. Pełny identyfikator URI oczekującego obiektu jest zwracany w nagłówku lokalizacji.  
@@ -88,7 +88,7 @@ Tworzenie certyfikatu można wykonać ręcznie lub przy użyciu wystawcy "samodz
 
 Należy pamiętać, że gdy zamówienie jest umieszczane u dostawcy wystawcy, może zaistnieć lub zastąpić rozszerzenia certyfikatu x509 oraz okres ważności certyfikatu na podstawie typu certyfikatu.  
 
- Zgody Wymaga uprawnienia certyfikaty/tworzenie.
+ Autoryzacja: wymaga uprawnienia certyfikaty/tworzenie.
 
 ## <a name="see-also"></a>Zobacz też
  - [Klucze, wpisy tajne i certyfikaty — informacje](about-keys-secrets-and-certificates.md)

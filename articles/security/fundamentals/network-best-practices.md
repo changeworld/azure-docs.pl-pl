@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 85e1ebc05ad4ebe1d58716981c0688df0126efb0
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937239"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772001"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Najlepsze rozwiązania dotyczące platformy Azure dotyczące zabezpieczeń sieci
 W tym artykule omówiono zbiór najlepszych rozwiązań dotyczących platformy Azure w celu zwiększenia bezpieczeństwa sieci. Te najlepsze rozwiązania wynikają z naszych rozwiązań związanych z obsługą sieci platformy Azure i klientami.
@@ -122,7 +122,7 @@ Chociaż jest to podstawowy projekt sieci obwodowej, istnieje wiele różnych pr
 
 Na podstawie wymienionej wcześniej koncepcji zaufania należy rozważyć użycie sieci obwodowej do wszystkich wdrożeń o wysokim poziomie zabezpieczeń, aby zwiększyć poziom bezpieczeństwa sieci i kontroli dostępu do zasobów platformy Azure. Możesz użyć platformy Azure lub rozwiązania innej firmy, aby zapewnić dodatkową warstwę zabezpieczeń między zasobami i Internetem:
 
-- Natywne formanty platformy Azure. Zapora [platformy Azure](/azure/firewall/overview) i [Zapora aplikacji sieci web w programie Application Gateway](/azure/application-gateway/overview#web-application-firewall) oferują podstawowe zabezpieczenia za pomocą w pełni bezstanowej zapory jako usługi, wbudowanej wysokiej dostępności, skalowalności chmury, filtrowania nazw FQDN, obsługi reguły OWASP Core zestawy oraz prosta instalacja i konfiguracja.
+- Natywne formanty platformy Azure. Zapora [platformy Azure](/azure/firewall/overview) i [Zapora aplikacji sieci web w programie Application Gateway](/azure/application-gateway/overview#web-application-firewall) oferują podstawowe zabezpieczenia za pomocą w pełni bezstanowej zapory jako usługi, wbudowanej wysokiej dostępności, nieograniczonej skalowalności chmury, filtrowania nazw FQDN, obsługi zestawów reguł OWASP Core oraz prostej instalacji i konfiguracji.
 - Oferty innych firm. Wyszukaj w [witrynie Azure Marketplace usługę](https://azuremarketplace.microsoft.com/) Zapora nowej generacji (zapory następnej generacji) i inne oferty innych firm, które zapewniają znane narzędzia zabezpieczające oraz znacznie ulepszone poziomy zabezpieczeń sieci. Konfiguracja może być bardziej złożona, ale oferta innej firmy może umożliwić korzystanie z istniejących możliwości i umiejętności.
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Unikaj ekspozycji z Internetem za pomocą dedykowanych łączy sieci WAN
@@ -160,10 +160,10 @@ Zalecamy stosowanie równoważenia obciążenia zawsze, gdy tylko jest to możli
 - Aplikacje bezstanowe, które akceptują żądania przychodzące z Internetu.
 - Nie wymagaj sesji programu Sticky lub odciążania protokołu SSL. Sesje usługi Sticky Notes to metoda używana z równoważeniem obciążenia aplikacji w celu osiągnięcia koligacji serwera.
 
-**Opcja równoważenia obciążenia**: Użyj Azure Portal, aby [utworzyć zewnętrzny moduł równoważenia obciążenia](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) , który rozkłada przychodzące żądania na wiele maszyn wirtualnych, aby zapewnić wyższy poziom dostępności.
+**Opcja równoważenia obciążenia**: Użyj Azure Portal, aby [utworzyć zewnętrzny moduł równoważenia obciążenia](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) , który rozkłada przychodzące żądania na wiele maszyn wirtualnych, aby zapewnić wyższy poziom dostępności.
 
 **Scenariusz**: należy zrównoważyć obciążenie z maszyn wirtualnych, które nie znajdują się w Internecie. W większości przypadków połączenia akceptowane na potrzeby równoważenia obciążenia są inicjowane przez urządzenia w sieci wirtualnej platformy Azure, takie jak wystąpienia SQL Server lub wewnętrzne serwery sieci Web.   
-**Opcja równoważenia obciążenia**: Użyj Azure Portal, aby [utworzyć wewnętrzny moduł równoważenia obciążenia](../../load-balancer/quickstart-create-basic-load-balancer-powershell.md) , który rozprasza przychodzące żądania na wielu maszynach wirtualnych w celu zapewnienia wyższego poziomu dostępności.
+**Opcja równoważenia obciążenia**: Użyj Azure Portal, aby [utworzyć wewnętrzny moduł równoważenia obciążenia](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) , który rozprasza przychodzące żądania na wielu maszynach wirtualnych w celu zapewnienia wyższego poziomu dostępności.
 
 **Scenariusz**: wymagane jest globalne Równoważenie obciążenia, ponieważ:
 
@@ -201,7 +201,7 @@ Za pomocą punktów końcowych usługi sieci wirtualnej można zwiększyć prywa
 Punkty końcowe usługi oferują następujące korzyści:
 
 - **Lepsze zabezpieczenia zasobów usługi platformy Azure**: dzięki punktom końcowym zasoby usługi platformy Azure mogą być chronione w sieci wirtualnej. Zabezpieczanie zasobów usługi w sieci wirtualnej zapewnia ulepszone zabezpieczenia przez całkowite usunięcie publicznego dostępu do Internetu do zasobów i Zezwalanie na ruch tylko z sieci wirtualnej.
-- **Optymalny Routing ruchu usług platformy Azure z sieci wirtualnej**: wszystkie trasy w sieci wirtualnej, które wymuszają ruch internetowy do urządzeń lokalnych i/lub wirtualnych, znane jako Wymuszone tunelowanie, wymuszają również ruch usługi platformy Azure Ta sama trasa co ruch internetowy. Punkty końcowe usługi zapewniają optymalny routing ruchu platformy Azure.
+- **Optymalny Routing ruchu usługi platformy Azure z sieci wirtualnej**: wszystkie trasy w sieci wirtualnej, które wymuszają ruch internetowy do urządzeń lokalnych i/lub wirtualnych, znane jako Wymuszone tunelowanie, wymuszają również ruch usługi platformy Azure w taki sam sposób jak ruch internetowy. Punkty końcowe usługi zapewniają optymalny routing ruchu platformy Azure.
 
   Punkty końcowe zawsze pobierają ruch bezpośrednio z sieci wirtualnej do usługi w sieci szkieletowej platformy Azure. Utrzymywanie ruchu w sieci szkieletowej platformy Azure umożliwia kontynuowanie inspekcji i monitorowania wychodzącego ruchu internetowego z sieci wirtualnych za pośrednictwem tunelowania wymuszonego bez wpływu na ruch usługi. Dowiedz się więcej na temat [tras zdefiniowanych przez użytkownika i wymuszonego tunelowania](../../virtual-network/virtual-networks-udr-overview.md).
 

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8bf44893bf23502aaf8c446d9e6d7c9022bfce3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 452687f3886a85bea796e3899410667ee1d592fa
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425656"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840319"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Wybieranie układu strony w Azure Active Directory B2C przy użyciu zasad niestandardowych
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Kod po stronie klienta w języku JavaScript można włączyć w zasadach Azure Active Directory B2C (Azure AD B2C), niezależnie od tego, czy używasz przepływów użytkowników, czy zasad niestandardowych. Aby włączyć obsługę języka JavaScript dla aplikacji, musisz dodać element do [zasad niestandardowych](active-directory-b2c-overview-custom.md), wybrać układ strony i użyć [b2clogin.com](b2clogin.md) w swoich żądaniach.
+Kod po stronie klienta w języku JavaScript można włączyć w zasadach Azure Active Directory B2C (Azure AD B2C), niezależnie od tego, czy używasz przepływów użytkowników, czy zasad niestandardowych. Aby włączyć obsługę języka JavaScript dla aplikacji, musisz dodać element do [zasad niestandardowych](custom-policy-overview.md), wybrać układ strony i użyć [b2clogin.com](b2clogin.md) w swoich żądaniach.
 
 Układ strony to skojarzenie elementów udostępnianych Azure AD B2C i zawartości.
 
@@ -113,4 +113,4 @@ Pakiety układów stron są okresowo aktualizowane w celu uwzględnienia poprawe
 
 ## <a name="next-steps"></a>Następne kroki
 
-Znajdź więcej informacji na temat w jaki sposób dostosować interfejs użytkownika aplikacji w [Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+Znajdź więcej informacji na temat w jaki sposób dostosować interfejs użytkownika aplikacji w [Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](custom-policy-ui-customization.md).

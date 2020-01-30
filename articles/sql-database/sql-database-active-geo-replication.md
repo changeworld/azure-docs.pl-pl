@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822655"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842663"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Tworzenie i używanie aktywnej replikacji geograficznej
 
@@ -124,6 +124,79 @@ Jeśli zdecydujesz się na utworzenie pomocniczej o mniejszym rozmiarze obliczen
 
 Aby uzyskać więcej informacji na temat rozmiarów obliczeń SQL Database, zobacz [co to są SQL Database warstwy usług](sql-database-purchase-models.md).
 
+## <a name="cross-subscription-geo-replication"></a>Replikacja geograficzna między subskrypcjami
+
+Aby skonfigurować aktywną replikację geograficzną między dwiema bazami danych należącymi do różnych subskrypcji (w ramach tej samej dzierżawy lub nie), należy wykonać specjalną procedurę opisaną w tej sekcji.  Procedura jest oparta na poleceniach SQL i wymaga: 
+
+- Tworzenie uprzywilejowanego logowania na obu serwerach
+- Dodanie adresu IP do listy dozwolonych klientów wykonujących zmiany na obu serwerach (na przykład adres IP hosta z uruchomioną SQL Server Management Studio). 
+
+Klient wykonujący zmiany wymaga dostępu sieciowego do serwera podstawowego. Mimo że ten sam adres IP klienta należy dodać do listy dozwolonych na serwerze pomocniczym, połączenie sieciowe z serwerem pomocniczym nie jest ściśle wymagane. 
+
+### <a name="on-the-master-of-the-primary-server"></a>Na serwerze głównym
+
+1. Dodaj adres IP do listy dozwolonych klientów wykonujących zmiany (Aby uzyskać więcej informacji, zobacz [Konfigurowanie zapory](sql-database-firewall-configure.md)). 
+1. Utwórz identyfikator logowania przeznaczony do konfigurowania aktywnej replikacji geograficznej (i Dostosuj poświadczenia zgodnie z wymaganiami):
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01'
+   ```
+
+1. Utwórz odpowiedniego użytkownika i przypisz go do roli DBManager: 
+
+   ```sql
+   create user geodrsetup for login gedrsetup
+   alter role geodrsetup dbmanager add member geodrsetup
+   ```
+
+1. Zanotuj identyfikator SID nowej nazwy logowania przy użyciu tego zapytania: 
+
+   ```sql
+   select sid from sys.sql_logins where name = 'geodrsetup'
+   ```
+
+### <a name="on-the-source-database-on-the-primary-server"></a>W źródłowej bazie danych na serwerze podstawowym
+
+1. Utwórz użytkownika na potrzeby tej samej nazwy logowania:
+
+   ```sql
+   create user geodrsetup for login geodrsetup
+   ```
+
+1. Dodaj użytkownika do roli db_owner:
+
+   ```sql
+   alter role db_owner add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-secondary-server"></a>Na serwerze pomocniczym 
+
+1. Dodaj adres IP do listy dozwolonych klientów wykonujących zmiany. Musi to być ten sam dokładny adres IP serwera podstawowego. 
+1. Utwórz taką samą nazwę logowania jak na serwerze podstawowym, używając tego samego hasła użytkownika i identyfikatora SID: 
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
+   ```
+
+1. Utwórz odpowiedniego użytkownika i przypisz go do roli DBManager:
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-primary-server"></a>Na serwerze głównym
+
+1. Zaloguj się do serwera głównego na serwerze podstawowym przy użyciu nowej nazwy logowania. 
+1. Utwórz replikę pomocniczą źródłowej bazy danych na serwerze pomocniczym (w razie konieczności Dostosuj nazwę bazy danych i ServerName):
+
+   ```sql
+   alter database dbrep add secondary on server <servername>
+   ```
+
+Po początkowej konfiguracji można usunąć użytkowników, logowania i reguły zapory. 
+
+
 ## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>Utrzymywanie synchronizacji poświadczeń i reguł zapory
 
 Zalecamy używanie [reguł zapory adresów IP na poziomie bazy danych](sql-database-firewall-configure.md) dla replikowanych geograficznie baz danych, dzięki czemu te reguły mogą być replikowane z bazą danych, aby zapewnić, że wszystkie pomocnicze bazy danych mają takie same reguły zapory adresów IP jak podstawowa. Takie podejście eliminuje konieczność ręcznego konfigurowania i utrzymywania reguł zapory na serwerach, na których znajdują się zarówno podstawowe, jak i pomocnicze bazy danych. Podobnie korzystanie z [użytkowników zawartej bazy danych](sql-database-manage-logins.md) na potrzeby dostępu do danych gwarantuje, że zarówno podstawowa, jak i pomocnicza baza danych zawsze mają te same poświadczenia użytkownika, więc podczas pracy w trybie failover nie ma żadnych zakłóceń z powodu niezgodności z identyfikatorami logowania i hasłami. Po dodaniu [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)klienci mogą zarządzać dostępem użytkowników do podstawowych i pomocniczych baz danych, co eliminuje konieczność całkowitego zarządzania poświadczeniami w bazach danych.
@@ -150,12 +223,12 @@ Ze względu na duże opóźnienie sieci rozległej, ciągła kopia używa mechan
 
 ## <a name="monitoring-geo-replication-lag"></a>Monitorowanie opóźnienia replikacji geograficznej
 
-Aby monitorować opóźnienie w odniesieniu do celu punktu odzyskiwania, użyj kolumny *replication_lag_sec* wykazu [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) w podstawowej bazie danych. Pokazuje zwłokę w sekundach między transakcjami zakontraktowanymi na serwerze podstawowym i trwałymi na serwerze pomocniczym. Na przykład Jeśli wartość opóźnienia wynosi 1 sekunda, oznacza to, że w tym momencie w przypadku wystąpienia podstawowego ma wpływ przestoju i zostanie zainicjowany tryb failover, 1 sekunda najnowszych przejść nie zostanie zapisana. 
+Aby monitorować opóźnienie w odniesieniu do celu punktu odzyskiwania, użyj kolumny *replication_lag_sec* wykazu [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) w podstawowej bazie danych. Pokazuje zwłokę w sekundach między transakcjami zakontraktowanymi na serwerze podstawowym i trwałymi na serwerze pomocniczym. Przykład: Jeśli wartość opóźnienia wynosi 1 sekunda, oznacza to, że w tym momencie w przypadku wystąpienia podstawowego ma wpływ przestoju i zostanie zainicjowany tryb failover, 1 sekunda najnowszych przejść nie zostanie zapisana. 
 
 Aby zmierzyć zwłokę w odniesieniu do zmian w podstawowej bazie danych, która została zastosowana na serwerze pomocniczym, czyli dostępna do odczytu z pomocniczego programu, należy porównać *last_commit* czasie w pomocniczej bazie danych z tą samą wartością w podstawowej bazie danych.
 
 > [!NOTE]
-> Czasami *replication_lag_sec* w podstawowej bazie danych ma wartość null, co oznacza, że podstawowa obecnie nie wie, jak daleko jest pomocnicza.   Jest to zwykle wykonywane po ponownym uruchomieniu procesu i powinien być warunkiem przejściowym. Rozważ wysłanie alertu do aplikacji, jeśli *replication_lag_sec* zwraca wartość null przez dłuższy czas. Wskazuje to, że pomocnicza baza danych nie może komunikować się z serwerem podstawowym ze względu na trwały błąd łączności. Istnieją również warunki, które mogą spowodować, że różnica między *last_commit* czas na pomocniczym a podstawową bazę danych będzie duża. Na przykład Jeśli zatwierdzenie zostanie wykonane na serwerze podstawowym po długim okresie bez zmian, różnica przeskoczy do dużej wartości przed szybkim powracaniem do zera. Rozważ użycie warunku błędu, gdy różnica między tymi dwiema wartościami pozostanie duża przez długi czas.
+> Czasami *replication_lag_sec* w podstawowej bazie danych ma wartość null, co oznacza, że podstawowa obecnie nie wie, jak daleko jest pomocnicza.   Jest to zwykle wykonywane po ponownym uruchomieniu procesu i powinien być warunkiem przejściowym. Rozważ wysłanie alertu do aplikacji, jeśli *replication_lag_sec* zwraca wartość null przez dłuższy czas. Wskazuje to, że pomocnicza baza danych nie może komunikować się z serwerem podstawowym ze względu na trwały błąd łączności. Istnieją również warunki, które mogą spowodować, że różnica między *last_commit* czas na pomocniczym a podstawową bazę danych będzie duża. Przykład: Jeśli zatwierdzenie zostanie wykonane na serwerze podstawowym po długim okresie bez zmian, różnica przeskoczy do dużej wartości przed szybkim powracaniem do zera. Rozważ użycie warunku błędu, gdy różnica między tymi dwiema wartościami pozostanie duża przez długi czas.
 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programowe zarządzanie aktywną replikacją geograficzną
@@ -172,9 +245,9 @@ Jak wspomniano wcześniej, aktywna replikacja geograficzna może być również 
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Użyj argumentu Dodaj dodatkową na serwerze, aby utworzyć pomocniczą bazę danych dla istniejącej bazy danych i rozpocząć replikację danych |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Użyj trybu FAILOVER lub FORCE_FAILOVER_ALLOW_DATA_LOSS, aby przełączyć pomocniczą bazę danych jako główną w celu zainicjowania trybu failover |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Użyj Usuń POMOCNICZy serwer na serwerze, aby zakończyć replikację danych między SQL Database a określoną pomocniczą bazą danych. |
-| [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Zwraca informacje o wszystkich istniejących łączach replikacji dla każdej bazy danych na serwerze Azure SQL Database. |
-| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Pobiera czas ostatniej replikacji, ostatnie opóźnienie replikacji oraz inne informacje o łączu replikacji danej bazy danych SQL. |
-| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Przedstawia stan wszystkich operacji bazy danych, w tym stan łączy replikacji. |
+| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Zwraca informacje o wszystkich istniejących łączach replikacji dla każdej bazy danych na serwerze Azure SQL Database. |
+| [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Pobiera czas ostatniej replikacji, ostatnie opóźnienie replikacji oraz inne informacje o łączu replikacji danej bazy danych SQL. |
+| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Przedstawia stan wszystkich operacji bazy danych, w tym stan łączy replikacji. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |powoduje, że aplikacja czeka, aż wszystkie zatwierdzone transakcje zostaną zreplikowane i potwierdzone przez aktywną pomocniczą bazę danych. |
 |  | |
 
@@ -198,7 +271,7 @@ Jak wspomniano wcześniej, aktywna replikacja geograficzna może być również 
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>Interfejs API REST: zarządzanie trybem failover dla jednej i puli baz danych
 
-| Interfejs API | Opis |
+| API | Opis |
 | --- | --- |
 | [Utwórz lub zaktualizuj bazę danych (createmode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Tworzy, aktualizuje lub przywraca podstawową lub pomocniczą bazę danych. |
 | [Pobieranie lub aktualizowanie stanu bazy danych](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Zwraca stan podczas operacji tworzenia. |

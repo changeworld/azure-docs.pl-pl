@@ -1,6 +1,6 @@
 ---
-title: Jak uzyskać wystąpienie procesor multimediów, przy użyciu usługi REST | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć składnik procesor multimediów do kodowania, przekonwertowania formatu, szyfrowanie i odszyfrowywanie zawartości multimediów dla usług Azure Media Services.
+title: Jak uzyskać wystąpienie procesora multimediów przy użyciu interfejsu REST | Microsoft Docs
+description: Dowiedz się, jak utworzyć składnik procesora multimediów służący do kodowania, konwertowania formatu, szyfrowania lub odszyfrowywania zawartości multimedialnej dla Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d342cff6d322195ee88a74215f814be7d702aa5e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d7b3922c9bb7eb79cd6436ba1b265714678fcc8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761980"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774903"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>Jak uzyskać wystąpienie procesor multimediów
+# <a name="how-to-get-a-media-processor-instance"></a>Jak uzyskać wystąpienie procesora multimediów
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
 > 
 > 
 
-## <a name="overview"></a>Omówienie
-Procesory multimediów to składnik, który obsługuje określone wideo lub audio przetwarzania zadania, takie jak kodowania, konwersji formatów, zawartości multimedialnej szyfrowania lub odszyfrowywania. Wszystkie zadania przesłane do usługi Media Services wymaga procesor multimediów do kodowania, szyfrowania i konwersji zawartości wideo lub audio. 
+## <a name="overview"></a>Przegląd
+Procesory multimediów to składnik obsługujący określone zadanie przetwarzania wideo lub audio, takie jak kodowanie, Konwersja formatu, szyfrowanie lub odszyfrowywanie zawartości multimedialnej. Wszystkie zadania przesłane do Media Services wymagają procesora multimediów do kodowania, szyfrowania lub konwertowania zawartości wideo lub audio. 
 
-## <a name="azure-media-processors"></a>Procesory multimediów Azure 
+## <a name="azure-media-processors"></a>Procesory multimediów platformy Azure 
 
-Poniższy temat zawiera listę procesory multimediów:
+Poniższy temat zawiera listę procesorów multimediów:
 
 * [Kodowanie procesorów multimediów](scenarios-and-availability.md#encoding-media-processors)
-* [Procesory multimediów usługi analizy](scenarios-and-availability.md#analytics-media-processors)
+* [Procesory multimediów analitycznych](scenarios-and-availability.md#analytics-media-processors)
 
 >[!NOTE]
->Podczas uzyskiwania dostępu do jednostek w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [Instalatora w celu tworzenia interfejsu API REST usługi Media](media-services-rest-how-to-use.md).
+>Podczas uzyskiwania dostępu do jednostek w Media Services należy ustawić określone pola nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [konfigurowanie Media Services tworzenia interfejsu API REST](media-services-rest-how-to-use.md).
 
 ## <a name="connect-to-media-services"></a>Łączenie się z usługą Media Services
 
-Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AMS, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Aby uzyskać informacje na temat nawiązywania połączenia z interfejsem API usługi AMS, zobacz [dostęp do interfejsu api Azure Media Services przy użyciu uwierzytelniania w usłudze Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 
 ## <a name="get-a-media-processor"></a>Pobierz procesor multimediów
 
-Poniższe wywołanie REST pokazuje, jak uzyskać wystąpienie procesora multimediów za pomocą nazwy (w tym przypadku **Media Encoder Standard**). 
+Następujące wywołanie REST pokazuje, jak uzyskać wystąpienie procesora multimediów według nazwy (w tym przypadku **Media Encoder Standard**). 
 
 Żądanie:
 
@@ -59,7 +59,7 @@ Poniższe wywołanie REST pokazuje, jak uzyskać wystąpienie procesora multimed
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 Odpowiedź:
@@ -84,9 +84,9 @@ Odpowiedź:
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz gdy wiesz, jak uzyskać wystąpienie procesora media, przejdź do [jak kodowanie elementu zawartości](media-services-rest-get-started.md) artykułu, który pokazuje, jak za pomocą usługi Media Encoder Standard kodowanie elementu zawartości.
+Teraz, gdy wiesz już, jak uzyskać wystąpienie procesora multimediów, przejdź do artykułu [jak kodować element zawartości](media-services-rest-get-started.md) , który pokazuje, jak używać Media Encoder Standard do kodowania elementu zawartości.
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: dc64570ccf69c321f33b9689362def8c9caf975e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715399"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775266"
 ---
 # <a name="virtual-network-service-tags"></a>Tagi usługi sieci wirtualnej 
 <a name="network-service-tags"></a>
@@ -79,7 +79,7 @@ Domyślnie Tagi usług odzwierciedlają zakresy dla całej chmury. Niektóre Tag
 | **ElasticAFD** | Elastyczne drzwi platformy Azure. | Oba | Nie | Nie |
 | **EventHub** | Event Hubs platformy Azure. | Wychodzące | Tak | Tak |
 | **Bramamanager** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla usługi Azure VPN Gateway i Application Gateway. | Przychodzące | Nie | Nie |
-| **GuestAndHybridManagement** | Azure Automation i konfiguracja gościa. | Oba | Nie | Tak |
+| **GuestAndHybridManagement** | Azure Automation i konfiguracja gościa. | Wychodzące | Nie | Tak |
 | **HDInsight** | Usługa Azure HDInsight. | Przychodzące | Tak | Nie |
 | **Internet** | Przestrzeń adresów IP, która znajduje się poza siecią wirtualną i jest dostępna przez publiczny Internet.<br/><br/>Zakres adresów obejmuje [publiczną przestrzeń adresów IP należącą do platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Oba | Nie | Nie |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Wychodzące | Nie | Nie |

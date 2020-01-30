@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 2453b29c5efd768930f534df89d4c62320ed4770
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965341"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772601"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu failover SQL Server z udziałem plików w warstwie Premium na maszynach wirtualnych platformy Azure
 
@@ -77,13 +77,15 @@ Przed wykonaniem kroków opisanych w tym artykule należy dysponować:
 
 - Subskrypcja Microsoft Azure.
 - Domena systemu Windows na maszynach wirtualnych platformy Azure.
-- Konto, które ma uprawnienia do tworzenia obiektów zarówno na maszynach wirtualnych platformy Azure, jak i w Active Directory.
+- Konto użytkownika domeny, które ma uprawnienia do tworzenia obiektów na maszynach wirtualnych platformy Azure i w Active Directory.
+- Konto użytkownika domeny do uruchamiania usługi SQL Server i można zalogować się do maszyny wirtualnej przy użyciu programu podczas instalowania udziału plików.  
 - Sieć wirtualna platformy Azure i podsieć z wystarczającą przestrzenią adresową IP dla tych składników:
    - Dwie maszyny wirtualne.
    - Adres IP klastra trybu failover.
    - Adres IP dla każdego FCIu.
 - System DNS skonfigurowany w sieci platformy Azure, wskazujący kontrolery domeny.
-- [Udział plików w warstwie Premium](../../../storage/files/storage-how-to-create-premium-fileshare.md) na podstawie przydziału magazynu bazy danych dla plików danych.
+- [Udział plików w warstwie Premium](../../../storage/files/storage-how-to-create-premium-fileshare.md) , który ma być używany jako dysk klastrowany, na podstawie przydziału magazynu bazy danych dla plików danych.
+- Jeśli korzystasz z systemu Windows Server 2012 R2 lub starszego, będziesz potrzebować innego udziału plików, który będzie używany jako monitor udostępniania plików, ponieważ monitory chmur są obsługiwane dla systemu Windows 2016 i nowszych wersji. Możesz użyć innego udziału plików platformy Azure lub użyć udziału plików na oddzielnej maszynie wirtualnej. Jeśli zamierzasz użyć innego udziału plików platformy Azure, możesz go zainstalować przy użyciu tego samego procesu co w przypadku udziału plików Premium używanego na dysku klastrowym. 
 
 Po spełnieniu tych wymagań wstępnych można rozpocząć tworzenie klastra trybu failover. Pierwszym krokiem jest utworzenie maszyn wirtualnych.
 
@@ -180,7 +182,8 @@ Po utworzeniu i skonfigurowaniu maszyn wirtualnych można skonfigurować udział
 1. Powtórz te kroki na każdej maszynie SQL Server VM, która będzie uczestniczyć w klastrze.
 
   > [!IMPORTANT]
-  > Rozważ użycie oddzielnego udziału plików dla plików kopii zapasowej w celu zapisania liczby IOPS i pojemności miejsca w tym udziale dla plików danych i dziennika. W przypadku plików kopii zapasowej można użyć Premium lub standardowego udziału plików.
+  > - Rozważ użycie oddzielnego udziału plików dla plików kopii zapasowej w celu zapisania liczby IOPS i pojemności miejsca w tym udziale dla plików danych i dziennika. W przypadku plików kopii zapasowej można użyć Premium lub standardowego udziału plików.
+  > - Jeśli korzystasz z systemu Windows 2012 R2 lub starszego, wykonaj te same kroki, aby zainstalować udział plików, który ma być używany jako monitor udziału plików. 
 
 ## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>Krok 3. Konfigurowanie klastra trybu failover z udziałem plików
 
@@ -189,7 +192,7 @@ Następnym krokiem jest skonfigurowanie klastra trybu failover. W tym kroku wyko
 1. Dodaj funkcję Klaster trybu failover systemu Windows Server.
 1. Sprawdź poprawność klastra.
 1. Utwórz klaster trybu failover.
-1. Utwórz monitor w chmurze.
+1. Utwórz monitor w chmurze (dla systemu Windows Server 2016 lub nowszego) lub monitora udostępniania plików (dla systemu Windows Server 2012 R2 i starszej wersji).
 
 
 ### <a name="add-windows-server-failover-clustering"></a>Dodaj klaster trybu failover systemu Windows Server
@@ -263,9 +266,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 ```
 
 
-### <a name="create-a-cloud-witness"></a>Utwórz monitor w chmurze
+### <a name="create-a-cloud-witness-win-2016-"></a>Utwórz monitor w chmurze (win 2016 +)
 
-Monitor w chmurze to nowy typ monitora kworum klastra, który jest przechowywany w obiekcie blob usługi Azure Storage. Eliminuje to konieczność stosowania oddzielnej maszyny wirtualnej, która hostuje udział monitora.
+Jeśli korzystasz z systemu Windows Server 2016 lub nowszego, musisz utworzyć monitor w chmurze. Monitor w chmurze to nowy typ monitora kworum klastra, który jest przechowywany w obiekcie blob usługi Azure Storage. Eliminuje to konieczność użycia oddzielnej maszyny wirtualnej, która hostuje udział monitora lub korzysta z oddzielnego udziału plików.
 
 1. [Utwórz monitor chmury dla klastra trybu failover](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
@@ -273,7 +276,11 @@ Monitor w chmurze to nowy typ monitora kworum klastra, który jest przechowywany
 
 1. Zapisz klucze dostępu i adres URL kontenera.
 
-1. Skonfiguruj monitor kworum klastra trybu failover. Zobacz [Konfigurowanie monitora kworum w interfejsie użytkownika](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+### <a name="configure-quorum"></a>Konfigurowanie kworum 
+
+W przypadku systemu Windows Server 2016 lub nowszego skonfiguruj klaster tak, aby korzystał z właśnie utworzonego monitora chmurowego. Wykonaj wszystkie kroki [konfigurowania monitora kworum w interfejsie użytkownika](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+
+W przypadku systemu Windows Server 2012 R2 lub starszego wykonaj te same czynności w temacie [Konfigurowanie monitora kworum w interfejsie użytkownika](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) , ale na stronie **Wybieranie monitora kworum** wybierz opcję **Konfiguruj udostępnianie plików** . Określ udział plików, który został przydzielony jako monitor udostępniania plików, niezależnie od tego, czy jest on skonfigurowany na oddzielnej maszynie wirtualnej, czy zainstalowany z platformy Azure. 
 
 
 ## <a name="step-4-test-cluster-failover"></a>Krok 4. Testowanie trybu failover klastra
@@ -296,7 +303,7 @@ Po skonfigurowaniu klastra trybu failover można utworzyć SQL Server FCI.
 
 1. Wybierz pozycję **nowa SQL Server Instalacja klastra trybu failover**. Postępuj zgodnie z instrukcjami wyświetlanymi w kreatorze, aby zainstalować SQL Server FCI.
 
-   Katalogi danych FCI muszą znajdować się w udziale plików w warstwie Premium. Wprowadź pełną ścieżkę udziału, w tej formie: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Zostanie wyświetlone ostrzeżenie z informacją o tym, że jako katalog danych został określony serwer plików. To ostrzeżenie jest oczekiwane. Upewnij się, że konto, na którym utrwalasz udział plików, to to samo konto, które jest używane przez usługę SQL Server, aby uniknąć możliwych błędów.
+   Katalogi danych FCI muszą znajdować się w udziale plików w warstwie Premium. Wprowadź pełną ścieżkę udziału, w tej formie: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Zostanie wyświetlone ostrzeżenie z informacją o tym, że jako katalog danych został określony serwer plików. To ostrzeżenie jest oczekiwane. Upewnij się, że konto użytkownika, do którego odnosisz się do maszyny wirtualnej, przy zachowaniu udziału plików jest to samo konto, które jest używane przez usługę SQL Server, aby uniknąć możliwych błędów.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="Korzystanie z udziału plików jako katalogów danych SQL":::
 

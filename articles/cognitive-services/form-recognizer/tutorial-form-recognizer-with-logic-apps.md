@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981263"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773078"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Samouczek: używanie aparatu rozpoznawania formularzy z Azure Logic Apps do analizowania faktur
 
-W tym samouczku utworzysz przepływ pracy w Azure Logic Apps, który korzysta z aparatu rozpoznawania formularza, usługi, która jest częścią pakietu Cognitive Services platformy Azure, aby wyodrębnić dane z faktur. Za pomocą aparatu rozpoznawania formularzy należy najpierw przeprowadzić uczenie modelu przy użyciu przykładowego zestawu danych, a następnie przetestować model przy użyciu innego zestawu danych. Przykładowe dane używane w tym samouczku są przechowywane w kontenerach obiektów BLOB usługi Azure Storage.
+W tym samouczku utworzysz przepływ pracy w Azure Logic Apps, który korzysta z aparatu rozpoznawania formularza, usługi, która jest częścią pakietu Cognitive Services platformy Azure, aby wyodrębnić dane z faktur. Najpierw należy przeszkolić model aparatu rozpoznawania formularzy przy użyciu przykładowego zestawu danych, a następnie przetestować model w innym zestawie danych.
 
 Oto, co obejmuje ten samouczek:
 
@@ -41,12 +41,12 @@ Aparat rozpoznawania formularzy jest dostępny w wersji zapoznawczej o ograniczo
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>Zrozumienie faktury do analizy
 
-Przykładowy zestaw danych używany do uczenia modelu i testowania modelu jest dostępny jako plik. zip z usługi [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451). Pobierz i wyodrębnij plik zip, a następnie otwórz plik PDF faktury w folderze **/Train** . Zwróć uwagę, jak zawiera tabelę zawierającą numer faktury, datę faktury itd. 
+Przykładowy zestaw danych, który będzie używany do uczenia i testowania modelu, jest dostępny jako plik. zip z usługi [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451). Pobierz i wyodrębnij plik zip, a następnie otwórz plik PDF faktury w folderze **/Train** . Zwróć uwagę, że zawiera on tabelę z numerem faktury, datą faktury itd. 
 
 > [!div class="mx-imgBorder"]
 > ![przykładowej faktury](media/tutorial-form-recognizer-with-logic-apps/sample-receipt.png)
 
-W tym samouczku dowiesz się, jak wyodrębnić informacje z takich tabel do formatu JSON przy użyciu przepływu pracy utworzonego przy użyciu Azure Logic Apps i aparatu rozpoznawania formularzy.
+W tym samouczku dowiesz się, jak używać przepływu pracy Azure Logic Apps, aby wyodrębnić informacje z tabel takich jak w formacie JSON.
 
 ## <a name="create-an-azure-storage-blob-container"></a>Tworzenie kontenera obiektów BLOB usługi Azure Storage
 
@@ -62,7 +62,7 @@ Ten kontener służy do przekazywania przykładowych danych, które są wymagane
 
 Pobierz przykładowe dane dostępne w serwisie [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451). Wyodrębnij dane do folderu lokalnego i przekaż zawartość folderu **/Train** do utworzonego wcześniej **formrecocontainer** . Postępuj zgodnie z instrukcjami w obszarze [Przekaż blokowy obiekt BLOB](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) , aby przekazać dane do kontenera.
 
-Skopiuj adres URL kontenera. Będzie to potrzebne w dalszej części tego samouczka. Jeśli utworzono konto magazynu i kontener o takich samych nazwach jak wymienione w tym samouczku, adres URL będzie *https:\//formrecostorage.blob.Core.Windows.NET/formrecocontainer/* .
+Skopiuj adres URL kontenera. Ten adres URL będzie potrzebny w dalszej części tego samouczka. Jeśli utworzono konto magazynu i kontener o takich samych nazwach jak wymienione w tym samouczku, adres URL będzie *https:\//formrecostorage.blob.Core.Windows.NET/formrecocontainer/* .
 
 ## <a name="create-a-form-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania formularza
 
@@ -75,7 +75,7 @@ Za pomocą Azure Logic Apps można zautomatyzować i zorganizować zadania i prz
 * Skonfiguruj aplikację logiki tak, aby korzystała z operacji **uczenia modelu** aparatu rozpoznawania w celu uczenia modelu przy użyciu przykładowych danych przekazanych do usługi Azure Blob Storage.
 * Skonfiguruj aplikację logiki tak, aby korzystała z **przeanalizowania operacji formularza** aparatu rozpoznawania formularzy do korzystania z modelu, który został już przeszkolony. Ten składnik przeanalizuje fakturę przemieszczoną w tej aplikacji logiki na podstawie modelu, który został wcześniej przeszkolony.
 
-Zacznijmy! Wykonaj następujące kroki, aby skonfigurować przepływ pracy.
+Wykonaj następujące kroki, aby skonfigurować przepływ pracy.
 
 1. W głównym menu platformy Azure wybierz pozycję **Utwórz zasób** > **integracji** > **aplikacji logiki**.
 
@@ -99,7 +99,7 @@ Zacznijmy! Wykonaj następujące kroki, aby skonfigurować przepływ pracy.
 
 ### <a name="configure-the-logic-app-to-trigger-the-workflow-when-an-email-arrives"></a>Skonfiguruj aplikację logiki, aby wyzwolić przepływ pracy po nadejściu wiadomości e-mail
 
-W tym samouczku zostanie wyzwolony przepływ pracy po odebraniu wiadomości e-mail z załączoną fakturą. W tym samouczku wybieramy pakiet Office 365 jako usługę poczty e-mail, ale można użyć dowolnego innego dostawcy poczty e-mail, który ma być używany.
+W tym samouczku zostanie wyzwolony przepływ pracy po odebraniu wiadomości e-mail z załączoną fakturą. W tym samouczku użyto pakietu Office 365 jako usługi poczty e-mail, ale można użyć dowolnego innego dostawcy poczty e-mail, który ma być używany.
 
 1. Z kart wybierz pozycję Wszystkie, wybierz pozycję **Office 365 Outlook**, a następnie w obszarze **wyzwalacze**wybierz pozycję **po nadejściu nowej wiadomości e-mail**.
 
@@ -109,8 +109,8 @@ W tym samouczku zostanie wyzwolony przepływ pracy po odebraniu wiadomości e-ma
 
 1. W następnym oknie dialogowym wykonaj następujące czynności.
     1. Wybierz folder, który ma być monitorowany dla każdej nowej wiadomości e-mail.
-    1. Dla opcji **ma załączniki** wybierz opcję **tak**. Dzięki temu tylko wiadomości e-mail z załącznikami wyzwalają przepływ pracy.
-    1. W przypadku **dołączania załączników** wybierz pozycję **tak**. Dzięki temu zawartość załącznika zostanie użyta w przetwarzaniu podrzędnym.
+    1. W przypadku opcji **ma załączniki**wybierz opcję **tak**. Dzięki temu tylko wiadomości e-mail z załącznikami wyzwalają przepływ pracy.
+    1. Wybierz opcję **tak**, aby **dołączyć załączniki**. Dzięki temu zawartość załącznika zostanie użyta w przetwarzaniu podrzędnym.
 
         > [!div class="mx-imgBorder"]
         > ![skonfigurować wyzwalacz e-mail aplikacji logiki](media/tutorial-form-recognizer-with-logic-apps/logic-app-specify-email-folder.png)
@@ -131,7 +131,7 @@ Aby można było analizować faktury przy użyciu usługi rozpoznawania formular
     > [!div class="mx-imgBorder"]
     > ![nazwę połączenia dla aparatu rozpoznawania formularzy](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    Kliknij przycisk **Utwórz**.
+    Kliknij pozycję **Utwórz**.
 
 1. W oknie dialogowym **model uczenia** w polu **Źródło**wprowadź adres URL kontenera, do którego zostały przekazane przykładowe dane.
 
@@ -156,7 +156,7 @@ W tej sekcji dodasz operację **Analizuj formularz** do przepływu pracy. Ta ope
         > [!div class="mx-imgBorder"]
         > ![używać ModelID do rozpoznawania formularzy](media/tutorial-form-recognizer-with-logic-apps/analyze-form-model-id.png)
 
-    2. Kliknij pole tekstowe **dokument** , a następnie w oknie dialogowym, które się otworzy, na karcie **zawartość dynamiczna** wybierz pozycję **zawartość załączników**. W tym celu należy skonfigurować przepływ, aby używał przykładowego pliku faktury, który jest dołączony do wiadomości e-mail wysyłanej w celu wyzwolenia przepływu pracy.
+    2. Kliknij pole tekstowe **dokument** , a następnie w oknie dialogowym, które się otworzy, na karcie **zawartość dynamiczna** wybierz pozycję **zawartość załączników**. Spowoduje to skonfigurowanie przepływu do użycia przykładowego pliku faktury, który jest dołączony do wiadomości e-mail wyzwalającej przepływ pracy.
 
         > [!div class="mx-imgBorder"]
         > ![analizować faktury przy użyciu załącznika wiadomości e-mail](media/tutorial-form-recognizer-with-logic-apps/analyze-form-input-data.png)
@@ -165,7 +165,7 @@ W tej sekcji dodasz operację **Analizuj formularz** do przepływu pracy. Ta ope
 
 ### <a name="extract-the-table-information-from-the-invoice"></a>Wyodrębnij informacje z tabeli z faktury
 
-W tej sekcji skonfigurujemy aplikację logiki w celu wyodrębnienia informacji z tabeli w ramach faktur.
+W tej sekcji skonfigurujesz aplikację logiki, aby wyodrębnić informacje z tabeli w ramach faktur.
 
 1. Wybierz pozycję **Dodaj akcję**, a następnie w obszarze **Wybierz akcję**Wyszukaj pozycję **Utwórz** i w obszarze dostępne akcje wybierz pozycję **Utwórz** ponownie.
     ![Wyodrębnij informacje z tabeli z faktury](media/tutorial-form-recognizer-with-logic-apps/extract-table.png)
@@ -179,7 +179,7 @@ W tej sekcji skonfigurujemy aplikację logiki w celu wyodrębnienia informacji z
 
 ## <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
 
-Aby przetestować aplikację logiki, użyj przykładowych faktur w folderze **/test** zestawu danych przykładowych pobranych z usługi [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451). Wykonaj poniższe czynności:
+Aby przetestować aplikację logiki, użyj przykładowych faktur w folderze **/test** zestawu danych przykładowych pobranych z usługi [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451). Wykonaj następujące kroki:
 
 1. Z poziomu projektanta Azure Logic Apps aplikacji wybierz pozycję **Uruchom** na pasku narzędzi u góry. Przepływ pracy jest teraz aktywny i oczekuje na odebranie wiadomości e-mail z załączoną fakturą.
 1. Wyślij wiadomość e-mail z przykładową fakturą dołączoną do adresu e-mail podanego podczas tworzenia aplikacji logiki. Upewnij się, że poczta e-mail została dostarczona do folderu podanego podczas konfigurowania aplikacji logiki.

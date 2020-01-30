@@ -5,25 +5,20 @@ description: W tym samouczku dowiesz się, jak kierować ruchem sieciowym za pom
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 96b6788e48b845ef7f0add11767eb36b47cac36b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350291"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775279"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Samouczek: kierowanie ruchem sieciowym za pomocą tabeli tras z użyciem witryny Azure Portal
 
@@ -44,23 +39,23 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się do [Portalu Azure](https://portal.azure.com).
+Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 ## <a name="create-a-route-table"></a>Tworzenie tabeli tras
 
-1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Tabela tras**.
-
-1. W obszarze **Tworzenie tabeli tras** wprowadź lub wybierz następujące informacje:
+1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**.
+2. W polu wyszukiwania wprowadź *tabelę tras*. Gdy **tabela tras** zostanie wyświetlona w wynikach wyszukiwania, wybierz ją.
+3. Na stronie **tabela tras** wybierz pozycję **Utwórz**.
+4. W obszarze **Tworzenie tabeli tras** wprowadź lub wybierz następujące informacje:
 
     | Ustawienie | Wartość |
     | ------- | ----- |
     | Nazwa | Wpisz *myRouteTablePublic*. |
     | Subskrypcja | Wybierz subskrypcję. |
     | Grupa zasobów | Wybierz pozycję **Utwórz nową**, wprowadź nazwę *myResourceGroup*, a następnie wybierz przycisk *OK*. |
-    | Lokalizacja | Pozostaw wartość domyślną **Wschodnie stany USA**.
+    | Lokalizacja | Wybierz pozycję **Wschodnie stany USA**.
     | Propagacja trasy bramy Virtual Network | Pozostaw wartość domyślną **Włączone**. |
-
-1. Wybierz pozycję **Utwórz**.
+5. Wybierz pozycję **Utwórz**.
 
 ## <a name="create-a-route"></a>Tworzenie trasy
 
@@ -167,7 +162,7 @@ Urządzenia WUS to maszyny wirtualne, które pomagają w działaniu funkcji siec
     | Hasło | Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Potwierdź hasło | Ponownie wprowadź hasło. |
     | **REGUŁY PORTÓW WEJŚCIOWYCH** |  |
-    | Publiczne porty wejściowe | Pozostaw wartość domyślną **Brak**.
+    | Publiczne porty wejściowe | Wybierz pozycję **Brak**.
     | **OSZCZĘDZAJ PIENIĄDZE** |  |
     | Masz już licencję systemu Windows? | Pozostaw wartość domyślną **Nie**. |
 

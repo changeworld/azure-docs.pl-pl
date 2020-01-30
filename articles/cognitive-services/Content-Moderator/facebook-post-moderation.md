@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936004"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774268"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Samouczek: umiarkowane wpisy i polecenia w usłudze Facebook przy użyciu usługi Azure Content Moderator
 
@@ -35,7 +35,7 @@ Ten diagram ilustruje każdy składnik tego scenariusza:
 ![Diagram Content Moderator otrzymywanie informacji z usługi Facebook przez "FBListener" i wysyłanie informacji za pośrednictwem "CMListener"](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> W 2018 w serwisie Facebook zaimplementowano bardziej rygorystyczne przed sprawdzeniem aplikacji w serwisie Facebook. Nie będzie można wykonać kroków tego samouczka, jeśli Twoja aplikacja nie została przejrzana i zatwierdzona przez zespół ds. przeglądania w serwisie Facebook.
+> W 2018 w serwisie Facebook zaimplementowano bardziej rygorystyczne zasady przed sprawdzeniemymi dla aplikacji w serwisie Facebook. Nie będzie można wykonać kroków tego samouczka, jeśli Twoja aplikacja nie została przejrzana i zatwierdzona przez zespół ds. przeglądania w serwisie Facebook.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -87,7 +87,7 @@ Zaloguj się do [Azure Portal](https://portal.azure.com/) i wykonaj następując
 
     1. Kliknij kafelek z **wyzwalaczem http**.
     1. Wprowadź nazwę **FBListener**. W polu **Authorization Level** (Poziom autoryzacji) powinna być ustawiona wartość **Function** (Funkcja).
-    1. Kliknij przycisk **Utwórz**.
+    1. Kliknij pozycję **Utwórz**.
     1. Zastąp zawartość elementu **Run. CSX** zawartością z **FbListener/Run. CSX**
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]

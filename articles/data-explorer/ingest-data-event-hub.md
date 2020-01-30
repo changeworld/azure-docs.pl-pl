@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779959"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773939"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
@@ -118,6 +118,7 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
     | Centrum zdarzeń | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
     | Grupa konsumentów | *test-group* | Grupa konsumentów zdefiniowana w utworzonym przez Ciebie centrum zdarzeń. |
     | Właściwości systemu zdarzeń | Wybierz odpowiednie właściwości | [Właściwości systemu centrum zdarzeń](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Jeśli istnieje wiele rekordów dla każdego komunikatu o zdarzeniu, właściwości systemu zostaną dodane do pierwszej z nich. Podczas dodawania właściwości systemu [Utwórz](/azure/kusto/management/tables#create-table) lub [zaktualizuj](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schemat i [Mapowanie](/azure/kusto/management/mappings) tabeli w celu uwzględnienia wybranych właściwości. |
+    | Kompresja | *Brak* | Typ kompresji ładunku komunikatów centrum zdarzeń. Obsługiwane typy kompresji: *Brak, gzip*.|
     | | |
 
     **Tabela docelowa:**
@@ -128,15 +129,15 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
     | Tabela | *TestTable* | Tabela utworzona przez Ciebie w obszarze **TestDatabase**. |
-    | Format danych | *JSON* | Obsługiwane formaty to Avro, CSV, JSON, WIELOWIERSZOWY kod JSON, PSV, SOHSV, SCSV, TSV, TSVE i TXT. Obsługiwane opcje kompresji: GZip |
-    | Mapowanie kolumn | *TestMapping* | [Mapowanie](/azure/kusto/management/mappings) utworzone w **TestDatabase**, które mapuje przychodzące dane JSON do nazw kolumn i typów **danych.** Wymagane dla formatu JSON, wielowierszowego kodu JSON lub AVRO oraz opcjonalne dla innych formatów.|
+    | Format danych | *JSON* | Obsługiwane formaty to Avro, CSV, JSON, WIELOWIERSZOWY kod JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC i PARQUET. |
+    | Mapowanie kolumn | *TestMapping* | [Mapowanie](/azure/kusto/management/mappings) utworzone w **TestDatabase**, które mapuje przychodzące dane JSON do nazw kolumn i typów **danych.** Wymagane dla notacji JSON lub wielowierszowego kodu JSON oraz opcjonalne dla innych formatów.|
     | | |
 
     > [!NOTE]
     > * Wybierz pozycję **moje dane zawiera informacje o routingu** , aby użyć routingu dynamicznego, gdzie dane zawierają niezbędne informacje dotyczące routingu, jak pokazano w komentarzach [przykładowych aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Jeśli są ustawione właściwości static i Dynamic, właściwości dynamiczne zastępują statyczne. 
     > * Zostaną pozyskane tylko zdarzenia znajdujące się w kolejce po utworzeniu połączenia danych.
-    > * Włącz kompresję GZip dla routingu statycznego, otwierając [żądanie pomocy technicznej w Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Włącz kompresję GZip dla routingu dynamicznego, jak pokazano w [przykładowej aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest). 
-    > * Avro format i właściwości systemu zdarzeń nie są obsługiwane w ładunku kompresji.
+    > * Możesz również ustawić typ kompresji za pomocą właściwości dynamicznych, jak pokazano w [przykładowej aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest).
+    > * Formaty Avro, ORC i PARQUET, a także właściwości systemu zdarzeń nie są obsługiwane w ładunku kompresji GZip.
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 

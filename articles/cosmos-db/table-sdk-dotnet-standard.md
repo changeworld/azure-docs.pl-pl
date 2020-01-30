@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB interfejs API tabel .NET Standard SDK & zasobów
 description: Zapoznaj się ze wszystkimi Azure Cosmos DB interfejs API tabel i zestawem SDK .NET Standard, w tym datami wydania, datami wycofania i zmianami wprowadzonymi między każdą wersją.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996217"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771588"
 ---
-# <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Interfejs API .NET Standard tabeli Azure Cosmos DB: Informacje dotyczące pobierania i zwalniania
+# <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tabelę .NET Standard interfejs API: pobieranie i informacje o wersji
 > [!div class="op_single_selector"]
 > 
 > * [.NET](table-sdk-dotnet.md)
@@ -88,12 +88,12 @@ Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** przed WYCOFA
 Ta międzyplatformowa biblioteka .NET Standard [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) zastąpi bibliotekę .NET Framework [Microsoft. Azure. CosmosDB. Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table).
 
 ### <a name="200-series"></a>Seria 2.0.0
-| Version | Data wydania | Data wygaśnięcia |
+| Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
 | [2.0.0 — wersja zapoznawcza](#2.0.0-preview) |Auguest 22, 2019 |--- |
 
 ### <a name="100-series"></a>Seria 1.0.0
-| Version | Data wydania | Data wygaśnięcia |
+| Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
 | [1.0.5](#1.0.5) |13 września 2019 |--- |
 | [1.0.5 — wersja zapoznawcza](#1.0.5-preview) |Auguest 20, 2019 |--- |

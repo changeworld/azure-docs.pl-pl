@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4366b2718271b1e27325e6946c5016e9230cea4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462614"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835916"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamiczne skalowanie zasobów bazy danych przy minimalnym przestoju
 
@@ -55,7 +55,8 @@ Wszystkie trzy rodzaje Azure SQL Database oferują możliwość dynamicznego ska
 - [Wystąpienie zarządzane](sql-database-managed-instance.md) używa trybu [rdzeni wirtualnych](sql-database-managed-instance.md#vcore-based-purchasing-model) i umożliwia zdefiniowanie maksymalnej liczby rdzeni procesora CPU i maksymalnego miejsca do magazynowania przystosowanego do wystąpienia. Wszystkie bazy danych w ramach tego wystąpienia będą współużytkować zasoby przydzielono do wystąpienia.
 - [Pule elastyczne](sql-database-elastic-pool-scale.md) umożliwiają zdefiniowanie maksymalnego limitu zasobów dla każdej grupy baz danych w puli.
 
-Inicjowanie działania skalowania w górę lub w dół w dowolnym z tych typów spowoduje ponowne uruchomienie procesu aparatu bazy danych i przeniesienie go do innej maszyny wirtualnej w razie potrzeby. Proces przeniesienia aparatu bazy danych do nowej maszyny wirtualnej jest w **trybie online** , w którym można kontynuować korzystanie z istniejącej usługi Azure SQL Database, gdy proces jest w toku. Gdy docelowy aparat bazy danych zostanie w pełni zainicjowany i będzie gotowy do przetwarzania zapytań, połączenia zostaną [przełączone ze źródła do docelowego aparatu bazy danych](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size).
+Inicjowanie działania skalowania w górę lub w dół w dowolnym z tych typów spowoduje ponowne uruchomienie procesu aparatu bazy danych i przeniesienie go do innej maszyny wirtualnej w razie potrzeby. Proces przeniesienia aparatu bazy danych do nowej maszyny wirtualnej jest w **trybie online** , w którym można kontynuować korzystanie z istniejącej usługi Azure SQL Database, gdy proces jest w toku. Gdy docelowy aparat bazy danych zostanie w pełni zainicjowany i będzie gotowy do przetwarzania zapytań, połączenia zostaną [przełączone ze źródła do docelowego aparatu bazy danych](sql-database-single-database-scale.md#impact). 
+
 
 > [!NOTE]
 > Po zakończeniu procesu skalowania w górę/w dół można oczekiwać krótkiego przerwania połączenia. Jeśli wdrożono [logikę ponowień dla standardowych błędów przejściowych](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), nie będzie można wyszukać trybu failover.

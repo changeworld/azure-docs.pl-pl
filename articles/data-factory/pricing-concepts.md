@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: ee5acc97e4b05a0e93f4ceee8c04b400da211b49
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552138"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769492"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Informacje o cenach Data Factory w ramach przykładów
 
@@ -156,7 +156,7 @@ Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi eleme
 | Założenia przepływu danych: czas wykonywania = 10 min + 10 min. TTL | 10 \* 16 rdzeni ogólnych obliczeń z wartością TTL 10 |
 | Monitorowanie założeń potoku: wystąpił tylko 1 przebieg | 2 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 1 dla uruchomienia działania) |
 
-**Łączny Cennik scenariusza: $0,3011**
+**Łączny Cennik scenariusza: $1,4631**
 
 - Operacje Data Factory = **$0,0001**
   - Odczyt/zapis = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]

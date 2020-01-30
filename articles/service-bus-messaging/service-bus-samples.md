@@ -1,10 +1,9 @@
 ---
-title: Omówienie komunikatów usługi Service Bus platformy Azure z przykładami | Dokumentacja firmy Microsoft
-description: W tym artykule opisano przykłady wraz z łączami do poszczególnych komunikatów usługi Service Bus
+title: Przykłady obsługi komunikatów Azure Service Bus
+description: Przykłady obsługi komunikatów Service Bus przedstawiają kluczowe funkcje w Azure Service Bus Messaging. Zawiera łącza do przykładów w witrynie GitHub.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: 0b420343-2d2a-4c65-98f1-ee0e39ef55c8
 ms.service: service-bus-messaging
@@ -12,31 +11,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: a5ca41f1d9b1fb5b2dd8b9066af85543f1fddd23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccaca451ac4fb7b4301aca429a42baea91e5ed10
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786767"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773462"
 ---
-# <a name="service-bus-messaging-samples"></a>Przykłady obsługi komunikatów usługi Service Bus
-Przykłady obsługi komunikatów usługi Service Bus pokazują kluczowe funkcje [komunikatów usługi Service Bus](https://azure.microsoft.com/services/service-bus/). Obecnie przykłady można znaleźć w następujących miejscach:
+# <a name="service-bus-messaging-samples"></a>Przykłady obsługi komunikatów Service Bus
+Przykłady obsługi komunikatów Service Bus przedstawiają kluczowe funkcje w [Service Bus Messaging](https://azure.microsoft.com/services/service-bus/). Obecnie przykłady można znaleźć w następujących miejscach:
 
-| Język programowania | Lokalizacja zestawu SDK i przykłady |
+| Język programowania | Lokalizacja zestawu SDK lub przykładów |
 | -------------------- | ----------------------- |
-| .NET, Java i zarządzania | https://github.com/Azure/azure-service-bus/ |
+| .NET, Java i zarządzanie | https://github.com/Azure/azure-service-bus/ |
 | Node.js | https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples |
 | Python | https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus |
 
 ## <a name="service-bus-explorer"></a>Eksplorator usługi Service Bus
 
-Ponadto [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer) jest przykładem w serwisie GitHub, która pozwala nawiązać połączenie z przestrzeni nazw usługi Service Bus i łatwe zarządzanie jednostek obsługi komunikatów. To narzędzie zawiera zaawansowane funkcje, takie jak funkcji importu/eksportu, a także możliwość testowania jednostek obsługi komunikatów i usług przekazywania. Możesz znaleźć pełny kod Eksploratora usługi Service Bus źródłowy i dokumentacja na [GitHub](https://github.com/paolosalvatori/ServiceBusExplorer).
+Ponadto [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) jest przykładem hostowanym w witrynie GitHub, który umożliwia łączenie się z przestrzenią nazw usługi Service Bus i łatwe zarządzanie jednostkami obsługi komunikatów. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania oraz możliwość testowania jednostek obsługi komunikatów i usług przekazywania. Pełne źródło i dokumentacja Eksploratora Service Bus można znaleźć w witrynie [GitHub](https://github.com/paolosalvatori/ServiceBusExplorer).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz następujące tematy dotyczące omówienia pojęć usługi Service Bus.
+W poniższych tematach znajdują się informacje o pojęciach dotyczących omówienia Service Bus.
 
 * [Omówienie obsługi komunikatów w usłudze Service Bus](service-bus-messaging-overview.md)
 * [Architektura usługi Service Bus](service-bus-architecture.md)

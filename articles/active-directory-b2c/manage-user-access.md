@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e0fc09ca77e4fb0c3666478873d5d09a13d23ec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90be5b407708f6cca3748dd6d6fa09c28ab7fcdc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367114"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840438"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w Azure Active Directory B2C
 
@@ -56,7 +56,7 @@ Poniżej przedstawiono przykładowy przepływ użytkownika do zbierania zgody ro
 
 5. Gdy osoba nieletnia lub Dorosła wycofa zgodę, można użyć interfejs API programu Graph usługi Azure AD, aby zmienić **consentProvidedForMinor** na **odmowa**. Alternatywnie, aplikacja może zdecydować się na usunięcie niewielkiego, którego zgody zostało odwołane. Opcjonalnie można dostosować przepływ użytkowników, tak aby uwierzytelniona pomocnicza (lub nadrzędna, która korzysta z konta pomocniczego) mogła odwołać zgodę. Azure AD B2C rekordy **consentProvidedForMinor** jako **odmowa**.
 
-Aby uzyskać więcej informacji na temat **legalAgeGroupClassification**, **consentProvidedForMinor**i **grupy wiekowej**, zobacz [Typ zasobu użytkownika](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Aby uzyskać więcej informacji o atrybutach niestandardowych, zobacz [Używanie atrybutów niestandardowych do zbierania informacji o użytkownikach](active-directory-b2c-reference-custom-attr.md). Podczas rozwiązywania atrybutów rozszerzonych za pomocą usługi Azure AD interfejs API programu Graph należy użyć długiej wersji atrybutu, takiej jak *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+Aby uzyskać więcej informacji na temat **legalAgeGroupClassification**, **consentProvidedForMinor**i **grupy wiekowej**, zobacz [Typ zasobu użytkownika](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Aby uzyskać więcej informacji o atrybutach niestandardowych, zobacz [Używanie atrybutów niestandardowych do zbierania informacji o użytkownikach](user-flow-custom-attributes.md). Podczas rozwiązywania atrybutów rozszerzonych za pomocą usługi Azure AD interfejs API programu Graph należy użyć długiej wersji atrybutu, takiej jak *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>Zbierz dane dotyczące daty urodzenia i kraju/regionu
 

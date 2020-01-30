@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cda02408f9e90cb9f19a4f7d806a34e5cff9c33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426035"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840489"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Testowanie danych na żywo lokalnie przy użyciu usługi Azure Stream Analytics tools for Visual Studio (wersja zapoznawcza)
 
@@ -38,7 +38,6 @@ Obsługiwane są następujące opcje testowania lokalnego:
 2. Aby przetestować dane na żywo, wybierz **użycia chmury w danych wejściowych** w polu listy rozwijanej.
 
    ![Usługa Azure Stream Analytics, Visual Studio chmurze na żywo w danych wejściowych](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
-
 
 3. Ustaw **czas rozpoczęcia** do zdefiniowania, kiedy zadanie zostanie uruchomione, przetwarzania danych wejściowych. Zadanie może być konieczne odczytanie danych wejściowych z wyprzedzeniem, aby zapewnić dokładne wyniki. Domyślny czas jest ustawiona na 30 minut przed bieżącym czasem.
 
@@ -65,6 +64,5 @@ Obsługiwane są następujące opcje testowania lokalnego:
 ## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie zadania usługi Stream Analytics przy użyciu narzędzi Azure Stream Analytics dla programu Visual Studio](stream-analytics-quick-create-vs.md)
-* [Instalowanie narzędzi Azure Stream Analytics dla programu Visual Studio](stream-analytics-tools-for-visual-studio-install.md)
 * [Testowanie zapytań usługi Stream Analytics lokalnie z programem Visual Studio](stream-analytics-vs-tools-local-run.md)
 * [Use Visual Studio to view Azure Stream Analytics jobs (Wyświetlanie zadań usługi Azure Stream Analytics za pomocą programu Visual Studio)](stream-analytics-vs-tools.md)

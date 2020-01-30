@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7f8d3bb6452ee3260e5a89feb37c374418fc6943
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c83bfc4a3ec8d1163669f28dfde64c63e7c6ff89
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312162"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775067"
 ---
 # <a name="export-data-module"></a>Eksportuj moduł danych
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do zapisywania wyników, danych pośrednich i danych roboczych z potoków do miejsc docelowych magazynu w chmurze spoza Azure Machine Learning. 
 
@@ -29,7 +29,7 @@ Ten moduł obsługuje eksportowanie danych do następujących usług danych w ch
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Przed wyeksportowaniem danych najpierw należy najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [jak uzyskać dostęp do danych](../how-to-access-data.md).
+Przed wyeksportowaniem danych najpierw należy najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [dostęp do danych w usługach Azure Storage](../how-to-access-data.md).
 
 ## <a name="how-to-configure-export-data"></a>Jak skonfigurować dane eksportu
 
@@ -39,7 +39,7 @@ Przed wyeksportowaniem danych najpierw należy najpierw zarejestrować magazyn d
 
 1. Wybierz pozycję **Eksportuj dane** , aby otworzyć okienko **Właściwości** .
 
-1. W obszarze **Magazyn**danych wybierz istniejący magazyn danych z listy rozwijanej. Możesz również utworzyć nowy magazyn danych. Zapoznaj się z tematem jak [uzyskać dostęp do danych](../how-to-access-data.md)
+1. W obszarze **Magazyn**danych wybierz istniejący magazyn danych z listy rozwijanej. Możesz również utworzyć nowy magazyn danych. Sprawdź, jak odwiedzać [dane dostępu w usługach Azure Storage](../how-to-access-data.md).
 
 1. Zdefiniuj ścieżkę w magazynie danych, w której mają zostać zapisane dane. 
 

@@ -3,19 +3,19 @@ title: Oceny w Azure Migrate
 description: Dowiedz się więcej na temat ocen w Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029103"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833332"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>Informacje o ocenach w Azure Migrate
 
 W tym artykule opisano sposób obliczania ocen w [Azure Migrate: Ocena serwera](migrate-services-overview.md#azure-migrate-server-assessment-tool). Można uruchamiać oceny w grupach maszyn lokalnych, aby ustalić, czy są one gotowe do migracji do Azure Migrate.
 
 ## <a name="how-do-i-run-an-assessment"></a>Jak mogę uruchomić ocenę?
-Ocenę można wykonać przy użyciu Azure Migrate: Ocena serwera lub inne narzędzie platformy Azure lub innych firm. Po utworzeniu projektu Azure Migrate należy dodać potrzebne narzędzie. [Dowiedz się więcej] (how-to-add-tool-first-time.md
+Ocenę można wykonać przy użyciu Azure Migrate: Ocena serwera lub inne narzędzie platformy Azure lub innych firm. Po utworzeniu projektu Azure Migrate należy dodać potrzebne narzędzie. [Dowiedz się więcej](how-to-add-tool-first-time.md)
 
 ### <a name="collect-compute-data"></a>Zbieranie danych obliczeniowych
 

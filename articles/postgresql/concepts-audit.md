@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/28/2020
+ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747345"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842473"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Rejestrowanie inspekcji w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -65,10 +65,8 @@ pgAudit umożliwia skonfigurowanie rejestrowania inspekcji sesji lub obiektu. [R
 Po [zainstalowaniu pgAudit](#installing-pgaudit)można skonfigurować jego parametry, aby rozpocząć rejestrowanie. [Dokumentacja pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) zawiera definicje każdego z parametrów. Najpierw Przetestuj parametry i upewnij się, że otrzymujesz oczekiwane zachowanie.
 
 > [!NOTE]
-> Ustawienie `pgaudit.log_client` na włączone spowoduje przekierowanie dzienników do procesu klienta (na przykład PSQL) zamiast zapisywania do pliku. To ustawienie powinno być zwykle wyłączone.
-
-> [!NOTE]
-> `pgaudit.log_level` jest włączona tylko wtedy, gdy `pgaudit.log_client` jest włączona. Ponadto w Azure Portal istnieje obecnie usterka z `pgaudit.log_level`: pole kombi jest wyświetlane, co oznacza, że można wybrać wiele poziomów. Możliwe jest wybranie jednak tylko jednego poziomu. 
+> Ustawienie `pgaudit.log_client` na włączone spowoduje przekierowanie dzienników do procesu klienta (na przykład PSQL) zamiast zapisywania do pliku. To ustawienie powinno być zwykle wyłączone. <br> <br>
+> `pgaudit.log_level` jest włączona tylko wtedy, gdy `pgaudit.log_client` jest włączona.
 
 > [!NOTE]
 > W Azure Database for PostgreSQL `pgaudit.log` nie można ustawić przy użyciu skrótu podpisywanie `-` (minus) zgodnie z opisem w dokumentacji pgAudit. Wszystkie wymagane klasy instrukcji (READ, WRITE itp.) powinny zostać określone indywidualnie.
@@ -87,6 +85,22 @@ Aby dowiedzieć się więcej na temat `log_line_prefix`, zapoznaj się z [dokume
 ### <a name="getting-started"></a>Wprowadzenie
 Aby szybko rozpocząć pracę, ustaw `pgaudit.log` `WRITE`i Otwórz dzienniki, aby przejrzeć dane wyjściowe. 
 
+## <a name="viewing-audit-logs"></a>Wyświetlanie dzienników inspekcji
+Jeśli używasz plików. log, dzienniki inspekcji zostaną uwzględnione w tym samym pliku, w którym znajdują się dzienniki błędów PostgreSQL. Pliki dzienników można pobrać z witryny Azure [Portal](howto-configure-server-logs-in-portal.md) lub [interfejsu wiersza polecenia](howto-configure-server-logs-using-cli.md). 
+
+W przypadku korzystania z funkcji rejestrowania diagnostycznego platformy Azure sposób uzyskiwania dostępu do dzienników zależy od wybranego punktu końcowego. W przypadku usługi Azure Storage zapoznaj się z artykułem [Logs (dzienniki konta magazynu](../azure-monitor/platform/resource-logs-collect-storage.md) ). Aby uzyskać Event Hubs, zobacz artykuł [przesyłanie strumieniowe dzienników platformy Azure](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+
+W przypadku dzienników Azure Monitor dzienniki są wysyłane do wybranego obszaru roboczego. Dzienniki Postgres używają trybu zbierania **AzureDiagnostics** , dzięki czemu można wykonywać zapytania z tabeli AzureDiagnostics. Pola w tabeli są opisane poniżej. Więcej informacji o wysyłaniu zapytań i alertach znajduje się w temacie Omówienie [zapytań dotyczących dzienników Azure monitor](../azure-monitor/log-query/log-query-overview.md) .
+
+Możesz użyć tego zapytania, aby rozpocząć. Alerty można skonfigurować na podstawie zapytań.
+
+Wyszukaj wszystkie dzienniki Postgres dla określonego serwera w ostatnim dniu
+```
+AzureDiagnostics
+| where LogicalServerName_s == "myservername"
+| where TimeGenerated > ago(1d) 
+| where Message contains "AUDIT:"
+```
 
 ## <a name="next-steps"></a>Następne kroki
 - [Dowiedz się więcej o rejestrowaniu w Azure Database for PostgreSQL](concepts-server-logs.md)

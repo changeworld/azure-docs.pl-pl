@@ -1,59 +1,57 @@
 ---
-title: Rozwiązywanie problemów z wprowadzeniem do połączenia obserwatorów sieci platformy Azure | Dokumentacja firmy Microsoft
-description: Ta strona zawiera omówienie funkcji rozwiązywania problemów z połączenia usługi Network Watcher
+title: Wprowadzenie do rozwiązywania problemów z połączeniem z usługą Azure Network Watcher | Microsoft Docs
+description: Ta strona zawiera omówienie możliwości rozwiązywania problemów z Network Watcher łączności
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 9510905f67ee943b4b1dfa5a14c2753efac39da7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705822"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842873"
 ---
-# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Wprowadzenie do połączeń Rozwiązywanie problemów w usłudze Azure Network Watcher
+# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Wprowadzenie do rozwiązywania problemów dotyczących połączeń w usłudze Azure Network Watcher
 
-Rozwiązywanie problemów z połączeniami funkcji usługi Network Watcher oferuje możliwość sprawdzenia bezpośredniego połączenia TCP z maszyny wirtualnej do maszyny wirtualnej (VM), w pełni kwalifikowaną nazwę domeny (FQDN), identyfikator URI, lub adres IPv4. Złożone scenariusze sieci, są one wykonywane przy użyciu sieciowych grup zabezpieczeń, zapór, trasy zdefiniowane przez użytkownika i zasobów udostępnianych przez platformę Azure. Złożonych konfiguracji należy trudne Rozwiązywanie problemów z łącznością. Usługa Network Watcher zmniejsza ilość czasu do znalezienia i wykrycia problemów z łącznością. Zwrócone wyniki mogą zapewnić szczegółowe informacje dotyczące tego, czy jest problem z łącznością z powodu platformy lub problem z konfiguracją użytkownika. Łączność może zostać sprawdzone za pomocą [PowerShell](network-watcher-connectivity-powershell.md), [wiersza polecenia platformy Azure](network-watcher-connectivity-cli.md), i [interfejsu API REST](network-watcher-connectivity-rest.md).
+Funkcja rozwiązywania problemów z połączeniami Network Watcher umożliwia sprawdzenie bezpośredniego połączenia TCP między maszyną wirtualną a maszyną wirtualną (VM), w pełni kwalifikowaną nazwą domeny (FQDN), identyfikatorem URI lub adresem IPv4. Scenariusze sieci są skomplikowane, są implementowane przy użyciu sieciowych grup zabezpieczeń, zapór, tras zdefiniowanych przez użytkownika i zasobów udostępnianych przez platformę Azure. Skomplikowane konfiguracje sprawiają, że problemy z łącznością są trudne. Network Watcher pomaga skrócić czas znajdowania i wykrywania problemów z łącznością. Zwrócone wyniki mogą zapewnić wgląd w to, czy problem z łącznością jest spowodowany problemem z platformą lub konfiguracją użytkownika. Łączność można sprawdzić za pomocą [programu PowerShell](network-watcher-connectivity-powershell.md), interfejsu [wiersza polecenia platformy Azure i usługi](network-watcher-connectivity-cli.md) [API REST](network-watcher-connectivity-rest.md).
 
 > [!IMPORTANT]
-> Rozwiązywanie problemów z połączeniami wymaga, że maszyna wirtualna, rozwiązywanie problemów z z ma `AzureNetworkWatcherExtension` zainstalowane rozszerzenie maszyny Wirtualnej. Instalowanie rozszerzenia na maszynie Wirtualnej Windows można znaleźć [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i maszyny Wirtualnej systemu Linux można znaleźć pod adresem [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla systemu Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagany dla docelowego punktu końcowego.
+> Rozwiązywanie problemów z połączeniem wymaga, aby maszyna wirtualna z maszyną wirtualną, z której na`AzureNetworkWatcherExtension` stąpiło Rozwiązywanie Aby zainstalować rozszerzenie na maszynie wirtualnej z systemem Windows, odwiedź [rozszerzenie maszyny wirtualnej usługi azure Network Watcher Agent dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny wirtualnej z systemem Linux odwiedź [rozszerzenie maszyny wirtualnej agenta usługi Azure Network Watcher](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagane w docelowym punkcie końcowym.
 
 ## <a name="response"></a>Odpowiedź
 
-W poniższej tabeli przedstawiono właściwości zwrócony podczas rozwiązywania problemów z połączeniem zakończył działanie.
+W poniższej tabeli przedstawiono właściwości zwracane po zakończeniu rozwiązywania problemów z połączeniami.
 
 |Właściwość  |Opis  |
 |---------|---------|
-|connectionStatus     | Stan sprawdzania łączności. Możliwe wyniki są **osiągalne** i **informujący**.        |
-|AvgLatencyInMs     | Średnie opóźnienie podczas sprawdzania łączności (w milisekundach). (Tylko widoczne, gdy stan testu jest dostępny)        |
-|MinLatencyInMs     | Minimalne opóźnienie podczas sprawdzania łączności (w milisekundach). (Tylko widoczne, gdy stan testu jest dostępny)        |
-|MaxLatencyInMs     | Maksymalny czas oczekiwania podczas sprawdzania łączności (w milisekundach). (Tylko widoczne, gdy stan testu jest dostępny)        |
-|ProbesSent     | Liczba sondy wysłane podczas sprawdzania. Wartość maksymalna to 100.        |
-|ProbesFailed     | Liczba sond, które nie powiodły się podczas sprawdzania. Wartość maksymalna to 100.        |
-|Przeskoki     | Przeskok w ścieżce przeskoku ze źródła do miejsca docelowego.        |
-|Hops[].Type     | Typ zasobu. Możliwe wartości to **źródła**, **VirtualAppliance**, **VnetLocal**, i **Internet**.        |
+|ConnectionStatus     | Stan sprawdzania łączności. Możliwe wyniki są **dostępne** i **nieosiągalne**.        |
+|AvgLatencyInMs     | Średnie opóźnienie podczas sprawdzania łączności w milisekundach. (Wyświetlane tylko w przypadku, gdy stan sprawdzania jest osiągalny)        |
+|MinLatencyInMs     | Minimalne opóźnienie podczas sprawdzania łączności w milisekundach. (Wyświetlane tylko w przypadku, gdy stan sprawdzania jest osiągalny)        |
+|MaxLatencyInMs     | Maksymalne opóźnienie podczas sprawdzania łączności w milisekundach. (Wyświetlane tylko w przypadku, gdy stan sprawdzania jest osiągalny)        |
+|ProbesSent     | Liczba sondowań wysłanych podczas sprawdzania. Wartość maksymalna to 100.        |
+|ProbesFailed     | Liczba sond, które zakończyły się niepowodzeniem podczas sprawdzania. Wartość maksymalna to 100.        |
+|Przeskoki     | Przeskoki według ścieżki przeskoku ze źródła do miejsca docelowego.        |
+|Hops[].Type     | Typ zasobu. Możliwe wartości to **Source**, **VirtualAppliance**, **VnetLocal**i **Internet**.        |
 |Hops[].Id | Unikatowy identyfikator przeskoku.|
-|Hops[].Address | Adres IP przeskoku.|
-|Hops[].ResourceId | ResourceID przeskoków, jeśli przeskok jest zasobem platformy Azure. Jeśli zasobu internetowego, ResourceID jest **Internet**. |
-|Hops[].NextHopIds | Unikatowy identyfikator następny przeskok podjęte.|
-|Przeskoki []. Problemy | Zbiór problemów, które wystąpiły podczas sprawdzania u danego przeskoku. Jeśli nie wystąpiły żadne problemy, wartość jest pusta.|
-|Hops[].Issues[].Origin | U bieżącej hop, gdzie wystąpił problem. Możliwe wartości:<br/> **Liczba przychodzących** — problem się na łączu poprzedniego przeskoku do bieżącego przeskoku<br/>**Wychodzące** — problem jest Link z bieżącego przeskoków, aby następny przeskok<br/>**Lokalne** — problem znajduje się w bieżącym przeskoku.|
-|Hops[].Issues[].Severity | Ważność wykrytego problemu. Możliwe wartości to **błąd** i **ostrzeżenie**. |
-|Hops[].Issues[].Type |Typ znalezione problemy. Możliwe wartości: <br/>**CPU**<br/>**Pamięć**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
-|Przeskoki []. Problemy z []. Kontekst |Szczegóły dotyczące znalezione problemy.|
-|Przeskoki []. Problemy z []. Kontekst [] Key |Klucz parę klucz-wartość zwracana.|
-|Przeskoki []. Problemy z []. Kontekst [] .value |Zwracana wartość parę klucz-wartość.|
+|Przeskoki []. Ulica | Adres IP przeskoku.|
+|Hops[].ResourceId | Identyfikator ResourceID przeskoku, jeśli przeskok jest zasobem platformy Azure. Jeśli jest to zasób internetowy, ResourceID jest **Internet**. |
+|Hops[].NextHopIds | Unikatowy identyfikator pobranego następnego przeskoku.|
+|Przeskoki []. Luk | Kolekcja problemów, które zostały napotkane podczas sprawdzania tego przeskoku. Jeśli nie wystąpiły żadne problemy, wartość jest pusta.|
+|Przeskoki []. Problemy []. Źródł | W bieżącym przeskoku, w którym wystąpił problem. Możliwe wartości:<br/> **Ruch przychodzący** — problem dotyczy linku z poprzedniego przeskoku do bieżącego przeskoku<br/>Ruch **wychodzący** jest związany z linkiem z bieżącego przeskoku do następnego przeskoku<br/>**Lokalne** — problem dotyczy bieżącego przeskoku.|
+|Przeskoki []. Problemy []. Obrażeń | Ważność wykrytego problemu. Możliwe wartości to **Error** i **Warning**. |
+|Przeskoki []. Problemy []. Wprowadź |Typ znalezionego problemu. Możliwe wartości: <br/>**CPU**<br/>**Pamięć**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Przeskoki []. Problemy []. Context |Szczegóły dotyczące znalezionego problemu.|
+|Przeskoki []. Problemy []. Context []. Key |Zwrócono klucz pary par klucz-wartość.|
+|Przeskoki []. Problemy []. Context []. wartość |Wartość zwracanej pary kluczy.|
 
-Oto przykład problemu znaleziono przeskoku.
+Poniżej znajduje się przykład problemu znalezionego w przeskoku.
 
 ```json
 "Issues": [
@@ -72,17 +70,17 @@ Oto przykład problemu znaleziono przeskoku.
 ```
 ## <a name="fault-types"></a>Typy błędów
 
-Rozwiązywanie problemów z połączeniami zwraca typy błędów dotyczących połączenia. Poniższa tabela zawiera listę bieżące typy błędów zwracane.
+Rozwiązywanie problemów z połączeniami zwraca typy błędów dotyczące połączenia. Poniższa tabela zawiera listę bieżących zwracanych typów błędów.
 
 |Typ  |Opis  |
 |---------|---------|
 |Procesor CPU     | Wysokie wykorzystanie procesora CPU.       |
-|Memory (Pamięć)     | Wysokie wykorzystanie pamięci.       |
+|Pamięć     | Duże użycie pamięci.       |
 |GuestFirewall     | Ruch jest zablokowany z powodu konfiguracji zapory maszyny wirtualnej.        |
-|DNSResolution     | Rozpoznawanie nazw DNS nie powiodło się dla adresu docelowego.        |
-|NetworkSecurityRule    | Ruch jest blokowany przez reguły sieciowej grupy zabezpieczeń (zwrócone reguły)        |
-|UserDefinedRoute|Ruch jest porzucany ze względu na zdefiniowanych przez użytkownika lub trasa systemowa. |
+|DNSResolution     | Rozpoznawanie nazw DNS dla adresu docelowego nie powiodło się.        |
+|NetworkSecurityRule    | Ruch jest blokowany przez regułę sieciowej grupy zabezpieczeń (zwracana jest reguła)        |
+|UserDefinedRoute|Ruch został porzucony z powodu zdefiniowanej przez użytkownika lub trasy systemowej. |
 
-### <a name="next-steps"></a>Kolejne kroki
+### <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak rozwiązywać problemy z połączeniami przy użyciu [witryny Azure portal](network-watcher-connectivity-portal.md), [PowerShell](network-watcher-connectivity-powershell.md), [wiersza polecenia platformy Azure](network-watcher-connectivity-cli.md), lub [interfejsu API REST](network-watcher-connectivity-rest.md).
+Dowiedz się, jak rozwiązywać problemy z połączeniami przy użyciu programu [Azure Portal](network-watcher-connectivity-portal.md), [programu PowerShell](network-watcher-connectivity-powershell.md), interfejsu [wiersza polecenia platformy Azure](network-watcher-connectivity-cli.md)lub [API REST](network-watcher-connectivity-rest.md).

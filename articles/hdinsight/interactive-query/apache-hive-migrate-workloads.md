@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: eceb4b312476d701ec8ce4eb0ce4886621824b3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706019"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841595"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrowanie obciążeń platformy Azure HDInsight 3,6 do usługi HDInsight 4,0
 
@@ -118,7 +118,7 @@ Ta kompaktowanie jest wymagane, ponieważ tabele KWASów HDInsight 3,6 i HDInsig
 
 Po ukończeniu kroków migracji i kompaktowania magazynu metadanych można migrować rzeczywisty magazyn. Po zakończeniu migracji magazynu Hive magazyn usługi HDInsight 4,0 będzie miał następujące właściwości:
 
-|3,6 |4,0 |
+|3.6 |4.0 |
 |---|---|
 |Tabele zewnętrzne|Tabele zewnętrzne|
 |Nietransakcyjne tabele zarządzane|Tabele zewnętrzne|
@@ -183,7 +183,9 @@ W usłudze HDInsight 3,6 klient z graficznym interfejsem użytkownika służący
 |Identyfikator URI skryptu bash|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Typy węzłów|Główny|
 
-Zaczekaj od 5 do 10 minut, a następnie uruchom program Data Analytics Studio przy użyciu tego adresu URL: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+Odczekaj od 10 do 15 minut, a następnie uruchom program Data Analytics Studio przy użyciu tego adresu URL: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+
+Przed uzyskaniem dostępu do obiektu DAS może być wymagane odświeżenie interfejsu użytkownika Ambari i/lub ponowne uruchomienie wszystkich składników programu Ambari.
 
 Jeśli nie widzisz zapytań, które zostały uruchomione w podglądzie zapytań, należy wykonać następujące czynności:
 

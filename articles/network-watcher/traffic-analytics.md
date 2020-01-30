@@ -3,23 +3,21 @@ title: Analiza ruchu na platformie Azure | Microsoft Docs
 description: Dowiedz się, jak analizować dzienniki przepływu sieciowych grup zabezpieczeń platformy Azure przy użyciu analizy ruchu.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: kumud
+ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907144"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840591"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -41,12 +39,12 @@ Niezbędne jest monitorowanie własnej sieci i zarządzanie nią w celu naruszen
 
 Sieci w chmurze są inne niż lokalne sieci przedsiębiorstwa, w których są dostępne lub równoważne routery i przełączniki obsługujące protokół, które umożliwiają zbieranie ruchu sieciowego IP w miarę wprowadzania lub wyłączania interfejsu sieciowego. Analizując dane przepływu ruchu, można utworzyć analizę przepływu ruchu sieciowego i woluminu.
 
-Usługi Azure Virtual Networks zawierają dzienniki przepływu sieciowej grupy zabezpieczeń, które udostępniają informacje dotyczące ruchu przychodzącego i wychodzącego IP za pośrednictwem sieciowej grupy zabezpieczeń skojarzonej z poszczególnymi interfejsami sieciowymi, maszynami wirtualnymi lub podsieciami. Analizując nieprzetworzone dzienniki przepływu sieciowej grupy zabezpieczeń i wstawiając inteligencję zabezpieczeń, topologię i lokalizację geograficzną, Analiza ruchu może zapewnić wgląd w przepływ ruchu w środowisku. Analiza ruchu zawiera informacje takie jak większość hostów komunikujących się, większość komunikacji między protokołami aplikacji, większość par hostów z możliwością obsługi, dozwolony/zablokowany ruch, ruch przychodzący/wychodzący, otwieranie portów internetowych, większość reguł blokowania, ruch Dystrybucja według centrum danych platformy Azure, sieci wirtualnej, podsieci lub nieautoryzowanych sieci.
+Usługi Azure Virtual Networks zawierają dzienniki przepływu sieciowej grupy zabezpieczeń, które udostępniają informacje dotyczące ruchu przychodzącego i wychodzącego IP za pośrednictwem sieciowej grupy zabezpieczeń skojarzonej z poszczególnymi interfejsami sieciowymi, maszynami wirtualnymi lub podsieciami. Analizując nieprzetworzone dzienniki przepływu sieciowej grupy zabezpieczeń i wstawiając inteligencję zabezpieczeń, topologię i lokalizację geograficzną, Analiza ruchu może zapewnić wgląd w przepływ ruchu w środowisku. Analiza ruchu zawiera informacje takie jak większość hostów komunikujących się, większość komunikacji między protokołami aplikacji, większość par hostów, które są dozwolone/blokowany ruch, ruch przychodzący/wychodzący, otwieranie portów internetowych, większość reguł blokowania, dystrybucja ruchu w centrum danych platformy Azure, Sieć wirtualna, podsieci lub nieautoryzowane sieci.
 
 ## <a name="key-components"></a>Główne składniki
 
 - **Network Security Group (sieciowej grupy zabezpieczeń)** : zawiera listę reguł zabezpieczeń, które zezwalają na ruch sieciowy lub odmawiają go zasobom podłączonym do Virtual Network platformy Azure. Sieciowe grupy zabezpieczeń można skojarzyć z podsieciami, poszczególnymi maszynami wirtualnymi (model klasyczny) lub poszczególnymi interfejsami sieciowymi (NIC) dołączonymi do maszyn wirtualnych (model usługi Resource Manager). Aby uzyskać więcej informacji, zobacz [Omówienie grup zabezpieczeń sieci](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Dzienniki przepływu sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)** : umożliwiają wyświetlanie informacji dotyczących ruchu przychodzącego i wychodzącego IP za pomocą sieciowej grupy zabezpieczeń. Dzienniki przepływu sieciowej grupy zabezpieczeń są zapisywane w formacie JSON i pokazują przepływy wychodzące i przychodzące dla każdej reguły, karta sieciowa przepływu ma zastosowanie do pięciu informacji o przepływie (źródłowy/docelowy adres IP, port źródłowy/docelowy i protokół), a jeśli ruch był dozwolony lub odmowa. Aby uzyskać więcej informacji na temat dzienników przepływów sieciowej grupy zabezpieczeń, zobacz [dzienniki przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
+- **Dzienniki przepływu sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)** : umożliwiają wyświetlanie informacji dotyczących ruchu przychodzącego i wychodzącego IP za pomocą sieciowej grupy zabezpieczeń. Dzienniki przepływu sieciowej grupy zabezpieczeń są zapisywane w formacie JSON i pokazują przepływy wychodzące i przychodzące dla każdej reguły, karta sieciowa przepływu ma zastosowanie do pięciu informacji o przepływie (źródłowy/docelowy adres IP, port źródłowy/docelowy i protokół) oraz jeśli ruch był dozwolony lub zabroniony. Aby uzyskać więcej informacji na temat dzienników przepływów sieciowej grupy zabezpieczeń, zobacz [dzienniki przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 - **Log Analytics**: usługa platformy Azure, która zbiera dane monitorowania i zapisuje dane w centralnym repozytorium. Te dane mogą obejmować zdarzenia, dane dotyczące wydajności lub dane niestandardowe udostępniane za pomocą interfejsu API platformy Azure. Zebrane dane są dostępne na potrzeby alertów, analizy i eksportu. Aplikacje monitorujące, takie jak Monitor wydajności sieci i Analiza ruchu, są tworzone przy użyciu Azure Monitor dzienników jako podstawy. Aby uzyskać więcej informacji, zobacz [dzienniki Azure monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Obszar roboczy log Analytics**: wystąpienie dzienników Azure monitor, w których są przechowywane dane odnoszące się do konta platformy Azure. Aby uzyskać więcej informacji na temat obszarów roboczych Log Analytics, zobacz [tworzenie log Analytics obszaru roboczego](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Network Watcher**: usługa regionalna, która umożliwia monitorowanie i diagnozowanie warunków na poziomie scenariusza sieci na platformie Azure. Dzienniki przepływu sieciowej grupy zabezpieczeń można włączać i wyłączać za pomocą Network Watcher. Aby uzyskać więcej informacji, zobacz [Network Watcher](network-watcher-monitoring-overview.md).
@@ -137,8 +135,8 @@ Jeśli Twoje konto nie jest przypisane do jednej z ról wbudowanych, musi być p
 - "Microsoft. Network/loadBalancers/Read"
 - "Microsoft. Network/localNetworkGateways/Read"
 - "Microsoft. Network/networkInterfaces/Read"
-- "Microsoft. Network/networkSecurityGroups/Read"
-- "Microsoft. Network/adresów publicipaddress/Read"
+- "Microsoft.Network/networkSecurityGroups/read"
+- "Microsoft.Network/publicIPAddresses/read"
 - "Microsoft. Network/routeTables/Read"
 - "Microsoft. Network/virtualNetworkGateways/Read"
 - "Microsoft. Network/virtualNetworks/Read"
@@ -294,7 +292,7 @@ Niektóre szczegółowe informacje, które można uzyskać po skonfigurowaniu An
 
     ![Pokaz pulpitu nawigacyjnego — dystrybucja ruchu](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- Mapa geograficzna pokazuje górną Wstążkę do wybierania parametrów, takich jak centra danych (wdrożone/niewymagające wdrożenia/Active/nieaktywny/Analiza ruchu włączone/Analiza ruchu nie włączono), a kraje/regiony, w których działa niegroźny/złośliwy ruch do aktywnego mieszczeniu
+- Mapa geograficzna pokazuje górną Wstążkę do wybierania parametrów, takich jak centra danych (wdrożone/niewymagające wdrożenia/Active/nieaktywny/Analiza ruchu włączone/Analiza ruchu nie włączono), a kraje/regiony, w których działa niegroźny/złośliwy ruch do aktywnego wdrożenia:
 
     ![Widok mapy geograficznej przedstawiający aktywne wdrożenie](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 
@@ -343,7 +341,7 @@ Dystrybucja ruchu na bramę aplikacji & Load Balancer, topologia, najważniejsze
  - Poznanie podsieci, do której odnosi się Brama aplikacji lub Load Balancer. Jeśli zauważysz nieoczekiwane konwersacje, możesz poprawić konfigurację.
  - Jeśli nieautoryzowane sieci są odwracające do bramy aplikacji lub Load Balancer, można je poprawić, konfigurując reguły sieciowej grupy zabezpieczeń w celu blokowania nieautoryzowanych sieci. 
 
-    ![Topologia podsieci — Prezentacja typu "ruch-dystrybucja między aplikacjami-Brama-sieć" z uwzględnieniem przepływów](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Wyświetlanie portów i maszyn wirtualnych odbierających ruch z Internetu
 

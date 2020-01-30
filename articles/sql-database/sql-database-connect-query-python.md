@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 9929c483c2e27983254033e2e26b3b753699260b
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: e82f8feae0096202e48a58296dd2e9d21bb61885
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758312"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768569"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z języka Python do wykonywania zapytań w bazie danych Azure SQL Database
 
@@ -25,9 +25,7 @@ W tym przewodniku szybki start nawiążesz połączenie z bazą danych Azure SQL
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 - [Baza danych SQL Azure](sql-database-single-database-get-started.md)
-  
 - Środowisko [Python](https://python.org/downloads) 3 i powiązane oprogramowanie
 
   # <a name="macostabmacos"></a>[macOS](#tab/macos)

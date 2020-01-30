@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951068"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840268"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure Active Directory B2C przy użyciu zasad niestandardowych
 
@@ -38,7 +38,7 @@ Następujące przepływy nie są obsługiwane:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
+Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure Active Directory B2C](custom-policy-get-started.md).
 
 ## <a name="register-an-application"></a>Rejestrowanie aplikacji
 
@@ -342,4 +342,4 @@ Azure AD B2C są zgodne ze standardami OAuth 2,0 dla poświadczeń hasła właś
 ## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z pełnym przykładem w tym scenariuszu w [pakiecie startowym zasad niestandardowych Azure Active Directory B2C](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
-- Dowiedz się więcej o tokenach, które są używane przez Azure Active Directory B2C w [odwołaniu do tokenu](active-directory-b2c-reference-tokens.md).
+- Dowiedz się więcej o tokenach, które są używane przez Azure Active Directory B2C w [odwołaniu do tokenu](tokens-overview.md).

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949410"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841237"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika w Azure Active Directory B2C
 
@@ -28,15 +28,15 @@ Istnieje kilka sposobów na dostosowanie interfejsu użytkownika aplikacji, z kt
 
 ### <a name="user-flows"></a>Przepływy użytkowników
 
-Jeśli używasz [przepływów użytkownika](active-directory-b2c-reference-policies.md), możesz zmienić wygląd stron przepływu użytkownika przy użyciu wbudowanych *szablonów układów stron*lub przy użyciu własnego kodu HTML i CSS. Obie metody zostały omówione w dalszej części tego artykułu.
+Jeśli używasz [przepływów użytkownika](user-flow-overview.md), możesz zmienić wygląd stron przepływu użytkownika przy użyciu wbudowanych *szablonów układów stron*lub przy użyciu własnego kodu HTML i CSS. Obie metody zostały omówione w dalszej części tego artykułu.
 
 Użyj [Azure Portal](tutorial-customize-ui.md) , aby skonfigurować Dostosowywanie interfejsu użytkownika dla przepływów użytkowników.
 
 ### <a name="custom-policies"></a>Zasady niestandardowe
 
-Jeśli używasz [zasad niestandardowych](active-directory-b2c-overview-custom.md) w celu zapewnienia rejestracji lub logowania, resetowania haseł lub edytowania profilu w aplikacji, użyj [plików zasad, aby dostosować interfejs użytkownika](active-directory-b2c-ui-customization-custom.md).
+Jeśli używasz [zasad niestandardowych](custom-policy-overview.md) w celu zapewnienia rejestracji lub logowania, resetowania haseł lub edytowania profilu w aplikacji, użyj [plików zasad, aby dostosować interfejs użytkownika](custom-policy-ui-customization.md).
 
-Jeśli musisz dostarczyć zawartość dynamiczną na podstawie decyzji klienta, użyj zasad niestandardowych, które mogą [dynamicznie zmieniać zawartość strony](active-directory-b2c-ui-customization-custom-dynamic.md) w zależności od parametru, który jest wysyłany w ciągu zapytania. Na przykład można zmienić obraz tła na stronie rejestracji lub logowania na Azure AD B2C na podstawie parametru przekazanego z aplikacji sieci Web lub mobilnej.
+Jeśli musisz dostarczyć zawartość dynamiczną na podstawie decyzji klienta, użyj zasad niestandardowych, które mogą [dynamicznie zmieniać zawartość strony](custom-policy-ui-customization-dynamic.md) w zależności od parametru, który jest wysyłany w ciągu zapytania. Na przykład można zmienić obraz tła na stronie rejestracji lub logowania na Azure AD B2C na podstawie parametru przekazanego z aplikacji sieci Web lub mobilnej.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -65,6 +65,8 @@ Następnie wybierz szablon z listy. Poniżej przedstawiono przykłady stron logo
 Po wybraniu szablonu wybrany układ zostanie zastosowany do wszystkich stron w przepływie użytkownika, a identyfikator URI dla każdej strony jest widoczny w polu **niestandardowy identyfikator URI strony** .
 
 ## <a name="custom-html-and-css"></a>Niestandardowe HTML i CSS
+
+Jeśli chcesz zaprojektować własny układ zasad przy użyciu dostosowanego kodu HTML i CSS, możesz to zrobić, przełączając przełącznik "Użyj niestandardowej zawartości strony" dla każdej nazwy układu w ramach zasad. Postępuj zgodnie z poniższymi instrukcjami dotyczącymi konfiguracji układu niestandardowego:
 
 Azure AD B2C uruchamia kod w przeglądarce klienta przy użyciu metody zwanej [współużytkowaniem zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/).
 
@@ -150,7 +152,7 @@ Poniższa tabela zawiera listę fragmentów kodu HTML, które Azure AD B2C Scala
 
 ## <a name="localize-content"></a>Lokalizowanie zawartości
 
-Zawartość HTML można zlokalizować, włączając [Dostosowywanie języka](active-directory-b2c-reference-language-customization.md) w dzierżawie Azure AD B2C. Włączenie tej funkcji pozwala Azure AD B2C do przesyłania dalej parametru połączenia OpenID Connect `ui-locales` do punktu końcowego. Twój serwer zawartości może użyć tego parametru, aby udostępnić strony HTML specyficzne dla języka.
+Zawartość HTML można zlokalizować, włączając [Dostosowywanie języka](user-flow-language-customization.md) w dzierżawie Azure AD B2C. Włączenie tej funkcji pozwala Azure AD B2C do przesyłania dalej parametru połączenia OpenID Connect `ui-locales` do punktu końcowego. Twój serwer zawartości może użyć tego parametru, aby udostępnić strony HTML specyficzne dla języka.
 
 Zawartość można ściągnąć z różnych miejsc w oparciu o używane ustawienia regionalne. W punkcie końcowym z obsługą mechanizmu CORS można skonfigurować strukturę folderów, aby hostować zawartość dla określonych języków. Jeśli używasz wartości wieloznacznej `{Culture:RFC5646}`, nastąpi wywołanie tego samego.
 
@@ -179,4 +181,4 @@ Przykładowe pliki HTML i CSS w szablonach znajdują się w katalogu [/sample_te
     [Dostosuj interfejs użytkownika aplikacji w Azure Active Directory B2C](tutorial-customize-ui.md).
 - Jeśli używasz **zasad niestandardowych**, możesz rozpocząć Dostosowywanie interfejsu użytkownika przy użyciu artykułu:
 
-    [Dostosuj interfejs użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+    [Dostosuj interfejs użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C](custom-policy-ui-customization.md).

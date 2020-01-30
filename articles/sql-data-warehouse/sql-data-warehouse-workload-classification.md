@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 01/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ca4b9fe3c40b7bf49d86464858747642e3cb5a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685388"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768833"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Klasyfikacja obciążeń Azure SQL Data Warehouse
 
@@ -36,14 +36,24 @@ Nie wszystkie instrukcje są klasyfikowane, ponieważ nie wymagają zasobów lub
 
 ## <a name="classification-process"></a>Proces klasyfikacji
 
-Klasyfikacja w SQL Data Warehouse jest już obecna, przypisując użytkownikom do roli, która ma odpowiednią klasę zasobów przypisaną do niej przy użyciu [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). Możliwość scharakteryzowania żądań poza logowaniem do klasy zasobów jest ograniczona tą możliwością. Bardziej zaawansowana Metoda klasyfikacji jest teraz dostępna ze składnią [klasyfikatora tworzenia obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql) .  Korzystając z tej składni, SQL Data Warehouse użytkownicy mogą przypisywać znaczenie i klasę zasobów do żądań.  
+Klasyfikacja w SQL Data Warehouse jest już obecna, przypisując użytkownikom do roli, która ma odpowiednią klasę zasobów przypisaną do niej przy użyciu [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). Możliwość scharakteryzowania żądań poza logowaniem do klasy zasobów jest ograniczona tą możliwością. Bardziej zaawansowana Metoda klasyfikacji jest teraz dostępna ze składnią [klasyfikatora tworzenia obciążenia](/sql/t-sql/statements/create-workload-classifier-transact-sql) .  Korzystając z tej składni, SQL Data Warehouse użytkownicy mogą przypisywać ważność i ilość zasobów systemowych przypisanych do żądania za pośrednictwem parametru `workload_group`. 
 
 > [!NOTE]
 > Klasyfikacja jest oceniana na podstawie żądania. Wiele żądań w jednej sesji może być klasyfikowanych inaczej.
 
-## <a name="classification-precedence"></a>Pierwszeństwo klasyfikacji
+## <a name="classification-weighting"></a>Klasyfikowanie klasyfikacji
 
-W ramach procesu klasyfikacji jest stosowane pierwszeństwo w celu ustalenia, która Klasa zasobów jest przypisana. Klasyfikacja oparta na użytkowniku bazy danych ma pierwszeństwo przed członkostwem w roli. Jeśli utworzysz klasyfikator, który mapuje użytkownika bazy danych UserA na klasę zasobów mediumrc. Następnie zamapuj rolę bazy danych role (UserA jest członkiem) na klasę zasobów largerc. Klasyfikator, który mapuje użytkownika bazy danych na klasę zasobów mediumrc, będzie miał pierwszeństwo przed klasyfikatorem, który mapuje rolę bazy danych role na largerc klasy zasobów.
+W ramach procesu klasyfikacji jest stosowane ustalanie wagi, aby określić, która grupa obciążeń jest przypisana.  Waga odbywa się w następujący sposób:
+
+|Parametr klasyfikatora |Waga   |
+|---------------------|---------|
+|CZŁONEKNAME: UŻYTKOWNIK      |64       |
+|MEMBERNAME: ROLA      |32       |
+|WLM_LABEL            |16       |
+|WLM_CONTEXT          |8        |
+|START_TIME/END_TIME  |4        |
+
+Parametr `membername` jest obowiązkowy.  Jeśli jednak określona wartość elementu członkowskiego jest użytkownikiem bazy danych, a nie rolą bazy danych, oznacza to, że wagi dla użytkownika są wyższe i w ten sposób jest wybierany klasyfikator.
 
 Jeśli użytkownik jest członkiem wielu ról z różnymi klasami zasobów przypisanymi lub dopasowanymi w wielu klasyfikatorach, użytkownik otrzymuje największe przypisanie klasy zasobów.  To zachowanie jest spójne z istniejącym zachowaniem przypisywania klasy zasobów.
 
@@ -59,7 +69,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 Klasyfikatory systemu utworzone w Twoim imieniu zapewniają łatwą ścieżkę do migracji do klasyfikacji obciążeń. Użycie mapowań roli klasy zasobów z pierwszeństwem klasyfikacji może prowadzić do błędnej klasyfikacji podczas tworzenia nowych klasyfikatorów o ważności.
 
-Rozważmy następujący scenariusz:
+Poniżej przedstawiono przykładowy scenariusz:
 
 - Istniejący magazyn danych ma DBAUser użytkownika bazy danych przypisany do roli klasy zasobów largerc. Przypisanie klasy zasobów zostało wykonane z sp_addrolemember.
 - Magazyn danych jest teraz aktualizowany za pomocą zarządzania obciążeniami.
@@ -85,4 +95,4 @@ sp_droprolemember ‘[Resource Class]’, membername
 - Aby uzyskać więcej informacji na temat tworzenia klasyfikatora, zobacz [Tworzenie KLASYFIKATORA obciążenia (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
 - Zobacz Przewodnik Szybki Start dotyczący tworzenia klasyfikatora obciążeń [Tworzenie klasyfikatora obciążeń](quickstart-create-a-workload-classifier-tsql.md).
 - Zapoznaj się z artykułami z artykułu jak, aby [skonfigurować ważność obciążenia](sql-data-warehouse-how-to-configure-workload-importance.md) oraz jak [zarządzać i monitorować zarządzanie obciążeniami](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- Zobacz sekcję [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , aby wyświetlić zapytania i przypisane znaczenie.
+- Zobacz sekcję [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , aby wyświetlić zapytania i przypisane znaczenie.

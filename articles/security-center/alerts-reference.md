@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 322b7656a5e8cb5d0fd0274cc9f09adec2c2c5e1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3b4b9f782d3306777e853a22ed24fac803da4fb9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514769"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835260"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Alerty zabezpieczeń — Podręcznik referencyjny
 
@@ -234,7 +234,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 ||||
 
 
-## <a name="alerts-akscluster"></a>Alerty dla poziomu klastra AKS
+## <a name="alerts-akscluster"></a>Alerty dla kontenerów — klastry usługi Azure Kubernetes
 
 [Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-containers-)
 
@@ -249,7 +249,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 |**WERSJA zapoznawcza — wykryto kontener z rozinstalowaną wrażliwą objętością**|Analiza dziennika inspekcji Kubernetes wykryła nowy kontener z instalowanym woluminem wrażliwym. Wykryty wolumin jest typem hostPath, który instaluje poufne pliki lub foldery z węzła do kontenera. Jeśli naruszyć bezpieczeństwo kontenera, osoba atakująca może użyć tej instalacji do uzyskania dostępu do węzła.|PrivilegeEscalation|
 ||||
 
-## <a name="alerts-containerhost"></a>Alerty na poziomie hosta kontenerów
+## <a name="alerts-containerhost"></a>Alerty dla kontenerów — poziom hosta
 
 [Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-containers-)
 
@@ -275,11 +275,11 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 |**Potencjalna iniekcja SQL**|Nastąpiło aktywne wykorzystanie oprogramowania w odniesieniu do zidentyfikowanych aplikacji narażonych na wstrzyknięcie kodu SQL. Oznacza to, że osoba atakująca próbuje wstrzyknąć złośliwe instrukcje SQL, korzystając z kodu aplikacji lub procedur składowanych.|-|
 |**Logowanie się z nietypowej lokalizacji**|Wzorzec dostępu został zmieniony na SQL Server, w którym ktoś zalogował się na serwerze z nietypowej lokalizacji geograficznej. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja lub konserwacja przeprowadzana przez deweloperów). W innych przypadkach alert wykrywa złośliwe działanie (byłego pracownika lub ataku zewnętrznego).|Wykorzystywanie|
 |**Logowanie za pomocą nieznanego podmiotu zabezpieczeń**|W wzorcu dostępu wprowadzono zmianę w celu SQL Server. Ktoś zalogował się na serwerze przy użyciu nietypowego podmiotu zabezpieczeń (użytkownika). W niektórych przypadkach ten alert wykrywa prawidłowe działanie (nowa aplikacja lub konserwacja przeprowadzana przez deweloperów). W innych przypadkach alert wykrywa złośliwe działanie (byłego pracownika lub ataku zewnętrznego).|Wykorzystywanie|
-|**Próba logowania przez potencjalnie szkodliwą aplikację**|Do uzyskiwania dostępu do bazy danych jest używana potencjalnie szkodliwa aplikacja. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak wykorzystujący typowe narzędzia.|Badanie|
-|**Potencjalna próba nawiązania instrukcji SQL**|Wystąpił nietypowo wysoki numer nieudanych logowań z innymi poświadczeniami. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak z wykorzystaniem pełnego wymuszania.|Badanie|
-|**Logowanie się z nietypowego centrum danych platformy Azure**|Wzorzec dostępu został zmieniony na SQL Server, w którym ktoś zalogował się na serwerze z nietypowego centrum danych platformy Azure. W niektórych przypadkach alert wykrywa legalną akcję (nową aplikację lub usługę platformy Azure). W innych przypadkach alert wykrywa złośliwą akcję (atakujący z naruszenia zasobów na platformie Azure).|Badanie|
+|**Próba logowania przez potencjalnie szkodliwą aplikację**|Do uzyskiwania dostępu do bazy danych jest używana potencjalnie szkodliwa aplikacja. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak wykorzystujący typowe narzędzia.|Sondowania|
+|**Potencjalna próba nawiązania instrukcji SQL**|Wystąpił nietypowo wysoki numer nieudanych logowań z innymi poświadczeniami. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak z wykorzystaniem pełnego wymuszania.|Sondowania|
+|**Logowanie się z nietypowego centrum danych platformy Azure**|Wzorzec dostępu został zmieniony na SQL Server, w którym ktoś zalogował się na serwerze z nietypowego centrum danych platformy Azure. W niektórych przypadkach alert wykrywa legalną akcję (nową aplikację lub usługę platformy Azure). W innych przypadkach alert wykrywa złośliwą akcję (atakujący z naruszenia zasobów na platformie Azure).|Sondowania|
 |**Potencjalnie niebezpieczna akcja**|Wysoce uprzywilejowane polecenie SQL, które jest często używane w złośliwych sesjach, zostało wykonane w SQL Server. Te polecenia są zalecane, aby można je było domyślnie wyłączyć. W niektórych przypadkach alert wykrywa legalną akcję (uruchomiony skrypt administratora). W innych przypadkach ten alert wykrywa złośliwą akcję (atakujący przy użyciu zaufania SQL do naruszenia warstwy systemu Windows).|Wykonanie|
-|**Nietypowa lokalizacja eksportu**|Wprowadzono zmianę w docelowym magazynie eksportu dla operacji importu i eksportu SQL. W niektórych przypadkach alert wykrywa legalną zmianę (Nowa lokalizacja docelowa kopii zapasowej). W innych przypadkach alert wykrywa złośliwe działanie (osoba atakująca łatwo exfiltrated dane do pliku).|Wyprowadzanie|
+|**Nietypowa lokalizacja eksportu**|Wprowadzono zmianę w docelowym magazynie eksportu dla operacji importu i eksportu SQL. W niektórych przypadkach alert wykrywa legalną zmianę (Nowa lokalizacja docelowa kopii zapasowej). W innych przypadkach alert wykrywa złośliwe działanie (osoba atakująca łatwo exfiltrated dane do pliku).|Eksfiltracji|
 ||||
 
 
@@ -293,8 +293,8 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 |**Nietypowa aplikacja uzyskała dostęp do konta magazynu**|Wskazuje, że nietypowa aplikacja uzyskuje dostęp do tego konta magazynu. Potencjalną przyczyną jest to, że osoba atakująca uzyskuje dostęp do konta magazynu przy użyciu nowej aplikacji.|Wykorzystywanie|
 |**Anonimowy dostęp do konta magazynu**|Wskazuje, że istnieje zmiana wzorca dostępu do konta magazynu. Na przykład konto jest uzyskiwane anonimowo (bez uwierzytelniania), które jest nieoczekiwane w porównaniu z ostatnim wzorcem dostępu na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca korzystała z publicznego dostępu do odczytu do kontenera, który przechowuje magazyn obiektów BLOB.|Wykorzystywanie|
 |**Dostęp z węzła wyjścia tor do konta magazynu**|Wskazuje, że do tego konta uzyskano dostęp pomyślnie z adresu IP, który jest znany jako aktywny węzeł zakończenia tor (anonymizing serwer proxy). Ważność tego alertu uwzględnia używany typ uwierzytelniania (jeśli istnieje), a także to, czy jest to pierwszy przypadek takiego dostępu. Potencjalnymi przyczynami może być osoba atakująca, która uzyskała dostęp do konta magazynu przy użyciu sieci Tor lub uprawnionych użytkowników, którzy uzyskali dostęp do konta magazynu przy użyciu sieci Tor.|Badanie/wykorzystywanie|
-|**Nietypowa ilość danych wyodrębnionych z konta magazynu**|Wskazuje, że nietypowo duża ilość danych została wyodrębniona w porównaniu do ostatnich działań w tym kontenerze magazynu. Potencjalną przyczyną jest to, że atakujący wyodrębnił dużą ilość danych z kontenera, który przechowuje magazyn obiektów BLOB.|Wyprowadzanie|
-|**Nietypowe usuwanie na koncie magazynu**|Wskazuje, że co najmniej jedna Nieoczekiwana operacja usuwania została wystąpiła na koncie magazynu w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca usunęła dane z konta magazynu.|Wyprowadzanie|
+|**Nietypowa ilość danych wyodrębnionych z konta magazynu**|Wskazuje, że nietypowo duża ilość danych została wyodrębniona w porównaniu do ostatnich działań w tym kontenerze magazynu. Potencjalną przyczyną jest to, że atakujący wyodrębnił dużą ilość danych z kontenera, który przechowuje magazyn obiektów BLOB.|Eksfiltracji|
+|**Nietypowe usuwanie na koncie magazynu**|Wskazuje, że co najmniej jedna Nieoczekiwana operacja usuwania została wystąpiła na koncie magazynu w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca usunęła dane z konta magazynu.|Eksfiltracji|
 |**Nietypowe przekazywanie elementu. cspkg do konta magazynu**|Wskazuje, że pakiet Cloud Services platformy Azure (plik. cspkg) został przekazany do konta magazynu w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca przygotowuje się do wdrożenia złośliwego kodu z konta magazynu w usłudze w chmurze platformy Azure.|LateralMovement/wykonywanie|
 |**Nietypowe przekazywanie pliku exe do konta magazynu**|Wskazuje, że plik exe został przekazany do konta magazynu w nietypowy sposób w porównaniu z ostatnią aktywnością na tym koncie. Potencjalną przyczyną jest to, że osoba atakująca przekazała złośliwy plik wykonywalny na konto magazynu lub że uprawniony użytkownik przesłał plik wykonywalny.|LateralMovement/wykonywanie|
 |**Nietypowa zmiana uprawnień dostępu na koncie magazynu**|Wskazuje, że uprawnienia dostępu do tego kontenera magazynu zostały zmienione w nietypowy sposób. Potencjalną przyczyną jest to, że osoba atakująca zmieniła uprawnienia kontenera, aby osłabić stan zabezpieczeń lub uzyskać trwałość.|Trwałość|
@@ -304,14 +304,14 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 ||||
 
 
-## <a name="alerts-azurecosmos"></a>Azure Cosmos DB
+## <a name="alerts-azurecosmos"></a>Alerty dla Azure Cosmos DB (wersja zapoznawcza)
 
 [Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#azure-cosmos-db)
 
 |Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**Dostęp z nietypowej lokalizacji do konta Cosmos DB**|Wskazuje, że w wzorcu dostępu wprowadzono zmianę dla konta Azure Cosmos DB. Ktoś uzyskał dostęp do tego konta z nieznanego adresu IP w porównaniu z ostatnio używanymi działaniami. Osoba atakująca uzyskała dostęp do konta lub uzyskała dostęp do niego z nowej i nietypowej lokalizacji geograficznej. Przykładem tej ostatniej usługi jest zdalna konserwacja z nowej aplikacji lub dewelopera.|Wykorzystywanie|
-|**Nietypowa ilość danych wyodrębnionych z konta Cosmos DB**|Wskazuje, że wystąpił zmiana wzorca wyodrębniania danych z konta Azure Cosmos DB. Ktoś wyodrębnił nietypową ilość danych w porównaniu do ostatnich działań. Osoba atakująca mogła wyodrębnić znaczną ilość danych z bazy danych Azure Cosmos DB (na przykład eksfiltracji danych lub wyciek lub nieautoryzowany transfer danych). Lub uprawniony użytkownik lub aplikacja wykryła nietypową ilość danych z kontenera (na przykład dla działania tworzenia kopii zapasowej konserwacji).|Wyprowadzanie|
+|**Nietypowa ilość danych wyodrębnionych z konta Cosmos DB**|Wskazuje, że wystąpił zmiana wzorca wyodrębniania danych z konta Azure Cosmos DB. Ktoś wyodrębnił nietypową ilość danych w porównaniu do ostatnich działań. Osoba atakująca mogła wyodrębnić znaczną ilość danych z bazy danych Azure Cosmos DB (na przykład eksfiltracji danych lub wyciek lub nieautoryzowany transfer danych). Lub uprawniony użytkownik lub aplikacja wykryła nietypową ilość danych z kontenera (na przykład dla działania tworzenia kopii zapasowej konserwacji).|Eksfiltracji|
 ||||
 
 
@@ -321,7 +321,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 |Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
-|**Wykryto ruch z adresów IP zalecany do blokowania**|Azure Security Center wykryć ruch przychodzący z adresów IP, które są zalecane do zablokowania. Zwykle jest to spowodowane tym, że ten adres IP nie komunikuje się regularnie z tym zasobem. Alternatywnie adres IP został oflagowany jako złośliwy przez Security Center źródłami analizy zagrożeń.|Badanie|
+|**Wykryto ruch z adresów IP zalecany do blokowania**|Azure Security Center wykryć ruch przychodzący z adresów IP, które są zalecane do zablokowania. Zwykle jest to spowodowane tym, że ten adres IP nie komunikuje się regularnie z tym zasobem. Alternatywnie adres IP został oflagowany jako złośliwy przez Security Center źródłami analizy zagrożeń.|Sondowania|
 |**Wykryto komunikację sieciową ze złośliwą maszyną**|Analiza ruchu sieciowego wskazuje, że komputer (IP% {poszkodowany adres IP}) komunikuje się z tym, co jest prawdopodobnie centrum poleceń i kontroli. Gdy naruszony zasób jest modułem równoważenia obciążenia lub bramą aplikacji, podejrzane działanie może wskazywać, że co najmniej jeden zasób w puli zaplecza (modułu równoważenia obciążenia lub bramy aplikacji) komunikuje się z tym, co może być poleceniem i Centrum sterowania.|-|
 |**Wykryto możliwy naruszony komputer**|Analiza zagrożeń wskazuje, że komputer (pod adresem IP% {Machine IP}) mógł zostać naruszony przez złośliwe oprogramowanie typu Conficker. Robakiem Conficker był komputer, który jest przeznaczony dla systemu operacyjnego Microsoft Windows i został najpierw wykryty w listopadzie 2008. Robak Worm zainfekowany przez komputery, w tym komputery rządowe, firmowe i domowe w ponad 200 krajach, sprawia, że jest to największe zainfekowane robaki komputera, od Welchia robaka 2003.|-|
 |**Wykryto ewentualne przychodzące próby rozruchowe% {Service Name}**|Analiza ruchu sieciowego wykryła komunikację przychodzącej% {Service Name} z% {ofiarą IP} skojarzoną z zasobem% {złamany host} z% {atakującego adresu IP}. Gdy naruszony zasób jest usługą równoważenia obciążenia lub bramą aplikacji, podejrzany ruch przychodzący został przekazany do co najmniej jednego zasobu w puli zaplecza (modułu równoważenia obciążenia lub bramy aplikacji). W odniesieniu do danych sieci próbkowanych pokazuje podejrzane działania między% {Time} i% {End Time} na porcie% {poszkodowany port}. To działanie jest spójne z próbami pełnego wymuszenia dla serwerów% {Service Name}.|-|
@@ -382,8 +382,8 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 |Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
-|**Wykryto atak DDoS dla publicznego adresu IP**|Wykryto atak DDoS dla publicznego adresu IP (adres IP) i jest on zmniejszany.|Badanie|
-|**Atak DDoS został skorygowany dla publicznego adresu IP**|Atak DDoS został skorygowany dla publicznego adresu IP (adres IP).|Badanie|
+|**Wykryto atak DDoS dla publicznego adresu IP**|Wykryto atak DDoS dla publicznego adresu IP (adres IP) i jest on zmniejszany.|Sondowania|
+|**Atak DDoS został skorygowany dla publicznego adresu IP**|Atak DDoS został skorygowany dla publicznego adresu IP (adres IP).|Sondowania|
 ||||
 
 ## <a name="intentions"></a>Cele
@@ -396,7 +396,7 @@ Obsługiwane przez Security Center zamiary kasowania łańcucha są oparte na [M
 
 |Intencja|Opis|
 |------|-------|
-|**Badanie**|Badanie może być próbą uzyskania dostępu do określonego zasobu niezależnie od złośliwego intencji lub nieudanej próbie uzyskania dostępu do systemu docelowego w celu zebrania informacji przed rozpoczęciem korzystania z programu. Ten krok jest zazwyczaj wykrywany jako próba, pochodząca z zewnątrz sieci, do skanowania systemu docelowego i identyfikowania punktu wejścia.|
+|**Sondowania**|Badanie może być próbą uzyskania dostępu do określonego zasobu niezależnie od złośliwego intencji lub nieudanej próbie uzyskania dostępu do systemu docelowego w celu zebrania informacji przed rozpoczęciem korzystania z programu. Ten krok jest zazwyczaj wykrywany jako próba, pochodząca z zewnątrz sieci, do skanowania systemu docelowego i identyfikowania punktu wejścia.|
 |**Wykorzystywanie**|Wykorzystanie jest etapem, w którym osoba atakująca zarządza przyczółka na zaatakowanym zasobie. Ten etap dotyczy hostów i zasobów obliczeniowych, takich jak konta użytkowników, certyfikaty itd. Aktory zagrożeń często będą mogły kontrolować zasób po tym etapie.|
 |**Trwałość**|Trwałość to dowolna zmiana dostępu, akcji lub konfiguracji w systemie, który zapewnia podmiotowi zagrożeń trwałe obecność w tym systemie. Aktory zagrożeń często muszą obsługiwać dostęp do systemów przez zakłócenia, takie jak ponowne uruchomienia systemu, utrata poświadczeń lub inne niepowodzenia, które wymagają ponownego uruchomienia narzędzia dostępu zdalnego lub udostępnienia alternatywnej tylne wejście w celu odzyskania dostępu.|
 |**PrivilegeEscalation**|Eskalacja uprawnień jest wynikiem akcji, które umożliwiają atakującej uzyskanie wyższego poziomu uprawnień w systemie lub sieci. Niektóre narzędzia i akcje wymagają wyższego poziomu uprawnień do pracy i są potrzebne w wielu punktach w trakcie operacji. Konta użytkowników z uprawnieniami dostępu do określonych systemów lub wykonywania określonych funkcji niezbędnych do osiągnięcia ich celu przez źródłami ataków, mogą być uznawane za eskalację uprawnień.|
@@ -404,7 +404,7 @@ Obsługiwane przez Security Center zamiary kasowania łańcucha są oparte na [M
 |**CredentialAccess**|Dostęp do poświadczeń reprezentuje techniki powodujące dostęp do poświadczeń systemu, domeny lub usługi, które są używane w środowisku przedsiębiorstwa. Źródłami ataków będzie prawdopodobnie próbować uzyskać wiarygodne poświadczenia od użytkowników lub kont administratorów (administrator systemu lokalnego lub Użytkownicy domeny z dostępem administratora) do użycia w sieci. Mając wystarczający dostęp w ramach sieci, atakującej może tworzyć konta do późniejszego użycia w środowisku.|
 |**Discovery** (Odnajdywanie)|Funkcja odnajdywania składa się z technik, które umożliwiają atakującejom uzyskanie informacji o systemie i sieci wewnętrznej. Gdy źródłami ataków uzyskują dostęp do nowego systemu, muszą one być zorientowane na to, co już teraz kontroluje i jakie korzyści z tego systemu mają na celu ich bieżące lub ogólne cele podczas włamania. System operacyjny zawiera wiele narzędzi macierzystych, które ułatwiają przeprowadzenie tej fazy zbierania informacji o naruszeniu naruszeń.|
 |**LateralMovement**|Ruchy poprzeczne składają się z technik, które umożliwiają atakującej dostęp do zdalnych systemów w sieci i sterowanie tymi systemami oraz mogą, ale nie musi, obejmować wykonywanie narzędzi w systemach zdalnych. Techniki ruchów poprzecznych mogą umożliwić atakującej zebranie informacji z systemu bez konieczności stosowania dodatkowych narzędzi, takich jak narzędzie dostępu zdalnego. Atakującej może korzystać z ruchu bocznego w wielu celach, w tym do zdalnego wykonywania narzędzi, przestawiania na dodatkowe systemy, uzyskiwania dostępu do określonych informacji lub plików, uzyskiwania dostępu do dodatkowych poświadczeń lub w celu uzyskania efektu.|
-|**Wykonanie**|Taktyka wykonywania reprezentuje techniki powodujące wykonanie kodu kontrolowanego przez wroga w systemie lokalnym lub zdalnym. Ten taktyką jest często używany w połączeniu z ruchem bocznym w celu zwiększenia dostępu do systemów zdalnych w sieci.|
+|**Wykonanie**|Taktyką wykonywania reprezentuje techniki, które powodują wykonanie kodu kontrolowanego przez atakującej w systemie lokalnym lub zdalnym. Ten taktyką jest często używany w połączeniu z ruchem bocznym w celu zwiększenia dostępu do systemów zdalnych w sieci.|
 |**Kolekcja**|Kolekcja zawiera techniki służące do identyfikowania i zbierania informacji, takich jak pliki poufne, z sieci docelowej przed eksfiltracji. Ta kategoria obejmuje również lokalizacje w systemie lub sieci, w których atakującej może szukać informacji do wyprowadzać.|
 |**Eksfiltracji**|Eksfiltracji odnosi się do technik i atrybutów, które powodują lub ułatwiają atakującej usuwanie plików i informacji z sieci docelowej. Ta kategoria obejmuje również lokalizacje w systemie lub sieci, w których atakującej może szukać informacji do wyprowadzać.|
 |**CommandAndControl**|Taktyką polecenia i kontroli przedstawia sposób, w jaki źródłami ataków komunikują się z systemami w ramach kontroli w sieci docelowej.|

@@ -14,33 +14,33 @@ ms.workload: identity
 ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 8f98808aa0f8a2c32e2117447824114747091a82
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912446"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773385"
 ---
-## <a name="registration-of-secrets-or-certificates"></a>Rejestracja wpisów tajnych lub certyfikatów
+## <a name="register-secrets-or-certificates"></a>Rejestrowanie wpisów tajnych lub certyfikatów
 
-Podobnie jak w przypadku każdej poufnej aplikacji klienckiej, należy zarejestrować klucz tajny lub certyfikat. Wpisy tajne aplikacji można zarejestrować za pomocą środowiska interaktywnego w [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)lub przy użyciu narzędzi wiersza polecenia (na przykład programu PowerShell).
+Podobnie jak w przypadku każdej poufnej aplikacji klienckiej, należy zarejestrować klucz tajny lub certyfikat. Wpisy tajne aplikacji można zarejestrować za pomocą interakcyjnego środowiska w [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) lub przy użyciu narzędzi wiersza polecenia (na przykład programu PowerShell).
 
-### <a name="registering-client-secrets-using-the-application-registration-portal"></a>Rejestrowanie wpisów tajnych klienta przy użyciu portalu rejestracji aplikacji
+### <a name="register-client-secrets-by-using-the-application-registration-portal"></a>Rejestrowanie kluczy tajnych klienta przy użyciu portalu rejestracji aplikacji
 
-Zarządzanie poświadczeniami klienta odbywa się na stronie **certyfikaty &** wpisy tajne aplikacji:
+Zarządzanie poświadczeniami klienta odbywa się na stronie **certyfikaty & wpisy tajne** aplikacji:
 
-![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
+![Strona certyfikatów & Secret](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
-- wpis tajny aplikacji (nazywany także kluczem tajnym klienta) jest generowany przez usługę Azure AD podczas rejestracji poufnej aplikacji klienckiej. Ta generacja ma miejsce w przypadku wybrania **nowego klucza tajnego klienta**. W tym momencie należy skopiować ciąg tajny w schowku do użycia w aplikacji przed wybraniem opcji **Zapisz**. Ten ciąg nie zostanie już przedstawiony.
-- certyfikat zostanie przekazany do rejestracji aplikacji przy użyciu przycisku **Przekaż certyfikat** . Usługa Azure AD obsługuje tylko certyfikaty, które są bezpośrednio zarejestrowane w aplikacji, i nie Śledź łańcuchów certyfikatów.
+- Wpis tajny aplikacji (nazywany także kluczem tajnym klienta) jest generowany przez usługę Azure AD podczas rejestracji poufnej aplikacji klienckiej. Ta generacja ma miejsce w przypadku wybrania **nowego klucza tajnego klienta**. W tym momencie przed wybraniem opcji **Zapisz**należy skopiować ciąg tajny do Schowka w celu użycia w aplikacji. Ten ciąg nie zostanie już przedstawiony.
+- Podczas rejestracji aplikacji należy użyć przycisku **Przekaż certyfikat** w celu przekazania certyfikatu. Usługa Azure AD obsługuje tylko certyfikaty, które są bezpośrednio zarejestrowane w aplikacji i nie obserwują łańcuchów certyfikatów.
 
-Aby uzyskać szczegółowe informacje [, zobacz Szybki Start: Konfigurowanie aplikacji klienckiej do uzyskiwania dostępu do interfejsów API sieci Web | Dodawanie poświadczeń do aplikacji](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application)
+Aby uzyskać szczegółowe informacje, zobacz [Szybki Start: Konfigurowanie aplikacji klienckiej w celu uzyskiwania dostępu do interfejsów API sieci Web | Dodaj poświadczenia do aplikacji](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
 
 
 
-### <a name="registering-client-secrets-using-powershell"></a>Rejestrowanie wpisów tajnych klienta przy użyciu programu PowerShell
+### <a name="register-client-secrets-by-using-powershell"></a>Rejestrowanie wpisów tajnych klienta przy użyciu programu PowerShell
 
 Alternatywnie możesz zarejestrować swoją aplikację w usłudze Azure AD przy użyciu narzędzi wiersza polecenia. Przykład " [Active-Directory-dotnetcore-demo-v2"](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) pokazuje, jak zarejestrować klucz tajny aplikacji lub certyfikat z aplikacją usługi Azure AD:
 
-- Aby uzyskać szczegółowe informacje na temat rejestrowania wpisu tajnego aplikacji, zobacz [AppCreationScripts/Configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190)
-- Aby uzyskać szczegółowe informacje na temat rejestrowania certyfikatu w aplikacji, zobacz [AppCreationScripts-withCert/Configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178)
+- Aby uzyskać szczegółowe informacje na temat rejestrowania wpisu tajnego aplikacji, zobacz [AppCreationScripts/Configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts/Configure.ps1#L190).
+- Aby uzyskać szczegółowe informacje na temat rejestrowania certyfikatu w aplikacji, zobacz [AppCreationScripts-withCert/Configure. ps1](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/5199032b352a912e7cc0fce143f81664ba1a8c26/AppCreationScripts-withCert/Configure.ps1#L162-L178).

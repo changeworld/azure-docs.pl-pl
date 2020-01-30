@@ -3,7 +3,7 @@ title: Pomoc techniczna platformy Azure dla maszyn wirtualnych 2. generacji
 description: Omówienie pomocy technicznej platformy Azure dla maszyn wirtualnych 2. generacji
 services: virtual-machines-windows
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: lahugh
-ms.openlocfilehash: 6f03826bf0b82150fa89ad6e17cbcb76f98bb835
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/28/2020
+ms.author: jushiman
+ms.openlocfilehash: ace08d95e1f2eb5a6e7252ecdf505e282b04ddf8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790037"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837356"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Obsługa maszyn wirtualnych 2. generacji na platformie Azure
 
@@ -30,7 +30,7 @@ Maszyny wirtualne generacji 2 wykorzystują nową architekturę rozruchową opar
 
 ## <a name="generation-2-vm-sizes"></a>Rozmiary maszyn wirtualnych generacji 2
 
-Maszyny wirtualne generacji 1 są obsługiwane przez wszystkie rozmiary maszyn wirtualnych na platformie Azure. Platforma Azure oferuje teraz obsługę generacji 2 dla następującej wybranej serii maszyn wirtualnych:
+Maszyny wirtualne generacji 1 są obsługiwane przez wszystkie rozmiary maszyn wirtualnych na platformie Azure (z wyjątkiem maszyn wirtualnych z serii Mv2). Platforma Azure oferuje teraz obsługę generacji 2 dla następującej wybranej serii maszyn wirtualnych:
 
 * [Seria B](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [Seria DC](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
@@ -100,7 +100,7 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji, które są obsługiw
 
 W Azure Portal lub interfejsie wiersza polecenia platformy Azure można tworzyć maszyny wirtualne 2. generacji z obrazu portalu Marketplace, który obsługuje rozruch z interfejsem UEFI.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Portal Azure
 
 Obrazy generacji 2 dla systemu Windows i SLES są zawarte w tej samej ofercie serwera co obrazy Gen1. Co to znaczy z perspektywy przepływu, należy wybrać ofertę i jednostkę SKU z portalu dla maszyny wirtualnej. Jeśli jednostka SKU obsługuje zarówno obrazy generacji 1, jak i 2, możesz wybrać opcję utworzenia maszyny wirtualnej generacji 2 z karty *Zaawansowane* w przepływie tworzenia maszyny wirtualnej.
 
@@ -123,6 +123,12 @@ Na przykład użyj następującego polecenia cmdlet programu PowerShell, aby wy�
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+Alternatywnie możesz użyć interfejsu wiersza polecenia platformy Azure, aby wyświetlić dostępne obrazy generacji 2 wymienione przez **wydawcę**.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 Jeśli tworzysz maszynę wirtualną z systemem Windows Server 2012 jako system operacyjny, wybierz jednostkę SKU maszyny wirtualnej generacji 1 (BIOS) lub 2 (UEFI), która wygląda następująco:

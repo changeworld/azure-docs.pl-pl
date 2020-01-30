@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33bad4982d54eb18e91be28511fb9137223f4a91
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 53190eda66347c23b981c5d6e0631630e9989deb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950973"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840370"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny OAuth2 w zasadach niestandardowych Azure Active Directory B2C
 
@@ -113,7 +113,7 @@ Jeśli używasz domeny **b2clogin.com** zamiast **login.microsoftonline.com** up
 
 Przykłady:
 
-- [Dodaj firmę Google + jako dostawcę tożsamości OAuth2 przy użyciu zasad niestandardowych](active-directory-b2c-custom-setup-goog-idp.md)
+- [Dodaj firmę Google + jako dostawcę tożsamości OAuth2 przy użyciu zasad niestandardowych](identity-provider-google-custom.md)
 
 
 

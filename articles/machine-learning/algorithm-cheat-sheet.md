@@ -9,18 +9,20 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771516"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767625"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Arkusz Machine Learning Ściągawka algorytmu dla projektanta Azure Machine Learning
 
 **Arkusz Azure Machine Learning algorytm Ściągawka** umożliwia wybranie odpowiedniego algorytmu dla modelu analizy predykcyjnej.
 
-Azure Machine Learning ma dużą bibliotekę algorytmów z ***klasyfikacji***, ***systemów zalecanych***, ***klastrowania***, ***wykrywania anomalii***, ***regresji*** i ***analizy tekstu*** . Każdy z nich został zaprojektowany w celu rozwiązania innego typu problemu uczenia maszynowego.
+Azure Machine Learning ma dużą bibliotekę algorytmów z ***klasyfikacji***, ***systemów zalecanych***, ***klastrowania***, ***wykrywania anomalii***, ***regresji***oraz rodzin ***analizy tekstu*** . Każdy z nich został zaprojektowany w celu rozwiązania innego typu problemu uczenia maszynowego.
+
+Aby uzyskać dodatkowe wskazówki, zobacz [jak wybrać algorytmy](how-to-select-algorithms.md)
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Pobierz: Ściągawka algorytm Machine Learning arkusz
 
@@ -32,7 +34,7 @@ Pobierz i wydrukuj arkusz Machine Learning algorytm Ściągawka w rozmiarze Tabl
 
 ## <a name="how-to-use-the-machine-learning-algorithm-cheat-sheet"></a>Jak korzystać z arkusza Ściągawka algorytmu Machine Learning
 
-Sugestie oferowane przez ten algorytm Ściągawka arkusz są przybliżonymi regułami przewijania. Niektóre mogą być wygięte, a niektóre z nich mogą zostać naruszone. Jest to przeznaczone do sugerowania punktu początkowego. Nie należy boisz do uruchamiania konkursów między kilkoma algorytmami danych. Nie jest to po prostu podstawą do poznania zasad poszczególnych algorytmów i systemu, który wygenerował dane.
+Sugestie oferowane przez ten algorytm Ściągawka arkusz są przybliżonymi regułami przewijania. Niektóre mogą być wygięte, a niektóre z nich mogą zostać naruszone. Ten arkusz Ściągawka jest przeznaczony do sugerowania punktu początkowego. Nie należy boisz do uruchamiania konkursów między kilkoma algorytmami danych. Nie jest to po prostu podstawą do poznania zasad poszczególnych algorytmów i systemu, który wygenerował dane.
 
 Każdy algorytm uczenia maszynowego ma własny styl lub odchylenia indukcyjne. W przypadku konkretnego problemu mogą być odpowiednie różne algorytmy, a jeden algorytm może być lepszym rozwiązaniem niż inne. Ale nie zawsze jest możliwe, aby wcześniej wiedzieć, co jest najlepszym rozwiązaniem. W takich przypadkach kilka algorytmów jest wymienionych razem w arkuszu Ściągawka. Odpowiednią strategią jest wypróbowanie jednego algorytmu, a jeśli wyniki nie są jeszcze zadowalające, wypróbuj inne. 
 
@@ -48,17 +50,17 @@ W uczeniu nadzorowanym każdy punkt danych ma etykietę lub jest skojarzony z ka
 
 ### <a name="unsupervised-learning"></a>Uczenie nienadzorowane
 
-W przypadku nienadzorowanej uczenia punkty danych nie mają skojarzonych z nimi etykiet. Zamiast tego celem nienadzorowanego algorytmu uczenia jest organizowanie danych w jakiś sposób lub opisywanie jej struktury. Może to oznaczać, że jest to zgrupowanie do klastrów, jako K-oznacza lub znalezienie różnych sposobów na spojrzenie na złożone dane, tak aby były prostsze.
+W przypadku nienadzorowanej uczenia punkty danych nie mają skojarzonych z nimi etykiet. Zamiast tego celem nienadzorowanego algorytmu uczenia jest organizowanie danych w jakiś sposób lub opisywanie jej struktury. Nienadzorowane uczenie grupuje dane do klastrów, jako K-oznacza, lub znajduje różne sposoby przeglądania złożonych danych, tak aby były prostsze.
 
 ### <a name="reinforcement-learning"></a>Uczenie przez wzmacnianie
 
-W nauce wzmacniania algorytm pozwala wybrać akcję w odpowiedzi na każdy punkt danych. Jest to typowy sposób w przypadku, gdy zestaw odczytów czujników w jednym punkcie czasu jest punktem danych, a algorytm musi wybrać następną akcję robota. Jest to również naturalna dopasowanie do Internet rzeczy aplikacji. Algorytm uczenia również otrzymuje sygnał zarobku krótki czas później, wskazując na to, jak jest to dobre. Na podstawie tego algorytm modyfikuje swoją strategię w celu osiągnięcia najwyższej nagrody. 
+W nauce wzmacniania algorytm pozwala wybrać akcję w odpowiedzi na każdy punkt danych. Jest to typowy sposób w przypadku, gdy zestaw odczytów czujników w jednym punkcie czasu jest punktem danych, a algorytm musi wybrać następną akcję robota. Jest to również naturalna dopasowanie do Internet rzeczy aplikacji. Algorytm uczenia również otrzymuje sygnał zarobku krótki czas później, wskazując na to, jak jest to dobre. W oparciu o ten sygnał algorytm modyfikuje swoją strategię w celu osiągnięcia najwyższej nagrody. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej na temat Studio w Azure Machine Learning i Azure Portal](overview-what-is-azure-ml.md).
+* Zapoznaj się z dodatkowymi wskazówkami dotyczącymi [wybierania algorytmów](how-to-select-algorithms.md)
 
-* Zobacz listę algorytmów i modułów w [Kompendium algorytmu i modułu](algorithm-module-reference/module-reference.md).
+* [Dowiedz się więcej na temat Studio w Azure Machine Learning i Azure Portal](overview-what-is-azure-ml.md).
 
 * [Samouczek: Tworzenie modelu predykcyjnego w programie Azure Machine Learning Designer](tutorial-designer-automobile-price-train-score.md).
 

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/05/2019
-ms.openlocfilehash: 4833b8a1835bd5da3327c73058f170fb0a5738a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450702"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765763"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor dla maszyn wirtualnych ogólnie dostępna (GA) często zadawanych pytań
 
@@ -20,19 +20,28 @@ Ta ogólna dostępność często zadawanych pytań dotyczy zmian, które są wyk
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>Aktualizacje dla Azure Monitor dla maszyn wirtualnych
 
-Firma Microsoft planuje wydanie nowej wersji Azure Monitor dla maszyn wirtualnych w styczniu 2020. Klienci, którzy włączają monitory platformy Azure dla maszyn wirtualnych, gdy ta wersja automatycznie otrzymuje nową wersję, ale istniejący klienci korzystający już z Azure Monitor dla maszyn wirtualnych będą monitowani o uaktualnienie. Te często zadawane pytania i dokumentacja oferują wskazówki dotyczące przeprowadzania uaktualnienia w odpowiedniej skali, jeśli masz duże wdrożenia w wielu obszarach roboczych.
+Udostępnimy nową wersję Azure Monitor dla maszyn wirtualnych. Klienci, którzy włączają monitory platformy Azure dla maszyn wirtualnych, otrzymają teraz nową wersję, ale istniejący klienci już korzystający z programu Azure Monitor dla maszyn wirtualnych będą monitowani o uaktualnienie. Te często zadawane pytania i dokumentacja oferują wskazówki dotyczące przeprowadzania uaktualnienia w odpowiedniej skali, jeśli masz duże wdrożenia w wielu obszarach roboczych.
 
-W przypadku tego uaktualnienia Azure Monitor dla maszyn wirtualnych dane wydajności są przechowywane w tej samej tabeli `InsightsMetrics` jako [Azure monitor dla kontenerów](container-insights-overview.md)i ułatwiają wykonywanie zapytań do dwóch zestawów danych. Ponadto można przechowywać bardziej zróżnicowane zestawy danych, które nie mogły być przechowywane w tabeli, która została wcześniej użyta. Nasze widoki danych zostaną zaktualizowane, aby korzystały z tej nowej tabeli.
+W przypadku tego uaktualnienia Azure Monitor dla maszyn wirtualnych dane wydajności są przechowywane w tej samej tabeli *InsightsMetrics* co [Azure monitor dla kontenerów](container-insights-overview.md), co ułatwia wykonywanie zapytań dotyczących dwóch zestawów danych. Ponadto można przechowywać bardziej zróżnicowane zestawy danych, które nie mogły być przechowywane w tabeli, która została wcześniej użyta. 
 
-Przenosimy do nowych typów danych dla naszych zestawów danych połączenia. Ta zmiana będzie występować w grudniu 2019 i zostanie ogłoszona w blogu usługi Azure Update. Dane przechowywane w `ServiceMapComputer_CL` i `ServiceMapProcess_CL`, które są tabelami niestandardowymi dzienników, przechodzą do typów danych dedykowanych o nazwie `VMComputer` i `VMProcess`. Przenosząc do typów danych dedykowanych, otrzymują priorytet pozyskiwania danych, a schemat tabeli zostanie znormalizowany dla wszystkich klientów.
+W następnym tygodniu lub dwóch widokach wydajności również zostaną zaktualizowane w celu korzystania z tej nowej tabeli.
 
 Zdajemy sobie sprawę, że zaproszenie istniejących klientów o uaktualnienie powoduje zakłócenia w przepływie pracy, co oznacza, że wybrano tę czynność teraz w publicznej wersji zapoznawczej, a nie później.
 
-## <a name="what-is-changing"></a>Co ulega zmianie?
 
-Obecnie po zakończeniu procesu dołączania do Azure Monitor dla maszyn wirtualnych należy włączyć rozwiązanie Service Map w obszarze roboczym wybranym do przechowywania danych monitorowania, a następnie skonfigurować liczniki wydajności dla zbieranych danych z maszyn wirtualnych. Zostanie wydane nowe rozwiązanie o nazwie **VMInsights**, które zawiera dodatkowe możliwości zbierania danych oraz nową lokalizację do przechowywania tych danych w obszarze roboczym log Analytics.
+## <a name="what-is-changing"></a>Co się zmieni?
 
-Nasz bieżący proces używania liczników wydajności w obszarze roboczym Log Analytics wysyła dane do tabeli `Perf`. To nowe rozwiązanie wysyła dane do tabeli o nazwie `InsightsMetrics`, która jest również używana przez Azure Monitor dla kontenerów. Ten schemat tabeli umożliwia przechowywanie dodatkowych metryk i zestawów danych usług, które nie są zgodne z formatem tabeli wydajności.
+Opublikowano nowe rozwiązanie o nazwie VMInsights, które zawiera dodatkowe możliwości zbierania danych oraz nową lokalizację do przechowywania tych danych w obszarze roboczym Log Analytics. 
+
+W przeszłości włączono rozwiązanie ServiceMap w obszarze roboczym i skonfigurujesz liczniki wydajności w obszarze roboczym Log Analytics, aby wysłać dane do tabeli *wydajności* . To nowe rozwiązanie wysyła dane do tabeli o nazwie *InsightsMetrics* , która jest również używana przez Azure monitor dla kontenerów. Ten schemat tabeli umożliwia przechowywanie dodatkowych metryk i zestawów danych usług, które nie są zgodne z formatem tabeli *wydajności* .
+
+
+## <a name="how-do-i-upgrade"></a>Jak mogę uaktualnić?
+Każda maszyna wirtualna wymagająca uaktualnienia zostanie zidentyfikowana na karcie **wprowadzenie** w Azure Monitor dla maszyn wirtualnych w Azure Portal. Możesz uaktualnić pojedynczą maszynę wirtualną lub wybrać wiele, aby uaktualnić razem. Użyj następującego polecenia, aby przeprowadzić uaktualnienie przy użyciu programu PowerShell:
+
+```PowerShell
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
+```
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Co należy zrobić o licznikach wydajności w obszarze mój obszar roboczy, jeśli zainstaluję rozwiązanie VMInsights?
 

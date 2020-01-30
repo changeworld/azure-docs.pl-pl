@@ -1,10 +1,9 @@
 ---
 title: 'Szybki Start: korzystanie z Azure Service Bus tematów i subskrypcji w języku Python'
-description: Dowiedz się, jak używać tematów i subskrypcji Azure Service Bus w języku Python.
+description: W tym artykule opisano sposób tworzenia tematu Azure Service Bus, subskrypcji, wysyłania komunikatów do tematu i odbierania komunikatów z subskrypcji.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 94a49b31139947c6323ab391b78ecd03ee911e0a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748493"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774545"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Szybki Start: korzystanie z Service Bus tematów i subskrypcji w języku Python
 

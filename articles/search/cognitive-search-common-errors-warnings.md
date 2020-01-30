@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314729"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838551"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Rozwiązywanie problemów z typowymi błędami indeksatora i ostrzeżeniami w usłudze Azure Wyszukiwanie poznawcze
 
@@ -249,7 +249,7 @@ Jeśli wiesz, że zestaw danych zawiera wiele języków i dlatego potrzebujesz [
 ```
 
 Poniżej przedstawiono niektóre odwołania do obecnie obsługiwanych języków dla każdej z umiejętności, które mogą generować ten komunikat o błędzie:
-* [Obsługiwane języki analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (dla [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)i [SentimentSkill](cognitive-search-skill-sentiment.md))
+* [Analiza tekstu obsługiwane języki](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (dla [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md), [SentimentSkill](cognitive-search-skill-sentiment.md)i [PIIDetectionSkill](cognitive-search-skill-pii-detection.md))
 * [Języki obsługiwane przez translatora](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (dla [tekstu TranslationSkill](cognitive-search-skill-text-translation.md))
 * [SplitSkill tekstu](cognitive-search-skill-textsplit.md) Obsługiwane języki: `da, de, en, es, fi, fr, it, ko, pt`
 
@@ -303,7 +303,7 @@ Aby uzyskać więcej informacji, zobacz [przyrostowy postęp i zapytania niestan
 <a name="truncated-extracted-text-to-x-characters"/>
 
 ## <a name="warning-truncated-extracted-text-to-x-characters"></a>Ostrzeżenie: obcięto wyodrębniony tekst do X znaków
-Indeksatory ograniczają ilość tekstu, który można wyodrębnić z dowolnego dokumentu. Ten limit zależy od warstwy cenowej: 32 000 znaków dla warstwy Bezpłatna, 64 000 dla podstawowych i 4 000 000 dla warstw standardowa, standardowa S2 i Standardowa S3. Tekst, który został obcięty, nie będzie indeksowany. Aby uniknąć tego ostrzeżenia, spróbuj rozdzielić dokumenty z dużymi ilościami tekstu na kilka mniejszych dokumentów. 
+Indeksatory ograniczają ilość tekstu, który można wyodrębnić z dowolnego dokumentu. Ten limit zależy od warstwy cenowej: 32 000 znaków dla warstwy Bezpłatna, 64 000 dla wersji podstawowa, 4 000 000 dla Standard, 8 000 000 dla standardu S2 i 16 000 000 dla standardowego S3. Tekst, który został obcięty, nie będzie indeksowany. Aby uniknąć tego ostrzeżenia, spróbuj rozdzielić dokumenty z dużymi ilościami tekstu na kilka mniejszych dokumentów. 
 
 Aby uzyskać więcej informacji, zobacz [limity indeksatora](search-limits-quotas-capacity.md#indexer-limits).
 

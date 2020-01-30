@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942243"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833298"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Zarządzanie skalowaniem w poziomie klastra (skalowanie w dół) w usłudze Azure Eksplorator danych w celu uwzględnienia zmiany zapotrzebowania
 
@@ -58,9 +58,10 @@ Zoptymalizowana funkcja automatycznego skalowania jest uruchamiana. Jego działa
 Gdy klaster zbliża się do nadmiernego użycia, skalowanie w poziomie w celu zapewnienia optymalnej wydajności. Skalowanie w poziomie nastąpi, gdy:
 * Liczba wystąpień klastra jest mniejsza niż maksymalna liczba wystąpień zdefiniowana przez użytkownika.
 * Użycie pamięci podręcznej jest duże przez ponad godzinę.
+* Procesor CPU jest wysoki przez ponad godzinę.
 
 > [!NOTE]
-> Logika skalowania w poziomie nie uwzględnia obecnie użycia pozyskiwania i metryk procesora. Jeśli te metryki są ważne dla przypadku użycia, użyj [niestandardowego automatycznego skalowania](#custom-autoscale).
+> W logice skalowanie w poziomie nie jest obecnie rozważana Metryka wykorzystania pozyskiwania. Jeśli ta Metryka jest ważna dla przypadku użycia, użyj [niestandardowego automatycznego skalowania](#custom-autoscale).
 
 **Skalowanie w poziomie**
 
@@ -78,7 +79,7 @@ Gdy klaster zbliża się do stanu pod względem użycia, skalowanie w celu obni�
 > [!NOTE]
 > Skalowanie w logice obecnie wymaga 7-dniowej oceny przed wdrożeniem zoptymalizowanego skalowania w programie. Ta ocena jest wykonywana co 24 godziny. Jeśli konieczna jest szybka zmiana, użyj [skali ręcznej](#manual-scale).
 
-### <a name="custom-autoscale"></a>Autoskalowanie niestandardowe
+### <a name="custom-autoscale"></a>Niestandardowe Skalowanie automatyczne
 
 Za pomocą niestandardowego skalowania automatycznego można skalować klaster dynamicznie na podstawie określonych metryk. Poniższa ilustracja przedstawia przepływ i kroki konfigurowania niestandardowego skalowania automatycznego. Więcej szczegółów znajduje się na ilustracji.
 

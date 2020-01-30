@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 76219ec454fd105ed4bbf1a2fa0e922475d8dd1f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513987"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834981"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Opracowywanie bezpiecznych aplikacji na platformie Azure
 W tym artykule opisano działania związane z bezpieczeństwem i kontrolki, które należy wziąć pod uwagę podczas opracowywania aplikacji w chmurze. Pytania zabezpieczające i pojęcia, które należy wziąć pod uwagę podczas fazy wdrażania i weryfikacji [cyklu życia programu Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Celem jest ułatwienie zdefiniowania działań i usług platformy Azure, których można użyć do tworzenia bezpieczniejszej aplikacji.
@@ -36,7 +36,7 @@ Załóżmy, że aplikacja zostanie użyta w sposób, który nie był używany. P
 
 Przed zapisaniem kodu Przeprowadź [przeglądy kodu](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) w celu zwiększenia ogólnej jakości kodu i zmniejszenia ryzyka związanego z tworzeniem błędów. Możesz użyć [programu Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) , aby zarządzać procesem przeglądu kodu.
 
-### <a name="perform-static-code-analysis"></a>Wykonywanie statycznej analizy kodu
+### <a name="perform-static-code-analysis"></a>Wykonaj analizę kodu statycznego
 
 [Statyczna analiza kodu](https://www.owasp.org/index.php/Static_Code_Analysis) (znana również jako *Analiza kodu źródłowego*) jest zwykle wykonywana w ramach przeglądu kodu. Statyczna analiza kodu często dotyczy uruchamiania narzędzi do analizy kodu statycznego, aby znaleźć potencjalne luki w zabezpieczeniach w nieuruchomionym kodzie przy użyciu technik takich jak [Sprawdzanie](https://en.wikipedia.org/wiki/Taint_checking) zmian i [Analiza przepływu danych](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
@@ -89,7 +89,7 @@ Oznacza to, że mniejsza liczba osób ma dostęp do Twoich prawdziwych danych, c
 
 Aby chronić przed rozłożeniem i zgadywaniem na podstawie słownika, należy zaimplementować zasady silnego hasła, aby upewnić się, że użytkownicy tworzą złożone hasło (na przykład 12 znaków i wymagające znaków alfanumerycznych i specjalnych).
 
-Możesz użyć struktury tożsamości do tworzenia i wymuszania zasad haseł. Azure AD B2C ułatwia zarządzanie hasłami, zapewniając [wbudowane zasady](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), samoobsługowe [resetowanie haseł](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)i wiele innych.
+Możesz użyć struktury tożsamości do tworzenia i wymuszania zasad haseł. Azure AD B2C ułatwia zarządzanie hasłami, zapewniając [wbudowane zasady](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), samoobsługowe [resetowanie haseł](../../active-directory-b2c/user-flow-self-service-password-reset.md)i wiele innych.
 
 Aby chronić przed atakami na kontach domyślnych, należy sprawdzić, czy wszystkie klucze i hasła są wymienne i czy są one generowane lub zastępowane po zainstalowaniu zasobów.
 

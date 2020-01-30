@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374084"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835168"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące SQL Server uruchomionych na maszynach wirtualnych z systemem Windows na platformie Azure
 
@@ -82,15 +82,6 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 
    Istnieją trzy sposoby, aby to zrobić. Jeśli jesteś klientem z umową Enterprise Agreement (EA), możesz udostępnić jeden z [obrazów maszyn wirtualnych, które obsługują licencje](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), które są również znane jako BYOL. Jeśli masz program [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default), możesz włączyć [korzyść użycia hybrydowego platformy Azure](virtual-machines-windows-sql-ahb.md) na istniejącym obrazie z opcją płatność zgodnie z rzeczywistym użyciem (PAYG). Można też skopiować nośnik instalacyjny SQL Server na maszynę wirtualną z systemem Windows Server, a następnie zainstalować SQL Server na maszynie wirtualnej. Należy pamiętać o zarejestrowaniu maszyny wirtualnej SQL Server przy użyciu [dostawcy zasobów](virtual-machines-windows-sql-register-with-resource-provider.md) dla funkcji takich jak Zarządzanie portalem, automatyczne tworzenie kopii zapasowych i automatyczne stosowanie poprawek. 
 
-1. **Czy muszę płacić za licencję programu SQL Server na maszynie wirtualnej platformy Azure, jeśli używam jej tylko w trybie wstrzymania/trybie failover?**
-
-   Aby uzyskać bezpłatną licencję pasywną dla aktywnej pomocniczej grupy dostępności lub wystąpienia klastra trybu failover, należy spełnić wszystkie następujące kryteria, zgodnie z opisem w [postanowień licencyjnych dotyczących produktu](https://www.microsoft.com/licensing/product-licensing/products):
-
-   1. Masz możliwość przenoszenia [licencji](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) w ramach programu [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
-   1. Wystąpienie SQL Server pasywne nie obsługuje SQL Server danych do klientów ani nie uruchamia aktywnych obciążeń SQL Server. Jest on używany tylko do synchronizacji z serwerem podstawowym i w inny sposób utrzymują pasywną bazę danych w stanie rezerwy aktywnej. Jeśli obsługuje dane, takie jak raporty na klientach korzystających z aktywnych obciążeń SQL Server lub wykonywanie jakichkolwiek prac innych niż określone w warunkach produktu, musi to być płatne wystąpienie SQL Server licencjonowane. Następujące działanie jest dozwolone w wystąpieniu pomocniczym: sprawdzanie spójności bazy danych lub CheckDB, pełne kopie zapasowe, kopie zapasowe dziennika transakcji i monitorowanie danych użycia zasobów. Można również uruchomić podstawowe i odpowiednie wystąpienie odzyskiwania po awarii dla krótkich okresów testowania odzyskiwania po awarii co 90 dni. 
-   1. Licencja na aktywną SQL Server jest objęta programem Software Assurance i umożliwia obsługę **jednego** pasywnego wystąpienia SQL Server awaryjnego, z maksymalnie taką samą ilością obliczeń jak licencjonowany aktywny serwer. 
-   1. Pomocnicza maszyna wirtualna SQL Server wykorzystuje licencję [odzyskiwania po awarii](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) w Azure Portal.
-
 1. **Czy mogę zmienić maszynę wirtualną tak, aby używać mojej licencji programu SQL Server, jeśli została ona utworzona z jednego z obrazów z galerii w modelu płatności zgodnie z rzeczywistym użyciem?**
 
    Tak. Możesz łatwo przełączyć obraz galerii płatność zgodnie z rzeczywistym użyciem, aby przenieść własną licencję (BYOL), włączając [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/faq/).  Aby uzyskać więcej informacji, zobacz [How to Change the Licensing model for a SQL Server VM](virtual-machines-windows-sql-ahb.md). Obecnie ta funkcja jest dostępna tylko dla klientów chmury publicznej.
@@ -98,6 +89,10 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 1. **Czy przełączanie modeli licencjonowania wymaga jakiegokolwiek przestoju w pracy programu SQL Server?**
 
    Nie. [Zmiana modelu licencjonowania](virtual-machines-windows-sql-ahb.md) nie wymaga żadnych przestojów dla SQL Server, ponieważ zmiana zacznie obowiązywać natychmiast i nie wymaga ponownego uruchomienia maszyny wirtualnej. Jednak, aby zarejestrować maszynę wirtualną SQL Server przy użyciu dostawcy zasobów maszyny wirtualnej SQL Server, [rozszerzenie SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md) jest wymaganiem wstępnym i zainstalowanie rozszerzenia SQL IaaS w trybie _pełnym_ powoduje ponowne uruchomienie usługi SQL Server. W związku z tym, jeśli rozszerzenie SQL IaaS musi zostać zainstalowane, zainstaluj je w trybie _uproszczonym_ w celu uzyskania ograniczonej funkcjonalności lub zainstaluj ją w trybie _pełnym_ w oknie obsługi. Rozszerzenie SQL IaaS zainstalowane w trybie _uproszczonym_ można uaktualnić do trybu _pełnego_ w dowolnym momencie, ale wymaga ponownego uruchomienia usługi SQL Server. 
+   
+1. **Czy jest możliwe przełączenie modelu licencjonowania na SQL Server maszyny wirtualnej wdrożonej przy użyciu modelu klasycznego?**
+
+   Nie. Zmiana modelu licencjonowania nie jest obsługiwana na klasycznej maszynie wirtualnej. Możesz migrować maszynę wirtualną do modelu Azure Resource Manager i zarejestrować się u dostawcy zasobów maszyny wirtualnej SQL Server. Po zarejestrowaniu maszyny wirtualnej przy użyciu dostawcy zasobów maszyny wirtualnej SQL Server zmiany modelu licencjonowania będą dostępne na maszynie wirtualnej.
 
 1. **Czy mogę używać Azure Portal do zarządzania wieloma wystąpieniami na tej samej maszynie wirtualnej?**
 
@@ -106,6 +101,32 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 1. **Czy subskrypcje CSP mogą aktywować Korzyść użycia hybrydowego platformy Azure?**
 
    Tak, Korzyść użycia hybrydowego platformy Azure jest dostępny dla subskrypcji dostawcy CSP. Klienci programu CSP powinni najpierw wdrożyć obraz z opcją płatność zgodnie z rzeczywistym użyciem, a następnie [zmienić model licencjonowania](virtual-machines-windows-sql-ahb.md) na własny.
+   
+ 
+1. **Czy muszę płacić za licencję programu SQL Server na maszynie wirtualnej platformy Azure, jeśli używam jej tylko w trybie wstrzymania/trybie failover?**
+
+   Aby uzyskać bezpłatną licencję pasywną dla aktywnej pomocniczej grupy dostępności lub wystąpienia klastra trybu failover, należy spełnić wszystkie następujące kryteria, zgodnie z opisem w [postanowień licencyjnych dotyczących produktu](https://www.microsoft.com/licensing/product-licensing/products):
+
+   1. Masz możliwość przenoszenia [licencji](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) w ramach programu [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
+   1. Wystąpienie SQL Server pasywne nie obsługuje SQL Server danych do klientów ani nie uruchamia aktywnych obciążeń SQL Server. Jest on używany tylko do synchronizacji z serwerem podstawowym i w inny sposób utrzymują pasywną bazę danych w stanie rezerwy aktywnej. Jeśli obsługuje dane, takie jak raporty na klientach korzystających z aktywnych obciążeń SQL Server lub wykonywanie jakichkolwiek prac innych niż określone w warunkach produktu, musi to być płatne wystąpienie SQL Server licencjonowane. Następujące działanie jest dozwolone w wystąpieniu pomocniczym: sprawdzanie spójności bazy danych lub CheckDB, pełne kopie zapasowe, kopie zapasowe dziennika transakcji i monitorowanie danych użycia zasobów. Można również uruchomić podstawowe i odpowiednie wystąpienie odzyskiwania po awarii dla krótkich okresów testowania odzyskiwania po awarii co 90 dni. 
+   1. Licencja na aktywną SQL Server jest objęta programem Software Assurance i umożliwia obsługę **jednego** pasywnego wystąpienia SQL Server awaryjnego, z maksymalnie taką samą ilością obliczeń jak licencjonowany aktywny serwer. 
+   1. Pomocnicza maszyna wirtualna SQL Server wykorzystuje licencję [odzyskiwania po awarii](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) w Azure Portal.
+   
+1. **Co jest uznawane za wystąpienie pasywne?**
+
+   Wystąpienie SQL Server pasywne nie obsługuje SQL Server danych do klientów ani nie uruchamia aktywnych obciążeń SQL Server. Jest on używany tylko do synchronizacji z serwerem podstawowym i w inny sposób utrzymują pasywną bazę danych w stanie rezerwy aktywnej. Jeśli obsługuje dane, takie jak raporty na klientach korzystających z aktywnych obciążeń SQL Server lub wykonywanie jakichkolwiek prac innych niż określone w warunkach produktu, musi to być płatne wystąpienie SQL Server licencjonowane. Następujące działanie jest dozwolone w wystąpieniu pomocniczym: sprawdzanie spójności bazy danych lub CheckDB, pełne kopie zapasowe, kopie zapasowe dziennika transakcji i monitorowanie danych użycia zasobów. Można również uruchomić podstawowe i odpowiednie wystąpienie odzyskiwania po awarii dla krótkich okresów testowania odzyskiwania po awarii co 90 dni.
+   
+
+1. **Jakie scenariusze mogą korzystać z korzyści z odzyskiwania po awarii (DR)?**
+
+   [Przewodnik licencjonowania](https://aka.ms/sql2019licenseguide) zawiera scenariusze, w których można wykorzystać korzyść odzyskiwania po awarii. Aby uzyskać więcej informacji, zapoznaj się z tematami dotyczącymi produktów i skontaktuj się z kontaktami licencjonowania lub z menedżerem konta.
+
+1. **Które subskrypcje obsługują korzyść odzyskiwania po awarii (DR)?**
+
+   Kompleksowe programy oferujące równoważne prawa subskrypcyjne programu Software Assurance jako stałe korzyści wspierają korzyść odzyskiwania po awarii. Obejmuje to. ale nie jest ograniczony do, wartość Open Value (OV), Open Value Subscription (OVS), Umowa Enterprise (EA), Enterprise Subscription Agreement (EAS) i serwer i rejestracja w chmurze (SCE). Aby uzyskać więcej informacji, zapoznaj się z tematami dotyczącymi [produktów](https://www.microsoft.com/licensing/product-licensing/products) i skontaktuj się z kontaktami licencjonowania lub acocunt. 
+
+   
+ ## <a name="resource-provider"></a>Dostawca zasobów
 
 1. **Czy program zarejestruje moją maszynę wirtualną za pomocą nowego dostawcy zasobów maszyny wirtualnej SQL Server uzyskać dodatkowych kosztów?**
 
@@ -127,9 +148,7 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 
     Tak. Jeśli wdrożono SQL Server z własnego nośnika i zainstalowano rozszerzenie SQL IaaS, można zarejestrować SQL Serverą maszynę wirtualną przy użyciu dostawcy zasobów, aby uzyskać korzyści z zarządzania udostępniane przez rozszerzenie SQL IaaS. Nie można jednak skonwertować samodzielnie wdrożonej maszyny wirtualnej SQL Server na płatność zgodnie z rzeczywistym użyciem.
 
-1. **Czy jest możliwe przełączenie modelu licencjonowania na SQL Server maszyny wirtualnej wdrożonej przy użyciu modelu klasycznego?**
 
-   Nie. Zmiana modelu licencjonowania nie jest obsługiwana na klasycznej maszynie wirtualnej. Możesz migrować maszynę wirtualną do modelu Azure Resource Manager i zarejestrować się u dostawcy zasobów maszyny wirtualnej SQL Server. Po zarejestrowaniu maszyny wirtualnej przy użyciu dostawcy zasobów maszyny wirtualnej SQL Server zmiany modelu licencjonowania będą dostępne na maszynie wirtualnej. 
    
 
 
@@ -183,7 +202,7 @@ Ten artykuł zawiera odpowiedzi na niektóre z najczęstszych pytań dotyczącyc
 
 1. **Czy SQL Server wystąpienia klastra trybu failover (FCI) są obsługiwane na maszynach wirtualnych platformy Azure?**
 
-   Tak. Można [utworzyć klaster trybu failover systemu Windows w systemie Windows Server 2016](virtual-machines-windows-portal-sql-create-failover-cluster.md) i użyć bezpośrednie miejsca do magazynowania (S2D) dla magazynu klastra. Alternatywnie możesz użyć rozwiązań do obsługi klastrów lub magazynu innych firm zgodnie z opisem w temacie [wysoka dostępność i odzyskiwanie po awarii dla SQL Server na platformie Azure Virtual Machines](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions).
+   Tak. Wystąpienie klastra trybu failover można zainstalować przy użyciu [udziałów plików w warstwie Premium (PFS)](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) lub [bezpośrednich miejsc do magazynowania (S2D)](virtual-machines-windows-portal-sql-create-failover-cluster.md) dla podsystemu magazynowania. Udziały plików w warstwie Premium zapewniają możliwości IOPS i przepływności, które będą spełniały potrzeby wielu obciążeń. W przypadku obciążeń intensywnie korzystających z operacji we/wy należy rozważyć użycie funkcji bezpośrednie miejsca do magazynowania w oparciu o zarządzane lub niezwykle duże dyski. Alternatywnie możesz użyć rozwiązań do obsługi klastrów lub magazynu innych firm zgodnie z opisem w temacie [wysoka dostępność i odzyskiwanie po awarii dla SQL Server na platformie Azure Virtual Machines](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions).
 
    > [!IMPORTANT]
    > _W tej_ chwili [SQL Server rozszerzenie agenta IaaS](virtual-machines-windows-sql-server-agent-extension.md) nie jest obsługiwane dla SQL Server FCI na platformie Azure. Zalecamy odinstalowanie _pełnego_ rozszerzenia z maszyn wirtualnych, które uczestniczą w FCI, i zamiast tego zainstaluj rozszerzenie w trybie _uproszczonym_ . To rozszerzenie obsługuje funkcje, takie jak automatyczne tworzenie kopii zapasowych i stosowanie poprawek oraz niektóre funkcje portalu dla SQL Server. Te funkcje nie będą działały dla SQL Server maszyn wirtualnych po odinstalowaniu _pełnego_ agenta.

@@ -3,18 +3,18 @@ title: Renderowanie niestandardowych danych na mapie rastrowej | Mapy Microsoft 
 description: W tym artykule dowiesz się, jak renderować dane niestandardowe na mapie rastrowej za pomocą usługi Microsoft Azure Maps static Image Service.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/29/2019
+ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911470"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766042"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Renderowanie niestandardowych danych na mapie rastrowej
 
@@ -29,7 +29,7 @@ Aby renderować niestandardowe pinezki, etykiety i nakładki geometryczne, możn
 
 ### <a name="create-an-azure-maps-account"></a>Tworzenie konta usługi Azure Maps
 
-Aby wykonać procedury opisane w tym artykule, należy najpierw utworzyć konto Azure Maps i uzyskać mapowanie klucza konta. Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) , aby utworzyć subskrypcję konta Azure Maps, i wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) , aby uzyskać klucz podstawowy dla Twojego konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
+Aby wykonać procedury opisane w tym artykule, musisz najpierw utworzyć konto Azure Maps i pobrać klucz konta Maps. Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) , aby utworzyć subskrypcję konta Azure Maps, i wykonaj kroki opisane w sekcji [Uzyskiwanie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) , aby uzyskać klucz podstawowy dla Twojego konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Renderowanie pinezki z etykietami i obrazem niestandardowym
@@ -43,7 +43,7 @@ Aby renderować pinezki z etykietami i obrazem niestandardowym, wykonaj następu
 
 1. Utwórz kolekcję, w której mają być przechowywane żądania. W aplikacji Poster wybierz pozycję **Nowy**. W oknie **Tworzenie nowego** okna wybierz pozycję **Kolekcja**. Nadaj kolekcji nazwę i wybierz przycisk **Utwórz** . 
 
-2. Aby utworzyć żądanie, wybierz pozycję **nowe** ponownie. W oknie **Tworzenie nowego** okna wybierz pozycję **Żądaj**. Wprowadź **nazwę żądania** dla pinezki, wybierz kolekcję utworzoną w poprzednim kroku jako lokalizację, w której ma zostać zapisane żądanie, a następnie wybierz pozycję **Zapisz**.
+2. Aby utworzyć żądanie, wybierz pozycję **nowe** ponownie. W oknie **Tworzenie nowego** okna wybierz pozycję **Żądaj**. Wprowadź **nazwę żądania** dla pinezki. Wybierz kolekcję utworzoną w poprzednim kroku jako lokalizację, w której ma zostać zapisane żądanie, a następnie wybierz pozycję **Zapisz**.
     
     ![Utwórz żądanie w programie Poster](./media/how-to-render-custom-data/postman-new.png)
 
@@ -142,7 +142,7 @@ Możesz również uzyskać informacje o ścieżce i lokalizacji numeru PIN przy 
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-5. Skopiuj swój identyfikator URI stanu i Dołącz do niego parametr Key Subscription z wartością klucza subskrypcji konta Azure Maps, który został użyty do przekazania danych. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej:
+5. Skopiuj identyfikator URI stanu i Dołącz do niego parametr Subscription-Key z wartością klucza subskrypcji konta Azure Maps. Użyj tego samego klucza subskrypcji konta, który został użyty do przekazania danych. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -156,7 +156,7 @@ Możesz również uzyskać informacje o ścieżce i lokalizacji numeru PIN przy 
    }
    ```
 
-7. Użyj wartości `udId` otrzymanej z interfejsu API przekazywania danych w celu renderowania funkcji na mapie. Aby to zrobić, Otwórz nową kartę w kolekcji utworzonej w poprzedniej sekcji. Wybierz metodę GET HTTP na karcie Konstruktor i wprowadź ten adres URL w celu uzyskania żądania GET:
+7. Użyj wartości `udId` otrzymanej z interfejsu API przekazywania danych w celu renderowania funkcji na mapie. Aby to zrobić, Otwórz nową kartę w kolekcji utworzonej w poprzedniej sekcji. Wybierz metodę GET HTTP na karcie Konstruktor, Zastąp wartości {Subscription-Key} i {udId} wartościami, a następnie wprowadź ten adres URL, aby uzyskać żądanie GET:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -192,7 +192,7 @@ Możesz zmodyfikować wygląd wielokąta, używając modyfikatorów stylu z [par
 > Procedura opisana w tej sekcji wymaga konta Azure Maps w warstwie cenowej S1.
 
 
-Można sprawić, aby pinezke i ich etykiety były większe lub mniejsze przy użyciu modyfikatora stylu skalowania `sc`. Ten modyfikator przyjmuje wartość większą od zera. Wartość 1 jest skalą standardową. Wartości większe niż 1 spowodują, że numery PIN będą większe, a wartości mniejsze od 1 staną się mniejsze. Aby uzyskać więcej informacji na temat modyfikatorów stylu, zobacz [Parametry ścieżki usługi obrazu statycznego](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Możesz zmodyfikować wygląd pinów przez dodanie modyfikatorów stylów. Na przykład aby zwiększyć lub zmniejszyć pinezki i ich etykiety, użyj modyfikatora `sc` "Style skalowania". Ten modyfikator przyjmuje wartość większą od zera. Wartość 1 jest skalą standardową. Wartości większe niż 1 spowodują, że numery PIN będą większe, a wartości mniejsze od 1 staną się mniejsze. Aby uzyskać więcej informacji na temat modyfikatorów stylu, zobacz [Parametry ścieżki usługi obrazu statycznego](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 Wykonaj następujące kroki, aby renderować okrąg i pinezki z etykietami niestandardowymi:
@@ -206,6 +206,18 @@ Wykonaj następujące kroki, aby renderować okrąg i pinezki z etykietami niest
     Oto obraz odpowiedzi:
 
     ![Renderuj okrąg z niestandardowymi pinezkami](./media/how-to-render-custom-data/circle-custom-pins.png)
+
+2. Aby zmienić kolor pinezki z ostatniego kroku, Zmień modyfikator stylu "co". Spójrz na `pins=default|la15+50|al0.66|lc003C62|co002D62|`, bieżący kolor zostałby określony jako #002D62 w CSS. Załóżmy, że chcesz zmienić go na #41d42a. Zapisz nową wartość koloru Po specyfikatorze "co", w tym: `pins=default|la15+50|al0.66|lc003C62|co41D42A|`. Utwórz nowe żądanie GET:
+
+    ```HTTP
+    https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
+    ```
+
+    Poniżej znajduje się obraz odpowiedzi po zmianie kolorów numerów PIN:
+
+    ![Renderuj okrąg z zaktualizowanymi pinezkami](./media/how-to-render-custom-data/circle-updated-pins.png)
+
+Analogicznie, można zmieniać, dodawać i usuwać inne Modyfikatory stylów.
 
 ## <a name="next-steps"></a>Następne kroki
 

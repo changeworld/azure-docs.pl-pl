@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f0f9b2c974c0a095719973b1c6173d682718dbbf
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014867"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773680"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Wprowadzenie do dostarczania zawartości na żądanie przy użyciu usługi REST  
 
@@ -39,7 +39,7 @@ Kliknij obraz, aby go wyświetlić w pełnym rozmiarze.
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby rozpocząć programowanie Media Services przy użyciu interfejsów API REST, wymagane są następujące wymagania wstępne.
 
-* Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz temat [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/) (Bezpłatna wersja próbna platformy Azure).
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
 * Zrozumienie sposobu tworzenia przy użyciu interfejsu API REST Media Services. Aby uzyskać więcej informacji, zobacz [Media Services API REST — Omówienie](media-services-rest-how-to-use.md).
 * Wybrana przez Ciebie aplikacja, która może wysyłać żądania HTTP i odpowiedzi. Ten samouczek używa [programu Fiddler](https://www.telerik.com/download/fiddler).
@@ -89,11 +89,11 @@ Za pomocą usługi Media Services można przekazać pliki cyfrowe do elementu za
 
 Jedną z wartości, które należy podać podczas tworzenia elementu zawartości, jest opcja tworzenia zasobów. Właściwość **Options** jest wartością wyliczenia opisującą opcje szyfrowania, za pomocą których można utworzyć zasób. Prawidłowa wartość jest jedną z wartości z poniższej listy, a nie kombinacją wartości z tej listy:
 
-* Brak = **0** — żadne szyfrowanie nie jest używane. W przypadku korzystania z tej opcji zawartość nie jest chroniona podczas przesyłania ani przechowywania w magazynie.
+* **Brak** = **0** — żadne szyfrowanie nie jest używane. W przypadku korzystania z tej opcji zawartość nie jest chroniona podczas przesyłania ani przechowywania w magazynie.
     Jeśli planujesz dostarczać zawartość w formacie MP4 przy użyciu pobierania progresywnego, użyj tej opcji.
-* StorageEncrypted = **1** — szyfruje zawartość czystych danych lokalnie przy użyciu szyfrowania AES-256 bit, a następnie przekazuje je do usługi Azure Storage, gdzie jest przechowywana w stanie spoczynku. Elementy zawartości chronione przy użyciu szyfrowania magazynu są automatycznie odszyfrowywane i umieszczane w systemie szyfrowania plików przed kodowaniem, a także opcjonalnie ponownie szyfrowane przed przesłaniem zwrotnym w formie nowego elementu zawartości wyjściowej. Pierwotnym zastosowaniem szyfrowania magazynu jest zabezpieczenie za pomocą silnego szyfrowania wysokiej jakości multimedialnych plików wejściowych przechowywanych na dysku.
-* CommonEncryptionProtected = **2** — Użyj tej opcji, jeśli przesyłasz zawartość, która została już zaszyfrowana i chroniona za pomocą Common Encryption lub technologii DRM (na przykład Smooth Streaming chronione za pomocą technologii PlayReady DRM).
-* EnvelopeEncryptionProtected = **4** — Użyj tej opcji, jeśli przekazujesz HLS szyfrowany przy użyciu algorytmu AES. Pliki muszą być zakodowane i zaszyfrowane przez Menedżera transformacji.
+* **StorageEncrypted** = **1** — szyfruje zawartość czystych lokalnie przy użyciu szyfrowania AES-256 bit, a następnie przekazuje je do usługi Azure Storage, gdzie jest przechowywana w stanie spoczynku. Elementy zawartości chronione przy użyciu szyfrowania magazynu są automatycznie odszyfrowywane i umieszczane w systemie szyfrowania plików przed kodowaniem, a także opcjonalnie ponownie szyfrowane przed przesłaniem zwrotnym w formie nowego elementu zawartości wyjściowej. Pierwotnym zastosowaniem szyfrowania magazynu jest zabezpieczenie za pomocą silnego szyfrowania wysokiej jakości multimedialnych plików wejściowych przechowywanych na dysku.
+* **CommonEncryptionProtected** = **2** — Użyj tej opcji, jeśli przekazujesz zawartość, która została już zaszyfrowana i chroniona za pomocą Common Encryption lub oprogramowania PlayReady drm (na przykład Smooth Streaming chronione za pomocą technologii PlayReady DRM).
+* **EnvelopeEncryptionProtected** = **4** — Użyj tej opcji, jeśli przekazujesz HLS szyfrowany przy użyciu algorytmu AES. Pliki muszą być zakodowane i zaszyfrowane przez Menedżera transformacji.
 
 ### <a name="create-an-asset"></a>Utwórz element zawartości
 Element zawartości to kontener dla wielu typów lub zestawów obiektów w Media Services, w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów. W interfejsie API REST Tworzenie elementu zawartości wymaga wysłania żądania POST do Media Services i umieszczenia wszelkich informacji o właściwościach zasobu w treści żądania.
@@ -109,7 +109,7 @@ Poniższy przykład pokazuje, jak utworzyć element zawartości.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: c59de965-bc89-4295-9a57-75d897e5221e
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 45
@@ -163,7 +163,7 @@ Po przekazaniu pliku multimediów cyfrowych do kontenera obiektów BLOB używasz
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 164
 
@@ -225,7 +225,7 @@ Poniższy przykład pokazuje, jak utworzyć AccessPolicy:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 74
 
@@ -271,7 +271,7 @@ Zagadnienia do rozważenia:
 
 * W tym samym czasie nie można mieć więcej niż pięciu unikatowych lokalizatorów skojarzonych z danym elementem zawartości. 
 * Jeśli zachodzi potrzeba natychmiastowego przekazania plików, należy ustawić wartość StartTime na pięć minut przed bieżącą godziną. Wynika to z faktu, że nastąpi przechylenie zegara między komputerem klienckim a Media Services. Ponadto wartość StartTime musi mieć następujący format: RRRR-MM-DDTgg: mm: SSS (na przykład "2014-05-23T17:53:50Z").    
-* Po utworzeniu lokalizatora do użycia może wystąpić 30-40 sekund. Ten problem dotyczy zarówno [adresów URL sygnatury](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) dostępu współdzielonego, jak i lokalizatorów pochodzenia.
+* Po utworzeniu lokalizatora do użycia może wystąpić 30-40 sekund. Ten problem dotyczy zarówno [adresów URL sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) , jak i lokalizatorów pochodzenia.
 
 Poniższy przykład pokazuje, jak utworzyć lokalizator adresów URL sygnatury dostępu współdzielonego, jak określono przez Właściwość Type w treści żądania ("1" dla lokalizatora sygnatury dostępu współdzielonego i "2" dla lokalizatora źródła na żądanie). Zwrócona Właściwość **Path** zawiera adres URL, którego należy użyć do przekazania pliku.
 
@@ -284,7 +284,7 @@ Poniższy przykład pokazuje, jak utworzyć lokalizator adresów URL sygnatury d
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 178
 
@@ -348,7 +348,7 @@ Teraz, gdy plik został przekazany, zaktualizuj informacje o rozmiarze FileAsset
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
     {  
@@ -376,7 +376,7 @@ Jeśli to się powiedzie, zwracane są następujące elementy:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -395,7 +395,7 @@ Jeśli to się powiedzie, zwracane są następujące elementy:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 **Odpowiedź HTTP**
@@ -409,7 +409,7 @@ Jeśli to się powiedzie, zwracane są następujące elementy:
 
 Po pozyskaniu zasobów do Media Services, można zakodować, transmuxed, znak wodny i tak dalej, przed dostarczeniem ich do klientów. Te działania są zaplanowane i uruchamiane w wielu wystąpieniach ról w tle, aby zapewnić wysoką wydajność oraz dostępność. Te działania są nazywane zadaniami, a każde zadanie składa się z niepodzielnych zadań, które wykonują rzeczywistą pracę w pliku zasobów (Aby uzyskać więcej informacji, zobacz [zadania](https://docs.microsoft.com/rest/api/media/operations/job), opisy [zadań](https://docs.microsoft.com/rest/api/media/operations/task) ).
 
-Jak wspomniano wcześniej, podczas pracy z Azure Media Services jednym z najczęściej spotykanych scenariuszy jest dostarczanie do klientów przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów. Usługa Media Services, korzystając z funkcji dynamicznego tworzenia pakietów, może utworzyć pakiet zestawu plików MP4 z adaptacyjną szybkością transmisji bitów w jednym z następujących formatów: HTTP Live Streaming (HLS), Smooth Streaming, KRESKa MPEG.
+Jak wspomniano wcześniej, podczas pracy z Azure Media Services jednym z najczęściej spotykanych scenariuszy jest dostarczanie do klientów przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów. Media Services może dynamicznie spakować zestaw plików MP4 z adaptacyjną szybkością transmisji bitów do jednego z następujących formatów: HTTP Live Streaming (HLS), Smooth Streaming, KRESKa MPEG.
 
 W poniższej sekcji pokazano, jak utworzyć zadanie zawierające jedno zadanie kodowania. Zadanie określa transkodowanie pliku Mezzanine do zestawu pliki MP4 z adaptacyjną szybkością transmisji bitów przy użyciu **Media Encoder Standard**. Sekcja pokazuje również, jak monitorować postęp przetwarzania zadań. Po zakończeniu zadania można utworzyć lokalizatory, które są potrzebne do uzyskania dostępu do zasobów.
 
@@ -426,7 +426,7 @@ Poniższy kod żąda identyfikatora kodera.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -459,8 +459,8 @@ Poniższy kod żąda identyfikatora kodera.
        ]
     }
 
-### <a name="create-a-job"></a>Utwórz zadanie
-Każde zadanie może mieć jedno lub więcej zadań w zależności od typu przetwarzania, które chcesz wykonać. Za pomocą interfejsu API REST można tworzyć zadania i powiązane z nimi zadania na jeden z dwóch sposobów: Zadania mogą być definiowane w tekście przy użyciu właściwości nawigacji zadania w jednostkach zadania lub przetwarzania wsadowego OData. Zestaw SDK Media Services używa przetwarzania wsadowego. Jednak w celu odczytywania przykładów kodu w tym artykule zadania są zdefiniowane w tekście. Aby uzyskać informacje na temat przetwarzania wsadowego, zobacz artykuł [Przetwarzanie wsadowe protokołu Open Data Protocol (OData)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+### <a name="create-a-job"></a>Tworzenie zadania
+Każde zadanie może mieć jedno lub więcej zadań w zależności od typu przetwarzania, które chcesz wykonać. Za pomocą interfejsu API REST można tworzyć zadania i powiązane z nimi zadania na jeden z dwóch sposobów: zadania mogą być definiowane w tekście przy użyciu właściwości Nawigacja zadania w jednostkach zadania lub przez przetwarzanie wsadowe OData. Zestaw SDK Media Services używa przetwarzania wsadowego. Jednak w celu odczytywania przykładów kodu w tym artykule zadania są zdefiniowane w tekście. Aby uzyskać informacje na temat przetwarzania wsadowego, zobacz artykuł [Przetwarzanie wsadowe protokołu Open Data Protocol (OData)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 Poniższy przykład pokazuje, jak utworzyć i ogłosić zadanie przy użyciu jednego zestawu zadań do kodowania wideo z określoną rozdzielczością i jakością. Poniższa sekcja dokumentacji zawiera listę wszystkich [ustawień predefiniowanych zadań](https://msdn.microsoft.com/library/mt269960) obsługiwanych przez procesor Media Encoder Standard.  
 
@@ -473,7 +473,7 @@ Poniższy przykład pokazuje, jak utworzyć i ogłosić zadanie przy użyciu jed
     Accept: application/json;odata=verbose
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 482
 
@@ -573,7 +573,7 @@ Istnieje kilka istotnych kwestii, które należy wziąć pod uwagę w przypadku 
 >
 
 * InputMediaAssets mapuje do jednego lub większej liczby zasobów utworzonych w Media Services. OutputMediaAssets są tworzone przez system. Nie odwołują się do istniejącego elementu zawartości.
-* OutputMediaAssets można nazwać przy użyciu atrybutu assetname. Jeśli ten atrybut nie jest obecny, nazwa OutputMediaAsset jest dowolną wartością `<outputAsset>` tekstu wewnętrznego elementu z sufiksem wartości nazwy zadania lub wartości identyfikatora zadania (w przypadku, gdy właściwość Name nie jest zdefiniowana). Jeśli na przykład ustawisz wartość dla elementu assetname na "sample", właściwość OutputMediaAsset Name zostanie ustawiona na "sample". Jeśli jednak nie ustawisz wartości dla elementu assetname, ale ustawisz nazwę zadania na "NewJob", wówczas nazwą OutputMediaAsset będzie "JobOutputAsset (Value) _NewJob".
+* OutputMediaAssets można nazwać przy użyciu atrybutu assetname. Jeśli ten atrybut nie jest obecny, to nazwa OutputMediaAsseta to każda wartość tekstu wewnętrznego elementu `<outputAsset>` jest sufiksem wartości Nazwa zadania lub wartość identyfikatora zadania (w przypadku, gdy właściwość Name nie jest zdefiniowana). Jeśli na przykład ustawisz wartość dla elementu assetname na "sample", właściwość OutputMediaAsset Name zostanie ustawiona na "sample". Jeśli jednak nie ustawisz wartości dla elementu assetname, ale ustawisz nazwę zadania na "NewJob", wówczas nazwą OutputMediaAsset będzie "JobOutputAsset (wartość) _NewJob".
 
     Poniższy przykład pokazuje, jak ustawić atrybut assetname:
 
@@ -595,7 +595,7 @@ Stan zadania można pobrać przy użyciu właściwości State, jak pokazano w na
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 0
@@ -632,7 +632,7 @@ Poniższy przykład pokazuje, jak wywołać CancelJob.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.2
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
 
@@ -656,7 +656,7 @@ Poniższy kod przedstawia sposób żądania identyfikatora elementu zawartości 
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -733,7 +733,7 @@ Poniższy przykład pokazuje, jak określić AccessPolicy dla uprawnień do odcz
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 74
@@ -756,7 +756,7 @@ Poniższy kod pokazuje, jak uzyskać adres URL, którego można użyć do pobran
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 182
@@ -821,7 +821,7 @@ Po skonfigurowaniu usługi AccessPolicy i lokalizatora można pobierać pliki pr
 
 Aby uzyskać więcej informacji na temat pracy z obiektami BLOB usługi Azure Storage, zobacz [API REST usługa BLOB Service](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-W wyniku zadania kodowania, które zostało wykonane wcześniej (kodowanie w ramach adaptacyjnego zestawu MP4), istnieje wiele plików MP4, które można pobrać stopniowo. Na przykład:    
+W wyniku zadania kodowania, które zostało wykonane wcześniej (kodowanie w ramach adaptacyjnego zestawu MP4), istnieje wiele plików MP4, które można pobrać stopniowo. Przykład:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
@@ -847,7 +847,7 @@ Poniższy kod przedstawia sposób tworzenia lokalizatora adresów URL przesyłan
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs
     Content-Length: 182
@@ -915,8 +915,8 @@ Do przesyłania strumieniowego zawartości wideo użyj [odtwarzacza usługi Azur
 
 Aby przetestować pobieranie progresywne, wklej adres URL do przeglądarki (na przykład IE, Chrome, Safari).
 
-## <a name="next-steps-media-services-learning-paths"></a>Następne kroki: Ścieżki szkoleniowe dotyczące usługi Media Services
+## <a name="next-steps-media-services-learning-paths"></a>Następne kroki: ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

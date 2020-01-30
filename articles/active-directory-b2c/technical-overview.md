@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d45e4c79f46061ca177858fd517153fb5f29c41
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5801cc4fdfeb4bbdf7c22e2be2f686558611a7f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123826"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840217"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Omówienie techniczne i funkcje Azure Active Directory B2C
 
-Pomocnik do [Azure Active Directory B2C](active-directory-b2c-overview.md), ten artykuł zawiera bardziej szczegółowe wprowadzenie do usługi. Omówiono w nim podstawowe zasoby, z którymi pracują usługi, jej funkcje oraz sposoby zapewniania w pełni niestandardowej obsługi tożsamości dla klientów w aplikacjach.
+Pomocnik do [Azure Active Directory B2C](overview.md), ten artykuł zawiera bardziej szczegółowe wprowadzenie do usługi. Omówiono w nim podstawowe zasoby, z którymi pracują usługi, jej funkcje oraz sposoby zapewniania w pełni niestandardowej obsługi tożsamości dla klientów w aplikacjach.
 
 ## <a name="azure-ad-b2c-tenant"></a>Dzierżawa Azure AD B2C
 
@@ -38,7 +38,7 @@ Podstawowe zasoby, z którymi pracujesz w dzierżawie Azure AD B2C są następuj
   * Konta *lokalne* , które umożliwiają użytkownikom rejestrowanie się i logowanie przy użyciu nazwy użytkownika (lub adresu e-mail lub innego identyfikatora) i hasła.
 * **Klucze** — Dodawanie kluczy szyfrowania do podpisywania i weryfikowania tokenów oraz zarządzanie nimi.
 
-Dzierżawa Azure AD B2C to pierwszy zasób, który należy utworzyć, aby rozpocząć pracę z Azure AD B2C. Dowiedz się [, jak w samouczku: tworzenie dzierżawy usługi Azure Active Directory B2C](tutorial-create-tenant.md).
+Dzierżawa Azure AD B2C to pierwszy zasób, który należy utworzyć, aby rozpocząć pracę z Azure AD B2C. Dowiedz się [, jak w samouczku: Tworzenie dzierżawy Azure Active Directory B2C](tutorial-create-tenant.md).
 
 ## <a name="accounts-in-azure-ad-b2c"></a>Konta w Azure AD B2C
 
@@ -48,7 +48,7 @@ Azure AD B2C definiuje kilka typów kont użytkowników. Azure Active Directory,
 * **Konto gościa** — Użytkownicy Zewnętrzni zaproszeni do Twojej dzierżawy jako Goście. Typowym scenariuszem zapraszania użytkownika-gościa do dzierżawy usługi Azure AD B2C jest udostępnianie obowiązków administracyjnych.
 * **Konta konsumentów** — konta użytkowników są kontami utworzonymi w katalogu Azure AD B2C, gdy użytkownicy ukończyją podróż użytkownika podczas rejestracji w aplikacji zarejestrowanej w dzierżawie.
 
-![Azure AD B2C strony zarządzania użytkownikami w Azure Portal](media/technical-overview/portal-01-users.png)<br/>*Rysunek: Katalog użytkownika w ramach dzierżawy Azure AD B2C w Azure Portal*
+![Azure AD B2C stronie zarządzania użytkownikami w Azure Portal](media/technical-overview/portal-01-users.png)<br/>*Rysunek: Katalog użytkownika w ramach dzierżawy Azure AD B2C w Azure Portal*
 
 ### <a name="consumer-accounts"></a>Konta konsumentów
 
@@ -61,7 +61,7 @@ Konto konsumenta może być skojarzone z tymi typami tożsamości:
 
 Użytkownik z kontem konsumenta może zalogować się przy użyciu wielu tożsamości, na przykład username, email, ID pracownika, identyfikatora rządu i innych. Pojedyncze konto może mieć wiele tożsamości, zarówno lokalnych, jak i społecznościowych.
 
-![Tożsamości konta odbiorcy](media/technical-overview/identities.png)<br/>*Rysunek: Jedno konto konsumenta z wieloma tożsamościami w Azure AD B2C*
+![tożsamości kont klientów](media/technical-overview/identities.png)<br/>*Rysunek: jedno konto konsumenta z wieloma tożsamościami w Azure AD B2C*
 
 Azure AD B2C umożliwia zarządzanie typowymi atrybutami profilów kont odbiorców, takimi jak nazwa wyświetlana, nazwisko, imię i nazwisko, miasto i inne. Możesz również zwiększyć schemat usługi Azure AD w celu przechowywania dodatkowych informacji o użytkownikach. Na przykład ich kraj lub zamieszkanie, preferowany język i preferencje, takie jak zasubskrybowanie biuletynu lub włączenie uwierzytelniania wieloskładnikowego.
 
@@ -79,7 +79,7 @@ Na stronie rejestracji lub logowania Azure AD B2C przedstawia listę zewnętrzny
 
 ![Przykład logowania mobilnego przy użyciu konta społecznościowego (Facebook)](media/technical-overview/external-idp.png)
 
-Aby dowiedzieć się, jak dodać dostawców tożsamości w Azure AD B2C [, zobacz Samouczek: dodawanie dostawcy tożsamości do aplikacji w usłudze Azure Active Directory B2C](tutorial-add-identity-providers.md).
+Aby dowiedzieć się, jak dodać dostawców tożsamości w Azure AD B2C, zobacz [Samouczek: Dodawanie dostawców tożsamości do aplikacji w Azure Active Directory B2C](tutorial-add-identity-providers.md).
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>Środowisko tożsamości: przepływy użytkownika lub zasady niestandardowe
 
@@ -109,13 +109,13 @@ Można skonfigurować ustawienia przepływu użytkownika, takie jak te, aby kont
 
 Najczęstsze scenariusze tożsamości dla większości aplikacji mobilnych, sieci Web i jednostronicowych mogą być definiowane i implementowane przy użyciu przepływów użytkowników. Zalecamy używanie wbudowanych przepływów użytkowników, chyba że masz skomplikowane scenariusze podróży użytkowników, które wymagają pełnej elastyczności zasad niestandardowych.
 
-Dowiedz się więcej o przepływach użytkowników w [przepływach użytkowników w Azure Active Directory B2C](active-directory-b2c-reference-policies.md).
+Dowiedz się więcej o przepływach użytkowników w [przepływach użytkowników w Azure Active Directory B2C](user-flow-overview.md).
 
-### <a name="custom-policy"></a>Niestandardowe zasady
+### <a name="custom-policy"></a>Zasady niestandardowe
 
 Zasady niestandardowe blokują dostęp do pełnego potencjału aparatu aranżacji programu Identity Experience Framework (IEF). Za pomocą zasad niestandardowych można korzystać z IEF w celu kompilowania niemal wszelkich możliwości uwierzytelniania, rejestracji użytkowników lub edytowania profilów, które można wyobrazić.
 
-Platforma obsługi tożsamości umożliwia konstruowanie podróży użytkowników przy użyciu dowolnej kombinacji kroków. Na przykład:
+Platforma obsługi tożsamości umożliwia konstruowanie podróży użytkowników przy użyciu dowolnej kombinacji kroków. Przykład:
 
 * Sfederować z innymi dostawcami tożsamości
 * Wyzwania uwierzytelniania wieloskładnikowego (MFA) w pierwszej kolejności i innej firmy
@@ -130,13 +130,13 @@ Zasady niestandardowe są definiowane przez kilka plików XML, które odwołują
 
 Zaawansowana elastyczność zasad niestandardowych jest najbardziej odpowiednia w przypadku konieczności tworzenia złożonych scenariuszy tożsamości. Deweloperzy konfigurujący zasady niestandardowe muszą definiować relacje zaufania w szczegółowy sposób, aby obejmowały punkty końcowe metadanych, dokładne definicje wymiany oświadczeń i konfigurować klucze tajne, klucze i certyfikaty, zgodnie z potrzebami każdego dostawcy tożsamości.
 
-Dowiedz się więcej na temat zasad niestandardowych w [zasadach niestandardowych w Azure Active Directory B2C](active-directory-b2c-overview-custom.md).
+Dowiedz się więcej na temat zasad niestandardowych w [zasadach niestandardowych w Azure Active Directory B2C](custom-policy-overview.md).
 
 ## <a name="protocols-and-tokens"></a>Protokoły i tokeny
 
-Na potrzeby podróży użytkownika usługa Azure AD B2C obsługuje [protokoły OpenID Connect i OAuth 2.0](active-directory-b2c-reference-protocols.md). Podczas wdrażania protokołu OpenID Connect w usłudze Azure AD B2C aplikacja rozpoczyna podróż użytkownika, wysyłając żądania uwierzytelniania do usługi Azure AD B2C.
+Na potrzeby podróży użytkownika usługa Azure AD B2C obsługuje [protokoły OpenID Connect i OAuth 2.0](protocols-overview.md). Podczas wdrażania protokołu OpenID Connect w usłudze Azure AD B2C aplikacja rozpoczyna podróż użytkownika, wysyłając żądania uwierzytelniania do usługi Azure AD B2C.
 
-Wynikiem żądania skierowanego do usługi Azure AD B2C jest token zabezpieczający, taki jak [token identyfikatora lub token dostępu](active-directory-b2c-reference-tokens.md). Ten token zabezpieczający definiuje tożsamość użytkownika. Tokeny są odbierane z Azure AD B2C punktów `/token` końcowych, takich jak lub `/authorize` punkt końcowy. Za pomocą tych tokenów można uzyskiwać dostęp do oświadczeń, które mogą służyć do weryfikowania tożsamości i zezwalania na dostęp do zabezpieczonych zasobów.
+Wynikiem żądania skierowanego do usługi Azure AD B2C jest token zabezpieczający, taki jak [token identyfikatora lub token dostępu](tokens-overview.md). Ten token zabezpieczający definiuje tożsamość użytkownika. Tokeny są odbierane z punktów końcowych Azure AD B2C, takich jak `/token` lub `/authorize` punkt końcowy. Za pomocą tych tokenów można uzyskiwać dostęp do oświadczeń, które mogą służyć do weryfikowania tożsamości i zezwalania na dostęp do zabezpieczonych zasobów.
 
 W przypadku tożsamości zewnętrznych Azure AD B2C obsługuje Federacji z dowolnymi dostawcami tożsamości OAuth 1,0, OAuth 2,0, OpenID Connect Connect, SAML i WS-in.
 
@@ -172,7 +172,7 @@ Dostosowanie języka w Azure AD B2C pozwala dostosowywać różne języki do pot
 
 ![Trzy strony logowania do rejestracji przedstawiające tekst interfejsu użytkownika w różnych językach](media/technical-overview/localization.png)
 
-Zobacz, jak lokalizacja działa w [dostosowywaniu języka w Azure Active Directory B2C](active-directory-b2c-reference-language-customization.md).
+Zobacz, jak lokalizacja działa w [dostosowywaniu języka w Azure Active Directory B2C](user-flow-language-customization.md).
 
 ## <a name="add-your-own-business-logic"></a>Dodawanie własnej logiki biznesowej
 
@@ -195,7 +195,7 @@ Wywołanie interfejsu API REST można dodać w dowolnym kroku w podróży użytk
 * Po Azure AD B2C zostanie utworzone nowe konto w katalogu
 * Zanim Azure AD B2C wystawia token dostępu
 
-Aby dowiedzieć się, jak używać zasad niestandardowych dla integracji z interfejsem API RESTful w Azure AD B2C, zobacz [integrowanie wymiany oświadczeń interfejsu API REST w trakcie Azure AD B2C użytkownika](active-directory-b2c-custom-rest-api-netfw.md).
+Aby dowiedzieć się, jak używać zasad niestandardowych dla integracji z interfejsem API RESTful w Azure AD B2C, zobacz [integrowanie wymiany oświadczeń interfejsu API REST w trakcie Azure AD B2C użytkownika](rest-api-claims-exchange-dotnet.md).
 
 ## <a name="protect-customer-identities"></a>Ochrona tożsamości klientów
 
@@ -223,7 +223,7 @@ Aby uzyskać więcej informacji na temat ról usługi Azure AD, w tym Azure AD B
 
 Azure AD B2C uwierzytelnianie wieloskładnikowe (MFA) pomaga w zabezpieczeniu dostępu do danych i aplikacji przy jednoczesnym zachowaniu prostoty dla użytkowników. Zapewnia dodatkowe zabezpieczenia, wymagając drugiej formy uwierzytelniania i zapewnia silne uwierzytelnianie, oferując wiele łatwych w użyciu metod uwierzytelniania. Użytkownicy mogą lub nie mogą zakwestionować usługi MFA na podstawie decyzji konfiguracyjnych, które można utworzyć jako administrator.
 
-Zobacz jak włączyć uwierzytelnianie wieloskładnikowe w przepływach użytkowników w artykule [Włączanie uwierzytelniania wieloskładnikowego w Azure Active Directory B2C](active-directory-b2c-reference-mfa.md).
+Zobacz jak włączyć uwierzytelnianie wieloskładnikowe w przepływach użytkowników w artykule [Włączanie uwierzytelniania wieloskładnikowego w Azure Active Directory B2C](custom-policy-multi-factor-authentication.md).
 
 ### <a name="smart-account-lockout"></a>Blokada konta inteligentnego
 
@@ -231,13 +231,13 @@ Aby zapobiec próbom odgadnięcia hasła, Azure AD B2C używa zaawansowanej stra
 
 ![Inteligentna blokada konta](media/technical-overview/smart-lockout1.png)
 
-Więcej informacji o zarządzaniu ustawieniami ochrony hasłem znajduje się [w temacie Zarządzanie zagrożeniami do zasobów i danych w Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
+Więcej informacji o zarządzaniu ustawieniami ochrony hasłem znajduje się [w temacie Zarządzanie zagrożeniami do zasobów i danych w Azure Active Directory B2C](threat-management.md).
 
 ### <a name="password-complexity"></a>Złożoność hasła
 
 Podczas rejestrowania lub resetowania hasła użytkownicy muszą podać hasło spełniające reguły złożoności. Domyślnie Azure AD B2C wymusza zasady silnego hasła. Azure AD B2C udostępnia również opcje konfiguracji służące do określania wymagań dotyczących złożoności haseł używanych przez klientów.
 
-Wymagania dotyczące złożoności hasła można skonfigurować zarówno w przypadku [przepływów użytkowników](active-directory-b2c-reference-password-complexity.md) , jak i [zasad niestandardowych](active-directory-b2c-reference-password-complexity-custom.md).
+Wymagania dotyczące złożoności hasła można skonfigurować zarówno w przypadku [przepływów użytkowników](user-flow-password-complexity.md) , jak i [zasad niestandardowych](custom-policy-password-complexity.md).
 
 ## <a name="auditing-and-logs"></a>Inspekcja i dzienniki
 
@@ -254,13 +254,13 @@ W dzienniku inspekcji, który jest dostępny dla dzierżawy Azure AD B2C lub dla
 
 ![Dziennik inspekcji poszczególnych użytkowników wyświetlany w Azure Portal](media/technical-overview/audit-log.png)
 
-Aby uzyskać dodatkowe informacje na temat dzienników inspekcji, zobacz [dostęp do dzienników inspekcji Azure AD B2C](active-directory-b2c-reference-audit-logs.md).
+Aby uzyskać dodatkowe informacje na temat dzienników inspekcji, zobacz [dostęp do dzienników inspekcji Azure AD B2C](view-audit-logs.md).
 
 ### <a name="usage-insights"></a>Szczegółowe informacje o użyciu
 
 Azure AD B2C umożliwia odnajdywanie podczas rejestrowania się lub logowania do aplikacji sieci Web, w której znajdują się użytkownicy, oraz używanych przeglądarek i systemów operacyjnych. Dzięki integracji Application Insights platformy Azure z usługą Azure AD B2C przy użyciu zasad niestandardowych można uzyskać wgląd w sposób tworzenia konta, logowania, resetowania hasła lub edytowania profilu. Z taką wiedzą można podejmować decyzje oparte na danych dla nadchodzących cykli programistycznych.
 
-Dowiedz się więcej o analizie użycia w temacie [śledzenie zachowania użytkowników w Azure Active Directory B2C przy użyciu Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md).
+Dowiedz się więcej o analizie użycia w temacie [śledzenie zachowania użytkowników w Azure Active Directory B2C przy użyciu Application Insights](analytics-with-application-insights.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

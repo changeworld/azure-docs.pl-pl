@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Na tej stronie wyjaśniono, jak rozwiązywać problemy Virtual Network bram i połączeń z usługą Azure Network Watcher przy użyciu usługi REST
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 9b3898a7c4cd09b59da0fc167b758199119793eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ab9f7fd95d7081b66e05dfd3d6a5ef47eb3c4053
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277797"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840676"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Rozwiązywanie problemów z bramą Virtual Network i połączeniami przy użyciu usługi Azure Network Watcher
 
@@ -45,7 +42,7 @@ W tym scenariuszu założono, że wykonano już kroki opisane w temacie [tworzen
 
 Aby zapoznać się z listą obsługiwanych typów bram, należy odwiedzić [obsługiwane typy bram](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Network Watcher Rozwiązywanie problemów zapewnia możliwość rozwiązywania problemów związanych z bramami Virtual Network i połączeniami. Gdy do rozwiązywania problemów zostanie wysłane żądanie, dzienniki są zapytania i sprawdzane. Po zakończeniu inspekcji są zwracane wyniki. Żądania interfejsu API rozwiązywania problemów są długotrwałymi żądaniami, co może potrwać kilka minut. Dzienniki są przechowywane w kontenerze na koncie magazynu.
 

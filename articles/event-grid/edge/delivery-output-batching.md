@@ -9,14 +9,14 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 7d6b83354baf3db5ddb65f94fee1c3dce2dcca94
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992459"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841751"
 ---
-# <a name="output-batching"></a>Przetwarzanie wsadowe danych wyjściowych
+# <a name="output-batching"></a>Dzielenie na partie danych wyjściowych
 
 Event Grid obsługuje dostarczanie więcej niż jednego zdarzenia w jednym żądaniu dostarczania. Ta funkcja umożliwia zwiększenie ogólnej przepływności dostarczania bez płacenia kosztów ogólnych na żądanie HTTP. Przetwarzanie wsadowe jest domyślnie wyłączone i można je włączyć dla każdej subskrypcji.
 
@@ -79,8 +79,8 @@ Poniższe ustawienia czasu wdrożenia kontrolują maksymalną dozwoloną wartoś
 
 | Nazwa właściwości | Opis |
 | ------------- | ----------- | 
-| `api:deliveryPolicyLimits:maxpreferredBatchSizeInKilobytes` | Maksymalna dozwolona wartość dla pokrętła `PreferredBatchSizeInKilobytes`. Domyślne `1033`.
-| `api:deliveryPolicyLimits:maxEventsPerBatch` | Maksymalna dozwolona wartość dla pokrętła `MaxEventsPerBatch`. Domyślne `50`.
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Maksymalna dozwolona wartość dla pokrętła `PreferredBatchSizeInKilobytes`. Domyślne `1033`.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | Maksymalna dozwolona wartość dla pokrętła `MaxEventsPerBatch`. Domyślne `50`.
 
 ## <a name="configuring-runtime-default-values"></a>Konfigurowanie wartości domyślnych środowiska uruchomieniowego
 
@@ -88,5 +88,5 @@ Następujące ustawienia czasu wdrożenia kontrolują wartość domyślną środ
 
 | Nazwa właściwości | Opis |
 | ------------- | ----------- |
-| `broker:defaultMaxBatchSizeInBytes` | Maksymalny rozmiar żądania dostarczania, gdy jest określony tylko `MaxEventsPerBatch`. Domyślne `1_058_576`.
-| `broker:defaultMaxEventsPerBatch` | Maksymalna liczba zdarzeń do dodania do partii, gdy zostanie określona tylko `MaxBatchSizeInBytes`. Domyślne `10`.
+| `broker__defaultMaxBatchSizeInBytes` | Maksymalny rozmiar żądania dostarczania, gdy jest określony tylko `MaxEventsPerBatch`. Domyślne `1_058_576`.
+| `broker__defaultMaxEventsPerBatch` | Maksymalna liczba zdarzeń do dodania do partii, gdy zostanie określona tylko `MaxBatchSizeInBytes`. Domyślne `10`.

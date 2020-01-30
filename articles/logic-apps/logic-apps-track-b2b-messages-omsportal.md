@@ -3,17 +3,15 @@ title: Śledzenie komunikatów B2B przy użyciu dzienników usługi Azure Monito
 description: Śledzenie komunikacji B2B dla kont integracji i Azure Logic Apps przy użyciu usługi Azure Log Analytics
 services: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6e66bdfcfe9e84c1095f03a41439b904c7cb96df
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792934"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773717"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Śledzenie komunikatów B2B przy użyciu dzienników usługi Azure Monitor
 
@@ -106,7 +104,7 @@ Po przetworzeniu komunikatów B2B można wyświetlić stan i szczegóły tych ko
 3. Aby wyświetlić lub wyeksportować dane wejściowe i wyjściowe dla określonych wiadomości, wybierz te komunikaty i wybierz pozycję **Pobierz**. Po wyświetleniu monitu Zapisz plik zip na komputerze lokalnym, a następnie Wyodrębnij ten plik. 
 
    Wyodrębniony folder zawiera folder dla każdego wybranego komunikatu. 
-   W przypadku skonfigurowania potwierdzeń folder wiadomości zawiera również pliki z informacjami o potwierdzeniu. 
+   W przypadku skonfigurowania potwierdzeń folder wiadomości zawiera również pliki ze szczegółami potwierdzeń. 
    Każdy folder wiadomości ma co najmniej następujące pliki: 
    
    * Pliki z możliwością odczytu przez człowieka z danymi ładunku wejściowego i ładunku wyjściowego
@@ -167,7 +165,7 @@ Poniżej przedstawiono formaty nazw pobranych plików i folderów wiadomości AS
 | Folder lub plik | Format nazwy |
 | :------------- | :---------- |
 | Folder wiadomości | [nadawca]\_[odbiornik]\_AS2\_[korelacja-identyfikator]\_[Message-ID]\_[timestamp] |
-| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzania | **Ładunek wejściowy**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-identyfikator]\_input_payload. txt </p>**Ładunek wyjściowy**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-identyfikator]\_dane wyjściowe\_ładunku. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-ID]\_Input. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-ID]\_Output. txt |
+| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzające | **Ładunek wejściowy**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-identyfikator]\_input_payload. txt </p>**Ładunek wyjściowy**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-identyfikator]\_dane wyjściowe\_ładunku. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-ID]\_Input. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_AS2\_[korelacja-ID]\_Output. txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -200,7 +198,7 @@ Poniżej przedstawiono formaty nazw pobranych plików i folderów wiadomości X1
 | Folder lub plik | Format nazwy |
 | :------------- | :---------- |
 | Folder wiadomości | [nadawca]\_[odbiornik]\_X12\_[wymiany-Control-Number]\_[Global-Control-Number]\_[Transaction-Set-Control-Number]\_[timestamp] |
-| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzania | **Ładunek wejściowy**: [nadawca]\_[odbiornik]\_X12\_[wymiana-Control-number]\_input_payload. txt </p>**Ładunek wyjściowy**: [nadawca]\_[odbiornik]\_X12\_[wymiany-Control-number]\_dane wyjściowe\_ładunku. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik]\_X12\_[wymiana-Control-number]\_Input. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_X12\_[wymiany-Control-number]\_Output. txt |
+| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzające | **Ładunek wejściowy**: [nadawca]\_[odbiornik]\_X12\_[wymiana-Control-number]\_input_payload. txt </p>**Ładunek wyjściowy**: [nadawca]\_[odbiornik]\_X12\_[wymiany-Control-number]\_dane wyjściowe\_ładunku. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik]\_X12\_[wymiana-Control-number]\_Input. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_X12\_[wymiany-Control-number]\_Output. txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -233,7 +231,7 @@ Poniżej przedstawiono formaty nazw pobranych plików i folderów wiadomości ED
 | Folder lub plik | Format nazwy |
 | :------------- | :---------- |
 | Folder wiadomości | [nadawca]\_[odbiornik]\_EDIFACT\_[wymiany-Control-Number]\_[Global-Control-Number]\_[Transaction-Set-Control-Number]\_[timestamp] |
-| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzania | **Ładunek wejściowy**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiana-Control-number]\_input_payload. txt </p>**Ładunek wyjściowy**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiany-Control-number]\_dane wyjściowe\_ładunku. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiana-Control-number]\_Input. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiany-Control-number]\_Output. txt |
+| Dane wejściowe, wyjściowe i w przypadku konfiguracji, pliki potwierdzające | **Ładunek wejściowy**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiana-Control-number]\_input_payload. txt </p>**Ładunek wyjściowy**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiany-Control-number]\_dane wyjściowe\_ładunku. txt </p></p>**Dane wejściowe**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiana-Control-number]\_Input. txt </p></p>Dane **wyjściowe**: [nadawca]\_[odbiornik]\_EDIFACT\_[wymiany-Control-number]\_Output. txt |
 |          |             |
 
 ## <a name="next-steps"></a>Następne kroki

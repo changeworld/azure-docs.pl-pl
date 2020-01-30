@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 593ceb884e751ca3115b08baf0c9c7e802057f54
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864988"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841101"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Skonfiguruj środowisko Integration Runtime (IR) platformy SQL Server Integration Services Azure, aby dołączyć do sieci wirtualnej
 
@@ -44,7 +44,7 @@ Kroki obejmują:
     
         Azure-SSIS IR musi utworzyć określone zasoby sieciowe w ramach tej samej grupy zasobów co sieć wirtualna. Te zasoby obejmują:
         - Moduł równoważenia obciążenia platformy Azure z nazwą *\<Identyfikator Guid >-azurebatch-cloudserviceloadbalancer*
-        - Grupa zabezpieczeń sieć służbowa o nazwie *\<identyfikator GUID >-azurebatch-cloudservicenetworksecuritygroup
+        - Sieciową grupę zabezpieczeń o nazwie *\<GUID >-azurebatch-cloudservicenetworksecuritygroup
         - Publiczny adres IP platformy Azure o nazwie-azurebatch-cloudservicepublicip
     
         Te zasoby zostaną utworzone po rozpoczęciu Azure-SSIS IR. Zostaną one usunięte po zatrzymaniu Azure-SSIS IR. Aby zapobiec zablokowaniu Azure-SSIS IR z zatrzymywania, nie używaj ponownie tych zasobów sieciowych w innych zasobach.
@@ -66,11 +66,11 @@ Kroki obejmują:
 
 ## <a name="configure-a-virtual-network"></a>Konfigurowanie sieci wirtualnej
 
-Przed podjęciem próby dołączenia do Azure-SSIS IR do sieci wirtualnej Użyj Azure Portal.
+Użyj Azure Portal, aby skonfigurować sieć wirtualną przed podjęciem próby dołączenia do niej Azure-SSIS IR.
 
 1. Uruchom przeglądarkę Microsoft Edge lub Google Chrome. Obecnie tylko te przeglądarki sieci Web obsługują interfejs użytkownika Data Factory.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 1. Wybierz pozycję **więcej usług**. Odfiltruj i wybierz **sieci wirtualne**.
 

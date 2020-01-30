@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981174"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843552"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpieczanie dostępu i danych w Azure Logic Apps
 
@@ -604,7 +604,7 @@ Oto kilka sposobów zabezpieczania punktów końcowych, które odbierają wywoł
 
 Punkty końcowe HTTP i HTTPS obsługują różne rodzaje uwierzytelniania. Na podstawie wyzwalacza lub akcji, która służy do wykonywania wywołań wychodzących lub żądań, które uzyskują dostęp do tych punktów końcowych, można wybierać spośród różnych zakresów typów uwierzytelniania. Aby zapewnić ochronę poufnych informacji, które obsługuje aplikacja logiki, należy użyć zabezpieczonych parametrów i zakodować dane w razie potrzeby. Aby uzyskać więcej informacji o używaniu i zabezpieczaniu parametrów, zobacz [dostęp do danych wejściowych parametrów](#secure-action-parameters).
 
-| Typ uwierzytelniania | Obsługiwane przez program |
+| Typ uwierzytelniania | Obsługiwane przez |
 |---------------------|--------------|
 | [Podstawowa](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, element webhook protokołu HTTP |
 | [Certyfikat klienta](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, element webhook protokołu HTTP |
@@ -620,7 +620,7 @@ Punkty końcowe HTTP i HTTPS obsługują różne rodzaje uwierzytelniania. Na po
 
 ### <a name="basic-authentication"></a>Uwierzytelnianie podstawowe
 
-Jeśli opcja [podstawowa](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) jest dostępna, określ następujące wartości właściwości:
+Jeśli opcja [podstawowa](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md) jest dostępna, określ następujące wartości właściwości:
 
 | Właściwość (Projektant) | Właściwość (JSON) | Wymagane | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
@@ -682,7 +682,7 @@ Aby uzyskać więcej informacji na temat zabezpieczania usług przy użyciu uwie
 
 * [Zabezpieczanie interfejsów API przy użyciu uwierzytelniania certyfikatów klientów na platformie Azure API Management](../api-management/api-management-howto-mutual-certificates-for-clients.md)
 * [Zabezpieczanie usług zaplecza przy użyciu uwierzytelniania certyfikatów klientów na platformie Azure API Management](../api-management/api-management-howto-mutual-certificates.md)
-* [Zabezpieczanie usługi RESTfuL przy użyciu certyfikatów klienta](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [Zabezpieczanie usługi RESTfuL przy użyciu certyfikatów klienta](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [Poświadczenia certyfikatu na potrzeby uwierzytelniania aplikacji](../active-directory/develop/active-directory-certificate-credentials.md)
 * [Użyj certyfikatu protokołu SSL w kodzie aplikacji w Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
@@ -748,7 +748,7 @@ W wyzwalaczu lub akcji, która obsługuje uwierzytelnianie surowe, określ nast�
 
 | Właściwość (Projektant) | Właściwość (JSON) | Wymagane | Wartość | Opis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Uwierzytelnianie** | `type` | Tak | Nieprzetworzone | Typ uwierzytelniania do użycia |
+| **Uwierzytelnianie** | `type` | Tak | Surowców | Typ uwierzytelniania do użycia |
 | **Wartość** | `value` | Tak | <> *wartości nagłówka autoryzacji* | Wartość nagłówka autoryzacji do użycia na potrzeby uwierzytelniania |
 ||||||
 

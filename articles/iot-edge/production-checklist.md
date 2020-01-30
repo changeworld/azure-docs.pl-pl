@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 58959310a0daec3835585f64c53f2b8853eb553e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bb31a10623bd5e8ea9a406b37acf84995774045c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548598"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772304"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Przygotowanie do wdrożenia rozwiązania usługi IoT Edge w środowisku produkcyjnym
 
@@ -39,7 +39,7 @@ Każde urządzenie usługi IoT Edge w środowisku produkcyjnym, musi na nim zain
 
 Aby poznać roli certyfikatu urządzenia urzędu certyfikacji, zobacz [jak usługi Azure IoT Edge korzysta z certyfikatów](iot-edge-certs.md).
 
-Aby uzyskać więcej informacji na temat sposobu instalowania certyfikatów na urządzeniu IoT Edge i odwoływania się do nich z pliku config. YAML, zobacz [Instalowanie certyfikatów produkcyjnych na urządzeniu IoT Edge](how-to-create-transparent-gateway.md).
+Aby uzyskać więcej informacji na temat sposobu instalowania certyfikatów na urządzeniu IoT Edge i odwoływania się do nich z pliku config. YAML, zobacz [Instalowanie certyfikatów produkcyjnych na urządzeniu IoT Edge](how-to-install-production-certificates.md).
 
 ### <a name="have-a-device-management-plan"></a>Plan zarządzania urządzeniami
 

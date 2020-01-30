@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88ad32a289d499cd385f8f3095113a4b329b80f4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701539"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768102"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Aplikacja internetowa, która loguje użytkowników: Przenieś do środowiska produkcyjnego
 
@@ -29,6 +29,13 @@ Teraz, gdy wiesz już, jak uzyskać token do wywoływania interfejsów API sieci
 
 ## <a name="next-steps"></a>Następne kroki
 
+### <a name="same-site"></a>Ta sama witryna
+
+Upewnij się, że rozumiesz potencjalne problemy z nowymi wersjami przeglądarki Chrome
+
+> [!div class="nextstepaction"]
+> [Jak obsłużyć zmiany plików cookie SameSite w przeglądarce Chrome](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
 ### <a name="scenario-for-calling-web-apis"></a>Scenariusz wywoływania interfejsów API sieci Web
 
 Gdy aplikacja sieci Web loguje się do użytkowników, może wywoływać interfejsy API sieci Web w imieniu zalogowanych użytkowników. Wywoływanie interfejsów API sieci Web z aplikacji sieci Web jest obiektem następującego scenariusza:
@@ -36,7 +43,7 @@ Gdy aplikacja sieci Web loguje się do użytkowników, może wywoływać interfe
 > [!div class="nextstepaction"]
 > [Aplikacja internetowa wywołująca internetowe interfejsy API](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Głębokie szczegółowe: samouczek aplikacji sieci Web ASP.NET Core
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Głębokie szczegółowe: samouczek aplikacji sieci Web ASP.NET Core
 
 Dowiedz się więcej na temat innych sposobów logowania użytkowników przy użyciu tego samouczka ASP.NET Core: 
 
@@ -51,7 +58,7 @@ Ten samouczek progresywny zawiera kod gotowy do użycia w środowisku produkcyjn
 - [Azure AD B2C](https://aka.ms/aadb2c)
 - Chmury narodowe
 
-### <a name="sample-code-java-web-app"></a>Przykładowy kod: aplikacja internetowa Java
+## <a name="sample-code-java-web-app"></a>Przykładowy kod: aplikacja internetowa Java
 
 Dowiedz się więcej o aplikacji sieci Web Java z tego przykładu w witrynie GitHub: 
 

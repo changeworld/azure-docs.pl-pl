@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978172"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843943"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenariusze i dostępność funkcji usługi Media Services w centrach danych
 
@@ -37,7 +37,7 @@ W tym temacie przedstawiono typowe scenariusze dostarczania zawartości [na żyw
 
 Do rozpoczęcia korzystania z usługi Azure Media Services potrzebne są:
 
-* Konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com).
+* Konto platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com).
 * Konto usługi Azure Media Services. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](media-services-portal-create-account.md).
 * Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
 
@@ -179,7 +179,7 @@ Klienci usługi Media Services mogą wybrać **Standardowy** punkt końcowy prze
 
 |Nazwa|Stan|Centra danych
 |---|---|---|
-|Standardowa (Standard)|Ogólna dostępność|Wszystko|
+|Standardowa|Ogólna dostępność|Wszystko|
 |Premium|Ogólna dostępność|Wszystko|
 
 ### <a name="live-encoding"></a>Kodowanie na żywo
@@ -211,9 +211,8 @@ Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają 
 |Azure Media Indexer|Ogólna dostępność|Wszystko|
 |Azure Media Motion Detector|Wersja zapoznawcza|Wszystko|
 |Azure Media OCR|Wersja zapoznawcza|Wszystko|
-|Azure Media Redactor|Wersja zapoznawcza|Wszystko|
+|Azure Media Redactor|Ogólna dostępność|Wszystko|
 |Azure Media Video Thumbnails|Wersja zapoznawcza|Wszystko|
-|Azure Media Indexer 2|Wersja zapoznawcza|Wszystkie z wyjątkiem Chin i obszaru administracji federalnej USA|
 
 ### <a name="protection"></a>Ochrona
 

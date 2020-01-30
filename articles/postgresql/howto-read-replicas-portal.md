@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/24/2020
+ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770224"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768959"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Tworzenie replik odczytu i zarządzanie nimi w Azure Database for PostgreSQL-pojedynczym serwerze z Azure Portal
 
@@ -27,6 +27,9 @@ Te kroki muszą być używane do przygotowywania serwera głównego w warstwach 
 1. W Azure Portal wybierz istniejący serwer Azure Database for PostgreSQL, który ma być używany jako główny.
 
 2. Na pasku bocznym serwera w obszarze **Ustawienia**wybierz pozycję **replikacja**.
+
+> [!NOTE] 
+> Jeśli widzisz opcję **Wyłącz obsługę replikacji** wyszarzonej, ustawienia replikacji są już ustawione na serwerze domyślnie. Możesz pominąć poniższe kroki i przejść do sekcji Tworzenie repliki odczytu. 
 
 3. Wybierz pozycję **Włącz obsługę replikacji**. 
 
@@ -47,7 +50,7 @@ Te kroki muszą być używane do przygotowywania serwera głównego w warstwach 
 Włączanie obsługi replikacji jest operacją jednorazową na serwerze głównym. Przycisk **Wyłącz obsługę replikacji** jest dostępny dla wygody użytkownika. Nie zalecamy wyłączania obsługi replikacji, chyba że masz pewność, że nie utworzysz repliki na tym serwerze głównym. Nie można wyłączyć obsługi replikacji, gdy serwer główny ma istniejące repliki.
 
 
-## <a name="create-a-read-replica"></a>Tworzenie repliki odczytu
+## <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
 Aby utworzyć replikę odczytu, wykonaj następujące kroki:
 
 1. Wybierz istniejący serwer Azure Database for PostgreSQL, który ma być używany jako serwer główny. 
@@ -106,7 +109,7 @@ Aby zatrzymać replikację między serwerem głównym i repliką odczytu z Azure
    ![Potwierdź zatrzymanie replikacji](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master-server"></a>Usuwanie serwera głównego
+## <a name="delete-a-master-server"></a>Usuń serwer główny
 Aby usunąć serwer główny, należy wykonać te same czynności co w celu usunięcia autonomicznego serwera Azure Database for PostgreSQL. 
 
 > [!IMPORTANT]

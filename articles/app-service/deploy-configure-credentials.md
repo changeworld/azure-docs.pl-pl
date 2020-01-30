@@ -5,19 +5,19 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 15b556781f8ba620ab61c502b6f55e55e98df83c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430525"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843790"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Skonfiguruj poświadczenia wdrażania dla Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) obsługuje dwa typy poświadczeń dla [lokalnego wdrożenia git](deploy-local-git.md) i [wdrożenia FTP/S](deploy-ftp.md). Te poświadczenia nie są takie same, jak poświadczenia subskrypcji platformy Azure.
 
 * **Poświadczenia na poziomie użytkownika**: jeden zestaw poświadczeń dla całego konta platformy Azure. Można go użyć do wdrożenia programu w celu App Service dla każdej aplikacji w dowolnej subskrypcji, do której konto platformy Azure ma uprawnienia dostępu. Jest to domyślny zestaw, który znajduje się w graficznym interfejsie użytkownika portalu (na przykład **Omówienie** i **Właściwości** [strony zasobu](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)aplikacji). Gdy użytkownik uzyskuje dostęp do aplikacji za pośrednictwem Access Control opartej na rolach (RBAC) lub współadministratora, może użyć własnych poświadczeń na poziomie użytkownika do momentu odwołania dostępu. Nie udostępniaj tych poświadczeń innym użytkownikom platformy Azure.
 
-* **Poświadczenia na poziomie aplikacji**: jeden zestaw poświadczeń dla każdej aplikacji. Można go użyć do wdrożenia tylko w tej aplikacji. Poświadczenia dla każdej aplikacji są generowane automatycznie podczas tworzenia aplikacji. Nie można ich skonfigurować ręcznie, ale można je zresetować w dowolnym momencie. Aby użytkownik mógł uzyskać dostęp do poświadczeń na poziomie aplikacji za pośrednictwem (RBAC), użytkownik musi mieć uprawnienia współautora lub wyższy w aplikacji. Czytelnicy nie mogą publikować i nie mogą uzyskać dostępu do tych poświadczeń.
+* **Poświadczenia na poziomie aplikacji**: jeden zestaw poświadczeń dla każdej aplikacji. Można go użyć do wdrożenia tylko w tej aplikacji. Poświadczenia dla każdej aplikacji są generowane automatycznie podczas tworzenia aplikacji. Nie można ich skonfigurować ręcznie, ale można je zresetować w dowolnym momencie. Aby użytkownik mógł uzyskać dostęp do poświadczeń na poziomie aplikacji za pośrednictwem (RBAC), użytkownik musi mieć uprawnienia współautora lub wyższą w aplikacji (w tym wbudowana rola współautor witryny sieci Web). Czytelnicy nie mogą publikować i nie mogą uzyskać dostępu do tych poświadczeń.
 
 ## <a name="userscope"></a>Konfigurowanie poświadczeń na poziomie użytkownika
 

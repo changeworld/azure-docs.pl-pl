@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96bf088e6db29817d1ae4276c254a84723e5d03d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480192"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840336"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Skonfiguruj konto i zaloguj się przy użyciu zasad niestandardowych w Azure AD B2C
 
@@ -30,7 +30,7 @@ Wykonaj kroki opisane w tym artykule, aby użyć zasad niestandardowych, aby umo
 
 * [Dzierżawa Azure AD B2C](tutorial-create-tenant.md)
 * [Aplikacja sieci Web zarejestrowana](tutorial-register-applications.md) w dzierżawie
-* [Zasady niestandardowe](active-directory-b2c-get-started-custom.md) przekazane do dzierżawy
+* [Zasady niestandardowe](custom-policy-get-started.md) przekazane do dzierżawy
 
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Pobierz konto startowe & logowania za pomocą telefonu
 
@@ -44,7 +44,7 @@ W poniższych krokach przyjęto założenie, że zostały spełnione [wymagania 
 
 1. W każdym pliku Zastąp ciąg `yourtenant` nazwą Azure AD B2C dzierżawy. Na przykład jeśli nazwa dzierżawy usługi B2C jest *contosob2c*, wszystkie wystąpienia `yourtenant.onmicrosoft.com` stają się `contosob2c.onmicrosoft.com`.
 
-1. Wykonaj kroki opisane w sekcji [Dodawanie identyfikatorów aplikacji do zasad niestandardowych](active-directory-b2c-get-started-custom.md#add-application-ids-to-the-custom-policy) [w temacie Rozpoczynanie pracy z zasadami niestandardowymi w Azure Active Directory B2C](active-directory-b2c-get-started-custom.md). W takim przypadku należy zaktualizować `/phone-number-passwordless/` **`Phone_Email_Base.xml`** przy użyciu **identyfikatorów aplikacji (klienta)** dwóch aplikacji zarejestrowanych podczas kończenia wymagań wstępnych, *IdentityExperienceFramework* i *ProxyIdentityExperienceFramework*.
+1. Wykonaj kroki opisane w sekcji [Dodawanie identyfikatorów aplikacji do zasad niestandardowych](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) [w temacie Rozpoczynanie pracy z zasadami niestandardowymi w Azure Active Directory B2C](custom-policy-get-started.md). W takim przypadku należy zaktualizować `/phone-number-passwordless/` **`Phone_Email_Base.xml`** przy użyciu **identyfikatorów aplikacji (klienta)** dwóch aplikacji zarejestrowanych podczas kończenia wymagań wstępnych, *IdentityExperienceFramework* i *ProxyIdentityExperienceFramework*.
 
 ## <a name="upload-the-policy-files"></a>Przekazywanie plików zasad
 

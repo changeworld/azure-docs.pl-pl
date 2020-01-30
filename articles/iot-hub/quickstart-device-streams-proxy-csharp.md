@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: b48c43f90be3f43b05dcb4028c774836ffd196b7
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: a1b6adc37d78e3fa73d7ae70237d678af6b9dc99
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045981"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769470"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Szybki Start: Włączanie protokołu SSH i RDP przez strumień urządzeń IoT Hub przy użyciu C# aplikacji serwera proxy (wersja zapoznawcza)
 
@@ -72,7 +72,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
    az extension add --name azure-cli-iot-ext
    ```
 
-* [Pobierz przykładowy C# projekt](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)i Wyodrębnij archiwum zip.
+* [Pobierz przykłady usługi Azure C# IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)i Wyodrębnij archiwum zip.
 
 * Prawidłowe konto użytkownika i poświadczenie na urządzeniu (Windows lub Linux) używane do uwierzytelniania użytkownika.
 

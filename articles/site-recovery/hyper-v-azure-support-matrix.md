@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: bfa3f592ca799b71bef7c7f9409864026f6c8d6a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863897"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774424"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
@@ -33,7 +33,7 @@ Funkcja Hyper-V bez Virtual Machine Manager | Odzyskiwanie po awarii można prze
 **Serwer** | **Wymagania** | **Szczegóły**
 --- | --- | ---
 Funkcja Hyper-V (uruchomiona bez Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (w tym instalacja Server Core), Windows Server 2012 R2 z najnowszymi aktualizacjami | Jeśli już skonfigurowano system Windows Server 2012 R2 z/lub SCVMM 2012 R2 z Azure Site Recovery i planujesz uaktualnić system operacyjny, postępuj zgodnie z [dokumentacją.](upgrade-2012R2-to-2016.md) 
-Funkcja Hyper-V (uruchomiona z Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Jeśli Virtual Machine Manager jest używany, hosty systemu Windows Server 2019 powinny być zarządzane w Virtual Machine Manager 2019. Podobnie hosty systemu Windows Server 2016 powinny być zarządzane w Virtual Machine Manager 2016.<br/><br/>
+Funkcja Hyper-V (uruchomiona z Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Jeśli Virtual Machine Manager jest używany, hosty systemu Windows Server 2019 powinny być zarządzane w Virtual Machine Manager 2019. Podobnie hosty systemu Windows Server 2016 powinny być zarządzane w Virtual Machine Manager 2016.<br/><br/> Uwaga: powrót po awarii do alternatywnej lokalizacji nie jest obsługiwany w przypadku hostów z systemem Windows Server 2019.
 
 
 ## <a name="replicated-vms"></a>Zreplikowane maszyny wirtualne
@@ -111,7 +111,7 @@ SMB 3.0 | Nie | Nie
 RDM | Nie dotyczy | Nie dotyczy
 Dysk > 1 TB | Tak, do 4 095 GB | Tak, do 4 095 GB
 Dysk: sektor logiczny i fizyczny 4K | Nieobsługiwane: Gen 1/Gen 2 | Nieobsługiwane: Gen 1/Gen 2
-Dysk: sektor fizyczny i 512 b KB | Tak |  Tak
+Dysk: logiczny i 512-bajtowy sektor fizyczny | Tak |  Tak
 Zarządzanie woluminami logicznymi (LVM). LVM jest obsługiwana tylko na dyskach danych. Platforma Azure udostępnia tylko jeden dysk systemu operacyjnego. | Tak | Tak
 Wolumin z dyskiem rozłożonym > 1 TB | Tak | Tak
 Miejsca do magazynowania | Nie | Nie
@@ -125,7 +125,7 @@ Wiele ścieżek (MPIO) | Tak | Tak
 --- | --- | ---
 Magazyn lokalnie nadmiarowy | Tak | Tak
 Magazyn geograficznie nadmiarowy | Tak | Tak
-Magazyn geograficznie nadmiarowy dostępny do odczytu | Tak | Tak
+Magazyn Geograficznie nadmiarowy do odczytu | Tak | Tak
 Chłodny magazyn | Nie | Nie
 Magazyn gorąca| Nie | Nie
 Obiekty BLOB typu Block | Nie | Nie
@@ -163,7 +163,7 @@ Dysk FC | Brak obsługi | Sprawdzanie wymagań wstępnych kończy się niepowodz
 Format dysku twardego | VHD <br/><br/> VHDX | W przypadku przełączenia w tryb failover na platformie Azure Site Recovery automatycznie konwertuje plik VHDX na dysk VHD. Po powrocie po awarii do lokalnego programu maszyny wirtualne nadal używają formatu VHDX.
 BitLocker | Brak obsługi | Aby włączyć replikację dla maszyny wirtualnej, należy wyłączyć funkcję BitLocker.
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków. Ograniczone do liter, cyfr i łączników. Nazwa maszyny wirtualnej musi zaczynać się i kończyć literą lub cyfrą. | Zaktualizuj wartość we właściwościach maszyny wirtualnej w Site Recovery.
-Typ maszyny wirtualnej | Pierwsza generacja<br/><br/> Generacja 2 — Windows | Maszyny wirtualne generacji 2 z typem dysku systemu operacyjnego Basic (zawierającym jeden lub dwa woluminy danych sformatowane jako VHDX) i mniej niż 300 GB miejsca na dysku są obsługiwane.<br></br>Maszyny wirtualne 2. generacji systemu Linux nie są obsługiwane. [Dowiedz się więcej](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Typ maszyny wirtualnej | Generacja 1<br/><br/> Generacja 2 — Windows | Maszyny wirtualne generacji 2 z typem dysku systemu operacyjnego Basic (zawierającym jeden lub dwa woluminy danych sformatowane jako VHDX) i mniej niż 300 GB miejsca na dysku są obsługiwane.<br></br>Maszyny wirtualne 2. generacji systemu Linux nie są obsługiwane. [Dowiedz się więcej](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Akcje magazynu Recovery Services
 
@@ -183,7 +183,7 @@ Aby upewnić się, że wdrożenie jest zgodne z ustawieniami w tym artykule, upe
 **Nazwa** | **Opis** | **Szczegóły**
 --- | --- | --- 
 Dostawca Azure Site Recovery | Koordynuje komunikację między serwerami lokalnymi i platformą Azure <br/><br/> Funkcja Hyper-V z Virtual Machine Manager: zainstalowane na serwerach Virtual Machine Manager<br/><br/> Funkcja Hyper-V bez Virtual Machine Manager: zainstalowana na hostach funkcji Hyper-V| Najnowsza wersja: 5.1.2700.1 (dostępna w Azure Portal)<br/><br/> [Najnowsze funkcje i poprawki](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
-Agent usługi Microsoft Azure Recovery Services | Koordynuje replikację między maszynami wirtualnymi funkcji Hyper-V i systemem Azure<br/><br/> Zainstalowane na lokalnych serwerach funkcji Hyper-V (z Virtual Machine Manager lub bez niego) | Najnowszy Agent dostępny w portalu
+Agent Microsoft Azure Recovery Services | Koordynuje replikację między maszynami wirtualnymi funkcji Hyper-V i systemem Azure<br/><br/> Zainstalowane na lokalnych serwerach funkcji Hyper-V (z Virtual Machine Manager lub bez niego) | Najnowszy Agent dostępny w portalu
 
 
 

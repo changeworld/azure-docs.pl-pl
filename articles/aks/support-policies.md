@@ -5,14 +5,14 @@ services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707220"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767378"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zasady pomocy technicznej dla usługi Azure Kubernetes Service
 
@@ -42,6 +42,8 @@ Usługi są *zarządzane* w sensie, że firma Microsoft i zespół AKS wdrażaj�
 
 > [!NOTE]
 > Węzły procesu roboczego AKS są wyświetlane w Azure Portal jako zwykłe zasoby IaaS platformy Azure. Jednak te maszyny wirtualne są wdrażane w niestandardowej grupie zasobów platformy Azure (z prefiksem MC\\*). Istnieje możliwość zmiany węzłów procesu roboczego AKS. Na przykład można użyć Secure Shell (SSH), aby zmienić AKS węzły procesu roboczego w sposób zmieniania normalnych maszyn wirtualnych (nie można jednak zmienić podstawowego obrazu systemu operacyjnego, a zmiany mogą nie zostać zachowane przez aktualizację lub ponowny rozruch), a także dołączyć inne zasoby platformy Azure do usługi AKS węzły procesu roboczego. Jednak po wprowadzeniu zmian w *zarządzaniu poza pasmem i dostosowaniu* klaster AKS może stać się nieobsługiwany. Należy unikać zmiany węzłów procesu roboczego, chyba że pomoc techniczna firmy Microsoft nie kieruje się do wprowadzania zmian.
+
+Wygenerowanie nieobsługiwanych operacji zgodnie z definicją powyżej, takich jak cofnięcie przydziału poza pasmem dla wszystkich węzłów agenta, renderowanie klastra jest nieobsługiwane. AKS zastrzega sobie prawo do archiwizowania płaszczyzn kontroli, które zostały skonfigurowane z poziomu wytycznych dla rozszerzonych okresów równych i dłuższych niż 30 dni. AKS przechowuje kopie zapasowe metadanych etcd klastra i może łatwo ponownie przydzielić klaster. Tę ponowną alokację można zainicjować za pomocą dowolnej operacji PUT przełączenia klastra do pomocy technicznej, takiego jak uaktualnienie lub skalowanie do węzłów aktywnego agenta.
 
 ## <a name="shared-responsibility"></a>Wspólna odpowiedzialność
 
@@ -89,7 +91,7 @@ Firma Microsoft i klienci mogą korzystać z odpowiedzialności za węzły proce
 * Podstawowy obraz systemu operacyjnego ma wymagane Dodatki (na przykład monitorowanie i agenci sieci).
 * Węzły procesu roboczego automatycznie otrzymują poprawki systemu operacyjnego.
 * Problemy ze składnikami płaszczyzny kontrolnej Kubernetes, które działają w węzłach procesu roboczego, są automatycznie korygowane. Dostępne są następujące składniki:
-  * Polecenia — proxy
+  * Kube-proxy
   * Tunele sieciowe dostarczające ścieżki komunikacji do składników głównych Kubernetes
   * Kubelet
   * Demon Docker lub Moby

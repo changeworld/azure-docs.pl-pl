@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 5cca18b881250ce99df35d681bec6091ea4a27b9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 94adac6ba232f8931d00083432c027ddccb2ce64
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642100"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842502"
 ---
-W danych wyjściowych `identity` polecenia sekcja pokazuje tożsamość typu `SystemAssigned` jest ustawiana w zadaniu. `principalId` Jest identyfikatorem jednostki usługi tożsamości:
+W danych wyjściowych polecenia sekcja `identity` pokazuje tożsamość typu `SystemAssigned` jest ustawiona w zadaniu. `principalId` jest IDENTYFIKATORem jednostki usługi tożsamości:
 
 ```console
 [...]
@@ -28,10 +28,10 @@ W danych wyjściowych `identity` polecenia sekcja pokazuje tożsamość typu `Sy
   "location": "eastus",
 [...]
 ``` 
-Użyj polecenia [AZ ACR Task show][az-acr-task-show] , aby zapisać principalId w zmiennej, aby użyć w późniejszych poleceniach:
+Użyj polecenia [AZ ACR Task show][az-acr-task-show] , aby zapisać principalId w zmiennej, aby użyć ich w późniejszych poleceniach. Zastąp nazwę zadania i rejestr w następującym poleceniu:
 
 ```azurecli
-principalID=$(az acr task show --name dockerhubtask --registry myregistry --query identity.principalId --output tsv)
+principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)
 ```
 
 <!-- LINKS - Internal -->

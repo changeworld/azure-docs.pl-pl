@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: dfe2d5925e19697a2e3ed4491958da1325df5574
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72086f1df2b497a722b2752b56a32e6c269fe32d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467795"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768156"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -185,7 +185,7 @@ namespace helloworld
 
 Teraz wszystko jest gotowe do skompilowania aplikacji i przetestowania syntezy mowy przy użyciu usługi mowy.
 
-1. **Skompiluj kod** — na pasku menu elementu Visual Studio wybierz polecenie **Build** > **Kompiluj rozwiązanie**.
+1. **Skompiluj kod** — na pasku menu programu Visual Studio wybierz polecenie **Build** > **Kompiluj rozwiązanie**.
 2. **Uruchom aplikację** — z poziomu paska menu wybierz **Debuguj** > **Rozpocznij debugowanie** lub naciśnij klawisz **F5**.
 3. **Rozpocznij syntezę** — tekst jest konwertowany na mowę i zapisywany w określonych danych audio.
 

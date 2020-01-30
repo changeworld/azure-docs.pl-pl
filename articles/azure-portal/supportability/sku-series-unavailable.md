@@ -1,25 +1,27 @@
 ---
-title: Seria SKU jest niedostępna | Microsoft Docs
-description: Niektóre serie jednostek SKU są niedostępne dla wybranej subskrypcji w tym regionie.
+title: Seria regionów lub jednostek SKU jest niedostępna — Azure
+description: Niektóre serie jednostek SKU są niedostępne dla wybranej subskrypcji tego regionu, co może wymagać żądania obsługi zarządzania subskrypcją.
 services: Azure Supportability
 author: stevendotwang
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: e317ae1ad88cf162f1d55a06d19e7b3b0b88ce60
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896729"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843644"
 ---
 # <a name="region-or-sku-unavailable"></a>Region lub jednostka SKU jest niedostępna
+
 W tym artykule opisano sposób rozwiązywania problemu z subskrypcją platformy Azure, która nie ma dostępu do regionu lub jednostki SKU maszyny wirtualnej.
 
 ## <a name="symptoms"></a>Objawy
 
-### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>Podczas wdrażania maszyny wirtualnej jest wyświetlany jeden z następujących komunikatów o błędach:
+Podczas wdrażania maszyny wirtualnej jest wyświetlany jeden z następujących komunikatów o błędach:
+
 ```
 Code: SkuNotAvailable
 Message: The requested size for resource '<resource>' is currently not available in location 
@@ -37,7 +39,7 @@ Code: NotAvailableForSubscription
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>Podczas zakupu wystąpień zarezerwowanych maszyn wirtualnych otrzymujesz jeden z następujących komunikatów o błędach:
+Podczas zakupu wystąpień zarezerwowanych maszyn wirtualnych otrzymujesz jeden z następujących komunikatów o błędach:
 
 ```
 Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
@@ -48,32 +50,38 @@ different location. Supported locations are: <list of locations>
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>Podczas tworzenia żądania obsługi w celu zwiększenia przydziału rdzenia obliczeniowego nie można wybrać regionu lub rodziny jednostek SKU.
+W przypadku tworzenia żądania pomocy technicznej w celu zwiększenia przydziału rdzeni obliczeniowych nie można wybrać regionu lub rodziny jednostek SKU.
 
 ## <a name="solution"></a>Rozwiązanie
-Najpierw Zalecamy rozważenie alternatywnego regionu lub jednostki SKU, która spełnia Twoje wymagania biznesowe. Jeśli nie możesz znaleźć odpowiedniego regionu lub jednostki SKU, Utwórz [żądanie pomocy technicznej](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) dotyczące zarządzania subskrypcjami, wykonując poniższe kroki:
 
+Najpierw Zalecamy rozważenie alternatywnego regionu lub jednostki SKU, która spełnia Twoje wymagania biznesowe.
 
-- Na stronie podstawowe wybierz pozycję typ problemu jako "Zarządzanie subskrypcjami", wybierz subskrypcję i kliknij przycisk "dalej".
+Jeśli nie możesz znaleźć odpowiedniego regionu lub jednostki SKU, Utwórz [żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) **zarządzania subskrypcją** , wykonując następujące czynności:
 
-![Blok Podstawowe](./media/SKU-series-unavailable/BasicsSubMgmt.png)
+1. Z menu [Azure Portal](https://portal.azure.com) wybierz pozycję **Pomoc i obsługa techniczna**. Następnie wybierz pozycję **nowe żądanie obsługi**.
 
+1. W obszarze **podstawowe**, w obszarze **typ problemu**wybierz pozycję **Zarządzanie subskrypcją**.
 
--   Na stronie problem wybierz typ problemu jako "inne pytania ogólne".
-- W sekcji szczegółów:
-  - Wskaż, czy chcesz wdrażać maszyny wirtualne, czy zakupić zarezerwowane wystąpienia maszyn wirtualnych
-  - Określ region, jednostkę SKU oraz liczbę wystąpień maszyn wirtualnych, które zamierzasz wdrożyć lub zakupić
+1. Wybierz **subskrypcję** i wprowadź krótki opis **podsumowujący**.
 
+   ![Karta podstawy nowego żądania obsługi](./media/SKU-series-unavailable/support-request-basics.png)
 
-![Problem](./media/SKU-series-unavailable/ProblemSubMgmt.png)
+1. W obszarze **typ problemu**wybierz **pozycję Wybierz typ problemu**.
 
--   Wprowadź dane kontaktowe i kliknij przycisk "Utwórz".
+1. W obszarze **typ problemu wybierz**opcję, na przykład **nie można uzyskać dostępu do mojej subskrypcji lub zasobu** , > **mój problem nie jest wymieniony powyżej**. Wybierz pozycję **Zapisz**.
 
-![Informacje kontaktowe](./media/SKU-series-unavailable/ContactInformation.png)
+   ![Określ problem dotyczący żądania](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
-## <a name="feedback"></a>Opinia
-Zawsze jest otwarta opinia i sugestii. Wyślij nam swoje [sugestie](https://feedback.azure.com/forums/266794-support-feedback). Ponadto możesz poangażować się z nami za pośrednictwem usługi [Twitter](https://twitter.com/azuresupport) lub [forów MSDN](https://social.msdn.microsoft.com/Forums/azure).
+1. Wybierz pozycję **Dalej: rozwiązania** , aby poznać możliwe rozwiązania. W razie potrzeby wybierz pozycję **Dalej: szczegóły** , aby kontynuować.
+
+1. Wprowadź wszelkie dodatkowe informacje, które można podać wraz z informacjami kontaktowymi.
+
+1. Wybierz pozycję **Przegląd + utwórz**. Po zweryfikowaniu informacji wybierz pozycję **Utwórz** , aby utworzyć żądanie.
+
+## <a name="send-us-your-suggestions"></a>Wyślij nam swoje sugestie
+
+Zawsze jesteśmy w trakcie korzystania z opinii i sugestii. Wyślij nam swoje [sugestie](https://feedback.azure.com/forums/266794-support-feedback). Ponadto możesz zaangażować się z nami w [serwisie Twitter](https://twitter.com/azuresupport) lub na [forach MSDN](https://social.msdn.microsoft.com/Forums/azure).
 
 ## <a name="learn-more"></a>Dowiedz się więcej
-[Pomoc techniczna platformy Azure — często zadawane pytania](https://azure.microsoft.com/support/faq)
 
+[Pomoc techniczna platformy Azure — często zadawane pytania](https://azure.microsoft.com/support/faq)

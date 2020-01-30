@@ -9,16 +9,16 @@ ms.date: 10/05/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 336b6157128468169264d6ffa9564da4d9338aae
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0aedeea2a6ad08e1627c2d1a6ebde6c91a4d02d9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992446"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841769"
 ---
 # <a name="configure-identity-for-the-event-grid-module"></a>Skonfiguruj tożsamość modułu Event Grid
 
-W tym artykule przedstawiono przykłady możliwych konfiguracji tożsamości dla modułu Event Grid. Domyślnie moduł Event Grid będzie miał certyfikat tożsamości skonfigurowany przez demona zabezpieczeń IoT. Certyfikat tożsamości jest prezentowany przez moduł Event Grid w wychodzących wywołaniach, który jest w przypadku dostarczania zdarzeń. Subskrybent zdarzenia Event Grid może następnie sprawdzić, czy jest on rzeczywiście modułem Event Grid, który wysłał zdarzenie przed zaakceptowaniem zdarzenia.
+W tym artykule pokazano, jak skonfigurować tożsamość siatki na krawędzi. Domyślnie moduł Event Grid przedstawia swój certyfikat tożsamości zgodnie z konfiguracją w ramach demona zabezpieczeń IoT. Event Grid na brzegu prezentuje swój certyfikat tożsamości z wychodzącymi wywołaniami, gdy dostarcza zdarzenia. Subskrybenci mogą następnie sprawdzić, czy jest to moduł Event Grid, który wysłał zdarzenie przed zaakceptowaniem.
 
 Wszystkie możliwe konfiguracje można znaleźć w przewodniku dotyczącym [zabezpieczeń i uwierzytelniania](security-authentication.md) .
 
@@ -28,8 +28,8 @@ Oto Przykładowa konfiguracja, która zawsze przedstawia certyfikat tożsamości
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge"
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge"
   ]
 }
  ```
@@ -40,7 +40,7 @@ Oto Przykładowa konfiguracja nieprzedstawiania certyfikatu tożsamości dla wyw
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=false"
+    "outbound__clientAuth__clientCert__enabled=false"
   ]
 }
  ```

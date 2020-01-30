@@ -12,14 +12,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 08/15/2019
+ms.date: 01/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 56fcd5a8a02e292fdf43f9d22f3987813bce0743
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ce3582539d6130e13ef205806d780164ba70c4fe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029831"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842541"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań usługi Batch za pomocą Active Directory
 
@@ -119,7 +119,7 @@ Aby uwierzytelnić aplikację, w której działa nienadzorowana, należy użyć 
 
 Gdy aplikacja jest uwierzytelniana za pomocą nazwy głównej usługi, wysyła zarówno identyfikator aplikacji, jak i klucz tajny do usługi Azure AD. Należy utworzyć i skopiować klucz tajny do użycia w kodzie.
 
-Wykonaj następujące kroki w witrynie Azure Portal:
+Wykonaj następujące kroki w Azure Portal:
 
 1. W okienku nawigacji po lewej stronie Azure Portal wybierz pozycję **wszystkie usługi**. Wybierz pozycję **rejestracje aplikacji**.
 1. Wybierz aplikację z listy rejestracji aplikacji.
@@ -143,6 +143,67 @@ Aby uwierzytelnić się za pomocą jednostki usługi, należy przypisać kontrol
 Aplikacja powinna teraz pojawić się w ustawieniach kontroli dostępu z przypisaną rolą RBAC.
 
 ![Przypisywanie roli RBAC do aplikacji](./media/batch-aad-auth/app-rbac-role.png)
+
+### <a name="assign-a-custom-role"></a>Przypisywanie roli niestandardowej
+
+Rola niestandardowa przyznaje użytkownikowi szczegółowe uprawnienia do przesyłania zadań, zadań i nie tylko. Dzięki temu użytkownicy mogą uniemożliwić wykonywanie operacji, które mają wpływ na koszt, na przykład tworząc pule lub modyfikując węzły.
+
+Możesz użyć roli niestandardowej, aby przyznać uprawnienia użytkownikowi, grupie lub jednostce usługi usługi Azure AD dla następujących operacji RBAC:
+
+- Microsoft.Batch/batchAccounts/pools/write
+- Microsoft.Batch/batchAccounts/pools/delete
+- Microsoft.Batch/batchAccounts/pools/read
+- Microsoft. Batch/batchAccounts/jobSchedules/Write
+- Microsoft. Batch/batchAccounts/jobSchedules/Delete
+- Microsoft. Batch/batchAccounts/jobSchedules/odczyt
+- Microsoft. Batch/batchAccounts/Jobs/Write
+- Microsoft. Batch/batchAccounts/Jobs/Delete
+- Microsoft. Batch/batchAccounts/Jobs/Read
+- Microsoft. Batch/batchAccounts/Certificates/Write
+- Microsoft. Batch/batchAccounts/Certificates/Delete
+- Microsoft.Batch/batchAccounts/certificates/read
+- Microsoft. Batch/batchAccounts/Read (dla każdej operacji odczytu)
+- Microsoft. Batch/batchAccounts/listKeys/Action (dla każdej operacji)
+
+Role niestandardowe są przeznaczone dla użytkowników uwierzytelnionych przez usługę Azure AD, a nie poświadczenia konta usługi Batch (klucz współużytkowany). Zwróć uwagę, że poświadczenia konta w usłudze Batch dają pełne uprawnienia do konta w usłudze Batch. Należy również pamiętać, że zadania używające autopuli wymagają uprawnień na poziomie puli.
+
+Oto przykład definicji roli niestandardowej:
+
+```json
+{
+ "properties":{
+    "roleName":"Azure Batch Custom Job Submitter",
+    "type":"CustomRole",
+    "description":"Allows a user to submit jobs to Azure Batch but not manage pools",
+    "assignableScopes":[
+      "/subscriptions/88888888-8888-8888-8888-888888888888"
+    ],
+    "permissions":[
+      {
+        "actions":[
+          "Microsoft.Batch/*/read",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Support/*",
+          "Microsoft.Insights/alertRules/*"
+        ],
+        "notActions":[
+
+        ],
+        "dataActions":[
+          "Microsoft.Batch/batchAccounts/jobs/*",
+          "Microsoft.Batch/batchAccounts/jobSchedules/*"
+        ],
+        "notDataActions":[
+
+        ]
+      }
+    ]
+  }
+}
+```
+
+Aby uzyskać ogólne informacje na temat tworzenia roli niestandardowej, zobacz [role niestandardowe dla zasobów platformy Azure](../role-based-access-control/custom-roles.md).
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>Pobieranie Identyfikatora dzierżawy usługi Azure Active Directory
 

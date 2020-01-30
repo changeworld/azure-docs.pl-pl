@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: d7304c1267c4a4f5548bb57ffb3e6016fac21d99
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e3ea11f4faad204756f9e1296b5190e1f81a5cc0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122512"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772800"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Wdrażanie narzędzia do zarządzania przy użyciu programu PowerShell
 
@@ -163,4 +163,4 @@ Jeśli występują problemy z narzędziem do zarządzania lub innymi narzędziam
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz już, jak wdrożyć narzędzie do zarządzania i połączyć się z nim, możesz dowiedzieć się, jak za pomocą usługi platformy Azure monitorować problemy z usługami i klasyfikatory kondycji. Aby dowiedzieć się więcej, zobacz [Samouczek dotyczący konfigurowania alertów usługi](./set-up-service-alerts.md).
+Teraz, gdy wiesz już, jak wdrożyć narzędzie do zarządzania i połączyć się z nim, możesz dowiedzieć się, jak używać Azure Service Health do monitorowania problemów z usługami i klasyfikatorów kondycji. Aby dowiedzieć się więcej, zobacz [Samouczek dotyczący konfigurowania alertów usługi](./set-up-service-alerts.md).

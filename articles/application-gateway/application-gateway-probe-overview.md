@@ -5,18 +5,24 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/16/2019
+ms.date: 01/28/2020
 ms.author: victorh
-ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130680"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766828"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway — Omówienie monitorowania kondycji
 
-Usługa Azure Application Gateway domyślnie monitoruje kondycję wszystkich zasobów w puli zaplecza i automatycznie usuwa wszelkie zasoby uznawane za złej kondycji z puli. Application Gateway nadal monitoruje wystąpienia w złej kondycji i dodaje je z powrotem do odpowiedniej puli zaplecza, gdy staną się dostępne i reagują na sondy kondycji. Brama aplikacji wysyła sondy kondycji z tym samym portem, który jest zdefiniowany w ustawieniach protokołu HTTP zaplecza. Ta konfiguracja gwarantuje, że sonda testuje ten sam port, który będzie używany przez klientów do łączenia się z zapleczem.
+Usługa Azure Application Gateway domyślnie monitoruje kondycję wszystkich zasobów w puli zaplecza i automatycznie usuwa wszelkie zasoby uznawane za złej kondycji z puli. Application Gateway nadal monitoruje wystąpienia w złej kondycji i dodaje je z powrotem do odpowiedniej puli zaplecza, gdy staną się dostępne i reagują na sondy kondycji. Brama aplikacji wysyła sondy kondycji z tym samym portem, który jest zdefiniowany w ustawieniach protokołu HTTP zaplecza. Ta konfiguracja gwarantuje, że sonda testuje ten sam port, który będzie używany przez klientów do łączenia się z zapleczem. 
+
+Źródłowy adres IP Application Gateway używany przez sondy kondycji zależy od puli zaplecza:
+ 
+- Jeśli pula zaplecza jest publicznym punktem końcowym, adres źródłowy jest publicznym adresem IP frontonu bramy aplikacji.
+- Jeśli pula zaplecza jest prywatnym punktem końcowym, źródłowy adres IP pochodzi z prywatnego obszaru adresów IP podsieci usługi Application Gateway.
+
 
 ![przykład sondowania bramy aplikacji][1]
 
@@ -34,7 +40,7 @@ Jeśli domyślne sprawdzenie sondy zakończy się niepowodzeniem dla serwera A, 
 
 ### <a name="probe-matching"></a>Dopasowanie sondy
 
-Domyślnie odpowiedź HTTP (S) o kodzie stanu z zakresu od 200 do 399 jest traktowana w dobrej kondycji. Niestandardowe sondy kondycji dodatkowo obsługują dwa zgodne kryteria. Kryterium dopasowywania można użyć, aby opcjonalnie zmodyfikować domyślną interpretację co stanowi dobrą odpowiedź.
+Domyślnie odpowiedź HTTP (S) o kodzie stanu z zakresu od 200 do 399 jest traktowana w dobrej kondycji. Niestandardowe sondy kondycji dodatkowo obsługują dwa zgodne kryteria. Kryterium dopasowywania można użyć, aby opcjonalnie zmodyfikować domyślną interpretację co daje w wyniku dobrą odpowiedź.
 
 Poniżej przedstawiono kryteria dopasowywania: 
 
@@ -43,7 +49,7 @@ Poniżej przedstawiono kryteria dopasowywania:
 
 Kryteria dopasowywania można określić za pomocą polecenia cmdlet `New-AzApplicationGatewayProbeHealthResponseMatch`.
 
-Na przykład:
+Przykład:
 
 ```azurepowershell
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
@@ -82,7 +88,7 @@ Poniższa tabela zawiera definicje właściwości niestandardowej sondy kondycji
 | Właściwość sondy | Opis |
 | --- | --- |
 | Nazwa |Nazwa sondy. Ta nazwa służy do odwoływania się do sondy w ustawieniach protokołu HTTP zaplecza. |
-| Protokół |Protokół używany do wysyłania sondy. Sonda używa protokołu zdefiniowanego w ustawieniach protokołu HTTP zaplecza |
+| Protocol (Protokół) |Protokół używany do wysyłania sondy. Sonda używa protokołu zdefiniowanego w ustawieniach protokołu HTTP zaplecza |
 | Host |Nazwa hosta do wysłania sondy. Dotyczy tylko sytuacji, gdy wiele witryn jest skonfigurowanych na Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość różni się od nazwy hosta maszyny wirtualnej. |
 | Ścieżka |Ścieżka względna sondy. Prawidłowa ścieżka zaczyna się od znaku "/". |
 | Interval |Interwał sondy (w sekundach). Ta wartość jest przedziałem czasu między dwoma kolejnymi sondami. |

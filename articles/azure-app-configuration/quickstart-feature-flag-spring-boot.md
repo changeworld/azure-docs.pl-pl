@@ -1,24 +1,17 @@
 ---
-title: Przewodnik Szybki Start dotyczący dodawania flag funkcji do rozruchu sprężynowego — konfiguracja aplikacji platformy Azure | Microsoft Docs
-description: Przewodnik Szybki Start dotyczący dodawania flag funkcji do sprężynowych aplikacji rozruchowych i zarządzania nimi w konfiguracji aplikacji platformy Azure
-services: azure-app-configuration
-documentationcenter: ''
+title: Przewodnik Szybki Start dotyczący dodawania flag funkcji do rozruchu sprężynowego przy użyciu konfiguracji aplikacji platformy Azure
+description: Dodawanie flag funkcji do sprężynowych aplikacji rozruchowych i zarządzanie nimi przy użyciu konfiguracji aplikacji platformy Azure
 author: lisaguthrie
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Spring Boot
-ms.workload: tbd
-ms.date: 1/9/2019
+ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310071"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766435"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Szybki Start: Dodawanie flag funkcji do aplikacji z rozruchem wiosny
 
@@ -32,19 +25,20 @@ Biblioteki zarządzania funkcją rozruchu sprężynowego umożliwiają rozbudowa
 - Obsługiwany zestaw [SDK języka Java Development Kit](https://docs.microsoft.com/java/azure/jdk) z wersją 8.
 - System [Apache Maven](https://maven.apache.org/download.cgi) w wersji 3,0 lub nowszej.
 
-## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
+## <a name="create-an-app-configuration-instance"></a>Tworzenie wystąpienia konfiguracji aplikacji
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz pozycję **Menedżer funkcji** >  **+ Utwórz** , aby dodać następujące flagi funkcji:
+6. Wybierz pozycję **Menedżer funkcji** >  **+ Dodaj** , aby dodać flagę funkcji o nazwie `Beta`.
 
-    | Klucz | Stan |
-    |---|---|
-    | Beta | Wyłączone |
+    > [!div class="mx-imgBorder"]
+    > ![Włącz flagę funkcji o nazwie beta](media/add-beta-feature-flag.png)
+
+    Dla tej pory pozostaw `label` niezdefiniowane.
 
 ## <a name="create-a-spring-boot-app"></a>Tworzenie aplikacji Spring Boot
 
-Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego projektu sprężyny rozruchowej.
+Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy projekt z rozruchem sprężyny.
 
 1. Przejdź do <https://start.spring.io/>.
 
@@ -52,27 +46,27 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
 
    - Wygeneruj projekt **Maven** z użyciem języka **Java**.
    - Określ wersję **rozruchu sprężynowego** , która jest równa lub większa niż 2,0.
-   - Określ nazwy **Grupa** i **Artefakt** dla swojej aplikacji.
+   - Określ nazwy **Grupa** i **Artefakt** dla swojej aplikacji.  W tym artykule są wykorzystywane `com.example` i `demo`.
    - Dodaj zależność **sieci Web sprężyny** .
 
-3. Po określeniu poprzednich opcji wybierz pozycję **Generuj projekt**. Po wyświetleniu monitu pobierz projekt do ścieżki na komputerze lokalnym.
+3. Po określeniu poprzednich opcji wybierz pozycję **Generuj projekt**. Po wyświetleniu monitu Pobierz projekt na komputer lokalny.
 
 ## <a name="add-feature-management"></a>Dodawanie funkcji zarządzania funkcjami
 
-1. Po wyodrębnieniu plików w systemie lokalnym, prosta aplikacja rozruchowa sprężyny jest gotowa do edycji. Znajdź plik *pom.xml* w katalogu głównym swojej aplikacji.
+1. Po wyodrębnieniu plików w systemie lokalnym aplikacja do rozruchowego sprężyny jest gotowa do edycji. Zlokalizuj *pliku pom. XML* w katalogu głównym aplikacji.
 
-2. Otwórz plik *pliku pom. XML* w edytorze tekstów, a następnie Dodaj chmurę Azure config Starter i Zarządzanie funkcjami do listy `<dependencies>`:
+1. Otwórz plik *pliku pom. XML* w edytorze tekstów i Dodaj następujący tekst do listy `<dependencies>`.:
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.1</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.1</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -81,35 +75,48 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
     ```
 
 > [!Note]
-> Istnieje Biblioteka zarządzania funkcją niezawierającą sieci Web, która nie jest zależna od sprężyny sieci Web. Zapoznaj się z dodatkowymi [dokumentami](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) dotyczącymi różnic. Ponadto, gdy nie jest używana konfiguracja aplikacji, zobacz [Deklaracja flagi funkcji](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management#feature-flag-declaration).
+> Istnieje Biblioteka zarządzania funkcją niezawierającą sieci Web, która nie jest zależna od sprężyny sieci Web. Różnice można znaleźć w [dokumentacji](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) usługi GitHub.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
-1. Otwórz okno _Bootstrap. Properties_ w katalogu _resources_ aplikacji. Jeśli polecenie _Bootstrap. Properties_ nie istnieje, utwórz je. Dodaj następujący wiersz do pliku.
+1. Przejdź do katalogu `resources` aplikacji i Otwórz `bootstrap.properties`.  Jeśli plik nie istnieje, utwórz go. Dodaj następujący wiersz do pliku.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. W portalu konfiguracji aplikacji magazynu konfiguracji przejdź do pozycji klucze dostępu. Wybierz kartę klucze tylko do odczytu. Na tej karcie skopiuj wartość jednego z parametrów połączenia i Dodaj ją jako nową zmienną środowiskową o zmiennej Nazwa `APP_CONFIGURATION_CONNECTION_STRING`.
+1. W portalu konfiguracji aplikacji dla swojego magazynu konfiguracji wybierz `Access keys` z paska bocznego. Wybierz kartę klucze tylko do odczytu. Skopiuj wartość podstawowych parametrów połączenia.
+
+1. Dodaj podstawowe parametry połączenia jako zmienną środowiskową przy użyciu nazwy zmiennej `APP_CONFIGURATION_CONNECTION_STRING`.
 
 1. Otwórz główny plik Java aplikacji i dodaj element `@EnableConfigurationProperties`, aby włączyć tę funkcję.
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.context.properties.ConfigurationProperties;
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
 
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
     public class DemoApplication {
+
         public static void main(String[] args) {
             SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
-
-1. Utwórz nowy plik Java o nazwie *MessageProperties.java* w katalogu pakietów swojej aplikacji. Dodaj następujące wiersze:
+1. Utwórz nowy plik Java o nazwie *MessageProperties.java* w katalogu pakietów swojej aplikacji.
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -124,11 +131,22 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
     }
     ```
 
-1. Utwórz nowy plik Java o nazwie *HelloController.java* w katalogu pakietów swojej aplikacji. Dodaj następujące wiersze:
+1. Utwórz nowy plik Java o nazwie *HelloController.java* w katalogu pakietów swojej aplikacji. 
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+    import org.springframework.stereotype.Controller;
+    import org.springframework.ui.Model;
+
+    import com.microsoft.azure.spring.cloud.feature.manager.FeatureManager;
+    import org.springframework.web.bind.annotation.GetMapping;
+
+
     @Controller
     @ConfigurationProperties("controller")
+
     public class HelloController {
 
         private FeatureManager featureManager;
@@ -139,13 +157,13 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
 
         @GetMapping("/welcome")
         public String mainWithParam(Model model) {
-            model.addAttribute("Beta", featureManager.isEnabled("Beta"));
+            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta"));
             return "welcome";
         }
     }
     ```
 
-1. Utwórz nowy plik HTML o nazwie *Welcome. html* w katalogu templates aplikacji. Dodaj następujące wiersze:
+1. Utwórz nowy plik HTML o nazwie *Welcome. html* w katalogu templates aplikacji.
 
     ```html
     <!DOCTYPE html>
@@ -202,7 +220,7 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
 
     ```
 
-1. Utwórz nowy folder o nazwie CSS w obszarze statyczny i wewnątrz niego nowy plik CSS o nazwie *Main. css*. Dodaj następujące wiersze:
+6. Utwórz nowy folder o nazwie CSS w obszarze `static` i wewnątrz niego nowy plik CSS o nazwie *Main. css*.
 
     ```css
     html {
@@ -237,24 +255,24 @@ Używasz [sprężyny Initializr](https://start.spring.io/) do tworzenia nowego p
 
 ## <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
 
-1. Skompiluj aplikację do rozruchu ze sprężyną przy użyciu Maven i uruchom ją, na przykład:
+1. Skompiluj aplikację do rozruchu ze sprężyną przy użyciu Maven i uruchom ją.
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
 
-2. Otwórz okno przeglądarki i przejdź do `https://localhost:8080`, który jest domyślnym adresem URL aplikacji sieci Web hostowanej lokalnie.
+1. Otwórz okno przeglądarki i przejdź do domyślnego adresu URL dla lokalnie hostowanej aplikacji sieci Web: `https://localhost:8080`.
 
     ![Lokalne uruchamianie aplikacji z przewodnika Szybki start](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-3. W portalu konfiguracji aplikacji wybierz pozycję **Menedżer funkcji**, a następnie Zmień stan klucza **beta** **na:**
+1. W portalu konfiguracji aplikacji wybierz pozycję **Menedżer funkcji**, a następnie Zmień stan klucza **beta** **na:**
 
     | Klucz | Stan |
     |---|---|
     | Beta | Włączone |
 
-4. Odśwież stronę przeglądarki, aby zobaczyć nowe ustawienia konfiguracji.
+1. Odśwież stronę przeglądarki, aby zobaczyć nowe ustawienia konfiguracji.
 
     ![Lokalne uruchamianie aplikacji z przewodnika Szybki start](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 

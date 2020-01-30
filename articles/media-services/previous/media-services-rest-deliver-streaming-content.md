@@ -1,6 +1,6 @@
 ---
-title: Publikowanie zawartości usługi Azure Media Services przy użyciu usługi REST
-description: Dowiedz się, jak utworzyć Lokalizator, który jest używany do tworzenia adresu URL przesyłania strumieniowego. Kod używa interfejsu API REST.
+title: Publikowanie Azure Media Services zawartości przy użyciu interfejsu REST
+description: Dowiedz się, jak utworzyć lokalizator, który jest używany do tworzenia adresu URL przesyłania strumieniowego. Kod używa interfejsu API REST.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 974f0af461ecdc7de820191950b010035d02a601
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e3c2b7f4087f0f47466eff47b22c59dad19892e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598309"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774942"
 ---
-# <a name="publish-azure-media-services-content-using-rest"></a>Publikowanie zawartości usługi Azure Media Services przy użyciu usługi REST 
+# <a name="publish-azure-media-services-content-using-rest"></a>Publikowanie Azure Media Services zawartości przy użyciu interfejsu REST 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST](media-services-rest-deliver-streaming-content.md)
@@ -29,40 +29,40 @@ ms.locfileid: "60598309"
 > 
 > 
 
-Można przesyłanie strumieniowe z adaptacyjną szybkością transmisji bitów w formacie MP4 ustawione przez utworzenie lokalizatora OnDemand przesyłania strumieniowego i tworzenia adresu URL przesyłania strumieniowego. [Kodowanie elementu zawartości](media-services-rest-encode-asset.md) artykule pokazano, jak do zakodowania w adaptacyjną szybkością transmisji bitów zestawu plików MP4. Jeśli zawartość jest zaszyfrowany, konfigurowanie zasad dostarczania elementów zawartości (zgodnie z opisem w [to](media-services-rest-configure-asset-delivery-policy.md) artykułu) przed utworzeniem lokalizatora. 
+Można przesyłać strumieniowo plik MP4 z adaptacyjną szybkością transmisji bitów, tworząc lokalizator przesyłania strumieniowego OnDemand i tworzący adres URL przesyłania strumieniowego. W artykule [kodowanie elementu zawartości](media-services-rest-encode-asset.md) pokazano, jak kodować zestaw plików MP4 z adaptacyjną szybkością transmisji bitów. Jeśli zawartość jest zaszyfrowana, skonfiguruj zasady dostarczania zasobów (zgodnie z opisem w [tym](media-services-rest-configure-asset-delivery-policy.md) artykule) przed utworzeniem lokalizatora. 
 
-Lokalizatora OnDemand przesyłania strumieniowego służy również do tworzenia adresów URL, które wskazują na pliki MP4, które można pobrać progresywnie.  
+Lokalizatora przesyłania strumieniowego OnDemand można także użyć do kompilowania adresów URL, które wskazują pliki MP4, które mogą być stopniowo pobierane.  
 
-W tym artykule pokazano, jak utworzyć Lokalizator OnDemand przesyłania strumieniowego w celu publikowania elementów zawartości i tworzyć Smooth, MPEG DASH i HLS adresów URL przesyłania strumieniowego. Pokazuje także gorąca tworzyć adresy URL pobierania progresywnego.
+W tym artykule pokazano, jak utworzyć lokalizator przesyłania strumieniowego OnDemand, aby opublikować element zawartości i utworzyć gładkie i HLS adresy URL przesyłania strumieniowego. Przedstawiono w nim również adresy URL pobierania progresywnego.
 
-[Następujące](#types) sekcji pokazano typy wyliczenia, których wartości są używane w wywołania REST.   
+W [poniższej](#types) sekcji przedstawiono typy wyliczeniowe, których wartości są używane w wywołaniach Rest.   
 
 > [!NOTE]
-> Podczas uzyskiwania dostępu do jednostek w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [Instalatora w celu tworzenia interfejsu API REST usługi Media](media-services-rest-how-to-use.md).
+> Podczas uzyskiwania dostępu do jednostek w Media Services należy ustawić określone pola nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [konfigurowanie Media Services tworzenia interfejsu API REST](media-services-rest-how-to-use.md).
 > 
 
 ## <a name="connect-to-media-services"></a>Łączenie się z usługą Media Services
 
-Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AMS, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Aby uzyskać informacje na temat nawiązywania połączenia z interfejsem API usługi AMS, zobacz [dostęp do interfejsu api Azure Media Services przy użyciu uwierzytelniania w usłudze Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Po pomyślnym nawiązaniu połączenia z https://media.windows.net, otrzymasz 301 przekierowanie, określając inny identyfikator URI usługi multimediów. Użytkownik musi zapewnić kolejnych wywołań nowy identyfikator URI.
+>Po pomyślnym nawiązaniu połączenia z https://media.windows.net otrzymasz przekierowanie 301 określające inny Media Services identyfikator URI. Należy wykonać kolejne wywołania nowego identyfikatora URI.
 
-## <a name="create-an-ondemand-streaming-locator"></a>Tworzenie lokalizatora OnDemand przesyłania strumieniowego
-Aby utworzyć Lokalizator OnDemand przesyłania strumieniowego i uzyskiwanie adresów URL, należy wykonać następujące czynności:
+## <a name="create-an-ondemand-streaming-locator"></a>Tworzenie lokalizatora przesyłania strumieniowego OnDemand
+Aby utworzyć lokalizator przesyłania strumieniowego OnDemand i uzyskać adresy URL, należy wykonać następujące czynności:
 
-1. Jeśli zawartość jest zaszyfrowany, należy zdefiniować zasadę dostępu.
-2. Tworzenie lokalizatora OnDemand przesyłania strumieniowego.
-3. Jeśli użytkownik chce przesyłać strumieniowo, Pobierz przesyłania strumieniowego pliku manifestu (ISM) w elemencie zawartości. 
+1. Jeśli zawartość jest zaszyfrowana, Zdefiniuj zasady dostępu.
+2. Utwórz lokalizator przesyłania strumieniowego OnDemand.
+3. Jeśli planujesz przesyłanie strumieniowe, Pobierz plik manifestu przesyłania strumieniowego (. ISM) w elemencie zawartości. 
    
-   Jeśli planujesz progresywnie uzyskać nazwy plików MP4 w elemencie zawartości. 
-4. Tworzenie adresów URL do pliku manifestu lub plików MP4. 
-5. Nie można utworzyć Lokalizator przesyłania strumieniowego przy użyciu AccessPolicy, która obejmuje zapisu lub usunąć uprawnienia.
+   Jeśli planujesz pobieranie progresywne, Pobierz nazwy plików MP4 w elemencie zawartości. 
+4. Kompiluj adresy URL do pliku manifestu lub plików MP4. 
+5. Nie można utworzyć lokalizatora przesyłania strumieniowego przy użyciu AccessPolicy, który obejmuje uprawnienia do zapisu lub usuwania.
 
 ### <a name="create-an-access-policy"></a>Tworzenie zasad dostępu
 
 >[!NOTE]
->Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Użyj tego samego Identyfikatora zasad, jeśli zawsze używasz tych samych dni / dostęp do uprawnień, na przykład zasad lokalizatorów, które powinny pozostać w miejscu przez długi czas (nieprzekazywane zasady). Więcej informacji znajduje się w [tym](media-services-dotnet-manage-entities.md#limit-access-policies) artykule.
+>Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Użyj tego samego identyfikatora zasad, jeśli zawsze używasz tych samych dni/uprawnień dostępu, na przykład zasad dla lokalizatorów, które mają być nadal wykonywane przez długi czas (zasady bez przekazywania). Więcej informacji znajduje się w [tym](media-services-dotnet-manage-entities.md#limit-access-policies) artykule.
 
 Żądanie:
 
@@ -73,7 +73,7 @@ Aby utworzyć Lokalizator OnDemand przesyłania strumieniowego i uzyskiwanie adr
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 6bcfd511-a561-448d-a022-a319a89ecffa
     Host: media.windows.net
     Content-Length: 68
@@ -99,8 +99,8 @@ Odpowiedź:
 
     {"odata.metadata":"https://media.windows.net/api/$metadata#AccessPolicies/@Element","Id":"nb:pid:UUID:69c80d98-7830-407f-a9af-e25f4b0d3e5f","Created":"2015-02-18T06:52:09.8862191Z","LastModified":"2015-02-18T06:52:09.8862191Z","Name":"access policy","DurationInMinutes":43200.0,"Permissions":1}
 
-### <a name="create-an-ondemand-streaming-locator"></a>Tworzenie lokalizatora OnDemand przesyłania strumieniowego
-Tworzenie lokalizatora dla określonego zasobu i zasad zasobów.
+### <a name="create-an-ondemand-streaming-locator"></a>Tworzenie lokalizatora przesyłania strumieniowego OnDemand
+Utwórz lokalizator dla określonego zasobu i zasad zasobów.
 
 Żądanie:
 
@@ -111,7 +111,7 @@ Tworzenie lokalizatora dla określonego zasobu i zasad zasobów.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: ac159492-9a0c-40c3-aacc-551b1b4c5f62
     Host: media.windows.net
     Content-Length: 181
@@ -137,39 +137,39 @@ Odpowiedź:
 
     {"odata.metadata":"https://media.windows.net/api/$metadata#Locators/@Element","Id":"nb:lid:UUID:be245661-2bbd-4fc6-b14f-9cf9a1492e5e","ExpirationDateTime":"2015-03-20T06:34:47.267872+00:00","Type":2,"Path":"https://amstest1.streaming.mediaservices.windows.net/be245661-2bbd-4fc6-b14f-9cf9a1492e5e/","BaseUri":"https://amstest1.streaming.mediaservices.windows.net","ContentAccessComponent":"be245661-2bbd-4fc6-b14f-9cf9a1492e5e","AccessPolicyId":"nb:pid:UUID:1480030d-c481-430a-9687-535c6a5cb272","AssetId":"nb:cid:UUID:cc1e445d-1500-80bd-538e-f1e4b71b465e","StartTime":"2015-02-18T06:34:47.267872+00:00","Name":null}
 
-### <a name="build-streaming-urls"></a>Tworzenie adresów URL przesyłania strumieniowego
-Użyj **ścieżki** zwracana wartość po utworzeniu lokalizatora do tworzenia, Smooth, HLS i MPEG DASH w adresach URL. 
+### <a name="build-streaming-urls"></a>Kompiluj adresy URL przesyłania strumieniowego
+Użyj wartości **Path** zwróconej po utworzeniu lokalizatora, aby utworzyć adresy URL gładkie, HLS i MPEG. 
 
-Zestaw Smooth Streaming: **Ścieżka** + nazwa pliku manifestu + "/ manifest"
+Smooth Streaming: **ścieżka** + nazwa pliku manifestu + "/manifest"
 
 przykład:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
-HLS: **Ścieżka** + nazwa pliku manifestu + "/ manifest(format=m3u8-aapl)"
+HLS: **Path** + nazwa pliku manifestu + "/manifest (format = M3U8-AAPL)"
 
 przykład:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
 
-DASH: **Ścieżka** + nazwa pliku manifestu + "/ manifest(format=mpd-time-csf)"
+KRESKa: **ścieżka** + nazwa pliku manifestu + "/manifest (format = MPD-Time-CSF)"
 
 przykład:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-### <a name="build-progressive-download-urls"></a>Tworzyć adresy URL pobierania progresywnego
-Użyj **ścieżki** zwracana wartość po utworzeniu lokalizatorów tworzenia adresu URL pobierania progresywnego.   
+### <a name="build-progressive-download-urls"></a>Kompiluj adresy URL pobierania progresywnego
+Użyj wartości **Path** zwróconej po utworzeniu lokalizatora w celu SKOMPILOWANIA adresu URL pobierania progresywnego.   
 
-Adres URL: **Ścieżka** + nazwa mp4 pliku elementu zawartości
+URL: **ścieżka** + plik zasobów nazwa MP4
 
 przykład:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-## <a id="types"></a>Typach wyliczeniowych
+## <a id="types"></a>Typy wyliczeniowe
     [Flags]
     public enum AccessPermissions
     {
@@ -190,11 +190,11 @@ przykład:
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Prześlij opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz także
-[Omówienie interfejsu API REST usługi Media Services operacji](media-services-rest-how-to-use.md)
+[Omówienie interfejsu API REST usługi Media Services Operations](media-services-rest-how-to-use.md)
 
 [Konfigurowanie zasad dostarczania elementów zawartości](media-services-rest-configure-asset-delivery-policy.md)
 

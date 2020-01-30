@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872064"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767991"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami indeksowania w Azure Cosmos DB
 
-W Azure Cosmos DB dane są indeksowane zgodnie z [zasadami indeksowania](index-policy.md) , które są zdefiniowane dla każdego kontenera. Domyślne zasady indeksowania dla nowo utworzonych kontenerów wymuszają indeksy zakresu dla dowolnego ciągu lub liczby. Te zasady można zastąpić własnymi zasadami indeksowania niestandardowego.
+W Azure Cosmos DB dane są indeksowane zgodnie z [zasadami indeksowania](index-policy.md) , które są zdefiniowane dla każdego kontenera. Domyślne zasady indeksowania dla nowo utworzonych kontenerów wymuszają indeksy zakresu dla wszelkich ciągów i liczb. Te zasady można zastąpić własnymi niestandardowymi zasadami indeksowania.
 
 ## <a name="indexing-policy-examples"></a>Przykłady zasad indeksowania
 
@@ -332,7 +332,7 @@ Te zasady spowodują wyłączenie indeksowania. Jeśli `indexingMode` jest ustaw
 
 W Azure Cosmos DB zasady indeksowania można aktualizować przy użyciu dowolnej z poniższych metod:
 
-- Z Azure Portal
+- z Azure Portal
 - Korzystanie z interfejsu wiersza polecenia platformy Azure
 - przy użyciu programu PowerShell
 - Korzystanie z jednego z zestawów SDK
@@ -356,7 +356,7 @@ Kontenery usługi Azure Cosmos przechowują swoje zasady indeksowania jako dokum
 
 1. Modyfikowanie dokumentu JSON zasad indeksowania (Zobacz przykłady [poniżej](#indexing-policy-examples))
 
-1. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
+1. Po zakończeniu kliknij przycisk **Zapisz** .
 
 ![Zarządzanie indeksowaniem przy użyciu witryny Azure Portal](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
@@ -607,9 +607,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk"></a>Korzystanie z zestawu SDK języka Python
+## <a name="use-the-python-sdk-v3"></a>Korzystanie z zestawu Python SDK v3
 
-W przypadku korzystania z [zestawu SDK języka Python](https://pypi.org/project/azure-cosmos/) (zobacz [ten przewodnik Szybki Start](create-sql-api-python.md) dotyczący użycia) Konfiguracja kontenera jest zarządzana jako słownik. Z tego słownika można uzyskać dostęp do zasad indeksowania i wszystkich jej atrybutów.
+W przypadku korzystania z [zestawu Python SDK v3](https://pypi.org/project/azure-cosmos/) (zobacz [ten przewodnik Szybki Start](create-sql-api-python.md) dotyczący użycia) Konfiguracja kontenera jest zarządzana jako słownik. Z tego słownika można uzyskać dostęp do zasad indeksowania i wszystkich jej atrybutów.
 
 Pobierz szczegóły kontenera
 
@@ -669,6 +669,72 @@ Aktualizowanie kontenera ze zmianami
 
 ```python
 response = client.ReplaceContainer(containerPath, container)
+```
+
+## <a name="use-the-python-sdk-v4"></a>Korzystanie z zestawu SDK dla języka Python w wersji 4
+
+W przypadku korzystania z [zestawu SDK języka Python w wersji 4](https://pypi.org/project/azure-cosmos/), konfiguracja kontenera jest zarządzana jako słownik. Z tego słownika można uzyskać dostęp do zasad indeksowania i wszystkich jej atrybutów.
+
+Pobierz szczegóły kontenera
+
+```python
+database_client = cosmos_client.get_database_client('database')
+container_client = database_client.get_container_client('container')
+container = container_client.read()
+```
+
+Ustawianie spójności trybu indeksowania
+
+```python
+indexingPolicy = {
+    'indexingMode': 'consistent'
+}
+```
+
+Definiowanie zasad indeksowania z dołączoną ścieżką i indeksem przestrzennym
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+        {"path":"/location/*","types":["Point"]}
+    ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+Definiowanie zasad indeksowania przy użyciu ścieżki wykluczonej
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+Dodawanie indeksu złożonego
+
+```python
+indexingPolicy['compositeIndexes'] = [
+    [
+        {
+            "path": "/name",
+            "order": "ascending"
+        },
+        {
+            "path": "/age",
+            "order": "descending"
+        }
+    ]
+]
+```
+
+Aktualizowanie kontenera ze zmianami
+
+```python
+response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
 
 ## <a name="next-steps"></a>Następne kroki

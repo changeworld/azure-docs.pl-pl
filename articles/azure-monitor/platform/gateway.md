@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: b68f19faa1542b873e90a4ce6d0426db7f3ff871
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547306"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773288"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Łączenie komputerów bez dostępu do Internetu przy użyciu bramy Log Analytics w programie Azure Monitor
 
@@ -159,7 +159,7 @@ W poniższej tabeli przedstawiono parametry obsługiwane przez Instalatora.
 |NUMER_PORTU | Numer portu TCP dla bramy do nasłuchiwania |
 |SERWERA proxy | Adres IP serwera proxy |
 |INSTALLDIR | W pełni kwalifikowana ścieżka do określenia katalogu instalacyjnego plików oprogramowania bramy |
-|NAZWA UŻYTKOWNIKA | Identyfikator użytkownika do uwierzytelnienia na serwerze proxy |
+|UŻ | Identyfikator użytkownika do uwierzytelnienia na serwerze proxy |
 |HASŁO | Hasło identyfikatora użytkownika do uwierzytelniania przy użyciu serwera proxy |
 |LicenseAccepted | Określ wartość **1** , aby potwierdzić zaakceptowanie umowy licencyjnej |
 |HASAUTH | Określ wartość **1** , jeśli określono parametry nazwy użytkownika/hasła |
@@ -204,13 +204,13 @@ Aby dowiedzieć się, jak zaprojektować i wdrożyć klaster równoważenia obci
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Aby dowiedzieć się, jak projektować i wdrażać Azure Load Balancer, zobacz [co to jest Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Aby wdrożyć podstawowy moduł równoważenia obciążenia, wykonaj czynności opisane w tym [przewodniku szybki start](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) , z wyjątkiem kroków opisanych w sekcji **Tworzenie serwerów zaplecza**.   
+Aby dowiedzieć się, jak projektować i wdrażać Azure Load Balancer, zobacz [co to jest Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Aby wdrożyć podstawowy moduł równoważenia obciążenia, wykonaj czynności opisane w tym [przewodniku szybki start](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) , z wyjątkiem kroków opisanych w sekcji **Tworzenie serwerów zaplecza**.   
 
 > [!NOTE]
 > Skonfigurowanie Azure Load Balancer przy użyciu **podstawowej jednostki SKU**wymaga, aby maszyny wirtualne platformy Azure należały do zestawu dostępności. Aby dowiedzieć się więcej na temat zestawów dostępności, zobacz [Zarządzanie dostępnością maszyn wirtualnych z systemem Windows na platformie Azure](../../virtual-machines/windows/manage-availability.md). Aby dodać istniejące maszyny wirtualne do zestawu dostępności, zapoznaj się z poleceniem [set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
 > 
 
-Po utworzeniu modułu równoważenia obciążenia należy utworzyć pulę zaplecza, która dystrybuuje ruch do jednego lub większej liczby serwerów bramy. Wykonaj kroki opisane w sekcji artykuł szybkiego startu [Tworzenie zasobów dla modułu równoważenia obciążenia](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer).  
+Po utworzeniu modułu równoważenia obciążenia należy utworzyć pulę zaplecza, która dystrybuuje ruch do jednego lub większej liczby serwerów bramy. Wykonaj kroki opisane w sekcji artykuł szybkiego startu [Tworzenie zasobów dla modułu równoważenia obciążenia](../../load-balancer/quickstart-load-balancer-standard-public-portal.md).  
 
 >[!NOTE]
 >Podczas konfigurowania sondy kondycji należy ją skonfigurować tak, aby korzystała z portu TCP serwera bramy. Sonda kondycji dynamicznie dodaje lub usuwa serwery bramy z rotacji modułu równoważenia obciążenia na podstawie ich odpowiedzi na testy kondycji. 

@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Ta strona zawiera przegląd możliwości rozwiązywania problemów dotyczących zasobów Network Watcher
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 736bbd16456dd0abda3292b9b9e73ea5b941e7ed
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277772"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840693"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Wprowadzenie do rozwiązywania problemów z zasobami w usłudze Azure Network Watcher
 
@@ -50,9 +47,9 @@ W poniższych tabelach przedstawiono różne typy błędów (identyfikator w obs
 
 ### <a name="gateway"></a>Brama
 
-| Typ błędu | Przyczyna | Log|
+| Typ błędu | Przyczyna | Dziennik|
 |---|---|---|
-| NoFault | Gdy nie wykryto błędu |Yes|
+| NoFault | Gdy nie wykryto błędu |Tak|
 | GatewayNotFound | Nie można znaleźć bramy lub Brama nie została zainicjowana |Nie|
 | PlannedMaintenance |  Wystąpienie bramy jest w trakcie konserwacji  |Nie|
 | UserDrivenUpdate | Ten błąd występuje, gdy aktualizacja użytkownika jest w toku. Aktualizacja może być operacją zmiany rozmiaru. | Nie |
@@ -60,26 +57,26 @@ W poniższych tabelach przedstawiono różne typy błędów (identyfikator w obs
 | PlatformInActive | Wystąpił problem z platformą. | Nie|
 | ServiceNotRunning | Podstawowa usługa nie jest uruchomiona. | Nie|
 | NoConnectionsFoundForGateway | Brak połączeń w bramie. Ten błąd jest tylko ostrzeżeniem.| Nie|
-| ConnectionsNotConnected | Połączenia nie są połączone. Ten błąd jest tylko ostrzeżeniem.| Yes|
-| GatewayCPUUsageExceeded | Bieżące użycie procesora CPU bramy jest > 95%. | Yes |
+| ConnectionsNotConnected | Połączenia nie są połączone. Ten błąd jest tylko ostrzeżeniem.| Tak|
+| GatewayCPUUsageExceeded | Bieżące użycie procesora CPU bramy jest > 95%. | Tak |
 
 ### <a name="connection"></a>Połączenie
 
-| Typ błędu | Przyczyna | Log|
+| Typ błędu | Przyczyna | Dziennik|
 |---|---|---|
-| NoFault | Gdy nie wykryto błędu |Yes|
+| NoFault | Gdy nie wykryto błędu |Tak|
 | GatewayNotFound | Nie można znaleźć bramy lub Brama nie została zainicjowana |Nie|
 | PlannedMaintenance | Wystąpienie bramy jest w trakcie konserwacji  |Nie|
 | UserDrivenUpdate | Ten błąd występuje, gdy aktualizacja użytkownika jest w toku. Aktualizacja może być operacją zmiany rozmiaru.  | Nie |
 | VipUnResponsive | Ten błąd występuje, gdy nie można skontaktować się z podstawowym wystąpieniem bramy z powodu błędu sondy kondycji. | Nie |
 | ConnectionEntityNotFound | Brak konfiguracji połączenia | Nie |
 | ConnectionIsMarkedDisconnected | Połączenie jest oznaczone jako "rozłączone" |Nie|
-| ConnectionNotConfiguredOnGateway | Usługa bazowa nie ma skonfigurowanego połączenia. | Yes |
-| ConnectionMarkedStandby | Podstawowa usługa jest oznaczona jako w stanie wstrzymania.| Yes|
-| Authentication | Niezgodność klucza wstępnego | Yes|
-| PeerReachability | Brama równorzędna jest nieosiągalna. | Yes|
-| IkePolicyMismatch | Brama równorzędna ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Yes|
-| Błąd WfpParse | Wystąpił błąd podczas analizowania dziennika WFP. |Yes|
+| ConnectionNotConfiguredOnGateway | Usługa bazowa nie ma skonfigurowanego połączenia. | Tak |
+| ConnectionMarkedStandby | Podstawowa usługa jest oznaczona jako w stanie wstrzymania.| Tak|
+| Authentication | Niezgodność klucza wstępnego | Tak|
+| PeerReachability | Brama równorzędna jest nieosiągalna. | Tak|
+| IkePolicyMismatch | Brama równorzędna ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Tak|
+| Błąd WfpParse | Wystąpił błąd podczas analizowania dziennika WFP. |Tak|
 
 ## <a name="supported-gateway-types"></a>Obsługiwane typy bram
 
@@ -88,7 +85,7 @@ W poniższej tabeli wymieniono bramy i połączenia obsługiwane przez Network W
 |  |  |
 |---------|---------|
 |**Typy bram**   |         |
-|Sieć VPN      | Obsługiwane        |
+|VPN      | Obsługiwane        |
 |ExpressRoute | Nieobsługiwane |
 |**Typy sieci VPN** | |
 |Oparta na trasach | Obsługiwane|

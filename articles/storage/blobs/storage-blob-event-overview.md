@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 78ec5b6d330f03d78dcb4e798b23d588fd93398e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648790"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835967"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia magazynu obiektów BLOB
 
-Zdarzenia usługi Azure Storage umożliwiają aplikacjom reagowanie na zdarzenia, takie jak tworzenie i usuwanie obiektów blob, przy użyciu nowoczesnych architektur bezserwerowych. Robi to bez konieczności stosowania skomplikowanego kodu lub kosztownych i nieefektywnych usług sondowania.
+Zdarzenia usługi Azure Storage umożliwiają aplikacjom reagowanie na zdarzenia, takie jak tworzenie i usuwanie obiektów BLOB. Robi to bez konieczności stosowania skomplikowanego kodu lub kosztownych i nieefektywnych usług sondowania.
 
-Zamiast tego zdarzenia są wypychane za pośrednictwem [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do subskrybentów, takich jak Azure Functions, Azure Logic Apps lub nawet do własnego niestandardowego odbiornika HTTP i płacisz tylko za to, czego używasz.
+Zdarzenia są wypychane przy użyciu [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do subskrybentów, takich jak Azure Functions, Azure Logic Apps lub nawet do własnego odbiornika http. W najlepszej części płacisz tylko za to, czego używasz.
 
-Zdarzenia magazynu obiektów BLOB są niezawodnie wysyłane do usługi Event Grid, która zapewnia niezawodne usługi dostarczania dla aplikacji za pomocą rozbudowanych zasad ponowień i dostarczania wiadomości utraconych.
+Magazyn obiektów BLOB wysyła zdarzenia do Event Grid, które zapewniają niezawodne dostarczanie zdarzeń do aplikacji dzięki rozbudowanym zasadom ponawiania prób i wykorzystaniu utraconych wiadomości.
 
 Typowe scenariusze zdarzeń magazynu obiektów BLOB obejmują przetwarzanie obrazów lub wideo, indeksowanie wyszukiwania lub wszelkie przepływy pracy zorientowane na pliki. Asynchroniczne przekazywanie plików to doskonałe dopasowanie do zdarzeń. Gdy zmiany są rzadko wykonywane, ale scenariusz wymaga natychmiastowej reakcji, Architektura oparta na zdarzeniach może być szczególnie wydajna.
 
@@ -29,11 +29,14 @@ Jeśli chcesz wypróbować tę usługę teraz, zobacz dowolny z tych artykułów
 
 |Jeśli chcesz użyć tego narzędzia:    |Zobacz ten artykuł: |
 |--|-|
-|Azure Portal    |[Szybki start: Kierowanie zdarzeń magazynu obiektów BLOB do punktu końcowego sieci Web za pomocą Azure Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|PowerShell    |[Szybki start: Kierowanie zdarzeń magazynu do punktu końcowego w sieci Web przy użyciu programu PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Interfejs wiersza polecenia platformy Azure    |[Szybki start: Kierowanie zdarzeń magazynu do punktu końcowego sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Portal Azure    |[Szybki Start: kierowanie zdarzeń magazynu obiektów BLOB do punktu końcowego sieci Web za pomocą Azure Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|PowerShell    |[Szybki Start: kierowanie zdarzeń magazynu do punktu końcowego w sieci Web przy użyciu programu PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Interfejs wiersza polecenia platformy Azure    |[Szybki Start: kierowanie zdarzeń magazynu do punktu końcowego sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
-Jeśli Twoje konto ma hierarchiczną przestrzeń nazw, w tym samouczku pokazano, jak połączyć się z subskrypcją Event Grid, funkcją platformy Azure i [zadaniem](https://docs.azuredatabricks.net/user-guide/jobs.html) w Azure Databricks: [Ręczny Użyj zdarzeń Azure Data Lake Storage Gen2, aby zaktualizować tabelę](data-lake-storage-events.md)różnicową danych.
+Jeśli Twoje konto ma hierarchiczną przestrzeń nazw, w tym samouczku pokazano, jak połączyć się z subskrypcją Event Grid, funkcją platformy Azure i [zadaniem](https://docs.azuredatabricks.net/user-guide/jobs.html) w Azure Databricks: [Samouczek: Aby zaktualizować tabelę różnicową danych, użyj zdarzeń Azure Data Lake Storage Gen2](data-lake-storage-events.md).
+
+>[!NOTE]
+> Tylko konta magazynu typu **StorageV2 (ogólnego przeznaczenia w wersji 2)** i **BlobStorage** obsługują integrację zdarzeń. **Magazyn (genral cel v1)** nie *obsługuje integracji* z programem Event Grid.
 
 ## <a name="the-event-model"></a>Model zdarzenia
 
@@ -52,7 +55,7 @@ Zobacz artykuł [schemat zdarzeń magazynu obiektów BLOB](../../event-grid/even
 
 ## <a name="filtering-events"></a>Filtrowanie zdarzeń
 
-Subskrypcje zdarzeń obiektów BLOB można filtrować na podstawie typu zdarzenia i nazwy kontenera i nazwy obiektu BLOB, który został utworzony lub usunięty.  Filtry mogą być stosowane do subskrypcji zdarzeń podczas [tworzenia](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) subskrypcji zdarzeń lub [w późniejszym czasie](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest). Filtry podmiotu w Event Grid pracy oparte na "zaczyna się od" i "kończą się na" dopasowań, więc zdarzenia ze zgodnym podmiotem są dostarczane do subskrybenta.
+Zdarzenia obiektów BLOB [można filtrować](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) według typu zdarzenia, nazwy kontenera lub nazwy obiektu, który został utworzony/usunięty. Filtry w Event Grid są zgodne z początkiem lub końcem podmiotu, dlatego zdarzenia z odpowiednim podmiotem przejdą do subskrybenta.
 
 Aby dowiedzieć się więcej na temat stosowania filtrów, zobacz [filtrowanie zdarzeń dla Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
@@ -64,25 +67,25 @@ W temacie zdarzeń magazynu obiektów BLOB jest stosowany format:
 
 Aby dopasować wszystkie zdarzenia dla konta magazynu, można pozostawić puste filtry podmiotu.
 
-Aby dopasować zdarzenia z obiektów BLOB utworzonych w zestawie kontenerów, które współużytkują prefiks `subjectBeginsWith` , należy użyć filtru, takiego jak:
+Aby dopasować zdarzenia z obiektów BLOB utworzonych w zestawie kontenerów, które współużytkują prefiks, Użyj filtru `subjectBeginsWith`, takiego jak:
 
 ```
 /blobServices/default/containers/containerprefix
 ```
 
-Aby dopasować zdarzenia z obiektów BLOB utworzonych w określonym kontenerze, `subjectBeginsWith` Użyj filtru, takiego jak:
+Aby dopasować zdarzenia z obiektów BLOB utworzonych w określonym kontenerze, Użyj filtru `subjectBeginsWith`, takiego jak:
 
 ```
 /blobServices/default/containers/containername/
 ```
 
-Aby dopasować zdarzenia z obiektów BLOB utworzonych w określonym kontenerze, udostępniając prefiks nazwy obiektu BLOB `subjectBeginsWith` , Użyj filtru, takiego jak:
+Aby dopasować zdarzenia z obiektów BLOB utworzonych w określonym kontenerze, udostępniając prefiks nazwy obiektu BLOB, Użyj filtru `subjectBeginsWith`, takiego jak:
 
 ```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 
-Aby dopasować zdarzenia z obiektów BLOB utworzonych w określonym kontenerze, udostępniając sufiks obiektu BLOB `subjectEndsWith` , Użyj filtru, takiego jak ". log" lub ". jpg". Aby uzyskać więcej informacji, zobacz temat [Event Grid pojęcia](../../event-grid/concepts.md#event-subscriptions).
+Aby dopasować zdarzenia z obiektów BLOB utworzonych w określonym kontenerze, udostępniając sufiks obiektu BLOB, Użyj filtru `subjectEndsWith`, takiego jak ". log" lub ". jpg". Aby uzyskać więcej informacji, zobacz temat [Event Grid pojęcia](../../event-grid/concepts.md#event-subscriptions).
 
 ## <a name="practices-for-consuming-events"></a>Praktyki związane z zużywaniem zdarzeń
 
@@ -92,9 +95,9 @@ Aplikacje, które obsługują zdarzenia magazynu obiektów blob, powinny spełni
 > * Podobnie Sprawdź, czy typ zdarzenia jest przygotowana do przetworzenia i nie zakładaj, że wszystkie zdarzenia, które otrzymujesz, są oczekiwanymi typami.
 > * Ponieważ komunikaty mogą się pojawiać poza kolejnością i po pewnym opóźnieniu, należy użyć pól ETag, aby zrozumieć, czy informacje o obiektach są nadal aktualne.  Ponadto należy użyć pól programu Sequencer do zrozumienia kolejności zdarzeń dla każdego określonego obiektu.
 > * Użyj pola blobtype, aby zrozumieć, jaki typ operacji jest dozwolony dla obiektu BLOB, a także typy bibliotek klientów, które powinny być używane w celu uzyskania dostępu do obiektu BLOB. Prawidłowe wartości to `BlockBlob` lub `PageBlob`. 
-> * Użyj pola adresu URL z `CloudBlockBlob` konstruktorami i `CloudAppendBlob` , aby uzyskać dostęp do obiektu BLOB.
+> * Użyj pola adresu URL z konstruktorami `CloudBlockBlob` i `CloudAppendBlob`, aby uzyskać dostęp do obiektu BLOB.
 > * Ignoruj pola, które nie są zrozumiałe. Ta metoda pomaga w zachowaniu odporności na nowe funkcje, które mogą zostać dodane w przyszłości.
-> * Jeśli chcesz się upewnić, że zdarzenie **Microsoft. Storage. BlobCreated** jest wyzwalane tylko wtedy, gdy blokowy obiekt BLOB jest całkowicie zatwierdzony, przefiltruj `PutBlockList` zdarzenie dla wywołań interfejsu API `CopyBlob`, `PutBlob`lub `FlushWithClose` protokołu REST. Te wywołania interfejsu API wyzwalają zdarzenie **Microsoft. Storage. BlobCreated** tylko wtedy, gdy dane są w pełni zatwierdzone do blokowego obiektu BLOB. Aby dowiedzieć się, jak utworzyć filtr, zobacz [filtrowanie zdarzeń dla Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> * Jeśli chcesz się upewnić, że zdarzenie **Microsoft. Storage. BlobCreated** jest wyzwalane tylko wtedy, gdy blokowy obiekt BLOB jest całkowicie zatwierdzony, przefiltruj zdarzenie dla wywołań interfejsu API REST `CopyBlob`, `PutBlob`, `PutBlockList` lub `FlushWithClose`. Te wywołania interfejsu API wyzwalają zdarzenie **Microsoft. Storage. BlobCreated** tylko wtedy, gdy dane są w pełni zatwierdzone do blokowego obiektu BLOB. Aby dowiedzieć się, jak utworzyć filtr, zobacz [filtrowanie zdarzeń dla Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 
 ## <a name="next-steps"></a>Następne kroki

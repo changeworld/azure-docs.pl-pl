@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452123"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774471"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Opisywanie klastra Service Fabric przy użyciu Menedżer zasobów klastra
 Funkcja Menedżer zasobów klastra platformy Azure Service Fabric oferuje kilka mechanizmów opisywania klastra:
@@ -375,7 +375,7 @@ Wartość określona we właściwości węzła może być ciągiem, wartością 
 
 * Sprawdzanie warunkowe do tworzenia określonych instrukcji:
 
-  | Wyciąg | Składnia |
+  | Merge | Składnia |
   | --- |:---:|
   | "równa się" | "==" |
   | "nie równa się" | "!=" |
@@ -386,7 +386,7 @@ Wartość określona we właściwości węzła może być ciągiem, wartością 
 
 * Instrukcje logiczne dla operacji grupowania i logicznego:
 
-  | Wyciąg | Składnia |
+  | Merge | Składnia |
   | --- |:---:|
   | lub | "&&" |
   | oraz | "&#124;&#124;" |
@@ -472,7 +472,7 @@ Najpierw należy upewnić się, że maszyny nie są przeciążone. Oznacza to, �
 
 Po drugie, istnieje możliwość równoważenia i optymalizacji, co jest niezwykle ważne do wydajnego uruchamiania usług. Oferty usługi ekonomicznej lub dotyczącej wydajności nie mogą zezwalać na gorącą część węzłów, podczas gdy inne są zimne. Hot nodes prowadzi do rywalizacji o zasoby i niskiej wydajności. Zimne węzły przedstawiają zasoby niezajęte i zwiększają koszty. 
 
-Service Fabric reprezentuje zasoby jako *metryki*. Metryki to zasoby logiczne lub fizyczne, które mają zostać opisane Service Fabric. Przykłady metryk to "WorkQueueDepth" lub "MemoryInMb". Aby uzyskać informacje o zasobach fizycznych, które Service Fabric mogą zarządzać na węzłach, zobacz temat [Zarządzanie zasobami](service-fabric-resource-governance.md). Aby uzyskać informacje na temat konfigurowania metryk niestandardowych i ich użycia, zobacz [ten artykuł](service-fabric-cluster-resource-manager-metrics.md).
+Service Fabric reprezentuje zasoby jako *metryki*. Metryki to zasoby logiczne lub fizyczne, które mają zostać opisane Service Fabric. Przykłady metryk to "WorkQueueDepth" lub "MemoryInMb". Aby uzyskać informacje o zasobach fizycznych, które Service Fabric mogą zarządzać na węzłach, zobacz temat [Zarządzanie zasobami](service-fabric-resource-governance.md). Aby uzyskać informacje dotyczące metryk domyślnych używanych przez klaster Menedżer zasobów i sposobu konfigurowania metryk niestandardowych, zobacz [ten artykuł](service-fabric-cluster-resource-manager-metrics.md).
 
 Metryki różnią się od ograniczeń umieszczania i właściwości węzła. Właściwości węzła to statyczne deskryptory węzłów. Metryki opisują zasoby, które znajdują się w węzłach i których usługi używają, gdy są uruchamiane w węźle. Właściwość węzła może być **HasSSD** i może być ustawiona na wartość true lub false. Ilość miejsca dostępnego na tym dysku SSD i ilość zużywanej przez usługi byłyby metryką taką jak "DriveSpaceInMb". 
 

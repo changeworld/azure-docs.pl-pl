@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940992"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841033"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -96,7 +96,7 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 | Właściwości | Dozwolone wartości | Użycie |
 | --- | --- | --- |
 | city |Dowolna wartość ciągu lub wartość *null* |(User. City-EQ "wartość") |
-| kraj |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
+| trzeciego |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
 | companyName | Dowolna wartość ciągu lub wartość *null* | (User. NazwaFirmy-EQ "wartość") |
 | department |Dowolna wartość ciągu lub wartość *null* |(User. Department-EQ "wartość") |
 | displayName |dowolna wartość ciągu |(User. displayName-EQ "value") |
@@ -144,7 +144,7 @@ W poniższej tabeli wymieniono wszystkie obsługiwane operatory i ich składnię
 | Nie zawiera |-notContains |
 | Contains |-zawiera |
 | Niezgodne |-notMatch |
-| Match |-dopasowanie |
+| Spełnić |-dopasowanie |
 | W | -in |
 | Nie w | -notIn |
 
@@ -178,7 +178,7 @@ Wartości używane w wyrażeniu mogą składać się z kilku typów, w tym:
 
 * Ciągi
 * Wartość logiczna — prawda, FAŁSZ
-* numery
+* Liczby
 * Tablice — tablica liczbowa, tablica ciągów
 
 Podczas określania wartości w wyrażeniu ważne jest używanie poprawnej składni w celu uniknięcia błędów. Niektóre wskazówki dotyczące składni:
@@ -370,7 +370,7 @@ Możesz również utworzyć regułę, która wybiera obiekty urządzeń dla czł
 > [!NOTE]
 > systemlabels to atrybut tylko do odczytu, którego nie można ustawić za pomocą usługi Intune.
 >
-> W przypadku systemu Windows 10 prawidłowy format atrybutu deviceOSVersion jest następujący: (Device. deviceOSVersion-EQ "10,0 (17763)"). Formatowanie można sprawdzić za pomocą polecenia cmdlet Get-MsolDevice programu PowerShell.
+> W przypadku systemu Windows 10 prawidłowy format atrybutu deviceOSVersion jest następujący: (Device. deviceOSVersion-EQ "10.0.17763"). Formatowanie można sprawdzić za pomocą polecenia cmdlet Get-MsolDevice programu PowerShell.
 
 Można użyć następujących atrybutów urządzeń.
 

@@ -1,47 +1,64 @@
 ---
-title: Plik dyrektywy include
-description: Plik dyrektywy include
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 01/12/2020
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: 30a6d8556a251ba76dff77e004fb864f3eaf04cf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: f1553a5c9d55366b2764877b48d0606ff8e0b370
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279548"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842191"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikowanie projektu na platformie Azure
 
-Program Visual Studio Code umożliwia publikowanie projektu usługi Functions bezpośrednio na platformie Azure. W ramach tego procesu tworzysz aplikację funkcji i powiązane zasoby w subskrypcji platformy Azure. Aplikacja funkcji zapewnia kontekst wykonywania dla Twoich funkcji. Projekt jest pakowany i wdrażany do nowej aplikacji funkcji w ramach subskrypcji platformy Azure.
+W tej sekcji utworzysz aplikację funkcji i powiązane zasoby w ramach subskrypcji platformy Azure, a następnie wdrożono swój kod. 
 
-Domyślnie Visual Studio Code tworzy wszystkie zasoby platformy Azure wymagane do utworzenia aplikacji funkcji. Nazwy tych zasobów są zależne od wybranej nazwy aplikacji funkcji. Jeśli musisz mieć pełną kontrolę nad utworzonymi zasobami, możesz zamiast tego [opublikować przy użyciu opcji zaawansowanych](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options).
+1. Wybierz ikonę platformy Azure na pasku działania, a następnie w obszarze **Azure: Functions** wybierz przycisk **Wdróż do aplikacji funkcji...** .
 
-W tej sekcji założono, że tworzysz nową aplikację funkcji na platformie Azure.
+    ![Publikowanie projektu na platformie Azure](media/functions-publish-project-vscode/function-app-publish-project.png)
 
-> [!IMPORTANT]
-> Publikowanie do istniejącej aplikacji funkcji spowoduje zastąpienie zawartości tej aplikacji na platformie Azure.
+1. Podaj następujące informacje na ekranie:
 
-1. W Visual Studio Code naciśnij klawisz F1, aby otworzyć paletę poleceń. W palecie poleceń Wyszukaj i wybierz `Azure Functions: Deploy to function app...`.
+    ::: zone pivot="programming-language-csharp,programming-language-powershell"
 
-1. Jeśli nie jest zalogowany, zostanie wyświetlony monit o **zalogowanie się do platformy Azure**. Możesz również **utworzyć bezpłatne konto platformy Azure**. Po pomyślnym zalogowaniu się w przeglądarce Wróć do Visual Studio Code. 
+    | Monit | Wartość | Opis |
+    | ------ | ----- | ----- |
+    | Wybierz subskrypcję | Twoja subskrypcja | Wyświetlane, gdy masz wiele subskrypcji. |
+    | Wybierz aplikacja funkcji na platformie Azure | + Utwórz nowe aplikacja funkcji | Publikowanie do istniejącej aplikacji funkcji spowoduje zastąpienie zawartości tej aplikacji na platformie Azure. |
+    | Wprowadź globalnie unikatową nazwę aplikacji funkcji | Unikatowa nazwa | Prawidłowe znaki dla nazwy aplikacji funkcji to `a-z`, `0-9` i `-`. |
+    | Wybierz lokalizację dla nowych zasobów | Region | Wybierz [region](https://azure.microsoft.com/regions/) blisko siebie. | 
 
-1. Jeśli masz wiele subskrypcji, **Wybierz subskrypcję** dla aplikacji funkcji, a następnie wybierz pozycję **+ Utwórz nowe aplikacja funkcji na platformie Azure**.
+    ::: zone-end
 
-1. Wpisz unikatową w skali globalnej nazwę identyfikującą aplikację funkcji, a następnie naciśnij klawisz Enter. Prawidłowe znaki dla nazwy aplikacji funkcji to `a-z`, `0-9` i `-`.
+    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python"
 
-    Naciśnięcie klawisza ENTER powoduje utworzenie następujących zasobów platformy Azure w ramach subskrypcji:
+    | Monit | Wartość | Opis |
+    | ------ | ----- | ----- |
+    | Wybierz subskrypcję | Twoja subskrypcja | Wyświetlane, gdy masz wiele subskrypcji. |
+    | Wybierz aplikacja funkcji na platformie Azure | + Utwórz nowe aplikacja funkcji | Publikowanie do istniejącej aplikacji funkcji spowoduje zastąpienie zawartości tej aplikacji na platformie Azure. |
+    | Wprowadź globalnie unikatową nazwę aplikacji funkcji | Unikatowa nazwa | Prawidłowe znaki dla nazwy aplikacji funkcji to `a-z`, `0-9` i `-`. |
+    | Wybierz środowisko uruchomieniowe | Twoja wersja | Wybierz wersję językową, która została uruchomiona lokalnie. |
+    | Wybierz lokalizację dla nowych zasobów | Region | Wybierz [region](https://azure.microsoft.com/regions/) blisko siebie. | 
 
-    * **[Grupa zasobów](../articles/azure-resource-manager/management/overview.md)** : zawiera wszystkie utworzone zasoby platformy Azure. Nazwa jest oparta na nazwie aplikacji funkcji.
-    * **[Konto magazynu](../articles/storage/common/storage-account-create.md)** : konto magazynu w warstwie Standardowa jest tworzone z unikatową nazwą, która jest oparta na nazwie aplikacji funkcji.
-    * **[Plan hostingu](../articles/azure-functions/functions-scale.md)** : plan zużycia jest tworzony w regionie zachodnie stany USA w celu hostowania aplikacji funkcji bezserwerowej.
-    * **Aplikacja funkcji**: projekt jest wdrażany do i uruchamiany w tej nowej aplikacji funkcji.
+    ::: zone-end
 
-    Po utworzeniu aplikacji funkcji i zastosowaniu pakietu wdrożeniowego zostanie wyświetlone powiadomienie. Wybierz pozycję **Wyświetl dane wyjściowe** w tym powiadomieniu, aby wyświetlić wyniki tworzenia i wdrażania, w tym utworzone zasoby platformy Azure.
+    
+1.  Po zakończeniu następujące zasoby platformy Azure są tworzone w ramach subskrypcji:
 
-1. Wróć do obszaru **Azure: Functions** , a następnie rozwiń nową aplikację funkcji w ramach subskrypcji. Rozwiń węzeł **funkcje**, kliknij prawym przyciskiem myszy pozycję **HttpTrigger**, a następnie wybierz polecenie **Kopiuj adres URL funkcji**.
+    + **[Grupa zasobów](../articles/azure-resource-manager/management/overview.md)** : zawiera wszystkie utworzone zasoby platformy Azure. Nazwa jest oparta na nazwie aplikacji funkcji.
+    + **[Konto magazynu](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** : konto magazynu w warstwie Standardowa jest tworzone z unikatową nazwą, która jest oparta na nazwie aplikacji funkcji.
+    + **[Plan hostingu](../articles/azure-functions/functions-scale.md)** : plan zużycia jest tworzony w regionie zachodnie stany USA w celu hostowania aplikacji funkcji bezserwerowej.
+    + **Aplikacja funkcji**: projekt jest wdrażany do i uruchamiany w tej nowej aplikacji funkcji.
+    + **[Application Insights]()** : wystąpienie, które jest połączone z aplikacją funkcji, jest tworzone na podstawie nazwy funkcji.
+
+    Po utworzeniu aplikacji funkcji i zastosowaniu pakietu wdrożeniowego zostanie wyświetlone powiadomienie. 
+    
+1. Wybierz pozycję **Wyświetl dane wyjściowe** w tym powiadomieniu, aby wyświetlić wyniki tworzenia i wdrażania, w tym utworzone zasoby platformy Azure.
+
+    ![Utwórz pełne powiadomienie](media/functions-publish-project-vscode/function-create-notifications.png)
+
+1. Wróć do obszaru **Azure: Functions** na pasku bocznym, a następnie rozwiń nową aplikację funkcji w ramach subskrypcji. Rozwiń węzeł **funkcje**, kliknij prawym przyciskiem myszy (Windows) lub Ctrl + kliknięcie (MacOS) w **HttpExample**, a następnie wybierz polecenie **Kopiuj adres URL funkcji**.
 
     ![Skopiuj adres URL funkcji dla nowego wyzwalacza HTTP](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

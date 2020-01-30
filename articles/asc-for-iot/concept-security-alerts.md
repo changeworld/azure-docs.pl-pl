@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2019
+ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: aaf3111270687e3921d542d87981a25868842f93
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ac0152d0164c3577ade3d862e9512b920c451518
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554914"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766511"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center alertów zabezpieczeń IoT
 
@@ -30,7 +30,7 @@ Alert działa jako wskaźnik potencjalnego naruszenia i należy go zbadać i sko
 
 W tym artykule znajduje się lista wbudowanych alertów, które mogą być wyzwalane na urządzeniach IoT Hub i/lub IoT.
 Oprócz wbudowanych alertów Azure Security Center dla usługi IoT umożliwia Definiowanie niestandardowych alertów na podstawie oczekiwanych zachowań IoT Hub i/lub urządzeń.
-Aby uzyskać więcej informacji, zobacz [tworzenie alertów niestandardowych](quickstart-create-custom-alerts.md).
+Aby uzyskać więcej informacji, zobacz [dostosowywalne alerty](concept-customizable-security-alerts.md).
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Wbudowane alerty dla urządzeń IoT
 
@@ -88,13 +88,13 @@ Aby uzyskać więcej informacji, zobacz [tworzenie alertów niestandardowych](qu
 | Ważność | Nazwa                                                                         | Opis | Sugerowane korygowanie|
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 |**Średnia** ważność|  |  |  |
-|  Dodano nowy certyfikat do IoT Hub  | Średnie                                     |Dodano certyfikat o nazwie \'% {DescCertificateName} \' do IoT Hub \'% {DescIoTHubName} \'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie.| 1. Upewnij się, że certyfikat został dodany przez autoryzowaną stronę. <br> 2. Jeśli nie została dodana przez autoryzowaną stronę, Usuń certyfikat i przeeskalacjj alertu do zespołu ds. zabezpieczeń.  |
-|  Certyfikat został usunięty z IoT Hub  | Średnie                             | Certyfikat o nazwie \'% {DescCertificateName} \' został usunięty z IoT Hub \'% {DescIoTHubName} \'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie.| 1. Upewnij się, że certyfikat został usunięty przez autoryzowaną stronę. <br> 2. Jeśli certyfikat nie został usunięty przez autoryzowaną stronę, należy dodać certyfikat ponownie i eskalować alert do zespołu ds. zabezpieczeń. |
-| Wykryto nieudaną próbę dodania certyfikatu do IoT Hub   | Średnie    | Wystąpił błąd podczas próby dodania certyfikatu \'% {DescCertificateName} \' do IoT Hub \'% {DescIoTHubName} \'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie.|   Upewnij się, że uprawnienia do zmiany certyfikatów są udzielane tylko autoryzowanym stronom.  |
-|  Próba usunięcia certyfikatu z IoT Hub nie powiodła się | Średnie  | Wystąpił błąd podczas próby usunięcia certyfikatu \'% {DescCertificateName} \' z IoT Hub \'% {DescIoTHubName} \'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie. |Upewnij się, że uprawnienia do zmiany certyfikatów są udzielane tylko autoryzowanym podmiotom.
+|  Dodano nowy certyfikat do IoT Hub  | Średnie                                     |Dodano certyfikat o nazwie \'% {DescCertificateName}\' do IoT Hub \'% {DescIoTHubName}\'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie.| 1. Upewnij się, że certyfikat został dodany przez autoryzowaną stronę. <br> 2. Jeśli nie została dodana przez autoryzowaną stronę, Usuń certyfikat i przeeskalacjj alertu do zespołu ds. zabezpieczeń.  |
+|  Certyfikat został usunięty z IoT Hub  | Średnie                             | Certyfikat o nazwie \'% {DescCertificateName}\' został usunięty z IoT Hub \'% {DescIoTHubName}\'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie.| 1. Upewnij się, że certyfikat został usunięty przez autoryzowaną stronę. <br> 2. Jeśli certyfikat nie został usunięty przez autoryzowaną stronę, należy dodać certyfikat ponownie i eskalować alert do zespołu ds. zabezpieczeń. |
+| Wykryto nieudaną próbę dodania certyfikatu do IoT Hub   | Średnie    | Wystąpił błąd podczas próby dodania certyfikatu \'% {DescCertificateName}\' do IoT Hub \'% {DescIoTHubName}\'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie.|   Upewnij się, że uprawnienia do zmiany certyfikatów są udzielane tylko autoryzowanym stronom.  |
+|  Próba usunięcia certyfikatu z IoT Hub nie powiodła się | Średnie  | Wystąpił błąd podczas próby usunięcia certyfikatu \'% {DescCertificateName}\' z IoT Hub \'% {DescIoTHubName}\'. Jeśli ta akcja została wykonana przez nieautoryzowaną stronę, może to oznaczać złośliwe działanie. |Upewnij się, że uprawnienia do zmiany certyfikatów są udzielane tylko autoryzowanym podmiotom.
 |**Niska** ważność|  |  |  |
 |   Podjęto próbę dodania lub edycji ustawienia diagnostycznego IoT Hub wykrytego   | Niska     | Wykryto próbę dodania lub edytowania ustawień diagnostycznych IoT Hub. Ustawienia diagnostyczne umożliwiają ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia zabezpieczeń lub zabezpieczenia sieci. Jeśli ta akcja nie została wykonana przez autoryzowaną stronę, może ona wskazywać na złośliwe działanie.  |1. Upewnij się, że certyfikat został usunięty przez autoryzowaną stronę.<br> 2. Jeśli certyfikat nie został usunięty przez autoryzowaną stronę, należy dodać certyfikat ponownie i eskalować alert do zespołu ds. zabezpieczeń informacji.
-|   Podjęto próbę usunięcia ustawienia diagnostycznego z wykrytym IoT Hub        | Niska      | % {DescAttemptStatusMessage} \' próbować dodać lub edytować ustawienie diagnostyczne \'% {DescDiagnosticSettingName} \' IoT Hub \'% {DescIoTHubName} \'. Ustawienie diagnostyczne umożliwia ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci. Jeśli ta akcja nie została wykonana przez autoryzowaną stronę, może to oznaczać złośliwe działanie. |Upewnij się, że uprawnienia do zmiany ustawień diagnostycznych są udzielane tylko autoryzowanym podmiotom.
+|   Podjęto próbę usunięcia ustawienia diagnostycznego z wykrytym IoT Hub        | Niska      | % {DescAttemptStatusMessage}\' próbować dodać lub edytować ustawienie diagnostyczne \'% {DescDiagnosticSettingName}\' IoT Hub \'% {DescIoTHubName}\'. Ustawienie diagnostyczne umożliwia ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci. Jeśli ta akcja nie została wykonana przez autoryzowaną stronę, może to oznaczać złośliwe działanie. |Upewnij się, że uprawnienia do zmiany ustawień diagnostycznych są udzielane tylko autoryzowanym podmiotom.
 |
 
 ## <a name="next-steps"></a>Następne kroki
