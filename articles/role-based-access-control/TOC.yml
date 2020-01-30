@@ -40,8 +40,6 @@
           href: role-definitions.md
         - name: Lista definicji ról
           href: role-definitions-list.md
-        - name: Wbudowane role
-          href: built-in-roles.md
     - name: Lista przypisań ról
       items:
         - name: Portal
@@ -96,6 +94,8 @@
       href: troubleshooting.md
 - name: Dokumentacja
   items:
+    - name: Wbudowane role
+      href: built-in-roles.md
     - name: Operacje dostawcy zasobów
       href: resource-provider-operations.md
     - name: Limity kontroli dostępu opartej na rolach
