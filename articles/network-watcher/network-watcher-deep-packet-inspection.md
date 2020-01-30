@@ -1,11 +1,9 @@
 ---
-title: Inspekcja pakietów przy użyciu usługi Azure Network Watcher | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak Usługa Network Watcher umożliwia głębokiej inspekcji pakietów zebrane z maszyny Wirtualnej
+title: Inspekcja pakietów przy użyciu usługi Azure Network Watcher | Microsoft Docs
+description: W tym artykule opisano sposób użycia usługi Network Watcher do przeprowadzenia głębokiej inspekcji pakietów zebranych z maszyny wirtualnej
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
@@ -13,119 +11,119 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7f3fc69bbfd881a26ceb25705852558b66c60153
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716899"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845080"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Inspekcja pakietów przy użyciu usługi Azure Network Watcher
 
-Przy użyciu funkcji przechwytywania pakietów usługi Network Watcher, można zainicjować i zarządzanie sesjami przechwytywania na maszynach wirtualnych platformy Azure z poziomu portalu, programu PowerShell, interfejsu wiersza polecenia i programowo przy użyciu zestawu SDK i interfejsu API REST. Przechwytywanie pakietów umożliwia scenariuszy, które wymagają pakietu danych na poziomie poprzez dostarczanie informacji w formacie gotowy do użycia. Korzystanie z bezpłatnych narzędzi, aby sprawdzić dane, można zbadać wiadomości wysyłane do i z maszyn wirtualnych i uzyskiwanie szczegółowych informacji o ruchu sieciowym. Do niektórych zastosowań przykład danych przechwytywania pakietów obejmują: badanie problemów z siecią lub aplikacji, wykrywanie prób nieautoryzowanego dostępu, jak i nieuprawnione użycie sieci lub utrzymania zgodności z przepisami. W tym artykule przedstawiono, jak można otworzyć pliku przechwytywania pakietów, udostępniane przez usługi Network Watcher za pomocą narzędzia typu open source. Firma Microsoft udostępni również przykłady pokazujące sposób obliczania czas oczekiwania na połączenie, identyfikacji nietypowe ruchu i zbadać statystyk sieciowych.
+Korzystając z funkcji przechwytywania pakietów Network Watcher, można inicjować i zarządzać sesjami przechwytywania na maszynach wirtualnych platformy Azure z portalu, programu PowerShell, interfejsu wiersza polecenia i programowo za pośrednictwem zestawu SDK i interfejsu API REST. Przechwytywanie pakietów umożliwia rozwiązanie scenariuszy, które wymagają danych na poziomie pakietu, dostarczając informacje w formacie, który można łatwo użyć. Korzystając z dostępnych bezpłatnie narzędzi do inspekcji danych, możesz sprawdzić, czy komunikacja jest wysyłana do i z maszyn wirtualnych oraz uzyskać wgląd w ruch sieciowy. Oto przykładowe zastosowania danych przechwytywania pakietów: Badanie problemów z siecią lub aplikacją, wykrywanie nieprawidłowego użycia sieci i próby włamania lub zachowanie zgodności z przepisami. W tym artykule pokazano, jak otworzyć plik przechwytywania pakietu dostarczony przez Network Watcher przy użyciu popularnego narzędzia typu open source. Podajemy również przykłady pokazujące, jak obliczyć opóźnienie połączenia, zidentyfikować nietypowy ruch i sprawdzić statystykę sieci.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule omówiono kilka wstępnie skonfigurowanych scenariuszy na przechwytywanie pakietów, która została wcześniej uruchomiona. Te scenariusze pokazują możliwości, które są dostępne, sprawdzając przechwytywania pakietów. W tym scenariuszu [WireShark](https://www.wireshark.org/) do kontroli przechwytywania pakietów.
+Ten artykuł przechodzi przez niektóre wstępnie skonfigurowane scenariusze dotyczące funkcji przechwytywania pakietów, która została wcześniej uruchomiona. Te scenariusze ilustrują możliwości, do których można uzyskać dostęp, przeglądając przechwycenie pakietu. W tym scenariuszu program [Wireshark](https://www.wireshark.org/) jest wykorzystywany do inspekcji przechwytywania pakietów.
 
-W tym scenariuszu przyjęto założenie, że już uruchomione przechwytywania pakietów na maszynie wirtualnej. Aby dowiedzieć się, jak utworzyć odwiedziny przechwytywania pakietów [przechwytywać pakiety zarządzania za pomocą portalu](network-watcher-packet-capture-manage-portal.md) lub z użyciem usług REST, odwiedzając [Zarządzanie Przechwytywanie pakietów przy użyciu interfejsu API REST](network-watcher-packet-capture-manage-rest.md).
+W tym scenariuszu założono, że uruchomiono już funkcję przechwytywania pakietów na maszynie wirtualnej. Aby dowiedzieć się, jak utworzyć funkcję przechwytywania pakietów, przejdź do [strony Zarządzanie pakietami przechwycenia pakietu przy użyciu portalu](network-watcher-packet-capture-manage-portal.md) lub REST, odwiedzając [Zarządzanie przechwytywaniem pakietów przy użyciu interfejsu API REST](network-watcher-packet-capture-manage-rest.md).
 
 ## <a name="scenario"></a>Scenariusz
 
-W tym scenariuszu możesz:
+W tym scenariuszu:
 
-* Przejrzyj przechwytywania pakietów
+* Przejrzyj przechwycenie pakietu
 
 ## <a name="calculate-network-latency"></a>Oblicz opóźnienie sieci
 
-W tym scenariuszu przedstawiono sposób wyświetlania początkowej czasu obiegu (RTT) występujące między dwa punkty końcowe konwersacji Transmission Control Protocol (TCP).
+W tym scenariuszu pokazujemy, jak wyświetlić początkowy czas błądzenia (RTT) konwersacji Transmission Control Protocol (TCP) występujący między dwoma punktami końcowymi.
 
-Po nawiązaniu połączenia protokołu TCP, pierwsze trzy pakiety wysyłane przez połączenie wykonaj wzorzec, nazywaną trójstopniowego. Analizując pierwsze dwa pakiety przesyłane w tym uzgadnianie początkowego żądania z klienta i odpowiedź z serwera, możemy obliczyć opóźnienie podczas tego połączenia. Ten czas oczekiwania jest określany jako czas obiegu (RTT). Aby uzyskać więcej informacji na temat protokołu TCP i trójstopniowego zapoznaj się z następujących zasobów. https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+Po nawiązaniu połączenia TCP pierwsze trzy pakiety wysyłane w ramach połączenia są zgodne ze wzorcem często określanym jako uzgadnianie trzykrotne. Badając pierwsze dwa pakiety wysyłane w ramach tego uzgadniania, początkowe żądanie od klienta i odpowiedź z serwera, możemy obliczyć opóźnienie, gdy to połączenie zostało nawiązane. To opóźnienie jest określane jako czas błądzenia (RTT). Aby uzyskać więcej informacji na temat protokołu TCP i uzgadniania 3-kierunkowego, zapoznaj się z poniższym zasobem. https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
 
 ### <a name="step-1"></a>Krok 1
 
-Launch WireShark
+Uruchom aplikację WireShark
 
 ### <a name="step-2"></a>Krok 2
 
-Obciążenia **.cap** plik z sieci przechwytywania pakietów. Ten plik można znaleźć w obiekcie blob został zapisany w naszym lokalnie na maszynie wirtualnej, w zależności od sposobu skonfigurowania.
+Załaduj plik **Cap** z przechwytywania pakietu. Ten plik można znaleźć w obiekcie blob, który został zapisany lokalnie na maszynie wirtualnej, w zależności od tego, jak został on skonfigurowany.
 
 ### <a name="step-3"></a>Krok 3
 
-Aby wyświetlić początkowy czas obiegu (RTT) konwersacje TCP, firma Microsoft będzie tylko można spojrzenie na pierwsze dwa pakiety związane z uzgadniania protokołu TCP. Użyjemy dwóch pierwszych pakietów trójstopniowego, które [SYN], [SYN i ACK] pakietów. Są one nazywane dla flag ustawionych w nagłówku protokołu TCP. W tym scenariuszu nie posłuży ostatnim pakiecie w uzgadnianie pakietu [ACK]. Pakiet [SYN] jest wysyłany przez klienta. Po odebraniu serwer wysyła pakiet [potwierdzenia] jako potwierdzenie odbieranie SYN od klienta. Korzystanie z faktu, że odpowiedź serwera wymaga niewielkim zapasem, możemy obliczyć RTT przez odjęcie ilości czasu [SYN, potwierdzenia] pakiet został odebrany przez klienta do czasu [SYN] pakiet został wysłany przez klienta.
+Aby wyświetlić początkowy czas błądzenia (RTT) w konwersacjach TCP, będziemy przeglądać tylko pierwsze dwa pakiety, które są objęte uzgadnianiem protokołu TCP. Będziemy używać pierwszych dwóch pakietów w uzgadnianiu trójwymiarowym, które są pakietami [SYN], [SYN, ACK]. Są one nazwane dla flag ustawionych w nagłówku TCP. Ostatni pakiet z uzgadniania, pakiet [ACK] nie będzie używany w tym scenariuszu. Pakiet [SYN] jest wysyłany przez klienta. Po otrzymaniu serwer wysyła pakiet [ACK] jako potwierdzenie odebrania SYN z klienta. Korzystając z faktu, że odpowiedź serwera wymaga bardzo małego obciążenia, obliczamy czas RTT przez odjęcie czasu, przez który pakiet [SYN, ACK] został odebrany przez klienta przez klienta.
 
-Za pomocą programu WireShark ta wartość jest obliczana dla nas.
+Przy użyciu programu WireShark ta wartość jest obliczana dla nas.
 
-Aby łatwiej przeglądać pierwsze dwa pakiety w trójstopniowego TCP, firma Microsoft będzie korzystać z możliwości filtrowania, dostarczone przez program WireShark.
+Aby łatwiej wyświetlić pierwsze dwa pakiety w ramach uzgadniania TCP, firma Microsoft będzie korzystać z funkcji filtrowania dostępnej w programie WireShark.
 
-Aby zastosować filtr w WireShark, rozwiń Segment "Transmission Control Protocol" pakiet [SYN] w swojej przechwytywania i zbadać flag ustawionych w nagłówku protokołu TCP.
+Aby zastosować filtr w programie WireShark, rozwiń segment "Transmission Control Protocol" pakietu [SYN] w przechwyceniu i sprawdź flagi ustawione w nagłówku TCP.
 
-Ponieważ czekamy, aby odfiltrować wszystkie [SYN] i [SYN potwierdzenia] pakietów w obszarze flagi upewnij się, Syn bit jest ustawiona na 1, a następnie kliknij prawym przyciskiem bitu Syn -> Zastosuj jako filtr -> wybrany.
+Ponieważ chcemy przefiltrować wszystkie pakiety [SYN] i [SYN, ACK], w obszarze flagi upewnij się, że bit syn został ustawiony na 1, a następnie kliknij prawym przyciskiem myszy bit syn-> Zastosuj jako wybrany filtr->.
 
 ![Rysunek 7][7]
 
 ### <a name="step-4"></a>Krok 4
 
-Teraz, gdy zostały przefiltrowane okna, aby było widać tylko pakiety z bitem [SYN], możesz łatwo wybrać rozmowy, które interesują Cię do wyświetlania RTT początkowej. Prosty sposób, aby wyświetlić RTT WireShark po prostu kliknij listę rozwijaną, oznaczone jako "SEQ/potwierdzenia" analizy. Następnie zobaczysz RTT wyświetlane. W tym przypadku RTT był 0.0022114 sekund, czyli 2.211 ms.
+Po przefiltrowaniu okna tak, aby były widoczne tylko pakiety z zestawem bitowym [SYN], możesz łatwo wybrać konwersacje, które interesują Cię, aby wyświetlić początkowy czas RTT. Prosty sposób wyświetlania RTT w programie WireShark wystarczy kliknąć listę rozwijaną z analizą "SEQ/ACK". Zobaczysz wyświetlony czas RTT. W takim przypadku RTT miał 0,0022114 sekund lub 2,211 MS.
 
-![Rysunek 8][8]
+![Rysunek 8.][8]
 
-## <a name="unwanted-protocols"></a>Niechciane protokołów
+## <a name="unwanted-protocols"></a>Niechciane protokoły
 
-Może mieć wiele aplikacji uruchomionych na wystąpieniu maszyny wirtualnej wdrożonej na platformie Azure. Wiele z tych aplikacji komunikują się za pośrednictwem sieci, może być bez jego jawnej zgody. Przy użyciu przechwytywania pakietów do przechowywania komunikacji sieciowej, firma Microsoft można zbadać jak rozmawiają w sieci i odszukaj wszelkie problemy w aplikacji.
+W wystąpieniu maszyny wirtualnej wdrożonej na platformie Azure można uruchamiać wiele aplikacji. Wiele z tych aplikacji komunikuje się za pośrednictwem sieci, prawdopodobnie bez jawnego uprawnienia. Korzystając z funkcji przechwytywania pakietów do przechowywania komunikacji sieciowej, możemy zbadać, jak działa aplikacja w sieci i wyszukać wszelkie problemy.
 
-W tym przykładzie analizujemy poprzedniego uruchomienia przechwytywania pakietów niechciane protokołów, które mogą wskazywać na nieautoryzowany komunikacji z aplikacji uruchomionej na komputerze.
-
-### <a name="step-1"></a>Krok 1
-
-Przy użyciu tego samego przechwytywania w poprzednim scenariuszu kliknij **statystyki** > **protokołu hierarchii**
-
-![Protokół hierarchii menu][2]
-
-Zostanie wyświetlone okno hierarchii protokołu. Ten widok zawiera listę wszystkich protokołów, które były używane podczas sesji przechwytywania i liczba pakietów wysłanych i odebranych przy użyciu protokołów. Ten widok jest przydatny do znajdowania niechciane ruch sieciowy na maszynach wirtualnych lub w sieci.
-
-![Hierarchia protokołu otwarte][3]
-
-Jak widać na poniższym zrzucie ekranu, było ruchu przy użyciu protokołu BitTorrent, który jest używany do udostępniania plików równorzędnych. Administrator usługi nie powinny być widoczne BitTorrent ruch w przypadku tego konkretnego maszyn wirtualnych. Teraz należy pamiętać o ten ruch, możesz usunąć oprogramowanie równorzędnych zainstalowanego na tej maszynie wirtualnej, lub blokować ruch przy użyciu sieciowych grup zabezpieczeń lub zapory. Ponadto może zdecydować się na uruchamianie przechwytywania pakietów zgodnie z harmonogramem, co pozwoli na przejrzenie protokół korzystać na maszynach wirtualnych regularnie. Na przykład dotyczące automatyzacji zadań sieci na platformie azure, odwiedź stronę [monitorowania zasobów sieciowych przy użyciu usługi azure automation](network-watcher-monitor-with-azure-automation.md)
-
-## <a name="finding-top-destinations-and-ports"></a>Najpopularniejsze miejsca docelowe Znajdowanie i portów
-
-Opis typów ruchu, punktów końcowych i porty przekazywane za pośrednictwem jest ważne podczas monitorowania i rozwiązywania problemów aplikacji i zasobów w sieci. Korzystanie z pliku przechwytywania pakietów z powyższych możemy szybko Poznaj Najpopularniejsze miejsca docelowe, które maszyny Wirtualnej komunikuje się z i porty wykorzystywane.
+W tym przykładzie przeglądamy poprzedni uruchomioną funkcję przechwytywania pakietów dla niechcianych protokołów, które mogą wskazywać nieautoryzowaną komunikację z aplikacji uruchomionej na komputerze.
 
 ### <a name="step-1"></a>Krok 1
 
-Przy użyciu tego samego przechwytywania w poprzednim scenariuszu kliknij **statystyki** > **statystyki protokołu IPv4** > **miejsc docelowych i portów**
+Przy użyciu tego samego przechwycenia w poprzednim scenariuszu kliknij pozycję **statystyki** > **Hierarchia protokołów**
 
-![Okno przechwytywania pakietów][4]
+![menu hierarchii protokołów][2]
+
+Zostanie wyświetlone okno hierarchia protokołów. Ten widok zawiera listę wszystkich protokołów, które były używane podczas sesji przechwytywania oraz liczbę pakietów przesyłanych i odbieranych przy użyciu protokołów. Ten widok może być przydatny do znajdowania niechcianego ruchu sieciowego na maszynach wirtualnych lub w sieci.
+
+![Hierarchia protokołu otwarta][3]
+
+Jak widać na poniższym zrzucie ekranu, nastąpił ruch przy użyciu protokołu BitTorrent, który jest używany do udostępniania plików równorzędnych. Jako administrator nie oczekuje się, że na tych maszynach wirtualnych jest wyświetlany ruch BitTorrent. Teraz znasz ten ruch, możesz usunąć równorzędne oprogramowanie, które zostało zainstalowane na tej maszynie wirtualnej, lub zablokować ruch przy użyciu sieciowych grup zabezpieczeń lub zapory. Ponadto można wybrać uruchamianie przechwytywania pakietów zgodnie z harmonogramem, dzięki czemu można regularnie przejrzeć użycie protokołu na maszynach wirtualnych. Przykład sposobu automatyzowania zadań sieciowych na platformie Azure można znaleźć w temacie [monitorowanie zasobów sieciowych za pomocą usługi Azure Automation](network-watcher-monitor-with-azure-automation.md)
+
+## <a name="finding-top-destinations-and-ports"></a>Znajdowanie najważniejszych miejsc docelowych i portów
+
+Informacje o typach ruchu, punktach końcowych i portach przekazywanych przez program są ważne podczas monitorowania lub rozwiązywania problemów z aplikacjami i zasobami w sieci. Korzystając z powyższego pliku przechwytywania pakietów, możemy szybko poznać najpopularniejsze miejsca docelowe komunikacji z maszyną wirtualną oraz używane porty.
+
+### <a name="step-1"></a>Krok 1
+
+Przy użyciu tego samego przechwycenia w poprzednim scenariuszu kliknij pozycję **statystyki** > **dane statystyczne IPv4** > **miejsc docelowych i portów**
+
+![okno przechwytywania pakietów][4]
 
 ### <a name="step-2"></a>Krok 2
 
-Gdy spojrzymy za pośrednictwem wyników, który wyróżnia linię wystąpiło wiele połączeń na porcie 111. Został najczęściej używanych portu 3389, czyli pulpitu zdalnego, a pozostałe są dynamiczne porty RPC.
+Po przeszukaniu wyników zostanie wyświetlona linia z wieloma połączeniami na porcie 111. Najbardziej używanym portem był 3389, który jest pulpitem zdalnym, a pozostałe są portami dynamicznymi RPC.
 
-Ten ruch może oznaczać, że nic nie, ale jest port, który został użyty dla wielu połączeń i jest nieznany do administratora.
+Ten ruch może oznaczać brak nic, ale jest portem używanym do wielu połączeń i jest nieznany dla administratora.
 
 ![Rysunek 5][5]
 
 ### <a name="step-3"></a>Krok 3
 
-Teraz, gdy Ustaliliśmy poza miejscem portu można odfiltrować naszych przechwytywania oparty na porcie.
+Po ustaleniu portu poza miejscem możemy odfiltrować przechwycenie w oparciu o port.
 
-Filtr, w tym scenariuszu będzie następująca:
+Filtr w tym scenariuszu będzie:
 
 ```
 tcp.port == 111
 ```
 
-Tekst filtru z powyższych możemy wprowadzić w polu tekstowym filtru i naciśnij klawisz enter.
+Wprowadzimy tekst filtru z powyżej w polu tekstowym filtru i trafimy klawisz ENTER.
 
 ![Rysunek 6.][6]
 
-Na liście wyników można zauważyć, że cały ruch pochodzi z lokalnej maszyny wirtualnej w tej samej podsieci. Jeśli nadal nie wiemy, dlaczego występuje ten ruch, firma Microsoft dodatkowo sprawdź pakietów, aby ustalić, dlaczego robi tych wywołań na porcie 111. Dzięki tym informacjom możemy podejmij odpowiednie działanie.
+Wyniki można zobaczyć, że cały ruch pochodzi z lokalnej maszyny wirtualnej w tej samej podsieci. Jeśli nadal nie rozumiemy, dlaczego ten ruch występuje, możemy dalej sprawdzić pakiety, aby określić, dlaczego te wywołania są nawiązywane na porcie 111. Korzystając z tych informacji, możemy podjąć odpowiednie działania.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o innych funkcji diagnostycznych usługi Network Watcher, odwiedzając [sieci platformy Azure, monitorowanie — Przegląd](network-watcher-monitoring-overview.md)
+Dowiedz się więcej o innych funkcjach diagnostycznych Network Watcher, odwiedzając [usługę Azure Network monitoring — Omówienie](network-watcher-monitoring-overview.md)
 
 [1]: ./media/network-watcher-deep-packet-inspection/figure1.png
 [2]: ./media/network-watcher-deep-packet-inspection/figure2.png

@@ -3,19 +3,29 @@ title: Śledzenie zmian za pomocą Azure Automation
 description: Change Tracking rozwiązanie pomaga identyfikować zmiany oprogramowania i usług systemu Windows, które występują w danym środowisku.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 04/29/2019
+ms.date: 01/28/2019
 ms.topic: conceptual
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418747"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844806"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
-W tym artykule opisano sposób korzystania z rozwiązania Change Tracking w celu łatwego identyfikowania zmian w środowisku programu. Rozwiązanie śledzi zmiany w oprogramowaniu Windows i Linux, plikach systemu Windows i Linux, w kluczach rejestru systemu Windows, usługach systemu Windows i demonach Linux. Zidentyfikowanie zmian konfiguracji może pomóc w wykorzystaniu problemów operacyjnych.
+W tym artykule opisano sposób korzystania z rozwiązania Change Tracking w celu łatwego identyfikowania zmian w środowisku programu. Rozwiązanie śledzi następujące zmiany konfiguracji, aby ułatwić identyfikowanie problemów operacyjnych:
+
+- Oprogramowanie systemu Windows
+- Oprogramowanie systemu Linux (pakiety)
+
+    >[!NOTE]
+    >Change Tracking śledzi tylko oprogramowanie, które jest zarządzane za pomocą Menedżera pakietów dystrybucji.
+
+- Pliki systemów Windows i Linux
+- Klucze rejestru systemu Windows
+- Usługi systemu Windows
+- Demony systemu Linux
 
 Zmiany w zainstalowanym oprogramowaniu, usługach systemu Windows, rejestrze systemu Windows i na monitorowanych serwerach są wysyłane do usługi Azure Monitor w chmurze w celu przetworzenia. Logika jest stosowana do odebranych danych, a usługa w chmurze rejestruje dane. Korzystając z informacji na pulpicie nawigacyjnym Change Tracking, można łatwo zobaczyć zmiany wprowadzone w infrastrukturze serwera.
 
@@ -32,7 +42,7 @@ Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Wi
 
 Następujące dystrybucje systemu Linux są oficjalnie obsługiwane. Jednak Agent systemu Linux może być również uruchamiany na innych dystrybucjach, których nie ma na liście. O ile nie zaznaczono inaczej, wszystkie wersje pomocnicze są obsługiwane dla każdej wymienionej wersji głównej.
 
-### <a name="64-bit"></a>64-bitowa
+### <a name="64-bit"></a>64 — bit
 
 * CentOS 6 i 7
 * Amazon Linux 2017,09
@@ -42,7 +52,7 @@ Następujące dystrybucje systemu Linux są oficjalnie obsługiwane. Jednak Agen
 * Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32-bitowa
+### <a name="32-bit"></a>32 — bit
 
 * CentOS 6
 * Oracle Linux 6
@@ -159,6 +169,8 @@ Rozwiązanie Change Tracking nie obsługuje obecnie następujących elementów:
 
 * Rekursja śledzenia rejestru systemu Windows
 * Systemy plików sieciowych
+* Różne metody instalacji nie są śledzone
+* pliki *. exe nie są śledzone dla systemu Windows
 
 Inne ograniczenia:
 

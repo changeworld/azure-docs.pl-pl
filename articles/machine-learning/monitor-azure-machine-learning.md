@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894854"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845742"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning monitorowania
 
@@ -32,7 +32,7 @@ W tym artykule opisano dane monitorowania wygenerowane przez Azure Machine Learn
 
 Azure Machine Learning dzienniki danych monitorowania przy użyciu Azure Monitor, który jest pełną usługą monitorowania stosu na platformie Azure. Azure Monitor zapewnia pełen zestaw funkcji do monitorowania zasobów platformy Azure. Może również monitorować zasoby w innych chmurach i lokalnie.
 
-Rozpocznij od artykułu [Azure monitor przegląd](/azure/azure-monitor/overview), który zawiera przegląd możliwości monitorowania. W poniższych sekcjach przedstawiono informacje na temat udostępniania oo przy użyciu Azure Monitor z Azure Machine Learning.
+Rozpocznij od artykułu [Azure monitor przegląd](/azure/azure-monitor/overview), który zawiera przegląd możliwości monitorowania. Poniższe sekcje zawierają informacje dotyczące korzystania z Azure Monitor z Azure Machine Learning.
 
 Aby zrozumieć koszty związane z Azure Monitor, zobacz [użycie i szacowane koszty](/azure/azure-monitor/platform/usage-estimated-costs). Aby zrozumieć czas, w jakim dane mają być wyświetlane w Azure Monitor, zobacz czas pozyskiwania [danych dziennika](/azure/azure-monitor/platform/data-ingestion-time).
 

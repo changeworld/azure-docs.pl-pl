@@ -2,18 +2,17 @@
 title: Samouczek — uruchamianie Azure Functions w zadaniach Azure Stream Analytics
 description: W tym samouczku przedstawiono konfigurowanie usługi Azure Functions jako ujścia danych wyjściowych dla zadań usługi Stream Analytics.
 author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/05/2019
-ms.author: mamccrea
-ms.reviewer: mamccrea
-ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369324"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772887"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Samouczek: uruchamianie Azure Functions z Azure Stream Analytics zadań 
 
@@ -51,7 +50,7 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Tworzenie funkcji w usłudze Azure Functions, która może zapisywać dane w pamięci podręcznej Azure Cache for Redis
 
-1. Zobacz sekcję [Tworzenie aplikacji funkcji](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) w dokumentacji usługi Functions. Zawiera ona procedurę tworzenia aplikacji funkcji i [funkcji wyzwalanej za pomocą protokołu HTTP w usłudze Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function) w języku CSharp.  
+1. Zobacz sekcję [Tworzenie aplikacji funkcji](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) w dokumentacji usługi Functions. W tej sekcji omówiono sposób tworzenia aplikacji funkcji i [funkcji wyzwalanej przez protokół HTTP w Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function)przy użyciu języka CSharp.  
 
 2. Przejdź do funkcji **run.csx**. Zaktualizuj ją za pomocą następującego kodu. Zastąp **ciąg "\<parametry połączenia usługi Azure cache for Redis w tym miejscu\>"** za pomocą usługi Azure cache dla podstawowych parametrów połączenia Redis, które zostały pobrane w poprzedniej sekcji. 
 
@@ -149,7 +148,7 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
    |Opcja importu| Można użyć funkcji z bieżącej subskrypcji lub, jeśli funkcja znajduje się w innej subskrypcji, podać ustawienia ręcznie. |
    |Aplikacja usługi Functions| Nazwa aplikacji usługi Functions. |
    |Funkcja| Nazwa funkcji w aplikacji usługi Functions (nazwa funkcji run.csx).|
-   |Maksymalny rozmiar partii|Umożliwia ustawienie maksymalnego rozmiaru w bajtach poszczególnych partii danych wyjściowych, które są przesyłane do funkcji. Domyślnie ta wartość jest równa 262 144 B (256 KB).|
+   |Maksymalny rozmiar partii|Ustawia maksymalny rozmiar każdej partii wyjściowej, która jest wysyłana do funkcji w bajtach. Domyślnie ta wartość jest równa 262 144 B (256 KB).|
    |Maksymalna liczba partii|Umożliwia określenie maksymalnej liczby zdarzeń w każdej z partii wysyłanych do funkcji. Wartość domyślna to 100. Ta właściwość jest opcjonalna.|
    |Klucz|Pozwala na użycie funkcji z innej subskrypcji. Podaj wartość klucza, aby uzyskać dostęp do funkcji. Ta właściwość jest opcjonalna.|
 
@@ -187,13 +186,10 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
    To polecenie powinno wyświetlić wartość dla określonego klucza:
 
    ![Zrzut ekranu danych wyjściowych pamięci podręcznej Azure Cache for Redis](./media/stream-analytics-with-azure-functions/image5.png)
-   
-## <a name="error-handling-and-retries"></a>Obsługa błędów oraz wykonywanie ponownych prób
-W przypadku awarii podczas wysyłania zdarzeń do usługi Azure Functions usługa Stream Analytics ponawia próbę w celu pomyślnego wykonania operacji. Jednak istnieją pewne błędy, w przypadku których ponowne próby nie wykonywane. Są to:
 
- 1. Wyjątki HttpRequestException
- 2. Wyjątek dotyczący zbyt dużej jednostki żądania (kod błędu HTTP 413)
- 3. Wyjątki ApplicationException
+## <a name="error-handling-and-retries"></a>Obsługa błędów oraz wykonywanie ponownych prób
+
+Jeśli wystąpi błąd podczas wysyłania zdarzeń do Azure Functions, Stream Analytics ponawiać próbę wykonania większości operacji. Wszystkie wyjątki http są ponawiane do momentu sukcesu z wyjątkiem błędu HTTP 413 (jednostka jest za duża). Zbyt duży błąd jednostki jest traktowany jako błąd danych, który podlega [ponowieniu lub porzucenia zasad](stream-analytics-output-error-policy.md).
 
 ## <a name="known-issues"></a>Znane problemy
 
@@ -203,14 +199,14 @@ W tej chwili korzystanie z [routingu protokołu Http](https://docs.microsoft.com
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy grupa zasobów, zadanie przesyłania strumieniowego i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. Usunięcie zadania pozwala uniknąć opłat za jednostki przesyłania strumieniowego zużywane przez zadanie. Jeśli planujesz użycie zadania w przyszłości, możesz zatrzymać je i uruchomić ponownie później w razie potrzeby. Jeśli nie zamierzasz w przyszłości korzystać z tego zadania, wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki start:
+Gdy grupa zasobów, zadanie przesyłania strumieniowego i wszystkie pokrewne zasoby nie będą już potrzebne, usuń je. Usunięcie zadania pozwala uniknąć opłat za jednostki przesyłania strumieniowego zużywane przez zadanie. Jeśli planujesz użyć zadania w przyszłości, możesz je zatrzymać i uruchomić ponownie później, gdy będzie potrzebne. Jeśli nie zamierzasz w przyszłości korzystać z tego zadania, wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki start:
 
 1. W menu znajdującym się po lewej stronie w witrynie Azure Portal kliknij pozycję **Grupy zasobów**, a następnie kliknij nazwę utworzonego zasobu.  
 2. Na stronie grupy zasobów kliknij pozycję **Usuń**, wpisz w polu tekstowym nazwę zasobu do usunięcia, a następnie kliknij pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku utworzono proste zadanie usługi Stream Analytics uruchamiające usługę Azure Function. Aby dowiedzieć się więcej na temat zadań usługi Stream Analytics, kontynuuj pracę w następnym samouczku:
+W tym samouczku utworzono proste zadanie Stream Analytics, w którym działa funkcja platformy Azure. Aby dowiedzieć się więcej na temat zadań usługi Stream Analytics, przejdź do następnego samouczka:
 
 > [!div class="nextstepaction"]
 > [Uruchamianie funkcji języka JavaScript zdefiniowanych przez użytkownika w ramach zadań usługi Stream Analytics](stream-analytics-javascript-user-defined-functions.md)

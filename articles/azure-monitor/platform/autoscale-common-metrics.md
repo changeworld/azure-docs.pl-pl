@@ -4,12 +4,12 @@ description: Dowiedz się, które metryki są często używane do automatycznego
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364598"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845564"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor typowe metryki automatycznego skalowania
 
@@ -36,7 +36,7 @@ Następujące metryki na poziomie hosta są domyślnie emitowane dla maszyny wir
 - [Metryki hosta dla maszyn wirtualnych z systemem Windows i Linux opartych na Menedżer zasobów](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 - [Metryki hostów dla systemów Windows i Linux opartych na Menedżer zasobówach VM Scale Sets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Metryki systemu operacyjnego gościa Menedżer zasobów maszyny wirtualne z systemem Windows
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Metryki systemu operacyjnego gościa dla maszyn wirtualnych z systemem Windows opartych na Menedżer zasobów
 Podczas tworzenia maszyny wirtualnej na platformie Azure Diagnostyka jest włączana za pomocą rozszerzenia diagnostyki. Rozszerzenie Diagnostics emituje zestaw metryk wykonanych z wewnątrz maszyny wirtualnej. Oznacza to, że można automatycznie skalować metryki, które nie są emitowane domyślnie.
 
 Listę metryk można wygenerować za pomocą następującego polecenia w programie PowerShell.
@@ -129,8 +129,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \NetworkInterface\TotalTxErrors |Liczba |
 | \NetworkInterface\TotalCollisions |Liczba |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>Metryki często używanej sieci Web (farmy serwerów)
-Możesz również wykonywać automatyczne skalowanie na podstawie wspólnych metryk serwera sieci Web, takich jak długość kolejki http. Nazwa metryki to **HttpQueueLength**.  W poniższej sekcji przedstawiono dostępne metryki farmy serwerów (Web Apps).
+## <a name="commonly-used-app-service-server-farm-metrics"></a>Metryki często używane App Service (farma serwerów)
+Możesz również wykonywać automatyczne skalowanie na podstawie wspólnych metryk serwera sieci Web, takich jak długość kolejki http. Nazwa metryki to **HttpQueueLength**.  W poniższej sekcji przedstawiono dostępne metryki farmy serwerów (App Service).
 
 ### <a name="web-apps-metrics"></a>Metryki Web Apps
 Listę metryk Web Apps można wygenerować za pomocą następującego polecenia w programie PowerShell.
@@ -159,8 +159,8 @@ Na przykład przy użyciu klasycznego konta magazynu ustawienie skalowania autom
 
 ```
 "metricName": "ApproximateMessageCount",
- "metricNamespace": "",
- "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 W przypadku konta magazynu (nieklasycznego) metricTrigger może obejmować:
@@ -177,7 +177,7 @@ Możesz skalować Service Bus długość kolejki, czyli liczbę komunikatów w k
 W przypadku zestawów skalowania maszyn wirtualnych można zaktualizować ustawienie skalowania automatycznego w szablonie Menedżer zasobów, aby użyć wartości *metricname* jako *APPROXIMATEMESSAGECOUNT* i przekazać identyfikator kolejki magazynu jako *metricResourceUri*.
 
 ```
-"metricName": "MessageCount",
+"metricName": "ApproximateMessageCount",
  "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```

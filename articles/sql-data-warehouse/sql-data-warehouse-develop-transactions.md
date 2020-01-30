@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: a4a2eccc3c46b7f982836c73d3144f1793e5034b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903074"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846205"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Korzystanie z transakcji w SQL Data Warehouse
 Wskazówki dotyczące implementowania transakcji w Azure SQL Data Warehouse na potrzeby tworzenia rozwiązań.
@@ -25,7 +25,7 @@ Wskazówki dotyczące implementowania transakcji w Azure SQL Data Warehouse na p
 Zgodnie z oczekiwaniami SQL Data Warehouse obsługuje transakcje w ramach obciążenia magazynu danych. Jednak w celu zapewnienia, że wydajność SQL Data Warehouse jest utrzymywana na dużą skalę, niektóre funkcje są ograniczone w porównaniu z SQL Server. W tym artykule omówiono różnice i inne elementy. 
 
 ## <a name="transaction-isolation-levels"></a>Poziomy izolacji transakcji
-SQL Data Warehouse implementuje transakcje KWASowe. Jednak poziom izolacji obsługi transakcyjnej jest ograniczony do odczytu niezatwierdzonego; nie można zmienić tego poziomu. Jeśli odczytanie jest niezatwierdzone, można zaimplementować szereg metod kodowania, aby zapobiec utracie danych. Najpopularniejsze metody używają zarówno CTAS, jak i przełączania partycji tabeli (często nazywanego wzorcem okna przewijania), aby uniemożliwić użytkownikom wykonywanie zapytań o dane, które są nadal przygotowywane. Widoki, które wstępnie filtrują dane, są również popularnym podejściem.  
+SQL Data Warehouse implementuje transakcje KWASowe. Poziom izolacji obsługi transakcyjnej jest domyślnie ODCZYTYWANy jako niezatwierdzony.  Można ją zmienić w celu odczytania ZATWIERDZONEj izolacji migawek przez READ_COMMITTED_SNAPSHOT włączenie opcji bazy danych dla bazy danych użytkownika w przypadku nawiązania połączenia z bazą danych Master.  Po włączeniu wszystkie transakcje w tej bazie danych są wykonywane w ramach przekroczenia izolacji ZATWIERDZONEj migawki i ustawienie Odczytaj niezatwierdzone na poziomie sesji nie zostanie uznane. Sprawdź [Opcje ALTER DATABASE SET (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) , aby uzyskać szczegółowe informacje.
 
 ## <a name="transaction-size"></a>Rozmiar transakcji
 Ograniczenie pojedynczej transakcji modyfikacji danych jest ograniczone. Limit jest stosowany do dystrybucji. W związku z tym łączne alokacje można obliczyć przez pomnożenie limitu przez liczbę dystrybucji. Aby przybliżyć maksymalną liczbę wierszy w transakcji, Podziel limit dystrybucji o łączny rozmiar każdego wiersza. W przypadku kolumn o zmiennej długości należy wziąć pod uwagę średnią długość kolumny zamiast używać maksymalnego rozmiaru.
@@ -39,39 +39,39 @@ W tabeli poniżej przedstawiono następujące założenia:
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Limit na dystrybucję (GB) | Liczba dystrybucji | Maksymalny rozmiar transakcji (GB) | Liczba wierszy na dystrybucję | Maksymalna liczba wierszy na transakcję |
 | --- | --- | --- | --- | --- | --- |
-| DW100c |1 |60 |60 |4 000 000 |240 000 000 |
-| DW200c |1.5 |60 |90 |6 000 000 |360 000 000 |
-| DW300c |2,25 |60 |135 |9 000 000 |540 000 000 |
-| DW400c |3 |60 |180 |12 000 000 |720 000 000 |
-| DW500c |3,75 |60 |225 |15 000 000 |900 000 000 |
-| DW1000c |7,5 |60 |450 |30 000 000 |1 800 000 000 |
-| DW1500c |11,25 |60 |675 |45 000 000 |2 700 000 000 |
-| DW2000c |15 |60 |900 |60 000 000 |3 600 000 000 |
+| DW100c |1 |60 |60 |4,000,000 |240,000,000 |
+| DW200c |1.5 |60 |90 |6 000 000 |360,000,000 |
+| DW300c |2.25 |60 |135 |9,000,000 |540,000,000 |
+| DW400c |3 |60 |180 |12,000,000 |720,000,000 |
+| DW500c |3.75 |60 |225 |15,000,000 |900,000,000 |
+| DW1000c |7.5 |60 |450 |30,000,000 |1,800,000,000 |
+| DW1500c |11.25 |60 |675 |45,000,000 |2,700,000,000 |
+| DW2000c |15 |60 |900 |60,000,000 |3,600,000,000 |
 | DW2500c |18,75 |60 |1125 |75 000 000 |4 500 000 000 |
-| DW3000c |22,5 |60 |1 350 |90 000 000 |5 400 000 000 |
+| DW3000c |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW5000c |37,5 |60 |2 250 |150 000 000 |9 000 000 000 |
-| DW6000c |45 |60 |2 700 |180 000 000 |10 800 000 000 |
+| DW6000c |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 | DW7500c |56,25 |60 |3 375 |225 000 000 |13 500 000 000 |
 | DW10000c |75 |60 |4 500 |300 000 000 |18 000 000 000 |
 | DW15000c |112,5 |60 |6 750 |450 000 000 |27 000 000 000 |
-| DW30000c |225 |60 |13 500 |900 000 000 |54 000 000 000 |
+| DW30000c |225 |60 |13 500 |900,000,000 |54 000 000 000 |
 
 ## <a name="gen1"></a>Gen1
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Limit na dystrybucję (GB) | Liczba dystrybucji | Maksymalny rozmiar transakcji (GB) | Liczba wierszy na dystrybucję | Maksymalna liczba wierszy na transakcję |
 | --- | --- | --- | --- | --- | --- |
-| DW100 |1 |60 |60 |4 000 000 |240 000 000 |
-| WARTOŚCI DW200 |1.5 |60 |90 |6 000 000 |360 000 000 |
-| DW300 |2,25 |60 |135 |9 000 000 |540 000 000 |
-| DW400 |3 |60 |180 |12 000 000 |720 000 000 |
-| DW500 |3,75 |60 |225 |15 000 000 |900 000 000 |
-| WARTOŚCI DW600 |4,5 |60 |270 |18 000 000 |1 080 000 000 |
-| WARTOŚCI DW1000 |7,5 |60 |450 |30 000 000 |1 800 000 000 |
-| DW1200 |9 |60 |540 |36 000 000 |2 160 000 000 |
-| DW1500 |11,25 |60 |675 |45 000 000 |2 700 000 000 |
-| DW2000 |15 |60 |900 |60 000 000 |3 600 000 000 |
-| DW3000 |22,5 |60 |1 350 |90 000 000 |5 400 000 000 |
-| DW6000 |45 |60 |2 700 |180 000 000 |10 800 000 000 |
+| DW100 |1 |60 |60 |4,000,000 |240,000,000 |
+| DW200 |1.5 |60 |90 |6 000 000 |360,000,000 |
+| DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
+| DW400 |3 |60 |180 |12,000,000 |720,000,000 |
+| DW500 |3.75 |60 |225 |15,000,000 |900,000,000 |
+| DW600 |4.5 |60 |270 |18,000,000 |1,080,000,000 |
+| DW1000 |7.5 |60 |450 |30,000,000 |1,800,000,000 |
+| DW1200 |9 |60 |540 |36,000,000 |2,160,000,000 |
+| DW1500 |11.25 |60 |675 |45,000,000 |2,700,000,000 |
+| DW2000 |15 |60 |900 |60,000,000 |3,600,000,000 |
+| DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
+| DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
 Limit rozmiaru transakcji jest stosowany dla transakcji lub operacji. Nie jest on stosowany we wszystkich współbieżnych transakcjach. W związku z tym każda transakcja może zapisywać tę ilość danych w dzienniku. 
 

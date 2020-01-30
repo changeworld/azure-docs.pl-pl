@@ -9,16 +9,16 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100324"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844597"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Samouczek: publikowanie, subskrybowanie zdarzeń w chmurze
 
-W tym artykule omówiono wszystkie kroki wymagane do opublikowania i subskrybowania zdarzeń przy użyciu Event Grid na IoT Edge.
+W tym artykule omówiono wszystkie kroki wymagane do opublikowania i subskrybowania zdarzeń przy użyciu Event Grid na IoT Edge. W tym samouczku są stosowane usługi i funkcje platformy Azure jako program obsługi zdarzeń. Aby uzyskać dodatkowe typy miejsc docelowych, zobacz [programy obsługi zdarzeń](event-handlers.md).
 
 Zapoznaj się z tematami [Event Grid](concepts.md) , aby zrozumieć, czym jest temat i subskrypcja usługi Event Grid.
 
@@ -107,6 +107,8 @@ Jako wydawca zdarzenia musisz utworzyć temat dotyczący siatki zdarzeń. Temat 
 ## <a name="create-an-event-subscription"></a>Tworzenie subskrypcji zdarzeń
 
 Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temacie. Aby odebrać każde zdarzenie, subskrybenci będą musieli utworzyć subskrypcję usługi Event Grid w temacie zainteresowania.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Utwórz plik subscription2. JSON z następującą zawartością. Szczegółowe informacje o ładunku można znaleźć w [dokumentacji interfejsu API](api.md) .
 
@@ -203,3 +205,4 @@ W tym samouczku opisano tworzenie tematu, subskrypcji i opublikowanych zdarzeń 
 * Konfiguracja trwałości modułu Event Grid w systemie [Linux](persist-state-linux.md) lub [Windows](persist-state-windows.md)
 * Postępuj zgodnie z [dokumentacją](configure-client-auth.md) , aby skonfigurować uwierzytelnianie klienta
 * Przekazuj zdarzenia do Azure Event Grid w chmurze, wykonując czynności opisane w tym [samouczku](forward-events-event-grid-cloud.md)
+* [Monitorowanie tematów i subskrypcji na granicy](monitor-topics-subscriptions.md)

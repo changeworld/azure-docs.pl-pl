@@ -7,18 +7,18 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: bd1487d7922d8ea81c4b09773eed978e64cd9e8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 648eb6cdb1787e1cbdf82bd8e5c8499b0dbaf02c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457241"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772276"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Samouczek: wdrażanie Azure Stream Analytics jako modułu IoT Edge
 
 Wiele rozwiązań IoT korzysta z usług analitycznych w celu uzyskania wglądu w informacje o danych, które docierają do chmury z urządzeń IoT. Dzięki usłudze Azure IoT Edge możesz zastosować logikę usługi [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), wdrażając ją bezpośrednio na urządzeniu. Dzięki przetwarzaniu potoków danych telemetrycznych na urządzeniu brzegowym możesz zmniejszyć ilość przekazywanych danych i skrócić czas reakcji na szczegółowe informacje umożliwiające podejmowanie działań.
 
-Dzięki integracji usług Azure IoT Edge i Azure Stream Analytics możesz utworzyć zadanie usługi Azure Stream Analytics w witrynie Azure Portal, a następnie wdrożyć je jako moduł usługi IoT Edge bez użycia dodatkowego kodu.  
+Azure IoT Edge i Azure Stream Analytics są zintegrowane, aby uprościć programowanie obciążeń. W Azure Portal można utworzyć zadanie Azure Stream Analytics, a następnie wdrożyć je jako moduł IoT Edge bez dodatkowych kodów.  
 
 Azure Stream Analytics zawiera rozbudowaną składnię zapytań na potrzeby analizy danych, zarówno w chmurze, jak i na urządzeniach z IoT Edge. Aby uzyskać więcej informacji, zobacz [dokumentację Azure Stream Analytics](../stream-analytics/stream-analytics-edge.md).
 
@@ -33,7 +33,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 <center>
 
-Diagram ![— architektura samouczka,](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
+Diagram ![— architektura samouczka:](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 zadania na etapie i wdrożenia ASA </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -46,7 +46,7 @@ Urządzenie usługi Azure IoT Edge:
 
 Zasoby w chmurze:
 
-* Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Bezpłatna lub Standardowa na platformie Azure. 
+* Usługa [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) w warstwie Bezpłatna lub Standardowa na platformie Azure.
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Tworzenie zadania usługi Azure Stream Analytics
 
@@ -54,20 +54,20 @@ W tej sekcji utworzysz zadanie Azure Stream Analytics, które wykona następują
 
 * Odbieraj dane z urządzenia IoT Edgeowego.
 * Zbadaj dane telemetryczne dla wartości spoza zestawu.
-* Wykonaj akcję na urządzeniu IoT Edge na podstawie wyników zapytania. 
+* Wykonaj akcję na urządzeniu IoT Edge na podstawie wyników zapytania.
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-W przypadku tworzenia zadania usługi Azure Stream Analytics do uruchamiania na urządzeniu usługi IoT Edge musi być ono przechowywane w sposób umożliwiający wywoływanie go z urządzenia. Możesz użyć istniejącego konta usługi Azure Storage lub utworzyć teraz nowe konto. 
+W przypadku tworzenia zadania usługi Azure Stream Analytics do uruchamiania na urządzeniu usługi IoT Edge musi być ono przechowywane w sposób umożliwiający wywoływanie go z urządzenia. Możesz użyć istniejącego konta usługi Azure Storage lub utworzyć nowe konto.
 
-1. W Azure Portal przejdź do obszaru **Tworzenie zasobu** > **Storage** > **konto magazynu**. 
+1. W Azure Portal przejdź do obszaru **Tworzenie zasobu** > **Storage** > **konto magazynu**.
 
 1. Podaj następujące wartości, aby utworzyć konto magazynu:
 
    | Pole | Wartość |
    | ----- | ----- |
    | Subskrypcja | Wybierz tę samą subskrypcję co używana dla centrum IoT Hub. |
-   | Grupa zasobów | Zalecamy używanie tej samej grupy zasobów dla wszystkich zasobów testowych tworzonych podczas pracy z przewodnikami Szybki Start i samouczkami usługi IoT Edge. Na przykład **IoTEdgeResources**. |
+   | Grupa zasobów | Zalecamy używanie tej samej grupy zasobów dla wszystkich zasobów testowych dla IoT Edge przewodników Szybki Start i samouczków. Na przykład **IoTEdgeResources**. |
    | Nazwa | Wprowadź unikatową nazwę konta magazynu. |
    | Lokalizacja | Wybierz bliską lokalizację. |
 
@@ -88,7 +88,7 @@ W przypadku tworzenia zadania usługi Azure Stream Analytics do uruchamiania na 
    | Grupa zasobów | Zalecamy używanie tej samej grupy zasobów dla wszystkich zasobów testowych tworzonych podczas pracy z przewodnikami Szybki Start i samouczkami usługi IoT Edge. Na przykład **IoTEdgeResources**. |
    | Lokalizacja | Wybierz bliską lokalizację. |
    | Środowisko hostingu | Wybierz pozycję **Edge**. |
- 
+
 1. Wybierz pozycję **Utwórz**.
 
 ### <a name="configure-your-job"></a>Konfigurowanie zadania
@@ -105,7 +105,7 @@ Przy użyciu trzech elementów — danych wejściowych, danych wyjściowych i za
 
 1. Wybierz pozycję **Edge Hub** z listy rozwijanej.
 
-1. W okienku **Nowe dane wejściowe** wpisz **temperature** jako alias danych wejściowych. 
+1. W okienku **Nowe dane wejściowe** wpisz **temperature** jako alias danych wejściowych.
 
 1. Zachowaj wartości domyślne dla pozostałych pól i wybierz pozycję **Zapisz**.
 
@@ -152,7 +152,7 @@ Aby przygotować zadanie sługi Stream Analytics do wdrożenia na urządzeniu us
 
 ## <a name="deploy-the-job"></a>Wdrażanie zadania
 
-Możesz teraz wdrożyć zadanie usługi Azure Stream Analytics na urządzeniu usługi IoT Edge. 
+Możesz teraz wdrożyć zadanie usługi Azure Stream Analytics na urządzeniu usługi IoT Edge.
 
 W tej sekcji użyjesz kreatora **Utwórz moduły** w witrynie Azure Portal, aby utworzyć *manifest wdrożenia*. Manifest wdrożenia to plik JSON opisujący wszystkie moduły, które zostaną wdrożone na urządzeniu, rejestry kontenerów, w których są przechowywane obrazy modułów, sposób, w jaki powinny być zarządzane moduły oraz sposób, w jaki moduły mogą komunikować się między sobą. Urządzenie usługi IoT Edge pobiera manifest wdrożenia z usługi IoT Hub, a następnie używa zawartych w nim informacji, aby wdrożyć i skonfigurować wszystkie przypisane moduły.
 

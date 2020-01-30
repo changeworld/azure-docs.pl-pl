@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ac7fefd8ecabd40070b422c169befe64c08f12a8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277084"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844891"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Często zadawane pytania dotyczące usługi Azure Spatial Anchors
 
@@ -112,6 +112,7 @@ Odp **.:** Kotwice przestrzenne platformy Azure wykorzystują natywne możliwoś
 Odp **.:** Deweloperzy mogą tworzyć aplikacje z zakotwiczeniami przestrzennymi platformy Azure przy użyciu znanych narzędzi i struktur dla ich urządzeń:
 
 - Platforma Unity na urządzeniu HoloLens oraz w systemie iOS i Android
+- Platforma Xamarin w systemach iOS i Android
 - Platforma SWIFT i Objective-C w systemie iOS
 - Platforma Java lub zestaw Android NDK w systemie Android
 - Platforma C++/ WinRT na urządzeniu HoloLens

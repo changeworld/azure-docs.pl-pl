@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: a8dd859b05c3e95a1c584a7947334dad25813122
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970648"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845345"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 Ten artykuł zawiera wprowadzenie do usług zabezpieczeń na platformie Azure, które ułatwiają ochronę danych, zasobów i aplikacji w chmurze oraz zaspokajanie potrzeb firmy.
@@ -57,7 +57,7 @@ Rozwiązania do zarządzania tożsamościami i dostępem firmy Microsoft ułatwi
 
 Zalety zabezpieczeń Azure Active Directory (Azure AD) obejmują:
 
-- Utwórz jedną tożsamość dla każdego użytkownika w całym przedsiębiorstwie hybrydowym i zarządzaj nią, synchronizując użytkowników, grupy i urządzenia.
+- Utwórz pojedynczą tożsamość dla każdego użytkownika w przedsiębiorstwie hybrydowym, aby zachować synchronizację użytkowników, grup i urządzeń.
 
 - Zapewniaj Logowanie jednokrotne do swoich aplikacji, w tym tysiące wstępnie zintegrowanych aplikacji SaaS.
 
@@ -119,7 +119,7 @@ W Azure Portal lub za pomocą [portalu Azure Active Directory](https://aad.porta
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) to usługa zarządzania tożsamościami o wysokiej dostępności dla aplikacji przeznaczonych dla klientów, która skaluje się do setek milionów tożsamości. Można ją łatwo integrować z platformami mobilnymi i platformami sieci Web. Konsumenci mogą logować się do wszystkich aplikacji przy użyciu w pełni dostosowywanego procesu, używając istniejących kont sieci społecznościowych lub tworząc nowe poświadczenia.
 
-W przeszłości deweloperzy aplikacji, którzy chcieli zarejestrować się [i logują](../../active-directory-b2c/active-directory-b2c-overview.md) się do swoich aplikacji, chcą napisać własny kod. Musieli korzystać z lokalnych baz danych lub systemów do przechowywania nazw i haseł użytkowników. Azure Active Directory B2C oferuje organizacji lepszy sposób integrowania zarządzania tożsamościami konsumentów z aplikacjami za pomocą bezpiecznej, opartej na standardach platformy i dużego zestawu rozszerzalnych zasad.
+W przeszłości deweloperzy aplikacji, którzy chcieli zarejestrować się [i logują](../../active-directory-b2c/overview.md) się do swoich aplikacji, chcą napisać własny kod. Musieli korzystać z lokalnych baz danych lub systemów do przechowywania nazw i haseł użytkowników. Azure Active Directory B2C oferuje organizacji lepszy sposób integrowania zarządzania tożsamościami konsumentów z aplikacjami za pomocą bezpiecznej, opartej na standardach platformy i dużego zestawu rozszerzalnych zasad.
 
 W przypadku korzystania z Azure Active Directory B2C klienci mogą zarejestrować się w aplikacjach przy użyciu istniejących kont społecznościowych (Facebook, Google, Amazon, LinkedIn) lub tworząc nowe poświadczenia (adres e-mail i hasło albo nazwę użytkownika i hasło).
 
@@ -256,7 +256,7 @@ Większe zestawy danych można przenieść za pomocą dedykowanego, szybkiego ł
 
 W przypadku korzystania z usługi Azure Storage za pośrednictwem witryny Azure Portal wszystkie transakcje odbywają się za pośrednictwem protokołu HTTPS. [Interfejs API REST magazynu](https://msdn.microsoft.com/library/azure/dd179355.aspx) za pośrednictwem protokołu HTTPS może być również używany do współpracy z [usługą Azure Storage](https://azure.microsoft.com/services/storage/) i [Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
 
-Organizacje, które nie chronią przesyłanych danych, są bardziej podatne na [ataki typu man-in-the-Middle](https://technet.microsoft.com/library/gg195821.aspx), [podsłuchiwanie](https://technet.microsoft.com/library/gg195641.aspx)i przejmowanie sesji. Takie ataki mogą być pierwszym krokiem do uzyskania dostępu do poufnych danych.
+Organizacje, które nie chronią przesyłanych danych, są bardziej podatne na [ataki typu man-in-the-Middle](https://technet.microsoft.com/library/gg195821.aspx), [podsłuchiwanie](https://technet.microsoft.com/library/gg195641.aspx)i przejmowanie sesji. Ataki te mogą być pierwszym krokiem w celu uzyskania dostępu do poufnych danych.
 
 Więcej informacji na temat opcji sieci VPN platformy Azure można znaleźć w artykule [Planowanie i projektowanie VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
@@ -432,7 +432,7 @@ Centrum zabezpieczeń automatycznie gromadzi, analizuje i integruje dane dzienni
 
 - Alerty zabezpieczeń ze zintegrowanych programów chroniących przed złośliwym oprogramowaniem i zapór
 
-### <a name="azure-monitor"></a>Azure Monitor
+### <a name="azure-monitor"></a>Monitor platformy Azure
 
 [Azure monitor](../../azure-monitor/overview.md) zawiera wskaźniki do informacji o określonych typach zasobów. Oferuje wizualizacje, zapytania, routing, alerty, automatyczne skalowanie i automatyzację danych zarówno z infrastruktury platformy Azure (Dziennik aktywności), jak i poszczególnych zasobów platformy Azure (dzienników diagnostycznych).
 

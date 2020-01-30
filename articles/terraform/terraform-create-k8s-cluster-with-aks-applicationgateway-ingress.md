@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie Application Gatewayowego kontrolera w usłudze Az
 description: Samouczek pokazujący sposób tworzenia klastra Kubernetes za pomocą usługi Azure Kubernetes Service z usługą Application Gateway jako kontrolerem ruchu przychodzącego
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867398"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772870"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Samouczek: Tworzenie kontrolera Application Gateway transferu danych przychodzących w usłudze Azure Kubernetes Service
 
@@ -51,7 +51,7 @@ Pierwszym krokiem jest utworzenie katalogu, w którym będą przechowywane pliki
     cd clouddrive
     ```
 
-1. Utwórz katalog o nazwie `terraform-aks-k8s`.
+1. Utwórz katalog o nazwie `terraform-aks-appgw-ingress`.
 
     ```bash
     mkdir terraform-aks-appgw-ingress
@@ -731,8 +731,8 @@ Kod w tej sekcji używa Menedżera pakietów [Helm](/azure/aks/kubernetes-helm) 
     - `armAuth.secretJSON`: jest to konieczne tylko wtedy, gdy wybrano typ wpisu tajnego jednostki usługi (gdy `armAuth.type` została ustawiona na `servicePrincipal`).
 
     Kluczowe uwagi:
-    - Wartość `identityResourceID` jest tworzona w skrypcie Terraform i można ją znaleźć, uruchamiając: `echo "$(terraform output identity_client_id)"`.
-    - Wartość `identityClientID` jest tworzona w skrypcie Terraform i można ją znaleźć, uruchamiając: `echo "$(terraform output identity_resource_id)"`.
+    - Wartość `identityResourceID` jest tworzona w skrypcie Terraform i można ją znaleźć, uruchamiając: `echo "$(terraform output identity_resource_id)"`.
+    - Wartość `identityClientID` jest tworzona w skrypcie Terraform i można ją znaleźć, uruchamiając: `echo "$(terraform output identity_client_id)"`.
     - Wartość `<resource-group>` jest grupą zasobów bramy aplikacji.
     - Wartość `<identity-name>` to nazwa utworzonej tożsamości.
     - Wszystkie tożsamości dla danej subskrypcji można wyświetlić przy użyciu: `az identity list`.

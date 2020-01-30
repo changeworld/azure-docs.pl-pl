@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359968"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887745"
 ---
 W tym artykule przedstawiono kilka często zadawanych pytań dotyczących usługi Azure Managed Disks i Azure SSD w warstwie Premium Disks.
 
@@ -145,31 +145,23 @@ Obrazy generacji 1 mogą używać tylko partycjonowania GPT na dyskach danych, a
 
 SSD w warstwie Premium, standardowy dysk SSD i standardowe dyski twarde obsługują migawki. Dla tych trzech typów dysków migawki są obsługiwane dla wszystkich rozmiarów dysków (łącznie z dyskami o rozmiarze do 32 TiB). Dyski Ultra nie obsługują migawek.
 
-### <a name="disk-reservation"></a>Rezerwacja dysku
+**Co to są rezerwacje dysku platformy Azure?**
+Rezerwacja dysku to opcja zakupu jednego roku magazynu dyskowego z wyprzedzeniem i zmniejszenia łącznego kosztu. Aby uzyskać szczegółowe informacje dotyczące rezerwacji dysku platformy Azure, zobacz nasz artykuł w temacie: [informacje na temat sposobu zastosowania rabatu rezerwacji na dysk platformy Azure](../articles/cost-management-billing/reservations/understand-disk-reservations.md).
 
-**Co to jest rezerwacja dysku platformy Azure?**
-Rezerwacja dysku to opcja zakupu jednego roku magazynu dyskowego z wyprzedzeniem i zmniejszenia łącznego kosztu.
+**Jakie opcje oferuje oferta rezerwacji dysku platformy Azure?** Rezerwacja dysku platformy Azure udostępnia opcję zakupu dysków SSD Premium w określonych jednostkach SKU z P30 (1 TiB) do P80 (32 TiB) przez okres jednego roku. Nie ma ograniczenia dotyczącego minimalnej ilości dysków koniecznych do zakupu rezerwacji dysku. Ponadto możesz wybrać jednorazową zapłatę z góry lub płatności miesięczne. Managed Disks SSD w warstwie Premium nie ma dodatkowych kosztów transakcyjnych. 
 
-**Jakie opcje oferuje oferta rezerwacji dysku platformy Azure?**
-Rezerwacja dysku platformy Azure udostępnia opcję zakupu dysków SSD Premium w określonych jednostkach SKU z P30 (1 TiB) do P80 (32 TiB) przez okres jednego roku. Nie ma ograniczenia dotyczącego minimalnej ilości dysków koniecznych do zakupu rezerwacji dysku. Ponadto możesz wybrać jednorazową zapłatę z góry lub płatności miesięczne. Managed Disks SSD w warstwie Premium nie ma dodatkowych kosztów transakcyjnych.
+Rezerwacje są wykonywane w postaci dysków, a nie pojemności. Innymi słowy, gdy zarezerwujesz dysk z systemem P80 (32 TiB), otrzymujesz jeden dysk P80, ale nie można podzielić tego konkretnej rezerwacji na dwa mniejsze dyski P70 (16 TiB). Można oczywiście zarezerwować dowolną liczbę lub kilka dysków, w tym dwa oddzielne dyski P70 (16 TiB).
 
-Rezerwacje są wykonywane w postaci dysków, a nie pojemności. Innymi słowy, gdy zarezerwujesz dysk z systemem P80 (32 TiB), otrzymujesz jeden dysk P80, ale nie można go Divvy do dwóch mniejszych dysków P70 (16 TiB). Można oczywiście zarezerwować dowolną liczbę lub kilka dysków, w tym dwa oddzielne dyski P70 (16 TiB).
+**Jak jest zastosowana rezerwacja dysku platformy Azure?**  
+Rezerwacja dysków jest zgodna z modelem podobnym do wystąpień zarezerwowanych maszyn wirtualnych. Różnica polega na tym, że rezerwacja dysku nie może zostać zastosowana do różnych jednostek SKU, podczas gdy wystąpienie maszyny wirtualnej może. Aby uzyskać więcej informacji o wystąpieniach maszyn wirtualnych, zobacz temat [Zapisywanie kosztów w Azure Reserved VM Instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) .    
 
-**Jak będą naliczane opłaty za usługę Azure Disk Reservation?**
-- W przypadku klientów z Umowa Enterprise (EA) zobowiązanie pieniężne platformy Azure zostanie najpierw użyte do zakupu rezerwacji dysków platformy Azure. W scenariuszach, w których klienci z umową EA wykorzystali wszystkie zobowiązania pieniężne, rezerwacja dysku może nadal zostać zakupionych, a te zakupy będą wystawiane dla jednej, z góry płatności za następną fakturę.
+**Czy mogę użyć magazynu danych zakupionego w ramach rezerwacji na dyskach platformy Azure w wielu regionach?**     
+Rezerwacja dysków Azure jest zakupionych dla określonego regionu i jednostki SKU (na przykład P30 w regionie Wschodnie stany USA 2) i dlatego nie można jej używać poza tymi konstrukcjami. Możesz zawsze zakupić dodatkowe rezerwacje platformy Azure dla potrzeb magazynu dyskowego w innych regionach lub jednostkach SKU. 
 
-- W przypadku klientów kupowanych za pośrednictwem usługi Azure.com w momencie zakupu karta kredytowa w pliku będzie obciążana za pełną płatność z góry (lub miesięczne stałe płatności) rezerwacji dysków Azure.
-
-**Jak jest zastosowana rezerwacja dysku platformy Azure?**
-Rezerwacja dysków jest zgodna z modelem podobnym do wystąpień zarezerwowanych maszyn wirtualnych. Różnica polega na tym, że rezerwacja dysku nie może zostać zastosowana do różnych jednostek SKU, podczas gdy wystąpienie maszyny wirtualnej może. Aby uzyskać więcej informacji o wystąpieniach maszyn wirtualnych, zobacz temat [Zapisywanie kosztów w Azure Reserved VM Instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) . 
-
-**Czy mogę użyć magazynu danych zakupionego w ramach rezerwacji na dyskach platformy Azure w wielu regionach?**
-Rezerwacja dysków Azure jest zakupionych dla określonego regionu i jednostki SKU (na przykład P30 w regionie Wschodnie stany USA 2) i dlatego nie można jej używać poza tymi konstrukcjami. Możesz zawsze zakupić dodatkowe rezerwacje platformy Azure dla potrzeb magazynu dyskowego w innych regionach lub jednostkach SKU.
-
-**Co się stanie w przypadku wygaśnięcia rezerwacji z usługi Azure disks?**
+**Co się stanie w przypadku wygaśnięcia rezerwacji z usługi Azure disks?**    
 Powiadomienia e-mail będą wysyłane na 30 dni przed wygaśnięciem i od daty wygaśnięcia. Po wygaśnięciu rezerwacji wdrożone dyski będą nadal działać i opłaty są naliczane przy użyciu najnowszych [stawek płatności zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/managed-disks/)użyciem.
 
-## <a name="ultra-disks"></a>Dyski w warstwie Ultra
+## <a name="ultra-disks"></a>Ultra disks
 
 **Jak należy ustawić moją przepływność na dysku?**
 Jeśli nie masz pewności, w jaki sposób ustawić przepływność dysku, zalecamy rozpoczęcie od zagwarantowania, że rozmiar we/wy wynoszący 16 KiB i dostosowanie wydajności w trakcie monitorowania aplikacji. Formuła: przepływność w MB/s = liczba operacji we/wy * 16/1000.

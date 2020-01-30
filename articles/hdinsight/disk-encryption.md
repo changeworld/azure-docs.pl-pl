@@ -7,14 +7,14 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2019
-ms.openlocfilehash: 2c015db828bcbfa8b26f519b3a4707b5ec69b8f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b452cb986e6f662aeb33c2a475f18695ebc75745
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982506"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846074"
 ---
-# <a name="customer-managed-key-disk-encryption"></a>Szyfrowanie dysków klucza zarządzanego przez klienta
+# <a name="customer-managed-key-disk-encryption"></a>Szyfrowanie dysków za pomocą klucza zarządzanego przez klienta
 
 Usługa Azure HDInsight obsługuje klucze zarządzane przez klienta, znane także jako Bring Your Own Key (BYOK) szyfrowanie danych na dyskach zarządzanych i dyskach zasobów podłączonych do maszyn wirtualnych klastrów usługi HDInsight. Ta funkcja umożliwia używanie Azure Key Vault do zarządzania kluczami szyfrowania, które zabezpieczają dane przechowywane w klastrach usługi HDInsight. Klastry mogą mieć co najmniej jedno dołączone konto usługi Azure Storage, na których klucze szyfrowania mogą być również zarządzane przez firmę Microsoft lub zarządzane przez klienta, ale usługa szyfrowania jest inna.
 
@@ -79,7 +79,7 @@ Usługa HDInsight obsługuje tylko Azure Key Vault. Jeśli masz własny magazyn 
 
     b. W obszarze **Wybierz podmiot zabezpieczeń**Wybierz utworzoną tożsamość zarządzaną przez użytkownika.
 
-    ![Ustaw pozycję Wybierz podmiot zabezpieczeń dla zasad dostępu Azure Key Vault](./media/disk-encryption/add-key-vault-access-policy-select-principal.png)
+    ![Ustaw pozycję Wybierz podmiot zabezpieczeń dla zasad dostępu Azure Key Vault](./media/disk-encryption/azure-portal-add-access-policy.png)
 
     d. Ustawianie **uprawnień klucza** do **pobierania**, **odwinięcia klucza**i **zawijania klucza**.
 
@@ -100,6 +100,8 @@ Teraz możesz utworzyć nowy klaster usługi HDInsight. Klucz zarządzany przez 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
 Podczas tworzenia klastra Podaj pełny adres URL klucza, w tym wersję klucza. Na przykład `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Należy również przypisać zarządzaną tożsamość do klastra i podać identyfikator URI klucza.
+
+![Tworzenie nowego klastra](./media/disk-encryption/create-cluster-portal.png)
 
 ### <a name="using-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
 

@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100334"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844636"
 ---
 # <a name="persist-state-in-linux"></a>Stan utrwalania w systemie Linux
 
-Tematy i subskrypcje utworzone w module Event Grid są domyślnie przechowywane w systemie plików kontenerów. Bez trwałości, jeśli moduł zostanie ponownie wdrożony, wszystkie utworzone metadane zostałyby utracone. Obecnie tylko metadane są utrwalane. Zdarzenia są przechowywane w pamięci. Jeśli Event Grid module zostanie ponownie wdrożony lub uruchomiony, wszystkie niedostarczone zdarzenia zostaną utracone.
+Tematy i subskrypcje utworzone w module Event Grid są domyślnie przechowywane w systemie plików kontenera. Bez trwałości, jeśli moduł zostanie ponownie wdrożony, wszystkie utworzone metadane zostałyby utracone. Aby zachować dane między wdrożeniami i ponownymi uruchomieniami, należy utrzymać dane poza systemem plików kontenera.
+
+Domyślnie tylko metadane są utrwalane, a Zdarzenia nadal są przechowywane w pamięci w celu zwiększenia wydajności. Postępuj zgodnie z sekcją zdarzenia utrwalania, aby włączyć również trwałość zdarzenia.
 
 W tym artykule przedstawiono procedurę wdrażania modułu Event Grid z trwałością we wdrożeniach systemu Linux.
 
@@ -61,7 +63,8 @@ Na przykład następująca konfiguracja spowoduje utworzenie woluminu **egmetada
   ],
   "HostConfig": {
     "Binds": [
-      "egmetadataDbVol:/app/metadataDb"
+      "egmetadataDbVol:/app/metadataDb",
+      "egdataDbVol:/app/eventsDb"
     ],
     "PortBindings": {
       "4438/tcp": [
@@ -74,7 +77,7 @@ Na przykład następująca konfiguracja spowoduje utworzenie woluminu **egmetada
 }
 ```
 
-Alternatywnie można utworzyć wolumin platformy Docker za pomocą poleceń klienta platformy Docker. 
+Zamiast instalować wolumin, można utworzyć katalog w systemie hosta i zainstalować ten katalog.
 
 ## <a name="persistence-via-host-directory-mount"></a>Trwałość przy użyciu instalacji katalogu hosta
 
@@ -138,7 +141,8 @@ Zamiast woluminu platformy Docker można również zainstalować folder hosta.
           ],
           "HostConfig": {
                 "Binds": [
-                  "/myhostdir:/app/metadataDb"
+                  "/myhostdir:/app/metadataDb",
+                  "/myhostdir2:/app/eventsDb"
                 ],
                 "PortBindings": {
                       "4438/tcp": [
@@ -153,3 +157,32 @@ Zamiast woluminu platformy Docker można również zainstalować folder hosta.
 
     >[!IMPORTANT]
     >Nie zmieniaj drugiej części wartości powiązania. Wskazuje konkretną lokalizację w module. W przypadku modułu Event Grid w systemie Linux musi być **/App/Metadata**.
+
+
+## <a name="persist-events"></a>Zdarzenia utrwalania
+
+Aby włączyć trwałość zdarzeń, należy najpierw włączyć trwałość metadanych w ramach instalacji woluminu lub instalacji katalogu hosta za pomocą powyższych sekcji.
+
+Ważne kwestie dotyczące utrwalania zdarzeń:
+
+* Zdarzenia utrwalania są włączane dla każdej subskrypcji zdarzeń i są zgodą na zamontowanie woluminu lub katalogu.
+* Trwałość zdarzenia jest konfigurowana w subskrypcji zdarzeń podczas tworzenia i nie można jej modyfikować po utworzeniu subskrypcji zdarzeń. Aby przełączać trwałość zdarzeń, należy usunąć i ponownie utworzyć subskrypcję zdarzeń.
+* Utrwalanie zdarzeń jest niemal zawsze wolniejsze niż w przypadku operacji w pamięci, jednak różnica między szybkością zależy od charakterystyki dysku. Kompromis między szybkością i niezawodnością jest nieodłączny dla wszystkich systemów obsługi komunikatów, ale ogólnie rzecz biorąc tylko noticible na dużą skalę.
+
+Aby włączyć trwałość zdarzeń w subskrypcji zdarzeń, ustaw `persistencePolicy` na `true`:
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

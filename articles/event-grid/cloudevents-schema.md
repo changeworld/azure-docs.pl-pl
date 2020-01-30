@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548054"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844738"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Używanie schematu CloudEvents v 1.0 z Event Grid
 
@@ -73,7 +73,6 @@ Można użyć Event Grid zarówno dla danych wejściowych, jak i wyjściowych zd
 |--------------------|---------------------
 | Format CloudEvents | Format CloudEvents
 | Event Grid format  | Format CloudEvents
-| Format CloudEvents | Event Grid format
 | Event Grid format  | Event Grid format
 
 W przypadku wszystkich schematów zdarzeń Event Grid wymaga weryfikacji podczas publikowania w temacie Event Grid i podczas tworzenia subskrypcji zdarzeń. Aby uzyskać więcej informacji, zobacz [usługi Event Grid zabezpieczeń i uwierzytelniania](security-authentication.md).
@@ -109,8 +108,6 @@ New-AzureRmEventGridTopic `
   -Name <topic_name> `
   -InputSchema CloudEventSchemaV1_0
 ```
-
-Bieżąca wersja programu CloudEvents nie obsługuje przetwarzania wsadowego zdarzeń. Aby opublikować zdarzenia ze schematem CloudEvent w temacie, Opublikuj każde wydarzenie osobno.
 
 ### <a name="output-schema"></a>Schemat danych wyjściowych
 

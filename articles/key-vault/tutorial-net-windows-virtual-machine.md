@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: fbda2f645308e30a6f408335b7a1b37095522921
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5082ed06b4ce5baf3869fc035654be3c7a45f29f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003308"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845293"
 ---
-# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Samouczek: Używanie Azure Key Vault z maszyną wirtualną z systemem Windows w środowisku .NET
+# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Samouczek: używanie Azure Key Vault z maszyną wirtualną z systemem Windows w środowisku .NET
 
 Azure Key Vault pomaga chronić wpisy tajne, takie jak klucze interfejsu API, parametry połączenia bazy danych potrzebne do uzyskiwania dostępu do aplikacji, usług i zasobów IT.
 
@@ -40,7 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Dla systemów Windows, Mac i Linux:
-  * [Usługa Git](https://git-scm.com/downloads)
+  * [Git](https://git-scm.com/downloads)
   * Ten samouczek wymaga uruchomienia interfejsu wiersza polecenia platformy Azure lokalnie. Musisz mieć zainstalowany interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="about-managed-service-identity"></a>Informacje o tożsamości usługi zarządzanej
@@ -57,7 +57,7 @@ Następnie w celu uzyskania tokenu dostępu kod wywołuje lokalną usługę meta
 
 Przed rozpoczęciem kodowania należy utworzyć pewne zasoby, umieścić wpis tajny w magazynie kluczy i przypisać uprawnienia.
 
-### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, wpisz:
 
@@ -102,7 +102,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Ten wpis tajny zawiera wartość **MySecret**.
 
-### <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 Utwórz maszynę wirtualną za pomocą jednej z następujących metod:
 
 * [Interfejs wiersza polecenia platformy Azure](../virtual-machines/windows/quick-create-cli.md)
@@ -138,7 +138,7 @@ Aby zalogować się do maszyny wirtualnej, postępuj zgodnie z instrukcjami poda
 
 ## <a name="set-up-the-console-app"></a>Konfigurowanie aplikacji konsolowej
 
-Utwórz aplikację konsolową i zainstaluj wymagane pakiety przy użyciu `dotnet` polecenia.
+Utwórz aplikację konsolową i zainstaluj wymagane pakiety przy użyciu polecenia `dotnet`.
 
 ### <a name="install-net-core"></a>Instalowanie programu .NET Core
 
@@ -181,10 +181,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-Edytuj plik klasy, aby zawierał kod w następującym dwuetapowym procesie:
+Edytuj plik klasy, aby zawierał kod w następującym procesie trzech kroków:
 
 1. Pobieranie tokenu z lokalnego punktu końcowego tożsamości usługi zarządzanej na maszynie wirtualnej. Spowoduje to również pobranie tokenu z usługi Azure AD.
-1. Przekaż token do magazynu kluczy, a następnie Pobierz wpis tajny. 
+2. Przekaż token do magazynu kluczy, a następnie Pobierz wpis tajny. 
+3. Dodaj nazwę magazynu i nazwę wpisu tajnego do żądania.
 
 ```csharp
  class Program
@@ -205,9 +206,10 @@ Edytuj plik klasy, aby zawierał kod w następującym dwuetapowym procesie:
             WebResponse response = request.GetResponse();
             return ParseWebResponse(response, "access_token");
         }
-
+        
         static string FetchSecretValueFromKeyVault(string token)
         {
+            //Step 3: Add the vault name and secret name to the request.
             WebRequest kvRequest = WebRequest.Create("https://<YourVaultName>.vault.azure.net/secrets/<YourSecretName>?api-version=2016-10-01");
             kvRequest.Headers.Add("Authorization", "Bearer "+  token);
             WebResponse kvResponse = kvRequest.GetResponse();

@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100652"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844721"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Samouczek: Przekazywanie zdarzeń do Event Grid chmury
 
@@ -23,7 +23,7 @@ W tym artykule omówiono wszystkie kroki niezbędne do przechodzenia do przodu z
 * Reagowanie na zdarzenia brzegowe w chmurze.
 * Przekazuj zdarzenia do Event Grid w chmurze i korzystaj z usługi Azure Event Hubs lub kolejek usługi Azure Storage, aby buforować zdarzenia przed ich przetworzeniem w chmurze.
 
-Aby ukończyć ten samouczek, musisz znać Event Grid koncepcje w witrynie [Edge](concepts.md) i na [platformie Azure](../concepts.md).
+ Aby ukończyć ten samouczek, musisz znać Event Grid koncepcje w witrynie [Edge](concepts.md) i na [platformie Azure](../concepts.md). Aby uzyskać dodatkowe typy miejsc docelowych, zobacz [programy obsługi zdarzeń](event-handlers.md). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 Aby można było ukończyć ten samouczek, potrzebne są:
@@ -83,6 +83,7 @@ Jeśli na przykład został utworzony temat o nazwie `testegcloudtopic` w region
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>Utwórz subskrypcję Event Grid na brzegu
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Utwórz plik subscription3. JSON z następującą zawartością. Szczegółowe informacje o ładunku można znaleźć w [dokumentacji interfejsu API](api.md) .
 
@@ -201,3 +202,4 @@ W tym samouczku opublikowano zdarzenie na krawędzi i przekazano je do Event Gri
 * Aby rozwiązać problemy z używaniem Azure Event Grid na IoT Edge, zobacz [Przewodnik rozwiązywania problemów](troubleshoot.md).
 * Przekazuj zdarzenia do IoTHub, wykonując czynności opisane w tym [samouczku](forward-events-iothub.md)
 * Przekazuj zdarzenia do elementu webhook w chmurze, wykonując czynności opisane w tym [samouczku](pub-sub-events-webhook-cloud.md)
+* [Monitorowanie tematów i subskrypcji na granicy](monitor-topics-subscriptions.md)

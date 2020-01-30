@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 94ba2830824c4a918e9451a9fc5140d422110370
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231311"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845725"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Tworzenie pierwszej funkcji trwałej w języku Java Script
 
@@ -38,7 +38,31 @@ W celu ukończenia tego samouczka:
 
 [!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
 
-[!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
+## <a name="create-an-azure-functions-project"></a>Utwórz projekt lokalny 
+
+W tej sekcji użyto Visual Studio Code do utworzenia projektu Azure Functions lokalnego. 
+
+1. W Visual Studio Code naciśnij klawisz F1, aby otworzyć paletę poleceń. W palecie poleceń Wyszukaj i wybierz `Azure Functions: Create new project...`.
+
+1. Wybierz lokalizację katalogu dla obszaru roboczego projektu, a następnie wybierz **pozycję Wybierz**.
+
+    > [!NOTE]
+    > Te kroki zostały zaprojektowane do ukończenia poza obszarem roboczym. W takim przypadku nie wybieraj folderu projektu, który jest częścią obszaru roboczego.
+
+1. Postępując zgodnie z instrukcjami, podaj następujące informacje dotyczące żądanego języka:
+
+    | Monit | Wartość | Opis |
+    | ------ | ----- | ----------- |
+    | Wybierz język projektu aplikacji funkcji | JavaScript | Utwórz projekt funkcji lokalnego środowiska Node. js. |
+    | Wybierz wersję | Azure Functions v2 | Ta opcja jest wyświetlana tylko wtedy, gdy podstawowe narzędzia nie są jeszcze zainstalowane. W takim przypadku podstawowe narzędzia są instalowane przy pierwszym uruchomieniu aplikacji. |
+    | Wybierz szablon dla pierwszej funkcji projektu | Wyzwalacz HTTP | Utwórz funkcję wyzwalaną przez protokół HTTP w nowej aplikacji funkcji. |
+    | Podaj nazwę funkcji | HttpTrigger | Naciśnij klawisz ENTER, aby użyć nazwy domyślnej. |
+    | Poziom autoryzacji | Funkcja | Poziom autoryzacji `function` wymaga podania klucza dostępu podczas wywoływania punktu końcowego HTTP funkcji. Utrudnia to dostęp do niezabezpieczonego punktu końcowego. Aby dowiedzieć się więcej, zobacz [klucze autoryzacji](../functions-bindings-http-webhook.md#authorization-keys).  |
+    | Wybierz, w jaki sposób chcesz otworzyć projekt | Dodaj do obszaru roboczego | Tworzy aplikację funkcji w bieżącym obszarze roboczym. |
+
+Visual Studio Code instaluje Azure Functions Core Tools, w razie konieczności. Tworzy również projekt aplikacji funkcji w nowym obszarze roboczym. Ten projekt zawiera pliki konfiguracji pliku [host. JSON](../functions-host-json.md) i [Local. Settings. JSON](../functions-run-local.md#local-settings-file) . Tworzy również folder HttpExample zawierający [plik definicji Function. JSON](../functions-reference-node.md#folder-structure) oraz [plik index. js](../functions-reference-node.md#exporting-a-function), plik Node. js, który zawiera kod funkcji.
+
+Plik Package. JSON jest również tworzony w folderze głównym.
 
 ## <a name="install-the-durable-functions-npm-package"></a>Instalowanie pakietu npm rozszerzenia Durable Functions
 
@@ -60,7 +84,7 @@ Najpierw należy utworzyć funkcję wyzwalaną przez protokół HTTP, która roz
 
     ![Wybierz szablon HTTP Starter](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Pozostaw nazwę domyślną jako `DurableFunctionsHttpStart` i naciśnij klawisze * * * * ENTER * *, a następnie wybierz opcję uwierzytelnianie **anonimowe** .
+3. Pozostaw nazwę domyślną `DurableFunctionsHttpStart` i naciśnij klawisz ** **Enter**, następnie wybierz pozycję **anonimowe** uwierzytelniania.
 
     ![Wybieranie uwierzytelniania anonimowego](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

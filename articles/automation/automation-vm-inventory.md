@@ -4,18 +4,23 @@ description: Zarządzanie maszyną wirtualną z wykorzystaniem zbierania spisu
 services: automation
 ms.subservice: change-inventory-management
 keywords: spis, automatyzacja, zmiana, śledzenie
-ms.date: 02/06/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5ac5cb1b1f02ea1e8b7eccb65fba978c99cc4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419824"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844823"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Zarządzanie maszyną wirtualną platformy Azure z wykorzystaniem zbierania spisu
 
-Istnieje możliwość włączenia śledzenia z użyciem spisu dla maszyny wirtualnej platformy Azure na stronie zasobów tej maszyny wirtualnej. Możesz zbierać i wyświetlać spis oprogramowania, plików, demonów systemu Linux, usług systemu Windows i kluczy rejestru systemu Windows znajdujących się na Twoich komputerach. Ta metoda zapewnia interfejs użytkownika oparty na przeglądarce przeznaczony do instalowania i konfigurowania zbierania spisu.
+Istnieje możliwość włączenia śledzenia z użyciem spisu dla maszyny wirtualnej platformy Azure na stronie zasobów tej maszyny wirtualnej. Na komputerach można zbierać i przeglądać następujące informacje dotyczące spisu:
+
+- Oprogramowanie systemu Windows (aplikacje systemu Windows i aktualizacje systemu Windows), usługi, pliki i klucze rejestru
+- Demony oprogramowania (pakiety) systemu Linux i pliki
+
+Ta metoda zapewnia interfejs użytkownika oparty na przeglądarce przeznaczony do instalowania i konfigurowania zbierania spisu.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -101,7 +106,7 @@ Wybranie grupy maszyn z listy spowoduje otwarcie strony grupy maszyn. Na tej str
 
 Kliknij przycisk **+ Klonuj** , aby sklonować grupę maszyn. W tym miejscu należy nadać grupie nową nazwę i alias dla grupy. W tej chwili można zmienić definicję. Po zmianie zapytania naciśnij przycisk **Sprawdź poprawność zapytania** , aby wyświetlić podgląd wybranych maszyn. Gdy pozostaniesz zadowolony z grupy, kliknij przycisk **Utwórz** , aby utworzyć grupę maszyn
 
-Jeśli chcesz utworzyć nową grupę maszyn, wybierz pozycję **+ Utwórz grupę maszyn**. Ten przycisk otwiera **stronę Tworzenie grupy maszyn** , na której można zdefiniować nową grupę. Kliknij pozycję **Utwórz**, aby utworzyć grupę.
+Jeśli chcesz utworzyć nową grupę maszyn, wybierz pozycję **+ Utwórz grupę maszyn**. Ten przycisk otwiera **stronę Tworzenie grupy maszyn** , na której można zdefiniować nową grupę. Kliknij przycisk **Utwórz** , aby utworzyć grupę.
 
 ![Utwórz nową grupę maszyn](./media/automation-vm-inventory/create-new-group.png)
 

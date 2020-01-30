@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098674"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844704"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Samouczek: Przekazywanie zdarzeń do IoTHub
 
@@ -81,6 +81,8 @@ Jako wydawca zdarzenia musisz utworzyć temat dotyczący siatki zdarzeń. Temat 
 ## <a name="create-event-subscription"></a>Utwórz subskrypcję zdarzeń
 
 Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temacie. Aby odebrać każde zdarzenie, należy utworzyć subskrypcję usługi Event Grid w temacie zainteresowania.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Utwórz plik subscription4. JSON z poniższą zawartością. Szczegółowe informacje o ładunku można znaleźć w [dokumentacji interfejsu API](api.md) .
 
@@ -212,3 +214,4 @@ W tym samouczku opisano tworzenie tematu usługi Event Grid, subskrypcji centrum
 * Konfiguracja trwałości modułu Event Grid w systemie [Linux](persist-state-linux.md) lub [Windows](persist-state-windows.md)
 * Postępuj zgodnie z [dokumentacją](configure-client-auth.md) , aby skonfigurować uwierzytelnianie klienta
 * Przekazuj zdarzenia do Azure Event Grid w chmurze, wykonując czynności opisane w tym [samouczku](forward-events-event-grid-cloud.md)
+* [Monitorowanie tematów i subskrypcji na granicy](monitor-topics-subscriptions.md)

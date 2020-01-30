@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: W tym samouczku dowiesz się, jak zdiagnozować problem z komunikacją między siecią wirtualną platformy Azure połączoną z lokalną lub inną siecią wirtualną za pośrednictwem bramy sieci wirtualnej platformy Azure, korzystając z funkcji diagnostyki Network Watcher sieci VPN.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.
 ms.service: network-watcher
 ms.devlang: na
@@ -14,18 +12,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419735"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834691"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Samouczek: diagnozowanie problemu z komunikacją między sieciami przy użyciu witryny Azure Portal
 
-Brama sieci wirtualnej łączy sieć wirtualną platformy Azure z lokalną lub inną siecią wirtualną. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Brama sieci wirtualnej łączy sieć wirtualną platformy Azure z lokalną lub inną siecią wirtualną. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Diagnozowanie problemu z bramą sieci wirtualnej za pomocą diagnostyki sieci VPN usługi Network Watcher
@@ -45,9 +43,9 @@ Aby móc używać diagnostyki sieci VPN, musisz mieć istniejącą i działając
 
 Utworzenie bramy sieci VPN za pomocą tego skryptu trwa około godziny. W pozostałych krokach przyjęto założenie, że diagnozowana brama została wdrożona przy użyciu tego skryptu. Jeśli zamiast tego diagnozujesz własną istniejącą bramę, wyniki będą się różnić.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>Włączanie usługi Network Watcher
 
@@ -80,7 +78,7 @@ Jeśli masz już włączoną usługę Network Watcher w regionie Wschodnie stany
     W kolumnie **STAN ROZWIĄZYWANIA PROBLEMÓW** jest wyświetlana wartość **W złej kondycji**. Widać też **Podsumowanie** i **Szczegóły** problemu na karcie **Stan**.
 10. Po wybraniu karty **Akcja** diagnostyka sieci VPN udostępnia dodatkowe informacje. W przykładzie pokazanym na poniższej ilustracji diagnostyka sieci VPN informuje o tym, że należy sprawdzić kondycję każdego połączenia:
 
-    ![Akcja](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Działanie](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Diagnozowanie połączenia bramy
 
@@ -109,7 +107,7 @@ Jeśli bramę sieci VPN utworzono przy użyciu skryptu z sekcji [Wymagania wstę
 
 1. Wprowadź *TestRG1* w polu **Wyszukiwanie** w górnej części portalu. Po wyświetleniu nazwy **TestRG1** w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **TestRG1**, a następnie wybierz pozycję **Usuń**.
+3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *TestRG1*, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

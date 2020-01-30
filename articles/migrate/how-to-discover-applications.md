@@ -3,12 +3,12 @@ title: Odnajdywanie aplikacji, ról i funkcji na serwerach lokalnych przy użyci
 description: Informacje na temat odnajdywania aplikacji, ról i funkcji na serwerach lokalnych przy użyciu narzędzia do oceny Azure Migrate Server.
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 7c3a6360e051b8cb694393695e75578ce2c135ec
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280768"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846317"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Odkryj aplikacje maszynowe, role i funkcje
 
@@ -28,7 +28,7 @@ Odnajdywanie aplikacji przy użyciu Azure Migrate: Ocena serwera jest bez wykorz
 2. Upewnij się, że [dodano](how-to-assess.md) Azure Migrate: Narzędzie do oceny serwera do projektu.
 4. Sprawdź [wymagania programu VMware](migrate-support-matrix-vmware.md#vmware-requirements) dotyczące odnajdywania i oceniania maszyn wirtualnych VMware przy użyciu urządzenia Azure Migrate.
 5. Sprawdź [wymagania](migrate-appliance.md) dotyczące wdrażania urządzenia Azure Migrate.
-6. [Sprawdź pomoc techniczną i wymagania](/migrate-support-matrix-vmware.md#application-discovery) dotyczące odnajdywania aplikacji.
+6. [Sprawdź pomoc techniczną i wymagania](migrate-support-matrix-vmware.md#application-discovery) dotyczące odnajdywania aplikacji.
 
 ## <a name="prepare-for-app-discovery"></a>Przygotowanie do odnajdywania aplikacji
 

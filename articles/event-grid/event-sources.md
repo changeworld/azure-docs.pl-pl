@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3a87475146e2b23c4a824e568ea3da33e1f4abf0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3a52d906d958fdfd1d7e09c6229b12af3204bc52
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512950"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846387"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Źródła zdarzeń w Azure Event Grid
 
@@ -132,6 +132,9 @@ Subskrybuj zdarzenia Service Bus, aby odpowiedzieć na komunikaty bez aktywnego 
 ## <a name="storage"></a>Usługa Storage
 
 Zasubskrybuj zdarzenia Blob Storage, aby odpowiedzieć na zdarzenia utworzone i usunięte przez obiekt BLOB.
+
+>[!NOTE]
+> Tylko konta magazynu typu **StorageV2 (ogólnego przeznaczenia w wersji 2)** i **BlobStorage** obsługują integrację zdarzeń. **Magazyn (genral cel v1)** nie *obsługuje integracji* z programem Event Grid.
 
 |Tytuł  |Opis  |
 |---------|---------|

@@ -3,8 +3,7 @@ title: Samouczek — monitorowanie komunikacji sieciowej przy użyciu Azure Port
 description: W tym samouczku dowiesz się, jak monitorować komunikację sieciową między dwiema maszynami wirtualnymi za pomocą funkcji monitorowania połączeń Network Watcher platformy Azure.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419698"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834658"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Samouczek: monitorowanie komunikacji sieciowej między dwiema maszynami wirtualnymi przy użyciu witryny Azure Portal
 
-Pomyślna komunikacja między maszyną wirtualną i punktem końcowym, takim jak inna maszyna wirtualna, może być krytyczna dla działania organizacji. Czasami są wprowadzane zmiany konfiguracji, co może powodować przerwy w komunikacji. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Pomyślna komunikacja między maszyną wirtualną i punktem końcowym, takim jak inna maszyna wirtualna, może być krytyczna dla działania organizacji. Czasami są wprowadzane zmiany konfiguracji, co może powodować przerwy w komunikacji. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie dwóch maszyn wirtualnych
@@ -35,9 +34,9 @@ Pomyślna komunikacja między maszyną wirtualną i punktem końcowym, takim jak
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Tworzenie maszyn wirtualnych
 
@@ -54,9 +53,9 @@ Utwórz dwie maszyny wirtualne.
     |Nazwa|myVm1|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Subscription| Wybierz subskrypcję.|
+    |Subskrypcja| Wybierz subskrypcję.|
     |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę **myResourceGroup**.|
-    |Location| Wybierz pozycję **Wschodnie stany USA**|
+    |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**|
 
 4. Wybierz rozmiar maszyny wirtualnej, a następnie wybierz pozycję **Wybierz**.
 5. W obszarze **Ustawienia** wybierz pozycję **Rozszerzenia**. Wybierz polecenie **Dodaj rozszerzenie** i wybierz pozycję **Network Watcher Agent for Windows**, jak pokazano na poniższej ilustracji:
@@ -71,7 +70,7 @@ Utwórz dwie maszyny wirtualne.
 
 Wykonaj ponownie kroki z sekcji [Tworzenie pierwszej maszyny wirtualnej](#create-the-first-vm) z następującymi zmianami:
 
-|Krok|Ustawienie|Wartość|
+|Czynność|Ustawienie|Wartość|
 |---|---|---|
 | 1 | Wybierz wersję **Ubuntu Server** |                                                                         |
 | 3 | Nazwa                                  | myVm2                                                                   |
@@ -94,9 +93,9 @@ Utwórz monitor połączeń na potrzeby monitorowania komunikacji na porcie TCP 
     | Ustawienie                  | Wartość               |
     | ---------                | ---------           |
     | Nazwa                     | myVm1-myVm2(22)     |
-    | Element źródłowy                   |                     |
+    | Źródło                   |                     |
     | Maszyna wirtualna          | myVm1               |
-    | Destination              |                     |
+    | Cel              |                     |
     | Wybierz maszynę wirtualną |                     |
     | Maszyna wirtualna          | myVm2               |
     | Port                     | 22                  |
@@ -150,7 +149,7 @@ Domyślnie platforma Azure zezwala na komunikację na wszystkich portach między
     | Ustawienie                 | Wartość          |
     | ---                     | ---            |
     | Zakresy portów docelowych | 22             |
-    | Akcja                  | Zablokuj           |
+    | Działanie                  | Odmów           |
     | Priorytet                | 100            |
     | Nazwa                    | DenySshInbound |
 
@@ -170,7 +169,7 @@ Gdy grupa zasobów i wszystkie znajdujące się w niej zasoby nie będą już po
 
 1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**.
+3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

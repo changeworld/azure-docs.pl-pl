@@ -4,15 +4,15 @@ description: Samouczek dotyczący sposobu konfigurowania przepływu pracy kompil
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/23/2019
+ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: e3f7bcee8969939e3c3e9d9e10b43a3eb234fd50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b05b4b44df53846a4880249785c6a5deda62f8a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441051"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846544"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania przy użyciu zadania kompilacji emulatora usługi Azure Cosmos DB w usłudze Azure DevOps
 
@@ -47,12 +47,17 @@ Teraz, gdy rozszerzenie jest zainstalowane, zaloguj się do swojego konta usług
 
    ![Wybieranie projektu zespołowego, repozytorium i gałęzi dla potoku kompilacji](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-3. Na koniec wybierz odpowiedni szablon dla potoku kompilacji. Do celów tego samouczka wybierzemy szablon **ASP.NET**. 
+3. Na koniec wybierz odpowiedni szablon dla potoku kompilacji. Do celów tego samouczka wybierzemy szablon **ASP.NET**. Teraz masz potok kompilacji, który można skonfigurować do korzystania z zadania kompilacji emulatora Azure Cosmos DB. 
 
 > [!NOTE]
 > Pula agentów wybrana dla tego elementu konfiguracji powinna mieć zainstalowaną Docker for Windows, chyba że instalacja zostanie wykonana ręcznie w poprzednim zadaniu jako część elementu konfiguracji. Aby uzyskać wybór pul agentów, zobacz artykuł dotyczący [agentów hostowanych firmy Microsoft](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) . zalecamy rozpoczęcie od `Hosted VS2017`.
 
-Mamy już potok kompilacji, który możemy skonfigurować, aby użyć zadania kompilacji emulatora usługi Azure Cosmos DB. 
+Emulator Azure Cosmos DB obecnie nie obsługuje hostowanej puli agentów VS2019. Jednak emulator jest już dostarczany z zainstalowanym VS2019 i jest używany przez uruchomienie emulatora przy użyciu następujących poleceń cmdlet programu PowerShell. Jeśli wystąpią problemy podczas korzystania z VS2019, skontaktuj się z zespołem [usługi Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) w celu uzyskania pomocy:
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+Start-CosmosDbEmulator
+```
 
 ## <a name="addEmulatorBuildTaskToBuildDefinition"></a>Dodawanie zadania do potoku kompilacji
 

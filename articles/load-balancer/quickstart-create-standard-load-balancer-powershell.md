@@ -1,29 +1,29 @@
 ---
-title: 'Szybki Start: Tworzenie usługa Load Balancer w warstwie Standardowa-Azure PowerShell'
+title: 'Szybki Start: Tworzenie Load Balancer-Azure PowerShell'
 titleSuffix: Azure Load Balancer
-description: Ten przewodnik Szybki Start przedstawia sposób tworzenia usługa Load Balancer w warstwie Standardowa przy użyciu Azure PowerShell
+description: Ten przewodnik Szybki Start przedstawia sposób tworzenia Load Balancer przy użyciu Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045672"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846520"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Szybki Start: Tworzenie usługa Load Balancer w warstwie Standardowa przy użyciu Azure PowerShell
+# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Szybki Start: Tworzenie Load Balancer przy użyciu Azure PowerShell
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa przy użyciu programu Azure PowerShell. Aby przetestować moduł równoważenia obciążenia, należy wdrożyć trzy maszyny wirtualne z systemem Windows Server i zrównoważyć obciążenie aplikacji sieci Web między maszynami wirtualnymi. Aby dowiedzieć się więcej na temat usługi Load Balancer w warstwie Standardowa, zobacz [Co to jest usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 
 ## <a name="create-a-public-ip-address"></a>Tworzenie publicznego adresu IP
 
-Aby uzyskać dostęp do aplikacji za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. Utwórz publiczny adres IP przy użyciu polecenia [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Poniższy przykład tworzy publiczny adres IP o nazwie *myPublicIP* w grupie zasobów *myResourceGroupSLB* :
+Aby uzyskać dostęp do aplikacji za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. Utwórz publiczny adres IP przy użyciu polecenia [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Poniższy przykład tworzy strefowo nadmiarowy publiczny adres IP o nazwie *myPublicIP* w grupie zasobów *myResourceGroupSLB* :
 
 ```azurepowershell
 $publicIp = New-AzPublicIpAddress `
@@ -56,11 +56,25 @@ $publicIp = New-AzPublicIpAddress `
  -SKU Standard
 ```
 
-## <a name="create-standard-load-balancer"></a>Tworzenie usługi Load Balancer w warstwie Standardowa
+Aby utworzyć strefowy publiczny adres IP w strefie 1, użyj następujących:
+
+```azurepowershell
+$publicIp = New-AzPublicIpAddress `
+ -ResourceGroupName $rgName `
+ -Name 'myPublicIP' `
+ -Location $location `
+ -AllocationMethod static `
+ -SKU Standard
+ -zone 1
+```
+
+Użyj ```-SKU Basic```, aby utworzyć podstawowy publiczny adres IP. Firma Microsoft zaleca używanie standardu dla obciążeń produkcyjnych.
+
+## <a name="create-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
 W tej sekcji skonfigurujesz adres IP frontonu i pulę adresów zaplecza na potrzeby modułu równoważenia, a następnie utworzysz usługę Load Balancer w warstwie Standardowa.
 
-### <a name="create-front-end-ip"></a>Tworzenie adresu IP frontonu
+### <a name="create-frontend-ip"></a>Tworzenie adresu IP frontonu
 
 Utwórz adres IP frontonu przy użyciu polecenia [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Poniższy przykład obejmuje tworzenie konfiguracji adresu IP frontonu o nazwie *myFrontEnd* i dołączanie do niej adresu *myPublicIP*:
 
@@ -146,6 +160,8 @@ $lb = New-AzLoadBalancer `
   -InboundNatRule $natrule1,$natrule2,$natrule3
 ```
 
+Użyj ```-SKU Basic```, aby utworzyć Load Balancer podstawowy. Firma Microsoft zaleca używanie standardu dla obciążeń produkcyjnych.
+
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 Zanim będzie możliwe wdrożenie maszyn wirtualnych i przetestowanie modułu równoważenia obciążenia, musisz utworzyć pomocnicze zasoby sieci wirtualnej — sieć wirtualną i wirtualnej karty sieciowe. 
 
@@ -195,6 +211,9 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
   -AllocationMethod static
 
 ```
+
+Użyj ```-SKU Basic```, aby utworzyć podstawowe publiczne adresy IP. Firma Microsoft zaleca używanie standardu dla obciążeń produkcyjnych.
+
 ### <a name="create-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 Utwórz sieciową grupę zabezpieczeń w celu zdefiniowania połączeń przychodzących do sieci wirtualnej.
 
@@ -356,7 +375,6 @@ Remove-AzResourceGroup -Name myResourceGroupSLB
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start utworzono moduł równoważenia obciążenia usługi Load Balancer w warstwie Standardowa, dołączono do niego maszyny wirtualne, skonfigurowano regułę ruchu modułu równoważenia obciążenia i sondę kondycji, a następnie przetestowano moduł równoważenia obciążenia. Aby dowiedzieć się więcej na temat usługi Azure Load Balancer, przejdź do samouczków dotyczących usługi Azure Load Balancer.
+W tym przewodniku szybki start utworzono usługa Load Balancer w warstwie Standardowa, dołączono do niego maszyny wirtualne, skonfigurowano regułę ruchu Load Balancer, sondę kondycji, a następnie przetestowano Load Balancer. Aby dowiedzieć się więcej na temat Azure Load Balancer, przejdź do [Azure Load Balancer samouczków](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-> [!div class="nextstepaction"]
-> [Samouczki usługi Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)
+Dowiedz się więcej na temat [stref Load Balancer i dostępności](load-balancer-standard-availability-zones.md).

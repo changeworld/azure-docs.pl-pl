@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: e3dcd9305a48b0d34f1bcbea64d6628efabc1235
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8e1f144fdf94df445fb64b9b489cba1e9998f381
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546065"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845624"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa Azure Machine Learning: architektura i koncepcje
 
@@ -57,8 +57,8 @@ Użyj tych narzędzi dla Azure Machine Learning:
 + <a href="#activities">Działanie</a>
 + <a href="#compute-targets">Cele obliczeń</a>
 + <a href="#datasets-and-datastores">& Magazynów danych</a>
-+ <a href="#endpoints">Punkty końcowe</a>
-+ <a href="#environments">Środowiska</a>
++ <a href="#endpoints">Punktów końcowych</a>
++ <a href="#environments">Wiejski</a>
 + [Szacowania](#estimators)
 + <a href="#experiments">Eksperymenty</a>
 + <a href="#github-tracking-and-integration">Śledzenie git</a>
@@ -68,7 +68,7 @@ Użyj tych narzędzi dla Azure Machine Learning:
 + <a href="#models">Przykładów</a>
 + <a href="#runs">Run</a>
 + <a href="#run-configurations">Uruchom konfigurację</a>
-+ <a href="#snapshots">Migawka</a>
++ <a href="#snapshots">Zdjęcie</a>
 + <a href="#training-scripts">Skrypt szkoleniowy</a>
 + <a href="#web-service-endpoint">Usługi sieci Web</a>
 + <a href="#workspaces">Workspace</a>
@@ -85,7 +85,7 @@ Działania mogą udostępniać powiadomienia za pomocą zestawu SDK lub internet
 ### <a name="compute-instance"></a>Wystąpienie obliczeniowe (wersja zapoznawcza)
 
 > [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
+> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z **Północno-środkowe stany USA**, * * Wschodnie stany USA 2 * *, **europa Północna** lub **Południowe Zjednoczone Królestwo**.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
 
 **Wystąpienie obliczeniowe Azure Machine Learning** (dawniej jest maszyną wirtualną) to w pełni zarządzana stacja robocza oparta na chmurze, która obejmuje wiele narzędzi i środowisk zainstalowanych na potrzeby uczenia maszynowego. Wystąpienia obliczeniowe mogą służyć jako element docelowy obliczeń dla zadań szkoleniowych i inferencing. W przypadku dużych zadań [Azure Machine Learning klastrów obliczeniowych](how-to-set-up-training-targets.md#amlcompute) z możliwościami skalowania wielu węzłów jest lepszym rozwiązaniem docelowym obliczeń.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268251"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887653"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Omówienie ponownych rozruchów maszyn wirtualnych — konserwacja a przestój
 Istnieją trzy scenariusze, które mogą spowodować wpływ na maszynę wirtualną na platformie Azure: nieplanowana konserwacja sprzętu, nieoczekiwany przestój i planowana konserwacja.
@@ -79,12 +79,13 @@ Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.
 az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
 ```
 
-> Uwaga: w pewnych okolicznościach może się zdarzyć, że 2 maszyny wirtualne należące do tego samego AvailabilitySet korzystają z tego samego FaultDomainu. Można to potwierdzić, przechodząc do AvailabilitySet i Sprawdź kolumnę "domena błędów".
-> Takie zachowanie może być przestrzegane, gdy podczas wdrażania maszyn wirtualnych wystąpił następująca sekwencja:
+> [!NOTE]
+> W pewnych okolicznościach dwie maszyny wirtualne w tym samym AvailabilitySet mogą współużytkować ten sam FaultDomain. Można to potwierdzić, przechodząc do zestawu dostępności i sprawdzając kolumnę **domena błędów** .
+> Może to być spowodowane następującą sekwencją podczas wdrażania maszyn wirtualnych:
 > - Wdrażanie pierwszej maszyny wirtualnej
 > - Zatrzymaj/Cofnij przydział pierwszej maszyny wirtualnej
 > - W tym przypadku należy wdrożyć drugą maszynę wirtualną. dysk systemu operacyjnego drugiej maszyny wirtualnej może zostać utworzony w tej samej domenie błędów co pierwsza maszyna wirtualna, a druga maszyna wirtualna będzie również znajdować się na tym samym FaultDomain. 
-> Aby uniknąć tego problemu, zaleca się, aby nie zatrzymywać ani cofnąć alokacji maszyny wirtualnej między ich wdrożeniami.
+> Aby uniknąć tego problemu, zaleca się, aby nie zatrzymywać ani cofać alokacji maszyn wirtualnych między wdrożeniami.
 
 Jeśli planujesz używanie maszyn wirtualnych z dyskami niezarządzanymi, postępuj zgodnie z najlepszymi rozwiązaniami dotyczącymi kont magazynu, w których wirtualne dyski twarde (VHD) maszyn wirtualnych są przechowywane jako [stronicowe obiekty blob](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 

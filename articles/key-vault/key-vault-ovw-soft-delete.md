@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 89b7dc639a3140f17a62087c5ba0d05fb6df4d7f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883132"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845801"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault — przegląd usuwania nietrwałego
 
@@ -36,13 +36,21 @@ Magazyny kluczy Azure to śledzone zasoby zarządzane przez Azure Resource Manag
 
 W przypadku tej funkcji operacja usuwania w magazynie kluczy lub obiekcie magazynu kluczy jest nietrwałym usuwaniem, co skutecznie utrzymuje zasoby dla danego okresu przechowywania (90 dni), jednocześnie zapewniając wygląd obiektu. Usługa zapewnia Dodatkowo mechanizm odzyskiwania usuniętego obiektu, zasadniczo cofając operację usuwania. 
 
-Usuwanie nietrwałe jest opcjonalnym zachowaniem Key Vault i **nie jest domyślnie włączone** w tej wersji. Można ją włączyć za pomocą [interfejsu wiersza polecenia](key-vault-soft-delete-cli.md) lub [programu PowerShell](key-vault-soft-delete-powershell.md).
+Program unsoft-DELETE jest teraz domyślnie włączony dla nowo utworzonych magazynów kluczy. Można je wyłączyć za pomocą [interfejsu wiersza polecenia platformy Azure](key-vault-soft-delete-cli.md) lub [programu Azure PowerShell](key-vault-soft-delete-powershell.md).
+
+Domyślny okres przechowywania to 90 dni, ale można ustawić interwał zasad przechowywania na wartość z przedziału od 7 do 90 dni za pośrednictwem Azure Portal. Zasady przechowywania ochrony przed przeczyszczeniem używają tego samego interwału. 
+
+Po ustawieniu nietrwałego usuwania w magazynie kluczy nie można go wyłączyć i nie można zmienić interwału zasad przechowywania. 
+
+Nie można ponownie użyć nazwy magazynu kluczy, który został usunięty jako nietrwały, dopóki nie upłynie okres przechowywania. 
 
 ### <a name="purge-protection"></a>Ochrona przeczyszczania 
 
-Gdy ochrona przed przeczyszczeniem jest włączona, nie można przeczyścić magazynu lub obiektu w stanie usuniętym, dopóki nie zostanie przekroczony okres przechowywania 90 dni. Te magazyny i obiekty nadal mogą być odzyskiwane, dzięki czemu klienci będą przestrzegani zasad przechowywania. 
-
 Ochrona przed czyszczeniem jest opcjonalnym zachowaniem Key Vault i **nie jest włączona domyślnie**. Można ją włączyć za pomocą [interfejsu wiersza polecenia](key-vault-soft-delete-cli.md#enabling-purge-protection) lub [programu PowerShell](key-vault-soft-delete-powershell.md#enabling-purge-protection).
+
+Gdy ochrona przed przeczyszczeniem jest włączona, nie można wyczyścić magazynu ani obiektu w stanie usuniętym, dopóki nie upłynie okres przechowywania. Nieusunięte magazyny i obiekty nadal mogą być odzyskiwane, co oznacza, że zostaną zastosowane zasady przechowywania. 
+
+Domyślny okres przechowywania to 90 dni, ale można ustawić interwał zasad przechowywania na wartość z przedziału od 7 do 90 dni za pośrednictwem Azure Portal. Po ustawieniu interwału zasad przechowywania i zapisaniu go nie można go zmienić w tym magazynie. 
 
 ### <a name="permitted-purge"></a>Dozwolone przeczyszczanie
 

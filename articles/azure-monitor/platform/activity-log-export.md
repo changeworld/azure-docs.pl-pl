@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715901"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845471"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure
 
@@ -36,9 +36,10 @@ Archiwizowanie dziennika aktywności na koncie magazynu jest przydatne, jeśli c
 ### <a name="storage-account"></a>Konto magazynu
 W przypadku archiwizowania dziennika aktywności należy [utworzyć konto magazynu](../../storage/common/storage-account-create.md) , jeśli jeszcze go nie masz. Nie należy używać istniejącego konta magazynu, które ma inne niemonitorowane dane, które są w nim przechowywane, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jeśli dzienniki i metryki są również archiwizowane na koncie magazynu, możesz użyć tego samego konta magazynu, aby zachować wszystkie dane monitorowania w centralnej lokalizacji.
 
-Konto magazynu nie musi znajdować się w tej samej subskrypcji co subskrypcja emitująca dzienniki, dopóki użytkownik, który konfiguruje ustawienie, ma dostęp do obu subskrypcji.
-> [!NOTE]
->  Obecnie nie można archiwizować danych na koncie magazynu, które znajduje się za bezpieczną siecią wirtualną.
+Konto magazynu nie musi znajdować się w tej samej subskrypcji co subskrypcja emitująca dzienniki, dopóki użytkownik, który konfiguruje ustawienie, ma dostęp do obu subskrypcji. 
+
+> [!TIP]
+> Zobacz [Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) w celu zapewnienia dostępu do konta magazynu w ramach zabezpieczonej sieci wirtualnej.
 
 ### <a name="event-hubs"></a>Centra zdarzeń
 Jeśli wysyłasz dziennik aktywności do centrum zdarzeń, musisz [utworzyć centrum zdarzeń](../../event-hubs/event-hubs-create.md) , jeśli jeszcze go nie masz. Jeśli wcześniej przesyłane strumieniowo zdarzenia dziennika aktywności do tej przestrzeni nazw Event Hubs, centrum zdarzeń zostanie ponownie użyte.

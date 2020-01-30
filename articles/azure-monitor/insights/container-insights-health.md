@@ -3,12 +3,12 @@ title: Monitorowanie kondycji klastra Kubernetes za pomocą Azure Monitor dla ko
 description: W tym artykule opisano, jak można wyświetlać i analizować kondycję klastrów AKS i innych niż AKS przy użyciu Azure Monitor dla kontenerów.
 ms.topic: conceptual
 ms.date: 12/01/2019
-ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405097"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843994"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Interpretowanie kondycji klastra usługi Kubernetes za pomocą usługi Azure Monitor dla kontenerów
 
@@ -23,7 +23,7 @@ Informacje o sposobie włączania Azure Monitor dla kontenerów znajdują się w
 >[!NOTE]
 >Aby obsługiwać klastry aparatu AKS, sprawdź, czy są spełnione następujące warunki:
 >- Używa najnowszej wersji [klienta Helm](https://helm.sh/docs/using_helm/).
->- Wersja agenta kontenerowego to *Microsoft/OMS: ciprod11012019*. Aby uaktualnić agenta, zobacz [Uaktualnianie agenta w klastrze Kubernetes](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster).
+>- Wersja agenta kontenerowego to *Microsoft/OMS: ciprod11012019*. Aby uaktualnić agenta, zobacz [Uaktualnianie agenta w klastrze Kubernetes](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster).
 >
 
 ## <a name="overview"></a>Przegląd
@@ -48,12 +48,12 @@ Wszystkie monitory są wyświetlane w układzie hierarchicznym w okienku hierarc
 * Oceń użycie pamięci z węzła i kontenera.
 * Stan i węzły na podstawie obliczenia stanu gotowości zgłoszonego przez Kubernetes.
 
-Do wskazywania stanu używane są następujące ikony:
+Ikony używane do wskazywania stanu są następujące:
 
 |Ikona|Znaczenie|  
 |--------|-----------|  
-|![Zielona ikona znacznika wyboru oznacza dobrą kondycję](./media/container-insights-health/healthyicon.png)|Sukces, kondycja OK (zielony)|  
-|![Żółty trójkąt i wykrzyknik oznaczają ostrzeżenie](./media/container-insights-health/warningicon.png)|Ostrzeżenie (żółty)|  
+|![Ikona zielonego znacznika wyboru oznacza dobrą kondycję](./media/container-insights-health/healthyicon.png)|Sukces, kondycja jest OK (zielony)|  
+|![Żółty trójkąt i wykrzyknik są ostrzeżeniem](./media/container-insights-health/warningicon.png)|Ostrzeżenie (żółty)|  
 |![Czerwony przycisk z białym znakiem X oznacza stan krytyczny](./media/container-insights-health/criticalicon.png)|Krytyczny (czerwony)|  
 |![Szara ikona](./media/container-insights-health/grayicon.png)|Nieznane (szare)|  
 
@@ -63,7 +63,7 @@ Aby zrozumieć zachowanie i konfigurację poszczególnych monitorów obsługują
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com). 
+Zaloguj się do [Portalu Azure](https://portal.azure.com). 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Wyświetlanie kondycji klastra AKS lub innego niż AKS
 

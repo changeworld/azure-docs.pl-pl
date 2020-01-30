@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 2c5312c2e0a7121237c4d11197d90a2a5638557c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d94937a738034904413eac8b256121f14221d1ac
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020863"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845961"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
@@ -21,16 +21,17 @@ ms.locfileid: "76020863"
 | Całkowita liczba rdzeni maszyn wirtualnych na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region. | Skontaktuj się z pomocą techniczną. |
 | Łączna liczba rdzeni maszyn wirtualnych platformy Azure na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region. | Skontaktuj się z pomocą techniczną. |
 | Maszyny wirtualne na serię, takie jak Dv2 i F, rdzenie na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region. | Skontaktuj się z pomocą techniczną. |
-| [Współadministratorzy](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) na subskrypcję |Nieograniczona liczba. |Nieograniczona liczba. |
 | [Konta magazynu](../articles/storage/common/storage-account-create.md) na region na subskrypcję |250 |250 |
-| [Grupy zasobów](../articles/azure-resource-manager/management/overview.md) na subskrypcję |980 |980 |
 | [Zestawy dostępności](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) na subskrypcję |2 000 na region. |2 000 na region. |
-| Rozmiar żądania interfejsu API Azure Resource Manager |4 194 304 bajtów. |4 194 304 bajtów. |
-| Tagi na subskrypcję<sup>2</sup> |Nieograniczona liczba. |Nieograniczona liczba. |
-| Obliczenia unikatowych tagów na subskrypcję<sup>2</sup> | 10 000 | 10 000 |
-| [Usługi w chmurze](../articles/cloud-services/cloud-services-choose-me.md) na subskrypcję |Nie dotyczy<sup>3</sup> |Nie dotyczy<sup>3</sup> |
 | [Grupy koligacji](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na subskrypcję |Nie dotyczy<sup>3</sup> |Nie dotyczy<sup>3</sup> |
+| [Usługi w chmurze](../articles/cloud-services/cloud-services-choose-me.md) na subskrypcję |Nie dotyczy<sup>3</sup> |Nie dotyczy<sup>3</sup> |
+| [Grupy zasobów](../articles/azure-resource-manager/management/overview.md) na subskrypcję |980 |980 |
+| Rozmiar żądania interfejsu API Azure Resource Manager |4 194 304 bajtów. |4 194 304 bajtów. |
+| Tagi na subskrypcję<sup>2</sup> |Ograniczona. |Ograniczona. |
+| Obliczenia unikatowych tagów na subskrypcję<sup>2</sup> | 10 000 | 10 000 |
 | [Wdrożenia na poziomie subskrypcji](../articles/azure-resource-manager/templates/deploy-to-subscription.md) na lokalizację | 800<sup>4</sup> | 800 |
+| Subskrypcje na Azure Active Directory dzierżawcę | Ograniczona. | Ograniczona. |
+| [Współadministratorzy](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) na subskrypcję |Ograniczona. |Ograniczona. |
 
 <sup>1</sup> Domyślne limity różnią się w zależności od typu kategorii oferty, na przykład bezpłatnej wersji próbnej i płatnej zgodnie z rzeczywistym użyciem oraz według serii, takich jak Dv2, F i G. Na przykład domyślna wartość dla subskrypcji Umowa Enterprise to 350.
 

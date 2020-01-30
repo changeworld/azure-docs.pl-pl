@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 50dd6e2387abbf5b24adcee708dd2ff387e33261
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660617"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845382"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy związane z konfiguracją i zarządzaniem w usłudze Azure Cloud Services: często zadawane pytania
 
@@ -136,7 +136,7 @@ Przekroczono limit przydziału magazynu lokalnego do zapisu w katalogu dziennik�
 * Ręcznie usuń pliki dziennika z katalogu rejestrowania.
 * Zwiększ limit przydziału dla zasobów lokalnych.
 
-Więcej informacji można znaleźć w następujących dokumentach:
+Aby uzyskać więcej informacji, zobacz następujące dokumenty:
 * [Przechowywanie i przeglądanie danych diagnostycznych w usłudze Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
 * [Dzienniki usług IIS zatrzymują zapisywanie w usłudze w chmurze](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
@@ -174,11 +174,11 @@ Zobacz [Nowy: konfigurowalny limit czasu bezczynności dla Azure Load Balancer](
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Jak mogę skojarzyć statyczny adres IP z moją usługą w chmurze?
 Aby skonfigurować statyczny adres IP, należy utworzyć zastrzeżoną wartość adresu IP. Ten zastrzeżony adres IP można skojarzyć z nową usługą w chmurze lub istniejącym wdrożeniem. Aby uzyskać szczegółowe informacje, zobacz następujące dokumenty:
-* [Jak utworzyć zastrzeżony adres IP](../virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Zarezerwuj adres IP istniejącej usługi w chmurze](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Skojarz zastrzeżony adres IP z nową usługą w chmurze](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Skojarz zastrzeżony adres IP z uruchomionym wdrożeniem](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Kojarzenie zastrzeżonego adresu IP z usługą w chmurze przy użyciu pliku konfiguracji usługi](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [Jak utworzyć zastrzeżony adres IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
+* [Zarezerwuj adres IP istniejącej usługi w chmurze](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Skojarz zastrzeżony adres IP z nową usługą w chmurze](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Skojarz zastrzeżony adres IP z uruchomionym wdrożeniem](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
+* [Kojarzenie zastrzeżonego adresu IP z usługą w chmurze przy użyciu pliku konfiguracji usługi](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Jakie są funkcje i możliwości, które zapewnia usługa Azure Basic adresy IP/identyfikatory i DDOS?
 Platforma Azure ma adresy IP/identyfikatory na serwerach fizycznych centrów danych, aby chronić je przed zagrożeniami. Ponadto klienci mogą wdrażać rozwiązania zabezpieczeń innych firm, takie jak zapory aplikacji sieci Web, zapory sieciowe, ochrona przed złośliwym oprogramowaniem, Wykrywanie intruzów, systemy zapobiegania (identyfikatory/adresy IP) i nie tylko. Aby uzyskać więcej informacji, zobacz [Ochrona danych i zasobów oraz zgodność z globalnymi standardami zabezpieczeń](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).

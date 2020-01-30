@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 813e65eadf9f54f7a0ac148681b25988ed6950b9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562038"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845449"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Szybki Start: używanie języka Java i Maven do tworzenia i publikowania funkcji na platformie Azure
 
@@ -29,9 +29,8 @@ Aby opracowywać funkcje przy użyciu języka Java, musisz mieć zainstalowane n
 - [Apache Maven](https://maven.apache.org), wersja 3,0 lub nowsza
 - [Interfejs wiersza polecenia platformy Azure]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.666 lub nowszej
-- Subskrypcja platformy Azure.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Potrzebna jest również aktywna subskrypcja platformy Azure. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 > [!IMPORTANT]
@@ -72,7 +71,7 @@ Maven prosi o podanie wartości, które są potrzebne, aby zakończyć Generowan
 | ----- | ----------- |
 | **groupId** | Wartość, która jednoznacznie identyfikuje projekt we wszystkich projektach, zgodnie z [regułami nazewnictwa pakietów](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) dla języka Java. Przykłady w tym przewodniku szybki start używają `com.fabrikam.functions`. |
 | **artifactId** | Wartość, która jest nazwą jar, bez numeru wersji. Przykłady w tym przewodniku szybki start używają `fabrikam-functions`. |
-| **version** | Wybierz wartość domyślną `1.0-SNAPSHOT`. |
+| **Wersja** | Wybierz wartość domyślną `1.0-SNAPSHOT`. |
 | **Package** | Wartość, która jest pakiet języka Java dla wygenerowanego kodu funkcji. Użyj wartości domyślnej. Przykłady w tym przewodniku szybki start używają `com.fabrikam.functions`. |
 | **Argumentu** | Globalnie unikatowa nazwa identyfikująca nową aplikację funkcji na platformie Azure. Użyj wartości domyślnej, która jest _artifactId_ dołączona z liczbą losową. Zanotuj tę wartość, która będzie potrzebna później. |
 | **appRegion** | Wybierz [region](https://azure.microsoft.com/regions/) w swojej okolicy lub w pobliżu innych usług, do których Twoje funkcje uzyskują dostęp. Wartość domyślna to `westus`. Uruchom to polecenie [Interfejs wiersza polecenia platformy Azure] , aby uzyskać listę wszystkich regionów:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |

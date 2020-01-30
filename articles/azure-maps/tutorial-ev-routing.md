@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f45859370ae178fb186399fdd2648bf37f0985aa
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910900"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844755"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python)
 
-Azure Maps to portfolio interfejsów API usług geoprzestrzennych, które są natywnie zintegrowane z platformą Azure. Korzystając z tych interfejsów API, deweloperzy, przedsiębiorstwa i dostawcy oprogramowania mogą tworzyć aplikacje obsługujące lokalizacje i rozwiązania IoT, mobilności, logistyki i śledzenia zasobów. 
+Azure Maps to portfolio interfejsów API usług geoprzestrzennych, które są natywnie zintegrowane z platformą Azure. Korzystając z tych interfejsów API, deweloperzy, przedsiębiorstwa i dostawcy oprogramowania mogą tworzyć aplikacje obsługujące lokalizacje, rozwiązania IoT, mobilności, logistyki i śledzenia zasobów. 
 
 Interfejsy API REST Azure Maps mogą być wywoływane z języków takich jak Python i R, aby umożliwić analizę danych geoprzestrzennych i scenariusze uczenia maszynowego. Azure Maps oferuje niezawodny zestaw [interfejsów API routingu](https://docs.microsoft.com/rest/api/maps/route) , które umożliwiają użytkownikom obliczanie tras między kilkoma punktami danych. Obliczenia są zależne od różnych warunków, takich jak typ pojazdu lub dostępny obszar. 
 
-W tym samouczku przedstawiono scenariusz, w którym można uzyskać pomoc dotyczącą sterownika, którego obciążenie baterii pojazdu elektrycznego jest niskie, aby znaleźć najbliższą możliwą stację ładowania na podstawie czasu dysku z lokalizacji pojazdu.
+W tym samouczku poznasz sterownik, którego bateria elektryczności jest niska. Sterownik musi znaleźć najbliższą możliwą stację ładowania z lokalizacji pojazdu.
 
 W tym samouczku zostaną wykonane następujące czynności:
 
@@ -39,7 +39,7 @@ W tym samouczku zostaną wykonane następujące czynności:
 
 Aby ukończyć ten samouczek, musisz najpierw utworzyć konto Azure Maps i uzyskać klucz podstawowy (klucz subskrypcji). 
 
-Aby utworzyć subskrypcję konta Azure Maps w warstwie cenowej S1, postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) , aby utworzyć subskrypcję konta usługi Azure Maps z warstwą cenową S1. 
+Aby utworzyć subskrypcję konta Azure Maps, postępuj zgodnie z instrukcjami podanymi w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps). Potrzebna jest subskrypcja konta Azure Maps z warstwą cenową S1. 
 
 Aby uzyskać podstawowy klucz subskrypcji dla konta, postępuj zgodnie z instrukcjami podanymi w temacie [Pobieranie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
@@ -64,7 +64,7 @@ Aby wykonać czynności opisane w tym samouczku, należy utworzyć projekt notes
 
 1. Wybierz pozycję **Utwórz**.
 
-1. Po utworzeniu projektu Pobierz [plik dokumentu notesu Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) z [repozytorium Azure Maps Jupyter notesu](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook). 
+1. Po utworzeniu projektu Pobierz ten [plik dokumentu notesu Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) z [repozytorium Azure Maps Jupyter notesu](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
 
 1. Na liście projekty na stronie **Moje projekty** wybierz projekt, a następnie wybierz pozycję **Przekaż** , aby przekazać plik dokumentu notesu Jupyter. 
 
@@ -72,9 +72,9 @@ Aby wykonać czynności opisane w tym samouczku, należy utworzyć projekt notes
 
 1. Przekaż plik z komputera, a następnie wybierz pozycję **gotowe**.
 
-1. Po pomyślnym zakończeniu przekazywania plik zostanie wyświetlony na stronie Twojego projektu. Wybierz plik, aby otworzyć go jako Notes Jupyter.
+1. Po pomyślnym zakończeniu przekazywania plik zostanie wyświetlony na stronie Twojego projektu. Kliknij dwukrotnie plik, aby otworzyć go jako Notes Jupyter.
 
-W celu lepszego zrozumienia funkcji zaimplementowanych w pliku notesu zalecamy uruchomienie kodu w notesie po jednej komórce naraz. Kod można uruchomić w każdej komórce, wybierając przycisk Run ( **Uruchom** ) w górnej części aplikacji Notes.
+Aby lepiej zrozumieć funkcje zaimplementowane w pliku notesu, uruchom kod w notesie po jednej komórce naraz. Kod można uruchomić w każdej komórce, wybierając przycisk Run ( **Uruchom** ) w górnej części aplikacji Notes.
 
   ![Przycisk Uruchom](./media/tutorial-ev-routing/run.png)
 
@@ -95,9 +95,9 @@ Aby uruchomić kod w notesie, zainstaluj pakiety na poziomie projektu, wykonują
 
 ## <a name="load-the-required-modules-and-frameworks"></a>Załaduj wymagane moduły i struktury
 
-Aby załadować wszystkie wymagane moduły i struktury, uruchom następujący skrypt:
+Aby załadować wszystkie wymagane moduły i platformy, uruchom poniższy skrypt.
 
-```python
+```Python
 import time
 import aiohttp
 import urllib.parse
@@ -106,9 +106,9 @@ from IPython.display import Image, display
 
 ## <a name="request-the-reachable-range-boundary"></a>Żądaj granicy dostępnego zakresu
 
-W naszym scenariuszu firma dostarczająca pakiet ma pojazdy elektryczne w swojej flotie. W ciągu dnia należy ponownie naliczać pojazdy elektryczne bez konieczności powrotu do hurtowni danych. Za każdym razem, gdy bieżąca pozostała opłata spadnie do mniej niż godziny (oznacza to, że bateria jest niska), Wyszukaj zestaw stacji ładowania, które znajdują się w dostępnym zakresie, i uzyskaj informacje o granicach dla tego zakresu. 
+Firma dostarczająca pakiet ma pojazdy elektryczne w swojej flotie. W ciągu dnia należy ponownie naliczać pojazdy elektryczne bez konieczności powrotu do hurtowni danych. Za każdym razem, gdy pozostała opłata spadnie do mniej niż godziny, Wyszukaj zestaw stacji ładowania, które znajdują się w dostępnym zakresie. Zasadniczo należy wyszukać stacji ładowania, gdy bateria jest niska. I uzyskasz informacje o granicach tego zakresu stacji ładowania. 
 
-Ze względu na to, że firma preferuje używanie tras wymagających zrównoważenia ekonomicznego i szybkości, żądany element routetype jest *ekologiczny*. Następujący skrypt wywołuje [interfejs API zakresu pobierania tras](https://docs.microsoft.com/rest/api/maps/route/getrouterange) usługi routingu Azure Maps przy użyciu parametrów dla modelu zużycia pojazdu. Skrypt następnie analizuje odpowiedź w celu utworzenia obiektu wielokąta w formacie GEOJSON, który reprezentuje maksymalny osiągalny zakres.
+Ze względu na to, że firma preferuje używanie tras wymagających zrównoważenia ekonomicznego i szybkości, żądany element routetype jest *ekologiczny*. Następujący skrypt wywołuje [interfejs API pobierania zakresu tras](https://docs.microsoft.com/rest/api/maps/route/getrouterange) usługi routingu Azure Maps. Używa parametrów dla modelu zużycia pojazdu. Skrypt następnie analizuje odpowiedź w celu utworzenia obiektu wielokąta w formacie GEOJSON, który reprezentuje maksymalny osiągalny zakres.
 
 Aby określić granice dostępnego zakresu dla pojazdu elektrycznego, uruchom skrypt w następującej komórce:
 
@@ -173,7 +173,7 @@ for loc in range(len(searchPolyResponse["results"])):
 
 ## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Przekaż osiągalny zakres i punkty ładowania do usługi danych Azure Maps
 
-Chcesz wizualizować na mapie, aby uzyskać maksymalną osiągalny zakres pojazdu elektrycznego. W tym celu Przekaż dane graniczne i Nalicz stacje dane jako obiekty GEOJSON do Azure Maps usługi danych przy użyciu [interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). 
+Na mapie należy wizualizować stacje ładowania i granicę maksymalnego osiągalnego zakresu pojazdu elektrycznego. W tym celu Przekaż dane graniczne i Nalicz stacje dane jako obiekty GEOJSON do Azure Maps usługi danych. Użyj [interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). 
 
 Aby przekazać dane dotyczące granicy i ładowania do usługi danych Azure Maps, uruchom następujące dwie komórki:
 
@@ -239,7 +239,7 @@ poiUdid = getPoiUdid["udid"]
 
 ## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>Renderowanie stacji ładowania i dostępnego zakresu na mapie
 
-Po przekazaniu danych do usługi danych Wywołaj Azure Maps [Get Image Service](https://docs.microsoft.com/rest/api/maps/render/getmapimage) , aby renderować punkty ładowania i maksymalną osiągalną granicę na obrazie mapy statycznej, uruchamiając następujący skrypt:
+Po przekazaniu danych do usługi danych Wywołaj Azure Maps [Get Image Service](https://docs.microsoft.com/rest/api/maps/render/getmapimage). Ta usługa służy do renderowania punktów ładowania i maksymalnej dostępnej granicy na obrazie mapy statycznej przez uruchomienie następującego skryptu:
 
 ```python
 # Get boundaries for the bounding box.
@@ -281,9 +281,9 @@ display(Image(poiRangeMap))
 
 ## <a name="find-the-optimal-charging-station"></a>Znajdowanie optymalnej stacji ładowania
 
-Po ustaleniu wszystkich potencjalnych stacji ładowania do dostępnego zakresu należy wiedzieć, które z nich można osiągnąć w minimalnym czasie. 
+Najpierw chcesz określić wszystkie potencjalne stacje naliczania opłat w dostępnym zakresie. Następnie chcesz wiedzieć, które z nich można osiągnąć w minimalnym czasie. 
 
-Poniższy skrypt wywołuje [interfejs API routingu Azure Maps Matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrix), który zwraca dla określonej lokalizacji pojazdu czas podróży i odległość do każdej stacji ładowania. Skrypt w następnej komórce analizuje odpowiedź w celu zlokalizowania najbliższej dostępnej stacji ładowania w odniesieniu do czasu.
+Poniższy skrypt wywołuje [interfejs API routingu Azure Maps Matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrix). Zwraca określoną lokalizację pojazdu, czas podróży i odległość do każdej stacji ładowania. Skrypt w następnej komórce analizuje odpowiedź w celu zlokalizowania najbliższej dostępnej stacji ładowania w odniesieniu do czasu.
 
 Aby znaleźć najbliższą osiągalną stację ładowania, którą można osiągnąć w czasie najmniejszej ilości czasu, uruchom skrypt w następującej komórce:
 
@@ -336,7 +336,7 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Wizualizacja trasy
 
-Aby ułatwić wizualizację trasy, należy najpierw przekazać dane trasy jako obiekt GEOJSON do Azure Maps usługi danych przy użyciu [interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)Azure Maps. Następnie należy wywołać usługę renderowania, [uzyskać interfejs API obrazu mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage), aby renderować trasę na mapie i wizualizować ją.
+Aby ułatwić wizualizację trasy, należy najpierw przekazać dane trasy jako obiekt GEOJSON do Azure Maps usługi danych. Aby to zrobić, użyj [interfejsu API przekazywania danych](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)Azure Maps. Następnie Wywołaj usługę renderowania, [Pobierz interfejs API obrazu mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage), aby renderować trasę na mapie, i Wizualizuj ją.
 
 Aby uzyskać obraz dla renderowanej trasy na mapie, uruchom następujący skrypt:
 

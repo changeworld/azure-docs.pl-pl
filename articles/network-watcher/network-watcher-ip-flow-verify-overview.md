@@ -1,39 +1,36 @@
 ---
-title: Wprowadzenie do przepływu dla adresu IP, sprawdź w usłudze Azure Network Watcher | Dokumentacja firmy Microsoft
-description: Ta strona zawiera omówienie sieci IP obserwatora możliwość weryfikowania przepływu
+title: Wprowadzenie do weryfikacji przepływu IP na platformie Azure Network Watcher | Microsoft Docs
+description: Ta strona zawiera omówienie możliwości zweryfikowania przepływu adresu IP Network Watcher
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: d352fb2d-4b4f-4ac4-9c2e-1cfccf0e7e03
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2017
-ms.author: kumud
-ms.openlocfilehash: 5c34fd2b6d354f594ed153647c1bed700566fad6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 69aca5e0901a0da8aa98fe310ac220898bf650b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64709595"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845010"
 ---
-# <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Wprowadzenie do przepływu dla adresu IP, sprawdź w usłudze Azure Network Watcher
+# <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Wprowadzenie do weryfikacji przepływu IP na platformie Azure Network Watcher
 
-Weryfikowanie przepływu protokołu IP kontroli, jeśli pakiet może wchodzić lub wychodzić do / z maszyny wirtualnej. Zawiera kierunek, protokół, lokalny adres IP zdalnego adresu IP, port lokalny i port zdalny. Jeśli pakiet zostanie odrzucona przez grupę zabezpieczeń, zwracana jest nazwa reguły, która odrzuciła pakiet. Chociaż można wybrać dowolny źródłowy lub docelowy adres IP, przepływu dla adresu IP, sprawdź pomaga administratorom szybkie diagnozowanie problemów z łącznością z lub z Internetem i z lub do środowiska lokalnego.
+Sprawdzenie przepływu IP sprawdza, czy pakiet jest dozwolony, czy odrzucany do lub z maszyny wirtualnej. Informacje składają się z kierunku, protokołu, lokalnego adresu IP, zdalnego adresu IP, portu lokalnego i portu zdalnego. Jeśli pakiet zostanie odrzucony przez grupę zabezpieczeń, zostanie zwrócona nazwa reguły, która odrzuciła pakiet. Gdy można wybrać dowolny źródłowy lub docelowy adres IP, weryfikacja przepływu IP ułatwia administratorom Szybkie diagnozowanie problemów z łącznością z lub do Internetu oraz z lub do środowiska lokalnego.
 
-Weryfikowanie przepływu protokołu IP prezentuje reguły dla wszystkich sieciowych grup zabezpieczeń (NSG) stosowane do interfejsu sieciowego, takie jak podsieci lub maszyny wirtualnej karty sieciowej. Przepływ ruchu jest następnie weryfikowany na podstawie ustawień skonfigurowanych do lub z tym interfejsem sieciowym. Weryfikowanie przepływu protokołu IP jest przydatne w potwierdzenie, czy reguła w sieciowej grupie zabezpieczeń blokuje ruch przychodzący lub wychodzący ruch do lub z maszyny wirtualnej.
+Weryfikacja przepływu IP sprawdza reguły dla wszystkich sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń) stosowanych w interfejsie sieciowym, takich jak podsieć lub karta sieciowa maszyny wirtualnej. Przepływ ruchu jest następnie weryfikowany na podstawie skonfigurowanych ustawień do lub z tego interfejsu sieciowego. Sprawdzenie przepływu IP jest przydatne w przypadku potwierdzania, czy reguła w sieciowej grupie zabezpieczeń blokuje ruch przychodzący lub wyjściowy do lub z maszyny wirtualnej.
 
-Sprawdź wystąpienie usługi Network Watcher musi zostać utworzone we wszystkich regionach, w których planuje się uruchamianie przepływu dla adresu IP. Usługa Network Watcher to regionalna usługa i może być został uruchomiony tylko względem zasobów, w tym samym regionie. Wystąpienie używane nie ma wpływu na wyniki adresu IP weryfikowanie przepływu, każda trasa skojarzone z kart Sieciowych lub podsieci nadal jest zwracana.
+Wystąpienie Network Watcher należy utworzyć we wszystkich regionach, w których planujesz uruchomić weryfikację przepływu IP. Network Watcher jest usługą regionalną i można ją wykonać tylko w odniesieniu do zasobów w tym samym regionie. Używane wystąpienie nie ma wpływu na wyniki weryfikacji przepływu IP, ponieważ jest nadal zwracana jakakolwiek trasa skojarzona z kartą sieciową lub podsieć.
 
 ![1][1]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Można znaleźć w artykule, aby dowiedzieć się, jeśli pakiet jest dozwolony lub blokowany dla konkretnej maszyny wirtualnej za pośrednictwem portalu. [Sprawdź, czy jest dozwolony ruch na maszynie Wirtualnej za pomocą adresu IP przepływu Sprawdź przy użyciu portalu](diagnose-vm-network-traffic-filtering-problem.md)
+Zapoznaj się z poniższym artykułem, aby dowiedzieć się, czy pakiet jest dozwolony lub odrzucany dla określonej maszyny wirtualnej za pomocą portalu. [Sprawdź, czy ruch jest dozwolony na maszynie wirtualnej przy użyciu funkcji weryfikowania przepływu IP za pomocą portalu](diagnose-vm-network-traffic-filtering-problem.md)
 
 [1]: ./media/network-watcher-ip-flow-verify-overview/figure1.png
 

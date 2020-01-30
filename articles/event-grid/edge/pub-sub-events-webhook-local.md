@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098634"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844556"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Samouczek: publikowanie, subskrybowanie zdarzeń lokalnie
 
@@ -47,7 +47,7 @@ Istnieje kilka sposobów wdrażania modułów na urządzeniu IoT Edge i wszystki
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrożenia
 
-Manifest wdrożenia to dokument JSON, który opisuje moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości modułu bliźniaczych reprezentacji. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON.  Składa się z trzech kroków: **Dodawanie modułów**, **Określanie tras**i **przeglądanie wdrożenia**.
+Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON.  Posiada trzy kroki: **Dodaj moduły**, **określić trasy**, i **Przejrzyj wdrożenia**.
 
 ### <a name="add-modules"></a>Dodaj moduły
 
@@ -59,11 +59,13 @@ Manifest wdrożenia to dokument JSON, który opisuje moduły do wdrożenia, spos
    * **Identyfikator URI obrazu**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Opcje tworzenia kontenera**:
 
+   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
+
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -127,7 +129,7 @@ Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejś�
 ### <a name="submit-the-deployment-request"></a>Prześlij żądanie wdrożenia
 
 1. Sekcja Przegląd przedstawia manifest wdrożenia JSON, który został utworzony na podstawie wybranych opcji w poprzedniej sekcji. Upewnij się, że na liście JSON są widoczne zarówno moduły: **eventgridmodule** , jak i **subskrybent** . 
-1. Przejrzyj informacje o wdrożeniu, a następnie wybierz pozycję **Prześlij**. Po przesłaniu wdrożenia wrócisz do strony **urządzenia** .
+1. Przejrzyj informacje o wdrożeniu, a następnie wybierz **przesyłania**. Po przesłaniu wdrożenia wrócisz do strony **urządzenia** .
 1. W **sekcji modułów**Sprawdź, czy na liście znajdują się zarówno **eventgrid** , jak i moduły **subskrybenta** . I sprawdź, czy w polu **Deployment (wdrożenie** i **raportowane przez urządzenia** ) ustawiono wartość **tak**.
 
     Uruchomienie modułu na urządzeniu może potrwać kilka minut, a następnie zgłoszone z powrotem do IoT Hub. Odśwież stronę, aby zobaczyć zaktualizowany stan.
@@ -178,6 +180,8 @@ Jako wydawca zdarzenia musisz utworzyć temat dotyczący siatki zdarzeń. W Azur
 ## <a name="create-an-event-subscription"></a>Tworzenie subskrypcji zdarzeń
 
 Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temacie. Aby odebrać każde zdarzenie, musisz utworzyć subskrypcję Event Gridową dla tematu zainteresowania.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Utwórz plik Subscription. JSON z następującą zawartością. Aby uzyskać szczegółowe informacje o ładunku, zapoznaj się z naszą [dokumentacją interfejsu API](api.md)
 
@@ -307,4 +311,5 @@ W tym samouczku opisano tworzenie tematu, subskrypcji i opublikowanych zdarzeń 
 - Postępuj zgodnie z [dokumentacją](configure-client-auth.md) , aby skonfigurować uwierzytelnianie klienta
 - Przekazuj zdarzenia do Azure Functions w chmurze, wykonując czynności opisane w tym [samouczku](pub-sub-events-webhook-cloud.md)
 - [Reagowanie na zdarzenia Blob Storage w IoT Edge](react-blob-storage-events-locally.md)
+- [Monitorowanie tematów i subskrypcji na granicy](monitor-topics-subscriptions.md)
 

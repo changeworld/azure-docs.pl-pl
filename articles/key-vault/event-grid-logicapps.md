@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ccc4aaed8e5827fbc06b252c8c88b814d9a31fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c2a15393c5c8e685e9a565f1099eeee935c0d5da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74135019"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845844"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Użyj Logic Apps do otrzymywania wiadomości e-mail o zmianach stanu wpisów tajnych magazynu kluczy
 
@@ -34,7 +34,6 @@ Najpierw Utwórz aplikację logiki za pomocą programu obsługi usługi Event Gr
 
 Aby utworzyć subskrypcję Azure Event Grid, wykonaj następujące kroki:
 
-1. Otwórz Azure Portal przy użyciu następującego linku: https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true 
 1. W Azure Portal przejdź do magazynu kluczy, wybierz pozycję **zdarzenia >** wprowadzenie i kliknij pozycję **Logic Apps**
 
     

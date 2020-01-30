@@ -3,9 +3,7 @@ title: Tworzenie wystąpienia usługi Azure Network Watcher | Microsoft Docs
 description: Dowiedz się, jak włączyć Network Watcher w regionie świadczenia usługi Azure.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: fd293c2815721295715c5e02846c55d4cdb74a32
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: damendo
+ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693488"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845127"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Tworzenie wystąpienia usługi Azure Network Watcher
 
@@ -51,11 +49,11 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>Tworzenie Network Watcher w portalu
 
-Przejdź do **wszystkich usług**  > **sieci**  > **Network Watcher**. Możesz wybrać wszystkie subskrypcje, dla których chcesz włączyć Network Watcher. Ta akcja tworzy Network Watcher w każdym dostępnym regionie.
+Przejdź do **wszystkich usług** > **sieci** > **Network Watcher**. Możesz wybrać wszystkie subskrypcje, dla których chcesz włączyć Network Watcher. Ta akcja tworzy Network Watcher w każdym dostępnym regionie.
 
 ![Tworzenie obserwatora sieciowego](./media/network-watcher-create/figure1.png)
 
-Po włączeniu Network Watcher przy użyciu portalu nazwa wystąpienia Network Watcher zostanie automatycznie ustawiona na *NetworkWatcher_region_name* , gdzie *region_name* odnosi się do regionu platformy Azure, w którym to wystąpienie jest włączone. Na przykład Network Watcher włączony w regionie Zachodnio-środkowe stany USA ma nazwę *NetworkWatcher_westcentralus*.
+Po włączeniu Network Watcher przy użyciu portalu nazwa wystąpienia Network Watcher zostanie automatycznie ustawiona na *NetworkWatcher_region_name* gdzie *region_name* odnosi się do regionu platformy Azure, w którym to wystąpienie jest włączone. Na przykład Network Watcher włączony w regionie Zachodnio-środkowe stany USA ma nazwę *NetworkWatcher_westcentralus*.
 
 Wystąpienie Network Watcher jest tworzone automatycznie w grupie zasobów o nazwie *NetworkWatcherRG*. Grupa zasobów jest tworzona, jeśli jeszcze nie istnieje.
 
@@ -105,7 +103,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>Usuwanie Network Watcher w portalu
 
-Przejdź do **wszystkich usług**  > **sieci**  > **Network Watcher**.
+Przejdź do **wszystkich usług** > **sieci** > **Network Watcher**.
 
 Wybierz kartę Przegląd, jeśli jeszcze tego nie zrobiono. Użyj listy rozwijanej, aby wybrać subskrypcję, w której chcesz wyłączyć obserwatora sieciowego.
 Rozwiń listę regionów dla wybranej subskrypcji, klikając strzałkę. Dla każdego z nich należy użyć 3 kropek po prawej stronie, aby uzyskać dostęp do menu kontekstowego.

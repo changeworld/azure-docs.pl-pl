@@ -4,12 +4,12 @@ description: Dowiedz się, jak używać rozwiązania ansible do konfigurowania R
 keywords: rozwiązania ansible, Azure, DevOps, bash, cloudshell, element PlayBook, AKS, kontener, AKS, Kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156875"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836970"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Samouczek: Konfigurowanie ról kontroli dostępu opartej na rolach (RBAC) w usłudze Azure Kubernetes Service (AKS) przy użyciu rozwiązania ansible
 
@@ -119,7 +119,7 @@ Zapisz następujący podręcznik jako `aks-create.yml`:
 
 Aby utworzyć powiązanie RBAC, należy najpierw uzyskać identyfikator obiektu usługi Azure AD. 
 
-1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [Portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. W polu wyszukiwania w górnej części strony wprowadź `Azure Active Directory`. 
 
@@ -156,7 +156,7 @@ subjects:
   name: <your-aad-account>
 ```
 
-Zastąp symbol zastępczy `&lt;your-aad-account>` [identyfikatorem obiektu](#get-the-azure-ad-object-id)dzierżawy usługi Azure AD.
+Zastąp symbol zastępczy `<your-aad-account>` [identyfikatorem obiektu](#get-the-azure-ad-object-id)dzierżawy usługi Azure AD.
 
 Zapisz następujący element PlayBook — który wdraża nową rolę do AKS — jako `aks-kube-deploy.yml`:
 

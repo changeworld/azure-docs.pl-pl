@@ -4,12 +4,12 @@ description: Dowiedz się, jak wdrażać grupy kontenerów w nowej lub istnieją
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887960"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845177"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -33,6 +33,7 @@ Niektóre ograniczenia mają zastosowanie w przypadku wdrażania grup konteneró
 
 * Aby wdrożyć grupy kontenerów w podsieci, podsieć nie może zawierać żadnych innych typów zasobów. Usuń wszystkie istniejące zasoby z istniejącej podsieci przed wdrożeniem w niej grup kontenerów lub Utwórz nową podsieć.
 * Nie można użyć [tożsamości zarządzanej](container-instances-managed-identity.md) w grupie kontenerów wdrożonej w sieci wirtualnej.
+* Nie można włączyć [sondy na żywo](container-instances-liveness-probe.md) lub [sondy gotowości](container-instances-readiness-probe.md) w grupie kontenerów wdrożonej w sieci wirtualnej.
 * Ze względu na dodatkowe zasoby sieciowe, wdrażanie grupy kontenerów w sieci wirtualnej jest zwykle wolniejsze niż wdrożenie standardowego wystąpienia kontenera.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
@@ -261,7 +262,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> Jeśli wystąpi błąd podczas próby usunięcia profilu sieciowego, Zezwól na 2-3 dni, aby platforma automatycznie złagodzić ten problem, a następnie spróbuj ponownie wykonać operację usuwania. Jeśli nadal występują problemy z usunięciem profilu sieciowego, [Otwórz żądanie obsługi](https://azure.microsoft.com/support/create-ticket/).
+> Jeśli wystąpi błąd podczas próby usunięcia profilu sieciowego, Zezwól na 3-4 dni, aby platforma automatycznie złagodzić ten problem, a następnie spróbuj ponownie wykonać operację usuwania. Jeśli musisz natychmiast usunąć profil sieciowy, [Otwórz żądanie obsługi](https://azure.microsoft.com/support/create-ticket/) odwołujące się do usługi Azure Container Instances.
 
 Ta funkcja wymaga obecnie kilku dodatkowych poleceń w celu usunięcia utworzonych wcześniej zasobów sieciowych. Jeśli użyto przykładowych poleceń w poprzednich sekcjach tego artykułu, aby utworzyć sieć wirtualną i podsieć, można użyć następującego skryptu, aby usunąć te zasoby sieciowe.
 

@@ -6,14 +6,14 @@ ms.subservice: security
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 12/23/2019
+ms.date: 01/22/2020
 ms.reviewer: ''
-ms.openlocfilehash: 82297850bf6d03215963a1f81dda166550f2b0d5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 095d435b9a595c420821da0813fdfc0893d70d89
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715181"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845872"
 ---
 # <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL Database najlepszych praktyk dotyczących zabezpieczeń element PlayBook
 
@@ -103,10 +103,10 @@ Centralne zarządzanie tożsamościami oferuje następujące korzyści:
 > - Uprawnienia RBAC przyznane na platformie Azure nie mają zastosowania do uprawnień usługi Azure SQL DB. Takie uprawnienia muszą zostać utworzone/zmapowane ręcznie w bazie danych SQL przy użyciu istniejących uprawnień SQL.
 > - Uwierzytelnianie usługi Azure AD po stronie klienta wymaga dostępu do Internetu lub za pośrednictwem trasy zdefiniowanej przez użytkownika (UDR) do sieci wirtualnej.
 > - Token dostępu usługi Azure AD jest buforowany po stronie klienta, a jego okres istnienia zależy od konfiguracji tokenu. Zapoznaj się z artykułem [konfigurowalne okresy istnienia tokenu w Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)
+> - Aby uzyskać wskazówki dotyczące rozwiązywania problemów z uwierzytelnianiem w usłudze Azure AD, zobacz następujący Blog: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ### <a name="multi-factor-authentication-mfa"></a>Usługa Multi-Factor Authentication (MFA)
 
-> [!NOTE]
 > Wymienione w: rozwiązanie OSA #2, ISO Access Control (AC)
 
 Usługa Azure Multi-Factor Authentication (MFA) zapewnia dodatkowe zabezpieczenia, wymagając więcej niż jednej formy uwierzytelniania.
@@ -143,7 +143,6 @@ Usługa Azure Multi-Factor Authentication (MFA) zapewnia dodatkowe zabezpieczeni
 
 ### <a name="minimize-the-use-of-password-based-authentication-for-users"></a>Minimalizacja użycia uwierzytelniania opartego na hasłach dla użytkowników
 
-> [!NOTE]
 > Wymienione w: rozwiązanie OSA #4, ISO Access Control (AC)
 
 Metody uwierzytelniania oparte na hasłach są słabsze w postaci uwierzytelniania. Poświadczenia mogą być naruszone lub odrzucane.
@@ -159,7 +158,6 @@ Metody uwierzytelniania oparte na hasłach są słabsze w postaci uwierzytelnian
 
 ### <a name="minimize-the-use-of-password-based-authentication-for-applications"></a>Minimalizacja użycia uwierzytelniania opartego na hasłach dla aplikacji 
 
-> [!NOTE]
 > Wymienione w: rozwiązanie OSA #4, ISO Access Control (AC)
 
 **Jak zaimplementować**:
@@ -217,7 +215,6 @@ Zarządzanie dostępem to proces kontroli dostępu i uprawnień autoryzowanych u
 
 ### <a name="implement-principle-of-least-privilege"></a>Implementacja reguły najniższych uprawnień
 
-> [!NOTE]
 > Wymienione w: FedRamp Controls AC-06, NIST: AC-6, OSA Practice #3
 
 Zasada najniższych uprawnień, które użytkownicy nie powinni mieć więcej uprawnień niż jest to konieczne do wykonania swoich zadań. Aby uzyskać więcej informacji, zapoznaj się z artykułem [wystarczającym do administrowania](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview).
@@ -276,10 +273,9 @@ Następujące najlepsze rozwiązania są opcjonalne, ale spowodują lepsze zarz�
 
 ### <a name="implement-separation-of-duties"></a>Zaimplementuj Rozdzielenie obowiązków
 
-> [!NOTE]
 > Wymienione w: FedRamp: AC-04, NIST: AC-5, ISO: A. 6.1.2, PCI 6.4.2, SOC: CM-3, SDL-3
 
-Separacja obowiązków, nazywana również podziałem obowiązków, opisuje wymaganie podziału poufnych zadań na wiele zadań, które są przypisane do różnych użytkowników, zazwyczaj w celu uniknięcia naruszeń danych.
+Rozdzielenie obowiązków, nazywane także rozdzieleniem obowiązków, zawiera opis wymagania podziału zadań poufnych na wiele zadań, które są przypisane do różnych użytkowników. Rozdzielenie obowiązków pomaga uniknąć naruszeń danych.
 
 **Jak zaimplementować**:
 
@@ -326,9 +322,9 @@ Separacja obowiązków, nazywana również podziałem obowiązków, opisuje wyma
 
 - Można pobrać definicję wbudowanych ról RBAC, aby wyświetlić używane uprawnienia i utworzyć rolę niestandardową w oparciu o fragmenty i kumulacje tych elementów za pośrednictwem programu PowerShell. 
 
-- Ponieważ wszyscy członkowie roli bazy danych db_owner mogą zmieniać ustawienia zabezpieczeń, takie jak Transparent Data Encryption (TDE), lub zmienić cel SLO, członkostwo należy przyznawać z opieką. Z drugiej strony wiele zadań, takich jak zmiana dowolnego ustawienia bazy danych, na przykład zmiana opcji DB, wymaga db_owner uprawnień. Inspekcja odgrywa kluczową rolę w dowolnym rozwiązaniu.
+- Ponieważ wszyscy członkowie roli bazy danych db_owner mogą zmieniać ustawienia zabezpieczeń, takie jak Transparent Data Encryption (TDE), lub zmienić cel SLO, członkostwo należy przyznawać z opieką. Istnieje jednak wiele zadań, które wymagają uprawnień db_owner. Zadanie, takie jak zmiana ustawień bazy danych, takie jak zmiana opcji DB. Inspekcja odgrywa kluczową rolę w dowolnym rozwiązaniu.
 
-- Nie można zachować db_owner, aby nie wyświetlać danych użytkownika tylko z uprawnieniami. Jeśli w bazie danych znajdują się wysoce poufne dane, Always Encrypted może służyć do bezpiecznego zapobiegania wyświetlaniu go przez db_owners lub innych administratorów.
+- Nie można ograniczyć uprawnień db_owner i w związku z tym uniemożliwić wyświetlanie danych użytkownika przez konto administracyjne. Jeśli w bazie danych znajdują się wysoce poufne dane, Always Encrypted może służyć do bezpiecznego zapobiegania wyświetlaniu go przez db_owners lub innych administratorów.
 
 > [!NOTE]
 > Osiągnięcie rozdzielenia obowiązków (SoD) jest wyzwaniem dla zadań związanych z zabezpieczeniami lub rozwiązywania problemów. Inne obszary, takie jak role użytkowników końcowych i deweloperskich, są łatwiejsze do oddzielenia. Większość kontroli związanych z zgodnością umożliwia korzystanie z alternatywnych funkcji kontroli, takich jak inspekcje, gdy inne rozwiązania nie są praktyczne.
@@ -348,7 +344,6 @@ W przypadku czytelników, którzy chcą szczegółowe w SoD, zalecamy użycie na
 
 ### <a name="perform-regular-code-reviews"></a>Wykonywanie zwykłych przeglądów kodu
 
-> [!NOTE]
 > Wymienione w: PCI: 6.3.2, SOC: SDL-3 
 
 Podział obowiązków nie jest ograniczony do danych w bazie danych, ale zawiera kod aplikacji. Złośliwy kod może potencjalnie obejść kontrolę zabezpieczeń. Przed wdrożeniem niestandardowego kodu w środowisku produkcyjnym należy zapoznać się z tym, co jest wdrażane.
@@ -375,7 +370,7 @@ Podział obowiązków nie jest ograniczony do danych w bazie danych, ale zawiera
 
 - Upewnij się, że osoba przeprowadzająca przegląd jest osobą niebędącą autorem kodu źródłowego i wiedząc w przeglądach kodu i bezpiecznym kodowaniu.
 
-- Pamiętaj, aby poznać wszystkie źródła kodu — zmiany: kod może być w skryptach T-SQL; mogą to być polecenia ad hoc, które mają być wykonywane lub wdrażane w formie widoków, funkcji, wyzwalaczy i procedur składowanych. Może być również częścią definicji zadań programu SQL Agent (czynności), wykonywanych z poziomu pakietów SSIS, Azure Data Factory i innych usług.
+- Upewnij się, że wszystkie źródła zmian kodu są znane. Kod może być w skryptach T-SQL. Mogą to być polecenia ad hoc, które mają być wykonywane lub wdrażane w formie widoków, funkcji, wyzwalaczy i procedur składowanych. Może być częścią definicji zadań programu SQL Agent (kroki). Można go również wykonać z poziomu pakietów SSIS, Azure Data Factory i innych usług.
 
 ## <a name="data-protection"></a>Ochrona danych
 
@@ -387,14 +382,12 @@ Ochrona danych to zestaw funkcji służących do ochrony ważnych informacji prz
 
 ### <a name="encrypt-data-in-transit"></a>Szyfruj dane podczas przesyłania
 
-> [!NOTE]
 > Wymienione w: rozwiązanie OSA #6, Rodzina formantów ISO: Kryptografia
 
 Chroni dane, gdy dane są przenoszone między klientem i serwerem. Zapoznaj się z [zabezpieczeniami sieciowymi](#network-security).
 
 ### <a name="encrypt-data-at-rest"></a>Szyfruj dane przechowywane
 
-> [!NOTE]
 > Wymienione w: rozwiązanie OSA #6, Rodzina formantów ISO: Kryptografia
 
 Szyfrowanie w czasie spoczynku jest ochroną kryptograficzną danych, gdy jest ona utrwalana w plikach bazy danych, dziennika i kopii zapasowej.
@@ -402,7 +395,7 @@ Szyfrowanie w czasie spoczynku jest ochroną kryptograficzną danych, gdy jest o
 **Jak zaimplementować**:
 
 - [Szyfrowanie przezroczystej bazy danych (TDE)](transparent-data-encryption-azure-sql.md) z kluczami zarządzanymi przez usługę jest domyślnie włączone dla wszystkich baz danych utworzonych po 2017 w Azure SQL Database.
-- W przypadku wystąpienia zarządzanego, jeśli baza danych jest tworzona w wyniku operacji przywracania z serwera lokalnego, zostanie wyliczone ustawienie TDE oryginalnej bazy danych. Jeśli oryginalna baza danych nie ma włączonej TDE, zalecamy ręczne włączenie TDE dla wystąpienia zarządzanego.
+- W przypadku wystąpienia zarządzanego, jeśli baza danych została utworzona na podstawie operacji przywracania przy użyciu serwera lokalnego, zostanie wyliczone ustawienie TDE oryginalnej bazy danych. Jeśli oryginalna baza danych nie ma włączonej TDE, zalecamy ręczne włączenie TDE dla wystąpienia zarządzanego.
 
 **Najlepsze rozwiązania**:
 
@@ -414,22 +407,22 @@ Szyfrowanie w czasie spoczynku jest ochroną kryptograficzną danych, gdy jest o
 
 ### <a name="protect-sensitive-data-in-use-from-high-privileged-unauthorized-users"></a>Ochrona poufnych danych używanych przez nieautoryzowanych użytkowników z wysokim poziomem uprawnień
 
-Używane dane to dane przechowywane w pamięci systemu bazy danych podczas wykonywania zapytań SQL. Jeśli baza danych przechowuje poufne dane, organizacja może być wymagana w celu zapewnienia, że użytkownicy z wysokim poziomem uprawnień, tacy jak operatorzy firmy Microsoft lub przetwarzający w organizacji, nie będą mogli wyodrębniać danych z pamięci procesu SQL Server i nie mogą Wyświetlanie danych w postaci zwykłego tekstu podczas wykonywania zapytania w bazie danych.
+Używane dane to dane przechowywane w pamięci systemu bazy danych podczas wykonywania zapytań SQL. Jeśli baza danych przechowuje poufne dane, organizacja może być wymagana w celu zapewnienia, że użytkownicy z wysokim poziomem uprawnień nie będą mogli wyświetlać poufnych danych w bazie danych. Użytkownicy o wysokim poziomie uprawnień, tacy jak operatorzy firmy Microsoft lub przetwarzający w organizacji, powinni mieć możliwość zarządzania bazą danych, ale nie mogą wyświetlać i potencjalnie jest wykradzenie dane poufne z pamięci procesu SQL Server lub przez wykonywanie zapytań do bazy danych.
 
 **Jak zaimplementować**:
 
-- Użyj [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) , aby zapewnić, że poufne dane nie są ujawniane w postaci zwykłego tekstu w Azure SQL Database, nawet w pamięci/w użyciu. Zapewnia to ochronę danych pochodzących od administratorów bazy danych (przetwarzający) i administratorów chmury (lub nieuprawnionych podmiotów, które mogą personifikować użytkowników z wysokim poziomem uprawnień, ale nieautoryzowanych), a także zapewnić większą kontrolę nad tym, kto może uzyskiwać dostęp do danych.
+- Użyj [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) , aby zapewnić, że poufne dane nie są ujawniane w postaci zwykłego tekstu w Azure SQL Database, nawet w pamięci/w użyciu. Always Encrypted chroni dane pochodzących od administratorów bazy danych (przetwarzający) i administratorów chmury (lub nieuprawnionych uczestników, którzy mogą personifikować użytkowników z wysokim poziomem uprawnień, ale nieautoryzowanymi użytkownikami) i oferują większą kontrolę nad tym, kto może uzyskiwać dostęp do danych.
 
 **Najlepsze rozwiązania**:
 
-- Always Encrypted nie zastępuje szyfrowania danych przechowywanych w czasie spoczynku (TDE) lub przesyłania (SSL/TLS) i nie należy używać ich w przypadku danych niewrażliwych w celu zminimalizowania wpływu wydajności i funkcjonalności. Używanie Always Encrypted w połączeniu z TDE i TLS jest zalecane w celu zapewnienia kompleksowej ochrony danych w czasie, w trakcie przesyłania i użytkowania. 
+- Always Encrypted nie zastępuje szyfrowania danych przechowywanych w czasie spoczynku (TDE) lub przesyłania (SSL/TLS). Always Encrypted nie należy używać w przypadku danych niewrażliwych w celu zminimalizowania wpływu wydajności i funkcjonalności. Używanie Always Encrypted w połączeniu z TDE i Transport Layer Security (TLS) jest zalecane do zapewnienia kompleksowej ochrony danych w czasie, w trakcie przesyłania i użytkowania. 
 
-- Zarządzaj kluczami Always Encrypted z separacją ról, jeśli używasz Always Encrypted do ochrony danych przed złośliwym przetwarzający. Dzięki rozdzieleniu roli administrator zabezpieczeń tworzy klucze fizyczne, a DBA o utworzenie klucza głównego kolumny i obiektów metadanych klucza szyfrowania kolumn, opisując klucze fizyczne w bazie danych programu. W trakcie tego procesu administrator zabezpieczeń nie musi mieć dostępu do bazy danych, a administrator DBA nie potrzebuje dostępu do kluczy fizycznych w postaci zwykłego tekstu. 
+- Zarządzaj kluczami Always Encrypted z separacją ról, jeśli używasz Always Encrypted do ochrony danych przed złośliwym przetwarzający. W przypadku separacji ról Administrator zabezpieczeń tworzy klucze fizyczne. DBA o to, aby utworzyć obiekty metadanych klucza głównego kolumny i klucz szyfrowania kolumn, opisując klucze fizyczne w bazie danych programu. W trakcie tego procesu administrator zabezpieczeń nie musi mieć dostępu do bazy danych, a administrator DBA nie potrzebuje dostępu do kluczy fizycznych w postaci zwykłego tekstu. 
   - Zapoznaj się z artykułem [Zarządzanie kluczami z separacją ról](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation) w celu uzyskania szczegółowych informacji. 
 
 - Przechowuj klucze główne kolumn w Azure Key Vault w celu ułatwienia zarządzania. Unikaj używania magazynu certyfikatów systemu Windows (i ogólnie rozproszonych rozwiązań magazynu kluczy, takich jak centralne rozwiązania do zarządzania kluczami), które sprawiają, że zarządzanie kluczami jest trudne. 
 
-- Ostrożnie zastanów się nad kompromisami dotyczącymi używania wielu kluczy (klucza głównego kolumny lub kluczy szyfrowania kolumn). Zachowaj niewielką liczbę kluczy, aby zmniejszyć koszty zarządzania kluczami. Klucz główny kolumny i jeden klucz szyfrowania kolumn dla bazy danych są zwykle wystarczające w środowiskach o stabilnych Stanach (nie w połowie rotacji kluczy), chyba że istnieją różne grupy użytkowników, z których każdy korzysta z różnych kluczy i uzyskuje dostęp do innych danych.  
+- Ostrożnie zastanów się nad kompromisami dotyczącymi używania wielu kluczy (klucza głównego kolumny lub kluczy szyfrowania kolumn). Zachowaj niewielką liczbę kluczy, aby zmniejszyć koszty zarządzania kluczami. Klucz główny kolumny i jeden klucz szyfrowania kolumn na bazę danych są zwykle wystarczające w środowiskach o stabilnych Stanach (nie w połowie rotacji kluczy). Dodatkowe klucze mogą być potrzebne, jeśli istnieją różne grupy użytkowników, z których każdy korzysta z różnych kluczy i uzyskuje dostęp do innych danych.  
 
 - Obróć klucze główne kolumn zgodnie z wymaganiami dotyczącymi zgodności. Jeśli trzeba również obrócić klucze szyfrowania kolumn, należy rozważyć użycie szyfrowania online w celu zminimalizowania przestojów aplikacji. 
   - Zapoznaj się z artykułem [zagadnienia dotyczące wydajności i dostępności](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-column-encryption-using-powershell#performance-and-availability-considerations). 
@@ -438,18 +431,18 @@ Używane dane to dane przechowywane w pamięci systemu bazy danych podczas wykon
 
 - Jeśli chodzi o dostęp do danych innych firm bez zgody użytkownika, upewnij się, że wszystkie aplikacje i narzędzia, które mają dostęp do kluczy i danych w postaci zwykłego tekstu, działają poza chmurą Microsoft Azure. Bez dostępu do kluczy strona trzecia nie będzie miała żadnego sposobu odszyfrowania danych, chyba że zostaną pominięte.
 
-- Always Encrypted nie obsługuje w łatwy sposób udzielania tymczasowego dostępu do kluczy (i chronionych danych). Na przykład, jeśli trzeba udostępnić klucze administratorowi usługi DBA, aby umożliwić ADMINISTRATORowi administratorów wykonywanie niektórych operacji czyszczenia danych poufnych i szyfrowanych, jedynym sposobem na wiarygodność odwołania dostępu do danych z usługi DBA będzie obrócenie zarówno kluczy szyfrowania kolumn, jak i kolumny. klucze główne programu MN chroniące dane, co jest kosztowną operacją. 
+- Always Encrypted nie obsługuje w łatwy sposób udzielania tymczasowego dostępu do kluczy (i chronionych danych). Na przykład, jeśli trzeba udostępnić klucze administratorowi usługi DBA, aby umożliwić ADMINISTRATORom przeprowadzanie niektórych operacji czyszczenia danych poufnych i szyfrowanych. Jedynym sposobem na niezawodność odwołania dostępu do danych z usługi DBA będzie obrócenie zarówno kluczy szyfrowania kolumn, jak i kluczy głównych kolumn chroniących dane, co jest kosztowną operacją. 
 
-- Aby uzyskać dostęp do wartości w postaci zwykłego tekstu w zaszyfrowanych kolumnach, użytkownik musi mieć dostęp do CMK, chroniąc kolumny skonfigurowane w magazynie kluczy, w którym znajduje się CMK. Ponadto użytkownik musi mieć zdefiniowaną definicję klucza głównego kolumny widok i wyświetlić wszystkie uprawnienia bazy danych definicji klucza szyfrowania kolumn.
+- Aby uzyskać dostęp do wartości w postaci zwykłego tekstu w zaszyfrowanych kolumnach, użytkownik musi mieć dostęp do CMK, który chroni kolumny, które są skonfigurowane w magazynie kluczy, w którym znajduje się CMK. Użytkownik musi również mieć zdefiniowaną **definicję klucza głównego kolumny widok** i wyświetlić wszystkie uprawnienia bazy danych **definicji klucza szyfrowania kolumn** .
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>Kontrola dostępu użytkowników aplikacji do poufnych danych przy użyciu szyfrowania
 
-Szyfrowanie może służyć do zapewnienia, że tylko określeni użytkownicy aplikacji, którzy mają dostęp do kluczy kryptograficznych i mogą wyświetlać lub aktualizować dane.
+Szyfrowanie może służyć do zapewnienia, że tylko określeni użytkownicy aplikacji, którzy mają dostęp do kluczy kryptograficznych, mogą wyświetlać lub aktualizować dane.
 
 **Jak zaimplementować**:
 
 - Użyj szyfrowania na poziomie komórki (CLE). Zapoznaj się z artykułem [Szyfruj kolumnę danych](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data) , aby uzyskać szczegółowe informacje. 
-- Alternatywnie należy rozważyć użycie Always Encrypted, ale należy pamiętać o jego ograniczeniu wymienionym poniżej.
+- Należy używać Always Encrypted, ale należy pamiętać o jego ograniczeniach. Ograniczenia są wymienione poniżej.
 
 **Najlepsze praktyki**
 
@@ -464,11 +457,9 @@ W przypadku korzystania z CLE:
 - Należy zachować ostrożność podczas migrowania bazy danych za pomocą szyfrowania na poziomie komórki za pomocą eksportu/importu (pliki BACPAC). 
   - Zapoznaj się z artykułem [zalecenia dotyczące używania szyfrowania na poziomie komórki w Azure SQL Database](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) na temat zapobiegania utracie kluczy podczas migrowania danych oraz innych wskazówek dotyczących najlepszych rozwiązań.
 
-W przypadku korzystania z Always Encrypted należy pamiętać, że Always Encrypted jest przeznaczony głównie do ochrony poufnych danych używanych przez użytkowników z wysokim poziomem uprawnień, Azure SQL Database (operatorzy chmury, przetwarzający) — zobacz [Ochrona poufnych danych używanych przez nieautoryzowanych użytkowników](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Należy pamiętać o następujących kwestiach dotyczących ochrony danych przed użytkownikami aplikacji przy użyciu Always Encrypted:
+Należy pamiętać, że Always Encrypted jest przeznaczony głównie do ochrony poufnych danych używanych przez użytkowników z wysokim poziomem uprawnień Azure SQL Database (operatorzy chmury, przetwarzający) — zobacz [Ochrona poufnych danych używanych przez nieautoryzowanych użytkowników](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Należy pamiętać o następujących kwestiach dotyczących ochrony danych przed użytkownikami aplikacji przy użyciu Always Encrypted:
 
-- Po udzieleniu użytkownikowi dostępu do poufnych danych przez nadanie użytkownikowi uprawnień dostępu do klucza szyfrowania kolumny i klucza głównego kolumny, aby niezawodnie odwołać ten dostęp, musisz obrócić klucz szyfrowania kolumny, co jest kosztowną operacją, która wymaga Ponowne szyfrowanie wszystkich kolumn powoduje ochronę klucza szyfrowania kolumn. 
-
-- Domyślnie wszystkie sterowniki klientów firmy Microsoft obsługujące Always Encrypted utrzymują globalną (jedną dla aplikacji) pamięć podręczną kluczy szyfrowania kolumn. Gdy sterownik klienta uzyskuje klucz szyfrowania kolumny w postaci zwykłego tekstu, kontaktując się z magazynem kluczy zawierającym klucz główny kolumny, klucz szyfrowania kolumny w postaci zwykłego tekstu jest buforowany, co sprawia, że izolowanie danych od użytkowników aplikacji z wieloma użytkownikami jest trudne. Jeśli aplikacja personifikuje użytkowników końcowych podczas korzystania z magazynu kluczy (takiego jak Azure Key Vault), gdy zapytanie użytkownika wypełnia pamięć podręczną za pomocą klucza szyfrowania kolumny, kolejne zapytanie, które wymaga tego samego klucza, ale jest wyzwalane przez innego użytkownika, będzie używać klucz w pamięci podręcznej. Sterownik nie wywoła magazynu kluczy i nie sprawdzi, czy drugi użytkownik ma uprawnienia dostępu do klucza szyfrowania kolumny. W związku z tym użytkownik będzie mógł zobaczyć zaszyfrowane dane, nawet jeśli użytkownik nie ma dostępu do kluczy. Aby zapewnić izolację użytkowników w aplikacji wieloużytkowej, może być konieczne wyłączenie buforowania klucza szyfrowania kolumn, co spowoduje przekroczenie dodatkowych kosztów związanych z wydajnością, ponieważ sterownik będzie musiał skontaktować się z magazynem kluczy w przypadku każdego szyfrowania lub odszyfrowania danych operacje.
+- Domyślnie wszystkie sterowniki klientów firmy Microsoft obsługujące Always Encrypted utrzymują globalną (jedną dla aplikacji) pamięć podręczną kluczy szyfrowania kolumn. Gdy sterownik klienta uzyskuje klucz szyfrowania kolumny w postaci zwykłego tekstu, kontaktując się z magazynem kluczy zawierającym klucz główny kolumny, klucz szyfrowania kolumny w postaci zwykłego tekstu jest buforowany. Dzięki temu izolowanie danych od użytkowników jest trudne. Jeśli aplikacja personifikuje użytkowników końcowych podczas korzystania z magazynu kluczy (takiego jak Azure Key Vault), gdy zapytanie użytkownika wypełnia pamięć podręczną za pomocą klucza szyfrowania kolumny, kolejne zapytanie, które wymaga tego samego klucza, ale jest wyzwalane przez innego użytkownika, będzie używać klucz w pamięci podręcznej. Sterownik nie wywoła magazynu kluczy i nie sprawdza, czy drugi użytkownik ma uprawnienia dostępu do klucza szyfrowania kolumny. W związku z tym użytkownik będzie widział zaszyfrowane dane nawet wtedy, gdy użytkownik nie ma dostępu do kluczy. Aby zapewnić izolację użytkowników w aplikacji wieloużytkownika, można wyłączyć buforowanie kluczy szyfrowania kolumn. Wyłączenie buforowania spowoduje wystąpienie dodatkowych wydajności, ponieważ sterownik będzie musiał skontaktować się z magazynem kluczy dla każdej operacji szyfrowania lub odszyfrowywania danych.
 
 ### <a name="protect-data-against-unauthorized-viewing-by-application-users-while-preserving-data-format"></a>Ochrona danych przed nieautoryzowanym wyświetlaniem przez użytkowników aplikacji podczas zachowywania formatu danych
 Inna technika zapobiegania wyświetlaniu danych przez nieautoryzowanych użytkowników polega na zablokowaniu lub zablokowaniu danych przy zachowaniu typów i formatów danych w celu zapewnienia, że aplikacje użytkowników będą mogły nadal obsługiwać i wyświetlać dane.
@@ -488,15 +479,15 @@ Inna technika zapobiegania wyświetlaniu danych przez nieautoryzowanych użytkow
 - Nie Zezwalaj użytkownikom aplikacji na uruchamianie zapytań ad hoc (ponieważ mogą one być w stanie obejść dynamiczną maskowanie danych).  
   - Zapoznaj się z artykułem, [pomijając maskowanie przy użyciu technik wnioskowania lub pełnego wymuszania](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking#security-note-bypassing-masking-using-inference-or-brute-force-techniques) w celu uzyskania szczegółowych informacji.  
 
-- Użyj odpowiednich zasad kontroli dostępu (za pośrednictwem uprawnień SQL, ról, z poziomu zabezpieczeń), aby ograniczyć uprawnienia użytkowników do wprowadzania aktualizacji w zamaskowanych kolumnach. Utworzenie maski w kolumnie nie zapobiega aktualizacji tej kolumny. W związku z tym, chociaż użytkownicy otrzymują maskowane dane podczas wykonywania zapytania dotyczącego kolumny maskowane, te same użytkownicy mogą aktualizować dane, jeśli mają uprawnienia do zapisu.    
+- Użyj odpowiednich zasad kontroli dostępu (za pośrednictwem uprawnień SQL, ról, z poziomu zabezpieczeń), aby ograniczyć uprawnienia użytkowników do wprowadzania aktualizacji w zamaskowanych kolumnach. Utworzenie maski w kolumnie nie zapobiega aktualizacji tej kolumny. Użytkownicy, którzy otrzymali maskowane dane podczas wykonywania zapytania dotyczącego kolumny maskowane, mogą aktualizować dane, jeśli mają uprawnienia do zapisu.    
 
--  Dynamiczne maskowanie danych nie zachowuje właściwości statystycznych zamaskowanych wartości, co może mieć wpływ na wyniki zapytania (na przykład kwerendy zawierające predykaty filtrowania lub sprzężenia w zamaskowanych danych).
+-  Dynamiczne maskowanie danych nie zachowuje właściwości statystycznych maskowanych wartości. Może to mieć wpływ na wyniki zapytania (na przykład zapytania zawierające predykaty filtrowania lub sprzężenia w zamaskowanych danych).
 
 ## <a name="network-security"></a>Bezpieczeństwo sieci
 Zabezpieczenia sieci odnoszą się do kontroli dostępu i najlepszych rozwiązań w celu zabezpieczania danych podczas przesyłania do Azure SQL Database.
 
 ### <a name="configure-my-client-to-connect-securely-to-azure-sql-database"></a>Konfigurowanie klienta programu w celu bezpiecznego nawiązywania połączenia z usługą Azure SQL Database 
-Zapobiegaj nawiązywaniu przez komputery klienckie i aplikacje łączące się z Azure SQL Database z dobrze znanych luk w zabezpieczeniach z powodu zależności od starszych protokołów i mechanizmów szyfrowania.
+Najlepsze rozwiązania w zakresie zapobiegania wykorzystaniu przez komputery klienckie i aplikacje znanych luk w zabezpieczeniach (na przykład przy użyciu starszych protokołów TLS i mechanizmów szyfrowania) do łączenia się z Azure SQL Database.
 
 **Jak zaimplementować**:
 
@@ -511,16 +502,16 @@ Zapobiegaj nawiązywaniu przez komputery klienckie i aplikacje łączące się z
 
 - Ogranicz wektory ataków poprzez luki w zabezpieczeniach protokołu SSL 2,0, SSL 3,0, TLS 1,0 i TLS 1,1, wyłączając je na komputerach klienckich łączących się z [ustawieniami rejestru Azure SQL Database na Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-10). 
 
-- Sprawdź mechanizmy szyfrowania dostępne na kliencie dla [mechanizmów szyfrowania w protokole TLS/SSL (Dostawca SSP Schannel)](https://docs.microsoft.com/windows/desktop/SecAuthN/cipher-suites-in-schannel) i Wyłącz algorytm 3Des na [potrzeby konfigurowania kolejności mechanizmów szyfrowania TLS](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order). 
+- Sprawdź mechanizmy szyfrowania dostępne na kliencie: [mechanizmy szyfrowania w protokole TLS/SSL (Dostawca SSP Schannel)](https://docs.microsoft.com/windows/desktop/SecAuthN/cipher-suites-in-schannel). W [celu skonfigurowania kolejności mechanizmów szyfrowania TLS](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)należy wyłączyć algorytm 3DES. 
 
-- Jeśli używasz wystąpienia zarządzanego, użyj typu połączenia **proxy** (domyślnie), ponieważ to wymusza szyfrowanie po stronie serwera. Typ połączenia **przekierowania** obecnie nie obsługuje wymuszania szyfrowania i jest dostępny tylko dla prywatnych połączeń IP. 
-  - Aby uzyskać więcej informacji, zobacz [Architektura Azure SQL Connectivity — zasady połączeń](sql-database-connectivity-architecture.md#connection-policy).
-  - Szyfrowanie jest wymuszane zarówno dla typu połączenia serwera proxy, jak i przekierowania. 
+- W przypadku Azure SQL Database szyfrowanie jest wymuszane zarówno dla typu połączenia serwera proxy, jak i przekierowania. Jeśli używasz wystąpienia zarządzanego, użyj typu połączenia **proxy** (domyślnie), ponieważ to wymusza szyfrowanie po stronie serwera. Typ połączenia **przekierowania** obecnie nie obsługuje wymuszania szyfrowania i jest dostępny tylko dla prywatnych połączeń IP. 
+
+- Aby uzyskać więcej informacji, zobacz [Architektura Azure SQL Connectivity — zasady połączeń](sql-database-connectivity-architecture.md#connection-policy).
+
 
 ### <a name="minimize-attack-surface"></a>Minimalizuj obszar ataków
-Należy zminimalizować liczbę funkcji, które mogą zostać zaatakowane przez złośliwego użytkownika przez implementację kontroli dostępu do sieci dla Azure SQL Database.
+Zminimalizuj liczbę funkcji, które mogą zostać zaatakowane przez złośliwego użytkownika. Implementowanie kontroli dostępu do sieci dla Azure SQL Database.
 
-> [!NOTE]
 > Wymienione w: rozwiązanie OSA #5
 
 **Jak zaimplementować**:
@@ -538,9 +529,9 @@ W wystąpieniu zarządzanym:
 **Najlepsze rozwiązania**:
 
 - Ograniczanie dostępu do Azure SQL Database przez połączenie się z prywatnym punktem końcowym (na przykład za pomocą prywatnej ścieżki danych): 
-  - Wystąpienie zarządzane może być izolowane wewnątrz sieci wirtualnej, aby uniemożliwić dostęp zewnętrzny. Aplikacje i narzędzia, które znajdują się w tej samej lub równorzędnej sieci wirtualnej w tym samym regionie, mogą uzyskać do niej dostęp bezpośrednio. Aplikacje i narzędzia, które znajdują się w innym regionie mogą korzystać z połączenia między sieciami wirtualnymi lub obwodów usługi ExpressRoute w celu nawiązania połączenia. Klient powinien używać sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) w celu ograniczenia dostępu przez port 1433 tylko do zasobów, które wymagają dostępu do wystąpienia zarządzanego 
+  - Wystąpienie zarządzane może być izolowane wewnątrz sieci wirtualnej, aby uniemożliwić dostęp zewnętrzny. Aplikacje i narzędzia znajdujące się w tej samej lub równorzędnej sieci wirtualnej w tym samym regionie mogą uzyskać do nich bezpośredni dostęp. Aplikacje i narzędzia, które znajdują się w innym regionie mogą korzystać z połączenia między sieciami wirtualnymi lub komunikacji równorzędnej obwodu usługi ExpressRoute w celu nawiązania połączenia. Klient powinien używać sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) w celu ograniczenia dostępu przez port 1433 tylko do zasobów, które wymagają dostępu do wystąpienia zarządzanego 
   - W przypadku serwera SQL Database (zawierającego pojedyncze bazy danych lub pule elastyczne) Użyj funkcji [link prywatny](sql-database-private-endpoint-overview.md) , która zapewnia dedykowany prywatny adres IP dla serwera SQL Database w sieci wirtualnej. Aby ograniczyć dostęp do serwerów SQL Database, można także użyć [punktów końcowych usługi sieci wirtualnej z regułami zapory sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md) .
-  - Użytkownicy mobilni powinni używać połączeń sieci VPN typu punkt-lokacja do łączenia się za pośrednictwem ścieżki danych.
+  - Użytkownicy mobilni powinni użyć połączeń sieci VPN typu punkt-lokacja, aby nawiązać połączenie za pośrednictwem ścieżki danych.
   - Użytkownicy połączeni z siecią lokalną powinni używać połączenia sieci VPN typu lokacja-lokacja lub ExpressRoute w celu nawiązania połączenia za pośrednictwem ścieżki danych.
 
 - Dostęp do Azure SQL Database można uzyskać, łącząc się z publicznym punktem końcowym (na przykład przy użyciu publicznej ścieżki danych). Należy wziąć pod uwagę następujące najlepsze rozwiązania: 
@@ -577,7 +568,7 @@ W wystąpieniu zarządzanym:
 
 - [Zintegruj swoją aplikację z usługą Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md) na potrzeby łączności ze ścieżką danych prywatnych z wystąpieniem zarządzanym. Opcjonalnie możesz również wdrożyć aplikację internetową za pomocą [środowisk App Service (ASE)](../app-service/environment/intro.md). 
 
-- W przypadku aplikacji internetowej korzystającej z zintegrowanej aplikacji sieci Web ASE lub VNet łączącej się z bazą danych programu SQL Database Server można użyć [punktów końcowych usługi wirtualnej i reguł zapory sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md) , aby ograniczyć dostęp z określonej sieci wirtualnej i podsieci, a następnie ustawić opcję **Zezwól usługom platformy Azure** na wyłączenie. Możesz również połączyć środowisko ASE z wystąpieniem zarządzanym za pośrednictwem prywatnej ścieżki danych.  
+- W przypadku aplikacji internetowej korzystającej z zintegrowanej aplikacji sieci Web ASE lub VNet łączącej się z bazą danych w programie SQL Database Server można użyć [punktów końcowych usługi wirtualnej i reguł zapory sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md) , aby ograniczyć dostęp z określonej sieci wirtualnej i podsieci. Następnie ustaw opcję Zezwalaj na wyłączanie **usług platformy Azure** . Możesz również połączyć środowisko ASE z wystąpieniem zarządzanym za pośrednictwem prywatnej ścieżki danych.  
 
 - Upewnij się, że aplikacja sieci Web jest skonfigurowana zgodnie z artykułem, [najlepsze rozwiązania dotyczące zabezpieczania aplikacji internetowych i mobilnych PaaS przy użyciu Azure App Service](../security/security-paas-applications-using-app-services.md). 
 
@@ -606,14 +597,13 @@ W wystąpieniu zarządzanym:
 ### <a name="protect-against-distributed-denial-of-service-ddos-attacks"></a>Ochrona przed atakami rozproszonymi typu "odmowa usługi" (DDoS)
 Ataki rozproszonego typu "odmowa usługi" (DDoS) są podejmowane przez złośliwego użytkownika w celu wysłania zalewania ruchu sieciowego do Azure SQL Database w celu przeprowadzenia przeciążenia infrastruktury platformy Azure i spowodowania odrzucenia prawidłowych logowań i obciążeń.
 
-> [!NOTE]
 > Wymienione w: rozwiązanie OSA #9
 
 **Jak zaimplementować**:
 
 Ochrona DDoS jest automatycznie włączana w ramach platformy Azure. Obejmuje ona zawsze włączone monitorowanie ruchu i łagodzenie w czasie rzeczywistym ataków na poziomie sieci na publicznych punktach końcowych. 
 
-- Użyj [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) , aby monitorować publiczne adresy IP skojarzone z zasobami wdrożonymi w sieciach wirtualnych.
+- Użyj [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) , aby monitorować publiczne adresy IP skojarzone z zasobami wdrożonymi w sieci wirtualnych.
 
 - Użyj [zaawansowanej ochrony przed zagrożeniami dla Azure SQL Database](sql-database-threat-detection-overview.md) , aby wykrywać ataki typu "odmowa usługi" (DOS) do baz danych.
 
@@ -644,12 +634,12 @@ Zaawansowana ochrona przed zagrożeniami umożliwia wykrywanie potencjalnych zag
 
 **Najlepsze rozwiązania**:
 
-- Skonfiguruj [zaawansowane zabezpieczeń danych](sql-database-advanced-data-security.md#getting-started-with-ads) dla Azure SQL Database dla określonego serwera SQL Database lub wystąpienia zarządzanego lub dla wszystkich serwerów SQL Database i wystąpień zarządzanych w ramach subskrypcji, przełączając się do [Azure Security Center warstwy Standardowa](../security-center/security-center-pricing.md). 
+- Skonfiguruj [Zaawansowane zabezpieczenia danych (ADS)](sql-database-advanced-data-security.md#getting-started-with-ads) dla Azure SQL Database dla określonego serwera SQL Database lub wystąpienia zarządzanego. Możesz również skonfigurować usługi AD dla wszystkich serwerów SQL Database i wystąpień zarządzanych w ramach subskrypcji, przełączając się do [Azure Security Center warstwy Standardowa](../security-center/security-center-pricing.md). 
 
-- Aby przeprowadzić pełne badanie, zaleca się włączenie [inspekcji SQL Database](sql-database-auditing.md) do śledzenia zdarzeń bazy danych i zapisywania ich w dzienniku inspekcji na koncie usługi Azure Storage lub w obszarze roboczym usługi Azure log Analytics. 
+- Aby przeprowadzić pełne badanie, zaleca się włączenie [inspekcji SQL Database](sql-database-auditing.md). Za pomocą inspekcji można śledzić zdarzenia bazy danych i zapisywać je w dzienniku inspekcji na koncie usługi Azure Storage lub w obszarze roboczym usługi Azure Log Analytics. 
 
 ### <a name="audit-critical-security-events"></a>Inspekcja krytycznych zdarzeń zabezpieczeń
-Śledzenie zdarzeń bazy danych pomaga zrozumieć aktywność bazy danych oraz uzyskać wgląd w niezgodności i anomalie, które mogą wskazywać na problemy biznesowe lub podejrzane naruszenia zabezpieczeń. Pozwala również na przestrzeganie standardów zgodności. 
+Śledzenie zdarzeń bazy danych ułatwia zrozumienie działania bazy danych. Możesz uzyskać wgląd w niezgodności i anomalie, które mogą wskazywać na problemy biznesowe lub podejrzane naruszenia zabezpieczeń. Pozwala również na przestrzeganie standardów zgodności. 
 
 **Jak zaimplementować**:
 
@@ -660,7 +650,7 @@ Zaawansowana ochrona przed zagrożeniami umożliwia wykrywanie potencjalnych zag
 **Najlepsze rozwiązania**:
 
 - Konfigurując [inspekcję SQL Database](sql-database-auditing.md) na serwerze bazy danych w celu inspekcji zdarzeń, wszystkie istniejące i nowo utworzone bazy danych na tym serwerze zostaną poddane inspekcji.
-- Domyślnie zasady inspekcji obejmują wszystkie akcje (zapytania, procedury składowane oraz pomyślne i nieudane logowania) do baz danych, co może spowodować duże ilości dzienników inspekcji. Zalecane jest, aby klienci mogli [skonfigurować inspekcję dla różnych typów akcji i grup akcji przy użyciu programu PowerShell](sql-database-auditing.md#subheading-7), aby kontrolować liczbę działań poddawanych inspekcji i zminimalizować ryzyko utraty zdarzeń. Umożliwi to klientom przechwytywanie tylko rzeczywiście wymaganych danych inspekcji.
+- Domyślnie zasady inspekcji obejmują wszystkie akcje (zapytania, procedury składowane oraz pomyślne i nieudane logowania) do baz danych, co może spowodować duże ilości dzienników inspekcji. Zalecane jest, aby klienci mogli [skonfigurować inspekcję dla różnych typów akcji i grup akcji przy użyciu programu PowerShell](sql-database-auditing.md#subheading-7). Skonfigurowanie tego elementu pomoże kontrolować liczbę działań poddawanych inspekcji i zminimalizować ryzyko utraty zdarzeń. Konfiguracja inspekcji niestandardowej umożliwia klientom przechwytywanie tylko wymaganych danych inspekcji.
 - Dzienniki inspekcji mogą być używane bezpośrednio w [Azure Portal](https://portal.azure.com/)lub z skonfigurowanej lokalizacji magazynu. 
 
 
@@ -673,13 +663,12 @@ Zaawansowana ochrona przed zagrożeniami umożliwia wykrywanie potencjalnych zag
 - [Inspekcja SQL Server](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) 
 
 ### <a name="secure-audit-logs"></a>Bezpieczne dzienniki inspekcji
-Aby zapewnić możliwość rozdzielenia obowiązków i oddzielenia administratorów od audytorów, należy podjąć odpowiednie środki w celu ograniczenia dostępu do konta magazynu. 
+Ogranicz dostęp do konta magazynu w celu obsługi rozdzielenia obowiązków i oddzielenia baz danych od audytorów. 
 
 **Jak zaimplementować**:
 
-- Podczas zapisywania dzienników inspekcji w usłudze Azure Storage upewnij się, że dostęp do konta magazynu jest ograniczony do minimalnych zasad zabezpieczeń przy użyciu kontroli dostępu do konta magazynu.
-
-- Aby uzyskać więcej informacji, zobacz [autoryzowanie dostępu do usługi Azure Storage](../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+- Podczas zapisywania dzienników inspekcji w usłudze Azure Storage upewnij się, że dostęp do konta magazynu jest ograniczony do minimalnych zasad zabezpieczeń. Kontroluj, kto ma dostęp do konta magazynu.
+    - Aby uzyskać więcej informacji, zobacz [autoryzowanie dostępu do usługi Azure Storage](../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 **Najlepsze rozwiązania**:
 
@@ -701,13 +690,13 @@ Proaktywne ulepszanie zabezpieczeń bazy danych dzięki wykrywaniu i korygowanie
 
 **Najlepsze rozwiązania**:
 
-- Początkowo należy uruchomić VA w bazach danych i wykonać iterację przez korygowaniem testy niezakończone niepowodzeniem, które sprzeciwiają się najlepszym praktykom dotyczącym zabezpieczeń, oraz konfigurując linie bazowe dla akceptowalnych konfiguracji do momentu, gdy skanowanie wyjdzie "Wyczyść" (wszystkie testy kończą się pomyślnie).  
+- Początkowo należy uruchomić VA w bazach danych i iterować przez korygowaniem testy niezakończone niepowodzeniem, które sprzeciwiają się najlepszym praktykom dotyczącym zabezpieczeń. Skonfiguruj linie bazowe dla akceptowalnych konfiguracji do momentu, aż skanowanie zakończy się, lub wszystkie testy przebiegły _prawidłowo_.  
 
 - Skonfiguruj okresowe cykliczne skanowania do uruchomienia raz w tygodniu i skonfiguruj osobę, która będzie otrzymywać wiadomości e-mail z podsumowaniem. 
 
-- Zapoznaj się z podsumowaniem VA po każdym co tydzień. W przypadku jakichkolwiek luk w zabezpieczeniach należy oszacować odchylenie od poprzedniego wyniku skanowania i określić, czy sprawdzanie ma być rozwiązane, czy też istnieje uzasadniony powód zmiany konfiguracji.   
+- Zapoznaj się z podsumowaniem VA po każdym co tydzień. W przypadku jakichkolwiek luk w zabezpieczeniach Oceń odchylenie od poprzedniego wyniku skanowania i sprawdź, czy sprawdzanie powinno być rozwiązane. Sprawdź, czy istnieje uzasadniony powód zmiany konfiguracji.   
 
-- Rozpoznawanie kontroli i linii bazowych, tam gdzie to stosowne, lub tworzenie elementów biletów do rozwiązywania akcji i śledzenie ich do momentu ich rozwiązania. 
+- Rozpoznaj testy i linie bazowe aktualizacji, jeśli są odpowiednie. Twórz elementy biletów do rozwiązywania akcji i śledź je do momentu ich rozwiązania. 
 
 **Dalsze zasoby**:
 
@@ -716,12 +705,12 @@ Proaktywne ulepszanie zabezpieczeń bazy danych dzięki wykrywaniu i korygowanie
 
 ### <a name="identify-and-tag-sensitive-data"></a>Zidentyfikuj i Oznacz poufne dane 
 
-Odnajdź kolumny, które potencjalnie zawierają poufne dane. Klasyfikowanie kolumn w celu wykorzystania zaawansowanych scenariuszy inspekcji i ochrony opartej na czułości. 
+Odnajdź kolumny, które potencjalnie zawierają poufne dane. Klasyfikowanie kolumn w celu korzystania z zaawansowanych scenariuszy inspekcji i ochrony opartej na czułości. 
 
 **Jak zaimplementować**:
 
 - Używaj funkcji [odnajdywania i klasyfikowania danych SQL](sql-database-data-discovery-and-classification.md) , aby odnajdywać, klasyfikować, oznaczać i chronić poufne dane w bazach danych. 
-  - Zapoznaj się z zaleceniami klasyfikacji, które są tworzone przez zautomatyzowane odnajdywanie na pulpicie nawigacyjnym odnajdywania i klasyfikacji danych SQL, i zaakceptuj odpowiednie klasyfikacje, takie jak poufne dane są trwale oznakowane przy użyciu klasyfikacji Etykieta. 
+  - Zapoznaj się z zaleceniami klasyfikacji, które są tworzone przez zautomatyzowane odnajdywanie na pulpicie nawigacyjnym odnajdywanie i Klasyfikacja danych SQL. Zaakceptuj odpowiednie klasyfikacje, takie jak dane poufne są trwale oznakowane przy użyciu etykiet klasyfikacji. 
   - Ręcznie Dodaj klasyfikacje dla wszelkich dodatkowych pól danych poufnych, które nie zostały odnalezione przez mechanizm zautomatyzowany. 
 - Aby uzyskać więcej informacji, zobacz [Microsoft Data Discovery & Klasyfikacja](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification).
 
@@ -729,7 +718,7 @@ Odnajdź kolumny, które potencjalnie zawierają poufne dane. Klasyfikowanie kol
 
 - Regularnie Monitoruj pulpit nawigacyjny klasyfikacji pod kątem dokładnej oceny stanu klasyfikacji bazy danych. Raport o stanie klasyfikacji bazy danych można wyeksportować lub wydrukować, aby udostępnić go w celu zapewnienia zgodności i inspekcji.
 
-- Stale monitoruj stan zalecanych danych poufnych w ocenie luk w zabezpieczeniach SQL, śledząc zasadę odnajdowania danych poufnych i identyfikując wszelkie dryfy w zalecanych kolumnach dla klasyfikacji.  
+- Stale monitoruj stan zalecanych danych poufnych w ocenie luk w zabezpieczeniach SQL. Śledź zasadę odnajdowania danych poufnych i zidentyfikuj wszelkie dryfy w zalecanych kolumnach dla klasyfikacji.  
 
 - Użyj klasyfikacji w sposób dostosowany do konkretnych potrzeb organizacji. Dostosuj zasady Information Protection (etykiety czułości, typy informacji, logika odnajdywania) w zasadach [Information Protection SQL](../security-center/security-center-info-protection-policy.md) w Azure Security Center. 
 
@@ -739,7 +728,7 @@ Monitoruj osoby, które uzyskują dostęp do danych poufnych i przechwytywania z
 **Jak zaimplementować**:
 
 - Użyj w połączeniu inspekcji SQL i klasyfikacji danych. 
-  - W dzienniku [inspekcji SQL Database](sql-database-auditing.md) można śledzić dostęp do danych poufnych, a także wyświetlać informacje, takie jak dane, do których uzyskano dostęp, oraz ich etykiety czułości (zobacz [Inspekcja dostępu do poufnych danych](sql-database-data-discovery-and-classification.md#subheading-3)). 
+  - W dzienniku [inspekcji SQL Database](sql-database-auditing.md) można śledzić dostęp do danych poufnych. Możesz również wyświetlić informacje, takie jak dane, do których uzyskano dostęp, a także etykietę czułości. Aby uzyskać więcej informacji, zobacz [Inspekcja dostępu do poufnych danych](sql-database-data-discovery-and-classification.md#subheading-3). 
 
 **Najlepsze rozwiązania**:
 
@@ -774,16 +763,16 @@ Nawiązywanie połączenia z serwerem Azure SQL Database za pośrednictwem publi
 Obecnie Azure SQL Database oferuje następujące techniki ograniczania zagrożeń związanych z eksfiltracji danych: 
 
 - Użyj kombinacji reguł zezwalania i odmowy na sieciowych grup zabezpieczeń maszyn wirtualnych platformy Azure w celu kontrolowania regionów, do których można uzyskać dostęp z maszyny wirtualnej. 
-- Jeśli używany jest serwer Azure SQL Database (zawierający pojedyncze bazy danych lub pule elastyczne), ustaw następujące ustawienia:
+- Jeśli używany jest serwer Azure SQL Database (zawierający pojedyncze bazy danych lub pule elastyczne), ustaw następujące opcje:
   - Zezwalaj na wyłączenie usług platformy Azure.
   - Zezwalaj tylko na ruch z podsieci zawierającej maszynę wirtualną platformy Azure przez skonfigurowanie reguły zapory sieci wirtualnej.
   - Użyj [linku prywatnego](sql-database-private-endpoint-overview.md)
-- W przypadku wystąpienia zarządzanego korzystanie z prywatnego dostępu do adresu IP domyślnie dotyczy pierwszej eksfiltracji problemu z nieautoryzowaną maszyną wirtualną. Włącz funkcję delegowania podsieci w podsieci, która będzie usługa do automatycznego ustawiania najbardziej restrykcyjnych zasad w podsieci wystąpienia zarządzanego.
+- W przypadku wystąpienia zarządzanego korzystanie z prywatnego dostępu do adresu IP domyślnie dotyczy pierwszej eksfiltracji problemu z nieautoryzowaną maszyną wirtualną. Włącz funkcję delegowania podsieci w podsieci, aby automatycznie ustawiać najbardziej restrykcyjne zasady w podsieci wystąpienia zarządzanego.
 - Problem z nieautoryzowanym DBAm jest bardziej narażony na wystąpienie zarządzane, ponieważ ma on większy obszar powierzchni i wymagania dotyczące sieci są widoczne dla klientów. Najlepszym rozwiązaniem jest zastosowanie wszystkich praktyk w tym przewodniku zabezpieczeń, aby zapobiec nieautoryzowanemu scenariuszowi w pierwszym miejscu (nie tylko w przypadku eksfiltracji danych). Always Encrypted jest jedną z metod ochrony poufnych danych przez ich szyfrowanie i pozostawienie klucza niedostępnego dla administratorów usługi.
 
 ## <a name="security-aspects-of-business-continuity-and-availability"></a>Aspekty zabezpieczeń dotyczące ciągłości działania i dostępności
 
-Większość standardów zabezpieczeń zapewnia dostępność danych w kontekście ciągłości działania, osiągając implementację nadmiarowości i możliwości pracy awaryjnej w celu uniknięcia pojedynczych punktów awarii. W przypadku scenariuszy awaryjnych jest to typowa Metoda zachowywania kopii zapasowych plików danych i dziennika. Poniższa sekcja zawiera ogólne omówienie możliwości wbudowanych w platformę Azure, a także dodatkowe opcje, które można skonfigurować w celu spełnienia określonych wymagań: 
+Większość standardów zabezpieczeń zapewnia dostępność danych w kontekście ciągłości działania, osiągając implementację nadmiarowości i możliwości pracy awaryjnej w celu uniknięcia pojedynczych punktów awarii. W przypadku scenariuszy awaryjnych jest to typowa Metoda zachowywania kopii zapasowych plików danych i dziennika. Poniższa sekcja zawiera ogólne omówienie możliwości wbudowanych w platformę Azure. Dostępne są również dodatkowe opcje, które można skonfigurować w celu spełnienia określonych wymagań: 
 
 - Platforma Azure oferuje wbudowaną wysoką dostępność: [wysoką dostępność i Azure SQL Database](sql-database-high-availability.md) 
 

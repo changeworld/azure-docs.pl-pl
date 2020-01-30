@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098671"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844596"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Wdróż moduł IoT Edge Event Grid
 
@@ -35,13 +35,15 @@ Istnieje kilka sposobów wdrażania modułów na urządzeniu IoT Edge i wszystki
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrożenia
 
-Manifest wdrożenia to dokument JSON, który opisuje moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości modułu bliźniaczych reprezentacji. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON.  Składa się z trzech kroków: **Dodawanie modułów**, **Określanie tras**i **przeglądanie wdrożenia**.
+Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON.  Posiada trzy kroki: **Dodaj moduły**, **określić trasy**, i **Przejrzyj wdrożenia**.
 
 ### <a name="add-modules"></a>Dodaj moduły
 
 1. W sekcji **moduły wdrażania** wybierz pozycję **Dodaj** .
 1. Z typów modułów na liście rozwijanej wybierz pozycję **IoT Edge module**
 1. Podaj nazwę, obraz i opcje tworzenia kontenera:
+
+[!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
 
    * **Nazwa**: eventgridmodule
    * **Identyfikator URI obrazu**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
@@ -50,8 +52,8 @@ Manifest wdrożenia to dokument JSON, który opisuje moduły do wdrożenia, spos
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth:clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -78,8 +80,8 @@ Manifest wdrożenia to dokument JSON, który opisuje moduły do wdrożenia, spos
 
 ### <a name="review-deployment"></a>Przegląd wdrożenia
 
-1. Sekcja Przegląd przedstawia manifest wdrożenia JSON, który został utworzony na podstawie wybranych opcji w poprzednich dwóch sekcjach. Upewnij się, że na liście znajdują się dwa moduły: **$edgeAgent** i **$edgeHub**. Te dwa moduły składają się na IoT Edge środowisko uruchomieniowe i są wymagane wartości domyślne w każdym wdrożeniu.
-1. Przejrzyj informacje o wdrożeniu, a następnie wybierz pozycję **Prześlij**.
+1. Przejrzyj sekcję programy, które możesz wdrożenia JSON manifestu, które utworzono na podstawie dokonanego wyboru w poprzednich sekcjach. Upewnij się, że na liście znajdują się dwa moduły: **$edgeAgent** i **$edgeHub**. Te dwa moduły składają się na IoT Edge środowisko uruchomieniowe i są wymagane wartości domyślne w każdym wdrożeniu.
+1. Przejrzyj informacje o wdrożeniu, a następnie wybierz **przesyłania**.
 
 ### <a name="verify-your-deployment"></a>Weryfikowanie wdrożenia
 

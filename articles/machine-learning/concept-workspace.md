@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: 4891ec0ae87f0d7b0cd7e5d5d550f955a8fde1db
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d013fc257bc03d7961a4f2d5ae52d0fde12c83bb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312383"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844079"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co to jest obszar roboczy Azure Machine Learning?
 
@@ -24,7 +24,7 @@ Gdy masz model, możesz zarejestrować go w obszarze roboczym. Następnie można
 
 Dostępne ceny i funkcje zależą od tego, czy jest wybrana [wersja podstawowa, czy Enterprise](overview-what-is-azure-ml.md#sku) dla obszaru roboczego. Podczas [tworzenia obszaru roboczego](#create-workspace)wybierana jest wersja.  Możesz również [uaktualnić](#upgrade) wersję Basic do Enterprise Edition.
 
-## <a name="taxonomy"></a>Taksonomia 
+## <a name="taxonomy"></a>Taksonomii 
 
 Taksonomia obszaru roboczego przedstawiono na poniższym diagramie:
 
@@ -49,7 +49,7 @@ Z obszarem roboczym można korzystać w następujący sposób:
 
 + W sieci Web:
     + [Azure Machine Learning Studio](https://ml.azure.com) 
-    + [Azure Machine Learning Designer](concept-designer.md) — dostępne tylko w obszarze roboczym [wersji Enterprise Edition](overview-what-is-azure-ml.md#sku) .
+    + [Azure Machine Learning Designer (wersja zapoznawcza)](concept-designer.md) — dostępne tylko w obszarze roboczym [wersji Enterprise Edition](overview-what-is-azure-ml.md#sku) .
 + W dowolnym środowisku języka Python z [zestawem SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + W każdym środowisku R z [zestawem SDK Azure Machine Learning dla języka r](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
 + W wierszu polecenia przy użyciu [rozszerzenia CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) Azure Machine Learning
@@ -79,7 +79,7 @@ Można również wykonać następujące zadania zarządzania obszarem roboczym:
 | Tworzenie maszyny wirtualnej notesu |   | **&check;** | |     |
 
 > [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**.
+> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z **Północno-środkowe stany USA**, * * Wschodnie stany USA 2 * *, **europa Północna** lub **Południowe Zjednoczone Królestwo**.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.
 
 ## <a name='create-workspace'></a>Tworzenie obszaru roboczego

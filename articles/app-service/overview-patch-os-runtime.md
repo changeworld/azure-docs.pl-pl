@@ -4,12 +4,12 @@ description: Dowiedz się, jak Azure App Service aktualizować system operacyjny
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688566"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846242"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Stosowanie poprawek systemu operacyjnego i środowiska uruchomieniowego w Azure App Service
 
@@ -83,6 +83,7 @@ W poniższej tabeli przedstawiono, jak wersje systemu Windows i środowisko uruc
 | Wersja języka PHP | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br> `php --version` |
 | Domyślna wersja środowiska Node. js | W [Cloud Shell](../cloud-shell/overview.md)Uruchom następujące polecenie: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Wersja języka Python | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br> `python --version` |  
+| Wersja języka Java | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br> `java -version` |  
 
 > [!NOTE]  
 > Dostęp do lokalizacji rejestru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, gdzie są przechowywane informacje o [poprawkach "KB"](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jest zablokowany.

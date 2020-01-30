@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: e9e6eff4c527ff2e22be57ebc1eb3dcdb3c4e0ab
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241991"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845278"
 ---
 # <a name="api-management-policy-expressions"></a>Wyrażenia zasad API Management
-W tym artykule omówiono składnię wyrażeń C# zasad to 7. Każde wyrażenie ma dostęp do niejawnie podanej zmiennej [kontekstowej](api-management-policy-expressions.md#ContextVariables) i dozwolone [podzbiór](api-management-policy-expressions.md#CLRTypes) typów .NET Framework.
+W tym artykule omówiono składnię wyrażeń C# zasad w 7. Każde wyrażenie ma dostęp do niejawnie podanej zmiennej [kontekstowej](api-management-policy-expressions.md#ContextVariables) i dozwolone [podzbiór](api-management-policy-expressions.md#CLRTypes) typów .NET Framework.
 
 Więcej informacji:
 
@@ -76,134 +76,134 @@ Poniższa tabela zawiera listę typów .NET Framework i ich elementów członkow
 
 |Typ|Obsługiwane elementy członkowskie|
 |--------------|-----------------------|
-|Newtonsoft.Json.Formatting|Wszystkie|
+|Newtonsoft.Json.Formatting|Wszystko|
 |Newtonsoft.Json.JsonConvert|Serializacjaobject, deserializacjaobject|
-|Newtonsoft.Json.Linq.Extensions|Wszystkie|
-|Newtonsoft.Json.Linq.JArray|Wszystkie|
-|Newtonsoft.Json.Linq.JConstructor|Wszystkie|
-|Newtonsoft.Json.Linq.JContainer|Wszystkie|
-|Newtonsoft.Json.Linq.JObject|Wszystkie|
-|Newtonsoft.Json.Linq.JProperty|Wszystkie|
-|Newtonsoft.Json.Linq.JRaw|Wszystkie|
-|Newtonsoft.Json.Linq.JToken|Wszystkie|
-|Newtonsoft.Json.Linq.JTokenType|Wszystkie|
-|Newtonsoft.Json.Linq.JValue|Wszystkie|
-|System. Array|Wszystkie|
-|System.BitConverter|Wszystkie|
-|System.Boolean|Wszystkie|
-|System.Byte|Wszystkie|
-|System.Char|Wszystkie|
-|System. Collections. Generic. dictionary < TKey, TValue >|Wszystkie|
-|System.Collections.Generic.HashSet\<T>|Wszystkie|
-|System.Collections.Generic.ICollection\<T>|Wszystkie|
-|System. Collections. Generic. IDictionary < TKey, TValue >|Wszystkie|
-|System.Collections.Generic.IEnumerable\<T>|Wszystkie|
-|System.Collections.Generic.IEnumerator\<T>|Wszystkie|
-|System.Collections.Generic.IList\<T>|Wszystkie|
-|System.Collections.Generic.IReadOnlyCollection\<T>|Wszystkie|
-|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Wszystkie|
-|System.Collections.Generic.ISet\<T>|Wszystkie|
-|System.Collections.Generic.KeyValuePair<TKey, TValue>|Wszystkie|
-|System.Collections.Generic.List\<T>|Wszystkie|
-|System.Collections.Generic.Queue\<T>|Wszystkie|
-|System.Collections.Generic.Stack\<T>|Wszystkie|
-|System.Convert|Wszystkie|
+|Newtonsoft.Json.Linq.Extensions|Wszystko|
+|Newtonsoft.Json.Linq.JArray|Wszystko|
+|Newtonsoft.Json.Linq.JConstructor|Wszystko|
+|Newtonsoft.Json.Linq.JContainer|Wszystko|
+|Newtonsoft.Json.Linq.JObject|Wszystko|
+|Newtonsoft.Json.Linq.JProperty|Wszystko|
+|Newtonsoft.Json.Linq.JRaw|Wszystko|
+|Newtonsoft.Json.Linq.JToken|Wszystko|
+|Newtonsoft.Json.Linq.JTokenType|Wszystko|
+|Newtonsoft.Json.Linq.JValue|Wszystko|
+|System. Array|Wszystko|
+|System.BitConverter|Wszystko|
+|System.Boolean|Wszystko|
+|System.Byte|Wszystko|
+|System.Char|Wszystko|
+|System. Collections. Generic. dictionary < TKey, TValue >|Wszystko|
+|System.Collections.Generic.HashSet\<T>|Wszystko|
+|System.Collections.Generic.ICollection\<T>|Wszystko|
+|System. Collections. Generic. IDictionary < TKey, TValue >|Wszystko|
+|System.Collections.Generic.IEnumerable\<T>|Wszystko|
+|System.Collections.Generic.IEnumerator\<T>|Wszystko|
+|System.Collections.Generic.IList\<T>|Wszystko|
+|System.Collections.Generic.IReadOnlyCollection\<T>|Wszystko|
+|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Wszystko|
+|System.Collections.Generic.ISet\<T>|Wszystko|
+|System.Collections.Generic.KeyValuePair<TKey, TValue>|Wszystko|
+|System.Collections.Generic.List\<T>|Wszystko|
+|System.Collections.Generic.Queue\<T>|Wszystko|
+|System.Collections.Generic.Stack\<T>|Wszystko|
+|System.Convert|Wszystko|
 |System.DateTime|(Konstruktor), Add, addDays, addgodz. addmilisekunds, addmiesiącach, AddSeconds, AddTicks, AddYears, Date, Day, DayOfWeek, dzieńroku, DaysInMonth, Hour, IsDaylightSavingTime, IsLeapYear, MaxValue, milisekundy, minute, MinValue, month, Now , Analizuj, drugi, Odejmij, Ticks, TimeOfDay, Today, ToString, UtcNow, Year|
 |System.DateTimeKind|UTC|
-|System.DateTimeOffset|Wszystkie|
-|System.Decimal|Wszystkie|
-|System.Double|Wszystkie|
-|System.Exception|Wszystkie|
-|System.Guid|Wszystkie|
-|System.Int16|Wszystkie|
-|System.Int32|Wszystkie|
-|System.Int64|Wszystkie|
-|System.IO.StringReader|Wszystkie|
-|System.IO.StringWriter|Wszystkie|
-|System.Linq.Enumerable|Wszystkie|
-|System.Math|Wszystkie|
-|System.MidpointRounding|Wszystkie|
-|System .NET. WebUtility|Wszystkie|
-|System.Nullable|Wszystkie|
-|System.Random|Wszystkie|
-|System.SByte|Wszystkie|
-|System.Security.Cryptography.AsymmetricAlgorithm|Wszystkie|
-|System.Security.Cryptography.CipherMode|Wszystkie|
-|System.Security.Cryptography.HashAlgorithm|Wszystkie|
-|System.Security.Cryptography.HashAlgorithmName|Wszystkie|
-|System.Security.Cryptography.HMAC|Wszystkie|
-|System.Security.Cryptography.HMACMD5|Wszystkie|
-|System.Security.Cryptography.HMACSHA1|Wszystkie|
-|System.Security.Cryptography.HMACSHA256|Wszystkie|
-|System.Security.Cryptography.HMACSHA384|Wszystkie|
-|System.Security.Cryptography.HMACSHA512|Wszystkie|
-|System.Security.Cryptography.KeyedHashAlgorithm|Wszystkie|
-|System.Security.Cryptography.MD5|Wszystkie|
-|System.Security.Cryptography.Oid|Wszystkie|
-|System.Security.Cryptography.PaddingMode|Wszystkie|
-|System.Security.Cryptography.RNGCryptoServiceProvider|Wszystkie|
-|System.Security.Cryptography.RSA|Wszystkie|
-|System.Security.Cryptography.RSAEncryptionPadding|Wszystkie|
-|System.Security.Cryptography.RSASignaturePadding|Wszystkie|
-|System.Security.Cryptography.SHA1|Wszystkie|
-|System.Security.Cryptography.SHA1Managed|Wszystkie|
-|System.Security.Cryptography.SHA256|Wszystkie|
-|System.Security.Cryptography.SHA256Managed|Wszystkie|
-|System.Security.Cryptography.SHA384|Wszystkie|
-|System.Security.Cryptography.SHA384Managed|Wszystkie|
-|System.Security.Cryptography.SHA512|Wszystkie|
-|System.Security.Cryptography.SHA512Managed|Wszystkie|
-|System.Security.Cryptography.SymmetricAlgorithm|Wszystkie|
-|System.Security.Cryptography.X509Certificates.PublicKey|Wszystkie|
-|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Wszystkie|
+|System.DateTimeOffset|Wszystko|
+|System.Decimal|Wszystko|
+|System.Double|Wszystko|
+|System.Exception|Wszystko|
+|System.Guid|Wszystko|
+|System.Int16|Wszystko|
+|System.Int32|Wszystko|
+|System.Int64|Wszystko|
+|System.IO.StringReader|Wszystko|
+|System.IO.StringWriter|Wszystko|
+|System.Linq.Enumerable|Wszystko|
+|System.Math|Wszystko|
+|System.MidpointRounding|Wszystko|
+|System .NET. WebUtility|Wszystko|
+|System.Nullable|Wszystko|
+|System.Random|Wszystko|
+|System.SByte|Wszystko|
+|System.Security.Cryptography.AsymmetricAlgorithm|Wszystko|
+|System.Security.Cryptography.CipherMode|Wszystko|
+|System.Security.Cryptography.HashAlgorithm|Wszystko|
+|System.Security.Cryptography.HashAlgorithmName|Wszystko|
+|System.Security.Cryptography.HMAC|Wszystko|
+|System.Security.Cryptography.HMACMD5|Wszystko|
+|System.Security.Cryptography.HMACSHA1|Wszystko|
+|System.Security.Cryptography.HMACSHA256|Wszystko|
+|System.Security.Cryptography.HMACSHA384|Wszystko|
+|System.Security.Cryptography.HMACSHA512|Wszystko|
+|System.Security.Cryptography.KeyedHashAlgorithm|Wszystko|
+|System.Security.Cryptography.MD5|Wszystko|
+|System.Security.Cryptography.Oid|Wszystko|
+|System.Security.Cryptography.PaddingMode|Wszystko|
+|System.Security.Cryptography.RNGCryptoServiceProvider|Wszystko|
+|System.Security.Cryptography.RSA|Wszystko|
+|System.Security.Cryptography.RSAEncryptionPadding|Wszystko|
+|System.Security.Cryptography.RSASignaturePadding|Wszystko|
+|System.Security.Cryptography.SHA1|Wszystko|
+|System.Security.Cryptography.SHA1Managed|Wszystko|
+|System.Security.Cryptography.SHA256|Wszystko|
+|System.Security.Cryptography.SHA256Managed|Wszystko|
+|System.Security.Cryptography.SHA384|Wszystko|
+|System.Security.Cryptography.SHA384Managed|Wszystko|
+|System.Security.Cryptography.SHA512|Wszystko|
+|System.Security.Cryptography.SHA512Managed|Wszystko|
+|System.Security.Cryptography.SymmetricAlgorithm|Wszystko|
+|System.Security.Cryptography.X509Certificates.PublicKey|Wszystko|
+|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Wszystko|
 |System.Security.Cryptography.X509Certificates.X500DistinguishedName|Nazwa|
-|System.Security.Cryptography.X509Certificates.X509Certificate|Wszystkie|
-|System.Security.Cryptography.X509Certificates.X509Certificate2|Wszystkie|
-|System.Security.Cryptography.X509Certificates.X509ContentType|Wszystkie|
-|System.Security.Cryptography.X509Certificates.X509NameType|Wszystkie|
-|System.Single|Wszystkie|
-|System.String|Wszystkie|
-|System.StringComparer|Wszystkie|
-|System.StringComparison|Wszystkie|
-|System.StringSplitOptions|Wszystkie|
-|System.Text.Encoding|Wszystkie|
+|System.Security.Cryptography.X509Certificates.X509Certificate|Wszystko|
+|System.Security.Cryptography.X509Certificates.X509Certificate2|Wszystko|
+|System.Security.Cryptography.X509Certificates.X509ContentType|Wszystko|
+|System.Security.Cryptography.X509Certificates.X509NameType|Wszystko|
+|System.Single|Wszystko|
+|System.String|Wszystko|
+|System.StringComparer|Wszystko|
+|System.StringComparison|Wszystko|
+|System.StringSplitOptions|Wszystko|
+|System.Text.Encoding|Wszystko|
 |System.Text.RegularExpressions.Capture|Indeks, długość, wartość|
 |System.Text.RegularExpressions.CaptureCollection|Liczba, element|
 |System.Text.RegularExpressions.Group|Przechwytywanie, sukces|
 |System.Text.RegularExpressions.GroupCollection|Liczba, element|
 |System.Text.RegularExpressions.Match|Puste, grupy, wynik|
 |System.Text.RegularExpressions.Regex|(Konstruktor), IsMatch, Match, dopasowań, Replace, Unescape, Split|
-|System.Text.RegularExpressions.RegexOptions|Wszystkie|
-|System.Text.StringBuilder|Wszystkie|
-|System.TimeSpan|Wszystkie|
-|System.TimeZone|Wszystkie|
-|System.TimeZoneInfo.AdjustmentRule|Wszystkie|
-|System.TimeZoneInfo.TransitionTime|Wszystkie|
-|System.TimeZoneInfo|Wszystkie|
-|System.Tuple|Wszystkie|
-|System.UInt16|Wszystkie|
-|System.UInt32|Wszystkie|
-|System.UInt64|Wszystkie|
-|System.Uri|Wszystkie|
-|System.UriPartial|Wszystkie|
-|System.Xml.Linq.Extensions|Wszystkie|
-|System.Xml.Linq.XAttribute|Wszystkie|
-|System.Xml.Linq.XCData|Wszystkie|
-|System.Xml.Linq.XComment|Wszystkie|
-|System.Xml.Linq.XContainer|Wszystkie|
-|System.Xml.Linq.XDeclaration|Wszystkie|
+|System.Text.RegularExpressions.RegexOptions|Wszystko|
+|System.Text.StringBuilder|Wszystko|
+|System.TimeSpan|Wszystko|
+|System.TimeZone|Wszystko|
+|System.TimeZoneInfo.AdjustmentRule|Wszystko|
+|System.TimeZoneInfo.TransitionTime|Wszystko|
+|System.TimeZoneInfo|Wszystko|
+|System.Tuple|Wszystko|
+|System.UInt16|Wszystko|
+|System.UInt32|Wszystko|
+|System.UInt64|Wszystko|
+|System.Uri|Wszystko|
+|System.UriPartial|Wszystko|
+|System.Xml.Linq.Extensions|Wszystko|
+|System.Xml.Linq.XAttribute|Wszystko|
+|System.Xml.Linq.XCData|Wszystko|
+|System.Xml.Linq.XComment|Wszystko|
+|System.Xml.Linq.XContainer|Wszystko|
+|System.Xml.Linq.XDeclaration|Wszystko|
 |System.Xml.Linq.XDocument|Wszystkie, z wyjątkiem: Load|
-|System.Xml.Linq.XDocumentType|Wszystkie|
-|System.Xml.Linq.XElement|Wszystkie|
-|System.Xml.Linq.XName|Wszystkie|
-|System.Xml.Linq.XNamespace|Wszystkie|
-|System.Xml.Linq.XNode|Wszystkie|
-|System.Xml.Linq.XNodeDocumentOrderComparer|Wszystkie|
-|System.Xml.Linq.XNodeEqualityComparer|Wszystkie|
-|System.Xml.Linq.XObject|Wszystkie|
-|System.Xml.Linq.XProcessingInstruction|Wszystkie|
-|System.Xml.Linq.XText|Wszystkie|
-|System.Xml.XmlNodeType|Wszystkie|
+|System.Xml.Linq.XDocumentType|Wszystko|
+|System.Xml.Linq.XElement|Wszystko|
+|System.Xml.Linq.XName|Wszystko|
+|System.Xml.Linq.XNamespace|Wszystko|
+|System.Xml.Linq.XNode|Wszystko|
+|System.Xml.Linq.XNodeDocumentOrderComparer|Wszystko|
+|System.Xml.Linq.XNodeEqualityComparer|Wszystko|
+|System.Xml.Linq.XObject|Wszystko|
+|System.Xml.Linq.XProcessingInstruction|Wszystko|
+|System.Xml.Linq.XText|Wszystko|
+|System.Xml.XmlNodeType|Wszystko|
 
 ## <a name="ContextVariables"></a>Zmienna kontekstowa
 Zmienna o nazwie `context` jest niejawnie dostępna w każdym [wyrażeniu](api-management-policy-expressions.md#Syntax)zasad. Jego członkowie zapewniają informacje dotyczące `\request`. Wszystkie `context` członkowie są tylko do odczytu.
