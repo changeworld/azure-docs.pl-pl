@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d0acc2d92c564f89f4777ccb243c7255e47c9105
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514123"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845482"
 ---
 ::: zone target="chromeless"
 
@@ -155,10 +155,28 @@ W razie konieczności możesz skontaktować się z pomocą techniczną firmy Qua
 
    W razie jakichkolwiek problemów skontaktuj się z zespołem Data Box Operations Asia, pisząc na adres adbo@microsoft.com. Podaj nazwę zadania w nagłówku tematu oraz opisz napotkany problem.
 
-3. Przekaż przesyłkę kurierowi. 
+3. Przekaż przesyłkę kurierowi.
 
+### <a name="in-self-managedtabin-selfmanaged"></a>[W przypadku samodzielnego zarządzania](#tab/in-selfmanaged)
+
+Jeśli korzystasz z usługi Data Box Disk w Japonii, Singapurze, Korei i Europie Zachodniej oraz masz wybraną opcję samodzielnego zarządzania wysyłką, postępuj zgodnie z następującymi opcjami podczas tworzenia zamówienia. 
+
+1. Przejdź do bloku **Przegląd** odpowiedniego dla swojego zamówienia w witrynie Azure Portal. Wykonaj instrukcje wyświetlane po wybraniu pozycji **Zaplanuj odebranie**. Powinien zostać wyświetlony kod autoryzacji, który jest używany przy dostarczaniu zamówienia.
+
+2. Gdy zechcesz odesłać urządzenie, wyślij wiadomość e-mail do zespołu operacyjnego usługi Azure Data Box, korzystając z następującego szablonu.
+
+    ```
+    To: adbops@microsoft.com
+    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Body: 
+     a. Order name
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+    ```
+3. Zespół operacyjny usługi Azure Data Box zaplanuje razem z Tobą jego dostarczenie do centrum danych platformy Azure.
 
 ::: zone target="docs"
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 
