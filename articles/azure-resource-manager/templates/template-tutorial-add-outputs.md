@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 540e037e83d359dc67cb32f98dec0319bf490707
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472982"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765746"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Samouczek: Dodawanie danych wyjściowych do szablonu Menedżer zasobów
 
@@ -26,7 +26,7 @@ Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i A
 
 Na końcu poprzedniego samouczka szablon zawierał następujący kod JSON:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json":::
 
 Wdraża konto magazynu, ale nie zwraca żadnych informacji o koncie magazynu. Może być konieczne przechwycenie właściwości z nowego zasobu, aby były one później dostępne do odwołania.
 
@@ -36,7 +36,7 @@ Możesz użyć danych wyjściowych, aby zwrócić wartości z szablonu. Może by
 
 Poniższy przykład podświetla zmianę szablonu, aby dodać wartość wyjściową. Skopiuj cały plik i Zastąp jego zawartość.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json?range=1-53&highlight=47-52)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json" range="1-53" highlight="47-52":::
 
 Istnieją pewne ważne elementy, na które należy pamiętać o dodanej wartości wyjściowej.
 

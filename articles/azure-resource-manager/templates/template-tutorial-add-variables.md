@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a27022f8c06449d8b05f90f78055b983bc88c01c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472856"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765509"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Samouczek: Dodawanie zmiennych do szablonu Menedżer zasobów
 
@@ -26,7 +26,7 @@ Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i A
 
 Na końcu poprzedniego samouczka szablon zawierał następujący kod JSON:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json":::
 
 Parametr nazwy konta magazynu jest trudny do użycia, ponieważ trzeba podać unikatową nazwę. Jeśli wcześniej samouczki zostały wykonane w tej serii, prawdopodobnie nie można już złamać unikatowej nazwy. Ten problem można rozwiązać, dodając zmienną, która konstruuje unikatową nazwę konta magazynu.
 
@@ -34,7 +34,7 @@ Parametr nazwy konta magazynu jest trudny do użycia, ponieważ trzeba podać un
 
 Poniższy przykład wyróżnia zmiany w celu dodania zmiennej do szablonu, który tworzy unikatową nazwę konta magazynu. Skopiuj cały plik i Zastąp jego zawartość.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
 Należy zauważyć, że zawiera zmienną o nazwie **uniqueStorageName**. Ta zmienna używa czterech funkcji do konstruowania wartości ciągu.
 

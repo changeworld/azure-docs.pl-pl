@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d960af01eed9fae0fec2566772799e4972053d7b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 965897afc8e23c123575de0c497d4071ff4ca85a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687493"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767098"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Samouczek: Tworzenie niestandardowego obrazu i uruchamianie go w App Service z rejestru prywatnego
 
 [App Service](app-service-linux-intro.md) udostępnia wbudowane obrazy platformy Docker w systemie Linux z obsługą określonych wersji, takich jak php 7,3 i Node. js 10,14. App Service używa technologii kontenera Docker do hostowania zarówno wbudowanych obrazów, jak i obrazów niestandardowych jako platformy jako usługi. W tym samouczku dowiesz się, jak utworzyć obraz niestandardowy i uruchomić go w App Service. Ten wzorzec jest przydatny, gdy wbudowane obrazy nie uwzględniają wybranego przez Ciebie języka lub gdy aplikacja wymaga określonej konfiguracji, której wbudowane obrazy nie obejmują.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Wdrażanie obrazu niestandardowego w rejestrze kontenera prywatnego
@@ -35,7 +35,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-* [Usługa Git](https://git-scm.com/downloads)
+* [Git](https://git-scm.com/downloads)
 * [Docker](https://docs.docker.com/get-started/#setup)
 
 ## <a name="download-the-sample"></a>Pobierz przykład
@@ -99,7 +99,7 @@ Upewnij się, że aplikacja internetowa i kontener działają prawidłowo, przec
 
 Aby utworzyć aplikację, która używa właśnie utworzonego obrazu, należy uruchomić polecenia interfejsu CLI platformy Azure, które tworzą grupę zasobów, wypchnięcie obrazu, a następnie utworzenie aplikacji sieci Web App Service plan w celu jej uruchomienia.
 
-### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -122,7 +122,7 @@ az acr credential show --name <azure-container-registry-name>
 Dane wyjściowe ujawniają dwa hasła wraz z nazwą użytkownika.
 
 ```json
-<
+{
   "passwords": [
     {
       "name": "password",
@@ -147,7 +147,7 @@ Upewnij się, że logowanie powiedzie się.
 
 ### <a name="push-image-to-azure-container-registry"></a>Wypychanie obrazu do usługi Azure Container Registry
 
-Oznacz obraz lokalny dla Azure Container Registry. Na przykład:
+Oznacz obraz lokalny dla Azure Container Registry. Przykład:
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
@@ -336,7 +336,7 @@ Które czynności umiesz wykonać:
 > * Uzyskiwanie dostępu do dzienników diagnostycznych
 > * Nawiązywanie połączenia z kontenerem przy użyciu protokołu SSH
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
 > [Samouczek: mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)

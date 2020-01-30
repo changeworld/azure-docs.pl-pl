@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB interfejs API tabel przy użyciu zestawu SDK .NET Standard
 description: Dowiedz się, jak przechowywać dane strukturalne i wysyłać do nich zapytania przy użyciu konta Azure Cosmos DB interfejs API tabel
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: 5206aa6769b8866e93e295a2cefe2a7810aa363a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f4d6e1bb0d5db0dbfc30e14abc58321bce8d0baf
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720643"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770719"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Rozpoczynanie pracy z usługą Azure Cosmos DB interfejs API tabel i usługą Azure Table Storage przy użyciu zestawu .NET SDK
 

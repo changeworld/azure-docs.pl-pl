@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472961"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765587"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Samouczek: Dodawanie zasobu do szablonu Menedżer zasobów
 
@@ -28,7 +28,7 @@ Aby dodać definicję konta magazynu do istniejącego szablonu, zobacz wyróżni
 
 Zastąp element **{Account-Unique-Name}** unikatową nazwą konta magazynu. Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Nazwa może zawierać tylko małe litery lub cyfry. Nie może być dłuższa niż 24 znaki. Możesz spróbować użyć wzorca nazewnictwa, takiego jak **store1** , jako prefiksu, a następnie dodać inicjały i bieżącą datę. Na przykład użyta nazwa może wyglądać jak **store1abc09092019**.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json?range=1-19&highlight=5-17)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
 Odgadnięcie unikatowej nazwy konta magazynu nie jest proste i nie działa dobrze w przypadku automatyzowania dużych wdrożeń. W dalszej części tej serii samouczków będziesz używać funkcji szablonów, które ułatwiają tworzenie unikatowej nazwy.
 

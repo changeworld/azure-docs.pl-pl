@@ -3,24 +3,17 @@ title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — twor
 titleSuffix: Azure App Configuration
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — tworzenie magazynu usługi Azure App Configuration
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
+author: jpconnock
 ms.service: azure-app-configuration
-ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 02/24/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: d57de8219cb73864ed722c6906a1bd75fec51a50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.author: jeconnoc
+ms.openlocfilehash: 44c381da8648fea74059c9110438cfeb4c366116
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433591"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766486"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Tworzenie magazynu usługi Azure App Configuration
 
@@ -57,13 +50,14 @@ appConfigHostname=$(az appconfig create \
   --query hostName \
   -o tsv)
 
-# Get the AppConfig primary key 
-appConfigPrimaryKey=$(az appconfig key list --name $myAppConfigStoreName \
-  --resource-group $myResourceGroupName --query primaryKey -o tsv)
+# Get the AppConfig connection string 
+appConfigConnectionString=$(az appconfig credential list \
+--resource-group $myResourceGroupName \
+--name $myAppConfigStoreName \
+--query "[?name=='Secondary Read Only'] .connectionString" -o tsv)
 
-# Form the connection string for use in your application
-connstring="Endpoint=https://$appConfigHostname;AccessKey=$appConfigPrimaryKey;"
-echo "$connstring"
+# Echo the connection string for use in your application
+echo "$appConfigConnectionString"
 ```
 
 Zanotuj rzeczywistą nazwę wygenerowaną dla nowej grupy zasobów. Tej nazwy grupy zasobów użyjesz, gdy zechcesz usunąć wszystkie zasoby w grupie.
@@ -78,7 +72,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia nowej grupy z
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Tworzy zasób magazynu konfiguracji aplikacji. |
-| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Wyświetl listę kluczy przechowywanych w magazynie konfiguracji aplikacji. |
+| [AZ AppConfig list Credential](/cli/azure/ext/appconfig/appconfig/credential?view=azure-cli-latest) | Wyświetl listę kluczy dostępu dla magazynu konfiguracji aplikacji. |
 
 ## <a name="next-steps"></a>Następne kroki
 

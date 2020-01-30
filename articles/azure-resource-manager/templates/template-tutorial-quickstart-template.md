@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 99eb1581c03732691af5eaf9f482ca4ba0605863
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0feb0a1a682328f1e23a7d800eb4f5653a6acdd1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472583"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765417"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Samouczek: korzystanie z szablonów szybkiego startu platformy Azure
 
@@ -26,7 +26,7 @@ Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i A
 
 Na końcu poprzedniego samouczka szablon zawierał następujący kod JSON:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json":::
 
 Ten szablon działa w przypadku wdrażania kont magazynu i planów usługi App Service, ale może być konieczne dodanie do niej witryny sieci Web. Możesz użyć wstępnie skompilowanych szablonów, aby szybko wykryć kod JSON wymagany do wdrożenia zasobu.
 
@@ -45,7 +45,7 @@ Ten szablon działa w przypadku wdrażania kont magazynu i planów usługi App S
 
 Scal szablon szybkiego startu z istniejącym szablonem:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
 Nazwa aplikacji sieci Web musi być unikatowa na platformie Azure. Aby zapobiec duplikowaniu nazw, zmienna **webAppPortalName** została zaktualizowana z **"webAppPortalName": "[concat (Parameters (" webAppName "),"-webapp ")]"** do **"webAppPortalName": "[concat (Parameters (" webAppName "), uniqueString (ResourceName (). ID)]"** .
 
