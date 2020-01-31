@@ -4,9 +4,9 @@ title: Dokumentacja usługi Azure App Configuration (wersja zapoznawcza)
 metadata:
   title: Dokumentacja usługi Azure App Configuration — samouczki i dokumentacja interfejsu API
   description: 'Usługa Azure App Configuration to usługa zarządzana, która pomaga deweloperom w prosty i bezpieczny sposób scentralizować ustawienia aplikacji i funkcji.'
-  author: yegu-ms
+  author: lisaguthrie
   manager: maiye
-  ms.author: yegu
+  ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 04/19/2019

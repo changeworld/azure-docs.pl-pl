@@ -17,36 +17,20 @@
       items:
         - name: Trenowanie i używanie modelu niestandardowego bez etykiet
           items:
-            - name: Wersja 2.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-train-extract.md
-                - name: Python
-                  href: quickstarts/python-train-extract.md
-            - name: Wersja 1.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-train-extract-v1.md
-                - name: Python
-                  href: quickstarts/python-train-extract-v1.md
+            - name: cURL
+              href: quickstarts/curl-train-extract.md
+            - name: Python
+              href: quickstarts/python-train-extract.md
         - name: Trenowanie i używanie modelu niestandardowego z etykietami
           items:
             - name: Python
               href: quickstarts/python-labeled-data.md
         - name: Używanie wstępnie utworzonego modelu potwierdzenia
           items:
-            - name: Wersja 2.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-receipts.md
-                - name: Python
-                  href: quickstarts/python-receipts.md
-            - name: Wersja 1.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-receipts-v1.md
-                - name: Python
-                  href: quickstarts/python-receipts-v1.md
+            - name: cURL
+              href: quickstarts/curl-receipts.md
+            - name: Python
+              href: quickstarts/python-receipts.md
         - name: Uzyskiwanie informacji o układzie tekstu
           items:
             - name: Python

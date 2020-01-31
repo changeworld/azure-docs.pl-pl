@@ -44,6 +44,8 @@
           href: class-type-database-management.md
         - name: Język Python i notesy Jupyter Notebook
           href: class-type-jupyter-notebook.md
+        - name: Tworzenie aplikacji mobilnych za pomocą programu Android Studio
+          href: class-type-mobile-dev-android-studio.md
     - name: Tworzenie i konfigurowanie kont laboratoriów (właściciel konta laboratorium)
       items:
         - name: Tworzenie kont laboratoriów i zarządzanie nimi

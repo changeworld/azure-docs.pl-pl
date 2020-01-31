@@ -65,6 +65,7 @@
       items:
         - name: Opis i dostosowywanie jednostek przesyłania strumieniowego
           href: stream-analytics-streaming-unit-consumption.md
+          displayName: 'scale, performance'
         - name: Zwiększanie wydajności zapytań
           href: stream-analytics-parallelization.md
         - name: Ponownie podziel dane wejściowe na partycje
@@ -176,6 +177,8 @@
           href: stream-analytics-live-data-local-testing.md
         - name: Wyświetlanie zadań w programie Visual Studio
           href: stream-analytics-vs-tools.md
+        - name: Debugowanie zapytań za pomocą diagramu zadań
+          href: debug-locally-using-job-diagram.md
         - name: Opracowywania zadania usługi Edge
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Konfigurowanie potoku ciągłej integracji/ciągłego dostarczania

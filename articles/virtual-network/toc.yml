@@ -5,7 +5,6 @@
     - name: Informacje o usłudze Virtual Network
       href: virtual-networks-overview.md
 - name: Przewodniki Szybki start
-  expanded: true
   items:
     - name: Tworzenie sieci wirtualnej — Portal
       href: quick-create-portal.md
@@ -13,6 +12,7 @@
       href: quick-create-powershell.md
     - name: Tworzenie sieci wirtualnej — interfejs wiersza polecenia platformy Azure
       href: quick-create-cli.md
+  expanded: true
 - name: Samouczki
   items:
     - name: Filtrowanie ruchu sieciowego
@@ -23,7 +23,7 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: Łączenie sieci wirtualnych
       href: tutorial-connect-virtual-networks-portal.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Interfejs wiersza polecenia platformy Azure
       href: cli-samples.md
@@ -83,12 +83,6 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
     - name: Łączność między sieciami
       href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-    - name: Wdrożenie klasyczne
-      items:
-        - name: Adresowanie IP
-          href: virtual-network-ip-addresses-overview-classic.md
-        - name: Listy kontroli dostępu
-          href: virtual-networks-acl.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Planowanie
@@ -174,7 +168,7 @@
           items:
             - name: Tworzenie maszyny wirtualnej — statyczny publiczny adres IP
               items:
-                - name: Portal Azure
+                - name: Azure Portal
                   href: virtual-network-deploy-static-pip-arm-portal.md
                 - name: Azure PowerShell
                   href: virtual-network-deploy-static-pip-arm-ps.md
@@ -186,7 +180,7 @@
               href: remove-public-ip-address-vm.md
             - name: Tworzenie maszyny wirtualnej — statyczny prywatny adres IP
               items:
-                - name: Portal Azure
+                - name: Azure Portal
                   href: virtual-networks-static-private-ip-arm-pportal.md
                 - name: Azure PowerShell
                   href: virtual-networks-static-private-ip-arm-ps.md
@@ -200,7 +194,7 @@
                   href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
             - name: Tworzenie maszyny wirtualnej — wiele adresów IP
               items:
-                - name: Portal Azure
+                - name: Azure Portal
                   href: virtual-network-multiple-ip-addresses-portal.md
                 - name: Azure PowerShell
                   href: virtual-network-multiple-ip-addresses-powershell.md
@@ -258,6 +252,8 @@
               href: virtual-network-manage-peering.md
             - name: Ochrona przed atakami DDOS
               href: manage-ddos-protection.md
+            - name: Dołączanie partnerów do usługi DDoS Protection w warstwie Standardowa
+              href: ddos-protection-partner-onboarding.md
         - name: Grupy zabezpieczeń sieci
           href: manage-network-security-group.md
           items:
@@ -321,74 +317,6 @@
           href: what-is-ip-address-168-63-129-16.md
         - name: Rozwiązywanie problemów z łącznością z maszyną wirtualną platformy Azure
           href: troubleshoot-vm-connectivity.md
-    - name: Wdrożenie klasyczne
-      items:
-        - name: Tworzenie sieci wirtualnej i zarządzanie nią
-          items:
-            - name: Tworzenie sieci wirtualnej
-              href: create-virtual-network-classic.md
-              items:
-                - name: Portal Azure
-                  href: virtual-networks-create-vnet-classic-pportal.md
-                - name: Azure PowerShell
-                  href: virtual-networks-create-vnet-classic-netcfg-ps.md
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: virtual-networks-create-vnet-classic-cli.md
-            - name: Określanie ustawień usługi DNS w pliku konfiguracji sieci wirtualnej
-              href: virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md
-            - name: Określanie ustawień usługi DNS w pliku konfiguracji usługi
-              href: virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md
-            - name: Zarządzanie
-              items:
-                - name: Plik konfiguracji sieci
-                  href: virtual-networks-using-network-configuration-file.md
-                - name: Migrowanie z grupy koligacji do regionu
-                  href: virtual-networks-migrate-to-regional-vnet.md
-        - name: Tworzenie sieciowej grupy zabezpieczeń
-          items:
-            - name: Azure PowerShell
-              href: virtual-networks-create-nsg-classic-ps.md
-            - name: Klasyczny interfejs wiersza polecenia platformy Azure
-              href: virtual-networks-create-nsg-classic-cli.md
-        - name: Tworzenie tabeli tras
-          items:
-            - name: Azure PowerShell
-              href: virtual-network-create-udr-classic-ps.md
-            - name: Interfejs wiersza polecenia platformy Azure
-              href: virtual-network-create-udr-classic-cli.md
-        - name: Sieć maszyny wirtualnej
-          items:
-            - name: Tworzenie maszyny wirtualnej — wiele interfejsów sieciowych
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-deploy-multinic-classic-ps.md
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: virtual-network-deploy-multinic-classic-cli.md
-            - name: Tworzenie maszyny wirtualnej — statyczny prywatny adres IP
-              href: virtual-networks-reserved-public-ip.md
-            - name: Zarządzanie
-              items:
-                - name: Statyczne adresy IP
-                  items:
-                    - name: Azure PowerShell
-                      href: virtual-networks-reserved-private-ip.md
-                    - name: Interfejs wiersza polecenia platformy Azure
-                      href: virtual-networks-static-private-ip-classic-cli.md
-                - name: Publiczny adres IP na poziomie wystąpienia
-                  href: virtual-networks-instance-level-public-ip.md
-                - name: Listy kontroli dostępu
-                  items:
-                    - name: Portal Azure
-                      href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                    - name: Azure PowerShell
-                      href: virtual-networks-acl-powershell.md
-                - name: Przenoszenie maszyny wirtualnej do innej podsieci
-                  href: virtual-networks-move-vm-role-to-subnet.md
-        - name: Zabezpieczenia usługi w chmurze i sieci
-          href: 'https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter'
-          items:
-            - name: Przykładowa aplikacja
-              href: virtual-networks-sample-app.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

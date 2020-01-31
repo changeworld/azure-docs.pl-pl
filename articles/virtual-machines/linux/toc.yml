@@ -150,6 +150,8 @@
           href: disks-types.md
         - name: Szyfrowanie
           href: disk-encryption.md
+        - name: Rezerwacje usługi Disk Storage
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Projektowanie pod kątem wysokiej wydajności
           href: premium-storage-performance.md
         - name: Rozszerzanie możliwości dysków
@@ -555,6 +557,8 @@
           href: disks-use-storage-explorer-managed-disks.md
         - name: Tworzenie migawki dysku
           href: snapshot-copy-managed-disk.md
+        - name: Rezerwowanie usługi Disk Storage
+          href: disks-reserved-capacity.md
         - name: Tworzenie migawki przyrostowej
           href: disks-incremental-snapshots.md
         - name: Tworzenie kopii zapasowych dysków niezarządzanych

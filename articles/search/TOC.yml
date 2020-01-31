@@ -400,6 +400,8 @@
           href: cognitive-search-skill-conditional.md
         - name: Wyodrębnianie dokumentów
           href: cognitive-search-skill-document-extraction.md
+        - name: Wykrywanie danych osobowych
+          href: cognitive-search-skill-pii-detection.md
     - name: Umiejętności niestandardowe
       items:
         - name: Niestandardowy internetowy interfejs API

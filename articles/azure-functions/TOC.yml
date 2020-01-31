@@ -13,26 +13,25 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: 'Tworzenie funkcji — C#'
-      href: functions-create-your-first-function-visual-studio.md
-    - name: Tworzenie funkcji — Java
-      href: functions-create-first-java-maven.md
-    - name: Tworzenie funkcji — JavaScript
-      href: functions-create-first-function-vs-code.md
-    - name: Tworzenie funkcji — PowerShell
-      href: functions-create-first-function-powershell.md
-    - name: Tworzenie funkcji — Python
-      href: functions-create-first-function-python.md
-    - name: Łączenie z usługami
+    - name: Tworzenie funkcji
+      expanded: true
       items:
-        - name: 'Magazyn — C#'
-          href: functions-add-output-binding-storage-queue-vs.md
-        - name: Magazyn — Java
-          href: functions-add-output-binding-storage-queue-java.md
-        - name: Magazyn — JavaScript
+        - name: Visual Studio Code
+          href: /azure/azure-functions/functions-create-first-function-vs-code
+        - name: Visual Studio
+          href: functions-create-your-first-function-visual-studio.md
+        - name: Wiersz polecenia
+          href: functions-create-first-azure-function-azure-cli.md
+        - name: Maven (Java)
+          href: functions-create-first-java-maven.md
+    - name: Łączenie z magazynem
+      items:
+        - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Magazyn — Python
-          href: functions-add-output-binding-storage-queue-python.md
+        - name: Visual Studio
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Maven (Java)
+          href: functions-add-output-binding-storage-queue-java.md
 - name: Samouczki
   items:
     - name: Funkcje z aplikacjami logiki
@@ -55,7 +54,7 @@
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Java z usługami Azure Cosmos DB i Event Hubs
       href: functions-event-hub-cosmos-db.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Azure Serverless Community Library
       href: 'https://www.serverlesslibrary.net/'
@@ -157,10 +156,10 @@
           items:
             - name: Wyzwalacz HTTP
               items:
-                - name: Portal Azure
+                - name: Azure Portal
                   href: functions-create-first-azure-function.md
                 - name: Wiersz polecenia
-                  href: functions-create-first-azure-function-azure-cli.md
+                  href: create-cli.md
                 - name: Visual Studio
                   href: create-visual-studio.md
                 - name: Visual Studio Code
