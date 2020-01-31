@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690405"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769169"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji usługi Load Balancer
 
@@ -200,7 +200,7 @@ Load Balancer to usługa przekazująca (nie przerywa połączeń TCP), a przepł
 
 Datagramy UDP zostaną dostarczone do prawidłowych punktów końcowych zaplecza.
 
-Protokół UDP jest przesyłanie i nie ma żadnych stan przepływu śledzone dla protokołu UDP. Jeśli sonda kondycji dowolnego punktu końcowego zaplecza nie powiedzie się, istniejące przepływy UDP mogą zostać przeniesione do innego wystąpienia dobrej kondycji w puli zaplecza.
+Protokół UDP jest przesyłanie i nie ma żadnych stan przepływu śledzone dla protokołu UDP. Jeśli sonda kondycji dowolnego punktu końcowego zaplecza nie powiedzie się, istniejące przepływy UDP przechodzą na inne wystąpienie w dobrej kondycji w puli zaplecza.
 
 W przypadku awarii wszystkich sondy dla wszystkich wystąpień w puli zaplecza, do istniejących przepływów UDP utracą ważność warstwy podstawowa i standardowa usługi równoważenia obciążenia.
 

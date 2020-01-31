@@ -3,21 +3,21 @@ title: Konfigurowanie replikacji systemu SAP HANA na maszynach wirtualnych platf
 description: Zapewnienie wysokiej dostępności SAP HANA na maszynach wirtualnych platformy Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: 62bb00c05359682503d2e99ef282f2523871147d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/28/2020
+ms.author: radeltch
+ms.openlocfilehash: fe4c3d8ea7aee0922ca29b9c0f475bfd9fa3c67a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721541"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837038"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Wysoka dostępność SAP HANA na maszynach wirtualnych platformy Azure na Red Hat Enterprise Linux
 
@@ -78,7 +78,7 @@ Przeczytaj najpierw następujące informacje i dokumenty SAP:
   * [Instalowanie i Konfigurowanie Red Hat Enterprise Linux 7,4 (i nowszych) klastra o wysokiej dostępności na Microsoft Azure](https://access.redhat.com/articles/3252491)
   * [Zainstaluj SAP HANA na Red Hat Enterprise Linux do użycia w Microsoft Azure](https://access.redhat.com/solutions/3193782)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aby zapewnić wysoką dostępność, SAP HANA jest instalowany na dwóch maszynach wirtualnych. Dane są replikowane przy użyciu replikacji systemu HANA.
 
@@ -129,7 +129,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **Pula adresów IP frontonu**, a następnie wybierz pozycję **Dodaj**.
       1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **Hana-fronton**).
       1. Ustaw **przypisanie** na **static** i wprowadź adres IP (na przykład **10.0.0.13**).
-      1. Wybierz **OK**.
+      1. Kliknij przycisk **OK**.
       1. Po utworzeniu nowej puli adresów IP frontonu Zanotuj adres IP puli.
 
    1. Następnie Utwórz pulę zaplecza:
@@ -146,7 +146,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
       1. Wprowadź nazwę nowej sondy kondycji (na przykład **Hana-HP**).
       1. Wybierz pozycję **TCP** jako protokół i port 625**03**. Pozostaw wartość **interwału** ustawioną na 5, a wartość **progowa złej kondycji** równa 2.
-      1. Wybierz **OK**.
+      1. Kliknij przycisk **OK**.
 
    1. Następnie utwórz reguły równoważenia obciążenia:
    
@@ -156,7 +156,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Wybierz pozycję **porty ha**.
       1. Zwiększ **limit czasu bezczynności** do 30 minut.
       1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-      1. Wybierz **OK**.
+      1. Kliknij przycisk **OK**.
 
    > [!Note]
    > Gdy maszyny wirtualne bez publicznych adresów IP są umieszczane w puli zaplecza wewnętrznego (bez publicznego adresu IP) standardowego modułu równoważenia obciążenia platformy Azure, nie będzie wychodzące połączenie z Internetem, chyba że zostanie przeprowadzona dodatkowa konfiguracja zezwalająca na kierowanie do publicznych punktów końcowych. Aby uzyskać szczegółowe informacje na temat sposobu osiągnięcia łączności wychodzącej, zobacz [publiczna łączność z punktem końcowym dla Virtual Machines przy użyciu usługi Azure usługa Load Balancer w warstwie Standardowa w scenariuszach wysokiej dostępności SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
@@ -167,7 +167,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **Pula adresów IP frontonu**, a następnie wybierz pozycję **Dodaj**.
       1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **Hana-fronton**).
       1. Ustaw **przypisanie** na **static** i wprowadź adres IP (na przykład **10.0.0.13**).
-      1. Wybierz **OK**.
+      1. Kliknij przycisk **OK**.
       1. Po utworzeniu nowej puli adresów IP frontonu Zanotuj adres IP puli.
 
    1. Następnie Utwórz pulę zaplecza:
@@ -177,14 +177,14 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Wybierz pozycję **Dodaj maszynę wirtualną**.
       1. Wybierz zestaw dostępności utworzony w kroku 3.
       1. Wybierz Maszyny wirtualne klastra SAP HANA.
-      1. Wybierz **OK**.
+      1. Kliknij przycisk **OK**.
 
    1. Następnie utwórz sondę kondycji:
 
       1. Otwórz moduł równoważenia obciążenia, wybierz pozycję **sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
       1. Wprowadź nazwę nowej sondy kondycji (na przykład **Hana-HP**).
       1. Wybierz pozycję **TCP** jako protokół i port 625**03**. Pozostaw wartość **interwału** ustawioną na 5, a wartość **progowa złej kondycji** równa 2.
-      1. Wybierz **OK**.
+      1. Kliknij przycisk **OK**.
 
    1. W przypadku SAP HANA 1,0 Utwórz reguły równoważenia obciążenia:
 
@@ -194,7 +194,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**15.
       1. Zwiększ **limit czasu bezczynności** do 30 minut.
       1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-      1. Wybierz **OK**.
+      1. Kliknij przycisk **OK**.
       1. Powtórz te kroki dla portu 3**03**17.
 
    1. W przypadku SAP HANA 2,0 Utwórz reguły równoważenia obciążenia dla systemowej bazy danych:
@@ -205,7 +205,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**13.
       1. Zwiększ **limit czasu bezczynności** do 30 minut.
       1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-      1. Wybierz **OK**.
+      1. Kliknij przycisk **OK**.
       1. Powtórz te kroki dla portu 3**03**14.
 
    1. W przypadku SAP HANA 2,0 najpierw utwórz reguły równoważenia obciążenia dla bazy danych dzierżawcy:
@@ -216,7 +216,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
       1. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port 3**03**40.
       1. Zwiększ **limit czasu bezczynności** do 30 minut.
       1. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
-      1. Wybierz **OK**.
+      1. Kliknij przycisk **OK**.
       1. Powtórz te kroki dla portów 3**03**41 i 3**03**42.
 
 Aby uzyskać więcej informacji na temat wymaganych portów dla SAP HANA, zapoznaj się z rozdziałem [połączenia z bazami danych dzierżawy](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) w Przewodniku obsługi [bazy danych dzierżaw SAP HANA](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) lub [Uwaga 2388694][2388694].
@@ -560,14 +560,21 @@ Następnie utwórz topologię platformy HANA. Uruchom następujące polecenia na
 <pre><code>sudo pcs property set maintenance-mode=true
 
 # Replace the bold string with your instance number and HANA system ID
-sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> --clone clone-max=2 clone-node-max=1 interleave=true
+sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> \
+op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600 \
+--clone clone-max=2 clone-node-max=1 interleave=true
 </code></pre>
 
 Następnie utwórz zasoby platformy HANA:
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 
-sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false master notify=true clone-max=2 clone-node-max=1 interleave=true
+sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
+op start timeout=3600 op stop timeout=3600 \
+op monitor interval=61 role="Slave" timeout=700 \
+op monitor interval=59 role="Master" timeout=700 \
+op promote timeout=3600 op demote timeout=3600 \
+master notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
 
@@ -583,6 +590,9 @@ sudo pcs property set maintenance-mode=false
 </code></pre>
 
 Upewnij się, że klaster ma stan OK i że wszystkie zasoby są uruchomione. Nie ma znaczenia, w którym węźle są uruchomione zasoby.
+
+> [!NOTE]
+> Przekroczenia limitów czasu w powyższej konfiguracji są tylko przykłady i konieczne może być dostosowanie do określonej konfiguracji platformy HANA. Na przykład może być konieczne zwiększenie limitu czasu uruchamiania, Jeśli uruchomienie SAP HANA bazy danych trwa dłużej.  
 
 <pre><code>sudo pcs status
 
