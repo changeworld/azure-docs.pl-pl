@@ -28,12 +28,6 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Konfigurowanie przekierowywania portów w usłudze Load Balancer
       href: tutorial-load-balancer-port-forwarding-portal.md
-- name: Samples
-  items:
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Pojęcia
   items:
     - name: Składniki i ograniczenia
@@ -50,8 +44,6 @@
           href: load-balancer-query-metrics-rest-api.md
     - name: Porty wysokiej dostępności
       href: load-balancer-ha-ports-overview.md
-    - name: Pomoc techniczna dotycząca protokołu IPv6
-      href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-overview'
     - name: Wiele frontonów
       href: load-balancer-multivip-overview.md
     - name: Połączenia wychodzące
@@ -68,10 +60,6 @@
   items:
     - name: Uaktualnianie publicznego moduł równoważenia obciążenia w warstwie Podstawowa do publicznego modułu równoważenia obciążenia w warstwie Standardowa
       href: upgrade-basic-standard.md
-    - name: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności (interfejs wiersza polecenia)
-      href: load-balancer-standard-public-zone-redundant-cli.md
-    - name: Równoważenie obciążenia maszyn wirtualnych w strefie (interfejs wiersza polecenia)
-      href: load-balancer-standard-public-zonal-cli.md
     - name: Konfigurowanie reguł dla ruchu wychodzącego
       items:
         - name: Interfejs wiersza polecenia platformy Azure
@@ -121,6 +109,12 @@
       items:
         - name: Rozwiązywanie problemów z usługą Azure Load Balancer
           href: load-balancer-troubleshoot.md
+- name: Samples
+  items:
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Dokumentacja
   items:
     - name: Przykłady kodu
