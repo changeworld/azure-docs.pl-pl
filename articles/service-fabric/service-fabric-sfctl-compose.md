@@ -3,14 +3,14 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric — tworzenie 
 description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń dla Docker Compose aplikacji.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1e40ca4e3c5ec8b7566646aa7ef723bd4c9e45a1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645399"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906130"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Twórz i usuwaj Docker Compose aplikacje oraz zarządzaj nimi.
@@ -21,7 +21,7 @@ Twórz i usuwaj Docker Compose aplikacje oraz zarządzaj nimi.
 | --- | --- |
 | create | Tworzy wdrożenie Service Fabric tworzenia. |
 | list | Pobiera listę wdrożeń tworzenia utworzonych w klastrze Service Fabric. |
-| Usuń | Usuwa istniejące Service Fabric redagowanie wdrożenia z klastra. |
+| usuwa | Usuwa istniejące Service Fabric redagowanie wdrożenia z klastra. |
 | status | Pobiera informacje o rozmieszczeniu tworzenia Service Fabric. |
 | upgrade | Zaczyna uaktualniać wdrożenie redagowania w klastrze Service Fabric. |
 | upgrade—rollback | Uruchamia wycofywanie uaktualnienia redagowania wdrożenia w klastrze Service Fabric. |

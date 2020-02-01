@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666826"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905113"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Tworzenie przepływów pracy aplikacji logiki na podstawie wbudowanych szablonów
 
@@ -50,7 +50,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj si
    | **Subskrypcja** | *nazwa_Twojej_susbkrypcji_Azure* | Wybierz subskrypcję platformy Azure, której chcesz użyć. | 
    | **Grupa zasobów** | *nazwa_Twojej_grupy_zasobów_Azure* | Utwórz lub wybierz [grupę zasobów platformy Azure](../azure-resource-manager/management/overview.md) dla tej aplikacji logiki i zorganizuj wszystkie zasoby skojarzone z tą aplikacją. | 
    | **Lokalizacja** | *region_Twojego_centrum_danych_Azure* | Wybierz region centrum danych do wdrożenia swojej aplikacji logiki, na przykład Zachodnie stany USA. | 
-   | **Log Analytics** | **Wyłączone** (domyślnie) lub **na** | Włącz [rejestrowanie diagnostyczne](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) dla aplikacji logiki za poorednictwem [dzienników Azure monitor](../log-analytics/log-analytics-overview.md). Wymaga, aby masz już obszar roboczy Log Analytics. | 
+   | **Log Analytics** | **Wyłączone** (domyślnie) lub **na** | Skonfiguruj [rejestrowanie diagnostyczne](../logic-apps/monitor-logic-apps-log-analytics.md) dla aplikacji logiki przy użyciu [dzienników Azure monitor](../log-analytics/log-analytics-overview.md). Wymaga, aby masz już obszar roboczy Log Analytics. | 
    |||| 
 
 4. Gdy wszystko będzie gotowe, wybierz pozycję **Przypnij do pulpitu nawigacyjnego**. Dzięki temu aplikacja logiki automatycznie pojawi się na pulpicie nawigacyjnym platformy Azure i zostanie otwarta po wdrożeniu. Wybierz pozycję **Utwórz**.

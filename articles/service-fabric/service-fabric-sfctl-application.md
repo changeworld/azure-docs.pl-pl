@@ -3,14 +3,14 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric — aplikacja 
 description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń związanych z zarządzaniem aplikacjami.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 4d416408fd83d7bc316c7045c2a0031fe50d36f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645416"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906197"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Twórz i usuwaj aplikacje i typy aplikacji oraz zarządzaj nimi.
@@ -530,9 +530,12 @@ Opcjonalnie Wyświetl postęp przekazywania dla każdego pliku w pakiecie. Post�
 |Argument|Opis|
 | --- | --- |
 | --ścieżka [wymagane] | Ścieżka do pakietu aplikacji lokalnej. |
+| --Kompresuj | Dotyczy tylko Service Fabric pakietów aplikacji. Utwórz nowy folder zawierający skompresowany pakiet aplikacji do lokalizacji domyślnej lub do lokalizacji określonej przez parametr skompresowanej lokalizacji, a następnie Przekaż nowo utworzony folder. <br><br> Jeśli jest już skompresowany plik wygenerowany przez sfctl, zostanie on zastąpiony, jeśli ta flaga jest ustawiona. Jeśli katalog nie jest pakietem aplikacji, zostanie zwrócony błąd. Jeśli jest już skompresowanym pakietem aplikacji, folder zostanie skopiowany w postaci, w jakiej jest. Nowo utworzony skompresowany pakiet aplikacji zostanie domyślnie usunięty po pomyślnym przekazaniu. Jeśli przekazywanie nie powiedzie się, należy ręcznie oczyścić skompresowany pakiet w razie konieczności. Usunięcie nie powoduje usunięcia pustej katalogów, która mogła zostać utworzona, jeśli parametr lokalizacji skompresowanej odwołuje się do nieistniejących katalogów. |
+| --skompresowana lokalizacja | Lokalizacja, w której ma zostać umieszczony skompresowany pakiet aplikacji. <br><br> Jeśli nie podano lokalizacji, skompresowany pakiet zostanie umieszczony w nowo utworzonym folderze o nazwie sfctl_compressed_temp w katalogu nadrzędnym określonym w argumencie Path. Na przykład jeśli argument Path ma wartość C\:/FolderA/AppPkg, skompresowany pakiet zostanie dodany do C\:/FolderA/sfctl_compressed_temp/AppPkg. |
 | --imagestore-string | Docelowy magazyn obrazów, do którego ma zostać przekazany pakiet aplikacji.  Domyślne\: sieci szkieletowej\:magazynu ImageStore. <br><br> Aby przekazać do lokalizacji pliku, Uruchom ten parametr z opcją "plik\:". W przeciwnym razie wartość powinna być ciągiem połączenia magazynu obrazu, na przykład wartością domyślną. |
+| --Zachowaj skompresowane | Określa, czy ma być zachowywany wygenerowany skompresowany pakiet po pomyślnym ukończeniu przekazywania. <br><br> Jeśli nie zostanie ustawiona, po pomyślnym zakończeniu zostaną usunięte skompresowane pakiety aplikacji. Jeśli przekazywanie nie powiodło się, pakiet aplikacji będzie zawsze przechowywany w katalogu wyjściowym do ponownego przekazania. |
 | --show-progress | Pokaż postęp przekazywania plików dla dużych pakietów. |
-| --timeout-t | Łączny limit czasu w sekundach. Przekazywanie zakończy się niepowodzeniem i zwróci błąd po upływie okresu przekazywania. Ten limit czasu ma zastosowanie do całego pakietu aplikacji, a limity czasu poszczególnych plików będą równe pozostałemu czasowi limitu czasu.  Domyślne\: 300. |
+| --timeout-t | Łączny limit czasu w sekundach. Przekazywanie zakończy się niepowodzeniem i zwróci błąd po upływie okresu przekazywania. Ten limit czasu ma zastosowanie do całego pakietu aplikacji, a limity czasu poszczególnych plików będą równe pozostałemu czasowi limitu czasu. Limit czasu nie obejmuje czasu wymaganego do skompresowania pakietu aplikacji.  Domyślne\: 300. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 

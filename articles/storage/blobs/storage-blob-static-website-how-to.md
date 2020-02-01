@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4214c4eb9fbe1d3e39d1ee16289f30b893b94653
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489085"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906602"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostowanie statycznej witryny sieci Web w usłudze Azure Storage
 
@@ -221,10 +221,5 @@ Po włączeniu metryk statystyki ruchu dla plików w kontenerze **$Web** są rap
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Hostowanie statycznej witryny internetowej w usłudze Azure Storage](storage-blob-static-website.md)
-* [Użyj Azure CDN, aby uzyskać dostęp do obiektów BLOB za pomocą domen niestandardowych za pośrednictwem protokołu HTTPS](storage-https-custom-domain-cdn.md)
-* [Konfigurowanie niestandardowej nazwy domeny dla obiektu BLOB lub punktu końcowego sieci Web](storage-custom-domain-name.md)
-* [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [Tworzenie pierwszej aplikacji sieci Web bezserwerowej](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [Samouczek: Hostowanie domeny w Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)
+* Dowiedz się, jak skonfigurować domenę niestandardową przy użyciu statycznej witryny sieci Web. Zobacz sekcję [Mapowanie domeny niestandardowej na punkt końcowy usługi Azure Blob Storage](storage-custom-domain-name.md).
+

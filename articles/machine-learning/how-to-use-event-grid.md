@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 885ddd5c25a36e2b12379ea7639956c1c4ca5437
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538425"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904288"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Tworzenie przepływów pracy uczenia maszynowego opartego na zdarzeniach (Podgląd)
 
@@ -32,21 +32,6 @@ Użyj Event Grid, aby włączyć typowe scenariusze, takie jak:
 
 * Dostęp współautora lub właściciela do obszaru roboczego Azure Machine Learning, dla którego będą tworzone zdarzenia.
 * Wybierz punkt końcowy programu obsługi zdarzeń, taki jak element webhook lub centrum zdarzeń. Aby uzyskać więcej informacji, zobacz [programy obsługi zdarzeń](https://docs.microsoft.com/azure/event-grid/event-handlers). 
-
-## <a name="register-resource-providers"></a>Rejestrowanie dostawcy zasobów
-
-Jeśli używasz Azure Event Grid lub Machine Learning przed listopadem 1 2019, może być konieczne ponowne zarejestrowanie dostawców zasobów przed wykonaniem kroków opisanych w tym dokumencie. Aby ponownie zarejestrować dostawców, wykonaj następujące czynności:
-
-1. Przejdź do Azure Portal i wybierz pozycję __subskrypcje__. Wybierz subskrypcję, z którą chcesz korzystać.
-1. Wybierz pozycję __dostawcy zasobów__, a następnie wyszukaj ciąg __EventGrid__.
-1. Wybierz wpis __Microsoft. EventGrid__ , a następnie wybierz pozycję __zarejestruj ponownie__.
-
-    ![Zarejestruj ponownie — dostawca zasobów](./media/how-to-use-event-grid/re-register-resource-provider.png)
-
-1. Wyszukaj pozycję __MachineLearningServices__, zaznacz wpis, a następnie wybierz pozycję __zarejestruj ponownie__.
-
-> [!TIP]
-> Jeśli nie masz uprawnień do wykonania tych kroków, poproś administratora subskrypcji o ich wykonanie.
 
 ## <a name="configure-machine-learning-events-using-the-azure-portal"></a>Skonfiguruj zdarzenia usługi Machine Learning przy użyciu Azure Portal
 

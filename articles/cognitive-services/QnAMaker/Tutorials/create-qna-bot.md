@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 01/28/2020
 ms.author: diberry
-ms.openlocfilehash: 0ddce3e4112dfb14309878927493abb3cb6b451a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9afef07af1332910cc9e25f9d66db5930df3bd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447359"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901664"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Samouczek: Tworzenie QnA bot z Azure Bot Service v4
 
@@ -41,11 +41,11 @@ Utwórz bot jako aplikację kliencką dla bazy wiedzy.
 
 1. W portalu QnA Maker przejdź do strony **Publikowanie** i Opublikuj bazę wiedzy. Wybierz pozycję **Utwórz bot**.
 
-    ![W portalu QnA Maker przejdź do strony publikowanie i Opublikuj bazę wiedzy. Wybierz pozycję Utwórz bota.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
+    [![w portalu QnA Maker, przejdź do strony publikowanie i Opublikuj bazę wiedzy. Wybierz pozycję Utwórz bot.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png#lightbox)
 
-    Zostanie otwarta witryna Azure Portal z konfiguracją tworzenia bota.
+    Zostanie otwarty Azure Portal z konfiguracją tworzenia bot.
 
-1.  Wprowadź ustawienia, aby utworzyć bota:
+1.  Wprowadź ustawienia, aby utworzyć bot:
 
     |Ustawienie|Wartość|Przeznaczenie|
     |--|--|--|
@@ -57,7 +57,7 @@ Utwórz bot jako aplikację kliencką dla bazy wiedzy.
     |Nazwa aplikacji|`qna-maker-central-us-bot-app`|Jest to aplikacja internetowa, która obsługuje tylko Twoje bot. Ta nazwa aplikacji nie powinna być taka sama, jak usługa QnA Maker jest już używana. Udostępnianie aplikacji sieci Web QnA Maker przy użyciu dowolnego innego zasobu nie jest obsługiwane.|
     |Język zestawu SDK|C#|Jest to podstawowy język programowania używany przez zestaw SDK bot Framework. Dostępne opcje to [C#](https://github.com/Microsoft/botbuilder-dotnet) lub [Node. js](https://github.com/Microsoft/botbuilder-js).|
     |Klucz uwierzytelniania QnA|**Nie zmieniaj**|Ta wartość jest wypełniana.|
-    |Plan usługi App Service/lokalizacja|**Nie zmieniaj**|W tym samouczku lokalizacja nie jest ważna.|
+    |Plan/Lokalizacja usługi App Service|**Nie zmieniaj**|W tym samouczku lokalizacja nie jest ważna.|
     |Application Insights|**Nie zmieniaj**|Rejestrowanie jest wysyłane do Application Insights.|
     |Identyfikator aplikacji firmy Microsoft|**Nie zmieniaj**|Użytkownik usługi Active Directory i hasło są wymagane.|
 
@@ -70,9 +70,9 @@ Utwórz bot jako aplikację kliencką dla bazy wiedzy.
 
 ## <a name="chat-with-the-bot"></a>Rozmawiać z Botami
 
-1. W witrynie Azure Portal otwórz nowy zasób bota z powiadomienia.
+1. W Azure Portal Otwórz nowy zasób bot z powiadomienia.
 
-    ![W witrynie Azure Portal otwórz nowy zasób bota z powiadomienia.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
+    ![W Azure Portal Otwórz nowy zasób bot z powiadomienia.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
 
 1. W obszarze **Zarządzanie bot**wybierz pozycję **Testuj w rozmowie w sieci Web** i wprowadź: `How large can my KB be?`. Bot będzie odpowiadać:
 
@@ -101,8 +101,6 @@ Jeśli nie utworzono nowej grupy zasobów, należy znaleźć zasoby skojarzone z
 
 ## <a name="related-to-qna-maker-bots"></a>Powiązane z QnA Maker botów
 
-* QnA Maker pomocy bot, używane w portalu QnA Maker, jest dostępny jako [przykład bot](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support).
-    ![ikona pomocy QnA Maker Bot jest czerwona robota](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * [Botów opieki zdrowotnej](https://docs.microsoft.com/HealthBot/qna_model_howto) QNA Maker używa jako jednego z [modeli językowych](https://docs.microsoft.com/HealthBot/qna_model_howto).
 
 

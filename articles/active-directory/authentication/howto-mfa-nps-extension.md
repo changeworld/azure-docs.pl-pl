@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712523"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908857"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS z usługą Azure Multi-Factor Authentication
 
@@ -192,6 +192,23 @@ Jeśli poprzedni certyfikat komputera wygasł i został wygenerowany nowy certyf
 
 > [!NOTE]
 > Jeśli używasz własnych certyfikatów zamiast generować certyfikaty przy użyciu skryptu programu PowerShell, upewnij się, że są one wyrównane do konwencji nazewnictwa NPS. Nazwa podmiotu musi być **CN =\<TenantID\>, OU = Microsoft NPS Extension**. 
+
+### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government dodatkowych kroków
+
+W przypadku klientów korzystających z Azure Government chmury następujące dodatkowe czynności konfiguracyjne są wymagane na każdym serwerze NPS:
+
+1. Otwórz **Edytor rejestru** na serwerze NPS.
+1. Przejdź do adresu `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`. Ustaw następujące wartości klucza:
+
+    | Klucz rejestru       | Wartość |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
+    | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Powtórz dwa poprzednie kroki, aby ustawić wartości klucza rejestru dla każdego serwera NPS.
+1. Uruchom ponownie usługę NPS dla każdego serwera NPS.
+
+    Przy minimalnym wpływie Przełącz każdy serwer zasad sieciowych z pojedynczego obrotu równoważenia obciążenia sieciowego i zaczekaj, aż wszystkie połączenia mają być opróżniane.
 
 ### <a name="certificate-rollover"></a>Przerzucanie certyfikatów
 

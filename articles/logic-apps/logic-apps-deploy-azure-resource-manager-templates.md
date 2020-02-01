@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 506c518e8bdd889c585feb92f2a6baee8ba0147c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 662f8c2a4184e858d33dc40effed363ef3ec17e5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979077"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904963"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Wdróż szablony Azure Resource Manager dla Azure Logic Apps
 
@@ -128,4 +128,4 @@ Jeśli zamiast tego autoryzujesz połączenia przy użyciu jednostki [usługi](.
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Monitorowanie aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+> [Monitorowanie aplikacji logiki](../logic-apps/monitor-logic-apps.md)

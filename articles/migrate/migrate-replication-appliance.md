@@ -2,13 +2,13 @@
 title: Urządzenie replikacji w usłudze Azure Migrate
 description: Dowiedz się więcej o urządzeniu replikacji Azure Migrate na potrzeby migracji oprogramowania VMWare opartego na agentach.
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 574877c6a0a5ade068cff08041b29d2465430ed1
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/30/2020
+ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029041"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901560"
 ---
 # <a name="replication-appliance"></a>Urządzenie replikacji
 

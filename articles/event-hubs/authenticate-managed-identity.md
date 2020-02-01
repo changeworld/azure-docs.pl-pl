@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: cbd7de7d526e1954aaad60f7d71e5cdf202f6a29
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0c5d3eca4a01488f521f9a85fa129eb0ac72c363
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992837"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904555"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Uwierzytelnianie zarządzanej tożsamości za pomocą Azure Active Directory w celu uzyskania dostępu do zasobów Event Hubs
 Usługa Azure Event Hubs obsługuje uwierzytelnianie Azure Active Directory (Azure AD) z [tożsamościami zarządzanymi dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md). Zarządzane tożsamości dla zasobów platformy Azure mogą autoryzować dostęp do zasobów Event Hubs przy użyciu poświadczeń usługi Azure AD z aplikacji uruchomionych na platformie Azure Virtual Machines (maszyny wirtualne), aplikacji funkcji, Virtual Machine Scale Sets i innych usług. Korzystając z tożsamości zarządzanych dla zasobów platformy Azure wraz z uwierzytelnianiem w usłudze Azure AD, można uniknąć zapisywania poświadczeń z aplikacjami uruchomionymi w chmurze.
@@ -71,7 +71,63 @@ Aby przypisać rolę do Event Hubs zasobów, przejdź do tego zasobu w Azure Por
 
 Po przypisaniu roli aplikacja sieci Web będzie miała dostęp do Event Hubs zasobów w ramach zdefiniowanego zakresu. 
 
-### <a name="test-the-web-application"></a>Testowanie aplikacji sieci Web
+### <a name="test-the-web-application"></a>Testowanie aplikacji internetowej
+1. Utwórz przestrzeń nazw Event Hubs i centrum zdarzeń. 
+2. Wdróż aplikację sieci Web na platformie Azure. Zobacz następującą sekcję z kartami dotyczącą linków do aplikacji sieci Web w witrynie GitHub. 
+3. Upewnij się, że SendReceive. aspx jest ustawiony jako dokument domyślny dla aplikacji sieci Web. 
+3. Włącz **tożsamość** aplikacji sieci Web. 
+4. Przypisz tę tożsamość do roli **właściciel danych Event Hubs** na poziomie przestrzeni nazw lub na poziomie centrum zdarzeń. 
+5. Uruchom aplikację sieci Web, wprowadź nazwę przestrzeni nazw i nazwę centrum zdarzeń, komunikat, a następnie wybierz pozycję **Wyślij**. Aby odebrać zdarzenie, wybierz pozycję **Receive (odbieranie**). 
+
+#### <a name="azuremessagingeventhubs-latesttablatest"></a>[Azure. Messaging. EventHubs (Najnowsza wersja)](#tab/latest)
+Teraz możesz uruchomić aplikację sieci Web i wskazać przeglądarkę na przykładową stronę aspx. Możesz znaleźć przykładową aplikację sieci Web, która wysyła i odbiera dane z Event Hubs zasobów w [repozytorium GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp).
+
+Zainstaluj najnowszy pakiet z programu [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)i Rozpocznij wysyłanie zdarzeń do Event Hubs przy użyciu **EventHubProducerClient** i otrzymywanie zdarzeń przy użyciu **EventHubConsumerClient**.  
+
+```csharp
+protected async void btnSend_Click(object sender, EventArgs e)
+{
+    await using (EventHubProducerClient producerClient = new EventHubProducerClient(txtNamespace.Text, txtEventHub.Text, new DefaultAzureCredential()))
+    {
+        // create a batch
+        using (EventDataBatch eventBatch = await producerClient.CreateBatchAsync())
+        {
+
+            // add events to the batch. only one in this case. 
+            eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes(txtData.Text)));
+
+            // send the batch to the event hub
+            await producerClient.SendAsync(eventBatch);
+        }
+
+        txtOutput.Text = $"{DateTime.Now} - SENT{Environment.NewLine}{txtOutput.Text}";
+    }
+}
+protected async void btnReceive_Click(object sender, EventArgs e)
+{
+    await using (var consumerClient = new EventHubConsumerClient(EventHubConsumerClient.DefaultConsumerGroupName, $"{txtNamespace.Text}.servicebus.windows.net", txtEventHub.Text, new DefaultAzureCredential()))
+    {
+        int eventsRead = 0;
+        try
+        {
+            using CancellationTokenSource cancellationSource = new CancellationTokenSource();
+            cancellationSource.CancelAfter(TimeSpan.FromSeconds(5));
+
+            await foreach (PartitionEvent partitionEvent in consumerClient.ReadEventsAsync(cancellationSource.Token))
+            {
+                txtOutput.Text = $"Event Read: { Encoding.UTF8.GetString(partitionEvent.Data.Body.ToArray()) }{ Environment.NewLine}" + txtOutput.Text;
+                eventsRead++;
+            }
+        }
+        catch (TaskCanceledException ex)
+        {
+            txtOutput.Text = $"Number of events read: {eventsRead}{ Environment.NewLine}" + txtOutput.Text;
+        }
+    }
+}
+```
+
+#### <a name="microsoftazureeventhubs-legacytabold"></a>[Microsoft. Azure. EventHubs (starsza wersja)](#tab/old)
 Teraz możesz uruchomić aplikację sieci Web i wskazać przeglądarkę na przykładową stronę aspx. Możesz znaleźć przykładową aplikację sieci Web, która wysyła i odbiera dane z Event Hubs zasobów w [repozytorium GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp).
 
 Zainstaluj najnowszy pakiet z programu [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)i zacznij wysyłać do i odbierać dane z centrów zdarzeń przy użyciu EventHubClient, jak pokazano w poniższym kodzie: 
@@ -79,10 +135,10 @@ Zainstaluj najnowszy pakiet z programu [NuGet](https://www.nuget.org/packages/Mi
 ```csharp
 var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHubNamespace}/"), EventHubName);
 ```
+---
 
 ## <a name="next-steps"></a>Następne kroki
-- Pobierz [przykład](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp) z witryny GitHub.
-- Zapoznaj się z następującym artykułem, aby dowiedzieć się więcej o zarządzanych tożsamościach dla zasobów platformy Azure: [Czym są tożsamości zarządzane dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md)
+- Zapoznaj się z następującym artykułem, aby dowiedzieć się więcej o zarządzanych tożsamościach dla zasobów platformy Azure: [jakie są zarządzane tożsamości dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 - Zapoznaj się z następującymi artykułami:
     - [Uwierzytelniaj żądania do Event Hubs platformy Azure z aplikacji przy użyciu Azure Active Directory](authenticate-application.md)
     - [Uwierzytelnianie żądań na platformie Azure Event Hubs przy użyciu sygnatur dostępu współdzielonego](authenticate-shared-access-signature.md)

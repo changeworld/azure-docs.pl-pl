@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: ff6136dea8a25a39e045665d61bdd5d93eeb58a5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5b72ee02c2bbf811293a2bcdb15590e16e300a02
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792125"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906673"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Typowe scenariusze, przykłady, samouczki i przewodniki dotyczące Azure Logic Apps
 
@@ -31,12 +31,12 @@ Oto kilka popularnych przykładów wyzwalacza:
 
 * Sondowania
 
-  * [Wyzwalacz **cyklu** ](../connectors/connectors-native-recurrence.md) pozwala ustawić datę i godzinę rozpoczęcia oraz cykl uruchamiania aplikacji logiki. Na przykład możesz wybrać dni tygodnia i godziny, w których ma być wyzwalana aplikacja logiki. Aby uzyskać więcej informacji, zobacz następujące tematy:
+  * [Wyzwalacz **cyklu** ](../connectors/connectors-native-recurrence.md) pozwala ustawić datę i godzinę rozpoczęcia oraz cykl uruchamiania aplikacji logiki. Na przykład możesz wybrać dni tygodnia i godziny, w których ma być wyzwalana aplikacja logiki. Aby uzyskać więcej informacji zobacz następujące tematy:
 
     * [Planowanie i uruchamianie cyklicznych zautomatyzowanych zadań, procesów i przepływów pracy przy użyciu Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [Samouczek: sprawdzanie ruchu zgodnie z harmonogramem za pomocą Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 
-  * Wyzwalacz "po odebraniu wiadomości e-mail" umożliwia aplikacji logiki Sprawdzanie nowej wiadomości e-mail od dowolnego dostawcy poczty obsługiwanego przez Logic Apps, na przykład [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/)i tak dalej. Aby uzyskać więcej informacji, zobacz następujące tematy: 
+  * Wyzwalacz "po odebraniu wiadomości e-mail" umożliwia aplikacji logiki Sprawdzanie nowej wiadomości e-mail od dowolnego dostawcy poczty obsługiwanego przez Logic Apps, na przykład [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/)i tak dalej. Aby uzyskać więcej informacji zobacz następujące tematy: 
 
     * [Samouczek: Zarządzanie żądaniami listy adresowej za pomocą Azure Logic Apps](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
     * [Samouczek: Automatyzowanie obsługi wiadomości e-mail i załączników za pomocą Azure Logic Apps](../logic-apps/tutorial-process-email-attachments-workflow.md)
@@ -75,15 +75,15 @@ Aplikacje logiki obejmują bogate możliwości dla zaawansowanego przepływu ste
 * [Grupuj akcje razem z zakresami](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [Tworzenie obsługi błędów i wyjątków w przepływie pracy](../logic-apps/logic-apps-exception-handling.md)
 * [Przypadek użycia: jak firma usługi opieki zdrowotnej używa obsługi wyjątków aplikacji logiki dla przepływów pracy HL7 FHIR](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [Włączanie monitorowania, rejestrowania i alertów dla istniejących aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [Włącz monitorowanie i rejestrowanie diagnostyczne podczas tworzenia aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
+* [Włączanie monitorowania, rejestrowania i alertów dla istniejących aplikacji logiki](../logic-apps/monitor-logic-apps.md)
+* [Włącz monitorowanie i rejestrowanie diagnostyczne podczas tworzenia aplikacji logiki](../logic-apps/monitor-logic-apps-log-analytics.md)
 
 ## <a name="deploy-and-manage-logic-apps"></a>Wdrażanie aplikacji logiki i zarządzanie nimi
 
 Możesz w pełni opracowywać i wdrażać aplikacje logiki za pomocą programu Visual Studio, platformy Azure DevOps lub dowolnej innej kontroli źródła i zautomatyzowanych narzędzi kompilacji. Aby obsługiwać wdrożenie dla przepływów pracy i połączeń zależnych w szablonie zasobu, Aplikacje logiki używają szablonów wdrażania zasobów platformy Azure. Narzędzia Visual Studio Tools automatycznie generują te szablony, które można zaewidencjonować do kontroli źródła w celu przechowywania wersji.
 
 * [Tworzenie i wdrażanie aplikacji logiki za pomocą programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
-* [Włączanie monitorowania, rejestrowania i alertów dla istniejących aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Włączanie monitorowania, rejestrowania i alertów dla istniejących aplikacji logiki](../logic-apps/monitor-logic-apps.md)
 * [Automatyzowanie wdrożenia aplikacji logiki](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Przykład: łączenie z kolejkami Azure Service Bus z Azure Logic Apps i wdrażania przy użyciu Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Przykład: łączenie z kontami usługi Azure Storage z Azure Logic Apps i wdrażanie za pomocą Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

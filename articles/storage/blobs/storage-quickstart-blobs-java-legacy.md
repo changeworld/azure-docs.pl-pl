@@ -3,38 +3,26 @@ title: 'Szybki Start: Biblioteka kliencka usługi Azure Blob Storage V8 dla jęz
 description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Następnie przekaż obiekt BLOB do usługi Azure Storage za pomocą biblioteki klienta usługi Azure Storage V8, Pobierz obiekt BLOB i Wyświetl listę obiektów BLOB w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 373875aee836485bb994d81e0945cec3a9b088eb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825374"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906487"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage V8 dla języka Java
+# <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu SDK V8 języka Java
 
-Rozpocznij pracę z biblioteką klienta usługi Azure Blob Storage V8 for Java. Usługa Azure Blob Storage to rozwiązanie magazynu obiektów firmy Microsoft dla chmury. Postępuj zgodnie z instrukcjami, aby zainstalować pakiet, i wypróbuj przykładowy kod dla podstawowych zadań. Usługa Blob Storage jest zoptymalizowana pod kątem przechowywania olbrzymich ilości danych bez struktury.
-
-Użyj biblioteki klienta Blob Storage platformy Azure dla języka Java, aby:
-
-* Tworzenie kontenera
-* Ustawianie uprawnień do kontenera
-* Tworzenie obiektu BLOB w usłudze Azure Storage
-* Pobieranie obiektu BLOB na komputer lokalny
-* Wyświetl listę wszystkich obiektów BLOB w kontenerze
-* Usuwanie kontenera
+W tym przewodniku szybki start nauczysz się zarządzać obiektami BLOB przy użyciu języka Java. Obiekty blob są obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Przekazanie, pobranie i wyświetlenie listy obiektów BLOB. Będziesz również tworzyć, ustawiać uprawnienia do i usuwać kontenery.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-* Konto magazynu platformy Azure — [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* IDE z integracją Maven.
-* Możesz również zainstalować i skonfigurować narzędzie Maven tak, aby działało z poziomu wiersza polecenia.
-
-[W tym](https://www.eclipse.org/downloads/) przewodniku zastosowano przesekcję Zastąp z konfiguracją "przezaćmienie IDE for Java Developers".
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Konto usługi Azure Storage. [Create a storage account (Tworzenie konta magazynu)](../common/storage-account-create.md).
+- IDE z integracją Maven. [W tym](https://www.eclipse.org/downloads/) przewodniku zastosowano przesekcję Zastąp z konfiguracją "przezaćmienie IDE for Java Developers".
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 
@@ -46,9 +34,9 @@ Użyj narzędzia [git](https://git-scm.com/), aby pobrać kopię tej aplikacji d
 git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 ```
 
-To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć projekt, włącz środowisko Eclipse i zamknij ekran powitalny. Wybierz kolejno pozycje **File** (Plik) i **Open Projects from File system** (Otwórz projekty z systemu plików). Upewnij się, że zaznaczono opcję **Detect and configure project natures** (Wykryj i skonfiguruj natury projektów). Wybierz pozycję **Directory** (Katalog), a następnie przejdź do miejsca przechowywania sklonowanego repozytorium. Wewnątrz sklonowanego repozytorium wybierz folder **blobAzureApp**. Upewnij się, że projekt **blobAzureApp** jest wyświetlany jako projekt Eclipse, a następnie wybierz pozycję **Finish** (Zakończ).
+To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć projekt, włącz środowisko Eclipse i zamknij ekran powitalny. Wybierz kolejno pozycje **File** (Plik) i **Open Projects from File system** (Otwórz projekty z systemu plików). Upewnij się, że jest zaznaczone pole wyboru **Wykryj i skonfiguruj rodzaj projektu** . Wybierz pozycję **Directory** (Katalog), a następnie przejdź do miejsca przechowywania sklonowanego repozytorium. Wewnątrz sklonowanego repozytorium wybierz folder **blobAzureApp**. Upewnij się, że projekt **blobAzureApp** jest wyświetlany jako projekt Eclipse, a następnie wybierz pozycję **Finish** (Zakończ).
 
-Po zakończeniu importowania projektu otwórz plik **AzureApp.java** (znajdujący się w lokalizacji **blobQuickstart.blobAzureApp** w katalogu **src/main/java**) i zamień wartości `accountname` i `accountkey` w ciągu `storageConnectionString`. Następnie uruchom aplikację. Szczegółowe instrukcje dotyczące wykonywania tych zadań zostały opisane w poniższych sekcjach.
+Po zakończeniu importowania projektu Otwórz **plik azureapp. Java** (znajdujący się w **blobQuickstart. blobAzureApp** wewnątrz elementu **src/Main/java**) i Zastąp `accountname` i `accountkey` wewnątrz ciągu `storageConnectionString`. Następnie uruchom aplikację. Szczegółowe instrukcje dotyczące wykonywania tych zadań zostały opisane w poniższych sekcjach.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -89,7 +77,7 @@ Zanim przejdziesz dalej, sprawdź, czy katalog domyślny (*C:\Users\<użytkownik
   >[!NOTE]
   >Możesz również wyświetlić pliki w usłudze Blob Storage za pomocą narzędzia takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Eksplorator usługi Azure Storage to darmowe narzędzie międzyplatformowe, które umożliwia dostęp do informacji na koncie magazynu.
 
-Po zweryfikowaniu plików naciśnij klawisz **Enter**, aby zakończyć pokaz i usunąć pliki testowe. Wiesz już, jak działa aplikacja przykładowa. Otwórz plik **AzureApp.java** i spójrz na kod.
+Po zweryfikowaniu plików naciśnij klawisz **Enter** , aby zakończyć demonstrację i usunąć pliki testowe. Wiesz już, jak działa aplikacja przykładowa. Otwórz plik **AzureApp.java** i spójrz na kod.
 
 ## <a name="understand-the-sample-code"></a>Omówienie przykładowego kodu
 

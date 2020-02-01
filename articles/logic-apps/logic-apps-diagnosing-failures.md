@@ -5,108 +5,83 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 10/15/2017
-ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 01/31/2020
+ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666809"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904994"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Rozwiązywanie problemów i Diagnozowanie błędów przepływu pracy w Azure Logic Apps
 
 Aplikacja logiki generuje informacje, które mogą pomóc zdiagnozować i debugować problemy w aplikacji. Aplikację logiki można zdiagnozować, przeglądając każdy krok w przepływie pracy za pomocą Azure Portal. Można też dodać kilka kroków do przepływu pracy w celu debugowania środowiska uruchomieniowego.
 
-## <a name="review-trigger-history"></a>Przejrzyj historię wyzwalacza
+<a name="check-trigger-history"></a>
 
-Każda aplikacja logiki rozpoczyna się od wyzwalacza. Jeśli wyzwalacz nie jest wyzwalany, należy najpierw sprawdzić historię wyzwalacza. Ta historia zawiera wszystkie próby uruchomienia przez aplikację logiki oraz szczegóły dotyczące wejść i wyjść dla każdej próby wyzwalacza.
+## <a name="check-trigger-history"></a>Sprawdź historię wyzwalacza
 
-1. Aby sprawdzić, czy wyzwalacz został wyzwolony, w menu aplikacji logiki wybierz pozycję **Przegląd**. W obszarze **historia wyzwalacza**Przejrzyj stan wyzwalacza.
+Każde uruchomienie aplikacji logiki rozpoczyna się od próby wyzwalacza, więc jeśli wyzwalacz nie zostanie wyzwolony, wykonaj następujące czynności:
 
-   > [!TIP]
-   > Jeśli nie widzisz menu aplikacji logiki, spróbuj wrócić do pulpitu nawigacyjnego platformy Azure i ponownie otworzyć aplikację logiki.
+1. Sprawdź stan wyzwalacza, [sprawdzając historię wyzwalacza](../logic-apps/monitor-logic-apps.md#review-trigger-history). Aby wyświetlić więcej informacji na temat próby wyzwalacza, wybierz to zdarzenie wyzwalacza, na przykład:
 
-   ![Przejrzyj historię wyzwalacza](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
+   ![Wyświetl stan i historię wyzwalacza](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-   > [!TIP]
-   > * Jeśli nie znajdziesz danych, których oczekujesz, spróbuj wybrać pozycję **Odśwież** na pasku narzędzi.
-   > * Jeśli lista zawiera wiele prób wyzwalacza i nie można znaleźć żądanego wpisu, spróbuj przefiltrować listę.
+1. Sprawdź dane wejściowe wyzwalacza, aby upewnić się, że są wyświetlane zgodnie z oczekiwaniami. W obszarze **link danych wejściowych**wybierz łącze, które wyświetla okienko **dane wejściowe** .
 
-   Oto możliwe stany próby uruchomienia wyzwalacza:
+   Wyzwalacze wejściowe zawierają dane, których wyzwalacz oczekuje i które są wymagane do uruchomienia przepływu pracy. Przeglądanie tych danych wejściowych może pomóc w ustaleniu, czy dane wejściowe wyzwalacza są poprawne i czy warunek został spełniony, aby przepływ pracy mógł kontynuować działanie.
 
-   | Stan | Opis | 
-   | ------ | ----------- | 
-   | **Powodzenie** | Wyzwalacz sprawdzał punkt końcowy i znalazł dostępne dane. Zwykle pojawia się również stan "uruchomił" obok tego stanu. W przeciwnym razie definicja wyzwalacza może mieć warunek lub `SplitOn` polecenie, które nie zostało spełnione. <p>Ten stan może dotyczyć wyzwalacza ręcznego, wyzwalacza cyklu lub wyzwalacza sondowania. Wyzwalacz może zostać uruchomiony pomyślnie, ale uruchomienie może zakończyć się niepowodzeniem, gdy akcje generują nieobsłużone błędy. | 
-   | **Pominięto** | Wyzwalacz sprawdzał punkt końcowy, ale nie znalazł danych. | 
-   | **Niepowodzenie** | Wystąpił błąd. Aby przejrzeć wszystkie wygenerowane komunikaty o błędach dla wyzwalacza, wybierz tę próbę, a następnie wybierz pozycję dane **wyjściowe**. Na przykład mogą znajdować się dane wejściowe, które nie są prawidłowe. | 
-   ||| 
+   Na przykład właściwość `feedUrl` w tym miejscu ma niepoprawną wartość kanału informacyjnego RSS:
 
-   Może istnieć wiele wpisów wyzwalacza o tej samej dacie i godzinie, co się dzieje, gdy aplikacja logiki znajdzie wiele elementów. 
-   Za każdym razem, gdy wyzwala wyzwalacz, aparat Logic Apps tworzy wystąpienie aplikacji logiki do uruchomienia przepływu pracy. Domyślnie każde wystąpienie jest uruchamiane równolegle, aby nie czekać na uruchomienie przepływu pracy.
+   ![Przejrzyj dane wejściowe wyzwalacza pod kątem błędów](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
+
+1. Sprawdź wyjściowe Wyzwalacze (jeśli istnieją), aby upewnić się, że są wyświetlane zgodnie z oczekiwaniami. W obszarze link do danych **wyjściowych**wybierz link, który pokazuje okienko dane **wyjściowe** .
+
+   Wyjściowe wyzwalacze obejmują dane przekazywane przez wyzwalacz do następnego kroku w przepływie pracy. Przeglądanie tych danych wyjściowych może pomóc w ustaleniu, czy poprawna lub oczekiwana wartość została przeniesiona do następnego kroku w przepływie pracy, na przykład:
+
+   ![Przejrzyj dane wyjściowe wyzwalacza pod kątem błędów](./media/logic-apps-diagnosing-failures/review-trigger-outputs-for-errors.png)
 
    > [!TIP]
-   > Wyzwalacz można ponownie sprawdzić bez czekania na następny cykl. Na pasku narzędzi przegląd wybierz **Uruchom wyzwalacz**, a następnie wybierz wyzwalacz, który wymusza sprawdzenie. Lub zaznacz opcję **Uruchom** na pasku narzędzi projektanta Logic Apps.
+   > Jeśli znajdziesz dowolną nierozpoznaną zawartość, Dowiedz się więcej o [różnych typach zawartości](../logic-apps/logic-apps-content-type.md) w Azure Logic Apps.
 
-3. Aby przejrzeć szczegóły próby wyzwalacza, w obszarze **historia wyzwalacza**wybierz tę próbę uruchomienia. 
+<a name="check-runs-history"></a>
 
-   ![Wybierz próbkę wyzwalacza](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
+## <a name="check-runs-history"></a>Sprawdź historię uruchomień
 
-4. Przejrzyj wejścia i wszystkie dane wyjściowe generowane przez wyzwalacz. Wyjściowe wyzwalacze pokazują dane, które pochodzą z wyzwalacza. Te dane wyjściowe mogą pomóc w ustaleniu, czy wszystkie właściwości zostały zwrócone zgodnie z oczekiwaniami.
+Za każdym razem, gdy wyzwalacz jest wyzwalany dla elementu lub zdarzenia, aparat Logic Apps tworzy i uruchamia oddzielne wystąpienie przepływu pracy dla każdego elementu lub zdarzenia. Jeśli uruchomienie nie powiedzie się, wykonaj następujące kroki, aby sprawdzić, co się stało w tym przebiegu, w tym informacje o stanie dla każdego kroku w przepływie pracy oraz dane wejściowe i wyjściowe dla każdego kroku.
 
-   > [!NOTE]
-   > Jeśli znajdziesz zawartość, której nie znasz, Dowiedz się, jak Azure Logic Apps [obsługuje różne typy zawartości](../logic-apps/logic-apps-content-type.md).
+1. Sprawdź stan uruchomienia przepływu pracy, [sprawdzając historię uruchomień](../logic-apps/monitor-logic-apps.md#review-runs-history). Aby wyświetlić więcej informacji na temat niepowodzenia przebiegu, w tym wszystkich kroków w tym działaniu, wybierz przebieg zakończony niepowodzeniem.
 
-   ![Wyjściowe wyzwalacza](./media/logic-apps-diagnosing-failures/trigger-outputs.png)
+   ![Wyświetl historię uruchamiania i wybierz nieudane uruchomienie](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
-## <a name="review-run-history"></a>Przeglądać historię uruchamiania
+1. Po wyświetleniu wszystkich kroków w przebiegu rozwiń pierwszy krok zakończony niepowodzeniem.
 
-Każdy uruchamiany wyzwalacz uruchamia przebieg przepływu pracy. Możesz sprawdzić, co się stało w tym przebiegu, w tym o stanie dla każdego kroku w przepływie pracy oraz dane wejściowe i wyjściowe dla każdego kroku.
+   ![Rozwiń pierwszy krok zakończony niepowodzeniem](./media/logic-apps-diagnosing-failures/logic-app-run-pane.png)
 
-1. Z menu aplikacji logiki wybierz pozycję **Przegląd**. W obszarze **historia uruchamiania**Przejrzyj przebieg uruchomienia wyzwalacza.
+1. Sprawdź dane wejściowe kroku zakończonego niepowodzeniem, aby upewnić się, że są wyświetlane zgodnie z oczekiwaniami.
 
-   > [!TIP]
-   > Jeśli nie widzisz menu aplikacji logiki, spróbuj wrócić do pulpitu nawigacyjnego platformy Azure i ponownie otworzyć aplikację logiki.
+1. Przejrzyj szczegóły każdego kroku w określonym przebiegu. W obszarze **historia uruchamiania**wybierz przebieg, który chcesz przejrzeć.
 
-   ![Przejrzyj historię uruchomień](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
-
-   > [!TIP]
-   > * Jeśli nie znajdziesz danych, których oczekujesz, spróbuj wybrać pozycję **Odśwież** na pasku narzędzi.
-   > * Jeśli lista zawiera wiele przebiegów i nie można znaleźć żądanego wpisu, spróbuj przefiltrować listę.
-
-   Oto możliwe stany przebiegu:
-
-   | Stan | Opis | 
-   | ------ | ----------- | 
-   | **Powodzenie** | Wszystkie akcje zostały wykonane pomyślnie. <p>Jeśli wystąpią jakieś błędy w określonej akcji, w przepływie pracy został obsłużony następujący błąd. | 
-   | **Niepowodzenie** | Co najmniej jedna akcja nie powiodła się i nie skonfigurowano żadnych późniejszych akcji w przepływie pracy w celu obsługi błędu. | 
-   | **Zerwan** | Przepływ pracy został uruchomiony, ale Otrzymano żądanie anulowania. | 
-   | **Uruchomiono** | Przepływ pracy jest obecnie uruchomiony. <p>Ten stan może wystąpić w przypadku przepływów pracy z ograniczeniami lub z powodu bieżącego planu cenowego. Aby uzyskać więcej informacji, zobacz [limity akcji na stronie cennika](https://azure.microsoft.com/pricing/details/logic-apps/). W przypadku skonfigurowania [rejestrowania diagnostycznego](../logic-apps/logic-apps-monitor-your-logic-apps.md)można także uzyskać informacje o wszelkich zdarzeniach związanych z ograniczeniami. | 
-   ||| 
-
-2. Przejrzyj szczegóły każdego kroku w określonym przebiegu. W obszarze **historia uruchamiania**wybierz przebieg, który chcesz przejrzeć.
-
-   ![Przejrzyj historię uruchomień](./media/logic-apps-diagnosing-failures/logic-app-run-history.png)
-
-   Niezależnie od tego, czy uruchomienie samego przebiegu zakończyło się powodzeniem, czy niepowodzeniem, widok Szczegóły przebiegu przedstawia każdy krok i czy zakończyło się pomyślnie
+   ![Przejrzyj historię uruchomień](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
    ![Wyświetlanie szczegółów uruchomienia aplikacji logiki](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. Aby przeanalizować dane wejściowe, wyjściowe i wszystkie komunikaty o błędach dla określonego kroku, należy wybrać ten krok, aby kształt rozszerzał i pokazywał szczegóły. Przykład:
+1. Aby przeanalizować dane wejściowe, wyjściowe i wszystkie komunikaty o błędach dla określonego kroku, należy wybrać ten krok, aby kształt rozszerzał i pokazywał szczegóły. Przykład:
 
    ![Wyświetlanie szczegółów kroku](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
 ## <a name="perform-runtime-debugging"></a>Wykonaj debugowanie środowiska uruchomieniowego
 
-Aby ułatwić debugowanie, można dodać kroki diagnostyczne do przepływu pracy, a także przejrzeć wyzwalacz i historię uruchomienia. Można na przykład dodać kroki, które korzystają z usługi [webhook testera](https://webhook.site/) , aby móc sprawdzać żądania HTTP i określać ich dokładny rozmiar, kształt i format.
+Aby ułatwić debugowanie, można dodać kroki diagnostyczne do przepływu pracy aplikacji logiki, a także przejrzeć wyzwalacz i historię uruchomienia. Można na przykład dodać kroki, które korzystają z usługi [webhook testera](https://webhook.site/) , aby móc sprawdzać żądania HTTP i określać ich dokładny rozmiar, kształt i format.
 
-1. Odwiedź [testera elementu webhook](https://webhook.site/) i Skopiuj utworzony unikatowy adres URL
+1. Przejdź do witryny [testera elementu webhook](https://webhook.site/) i skopiuj wygenerowany unikatowy adres URL.
 
-2. W aplikacji logiki Dodaj akcję HTTP POST z zawartością treści, którą chcesz przetestować, na przykład wyrażeniem lub innym wyjściem kroku.
+1. W aplikacji logiki Dodaj akcję POST protokołu HTTP i treść, którą chcesz przetestować, na przykład wyrażenie lub inne wyjście krok.
 
-3. Wklej adres URL testera elementu webhook do akcji POST protokołu HTTP.
+1. Wklej adres URL z testera elementu webhook do akcji POST protokołu HTTP.
 
-4. Aby sprawdzić, w jaki sposób jest tworzone żądanie w przypadku wygenerowania z aparatu Logic Apps, uruchom aplikację logiki i zobacz Tester elementu webhook, aby uzyskać szczegółowe informacje.
+1. Aby sprawdzić, w jaki sposób jest tworzone żądanie podczas generowania z aparatu Logic Apps, uruchom aplikację logiki i ponownie odwiedź witrynę testera elementu webhook, aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Monitorowanie aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Monitorowanie aplikacji logiki](../logic-apps/monitor-logic-apps.md)

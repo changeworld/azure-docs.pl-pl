@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: c93c936664f65e7846f6c4ad82d9aead973fa129
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772605"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905718"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co to są Azure Machine Learning potoki?
 
@@ -26,7 +26,7 @@ Potoki Azure Machine Learning umożliwiają tworzenie przepływów pracy w proje
 + Elastyczność
 + Przechowywanie wersji i śledzenie
 + Modułowość 
-+ Kontrola jakości
++ Gwarancja jakości
 + Kontrola kosztów
 
 Te korzyści stają się istotne, gdy tylko projekt uczenia maszynowego przejdzie poza czystą eksplorację i iterację. Nawet proste potoki jednoetapowe mogą być cenne. Projekty uczenia maszynowego często są złożone i mogą być niezbędne do precyzyjnego wykonania pojedynczego przepływu pracy.
@@ -48,12 +48,12 @@ Chmura systemu Azure udostępnia kilka innych potoków, z których każdy ma inn
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Do czego służą potoki Azure ML?
 
-Potok Azure Machine Learning to niezależnie wykonywalny przepływ pracy kompletnego zadania uczenia maszynowego. Podzadania są hermetyzowane jako serie kroków w potoku. Potok Azure Machine Learning może być taki sam jak taki, który wywołuje skrypt w języku Python, więc _może_ dochodzić do wszystkiego. Potoki _powinny_ skupić się na zadaniach uczenia maszynowego, takich jak:
+Potok Azure Machine Learning to niezależnie wykonywalny przepływ pracy kompletnego zadania uczenia maszynowego. Podzadania są zamknięte jako serie kroków w potoku. Potok Azure Machine Learning może być taki sam jak taki, który wywołuje skrypt w języku Python, więc _może_ dochodzić do wszystkiego. Potoki _powinny_ skupić się na zadaniach uczenia maszynowego, takich jak:
 
-+ Przygotowywanie danych, takie jak importowanie, sprawdzanie poprawności i czyszczenie, munging i przekształcanie, normalizacja i przemieszczanie
-+ Konfiguracja szkoleń obejmująca argumenty parametryzacja, ścieżki i rejestrowanie/konfiguracje raportowania
++ Przygotowywanie danych, takie jak importowanie, weryfikowanie i czyszczenie, zniekształcanie i przekształcanie, normalizacja i przemieszczanie
++ Konfigurowanie trenowania obejmujące parametryzację argumentów, ścieżki plików i konfiguracje rejestrowania/raportowania
 + Wydajnie i wielokrotnie sprawdzaj, które mogą obejmować określanie określonych podzestawów danych, różnych zasobów obliczeniowych sprzętu, przetwarzania rozproszonego i monitorowania postępu
-+ Wdrażanie, w tym przechowywanie wersji, skalowanie, Inicjowanie obsługi i kontrola dostępu 
++ Wdrażanie, w tym przechowywanie wersji, skalowanie, aprowizowanie i kontrola dostępu 
 
 Niezależne kroki umożliwiają wielu analitykom danych jednoczesne działanie w tym samym potoku bez zasobów obliczeniowych. Osobne kroki ułatwiają również korzystanie z różnych typów i rozmiarów obliczeniowych dla każdego kroku.
 
@@ -202,7 +202,21 @@ Najważniejsze zalety używania potoków dla przepływów pracy usługi Machine 
 |**Możliwość ponownego wykorzystania**|Tworzenie szablonów potoku dla konkretnych scenariuszy, takich jak ponowne szkolenie i ocenianie partii. Wyzwalaj opublikowane potoki z systemów zewnętrznych za pośrednictwem prostych wywołań REST.|
 |**Śledzenie i przechowywania wersji**|Zamiast ręcznego śledzenia danych i ścieżek wyników podczas iteracji Użyj zestawu SDK potoków, aby jawnie nazwać i w wersji źródła danych, dane wejściowe i wyjściowe. Możesz również zarządzać skryptami i danymi osobno w celu zwiększenia produktywności.|
 | **Modułowość** | Rozdzielenie obszarów problemów i izolacja zmian pozwala na szybsze rozwijanie się oprogramowania o wyższej jakości. | 
-|**Współpraca**|Potoki umożliwiają analitykom danych współpracę we wszystkich obszarach procesu projektowania uczenia maszynowego, jednocześnie umożliwiając jednocześnie pracę nad krokami potoku.|
+|**Społeczności**|Potoki umożliwiają analitykom danych współpracę we wszystkich obszarach procesu projektowania uczenia maszynowego, jednocześnie umożliwiając jednocześnie pracę nad krokami potoku.|
+
+## <a name="modules"></a>Moduły
+
+Mimo że kroki potoku umożliwiają ponowne użycie wyników poprzedniego przebiegu, w wielu przypadkach konstrukcja kroku zakłada, że skrypty i wymagane pliki zależne muszą być dostępne lokalnie. Jeśli analityk danych chce skompilować na podstawie istniejącego kodu, skrypty i zależności często muszą być klonowane z oddzielnego repozytorium.
+
+Moduły są podobne do kroków potoku, ale zapewniają obsługę wersji ułatwianą przez obszar roboczy, co umożliwia współpracę i ponowne wykorzystywanie na dużą skalę. Moduły są zaprojektowane do ponownego użycia w wielu potokach i mogą być rozwijane w celu dostosowania określonych obliczeń do różnych przypadków użycia. Użytkownicy mogą wykonywać następujące zadania w obszarze roboczym bez używania zewnętrznych repozytoriów:
+
+* Twórz nowe moduły i Publikuj nowe wersje istniejących modułów
+* Przestarzałe istniejące wersje
+* Oznacz wersje wyłączone, aby uniemożliwić konsumentom korzystanie z tej wersji
+* Wyznacz wersje domyślne
+* Pobierz moduły według wersji z obszaru roboczego, aby upewnić się, że zespoły używają tego samego kodu
+
+Zobacz [Notes](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb) , aby zapoznać się z przykładami kodu dotyczącymi tworzenia, łączenia i używania modułów w potokach Azure Machine Learning.
 
 ## <a name="next-steps"></a>Następne kroki
 

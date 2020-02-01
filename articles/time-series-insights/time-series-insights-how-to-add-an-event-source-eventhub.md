@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8f123871f1e87a18dadfa82ad6bb27d1c145dc4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c3b06289ba6ce98d4307a8255981ecdba069fdfa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863346"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905398"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Dodawanie źródła zdarzeń Centrum zdarzeń do środowiska usługi Time Series Insights
 
@@ -54,7 +54,7 @@ Aby dodać nową grupę konsumentów Centrum zdarzeń:
 
 ## <a name="add-a-new-event-source"></a>Dodaj nowe źródło zdarzeń
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 1. Znajdź istniejącego środowiska usługi Time Series Insights. W menu po lewej stronie wybierz **wszystkie zasoby**, a następnie wybierz środowisko usługi Time Series Insights.
 

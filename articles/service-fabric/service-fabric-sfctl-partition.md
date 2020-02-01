@@ -3,14 +3,14 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric — partycja s
 description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń zarządzania partycjami dla usługi.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: c50fcb348dad7960be81f80ecb7c455dbffaadb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c038ef3266a727bf6984a5bd88ca540a589380db
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646062"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905838"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Wykonywanie zapytań dotyczących partycji i zarządzanie nimi dla dowolnej usługi.
@@ -28,7 +28,7 @@ Wykonywanie zapytań dotyczących partycji i zarządzanie nimi dla dowolnej usł
 | obciążenie — Resetowanie | Resetuje bieżące obciążenie partycji Service Fabric. |
 | kworum — utrata | Wywołuje utratę kworum dla danej partycji usługi stanowej. |
 | kworum — utrata stanu | Pobiera postęp operacji utraty kworum na partycji uruchomionej przy użyciu interfejsu API StartQuorumLoss. |
-| odzyskiwanie | Wskazuje klaster Service Fabric, który powinien próbować odzyskać określoną partycję, która aktualnie jest zablokowana w utracie kworum. |
+| odtwarzania | Wskazuje klaster Service Fabric, który powinien próbować odzyskać określoną partycję, która aktualnie jest zablokowana w utracie kworum. |
 | Odzyskaj — wszystkie | Wskazuje klaster Service Fabric, który ma podejmować próbę odzyskania wszelkich usług (w tym usług systemowych), które są aktualnie zablokowane w utracie kworum. |
 | report-health | Wysyła raport o kondycji na partycji Service Fabric. |
 | restart | Ten interfejs API spowoduje ponowne uruchomienie niektórych lub wszystkich replik lub wystąpień określonej partycji. |
@@ -38,10 +38,13 @@ Wykonywanie zapytań dotyczących partycji i zarządzanie nimi dla dowolnej usł
 ## <a name="sfctl-partition-data-loss"></a>dane partycji sfctl — utrata
 Ten interfejs API będzie powodować utratę danych dla określonej partycji.
 
-Wywołanie interfejsu API OnDataLossAsync partycji zostanie wyzwolone.  Ten interfejs API będzie powodować utratę danych dla określonej partycji. Wywołanie interfejsu API OnDataLoss partycji zostanie wyzwolone. Rzeczywista utrata danych będzie zależeć od określonego parametru datastrata.  <br> -PartialDataLoss — tylko kworum replik zostanie usunięte, a OnDataLoss jest wyzwalany dla partycji, ale rzeczywista utrata danych zależy od obecności replikacji w locie.  <br> -FullDataLoss — wszystkie repliki są usuwane, dlatego wszystkie dane są tracone i OnDataLoss jest wyzwalane. Ten interfejs API powinien być wywoływany tylko z usługą stanową jako obiektem docelowym. Wywoływanie tego interfejsu API z usługą systemową jako obiekt docelowy nie jest zalecane.
+Wywołanie interfejsu API OnDataLossAsync partycji zostanie wyzwolone.  Ten interfejs API będzie powodować utratę danych dla określonej partycji. Wywołanie interfejsu API OnDataLoss partycji zostanie wyzwolone. Rzeczywista utrata danych będzie zależeć od określonego parametru datastrata.
+- PartialDataLoss: Usunięto tylko kworum replik, a OnDataLoss jest wyzwalany dla partycji, ale rzeczywista utrata danych zależy od obecności replikacji w locie.  
+- FullDataLoss: wszystkie repliki są usuwane, dlatego wszystkie dane są tracone i OnDataLoss jest wyzwalane. Ten interfejs API powinien być wywoływany tylko z usługą stanową jako obiektem docelowym. Wywoływanie tego interfejsu API z usługą systemową jako obiekt docelowy nie jest zalecane.
 
 > [!NOTE]   
 > Po wywołaniu tego interfejsu API nie można go cofnąć. Wywołanie CancelOperation spowoduje zatrzymanie i oczyszczenie wewnętrznego stanu systemu. Dane nie zostaną przywrócone, jeśli polecenie ma wystarczająco dużo miejsca, aby spowodować utratę danych. Wywołaj interfejs API GetDataLossProgress z tym samym OperationId, aby zwrócić informacje dotyczące operacji uruchomionej przy użyciu tego interfejsu API.
+
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|

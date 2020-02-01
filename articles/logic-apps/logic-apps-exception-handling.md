@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965935"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906702"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Obsługa błędów i wyjątków w Azure Logic Apps
 
@@ -76,7 +76,7 @@ Można też ręcznie określić zasady ponawiania w sekcji `inputs` dla akcji lu
 | <*ponownych prób*> | Liczba całkowita | Liczba ponownych prób, które muszą zawierać się w przedziale od 1 do 90 |
 ||||
 
-*Opcjonalne*
+*Obowiązkowe*
 
 | Wartość | Typ | Opis |
 |-------|------|-------------|
@@ -360,9 +360,9 @@ Oto przykład pojedynczego elementu `@result()`, pokazującego `name`, `body`i `
 
 Aby wykonać różne wzorce obsługi wyjątków, można użyć wyrażeń opisanych wcześniej w tym artykule. Możesz wykonać akcję obejmującą pojedynczą obsługę wyjątków poza zakresem, który akceptuje całą przefiltrowaną tablicę błędów, i Usuń akcję `For_each`. Możesz również dołączyć inne przydatne właściwości z odpowiedzi `\@result()`, jak opisano wcześniej.
 
-## <a name="azure-diagnostics-and-metrics"></a>Diagnostyka Azure i metryki
+## <a name="set-up-azure-monitor-logs"></a>Konfigurowanie dzienników Azure Monitor
 
-Poprzednie wzorce to doskonałe rozwiązanie do obsługi błędów i wyjątków w ramach przebiegu, ale można również identyfikować błędy niezależne od samego uruchomienia i odpowiadać na nie. [Diagnostyka Azure](../logic-apps/logic-apps-monitor-your-logic-apps.md) zapewnia prosty sposób wysyłania wszystkich zdarzeń przepływu pracy, w tym wszystkich stanów uruchamiania i akcji, do konta usługi Azure Storage lub centrum zdarzeń utworzonego za pomocą [usługi Azure Event Hubs](../event-hubs/event-hubs-about.md).
+Poprzednie wzorce to doskonałe rozwiązanie do obsługi błędów i wyjątków w ramach przebiegu, ale można również identyfikować błędy niezależne od samego uruchomienia i odpowiadać na nie. [Azure monitor](../azure-monitor/overview.md) zapewnia prostą metodę wysyłania wszystkich zdarzeń przepływu pracy, w tym wszystkich stanów uruchamiania i akcji, do [obszaru roboczego log Analytics](../azure-monitor/platform/data-platform-logs.md), [konta usługi Azure Storage](../storage/blobs/storage-blobs-overview.md)lub [Event Hubs platformy Azure](../event-hubs/event-hubs-about.md).
 
 Aby oszacować Stany uruchamiania, można monitorować dzienniki i metryki lub publikować je w dowolnym preferowanym narzędziu do monitorowania. Jedną z potencjalnych opcji jest przesyłanie strumieniowe wszystkich zdarzeń za pomocą Event Hubs do [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). W Stream Analytics można pisać zapytania na żywo na podstawie wszelkich anomalii, średnich lub błędów z dzienników diagnostycznych. Za pomocą Stream Analytics można wysyłać informacje do innych źródeł danych, takich jak kolejki, tematy, SQL, Azure Cosmos DB lub Power BI.
 

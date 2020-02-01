@@ -3,14 +3,14 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric — sfctl Repl
 description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń służących do zarządzania replikami.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a0588d84a79407b5df5033f0a32851fc708d598b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f6ad0b4c08ac8d710340fe654a068d0a3804e58f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646045"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905812"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Zarządzanie replikami należącymi do partycji usług.
@@ -24,7 +24,7 @@ Zarządzanie replikami należącymi do partycji usług.
 | zdrowie | Pobiera kondycję Service Fabricj repliki usługi stanowej lub wystąpienia usługi bezstanowej. |
 | info | Pobiera informacje o replice partycji Service Fabric. |
 | list | Pobiera informacje o replikach partycji usługi Service Fabric. |
-| Usuń | Usuwa replikę usługi działającą w węźle. |
+| usuwa | Usuwa replikę usługi działającą w węźle. |
 | report-health | Wysyła raport o kondycji w replice Service Fabric. |
 | restart | Uruchamia ponownie replikę usługi trwałej uruchomionej w węźle. |
 

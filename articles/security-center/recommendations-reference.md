@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
-ms.openlocfilehash: 686b8bedfeb4ae5e1b2b7bf3b750b51074677990
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3c0fb29c5a4dd73135aa8352c97df29474c36caf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288986"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904132"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Zalecenia dotyczące zabezpieczeń — Przewodnik referencyjny
 
@@ -32,9 +32,10 @@ Twój bezpieczny wynik jest oparty na liczbie Security Center zaleceń, które z
 |Zalecenie|Opis powiązanych zasad &|Ważność|Włączono szybką poprawkę? ([Dowiedz się więcej](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Typ zasobu|
 |----|----|----|----|----|
 |**Kontrola dostępu do sieci just in Time powinna być stosowana na maszynach wirtualnych**|Zastosuj kontrolę dostępu maszyny wirtualnej just-in-Time (JIT), aby trwale zablokować dostęp do wybranych portów i umożliwić autoryzowanym użytkownikom otwieranie ich za pośrednictwem JIT tylko przez ograniczoną ilość czasu.<br>(Powiązane zasady: Kontrola dostępu just in Time do sieci powinna być stosowana na maszynach wirtualnych)|Wysoka|N|Maszyna wirtualna|
-|**Sieciowe grupy zabezpieczeń na poziomie podsieci powinny być włączone**|Włącz sieciowe grupy zabezpieczeń, aby kontrolować dostęp sieciowy do zasobów wdrożonych w podsieciach.<br>(Powiązane zasady: podsieci powinny być skojarzone z sieciową grupą zabezpieczeń)|Wysoki/średni|N|Podsieć|
-|**Maszyny wirtualne powinny być skojarzone z sieciową grupą zabezpieczeń**|Włącz sieciowe grupy zabezpieczeń, aby kontrolować dostęp sieciowy do maszyn wirtualnych.<br>(Powiązane zasady: maszyny wirtualne powinny być skojarzone z sieciową grupą zabezpieczeń)|Wysoki/średni|N|Maszyna wirtualna|
-|**Dostęp powinien być ograniczony do ograniczeń sieciowych grup zabezpieczeń z maszynami wirtualnymi z Internetu**|Podwyższenie poziomu bezpieczeństwa sieci maszyn wirtualnych połączonych z Internetem przez ograniczenie dostępu do istniejących reguł zezwalania.<br>(Powiązane zasady: reguły sieciowej grupy zabezpieczeń dla maszyn wirtualnych mających dostęp do Internetu powinny być zaostrzone)|Wysoka|N|Maszyna wirtualna|
+|**Sieciowe grupy zabezpieczeń na poziomie podsieci powinny być włączone**|Włącz sieciowe grupy zabezpieczeń, aby kontrolować dostęp sieciowy do zasobów wdrożonych w podsieciach.<br>(Powiązane zasady: podsieci powinny być skojarzone z sieciową grupą zabezpieczeń.<br>Te zasady są domyślnie wyłączone)|Wysoki/średni|N|Podsieć|
+|**Maszyny wirtualne dostępne z Internetu powinny być chronione za pomocą sieciowych grup zabezpieczeń**|Włącz sieciowe grupy zabezpieczeń, aby kontrolować dostęp sieciowy do maszyn wirtualnych.<br>(Powiązane zasady: maszyny wirtualne dostępne z Internetu powinny być chronione przy użyciu sieciowych grup zabezpieczeń)|Wysoki/średni|N|Maszyna wirtualna|
+|**Wszystkie porty sieciowe powinny być ograniczone do sieciowej grupy zabezpieczeń skojarzonych z maszyną wirtualną**|Podwyższenie poziomu bezpieczeństwa sieci maszyn wirtualnych połączonych z Internetem przez ograniczenie dostępu do istniejących reguł zezwalania.<br>To zalecenie jest wyzwalane, gdy dowolny port zostanie otwarty *we wszystkich* źródłach (z wyjątkiem portów 22, 3389, 5985, 5986, 80 i 1443).<br>(Powiązane zasady: dostęp za poorednictwem punktu końcowego połączonego z Internetem powinien być ograniczony)|Wysoka|N|Maszyna wirtualna|
+|**Zalecane zalecenia dotyczące ograniczania przepustowości sieci powinny być stosowane w przypadku maszyn wirtualnych mających dostęp do Internetu.**|Klienci korzystający z warstwy cenowej standardowa będą widzieli to zalecenie, gdy funkcja ochrony sieci adaptacyjnej znajdzie nadmiernie ograniczającą regułę sieciowej grupy zabezpieczeń.<br>(Powiązane zasady: zalecenia dotyczące ograniczania przepustowości sieci powinny być stosowane w przypadku maszyn wirtualnych mających dostęp do Internetu)|Wysoka|N|Maszyna wirtualna|
 |**Reguły dla aplikacji sieci Web na IaaS sieciowych grup zabezpieczeń powinny być zaostrzone**|Zawzmacniaj grupę zabezpieczeń sieci (sieciowej grupy zabezpieczeń) dla maszyn wirtualnych, na których działają aplikacje sieci Web, z regułami sieciowej grupy zabezpieczeń, które są nadmiernie ograniczające w odniesieniu do portów aplikacji sieci Web.<br>(Powiązane zasady: reguły sieciowych grup zabezpieczeń dla aplikacji sieci Web na IaaS powinny być zaostrzone)|Wysoka|N|Maszyna wirtualna|
 |**Dostęp do App Services powinien być ograniczony**|Ogranicz dostęp do App Services, zmieniając konfigurację sieci, aby odmówić ruchu przychodzącego z zakresów, które są zbyt szerokie.<br>(Powiązane zasady: [wersja zapoznawcza]: dostęp do App Services powinien być ograniczony)|Wysoka|N|App Service|
 |**Porty zarządzania powinny być zamknięte na maszynach wirtualnych**|Ogranicz grupę zabezpieczeń sieci maszyn wirtualnych, aby ograniczyć dostęp do portów zarządzania.<br>(Powiązane zasady: porty zarządzania powinny być zamknięte na maszynach wirtualnych)|Wysoka|N|Maszyna wirtualna|

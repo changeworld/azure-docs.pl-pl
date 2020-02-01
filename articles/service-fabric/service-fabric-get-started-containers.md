@@ -1,14 +1,14 @@
 ---
 title: Tworzenie aplikacji kontenera Service Fabric platformy Azure
-description: Utwórz pierwszą aplikację kontenera systemu Windows w usłudze Azure Service Fabric. Zbuduj obraz Docker za pomocą aplikacji w języku Python, wypchnij obraz do rejestru kontenerów, skompiluj i wdróż aplikację kontenera usługi Service Fabric.
+description: Utwórz pierwszą aplikację kontenera systemu Windows w usłudze Azure Service Fabric. Tworzenie obrazu platformy Docker za pomocą aplikacji w języku Python, wypchnięcie obrazu do rejestru kontenerów, a następnie skompilowanie i wdrożenie kontenera na platformie Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.openlocfilehash: 6ff3fb3057b21f389d42ad98fe4ebb2803f5fc8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458013"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906247"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 
@@ -16,7 +16,7 @@ ms.locfileid: "75458013"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usługi Service Fabric nie wymaga dokonywania żadnych zmian w aplikacji. W tym artykule przedstawiono sposób tworzenia obrazu platformy Docker zawierającego aplikację sieci Web z [kolbą](http://flask.pocoo.org/) Python i wdrożenia jej w klastrze Service Fabric uruchomionym na komputerze lokalnym. Będziesz również udostępniać aplikację skonteneryzowaną za pomocą usługi [Azure Container Registry](/azure/container-registry/). W tym artykule przyjęto założenie, że masz podstawową wiedzą dotyczącą platformy Docker. Aby uzyskać informacje dotyczące platformy Docker, przeczytaj artykuł [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Przegląd platformy Docker).
+Uruchomienie istniejącej aplikacji w kontenerze systemu Windows w klastrze usługi Service Fabric nie wymaga dokonywania żadnych zmian w aplikacji. W tym artykule opisano tworzenie obrazu platformy Docker zawierającego aplikację sieci Web z [kolbą](http://flask.pocoo.org/) Python i wdrażanie jej w klastrze Service Fabric platformy Azure. Będziesz również udostępniać aplikację skonteneryzowaną za pomocą usługi [Azure Container Registry](/azure/container-registry/). W tym artykule przyjęto założenie, że masz podstawową wiedzą dotyczącą platformy Docker. Aby uzyskać informacje dotyczące platformy Docker, przeczytaj artykuł [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Przegląd platformy Docker).
 
 > [!NOTE]
 > Ten artykuł ma zastosowanie do środowiska Windows Development.  Środowisko uruchomieniowe klastra Service Fabric i środowisko uruchomieniowe platformy Docker musi być uruchomione w tym samym systemie operacyjnym.  Nie można uruchamiać kontenerów systemu Windows w klastrze z systemem Linux.

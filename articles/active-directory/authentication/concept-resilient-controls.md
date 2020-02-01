@@ -6,17 +6,18 @@ author: martincoetzer
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/19/2018
+ms.date: 01/29/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 478cccb3a8235291a4c4f0566cd130b4b75dbe6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ca5817e744ff81efcd549bc328d7ce5eeedb2d2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208551"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908738"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Utwórz odporną strategię zarządzania kontrolą dostępu za pomocą Azure Active Directory
 
@@ -117,7 +118,7 @@ Zasady awaryjnego dostępu warunkowego to **wyłączone zasady** , które pomija
 * Skonfiguruj zestaw zasad powrotu, jeśli zakłócenia w jednym typie poświadczeń lub jeden mechanizm kontroli dostępu ma wpływ na dostęp do aplikacji. Skonfiguruj zasady w stanie wyłączonym, które wymagają przyłączenia do domeny jako kontrolki jako kopii zapasowej aktywnej zasady, która wymaga dostawcy MFA innej firmy.
 * Ogranicz ryzyko nieprawidłowych uczestników odgadnąć hasła, gdy uwierzytelnianie wieloskładnikowe nie jest wymagane, postępując zgodnie z zasadami [zawartymi w dokumencie wytyczne dotyczące haseł](https://aka.ms/passwordguidance) .
 * Wdróż funkcję samoobsługowego [resetowania haseł (SSPR) usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) i [Ochrona hasłem w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) , aby upewnić się, że użytkownicy nie używają typowych haseł i postanowień do zaświadczenia.
-* Użyj zasad, które ograniczają dostęp w aplikacjach, jeśli nie zostanie osiągnięty określony poziom uwierzytelniania zamiast po prostu z powrotem do pełnego dostępu. Na przykład:
+* Użyj zasad, które ograniczają dostęp w aplikacjach, jeśli nie zostanie osiągnięty określony poziom uwierzytelniania zamiast po prostu z powrotem do pełnego dostępu. Przykład:
   * Skonfiguruj zasady tworzenia kopii zapasowych, które wysyłają do programów Exchange i SharePoint żądania ograniczonej sesji.
   * Jeśli Twoja organizacja używa Microsoft Cloud App Security, rozważ powracanie do zasad, które angażują MCAS, a następnie MCAS zezwala na dostęp tylko do odczytu, ale nie do przekazywania.
 * Nazwij swoje zasady, aby upewnić się, że można je łatwo znaleźć w trakcie przerw w działaniu. Uwzględnij następujące elementy w nazwie zasad:
@@ -262,7 +263,7 @@ Jeśli Twoja organizacja korzysta ze starszych zasad usługi MFA dla użytkownik
 ## <a name="learn-more"></a>Dowiedz się więcej
 
 * [Dokumentacja uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [Zarządzanie kontami administracyjnymi dostępu awaryjnego w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+* [Zarządzanie kontami administracyjnymi z dostępem awaryjnego w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Skonfiguruj nazwane lokalizacje w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Jak skonfigurować dołączone urządzenia hybrydowe Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
-ms.openlocfilehash: 6c82b8ce591bbacb6bf790c8b38635310b33263d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ceeea809232909a196895e11601ad01d3407f763
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435343"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905391"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Tworzenie aplikacji Apache Spark dla klastra usługi HDInsight za pomocą Azure Toolkit for Eclipse
 
@@ -33,7 +33,7 @@ Użyj narzędzi HDInsight dostępnych w zestawie narzędzi platformy Azure [, ab
 
 ## <a name="install-required-plug-ins"></a>Zainstaluj wymagane wtyczki
 
-### <a name="install-azure-toolkit-for-eclipse"></a>Instalowanie zestawu Azure Toolkit for Eclipse
+### <a name="install-azure-toolkit-for-eclipse"></a>Zainstaluj Azure Toolkit for Eclipse
 
 Instrukcje instalacji znajdują się w temacie [installing Azure Toolkit for Eclipse](https://docs.microsoft.com/azure/java/eclipse/azure-toolkit-for-eclipse-installation).
 
@@ -47,7 +47,7 @@ Po otwarciu okna zaćmienie narzędzia usługi HDInsight automatycznie wykrywaj�
 
 1. Przejdź do **pomocy** > **zaćmienie Marketplace..** .
 
-1. Wybierz kartę **Zainstalowano**.
+1. Wybierz kartę **zainstalowane** .
 
 1. Powinna zostać wyświetlona co najmniej:
     * Azure Toolkit for Eclipse \<wersja >.
@@ -242,7 +242,7 @@ Za pomocą narzędzi usługi HDInsight w Azure Toolkit for Eclipse można urucha
 
 Podczas uruchamiania lokalnej aplikacji platformy Spark Scala na komputerze z systemem Windows może wystąpić wyjątek opisany w temacie [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). Ten wyjątek występuje, ponieważ w systemie Windows brakuje pliku **WinUtils. exe** .
 
-Aby rozwiązać ten problem, należy [pobrać plik wykonywalny](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do lokalizacji takiej jak **C:\WinUtils\bin**, a następnie dodać zmienną środowiskową **HADOOP_HOME** i ustawić wartość zmiennej na **C\WinUtils**.
+Aby rozwiązać ten problem, należy `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe` do lokalizacji takiej jak **C:\WinUtils\bin**, a następnie dodać zmienną środowiskową **HADOOP_HOME** i ustawić wartość zmiennej na **C\WinUtils**.
 
 ### <a name="run-a-local-spark-scala-application"></a>Uruchamianie lokalnej aplikacji platformy Spark Scala
 

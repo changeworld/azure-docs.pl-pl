@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 78654dfd5a11219d39d53b4042157333656f9aa3
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834751"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905706"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,7 +124,7 @@ Obiekt [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-auto
 
 Aby uzyskać więcej informacji, zobacz [dokumentację referencyjną](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
 
-Utwórz ustawienia szeregów czasowych jako obiekt słownika. Ustaw `time_column_name` na pole `day_datetime` w zestawie danych. Zdefiniuj parametr `grain_column_names`, aby mieć pewność, że dla danych są tworzone **dwie osobne grupy szeregów czasowych** . jeden dla sklepu A i B. na koniec Ustaw `max_horizon` na 50, aby przewidzieć cały zestaw testów. Ustaw okno prognozy na 10 okresów z `target_rolling_window_size`, a następnie określ pojedyncze opóźnienie dla wartości docelowych dla dwóch okresów z parametrem `target_lags`. Zalecane jest ustawienie `max_horizon`, `target_rolling_window_size` i `target_lags` na wartość "automatycznie", co spowoduje automatyczne wykrycie tych wartości. W poniższym przykładzie użyto ustawień "Auto" dla tych parametrów. 
+Utwórz ustawienia szeregów czasowych jako obiekt słownika. Ustaw `time_column_name` na pole `day_datetime` w zestawie danych. Zdefiniuj parametr `grain_column_names`, aby mieć pewność, że dla danych są tworzone **dwie osobne grupy szeregów czasowych** . jeden dla sklepu A i B. na koniec Ustaw `max_horizon` na 50, aby przewidzieć cały zestaw testów. Ustaw okno prognozy na 10 okresów z `target_rolling_window_size`, a następnie określ pojedyncze opóźnienie dla wartości docelowych dla dwóch okresów z parametrem `target_lags`. Zalecane jest ustawienie `max_horizon`, `target_rolling_window_size` i `target_lags` na wartość "automatycznie", co spowoduje automatyczne wykrycie tych wartości. W poniższym przykładzie dla tych parametrów użyto ustawień "Auto". 
 
 ```python
 time_series_settings = {
@@ -226,7 +226,7 @@ Oblicz RMSE (główny błąd oznaczający pierwiastek) między wartościami rzec
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
+rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 

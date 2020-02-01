@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bca780eb31a16d3854a2e4dfac821d5a68e9ca43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719351"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905515"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Odzyskiwanie po awarii i tryb failover konta (wersja zapoznawcza)
 
@@ -126,21 +126,6 @@ Tryb failover konta jest dostępny w wersji zapoznawczej dla wszystkich klientó
 - Zachodnie stany USA 2
 
 Wersja zapoznawcza jest przeznaczona wyłącznie do użytku nieprodukcyjnego. Umowy dotyczące poziomu usług produkcyjnych (umowy SLA) nie są obecnie dostępne.
-
-### <a name="register-for-the-preview"></a>Zarejestruj się w wersji zapoznawczej
-
-Aby zarejestrować się w celu korzystania z wersji zapoznawczej, uruchom następujące polecenia w programie PowerShell. Pamiętaj, aby zastąpić symbol zastępczy w nawiasach własnym IDENTYFIKATORem subskrypcji:
-
-```powershell
-Connect-AzAccount -SubscriptionId <subscription-id>
-Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
-```
-
-Zatwierdzenie w wersji zapoznawczej może potrwać od 5-7 dni. Aby sprawdzić, czy rejestracja została zatwierdzona, uruchom następujące polecenie:
-
-```powershell
-Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
-```
 
 ### <a name="additional-considerations"></a>Dodatkowe zagadnienia
 

@@ -3,12 +3,12 @@ title: Konfigurowanie sondy gotowości dla wystąpienia kontenera
 description: Dowiedz się, jak skonfigurować sondę, aby upewnić się, że kontenery w Azure Container Instances odbierają żądania tylko wtedy, gdy są gotowe
 ms.topic: article
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533558"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901855"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurowanie sond gotowości
 
@@ -17,6 +17,9 @@ W przypadku aplikacji kontenerowych, które obsługują ruch, warto sprawdzić, 
 W tym artykule wyjaśniono, jak wdrożyć grupę kontenerów zawierającą sondę gotowości, aby kontener odbierał ruch tylko wtedy, gdy sonda się powiedzie.
 
 Azure Container Instances obsługuje również [sondy na żywo](container-instances-liveness-probe.md), które można skonfigurować, aby spowodować automatyczne ponowne uruchomienie kontenera w złej kondycji.
+
+> [!NOTE]
+> Obecnie nie można używać sondy gotowości w grupie kontenerów wdrożonej w sieci wirtualnej.
 
 ## <a name="yaml-configuration"></a>Konfiguracja YAML
 

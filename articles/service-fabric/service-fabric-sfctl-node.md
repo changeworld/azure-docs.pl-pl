@@ -3,14 +3,14 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric — węzeł sf
 description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń zarządzania węzłami klastra.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 43b242d6c7c41b6198b8f909ab5ae056f0982307
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645297"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905883"
 ---
 # <a name="sfctl-node"></a>sfctl node
 Zarządzaj węzłami, które tworzą klaster.
@@ -19,17 +19,44 @@ Zarządzaj węzłami, które tworzą klaster.
 
 |Polecenie|Opis|
 | --- | --- |
-| Wyłącz | Dezaktywuj węzeł klastra Service Fabric z określonym zamiarem dezaktywacji. |
-| Włącz | Aktywuj Service Fabric węzeł klastra, który jest obecnie dezaktywowany. |
+| Add-Configuration-Parameter-Overrides | Dodaje listę zastąpień konfiguracji w określonym węźle. |
+| wyłącza | Dezaktywuj węzeł klastra Service Fabric z określonym zamiarem dezaktywacji. |
+| mogły | Aktywuj Service Fabric węzeł klastra, który jest obecnie dezaktywowany. |
+| Get-Configuration — zastąpienia | Pobiera listę zastąpień konfiguracji w określonym węźle. |
 | zdrowie | Pobiera kondycję węzła Service Fabric. |
 | info | Pobiera informacje o określonym węźle w klastrze Service Fabric. |
 | list | Pobiera listę węzłów w klastrze Service Fabric. |
 | ładowanie | Pobiera informacje o ładowaniu węzła Service Fabric. |
+| Usuń konfigurację — zastąpienia | Usuwa zastąpienia konfiguracji w określonym węźle. |
 | remove-state | Powiadamia Service Fabric, że trwały stan w węźle został trwale usunięty lub utracony. |
 | report-health | Wysyła raport o kondycji w węźle Service Fabric. |
 | restart | Uruchamia ponownie węzeł klastra Service Fabric. |
 | przejście | Uruchamia lub wstrzymuje węzeł klastra. |
 | przejście — stan | Pobiera postęp operacji rozpoczętej przy użyciu StartNodeTransition. |
+
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl węzła Add-Configuration-Parameter-Overrides
+Dodaje listę zastąpień konfiguracji w określonym węźle.
+
+Ten interfejs API umożliwia dodawanie wszystkich istniejących zastąpień konfiguracji w określonym węźle.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --config-Parameter-override-list [wymagane] | Opis dodawania listy zastąpień konfiguracji. |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --Wymuś | Wymuś Dodawanie zastąpień konfiguracji do określonych węzłów. |
+| --timeout-t | Limit czasu serwera na potrzeby wykonywania operacji w sekundach. Ten limit czasu określa czas, przez jaki klient chce czekać na zakończenie wymaganej operacji. Wartość domyślna tego parametru to 60 sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
 ## <a name="sfctl-node-disable"></a>Wyłącz węzeł sfctl
 Dezaktywuj węzeł klastra Service Fabric z określonym zamiarem dezaktywacji.
@@ -58,6 +85,28 @@ Dezaktywuj węzeł klastra Service Fabric z określonym zamiarem dezaktywacji. P
 Aktywuj Service Fabric węzeł klastra, który jest obecnie dezaktywowany.
 
 Aktywuje Service Fabric węzeł klastra, który jest obecnie dezaktywowany. Po aktywowaniu węzeł będzie ponownie działać jako obiekt docelowy do umieszczania nowych replik, a wszystkie zdezaktywowane repliki pozostałe w węźle zostaną uaktywnione ponownie.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --timeout-t | Limit czasu serwera na potrzeby wykonywania operacji w sekundach. Ten limit czasu określa czas, przez jaki klient chce czekać na zakończenie wymaganej operacji. Wartość domyślna tego parametru to 60 sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl węzła Get-Configuration — zastąpień
+Pobiera listę zastąpień konfiguracji w określonym węźle.
+
+Ten interfejs API umożliwia pobieranie wszystkich istniejących zastąpień konfiguracji w określonym węźle.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -167,10 +216,32 @@ Pobiera informacje o ładowaniu Service Fabric węzła dla wszystkich metryk, dl
 | --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
 | --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
 
+## <a name="sfctl-node-remove-configuration-overrides"></a>węzeł sfctl Usuń konfigurację — zastąpienia
+Usuwa zastąpienia konfiguracji w określonym węźle.
+
+Ten interfejs API umożliwia usunięcie wszystkich istniejących zastąpień konfiguracji w określonym węźle.
+
+### <a name="arguments"></a>Argumenty
+
+|Argument|Opis|
+| --- | --- |
+| --Node-Name [wymagane] | Nazwa węzła. |
+| --timeout-t | Limit czasu serwera na potrzeby wykonywania operacji w sekundach. Ten limit czasu określa czas, przez jaki klient chce czekać na zakończenie wymaganej operacji. Wartość domyślna tego parametru to 60 sekund.  Domyślne\: 60. |
+
+### <a name="global-arguments"></a>Argumenty globalne
+
+|Argument|Opis|
+| --- | --- |
+| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
+| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
+| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
+| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+
 ## <a name="sfctl-node-remove-state"></a>sfctl węzła usuwania stanu
 Powiadamia Service Fabric, że trwały stan w węźle został trwale usunięty lub utracony.
 
-Oznacza to, że nie jest możliwe odzyskanie utrwalonego stanu tego węzła. Zwykle dzieje się tak, jeśli dysk twardy został oczyszczony z czyszczeniem lub jeśli dysk twardy ulegnie awarii. Aby ta operacja zakończyła się pomyślnie, węzeł musi być wyłączony. Ta operacja umożliwia Service Fabric informacji o tym, że repliki w tym węźle już nie istnieją, a Service Fabric powinny przestać czekać na kopie zapasowe tych replik. Nie uruchamiaj tego polecenia cmdlet, jeśli stan węzła nie został usunięty, a węzeł może utworzyć kopię zapasową w stanie niezmienionym. Począwszy od Service Fabric 6,5, aby użyć tego interfejsu API dla węzłów inicjatora, Zmień węzły inicjatora na regularne (nie będące inicjatorami), a następnie Wywołaj ten interfejs API w celu usunięcia stanu węzła. Jeśli klaster działa na platformie Azure, po awarii węzła inicjatora Service Fabric spróbuje zmienić go na węzeł niebędący inicjatorem. Aby to osiągnąć, upewnij się, że liczba węzłów niebędących inicjatorami w typie podstawowym węzła nie jest mniejsza niż liczba węzłów początkowych. W razie potrzeby Dodaj więcej węzłów do typu węzła podstawowego, aby to osiągnąć. W przypadku klastra autonomicznego, jeśli nie ma potrzeby tworzenia kopii zapasowej węzła inicjatora w dół bez zmian, Usuń węzeł z klastra, zobacz https\://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
+Oznacza to, że nie jest możliwe odzyskanie utrwalonego stanu tego węzła. Zwykle dzieje się tak, jeśli dysk twardy został oczyszczony z czyszczeniem lub jeśli dysk twardy ulegnie awarii. Aby ta operacja zakończyła się pomyślnie, węzeł musi być wyłączony. Ta operacja umożliwia Service Fabric informacji o tym, że repliki w tym węźle już nie istnieją, a Service Fabric powinny przestać czekać na kopie zapasowe tych replik. Nie uruchamiaj tego polecenia cmdlet, jeśli stan węzła nie został usunięty, a węzeł może utworzyć kopię zapasową w stanie niezmienionym. Począwszy od Service Fabric 6,5, aby użyć tego interfejsu API dla węzłów inicjatora, Zmień węzły inicjatora na regularne (nie będące inicjatorami), a następnie Wywołaj ten interfejs API w celu usunięcia stanu węzła. Jeśli klaster działa na platformie Azure, po awarii węzła inicjatora Service Fabric spróbuje zmienić go na węzeł niebędący inicjatorem. Aby to osiągnąć, upewnij się, że liczba węzłów niebędących inicjatorami w typie podstawowym węzła nie jest mniejsza niż liczba węzłów początkowych. W razie potrzeby Dodaj więcej węzłów do typu węzła podstawowego, aby to osiągnąć. W przypadku klastra autonomicznego, jeśli nie ma potrzeby tworzenia kopii zapasowej węzła inicjatora w dół bez zmian, Usuń węzeł z klastra, zobacz https\://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -207,7 +278,7 @@ Informuje o stanie kondycji określonego węzła Service Fabric. Raport musi zaw
 | --remove-when-expired | Wartość wskazująca, czy raport został usunięty z magazynu kondycji po jego wygaśnięciu. <br><br> W przypadku ustawienia wartości true raport zostanie usunięty z magazynu kondycji po jego wygaśnięciu. Jeśli zostanie ustawiona na wartość false, raport jest traktowany jako błąd po wygaśnięciu. Wartość tej właściwości jest domyślnie fałszywa. Gdy klienci raportują okresowo, powinni ustawić RemoveWhenExpired false (domyślnie). W ten sposób, to program reporter ma problemy (np. zakleszczenie) i nie może zgłosić, gdy Raport kondycji wygaśnie. Oznacza to, że jednostka jest w stanie błędu kondycji. |
 | --Sequence-Number | Numer sekwencyjny dla tego raportu kondycji jako ciąg liczbowy. <br><br> Numer sekwencyjny raportu jest używany przez magazyn kondycji do wykrywania starych raportów. Jeśli nie zostanie określony, numer sekwencyjny jest generowany automatycznie przez klienta kondycji, gdy raport zostanie dodany. |
 | --timeout-t | Domyślne\: 60. |
-| --ttl | Czas trwania okresu ważności tego raportu kondycji. To pole używa formatu ISO8601 do określenia czasu trwania. <br><br> Gdy klienci raportują okresowo, powinni wysyłać raporty o wyższej częstotliwości niż czas wygaśnięcia. Jeśli klienci raportują przejście, mogą ustawić czas zbyt aktywny na nieskończoność. Po wygaśnięciu wygaśnięcia zdarzenia dotyczącego kondycji, które zawiera informacje o kondycji, zostaną usunięte z magazynu kondycji, jeśli RemoveWhenExpired ma wartość true lub jest oceniane w przypadku błędu, jeśli RemoveWhenExpired false. Jeśli nie zostanie określony, wartość czasu wygaśnięcia będzie równa wartości nieskończonej. |
+| --ttl | Czas trwania okresu ważności tego raportu kondycji. To pole używa formatu ISO8601 do określenia czasu trwania. <br><br> Gdy klienci raportują okresowo, powinni wysyłać raporty o wyższej częstotliwości niż czas wygaśnięcia. Jeśli klienci raportują przejście, mogą ustawić czas wygaśnięcia na wartość nieskończoną. Po wygaśnięciu wygaśnięcia zdarzenia dotyczącego kondycji, które zawiera informacje o kondycji, zostaną usunięte z magazynu kondycji, jeśli RemoveWhenExpired ma wartość true lub jest oceniane w przypadku błędu, jeśli RemoveWhenExpired false. Jeśli nie zostanie określony, wartość czasu wygaśnięcia będzie równa wartości nieskończonej. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 

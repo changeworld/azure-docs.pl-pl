@@ -1,5 +1,5 @@
 ---
-title: Współpraca z interfejsem API zintegrowanej kwerendy języka JavaScript w Azure Cosmos DB
+title: Współpraca z interfejsem API zintegrowanej kwerendy języka JavaScript w Azure Cosmos DB procedury składowane i wyzwalacze
 description: W tym artykule przedstawiono koncepcje dotyczące interfejsu API zapytań zintegrowanych z językiem JavaScript do tworzenia procedur składowanych i wyzwalaczy w Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445312"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901837"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Interfejs API zapytań JavaScript w Azure Cosmos DB
 
-Oprócz wydawania zapytań przy użyciu interfejsu API SQL w Azure Cosmos DB, [zestaw SDK po stronie serwera Cosmos DB](https://azure.github.io/azure-cosmosdb-js-server/) umożliwia wykonywanie zoptymalizowanych zapytań przy użyciu interfejsu JavaScript. Nie trzeba znać języka SQL, aby używać tego interfejsu JavaScript. Interfejs API zapytań języka JavaScript umożliwia Programistyczne tworzenie zapytań przez przekazywanie funkcji predykatów do sekwencji wywołań funkcji, z składnią ECMAScript5's wbudowane i popularne biblioteki języka JavaScript, takie jak Lodash. Zapytania są analizowane przez środowisko uruchomieniowe JavaScript i efektywnie wykonywane przy użyciu Azure Cosmos DB indeksów.
+Oprócz wydawania zapytań przy użyciu interfejsu API SQL w Azure Cosmos DB, [zestaw SDK po stronie serwera Cosmos DB](https://azure.github.io/azure-cosmosdb-js-server/) udostępnia interfejs JavaScript do wykonywania zoptymalizowanych zapytań w Cosmos DB procedurach składowanych i wyzwalaczach. Nie trzeba znać języka SQL, aby używać tego interfejsu JavaScript. Interfejs API zapytań języka JavaScript umożliwia Programistyczne tworzenie zapytań przez przekazywanie funkcji predykatów do sekwencji wywołań funkcji, z składnią ECMAScript5's wbudowane i popularne biblioteki języka JavaScript, takie jak Lodash. Zapytania są analizowane przez środowisko uruchomieniowe JavaScript i efektywnie wykonywane przy użyciu Azure Cosmos DB indeksów.
 
 ## <a name="supported-javascript-functions"></a>Obsługiwane funkcje języka JavaScript
 

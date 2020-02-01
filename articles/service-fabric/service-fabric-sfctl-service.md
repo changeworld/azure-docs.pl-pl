@@ -3,14 +3,14 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric — usługa sf
 description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń związanych z zarządzaniem usługami, typami usług i pakietami usług.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 24ba7fea2ed51ea57c0a44e3c1f26b5df6043e1e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 696de713129ca71dd7f2451501a7cc9eca0ee9b9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639075"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906243"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Tworzenie, usuwanie usług, typów usług i pakietów usług oraz zarządzanie nimi.
@@ -35,7 +35,7 @@ Tworzenie, usuwanie usług, typów usług i pakietów usług oraz zarządzanie n
 | package-health | Pobiera informacje o kondycji pakietu usługi dla określonej aplikacji wdrożonej dla węzła Service Fabric i aplikacji. |
 | package-info | Pobiera listę pakietów usługi wdrożonych w węźle Service Fabric zgodnym z określoną nazwą. |
 | package-list | Pobiera listę pakietów usług wdrożonych w węźle Service Fabric. |
-| odzyskiwanie | Wskazuje klaster Service Fabric, który powinien próbować odzyskać określoną usługę, która aktualnie jest zablokowana w utracie kworum. |
+| odtwarzania | Wskazuje klaster Service Fabric, który powinien próbować odzyskać określoną usługę, która aktualnie jest zablokowana w utracie kworum. |
 | report-health | Wysyła raport o kondycji w usłudze Service Fabric. |
 | wyjaśnić | Rozpoznaj partycję Service Fabric. |
 | type-list | Pobiera listę zawierającą informacje o typach usług obsługiwanych przez typ aplikacji zainicjowanej w klastrze Service Fabric. |
@@ -110,7 +110,7 @@ Tworzy określoną usługę Service Fabric.
 | --int-scheme-low | Początek zakresu wartości całkowitych, jeśli jest używany schemat partycji jednolitej liczby całkowitej. |
 | --Load-Metrics | Zakodowana lista metryk w formacie JSON używana podczas równoważenia obciążenia usług między węzłami. |
 | --min-replica-set-size | Minimalny rozmiar zestawu replik to liczba. Dotyczy to wyłącznie usług stanowych. |
-| --move-cost | Określa koszt przenoszenia usługi. Możliwe wartości to\: "zero", "Low", "medium", "High". |
+| --move-cost | Określa koszt przenoszenia usługi. Możliwe wartości to\: "zero", "Low", "medium", "High", "VeryHigh". |
 | --named-scheme | Wskazuje, że usługa powinna mieć wiele nazwanych partycji. |
 | --named-scheme-list | Zakodowana w formacie JSON lista nazw do partycjonowania usługi w programie, jeśli jest używany schemat partycji o nazwie. |
 | --No-PERSISTED-State | W przypadku wartości true oznacza to, że usługa nie ma trwałego stanu przechowywanego na dysku lokalnym lub przechowuje tylko stan w pamięci. |
@@ -118,6 +118,7 @@ Tworzy określoną usługę Service Fabric.
 | --kworum — utrata odczekania | Maksymalny czas (w sekundach), przez który partycja może być w stanie utraty kworum. Dotyczy to wyłącznie usług stanowych. |
 | --replica-restart-wait | Czas trwania (w sekundach), po którym następuje awaria repliki i utworzenie nowej repliki. Dotyczy to wyłącznie usług stanowych. |
 | --scaling-policies | Zakodowana w formacie JSON lista zasad skalowania dla tej usługi. |
+| --Usługa-czas umieszczenia | Czas, przez który repliki mogą pozostać Nieskompilowane przed zgłoszeniem, że kompilacja zostanie zablokowana. Dotyczy to wyłącznie usług stanowych. |
 | --Singleton-schemat | Wskazuje, że usługa powinna mieć pojedynczą partycję lub być usługą niepartycjonowaną. |
 | --pogotowowanie do repliki — Zachowaj | Maksymalny czas (w sekundach) przechowywania replik rezerwy przed usunięciem. Dotyczy to wyłącznie usług stanowych. |
 | --stateful | Wskazuje, że usługa jest usługą stanową. |
@@ -562,11 +563,12 @@ Aktualizuje określoną usługę za pomocą podanego opisu aktualizacji.
 | --instance-Count | Liczba wystąpień. Dotyczy to wyłącznie usług bezstanowych. |
 | --Load-Metrics | Zakodowana lista wartości JSON metryk używanych podczas równoważenia obciążenia między węzłami. |
 | --min-replica-set-size | Minimalny rozmiar zestawu replik to liczba. Dotyczy to wyłącznie usług stanowych. |
-| --move-cost | Określa koszt przenoszenia usługi. Możliwe wartości to\: "zero", "Low", "medium", "High". |
+| --move-cost | Określa koszt przenoszenia usługi. Możliwe wartości to\: "zero", "Low", "medium", "High", "VeryHigh". |
 | --placement-policy-list | Zakodowana w formacie JSON lista zasad umieszczania dla usługi i skojarzonych nazw domen. Zasady mogą być co najmniej jedną\: `NonPartiallyPlaceService`, `PreferPrimaryDomain``RequireDomain`, `RequireDomainDistribution`. |
 | --kworum — utrata odczekania | Maksymalny czas (w sekundach), przez który partycja może być w stanie utraty kworum. Dotyczy to wyłącznie usług stanowych. |
 | --replica-restart-wait | Czas trwania (w sekundach), po którym następuje awaria repliki i utworzenie nowej repliki. Dotyczy to wyłącznie usług stanowych. |
 | --scaling-policies | Zakodowana w formacie JSON lista zasad skalowania dla tej usługi. |
+| --Usługa-czas umieszczenia | Czas, przez który repliki mogą pozostać Nieskompilowane przed zgłoszeniem, że kompilacja zostanie zablokowana. Dotyczy to wyłącznie usług stanowych. |
 | --pogotowowanie do repliki — Zachowaj | Maksymalny czas (w sekundach) przechowywania replik rezerwy przed usunięciem. Dotyczy to wyłącznie usług stanowych. |
 | --stateful | Wskazuje, że usługa docelowa jest usługą stanową. |
 | --bezstanowe | Wskazuje, że usługa docelowa jest usługą bezstanową. |

@@ -3,12 +3,12 @@ title: Konfigurowanie sondy na żywo w wystąpieniu kontenera
 description: Dowiedz się, jak skonfigurować sondy na żywo w celu ponownego uruchomienia kontenerów w złej kondycji w Azure Container Instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 566f7952aff1cf460272fbb418a2a0efff411881
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481673"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901894"
 ---
 # <a name="configure-liveness-probes"></a>Konfigurowanie sond żywotności
 
@@ -17,6 +17,9 @@ Aplikacje kontenerowe mogą być uruchamiane przez dłuższy czas, co spowodowa�
 W tym artykule wyjaśniono, jak wdrożyć grupę kontenerów zawierającą sondę na żywo, pokazującą automatyczne ponowne uruchomienie symulowanego kontenera w złej kondycji.
 
 Azure Container Instances obsługuje również [sondy gotowości](container-instances-readiness-probe.md), które można skonfigurować, aby zapewnić, że ruch osiągnie kontener tylko wtedy, gdy jest on gotowy do obsługi.
+
+> [!NOTE]
+> Obecnie nie można używać sondy na żywo w grupie kontenerów wdrożonej w sieci wirtualnej.
 
 ## <a name="yaml-deployment"></a>Wdrożenie YAML
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2020
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: 1d8106b60433f8f9023c892a2cf0ab8044b4f22c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: e70d2e07f74a48e1d99e04c5369a933cfd9cede1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939971"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905353"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Repozytoria Git z przykładami dla usługi Azure Event Hubs 
 Przykłady usługi Event Hubs można znaleźć na [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Te przykłady pokazują kluczowe funkcje [usługi Azure Event Hubs](/azure/event-hubs/). W tym artykule kategoryzuje i opisuje dostępna, wraz z łączami do każdego przykładów.
@@ -29,29 +29,29 @@ Przykłady usługi Event Hubs można znaleźć na [GitHub](https://github.com/Az
 
 | Wersja | Lokalizacja przykładów |
 | ------- | ---------------- | 
-| 5.0.0 lub więcej | [Przykłady usługi Event Hubs w usłudze GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[Przykłady procesora Event Hubs w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
-| 4.1.0 | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
+| Azure. Messaging. EventHubs w wersji 5 (Najnowsza wersja) | [Przykłady usługi Event Hubs w usłudze GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[Przykłady procesora Event Hubs w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
+| Microsoft. Azure. EventHubs w wersji 4 (starsza wersja) | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
 
 ## <a name="java-samples"></a>Przykłady w języku Java
 
 | Wersja | Lokalizacja przykładów |
 | ------- | ---------------- | 
-| 5.0.0 lub więcej | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) | 
-| 3.0.2 | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/) |
+| Azure-Messaging — eventhubs w wersji 5 (Najnowsza wersja) | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) | 
+| Azure-eventhubs w wersji 3 (starsza wersja) | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/) |
 
 ## <a name="python-samples"></a>Przykłady w języku Python
 
 | Wersja | Lokalizacja przykładów |
 | ------- | ---------------- | 
-| 5.0.0 lub więcej | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
-| 1.3.3 | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
+| Azure — eventhub w wersji 5 (Najnowsza wersja) | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
+| Azure — eventhub w wersji 1 (starsza wersja) | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
 ## <a name="nodejs-samples"></a>Przykłady dla platformy Node.js
 
 | Wersja | Lokalizacja przykładów |
 | ------- | ---------------- | 
-| 5.0.0 lub więcej | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) | 
-| 2.1.0 | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |
+| Azure/Event-Hubs w wersji 5 (Najnowsza wersja) | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) | 
+| Azure/Event-Hubs w wersji 2 (starsza wersja) | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |
 
 
 ## <a name="go-samples"></a>Przykłady kodu języka go

@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760015"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905767"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Wersja zapoznawcza: Tworzenie szablonu usługi Azure Image Builder 
 
@@ -317,6 +317,8 @@ Dostosuj właściwości:
 - **restartCheckCommand** — polecenie, aby sprawdzić, czy ponowne uruchomienie zakończyło się pomyślnie (opcjonalnie). 
 - **restartTimeout** — limit czasu ponownego uruchomienia określony jako ciąg wielkości i jednostki. Na przykład `5m` (5 minut) lub `2h` (2 godziny). Wartość domyślna to: "5 m"
 
+### <a name="linux-restart"></a>Ponowne uruchamianie systemu Linux  
+Jeśli instalujesz sterowniki lub składniki wymagające ponownego uruchomienia, można je zainstalować i wywoływać ponowne uruchomienie przy użyciu konfiguratora powłoki, a na maszynie wirtualnej kompilacji jest przekroczenie limitu czasu 20min SSH.
 
 ### <a name="powershell-customizer"></a>Dostosowywanie programu PowerShell 
 Konfigurator powłoki obsługuje uruchamianie skryptów programu PowerShell i polecenia wbudowanego. skrypty muszą być dostępne publicznie, aby można było uzyskać do nich dostęp.

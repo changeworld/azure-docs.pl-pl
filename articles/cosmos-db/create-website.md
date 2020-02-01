@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 11b84877171fae8e788d3298973fd74645b35480
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719340"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901914"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Wdrażanie usługi Azure Cosmos DB i Azure App Service Web Apps przy użyciu szablonu usługi Azure Resource Manager
 W tym samouczku pokazano, jak szablon usługi Azure Resource Manager umożliwia wdrażanie i integrowanie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) aplikacji sieci web i przykładowej aplikacji sieci web.
@@ -69,7 +69,7 @@ Teraz Zajmijmy się wdrożeniem pierwszego szablonu.
    ![Zrzut ekranu przedstawiający interfejs użytkownika wdrażania szablonu](./media/create-website/TemplateDeployment6.png)
 7. Po zakończeniu wdrożenia zostanie otwarte okienko grupy zasobów.
    ![Zrzut ekranu przedstawiający okienko grupy zasobów](./media/create-website/TemplateDeployment7.png)  
-8. Korzystanie z aplikacji, przejdź do adresu URL aplikacji sieci web (w powyższym przykładzie adres URL będzie mieć http://mydemodocdbwebapp.azurewebsites.net).  Zostanie wyświetlone następującej aplikacji sieci web:
+8. Aby użyć aplikacji, przejdź do adresu URL aplikacji sieci Web (w powyższym przykładzie adres URL zostałby `http://mydemodocdbwebapp.azurewebsites.net`).  Zostanie wyświetlone następującej aplikacji sieci web:
    
    ![Przykładowa aplikacja Todo](./media/create-website/image2.png)
 9. Przejdź dalej i Utwórz kilka zadań w aplikacji sieci web, a następnie wróć do okienka grupy zasobów w witrynie Azure portal. Kliknij zasób konta usługi Azure Cosmos DB na liście zasobów, a następnie kliknij przycisk **Eksplorator danych**.

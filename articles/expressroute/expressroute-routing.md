@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 934dc94da9bbdfc38cc12e78eaa5b67fa9f786ca
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083312"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901585"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -175,6 +175,12 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Zachodnie Zjednoczone Królestwo | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
 | Francja Środkowa | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
 | Francja Południowa | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
+| Szwajcaria Północna | 12076:51038 | 12076:52038 | 12076:53038 | 12076:54038 | 
+| Szwajcaria Zachodnia | 12076:51039 | 12076:52039 | 12076:53039 | 12076:54039 | 
+| Niemcy Północne | 12076:51040 | 12076:52040 | 12076:53040 | 12076:54040 | 
+| Niemcy Środkowo-Zachodnie | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 
+| Norwegia Wschodnia | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
+| Norwegia Zachodnia | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
 | **Azja i Pacyfik** | |
 | Azja Wschodnia | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
 | Azja Południowo-Wschodnia | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
@@ -219,7 +225,7 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | Skype dla firm Online * * | 12076:5030 |
 | CRM Online |12076:5040 |
 | Usługa Azure globalnego usług * | 12076:5050 |
-| Usługa Azure Active Directory |12076:5060 |
+| Usługa Active Directory systemu Azure |12076:5060 |
 | Inne usługi online pakietu Office 365 * * | 12076:5100 |
 
 \* Usługi globalne platformy Azure obejmują tylko usługę Azure DevOps.

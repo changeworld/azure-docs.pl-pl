@@ -1,16 +1,16 @@
 ---
 title: Interfejs wiersza polecenia platformy Azure Service Fabric — Właściwość sfctl
-description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń do tworzenia historii i wykonywania zapytań dotyczących właściwości.
+description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń do przechowywania i wykonywania zapytań dotyczących właściwości.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639109"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905828"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Właściwości magazynu i zapytania w obszarze nazwy Service Fabric.
@@ -22,7 +22,7 @@ Właściwości magazynu i zapytania w obszarze nazwy Service Fabric.
 | delete | Usuwa określoną właściwość Service Fabric. |
 | Pobierz | Pobiera określoną właściwość Service Fabric. |
 | list | Pobiera informacje o wszystkich Service Fabric właściwościach o podanej nazwie. |
-| put | Tworzy lub aktualizuje właściwość Service Fabric. |
+| Ubrani | Tworzy lub aktualizuje właściwość Service Fabric. |
 
 ## <a name="sfctl-property-delete"></a>sfctl — usuwanie właściwości
 Usuwa określoną właściwość Service Fabric.
@@ -105,7 +105,7 @@ Tworzy lub aktualizuje określoną właściwość Service Fabric pod daną nazw�
 | --- | --- |
 | --Name-ID [wymagane] | Nazwa Service Fabric bez schematu identyfikatora URI "Sieć szkieletowa\:". |
 | --Property-Name [wymagane] | Nazwa właściwości Service Fabric. |
-| --wartość [wymagane] | Opisuje Service Fabric wartość właściwości. Jest to ciąg JSON. <br><br> Ciąg JSON ma dwa pola, typ "dane" i "wartość" danych. Wartość "Kind" musi być pierwszym elementem wyświetlanym w ciągu JSON i może mieć wartości "Binary", "Int64", "Double", "String" lub "GUID". Wartość powinna być serializowana dla danego typu. Wartości "Kind" i "Data" powinny być podane jako ciągi. |
+| --wartość [wymagane] | Opisuje Service Fabric wartość właściwości. Jest to ciąg JSON. <br><br> Ciąg JSON ma dwa pola, typ "dane" i wartość wprowadzoną jako "dane" danych. Wartość "Kind" musi być pierwszym elementem wyświetlanym w ciągu JSON i może mieć wartości "Binary", "Int64", "Double", "String" lub "GUID". Wartość powinna być serializowana dla danego typu. Wartości "Kind" i "Data" powinny być podane jako ciągi. |
 | --typ niestandardowy-ID | Identyfikator typu niestandardowego właściwości. Korzystając z tej właściwości, użytkownik może oznaczyć typ wartości właściwości. |
 | --timeout-t | Domyślne\: 60. |
 

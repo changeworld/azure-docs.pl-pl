@@ -1,0 +1,101 @@
+---
+title: Tworzenie kolekcji dla portali my Apps w Azure Active Directory | Microsoft Docs
+description: Za pomocą kolekcji Moje aplikacje można dostosować strony Moje aplikacje, aby uprościć środowisko moje aplikacje dla użytkowników końcowych. Organizuj aplikacje w grupy z osobnymi kartami.
+services: active-directory
+documentationcenter: ''
+author: msmimart
+manager: CelesteDG
+ms.assetid: ''
+ms.service: active-directory
+ms.subservice: app-mgmt
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/28/2020
+ms.author: mimart
+ms.reviewer: kasimpso
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f1ed80ad87d81c2ec1bdfe50e9cd4556f141507b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76907476"
+---
+# <a name="create-collections-on-the-my-apps-portal"></a>Tworzenie kolekcji w portalu My Apps
+
+Użytkownicy mogą używać portalu My Apps do wyświetlania i uruchamiania aplikacji opartych na chmurze, do których mają dostęp. Domyślnie wszystkie aplikacje, do których użytkownik ma dostęp, są wyświetlane razem na jednej stronie. Aby lepiej zorganizować Tę stronę dla użytkowników, jeśli masz licencję na Azure AD — wersja Premium P1 lub P2, możesz skonfigurować kolekcje. Za pomocą kolekcji można grupować połączone aplikacje, które są powiązane (na przykład według roli zadania, zadania lub projektu) i wyświetlać je na osobnej karcie. Kolekcja zasadniczo stosuje filtr do aplikacji, do których użytkownik może uzyskać dostęp, więc użytkownik widzi tylko te aplikacje w kolekcji, które zostały do nich przypisane.
+
+> [!NOTE]
+> W tym artykule opisano sposób, w jaki administrator może włączyć i utworzyć kolekcje. Informacje dla użytkownika końcowego dotyczące korzystania z portalu Moje aplikacje i kolekcji znajdują się w temacie [Access and use Collections](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
+
+## <a name="enable-my-apps-preview-features"></a>Włącz funkcje w wersji zapoznawczej moich aplikacji
+
+1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako administrator użytkownika lub Administrator globalny.
+
+2. Przejdź do pozycji **Azure Active Directory** > **Ustawienia użytkownika**.
+
+3. W obszarze **Podgląd funkcji użytkownika**wybierz pozycję **Zarządzaj ustawieniami wersji zapoznawczej funkcji użytkownika**.
+
+4. W obszarze **Użytkownicy mogą używać funkcji w wersji zapoznawczej dla moich aplikacji**, wybierz jedną z następujących opcji:
+   * **Wybrane** — włącza funkcje w wersji zapoznawczej dla określonej grupy. Użyj opcji **Wybierz grupę** , aby wybrać grupę, dla której chcesz włączyć funkcje w wersji zapoznawczej.  
+   * **Wszystkie** — włącza funkcje w wersji zapoznawczej dla wszystkich użytkowników.
+
+> [!NOTE]
+> Aby otworzyć Portal moje aplikacje, użytkownicy mogą korzystać z linku `https://myapps.microsoft.com` lub niestandardowego linku dla organizacji, takiego jak `https://myapps.microsoft.com/contoso.com`. Po włączeniu środowiska moje aplikacje zostanie wyświetlony transparent " **zaktualizowane środowisko moje aplikacje** " w górnej części strony Moje aplikacje, a użytkownicy mogą wybrać opcję **Wypróbuj** , aby wyświetlić nowe środowisko. Aby zrezygnować z korzystania z nowego środowiska, użytkownicy mogą wybrać opcję **tak** z transparentu **Opuść nowe środowisko** w górnej części strony.
+
+## <a name="create-a-collection"></a>Tworzenie kolekcji
+
+Aby utworzyć kolekcję, musisz mieć licencję na Azure AD — wersja Premium P1 lub P2.
+
+1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako administrator z licencją Azure AD — wersja Premium P1 lub P2.
+
+2. Przejdź do **Azure Active Directory** > **aplikacje dla przedsiębiorstw**.
+
+3. W obszarze **Zarządzaj**wybierz pozycję **kolekcje**.
+
+4. Wybierz pozycję **Nowa kolekcja**. Na stronie **Nowa kolekcja** wprowadź **nazwę** kolekcji (nie zaleca się używania "kolekcji" w nazwie. Następnie wprowadź **Opis**.
+
+   ![Nowa strona kolekcji](media/acces-panel-collections/new-collection.png)
+
+5. Wybierz kartę **aplikacje** . Wybierz pozycję **+ Dodaj aplikację**, a następnie na stronie **Dodawanie aplikacji** zaznacz wszystkie aplikacje, które chcesz dodać do kolekcji, lub użyj pola **wyszukiwania** , aby znaleźć aplikacje.
+
+   ![Dodawanie aplikacji do kolekcji](media/acces-panel-collections/add-applications.png)
+
+6. Po zakończeniu dodawania aplikacji wybierz pozycję **Dodaj**. Zostanie wyświetlona lista wybranych aplikacji. Aby zmienić kolejność aplikacji na liście, można użyć strzałek w górę. Aby przenieść aplikację w dół lub usunąć ją z kolekcji, wybierz menu **więcej** ( **...** ).
+
+7. Wybierz kartę **właściciele** . Wybierz pozycję **+ Dodaj użytkowników i grupy**, a następnie na stronie **Dodawanie użytkowników i grup** wybierz użytkowników lub grupy, do których chcesz przypisać własność. Po zakończeniu wybierania pozycji Użytkownicy i grupy wybierz **pozycję Wybierz**.
+
+9. Wybierz kartę **Użytkownicy i grupy** . Wybierz pozycję **+ Dodaj użytkowników i grupy**, a następnie na stronie **Dodawanie użytkowników i grup** wybierz użytkowników lub grupy, do których chcesz przypisać kolekcję. Lub użyj pola **wyszukiwania** , aby znaleźć użytkowników lub grupy. Po zakończeniu wybierania pozycji Użytkownicy i grupy wybierz **pozycję Wybierz**.
+
+   ![Dodawanie użytkowników i grup](media/acces-panel-collections/add-users-and-groups.png)
+
+11. Wybierz pozycję **Przegląd + utwórz**. Zostanie wyświetlona Właściwość nowej kolekcji.
+
+
+## <a name="view-audit-logs"></a>Wyświetlanie dzienników inspekcji
+
+Dzienniki inspekcji rejestrują operacje kolekcje moje aplikacje, w tym tworzenie kolekcji — akcje użytkownika końcowego. Następujące zdarzenia są generowane przez moje aplikacje:
+
+* Utwórz kolekcję
+* Edytuj kolekcję
+* Usuwanie kolekcji
+* Uruchom aplikację (użytkownik końcowy)
+* Dodawanie aplikacji samoobsługowej (użytkownik końcowy)
+* Usuwanie aplikacji samoobsługowej (użytkownik końcowy)
+
+Możesz uzyskać dostęp do dzienników inspekcji w [Azure Portal](https://portal.azure.com) , wybierając pozycję **Azure Active Directory** > **aplikacje dla przedsiębiorstw** > **inspekcje dzienników** w sekcji działanie. W obszarze **Usługa**wybierz pozycję **Moje aplikacje**.
+
+## <a name="get-support-for-my-account-pages"></a>Uzyskaj pomoc techniczną dotyczącą stron My Account
+
+Na stronie Moje aplikacje użytkownik może wybrać pozycję **Moje konto** > **Wyświetl moje konto** , aby otworzyć ustawienia konta. Na stronie **Moje konto** usługi Azure AD użytkownicy mogą zarządzać swoimi informacjami zabezpieczeń, urządzeniami, hasłami i nie tylko. Mogą również uzyskiwać dostęp do ustawień konta pakietu Office.
+
+Jeśli musisz przesłać żądanie pomocy technicznej w celu uzyskania problemu na stronie konta usługi Azure AD lub stronie konta pakietu Office, wykonaj następujące kroki, aby Twoje żądanie zostało prawidłowo przekierowane: 
+
+* W przypadku problemów z stroną **Moje konto usługi Azure AD** Otwórz żądanie pomocy technicznej z poziomu Azure Portal. Przejdź do **Azure Portal** > **Azure Active Directory** > **nowe żądanie obsługi**.
+
+* W przypadku problemów z stroną **"Moje konto" pakietu Office** Otwórz żądanie pomocy technicznej w centrum administracyjnym Microsoft 365. Przejdź do **Centrum administracyjnego Microsoft 365** > **support**. 
+
+## <a name="next-steps"></a>Następne kroki
+[Środowisko użytkownika końcowego dla aplikacji w Azure Active Directory](end-user-experiences.md)

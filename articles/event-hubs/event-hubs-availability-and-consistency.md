@@ -4,7 +4,6 @@ description: Jak zapewnić maksymalną ilość dostępność i spójność z us�
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: 8f3637a1-bbd7-481e-be49-b3adf9510ba1
 ms.service: event-hubs
@@ -12,15 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 01/29/2020
 ms.author: shvija
-ms.openlocfilehash: 425f4d9dbd6478af834bee6c88d0f13bdaa45b16
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 808e813ad90626acec893a021634566f091c895f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273692"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904484"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Dostępność i spójność w usłudze Event Hubs
 
@@ -49,20 +47,57 @@ W przypadku tej konfiguracji należy pamiętać o tym, że jeśli określonej pa
 
 Agregowanie zdarzeń jest jedno możliwe rozwiązanie, aby upewnić się, w kolejności, maksymalizując równocześnie również czas, w ramach Twojej aplikacji do przetwarzania zdarzeń. Najprostszym sposobem, aby osiągnąć ten cel jest sygnatura zdarzenia z właściwością numer sekwencji niestandardowych. Poniżej znajduje się kod przykładowy:
 
+#### <a name="azuremessagingeventhubs-500-or-latertablatest"></a>[Azure. Messaging. EventHubs (5.0.0 lub nowszy)](#tab/latest)
+
 ```csharp
-// Get the latest sequence number from your application
+// create a producer client that you can use to send events to an event hub
+await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
+{
+    // get the latest sequence number from your application
+    var sequenceNumber = GetNextSequenceNumber();
+
+    // create a batch of events 
+    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
+
+    // create a new EventData object by encoding a string as a byte array
+    var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
+
+    // set a custom sequence number property
+    data.Properties.Add("SequenceNumber", sequenceNumber);
+
+    // add events to the batch. An event is a represented by a collection of bytes and metadata. 
+    eventBatch.TryAdd(data);
+
+    // use the producer client to send the batch of events to the event hub
+    await producerClient.SendAsync(eventBatch);
+}
+```
+
+#### <a name="microsoftazureeventhubs-410-or-earliertabold"></a>[Microsoft. Azure. EventHubs (4.1.0 lub starszy)](#tab/old)
+```csharp
+// Create an Event Hubs client
+var client = new EventHubClient(connectionString, eventHubName);
+
+//Create a producer to produce events
+EventHubProducer producer = client.CreateProducer();
+
+// Get the latest sequence number from your application 
 var sequenceNumber = GetNextSequenceNumber();
+
 // Create a new EventData object by encoding a string as a byte array
 var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
+
 // Set a custom sequence number property
 data.Properties.Add("SequenceNumber", sequenceNumber);
+
 // Send single message async
-await eventHubClient.SendAsync(data);
+await producer.SendAsync(data);
 ```
+---
 
 W tym przykładzie wysyła zdarzenia do jednej z dostępnych partycji w Centrum zdarzeń i ustawia odpowiedni numer sekwencji z aplikacji. To rozwiązanie wymaga stanu, które mają być przechowywane przez aplikację do przetwarzania, ale zapewnia Twojej nadawców punktu końcowego, który jest bardziej prawdopodobne, mają być dostępne.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
 * [Omówienie usługi Event Hubs usługi](event-hubs-what-is-event-hubs.md)

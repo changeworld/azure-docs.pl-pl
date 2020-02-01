@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771619"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906269"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -201,49 +201,14 @@ Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie u
 
 ### <a name="regional-availability"></a>Dostępność regionalna
 
-Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W niektórych regionach są one dostępne z limitem 100 TiB, te regiony są wymienione w poniższej tabeli:
+Standardowe udziały plików z 100 TiB limit pojemności są dostępne globalnie we wszystkich regionach platformy Azure —
 
-|Region |Obsługiwana nadmiarowość |
-|-------|---------|
-|Australia Środkowa    |LRS     |
-|Australia Środkowa 2    |LRS     |
-|Australia Wschodnia |LRS     |
-|Australia Południowo-Wschodnia|LRS |
-|Brazylia Południowa    |LRS     |
-|Kanada Środkowa  |LRS     |
-|Kanada Wschodnia     |LRS     |
-|Indie Środkowe  |LRS     |
-|Środkowe stany USA *   |LRS, ZRS    |
-|Azja Wschodnia      |LRS     |
-|Wschodnie stany USA *        |LRS, ZRS|
-|Wschodnie stany USA 2 *      |LRS, ZRS     |
-|Francja Środkowa |LRS, ZRS|
-|Francja Południowa   |LRS     |
-|Japonia Wschodnia     |LRS     |
-|Japonia Zachodnia     |LRS     |
-|Korea Środkowa  |LRS     |
-|Korea Południowa    |LRS     |
-|Północno-środkowe stany USA |LRS   |
-|Europa Północna   |LRS     |
-|Indie Południowe    |LRS     |
-|Południowo-środkowe stany USA |LRS     |
-|Azja Południowo-Wschodnia |LRS, ZRS|
-|Szwajcaria Północna    |LRS     |
-|Szwajcaria Zachodnia    |LRS     |
-|Środkowe Zjednoczone Emiraty Arabskie    |LRS     |
-|Północne Zjednoczone Emiraty Arabskie    |LRS     |
-|Północne Zjednoczone Królestwo   |LRS, ZRS    |
-|Południowe Zjednoczone Królestwo    |LRS     |
-|Zachodnie Zjednoczone Królestwo    |LRS     |
-|Zachodnio-środkowe stany USA|LRS     |
-|Europa Zachodnia *    |LRS, ZRS|
-|Indie Zachodnie   |LRS     |
-|Zachodnie stany USA        |LRS     |
-|Zachodnie stany USA 2      |LRS, ZRS|
+- LRS: wszystkie regiony, z wyjątkiem Północna Republika Południowej Afryki i Zachodnia Republika Południowej Afryki.
+   - Chmury krajowe (rządowe, Niemcy i Chiny) są obsługiwane za pośrednictwem programu PowerShell i interfejsu wiersza polecenia platformy Azure. Brak obsługi portalu. 
+   - Wschodnie stany USA, Wschodnie stany USA 2 i Europa Zachodnia: wszystkie nowe konta są obsługiwane. Niewielka liczba istniejących kont nie ukończyła procesu uaktualniania. Możesz sprawdzić, czy istniejące konta magazynu ukończyły proces uaktualniania, podejmując próbę [włączenia dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
 
-\* obsługiwane dla nowych kont, a nie wszystkie istniejące konta ukończyły proces uaktualniania. Możesz sprawdzić, czy istniejące konta magazynu ukończyły proces uaktualniania, podejmując próbę [włączenia dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
-
-Aby pomóc nam określić priorytety nowych regionów i funkcji, Wypełnij tę [ankietę](https://aka.ms/azurefilesatscalesurvey).
+- ZRS: wszystkie regiony, z wyjątkiem regionu Japonia Wschodnia, Europa Północna, Północna Republika Południowej Afryki.
+- GRS/GZRS: nieobsługiwane.
 
 ### <a name="enable-and-create-larger-file-shares"></a>Włączanie i tworzenie większych udziałów plików
 

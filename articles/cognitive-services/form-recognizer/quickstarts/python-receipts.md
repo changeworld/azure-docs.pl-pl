@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 6b6fa03337e857c6dda43f8c6ae41713d8c3dbe0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2b800cbc2f836d415afbb53a8415e9e400f40d0e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774192"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901972"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Szybki Start: wyodrębnianie danych przyjęcia przy użyciu interfejsu API REST aparatu rozpoznawania w języku Python
 
 W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy platformy Azure w języku Python, aby wyodrębnić i zidentyfikować odpowiednie informacje w blankietach sprzedaży w USA.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-> [!IMPORTANT]
-> Ten przewodnik Szybki Start używa interfejsu API aparatu rozpoznawania w wersji 2.0. Jeśli Twoja subskrypcja nie znajduje się w regionie `West US 2` lub `West Europe`, musisz użyć interfejsu API w wersji 1.0. Postępuj zgodnie z [przewodnikiem Szybki Start w wersji 1.0](./curl-train-extract-v1.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

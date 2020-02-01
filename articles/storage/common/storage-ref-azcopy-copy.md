@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0c1b09fbc425a80fe1f8d075c5a83455167073c3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b9ac15e6909498c38f618a24be6b010dc2774b07
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029987"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905509"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -41,7 +41,7 @@ Aby uzyskać więcej informacji, zapoznaj się z przykładami.
 - [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
 - [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)
 
-## <a name="advanced"></a>Zaawansowane
+## <a name="advanced"></a>Advanced
 
 AzCopy automatycznie wykrywa typ zawartości plików podczas przekazywania z dysku lokalnego na podstawie rozszerzenia lub zawartości pliku (jeśli nie określono rozszerzenia).
 
@@ -147,25 +147,25 @@ Skopiuj wszystkie kontenery obiektów blob, katalogi i obiekty blob z konta maga
 
 Skopiuj pojedynczy obiekt do Blob Storage z Amazon Web Services (AWS) S3 przy użyciu klucza dostępu i tokenu SAS. Najpierw Ustaw zmienną środowiskową AWS_ACCESS_KEY_ID i AWS_SECRET_ACCESS_KEY dla źródła AWS S3.
   
-- AzCopy CP "https://s3.amazonaws.com/[zasobnik]/[Object]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[path/to/BLOB]? [SAS] "
+- AzCopy CP "https://s3.amazonaws.com/ [zasobnik]/[Object]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[path/to/BLOB]? [SAS] "
 
 Skopiuj cały katalog do Blob Storage z AWS S3 przy użyciu klucza dostępu i tokenu SAS. Najpierw Ustaw zmienną środowiskową AWS_ACCESS_KEY_ID i AWS_SECRET_ACCESS_KEY dla źródła AWS S3.
 
-- AzCopy CP "https://s3.amazonaws.com/[zasobnik]/[folder]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[path/to/Directory]? [SAS] "--rekursywnie = true
+- AzCopy CP "https://s3.amazonaws.com/ [zasobnik]/[folder]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[path/to/Directory]? [SAS] "--rekursywnie = true
 
-Zapoznaj się z https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html, aby lepiej zrozumieć symbol zastępczy [folder].
+Zapoznaj się z https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html , aby lepiej zrozumieć symbol zastępczy [folder].
 
 Skopiuj wszystkie zasobniki do Blob Storage z Amazon Web Services (AWS) przy użyciu klucza dostępu i tokenu SAS. Najpierw Ustaw zmienną środowiskową AWS_ACCESS_KEY_ID i AWS_SECRET_ACCESS_KEY dla źródła AWS S3.
 
-- AzCopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekursywnie = true
+- AzCopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekursywnie = true
 
 Skopiuj wszystkie zasobniki do Blob Storage z regionu Amazon Web Services (AWS) przy użyciu klucza dostępu i tokenu SAS. Najpierw Ustaw zmienną środowiskową AWS_ACCESS_KEY_ID i AWS_SECRET_ACCESS_KEY dla źródła AWS S3.
 
-- AzCopy CP "https://s3-[region]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekursywnie = true
+- AzCopy CP "https://s3- [region]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekursywnie = true
 
 Skopiuj podzestaw zasobników przy użyciu symbolu wieloznacznego (*) w nazwie zasobnika. Podobnie jak w poprzednich przykładach, potrzebny będzie klucz dostępu i token SAS. Upewnij się, że ustawienie zmienna środowiskowa AWS_ACCESS_KEY_ID i AWS_SECRET_ACCESS_KEY dla źródła AWS S3.
 
-- AzCopy CP "https://s3.amazonaws.com/[nazwa zasobnika *]/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekursywnie = true
+- AzCopy CP "https://s3.amazonaws.com/ [nazwa zasobnika *]/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekursywnie = true
 
 ## <a name="options"></a>Opcje
 
@@ -217,7 +217,7 @@ Skopiuj podzestaw zasobników przy użyciu symbolu wieloznacznego (*) w nazwie z
 
 **--no-zgadywanie-MIME-Type**                   Uniemożliwia programowi AzCopy wykrywanie typu zawartości na podstawie rozszerzenia lub zawartości pliku.
 
-**--Zastąp** ciąg nadpisać pliki powodujące konflikt i obiekty blob w miejscu docelowym, jeśli ta flaga jest ustawiona na wartość true. Możliwe wartości to "true", "false" i "Prompt". (wartość domyślna to "true")
+**--Zastąp** ciąg nadpisać pliki powodujące konflikt i obiekty blob w miejscu docelowym, jeśli ta flaga jest ustawiona na wartość true. Możliwe wartości to "true", "false", "ifSourceNewer" i "Prompt". (wartość domyślna to "true")
 
 **--Strona-ciąg warstwy obiektu** BLOB przekazywanie stronicowego obiektu BLOB do usługi Azure Storage przy użyciu tej warstwy obiektów BLOB. (domyślnie "none")
 
@@ -241,6 +241,6 @@ Skopiuj podzestaw zasobników przy użyciu symbolu wieloznacznego (*) w nazwie z
 
 **--** format ciągu typu danych wyjściowych polecenia. Dostępne opcje to: text, JSON. Wartość domyślna to "text". (domyślny "tekst")
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [AzCopy](storage-ref-azcopy.md)

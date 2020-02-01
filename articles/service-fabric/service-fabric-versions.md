@@ -2,13 +2,13 @@
 title: Obsługiwane wersje klastra w usłudze Azure Service Fabric
 description: Dowiedz się więcej o wersjach klastra w usłudze Azure Service Fabric, łącznie z linkiem do najnowszych wydań z blogu zespołu Service Fabric.
 ms.topic: troubleshooting
-ms.date: 11/18/2019
-ms.openlocfilehash: 1d54f4f459b71469c5d10c949d35841572242c07
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/28/2020
+ms.openlocfilehash: 80ecf0861f3d740fff6b68b0373f94d0e2845a9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639007"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903485"
 ---
 # <a name="supported-service-fabric-versions"></a>Obsługiwane Service Fabric wersje
 
@@ -30,7 +30,7 @@ W poniższej tabeli wymieniono wersje Service Fabric i ich daty końcowe pomocy 
 | 5.4.* | 5.1.158.* |Mniejsze niż lub równe wersji 2,4 |10 maja 2017 r.       |
 | 5.5.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,5 |10 sierpnia 2017 r.    |
 | 5.6.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,6 |13 października 2017 r.   |
-| 5.7.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,7 |15 grudnia 2017 r.  |
+| 5.7.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,7 |15 grudnia 2017  |
 | 6.0.* | 5.6.205.* |Mniejsze niż lub równe wersji 2,8 |30 marca 2018     |
 | 6.1.* | 5.7.221.* |Mniejsze niż lub równe wersji 3,0 |15 lipca 2018 r.      |
 | 6.2.* | 6.0.232.* |Mniejsze niż lub równe wersji 3,1 |26 października 2018   |
@@ -100,3 +100,4 @@ W poniższej tabeli wymieniono nazwy wersji Service Fabric i odpowiadające im n
 | 6,5 CU3 | 6.5.664.9590 | 6.5.466.1 |
 | 6,5 CU5 | 6.5.676.9590 | 6.5.467.1 |
 | 7,0 RTO | 7.0.457.9590 | 7.0.457.1 |
+| 7,0 ZASTOSUJESZ PAKIETU CU2 | 7.0.464.9590 | 7.0.464.1 |

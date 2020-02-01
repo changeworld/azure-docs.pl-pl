@@ -3,12 +3,12 @@ title: Obsługa migracji oprogramowania VMware w Azure Migrate
 description: Dowiedz się więcej o obsłudze migracji maszyn wirtualnych VMware w Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e33811563063c0f8eb94b9927d07596d51cd45e4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030226"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901541"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Macierz obsługi migracji VMware
 
@@ -123,7 +123,15 @@ Po skonfigurowaniu urządzenia do replikacji przy użyciu szablonu komórki jajo
 
 - Dowiedz się więcej o [wymaganiach dotyczących urządzeń replikacji](migrate-replication-appliance.md#appliance-requirements) dla programu VMware.
 - Na urządzeniu musi być zainstalowany pakiet MySQL. Dowiedz się więcej o [opcjach instalacji](migrate-replication-appliance.md#mysql-installation).
-- Informacje o [adresach URL](migrate-replication-appliance.md#url-access) , do których urządzenie replikacji musi uzyskać dostęp.
+- Informacje o [adresach URL](migrate-replication-appliance.md#url-access) i [portach]() , do których urządzenie replikacji musi uzyskać dostęp.
+
+## <a name="agent-based-ports"></a>Porty oparte na agentach
+
+**urządzenia** | **Połączenie**
+--- | ---
+Maszyny wirtualne | Usługa mobilności działająca na maszynach wirtualnych komunikuje się z lokalnym urządzeniem replikacji (serwer konfiguracji) na porcie HTTPS 443 przychodzącego na potrzeby zarządzania replikacją.<br/><br/> Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na komputerze serwera konfiguracji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
+Urządzenie replikacji | Urządzenie replikacji organizuje replikację za pomocą platformy Azure przez port HTTPS 443.
+Serwer przetwarzania | Serwer przetwarzania odbiera dane replikacji, optymalizuje je i szyfruje oraz wysyła do usługi Azure Storage przez port 443 wychodzące.<br/> Domyślnie serwer przetwarzania jest uruchamiany na urządzeniu replikacji.
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny wirtualnej platformy Azure
 

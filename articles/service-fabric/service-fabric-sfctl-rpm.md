@@ -3,14 +3,14 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric — sfctl obr.
 description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń dla usługi Repair Manager.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 674970276046034d13801db7c1bb4ab5175385fb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639092"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904941"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Wykonywanie zapytań i wysyłanie poleceń do usługi Repair Manager.
@@ -77,7 +77,7 @@ Ten interfejs API obsługuje platformę Service Fabric. nie jest przeznaczona do
 |Argument|Opis|
 | --- | --- |
 | --executor-filter | Nazwa programu wykonującego naprawy, którego odpowiednie zadania powinny znajdować się na liście. |
-| --state-filter | Bitowe lub następujące wartości określające, które Stany zadań mają być uwzględnione na liście wyników. <br> 1 — utworzono <br>2 — zatwierdzono  <br>4 — przygotowywanie  <br>8 — zatwierdzone  <br>16 — wykonywanie  <br>32 — przywracanie  <br>64 — ukończono |
+| --state-filter | Bitowe lub następujące wartości określające, które Stany zadań mają być uwzględnione na liście wyników. <ul><li>1 — utworzono</li><li>2 — zatwierdzono</li><li>4 — przygotowywanie</li><li>8 — zatwierdzone</li><li>16 — wykonywanie</li><li>32 — przywracanie</li><li>64 — ukończono</li></ul>
 | --task-id-filter | Prefiks identyfikatora zadania naprawy, który ma zostać dopasowany. |
 
 ### <a name="global-arguments"></a>Argumenty globalne

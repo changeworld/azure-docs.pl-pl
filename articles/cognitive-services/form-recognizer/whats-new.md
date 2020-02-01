@@ -1,5 +1,5 @@
 ---
-title: Co nowego w aparacie rozpoznawania formularzy?
+title: Co nowego w usłudze Rozpoznawanie formularzy?
 titleSuffix: Azure Cognitive Services
 description: Zapoznaj się z najnowszymi zmianami w interfejsie API aparatu rozpoznawania formularzy.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: pafarley
-ms.openlocfilehash: cb5639dcf0e13ea03d34604816b3939085674c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456367"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901888"
 ---
-# <a name="whats-new-in-form-recognizer"></a>Co nowego w aparacie rozpoznawania formularzy?
+# <a name="whats-new-in-form-recognizer"></a>Co nowego w usłudze Rozpoznawanie formularzy?
 
 W tym artykule przedstawiono najważniejsze zmiany, które są dostępne w nowych wersjach interfejsu API rozpoznawania formularzy.
 
@@ -24,9 +24,6 @@ W tym artykule przedstawiono najważniejsze zmiany, które są dostępne w nowyc
 > Przewodniki Szybki Start i prowadnice w tym dokumencie zawsze używają najnowszej wersji interfejsu API, chyba że określisz inaczej.
 
 ## <a name="form-recognizer-20-preview"></a>Aparat rozpoznawania formularzy 2,0 (wersja zapoznawcza)
-
-> [!IMPORTANT]
-> Aparat rozpoznawania formularzy 2,0 jest obecnie dostępny dla subskrypcji w regionach `West US 2` i `West Europe`. Jeśli Twoja subskrypcja nie znajduje się w tym regionie, użyj interfejsu API 1,0. Przewodniki Szybki Start dotyczące szkoleń i korzystania z modelu niestandardowego są dostępne zarówno w wersji 1.0, jak i 2.0.
 
 ### <a name="new-features"></a>Nowe funkcje
 

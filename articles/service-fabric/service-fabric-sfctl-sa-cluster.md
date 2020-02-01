@@ -3,14 +3,14 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric — sfctl sa �
 description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń zarządzania klastrami autonomicznymi.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 233148c04fb1a9c6cf1d6c7042c12c54eebd0205
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646028"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904922"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Zarządzaj autonomicznymi klastrami Service Fabric.
@@ -19,7 +19,7 @@ Zarządzaj autonomicznymi klastrami Service Fabric.
 
 |Polecenie|Opis|
 | --- | --- |
-| Konfiguracja | Pobierz konfigurację autonomicznego klastra Service Fabric. |
+| sygnatur | Pobierz konfigurację autonomicznego klastra Service Fabric. |
 | Konfiguracja — uaktualnianie | Rozpocznij uaktualnianie konfiguracji autonomicznego klastra Service Fabric. |
 | upgrade—status | Pobierz stan uaktualnienia konfiguracji klastra dla autonomicznego klastra Service Fabric. |
 
@@ -80,9 +80,9 @@ Sprawdź poprawność dostarczonych parametrów uaktualnienia konfiguracji i Roz
 ### <a name="examples"></a>Przykłady
 
 Rozpocznij aktualizację konfiguracji klastra
-``` 
-sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-    
-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"   
+```
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 ```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa — uaktualnienie klastra — stan

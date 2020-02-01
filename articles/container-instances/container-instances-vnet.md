@@ -4,12 +4,12 @@ description: Dowiedz się, jak wdrażać grupy kontenerów w nowej lub istnieją
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 40f312ce8bc08c9b59e7c47f05b6a5d3dc94a994
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845177"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901865"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -259,10 +259,6 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 ```
 
 ### <a name="delete-network-resources"></a>Usuwanie zasobów sieciowych
-
-
-> [!NOTE]
-> Jeśli wystąpi błąd podczas próby usunięcia profilu sieciowego, Zezwól na 3-4 dni, aby platforma automatycznie złagodzić ten problem, a następnie spróbuj ponownie wykonać operację usuwania. Jeśli musisz natychmiast usunąć profil sieciowy, [Otwórz żądanie obsługi](https://azure.microsoft.com/support/create-ticket/) odwołujące się do usługi Azure Container Instances.
 
 Ta funkcja wymaga obecnie kilku dodatkowych poleceń w celu usunięcia utworzonych wcześniej zasobów sieciowych. Jeśli użyto przykładowych poleceń w poprzednich sekcjach tego artykułu, aby utworzyć sieć wirtualną i podsieć, można użyć następującego skryptu, aby usunąć te zasoby sieciowe.
 

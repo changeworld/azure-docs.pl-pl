@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708166"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906594"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosting statycznej witryny sieci Web w usłudze Azure Storage
 
@@ -81,22 +81,16 @@ Na przykład w przypadku zmiany publicznego poziomu dostępu kontenera **$Web** 
 
 Jednak publiczny dostęp do podstawowego punktu końcowego usługi BLOB Service `https://contosoblobaccount.blob.core.windows.net/$web/index.html` zmienia się z prywatnego na publiczny. Teraz użytkownicy mogą otwierać ten plik za pomocą jednego z tych dwóch punktów końcowych.
 
-## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Obsługa usługi Content Delivery Network (CDN) i protokołu SSL (Secure Socket Layer)
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Mapowanie domeny niestandardowej na adres URL statycznej witryny internetowej
 
-Aby udostępnić pliki statycznej witryny sieci Web za pośrednictwem domeny niestandardowej i protokołu HTTPS, zobacz [używanie Azure CDN do uzyskiwania dostępu do obiektów blob z domenami niestandardowymi za pośrednictwem protokołu HTTPS](storage-https-custom-domain-cdn.md). W ramach tego procesu należy wskazać sieć CDN do podstawowego punktu końcowego *statycznej witryny sieci Web* , a nie podstawowy punkt końcowy *usługi BLOB Service* . Może być konieczne odczekanie kilku minut, zanim zawartość będzie widoczna, ponieważ konfiguracja usługi CDN nie zostanie natychmiast wykonana.
+Możesz udostępnić statyczną witrynę sieci Web za pośrednictwem domeny niestandardowej. 
 
-Podczas aktualizowania statycznej witryny sieci Web należy wyczyścić zawartość pamięci podręcznej na serwerach brzegowych usługi CDN, przeczyszczając punkt końcowy usługi CDN. Aby uzyskać więcej informacji, zobacz [Przeczyszczanie punktu końcowego usługi Azure CDN](../../cdn/cdn-purge-endpoint.md).
+Łatwiej jest włączyć dostęp do protokołu HTTP dla domeny niestandardowej, ponieważ usługa Azure Storage natywnie obsługuje ją. Aby włączyć protokół HTTPS, musisz użyć Azure CDN, ponieważ usługa Azure Storage nie obsługuje jeszcze natywnie protokołu HTTPS z domenami niestandardowymi. Aby uzyskać wskazówki krok po kroku, zobacz [Mapowanie domeny niestandardowej na punkt końcowy usługi Azure Blob Storage](storage-custom-domain-name.md) .
 
-> [!NOTE]
-> Protokół HTTPS jest obsługiwany natywnie za pośrednictwem punktu końcowego sieci Web konta, dzięki czemu punkt końcowy sieci Web jest dostępny zarówno w przypadku protokołu HTTP, jak i HTTPS. Jeśli jednak konto magazynu jest skonfigurowane tak, aby wymagało bezpiecznego transferu za pośrednictwem protokołu HTTPS, użytkownicy muszą używać punktu końcowego HTTPS. Aby uzyskać więcej informacji, zobacz [Wymagaj bezpiecznego transferu w usłudze Azure Storage](../common/storage-require-secure-transfer.md).
->
-> Korzystanie z domen niestandardowych za pośrednictwem protokołu HTTPS wymaga, aby w tym momencie używać Azure CDN.
+Jeśli konto magazynu jest skonfigurowane tak, aby [wymagało bezpiecznego transferu](../common/storage-require-secure-transfer.md) za pośrednictwem protokołu HTTPS, użytkownicy muszą używać punktu końcowego HTTPS. 
 
-## <a name="custom-domain-names"></a>Niestandardowe nazwy domen
-
-Możesz udostępnić statyczną witrynę sieci Web za pośrednictwem domeny niestandardowej. Aby dowiedzieć się więcej, zobacz [Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure Storage](storage-custom-domain-name.md).
-
-Aby zapoznać się z szczegółowym wyglądem hostingu domeny na platformie Azure, zobacz [Hostowanie domeny w Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
+> [!TIP]
+> Rozważ Hostowanie domeny na platformie Azure. Aby uzyskać więcej informacji, zobacz [Hostowanie domeny w Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
 ## <a name="pricing"></a>Cennik
 
@@ -111,8 +105,7 @@ Aby włączyć metryki na stronach statycznej witryny sieci Web, zobacz temat [W
 ## <a name="next-steps"></a>Następne kroki
 
 * [Hostowanie statycznej witryny sieci Web w usłudze Azure Storage](storage-blob-static-website-how-to.md)
-* [Użyj Azure CDN, aby uzyskać dostęp do obiektów BLOB za pomocą domen niestandardowych za pośrednictwem protokołu HTTPS](storage-https-custom-domain-cdn.md)
-* [Konfigurowanie niestandardowej nazwy domeny dla obiektu BLOB lub punktu końcowego sieci Web](storage-custom-domain-name.md)
+* [Mapowanie domeny niestandardowej na punkt końcowy usługi Azure Blob Storage](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [Tworzenie pierwszej aplikacji sieci Web bezserwerowej](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)

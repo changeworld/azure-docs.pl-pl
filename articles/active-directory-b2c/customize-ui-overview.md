@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841237"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908948"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika w Azure Active Directory B2C
 
@@ -31,6 +31,9 @@ Istnieje kilka sposobów na dostosowanie interfejsu użytkownika aplikacji, z kt
 Jeśli używasz [przepływów użytkownika](user-flow-overview.md), możesz zmienić wygląd stron przepływu użytkownika przy użyciu wbudowanych *szablonów układów stron*lub przy użyciu własnego kodu HTML i CSS. Obie metody zostały omówione w dalszej części tego artykułu.
 
 Użyj [Azure Portal](tutorial-customize-ui.md) , aby skonfigurować Dostosowywanie interfejsu użytkownika dla przepływów użytkowników.
+
+> [!TIP]
+> Jeśli chcesz zmodyfikować tylko logo transparentu, obraz tła i kolor tła stron przepływu użytkownika, możesz wypróbować funkcję [znakowania firmowego (wersja zapoznawcza)](#company-branding-preview) opisaną w dalszej części tego artykułu.
 
 ### <a name="custom-policies"></a>Zasady niestandardowe
 
@@ -149,6 +152,60 @@ Poniższa tabela zawiera listę fragmentów kodu HTML, które Azure AD B2C Scala
 | Ujednolicone rejestrowanie lub logowanie | Obsługuje zarówno rejestrowanie, jak i logowanie klientów, którzy mogą korzystać z dostawców tożsamości społecznościowych, takich jak Facebook, Google lub konta lokalnego. |
 | Uwierzytelnianie wieloskładnikowe | Klienci mogą weryfikować numery telefonów (przy użyciu tekstu lub głosu) podczas rejestracji lub logowania. |
 | Błąd | Zawiera informacje o błędach dla klienta. |
+
+## <a name="company-branding-preview"></a>Znakowanie firmowe (wersja zapoznawcza)
+
+Możesz dostosować strony przepływu użytkownika za pomocą logo transparentu, obrazu tła i koloru tła, używając Azure Active Directory [znakowania firmowego](../active-directory/fundamentals/customize-branding.md).
+
+Aby dostosować strony przepływu użytkownika, należy najpierw skonfigurować znakowanie firmowe w Azure Active Directory, a następnie włączyć je w układach stron przepływów użytkownika w Azure AD B2C.
+
+[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
+
+### <a name="configure-company-branding"></a>Konfigurowanie oznaczenia marką firmy
+
+Zacznij od ustawienia logo transparentu, obrazu tła i koloru tła w obszarze **znakowania firmowego**.
+
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
+1. W obszarze **Zarządzaj**wybierz opcję **znakowanie firmowe**.
+1. Wykonaj kroki opisane w sekcji [Dodawanie znakowania do Azure Active Directory stronie logowania w organizacji](../active-directory/fundamentals/customize-branding.md).
+
+Podczas konfigurowania znakowania firmowego w Azure AD B2C należy pamiętać o następujących kwestiach:
+
+* Znakowanie firmowe w Azure AD B2C jest obecnie ograniczone do **obrazu tła**, **logo transparentu**i dostosowania **koloru tła** . Inne właściwości w okienku znakowania firmowego, na przykład **Ustawienia zaawansowane**, *nie są obsługiwane*.
+* Na stronach przepływu użytkownika kolor tła jest wyświetlany przed załadowaniem obrazu tła. Zalecamy wybranie koloru tła, który ściśle dopasowuje kolory w obrazie tła w celu wygładzenia środowiska ładowania.
+* Logo transparentu pojawia się w wiadomościach e-mail weryfikacyjnych wysyłanych do użytkowników po zainicjowaniu przepływu użytkownika podczas rejestracji.
+
+### <a name="enable-branding-in-user-flow-pages"></a>Włącz znakowanie na stronach przepływu użytkownika
+
+Po skonfigurowaniu znakowania firmowego włącz je w przepływach użytkownika.
+
+1. W menu po lewej stronie Azure Portal wybierz pozycję **Azure AD B2C**.
+1. W obszarze **zasady**wybierz pozycję **przepływy użytkownika (zasady)** .
+1. Wybierz przepływ użytkownika, dla którego chcesz włączyć znakowanie firmowe. Znakowanie firmowe **nie jest obsługiwane** w przypadku *logowania w wersji 1* i profilu Edytowanie typów przepływów użytkownika w *wersji 1* .
+1. W obszarze **Dostosowywanie**wybierz pozycję **układy stron**, a następnie wybierz układ, który chcesz oznaczyć marką. Na przykład wybierz pozycję **ujednolicone rejestrowanie lub strona logowania**.
+1. W polu **wersja układu strony (wersja zapoznawcza)** wybierz pozycję wersja **1.2.0** lub nowsza.
+1. Wybierz pozycję **Zapisz**.
+
+Jeśli chcesz oznaczyć wszystkie strony w przepływie użytkownika, ustaw wersję układu strony dla każdego układu strony w przepływie użytkownika.
+
+![Wybór układu strony w Azure AD B2C Azure Portal](media/customize-ui-overview/portal-02-page-layout-select.png)
+
+Ten przykład adnotacji przedstawia niestandardowe logo transparentu i obraz tła na stronie *rejestracja i logowanie w* przepływie użytkownika, który korzysta z niebieskiego szablonu oceanu:
+
+![Markowe strony rejestracji/logowania obsługiwane przez Azure AD B2C](media/customize-ui-overview/template-ocean-blue-branded.png)
+
+### <a name="use-company-branding-assets-in-custom-html"></a>Używanie zasobów znakowania firmowego w niestandardowym kodzie HTML
+
+Aby korzystać z firmowych zasobów znakowania w niestandardowym kodzie HTML, Dodaj następujące znaczniki poza tagiem `<div id="api">`:
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
+Źródło obrazu jest zastępowane obrazem tła i logo transparentu. Zgodnie z opisem w sekcji wprowadzenie [do NIESTANDARDOWEGO HTML i CSS](#get-started-with-custom-html-and-css) , użyj klas CSS do stylu i położenia zasobów na stronie.
 
 ## <a name="localize-content"></a>Lokalizowanie zawartości
 
