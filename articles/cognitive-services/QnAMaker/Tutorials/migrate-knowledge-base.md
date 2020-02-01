@@ -1,66 +1,65 @@
 ---
 title: Migrowanie baz wiedzy — QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Migrowanie bazy wiedzy wymaga eksportowanie z jednej bazy wiedzy knowledge base, a następnie zaimportować do innego.
+description: Migrowanie bazy wiedzy wymaga eksportowania z jednej bazy wiedzy, a następnie importowania do innej.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 04ee592122d7c76396f091f8d249518976682004
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b441eb1e6531030a998fe628ae833b29a5d9fe5a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446589"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902054"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrowanie bazy wiedzy przy użyciu eksportu / importu
 
-Migrowanie bazy wiedzy wymaga eksportowanie z jednej bazy wiedzy knowledge base, a następnie zaimportować do innego. 
+Migrowanie bazy wiedzy wymaga eksportowania z jednej bazy wiedzy, a następnie importowania do innej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Zanim rozpoczniesz, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Skonfiguruj nowy [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md)
+* Skonfiguruj nową [usługę QNA Maker](../How-To/set-up-qnamaker-service-azure.md)
 
-## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Migrowanie bazy wiedzy z usługi QnA Maker
-1. Zaloguj się do [portalu narzędzia QnA Maker](https://qnamaker.ai).
-1. Wybierz wiedzy, które mają zostać zmigrowane.
+## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Migrowanie bazy wiedzy z QnA Maker
+1. Zaloguj się do [portalu QNA Maker](https://qnamaker.ai).
+1. Wybierz bazę wiedzy źródłowej, którą chcesz zmigrować.
 
-1. Na **ustawienia** wybierz opcję **eksportowania bazy wiedzy knowledge base** Aby pobrać plik tsv z zawartością bazy wiedzy — pytań, odpowiedzi, metadane, oraz nazwy źródła danych, z których zostały wyodrębnione.
+1. Na stronie **Ustawienia** wybierz pozycję **Eksportuj bazę wiedzy** , aby pobrać plik. tsv, który zawiera zawartość bazy wiedzy o pochodzeniu, odpowiedzi, metadane, monity monitujące oraz nazwy źródeł danych, z których zostały wyodrębnione.
 
-1. Wybierz **tworzenie bazy wiedzy** z górnego menu następnie utworzyć pusty bazy wiedzy knowledge base. 
+1. Wybierz pozycję **Utwórz bazę wiedzy** z górnego menu, a następnie Utwórz _pustą_ bazę wiedzy. Jest ona pusta, ponieważ podczas jej tworzenia nie będzie można dodawać żadnych adresów URL ani plików. Są one dodawane podczas kroku importowania po utworzeniu.
 
-    ![Zestaw źródeł danych](../media/qnamaker-how-to-create-kb/set-data-sources.png)
+    Skonfiguruj bazę wiedzy. Ustaw tylko nową nazwę bazy wiedzy. Zduplikowane nazwy są obsługiwane i znaki specjalne są również obsługiwane.
 
-    - Nadaj usługi **nazwy.** Zduplikowane nazwy są obsługiwane i znaki specjalne są również obsługiwane.
+    Nie zaznaczaj niczego z kroku 4, ponieważ te wartości zostaną nadpisywane podczas importowania pliku.
 
-1. Wybierz pozycję **Utwórz**.
+1. W kroku 5 wybierz pozycję **Utwórz**.
 
-    ![Tworzenie bazy wiedzy](../media/qnamaker-how-to-create-kb/create-kb.png)
+1. W tej nowej bazie wiedzy Otwórz kartę **Ustawienia** , a następnie wybierz pozycję **Importuj bazę wiedzy**. Spowoduje to zaimportowanie pytań, odpowiedzi, metadanych, monitów, a następnie zachowanie nazw źródeł danych, z których zostały wyodrębnione.
 
-1. W tej nowej bazy wiedzy knowledge base, otwórz **ustawienia** kartę, a następnie wybierz pozycję **importu wiedzy**. Importuje pytań, odpowiedzi i metadanych i przechowuje nazwy źródeł danych, z których zostały wyodrębnione.
-
-   ![Importowanie bazy wiedzy](../media/qnamaker-how-to-migrate-kb/Import.png)
+   > [!div class="mx-imgBorder"]
+   > [![importować bazy wiedzy](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
 
 1. **Test** bazie wiedzy za pomocą panelu testu. Dowiedz się, jak [test bazy wiedzy](../How-To/test-knowledge-base.md).
 1. **Publikowanie** bazy wiedzy knowledge base. Dowiedz się, jak [Opublikuj bazę wiedzy](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
-1. W kodzie aplikacji lub dowolnemu botowi, należy używać punktu końcowego. Zobacz tutaj jak [tworzenia bota pytań i odpowiedzi](../Tutorials/create-qna-bot.md).
+1. Użyj punktu końcowego w aplikacji lub kodzie bot. Zobacz tutaj jak [tworzenia bota pytań i odpowiedzi](../Tutorials/create-qna-bot.md).
 
     ![Usługa QnA Maker wartości](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
 
-    W tym momencie całą wiedzy zawartość — pytania i odpowiedzi metadanych, wraz z nazwy plików źródłowych oraz w adresach URL, zostaną zaimportowane do nowej bazy wiedzy. 
+    W tym momencie całą wiedzy zawartość — pytania i odpowiedzi metadanych, wraz z nazwy plików źródłowych oraz w adresach URL, zostaną zaimportowane do nowej bazy wiedzy.
 
-## <a name="chat-logs-and-alterations"></a>Dzienniki czatu i zmiany
-Zmiany bez uwzględniania wielkości liter (synonimy) nie są importowane automatycznie. Użyj [interfejsów API w wersji 4](https://go.microsoft.com/fwlink/?linkid=2092179) Aby przenieść zmiany w nowej bazie wiedzy knowledge base.
+## <a name="chat-logs-and-alterations"></a>Dzienniki i zmiany rozmowy
+Zmiany bez uwzględniania wielkości liter (synonimy) nie są importowane automatycznie. Użyj [interfejsów API v4](https://go.microsoft.com/fwlink/?linkid=2092179) , aby przenieść zmiany w nowej bazie wiedzy.
 
-Nie ma możliwości migracji dzienniki czatu, ponieważ nowe bazy wiedzy przy użyciu usługi Application Insights dzienniki czatu. 
+Nie ma możliwości migrowania dzienników rozmowy, ponieważ nowa baza wiedzy używa Application Insights do przechowywania dzienników rozmowy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Edytowanie wiedzy](../How-To/edit-knowledge-base.md)

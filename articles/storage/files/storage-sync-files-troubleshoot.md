@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 527d0a602b9da1f2d4f21890e896eba9a951494b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 887c10097187f193f55c6e301be3e739a16d6bf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842720"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906911"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -1102,7 +1102,7 @@ Jeśli nie ma warstwy do Azure Files:
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Nie można przeprowadzić warstwy dla pliku z powodu problemu z usługą Azure Storage. | Jeśli błąd będzie się powtarzać, Otwórz żądanie obsługi. |
 | 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | Nie można wykonać warstwy dla pliku, ponieważ został on odwywoływany w tym samym czasie. | Żadna akcja nie jest wymagana. Plik zostanie warstwowy po zakończeniu odwoływania, a plik nie jest już używany. |
 | 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Nie można wykonać warstwy dla pliku, ponieważ nie został on zsynchronizowany z udziałem plików platformy Azure. | Żadna akcja nie jest wymagana. Plik zostanie warstwowy po zsynchronizowaniu z udziałem plików platformy Azure. |
-| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Nie można wykonać warstwy dla pliku, ponieważ sterownik filtru warstwy chmury (storagesync. sys) nie jest uruchomiony. | Aby rozwiązać ten problem, Otwórz wiersz polecenia z podwyższonym poziomem uprawnień i uruchom następujące polecenie: polecenie fltmc Load storagesync <br>Jeśli nie można załadować sterownika filtru storagesync podczas uruchamiania polecenia polecenie fltmc, Odinstaluj agenta Azure File Sync, ponownie uruchom serwer i ponownie zainstaluj agenta Azure File Sync. |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Nie można wykonać warstwy dla pliku, ponieważ sterownik filtru warstwy chmury (storagesync. sys) nie jest uruchomiony. | Aby rozwiązać ten problem, Otwórz wiersz polecenia z podwyższonym poziomem uprawnień i uruchom następujące polecenie: `fltmc load storagesync`<br>Jeśli nie można załadować sterownika filtru storagesync podczas uruchamiania polecenia polecenie fltmc, Odinstaluj agenta Azure File Sync, ponownie uruchom serwer i ponownie zainstaluj agenta Azure File Sync. |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | Brak warstwy pliku z powodu niewystarczającej ilości miejsca na dysku w woluminie, na którym znajduje się punkt końcowy serwera. | Aby rozwiązać ten problem, zwolnij co najmniej 100 MB miejsca na dysku w woluminie, na którym znajduje się punkt końcowy serwera. |
 | 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Nie można wykonać warstwy dla pliku, ponieważ nie został on zsynchronizowany z udziałem plików platformy Azure. | Żadna akcja nie jest wymagana. Plik zostanie warstwowy po zsynchronizowaniu z udziałem plików platformy Azure. |
 | 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Nie można wykonać warstwy dla pliku, ponieważ jest on nieobsługiwanym punktem ponownej analizy. | Jeśli plik jest punktem ponownej analizy deduplikacji danych, wykonaj kroki opisane w [przewodniku planowania](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication) , aby włączyć obsługę deduplikacji danych. Pliki z punktami ponownej analizy inne niż Deduplikacja danych nie są obsługiwane i nie zostaną warstwowe.  |

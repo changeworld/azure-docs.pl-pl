@@ -3,41 +3,33 @@ title: 'Szybki Start: Biblioteka usługi Azure Blob Storage V12 — JavaScript'
 description: W tym przewodniku szybki start dowiesz się, jak używać biblioteki klienckiej usługi Azure Blob Storage w wersji 12 dla języka JavaScript w celu utworzenia kontenera i obiektu BLOB w magazynie obiektów BLOB (Object). Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać listę wszystkich obiektów blob w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/19/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c8473bff3b6e7d2079bb202befc23e1ada3791eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eabfefbf28b54e4a0a025698f8da48518e7df9bf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970255"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906458"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage V12 dla języka JavaScript
+# <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu SDK V12 języka JavaScript w programie Node. js
 
-Rozpocznij pracę z biblioteką klienta usługi Azure Blob Storage V12 dla języka JavaScript. Azure Blob Storage to rozwiązanie do magazynowania obiektów w chmurze firmy Microsoft. Postępuj zgodnie z instrukcjami, aby zainstalować pakiet, i wypróbuj przykładowy kod dla podstawowych zadań. Usługa Blob Storage jest zoptymalizowana pod kątem przechowywania olbrzymich ilości danych bez struktury.
-
-> [!NOTE]
-> Aby rozpocząć pracę z poprzednią wersją zestawu SDK, zobacz [Szybki Start: Biblioteka kliencka usługi Azure Blob Storage dla języka JavaScript](storage-quickstart-blobs-nodejs-legacy.md).
-
-Użyj biblioteki klienta usługi Azure Blob Storage V12 dla języka JavaScript, aby:
-
-* Tworzenie kontenera
-* Przekazywanie obiektu BLOB do usługi Azure Storage
-* Wyświetl listę wszystkich obiektów BLOB w kontenerze
-* Pobieranie obiektu BLOB na komputer lokalny
-* Usuwanie kontenera
+W tym przewodniku szybki start dowiesz się, jak zarządzać obiektami BLOB za pomocą środowiska Node. js. Obiekty blob są obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Będziesz przekazywać, pobierać i wyświetlać listy obiektów blob, a następnie tworzyć i usuwać kontenery.
 
 [Dokumentacja interfejsu API odwołująca](/javascript/api/@azure/storage-blob) się do [kodu źródłowego | biblioteki](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [pakietu (Menedżer pakietów Node)](https://www.npmjs.com/package/@azure/storage-blob) | [przykłady](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-* Konto magazynu platformy Azure — [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Bieżący [Node. js](https://nodejs.org/en/download/) dla Twojego systemu operacyjnego.
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Konto usługi Azure Storage. [Create a storage account (Tworzenie konta magazynu)](../common/storage-account-create.md).
+- Środowisko [Node.js](https://nodejs.org/en/download/).
+
+> [!NOTE]
+> Aby rozpocząć pracę z poprzednią wersją zestawu SDK, zobacz [Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu SDK v10 języka JavaScript w programie Node. js](storage-quickstart-blobs-nodejs-legacy.md).
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Konfigurowanie
 
@@ -96,7 +88,7 @@ Z katalogu projektu:
 
 1. Otwórz inny nowy plik tekstowy w edytorze kodu
 1. Dodawanie wywołań `require` do ładowania modułów platformy Azure i środowiska Node. js
-1. Utwórz strukturę dla programu, w tym bardzo podstawową obsługę wyjątków
+1. Utwórz strukturę dla programu, w tym podstawową obsługę wyjątków
 
     Oto kod:
 
@@ -232,7 +224,7 @@ for await (const blob of containerClient.listBlobsFlat()) {
 
 ### <a name="download-blobs"></a>Pobieranie obiektów blob
 
-Pobierz utworzony wcześniej obiekt BLOB, wywołując metodę [pobierania](/javascript/api/@azure/storage-blob/blockblobclient#download-undefined---number--undefined---number--blobdownloadoptions-) . Przykładowy kod zawiera funkcję pomocnika o nazwie `streamToString`, która jest używana do odczytywania strumienia do odczytu ze środowiska Node. js do ciągu.
+Pobierz utworzony wcześniej obiekt BLOB, wywołując metodę [pobierania](/javascript/api/@azure/storage-blob/blockblobclient#download-undefined---number--undefined---number--blobdownloadoptions-) . Przykładowy kod zawiera funkcję pomocnika o nazwie `streamToString`, która jest używana do odczytywania strumienia, który można odczytać w języku Node. js do ciągu.
 
 Dodaj ten kod na końcu funkcji `main`:
 
@@ -314,7 +306,7 @@ Przechodzenie przez kod w debugerze i sprawdzanie [Azure Portal](https://portal.
 
 W tym przewodniku szybki start przedstawiono sposób przekazywania, pobierania i wyświetlania listy obiektów BLOB za pomocą języka JavaScript.
 
-Samouczki, przykłady, szybki start i inne dokumenty można znaleźć w temacie:
+Samouczki, przykłady, Przewodniki Szybki Start i inne dokumenty można znaleźć w temacie:
 
 > [!div class="nextstepaction"]
 > [Dokumentacja platformy Azure dla języka JavaScript](/azure/javascript/)

@@ -13,31 +13,38 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 62455b395e6cad3ccf7650534d92d94a6a0a2417
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1f799c8f2e2b209e9939845047c61d50bc1a244d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977490"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898534"
 ---
-# <a name="quickstart-create-an-azure-data-factory-and-pipeline-using-python"></a>Szybki Start: Tworzenie Azure Data Factory i potoku przy użyciu języka Python
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Szybki Start: Tworzenie fabryki danych i potoku przy użyciu języka Python
 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Bieżąca wersja](quickstart-create-data-factory-python.md)
 
-Ten samouczek Szybki start opisuje sposób używania języka Python w celu utworzenia usługi Azure Data Factory. Potok w tej usłudze Data Factory kopiuje dane z jednego folderu do innego folderu w usłudze Azure Blob Storage.
+W tym przewodniku szybki start utworzysz fabrykę danych przy użyciu języka Python. Potok w tej fabryce danych kopiuje dane z jednego folderu do innego folderu w usłudze Azure Blob Storage.
 
-Azure Data Factory to oparta na chmurze usługa integracji danych, za pomocą której możesz tworzyć oparte na danych przepływy pracy w chmurze służące do organizowania oraz automatyzowania przenoszenia i przekształcania danych. Za pomocą usługi Azure Data Factory można tworzyć oparte na danych przepływy pracy (nazywane potokami) i ustalać ich harmonogram. Te przepływy mogą pozyskiwać dane z różnych magazynów danych, przetwarzać/przekształcać je za pomocą usług obliczeniowych, takich jak Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics i Azure Machine Learning, a następnie publikować dane wyjściowe w magazynach danych, np. Azure SQL Data Warehouse, do użycia przez aplikacje analizy biznesowej.
+Azure Data Factory to oparta na chmurze usługa integracji danych, która umożliwia tworzenie przepływów pracy opartych na danych na potrzeby organizowania i automatyzowania przenoszenia i przekształcania danych. Za pomocą Azure Data Factory można tworzyć i planować przepływy pracy oparte na danych, nazywane potokami.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Potoki mogą pozyskiwanie danych z różnych magazynów danych. Potoki przetwarzają lub przekształcają dane przy użyciu usług obliczeniowych, takich jak Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics i Azure Machine Learning. Potoki publikują dane wyjściowe w magazynach danych, takich jak Azure SQL Data Warehouse aplikacji analizy biznesowej (BI).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Konto usługi Azure Storage**. Magazyn obiektów blob jest używany jako magazyn **źródła** i **ujścia** danych. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../storage/common/storage-account-create.md).
-* **Utwórz aplikację w usłudze Azure Active Directory**, wykonując [tę instrukcję](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Zapisz następujące wartości, których użyjesz w kolejnych krokach: **identyfikator aplikacji**, **klucz uwierzytelniania** i **identyfikator dzierżawy**. Przypisz aplikację do roli „**Współautor**”, wykonując instrukcje przedstawione w tym samym artykule.
+* Konto platformy Azure z aktywną subskrypcją. [Utwórz je bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-### <a name="create-and-upload-an-input-file"></a>Tworzenie i przekazywanie pliku wejściowego
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Konto usługi Azure Storage](../storage/common/storage-account-create.md).
+
+* [Eksplorator usługi Azure Storage](https://storageexplorer.com/) (opcjonalnie).
+
+* [Aplikacja w Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Należy pamiętać o następujących wartościach, które mają być używane w kolejnych krokach: **Identyfikator aplikacji**, **klucz uwierzytelniania**i **Identyfikator dzierżawy**. Przypisz aplikację do roli **współautor** , wykonując instrukcje opisane w tym samym artykule.
+
+## <a name="create-and-upload-an-input-file"></a>Tworzenie i przekazywanie pliku wejściowego
 
 1. Uruchom program Notatnik. Skopiuj poniższy tekst i zapisz go na dysku jako plik **input.txt**.
 

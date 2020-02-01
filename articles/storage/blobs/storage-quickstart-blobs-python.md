@@ -3,41 +3,33 @@ title: 'Szybki Start: Biblioteka usługi Azure Blob Storage V12 — Python'
 description: W tym przewodniku szybki start dowiesz się, jak używać biblioteki klienckiej usługi Azure Blob Storage w wersji 12 dla języka Python, aby utworzyć kontener i obiekt BLOB w magazynie obiektów BLOB (Object). Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać listę wszystkich obiektów blob w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03f298b49e6a1eba84e8adf5ca6039df0bfe1abd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443734"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906418"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage V12 dla języka Python
+# <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu SDK V12 języka Python
 
-Rozpocznij pracę z biblioteką klienta usługi Azure Blob Storage V12 dla języka Python. Azure Blob Storage to rozwiązanie do magazynowania obiektów w chmurze firmy Microsoft. Postępuj zgodnie z instrukcjami, aby zainstalować pakiet, i wypróbuj przykładowy kod dla podstawowych zadań. Usługa Blob Storage jest zoptymalizowana pod kątem przechowywania olbrzymich ilości danych bez struktury.
-
-> [!NOTE]
-> Aby rozpocząć pracę z poprzednią wersją zestawu SDK, zobacz [Szybki Start: Biblioteka kliencka usługi Azure Blob Storage dla języka Python](storage-quickstart-blobs-python-legacy.md).
-
-Użyj biblioteki klienta usługi Azure Blob Storage, aby:
-
-* Tworzenie kontenera
-* Przekazywanie obiektu BLOB do usługi Azure Storage
-* Wyświetl listę wszystkich obiektów BLOB w kontenerze
-* Pobieranie obiektu BLOB na komputer lokalny
-* Usuwanie kontenera
+W tym przewodniku szybki start nauczysz się zarządzać obiektami BLOB przy użyciu języka Python. Obiekty blob są obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Będziesz przekazywać, pobierać i wyświetlać listy obiektów blob, a następnie tworzyć i usuwać kontenery.
 
 [Dokumentacja referencyjna interfejsu API](/python/api/azure-storage-blob) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) [(indeks pakietu Python)](https://pypi.org/project/azure-storage-blob/) | [przykładów](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-* Konto magazynu platformy Azure — [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Język [Python](https://www.python.org/downloads/) dla systemu operacyjnego — 2,7, 3,5 lub nowszy
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Konto usługi Azure Storage. [Create a storage account (Tworzenie konta magazynu)](../common/storage-account-create.md).
+- [Python](https://www.python.org/downloads/) 2,7, 3,5 lub nowszy.
+
+> [!NOTE]
+> Aby rozpocząć pracę z poprzednią wersją zestawu SDK, zobacz [Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu SDK języka Python v 2.1](storage-quickstart-blobs-python-legacy.md).
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Konfigurowanie
 
@@ -81,7 +73,7 @@ Z katalogu projektu:
 
 1. Otwórz nowy plik tekstowy w edytorze kodu
 1. Dodawanie instrukcji `import`
-1. Utwórz strukturę dla programu, w tym bardzo podstawową obsługę wyjątków
+1. Utwórz strukturę dla programu, w tym podstawową obsługę wyjątków
 
     Oto kod:
 
@@ -234,7 +226,7 @@ with open(download_file_path, "wb") as download_file:
 
 Poniższy kod czyści zasoby utworzone przez aplikację przez usunięcie całego kontenera przy użyciu metody [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) . Możesz również usunąć pliki lokalne, jeśli chcesz.
 
-Aplikacja wstrzymuje się do wprowadzania danych przez użytkownika, wywołując `input()` przed usunięciem obiektu BLOB, kontenera i plików lokalnych. Jest to dobry szansa, aby sprawdzić, czy zasoby zostały prawidłowo utworzone, zanim zostaną usunięte.
+Aplikacja wstrzymuje się do wprowadzania danych przez użytkownika, wywołując `input()` przed usunięciem obiektu BLOB, kontenera i plików lokalnych. Jest to dobry szansa, aby sprawdzić, czy zasoby zostały utworzone prawidłowo, przed ich usunięciem.
 
 Dodaj ten kod na końcu bloku `try`:
 

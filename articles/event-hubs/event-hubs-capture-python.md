@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: e81871e27c04f8a43f678110d7f44cc9c3be149c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: c6c27a269abfd6fbf29ec7bbb0980d764abaa242
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940754"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904508"
 ---
-# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Przewodnik Szybki Start: Event Hubs Przechwytywanie: Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Przewodnik Szybki Start: Event Hubs Przechwytywanie: Python (Azure-eventhub wersja 1)
 
 Przechwytywanie jest funkcją usługi Azure Event Hubs. Możesz użyć funkcji przechwytywania, aby automatycznie dostarczać dane przesyłane strumieniowo do centrum zdarzeń na wybranym przez siebie koncie usługi Azure Blob Storage. Ta funkcja ułatwia przetwarzanie wsadowe danych przesyłanych strumieniowo w czasie rzeczywistym. W tym artykule opisano sposób używania funkcji przechwytywania usługi Event Hubs za pomocą języka Python. Aby uzyskać więcej informacji na temat funkcji przechwytywania Event Hubs, zobacz [przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs][Overview of Event Hubs Capture].
 
 W tym instruktażu do zademonstrowania funkcji przechwytywania jest wykorzystywany [zestaw Azure Python SDK](https://azure.microsoft.com/develop/python/) . Program *Sender.py* wysyła symulowane dane telemetryczne środowiska do Event Hubs w formacie JSON. Centrum zdarzeń używa funkcji przechwytywania do zapisywania tych danych w usłudze BLOB Storage w partiach. Aplikacja *capturereader.py* odczytuje te obiekty blob, tworzy plik dołączany dla każdego z urządzeń i zapisuje dane do plików *CSV* na każdym urządzeniu.
 
-> [!IMPORTANT]
-> Ten przewodnik Szybki Start używa wersji 1 zestawu SDK języka Python platformy Azure Event Hubs. Jeśli dopiero zaczynasz korzystać z usługi Azure Event Hubs, użyj wersji 5 zestawu SDK języka Python. Aby zapoznać się z przewodnikiem Szybki Start, który używa wersji 5 zestawu SDK języka Python, zobacz [ten artykuł](get-started-capture-python-v2.md). Jeśli musisz zmigrować istniejący kod z wersji 1 do wersji 5, zobacz [Przewodnik migracji](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
+> [!WARNING]
+> Ten przewodnik Szybki Start dotyczy wersji 1 zestawu SDK języka Python platformy Azure Event Hubs. Zalecamy [Migrowanie](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md) kodu do [wersji 5 zestawu SDK języka Python](get-started-capture-python-v2.md).
 
 W tym instruktażu zawarto następujące instrukcje: 
 
@@ -57,7 +57,7 @@ W tym instruktażu zawarto następujące instrukcje:
 
 Utwórz konto magazynu i kontener, które mają być używane do przechwytywania. 
 
-1. Zaloguj się do [portalu Azure][Azure portal].
+1. Zaloguj się do [Portalu Azure][Azure portal].
 2. W lewym okienku nawigacji wybierz pozycję **konta magazynu**, a następnie na ekranie **konta magazynu** wybierz pozycję **Dodaj**.
 3. Na ekranie Tworzenie konta magazynu wybierz subskrypcję i grupę zasobów, a następnie podaj nazwę konta magazynu. Pozostałe wybory można pozostawić domyślnie. Wybierz pozycję **Przegląd + Utwórz**, przejrzyj ustawienia, a następnie wybierz pozycję **Utwórz**. 
    

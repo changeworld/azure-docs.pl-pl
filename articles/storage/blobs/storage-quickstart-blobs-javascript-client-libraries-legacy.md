@@ -6,29 +6,29 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.author: mhopkins
-ms.date: 08/29/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 7d481b115650c72df95f7516bb3b39411201bf83
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 257af309ebdb9080c3cd60b8b89a2c992ecf5145
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864008"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906567"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Szybki Start: przekazywanie, wyświetlanie i usuwanie obiektów BLOB za pomocą usługi Azure Storage v10 SDK dla języka JavaScript/HTML w przeglądarce
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-browser"></a>Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu SDK v10 języka JavaScript w przeglądarce
 
-W tym przewodniku szybki start dowiesz się, jak używać [zestawu SDK usługi Azure Storage v10 for JavaScript-BLOB](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) Library do zarządzania obiektami BLOB z kodu JavaScript działającego w całości w przeglądarce. Podejście użyte w tym miejscu pokazuje, jak użyć wymaganych środków zabezpieczeń do zapewnienia chronionego dostępu do konta magazynu obiektów blob.
+W tym przewodniku szybki start dowiesz się, jak zarządzać obiektami BLOB za pomocą kodu JavaScript działającego całkowicie w przeglądarce. Obiekty blob są obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Musisz użyć wymaganych środków zabezpieczeń, aby zapewnić chroniony dostęp do konta magazynu obiektów BLOB.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
-
-Biblioteki klienckie JavaScript usługi Azure Storage nie będą działać bezpośrednio z systemu plików i muszą być obsługiwane przez serwer sieci Web. W tym temacie jest uruchamiany podstawowy serwer przy użyciu środowiska [Node. js](https://nodejs.org) . Jeśli wolisz nie instalować węzła, możesz użyć dowolnego innego sposobu uruchamiania lokalnego serwera sieci Web.
-
-Aby wykonać czynności opisane w sekcji debugowanie, musisz [Visual Studio Code](https://code.visualstudio.com) i [debuger dla programu Chrome](vscode:extension/msjsdiag.debugger-for-chrome) lub [debugera dla rozszerzenia Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge) .
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Konto usługi Azure Storage. [Create a storage account (Tworzenie konta magazynu)](../common/storage-account-create.md).
+- Lokalny serwer sieci Web. W tym artykule przy użyciu środowiska [Node. js](https://nodejs.org) zostanie otwarty serwer podstawowy.
+- [Program Visual Studio Code](https://code.visualstudio.com)
+- VS Code rozszerzenie do debugowania przeglądarki, takie jak [debuger dla programu Chrome](vscode:extension/msjsdiag.debugger-for-chrome) lub [debuger dla Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge).
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Konfigurowanie reguł CORS konta magazynu
 

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75425096"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotażowa aprowizacja w chmurze dla istniejącego zsynchronizowanego lasu usługi AD 
@@ -201,7 +201,7 @@ Synchronizacja Azure AD Connect synchronizuje zmiany występujące w katalogu lo
 >[!NOTE] 
 >Jeśli używasz własnego harmonogramu niestandardowego dla synchronizacji z usługą AAD Connect, Włącz harmonogram. 
 
-## <a name="something-went-wrong"></a>Wystąpił błąd
+## <a name="something-went-wrong"></a>Wystąpił problem
 W przypadku, gdy pilotaż nie działa zgodnie z oczekiwaniami, możesz wrócić do konfiguracji synchronizacji Azure AD Connect, wykonując poniższe kroki:
 1.  Wyłącz konfigurację aprowizacji w Azure Portal. 
 2.  Wyłącz wszystkie niestandardowe reguły synchronizacji utworzone na potrzeby aprowizacji w chmurze za pomocą narzędzia Edytor reguł synchronizacji. Wyłączenie powinno spowodować pełną synchronizację wszystkich łączników.

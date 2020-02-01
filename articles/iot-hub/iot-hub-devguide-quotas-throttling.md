@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: c17576bb8cd772742b5335000a2453ff34753779
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457069"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906984"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Przydziały IoT Hub i ograniczanie przepustowości
 
@@ -101,12 +101,13 @@ IoT Hub wymusza inne limity operacyjne:
 | Dodatkowe punkty końcowe | Płatne centra jednostek SKU mogą mieć 10 dodatkowych punktów końcowych. Bezpłatne centra SKU mogą mieć jeden dodatkowy punkt końcowy. |
 | Zapytania routingu komunikatów | Płatne centra jednostek SKU mogą mieć 100 zapytań routingu. Bezpłatne centra SKU mogą mieć pięć zapytań routingu. |
 | Wzbogacenia wiadomości | Płatne centra jednostek SKU mogą mieć maksymalnie 10 wzbogacania komunikatów. Bezpłatne centra SKU mogą mieć maksymalnie 2 wzbogacanie komunikatów.|
-| Obsługa komunikatów z urządzenia do chmury | Maksymalny rozmiar komunikatu 256 KB |
+| Obsługa komunikatów przesyłanych z urządzeń do chmury | Maksymalny rozmiar komunikatu 256 KB |
 | Obsługa komunikatów z chmury do urządzeń<sup>1</sup> | Maksymalny rozmiar komunikatu 64 KB. Maksymalna liczba oczekujących komunikatów do dostarczenia to 50 na urządzenie. |
 | Metoda bezpośrednia<sup>1</sup> | Maksymalny rozmiar ładunku metody bezpośredniej to 128 KB. |
 | Automatyczne konfiguracje urządzeń i modułów<sup>1</sup> | 100 konfiguracje na płatne centra SKU. 20 konfiguracji na bezpłatne centrum SKU. |
 | IoT Edge wdrożeń automatycznych<sup>1</sup> | 20 modułów na wdrożenie. 100 wdrożenia (w tym wdrożenia warstwowe) na płatne centra SKU. 10 wdrożeń na bezpłatne centrum SKU. |
 | Bliźniaczych reprezentacji<sup>1</sup> | Maksymalny rozmiar żądanych właściwości i raportowane sekcje są 32 KB każdego z nich. Maksymalny rozmiar sekcji tagów to 8 KB. |
+| Zasady dostępu współużytkowanego | Maksymalna liczba zasad dostępu współdzielonego wynosi 16 |
 
 <sup>1</sup> Ta funkcja nie jest dostępna w warstwie Podstawowa IoT Hub. Aby uzyskać więcej informacji, zobacz [jak wybrać właściwy IoT Hub](iot-hub-scaling.md).
 

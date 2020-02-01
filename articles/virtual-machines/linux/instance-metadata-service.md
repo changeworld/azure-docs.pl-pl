@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: ad3f9329ce79812e908fd15037e2054ca5a8906e
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 5b3f3eea4d23d84d684648d19fb67258d1ea2050
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045156"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76907001"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa metadanych wystąpienia platformy Azure
 
@@ -104,9 +104,9 @@ Poniższa tabela zawiera odwołania do innych formatów danych, które mogą by�
 
 API | Domyślny format danych | Inne formaty
 --------|---------------------|--------------
-/instance | json | tekst
-/scheduledevents | json | brak
-/attested | json | brak
+/instance | kodu | tekst
+/scheduledevents | kodu | brak
+/attested | kodu | brak
 
 Aby uzyskać dostęp do formatu niedomyślnej odpowiedzi, należy określić żądany format jako parametr ciągu zapytania w żądaniu. Przykład:
 
@@ -471,7 +471,7 @@ name | Nazwa maszyny wirtualnej | 2017-04-02
 offer | Informacje o ofercie dla obrazu maszyny wirtualnej i dostępne tylko dla obrazów wdrożonych z galerii obrazów platformy Azure | 2017-04-02
 osType | System Linux lub Windows | 2017-04-02
 placementGroupId | [Grupa umieszczania](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) zestawu skalowania maszyn wirtualnych | 2017-08-01
-plan | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) zawierające nazwę, produkt i wydawcę maszyny wirtualnej, jeśli jest to obraz portalu Azure Marketplace | 2018-04-02
+zamierza | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) zawierające nazwę, produkt i wydawcę maszyny wirtualnej, jeśli jest to obraz portalu Azure Marketplace | 2018-04-02
 platformUpdateDomain |  [Aktualizuj domenę](manage-availability.md) , w której działa maszyna wirtualna | 2017-04-02
 platformFaultDomain | [Domena błędów](manage-availability.md) , w której działa maszyna wirtualna | 2017-04-02
 dostawcy | Dostawca maszyny wirtualnej | 2018-10-01
@@ -482,7 +482,7 @@ resourceId | W [pełni kwalifikowany](https://docs.microsoft.com/rest/api/resour
 sku | Określona jednostka SKU dla obrazu maszyny wirtualnej | 2017-04-02
 Obszarze storageprofile | Zobacz [profil magazynu](#storage-profile) | 2019-06-01
 subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej | 2017-08-01
-tagów | [Tagi](../../azure-resource-manager/management/tag-resources.md) dla maszyny wirtualnej  | 2017-08-01
+tags | [Tagi](../../azure-resource-manager/management/tag-resources.md) dla maszyny wirtualnej  | 2017-08-01
 tagsList | Tagi sformatowane jako tablica JSON dla łatwiejszego analizowania programistycznego  | 2019-06-04
 version | Wersja obrazu maszyny wirtualnej | 2017-04-02
 vmId | [Unikatowy identyfikator](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) dla maszyny wirtualnej | 2017-04-02
@@ -542,7 +542,7 @@ Obiekt BLOB sygnatury jest podpisanym przez [PKCS7](https://aka.ms/pkcs7) wersj�
 
 Metadane wystąpienia można pobrać w systemie Windows za pomocą narzędzia PowerShell `curl`:
 
- ```bash
+ ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
@@ -820,7 +820,7 @@ Verification successful
 Dane | Opis
 -----|------------
 nonce | Użytkownik podano opcjonalny ciąg z żądaniem. Jeśli w żądaniu nie podano identyfikatora jednorazowego, zwracana jest bieżąca sygnatura czasowa UTC
-plan | [Zaplanuj](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) maszynę wirtualną w tym obrazie portalu Azure Marketplace, która zawiera nazwę, produkt i wydawcę
+zamierza | [Zaplanuj](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) maszynę wirtualną w tym obrazie portalu Azure Marketplace, która zawiera nazwę, produkt i wydawcę
 Sygnatura czasowa/createdOn | Sygnatura czasowa UTC, w której został utworzony pierwszy podpisany dokument
 timestamp/expiresOn | Sygnatura czasowa UTC, z którą wygasa podpisany dokument
 vmId |  [Unikatowy identyfikator](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) dla maszyny wirtualnej
@@ -922,7 +922,7 @@ Obiekt dysku systemu operacyjnego zawiera następujące informacje na temat dysk
 
 Dane    | Opis
 --------|-----------------
-buforowanie | Wymagania dotyczące buforowania
+pamięć | Wymagania dotyczące buforowania
 Opcja | Informacje na temat sposobu tworzenia maszyny wirtualnej
 diffDiskSettings | Ustawienia dysku tymczasowych
 diskSizeGB | Rozmiar dysku w GB
@@ -937,7 +937,7 @@ Tablica dyski danych zawiera listę dysków danych podłączonych do maszyny wir
 
 Dane    | Opis
 --------|-----------------
-buforowanie | Wymagania dotyczące buforowania
+pamięć | Wymagania dotyczące buforowania
 Opcja | Informacje na temat sposobu tworzenia maszyny wirtualnej
 diffDiskSettings | Ustawienia dysku tymczasowych
 diskSizeGB | Rozmiar dysku w GB

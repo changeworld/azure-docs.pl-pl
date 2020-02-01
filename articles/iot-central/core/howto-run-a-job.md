@@ -8,19 +8,17 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 2a18cfabdecf930f45ca10ae25e9be44cf3f1a5c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 114946fa37ae161aeb2efd5b7cd50444c5df4c2b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953150"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906715"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Tworzenie i uruchamianie zadania w aplikacji IoT Central platformy Azure
 
-Za pomocą IoT Central Microsoft Azure można zarządzać podłączonymi urządzeniami w odpowiedniej skali przy użyciu zadań. Zadania umożliwiają wykonywanie aktualizacji zbiorczych do właściwości, ustawień i poleceń urządzeń. W tym artykule przedstawiono sposób rozpoczynania pracy z zadaniami we własnej aplikacji.
+Za pomocą IoT Central Microsoft Azure można zarządzać podłączonymi urządzeniami w odpowiedniej skali przy użyciu zadań. Zadania umożliwiają wykonywanie aktualizacji zbiorczych do właściwości i poleceń urządzeń. W tym artykule przedstawiono sposób rozpoczynania pracy z zadaniami we własnej aplikacji.
 
-> [!NOTE] 
-> Zadania dla Azure IoT Edge urządzeń nie są obecnie obsługiwane. 
 
 ## <a name="create-and-run-a-job"></a>Tworzenie i uruchamianie zadania
 
@@ -34,28 +32,26 @@ W tej sekcji pokazano, jak utworzyć i uruchomić zadanie. Pokazuje, jak zwięks
 
 3. Wprowadź nazwę i opis, aby zidentyfikować tworzone zadanie.
 
-4. Wybierz zestaw urządzeń, dla którego chcesz zastosować zadanie. Po wybraniu zestawu urządzeń zobaczysz odpowiednie wypełnienie strony z urządzeniami w zestawie urządzeń. W przypadku wybrania uszkodzonego zestawu urządzeń nie są wyświetlane żadne urządzenia i zostanie wyświetlony komunikat o przerwaniu konfiguracji urządzenia.
+4. Wybierz grupę urządzeń, do której chcesz zastosować zadanie. W sekcji Podsumowanie można sprawdzić liczbę urządzeń, do których zostanie zastosowana konfiguracja zadania. 
 
-5. Następnie wybierz typ zadania do zdefiniowania (ustawienie, właściwość lub polecenie). Wybierz **+** obok wybranego typu zadania i Dodaj swoje operacje.
+5. Następnie wybierz typ zadania do zdefiniowania (właściwość lub polecenie). Skonfiguruj konfigurację zadania, wybierając Właściwość i ustawiając nowe wartości, lub wybierz polecenie. Istnieje możliwość dodania wielu właściwości jednocześnie.
 
     ![Konfigurowanie zadania](./media/howto-run-a-job/configurejob.png)
 
-6. Po prawej stronie Wybierz urządzenia, na których chcesz uruchomić zadanie. Zaznaczając górne pole wyboru, wszystkie urządzenia są wybierane w całym zestawie urządzeń. Zaznaczając pole wyboru obok **nazwy**, wybierane są wszystkie urządzenia na bieżącej stronie.
-
-7. Po wybraniu urządzeń wybierz pozycję **Uruchom** lub **Zapisz**. Zadanie zostanie wyświetlone na stronie główne **zadania** . W tym widoku można zobaczyć aktualnie uruchomione zadanie i historię wszystkich poprzednio uruchomionych zadań. Uruchomione zadanie zawsze jest wyświetlane w górnej części listy. Zapisane zadanie można otworzyć ponownie w dowolnym momencie, aby kontynuować edycję lub uruchomienie.
+6. Po wybraniu urządzeń wybierz pozycję **Uruchom** lub **Zapisz**. Zadanie zostanie wyświetlone na stronie główne **zadania** . W tym widoku można zobaczyć aktualnie uruchomione zadanie i historię wszystkich poprzednio uruchomionych zadań. Uruchomione zadanie zawsze jest wyświetlane w górnej części listy. Zapisane zadanie można otworzyć ponownie w dowolnym momencie, aby kontynuować edycję lub uruchomienie.
 
     ![Wyświetl zadanie](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
     > Możesz wyświetlić historię poprzednio wykonywanych zadań przez maksymalnie 30 dni.
 
-8. Aby uzyskać przegląd zadania, wybierz z listy zadanie do wyświetlenia. To omówienie zawiera szczegóły zadania, urządzenia i wartości stanu urządzenia. Z tego omówienia można także wybrać opcję **Pobierz szczegóły zadania** , aby pobrać plik CSV zawierający szczegóły zadania, w tym urządzenia i ich wartości stanu. Te informacje mogą być przydatne podczas rozwiązywania problemów.
+7. Aby uzyskać przegląd zadania, wybierz z listy zadanie do wyświetlenia. To omówienie zawiera szczegóły zadania, urządzenia i wartości stanu urządzenia. Z tego omówienia można także wybrać opcję **Pobierz szczegóły zadania** , aby pobrać plik CSV zawierający szczegóły zadania, w tym urządzenia i ich wartości stanu. Te informacje mogą być przydatne podczas rozwiązywania problemów.
 
     ![Wyświetlanie stanu urządzenia](./media/howto-run-a-job/downloaddetails.png)
 
 ### <a name="stop-a-running-job"></a>Zatrzymaj uruchomione zadanie
 
-Aby zatrzymać uruchomione zadanie, zaznacz je i wybierz pozycję **Zatrzymaj** na panelu. Stan zadania zmienia się, aby odzwierciedlić zadanie zostało zatrzymane.
+Aby zatrzymać uruchomione zadanie, zaznacz je i wybierz polecenie **Zatrzymaj**. Stan zadania zmienia się, aby odzwierciedlić zadanie zostało zatrzymane.
 
    ![Zatrzymaj zadanie](./media/howto-run-a-job/stopjob.png)
 
@@ -67,7 +63,7 @@ Aby uruchomić zadanie, które jest aktualnie zatrzymane, wybierz zatrzymane zad
 
 ## <a name="copy-a-job"></a>Kopiowanie zadania
 
-Aby skopiować istniejące utworzone zadanie, wybierz je ze strony główne zadania i wybierz pozycję **Kopiuj**. Zostanie otwarta nowa kopia konfiguracji zadania, którą można edytować. Możesz zapisać lub uruchomić nowe zadanie. Jeśli wprowadzono zmiany w wybranym zestawie urządzeń, zostaną one odzwierciedlone w tym zadaniu skopiowanym do edycji.
+Aby skopiować istniejące utworzone zadanie, Otwórz utworzone zadanie i wybierz polecenie **Kopiuj**. Zostanie otwarta nowa kopia konfiguracji zadania, którą można edytować. Możesz zapisać lub uruchomić nowe zadanie. 
 
    ![Kopiuj zadanie](./media/howto-run-a-job/copyjob.png)
 

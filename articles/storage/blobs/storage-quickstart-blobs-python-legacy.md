@@ -3,33 +3,30 @@ title: 'Szybki Start: Biblioteka kliencka usługi Azure Blob Storage wersja 2.1 
 description: Ten przewodnik Szybki start przedstawia tworzenie konta magazynu i kontenera w magazynie obiektów (blob). Następnie użyj biblioteki klienta usługi Storage w wersji 2.1 dla języka Python, aby przekazać obiekt BLOB do magazynu Azure, pobrać obiekt BLOB i wyświetlić listę obiektów BLOB w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/11/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122682"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906438"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage wersja 2.1 dla języka Python
+# <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu SDK języka Python v 2.1
 
-W tym artykule opisano użycie języka Python do przekazywania, pobierania i wyświetlania listy blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage. Obiekty blob są po prostu obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Obiekty blob w usłudze Azure Storage różnią się od udziałów plików, tabel bez schematu i kolejek komunikatów.  Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](/azure/storage/common/storage-introduction).
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+W tym przewodniku szybki start nauczysz się zarządzać obiektami BLOB przy użyciu języka Python. Obiekty blob są obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Będziesz przekazywać, pobierać i wyświetlać listy obiektów blob, a następnie tworzyć i usuwać kontenery.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Konto usługi Azure Storage. [Create a storage account (Tworzenie konta magazynu)](../common/storage-account-create.md).
+- [Python](https://www.python.org/downloads/).
+- [Zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-sdk-for-python).
 
-Upewnij się, że masz zainstalowane następujące dodatkowe elementy wymagane wstępnie:
-
-* [Python](https://www.python.org/downloads/)
-
-* [Zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-sdk-for-python)
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 

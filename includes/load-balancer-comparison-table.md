@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 4b419bd8c19cffaf84582cb4fa9e46592746da3f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 4219df03f74f737c5f2435f9bc0842189dc1fd49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752109"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909214"
 ---
 | | Standardowy SKU | Podstawowy SKU |
 | --- | --- | --- |
-| Rozmiar puli zaplecza | Obsługuje do 1000 wystąpień. | Obsługuje do 100 wystąpień. |
+| Rozmiar puli zaplecza | Obsługuje do 1000 wystąpień. | Obsługuje do 300 wystąpień. |
 | Punkty końcowe puli zaplecza | Dowolna maszyna wirtualna w jednej sieci wirtualnej, w tym mieszanka maszyn wirtualnych, zestawów dostępności i zestawów skalowania maszyn wirtualnych. | Maszyny wirtualne w jednym zestawie dostępności lub zestaw skalowania maszyn wirtualnych. |
 | [Sondy kondycji](../articles/load-balancer/load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
 | [Zachowanie sondy kondycji podczas niepowodzenia](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | Połączenia TCP pozostają aktywne na sondie wystąpienia __, a__ wszystkie sondy w dół. | Połączenia TCP pozostają aktywne na sondie wystąpienia. Wszystkie połączenia TCP kończą się, gdy wszystkie sondy są wyłączone. |

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/30/2020
 ms.author: helohr
-ms.openlocfilehash: e525976edee08097d75605ea1921d0552ed02785
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841067"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906861"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -38,6 +38,14 @@ Jako zatwierdzony dostawca korzyści z pulpitu wirtualnego systemu Windows zosta
 
 - [Zarejestruj się w celu uzyskania wersji zapoznawczej chmury horyzontowej w Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Przejdź do witryny sieci Web partnera](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+
+## <a name="10zig"></a>10ZiG
+
+![logo 10ZiG](./media/partners/10zig.png)
+
+Technologia 10ZiG przy użyciu sprzętu i oprogramowania z możliwością obniżenia i zerowego systemu jest partnerem od dawna dba z firmą Microsoft i dedykowanym partnerem usług pulpitu wirtualnego Microsoft Azure. 10ZiG wąskie komputery klienckie z systemem Windows 10 są zaawansowane, niezawodne i niedrogie punkty końcowe dla wszystkich użytkowników pulpitu wirtualnego systemu Windows. Oprogramowanie 10ZiG Manager oferuje wyjątkowe zarządzanie i wdrażanie bez ograniczeń licencji. Zespół techy 10ZiG, program gwarancyjny z góry i niekłopotowe pokazy są jednym z zatrzymywania rozwiązania do obsługi wielu sesji klasycznego pulpitu wirtualnego systemu Windows w chmurze.
+
+10ZiG's na świecie liderów w wąskich i zerowych urządzeniach punktu końcowego klienta oraz oprogramowaniu do zarządzania dla pulpitów wirtualnych to exemplified, jak działają dla swoich klientów. Jego sprzęt zubożony jest dostarczany z Thoughtfully skonstruowanych funkcji i opcji korzyści, dzięki którym klienci otrzymują odpowiednie urządzenia klienckie w zależności od potrzeb. 10ZiG dostosowuje swoje urządzenia do środowiska klienta z klientami opartymi na systemie Windows i Linux, które zapewniają najlepszą możliwą wydajność na pulpitach wirtualnych, zarówno wewnątrz, jak i poza chmurą.
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -133,6 +141,14 @@ Program liquider Essentials rozszerza wartość pulpitu wirtualnego systemu Wind
 - [Zobacz Krótki opis wspólnego rozwiązania](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
 - [Przejdź do witryny sieci Web partnera](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
+## <a name="liquit"></a>Liquit
+
+![Logo Liquit](./media/partners/liquit.png)
+
+Usługa agregacji i dostarczania aplikacji Liquit umożliwia przedsiębiorstwom i dostawcom usług nawiązywanie połączeń i łączenie ze wszystkimi obszarami roboczymi zaplecza (Citrix, VMWare, Windows Virtual Desktop, RDP i Legacy) oraz zapewnia dostosowany i spójny klient. środowisko pracy, niezależnie od miejsca, w którym znajdują się aplikacje klienta. Gdy klient opublikuje ikonę inteligentną, Liquit decyduje o tym, gdzie uruchomić aplikację na podstawie lokalizacji, urządzenia i uprawnień w profilu klienta.
+
+Jako certyfikowany partner Integration Liquit pomaga przyspieszyć przejście do chmury bez opóźnień protokołu RIP i Zamień. Pulpit wirtualny systemu Windows umożliwia łatwe łączenie się z istniejącym środowiskiem, tworzenie obszaru roboczego i dostarczanie pulpitu. Następnie możesz Poświęć czas na migrację starych platform i wprowadzić zmiany na zapleczu bez konieczności obserwowanie użytkowników. Uzyskaj spójne środowisko użytkownika końcowego, elastyczną infrastrukturę i Zachowaj kontrolę nad aplikacjami bez względu na to, gdzie się znajdują.
+
 ## <a name="login-vsi"></a>VSI logowania
 
 ![Logo logowania VSI](./media/partners/loginvsi.png)
@@ -202,6 +218,16 @@ RDPSoft to partner pulpitu wirtualnego systemu Windows, który zapewnia zaawanso
 Rozwiązania dowódców Pulpit zdalny RDPSoft ulepszają administrację pulpitów wirtualnych systemu Windows. Funkcje zarządzania w warstwie Premium upraszczają delegowanie zadań związanych z zarządzaniem pulpitem wirtualnym systemu Windows do pomocy technicznej personelowi, zapewniając pomoc zdalną, sesję użytkownika i zarządzanie procesami. W tym samym czasie pakiet dowódców Pulpit zdalny zbiera bogate metryki dotyczące wydajności i obciążenia użytkownika, aktywności użytkowników i inspekcji, jakości połączenia pulpitu wirtualnego systemu Windows (opóźnienia i przepustowości), Licencjonowanie i zabezpieczenia w centralną usługę Azure SQL wystąpienie bazy danych do przeglądu. Dzięki RDPSoft bogate raporty historyczne i kompleksowe pulpity nawigacyjne są po prostu kliknięciami.
 
 - [Przejdź do witryny sieci Web partnera](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
+## <a name="sepago"></a>sepago
+
+![logo sepago](./media/partners/sepago.png)
+
+sepago został utworzony w 2002 przez cztery znajomych w Kolonii. Dzisiaj, sepago to konsultacje dotyczące zarządzania działem IT z stale rosnącą liczbą sepagists, z lokalizacjami w ciągu Niemiec w Kolonii, Monachium i Hamburg. sepago są ekspertami dotyczącymi zautomatyzowanej aprowizacji aplikacji, wirtualizacji, rozwiązań w chmurze i bezpieczeństwa IT. sepago obsługuje średnie i duże firmy w sposób umożliwiający transformację cyfrową i zapewniają użytkownikom bezpieczną i wydajną pracę.
+
+sepago innowacje i rozwój laboratoryjne kompilują inteligentne rozwiązania przy użyciu technologii danych Big Data i AI. Rozwiązania te koncentrują się na ulepszaniu działalności biznesowej, środowisku użytkownika i administrowaniu produktami partnerskimi, takimi jak pulpit wirtualny systemu Windows.
+
+- [Przejdź do witryny sieci Web partnera](https://www.sepago.de/wvd-value-add-tools/)
 
 ## <a name="thinprint"></a>ThinPrint
 

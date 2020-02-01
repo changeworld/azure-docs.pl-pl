@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4020a40b87c32bdbd07e390a0d04769cb3d47f7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 349587063c528fef1cbdb09d84e61e82443d45d1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112130"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906736"
 ---
 # <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Skalowanie w górę partycji i replik w celu dodania pojemności do obciążeń zapytań i indeksów w usłudze Azure Wyszukiwanie poznawcze
 
@@ -24,7 +24,7 @@ Konfiguracja zasobów jest dostępna podczas konfigurowania usługi w [warstwie 
 Użycie mniejszego poziomu usługi SUs spowoduje zmniejszenie proporcjonalnie rachunku. Opłaty są naliczane tak długo, jak usługa jest skonfigurowana. Jeśli nie korzystasz tymczasowo z usługi, jedynym sposobem na uniknięcie rozliczeń jest usunięcie usługi, a następnie jej ponowne utworzenie w razie potrzeby.
 
 > [!Note]
-> Usunięcie usługi spowoduje usunięcie jej wszystkich. Nie ma możliwości tworzenia kopii zapasowych utrwalonych danych wyszukiwania i przywracania ich w ramach Wyszukiwanie poznawcze platformy Azure. Aby ponownie wdrożyć istniejący indeks nowej usługi, należy uruchomić program użyty do jego pierwotnego utworzenia i załadowania. 
+> Usunięcie usługi powoduje usunięcie całej jej zawartości. Usługa Azure Cognitive Search nie oferuje funkcji tworzenia kopii zapasowych ani przywracania utrwalonych danych wyszukiwania. Aby ponownie wdrożyć istniejący indeks nowej usługi, należy uruchomić program użyty do jego pierwotnego utworzenia i załadowania. 
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologia: repliki i partycje
 Repliki i partycje są zasobami podstawowymi, które wykonują usługi wyszukiwania.
@@ -89,10 +89,10 @@ Wszystkie usługi wyszukiwania zoptymalizowane pod kątem standardowej i magazyn
 | **1 replika** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 repliki** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 repliki** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 repliki** |4 SU |8 SU |12 SU |16 SU |24 SU |Nie dotyczy |
-| **5 replik** |5 SU |10 SU |15 SU |20 SU |30 SU |Nie dotyczy |
-| **6 replik** |6 SU |12 SU |18 SU |24 SU |36 SU |Nie dotyczy |
-| **12 replik** |12 SU |24 SU |36 SU |Nie dotyczy |Nie dotyczy |Nie dotyczy |
+| **4 repliki** |4 SU |8 SU |12 SU |16 SU |24 SU |ND |
+| **5 replik** |5 SU |10 SU |15 SU |20 SU |30 SU |ND |
+| **6 replik** |6 SU |12 SU |18 SU |24 SU |36 SU |ND |
+| **12 replik** |12 SU |24 SU |36 SU |ND |ND |ND |
 
 W witrynie sieci Web systemu Azure szczegółowo objaśniono usługi SUs, cennik i pojemność. Aby uzyskać więcej informacji, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/search/).
 
@@ -123,7 +123,7 @@ Wysoka dostępność dla Wyszukiwanie poznawcze platformy Azure dotyczy zapytań
 > [!NOTE]
 > Nowe pola można dodawać do indeksu Wyszukiwanie poznawcze platformy Azure bez ponownego kompilowania indeksu. Wartość nowego pola będzie równa null dla wszystkich dokumentów znajdujących się już w indeksie.
 
-Aby zachować dostępność indeksu podczas odbudowywania, musisz mieć kopię indeksu z inną nazwą w tej samej usłudze lub kopię indeksu o tej samej nazwie w innej usłudze, a następnie dostarczyć przekierowania lub logiki trybu failover w kodzie.
+Podczas ponownego kompilowania indeksu będzie okres czasu, w którym dane są dodawane do nowego indeksu. Jeśli chcesz kontynuować udostępnianie starego indeksu w tym czasie, musisz mieć kopię starego indeksu o innej nazwie w tej samej usłudze lub kopię indeksu o tej samej nazwie w innej usłudze. , a następnie podaj przekierowania lub logikę trybu failover w kodzie.
 
 ## <a name="disaster-recovery"></a>Odzyskiwanie po awarii
 Obecnie nie ma wbudowanego mechanizmu odzyskiwania po awarii. Dodawanie partycji lub replik będzie niewłaściwym strategią dla celów odzyskiwania po awarii. Najbardziej typowym podejściem jest dodanie nadmiarowości na poziomie usługi przez skonfigurowanie drugiej usługi wyszukiwania w innym regionie. Podobnie jak w przypadku dostępności podczas odbudowywania indeksu, przekierowania lub logiki trybu failover muszą pochodzić z kodu.

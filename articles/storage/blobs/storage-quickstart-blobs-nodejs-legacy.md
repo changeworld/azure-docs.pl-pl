@@ -3,24 +3,26 @@ title: 'Szybki Start: Biblioteka kliencka usługi Azure Blob Storage v10 dla ję
 description: Tworzenie, przekazywanie i usuwanie obiektów blob i kontenerów w programie Node. js za pomocą biblioteki klienta usługi Azure Storage v10 dla języka JavaScript
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/24/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: dd59dec65f75a17c35750140349101c600a92636
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862853"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906477"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Szybki Start: Biblioteka kliencka usługi Azure Blob Storage v10 dla języka JavaScript
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu SDK v10 języka JavaScript w programie Node. js
 
-W tym przewodniku Szybki start dowiesz się, jak za pomocą [zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript](https://github.com/Azure/azure-sdk-for-js) w środowisku Node.js przekazywać, pobierać, wyświetlać i usuwać obiekty blob oraz zarządzać kontenerami.
+W tym przewodniku szybki start dowiesz się, jak zarządzać obiektami BLOB za pomocą środowiska Node. js. Obiekty blob są obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Będziesz ładować, pobierać, wyświetlać i usuwać obiekty blob i zarządzać kontenerami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Konto usługi Azure Storage. [Create a storage account (Tworzenie konta magazynu)](../common/storage-account-create.md).
+- Środowisko [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 
@@ -133,7 +135,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-Żądania wysyłane przez interfejs API można ustawić tak, aby wygasały po upływie określonego interwału. Klasa [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) jest odpowiedzialna za zarządzanie sposobem wygasania żądań, a poniższa stała służy do definiowania limitów czasu używanych w tym przykładzie.
+Żądania wykonywane przez interfejs API można ustawić, aby przekroczyć limit czasu po upływie określonego interwału. Klasa [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) jest odpowiedzialna za zarządzanie sposobem wygasania żądań, a poniższa stała służy do definiowania limitów czasu używanych w tym przykładzie.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -203,7 +205,7 @@ Podobnie jak w przypadku kontenera, blokowy obiekt blob jeszcze nie istnieje. Zm
 
 ### <a name="using-the-aborter-class"></a>Używanie klasy Aborter
 
-Żądania wysyłane przez interfejs API można ustawić tak, aby wygasały po upływie określonego interwału. Klasa *Abort* jest odpowiedzialna za zarządzanie sposobem przekroczenia limitu czasu żądań. Poniższy kod tworzy kontekst, w którym zestaw żądań jest określony jako 30 minut do wykonania.
+Żądania wykonywane przez interfejs API można ustawić, aby przekroczyć limit czasu po upływie określonego interwału. Klasa *Abort* jest odpowiedzialna za zarządzanie sposobem przekroczenia limitu czasu żądań. Poniższy kod tworzy kontekst, w którym zestaw żądań jest określony jako 30 minut do wykonania.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

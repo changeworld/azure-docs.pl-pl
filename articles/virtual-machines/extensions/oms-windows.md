@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2019
+ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: 072e30baa4ebb976a662019e5213f7eb26808a93
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 604be42ec74f75e3aa9c790092ed83aee4ad25e1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969948"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76907011"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Windows
 
@@ -38,6 +38,7 @@ Poniższa tabela zawiera mapowanie wersji rozszerzenia maszyny wirtualnej z syst
 
 | Wersja pakietu Log Analytics Windows Agent | Azure Monitor wersja rozszerzenia maszyny wirtualnej z systemem Windows | Data wydania | Informacje o wersji |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18018 | 1.0.18018 | Październik 2019 r. | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li></ul> |
 | 10.20.18011 | 1.0.18011 | Lipiec 2019 r. | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li><li> Zwiększono MaxExpressionDepth do 10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | Czerwiec 2019 r. | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li><li> Dodano możliwość wyłączania poświadczeń domyślnych podczas nawiązywania połączenia z serwerem proxy (obsługa WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
 | 10.19.13515 | 1.0.13515 | Marzec 2019 r. | <ul><li>Niewielkie poprawki stabilizacji </li></ul> |

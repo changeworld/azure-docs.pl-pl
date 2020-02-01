@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/30/2019
-ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.date: 01/29/2020
+ms.openlocfilehash: b75b760704511627c74301ae3fff82c24a262e17
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563471"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904885"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Szybki Start: Tworzenie sklepu z bazami danych Azure Wyszukiwanie poznawcze w Azure Portal
 
@@ -81,7 +81,7 @@ Na stronie Przegląd usługi wyszukiwania kliknij pozycję **Importuj dane** na 
 W tym kroku kreatora utworzysz zestawu umiejętności z wzbogacaniem umiejętności poznawczych. Dane źródłowe składają się z przeglądów klienta w kilku językach. Umiejętności, które są istotne dla tego zestawu danych, obejmują wyodrębnianie kluczowych fraz i wykrywanie tonacji oraz tłumaczenie tekstu. W późniejszym kroku te wzbogacania będą "zorganizowane" w sklepie z bazami danych jako tabele platformy Azure.
 
 1. Rozwiń węzeł **Attach Cognitive Services**. Wartość **bezpłatna (ograniczone wzbogacania)** jest domyślnie zaznaczona. Możesz użyć tego zasobu, ponieważ liczba rekordów w HotelReviews-Free. CSV to 19, a ten bezpłatny zasób umożliwia maksymalnie 20 transakcji dziennie.
-1. Rozwiń węzeł **Dodawanie umiejętności poznawczych**.
+1. Rozwiń pozycję **Dodaj wzbogacania**.
 1. W obszarze **Nazwa zestawu umiejętności**wprowadź `hotel-reviews-ss`.
 1. W **polu Źródło danych**wybierz pozycję **reviews_text**.
 1. Aby uzyskać **poziom szczegółowości wzbogacenia**, wybierz pozycję **strony (fragmenty: 5000 znaków).**
@@ -93,11 +93,11 @@ W tym kroku kreatora utworzysz zestawu umiejętności z wzbogacaniem umiejętno�
       ![Utwórz zestawu umiejętności](media/knowledge-store-create-portal/hotel-reviews-ss.png "Tworzenie zestawu umiejętności")
 
 1. Rozwiń pozycję **Zapisz wzbogacanie do sklepu merytorycznego**.
-1. Wprowadź **Parametry połączenia konta magazynu** zapisane w poprzednim kroku.
 1. Wybierz następujące **projekcje tabeli platformy Azure**:
-    + **Dokumenty**
+    + **Secret**
     + **Strony**
     + **Kluczowe frazy**
+1. Wprowadź **Parametry połączenia konta magazynu** zapisane w poprzednim kroku.
 
     ![Konfigurowanie sklepu merytorycznego](media/knowledge-store-create-portal/hotel-reviews-ks.png "Konfigurowanie sklepu merytorycznego")
 

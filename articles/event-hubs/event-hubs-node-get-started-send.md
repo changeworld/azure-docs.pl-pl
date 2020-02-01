@@ -1,33 +1,30 @@
 ---
-title: 'Szybki Start: wysyłanie i odbieranie zdarzeń przy użyciu środowiska Node. js — Event Hubs platformy Azure'
-description: 'Szybki Start: Ten artykuł zawiera Przewodnik dotyczący tworzenia aplikacji node. js, która wysyła zdarzenia z usługi Azure Event Hubs.'
+title: Wysyłanie lub odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu środowiska Node. js (starsza wersja)
+description: Ten artykuł zawiera Przewodnik dotyczący tworzenia aplikacji node. js, która wysyła/odbiera zdarzenia do/z usługi Azure Event Hubs przy użyciu starego pakietu Azure/Event-Hubs w wersji 2.
 services: event-hubs
 author: spelluru
-manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 39087b189c424866fffcc3ea8723c712883f288c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9aa2418657c2d3bcab9ef8883e5bd57422ce5e29
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940726"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899898"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Szybki Start: wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu środowiska Node. js
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs-azureevent-hubs-version-2"></a>Szybki Start: wysyłanie zdarzeń do i odbieranie zdarzeń z platformy Azure Event Hubs przy użyciu środowiska Node. js (@azure/event-hubs wersja 2)
 
 Azure Event Hubs to usługa do przesyłania strumieniowego danych Big Data i usługi pozyskiwania zdarzeń, które mogą odbierać i przetwarzać miliony zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
 
 W tym samouczku opisano sposób tworzenia aplikacji node. js w celu wysyłania zdarzeń do zdarzeń z centrum zdarzeń lub ich odbierania.
 
-> [!IMPORTANT]
-> Ten przewodnik Szybki Start używa wersji 2 zestawu SDK skryptu Java Event Hubs platformy Azure. Jeśli dopiero zaczynasz korzystać z usługi Azure Event Hubs, użyj wersji 5 zestawu SDK skryptu Java. Aby zapoznać się z przewodnikiem Szybki Start, który używa wersji 5 zestawu SDK skryptu Java, zobacz [ten artykuł](get-started-node-send-v2.md). Jeśli musisz zmigrować istniejący kod z wersji 2 do wersji 5, zobacz [Przewodnik migracji](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md).
+> [!WARNING]
+> Ten przewodnik Szybki Start dotyczy wersji 2 zestawu SDK skryptu Java Event Hubs platformy Azure. Zalecamy [Migrowanie](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md) kodu do [wersji 5 zestawu SDK skryptu Java](get-started-node-send-v2.md). 
 
-> [!NOTE]
-> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie możesz utworzyć własne rozwiązanie, wykonując kroki opisane w tym samouczku.
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -55,6 +52,9 @@ npm install @azure/event-processor-host
 ## <a name="send-events"></a>Wysyłanie zdarzeń
 
 W tej sekcji pokazano, jak utworzyć aplikację Node. js, która wysyła zdarzenia do centrum zdarzeń. 
+
+> [!NOTE]
+> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie możesz utworzyć własne rozwiązanie, wykonując kroki opisane w tym samouczku.
 
 1. Otwórz ulubiony Edytor, taki jak [Visual Studio Code](https://code.visualstudio.com). 
 2. Utwórz plik o nazwie `send.js` i wklej do niego Poniższy kod. Pobieranie parametrów połączenia dla przestrzeni nazw Centrum zdarzeń, postępując zgodnie z instrukcjami opisanymi w artykule: [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). 

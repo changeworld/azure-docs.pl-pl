@@ -1,6 +1,6 @@
 ---
-title: Omówienie maszyny Wirtualnej serii HC — usłudze Azure Virtual Machines | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat pomocy technicznej (wersja zapoznawcza) dla rozmiaru maszyny Wirtualnej serii połączenia Hybrydowego na platformie Azure.
+title: Omówienie maszyn wirtualnych z serii HC — Azure Virtual Machines | Microsoft Docs
+description: Dowiedz się więcej o obsłudze wersji zapoznawczej rozmiaru maszyny wirtualnej z serii HC na platformie Azure.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -12,57 +12,57 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: 6cdb539846104f70dabf684925685fb062fea8af
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797550"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906745"
 ---
-# <a name="hc-series-virtual-machine-overview"></a>Omówienie maszyn wirtualnych serii połączenia Hybrydowego
+# <a name="hc-series-virtual-machine-overview"></a>Omówienie maszyny wirtualnej z serii HC
 
-Maksymalizacja wydajności aplikacji HPC w procesory Intel Xeon skalowalne wymaga przydatnego podejście do procesu umieszczania w tej nowej architektury. W tym miejscu możemy konturu naszej implementacji go na maszynach wirtualnych platformy Azure serii HC aplikacji HPC. Firma Microsoft użyje termin "pNUMA" do odwoływania się do fizycznego NUMA domeny, a "vNUMA", aby odwołać się do domeny zwirtualizowanych NUMA. Podobnie będzie używany jest termin "pCore" do odwoływania się do fizycznych rdzeni Procesora i "(rdzeń wirtualny)" do odwoływania się do wirtualizacji rdzeni procesora CPU.
+Maksymalizacja wydajności aplikacji HPC na skalowalnych procesorach Intel Xeon wymaga podejścia przydatnego do przetwarzania umieszczania w tej nowej architekturze. Tutaj zaplanujemy nasze wdrożenie na maszynach wirtualnych z serii HC platformy Azure dla aplikacji HPC. Termin "pNUMA" będzie używany do odwoływania się do fizycznej domeny NUMA i "vNUMA" w celu odwoływania się do zwirtualizowanej domeny NUMA. Podobnie będziemy używać terminu "pCore" do odwoływania się do fizycznych rdzeni procesora CPU i "rdzeń wirtualny" w celu odwoływania się do zwirtualizowanych rdzeni procesora.
 
-Fizycznie, serwer HC wynosi 2 * 24 Intel Xeon Platinum 8168 rdzeniach w sumie 48 rdzeni fizycznych. Każdy Procesor jest pNUMA jednej domeny i ma unified dostęp do sześciu kanałów DRAM. Funkcja Intel Xeon Platinum procesorów a 4 x pamięci podręcznej L2 większych niż w poprzednich pokoleń (256 KB/core-> 1 MB/core), jednocześnie zmniejszając pamięci podręcznej L3, w porównaniu do poprzednich procesorów Intel (2,5 MB/core-> 1.375 MB/core).
+Fizycznie serwer z technologią HC to 2 * 24 rdzenie procesorów Intel Xeon Platinum 8168 dla ogółu 48 rdzeni fizycznych. Każdy procesor CPU jest jedną domeną pNUMA i ma ujednolicony dostęp do sześciu kanałów pamięci DRAM. Procesory Intel Xeon Platinum są wyposażone w większą pamięć podręczną L2 niż w poprzednich generacjach (256 KB/rdzeni-> 1 MB/rdzeń), a jednocześnie zmniejszają pamięć podręczną L3 w porównaniu z wcześniejszymi procesorami Intel (2,5 MB/rdzeni-> 1,375 MB/rdzeni).
 
-Topologia powyżej niesie ze sobą za pośrednictwem także konfigurację funkcji hypervisor HC serii. Aby zapewnić miejsce dla funkcja hypervisor platformy Azure do działania bez zakłócania maszyny Wirtualnej, firma Microsoft zastrzega sobie, pCores 0-1 i 24-25 (czyli najpierw 2 pCores na gniazdo każdego). Firma Microsoft następnie przypisać domen pNUMA wszystkich rdzeni pozostałych do maszyny Wirtualnej. W efekcie zostanie wyświetlony maszyny Wirtualnej:
+Powyższa topologia również przeprowadzi do konfiguracji funkcji hypervisor serii HC. Aby zapewnić możliwość działania funkcji hypervisor platformy Azure bez zakłócania pracy maszyny wirtualnej, firma Microsoft zastrzega sobie pCores 0-1 i 24-25 (czyli pierwsze 2 pCores w każdym gnieździe). Następnie przypiszemy domeny pNUMA wszystkie pozostałe rdzenie do maszyny wirtualnej. W rezultacie maszyna wirtualna zobaczy:
 
-`(2 vNUMA domains) * (22 cores/vNUMA) = 44` Liczba rdzeni na maszynie Wirtualnej
+Liczba rdzeni `(2 vNUMA domains) * (22 cores/vNUMA) = 44` na maszynę wirtualną
 
-Maszyna wirtualna ma nie wie, że pCores 0-1 i 24 25 nie zostały nadane jej. W związku z tym udostępnia ona każdego vNUMA tak, jakby był natywną 22 rdzeni.
+Maszyna wirtualna nie ma informacji o tym, że pCores 0-1 i 24-25 nie zostały do niego przekazane. W tym celu uwidacznia każdy vNUMA tak, jakby miał natywne 22 rdzenie.
 
-Intel Xeon Platinum, Gold i Silver procesorów również wprowadzać siatki 2D na struktury sieci komunikacji w obrębie i zewnętrzne do gniazda procesora CPU. Zdecydowanie zaleca się proces przypinania dla uzyskania optymalnej wydajności i spójności. Przypinanie procesu będą działać na maszynach wirtualnych z serii połączenia Hybrydowego, ponieważ dolina podstawowych jest widoczny jako-polega na maszynie Wirtualnej gościa. Aby dowiedzieć się więcej, zobacz [architekturze Intel Xeon SP](https://bit.ly/2RCYkiE).
+Procesory Intel Xeon Platinum, Gold i Silver również wprowadzają sieć siatkową 2D do komunikacji w ramach i na zewnątrz gniazda procesora CPU. Zdecydowanie zalecamy Przypinanie procesów, aby zapewnić optymalną wydajność i spójność. Przypinanie procesów będzie działało na maszynach wirtualnych z serii HC, ponieważ podstawowy krzem jest narażony na maszynę wirtualną gościa. Aby dowiedzieć się więcej, zobacz [Architektura technologii Intel Xeon Sp](https://bit.ly/2RCYkiE).
 
-Na poniższym diagramie przedstawiono podział rdzeni zastrzeżonych dla funkcji Hypervisor Azure i maszyn wirtualnych serii połączenia Hybrydowego.
+Na poniższym diagramie przedstawiono rozdzielenie rdzeni zarezerwowanych dla funkcji hypervisor platformy Azure i maszyny wirtualnej z serii HC.
 
-![Podział rdzeni zarezerwowana dla funkcji Hypervisor Azure i maszyn wirtualnych serii połączenia Hybrydowego](./media/hc-series-overview/segregation-cores.png)
+![Podział rdzeni zarezerwowanych na maszyny wirtualne platformy Azure i maszyn wirtualnych z serii HC](./media/hc-series-overview/segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>Specyfikacje sprzętowe
 
-| Wymagania dotyczące sprzętu          | Maszyn wirtualnych serii połączenia Hybrydowego                     |
+| Specyfikacje sprzętu          | Maszyna wirtualna z serii HC                     |
 |----------------------------------|----------------------------------|
-| Rdzenie                            | 40 (HT wyłączone)                 |
-| Procesor CPU                              | Procesor Intel Xeon Platinum 8168 *        |
-| Częstotliwość procesora CPU (inne niż AVX)          | 3,7 GHz (jeden rdzeń) 3.4 2,7 GHz (wszystkich rdzeni) |
-| Memory (Pamięć)                           | 8 GB/core (352 całkowita)            |
-| Dysk lokalny                       | NVMe 700 GB                      |
-| Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 ** |
-| Sieć                          | 50 Gb Ethernet (można używać 40 Gb) platformy Azure drugiej generacji SmartNIC *** |
+| Rdzenie                            | 44 (HT wyłączone)                 |
+| Procesor CPU                              | Intel Xeon Platinum 8168 *        |
+| Częstotliwość procesora (AVX)          | 3,7 GHz (pojedyncze rdzeń), 2.7-3.4 GHz (wszystkie rdzenie) |
+| Pamięć                           | 8 GB/rdzeń (łącznie 352)            |
+| Dysk lokalny                       | Interfejsu NVMe 700 GB                      |
+| InfiniBand                       | 100 GB EDR Mellanox ConnectX-5 * * |
+| Network (Sieć)                          | 50 GB sieci Ethernet (z 40 GB użytecznych) Azure Second gen SmartNIC * * * |
 
-## <a name="software-specifications"></a>Specyfikacji oprogramowania
+## <a name="software-specifications"></a>Specyfikacje oprogramowania
 
-| Specyfikacji oprogramowania     | Maszyn wirtualnych serii połączenia Hybrydowego          |
+| Specyfikacje oprogramowania     | Maszyna wirtualna z serii HC          |
 |-----------------------------|-----------------------|
-| Rozmiar zadania MPI maksymalna            | 4400 rdzeni (100 zestawów skalowania maszyn wirtualnych), 8800 (200 zestawów skalowania maszyn wirtualnych) |
-| Obsługa MPI                 | MVAPICH2, OpenMPI, MPICH, platforma MPI, Intel MPI  |
-| Dodatkowe struktury       | Ujednolicone X komunikacji, libfabric, PGAS |
-| Usługa Azure Storage — pomoc techniczna       | Standardowe i Premium (maks. 4 dyski) |
-| Obsługa systemu operacyjnego dla funkcji SR-IOV w funkcji RDMA   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+ |
-| Pomoc techniczna platformy Azure CycleCloud    | Yes                         |
-| Obsługa usługi Azure Batch         | Tak                         |
+| Maksymalny rozmiar zadania MPI            | 13200 rdzeni (300 maszyn wirtualnych w jednym VMSS z singlePlacementGroup = true) |
+| Obsługa MPI                 | MVAPICH2, OpenMPI, MPICH, platform MPI, Intel MPI  |
+| Dodatkowe struktury       | Ujednolicona komunikacja X, libfabric, PGAS |
+| Obsługa usługi Azure Storage       | STD + Premium (maksymalnie 4 dyski) |
+| Obsługa systemu operacyjnego dla sterownik RDMA   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+ |
+| Pomoc techniczna platformy Azure CycleCloud    | Tak                         |
+| Obsługa Azure Batch         | Tak                         |
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej na temat rozmiarów maszyny Wirtualnej HPC dla [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) i [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) na platformie Azure.
+* Dowiedz się więcej o rozmiarach maszyn wirtualnych HPC dla systemów [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) i [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) na platformie Azure.
 
 * Dowiedz się więcej o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) na platformie Azure.

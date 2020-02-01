@@ -3,14 +3,14 @@ title: Interfejs wiersza polecenia platformy Azure Service Fabric sfctl chaos
 description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń dotyczących planowania chaos.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639177"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906190"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Pobierz i Ustaw harmonogram chaos.
@@ -71,9 +71,10 @@ Chaos automatycznie planuje przebiegi zgodnie z harmonogramem chaos. Harmonogram
 
 ### <a name="examples"></a>Przykłady
 
-Następujące polecenie ustawia harmonogram (przy założeniu, że bieżący harmonogram ma wersję 0), która rozpoczyna się od 2016-01-01 i wygasa w dniu 2038-01-01, który działa chaos 24 godziny dnia, 7 dni w tygodniu. W tym czasie chaos zostanie zaplanowana w klastrze.
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+Następujące polecenie ustawia harmonogram (przy założeniu, że bieżący harmonogram ma wersję 0), która rozpoczyna się od 2016-01-01 i wygasa w dniu 2038-01-01, który działa chaos 24 godziny dnia, 7 dni w tygodniu.
+W tym czasie chaos zostanie zaplanowana w klastrze.
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -134,6 +135,8 @@ Następujące polecenie ustawia harmonogram (przy założeniu, że bieżący har
         ]
     }
     ]
+```
+
 
 
 ## <a name="next-steps"></a>Następne kroki

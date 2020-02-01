@@ -1,16 +1,14 @@
 ---
 title: Usługa Azure Service Fabric diagnozowanie typowych scenariuszy
 description: Dowiedz się więcej na temat rozwiązywania typowych scenariuszy monitorowania i diagnostyki w aplikacjach Service Fabric platformy Azure.
-author: srrengar
 ms.topic: article
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645790"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906953"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnozuj typowe scenariusze za pomocą Service Fabric
 
@@ -134,6 +132,7 @@ Sprawdź te linki, aby uzyskać pełną listę liczników wydajności dla niezaw
 
 ## <a name="next-steps"></a>Następne kroki
 
+* [Wyszukaj typowe błędy aktywacji pakietu kodu](./service-fabric-diagnostics-code-package-errors.md)
 * [Konfigurowanie alertów w programie AI](../azure-monitor/app/alerts.md) do powiadamiania o zmianach wydajności lub użycia
 * [Inteligentne wykrywanie w Application Insights](../azure-monitor/app/proactive-diagnostics.md) wykonuje aktywną analizę danych telemetrycznych wysyłanych do systemu AI w celu ostrzegania o potencjalnych problemach z wydajnością
 * Dowiedz się więcej o dziennikach Azure Monitor [alerty](../log-analytics/log-analytics-alerts.md) w celu ułatwienia wykrywania i diagnostyki.

@@ -3,19 +3,21 @@ title: Ograniczenia i limity subskrypcji platformy Azure
 description: Zawiera listę typowych limitów subskrypcji i usług platformy Azure, przydziałów i ograniczeń. Ten artykuł zawiera informacje o sposobach zwiększania limitów oraz wartości maksymalnych.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845965"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901431"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 
 Ten dokument zawiera listę najbardziej typowych limitów Microsoft Azure, które są również czasami nazywane przydziałami. Ten dokument nie obejmuje obecnie wszystkich usług platformy Azure. Wraz z upływem czasu lista zostanie rozszerzona i zaktualizowana w celu objęcia dodatkowych usług.
 
 Aby dowiedzieć się więcej na temat cen platformy Azure, zobacz [Omówienie cen platformy Azure](https://azure.microsoft.com/pricing/). W tym miejscu możesz oszacować swoje koszty za pomocą [kalkulatora cen](https://azure.microsoft.com/pricing/calculator/). Możesz również przejść do strony szczegóły cennika dla konkretnej usługi, na przykład [maszyn wirtualnych z systemem Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Aby uzyskać porady ułatwiające zarządzanie kosztami, zobacz [zapobieganie nieoczekiwanym kosztom w rozliczeniach i zarządzaniu kosztami platformy Azure](../../billing/billing-getting-started.md).
+
+Aby uzyskać ograniczenia dotyczące nazw zasobów, zobacz [reguły nazewnictwa i ograniczenia dotyczące zasobów platformy Azure](resource-name-rules.md).
 
 > [!NOTE]
 > Jeśli chcesz podnieść limit lub przydział powyżej domyślnego limitu, [Otwórz żądanie obsługi klienta online bez dodatkowych opłat](../templates/error-resource-quota.md). Limitów nie można zwiększyć powyżej wartości maksymalnego limitu pokazanej w poniższych tabelach. Jeśli nie ma żadnej kolumny maksymalnego limitu, zasób nie ma dopuszczalnych limitów.
@@ -25,7 +27,7 @@ Aby dowiedzieć się więcej na temat cen platformy Azure, zobacz [Omówienie ce
 
 ## <a name="limits-and-azure-resource-manager"></a>Limity i Azure Resource Manager
 
-Teraz można połączyć wiele zasobów platformy Azure w jedną grupę zasobów platformy Azure. W przypadku korzystania z grup zasobów limity, które były globalne, są zarządzane na poziomie regionalnym z Azure Resource Manager. Aby uzyskać więcej informacji na temat grup zasobów platformy Azure, zobacz [omówienie Azure Resource Manager](overview.md).
+Wiele zasobów platformy Azure można połączyć w jedną grupę zasobów platformy Azure. W przypadku korzystania z grup zasobów limity, które były globalne, są zarządzane na poziomie regionalnym z Azure Resource Manager. Aby uzyskać więcej informacji na temat grup zasobów platformy Azure, zobacz [omówienie Azure Resource Manager](overview.md).
 
 Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w limitach w przypadku używania Azure Resource Manager. Na przykład istnieje tabela **limitów subskrypcji** i **limity subskrypcji — Azure Resource Manager** tabeli. Gdy limit dotyczy obu scenariuszy, jest wyświetlany tylko w pierwszej tabeli. O ile nie wskazano inaczej, limity są globalne dla wszystkich regionów.
 
@@ -103,7 +105,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Magazyn](#storage-limits)
+* [Storage](#storage-limits)
 * [System StorSimple](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Subskrypcja](#subscription-limits)
@@ -484,3 +486,4 @@ Aby uzyskać SQL Data Warehouse limitów, zobacz [SQL Data Warehouse limitów za
 * [Informacje o limitach i ograniczeniach platformy Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Rozmiary maszyn wirtualnych i usług w chmurze dla platformy Azure](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Rozmiary dla Cloud Services platformy Azure](../../cloud-services/cloud-services-sizes-specs.md)
+* [Reguły nazewnictwa i ograniczenia dotyczące zasobów platformy Azure](resource-name-rules.md)

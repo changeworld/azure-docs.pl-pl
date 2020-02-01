@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1fec2778ce8c839c5bac0c1d74085db0f8b283ce
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775266"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903009"
 ---
 # <a name="virtual-network-service-tags"></a>Tagi usługi sieci wirtualnej 
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ Domyślnie Tagi usług odzwierciedlają zakresy dla całej chmury. Niektóre Tag
 | Tag | Przeznaczenie | Może korzystać z ruchu przychodzącego lub wychodzącego? | Może być regionalna? | Czy można używać z zaporą platformy Azure? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Ruch związany z zarządzaniem dla wdrożeń dedykowanych API Management platformy Azure. | Oba | Nie | Tak |
-| **ApplicationInsightsAvailability** | Dostępność Application Insights. | Oba | Nie | Nie |
+| **ApplicationInsightsAvailability** | Dostępność Application Insights. | Przychodzące | Nie | Nie |
 | **AppService**    | Usługa Azure App Service. Ten tag jest zalecany w przypadku wychodzących reguł zabezpieczeń do frontonów aplikacji sieci Web. | Wychodzące | Tak | Tak |
 | **AppServiceManagement** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla App Service Environment. | Oba | Nie | Tak |
 | **Usługi azureactivedirectory** | Azure Active Directory. | Wychodzące | Nie | Tak |
@@ -88,7 +88,7 @@ Domyślnie Tagi usług odzwierciedlają zakresy dla całej chmury. Niektóre Tag
 | **ServiceFabric** | Service Fabric platformy Azure. | Wychodzące | Nie | Nie |
 | **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL i Azure SQL Data Warehouse.<br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure SQL Database, ale nie konkretną bazę danych lub serwer SQL. | Wychodzące | Tak | Tak |
 | **Xmlmanagement** | Ruch związany z zarządzaniem dla wdrożeń dedykowanych przez program SQL Server. | Oba | Nie | Tak |
-| **Magazyn** | Azure Storage. <br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure Storage, ale nie konkretne konto usługi Azure Storage. | Wychodzące | Tak | Tak |
+| **Storage** | Azure Storage. <br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure Storage, ale nie konkretne konto usługi Azure Storage. | Wychodzące | Tak | Tak |
 | **VirtualNetwork** | Przestrzeń adresowa sieci wirtualnej (wszystkie zakresy adresów IP zdefiniowane dla sieci wirtualnej), wszystkie połączone lokalne przestrzenie adresowe, [równorzędne](virtual-network-peering-overview.md) sieci wirtualne, sieci wirtualne połączone z [bramą sieci wirtualnej](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations)i prefiksy adresów używane na [trasach zdefiniowanych przez użytkownika](virtual-networks-udr-overview.md). Ten tag może również zawierać trasy domyślne. | Oba | Nie | Nie |
 
 >[!NOTE]

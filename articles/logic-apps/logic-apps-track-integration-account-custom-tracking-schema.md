@@ -1,25 +1,23 @@
 ---
 title: Niestandardowe schematy śledzenia dla komunikatów B2B
-description: Utwórz niestandardowe schematy śledzenia, które monitorują komunikaty B2B na kontach integracji dla Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+description: Tworzenie niestandardowych schematów śledzenia do monitorowania komunikatów B2B w Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 7d7c5ef9e9a86c8b061a56fe41c0c8bbfc5ddbb3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/01/2020
+ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792801"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903053"
 ---
-# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Tworzenie niestandardowych schematów śledzenia, które monitorują kompleksowe przepływy pracy w Azure Logic Apps
+# <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>Tworzenie niestandardowych schematów śledzenia, które monitorują kompleksowe przepływy pracy w usłudze Azure Logic A
 
-Istnieje Wbudowana funkcja śledzenia, która umożliwia obsługę różnych części przepływu pracy między firmami, takich jak śledzenie komunikatów AS2 lub X12. Podczas tworzenia przepływów pracy, które obejmują aplikację logiki, BizTalk Server, SQL Server lub dowolnej innej warstwy, można włączyć śledzenie niestandardowe, które rejestruje zdarzenia od początku do końca przepływu pracy. 
-
-Ten artykuł zawiera kod niestandardowy, którego można użyć w warstwach poza aplikacją logiki. 
+Azure Logic Apps ma wbudowane śledzenie, które można włączyć dla części przepływu pracy. Można jednak skonfigurować niestandardowe śledzenie, które rejestruje zdarzenia od początku do końca przepływów pracy, na przykład przepływy pracy, które obejmują aplikację logiki, BizTalk Server, SQL Server lub dowolną inną warstwę. Ten artykuł zawiera kod niestandardowy, którego można użyć w warstwach poza aplikacją logiki.
 
 ## <a name="custom-tracking-schema"></a>Niestandardowy schemat śledzenia
 
@@ -36,7 +34,7 @@ Ten artykuł zawiera kod niestandardowy, którego można użyć w warstwach poza
       "operation": {
          "operationName": "",
          "repeatItemScopeName": "",
-         "repeatItemIndex": "",
+         "repeatItemIndex": ,
          "trackingId": "",
          "correlationId": "",
          "clientRequestId": ""
@@ -47,39 +45,37 @@ Ten artykuł zawiera kod niestandardowy, którego można użyć w warstwach poza
          "eventLevel": "",
          "eventTime": "",
          "recordType": "",
-         "record": {                
-         }
+         "record": {}
       }
    ]
 }
 ```
 
 | Właściwość | Wymagane | Typ | Opis |
-| --- | --- | --- | --- |
-| sourceType | Tak |   | Typ źródła przebiegu. Dozwolone wartości to **Microsoft. logiki/przepływy pracy** i **niestandardowe**. |
-| source | Tak |   | Jeśli typem źródła jest **Microsoft. logiki/przepływy pracy**, informacje źródłowe muszą być zgodne z tym schematem. Jeśli typ źródła jest **niestandardowy**, schemat jest obiektem JToken. |
-| systemId | Tak | Ciąg | Identyfikator systemu aplikacji logiki. |
-| RunId | Tak | Ciąg | Identyfikator przebiegu aplikacji logiki. |
-| operationName | Tak | Ciąg | Nazwa operacji (na przykład akcja lub wyzwalacz). |
-| repeatItemScopeName | Tak | Ciąg | Powtórz nazwę elementu, jeśli akcja znajduje się w `foreach`/pętla `until`. |
-| repeatItemIndex | Tak | Liczba całkowita | Czy akcja znajduje się wewnątrz pętli `until` `foreach`/. Wskazuje powtarzalny indeks elementu. |
-| trackingId | Nie | Ciąg | Identyfikator śledzenia w celu skorelowania komunikatów. |
-| correlationId | Nie | Ciąg | Identyfikator korelacji w celu skorelowania komunikatów. |
-| Identyfikatorem żądania klienta | Nie | Ciąg | Klient może wypełnić go, aby skorelować komunikaty. |
-| eventLevel | Tak |   | Poziom zdarzenia. |
-| eventTime | Tak |   | Czas zdarzenia w formacie UTC RRRR-MM-DDTgg: MM: SS. 00000Z. |
-| RecordType | Tak |   | Typ rekordu śledzenia. Dozwolona wartość jest **niestandardowa**. |
-| rekord | Tak |   | Typ rekordu niestandardowego. Dozwolony format to JToken. |
-||||
+|----------|----------|------|-------------|
+| sourceType | Tak | Ciąg | Typ źródła przebiegu z tymi dozwolonymi wartościami: `Microsoft.Logic/workflows`, `custom` |
+| source | Tak | Ciąg lub JToken | Jeśli typ źródła to `Microsoft.Logic/workflows`, informacje źródłowe muszą być zgodne z tym schematem. Jeśli typ źródła to `custom`, schemat jest obiektem JToken. |
+| systemId | Tak | Ciąg | Identyfikator systemu aplikacji logiki |
+| runId | Tak | Ciąg | Identyfikator przebiegu aplikacji logiki |
+| operationName | Tak | Ciąg | Nazwa operacji, na przykład akcja lub wyzwalacz |
+| repeatItemScopeName | Tak | Ciąg | Powtórz nazwę elementu, jeśli akcja znajduje się wewnątrz pętli `foreach`lub `until` |
+| repeatItemIndex | Tak | Liczba całkowita | Wskazuje, że akcja znajduje się wewnątrz pętli `foreach` lub `until` i jest numerem indeksu powtarzanego elementu. |
+| trackingId | Nie | Ciąg | Identyfikator śledzenia do skorelowania komunikatów |
+| correlationId | Nie | Ciąg | Identyfikator korelacji do skorelowania komunikatów |
+| clientRequestId | Nie | Ciąg | Klient może wypełnić tę właściwość w celu skorelowania komunikatów |
+| eventLevel | Tak | Ciąg | Poziom zdarzenia |
+| eventTime | Tak | Data i godzina | Godzina zdarzenia w formacie UTC: *RRRR-MM-DDTgg: mm: SS. 00000Z* |
+| recordType | Tak | Ciąg | Typ rekordu śledzenia z tą dozwoloną wartością: `custom` |
+| record | Tak | JToken | Typ rekordu niestandardowego z tylko formatem JToken |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schematy śledzenia protokołu B2B
 
 Aby uzyskać informacje o schematach śledzenia protokołu B2B, zobacz:
 
-* [Schematy śledzenia AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
+* [Schematy śledzenia AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [Schematy śledzenia X12](logic-apps-track-integration-account-x12-tracking-schema.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [monitorowaniu komunikatów B2B](logic-apps-monitor-b2b-message.md)
-* Informacje [na temat śledzenia komunikatów B2B w dziennikach Azure monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* Dowiedz się więcej o [monitorowaniu komunikatów B2B przy użyciu dzienników Azure monitor](../logic-apps/monitor-b2b-messages-log-analytics.md)

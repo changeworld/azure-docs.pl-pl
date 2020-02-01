@@ -3,12 +3,12 @@ title: Zasoby platformy Azure — QnA Maker
 description: QnA Maker używa kilku źródeł platformy Azure, z których każdy ma inny cel. Zrozumienie, w jaki sposób są one używane pojedynczo, umożliwia zaplanowanie i wybranie odpowiedniej warstwy cenowej lub Dowiedz się, kiedy zmienić warstwę cenową. Zrozumienie, jak są używane w połączeniu, umożliwia znajdowanie i rozwiązywanie problemów, gdy wystąpią.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 2b3a06122ce6123cd8edcedf5dfbf38c3c12218a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843507"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902063"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Zasoby platformy Azure dla QnA Maker
 
@@ -111,6 +111,10 @@ Pierwsza baza wiedzy utworzona w zasobie QnA Maker służy do określenia _jedne
 Zasób QnA Maker zapewnia dostęp do interfejsów API tworzenia i publikowania, a także na podstawie drugiej warstwy klasyfikacyjnej (NLP) (ranga #2) zestawów QnA w środowisku uruchomieniowym.
 
 Druga klasyfikacja stosuje inteligentne filtry, które mogą zawierać metadane i monity monitujące.
+
+#### <a name="qna-maker-resource-configuration-settings"></a>Ustawienia konfiguracji zasobów QnA Maker
+
+Podczas tworzenia nowej bazy wiedzy w [portalu QNA Maker](https://qnamaker.ai)ustawienie **języka** jest jedynym ustawieniem stosowanym na poziomie zasobu. Język jest wybierany podczas tworzenia pierwszej bazy wiedzy dla zasobu. 
 
 ### <a name="app-service-and-app-service-plan"></a>Usługa App Service i plan usługi App Service
 

@@ -1,38 +1,38 @@
 ---
 title: Schematy śledzenia AS2 dla komunikatów B2B
-description: Tworzenie schematów śledzenia AS2, które monitorują komunikaty B2B na kontach integracji dla Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+description: Tworzenie schematów śledzenia do monitorowania komunikatów AS2 w Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 515d7cfc985ee9929f70de2c862170ff79ae4d60
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/01/2020
+ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792809"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906961"
 ---
-# <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Tworzenie schematów śledzenia komunikatów AS2 i MDNs na kontach integracji dla Azure Logic Apps
+# <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Tworzenie schematów śledzenia komunikatów AS2 w Azure Logic Apps
 
 Aby ułatwić monitorowanie sukcesu, błędów i właściwości komunikatów dla transakcji typu B2B (Business-to-Business), możesz użyć tych schematów śledzenia AS2 na koncie integracji:
 
 * Schemat śledzenia komunikatów AS2
-* Schemat śledzenia powiadomienia MDN AS2
+* Schemat śledzenia powiadomienia o AS2 komunikatów (powiadomienia MDN)
 
 ## <a name="as2-message-tracking-schema"></a>Schemat śledzenia komunikatów AS2
 
 ```json
 {
-   "agreementProperties": {  
-      "senderPartnerName": "",  
-      "receiverPartnerName": "",  
-      "as2To": "",  
-      "as2From": "",  
-      "agreementName": ""  
-   },  
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "as2To": "",
+      "as2From": "",
+      "agreementName": ""
+   },
    "messageProperties": {
       "direction": "",
       "messageId": "",
@@ -43,10 +43,8 @@ Aby ułatwić monitorowanie sukcesu, błędów i właściwości komunikatów dla
       "isMessageEncrypted": "",
       "isMessageCompressed": "",
       "correlationMessageId": "",
-      "incomingHeaders": {
-       },
-      "outgoingHeaders": {
-       },
+      "incomingHeaders": {},
+      "outgoingHeaders": {},
       "isNrrEnabled": "",
       "isMdnExpected": "",
       "mdnType": ""
@@ -54,28 +52,28 @@ Aby ułatwić monitorowanie sukcesu, błędów i właściwości komunikatów dla
 }
 ```
 
-| Właściwość | Typ | Opis |
-| --- | --- | --- |
-| senderPartnerName | Ciąg | Nazwa partnera nadawcy wiadomości AS2. Obowiązkowe |
-| receiverPartnerName | Ciąg | Nazwa partnera odbiorcy komunikatu AS2. Obowiązkowe |
-| as2To | Ciąg | Nazwa odbiorcy komunikatu AS2 z nagłówków wiadomości AS2. Wypełnione |
-| as2From | Ciąg | Nazwa nadawcy wiadomości AS2 z nagłówków wiadomości AS2. Wypełnione |
-| umowaname | Ciąg | Nazwa umowy AS2, do której komunikaty są rozwiązywane. Obowiązkowe |
-| kierunek | Ciąg | Kierunek przepływu wiadomości, odbieranie lub wysyłanie. Wypełnione |
-| Identyfikatora | Ciąg | Identyfikator komunikatu AS2 z nagłówków wiadomości AS2 (opcjonalnie) |
-| rozmieśćtype |Ciąg | Wartość typu dyspozycji powiadomienia o dyspozycji wiadomości (powiadomienia MDN). Obowiązkowe |
-| fileName | Ciąg | Nazwa pliku, z nagłówka komunikatu AS2. Obowiązkowe |
-| isMessageFailed |Wartość logiczna | Czy komunikat AS2 nie powiódł się. Wypełnione |
-| isMessageSigned | Wartość logiczna | Czy wiadomość AS2 została podpisana. Wypełnione |
-| isMessageEncrypted | Wartość logiczna | Czy komunikat AS2 został zaszyfrowany. Wypełnione |
-| isMessageCompressed |Wartość logiczna | Czy komunikat AS2 został skompresowany. Wypełnione |
-| correlationMessageId | Ciąg | Identyfikator komunikatu AS2 w celu skorelowania komunikatów z usługą MDNs. Obowiązkowe |
-| incomingHeaders |Słownik JToken | Szczegóły przychodzącego nagłówka komunikatu AS2. Obowiązkowe |
-| outgoingHeaders |Słownik JToken | Szczegóły wychodzącego nagłówka komunikatu AS2. Obowiązkowe |
-| isNrrEnabled | Wartość logiczna | Użyj wartości domyślnej, jeśli wartość jest nieznana. Wypełnione |
-| isMdnExpected | Wartość logiczna | Użyj wartości domyślnej, jeśli wartość jest nieznana. Wypełnione |
-| mdnType | Wyliczenie | Dozwolone wartości to **NotConfigured**, **Sync**i **Async**. Wypełnione |
-||||
+| Właściwość | Wymagane | Typ | Opis |
+|----------|----------|------|-------------|
+| senderPartnerName | Nie | Ciąg | Nazwa partnera nadawcy wiadomości AS2 |
+| receiverPartnerName | Nie | Ciąg | Nazwa partnera odbiorcy komunikatu AS2 |
+| as2To | Tak | Ciąg | Nazwa odbiorcy komunikatu AS2 z nagłówków wiadomości AS2 |
+| as2From | Tak | Ciąg | Nazwa nadawcy wiadomości AS2 z nagłówków wiadomości AS2 |
+| agreementName | Nie | Ciąg | Nazwa umowy AS2, do której komunikaty są rozpoznawane |
+| kierunek | Tak | Ciąg | Kierunek przepływu wiadomości, który jest `receive` lub `send` |
+| messageId | Nie | Ciąg | Identyfikator komunikatu AS2 z nagłówków wiadomości AS2 |
+| rozmieśćtype | Nie | Ciąg | Wartość typu dyspozycji powiadomienia o dyspozycji komunikatu (powiadomienia MDN) |
+| fileName | Nie | Ciąg | Nazwa pliku z nagłówka komunikatu AS2 |
+| isMessageFailed | Tak | Wartość logiczna | Czy komunikat AS2 nie powiódł się |
+| isMessageSigned | Tak | Wartość logiczna | Czy wiadomość AS2 została podpisana |
+| isMessageEncrypted | Tak | Wartość logiczna | Czy komunikat AS2 został zaszyfrowany |
+| isMessageCompressed | Tak | Wartość logiczna | Czy komunikat AS2 został skompresowany |
+| correlationMessageId | Nie | Ciąg | Identyfikator komunikatu AS2 w celu skorelowania komunikatów z usługą MDNs |
+| incomingHeaders | Nie | Słownik JToken | Szczegóły przychodzącego nagłówka komunikatu AS2 |
+| outgoingHeaders | Nie | Słownik JToken | Szczegóły wychodzącego nagłówka komunikatu AS2 |
+| isNrrEnabled | Tak | Wartość logiczna | Czy użyć wartości domyślnej, jeśli wartość nie jest znana |
+| isMdnExpected | Tak | Wartość logiczna | Czy użyć wartości domyślnej, jeśli wartość nie jest znana |
+| mdnType | Tak | Wyliczenie | Dozwolone wartości: `NotConfigured`, `Sync`i `Async` |
+|||||
 
 ## <a name="as2-mdn-tracking-schema"></a>Schemat śledzenia powiadomienia MDN AS2
 
@@ -86,7 +84,7 @@ Aby ułatwić monitorowanie sukcesu, błędów i właściwości komunikatów dla
       "receiverPartnerName": "",
       "as2To": "",
       "as2From": "",
-      "agreementName": "g"
+      "agreementName": ""
    },
    "messageProperties": {
       "direction": "",
@@ -107,26 +105,26 @@ Aby ułatwić monitorowanie sukcesu, błędów i właściwości komunikatów dla
 }
 ```
 
-| Właściwość | Typ | Opis |
-| --- | --- | --- |
-| senderPartnerName | Ciąg | Nazwa partnera nadawcy wiadomości AS2. Obowiązkowe |
-| receiverPartnerName | Ciąg | Nazwa partnera odbiorcy komunikatu AS2. Obowiązkowe |
-| as2To | Ciąg | Nazwa partnera, który odbiera komunikat AS2. Wypełnione |
-| as2From | Ciąg | Nazwa partnera, który wysyła wiadomość AS2. Wypełnione |
-| umowaname | Ciąg | Nazwa umowy AS2, do której komunikaty są rozwiązywane. Obowiązkowe |
-| kierunek |Ciąg | Kierunek przepływu wiadomości, odbieranie lub wysyłanie. Wypełnione |
-| Identyfikatora | Ciąg | Identyfikator komunikatu AS2. Obowiązkowe |
-| originalMessageId |Ciąg | Identyfikator oryginalnego komunikatu AS2. Obowiązkowe |
-| rozmieśćtype | Ciąg | POWIADOMIENIA MDN wartość typu dyspozycji. Obowiązkowe |
-| isMessageFailed |Wartość logiczna | Czy komunikat AS2 nie powiódł się. Wypełnione |
-| isMessageSigned |Wartość logiczna | Czy wiadomość AS2 została podpisana. Wypełnione |
-| isNrrEnabled | Wartość logiczna | Użyj wartości domyślnej, jeśli wartość jest nieznana. Wypełnione |
-| Stanu | Wyliczenie | Dozwolone wartości to **akceptowane**, **odrzucone**i **AcceptedWithErrors**. Wypełnione |
-| micVerificationStatus | Wyliczenie | Dozwolone wartości to **NotApplicable (program**, **sukces**i **Niepowodzenie**. Wypełnione |
-| correlationMessageId | Ciąg | Identyfikator korelacji. Oryginalny identyfikator wiadomości (Identyfikator komunikatu dla wiadomości, dla której skonfigurowano powiadomienia MDN). Obowiązkowe |
-| incomingHeaders | Słownik JToken | Wskazuje szczegóły nagłówka komunikatu przychodzącego. Obowiązkowe |
-| outgoingHeaders |Słownik JToken | Wskazuje szczegóły nagłówka komunikatu wychodzącego. Obowiązkowe |
-||||
+| Właściwość | Wymagane | Typ | Opis |
+|----------|----------|------|-------------|
+| senderPartnerName | Nie | Ciąg | Nazwa partnera nadawcy wiadomości AS2 |
+| receiverPartnerName | Nie | Ciąg | Nazwa partnera odbiorcy komunikatu AS2 |
+| as2To | Tak | Ciąg | Nazwa partnera, który odbiera komunikat AS2 |
+| as2From | Tak | Ciąg | Nazwa partnera, który wysyła wiadomość AS2 |
+| agreementName | Nie | Ciąg | Nazwa umowy AS2, do której komunikaty są rozpoznawane |
+| kierunek | Tak | Ciąg | Kierunek przepływu wiadomości, który jest `receive` lub `send` |
+| messageId | Nie | Ciąg | Identyfikator komunikatu AS2 |
+| originalMessageId | Nie | Ciąg | Identyfikator oryginalnego komunikatu AS2 |
+| rozmieśćtype | Nie | Ciąg | Wartość typu dyspozycji powiadomienia MDN |
+| isMessageFailed | Tak | Wartość logiczna | Czy komunikat AS2 nie powiódł się |
+| isMessageSigned | Tak | Wartość logiczna | Czy wiadomość AS2 została podpisana |
+| isNrrEnabled | Tak | Wartość logiczna | Czy użyć wartości domyślnej, jeśli wartość nie jest znana |
+| statusCode | Tak | Wyliczenie | Dozwolone wartości: `Accepted`, `Rejected`i `AcceptedWithErrors` |
+| micVerificationStatus | Tak | Wyliczenie | Dozwolone wartości:`NotApplicable`, `Succeeded`i `Failed` |
+| correlationMessageId | Nie | Ciąg | Identyfikator korelacji, który jest IDENTYFIKATORem oryginalnej wiadomości, dla której skonfigurowano powiadomienia MDN |
+| incomingHeaders | Nie | Słownik JToken | Szczegóły nagłówka komunikatu przychodzącego |
+| outgoingHeaders | Nie | Słownik JToken | Szczegóły nagłówka wiadomości wychodzącej |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schematy śledzenia protokołu B2B
 
@@ -137,5 +135,4 @@ Aby uzyskać informacje o schematach śledzenia protokołu B2B, zobacz:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Informacje o [monitorowaniu komunikatów B2B](logic-apps-monitor-b2b-message.md)
-* Informacje [na temat śledzenia komunikatów B2B w dziennikach Azure monitor](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* [Monitorowanie komunikatów B2B przy użyciu dzienników Azure Monitor](../logic-apps/monitor-b2b-messages-log-analytics.md)

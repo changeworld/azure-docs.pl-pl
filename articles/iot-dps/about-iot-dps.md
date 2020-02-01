@@ -1,25 +1,25 @@
 ---
 title: Omówienie usługi Azure IoT Hub Device Provisioning Service | Microsoft Docs
 description: Opisuje Inicjowanie obsługi urządzeń na platformie Azure przy użyciu usługi Device Provisioning Service (DPS) i IoT Hub
-author: nberdy
-ms.author: nberdy
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: f9ac3c85bcd8e50918961649bdb5739fc66f1627
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+manager: eliotgra
+ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772942"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904875"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Aprowizowanie urządzeń za pomocą usługi Azure IoT Hub Device Provisioning Service
-Platforma Microsoft Azure zapewnia bogaty zestaw zintegrowanych usług w chmurze publicznej spełniający wszelkie potrzeby rozwiązania IoT. Usługa IoT Hub Device Provisioning Service to usługa pomocnika usługi IoT Hub, która umożliwia bezobsługową aprowizację w miarę potrzeb w odpowiednim centrum IoT, nie wymagając przy tym interwencji człowieka, co umożliwia klientom aprowizację milionów urządzeń w sposób bezpieczny i skalowalny.
+Platforma Microsoft Azure zapewnia bogaty zestaw zintegrowanych usług w chmurze publicznej spełniający wszelkie potrzeby rozwiązania IoT. IoT Hub Device Provisioning Service (DPS) to usługa pomocnika dla IoT Hub, która umożliwia zainicjowanie obsługi "just in Time" do odpowiedniego centrum IoT Hub bez konieczności interwencji człowieka. Usługa DPS umożliwia bezpieczne i skalowalne Inicjowanie obsługi milionów urządzeń.
 
 ## <a name="when-to-use-device-provisioning-service"></a>Kiedy stosować usługę Device Provisioning Service
-Istnieje wiele scenariuszy aprowizowania, w których usługa Device Provisioning Service jest doskonałym wyborem na potrzeby łączenia urządzeń z usługą IoT Hub oraz ich konfigurowania, np.:
+Istnieje wiele scenariuszy aprowizacji, w których usługa DPS jest doskonałym wyborem do uzyskiwania urządzeń podłączonych i skonfigurowanych do IoT Hub, takich jak:
 
 * Bezobsługowe aprowizowanie w jednym rozwiązaniu IoT bez trwałego kodowania informacji o połączeniu z usługą IoT Hub w fabryce (konfiguracja początkowa)
 * Równoważenie obciążenia urządzeń w wielu centrach
@@ -30,31 +30,31 @@ Istnieje wiele scenariuszy aprowizowania, w których usługa Device Provisioning
 * Przerzucanie kluczy używanych przez urządzenie do nawiązywania połączenia z usługą IoT Hub (gdy na potrzeby połączenia nie są używane certyfikaty X.509)
 
 ## <a name="behind-the-scenes"></a>Za kulisami
-Wszystkie scenariusze wymienione w poprzedniej sekcji można zrealizować przy użyciu usługi aprowizowania, aby uzyskać bezobsługową aprowizację w tym samym przepływie. Wiele czynności tradycyjnie wykonywanych ręcznie w ramach aprowizowania zostało zautomatyzowanych przez usługę Device Provisioning Service w celu skrócenia czasu wdrażania urządzeń IoT i zmniejszenia ryzyka błędu. W poniższej sekcji opisano, co dzieje się za kulisami, aby aprowizować urządzenie. Pierwszy krok jest ręczny, a wszystkie następne kroki są zautomatyzowane.
+Wszystkie scenariusze wymienione w poprzedniej sekcji można wykonać przy użyciu usługi DPS do obsługi aprowizacji bez dotknięcia tego samego przepływu. Wiele ręcznych kroków tradycyjnie związanych z obsługą administracyjną jest zautomatyzowany z usługą DPS w celu skrócenia czasu wdrażania urządzeń IoT i obniżenia ryzyka ręcznego błędu. W poniższej sekcji opisano, co dzieje się za kulisami, aby aprowizować urządzenie. Pierwszy krok jest ręczny, a wszystkie następne kroki są zautomatyzowane.
 
 ![Podstawowy przepływ aprowizowania](./media/about-iot-dps/dps-provisioning-flow.png)
 
 1. Producent urządzenia dodaje jego informacje o rejestracji do listy rejestracji w witrynie Azure Portal.
-2. Urządzenie kontaktuje się z punktem końcowym usługi aprowizowania ustawionym w fabryce. Urządzenie przekazuje informacje identyfikacyjne do usługi aprowizowania, aby potwierdzić swoją tożsamość.
-3. Usługa aprowizowania sprawdza tożsamość urządzenia przez walidację identyfikatora rejestracji oraz klucza względem wpisu listy rejestracji, korzystając z weryfikacji za pomocą testu identyfikatora jednorazowego ([Trusted Platform Module](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)) lub standardowej weryfikacji X.509 (X.509).
-4. Usługa aprowizowania rejestruje urządzenie w centrum IoT i wypełnia [żądany stan bliźniaczej reprezentacji](../iot-hub/iot-hub-devguide-device-twins.md) urządzenia.
-5. Centrum IoT zwraca informacje o identyfikatorze urządzenia do usługi aprowizowania.
-6. Usługa aprowizowania zwraca informacje o połączeniu z centrum IoT do urządzenia. Urządzenie może teraz rozpocząć przesyłanie danych bezpośrednio do centrum IoT.
+2. Urządzenie kontaktuje się z punktem końcowym DPS ustawionym w fabryce. Urządzenie przekazuje informacje identyfikujące do punktu dystrybucji, aby potwierdzić jego tożsamość.
+3. Usługa DPS sprawdza poprawność tożsamości urządzenia, sprawdzając Identyfikator rejestracji i klucz związany z wpisem listy rejestracji przy użyciu żądania nonce ([moduł TPM](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)) lub standardowej weryfikacji x. 509 (x. 509).
+4. Usługa DPS rejestruje urządzenie w usłudze IoT Hub i wypełnia [stan odpowiedniej przędzy](../iot-hub/iot-hub-devguide-device-twins.md)urządzenia.
+5. Usługa IoT Hub zwraca informacje o IDENTYFIKATORze urządzenia do funkcji DPS.
+6. Usługa DPS zwraca informacje o połączeniu usługi IoT Hub z urządzeniem. Urządzenie może teraz rozpocząć przesyłanie danych bezpośrednio do centrum IoT.
 7. Urządzenie łączy się z centrum IoT.
 8. Urządzenie pobiera żądany stan ze swojej bliźniaczej reprezentacji urządzenia w centrum IoT.
 
 ## <a name="provisioning-process"></a>Proces aprowizacji
-Proces wdrażania urządzenia obejmujący usługę Device Provisioning Service składa się z dwóch odrębnych kroków, które można wykonać niezależnie:
+Istnieją dwa odrębne kroki procesu wdrażania urządzenia, w którym usługa DPS bierze część, którą można wykonać niezależnie:
 
 * **Krok produkcji**, w ramach którego urządzenie jest tworzone i przygotowywane w fabryce.
 * **Krok konfiguracji chmury**, w ramach którego usługa Device Provisioning Service jest konfigurowana na potrzeby automatycznego aprowizowania.
 
-Oba te kroki bezproblemowo wpisują się w istniejące procesy produkcji i wdrażania. Usługa Device Provisioning Service upraszcza nawet niektóre procesy wdrażania obejmujące wiele ręcznej pracy w celu umieszczenia informacji o połączeniu na urządzeniu.
+Oba te kroki bezproblemowo wpisują się w istniejące procesy produkcji i wdrażania. Usługa DPS nawet upraszcza niektóre procesy wdrażania, które obejmują pracę ręczną, aby uzyskać informacje o połączeniu na urządzeniu.
 
 ### <a name="manufacturing-step"></a>Krok produkcji
 Ten krok obejmuje wszystko to, co dzieje się na linii produkcyjnej. Role biorące udział w tym kroku to projektant układów scalonych, producent układów scalonych, integrator i/lub końcowy producent urządzenia. Ten krok dotyczy tworzenia samego sprzętu.
 
-Usługa Device Provisioning Service nie wprowadza nowego kroku do procesu produkcji, ale wiąże się z istniejącym krokiem, w którym na urządzeniu jest instalowane oprogramowanie początkowe i (w idealnym przypadku) moduł HSM. W tym kroku, zamiast tworzyć identyfikator urządzenia, urządzenie jest programowane tak, aby zawierało informacje o usłudze aprowizowania, co umożliwia mu wywołanie usługi aprowizowania w celu uzyskania informacji dotyczących połączenia/przypisania do rozwiązania IoT po jego włączeniu.
+Usługa DPS nie wprowadza nowego kroku w procesie produkcyjnym; Zamiast tego wiąże się to z istniejącym krokiem, który instaluje początkowe oprogramowanie i (najlepiej) moduł HSM na urządzeniu. W tym kroku, zamiast tworzyć identyfikator urządzenia, urządzenie jest programowane tak, aby zawierało informacje o usłudze aprowizowania, co umożliwia mu wywołanie usługi aprowizowania w celu uzyskania informacji dotyczących połączenia/przypisania do rozwiązania IoT po jego włączeniu.
 
 Ponadto w tym kroku producent dostarcza osobie wdrażającej urządzenia/operatorowi urządzeń informacje o kluczu identyfikacyjnym. Dostarczenie tych informacji może być proste (np. potwierdzenie, że wszystkie urządzenia mają certyfikat X.509 wygenerowany na podstawie certyfikatu podpisywania udostępnionego przez osobę wdrażającą urządzenia/operatora urządzeń) lub skomplikowane (np. wyodrębnienie publicznej części klucza poręczenia modułu TPM z każdego urządzenia TPM). Te usługi są obecnie oferowane przez wielu producentów układów scalonych.
 
@@ -71,22 +71,22 @@ Po skonfigurowaniu usługi na potrzeby automatycznego aprowizowania musi ona zos
 1. Pierwsza część to ustanowienie połączenia początkowego między urządzeniem a rozwiązaniem IoT przez rejestrację urządzenia.
 2. Druga część to zastosowanie odpowiedniej konfiguracji do urządzenia na podstawie określonych wymagań rozwiązania, w którym zostało ono zarejestrowane.
 
-Po wykonaniu tych dwóch kroków można powiedzieć, że urządzenie zostało w pełni aprowizowane. Niektóre usługi w chmurze umożliwiają wykonanie tylko pierwszego kroku tego procesu aprowizowania przez zarejestrowanie urządzeń w punkcie końcowym rozwiązania IoT, ale nie zapewniają konfiguracji początkowej. Usługa Device Provisioning Service automatyzuje oba kroki, aby zapewnić bezproblemowe środowisko aprowizowania dla urządzenia.
+Po wykonaniu tych dwóch kroków można powiedzieć, że urządzenie zostało w pełni aprowizowane. Niektóre usługi w chmurze umożliwiają wykonanie tylko pierwszego kroku tego procesu aprowizowania przez zarejestrowanie urządzeń w punkcie końcowym rozwiązania IoT, ale nie zapewniają konfiguracji początkowej. Usługa DPS automatyzuje obie kroki, aby zapewnić bezproblemową obsługę administracyjną urządzenia.
 
 ## <a name="features-of-the-device-provisioning-service"></a>Funkcje usługi Device Provisioning Service
-Usługa Device Provisioning Service ma wiele funkcji, dzięki czemu jest idealnym rozwiązaniem w przypadku aprowizowania urządzeń.
+Usługa DPS ma wiele funkcji, dzięki czemu jest idealnym rozwiązaniem do aprowizacji urządzeń.
 
 * Obsługa **bezpiecznego zaświadczania** dla tożsamości opartych zarówno na standardzie X.509, jak i module TPM.
 * **Lista rejestracji** zawierająca pełny rejestr urządzeń/grup urządzeń, które w pewnym momencie mogą zostać zarejestrowane. Lista rejestracji zawiera informacje dotyczące żądanej konfiguracji urządzenia po jego zarejestrowaniu i może być aktualizowana w dowolnym momencie.
-* **Wiele zasad alokacji** do kontrolowania sposobu, w jaki usługa Device Provisioning przypisuje urządzenia do centrów IoT w ramach obsługi Twoich scenariuszy: najniższe opóźnienie, równomiernie ważone (domyślnie) i konfigurację statyczną za pośrednictwem listy rejestracji. Należy zauważyć, że czas oczekiwania jest określany przy użyciu tej samej metody co [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
+* **Wiele zasad alokacji** do kontrolowania, w jaki sposób usługa DPS przypisuje urządzenia do centrów IoT w ramach obsługi Twoich scenariuszy: najniższy czas oczekiwania (domyślnie) i Konfiguracja statyczna za pośrednictwem listy rejestracji. Czas oczekiwania jest określany przy użyciu tej samej metody co [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
 * **Monitorowanie i rejestrowanie diagnostyczne** w celu zapewnienia poprawnego działania.
-* **Obsługa wielocentrów** pozwala usłudze Device Provisioning na późne wiązanie urządzeń z Centrum IoT w czasie wykonywania. Usługa Device Provisioning Service może komunikować się z centrami w wielu subskrypcjach platformy Azure.
-* **Obsługa wielu regionów** umożliwia usłudze Device Provisioning Service przypisywanie urządzeń do centrów IoT w innych regionach.
+* **Obsługa wielocentrów** umożliwia usłudze DPS późne wiązanie urządzeń z Centrum IoT w czasie wykonywania. Usługa DPS może komunikować się z centrami w wielu subskrypcjach platformy Azure.
+* **Obsługa wielu regionów** pozwala usłudze DPS przypisywać urządzenia do centrów IoT w innych regionach.
 
 Więcej informacji o pojęciach i funkcjach z zakresu aprowizowania urządzeń możesz znaleźć w artykułach na temat [pojęć dotyczących urządzeń](concepts-device.md), [pojęć dotyczących usługi](concepts-service.md) oraz [pojęć dotyczących zabezpieczeń](concepts-security.md).
 
 ## <a name="cross-platform-support"></a>Obsługa wielu platform
-Usługa Device Provisioning Service, tak jak wszystkie usługi IoT platformy Azure, działa na wielu platformach z różnymi systemami operacyjnymi. Platforma Azure oferuje zestawy SDK typu open source w wielu różnych [językach](https://github.com/Azure/azure-iot-sdks), aby usprawnić łączenie urządzeń i zarządzanie usługą. Usługa Device Provisioning Service obsługuje następujące protokoły łączenia urządzeń:
+Podobnie jak w przypadku wszystkich usług Azure IoT, usługa DPS działa na wielu platformach z różnymi systemami operacyjnymi. Platforma Azure oferuje zestawy SDK typu open source w wielu różnych [językach](https://github.com/Azure/azure-iot-sdks), aby usprawnić łączenie urządzeń i zarządzanie usługą. Usługa DPS obsługuje następujące protokoły do łączenia urządzeń:
 
 * HTTPS
 * AMQP
@@ -94,16 +94,16 @@ Usługa Device Provisioning Service, tak jak wszystkie usługi IoT platformy Azu
 * MQTT
 * MQTT za pośrednictwem obiektów Web Socket
 
-Usługa Device Provisioning Service obsługuje połączenia HTTPS tylko na potrzeby operacji usługi.
+Usługa DPS obsługuje tylko połączenia HTTPS dla operacji usługi.
 
 ## <a name="regions"></a>Regiony
-Usługa Device Provisioning Service jest dostępna w wielu regionach. Aktualna lista obecnych i nowo ogłoszonych regionów dla wszystkich usług jest dostępna na stronie [Regiony świadczenia usługi Azure](https://azure.microsoft.com/regions/). Dostępność usługi Device Provisioning Service można sprawdzić na stronie [Stan platformy Azure](https://azure.microsoft.com/status/).
+Usługa DPS jest dostępna w wielu regionach. Aktualna lista obecnych i nowo ogłoszonych regionów dla wszystkich usług jest dostępna na stronie [Regiony świadczenia usługi Azure](https://azure.microsoft.com/regions/). Dostępność usługi Device Provisioning Service można sprawdzić na stronie [Stan platformy Azure](https://azure.microsoft.com/status/).
 
 > [!NOTE]
-> Usługa Device Provisioning Service jest globalna i nie jest powiązana z konkretną lokalizacją. Należy jednak określić region, w którym będą znajdować się metadane skojarzone z Twoim profilem usługi Device Provisioning Service.
+> Usługa DPS jest globalna i nie jest powiązana z lokalizacją. Należy jednak określić region, w którym będą znajdować się metadane skojarzone z Twoim profilem DPS.
 
 ## <a name="availability"></a>Dostępność
-Obowiązuje umowa dotycząca poziomu usług (SLA, Service Level Agreement) gwarantująca sprawne działanie usługi Device Provisioning Service przez 99,9% czasu. Tutaj możesz [przeczytać umowę SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/). Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
+Istnieje 99,9% Umowa dotycząca poziomu usług usługi DPS i można [przeczytać umowę SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/). Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
 
 ## <a name="quotas"></a>Przydziały
 W każdej subskrypcji platformy Azure obowiązują domyślne limity przydziału, które mogą mieć wpływ na zakres rozwiązania IoT. Aktualny limit dla każdej subskrypcji wynosi 10 usług Device Provisioning Service na subskrypcję.
@@ -114,7 +114,7 @@ Więcej informacji na temat limitów przydziałów znajduje się w artykułach:
 * [Azure Subscription Service Limits](../azure-resource-manager/management/azure-subscription-service-limits.md) (Limity usług subskrypcji platformy Azure)
 
 ## <a name="related-azure-components"></a>Powiązane składniki platformy Azure
-Usługa Device Provisioning Service automatyzuje aprowizowanie urządzeń w usłudze Azure IoT Hub. Dowiedz się więcej na temat usługi [IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
+Usługa DPS automatyzuje Inicjowanie obsługi urządzeń za pomocą usługi Azure IoT Hub. Dowiedz się więcej na temat usługi [IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
 
 ## <a name="next-steps"></a>Następne kroki
 Teraz ogólnie wiesz, na czym polega aprowizowanie urządzeń IoT na platformie Azure. Następnym krokiem jest wypróbowanie kompletnego scenariusza IoT.

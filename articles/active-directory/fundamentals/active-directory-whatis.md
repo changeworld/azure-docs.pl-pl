@@ -5,17 +5,18 @@ services: active-directory
 author: msaburnley
 manager: daveba
 ms.service: active-directory
+ms.subservice: fundamentals
 ms.topic: overview
 ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e028be6b4a507ba97f9126c791ee77c764c70
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: c4d32522ef88504b96d262c654dac7c08c292761
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880509"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897461"
 ---
 # <a name="what-is-azure-active-directory"></a>Czym jest usługa Active Directory systemu Azure?
 
@@ -52,7 +53,7 @@ Aby ulepszyć implementację usługi Azure AD, możesz również dodać płatne 
 
 - **Azure Active Directory — wersja Premium P1.** Oprócz bezpłatnych funkcji P1 umożliwia również użytkownikom hybrydowym dostęp do zasobów lokalnych i w chmurze. Obsługuje ona również zaawansowaną administrację, taką jak grupy dynamiczne, samoobsługowe zarządzanie grupami, usługa Microsoft Identity Manager (lokalny pakiet do zarządzania tożsamościami i dostępem) oraz funkcje zapisu zwrotnego, które umożliwiają samoobsługowe resetowanie haseł przez użytkowników lokalnych.
 
-- **Azure Active Directory — wersja Premium P2.** Oprócz funkcji wolnych i P1 firma P2 oferuje również [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) w celu zapewnienia na podstawie ryzyka dostępu warunkowego do aplikacji i kluczowych danych firmy, a [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) w celu uzyskania pomocy. Ogranicz i monitoruj administratorów oraz ich dostęp do zasobów i zapewniaj dostęp just in Time w razie potrzeby.
+- **Azure Active Directory — wersja Premium P2.** Oprócz funkcji wolnych i P1 firma P2 oferuje również [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) w celu zapewnienia użytkownikom dostępu warunkowego do aplikacji i krytycznych danych firmy, a [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) , aby ułatwić odnajdywanie, ograniczanie i monitorowanie administratorów oraz dostęp do zasobów oraz zapewnianie dostępu just in Time w razie potrzeby.
 
 - **Licencje funkcji „Płatność zgodnie z rzeczywistym użyciem”.** Istnieje też możliwość uzyskania licencji dodatkowych funkcji, takich jak usługa Azure Active Directory Business-to-Customer (B2C). Usługa B2C może ułatwić zapewnianie rozwiązań do zarządzania tożsamościami i dostępem dla aplikacji udostępnianych klientom. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 
@@ -86,7 +87,7 @@ Po wybraniu licencji usługi Azure AD uzyskasz dostęp do niektórych lub wszyst
 |Kategoria|Opis|
 |-------|-----------|
 |Zarządzanie aplikacjami|Zarządzanie aplikacjami w chmurze i lokalnymi przy użyciu serwera proxy aplikacji, logowania jednokrotnego, portalu Moje aplikacje (nazywanego też panelem dostępu) i aplikacji typu oprogramowanie jako usługa (SaaS). Aby uzyskać więcej informacji, zobacz temat [Jak zapewnić bezpieczny, zdalny dostęp do aplikacji lokalnych](../manage-apps/application-proxy.md) i [dokumentację zarządzania aplikacjami](../manage-apps/index.yml).|
-|Uwierzytelnianie|Zarządzanie samoobsługowym resetowaniem haseł, uwierzytelnianiem wieloskładnikowym, niestandardowymi listami zakazanych haseł i inteligentną blokadą usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [dokumentację uwierzytelniania w usłudze Azure AD](../authentication/index.yml).|
+|Authentication|Zarządzanie samoobsługowym resetowaniem haseł, uwierzytelnianiem wieloskładnikowym, niestandardowymi listami zakazanych haseł i inteligentną blokadą usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [dokumentację uwierzytelniania w usłudze Azure AD](../authentication/index.yml).|
 |Działania między firmami (B2B)|Zarządzanie użytkownikami-gośćmi i partnerami zewnętrznymi przy zachowaniu kontroli nad danymi firmowymi. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2B](../b2b/index.yml).|
 |Działania między firmami i klientami (B2C)|Dostosowywanie i kontrolowanie sposobu tworzenia kont, logowania się i zarządzania profilami przez użytkowników podczas korzystania z aplikacji. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
 |Dostęp warunkowy|Zarządzanie dostępem do aplikacji w chmurze. Aby uzyskać więcej informacji, zobacz [dokumentację dostępu warunkowego w usłudze Azure AD](../conditional-access/index.yml).|

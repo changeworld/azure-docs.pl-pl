@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772601"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906803"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu failover SQL Server z udziałem plików w warstwie Premium na maszynach wirtualnych platformy Azure
 
@@ -185,7 +185,7 @@ Po utworzeniu i skonfigurowaniu maszyn wirtualnych można skonfigurować udział
   > - Rozważ użycie oddzielnego udziału plików dla plików kopii zapasowej w celu zapisania liczby IOPS i pojemności miejsca w tym udziale dla plików danych i dziennika. W przypadku plików kopii zapasowej można użyć Premium lub standardowego udziału plików.
   > - Jeśli korzystasz z systemu Windows 2012 R2 lub starszego, wykonaj te same kroki, aby zainstalować udział plików, który ma być używany jako monitor udziału plików. 
 
-## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>Krok 3. Konfigurowanie klastra trybu failover z udziałem plików
+## <a name="step-3-configure-the-failover-cluster"></a>Krok 3. Konfigurowanie klastra trybu failover
 
 Następnym krokiem jest skonfigurowanie klastra trybu failover. W tym kroku wykonasz następujące podkroky:
 

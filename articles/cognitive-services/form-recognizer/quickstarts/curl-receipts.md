@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 8b0e7d717ed5c06600adf261f7ce5b44f572adf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6e9eddbec3cdc46c04f9c9ae78f937e20bfa8270
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774255"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901984"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Szybki Start: wyodrębnianie danych o odbiorze przy użyciu interfejsu API REST aparatu rozpoznawania formularzy z zwinięciem
 
 W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy platformy Azure z zwinięciem, aby wyodrębnić i zidentyfikować odpowiednie informacje w odniesieniu do sprzedaży w USA.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-> [!IMPORTANT]
-> Ten przewodnik Szybki Start używa interfejsu API aparatu rozpoznawania w wersji 2.0. Jeśli Twoja subskrypcja nie znajduje się w regionie `West US 2` lub `West Europe`, musisz użyć interfejsu API w wersji 1.0. Postępuj zgodnie z [przewodnikiem Szybki Start w wersji 1.0](./curl-train-extract-v1.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

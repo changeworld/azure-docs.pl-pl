@@ -5,15 +5,15 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: fbaea9324d82e22a1ab3c6c03a9ebec045bea64b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 461d6021a201ca1fa5722bb44c427baca2a7728e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463232"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903380"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Tworzenie klastra autonomicznego działającego w systemie Windows Server
-Za pomocą usługi Azure Service Fabric można tworzyć klastry Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server. Oznacza to, że można wdrażać i uruchamiać aplikacje Service Fabric w dowolnym środowisku zawierającym zestaw połączonych komputerów z systemem Windows Server, być lokalnym lub dowolnym dostawcą chmury. Service Fabric udostępnia pakiet instalacyjny do tworzenia klastrów Service Fabric o nazwie autonomiczny pakiet systemu Windows Server. Tradycyjne Service Fabric klastrów na platformie Azure są dostępne jako usługa zarządzana, natomiast autonomiczne klastry Service Fabric są samoobsługowe.
+Za pomocą usługi Azure Service Fabric można tworzyć klastry Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server. Oznacza to, że można wdrażać i uruchamiać aplikacje Service Fabric w dowolnym środowisku zawierającym zestaw połączonych komputerów z systemem Windows Server, być lokalnym lub dowolnym dostawcą chmury. Service Fabric udostępnia pakiet instalacyjny do tworzenia klastrów Service Fabric o nazwie autonomiczny pakiet systemu Windows Server. Tradycyjne Service Fabric klastrów na platformie Azure są dostępne jako usługa zarządzana, natomiast autonomiczne klastry Service Fabric są samoobsługowe. Aby uzyskać więcej informacji na temat różnic, zobacz [porównywanie klastrów na platformie Azure i autonomicznych Service Fabric](./service-fabric-deploy-anywhere.md).
 
 W tym artykule omówiono procedurę tworzenia klastra autonomicznego Service Fabric.
 

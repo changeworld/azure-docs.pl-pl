@@ -4,15 +4,15 @@ description: Dowiedz się, jak zarządzać rolami bazy danych i użytkownikami n
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 26d7c2d8919573c4c971edd7cb0e01b06fef3012
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147014"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901494"
 ---
 # <a name="manage-database-roles-and-users"></a>Zarządzanie rolami i użytkownikami bazy danych
 
@@ -44,10 +44,10 @@ Podczas tworzenia projektu modelu tabelarycznego tworzysz role i Dodaj użytkown
   
     |Uprawnienie|Opis|  
     |----------------|-----------------|  
-    |**Brak**|Członkowie nie mogą modyfikować schematu modelu i nie mogą wykonywać zapytań dotyczących danych.|  
+    |**Brak**|Członkowie nie mogą odczytywać ani modyfikować schematu modelu i nie mogą wykonywać zapytań dotyczących danych.|  
     |**Odczyt**|Członkowie mogą wykonywać zapytania dotyczące danych (na podstawie filtrów wierszy), ale nie mogą modyfikować schematu modelu.|  
     |**Odczyt i proces**|Członkowie mogą wykonywać zapytania dotyczące danych (na podstawie filtrów na poziomie wiersza) i uruchamiać proces i przetwarzać wszystkie operacje, ale nie mogą modyfikować schematu modelu.|  
-    |**Podstawowych**|Członkowie mogą uruchamiać proces i przetwarzać wszystkie operacje. Nie można zmodyfikować schematu modelu i nie można wykonać zapytania dotyczącego danych.|  
+    |**Podstawowych**|Członkowie mogą uruchamiać proces i przetwarzać wszystkie operacje. Nie można odczytać lub zmodyfikować schematu modelu i nie można wykonać zapytania dotyczącego danych.|  
     |**Administrator**|Członkowie mogą modyfikować schemat modelu i wykonywać zapytania dotyczące wszystkich danych.|   
   
 5.  Jeśli tworzona rola ma uprawnienia Odczyt lub odczyt i przetwarzanie, można dodać filtry wierszy przy użyciu formuły języka DAX. Kliknij kartę **filtry wierszy** , a następnie wybierz tabelę, a następnie kliknij pole **Filtr języka DAX** , a następnie wpisz formułę języka DAX.

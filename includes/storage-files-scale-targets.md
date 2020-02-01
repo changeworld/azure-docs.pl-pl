@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: d76338ccd4dcdf7a9a9a96baa1fb47ed5272d5ff
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72822016"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901405"
 ---
 | Zasób | Standardowe udziały plików | Udziały plików w warstwie Premium |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "72822016"
 | Maksymalna długość nazwy obiektu (katalogów i plików) | 2 048 znaków | 2 048 znaków |
 | Maksymalna część ścieżki składnika (w ścieżce \A\B\C\D każda litera jest składnikiem) | 255 znaków | 255 znaków |
 
-\* niedostępne we wszystkich regionach, zobacz [dostępność regionalna](../articles/storage/files/storage-files-planning.md#regional-availability) dla listy dostępnych regionów.
+\* dostępne w większości regionów, zobacz [dostępność regionalna](../articles/storage/files/storage-files-planning.md#regional-availability) , aby uzyskać szczegółowe informacje na temat dostępnych regionów.
