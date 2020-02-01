@@ -13,6 +13,8 @@
           href: Quickstarts/csharp-sdk.md
         - name: Zestaw SDK dla języka Python
           href: QuickStarts/python-sdk.md
+        - name: Zestaw SDK dla języka Go
+          href: QuickStarts/go-sdk.md
     - name: Korzystanie z interfejsu API REST
       items:
         - name: Wykrywanie twarzy na obrazie
