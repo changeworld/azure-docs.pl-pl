@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294103"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898893"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raportów działań związanych z logowaniem 
 
@@ -143,6 +143,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |53002|Używana aplikacja nie jest zatwierdzoną aplikacją dla dostępu warunkowego. Użytkownik musi używać jednej z aplikacji z listy zatwierdzonych aplikacji w celu uzyskania dostępu.|
 |53003|Dostęp został zablokowany z powodu zasad dostępu warunkowego.|
 |53004|Użytkownik musi ukończyć proces rejestracji w celu używania uwierzytelniania wieloskładnikowego przed uzyskaniem dostępu do tej zawartości. Użytkownik powinien zarejestrować się w celu uwierzytelniania wieloskładnikowego.|
+|53032|Konto zostało zablokowane z powodu zasad Azure AD Identity Protection.|
 |65001|Aplikacja X nie ma uprawnienia dostępu do aplikacji Y lub uprawnienie zostało odwołany. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z identyfikatorem X. Wyślij interaktywne żądanie autoryzacji dla tego użytkownika i zasobu. Lub użytkownik albo administrator nie wyraził zgody na używanie aplikacji z identyfikatorem X. Wyślij do administratora dzierżawy żądanie autoryzacji dotyczące działania w imieniu aplikacji Y dla zasobu Z.|
 |65004|Użytkownik odmówił wyrażenia zgody na dostęp do aplikacji. Użytkownik musi ponowić próbę zalogowania się i wyrazić zgodę na aplikację|
 |65005|Lista dostępu do wymaganych zasobów aplikacji nie zawiera aplikacji możliwych do wykrycia przez zasób lub aplikacja kliencka zażądała dostępu do zasobu, który nie został określony na liście dostępu do wymaganych zasobów, lub usługa programu Graph zwróciła nieprawidłowe żądanie lub nie można odnaleźć zasobu. Jeśli aplikacja obsługuje język SAML, być może aplikację skonfigurowano z nieprawidłowym identyfikatorem (jednostką). Wypróbuj rozwiązania dla języka SAML, korzystając z linku poniżej: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
@@ -184,7 +185,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |90010|Żądanie nie jest obsługiwane z różnych powodów. Na przykład żądanie jest wykonywane za pomocą nieobsługiwanej metody żądania (obsługiwana jest tylko Metoda POST) lub algorytm podpisywania tokenu, którego zażądano, nie jest obsługiwany. Skontaktuj się z deweloperem aplikacji.|
 |90014| Brak wymaganego pola dla komunikatu protokołu, skontaktuj się z właścicielem aplikacji. Jeśli jesteś właścicielem aplikacji, upewnij się, że masz wszystkie wymagane parametry dla żądania logowania. |
 |90051| Nieprawidłowy token delegowania. Określono nieprawidłowy identyfikator chmury krajowej ({cloudId}).|
-|90072| Konto musi najpierw zostać dodane jako użytkownik zewnętrzny w dzierżawie. Wyloguj się i zaloguj ponownie przy użyciu innego konta usługi Azure AD.|
+|90072| Konto musi zostać najpierw dodane jako użytkownik zewnętrzny w dzierżawie. Wyloguj się i zaloguj ponownie przy użyciu innego konta usługi Azure AD.|
 |90094| Aplikacja zażądała uprawnień, do których użytkownik zalogowany nie może wyrazić zgody, a użytkownik został zablokowany. |
 |90095| Aplikacja zażądała uprawnień, do których użytkownik zalogowany nie może wyrazić zgody, a użytkownik wykazał formularz [żądania zgody administratora](../manage-apps/configure-admin-consent-workflow.md) . |
 |500011| Nie znaleziono podmiotu zabezpieczeń o nazwie <site address> w dzierżawie o nazwie <tenant ID>. Taka sytuacja może wystąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub nie została wysłana przez żadnego użytkownika w dzierżawie. Żądanie uwierzytelniania mogło zostać wysłane do nieprawidłowej dzierżawy.|

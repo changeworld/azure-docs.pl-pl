@@ -6,82 +6,110 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
-ms.author: absha
-ms.openlocfilehash: a9e3150a5382e4d690ddf66c43bbe51e125509d3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 01/30/2020
+ms.author: victorh
+ms.openlocfilehash: c49c37ced4a5d5cc7cdde0737b889aad3b538f7f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075216"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899009"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurowanie bramy aplikacji za pomocą punktu końcowego wewnętrznego modułu równoważenia obciążenia (ILB)
 
-Usługę Azure Application Gateway można skonfigurować za pomocą internetowego adresu IP lub wewnętrznego punktu końcowego, który nie jest narażony na Internet (przy użyciu prywatnego adresu IP dla adresu IP frontonu), znanego również jako punkt końcowy wewnętrznego modułu równoważenia obciążenia (ILB). Konfigurowanie bramy przy użyciu prywatnego adresu IP frontonu jest przydatne w przypadku wewnętrznych aplikacji biznesowych, które nie są dostępne w Internecie. Ta opcja jest również przydatna w przypadku usług i warstw w aplikacji wielowarstwowej, która znajduje się w granicach zabezpieczeń bez połączenia z Internetem, ale nadal wymaga dystrybucji obciążenia z działaniem okrężnym, lepkości sesji lub zakończenia protokołu SSL (Secure Sockets Layer).
+Usługę Azure Application Gateway można skonfigurować za pomocą internetowego adresu IP lub wewnętrznego punktu końcowego, który nie jest narażony na Internet. Wewnętrzny punkt końcowy używa prywatnego adresu IP dla frontonu, który jest również znany jako *punkt końcowy wewnętrznego modułu równoważenia obciążenia (ILB)* .
 
-W tym artykule przedstawiono kroki konfigurowania bramy aplikacji przy użyciu prywatnego adresu IP frontonu w witrynie Azure Portal.
+Konfigurowanie bramy przy użyciu prywatnego adresu IP frontonu jest przydatne w przypadku wewnętrznych aplikacji biznesowych, które nie są dostępne w Internecie. Jest on również przydatny w przypadku usług i warstw w aplikacji wielowarstwowej, które znajdują się w granicach zabezpieczeń, które nie są dostępne w Internecie, ale nadal wymagają dystrybucji obciążenia z działaniem okrężnym, lepkość sesji lub zakończenia SSL (SSL).
 
-W tym artykule dowiesz się jak:
-
-- Utwórz prywatną konfigurację adresu IP frontonu dla Application Gateway
-- Tworzenie bramy aplikacji z konfiguracją prywatnego adresu IP frontonu
-
+W tym artykule opisano kroki konfigurowania bramy aplikacji z prywatnym adresem IP frontonu przy użyciu Azure Portal.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com>
+Zaloguj się do Azure Portal na <https://portal.azure.com>KV
 
-## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
+## <a name="create-an-application-gateway"></a>Tworzenie bramy Application Gateway
 
-Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej. Można utworzyć nową sieć wirtualną lub użyć istniejącej. W tym przykładzie utworzymy nową sieć wirtualną. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji. Wystąpienia Application Gateway są tworzone w różnych podsieciach. W tym przykładzie tworzysz dwie podsieci: jedną dla bramy aplikacji i drugą dla serwerów zaplecza.
+Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej. Można utworzyć nową sieć wirtualną lub użyć istniejącej. W tym przykładzie utworzysz nową sieć wirtualną. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji. Wystąpienia Application Gateway są tworzone w różnych podsieciach. W tym przykładzie tworzysz dwie podsieci: jedną dla bramy aplikacji i drugą dla serwerów zaplecza.
 
-1. Kliknij przycisk **Nowy** znajdujący się w lewym górnym rogu Azure Portal.
+1. Rozwiń menu Portal i wybierz pozycję **Utwórz zasób**.
 2. Wybierz pozycję **Sieć**, a następnie z listy Polecane wybierz pozycję **Application Gateway**.
 3. Wprowadź *myAppGateway* dla nazwy bramy aplikacji i *myResourceGroupAG* dla nowej grupy zasobów.
-4. Zaakceptuj wartości domyślne dla innych ustawień, a następnie kliknij przycisk **OK**.
-5. Kliknij kolejno pozycje **Wybierz sieć wirtualną**, **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
-   - myVNet * — jako nazwę sieci wirtualnej.
-   - 10.0.0.0/16 * — dla przestrzeni adresów sieci wirtualnej.
+4. W **obszarze region**wybierz pozycję **(US) środkowe stany USA**.
+5. W obszarze **warstwa**wybierz pozycję **Standardowy**.
+6. W obszarze **Konfigurowanie sieci wirtualnej** wybierz pozycję **Utwórz nową**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
+   - *myVNet* — jako nazwę sieci wirtualnej.
+   - *10.0.0.0/16* — jako przestrzeń adresową sieci wirtualnej.
    - *myAGSubnet* — jako nazwę podsieci.
-   - *10.0.0.0/24* — jako przestrzeń adresową podsieci.  
-     ![private-frontendip-1](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-1.png)
-6. Kliknij przycisk **OK**, aby utworzyć sieć wirtualną i podsieć.
-7. Wybierz konfigurację adresów IP frontonu jako prywatną i domyślnie jest to przypisanie dynamicznego adresu IP. Pierwszy dostępny adres wybranej podsieci zostanie przypisany jako adres IP frontonu.
-8. Jeśli chcesz wybrać prywatny adres IP z zakresu adresów podsieci (alokacja statyczna), kliknij pole **wyboru wybierz określony prywatny** i określ adres IP.
+   - *10.0.0.0/24* — jako przestrzeń adresową podsieci.
+   - *myBackendSubnet* — jako nazwę podsieci zaplecza.
+   - *10.0.1.0/24* — dla przestrzeni adresowej podsieci zaplecza.
+
+    ![Tworzenie sieci wirtualnej](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-1.png)
+
+6. Wybierz **przycisk OK** , aby utworzyć sieć wirtualną i podsieć.
+7. Wybierz pozycję **Dalej: frontony**.
+8. W obszarze **Typ adresu IP frontonu**wybierz pozycję **prywatny**.
+
+   Domyślnie jest to dynamiczne przypisanie adresu IP. Pierwszy dostępny adres skonfigurowanej podsieci jest przypisywany jako adres IP frontonu.
    > [!NOTE]
    > Po przydzieleniu nie można później zmienić typu adresu IP (statycznego lub dynamicznego).
-9. Wybierz konfigurację odbiornika dla protokołu i portu, WAF konfigurację (w razie potrzeby), a następnie kliknij przycisk OK.
-    ![private-frontendip-2](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-2.png)
-10. Przejrzyj ustawienia na stronie Podsumowanie, a następnie kliknij przycisk **OK** , aby utworzyć zasoby sieciowe i bramę aplikacji. Może upłynąć kilka minut w usłudze application gateway można utworzyć, poczekaj na wdrożenie zakończy się pomyślnie przed przejściem do następnej sekcji.
+9. Wybierz pozycję **Dalej: nadkończenie**.
+10. Wybierz pozycję **Dodaj pulę zaplecza**.
+11. W obszarze **Nazwa**wpisz *appGatewayBackendPool*.
+12. W obszarze **Dodaj pulę zaplecza bez elementów docelowych**wybierz pozycję **tak**. Później dodasz cele.
+13. Wybierz pozycję **Dodaj**.
+14. Wybierz pozycję **Dalej: Konfiguracja**.
+15. W obszarze **reguły routingu**wybierz pozycję **Dodaj regułę**.
+16. W obszarze **Nazwa reguły**wpisz *RRULE-01*.
+17. W przypadku **nazwy odbiornika**wpisz *Listener-01*.
+18. W obszarze **adres IP frontonu**wybierz pozycję **prywatny**.
+19. Zaakceptuj pozostałe wartości domyślne i wybierz kartę **cele zaplecza** .
+20. W obszarze **Typ docelowy**wybierz pozycję **Pula zaplecza**, a następnie wybierz pozycję **appGatewayBackendPool**.
+21. W obszarze **Ustawienia protokołu HTTP**wybierz pozycję **Utwórz nowy**.
+22. W obszarze **Nazwa ustawienia http**wpisz *http-Setting-01*.
+23. W przypadku **protokołu zaplecza**wybierz pozycję **http**.
+24. W przypadku **portu zaplecza**wpisz *80*.
+25. Zaakceptuj pozostałe wartości domyślne i wybierz pozycję **Dodaj**.
+26. Na stronie **Dodawanie reguły routingu** wybierz pozycję **Dodaj**.
+27. Wybierz pozycję **Dalej: Tagi**.
+28. Wybierz pozycję **Dalej: przegląd + Utwórz**.
+29. Przejrzyj ustawienia na stronie Podsumowanie, a następnie wybierz pozycję **Utwórz** , aby utworzyć zasoby sieciowe i bramę aplikacji. Tworzenie bramy aplikacji może potrwać kilka minut. Zaczekaj na pomyślne zakończenie wdrożenia, zanim przejdziesz do kolejnej sekcji.
 
 ## <a name="add-backend-pool"></a>Dodawanie puli zaplecza
 
-Pula zaplecza służy do kierowania żądań do serwerów zaplecza, które będą obsługiwać żądania. Zaplecze może składać się z kart sieciowych, zestawów skalowania maszyn wirtualnych, publicznych adresów IP, wewnętrznych adresów IP, w pełni kwalifikowanych nazw domen (FQDN) i wielodostępnych zaplecza, takich jak Azure App Service. W tym przykładzie będziemy używać maszyn wirtualnych jako zaplecza docelowego. Możemy użyć istniejących maszyn wirtualnych lub utworzyć nowe. W tym przykładzie utworzymy dwie maszyny wirtualne używane przez platformę Azure jako serwery zaplecza dla bramy aplikacji. W tym celu będziemy:
+Pula zaplecza służy do kierowania żądań do serwerów zaplecza, które obsługują żądanie. Zaplecze może składać się z kart sieciowych, zestawów skalowania maszyn wirtualnych, publicznych adresów IP, wewnętrznych adresów IP, w pełni kwalifikowanych nazw domen (FQDN) i wielodostępnych zaplecza, takich jak Azure App Service. W tym przykładzie należy używać maszyn wirtualnych jako zaplecza docelowego. Możesz użyć istniejących maszyn wirtualnych lub utworzyć nowe. W tym przykładzie utworzysz dwie maszyny wirtualne, których platforma Azure użyje jako serwerów zaplecza dla bramy aplikacji.
 
-1. Utwórz 2 nowe maszyny wirtualne, *myVM* i *myVM2*, które mają być używane jako serwery zaplecza.
+W tym celu:
+
+1. Utwórz dwie nowe maszyny wirtualne, *myVM* i *myVM2*, używane jako serwery zaplecza.
 2. Zainstaluj usługi IIS na maszynach wirtualnych, aby sprawdzić, czy Brama aplikacji została utworzona pomyślnie.
 3. Dodaj serwery zaplecza do puli zaplecza.
 
 ### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-1. Kliknij przycisk **Nowy**.
-2. Kliknij pozycję **Compute** (Wystąpienia obliczeniowe), a następnie z listy Polecane wybierz pozycję **Windows Server 2016 Datacenter**.
-3. Wprowadź poniższe wartości dla maszyny wirtualnej:
-   - *myVM* — jako nazwę maszyny wirtualnej.
-   - *azureuser* — jako nazwę użytkownika administratora.
-   - *Azure123456!* jako hasło.
-   - Wybierz pozycję **Użyj istniejącej** i wybierz grupę *myResourceGroupAG*.
-4. Kliknij przycisk **OK**.
-5. Wybierz **DS1_V2** rozmiaru maszyny wirtualnej, a następnie kliknij przycisk **Wybierz**.
-6. Upewnij się, że wybrano sieć wirtualną **myVNet** i podsieć **myBackendSubnet**.
-7. Kliknij pozycję **Wyłączone**, aby wyłączyć diagnostykę rozruchu.
-8. Kliknij przycisk **OK**, przejrzyj ustawienia na stronie podsumowania, a następnie kliknij przycisk **Utwórz**.
+1. Wybierz pozycję **Utwórz zasób**.
+2. Wybierz pozycję **obliczenia** , a następnie pozycję **maszyna wirtualna**.
+4. Wprowadź poniższe wartości dla maszyny wirtualnej:
+   - Wybierz pozycję *myResourceGroupAG* dla **grupy zasobów**.
+   - *myVM* — **Nazwa maszyny wirtualnej**.
+   - Wybierz pozycję **Windows Server 2019 Datacenter** for **Image**.
+   - *azureadmin* — jako **nazwę użytkownika**.
+   - *Azure123456!* dla **hasła**.
+5. Zaakceptuj pozostałe wartości domyślne i wybierz pozycję **Dalej: dyski**.
+6. Zaakceptuj wartości domyślne i wybierz pozycję **Dalej: sieć**.
+7. Upewnij się, że wybrano sieć wirtualną **myVNet** i podsieć **myBackendSubnet**.
+8. Zaakceptuj pozostałe wartości domyślne i wybierz pozycję **Dalej: Zarządzanie**.
+9. Wybierz pozycję **wyłączone** , aby wyłączyć diagnostykę rozruchu.
+10. Zaakceptuj pozostałe wartości domyślne i wybierz pozycję **Dalej: Zaawansowane**.
+11. Wybierz pozycję **Dalej: Tagi**.
+12. Wybierz pozycję **Dalej: przegląd + Utwórz**.
+13. Przejrzyj ustawienia na stronie Podsumowanie, a następnie wybierz pozycję **Utwórz**. Tworzenie maszyny wirtualnej może potrwać kilka minut. Zaczekaj na pomyślne zakończenie wdrożenia, zanim przejdziesz do kolejnej sekcji.
 
 ### <a name="install-iis"></a>Instalowanie usług IIS
 
-1. Otwórz powłokę interaktywną i upewnij się, że jest ustawiona na program **PowerShell**.
+1. Otwórz Cloud Shell i upewnij się, że jest ustawiony na program **PowerShell**.
     ![private-frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej:
 
@@ -99,32 +127,32 @@ Pula zaplecza służy do kierowania żądań do serwerów zaplecza, które będ�
      -ExtensionType CustomScriptExtension `
    
      -TypeHandlerVersion 1.4 `
-   
-     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' -Location EastUS  ```
+
+     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+
+     -Location CentralUS `
+
+   ```
 
 
 
-3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzVMExtension.
+3. Utwórz drugą maszynę wirtualną i zainstaluj usługi IIS, wykonując kroki, które właśnie ukończono. Wprowadź myVM2 jako nazwę i dla VMName w Set-AzVMExtension.
 
-### Add backend servers to backend pool
+### <a name="add-backend-servers-to-backend-pool"></a>Dodawanie serwerów zaplecza do puli zaplecza
 
-1. Click **All resources**, and then click **myAppGateway**.
-2. Click **Backend pools**. A default pool was automatically created with the application gateway. Click **appGatewayBackendPool**.
-3. Click **Add target** to add each virtual machine that you created to the backend pool.
-   ![private-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
-4. Click **Save.**
+1. Wybierz pozycję **Wszystkie zasoby**, a następnie wybierz pozycję **myAppGateway**.
+2. Wybierz **pule zaplecza**. Wybierz pozycję **appGatewayBackendPool**.
+3. W obszarze **Typ docelowy** wybierz pozycję **maszyna wirtualna** i w obszarze **cel**wybierz pozycję wirtualnej karty sieciowej skojarzona z myVM.
+4. Powtarzaj, aby dodać MyVM2.
+   ![prywatny-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)
+5. Wybierz pozycję **Zapisz.**
 
-## Test the application gateway
+## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-1. Check your frontend IP that got assigned by clicking the **Frontend IP Configurations** blade in the portal.
-    ![private-frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
-2. Copy the private IP address, and then paste it into the address bar of your browser of a VM in the same VNet or on-premises which has connectivity to this VNet and try to access the Application Gateway.
+1. Sprawdź adres IP frontonu, który został przypisany przez kliknięcie strony **konfiguracje adresów IP frontonu** w portalu.
+    ![prywatny-frontendip-5](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-5.png)
+2. Skopiuj prywatny adres IP, a następnie wklej go na pasku adresu przeglądarki na maszynie wirtualnej w tej samej sieci wirtualnej lub lokalnie, która ma łączność z tą siecią wirtualną, a następnie spróbuj uzyskać dostęp do Application Gateway.
 
-## Next steps
+## <a name="next-steps"></a>Następne kroki
 
-In this tutorial, you learned how to:
-
-- Create a private frontend IP configuration for an Application Gateway
-- Create an application gateway with private frontend IP configuration
-
-If you want to monitor the health of your backend, see [Application Gateway Diagnostics](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).
+Aby monitorować kondycję zaplecza, zapoznaj się z [dziennikami kondycji zaplecza i dzienników diagnostycznych dla Application Gateway](application-gateway-diagnostics.md).

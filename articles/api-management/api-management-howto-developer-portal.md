@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045581"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898834"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Portal deweloperów API Management platformy Azure — omówienie
 
@@ -213,6 +213,18 @@ Ten błąd jest wyświetlany, gdy `GET` wywołanie `https://<management-endpoint
 Jeśli usługa API Management znajduje się w sieci wirtualnej, zapoznaj się z powyższym pytaniem dotyczącym łączności sieci wirtualnej.
 
 Błąd wywołania może być również spowodowany przez certyfikat SSL, który jest przypisany do domeny niestandardowej i nie jest zaufany przez przeglądarkę. Jako środek zaradczy, można usunąć niestandardową domenę punktu końcowego zarządzania — API Management powróci do domyślnego punktu końcowego za pomocą zaufanego certyfikatu.
+
+### <a name="whats-the-browser-support-for-the-portal"></a>Co to jest obsługa przeglądarki dla portalu?
+
+| Przeglądarka                     | Obsługiwane       |
+|-----------------------------|-----------------|
+| Apple Safari                | Tak<sup>1</sup> |
+| Google Chrome               | Tak<sup>1</sup> |
+| Microsoft Edge              | Tak<sup>1</sup> |
+| Microsoft Internet Explorer | Nie              |
+| Mozilla Firefox             | Tak<sup>1</sup> |
+
+ <small><sup>1</sup> obsługiwane w dwóch najnowszych wersjach produkcyjnych.</small>
 
 ## <a name="next-steps"></a>Następne kroki
 

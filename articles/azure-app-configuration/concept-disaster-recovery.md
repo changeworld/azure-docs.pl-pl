@@ -1,17 +1,17 @@
 ---
 title: Odporność konfiguracji aplikacji platformy Azure i odzyskiwanie po awarii
 description: Sposób implementacji odporności i odzyskiwania po awarii przy użyciu konfiguracji aplikacji platformy Azure.
-author: yegu-ms
-ms.author: yegu
+author: lisaguthrie
+ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: cd706e42eff19ebacf92b77d2438af80dc16a5fb
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 889699ab184b82a7c194043d15358ecdaab5d03d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028247"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899644"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odporność i odzyskiwanie po awarii
 

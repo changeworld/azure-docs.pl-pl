@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034079"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905287"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -101,6 +101,8 @@ Pamiętaj, aby traktować/Path/to/my/CERT jako ścieżkę do pliku PEM lub PKCS1
 
 |Opcja|Opis|
 |--|--|
+|--AAD — punkt końcowy|Punkt końcowy Azure Active Directory, który ma być używany. Wartość domyślna (https://login.microsoftonline.com) jest poprawna dla publicznej chmury platformy Azure. Ustaw ten parametr podczas uwierzytelniania w chmurze krajowej. Zobacz [punkty końcowe uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+Ta flaga nie jest wymagana w przypadku tożsamość usługi zarządzanej.|
 |--ciąg identyfikatora aplikacji|Identyfikator aplikacji tożsamości przypisanej do użytkownika. Wymagane dla uwierzytelniania nazwy głównej usługi.|
 |--ciąg ścieżki certyfikatu|Ścieżka do certyfikatu na potrzeby uwierzytelniania SPN. Wymagane dla uwierzytelniania nazwy głównej usługi opartej na certyfikatach.|
 |-h,--pomoc|Pokaż zawartość pomocy dla polecenia login.|
@@ -118,6 +120,6 @@ Pamiętaj, aby traktować/Path/to/my/CERT jako ścieżkę do pliku PEM lub PKCS1
 |--Cap-MB/s UInt32|Szybkość transferu w megabitach na sekundę. Przepływność czasu na chwilę może się nieco różnić od końca. Jeśli ta opcja jest ustawiona na zero lub zostanie pominięta, przepływność nie zostanie ograniczona.|
 |--ciąg typu wyjściowego|Format danych wyjściowych polecenia. Dostępne opcje to: text, JSON. Wartość domyślna to "text".|
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 - [AzCopy](storage-ref-azcopy.md)

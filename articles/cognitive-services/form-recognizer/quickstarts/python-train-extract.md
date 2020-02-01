@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 14b902014305899260ba7d7d9eb0f13afaf64733
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d5dd1c1271c2b7100b40f6cd0f6410b3c151adc0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774151"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900217"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Szybki Start: uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST w języku Python
 
 W tym przewodniku szybki start użyjesz interfejsu API REST aparatu rozpoznawania formularzy platformy Azure w języku Python, aby przeszkolić i wypróbować formularze w celu wyodrębnienia par klucz-wartość i tabel.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-> [!IMPORTANT]
-> Ten przewodnik Szybki Start używa interfejsu API aparatu rozpoznawania w wersji 2.0. Jeśli Twoja subskrypcja nie znajduje się w regionie `West US 2` lub `West Europe`, musisz użyć interfejsu API w wersji 1.0. Postępuj zgodnie z [przewodnikiem Szybki Start w wersji 1.0](./python-train-extract-v1.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

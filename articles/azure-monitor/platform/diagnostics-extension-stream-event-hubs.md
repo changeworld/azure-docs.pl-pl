@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 111fab880887b54b2415d433bda2368c951381bd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770173"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901222"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Przesyłanie strumieniowe danych Diagnostyka Azure w ścieżce gorąca przy użyciu Event Hubs
 Diagnostyka Azure zapewnia elastyczne sposoby zbierania metryk i dzienników z maszyn wirtualnych usług Cloud Services i przesyłania wyników do usługi Azure Storage. Począwszy od okresu 2016 marca (SDK 2,9), można wysyłać diagnostykę do niestandardowych źródeł danych i transferować dane w postaci gorącej ścieżki w ciągu kilku sekund przy użyciu [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -201,7 +201,7 @@ W tym przykładzie obiekt sink jest stosowany do dzienników i jest filtrowany t
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Wdrażanie i aktualizowanie Cloud Services aplikacji i konfiguracji diagnostyki
 Program Visual Studio zapewnia najłatwą ścieżkę do wdrożenia aplikacji i Event Hubs konfiguracji ujścia. Aby wyświetlić i edytować plik, Otwórz plik *. wadcfgx* w programie Visual Studio, edytuj go i Zapisz. Ścieżka **jest** ścieżką > ról > ( **rolename** **)**  > **Diagnostics. wadcfgx**.  
 
-W tym momencie wszystkie akcje aktualizacji wdrożenia i wdrożenia w programie Visual Studio, Visual Studio Team System i wszystkie polecenia lub skrypty, które są oparte na programie MSBuild i używają elementu docelowego **/t: Publish** , obejmują *. wadcfgx* w procesie pakowania. Ponadto wdrożenia i aktualizacje wdrażają plik na platformie Azure przy użyciu odpowiedniego rozszerzenia agenta Diagnostyka Azure na maszynach wirtualnych.
+W tym momencie wszystkie akcje aktualizacji wdrożenia i wdrożenia w programie Visual Studio, Visual Studio Team System i wszystkie polecenia lub skrypty, które są oparte na programie MSBuild i używają elementu docelowego `/t:publish`, obejmują plik *. wadcfgx* w procesie pakowania. Ponadto wdrożenia i aktualizacje wdrażają plik na platformie Azure przy użyciu odpowiedniego rozszerzenia agenta Diagnostyka Azure na maszynach wirtualnych.
 
 Po wdrożeniu aplikacji i konfiguracji Diagnostyka Azure natychmiast będzie ona widoczna na pulpicie nawigacyjnym centrum zdarzeń. Oznacza to, że wszystko jest gotowe do przejścia do wyświetlania danych w ścieżce gorącej w wybranym przez klienta odbiornika lub narzędziu do analizy.  
 
@@ -215,13 +215,72 @@ Na poniższej ilustracji na pulpicie nawigacyjnym Event Hubs są wyświetlane pr
 >
 
 ## <a name="view-hot-path-data"></a>Wyświetlanie danych ścieżki gorącej
-Jak wspomniano wcześniej, istnieje wiele przypadków użycia do nasłuchiwania i przetwarzania danych Event Hubs.
+Jak wspomniano wcześniej, istnieje wiele przypadków użycia do nasłuchiwania i przetwarzania danych Event Hubs. Jednym z prostych metod jest utworzenie niewielkiej aplikacji konsolowej testowej w celu nasłuchiwania centrum zdarzeń i wydrukowania strumienia wyjściowego. 
 
-Jednym z prostych metod jest utworzenie niewielkiej aplikacji konsolowej testowej w celu nasłuchiwania centrum zdarzeń i wydrukowania strumienia wyjściowego. Można umieścić Poniższy kod, który jest bardziej szczegółowy w temacie [wprowadzenie do Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)) w aplikacji konsolowej.  
+#### <a name="net-sdk-latest-500-or-latertablatest"></a>[.NET SDK — Najnowsza wersja (5.0.0 lub nowsza)](#tab/latest)
+Można umieścić Poniższy kod, który jest bardziej szczegółowy w temacie [wprowadzenie do Event Hubs](../../event-hubs/get-started-dotnet-standard-send-v2.md)) w aplikacji konsolowej.
 
-Należy pamiętać, że Aplikacja konsolowa musi zawierać [pakiet NuGet hosta procesora zdarzeń](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
+```csharp
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using Azure.Storage.Blobs;
+using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Processor;
+namespace Receiver1204
+{
+    class Program
+    {
+        private static readonly string ehubNamespaceConnectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
+        private static readonly string eventHubName = "EVENT HUB NAME";
+        private static readonly string blobStorageConnectionString = "AZURE STORAGE CONNECTION STRING";
+        private static readonly string blobContainerName = "BLOB CONTAINER NAME";
 
-Pamiętaj, aby zastąpić wartości w nawiasach kątowych w funkcji **Main** wartością dla zasobów.   
+        static async Task Main()
+        {
+            // Read from the default consumer group: $Default
+            string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+
+            // Create a blob container client that the event processor will use 
+            BlobContainerClient storageClient = new BlobContainerClient(blobStorageConnectionString, blobContainerName);
+
+            // Create an event processor client to process events in the event hub
+            EventProcessorClientOptions options = new EventProcessorClientOptions { }
+            EventProcessorClient processor = new EventProcessorClient(storageClient, consumerGroup, ehubNamespaceConnectionString, eventHubName);
+
+            // Register handlers for processing events and handling errors
+            processor.ProcessEventAsync += ProcessEventHandler;
+            processor.ProcessErrorAsync += ProcessErrorHandler;
+
+            // Start the processing
+            await processor.StartProcessingAsync();
+
+            // Wait for 10 seconds for the events to be processed
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            // Stop the processing
+            await processor.StopProcessingAsync();
+        }
+
+        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            return Task.CompletedTask;
+        }
+
+        static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)
+        {
+            Console.WriteLine($"\tPartition '{ eventArgs.PartitionId}': an unhandled exception was encountered. This was not expected to happen.");
+            Console.WriteLine(eventArgs.Exception.Message);
+            return Task.CompletedTask;
+        }
+    }
+}
+```
+
+#### <a name="net-sdk-legacy-410-or-earliertablegacy"></a>[Starsza wersja zestawu .NET SDK (4.1.0 lub wcześniejsza wersja)](#tab/legacy)
+
+Można umieścić Poniższy kod, który jest bardziej szczegółowy w temacie [wprowadzenie do Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)) w aplikacji konsolowej. Należy pamiętać, że Aplikacja konsolowa musi zawierać [pakiet NuGet hosta procesora zdarzeń](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/). Pamiętaj, aby zastąpić wartości w nawiasach kątowych w funkcji **Main** wartością dla zasobów.   
 
 ```csharp
 //Console application code for EventHub test client
@@ -303,6 +362,7 @@ namespace EventHubListener
     }
 }
 ```
+---
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>Rozwiązywanie problemów z Event Hubs ujściami
 * Centrum zdarzeń nie wyświetla aktywności zdarzenia przychodzącego lub wychodzącego zgodnie z oczekiwaniami.

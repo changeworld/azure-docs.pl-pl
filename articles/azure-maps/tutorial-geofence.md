@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153150"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899215"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Samouczek: Konfigurowanie geoogrodzenia przy użyciu Azure Maps
 
@@ -174,7 +174,7 @@ Po zainstalowaniu aplikacji Poster wykonaj następujące kroki, aby przekazać w
 
 W tej sekcji utworzymy procedurę obsługi zdarzeń, która odbiera powiadomienia. Ta procedura obsługi zdarzeń powinna powiadamiać Operations Manager o zdarzeniach wejścia i wyjścia dowolnego sprzętu.
 
-Firma Microsoft udostępnia dwie [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) usług do obsługi, wprowadzania i kończenia zdarzeń. Gdy zdarzenia w wyzwalaczu Logic Apps, więcej zdarzeń wyzwalacza w sekwencji. Pomysłem jest wysłanie alertów, w tym przypadku wiadomości e-mail do Operations Manager. Poniższa ilustracja przedstawia tworzenie aplikacji logiki na potrzeby zdarzenia wjazdu na obszar wirtualnego ogrodzenia. W podobny sposób można utworzyć zdarzenie wyjazdu. Aby uzyskać więcej informacji, możesz wyświetlić wszystkie [obsługiwane programy obsługi zdarzeń](https://docs.microsoft.com/azure/event-grid/event-handlers).
+Firma Microsoft udostępnia dwie [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) usług do obsługi zdarzeń wejścia i wyjścia. Gdy zdarzenia w wyzwalaczu Logic Apps, więcej zdarzeń wyzwalacza w sekwencji. Pomysłem jest wysłanie alertów, w tym przypadku wiadomości e-mail do Operations Manager. Poniższa ilustracja przedstawia tworzenie aplikacji logiki na potrzeby zdarzenia wjazdu na obszar wirtualnego ogrodzenia. W podobny sposób można utworzyć zdarzenie wyjazdu. Aby uzyskać więcej informacji, możesz wyświetlić wszystkie [obsługiwane programy obsługi zdarzeń](https://docs.microsoft.com/azure/event-grid/event-handlers).
 
 1. Tworzenie aplikacji logiki w witrynie Azure Portal
 
@@ -194,7 +194,7 @@ Firma Microsoft udostępnia dwie [Logic Apps](https://docs.microsoft.com/azure/e
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Tworzenie subskrypcji zdarzeń usługi Azure Maps
 
-Usługa Azure Maps obsługuje trzy typy zdarzeń. Możesz przyjrzeć się Azure Maps obsługiwanym typom zdarzeń [tutaj] (https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps. Potrzebujemy dwóch różnych subskrypcji zdarzeń, jednej dla zdarzenia Enter i jednego dla zdarzeń zakończenia.
+Usługa Azure Maps obsługuje trzy typy zdarzeń. Obsługiwanym typom zdarzeń usługi Azure Maps można przyjrzeć się [tutaj](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps). Potrzebujemy dwóch różnych subskrypcji zdarzeń, jednej dla zdarzenia Enter i jednego dla zdarzeń zakończenia.
 
 Wykonaj poniższe kroki, aby utworzyć subskrypcję dla zdarzeń wjazdu wirtualnego ogrodzenia. Zdarzenia wyjazdu wirtualnego ogrodzenia możesz subskrybować w podobny sposób.
 

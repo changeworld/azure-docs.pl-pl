@@ -1,18 +1,18 @@
 ---
 title: Przykłady interfejsu wiersza polecenia platformy Azure — konfiguracja aplikacji platformy Azure | Microsoft Docs
 description: Zawiera informacje o dostępnych przykładowych skryptach dla usługi Azure App Configuration
-author: yegu-ms
-ms.author: yegu
+author: lisaguthrie
+ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 02/24/2019
 ms.custom: mvc
-ms.openlocfilehash: c4cfd8e8d6e3f37d59165dff30d0c142f27bac90
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 0e559b3aa5d04cfdc2ab1152ae11bd80b9f89415
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495297"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899651"
 ---
 # <a name="azure-cli-samples"></a>Przykłady interfejsu wiersza polecenia platformy Azure
 

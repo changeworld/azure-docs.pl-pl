@@ -3,12 +3,12 @@ title: Co nowego w Azure Site Recovery
 description: Zawiera podsumowanie nowych funkcji i najnowszych aktualizacji usługi Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 4a9feff3b0bc98b5d9853268d033e60de55ea5ea
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ecd42c624cf1fe62c8041a0b8798585c8870cabc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024831"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896038"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -20,17 +20,17 @@ Możesz postępować zgodnie z Site Recovery powiadomieniami o aktualizacji w ka
 
 ## <a name="supported-updates"></a>Obsługiwane aktualizacje
 
-W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to najnowsza wydana wersja. Podsumowanie dotyczące tych raportów można znaleźć w poniższej tabeli.
+W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to najnowsza wydana wersja. Są one podsumowane w poniższej tabeli.
 
 **Aktualizacja** |  **Ujednolicona konfiguracja** | **Komórki jajowe serwera konfiguracji** | **Agent usługi mobilności** | **Dostawca Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
-[Pakiet zbiorczy 43](https://support.microsoft.com/help/4531426/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
+[Pakiet zbiorczy 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Pakiet zbiorczy 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [Pakiet zbiorczy 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [Pakiet zbiorczy 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Pakiet zbiorczy 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-        
+
 
 [Dowiedz się więcej](service-updates-how-to.md) na temat instalacji i obsługi aktualizacji.
 
@@ -153,7 +153,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
-Nowe alerty serwera przetwarzania | Dodaliśmy nowe alerty serwera przetwarzania. [Dowiedz się więcej](vmware-physical-azure-monitor-process-server.md). 
+Nowe alerty serwera przetwarzania | Dodaliśmy nowe alerty serwera przetwarzania. [Dowiedz się więcej](vmware-physical-azure-monitor-process-server.md).
 
 ### <a name="hyper-v-disaster-recovery"></a>Odzyskiwanie awaryjne funkcji Hyper-V
 
@@ -183,7 +183,7 @@ W tabeli zestawiono nowe funkcje odzyskiwania po awarii maszyny wirtualnej platf
 **Funkcja** | **Szczegóły**
 --- | ---
 **Szyfrowanie bez usługi Azure AD** | Szyfrowanie bez aplikacji usługi Azure AD jest teraz obsługiwane na potrzeby replikacji maszyny wirtualnej platformy Azure do dysków zarządzanych z systemem Windows.
-**Zasoby sieciowe do przejścia w tryb failover** | W przypadku przechodzenia w tryb failover do innego regionu można teraz dołączać ustawienia zasobów sieciowych (sieciowych grup zabezpieczeń, równoważenie obciążenia, publiczny adres IP) do maszyny wirtualnej. 
+**Zasoby sieciowe do przejścia w tryb failover** | W przypadku przechodzenia w tryb failover do innego regionu można teraz dołączać ustawienia zasobów sieciowych (sieciowych grup zabezpieczeń, równoważenie obciążenia, publiczny adres IP) do maszyny wirtualnej.
 
 ## <a name="updates-july-2019"></a>Aktualizacje (lipiec 2019)
 
@@ -255,7 +255,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
-**Monitorowanie serwera przetwarzania** | W przypadku odzyskiwania po awarii lokalnych maszyn wirtualnych programu VMware i serwerów fizycznych, monitorowania i rozwiązywania problemów z serwerem przetwarzania przy ulepszonych raportach o kondycji serwera i alertach. [Dowiedz się więcej](vmware-physical-azure-monitor-process-server.md). 
+**Monitorowanie serwera przetwarzania** | W przypadku odzyskiwania po awarii lokalnych maszyn wirtualnych programu VMware i serwerów fizycznych, monitorowania i rozwiązywania problemów z serwerem przetwarzania przy ulepszonych raportach o kondycji serwera i alertach. [Dowiedz się więcej](vmware-physical-azure-monitor-process-server.md).
 
 
 
@@ -284,7 +284,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 ## <a name="updates-february-2019"></a>Aktualizacje (luty 2019)
 
-### <a name="update-rollup-34"></a>Pakiet zbiorczy aktualizacji 34 
+### <a name="update-rollup-34"></a>Pakiet zbiorczy aktualizacji 34
 
 [Pakiet zbiorczy aktualizacji 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) udostępnia następujące aktualizacje.
 
@@ -294,7 +294,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym).
 
 
-### <a name="update-rollup-33"></a>Pakiet zbiorczy aktualizacji 33 
+### <a name="update-rollup-33"></a>Pakiet zbiorczy aktualizacji 33
 
 [Pakiet zbiorczy aktualizacji 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) udostępnia następujące aktualizacje.
 
@@ -304,17 +304,19 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym).
 
 
-### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure 
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure
+
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
-**Mapowanie sieci** | W przypadku odzyskiwania po awarii maszyny wirtualnej platformy Azure można teraz używać dowolnej dostępnej sieci docelowej po włączeniu replikacji. 
-**Dysk SSD w warstwie Standardowa** | Teraz można skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przy użyciu [dysków SSD w warstwie Standardowa](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd).
+**Mapowanie sieci** | W przypadku odzyskiwania po awarii maszyny wirtualnej platformy Azure można teraz używać dowolnej dostępnej sieci docelowej po włączeniu replikacji.
+**SSD w warstwie Standardowa** | Teraz można skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przy użyciu [dysków SSD w warstwie Standardowa](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd).
 **Bezpośrednie miejsca do magazynowania** | Odzyskiwanie po awarii można skonfigurować dla aplikacji działających w usłudze Azure VM Apps przy użyciu [bezpośrednie miejsca do magazynowania](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) w celu zapewnienia wysokiej dostępności.  Używanie Bezpośrednie miejsca do magazynowania (S2D) wraz z Site Recovery zapewnia kompleksową ochronę obciążeń maszyn wirtualnych platformy Azure. Funkcja S2D umożliwia hostowanie klastra gościa na platformie Azure. Jest to szczególnie przydatne w przypadku, gdy maszyna wirtualna obsługuje aplikację krytyczną, taką jak warstwa SAP ASCS, SQL Server lub serwer plików skalowalny w poziomie.
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>Odzyskiwanie po awarii oprogramowania VMware/serwera fizycznego
+
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
@@ -332,7 +334,7 @@ Przyspieszona sieć umożliwia wirtualizację we/wy z jednym elementem głównym
 
 [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
-### <a name="update-rollup-32"></a>Pakiet zbiorczy aktualizacji 32 
+### <a name="update-rollup-32"></a>Pakiet zbiorczy aktualizacji 32
 
 [Pakiet zbiorczy aktualizacji 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) udostępnia następujące aktualizacje.
 
@@ -353,13 +355,13 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 ### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>Odzyskiwanie po awarii maszyn wirtualnych VMware/serwerów fizycznych
 
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
- 
+
 **Funkcja** | **Szczegóły**
 --- | ---
 **Obsługa systemu Linux** | Dodano obsługę do RedHat Enterprise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6,10 i Oracle Linux 7,6 oraz nowych wersji jądra dla Ubuntu, Debian i SUSE.
 
 
-### <a name="update-rollup-31"></a>Pakiet zbiorczy aktualizacji 31 
+### <a name="update-rollup-31"></a>Pakiet zbiorczy aktualizacji 31
 
 [Pakiet zbiorczy aktualizacji 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) udostępnia następujące aktualizacje.
 
@@ -368,8 +370,10 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Dostawcy i agenci** | Aktualizacja Site Recovery agentów i dostawców (zgodnie z opisem w pakiecie zbiorczym).
 **Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym).
 
-### <a name="vmware-vmsphysical-servers-replication"></a>Replikacja maszyn wirtualnych VMware/serwerów fizycznych 
+### <a name="vmware-vmsphysical-servers-replication"></a>Replikacja maszyn wirtualnych VMware/serwerów fizycznych
+
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
+
 **Funkcja** | **Szczegóły**
 --- | ---
 **Obsługa systemu Linux** |  Dodano pomoc techniczną dla Oracle Linux 6,8, Oracle Linux 6,9 i Oracle Linux 7,0 z jądrem zgodnym z systemem Red Hat oraz dla jądra w wersji 5 dla przedsiębiorstw (UEK).
@@ -380,6 +384,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Obsługa interfejsu UEFI** | Maszyny wirtualne platformy Azure nie obsługują typu rozruchu UEFI. Teraz można migrować lokalne serwery fizyczne z interfejsem UEFI do platformy Azure za pomocą Site Recovery. Site Recovery migruje serwer, konwertując typ rozruchu na system BIOS przed migracją. Site Recovery poprzednio obsługiwać tę konwersję tylko dla maszyn wirtualnych. Pomoc techniczna jest dostępna dla serwerów fizycznych z systemem Windows Server 2012 lub nowszym.
 
 ### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure
+
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
@@ -411,7 +416,7 @@ Odzyskiwanie po awarii maszyn wirtualnych platformy Azure wiąże się z kosztam
 
 ## <a name="updates-october-2018"></a>Aktualizacje (październik 2018)
 
-### <a name="update-rollup-30"></a>Pakiet zbiorczy aktualizacji 30 
+### <a name="update-rollup-30"></a>Pakiet zbiorczy aktualizacji 30
 
 [Pakiet zbiorczy aktualizacji 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) udostępnia następujące aktualizacje.
 
@@ -431,7 +436,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Magazyn z obsługą zapory (PowerShell)** | Dodano obsługę [kont magazynu obsługujących zaporę](https://docs.microsoft.com/azure/storage/common/storage-network-security).<br/><br/> Maszyny wirtualne platformy Azure z dyskami niezarządzanymi można replikować na konta magazynu z obsługą zapory w innym regionie świadczenia usługi Azure na potrzeby odzyskiwania po awarii.<br/><br/> Kont magazynu z obsługą zapory można używać jako docelowych kont magazynu dla dysków niezarządzanych.<br/><br/> Obsługiwane tylko przy użyciu programu PowerShell.
 
 
-### <a name="update-rollup-29"></a>Pakiet zbiorczy aktualizacji 29 
+### <a name="update-rollup-29"></a>Pakiet zbiorczy aktualizacji 29
 
 [Pakiet zbiorczy aktualizacji 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) udostępnia następujące aktualizacje.
 
@@ -443,7 +448,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 ## <a name="updates-august-2018"></a>Aktualizacje (sierpień 2018)
 
-### <a name="update-rollup-28"></a>Pakiet zbiorczy aktualizacji 28 
+### <a name="update-rollup-28"></a>Pakiet zbiorczy aktualizacji 28
 
 [Pakiet zbiorczy aktualizacji 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) zawiera następujące aktualizacje.
 
@@ -452,7 +457,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Dostawcy i agenci** | Aktualizacja Site Recovery agentów i dostawców (zgodnie z opisem w pakiecie zbiorczym).
 **Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym).
 
-### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure 
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
@@ -461,12 +466,12 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Obsługa chmury** | Obsługiwane odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure w chmurze w Niemczech.
 **Odzyskiwanie po awarii między subskrypcjami** | Obsługa replikowania maszyn wirtualnych platformy Azure w jednym regionie do innego regionu w ramach innej subskrypcji w ramach tej samej dzierżawy Azure Active Directory. [Dowiedz się więcej](https://aka.ms/cross-sub-blog).
 
-### <a name="vmware-vmphysical-server-disaster-recovery"></a>Odzyskiwanie po awarii maszyn wirtualnych VMware/serwerów fizycznych 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>Odzyskiwanie po awarii maszyn wirtualnych VMware/serwerów fizycznych
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
 **Funkcja** | **Szczegóły**
 --- | ---
-**Obsługa systemu Linux** | Dodano obsługę do RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> Maszyny wirtualne oparte na systemie Linux, które używają stylu partycji tabeli partycji GUID (GPT) w trybie zgodności ze starszymi wersjami systemu BIOS, są teraz obsługiwane. Aby uzyskać więcej informacji, przejrzyj [często zadawane pytania dotyczące maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) . 
+**Obsługa systemu Linux** | Dodano obsługę do RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> Maszyny wirtualne oparte na systemie Linux, które używają stylu partycji tabeli partycji GUID (GPT) w trybie zgodności ze starszymi wersjami systemu BIOS, są teraz obsługiwane. Aby uzyskać więcej informacji, przejrzyj [często zadawane pytania dotyczące maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) .
 **Odzyskiwanie po awarii dla maszyn wirtualnych po migracji** | Obsługa włączenia odzyskiwania po awarii do regionu pomocniczego dla lokalnej maszyny wirtualnej VMware migrowanej do platformy Azure bez konieczności odinstalowywania usługi mobilności na maszynie wirtualnej przed włączeniem replikacji.
 **Windows Server 2008** | Obsługa migracji maszyn z systemem Windows Server 2008 R2/2008 64-bit i 32-bit.<br/><br/> Tylko migracja (replikacja i tryb failover). Powrót po awarii nie jest obsługiwany.
 
@@ -481,7 +486,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Dostawcy i agenci** | Aktualizacja Site Recovery agentów i dostawców (zgodnie z opisem w pakiecie zbiorczym).
 **Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym).
 
-### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure 
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure
 
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 
@@ -489,7 +494,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 --- | ---
 **Obsługa systemu Linux** | Dodano obsługę dla Red Hat Enterprise Linux 7,5.
 
-### <a name="vmware-vmphysical-server-disaster-recovery"></a>Odzyskiwanie po awarii maszyn wirtualnych VMware/serwerów fizycznych 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>Odzyskiwanie po awarii maszyn wirtualnych VMware/serwerów fizycznych
 
 Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 

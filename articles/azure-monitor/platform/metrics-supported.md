@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 0210317ef74433b740feb043a1cc4f1f9bc2ef57
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310785"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901155"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z Azure Monitor
 
@@ -34,8 +34,8 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Liczba|Średnia|QPU. Zakres 0-100 dla S1, 0-200 dla S2 i 0-400 dla S4|ServerResourceType|
-|memory_metric|Pamięć|Bajty|Średnia|Memory (pamięć). Zakres 0-25 GB dla S1, 0-50 GB dla S2 i 0-100 GB dla S4|ServerResourceType|
-|private_bytes_metric|Prywatne bajty|Bajty|Średnia|Bajty prywatne.|ServerResourceType|
+|memory_metric|Pamięć|Bajty|Średnia|Rozmiar. Zakres 0-25 GB dla S1, 0-50 GB dla S2 i 0-100 GB dla S4|ServerResourceType|
+|private_bytes_metric|Bajty prywatne|Bajty|Średnia|Bajty prywatne.|ServerResourceType|
 |virtual_bytes_metric|Bajty wirtualne|Bajty|Średnia|Bajty wirtualne.|ServerResourceType|
 |TotalConnectionRequests|Łączna liczba żądań połączenia|Liczba|Średnia|Łączna liczba żądań połączenia. Są to wejścia.|ServerResourceType|
 |SuccessfullConnectionsPerSec|Udane połączenia na sekundę|CountPerSecond|Średnia|Szybkość pomyślnych połączeń.|ServerResourceType|
@@ -75,7 +75,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |ShortParsingBusyThreads|Wątki: zajęte wątki z krótkim analizowaniem|Liczba|Średnia|Liczba zajętych wątków w puli wątków o krótkiej analizie.|ServerResourceType|
 |ShortParsingIdleThreads|Wątki: bezczynne wątki z krótkim analizowaniem|Liczba|Średnia|Liczba bezczynnych wątków w puli wątków o krótkiej analizie.|ServerResourceType|
 |ShortParsingJobQueueLength|Wątki: Długość kolejki zadań o krótkiej analizie|Liczba|Średnia|Liczba zadań w kolejce puli wątków o krótkiej analizie.|ServerResourceType|
-|memory_thrashing_metric|Przeładowywanie pamięci|Procent|Średnia|Średnia pamięć migotanie.|ServerResourceType|
+|memory_thrashing_metric|Migotanie pamięci|Procent|Średnia|Średnia pamięć migotanie.|ServerResourceType|
 |mashup_engine_qpu_metric|M QPU aparatu|Liczba|Średnia|QPU użycie przez procesy aparatu mashupów|ServerResourceType|
 |mashup_engine_memory_metric|Pamięć aparatu M|Bajty|Średnia|Użycie pamięci przez procesy aparatu mashupów|ServerResourceType|
 |mashup_engine_private_bytes_metric|Liczba prywatnych bajtów aparatu M|Bajty|Średnia|Użycie bajtów prywatnych przez procesy aparatu mashupów.|ServerResourceType|
@@ -215,7 +215,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |CpuUsagePercentageInDouble|Procent użycia procesora CPU|Procent|Maksimum|Procent użycia procesora CPU|Węzeł|
-|MemoryUsage|Memory Usage (Użycie pamięci)|Bajty|Średnia|Memory Usage (Użycie pamięci)|Węzeł|
+|MemoryUsage|Użycie pamięci|Bajty|Średnia|Użycie pamięci|Węzeł|
 |MemoryLimit|Limit pamięci|Bajty|Średnia|Limit pamięci|Węzeł|
 |MemoryUsagePercentageInDouble|Procent użycia pamięci|Procent|Średnia|Procent użycia pamięci|Węzeł|
 |StorageUsage|Użycie magazynu|Bajty|Średnia|Użycie magazynu|Węzeł|
@@ -236,13 +236,13 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|connectedclients|Podłączeni klienci|Liczba|Maksimum||ShardId|
+|connectedclients|Połączeni klienci|Liczba|Maksimum||ShardId|
 |totalcommandsprocessed|Łączna liczba operacji|Liczba|Łącznie||ShardId|
 |cachehits|Trafienia pamięci podręcznej|Liczba|Łącznie||ShardId|
 |cachemisses|Chybienia w pamięci podręcznej|Liczba|Łącznie||ShardId|
 |cachemissrate|Współczynnik chybień w pamięci podręcznej|Procent|cachemissrate||ShardId|
 |GetCommands|Kto|Liczba|Łącznie||ShardId|
-|SetCommands|Zestawy|Liczba|Łącznie||ShardId|
+|SetCommands|Przywraca|Liczba|Łącznie||ShardId|
 |operationsPerSecond|Liczba operacji na sekundę|Liczba|Maksimum||ShardId|
 |evictedkeys|Wykluczone klucze|Liczba|Łącznie||ShardId|
 |totalkeys|Łączna liczba kluczy|Liczba|Maksimum||ShardId|
@@ -532,12 +532,12 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |---|---|---|---|---|---|
 |TotalCalls|Łączna liczba wywołań|Liczba|Łącznie|Łączna liczba wywołań.|ApiName, OperationName, region|
 |SuccessfulCalls|Pomyślne wywołania|Liczba|Łącznie|Liczba pomyślnych wywołań.|ApiName, OperationName, region|
-|TotalErrors|Całkowita liczba błędów|Liczba|Łącznie|Łączna liczba wywołań z odpowiedzią na błąd (kod odpowiedzi HTTP 4xx lub 5xx).|ApiName, OperationName, region|
+|TotalErrors|Łączna liczba błędów|Liczba|Łącznie|Łączna liczba wywołań z odpowiedzią na błąd (kod odpowiedzi HTTP 4xx lub 5xx).|ApiName, OperationName, region|
 |BlockedCalls|Zablokowane wywołania|Liczba|Łącznie|Liczba wywołań, które przekroczyły limit szybkości lub limitu przydziału.|ApiName, OperationName, region|
 |Błędy servererrors|Błędy serwera|Liczba|Łącznie|Liczba wywołań z błędem wewnętrznym usługi (5xx kodu odpowiedzi HTTP).|ApiName, OperationName, region|
 |ClientErrors|Błędy klienta|Liczba|Łącznie|Liczba wywołań z błędem po stronie klienta (4xx kodu odpowiedzi HTTP).|ApiName, OperationName, region|
-|Dane|Dane wejściowe|Bajty|Łącznie|Rozmiar danych przychodzących w bajtach.|ApiName, OperationName, region|
-|DataOut|Dane wyjściowe|Bajty|Łącznie|Rozmiar danych wychodzących w bajtach.|ApiName, OperationName, region|
+|Dane|Dane w|Bajty|Łącznie|Rozmiar danych przychodzących w bajtach.|ApiName, OperationName, region|
+|DataOut|Dane wychodzące|Bajty|Łącznie|Rozmiar danych wychodzących w bajtach.|ApiName, OperationName, region|
 |Opóźnienie|Opóźnienie|MilliSeconds|Średnia|Opóźnienie w milisekundach.|ApiName, OperationName, region|
 |CharactersTranslated|Znaki tłumaczone|Liczba|Łącznie|Całkowita liczba znaków w żądaniu tekstu przychodzącego.|ApiName, OperationName, region|
 |CharactersTrained|Znaki przeszkolone|Liczba|Łącznie|Łączna liczba znaków przeszkolonych.|ApiName, OperationName, region|
@@ -683,8 +683,8 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CpuUsage|Wykorzystanie procesora|Liczba|Średnia|Użycie procesora CPU we wszystkich rdzeniach w millicores.|containerName|
-|MemoryUsage|Memory Usage (Użycie pamięci)|Bajty|Średnia|Całkowite użycie pamięci w bajcie.|containerName|
+|CpuUsage|Użycie procesora CPU|Liczba|Średnia|Użycie procesora CPU we wszystkich rdzeniach w millicores.|containerName|
+|MemoryUsage|Użycie pamięci|Bajty|Średnia|Całkowite użycie pamięci w bajcie.|containerName|
 |NetworkBytesReceivedPerSecond|Bajty odebrane przez sieć na sekundę|Bajty|Średnia|Bajty odebrane przez sieć na sekundę.|Brak|
 |NetworkBytesTransmittedPerSecond|Bajty przesyłane przez sieć na sekundę|Bajty|Średnia|Bajty przesyłane przez sieć na sekundę.|Brak|
 
@@ -727,7 +727,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |CloudReadThroughputPerShare|Przepływność pobierania w chmurze (udział)|BytesPerSecond|Średnia|Przepływność pobierania na platformę Azure z udziału w okresie raportowania.|Udostępnianie|
 |CloudUploadThroughputPerShare|Przepływność przekazywania w chmurze (udział)|BytesPerSecond|Średnia|Przepływność przekazywania do platformy Azure z udziału w okresie raportowania.|Udostępnianie|
 |BytesUploadedToCloudPerShare|Przekazane bajty w chmurze (udział)|Bajty|Średnia|Całkowita liczba bajtów przekazanych do platformy Azure z udziału w okresie raportowania.|Udostępnianie|
-|Łączna pojemność|Łączna pojemność|Bajty|Średnia|Łączna pojemność|Brak|
+|Łączna pojemność|Całkowita pojemność|Bajty|Średnia|Całkowita pojemność|Brak|
 |AvailableCapacity|Dostępna pojemność|Bajty|Średnia|Dostępna pojemność w bajtach w okresie raportowania.|Brak|
 |CloudUploadThroughput|Przepływność przekazywania w chmurze|BytesPerSecond|Średnia|W chmurze przekazano przepływność na platformę Azure w okresie raportowania.|Brak|
 |CloudReadThroughput|Przepływność pobierania w chmurze|BytesPerSecond|Średnia|Chmura pobiera przepływność na platformę Azure w okresie raportowania.|Brak|
@@ -740,7 +740,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|FailedRuns|Przebiegi zakończone niepowodzeniem|Liczba|Łącznie||potokname, ActivityName|
+|FailedRuns|Nieudane uruchomienia|Liczba|Łącznie||potokname, ActivityName|
 |SuccessfulRuns|Pomyślne uruchomienia|Liczba|Łącznie||potokname, ActivityName|
 
 
@@ -882,7 +882,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |c2d.commands.egress.reject.success|Odrzucone komunikaty C2D|Liczba|Łącznie|Liczba komunikatów z chmury do urządzenia odrzuconych przez urządzenie|Brak|
 |C2DMessagesExpired|Komunikaty C2D wygasły (wersja zapoznawcza)|Liczba|Łącznie|Liczba wygasłych komunikatów z chmury do urządzenia|Brak|
 |Devices. totalDevices|Łączna liczba urządzeń (przestarzałe)|Liczba|Łącznie|Liczba urządzeń zarejestrowanych w usłudze IoT Hub|Brak|
-|devices.connectedDevices.allProtocol|Połączone urządzenia (przestarzałe) |Liczba|Łącznie|Liczba urządzeń podłączonych do centrum IoT Hub|Brak|
+|devices.connectedDevices.allProtocol|Podłączone urządzenia (przestarzałe) |Liczba|Łącznie|Liczba urządzeń podłączonych do centrum IoT Hub|Brak|
 |d2c.telemetry.egress.success|Routing: dostarczono komunikaty telemetryczne|Liczba|Łącznie|Liczba pomyślnie dostarczonych komunikatów do wszystkich punktów końcowych używających routingu IoT Hub. Jeśli komunikat jest kierowany do wielu punktów końcowych, ta wartość zwiększa się o jeden dla każdego pomyślnego dostarczenia. Jeśli wiadomość jest przekazywana do tego samego punktu końcowego wiele razy, ta wartość zwiększa się o jeden dla każdego pomyślnego dostarczenia.|Brak|
 |d2c.telemetry.egress.dropped|Routing: porzucone komunikaty telemetryczne |Liczba|Łącznie|Liczba porzuconych komunikatów przez IoT Hub Routing ze względu na martwe punkty końcowe. Ta wartość nie zlicza komunikatów dostarczonych do trasy rezerwowej, ponieważ opuszczone wiadomości nie są tam dostarczane.|Brak|
 |d2c.telemetry.egress.orphaned|Routing: oddzielone komunikaty telemetryczne |Liczba|Łącznie|Liczba oddzielonych komunikatów przez IoT Hub Routing, ponieważ nie są one zgodne z żadną regułą routingu (w tym regułą rezerwową). |Brak|
@@ -891,55 +891,55 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |d2c.endpoints.egress.eventHubs|Routing: komunikaty dostarczane do centrum zdarzeń|Liczba|Łącznie|Liczba pomyślnie dostarczonych komunikatów do punktów końcowych centrum zdarzeń w usłudze IoT Hub Routing.|Brak|
 |d2c.endpoints.latency.eventHubs|Routing: opóźnienie komunikatu dla centrum zdarzeń|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów przychodzących w punkcie końcowym centrum zdarzeń.|Brak|
 |d2c.endpoints.egress.serviceBusQueues|Routing: komunikaty dostarczone do kolejki Service Bus|Liczba|Łącznie|Liczba pomyślnie dostarczonych komunikatów do Service Bus punktów końcowych kolejki w usłudze IoT Hub Routing.|Brak|
-|d2c.endpoints.latency.serviceBusQueues|Routing: opóźnienie komunikatu dla kolejki usługi Service Bus|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i telemetrii komunikatów przychodzących do punktu końcowego kolejki Service Bus.|Brak|
+|d2c.endpoints.latency.serviceBusQueues|Routing: opóźnienie komunikatu dla kolejki Service Bus|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i telemetrii komunikatów przychodzących do punktu końcowego kolejki Service Bus.|Brak|
 |d2c.endpoints.egress.serviceBusTopics|Routing: komunikaty dostarczane do Service Bus tematu|Liczba|Łącznie|Liczba pomyślnie dostarczonych komunikatów przez IoT Hub Routing do Service Bus punktów końcowych tematu.|Brak|
 |d2c.endpoints.latency.serviceBusTopics|Routing: opóźnienie komunikatu dla Service Bus tematu|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów telemetrycznych w punkcie końcowym tematu Service Bus.|Brak|
 |d2c.endpoints.egress.builtIn.events|Routing: komunikaty dostarczane do komunikatów/zdarzeń|Liczba|Łącznie|Liczba pomyślnie dostarczonych komunikatów do wbudowanego punktu końcowego (komunikaty/zdarzenia) IoT Hub Routing.|Brak|
 |d2c.endpoints.latency.builtIn.events|Routing: opóźnienie komunikatów dla komunikatów/zdarzeń|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów telemetrycznych w wbudowanym punkcie końcowym (komunikaty/zdarzenia).|Brak|
 |d2c.endpoints.egress.storage|Routing: komunikaty dostarczane do magazynu|Liczba|Łącznie|Liczba pomyślnie dostarczonych komunikatów do punktów końcowych usługi Routing IoT Hub.|Brak|
 |d2c.endpoints.latency.storage|Routing: opóźnienie komunikatu dla magazynu|MS|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów telemetrycznych w punkcie końcowym magazynu.|Brak|
-|d2c.endpoints.egress.storage.bytes|Routing: dane dostarczone do magazynu|Bajty|Łącznie|Ilość danych (w bajtach) IoT Hub Routing dostarczany do punktów końcowych magazynu.|Brak|
-|d2c.endpoints.egress.storage.blobs|Routing: obiekty blob dostarczone do magazynu|Liczba|Łącznie|Ile razy usługa Routing IoT Hub dostarczać obiekty blob do punktów końcowych magazynu.|Brak|
+|d2c.endpoints.egress.storage.bytes|Routing: dane dostarczane do magazynu|Bajty|Łącznie|Ilość danych (w bajtach) IoT Hub Routing dostarczany do punktów końcowych magazynu.|Brak|
+|d2c.endpoints.egress.storage.blobs|Routing: obiekty blob dostarczane do magazynu|Liczba|Łącznie|Ile razy usługa Routing IoT Hub dostarczać obiekty blob do punktów końcowych magazynu.|Brak|
 |EventGridDeliveries|Dostawy Event Grid (wersja zapoznawcza)|Liczba|Łącznie|Liczba zdarzeń IoT Hub opublikowanych do Event Grid. Użyj wymiaru wynik dla liczby żądań zakończonych powodzeniem i niepowodzeniem. Wymiar EventType przedstawia typ zdarzenia (https://aka.ms/ioteventgrid).|ResourceId, wynik, typ zdarzenia|
 |EventGridLatency|Opóźnienie Event Grid (wersja zapoznawcza)|MS|Średnia|Średnie opóźnienie (w milisekundach) od momentu wygenerowania zdarzenia usługi IoT Hub po opublikowaniu zdarzenia w Event Grid. Ta liczba jest średnia między wszystkimi typami zdarzeń. Użyj wymiaru EventType, aby zobaczyć opóźnienie określonego typu zdarzenia.|ResourceId, EventType|
 |d2c.twin.read.success|Pomyślne odczyty sznurów z urządzeń|Liczba|Łącznie|Liczba wszystkich udanych operacji zainicjowanych przez urządzenie.|Brak|
-|d2c.twin.read.failure|Zakończone niepowodzeniem odczyty bliźniaczej reprezentacji z urządzeń|Liczba|Łącznie|Liczba wszystkich nieudanych operacji zainicjowanych przez urządzenie.|Brak|
-|d2c.twin.read.size|Rozmiar odpowiedzi odczytów bliźniaczej reprezentacji z urządzeń|Bajty|Średnia|Średnia, minimum i maksimum wszystkich udanych zainicjowanych przez urządzenia sznurów.|Brak|
+|d2c.twin.read.failure|Nieudane odczyty sznurów z urządzeń|Liczba|Łącznie|Liczba wszystkich nieudanych operacji zainicjowanych przez urządzenie.|Brak|
+|d2c.twin.read.size|Rozmiar odpowiedzi dla sznurów odczytanych z urządzeń|Bajty|Średnia|Średnia, minimum i maksimum wszystkich udanych zainicjowanych przez urządzenia sznurów.|Brak|
 |d2c.twin.update.success|Pomyślne aktualizacje bliźniaczych urządzeń|Liczba|Łącznie|Liczba wszystkich pomyślnych aktualizacji typu bliźniaczych zainicjowanych przez urządzenie.|Brak|
-|d2c.twin.update.failure|Zakończone niepowodzeniem aktualizacje bliźniaczej reprezentacji z urządzeń|Liczba|Łącznie|Liczba wszystkich niezakończonych niepowodzeniem aktualizacji dwuosiowych zainicjowanych przez urządzenie.|Brak|
+|d2c.twin.update.failure|Niepowodzenie aktualizacji bliźniaczych z urządzeń|Liczba|Łącznie|Liczba wszystkich niezakończonych niepowodzeniem aktualizacji dwuosiowych zainicjowanych przez urządzenie.|Brak|
 |d2c.twin.update.size|Rozmiar aktualizacji bliźniaczych z urządzeń|Bajty|Średnia|Średni, minimalny i maksymalny rozmiar wszystkich pomyślnych aktualizacji typu dwuosiowego zainicjowanego przez urządzenie.|Brak|
 |c2d.methods.success|Pomyślne wywołania metody bezpośredniej|Liczba|Łącznie|Liczba wszystkich pomyślnych wywołań metody bezpośredniej.|Brak|
-|C2D. Methods. Failure|Zakończone niepowodzeniem wywołania metody bezpośredniej|Liczba|Łącznie|Liczba wszystkich wywołań metod bezpośrednich zakończonych niepowodzeniem.|Brak|
+|C2D. Methods. Failure|Nieudane wywołania metody bezpośredniej|Liczba|Łącznie|Liczba wszystkich wywołań metod bezpośrednich zakończonych niepowodzeniem.|Brak|
 |c2d.methods.requestSize|Rozmiar żądania wywołań metody bezpośredniej|Bajty|Średnia|Średnia, minimum i maksimum wszystkich pomyślnych żądań metody bezpośredniej.|Brak|
 |c2d.methods.responseSize|Rozmiar odpowiedzi wywołań metody bezpośredniej|Bajty|Średnia|Średnia, minimum i maksimum wszystkich zakończonych powodzeniem odpowiedzi metody bezpośredniej.|Brak|
 |c2d.twin.read.success|Pomyślne odczyty sznurów z zaplecza|Liczba|Łącznie|Liczba wszystkich zakończonych powodzeniem odczytów dwuosiowych zainicjowanych z powrotem.|Brak|
-|c2d.twin.read.failure|Zakończone niepowodzeniem odczyty bliźniaczej reprezentacji z zaplecza|Liczba|Łącznie|Liczba wszystkich zakończonych niepowodzeniem odczytów dwuosiowych zainicjowanych z powrotem.|Brak|
-|c2d.twin.read.size|Rozmiar odpowiedzi odczytów bliźniaczej reprezentacji z zaplecza|Bajty|Średnia|Średnia, minimum i maksimum wszystkich udanych zainicjowanych z powrotem sznurów danych.|Brak|
-|c2d.twin.update.success|Pomyślne aktualizacje bliźniaczej reprezentacji z zaplecza|Liczba|Łącznie|Liczba wszystkich pomyślnych aktualizacji typu bliźniaczych zainicjowanych z powrotem.|Brak|
-|c2d.twin.update.failure|Zakończone niepowodzeniem aktualizacje bliźniaczej reprezentacji z zaplecza|Liczba|Łącznie|Liczba wszystkich niezakończonych niepowodzeniem aktualizacji typu bliźniaczych zainicjowanych z powrotem.|Brak|
+|c2d.twin.read.failure|Nieudane odczyty sznurów z zaplecza|Liczba|Łącznie|Liczba wszystkich zakończonych niepowodzeniem odczytów dwuosiowych zainicjowanych z powrotem.|Brak|
+|c2d.twin.read.size|Rozmiar odpowiedzi na odwrocie od zaplecza|Bajty|Średnia|Średnia, minimum i maksimum wszystkich udanych zainicjowanych z powrotem sznurów danych.|Brak|
+|c2d.twin.update.success|Pomyślne aktualizacje bliźniaczych z zaplecza|Liczba|Łącznie|Liczba wszystkich pomyślnych aktualizacji typu bliźniaczych zainicjowanych z powrotem.|Brak|
+|c2d.twin.update.failure|Niepowodzenie aktualizacji bliźniaczych z zaplecza|Liczba|Łącznie|Liczba wszystkich niezakończonych niepowodzeniem aktualizacji typu bliźniaczych zainicjowanych z powrotem.|Brak|
 |c2d.twin.update.size|Rozmiar aktualizacji przędzy od zaplecza|Bajty|Średnia|Średni, minimalny i maksymalny rozmiar wszystkich pomyślnych aktualizacji typu sznurka zainicjowanych z powrotem.|Brak|
 |twinQueries.success|Pomyślne zapytania bliźniaczy|Liczba|Łącznie|Liczba wszystkich udanych zapytań bliźniaczych.|Brak|
-|twinQueries.failure|Zakończone niepowodzeniem zapytania o bliźniacze reprezentacje|Liczba|Łącznie|Liczba wszystkich zakończonych niepowodzeniem zapytań bliźniaczych.|Brak|
+|twinQueries.failure|Niepowodzenie zapytań bliźniaczych|Liczba|Łącznie|Liczba wszystkich zakończonych niepowodzeniem zapytań bliźniaczych.|Brak|
 |twinQueries.resultSize|Rozmiar wyniku zapytań bliźniaczych|Bajty|Średnia|Średnia, minimalna i maksymalna wielkość wyniku wszystkich udanych zapytań bliźniaczych.|Brak|
 |jobs.createTwinUpdateJob.success|Pomyślne utworzenie dwuosiowych zadań aktualizacji|Liczba|Łącznie|Liczba wszystkich udanych tworzenia zadań aktualizacji z przędzą.|Brak|
-|jobs.createTwinUpdateJob.failure|Zakończone niepowodzeniem zadania utworzenia bliźniaczych aktualizacji|Liczba|Łącznie|Liczba wszystkich nieudanych operacji tworzenia zadań aktualizacji z przędzą.|Brak|
+|jobs.createTwinUpdateJob.failure|Nie można utworzyć dwuosiowych zadań aktualizacji|Liczba|Łącznie|Liczba wszystkich nieudanych operacji tworzenia zadań aktualizacji z przędzą.|Brak|
 |jobs.createDirectMethodJob.success|Pomyślne utworzenie zadań wywołania metody|Liczba|Łącznie|Liczba wszystkich pomyślnych operacji tworzenia zadań wywołania metody bezpośredniej.|Brak|
-|jobs.createDirectMethodJob.failure|Zakończone niepowodzeniem zadania utworzenia wywołania metody|Liczba|Łącznie|Liczba wszystkich nieudanych operacji tworzenia zadań wywołania metody bezpośredniej.|Brak|
+|jobs.createDirectMethodJob.failure|Nie można utworzyć zadań wywołania metody|Liczba|Łącznie|Liczba wszystkich nieudanych operacji tworzenia zadań wywołania metody bezpośredniej.|Brak|
 |jobs.listJobs.success|Pomyślne wywołania do zadań na liście|Liczba|Łącznie|Liczba wszystkich udanych wywołań do listy zadań.|Brak|
-|jobs.listJobs.failure|Zakończone niepowodzeniem zadania wywołania listy|Liczba|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu wyświetlenia listy zadań.|Brak|
+|jobs.listJobs.failure|Wywołania zakończone niepowodzeniem do listy zadań|Liczba|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu wyświetlenia listy zadań.|Brak|
 |jobs.cancelJob.success|Pomyślne anulowania zadań|Liczba|Łącznie|Liczba wszystkich udanych wywołań do anulowania zadania.|Brak|
-|jobs.cancelJob.failure|Zakończone niepowodzeniem anulowania zadań|Liczba|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu anulowania zadania.|Brak|
+|jobs.cancelJob.failure|Nieudane anulowania zadań|Liczba|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu anulowania zadania.|Brak|
 |jobs.queryJobs.success|Pomyślne zapytania dotyczące zadań|Liczba|Łącznie|Liczba wszystkich udanych wywołań do zadań zapytań.|Brak|
-|jobs.queryJobs.failure|Zakończone niepowodzeniem zapytania o zadania|Liczba|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu wykonywania zapytań dotyczących zadań.|Brak|
-|zadania. ukończone|Zadania zakończone|Liczba|Łącznie|Liczba wszystkich ukończonych zadań.|Brak|
+|jobs.queryJobs.failure|Nieudane kwerendy zadań|Liczba|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu wykonywania zapytań dotyczących zadań.|Brak|
+|zadania. ukończone|Ukończone zadania|Liczba|Łącznie|Liczba wszystkich ukończonych zadań.|Brak|
 |zadania. Niepowodzenie|Zadania zakończone niepowodzeniem|Liczba|Łącznie|Liczba wszystkich zadań zakończonych niepowodzeniem.|Brak|
-|d2c.telemetry.ingress.sendThrottle|Liczba błędów ograniczania przepustowości|Liczba|Łącznie|Liczba błędów ograniczania z powodu ograniczeń przepływności urządzenia|Brak|
+|d2c.telemetry.ingress.sendThrottle|Liczba błędów ograniczania|Liczba|Łącznie|Liczba błędów ograniczania z powodu ograniczeń przepływności urządzenia|Brak|
 |dailyMessageQuotaUsed|Całkowita liczba użytych komunikatów|Liczba|Średnia|Łączna liczba użytych komunikatów|Brak|
 |deviceDataUsage|Całkowite użycie danych urządzenia|Bajty|Łącznie|Bajty przesłane do i z dowolnych urządzeń podłączonych do usługi IotHub|Brak|
 |deviceDataUsageV2|Całkowite użycie danych urządzenia (wersja zapoznawcza)|Bajty|Łącznie|Bajty przesłane do i z dowolnych urządzeń podłączonych do usługi IotHub|Brak|
 |totalDeviceCount|Łączna liczba urządzeń (wersja zapoznawcza)|Liczba|Średnia|Liczba urządzeń zarejestrowanych w usłudze IoT Hub|Brak|
-|connectedDeviceCount|Połączone urządzenia (wersja zapoznawcza)|Liczba|Średnia|Liczba urządzeń podłączonych do centrum IoT Hub|Brak|
-|konfiguracje|Metryki konfiguracji|Liczba|Łącznie|Metryki dla operacji konfiguracji|Brak|
+|connectedDeviceCount|Podłączone urządzenia (wersja zapoznawcza)|Liczba|Średnia|Liczba urządzeń podłączonych do centrum IoT Hub|Brak|
+|komputerów|Metryki konfiguracji|Liczba|Łącznie|Metryki dla operacji konfiguracji|Brak|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
@@ -956,7 +956,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |Addregion|Dodano region|Liczba|Liczba|Dodano region|Region|
-|AvailableStorage|Dostępna pamięć|Bajty|Łącznie|Łączna ilość dostępnego magazynu zgłoszona z dokładnością do 5 minut|CollectionName, DatabaseName, region|
+|AvailableStorage|Dostępny magazyn|Bajty|Łącznie|Łączna ilość dostępnego magazynu zgłoszona z dokładnością do 5 minut|CollectionName, DatabaseName, region|
 |CassandraConnectionClosures|Zamknięcia połączeń Cassandra|Liczba|Łącznie|Liczba zamkniętych połączeń Cassandra, które zostały zgłoszone z dokładnością do 1 minuty|APIType, region, ClosureReason|
 |CassandraRequestCharges|Opłaty za żądania Cassandra|Liczba|Łącznie|Jednostek ru zużyte dla żądań Cassandra|APIType, DatabaseName, CollectionName, region, OperationType, ResourceType|
 |CassandraRequests|Żądania Cassandra|Liczba|Liczba|Liczba wykonanych żądań Cassandra|APIType, DatabaseName, CollectionName, region, OperationType, ResourceType, ErrorCode|
@@ -992,8 +992,8 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |TransactionCount|Liczba transakcji|Liczba|Liczba|Łączna liczba transakcji|TransactionCount|
-|SuccessCount|Liczba powodzeń|Liczba|Liczba|Liczba zakończonych pomyślnie transakcji|SuccessCount|
-|FailureCount|Liczba niepowodzeń|Liczba|Liczba|Liczba transakcji zakończonych niepowodzeniem|FailureCount|
+|SuccessCount|Liczba sukcesów|Liczba|Liczba|Liczba zakończonych pomyślnie transakcji|SuccessCount|
+|FailureCount|Liczba błędów|Liczba|Liczba|Liczba transakcji zakończonych niepowodzeniem|FailureCount|
 |SuccessLatency|Opóźnienie sukcesu|MilliSeconds|Średnia|Opóźnienie transakcji zakończonych powodzeniem|SuccessCount|
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/domeny
@@ -1164,7 +1164,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |wyjątki/liczba|Wyjątki|Liczba|Liczba|Łączna liczba wszystkich nieprzechwyconych wyjątków.|Chmura/rolename, Cloud/roleInstance, klient/typ|
 |wyjątki/przeglądarka|Wyjątki przeglądarki|Liczba|Liczba|Liczba nieprzechwyconych wyjątków zgłoszonych w przeglądarce.|Klient/isserwer, Chmura/rolename|
 |wyjątki/serwer|Wyjątki serwera|Liczba|Liczba|Liczba nieprzechwyconych wyjątków zgłoszonych w aplikacji serwera.|Klient/isserwer, Chmura/rolename, Cloud/roleInstance|
-|ślady/liczba|Ślady|Liczba|Liczba|Liczba dokumentów śledzenia|Trace/severityLevel, Operations/syntetyczne, Cloud/rolename, Cloud/roleInstance|
+|ślady/liczba|Ścieżki|Liczba|Liczba|Liczba dokumentów śledzenia|Trace/severityLevel, Operations/syntetyczne, Cloud/rolename, Cloud/roleInstance|
 
 
 
@@ -1293,7 +1293,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |---|---|---|---|---|---|
 |Ukończone uruchomienia|Ukończone uruchomienia|Liczba|Łącznie|Liczba przebiegów pomyślnie ukończonych dla tego obszaru roboczego|Scenariusz, RunType, PublishedPipelineId, Computetype, PipelineStepType|
 |Uruchomione uruchomienia|Uruchomione uruchomienia|Liczba|Łącznie|Liczba rozpoczętych uruchomień dla tego obszaru roboczego|Scenariusz, RunType, PublishedPipelineId, Computetype, PipelineStepType|
-|Przebiegi zakończone niepowodzeniem|Przebiegi zakończone niepowodzeniem|Liczba|Łącznie|Liczba uruchomień dla tego obszaru roboczego nie powiodła się|Scenariusz, RunType, PublishedPipelineId, Computetype, PipelineStepType|
+|Nieudane uruchomienia|Nieudane uruchomienia|Liczba|Łącznie|Liczba uruchomień dla tego obszaru roboczego nie powiodła się|Scenariusz, RunType, PublishedPipelineId, Computetype, PipelineStepType|
 |Rejestrowanie modelu powiodło się|Rejestrowanie modelu powiodło się|Liczba|Łącznie|Liczba rejestracji modelu zakończonych powodzeniem w tym obszarze roboczym|Scenariusz|
 |Nie można zarejestrować modelu|Nie można zarejestrować modelu|Liczba|Łącznie|Liczba rejestracji modelu zakończonych niepowodzeniem w tym obszarze roboczym|Scenariusz, StatusCode|
 |Uruchomiono Wdrażanie modelu|Uruchomiono Wdrażanie modelu|Liczba|Łącznie|Liczba rozpoczętych wdrożeń modelu w tym obszarze roboczym|Scenariusz|
@@ -1400,19 +1400,19 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|PacketsInDDoS|Atak DDoS — pakiety przychodzące|CountPerSecond|Maksimum|Atak DDoS — pakiety przychodzące|Brak|
-|PacketsDroppedDDoS|Atak DDoS — porzucone pakiety przychodzące|CountPerSecond|Maksimum|Atak DDoS — porzucone pakiety przychodzące|Brak|
-|PacketsForwardedDDoS|Atak DDoS — pakiety przychodzące przesłane dalej|CountPerSecond|Maksimum|Atak DDoS — pakiety przychodzące przesłane dalej|Brak|
+|PacketsInDDoS|Pakiety przychodzące DDoS|CountPerSecond|Maksimum|Pakiety przychodzące DDoS|Brak|
+|PacketsDroppedDDoS|Odrzucone pakiety przychodzące DDoS|CountPerSecond|Maksimum|Odrzucone pakiety przychodzące DDoS|Brak|
+|PacketsForwardedDDoS|Przekazane pakiety przychodzące DDoS|CountPerSecond|Maksimum|Przekazane pakiety przychodzące DDoS|Brak|
 |TCPPacketsInDDoS|Przychodzące pakiety TCP DDoS|CountPerSecond|Maksimum|Przychodzące pakiety TCP DDoS|Brak|
 |TCPPacketsDroppedDDoS|Liczba porzuconych pakietów TCP przychodzących DDoS|CountPerSecond|Maksimum|Liczba porzuconych pakietów TCP przychodzących DDoS|Brak|
 |TCPPacketsForwardedDDoS|Przychodzące pakiety TCP przesłane dalej DDoS|CountPerSecond|Maksimum|Przychodzące pakiety TCP przesłane dalej DDoS|Brak|
 |UDPPacketsInDDoS|Przychodzące pakiety UDP DDoS|CountPerSecond|Maksimum|Przychodzące pakiety UDP DDoS|Brak|
 |UDPPacketsDroppedDDoS|Liczba porzuconych pakietów przychodzących UDP DDoS|CountPerSecond|Maksimum|Liczba porzuconych pakietów przychodzących UDP DDoS|Brak|
 |UDPPacketsForwardedDDoS|Przychodzące pakiety UDP DDoS przesłane dalej|CountPerSecond|Maksimum|Przychodzące pakiety UDP DDoS przesłane dalej|Brak|
-|BytesInDDoS|Atak DDoS — bajty przychodzące|BytesPerSecond|Maksimum|Atak DDoS — bajty przychodzące|Brak|
-|BytesDroppedDDoS|Atak DDoS — porzucone bajty przychodzące|BytesPerSecond|Maksimum|Atak DDoS — porzucone bajty przychodzące|Brak|
-|BytesForwardedDDoS|Atak DDoS — bajty przychodzące przesłane dalej|BytesPerSecond|Maksimum|Atak DDoS — bajty przychodzące przesłane dalej|Brak|
-|TCPBytesInDDoS|Atak DDoS — przychodzące bajty TCP|BytesPerSecond|Maksimum|Atak DDoS — przychodzące bajty TCP|Brak|
+|BytesInDDoS|Bajty przychodzące DDoS|BytesPerSecond|Maksimum|Bajty przychodzące DDoS|Brak|
+|BytesDroppedDDoS|Bajty przychodzące opuszczone DDoS|BytesPerSecond|Maksimum|Bajty przychodzące opuszczone DDoS|Brak|
+|BytesForwardedDDoS|Przekazane bajty przychodzące DDoS|BytesPerSecond|Maksimum|Przekazane bajty przychodzące DDoS|Brak|
+|TCPBytesInDDoS|Przychodzące bajty TCP DDoS|BytesPerSecond|Maksimum|Przychodzące bajty TCP DDoS|Brak|
 |TCPBytesDroppedDDoS|Liczba porzuconych bajtów przychodzących protokołu TCP DDoS|BytesPerSecond|Maksimum|Liczba porzuconych bajtów przychodzących protokołu TCP DDoS|Brak|
 |TCPBytesForwardedDDoS|Przekazane DDoS przychodzące bajty TCP|BytesPerSecond|Maksimum|Przekazane DDoS przychodzące bajty TCP|Brak|
 |UDPBytesInDDoS|Przychodzące bajty UDP DDoS|BytesPerSecond|Maksimum|Przychodzące bajty UDP DDoS|Brak|
@@ -1421,7 +1421,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |IfUnderDDoSAttack|W obszarze atak DDoS|Liczba|Maksimum|W obszarze atak DDoS|Brak|
 |DDoSTriggerTCPPackets|Przychodzące pakiety TCP do wyzwalania łagodzenia DDoS|CountPerSecond|Maksimum|Przychodzące pakiety TCP do wyzwalania łagodzenia DDoS|Brak|
 |DDoSTriggerUDPPackets|Przychodzące pakiety UDP do wyzwalania łagodzenia DDoS|CountPerSecond|Maksimum|Przychodzące pakiety UDP do wyzwalania łagodzenia DDoS|Brak|
-|DDoSTriggerSYNPackets|Pakiety przychodzące SYN w celu wyzwalania ograniczania skutków ataku DDoS|CountPerSecond|Maksimum|Pakiety przychodzące SYN w celu wyzwalania ograniczania skutków ataku DDoS|Brak|
+|DDoSTriggerSYNPackets|Pakiety przychodzących SYN wyzwalające łagodzenie DDoS|CountPerSecond|Maksimum|Pakiety przychodzących SYN wyzwalające łagodzenie DDoS|Brak|
 |VipAvailability|Dostępność ścieżki danych|Liczba|Średnia|Średnia dostępność adresów IP na czas trwania|Port|
 |ByteCount|Liczba bajtów|Liczba|Łącznie|Łączna liczba bajtów przesłanych w okresie|Port, kierunek|
 |PacketCount|Liczba pakietów|Liczba|Łącznie|Łączna liczba pakietów wysłanych w czasie|Port, kierunek|
@@ -1465,10 +1465,10 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |ComputeUnits|Bieżące jednostki obliczeniowe|Liczba|Średnia|Wykorzystane jednostki obliczeniowe|Brak|
 |BackendResponseStatus|Stan odpowiedzi zaplecza|Liczba|Łącznie|Liczba kodów odpowiedzi HTTP wygenerowanych przez składowe zaplecza. Nie obejmuje to żadnych kodów odpowiedzi wygenerowanych przez Application Gateway.|BackendServer, ustawień httpsettings elementu, BackendHttpSetting, HttpStatusGroup|
 |TlsProtocol|Protokół TLS klienta|Liczba|Łącznie|Liczba żądań TLS i innych niż TLS zainicjowanych przez klienta, które ustanowiły połączenie z Application Gateway. Aby wyświetlić dystrybucję protokołu TLS, należy filtrować według protokołu TLS wymiaru.|Odbiornik, TlsProtocol|
-|BytesSent|Bajty wysłane|Bajty|Łącznie|Całkowita liczba bajtów wysłanych przez Application Gateway do klientów|Odbiornik|
-|BytesReceived|Bajty odebrane|Bajty|Łącznie|Całkowita liczba bajtów odebranych przez Application Gateway od klientów|Odbiornik|
-|ClientRtt|Czas RTT klienta|MilliSeconds|Średnia|Średni czas błądzenia między klientami a Application Gateway. Ta Metryka wskazuje, jak długo trwa ustanawianie połączeń i zwracanie potwierdzeń|Odbiornik|
-|ApplicationGatewayTotalTime|Łączny czas Application Gateway|MilliSeconds|Średnia|Średni czas przetwarzania żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako średnia interwału od momentu, kiedy Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że zwykle obejmuje to czas przetwarzania Application Gateway, czas, przez który pakiety żądań i odpowiedzi są przesyłane przez sieć i czas odpowiedzi serwera wewnętrznej bazy danych.|Odbiornik|
+|BytesSent|Bajty wysłane|Bajty|Łącznie|Całkowita liczba bajtów wysłanych przez Application Gateway do klientów|Odbiornika|
+|BytesReceived|Bajty odebrane|Bajty|Łącznie|Całkowita liczba bajtów odebranych przez Application Gateway od klientów|Odbiornika|
+|ClientRtt|Czas RTT klienta|MilliSeconds|Średnia|Średni czas błądzenia między klientami a Application Gateway. Ta Metryka wskazuje, jak długo trwa ustanawianie połączeń i zwracanie potwierdzeń|Odbiornika|
+|ApplicationGatewayTotalTime|Łączny czas Application Gateway|MilliSeconds|Średnia|Średni czas przetwarzania żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako średnia interwału od momentu, kiedy Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że zwykle obejmuje to czas przetwarzania Application Gateway, czas, przez który pakiety żądań i odpowiedzi są przesyłane przez sieć i czas odpowiedzi serwera wewnętrznej bazy danych.|Odbiornika|
 |BackendConnectTime|Czas połączenia z zapleczem|MilliSeconds|Średnia|Czas nawiązywania połączenia z serwerem wewnętrznej bazy danych|Listener, BackendServer, ustawień httpsettings elementu, BackendHttpSetting|
 |BackendFirstByteResponseTime|Czas odpowiedzi na pierwszy bajt zaplecza|MilliSeconds|Średnia|Interwał czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania pierwszego bajtu nagłówka odpowiedzi, który zbliża czas przetwarzania serwera wewnętrznej bazy danych|Listener, BackendServer, ustawień httpsettings elementu, BackendHttpSetting|
 |BackendLastByteResponseTime|Czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych|MilliSeconds|Średnia|Interwał czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania ostatniego bajtu treści odpowiedzi|Listener, BackendServer, ustawień httpsettings elementu, BackendHttpSetting|
@@ -1565,7 +1565,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |ResponseSize|Rozmiar odpowiedzi|Bajty|Łącznie|Liczba bajtów wysłanych jako odpowiedzi z serwera proxy HTTP/S do klientów|Wartości httpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |BillableResponseSize|Rozmiar odpowiedzi do rozliczenia|Bajty|Łącznie|Liczba bajtów rozliczanych (minimalna 2KB na żądanie) wysyłanych jako odpowiedzi z serwera proxy HTTP/S do klientów.|Wartości httpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |BackendRequestCount|Liczba żądań wewnętrznej bazy danych|Liczba|Łącznie|Liczba żądań wysyłanych z serwera proxy HTTP/S do frontonu|Wartości httpStatus, HttpStatusGroup, zaplecze|
-|BackendRequestLatency|Opóźnienie żądania wewnętrznej bazy danych|MilliSeconds|Średnia|Czas obliczony od momentu wysłania żądania przez serwer proxy HTTP/S do zaplecza do momentu odebrania przez serwer proxy HTTP/S ostatniego bajtu odpowiedzi z zaplecza|Zaplecze|
+|BackendRequestLatency|Opóźnienie żądania wewnętrznej bazy danych|MilliSeconds|Średnia|Czas obliczony od momentu wysłania żądania przez serwer proxy HTTP/S do zaplecza do momentu odebrania przez serwer proxy HTTP/S ostatniego bajtu odpowiedzi z zaplecza|Danych|
 |TotalLatency|Łączne opóźnienie|MilliSeconds|Średnia|Czas obliczony od momentu odebrania żądania klienta przez serwer proxy HTTP/S do momentu potwierdzenia przez klienta ostatniego bajtu odpowiedzi z serwera proxy HTTP/S|Wartości httpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
 |BackendHealthPercentage|Procent kondycji zaplecza|Procent|Średnia|Procent pomyślnych sond kondycji z serwera proxy HTTP/S do frontonu|Zaplecze, ustawień httpsettings elementu|
 |WebApplicationFirewallRequestCount|Liczba żądań zapory aplikacji sieci Web|Liczba|Łącznie|Liczba żądań klientów przetworzonych przez zaporę aplikacji sieci Web|PolicyName, RuleName, Akcja|
@@ -1661,7 +1661,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Zamiana Average_Available MB|Dostępny obszar wymiany (MB)|Liczba|Średnia|Zamiana Average_Available MB|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Odczyty Average_Page/s|Odczyty stron/s|Liczba|Średnia|Odczyty Average_Page/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Zapisy Average_Page/s|Zapisy stron/s|Liczba|Średnia|Zapisy Average_Page/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Pages/s|Strony/s|Liczba|Średnia|Average_Pages/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Pages/s|Stron/s|Liczba|Średnia|Average_Pages/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Przestrzeń wymiany Average_Used MB|Używany obszar wymiany (MB)|Liczba|Średnia|Przestrzeń wymiany Average_Used MB|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Pamięć Average_Used pamięci (MB)|Używana pamięć (MB)|Liczba|Średnia|Pamięć Average_Used pamięci (MB)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Przesyłane Average_Total bajty|Całkowita liczba przesłanych bajtów|Liczba|Średnia|Przesyłane Average_Total bajty|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
@@ -1710,7 +1710,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Average_Bytes całkowita/s|Całkowita liczba bajtów/s|Liczba|Średnia|Average_Bytes całkowita/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_ czas procesora (%)|Czas procesora (%)|Liczba|Średnia|Average_ czas procesora (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Długość kolejki Average_Processor|Długość kolejki procesora|Liczba|Średnia|Długość kolejki Average_Processor|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Puls|Puls|Liczba|Łącznie|Puls|Komputer, OSType, wersja, SourceComputerId|
+|Sygnały|Sygnały|Liczba|Łącznie|Sygnały|Komputer, OSType, wersja, SourceComputerId|
 |Aktualizacja|Aktualizacja|Liczba|Średnia|Aktualizacja|Komputer, produkt, klasyfikacja, UpdateState, opcjonalne, zatwierdzone|
 |Wydarzenie|Wydarzenie|Liczba|Średnia|Wydarzenie|Source, EventLog, Computer, EventCategory, EventLevel, EventLevelName, EventID|
 
@@ -1735,9 +1735,9 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |---|---|---|---|---|---|
 |QueryDuration|Czas trwania zapytania|MS|Średnia|Czas trwania zapytania języka DAX w ostatnim interwale|Nie wymiarów|
 |QueryPoolJobQueueLength|Wątki: Długość kolejki zadań puli zapytań|Liczba|Średnia|Liczba zadań w kolejce puli wątków zapytań.|Nie wymiarów|
-|qpu_high_utilization_metric|Wysokie wykorzystanie jednostek QPU|Liczba|Łącznie|QPU wysokie użycie w ciągu ostatnich minut, 1 do dużego użycia QPU, w przeciwnym razie 0|Nie wymiarów|
-|memory_metric|Pamięć|Bajty|Średnia|Memory (pamięć). Zakres 0-3 GB dla a1, 0-5 GB dla a2, 0-10 GB dla a3, 0-25 GB dla A4, 0-50 GB dla A5 i 0-100 GB dla A6|Nie wymiarów|
-|memory_thrashing_metric|Przeładowywanie pamięci|Procent|Średnia|Średnia pamięć migotanie.|Nie wymiarów|
+|qpu_high_utilization_metric|QPU wysokie wykorzystanie|Liczba|Łącznie|QPU wysokie użycie w ciągu ostatnich minut, 1 do dużego użycia QPU, w przeciwnym razie 0|Nie wymiarów|
+|memory_metric|Pamięć|Bajty|Średnia|Rozmiar. Zakres 0-3 GB dla a1, 0-5 GB dla a2, 0-10 GB dla a3, 0-25 GB dla A4, 0-50 GB dla A5 i 0-100 GB dla A6|Nie wymiarów|
+|memory_thrashing_metric|Migotanie pamięci|Procent|Średnia|Średnia pamięć migotanie.|Nie wymiarów|
 
 
 
@@ -1789,7 +1789,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |DeadletteredMessages|Liczba utraconych wiadomości w kolejce/temacie.|Liczba|Średnia|Liczba utraconych wiadomości w kolejce/temacie.|EntityName|
 |ScheduledMessages|Liczba zaplanowanych komunikatów w kolejce/temacie.|Liczba|Średnia|Liczba zaplanowanych komunikatów w kolejce/temacie.|EntityName|
 |NamespaceCpuUsage|Procesor CPU|Procent|Maksimum|Metryka użycia procesora przestrzeni nazw w warstwie Premium usługi Service Bus.|Replika|
-|NamespaceMemoryUsage|Memory Usage (Użycie pamięci)|Procent|Maksimum|Metryka użycia pamięci przestrzeni nazw Premium usługi Service Bus.|Replika|
+|NamespaceMemoryUsage|Użycie pamięci|Procent|Maksimum|Metryka użycia pamięci przestrzeni nazw Premium usługi Service Bus.|Replika|
 |CPUXNS|PROCESOR (przestarzałe)|Procent|Maksimum|Metryka użycia procesora przestrzeni nazw w warstwie Premium usługi Service Bus. Ta Metryka to przestarzałe. Użyj zamiast tego metryki procesora (NamespaceCpuUsage).|Replika|
 |WSXNS|Użycie pamięci (przestarzałe)|Procent|Maksimum|Metryka użycia pamięci przestrzeni nazw Premium usługi Service Bus. Ta Metryka jest przestarzała. Użyj zamiast tego metryki użycie pamięci (NamespaceMemoryUsage).|Replika|
 
@@ -1837,7 +1837,7 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |connection_successful|Udane połączenia|Liczba|Łącznie|Udane połączenia|Brak|
 |connection_failed|Połączenia zakończone niepowodzeniem|Liczba|Łącznie|Połączenia zakończone niepowodzeniem|Brak|
 |blocked_by_firewall|Zablokowane przez zaporę|Liczba|Łącznie|Zablokowane przez zaporę|Brak|
-|zakleszczenie|Zakleszczenia|Liczba|Łącznie|Zakleszczenia. Nie dotyczy hurtowni danych.|Brak|
+|stanu|Zakleszczenia|Liczba|Łącznie|Zakleszczenia. Nie dotyczy hurtowni danych.|Brak|
 |storage_percent|Procent użytego miejsca na danych|Procent|Maksimum|Procent użytego miejsca na danych. Nie dotyczy magazynów danych ani baz danych w skali.|Brak|
 |xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci. Nie dotyczy hurtowni danych.|Brak|
 |workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników. Nie dotyczy hurtowni danych.|Brak|
@@ -1851,8 +1851,8 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |dwu_used|JEDNOSTEK dwu używane|Liczba|Maksimum|JEDNOSTEK dwu. Dotyczy tylko magazynów danych.|Brak|
 |cache_hit_percent|Procent trafień w pamięci podręcznej|Procent|Maksimum|Procent trafień w pamięci podręcznej. Dotyczy tylko magazynów danych.|Brak|
 |cache_used_percent|Procent użycia pamięci podręcznej|Procent|Maksimum|Procent użycia pamięci podręcznej. Dotyczy tylko magazynów danych.|Brak|
-|sqlserver_process_core_percent|Procent podstawowych procesów SQL Server|Procent|Maksimum|Użycie procesora jako procent procesu bazy danych SQL. Nie dotyczy hurtowni danych.|Brak|
-|sqlserver_process_memory_percent|Procent pamięci procesu SQL Server|Procent|Maksimum|Użycie pamięci jako procent procesu bazy danych SQL. Nie dotyczy hurtowni danych.|Brak|
+|sqlserver_process_core_percent|Procent podstawowych procesów SQL Server|Procent|Maksimum|Procent użycia procesora CPU dla procesu SQL Server, mierzony przez system operacyjny. Obecnie dostępne tylko dla bezserwerowych baz danych.|Brak|
+|sqlserver_process_memory_percent|Procent pamięci procesu SQL Server|Procent|Maksimum|Procent użycia pamięci dla procesu SQL Server, mierzony przez system operacyjny. Obecnie dostępne tylko dla bezserwerowych baz danych.|Brak|
 |tempdb_data_size|Rozmiar pliku danych tempdb kilobajtów|Liczba|Maksimum|Rozmiar pliku danych tempdb kilobajtów. Nie dotyczy hurtowni danych.|Brak|
 |tempdb_log_size|Rozmiar pliku dziennika bazy danych tempdb kilobajtów|Liczba|Maksimum|Rozmiar pliku dziennika bazy danych tempdb kilobajtów. Nie dotyczy hurtowni danych.|Brak|
 |tempdb_log_used_percent|Użyto dziennika% tempdb|Procent|Maksimum|Użyto dziennika bazy danych tempdb. Nie dotyczy hurtowni danych.|Brak|
@@ -2161,8 +2161,8 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |MemoryPercentage|Procent pamięci|Procent|Średnia|Procent pamięci|Wystąpienie|
 |DiskQueueLength|Długość kolejki dysku|Liczba|Średnia|Długość kolejki dysku|Wystąpienie|
 |HttpQueueLength|Długość kolejki http|Liczba|Średnia|Długość kolejki http|Wystąpienie|
-|BytesReceived|Dane wejściowe|Bajty|Łącznie|Dane wejściowe|Wystąpienie|
-|BytesSent|Dane wyjściowe|Bajty|Łącznie|Dane wyjściowe|Wystąpienie|
+|BytesReceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|BytesSent|Dane wychodzące|Bajty|Łącznie|Dane wychodzące|Wystąpienie|
 |TcpSynSent|Wysłano pakiet TCP syn|Liczba|Średnia|Wysłano pakiet TCP syn|Wystąpienie|
 |TcpSynReceived|Odebrano pakiet TCP syn|Liczba|Średnia|Odebrano pakiet TCP syn|Wystąpienie|
 |TcpEstablished|Nawiązano ruch TCP|Liczba|Średnia|Nawiązano ruch TCP|Wystąpienie|
@@ -2179,8 +2179,8 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |---|---|---|---|---|---|
 |CpuTime|Czas procesora CPU|Sekundy|Łącznie|Czas procesora CPU|Wystąpienie|
 |Żądania|Żądania|Liczba|Łącznie|Żądania|Wystąpienie|
-|BytesReceived|Dane wejściowe|Bajty|Łącznie|Dane wejściowe|Wystąpienie|
-|BytesSent|Dane wyjściowe|Bajty|Łącznie|Dane wyjściowe|Wystąpienie|
+|BytesReceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|BytesSent|Dane wychodzące|Bajty|Łącznie|Dane wychodzące|Wystąpienie|
 |Http101|Http 101|Liczba|Łącznie|Http 101|Wystąpienie|
 |Http2xx|Http 2xx|Liczba|Łącznie|Http 2xx|Wystąpienie|
 |Http3xx|Http 3xx|Liczba|Łącznie|Http 3xx|Wystąpienie|
@@ -2194,9 +2194,9 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |AverageMemoryWorkingSet|Średni zestaw roboczy pamięci|Bajty|Średnia|Średni zestaw roboczy pamięci|Wystąpienie|
 |AverageResponseTime|Średni czas odpowiedzi|Sekundy|Średnia|Średni czas odpowiedzi|Wystąpienie|
 |AppConnections|Połączenia|Liczba|Średnia|Połączenia|Wystąpienie|
-|Handles|Liczba dojść|Liczba|Średnia|Liczba dojść|Wystąpienie|
+|Realizuj|Liczba dojść|Liczba|Średnia|Liczba dojść|Wystąpienie|
 |Wątki|Liczba wątków|Liczba|Średnia|Liczba wątków|Wystąpienie|
-|PrivateBytes|Prywatne bajty|Bajty|Średnia|Prywatne bajty|Wystąpienie|
+|PrivateBytes|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
 |IoReadBytesPerSecond|Bajty odczytu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
 |IoWriteBytesPerSecond|Bajty zapisu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
 |IoOtherBytesPerSecond|Inne bajty we/wy na sekundę|BytesPerSecond|Łącznie|Inne bajty we/wy na sekundę|Wystąpienie|
@@ -2217,14 +2217,14 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|BytesReceived|Dane wejściowe|Bajty|Łącznie|Dane wejściowe|Wystąpienie|
-|BytesSent|Dane wyjściowe|Bajty|Łącznie|Dane wyjściowe|Wystąpienie|
+|BytesReceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|BytesSent|Dane wychodzące|Bajty|Łącznie|Dane wychodzące|Wystąpienie|
 |Http5xx|Błędy serwera http|Liczba|Łącznie|Błędy serwera http|Wystąpienie|
 |MemoryWorkingSet|Zestaw roboczy pamięci|Bajty|Średnia|Zestaw roboczy pamięci|Wystąpienie|
 |AverageMemoryWorkingSet|Średni zestaw roboczy pamięci|Bajty|Średnia|Średni zestaw roboczy pamięci|Wystąpienie|
 |FunctionExecutionUnits|Jednostki wykonywania funkcji|MB/milisekundy|Łącznie|[Jednostki wykonywania funkcji](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Wystąpienie|
 |FunctionExecutionCount|Liczba wykonań funkcji|Liczba|Łącznie|Liczba wykonań funkcji|Wystąpienie|
-|PrivateBytes|Prywatne bajty|Bajty|Średnia|Prywatne bajty|Wystąpienie|
+|PrivateBytes|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
 |IoReadBytesPerSecond|Bajty odczytu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
 |IoWriteBytesPerSecond|Bajty zapisu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
 |IoOtherBytesPerSecond|Inne bajty we/wy na sekundę|BytesPerSecond|Łącznie|Inne bajty we/wy na sekundę|Wystąpienie|
@@ -2248,8 +2248,8 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |---|---|---|---|---|---|
 |CpuTime|Czas procesora CPU|Sekundy|Łącznie|Czas procesora CPU|Wystąpienie|
 |Żądania|Żądania|Liczba|Łącznie|Żądania|Wystąpienie|
-|BytesReceived|Dane wejściowe|Bajty|Łącznie|Dane wejściowe|Wystąpienie|
-|BytesSent|Dane wyjściowe|Bajty|Łącznie|Dane wyjściowe|Wystąpienie|
+|BytesReceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|BytesSent|Dane wychodzące|Bajty|Łącznie|Dane wychodzące|Wystąpienie|
 |Http101|Http 101|Liczba|Łącznie|Http 101|Wystąpienie|
 |Http2xx|Http 2xx|Liczba|Łącznie|Http 2xx|Wystąpienie|
 |Http3xx|Http 3xx|Liczba|Łącznie|Http 3xx|Wystąpienie|
@@ -2266,9 +2266,9 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |FunctionExecutionUnits|Jednostki wykonywania funkcji|Liczba|Łącznie|Jednostki wykonywania funkcji|Wystąpienie|
 |FunctionExecutionCount|Liczba wykonań funkcji|Liczba|Łącznie|Liczba wykonań funkcji|Wystąpienie|
 |AppConnections|Połączenia|Liczba|Średnia|Połączenia|Wystąpienie|
-|Handles|Liczba dojść|Liczba|Średnia|Liczba dojść|Wystąpienie|
+|Realizuj|Liczba dojść|Liczba|Średnia|Liczba dojść|Wystąpienie|
 |Wątki|Liczba wątków|Liczba|Średnia|Liczba wątków|Wystąpienie|
-|PrivateBytes|Prywatne bajty|Bajty|Średnia|Prywatne bajty|Wystąpienie|
+|PrivateBytes|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
 |IoReadBytesPerSecond|Bajty odczytu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
 |IoWriteBytesPerSecond|Bajty zapisu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
 |IoOtherBytesPerSecond|Inne bajty we/wy na sekundę|BytesPerSecond|Łącznie|Inne bajty we/wy na sekundę|Wystąpienie|
@@ -2290,8 +2290,8 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |Żądania|Żądania|Liczba|Łącznie|Żądania|Wystąpienie|
-|BytesReceived|Dane wejściowe|Bajty|Łącznie|Dane wejściowe|Wystąpienie|
-|BytesSent|Dane wyjściowe|Bajty|Łącznie|Dane wyjściowe|Wystąpienie|
+|BytesReceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|BytesSent|Dane wychodzące|Bajty|Łącznie|Dane wychodzące|Wystąpienie|
 |Http101|Http 101|Liczba|Łącznie|Http 101|Wystąpienie|
 |Http2xx|Http 2xx|Liczba|Łącznie|Http 2xx|Wystąpienie|
 |Http3xx|Http 3xx|Liczba|Łącznie|Http 3xx|Wystąpienie|

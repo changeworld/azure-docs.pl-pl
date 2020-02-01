@@ -8,19 +8,19 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/20/2019
-ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437146"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906385"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Samouczek: wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Azure Event Hubs
 
 Dzięki usłudze Azure Event Hubs można za pomocą usługi Azure Stream Analytics sprawdzić dane przychodzące i wyodrębnić anomalie, które następnie można wizualizować w usłudze Power BI. Załóżmy, że mamy tysiące urządzeń, wysyłających nieustannie dane w czasie rzeczywistym do centrum zdarzeń, co daje w efekcie miliony zdarzeń na sekundę. Jak sprawdzić takie ilości danych pod kątem anomalii lub błędów w danych? Na przykład, co w przypadku, gdy urządzenia wysyłają transakcję karty kredytowej, i musisz przechwycić w dowolnym miejscu, w którym masz wiele transakcji w wielu krajach/regionach, w ciągu 5-sekundowego interwału? Może się to zdarzyć w przypadku kradzieży kart kredytowych, a następnie użycia ich do realizowania zakupów na całym świecie w tym samym czasie. 
 
-W tym samouczku przeprowadzamy symulację takiej sytuacji. Możesz uruchomić aplikację, która tworzy i wysyła transakcje kart kredytowych do centrum zdarzeń. Później odczytać strumień danych w czasie rzeczywistym za pomocą usługi Azure Stream Analytics, która oddzieli prawidłowe transakcje od transakcji nieprawidłowych, a następnie użyć usługi Power BI, aby wizualnie zidentyfikować transakcje, które zostaną oznaczone jako nieprawidłowe.
+W tym samouczku przeprowadzamy symulację takiej sytuacji. Możesz uruchomić aplikację, która tworzy i wysyła transakcje kart kredytowych do centrum zdarzeń. Następnie można odczytać strumień danych w czasie rzeczywistym za pomocą Azure Stream Analytics, który oddziela prawidłowe transakcje od nieprawidłowych transakcji, a następnie używa Power BI do wizualnego identyfikowania transakcji, które są otagowane jako nieprawidłowe.
 
 Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -156,14 +156,14 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Uruchamianie aplikacji w celu wygenerowania danych zdarzenia testowego
 
-Wśród przykładów dotyczących usługi Event Hubs [w witrynie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) znajduje się [aplikacja do wykrywania anomalii](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector), która generuje dane testowe dla użytkownika. Symuluje ona korzystanie z kart kredytowych, zapisując w centrum zdarzeń transakcje kart kredytowych, w tym zapisując co pewien czas wiele transakcji dla tej samej karty kredytowej w wielu lokalizacjach, aby mogły one zostać oznaczone jako anomalie. Aby uruchomić tę aplikację, wykonaj następujące kroki: 
+Przykłady Event Hubs [w witrynie GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) obejmują aplikację wykrywania anomalii, która generuje dane testowe. Symuluje ona korzystanie z kart kredytowych, zapisując w centrum zdarzeń transakcje kart kredytowych, w tym zapisując co pewien czas wiele transakcji dla tej samej karty kredytowej w wielu lokalizacjach, aby mogły one zostać oznaczone jako anomalie. Aby uruchomić tę aplikację, wykonaj następujące kroki: 
 
 1. Pobierz [przykłady dotyczące usługi Azure Event Hubs](https://github.com/Azure/azure-event-hubs/archive/master.zip) z usługi GitHub i rozpakuj je lokalnie.
+2. Przejdź do folderu **\azure-event-hubs-master\samples\DotNet\\** folder. 
+3. Przejdź do folderu **\\Azure. Messaging. EventHubs\AnomalyDetector** , a następnie kliknij dwukrotnie plik **AnomalyDetector. sln** , aby otworzyć rozwiązanie w programie Visual Studio. 
 
-2. Przejdź do folderu \azure-event-hubs-master\samples\DotNet\AnomalyDetector\, a następnie kliknij dwukrotnie plik AnomalyDetector.sln, aby otworzyć rozwiązanie w programie Visual Studio. 
-
+    Aby użyć starej wersji przykładu korzystającej z starego pakietu Microsoft. Azure. EventHubs, Otwórz rozwiązanie w folderze **Microsoft. Azure. EventHubs\AnomalyDetector** . 
 3. Otwórz plik Program.cs i zastąp **parametry połączenia usługi Event Hubs** parametrami połączenia zapisanymi podczas uruchamiania skryptu. 
-
 4. Zastąp **nazwę centrum zdarzeń** swoją nazwą centrum zdarzeń. Naciśnij klawisz F5, aby uruchomić aplikację. Rozpocznie się wysyłanie zdarzeń do centrum zdarzeń, które będzie kontynuowane, dopóki nie zostanie wysłany 1000 zdarzeń. Istnieje kilka przypadków, gdy aplikacja musi być uruchomiona, aby można było pobrać dane. Sytuacje te wskazano w instrukcjach poniżej, gdy są wymagane.
 
 ## <a name="set-up-azure-stream-analytics"></a>Konfigurowanie usługi Azure Stream Analytics
@@ -186,7 +186,7 @@ Teraz możesz przesyłać strumieniowo dane do centrum zdarzeń. Aby użyć tych
 
    ![Zrzut ekranu pokazujący sposób tworzenia nowego zadania usługi Azure Stream Analytics.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Zaakceptuj wartości domyślne w pozostałych polach. Kliknij przycisk **Utwórz**. 
+    Zaakceptuj wartości domyślne w pozostałych polach. Kliknij pozycję **Utwórz**. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 
@@ -306,7 +306,7 @@ W ramach zadania usługi Stream Analytics kliknij pozycje **Uruchom**, następni
 
    ![Zrzut ekranu przedstawiający wprowadzanie nazwy pulpitu nawigacyjnego.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. Na stronie pulpitu nawigacyjnego kliknij pozycję **Dodaj kafelek**, wybierz opcję **Niestandardowe dane przesyłane strumieniowo** w sekcji **DANE W CZASIE RZECZYWISTYM**, a następnie kliknij przycisk **Dalej**.
+7. Na stronie Pulpit nawigacyjny kliknij pozycję **Dodaj kafelek**, w sekcji **dane czasu rzeczywistego** wybierz pozycję **niestandardowe dane przesyłane strumieniowo** , a następnie kliknij przycisk **dalej**.
 
    ![Zrzut ekranu przedstawiający określanie źródła dla kafelka.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 

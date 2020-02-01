@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/30/2020
+ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427031"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899847"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Wybierz warstwę cenową dla usługi Azure Wyszukiwanie poznawcze
 
@@ -21,15 +21,20 @@ Podczas tworzenia usługi Wyszukiwanie poznawcze platformy Azure [tworzony jest 
 
 Większość klientów zaczyna się od warstwy Bezpłatna, aby umożliwić jej ocenę usługi. Po zakończeniu oceny często można utworzyć drugą usługę w jednej z wyższych warstw na potrzeby wdrożeń deweloperskich i produkcyjnych.
 
-Mimo że wszystkie warstwy, w tym warstwa Bezpłatna, zazwyczaj parzystość funkcji oferty, większe obciążenia mogą dyktować potrzebę wyższych warstw. Na przykład [wzbogacanie systemu AI](cognitive-search-concept-intro.md) ma długotrwałe umiejętności, które przekraczają limit czasu dla bezpłatnej usługi, chyba że zestaw danych jest mały.
+## <a name="feature-availability-by-tier"></a>Dostępność funkcji według warstwy
 
-> [!NOTE] 
-> Wyjątkiem od funkcji parzystości jest [indeksatory](search-indexer-overview.md), które nie są dostępne w systemie S3 HD.
->
+Prawie każda funkcja jest dostępna w każdej warstwie, w tym bezpłatna, ale funkcja lub przepływ pracy intensywnie korzystający z zasobów może nie współpracować prawidłowo, chyba że zapewnisz odpowiednią pojemność. Na przykład [wzbogacanie systemu AI](cognitive-search-concept-intro.md) ma długotrwałe umiejętności, które przekraczają limit czasu dla bezpłatnej usługi, chyba że zestaw danych jest mały.
 
-## <a name="available-tiers"></a>Dostępne warstwy
+W poniższej tabeli opisano ograniczenia funkcji związanych z warstwą.
 
-Warstwy odzwierciedlają charakterystykę sprzętu obsługującego usługę (a nie funkcje) i są zróżnicowane przez:
+| Funkcja | Ograniczenia |
+|---------|-------------|
+| [indeksatorów](search-indexer-overview.md) | Indeksatory nie są dostępne w systemie S3 HD. |
+| [Klucze szyfrowania zarządzane przez klienta](search-security-manage-encryption-keys.md) | Niedostępne w warstwie Bezpłatna. |
+
+## <a name="tiers-skus"></a>Warstwy (SKU)
+
+Warstwy są zróżnicowane według:
 
 + Liczba indeksów i indeksatorów, które można utworzyć
 + Rozmiar i szybkość partycji (magazyn fizyczny)
@@ -97,9 +102,9 @@ Stawka rozliczeniowa jest naliczana co godzinę za pomocą funkcji SU. Każda wa
 
 Większość klientów uzyskuje zaledwie część całkowitej pojemności online, utrzymując pozostałe w rezerwie. W przypadku rozliczeń liczba partycji i replik przetworzonych w trybie online, obliczone przez formułę SU, decyduje o godzinie płatności.
 
-## <a name="how-to-manage-and-reduce-costs"></a>Jak zarządzać kosztami i je obniżyć
+## <a name="how-to-manage-costs"></a>Jak zarządzać kosztami
 
-Oprócz następujących sugestii zapoznaj się z tematem [rozliczeń i zarządzania kosztami](https://docs.microsoft.com/azure/billing/billing-getting-started).
+Poniższe sugestie mogą pomóc w minimalnym zachowaniu kosztów:
 
 - Utwórz wszystkie zasoby w tym samym regionie lub w możliwie najmniejszej liczbie regionów, aby zminimalizować lub wyeliminować opłaty za przepustowość.
 
@@ -109,7 +114,11 @@ Oprócz następujących sugestii zapoznaj się z tematem [rozliczeń i zarządza
 
 - Skalowanie w górę dla operacji intensywnie korzystających z zasobów, takich jak indeksowanie, a następnie korygowanie w dół na potrzeby zwykłych obciążeń zapytań. Rozpocznij od minimalnej konfiguracji Wyszukiwanie poznawcze platformy Azure (jeden element SU składający się z jednej partycji i jednej repliki), a następnie Monitoruj aktywność użytkowników, aby identyfikować wzorce użycia, które wskazują potrzebę większej pojemności. Jeśli istnieje przewidywalny wzorzec, można synchronizować skalę z aktywnością (należy napisać kod w celu zautomatyzowania tego).
 
-Nie można wyłączyć usługi wyszukiwania, aby zmniejszyć rozliczenia. Dedykowane zasoby są zawsze operacyjne, przydzielane do wyłącznego użytku przez okres istnienia usługi. W odniesieniu do samej usługi jedynym sposobem obniżenia poziomu rachunku jest zredukowanie replik i partycji na poziom, który nadal zapewnia akceptowalną wydajność i zgodność z umową [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), lub tworzenie usługi w niższej warstwie (S1 stawki godzinowe są niższe niż w przypadku stawek S2 i S3). Przy założeniu, że usługa zostanie zainicjowana na niższym końcu projekcji obciążenia, w przypadku skalowalność usługi można utworzyć drugą usługę o większej warstwie, ponownie skompilować indeksy w drugiej usłudze, a następnie usunąć pierwszy z nich.
+Dodatkowo zapoznaj się z tematem [rozliczeń i zarządzania kosztami](https://docs.microsoft.com/azure/billing/billing-getting-started) dla wbudowanych narzędzi i funkcji związanych z wydatkami.
+
+Tymczasowe wyłączenie usługi wyszukiwania nie jest możliwe. Dedykowane zasoby są zawsze operacyjne, przydzielane do wyłącznego użytku przez okres istnienia usługi. Usuwanie usługi jest trwałe, a także usuwa skojarzone z nią dane.
+
+W odniesieniu do samej usługi jedynym sposobem obniżenia poziomu rachunku jest zredukowanie replik i partycji na poziom, który nadal zapewnia akceptowalną wydajność i zgodność z umową [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), lub tworzenie usługi w niższej warstwie (S1 stawki godzinowe są niższe niż w przypadku stawek S2 i S3). Przy założeniu, że usługa zostanie zainicjowana na niższym końcu projekcji obciążenia, w przypadku skalowalność usługi można utworzyć drugą usługę o większej warstwie, ponownie skompilować indeksy w drugiej usłudze, a następnie usunąć pierwszy z nich.
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>Jak oszacować wymagania dotyczące pojemności
 

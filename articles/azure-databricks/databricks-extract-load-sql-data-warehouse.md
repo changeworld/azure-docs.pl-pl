@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/20/2019
-ms.openlocfilehash: 5ada5db0d9f3ea72eab93796d20023d89b7dd1ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/29/2020
+ms.openlocfilehash: 4c73a1e314888d99f4a5beea997265d28077e847
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889263"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898623"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu Azure Databricks
 
@@ -63,9 +63,9 @@ Przed rozpoczęciem tego samouczka wykonaj następujące zadania:
 
       Jeśli wolisz używać listy kontroli dostępu (ACL) do kojarzenia jednostki usługi z określonym plikiem lub katalogiem, kontrola dostępu referencyjnego [w Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
-   * Podczas wykonywania kroków opisanych w sekcji [pobieranie wartości dla logowania w](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) artykule wklej identyfikator dzierżawy, identyfikator aplikacji i hasło do pliku tekstowego. Wkrótce będą potrzebne.
+   * Podczas wykonywania kroków opisanych w sekcji [pobieranie wartości dla logowania w](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) artykule wklej identyfikator dzierżawy, identyfikator aplikacji i wartości klucza tajnego do pliku tekstowego. Wkrótce będą potrzebne.
 
-* Zaloguj się do [portalu Azure](https://portal.azure.com/).
+* Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Zbieranie potrzebnych informacji
 
@@ -171,23 +171,23 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
    ```scala
    val storageAccountName = "<storage-account-name>"
    val appID = "<app-id>"
-   val password = "<password>"
+   val secret = "<secret>"
    val fileSystemName = "<file-system-name>"
    val tenantID = "<tenant-id>"
 
    spark.conf.set("fs.azure.account.auth.type." + storageAccountName + ".dfs.core.windows.net", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type." + storageAccountName + ".dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
    spark.conf.set("fs.azure.account.oauth2.client.id." + storageAccountName + ".dfs.core.windows.net", "" + appID + "")
-   spark.conf.set("fs.azure.account.oauth2.client.secret." + storageAccountName + ".dfs.core.windows.net", "" + password + "")
+   spark.conf.set("fs.azure.account.oauth2.client.secret." + storageAccountName + ".dfs.core.windows.net", "" + secret + "")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint." + storageAccountName + ".dfs.core.windows.net", "https://login.microsoftonline.com/" + tenantID + "/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://" + fileSystemName  + "@" + storageAccountName + ".dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. W tym bloku kodu zamień symbole zastępcze `<app-id>`, `<password>`, `<tenant-id>` i `<storage-account-name>` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp symbol zastępczy `<file-system-name>` dowolną nazwą, którą chcesz nadać systemowi plików.
+6. W tym bloku kodu zamień symbole zastępcze `<app-id>`, `<secret>`, `<tenant-id>` i `<storage-account-name>` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp symbol zastępczy `<file-system-name>` dowolną nazwą, którą chcesz nadać systemowi plików.
 
-   * Parametry `<app-id>` i `<password>` pochodzą z aplikacji zarejestrowanej w usłudze Active Directory podczas tworzenia jednostki usługi.
+   * Parametry `<app-id>` i `<secret>` pochodzą z aplikacji zarejestrowanej w usłudze Active Directory podczas tworzenia jednostki usługi.
 
    * Parametr `<tenant-id>` pochodzi z subskrypcji.
 

@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e30c4812ad11d7b39197062da30c90b2d8b1649b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281074"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899079"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -41,7 +41,7 @@ W poniższej tabeli zestawiono typy próbkowania dostępne dla każdego zestawu 
 | Stan usługi Funkcje Azure | [Tak (domyślnie włączona)](#configuring-adaptive-sampling-for-azure-functions) | Nie | Tylko wtedy, gdy nie jest stosowane żadne inne próbkowanie |
 | Java | Nie | [Tak](#configuring-fixed-rate-sampling-for-java-applications) | Tylko wtedy, gdy nie jest stosowane żadne inne próbkowanie |
 | Python | Nie | [Tak](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Tylko wtedy, gdy nie jest stosowane żadne inne próbkowanie |
-| Wszystkie inne | Nie | Nie | [Tak](#ingestion-sampling) |
+| Wszystkie pozostałe | Nie | Nie | [Tak](#ingestion-sampling) |
 
 > [!NOTE]
 > Informacje na większości tej strony dotyczą bieżących wersji zestawów SDK Application Insights. Aby uzyskać informacje na temat starszych wersji zestawów SDK, [Zobacz sekcję poniżej](#older-sdk-versions).
@@ -531,7 +531,7 @@ Dokładność przybliżania zależy od skonfigurowanej wartości procentowej pr�
 
 *Istnieją pewne rzadkie zdarzenia, które zawsze chcę zobaczyć. Jak mogę uzyskać dostęp do modułu próbkowania?*
 
-* Najlepszym sposobem osiągnięcia tego celu jest napisanie niestandardowych [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer), które ustawia `SamplingPercentage` na 100 w elemencie telemetrii, który ma zostać zachowany, jak pokazano poniżej. Ponieważ inicjatory są gwarantowane do uruchomienia przed procesorami danych telemetrycznych (w tym próbkowanie), zapewnia to, że wszystkie techniki próbkowania zignorują ten element z wszelkich zagadnień związanych z próbkami.
+* Najlepszym sposobem osiągnięcia tego celu jest napisanie niestandardowych [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer), które ustawia `SamplingPercentage` na 100 w elemencie telemetrii, który ma zostać zachowany, jak pokazano poniżej. Ponieważ inicjatory są gwarantowane do uruchomienia przed procesorami danych telemetrycznych (w tym próbkowanie), zapewnia to, że wszystkie techniki próbkowania zignorują ten element z wszelkich zagadnień związanych z próbkami. Niestandardowe inicjatory telemetrii są dostępne w zestawie SDK ASP.NET, zestaw SDK ASP.NET Core, zestaw SDK języka JavaScript i zestaw SDK języka Java. Na przykład można skonfigurować inicjatora telemetrii przy użyciu zestawu SDK ASP.NET:
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer

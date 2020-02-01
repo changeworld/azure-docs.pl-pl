@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: fabb2524547bd7837d3644d79f0023311ddccdfc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 038cfe04193b734bd26ed0ffd4dec5ae9b267c22
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845558"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901277"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Usuwanie i przywracanie obszaru roboczego usługi Azure Log Analytics
 
@@ -23,7 +23,7 @@ W tym artykule wyjaśniono koncepcję nietrwałego usunięcia obszaru roboczego 
 Po usunięciu obszaru roboczego Log Analytics jest wykonywana operacja usuwania nietrwałego umożliwiająca odzyskanie obszaru roboczego, w tym jego danych i podłączonych agentów w ciągu 14 dni, bez względu na to, czy usunięcie było przypadkowe czy celowe. Po okresie niemożliwym do usunięcia nie można odzyskać zasobu obszaru roboczego i jego danych — dane są umieszczane w kolejce do trwałego usunięcia i całkowicie przeczyszczone w ciągu 30 dni. Nazwa obszaru roboczego jest "wydana" i można go użyć do utworzenia nowego obszaru roboczego.
 
 > [!NOTE]
-> Jeśli chcesz przesłonić zachowanie nietrwałego usuwania i trwale usunąć obszar roboczy, wykonaj czynności opisane w [obszarze trwałe usuwanie obszaru roboczego](#Permanent workspace delete).
+> Jeśli chcesz przesłonić zachowanie nietrwałego usuwania i trwale usunąć obszar roboczy, wykonaj czynności opisane w [obszarze trwałe usuwanie obszaru roboczego](#permanent-workspace-delete).
 
 Należy zachować ostrożność podczas usuwania obszaru roboczego, ponieważ mogą istnieć ważne dane i konfiguracja, które mogą negatywnie wpłynąć na działanie usługi. Zapoznaj się z agentami, rozwiązaniami i innymi usługami i źródłami platformy Azure, które przechowują dane w Log Analytics, na przykład:
 
@@ -63,7 +63,7 @@ Metoda usuwania nietrwałego może nie mieścić się w niektórych scenariuszac
 
 
 > [!IMPORTANT]
-> Należy zachować ostrożność podczas trwałego usuwania obszaru roboczego, ponieważ operacja jest nieodwracalna i nie będzie można odzyskać obszaru roboczego i jego danych.
+> Użyj trwałej operacji usuwania obszaru roboczego z zachowaniem ostrożności od nieodwracalnej i nie będzie możliwe odzyskanie obszaru roboczego i jego danych.
 
 Trwałe usuwanie obszaru roboczego można obecnie wykonać za pośrednictwem interfejsu API REST.
 
@@ -80,6 +80,7 @@ Aby trwale usunąć obszar roboczy, użyj [obszarów roboczych — Usuń]( https
 > DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
 > Authorization: Bearer eyJ0eXAiOiJKV1Qi….
 > ```
+Gdzie "eyJ0eXAiOiJKV1Qi..." przedstawia pełny Token autoryzacji.
 
 ## <a name="recover-workspace"></a>Odzyskiwanie obszaru roboczego
 

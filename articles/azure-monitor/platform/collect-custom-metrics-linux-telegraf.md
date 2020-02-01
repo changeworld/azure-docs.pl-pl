@@ -1,6 +1,6 @@
 ---
 title: Zbieranie niestandardowych metryk dla maszyny wirtualnej z systemem Linux za pomocą agenta InfluxData telegraf
-description: instrukcje dotyczące sposobu wdrażania agenta InfluxData telegraf na maszynie wirtualnej z systemem Linux na platformie Azure i konfigurowania agenta do publikowania metryk w Azure Monitor.
+description: Instrukcje dotyczące sposobu wdrażania agenta InfluxData telegraf na maszynie wirtualnej z systemem Linux na platformie Azure i konfigurowania agenta do publikowania metryk w Azure Monitor.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926744"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901324"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Zbieranie niestandardowych metryk dla maszyny wirtualnej z systemem Linux za pomocą agenta InfluxData telegraf
 
@@ -21,7 +21,7 @@ Korzystając z Azure Monitor, można zbierać niestandardowe metryki za pośredn
 
 ## <a name="influxdata-telegraf-agent"></a>Agent InfluxData telegraf 
 
-[Telegraf](https://docs.influxdata.com/telegraf/v1.7/) jest agentem opartym na wtyczkach, który umożliwia zbieranie metryk z ponad 150 różnych źródeł. W zależności od obciążenia uruchomionego na maszynie wirtualnej można skonfigurować agenta, aby korzystał z wyspecjalizowanych wtyczek wejściowych do zbierania metryk. Przykłady to MySQL, NGINX i Apache. Korzystając z wtyczek wyjściowych, Agent może następnie zapisywać do wybranych miejsc docelowych. Agent telegraf został zintegrowany bezpośrednio z interfejsem API REST niestandardowych metryk Azure Monitor. Obsługuje ona wtyczkę wyjściową Azure Monitor. Za pomocą tej wtyczki Agent może zbierać metryki specyficzne dla obciążeń na maszynie wirtualnej z systemem Linux i przesyłać je jako metryki niestandardowe do Azure Monitor. 
+[Telegraf](https://docs.influxdata.com/telegraf/) jest agentem opartym na wtyczkach, który umożliwia zbieranie metryk z ponad 150 różnych źródeł. W zależności od obciążenia uruchomionego na maszynie wirtualnej można skonfigurować agenta, aby korzystał z wyspecjalizowanych wtyczek wejściowych do zbierania metryk. Przykłady to MySQL, NGINX i Apache. Korzystając z wtyczek wyjściowych, Agent może następnie zapisywać do wybranych miejsc docelowych. Agent telegraf został zintegrowany bezpośrednio z interfejsem API REST niestandardowych metryk Azure Monitor. Obsługuje ona wtyczkę wyjściową Azure Monitor. Za pomocą tej wtyczki Agent może zbierać metryki specyficzne dla obciążeń na maszynie wirtualnej z systemem Linux i przesyłać je jako metryki niestandardowe do Azure Monitor. 
 
  ![Omówienie agenta telegraficznego](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
@@ -29,7 +29,7 @@ Korzystając z Azure Monitor, można zbierać niestandardowe metryki za pośredn
 
 W tym samouczku wdrażamy maszynę wirtualną z systemem Linux z systemem operacyjnym Ubuntu 16,04 LTS. Agent telegraf jest obsługiwany w przypadku większości systemów operacyjnych Linux. Pakiety Debian i RPM są dostępne wraz z nieopakowanymi plikami binarnymi systemu Linux w [portalu pobierania InfluxData](https://portal.influxdata.com/downloads). Więcej instrukcji i opcji instalacji można znaleźć w tym [przewodniku instalacji telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 Utwórz nową maszynę wirtualną z systemem Linux: 
 
@@ -106,7 +106,7 @@ Teraz agent będzie zbierać metryki z każdej z określonych wtyczek wejściowy
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Wykreśl metryki telegraf w Azure Portal 
 
-1. Otwórz [portal Azure](https://portal.azure.com). 
+1. Otwórz [Portalu Azure](https://portal.azure.com). 
 
 1. Przejdź do karty nowy **monitor** . Następnie wybierz pozycję **metryki**.  
 

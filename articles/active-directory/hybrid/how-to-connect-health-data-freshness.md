@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: SamuelD
 editor: ''
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41c1c102e88e1712d561874aef87a6f22ed250a9
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: a94bd07cf5020981cdf028ec0eccfa8fa531d240
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430219"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897169"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Dane usługi kondycji są nieaktualne
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Agenci na maszynach lokalnych, którzy Azure AD Connect Health monitoruje okresowo przekazywać dane do usługi Azure AD Connect Health. Jeśli usługa nie odbiera danych od agenta, informacje prezentowane przez portal będą przestarzałe. Aby wyróżnić problem, usługa zgłosi **dane usługi kondycji, które nie są aktualne** . Ten alert jest generowany, gdy usługa nie otrzymała pełnych danych w ciągu ostatnich dwóch godzin.  
 

@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/24/2019
-ms.openlocfilehash: 8e563ae095cf39cdce3e671d4099d2bf1592100a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/29/2020
+ms.openlocfilehash: d43b580f60f5ae8d2782cf9762b02aa1360e5a40
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513630"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901199"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Zbieranie danych dziennika za pomocą agenta Log Analytics
 
@@ -85,13 +85,13 @@ Począwszy od wersji wydana po sierpnia 2018 wprowadzamy następujące zmiany do
 
 W poniższej tabeli przedstawiono pakiety wymagane dla obsługiwanych dystrybucje systemu Linux, na których zostanie zainstalowany agent.
 
-|Wymagany pakiet |Opis |Minimalna wersja |
+|Wymagany pakiet |Opis |Wersja minimalna |
 |-----------------|------------|----------------|
 |Glibc |    Biblioteka GNU C | 2.5-12 
-|Openssl    | Biblioteki OpenSSL | 1.0. x lub 1.1. x |
-|Narzędzie Curl | zazwinięcie klienta sieci Web | 7.15.5 |
+|OpenSSL    | Biblioteki OpenSSL | 1.0. x lub 1.1. x |
+|Odsłon | zazwinięcie klienta sieci Web | 7.15.5 |
 |Python-ctypes | | 
-|PAM | Podłączane moduły uwierzytelniania (PAM) | | 
+|WYGASŁ | Moduły uwierzytelniania podłączane | | 
 
 >[!NOTE]
 >Do zbierania komunikatów dziennika systemowego wymagane są rsyslog lub Dziennik systemu. Demon syslog domyślne w wersji 5 (sysklog) w wersji w systemie Red Hat Enterprise Linux, CentOS i Oracle Linux nie jest obsługiwana dla zbierania zdarzeń dziennika systemu. Aby zebrać dane dziennika systemu z tej wersji dystrybucji, demona rsyslog powinna zostać zainstalowana i skonfigurowana do zastępowania sysklog.
@@ -106,6 +106,7 @@ W poniższych informacjach znajdują się informacje o konfiguracji serwera prox
 
 |Zasób agenta|Porty |Kierunek |Obejście inspekcji HTTPS|
 |------|---------|--------|--------|   
+|Pakiet OMS *. Azure. com |Port 443 |Wychodzące |Tak |
 |*.ods.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
 |*.oms.opinsights.azure.com |Port 443 |Wychodzące|Tak |  
 |*.blob.core.windows.net |Port 443 |Wychodzące|Tak |  

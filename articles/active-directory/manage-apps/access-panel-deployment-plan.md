@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512855"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897080"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Planowanie wdrożenia panelu dostępu Azure Active Directory
 
@@ -37,7 +37,7 @@ Za pomocą panelu dostępu usługi Azure AD można:
 Umożliwia także administratorom zarządzanie:
 
 * Warunki użytkowania usługi
-* Organizacje
+* Przedsiębiorstwa
 * Przeglądy dostępu
 
 
@@ -89,10 +89,10 @@ W poniższej tabeli przedstawiono najważniejsze przypadki użycia dla wdrożeni
 | Ład| Cykl życia przypisań użytkowników do aplikacji i grup połączonych z usługą Azure AD jest zdefiniowany i monitorowany. |
 | Zabezpieczenia| Dostęp do zasobów jest kontrolowany za pośrednictwem przypisań użytkowników i grup. Tylko autoryzowani użytkownicy mogą zarządzać dostępem do zasobów. |
 | Wydajność| Osie czasu propagacji przydziału dostępu są udokumentowane i monitorowane. |
-| Czynności po stronie użytkownika| Użytkownicy są świadomi możliwości panelu dostępu i sposobu ich używania.|
-| Czynności po stronie użytkownika| Użytkownicy mogą zarządzać dostępem do aplikacji i grup.|
-| Czynności po stronie użytkownika| Użytkownicy mogą zarządzać swoimi kontami. |
-| Czynności po stronie użytkownika| Użytkownicy są świadomi zgodności z przeglądarką. |
+| Środowisko użytkownika| Użytkownicy są świadomi możliwości panelu dostępu i sposobu ich używania.|
+| Środowisko użytkownika| Użytkownicy mogą zarządzać dostępem do aplikacji i grup.|
+| Środowisko użytkownika| Użytkownicy mogą zarządzać swoimi kontami. |
+| Środowisko użytkownika| Użytkownicy są świadomi zgodności z przeglądarką. |
 | Pomoc techniczna| Użytkownicy mogą znaleźć pomoc techniczną dotyczącą problemów z panelem dostępu. |
 
 ### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Najlepsze rozwiązania dotyczące wdrażania panelu dostępu usługi Azure AD
@@ -227,9 +227,9 @@ Zaplanuj kolejność, w jakiej będziesz dodawać aplikacje do programu uruchami
 
 Dowolna aplikacja obsługująca Logowanie jednokrotne w usłudze Azure AD może zostać dodana do programu uruchamiającego moje aplikacje. Inne aplikacje są dodawane przy użyciu opcji połączone Logowanie jednokrotne. Można skonfigurować kafelek aplikacji, który łączy się z adresem URL istniejącej aplikacji sieci Web. Połączone Logowanie jednokrotne pozwala rozpocząć kierowanie użytkowników do portalu My Apps bez migrowania wszystkich aplikacji do usługi Azure AD SSO. Możesz stopniowo przechodzić do aplikacji skonfigurowanych na potrzeby rejestracji jednokrotnej usługi Azure AD bez zakłócania pracy użytkowników.
 
-#### <a name="use-my-apps-workspaces-preview"></a>Korzystanie z obszarów roboczych moje aplikacje (wersja zapoznawcza)
+#### <a name="use-my-apps-collections"></a>Korzystanie z kolekcji Moje aplikacje
 
-Domyślnie wszystkie aplikacje są wyświetlane na jednej stronie. Można jednak użyć obszarów roboczych, aby zgrupować powiązane aplikacje i przedstawić je na osobnej karcie, co ułatwia ich znalezienie. Za pomocą obszarów roboczych można na przykład tworzyć logiczne grupowania aplikacji dla konkretnych ról zadań, zadań, projektów i tak dalej. Aby uzyskać więcej informacji, zobacz [temat jak korzystać z obszarów roboczych moje aplikacje, aby dostosować panele dostępu użytkowników (wersja zapoznawcza)](access-panel-workspaces.md). 
+Domyślnie wszystkie aplikacje są wyświetlane na jednej stronie. Można jednak użyć kolekcji, aby zgrupować powiązane aplikacje i przedstawić je na osobnej karcie, co ułatwia ich znalezienie. Można na przykład użyć kolekcji do tworzenia logicznych grup aplikacji dla określonych ról zadań, zadań, projektów i tak dalej. Aby uzyskać więcej informacji, zobacz [jak używać kolekcji my Apps do dostosowywania paneli dostępu użytkowników](access-panel-collections.md). 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Planowanie korzystania z aplikacji lub istniejącego portalu
 
@@ -261,7 +261,7 @@ Aby zaplanować członkostwo w grupach samoobsługi, ustal, czy zezwolisz wszyst
 
 Usługa Azure AD udostępnia [raporty, które oferują szczegółowe informacje techniczne i biznesowe](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). Pracuj z właścicielami aplikacji firmowych i technicznych, aby założyć własność tych raportów i regularnie je wykorzystać. W poniższej tabeli przedstawiono kilka przykładów typowych scenariuszy raportowania.
 
-|   | Zarządzanie ryzykiem| Zwiększenie produktywności| Zarządzanie i zgodność |
+|   | Zarządzanie ryzykiem| Zwiększ produktywność| Zarządzanie i zgodność |
 |  - |- | - | - |
 | Typy raportów|  Uprawnienia i użycie aplikacji| Działanie aprowizacji konta| Sprawdź, kto uzyskuje dostęp do aplikacji |
 | Potencjalni akcje| Inspekcja dostępu; Odwołaj uprawnienia| Koryguj wszelkie błędy aprowizacji| Odwołaj dostęp |

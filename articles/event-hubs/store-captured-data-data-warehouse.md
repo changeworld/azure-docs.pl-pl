@@ -6,15 +6,15 @@ author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a83d65e497688fa97fbb2bdb5a4a72c6d29d81ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718885"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905694"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Samouczek: Migrowanie przechwyconych danych Event Hubs do SQL Data Warehouse przy użyciu Event Grid i Azure Functions
 
@@ -40,9 +40,11 @@ W tym samouczku wykonasz następujące czynności:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Program Visual studio 2019](https://www.visualstudio.com/vs/). Podczas instalacji zainstaluj następujące pakiety robocze: programowanie aplikacji klasycznych dla platformy .NET, programowanie na platformie Azure, tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych, programowanie na platformie Node.js i programowanie w języku Python.
-- Pobierz [dane przykładowe Git](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). Przykładowe rozwiązanie zawiera następujące składniki:
+- Pobierz [przykład git](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) przykładowe rozwiązanie zawiera następujące składniki:
     - *WindTurbineDataGenerator* — prosty wydawca, który wysyła przykładowe dane turbiny wiatrowej do centrum zdarzeń, w którym włączono funkcję Capture.
     - *FunctionDWDumper* — funkcja platformy Azure, która odbiera powiadomienia usługi Event Grid, gdy plik Avro zostanie zapisany w obiekcie blob w usłudze Azure Storage. Odbiera ścieżkę identyfikatora URI obiektu blob, odczytuje jego zawartość i wypycha dane do usługi SQL Data Warehouse.
+
+    Ten przykład używa najnowszego pakietu Azure. Messaging. EventHubs. Stary przykład wykorzystujący pakiet Microsoft. Azure. EventHubs można znaleźć [tutaj](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). 
 
 ### <a name="deploy-the-infrastructure"></a>Wdrażanie infrastruktury
 Użyj programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, aby wdrożyć infrastrukturę potrzebną w tym samouczku, korzystając z tego [szablonu usługi Azure Resource Manager](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json). Ten szablon umożliwia utworzenie następujących zasobów:

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112287"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905663"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Indeksowanie dokumentów w Azure Data Lake Storage Gen2
 
@@ -47,3 +47,10 @@ Indeksowanie zawartości w Data Lake Storage Gen2 jest takie samo jak indeksowan
 Azure Data Lake Storage Gen2 implementuje [model kontroli dostępu](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) , który obsługuje kontrolę dostępu opartą na ROLACH (RBAC) na platformie Azure oraz listę kontroli dostępu (ACL). Podczas indeksowania zawartości z Data Lake Storage Gen2 usługa Azure Wyszukiwanie poznawcze nie wyodrębni z zawartości informacji RBAC i listy ACL. W związku z tym te informacje nie zostaną uwzględnione w indeksie usługi Azure Wyszukiwanie poznawcze.
 
 Jeśli zachowanie kontroli dostępu dla każdego dokumentu w indeksie jest ważne, to Deweloper aplikacji może wdrożyć [przycinanie zabezpieczeń](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search).
+
+## <a name="change-detection"></a>Wykrywanie zmian
+
+Indeksator Data Lake Storage Gen2 obsługuje wykrywanie zmian. Oznacza to, że gdy indeksator uruchamia program, tylko ponownie indeksuje zmienione obiekty blob zgodnie z sygnaturą czasową `LastModified` obiektu BLOB.
+
+> [!NOTE] 
+> Data Lake Storage Gen2 zezwala na zmianę nazwy katalogów. Po zmianie nazwy katalogu sygnatury czasowe obiektów BLOB w tym katalogu nie zostaną zaktualizowane. W związku z tym indeksator nie będzie ponownie indeksować tych obiektów BLOB. Jeśli obiekty blob w katalogu mają być ponownie indeksowane po zmianie nazwy katalogu, ponieważ teraz mają nowe adresy URL, należy zaktualizować sygnaturę czasową `LastModified` dla wszystkich obiektów BLOB w katalogu, aby indeksator mógł je ponownie indeksować w przyszłości.

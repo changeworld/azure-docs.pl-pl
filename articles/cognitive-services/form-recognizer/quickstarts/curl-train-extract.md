@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 961a5cc3d8c90007e314f40ba98693d978fe8888
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0cd7625a8e89365ccb966c0aa847e5b337f33acc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771947"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900204"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Szybki Start: uczenie modelu aparatu rozpoznawania formularzy i wyodrębnianie danych formularza przy użyciu interfejsu API REST z zwinięciem
 
 W tym przewodniku szybki start użyjesz interfejsu API REST usługi Azure Forms rozpoznającego z zwinięciem, aby przeszkolić i wypróbować formularze w celu wyodrębnienia par klucz-wartość i tabel.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-> [!IMPORTANT]
-> Ten przewodnik Szybki Start używa interfejsu API aparatu rozpoznawania w wersji 2.0. Jeśli Twoja subskrypcja nie znajduje się w regionie `West US 2` lub `West Europe`, musisz użyć interfejsu API w wersji 1.0. Postępuj zgodnie z [przewodnikiem Szybki Start w wersji 1.0](./curl-train-extract-v1.md) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

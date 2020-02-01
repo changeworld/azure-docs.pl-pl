@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c2acd09df51b942a08a85d96d907e064367377a7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026145"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900281"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch najlepszych praktyk
 
@@ -109,7 +109,7 @@ Zadania są pojedynczymi jednostkami pracy, które składają się na zadanie. Z
 - **Przesyłanie dużej liczby zadań w kolekcji.**  
     Zadania mogą być przesyłane pojedynczo lub w kolekcjach. Przesyłaj zadania w [kolekcjach](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) nawet do 100 w czasie wykonywania zbiorczego przesyłania zadań, aby zmniejszyć obciążenie i czas przesyłania.
 
-### <a name="task-execution"></a>Wykonanie zadania.
+### <a name="task-execution"></a>Wykonywanie zadania
 
 - **Wybieranie Maksymalna liczba zadań na węzeł**  
     Zadanie wsadowe obsługuje zadania związane z subskrypcją w węzłach (wykonywanie większej liczby zadań niż węzeł ma rdzenie). Jest to konieczne, aby upewnić się, że zadania "pasują" do węzłów w puli. Na przykład może wystąpić obniżenie wydajności w przypadku próby zaplanowania ośmiu zadań, za pomocą których każde zużywa 25% użycia procesora CPU w jednym węźle (w puli z `maxTasksPerNode = 8`).
@@ -152,3 +152,15 @@ Chociaż rzadko, zadanie może być ponawiane wewnętrznie ze względu na błęd
 ### <a name="security-isolation"></a>Izolacja zabezpieczeń
 
 W celu przeprowadzenia izolacji, jeśli scenariusz wymaga izolowania zadań od siebie, należy izolować te zadania, umieszczając je w osobnych pulach. Pula to granica izolacji zabezpieczeń w usłudze Batch, a domyślnie dwie pule nie są widoczne ani nie mogą komunikować się ze sobą. Należy unikać używania odrębnych kont usługi Batch jako metody izolacji.
+
+## <a name="moving"></a>Noszeniu
+
+### <a name="move-batch-account-across-regions"></a>Przenoszenie konta wsadowego w różnych regionach 
+
+Istnieją różne scenariusze, w których należy przenieść istniejące konto usługi Batch z jednego regionu do innego. Na przykład możesz chcieć przejść do innego regionu w ramach planowania odzyskiwania po awarii.
+
+Kont Azure Batch nie można przenosić z jednego regionu do innego. Można jednak użyć szablonu Azure Resource Manager, aby wyeksportować istniejącą konfigurację konta w usłudze Batch.  Następnie można przemieścić zasób w innym regionie, eksportując konto wsadowe do szablonu, modyfikując parametry w celu dopasowania do regionu docelowego, a następnie wdrożyć szablon w nowym regionie. Po przekazaniu szablonu do nowego regionu konieczne będzie ponowne utworzenie certyfikatów, harmonogramów zadań i pakietów aplikacji. Aby zatwierdzić zmiany i zakończyć Przenoszenie konta w usłudze Batch, pamiętaj o usunięciu oryginalnego konta partii lub grupy zasobów.  
+
+Aby uzyskać więcej informacji na temat Menedżer zasobów i szablonów, zobacz [Szybki Start: Tworzenie i wdrażanie szablonów Azure Resource Manager przy użyciu Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+
+

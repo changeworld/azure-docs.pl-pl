@@ -1,43 +1,50 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy, intencji i jednostek, usługa Python-Speech'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/27/2019
-ms.author: erhopf
-ms.openlocfilehash: aee5d6e1f6ed0519df7d1059b39f215d9f0d9091
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 01/27/2020
+ms.author: dapine
+ms.openlocfilehash: 58122066e65fbcb02b6b4333985785b219d3dbbd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660580"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900315"
 ---
-Aby ukończyć funkcję szybkiego startu rozpoznawania intencji, musisz utworzyć konto LUIS i projekt przy użyciu portalu LUIS w wersji zapoznawczej. Ten przewodnik Szybki Start wymaga tylko subskrypcji LUIS. Subskrypcja usługi mowy nie jest wymagana.
+Aby ukończyć funkcję szybkiego startu rozpoznawania intencji, musisz utworzyć konto LUIS i projekt przy użyciu portalu LUIS w wersji zapoznawczej. Ten przewodnik Szybki Start wymaga tylko subskrypcji LUIS. Subskrypcja usługi mowy *nie jest* wymagana.
 
 Pierwszą czynnością, którą należy wykonać, jest utworzenie konta LUIS i aplikacji za pomocą portalu LUIS w wersji zapoznawczej. Utworzona aplikacja LUIS będzie używać prekompilowanej domeny do automatyzacji domowej, która zapewnia intencje, jednostki i przykład wyrażenia długości. Po zakończeniu będziesz mieć punkt końcowy LUIS uruchomiony w chmurze, który można wywołać przy użyciu zestawu Speech SDK. 
 
-Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć aplikację LUIS: 
+Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć aplikację LUIS:
 
-* <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Szybki Start: Tworzenie wbudowanej aplikacji domeny</a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Szybki Start: Tworzenie wbudowanej aplikacji domeny<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
-Gdy skończysz, będziesz potrzebować trzech rzeczy: 
+Gdy skończysz, będziesz potrzebować czterech rzeczy:
 
-* Twój klucz LUIS
-* Region LUIS
-* Identyfikator aplikacji LUIS
+* Zastąp ponownie Publikowanie przy użyciu narzędzia **Speech napełnianiu**
+* **Klucz podstawowy** Luis
+* **Lokalizacja** Luis
+* **Identyfikator aplikacji** Luis
 
 Oto, gdzie można znaleźć te informacje w [portalu Luis w wersji zapoznawczej](https://preview.luis.ai/):
 
-1. W portalu LUIS w wersji zapoznawczej wybierz pozycję **Zarządzaj**, a następnie wybierz pozycję **zasoby platformy Azure**. Na tej stronie znajdziesz klucz LUIS i lokalizację (czasami określany jako _region_).  
+1. W portalu LUIS w wersji zapoznawczej wybierz aplikację, a następnie wybierz przycisk **Publikuj** .
+
+2. Wybierz miejsce **produkcyjne** , jeśli używasz `en-US` przełączać opcję **napełnianiu mowy** do pozycji **wł** . Następnie wybierz przycisk **Publikuj** .
+
+    > [!IMPORTANT]
+    > **Napełnianiu mowy** jest zdecydowanie zalecane, ponieważ poprawi dokładność rozpoznawania mowy.
+
+    > [!div class="mx-imgBorder"]
+    > ![opublikować LUIS w punkcie końcowym](../../../media/luis/publish-app-popup.png)
+
+3. W portalu LUIS w wersji zapoznawczej wybierz pozycję **Zarządzaj**, a następnie wybierz pozycję **zasoby platformy Azure**. Na tej stronie znajdziesz klucz LUIS i lokalizację (czasami określany jako _region_).
 
    > [!div class="mx-imgBorder"]
    > ![klucz LUIS i lokalizację](../../../media/luis/luis-key-region.png)
 
-2. Po uzyskaniu klucza i lokalizacji będziesz potrzebować identyfikatora aplikacji. Wybierz pozycję **Ustawienia aplikacji** — na tej stronie jest dostępny identyfikator aplikacji.
+4. Po uzyskaniu klucza i lokalizacji będziesz potrzebować identyfikatora aplikacji. Wybierz pozycję **Ustawienia aplikacji** — na tej stronie jest dostępny identyfikator aplikacji.
 
    > [!div class="mx-imgBorder"]
    > ![identyfikator aplikacji LUIS](../../../media/luis/luis-app-id.png)

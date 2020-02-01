@@ -12,16 +12,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 07/16/2019
+ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 312800482405530d57ce7b0b1e77b91c2ad069ce
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 7533c2a4d5ef2bb3e6f66e116d3ff3937ddd77b3
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772155"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899972"
 ---
 # <a name="event-processor-host"></a>Host procesora zdarzeń
+> [!NOTE]
+> Ten artykuł ma zastosowanie do starej wersji usługi Azure Event Hubs SDK. Aby dowiedzieć się, jak przeprowadzić migrację kodu do nowszej wersji zestawu SDK, zobacz te przewodniki dotyczące migracji. 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
+> - [Skrypt Java](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
+>
+> Ponadto zobacz [równoważenia obciążenia partycji w wielu wystąpieniach aplikacji](event-processor-balance-partition-load.md).
 
 Azure Event Hubs to usługa do pozyskiwania zaawansowanych danych telemetrycznych, która umożliwia strumieniowe przesyłanie milionów zdarzeń przy niskich kosztach. W tym artykule opisano sposób wykorzystywania odebrane zdarzenia przy użyciu *hosta procesora zdarzeń* (EPH); inteligentny agent odbiorcy, który ułatwia zarządzanie tworzenie punktów kontrolnych, dzierżawienie i czytników zdarzeń równoległych.  
 
@@ -37,16 +45,16 @@ Każdy czujnik wypycha dane do Centrum zdarzeń. Centrum zdarzeń jest skonfigur
 
 Podczas projektowania klienta w środowisku rozproszonym, scenariusz musi obsługiwać następujące wymagania:
 
-1. **Zasięgu** Utwórz wielu odbiorców, z których każdy konsument przejmuje prawo do odczytu z kilku Event Hubs partycji.
-2. **Równoważenie obciążenia:** Dynamiczne zwiększanie lub zmniejszanie liczby klientów. Na przykład po dodaniu nowego typu czujnika (na przykład wykrywanie tlenku węgla) do każdej strony głównej zwiększa liczbę zdarzeń. W takiej sytuacji — operator (człowieka) powoduje zwiększenie liczby wystąpień odbiorców. Następnie pulę odbiorców można ponownie zrównoważyć liczby partycji są właścicielami, aby udostępnić obciążenia nowo dodanych użytkowników.
-3. **Bezproblemowe wznowienie w przypadku awarii:** Jeśli odbiorca (**konsument a**) zakończy się niepowodzeniem (na przykład w maszynie wirtualnej, na której znajdują się nieoczekiwane awarie klienta), inni klienci muszą mieć możliwość pobrania partycji należących do **konsumenta a** i kontynuować. Również utrzymania punktu, o nazwie *punktu kontrolnego* lub *przesunięcie*, powinien być wyświetlany dokładny moment, w którym **konsumenta A** nie powiodło się, lub nieco wcześniej.
-4. **Korzystaj z zdarzeń:** Mimo że poprzednie trzy punkty zajmują się zarządzaniem konsumentem, musi istnieć kod, który umożliwia korzystanie z tych zdarzeń i jest bardziej użyteczny dla niego. na przykład Agreguj go i Przekaż do magazynu obiektów BLOB.
+1. **Skala:** tworzenie wielu odbiorców za pomocą każdy odbiorca przejmowania własności odczytywanie ich z kilku partycje usługi Event Hubs.
+2. **Możliwość równoważenia obciążenia:** Zwiększ lub Zmniejsz konsumentów dynamicznie. Na przykład po dodaniu nowego typu czujnika (na przykład wykrywanie tlenku węgla) do każdej strony głównej zwiększa liczbę zdarzeń. W takiej sytuacji — operator (człowieka) powoduje zwiększenie liczby wystąpień odbiorców. Następnie pulę odbiorców można ponownie zrównoważyć liczby partycji są właścicielami, aby udostępnić obciążenia nowo dodanych użytkowników.
+3. **Bezproblemowe wznowienia — błędy:** Jeśli odbiorcy (**konsumenta A**) kończy się niepowodzeniem (na przykład maszyna wirtualna hostingu nagle ulega awarii konsumenta), innych klientów musi być może podnieść partycje własnością **konsumenta A** i kontynuować. Również utrzymania punktu, o nazwie *punktu kontrolnego* lub *przesunięcie*, powinien być wyświetlany dokładny moment, w którym **konsumenta A** nie powiodło się, lub nieco wcześniej.
+4. **Korzystanie ze zdarzeń:** podczas poprzednich punktów trzy dotyczą zarządzania konsumenta, musi być kod korzystanie ze zdarzeń oraz zrobić coś, co jest przydatne w przypadku jego; na przykład agregować je i przekaż go do magazynu obiektów blob.
 
 Zamiast tego, tworząc własne rozwiązanie, usługa Event Hubs zapewnia tę funkcję za pośrednictwem [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) interfejsu i [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) klasy.
 
 ## <a name="ieventprocessor-interface"></a>Interfejsu IEventProcessor
 
-Pierwsze, zużywające aplikacje implementują interfejs [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) , który ma cztery metody: [OpenAsync, CloseAsync, ProcessErrorAsync i ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Ten interfejs zawiera rzeczywisty kod na korzystanie ze zdarzeń, które wysyła usługi Event Hubs. Poniższy kod pokazuje implementację proste:
+Po pierwsze, korzystanie z implementacji aplikacji [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) interfejs, który ma cztery metody: [OpenAsync, CloseAsync, ProcessErrorAsync i ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Ten interfejs zawiera rzeczywisty kod na korzystanie ze zdarzeń, które wysyła usługi Event Hubs. Poniższy kod pokazuje implementację proste:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -84,10 +92,10 @@ public class SimpleEventProcessor : IEventProcessor
 Następnie utwórz wystąpienie [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) wystąpienia. W zależności od przeciążenia, tworząc [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) wystąpienia w konstruktorze, są używane następujące parametry:
 
 - **Nazwa hosta:** nazwę każdego wystąpienia konsumenta. Każde wystąpienie elementu **klasy eventprocessorhost** musi mieć unikatową wartość tej zmiennej w grupie odbiorców, dlatego nie należy nakodować tej wartości.
-- **eventHubPath:** Nazwa centrum zdarzeń.
-- **consumerGroupName:** Event Hubs używa **$default** jako nazwy domyślnej grupy odbiorców, ale dobrym sposobem jest utworzenie grupy odbiorców dla określonego aspektu przetwarzania.
-- **eventHubConnectionString:** Parametry połączenia z centrum zdarzeń, które można pobrać z Azure Portal. Te parametry połączenia powinny mieć **nasłuchiwania** uprawnienia w Centrum zdarzeń.
-- **storageConnectionString:** Konto magazynu używane na potrzeby wewnętrznego zarządzania zasobami.
+- **eventHubPath:** nazwę Centrum zdarzeń.
+- **consumerGroupName:** korzysta z usługi Event Hubs **$Default** jako nazwa domyślna grupa odbiorców, ale jest dobrym rozwiązaniem, Utwórz grupę odbiorców z określonej proporcji przetwarzania.
+- **eventHubConnectionString:** parametry połączenia Centrum zdarzeń, który można pobrać z witryny Azure portal. Te parametry połączenia powinny mieć **nasłuchiwania** uprawnienia w Centrum zdarzeń.
+- **storageConnectionString:** konto magazynu używane na potrzeby zarządzania wewnętrznych zasobów.
 
 Na koniec Zarejestruj konsumentów [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) wystąpienie z usługi Event Hubs. Rejestrowanie klasy procesora zdarzeń z wystąpieniem klasy EventProcessorHost rozpoczyna przetwarzanie zdarzeń. Rejestrowanie powoduje, że usługi Event Hubs można oczekiwać, że aplikacja konsumenta zużywa zdarzenia z niektórych z jej partycji, a także do wywołania [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) kod implementacji zawsze wtedy, gdy umieszcza ono zdarzenia z. 
 
@@ -154,11 +162,11 @@ Jak wyjaśniono wcześniej, tabela śledzenia znacząco upraszcza charakter skal
 
 Ponadto jednego przeciążenia [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) przyjmuje [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) obiektu jako parametr. Ten parametr służy do sterowania zachowaniem [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) sam. [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) definiuje cztery właściwości i jedno zdarzenie:
 
-- [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): Maksymalny rozmiar kolekcji, która ma zostać odebrana w wywołaniu [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Ten rozmiar nie jest minimalny, maksymalny rozmiar. Jeśli ma mniejszą liczbę komunikatów do odbioru, **ProcessEventsAsync** wykonuje się przy użyciu tyle, ile były dostępne.
-- [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): Wartość używana przez podstawowy kanał AMQP do określenia górnego limitu liczby komunikatów, które powinien odebrać klient. Ta wartość powinna być większa lub równa [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize).
-- [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Jeśli ten parametr ma **wartość true**, [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) jest wywoływana, gdy bazowe wywołanie do odbierania zdarzeń na partycji przekracza limit czasu. Ta metoda jest przydatna do wykonywania akcji na podstawie czasu podczas nieaktywności na partycji.
-- [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Włącza funkcję wskaźnika funkcji lub wyrażenia lambda, która jest wywoływana w celu zapewnienia początkowego przesunięcia, gdy czytnik rozpocznie Odczytywanie partycji. Bez określania to przesunięcie, czytnik rozpoczyna się od najstarszych zdarzeń, o ile nie został wcześniej zapisany plik JSON z przesunięciem na koncie magazynu przekazana do [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) konstruktora. Ta metoda jest przydatna, jeśli chcesz zmienić zachowanie uruchamiania czytnika. Po wywołaniu tej metody parametr obiektu zawiera identyfikator partycji, dla którego jest uruchamiany czytelnika.
-- [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): Umożliwia otrzymywanie powiadomień o wszelkich podstawowych wyjątkach, które występują w [klasy eventprocessorhost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Jeśli elementy nie działają zgodnie z oczekiwaniami, to zdarzenie jest dobrym miejscem do rozpoczęcia wyszukiwania.
+- [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): maksymalny rozmiar kolekcji ma być wyświetlany w wywołanie [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Ten rozmiar nie jest minimalny, maksymalny rozmiar. Jeśli ma mniejszą liczbę komunikatów do odbioru, **ProcessEventsAsync** wykonuje się przy użyciu tyle, ile były dostępne.
+- [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): wartość używana przez kanału źródłowego protokołu AMQP do określenia górny limit liczby komunikatów klient powinien zostać wyświetlony. Ta wartość powinna być większa lub równa [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize).
+- [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Jeśli ten parametr ma **wartość true**, [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) jest wywoływana, gdy bazowe wywołanie do odbierania zdarzeń na partycji przekracza limit czasu. Ta metoda jest przydatna do podejmowania akcji opartych na czasie w okresach braku aktywności na partycji.
+- [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): włącza funkcję wskaźnika lub wyrażenia lambda można ustawić, która jest wywoływana w celu zapewnienia początkowe przesunięcie, gdy czytnik rozpoczyna się odczytywanie partycji. Bez określania to przesunięcie, czytnik rozpoczyna się od najstarszych zdarzeń, o ile nie został wcześniej zapisany plik JSON z przesunięciem na koncie magazynu przekazana do [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) konstruktora. Ta metoda jest przydatna, jeśli chcesz zmienić zachowanie uruchamiania czytnika. Po wywołaniu tej metody parametr obiektu zawiera identyfikator partycji, dla którego jest uruchamiany czytelnika.
+- [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): umożliwia otrzymywanie powiadomień o podstawowej wyjątków, które występują w [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Jeśli elementy nie działają zgodnie z oczekiwaniami, to zdarzenie jest dobrym miejscem do rozpoczęcia wyszukiwania.
 
 ## <a name="epoch"></a>EPOCH
 
@@ -171,7 +179,7 @@ Funkcja Epoka zapewnia użytkownikom możliwość zapewnienia, że w dowolnym mo
 
 - Jeśli nie ma żadnych istniejących odbiorników w grupie odbiorców, użytkownik może utworzyć odbiorcę z dowolną wartością epoki.
 - Jeśli istnieje odbiornik z wartością epoki E1 i zostanie utworzony nowy odbiornik z wartością epoki E2, gdzie E1 < = E2, odbiorca z E1 zostanie odłączony automatycznie, odbiornik z E2 zostanie utworzony pomyślnie.
-- Jeśli istnieje odbiornik z wartością epoki E1 i nowy odbiorca jest tworzony przy użyciu wartości epoki E2, gdzie E1 > E2, a następnie utworzenie E2 z zakończeniem się niepowodzeniem z powodu błędu: Odbiornik z obepoką E1 już istnieje.
+- Jeśli istnieje odbiornik z wartością epoki E1 i nowy odbiorca jest tworzony z wartością epoki E2, gdzie E1 > E2, a następnie utworzenie E2 z zakończeniem się niepowodzeniem z powodu błędu: odbiornik z epoką.
 
 ### <a name="no-epoch"></a>Brak epoki
 Tworzysz odbiornik oparty na protokole epoki przy użyciu metody [OnReceive](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) . 

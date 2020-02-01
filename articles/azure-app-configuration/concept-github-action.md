@@ -1,17 +1,17 @@
 ---
 title: Korzystanie z akcji usługi GitHub z synchronizacją konfiguracji aplikacji platformy Azure
 description: Użyj akcji usługi GitHub, aby wyzwolić aktualizację wystąpienia konfiguracji aplikacji, gdy zdefiniowane akcje są wykonywane w repozytorium GitHub
-author: jpconnock
-ms.author: jeconnoc
+author: lisaguthrie
+ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 1b7586e6321318a3fe4566e8c744c17a1d7ee179
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310622"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899626"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>Synchronizowanie wystąpienia konfiguracji aplikacji za pomocą akcji usługi GitHub
 Usługa Azure App Configuration używa akcji usługi GitHub do aktualizowania wystąpienia konfiguracji aplikacji, gdy jest wyzwalane przez akcję wykonywaną w repozytorium GitHub. Korzystając z przepływów pracy usługi GitHub, można aktualizować konfigurację aplikacji, umożliwiając integrację aktualizacji konfiguracji aplikacji w tym samym przepływie pracy, który służy do aktualizowania kodu aplikacji.
@@ -192,7 +192,7 @@ Parametry wejściowe określają dane używane przez akcję podczas środowiska 
 | rozdzielając | Tak | Separator używany podczas spłaszczania pliku konfiguracji do par klucz-wartość.  Prawidłowe wartości to:. , ; : - _ __ / |
 | prefix | Nie | Prefiks, który ma zostać dodany do początku kluczy. |
 | label | Nie | Etykieta użyta podczas ustawiania par klucz-wartość. Jeśli nie zostanie określony, zostanie użyta etykieta o wartości null. |
-| ściśle | Nie | Wartość logiczna określająca, czy tryb Strict jest włączony. Wartość domyślna to false. |
+| surowszych | Nie | Wartość logiczna określająca, czy tryb Strict jest włączony. Wartość domyślna to false. |
 | Ścisł | Nie | Maksymalna głębokość spłaszczania pliku konfiguracji.  Głębokość musi być liczbą dodatnią.  Wartość domyślna nie będzie mieć maksymalnej głębokości. |
 | tags | Nie | Określa zestaw tagów dla par klucz-wartość.  Oczekiwany format to skonwertowaneja postać obiektu JSON o następującym kształcie: {[propertyName: String]: String;} Każda właściwość name-value jest tagiem. |
 

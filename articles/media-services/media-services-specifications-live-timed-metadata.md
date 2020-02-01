@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 03b40dea4949bb50c30f7755b56294ac53107403
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514242"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905251"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych w czasie przesyłania strumieniowego na żywo 
 
@@ -29,7 +29,7 @@ Ostatnia aktualizacja: 2019-08-22
 
 Kluczowe słowa "musi", "nie może być", "wymagane", ",", ",", "," powinny "," nie powinno być "," zalecane "," maj "i" opcjonalne "w tym dokumencie są interpretowane zgodnie z opisem w dokumencie RFC 2119
 
-## <a name="1-introduction"></a>1. Wprowadzenie 
+## <a name="1-introduction"></a>1. wprowadzenie 
 
 Aby sygnalizować Wstawianie anonsów lub niestandardowych zdarzeń metadanych w odtwarzaczu klienta, nadawcy często używają metadanych czasowych osadzonych w filmie wideo. Aby włączyć te scenariusze, Media Services zapewnia obsługę transportu metadanych czasowych z punktu pozyskiwania kanału przesyłania strumieniowego na żywo do aplikacji klienckiej.
 Ta specyfikacja zawiera kilka trybów, które są obsługiwane przez Media Services dla metadanych czasowych w ramach sygnałów przesyłania strumieniowego na żywo.
@@ -249,7 +249,7 @@ W poniższej sekcji przedstawiono ładunek protokołu RTMP "Simple" Mode, który
  
 #### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Przykład danych wyjściowych manifestu MPEG PAUZy podczas korzystania z trybu prostego Adobe RTMP
 
-Zobacz przykład [3.3.2.1 dla łącznika MPEG. mpd EventStream przy użyciu trybu prostego Adobe](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
+Zobacz przykład [3.3.2.1 MPEG pauz. mpd EventStream przy użyciu trybu prostego Adobe](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
 
 Zobacz przykład [3.3.3.1 kreskowany z pojedynczym kropką i trybem prostym Adobe](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
 
@@ -280,7 +280,7 @@ W tym scenariuszu należy wysłać następujący ładunek z kodera lokalnego prz
 Zobacz [przykładowy manifest 3.3.3.2 z SCTE-35](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
 
 #### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>Przykład HLS manifest. M3U8 z sygnałem trybu SCTE-35
-Zobacz [przykład 3.3.1.1 przykład HLS z SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+Zobacz [przykładowe 3.2.1.1 przykład HLS manifestu z SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
 
 ## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 "onCuePoint" przy użyciu protokołu RTMP dla elementów na żywo
 
@@ -421,7 +421,7 @@ Aby osiągnąć dokładne wstawianie reklam, koder musi podzielić fragment w cz
 | parentTrackName    | Ciąg         | Wymagane      | **Musi** być nazwą ścieżki nadrzędnej, do której są wyrównane Skala czasu ścieżki rozrzedzonej. Ścieżka nadrzędna nie może być ścieżką rozrzedzoną.                                                                             |
 | manifestOutput     | Wartość logiczna        | Wymagane      | **Musi** mieć wartość "true", aby wskazać, że ścieżka rozrzedzona zostanie osadzona w niezakłóconym manifeście klienta.                                                                                                                        |
 | Podtyp            | Ciąg         | Wymagane      | **Musi** to być czterocyfrowy kod znaku "Data".                                                                                                                                                                                  |
-| Schemat             | Ciąg         | Wymagane      | **Musi** być identyfikatorem urn lub adresem URL identyfikującym schemat komunikatów. W przypadku komunikatów [SCTE-35] **musi** to być "urn: SCTE: scte35:2013: bin", aby komunikaty były wysyłane do programu HLS, gładkie i przerywane klientów zgodne z programem [SCTE-35]. |
+| Równaniu             | Ciąg         | Wymagane      | **Musi** być identyfikatorem urn lub adresem URL identyfikującym schemat komunikatów. W przypadku komunikatów [SCTE-35] **musi** to być "urn: SCTE: scte35:2013: bin", aby komunikaty były wysyłane do programu HLS, gładkie i przerywane klientów zgodne z programem [SCTE-35]. |
 | ścieżka śledzenia          | Ciąg         | Wymagane      | **Musi** to być nazwa ścieżki rozrzedzonej. Wartość trackname może być używana do rozróżniania wielu strumieni zdarzeń z tym samym schematem. Każdy unikatowy strumień zdarzeń **musi** mieć unikatową nazwę ścieżki.                                |
 | timescale          | Liczba         | Opcjonalne      | **Musi** to być Skala czasu ścieżki nadrzędnej.                                                                                                                                                                               |
 
@@ -767,7 +767,7 @@ Istnieje również implementacja "Starsza" w Azure Media Services (interfejs API
 | KONTROL                | ciąg w cudzysłowie                 | Wymagane                                  | Komunikat zakodowany jako ciąg zakodowany algorytmem Base64, zgodnie z opisem w [RFC4648]. W przypadku komunikatów [SCTE-35] jest to splice_info_section zakodowane w formacie base64 ().                                                                                                                                      |
 | TYP               | ciąg w cudzysłowie                 | Wymagane                                  | Nazwa URN lub adres URL identyfikujący schemat komunikatów. W przypadku komunikatów [SCTE-35] typ przyjmuje wartość specjalną "scte35".                                                                                                                                                                          |
 | ID                 | ciąg w cudzysłowie                 | Wymagane                                  | Unikatowy identyfikator zdarzenia. Jeśli identyfikator nie zostanie określony podczas pozyskiwania wiadomości, Azure Media Services wygeneruje unikatowy identyfikator.                                                                                                                                              |
-| CZAS TRWANIA           | dziesiętna liczba zmiennoprzecinkowa | Wymagane                                  | Czas trwania zdarzenia. Jeśli nieznany, wartość **powinna** być równa 0. Jednostki są factional s.                                                                                                                                                                                           |
+| TRWANIA           | dziesiętna liczba zmiennoprzecinkowa | Wymagane                                  | Czas trwania zdarzenia. Jeśli nieznany, wartość **powinna** być równa 0. Jednostki są factional s.                                                                                                                                                                                           |
 | ELAPSED            | dziesiętna liczba zmiennoprzecinkowa | Opcjonalne, ale wymagane dla przesuwanego okna | Gdy sygnał jest powtarzany do obsługi okna prezentacji ruchomej, to pole **musi** być ilością czasu prezentacji, która upłynęła od momentu rozpoczęcia zdarzenia. Jednostki są ułamkami sekund. Ta wartość może przekroczyć pierwotny określony czas trwania łączenia lub segmentu. |
 | CZAS               | dziesiętna liczba zmiennoprzecinkowa | Wymagane                                  | Czas prezentacji zdarzenia. Jednostki są ułamkami sekund.                                                                                                                                                                                                                        |
 

@@ -8,18 +8,24 @@ ms.topic: include
 ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: b0f93f950b55052ea8d8b31538c47226413dc82a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 58e9156091702718dccd75eb4a57e5b6d8c1f073
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183322"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896342"
 ---
 ## <a name="access-the-media-services-api"></a>Uzyskiwanie dostępu do interfejsu API usługi Media Services
 
 Aby nawiązać połączenie z interfejsami API usługi Azure Media Services, musisz użyć uwierzytelniania związanego z nazwą główną usługi Azure AD. Poniższe polecenie powoduje utworzenie aplikacji usługi Azure AD i dołączenie nazwy głównej usługi do konta. Skonfiguruj aplikację przy użyciu zwróconych wartości.
 
-Przed uruchomieniem skryptu, należy zastąpić `amsaccount` i `amsResourceGroup` z nazwami zostały wybrane podczas tworzenia tych zasobów. `amsaccount` to nazwa konta usługi Azure Media Services, do którego zostanie dołączona nazwa główna usługi.
+Przed uruchomieniem skryptu należy zastąpić `amsaccount` i `amsResourceGroup` nazwami wybranymi podczas tworzenia tych zasobów. `amsaccount` to nazwa konta usługi Azure Media Services, do którego zostanie dołączona nazwa główna usługi.
+
+Jeśli masz dostęp do wielu subskrypcji, najpierw ustaw aktywną subskrypcję na subskrypcję, w której utworzono konto Media Services.
+
+```azurecli
+az account set --subscription subscriptionId
+```
 
 Następujące polecenie zwraca dane wyjściowe `json`:
 

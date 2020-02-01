@@ -12,12 +12,12 @@ ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330f3100858d517666ac14fa8c206b4c06998c4f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4f9ff446bae0a010b12e84172d5af60c6ca81c0e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274203"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896905"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Środowisko użytkownika końcowego dla aplikacji w Azure Active Directory
 
@@ -36,7 +36,7 @@ Panel dostępu w https://myapps.microsoft.com jest portalem opartym na sieci Web
 
 ![Zrzut ekranu przedstawia Portal panelu dostępu usługi Azure AD](media/what-is-single-sign-on/azure-ad-access-panel.png)
 
-Domyślnie wszystkie aplikacje są wyświetlane na jednej stronie. Można jednak użyć obszarów roboczych, aby zgrupować powiązane aplikacje i przedstawić je na osobnej karcie, co ułatwia ich znalezienie. Za pomocą obszarów roboczych można na przykład tworzyć logiczne grupowania aplikacji dla konkretnych ról zadań, zadań, projektów i tak dalej. Aby uzyskać więcej informacji, zobacz [temat jak korzystać z obszarów roboczych moje aplikacje, aby dostosować panele dostępu użytkowników (wersja zapoznawcza)](access-panel-workspaces.md). 
+Domyślnie wszystkie aplikacje są wyświetlane na jednej stronie. Można jednak użyć kolekcji, aby zgrupować powiązane aplikacje i przedstawić je na osobnej karcie, co ułatwia ich znalezienie. Można na przykład użyć kolekcji do tworzenia logicznych grup aplikacji dla określonych ról zadań, zadań, projektów i tak dalej. Aby uzyskać więcej informacji, zobacz [jak używać kolekcji my Apps do dostosowywania paneli dostępu użytkowników](access-panel-collections.md). 
 
 Panel dostępu jest oddzielony od Azure Portal i nie wymaga, aby użytkownicy mieli subskrypcję platformy Azure ani subskrypcję pakietu Office 365.
 

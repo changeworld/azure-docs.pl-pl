@@ -1,10 +1,9 @@
 ---
-title: Wysyłanie i odbieranie zdarzeń przy użyciu platformy .NET Core — Azure Event Hubs | Microsoft Docs
-description: Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji .NET Core, która wysyła zdarzenia do usługi Azure Event Hubs.
+title: Wysyłanie i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu platformy .NET (stary)
+description: Ten artykuł zawiera Przewodnik dotyczący tworzenia aplikacji .NET Core, która wysyła/odbiera zdarzenia do/z usługi Azure Event Hubs przy użyciu starego pakietu Microsoft. Azure. EventHubs.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -12,23 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.custom: seodec18
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: 1d3f6357faa8626d48e2aac0efe86e22222c9ba6
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.date: 01/15/2020
+ms.author: spelluru
+ms.openlocfilehash: a58c344f644f91634fba267ff157bd56a18f40d3
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846672"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900112"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu platformy .NET Core
+# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu platformy .NET Core (Microsoft. Azure. EventHubs)
 Event Hubs to usługa, która przetwarza duże ilości danych zdarzeń (danych telemetrycznych) z podłączonych urządzeń i aplikacji. Po zebraniu danych w usłudze Event Hubs można przechowywać dane przy użyciu klastra magazynu lub przekształcać je za pomocą dostawcy analiz w czasie rzeczywistym. Ta możliwość zbierania i przetwarzania zdarzeń na wielką skalę jest kluczowym składnikiem architektur nowoczesnych aplikacji, w tym Internetu rzeczy (IoT). Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
 
 W tym samouczku przedstawiono sposób tworzenia aplikacji platformy .NET C# Core w programie w celu wysyłania zdarzeń do zdarzeń lub odbierania ich z centrum zdarzeń. 
 
-> [!NOTE]
-> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie możesz utworzyć własne rozwiązanie, wykonując kroki opisane w tym samouczku.
+> [!WARNING]
+> Ten przewodnik Szybki Start używa starego pakietu **Microsoft. Azure. EventHubs** . Zalecamy [Migrowanie](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md) kodu do korzystania z najnowszego pakietu [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) .  
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,6 +37,10 @@ W tym samouczku przedstawiono sposób tworzenia aplikacji platformy .NET C# Core
 
 ## <a name="send-events"></a>Wysyłanie zdarzeń 
 W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core w celu wysyłania zdarzeń do centrum zdarzeń. 
+
+> [!NOTE]
+> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie możesz utworzyć własne rozwiązanie, wykonując kroki opisane w tym samouczku.
+
 
 ### <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 211dafd1ad3e30d37cfee926a7c93ba541037f62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2e05f0cb46e1e54ced5911c0a78dd026dbb7f4fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749504"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905583"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Usługa Azure cele skalowalności i wydajności plików
 
@@ -51,7 +51,7 @@ Zapoznaj się z sekcją [cele skalowania konta usługi Azure Storage](#azure-sto
 ### <a name="file-share-and-file-scale-targets"></a>Elementy docelowe udziału plików i skalowania plików
 
 > [!NOTE]
-> Standardowe udziały plików większe niż 5 TiB mają pewne ograniczenia i ograniczenia regionalne.
+> Standardowe udziały plików większe niż 5 TiB mają pewne ograniczenia.
 > Listę ograniczeń, informacje regionalne i instrukcje dotyczące włączania większych rozmiarów udziałów plików można znaleźć w sekcji Dołączanie [do większych udziałów plików](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) w przewodniku planowania.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]

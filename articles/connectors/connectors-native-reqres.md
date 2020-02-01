@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 01/14/2020
 tags: connectors
-ms.openlocfilehash: 822a6d1cd812ead8e677a66a9b1e47ebdbcf8aea
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030146"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900269"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Odbieraj przychodzące wywołania HTTPS i odpowiadaj na nie przy użyciu Azure Logic Apps
 
@@ -23,7 +23,9 @@ Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowaneg
 * Odbieraj i odpowiadaj na wywołanie HTTPS z innej aplikacji logiki.
 
 > [!NOTE]
-> Wyzwalacz żądania obsługuje *tylko* Transport Layer Security (TLS) 1,2 dla wywołań przychodzących. Wywołania wychodzące nadal obsługują protokoły TLS 1,0, 1,1 i 1,2. Jeśli widzisz błędy uzgadniania protokołu SSL, upewnij się, że korzystasz z protokołu TLS 1,2. W przypadku wywołań przychodzących Oto obsługiwane mechanizmy szyfrowania:
+> Wyzwalacz żądania obsługuje *tylko* Transport Layer Security (TLS) 1,2 dla wywołań przychodzących. Wywołania wychodzące nadal obsługują protokoły TLS 1,0, 1,1 i 1,2. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemu z protokołem TLS 1,0](https://docs.microsoft.com/security/solving-tls1-problem).
+>
+> Jeśli widzisz błędy uzgadniania protokołu SSL, upewnij się, że korzystasz z protokołu TLS 1,2. W przypadku wywołań przychodzących Oto obsługiwane mechanizmy szyfrowania:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -46,7 +48,7 @@ Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowaneg
 
 Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcowy HTTPS, który może odbierać *tylko* przychodzące żądania HTTPS. Po wystąpieniu tego zdarzenia wyzwalacz uruchamia i uruchamia aplikację logiki. Aby uzyskać więcej informacji na temat podstawowej definicji JSON wyzwalacza i sposobu wywoływania tego wyzwalacza, zobacz [Typ wyzwalacza żądania](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) oraz [przepływy pracy wywołania, wyzwalacza lub zagnieżdżania z punktami końcowymi http w Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Tworzenia pustej aplikacji logiki.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com). Tworzenia pustej aplikacji logiki.
 
 1. Gdy zostanie otwarty projektant aplikacji logiki, w polu wyszukiwania wprowadź ciąg "żądanie HTTP" jako filtr. Z listy Wyzwalacze wybierz wyzwalacz **po odebraniu żądania HTTP** , który jest pierwszym krokiem w przepływie pracy aplikacji logiki.
 

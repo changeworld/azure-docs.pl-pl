@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174677"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897619"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ustawienia żądania zmiany i zatwierdzania dla pakietu dostępu w usłudze Azure AD uprawnienia zarządzania
 
@@ -42,6 +42,9 @@ Sposób określania, kto może zażądać pakietu dostępu, jest zasadą. Podcza
 | Chcę zezwolić użytkownikom w moim katalogu, a także użytkownikom spoza mojego katalogu na żądanie pakietu dostępu | Wiele |
 | Chcę określić różne ustawienia zatwierdzania dla niektórych użytkowników | Wiele |
 | Chcę, aby niektórzy użytkownicy mieli dostęp do przypisań pakietów, a inni użytkownicy mogą ją rozciągnąć | Wiele |
+
+Aby uzyskać informacje o logice priorytetu, która jest używana w przypadku stosowania wielu zasad, zobacz [wiele zasad](entitlement-management-troubleshoot.md#multiple-policies
+).
 
 ### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Otwieranie istniejących zasad ustawień żądania i zatwierdzania
 

@@ -1,28 +1,24 @@
 ---
-title: 'Szybki Start: Rozpoznawanie mowy, intencji i jednostek, usługa Java-Speech'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c5d70bba32df5940d929482e37317d40bd496676
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a6bf8bb558e82fefbbe6ff306f628a4b449a4e83
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761432"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900624"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem:
 
-* Jeśli jest to pierwszy projekt Java (JRE), Skorzystaj z tego przewodnika, aby <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">utworzyć pusty przykładowy projekt</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Zainstaluj zestaw Speech SDK dla środowiska deweloperskiego</a>.
+* Jeśli jest to pierwszy projekt Java (JRE), Skorzystaj z tego przewodnika, aby <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">utworzyć pusty przykładowy <span class="docon docon-navigate-external x-hidden-focus"> </span>projekt </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Zainstaluj zestaw Speech SDK dla środowiska <span class="docon docon-navigate-external x-hidden-focus"> </span>deweloperskiego </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Tworzenie aplikacji LUIS na potrzeby rozpoznawania intencji
 
@@ -96,7 +92,7 @@ Ważne jest, aby zwolnić zasoby mowy po ich zakończeniu. Wstaw ten kod na koń
 
 ## <a name="check-your-code"></a>Sprawdź swój kod
 
-W tym momencie kod powinien wyglądać następująco:  
+W tym momencie kod powinien wyglądać następująco:
 
 > [!NOTE]
 > Dodaliśmy Komentarze do tej wersji.
@@ -105,7 +101,7 @@ W tym momencie kod powinien wyglądać następująco:
 
 ## <a name="build-and-run-your-app"></a>Kompilowanie i uruchamianie aplikacji
 
-Naciśnij klawisz F11 lub wybierz kolejno pozycje **Uruchom** > **Debugowanie**.
+Naciśnij klawisz <kbd>F11</kbd>lub wybierz polecenie **Uruchom** > **Debuguj**.
 Następne 15 sekund mowy z mikrofonu zostanie rozpoznane i zarejestrowane w oknie konsoli.
 
 ## <a name="next-steps"></a>Następne kroki

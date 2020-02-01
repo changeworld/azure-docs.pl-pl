@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: 934c99c25ca37526ac31fd9bbaf58623fdbdf166
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 236f79c9060a0d6fdcb0f558373d02f32eba7abb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764398"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905608"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Zarządzane tożsamości w usłudze Azure HDInsight
 
@@ -45,6 +45,10 @@ Tożsamości zarządzane są używane w usłudze Azure HDInsight w wielu scenari
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [pakiet Enterprise Security](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Kafka Bring Your Own Key (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+
+## <a name="faq"></a>Często zadawane pytania
+### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Co się stanie, jeśli usuniesz tożsamość zarządzaną po utworzeniu klastra?
+Gdy wymagana jest tożsamość zarządzana, klaster będzie uruchamiał problemy. Obecnie nie ma możliwości aktualizacji lub zmiany zarządzania tożsamości po utworzeniu klastra. Zalecamy, aby upewnić się, że zarządzana tożsamość nie została usunięta podczas środowiska uruchomieniowego klastra. Alternatywnie można utworzyć ponownie klaster i przypisać nową tożsamość zarządzaną.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -4,16 +4,16 @@ description: Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCop
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371398"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905262"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy
 
@@ -21,7 +21,7 @@ AzCopy to narzędzie wiersza polecenia, które służy do kopiowania obiektów b
 
 > [!NOTE]
 > Jeśli szukasz zawartości ułatwiającej rozpoczęcie pracy z usługą AzCopy, zobacz dowolny z następujących artykułów:
-> - [Wprowadzenie do narzędzia AzCopy](storage-use-azcopy-v10.md)
+> - [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
 > - [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
 > - [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
 > - [Transferowanie danych za pomocą zasobników AzCopy i Amazon S3](storage-use-azcopy-s3.md)
@@ -41,6 +41,14 @@ Obecnie AzCopy nie obsługuje serwerów proxy, które wymagają uwierzytelniania
 ## <a name="optimize-performance"></a>Optymalizowanie wydajności
 
 Możesz przeprowadzić test wydajności, a następnie użyć poleceń i zmiennych środowiskowych, aby znaleźć optymalną kompromis między wydajnością i użyciem zasobów.
+
+Ta sekcja ułatwia wykonywanie następujących zadań optymalizacji:
+
+> [!div class="checklist"]
+> * Uruchamianie testów porównawczych
+> * Optymalizowanie przepływności
+> * Optymalizuj użycie pamięci 
+> * Optymalizowanie synchronizacji plików
 
 ### <a name="run-benchmark-tests"></a>Uruchamianie testów porównawczych
 
@@ -97,6 +105,14 @@ Ta wartość jest wyrażana w gigabajtach (GB).
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+### <a name="optimize-file-synchronization"></a>Optymalizowanie synchronizacji plików
+
+Polecenie [Sync](storage-ref-azcopy-sync.md) identyfikuje wszystkie pliki w miejscu docelowym, a następnie porównuje nazwy plików i ostatnio modyfikowane sygnatury czasowe przed rozpoczęciem operacji synchronizacji. W przypadku dużej liczby plików można poprawić wydajność, eliminując to przetwarzanie z góry. 
+
+Aby to osiągnąć, zamiast tego użyj polecenia [copy AzCopy](storage-ref-azcopy-copy.md) i Ustaw flagę `--overwrite`, aby `ifSourceNewer`. AzCopy będzie porównywać pliki, gdy są one kopiowane bez wykonywania żadnych skanów i porównań z góry. Zapewnia to krawędź wydajności w przypadkach, gdy istnieje duża liczba plików do porównania.
+
+Polecenie [copy AzCopy](storage-ref-azcopy-copy.md) nie usuwa plików z lokalizacji docelowej, dlatego jeśli chcesz usunąć pliki w miejscu docelowym, gdy nie istnieją już w źródle, użyj polecenia [Sync AzCopy](storage-ref-azcopy-sync.md) z flagą `--delete-destination` ustawioną na wartość `true` lub `prompt`. 
 
 ## <a name="troubleshoot-issues"></a>Rozwiązywanie problemów
 

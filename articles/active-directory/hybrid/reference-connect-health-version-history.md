@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,23 +16,23 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562339"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897041"
 ---
-# <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historia wersji
+# <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: historia wersji
 Zespół Azure Active Directory regularnie aktualizuje Azure AD Connect Health za pomocą nowych funkcji i funkcji. W tym artykule wymieniono wersje i funkcje, które zostały wydane.  
 
 > [!NOTE]
-> Agenci programu Connect Health są automatycznie aktualizowani po wydaniu nowej wersji. Upewnij się, że ustawienia autouaktualniania są włączone z Azure Portal. 
+> Agenci programu Connect Health są automatycznie aktualizowani po wydaniu nowej wersji. Upewnij się, że ustawienia autouaktualniania są włączone z Azure Portal.
 >
 
 Azure AD Connect Health synchronizacji jest zintegrowana z instalacją Azure AD Connect. Przeczytaj więcej na temat [historii wersji Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) , aby uzyskać informacje zwrotne dotyczące funkcji, zagłosuj na [kanale głosu użytkownika programu Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
-## <a name="july-2019"></a>Lipiec 2019
+## <a name="july-2019"></a>Lipiec 2019 r.
 **Aktualizacja agenta**
 * Agent Azure AD Connect Health dla AD FS (wersja 3.1.59.0) 
    1. Zmiana tekstu w TestWindowsTransport
@@ -47,18 +48,18 @@ Azure AD Connect Health synchronizacji jest zintegrowana z instalacją Azure AD 
    1. Rejestruj system operacyjny i informacje o programie .NET 
    2. Poprawki błędów
 
-## <a name="may-2019"></a>2019 maja
+## <a name="may-2019"></a>Maj 2019 r.
 **Aktualizacja agenta:** 
 * Agent Azure AD Connect Health dla AD FS (wersja 3.1.51.0) 
    1. Poprawka usterki do rozróżnienia między wieloma logowaniami, które współużytkują ten sam identyfikator żądania klienta.
    2. Poprawka usterki służąca do analizowania nieprawidłowych błędów nazwy użytkownika/hasła na serwerach zlokalizowanych w języku.   
 
-## <a name="april-2019"></a>Kwiecień 2019
+## <a name="april-2019"></a>Kwiecień 2019 r.
 **Aktualizacja agenta:** 
 * Agent Azure AD Connect Health dla AD FS (wersja 3.1.46.0) 
    1. Poprawka sprawdzania duplikatu procesu alertu SPN dla usług AD FS
 
-## <a name="march-2019"></a>Marzec 2019
+## <a name="march-2019"></a>Marzec 2019 r.
 **Aktualizacja agenta:** 
 * Agent Azure AD Connect Health dla AD DS (wersja 3.1.41.0)  
    1. Kolekcja wersji platformy .NET
@@ -72,7 +73,7 @@ Azure AD Connect Health synchronizacji jest zintegrowana z instalacją Azure AD 
    4. Poprawka błędu na zapobieganiu duplikowania wielu wystąpień agentów monitorowania
 
 
-## <a name="november-2018"></a>Listopad 2018
+## <a name="november-2018"></a>Listopad 2018 r.
 **Nowe funkcje w wersji ogólnie dostępnej:** 
 * Azure AD Connect Health do synchronizacji — diagnozowanie i korygowanie zduplikowanych błędów synchronizacji atrybutów z portalu
 
@@ -124,7 +125,7 @@ Azure AD Connect Health synchronizacji jest zintegrowana z instalacją Azure AD 
   2. Poprawki błędów i ogólne ulepszenia
 
 
-## <a name="march-2018"></a>Marca 2018 r.
+## <a name="march-2018"></a>Marzec 2018 r.
 **Nowe funkcje w wersji zapoznawczej:**
 * Azure AD Connect Health dla raportu i alertu AD FS dotyczącego ryzykownego adresu IP.
 

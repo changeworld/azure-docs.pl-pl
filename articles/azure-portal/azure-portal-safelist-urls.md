@@ -1,30 +1,33 @@
 ---
-title: Safelist adresy URL Azure Portal | Microsoft Docs
+title: Safelist adresy URL Azure Portal na zaporze lub serwerze proxy
 description: Dodaj te adresy URL do obejścia serwera proxy, aby komunikować się z Azure Portalą i jej usługami
 services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 09/13/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3f81d41bc6d8ce07ea4e7b11c7c48f9b68d70466
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310575"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900657"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist adresy URL Azure Portal na zaporze lub serwerze proxy
 
-Aby uzyskać dobrą wydajność i łączność między siecią lokalną lub rozległą i chmurą platformy Azure, należy skonfigurować lokalne urządzenia zabezpieczeń w celu obejścia ograniczeń zabezpieczeń dla adresów URL Azure Portal. Administratorzy sieci często wdrażają serwery proxy, zapory lub inne urządzenia, aby pomóc w zabezpieczeniu i zapewnić kontrolę nad sposobem uzyskiwania dostępu do Internetu przez użytkowników. Jednak reguły mające na celu ochronę użytkowników mogą czasami blokować lub spowalniać słuszny ruch internetowy związany z działalnością, w tym z komunikacją między użytkownikami i platformą Azure. Aby zoptymalizować łączność między siecią a Azure Portal i jej usługami, zalecamy dodanie Azure Portal adresów URL do safelist.
+Lokalne urządzenia zabezpieczeń można skonfigurować w celu obejścia ograniczeń zabezpieczeń dla adresów URL Azure Portal. Ta konfiguracja może zwiększyć wydajność i łączność między siecią lokalną lub rozległą a chmurą platformy Azure.
+
+Administratorzy sieci często wdrażają serwery proxy, zapory lub inne urządzenia. Te urządzenia pomagają zabezpieczyć i zapewnić kontrolę nad tym, jak użytkownicy uzyskują dostęp do Internetu. Reguły służące do ochrony użytkowników mogą czasami blokować lub spowalniać słuszny ruch internetowy związany z firmą. Ten ruch obejmuje komunikację między ty i platformą Azure. Aby zoptymalizować łączność między siecią a Azure Portal i jej usługami, zalecamy dodanie Azure Portal adresów URL do safelist.
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>Adresy URL Azure Portal dla obejścia serwera proxy
 
-Punkty końcowe URL Safelist dla Azure Portal są specyficzne dla chmury platformy Azure, w której wdrożono organizację. Wybierz chmurę, a następnie Dodaj listę adresów URL do serwera proxy lub zapory, aby zezwolić na ruch sieciowy do tych punktów końcowych w celu obejścia ograniczeń.
+Punkty końcowe URL Safelist dla Azure Portal są specyficzne dla chmury platformy Azure, w której wdrożono organizację. Aby zezwolić na ruch sieciowy do tych punktów końcowych w celu obejścia ograniczeń, wybierz chmurę. Następnie Dodaj listę adresów URL do serwera proxy lub zapory.
 
 #### <a name="public-cloudtabpublic-cloud"></a>[Chmura publiczna](#tab/public-cloud)
+
 ```
 *.aadcdn.microsoftonline-p.com
 *.aka.ms
@@ -48,6 +51,7 @@ Punkty końcowe URL Safelist dla Azure Portal są specyficzne dla chmury platfor
 ```
 
 #### <a name="us-government-cloudtabus-government-cloud"></a>[Chmura dla instytucji rządowych USA](#tab/us-government-cloud)
+
 ```
 *.azure.us
 *.loganalytics.us
@@ -60,6 +64,7 @@ Punkty końcowe URL Safelist dla Azure Portal są specyficzne dla chmury platfor
 ```
 
 #### <a name="china-government-cloudtabchina-government-cloud"></a>[Chmura dla instytucji rządowych](#tab/china-government-cloud)
+
 ```
 *.azure.cn
 *.microsoft.cn

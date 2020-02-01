@@ -1,21 +1,21 @@
 ---
-title: Eksportowanie lub usuwanie ustawień Azure Portal | Microsoft Docs
+title: Eksportuj lub Usuń ustawienia Azure Portal
 description: Dowiedz się, jak eksportować lub usuwać ustawienia użytkownika, prywatne pulpity nawigacyjne i ustawienia niestandardowe w Azure Portal.
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
-ms.date: 04/08/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: mblythe
-ms.openlocfilehash: f033af37985077f4d8df9d541b55764df0c75eda
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640180"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900761"
 ---
 # <a name="export-or-delete-user-settings"></a>Eksportowanie i usuwanie ustawień użytkownika
 
@@ -31,29 +31,27 @@ Dobrym pomysłem jest wyeksportowanie i przejrzenie ustawień przed ich usunięc
 
 ## <a name="export-or-delete-your-portal-settings"></a>Eksportowanie lub usuwanie ustawień portalu
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
-2. W nagłówku portalu wybierz pozycję **Ustawienia**.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
-    ![Zrzut ekranu pokazujący koła zębate ustawień portalu](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
+1. W nagłówku portalu wybierz ikonę ustawień ![ustawienia](media/azure-portal-export-delete-settings/settings-icon.png) **Ustawienia**.
 
-3. Wybierz opcję **Eksportuj wszystkie ustawienia** lub **Usuń wszystkie ustawienia i prywatne pulpity nawigacyjne**.
+1. Wybierz opcję **Eksportuj wszystkie ustawienia** lub **Usuń wszystkie ustawienia i prywatne pulpity nawigacyjne**.
 
-    ![Zrzut ekranu pokazujący ustawienia eksportowania i usuwania portalu](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![Opcje Azure Portal ustawień i ustawień](media/azure-portal-export-delete-settings/azure-portal-settings-with-export-delete.png)
 
       W poniższej tabeli opisano te akcje.
 
       | Działanie | Opis |
       | --- | --- |
-      | **Eksportuj wszystkie ustawienia** | Tworzy plik JSON, który zawiera ustawienia użytkownika, takie jak motyw kolorów, Ulubione i prywatne pulpity nawigacyjne.|
+      | **Eksportuj wszystkie ustawienia** | Tworzy plik *JSON* , który zawiera ustawienia użytkownika, takie jak motyw kolorów, Ulubione i prywatne pulpity nawigacyjne.|
       | **Usuń wszystkie ustawienia i prywatne pulpity nawigacyjne** | Usuwa wszystkie linki do prywatnych pulpitów nawigacyjnych i innych ustawień niestandardowych, które zostały wprowadzone do portalu. |
 
 > [!NOTE]
-> Ze względu na dynamiczny charakter ustawień użytkownika i ryzyko uszkodzenia danych nie można importować ustawień z pliku JSON.
+> Ze względu na dynamiczny charakter ustawień użytkownika i ryzyko uszkodzenia danych nie można importować ustawień z pliku *JSON* .
 >
 >
-
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Tworzenie i udostępnianie pulpitów nawigacyjnych platformy Azure](azure-portal-dashboard-share-access.md)
-* [Dodawanie, usuwanie i sortowanie ulubionych](azure-portal-add-remove-sort-favorites.md)
+* [Udostępnianie pulpitów nawigacyjnych platformy Azure przy użyciu Access Control opartej na rolach](azure-portal-dashboard-share-access.md)
+* [Dodawanie, usuwanie i zmiana rozmieszczenia ulubionych](azure-portal-add-remove-sort-favorites.md)

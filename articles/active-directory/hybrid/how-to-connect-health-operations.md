@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: daveba
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57bc60cab7e6980f7051af6fc4685bd2a426f4ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ef908429d359020282920d73480a472bfde0aa60
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422415"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897157"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Operacje Azure Active Directory Connect Health
 W tym temacie opisano różne operacje, które można wykonać za pomocą programu Azure Active Directory (Azure AD) Connect Health.
@@ -73,7 +74,7 @@ Azure AD Connect Health dla Active Directory Federation Services (AD FS) i Azure
 2. W bloku **serwer** na pasku akcji kliknij pozycję **Usuń**.
 ![zrzut ekranu Azure AD Connect Health usuwania serwera](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Potwierdź, wpisując nazwę serwera w polu potwierdzenia.
-4. Kliknij polecenie **Usuń**.
+4. Kliknij pozycję **Usuń**.
 
 Azure AD Connect Health Azure Active Directory Domain Services:
 
@@ -81,7 +82,7 @@ Azure AD Connect Health Azure Active Directory Domain Services:
 2. Wybierz kontroler domeny, który ma zostać usunięty.
 3. Na pasku akcji kliknij pozycję **Usuń zaznaczone**.
 4. Potwierdź akcję, aby usunąć serwer.
-5. Kliknij polecenie **Usuń**.
+5. Kliknij pozycję **Usuń**.
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Usuwanie wystąpienia usługi z usługi Azure AD Connect Health
 W niektórych przypadkach może być konieczne usunięcie wystąpienia usługi. Oto, co musisz wiedzieć, aby usunąć wystąpienie usługi z usługi Azure AD Connect Health.
@@ -98,7 +99,7 @@ Podczas usuwania wystąpienia usługi należy pamiętać o następujących kwest
 2. W bloku **Usługa** na pasku akcji kliknij pozycję **Usuń**. 
 ![zrzut ekranu Azure AD Connect Health usuwania usługi](./media/how-to-connect-health-operations/DeleteServer.png)
 3. Potwierdź, wpisując nazwę usługi w polu potwierdzenia (na przykład: sts.contoso.com).
-4. Kliknij polecenie **Usuń**.
+4. Kliknij pozycję **Usuń**.
    <br><br>
 
 [//]: # (Sekcja początkowa kontroli RBAC)

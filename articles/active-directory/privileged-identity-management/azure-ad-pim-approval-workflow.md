@@ -7,21 +7,21 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.subservice: pim
 ms.date: 11/12/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05e69bad41391be5153eca0fb1930ffc59da453b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8bc4b518cd2400cf3826b31a590d499c1ad031e7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429941"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896535"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Zatwierdzanie lub odrzucanie żądań dla ról usługi Azure AD w Privileged Identity Management
 
@@ -40,11 +40,11 @@ Wykonaj kroki opisane w tym artykule, aby zatwierdzić lub odrzucić żądania d
 
 # <a name="previous-versiontabprevious"></a>[Poprzednia wersja](#tab/previous)
 
-## <a name="view-pending-requests"></a>Wyświetlanie oczekujących żądań
+## <a name="view-pending-requests"></a>Wyświetl oczekujące żądania
 
 W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, gdy żądanie roli usługi Azure AD oczekuje na zatwierdzenie. Te oczekujące żądania można wyświetlić w Privileged Identity Management.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
@@ -66,7 +66,7 @@ W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, g
 
     ![Zatwierdź okienko wybrane żądania z przyczyną zatwierdzenia](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. Kliknij polecenie **Zatwierdź**.
+1. Kliknij przycisk **Zatwierdź**.
 
     Symbol stanu zostanie zaktualizowany przy użyciu zatwierdzenia.
 
@@ -88,11 +88,11 @@ W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, g
 
 # <a name="new-versiontabnew"></a>[Nowa wersja](#tab/new)
 
-## <a name="view-pending-requests"></a>Wyświetlanie oczekujących żądań
+## <a name="view-pending-requests"></a>Wyświetl oczekujące żądania
 
 W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, gdy żądanie roli zasobu platformy Azure oczekuje na zatwierdzenie. Te oczekujące żądania można wyświetlić w Privileged Identity Management.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 

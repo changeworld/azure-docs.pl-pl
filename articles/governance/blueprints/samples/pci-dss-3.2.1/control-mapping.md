@@ -1,14 +1,14 @@
 ---
 title: Przykładowe kontrolki planu PCI-DSS v 3.2.1
 description: Sterowanie mapowaniem z przykładowej strategii branżowej Data Security Standard v 3.2.1 do Azure Policy i RBAC.
-ms.date: 06/24/2019
+ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 38db59a7f0b93e2c87b3c7acdfbcc2b8cbd11489
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: db21ac9d628e777b6ff2cc86516cfb1497f5a62f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546566"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905634"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu PCI-DSS v 3.2.1
 
@@ -30,7 +30,7 @@ Ten plan ułatwia zarządzanie sieciami i sterowanie nimi przez przypisanie [Azu
 
 Ten plan pomaga wymuszać zasady przy użyciu kontrolek cryptograph, przypisując definicje [Azure Policy](../../../policy/overview.md) , które wymuszają określone kontrolki cryptograph i inspekcji używają słabych ustawień kryptograficznych. Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną konfigurację kryptograficzną, może pomóc w podejmowaniu działań naprawczych w celu zapewnienia, że zasoby są skonfigurowane zgodnie z zasadami zabezpieczeń informacji. W szczególnych przypadkach zasady przypisane przez ten plan wymagają przezroczystego szyfrowania danych w bazach danych SQL; Inspekcja braku szyfrowania na kontach magazynu i zmiennych konta usługi Automation. Istnieją również zasady, które umożliwiają przeprowadzenie inspekcji niezabezpieczonych połączeń z kontami magazynu, aplikacjami funkcji, WebApp, API Apps i Redis Cache i Przeprowadź inspekcję niezaszyfrowanej komunikacji Service Fabric.
 
-- aplikacja funkcji powinna być dostępna tylko za pośrednictwem protokołu HTTPS
+- Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS
 - Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS
 - Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS
 - Należy włączyć Transparent Data Encryption baz danych SQL
@@ -54,7 +54,7 @@ Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacyjnego 
 - Luki w zabezpieczeniach baz danych SQL należy skorygować
 - Usterki należy skorygować przez rozwiązanie do oceny luk w zabezpieczeniach
 
-## <a name="711-712-and-713-separation-of-duties"></a>ppkt. 7.1.2 i 7.1.3 separacja obowiązków
+## <a name="711-712-and-713-separation-of-duties"></a>7.1.1. 7.1.2 i 7.1.3 separacja obowiązków
 
 Posiadanie tylko jednego właściciela subskrypcji platformy Azure nie pozwala na nadmiarowość administracyjną. Bez względu na to, że zbyt wielu właścicieli subskrypcji platformy Azure może zwiększyć prawdopodobieństwo naruszenia za pośrednictwem konta właściciela z naruszeniem. Ten plan pomaga zachować odpowiednią liczbę właścicieli subskrypcji platformy Azure, przypisując definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję liczby właścicieli subskrypcji platformy Azure. Zarządzanie uprawnieniami właściciela subskrypcji może pomóc w zaimplementowaniu odpowiedniego rozdzielenia obowiązków.
 

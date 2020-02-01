@@ -11,12 +11,12 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 917a698840850182d2d41ef780ba01d948e11c2f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122461"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896370"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji Azure SQL Data Warehouse
 
@@ -38,6 +38,7 @@ Użyj wskazanej wersji, aby potwierdzić, która wersja została zastosowana do 
 | --- | --- |
 |**Metryki portal zarządzania obciążenia (wersja zapoznawcza)**|Dzięki wykorzystaniu [izolacji obciążeń](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) w przypadku wersji zapoznawczej w tej ostatniej październiku użytkownicy mogą utworzyć własne [grupy obciążeń](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) w celu wydajnego zarządzania zasobami systemu i upewnić się, że umowy SLA biznesowe są spełnione.  W ramach ogólnych ulepszeń [zarządzania obciążeniami](/azure/sql-data-warehouse/sql-data-warehouse-workload-management) dla usługi Azure Synapse Analytics dostępne są nowe [metryki monitorowania zarządzania obciążeniami](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) .</br> </br> Monitorowanie obciążenia ma teraz więcej szczegółowych informacji o następujących metrykach: </br> — Procent zasobu zakończenia  </br> -Efektywny minimalny procent zasobów </br> — Aktywne zapytania grupy obciążenia </br> -Alokacja grupy obciążeń według maksymalnego procentu zasobów </br> -Alokacja grup obciążeń według procentu systemu </br> -Limity czasu zapytania grupy obciążeń </br> — Zakolejkowane zapytania grupy obciążenia </br></br> Te metryki służą do identyfikowania [wąskich gardeł grup obciążeń](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck) lub grup obciążeń, które są skonfigurowane z [izolacją niewykorzystywanego obciążenia](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation).  Te metryki mogą być używane w witrynie Azure Portal, które umożliwiają dzielenie według grupy obciążeń.  Przefiltruj i przypnij ulubione wykresy do pulpitu nawigacyjnego, aby szybko uzyskać dostęp do szczegółowych informacji.|
 |**Metryki monitorowania portalu**| Następujące metryki zostały dodane do portalu w celu monitorowania ogólnej aktywności zapytania: </br> -Aktywne zapytania </br> — Kolejkowane zapytania </br> </br>Te metryki są opisane wraz z istniejącymi metrykami w [dokumentacji monitorowania użycia zasobów i działania zapytań](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity).|
+|**Nazwa produktu**|Do czerwca 2020 Nazwa produktu zwracana przez polecenie SELECT @@VERSION zmieni się z Microsoft Azure SQL Data Warehouse na Azure Synapse Analytics. Harmonogram zostanie opublikowany w informacjach o wersji. Ta zmiana jest odpowiednia dla klientów, którzy analizują nazwę produktu z wyniku SELECT @@VERSION w kodzie aplikacji. Aby uniknąć zmian w kodzie aplikacji ze względu na oznaczenie produktu, Użyj tych poleceń do zapytania SERVERPROPERTY dla nazwy i wersji produktu bazy danych. </br> Aby zwrócić numer wersji XX programu DW. X. XXXXX. X (bez nazwy produktu) Użyj tego polecenia: SELECT SERVERPROPERTY ("ProductVersion") </br> Aby zwrócić wersję aparatu, użyj tego polecenia, które zwraca 6 dla usługi Azure Synapse Analytics (dawniej SQL Data Warehouse): SELECT SERVERPROPERTY (EngineEdition ')|
 
 ## <a name="october-2019"></a>Październik 2019 r.
 

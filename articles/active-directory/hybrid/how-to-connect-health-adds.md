@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 19e3cf15-f150-46a3-a10c-2990702cd700
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,15 +16,15 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73f30f4f16ad879468a424d6e5cbe81e68b7c33d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e27287a414a2a4edef3e9090b7d91beb1c70f554
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350686"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897321"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Używanie programu Azure AD Connect Health z usługami AD DS
-Poniższa dokumentacja dotyczy monitorowania Usług domenowych Active Directory przy użyciu programu Azure AD Connect Health. Obsługiwane wersje usług AD DS to: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 i Windows Server 2016.
+Poniższa dokumentacja dotyczy monitorowania Usług domenowych Active Directory przy użyciu programu Azure AD Connect Health. Obsługiwane wersje usługi AD DS: Windows Server 2008 R2, Windows Server 2012,Windows Server 2012 R2 i Windows Server 2016.
 
 Aby uzyskać więcej informacji na temat monitorowania usług AD FS za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD FS](how-to-connect-health-adfs.md). Ponadto, aby uzyskać informacje na temat monitorowania programu Azure AD Connect (synchronizacja) za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health w celu synchronizacji](how-to-connect-health-sync.md).
 

@@ -5,23 +5,23 @@ author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: cd3db902d713910de5a8199df85089d62569f9d7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757568"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906633"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>Samouczek: hostowanie statycznej witryny sieci Web na Blob Storage
 
-Niniejszy samouczek jest pierwszą częścią serii. Dzięki niemu dowiesz się, w jaki sposób utworzyć i wdrożyć statyczną witrynę internetową w usłudze Azure Storage. Po zakończeniu będzie gotowa statyczna witryna internetowa, do której użytkownicy będą mieli publiczny dostęp. 
+W tym samouczku dowiesz się, jak skompilować i wdrożyć statyczną witrynę sieci Web w usłudze Azure Storage. Po zakończeniu będzie gotowa statyczna witryna internetowa, do której użytkownicy będą mieli publiczny dostęp. 
 
-Część pierwsza serii zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie hostowania statycznej witryny internetowej
@@ -57,7 +57,7 @@ Pierwszym krokiem jest skonfigurowanie konta magazynu na potrzeby hostowania sta
 1. Wybierz pozycję **Włączone**, aby umożliwić hostowanie statycznej witryny internetowej na koncie magazynu.
 1. W polu **Nazwa dokumentu indeksu** określ domyślną stronę indeksu *index.html*. Gdy użytkownik przejdzie do głównego elementu statycznej witryny internetowej, wyświetlona zostanie domyślna strona indeksu.  
 1. W polu **Ścieżka dokumentu błędu** określ domyślną stronę błędu *404. html*. Gdy użytkownik spróbuje przejść do strony, która nie istnieje w statycznej witrynie internetowej, wyświetlona zostanie domyślna strona błędu.
-1. Kliknij przycisk **Save** (Zapisz). W witrynie Azure Portal jest teraz wyświetlany punkt końcowy statycznej witryny internetowej. 
+1. Kliknij pozycję **Zapisz**. W witrynie Azure Portal jest teraz wyświetlany punkt końcowy statycznej witryny internetowej. 
 
     ![Włączanie hostowania statycznej witryny internetowej na koncie magazynu](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -99,9 +99,9 @@ Pomyślnie ukończono pracę z samouczkiem i wdrożono statyczną witrynę inter
 
 ## <a name="next-steps"></a>Następne kroki
 
-W części pierwszej tego samouczka pokazano, jak skonfigurować konto usługi Azure Storage w celu hostowania statycznej witryny internetowej, oraz jak utworzyć i wdrożyć statyczną witrynę internetową w punkcie końcowym platformy Azure.
+W tym samouczku przedstawiono sposób konfigurowania konta usługi Azure Storage na potrzeby hostingu statycznej witryny sieci Web oraz tworzenia i wdrażania statycznej witryny sieci Web w punkcie końcowym platformy Azure.
 
-Przejdź teraz do części drugiej, w której pokazane zostanie konfigurowanie domeny niestandardowej z protokołem SSL dla statycznej witryny internetowej w usłudze Azure CDN.
+Następnie Dowiedz się, jak skonfigurować domenę niestandardową przy użyciu statycznej witryny sieci Web.
 
 > [!div class="nextstepaction"]
-> [Korzystanie z usługi Azure CDN w celu włączenia domeny niestandardowej dla statycznej witryny internetowej](storage-blob-static-website-custom-domain.md)
+> [Mapowanie domeny niestandardowej na punkt końcowy usługi Azure Blob Storage](storage-custom-domain-name.md)

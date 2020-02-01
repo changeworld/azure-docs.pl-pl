@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abed56ee64cbca8646c1aa1d24fea292aa4d8de3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60245413"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897212"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Monitorowanie synchronizacji usługi Azure AD Connect za pomocą programu Azure AD Connect Health
 Poniższa dokumentacja dotyczy monitorowania programu Azure AD Connect (synchronizacja) przy użyciu programu Azure AD Connect Health.  Aby uzyskać informacje na temat monitorowania usług AD FS za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD FS](how-to-connect-health-adfs.md). Ponadto, aby uzyskać informacje na temat monitorowania Usług domenowych Active Directory za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD DS](how-to-connect-health-adds.md).
@@ -69,7 +70,7 @@ Ta funkcja dostarcza raport o błędach synchronizacji, które mogą wystąpić 
 * Raport ten dotyczy błędów zarejestrowanych przez klienta synchronizacji (program Azure AD Connect w wersji 1.1.281.0 lub nowszej)
 * Zawiera on błędy, które wystąpiły podczas ostatniej operacji synchronizacji na aparacie synchronizacji. (Pozycja „Eksportuj” w programie Azure AD Connector).
 * Aby raport zawierał najnowsze dane, agent programu Azure AD Connect Health do celów synchronizacji musi mieć połączenie wychodzące z wymaganymi punktami końcowymi.
-* Raport jest **aktualizowany co 30 minut** przy użyciu danych przekazanych przez agenta programu Azure AD Connect Health do celów synchronizacji. Oferuje on następujące kluczowe funkcje
+* Raport jest **aktualizowany co 30 minut** przy użyciu danych przekazywanych przez Azure AD Connect Health agenta do synchronizacji. Oferuje następujące kluczowe możliwości
 
   * Kategoryzacja błędów
   * Lista obiektów z błędami według kategorii
@@ -80,7 +81,7 @@ Ta funkcja dostarcza raport o błędach synchronizacji, które mogą wystąpić 
 ### <a name="categorization-of-errors"></a>Kategoryzacja błędów
 W raporcie istniejące błędy synchronizacji są klasyfikowane według następujących kategorii:
 
-| Category | Opis |
+| Kategoria | Opis |
 | --- | --- |
 | Zduplikowany atrybut |Błędy, które występują, gdy program Azure AD Connect próbuje utworzyć lub zaktualizować obiekty ze zduplikowanymi wartościami jednego lub kilku atrybutów w usłudze Azure AD, które muszą być unikatowe w dzierżawie, na przykład proxyAddresses lub UserPrincipalName. |
 | Niezgodność danych |Błędy niepowodzenia miękkiego dopasowania obiektów, które powodują błędy synchronizacji. |

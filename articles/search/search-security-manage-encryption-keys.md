@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945720"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899950"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie zawartości w usłudze Azure Wyszukiwanie poznawcze przy użyciu kluczy zarządzanych przez klienta w programie Azure Key Vault
 
@@ -26,13 +26,13 @@ Szyfrowanie przy użyciu kluczy zarządzanych przez klienta jest konfigurowane n
 Klucze nie wszystkie muszą znajdować się w tym samym Key Vault. Pojedyncza usługa wyszukiwania może obsługiwać wiele szyfrowanych indeksów lub synonimów mapowanych na własne, zarządzane przez klienta klucze szyfrowania przechowywane w różnych magazynach kluczy.  Można również mieć indeksy i mapy synonimów w tej samej usłudze, które nie są szyfrowane przy użyciu kluczy zarządzanych przez klienta. 
 
 > [!IMPORTANT] 
-> Ta funkcja jest dostępna w [interfejsie API REST w wersji 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) i [.net SDK wersja 8,0-Preview](search-dotnet-sdk-migration-version-9.md). Obecnie nie jest obsługiwane Konfigurowanie kluczy szyfrowania zarządzanych przez klienta w Azure Portal.
+> Ta funkcja jest dostępna w [interfejsie API REST w wersji 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) i [.net SDK wersja 8,0-Preview](search-dotnet-sdk-migration-version-9.md). Obecnie nie jest obsługiwane Konfigurowanie kluczy szyfrowania zarządzanych przez klienta w Azure Portal. Usługę wyszukiwania należy utworzyć po styczniu 2019 i nie może być to bezpłatna (współdzielona) usługa.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W tym przykładzie są używane następujące usługi. 
 
-+ [Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. Usługę wyszukiwania należy utworzyć po styczniu 2019 i nie może być to bezpłatna (współdzielona) usługa.
++ [Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. 
 
 + [Utwórz zasób Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) lub Znajdź istniejący magazyn w ramach subskrypcji.
 

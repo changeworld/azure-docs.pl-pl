@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: c295e6c8ffea564e157545c4662cbe7e1841edae
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f3448765eecf4a586e13155903f1c093607781dc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841016"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896447"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Samouczek: rejestrowanie przepływu ruchu sieciowego do i z maszyny wirtualnej przy użyciu witryny Azure Portal
 
@@ -97,10 +97,7 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
     | Lokalizacja       | Wybierz pozycję **Wschodnie stany USA**                                           |
     | Grupa zasobów | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
 
-    Tworzenie konta usługi Storage może potrwać około minuty. Nie wykonuj pozostałych kroków, dopóki konto usługi Storage nie zostanie utworzone. Jeśli zamiast tworzyć nowe konto usługi Storage używasz istniejącego konta, upewnij się, że wybierasz konto usługi Storage, które ma pozycję **Wszystkie sieci** (ustawienie domyślne) wybraną dla pozycji **Zapory i sieci wirtualne** w obszarze **USTAWIENIA** na koncie usługi Storage. We wszystkich przypadkach konto magazynu musi znajdować się w tym samym regionie co sieciowej grupy zabezpieczeń.
-
-    > [!NOTE]
-    > Firma Microsoft. Insights i Microsoft. Network Providers są obecnie obsługiwani jako zaufane usługi firmy Microsoft dla usługi Azure Storage, jednak dzienniki przepływu sieciowej grupy zabezpieczeń nie są w pełni dołączane. Aby włączyć rejestrowanie przepływu sieciowej grupy zabezpieczeń, **wszystkie sieci** muszą być nadal wybierane, dopóki ta funkcja nie zostanie w pełni dołączona. 
+    Tworzenie konta usługi Storage może potrwać około minuty. Nie wykonuj pozostałych kroków, dopóki konto usługi Storage nie zostanie utworzone. We wszystkich przypadkach konto magazynu musi znajdować się w tym samym regionie co sieciowej grupy zabezpieczeń.
 4. W lewym górnym rogu portalu wybierz pozycję **Wszystkie usługi**. W polu **Filtr** wpisz ciąg *Network Watcher*. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
 5. W obszarze **DZIENNIKI** wybierz pozycję **Dzienniki przepływu sieciowej grupy zabezpieczeń**, jak pokazano na poniższej ilustracji:
 
@@ -114,9 +111,7 @@ Rejestrowanie przepływu sieciowej grupy zabezpieczeń wymaga dostawcy **Microso
 
 9. Wybierz konto usługi Storage utworzone w kroku 3.
    > [!NOTE]
-   > Dzienniki przepływu sieciowej grupy zabezpieczeń nie działają w przypadku kont magazynu, jeśli:
-   > * Na kontach magazynu jest włączona Zapora.
-   > * Konta magazynu mają włączoną [hierarchiczną przestrzeń nazw](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
+   > Dzienniki przepływu sieciowej grupy zabezpieczeń nie działają w przypadku kont magazynu, które mają włączoną [hierarchiczną przestrzeń nazw](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
 1. W lewym górnym rogu portalu wybierz pozycję **Wszystkie usługi**. W polu **Filtr** wpisz ciąg *Network Watcher*. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
 10. Ustaw pozycję **Przechowywanie (dni)** na 5, a następnie wybierz pozycję **Zapisz**.
 

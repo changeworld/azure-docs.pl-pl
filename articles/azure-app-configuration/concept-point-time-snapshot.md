@@ -2,17 +2,17 @@
 title: Migawka punktu w czasie dla usługi Azure App Configuration
 description: Omówienie działania migawki punktu w czasie w usłudze Azure App Configuration
 services: azure-app-configuration
-author: yegu-ms
-ms.author: yegu
+author: lisaguthrie
+ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/24/2019
-ms.openlocfilehash: 4db52ce1897aa5a2b809cb7044b9764baffd0767
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 4a352ba913b6ad4e3c8607677078e21070f294fd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495261"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899591"
 ---
 # <a name="point-in-time-snapshot"></a>Migawka punktu w czasie
 

@@ -1,5 +1,5 @@
 ---
-title: Przewodnik programowania .NET — Azure Event Hubs | Microsoft Docs
+title: Przewodnik programowania .NET — Azure Event Hubs (starsza wersja) | Microsoft Docs
 description: Ten artykuł zawiera informacje na temat sposobu pisanie kodu dla usługi Azure Event Hubs przy użyciu zestawu Azure .NET SDK.
 services: event-hubs
 documentationcenter: na
@@ -7,17 +7,21 @@ author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: c2e23c38abbec5fd0e6010bdfc0feca882a6180d
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: afd466e0266cf2d95f95eb8536943f5856c26a58
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309831"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899908"
 ---
-# <a name="net-programming-guide-for-azure-event-hubs"></a>Przewodnik programowania .NET dla platformy Azure Event Hubs
+# <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Przewodnik programowania .NET dla platformy Azure Event Hubs (starszy pakiet Microsoft. Azure. EventHubs)
 W tym artykule omówiono kilka typowych scenariuszy, w pisaniu kodu za pomocą usługi Azure Event Hubs. Przyjęto założenie, że wstępnie znasz i rozumiesz usługę Event Hubs. Omówienie koncepcji usługi Event Hubs można znaleźć w temacie [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md).
+
+> [!WARNING]
+> Ten przewodnik jest przeznaczony dla starego pakietu **Microsoft. Azure. EventHubs** . Zalecamy [Migrowanie](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md) kodu do korzystania z najnowszego pakietu [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) .  
+
 
 ## <a name="event-publishers"></a>Wydawcy zdarzeń
 
@@ -25,7 +29,7 @@ Wysyła zdarzenia do Centrum zdarzeń za pomocą metody POST protokołu HTTP lub
 
 W przypadku używania zarządzanych interfejsów API platformy .NET głównymi konstrukcjami na potrzeby publikowania danych w usłudze Event Hubs są klasy [EventHubClient][] i [EventData][]. [EventHubClient][] udostępnia kanał komunikacji protokołu AMQP, przez który zdarzenia są wysyłane do Centrum zdarzeń. [EventData][] klasa reprezentuje zdarzenie i jest używana do publikowania komunikatów do Centrum zdarzeń. Ta klasa obejmuje treść, niektóre metadane (właściwości) i informacje nagłówka (SystemProperties) dotyczące zdarzenia. Inne właściwości są dodawane do [EventData][] przechodzi on przez Centrum zdarzeń.
 
-## <a name="get-started"></a>Rozpoczęcie pracy
+## <a name="get-started"></a>Rozpocznij
 .NET klasy, które obsługują usługi Event Hubs znajdują się w [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) pakietu NuGet. Można to zrobić za pomocą Eksploratora rozwiązania Visual Studio lub [Konsola Menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) w programie Visual Studio. Aby to zrobić, należy wydać następujące polecenie w oknie [konsoli menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console):
 
 ```shell
@@ -58,7 +62,7 @@ Wysyłanie zdarzeń do Centrum zdarzeń, tworząc [EventHubClient][] wystąpieni
 
 ## <a name="event-serialization"></a>Serializacja zdarzeń
 
-[EventData][] klasa ma [dwie przeciążone konstruktory](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) , które wymagają różnych parametrów, bajtów lub tablicą bajtów reprezentujących ładunku danych zdarzenia. W przypadku używania formatu JSON z klasą [EventData][] można użyć funkcji **Encoding.UTF8.GetBytes()** do pobrania tablicy bajtowej dla ciągu zakodowanego w formacie JSON. Na przykład:
+[EventData][] klasa ma [dwie przeciążone konstruktory](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) , które wymagają różnych parametrów, bajtów lub tablicą bajtów reprezentujących ładunku danych zdarzenia. W przypadku używania formatu JSON z klasą [EventData][] można użyć funkcji **Encoding.UTF8.GetBytes()** do pobrania tablicy bajtowej dla ciągu zakodowanego w formacie JSON. Przykład:
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -110,10 +114,10 @@ Aby używać klasy [EventProcessorHost][], można zaimplementować interfejs [IE
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-Aby rozpocząć przetwarzanie zdarzeń, utworzyć [EventProcessorHost][], podając odpowiednie parametry Centrum zdarzeń. Na przykład:
+Aby rozpocząć przetwarzanie zdarzeń, utworzyć [EventProcessorHost][], podając odpowiednie parametry Centrum zdarzeń. Przykład:
 
 > [!NOTE]
-> Klasy eventprocessorhost i powiązane klasy są dostępne w pakiecie **Microsoft. Azure. EventHubs. Processor** . Dodaj pakiet do projektu programu Visual Studio, wykonując instrukcje podane w [tym artykule](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) lub wykonując następujące polecenie w oknie [konsola Menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) :`Install-Package Microsoft.Azure.EventHubs.Processor`.
+> Klasy eventprocessorhost i powiązane klasy są dostępne w pakiecie **Microsoft. Azure. EventHubs. Processor** . Dodaj pakiet do projektu programu Visual Studio, wykonując instrukcje podane w [tym artykule](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) lub wykonując następujące polecenie w oknie [konsola menedżera pakietów](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) :`Install-Package Microsoft.Azure.EventHubs.Processor`.
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(
@@ -147,7 +151,7 @@ Oprócz zaawansowanych funkcji w czasie wykonywania hosta procesora zdarzeń us�
 
 Aby uzyskać więcej informacji o odwołaniu wydawcy i sposobie wysyłania zdarzeń do usługi Event Hubs jako wydawca, zobacz przykład [Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Bezpieczne publikowanie na dużą skalę w usłudze Event Hubs).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej o scenariuszach usługi Event Hubs, skorzystaj z następujących linków:
 

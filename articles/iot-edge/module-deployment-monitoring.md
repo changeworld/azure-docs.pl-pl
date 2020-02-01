@@ -4,16 +4,16 @@ description: Umożliwia automatyczne wdrożenia w usłudze Azure IoT Edge Zarzą
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/12/2019
+ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 406830add1891a058e9b43fccb8435aa4d339ed0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8aaac6100ba980301ff3e85a3ac3959bfee89b49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548683"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895968"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Omówienie automatycznego wdrożenia usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali
 
@@ -61,7 +61,7 @@ Warunek docelowy jest stale oceniany przez cały okres istnienia wdrożenia. Uwz
 
 Na przykład istnieje wdrożenie z tagami warunku docelowego. Environment = "prod". Gdy wdrożenie jest rozpoczynane, istnieją 10 urządzeń w środowisku produkcyjnym. Moduły zostali pomyślnie zainstalowani na tych urządzeniach 10. Stan agenta IoT Edge przedstawia 10 wszystkich urządzeń, 10 udanych odpowiedzi, 0 odpowiedzi na błędy i 0 oczekujących odpowiedzi. Teraz możesz dodać pięć więcej urządzeń za pomocą tags.environment = "prod". Usługa wykrywa zmianę i stan agenta IoT Edge stanie się 15 łączna liczba urządzeń, 10 udanych odpowiedzi, 0 odpowiedzi na błędy i 5 odpowiedzi oczekujących podczas wdrażania na pięć nowych urządzeń.
 
-Użyj dowolnego warunku typu Boolean na tagów bliźniaczych reprezentacji urządzenia lub identyfikator urządzenia, aby wybrać urządzenia docelowe. Jeśli chcesz użyć warunku przy użyciu tagów, musisz dodać "tags":{} sekcji w bliźniaczej reprezentacji urządzenia, w tym samym poziomie jako właściwości. [Dowiedz się więcej na temat tagów w bliźniaczej reprezentacji urządzenia](../iot-hub/iot-hub-devguide-device-twins.md)
+Aby wybrać urządzenia docelowe, użyj dowolnego warunku logicznego dla tagów sznurka urządzenia, zgłaszanych właściwości lub urządzenia deviceId. Jeśli chcesz użyć warunku przy użyciu tagów, musisz dodać "tags":{} sekcji w bliźniaczej reprezentacji urządzenia, w tym samym poziomie jako właściwości. [Dowiedz się więcej na temat tagów w bliźniaczej reprezentacji urządzenia](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Przykłady warunków docelowych:
 
@@ -70,10 +70,11 @@ Przykłady warunków docelowych:
 * Tags.Environment = 'prod' AND tags.location = 'westus'
 * Tags.Environment = 'prod' OR tags.location = 'westus'
 * Tags.operator = "Jan" i tags.environment = 'prod' nie deviceId = "linuxprod1"
+* Properties. devicemodel = "4000x"
 
-Poniżej przedstawiono niektóre ogranicza podczas konstruowania warunek docelowy:
+Te ograniczenia należy wziąć pod uwagę podczas konstruowania warunku docelowego:
 
-* W bliźniaczej reprezentacji urządzenia można utworzyć tylko za pomocą znaczników lub deviceId warunek docelowy.
+* W przypadku sznurka urządzenia można utworzyć warunek docelowy tylko przy użyciu tagów, raportowanych właściwości lub deviceId.
 * Podwójny cudzysłów nie jest dozwolone w dowolnej części warunek docelowy. Należy używać cudzysłowów.
 * Apostrofy reprezentują wartości warunek docelowy. W związku z tym jeśli jest ona częścią nazwy urządzenia musi znak ucieczki pojedynczy cudzysłów za pomocą innego pojedynczy cudzysłów. Na przykład, aby urządzenie docelowe o nazwie `operator'sDevice`, zapis `deviceId='operator''sDevice'`.
 * Cyfry, litery i następujące znaki są dozwolone w wartości warunku docelowego: `-:.+%_#*?!(),=@;$`.
@@ -92,8 +93,8 @@ Domyślnie wszystkie wdrożenia są raportowane według czterech metryk:
 
 * Element **docelowy** przedstawia IoT Edge urządzeń, które pasują do warunku określania wartości docelowej wdrożenia.
 * **Dotyczy** IoT Edge to urządzeń, które nie są objęte innymi wdrożeniami o wyższym priorytecie.
-* **Raportowanie sukcesu** przedstawia urządzenia IoT Edge, które zostały zgłoszone z powrotem do usługi, że moduły zostały pomyślnie wdrożone.
-* **Raportowanie błędów** przedstawia IoT Edge urządzeń, które zostały zgłoszone z powrotem do usługi, która nie została pomyślnie wdrożona co najmniej jeden moduł. Aby dokładniej zbadać błąd, łączyć się zdalnie z tych urządzeń i wyświetlić pliki dziennika.
+* **Raportowanie sukcesu** zawiera IoT Edge urządzeń, które zgłosiły, że moduły zostały pomyślnie wdrożone.
+* **Raportowanie błędów** przedstawia IoT Edge urządzeń, które zgłosiły, że co najmniej jeden moduł nie został pomyślnie wdrożony. Aby dokładniej zbadać błąd, łączyć się zdalnie z tych urządzeń i wyświetlić pliki dziennika.
 
 Ponadto można definiować własne metryki niestandardowe w celu ułatwienia monitorowania wdrożenia i zarządzania nim.
 
@@ -112,7 +113,7 @@ Wdrożenia warstwowe to automatyczne wdrożenia, które można łączyć ze sob�
 
 Wdrożenia warstwowe mają takie same składniki podstawowe jak dowolne wdrożenie automatyczne. Są one urządzeniami docelowymi w oparciu o Tagi w urządzeniu bliźniaczych reprezentacji i oferują te same funkcje wokół etykiet, metryk i raportów o stanie. Wdrożenia warstwowe mają przypisane priorytety, ale zamiast korzystać z priorytetu w celu ustalenia, które wdrożenie jest stosowane do urządzenia, priorytet określa, jak wiele wdrożeń jest uporządkowanych na urządzeniu. Na przykład jeśli dwa wdrożenia warstwowe mają moduł lub trasę o tej samej nazwie, wdrożenie warstwowe o wyższym priorytecie zostanie zastosowane, gdy dolny priorytet zostanie zastąpiony.
 
-Moduły uruchomieniowe systemu, edgeAgent i edgeHub nie są skonfigurowane jako część wdrożenia warstwowego. Każde urządzenie IoT Edge objęte wdrożeniem warstwowym wymaga standardowego wdrożenia automatycznego stosowanego do niego w pierwszej kolejności, aby zapewnić bazę, na podstawie której można dodać wdrożenia warstwowe.
+Moduły uruchomieniowe systemu, edgeAgent i edgeHub nie są skonfigurowane jako część wdrożenia warstwowego. Każde urządzenie IoT Edge objęte wdrożeniem warstwowym wymaga najpierw standardowego wdrożenia automatycznego. Wdrożenie automatyczne zapewnia podstawę, w której można dodawać wdrożenia warstwowe.
 
 Urządzenie IoT Edge może zastosować jedno i tylko jedno standardowe wdrożenie automatyczne, ale może stosować wiele wdrożeń automatycznych z warstwami. Wszystkie wdrożenia warstwowe ukierunkowane na urządzenie muszą mieć wyższy priorytet niż wdrożenie automatyczne dla tego urządzenia.
 
@@ -141,7 +142,7 @@ Na przykład w standardowym wdrożeniu można dodać moduł symulowanego czujnik
 }
 ```
 
-W przypadku wdrożenia warstwowego przeznaczonego na te same urządzenia lub podzestawu tych samych urządzeń warto dodać dodatkową właściwość, która informuje symulowany czujnik o wysłanie komunikatów 1000, a następnie zatrzymanie. Nie chcesz zastąpić istniejących właściwości, więc Utwórz nową sekcję w ramach żądanych właściwości o nazwie `layeredProperties`, która zawiera nową właściwość:
+W przypadku wdrożenia warstwowego, które jest przeznaczone dla niektórych lub wszystkich urządzeń, można dodać właściwość informującą, że czujnik symulowany wysyła komunikaty 1000, a następnie zatrzymuje. Nie chcesz zastąpić istniejących właściwości, więc Utwórz nową sekcję w ramach żądanych właściwości o nazwie `layeredProperties`, która zawiera nową właściwość:
 
 ```json
 "SimulatedTemperatureSensor": {
