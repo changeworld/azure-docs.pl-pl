@@ -130,6 +130,9 @@
     - name: Zagadnienia dotyczące wydajności
       href: functions-best-practices.md
       displayName: best practice
+    - name: Zagadnienia dotyczące magazynu
+      href: storage-considerations.md
+      displayName: 'encryption, keys'
     - name: Serwery proxy usługi Functions
       href: functions-proxies.md
     - name: Opcje sieci
