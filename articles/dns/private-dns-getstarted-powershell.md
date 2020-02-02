@@ -2,17 +2,17 @@
 title: Szybki Start — tworzenie prywatnej strefy DNS platformy Azure przy użyciu Azure PowerShell
 description: W tym artykule opisano tworzenie i testowanie prywatnej strefy i rekordu DNS w Azure DNS. W tym szczegółowym przewodniku pokazano, jak po raz pierwszy utworzyć strefę prywatną i rekord DNS przy użyciu programu Azure PowerShell oraz zarządzać nimi.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 5532eb9897de2f746b194fb6bd496548e989b994
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 0db53bcd6516bd52e2796deaa49fe0dd582e0588
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210818"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939388"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Szybki Start: Tworzenie prywatnej strefy DNS platformy Azure przy użyciu Azure PowerShell
 
@@ -20,7 +20,7 @@ W tym artykule przedstawiono kroki umożliwiające utworzenie po raz pierwszy pr
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby opublikować prywatną strefę DNS w sieci wirtualnej, musisz określić listę sieci wirtualnych, które mogą rozpoznawać rekordy w strefie.  Są one nazywane *połączonymi* sieciami wirtualnymi. Gdy Autorejestracja jest włączona, Azure DNS aktualizuje także rekordy strefy za każdym razem, gdy maszyna wirtualna jest tworzona, zmienia jej adres IP lub został usunięty.
+Strefa DNS służy do hostowania rekordów systemu DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby opublikować prywatną strefę DNS w sieci wirtualnej, musisz określić listę sieci wirtualnych, które mogą rozpoznawać rekordy w strefie.  Są one nazywane *połączonymi* sieciami wirtualnymi. Gdy Autorejestracja jest włączona, Azure DNS aktualizuje także rekordy strefy za każdym razem, gdy maszyna wirtualna jest tworzona, zmienia jej adres IP lub został usunięty.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -208,4 +208,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Scenariusze usługi Azure DNS Private Zone](private-dns-scenarios.md)
+> [Scenariusze Azure DNS Private Zones](private-dns-scenarios.md)

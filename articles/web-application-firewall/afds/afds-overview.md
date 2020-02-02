@@ -5,20 +5,22 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 11/23/2019
+ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: b646035f6a952f679059abab86d94179f447f9ff
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 925b859de28b8878412ee99402ffd727edcc4e7c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406210"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934725"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Zapora aplikacji sieci Web platformy Azure na platformie Azure
 
-Zapora aplikacji sieci Web platformy Azure (WAF) na platformie Azure front-drzwi zapewnia scentralizowaną ochronę aplikacji sieci Web, które są globalnie dostarczane przy użyciu usług frontonu platformy Azure. Jest ona zaprojektowana i obsługiwana tak, aby chronić Twoje usługi internetowe przed typowymi lukami w zabezpieczeniach oraz zapewnić wysoką dostępność usług dla użytkowników i pomóc w spełnieniu wymogów dotyczących zgodności.
+Zapora aplikacji sieci Web platformy Azure (WAF) na platformie Azure front-drzwi zapewnia scentralizowaną ochronę aplikacji sieci Web. WAF obrony usług sieci Web przed typowymi programami wykorzystującymi luki w zabezpieczeniach. Zapewnia ona wysoką dostępność usługi dla użytkowników i pomaga spełnić wymagania dotyczące zgodności.
 
-WAF na wierzchu drzwi to globalne i scentralizowane rozwiązanie. Jest ona wdrażana w lokalizacjach brzegowych sieci platformy Azure na całym świecie i każde żądanie przychodzące dla aplikacji sieci Web obsługującej WAF, dostarczone przez tylne drzwi, jest sprawdzane na granicy sieci. Pozwala to WAF zapobieganiu złośliwych ataków blisko źródeł ataków przed wprowadzeniem ich do sieci wirtualnej i oferuje globalną ochronę na dużą skalę bez utraty wydajności. Zasady WAFymi można łatwo połączyć z dowolnym profilem drzwi do przodu w ramach subskrypcji. w ciągu kilku minut można wdrożyć nowe reguły, co pozwala szybko reagować na zmiany wzorców zagrożeń.
+WAF na wierzchu drzwi to globalne i scentralizowane rozwiązanie. Jest ona wdrażana w lokalizacjach brzegowych sieci platformy Azure na całym świecie. WAF włączone aplikacje sieci Web sprawdzają każde żądanie przychodzące dostarczone przez tylne drzwi na granicy sieci. 
+
+WAF zapobiega złośliwym atakom blisko źródeł ataków przed wprowadzeniem do sieci wirtualnej. Na dużą skalę możesz uzyskać ochronę globalną, bez obniżania wydajności. Zasady WAF łatwo łączą się z dowolnym profilem drzwi do przodu w ramach subskrypcji. Nowe reguły można wdrożyć w ciągu kilku minut, dzięki czemu można szybko reagować na zmiany wzorców zagrożeń.
 
 ![Zapora aplikacji sieci Web platformy Azure](../media/overview/wafoverview.png)
 
@@ -32,17 +34,17 @@ Można skonfigurować zasady WAF i skojarzyć te zasady z co najmniej jednym fro
 
 Gdy obie są obecne, reguły niestandardowe są przetwarzane przed przetworzeniem reguł w zarządzanym zestawie reguł. Reguła zawiera warunek dopasowania, priorytet i akcję. Obsługiwane typy akcji to: Zezwalaj, Blokuj, Rejestruj i Przekieruj. Można utworzyć w pełni dostosowane zasady spełniające określone wymagania dotyczące ochrony aplikacji przez połączenie reguł zarządzanych i niestandardowych.
 
-Reguły w ramach zasad są przetwarzane w kolejności priorytetów, w której priorytet jest unikatową liczbą całkowitą, która definiuje kolejność przetwarzania reguł. Mniejsza wartość całkowita oznacza wyższy priorytet i są oceniane przed regułami o wyższej wartości całkowitej. Po dopasowaniu reguły odpowiednia akcja zdefiniowana w regule zostanie zastosowana do żądania. Gdy takie dopasowanie zostanie przetworzone, reguły o niższych priorytetach nie są przetwarzane więcej.
+Reguły w ramach zasad są przetwarzane w kolejności priorytetów. Priorytet jest unikatową liczbą całkowitą, która definiuje kolejność reguł do przetworzenia. Mniejsza wartość całkowita oznacza wyższy priorytet, a reguły są oceniane przed regułami o wyższej wartości całkowitej. Po dopasowaniu reguły odpowiednia akcja zdefiniowana w regule zostanie zastosowana do żądania. Gdy takie dopasowanie zostanie przetworzone, reguły o niższych priorytetach nie są przetwarzane więcej.
 
-Aplikacja sieci Web dostarczana przez tylne drzwi może mieć tylko jedną zasadę WAFą skojarzoną z nim jednocześnie. Istnieje jednak możliwość skonfigurowania drzwi z przodu bez żadnych skojarzonych z nimi zasad WAF. Jeśli zasady WAF są obecne, zostaną zreplikowane do wszystkich naszych lokalizacji brzegowych, aby zapewnić spójność zasad zabezpieczeń na całym świecie.
+Aplikacja sieci Web dostarczana przez tylne drzwi może mieć tylko jedną zasadę WAFą skojarzoną z nim jednocześnie. Istnieje jednak możliwość skonfigurowania drzwi z przodu bez żadnych skojarzonych z nimi zasad WAF. Jeśli zasady WAF są obecne, są replikowane do wszystkich naszych lokalizacji brzegowych w celu zapewnienia spójnych zasad zabezpieczeń na całym świecie.
 
 ## <a name="waf-modes"></a>Tryby WAF
 
 Zasady WAF można skonfigurować tak, aby były uruchamiane w następujących dwóch trybach:
 
-- **Tryb wykrywania:** Po uruchomieniu w trybie wykrywania usługa WAF nie przyjmuje żadnych innych akcji innych niż monitory i rejestruje żądanie i zgodną regułę WAF z dziennikami WAF. Można włączyć diagnostykę rejestrowania dla drzwi zewnętrznych (w przypadku korzystania z portalu można to osiągnąć, przechodząc do sekcji **Diagnostyka** w Azure Portal).
+- **Tryb wykrywania:** Po uruchomieniu w trybie wykrywania WAF nie przyjmuje żadnych innych akcji innych niż monitory i rejestruje żądanie i dopasowaną regułę WAF do dzienników WAF. Można włączyć diagnostykę rejestrowania dla drzwi z przodu. W przypadku korzystania z portalu przejdź do sekcji **Diagnostyka** .
 
-- **Tryb zapobiegania:** Gdy program jest skonfigurowany do uruchamiania w trybie zapobiegania, WAF wykonuje określoną akcję, jeśli żądanie jest zgodne z regułą i jeśli zostanie znalezione dopasowanie, nie są oceniane dalsze reguły o niższym priorytecie. Wszystkie dopasowane żądania są również rejestrowane w dziennikach WAF.
+- **Tryb zapobiegania:** W trybie zapobiegania WAF wykonuje określoną akcję, jeśli żądanie jest zgodne z regułą. W przypadku znalezienia dopasowania nie są oceniane dalsze reguły o niższym priorytecie. Wszystkie dopasowane żądania są również rejestrowane w dziennikach WAF.
 
 ## <a name="waf-actions"></a>Akcje WAF
 
@@ -61,17 +63,17 @@ Zasady WAFymi mogą składać się z dwóch typów reguł zabezpieczeń — nies
 
 Niestandardowe reguły WAF można skonfigurować w następujący sposób:
 
-- **Lista dozwolonych adresów IP i lista zablokowanych:** Można skonfigurować reguły niestandardowe, aby kontrolować dostęp do aplikacji sieci Web na podstawie listy adresów IP klientów lub zakresów adresów IP. Obsługiwane są zarówno typy adresów IPv4, jak i IPv6. Tę listę można skonfigurować do blokowania lub zezwalania na te żądania, w przypadku których źródłowy adres IP jest zgodny z adresem IP na liście.
+- **Lista dozwolonych adresów IP i lista zablokowanych:** Możesz kontrolować dostęp do aplikacji sieci Web na podstawie listy adresów IP klientów lub zakresów adresów IP. Obsługiwane są zarówno typy adresów IPv4, jak i IPv6. Tę listę można skonfigurować do blokowania lub zezwalania na te żądania, w przypadku których źródłowy adres IP jest zgodny z adresem IP na liście.
 
-- **Kontrola dostępu oparta na geograficznym:** Można skonfigurować reguły niestandardowe, aby kontrolować dostęp do aplikacji sieci Web w oparciu o kod kraju skojarzony z adresem IP klienta.
+- **Kontrola dostępu oparta na geograficznym:** Możesz kontrolować dostęp do aplikacji sieci Web w oparciu o kod kraju skojarzony z adresem IP klienta.
 
-- **Kontrola dostępu oparta na parametrach http:** Można skonfigurować niestandardowe reguły na podstawie ciągów, które pasują do parametrów żądania HTTP/HTTPS, takich jak ciągi zapytań, argumenty POST, identyfikator URI żądania, nagłówek żądania i treść żądania.
+- **Kontrola dostępu oparta na parametrach http:** W parametrach żądania HTTP/HTTPS można oprzeć reguły dotyczące dopasowania ciągu.  Na przykład ciągi zapytań, POST args, identyfikator URI żądania, nagłówek żądania i treść żądania.
 
-- **Zażądaj kontroli dostępu opartej na metodzie:** Reguły niestandardowe można skonfigurować na podstawie metody żądania HTTP żądania, takiej jak GET, PUT lub szef.
+- **Zażądaj kontroli dostępu opartej na metodzie:** Reguły oparte na metodzie żądania HTTP. Na przykład GET, PUT lub szef.
 
-- **Ograniczenie rozmiaru:** Można skonfigurować niestandardowe reguły na podstawie długości określonych części żądania, takich jak ciąg zapytania, identyfikator URI lub treść żądania.
+- **Ograniczenie rozmiaru:** Można oprzeć reguły dotyczące długości określonych części żądania, takich jak ciąg zapytania, identyfikator URI lub treść żądania.
 
-- **Reguły ograniczania szybkości:** Reguła kontroli częstotliwości polega na ograniczeniu nietypowego natężenia ruchu z dowolnego adresu IP klienta. W czasie trwania jednej minuty można skonfigurować próg liczby żądań sieci Web dozwolonych przez adres IP klienta. Jest to odrębne względem reguły typu "Zezwól/Blokuj" na podstawie listy adresów IP, która zezwala na wszystkie żądania z adresu IP klienta lub blokuje je. Ograniczanie szybkości może być połączone z dodatkowymi warunkami dopasowania, takimi jak parametry HTTP (S) pasujące do kontroli stopnia szczegółowości.
+- **Reguły ograniczania szybkości:** Reguła kontroli częstotliwości polega na ograniczeniu nietypowego natężenia ruchu z dowolnego adresu IP klienta. W czasie trwania jednej minuty można skonfigurować próg liczby żądań sieci Web dozwolonych przez adres IP klienta. Ta reguła jest odrębna od reguły typu "Zezwól/Blokuj" na podstawie listy adresów IP, która zezwala na wszystkie żądania z adresu IP klienta lub blokuje je. Limity szybkości można łączyć z dodatkowymi warunkami dopasowania, takimi jak parametry protokołu HTTP (S), aby uzyskać szczegółowy formant kontroli szybkości.
 
 ### <a name="azure-managed-rule-sets"></a>Zestawy reguł zarządzane przez platformę Azure
 
@@ -87,14 +89,24 @@ Zestawy reguł zarządzane przez platformę Azure zapewniają łatwy sposób wdr
 - Ochrona przed atakami polegającymi na iniekcji SQL
 - Atakujący protokołu
 
-Numer wersji domyślnego zestawu reguł zostanie zwiększony, gdy nowe podpisy ataków zostaną dodane do zestawu reguł.
-Domyślny zestaw reguł jest domyślnie włączony w trybie wykrywania w zasadach WAF. Można wyłączyć lub włączyć poszczególne reguły w ramach domyślnego zestawu reguł, aby spełniały wymagania aplikacji. Można również ustawić określone akcje (Zezwalaj/Blokuj/REDIRECT/LOG) dla każdej reguły. Domyślną akcją jest blokowanie. Ponadto reguły niestandardowe można skonfigurować w ramach tych samych zasad WAF, jeśli chcesz pominąć wszystkie wstępnie skonfigurowane reguły w domyślnym zestawie reguł.
-Reguły niestandardowe są zawsze stosowane przed oceną reguł w domyślnym zestawie reguł. Jeśli żądanie jest zgodne z regułą niestandardową, stosowana jest odpowiednia akcja reguły, a żądanie jest blokowane lub przenoszone przez program do zaplecza bez wywołania dalszych reguł niestandardowych lub reguł w zestawie reguł domyślnych. Ponadto istnieje możliwość usunięcia domyślnego zestawu reguł z zasad WAFymi.
+Numer wersji zestawu reguł domyślnych jest zwiększany, gdy do zestawu reguł są dodawane nowe podpisy ataków.
+Domyślny zestaw reguł jest domyślnie włączony w trybie wykrywania w zasadach WAF. Można wyłączyć lub włączyć poszczególne reguły w ramach domyślnego zestawu reguł, aby spełniały wymagania aplikacji. Można również ustawić określone akcje (Zezwalaj/Blokuj/REDIRECT/LOG) dla każdej reguły.
 
+Domyślną akcją jest blokowanie. Ponadto reguły niestandardowe można skonfigurować w tych samych zasadach WAF, jeśli chcesz pominąć wszystkie wstępnie skonfigurowane reguły w domyślnym zestawie reguł.
+
+Reguły niestandardowe są zawsze stosowane przed oceną reguł w domyślnym zestawie reguł. Jeśli żądanie jest zgodne z regułą niestandardową, zostanie zastosowana odpowiednia akcja reguły. Żądanie jest blokowane lub przenoszone do zaplecza. Nie są przetwarzane żadne inne reguły niestandardowe lub reguły w domyślnym zestawie reguł. Można również usunąć domyślny zestaw reguł z zasad WAFymi.
 
 ### <a name="bot-protection-rule-set-preview"></a>Zestaw reguł ochrony bot (wersja zapoznawcza)
 
-Zarządzany zestaw reguł ochrony bot można włączyć dla WAF, aby wykonywał niestandardowe akcje na żądaniach ze znanych kategorii bot. Istnieją trzy kategorie bot: zła botów, dobry botów i nieznany botów. Podpisy bot są zarządzane i dynamicznie aktualizowane przez platformę WAF. Złośliwe adresy IP dla nieprawidłowych botów są źródłem ze źródła analizy zagrożeń firmy Microsoft. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) zapewnia program Microsoft Threat Intelligence i jest używany przez wiele usług, w tym Azure Security Center. Dobre botów obejmują sprawdzone aparaty wyszukiwania. Nieznane kategorie obejmują dodatkowe grupy bot. Można ustawić akcje niestandardowe w celu blokowania, zezwalania, rejestrowania lub przekierowywania dla różnych typów botów.
+Można włączyć zarządzaną regułę ochrony bot, aby podejmować niestandardowe akcje na żądaniach ze znanych kategorii bot. 
+
+Obsługiwane są trzy kategorie bot: złe, dobre i nieznane. Podpisy bot są zarządzane i dynamicznie aktualizowane przez platformę WAF.
+
+Złe botów obejmują botów ze złośliwych adresów IP i botów, które miały sfałszowane tożsamości. Złośliwe adresy IP są źródłem ze źródła analizy zagrożeń firmy Microsoft i aktualizowane co godzinę. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) zapewnia program Microsoft Threat Intelligence i jest używany przez wiele usług, w tym Azure Security Center.
+
+Dobre botów obejmują sprawdzone aparaty wyszukiwania. Nieznane kategorie obejmują dodatkowe grupy bot, które zostały zidentyfikowane jako botów. Na przykład Analizator rynku, narzędzia do pobierania kanałów informacyjnych i agenci zbierania danych. 
+
+Nieznane botów są klasyfikowane przez opublikowanych agentów użytkownika bez dodatkowej weryfikacji. Można ustawić akcje niestandardowe w celu blokowania, zezwalania, rejestrowania lub przekierowywania dla różnych typów botów.
 
 ![Zestaw reguł ochrony bot](../media/afds-overview/botprotect2.png)
 
@@ -105,7 +117,7 @@ Jeśli ochrona bot jest włączona, przychodzące żądania zgodne z regułami b
 
 ## <a name="configuration"></a>Konfigurowanie
 
-Konfigurowanie i wdrażanie wszystkich typów reguł WAF jest w pełni obsługiwane przy użyciu Azure Portal, interfejsów API REST, szablonów Azure Resource Manager i Azure PowerShell.
+Można skonfigurować i wdrożyć wszystkie typy reguł WAF za pomocą Azure Portal, interfejsów API REST, szablonów Azure Resource Manager i Azure PowerShell.
 
 ## <a name="monitoring"></a>Monitorowanie
 

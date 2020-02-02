@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5f3a8fa7b9619958db1d7213236e27d00b417c54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261881"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939113"
 ---
 # <a name="what-is-azure-sentinel"></a>Co to jest usługa Azure Sentinel?
 
@@ -37,17 +37,17 @@ Azure — wskaźnikowy to Twój Widok z oczami w całym przedsiębiorstwie, zmni
 
 - **Szybko reaguj na zdarzenia** dzięki wbudowanej aranżacji i automatyzacji typowych zadań.
 
-
 ![Podstawowe możliwości platformy Azure wskaźnikowego](./media/overview/core-capabilities.png)
 
 Kompilowanie w całym zakresie istniejących usług platformy Azure obejmuje natywne, udokumentowane fundacje, takie jak Log Analytics i Logic Apps. Platforma Azure wskaźnikowa wzbogaca badanie i wykrywanie przy użyciu AI oraz zapewnia strumień analizy zagrożeń firmy Microsoft i umożliwia korzystanie z własnej analizy zagrożeń. 
 
- 
 ## <a name="connect-to-all-your-data"></a>Połącz ze wszystkimi danymi
 
 Aby przejść do tablicy wskaźnikowej platformy Azure, musisz najpierw [nawiązać połączenie ze źródłami zabezpieczeń](connect-data-sources.md). Wskaźnik platformy Azure obejmuje wiele łączników dla rozwiązań firmy Microsoft, dostępnych poza platformą i zapewniania integracji w czasie rzeczywistym, w tym rozwiązań firmy Microsoft do ochrony przed zagrożeniami, a także źródeł Microsoft 365, takich jak Office 365, Azure AD, Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto istnieją wbudowane łączniki do szerszego ekosystemu zabezpieczeń dla rozwiązań firm innych niż Microsoft. Możesz również użyć typowego formatu zdarzeń, dziennika systemowego lub REST-API, aby połączyć źródła danych z systemem Azure.  
 
 ![Moduły zbierające dane](./media/collect-data/collect-data-page.png)
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="workbooks"></a>Skoroszyty
 

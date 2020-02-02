@@ -1,6 +1,6 @@
 ---
 title: Szybki start na platformie Azure — uruchamianie zadania usługi Batch — interfejs wiersza polecenia
-description: Szybko naucz się uruchamiać zadanie usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure.
+description: Szybko naucz się uruchamiać zadanie usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure. Tworzenie zasobów platformy Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 900bafd5b27fcb5021e9dae2a6bbc13d4e233a45
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 73dc180b905dd8a7e2f0d2b09666e91cced771fb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029476"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932255"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure
 

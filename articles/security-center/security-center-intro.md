@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558634"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939436"
 ---
 # <a name="what-is-azure-security-center"></a>Co to jest Azure Security Center?
 
@@ -42,6 +42,8 @@ Aby sprostać tym wyzwaniom, Security Center oferuje narzędzia umożliwiające:
 -   **Ochrona przed zagrożeniami**: Security Center ocenia obciążenia i wywołuje zalecenia zapobiegania zagrożeniom oraz alerty dotyczące wykrywania zagrożeń.
 
 -   **Szybsza ochrona**: w Security Center wszystko jest wykonywane w szybkości chmury. Dzięki natywnej integracji wdrożenie usługi Security Center jest łatwe i zapewnia automatyczne aprowizowanie i ochronę w ramach usług platformy Azure.
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="architecture"></a>Architektura
 

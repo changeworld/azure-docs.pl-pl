@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75425096"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931403"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotażowa aprowizacja w chmurze dla istniejącego zsynchronizowanego lasu usługi AD 
 
@@ -68,7 +68,8 @@ Synchronizacja Azure AD Connect synchronizuje zmiany występujące w katalogu lo
 
     **Nazwa:** Nadaj regule nazwę zrozumiałą<br>
     **Opis:** Dodaj opis istotny<br> 
-    **połączony system:** wybierz łącznik usługi AD, dla którego piszesz regułę synchronizacji niestandardowej<br>
+    
+    **Połączony system:** Wybierz łącznik usługi AD, dla którego chcesz napisać regułę synchronizacji niestandardowej<br>
     **Typ połączonego obiektu systemowego:** Użytkownicy<br>
     **Typ obiektu metaverse:** Sprzedawca<br>
     **Typ łącza:** Złącza<br>

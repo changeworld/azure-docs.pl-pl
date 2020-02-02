@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: azure-app-configuration
-author: yegu
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: include
-ms.date: 12/04/2019
-ms.author: yegu
+ms.date: 1/31/2020
+ms.author: lcozzens
 ms.custom: include file
-ms.openlocfilehash: 711b807372404815e5ba57b95def91429a1925dc
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 3eb77799b1845112e9f7e5ca0b65d790625fd529
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875450"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961497"
 ---
 Jeśli planujesz przejść do następnego samouczka, Zachowaj zasoby utworzone w tym przewodniku Szybki Start, aby można było użyć ich ponownie.
 

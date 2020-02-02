@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/06/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 5515951a9bde596935f4c603ffd9e088f74dee45
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c98e67d174c3c8b7fc426e1dd2c5ebafd6760969
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615165"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932605"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -24,6 +24,8 @@ Klaster usługi AKS możesz utworzyć w witrynie Azure Portal, przy użyciu wier
 Aby uzyskać więcej informacji na temat Kubernetes, zobacz [podstawowe pojęcia dotyczące Kubernetes dla AKS][concepts-clusters-workloads].
 
 Aby rozpocząć pracę, Wypełnij AKS przewodnika Szybki Start [w Azure Portal][aks-portal] lub [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-cli].
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="access-security-and-monitoring"></a>Dostęp, zabezpieczenia i monitorowanie
 

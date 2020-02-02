@@ -7,12 +7,12 @@ keywords: azure automation, DSC, powershell, konfiguracja żądanego stanu, zarz
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421947"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930397"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Wprowadzenie do usługi Azure Automation
 
@@ -75,6 +75,8 @@ Usługa Azure Automation zarządza cyklem życia Twojej infrastruktury i aplikac
 * **Monitorowanie** — identyfikowanie zmian w maszynach, które są przyczyną problemów i korygowanie lub eskalowanie do systemów zarządzania.
 * **Ochrona** — poddawanie maszyn wirtualnych kwarantannie w przypadku wystąpienia alertu zabezpieczeń. Ustaw wymagania dotyczące gościa.
 * **Zarządzanie** — konfigurowanie kontroli dostępu opartej na rolach dla zespołów. Odzyskaj nieużywane zasoby.
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="pricing-for-automation"></a>Cennik usługi Automation
 

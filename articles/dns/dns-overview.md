@@ -1,19 +1,19 @@
 ---
-title: Co to jest system DNS platformy Azure?
+title: Co to jest usługa System DNS Azure?
 description: Omówienie usługi hostingu DNS na platformie Microsoft Azure. Hostuj swoją domenę na platformie Microsoft Azure.
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
-ms.author: allensu
-ms.openlocfilehash: 6abdc48187950d9605bdc47b1c5d4f00e4e181f0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211328"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932403"
 ---
-# <a name="what-is-azure-dns"></a>Co to jest system DNS platformy Azure?
+# <a name="what-is-azure-dns"></a>Co to jest usługa System DNS Azure?
 
 Azure DNS to usługa hostingowa przeznaczona dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury platformy Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
 
@@ -25,7 +25,7 @@ W usłudze Azure DNS są dostępne poniższe funkcje.
 
 W usłudze Azure DNS domeny DNS są hostowane w globalnej sieci serwerów nazw DNS na platformie Azure. W usłudze Azure DNS jest stosowana emisja dowolna. Każde zapytanie DNS jest obsługiwane przez najbliższy dostępny serwer DNS, co zapewnia szybkie działanie i wysoką dostępność domeny.
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="security"></a>Zabezpieczenia
 
  Usługa Azure DNS jest oparta na usłudze Azure Resource Manager, która zapewnia następujące funkcje:
 
@@ -41,7 +41,7 @@ Aby uzyskać więcej informacji, zobacz [How to protect DNS zones and records (J
 
 Azure DNS obecnie nie obsługuje rozszerzeń DNSSEC. W większości przypadków można ograniczyć potrzebę stosowania rozszerzeń DNSSEC przez spójne użycie protokołu HTTPS/TLS w aplikacjach. Jeśli rozszerzenia DNSSEC mają krytyczne znaczenie dla stref DNS, można hostować te strefy z dostawcami hostingu DNS innych firm.
 
-## <a name="ease-of-use"></a>Łatwość obsługi
+## <a name="ease-of-use"></a>Prostota użytkowania
 
  Usługa Azure DNS umożliwia zarządzanie rekordami DNS dla platformy Azure oraz obsługę DNS dla zasobów zewnętrznych. Usługa Azure DNS jest zintegrowana z witryną Azure Portal i są w niej używane te same poświadczenia, umowy na obsługę techniczną oraz rozliczenia, co w pozostałych usługach platformy Azure. 
 

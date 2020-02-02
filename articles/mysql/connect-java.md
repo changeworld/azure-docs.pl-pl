@@ -8,29 +8,33 @@ ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 12/02/2019
-ms.openlocfilehash: 5f463434261dd782bb180f55986cc0f05c71cbe9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 18a61c215f6c10bb399beaa83ec53ad2ebc62970
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770751"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938985"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Szybki Start: używanie języka Java do nawiązywania połączenia i wykonywania zapytań dotyczących danych w Azure Database for MySQL
 
-Ten przewodnik Szybki Start przedstawia sposób nawiązywania połączeń z Azure Database for MySQL przy użyciu aplikacji Java oraz [łącznika MariaDB/J](https://mariadb.com/kb/en/library/mariadb-connector-j/)sterownika JDBC. Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W tym artykule założono, że wiesz już, jak opracowywać zawartość za pomocą języka Java, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
+W tym przewodniku szybki start nawiążesz połączenie z Azure Database for MySQL przy użyciu aplikacji Java oraz łącznika MariaDB/J sterownika JDBC. Następnie można używać instrukcji SQL do wykonywania zapytań, wstawiania, aktualizowania i usuwania danych w bazie danych z platform Mac, Ubuntu Linux i Windows. 
+
+W tym temacie założono, że znasz już Programowanie przy użyciu języka Java, ale dopiero zaczynasz pracę z Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Ten przewodnik Szybki start jako punktu wyjścia używa zasobów utworzonych w jednym z tych przewodników:
-   - [Tworzenie serwera usługi Azure Database for MySQL za pomocą witryny Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
-   - [Tworzenie serwera usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-2. Upewnić się, że zabezpieczenia połączeń usługi Azure Database for MySQL zostały skonfigurowane z otwartą zaporą i ustawieniami protokołu SSL dostosowanymi na potrzeby pomyślnego łączenia aplikacji.
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Serwer Azure Database for MySQL. [Utwórz serwer Azure Database for MySQL przy użyciu Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) lub [Utwórz serwer Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure](quickstart-create-mysql-server-database-using-azure-cli.md).
+- Zabezpieczenia połączeń Azure Database for MySQL są konfigurowane przy użyciu skonfigurowanych dla aplikacji ustawień zapory i połączeń SSL.
 
-3. Uzyskaj łącznik MariaDB/J Connector przy użyciu jednej z następujących metod:
+## <a name="obtain-the-mariadb-connector"></a>Uzyskaj łącznik MariaDB
+
+Uzyskaj łącznik [MariaDB/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) Connector przy użyciu jednej z następujących metod:
    - Użyj Maven pakietu [MariaDB-Java-Client](https://search.maven.org/search?q=a:mariadb-java-client) , aby dołączyć [zależność klienta MariaDB-Java](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) do pliku pliku pom dla projektu.
-   - Pobierz sterownik JDBC [MariaDB łącznik/J](https://downloads.mariadb.org/connector-java/) i Uwzględnij plik JAR JDBC (na przykład MariaDB-Java-Client-2.4.3. jar) w ścieżce klas aplikacji. Jeśli masz problem ze ścieżkami klas, zapoznaj się z ich charakterystyką w dokumentacji środowisk takich jak [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) lub [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)
+   - Pobierz sterownik JDBC [MariaDB łącznik/J](https://downloads.mariadb.org/connector-java/) i Uwzględnij plik JAR JDBC (na przykład MariaDB-Java-Client-2.4.3. jar) w ścieżce klasy aplikacji. Zapoznaj się z dokumentacją środowiska, aby uzyskać informacje dotyczące ścieżki klas, takie jak [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) lub [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)
 
 ## <a name="get-connection-information"></a>Pobieranie informacji o połączeniu
+
 Pobierz informacje o połączeniu potrzebne do nawiązania połączenia z usługą Azure Database for MySQL. Potrzebna jest w pełni kwalifikowana nazwa serwera i poświadczenia logowania.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
@@ -40,6 +44,7 @@ Pobierz informacje o połączeniu potrzebne do nawiązania połączenia z usług
  ![Nazwa serwera usługi Azure Database for MySQL](./media/connect-java/azure-database-mysql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Nawiązywanie połączenia, tworzenie tabeli i wstawianie danych
+
 Użyj poniższego kodu, aby nawiązać połączenie i załadować dane przy użyciu funkcji z instrukcją **INSERT** języka SQL. Metoda [GetConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) jest używana do nawiązania połączenia z usługą MySQL. Metody [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) i execute() są używane do przenoszenia i tworzenia tabeli. Obiekt prepareStatement jest używany do tworzenia poleceń insert, z metodami setString() i setInt() do powiązania wartości parametrów. Metoda executeUpdate() uruchamia polecenie dla każdego zestawu parametrów w celu wstawienia wartości. 
 
 Zastąp parametry hosta, bazy danych, użytkownika i hasła wartościami, które zostały określone podczas tworzenia własnego serwera i bazy danych.
@@ -142,6 +147,7 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>Odczyt danych
+
 Użyj poniższego kodu, aby odczytać dane za pomocą instrukcji **SELECT** języka SQL. Metoda [GetConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) jest używana do nawiązania połączenia z usługą MySQL. Metody Create [stateion ()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) i executeQuery () są używane do nawiązywania połączenia i uruchamiania instrukcji SELECT. Wyniki są przetwarzane przy użyciu obiektu zestawu wyników. 
 
 Zastąp parametry hosta, bazy danych, użytkownika i hasła wartościami, które zostały określone podczas tworzenia własnego serwera i bazy danych.
@@ -229,6 +235,7 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>Aktualizowanie danych
+
 Użyj poniższego kodu, aby zmienić dane za pomocą instrukcji **UPDATE** języka SQL. Metoda [GetConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) jest używana do nawiązania połączenia z usługą MySQL. Metody [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) i executeUpdate() są używane do przygotowywania i uruchamiania instrukcji update. 
 
 Zastąp parametry hosta, bazy danych, użytkownika i hasła wartościami, które zostały określone podczas tworzenia własnego serwera i bazy danych.
@@ -311,6 +318,7 @@ public class UpdateTable {
 ```
 
 ## <a name="delete-data"></a>Usuwanie danych
+
 Użyj poniższego kodu, aby usunąć dane za pomocą instrukcji **DELETE** języka SQL. Metoda [GetConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) jest używana do nawiązania połączenia z usługą MySQL.  Metody [prepareStatement ()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) i ExecuteUpdate () służą do przygotowania i uruchomienia instrukcji DELETE. 
 
 Zastąp parametry hosta, bazy danych, użytkownika i hasła wartościami, które zostały określone podczas tworzenia własnego serwera i bazy danych.

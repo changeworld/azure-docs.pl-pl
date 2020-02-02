@@ -3,17 +3,17 @@ title: 'Szybki Start: Tworzenie strefy Azure DNS i rekordu — Azure PowerShell'
 titleSuffix: Azure DNS
 description: Dowiedz się, jak utworzyć strefę i rekord DNS w usłudze Azure DNS. W tym szczegółowym przewodniku Szybki start pokazano, jak po raz pierwszy utworzyć strefę i rekord DNS przy użyciu programu Azure PowerShell.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 0d3852824702bbc88925981c3c665b1b3fda7404
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: e33f6fdba1a15032d76b94804d610e292f663d59
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072184"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937158"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Szybki start — tworzenie strefy i rekordu usługi Azure DNS przy użyciu programu Azure PowerShell
 
@@ -21,7 +21,7 @@ ms.locfileid: "74072184"
 
 W tym przewodniku Szybki start utworzysz po raz pierwszy strefę i rekord DNS przy użyciu programu Azure PowerShell. Te kroki można również wykonać przy użyciu witryny [Azure Portal](dns-getstarted-portal.md) lub [interfejsu wiersza polecenia platformy Azure](dns-getstarted-cli.md). 
 
-Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby na koniec opublikować strefę DNS w Internecie, należy skonfigurować serwery nazw dla domeny. Poniżej opisano każdy z tych kroków.
+Strefa DNS służy do hostowania rekordów systemu DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby na koniec opublikować strefę DNS w Internecie, należy skonfigurować serwery nazw dla domeny. Poniżej opisano każdy z tych kroków.
 
 Usługa Azure DNS obsługuje też tworzenie domen prywatnych. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia pierwszej prywatnej strefy DNS i pierwszego rekordu, zobacz [Rozpoczynanie pracy ze strefami prywatnymi usługi Azure DNS przy użyciu programu PowerShell](private-dns-getstarted-powershell.md).
 
@@ -81,7 +81,7 @@ Po utworzeniu testowej strefy DNS z rekordem „A” możesz przetestować rozpo
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Na przykład:
+   Przykład:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.

@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7336260d7565697b0559419ae502848bcff9424c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e5ccc9d427755ea4274e836e81e3e324fffa39d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892859"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937813"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure Portal
 
@@ -45,13 +45,14 @@ Aby przekazać blokowy obiekt blob do nowego kontenera w witrynie Azure Portal, 
 
 1. W witrynie Azure Portal przejdź do kontenera utworzonego w poprzedniej sekcji.
 2. Wybierz kontener, aby wyświetlić listę obiektów blob, które zawiera. Ponieważ ten kontener jest nowy, nie będzie jeszcze zawierał żadnych obiektów blob.
-3. Wybierz przycisk **Przekaż**, aby przekazać obiekt blob do kontenera.
-4. Przejrzyj swój lokalny system plików, aby znaleźć plik do przekazania jako blokowy obiekt blob, a następnie wybierz przycisk **Przekaż**.
+3. Wybierz przycisk **Przekaż** , aby otworzyć blok przekazywanie
+4. Przeglądaj lokalny system plików, aby znaleźć plik do przekazania jako blokowy obiekt BLOB
      
     ![Zrzut ekranu pokazujący sposób przekazywania obiektu blob z dysku lokalnego](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. Wybierz **typ uwierzytelniania**. Wartość domyślna to **SAS**.
-6. Przekaż w ten sposób dowolną liczbę obiektów blob. Nowe obiekty blob zostaną wyświetlone w kontenerze.
+5. Opcjonalnie rozwiń sekcję Zaawansowane, aby zdefiniować inne ustawienia, takie jak typ uwierzytelniania, warstwa dostępu lub ścieżka folderu wirtualnego.
+6. Wybierz przycisk **Przekaż** , aby zatwierdzić przekazywanie
+7. Przekaż w ten sposób dowolną liczbę obiektów blob. Nowe obiekty blob zostaną wyświetlone w kontenerze.
 
 ## <a name="download-a-block-blob"></a>Pobieranie blokowego obiektu blob
 
