@@ -1,6 +1,6 @@
 ---
-title: Obciążenia kontenerów — Azure Batch | Microsoft Docs
-description: Dowiedz się, jak uruchamiać aplikacje z obrazów kontenerów na Azure Batch.
+title: Obciążenia kontenerów — Azure Batch
+description: Dowiedz się, jak uruchamiać i skalować aplikacje z obrazów kontenerów na Azure Batch. Utwórz pulę węzłów obliczeniowych, które obsługują Uruchamianie zadań kontenera.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 097ab13ad64477274e756d8e8e93e3614dd1a4e8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 493c9b30f6c7f735d69e113f3f1efe26ca6c1576
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029727"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935047"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Uruchamianie aplikacji kontenera na Azure Batch
 
@@ -23,7 +23,7 @@ Azure Batch umożliwia uruchamianie i skalowanie wielu zadań przetwarzania wsad
 
 Należy zapoznać się z pojęciami dotyczącymi kontenera i sposobami tworzenia puli i zadań wsadowych. Przykłady kodu używają zestawów SDK dla programu Batch .NET i języka Python. Można również użyć innych zestawów SDK i narzędzi partii, w tym Azure Portal, aby utworzyć pule wsadowe z obsługą kontenerów i uruchamiać zadania kontenera.
 
-## <a name="why-use-containers"></a>Dlaczego warto korzystać z kontenerów?
+## <a name="why-use-containers"></a>Dlaczego warto używać kontenerów?
 
 Używanie kontenerów zapewnia łatwy sposób uruchamiania zadań wsadowych bez konieczności zarządzania środowiskiem i zależnościami w celu uruchamiania aplikacji. Kontenery wdrażają aplikacje jako uproszczone, przenośne, samoobsługowe jednostki, które mogą działać w kilku różnych środowiskach. Na przykład Utwórz i przetestuj kontener lokalnie, a następnie Przekaż obraz kontenera do rejestru na platformie Azure lub w innym miejscu. Model wdrażania kontenerów zapewnia, że środowisko uruchomieniowe aplikacji jest zawsze prawidłowo zainstalowane i skonfigurowane wszędzie tam, gdzie hostuje aplikację. Zadania oparte na kontenerach w usłudze Batch mogą również korzystać z funkcji zadań nienależących do kontenera, w tym pakietów aplikacji i zarządzania plikami zasobów i plików wyjściowych. 
 

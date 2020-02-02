@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425436"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931229"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Samouczek: Tworzenie zaufania lasu wychodzącego do domeny lokalnej w Azure Active Directory Domain Services (wersja zapoznawcza)
 
@@ -45,7 +45,7 @@ Do ukończenia tego samouczka potrzebne są następujące zasoby i uprawnienia:
     * W razie konieczności [Utwórz i skonfiguruj wystąpienie Azure Active Directory Domain Services][create-azure-ad-ds-instance-advanced].
     
     > [!IMPORTANT]
-    > Upewnij się, że tworzysz domenę zarządzaną platformy Azure AD DS przy użyciu lasu *zasobów* . Opcja domyślna powoduje utworzenie lasu *użytkownika* . Tylko lasy zasobów mogą tworzyć relacje zaufania w środowiskach Premium AD DS.
+    > Upewnij się, że tworzysz domenę zarządzaną platformy Azure AD DS przy użyciu lasu *zasobów* . Opcja domyślna powoduje utworzenie lasu *użytkownika* . Tylko lasy zasobów mogą tworzyć relacje zaufania w środowiskach Premium AD DS. Należy również użyć minimalnej jednostki SKU *przedsiębiorstwa* dla domeny zarządzanej. W razie potrzeby [Zmień jednostkę SKU dla domeny zarządzanej AD DS platformy Azure][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -188,7 +188,7 @@ Korzystając z maszyny wirtualnej systemu Windows Server dołączonej do lasu za
 1. Wybierz pozycję *FileServerAccess* z listy **nazwy grup lub użytkowników** . Na liście **uprawnienia dla FileServerAccess** wybierz opcję *Zezwalaj* na uprawnienia **Modyfikacja** i **zapis** , a następnie wybierz przycisk **OK**.
 1. Wybierz kartę **udostępnianie** , a następnie wybierz pozycję **Udostępnianie zaawansowane...**
 1. Wybierz opcję **Udostępnij ten folder**, a następnie wprowadź nazwę zapamiętania udziału plików w polu **Nazwa udziału** , np. *CrossForestShare*.
-1. Wybierz pozycję **Uprawnienia**. Na liście **uprawnienia dla wszystkich użytkowników** wybierz opcję **Zezwalaj** na uprawnienie **zmiana** .
+1. Wybierz pozycję **uprawnienia**. Na liście **uprawnienia dla wszystkich użytkowników** wybierz opcję **Zezwalaj** na uprawnienie **zmiana** .
 1. Wybierz przycisk **OK** dwa razy, a następnie **Zamknij**.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Weryfikowanie uwierzytelniania między lasami w ramach zasobu
@@ -220,3 +220,4 @@ Aby uzyskać więcej informacji koncepcyjnych o typach lasów w usłudze Azure A
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
+[howto-change-sku]: change-sku.md

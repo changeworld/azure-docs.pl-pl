@@ -1,6 +1,6 @@
 ---
-title: Zdarzenie uruchomienia zadania Azure Batch | Microsoft Docs
-description: Odwołanie do zdarzenia uruchomienia zadania usługi Batch.
+title: Zdarzenie rozpoczęcia zadania Azure Batch
+description: Informacje referencyjne dotyczące zdarzenia uruchamiania zadania wsadowego. To zdarzenie jest emitowane po zaplanowaniu uruchomienia zadania w węźle obliczeniowym przez harmonogram.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: jushiman
-ms.openlocfilehash: e8265286a5d33c9a8a118dafa66a83b5ed36f8a6
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 517a5c58bc1de7dd6ffa4dfd39d09f4b6b4fac1a
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029623"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939065"
 ---
 # <a name="task-start-event"></a>Zdarzenie rozpoczęcia zadania
 

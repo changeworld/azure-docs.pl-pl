@@ -1,17 +1,18 @@
 ---
-title: Szyfruj dane wdrożenia
+title: Szyfrowanie danych wdrożenia
 description: Informacje o szyfrowaniu danych utrwalonych dla zasobów wystąpień kontenera i sposobach szyfrowania danych za pomocą klucza zarządzanego przez klienta
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 146effd7f1a7ad1ddd94886d1a79e2914bd1c94b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904213"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934305"
 ---
-# <a name="encrypt-deployment-data"></a>Szyfruj dane wdrożenia
+# <a name="encrypt-deployment-data"></a>Szyfrowanie danych wdrożenia
 
 W przypadku uruchamiania zasobów Azure Container Instances (ACI) w chmurze usługa ACI zbiera i utrzymuje dane związane z kontenerami. Program ACI automatycznie szyfruje te dane, gdy są utrwalane w chmurze. To szyfrowanie chroni dane, aby pomóc sprostać zobowiązaniom w zakresie zabezpieczeń i zgodności w organizacji. ACI udostępnia również opcję szyfrowania tych danych przy użyciu własnego klucza, co zapewnia większą kontrolę nad danymi związanymi z wdrożeniami ACI.
 
@@ -87,15 +88,18 @@ Zasady dostępu powinny teraz pojawiać się w zasadach dostępu magazynu kluczy
 > [!IMPORTANT]
 > Szyfrowanie danych wdrożenia za pomocą klucza zarządzanego przez klienta jest dostępne w najnowszej wersji interfejsu API (2019-12-01), która jest obecnie wdrażana. Określ tę wersję interfejsu API w szablonie wdrożenia. Jeśli masz jakieś problemy z tym, skontaktuj się z pomocą techniczną platformy Azure.
 
-Po skonfigurowaniu klucza i zasad dostępu w magazynie kluczy Dodaj następującą właściwość do szablonu wdrożenia ACI. Więcej informacji na temat wdrażania zasobów ACI za pomocą szablonu można znaleźć w [samouczku: Wdrażanie grupy wielu kontenerów przy użyciu szablonu Menedżer zasobów](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Po skonfigurowaniu klucza i zasad dostępu w magazynie kluczy Dodaj następujące właściwości do szablonu wdrożenia ACI. Dowiedz się więcej o wdrażaniu zasobów ACI za pomocą szablonu w [samouczku: Wdróż grupę z wieloma kontenerami przy użyciu szablonu Menedżer zasobów](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+* W obszarze `resources`Ustaw `apiVersion` na `2012-12-01`.
+* W sekcji Właściwości grupy kontenerów szablonu wdrożenia Dodaj `encryptionProperties`, który zawiera następujące wartości:
+  * `vaultBaseUrl`: nazwa DNS magazynu kluczy znajduje się w bloku przegląd zasobu magazynu kluczy w portalu
+  * `keyName`: Nazwa wygenerowanego wcześniej klucza
+  * `keyVersion`: bieżąca wersja klucza. Można to zrobić, klikając sam klucz (w obszarze "klucze" w sekcji Ustawienia zasobu magazynu kluczy).
+* W obszarze właściwości grupy kontenerów Dodaj właściwość `sku` z wartością `Standard`. Właściwość `sku` jest wymagana w interfejsie API w wersji 2019-12-01.
 
-W tym celu w sekcji Właściwości grupy kontenerów szablonu wdrożenia należy dodać "encryptionProperties", który zawiera następujące wartości:
-* vaultBaseUrl: nazwa DNS magazynu kluczy znajduje się w bloku przegląd zasobu magazynu kluczy w portalu
-* NazwaKlucza: Nazwa wygenerowanego wcześniej klucza
-* Wersja klawisza: bieżąca wersja klucza. Można to zrobić, klikając sam klucz (w obszarze "klucze" w sekcji Ustawienia zasobu magazynu kluczy).
-
+Poniższy fragment kodu przedstawia te dodatkowe właściwości służące do szyfrowania danych wdrożenia:
 
 ```json
+[...]
 "resources": [
     {
         "name": "[parameters('containerGroupName')]",
@@ -108,12 +112,107 @@ W tym celu w sekcji Właściwości grupy kontenerów szablonu wdrożenia należy
                 "keyName": "acikey",
                 "keyVersion": "xxxxxxxxxxxxxxxx"
             },
+            "sku": "Standard",
             "containers": {
                 [...]
             }
         }
     }
 ]
+```
+
+Poniżej znajduje się kompletny szablon dostosowany do szablonu w [samouczku: wdrażanie wielokontenerowej grupy przy użyciu szablonu Menedżer zasobów](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+    "container2name": "aci-tutorial-sidecar",
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
+  },
+  "resources": [
+    {
+      "name": "[parameters('containerGroupName')]",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "encryptionProperties": {
+            "vaultBaseUrl": "https://example.vault.azure.net",
+            "keyName": "acikey",
+            "keyVersion": "xxxxxxxxxxxxxxxx"
+        },
+        "sku": "Standard",  
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                },
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+    }
+  }
+}
 ```
 
 ### <a name="deploy-your-resources"></a>Wdrażanie zasobów

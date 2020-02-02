@@ -3,7 +3,7 @@ title: Zarządzanie rekordami DNS w Azure DNS przy użyciu Azure PowerShell | Mi
 description: Zarządzanie zestawami rekordów DNS i rekordami na Azure DNS podczas hostowania domeny na Azure DNS. Wszystkie polecenia programu PowerShell dla operacji na zestawach rekordów i rekordach.
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
 ms.service: dns
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: allensu
-ms.openlocfilehash: c11a5c4a3cfe18fbc203ad641ab1de866915bcc4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b9244d9b2bdc9cb20195bbc103c0b1eb48a9de63
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211686"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932543"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Zarządzanie rekordami i zestawami nazw DNS w Azure DNS przy użyciu Azure PowerShell
 

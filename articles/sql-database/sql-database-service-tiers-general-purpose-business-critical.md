@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 01/23/2020
-ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 09cc9e1475616700aa77cdf92fd7ca808cd4290c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715090"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937839"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database warstw usług
 
@@ -53,7 +53,7 @@ W poniższej tabeli opisano kluczowe różnice między warstwami usług dla najn
 |**Przetwarzanie OLTP w pamięci** | | ND | ND | Dostępna |
 |**Repliki tylko do odczytu**| | 0 wbudowane <br> 0-4 przy użyciu [replikacji geograficznej](sql-database-active-geo-replication.md) | 0-4 wbudowane | 1 wbudowana, uwzględniona w cenie <br> 0-4 przy użyciu [replikacji geograficznej](sql-database-active-geo-replication.md) |
 |**Cennik/rozliczenia** | Pojedyncza baza danych | [rdzeń wirtualny, zarezerwowany magazyn i magazyn kopii zapasowych](https://azure.microsoft.com/pricing/details/sql-database/single/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana. | [rdzeń wirtualny dla każdej repliki i używanej pamięci masowej](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>Liczba operacji we/wy nie została jeszcze obciążona. | [rdzeń wirtualny, zarezerwowany magazyn i magazyn kopii zapasowych](https://azure.microsoft.com/pricing/details/sql-database/single/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana. |
-|| Wystąpienie zarządzane | [rdzeń wirtualny i zarezerwowany magazyn](https://azure.microsoft.com/pricing/details/sql-database/managed/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana.<br/>Magazyn kopii zapasowych nie jest jeszcze naliczany. | ND | [rdzeń wirtualny i zarezerwowany magazyn](https://azure.microsoft.com/pricing/details/sql-database/managed/) są rozliczone. <br/>Liczba operacji we/wy nie jest naliczana.<br/>Magazyn kopii zapasowych nie jest jeszcze naliczany. | 
+|| Wystąpienie zarządzane | [rdzeń wirtualny, zarezerwowany magazyn i magazyn kopii zapasowych](https://azure.microsoft.com/pricing/details/sql-database/managed/) są naliczone. <br/>Liczba operacji we/wy nie jest naliczana| ND | [rdzeń wirtualny, zarezerwowany magazyn i magazyn kopii zapasowych](https://azure.microsoft.com/pricing/details/sql-database/managed/) są naliczone. <br/>Liczba operacji we/wy nie jest naliczana.| 
 |**Modele rabatów**| | [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-azure-hybrid-benefit.md) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie| [Korzyść użycia hybrydowego platformy Azure](sql-database-azure-hybrid-benefit.md) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie| [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-azure-hybrid-benefit.md) (niedostępne w subskrypcjach tworzenia i testowania)<br/>Subskrypcje dla [przedsiębiorstw](https://azure.microsoft.com/offers/ms-azr-0148p/) i [płatność zgodnie z rzeczywistym](https://azure.microsoft.com/offers/ms-azr-0023p/) użyciem — tworzenie i testowanie|
 
 Aby uzyskać więcej informacji, Zobacz szczegółowe różnice między warstwami usług w [jednej bazie danych (rdzeń wirtualny)](sql-database-vcore-resource-limits-single-databases.md), [pojedynczej puli baz danych (rdzeń wirtualny)](sql-database-dtu-resource-limits-single-databases.md), [pojedynczej bazie danych (DTU)](sql-database-dtu-resource-limits-single-databases.md), [pulach pojedynczej bazy danych (DTU)](sql-database-dtu-resource-limits-single-databases.md)i stronach [wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md) .

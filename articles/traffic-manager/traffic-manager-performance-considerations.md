@@ -1,84 +1,84 @@
 ---
-title: Zagadnienia dotyczące wydajności usługi Azure Traffic Manager | Dokumentacja firmy Microsoft
-description: Zrozumienie wydajności usługi Traffic Manager oraz sposób testowania wydajności witryny sieci Web, korzystając z usługi Traffic Manager
+title: Zagadnienia dotyczące wydajności Traffic Manager platformy Azure | Microsoft Docs
+description: Informacje na temat wydajności Traffic Manager i sposobu testowania wydajności witryny sieci Web przy użyciu Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: 315165677bd3186bb3bdc87ed688c426776569fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071057"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938543"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Zagadnienia dotyczące wydajności dla usługi Traffic Manager
 
-Ta strona opisano zagadnienia związane z wydajnością za pomocą usługi Traffic Manager. Rozważmy następujący scenariusz:
+Na tej stronie opisano zagadnienia dotyczące wydajności przy użyciu Traffic Manager. Poniżej przedstawiono przykładowy scenariusz:
 
-Masz wystąpień witryny sieci Web w regionach WestUS i Azja Wschodnia. Jedno z wystąpień kończy się niepowodzeniem sprawdzenie kondycji sondy Menedżer ruchu. Aplikacja ruch będzie kierowany do regionu dobrej kondycji. Oczekiwano pracy w trybie failover, ale wydajność może być problem związany z czasem oczekiwania wynoszącym ruchu teraz podróżującym na odległym regionie.
+Masz wystąpienia witryny sieci Web w regionach Zachodnie i EastAsia. W przypadku jednego z wystąpień Sprawdzanie kondycji sondy usługi Traffic Manager nie powiodło się. Ruch aplikacji jest kierowany do regionu w dobrej kondycji. Jest to oczekiwane przejście w tryb failover, ale wydajność może być problemem w zależności od opóźnienia ruchu, który jest teraz Podróżujący do odległego regionu.
 
 ## <a name="performance-considerations-for-traffic-manager"></a>Zagadnienia dotyczące wydajności dla usługi Traffic Manager
 
-Jedynie wpływ na wydajność usługi Traffic Manager może mieć w witrynie sieci Web jest początkowa wyszukiwania DNS. Żądanie DNS dla nazwy profilu usługi Traffic Manager jest obsługiwana przez główny serwer DNS firmy Microsoft, który hostuje strefy trafficmanager.net. Traffic Manager umożliwia wypełnienie i regularnie aktualizuje, głównych serwerów DNS firmy Microsoft opartych na zasadach usługi Traffic Manager i wyniki badania. Dlatego nawet w trakcie początkowego wyszukiwania DNS nie ma zapytań DNS są wysyłane do usługi Traffic Manager.
+Jedynym wpływem na wydajność, który Traffic Manager może mieć witryna sieci Web, jest początkowe wyszukiwanie DNS. Żądanie DNS dotyczące nazwy profilu Traffic Manager jest obsługiwane przez serwer główny usługi Microsoft DNS, który hostuje strefę trafficmanager.net. Traffic Manager wypełnia i regularnie aktualizuje serwery główne DNS firmy Microsoft na podstawie zasad Traffic Manager i wyników sondowania. Nawet podczas początkowego wyszukiwania DNS żadne zapytania DNS nie są wysyłane do Traffic Manager.
 
-Usługa Traffic Manager składa się z kilku składników: Nazwy DNS serwerów, usługi interfejsu API, warstwa magazynu i punkt końcowy usługi monitorowania. W przypadku awarii składnika Usługa Traffic Manager nie ma żadnego wpływu na nazwę DNS skojarzone z profilu usługi Traffic Manager. Rekordów na serwerach DNS firmy Microsoft pozostaną bez zmian. Jednak nie nawiązały monitorowania punktu końcowego i aktualizacji DNS. W związku z tym usługi Traffic Manager nie będzie mógł aktualizowanie systemu DNS, aby wskazywał lokacji trybu failover, gdy ulegnie awarii lokacji głównej.
+Traffic Manager składa się z kilku składników: serwerów nazw DNS, usługi interfejsu API, warstwy magazynu i usługi monitorowania punktów końcowych. Jeśli składnik usługi Traffic Manager ulegnie awarii, nie ma wpływu na nazwę DNS skojarzoną z Twoim profilem Traffic Manager. Rekordy na serwerach DNS firmy Microsoft pozostaną niezmienione. Jednak monitorowanie punktów końcowych i aktualizowanie DNS nie są wykonywane. W związku z tym Traffic Manager nie może zaktualizować usługi DNS w taki sposób, aby wskazywała witrynę trybu failover, gdy lokacja główna ulegnie awarii.
 
-Rozpoznawanie nazw DNS to szybka i wyniki są buforowane. Na serwerach DNS, którego klient używa do rozpoznawania nazw zależy od prędkości początkowej wyszukiwania DNS. Zazwyczaj klient można wykonać wyszukiwania DNS, w ramach ~ 50 ms. Wyniki wyszukiwania są buforowane na czas trwania DNS Time-to-live (TTL). Wartość domyślna TTL usługa Traffic Manager to 300 sekund.
+Rozpoznawanie nazw DNS jest szybkie, a wyniki są buforowane. Szybkość początkowej wyszukiwania DNS zależy od serwerów DNS używanych przez klienta do rozpoznawania nazw. Zwykle klient może zakończyć wyszukiwanie DNS w ciągu ~ 50 ms. Wyniki wyszukiwania są buforowane na czas trwania czasu wygaśnięcia (TTL) DNS. Domyślny czas wygaśnięcia dla Traffic Manager wynosi 300 sekund.
 
-Ruch nie przepływać za pośrednictwem usługi Traffic Manager. Po wykonaniu wyszukiwania DNS klient ma adres IP dla wystąpienia usługi witryny sieci web. Klient łączy się bezpośrednio z tego adresu i nie zostały spełnione przy użyciu usługi Traffic Manager. Zasady usługi Traffic Manager, które wybierzesz nie ma wpływu na wydajność systemu DNS. Jednak wydajności routing metody może niekorzystnie wpłynąć na środowisko aplikacji. Na przykład jeśli zasady przekierowuje ruch z Ameryki Północnej z wystąpieniem hostowanych w Azji, opóźnienie sieci komunikacji z tymi sesjami może być problem z wydajnością.
+Ruch nie przechodzi przez Traffic Manager. Po zakończeniu wyszukiwania DNS klient ma adres IP dla wystąpienia witryny sieci Web. Klient łączy się bezpośrednio z tym adresem i nie przechodzi przez Traffic Manager. Wybrane zasady Traffic Manager nie mają wpływu na wydajność systemu DNS. Jednak Metoda routingu wydajności może mieć negatywny wpływ na działanie aplikacji. Na przykład jeśli zasady przekierowują ruch z Ameryka Północna do wystąpienia hostowanego w Azji, opóźnienie sieci dla tych sesji może być problemem z wydajnością.
 
-## <a name="measuring-traffic-manager-performance"></a>Pomiar wydajności usługi Traffic Manager
+## <a name="measuring-traffic-manager-performance"></a>Mierzenie wydajności Traffic Manager
 
-Istnieje kilka witryn sieci Web, których można użyć, aby zrozumieć, wydajności i zachowań, profilu usługi Traffic Manager. Wiele z tych witryn jest bezpłatne, ale mogą mieć ograniczenia. Niektóre witryny oferują rozszerzonego monitorowania i raportowania za opłatą.
+Istnieje kilka witryn sieci Web, których można użyć do zrozumienia wydajności i zachowania profilu Traffic Manager. Wiele z tych witryn jest bezpłatnych, ale mogą mieć ograniczenia. Niektóre lokacje oferują ulepszone monitorowanie i raportowanie z opłatą.
 
-Narzędzia te lokacje miary DNS opóźnienia i wyświetlania adresy IP rozwiązania dla klienta lokalizacji na całym świecie. Większość tych narzędzi nie buforują wyniki DNS. W związku z tym narzędzia Pokaż pełne wyszukiwanie DNS, każdym razem, gdy test jest wykonywany. Podczas testowania z własnego klienta występują tylko pełną wydajność wyszukiwania DNS, jeden raz w okresie czasu wygaśnięcia.
+Narzędzia w tych lokacjach mierzą opóźnienia DNS i wyświetlają rozpoznane adresy IP dla lokalizacji klientów na całym świecie. Większość z tych narzędzi nie buforuje wyników DNS. W związku z tym narzędzia pokazują pełne wyszukiwanie DNS za każdym razem, gdy test jest wykonywany. Gdy testujesz się z własnego klienta, w czasie trwania czasu wygaśnięcia TTL występuje tylko pełna wydajność wyszukiwania DNS.
 
-## <a name="sample-tools-to-measure-dns-performance"></a>Przykładowe narzędzia, aby zmierzyć wydajność systemu DNS
+## <a name="sample-tools-to-measure-dns-performance"></a>Przykładowe narzędzia do mierzenia wydajności systemu DNS
 
 * [SolveDNS](https://www.solvedns.com/dns-comparison/)
 
-    SolveDNS oferuje wiele narzędzi wydajności. Narzędzie do porównywania DNS można pokazać, jak długo trwa rozwiązać nazwę DNS i że porównanie innych dostawców usług DNS.
+    SolveDNS oferuje wiele narzędzi do oceny wydajności. W narzędziu do porównywania DNS można zobaczyć, jak długo trwa rozpoznawanie nazwy DNS i jak porównuje się z innymi dostawcami usług DNS.
 
 * [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 
-    Jednym z narzędzi najprostszą jest WebSitePulse. Wprowadź adres URL, aby wyświetlić czas rozpoznawania nazw DNS, pierwszy bajt, ostatni bajt i inne statystyk wydajności. Możesz wybrać trzy lokalizacje innego testu. W tym przykładzie zobaczysz pierwszym wykonaniu pokazuje, że wyszukiwanie DNS trwa 0.204 s.
+    Jednym z najprostszych narzędzi jest WebSitePulse. Wprowadź adres URL, aby zobaczyć czas rozpoznawania nazw DNS, pierwszy bajt, ostatni bajt i inne statystyki wydajności. Można wybrać jedną z trzech różnych lokalizacji testowych. W tym przykładzie widać, że pierwsze wykonanie wskazuje, że wyszukiwanie DNS zajmuje 0,204 sek.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
-    Ponieważ wyniki są buforowane, drugi test dla tego samego punktu końcowego usługi Traffic Manager wyszukiwania DNS ma 0,002 s.
+    Ponieważ wyniki są przechowywane w pamięci podręcznej, drugi test dla tego samego Traffic Managerego punktu końcowego wyszukiwanie DNS zajmie 0,002 sek.
 
     ![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
 
-* [Monitorowanie aplikacji syntetycznych urzędu certyfikacji](https://asm.ca.com/en/checkit.php)
+* [Monitor syntetyczny aplikacji urzędu certyfikacji](https://asm.ca.com/en/checkit.php)
 
-    Wcześniej znane jako narzędzia myszy Obejrzyj wyboru witryny sieci Web, ta lokacja pokazują czas rozpoznawania nazw DNS z wielu regionów geograficznych jednocześnie. Wprowadź adres URL, aby wyświetlić czas rozpoznawania nazw DNS, czas połączenia i szybkość, z kilku lokalizacjach geograficznych. Użyj tego testu, aby zobaczyć, które usługa hostowana jest zwracany w różnych lokalizacjach na całym świecie.
+    Ta lokacja wcześniej znana jako narzędzie do sprawdzania myszy w witrynie sieci Web, w której jest wyświetlany czas rozpoznawania nazw DNS jednocześnie z wielu regionów geograficznych. Wprowadź adres URL, aby zobaczyć czas rozpoznawania nazw DNS, czas połączenia i szybkość z kilku lokalizacji geograficznych. Użyj tego testu, aby sprawdzić, która usługa hostowana jest zwracana dla różnych lokalizacji na całym świecie.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
 * [Pingdom](https://tools.pingdom.com/)
 
-    To narzędzie udostępnia statystyk wydajności dla każdego elementu strony sieci web. Karta analizy strona przedstawia procent czasu poświęconego na wyszukiwania DNS.
+    To narzędzie zapewnia statystykę wydajności dla każdego elementu strony sieci Web. Karta Analiza strony pokazuje procent czasu poświęcony na wyszukiwanie DNS.
 
-* [Co to jest Moja DNS?](https://www.whatsmydns.net/)
+* [Co to jest mój system DNS?](https://www.whatsmydns.net/)
 
-    Ta witryna nie wyszukiwania DNS z 20 różnych lokalizacji i wyświetla wyniki na mapie.
+    Ta witryna wykonuje wyszukiwanie DNS z 20 różnych lokalizacji i wyświetla wyniki na mapie.
 
-* [Szczegółowa analiza interfejsu sieci Web](https://www.digwebinterface.com)
+* [Interfejs sieci Web Dig](https://www.digwebinterface.com)
 
-    Ta witryna zawiera bardziej szczegółowe informacje dotyczące systemu DNS, w tym rekordy CNAME i. Upewnij się, sprawdź "Output koloruj" i "Statystyki" w obszarze Opcje i wybrać "All" w ramach serwerów nazw.
+    Ta lokacja zawiera bardziej szczegółowe informacje DNS, w tym CNAME i rekordy. Upewnij się, że w obszarze Opcje jest zaznaczone pole wyboru "Koloruj dane wyjściowe" i "statystyki", a następnie wybierz pozycję "wszystkie" w obszarze serwery nazw.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Metody routingu ruchu w usłudze Traffic Manager](traffic-manager-routing-methods.md)
+[Informacje o metodach routingu ruchu Traffic Manager](traffic-manager-routing-methods.md)
 
-[Testowanie ustawień usługi Traffic Manager](traffic-manager-testing-settings.md)
+[Testowanie ustawień Traffic Manager](traffic-manager-testing-settings.md)
 
 [Operacje w usłudze Traffic Manager (dokumentacja interfejsu API REST)](https://go.microsoft.com/fwlink/?LinkId=313584)
 

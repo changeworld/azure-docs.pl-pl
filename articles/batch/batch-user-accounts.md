@@ -1,6 +1,6 @@
 ---
-title: Uruchamianie zadań w obszarze konta użytkowników — Azure Batch | Microsoft Docs
-description: Konfigurowanie kont użytkowników na potrzeby uruchamiania zadań w Azure Batch
+title: Uruchamianie zadań w obszarze konta użytkowników — Azure Batch
+description: Warto skonfigurować konto użytkownika, w ramach którego ma zostać uruchomione zadanie. Informacje o typach kont użytkowników i sposobach ich konfigurowania.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/18/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: d4975935c872f059dde6b08bcd7a4f06540c2dfd
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 01342c8fcd0d2d3c603762b06350a9fcf7c12d03
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029601"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937960"
 ---
 > [!NOTE] 
 > Konta użytkowników omówione w tym artykule różnią się od kont użytkowników używanych dla Remote Desktop Protocol (RDP) lub Secure Shell (SSH) ze względów bezpieczeństwa. 

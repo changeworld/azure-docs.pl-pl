@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 183b85ad8a61c76942981ebb764512b8a090b0a8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 150927ac05cba058d1d152ce568d7a462043d076
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890441"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937763"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikacja z Centrum IoT Hub przy użyciu protokołu MQTT
 
@@ -44,11 +44,29 @@ Poniższa tabela zawiera linki do przykładów kodu dla każdego obsługiwanego 
 
 | Język | Parametr protokołu |
 | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |Azure-IoT-Device-MQTT |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol. MQTT |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType. MQTT |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Zawsze obsługuje domyślnie MQTT |
+
+### <a name="default-keep-alive-timeout"></a>Domyślny limit czasu utrzymywania aktywności 
+
+W celu zapewnienia, że połączenie klienta/IoT Hub będzie aktywne, zarówno usługa, jak i klient regularnie wysyłają polecenie ping *Keep-Alive* do siebie nawzajem. Klient korzystający z zestawu IoT SDK wysyła wartość Keep-Alive w interwale zdefiniowanym w poniższej tabeli:
+
+|Język  |Domyślny interwał utrzymywania aktywności  |Skonfigurować  |
+|---------|---------|---------|
+|Node.js     |   180 sekund      |     Nie    |
+|Java     |    230 sekund     |     Nie    |
+|C     | 240 sekund |  [Tak](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
+|C#     | 300 sekund |  [Tak](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
+|Python (wersja 2)   | 60 sekund |  Nie   |
+
+Zgodnie z [MQTT specyfikacji](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081), interwał polecenia ping w IoT Hub jest 1,5 razy wartość utrzymywania aktywności klienta. IoT Hub ograniczenie maksymalnego limitu czasu po stronie serwera do 29,45 minut (1767 sekund), ponieważ wszystkie usługi platformy Azure są powiązane z limitem czasu bezczynności protokołu TCP modułu równoważenia obciążenia platformy Azure, który jest 29,45 minuty. 
+
+Na przykład urządzenie korzystające z zestawu SDK języka Java wysyła polecenie ping Keep-Alive, a następnie utraci łączność sieciową. 230 s później, urządzenie trafi polecenie ping Keep-Alive, ponieważ jest w trybie offline. Jednak IoT Hub nie zamyka połączenia natychmiast — czeka na kolejną `(230 * 1.5) - 230 = 115` sekund przed rozłączeniem urządzenia z błędem [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md). 
+
+Maksymalna wartość utrzymywania aktywności klienta, którą można ustawić, to `1767 / 1.5 = 1177` sekund. Każdy ruch zostanie zresetowany do utrzymania aktywności. Na przykład pomyślne odświeżenie tokenu SAS resetuje wartość Keep-Alive.
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Migrowanie aplikacji urządzenia z usługi AMQP do usługi MQTT
 
@@ -230,10 +248,6 @@ client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
 client.loop_forever()
 ```
 
-Poniżej przedstawiono instrukcje instalacji dotyczące wymagań wstępnych.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 Aby uwierzytelnić się przy użyciu certyfikatu urządzenia, zaktualizuj Powyższy fragment kodu z następującymi zmianami (Zobacz artykuł [jak uzyskać certyfikat certyfikatu X. 509 urzędu certyfikacji](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) , aby przygotować się do uwierzytelniania opartego na certyfikatach):
 
 ```python
@@ -256,7 +270,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Wysyłanie komunikatów z urządzenia do chmury
 
-Po pomyślnym nawiązaniu połączenia urządzenie może wysyłać komunikaty do IoT Hub przy użyciu `devices/{device_id}/messages/events/` lub `devices/{device_id}/messages/events/{property_bag}` jako **nazwy tematu**. Element `{property_bag}` umożliwia urządzeniu wysyłanie komunikatów z dodatkowymi właściwościami w formacie zakodowanym przy użyciu adresu URL. Na przykład:
+Po pomyślnym nawiązaniu połączenia urządzenie może wysyłać komunikaty do IoT Hub przy użyciu `devices/{device_id}/messages/events/` lub `devices/{device_id}/messages/events/{property_bag}` jako **nazwy tematu**. Element `{property_bag}` umożliwia urządzeniu wysyłanie komunikatów z dodatkowymi właściwościami w formacie zakodowanym przy użyciu adresu URL. Przykład:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -313,7 +327,7 @@ Możliwe kody stanu to:
 | ----- | ----------- |
 | 204 | Powodzenie (nie jest zwracana żadna zawartość) |
 | 429 | Zbyt wiele żądań (z ograniczeniami), zgodnie z [ograniczeniami IoT Hub](iot-hub-devguide-quotas-throttling.md) |
-| 5 * * | Błędy serwera |
+| 5** | Błędy serwera |
 
 Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera urządzenia bliźniaczych reprezentacji](iot-hub-devguide-device-twins.md).
 
@@ -329,7 +343,7 @@ Poniższa sekwencja zawiera opis sposobu aktualizowania przez urządzenie raport
 
 3. Następnie usługa wysyła komunikat odpowiedzi zawierający nową wartość ETag dla raportowanej kolekcji właściwości w temacie `$iothub/twin/res/{status}/?$rid={request id}`. Ten komunikat odpowiedzi używa tego samego **identyfikatora żądania** co żądanie.
 
-Treść komunikatu żądania zawiera dokument JSON, który zawiera nowe wartości raportowanych właściwości. Każdy element członkowski w dokumencie JSON aktualizuje lub dodaje odpowiadający mu element członkowski w dokumencie przędzy urządzenia. Element członkowski, który ma `null`, usuwa element członkowski z zawierającego go obiektu. Na przykład:
+Treść komunikatu żądania zawiera dokument JSON, który zawiera nowe wartości raportowanych właściwości. Każdy element członkowski w dokumencie JSON aktualizuje lub dodaje odpowiadający mu element członkowski w dokumencie przędzy urządzenia. Element członkowski, który ma `null`, usuwa element członkowski z zawierającego go obiektu. Przykład:
 
 ```json
 {
@@ -345,7 +359,7 @@ Możliwe kody stanu to:
 | 200 | Powodzenie |
 | 400 | Nieprawidłowe żądanie. Źle sformułowany kod JSON |
 | 429 | Zbyt wiele żądań (z ograniczeniami), zgodnie z [ograniczeniami IoT Hub](iot-hub-devguide-quotas-throttling.md) |
-| 5 * * | Błędy serwera |
+| 5** | Błędy serwera |
 
 Poniższy fragment kodu w języku Python pokazuje, że raport o raportowanych właściwościach jest przetwarzany przez MQTT (przy użyciu PAHO MQTT Client):
 
@@ -367,7 +381,7 @@ Aby uzyskać więcej informacji, zobacz [przewodnik dewelopera urządzenia bliź
 
 ## <a name="receiving-desired-properties-update-notifications"></a>Otrzymywanie powiadomień o aktualizacji żądanych właściwości
 
-Gdy urządzenie jest połączone, IoT Hub wysyła powiadomienia do `$iothub/twin/PATCH/properties/desired/?$version={new version}`tematu, który zawiera zawartość aktualizacji wykonywanej przez zaplecze rozwiązania. Na przykład:
+Gdy urządzenie jest połączone, IoT Hub wysyła powiadomienia do `$iothub/twin/PATCH/properties/desired/?$version={new version}`tematu, który zawiera zawartość aktualizacji wykonywanej przez zaplecze rozwiązania. Przykład:
 
 ```json
 {

@@ -3,7 +3,7 @@ title: Hierarchia krajów/regionów używana przez Routing geograficzny — Traf
 description: W tym artykule wymieniono hierarchię kraju/regionu używaną przez typ routingu geograficznego Traffic Manager platformy Azure
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: allensu
-ms.openlocfilehash: 13f4101c17d78a59e8cde724863d237ba888e6a4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037207"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938645"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchia krajów/regionów używana przez usługę Azure Traffic Manager dla metody routingu ruchu geograficznego
 
@@ -548,7 +548,7 @@ W tym artykule wymieniono kraje i regiony używane przez metodę routingu ruchu 
 
         - SD (Sudan)
 
-        - SH (Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha)
+        - SH (wyspa Świętej Heleny, Wyspa Wniebowstąpienia, Tristan da Cunha)
 
         - SL (Sierra Leone)
 

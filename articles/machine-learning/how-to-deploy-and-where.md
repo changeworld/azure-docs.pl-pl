@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fbfe120484f7a5fdfb847448a4bba2309f3fedc6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543566"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932393"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,8 +26,8 @@ Dowiedz się, jak wdrożyć model uczenia maszynowego jako usługę sieci Web w 
 Przepływ pracy jest podobny do tego, [gdzie wdrażasz](#target) model:
 
 1. Należy zarejestrować model.
-1. Przygotowanie do wdrożenia. (Określenie zasobów, użycia, docelowego obiektu obliczeniowego).
-1. Wdrożenie modelu na docelowym obiekcie obliczeniowym.
+1. Przygotuj się do wdrożenia. (Określ zasoby, użycie, cel obliczeń).
+1. Wdróż model do obiektu docelowego obliczeń.
 1. Przetestuj wdrożony model, nazywany również usługą sieci Web.
 
 Aby uzyskać więcej informacji na temat pojęć związanych z przepływem pracy wdrożenia, zobacz artykuł [Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu Azure Machine Learning](concept-model-management-and-deployment.md).
@@ -174,12 +174,12 @@ Przykład E2E, który pokazuje, jak używać wielu modeli za pojedynczym punktem
 
 ## <a name="prepare-to-deploy"></a>Przygotowywanie do wdrożenia
 
-Aby wdrożyć model, potrzebujesz następujących elementów:
+Aby wdrożyć model, potrzebne są następujące elementy:
 
 * **Skrypt wejściowy**. Ten skrypt akceptuje żądania, ocenia żądania przy użyciu modelu i zwraca wyniki.
 
     > [!IMPORTANT]
-    > * Skrypt wejściowy jest specyficzny dla modelu. Musi on zrozumieć format danych żądania przychodzącego, format danych oczekiwanych przez model i format danych zwracanych do klientów.
+    > * Skrypt wejścia jest specyficzny dla modelu. Musi on zrozumieć format danych żądania przychodzącego, format danych oczekiwanych przez model i format danych zwracanych do klientów.
     >
     >   Jeśli dane żądania są w formacie, który nie jest użyteczny przez model, skrypt może przekształcić go w akceptowalny format. Może również przekształcić odpowiedź przed zwróceniem jej do klienta.
     >
@@ -187,21 +187,21 @@ Aby wdrożyć model, potrzebujesz następujących elementów:
     >
     >   Alternatywą, która może obsłużyć twój scenariusz, jest [Prognoza wsadowa](how-to-use-parallel-run-step.md), która zapewnia dostęp do magazynów danych podczas oceniania.
 
-* **Zależności** takie jak skrypty pomocnicze lub pakiety środowiska Python/Conda wymagane do uruchomienia skryptu wejściowego lub modelu.
+* **Zależności**, takie jak skrypty pomocnika lub pakiety Python/Conda wymagane do uruchomienia skryptu lub modelu wprowadzania.
 
-* **Konfiguracja wdrożenia** dla docelowego obiektu obliczeniowego, który hostuje wdrożony model. Ta konfiguracja zawiera opis elementów takich jak wymagania dotyczące pamięci i procesora wymaganych do uruchomienia modelu.
+* **Konfiguracja wdrożenia** dla elementu docelowego obliczeń, który hostuje wdrożony model. Ta konfiguracja zawiera opis zagadnień dotyczących pamięci i procesora CPU wymaganych do uruchomienia modelu.
 
-Te elementy są hermetyzowane w *konfiguracji interfejsu* i *konfiguracji wdrożenia*. Konfiguracja wnioskowania przywołuje skrypt wejściowy i inne zależności. Te konfiguracje można definiować programowo, jeśli do wdrożenia jest używany zestaw SDK. Definiuje się je w plikach JSON w przypadku korzystania z interfejsu wiersza polecenia.
+Te elementy są hermetyzowane w *konfiguracji wnioskowania* i *konfiguracji wdrożenia*. Konfiguracja wnioskowania odwołuje się do skryptu wejścia i innych zależności. Te konfiguracje można definiować programowo, gdy używasz zestawu SDK do wdrożenia. Użytkownik definiuje je w plikach JSON podczas korzystania z interfejsu wiersza polecenia.
 
 ### <a id="script"></a>1. Zdefiniuj skrypt i zależności wpisu
 
-Skrypt wejściowy odbiera dane przesyłane do wdrożonej usługi internetowej i przekazuje je do modelu. Następnie pobiera odpowiedź zwróconą przez model i zwraca ją do klienta. *Skrypt jest specyficzny dla modelu*. Musi on zrozumieć dane, które są oczekiwane i zwracane przez model.
+Skrypt wejścia odbiera dane przesyłane do wdrożonej usługi sieci Web i przekazuje je do modelu. Następnie pobiera odpowiedź zwróconą przez model i zwraca go do klienta. *Skrypt jest specyficzny dla modelu*. Musi on zrozumieć dane, które są oczekiwane i zwracane przez model.
 
 Skrypt zawiera dwie funkcje, które ładują i uruchamiają model:
 
 * `init()`: Zazwyczaj ta funkcja ładuje model do obiektu globalnego. Ta funkcja jest uruchamiana tylko raz, gdy zostanie uruchomiony kontener platformy Docker dla usługi sieci Web.
 
-* `run(input_data)`: Ta funkcja wykorzystuje model do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe uruchomienia zazwyczaj używają formatu JSON na potrzeby serializacji i deserializacji. Można także pracować z nieprzetworzonymi danymi binarnymi. Dane można przekształcić przed wysłaniem ich do modelu lub przed zwróceniem do klienta.
+* `run(input_data)`: Ta funkcja wykorzystuje model do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe przebiegu zazwyczaj używają formatu JSON do serializacji i deserializacji. Możesz również korzystać z nieprzetworzonych danych binarnych. Dane można przekształcić przed wysłaniem ich do modelu lub przed zwróceniem ich do klienta.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Lokalizowanie plików modelu w skrypcie wprowadzania
 
@@ -220,17 +220,23 @@ W poniższej tabeli opisano wartość AZUREML_MODEL_DIR w zależności od liczby
 | Jeden model | Ścieżka do folderu zawierającego model. |
 | Wiele modeli | Ścieżka do folderu zawierającego wszystkie modele. Modele są zlokalizowane według nazwy i wersji w tym folderze (`$MODEL_NAME/$VERSION`) |
 
-Aby uzyskać ścieżkę do pliku w modelu, Połącz zmienną środowiskową z szukaną nazwą pliku.
-Nazwy plików modelu są zachowywane podczas rejestracji i wdrożenia. 
+Podczas rejestracji i wdrażania modelu modele są umieszczane w ścieżce AZUREML_MODEL_DIR i ich oryginalne nazwy plików są zachowywane.
+
+Aby uzyskać ścieżkę do pliku modelu w skrypcie wpisu, Połącz zmienną środowiskową z szukaną ścieżką pliku.
 
 **Przykład pojedynczego modelu**
 ```python
+# Example when the model is a file
 model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
+
+# Example when the model is a folder containing a file
+file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'sklearn_regression_model.pkl')
 ```
 
 **Przykład wielu modeli**
 ```python
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklearn_regression_model.pkl')
+# Example when the model is a file, and the deployment contains multiple models
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path

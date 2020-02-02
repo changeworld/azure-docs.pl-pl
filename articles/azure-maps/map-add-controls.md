@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6652ca30d9f38eb6184fce5f1ff5428d29c271a6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e2ad8eb181685d3ac3de8b1e0ed7ef8ddfa4e224
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911267"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933282"
 ---
 # <a name="add-controls-to-a-map"></a>Dodawanie formantów do mapy
 
@@ -39,7 +39,7 @@ Poniżej znajduje się kompletny przykładowy kod wykonywany z powyższymi funkc
 
 ## <a name="add-pitch-control"></a>Dodaj kontrolkę gęstość
 
-Kontrolka gęstość dodaje przyciski umożliwiające przechylenie skoku na mapę względem zakresu. Poniższy przykład kodu tworzy wystąpienie klasy [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) i dodaje do niego prawy górny róg mapy.
+Kontrolka gęstość dodaje przyciski umożliwiające przechylenie skoku na mapę względem zakresu. Poniższy przykład kodu tworzy wystąpienie klasy [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) . Dodaje PitchControl do prawego górnego rogu mapy.
 
 ```javascript
 //Construct a pitch control and add it to the map.

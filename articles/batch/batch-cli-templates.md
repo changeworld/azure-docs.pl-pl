@@ -1,6 +1,6 @@
 ---
-title: Uruchamianie zadań na koniec do końca przy użyciu szablonów — Azure Batch | Microsoft Docs
-description: Tworzenie pul usługi Batch, zadań i zadań przy użyciu plików szablonów i interfejsu wiersza polecenia platformy Azure.
+title: Uruchamianie zadań na koniec do końca przy użyciu szablonów — Azure Batch
+description: Korzystając tylko z poleceń interfejsu wiersza polecenia, można utworzyć pulę, przekazać dane wejściowe, utworzyć zadania i skojarzone zadania i pobrać wynikowe dane wyjściowe.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 89a354320ed474ce3e5f9049a75e06313c5860e2
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029733"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935077"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Użyj Azure Batch szablonów interfejsu wiersza polecenia i transferu plików
 

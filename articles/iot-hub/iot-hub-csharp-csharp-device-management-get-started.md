@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 0ab714efc3e9eb0de9d6753854031110e09fe06b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 79e65671613364f5cc05153d90cfdcd5959a279f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147832"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939328"
 ---
 # <a name="get-started-with-device-management-net"></a>Wprowadzenie do zarządzania urządzeniami (.NET)
 
@@ -40,7 +40,7 @@ Na końcu tego samouczka będziesz mieć dwie aplikacje konsolowe .NET:
 
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -81,7 +81,7 @@ W tej sekcji utworzysz aplikację konsolową .NET, za pomocą C#której zostanie
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Dodaj następujące pola do klasy **Program**: Zastąp wartość [](#get-the-iot-hub-connection-string) symboluzastępczegoparametramipołączeniaIoTHubskopiowanymiwcześniejwpoluPobierzparametrypołączeniausługiIoT`{iot hub connection string}` Hub.
+1. Dodaj następujące pola do klasy **Program**: Zastąp `{iot hub connection string}` wartość symbolu zastępczego parametrami połączenia IoT Hub skopiowanymi wcześniej w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string).
 
    ```csharp
    static RegistryManager registryManager;
@@ -126,7 +126,7 @@ W tej sekcji utworzysz aplikację konsolową .NET, za pomocą C#której zostanie
    Console.ReadLine();
    ```
 
-1. Wybierz pozycję **kompilacja** > Kompiluj**rozwiązanie**.
+1. Wybierz pozycję **kompilacja** > **Kompiluj rozwiązanie**.
 
 > [!NOTE]
 > W tym samouczku wykonywane jest tylko jedno zapytanie dotyczące raportowanych właściwości urządzenia. W kodzie produkcyjnym zalecamy sondowanie w celu wykrywania zmian raportowanych właściwości.
@@ -143,7 +143,7 @@ W tej sekcji omówiono następujące zagadnienia:
 
 Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące kroki:
 
-1. W programie Visual Studio w już utworzonym rozwiązaniu TriggerReboot wybierz pozycję **plik** > **Nowy** > **projekt**. W obszarze **Utwórz nowy projekt**Znajdź i wybierz szablon projektu **aplikacja konsoli (.NET Framework)** , a następnie wybierz przycisk **dalej**.
+1. W programie Visual Studio w już utworzonym rozwiązaniu TriggerReboot wybierz pozycję **plik** > **Nowy** > **Project**. W obszarze **Utwórz nowy projekt**Znajdź i wybierz szablon projektu **aplikacja konsoli (.NET Framework)** , a następnie wybierz przycisk **dalej**.
 
 1. W obszarze **Konfigurowanie nowego projektu**Nazwij projekt *SimulateManagedDevice*, a w polu **rozwiązanie**wybierz pozycję **Dodaj do rozwiązania**. Wybierz pozycję **Utwórz**.
 
@@ -164,7 +164,7 @@ Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące kroki:
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Dodaj następujące pola do klasy **Program**: Zastąp wartość [](#register-a-new-device-in-the-iot-hub) symboluzastępczegoparametramipołączeniaurządzeniazanotowanymiwcześniejwtemacierejestrowanienowegourządzeniawusłudzeIoT`{device connection string}` Hub.
+1. Dodaj następujące pola do klasy **Program**: Zastąp `{device connection string}` wartość symbolu zastępczego parametrami połączenia urządzenia zanotowanymi wcześniej w temacie [Rejestrowanie nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp
     static string DeviceConnectionString = "{device connection string}";
@@ -200,7 +200,7 @@ Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące kroki:
            Console.WriteLine("Error in sample: {0}", ex.Message);
        }
 
-       string result = "'Reboot started.'";
+       string result = @"{""result"":""Reboot started.""}";
        return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
    }
    ```
@@ -234,9 +234,9 @@ Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące kroki:
 
 1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Ustaw projekty startowe**.
 
-1. W polu**projekt startowy** **typowych właściwości** > wybierz pozycję **pojedynczy projekt startowy**, a następnie wybierz projekt **SimulateManagedDevice** . Aby zapisać zmiany, wybierz pozycję **OK**.
+1. Dla **typowych właściwości** > **projekt startowy**wybierz pozycję **pojedynczy projekt startowy**, a następnie wybierz projekt **SimulateManagedDevice** . Aby zapisać zmiany, wybierz pozycję **OK**.
 
-1. Wybierz pozycję **kompilacja** > Kompiluj**rozwiązanie**.
+1. Wybierz pozycję **kompilacja** > **Kompiluj rozwiązanie**.
 
 > [!NOTE]
 > Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wykładniczy wycofywania), zgodnie z sugestią w [obsłudze błędów przejściowych](/azure/architecture/best-practices/transient-faults).

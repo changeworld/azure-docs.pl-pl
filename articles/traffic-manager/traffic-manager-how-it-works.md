@@ -3,7 +3,7 @@ title: Jak działa usługa Azure Traffic Manager | Microsoft Docs
 description: Ten artykuł pomoże Ci zrozumieć, jak Traffic Manager kieruje ruchem w celu uzyskania wysokiej wydajności i dostępności aplikacji sieci Web
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: allensu
-ms.openlocfilehash: 281e1e591d7c3cc31b77a116fb42af49dc27798c
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.author: rohink
+ms.openlocfilehash: 709e89b94ba10db954aa5cf3f70aeffb0d239edb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312145"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938619"
 ---
 # <a name="how-traffic-manager-works"></a>Jak działa Traffic Manager
 
@@ -34,7 +34,7 @@ Gdy klient próbuje nawiązać połączenie z usługą, musi najpierw rozpoznać
 
 ## <a name="traffic-manager-example"></a>Przykład Traffic Manager
 
-Firma Contoso Corp opracowała nowy portal dla partnerów. Adres URL dla tego portalu to https://partners.contoso.com/login.aspx. Aplikacja jest hostowana w trzech regionach platformy Azure. Aby zwiększyć dostępność i zmaksymalizować wydajność globalną, wykorzystuje Traffic Manager do dystrybucji ruchu klientów do najbliższego dostępnego punktu końcowego.
+Firma Contoso Corp opracowała nowy portal dla partnerów. Adres URL dla tego portalu jest https://partners.contoso.com/login.aspx. Aplikacja jest hostowana w trzech regionach platformy Azure. Aby zwiększyć dostępność i zmaksymalizować wydajność globalną, wykorzystuje Traffic Manager do dystrybucji ruchu klientów do najbliższego dostępnego punktu końcowego.
 
 Aby osiągnąć tę konfigurację, wykonaj następujące czynności:
 
@@ -67,7 +67,7 @@ Kontynuując z poprzedniego przykładu, gdy klient zażąda strony https://partn
 7. Rekursywna usługa DNS konsoliduje wyniki i zwraca pojedynczą odpowiedź DNS do klienta.
 8. Klient odbiera wyniki DNS i łączy się z podanym adresem IP. Klient łączy się z punktem końcowym usługi aplikacji bezpośrednio, a nie za pomocą Traffic Manager. Ponieważ jest to punkt końcowy HTTPS, Klient wykonuje niezbędną uzgadnianie SSL/TLS, a następnie wysyła żądanie HTTP GET dla strony "/login.aspx".
 
-Rekursywna usługa DNS buforuje odpowiedzi DNS, które odbiera. Program rozpoznawania nazw DNS na urządzeniu klienckim buforuje również wynik. Buforowanie umożliwia szybsze odbieranie zapytań DNS przy użyciu danych z pamięci podręcznej, a nie wykonywanie zapytań dotyczących innych serwerów nazw. Czas trwania pamięci podręcznej zależy od właściwości "czas wygaśnięcia" (TTL) każdego rekordu DNS. Krótsze wartości powodują szybsze wygaśnięcie pamięci podręcznej, a tym samym więcej operacji rundy do serwerów nazw Traffic Manager. Więcej wartości oznacza, że może upłynąć dłużej, że ruch nie przeszedł do punktu końcowego. Traffic Manager umożliwia skonfigurowanie czasu wygaśnięcia Traffic Manager odpowiedzi DNS na wartość równą 0 sekund i maksymalnie 2 147 483 647 sekund (maksymalny zakres zgodny ze standardem [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)), dzięki czemu można wybrać wartość, która najlepiej równoważy potrzebom Twoja aplikacja.
+Rekursywna usługa DNS buforuje odpowiedzi DNS, które odbiera. Program rozpoznawania nazw DNS na urządzeniu klienckim buforuje również wynik. Buforowanie umożliwia szybsze odbieranie zapytań DNS przy użyciu danych z pamięci podręcznej, a nie wykonywanie zapytań dotyczących innych serwerów nazw. Czas trwania pamięci podręcznej zależy od właściwości "czas wygaśnięcia" (TTL) każdego rekordu DNS. Krótsze wartości powodują szybsze wygaśnięcie pamięci podręcznej, a tym samym więcej operacji rundy do serwerów nazw Traffic Manager. Więcej wartości oznacza, że może upłynąć dłużej, że ruch nie przeszedł do punktu końcowego. Traffic Manager umożliwia skonfigurowanie czasu wygaśnięcia w Traffic Manager odpowiedzi DNS na wartość równą 0 sekund i maksymalnie 2 147 483 647 sekund (maksymalny zakres zgodny ze standardem [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)), co pozwala wybrać wartość, która najlepiej równoważy potrzebom aplikacji.
 
 ## <a name="faqs"></a>Często zadawane pytania
 

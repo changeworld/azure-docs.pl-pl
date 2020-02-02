@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5b59bdc06d455c7bd0ec9cf889f5cfa382948467
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8503b12be628fe7d5651221c9d0379bee3e292bd
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911186"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933481"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Dodawanie warstwy liniowej do mapy
 
-Warstwa linii może służyć do renderowania funkcji `LineString` i `MultiLineString` jako ścieżki lub trasy na mapie. Warstwa linii może być również używana do renderowania konspektu funkcji `Polygon` i `MultiPolygon`. Źródło danych jest połączone z warstwą linii w celu zapewnienia, że dane mają być renderowane. 
+Warstwa linii może służyć do renderowania funkcji `LineString` i `MultiLineString` jako ścieżki lub trasy na mapie. Warstwa linii może być również używana do renderowania konspektu funkcji `Polygon` i `MultiPolygon`. Źródło danych jest połączone z warstwą linii w celu zapewnienia jej danych do renderowania. 
 
 > [!TIP]
 > Warstwy liniowe domyślnie będą renderować współrzędne wielokątów, jak również linie w źródle danych. Aby ograniczyć warstwę w taki sposób, że renderuje tylko funkcje LineString, ustaw właściwość `filter` warstwy na `['==', ['geometry-type'], 'LineString']` lub `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]`, jeśli chcesz uwzględnić również funkcje MultiLineString.
 
-Poniższy kod pokazuje, jak utworzyć wiersz, dodać go do źródła danych i renderować za pomocą warstwy liniowej za pomocą klasy [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) .
+Poniższy kod pokazuje, jak utworzyć wiersz. Dodaj wiersz do źródła danych, a następnie Renderuj go za pomocą warstwy liniowej za pomocą klasy [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) .
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,7 +51,7 @@ Warstwy linii można stylować za pomocą [LineLayerOptions](/javascript/api/azu
 
 ## <a name="add-symbols-along-a-line"></a>Dodaj symbole wzdłuż linii
 
-Ten przykład pokazuje, jak dodać ikony strzałek wzdłuż linii na mapie. W przypadku korzystania z warstwy symboli ustaw opcję "położenie" na "wiersz", co spowoduje renderowanie symboli wzdłuż linii i obrócenie ikon (0 stopni = Right).
+Ten przykład pokazuje, jak dodać ikony strzałek wzdłuż linii na mapie. W przypadku korzystania z warstwy symboli ustaw opcję "położenie" na "wiersz". Ta opcja spowoduje renderowanie symboli wzdłuż linii i obrócenie ikon (0 stopni = Right).
 
 <br/>
 
@@ -66,7 +66,7 @@ Zobacz <a href='https://codepen.io/azuremaps/pen/drBJwX/'>strzałka Pokaż strza
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>Dodawanie gradientu obrysu do linii
 
-Oprócz możliwości zastosowania jednego koloru pociągnięcia do linii można także wypełnić linię gradientem kolorów, aby pokazać przejście z jednego segmentu linii do następnego. Na przykład gradienty linii mogą służyć do reprezentowania zmian w czasie i odległości lub w różnych temperaturach w połączonej linii obiektów. Aby można było zastosować tę funkcję do linii, źródło danych musi mieć ustawioną opcję `lineMetrics` wartość true, a następnie wyrażenie gradientu koloru może być przesyłane do opcji `strokeColor` wiersza. Wyrażenie gradientu obrysu musi odwoływać się do wyrażenia danych `['line-progress']`, które uwidacznia obliczane metryki linii dla wyrażenia.
+Możesz zastosować jeden kolor pociągnięcia do linii. Możesz również wypełnić linię gradientem kolorów, aby pokazać przejście z jednego segmentu linii do następnego segmentu wiersza. Na przykład gradienty linii mogą służyć do reprezentowania zmian w czasie i odległości lub w różnych temperaturach w połączonej linii obiektów. Aby można było zastosować tę funkcję do linii, źródło danych musi mieć ustawioną opcję `lineMetrics` wartość true, a następnie wyrażenie gradientu koloru może być przesyłane do opcji `strokeColor` wiersza. Wyrażenie gradientu obrysu musi odwoływać się do wyrażenia danych `['line-progress']`, które uwidacznia obliczane metryki linii dla wyrażenia.
 
 <br/>
 
@@ -76,7 +76,7 @@ Zobacz linię pióra <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>z gradie
 
 ## <a name="customize-a-line-layer"></a>Dostosowywanie warstwy liniowej
 
-Warstwa linii kilka opcji stylów. Oto narzędzie do wypróbowania.
+Warstwa linii ma kilka opcji stylów. Oto narzędzie do wypróbowania.
 
 <br/>
 

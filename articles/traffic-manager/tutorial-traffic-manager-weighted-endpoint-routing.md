@@ -2,24 +2,24 @@
 title: 'Samouczek: kierowanie ruchu do ważonych punktów końcowych — Traffic Manager platformy Azure'
 description: W tym artykule zawierającym samouczek opisano sposób kierowania ruchu do punktów końcowych z wagami za pomocą usługi Traffic Manager.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037913"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939479"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Samouczek: sterowanie routingiem ruchu za pomocą punktów końcowych z wagami przy użyciu usługi Traffic Manager
 
 W tym samouczku opisano, jak sterować routingiem ruchu użytkowników między punktami końcowymi metodą routingu ważonego za pomocą usługi Azure Traffic Manager. W przypadku tej metody routingu należy przypisać wagi do każdego punktu końcowego w konfiguracji profilu usługi Traffic Manager. Ruch użytkowników jest kierowany zgodnie z wagami przypisanymi do poszczególnych punktów końcowych. Waga jest liczbą całkowitą z zakresu od 1 do 1000. Im większa jest wartość wagi przypisana do punktu końcowego, tym wyższy jest priorytet.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie dwóch maszyn wirtualnych z podstawową witryną internetową w usługach IIS
@@ -38,9 +38,9 @@ Aby zobaczyć usługę Traffic Manager w działaniu, na potrzeby tego samouczka 
 - dwa wystąpienia podstawowych witryn internetowych działających w różnych regionach świadczenia usługi Azure — Wschodnie stany USA i Europa Zachodnia,
 - dwie testowe maszyny wirtualne do testowania usługi Traffic Manager — jedną maszynę wirtualną w regionie Wschodnie stany USA i drugą w regionie Europa Zachodnia. Testowe maszyny wirtualne są używane w celu zilustrowania sposobu kierowania ruchu użytkowników przez usługę Traffic Manager do witryny internetowej, która ma wyższą wagę przypisaną do punktu końcowego.
 
-### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 ### <a name="create-websites"></a>Tworzenie witryn internetowych
 
@@ -79,7 +79,7 @@ W tej części należy zainstalować serwer IIS na dwóch maszynach wirtualnych 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz pozycję **myIISVMEastUS** w grupie zasobów **myResourceGroupTM1**.
 2. Na stronie **Przegląd** wybierz pozycję **Połącz**. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**.
 3. Otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło, które zostały określone podczas tworzenia tej maszyny wirtualnej. Może być konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
-4. Wybierz **OK**.
+4. Kliknij przycisk **OK**.
 5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
 6. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows** > **Menedżer serwera**.
 7. Otwórz program Windows PowerShell na maszynie wirtualnej VM1. Użyj poniższych poleceń, aby zainstalować serwer usług IIS i zaktualizować domyślny plik HTM.
@@ -193,7 +193,7 @@ W tej sekcji zobaczysz działanie usługi Traffic Manager.
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz pozycję **myVMEastUS** w grupie zasobów **myResourceGroupTM1**.
 2. Na stronie **Przegląd** wybierz pozycję **Połącz**. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**.
 3. Otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. Może być konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
-4. Wybierz **OK**.
+4. Kliknij przycisk **OK**.
 5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
 6. W przeglądarce internetowej na maszynie wirtualnej myVMEastUS wprowadź nazwę DNS profilu usługi Traffic Manager, aby wyświetlić witrynę internetową. Nastąpi przekierowanie do witryny internetowej hostowanej na serwerze usług IIS myIISVMEastUS, ponieważ ma on przypisaną wyższą wartość wagi (**100**). MyIISVMWestEurope serwera IIS ma przypisaną dolną wartość wagi punktu końcowego wynoszącą **25**.
 
