@@ -2,13 +2,13 @@
 title: Konfigurowanie sondy gotowości dla wystąpienia kontenera
 description: Dowiedz się, jak skonfigurować sondę, aby upewnić się, że kontenery w Azure Container Instances odbierają żądania tylko wtedy, gdy są gotowe
 ms.topic: article
-ms.date: 10/17/2019
-ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901855"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935676"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurowanie sond gotowości
 
@@ -23,7 +23,7 @@ Azure Container Instances obsługuje również [sondy na żywo](container-instan
 
 ## <a name="yaml-configuration"></a>Konfiguracja YAML
 
-Przykładowo utwórz plik `readiness-probe.yaml` z następującym fragmentem kodu zawierającym sondę gotowości. Ten plik definiuje grupę kontenerów, która składa się z kontenera z uruchomioną małą aplikacją internetową. Aplikacja jest wdrażana z publicznego obrazu `mcr.microsoft.com/azuredocs/aci-helloworld`. Ta aplikacja kontenera jest również przedstawiona w przewodnikach Szybki Start, takich jak [Wdrażanie wystąpienia kontenera na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure](container-instances-quickstart.md).
+Przykładowo utwórz plik `readiness-probe.yaml` z następującym fragmentem kodu zawierającym sondę gotowości. Ten plik definiuje grupę kontenerów, która składa się z kontenera z uruchomioną małą aplikacją internetową. Aplikacja jest wdrażana z publicznego obrazu `mcr.microsoft.com/azuredocs/aci-helloworld`. Ta aplikacja kontenera jest również przedstawiona w temacie [Wdrażanie wystąpienia kontenera na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure](container-instances-quickstart.md) i innych przewodników Szybki Start.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,7 +63,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Uruchom polecenie
 
-Plik YAML zawiera polecenie uruchamiania, które ma zostać uruchomione podczas uruchamiania kontenera, zdefiniowane przez właściwość `command`, która akceptuje tablicę ciągów. To polecenie symuluje czas, gdy aplikacja sieci Web jest uruchomiona, ale kontener nie jest gotowy. Po pierwsze uruchamia sesję powłoki i uruchamia `node` polecenie w celu uruchomienia aplikacji sieci Web. Uruchamia również polecenie do uśpienia przez 240 sekund, po którym tworzony jest plik o nazwie `ready` w katalogu `/tmp`:
+Wdrożenie zawiera właściwość `command` definiującą polecenie uruchamiania uruchamiane po pierwszym uruchomieniu kontenera. Ta właściwość akceptuje tablicę ciągów. To polecenie symuluje czas, gdy aplikacja sieci Web jest uruchomiona, ale kontener nie jest gotowy. 
+
+Po pierwsze uruchamia sesję powłoki i uruchamia `node` polecenie w celu uruchomienia aplikacji sieci Web. Uruchamia również polecenie do uśpienia przez 240 sekund, po którym tworzony jest plik o nazwie `ready` w katalogu `/tmp`:
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait

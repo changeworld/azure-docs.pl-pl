@@ -1,5 +1,5 @@
 ---
-title: Użyj Azure Pipelines do kompilowania i wdrażania rozwiązań HPC — Azure Batch | Microsoft Docs
+title: Użyj Azure Pipelines do kompilowania rozwiązań & wdrożenia HPC-Azure Batch
 description: Dowiedz się, jak wdrożyć potok kompilacji/wydania dla aplikacji HPC działającej na Azure Batch.
 author: christianreddington
 ms.author: chredd
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 03e383e43cbe90ae2f59766a235f167cff623b6a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ee87cd7d80d4b24e8c52fb3c7dbb780d39071066
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982712"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935135"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Używanie Azure Pipelines do kompilowania i wdrażania rozwiązań HPC
 

@@ -2,17 +2,17 @@
 title: Hostowanie aplikacji sieci Web platformy Azure ze zrównoważonym obciążeniem w wierzchołku strefy
 description: Użyj rekordu aliasu Azure DNS, aby hostować aplikacje sieci Web z równoważeniem obciążenia w wierzchołku strefy
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: allensu
-ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212366"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937367"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hostowanie aplikacji sieci Web platformy Azure ze zrównoważonym obciążeniem w wierzchołku strefy
 
@@ -30,7 +30,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Do testowania niezbędna jest nazwa domeny, którą można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
 
-Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz temat [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
+Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Przykładowa domena używana w tym samouczku to contoso.com, ale skorzystaj z własnej nazwy domeny.
 
@@ -87,7 +87,7 @@ Teraz można utworzyć punkty końcowe dla dwóch aplikacji sieci Web.
 3. Wybierz pozycję **Dodaj**.
 4. Skorzystaj z poniższej tabeli, aby skonfigurować punkty końcowe:
 
-   |Typ  |Nazwa  |Środowisko docelowe  |Lokalizacja  |Niestandardowe ustawienia nagłówka|
+   |Typ  |Nazwa  |Cel  |Lokalizacja  |Niestandardowe ustawienia nagłówka|
    |---------|---------|---------|---------|---------|
    |Zewnętrzny punkt końcowy     |Koniec-01|Adres IP zarejestrowany dla aplikacji App-01|Wschodnie stany USA|Host:\<adres URL zarejestrowany dla aplikacji App-01\><br>Przykład: **host: App-01.azurewebsites.NET**|
    |Zewnętrzny punkt końcowy     |End-02|Adres IP zarejestrowany dla aplikacji App-02|Środkowe stany USA|Host:\<adres URL zarejestrowany dla aplikacji App-02\><br>Przykład: **host: App-02.azurewebsites.NET**
@@ -134,7 +134,7 @@ Teraz Dodaj rekord aliasu dla wierzchołka strefy.
 
    |Nazwa  |Typ  |Zestaw rekordów aliasu  |Typ aliasu  |Zasób platformy Azure|
    |---------|---------|---------|---------|-----|
-   |@     |A|Yes|Zasób platformy Azure|Traffic Manager — Twój profil|
+   |@     |A|Tak|Zasób platformy Azure|Traffic Manager — Twój profil|
 
 
 ## <a name="test-your-web-apps"></a>Testowanie aplikacji sieci Web

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 5bdcd955919a91760f16287a62956542cfaa47c5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9135d0a602bfa1f36f9723311e82a4d26abe6c9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225278"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934555"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -161,9 +161,9 @@ W poniższej tabeli przedstawiono alokacje wstępne portów adresów sieciowych 
 | Rozmiar puli (wystąpienia maszyn wirtualnych) | Wstępnie przydzielony porty dla konfiguracji protokołu IP|
 | --- | --- |
 | 1-50 | 1,024 |
-| 51-100 | 512 |
-| 101-200 | 256 |
-| 201-400 | 128 |
+| 51–100 | 512 |
+| 101–200 | 256 |
+| 201–400 | 128 |
 | 401-800 | 64 |
 | 801-1000 | 32 |
 
@@ -237,7 +237,7 @@ W przypadku skalowania w poziomie do następnej większej warstwy rozmiaru puli 
 
 ### <a name="idletimeout"></a>Aby zresetować limit czasu bezczynności dla ruchu wychodzącego, użyj utrzymywania aktywności
 
-Połączenia wychodzące mają 4-minutowy limit czasu bezczynności. Ten limit czasu nie jest regulowany. Można jednak użyć transportu (na przykład aktywności protokołu TCP) lub nieaktywności warstwy aplikacji, aby odświeżyć bezczynny przepływ i zresetować ten limit czasu bezczynności w razie potrzeby.  
+Połączenia wychodzące mają 4-minutowy limit czasu bezczynności. Ten limit czasu jest dostosowywany za pośrednictwem [reguł ruchu wychodzącego](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout). W razie potrzeby można również użyć transportu (na przykład aktywności protokołu TCP) lub warstwy aplikacji, aby odświeżyć przepływ bezczynności i zresetować ten limit czasu bezczynności.  
 
 W przypadku korzystania z funkcji utrzymywania aktywności protokołu TCP wystarczy włączyć je po jednej stronie połączenia. Na przykład wystarczy włączyć je po stronie serwera tylko w celu zresetowania czasomierza bezczynności przepływu i nie jest konieczne dla obu stron w celu zainicjowania obsługi protokołu TCP.  Podobne pojęcia istnieją dla warstwy aplikacji, w tym konfiguracje klienta bazy danych.  Sprawdź, czy po stronie serwera znajdują się opcje dotyczące nieaktywności specyficznych dla aplikacji.
 

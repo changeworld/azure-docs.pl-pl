@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 739322feb8e844a197f2943f4ff050cacc0f2274
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911294"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933298"
 ---
 # <a name="building-an-accessible-application"></a>Tworzenie dostępnej aplikacji
 
@@ -72,19 +72,19 @@ Mapa zawiera wbudowane skróty klawiaturowe, które ułatwiają korzystanie z ma
 | `Tab` | Nawigowanie między kontrolkami i okienkami podręcznymi na mapie. |
 | `ESC` | Przenieś fokus z dowolnego elementu na mapie do elementu mapy najwyższego poziomu. |
 | `Ctrl` + `Shift` + `D` | Przełącz poziom szczegółów czytnika ekranu.  |
-| Klawisz ze strzałką w lewo | Przesuń mapę w lewo o 100 pikseli |
-| Klawisz ze strzałką w prawo | Przesuń mapę w prawo 100 pikseli |
+| Klawisz Strzałka w lewo | Przesuń mapę w lewo o 100 pikseli |
+| Klawisz Strzałka w prawo | Przesuń mapę w prawo 100 pikseli |
 | Klawisz Strzałka w dół | Przesuń mapę w dół o 100 pikseli |
 | Klawisz Strzałka w górę | Przesuń mapę w górę o 100 pikseli |
 | `Shift` + Strzałka w górę | Zwiększ wysokość mapy o 10 stopni |
 | `Shift` + Strzałka w dół | Zmniejsz wysokość mapy o 10 stopni |
 | `Shift` + Strzałka w prawo | Obróć mapę o 15 stopni w prawo |
 | `Shift` + Strzałka w lewo | Obróć mapę o 15 stopni w lewo |
-| Znak plus (`+`) <sup>*</sup>lub znak równości (`=`) | Powiększenie |
-| Znak minus, łącznik (`-`) lub podkreślenie <sup>*</sup>(`_`) | Pomniejszenie | 
+| Znak plus (`+`) <sup>*</sup>lub znak równości (`=`) | Powiększ |
+| Znak minus, łącznik (`-`) lub podkreślenie <sup>*</sup>(`_`) | Pomniejsz | 
 | `Shift` i przeciągnij myszą na mapie, aby rysować obszar | Powiększ do obszaru |
 
-<sup>*</sup> Te kluczowe skróty zazwyczaj współdzielą ten sam klucz na klawiaturze. Dodano je w celu usprawnienia środowiska użytkownika, tak że nie ma znaczenia, czy użytkownik korzysta z klawisza Shift, czy nie dla tych skrótów.
+<sup>*</sup> Te kluczowe skróty zazwyczaj współdzielą ten sam klucz na klawiaturze. Te skróty zostały dodane w celu usprawnienia środowiska użytkownika. Nie ma znaczenia, czy użytkownik używa klawisza Shift lub nie do tych skrótów.
 
 ## <a name="screen-reader-support"></a>Obsługa czytnika ekranu
 
@@ -94,9 +94,9 @@ Wszelkie dodatkowe informacje umieszczane na mapie podstawowej powinny mieć odp
 
 ## <a name="make-popups-keyboard-accessible"></a>Zapewnianie dostępu do klawiatury podręcznej
 
-Znacznik lub symbol jest często używany do reprezentowania lokalizacji na mapie. Dodatkowe informacje o lokalizacji są zwykle wyświetlane w oknie podręcznym, gdy użytkownik współdziała ze znacznikiem. W przypadku większości aplikacji okna podręczne są wyświetlane, gdy użytkownik kliknie lub naciśnie znacznik, ale wymaga, aby użytkownik korzystał z myszy lub ekranu dotykowego. Dobrym sposobem jest udostępnienie okien podręcznych w przypadku korzystania z klawiatury. Można to osiągnąć przez utworzenie okna podręcznego dla każdego punktu danych i dodanie go do mapy. 
+Znacznik lub symbol jest często używany do reprezentowania lokalizacji na mapie. Dodatkowe informacje o lokalizacji są zwykle wyświetlane w oknie podręcznym, gdy użytkownik współdziała ze znacznikiem. W przypadku większości aplikacji okna podręczne są wyświetlane, gdy użytkownik kliknie lub naciśnie znacznik, ale to zdarzenie wymaga, aby użytkownik korzystał z myszy lub ekranu dotykowego. Dobrym sposobem jest udostępnienie okien podręcznych w przypadku korzystania z klawiatury. Tę funkcję można osiągnąć przez utworzenie okna podręcznego dla każdego punktu danych i dodanie go do mapy. 
 
-Poniższy przykład ładuje punkty zainteresowań na mapie przy użyciu warstwy symboli i dodaje podręczne do mapy dla każdego punktu zainteresowania. Odwołanie do każdego okna podręcznego jest przechowywane we właściwościach każdego punktu danych, dzięki czemu można go również pobrać dla znacznika, na przykład po kliknięciu znacznika. Po skoncentrowaniu się na mapie naciśnięcie klawisza Tab umożliwi użytkownikowi przechodzenie przez poszczególne okienka podręczne na mapie.
+Poniższy przykład ładuje punkty zainteresowań na mapie przy użyciu warstwy symboli i dodaje podręczne do mapy dla każdego punktu zainteresowania. Odwołanie do każdego okna podręcznego jest przechowywane we właściwościach każdego punktu danych. Można go również pobrać dla znacznika, na przykład po kliknięciu znacznika. Po skoncentrowaniu się na mapie naciśnięcie klawisza Tab umożliwi użytkownikowi przechodzenie przez poszczególne okienka podręczne na mapie.
 
 <br/>
 
@@ -106,23 +106,23 @@ Poniższy przykład ładuje punkty zainteresowań na mapie przy użyciu warstwy 
 
 ## <a name="additional-accessibility-tips"></a>Dodatkowe wskazówki dotyczące ułatwień dostępu
 
-Poniżej znajdują się dodatkowe porady ułatwiające dostęp do aplikacji mapowania sieci Web.
+Poniżej znajdują się dodatkowe porady ułatwiające dostęp do aplikacji do mapowania sieci Web.
 
-- W przypadku wyświetlania dużej ilości danych punktów na mapie należy rozważyć zmniejszenie bałaganu i użycie klastrowania. 
+- Jeśli na mapie jest wyświetlanych wiele danych punktów interaktywnych, rozważ zmniejszenie bałaganu i użycie klastrowania. 
 - Upewnij się, że współczynnik kontrastu kolorów między tekstem i symbolami i kolorami tła to 4.5:1 lub więcej.
 - Należy zachować krótką, opisową i zrozumiałą komunikaty o atrybutach ARIA, Alt i title. Unikaj zbędnych żargon i akronimów.
 - Spróbuj zoptymalizować komunikaty wysyłane do czytnika ekranu, aby zapewnić zwięzłe informacje, które są łatwe do zamieszania przez użytkownika. Na przykład jeśli chcesz zaktualizować czytnik ekranu z dużą częstotliwością, np. podczas przesuwania mapy, rozważ wykonanie następujących czynności:
     - Zaczekaj na zakończenie przesuwania mapy w celu zaktualizowania czytnika ekranu.
     - Ogranicz aktualizacje do co kilka sekund. 
     - Łączenie komunikatów w sposób logiczny. 
-- Unikaj przekazywania informacji tylko za pomocą koloru. Użyj tekstu, ikon lub wzorców, aby uzupełnić lub zastąpić kolor. Niektóre zagadnienia:
+- Należy unikać używania koloru jako jedynego sposobu przekazywania informacji. Użyj tekstu, ikon lub wzorców, aby uzupełnić lub zastąpić kolor. Niektóre zagadnienia:
     - Jeśli używasz warstwy bąbelkowej do wyświetlania wartości względnej między punktami danych, rozważ przeskalowanie promienia każdego bąbelka, a także alternatywę do kolorowania. 
     - Rozważ użycie warstwy symbol z różnymi ikonami dla różnych kategorii metryk, takich jak trójkąty, gwiazdki i kwadraty. Warstwa symboli obsługuje również skalowanie rozmiaru ikony. Etykieta tekstowa może również być wyświetlana.
     - W przypadku wyświetlania danych liniowych szerokość może być używana do reprezentowania wagi lub rozmiaru. Wzorzec tablic kreskowych może służyć do reprezentowania różnych kategorii linii. Warstwa symboli może być używana w połączeniu z linią do nakładania ikon wzdłuż linii. Użycie ikony strzałki jest przydatne do wyświetlania przepływu lub kierunku linii.
     - W przypadku wyświetlania danych wielokątów wzorzec, taki jak paski, może być używany jako alternatywa dla koloru. 
 - Niektóre wizualizacje, takie jak map cieplnych, warstwy kafelków i warstwy obrazów, nie są dostępne dla użytkowników z upośledzeniem programu Vision. Niektóre zagadnienia:
     - Zapoznaj się z czytnikiem ekranu opisującym, co warstwa jest wyświetlana po dodaniu do mapy. Na przykład, jeśli zostanie wyświetlona warstwa kafelków radarowych, czytniki ekranu mówią, jak "dane radaru Pogoda na mapie".
-- Ogranicz liczbę funkcji, które wymagają przesuwania wskaźnika myszy. Nie będą one dostępne dla użytkowników korzystających z klawiatury lub urządzenia dotykowego do korzystania z aplikacji. Należy pamiętać, że nadal dobrym sposobem jest posiadanie stylu aktywowania zawartości interaktywnej, takiej jak ikony klikania, linki i przyciski.
+- Ogranicz liczbę funkcji, które wymagają przesuwania wskaźnika myszy. Te funkcje będą niedostępne dla użytkowników korzystających z klawiatury lub urządzenia dotykowego do korzystania z aplikacji. Pamiętaj, że nadal dobrym sposobem jest posiadanie stylu aktywowany dla zawartości interaktywnej, takiej jak ikony, linki i przyciski.
 - Spróbuj przejść do aplikacji przy użyciu klawiatury. Upewnij się, że kolejność tabulacji jest logiczna.
 - Jeśli tworzysz skróty klawiaturowe, spróbuj ograniczyć je do dwóch kluczy lub mniej. 
 

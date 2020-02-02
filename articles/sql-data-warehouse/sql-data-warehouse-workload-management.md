@@ -11,12 +11,12 @@ ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940582"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935411"
 ---
 # <a name="what-is-workload-management"></a>Co to jest zarządzanie obciążeniami?
 
@@ -31,7 +31,7 @@ Obciążenie magazynu danych odnosi się do wszystkich operacji, które wykonywa
 - Eksportowanie danych z magazynu danych
 
 Wydajność hurtowni danych jest określana przez [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md).
-- Aby wyświetlić zasoby przydzieloną dla wszystkich profilów wydajności, zobacz [limity pamięci i współbieżności] pamięć-współbieżność-limits.md).
+- Aby wyświetlić zasoby przydzieloną dla wszystkich profilów wydajności, zobacz [limity pamięci i współbieżności](memory-concurrency-limits.md).
 - W celu dostosowania pojemności można [skalować w górę lub w dół](quickstart-scale-compute-portal.md).
 
 

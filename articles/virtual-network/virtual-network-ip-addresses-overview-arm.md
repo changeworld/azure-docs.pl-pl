@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 56e02d5723fefe45f5df15a4889a35fc55d8da3b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: abfd96eae38bf7c0ad145c2c262efc044b741cea
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842388"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936715"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -75,7 +75,7 @@ Standardowe publiczne adresy IP jednostek SKU:
 - Zawsze używają metody alokacji statycznej.
 - Ich dostosowywalny limit czasu bezczynności dla przepływu opartego na ruchu przychodzącym wynosi od 4 do 30 minut przy domyślnej wartości 4 minut, a stały limit czasu bezczynności dla przepływu opartego na ruchu wychodzącym wynosi 4 minuty.
 - Domyślnie są zabezpieczone i zamknięte dla przychodzącego ruchu sieciowego. Dozwolony przychodzący ruch sieciowy należy jawnie umieścić na liście dozwolonych z użyciem [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups).
-- Są przypisywane do interfejsów sieciowych, publicznych usług Load Balancer w warstwie Standardowa, bram Application Gateway lub bram VPN Gateway. Aby uzyskać więcej informacji na temat usługi Load Balancer w warstwie Standardowa, zobacz [Usługa Azure Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Przypisane do interfejsów sieciowych, standardowych publicznych modułów równoważenia obciążenia lub bram aplikacji. Aby uzyskać więcej informacji na temat usługi Load Balancer w warstwie Standardowa, zobacz [Usługa Azure Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Domyślnie strefowo nadmiarowe i opcjonalnie strefowe (mogą zostać utworzone jako strefowe i gwarantowane w określonej strefie dostępności). Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie stref dostępności) oraz [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]

@@ -2,7 +2,7 @@
 title: Samouczek — poprawianie odpowiedzi witryny internetowej za pomocą usługi Azure Traffic Manager
 description: W tym samouczku opisano sposób tworzenia profilu Traffic Manager w celu utworzenia witryny sieci Web o wysokim stopniu odpowiedzi.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,19 +10,19 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
-ms.author: allensu
-ms.openlocfilehash: 3686e9a7d82f8134b44cd40468c5e430eb2e72f3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: 9027b1574144e2addbc84fceb16deba9014826fe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422843"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938410"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Samouczek: ulepszanie odpowiedzi witryny sieci Web przy użyciu Traffic Manager
 
 W tym samouczku opisano, jak za pomocą programu Traffic Manager utworzyć witrynę sieci Web o wysokiej dostępności przez kierowanie ruchu użytkowników do witryny sieci Web przy najniższym opóźnieniu. Zwykle centrum danych o najniższym opóźnieniu jest tym, co jest najbliższe odległości geograficznej.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie dwóch maszyn wirtualnych z podstawową witryną internetową w usługach IIS
@@ -41,7 +41,7 @@ Aby w tym samouczku zobaczyć usługi Traffic Manager w działaniu, trzeba wdro�
 - Dwa wystąpienia podstawowych witryn sieci Web działających w różnych regionach platformy Azure — **Wschodnie stany USA** i **Europa Zachodnia**.
 - Dwie testowe maszyny wirtualne do testowania Traffic Manager-jednej maszyny wirtualnej w **regionie Wschodnie stany USA** oraz druga maszyna wirtualna w **Europie zachodniej**. Testowe maszyny wirtualne służą do zilustrowania sposobu, w jaki Traffic Manager kieruje ruchem użytkownika do witryny sieci Web działającej w tym samym regionie, co zapewnia najniższy czas oczekiwania.
 
-### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -143,9 +143,9 @@ Utwórz profil Traffic Manager, który kieruje ruchem użytkownika przez wysłan
     | ---                     | ---                                                |
     | Nazwa                   | Ta nazwa musi być unikatowa w obrębie strefy trafficmanager.net. Na jej podstawie zostanie utworzona nazwa DNS trafficmanager.net służąca do uzyskiwania dostępu do profilu usługi Traffic Manager.                                   |
     | Metoda routingu          | Wybierz metodę routingu **wydajności** .                                       |
-    | Subscription            | Wybierz subskrypcję.                          |
+    | Subskrypcja            | Wybierz subskrypcję.                          |
     | Grupa zasobów          | Wybierz grupę zasobów *myResourceGroupTM1*. |
-    | Location                | Wybierz pozycję **Wschodnie stany USA**. To ustawienie dotyczy lokalizacji grupy zasobów i nie ma wpływu na profil usługi Traffic Manager, który będzie wdrażany globalnie.                              |
+    | Lokalizacja                | Wybierz pozycję **Wschodnie stany USA**. To ustawienie dotyczy lokalizacji grupy zasobów i nie ma wpływu na profil usługi Traffic Manager, który będzie wdrażany globalnie.                              |
     |
 
     ![Tworzenie profilu usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)

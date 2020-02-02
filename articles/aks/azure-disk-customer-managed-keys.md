@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.author: mlearned
-ms.openlocfilehash: 831a867d1084f7396db0f8aa4c2e2e665eb98732
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1852ba059d13a8886b739cac439798b4d031a531
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898824"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932618"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Przenoszenie własnych kluczy (BYOK) z dyskami platformy Azure w usłudze Azure Kubernetes Service (AKS)
 
-Usługa Azure Storage szyfruje wszystkie dane na koncie magazynu w stanie spoczynku. Domyślnie dane są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby uzyskać dodatkową kontrolę nad kluczami szyfrowania, można podać [klucze zarządzane przez klienta][customer-managed-keys] do szyfrowania zarówno dysków systemu operacyjnego, jak i danych dla klastrów AKS.
+Usługa Azure Storage szyfruje wszystkie dane na koncie magazynu w stanie spoczynku. Domyślnie dane są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby uzyskać dodatkową kontrolę nad kluczami szyfrowania, można podać [klucze zarządzane przez klienta][customer-managed-keys] , które będą używane do szyfrowania dla dysków systemu operacyjnego i danych dla klastrów AKS.
 
 > [!NOTE]
 > BYOK Linux i oparty na systemie Windows klastry AKS są dostępne w [regionach platformy Azure][supported-regions] , które obsługują szyfrowanie po stronie serwera dla usługi Azure Managed Disks.

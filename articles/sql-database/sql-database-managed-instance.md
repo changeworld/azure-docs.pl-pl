@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514559"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935207"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co to jest Azure SQL Database wystąpienie zarządzane?
 
@@ -228,7 +228,7 @@ Wystąpienie zarządzane zapewnia dodatkową izolację zabezpieczeń od innych d
 
 Na poniższym diagramie przedstawiono różne opcje łączności dla aplikacji:
 
-![wysoka dostępność](./media/sql-database-managed-instance/application-deployment-topologies.png)  
+![Wysoka dostępność](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 
 Aby dowiedzieć się więcej na temat integracji sieci wirtualnej i wymuszania zasad sieciowych na poziomie podsieci, zobacz [Architektura sieci wirtualnej dla wystąpień zarządzanych](sql-database-managed-instance-connectivity-architecture.md) i [Połącz aplikację z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md).
 
@@ -299,11 +299,11 @@ Opcja wdrażania wystąpienia zarządzanego obsługuje zgodność z poprzednimi 
   
 Na poniższym diagramie przedstawiono zgodność obszaru powierzchni w wystąpieniu zarządzanym:  
 
-![migracja](./media/sql-database-managed-instance/migration.png)
+![migracji](./media/sql-database-managed-instance/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>Kluczowe różnice między SQL Server lokalnymi i w wystąpieniu zarządzanym
 
-Opcja wdrażania wystąpienia zarządzanego oferuje zawsze aktualność w chmurze, co oznacza, że niektóre funkcje w SQL Server lokalnym mogą być przestarzałe, wycofane lub mieć alternatywy. Istnieją określone przypadki, w których narzędzia muszą rozpoznać, że określona funkcja działa w nieco inny sposób, lub usługa nie działa w środowisku, którego nie można w pełni kontrolować:
+Opcja wdrażania wystąpienia zarządzanego oferuje zawsze aktualność w chmurze, co oznacza, że niektóre funkcje w SQL Server lokalnym mogą być przestarzałe, wycofane lub mieć alternatywy. Istnieją określone przypadki, w których narzędzia muszą rozpoznać, że określona funkcja działa w nieco inny sposób lub że usługa działa w środowisku, w którym nie jest w pełni kontrolowany:
 
 - Wysoka dostępność jest wbudowana i wstępnie skonfigurowana przy użyciu technologii podobnej do [zawsze dostępnych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 - Automatyczne kopie zapasowe i przywracanie do punktu w czasie. Klient może inicjować `copy-only` kopie zapasowe, które nie zakłócają automatycznego łańcucha kopii zapasowych.

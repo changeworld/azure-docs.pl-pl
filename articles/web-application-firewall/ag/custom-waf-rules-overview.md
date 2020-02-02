@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 9d9deca0365e13a0a8ad7404a476b05d0afef077
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645093"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934997"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Reguły niestandardowe dla zapory aplikacji sieci Web V2 na platformie Azure Application Gateway
 
@@ -22,7 +22,7 @@ Reguły niestandardowe umożliwiają tworzenie własnych reguł, które są ocen
 
 Na przykład można zablokować wszystkie żądania z adresu IP w zakresie 192.168.5.4/24. W tej regule operator to *IPMatch*, matchValues jest zakresem adresów IP (192.168.5.4/24), a akcja polega na zablokowaniu ruchu. Należy również ustawić nazwę i priorytet reguły.
 
-Reguły niestandardowe obsługują używanie logiki złożonej do bardziej zaawansowanych reguł, które zaspokajają potrzeby związane z bezpieczeństwem. Na przykład (warunek 1 **i** warunek 2) **lub** warunek 3).  Ten przykład oznacza, że jeśli spełniony jest warunek 1 **i** warunek 2 **lub** spełniony jest warunek 3, WAF powinien wykonać akcję określoną w regule niestandardowej.
+Reguły niestandardowe obsługują używanie logiki złożonej do bardziej zaawansowanych reguł, które zaspokajają potrzeby związane z bezpieczeństwem. Na przykład (warunek 1 **i** warunek 2) **lub** warunek 3). Oznacza to, że jeśli spełniony jest warunek 1 **i** warunek 2 **lub** spełniony jest warunek 3, WAF powinien wykonać akcję określoną w regule niestandardowej.
 
 Różne warunki dopasowywania w ramach tej samej reguły są zawsze składane przy użyciu **i**. Na przykład Zablokuj ruch z określonego adresu IP i tylko wtedy, gdy korzystają z określonej przeglądarki.
 
@@ -92,7 +92,7 @@ Ta reguła niestandardowa zawiera nazwę, priorytet, akcję i tablicę pasujący
 
 ### <a name="name-optional"></a>Nazwa [opcjonalnie]
 
-To jest nazwa reguły. Ta nazwa jest wyświetlana w dziennikach.
+Nazwa reguły.  Pojawia się w dziennikach.
 
 ### <a name="priority-required"></a>Priorytet [wymagany]
 
@@ -133,7 +133,7 @@ Musi być jednym z następujących operatorów:
 - GreaterThanOrEqual
 - Zaczyna się od
 - EndsWith
-- Wyrażenie regularne
+- Wyrażeń
 - Geodopasowanie (wersja zapoznawcza)
 
 ### <a name="negate-condition-optional"></a>Negate warunek [opcjonalny]
@@ -157,198 +157,13 @@ Lista wartości do dopasowania, które mogą być uważane za "jako" *lub*"Ed". 
 
 ### <a name="action-required"></a>Akcja [wymagane]
 
-- Zezwalaj — autoryzuje transakcję, pomijając wszystkie kolejne reguły. Oznacza to, że określone żądanie jest dodawane do listy dozwolonych i po dopasowaniu, żądanie przestanie działać w dalszej ocenie i zostanie wysłane do puli zaplecza. Reguły, które znajdują się na liście dozwolonych, nie są oceniane dla żadnych dalszych reguł niestandardowych lub reguł zarządzanych.
-- Block — blokuje transakcję na podstawie *SecDefaultAction* (tryb wykrywania/zapobiegania). Podobnie jak akcja zezwalania, gdy żądanie jest oceniane i dodawane do listy zablokowanych, szacowanie zostanie zatrzymane, a żądanie jest zablokowane. Każde żądanie, które spełnia te same warunki, nie zostanie ocenione i zostanie po prostu zablokowane. 
-- Log — umożliwia zapis reguły w dzienniku, ale umożliwia wykonywanie pozostałych reguł na potrzeby oceny. Kolejne reguły niestandardowe są oceniane w kolejności priorytetu, po którym następuje reguła zarządzana.
+- Zezwalaj — autoryzuje transakcję, pomijając wszystkie inne reguły. Określone żądanie jest dodawane do listy dozwolonych i po dopasowaniu, żądanie przestanie być dalszej oceny i zostanie wysłane do puli zaplecza. Reguły, które znajdują się na liście dozwolonych, nie są oceniane dla żadnych dalszych reguł niestandardowych lub reguł zarządzanych.
+- Block — blokuje transakcję na podstawie *SecDefaultAction* (tryb wykrywania/zapobiegania). Podobnie jak akcja zezwalania, gdy żądanie jest oceniane i dodawane do listy zablokowanych, szacowanie zostanie zatrzymane, a żądanie jest zablokowane. Każde żądanie, które spełnia te same warunki, nie będzie oceniane i zostanie zablokowane. 
+- Log — umożliwia zapis reguły w dzienniku, ale umożliwia wykonywanie pozostałych reguł na potrzeby oceny. Inne reguły niestandardowe są oceniane w kolejności priorytetu, po którym następuje reguła zarządzana.
 
 ## <a name="geomatch-custom-rules-preview"></a>Reguły niestandardowe geodopasowania (wersja zapoznawcza)
 
-Reguły niestandardowe umożliwiają tworzenie dostosowanych reguł zgodnie z dokładnymi potrzebami aplikacji i zasadami zabezpieczeń. Teraz można ograniczyć dostęp do aplikacji sieci Web według kraju/regionu, który jest dostępny w publicznej wersji zapoznawczej. Podobnie jak w przypadku wszystkich reguł niestandardowych, ta logika może zostać złożona z innymi regułami, aby odpowiadały potrzebom aplikacji. 
-
-   > [!NOTE]
-   > Reguły niestandardowe geodopasowania są dostępne w regionach Południowo-środkowe stany USA i Europa Północna. Aby uzyskać dostęp do nich w portalu, użyj [tego linku](https://aka.ms/AppGWWAFGeoMatch) do momentu, gdy będzie on aktywny dla wszystkich użytkowników. 
-
-Jeśli używasz operatora geodopasowania, selektory mogą być jednym z następujących kodów krajów dwucyfrowych. 
-
-|Kod kraju | Nazwa kraju |
-| ----- | ----- |
-| AD | Andora |
-| AE | Zjednoczone Emiraty Arabskie|
-| AF | Afganistan|
-| AG | Antigua i Barbuda|
-| AL | Albania|
-| AM | Armenia|
-| AO | Angola|
-| AR | Argentyna|
-| AS | Samoa Amerykańskie|
-| AT | Austria|
-| AU | Australia|
-| AZ | Azerbejdżan|
-| BA | Bośnia i Hercegowina|
-| BB | Barbados|
-| BD | Bangladesz|
-| BE | Belgia|
-| BF | Burkina Faso|
-| BG | Bułgaria|
-| BH | Bahrajn|
-| BI | Burundi|
-| BJ | Benin|
-| BL | Saint Barthélemy|
-| BN | Brunei Darussalam|
-| BO | Boliwia|
-| BR | Brazylia|
-| BS | Bahamy|
-| BT | Bhutan|
-| BW | Botswana|
-| BY | Białoruś|
-| BZ | Belize|
-| CA | Kanada|
-| CD | Demokratyczna Republika Konga|
-| CF | Republika Środkowoafrykańska|
-| CH | Szwajcaria|
-| CI | Cote d'Ivoire|
-| CL | Chile|
-| CM | Kamerun|
-| CN | Chiny|
-| CO | Kolumbia|
-| CR | Kostaryka|
-| CU | Kuba|
-| CV | Wyspy Zielonego Przylądka|
-| CY | Cypr|
-| CZ | Republika Czeska|
-| Niemcy | Niemcy|
-| DK | Dania|
-| DO | Dominikana|
-| DZ | Algieria|
-| EC | Ekwador|
-| EE | Estonia|
-| EG | Egipt|
-| ES | Hiszpania|
-| ET | Etiopia|
-| FI | Finlandia|
-| FJ | Fidżi|
-| FM | Federalne Stany Mikronezji|
-| PW | Francja|
-| GB | Zjednoczone Królestwo|
-| GE | Gruzja|
-| GF | Gujana Francuska|
-| GH | Ghana|
-| GN | Gwinea|
-| GP | Gwadelupa|
-| GR | Grecja|
-| GT | Gwatemala|
-| GY | Gujana|
-| HK | SRA Hongkong|
-| HN | Honduras|
-| Kadry | Chorwacja|
-| HT | Haiti|
-| HU | Węgry|
-| ID | Indonezja|
-| IE | Irlandia|
-| IL | Izrael|
-| IN | Indie|
-| IQ | Irak|
-| IR | Islamska Republika Iranu|
-| IS | Islandia|
-| IT | Włochy|
-| JM | Jamajka|
-| JO | Jordania|
-| JP | Japonia|
-| KE | Kenia|
-| KG | Kirgistan|
-| KH | Kambodża|
-| KI | Kiribati|
-| KN | Saint Kitts i Nevis|
-| KP | Koreańska Republika Ludowo-Demokratyczna|
-| KR | Korea Południowa|
-| KW | Kuwejt|
-| KY | Kajmany|
-| KZ | Kazachstan|
-| AMERYKA ŁACIŃSKA | Laotańska Republika Ludowo-Demokratyczna|
-| LB | Liban|
-| LI | Liechtenstein|
-| LK | Sri Lanka|
-| LR | Liberia|
-| LS | Lesotho|
-| LT | Litwa|
-| LU | Luksemburg|
-| LV | Łotwa|
-| LY | Libia |
-| MA | Maroko|
-| MD | Republika Mołdawii|
-| MG | Madagaskar|
-| MK | Macedonia Północna|
-| ML | Mali|
-| MM | Myanmar|
-| MN | Mongolia|
-| MO | SRA Makau|
-| MQ | Martynika|
-| MR | Mauretania|
-| MT | Malta|
-| MV | Malediwy|
-| MW | Malawi|
-| MX | Meksyk|
-| MY | Malezja|
-| MZ | Mozambik|
-| Nie dotyczy | Namibia|
-| NE | Niger|
-| NG | Nigeria|
-| NI | Nikaragua|
-| NL | Holandia|
-| NO | Norwegia|
-| NP | Nepal|
-| NR | Nauru|
-| NZ | Nowa Zelandia|
-| OM | Oman|
-| PA | Panama|
-| PE | Peru|
-| PH | Filipiny|
-| PK | Pakistan|
-| PL | Polska|
-| PR | Portoryko|
-| PT | Portugalia|
-| PW | Palau|
-| PY | Paragwaj|
-| QA | Katar|
-| RE | Reunion|
-| RO | Rumunia|
-| RS | Serbia|
-| RU | Federacja Rosyjska|
-| RW | Rwanda|
-| SA | Arabia Saudyjska|
-| SD | Sudan|
-| SE | Szwecja|
-| SG | Singapur|
-| SI | Słowenia|
-| SK | Słowacja|
-| SN | Senegal|
-| SO | Somalia|
-| SR | Surinam|
-| SS | Sudan Południowy|
-| SV | Salwador|
-| SY | Arabska Republika Syryjska|
-| SZ | Suazi|
-| TC | Turks i Caicos|
-| TG | Togo|
-| TH | Tajlandia|
-| TN | Tunezja|
-| TR | Turcja|
-| TT | Trynidad i Tobago|
-| TW | Tajwan|
-| TZ | Zjednoczona Republika Tanzanii|
-| UA | Ukraina|
-| UG | Uganda|
-| Stany Zjednoczone | Stany Zjednoczone|
-| UY | Urugwaj|
-| UZ | Uzbekistan|
-| VC | Saint Vincent i Grenadyny|
-| VE | Wenezuela|
-| VG | Brytyjskie Wyspy Dziewicze|
-| VI | Wyspy Dziewicze Stanów Zjednoczonych|
-| VN | Wietnam|
-| ZA | Republika Południowej Afryki|
-| ZM | Zambia|
-| ZW | Zimbabwe|
+Reguły niestandardowe pozwalają tworzyć dostosowane reguły spełniające dokładne potrzeby aplikacji i zasad zabezpieczeń. Możesz ograniczyć dostęp do aplikacji sieci Web według kraju/regionu. Aby uzyskać więcej informacji, zobacz temat [zasady niestandardowe geodopasowania (wersja zapoznawcza)](geomatch-custom-rules.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

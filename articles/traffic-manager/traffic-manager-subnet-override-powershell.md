@@ -3,18 +3,18 @@ title: Przesłonięcie podsieci Traffic Manager platformy Azure przy użyciu Azu
 description: Ten artykuł pomoże zrozumieć, jak Traffic Manager przesłonięcia podsieci służy do przesłonięcia metody routingu profilu Traffic Manager, aby skierować ruch do punktu końcowego na podstawie adresu IP użytkownika końcowego za pośrednictwem wstępnie zdefiniowanego zakresu adresów IP na potrzeby mapowania punktów końcowych przy użyciu platformy Azure Narzędzia.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: 93362c0e1b359583e30886172f8ccb155c5ffaf4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348894"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938417"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Traffic Manager przesłonięcia podsieci przy użyciu programu Azure PowerShell
 
@@ -35,7 +35,7 @@ Istnieją dwa typy profilów routingu, które obsługują przesłonięcia podsie
 
 Aby utworzyć przesłonięcie podsieci Traffic Manager, można użyć Azure PowerShell, aby dodać podsieci dla zastąpienia do punktu końcowego Traffic Manager.
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Program Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

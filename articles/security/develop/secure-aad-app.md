@@ -1,7 +1,7 @@
 ---
 title: Tworzenie bezpiecznej aplikacji sieci Web usługi Azure AD | Microsoft Docs
 description: Ta prosta Przykładowa aplikacja implementuje najlepsze rozwiązania w zakresie zabezpieczeń, które ulepszają aplikację i stan bezpieczeństwa organizacji podczas opracowywania na platformie Azure.
-keywords: Nie dotyczy
+keywords: potrącon
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771278"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937976"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Opracowywanie bezpiecznej aplikacji dla aplikacji usługi Azure AD
 ## <a name="overview"></a>Przegląd
@@ -185,7 +185,7 @@ $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 
 
 #Assign an address range to be used for the back-end address pool.
 
-$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.0.0/24
+$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
 
 #Create a virtual network with the subnets defined in the preceding steps.
 
@@ -212,7 +212,7 @@ $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAdd
 
 #Configure the back-end IP address pool with the IP addresses of the back-end web servers
 
-$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.0.0
+$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.3.11
 
 #Configure the front-end IP port for the public IP endpoint
 
@@ -222,6 +222,7 @@ $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 
 $passwd = ConvertTo-SecureString  "P@ssword!1" -AsPlainText -Force 
 $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:\AAD\Securities\Certificates\sslcert.com.cer" -Password $passwd 
+
 
 #Create the HTTP listener for the application gateway
 
@@ -334,7 +335,7 @@ Po włączeniu integracji sieci wirtualnej możesz dodać sieciowe grupy zabezpi
 
 5. W bloku podsieci sieciowej grupy zabezpieczeń wybierz opcję **Skojarz**, wybierz sieć wirtualną utworzoną we wdrożeniu i wybierz podsieć bramy o nazwie **GW-Subnet**. SIECIOWEJ grupy zabezpieczeń jest stosowana do podsieci.
 
-6. Utwórz kolejną sieciowej grupy zabezpieczeń jak w poprzednim kroku, tym razem z wystąpieniem App Service. Nadaj jej nazwę. Dodaj regułę ruchu przychodzącego dla portu 443, jak w przypadku usługi Application Gateway sieciowej grupy zabezpieczeń.
+6. Utwórz kolejną sieciowej grupy zabezpieczeń jak w poprzednim kroku, tym razem z wystąpieniem App Service. Nadaj mu nazwę. Dodaj regułę ruchu przychodzącego dla portu 443, jak w przypadku usługi Application Gateway sieciowej grupy zabezpieczeń.
 
    Jeśli masz wystąpienie App Service wdrożone w wystąpieniu App Service Environment, które nie jest używane w przypadku tej aplikacji, możesz dodać reguły ruchu przychodzącego, aby umożliwić Azure Service Healthe sondy przez otwarcie portów 454-455 w przychodzących grupach zabezpieczeń App Service sieciowej grupy zabezpieczeń. Oto konfiguracja:
 
@@ -361,7 +362,7 @@ Poniższe technologie zapewniają możliwości zarządzania dostępem do danych 
 - Kontrola dostępu oparta na rolach na platformie Azure umożliwia administratorom definiowanie szczegółowych uprawnień dostępu w celu udzielania dostępu tylko użytkownikom potrzebnym do wykonywania swoich zadań. Zamiast zapewniać każdemu użytkownikowi nieograniczony dostęp do zasobów platformy Azure, Administratorzy mogą zezwalać na dostęp do danych posiadaczy tylko określonym akcjom. Dostęp do subskrypcji jest ograniczony do administratora subskrypcji.
 - Azure Active Directory Privileged Identity Management umożliwia klientom zminimalizowanie liczby użytkowników, którzy mają dostęp do pewnych informacji, takich jak dane posiadaczy kart. Administratorzy mogą używać Azure Active Directory Privileged Identity Management do odnajdywania, ograniczania i monitorowania uprzywilejowanych tożsamości oraz ich dostępu do zasobów. Tej funkcji można także użyć do wymuszenia dostępu administracyjnego na żądanie, w miarę potrzeb, w razie potrzeby.
 - Azure Active Directory Identity Protection wykrywa potencjalne luki w zabezpieczeniach, które mają wpływ na tożsamości organizacji, konfiguruje automatyczne odpowiedzi na wykryte podejrzane działania związane z tożsamościami organizacji i bada podejrzane zdarzenia w celu podjęcia odpowiednich działań w celu ich rozwiązania.
-### <a name="secrets-management"></a>Zarządzanie wpisami tajnymi
+### <a name="secrets-management"></a>Zarządzanie kluczami tajnymi
 Rozwiązanie używa Azure Key Vault do zarządzania kluczami i wpisami tajnymi. Usługa Azure Key Vault ułatwia ochronę kluczy kryptograficznych i kluczy tajnych używanych przez aplikacje i usługi w chmurze. Następujące funkcje Azure Key Vault pomagają klientom chronić takie dane i uzyskiwać do nich dostęp
    - Zaawansowane zasady dostępu są konfigurowane w zależności od potrzeb.
    - Zasady dostępu Key Vault są zdefiniowane z minimalnymi wymaganymi uprawnieniami do kluczy i wpisów tajnych.
@@ -465,7 +466,7 @@ Aby włączyć usługę MFA dla logowania administratora
    1. Przejdź do karty **Azure Active Directory** w Azure Portal
    2. W kategorii zabezpieczenia wybierz pozycję dostęp warunkowy. Zobaczysz ten ekran
 
-       ![Dostęp warunkowy — Zasady](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![Dostęp warunkowy — zasady](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 Jeśli nie możesz utworzyć nowych zasad
 
@@ -518,7 +519,7 @@ Aby utworzyć ten obszar roboczy
 
    3. Użyj pola wyszukiwania, aby wyszukać **platformę Azure**.
 
-   ![Wyszukiwanie ciągu „Azure Sentinel”](./media/secure-aad-app/sentinel-add.png)
+   ![Wyszukaj platformę Azure — wskaźnik](./media/secure-aad-app/sentinel-add.png)
 
    *Wyszukaj platformę Azure — wskaźnik*
 
@@ -558,6 +559,6 @@ Aby utworzyć ten obszar roboczy
 ## <a name="next-steps"></a>Następne kroki
    Poniższe artykuły mogą pomóc w projektowaniu, projektowaniu i wdrażaniu bezpiecznych aplikacji.
 
-- [Projektowanie](secure-design.md)
+- [Zdefiniowanych](secure-design.md)
 - [Opracowywanie](secure-develop.md)
 - [Wdrażanie](secure-deploy.md)

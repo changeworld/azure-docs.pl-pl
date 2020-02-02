@@ -1,27 +1,28 @@
 ---
-title: Service Fabric Omówienie tożsamości zarządzanej
-description: Ten artykuł zawiera omówienie tożsamości zarządzanej i jej aplikacji na platformie Azure Service Fabric.
+title: Zarządzane tożsamości dla platformy Azure
+description: Dowiedz się więcej na temat używania tożsamości zarządzanych na platformie Azure z Service Fabric.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: dc7dafa59596537456accde66e878c06f9e5ca23
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.custom: sfrev
+ms.openlocfilehash: f477acab332cf39de2504c675b04abb5b14a305f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528151"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934967"
 ---
-# <a name="managed-identity-for-service-fabric-application-preview"></a>Tożsamość zarządzana dla aplikacji Service Fabric (wersja zapoznawcza)
+# <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Korzystanie z tożsamości zarządzanych dla platformy Azure z Service Fabric (wersja zapoznawcza)
 
-Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób zarządzania poświadczeniami w kodzie w przypadku uwierzytelniania przy użyciu usług w chmurze. Utrzymywanie bezpiecznych poświadczeń jest ważnym zadaniem, ponieważ nigdy nie pojawiają się na stacjach roboczych deweloperów i nie są zaewidencjonowane do kontroli źródła. Funkcja zarządzanej tożsamości dla zasobów platformy Azure w Azure Active Directory (Azure AD) rozwiązuje ten problem. Funkcja ta udostępnia usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure AD. Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności umieszczania poświadczeń w kodzie.
+Typowym wyzwaniem podczas kompilowania aplikacji w chmurze jest sposób bezpiecznego zarządzania poświadczeniami w kodzie w celu uwierzytelniania w różnych usługach bez zapisywania ich lokalnie na stacji roboczej dewelopera lub w kontroli źródła. *Zarządzane tożsamości dla systemu Azure* rozwiązują ten problem dla wszystkich zasobów w Azure Active Directory (Azure AD), zapewniając im automatyczne tożsamości zarządzane w ramach usługi Azure AD. Tożsamości usługi można użyć do uwierzytelniania w dowolnej usłudze, która obsługuje uwierzytelnianie usługi Azure AD, w tym Key Vault, bez żadnych poświadczeń przechowywanych w kodzie.
 
-Funkcja tożsamości zarządzanej dla zasobów platformy Azure jest bezpłatna za pomocą usługi Azure AD dla subskrypcji platformy Azure. Nie ma dodatkowych kosztów.
+*Zarządzane tożsamości dla zasobów platformy Azure* są bezpłatne za pomocą usługi Azure AD dla subskrypcji platformy Azure. Nie ma żadnych dodatkowych kosztów.
 
 > [!NOTE]
-> Tożsamość zarządzana dla zasobów platformy Azure to nowa nazwa usługi znana wcześniej jako tożsamość usługi zarządzanej (MSI).
+> *Zarządzane tożsamości dla systemu Azure* to nowa nazwa usługi znana wcześniej jako tożsamość usługi ZARZĄDZANEJ (msi).
 
-## <a name="terminology"></a>Terminologia
+## <a name="concepts"></a>Pojęcia
 
-Poniższe terminy są używane w całej zarządzanej tożsamości dla zestawu dokumentacji zasobów platformy Azure:
+Zarządzane tożsamości dla systemu Azure są oparte na kilku najważniejszych pojęciach:
 
 - **Identyfikator klienta** — unikatowy identyfikator wygenerowany przez usługę Azure AD, który jest powiązany z aplikacją i jednostką usługi podczas początkowej aprowizacji (Zobacz również [Identyfikator aplikacji](/azure/active-directory/develop/developer-glossary#application-id-client-id)).
 
@@ -29,15 +30,12 @@ Poniższe terminy są używane w całej zarządzanej tożsamości dla zestawu do
 
 - Nazwa **główna usługi** — obiekt Azure Active Directory, który reprezentuje projekcję aplikacji usługi AAD w danej dzierżawie (Zobacz też [nazwę główną usługi](../active-directory/develop/developer-glossary.md#service-principal-object)).
 
+Są to dwa typy zarządzanych tożsamości:
 
-## <a name="about-managed-identities-in-azure"></a>Informacje o zarządzanych tożsamościach na platformie Azure
+- **Tożsamość zarządzana przypisana przez system** jest włączona bezpośrednio w wystąpieniu usługi platformy Azure.  Cykl życia tożsamości przypisanej do systemu jest unikatowy dla wystąpienia usługi platformy Azure, na którym jest włączona.
+- **Tożsamość zarządzana przypisana przez użytkownika** jest tworzona jako autonomiczny zasób platformy Azure. Tożsamość może być przypisana do co najmniej jednego wystąpienia usługi platformy Azure i jest zarządzana oddzielnie od cyklów życia tych wystąpień.
 
-- [Typy tożsamości zarządzanej (MI) na platformie Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-work)
-
-- [Jak działa tożsamość zarządzana przypisana przez system na platformie Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-a-system-assigned-managed-identity-works-with-an-azure-vm)
-
-- [Jak działa tożsamość zarządzana zdefiniowana przez użytkownika (MI) na platformie Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-a-user-assigned-managed-identity-works-with-an-azure-vm)
-
+Aby poznać różnice między zarządzanymi typami tożsamości, zobacz [jak działają tożsamości zarządzane dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Obsługiwane scenariusze dla aplikacji Service Fabric
 
@@ -47,31 +45,31 @@ Zarządzane tożsamości dla Service Fabric są obsługiwane tylko w klastrach S
 
 2. W definicji aplikacji zamapuj jedną z tożsamości przypisanych do aplikacji do dowolnej usługi obejmującej aplikację.
 
-Tożsamość przypisana przez system aplikacji jest unikatowa dla tej aplikacji; tożsamość przypisana przez użytkownika to zasób autonomiczny, który może być przypisany do wielu aplikacji. W ramach aplikacji można przypisać jedną tożsamość (którą przypisano do systemu lub przypisanej do użytkownika) do wielu usług aplikacji, ale do każdej usługi można przypisać tylko jedną tożsamość. Wreszcie do usługi należy przypisać tożsamość jawnie, aby mieć dostęp do tej funkcji. W efekcie mapowanie tożsamości aplikacji do jej usług składowych pozwala na izolację w aplikacji — usługa może korzystać tylko z zamapowanej tożsamości (a nie w ogóle, jeśli nie została jawnie przypisana).  
+Tożsamość przypisana przez system aplikacji jest unikatowa dla tej aplikacji; tożsamość przypisana przez użytkownika to zasób autonomiczny, który może być przypisany do wielu aplikacji. W ramach aplikacji można przypisać jedną tożsamość (którą przypisano do systemu lub przypisanej do użytkownika) do wielu usług aplikacji, ale do każdej usługi można przypisać tylko jedną tożsamość. Wreszcie do usługi należy przypisać tożsamość jawnie, aby mieć dostęp do tej funkcji. W efekcie mapowanie tożsamości aplikacji do jej usług składowych pozwala na izolację w aplikacji — usługa może korzystać tylko z zamapowanej tożsamości.  
 
-Lista obsługiwanych scenariuszy dotyczących wersji zapoznawczej jest następująca:
+Obecnie w tej funkcji w wersji zapoznawczej są obsługiwane następujące scenariusze:
 
-   - Wdróż nową aplikację przy użyciu co najmniej jednej usługi i co najmniej jednej przypisanej tożsamości
+- Wdróż nową aplikację przy użyciu co najmniej jednej usługi i co najmniej jednej przypisanej tożsamości
 
-   - Przypisz co najmniej jedną zarządzaną tożsamość do istniejącej aplikacji w celu uzyskania dostępu do zasobów platformy Azure. Aplikacja musi zostać wdrożona jako zasób platformy Azure
-
+- Przypisz co najmniej jedną zarządzaną tożsamość do istniejącej aplikacji (wdrożonej przez platformę Azure) w celu uzyskania dostępu do zasobów platformy Azure
 
 Następujące scenariusze nie są obsługiwane lub nie są zalecane; Uwaga te akcje mogą nie być blokowane, ale mogą powodować awarię aplikacji:
 
-   - Usuwanie lub zmiana tożsamości przypisanych do aplikacji; Jeśli musisz wprowadzić zmiany, Prześlij oddzielne wdrożenia, aby najpierw dodać nowe przypisanie tożsamości, a następnie usunąć wcześniej przypisane. Usunięcie tożsamości z istniejącej aplikacji może mieć niepożądane skutki, w tym pozostawienie aplikacji w stanie, który nie jest uaktualniony. Całkowicie można bezpiecznie usunąć aplikację, jeśli konieczne jest usunięcie tożsamości; Uwaga: spowoduje to usunięcie tożsamości przypisanej do systemu (jeśli została zdefiniowana) skojarzonej z aplikacją i spowoduje usunięcie wszelkich skojarzeń z tożsamościami przypisanymi do aplikacji.
+- Usuwanie lub zmiana tożsamości przypisanych do aplikacji; Jeśli musisz wprowadzić zmiany, Prześlij oddzielne wdrożenia, aby najpierw dodać nowe przypisanie tożsamości, a następnie usunąć wcześniej przypisane. Usunięcie tożsamości z istniejącej aplikacji może mieć niepożądane skutki, w tym pozostawienie aplikacji w stanie, który nie jest uaktualniony. Całkowicie można bezpiecznie usunąć aplikację, jeśli konieczne jest usunięcie tożsamości; Uwaga: spowoduje to usunięcie tożsamości przypisanej do systemu (jeśli została zdefiniowana) skojarzonej z aplikacją i spowoduje usunięcie wszelkich skojarzeń z tożsamościami przypisanymi do aplikacji.
 
-   - Obsługa tożsamości zarządzanych nie jest teraz zintegrowana z [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md); Integracja zostanie osiągnięta do końca okresu zapoznawczego dla funkcji zarządzanej tożsamości.
+- Service Fabric obsługa tożsamości zarządzanych nie jest teraz zintegrowana z [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md); Integracja zostanie osiągnięta do końca okresu zapoznawczego dla funkcji zarządzanej tożsamości.
 
 >
 > [!NOTE]
 >
-> Ta funkcja jest dostępna w wersji zapoznawczej; w związku z tym może podlegać częstym zmianom i mogą nie być odpowiednie dla wdrożeń produkcyjnych.
+> Ta funkcja jest dostępna w wersji zapoznawczej. Mogą one podlegać częstym zmianom i nie są odpowiednie dla wdrożeń produkcyjnych.
 
 ## <a name="next-steps"></a>Następne kroki
-* [Wdróż nowy klaster Service Fabric platformy Azure z obsługą tożsamości zarządzanej](./configure-new-azure-service-fabric-enable-managed-identity.md) 
-* [Włączanie obsługi tożsamości zarządzanych w istniejącym klastrze Service Fabric platformy Azure](./configure-existing-cluster-enable-managed-identity-token-service.md)
-* [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej do systemu](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej przez użytkownika](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Korzystanie z zarządzanej tożsamości aplikacji Service Fabric z poziomu kodu usługi](./how-to-managed-identity-service-fabric-app-code.md)
-* [Przyznaj aplikacji Service Fabric platformy Azure dostęp do innych zasobów platformy Azure](./how-to-grant-access-other-resources.md)
-* [Deklarowanie i używanie wpisów tajnych aplikacji jako KeyVaultReferences](./service-fabric-keyvault-references.md) 
+
+- [Wdróż nowy klaster Service Fabric platformy Azure z obsługą tożsamości zarządzanej](./configure-new-azure-service-fabric-enable-managed-identity.md)
+- [Włączanie obsługi tożsamości zarządzanych w istniejącym klastrze Service Fabric platformy Azure](./configure-existing-cluster-enable-managed-identity-token-service.md)
+- [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej do systemu](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+- [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej przez użytkownika](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+- [Korzystanie z zarządzanej tożsamości aplikacji Service Fabric z poziomu kodu usługi](./how-to-managed-identity-service-fabric-app-code.md)
+- [Przyznaj aplikacji Service Fabric platformy Azure dostęp do innych zasobów platformy Azure](./how-to-grant-access-other-resources.md)
+- [Deklarowanie i używanie wpisów tajnych aplikacji jako KeyVaultReferences](./service-fabric-keyvault-references.md)

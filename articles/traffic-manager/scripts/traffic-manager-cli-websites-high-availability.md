@@ -3,7 +3,7 @@ title: Kierowanie ruchu dla dużej liczby aplikacji — interfejs wiersza polece
 description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 editor: tysonn
 tags: azure-infrastructure
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
-ms.author: allensu
-ms.openlocfilehash: 02807d3773b5d27d59ab6b03a22f7637bae95aca
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.author: rohink
+ms.openlocfilehash: e4912e0e285d41bf2de4cf439788a943251cfae8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006390"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934790"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Kierowanie ruchu w celu zapewnienia wysokiej dostępności aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure
 

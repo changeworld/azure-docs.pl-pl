@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911144"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933349"
 ---
 # <a name="add-a-popup-to-the-map"></a>Dodawanie okna podręcznego do mapy
 
@@ -22,7 +22,7 @@ W tym artykule opisano sposób dodawania okna podręcznego do punktu na mapie.
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-Poniższy kod dodaje funkcję punktu, która ma `name` i `description` właściwości, do mapy za pomocą warstwy symboli. Wystąpienie [klasy popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) jest tworzone, ale nie jest wyświetlane. Zdarzenia myszy są dodawane do warstwy symboli, aby wyzwolić otwieranie i zamykanie okna podręcznego, gdy wskaźnik myszy zostanie zatrzymany i wyłączony na znaczniku symbolu. Gdy symbol znacznika jest aktywowany, właściwość `position` menu podręcznego jest aktualizowana przy użyciu pozycji znacznika, a opcja `content` jest aktualizowana przy użyciu pewnego kodu HTML, który otacza `name` i `description` właściwości punktu, w którym znajduje się kursor. Następnie zostanie wyświetlone okno podręczne na mapie przy użyciu funkcji `open`.
+Poniższy kod dodaje funkcję punktu, która ma `name` i `description` właściwości, do mapy za pomocą warstwy symboli. Wystąpienie [klasy popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) jest tworzone, ale nie jest wyświetlane. Zdarzenia myszy są dodawane do warstwy symboli, aby wyzwolić otwieranie i zamykanie okna podręcznego. Gdy symbol znacznika jest aktywowany, właściwość `position` menu podręcznego jest aktualizowana przy użyciu pozycji znacznika, a opcja `content` jest aktualizowana przy użyciu pewnego kodu HTML, który otacza `name` i `description` właściwości punktu, w którym znajduje się kursor. Następnie zostanie wyświetlone okno podręczne na mapie przy użyciu funkcji `open`.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -85,7 +85,7 @@ Poniżej znajduje się kompletny przykładowy kod wykonywany z powyższymi funkc
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Używanie okna podręcznego z wieloma punktami
 
-Jeśli masz dużą liczbę punktów i chcesz wyświetlić tylko jedno podręczne, najlepszym rozwiązaniem jest utworzenie jednego podręcznego i ponowne użycie go zamiast tworzenia okna podręcznego dla każdej funkcji punktu. Przy użyciu okna podręcznego, liczba elementów DOM utworzonych przez aplikację jest znacznie zmniejszona, co może zapewnić lepszą wydajność. Poniższy przykład tworzy funkcje 3-punktowe. Po kliknięciu dowolnego z nich zostanie wyświetlone okno podręczne z zawartością dla tej funkcji punktu.
+Jeśli masz dużą liczbę punktów i chcesz wyświetlić tylko jedno podręczne, najlepszym rozwiązaniem jest utworzenie jednego okna podręcznego i ponowne użycie. Przy użyciu okna podręcznego, liczba elementów DOM utworzonych przez aplikację jest znacznie zmniejszona, co może zapewnić lepszą wydajność. Poniższy przykład tworzy funkcje 3-punktowe. Po kliknięciu dowolnego z nich zostanie wyświetlone okno podręczne z zawartością dla tej funkcji punktu.
 
 <br/>
 
@@ -94,7 +94,7 @@ Jeśli masz dużą liczbę punktów i chcesz wyświetlić tylko jedno podręczne
 
 ## <a name="customizing-a-popup"></a>Dostosowywanie okna podręcznego
 
-Domyślnie okno podręczne ma białe tło, strzałka wskaźnik u dołu i przycisk Zamknij w prawym górnym rogu. Poniższy przykład zmienia kolor tła na czarny przy użyciu opcji `fillColor` okienka podręcznego. Przycisk Zamknij jest usuwany przez ustawienie opcji `shoCloseButton` na false. Zawartość HTML okna podręcznego używa dopełnianego 10 pikseli od krawędzi okna podręcznego, a tekst jest zmieniany, aby pokazywał dobrze na czarnym tle.  
+Domyślnie okno podręczne ma białe tło, strzałka wskaźnik u dołu i przycisk Zamknij w prawym górnym rogu. Poniższy przykład zmienia kolor tła na czarny przy użyciu opcji `fillColor` okienka podręcznego. Przycisk Zamknij jest usuwany przez ustawienie opcji `CloseButton` na false. Zawartość HTML z menu podręcznego jest uzupełniona o 10 pikseli od krawędzi okienka podręcznego. Tekst jest biały, więc pokazuje dobrze na czarnym tle.  
 
 <br/>
 
@@ -104,7 +104,7 @@ Zobacz <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>niestandardowe podręc
 
 ## <a name="popup-events"></a>Zdarzenia wyskakujące
 
-Okienka wyskakujące mogą być otwierane, zamykane i przeciągane. Klasa popup zawiera zdarzenia dla deweloperów pomocy, którzy reagują na te akcje. W poniższym przykładzie przedstawiono zdarzenia, które są wyzwalane po otwarciu, zamknięciu lub przeciągnięciu menu podręcznego. 
+Okienka wyskakujące mogą być otwierane, zamykane i przeciągane. Klasa popup udostępnia zdarzenia, aby pomóc deweloperom reagować na te zdarzenia. W poniższym przykładzie przedstawiono zdarzenia wyzwalane, gdy użytkownik otwiera, zamyka lub przeciąga okno podręczne. 
 
 <br/>
 
@@ -117,7 +117,7 @@ Zobacz <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>zdarzenia wyskakujące
 Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Menu podręczne](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Elementy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)

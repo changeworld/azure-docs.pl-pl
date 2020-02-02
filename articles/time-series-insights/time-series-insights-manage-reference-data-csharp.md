@@ -9,20 +9,30 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2bdd11c3b53b650e636d53942fcb94142de556b2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 079cfcee543cf1ce36c4a1394479a622b3658789
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772825"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935125"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Zarządzanie danymi referencyjnymi GA dla środowiska Azure Time Series Insights przy użyciu programuC#
 
 W tym artykule pokazano, jak C#łączyć, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)i Azure Active Directory, aby umożliwić programowe żądania interfejsu API do Azure Time Series Insights [interfejs API zarządzanie danymi dokumentacja](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="summary"></a>Podsumowanie
+
+Poniższy przykładowy kod ilustruje następujące funkcje:
+
+* Uzyskiwanie tokenu dostępu przy użyciu [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**.
+* Operacje tworzenia, odczytu, aktualizacji i usuwania sekwencyjne w odniesieniu do [interfejsu API zarządzanie danymi referencyjnego](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+* Typowe kody odpowiedzi, w tym [typowe kody błędów](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
+    
+    Odwołanie Zarządzanie danymi API przetwarza każdy element indywidualnie, a błąd z jednym elementem nie zapobiega pomyślnym zakończeniu przez inne osoby. Na przykład jeśli Twoje żądanie zawiera 100 elementów i jeden element zawiera błąd, oznacza to, 99 że elementy są zapisywane i jeden z nich zostanie odrzucony.
+
+## <a name="prerequisites-and-setup"></a>Wymagania wstępne i Instalator
 
 Przed skompilowaniem i uruchomieniem przykładowego kodu wykonaj następujące czynności:
 
@@ -296,16 +306,6 @@ namespace CsharpTsiMsalGaSample
     }
 }
 ```
-
-## <a name="summary"></a>Podsumowanie
-
-Powyższy przykładowy kod ilustruje następujące funkcje:
-
-* Uzyskiwanie tokenu dostępu przy użyciu [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**.
-* Operacje tworzenia, odczytu, aktualizacji i usuwania sekwencyjne w odniesieniu do [interfejsu API zarządzanie danymi referencyjnego](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
-* Typowe kody odpowiedzi, w tym [typowe kody błędów](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
-    
-    Odwołanie Zarządzanie danymi API przetwarza każdy element indywidualnie, a błąd z jednym elementem nie zapobiega pomyślnym zakończeniu przez inne osoby. Na przykład jeśli Twoje żądanie zawiera 100 elementów i jeden element zawiera błąd, oznacza to, 99 że elementy są zapisywane i jeden z nich zostanie odrzucony.
 
 ## <a name="next-steps"></a>Następne kroki
 

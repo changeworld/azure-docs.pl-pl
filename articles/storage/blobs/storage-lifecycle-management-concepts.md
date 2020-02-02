@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260957"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939235"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Zarządzanie cyklem życia magazynu usługi Azure Blob Storage
 
@@ -287,7 +287,7 @@ Poniższa reguła Przykładowa filtruje konto, aby uruchomić akcje na obiektach
 
 Filtry ograniczają akcje reguły do podzbioru obiektów BLOB w ramach konta magazynu. Jeśli zdefiniowano więcej niż jeden filtr, `AND` logiczny jest uruchamiany na wszystkich filtrach.
 
-Dostępne są następujące filtry:
+Filtry obejmują:
 
 | Nazwa filtru | Typ filtru | Uwagi | Jest wymagana |
 |-------------|-------------|-------|-------------|
@@ -348,9 +348,9 @@ Ten przykład pokazuje, jak przejść blokowe obiekty blob poprzedzone prefiksem
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>Archiwizuj dane przy pozyskiwaniu
+### <a name="archive-data-after-ingest"></a>Archiwizuj dane po pozyskaniu
 
-Niektóre dane pozostają w stanie bezczynności w chmurze i są rzadko, jeśli kiedykolwiek są dostępne. Następujące zasady cyklu życia są skonfigurowane do archiwizowania danych po ich pobraniu. Ten przykład przechodzi do blokowych obiektów BLOB na koncie magazynu w ramach kontenera `archivecontainer` do warstwy archiwum. Przejście jest realizowane przez działanie w przypadku obiektów BLOB 0 dni od czasu ostatniej modyfikacji:
+Niektóre dane pozostają w stanie bezczynności w chmurze i są rzadko, jeśli kiedykolwiek są dostępne. Następujące zasady cyklu życia są skonfigurowane tak, aby dane były archiwizowane wkrótce po ich pozyskaniu. Ten przykład przechodzi do blokowych obiektów BLOB na koncie magazynu w ramach kontenera `archivecontainer` do warstwy archiwum. Przejście jest realizowane przez działanie w przypadku obiektów BLOB 0 dni od czasu ostatniej modyfikacji:
 
 > [!NOTE] 
 > Zaleca się przekazywanie obiektów BLOB bezpośrednio do warstwy archiwum, aby zwiększyć efektywność. Można użyć nagłówka x-MS-ACE-warstwy dla [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) lub [PUTBLOCKLIST](https://docs.microsoft.com/rest/api/storageservices/put-block-list) z wersją REST 2018-11-09 lub nowszą lub najnowszymi bibliotekami klienta usługi BLOB Storage. 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie ochrony bot dla WAF z użyciem drzwi platformy Azure (wersja zapoznawcza)
+title: Konfigurowanie ochrony bot dla zapory aplikacji sieci Web za pomocą platformy Azure — drzwi (wersja zapoznawcza)
 description: Poznaj zaporę aplikacji sieci Web (WAF).
 author: vhorne
 ms.service: web-application-firewall
@@ -7,17 +7,15 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 95660f764d28172ecb55a4952b785fea5f2aa4bb
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f48b683044bc727cda461fb64a743c055188962a
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186712"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934647"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>Konfigurowanie ochrony bot dla zapory aplikacji sieci Web (wersja zapoznawcza)
-W tym artykule opisano sposób konfigurowania reguły ochrony bot w zaporze aplikacji sieci Web platformy Azure (WAF) dla drzwi zewnętrznych przy użyciu interfejsu wiersza polecenia platformy Azure, Azure PowerShell lub szablonu Azure Resource Manager.
-
-Zarządzany zestaw reguł ochrony bot można włączyć dla WAF, aby wykonywał niestandardowe akcje na żądaniach ze znanych złośliwych adresów IP. Adresy IP pochodzą ze źródła analizy zagrożeń firmy Microsoft. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) zapewnia program Microsoft Threat Intelligence i jest używany przez wiele usług, w tym Azure Security Center.
+W tym artykule opisano sposób konfigurowania reguły ochrony bot w zaporze aplikacji sieci Web platformy Azure (WAF) dla drzwi zewnętrznych przy użyciu Azure Portal. Regułę ochrony bot można także skonfigurować przy użyciu szablonu interfejsu wiersza polecenia, Azure PowerShell lub Azure Resource Manager.
 
 > [!IMPORTANT]
 > Zestaw reguł ochrony bot jest obecnie w publicznej wersji zapoznawczej i jest dostarczany z umową dotyczącą poziomu usług w wersji zapoznawczej. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.  Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -28,10 +26,9 @@ Utwórz podstawowe zasady WAF dla drzwi przednich, postępując zgodnie z instru
 
 ## <a name="enable-bot-protection-rule-set"></a>Włącz zestaw reguł ochrony bot
 
-1. Na stronie zasady podstawowe, która została utworzona w poprzedniej sekcji, w obszarze **Ustawienia**kliknij pozycję **reguły**.
-2. Na stronie Szczegóły w sekcji **Zarządzanie regułami** z menu rozwijanego zaznacz pole wyboru przed regułą **BotProtection-Preview-0,1**, a następnie wybierz pozycję **Zapisz** powyżej.
-    
-   ![Reguła ochrony bot](.././media/waf-front-door-configure-bot-protection/botprotect2.png)
+Na stronie **reguły zarządzane** podczas tworzenia zasad zapory aplikacji sieci Web, najpierw Znajdź sekcję **zarządzany zestaw reguł** , zaznacz pole wyboru przed regułą **Microsoft_BotManager_1 0** z menu rozwijanego, a następnie wybierz polecenie **Przegląd + Utwórz**.
+
+   ![Reguła ochrony bot](.././media/waf-front-door-configure-bot-protection/botmanager112019.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

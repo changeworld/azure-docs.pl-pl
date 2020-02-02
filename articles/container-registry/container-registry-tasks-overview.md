@@ -3,12 +3,12 @@ title: Omówienie zadań usługi ACR
 description: Wprowadzenie do ACR zadań, zestaw funkcji w Azure Container Registry, który zapewnia bezpieczną, zautomatyzowaną kompilację, zarządzanie i stosowanie poprawek w chmurze.
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840769"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938878"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatyzowanie kompilacji i konserwacji obrazów kontenerów za pomocą zadań ACR
 
@@ -56,7 +56,7 @@ Wyzwalanie kompilacji obrazu kontenera lub zadania wieloetapowego, gdy kod jest 
 
 Zadania ACR obsługują następujące wyzwalacze podczas ustawiania repozytorium git jako kontekstu zadania:
 
-| Wyzwalacz | Domyślnie włączone |
+| Wyzwalacz | Włączona domyślnie |
 | ------- | ------------------ |
 | Zatwierdzenie | Tak |
 | Żądanie ściągnięcia | Nie |
@@ -122,6 +122,7 @@ W poniższej tabeli przedstawiono kilka przykładów obsługiwanych lokalizacji 
 | Gałąź główna usługi GitHub | Pliki znajdujące się w głównej (lub innej domyślnej) gałęzi w publicznym lub prywatnym repozytorium GitHub.  | `https://github.com/gituser/myapp-repo.git` |
 | Gałąź GitHub | Określona gałąź publicznego lub prywatnego repozytorium GitHub.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | Podfolder usługi GitHub | Pliki znajdujące się w podfolderze w publicznym lub prywatnym repozytorium GitHub. Przykład przedstawia kombinację specyfikacji gałęzi i podfolderu. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Zatwierdzenie w serwisie GitHub | Określone zatwierdzenie w publicznym lub prywatnym repozytorium GitHub. Przykład pokazuje kombinację wartości skrótu zatwierdzenia (SHA) i podfolderu. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Podfolder Azure DevOps | Pliki znajdujące się w podfolderze w publicznym lub prywatnym repozytorium platformy Azure. Przykład przedstawia kombinację specyfikacji gałęzi i podfolderów. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Plik tar zdalnego | Pliki skompresowanego Archiwum na zdalnym serwerze WebServer. | `http://remoteserver/myapp.tar.gz` |
 
@@ -134,8 +135,8 @@ Domyślnie zadania ACR kompilują obrazy dla systemu operacyjnego Linux i archit
 
 | System operacyjny | Architektura|
 | --- | ------- | 
-| Linux | amd64<br/>arm<br/>arm64<br/>386 |
-| Windows | amd64 |
+| Linux | Procesor<br/>ARM<br/>arm64<br/>386 |
+| Windows | Procesor |
 
 ## <a name="view-task-logs"></a>Wyświetlanie dzienników zadań
 

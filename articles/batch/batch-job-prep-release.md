@@ -1,5 +1,5 @@
 ---
-title: Utwórz zadania w celu przygotowania zadań i ukończenia zadań w węzłach obliczeniowych — Azure Batch | Microsoft Docs
+title: Utwórz zadania w celu przygotowania & ukończeniu zadań w węzłach obliczeniowych — Azure Batch
 description: Zadania przygotowania na poziomie zadania umożliwiają minimalizowanie transferu danych do Azure Batch węzłów obliczeniowych oraz wykonywanie zadań do wyczyszczenia węzła podczas ukończenia zadania.
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 7c5c9dfcaa88b35e14cf5d56b01b4e364c856600
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ed3b96ff7f1117b1185159cfa4e4b03aa80d6b02
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027117"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935032"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Uruchamianie zadań przygotowania i zwolnienia zadań w węzłach obliczeniowych wsadowych
 

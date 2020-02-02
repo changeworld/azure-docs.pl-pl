@@ -3,7 +3,7 @@ title: Konfigurowanie wielowartościowego routingu ruchu-Traffic Manager platfor
 description: W tym artykule opisano sposób konfigurowania Traffic Manager w celu kierowania ruchu do punktów końcowych/AAAA.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: allensu
-ms.openlocfilehash: 3e5e6cb55b86df8a48f96771fb2436afa8acaa18
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040367"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938776"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu z wieloma wartościami w Traffic Manager
 
@@ -26,7 +26,7 @@ W tym artykule opisano sposób konfigurowania wielowartościowej metody routingu
 >[!NOTE]
 > W tym momencie Dodawanie punktów końcowych przy użyciu adresów IPv4 lub IPv6 jest obsługiwane tylko dla punktów końcowych typu **zewnętrznego** , dlatego Routing z wieloma wartościami jest również obsługiwany tylko dla tych punktów końcowych.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure 
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów

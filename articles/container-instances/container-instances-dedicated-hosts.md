@@ -1,38 +1,66 @@
 ---
-title: Wdróż na dedykowanych hostach
-description: Używanie dedykowanych hostów do osiągnięcia prawdziwej izolacji na poziomie hosta dla obciążeń
+title: Wdróż na dedykowanym hoście
+description: Użyj dedykowanego hosta, aby osiągnąć prawdziwą izolację na poziomie hosta dla obciążeń Azure Container Instances
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 619a39f4d08a4308cb0f566bc50860e9562bf9e4
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903758"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934150"
 ---
-# <a name="deploy-on-dedicated-hosts"></a>Wdróż na dedykowanych hostach
+# <a name="deploy-on-dedicated-hosts"></a>Wdrażanie na dedykowanych hostach
 
 "Dedykowana" to jednostka SKU Azure Container Instances (ACI), która zapewnia odizolowane i dedykowane środowisko obliczeniowe do bezpiecznego uruchamiania kontenerów. Użycie dedykowanej jednostki SKU powoduje, że każda grupa kontenerów ma dedykowany serwer fizyczny w centrum danych platformy Azure, zapewniając pełną izolację obciążenia, która pomaga spełnić wymagania dotyczące zabezpieczeń i zgodności w organizacji. 
 
 Dedykowana jednostka SKU jest odpowiednia dla obciążeń kontenera, które wymagają izolacji obciążenia z perspektywy serwera fizycznego.
 
-## <a name="using-the-dedicated-sku"></a>Korzystanie z dedykowanej jednostki SKU
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* Domyślny limit dla każdej subskrypcji w celu użycia dedykowanej jednostki SKU wynosi 0. Jeśli chcesz używać tej jednostki SKU do wdrożeń kontenerów produkcyjnych, Utwórz [support Request platformy Azure][azure-support] w celu zwiększenia limitu.
+
+## <a name="use-the-dedicated-sku"></a>Użyj dedykowanej jednostki SKU
 
 > [!IMPORTANT]
-> Użycie dedykowanej jednostki SKU jest dostępne tylko w najnowszej wersji interfejsu API (2019-12-01), która jest obecnie wycofywana. Określ tę wersję interfejsu API w szablonie wdrożenia. Ponadto domyślny limit dla każdej subskrypcji w celu użycia dedykowanej jednostki SKU wynosi 0. Jeśli chcesz używać tej jednostki SKU do wdrożeń kontenerów produkcyjnych, Utwórz [support Request platformy Azure][azure-support]
+> Użycie dedykowanej jednostki SKU jest dostępne tylko w najnowszej wersji interfejsu API (2019-12-01), która jest obecnie wycofywana. Określ tę wersję interfejsu API w szablonie wdrożenia.
+>
 
-Począwszy od interfejsu API w wersji 2019-12-01, istnieje właściwość "SKU" w sekcji Właściwości grupy kontenerów szablonu wdrożenia, który jest wymagany do wdrożenia ACI. Obecnie można użyć tej właściwości jako części szablonu wdrażania Azure Resource Manager ACI. Więcej informacji na temat wdrażania zasobów ACI za pomocą szablonu można znaleźć w [samouczku: Wdrażanie grupy wielu kontenerów przy użyciu szablonu Menedżer zasobów](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Począwszy od interfejsu API w wersji 2019-12-01, istnieje `sku` właściwość w sekcji Właściwości grupy kontenerów szablonu wdrożenia, który jest wymagany do wdrożenia ACI. Obecnie można użyć tej właściwości jako części szablonu wdrażania Azure Resource Manager ACI. Dowiedz się więcej o wdrażaniu zasobów ACI za pomocą szablonu w [samouczku: Wdróż grupę z wieloma kontenerami przy użyciu szablonu Menedżer zasobów](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
 
-Właściwość SKU może mieć jedną z następujących wartości:
-* Standardowa — wybór standardowego wdrożenia ACI, który nadal gwarantuje zabezpieczenia na poziomie funkcji hypervisor 
-* Dedykowana — używana do izolacji poziomu obciążenia z dedykowanymi hostami fizycznymi dla grupy kontenerów
+Właściwość `sku` może mieć jedną z następujących wartości:
+* `Standard` — wybór standardowego wdrożenia ACI, który nadal gwarantuje zabezpieczenia na poziomie funkcji hypervisor 
+* `Dedicated` — używany do izolacji poziomu obciążenia z dedykowanymi hostami fizycznymi dla grupy kontenerów
 
 ## <a name="modify-your-json-deployment-template"></a>Modyfikowanie szablonu wdrożenia JSON
 
-W szablonie wdrożenia, w którym określono zasób grupy kontenerów, upewnij się, że `"apiVersion": "2019-12-01",`. W sekcji Właściwości zasobu grupy kontenerów Ustaw `"sku": "Dedicated",`.
+W szablonie wdrożenia zmodyfikuj lub Dodaj następujące właściwości:
+* W obszarze `resources`Ustaw `apiVersion` na `2012-12-01`.
+* W obszarze właściwości grupy kontenerów Dodaj właściwość `sku` z wartością `Dedicated`.
 
 Oto przykładowy fragment dla sekcji Resources szablonu wdrożenia grupy kontenerów, który używa dedykowanej jednostki SKU:
+
+```json
+[...]
+"resources": [
+    {
+        "name": "[parameters('containerGroupName')]",
+        "type": "Microsoft.ContainerInstance/containerGroups",
+        "apiVersion": "2019-12-01",
+        "location": "[resourceGroup().location]",    
+        "properties": {
+            "sku": "Dedicated",
+            "containers": {
+                [...]
+            }
+        }
+    }
+]
+```
+
+Poniżej znajduje się kompletny szablon, który wdraża przykładową grupę kontenerów z pojedynczym wystąpieniem kontenera:
 
 ```json
 {
@@ -91,9 +119,8 @@ Oto przykładowy fragment dla sekcji Resources szablonu wdrożenia grupy kontene
                     ],
                     "type": "Public"
                 },
-                "osType": "Linux",
+                "osType": "Linux"
             },
-            "location": "eastus2euap",
             "tags": {}
         }
     ]
@@ -116,7 +143,7 @@ Wdróż szablon za pomocą polecenia [AZ Group Deployment Create][az-group-deplo
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-W ciągu kilku sekund powinna pojawić się początkowa odpowiedź z platformy Azure. Po zakończeniu wdrożenia wszystkie dane związane z nim utrwalane przez usługę ACI zostaną zaszyfrowane przy użyciu podanego klucza.
+W ciągu kilku sekund powinna pojawić się początkowa odpowiedź z platformy Azure. Pomyślne wdrożenie odbywa się na dedykowanym hoście.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

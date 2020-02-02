@@ -1,24 +1,26 @@
 ---
-title: Wdróż nowy klaster Service Fabric z tożsamością zarządzaną
-description: W tym artykule pokazano, jak utworzyć nowy klaster Service Fabric z włączoną tożsamością zarządzaną
+title: Konfigurowanie obsługi tożsamości zarządzanej dla nowego klastra Service Fabric
+description: Poniżej przedstawiono sposób włączania obsługi tożsamości zarządzanych w nowym klastrze usługi Azure Service Fabric
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 4893fe47de78445a7dccb4f5800498b30cd6c1f2
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.custom: sfrev
+ms.openlocfilehash: 0e35d2192fdcdb294b349105f3f0158564cec86b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614863"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930460"
 ---
-# <a name="create-a-new-azure-service-fabric-cluster-with-managed-identity-support-preview"></a>Utwórz nowy klaster Service Fabric platformy Azure z obsługą tożsamości zarządzanej (wersja zapoznawcza)
+# <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster-preview"></a>Konfigurowanie obsługi tożsamości zarządzanej dla nowego klastra Service Fabric (wersja zapoznawcza)
 
-Aby uzyskać dostęp do funkcji tożsamości zarządzanej dla aplikacji Service Fabric platformy Azure, należy najpierw włączyć usługę tokenu tożsamości zarządzanej w klastrze. Ta usługa jest odpowiedzialna za uwierzytelnianie aplikacji Service Fabric przy użyciu ich tożsamości zarządzanych i uzyskiwania tokenów dostępu w ich imieniu. Po włączeniu usługi zobaczysz ją w Service Fabric Explorer w sekcji **system** w okienku po lewej stronie, działając w obszarze Nazwa **sieci szkieletowej:/system/ManagedIdentityTokenService** obok innych usług systemowych.
+Aby używać [tożsamości zarządzanych dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) w aplikacjach Service Fabric, należy najpierw włączyć *usługę tokenu tożsamości zarządzanej* w klastrze. Ta usługa jest odpowiedzialna za uwierzytelnianie aplikacji Service Fabric przy użyciu ich tożsamości zarządzanych i uzyskiwania tokenów dostępu w ich imieniu. Po włączeniu usługi zobaczysz ją w Service Fabric Explorer w sekcji **system** w okienku po lewej stronie, działając w obszarze Nazwa **sieci szkieletowej:/system/ManagedIdentityTokenService** obok innych usług systemowych.
 
 > [!NOTE]
 > Aby włączyć **usługę zarządzanego tokenu tożsamości**, wymagana jest Service Fabric środowiska uruchomieniowego w wersji 6.5.658.9590 lub nowszej.  
 
-## <a name="enable-the-managed-identity-token-service"></a>Włącz usługę tokenu zarządzanej tożsamości 
-Aby włączyć usługę zarządzanych tokenów tożsamości podczas tworzenia klastra, możesz użyć następującego fragmentu kodu w szablonie Azure Resource Manager:
+## <a name="enable-the-managed-identity-token-service"></a>Włącz usługę tokenu zarządzanej tożsamości
+
+Aby włączyć usługę zarządzanych tokenów tożsamości podczas tworzenia klastra, Dodaj następujący fragment kodu do szablonu Azure Resource Manager klastra:
 
 ```json
 "fabricSettings": [
@@ -39,7 +41,6 @@ Aby włączyć usługę zarządzanych tokenów tożsamości podczas tworzenia kl
 Jeśli wdrożenie nie powiedzie się, oznacza to, że klaster nie znajduje się w wymaganej wersji Service Fabric (Minimalna obsługiwana wersja środowiska uruchomieniowego to 6,5 ZASTOSUJESZ pakietu CU2):
 
 
-
 ```json
 {
     "code": "ParameterNotAllowed",
@@ -47,13 +48,14 @@ Jeśli wdrożenie nie powiedzie się, oznacza to, że klaster nie znajduje się 
 }
 ```
 
-
 ## <a name="related-articles"></a>Powiązane artykuły
+
 * Przejrzyj [obsługę tożsamości zarządzanych](./concepts-managed-identity.md) w usłudze Azure Service Fabric
 
 * [Włączanie obsługi tożsamości zarządzanych w istniejącym klastrze Service Fabric platformy Azure](./configure-existing-cluster-enable-managed-identity-token-service.md)
 
 ## <a name="next-steps"></a>Następne kroki
+
 * [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej do systemu](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Wdrażanie aplikacji Service Fabric platformy Azure przy użyciu tożsamości zarządzanej przypisanej przez użytkownika](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Korzystanie z zarządzanej tożsamości aplikacji Service Fabric z poziomu kodu usługi](./how-to-managed-identity-service-fabric-app-code.md)

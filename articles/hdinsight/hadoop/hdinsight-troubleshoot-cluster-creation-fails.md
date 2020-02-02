@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 093bfbd976ace41f635976ff27fa4292e5c4df3c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1e13c7ef8eae81ef2a12a8761b0596f6329f94dc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905141"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937904"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Rozwiązywanie problemów z błędami tworzenia klastra za pomocą usługi Azure HDInsight
 
@@ -64,7 +64,7 @@ Jeśli używasz trasy Express lub własnego niestandardowego serwera DNS, zobacz
 
 ## <a name="resources-locks"></a>Blokady zasobów  
 
-Upewnij się, że [w sieci wirtualnej i grupie zasobów](../../azure-resource-manager/management/lock-resources.md)nie ma blokad.  
+Upewnij się, że [w sieci wirtualnej i grupie zasobów](../../azure-resource-manager/management/lock-resources.md)nie ma blokad. Nie można utworzyć lub usunąć klastrów, jeśli grupa zasobów jest zablokowana. 
 
 ## <a name="unsupported-component-versions"></a>Nieobsługiwane wersje składników
 

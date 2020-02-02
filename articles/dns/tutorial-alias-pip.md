@@ -2,21 +2,21 @@
 title: 'Samouczek: Tworzenie rekordu Azure DNS aliasu w celu odwoływania się do publicznego adresu IP platformy Azure'
 description: W tym samouczku pokazano, jak skonfigurować rekord aliasu usługi Azure DNS w celu odwoływania się do publicznego adresu IP platformy Azure.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 81dfbe5f46116d263c4a04d6178437a2c8bc1185
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: d601d19a786613f674f7b941becc5e97d84e6fce
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072126"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939276"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Samouczek: konfigurowanie rekordu aliasu w celu odwoływania się do publicznego adresu IP platformy Azure 
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie infrastruktury sieci.
@@ -30,7 +30,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do testowania niezbędna jest nazwa domeny, którą można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
 
-Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz temat [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
+Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Przykładowa domena używana w tym samouczku to contoso.com, ale skorzystaj z własnej nazwy domeny.
 

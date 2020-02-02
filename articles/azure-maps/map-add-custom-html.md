@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5a15b3b9e51772d8c7e5312968fecb180069e2a7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4cc3b1789ef2f7ef44e5421cbacb5a93c2a0a1ff
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911247"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933609"
 ---
 # <a name="add-html-markers-to-the-map"></a>Dodawanie znaczników HTML do mapy
 
@@ -24,7 +24,7 @@ W tym artykule opisano sposób dodawania niestandardowego kodu HTML, takiego jak
 > Znaczniki HTML nie łączą się ze źródłami danych. Zamiast tego informacje o pozycji są dodawane bezpośrednio do znacznika i znacznik jest dodawany do właściwości Maps `markers`, która jest [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest).
 
 > [!IMPORTANT]
-> W przeciwieństwie do większości warstw w Azure Maps formancie sieci Web, który używa WebGL do renderowania, znaczniki HTML używają tradycyjnych elementów DOM do renderowania. W związku z tym więcej znaczników HTML dodano do strony, tym więcej elementów DOM. Wydajność może być gorsza po dodaniu kilku tysięcy znaczników HTML. W przypadku większych zestawów danych należy wziąć pod uwagę klastrowanie danych lub użycie symbolu lub warstwy bąbelkowej.
+> W przeciwieństwie do większości warstw w Azure Maps formancie sieci Web, który używa WebGL do renderowania, znaczniki HTML używają tradycyjnych elementów DOM do renderowania. W związku z tym więcej znaczników HTML dodanych do strony, więcej elementów DOM. Wydajność może być gorsza po dodaniu kilku tysięcy znaczników HTML. W przypadku większych zestawów danych należy wziąć pod uwagę klastrowanie danych lub użycie symbolu lub warstwy bąbelkowej.
 
 ## <a name="add-an-html-marker"></a>Dodawanie znacznika HTML
 
@@ -33,7 +33,7 @@ Klasa [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/
 Poniższy kod tworzy znacznik HTML i ustawia właściwość Color na wartość "DodgerBlue" i właściwość Text na "10". Do znacznika jest dołączane okno podręczne, a zdarzenie `click` służy do przełączania widoczności okna podręcznego.
 
 ```javascript
-//Create a HTML marker and add it to the map.
+//Create an HTML marker and add it to the map.
 var marker = new atlas.HtmlMarker({
     color: 'DodgerBlue',
     text: '10',

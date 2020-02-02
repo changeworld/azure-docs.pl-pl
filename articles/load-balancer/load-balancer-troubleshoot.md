@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 63706a3cdd34e5656f881c8668d8b88d9ac2e9ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843926"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935481"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Rozwiązywanie problemów z usługą Azure Load Balancer
 
-Ta strona zawiera informacje dotyczące rozwiązywania problemów dotyczących typowych pytań Azure Load Balancer. Gdy Load Balancer łączność jest niedostępna, Najczęstsze objawy są następujące: 
+Ta strona zawiera informacje dotyczące rozwiązywania problemów dotyczących podstawowych i standardowych typowych pytań Azure Load Balancer. Aby uzyskać więcej informacji na temat usługa Load Balancer w warstwie Standardowa, zobacz [Usługa Load Balancer w warstwie Standardowa Omówienie](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics).
+
+Gdy Load Balancer łączność jest niedostępna, Najczęstsze objawy są następujące: 
+
 - Maszyny wirtualne znajdujące się za Load Balancer nie odpowiadają na sondy kondycji 
 - Maszyny wirtualne znajdujące się za Load Balancer nie odpowiadają na ruch na skonfigurowanym porcie
 
@@ -124,6 +127,10 @@ Jeśli aplikacja hostowana na maszynie wirtualnej zaplecza Load Balancer próbuj
 Jeśli wewnętrzny Load Balancer jest skonfigurowany wewnątrz sieci wirtualnej, a jedna z maszyn wirtualnych zaplecza uczestnika próbuje uzyskać dostęp do wewnętrznej frontonu Load Balancer, mogą wystąpić błędy, gdy przepływ jest mapowany na źródłową maszynę wirtualną. Ten scenariusz nie jest obsługiwany. Przejrzyj [ograniczenia](concepts-limitations.md#limitations) dotyczące szczegółowej dyskusji.
 
 **Rozwiązanie** Istnieje kilka sposobów odblokowania tego scenariusza, w tym za pomocą serwera proxy. Oceń Application Gateway lub inne serwery proxy innych firm (na przykład Nginx lub haproxy). Aby uzyskać więcej informacji na temat Application Gateway, zobacz [omówienie Application Gateway](../application-gateway/application-gateway-introduction.md)
+
+## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Objaw: nie można zmienić portu zaplecza dla istniejącej reguły równoważenia obciążenia z ustawionym zestawem skalowania maszyn wirtualnych w puli zaplecza. 
+### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Przyczyna: nie można zmodyfikować portu zaplecza dla reguły równoważenia obciążenia używanej przez sondę kondycji dla modułu równoważenia obciążenia, do którego odwołuje się zestaw skalowania maszyn wirtualnych.
+**Rozwiązanie** Aby zmienić port, można usunąć sondę kondycji, aktualizując zestaw skalowania maszyn wirtualnych, zaktualizować port, a następnie ponownie skonfigurować sondę kondycji.
 
 ## <a name="additional-network-captures"></a>Dodatkowe przechwycenia sieci
 Jeśli zdecydujesz się otworzyć zgłoszenie do pomocy technicznej, Zbierz poniższe informacje w celu szybszego rozwiązania problemu. Wybierz pojedynczą maszynę wirtualną zaplecza, aby wykonać następujące testy:

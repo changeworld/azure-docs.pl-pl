@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 7bd097885d629a6c8541b57195f2a2996e45ffaf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 9886f41b25e7c1b34f9805a2c16b716c642ae90e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552665"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936287"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpieczenia kontenera w Security Center
 
@@ -32,7 +32,7 @@ W tym artykule opisano, jak można usprawnić, monitorować i obsługiwać zabez
 [Karta Zabezpieczenia kontenera Azure Security Center ![](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Zarządzanie lukami w zabezpieczeniach — skanowanie obrazów kontenerów (wersja zapoznawcza)
-Aby monitorować Azure Container Registry, upewnij się, że korzystasz z warstwy Standardowa Security Center (zobacz [Cennik](/azure/security-center/security-center-pricing)). Następnie Włącz opcjonalny pakiet rejestrów kontenerów. Po wypchnięciu nowego obrazu Security Center skanuje obraz przy użyciu skanera od wiodącego w branży skanowania dostawcy, Qualys.
+Aby monitorować Azure Container Registry oparte na usłudze ARM, upewnij się, że korzystasz z warstwy Standardowa Security Center (zobacz [Cennik](/azure/security-center/security-center-pricing)). Następnie Włącz opcjonalny pakiet rejestrów kontenerów. Po wypchnięciu nowego obrazu Security Center skanuje obraz przy użyciu skanera od wiodącego w branży skanowania dostawcy, Qualys.
 
 Po znalezieniu problemów — według Qualys lub Security Center — otrzymasz powiadomienie na pulpicie nawigacyjnym Security Center. W przypadku każdej luki w zabezpieczeniach Security Center zawiera zalecenia z możliwością wykonania akcji, a także klasyfikację ważności oraz wskazówki dotyczące sposobu korygowania problemu. Aby uzyskać szczegółowe informacje na temat zaleceń dotyczących Security Center, zobacz [listę referencyjną zaleceń](recommendations-reference.md).
 

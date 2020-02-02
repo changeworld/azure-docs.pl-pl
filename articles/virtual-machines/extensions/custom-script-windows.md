@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 058099ceca886f375e6add07033174bf80d5b647
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 80b13cb9a926837604e2a10fed75b976ba3393b6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156543"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934916"
 ---
 # <a name="custom-script-extension-for-windows"></a>Niestandardowe rozszerzenie skryptu dla systemu Windows
 
@@ -205,7 +205,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
     -Name DemoScriptExtension
 ```
 
-## <a name="additional-examples"></a>Więcej przykładów
+## <a name="additional-examples"></a>Dodatkowe przykłady
 
 ### <a name="using-multiple-scripts"></a>Korzystanie z wielu skryptów
 
@@ -268,6 +268,9 @@ W przypadku korzystania z [żądania Invoke-](/powershell/module/microsoft.power
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
 ```
+## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+
+Aby wdrożyć rozszerzenie niestandardowego skryptu na zestawie skalowania, zobacz [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
 
 ## <a name="classic-vms"></a>Klasyczne maszyny wirtualne
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965915"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935333"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Dzienniki Azure Monitor dla publicznych Load Balancer podstawowych
 
@@ -38,7 +38,7 @@ Możesz użyć różnych typów dzienników na platformie Azure do zarządzania 
 
 Rejestrowanie aktywności jest automatycznie włączone dla wszystkich zasobów usługi Resource Manager. Włącz rejestrowanie sondowania zdarzeń i kondycji, aby rozpocząć zbieranie danych dostępnych w tych dziennikach. Wykonaj następujące kroki, aby włączyć rejestrowanie.
 
-Zaloguj się do [portalu Azure](https://portal.azure.com). Jeśli nie masz jeszcze modułu równoważenia obciążenia, przed kontynuowaniem [Utwórz moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
+Zaloguj się do [Portalu Azure](https://portal.azure.com). Jeśli nie masz jeszcze modułu równoważenia obciążenia, przed kontynuowaniem [Utwórz moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) .
 
 1. W portalu kliknij pozycję **grupy zasobów**.
 2. Wybierz pozycję **\<Resource-Group-name >** , w której znajduje się moduł równoważenia obciążenia.
@@ -51,7 +51,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com). Jeśli nie masz jeszc
    * **Przesyłanie strumieniowe do centrum zdarzeń**
    * **Wyślij do Log Analytics**
 
-    ### <a name="archive-to-a-storage-account"></a>Zarchiwizuj na koncie magazynu
+    ### <a name="archive-to-a-storage-account"></a>Archiwizowanie na koncie magazynu
     Konieczne jest już konto magazynu utworzone dla tego procesu.  Aby utworzyć konto magazynu, zobacz [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
 
     1. Zaznacz pole wyboru obok pozycji **Archiwizowanie na koncie magazynu**.
@@ -60,7 +60,7 @@ Zaloguj się do [portalu Azure](https://portal.azure.com). Jeśli nie masz jeszc
     4. Wybierz nazwę konta magazynu w obszarze **konto magazynu** w polu ściąganie.
     5. Wybierz przycisk OK.
 
-    ### <a name="stream-to-an-event-hub"></a>Przesyłaj strumieniowo do centrum zdarzeń
+    ### <a name="stream-to-an-event-hub"></a>Przesyłanie strumieniowe do centrum zdarzeń
     Musisz już utworzyć centrum zdarzeń dla tego procesu.  Aby utworzyć centrum zdarzeń, zobacz [Szybki Start: tworzenie centrum zdarzeń przy użyciu Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 
     1. Zaznacz pole wyboru obok pozycji **strumień do centrum zdarzeń**
@@ -156,11 +156,11 @@ Ten dziennik jest generowany tylko wtedy, gdy włączono go na podstawie usługi
 
 Dane wyjściowe JSON są wyświetlane w polu właściwości podstawowe informacje o stanie kondycji sondy. Właściwość *dipDownCount* pokazuje łączną liczbę wystąpień w zapleczu, które nie odbierają ruchu sieciowego z powodu niepowodzeń odpowiedzi sondy.
 
-### <a name="view-and-analyze-the-audit-log"></a>Wyświetlanie i analizowanie dziennika inspekcji
+### <a name="view-and-analyze-the-activity-log"></a>Wyświetlanie i analizowanie dziennika aktywności
 
-Można wyświetlać i analizować dane dziennika inspekcji przy użyciu dowolnej z następujących metod:
+Dane dziennika aktywności można przeglądać i analizować przy użyciu dowolnej z następujących metod:
 
-* **Narzędzia platformy Azure:** Pobierz informacje z dzienników inspekcji za pośrednictwem Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub Azure Portal. Instrukcje krok po kroku dla każdej metody opisano szczegółowo w [operacjach inspekcji w Menedżer zasobów](../azure-resource-manager/management/view-activity-logs.md) artykule.
+* **Narzędzia platformy Azure:** Pobierz informacje z dziennika aktywności za pośrednictwem Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub Azure Portal. Instrukcje krok po kroku dla każdej metody opisano szczegółowo w [operacjach inspekcji w Menedżer zasobów](../azure-resource-manager/management/view-activity-logs.md) artykule.
 * **Power BI:** Jeśli nie masz jeszcze konta [Power BI](https:// .microsoft.com/pricing) , możesz wypróbować go bezpłatnie. Za pomocą [pakietu zawartości dzienników inspekcji platformy Azure dla Power BI](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)można analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych lub dostosować widoki zgodnie z wymaganiami.
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Wyświetlanie i analizowanie sondy kondycji i dziennika zdarzeń
@@ -170,7 +170,7 @@ Połącz się z kontem magazynu i Pobierz wpisy dziennika JSON dla dzienników s
 > [!TIP]
 > Jeśli znasz program Visual Studio oraz podstawowe pojęcia dotyczące zmiany wartości stałych i zmiennych w języku C#, możesz skorzystać z [konwerterów dzienników](https://github.com/Azure-Samples/networking-dotnet-log-converter) dostępnych w witrynie GitHub.
 
-## <a name="stream-to-an-event-hub"></a>Przesyłaj strumieniowo do centrum zdarzeń
+## <a name="stream-to-an-event-hub"></a>Przesyłanie strumieniowe do centrum zdarzeń
 Gdy informacje diagnostyczne są przesyłane strumieniowo do centrum zdarzeń, mogą służyć do scentralizowanej analizy dzienników w narzędziu SIEM innej firmy z integracją Azure Monitor. Aby uzyskać więcej informacji, zobacz [przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)
 
 ## <a name="send-to-log-analytics"></a>Wysyłanie do usługi Log Analytics

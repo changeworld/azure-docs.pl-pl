@@ -2,17 +2,17 @@
 title: Omówienie delegowania Azure DNS
 description: Dowiedz się, jak zmienić delegowanie domeny i korzystać z serwerów nazw usługi Azure DNS do zapewniania hostingu domeny.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.date: 2/19/2019
-ms.author: allensu
+ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 3d8a87e199736bf51fcdc051c17c2fded3402b79
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212097"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939051"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegowanie stref DNS za pomocą usługi Azure DNS
 
@@ -24,7 +24,7 @@ Usługa Azure DNS umożliwia hostowanie strefy DNS i zarządzanie rekordami DNS 
 
 System nazw domen (DNS, Domain Name System) jest hierarchią domen. Hierarchia rozpoczyna się od domeny głównej, której nazwa to po prostu „ **.** ”.  Poniżej są domeny najwyższego poziomu, takie jak „com”, „net”, „org”, „uk” lub „jp”.  Pod tymi domenami najwyższego poziomu są domeny drugiego poziomu, takie jak „org.uk” lub „co.jp”.  I tak dalej. Domeny w hierarchii DNS są hostowane przy użyciu osobnych stref DNS. Te strefy są globalnie rozproszone, hostowane przez serwery DNS na całym świecie.
 
-**Strefa DNS** — Domena jest unikatową nazwą w systemie nazw domen, na przykład „contoso.com”. Strefa DNS jest używana do hostowania rekordów DNS dla określonej domeny. Na przykład domena „contoso.com” może zawierać wiele rekordów DNS, takich jak „mail.contoso.com” (dla serwera poczty) i „www.contoso.com” (dla witryny sieci Web).
+**Strefa DNS** — Domena jest unikatową nazwą w systemie nazw domen, na przykład „contoso.com”. Strefa DNS służy do hostowania rekordów systemu DNS dla określonej domeny. Na przykład domena „contoso.com” może zawierać wiele rekordów DNS, takich jak „mail.contoso.com” (dla serwera poczty) i „www.contoso.com” (dla witryny sieci Web).
 
 **Rejestrator domen** — Rejestrator domen to firma, która może udostępniać nazwy domen internetowych. Weryfikuje ona, czy domena internetowa, której chcesz używać, jest dostępna, i umożliwi jej zakupienie. Po zarejestrowaniu nazwy domeny jesteś jej prawnym właścicielem. Jeśli masz już domenę internetową, będziesz korzystać z bieżącego rejestratora domeny do delegowania jej do usługi Azure DNS.
 

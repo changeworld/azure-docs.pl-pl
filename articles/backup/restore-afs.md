@@ -1,173 +1,174 @@
 ---
 title: Przywracanie udziałów plików platformy Azure
-description: Dowiedz się, w jaki sposób używać Azure Portal do przywracania całego udziału plików lub określonych plików z punktu przywracania utworzonego przez usługę Azure Backup.
+description: Dowiedz się, w jaki sposób używać Azure Portal do przywracania całego udziału plików lub określonych plików z punktu przywracania utworzonego przez Azure Backup.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: b16eb4120ff2d269135ae8ae6555ef4fdbdbda5d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 8ecb5850c90e5a92e59d17f7949bd5b6cd6205f5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294398"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930983"
 ---
 # <a name="restore-azure-file-shares"></a>Przywracanie udziałów plików platformy Azure
 
-W tym artykule wyjaśniono, jak używać Azure Portal do przywracania całego udziału plików lub określonych plików z punktu przywracania utworzonego przez usługę [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) .
+W tym artykule wyjaśniono, jak używać Azure Portal do przywracania całego udziału plików lub określonych plików z punktu przywracania utworzonego przez [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview).
 
-W tym przewodniku dowiesz się, jak:
+W tym artykule dowiesz się, jak:
 
-* Przywróć pełny udział plików platformy Azure
-* Przywracanie pojedynczych plików lub folderów
-* Śledzenie stanu operacji przywracania
+* Przywróć pełny udział plików platformy Azure.
+* Przywróć pojedyncze pliki lub foldery.
+* Śledź stan operacji przywracania.
 
-## <a name="steps-to-perform-restore"></a>Kroki do wykonania przywracania
+## <a name="steps-to-perform-a-restore-operation"></a>Procedura wykonywania operacji przywracania
+Aby wykonać operację przywracania, wykonaj następujące kroki.
 
 ### <a name="select-the-file-share-to-restore"></a>Wybierz udział plików do przywrócenia
 
 1. W [Azure Portal](https://portal.azure.com/)otwórz magazyn Recovery Services, który został użyty do skonfigurowania kopii zapasowej udziału plików.
 
-2. Kliknij pozycję **elementy kopii zapasowej** w sekcji **chronione elementy** w bloku **Przegląd** .
+1. W okienku Przegląd wybierz pozycję **elementy kopii zapasowej** w sekcji **chronione elementy** .
 
-    ![Kliknij pozycję elementy kopii zapasowej](./media/restore-afs/backup-items.png)
+    ![Wybierz elementy kopii zapasowej](./media/restore-afs/backup-items.png)
 
-3. Po kliknięciu **pozycji kopie zapasowe**w bloku **Omówienie** zostanie wyświetlony nowy blok zawierający listę wszystkich typów zarządzania kopiami zapasowymi, jak pokazano poniżej:
+1. Po wybraniu **pozycji elementy kopii zapasowej**w okienku Przegląd zostanie otwarte nowe okienko zawierające listę wszystkich typów zarządzania kopiami zapasowymi.
 
     ![Typy zarządzania kopiami zapasowymi](./media/restore-afs/backup-management.png)
 
-4. W obszarze **elementy kopii zapasowej**w obszarze **Typ zarządzania kopiami zapasowymi**wybierz pozycję **Azure Storage (Azure Files)** . Zostanie wyświetlona lista wszystkich udziałów plików i odpowiednich kont magazynu, których kopię zapasową utworzono przy użyciu tego magazynu.
+1. W okienku **elementy kopii zapasowej** w obszarze **Typ zarządzania kopiami zapasowymi**wybierz pozycję **Azure Storage (Azure Files)** . Zostanie wyświetlona lista wszystkich udziałów plików i odpowiednich kont magazynu, których kopię zapasową utworzono przy użyciu tego magazynu.
 
     ![Lista wszystkich udziałów plików](./media/restore-afs/file-shares.png)
 
-5. Z listy udziałów plików platformy Azure wybierz żądany udział plików, dla którego chcesz wykonać operację przywracania.
+1. Z listy udziałów plików platformy Azure wybierz udział plików, dla którego chcesz wykonać operację przywracania.
 
 ### <a name="full-share-recovery"></a>Odzyskiwanie pełnego udziału
 
 Można użyć tej opcji przywracania, aby przywrócić pełny udział plików w lokalizacji oryginalnej lub alternatywnej.
 
-1. Wybierz opcję **Przywróć udział** z bloku **elementu kopia zapasowa** , która jest wyświetlana po wybraniu żądanego udziału plików do przywrócenia w kroku 5 sekcji [Wybierz udział plików do przywrócenia](#select-the-file-share-to-restore) .
+1. Wybierz opcję **Przywróć udział** w okienku **elementu kopia zapasowa** , która jest wyświetlana po wybraniu udziału plików do przywrócenia w kroku 5 sekcji [Wybierz udział plików do przywrócenia](#select-the-file-share-to-restore) .
 
    ![Wybierz pozycję Przywróć udział](./media/restore-afs/restore-share.png)
 
-2. Po kliknięciu przycisku **Przywróć udział**zostanie otwarty blok **Przywróć** z menu **punkt przywracania** zawierającym listę punktów przywracania dostępnych dla wybranego udziału plików.
+1. Po wybraniu opcji **Przywróć udział**zostanie otwarte okienko **przywracanie** z menu **punkt przywracania** , w którym zostanie wyświetlona lista punktów przywracania dostępnych dla wybranego udziału plików.
 
-3. Wybierz punkt przywracania, którego chcesz użyć do wykonania operacji przywracania, a następnie kliknij przycisk **OK**.
+1. Wybierz punkt przywracania, którego chcesz użyć do wykonania operacji przywracania, a następnie wybierz **przycisk OK**.
 
     ![Wybierz punkt przywracania](./media/restore-afs/restore-point.png)
 
-4. Po kliknięciu przycisku OK menu Przywróć blok przełącza się do **lokalizacji przywracania**. W obszarze **przywracanie lokalizacji**Określ, gdzie (lub jak) przywrócić dane. Można wybrać jedną z następujących dwóch opcji:
+1. Po wybraniu **przycisku OK**menu okienka **przywracania** przełączy się w celu **przywrócenia lokalizacji**. W obszarze **przywracanie lokalizacji**określ miejsce lub sposób przywracania danych. Wybierz jedną z następujących dwóch opcji:
 
     * **Oryginalna lokalizacja**: Przywróć pełny udział plików w tej samej lokalizacji, w której znajduje się oryginalne źródło.
-    * **Lokalizacja alternatywna**: Przywróć pełny udział plików w alternatywnej lokalizacji i Zachowaj oryginalny udział plików **w formacie**.
+    * **Lokalizacja alternatywna**: Przywróć pełny udział plików w alternatywnej lokalizacji i Zachowaj oryginalny udział plików w formacie.
 
-#### <a name="restore-to-original-location"></a>Przywróć do oryginalnej lokalizacji
+#### <a name="restore-to-the-original-location"></a>Przywróć do oryginalnej lokalizacji
 
-1. Wybierz opcję **Oryginalna lokalizacja** jako **miejsce docelowe odzyskiwania** i wybierz, czy pominąć lub zastąpić, jeśli występują konflikty. Po wybraniu odpowiedniego wyboru kliknij przycisk **OK** .
+1. Wybierz opcję **Oryginalna lokalizacja** jako **lokalizację docelową odzyskiwania**, a następnie wybierz, czy pominąć lub zastąpić, jeśli występują konflikty. Po wybraniu odpowiedniego wyboru wybierz **przycisk OK**.
 
     ![Wybierz oryginalną lokalizację](./media/restore-afs/original-location.png)
 
-2. Kliknij przycisk **Przywróć** , aby rozpocząć operację przywracania.
+1. Wybierz pozycję **Przywróć** , aby rozpocząć operację przywracania.
 
-    ![Kliknij przycisk Przywróć, aby rozpocząć](./media/restore-afs/click-restore.png)
+    ![Wybierz pozycję Przywróć, aby rozpocząć](./media/restore-afs/click-restore.png)
 
 #### <a name="restore-to-an-alternate-location"></a>Przywracanie do lokalizacji alternatywnej
 
-1. Wybierz **alternatywną lokalizację** jako lokalizację docelową odzyskiwania.
-2. Wybierz docelowe konto magazynu, w którym chcesz przywrócić kopię zapasową zawartości z menu rozwijanego pola **konto magazynu** .
-3. W oparciu o konto magazynu wybrane w kroku 2, w menu rozwijanym **Wybierz udział plików** zostanie wyświetlona lista udziałów plików znajdujących się na wybranym koncie magazynu. Wybierz udział plików, do którego ma zostać przywrócona zawartość kopii zapasowej.
-4. W polu **Nazwa folderu** Określ nazwę folderu, który ma zostać utworzony w docelowym udziale plików z przywróconą zawartością.
-5. Wybierz, czy pominąć, czy zastąpić, jeśli występują konflikty.
-6. Kliknij przycisk **OK** po wprowadzeniu odpowiednich wartości we wszystkich polach.
+1. Wybierz **lokalizację alternatywną** jako **miejsce docelowe odzyskiwania**.
+1. Wybierz docelowe konto magazynu, do którego ma zostać przywrócona zawartość kopii zapasowej z listy rozwijanej **konto magazynu** .
+1. Na liście rozwijanej **Wybierz udział plików** są wyświetlane udziały plików znajdujące się na koncie magazynu wybranym w kroku 2. Wybierz udział plików, do którego ma zostać przywrócona zawartość kopii zapasowej.
+1. W polu **Nazwa folderu** Określ nazwę folderu, który ma zostać utworzony w docelowym udziale plików z przywróconą zawartością.
+1. Wybierz, czy pominąć, czy zastąpić, jeśli występują konflikty.
+1. Po wprowadzeniu odpowiednich wartości we wszystkich polach wybierz **przycisk OK**.
 
     ![Wybierz lokalizację alternatywną](./media/restore-afs/alternate-location.png)
 
-7. Kliknij przycisk Przywróć, aby rozpocząć operację przywracania.
+1. Wybierz pozycję **Przywróć** , aby rozpocząć operację przywracania.
 
-    ![Kliknij przycisk Przywróć, aby rozpocząć](./media/restore-afs/click-restore.png)
+    ![Wybierz pozycję Przywróć, aby rozpocząć](./media/restore-afs/click-restore.png)
 
 ### <a name="item-level-recovery"></a>Odzyskiwanie na poziomie elementu
 
 Ta opcja przywracania służy do przywracania pojedynczych plików lub folderów w lokalizacji oryginalnej lub alternatywnej.
 
-1. Wybierz opcję **odzyskiwanie plików** z bloku **element kopii zapasowej** , który jest wyświetlany po wybraniu żądanego udziału plików do przywrócenia w kroku 5 sekcji [Wybierz udział plików do przywrócenia](#select-the-file-share-to-restore) .
+1. Wybierz opcję **odzyskiwanie plików** w okienku **element kopii zapasowej** , która jest wyświetlana po wybraniu udziału plików do przywrócenia w kroku 5 sekcji [Wybierz udział plików do przywrócenia](#select-the-file-share-to-restore) .
 
     ![Wybierz odzyskiwanie plików](./media/restore-afs/file-recovery.png)
 
-2. Po kliknięciu przycisku **odzyskiwanie plików**zostanie otwarty blok **Przywróć** z menu **punkt przywracania** zawierającym listę punktów przywracania dostępnych dla wybranego udziału plików.
+1. Po wybraniu opcji **odzyskiwanie plików**zostanie otwarte okienko **przywracanie** z menu **punkt przywracania** , w którym zostanie wyświetlona lista punktów przywracania dostępnych dla wybranego udziału plików.
 
-3. Wybierz punkt przywracania, którego chcesz użyć do wykonania operacji przywracania, a następnie kliknij przycisk **OK**.
+1. Wybierz punkt przywracania, którego chcesz użyć do wykonania operacji przywracania, a następnie wybierz **przycisk OK**.
 
     ![Wybierz punkt przywracania](./media/restore-afs/restore-point.png)
 
-4. Po kliknięciu przycisku OK menu Przywróć blok przełącza się do **lokalizacji przywracania**. W obszarze **przywracanie lokalizacji**Określ, gdzie (lub jak) przywrócić dane. Można wybrać jedną z następujących dwóch opcji:
+1. Po wybraniu **przycisku OK**menu okienka przywracania przełączy się w celu **przywrócenia lokalizacji**. W obszarze **przywracanie lokalizacji**określ miejsce lub sposób przywracania danych. Wybierz jedną z następujących dwóch opcji:
 
-    * **Oryginalna lokalizacja**: Przywróć wybrane pliki/foldery do tego samego udziału plików, co oryginalne źródło.
-    * **Lokalizacja alternatywna**: Przywróć wybrane pliki/foldery do lokalizacji alternatywnej i Zachowaj oryginalną **zawartość udziału**plików.
+    * **Oryginalna lokalizacja**: Przywróć wybrane pliki lub foldery do tego samego udziału plików, co oryginalne źródło.
+    * **Lokalizacja alternatywna**: Przywróć wybrane pliki lub foldery do lokalizacji alternatywnej i Zachowaj oryginalną zawartość udziału plików.
 
-#### <a name="restore-to-original-location"></a>Przywracanie do oryginalnej lokalizacji
+#### <a name="restore-to-the-original-location"></a>Przywróć do oryginalnej lokalizacji
 
-1. Wybierz opcję **Oryginalna lokalizacja** jako **miejsce docelowe odzyskiwania** i wybierz, czy pominąć lub zastąpić, jeśli występują konflikty.
+1. Wybierz opcję **Oryginalna lokalizacja** jako **lokalizację docelową odzyskiwania**, a następnie wybierz, czy pominąć lub zastąpić, jeśli występują konflikty.
 
     ![Oryginalna lokalizacja odzyskiwania na poziomie elementu](./media/restore-afs/original-location-item-level.png)
 
-2. Kliknij pozycję **Wybierz plik** , aby wybrać pliki/foldery, które chcesz przywrócić.
+2. Wybierz **pozycję Wybierz plik** , aby wybrać pliki lub foldery, które chcesz przywrócić.
 
-    ![Kliknij pozycję Wybierz plik](./media/restore-afs/select-file.png)
+    ![Wybierz pozycję Wybierz plik](./media/restore-afs/select-file.png)
 
-3. Po kliknięciu przycisku **Wybierz plik**zostanie wyświetlony blok udział plików zawierający zawartość punktu odzyskiwania udziału plików, który został wybrany do przywracania.
+1. Po wybraniu opcji **Wybierz plik**w okienku udział plików zostanie wyświetlona zawartość punktu odzyskiwania udziału plików, który został wybrany do przywracania.
 
-4. Zaznacz pole wyboru odpowiadające plikowi/folderowi, który chcesz przywrócić, a następnie kliknij przycisk **Wybierz**.
+1. Zaznacz pole wyboru odpowiadające plikowi lub folderowi, który chcesz przywrócić, a następnie wybierz **pozycję Wybierz**.
 
     ![Wybierz plik lub folder](./media/restore-afs/select-file-folder.png)
 
-5. Powtórz kroki 2-4, aby wybrać wiele plików/folderów do przywrócenia.
-6. Po wybraniu wszystkich elementów, które chcesz przywrócić, kliknij przycisk **OK**.
+1. Powtórz kroki od 2 do 4, aby wybrać wiele plików lub folderów do przywrócenia.
+1. Po wybraniu wszystkich elementów, które mają zostać przywrócone, wybierz pozycję **OK**.
 
-    ![Po wybraniu wszystkich elementów do przywrócenia kliknij przycisk OK.](./media/restore-afs/after-selecting-items.png)
+    ![Po wybraniu wszystkich elementów do przywrócenia wybierz pozycję OK.](./media/restore-afs/after-selecting-items.png)
 
-7. Kliknij przycisk Przywróć, aby rozpocząć operację przywracania.
+1. Wybierz pozycję **Przywróć** , aby rozpocząć operację przywracania.
 
-    ![Kliknij przycisk Przywróć, aby rozpocząć](./media/restore-afs/click-restore.png)
+    ![Wybierz pozycję Przywróć, aby rozpocząć](./media/restore-afs/click-restore.png)
 
 #### <a name="restore-to-an-alternate-location"></a>Przywracanie do lokalizacji alternatywnej
 
-1. Wybierz **alternatywną lokalizację** jako lokalizację docelową odzyskiwania.
-2. Wybierz docelowe konto magazynu, w którym chcesz przywrócić kopię zapasową zawartości z menu rozwijanego pola **konto magazynu** .
-3. W oparciu o konto magazynu wybrane w kroku 2, w menu rozwijanym **Wybierz udział plików** zostanie wyświetlona lista udziałów plików znajdujących się na wybranym koncie magazynu. Wybierz udział plików, do którego ma zostać przywrócona zawartość kopii zapasowej.
-4. W polu **Nazwa folderu** Określ nazwę folderu, który ma zostać utworzony w docelowym udziale plików z przywróconą zawartością.
-5. Wybierz, czy pominąć, czy zastąpić, jeśli występują konflikty.
-6. Kliknij pozycję **Wybierz plik** , aby wybrać pliki/foldery, które chcesz przywrócić.
+1. Wybierz **lokalizację alternatywną** jako **miejsce docelowe odzyskiwania**.
+1. Wybierz docelowe konto magazynu, do którego ma zostać przywrócona zawartość kopii zapasowej z listy rozwijanej **konto magazynu** .
+1. Na liście rozwijanej **Wybierz udział plików** są wyświetlane udziały plików znajdujące się na koncie magazynu wybranym w kroku 2. Wybierz udział plików, do którego ma zostać przywrócona zawartość kopii zapasowej.
+1. W polu **Nazwa folderu** Określ nazwę folderu, który ma zostać utworzony w docelowym udziale plików z przywróconą zawartością.
+1. Wybierz, czy pominąć, czy zastąpić, jeśli występują konflikty.
+1. Wybierz **pozycję Wybierz plik** , aby wybrać pliki lub foldery, które chcesz przywrócić.
 
     ![Wybierz elementy, które mają zostać przywrócone do lokalizacji alternatywnej](./media/restore-afs/restore-to-alternate-location.png)
 
-7. Po kliknięciu przycisku **Wybierz plik**zostanie wyświetlony blok udział plików zawierający zawartość punktu odzyskiwania udziału plików, który został wybrany do przywracania.
-8. Zaznacz pole wyboru odpowiadające plikowi/folderowi, który chcesz przywrócić, a następnie kliknij przycisk **Wybierz**.
+1. Po wybraniu opcji **Wybierz plik**w okienku udział plików zostanie wyświetlona zawartość punktu odzyskiwania udziału plików, który został wybrany do przywracania.
+1. Zaznacz pole wyboru odpowiadające plikowi lub folderowi, który chcesz przywrócić, a następnie wybierz **pozycję Wybierz**.
 
     ![Wybierz miejsce docelowe odzyskiwania](./media/restore-afs/recovery-destination.png)
 
-9. Powtórz kroki 6-8, aby wybrać wiele plików/folderów do przywrócenia.
-10. Po wybraniu wszystkich elementów, które chcesz przywrócić, kliknij przycisk **OK**.
+1. Powtórz kroki od 6 do 8, aby wybrać wiele plików lub folderów do przywrócenia.
+1. Po wybraniu wszystkich elementów, które mają zostać przywrócone, wybierz pozycję **OK**.
 
-    [Kliknij przycisk OK po wybraniu wszystkich plików](./media/restore-afs/after-selecting-all-items.png)
+    ![Wybierz przycisk OK po wybraniu wszystkich plików](./media/restore-afs/after-selecting-all-items.png)
 
-11. Kliknij przycisk **Przywróć** , aby rozpocząć operację przywracania.
+1. Wybierz pozycję **Przywróć** , aby rozpocząć operację przywracania.
 
-## <a name="track-restore-operation"></a>Śledź operację przywracania
+## <a name="track-a-restore-operation"></a>Śledzenie operacji przywracania
 
-Po zainicjowaniu operacji przywracania usługa Backup tworzy zadanie śledzenia. Azure Backup wyświetla powiadomienia dotyczące zadania w portalu. Aby wyświetlić operacje dla zadania, kliknij hiperlink powiadomienia.
+Po zainicjowaniu operacji przywracania usługa Backup tworzy zadanie śledzenia. Azure Backup wyświetla powiadomienia dotyczące zadania w portalu. Aby wyświetlić operacje dla zadania, wybierz hiperłącze powiadomienia.
 
-![Kliknij hiperlink powiadomienia](./media/restore-afs/notifications-link.png)
+![Wybierz hiperlink powiadomień](./media/restore-afs/notifications-link.png)
 
-Możesz również monitorować postęp przywracania z magazynu usługi Recovery Services. Poniżej przedstawiono kroki umożliwiające sprawdzenie stanu operacji przywracania:
+Możesz również monitorować postęp przywracania z magazynu Recovery Services:
 
 1. Otwórz magazyn Recovery Services z którego została wyzwolona operacja przywracania.
-2. Kliknij pozycję **zadania tworzenia kopii zapasowej** w **sekcji monitorowanie** w bloku **Przegląd** , aby zobaczyć stan operacji uruchomionych dla różnych obciążeń.
+1. W okienku Przegląd wybierz pozycję **zadania tworzenia kopii zapasowych** w sekcji **monitorowanie** , aby zobaczyć stan operacji uruchomionych dla różnych obciążeń.
 
-    ![Kliknij pozycję zadania tworzenia kopii zapasowej](./media/restore-afs/backup-jobs.png)
+    ![Wybierz zadania tworzenia kopii zapasowej](./media/restore-afs/backup-jobs.png)
 
-3. Kliknij nazwę obciążenia odpowiadającego udziałowi plików, aby wyświetlić więcej szczegółów na temat operacji przywracania, takich jak transferowane dane, liczba przywróconych plików itp.
+1. Wybierz nazwę obciążenia odpowiadającą udziałowi plików, aby wyświetlić więcej szczegółów na temat operacji przywracania, takich jak **dane przesyłane** i **Liczba przywróconych plików**.
 
     ![Zobacz przywrócone szczegóły](./media/restore-afs/restore-details.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [zarządzać kopiami zapasowymi udziałów plików platformy Azure](manage-afs-backup.md)
+* Dowiedz się, jak [zarządzać kopiami zapasowymi udziałów plików platformy Azure](manage-afs-backup.md).

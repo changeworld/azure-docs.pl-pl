@@ -1,6 +1,6 @@
 ---
-title: Utrwalaj dane wyjściowe zadania i zadania w usłudze Azure Storage za pomocą interfejsu API usługi Batch Azure Batch | Microsoft Docs
-description: Dowiedz się, jak używać interfejsu API usługi Batch do utrwalania zadań wsadowych i danych wyjściowych zadań w usłudze Azure Storage.
+title: Utrwalanie danych wyjściowych w usłudze Azure Storage za pomocą interfejsu API usługi Batch Azure Batch
+description: Dowiedz się, jak za pomocą interfejsu API usługi Batch utrwalać dane wyjściowe zadania i zadania wsadowego w usłudze Azure Storage.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -12,12 +12,12 @@ ms.workload: big-compute
 ms.date: 03/05/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 8d77da2a0298758dad3eff1a61aff45796bfb6c5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a7ac927ccc27af10999310fde9a5dede7b4539e0
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029632"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939076"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Utrwalanie danych zadań w usłudze Azure Storage za pomocą interfejsu API usługi Batch
 

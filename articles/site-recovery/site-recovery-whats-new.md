@@ -2,13 +2,13 @@
 title: Co nowego w Azure Site Recovery
 description: Zawiera podsumowanie nowych funkcji i najnowszych aktualizacji usługi Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: ecd42c624cf1fe62c8041a0b8798585c8870cabc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/31/2020
+ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896038"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934938"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
@@ -36,6 +36,18 @@ W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to n
 
 ## <a name="updates-january-2020"></a>Aktualizacje (styczeń 2020)
 
+### <a name="update-rollup-44"></a>Pakiet zbiorczy aktualizacji 44
+[Pakiet zbiorczy aktualizacji 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) udostępnia następujące aktualizacje.
+
+**Aktualizacja** | **Szczegóły**
+--- | ---
+**Rozwiązywanie poprawek/ulepszeń** | Wiele aktualizacji Site Recovery agentów i dostawców (zgodnie z opisem w pakiecie zbiorczym).
+
+### <a name="azure-vmware-disaster-recovery"></a>Odzyskiwanie po awarii programu VMware Azure
+
+Usługi Azure Virtual Machines obsługują teraz maszyny wirtualne, które umożliwiają szyfrowanie w spoczynku z kluczami zarządzanymi przez klienta. [Dowiedz się więcej](azure-to-azure-how-to-enable-replication-cmk-disks.md).
+
+
 ### <a name="update-rollup-43"></a>Pakiet zbiorczy aktualizacji 43
 
 [Pakiet zbiorczy aktualizacji 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) udostępnia następujące aktualizacje.
@@ -58,7 +70,7 @@ W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to n
 **Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń (zgodnie z opisem w pakiecie zbiorczym)
 
 
-## <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure
+### <a name="azure-vm-disaster-recovery"></a>Odzyskiwanie po awarii maszyny wirtualnej platformy Azure
 
 W tabeli zestawiono nowe funkcje odzyskiwania po awarii maszyny wirtualnej platformy Azure.
 

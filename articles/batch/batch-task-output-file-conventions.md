@@ -1,6 +1,6 @@
 ---
-title: Utrwalaj dane wyjściowe zadania i zadania w usłudze Azure Storage za pomocą biblioteki Konwencji plików dla platformy .NET — Azure Batch | Microsoft Docs
-description: Dowiedz się, jak używać biblioteki Konwencji plików Azure Batch dla platformy .NET, aby utrwalić zadanie wsadowe i dane wyjściowe zadań do usługi Azure Storage, a następnie wyświetlić utrwalone dane wyjściowe w Azure Portal.
+title: Utrwalanie danych wyjściowych w usłudze Azure Storage za pomocą biblioteki Konwencji plików platformy .NET — Azure Batch
+description: Dowiedz się, jak używać biblioteki Konwencji plików Azure Batch dla platformy .NET, aby utrwalać zadanie wsadowe & dane wyjściowe zadania do usługi Azure Storage, a następnie wyświetlać te dane wyjściowe w Azure Portal.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8b57ab7168b331734d7811e04284db56bc782f3f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842737"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935283"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Utrwalanie danych zadań i zadań w usłudze Azure Storage za pomocą biblioteki Konwencji plików wsadowych dla platformy .NET
 

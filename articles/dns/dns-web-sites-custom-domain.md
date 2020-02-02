@@ -2,17 +2,17 @@
 title: Samouczek — tworzenie niestandardowych rekordów usługi Azure DNS dla aplikacji internetowej
 description: W tym samouczku utworzysz rekordy DNS domeny niestandardowej dla aplikacji internetowej przy użyciu usługi Azure DNS.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: e0a0129f45e5e7612b6ecd79475a49822b42ba19
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211207"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939102"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Samouczek: tworzenie rekordów DNS w domenie niestandardowej dla aplikacji internetowej 
 
@@ -29,7 +29,7 @@ Aby to zrobić, musisz utworzyć trzy rekordy:
 
 Należy pamiętać, że w przypadku utworzenia rekordu A dla aplikacji internetowej na platformie Azure rekord A musi być ręcznie zaktualizowany, jeżeli zmieni się podstawowy adres IP aplikacji internetowej.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie rekordu A i TXT dla domeny niestandardowej
@@ -175,7 +175,7 @@ Otwórz przeglądarkę i przejdź do `http://www.<your domainname>` oraz `http:/
 > [!NOTE]
 > Upewnij się, że dołączysz prefiks `http://`, w przeciwnym razie przeglądarka może próbować przewidzieć adres URL.
 
-Dla obu adresów URL powinna zostać wyświetlona ta sama strona. Na przykład:
+Dla obu adresów URL powinna zostać wyświetlona ta sama strona. Przykład:
 
 ![Usługa aplikacji Contoso](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

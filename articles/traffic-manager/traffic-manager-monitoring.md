@@ -2,22 +2,22 @@
 title: Monitorowanie punktu końcowego usługi Azure Traffic Manager | Microsoft Docs
 description: Ten artykuł pomoże Ci zrozumieć, w jaki sposób Traffic Manager używać monitorowania punktów końcowych i automatycznego trybu failover punktu końcowego, aby pomóc klientom platformy Azure wdrożyć aplikacje o wysokiej dostępności
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: allensu
-ms.openlocfilehash: e06d2ce93ac7c534f2c729dce794e66e3ee894d8
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.author: rohink
+ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333814"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938552"
 ---
-# <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager monitorowanie punktu końcowego
+# <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego usługi Traffic Manager
 
 Usługa Azure Traffic Manager obejmuje wbudowane monitorowanie punktów końcowych i automatyczne przełączanie do trybu failover punktu końcowego. Ta funkcja ułatwia dostarczanie aplikacji o wysokiej dostępności, które są odporne na awarie punktu końcowego, w tym awarie regionów platformy Azure.
 
@@ -34,13 +34,13 @@ Aby skonfigurować monitorowanie punktu końcowego, należy określić następuj
 * **Tolerowana liczba niepowodzeń**. Ta wartość określa, ile błędów Agent Traffic Manager jest tolerowany przed oznaczeniem tego punktu końcowego jako złej kondycji. Jego wartość może namieścić się w zakresie od 0 do 9. Wartość 0 oznacza, że pojedynczy błąd monitorowania może spowodować, że punkt końcowy zostanie oznaczony jako w złej kondycji. Jeśli wartość nie jest określona, zostanie użyta wartość domyślna 3.
 * **Limit czasu sondy**. Ta właściwość określa czas, przez jaki Agent sondowania Traffic Manager powinien czekać przed uwzględnieniem, że sprawdzenie błędu w przypadku wysłania sondy sprawdzania kondycji do punktu końcowego. Jeśli interwał sondowania jest ustawiony na 30 sekund, można ustawić wartość limitu czasu z przedziału od 5 do 10 sekund. Jeśli wartość nie jest określona, zostanie użyta wartość domyślna wynosząca 10 sekund. Jeśli interwał sondowania jest ustawiony na 10 sekund, można ustawić wartość limitu czasu z przedziału od 5 do 9 sekund. Jeśli wartość limitu czasu nie zostanie określona, zostanie użyta wartość domyślna wynosząca 9 sekund.
 
-    ![Traffic Manager monitorowanie punktu końcowego](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
+    ![Monitorowanie punktu końcowego usługi Traffic Manager](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-    **Rysunek:  Traffic Manager monitorowanie punktu końcowego**
+    **Ilustracja: Traffic Manager monitorowania punktu końcowego**
 
 ## <a name="how-endpoint-monitoring-works"></a>Jak działa monitorowanie punktów końcowych
 
-Jeśli protokół monitorowania jest ustawiony jako HTTP lub HTTPS, Traffic Manager Agent sondowania wysyła żądanie GET do punktu końcowego przy użyciu protokołu, portu i ścieżki względnej. Jeśli zostanie przywrócona odpowiedź 200-OK lub wszystkie odpowiedzi skonfigurowane w **oczekiwanych \*zakresach kodu stanu**, ten punkt końcowy jest traktowany jako zdrowy. Jeśli odpowiedź ma inną wartość lub jeśli w określonym limicie czasu nie zostanie odebrana żadna odpowiedź, Usługa Traffic Manager sondowania agenta próbuje ponownie zgodnie z tolerowaną liczbą niepowodzeń (bez ponawiania próby, jeśli to ustawienie ma wartość 0). Jeśli liczba kolejnych niepowodzeń jest większa niż tolerowana liczba błędów, ten punkt końcowy jest oznaczony jako w złej kondycji. 
+Jeśli protokół monitorowania jest ustawiony jako HTTP lub HTTPS, Traffic Manager Agent sondowania wysyła żądanie GET do punktu końcowego przy użyciu protokołu, portu i ścieżki względnej. Jeśli zostanie przywrócona odpowiedź 200-OK lub dowolna z odpowiedzi skonfigurowanych w **oczekiwanym kodzie stanu \*zakresów**, ten punkt końcowy jest traktowany jako zdrowy. Jeśli odpowiedź ma inną wartość lub jeśli w określonym limicie czasu nie zostanie odebrana żadna odpowiedź, Usługa Traffic Manager sondowania agenta próbuje ponownie zgodnie z tolerowaną liczbą niepowodzeń (bez ponawiania próby, jeśli to ustawienie ma wartość 0). Jeśli liczba kolejnych niepowodzeń jest większa niż tolerowana liczba błędów, ten punkt końcowy jest oznaczony jako w złej kondycji. 
 
 Jeśli protokół monitorowania to TCP, Agent Traffic Manager sondowania inicjuje żądanie połączenia TCP przy użyciu określonego portu. Jeśli punkt końcowy odpowiada na żądanie z odpowiedzią na nawiązanie połączenia, sprawdzanie kondycji zostanie oznaczone jako powodzenie, a agent Traffic Manager sondowania resetuje połączenie TCP. Jeśli odpowiedź ma inną wartość lub jeśli w określonym limicie czasu nie zostanie odebrana żadna odpowiedź, Traffic Manager próbnego agenta sondowania zgodnie z tolerowaną liczbą niepowodzeń (żadne ponowne próby nie są wykonywane, jeśli to ustawienie ma wartość 0). Jeśli liczba kolejnych niepowodzeń jest większa niż akceptowalna liczba błędów, oznacza to, że punkt końcowy jest oznaczony jako w złej kondycji.
 
@@ -69,12 +69,12 @@ Stan monitora punktu końcowego jest wartością wygenerowaną przez Traffic Man
 
 | Stan profilu | Stan punktu końcowego | Stan monitora punktu końcowego | Uwagi |
 | --- | --- | --- | --- |
-| Wyłączone |Włączono |Nieaktywna |Profil został wyłączony. Mimo że stan punktu końcowego jest włączony, stan profilu (wyłączony) ma pierwszeństwo. Punkty końcowe w wyłączonych profilach nie są monitorowane. Kod odpowiedzi NXDOMAIN jest zwracany dla zapytania DNS. |
-| &lt;ile&gt; |Wyłączone |Wyłączone |Punkt końcowy został wyłączony. Wyłączone punkty końcowe nie są monitorowane. Punkt końcowy nie jest uwzględniony w odpowiedziach DNS, dlatego nie odbiera ruchu. |
-| Włączono |Włączono |Online |Punkt końcowy jest monitorowany i jest w dobrej kondycji. Jest on uwzględniony w odpowiedziach DNS i może odbierać ruch. |
-| Włączono |Włączono |Obniżono poziom |Sprawdzanie kondycji monitorowania punktu końcowego kończy się niepowodzeniem. Punkt końcowy nie jest uwzględniony w odpowiedziach DNS i nie odbiera ruchu. <br>Wyjątkiem jest to, czy wszystkie punkty końcowe mają obniżoną wydajność, w tym przypadku wszystkie są uznawane za zwracane w odpowiedzi na zapytanie.</br>|
-| Włączono |Włączono |CheckingEndpoint |Punkt końcowy jest monitorowany, ale wyniki pierwszej sondy nie zostały jeszcze odebrane. CheckingEndpoint jest stanem tymczasowym, który zwykle występuje natychmiast po dodaniu lub włączeniu punktu końcowego w profilu. Punkt końcowy w tym stanie jest dołączony do odpowiedzi DNS i może odbierać ruch. |
-| Włączono |Włączono |Zatrzymano |Aplikacja sieci Web, do której wskazuje punkt końcowy, nie jest uruchomiona. Sprawdź ustawienia aplikacji sieci Web. Może się tak zdarzyć, jeśli punkt końcowy jest typu zagnieżdżonego punktu końcowego, a profil podrzędny jest wyłączony lub nieaktywny. <br>Punkt końcowy ze stanem zatrzymanym nie jest monitorowany. Nie jest on uwzględniony w odpowiedziach DNS i nie odbiera ruchu. Wyjątkiem jest to, czy wszystkie punkty końcowe mają obniżoną wydajność, w tym przypadku wszystkie są uznawane za zwracane w odpowiedzi na zapytanie.</br>|
+| Disabled (Wyłączony) |Enabled (Włączony) |Nieaktywne |Profil został wyłączony. Mimo że stan punktu końcowego jest włączony, stan profilu (wyłączony) ma pierwszeństwo. Punkty końcowe w wyłączonych profilach nie są monitorowane. Kod odpowiedzi NXDOMAIN jest zwracany dla zapytania DNS. |
+| &lt;dowolnych&gt; |Disabled (Wyłączony) |Disabled (Wyłączony) |Punkt końcowy został wyłączony. Wyłączone punkty końcowe nie są monitorowane. Punkt końcowy nie jest uwzględniony w odpowiedziach DNS, dlatego nie odbiera ruchu. |
+| Enabled (Włączony) |Enabled (Włączony) |Online |Punkt końcowy jest monitorowany i jest w dobrej kondycji. Jest on uwzględniony w odpowiedziach DNS i może odbierać ruch. |
+| Enabled (Włączony) |Enabled (Włączony) |Obniżona wydajność |Sprawdzanie kondycji monitorowania punktu końcowego kończy się niepowodzeniem. Punkt końcowy nie jest uwzględniony w odpowiedziach DNS i nie odbiera ruchu. <br>Wyjątkiem jest to, czy wszystkie punkty końcowe mają obniżoną wydajność, w tym przypadku wszystkie są uznawane za zwracane w odpowiedzi na zapytanie.</br>|
+| Enabled (Włączony) |Enabled (Włączony) |CheckingEndpoint |Punkt końcowy jest monitorowany, ale wyniki pierwszej sondy nie zostały jeszcze odebrane. CheckingEndpoint jest stanem tymczasowym, który zwykle występuje natychmiast po dodaniu lub włączeniu punktu końcowego w profilu. Punkt końcowy w tym stanie jest dołączony do odpowiedzi DNS i może odbierać ruch. |
+| Enabled (Włączony) |Enabled (Włączony) |Zatrzymane |Aplikacja sieci Web, do której wskazuje punkt końcowy, nie jest uruchomiona. Sprawdź ustawienia aplikacji sieci Web. Może się tak zdarzyć, jeśli punkt końcowy jest typu zagnieżdżonego punktu końcowego, a profil podrzędny jest wyłączony lub nieaktywny. <br>Punkt końcowy ze stanem zatrzymanym nie jest monitorowany. Nie jest on uwzględniony w odpowiedziach DNS i nie odbiera ruchu. Wyjątkiem jest to, czy wszystkie punkty końcowe mają obniżoną wydajność, w tym przypadku wszystkie są uznawane za zwracane w odpowiedzi na zapytanie.</br>|
 
 Aby uzyskać szczegółowe informacje o sposobie obliczania stanu monitora punktu końcowego dla zagnieżdżonych punktów końcowych, zobacz [profile Traffic Manager zagnieżdżonych](traffic-manager-nested-profiles.md).
 
@@ -87,11 +87,11 @@ Stan monitora profilu jest kombinacją skonfigurowanego stanu profilu oraz warto
 
 | Stan profilu (zgodnie z konfiguracją) | Stan monitora punktu końcowego | Stan monitora profilu | Uwagi |
 | --- | --- | --- | --- |
-| Wyłączone |&lt;dowolny&gt; lub profil bez zdefiniowanych punktów końcowych. |Wyłączone |Profil został wyłączony. |
-| Włączono |Stan co najmniej jednego punktu końcowego ma obniżoną wydajność. |Obniżono poziom |Przejrzyj wartości stanu poszczególnych punktów końcowych, aby określić, które punkty końcowe wymagają dalszej uwagi. |
-| Włączono |Stan co najmniej jednego punktu końcowego jest w trybie online. Żadne punkty końcowe nie mają stanu obniżonej wydajności. |Online |Usługa akceptuje ruch. Nie są wymagane żadne dalsze działania. |
-| Włączono |Stan co najmniej jednego punktu końcowego to CheckingEndpoint. Żadne punkty końcowe nie są w trybie online ani nie są w stanie obniżenia wydajności. |CheckingEndpoints |Ten stan przejścia występuje, gdy profil zostanie utworzony lub włączony. Kondycja punktu końcowego jest sprawdzana po raz pierwszy. |
-| Włączono |Stany wszystkich punktów końcowych w profilu są wyłączone lub zatrzymane albo profil nie ma zdefiniowanych punktów końcowych. |Nieaktywna |Punkty końcowe nie są aktywne, ale profil jest nadal włączony. |
+| Disabled (Wyłączony) |&lt;wszystkie&gt; lub profile bez zdefiniowanych punktów końcowych. |Disabled (Wyłączony) |Profil został wyłączony. |
+| Enabled (Włączony) |Stan co najmniej jednego punktu końcowego ma obniżoną wydajność. |Obniżona wydajność |Przejrzyj wartości stanu poszczególnych punktów końcowych, aby określić, które punkty końcowe wymagają dalszej uwagi. |
+| Enabled (Włączony) |Stan co najmniej jednego punktu końcowego jest w trybie online. Żadne punkty końcowe nie mają stanu obniżonej wydajności. |Online |Usługa akceptuje ruch. Nie są wymagane żadne dalsze działania. |
+| Enabled (Włączony) |Stan co najmniej jednego punktu końcowego to CheckingEndpoint. Żadne punkty końcowe nie są w trybie online ani nie są w stanie obniżenia wydajności. |CheckingEndpoints |Ten stan przejścia występuje, gdy profil zostanie utworzony lub włączony. Kondycja punktu końcowego jest sprawdzana po raz pierwszy. |
+| Enabled (Włączony) |Stany wszystkich punktów końcowych w profilu są wyłączone lub zatrzymane albo profil nie ma zdefiniowanych punktów końcowych. |Nieaktywne |Punkty końcowe nie są aktywne, ale profil jest nadal włączony. |
 
 ## <a name="endpoint-failover-and-recovery"></a>Tryb failover i odzyskiwanie punktu końcowego
 
@@ -112,16 +112,16 @@ Oś czasu na poniższej ilustracji zawiera szczegółowy opis procesu monitorowa
 
 ![Traffic Manager trybu failover punktu końcowego i sekwencji powrotu po awarii](./media/traffic-manager-monitoring/timeline.png)
 
-**Rysunek:  Tryb failover punktu końcowego programu Traffic Manager i sekwencja odzyskiwania**
+**Rysunek: przejście do trybu failover i sekwencji odzyskiwania punktu końcowego w usłudze Traffic Manager**
 
 1. **GET**. Dla każdego punktu końcowego system monitorowania Traffic Manager wykonuje żądanie GET w ścieżce określonej w ustawieniach monitorowania.
 2. **200 OK lub niestandardowy zakres kodu określony Traffic Manager ustawieniach monitorowania profilu** . System monitorujący oczekuje, że HTTP 200 OK lub niestandardowy zakres kodu określony Traffic Manager komunikat ustawień monitorowania profilu zostanie zwrócony w ciągu 10 sekund. Po otrzymaniu tej odpowiedzi rozpoznaje ona, że usługa jest dostępna.
 3. **30 sekund między sprawdzeniami**. Sprawdzanie kondycji punktu końcowego jest powtarzane co 30 sekund.
-4. **Usługa jest**niedostępna. Usługa jest niedostępna. Traffic Manager nie będzie wiadomo do momentu następnego sprawdzenia kondycji.
+4. **Usługa jest niedostępna**. Usługa jest niedostępna. Traffic Manager nie będzie wiadomo do momentu następnego sprawdzenia kondycji.
 5. **Próbuje uzyskać dostęp do ścieżki monitorowania**. System monitorowania wykonuje żądanie GET, ale nie otrzymuje odpowiedzi z upływem limitu czasu wynoszącym 10 sekund (Alternatywnie może zostać odebrana odpowiedź inna niż 200). Następnie próbuje jeszcze trzy razy, co 30 sekund. Po pomyślnym wykonaniu jednej z tych prób zostanie zresetowana liczba prób.
 6. **Stan ustawiony na obniżony**. Po czwartym kolejnej awarii system monitorujący oznacza niedostępny stan punktu końcowego jako obniżony.
 7. **Ruch jest przekierowywany do innych punktów końcowych**. Traffic Manager serwery nazw DNS są aktualizowane i Traffic Manager nie będą już zwracały punktu końcowego w odpowiedzi na zapytania DNS. Nowe połączenia są kierowane do innych, dostępnych punktów końcowych. Jednak poprzednie odpowiedzi DNS, które obejmują ten punkt końcowy, nadal mogą być buforowane przez cykliczne serwery DNS i klientów DNS. Klienci nadal używają punktu końcowego do momentu wygaśnięcia pamięci podręcznej DNS. Po wygaśnięciu pamięci podręcznej DNS klienci składają nowe zapytania DNS i są kierowani do różnych punktów końcowych. Czas trwania pamięci podręcznej jest kontrolowany przez ustawienie czasu wygaśnięcia w profilu Traffic Manager, na przykład 30 sekund.
-8. **Sprawdzanie kondycji**jest kontynuowane. Traffic Manager kontynuuje sprawdzanie kondycji punktu końcowego, gdy ma stan obniżonej sprawności. Traffic Manager wykrywa, gdy punkt końcowy powróci do kondycji.
+8. **Sprawdzanie kondycji jest kontynuowane**. Traffic Manager kontynuuje sprawdzanie kondycji punktu końcowego, gdy ma stan obniżonej sprawności. Traffic Manager wykrywa, gdy punkt końcowy powróci do kondycji.
 9. **Usługa wraca do trybu online**. Usługa zostanie udostępniona. Punkt końcowy zachowuje stan obniżonej sprawności w Traffic Manager do momentu, gdy system monitorowania wykona kolejne Sprawdzenie kondycji.
 10. **Ruch do wznawiania usługi**. Traffic Manager wysyła żądanie GET i odbiera odpowiedź o stanie 200 OK. Usługa powróciła do stanu dobrej kondycji. Serwery nazw Traffic Manager są aktualizowane i zaczynają w odpowiedzi DNS nazwę DNS usługi. Ruch wraca do punktu końcowego jako buforowane odpowiedzi DNS, które zwracają inne punkty końcowe, tracą ważność, a w przypadku przerwania istniejących połączeń z innymi punktami końcowymi.
 
@@ -151,7 +151,7 @@ Aby uzyskać więcej informacji, zobacz [Traffic Manager metod routingu ruchu si
 >
 > Wynika to z tego, że jeśli Traffic Manager Sprawdzanie kondycji nie jest prawidłowo skonfigurowane, może się pojawić na podstawie routingu ruchu, *ponieważ Traffic Manager działa* prawidłowo. Jednak w tym przypadku nie można przełączyć do trybu failover punktu końcowego, który ma wpływ na ogólną dostępność aplikacji. Ważne jest, aby sprawdzić, czy profil zawiera stan online, a nie stan obniżonej sprawności. Stan online wskazuje, że sprawdzanie kondycji Traffic Manager działa zgodnie z oczekiwaniami.
 
-Aby uzyskać więcej informacji na temat rozwiązywania problemów z błędami sprawdzania kondycji, zobacz Rozwiązywanie problemów z obniżoną wydajnością [w usłudze Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md).
+Aby uzyskać więcej informacji na temat rozwiązywania problemów z błędami sprawdzania kondycji, zobacz [Rozwiązywanie problemów z obniżoną wydajnością w usłudze Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md).
 
 ## <a name="faqs"></a>Często zadawane pytania
 
@@ -193,7 +193,7 @@ Aby uzyskać więcej informacji na temat rozwiązywania problemów z błędami s
 
 * [Jak mogę otrzymywać powiadomienia, jeśli jeden z punktów końcowych ulegnie awarii?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, [jak działa Traffic Manager](traffic-manager-how-it-works.md)
 

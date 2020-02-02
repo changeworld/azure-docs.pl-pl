@@ -1,28 +1,29 @@
 ---
-title: Uaktualnianie klastra usługi HDInsight do nowszej wersji — Azure
-description: Poznaj wskazówki dotyczące uaktualniania klastra usługi Azure HDInsight do nowszej wersji.
-author: omidm1
-ms.author: omidm
+title: Migrowanie klastra do nowszej wersji
+titleSuffix: Azure HDInsight
+description: Zapoznaj się z zaleceniami dotyczącymi migracji klastra usługi Azure HDInsight do nowszej wersji.
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/06/2019
-ms.openlocfilehash: 1a1d4a71786ebb1e68f59084086b3256a1c1ea40
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.date: 01/31/2020
+ms.openlocfilehash: 95892bba1b3152dda718a4af3c5f45072054fdae
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951160"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935500"
 ---
-# <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Uaktualnianie klastra usługi HDInsight do nowszej wersji
+# <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>Migrowanie klastra usługi HDInsight do nowszej wersji
 
-Aby skorzystać z najnowszych funkcji usługi HDInsight, zalecamy uaktualnienie klastrów usługi HDInsight do najnowszej wersji. Postępuj zgodnie z poniższymi wskazówkami, aby uaktualnić wersje klastra usługi HDInsight.
+Aby skorzystać z najnowszych funkcji usługi HDInsight, zalecamy regularne Migrowanie klastrów usługi HDInsight do najnowszej wersji. Usługa HDInsight nie obsługuje uaktualnień w miejscu, w których istniejący klaster jest uaktualniany do nowszej wersji składnika. Należy utworzyć nowy klaster z żądanym składnikiem i wersją platformy, a następnie przeprowadzić migrację aplikacji w celu korzystania z nowego klastra. Postępuj zgodnie z poniższymi wskazówkami, aby przeprowadzić migrację wersji klastra usługi HDInsight.
 
 > [!NOTE]  
 > Aby uzyskać informacje dotyczące obsługiwanych wersji usługi HDInsight, zobacz [wersje składników usługi HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
-## <a name="upgrade-tasks"></a>Zadania uaktualniania
+## <a name="migration-tasks"></a>Zadania migracji
 
 Przepływ pracy uaktualniania klastra usługi HDInsight jest następujący:.
 Diagram przepływu pracy uaktualniania ![HDInsight](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
@@ -39,6 +40,18 @@ Po zweryfikowaniu, że wszystko działa zgodnie z oczekiwaniami, Zaplanuj przest
 1. Utwórz klaster w tej samej podsieci wirtualnej z najnowszą (lub obsługiwaną) wersją HDI przy użyciu tego samego domyślnego magazynu danych, który został użyty przez poprzedni klaster. Dzięki temu nowy klaster będzie kontynuował pracę nad istniejącymi danymi produkcyjnymi.
 1. Zaimportuj wszystkie dane przejściowe, których kopię zapasową utworzono.
 1. Uruchom zadania/Kontynuuj przetwarzanie przy użyciu nowego klastra.
+
+## <a name="workload-specific-guidance"></a>Wskazówki dotyczące obciążenia
+
+W poniższych dokumentach przedstawiono wskazówki dotyczące migrowania konkretnych obciążeń:
+
+* [Migruj HBase](/hbase/apache-hbase-migrate-new-version.md)
+* [Migruj Kafka](/kafka/migrate-versions.md)
+* [Migrowanie programu Hive/zapytania interaktywnego](/interactive-query/apache-hive-migrate-workloads.md)
+
+## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
+
+Aby uzyskać więcej informacji na temat kopii zapasowych i przywracania bazy danych, zobacz [odzyskiwanie bazy danych Azure SQL Database przy użyciu zautomatyzowanych kopii zapasowych bazy danych](../sql-database/sql-database-recovery-using-backups.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

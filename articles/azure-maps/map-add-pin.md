@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 744d5ecd3aab02071f7c3aaff7dd760fc14a2a62
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911162"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933140"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Dodawanie warstwy symboli do mapy
 
-Symbol można połączyć ze źródłem danych i służy do renderowania ikony i/lub tekstu w danym punkcie. Warstwy symboli są renderowane przy użyciu WebGL i mogą być używane do renderowania dużych kolekcji punktów na mapie. Ta warstwa może renderować wiele większej ilości danych na mapie, z dobrą wydajnością, niż to, co jest osiągalne przy użyciu znaczników HTML. Jednak warstwa symboli nie obsługuje tradycyjnych stylów CSS i HTML do ustawiania stylów.  
+Symbol połączony ze źródłem danych i używany do renderowania ikony i/lub tekstu w danym punkcie. Warstwy symboli są renderowane przy użyciu WebGL i są używane do renderowania dużych kolekcji punktów na mapie. W porównaniu do znacznika HTML, warstwa symboli renderuje dużą liczbę danych punktów na mapie, co zapewnia lepszą wydajność. Jednak warstwa symboli nie obsługuje tradycyjnych stylów CSS i HTML do ustawiania stylów.  
 
 > [!TIP]
-> Warstwy symboli domyślnie będą renderować współrzędne wszystkich geometrie w źródle danych. Aby ograniczyć warstwę, która umożliwia renderowanie tylko funkcji geometrii punktów, ustaw właściwość `filter` warstwy na `['==', ['geometry-type'], 'Point']` lub `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`, jeśli chcesz uwzględnić również funkcje systemu MultiPoint.
+> Warstwy symboli domyślnie będą renderować współrzędne wszystkich geometrie w źródle danych. Aby ograniczyć warstwę, która umożliwia renderowanie tylko funkcji geometrii punktów, ustaw właściwość `filter` warstwy na `['==', ['geometry-type'], 'Point']` lub `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Jeśli chcesz, możesz również uwzględnić funkcje systemu MultiPoint.
 
-Menedżer Sprite obrazu Maps, który jest używany do ładowania obrazów niestandardowych używanych przez warstwę symboli, obsługuje następujące formaty obrazów:
+Menedżer Sprite obrazu Maps ładuje obrazy niestandardowe używane przez warstwę symboli. Obsługuje następujące formaty obrazów:
 
 - JPEG
 - PNG
@@ -33,7 +33,7 @@ Menedżer Sprite obrazu Maps, który jest używany do ładowania obrazów niesta
 
 ## <a name="add-a-symbol-layer"></a>Dodawanie warstwy symboli
 
-Aby dodać warstwę symboli do mapy i renderować dane, najpierw należy utworzyć źródło danych i dodać je do mapy. Warstwę symboli można następnie utworzyć i przesłać do źródła danych w celu pobrania danych z programu. Na koniec dane muszą zostać dodane do źródła danych, aby było możliwe renderowanie. Poniższy kod przedstawia kod, który należy dodać do mapy po załadowaniu, aby renderować pojedynczy punkt na mapie przy użyciu warstwy symboli. 
+Aby można było dodać warstwę symboli do mapy, należy wykonać kilka kroków. Najpierw Utwórz źródło danych i Dodaj je do mapy. Warstwę symboli można następnie utworzyć i przesłać do źródła danych w celu pobrania danych ze źródła danych. Na koniec dane muszą zostać dodane do źródła danych, aby było możliwe renderowanie elementu. Poniższy kod przedstawia kod, który ma zostać dodany do mapy po załadowaniu. Kod renderuje pojedynczy punkt na mapie za pomocą warstwy symboli. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -53,11 +53,11 @@ dataSource.add(new atlas.data.Point([0, 0]));
 Istnieją cztery różne typy danych punktowych, które można dodać do mapy:
 
 - Geometria punktu GEOJSON — ten obiekt zawiera tylko współrzędną punktu i nic innego. Klasa pomocnika `atlas.data.Point` może być używana do łatwego tworzenia tych obiektów.
-- Geometria GEOJSON MultiPoint — ten obiekt zawiera współrzędne wielu punktów, ale nic innego. Klasa pomocnika `atlas.data.MultiPoint` może być używana do łatwego tworzenia tych obiektów.
+- Geometria GEOJSON MultiPoint — ten obiekt zawiera współrzędne wielu punktów i nic innego. Klasa pomocnika `atlas.data.MultiPoint` może być używana do łatwego tworzenia tych obiektów.
 - Funkcja GEOJSON — ten obiekt składa się z geometrii GEOJSON oraz zestawu właściwości, które zawierają metadane skojarzone z geometrią. Klasa pomocnika `atlas.data.Feature` może być używana do łatwego tworzenia tych obiektów.
-- Klasa `atlas.Shape` jest podobna do funkcji GEOJSON, która składa się z geometrii GEOJSON oraz zestawu właściwości, które zawierają metadane skojarzone z geometrią. Jeśli obiekt GEOJSON zostanie dodany do źródła danych, można go łatwo renderować w warstwie, jednak jeśli właściwość współrzędnej tego obiektu GEOJSON zostanie zaktualizowana, źródło danych i mapa nie zmienią się, ponieważ nie ma żadnego mechanizmu w obiekcie JSON do wyzwolenia aktualizacji. Klasa Shape zawiera funkcje służące do aktualizowania danych, które zawiera, a po dokonaniu zmiany źródło danych i mapa są automatycznie powiadamiane i aktualizowane. 
+- Klasa `atlas.Shape` jest podobna do funkcji GEOJSON. Oba składają się z geometrii GEOJSON oraz zestawu właściwości, które zawierają metadane skojarzone z geometrią. Jeśli obiekt GEOJSON zostanie dodany do źródła danych, może być łatwo renderowany w warstwie. Jeśli jednak Właściwość koordynuje tego obiektu GEOJSON jest aktualizowana, źródło danych i mapa nie są zmieniane. Wynika to z faktu, że w obiekcie JSON nie ma mechanizmu wyzwalania aktualizacji. Klasa Shape zawiera funkcje służące do aktualizowania danych, które zawiera. Po dokonaniu zmiany źródło danych i mapa są automatycznie powiadamiane i aktualizowane. 
 
-Poniższy przykład kodu tworzy geometrię punktu GEOJSON i przekazuje go do klasy `atlas.Shape`, aby ułatwić jego aktualizowanie. Środek mapy jest początkowo używany do renderowania symbolu. Zdarzenie kliknięcia jest dodawane do mapy, w taki sposób, że gdy wyzwalane, współrzędne miejsca kliknięcia myszą są używane z funkcją Shapes `setCoordinates`, która aktualizuje lokalizację symbolu na mapie.
+Poniższy przykład kodu tworzy geometrię punktu GEOJSON i przekazuje go do klasy `atlas.Shape`, aby ułatwić jego aktualizowanie. Środek mapy jest początkowo używany do renderowania symbolu. Zdarzenie kliknięcia jest dodawane do mapy, w taki sposób, że gdy wyzwalane, Współrzędne myszy są używane z funkcją Shapes `setCoordinates`. Współrzędne myszy są rejestrowane w momencie zdarzenia kliknięcia. Następnie `setCoordinates` aktualizuje lokalizację symbolu na mapie.
 
 <br/>
 
@@ -65,11 +65,11 @@ Poniższy przykład kodu tworzy geometrię punktu GEOJSON i przekazuje go do kla
 </iframe>
 
 > [!TIP]
-> Domyślnie w przypadku wydajności warstwy symboli optymalizują renderowanie symboli, ukrywając symbole, które nakładają się na siebie. Podczas powiększania ukrytych symboli stają się widoczne. Aby wyłączyć tę funkcję i renderować wszystkie symbole przez cały czas, ustaw właściwość `allowOverlap` opcji `iconOptions` na `true`.
+> Domyślnie warstwy symboli optymalizują renderowanie symboli, ukrywając symbole, które nakładają się na siebie. W miarę powiększania, ukryte symbole stają się widoczne. Aby wyłączyć tę funkcję i renderować wszystkie symbole przez cały czas, ustaw właściwość `allowOverlap` opcji `iconOptions` na `true`.
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Dodaj niestandardową ikonę do warstwy symboli
 
-Warstwy symboli są renderowane przy użyciu WebGL. Ponieważ wszystkie zasoby, takie jak obrazy ikon, muszą zostać załadowane do kontekstu WebGL. Ten przykład pokazuje, jak dodać niestandardową ikonę do zasobów mapy, a następnie użyć jej do renderowania danych punktu z symbolem niestandardowym na mapie. Właściwość `textField` warstwy symboli wymaga określenia wyrażenia. W tym przypadku chcemy renderować Właściwość temperatury, ale ponieważ jest to liczba, należy ją przekonwertować na ciąg. Ponadto chcemy dołączyć do niego "°F". Do tego celu można użyć wyrażenia; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+Warstwy symboli są renderowane przy użyciu WebGL. Ponieważ wszystkie zasoby, takie jak obrazy ikon, muszą zostać załadowane do kontekstu WebGL. Ten przykład pokazuje, jak dodać niestandardową ikonę do zasobów mapy. Ta ikona służy następnie do renderowania danych punktu przy użyciu symbolu niestandardowego na mapie. Właściwość `textField` warstwy symboli wymaga określenia wyrażenia. W tym przypadku chcemy renderować Właściwość temperatury. Ponieważ temperatura jest liczbą, należy ją przekonwertować na ciąg. Ponadto chcemy dołączyć do niej "°F". Wyrażenie może służyć do tego łączenia; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
@@ -77,7 +77,7 @@ Warstwy symboli są renderowane przy użyciu WebGL. Ponieważ wszystkie zasoby, 
 </iframe>
 
 > [!TIP]
-> Zestaw SDK sieci Web Azure Maps udostępnia kilka dostosowywalnych szablonów obrazów, których można używać z warstwą symboli. Więcej informacji można znaleźć w dokumencie [jak korzystać z szablonów obrazów](how-to-use-image-templates-web-sdk.md) .
+> Zestaw SDK sieci Web Azure Maps udostępnia kilka dostosowywalnych szablonów obrazów, których można używać z warstwą symboli. Aby uzyskać więcej informacji, zobacz dokument [jak korzystać z szablonów obrazów](how-to-use-image-templates-web-sdk.md) .
 
 ## <a name="customize-a-symbol-layer"></a>Dostosowywanie warstwy symboli 
 
@@ -89,7 +89,7 @@ Warstwa symboli ma dostępne wiele opcji stylów. Oto narzędzie do testowania r
 </iframe>
 
 > [!TIP]
-> Jeśli chcesz tylko renderować tekst za pomocą warstwy symboli, możesz ukryć ikonę przez ustawienie właściwości `image` opcji ikon, aby `'none'`.
+> Aby renderować tylko tekst z warstwą symboli, można ukryć ikonę przez ustawienie właściwości `image` opcji ikon, aby `'none'`.
 
 ## <a name="next-steps"></a>Następne kroki
 

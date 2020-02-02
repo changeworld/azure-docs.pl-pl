@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ead30a80a6568e72f922f355916d31121b49a93b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 98c8db4e4b866879a437d1ffad6668cbae42fcdf
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911219"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933585"
 ---
 # <a name="add-a-heat-map-layer"></a>Dodawanie warstwy mapy cieplnej
 
-Mapy cieplne, znane także jako mapy gęstości punktów, są typem wizualizacji danych używanym do reprezentowania gęstości danych przy użyciu różnych kolorów. Są one często używane do wyświetlania danych "gorąca" na mapie i są doskonałymi sposobami renderowania zestawów DataSet z dużymi punktami. 
+Mapy cieplne, znane także jako mapy gęstości punktów, są typem wizualizacji danych. Są one używane do reprezentowania gęstości danych przy użyciu różnych kolorów i pokazujące dane "gorąca" na mapie. Mapy cieplne to doskonały sposób renderowania zestawów danych z dużą liczbą punktów. 
 
-Na przykład renderowanie dziesiątek tysięcy punktów w widoku mapy jako symboli obejmuje większość obszaru mapy. Może to spowodować, że wiele symboli nakłada się na siebie, co utrudnia uzyskanie szczegółowego wglądu w dane. Wizualizacja tego samego zestawu danych jako mapy cieplnej ułatwia jednak sprawdzenie, gdzie dane punktu są najgęste i względną gęstość do innych obszarów.
+Renderowanie dziesiątek tysięcy punktów, ponieważ symbole mogą obejmować większość obszaru mapy. W takim przypadku najkorzystniej powstaje wiele symboli. Utrudnia to lepsze zrozumienie danych. Wizualizacja tego samego zestawu danych jako mapy cieplnej pozwala jednak łatwo sprawdzić gęstość i względną gęstość każdego punktu danych.
 
 W wielu różnych scenariuszach można używać map cieplnych, takich jak:
 
 - **Dane temperatury**: zawiera przybliżenia między dwoma punktami danych.
-- **Dane dla czujników szumu**: pokazuje nie tylko intensywność szumu, w którym czujnik jest, ale również może zapewnić wgląd w rozproszenie na odległość. Poziom szumu w jednej lokacji może być niewysoki. Ale jeśli obszar pokrycia szumów z wielu czujników nakłada się na siebie, istnieje możliwość, że ten obszar nakładający się może mieć wyższy poziom szumu i dlatego będzie widoczny na mapie cieplnej.
-- **Śledzenie GPS**: zawiera szybkość jako mapę ważonej wysokości, w której intensywność każdego punktu danych jest oparta na szybkości. Na przykład umożliwia to sprawdzenie, gdzie nastąpiło przyspieszenie pojazdu.
+- **Dane dla czujników szumu**: pokazuje nie tylko intensywność hałasu, gdzie czujnik jest, ale może także zapewnić wgląd w rozproszenie na odległość. Poziom szumu w jednej lokacji może być niewysoki. Jeśli obszar pokrycia szumów z wielu czujników nakłada się na siebie, istnieje możliwość, że ten obszar nakładający się może mieć wyższy poziom szumu. W związku z tym, nakładający się obszar będzie widoczny na mapie cieplnej.
+- **Śledzenie GPS**: zawiera szybkość jako mapę ważonej wysokości, w której intensywność każdego punktu danych jest oparta na szybkości. Na przykład ta funkcja zapewnia sposób, aby zobaczyć, gdzie nastąpiło przyspieszenie pojazdu.
 
 > [!TIP]
 > Warstwy mapy cieplnej domyślnie renderują współrzędne wszystkich geometrie w źródle danych. Aby ograniczyć warstwę tak, aby była renderowana tylko funkcja geometrii punktu, ustaw właściwość `filter` warstwy na `['==', ['geometry-type'], 'Point']`. Jeśli chcesz również uwzględnić funkcje systemu MultiPoint, ustaw właściwość `filter` warstwy na `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`.
@@ -39,7 +39,7 @@ W wielu różnych scenariuszach można używać map cieplnych, takich jak:
 
 Aby renderować źródło danych punktów jako mapę cieplną, Przekaż źródło danych do wystąpienia klasy `HeatMapLayer` i Dodaj je do mapy.
 
-W poniższym kodzie każdy punkt ciepła ma promień 10 pikseli na wszystkich poziomach powiększenia. Po dodaniu warstwy mapy cieplnej do mapy, ten przykład wstawia ją poniżej warstwy etykieta, aby utworzyć lepszy interfejs użytkownika. Etykiety są wyraźnie widoczne powyżej mapy cieplnej. Dane w tym przykładzie pochodzą z [programu agencji usgse zagrożenia ziemią](https://earthquake.usgs.gov/)i przedstawiają znaczne trzęsienia, które wystąpiły w ciągu ostatnich 30 dni.
+W poniższym kodzie każdy punkt ciepła ma promień 10 pikseli na wszystkich poziomach powiększenia. Aby zapewnić lepsze środowisko użytkownika, Mapa cieplna znajduje się poniżej warstwy etykiet. Etykiety pozostają wyraźnie widoczne. Dane w tym przykładzie pochodzą z [programu agencji usgse zagrożenia ziemią](https://earthquake.usgs.gov/). Jest to przeznaczone dla dużych ziemi, które wystąpiły w ciągu ostatnich 30 dni.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -68,9 +68,9 @@ Oto kompletny przykładowy kod dla poprzedniego kodu.
 Poprzedni przykład dostosowany do mapy cieplnej przez ustawienie opcji promień i nieprzezroczystość. Warstwa mapy cieplnej oferuje kilka opcji dostosowywania, takich jak:
 
 * `radius`: Określa promień w pikselach, w którym ma być renderowany każdy punkt danych. Promień można ustawić jako liczbę stałą lub jako wyrażenie. Za pomocą wyrażenia można skalować promień na podstawie poziomu powiększenia i reprezentować spójny obszar przestrzenny mapy (na przykład promień 5-milowej).
-* `color`: określa sposób kolorowania mapy cieplnej. Gradient koloru jest wspólną funkcją map ciepła i można osiągnąć efekt za pomocą wyrażenia `interpolate`. Możesz również użyć wyrażenia `step`, aby kolorować mapę cieplną, dzieląc gęstość na wizualizację na zakresy podobne do mapy w stylu konturu lub wykresu radarowego. Te palety kolorów definiują kolory z minimum do wartości maksymalnej gęstości. 
+* `color`: określa sposób kolorowania mapy cieplnej. Gradient koloru jest popularną funkcją map ciepła. Efekt można osiągnąć za pomocą wyrażenia `interpolate`. Możesz również użyć wyrażenia `step`, aby kolorować mapę cieplną, dzieląc gęstość na wizualizację na zakresy podobne do mapy w stylu konturu lub wykresu radarowego. Te palety kolorów definiują kolory z minimum do wartości maksymalnej gęstości. 
 
-  Należy określić wartości koloru dla map cieplnych jako wyrażenie dla wartości `heatmap-density`. Kolor pod indeksem 0 w wyrażeniu interpolacji lub domyślny kolor wyrażenia kroku definiuje kolor obszaru, w którym nie ma żadnych danych. Można jej użyć do zdefiniowania koloru tła. Często ta wartość jest ustawiona na przezroczysty lub półprzezroczysty kolor przezroczysty. 
+  Należy określić wartości koloru dla map cieplnych jako wyrażenie dla wartości `heatmap-density`. Kolor obszaru, w którym nie ma żadnych danych, jest zdefiniowany przy indeksie 0 wyrażenia "Interpolacja" lub domyślnym kolorem wyrażenia "". Tej wartości można użyć do zdefiniowania koloru tła. Często ta wartość jest ustawiona na przezroczysty lub półprzezroczysty kolor przezroczysty. 
    
   Oto przykłady wyrażeń koloru:
 
@@ -79,10 +79,10 @@ Poprzedni przykład dostosowany do mapy cieplnej przez ustawienie opcji promień
   | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Interpolacja",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["liniowy"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["mapę cieplną-gęstość"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "przezroczyste",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "purpurowy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, "#fb00fb",<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, "#00c3ff"<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Step",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["mapę cieplną-gęstość"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"przezroczyste",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "Granat",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "zielony",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "żółty",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, "Red"<br/>\] |   
 
 - `opacity`: określa sposób nieprzezroczystości lub przezroczystości warstwy mapy cieplnej.
-- `intensity`: stosuje mnożnik do wagi każdego punktu danych w celu zwiększenia całkowitego intensywności mapę cieplną. Dzięki temu małe różnice w wadze punktów danych są łatwiejsze do wizualizacji.
-- `weight`: Domyślnie wszystkie punkty danych mają wagę 1 i są ważone w równym stopniu. Opcja wagi pełni rolę mnożnika i można ją ustawić jako liczbę lub wyrażenie. Jeśli liczba (na przykład 2) jest ustawiona jako waga, jest to odpowiednik umieszczania każdego punktu danych na mapie dwa razy, co Podwajanie gęstość. Ustawienie opcji wagi na liczbę renderuje mapę cieplną w podobny sposób, aby użyć opcji intensywność. 
+- `intensity`: stosuje mnożnik do wagi każdego punktu danych w celu zwiększenia całkowitego intensywności mapę cieplną. Pozwala to zwiększyć wagę punktów danych, ułatwiając wizualizację.
+- `weight`: Domyślnie wszystkie punkty danych mają wagę 1 i są ważone w równym stopniu. Opcja wagi pełni rolę mnożnika i można ją ustawić jako liczbę lub wyrażenie. Jeśli liczba jest ustawiona jako waga, to równoważność umieszczania każdego punktu danych na mapie dwa razy. Na przykład, jeśli waga wynosi 2, to gęstość podwaja się. Ustawienie opcji wagi na liczbę renderuje mapę cieplną w podobny sposób, aby użyć opcji intensywność. 
 
-  Jeśli jednak używasz wyrażenia, waga każdego punktu danych może opierać się na właściwościach poszczególnych punktów danych. Załóżmy na przykład, że każdy punkt danych reprezentuje trzęsienie ziemi. Ważną metryką każdego punktu danych trzęsienia ziemi jest wartość wielkości. Zdarza się cały czas, ale większość z nich ma niską wartość i jeszcze nie odczuwa. Za pomocą wartości wielkości w wyrażeniu do przypisywania wagi do każdego punktu danych, można lepiej reprezentować znaczenie ziemi na mapie cieplnej.
+  Jeśli jednak używasz wyrażenia, waga każdego punktu danych może opierać się na właściwościach poszczególnych punktów danych. Załóżmy na przykład, że każdy punkt danych reprezentuje trzęsienie ziemi. Ważna Metryka każdego punktu danych trzęsienia ziemi była wartością wielkości. Zdarza się cały czas, ale większość z nich ma niską wartość i nie są zauważalne. Za pomocą wartości wielkości w wyrażeniu do przypisywania wagi do każdego punktu danych, można lepiej reprezentować znaczenie ziemi na mapie cieplnej.
 - `source` i `source-layer`: umożliwia zaktualizowanie źródła danych.
 
 Oto narzędzie do testowania różnych opcji warstwy mapy cieplnej.
@@ -96,9 +96,9 @@ Oto narzędzie do testowania różnych opcji warstwy mapy cieplnej.
 
 Domyślnie promienie punktów danych renderowane w warstwie mapy cieplnej mają stały promień pikseli dla wszystkich poziomów powiększenia. W miarę powiększania mapy dane zagregowane i warstwy mapy cieplnej wyglądają inaczej. 
 
-Użyj wyrażenia `zoom`, aby skalować promień dla każdego poziomu powiększenia, w taki sposób, że każdy punkt danych obejmuje ten sam obszar fizyczny mapy. Dzięki temu warstwa mapy cieplnej jest bardziej statyczna i spójna. Każdy poziom powiększenia mapy ma dwa piksele w pionie i poziomie jako poprzedni poziom powiększenia. 
+Użyj wyrażenia `zoom`, aby skalować promień dla każdego poziomu powiększenia, w taki sposób, że każdy punkt danych obejmuje ten sam obszar fizyczny mapy. To wyrażenie sprawia, że warstwa mapy cieplnej jest bardziej statyczna i spójna. Każdy poziom powiększenia mapy ma dwa piksele w pionie i poziomie jako poprzedni poziom powiększenia. 
 
-Skalowanie promienia tak, aby podwajał się przy każdym poziomie powiększenia tworzy mapę cieplną, która wygląda spójnie na wszystkich poziomach powiększenia. W tym celu należy użyć `zoom` z wyrażeniem podstawowego 2 `exponential interpolation`, jak pokazano w poniższym przykładzie. Powiększ mapę, aby zobaczyć, jak mapa cieplna jest skalowana z poziomem powiększenia.
+Skalowanie promienia tak, aby podwajał się przy każdym poziomie powiększenia tworzy mapę cieplną, która wygląda spójnie na wszystkich poziomach powiększenia. Aby zastosować to skalowanie, należy użyć `zoom` z wyrażeniem `exponential interpolation` Base 2, jak pokazano w poniższym przykładzie. Powiększ mapę, aby zobaczyć, jak mapa cieplna jest skalowana z poziomem powiększenia.
 
 <br/>
 
@@ -107,13 +107,15 @@ Zobacz <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>spójną mapę termicz
 </iframe>
 
 > [!TIP]
-> Po włączeniu klastrowania w źródle danych punkty, które są blisko siebie, są pogrupowane jako punkt klastrowany. Można użyć liczby punktów każdego klastra jako wyrażenia wagi dla mapy cieplnej i znacząco zmniejszyć liczbę punktów, które muszą być renderowane. Liczba punktów klastra jest przechowywana we właściwości `point_count` funkcji Point: 
+> Po włączeniu klastrowania w źródle danych punkty, które są blisko siebie, są pogrupowane jako punkt klastrowany. Można użyć liczby punktów każdego klastra jako wyrażenia wagi dla mapy cieplnej. Może to znacznie zmniejszyć liczbę punktów, które mają być renderowane. Liczba punktów klastra jest przechowywana we właściwości `point_count` funkcji Point: 
+
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-> Jeśli promień klastrowania ma tylko kilka pikseli, podczas renderowania nie ma żadnej różnicy wizualnej. Większa liczba grup usługi RADIUS zwiększa liczbę punktów w każdym klastrze i poprawia wydajność mapę cieplną.
+
+> Jeśli promień klastrowania ma tylko kilka pikseli, w renderowaniu może być mała różnica wizualna. Większa liczba grup usługi RADIUS zwiększa liczbę punktów w każdym klastrze i poprawia wydajność mapę cieplną.
 
 ## <a name="next-steps"></a>Następne kroki
 

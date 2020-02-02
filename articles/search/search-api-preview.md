@@ -1,5 +1,5 @@
 ---
-title: Interfejs API REST w wersji 2019-05-06 — wersja zapoznawcza
+title: Funkcje w wersji zapoznawczej interfejsu API REST
 titleSuffix: Azure Cognitive Search
 description: Interfejs API REST usługi Wyszukiwanie poznawcze platformy Azure w wersji 2019-05-06 — wersja zapoznawcza obejmuje funkcje eksperymentalne, takie jak magazyn wiedzy i buforowanie indeksatora w celu wzbogacania przyrostowego.
 manager: nitinme
@@ -7,26 +7,28 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: 71c6879f467823ab01f4c60ac4d9f26cffcd4eea
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 9985e7ac70c5851699839a95d1e23af4dcca35e7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896124"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935096"
 ---
-# <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Interfejs API REST usługi Wyszukiwanie poznawcze platformy Azure — Wersja 2019-05-06-Preview
+# <a name="preview-features-in-azure-cognitive-search"></a>Funkcje w wersji zapoznawczej na platformie Azure Wyszukiwanie poznawcze
 
-W tym artykule opisano `api-version=2019-05-06-Preview` wersja interfejsu API REST usługi Search, oferując funkcje eksperymentalne, które nie są jeszcze ogólnie dostępne.
+W tym artykule wymieniono funkcje obecnie dostępne w wersji zapoznawczej. Funkcje, które przechodzą z wersji zapoznawczej do ogólnej dostępności, są usuwane z tej listy. Możesz sprawdzić [Aktualizacje usług](https://azure.microsoft.com/updates/?product=search) lub [co nowego](whats-new.md) w anonsach dotyczących ogólnej dostępności.
 
-> [!NOTE]
-> Funkcje w wersji zapoznawczej są dostępne do testowania i eksperymentowania z celem zebrania opinii i mogą ulec zmianie. Zdecydowanie odradzamy korzystanie z interfejsów API w wersji zapoznawczej w aplikacjach produkcyjnych.
+W przypadku niektórych funkcji w wersji zapoznawczej w portalu i zestawie .NET SDK interfejs API REST zawsze ma funkcje w wersji zapoznawczej. Bieżąca wersja interfejsu API wersji zapoznawczej jest `2019-05-06-Preview`.
 
-## <a name="features-in-2019-05-06-preview"></a>Funkcje w 2019-05-06 — wersja zapoznawcza
+> [!IMPORTANT]
+> Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ta sekcja zawiera listę funkcji mających stan wersji zapoznawczej. Większość została dodana w bieżącym interfejsie API 2019-05-06-Preview, ale niektóre takie jak `moreLikeThis` pochodzą z wcześniejszych wersji zapoznawczych, które zostały dołączone do najnowszego interfejsu API w wersji zapoznawczej. 
+## <a name="features-in-public-preview"></a>Funkcje w publicznej wersji zapoznawczej
 
-Gdy funkcja wersji zapoznawczej będzie ogólnie dostępna, zostanie usunięta z tej listy. Możesz sprawdzić [Aktualizacje usług](https://azure.microsoft.com/updates/?product=search) lub [co nowego](whats-new.md) w anonsach dotyczących ogólnej dostępności.
++ [Wyszukiwanie jednostek niestandardowych (wersja zapoznawcza)](cognitive-search-skill-custom-entity-lookup.md ) wyszukuje tekst na podstawie niestandardowej, zdefiniowanej przez użytkownika listy słów i fraz. Korzystając z tej listy, etykieta wszystkie dokumenty z dowolnymi zgodnymi jednostkami. Umiejętność obsługuje również stopień dopasowywania rozmytego, który można zastosować, aby znaleźć dopasowania, które są podobne, ale nie są bardzo dokładne. 
+
++ [Wykrywanie danych osobowych (wersja zapoznawcza)](cognitive-search-skill-pii-detection.md) to umiejętność wykorzystywana podczas indeksowania, która wyodrębnia dane osobowe z tekstu wejściowego i umożliwia zamaskowanie tego tekstu na różne sposoby.
 
 + [Wzbogacanie przyrostowe (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md) dodaje buforowanie do potoku wzbogacania, umożliwiając ponowne użycie istniejących danych wyjściowych, jeśli dopuszczająca modyfikacja, taka jak aktualizacja zestawu umiejętności lub innego obiektu, nie spowoduje zmiany zawartości. Buforowanie dotyczy tylko ulepszonych dokumentów utworzonych przez zestawu umiejętności.
 
@@ -34,9 +36,9 @@ Gdy funkcja wersji zapoznawczej będzie ogólnie dostępna, zostanie usunięta z
 
 + [Azure Data Lake Storage Gen2 indeksator (wersja zapoznawcza)](search-howto-index-azure-data-lake-storage.md) może indeksować zawartość i metadane z Data Lake Storage Gen2.
 
-+ [Magazyn wiedzy](knowledge-store-concept-intro.md) to nowe miejsce docelowe potoku wzbogacania opartego na AI. Struktura danych fizycznych istnieje w usłudze Azure Blob Storage i Azure Table Storage oraz jest tworzona i wypełniana podczas uruchamiania indeksatora, który ma dołączony zestawu umiejętności poznawcze. Definicja samego sklepu wiedzy została określona w definicji zestawu umiejętności. W ramach definicji sklepu merytorycznego można kontrolować struktury fizyczne danych za pomocą elementów *projekcji* , które określają, jak dane są w kształcie, czy dane są przechowywane w magazynie tabel lub w magazynie obiektów blob, oraz czy istnieje wiele widoków.
++ [Magazyn merytoryczny (wersja zapoznawcza)](knowledge-store-concept-intro.md) to nowe miejsce docelowe potoku wzbogacania opartego na AI. Struktura danych fizycznych istnieje w usłudze Azure Blob Storage i Azure Table Storage oraz jest tworzona i wypełniana podczas uruchamiania indeksatora, który ma dołączony zestawu umiejętności poznawcze. Definicja samego sklepu wiedzy została określona w definicji zestawu umiejętności. W ramach definicji sklepu merytorycznego można kontrolować struktury fizyczne danych za pomocą elementów *projekcji* , które określają, jak dane są w kształcie, czy dane są przechowywane w magazynie tabel lub w magazynie obiektów blob, oraz czy istnieje wiele widoków.
 
-+ [parametr zapytania moreLikeThis](search-more-like-this.md) wyszukuje dokumenty, które mają zastosowanie do określonego dokumentu. Ta funkcja została zamieszczona w wcześniejszych wersjach zapoznawczych. 
++ [parametr zapytania moreLikeThis (wersja zapoznawcza)](search-more-like-this.md) umożliwia znalezienie dokumentów, które są istotne dla określonego dokumentu. Ta funkcja została zamieszczona w wcześniejszych wersjach zapoznawczych. 
 
 ## <a name="earlier-preview-features"></a>Wcześniejsze funkcje w wersji zapoznawczej
 

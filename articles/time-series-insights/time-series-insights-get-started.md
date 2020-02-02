@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: cc99b469701b3974a5b8a2f235ee3a9edb798368
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2c946c49884ef0de6843028976d4ec00ccfbcdfe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790202"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934848"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Tworzenie nowego środowiska usługi Time Series Insights w witrynie Azure Portal
 
@@ -28,7 +28,7 @@ Time Series Insights umożliwia rozpoczęcie wizualizacji i wykonywania zapytań
 
 Wykonaj następujące kroki, aby utworzyć środowisko:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 1. Wybierz przycisk **+ Utwórz zasób** .
 
@@ -45,7 +45,7 @@ Wykonaj następujące kroki, aby utworzyć środowisko:
    Ustawienie|Sugerowana wartość|Opis
    ---|---|---
    Nazwa środowiska | Unikatowa nazwa | Ta nazwa reprezentuje środowisko w [Eksploratorze szeregów czasowych](https://insights.timeseries.azure.com)
-   Subskrypcja | Twoja subskrypcja | Jeśli masz wiele subskrypcji, wybierz subskrypcję zawierającą źródło zdarzeń najlepiej. Usługa Time Series Insights może automatycznie wykrywać zasoby usługi Azure IoT Hub i centrum zdarzeń istniejące w tej samej subskrypcji.
+   Subskrypcja | Twoja subskrypcja | Jeśli masz wiele subskrypcji, wybierz subskrypcję zawierającą źródło zdarzeń najlepiej. Time Series Insights może automatycznie wykryć zasoby usługi Azure IoT Hub i centrum zdarzeń istniejące w tej samej subskrypcji.
    Grupa zasobów | Utwórz nową lub Użyj istniejącej | Grupa zasobów jest kolekcją używanych razem zasobów platformy Azure. Możesz wybrać istniejącą grupę zasobów, na przykład tę, która zawiera centrum zdarzeń lub IoT Hub. Można też utworzyć nowy, jeśli ten zasób nie jest powiązany z innymi zasobami.
    Lokalizacja | Bliżej źródła zdarzenia | Najlepiej wybrać tę samą lokalizację centrum danych, w której znajdują się dane źródła zdarzeń, w celu uniknięcia dodatkowego kosztu i limitu przepustowości między strefami oraz dodanych opóźnień podczas przenoszenia danych z regionu.
    Warstwa cenowa | S1 | Wybierz potrzebną przepustowość. W przypadku najniższych kosztów i pojemności Starter wybierz pozycję S1.
@@ -69,6 +69,6 @@ Wykonaj następujące kroki, aby utworzyć środowisko:
 
 * [Dodaj źródło zdarzeń centrum zdarzeń](time-series-insights-how-to-add-an-event-source-eventhub.md) do środowiska Azure Time Series Insightsowego.
 
-* [Wyślij zdarzenia](time-series-insights-send-events.md) do źródła zdarzeń.
+* [Wysyłanie zdarzeń](time-series-insights-send-events.md) do źródła zdarzenia.
 
 * Wyświetl swoje środowisko w [eksploratorze Time Series Insights](https://insights.timeseries.azure.com).

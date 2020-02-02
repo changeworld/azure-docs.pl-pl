@@ -1,6 +1,6 @@
 ---
-title: Użyj Azure Active Directory do uwierzytelniania rozwiązań do zarządzania partiami | Microsoft Docs
-description: Aplikacje skompilowane przy użyciu Azure Resource Manager i dostawcy zasobów usługi Batch uwierzytelniają się w usłudze Azure AD.
+title: Używanie Azure Active Directory do uwierzytelniania rozwiązań do zarządzania partiami
+description: Skorzystaj z Azure Active Directory do uwierzytelniania z poziomu aplikacji, które korzystają z biblioteki zarządzania usługą Batch dla platformy .NET.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: jushiman
-ms.openlocfilehash: 19aac0e25f9a036ce52d72a51e1ab7270eaaf3e5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1dce5118040e6164a468b0d5470d28e5cd06d8c5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029832"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938261"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań do zarządzania partiami przy użyciu Active Directory
 
@@ -47,7 +47,7 @@ Po zakończeniu procesu rejestracji zostanie wyświetlony Identyfikator aplikacj
 
 Następnie musisz delegować dostęp do aplikacji do interfejsu API Azure Resource Manager. Identyfikator usługi Azure AD dla interfejsu API Menedżer zasobów to **Windows Azure interfejs API zarządzania usługami**.
 
-Wykonaj następujące kroki w witrynie Azure Portal:
+Wykonaj następujące kroki w Azure Portal:
 
 1. W okienku nawigacji po lewej stronie Azure Portal wybierz pozycję **wszystkie usługi**, kliknij pozycję **rejestracje aplikacji**, a następnie kliknij przycisk **Dodaj**.
 2. Wyszukaj nazwę aplikacji na liście rejestracji aplikacji:

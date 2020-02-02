@@ -3,7 +3,7 @@ title: Odwrotny serwer DNS dla usług platformy Azure — Azure DNS
 description: Za pomocą tej ścieżki szkoleniowej Rozpocznij Konfigurowanie wyszukiwania odwrotnej usługi DNS dla usług hostowanych na platformie Azure.
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: KumudD
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: allensu
-ms.openlocfilehash: 550ba617dec0359fd7d4e0bc309e411095de0d1e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 073e84ece11f6817bfe2c5a94735ec6e16dac4fe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211228"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932369"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurowanie odwrotnego serwera DNS dla usług hostowanych na platformie Azure
 

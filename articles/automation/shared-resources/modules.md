@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786473"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930435"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Zarządzanie modułami w Azure Automation
 
@@ -42,7 +42,7 @@ $moduleVersion = <ModuleVersion>
 New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
 ```
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 W Azure Portal przejdź do konta usługi Automation i wybierz pozycję **moduły** w obszarze **zasoby udostępnione**. Kliknij pozycję **+ Dodaj moduł**. Wybierz plik **zip** , który zawiera moduł, a następnie kliknij przycisk **OK** , aby rozpocząć importowanie procesu.
 
@@ -60,11 +60,11 @@ Możesz również zaimportować moduły z Galeria programu PowerShell bezpośred
 
 ## <a name="delete-modules"></a>Usuń moduły
 
-Jeśli masz problemy z modułem lub musisz przywrócić poprzednią wersję modułu, możesz usunąć go z konta usługi Automation. Nie można usunąć oryginalnej wersji [domyślnych modułów](#default-modules) , które są importowane podczas tworzenia konta usługi Automation. Jeśli moduł, który chcesz usunąć, jest nowszą wersją jednego z zainstalowanych [modułów domyślnych](#default-modules) , zostanie wycofany do wersji, która została zainstalowana z kontem usługi Automation. W przeciwnym razie wszystkie moduły usunięte z konta usługi Automation zostaną usunięte.
+Jeśli masz problemy z modułem lub musisz przywrócić poprzednią wersję modułu, możesz usunąć go z konta usługi Automation. Nie można usunąć oryginalnej wersji [domyślnych modułów](#default-modules) , które są importowane podczas tworzenia konta usługi Automation. Jeśli moduł, który chcesz usunąć, jest nowszą wersją jednego z zainstalowanych [modułów domyślnych](#default-modules) , zostanie przywrócony do wersji, która została zainstalowana z kontem usługi Automation. W przeciwnym razie wszystkie moduły usunięte z konta usługi Automation zostaną usunięte.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
-W Azure Portal przejdź do konta usługi Automation i wybierz pozycję **moduły** w obszarze **zasoby udostępnione**. Wybierz moduł, który chcesz usunąć. Na stronie **moduł** clcick **delete**. Jeśli ten moduł jest jednym z [domyślnych modułów](#default-modules), zostanie przywrócony do wersji, która była obecna podczas tworzenia konta usługi Automation.
+W Azure Portal przejdź do konta usługi Automation i wybierz pozycję **moduły** w obszarze **zasoby udostępnione**. Wybierz moduł, który chcesz usunąć. Na stronie **moduł** wybierz pozycję **Usuń**. Jeśli ten moduł jest jednym z [domyślnych modułów](#default-modules), zostanie przywrócony do wersji, która była obecna podczas tworzenia konta usługi Automation.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -79,7 +79,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 Poniżej znajduje się lista poleceń cmdlet w module wewnętrznym `Orchestrator.AssetManagement.Cmdlets` zaimportowana do każdego konta usługi Automation. Te polecenia cmdlet są dostępne w Twoich elementach Runbook i konfiguracjach DSC i umożliwiają korzystanie z zasobów w ramach konta usługi Automation. Ponadto wewnętrzne polecenia cmdlet umożliwiają pobieranie wpisów tajnych z szyfrowanych wartości **zmiennych** , **poświadczeń**i pól **połączeń** szyfrowanych. Polecenia cmdlet Azure PowerShell nie mogą pobrać tych kluczy tajnych. Te polecenia cmdlet nie wymagają niejawnego połączenia z platformą Azure podczas ich używania, na przykład do uwierzytelniania na platformie Azure przy użyciu konta Uruchom jako.
 
 >[!NOTE]
->Te wewnętrzne polecenia cmdlet nie są dostępne w hybrydowym procesie roboczym elementu Runbook, są dostępne tylko z poziomu elementów Runbook działających na platformie Azure. Użyj odpowiednich [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) lub [AZ modułów](../az-modules.md) dla elementów Runbook działających bezpośrednio na komputerze lub w odniesieniu do zasobów w środowisku. 
+>Te wewnętrzne polecenia cmdlet są dostępne w hybrydowym procesie roboczym elementu Runbook systemu Windows, ale nie są dostępne w hybrydowym procesie roboczym usługi Linux. Użyj odpowiednich [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) lub [AZ modułów](../az-modules.md) dla elementów Runbook działających bezpośrednio na komputerze lub w odniesieniu do zasobów w środowisku. 
 >
 
 |Nazwa|Opis|
@@ -258,19 +258,19 @@ Poniższa tabela zawiera listę modułów, które są importowane domyślnie pod
 | Azure | 1.0.3 |
 | Azure.Storage | 1.0.3 |
 | AzureRM.Automation | 1.0.3 |
-| AzureRM.Compute | ppkt |
+| AzureRM.Compute | 1.2.1 |
 | AzureRM.Profile | 1.0.3 |
 | AzureRM.Resources | 1.0.3 |
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0,2 |
-| Microsoft. PowerShell. Core | 0 |
+| GPRegistryPolicyParser | 0.2 |
+| Microsoft.PowerShell.Core | 0 |
 | Microsoft. PowerShell. Diagnostics |  |
-| Microsoft. PowerShell. Management |  |
+| Microsoft.PowerShell.Management |  |
 | Microsoft. PowerShell. Security |  |
 | Microsoft.PowerShell.Utility |  |
-| Microsoft. WSMan. Management |  |
+| Microsoft.WSMan.Management |  |
 | Orchestrator. AssetManagement. polecenia cmdlet | 1 |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |

@@ -2,17 +2,17 @@
 title: 'Samouczek: Hostowanie domeny i poddomeny — Azure DNS'
 description: W tym artykule dowiesz się, jak skonfigurować Azure DNS do hostowania stref DNS.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 062a5beaec30d510d37af436e00f4d57785245cd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212197"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937320"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Samouczek: hostowanie własnej domeny w usłudze Azure DNS
 
@@ -21,7 +21,7 @@ Za pomocą usługi Azure DNS można hostować swoją domenę DNS i zarządzać r
 Załóżmy, że masz zakupioną domenę „contoso.net” od rejestratora nazw domen i tworzysz strefę o nazwie „contoso.net” w usłudze Azure DNS. Ponieważ jesteś właścicielem domeny, rejestrator oferuje Ci opcję skonfigurowania rekordów serwerów nazw (NS) dla domeny. Rejestrator przechowuje rekordy NS w strefie nadrzędnej „.net”. Użytkownicy Internetu na całym świecie są kierowani do Twojej domeny w strefie usługi Azure DNS podczas próby rozpoznania rekordów DNS w strefie contoso.net.
 
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie strefy DNS.

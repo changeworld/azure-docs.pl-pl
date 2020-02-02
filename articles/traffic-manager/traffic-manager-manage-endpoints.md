@@ -3,20 +3,20 @@ title: Zarządzanie punktami końcowymi w usłudze Azure Traffic Manager | Micro
 description: W tym artykule omówiono dodawanie, usuwanie, włączanie i wyłączanie punktów końcowych w usłudze Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: allensu
-ms.openlocfilehash: 573a8f7ede29b045053d77194d15707df9e23641
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071082"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939135"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Dodawanie, usuwanie, włączanie i wyłączanie punktów końcowych
 
@@ -52,7 +52,7 @@ Można również wyłączyć poszczególne punkty końcowe, które są części�
 1. Z poziomu przeglądarki zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 2. Korzystając z paska wyszukiwania portalu, wyszukaj nazwę **profilu usługi Traffic Manager**, który chcesz zmodyfikować, a następnie kliknij profil usługi Traffic Manager w wyświetlonych wynikach wyszukiwania.
 3. W bloku **profilu usługi Traffic Manager**, w sekcji **Ustawienia** kliknij pozycję **Punkty końcowe**. 
-4. Kliknij punkt końcowy, który ma zostać wyłączony.
+4. Kliknij punkt końcowy, który chcesz wyłączyć.
 5. W bloku **Punkt końcowy** zmień stan punktu końcowego na **Wyłączony**, a następnie kliknij przycisk **Zapisz**.
 6. Klienty w dalszym ciągu będą wysyłać ruch do punktu końcowego na czas wygaśnięcia (TTL). Czas wygaśnięcia można zmienić na stronie konfiguracji profilu usługi Traffic Manager.
 
@@ -71,10 +71,10 @@ Można również wyłączyć poszczególne punkty końcowe, które są części�
 2. Korzystając z paska wyszukiwania portalu, wyszukaj nazwę **profilu usługi Traffic Manager**, który chcesz zmodyfikować, a następnie kliknij profil usługi Traffic Manager w wyświetlonych wynikach wyszukiwania.
 3. W bloku **profilu usługi Traffic Manager**, w sekcji **Ustawienia** kliknij pozycję **Punkty końcowe**. 
 4. Kliknij punkt końcowy, który chcesz usunąć.
-5. W **punktu końcowego** bloku kliknij **Usuń**
+5. W bloku **punkt końcowy** kliknij pozycję **Usuń** .
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Zarządzanie profilami usługi Traffic Manager](traffic-manager-manage-profiles.md)
 * [Konfigurowanie metod routingu](traffic-manager-configure-routing-method.md)

@@ -2,13 +2,13 @@
 title: Konfigurowanie sondy na żywo w wystąpieniu kontenera
 description: Dowiedz się, jak skonfigurować sondy na żywo w celu ponownego uruchomienia kontenerów w złej kondycji w Azure Container Instances
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: 566f7952aff1cf460272fbb418a2a0efff411881
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901894"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934164"
 ---
 # <a name="configure-liveness-probes"></a>Konfigurowanie sond żywotności
 
@@ -63,13 +63,13 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>Uruchom polecenie
 
-Wdrożenie definiuje uruchamianie polecenia, które ma być uruchamiane podczas pierwszego uruchomienia kontenera, zdefiniowane przez właściwość `command`, która akceptuje tablicę ciągów. W tym przykładzie zostanie uruchomiona sesja bash i utworzysz plik o nazwie `healthy` w katalogu `/tmp` przez przekazanie tego polecenia:
+Wdrożenie zawiera właściwość `command` definiującą polecenie uruchamiania uruchamiane po pierwszym uruchomieniu kontenera. Ta właściwość akceptuje tablicę ciągów. To polecenie symuluje przejście w stan złej kondycji.
+
+Najpierw uruchamia sesję bash i tworzy plik o nazwie `healthy` w katalogu `/tmp`. A następnie uśpienie przez 30 sekund przed usunięciem pliku, a następnie przejście do trybu uśpienia 10 minut:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
-
- Następnie zostanie ona przesunięta przez 30 sekund przed usunięciem pliku, a następnie zostanie przesunięta o 10 minut w tryb uśpienia.
 
 ### <a name="liveness-command"></a>Dynamiczność — polecenie
 
@@ -79,25 +79,25 @@ Właściwość `periodSeconds` określa, że polecenie ma być wykonywane co 5 s
 
 ## <a name="verify-liveness-output"></a>Sprawdzanie danych wyjściowych na żywo
 
-W ciągu pierwszych 30 sekund plik `healthy` utworzony przez polecenie uruchamiania istnieje. Gdy na żywo polecenie sprawdza obecność pliku `healthy`, kod stanu zwraca zero, sygnalizowanie sukcesu, dlatego nie następuje ponowne uruchomienie.
+W ciągu pierwszych 30 sekund plik `healthy` utworzony przez polecenie uruchamiania istnieje. Gdy polecenie Live jest sprawdza obecność pliku `healthy`, kod stanu zwraca wartość 0, sygnalizujący powodzenie, dlatego nie następuje ponowne uruchomienie.
 
-Po 30 sekundach `cat /tmp/healthy` rozpocznie się niepowodzeniem, co spowoduje wystąpienie złej kondycji i zabicia zdarzeń.
+Po 30 sekundach polecenie `cat /tmp/healthy` zaczyna kończyć się niepowodzeniem, powodując wystąpienie złej kondycji i kasowanie zdarzeń.
 
 Te zdarzenia można wyświetlić w Azure Portal lub interfejs wiersza polecenia platformy Azure.
 
 ![Zdarzenie w złej kondycji portalu][portal-unhealthy]
 
-Wyświetlając zdarzenia w Azure Portal, zdarzenia typu `Unhealthy` będą wyzwalane w przypadku niepowodzenia polecenia na żywo. Kolejne zdarzenie będzie typu `Killing`, co oznacza usunięcie kontenera, aby można było rozpocząć ponowne uruchomienie. Liczba ponownych uruchomień dla kontenera jest zwiększana za każdym razem, gdy wystąpi zdarzenie.
+Wyświetlając zdarzenia w Azure Portal, zdarzenia typu `Unhealthy` są wywoływane z niepowodzeniem polecenia na żywo. Kolejne zdarzenie jest typu `Killing`, co oznacza usunięcie kontenera, aby można było rozpocząć ponowne uruchomienie. Liczba ponownych uruchomień dla kontenera jest zwiększana za każdym razem, gdy wystąpi zdarzenie.
 
-Ponowne uruchomienia są wykonywane w miejscu, dzięki czemu zasoby, takie jak publiczne adresy IP i zawartość specyficzną dla węzła, zostaną zachowane.
+Ponowne uruchomienia są wykonywane w miejscu, tak aby zasoby, takie jak publiczne adresy IP i zawartość specyficzną dla węzła, były zachowywane.
 
 ![Licznik ponownego uruchamiania portalu][portal-restart]
 
-Jeśli sonda na żywo zakończy się niepowodzeniem i wyzwala zbyt wiele ponownych uruchomień, kontener wprowadzi odwrotne opóźnienie.
+Jeśli sonda na żywo zakończy się niepowodzeniem i wyzwala zbyt wiele ponownych uruchomień, kontener wejdzie w odwrotny sposób.
 
 ## <a name="liveness-probes-and-restart-policies"></a>Sondy na żywo i zasady ponownego uruchamiania
 
-Zasady ponownego uruchamiania zastępują zachowanie ponownego uruchamiania wyzwalane przez sondy na żywo. Na przykład jeśli ustawisz `restartPolicy = Never` *i* sondę na żywo, Grupa kontenerów nie zostanie ponownie uruchomiona z powodu niepowodzenia sprawdzenia na żywo. Grupa kontenerów będzie w zamian zgodna z zasadami ponownego uruchamiania grupy kontenerów `Never`.
+Zasady ponownego uruchamiania zastępują zachowanie ponownego uruchamiania wyzwalane przez sondy na żywo. Na przykład jeśli ustawisz `restartPolicy = Never` *i* sondę na żywo, Grupa kontenerów nie zostanie ponownie uruchomiona z powodu niepowodzenia sprawdzenia na żywo. Grupa kontenerów jest raczej zgodna z zasadami ponownego uruchamiania grupy kontenerów `Never`.
 
 ## <a name="next-steps"></a>Następne kroki
 

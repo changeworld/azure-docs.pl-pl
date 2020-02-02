@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 367f6253f228e963edb7b178f8b25da259a5e2c7
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 031890b389e78c4ca01e6d6ae52430db865ede2f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700570"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931059"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Przepływ kodu autoryzacji Microsoft Identity platform i OAuth 2,0
 
@@ -45,7 +45,7 @@ Na wysokim poziomie cały przepływ uwierzytelniania dla aplikacji natywnej/mobi
 
 ## <a name="request-an-authorization-code"></a>Żądanie kodu autoryzacji
 
-Przepływ kodu autoryzacji zaczyna się od klienta kierującego użytkownika do punktu końcowego `/authorize`. W tym żądaniu klient wskazuje uprawnienia wymagane do uzyskania przez użytkownika:
+Przepływ kodu autoryzacji zaczyna się od klienta kierującego użytkownika do punktu końcowego `/authorize`. W tym żądaniu klient żąda uprawnień `openid`, `offline_access`i `https://graph.microsoft.com/mail.read `od użytkownika.  Niektóre uprawnienia są ograniczone przez administratora, na przykład zapisywanie danych w katalogu organizacji przy użyciu `Directory.ReadWrite.All`. Jeśli aplikacja zażąda dostępu do jednego z tych uprawnień od użytkownika w organizacji, zostanie wyświetlony komunikat o błędzie informujący, że nie są uprawnieni do wyrażania zgody na uprawnienia aplikacji. Aby zażądać dostępu do zakresów z ograniczeniami administratora, należy zażądać ich bezpośrednio od administratora firmy.  Aby uzyskać więcej informacji, Odczytaj [uprawnienia z ograniczeniami administratora](v2-permissions-and-consent.md#admin-restricted-permissions).
 
 ```
 // Line breaks for legibility only
@@ -55,28 +55,28 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
+&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &state=12345
 ```
 
 > [!TIP]
 > Kliknij link poniżej, aby wykonać to żądanie. Po zalogowaniu przeglądarka powinna zostać przekierowana do `https://localhost/myapp/` przy użyciu `code` na pasku adresu.
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
 | Parametr    | Wymagane/opcjonalne | Opis |
 |--------------|-------------|--------------|
-| `tenant`    | {1&gt;wymagane&lt;1}    | Wartość `{tenant}` w ścieżce żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikator dzierżawy. Aby uzyskać więcej informacji, zobacz temat [podstawowe informacje o protokole](active-directory-v2-protocols.md#endpoints).  |
-| `client_id`   | {1&gt;wymagane&lt;1}    | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji.  |
-| `response_type` | {1&gt;wymagane&lt;1}    | Musi zawierać `code` dla przepływu kodu autoryzacji.       |
-| `redirect_uri`  | {1&gt;wymagane&lt;1} | Redirect_uri aplikacji, w której odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Musi dokładnie pasować do jednego z redirect_uris zarejestrowanego w portalu, z wyjątkiem tego, że musi on być zakodowany w adresie URL. W przypadku natywnych aplikacji mobilnych & należy użyć wartości domyślnej `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
-| `scope`  | {1&gt;wymagane&lt;1}    | Rozdzielana spacjami lista [zakresów](v2-permissions-and-consent.md) , do których użytkownik ma wyrazić zgodę.  W przypadku `/authorize` rozgałęzienia żądania może to obejmować wiele zasobów, co pozwala aplikacji na uzyskanie zgody na wiele interfejsów API sieci Web, które mają być wywoływane. |
-| `response_mode`   | zalecane | Określa metodę, która ma zostać użyta do wysłania zwróconego tokenu z powrotem do aplikacji. Może to być jeden z następujących elementów:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` udostępnia kod jako parametr ciągu zapytania w identyfikatorze URI przekierowania. Jeśli żądasz tokenu identyfikatora przy użyciu niejawnego przepływu, nie możesz używać `query` jak określono w [specyfikacji OpenID Connect](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli żądasz tylko kodu, możesz użyć `query`, `fragment`lub `form_post`. `form_post` wykonuje wpis zawierający kod dla identyfikatora URI przekierowania. Aby uzyskać więcej informacji, zobacz [OpenID Connect Connect Protocol](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
-| `state`                 | zalecane | Wartość uwzględniona w żądaniu, która również zostanie zwrócona w odpowiedzi tokenu. Może to być ciąg dowolnej zawartości. Losowo wygenerowana unikatowa wartość jest zwykle używana w celu [zapobiegania atakom na fałszerstwo żądań między witrynami](https://tools.ietf.org/html/rfc6749#section-10.12). Ta wartość może również kodować informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takie jak strona lub widok. |
-| `prompt`  | opcjonalnie    | Wskazuje typ interakcji użytkownika, która jest wymagana. Jedyne prawidłowe wartości w tym momencie to `login`, `none`i `consent`.<br/><br/>- `prompt=login` wymusi, aby użytkownik wprowadził swoje poświadczenia na tym żądaniu, negację logowania jednokrotnego.<br/>- `prompt=none` jest przeciwieństwem-zapewnia, że użytkownik nie będzie wyświetlany z żadnym interaktywnym monitem. Jeśli żądanie nie może zostać zakończone dyskretnie przy użyciu logowania jednokrotnego, punkt końcowy platformy tożsamości firmy Microsoft zwróci błąd `interaction_required`.<br/>- `prompt=consent` będzie wyzwalać okno dialogowe zgody OAuth po zalogowaniu się użytkownika, z prośbą o udzielenie uprawnień do aplikacji. |
-| `login_hint`  | opcjonalnie    | Może służyć do wstępnego wypełniania pola Nazwa użytkownika/adres e-mail strony logowania dla użytkownika, jeśli znana jest jego nazwa użytkownika przed czasem. Często aplikacje będą używać tego parametru podczas ponownego uwierzytelniania, ponieważ już wyodrębnili nazwę użytkownika z poprzedniego logowania przy użyciu `preferred_username`.   |
-| `domain_hint`  | opcjonalnie    | Może to być jeden z `consumers` lub `organizations`.<br/><br/>W przypadku pominięcia zostanie pominięty proces odnajdywania na podstawie poczty e-mail, który użytkownik przejdzie na stronie logowania, co prowadzi do nieco bardziej usprawnionego środowiska użytkownika. Często aplikacje będą używać tego parametru podczas ponownego uwierzytelniania przez wyodrębnienie `tid` z poprzedniego logowania. Jeśli `tid` wartość żądania jest `9188040d-6c67-4c5b-b112-36a304b66dad`, należy użyć `domain_hint=consumers`. W przeciwnym razie użyj `domain_hint=organizations`.  |
-| `code_challenge_method` | opcjonalnie    | Metoda używana do kodowania `code_verifier` dla parametru `code_challenge`. Może być jedną z następujących wartości:<br/><br/>- `plain` <br/>- `S256`<br/><br/>W przypadku wykluczenia `code_challenge` przyjmuje się, że jest to zwykły tekst, jeśli `code_challenge` jest uwzględniony. Platforma tożsamości firmy Microsoft obsługuje zarówno `plain`, jak i `S256`. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |
-| `code_challenge`  | opcjonalnie | Używane do zabezpieczania kodu autoryzacji za pośrednictwem klucza testowego dla wymiany kodu (PKCE) z klienta natywnego. Wymagane, jeśli `code_challenge_method` jest uwzględniony. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |
+| `tenant`    | Wymagane    | Wartość `{tenant}` w ścieżce żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikator dzierżawy. Aby uzyskać więcej informacji, zobacz temat [podstawowe informacje o protokole](active-directory-v2-protocols.md#endpoints).  |
+| `client_id`   | Wymagane    | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji.  |
+| `response_type` | Wymagane    | Musi zawierać `code` dla przepływu kodu autoryzacji.       |
+| `redirect_uri`  | Wymagane | Redirect_uri aplikacji, w której odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Musi dokładnie pasować do jednego z redirect_uris zarejestrowanego w portalu, z wyjątkiem tego, że musi on być zakodowany w adresie URL. W przypadku natywnych aplikacji mobilnych & należy użyć wartości domyślnej `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
+| `scope`  | Wymagane    | Rozdzielana spacjami lista [zakresów](v2-permissions-and-consent.md) , do których użytkownik ma wyrazić zgodę.  W przypadku `/authorize` rozgałęzienia żądania może to obejmować wiele zasobów, co pozwala aplikacji na uzyskanie zgody na wiele interfejsów API sieci Web, które mają być wywoływane. |
+| `response_mode`   | Rekomendowane | Określa metodę, która ma zostać użyta do wysłania zwróconego tokenu z powrotem do aplikacji. Może to być jeden z następujących elementów:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` udostępnia kod jako parametr ciągu zapytania w identyfikatorze URI przekierowania. Jeśli żądasz tokenu identyfikatora przy użyciu niejawnego przepływu, nie możesz używać `query` jak określono w [specyfikacji OpenID Connect](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli żądasz tylko kodu, możesz użyć `query`, `fragment`lub `form_post`. `form_post` wykonuje wpis zawierający kod dla identyfikatora URI przekierowania. Aby uzyskać więcej informacji, zobacz [OpenID Connect Connect Protocol](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
+| `state`                 | Rekomendowane | Wartość uwzględniona w żądaniu, która również zostanie zwrócona w odpowiedzi tokenu. Może to być ciąg dowolnej zawartości. Losowo wygenerowana unikatowa wartość jest zwykle używana w celu [zapobiegania atakom na fałszerstwo żądań między witrynami](https://tools.ietf.org/html/rfc6749#section-10.12). Ta wartość może również kodować informacje o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelniania, takie jak strona lub widok. |
+| `prompt`  | obowiązkowe    | Wskazuje typ interakcji użytkownika, która jest wymagana. Jedyne prawidłowe wartości w tym momencie to `login`, `none`i `consent`.<br/><br/>- `prompt=login` wymusi, aby użytkownik wprowadził swoje poświadczenia na tym żądaniu, negację logowania jednokrotnego.<br/>- `prompt=none` jest przeciwieństwem-zapewnia, że użytkownik nie będzie wyświetlany z żadnym interaktywnym monitem. Jeśli żądanie nie może zostać zakończone dyskretnie przy użyciu logowania jednokrotnego, punkt końcowy platformy tożsamości firmy Microsoft zwróci błąd `interaction_required`.<br/>- `prompt=consent` będzie wyzwalać okno dialogowe zgody OAuth po zalogowaniu się użytkownika, z prośbą o udzielenie uprawnień do aplikacji. |
+| `login_hint`  | obowiązkowe    | Może służyć do wstępnego wypełniania pola Nazwa użytkownika/adres e-mail strony logowania dla użytkownika, jeśli znana jest jego nazwa użytkownika przed czasem. Często aplikacje będą używać tego parametru podczas ponownego uwierzytelniania, ponieważ już wyodrębnili nazwę użytkownika z poprzedniego logowania przy użyciu `preferred_username`.   |
+| `domain_hint`  | obowiązkowe    | Może to być jeden z `consumers` lub `organizations`.<br/><br/>W przypadku pominięcia zostanie pominięty proces odnajdywania na podstawie poczty e-mail, który użytkownik przejdzie na stronie logowania, co prowadzi do nieco bardziej usprawnionego środowiska użytkownika. Często aplikacje będą używać tego parametru podczas ponownego uwierzytelniania przez wyodrębnienie `tid` z poprzedniego logowania. Jeśli `tid` wartość żądania jest `9188040d-6c67-4c5b-b112-36a304b66dad`, należy użyć `domain_hint=consumers`. W przeciwnym razie użyj `domain_hint=organizations`.  |
+| `code_challenge_method` | obowiązkowe    | Metoda używana do kodowania `code_verifier` dla parametru `code_challenge`. Może być jedną z następujących wartości:<br/><br/>- `plain` <br/>- `S256`<br/><br/>W przypadku wykluczenia `code_challenge` przyjmuje się, że jest to zwykły tekst, jeśli `code_challenge` jest uwzględniony. Platforma tożsamości firmy Microsoft obsługuje zarówno `plain`, jak i `S256`. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |
+| `code_challenge`  | obowiązkowe | Używane do zabezpieczania kodu autoryzacji za pośrednictwem klucza testowego dla wymiany kodu (PKCE) z klienta natywnego. Wymagane, jeśli `code_challenge_method` jest uwzględniony. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 
 W tym momencie użytkownik zostanie poproszony o wprowadzenie poświadczeń i zakończenie uwierzytelniania. Punkt końcowy platformy tożsamości firmy Microsoft sprawdzi również, czy użytkownik wyraził zgodę na uprawnienia wskazane w `scope` parametr zapytania. Jeśli użytkownik nie wyraził zgody na żadne z tych uprawnień, poprosił użytkownika o zgodę na wymagane uprawnienia. Szczegółowe informacje o [uprawnieniach, zgodzie i aplikacjach wielodostępnych są dostępne tutaj](v2-permissions-and-consent.md).
 
@@ -140,7 +140,7 @@ Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
@@ -152,14 +152,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr  | Wymagane/opcjonalne | Opis     |
 |------------|-------------------|----------------|
-| `tenant`   | {1&gt;wymagane&lt;1}   | Wartość `{tenant}` w ścieżce żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikator dzierżawy. Aby uzyskać więcej informacji, zobacz temat [podstawowe informacje o protokole](active-directory-v2-protocols.md#endpoints).  |
-| `client_id` | {1&gt;wymagane&lt;1}  | Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala —](https://go.microsoft.com/fwlink/?linkid=2083908) jest przypisana do aplikacji. |
-| `grant_type` | {1&gt;wymagane&lt;1}   | Należy `authorization_code` dla przepływu kodu autoryzacji.   |
-| `scope`      | {1&gt;wymagane&lt;1}   | Rozdzielana spacjami lista zakresów. Zakresy żądane w tym etapie muszą być równoważne lub podzbiorem zakresów żądanych w pierwszym etapie. Wszystkie zakresy muszą pochodzić z pojedynczego zasobu, a także zakresy OIDC (`profile`, `openid`, `email`). Aby uzyskać bardziej szczegółowy opis zakresów, zapoznaj się z [uprawnieniami, zgodą i zakresami](v2-permissions-and-consent.md). |
-| `code`          | {1&gt;wymagane&lt;1}  | Authorization_code, które zostały nabyte w pierwszym etapie przepływu. |
-| `redirect_uri`  | {1&gt;wymagane&lt;1}  | Ta sama redirect_uri wartość, która została użyta w celu uzyskania authorization_code. |
+| `tenant`   | Wymagane   | Wartość `{tenant}` w ścieżce żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikator dzierżawy. Aby uzyskać więcej informacji, zobacz temat [podstawowe informacje o protokole](active-directory-v2-protocols.md#endpoints).  |
+| `client_id` | Wymagane  | Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala —](https://go.microsoft.com/fwlink/?linkid=2083908) jest przypisana do aplikacji. |
+| `grant_type` | Wymagane   | Należy `authorization_code` dla przepływu kodu autoryzacji.   |
+| `scope`      | Wymagane   | Rozdzielana spacjami lista zakresów. Zakresy żądane w tym etapie muszą być równoważne lub podzbiorem zakresów żądanych w pierwszym etapie. Wszystkie zakresy muszą pochodzić z pojedynczego zasobu, a także zakresy OIDC (`profile`, `openid`, `email`). Aby uzyskać bardziej szczegółowy opis zakresów, zapoznaj się z [uprawnieniami, zgodą i zakresami](v2-permissions-and-consent.md). |
+| `code`          | Wymagane  | Authorization_code, które zostały nabyte w pierwszym etapie przepływu. |
+| `redirect_uri`  | Wymagane  | Ta sama redirect_uri wartość, która została użyta w celu uzyskania authorization_code. |
 | `client_secret` | wymagane dla aplikacji sieci Web | Wpis tajny aplikacji utworzony w portalu rejestracji aplikacji dla aplikacji. Nie należy używać wpisu tajnego aplikacji w aplikacji natywnej, ponieważ client_secrets nie może być niezawodnie przechowywana na urządzeniach. Jest to wymagane w przypadku aplikacji sieci Web i interfejsów API sieci Web, które umożliwiają bezpieczne przechowywanie client_secret po stronie serwera.  Wpis tajny klienta musi być zakodowany przy użyciu adresu URL przed wysłaniem.  |
-| `code_verifier` | opcjonalnie  | Ten sam code_verifier, który został użyty w celu uzyskania authorization_code. Wymagane, jeśli w żądaniu udzielenia uprawnienia do kodu autoryzacji użyto PKCE. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |
+| `code_verifier` | obowiązkowe  | Ten sam code_verifier, który został użyty w celu uzyskania authorization_code. Wymagane, jeśli w żądaniu udzielenia uprawnienia do kodu autoryzacji użyto PKCE. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Pomyślna odpowiedź
 
@@ -170,7 +170,7 @@ Pomyślna odpowiedź dotycząca tokenu będzie wyglądać następująco:
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...",
     "token_type": "Bearer",
     "expires_in": 3599,
-    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fuser.read",
+    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fmail.read",
     "refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
@@ -253,7 +253,7 @@ Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
 &grant_type=refresh_token
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps
@@ -265,11 +265,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr     |                | Opis        |
 |---------------|----------------|--------------------|
-| `tenant`        | {1&gt;wymagane&lt;1}     | Wartość `{tenant}` w ścieżce żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikator dzierżawy. Aby uzyskać więcej informacji, zobacz temat [podstawowe informacje o protokole](active-directory-v2-protocols.md#endpoints).   |
-| `client_id`     | {1&gt;wymagane&lt;1}    | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
-| `grant_type`    | {1&gt;wymagane&lt;1}    | Musi być `refresh_token` dla tego odcinka przepływu kodu autoryzacji. |
-| `scope`         | {1&gt;wymagane&lt;1}    | Rozdzielana spacjami lista zakresów. Zakresy żądane w tym etapie muszą być równoważne lub podzbiorem zakresów żądanych w pierwotnym etapie żądania authorization_code. Jeśli zakresy określone w tym żądaniu obejmują wiele serwerów zasobów, punkt końcowy platformy tożsamości firmy Microsoft zwróci token dla zasobu określonego w pierwszym zakresie. Aby uzyskać bardziej szczegółowy opis zakresów, zapoznaj się z [uprawnieniami, zgodą i zakresami](v2-permissions-and-consent.md). |
-| `refresh_token` | {1&gt;wymagane&lt;1}    | Refresh_token, które zostały nabyte w drugim etapie przepływu. |
+| `tenant`        | Wymagane     | Wartość `{tenant}` w ścieżce żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikator dzierżawy. Aby uzyskać więcej informacji, zobacz temat [podstawowe informacje o protokole](active-directory-v2-protocols.md#endpoints).   |
+| `client_id`     | Wymagane    | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
+| `grant_type`    | Wymagane    | Musi być `refresh_token` dla tego odcinka przepływu kodu autoryzacji. |
+| `scope`         | Wymagane    | Rozdzielana spacjami lista zakresów. Zakresy żądane w tym etapie muszą być równoważne lub podzbiorem zakresów żądanych w pierwotnym etapie żądania authorization_code. Jeśli zakresy określone w tym żądaniu obejmują wiele serwerów zasobów, punkt końcowy platformy tożsamości firmy Microsoft zwróci token dla zasobu określonego w pierwszym zakresie. Aby uzyskać bardziej szczegółowy opis zakresów, zapoznaj się z [uprawnieniami, zgodą i zakresami](v2-permissions-and-consent.md). |
+| `refresh_token` | Wymagane    | Refresh_token, które zostały nabyte w drugim etapie przepływu. |
 | `client_secret` | wymagane dla aplikacji sieci Web | Wpis tajny aplikacji utworzony w portalu rejestracji aplikacji dla aplikacji. Nie powinna być używana w aplikacji natywnej, ponieważ client_secrets nie może być niezawodnie przechowywana na urządzeniach. Jest to wymagane w przypadku aplikacji sieci Web i interfejsów API sieci Web, które umożliwiają bezpieczne przechowywanie client_secret po stronie serwera. |
 
 #### <a name="successful-response"></a>Pomyślna odpowiedź
@@ -281,7 +281,7 @@ Pomyślna odpowiedź dotycząca tokenu będzie wyglądać następująco:
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...",
     "token_type": "Bearer",
     "expires_in": 3599,
-    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fuser.read",
+    "scope": "https%3A%2F%2Fgraph.microsoft.com%2Fmail.read",
     "refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }

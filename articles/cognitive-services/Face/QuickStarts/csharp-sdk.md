@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a9fb77ea30aa101653d50e7833876dbec6362093
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165885"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930143"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Przewodnik Szybki Start: Tworzenie biblioteki klienckiej dla platformy .NET
 
@@ -22,7 +22,6 @@ Rozpocznij pracę z biblioteką klienta programu Front dla platformy .NET. Wykon
 
 Użyj biblioteki klienta programu Front for .NET, aby:
 
-* [Uwierzytelnianie klienta](#authenticate-the-client)
 * [Wykrywanie twarzy na obrazie](#detect-faces-in-an-image)
 * [Znajdź podobne twarze](#find-similar-faces)
 * [Tworzenie i uczenie grupy osób](#create-and-train-a-person-group)
@@ -122,7 +121,7 @@ Poniższe fragmenty kodu przedstawiają sposób wykonywania następujących zada
 > [!NOTE]
 > W tym przewodniku szybki start założono, że [utworzono zmienne środowiskowe](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza i punktu końcowego, o nazwie `FACE_SUBSCRIPTION_KEY` i `FACE_ENDPOINT`.
 
-W nowej metodzie Utwórz wystąpienie klienta z punktem końcowym i kluczem. Utwórz obiekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) z kluczem i użyj go w punkcie końcowym, aby utworzyć obiekt [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) .
+W nowej metodzie Utwórz wystąpienie klienta z punktem końcowym i kluczem. Utwórz obiekt **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** z kluczem i użyj go w punkcie końcowym, aby utworzyć obiekt **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** .
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
 
@@ -140,19 +139,19 @@ Opcjonalnie możesz wybrać, który model AI ma być używany do wyodrębniania 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-Ostatnia Operacja wykrywania zajmie obiektem [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) , adresem URL obrazu i modelem rozpoznawania.
+Ostatnia Operacja wykrywania zajmie obiektem **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** , adresem URL obrazu i modelem rozpoznawania.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
 ### <a name="get-detected-face-objects"></a>Pobieranie wykrytych obiektów czołowych
 
-W następnym bloku kodu Metoda `DetectFaceExtract` wykrywa twarze w trzech obrazach pod podanym adresem URL i tworzy listę obiektów [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) w pamięci programu. Lista wartości [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) określa funkcje do wyodrębnienia. 
+W następnym bloku kodu Metoda `DetectFaceExtract` wykrywa twarze w trzech obrazach pod podanym adresem URL i tworzy listę obiektów **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** w pamięci programu. Lista wartości **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** określa funkcje do wyodrębnienia. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
 
 ### <a name="display-detected-face-data"></a>Wyświetl wykryte dane dotyczące kroju
 
-Pozostała część metody `DetectFaceExtract` analizuje i drukuje dane atrybutów dla każdej wykrytej klasy. Każdy atrybut musi być określony osobno w wywołaniu oryginalnego interfejsu API wykrywania kroju (na liście [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) ). Poniższy kod przetwarza każdy atrybut, ale prawdopodobnie trzeba będzie tylko użyć jednego lub kilku.
+Pozostała część metody `DetectFaceExtract` analizuje i drukuje dane atrybutów dla każdej wykrytej klasy. Każdy atrybut musi być określony osobno w wywołaniu oryginalnego interfejsu API wykrywania kroju (na liście **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** ). Poniższy kod przetwarza każdy atrybut, ale prawdopodobnie trzeba będzie tylko użyć jednego lub kilku.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 

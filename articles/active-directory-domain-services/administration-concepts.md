@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f239bab48e732755361fe734fdc24b37d3823c63
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481022"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931568"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Pojęcia dotyczące zarządzania kontami użytkowników, hasłami i administracją w programie Azure Active Directory Domain Services
 
@@ -34,7 +34,7 @@ Konta użytkowników można tworzyć na platformie Azure AD DS na wiele sposobó
 * Konto użytkownika można synchronizować z poziomu usługi Azure AD. Dotyczy to również kont użytkowników tylko w chmurze utworzonych bezpośrednio w usłudze Azure AD i hybrydowych kont użytkowników synchronizowanych z lokalnego środowiska AD DS przy użyciu Azure AD Connect.
     * Większość kont użytkowników w usłudze Azure AD DS jest tworzona za pośrednictwem procesu synchronizacji w usłudze Azure AD.
 * Konto użytkownika można utworzyć ręcznie w domenie zarządzanej AD DS platformy Azure i nie istnieje w usłudze Azure AD.
-    * Jeśli musisz utworzyć konta usług dla aplikacji uruchamianych tylko na platformie Azure AD DS, możesz je ręcznie utworzyć w domenie zarządzanej. Ponieważ synchronizacja jest jednokierunkowe z usługi Azure AD, konta użytkowników utworzone w usłudze Azure AD DS nie są synchronizowane z powrotem do usługi Azure AD.
+    * Jeśli musisz utworzyć konta usług dla aplikacji uruchamianych tylko na platformie Azure AD DS, możesz je ręcznie utworzyć w domenie zarządzanej. Ponieważ synchronizacja jest jednym ze sposobów z usługi Azure AD, konta użytkowników utworzone w usłudze Azure AD DS nie są synchronizowane z powrotem do usługi Azure AD.
 
 ## <a name="password-policy"></a>Zasady dotyczące haseł
 
@@ -74,6 +74,36 @@ W lesie *zasobów* AD DS platformy Azure użytkownicy uwierzytelniają się za p
 
 Aby uzyskać więcej informacji na temat typów lasów w usłudze Azure AD DS, zobacz [co to są lasy zasobów?][concepts-forest] czy [relacje zaufania lasów działają w usłudze Azure AD DS?][concepts-trust]
 
+## <a name="azure-ad-ds-skus"></a>Jednostki SKU AD DS platformy Azure
+
+Na platformie Azure AD DS dostępna wydajność i funkcje są oparte na jednostkach SKU. Podczas tworzenia domeny zarządzanej można wybrać jednostkę SKU i zmienić jej wymagania biznesowe po wdrożeniu domeny zarządzanej. W poniższej tabeli przedstawiono dostępne jednostki SKU i różnice między nimi:
+
+| Nazwa jednostki SKU   | Maksymalna liczba obiektów | Częstotliwość wykonywania kopii zapasowych | Maksymalna liczba wychodzących relacji zaufania lasów |
+|------------|----------------------|------------------|----|
+| Standardowa   | Bez ograniczeń            | Co 7 dni     | 0  |
+| Enterprise | Bez ograniczeń            | Co 3 dni     | 5  |
+| Premium    | Bez ograniczeń            | Codziennie            | 10 |
+
+Przed rozpoczęciem korzystania z tych jednostek SKU platformy Azure AD DS model rozliczeń oparty na liczbie obiektów (konta użytkowników i komputerów) w domenie zarządzanej usługi Azure AD DS. Nie ma już zmiennych cenowych na podstawie liczby obiektów w domenie zarządzanej.
+
+Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi Azure AD DS][pricing].
+
+### <a name="managed-domain-performance"></a>Wydajność domeny zarządzanej
+
+Wydajność domeny zależy od sposobu implementacji uwierzytelniania dla aplikacji. Dodatkowe zasoby obliczeniowe mogą pomóc poprawić czas odpowiedzi kwerendy i skrócić czas spędzony na operacjach synchronizacji. Po zwiększeniu poziomu jednostki SKU zasoby obliczeniowe dostępne dla domeny zarządzanej są zwiększane. Monitorowanie wydajności aplikacji i planowanie wymaganych zasobów.
+
+Jeśli Twoja firma lub aplikacja wymaga zmiany i potrzebujesz dodatkowej mocy obliczeniowej dla domeny zarządzanej AD DS platformy Azure, możesz przełączyć się do innej jednostki SKU.
+
+### <a name="backup-frequency"></a>Częstotliwość wykonywania kopii zapasowych
+
+Częstotliwość tworzenia kopii zapasowych określa, jak często jest wykonywana migawka domeny zarządzanej. Kopie zapasowe są zautomatyzowanymi procesami zarządzanymi przez platformę Azure. W przypadku problemu z domeną zarządzaną pomoc techniczna systemu Azure może pomóc w przywracaniu z kopii zapasowej. Synchronizacja odbywa się tylko jeden sposób *z* usługi Azure AD, jednak żadne problemy z domeną zarządzaną platformy Azure AD DS nie wpłyną na usługę Azure AD ani lokalne i funkcjonalne środowiska AD DS.
+
+W miarę wzrostu poziomu jednostki SKU częstotliwość tych migawek kopii zapasowych rośnie. Przejrzyj wymagania biznesowe i cel punktu odzyskiwania (RPO), aby określić wymaganą częstotliwość tworzenia kopii zapasowych dla domeny zarządzanej. Jeśli wymagania biznesowe lub dotyczące aplikacji są zmieniane i potrzebne są kopie zapasowe, możesz przełączyć się do innej jednostki SKU.
+
+### <a name="outbound-forests"></a>Lasy wychodzące
+
+W poprzedniej sekcji szczegółowo opisano jednokierunkowe zaufanie lasu wychodzącego z domeny zarządzanej AD DS platformy Azure do środowiska lokalnego AD DS (obecnie dostępne w wersji zapoznawczej). Jednostka SKU określa maksymalną liczbę relacji zaufania lasu, które można utworzyć dla domeny zarządzanej AD DS platformy Azure. Zapoznaj się z wymaganiami biznesowymi i aplikacjami, aby określić, ile relacji zaufania rzeczywiście potrzebujesz, i wybierz odpowiednią jednostkę SKU platformy Azure AD DS. Ponownie, jeśli wymagania biznesowe zmienią się i konieczne jest utworzenie dodatkowych relacji zaufania lasu, możesz przełączyć się do innej jednostki SKU.
+
 ## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć, [Utwórz domenę zarządzaną platformy Azure AD DS][create-instance].
@@ -87,3 +117,6 @@ Aby rozpocząć, [Utwórz domenę zarządzaną platformy Azure AD DS][create-ins
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [concepts-forest]: concepts-resource-forest.md
 [concepts-trust]: concepts-forest-trust.md
+
+<!-- EXTERNAL LINKS -->
+[pricing]: https://azure.microsoft.com/pricing/details/active-directory-ds/

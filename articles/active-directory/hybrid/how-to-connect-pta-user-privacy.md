@@ -1,8 +1,8 @@
 ---
-title: Prywatność użytkownika i na platformie Azure uwierzytelniania przekazywanego usługi Active Directory | Dokumentacja firmy Microsoft
-description: Ten artykuł dotyczy uwierzytelnianie przekazywane usługi Azure Active Directory (Azure AD) i RODO zgodności.
+title: Prywatność użytkowników i Azure Active Directory uwierzytelniania przekazywanego | Microsoft Docs
+description: Ten artykuł dotyczy uwierzytelniania przekazywanego przez usługę Azure Active Directory (Azure AD) i zgodność Rodo.
 services: active-directory
-keywords: Azure AD Connect uwierzytelniania przekazywanego, RODO, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
+keywords: Azure AD Connect uwierzytelnianie przekazywane, Rodo, wymagane składniki usługi Azure AD, logowanie jednokrotne i logowanie jednokrotne
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,41 +17,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1a7b740a6b248a12fa3d95f85f602ef7a8b2fa5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0af1c42e7e2c163e7f9e7407d0236e35bfacf8e8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60242381"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931009"
 ---
-# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Uwierzytelnianie przekazywane usługi Active Directory rozwiązania prywatność użytkownika i na platformie Azure
+# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Prywatność użytkowników i Azure Active Directory uwierzytelnianie przekazywane
 
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-Uwierzytelnianie przekazywane usługi AD systemu Azure tworzy następujący typ dziennika może zawierać dane osobowe:
+Uwierzytelnianie przekazywane przez usługę Azure AD tworzy następujący typ dziennika, który może zawierać dane osobowe:
 
-- Pliki dziennika śledzenia usługi Azure AD Connect.
+- Pliki dziennika śledzenia Azure AD Connect.
 - Pliki dziennika śledzenia agenta uwierzytelniania.
-- Pliki dziennika zdarzeń Windows.
+- Pliki dziennika zdarzeń systemu Windows.
 
-Poprawa ochrony prywatności użytkowników dla uwierzytelniania przekazywanego na dwa sposoby:
+Podwyższanie poziomu prywatności użytkowników w celu uwierzytelniania przekazywanego na dwa sposoby:
 
-1.  Na żądanie wyodrębnianie danych dla osoby i Usuń dane z tej osoby z instalacji.
+1.  Na żądanie Wyodrębnij dane dla osoby i Usuń z nich dane z tej osoby.
 2.  Upewnij się, że żadne dane nie są przechowywane dłużej niż 48 godzin.
 
-Druga opcja zdecydowanie zaleca się jak jest łatwiejsze do wdrożenia i konserwacji. Poniżej przedstawiono instrukcje dla każdego typu dziennika:
+Zdecydowanie zalecamy, aby druga opcja była łatwiejsza do wdrożenia i konserwacji. Poniżej przedstawiono instrukcje dla każdego typu dziennika:
 
-### <a name="delete-azure-ad-connect-trace-log-files"></a>Usuń pliki dziennika śledzenia program Azure AD Connect
+### <a name="delete-azure-ad-connect-trace-log-files"></a>Usuń pliki dziennika śledzenia Azure AD Connect
 
-Sprawdź zawartość **%ProgramData%\AADConnect** folder i Usuń śledzenia dziennika zawartość (**śledzenia -\*.log** plików) z tego folderu, w ciągu 48 godzin od instalowanie lub uaktualnianie usługi Azure AD Connect lub modyfikując konfigurację uwierzytelniania przekazywanego, ta akcja może utworzyć danych objętych RODO.
+Sprawdź zawartość folderu **%ProgramData%\AADConnect** i Usuń zawartość dziennika śledzenia (pliki**śledzenia\*. log** ) tego folderu w ciągu 48 godzin od zainstalowania lub uaktualnienia Azure AD Connect lub modyfikacji konfiguracji uwierzytelniania przekazywanego, ponieważ ta akcja może utworzyć dane objęte Rodo.
 
 >[!IMPORTANT]
->Nie usuwaj **PersistedState.xml** pliku w tym folderze, ponieważ ten plik jest używany do zarządzania stanem poprzedniej instalacji programu Azure AD Connect i jest używany po zakończeniu instalacji uaktualnienia. Ten plik nigdy nie będzie zawierać żadnych danych dotyczących osoby i nigdy nie należy go usunąć.
+>Nie usuwaj pliku **PersistedState. XML** w tym folderze, ponieważ ten plik jest używany do zachowywania stanu poprzedniej instalacji Azure AD Connect i jest używany podczas instalacji uaktualnienia. Ten plik nigdy nie będzie zawierał żadnych danych dotyczących osoby i nigdy nie powinien być usunięty.
 
-Możesz przejrzeć i usuń te pliki dziennika śledzenia przy użyciu Eksploratora Windows lub poniższy skrypt programu PowerShell można użyć do wykonania niezbędnych akcji:
+Możesz przejrzeć i usunąć te pliki dzienników śledzenia za pomocą Eksploratora Windows lub użyć następującego skryptu programu PowerShell, aby wykonać niezbędne czynności:
 
 ```
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
@@ -61,24 +61,24 @@ Foreach ($file in $Files) {
 }
 ```
 
-Zapisz skrypt w pliku z ". PS1 "rozszerzenia. Uruchom ten skrypt, zgodnie z potrzebami.
+Zapisz skrypt w pliku z ". Rozszerzenie PS1. Uruchom ten skrypt zgodnie z wymaganiami.
 
-Aby dowiedzieć się więcej o powiązanych wymagania dotyczące usługi Azure AD Connect RODO, zobacz [w tym artykule](reference-connect-user-privacy.md).
+Aby dowiedzieć się więcej o powiązanych Azure AD Connect wymaganiach Rodo, zobacz [ten artykuł](reference-connect-user-privacy.md).
 
-### <a name="delete-authentication-agent-event-logs"></a>Usuń agenta uwierzytelniania, dzienniki zdarzeń
+### <a name="delete-authentication-agent-event-logs"></a>Usuwanie dzienników zdarzeń agenta uwierzytelniania
 
-Ten produkt może również utworzyć **dzienniki zdarzeń Windows**. Aby dowiedzieć się więcej, przeczytaj [w tym artykule](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
+Ten produkt może również tworzyć **dzienniki zdarzeń systemu Windows**. Aby dowiedzieć się więcej, Przeczytaj [ten artykuł](https://msdn.microsoft.com/library/windows/desktop/aa385780(v=vs.85).aspx).
 
-Aby wyświetlić dzienniki powiązanych z agentem uwierzytelniania przekazywanego, otwórz **Podgląd zdarzeń** aplikacji na serwerze i wyboru w obszarze **Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin usług i aplikacji** .
+Aby wyświetlić dzienniki powiązane z agentem uwierzytelniania przekazywanego, Otwórz aplikację **Podgląd zdarzeń** na serwerze i sprawdź w obszarze **Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
-### <a name="delete-authentication-agent-trace-log-files"></a>Usuń pliki dziennika śledzenia Agent uwierzytelniania
+### <a name="delete-authentication-agent-trace-log-files"></a>Usuń pliki dziennika śledzenia agenta uwierzytelniania
 
-Należy regularnie Sprawdź zawartość <strong>%ProgramData%\Microsoft\Azure AD Connect Agent\Trace uwierzytelniania\</ strong > i usuń zawartość tego folderu, co 48 godzin. 
+Należy regularnie sprawdzać zawartość **%ProgramData%\Microsoft\Azure uwierzytelniania programu AD Connect Agent\Trace** i usuwać zawartość tego folderu co 48 godzin. 
 
 >[!IMPORTANT]
->Jeśli jest uruchomiona usługa agenta uwierzytelniania, nie będzie można usunąć bieżącego pliku dziennika w folderze. Zatrzymaj usługę przed podjęciem ponownej próby. Aby uniknąć błędów logowania użytkownika, użytkownik powinien zostać skonfigurowany uwierzytelniania przekazywanego, aby uzyskać [wysokiej dostępności](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
+>Jeśli usługa agenta uwierzytelniania jest uruchomiona, nie będzie można usunąć bieżącego pliku dziennika w folderze. Zatrzymaj usługę przed ponowną próbą. Aby uniknąć błędów logowania użytkownika, należy wcześniej skonfigurować uwierzytelnianie przekazywane w celu zapewnienia [wysokiej dostępności](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
 
-Możesz przejrzeć i usunąć te pliki przy użyciu Eksploratora Windows, lub można użyć poniższego skryptu do wykonywania czynności niezbędnych:
+Możesz przejrzeć i usunąć te pliki przy użyciu Eksploratora Windows lub użyć następującego skryptu, aby wykonać niezbędne czynności:
 
 ```
 $Files = ((Get-childitem -Path "$env:programdata\microsoft\azure ad connect authentication agent\trace" -Recurse).VersionInfo).FileName 
@@ -88,23 +88,23 @@ Foreach ($file in $files) {
 }
 ```
 
-Aby zaplanować uruchomienie tego skryptu co 48 godzin, wykonaj następujące kroki:
+Aby zaplanować uruchamianie skryptu co 48 godzin, wykonaj następujące kroki:
 
-1.  Zapisz skrypt w pliku z ". PS1 "rozszerzenia.
-2.  Otwórz **Panelu sterowania** i kliknij pozycję **System i zabezpieczenia**.
-3.  W obszarze **narzędzia administracyjne** nagłówek, kliknij pozycję "**harmonogram zadań**".
-4.  W **harmonogram zadań**, kliknij prawym przyciskiem myszy "**Biblioteka Harmonogramu zadań**"i kliknij pozycję"**Utwórz o podstawowe zadania...** ".
-5.  Wprowadź nazwę dla nowego zadania, a następnie kliknij przycisk **dalej**.
-6.  Wybierz pozycję "**codzienne**" dla **wyzwalacz zadania** i kliknij przycisk **dalej**.
-7.  Wartość cyklu dwa dni, a następnie kliknij przycisk **dalej**.
-8.  Wybierz pozycję "**uruchomić program**" jako akcję i kliknij przycisk **dalej**.
-9.  Typ "**PowerShell**"w polu dla programu/skryptu i w polu z etykietą"**Dodaj argumenty (opcjonalne)** ", wprowadź pełną ścieżkę do skryptu, który został utworzony wcześniej, a następnie kliknij przycisk **dalej**.
-10. Następny ekran pokazuje, podsumowania zadania, które chcesz utworzyć. Sprawdź wartości, a następnie kliknij przycisk **Zakończ** do utworzenia zadania:
+1.  Zapisz skrypt w pliku z ". Rozszerzenie PS1.
+2.  Otwórz **Panel sterowania** , a następnie kliknij pozycję **system i zabezpieczenia**.
+3.  W obszarze **Narzędzia administracyjne** kliknij pozycję "**Zaplanuj zadania**".
+4.  W **harmonogram zadań**kliknij prawym przyciskiem myszy pozycję "**Biblioteka harmonogramu zadań**" i kliknij polecenie "**Utwórz zadanie podstawowe...** ".
+5.  Wprowadź nazwę nowego zadania i kliknij przycisk **dalej**.
+6.  Wybierz pozycję "**codziennie**" dla **wyzwalacza zadania** , a następnie kliknij przycisk **dalej**.
+7.  Ustaw cykl na dwa dni i kliknij przycisk **dalej**.
+8.  Wybierz pozycję "**Uruchom program**" jako akcję, a następnie kliknij przycisk **dalej**.
+9.  Wpisz "**PowerShell**" w polu dla programu/skryptu i w polu zatytułowanym "**Dodaj argumenty (opcjonalne)** " wprowadź pełną ścieżkę do utworzonego wcześniej skryptu, a następnie kliknij przycisk **dalej**.
+10. Na następnym ekranie są wyświetlane podsumowanie zadania, które chcesz utworzyć. Sprawdź wartości i kliknij przycisk **Zakończ** , aby utworzyć zadanie:
  
-### <a name="note-about-domain-controller-logs"></a>Należy pamiętać o dziennikach kontrolera domeny
+### <a name="note-about-domain-controller-logs"></a>Uwaga na temat dzienników kontrolera domeny
 
-Jeśli rejestrowanie inspekcji jest włączona, ten produkt może generować dzienniki zabezpieczeń dla kontrolerów domeny. Aby dowiedzieć się więcej na temat konfigurowania zasad inspekcji, przeczytaj ten [artykułu](https://technet.microsoft.com/library/dd277403.aspx).
+W przypadku włączenia rejestrowania inspekcji ten produkt może generować dzienniki zabezpieczeń dla kontrolerów domeny. Aby dowiedzieć się więcej o konfigurowaniu zasad inspekcji, przeczytaj ten [artykuł](https://technet.microsoft.com/library/dd277403.aspx).
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Przegląd zasad Privacy firmy Microsoft w Centrum zaufania](https://www.microsoft.com/trustcenter)
-* [**Rozwiązywanie problemów z** ](tshoot-connect-pass-through-authentication.md) — Dowiedz się, jak rozwiązać typowe problemy z funkcją.
+## <a name="next-steps"></a>Następne kroki
+* [Zapoznaj się z zasadami zachowania poufności informacji firmy Microsoft w centrum zaufania](https://www.microsoft.com/trustcenter)
+* [**Rozwiązywanie problemów**](tshoot-connect-pass-through-authentication.md) — Dowiedz się, jak rozwiązywać typowe problemy z funkcją.

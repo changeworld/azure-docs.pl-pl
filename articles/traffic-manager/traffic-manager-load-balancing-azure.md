@@ -3,7 +3,7 @@ title: Korzystanie z usług równoważenia obciążenia na platformie Azure | Mi
 description: 'W tym samouczku przedstawiono sposób tworzenia scenariusza przy użyciu portfolio równoważenia obciążenia Azure: Traffic Manager, Application Gateway i Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: allensu
-ms.openlocfilehash: 4a7f8fd45b1e496ba3f0208d523ac569a24e9e7c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227788"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939227"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Korzystanie z usług równoważenia obciążenia na platformie Azure
 

@@ -3,7 +3,7 @@ title: Metryki i alerty — Azure DNS
 description: Korzystając z tej ścieżki szkoleniowej, Rozpocznij pracę z Azure DNS metrykami i alertami.
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
-ms.author: allensu
-ms.openlocfilehash: dc4d7de3d235fcdaf4a7f681065ba6e2857eb2ce
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212398"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937458"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS metryki i alerty
 Azure DNS to usługa hostingu dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. W tym artykule opisano metryki i alerty dla usługi Azure DNS.

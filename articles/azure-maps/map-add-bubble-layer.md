@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911281"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933662"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Dodawanie warstwy bąbelkowej do mapy
 
-W tym artykule opisano sposób renderowania danych punktu ze źródła danych jako warstwy bąbelkowej na mapie. Warstwy bąbelków renderują punkty jako okręgi na mapie o stałym promieniu pikseli. 
+W tym artykule przedstawiono sposób renderowania danych punktu ze źródła danych jako warstwy bąbelkowej na mapie. Warstwy bąbelków renderują punkty jako okręgi na mapie o stałym promieniu pikseli. 
 
 > [!TIP]
 > Domyślnie warstwy bąbelków będą renderować współrzędne wszystkich geometrie w źródle danych. Aby ograniczyć warstwę, która umożliwia renderowanie tylko funkcji geometrii punktów, ustaw właściwość `filter` warstwy na `['==', ['geometry-type'], 'Point']` lub `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`, jeśli chcesz uwzględnić również funkcje systemu MultiPoint.
 
 ## <a name="add-a-bubble-layer"></a>Dodawanie warstwy bąbelkowej
 
-Poniższy kod ładuje tablicę punktów do źródła danych i łączy je z [warstwą bąbelkową](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). W warstwie bąbelkowej są dostępne opcje renderowania promienia każdego bąbelka na pięć pikseli, koloru wypełnienia białego, koloru obrysu niebieskiego i szerokości pociągnięć wynoszącej sześć pikseli. 
+Poniższy kod ładuje tablicę punktów do źródła danych. Następnie punkty danych są połączone z [warstwą bąbelków](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). Warstwa bąbelkowa renderuje promień każdego bąbelka przy użyciu pięciu pikseli, koloru wypełnienia białego, koloru obrysu niebieskiego i szerokości pociągnięcia sześć pikseli. 
 
 ```javascript
 //Add point locations.

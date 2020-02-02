@@ -1,5 +1,5 @@
 ---
-title: Utrwalaj wyniki lub dzienniki z ukończonych zadań i zadań do magazynu danych — Azure Batch | Microsoft Docs
+title: Utrwalaj dane wyjściowe zadania i zadania do magazynu danych — Azure Batch
 description: Dowiedz się więcej na temat różnych opcji utrwalania danych wyjściowych z zadań wsadowych. Możesz utrwalać dane w usłudze Azure Storage lub w innym magazynie danych.
 services: batch
 author: ju-shim
@@ -13,12 +13,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5063955fc6e04c9cfec2407f8b1cc91c5b24d10
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 242121ecffa76029b3e10a291ac08347da0c97ce
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026260"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935787"
 ---
 # <a name="persist-job-and-task-output"></a>Utrwalaj dane wyjściowe zadań i zadań podrzędnych
 

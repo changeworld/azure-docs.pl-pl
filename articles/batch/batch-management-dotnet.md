@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie zasobami konta za pomocą biblioteki klienckiej dla platformy .NET — Azure Batch | Microsoft Docs
+title: Korzystanie z biblioteki zarządzania usługą Batch w celu zarządzania zasobami konta
 description: Tworzenie, usuwanie i modyfikowanie zasobów konta Azure Batch przy użyciu biblioteki zarządzania usługą Batch dla platformy .NET.
 services: batch
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 233081b43fa5dd83c88619007d4d6fbe27f24e30
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ab78f12e7d1424ebd2528af188891c5403c95e17
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027044"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933050"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Zarządzanie kontami i przydziałami usługi Batch za pomocą biblioteki klienta zarządzania usługą Batch dla platformy .NET
 

@@ -1,20 +1,19 @@
 ---
 title: Service Fabric platformy Azure — konfigurowanie poświadczeń repozytorium kontenera
 description: Skonfiguruj poświadczenia repozytorium, aby pobierać obrazy z rejestru kontenerów
-author: arya
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: arya
-ms.openlocfilehash: 25fe3c69b19d397137d1e1802e941e0433a1b160
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351656"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934993"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Skonfiguruj poświadczenia repozytorium dla aplikacji, aby pobierać obrazy kontenerów
 
-Skonfiguruj uwierzytelnianie rejestru kontenerów przez dodanie elementu `RepositoryCredentials` do elementu `ContainerHostPolicies` pliku ApplicationManifest.xml. Dodaj nazwę konta i hasło dla rejestru kontenerów myregistry.azurecr.io, dzięki czemu usługa będzie mogła pobrać obraz kontenera z repozytorium.
+Skonfiguruj uwierzytelnianie rejestru kontenerów, dodając `RepositoryCredentials` do sekcji `ContainerHostPolicies` manifestu aplikacji. Dodaj konto i hasło do rejestru kontenerów (*myregistry.azurecr.IO* w poniższym przykładzie), co umożliwia usłudze pobranie obrazu kontenera z repozytorium.
 
 ```xml
 <ServiceManifestImport>
@@ -55,7 +54,7 @@ Service Fabric następnie używa domyślnych poświadczeń repozytorium, które 
 * DefaultContainerRepositoryAccountName (ciąg)
 * DefaultContainerRepositoryPassword (ciąg)
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
-* DefaultContainerRepositoryPasswordType (String)---obsługiwane począwszy od środowiska uruchomieniowego 6,4
+* DefaultContainerRepositoryPasswordType (ciąg)
 
 Poniżej znajduje się przykład, co można dodać do sekcji `Hosting` w pliku ClusterManifestTemplate. JSON. Sekcję `Hosting` można dodać podczas tworzenia klastra lub później w ramach uaktualnienia konfiguracji. Aby uzyskać więcej informacji, zobacz [Zmienianie ustawień klastra platformy azure Service Fabric](service-fabric-cluster-fabric-settings.md) i zarządzanie wpisami [tajnymi aplikacji platformy Azure Service Fabric](service-fabric-application-secret-management.md)
 
@@ -90,19 +89,19 @@ Poniżej znajduje się przykład, co można dodać do sekcji `Hosting` w pliku C
 ]
 ```
 
-## <a name="leveraging-the-managed-identity-of-the-virtual-machine-scale-set-by-using-managed-identity-service-msi"></a>Korzystanie z zarządzanej tożsamości zestawu skalowania maszyn wirtualnych przy użyciu usługi tożsamości zarządzanej (MSI)
+## <a name="use-tokens-as-registry-credentials"></a>Użyj tokenów jako poświadczeń rejestru
 
-Service Fabric obsługuje używanie tokenów jako poświadczeń do pobierania obrazów dla kontenerów.  Ta funkcja wykorzystuje zarządzaną tożsamość zestawu skalowania maszyn wirtualnych do uwierzytelniania w rejestrze, eliminując konieczność zarządzania poświadczeniami użytkowników.  Zobacz [tożsamość usługi zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , aby uzyskać więcej informacji na temat pliku msi.  Korzystanie z tej funkcji wymaga wykonania następujących czynności:
+Service Fabric obsługuje używanie tokenów jako poświadczeń do pobierania obrazów dla kontenerów.  Ta funkcja wykorzystuje *zarządzaną tożsamość* zestawu skalowania maszyn wirtualnych do uwierzytelniania w rejestrze, eliminując konieczność zarządzania poświadczeniami użytkowników.  Aby uzyskać więcej informacji, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) .  Korzystanie z tej funkcji wymaga wykonania następujących czynności:
 
-1.  Upewnij się, że dla maszyny wirtualnej jest włączona tożsamość zarządzana przypisana przez system (Zobacz zrzut ekranu poniżej)
+1. Upewnij się, że dla maszyny wirtualnej jest włączona *tożsamość zarządzana przypisana przez system* .
 
-    ![Tworzenie tożsamości zestawu skalowania maszyn wirtualnych](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
+    ![Azure Portal: Tworzenie opcji tożsamości zestawu skalowania maszyn wirtualnych](./media/configure-container-repository-credentials/configure-container-repository-credentials-acr-iam.png)
 
-2.  Następnie Udziel uprawnień do maszyny wirtualnej (SS), aby pobierać/odczytywać obrazy z rejestru.  Przejdź do Access Control (IAM) ACR za pomocą bloku Azure i nadaj maszynie wirtualnej (SS) odpowiednie uprawnienia, jak pokazano poniżej:
+2. Udziel uprawnień do zestawu skalowania maszyn wirtualnych w celu ściągania/odczytu obrazów z rejestru. W bloku Access Control (IAM) Azure Container Registry w Azure Portal Dodaj *przypisanie roli* dla maszyny wirtualnej:
 
     ![Dodawanie podmiotu maszyny wirtualnej do ACR](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3.  Po wykonaniu powyższych kroków zmodyfikuj plik ApplicationManifest. XML.  Znajdź tag o nazwie "ContainerHostPolicies" i Dodaj atrybut `‘UseTokenAuthenticationCredentials=”true”`.
+3. Następnie zmodyfikuj manifest aplikacji. W sekcji `ContainerHostPolicies` Dodaj `‘UseTokenAuthenticationCredentials=”true”`atrybutu.
 
     ```xml
       <ServiceManifestImport>
@@ -121,4 +120,4 @@ Service Fabric obsługuje używanie tokenów jako poświadczeń do pobierania ob
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zobacz więcej informacji o [uwierzytelnianiu rejestru kontenerów](/azure/container-registry/container-registry-authentication).
+* Zobacz więcej informacji o [uwierzytelnianiu rejestru kontenerów](../container-registry/container-registry-authentication.md).

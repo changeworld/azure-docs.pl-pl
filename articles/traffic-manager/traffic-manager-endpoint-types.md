@@ -3,7 +3,7 @@ title: Typy punktów końcowych Traffic Manager | Microsoft Docs
 description: W tym artykule opisano różne typy punktów końcowych, które mogą być używane z usługą Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: allensu
-ms.openlocfilehash: 9de5b161c6bb1897058898dddd620ad093f148be
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.author: rohink
+ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981053"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938660"
 ---
 # <a name="traffic-manager-endpoints"></a>Punkty końcowe usługi Traffic Manager
 
@@ -38,7 +38,7 @@ W poniższych sekcjach opisano każdy typ punktu końcowego o większej głębok
 Punkty końcowe platformy Azure są używane dla usług opartych na platformie Azure w Traffic Manager. Obsługiwane są następujące typy zasobów platformy Azure:
 
 * Usługi w chmurze PaaS.
-* Web Apps
+* Aplikacje internetowe
 * Miejsca aplikacji sieci Web
 * PublicIPAddress zasoby (które mogą być połączone z maszynami wirtualnymi bezpośrednio lub za pośrednictwem Azure Load Balancer). PublicIpAddress musi mieć przypisaną nazwę DNS do użycia w profilu Traffic Manager.
 
@@ -55,7 +55,7 @@ Zewnętrzne punkty końcowe są używane dla adresów IPv4/IPv6, nazw FQDN lub u
 * Zmniejsz opóźnienie aplikacji dla użytkowników na całym świecie, rozszerzając istniejącą aplikację lokalną do dodatkowych lokalizacji geograficznych na platformie Azure. Aby uzyskać więcej informacji, zobacz [Traffic Manager "wydajność" Routing ruchu](traffic-manager-routing-methods.md#performance).
 * Zapewniaj dodatkową pojemność istniejącej aplikacji lokalnej, nieustannie lub jako rozwiązanie "z serii do chmury", aby zaspokoić popyt na żądanie przy użyciu platformy Azure.
 
-W niektórych przypadkach warto używać zewnętrznych punktów końcowych do odwoływania się do usług platformy Azure (przykładowo zapoznaj się z [często](traffic-manager-faqs.md#traffic-manager-endpoints)zadawanymi pytaniami). W takim przypadku kontrole kondycji są rozliczane według stawki punktów końcowych platformy Azure, a nie od stawki zewnętrznych punktów końcowych. Jednak w przeciwieństwie do punktów końcowych platformy Azure, jeśli zatrzymasz lub usuniesz podstawową usługę, opłaty za sprawdzanie kondycji będą kontynuowane do momentu wyłączenia lub usunięcia punktu końcowego w Traffic Manager.
+W niektórych przypadkach warto używać zewnętrznych punktów końcowych do odwoływania się do usług platformy Azure (przykładowo zapoznaj się z [często zadawanymi pytaniami](traffic-manager-faqs.md#traffic-manager-endpoints)). W takim przypadku kontrole kondycji są rozliczane według stawki punktów końcowych platformy Azure, a nie od stawki zewnętrznych punktów końcowych. Jednak w przeciwieństwie do punktów końcowych platformy Azure, jeśli zatrzymasz lub usuniesz podstawową usługę, opłaty za sprawdzanie kondycji będą kontynuowane do momentu wyłączenia lub usunięcia punktu końcowego w Traffic Manager.
 
 ## <a name="nested-endpoints"></a>Zagnieżdżone punkty końcowe
 

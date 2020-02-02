@@ -3,20 +3,20 @@ title: Zarządzanie Traffic Manager na platformie Azure przy użyciu programu Po
 description: Za pomocą tej ścieżki szkoleniowej Rozpocznij korzystanie z Azure PowerShell Traffic Manager.
 services: traffic-manager
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: f8dd01f22dec58c3345798b391c1c37c968d1025
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038120"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938509"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Zarządzanie Traffic Manager przy użyciu programu PowerShell
 
@@ -38,7 +38,7 @@ Każdy profil Traffic Manager jest reprezentowany przez zasób typu "TrafficMana
 
 Te instrukcje używają Microsoft Azure PowerShell. W poniższym artykule wyjaśniono, jak zainstalować i skonfigurować Azure PowerShell.
 
-* [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview)
+* [How to install and configure Azure PowerShell](/powershell/azure/overview)
 
 W przykładach w tym artykule założono, że masz istniejącą grupę zasobów. Grupę zasobów można utworzyć przy użyciu następującego polecenia:
 
@@ -65,7 +65,7 @@ W poniższej tabeli opisano parametry:
 | ResourceGroupName |Nazwa grupy zasobów zawierającej zasób profilu. |
 | TrafficRoutingMethod |Określa metodę routingu ruchu użytą do określenia, który punkt końcowy jest zwracany w odpowiedzi na zapytanie DNS. Możliwe wartości to "Performance", "ważone" lub "Priority". |
 | RelativeDnsName |Określa część nazwy hosta DNS dostarczoną przez ten profil Traffic Manager. Ta wartość jest połączona z nazwą domeny DNS używaną przez platformę Azure Traffic Manager do tworzenia w pełni kwalifikowanej nazwy domeny (FQDN) profilu. Na przykład ustawienie wartości "contoso" zmieni się na "contoso.trafficmanager.net". |
-| WARTOŚĆ |Określa czas wygaśnięcia (TTL) DNS (w sekundach). Ten czas TTL informuje lokalnych nazw DNS i klientów DNS, jak długo mają być buforowane odpowiedzi DNS dla tego profilu Traffic Manager. |
+| TTL |Określa czas wygaśnięcia (TTL) DNS (w sekundach). Ten czas TTL informuje lokalnych nazw DNS i klientów DNS, jak długo mają być buforowane odpowiedzi DNS dla tego profilu Traffic Manager. |
 | MonitorProtocol |Określa protokół, który ma być używany do monitorowania kondycji punktu końcowego. Możliwe wartości to "HTTP" i "HTTPS". |
 | MonitorPort |Określa port TCP używany do monitorowania kondycji punktu końcowego. |
 | MonitorPath |Określa ścieżkę względną nazwy domeny punktu końcowego służącą do sondowania kondycji punktu końcowego. |

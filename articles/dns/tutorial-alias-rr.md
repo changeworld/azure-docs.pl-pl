@@ -3,23 +3,23 @@ title: 'Samouczek: Tworzenie rekordu aliasu w celu odwoływania się do rekordu 
 titleSuffix: Azure DNS
 description: W tym samouczku przedstawiono, jak skonfigurować rekord aliasu usługi Azure DNS do odwoływania do rekordu zasobów w strefie DNS.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 59ffe9781d97880044da5eedbdf84181bf1b2fa1
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082889"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939248"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Samouczek: tworzenie rekordu aliasu do odwoływania do rekordu zasobów w strefie DNS
 
 Rekordy aliasów mogą odwoływać się do innych zestawów rekordów tego samego typu. Na przykład zestaw rekordów DNS CNAME może być aliasem dla innego zestawu rekordów CNAME tego samego typu. Ta funkcja jest przydatna, jeśli chcesz, by z punktu widzenia zachowania niektóre zestawy rekordów były aliasami, a niektóre nie.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie rekordu aliasu dla rekordu zasobów w strefie DNS.
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do testowania niezbędna jest nazwa domeny, którą można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
 
-Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz temat [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
+Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
 
 
 ## <a name="create-an-alias-record"></a>Tworzenie rekordu aliasu
@@ -44,7 +44,7 @@ Utwórz rekord aliasu, który wskazuje na rekord zasobów w strefie DNS.
 3. W polu tekstowym **Nazwa** wprowadź **serwer**.
 4. Dla opcji **Typ** wybierz pozycję **A**.
 5. W polu tekstowym **ADRES IP** wprowadź **10.10.10.10**.
-6. Wybierz **OK**.
+6. Kliknij przycisk **OK**.
 
 ### <a name="create-the-alias-record"></a>Tworzenie rekordu aliasu
 1. Wybierz strefę usługi Azure DNS, aby ją otworzyć.
@@ -53,7 +53,7 @@ Utwórz rekord aliasu, który wskazuje na rekord zasobów w strefie DNS.
 4. Dla opcji **Typ** wybierz pozycję **A**.
 5. Zaznacz pozycję **Tak** w polu wyboru **Zestaw rekordów aliasów**. Następnie wybierz opcję **Zestaw rekordów strefy**.
 6. Dla opcji **Zestaw rekordów strefy** wybierz rekord **serwer**.
-7. Wybierz **OK**.
+7. Kliknij przycisk **OK**.
 
 ## <a name="test-the-alias-record"></a>Testowanie rekordu aliasu
 

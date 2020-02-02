@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 5732df2551eafa74b81f9a918a1cb7cf5ac1395c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768043"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936402"
 ---
 # <a name="how-to-use-batch-transcription"></a>Jak korzystać z transkrypcji partii
 
@@ -78,7 +78,7 @@ Parametry konfiguracji są podane jako dane JSON:
     "AddWordLevelTimestamps" : "True | False",
     "AddSentiment" : "True | False",
     "AddDiarization" : "True | False",
-    "TranscriptionResultsContainerUrl" : "<SAS to Azure container to store results into (write permission required)>"
+    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
   }
 }
 ```
@@ -94,7 +94,7 @@ Użyj tych opcjonalnych właściwości, aby skonfigurować transkrypcję:
 | `AddWordLevelTimestamps` | Określa, czy sygnatury czasowe poziomu słowa mają być dodawane do danych wyjściowych. Akceptowane wartości to `true`, które umożliwiają wyłączanie sygnatur czasowych na poziomie programu Word i `false` (wartość domyślna). |
 | `AddSentiment` | Należy dodać tonacji do wypowiedź. Akceptowane wartości to `true`, które umożliwiają wyłączenie opcji tonacji na wypowiedź i `false` (wartość domyślna). |
 | `AddDiarization` | Określa, że analiza diarization powinna zostać przeprowadzona na wejściu, który powinien być kanałem mono zawierającym dwa głosy. Akceptowane wartości to `true`, które umożliwiają wyłączenie programu diarization i `false` (wartość domyślna). Wymaga również, aby `AddWordLevelTimestamps` mieć wartość true.|
-|`TranscriptionResultsContainerUrl`|Opcjonalny token sygnatury dostępu współdzielonego do zapisywalnego kontenera na platformie Azure. Wynik zostanie zapisany w tym kontenerze.
+|`TranscriptionResultsContainerUrl`|Opcjonalny adres URL z [sygnaturą dostępu współdzielonego usługi](../../storage/common/storage-sas-overview.md) do zapisywalnego kontenera na platformie Azure. Wynik zostanie zapisany w tym kontenerze.
 
 ### <a name="storage"></a>Usługa Storage
 

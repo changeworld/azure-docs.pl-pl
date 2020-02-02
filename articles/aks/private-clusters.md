@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713324"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932592"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Tworzenie prywatnego klastra usługi Azure Kubernetes Service (wersja zapoznawcza)
 
@@ -131,7 +131,7 @@ Punkt końcowy serwera interfejsu API nie ma publicznego adresu IP. W związku z
 * Aby użyć niestandardowego serwera DNS, wdróż serwer usługi AD przy użyciu systemu DNS do przesyłania dalej do tego 168.63.129.16 IP
 
 ## <a name="limitations"></a>Ograniczenia 
-* Strefy dostępności nie są obecnie obsługiwane
+* Strefy dostępności są obecnie obsługiwane tylko w regionach Wschodnie stany USA 2 i zachodnie stany USA 2
 * [Ograniczenia usługi Azure Private link][private-link-service] są stosowane do prywatnych klastrów, prywatnych punktów końcowych platformy Azure i punktów końcowych usługi sieci wirtualnej, które nie są obecnie obsługiwane w tej samej sieci wirtualnej.
 * Brak obsługi węzłów wirtualnych w klastrze prywatnym do Azure Container Instances prywatnego (ACI) w prywatnej sieci wirtualnej platformy Azure
 * Brak wsparcia dla integracji usługi Azure DevOps z użyciem klastrów prywatnych

@@ -3,18 +3,18 @@ title: Przesłonięcie podsieci Traffic Manager platformy Azure przy użyciu int
 description: Ten artykuł pomoże zrozumieć, w jaki sposób przesłonięcie podsieci Traffic Manager może służyć do przesłaniania metody routingu profilu Traffic Manager, aby skierować ruch do punktu końcowego na podstawie adresu IP użytkownika końcowego za pośrednictwem wstępnie zdefiniowanego zakresu adresów IP na potrzeby mapowania punktów końcowych.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: d285db22ef92128e025a677ea7f86d623dfe130c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 818b692884bd9d31efd08663a582ebcfec2032e9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351185"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938469"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Traffic Manager przesłonięcia podsieci przy użyciu interfejsu wiersza polecenia platformy Azure
 

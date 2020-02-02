@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fc74e72c6c2fe3e2b8817e6ffb418928ede08193
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 975117ad5c58bed77002a33f0dc5370d0f1c17e2
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773356"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931463"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chroniony internetowy interfejs API: Konfiguracja kodu
 
@@ -47,7 +47,7 @@ Token okaziciela, który jest ustawiony w nagłówku, gdy aplikacja jest wywoły
 Oto przykład C# kodu, który pokazuje klienta wywołującego interfejs API po uzyskaniu tokenu z biblioteką uwierzytelniania firmy Microsoft dla platformy .net (MSAL.NET):
 
 ```csharp
-var scopes = new[] {$"api://.../access_as_user}";
+var scopes = new[] {$"api://.../access_as_user"};
 var result = await app.AcquireToken(scopes)
                       .ExecuteAsync();
 

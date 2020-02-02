@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: c4395628ac31dd69a4978f7f68ecc24ca1e15cfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453123"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932079"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Tworzenie usługi linku prywatnego przy użyciu Azure PowerShell
 W tym artykule opisano sposób tworzenia usługi linku prywatnego na platformie Azure przy użyciu Azure PowerShell.
@@ -109,7 +109,7 @@ Uzyskaj szczegółowe informacje o usłudze linku prywatnego za pomocą [Get-AzP
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-Na tym etapie usługa linku prywatnego została pomyślnie utworzona i będzie gotowa do odbierania ruchu. Należy zauważyć, że powyższy przykład dotyczy tylko tworzenia usługi link prywatny przy użyciu programu PowerShell.  Nie skonfigurowano pul zaplecza modułu równoważenia obciążenia ani żadnej aplikacji w pulach zaplecza do nasłuchiwania ruchu. Jeśli chcesz zobaczyć kompleksowe przepływy ruchu, możesz zdecydowanie polecić skonfigurowanie aplikacji za usługą równoważenia obciążenia. 
+Na tym etapie usługa linku prywatnego została pomyślnie utworzona i będzie gotowa do odbierania ruchu. Należy zauważyć, że powyższy przykład dotyczy tylko tworzenia usługi link prywatny przy użyciu programu PowerShell.  Nie skonfigurowano pul zaplecza modułu równoważenia obciążenia ani żadnej aplikacji w pulach zaplecza do nasłuchiwania ruchu. Jeśli chcesz zobaczyć kompleksowe przepływy ruchu, stanowczo zalecamy skonfigurowanie aplikacji za usługą równoważenia obciążenia w warstwie Standardowa. 
 
 Następnie pokażemy sposób mapowania tej usługi do prywatnego punktu końcowego w innej sieci wirtualnej przy użyciu programu PowerShell. Ponownie Przykładowo można utworzyć prywatny punkt końcowy i połączyć się z usługą link prywatny utworzony powyżej. Możesz utworzyć Virtual Machines w Virtual Network, aby wysłać/odebrać ruch do prywatnego punktu końcowego w celu utworzenia scenariusza. 
 

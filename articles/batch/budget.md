@@ -1,6 +1,6 @@
 ---
 title: Analiza kosztów i budżet — Azure Batch
-description: Dowiedz się, jak uzyskać analizę kosztów i ustawić budżet dla obciążenia usługi Batch.
+description: Dowiedz się, jak uzyskać analizę kosztów i ustawić budżet dla podstawowych zasobów obliczeniowych i licencji na oprogramowanie używane do uruchamiania obciążeń usługi Batch.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
 ms.author: jushiman
-ms.openlocfilehash: 7707d966049e9eced1add1104441af8fee356ef0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0cd17271d041b41f9f71c7861e29ab8116c74710
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029570"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930189"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Analiza kosztów i budżety dla Azure Batch
 
@@ -83,7 +83,7 @@ SSD w warstwie Premium dyski systemu operacyjnego są droższe, ale większa wyd
 
 Jeśli zamierzasz używać usługi Batch przez długi czas, możesz zaoszczędzić na kosztach maszyn wirtualnych, korzystając z [Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md) dla obciążeń. Stawka rezerwacji jest znacznie niższa od stawki płatność zgodnie z rzeczywistym użyciem. Wystąpienia maszyn wirtualnych używane bez rezerwacji są obciążane opłatami według stawki płatność zgodnie z rzeczywistym użyciem. W przypadku zakupienia rezerwacji rabat zostanie zastosowany i nie będą już naliczane opłaty według stawek płatność zgodnie z rzeczywistym użyciem.
 
-### <a name="automatic-scaling"></a>Automatyczne skalowanie
+### <a name="automatic-scaling"></a>Skalowanie automatyczne
 
 [Automatyczne skalowanie](batch-automatic-scaling.md) dynamicznie skaluje liczbę maszyn wirtualnych w puli wsadowej na podstawie wymagań bieżącego zadania. Dzięki skalowaniu puli na podstawie okresu istnienia zadania automatyczne skalowanie zapewnia, że maszyny wirtualne są skalowane i używane tylko wtedy, gdy istnieje zadanie do wykonania. Gdy zadanie zostało ukończone lub nie ma żadnych zadań, maszyny wirtualne są automatycznie skalowane w celu zapisania zasobów obliczeniowych. Skalowanie umożliwia obniżenie całkowitego kosztu rozwiązania usługi Batch przy użyciu tylko potrzebnych zasobów.
 

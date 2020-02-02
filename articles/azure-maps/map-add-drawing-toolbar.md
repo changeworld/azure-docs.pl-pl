@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 553dffd14182c93a52ed076e742830c68130551b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4c89765a3bc59a37a182a2dfabf0727f95b575b8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911236"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933225"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Dodawanie paska narzędzi narzędzi do rysowania do mapy
 
@@ -68,7 +68,7 @@ Zobacz pióro <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>Dodaj narzędz
 
 ## <a name="change-drawing-rendering-style"></a>Zmień styl renderowania rysowania
 
-Poniższy kod pobiera warstwy renderowania z Menedżera rysowania i modyfikuje ich opcje, aby zmienić styl renderowania dla rysowania. W takim przypadku punkty będą renderowane z niebieską ikoną znacznika, linie będą czerwone i cztery piksele szerokości, wielokąty będą miały zielony kolor wypełnienia i pomarańczowy konspekt.
+Poniższy kod pobiera warstwy renderowania z Menedżera rysowania i modyfikuje ich opcje, aby zmienić styl renderowania dla rysowania. W takim przypadku punkty będą renderowane z niebieską ikoną znacznika. Linie będą czerwone i cztery piksele. Wielokąty mają zielony kolor wypełnienia i pomarańczowy konspekt.
 
 ```Javascript
 var layers = drawingManager.getLayers();
@@ -114,7 +114,7 @@ Dowiedz się, jak używać dodatkowych funkcji modułu narzędzi do rysowania:
 Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Rysowanie paska narzędzi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)

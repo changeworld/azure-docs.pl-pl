@@ -2,17 +2,17 @@
 title: Tworzenie strefy i rekordu DNS dla nazwy domeny — interfejs wiersza polecenia platformy Azure — Azure DNS
 description: Ten przykładowy skrypt wiersza polecenia platformy Azure przedstawia sposób tworzenia strefy DNS i rekordu dla nazwy domeny
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
-ms.author: allensu
-ms.openlocfilehash: 8f5dde0a35f31d2c33ab2857659efc88339c2ead
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b1db9ffb895470dd9224dc020eb82b0bbf6560c1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210396"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939308"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Przykładowy skrypt interfejsu wiersza polecenia platformy Azure: tworzenie rekordu i strefy DNS
 

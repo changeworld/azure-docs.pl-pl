@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/31/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845334"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935342"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Obsługa języka i regionu dla usługi mowy
 
@@ -240,8 +240,10 @@ Dostosowanie głosu jest dostępne dla `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-M
 | Hmong Daw      | `mww`          |
 | węgierski      | `hu`          |
 | Indonezyjski      | `id`          |
+| Irlandzki      | `ga`          |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
+| Kannada      | `kn`          |
 | Suahili      | `sw`          |
 | Klingon      | `tlh`          |
 | Klingon (plqaD)      | `tlh-Qaak`          |
@@ -250,11 +252,14 @@ Dostosowanie głosu jest dostępne dla `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-M
 | Litewski      | `lt`          |
 | Malgaski      | `mg`          |
 | Malajski      | `ms`          |
+| Malajalam      | `ml`          |
 | Maltański      | `mt`          |
 | Norweski      | `nb`          |
 | Perski      | `fa`          |
 | Polski      | `pl`          |
-| Portugalski      | `pt`          |
+| Portugalski (Brazylia)      | `pt-br`          |
+| Portugalski (Portugalia)      | `pt-pt`          |
+| Punjabi      | `pa`          |
 | Queretaro Otomi      | `otq`          |
 | Rumuński      | `ro`          |
 | Rosyjski      | `ru`          |
