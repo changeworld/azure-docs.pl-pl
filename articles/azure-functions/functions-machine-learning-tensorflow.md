@@ -79,7 +79,7 @@ Jeśli środowisko Python nie zainstalowało pakietu venv na dystrybucji systemu
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 cd start
@@ -164,7 +164,7 @@ Aby zmodyfikować funkcję `classify` w celu klasyfikowania obrazu na podstawie 
     cp ../resources/model/* classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\model\* classify
@@ -188,7 +188,7 @@ Aby zmodyfikować funkcję `classify` w celu klasyfikowania obrazu na podstawie 
     cp ../resources/predict.py classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\predict.py classify
@@ -272,7 +272,7 @@ Aby przetestować wywoływanie punktu końcowego funkcji z innej aplikacji sieci
     python -m http.server
     ```
     
-    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
     ```powershell
     py -m http.server

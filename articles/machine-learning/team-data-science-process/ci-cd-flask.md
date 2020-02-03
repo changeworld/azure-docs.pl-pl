@@ -60,9 +60,9 @@ Poniższy diagram i kroki opisują architekturę potoku CI/CD:
 10. Żądania użytkowników dla aplikacji przechodzą przez serwer DNS.
 11. Serwer DNS przekazuje żądania do modułu równoważenia obciążenia i wysyła odpowiedzi z powrotem do użytkowników.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-- [Zespołowe przetwarzanie danych naukowych (TDSP)](/azure/machine-learning/team-data-science-process/)
-- [Usługi Azure Machine Learning (AML)](/azure/machine-learning/)
+- [Proces nauki o danych zespołowych (przetwarzania TDSP)](/azure/machine-learning/team-data-science-process/)
+- [Azure Machine Learning (AML)](/azure/machine-learning/)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Usługi Azure Kubernetes (AKS)](/azure/aks/intro-kubernetes)
+- [Usługi Azure Kubernetes Services (AKS)](/azure/aks/intro-kubernetes)

@@ -17,12 +17,12 @@ ms.locfileid: "76719691"
 
 W tym artykule przedstawiono informacje o wersji emulatora usługi Azure Cosmos z listą aktualizacji funkcji, które zostały wprowadzone w poszczególnych wersjach. Znajduje się w nim również Najnowsza wersja emulatora do pobrania i użycia.
 
-## <a name="download"></a>Pobierz
+## <a name="download"></a>Pobieranie
 
 | | |
 |---------|---------|
 |**Pobieranie pliku MSI**|[Centrum pobierania Microsoft](https://aka.ms/cosmosdb-emulator)|
-|**Wprowadzenie**|[Opracowywanie lokalnie za pomocą emulatora usługi Azure Cosmos](local-emulator.md)|
+|**Rozpoczęcie pracy**|[Opracowywanie lokalnie za pomocą emulatora usługi Azure Cosmos](local-emulator.md)|
 
 ## <a name="release-notes"></a>Informacje o wersji
 

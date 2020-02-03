@@ -223,7 +223,7 @@ Server properties updated successfully
 >
 >
 
-## <a name="back-up-files-and-folders"></a>Tworzenie kopii zapasowych plików i folderów
+## <a name="back-up-files-and-folders"></a>Tworzenie kopii zapasowej plików i folderów
 
 Wszystkie kopie zapasowe z serwerów i klientów z systemem Windows do Azure Backup podlegają zasadom. Zasady składają się z trzech części:
 

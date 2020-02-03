@@ -170,7 +170,7 @@ conda_dep.add_pip_package(whl_url)
 myenv.python.conda_dependencies=conda_dep
 ```
 
-## <a name="manage-environments"></a>Zarządzanie środowiskami
+## <a name="manage-environments"></a>Zarządzaj środowiskami
 
 Zarządzaj środowiskami, aby można było je aktualizować, śledzić i ponownie używać w celach obliczeniowych i z innymi użytkownikami obszaru roboczego.
 

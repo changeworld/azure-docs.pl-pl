@@ -28,10 +28,10 @@ Ten artykuł zawiera omówienie przetwarzania TDSP i jego głównych składnikac
 
 Przetwarzanie TDSP składa się z następujących kluczowych składników:
 
-- A **cykl życia analizy danych** definicji
-- A **standaryzowane struktura projektu**
-- **Infrastruktury i zasobów** dla projektów do nauki o danych
-- **Narzędzia i programy narzędziowe** wykonywanie projektu
+- Definicja **cyklu życia analizy danych**
+- **Standardowa struktura projektu**
+- **Infrastruktura i zasoby** dla projektów analizy danych
+- **Narzędzia i programy** do wykonania projektu
 
 
 ## <a name="data-science-lifecycle"></a>Cykl życia analizy danych
@@ -44,17 +44,17 @@ Ten cykl życia został zaprojektowany tak, aby uzyskać projekty do nauki o dan
 
 Cykl życia przedstawia główne etapy, które projekty zazwyczaj są wykonywane, często iteracyjne:
 
-* **Poznawanie firmy**
-* **Pozyskiwanie danych i opis**
-* **Modelowanie**
+* **Zrozumienie biznesowe**
+* **Pozyskiwanie i zrozumienie danych**
+* **Modelu**
 * **Wdrożenie**
 * **Akceptacja klienta**
 
-Poniżej przedstawiono reprezentację wizualną **cykl życia zespołowego danych naukowych**. 
+Poniżej przedstawiono wizualną reprezentację **cyklu życia zespołowego procesu nauki danych**. 
 
 ![Lifecycle2 przetwarzania TDSP](./media/overview/tdsp-lifecycle2.png) 
 
-Cele, zadania i dokumentacji artefaktów na każdym etapie cyklu życia w przetwarzania TDSP są opisane w [cykl życia zespołowego danych naukowych](lifecycle.md) tematu. Te zadania i artefakty są skojarzone z rolami projektu:
+Artefakty cele, zadania i dokumentacja dotyczące poszczególnych etapów cyklu życia w programie przetwarzania TDSP są opisane w temacie [cykl życia procesu nauki o danych zespołowych](lifecycle.md) . Te zadania i artefakty są skojarzone z rolami projektu:
 
 - Architekt rozwiązań
 - Menedżer projektu
@@ -69,7 +69,7 @@ Na poniższym diagramie przedstawiono widoku siatki zadań (na niebiesko) i arte
 
 Wszystkie projekty, udostępniać strukturę katalogów i korzystanie z szablonów projektów dokumentów o ułatwia członkom zespołu znaleźć informacje dotyczące ich projektów. Cały kod i dokumenty są przechowywane w systemie kontroli wersji (klastry Wirtualne), takich jak Git, TFS lub Subversion, umożliwiające współpracę zespołową. Śledzenie zadań i funkcji w projekcie agile śledzenia systemu, np. Jira, wyścigów i DevOps platformy Azure umożliwia bliżej śledzenia kodu dla poszczególnych funkcji. Takie śledzenia umożliwia także zespołów w celu uzyskania lepszego szacunkowy koszt. Przetwarzanie TDSP zaleca się utworzenie oddzielnych repozytorium dla każdego projektu w VC przechowywania wersji, bezpieczeństwo informacji i współpracy. Standardowej struktury dla wszystkich projektów pomaga w tworzeniu instytucjonalnych wiedzy w organizacji.
 
-Firma Microsoft zapewnia szablony dla struktury folderów i dokumentów wymagane w lokalizacjach. Tej struktury folderów organizuje pliki zawierające kod do eksploracji danych i wyodrębniania funkcji, a które Zapisz iteracji modelu. Te szablony ułatwiają członków zespołu, aby zrozumieć pracy wykonanej przez innych użytkowników i dodawać nowych członków zespołów. To ułatwia wyświetlanie i aktualizowanie szablonów dokumentów w formacie markdown. Użyj szablonów, aby podać listy kontrolne z kluczowymi pytaniami dla każdego projektu, aby upewnić się, że problem jest dobrze zdefiniowany i że dostarczane dane spełniają wymagania jakości. Przykłady:
+Firma Microsoft zapewnia szablony dla struktury folderów i dokumentów wymagane w lokalizacjach. Tej struktury folderów organizuje pliki zawierające kod do eksploracji danych i wyodrębniania funkcji, a które Zapisz iteracji modelu. Te szablony ułatwiają członków zespołu, aby zrozumieć pracy wykonanej przez innych użytkowników i dodawać nowych członków zespołów. To ułatwia wyświetlanie i aktualizowanie szablonów dokumentów w formacie markdown. Użyj szablonów, aby podać listy kontrolne z kluczowymi pytaniami dla każdego projektu, aby upewnić się, że problem jest dobrze zdefiniowany i że dostarczane dane spełniają wymagania jakości. Przykłady obejmują:
 
 - karty Projekt, aby udokumentować problem biznesowy i zakres projektu
 - dane raportów do dokumentu struktury i statystyki dla danych nieprzetworzonych
@@ -77,7 +77,7 @@ Firma Microsoft zapewnia szablony dla struktury folderów i dokumentów wymagane
 - Model metryk wydajności, takich jak krzywych ROC lub MSE
 
 
-[![TDSP-directories](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
+[![przetwarzania TDSP — katalogi](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
 Strukturę katalogów można sklonować z usługi [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
@@ -86,7 +86,7 @@ Strukturę katalogów można sklonować z usługi [GitHub](https://github.com/Az
 Przetwarzanie TDSP zawiera zalecenia dotyczące zarządzania udostępnionego analizy i infrastruktury magazynu, takie jak:
 
 - systemy plików w chmurze do przechowywania zestawów danych 
-- databases
+- bazy danych
 - dane big data klastrów (usługi Hadoop lub Spark) 
 - Usługa Machine learning 
 
@@ -104,4 +104,4 @@ Wprowadzenie do procesów, które w większości organizacji staje się wyzwanie
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Zespołu danych dla celów naukowych: Role i zadania](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) opisano role kluczy, personelu i ich skojarzonych zadań dla zespołu do nauki o danych, który standaryzuje na temat tego procesu. 
+[Proces nauki danych zespołu: role i zadania](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Przedstawia podstawowe role pracowników i powiązane z nimi zadania dla zespołu ds. analizy danych, które są standaryzacją tego procesu. 

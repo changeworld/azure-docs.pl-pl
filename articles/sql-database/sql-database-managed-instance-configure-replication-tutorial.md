@@ -19,7 +19,7 @@ ms.locfileid: "76719895"
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>Samouczek: Konfigurowanie replikacji transakcyjnej między dwoma wystąpieniami zarządzanymi i SQL Server
 
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > - Skonfiguruj wystąpienie zarządzane jako wydawcę replikacji. 
@@ -38,7 +38,7 @@ Aby skonfigurować replikację między wydawcą wystąpienia zarządzanego i sub
 
 Aby ukończyć ten samouczek, upewnij się, że dysponujesz następującymi elementami:
 
-- [Subskrypcji platformy Azure](https://azure.microsoft.com/free/). 
+- [Subskrypcja platformy Azure](https://azure.microsoft.com/free/). 
 - Środowisko pracy z wdrażaniem dwóch wystąpień zarządzanych w ramach tej samej sieci wirtualnej. 
 - Subskrybent SQL Server, lokalna lub maszyna wirtualna platformy Azure. Ten samouczek używa maszyny wirtualnej platformy Azure.  
 - [SQL Server Management Studio (SSMS) 18,0 lub nowszy](/sql/ssms/download-sql-server-management-studio-ssms).
@@ -135,7 +135,7 @@ Po ustanowieniu komunikacji równorzędnej sieci VPN Przetestuj połączenie, ur
 Prywatna strefa DNS umożliwia routing DNS między wystąpieniami zarządzanymi i SQL Server. 
 
 ### <a name="create-private-dns-zone"></a>Utwórz prywatną strefę DNS
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com).
 1. Wybierz pozycję **Utwórz zasób** , aby utworzyć nowy zasób platformy Azure. 
 1. Wyszukaj `private dns zone` w witrynie Azure Marketplace. 
 1. Wybierz zasób **strefy prywatna strefa DNS** Opublikowany przez firmę Microsoft, a następnie wybierz pozycję **Utwórz** , aby utworzyć strefę DNS. 

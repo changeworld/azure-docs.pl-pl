@@ -44,7 +44,7 @@ Jeśli planujesz ochronę zawartości przy użyciu Media Services szyfrowania dy
 
 Twój klient przesyłania strumieniowego może określić następujące formaty HLS:
 
-|Protocol (Protokół)|Przykład|
+|Protokół|Przykład|
 |---|---|
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
@@ -54,7 +54,7 @@ Twój klient przesyłania strumieniowego może określić następujące formaty 
 
 Twój klient przesyłania strumieniowego może określić następujące formaty formatu MPEG:
 
-|Protocol (Protokół)|Przykład|
+|Protokół|Przykład|
 |---|---|
 |MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
 |MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
@@ -63,7 +63,7 @@ Twój klient przesyłania strumieniowego może określić następujące formaty 
 
 Twój klient przesyłania strumieniowego może określić następujące formaty Smooth Streaming:
 
-|Protocol (Protokół)|Uwagi/przykłady| 
+|Protokół|Uwagi/przykłady| 
 |---|---|
 |Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
 |Smooth Streaming 2,0 (starsza wersja manifestu)|Domyślnie Smooth Streaming format manifestu zawiera tag Repeat (tag języka r). Jednak niektórzy gracze nie obsługują `r-tag`. Klienci z tymi graczami mogą używać formatu, który wyłącza tag języka r:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
@@ -129,7 +129,7 @@ Pakowanie dynamiczne obsługuje dźwięk kodowany przy użyciu następujących p
 * Dolby Atmos<br />
    Przesyłanie strumieniowe zawartości Dolby Atmos jest obsługiwane w przypadku standardów, takich jak protokół MPEG-KRESKa, przy użyciu wspólnego formatu przesyłania strumieniowego (CSF) lub Common Media Application Format (CMAF) i za pośrednictwem HTTP Live Streaming (HLS) z CMAF.
 
-* [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
+* [Pakiet](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
    Kodery-dekoder usług DTS obsługiwane przez ŁĄCZNIKi — CMAF, HLS-M2TS i HLS-CMAF są następujące:  
 
     * Cyfrowa przestrzenny usług DTS (dtsc)

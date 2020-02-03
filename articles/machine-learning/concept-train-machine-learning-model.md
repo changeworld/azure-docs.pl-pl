@@ -101,7 +101,7 @@ Projektant umożliwia uczenie modeli przy użyciu interfejsu przeciągania i upu
 + [Klasyfikacja przy użyciu niestandardowego skryptu języka R: przewidywanie opóźnień lotów](how-to-designer-sample-classification-flight-delay.md)
 + [Klasyfikacja tekstu: zestaw danych witryny Wikipedia SP 500](how-to-designer-sample-text-classification.md)
 
-## <a name="cli"></a>Interfejs CLI
+## <a name="cli"></a>Interfejs wiersza polecenia
 
 Interfejs wiersza polecenia uczenia maszynowego to rozszerzenie interfejsu wiersza polecenia platformy Azure. Udostępnia on Międzyplatformowe polecenia interfejsu CLI do pracy z Azure Machine Learning. Zazwyczaj używasz interfejsu wiersza polecenia do automatyzowania zadań, takich jak uczenie modelu uczenia maszynowego.
 

@@ -74,13 +74,13 @@ Poniższa tabela zawiera podsumowanie czasów synchronizacji typowych scenariusz
 | Konfiguracja zakresu | Użytkownicy, grupy i członkowie w zakresie | Czas wstępnego cyklu | Przyrostowy czas cyklu |
 | -------- | -------- | -------- | -------- |
 | Synchronizuj tylko przypisanych użytkowników i grupy |  < 1 000 |  < 30 minut | < 30 minut |
-| Synchronizuj tylko przypisanych użytkowników i grupy |  1000–10 000 | 142 – 708 minut | < 30 minut |
+| Synchronizuj tylko przypisanych użytkowników i grupy |  1 000 – 10 000 | 142 – 708 minut | < 30 minut |
 | Synchronizuj tylko przypisanych użytkowników i grupy |   10 000 – 100 000 | 1 170 – 2 340 minut | < 30 minut |
 | Synchronizuj wszystkich użytkowników i grupy w usłudze Azure AD |  < 1 000 | < 30 minut  | < 30 minut |
-| Synchronizuj wszystkich użytkowników i grupy w usłudze Azure AD |  1000–10 000 | < 30-120 minut | < 30 minut |
+| Synchronizuj wszystkich użytkowników i grupy w usłudze Azure AD |  1 000 – 10 000 | < 30-120 minut | < 30 minut |
 | Synchronizuj wszystkich użytkowników i grupy w usłudze Azure AD |  10 000 – 100 000  | 713 – 1 425 minut | < 30 minut |
 | Synchronizuj wszystkich użytkowników w usłudze Azure AD|  < 1 000  | < 30 minut | < 30 minut |
-| Synchronizuj wszystkich użytkowników w usłudze Azure AD | 1000–10 000  | 43 – 86 minut | < 30 minut |
+| Synchronizuj wszystkich użytkowników w usłudze Azure AD | 1 000 – 10 000  | 43 – 86 minut | < 30 minut |
 
 
 W przypadku **tylko przypisanego użytkownika i grup dla synchronizacji**konfiguracji można użyć następujących formuł, aby określić przybliżoną minimalną i maksymalną oczekiwany czas **cykli początkowej** :

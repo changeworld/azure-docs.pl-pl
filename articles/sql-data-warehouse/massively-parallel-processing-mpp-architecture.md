@@ -19,7 +19,7 @@ ms.locfileid: "76720320"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura usługi Azure Synapse Analytics (dawniej SQL DW) 
 
-Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, przy użyciu bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali. Usługa Azure Synapse łączy te dwa światy w ujednolicone środowisko umożliwiające pozyskiwanie, przygotowywanie i udostępnianie danych oraz zarządzanie nimi na potrzeby natychmiastowej analizy biznesowej oraz uczenia maszynowego.
+Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali. Usługa Azure Synapse udostępnia te dwa światy wraz z ujednoliconym doświadczeniem do pozyskiwania, przygotowywania, zarządzania i obsługi danych w celu natychmiastowej analizy biznesowej i uczenia maszynowego.
 
  Usługa Azure Synapse ma cztery składniki:
 - Analiza SQL: Pełna analiza oparta na języku T-SQL 
@@ -111,7 +111,7 @@ Teraz, gdy znasz już usługę Azure Synapse, Dowiedz się, jak szybko [utworzy�
 * [Historie sukcesu klientów](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 * [Blogi](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 * [Żądania funkcji](https://feedback.azure.com/forums/307516-sql-data-warehouse)
-* [Filmy wideo](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+* [Wideo](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Tworzenie biletu pomocy technicznej](./sql-data-warehouse-get-started-create-support-ticket.md)
 * [Forum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
 * [Forum Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw)

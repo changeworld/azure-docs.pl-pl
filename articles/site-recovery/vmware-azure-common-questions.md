@@ -50,7 +50,7 @@ Można replikować dowolne aplikacje lub obciążenia działające na maszynie w
 
 Tak, klienci programu Microsoft Software Assurance mogą korzystać z usługi [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) , aby zaoszczędzić na kosztach licencjonowania dla maszyn z systemem Windows Server migrowanych do platformy Azure lub do odzyskiwania po awarii przy użyciu platformy Azure.
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
 ### <a name="what-access-to-vmware-servers-does-site-recovery-need"></a>Jakiego dostępu do serwerów VMware Site Recovery potrzebować?
 
@@ -73,7 +73,7 @@ Nie, Site Recovery nie przechwytuje replikowanych danych i nie zawiera żadnych 
 
 Site Recovery jest certyfikowany dla ISO 27001:2013 i 27018, HIPAA i DPA. Jest to proces oceny SOC2 i FedRAMP JAB.
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 ### <a name="how-do-i-calculate-approximate-charges-for-vmware-disaster-recovery"></a>Jak mogę obliczyć przybliżone opłaty za odzyskiwanie po awarii oprogramowania VMware?
 

@@ -96,7 +96,7 @@ Możesz pominąć ustawienie właściwości `ApiKey` atrybutu, jeśli masz klucz
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych SendGrid w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania.
 
-Oto powiązanie danych w *function.json* pliku:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json 
 {
@@ -120,7 +120,7 @@ Oto powiązanie danych w *function.json* pliku:
 }
 ```
 
-[Konfiguracji](#configuration) sekcji opisano te właściwości.
+W sekcji [Konfiguracja](#configuration) objaśniono te właściwości.
 
 Poniżej przedstawiono kod skryptu języka C#:
 
@@ -155,7 +155,7 @@ public class Message
 
 Poniższy przykład przedstawia powiązanie danych wyjściowych SendGrid w pliku *Function. JSON* i [funkcję języka JavaScript](functions-reference-node.md) , która używa powiązania.
 
-Oto powiązanie danych w *function.json* pliku:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json 
 {
@@ -173,7 +173,7 @@ Oto powiązanie danych w *function.json* pliku:
 }
 ```
 
-[Konfiguracji](#configuration) sekcji opisano te właściwości.
+W sekcji [Konfiguracja](#configuration) objaśniono te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -310,7 +310,7 @@ public class HttpTriggerSendGrid {
 
 W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) .
 
-Aby uzyskać informacje na temat właściwości atrybutów, które można skonfigurować, zobacz [Konfiguracja](#configuration). Oto `SendGrid` przykład atrybutu w podpisie metody:
+Aby uzyskać informacje na temat właściwości atrybutów, które można skonfigurować, zobacz [Konfiguracja](#configuration). Oto przykład atrybutu `SendGrid` w sygnaturze metody:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -342,20 +342,20 @@ Adnotacja [SendGridOutput](https://github.com/Azure/azure-functions-java-library
 
 ---
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 W poniższej tabeli wymieniono właściwości konfiguracji powiązań dostępne w pliku *Function. JSON* oraz atrybut/adnotacja `SendGrid`.
 
-| *Function. JSON* — Właściwość | Właściwość atrybutu/adnotacji | Opis | Opcjonalne |
+| *Function. JSON* — Właściwość | Właściwość atrybutu/adnotacji | Opis | Optional (Opcjonalność) |
 |--------------------------|-------------------------------|-------------|----------|
-| type |nd.| Musi być równa `sendGrid`.| Nie |
-| kierunek |nd.| Musi być równa `out`.| Nie |
-| name |nd.| Nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. Ta wartość jest `$return`, gdy istnieje tylko jedna wartość zwracana. | Nie |
+| type |Nie dotyczy| musi być ustawiony na `sendGrid`.| Nie |
+| kierunek |Nie dotyczy| musi być ustawiony na `out`.| Nie |
+| name |Nie dotyczy| Nazwa zmiennej używana w kodzie funkcji dla żądania lub treści żądania. Ta wartość jest `$return`, gdy istnieje tylko jedna wartość zwracana. | Nie |
 | apiKey | apiKey | Nazwa ustawienia aplikacji, która zawiera klucz interfejsu API. Jeśli nie zostanie ustawiona, domyślna nazwa ustawienia aplikacji to *AzureWebJobsSendGridApiKey*.| Nie |
-| na| Do | Adres e-mail adresata. | Tak |
-| z| Od | Adres e-mail nadawcy. |  Tak |
-| subject| Temat | Temat wiadomości e-mail. | Tak |
-| tekst| Tekst | Zawartość wiadomości e-mail. | Tak |
+| na| Do | Adres e-mail adresata. | Yes |
+| from| Z | Adres e-mail nadawcy. |  Yes |
+| subject| Podmiot | Temat wiadomości e-mail. | Yes |
+| tekst| Tekst | Zawartość wiadomości e-mail. | Yes |
 
 Właściwości opcjonalne mogą mieć wartości domyślne zdefiniowane w powiązaniu i dodawane lub zastępowane programowo.
 
@@ -368,7 +368,7 @@ Właściwości opcjonalne mogą mieć wartości domyślne zdefiniowane w powiąz
 W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2. x i nowszych. Poniższy przykładowy plik host. JSON zawiera tylko ustawienia wersji 2. x dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersjach 2. x i więcej, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions](functions-host-json.md).
 
 > [!NOTE]
-> Odwołanie host.json w funkcjach 1.x, zobacz [dokumentacja pliku host.JSON dla usługi Azure Functions 1.x](functions-host-json-v1.md).
+> Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md).
 
 ```json
 {
@@ -383,10 +383,10 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|z|nd.|Adres e-mail nadawcy we wszystkich funkcjach.| 
+|from|Nie dotyczy|Adres e-mail nadawcy we wszystkich funkcjach.| 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
+> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)

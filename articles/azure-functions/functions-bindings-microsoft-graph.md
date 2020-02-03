@@ -76,7 +76,7 @@ Powiązanie danych wejściowych tokenu uwierzytelniania pobiera token usługi Az
 Ta sekcja zawiera następujące podsekcje:
 
 * [Przykład](#auth-token---example)
-* [Atrybuty](#auth-token---attributes)
+* [Attributes](#auth-token---attributes)
 * [Konfiguracja](#auth-token---configuration)
 * [Użycie](#auth-token---usage)
 
@@ -84,7 +84,7 @@ Ta sekcja zawiera następujące podsekcje:
 
 Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C# (csx)](#auth-token---c-script-example)
+* [C#skrypt (. CSX)](#auth-token---c-script-example)
 * [JavaScript](#auth-token---javascript-example)
 
 #### <a name="auth-token---c-script-example"></a>Token uwierzytelniania — C# przykład skryptu
@@ -203,17 +203,17 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [toke
 
 ### <a name="auth-token---configuration"></a>Token uwierzytelniania — konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `Token` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `Token` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla tokenu uwierzytelniania. Zobacz [Używanie powiązania danych wejściowych tokenu uwierzytelniania z kodu](#token-input-code).|
-|**type**| nd. |Wymagane — musi być ustawiony na `token`.|
-|**direction**| nd. |Wymagane — musi być ustawiony na `in`.|
+|**Nazwij**| Nie dotyczy |Wymagane — nazwa zmiennej używana w kodzie funkcji dla tokenu uwierzytelniania. Zobacz [Używanie powiązania danych wejściowych tokenu uwierzytelniania z kodu](#token-input-code).|
+|**type**| Nie dotyczy |Wymagane — musi być ustawiony na `token`.|
+|**direction**| Nie dotyczy |Wymagane — musi być ustawiony na `in`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**userId**|**UserId**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
+|**Nazwa**|**Nazwa**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
-|**Zasób**|**resource**|Wymagane — adres URL zasobu usługi Azure AD, dla którego jest żądany token.|
+|**Zasób**|**zasoby**|Wymagane — adres URL zasobu usługi Azure AD, dla którego jest żądany token.|
 
 <a name="token-input-code"></a>
 ### <a name="auth-token---usage"></a>Token uwierzytelniania — użycie
@@ -234,7 +234,7 @@ Powiązanie danych wejściowych tabeli programu Excel odczytuje zawartość tabe
 Ta sekcja zawiera następujące podsekcje:
 
 * [Przykład](#excel-input---example)
-* [Atrybuty](#excel-input---attributes)
+* [Attributes](#excel-input---attributes)
 * [Konfiguracja](#excel-input---configuration)
 * [Użycie](#excel-input---usage)
 
@@ -242,7 +242,7 @@ Ta sekcja zawiera następujące podsekcje:
 
 Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C# (csx)](#excel-input---c-script-example)
+* [C#skrypt (. CSX)](#excel-input---c-script-example)
 * [JavaScript](#excel-input---javascript-example)
 
 #### <a name="excel-input---c-script-example"></a>Dane wejściowe programu C# Excel — przykładowy skrypt
@@ -338,15 +338,15 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [prog
 
 ### <a name="excel-input---configuration"></a>Dane wejściowe programu Excel — konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `Excel` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `Excel` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla tabeli programu Excel. Zobacz [Używanie powiązania danych wejściowych tabeli programu Excel z kodu](#excel-input-code).|
-|**type**| nd. |Wymagane — musi być ustawiony na `excel`.|
-|**direction**| nd. |Wymagane — musi być ustawiony na `in`.|
+|**Nazwij**| Nie dotyczy |Wymagane — nazwa zmiennej używana w kodzie funkcji dla tabeli programu Excel. Zobacz [Używanie powiązania danych wejściowych tabeli programu Excel z kodu](#excel-input-code).|
+|**type**| Nie dotyczy |Wymagane — musi być ustawiony na `excel`.|
+|**direction**| Nie dotyczy |Wymagane — musi być ustawiony na `in`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**userId**|**UserId**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
+|**Nazwa**|**Nazwa**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
 |**path**|**Ścieżka**|Wymagane — ścieżka w usłudze OneDrive do skoroszytu programu Excel.|
 |**arkuszname**|**Arkuszname**|Arkusz, w którym znajduje się tabela.|
@@ -383,7 +383,7 @@ Powiązanie danych wyjściowych programu Excel modyfikuje zawartość tabeli pro
 Ta sekcja zawiera następujące podsekcje:
 
 * [Przykład](#excel-output---example)
-* [Atrybuty](#excel-output---attributes)
+* [Attributes](#excel-output---attributes)
 * [Konfiguracja](#excel-output---configuration)
 * [Użycie](#excel-output---usage)
 
@@ -391,7 +391,7 @@ Ta sekcja zawiera następujące podsekcje:
 
 Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C# (csx)](#excel-output---c-script-example)
+* [C#skrypt (. CSX)](#excel-output---c-script-example)
 * [JavaScript](#excel-output---javascript-example)
 
 #### <a name="excel-output---c-script-example"></a>Dane wyjściowe programu C# Excel — przykład skryptu
@@ -500,20 +500,20 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [prog
 
 ### <a name="excel-output---configuration"></a>Dane wyjściowe programu Excel — konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `Excel` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `Excel` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla tokenu uwierzytelniania. Zobacz [Używanie powiązania danych wyjściowych tabeli programu Excel z kodu](#excel-output-code).|
-|**type**| nd. |Wymagane — musi być ustawiony na `excel`.|
-|**direction**| nd. |Wymagane — musi być ustawiony na `out`.|
+|**Nazwij**| Nie dotyczy |Wymagane — nazwa zmiennej używana w kodzie funkcji dla tokenu uwierzytelniania. Zobacz [Używanie powiązania danych wyjściowych tabeli programu Excel z kodu](#excel-output-code).|
+|**type**| Nie dotyczy |Wymagane — musi być ustawiony na `excel`.|
+|**direction**| Nie dotyczy |Wymagane — musi być ustawiony na `out`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**UserId** |**userId** |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
+|**Nazwa** |**Nazwa** |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
 |**path**|**Ścieżka**|Wymagane — ścieżka w usłudze OneDrive do skoroszytu programu Excel.|
 |**arkuszname**|**Arkuszname**|Arkusz, w którym znajduje się tabela.|
 |**tableName**|**TableName**|Nazwa tabeli. Jeśli nie zostanie określony, zostanie użyta zawartość arkusza.|
-|**updateType**|**UpdateType**|Wymagane — typ zmiany do wprowadzenia do tabeli. Może być jedną z następujących wartości:<ul><li><code>update</code> — zastępuje zawartość tabeli w usłudze OneDrive.</li><li><code>append</code> — dodaje ładunek do końca tabeli w usłudze OneDrive przez utworzenie nowych wierszy.</li></ul>|
+|**Typ aktualizacji**|**Typ aktualizacji**|Wymagane — typ zmiany do wprowadzenia do tabeli. Może być jedną z następujących wartości:<ul><li><code>update</code> — zastępuje zawartość tabeli w usłudze OneDrive.</li><li><code>append</code> — dodaje ładunek do końca tabeli w usłudze OneDrive przez utworzenie nowych wierszy.</li></ul>|
 
 <a name="excel-output-code"></a>
 ### <a name="excel-output---usage"></a>Dane wyjściowe programu Excel — użycie
@@ -542,7 +542,7 @@ Powiązanie danych wejściowych pliku usługi OneDrive odczytuje zawartość pli
 Ta sekcja zawiera następujące podsekcje:
 
 * [Przykład](#file-input---example)
-* [Atrybuty](#file-input---attributes)
+* [Attributes](#file-input---attributes)
 * [Konfiguracja](#file-input---configuration)
 * [Użycie](#file-input---usage)
 
@@ -550,7 +550,7 @@ Ta sekcja zawiera następujące podsekcje:
 
 Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C# (csx)](#file-input---c-script-example)
+* [C#skrypt (. CSX)](#file-input---c-script-example)
 * [JavaScript](#file-input---javascript-example)
 
 #### <a name="file-input---c-script-example"></a>Dane wejściowe pliku C# — przykład skryptu
@@ -646,15 +646,15 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [usł
 
 ### <a name="file-input---configuration"></a>Dane wejściowe pliku — konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `OneDrive` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `OneDrive` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla pliku. Zobacz [Używanie powiązania danych wejściowych pliku w usłudze OneDrive z kodu](#onedrive-input-code).|
-|**type**| nd. |Wymagane — musi być ustawiony na `onedrive`.|
-|**direction**| nd. |Wymagane — musi być ustawiony na `in`.|
+|**Nazwij**| Nie dotyczy |Wymagane — nazwa zmiennej używana w kodzie funkcji dla pliku. Zobacz [Używanie powiązania danych wejściowych pliku w usłudze OneDrive z kodu](#onedrive-input-code).|
+|**type**| Nie dotyczy |Wymagane — musi być ustawiony na `onedrive`.|
+|**direction**| Nie dotyczy |Wymagane — musi być ustawiony na `in`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**userId**|**UserId**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
+|**Nazwa**|**Nazwa**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
 |**path**|**Ścieżka**|Wymagane — ścieżka do pliku w usłudze OneDrive.|
 
@@ -669,8 +669,8 @@ To powiązanie wymaga następujących uprawnień usługi Azure AD:
 
 Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
 - byte[]
-- Stream
-- string
+- Strumień
+- ciąg
 - Microsoft.Graph.DriveItem
 
 
@@ -686,7 +686,7 @@ Powiązanie danych wyjściowych pliku usługi OneDrive modyfikuje zawartość pl
 Ta sekcja zawiera następujące podsekcje:
 
 * [Przykład](#file-output---example)
-* [Atrybuty](#file-output---attributes)
+* [Attributes](#file-output---attributes)
 * [Konfiguracja](#file-output---configuration)
 * [Użycie](#file-output---usage)
 
@@ -694,7 +694,7 @@ Ta sekcja zawiera następujące podsekcje:
 
 Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C# (csx)](#file-output---c-script-example)
+* [C#skrypt (. CSX)](#file-output---c-script-example)
 * [JavaScript](#file-output---javascript-example)
 
 #### <a name="file-output---c-script-example"></a>Wyjście pliku — C# przykład skryptu
@@ -794,15 +794,15 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [usł
 
 ### <a name="file-output---configuration"></a>Wyjście pliku — konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `OneDrive` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `OneDrive` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla pliku. Zobacz [Używanie powiązania danych wyjściowych pliku usługi OneDrive z kodu](#onedrive-output-code).|
-|**type**| nd. |Wymagane — musi być ustawiony na `onedrive`.|
-|**direction**| nd. |Wymagane — musi być ustawiony na `out`.|
+|**Nazwij**| Nie dotyczy |Wymagane — nazwa zmiennej używana w kodzie funkcji dla pliku. Zobacz [Używanie powiązania danych wyjściowych pliku usługi OneDrive z kodu](#onedrive-output-code).|
+|**type**| Nie dotyczy |Wymagane — musi być ustawiony na `onedrive`.|
+|**direction**| Nie dotyczy |Wymagane — musi być ustawiony na `out`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**UserId** |**userId** |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
+|**Nazwa** |**Nazwa** |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
 |**path**|**Ścieżka**|Wymagane — ścieżka do pliku w usłudze OneDrive.|
 
@@ -817,8 +817,8 @@ To powiązanie wymaga następujących uprawnień usługi Azure AD:
 
 Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
 - byte[]
-- Stream
-- string
+- Strumień
+- ciąg
 - Microsoft.Graph.DriveItem
 
 
@@ -833,7 +833,7 @@ Powiązanie danych wyjściowych wiadomości programu Outlook wysyła wiadomość
 Ta sekcja zawiera następujące podsekcje:
 
 * [Przykład](#outlook-output---example)
-* [Atrybuty](#outlook-output---attributes)
+* [Attributes](#outlook-output---attributes)
 * [Konfiguracja](#outlook-output---configuration)
 * [Użycie](#outlook-output---usage)
 
@@ -841,7 +841,7 @@ Ta sekcja zawiera następujące podsekcje:
 
 Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C# (csx)](#outlook-output---c-script-example)
+* [C#skrypt (. CSX)](#outlook-output---c-script-example)
 * [JavaScript](#outlook-output---javascript-example)
 
 #### <a name="outlook-output---c-script-example"></a>Dane wyjściowe programu C# Outlook — przykład skryptu
@@ -945,15 +945,15 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [prog
 
 ### <a name="outlook-output---configuration"></a>Dane wyjściowe programu Outlook — konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `Outlook` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `Outlook` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**| nd. |Wymagane — musi być ustawiony na `outlook`.|
-|**direction**| nd. |Wymagane — musi być ustawiony na `out`.|
+|**Nazwij**| Nie dotyczy |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
+|**type**| Nie dotyczy |Wymagane — musi być ustawiony na `outlook`.|
+|**direction**| Nie dotyczy |Wymagane — musi być ustawiony na `out`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**userId**|**UserId**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
+|**Nazwa**|**Nazwa**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
 
 <a name="outlook-output-code"></a>
@@ -968,7 +968,7 @@ To powiązanie wymaga następujących uprawnień usługi Azure AD:
 Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- string
+- ciąg
 - Niestandardowe typy obiektów (przy użyciu powiązania modelu strukturalnego)
 
 
@@ -998,7 +998,7 @@ Wyzwalacz Microsoft Graph elementu webhook umożliwia funkcji reagowanie na przy
 Ta sekcja zawiera następujące podsekcje:
 
 * [Przykład](#webhook-trigger---example)
-* [Atrybuty](#webhook-trigger---attributes)
+* [Attributes](#webhook-trigger---attributes)
 * [Konfiguracja](#webhook-trigger---configuration)
 * [Użycie](#webhook-trigger---usage)
 
@@ -1006,7 +1006,7 @@ Ta sekcja zawiera następujące podsekcje:
 
 Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C# (csx)](#webhook-trigger---c-script-example)
+* [C#skrypt (. CSX)](#webhook-trigger---c-script-example)
 * [JavaScript](#webhook-trigger---javascript-example)
 
 #### <a name="webhook-trigger---c-script-example"></a>Wyzwalacz elementu webhook C# — przykład skryptu
@@ -1088,13 +1088,13 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [Grap
 
 ### <a name="webhook-trigger---configuration"></a>Wyzwalacz elementu webhook — konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `GraphWebhookTrigger` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `GraphWebhookTrigger` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**| nd. |Wymagane — musi być ustawiony na `graphWebhook`.|
-|**direction**| nd. |Wymagane — musi być ustawiony na `trigger`.|
+|**Nazwij**| Nie dotyczy |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
+|**type**| Nie dotyczy |Wymagane — musi być ustawiony na `graphWebhook`.|
+|**direction**| Nie dotyczy |Wymagane — musi być ustawiony na `trigger`.|
 |**resourceType**|**ResourceType**|Wymagane — zasób grafu, dla którego ta funkcja powinna reagować na elementy webhook. Może być jedną z następujących wartości:<ul><li><code>#Microsoft.Graph.Message</code> — zmiany wprowadzone w komunikatach programu Outlook.</li><li><code>#Microsoft.Graph.DriveItem</code> — zmiany wprowadzone do elementów głównych usługi OneDrive.</li><li><code>#Microsoft.Graph.Contact</code> — zmiany kontaktów osobistych w programie Outlook.</li><li><code>#Microsoft.Graph.Event</code> — zmiany wprowadzane do elementów kalendarza programu Outlook.</li></ul>|
 
 > [!Note]
@@ -1117,7 +1117,7 @@ Powiązanie danych wejściowych elementu webhook Microsoft Graph umożliwia pobr
 Ta sekcja zawiera następujące podsekcje:
 
 * [Przykład](#webhook-input---example)
-* [Atrybuty](#webhook-input---attributes)
+* [Attributes](#webhook-input---attributes)
 * [Konfiguracja](#webhook-input---configuration)
 * [Użycie](#webhook-input---usage)
 
@@ -1125,7 +1125,7 @@ Ta sekcja zawiera następujące podsekcje:
 
 Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C# (csx)](#webhook-input---c-script-example)
+* [C#skrypt (. CSX)](#webhook-input---c-script-example)
 * [JavaScript](#webhook-input---javascript-example)
 
 #### <a name="webhook-input---c-script-example"></a>Dane wejściowe elementu webhook — C# przykład skryptu
@@ -1240,14 +1240,14 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [Grap
 
 ### <a name="webhook-input---configuration"></a>Dane wejściowe elementu webhook — konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `GraphWebhookSubscription` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `GraphWebhookSubscription` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**| nd. |Wymagane — musi być ustawiony na `graphWebhookSubscription`.|
-|**direction**| nd. |Wymagane — musi być ustawiony na `in`.|
-|**filtru**|**Filtr**| Jeśli zostanie ustawiona na `userFromRequest`, powiązanie będzie pobierać tylko subskrypcje należące do użytkownika wywołującego (prawidłowe tylko przy użyciu [Wyzwalacz HTTP]).| 
+|**Nazwij**| Nie dotyczy |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
+|**type**| Nie dotyczy |Wymagane — musi być ustawiony na `graphWebhookSubscription`.|
+|**direction**| Nie dotyczy |Wymagane — musi być ustawiony na `in`.|
+|**filtru**|**Filtru**| Jeśli zostanie ustawiona na `userFromRequest`, powiązanie będzie pobierać tylko subskrypcje należące do użytkownika wywołującego (prawidłowe tylko przy użyciu [Wyzwalacz HTTP]).| 
 
 ### <a name="webhook-input---usage"></a>Dane wejściowe elementu webhook
 
@@ -1268,7 +1268,7 @@ Powiązanie danych wyjściowych subskrypcji elementu webhook umożliwia tworzeni
 Ta sekcja zawiera następujące podsekcje:
 
 * [Przykład](#webhook-output---example)
-* [Atrybuty](#webhook-output---attributes)
+* [Attributes](#webhook-output---attributes)
 * [Konfiguracja](#webhook-output---configuration)
 * [Użycie](#webhook-output---usage)
 
@@ -1276,7 +1276,7 @@ Ta sekcja zawiera następujące podsekcje:
 
 Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C# (csx)](#webhook-output---c-script-example)
+* [C#skrypt (. CSX)](#webhook-output---c-script-example)
 * [JavaScript](#webhook-output---javascript-example)
 
 #### <a name="webhook-output---c-script-example"></a>Wyjście elementu webhook C# — przykład skryptu
@@ -1381,15 +1381,15 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj atrybutu [Grap
 
 ### <a name="webhook-output---configuration"></a>Wyjście elementu webhook — konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `GraphWebhookSubscription` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `GraphWebhookSubscription` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**Nazwa**| nd. |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
-|**type**| nd. |Wymagane — musi być ustawiony na `graphWebhookSubscription`.|
-|**direction**| nd. |Wymagane — musi być ustawiony na `out`.|
+|**Nazwij**| Nie dotyczy |Wymagane — nazwa zmiennej używana w kodzie funkcji dla wiadomości e-mail. Zobacz [Używanie powiązania danych wyjściowych wiadomości programu Outlook z kodu](#outlook-output-code).|
+|**type**| Nie dotyczy |Wymagane — musi być ustawiony na `graphWebhookSubscription`.|
+|**direction**| Nie dotyczy |Wymagane — musi być ustawiony na `out`.|
 |**Identity**|**Tożsamość**|Wymagane — tożsamość, która zostanie użyta do wykonania akcji. Może być jedną z następujących wartości:<ul><li><code>userFromRequest</code> — prawidłowy tylko z [Wyzwalacz HTTP]. Używa tożsamości użytkownika wywołującego.</li><li><code>userFromId</code> — używa tożsamości wcześniej zalogowanego użytkownika o określonym IDENTYFIKATORze. Zobacz Właściwość <code>userId</code>.</li><li><code>userFromToken</code> — używa tożsamości reprezentowanej przez określony token. Zobacz Właściwość <code>userToken</code>.</li><li><code>clientCredentials</code> — używa tożsamości aplikacji funkcji.</li></ul>|
-|**userId**|**UserId**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
+|**Nazwa**|**Nazwa**  |Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromId`. Identyfikator podmiotu zabezpieczeń użytkownika skojarzony z wcześniej zalogowanym użytkownikiem.|
 |**userToken**|**UserToken**|Wymagana, jeśli i tylko wtedy, gdy _tożsamość_ jest ustawiona na `userFromToken`. Token ważny dla aplikacji funkcji. |
 |**transakcji**|**Akcja**|Wymagane — określa akcję, która ma zostać wykonana przez powiązanie. Może być jedną z następujących wartości:<ul><li><code>create</code> — rejestruje nową subskrypcję.</li><li><code>delete</code> — usuwa określoną subskrypcję.</li><li><code>refresh</code> — odświeża określoną subskrypcję, aby uniemożliwić jej wygaśnięcie.</li></ul>|
 |**subscriptionResource**|**SubscriptionResource**|Wymagana, jeśli i tylko wtedy, gdy _Akcja_ jest ustawiona na `create`. Określa zasób Microsoft Graph, który będzie monitorowany pod kątem zmian. Zobacz [Praca z elementami webhook w Microsoft Graph]. |
@@ -1398,7 +1398,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 ### <a name="webhook-output---usage"></a>Dane wyjściowe elementu webhook — użycie
 
 Powiązanie uwidacznia następujące typy do funkcji .NET Functions:
-- string
+- ciąg
 - Microsoft.Graph.Subscription
 
 
@@ -1421,7 +1421,7 @@ Ta sekcja zawiera przykład dla każdej z tych metod:
 
 Zobacz przykład specyficzny dla języka:
 
-* [Skryptu C# (csx)](#app-identity-refresh---c-script-example)
+* [C#skrypt (. CSX)](#app-identity-refresh---c-script-example)
 * JavaScript
 
 ### <a name="app-identity-refresh---c-script-example"></a>Odświeżanie tożsamości aplikacji C# — przykład skryptu
@@ -1586,7 +1586,7 @@ public class UserSubscription {
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
+> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
 
 [Wyzwalacz HTTP]: functions-bindings-http-webhook.md
 [Praca z elementami webhook w Microsoft Graph]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks

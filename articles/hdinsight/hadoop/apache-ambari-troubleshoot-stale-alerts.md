@@ -34,7 +34,7 @@ Agenci Ambari stale wykonują kontrole kondycji, aby monitorować kondycję wiel
 
 * Niektóre hosty w klastrze mogą obsługiwać wiele składników i dlatego będą wymagane do uruchamiania wielu alertów. Jeśli liczba składników jest duża, istnieje możliwość, że zadania alertów mogą pominąć zaplanowane interwały
 
-## <a name="resolution"></a>Rozdzielczość
+## <a name="resolution"></a>Rozwiązanie
 
 ### <a name="increase-alert-interval-time"></a>Zwiększ czas interwału alertu
 

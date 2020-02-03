@@ -19,7 +19,7 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76722066"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Kod do nauki o danych, testowanie na platformie Azure za pomocą zespołowego danych naukowych i usługom DevOps platformy Azure
-Ten artykuł zawiera wskazówki wstępne do testowania kodu w przepływie pracy do analizy danych. Takie testy daje analitykom danych systematyczne i wydajny sposób kontroli jakości i oczekiwany wynik swój kod. Używamy Team Data Science naukowych [projektu, który używa zestawu danych na rachunku treści dla dorosłych](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , opublikowaliśmy wcześniej pokazanie sposobu testowania kodu może odbywać się. 
+Ten artykuł zawiera wskazówki wstępne do testowania kodu w przepływie pracy do analizy danych. Takie testy daje analitykom danych systematyczne i wydajny sposób kontroli jakości i oczekiwany wynik swój kod. Korzystamy z projektu zespołowego przetwarzania danych (przetwarzania TDSP) [, który korzysta z zestawu danych dochodów dla dorosłych](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , który został opublikowany wcześniej, aby pokazać, jak można przeprowadzić testowanie kodu. 
 
 ## <a name="introduction-on-code-testing"></a>Wprowadzenie na testowanie kodu
 "Testy jednostkowe" jest rozwiązaniem w zakresie od rozwoju oprogramowania. Jednak w przypadku nauki danych często nie jest jasne, co oznacza "testy jednostkowe" i jak należy przetestować kod dla różnych etapów cyklu życia analizy danych, na przykład:
@@ -89,18 +89,18 @@ Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za po
 
       ![Kod do sprawdzania wartości prognozy](./media/code-test/check_prediction_values.PNG)
 
-1. Umieść wszystkie testowanie functions razem w skrypcie języka Python o nazwie **test_funcs.py**:
+1. Umieść wszystkie funkcje testowe w skrypcie języka Python o nazwie **test_funcs. PR**:
 
     ![Skrypt języka Python dla usługi functions testu](./media/code-test/create_file_test_func.PNG)
 
 
 1. Po przygotowaniu są kody testu, możesz skonfigurować środowisko testowe w programie Visual Studio.
 
-   Utwórz plik w języku Python o nazwie **test1.py**. W tym pliku należy utworzyć klasę, która zawiera wszystkie testy, które chcesz wykonać. Poniższy przykład przedstawia sześć testy przygotować:
+   Utwórz plik w języku Python o nazwie **Test1.py**. W tym pliku należy utworzyć klasę, która zawiera wszystkie testy, które chcesz wykonać. Poniższy przykład przedstawia sześć testy przygotować:
     
     ![Plik języka Python z listy testów w klasie](./media/code-test/create_file_test1_class.PNG)
 
-1. Te testy mogą być automatycznie wykrywane, jeżeli umieścisz **codetest.testCase** po Twoja nazwa klasy. Otwórz Eksplorator testów w okienku po prawej stronie, a następnie wybierz **Uruchom wszystkie**. Wszystkie testy uruchomią się sekwencyjnie i poinformuje, jeśli test wypadnie pomyślnie.
+1. Te testy mogą być automatycznie odnajdywane, jeśli po nazwie klasy umieścisz **codetest. przypadku testowego** . Otwórz Eksploratora testów w prawym okienku, a następnie wybierz pozycję **Uruchom wszystkie**. Wszystkie testy uruchomią się sekwencyjnie i poinformuje, jeśli test wypadnie pomyślnie.
 
     ![Uruchamianie testów](./media/code-test/run_tests.PNG)
 
@@ -112,7 +112,7 @@ Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za po
 
 1. Skonfiguruj automatyczne kompilację i testowanie w metodyce DevOps platformy Azure:
 
-    a. W repozytorium projektu wybierz **kompilowania i wydawania**, a następnie wybierz pozycję **+ nowy** można utworzyć nowego procesu kompilacji.
+    a. W repozytorium projektu wybierz pozycję **kompilacja i wydanie**, a następnie wybierz pozycję **+ Nowy** , aby utworzyć nowy proces kompilacji.
 
     ![Wybory dotyczące rozpoczynania nowego procesu kompilacji](./media/code-test/create_new_build.PNG)
 
@@ -120,19 +120,19 @@ Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za po
     
     ![Informacje źródłowe, nazwa, repozytorium i gałąź](./media/code-test/fill_in_build_info.PNG)
 
-    d. Wybierz szablon. Ponieważ nie istnieje żaden szablon projektu języka Python, należy rozpocząć od wybrania **pusty procesu**. 
+    c. Wybierz szablon. Ponieważ nie ma szablonu projektu języka Python, Zacznij od wybrania **pustego procesu**. 
 
     ![Lista szablonów i przycisk "pusty proces"](./media/code-test/start_empty_process_template.PNG)
 
-    d. Nadaj nazwę kompilacji i wybierz agenta. W tym miejscu możesz wybrać wartość domyślną, jeśli chcesz użyć DSVM do ukończenia procesu kompilacji. Aby uzyskać więcej informacji na temat ustawień agentów, zobacz [Build and release agents i](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Nadaj nazwę kompilacji i wybierz agenta. W tym miejscu możesz wybrać wartość domyślną, jeśli chcesz użyć DSVM do ukończenia procesu kompilacji. Aby uzyskać więcej informacji na temat ustawiania agentów, zobacz [kompilacje i wydania agentów](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
     
     ![Kompilacje i wybór agentów](./media/code-test/select_agent.PNG)
 
-    e. Wybierz **+** w okienku po lewej stronie, aby dodać zadanie dla tej fazy kompilacji. Ponieważ będziemy **Test1.py** skrypt języka Python, aby zakończyć wszystkie testy, to zadanie używa polecenia programu PowerShell do uruchomienia kodu w języku Python.
+    e. Wybierz **+** w lewym okienku, aby dodać zadanie dla tej fazy kompilacji. Ponieważ będziemy **Test1.py** skrypt języka Python, aby zakończyć wszystkie testy, to zadanie używa polecenia programu PowerShell do uruchomienia kodu w języku Python.
     
     ![Okienko "Dodawanie zadań" z wybranym programem PowerShell](./media/code-test/add_task_powershell.PNG)
 
-    f. W szczegółach programu PowerShell Podaj wymagane informacje, takie jak nazwa i wersja programu PowerShell. Wybierz **wbudowany skrypt** jako typu. 
+    f. W szczegółach programu PowerShell Podaj wymagane informacje, takie jak nazwa i wersja programu PowerShell. Wybierz **skrypt wbudowany** jako typ. 
     
     W polu w obszarze **skrypt wbudowany**można wpisać **Python test1.py**. Upewnij się, że zmienna środowiskowa została prawidłowo skonfigurowana dla języka Python. Jeśli potrzebna jest inna wersja lub jądro języka Python, można jawnie określić ścieżkę, jak pokazano na rysunku: 
     
@@ -151,11 +151,11 @@ Jeśli alerty są prawidłowo skonfigurowane, zostanie wyświetlone powiadomieni
 ![Powiadomienie usługi Azure DevOps sukcesu kompilacji](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>Następne kroki
-* Zobacz [repozytorium Prognozowanie przychodów UCI](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) konkretne przykłady testów jednostkowych dla scenariuszy analizy danych.
+* Zapoznaj się z [repozytorium przewidywania dochodu UCI](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) dla konkretnych przykładów testów jednostkowych na potrzeby scenariuszy analizy danych.
 * Postępuj zgodnie z poprzednim konturu i przykłady z tego scenariusza Prognozowanie przychodów UCI do własnych projektów do nauki o danych.
 
-## <a name="references"></a>Informacje
+## <a name="references"></a>Dokumentacja
 * [Zespołowe przetwarzanie danych dla celów naukowych](https://aka.ms/tdsp)
-* [Narzędzia testowania programu Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
-* [Zasoby testowania DevOps platformy Azure](https://www.visualstudio.com/team-services/)
-* [Maszyny wirtualne do analizy danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)
+* [Narzędzia do testowania programu Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
+* [Zasoby testowe usługi Azure DevOps](https://www.visualstudio.com/team-services/)
+* [Virtual Machines analizy danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

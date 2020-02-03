@@ -32,9 +32,9 @@ Ten przewodnik Szybki Start przedstawia sposób nawiązywania połączenia z kon
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* Dodatkowo:
+* Ponadto:
     * [Node.js](https://nodejs.org/en/) w wersji 6.0.0 lub nowszej
-    * [Git](https://git-scm.com/)
+    * [Usługa Git](https://git-scm.com/)
 
 ## <a name="create-a-database"></a>Tworzenie bazy danych 
 
@@ -68,7 +68,7 @@ Teraz sklonujmy aplikację Node. js z usługi GitHub, ustawimy parametry połąc
     cd "C:\git-samples"
     ```
 
-3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię aplikacji przykładowej na komputerze.
+3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię przykładowej aplikacji na komputerze.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started.git
@@ -148,9 +148,9 @@ Teraz wróć do Azure Portal, aby uzyskać szczegóły parametrów połączenia 
 
     `config.key = "<Your Azure Cosmos account key>"`
     
-## <a name="run-the-app"></a>Uruchomienie aplikacji
+## <a name="run-the-app"></a>Uruchamianie aplikacji
 
-1. Uruchom polecenie `npm install` w terminalu, aby zainstalować wymagane moduły npm.
+1. Uruchom polecenie `npm install` w terminalu, aby zainstalować wymagane moduły npm
 
 2. Uruchom polecenie `node app.js` w terminalu, aby uruchomić aplikację Node.
 

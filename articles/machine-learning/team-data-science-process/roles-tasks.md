@@ -129,7 +129,7 @@ Użyj [repozytorium szablonów projektów](https://github.com/Azure/Azure-TDSP-P
 
 Zapoznaj się z bardziej szczegółowy opis ról i zadań zdefiniowanych przez zespół danych dla celów naukowych:
 
-- [Menedżer grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md)
-- [Zadania kierownik zespołu dla zespołu do nauki o danych](team-lead-tasks.md)
-- [Zadania potencjalnych klientów dla zespołu do nauki o danych w projekcie](project-lead-tasks.md)
+- [Zadania Menedżera grupy dla zespołu ds. analizy danych](group-manager-tasks.md)
+- [Zadania lidera zespołu dla zespołu ds. analizy danych](team-lead-tasks.md)
+- [Zadania lidera projektu dla zespołu ds. analizy danych](project-lead-tasks.md)
 - [Projekt poszczególnych zadań współautora dla zespołu ds. analizy danych](project-ic-tasks.md)

@@ -19,7 +19,7 @@ ms.locfileid: "76722105"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Programowanie metodą agile projektów do nauki o danych
 
-W tym dokumencie opisano, jak deweloperzy można wykonać projektu nauki o danych w systematyczne, niepoddany kontroli wersji i sposób współpracy w ramach zespołu projektu przy użyciu [zespołu danych dla celów naukowych](overview.md) (TDSP). PRZETWARZANIA TDSP to struktura opracowana przez firmę Microsoft, która oferuje strukturalną sekwencję działań do wydajnego wykonywania rozwiązań analizy predykcyjnej opartych na chmurze. Aby zapoznać się z ogólnymi rolami i zadaniami, które są obsługiwane przez zespół ds. analizy danych na przetwarzania TDSP, zobacz temat [role i zadania zespołowego procesu nauki danych](roles-tasks.md). 
+W tym dokumencie opisano sposób, w jaki deweloperzy mogą wykonywać projekt analizy danych w systematyczny, kontrolowanym przez siebie zakresie i współpracy w zespole projektu przy użyciu [procesu nauki o danych zespołowych](overview.md) (przetwarzania TDSP). PRZETWARZANIA TDSP to struktura opracowana przez firmę Microsoft, która oferuje strukturalną sekwencję działań do wydajnego wykonywania rozwiązań analizy predykcyjnej opartych na chmurze. Aby zapoznać się z ogólnymi rolami i zadaniami, które są obsługiwane przez zespół ds. analizy danych na przetwarzania TDSP, zobacz temat [role i zadania zespołowego procesu nauki danych](roles-tasks.md). 
 
 Ten artykuł zawiera instrukcje dotyczące: 
 
@@ -158,9 +158,9 @@ Analityki danych mogą być bardziej wygodne przy użyciu szablonu Agile, który
    
 1. Wykonaj te same kroki, aby zmienić nazwy **funkcji** na *etapy przetwarzania TDSP*i dodać następujące nowe typy elementów roboczych:
    
-   - *Poznawanie firmy*
+   - *Zrozumienie biznesowe*
    - *Pozyskiwanie danych*
-   - *Modelowanie*
+   - *Modelu*
    - *Wdrożenie*
    
 1. W **obszarze zaległości wymagania**Zmień nazwy **wątków** na *podetapy przetwarzania TDSP*, Dodaj nowy typ elementu pracy *przetwarzania TDSP podetapu*i ustaw domyślny typ elementu pracy na **podetap przetwarzania TDSP**.

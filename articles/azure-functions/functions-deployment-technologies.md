@@ -114,7 +114,7 @@ Użyj narzędzia zip Deploy, aby wypchnąć plik zip, który zawiera aplikację 
 
 Można wdrożyć obraz kontenera systemu Linux zawierający aplikację funkcji.
 
->__Jak z niej korzystać:__ Utwórz aplikację funkcji systemu Linux w planie Premium lub dedykowanym i określ, z którego obrazu kontenera chcesz korzystać. Można to zrobić na dwa sposoby:
+>__Jak z niej korzystać:__ Utwórz aplikację funkcji systemu Linux w planie Premium lub dedykowanym i określ, z którego obrazu kontenera chcesz korzystać. Możesz to zrobić na dwa sposoby:
 >
 >* Utwórz aplikację funkcji systemu Linux na planie Azure App Service w Azure Portal. W obszarze **Publikowanie**wybierz opcję **obraz platformy Docker**, a następnie skonfiguruj kontener. Wprowadź lokalizację, w której jest hostowany obraz.
 >* Tworzenie aplikacji funkcji systemu Linux w planie App Service przy użyciu interfejsu wiersza polecenia platformy Azure. Aby dowiedzieć się, jak to zrobić, zobacz [Tworzenie funkcji w systemie Linux przy użyciu obrazu niestandardowego](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function).
@@ -175,7 +175,7 @@ W edytorze opartym na portalu można bezpośrednio edytować pliki znajdujące s
 >
 >* [Visual Studio Code](functions-create-first-function-vs-code.md)
 >* [Azure Functions Core Tools (wiersz polecenia)](functions-run-local.md)
->* [Program Visual Studio](functions-create-your-first-function-visual-studio.md)
+>* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
 W poniższej tabeli przedstawiono systemy operacyjne i języki obsługujące edycję portalu:
 

@@ -37,7 +37,7 @@ Akcelerator rozwiązań IoT zabezpiecza urządzenia IoT przy użyciu następują
 
 Metoda token zabezpieczający zapewnia uwierzytelnianie dla każdego wywołania wykonanego przez urządzenie w celu IoT Hub przez skojarzenie klucza symetrycznego z każdym wywołaniem. Uwierzytelnianie oparte na X. 509 umożliwia uwierzytelnianie urządzenia IoT w warstwie fizycznej w ramach ustanowienia połączenia TLS. Metoda oparta na tokenach zabezpieczających może być używana bez uwierzytelniania X. 509, który jest mniej bezpiecznym wzorcem. Wybór między tymi dwiema metodami zależy przede wszystkim od tego, jak należy zapewnić bezpieczeństwo uwierzytelniania urządzenia oraz zapewnić dostępność bezpiecznego magazynu na urządzeniu (w celu bezpiecznego przechowywania klucza prywatnego).
 
-## <a name="iot-hub-security-tokens"></a>Tokeny zabezpieczeń usługi IoT Hub
+## <a name="iot-hub-security-tokens"></a>IoT Hub tokeny zabezpieczające
 
 IoT Hub używa tokenów zabezpieczających do uwierzytelniania urządzeń i usług, aby uniknąć wysyłania kluczy w sieci. Ponadto tokeny zabezpieczające są ograniczone do okresu ważności i zakresu. Zestawy SDK usługi Azure IoT automatycznie generują tokeny bez konieczności konfigurowania specjalnej konfiguracji. Niektóre scenariusze wymagają jednak, aby użytkownik mógł bezpośrednio generować tokeny zabezpieczające i korzystać z nich. Te scenariusze obejmują bezpośrednie użycie powierzchni MQTT, AMQP lub HTTP lub implementację wzorca usługi tokenu.
 
@@ -87,7 +87,7 @@ Usługa Azure IoT Hub umożliwia definiowanie [zasad kontroli dostępu](../artic
 
 * **RegistryReadWrite**. Przyznaje dostęp do odczytu i zapisu do rejestru tożsamości. Aby uzyskać więcej informacji, zobacz [Rejestr tożsamości](../articles/iot-hub/iot-hub-devguide-identity-registry.md).
 
-* **ServiceConnect**. Przyznaje dostęp do punktów końcowych komunikacji i monitorowania dla usługi w chmurze. Na przykład przyznaje uprawnienia do usług w chmurze zaplecza, aby odbierać komunikaty z urządzenia do chmury, wysyłać komunikaty z chmury do urządzenia i pobierać odpowiednie potwierdzenia dostarczania.
+* **Serviceconnect**. Przyznaje dostęp do punktów końcowych komunikacji i monitorowania dla usługi w chmurze. Na przykład przyznaje uprawnienia do usług w chmurze zaplecza, aby odbierać komunikaty z urządzenia do chmury, wysyłać komunikaty z chmury do urządzenia i pobierać odpowiednie potwierdzenia dostarczania.
 
 * **DeviceConnect**. Przyznaje dostęp do punktów końcowych dostępnych dla urządzenia. Na przykład przyznaje uprawnienia do wysyłania komunikatów z urządzenia do chmury i otrzymywania komunikatów z chmury do urządzenia. To uprawnienie jest używane przez urządzenia.
 
@@ -103,7 +103,7 @@ Dane pozyskane przez usługę Azure IoT Hub mogą być używane przez różne us
 
 * [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): Przetwarzanie strumienia w czasie rzeczywistym w chmurze, które pozwala szybko opracowywać i wdrażać rozwiązanie do analizy o niskich kosztach w celu odkrywania szczegółowych informacji z urządzeń, czujników, infrastruktury i aplikacji. Dane z tej w pełni zarządzanej usługi mogą być skalowane do dowolnego woluminu i nadal osiągać wysoką przepływność, małe opóźnienia i odporność.
 
-* [Azure App Services](https://azure.microsoft.com/services/app-service/): platforma w chmurze umożliwiająca tworzenie zaawansowanych aplikacji sieci Web i mobilnych, które łączą się z danymi w dowolnym miejscu; w chmurze lub lokalnie. Twórz interesujące aplikacje mobilne dla systemów iOS, Android i Windows. Integracja z oprogramowaniem jako usługą (SaaS) i aplikacjami przedsiębiorstwa dzięki wbudowanej łączności z dziesiątami z wielu usług w chmurze i aplikacji dla przedsiębiorstw. Kod w ulubionym języku i środowisku IDE (.NET, Node. js, PHP, Python lub Java) do tworzenia aplikacji sieci Web i interfejsów API szybciej niż kiedykolwiek.
+* [Azure App Services](https://azure.microsoft.com/services/app-service/): platforma w chmurze umożliwiająca tworzenie zaawansowanych aplikacji sieci Web i mobilnych, które łączą się z danymi w dowolnym miejscu; w chmurze lub lokalnie. Twórz atrakcyjne aplikacje mobilne dla systemów iOS, Android i Windows. Integracja z oprogramowaniem jako usługą (SaaS) i aplikacjami przedsiębiorstwa dzięki wbudowanej łączności z dziesiątami z wielu usług w chmurze i aplikacji dla przedsiębiorstw. Kod w ulubionym języku i środowisku IDE (.NET, Node. js, PHP, Python lub Java) do tworzenia aplikacji sieci Web i interfejsów API szybciej niż kiedykolwiek.
 
 * [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): funkcja Logic Apps Azure App Service umożliwia integrację rozwiązania IoT z istniejącymi systemami biznesowymi i automatyzowanie procesów przepływu pracy. Logic Apps umożliwia deweloperom projektowanie przepływów pracy rozpoczynających się od wyzwalacza, a następnie wykonanie serii kroków — reguł i akcji, które używają zaawansowanych łączników do integracji z procesami biznesowymi. Logic Apps oferuje wbudowaną łączność z obszernym ekosystemem aplikacji SaaS, opartych na chmurze i lokalnych.
 

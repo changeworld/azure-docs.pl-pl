@@ -36,7 +36,7 @@ Możesz włączyć/wyłączyć środowiska publiczne dla laboratorium, a także 
 
 1. Wybierz pozycję **Konfiguracja i zasady** dla laboratorium. 
 2. W sekcji **bazy maszyn wirtualnych** wybierz pozycję **środowiska publiczne**.
-3. Aby włączyć środowiska publiczne dla laboratorium, wybierz pozycję **tak**. W przeciwnym razie wybierz **nie**. 
+3. Aby włączyć środowiska publiczne dla laboratorium, wybierz pozycję **tak**. W przeciwnym razie wybierz pozycję **nie**. 
 4. W przypadku włączenia środowiska publicznego wszystkie środowiska w repozytorium są domyślnie włączone. Możesz cofnąć wybór środowiska, aby nie było dostępne dla użytkowników laboratorium. 
 
 ![Strona środowiska publicznego](media/devtest-lab-configure-use-public-environments/public-environments-page.png)

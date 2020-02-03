@@ -80,22 +80,22 @@ Wykonaj następujące kroki.
 - **czujnik**/: czujnik odnosi się do czujnika fizycznego, który rejestruje wartości. Czujnik jest zwykle podłączony do urządzenia z IDENTYFIKATORem urządzenia.  
 
 
-|        DeviceModel   |  Propozycje   |
+|        DeviceModel   |  Sugestie   |
 | ------- | -------             |
 |     Typ (węzeł, brama)        |          Typ węzła urządzenia lub bramy      |
 |          Producent            |         Nazwa producenta    |
 |  ProductCode                    |  Kod produktu urządzenia lub nazwa modelu lub numer. Na przykład EnviroMonitor # 6800.  |
 |            Porty          |     Nazwa i typ portu, które są cyfrowe lub analogowe.
-|     Nazwa                 |  Nazwa identyfikująca zasób. Na przykład nazwa modelu lub nazwa produktu.
+|     Name (Nazwa)                 |  Nazwa identyfikująca zasób. Na przykład nazwa modelu lub nazwa produktu.
       Opis     | Podaj znaczący opis modelu.
 |    Właściwości          |    Dodatkowe właściwości producenta.   |
-|    **urządzenia**             |                      |
+|    **Pliku**             |                      |
 |   DeviceModelId     |     Identyfikator skojarzonego modelu urządzenia.  |
 |  HardwareId          | Unikatowy identyfikator urządzenia, na przykład adres MAC.
 |  ReportingInterval        |   Interwał raportowania (w sekundach).
 |  Lokalizacja            |  Urządzenia Latitude (-90 do + 90), długości geograficznej (-180 do 180) i podniesienia uprawnień (w metrach).   
 |ParentDeviceId       |    Identyfikator urządzenia nadrzędnego, z którym jest połączone to urządzenie. Na przykład węzeł połączony z bramą. Węzeł ma parentDeviceId jako bramę.  |
-|    Nazwa            | Nazwa identyfikująca zasób. Partnerzy urządzeń muszą wysłać nazwę zgodną z nazwą urządzenia po stronie partnera. Jeśli nazwa urządzenia partnerskiego jest zdefiniowana przez użytkownika, ta sama nazwa zdefiniowana przez użytkownika powinna być propagowana do FarmBeats.|
+|    Name (Nazwa)            | Nazwa identyfikująca zasób. Partnerzy urządzeń muszą wysłać nazwę zgodną z nazwą urządzenia po stronie partnera. Jeśli nazwa urządzenia partnerskiego jest zdefiniowana przez użytkownika, ta sama nazwa zdefiniowana przez użytkownika powinna być propagowana do FarmBeats.|
 |     Opis       |      Podaj znaczący opis. |
 |     Właściwości    |  Dodatkowe właściwości producenta.
 |     **SensorModel**        |          |
@@ -107,7 +107,7 @@ Wykonaj następujące kroki.
 |    Typ > SensorMeasures    |Typ pomiaru danych telemetrii czujnika. Typy zdefiniowane przez system to AmbientTemperature, CO2, Głębokość, ElectricalConductivity, LeafWetness, długość, LiquidLevel, azotan, O2, PH, fosforan, PointInTime, potas, ciśnienie, RainGauge, RelativeHumidity, zasolenie, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Aby dodać więcej, zapoznaj się z interfejsem API/ExtendedType.|
 |        Jednostka > SensorMeasures              | Jednostka danych telemetrii czujnika. Jednostki zdefiniowane przez system to nounit, Celsjusza, Fahrenheita, Kelvin, Rankine, Pascal, rtęć, PSI, milimetr, centymetr, metr, cal, stopy, kilometry, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litr, MilliLiter, seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour, aby dodać więcej, zapoznaj się z interfejsem API programu/ExtendedType.|
 |    SensorMeasures > agregacji    |  Wartości mogą być brak, Average, maksimum, minimum lub StandardDeviation.  |
-|          Nazwa            | Nazwa identyfikująca zasób. Na przykład nazwa modelu lub nazwa produktu.  |
+|          Name (Nazwa)            | Nazwa identyfikująca zasób. Na przykład nazwa modelu lub nazwa produktu.  |
 |    Opis        | Podaj znaczący opis modelu.  |
 |   Właściwości       |  Dodatkowe właściwości producenta.  |
 |    **Czujnik**      |          |
@@ -116,7 +116,7 @@ Wykonaj następujące kroki.
 | Lokalizacja          |  Czujnik Latitude (-90 do + 90), Długość geograficzna (-180 do 180) i podniesienie (w metrach).|
 |   Nazwa > portu        |  Nazwa i typ portu, z którym jest połączony czujnik na urządzeniu. Musi to być taka sama nazwa, jak zdefiniowana w modelu urządzenia. |
 |    Identyfikator  |    Identyfikator urządzenia, z którym jest połączony czujnik.     |
-| Nazwa            |   Nazwa identyfikująca zasób. Na przykład nazwa czujnika lub nazwa produktu i numer modelu lub kod produktu.|
+| Name (Nazwa)            |   Nazwa identyfikująca zasób. Na przykład nazwa czujnika lub nazwa produktu i numer modelu lub kod produktu.|
 |    Opis      | Podaj znaczący opis. |
 |    Właściwości        |Dodatkowe właściwości producenta. |
 
@@ -126,7 +126,7 @@ Aby uzyskać więcej informacji na temat obiektów, zobacz [Swagger](https://aka
 
 Aby wykonać żądanie interfejsu API, należy połączyć metodę HTTP (POST), adres URL usługi interfejsu API i identyfikator URI zasobu do wysłania zapytania, przesłać dane do żądania, utworzyć lub usunąć żądanie. Następnie dodasz co najmniej jeden nagłówek żądania HTTP. Adres URL usługi interfejsu API to punkt końcowy interfejsu API, czyli adres URL Datahub (https://\<yourdatahub >. azurewebsites. NET).  
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 
 FarmBeats Datahub używa uwierzytelniania okaziciela, który wymaga następujących poświadczeń, które zostały wygenerowane w poprzedniej sekcji:
 

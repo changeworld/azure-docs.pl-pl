@@ -24,7 +24,7 @@ ms.locfileid: "76721612"
 
 
 Poniżej znajdują się linki do dodatkowych informacji o różnych rozmiarach:
-- [General-purpose](sizes-general.md)
+- [Ogólnego przeznaczenia](sizes-general.md)
 - [Optymalizacja pod kątem pamięci](../virtual-machines-windows-sizes-memory.md)
 - [Optymalizacja pod kątem obliczeń](sizes-compute.md)
 - [Optymalizacja pod kątem procesora GPU](sizes-gpu.md)

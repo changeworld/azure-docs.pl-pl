@@ -125,8 +125,8 @@ Może istnieć tylko jeden administrator usługi dla każdej subskrypcji platfor
 
 | Konto administratora konta | Czy administrator usługi może zmienić inny konto Microsoft? | Czy można zmienić administratora usługi na konto usługi Azure AD w tym samym katalogu? | Czy można zmienić administratora usługi na konto usługi Azure AD w innym katalogu? |
 | --- | --- | --- | --- |
-| Konto Microsoft | Tak | Nie | Nie |
-| Konto Azure AD | Tak | Tak | Nie |
+| Konto Microsoft | Yes | Nie | Nie |
+| Konto Azure AD | Yes | Yes | Nie |
 
 Jeśli administrator konta jest kontem usługi Azure AD, możesz zmienić administratora usługi na konto usługi Azure AD w tym samym katalogu, ale nie w innym katalogu. Na przykład abby@contoso.com może zmienić administratora usługi na bob@contoso.com, ale nie może zmienić administratora usługi na john@notcontoso.com, chyba że john@notcontoso.com ma obecność w katalogu contoso.com.
 
@@ -138,7 +138,7 @@ Administrator konta jest użytkownikiem, który początkowo zarejestrował się 
 
 Wykonaj następujące kroki, aby wyświetlić administratora konta.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. Otwórz blok [Subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) i wybierz subskrypcję.
 

@@ -196,7 +196,7 @@ Korzystając z naszej funkcji, wykonaj ją w celu zestawienia danych:
 SELECT rollup_http_request();
 ```
 
-Wraz z naszymi danymi w formie wstępnie zagregowanej możemy zbadać tabelę zestawień, aby uzyskać ten sam raport zgodnie z wcześniejszym użyciem. Uruchom następujące zapytanie:
+Wraz z naszymi danymi w formie wstępnie zagregowanej możemy zbadać tabelę zestawień, aby uzyskać ten sam raport zgodnie z wcześniejszym użyciem. Uruchom następującą kwerendę:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,

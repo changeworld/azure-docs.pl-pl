@@ -20,7 +20,7 @@ Konstruktor obrazów maszyn wirtualnych platformy Azure (Azure Image Builder) um
 > Usługa Azure Image Builder jest obecnie dostępna w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkcje do testowania
+## <a name="preview-features"></a>Funkcje w wersji zapoznawczej
 
 W przypadku wersji zapoznawczej te funkcje są obsługiwane:
 
@@ -60,7 +60,7 @@ AIB będzie obsługiwał RHEL ISO jako źródło dla:
 
 RHEL 7,6 obrazów ISO nie są obsługiwane, ale są testowane.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 
 ![Koncepcyjne rysowanie programu Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)

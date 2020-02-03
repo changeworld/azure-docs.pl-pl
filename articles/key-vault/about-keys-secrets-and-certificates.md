@@ -27,7 +27,7 @@ Azure Key Vault umożliwia aplikacjom Microsoft Azure i użytkownikom przechowyw
 
 Aby uzyskać więcej ogólnych informacji na temat Key Vault, zobacz [co to jest Azure Key Vault?](/azure/key-vault/key-vault-overview)
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+## <a name="azure-key-vault"></a>W usłudze Azure Key Vault
 
 Poniższe sekcje zawierają ogólne informacje dotyczące implementacji usługi Key Vault.
 
@@ -69,7 +69,7 @@ Identyfikator obiektu ma następujący format ogólny:
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-Miejsce:  
+Gdzie:  
 
 |||  
 |-|-|  
@@ -363,14 +363,14 @@ Poniższa tabela przedstawia mapowanie zasad użycia klucza x509 do efektywnych 
 
 |**Flagi użycia klucza x509**|**Key Vault kluczowe operacje**|**Zachowanie domyślne**|
 |----------|--------|--------|
-|DataEncipherment|szyfrowanie, odszyfrowywanie| ND |
-|DecipherOnly|zawartości| ND  |
+|DataEncipherment|szyfrowanie, odszyfrowywanie| Nie dotyczy |
+|DecipherOnly|zawartości| Nie dotyczy  |
 |Bity digitalSignature|Podpisz, zweryfikuj| Key Vault domyślne bez określenia użycia podczas tworzenia certyfikatu | 
-|EncipherOnly|encrypt| ND |
-|KeyCertSign|Podpisz, zweryfikuj|ND|
+|EncipherOnly|encrypt| Nie dotyczy |
+|KeyCertSign|Podpisz, zweryfikuj|Nie dotyczy|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault domyślne bez określenia użycia podczas tworzenia certyfikatu | 
-|Niemożność wyparcia|Podpisz, zweryfikuj| ND |
-|crlsign bit|Podpisz, zweryfikuj| ND |
+|Niemożność wyparcia|Podpisz, zweryfikuj| Nie dotyczy |
+|crlsign bit|Podpisz, zweryfikuj| Nie dotyczy |
 
 ### <a name="certificate-issuer"></a>Wystawca certyfikatu
 

@@ -21,7 +21,7 @@ W tym artykule opisano sposób publikowania zdarzenia w temacie niestandardowym.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="endpoint"></a>Punkt końcowy
+## <a name="endpoint"></a>Endpoint
 
 Podczas wysyłania wpisu HTTP do niestandardowego tematu Użyj formatu identyfikatora URI: `https://<topic-endpoint>?api-version=2018-01-01`.
 
@@ -106,7 +106,7 @@ Po opublikowaniu w punkcie końcowym tematu otrzymujesz odpowiedź. Odpowiedź j
 |Powodzenie  | 200 OK  |
 |Dane zdarzenia mają niepoprawny format | 400 Nieprawidłowe żądanie |
 |Nieprawidłowy klucz dostępu | 401 — nieautoryzowane |
-|Nieprawidłowy punkt końcowy | 404 — Nie odnaleziono |
+|Nieprawidłowy punkt końcowy | nie znaleziono 404 |
 |Tablica lub zdarzenie przekraczają limity rozmiaru | ładunek 413 zbyt duży |
 
 W przypadku błędów treść komunikatu ma następujący format:

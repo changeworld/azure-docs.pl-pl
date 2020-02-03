@@ -27,7 +27,7 @@ Usługa Azure Active Directory (Azure AD) automatyczne Inicjowanie obsługi uży
 
 Zapoznaj się [z automatyzacją aprowizacji użytkowników i cofaj obsługę administracyjną, aby SaaS aplikacje za pomocą Azure Active Directory](user-provisioning.md) w celu lepszego zrozumienia funkcjonalności.
 
-## <a name="learn"></a>Nauka
+## <a name="learn"></a>Informacje
 
 Inicjowanie obsługi użytkowników tworzy podstawę do ciągłego zarządzania tożsamościami i zwiększa jakość procesów biznesowych, które opierają się na autorytatywnych danych tożsamości.
 
@@ -70,7 +70,7 @@ W tym artykule są stosowane następujące warunki:
 | Zasoby| Link i opis |
 | - | - |
 | Seminaria internetowe na żądanie| [Zarządzanie aplikacjami przedsiębiorstwa za pomocą usługi Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Dowiedz się, jak usługa Azure AD może pomóc Ci w osiągnięciu rejestracji jednokrotnej w aplikacjach SaaS w przedsiębiorstwie i najlepszych rozwiązaniach dotyczących kontroli dostępu. |
-| Filmy| [Co to jest inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/_ZjARPpI6NI) <br> [Jak wdrożyć Inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/pKzyts6kfrw) <br> [Integrowanie usług Salesforce z usługą Azure AD: jak zautomatyzować Inicjowanie obsługi użytkowników](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
+| Filmy wideo| [Co to jest inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/_ZjARPpI6NI) <br> [Jak wdrożyć Inicjowanie obsługi użytkowników w usłudze Active Directory systemu Azure?](https://youtu.be/pKzyts6kfrw) <br> [Integrowanie usług Salesforce z usługą Azure AD: jak zautomatyzować Inicjowanie obsługi użytkowników](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Kursy online| SkillUp online: [Zarządzanie tożsamościami](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Dowiedz się, jak zintegrować usługę Azure AD z wieloma aplikacjami SaaS i zabezpieczyć dostęp użytkowników do tych aplikacji. |
 | Książki| [Nowoczesne uwierzytelnianie za pomocą Azure Active Directory dla aplikacji sieci Web (Dokumentacja dla deweloperów) wersja 1](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Jest to autorytatywny, głęboki szczegółowe Przewodnik dotyczący tworzenia rozwiązań uwierzytelniania Active Directory dla tych nowych środowisk. |
 | Samouczki| Zapoznaj się z [listą samouczków dotyczących integrowania aplikacji SaaS z usługą Azure AD](../saas-apps/tutorial-list.md). |

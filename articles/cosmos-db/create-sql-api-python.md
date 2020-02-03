@@ -99,7 +99,7 @@ Teraz sklonujemy aplikację interfejsu API SQL z serwisu GitHub, ustawimy parame
     cd "git-samples"
     ```
 
-3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię aplikacji przykładowej na komputerze. 
+3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię przykładowej aplikacji na komputerze. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-python-getting-started.git
@@ -154,7 +154,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku `cosmos_get_started.py`.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
-## <a name="run-the-app"></a>Uruchomienie aplikacji
+## <a name="run-the-app"></a>Uruchamianie aplikacji
 
 1. W programie Visual Studio Code wybierz pozycję **Widok** > **Paleta poleceń**. 
 

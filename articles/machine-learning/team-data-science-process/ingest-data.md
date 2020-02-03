@@ -25,10 +25,10 @@ Proces nauki danych zespołu wymaga pozyskania danych lub załadowania ich do na
 Następujące artykuły zawierają instrukcje dotyczące pozyskiwania danych w różnych środowiskach docelowych, gdzie dane są przechowywane i przetwarzane.
 
 * Do/z [usługi Azure Blob Storage](move-azure-blob.md)
-* Aby [programu SQL Server na maszynie Wirtualnej platformy Azure](move-sql-server-virtual-machine.md)
+* Aby [SQL Server na maszynie wirtualnej platformy Azure](move-sql-server-virtual-machine.md)
 * Aby [Azure SQL Database](move-sql-azure.md)
-* Aby [tabel programu Hive](move-hive-tables.md)
-* Aby [SQL partycjonowane tabele](parallel-load-sql-partitioned-tables.md)
-* Z [środowiska lokalnego programu SQL Server](move-sql-azure-adf.md)
+* Do [tabel programu Hive](move-hive-tables.md)
+* Na [partycjonowane tabele SQL](parallel-load-sql-partitioned-tables.md)
+* Z [SQL Server lokalnych](move-sql-azure-adf.md)
 
 Wymagania techniczne i biznesowe, a także początkowa lokalizacja, format i rozmiar danych określają najlepszy plan pozyskiwania danych. Najlepszym planem jest wykonanie kilku kroków. Ta sekwencja zadań może zawierać na przykład eksplorację danych, przetwarzanie wstępne, czyszczenia, próbkowania w dół i szkoleń modelowych.  Azure Data Factory to zalecany zasób platformy Azure służący do organizowania przenoszenia i przekształcania danych.

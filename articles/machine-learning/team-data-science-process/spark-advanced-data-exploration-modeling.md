@@ -20,27 +20,27 @@ ms.locfileid: "76718655"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Zaawansowane eksplorowanie i modelowanie danych za pomocą platformy Spark
 
-W tym instruktażu wykorzystano HDInsight Spark eksploracji danych i szkolenie klasyfikacji binarnej i modele regresji, przy użyciu krzyżowego sprawdzania poprawności i optymalizacji hiperparametrycznego odnośnie do przykładu NYC taksówki podróży i klasie 2013 zestawu danych. Przeprowadza użytkownika przez kroki [danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end-to-end, przechowywanie danych i modele przy użyciu klastra usługi HDInsight Spark dla obiektów blob platformy Azure i związanych z przetwarzaniem. Proces analizuje i wizualizuje dane zaimportowane z usługi Azure Blob Storage i następnie przygotowuje dane w celu tworzenia modeli predykcyjnych. Python został użyty do kodu rozwiązania i wyświetlić odpowiednie wykresy. Te modele są kompilacji przy użyciu zestawu narzędzi Biblioteka MLlib platformy Spark w celu binarnej klasyfikacji i regresji zadań modelowania. 
+W tym instruktażu wykorzystano HDInsight Spark eksploracji danych i szkolenie klasyfikacji binarnej i modele regresji, przy użyciu krzyżowego sprawdzania poprawności i optymalizacji hiperparametrycznego odnośnie do przykładu NYC taksówki podróży i klasie 2013 zestawu danych. Przeprowadzimy Cię przez kroki [procesu analizy danych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), kompleksowego, korzystającego z klastra usługi HDInsight Spark do przetwarzania i przechowywania danych oraz modeli. Proces analizuje i wizualizuje dane zaimportowane z usługi Azure Blob Storage i następnie przygotowuje dane w celu tworzenia modeli predykcyjnych. Python został użyty do kodu rozwiązania i wyświetlić odpowiednie wykresy. Te modele są kompilacji przy użyciu zestawu narzędzi Biblioteka MLlib platformy Spark w celu binarnej klasyfikacji i regresji zadań modelowania. 
 
-* **Klasyfikacji binarnej** zadania jest prognozowanie, czy porady zostało opłacone podróż. 
-* **Regresji** zadania jest prognozowanie, kwotę napiwku na podstawie innych funkcji porada. 
+* Zadanie **klasyfikacji binarnej** służy do przewidywania, czy dla podróży jest płacona Porada. 
+* Zadanie **regresji** służy do przewidywania wielkości końcówki na podstawie innych funkcji etykietki. 
 
-Kroki modelowania również zawierać kod, przedstawiający sposób uczenie, ocenę i Zapisz każdego typu modelu. Omówiono także niektóre z tych samych podstaw jako [Eksplorowanie i modelowanie za pomocą platformy Spark danych](spark-data-exploration-modeling.md) tematu. Jednak go jest bardziej "Zaawansowane" w tym również za pomocą krzyżowego sprawdzania poprawności hiperparametrycznego sprawdzaniu to w opracowywaniu optymalnie dokładnych modeli klasyfikacji i regresji. 
+Kroki modelowania również zawierać kod, przedstawiający sposób uczenie, ocenę i Zapisz każdego typu modelu. W temacie omówiono niektóre z tych samych podstaw, co w przypadku [eksploracji i modelowania danych za pomocą platformy Spark](spark-data-exploration-modeling.md) . Jednak go jest bardziej "Zaawansowane" w tym również za pomocą krzyżowego sprawdzania poprawności hiperparametrycznego sprawdzaniu to w opracowywaniu optymalnie dokładnych modeli klasyfikacji i regresji. 
 
-**Krzyżowa Weryfikacja (CV)** to technika, która ocenia, jak dobrze uogólnia model skonfigurowanych pod kątem w znanego zestawu danych przewidzenia funkcje zestawów danych, na którym ją nie przeprowadzono.  Najczęstszą implementacją używane w tym miejscu jest podzielić zestawu danych złożeń K i następnie uczenia modelu w sposób okrężny we wszystkich oprócz jednego złożeń. Możliwości modelu do prognozowania dokładnie, gdy testowane w odniesieniu do niezależnego zestawu danych w tym zwijania nie są używane do nauczenia modelu jest oceniane.
+**Krzyżowe sprawdzanie poprawności (CV)** to technika, która ocenia, jak dobrze jest przeszkolony model na znanym zestawie danych, aby przewidzieć funkcje zestawów DataSet, na których nie zostały przeszkolone.  Najczęstszą implementacją używane w tym miejscu jest podzielić zestawu danych złożeń K i następnie uczenia modelu w sposób okrężny we wszystkich oprócz jednego złożeń. Możliwości modelu do prognozowania dokładnie, gdy testowane w odniesieniu do niezależnego zestawu danych w tym zwijania nie są używane do nauczenia modelu jest oceniane.
 
-**Optymalizacja Hiperparametrycznego** problemu wybierania zestaw hiperparametrów dla algorytmu uczenia, zazwyczaj z celem miary wydajności tego algorytmu o zestaw danych, niezależnie od optymalizacji. **Hiperparametrów** są wartościami, które musi być określona poza procedury szkolenie modelu. Założenia dotyczące tych wartości może wpłynąć na elastyczność i dokładność modeli. Drzewa decyzyjne mają hiperparametrów, na przykład, takich jak żądany głębi i liczba pozostawia w drzewie. Obsługa wektor maszyny (SVMs) wymagają, aby ustawienie błędu klasyfikacji spadek czasu trwania umowy. 
+**Optymalizacja parametrów** polega na wyborze zestawu parametrów dla algorytmu uczenia, zazwyczaj z celem optymalizacji miary wydajności algorytmu w niezależnym zestawie danych. **Parametry** są wartościami, które muszą być określone poza procedurą szkolenia modelu. Założenia dotyczące tych wartości może wpłynąć na elastyczność i dokładność modeli. Drzewa decyzyjne mają hiperparametrów, na przykład, takich jak żądany głębi i liczba pozostawia w drzewie. Obsługa wektor maszyny (SVMs) wymagają, aby ustawienie błędu klasyfikacji spadek czasu trwania umowy. 
 
-Typowym sposobem wykonania hiperparametrycznego optymalizacji używany w tym miejscu jest wyszukiwanie siatki lub **parametrów**. To wyszukiwanie przechodzi przez podzestaw obszaru hiperprzestrzeni dla algorytmu uczenia. Krzyżowego sprawdzania poprawności można podać Metryka wydajności, aby posortować optymalne wyniki generowane przez algorytm wyszukiwania siatki. CV używane z pomaga polegających na usuwaniu hiperparametrycznego limit problemów, takich jak overfitting model, aby dane szkoleniowe, dzięki czemu model zachowuje zdolności do zastosowania do ogólne zestawu danych, z którego został wyodrębniony dane szkoleniowe.
+Typowym sposobem wykonania optymalizacji parametrów jest przeszukiwanie siatki lub **wyczyszczenie parametrów**. To wyszukiwanie przechodzi przez podzestaw obszaru hiperprzestrzeni dla algorytmu uczenia. Krzyżowego sprawdzania poprawności można podać Metryka wydajności, aby posortować optymalne wyniki generowane przez algorytm wyszukiwania siatki. CV używane z pomaga polegających na usuwaniu hiperparametrycznego limit problemów, takich jak overfitting model, aby dane szkoleniowe, dzięki czemu model zachowuje zdolności do zastosowania do ogólne zestawu danych, z którego został wyodrębniony dane szkoleniowe.
 
 Modeli, których używamy obejmują regresji logistycznej liniowego i liniowa, losowych lasów i gradientu wzmocnionego drzewa:
 
-* [Regresja liniowa z SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) model regresji liniowej, który używa metody stochastycznego spadku gradientu (SGD) i do optymalizacji i funkcji skalowania do prognozowania kwoty Porada płatne. 
-* [Regresji logistycznej przy użyciu LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) lub regresji "logit" jest model regresji, który można użyć, gdy zmienna zależnych od ustawień lokalnych jest podzielone na kategorie celu klasyfikacji danych. LBFGS jest algorytm optymalizacji quasi Newton — która przybliża algorytm Broyden — Fletcher — Goldfarb — Shanno (BFGS) przy użyciu ograniczona ilość pamięci komputera i która jest powszechnie używana w usłudze machine learning.
-* [Losowe lasów](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) są decyzyjne drzewa decyzyjne.  Łączą wiele drzewa decyzyjne, aby zmniejszyć ryzyko overfitting. Losowe lasach są używane do regresji i klasyfikacji i mogą obsługiwać funkcje podzielonych na kategorie i można rozszerzyć na ustawienie klasyfikacji wieloklasowej. One skalowanie funkcja nie jest wymagane i są w stanie przechwytywania nieliniowość i są wyposażone w interakcje. Losowe lasy są jednymi z najbardziej popularnych modeli, które w funkcji klasyfikacji i regresji uczenia maszynowego.
+* [Regresja liniowa z SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) to model regresji liniowej, który używa metody stochastycznego gradientu (SGD) i optymalizacji i skalowania funkcji, aby przewidzieć płatne kwoty. 
+* [Regresja logistyczna przy użyciu](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) regresji LBFGS lub "neurologia" to model regresji, który może być używany, gdy zmienna zależna jest kategorii do klasyfikowania danych. LBFGS jest algorytm optymalizacji quasi Newton — która przybliża algorytm Broyden — Fletcher — Goldfarb — Shanno (BFGS) przy użyciu ograniczona ilość pamięci komputera i która jest powszechnie używana w usłudze machine learning.
+* [Losowe lasy](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) są kompletnymi drzewami decyzyjnymi.  Łączą wiele drzewa decyzyjne, aby zmniejszyć ryzyko overfitting. Losowe lasach są używane do regresji i klasyfikacji i mogą obsługiwać funkcje podzielonych na kategorie i można rozszerzyć na ustawienie klasyfikacji wieloklasowej. One skalowanie funkcja nie jest wymagane i są w stanie przechwytywania nieliniowość i są wyposażone w interakcje. Losowe lasy są jednymi z najbardziej popularnych modeli, które w funkcji klasyfikacji i regresji uczenia maszynowego.
 * [Drzewa podwyższające wartości gradientu](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) są kompletnymi drzewami decyzyjnymi. GBTSe drzewa decyzyjne w sposób iteracyjny, aby zminimalizować funkcję strat. GBTS jest używany do regresji i klasyfikacji i może obsługiwać funkcje kategorii, nie wymaga skalowania funkcji, a także może przechwytywać interakcje i funkcje. One można również w ustawieniu kontra klasyfikacji.
 
-Modelowanie za pomocą stałych Nietrwałych i Hiperparametrycznego przykłady przedstawiono odchylenia problemu klasyfikacji binarnej. Przykłady prostsze (bez parametru wrzucając) są prezentowane w tematem głównym dla zadań regresji. Jednak w dodatku, weryfikacja za pomocą elastycznych net regresji liniowej i stałych Nietrwałych za pomocą parametru odchylenia przy użyciu regresji losowe lasu są także przedstawione. **Elastyczne netto** jest metodą regresji umorzyć dopasowanie modele regresji liniowej, który liniowo łączy P1 i P2 metryki jak karnymi z [lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) i [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization)metody.   
+Modelowanie za pomocą stałych Nietrwałych i Hiperparametrycznego przykłady przedstawiono odchylenia problemu klasyfikacji binarnej. Przykłady prostsze (bez parametru wrzucając) są prezentowane w tematem głównym dla zadań regresji. Jednak w dodatku, weryfikacja za pomocą elastycznych net regresji liniowej i stałych Nietrwałych za pomocą parametru odchylenia przy użyciu regresji losowe lasu są także przedstawione. **Elastyczna sieć** to rozstosowana Metoda regresji w celu dopasowania modeli regresji liniowej, które liniowo łączą metryki L1 i L2 jako kary za metody [Lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) i [pierścieniowe](https://en.wikipedia.org/wiki/Tikhonov_regularization) .   
 
 <!-- -->
 
@@ -50,15 +50,15 @@ Modelowanie za pomocą stałych Nietrwałych i Hiperparametrycznego przykłady p
 <!-- -->
 
 ## <a name="setup-spark-clusters-and-notebooks"></a>Instalacji: Klastry Spark i notesy
-Kroki instalacji i kodu w tym przewodniku dla podano przy użyciu HDInsight Spark 1.6. Ale notesów programu Jupyter znajdują się w przypadku klastrów HDInsight Spark 1.6 i platformy Spark w wersji 2.0. Opis notesów i łącza do nich znajdują się w [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) dla repozytorium GitHub zawierające je. Ponadto kod w tym miejscu w notesach połączonej jest ogólny i powinna działać w dowolnym klastrze Spark. Jeśli nie używasz platformy HDInsight Spark, konfiguracja klastra i czynności administracyjne mogą nieznacznie różnić się od przedstawionego w tym miejscu. Dla wygody Oto łącza do notesów programu Jupyter, platformy Spark 1.6 i można uruchomić jądra pyspark serwera notesu Jupyter w wersji 2.0:
+Kroki instalacji i kodu w tym przewodniku dla podano przy użyciu HDInsight Spark 1.6. Ale notesów programu Jupyter znajdują się w przypadku klastrów HDInsight Spark 1.6 i platformy Spark w wersji 2.0. Opis notesów i linków do nich znajduje się w [README.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) dla repozytorium GitHub zawierającego je. Ponadto kod w tym miejscu w notesach połączonej jest ogólny i powinna działać w dowolnym klastrze Spark. Jeśli nie używasz platformy HDInsight Spark, konfiguracja klastra i czynności administracyjne mogą nieznacznie różnić się od przedstawionego w tym miejscu. Dla wygody Oto łącza do notesów programu Jupyter, platformy Spark 1.6 i można uruchomić jądra pyspark serwera notesu Jupyter w wersji 2.0:
 
 ### <a name="spark-16-notebooks"></a>Notesy platformy Spark 1.6
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): zawiera tematy w notesie #1 i opracowywania modelu strojenia hiperparametrycznego i krzyżowego sprawdzania poprawności.
+[pySpark-Machine-Learning-Data-nauka-Spark-Advanced-Data-Eksploracja-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): zawiera tematy w notesie #1 i projektowanie modeli przy użyciu strojenia parametrów i krzyżowego sprawdzania poprawności.
 
 ### <a name="spark-20-notebooks"></a>Notesy platformy Spark w wersji 2.0
 
-[Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): ten plik zawiera informacje na temat wykonywania eksploracji danych, modelowania i ocenianie w klastrach platformy Spark w wersji 2.0.
+[Spark 2.0-pySpark3-Machine-Learning-Data-nauka-Spark-Advanced-Data-Eksplorowanie — Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): ten plik zawiera informacje na temat sposobu przeprowadzania eksploracji danych, modelowania i oceniania w klastrach platformy Spark 2,0.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -84,7 +84,7 @@ Poniższy przykład kodu Określa lokalizację danych do odczytu i ścieżkę dl
     import datetime
     datetime.datetime.now()
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 
@@ -115,10 +115,10 @@ Jądra PySpark, które są dostarczane z notesów Jupyter mają wstępnie kontek
 
 Jądra PySpark zawiera kilka wstępnie zdefiniowanych "poleceń magicznych", które są specjalne polecenia, które można wywoływać za pomocą %%. Istnieją dwa polecenia, które są używane w tych przykładach kodu.
 
-* **%% lokalnego** Określa, że kod w kolejnych wierszy jest wykonywana lokalnie. Kod musi być prawidłowy kod języka Python.
+* **%% lokalne** Określa, że kod w kolejnych wierszach ma być wykonywany lokalnie. Kod musi być prawidłowy kod języka Python.
 * **%% Nazwa zmiennej \<SQL-o >** Wykonuje zapytanie programu Hive względem elementu SqlContext. Jeśli parametr -o zostanie przekazana, wynik kwerendy są utrwalane w %% kontekstu Python lokalnego jako Pandas DataFrame.
 
-Aby więcej informacji na temat jądra notesów programu Jupyter i wstępnie zdefiniowanego "magics", zapewniają one, zobacz [jądra, które są dostępne dla notesów programu Jupyter przy użyciu platformy Spark HDInsight w systemie Linux klastrów HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+Aby uzyskać więcej informacji na temat jądra dla notesów Jupyter oraz wstępnie zdefiniowanych "magicznych", zobacz [jądra dostępne dla notesów Jupyter z klastrami usługi HDInsight Spark Linux w usłudze HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="data-ingestion-from-public-blob"></a>Pozyskiwanie danych z publicznego obiektu blob:
 Pierwszym krokiem w procesie nauki o danych jest pozyskiwanie danych do analizy ze źródeł, w którym znajduje się on do eksploracji danych i środowisko modelowania. To środowisko jest platforma Spark w tym przewodniku. Ta sekcja zawiera kod, aby wykonać szereg zadań:
@@ -187,7 +187,7 @@ Poniżej przedstawiono kod w celu pozyskiwania danych.
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 276.62 sekund
 
@@ -197,8 +197,8 @@ Po wprowadzeniu danych do platformy Spark jest następnym krokiem w procesie nau
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Histogram częstotliwości liczby pasażerów w próbce rund taksówek wykreślania
 Ten kod i kolejne fragmenty umożliwia magicznym wyrażeniem SQL zapytania próbki i magic lokalnych danych.
 
-* **Magicznym wyrażeniem SQL (`%%sql`)** jądra HDInsight PySpark obsługuje zapytania HiveQL łatwe wbudowane względem sqlContext. (-O nazwa_zmiennej) argument będzie się powtarzał wyniki kwerendy SQL jako ramkę danych Pandas na serwerze programu Jupyter. Oznacza to, że jest on dostępny w trybie lokalnym.
-* **`%%local` Magic** służy do uruchamiania kodu lokalnie na serwerze programu Jupyter, który jest węzłem głównym klastra HDInsight. Zazwyczaj można użyć `%%local` magic po `%%sql -o` magic jest używany do uruchamiania kwerendy. Parametr -o będzie utrwalanie danych wyjściowych zapytania SQL lokalnie. A następnie `%%local` magic wyzwala kolejny zbiór fragmentów kodu w celu uruchomienia lokalnie dane wyjściowe zapytań SQL, który lokalnie trwały. Dane wyjściowe są automatycznie wizualizowane po uruchomieniu kodu.
+* **SQL Magic (`%%sql`)** Jądro usługi HDInsight PySpark obsługuje proste wbudowane zapytania HiveQL względem elementu SqlContext. (-O nazwa_zmiennej) argument będzie się powtarzał wyniki kwerendy SQL jako ramkę danych Pandas na serwerze programu Jupyter. Oznacza to, że jest on dostępny w trybie lokalnym.
+* **`%%local` Magic** służy do uruchamiania kodu lokalnie na serwerze Jupyter, który jest węzła głównego klastra usługi HDInsight. Zwykle używasz `%%local` Magic po użyciu Magic `%%sql -o` do uruchomienia zapytania. Parametr -o będzie utrwalanie danych wyjściowych zapytania SQL lokalnie. Następnie `%%local` Magic wyzwala, aby następny zestaw fragmentów kodu działał lokalnie z danymi wyjściowymi zapytań SQL, które zostały utrwalone lokalnie. Dane wyjściowe są automatycznie wizualizowane po uruchomieniu kodu.
 
 To zapytanie pobiera rund według liczby pasażerów. 
 
@@ -209,7 +209,7 @@ To zapytanie pobiera rund według liczby pasażerów.
     SELECT passenger_count, COUNT(*) as trip_counts FROM taxi_train WHERE passenger_count > 0 and passenger_count < 7 GROUP BY passenger_count
 
 
-Ten kod tworzy lokalnej ramce danych na podstawie wyników zapytania i drukuje dane. `%%local` Magic tworzy lokalnej ramce danych, `sqlResults`, który może służyć do kreślenia z matplotlib. 
+Ten kod tworzy lokalnej ramce danych na podstawie wyników zapytania i drukuje dane. `%%local` Magic tworzy lokalną ramkę danych, `sqlResults`, która może być używana do wykreślania przy użyciu matplotlib. 
 
 <!-- -->
 
@@ -241,11 +241,11 @@ Oto kod do wykreślenia w podróży, liczby pasażerów
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 ![Częstotliwość rund według liczby pasażerów](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-Możesz wybrać spośród kilku różnych typów wizualizacji (tabeli, kołowego, linii, obszaru lub pasku) przy użyciu **typu** przycisków menu w notesie. Wykres słupkowy jest tu ukazywany.
+Można wybrać różne typy wizualizacji (tabela, wykres kołowy, linia, obszar lub Słupek) za pomocą przycisków menu **Typ** w notesie. Wykres słupkowy jest tu ukazywany.
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Przedstawianie histogram Porada kwoty i jak ilość Porada zależy od kwoty turystycznej i liczba pasażerów.
 Korzystać z zapytania SQL do przykładowych danych...
@@ -294,7 +294,7 @@ Tej komórki kodu używa zapytania SQL do tworzenia trzech powierzchni danych.
     plt.show()
 
 
-**DANE WYJŚCIOWE:** 
+**ROZDZIELCZOŚCI** 
 
 ![Porada dystrybucji kwota](./media/spark-advanced-data-exploration-modeling/tip-amount-distribution.png)
 
@@ -334,14 +334,14 @@ Ten kod pokazuje, jak utworzyć nową funkcję, dzieląc razy ruchu do pojemnik�
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 126050
 
 ### <a name="index-and-one-hot-encode-categorical-features"></a>Indeksowanie i hot jeden kodowanie funkcji podzielonych na kategorie
 W tej sekcji przedstawiono sposób indeksu lub zakodować kategorii funkcji dla danych wejściowych do funkcji modelowania. Modelowania i przewidywanie funkcje MLlib wymaga, aby funkcji, korzystając z kategorii danych wejściowych być indeksowane zakodowane przed użyciem. 
 
-W zależności od modelu musisz indeksu lub Zakoduj je na różne sposoby. Na przykład Logistic i regresji liniowej modele wymagają hot jeden kodowania, gdy, na przykład funkcji z trzech kategorii można rozszerzyć do trzech kolumnach funkcji, z każdego zawierających 0 lub 1 w zależności od kategorii wystąpienia wartości. Udostępnia MLlib [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) funkcji hot jeden kodowania. Ten koder mapuje kolumny indeksów etykiety z kolumną wektorów binarnych z co najwyżej jeden — wartość typu single. To kodowanie umożliwia algorytmy, które oczekują liczbowe ważnych funkcji, takich jak regresji logistycznej, mają być stosowane do kategorii funkcje.
+W zależności od modelu musisz indeksu lub Zakoduj je na różne sposoby. Na przykład Logistic i regresji liniowej modele wymagają hot jeden kodowania, gdy, na przykład funkcji z trzech kategorii można rozszerzyć do trzech kolumnach funkcji, z każdego zawierających 0 lub 1 w zależności od kategorii wystąpienia wartości. MLlib udostępnia funkcję [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) , która umożliwia jednostronicowe kodowanie. Ten koder mapuje kolumny indeksów etykiety z kolumną wektorów binarnych z co najwyżej jeden — wartość typu single. To kodowanie umożliwia algorytmy, które oczekują liczbowe ważnych funkcji, takich jak regresji logistycznej, mają być stosowane do kategorii funkcje.
 
 Poniżej przedstawiono kod, aby zaindeksować i kodowanie funkcji podzielonych na kategorie:
 
@@ -385,12 +385,12 @@ Poniżej przedstawiono kod, aby zaindeksować i kodowanie funkcji podzielonych n
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 3.14 sekund
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Tworzenie obiektów etykietą punktu wejścia do funkcji uczenia Maszynowego
-Ta sekcja zawiera kod, który pokazuje, jak indeksowanie danych podzielonych na kategorie tekstu jako typ etykietą punktu danych oraz jak do zakodowania. Ta transformacja przygotowuje dane tekstowe do użycia w celu uczenia i przetestowania regresji logistycznej MLlib i innych modeli klasyfikacji. Obiekty oznaczone punktu są odporne rozproszone zestawy danych (RDD) sformatowany w sposób, które są potrzebne najbardziej algorytmów uczenia Maszynowego w MLlib jako dane wejściowe. A [etykietą punktu](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) lokalnego wektor gęstą lub rozrzedzony, skojarzony z etykiety/odpowiedzi.
+Ta sekcja zawiera kod, który pokazuje, jak indeksowanie danych podzielonych na kategorie tekstu jako typ etykietą punktu danych oraz jak do zakodowania. Ta transformacja przygotowuje dane tekstowe do użycia w celu uczenia i przetestowania regresji logistycznej MLlib i innych modeli klasyfikacji. Obiekty oznaczone punktu są odporne rozproszone zestawy danych (RDD) sformatowany w sposób, które są potrzebne najbardziej algorytmów uczenia Maszynowego w MLlib jako dane wejściowe. [Punkt oznaczony etykietą](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) jest wektorem lokalnym, czyli gęstym lub rozrzedzonym, skojarzonym z etykietą/odpowiedzią.
 
 Poniżej przedstawiono kod, aby zaindeksować i kodowanie tekstu funkcji Klasyfikacja binarna.
 
@@ -478,12 +478,12 @@ Ten kod tworzy losowego próbkowanie danych (25% służy w tym miejscu). Chocia�
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Czas wykonania powyżej komórki: 0,31 sekund
 
 ### <a name="feature-scaling"></a>Skalowanie funkcji
-Funkcja skalowania, nazywana również normalizacji danych ubezpieczycielom, że funkcje o wartościach powszechnie rozchodów są nie udzieliła nadmierne porównać w celu funkcji. Kod funkcji skalowania używa [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) te funkcje, aby odchylenie jednostki skalowania. Jest ona udostępniana przed MLlib do użycia w regresji liniowej z stochastycznego gradientu zejścia (SGD). SGD to popularne algorytm szkoleniowe szerokiej gamy innych modeli, takie jak umorzyć regresji lub pomocy technicznej wektor maszyny (SVM) uczenia maszynowego.   
+Funkcja skalowania, nazywana również normalizacji danych ubezpieczycielom, że funkcje o wartościach powszechnie rozchodów są nie udzieliła nadmierne porównać w celu funkcji. Kod skalowania funkcji używa [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) do skalowania funkcji do wariancji jednostek. Jest ona udostępniana przed MLlib do użycia w regresji liniowej z stochastycznego gradientu zejścia (SGD). SGD to popularne algorytm szkoleniowe szerokiej gamy innych modeli, takie jak umorzyć regresji lub pomocy technicznej wektor maszyny (SVM) uczenia maszynowego.   
 
 > [!TIP]
 > Wykryto algorytm LinearRegressionWithSGD być wrażliwa funkcji skalowania.   
@@ -519,7 +519,7 @@ Poniżej przedstawiono kod w celu skalowania zmienne do użytku z programem regu
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 11.67 sekund
 
@@ -550,7 +550,7 @@ Można zmniejszyć czas potrzebny na szkolenie i testowanie algorytmów uczenia 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**DANE WYJŚCIOWE** 
+**ROZDZIELCZOŚCI** 
 
 Czas wykonania powyżej komórki: 0,13 sekund
 
@@ -563,21 +563,21 @@ W tej sekcji przedstawiono sposób użycia trzech modeli w przypadku zadanie kla
 
 Każdy model tworzenia sekcji kodu zostanie podzielona na kroki: 
 
-1. **Szkolenie modelu** danych za pomocą jeden zestaw parametrów
-2. **Model oceny** na testowego zestawu danych za pomocą metryk
-3. **Zapisywanie modelu** w obiekcie blob do przyszłego użytku
+1. **Modeluj dane szkoleniowe** za pomocą jednego zestawu parametrów
+2. **Ocena modelu** dla zestawu danych testowych z metrykami
+3. **Zapisywanie modelu** w obiekcie BLOB do użycia w przyszłości
 
 Pokazujemy, jak to zrobić krzyżowego sprawdzania poprawności (CV) z parametrem sprawdzaniu na dwa sposoby:
 
 1. Użycie **ogólnego** kodu niestandardowego, który można zastosować do dowolnego algorytmu w MLlib i do dowolnego zestawu parametrów w algorytmie. 
-2. Za pomocą **pySpark CrossValidator potoku funkcji**. CrossValidator ma kilka ograniczeń dla platformy Spark 1.5.0: 
+2. Korzystanie z **funkcji potoku PySpark CrossValidator**. CrossValidator ma kilka ograniczeń dla platformy Spark 1.5.0: 
    
    * Nie można zapisać lub utrwalić modeli potoku do użycia w przyszłości.
    * Nie można używać dla każdego parametru w modelu.
    * Nie można używać dla każdego algorytmu MLlib.
 
 ### <a name="generic-cross-validation-and-hyperparameter-sweeping-used-with-the-logistic-regression-algorithm-for-binary-classification"></a>Ogólny krzyżowego sprawdzania poprawności i zaczynają hiperparametrycznego korzystania z algorytmu regresji logistycznej dla klasyfikacji binarnej
-Kod w tej sekcji pokazano, jak uczenie, ocenę i Zapisz model regresji logistycznej przy użyciu [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) który prognozuje czy Porada czy płatna komunikacji dwustronnej w NYC taksówek podróży i klasie zestawu danych. Model jest uczony przy użyciu krzyżowego sprawdzania poprawności (CV) i zaczynają hiperparametrycznego implementowane za pomocą kodu niestandardowego, który można zastosować do dowolnego z algorytmów uczenia w MLlib.   
+W kodzie w tej sekcji przedstawiono sposób uczenia, szacowania i zapisywania modelu regresji logistycznej z [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , który przewiduje, czy Porada jest płatna za podróż, w zestawie danych podróży i taryfy NYC. Model jest uczony przy użyciu krzyżowego sprawdzania poprawności (CV) i zaczynają hiperparametrycznego implementowane za pomocą kodu niestandardowego, który można zastosować do dowolnego z algorytmów uczenia w MLlib.   
 
 <!-- -->
 
@@ -586,7 +586,7 @@ Kod w tej sekcji pokazano, jak uczenie, ocenę i Zapisz model regresji logistycz
 
 <!-- -->
 
-**Uczenia modelu regresji logistycznej przy użyciu stałych Nietrwałych i zaczynają hiperparametrycznego**
+**Uczenie modelu regresji logistycznej przy użyciu czyszczenia i parametrów**
 
     # LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
 
@@ -667,7 +667,7 @@ Kod w tej sekcji pokazano, jak uczenie, ocenę i Zapisz model regresji logistycz
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Coefficients: [0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
 
@@ -675,7 +675,7 @@ Intercept:-0.0111216486893
 
 Czas wykonywania powyżej komórki: 14.43 sekund
 
-**Model klasyfikacji binarnej przy użyciu standardowych metryk oceny**
+**Oceń binarny model klasyfikacji ze standardowymi metrykami**
 
 Kod w tej sekcji pokazano, jak do oceny względem test-zestawu danych, w tym wykres WIELOKLASOWA krzywa model regresji logistycznej.
 
@@ -720,7 +720,7 @@ Kod w tej sekcji pokazano, jak do oceny względem test-zestawu danych, w tym wyk
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Obszar, w ramach żądania Ściągnięcia = 0.985336538462
 
@@ -736,9 +736,9 @@ F1 Ocena = 0.984174341679
 
 Czas wykonywania powyżej komórki: 2.67 sekund
 
-**Przedstawianie WIELOKLASOWA krzywa.**
+**Wykreśl krzywą ROC.**
 
-*PredictionAndLabelsDF* jest zarejestrowany jako tabelę *tmp_results*, w poprzedniej komórki. *tmp_results* może służyć zapytania i dane wyjściowe wyniki do ramki danych sqlResults do kreślenia. Oto kod.
+*PredictionAndLabelsDF* jest zarejestrowany w tabeli, *tmp_results*w poprzedniej komórce. *tmp_results* może służyć do wykonywania zapytań i wyników wyjściowych w ramce danych SQLResults do wykreślania. Oto kod.
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
@@ -773,11 +773,11 @@ Poniżej przedstawiono kod, aby tworzyć prognozy i wykreślić krzywej ROC.
     plt.show()
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 ![Regresja logistyczna krzywej ROC, ogólne podejście](./media/spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
 
-**Utrwalanie modelu w obiekcie blob do przyszłego użytku**
+**Utrwalanie modelu w obiekcie BLOB w celu użycia w przyszłości**
 
 Kod w tej sekcji pokazano, jak można zapisać modelu regresji logistycznej do użycia.
 
@@ -800,12 +800,12 @@ Kod w tej sekcji pokazano, jak można zapisać modelu regresji logistycznej do u
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 34.57 sekund
 
 ### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>Funkcja firmy MLlib CrossValidator potoku z modelu regresji logistycznej (Regresja elastyczne)
-Kod w tej sekcji pokazano, jak uczenie, ocenę i Zapisz model regresji logistycznej przy użyciu [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) który prognozuje czy Porada czy płatna komunikacji dwustronnej w NYC taksówek podróży i klasie zestawu danych. Model jest uczony przy użyciu krzyżowego sprawdzania poprawności (CV) i zaczynają hiperparametrycznego implementowane za pomocą funkcji potoku MLlib CrossValidator dla CV, za pomocą parametrów.   
+W kodzie w tej sekcji przedstawiono sposób uczenia, szacowania i zapisywania modelu regresji logistycznej z [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , który przewiduje, czy Porada jest płatna za podróż, w zestawie danych podróży i taryfy NYC. Model jest uczony przy użyciu krzyżowego sprawdzania poprawności (CV) i zaczynają hiperparametrycznego implementowane za pomocą funkcji potoku MLlib CrossValidator dla CV, za pomocą parametrów.   
 
 <!-- -->
 
@@ -858,13 +858,13 @@ Kod w tej sekcji pokazano, jak uczenie, ocenę i Zapisz model regresji logistycz
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 107.98 sekund
 
-**Przedstawianie WIELOKLASOWA krzywa.**
+**Wykreśl krzywą ROC.**
 
-*PredictionAndLabelsDF* jest zarejestrowany jako tabelę *tmp_results*, w poprzedniej komórki. *tmp_results* może służyć zapytania i dane wyjściowe wyniki do ramki danych sqlResults do kreślenia. Oto kod.
+*PredictionAndLabelsDF* jest zarejestrowany w tabeli, *tmp_results*w poprzedniej komórce. *tmp_results* może służyć do wykonywania zapytań i wyników wyjściowych w ramce danych SQLResults do wykreślania. Oto kod.
 
     # QUERY RESULTS
     %%sql -q -o sqlResults
@@ -894,7 +894,7 @@ Poniżej przedstawiono kod, do wykreślenia krzywej ROC.
     plt.show()
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 ![Krzywej ROC regresji logistycznej przy użyciu MLlib firmy CrossValidator](./media/spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
 
@@ -943,7 +943,7 @@ Kod w tej sekcji przedstawiono sposób uczenie, ocenę i Zapisz regresji losowe 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Obszar pod ROC = 0.985336538462
 
@@ -987,7 +987,7 @@ Kod w tej sekcji przedstawiono sposób uczenie, ocenę i Zapisz gradientu zwięk
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Obszar pod ROC = 0.985336538462
 
@@ -1002,9 +1002,9 @@ W tej sekcji przedstawiono sposób użycia, trzy modele zadania regresji: przewi
 
 Modele te zostały opisane we wstępie. Każdy model tworzenia sekcji kodu zostanie podzielona na kroki: 
 
-1. **Szkolenie modelu** danych za pomocą jeden zestaw parametrów
-2. **Model oceny** na testowego zestawu danych za pomocą metryk
-3. **Zapisywanie modelu** w obiekcie blob do przyszłego użytku   
+1. **Modeluj dane szkoleniowe** za pomocą jednego zestawu parametrów
+2. **Ocena modelu** dla zestawu danych testowych z metrykami
+3. **Zapisywanie modelu** w obiekcie BLOB do użycia w przyszłości   
 
 <!-- -->
 
@@ -1066,7 +1066,7 @@ W kodzie w tej sekcji pokazano, jak używać funkcji skalowane do nauczenia regr
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Coefficients: [0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
 
@@ -1128,7 +1128,7 @@ Kod w tej sekcji przedstawiono sposób uczenie, ocenę i Zapisz model lasu losow
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 RMSE = 0.931981967875
 
@@ -1139,7 +1139,7 @@ Czas wykonywania powyżej komórki: 25.98 sekund
 ### <a name="gradient-boosting-trees-regression"></a>Zwiększenie regresji drzew gradientu
 Kod w tej sekcji przedstawiono sposób uczenie, ocenę i Zapisz gradientu zwiększenie drzewa modelu do prognozowania kwotę wskazówka dla danych podróży NYC taksówek.
 
-**Nauczanie i ocena**
+**Uczenie i szacowanie**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1179,7 +1179,7 @@ Kod w tej sekcji przedstawiono sposób uczenie, ocenę i Zapisz gradientu zwięk
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 RMSE = 0.928172197114
 
@@ -1187,9 +1187,9 @@ R-sqr = 0.732680354389
 
 Czas wykonywania powyżej komórki: 20.9 sekund
 
-**Wykres**
+**Wprowadź**
 
-*tmp_results* jest zarejestrowany jako tabeli programu Hive w poprzedniej komórki. Wyniki z tabeli są danymi wyjściowymi przekazywanymi do *sqlResults* ramki danych do kreślenia. W tym miejscu znajduje się kod
+*tmp_results* jest zarejestrowany jako tabela programu Hive w poprzedniej komórce. Wyniki z tabeli są wyprowadzane do ramki danych *SQLResults* do wykreślania. W tym miejscu znajduje się kod
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1276,13 +1276,13 @@ W kodzie w tej sekcji pokazano, jak krzyżowe sprawdzanie poprawności przy uży
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 161.21 sekund
 
-**R SQR metryki oceny**
+**Oceń przy użyciu metryki R-SQR**
 
-*tmp_results* jest zarejestrowany jako tabeli programu Hive w poprzedniej komórki. Wyniki z tabeli są danymi wyjściowymi przekazywanymi do *sqlResults* ramki danych do kreślenia. W tym miejscu znajduje się kod
+*tmp_results* jest zarejestrowany jako tabela programu Hive w poprzedniej komórce. Wyniki z tabeli są wyprowadzane do ramki danych *SQLResults* do wykreślania. W tym miejscu znajduje się kod
 
     # SELECT RESULTS
     %%sql -q -o sqlResults
@@ -1301,7 +1301,7 @@ Poniżej przedstawiono kod, aby obliczyć R sqr.
     print("R-sqr = %s" % r2)
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 R sqr = 0.619184907088
 
@@ -1388,7 +1388,7 @@ Kod w tej sekcji przedstawiono sposób krzyżowe sprawdzanie poprawności przy u
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 RMSE = 0.906972198262
 
@@ -1397,7 +1397,7 @@ R sqr = 0.740751197012
 Czas wykonywania powyżej komórki: 69.17 sekund
 
 ### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>Czyszczenie obiektów z pamięci i lokalizacje modelu drukowania
-Użyj `unpersist()` można usunąć obiektów w pamięci podręcznej.
+Użyj `unpersist()`, aby usunąć obiekty w pamięci podręcznej.
 
     # UNPERSIST OBJECTS CACHED IN MEMORY
 
@@ -1424,7 +1424,7 @@ Użyj `unpersist()` można usunąć obiektów w pamięci podręcznej.
     oneHotTESTregScaled.unpersist()
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 PythonRDD [122] w RDD na PythonRDD.scala: 43
 
@@ -1439,7 +1439,7 @@ PythonRDD [122] w RDD na PythonRDD.scala: 43
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**DANE WYJŚCIOWE**
+**ROZDZIELCZOŚCI**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0316_47_30.096528"
 
@@ -1456,5 +1456,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>Co dalej?
 Teraz, modele regresji i klasyfikacji została utworzona przy użyciu MlLib platformy Spark, jesteś gotowy dowiedzieć się, jak ocena i ocenić te modele.
 
-**Model użycia:** jak ocena i oceniać modele klasyfikacji i regresji, utworzone w tym temacie można znaleźć [wynik i ocena modeli uczenia maszynowego utworzonych na platformie Spark](spark-model-consumption.md).
+**Użycie modelu:** Aby dowiedzieć się, jak obliczyć i oszacować modele klasyfikacji i regresji utworzone w tym temacie, zobacz [ocenę i ocenę modeli uczenia maszynowego opartych na platformie Spark](spark-model-consumption.md).
 

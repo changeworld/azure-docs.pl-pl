@@ -18,7 +18,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76718484"
 ---
-# <a name="heading"></a>Przetwarzanie danych w maszyną wirtualną programu SQL Server na platformie Azure
+# <a name="heading"></a>Przetwarzanie danych w SQL Server maszynie wirtualnej na platformie Azure
 W tym dokumencie opisano, jak eksplorować dane i generować funkcji dla danych przechowywanych na maszynę Wirtualną programu SQL Server na platformie Azure. Ten cel może być wykonany przez przetwarzanie danych przy użyciu programu SQL lub języka programowania, takiego jak Python.
 
 > [!NOTE]
@@ -26,7 +26,7 @@ W tym dokumencie opisano, jak eksplorować dane i generować funkcji dla danych 
 > 
 > 
 
-## <a name="SQL"></a>Przy użyciu języka SQL
+## <a name="SQL"></a>Korzystanie z języka SQL
 Opisano następujące zadania wrangling danych w tej sekcji przy użyciu języka SQL:
 
 1. [Eksploracja danych](#sql-dataexploration)
@@ -36,7 +36,7 @@ Opisano następujące zadania wrangling danych w tej sekcji przy użyciu języka
 Poniżej przedstawiono kilka przykładowe skrypty SQL, których można użyć, aby zapoznać się z magazynami danych w programie SQL Server.
 
 > [!NOTE]
-> Na przykład praktycznych, możesz użyć [zestawu danych taksówek NYC](https://www.andresmh.com/nyctaxitrips/) i odnoszą się do IPNB pod tytułem [danych NYC inteligencji przy użyciu IPython Notebook i programu SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) dla przewodnika end-to-end.
+> W przypadku praktycznego przykładu można użyć [zestawu danych NYC taksówki](https://www.andresmh.com/nyctaxitrips/) i odwołać się do IPNB [NYC danych przetwarzanie przy użyciu notesu IPython i SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) w celu uzyskania kompleksowego przewodnika.
 > 
 > 
 
@@ -56,16 +56,16 @@ Poniżej przedstawiono kilka przykładowe skrypty SQL, których można użyć, a
 ### <a name="sql-featuregen"></a>Generowanie funkcji
 W tej sekcji opisano sposób generowania funkcji przy użyciu języka SQL:  
 
-1. [Liczba na podstawie funkcji generowania](#sql-countfeature)
-2. [Kwantowanie generacji funkcji](#sql-binningfeature)
-3. [Wdrażanie funkcji z jednej kolumny](#sql-featurerollout)
+1. [Generowanie funkcji na podstawie liczby](#sql-countfeature)
+2. [Generowanie funkcji pakowania](#sql-binningfeature)
+3. [Wdrażanie funkcji z pojedynczej kolumny](#sql-featurerollout)
 
 > [!NOTE]
 > Po wygenerowaniu dodatkowe funkcje, możesz dodać je jako kolumny do istniejącej tabeli lub Utwórz nową tabelę z dodatkowych funkcji i klucz podstawowy, który może być łączone z oryginalnej tabeli. 
 > 
 > 
 
-### <a name="sql-countfeature"></a>Liczba na podstawie funkcji generowania
+### <a name="sql-countfeature"></a>Generowanie funkcji na podstawie liczby
 W poniższych przykładach pokazano dwa sposoby generowania funkcji count. Pierwsza metoda używa sum warunkowych, a druga metoda używa klauzula "where". Te wyniki mogą następnie być sprzężone z oryginalną tabelą (przy użyciu kolumn klucza podstawowego) w celu uzyskania funkcji count wraz z oryginalnymi danymi.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
@@ -73,16 +73,16 @@ W poniższych przykładach pokazano dwa sposoby generowania funkcji count. Pierw
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-### <a name="sql-binningfeature"></a>Kwantowanie generacji funkcji
+### <a name="sql-binningfeature"></a>Generowanie funkcji pakowania
 Poniższy przykład pokazuje, jak można wygenerować kwanty funkcji przez proces pakowania (pojemniki pięć) kolumny liczbowe, która może służyć jako funkcja zamiast tego:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>Wdrażanie funkcji z jednej kolumny
+### <a name="sql-featurerollout"></a>Wdrażanie funkcji z pojedynczej kolumny
 W tej sekcji pokażemy, jak wdrażać pojedynczą kolumnę w tabeli, aby wygenerować dodatkowe funkcje. W przykładzie założono, że w tabeli, z którego chcesz wygenerować funkcji znajduje się kolumna szerokości i długości geograficznej.
 
-Poniżej przedstawiono krótki Podręcznik szerokości/długości geograficznej lokalizacji danych (z zasobami w witrynie stackoverflow [sposób mierzenia dokładności szerokości i długości geograficznej?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Wskazówki te są przydatne do zrozumienia przed dołączeniem lokalizacji jako jednej lub kilku funkcji:
+Poniżej znajduje się krótki początek danych lokalizacji Latitude/długości geograficznej (od StackOverflow [, jak zmierzyć dokładność długości i szerokości](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)geograficznej?). Wskazówki te są przydatne do zrozumienia przed dołączeniem lokalizacji jako jednej lub kilku funkcji:
 
 * Znak informuje NAS, czy możemy się północ lub południe, wschód lub zachodnie na całym świecie.
 * Wartość różną od zera setki cyfrę informuje NAS, że firma Microsoft korzysta długość geograficzna, szerokość nie!
@@ -111,17 +111,17 @@ Informacje o lokalizacji można neural następująco, oddzielanie region, lokali
 Te funkcje oparte na lokalizacji dalsze można wygenerować liczba dodatkowych funkcji, zgodnie z wcześniejszym opisem. 
 
 > [!TIP]
-> Programowe można wstawić rekordów przy użyciu wybranego języka. Musisz wstawić dane we fragmentach, aby zwiększyć wydajność zapisu (na przykład jak to zrobić za pomocą moduł pyodbc zobacz [HelloWorld przykładu, aby uzyskać dostęp SQLServer za pomocą języka python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Innym sposobem jest, aby wstawić dane do bazy danych przy użyciu [narzędzie BCP](https://msdn.microsoft.com/library/ms162802.aspx).
+> Programowe można wstawić rekordów przy użyciu wybranego języka. Może być konieczne wstawienie danych w fragmentach, aby zwiększyć wydajność zapisu (Przykładowo, jak to zrobić za pomocą moduł pyodbc, zobacz [przykład HelloWorld, aby uzyskać dostęp do programu SqlServer przy użyciu języka Python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Kolejną alternatywą jest wstawianie danych w bazie danych przy użyciu [narzędzia bcp](https://msdn.microsoft.com/library/ms162802.aspx).
 > 
 > 
 
-### <a name="sql-aml"></a>Nawiązywanie połączenia z usługi Azure Machine Learning
+### <a name="sql-aml"></a>Nawiązywanie połączenia z Azure Machine Learning
 Funkcja nowo wygenerowane można dodane jako kolumny do istniejącej tabeli lub przechowywane w nowej tabeli i łączone z oryginalnej tabeli dla usługi machine learning. Funkcje mogą być generowane lub dostępne, jeśli zostały już utworzone, przy użyciu modułu [Importuj dane][import-data] w Azure Machine Learning jak pokazano poniżej:
 
 ![Czytelnicy usługi Azure ml][1] 
 
-## <a name="python"></a>Przy użyciu języka programowania, takich jak Python
-Przy użyciu języka Python, aby eksplorować dane i wygenerować funkcje, gdy dane znajdują się w programie SQL Server jest podobny do przetwarzania danych w usłudze Azure blob przy użyciu języka Python, zgodnie z opisem w [danych obiektów Blob platformy Azure proces w danym środowisku do nauki o danych](data-blob.md). Załaduj dane z bazy danych do ramki danych Pandas w celu przetworzenia. Udokumentowaliśmy proces łączenia z bazą danych i ładowania danych do ramki danych w tej sekcji.
+## <a name="python"></a>Korzystanie z języka programowania, takiego jak Python
+Używanie języka Python do eksplorowania danych i generowania funkcji, gdy dane są w SQL Server są podobne do przetwarzania danych w obiekcie blob platformy Azure przy użyciu języka Python zgodnie z opisem w temacie [przetwarzanie danych obiektów blob platformy Azure w środowisku nauki danych](data-blob.md). Załaduj dane z bazy danych do ramki danych Pandas w celu przetworzenia. Udokumentowaliśmy proces łączenia z bazą danych i ładowania danych do ramki danych w tej sekcji.
 
 Następujący format parametrów połączenia może służyć do łączenia z bazą danych programu SQL Server za pomocą języka Python za pomocą moduł pyodbc (Zastąp servername, dbname, nazwę użytkownika i hasła o określonej wartości):
 
@@ -129,15 +129,15 @@ Następujący format parametrów połączenia może służyć do łączenia z ba
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Biblioteki Pandas](https://pandas.pydata.org/) w języku Python zawiera bogaty zestaw struktur danych i narzędzia do analizy danych do manipulowania danymi programowania Python. Poniższy kod odczytuje wyniki zwracane z bazy danych programu SQL Server do ramki danych Pandas:
+[Biblioteka Pandas](https://pandas.pydata.org/) w języku Python oferuje bogaty zestaw struktur danych i narzędzi do analizy danych na potrzeby manipulowania danymi na potrzeby programowania w języku Python. Poniższy kod odczytuje wyniki zwracane z bazy danych programu SQL Server do ramki danych Pandas:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-Teraz możesz pracować z biblioteki Pandas ramki danych zgodnie z opisem w artykule [danych obiektów Blob platformy Azure proces w danym środowisku do nauki o danych](data-blob.md).
+Teraz możesz współpracować z ramką danych Pandas, jak opisano w artykule [przetwarzanie danych obiektów blob platformy Azure w środowisku nauki danych](data-blob.md).
 
 ## <a name="azure-data-science-in-action-example"></a>Do nauki o danych platformy Azure, w przykładzie akcji
-Na przykład wskazówki end-to-end procesu do nauki o danych platformy Azure przy użyciu publicznego zestawu danych, zobacz [Azure danych dla celów naukowych w działaniu](sql-walkthrough.md).
+Aby zapoznać się z kompleksowym przykładem procesu nauki o danych platformy Azure przy użyciu publicznego zestawu danych, zobacz [proces analizy danych platformy Azure w działaniu](sql-walkthrough.md).
 
 [1]: ./media/sql-server-virtual-machine/reader_db_featurizedinput.png
 

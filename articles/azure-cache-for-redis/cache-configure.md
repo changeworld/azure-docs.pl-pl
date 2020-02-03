@@ -62,7 +62,7 @@ Poniższe ustawienia można wyświetlać i konfigurować za pomocą **menu zasó
     * [Nowe żądanie obsługi](#new-support-request)
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 **Przegląd** zawiera podstawowe informacje o pamięci podręcznej, takie jak nazwa, porty, warstwa cenowa i wybrane metryki pamięci podręcznej.
 
@@ -169,15 +169,15 @@ Aby uzyskać więcej informacji, zobacz [Redis — powiadomienia dotyczące miej
 ## <a name="azure-cache-for-redis-advisor"></a>Usługa Azure cache for Redis Advisor
 W bloku **Azure cache for Redis Advisor** są wyświetlane zalecenia dotyczące pamięci podręcznej. W trakcie normalnych operacji nie są wyświetlane żadne zalecenia.
 
-![Polecane elementy](./media/cache-configure/redis-cache-no-recommendations.png)
+![Zalecenia](./media/cache-configure/redis-cache-no-recommendations.png)
 
 Jeśli wystąpią jakiekolwiek warunki podczas operacji pamięci podręcznej, takie jak duże użycie pamięci, przepustowość sieci lub obciążenie serwera, w bloku **pamięci podręcznej platformy Azure dla Redis** zostanie wyświetlony alert.
 
-![Polecane elementy](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Zalecenia](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 Więcej informacji można znaleźć w bloku **zalecenia** .
 
-![Polecane elementy](./media/cache-configure/redis-cache-recommendations.png)
+![Zalecenia](./media/cache-configure/redis-cache-recommendations.png)
 
 Te metryki można monitorować w sekcjach [wykresy monitorowania](cache-how-to-monitor.md#monitoring-charts) i [wykresy użycia](cache-how-to-monitor.md#usage-charts) w bloku **Azure cache for Redis** .
 
@@ -250,7 +250,7 @@ Blok **replikacji geograficznej** zawiera mechanizm łączenia dwóch pamięci p
 >
 >
 
-### <a name="virtual-network"></a>Sieć wirtualna
+### <a name="virtual-network"></a>Virtual Network
 Sekcja **Virtual Network** umożliwia skonfigurowanie ustawień sieci wirtualnej dla pamięci podręcznej. Aby uzyskać informacje na temat tworzenia pamięci podręcznej Premium z obsługą sieci wirtualnej i aktualizowania jej ustawień, zobacz [jak skonfigurować obsługę usługi Virtual Network w przypadku pamięci podręcznej systemu Azure w warstwie Premium dla Redis](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -295,7 +295,7 @@ Ustawienia w sekcji **Administracja** umożliwiają wykonywanie następujących 
 * [Ponowne uruchamianie](#reboot)
 
 
-### <a name="importexport"></a>Import/eksport
+### <a name="importexport"></a>Import/Export
 Import/Export to pamięć podręczna platformy Azure do Redis operacji zarządzania danymi, która umożliwia importowanie i eksportowanie danych w pamięci podręcznej przez zaimportowanie i wyeksportowanie bazy danych Azure cache for Redis Database (RDB) z pamięci podręcznej Premium do strony obiektu BLOB na koncie usługi Azure Storage. Usługa Import/Export umożliwia Migrowanie między różnymi pamięciami podręcznymi platformy Azure dla wystąpień Redis lub wypełnianie pamięci podręcznej danymi przed użyciem.
 
 Import może służyć do przenoszenia zgodnych plików RDB Redis z dowolnego serwera Redis działającego w dowolnej chmurze lub środowisku, w tym Redis działających w systemie Linux, Windows lub dowolnym dostawcy chmury, takim jak Amazon Web Services i inne. Importowanie danych to prosty sposób tworzenia pamięci podręcznej z wstępnie wypełnionymi danymi. Podczas procesu importowania usługa Azure cache for Redis ładuje pliki RDB z usługi Azure Storage do pamięci, a następnie wstawia klucze do pamięci podręcznej.
@@ -338,7 +338,7 @@ Aby uzyskać więcej informacji na temat pamięci podręcznej platformy Azure na
 ### <a name="redis-metrics"></a>Metryki Redis
 Kliknij pozycję **metryki Redis** , aby [wyświetlić metryki](cache-how-to-monitor.md#view-cache-metrics) pamięci podręcznej.
 
-### <a name="alert-rules"></a>Reguły alertów
+### <a name="alert-rules"></a>Zasady alertów
 
 Kliknij pozycję **reguły alertów** , aby skonfigurować alerty oparte na usłudze Azure cache for Redis Metrics. Aby uzyskać więcej informacji, zobacz [Alerts](cache-how-to-monitor.md#alerts).
 
@@ -359,7 +359,7 @@ Ustawienia w sekcji **Pomoc techniczna i rozwiązywanie problemów** zawierają 
 * [Kondycja zasobów](#resource-health)
 * [Nowe żądanie obsługi](#new-support-request)
 
-### <a name="resource-health"></a>Resource Health
+### <a name="resource-health"></a>Kondycja zasobów
 **Kondycja zasobu** obserwuje zasób i informuje o tym, że działa zgodnie z oczekiwaniami. Aby uzyskać więcej informacji o usłudze Azure Resource Health, zobacz [Omówienie usługi Azure Resource Health](../resource-health/resource-health-overview.md).
 
 > [!NOTE]

@@ -22,7 +22,7 @@ W tym samouczku pokazano, jak deweloper urządzenia używa Visual Studio Code do
 
 Sekcja w tym samouczku opisująca sposób tworzenia generowanego kodu szkieletowego przyjęto założenie, że używasz systemu Windows.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie modelu możliwości urządzenia
@@ -44,7 +44,7 @@ Do pracy z modelem możliwości urządzenia w tym samouczku potrzebne są:
 Do utworzenia wygenerowanego kodu C w systemie Windows w tym samouczku potrzebne są:
 
 * [Narzędzia kompilacji dla programu Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) z  **C++ narzędziami kompilacji** i obciążeniami **składników Menedżera pakietów NuGet** . Lub jeśli masz już [program Visual Studio (Community, Professional lub Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 lub 2015 z zainstalowanymi takimi samymi obciążeniami.
-* [Git](https://git-scm.com/download)
+* [Usługa Git](https://git-scm.com/download)
 * [CMake](https://cmake.org/download/)
 
 Aby przetestować kod urządzenia w tym samouczku, potrzebne są:

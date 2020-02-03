@@ -81,7 +81,7 @@ Dane inspekcji można filtrować w następujących polach:
 - Kategoria
 - Działanie
 - Stan
-- Cel
+- Środowisko docelowe
 - Zainicjowane przez (aktor)
 - Zakres dat
 
@@ -89,7 +89,7 @@ Dane inspekcji można filtrować w następujących polach:
 
 Filtr **usługi** umożliwia wybranie z listy rozwijanej następujących usług:
 
-- Wszystko
+- Wszyscy
 - Przeglądy dostępu
 - Aprowizacja kont 
 - Logowanie jednokrotne aplikacji
@@ -97,8 +97,8 @@ Filtr **usługi** umożliwia wybranie z listy rozwijanej następujących usług:
 - B2C
 - Dostęp warunkowy
 - Katalog podstawowy
-- Zarządzanie upoważnieniami
-- Ochrona tożsamości
+- Zarządzanie prawami
+- Identity Protection
 - Zaproszeni użytkownicy
 - PROGRAMÓW
 - Samoobsługowe zarządzanie grupami
@@ -107,10 +107,10 @@ Filtr **usługi** umożliwia wybranie z listy rozwijanej następujących usług:
 
 Filtr **Kategoria** umożliwia wybranie jednego z następujących filtrów:
 
-- Wszystko
+- Wszyscy
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
+- Uwierzytelnianie
 - Autoryzacja
 - Kontakt
 - Urządzenie
@@ -130,7 +130,7 @@ Listę wszystkich działań związanych z inspekcją można uzyskać przy użyci
 
 Filtr **stanu** umożliwia filtrowanie na podstawie stanu operacji inspekcji. Może to być jeden z następujących stanów:
 
-- Wszystko
+- Wszyscy
 - Powodzenie
 - Niepowodzenie
 
@@ -144,7 +144,7 @@ Możliwe wartości:
 - 1 miesiąc
 - 7 dni
 - 24 godziny
-- Niestandardowe
+- Niestandardowy
 
 Po wybraniu niestandardowego przedziału czasu możesz skonfigurować godzinę rozpoczęcia i zakończenia.
 

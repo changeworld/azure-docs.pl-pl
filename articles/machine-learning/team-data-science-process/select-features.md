@@ -21,12 +21,12 @@ ms.locfileid: "76716686"
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Wybór funkcji w zespołowym przetwarzaniu danych dla celów naukowych
 W tym artykule wyjaśniono celów wybór funkcji i zawiera przykłady swojej roli w procesie rozszerzenia danych, uczenia maszynowego. Te przykłady są pobierane z usługi Azure Machine Learning Studio.
 
-Inżynieria i wybór funkcji jest jedną z części z zespołu Data Science naukowych opisane w artykule [co to jest zespołu danych dla celów naukowych?](overview.md). Funkcja inżynieria i wybór są częściami **opracowywanie funkcji** krok przetwarzania TDSP.
+Inżynieria i wybór funkcji to jedna część procesu nauki o danych zespołowych (przetwarzania TDSP), którą opisano w artykule [co to jest proces nauki o danych zespołowych?](overview.md) Inżynieria funkcji i wybór są częścią kroku **opracowywania funkcji** przetwarzania TDSP.
 
-* **Inżynieria funkcji**: ten proces próbuje utworzyć dodatkowe funkcje odpowiednie na podstawie istniejących funkcji nieprzetworzonych danych i zwiększyć możliwości predykcyjnych do algorytmu uczenia.
-* **Wybór funkcji**: ten proces wybiera klucza podzbiór funkcji, oryginalnym danych w celu podjęcia próby zmniejszenia wymiarach problemu szkolenia.
+* **Inżynieria funkcji**: ten proces podejmuje próbę utworzenia dodatkowych odpowiednich funkcji z istniejących pierwotnych funkcji w danych i zwiększenia mocy predykcyjnej do algorytmu uczenia.
+* **wybór funkcji**: ten proces wybiera podzestaw kluczy oryginalnych funkcji danych w próbie zmniejszenia liczby problemów szkoleniowych.
 
-Zwykle **Inżynieria funkcji** najpierw stosowany jest do generowania dodatkowe funkcje, a następnie **wybór funkcji** kroku jest przeprowadzana w celu wyeliminowania funkcji nie ma znaczenia, nadmiarowe lub bardzo skorelowany.
+Zwykle **Funkcja inżynierii funkcji** jest stosowana najpierw w celu wygenerowania dodatkowych funkcji, a następnie krok **wyboru funkcji** jest wykonywany w celu wyeliminowania nieistotnych, nadmiarowych lub wysoce skorelowanych funkcji.
 
 ## <a name="filter-features-from-your-data---feature-selection"></a>Funkcje filtrowania danych — wybór funkcji
 Wybór funkcji może być używany na potrzeby zadań klasyfikacji lub regresji. Celem jest Wybierz podzbiór funkcji z oryginalnego zestawu danych, który zmniejszyć jego wymiarów, używając minimalny zbiór funkcji do reprezentowania maksymalną ilość wariancji w danych. Ten podzbiór funkcji, jest używany do nauczenia modelu. Wybór funkcji służy dwa główne cele.

@@ -38,5 +38,5 @@ Musisz najpierw zakończyć i przesłać [formularz żądania kontenera wykrywan
 ## <a name="next-steps"></a>Następne kroki
 
 * Zapoznaj się z tematem [Instalowanie i uruchamianie kontenerów](../anomaly-detector-container-configuration.md) na potrzeby ściągania obrazu kontenera i uruchamiania kontenera
-* Przegląd [skonfigurować kontenery](../anomaly-detector-container-configuration.md) ustawień konfiguracji
+* Przegląd [konfigurowania kontenerów](../anomaly-detector-container-configuration.md) dla ustawień konfiguracji
 * [Dowiedz się więcej o usłudze interfejsu API wykrywania anomalii](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

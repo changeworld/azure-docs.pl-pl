@@ -90,7 +90,7 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
 ### <a name="how-do-i-retrieve-log-data"></a>Jak mogę pobrać danych dziennika?
 Wszystkie dane są pobierane z obszaru roboczego Log Analytics przy użyciu zapytania dziennika, które zapisano przy użyciu języka zapytań Kusto (KQL). Możesz pisać własne zapytania lub używać rozwiązań i szczegółowych informacji, które obejmują zapytania dzienników dla określonej aplikacji lub usługi. Zobacz [Omówienie zapytań dzienników w Azure monitor](log-query/log-query-overview.md).
 
-### <a name="what-is-a-log-analytics-workspace"></a>Co to jest obszar roboczy usługi Log Analytics?
+### <a name="what-is-a-log-analytics-workspace"></a>Co to jest obszar roboczy Log Analytics?
 Wszystkie dane dzienników zbierane przez Azure Monitor są przechowywane w Log Analytics obszarze roboczym. Obszar roboczy jest zasadniczo kontenerem, w którym dane dzienników są zbierane z różnych źródeł. Może istnieć pojedynczy obszar roboczy Log Analytics dla wszystkich danych monitorowania lub może mieć wymagania dotyczące wielu obszarów roboczych. Zobacz [projektowanie wdrożenia dzienników Azure monitor](platform/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Czy można przenieść istniejący obszar roboczy Log Analytics do innej subskrypcji platformy Azure?
@@ -240,7 +240,7 @@ Plan przedsiębiorstwa wiąże się z opłatą za każdy dzień, w którym każd
 
 [Zapoznaj się z planem cenowym](https://azure.microsoft.com/pricing/details/application-insights/).
 
-### <a name="how-much-does-it-cost"></a>Ile to kosztuje?
+### <a name="how-much-does-it-cost"></a>Ile kosztuje?
 
 * Otwórz **stronę użycie i szacowane koszty** w zasobie Application Insights. Istnieje wykres przedstawiający ostatnie użycie. Jeśli chcesz, możesz ustawić limit ilości danych.
 * Otwórz [blok rozliczeń platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) , aby wyświetlić rachunki dla wszystkich zasobów.
@@ -376,8 +376,8 @@ Użyj pojedynczego zasobu dla wszystkich składników lub ról w jednym systemie
 | Pobierz ślady stosu z wyjątków |[Wstaw wywołania metody trackexception w kodzie](app/asp-net-exceptions.md) (ale niektóre są raportowane automatycznie) |Wykrywanie i diagnozowanie wyjątków |
 | Wyszukaj ślady dziennika |[Dodawanie karty rejestrowania](app/asp-net-trace-logs.md) |Diagnozowanie wyjątków, problemy z wydajnością |
 | Podstawowe informacje dotyczące użycia klientów: wyświetlenie stron, sesje,... |[Inicjator JavaScript na stronach sieci Web](app/javascript.md) |Analiza użycia |
-| Metryki niestandardowe klienta |[Śledzenie wywołań na stronach sieci Web](app/api-custom-events-metrics.md) |Udoskonalanie środowiska użytkownika |
-| Metryki niestandardowe serwera |[Śledzenie wywołań na serwerze](app/api-custom-events-metrics.md) |Analizy biznesowe |
+| Metryki niestandardowe klienta |[Śledzenie wywołań na stronach sieci Web](app/api-custom-events-metrics.md) |Ulepszanie środowiska użytkownika |
+| Metryki niestandardowe serwera |[Śledzenie wywołań na serwerze](app/api-custom-events-metrics.md) |Analiza biznesowa |
 
 ### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Dlaczego liczniki na wykresach wyszukiwania i metryk są nierówne?
 
@@ -390,7 +390,7 @@ Każdy przesłany element ma właściwość `itemCount`, która pokazuje, ile or
 ```
 
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatyzacja
 
 #### <a name="configuring-application-insights"></a>Konfigurowanie Application Insights
 
@@ -673,7 +673,7 @@ W przypadku zmodyfikowania dowolnego ustawienia wystąpienia kryterium kondycji 
 Nie, w przypadku systemu Windows nie są uwzględniane kryteria kondycji poszczególnych procesorów i logicznych poziomów procesora, a domyślnie tylko całkowite użycie procesora CPU jest monitorowane w celu efektywnego oszacowania użycia procesora na podstawie łącznej liczby procesorów logicznych dostępnych dla maszyny wirtualnej platformy Azure. 
 
 ### <a name="are-all-health-criteria-thresholds-configurable"></a>Czy wszystkie progi kryteriów kondycji są konfigurowalne?  
-Progi dla kryteria kondycji, których platformą docelową maszyny Wirtualnej z systemem Windows nie są można modyfikować, ponieważ ich stany kondycji są ustawione na *systemem* lub *dostępne*. Podczas wysyłania zapytania stanu kondycji z [API Monitor obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), wyświetla *OperatorPorównania* wartość **mniejsze** lub **większe** z *próg* wartość **4** usługi lub jednostki jeśli:
+Progi dla kryteriów kondycji przeznaczonych dla maszyny wirtualnej z systemem Windows nie można modyfikować, ponieważ ich Stany kondycji są ustawione na *Uruchamianie* lub *dostępne*. Po zbadaniu kondycji w [interfejsie API monitora obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)jest wyświetlana wartość *operatorporównania* **LessThan** lub **GreaterThan** z wartością *progową* **4** dla usługi lub jednostki, jeśli:
    - Kondycja usługi klienta DNS — usługa nie jest uruchomiona. 
    - Kondycja usługi klienta DHCP — usługa nie jest uruchomiona. 
    - Kondycja usługi RPC — usługa nie jest uruchomiona. 
@@ -683,13 +683,13 @@ Progi dla kryteria kondycji, których platformą docelową maszyny Wirtualnej z 
    - Kondycja usługi zdalnego zarządzania Windows — usługi nie jest uruchomiony. 
    - Błąd systemu plików lub uszkodzeniem — dysku logicznego jest niedostępny.
 
-Progi następujące kryteria kondycji systemu Linux nie są można modyfikować, ponieważ ich kondycji, są już ustawione na *true*. Wyświetla stan kondycji *OperatorPorównania* z wartością **mniejsze** i *próg* wartość **1** po otrzymaniu kwerendy od Obciążenie monitorowania interfejsu API dla jednostki, w zależności od jej kontekstu:
+Progi dla następujących kryteriów kondycji systemu Linux nie można modyfikować, ponieważ ich stan kondycji jest już ustawiony na *wartość true*. Stan kondycji przedstawia *operatorporównania* z wartością **LessThan** i wartością *progową* **1** w przypadku zapytania z interfejsu API monitorowania obciążenia dla jednostki, w zależności od jego kontekstu:
    - Stan dysku logicznego — dysk logiczny nie jest online / dostępne
    - Stan dysku — dysku nie jest online / dostępne
    - Stan karty sieciowej — karty sieciowej jest wyłączona.
 
 ### <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Jak mogę modyfikować alerty dołączone do funkcji kondycji?
-Reguły alertów, które są zdefiniowane dla każdego kryterium kondycji nie są wyświetlane w witrynie Azure portal. Można włączać lub wyłączać alert o kondycji reguły tylko w [API Monitor obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Ponadto nie można przypisać [Azure monitor grupy akcji](platform/action-groups.md) dla alertów dotyczących kondycji w Azure Portal. Za pomocą interfejsu API ustawienia powiadomienia można skonfigurować grupę akcji, która ma być wyzwalana za każdym razem, gdy zostanie wyzwolony alert kondycji. Obecnie można przypisać grup akcji względem maszyny Wirtualnej tak, aby wszystkie *alerty dotyczące kondycji* uruchamiane względem wyzwalacza maszyn wirtualnych tej samej grupy akcji. W przeciwieństwie do tradycyjnych alertów platformy Azure nie obowiązuje koncepcja grupy osobną akcję dla każdej reguły alertu kondycji. Ponadto podczas są wyzwalane przez alerty dotyczące kondycji są obsługiwane tylko grupy akcji, które są skonfigurowane do dostarczania poczty e-mail lub powiadomienia SMS. 
+Reguły alertów, które są zdefiniowane dla każdego kryterium kondycji nie są wyświetlane w witrynie Azure portal. Regułę alertu kondycji można włączyć lub wyłączyć tylko w [interfejsie API monitora obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Ponadto nie można przypisać [Azure monitor grupy akcji](platform/action-groups.md) dla alertów dotyczących kondycji w Azure Portal. Za pomocą interfejsu API ustawienia powiadomienia można skonfigurować grupę akcji, która ma być wyzwalana za każdym razem, gdy zostanie wyzwolony alert kondycji. Obecnie można przypisać grupy akcji do maszyny wirtualnej, aby wszystkie *alerty kondycji* zostały wyzwolone dla maszyny wirtualnej wyzwalają te same grupy akcji. W przeciwieństwie do tradycyjnych alertów platformy Azure nie obowiązuje koncepcja grupy osobną akcję dla każdej reguły alertu kondycji. Ponadto podczas są wyzwalane przez alerty dotyczące kondycji są obsługiwane tylko grupy akcji, które są skonfigurowane do dostarczania poczty e-mail lub powiadomienia SMS. 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Nie widzę żadnych danych w przypadku wykresów wydajności dla mojej maszyny Wirtualnej
 Jeśli nie widzisz danych dotyczących wydajności w tabeli dysku lub na niektórych wykresach wydajności, liczniki wydajności mogą nie być skonfigurowane w obszarze roboczym. Aby rozwiązać ten problem, uruchom następujący [skrypt programu PowerShell](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell).

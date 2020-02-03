@@ -21,8 +21,8 @@ ms.locfileid: "76717841"
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>Tworzenie biletu pomocy technicznej dotyczącej usługi SQL Data Warehouse
 Jeśli masz problemy z SQL Data Warehouse, Utwórz bilet pomocy technicznej, aby zespół pomocy technicznej mógł Ci pomóc.
 
-## <a name="create-a-support-ticket"></a>Utwórz bilet pomocy technicznej
-1. Otwórz [Portalu Azure](https://portal.azure.com/).
+## <a name="create-a-support-ticket"></a>Tworzenie biletu pomocy technicznej
+1. Otwórz [portal Azure](https://portal.azure.com/).
 2. Na ekranie głównym kliknij kartę **Pomoc i obsługa techniczna**.
    
     ![Pomoc i obsługa techniczna](./media/sql-data-warehouse-get-started-create-support-ticket/MainPage.PNG)
@@ -31,7 +31,7 @@ Jeśli masz problemy z SQL Data Warehouse, Utwórz bilet pomocy technicznej, aby
    Wybierz odpowiedni [Plan pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/).
    
    * Pomoc techniczna związana z **rozliczeniami, limitami przydziałów i zarządzaniem subskrypcjami** jest dostępna na wszystkich poziomach pomocy technicznej.
-   * Pomoc techniczna dotycząca **usuwania poprawek** jest świadczona za pośrednictwem pomocy technicznej [Developer](https://azure.microsoft.com/support/plans/developer/), [Standard](https://azure.microsoft.com/support/plans/standard/), [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/)i [Premier](https://azure.microsoft.com/support/plans/premier/) . Problemy wymagające usunięcia awarii to problemy, które wystąpiły w trakcie korzystania z systemu Azure i w przypadku których występuje uzasadnione przypuszczenie, że zostały spowodowane przez Microsoft.
+   * Pomoc techniczna dotycząca **usuwania poprawek** jest świadczona za pośrednictwem pomocy technicznej [Developer](https://azure.microsoft.com/support/plans/developer/), [Standard](https://azure.microsoft.com/support/plans/standard/), [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/)i [Premier](https://azure.microsoft.com/support/plans/premier/) . Naprawa w razie awarii dotyczy problemów napotykanych przez klientów podczas korzystania z platformy Azure, jeśli istnieje uzasadnione podejrzenie, że problem leży po stronie firmy Microsoft.
    * **Wsparcie dla deweloperów** i **usługi doradcze** są dostępne na poziomach pomocy technicznej [Professional Direct](https://azure.microsoft.com/support/plans/prodirect/) i [Premium](https://azure.microsoft.com/support/plans/premier/). 
      
      Jeśli masz plan pomocy technicznej Premium, możesz zgłaszać także problemy związane z usługą SQL Data Warehouse na portalu [Microsoft Premier Online](https://premier.microsoft.com/). Zobacz [plany pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) , aby dowiedzieć się więcej o różnych planach pomocy technicznej, takich jak zakres, czasy odpowiedzi, Cennik itp.  Często zadawane pytania dotyczące pomocy technicznej platformy Azure można znaleźć w artykule [FAQ pomocy technicznej dla platformy Azure](https://azure.microsoft.com/support/faq/).  

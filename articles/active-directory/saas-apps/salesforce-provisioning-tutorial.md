@@ -117,7 +117,7 @@ Celem tej sekcji jest zaprojektowanie sposobu włączania obsługi administracyj
 
 Spowoduje to rozpoczęcie synchronizacji początkowej dla wszystkich użytkowników i/lub grup przypisanych do usługi Salesforce w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły około 40 minut, o ile usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji usługi Salesforce.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="common-issues"></a>Typowe problemy
 * Jeśli masz problemy z autoryzacją dostępu do usługi Salesforce, upewnij się, że:
@@ -132,7 +132,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 * Przed zmianą usługi Salesforce wymagane jest ręczne zatwierdzenie aktualizacji poczty e-mail. W związku z tym w dziennikach aprowizacji może zostać wyświetlona wiele wpisów w celu zaktualizowania wiadomości e-mail użytkownika (do momentu zatwierdzenia zmiany wiadomości e-mail).
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

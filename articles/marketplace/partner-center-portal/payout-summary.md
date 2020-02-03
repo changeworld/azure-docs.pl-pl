@@ -32,7 +32,7 @@ Jeśli sprzedajesz oferty w portalu Azure Marketplace, zobaczysz również infor
 
 ## <a name="roles-and-permission-to-access-the-payout-report"></a>Role i uprawnienia dostępu do raportu wypłaty
 
-| Raporty/strony    | Właściciel konta    | maszyny wirtualnej  | Developer | Współautor firmy |  Współautor finansów | Wiodący |
+| Raporty/strony    | Właściciel konta    | maszyny wirtualnej  | Dla deweloperów | Współautor firmy |  Współautor finansów | Wiodący |
 |------------------|------------------|----------|-----------|----|----|-----|
 | Raport pozyskiwania (w tym dane niemal w czasie rzeczywistym) | Może wyświetlać | Może wyświetlać | Brak dostępu | Brak dostępu | Może wyświetlać | Brak dostępu |
 | Raport/odpowiedzi na Opinie | Może wyświetlać i przesyłać opinie | Może wyświetlać i przesyłać opinie | Może wyświetlać i przesyłać opinie | Brak dostępu | Brak dostępu | Może wyświetlać i przesyłać opinie |
@@ -68,7 +68,7 @@ Na przykład jeśli klient kupi przy użyciu karty kredytowej.
 
 ## <a name="corelation-between-payout-and-usage"></a>Relacja między wypłatami i użyciem
 
-|Opis    |    Data  | Zamówienia/użycie  | Płat |
+|Opis    |    Date  | Zamówienia/użycie  | Płat |
 |----------|----------|-----------|-------------|
 |Okres zamówienia   | 15 sierpnia 2019 — 30 sierpnia, 2019 | **Kolejność atrybutów korelacji** <br> <ul> <li>Wartooć</li> <li>Identyfikator</li> </ul> <br> **Użycie** <br> <ul> <li>Identyfikator </li> <li>Nazwa klienta</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Szacowana opłata rozszerzona <br> Szacowana wypłata (komputer) </li> </ul> |  |
 |Zakończenie okresu (miesiąc)   | 30 sie 2019 | | |
@@ -82,12 +82,12 @@ Na przykład jeśli klient kupi przy użyciu karty kredytowej.
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Umowa Enterprise Agreement (kwartalne/miesięczne klienci)
 
-| Opis |    Data  | Użycie | Płat |
+| Opis |    Date  | Sposób użycia | Płat |
 |----------|----------|---------|-----------|
 |Okres zamówienia | 15 sierpnia 2019 — 30 sierpnia, 2019 | **Kolejność atrybutów korelacji** <br> <ul> <li>Wartooć</li> <li>Identyfikator</li> </ul> <br> **Raport użycia** <br> <ul> <li>Identyfikator </li> <li>Nazwa klienta</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Szacowana opłata rozszerzona <br> Szacowana wypłata (komputer) </li> </ul> | |
 |Zakończenie okresu (kwartał) | Września 30, 2019 | | |
 |Data rozliczenia | 15 października 2019 | | |
-|Okres płatności (tylko karty kredytowe:, 30 dni) | nd. | | |
+|Okres płatności (tylko karty kredytowe:, 30 dni) | Nie dotyczy | | |
 |Początek okresu zbierania | 15 października 2019 | | |
 |Tylko karty kredytowe, 30 dni | LIS 1, 2019-lis 30, 2019 | | |
 |Koniec okresu zbierania danych (maksymalnie 90 dni) | 15 stycznia 2020 | | |

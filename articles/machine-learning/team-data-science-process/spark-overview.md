@@ -23,36 +23,36 @@ ms.locfileid: "76718518"
 Tym zestawie tematów pokazuje, jak używać platformy HDInsight Spark do wykonania typowych zadań do nauki o danych, takich jak pozyskiwanie danych, technicznego opracowywania funkcji, modelowania i ocenę modelu. Dane używane jest przykładem 2013 NYC taksówek podróży i klasie zestawu danych. Modele utworzone obejmują regresji logistycznej liniowego i liniowa w, losowych lasów i gradientu wzmocnionego drzewa. W tematach opisano również sposób przechowywania tych modeli w usłudze Azure blob storage (WASB) oraz ocena i oceny wydajności predykcyjne. Obejmuje bardziej zaawansowanych tematów, jak modeli może być uczony przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów. Ten ogólny temat odwołuje się również do tematów opisujących, jak skonfigurować klaster Spark, które należy wykonać czynności opisane w wskazówki podane.
 
 ## <a name="spark-and-mllib"></a>Platforma Spark oraz MLlib
-[Platforma Spark](https://spark.apache.org/) to platforma przetwarzania równoległego typu open source, która obsługuje w pamięci przetwarzanie w celu zwiększania wydajności aplikacji do analizy danych big data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. [Biblioteka MLlib](https://spark.apache.org/mllib/) to biblioteka uczenia maszynowego skalowalne do platforma Spark, które powoduje konsolidatorze modelowanie to środowisku rozproszonym.
+[Platforma Spark](https://spark.apache.org/) to platforma przetwarzania równoległego typu open source, która obsługuje przetwarzanie w pamięci w celu zwiększenia wydajności aplikacji do analizy danych Big Data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. [MLlib](https://spark.apache.org/mllib/) to skalowalna biblioteka uczenia maszynowego platformy Spark, która zapewnia możliwości modelowania algorytmów w tym środowisku rozproszonym.
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
-[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) to Azure hostowanej Oferta typu open source platformy Spark. Obejmuje również obsługę **notesów Jupyter PySpark** w klastrze Spark, która może uruchomić interakcyjnych zapytań Spark SQL do przekształcania, filtrowania i wizualizowanie danych przechowywanych obiektów blob platformy Azure (WASB). PySpark jest interfejsu API języka Python dla platformy Spark. Fragmenty kodu, do zapewniania rozwiązań, które pokazują odpowiednie wykresy w celu wizualizacji danych, w tym miejscu są uruchamiane w notesy Jupyter notebook zainstalowane w klastrach platformy Spark. Kroki modelowania w tych tematach zawierają kod, który pokazuje, jak uczenie, ocenę, Zapisz i zużywać każdy rodzaj modelu.
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) to hostowana w systemie Azure oferta platformy Spark typu open source. Obejmuje również obsługę **notesów Jupyter PySpark** w klastrze Spark, które mogą uruchamiać zapytania Spark SQL Interactive na potrzeby przekształcania, filtrowania i wizualizacji danych przechowywanych w obiektach Blob platformy Azure (WASB). PySpark jest interfejsu API języka Python dla platformy Spark. Fragmenty kodu, do zapewniania rozwiązań, które pokazują odpowiednie wykresy w celu wizualizacji danych, w tym miejscu są uruchamiane w notesy Jupyter notebook zainstalowane w klastrach platformy Spark. Kroki modelowania w tych tematach zawierają kod, który pokazuje, jak uczenie, ocenę, Zapisz i zużywać każdy rodzaj modelu.
 
 ## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>Instalacji: Klastry Spark i notesy Jupyter
-Kroki instalacji i kodu w tym przewodniku dla podano przy użyciu HDInsight Spark 1.6. Ale notesów programu Jupyter znajdują się w przypadku klastrów HDInsight Spark 1.6 i platformy Spark w wersji 2.0. Opis notesów i łącza do nich znajdują się w [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) dla repozytorium GitHub zawierające je. Ponadto kod w tym miejscu w notesach połączonej jest ogólny i powinna działać w dowolnym klastrze Spark. Jeśli nie używasz platformy HDInsight Spark, konfiguracja klastra i czynności administracyjne mogą nieznacznie różnić się od przedstawionego w tym miejscu. Dla wygody poniżej przedstawiono linki do notesów Jupyter dla platformy Spark 1,6 (do uruchomienia w jądrze pySpark serwera Jupyter Notebook) i platformy Spark 2,0 (do uruchomienia w jądrze pySpark3 serwera Jupyter Notebook):
+Kroki instalacji i kodu w tym przewodniku dla podano przy użyciu HDInsight Spark 1.6. Ale notesów programu Jupyter znajdują się w przypadku klastrów HDInsight Spark 1.6 i platformy Spark w wersji 2.0. Opis notesów i linków do nich znajduje się w [README.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) dla repozytorium GitHub zawierającego je. Ponadto kod w tym miejscu w notesach połączonej jest ogólny i powinna działać w dowolnym klastrze Spark. Jeśli nie używasz platformy HDInsight Spark, konfiguracja klastra i czynności administracyjne mogą nieznacznie różnić się od przedstawionego w tym miejscu. Dla wygody poniżej przedstawiono linki do notesów Jupyter dla platformy Spark 1,6 (do uruchomienia w jądrze pySpark serwera Jupyter Notebook) i platformy Spark 2,0 (do uruchomienia w jądrze pySpark3 serwera Jupyter Notebook):
 
 ### <a name="spark-16-notebooks"></a>Notesy platformy Spark 1.6
 Te notesy to będą uruchamiane w jądra pySpark serwer notesu Jupyter.
 
-- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): zawiera informacje na temat wykonywania eksploracji danych, modelowania i ocenianie z kilku różnych algorytmów.
-- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): zawiera tematy w notesie #1 i opracowywania modelu strojenia hiperparametrycznego i krzyżowego sprawdzania poprawności.
-- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): Pokazuje, jak operacjonalizować model zapisanej przy użyciu języka Python w klastrach HDInsight.
+- [pySpark-Machine-Learning-Data-nauka-Spark-Data-Eksploracja-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): zawiera informacje na temat przeprowadzania eksploracji danych, modelowania i oceniania przy użyciu kilku różnych algorytmów.
+- [pySpark-Machine-Learning-Data-nauka-Spark-Advanced-Data-Eksploracja-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): zawiera tematy w notesie #1 i projektowanie modeli przy użyciu strojenia parametrów i krzyżowego sprawdzania poprawności.
+- [pySpark-Machine-Learning-Data-nauka-Spark-model-zużycie. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): pokazuje, jak operacjonalizować zapisany model przy użyciu języka Python w klastrach usługi HDInsight.
 
 ### <a name="spark-20-notebooks"></a>Notesy platformy Spark w wersji 2.0
 Te notesy to będą uruchamiane w jądra pySpark3 serwer notesu Jupyter.
 
-- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): ten plik zawiera informacje na temat wykonywania eksploracji danych, modelowania, i ocenianie w Spark 2.0 klastrów, przy użyciu podróży taksówek NYC i Taryfy opisane na zestawie danych [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ten notes może być dobry punkt wyjścia do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0. Aby uzyskać bardziej szczegółowy notesu analizuje dane taksówek NYC, zobacz następnego notesu na tej liście. Zapoznaj się z uwagami poniżej tej listy, która porównuje te notesy.
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): ten plik pokazuje sposób wykonania danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu taksówek NYC podróży i klasie zestawu danych, opisano [tutaj ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): ten plik pokazuje sposób wykonania danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu dobrze znanych wyjścia linie lotnicze w na czas zestaw danych z 2011 i 2012. Zestaw danych linii lotniczych jest zintegrowany z danymi o pogodzie lotniska (na przykład windspeed, temperatura, Wysokość itp.) przed modelem, dzięki czemu funkcje pogodowe mogą zostać uwzględnione w modelu.
+- [Spark 2.0-pySpark3-Machine-Learning-Data-nauka-Spark-Advanced-Data-Eksploracja — Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): ten plik zawiera informacje na temat sposobu przeprowadzania eksploracji danych, modelowania i oceniania w klastrach platformy Spark 2,0 przy użyciu usługi NYC Data podróży i [opłat.](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) Ten notes może być dobry punkt wyjścia do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0. Aby uzyskać bardziej szczegółowy notesu analizuje dane taksówek NYC, zobacz następnego notesu na tej liście. Zapoznaj się z uwagami poniżej tej listy, która porównuje te notesy.
+- [Spark 2.0-pySpark3_NYC_Taxi_Tip_Regression. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): w tym pliku pokazano, jak wykonywać operacje przetwarzanie danych (Spark SQL i Dataframe), eksploracja, modelowanie i ocenianie przy użyciu danych o podróży i opłatach za pomocą usługi NYC, które zostały opisane [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark 2.0-pySpark3_Airline_Departure_Delay_Classification. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): w tym pliku pokazano, jak wykonywać operacje przetwarzanie danych (Spark SQL i Dataframe), eksploracja, modelowanie i ocenianie przy użyciu dobrze znanego zestawu danych wyjściowych w czasie od 2011 do 2012. Zestaw danych linii lotniczych jest zintegrowany z danymi o pogodzie lotniska (na przykład windspeed, temperatura, Wysokość itp.) przed modelem, dzięki czemu funkcje pogodowe mogą zostać uwzględnione w modelu.
 
 <!-- -->
 
 > [!NOTE]
 > Linie lotnicze zestaw danych został dodany do notesów Spark 2.0, aby lepiej zilustrować używania algorytmów klasyfikacji. Zobacz poniższe linki do informacji na temat linii lotniczych na czas wyjścia zestawu danych i zestaw danych o pogodzie:
 > 
-> - Dane na czas wyjścia linii lotniczych: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - Dane wychodzące z czasu transportu lotniczego: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
-> - Dane o pogodzie w Kuwejcie: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
+> - Dane pogodowe lotniska: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
 <!-- -->
 
@@ -63,22 +63,22 @@ Te notesy to będą uruchamiane w jądra pySpark3 serwer notesu Jupyter.
 
 <!-- -->
 
-Aby uzyskać wskazówki dotyczące operacjonalizacji modeli Spark 2.0 i użycie modelu do oceniania, zobacz [dokumentu Spark 1.6 zużycia](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) przykład konspekt kroki wymagane. Aby użyć tego przykładu na platformie Spark 2,0, Zastąp plik kodu Python [tym plikiem](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).
+Aby uzyskać wskazówki dotyczące operacjonalizacji modelu i użycia modelu platformy Spark 2,0 na potrzeby oceniania, zapoznaj się z [dokumentem dotyczącym platformy spark 1,6](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) , aby zapoznać się z przykładem. Aby użyć tego przykładu na platformie Spark 2,0, Zastąp plik kodu Python [tym plikiem](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 Poniższe procedury odnoszą się do platformy Spark 1.6. Dla wersji platformy Spark w wersji 2.0 korzystanie z notesów opisem i powiązane z wcześniej.
 
-1. Wymagana jest subskrypcja platformy Azure. Jeśli nie masz już jeden, zobacz [uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+1. Wymagana jest subskrypcja platformy Azure. Jeśli jeszcze tego nie masz, zobacz artykuł [Pobieranie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-2. Aby ukończyć ten przewodnik, potrzebny jest klaster Spark 1,6. Aby go utworzyć, zobacz instrukcje podane w [wprowadzenie: tworzenie platformy Apache Spark w usłudze Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Typ klastra i wersja jest określony z **wybierz typ klastra** menu.
+2. Aby ukończyć ten przewodnik, potrzebny jest klaster Spark 1,6. Aby go utworzyć, zobacz instrukcje podane w artykule [wprowadzenie: tworzenie Apache Spark w usłudze Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Typ i wersja klastra są określone z menu **Wybierz typ klastra** .
 
 ![Konfigurowanie klastra](./media/spark-overview/spark-cluster-on-portal.png)
 
 <!-- -->
 
 > [!NOTE]
-> Dla tematu, który pokazuje, jak używać języka Scala, a nie języka Python w celu wykonania zadań w procesie nauki o danych end-to-end, zobacz [do nauki o danych z platformą Spark na platformie Azure przy użyciu języka Scala](scala-walkthrough.md).
+> Aby uzyskać informacje o tym, jak używać Scala zamiast języka Python do wykonywania zadań związanych z kompleksowym procesem nauki o danych, zobacz [naukę danych przy użyciu narzędzia Scala with Spark na platformie Azure](scala-walkthrough.md).
 >
 >
 
@@ -108,7 +108,7 @@ Dane podróży taksówek NYC około 20 GB plików skompresowanych wartości rozd
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Firma Microsoft ma próbkę 0,1% tych plików i połączonych wyzwolenie\_danych i podróży\_taryfy CVS pliki w jednym zestawie danych do użycia jako wejściowego zestawu danych w ramach tego przewodnika. Unikatowy klucz, aby dołączyć podróży\_danych i podróży\_taryfy składa się z pól: Medalionu hakowanie\_licencji oraz pobrania\_daty/godziny. Każdy rekord zestaw danych zawiera następujące atrybuty, które reprezentuje podróż taksówek NYC:
+Pobrano 0,1% próbek tych plików i dołączono je do podróży\_danych i wyjazdu\_do jednego zestawu danych, który będzie używany jako zestaw danych wejściowych dla tego przewodnika. Unikatowy klucz do przyłączenia do podróży\_Data i podróż\_opłaty są złożone z pól: Medallion, hakerzy\_licencję i pobranie\_DateTime. Każdy rekord zestaw danych zawiera następujące atrybuty, które reprezentuje podróż taksówek NYC:
 
 | Pole | Krótki opis |
 | --- | --- |
@@ -145,15 +145,15 @@ Można uruchomić notesu Jupyter w witrynie Azure portal. Znajdź klastra Spark 
 
 ![Pulpity nawigacyjne klastra](./media/spark-overview/spark-jupyter-on-portal.png)
 
-Możesz również przejść do ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** na dostęp do notesów programu Jupyter. Zastąp CLUSTERNAME część tego adresu URL, nazwą własnego klastra. Konieczne jest hasło do konta administratora dostęp do notesów.
+Możesz również przejść do ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** , aby uzyskać dostęp do notesów Jupyter. Zastąp CLUSTERNAME część tego adresu URL, nazwą własnego klastra. Konieczne jest hasło do konta administratora dostęp do notesów.
 
 ![Przeglądaj notesów programu Jupyter](./media/spark-overview/spark-jupyter-notebook.png)
 
 Wybierz pozycję PySpark, aby wyświetlić katalog zawierający kilka przykładów wstępnie spakowanych notesów korzystających z interfejsu API PySpark. Notesy zawierające przykłady kodu dla tego zestawu platformy Spark są dostępne w witrynie [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)
 
-Możesz przekazać notesów bezpośrednio z [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) na serwer notesu Jupyter w klastrze Spark. Na stronie głównej Twojej Jupyter, kliknij **przekazywanie** przycisku w prawej części ekranu. Spowoduje to otwarcie Eksploratora plików. W tym miejscu możesz wkleić adres URL usługi GitHub (nieprzetworzonej zawartości) w notesie, a następnie kliknij **Otwórz**.
+Notesy można przekazać bezpośrednio z witryny [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) do serwera notesu Jupyter w klastrze Spark. Na stronie głównej Jupyter kliknij przycisk **Przekaż** znajdujący się w prawej części ekranu. Spowoduje to otwarcie Eksploratora plików. W tym miejscu możesz wkleić adres URL witryny GitHub (nieprzetworzona zawartość) notesu i kliknąć pozycję **Otwórz**.
 
-Nazwa pliku zostanie wyświetlony na liście plików programu Jupyter, z **przekazywanie** ponownie przycisk. Kliknij tutaj, **przekazywanie** przycisku. Teraz zaimportowano notesu. Powtórz te kroki, aby przekazywanie notesów z tego przewodnika.
+Na liście plików Jupyter zostanie wyświetlona nazwa pliku z przyciskiem **Przekaż** . Kliknij ten przycisk **Przekaż** . Teraz zaimportowano notesu. Powtórz te kroki, aby przekazywanie notesów z tego przewodnika.
 
 > [!TIP]
 > Możesz kliknąć prawym przyciskiem myszy linki w przeglądarce i wybrać pozycję **Kopiuj link** , aby uzyskać adres URL nieprzetworzonej zawartości usługi GitHub. Ten adres URL można wkleić w okno dialogowe przekazywanie Jupyter Eksploratora plików.
@@ -163,12 +163,12 @@ Nazwa pliku zostanie wyświetlony na liście plików programu Jupyter, z **przek
 Teraz możesz wykonywać następujące czynności:
 
 * Aby wyświetlić kod, należy kliknąć notesu.
-* Wykonaj każda komórka, naciskając klawisz **wprowadź SHIFT**.
-* Uruchom cały notes, klikając **komórki** -> **Uruchom**.
+* Wykonaj każdą komórkę, naciskając **klawisze SHIFT-ENTER**.
+* Uruchom cały Notes, klikając **komórkę** -> **Run**.
 * Użyj automatycznego wizualizacji zapytań.
 
 > [!TIP]
-> Jądra PySpark automatycznie wizualizuje dane wyjściowe zapytań SQL (HiveQL). Masz możliwość dokonania wyboru spośród kilku różnych typów wizualizacji (tabeli, kołowego, linii, obszaru lub pasku) przy użyciu **typu** przycisków menu w notesie:
+> Jądra PySpark automatycznie wizualizuje dane wyjściowe zapytań SQL (HiveQL). Można wybrać różne typy wizualizacji (tabela, wykres kołowy, linia, obszar lub Słupek) za pomocą przycisków menu **Typ** w notesie:
 >
 >
 
@@ -177,9 +177,9 @@ Teraz możesz wykonywać następujące czynności:
 ## <a name="whats-next"></a>Co dalej?
 Teraz, gdy są konfigurowane przy użyciu klastra usługi HDInsight Spark i zostały przekazane z notesów Jupyter, można przystąpić do pracy z tematami, które odnoszą się do trzech notesów PySpark. Pokazują, jak eksplorować dane, a następnie tworzenie i korzystanie z modeli. Notes Eksplorowanie i modelowanie zaawansowanych danych pokazuje, jak do uwzględnienia krzyżowa Weryfikacja, parametrów sprawdzaniu, a model oceny.
 
-**Eksplorowanie i modelowanie za pomocą platformy Spark danych:** eksplorować zestawu danych i tworzenie, ocena i ocenić maszyny modeli uczenia dzięki pracy za pośrednictwem [Tworzenie binarnego modeli klasyfikacji i regresji dla danych przy użyciu MLlib platformy Spark zestaw narzędzi](spark-data-exploration-modeling.md) tematu.
+**Eksplorowanie i modelowanie danych za pomocą platformy Spark:** Eksplorowanie zestawu danych i tworzenie, Ocena i Ocena modeli uczenia maszynowego przez pracę w temacie [Create Binary Modeling and regresji dla danych za pomocą narzędzia Spark MLlib Toolkit](spark-data-exploration-modeling.md) .
 
-**Model użycia:** dowiesz się, jak na ocenianie modeli klasyfikacji i regresji, utworzone w tym temacie, zobacz [wynik i ocena modeli uczenia maszynowego utworzonych na platformie Spark](spark-model-consumption.md).
+**Użycie modelu:** Aby dowiedzieć się, jak oszacować modele klasyfikacji i regresji utworzone w tym temacie, zobacz [ocenę i ocenę modeli uczenia maszynowego opartych na platformie Spark](spark-model-consumption.md).
 
-**Krzyżowa Weryfikacja i zaczynają hiperparametrycznego**: zobacz [zaawansowane Eksplorowanie i modelowanie za pomocą platformy Spark danych](spark-advanced-data-exploration-modeling.md) w sposób modeli może być uczony przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów
+Czyszczenie z zastosowaniem **krzyżowym i**przeszukiwaniem: zobacz [Zaawansowane Eksploracja i modelowanie danych za pomocą platformy Spark](spark-advanced-data-exploration-modeling.md) , w jaki sposób można przeszkoleć modele przy użyciu weryfikacji krzyżowej i funkcji Hyper-Parameter.
 

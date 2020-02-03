@@ -29,7 +29,7 @@ W tej sekcji dowiesz się, jak używać wykresu **trendu miesięcznego szacunku 
 
 Aby wyświetlić wykres trendu szacowanych miesięcznych kosztów, wykonaj następujące kroki: 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
 3. Z listy laboratoriów wybierz laboratorium.  
 4. W menu po lewej stronie wybierz pozycję **Konfiguracja i zasady** .  
@@ -39,7 +39,7 @@ Aby wyświetlić wykres trendu szacowanych miesięcznych kosztów, wykonaj nast�
 
     **Szacowana wartość kosztu** jest szacowanym kosztem bieżącego miesiąca kalendarzowego. **Przewidywany koszt** jest szacowanym kosztem całego miesiąca kalendarzowego, obliczonym przy użyciu kosztu Lab dla ostatnich pięciu dni.
 
-    Kwoty kosztów są zaokrąglane w górę do najbliższej liczby całkowitej. Przykład: 
+    Kwoty kosztów są zaokrąglane w górę do najbliższej liczby całkowitej. Na przykład: 
 
    * 5,01 zaokrągla do 6 
    * 5,50 zaokrągla do 6
@@ -85,7 +85,7 @@ Usługa DevTest Labs umożliwia lepsze zarządzanie kosztami w laboratorium prze
 ## <a name="view-cost-by-resource"></a>Wyświetl koszt według zasobu 
 Funkcja trendu kosztu miesięcznego w laboratoriach pozwala zobaczyć, jak dużo spędzasz w bieżącym miesiącu kalendarzowym. Przedstawia także rzutowanie wydatków do końca miesiąca, na podstawie wydatków w ciągu ostatnich siedmiu dni. Aby ułatwić zrozumienie, dlaczego wydatki w laboratorium są wczesne progi spotkań, można użyć funkcji **Koszt według zasobów** , która pokazuje, jaki jest miesięczny koszt **na zasób** w tabeli.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
 3. Z listy laboratoriów wybierz odpowiednie laboratorium.  
 4. W menu po lewej stronie wybierz pozycję **Konfiguracja i zasady** .

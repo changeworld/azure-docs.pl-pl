@@ -32,7 +32,7 @@ W tym artykule dowiesz się, jak zbierać dane i monitorować modele wdrożone w
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj
 
 * Obszarem roboczym usługi Azure Machine Learning, katalog lokalny, który zawiera skrypty i zestawu SDK usługi Azure Machine Learning dla języka Python zainstalowane. Aby dowiedzieć się, jak uzyskać te wymagania wstępne, zobacz [jak skonfigurować środowisko programistyczne](how-to-configure-environment.md) .
 * Model uczenia maszynowego uczonego do wdrożenia usługi Azure Kubernetes Service (AKS) lub wystąpienia kontenera platformy Azure (ACI). Jeśli go nie masz, zapoznaj się z samouczkiem dotyczącym [modelu klasyfikacji obrazów szkolenia](tutorial-train-models-with-aml.md)
@@ -52,28 +52,28 @@ Możesz włączyć i wyłączyć usługę Azure Application Insights w Azure Por
 
 1. Na karcie **wdrożenia** wybierz usługę, w której chcesz włączyć Application Insights platformy Azure
 
-   [![Lista usług na karcie wdrożenia](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![listę usług na karcie wdrożenia](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Wybierz pozycję **Edytuj**
 
-   [![Przycisk Edytuj](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [przycisk edycji ![](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. W obszarze **Ustawienia zaawansowane**zaznacz pole wyboru **Włącz diagnostykę AppInsights**
 
-   [![Zaznaczenie pola wyboru dotyczące włączania diagnostyki](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![zaznaczone pole wyboru włączania diagnostyki](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Wybierz pozycję **Aktualizuj** w dolnej części ekranu, aby zastosować zmiany
 
-### <a name="disable"></a>Wyłączenie
+### <a name="disable"></a>Wyłączanie
 
 1. W [Azure Portal](https://portal.azure.com)Otwórz obszar roboczy
 1. Wybierz pozycję **wdrożenia**, wybierz pozycję Usługa, a następnie wybierz pozycję **Edytuj** .
 
-   [![Kliknij przycisk Edytuj](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![użyć przycisku Edytuj](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. W obszarze **Ustawienia zaawansowane**wyczyść pole wyboru **Włącz diagnostykę AppInsights**
 
-   [![Wyczyszczone pole wyboru włączenia diagnostyki](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [pole wyboru ![wyczyszczone w celu włączenia diagnostyki](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Wybierz pozycję **Aktualizuj** w dolnej części ekranu, aby zastosować zmiany
  
@@ -95,7 +95,7 @@ Możesz włączyć i wyłączyć usługę Azure Application Insights w Azure Por
 
 ### <a name="log-custom-traces-in-your-service"></a>Ślady niestandardowych dzienników w usłudze
 
-Jeśli chcesz ślady niestandardowych dzienników, postępuj zgodnie z procesem standardowego wdrożenia dla usługi AKS lub ACI w [sposób wdrażania i gdzie](how-to-deploy-and-where.md) dokumentu. Następnie wykonaj następujące czynności:
+Jeśli chcesz rejestrować niestandardowe ślady, postępuj zgodnie ze standardowym procesem wdrażania dla AKS lub ACI w temacie [jak wdrożyć i gdzie](how-to-deploy-and-where.md) dokument. Następnie wykonaj następujące czynności:
 
 1. Aktualizowanie pliku oceniania przez dodanie instrukcji Print
     
@@ -130,7 +130,7 @@ Aby go wyświetlić:
 
 1. Wybierz kartę **Przegląd** , aby wyświetlić podstawowy zestaw metryk dla usługi
 
-   [![Przegląd](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+   [Przegląd ![](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Aby przyjrzeć się metadanych i odpowiedzi na żądanie usługi sieci Web, wybierz tabelę **Requests** w sekcji **Logs (analiza)** i wybierz pozycję **Uruchom** , aby wyświetlić żądania.
 
@@ -138,9 +138,9 @@ Aby go wyświetlić:
 
 
 3. Aby zapoznać się ze śladami niestandardowymi, wybierz pozycję **Analiza**
-4. W sekcji schematu wybierz **ślady**. Następnie wybierz pozycję **Uruchom** kwerendy. Dane powinny być wyświetlane w formacie tabeli i powinny być mapowane na niestandardowe wywołania w pliku oceniania
+4. W sekcji schemat wybierz pozycję **ślady**. Następnie wybierz pozycję **Uruchom** , aby uruchomić zapytanie. Dane powinny być wyświetlane w formacie tabeli i powinny być mapowane na niestandardowe wywołania w pliku oceniania
 
-   [![Niestandardowe śledzenie](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [![niestandardowe ślady](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
 
 Aby dowiedzieć się więcej na temat korzystania z usługi Azure Application Insights, zobacz [co to jest Application Insights?](../azure-monitor/app/app-insights-overview.md).
 

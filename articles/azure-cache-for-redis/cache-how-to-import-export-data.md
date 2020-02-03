@@ -61,7 +61,7 @@ Import może służyć do przenoszenia zgodnych plików RDB Redis z dowolnego se
 
     ![Postęp importowania](./media/cache-how-to-import-export-data/cache-import-data-import-complete.png)
 
-## <a name="export"></a>Eksportuj
+## <a name="export"></a>Eksportowanie
 Eksport pozwala wyeksportować dane przechowywane w pamięci podręcznej platformy Azure dla Redis do Redis zgodnych plików RDB. Ta funkcja służy do przenoszenia danych z jednej pamięci podręcznej platformy Azure dla wystąpienia Redis do innego lub do innego serwera Redis. Podczas eksportowania plik tymczasowy jest tworzony na maszynie wirtualnej, która obsługuje wystąpienie serwera usługi Azure cache for Redis, i plik zostanie przekazany do wskazanego konta magazynu. Po zakończeniu operacji eksportowania ze stanem powodzenie lub niepowodzenie plik tymczasowy zostanie usunięty.
 
 1. Aby wyeksportować bieżącą zawartość pamięci podręcznej do magazynu, [Przejdź do pamięci podręcznej](cache-configure.md#configure-azure-cache-for-redis-settings) w Azure Portal a następnie kliknij pozycję **Eksportuj dane** w **menu zasób**.
@@ -79,7 +79,7 @@ Eksport pozwala wyeksportować dane przechowywane w pamięci podręcznej platfor
     ![Wybieranie kontenera magazynu](./media/cache-how-to-import-export-data/cache-export-data-container.png)
 4. Wpisz **prefiks nazwy obiektu BLOB** , a następnie kliknij przycisk **Eksportuj** , aby rozpocząć proces eksportowania. Prefiks nazwy obiektu BLOB jest używany do tworzenia prefiksu nazw plików wygenerowanych przez tę operację eksportowania.
 
-    ![Eksportuj](./media/cache-how-to-import-export-data/cache-export-data.png)
+    ![Eksportowanie](./media/cache-how-to-import-export-data/cache-export-data.png)
 
     Możesz monitorować postęp operacji eksportowania, wykonując powiadomienia z Azure Portal lub wyświetlając zdarzenia w [dzienniku inspekcji](../azure-resource-manager/management/view-activity-logs.md).
 

@@ -88,7 +88,7 @@ Po zdefiniowaniu zasad dla dzierżawy możesz kontynuować klasyfikację poszcze
 
 4. Aby pobrać raport w formacie programu Excel, kliknij opcję **eksportu** w górnym menu okna.
 
-   ![Eksportuj do programu Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
+   ![Wyeksportowanie do programu Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
 5. <a id="step-5"></a>Aby rozpocząć klasyfikowanie danych, kliknij **kartę Klasyfikacja** w górnej części okna.
 

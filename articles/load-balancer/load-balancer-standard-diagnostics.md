@@ -195,7 +195,7 @@ W poniższej tabeli wymieniono różne stany kondycji zasobów i ich opisy:
 
 | Stan kondycji zasobu | Opis |
 | --- | --- |
-| Dostępna | Zasób standardowego modułu równoważenia obciążenia jest w dobrej kondycji i jest dostępny. |
+| Dostępne | Zasób standardowego modułu równoważenia obciążenia jest w dobrej kondycji i jest dostępny. |
 | Niedostępny | Zasób standardowego modułu równoważenia obciążenia nie jest w dobrej kondycji. Diagnozuj kondycję, wybierając pozycję **Azure Monitor** > **metryki**.<br>(Stan*niedostępny* może również oznaczać, że zasób nie jest połączony z usługą równoważenia obciążenia w warstwie Standardowa). |
 | Nieznane | Stan kondycji zasobu dla zasobu standardowego modułu równoważenia obciążenia nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może również oznaczać, że zasób nie jest połączony z usługą równoważenia obciążenia w warstwie Standardowa).  |
 

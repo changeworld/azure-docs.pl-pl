@@ -67,7 +67,7 @@ Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, je
 
 W przypadku inicjowania obsługi ruchu wychodzącego z usługi Azure AD do aplikacji SaaS poleganie na [przypisaniach użytkowników lub grup](assign-user-or-group-access-portal.md) jest najczęstszym sposobem ustalenia, którzy użytkownicy znajdują się w zakresie aprowizacji. Ponieważ przypisania użytkownika są również używane do włączania logowania jednokrotnego, ta sama metoda może służyć do zarządzania dostępem i aprowizacji. Określanie zakresu opartego na przypisaniach nie ma zastosowania do scenariuszy inicjowania obsługi ruchu przychodzącego, takich jak Workday i SuccessFactors.
 
-* **Grupy.** Za pomocą planu licencjonowania Azure AD — wersja Premium można używać grup do przypisywania dostępu do aplikacji SaaS. Następnie, gdy zakres aprowizacji jest ustawiony do **synchronizowania tylko przypisanych użytkowników i grup**, usługa aprowizacji usługi Azure AD będzie inicjować lub cofać obsługę administracyjną użytkowników w zależności od tego, czy są członkami grupy przypisanej do aplikacji. Sam obiekt grupy nie jest inicjowany, chyba że aplikacja obsługuje obiekty grup.
+* **Grupowania.** Za pomocą planu licencjonowania Azure AD — wersja Premium można używać grup do przypisywania dostępu do aplikacji SaaS. Następnie, gdy zakres aprowizacji jest ustawiony do **synchronizowania tylko przypisanych użytkowników i grup**, usługa aprowizacji usługi Azure AD będzie inicjować lub cofać obsługę administracyjną użytkowników w zależności od tego, czy są członkami grupy przypisanej do aplikacji. Sam obiekt grupy nie jest inicjowany, chyba że aplikacja obsługuje obiekty grup.
 
 * **Grupy dynamiczne.** Usługa aprowizacji użytkowników w usłudze Azure AD może odczytywać i inicjować użytkowników w [grupach dynamicznych](../users-groups-roles/groups-create-rule.md). Pamiętaj o następujących zastrzeżeniach i zaleceniach:
 
@@ -154,7 +154,7 @@ Jeśli błąd w systemie docelowym uniemożliwia dodanie, zaktualizowanie lub us
 
 Usuń te błędy, dostosowując wartości atrybutów dla danego użytkownika w systemie źródłowym lub modyfikując mapowania atrybutów, aby nie powodowały konfliktów.
 
-### <a name="quarantine"></a>Magazynu
+### <a name="quarantine"></a>Kwarantanna
 
 Jeśli większość lub wszystkie wywołania, które są wykonywane względem systemu docelowego, są spójne niepowodzeniem z powodu błędu (na przykład nieprawidłowe poświadczenia administratora) zadanie aprowizacji przejdzie do stanu "Kwarantanna". Ten stan jest wskazany w raporcie dotyczącym [podsumowania aprowizacji](check-status-user-account-provisioning.md) i za pośrednictwem poczty e-mail, jeśli powiadomienia e-mail zostały skonfigurowane w Azure Portal.
 

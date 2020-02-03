@@ -38,10 +38,10 @@ W tym artykule opisano bieżące i wcześniejsze problemy związane z przystąpi
 
 | **Problem ze zgodnością w programie Standard scim 2,0** |  **FIXED?** | **Popraw datę**  |  
 |---|---|---|
-| Usługa Azure AD wymaga "/scim", aby znajdować się w katalogu głównym adresu URL punktu końcowego Standard scim aplikacji  | Tak  |  18 grudnia, 2018 | 
-| Atrybuty rozszerzenia używają notacji kropki "." przed nazwami atrybutów zamiast dwukropka ":" notacji |  Tak  | 18 grudnia, 2018  | 
-|  Żądania poprawek dla atrybutów wielowartościowych zawierają nieprawidłową składnię filtru ścieżki | Tak  |  18 grudnia, 2018  | 
-|  Żądania utworzenia grupy zawierają nieprawidłowy identyfikator URI schematu | Tak  |  18 grudnia, 2018  |  
+| Usługa Azure AD wymaga "/scim", aby znajdować się w katalogu głównym adresu URL punktu końcowego Standard scim aplikacji  | Yes  |  18 grudnia, 2018 | 
+| Atrybuty rozszerzenia używają notacji kropki "." przed nazwami atrybutów zamiast dwukropka ":" notacji |  Yes  | 18 grudnia, 2018  | 
+|  Żądania poprawek dla atrybutów wielowartościowych zawierają nieprawidłową składnię filtru ścieżki | Yes  |  18 grudnia, 2018  | 
+|  Żądania utworzenia grupy zawierają nieprawidłowy identyfikator URI schematu | Yes  |  18 grudnia, 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Czy poprawki dotyczące usług zostały automatycznie zastosowane do mojej istniejącej aplikacji Standard scim?
 

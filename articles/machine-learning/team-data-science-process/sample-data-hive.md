@@ -25,15 +25,15 @@ W tym artykule opisano, jak obniżenie częstotliwości próbkowania danych prze
 * Losowego próbkowanie według grup
 * Stratyfikowana próbkowania
 
-**Dlaczego przykładowe dane?**
+**Dlaczego warto Przykładowo dane?**
 Jeśli zestaw danych, która ma zostać analizowanie jest duża, zazwyczaj przyczyną jest dobrym pomysłem jest obniżenie częstotliwości próbkowania danych, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w zarządzaniu. Próbkowanie szczegółów ułatwia zrozumienie danych, poznawanie i technicznego opracowywania funkcji. Jego rolę w procesie nauki o danych zespołu jest umożliwienie szybkiego tworzenia prototypów funkcji do przetwarzania danych i modeli uczenia maszynowego.
 
-To zadanie próbkowania jest krok [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+To zadanie próbkowania jest krokiem w [procesie nauki o danych zespołowych (przetwarzania TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Jak przesłać zapytania programu Hive
-W konsoli wiersza polecenia usługi Hadoop na węzłem głównym klastra Hadoop można przesłać zapytania hive.  Zaloguj się do węzła głównego klastra Hadoop, Otwórz konsolę wiersza polecenia usługi Hadoop i prześlij do niej zapytania programu Hive. Aby uzyskać instrukcje dotyczące przesyłania zapytań programu Hive w konsoli wiersza polecenia usługi Hadoop, zobacz [jak przesłać zapytania Hive](move-hive-tables.md#submit).
+W konsoli wiersza polecenia usługi Hadoop na węzłem głównym klastra Hadoop można przesłać zapytania hive.  Zaloguj się do węzła głównego klastra Hadoop, Otwórz konsolę wiersza polecenia usługi Hadoop i prześlij do niej zapytania programu Hive. Instrukcje dotyczące przesyłania zapytań programu Hive w konsoli wiersza polecenia usługi Hadoop znajdują się w temacie [How to przesyłania zapytań Hive](move-hive-tables.md#submit).
 
-## <a name="uniform"></a> Jednolite losowego pobierania próbek
+## <a name="uniform"></a>Jednolite Próbkowanie losowe
 Jednolite losowego próbkowanie oznacza, że każdy wiersz w zestawie danych ma równe szanse na próbkowane. Może być implementowany przez dodanie rand() dodatkowe pola do zestawu danych w "Wybierz" zapytanie wewnętrzne i zewnętrzne zapytania "Wybierz" tego warunku dla tego pola, losowych.
 
 Oto przykładowe zapytanie:
@@ -49,10 +49,10 @@ Oto przykładowe zapytanie:
         )a
     where samplekey<='${hiveconf:sampleRate}'
 
-W tym miejscu `<sample rate, 0-1>` określa część rekordów, które użytkownicy mają do próbkowania.
+W tym miejscu `<sample rate, 0-1>` określa liczbę rekordów, które użytkownicy chcą próbkować.
 
-## <a name="group"></a> Losowego próbkowanie według grup
-Podczas próbkowania danych podzielonych na kategorie, warto uwzględnić lub wykluczyć wszystkie wystąpienia dla niektórych wartości podzielonych na kategorie zmiennej. Tego rodzaju próbkowania nosi nazwę "próbkowania przez grupę". Na przykład, jeśli zostały podzielone na kategorie zmiennej "*stanu*", która zawiera wartości, takich jak NY, MA, urząd certyfikacji, JORK i PA, rekordy z każdego stanu się ze sobą, czy są próbkowane, czy nie.
+## <a name="group"></a>Losowe próbkowanie według grup
+Podczas próbkowania danych podzielonych na kategorie, warto uwzględnić lub wykluczyć wszystkie wystąpienia dla niektórych wartości podzielonych na kategorie zmiennej. Tego rodzaju próbkowania nosi nazwę "próbkowania przez grupę". Na przykład jeśli masz zmienną kategorii "*State*", która ma wartości, takich jak NY, ma, CA, NJ i PA, chcesz, aby rekordy z każdego stanu były razem, niezależnie od tego, czy są one próbkowane.
 
 Poniżej przedstawiono przykładowe zapytanie tego przykłady przez grupę:
 
@@ -80,7 +80,7 @@ Poniżej przedstawiono przykładowe zapytanie tego przykłady przez grupę:
         )c
     on b.catfield=c.catfield
 
-## <a name="stratified"></a>Stratyfikowana próbkowania
+## <a name="stratified"></a>Próbkowanie Stratified
 Losowego próbkowanie jest uporządkować w odniesieniu do zmiennej podzielonych na kategorie, gdy przykłady uzyskane wartości podzielonych na kategorie, znajdujących się w tej samej proporcji znajdowały się w populacji nadrzędnej. Jak wyżej, przy użyciu tego samego przykładu załóżmy, że dane zawierają następujących obserwacjach według stanów: JORK ma 100 uwagi, NY ma 60 uwagi, a WA ma 300 uwagi. Jeśli określisz stopień stratyfikowana próbkowanie, aby być 0,5, następnie otrzymaną próbkę powinny mieć około 50, 30 i 150 obserwacje JORK, NY i WA odpowiednio.
 
 Oto przykładowe zapytanie:
@@ -99,5 +99,5 @@ Oto przykładowe zapytanie:
     where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 
 
-Aby uzyskać informacje na bardziej zaawansowane metody pobierania próbek, które są dostępne w gałęzi, zobacz [próbkowania LanguageManual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
+Aby uzyskać informacje na temat bardziej zaawansowanych metod próbkowania, które są dostępne w usłudze Hive, zobacz [LanguageManual próbkowanie](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
 

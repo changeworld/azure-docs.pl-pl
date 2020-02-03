@@ -26,24 +26,24 @@ W tym temacie pokazano, jak do obsługi operacji modelu uczenia maszynowego zapi
 Kroki instalacji i kodu do obsługi operacji modelu usługi uczenie Maszynowe są dostarczane w ramach tego przewodnika dotyczące korzystania z klastra usługi HDInsight Spark 1.6, a także klastra Spark w wersji 2.0. Kod dla tych procedur jest również udostępniany w notesy Jupyter.
 
 ### <a name="notebook-for-spark-16"></a>Notes dla aparatu Spark 1.6
-[PySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) notesu programu Jupyter pokazuje, jak operacjonalizować model zapisanej przy użyciu języka Python w klastrach HDInsight. 
+Notes [pySpark-Machine-Learning-Data-nauka-Spark-model-zużycie. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Jupyter pokazuje, jak operacjonalizować zapisany model przy użyciu języka Python w klastrach usługi HDInsight. 
 
 ### <a name="notebook-for-spark-20"></a>Notes dla aparatu Spark 2.0
-Aby zmodyfikować notesu programu Jupyter dla aparatu Spark 1.6 do korzystania z klastra usługi HDInsight Spark 2.0, należy zastąpić plik kodu języka Python za pomocą [ten plik](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Ten kod przedstawia sposób korzystanie z modeli utworzonych w wersji 2.0 platformy Spark.
+Aby zmodyfikować Notes Jupyter dla platformy Spark 1,6 do użycia z klastrem usługi HDInsight Spark 2,0, Zastąp plik kodu Python [tym plikiem](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Ten kod przedstawia sposób korzystanie z modeli utworzonych w wersji 2.0 platformy Spark.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Potrzebujesz konta platformy Azure i platformy Spark 1.6 (lub Spark 2.0) klastra HDInsight w celu przeprowadzenia tego instruktażu. Zobacz [Omówienie programu do nauki o danych przy użyciu platformy Spark w usłudze Azure HDInsight](spark-overview.md) w jaki sposób spełnić te wymagania. Ten temat zawiera również opis dane taksówek 2013 NYC użyty tutaj i instrukcje dotyczące sposobu wykonania kodu z notesu Jupyter w klastrze Spark. 
+1. Potrzebujesz konta platformy Azure i platformy Spark 1.6 (lub Spark 2.0) klastra HDInsight w celu przeprowadzenia tego instruktażu. Zapoznaj się z instrukcjami dotyczącymi sposobu spełniania tych wymagań, zobacz [Omówienie analizy danych przy użyciu platformy Spark w usłudze Azure HDInsight](spark-overview.md) . Ten temat zawiera również opis dane taksówek 2013 NYC użyty tutaj i instrukcje dotyczące sposobu wykonania kodu z notesu Jupyter w klastrze Spark. 
 2. Utwórz modele uczenia maszynowego, które mają zostać ocenione w tym miejscu przez zapoznanie się z tematem [eksplorowanie i modelowanie danych za pomocą platformy Spark](spark-data-exploration-modeling.md) dla klastra Spark 1,6 lub notesów platformy Spark 2,0. 
-3. Notesy platformy Spark 2.0 użycia dodatkowego zestawu danych dla zadania klasyfikacji, dobrze znane linie lotnicze w czasie wyjścia zestawu danych z 2011 i 2012. Opis notesów i łącza do nich znajdują się w [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) dla repozytorium GitHub zawierające je. Ponadto kod w tym miejscu w notesach połączonej jest ogólny i powinna działać w dowolnym klastrze Spark. Jeśli nie używasz platformy HDInsight Spark, konfiguracja klastra i czynności administracyjne mogą nieznacznie różnić się od przedstawionego w tym miejscu. 
+3. Notesy platformy Spark 2.0 użycia dodatkowego zestawu danych dla zadania klasyfikacji, dobrze znane linie lotnicze w czasie wyjścia zestawu danych z 2011 i 2012. Opis notesów i linków do nich znajduje się w [README.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) dla repozytorium GitHub zawierającego je. Ponadto kod w tym miejscu w notesach połączonej jest ogólny i powinna działać w dowolnym klastrze Spark. Jeśli nie używasz platformy HDInsight Spark, konfiguracja klastra i czynności administracyjne mogą nieznacznie różnić się od przedstawionego w tym miejscu. 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Instalacji: lokalizacje przechowywania, biblioteki i wstępnie zdefiniowane kontekstu aparatu Spark
 Platforma Spark jest możliwość odczytu i zapisu do obiektu Blob magazynu Azure (WASB). Dlatego żadnych istniejących danych przechowywanych mogą być przetwarzane przy użyciu platformy Spark i najlepszych wyników ponownie przechowywane w WASB.
 
-Aby zapisać modeli lub pliki w WASB, ścieżka musi być określona poprawnie. Kontener domyślny, dołączony do klastra Spark można się odwoływać przy użyciu ścieżki rozpoczynającej się od: *"wasb / / /"* . Poniższy przykład kodu Określa lokalizację danych do odczytu i ścieżki katalogu magazynu modelu, do którego dane wyjściowe modelu są zapisywane. 
+Aby zapisać modeli lub pliki w WASB, ścieżka musi być określona poprawnie. Do kontenera domyślnego dołączonego do klastra Spark można odwoływać się przy użyciu ścieżki rozpoczynającej się od: *"wasb///"* . Poniższy przykład kodu Określa lokalizację danych do odczytu i ścieżki katalogu magazynu modelu, do którego dane wyjściowe modelu są zapisywane. 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Ustaw ścieżki katalogu lokalizacje przechowywania w WASB
 Modele są zapisywane w: "wasb: / / / / remoteuser/NYCTaxi/modelach użytkowników". Jeśli ta ścieżka nie jest ustawiona poprawnie, modele nie są ładowane do oceniania.
@@ -51,7 +51,7 @@ Modele są zapisywane w: "wasb: / / / / remoteuser/NYCTaxi/modelach użytkownik�
 Scored wyniki zostały zapisane w: "wasb: / / / użytkownik/remoteuser/NYCTaxi/ScoredResults". Jeśli ścieżka do folderu jest nieprawidłowa, wyniki nie są zapisywane w tym folderze.   
 
 > [!NOTE]
-> Ścieżki lokalizacji pliku można skopiowane i wklejone do symbole zastępcze w tym kodzie z danych wyjściowych ostatnią komórkę **machine-learning-data-science-spark-data-exploration-modeling.ipynb** notesu.   
+> Lokalizacje ścieżki plików można kopiować i wklejać do symboli zastępczych w tym kodzie z poziomu danych wyjściowych ostatniej komórki z notesu **Machine-Learning-Data-nauka-ipynb** .   
 > 
 > 
 
@@ -80,7 +80,7 @@ Poniżej przedstawiono kod, aby ustawić ścieżek katalogów:
     import datetime
     datetime.datetime.now()
 
-**DANE WYJŚCIOWE:**
+**ROZDZIELCZOŚCI**
 
 datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
@@ -111,16 +111,16 @@ Jądra PySpark, które są dostarczane z notesów Jupyter mają wstępnie kontek
 
 Jądra PySpark zawiera kilka wstępnie zdefiniowanych "poleceń magicznych", które są specjalne polecenia, które można wywoływać za pomocą %%. Istnieją dwa polecenia, które są używane w tych przykładach kodu.
 
-* **%% lokalnego** określono, że kod w kolejnych wierszy jest wykonywane lokalnie. Kod musi być prawidłowy kod języka Python.
+* **%% lokalne** Określono, że kod w kolejnych wierszach jest wykonywany lokalnie. Kod musi być prawidłowy kod języka Python.
 * **%% Nazwa zmiennej \<SQL-o >** 
 * Wykonuje zapytanie programu Hive względem sqlContext. Jeśli parametr -o zostanie przekazana, wynik kwerendy są utrwalane w %% kontekstu Python lokalnego jako Pandas dataframe.
 
-Aby więcej informacji na temat jądra notesów programu Jupyter i wstępnie zdefiniowanego "magics", zapewniają one, zobacz [jądra, które są dostępne dla notesów programu Jupyter przy użyciu platformy Spark HDInsight w systemie Linux klastrów HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+Aby uzyskać więcej informacji na temat jądra dla notesów Jupyter oraz wstępnie zdefiniowanych "magicznych", zobacz [jądra dostępne dla notesów Jupyter z klastrami usługi HDInsight Spark Linux w usłudze HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Pozyskiwanie danych i Utwórz ramkę danych operacji czyszczenia
 Ta sekcja zawiera kod dla szeregu zadania wymagane w celu pozyskiwania danych, aby zostać ocenione. Odczytać w dołączonym do przykładowych 0,1% taksówek podróży i klasie pliku (przechowywany jako plik tsv), formatu danych, a następnie tworzy ramkę Wyczyść dane.
 
-Pliki podróży i klasie taksówek zostały przyłączone oparte na po procedury w: [zespołu danych dla celów naukowych w działaniu: przy użyciu klastrów usługi HDInsight Hadoop](hive-walkthrough.md) tematu.
+Pliki podróży i opłat za taksówkę zostały dołączone na podstawie procedury podanej w temacie: [proces analizy danych zespołu w działaniu: korzystanie z klastrów usługi HDInsight Hadoop](hive-walkthrough.md) .
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -180,7 +180,7 @@ Pliki podróży i klasie taksówek zostały przyłączone oparte na po procedury
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**DANE WYJŚCIOWE:**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 46.37 sekund
 
@@ -188,11 +188,11 @@ Czas wykonywania powyżej komórki: 46.37 sekund
 W tej sekcji przedstawiono sposób indeks, kodowanie i skalowania funkcje podzielonych na kategorie, aby przygotować je do użycia w algorytmów uczenia MLlib Tryb nadzorowany dla klasyfikacji i regresji.
 
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Funkcja transformacji: indeks i kodowanie kategorii funkcji dla danych wejściowych modeli do oceniania
-W tej sekcji pokazano, jak i indeksowanie danych podzielonych na kategorie za pomocą `StringIndexer` i kodowanie funkcji `OneHotEncoder` wejściowych modeli.
+W tej sekcji pokazano, jak indeksować dane kategorii przy użyciu funkcji `StringIndexer` i kodowania z `OneHotEncoder` danych wejściowych do modeli.
 
-[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) koduje kolumną z ciągami etykiet do kolumny indeksów etykiety. Indeksy są uporządkowane według częstotliwości etykiety. 
+[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) koduje kolumnę ciągów etykiet do kolumny indeksów etykiet. Indeksy są uporządkowane według częstotliwości etykiety. 
 
-[OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje kolumną indeksów etykiety z kolumną wektorów binarnych z co najwyżej jeden — wartość typu single. To kodowanie umożliwia algorytmy, które oczekują ciągłe ważnych funkcji, takich jak regresji logistycznej, mają być stosowane do kategorii funkcje.
+[OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) mapuje kolumnę indeksów etykiet do kolumny wektorów binarnych z co najwyżej jedną wartością. To kodowanie umożliwia algorytmy, które oczekują ciągłe ważnych funkcji, takich jak regresji logistycznej, mają być stosowane do kategorii funkcje.
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -252,14 +252,14 @@ W tej sekcji pokazano, jak i indeksowanie danych podzielonych na kategorie za po
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**DANE WYJŚCIOWE:**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 5.37 sekund
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Tworzenie obiektów RDD z tablicami funkcji dla danych wejściowych modeli
-Ta sekcja zawiera kod, który pokazuje, jak indeksowanie danych podzielonych na kategorie tekstu jako obiekt RDD i hot jeden Zakoduj je, dzięki czemu może służyć do nauczenia i przetestowania regresji logistycznej MLlib i modeli oparta na drzewie. Indeksowane dane są przechowywane w [odporne rozproszone zestawu danych (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) obiektów. Odporne to podstawowe streszczenie w platformie Spark. Obiekt RDD reprezentuje niezmienne, podzielone na partycje Kolekcja elementów, które mogą być stosowane równolegle z platformą Spark.
+Ta sekcja zawiera kod, który pokazuje, jak indeksowanie danych podzielonych na kategorie tekstu jako obiekt RDD i hot jeden Zakoduj je, dzięki czemu może służyć do nauczenia i przetestowania regresji logistycznej MLlib i modeli oparta na drzewie. Indeksowane dane są przechowywane w [odpornych obiektów zestawu danych rozproszonych (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) . Odporne to podstawowe streszczenie w platformie Spark. Obiekt RDD reprezentuje niezmienne, podzielone na partycje Kolekcja elementów, które mogą być stosowane równolegle z platformą Spark.
 
-Zawiera ona także kod, który pokazuje, jak skalować dane za pomocą `StandardScalar` udostępniane przez MLlib do użycia w regresji liniowej z stochastycznego gradientu zejścia (SGD), popularnych algorytm szkoleniowe szeroką gamę modeli uczenia maszynowego. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) służy do funkcji do wariancji jednostki skalowania. Funkcja skalowania, nazywana również normalizacji danych ubezpieczycielom, że funkcje o wartościach powszechnie rozchodów są nie udzieliła nadmierne porównać w celu funkcji. 
+Zawiera również kod, który pokazuje, jak skalować dane za pomocą `StandardScalar` zapewnianych przez MLlib do użycia w regresji liniowej z stochastycznego gradientem (SGD), popularnym algorytmem do uczenia szerokiego zakresu modeli uczenia maszynowego. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) jest używany do skalowania funkcji do wariancji jednostek. Funkcja skalowania, nazywana również normalizacji danych ubezpieczycielom, że funkcje o wartościach powszechnie rozchodów są nie udzieliła nadmierne porównać w celu funkcji. 
 
     # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
 
@@ -326,7 +326,7 @@ Zawiera ona także kod, który pokazuje, jak skalować dane za pomocą `Standard
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**DANE WYJŚCIOWE:**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 11.72 sekund
 
@@ -357,12 +357,12 @@ Kod w tej sekcji pokazano, jak załadować logistycznej Model regresji, który z
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**DANE WYJŚCIOWE:**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 19.22 sekund
 
 ## <a name="score-a-linear-regression-model"></a>Ocenianie modelu regresji liniowej
-Użyliśmy [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) do uczenia modelu regresji liniowej, za pomocą stochastycznego gradientu zejścia (SGD) do optymalizacji do prognozowania ilość Porada płatne. 
+Używamy [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) do uczenia modelu regresji liniowej przy użyciu gradientu STOCHASTYCZNEGO (SGD) do optymalizacji, aby przewidzieć płatną liczbę Porada. 
 
 Kod w tej sekcji przedstawiono sposób załadować modelu regresji liniowej z usługi Azure blob storage, ocenianie, korzystając ze zmiennych skalowanych, a następnie zapisz wyniki do obiektu blob.
 
@@ -390,16 +390,16 @@ Kod w tej sekcji przedstawiono sposób załadować modelu regresji liniowej z us
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**DANE WYJŚCIOWE:**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 16.63 sekund
 
 ## <a name="score-classification-and-regression-random-forest-models"></a>Ocenianie klasyfikacji i regresji losowe lasu modeli
 Kod w tej sekcji pokazano, jak załadować zapisanych klasyfikacji i regresji losowe lasu modeli zapisane w usłudze Azure blob storage, ocenić ich ze standardowego klasyfikatora i miarami regresji, a następnie zapisz wyniki magazynu obiektów blob.
 
-[Losowe lasów](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) są decyzyjne drzewa decyzyjne.  Łączą wiele drzewa decyzyjne, aby zmniejszyć ryzyko overfitting. Losowe lasy mogą obsługiwać kategorii funkcji dotyczyć ustawienie klasyfikacji wieloklasowej, skalowanie funkcja nie jest wymagane i są w stanie przechwytywania nieliniowość i interakcje funkcji. Losowe lasy są jednymi z najbardziej popularnych modeli, które w funkcji klasyfikacji i regresji uczenia maszynowego.
+[Losowe lasy](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) są kompletnymi drzewami decyzyjnymi.  Łączą wiele drzewa decyzyjne, aby zmniejszyć ryzyko overfitting. Losowe lasy mogą obsługiwać kategorii funkcji dotyczyć ustawienie klasyfikacji wieloklasowej, skalowanie funkcja nie jest wymagane i są w stanie przechwytywania nieliniowość i interakcje funkcji. Losowe lasy są jednymi z najbardziej popularnych modeli, które w funkcji klasyfikacji i regresji uczenia maszynowego.
 
-[Spark.mllib](https://spark.apache.org/mllib/) obsługuje losowe lasów binarne i wieloklasowej klasyfikacji i regresji, korzystanie z funkcji ciągłego i podzielonych na kategorie. 
+[platforma Spark. mllib](https://spark.apache.org/mllib/) obsługuje losowe lasy do klasyfikacji binarnej i wieloklasowej oraz do regresji przy użyciu funkcji ciągłego i kategorii. 
 
     # SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -436,7 +436,7 @@ Kod w tej sekcji pokazano, jak załadować zapisanych klasyfikacji i regresji lo
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**DANE WYJŚCIOWE:**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 31.07 sekund
 
@@ -486,7 +486,7 @@ Kod w tej sekcji przedstawiono sposób załadować modeli klasyfikacji i regresj
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**DANE WYJŚCIOWE:**
+**ROZDZIELCZOŚCI**
 
 Czas wykonywania powyżej komórki: 14.6 sekund
 
@@ -509,7 +509,7 @@ Czas wykonywania powyżej komórki: 14.6 sekund
     print "BoostedTreeRegressionFileLoc: " + btregressionfilename;
 
 
-**DANE WYJŚCIOWE:**
+**ROZDZIELCZOŚCI**
 
 logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
 
@@ -524,10 +524,10 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Korzystanie z modeli Spark za pośrednictwem interfejsu sieci web
-Platforma Spark udostępnia mechanizm do zdalnego przesyłania zadań wsadowych i interaktywnych zapytań za pośrednictwem interfejsu REST za pomocą składnika o nazwie usługi Livy. Usługi Livy jest włączona domyślnie w klastrze usługi HDInsight Spark. Aby uzyskać więcej informacji na temat usługi Livy, zobacz: [przesyłania zadań platformy Spark zdalnie przy użyciu programu Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
+Platforma Spark udostępnia mechanizm do zdalnego przesyłania zadań wsadowych i interaktywnych zapytań za pośrednictwem interfejsu REST za pomocą składnika o nazwie usługi Livy. Usługi Livy jest włączona domyślnie w klastrze usługi HDInsight Spark. Aby uzyskać więcej informacji na temat usługi Livy, zobacz: [przesyłanie zadań platformy Spark zdalnie przy użyciu usługi Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Można użyć usługi Livy zdalnie przesłać zadanie usługi batch wyniki pliku, który jest przechowywany w usłudze Azure blob, a następnie zapisuje wyniki do innego obiektu blob. Aby to zrobić, Przekaż skrypt języka Python z  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) do obiektu blob klastra platformy Spark. Można użyć narzędzia, takiego jak **Microsoft Azure Storage Explorer** lub **AzCopy** do Skopiuj skrypt do obiektu blob klastra. W naszym przypadku możemy przekazać skrypt, aby ***wasb:///example/python/ConsumeGBNYCReg.py***.   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) do obiektu BLOB klastra Spark. Aby skopiować skrypt do obiektu BLOB klastra, można użyć narzędzia, takiego jak **Eksplorator usługi Microsoft Azure Storage** lub **AzCopy** . W naszym przypadku przekazano skrypt do ***wasb:///example/Python/ConsumeGBNYCReg.py***.   
 
 > [!NOTE]
 > Klucze dostępu, które możesz muszą znajdują się w portalu dla konta magazynu skojarzonego z klastrem Spark. 
@@ -576,16 +576,16 @@ Poniżej przedstawiono kod języka Python dla wywołania HTTP:
     conn.close()
 
 
-Można również dodać ten kod języka Python w celu [usługi Azure Functions](https://azure.microsoft.com/documentation/services/functions/) do wyzwolenia przesyłanie zadań platformy Spark, która ocenia obiektu blob na podstawie różnych zdarzeń, takich jak timer, tworzenie lub aktualizowanie obiektu blob. 
+Możesz również dodać ten kod w języku Python, aby [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) wyzwolić przesłane zadanie Spark, które ocenia obiekt BLOB na podstawie różnych zdarzeń, takich jak czasomierz, tworzenie lub Aktualizacja obiektu BLOB. 
 
-Środowisko bezpłatnej klienckim kodu, należy użyć [usługi Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) do wywołania wsadowego Spark oceniania, definiując akcji HTTP na **Projektant aplikacji logiki** i ustawiając jego parametry. 
+Jeśli wolisz korzystać z kodu bezpłatnego klienta, użyj [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) do wywołania oceny wsadowej Spark przez zdefiniowanie akcji HTTP w **projektancie Logic Apps** i ustawienie jej parametrów. 
 
-* W witrynie Azure portal utworzyć nową aplikację logiki, wybierając **+ nowy** -> **sieci Web i mobilność** -> **aplikacji logiki**. 
-* Aby wyświetlić **Projektant aplikacji logiki**, wprowadź nazwę aplikacji logiki i planu usługi App Service.
+* W Azure Portal Utwórz nową aplikację logiki, wybierając pozycję **+ nowy** -> **Sieć Web + aplikacje mobilne** -> **aplikacji logiki**. 
+* Aby wyświetlić **projektanta Logic Apps**, wprowadź nazwę aplikacji logiki i App Service plan.
 * Wybieranie akcji HTTP, a następnie wprowadź parametry pokazano na poniższej ilustracji:
 
 ![Projektant aplikacji usługi Logic Apps](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>Co dalej?
-**Krzyżowa Weryfikacja i zaczynają hiperparametrycznego**: zobacz [zaawansowane Eksplorowanie i modelowanie za pomocą platformy Spark danych](spark-advanced-data-exploration-modeling.md) w sposób modeli może być uczony przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów.
+**Czyszczenie danych krzyżowych i parametrów**: zobacz [Zaawansowane eksplorowanie i modelowanie w systemie Spark,](spark-advanced-data-exploration-modeling.md) w jaki sposób można przeszkoleć modele przy użyciu weryfikacji krzyżowej i funkcji Hyper-Parameter.
 

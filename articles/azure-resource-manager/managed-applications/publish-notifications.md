@@ -28,7 +28,7 @@ Poniżej przedstawiono zalecane kroki umożliwiające szybkie rozpoczęcie pracy
 6. Postępuj zgodnie z instrukcjami w sekcji **Schemat powiadomień** tego artykułu, aby przeanalizować żądania powiadomień i wdrożyć logikę biznesową na podstawie powiadomienia.
 
 ## <a name="add-service-catalog-application-definition-notifications"></a>Dodawanie powiadomień definicji aplikacji katalogu usług
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Portalu Azure
 Aby rozpocząć, zobacz [publikowanie aplikacji katalogu usług za pomocą Azure Portal](./publish-portal.md).
 
 ![Powiadomienia definicji aplikacji katalogu usług w Azure Portal](./media/publish-notifications/service-catalog-notifications.png)
@@ -69,11 +69,11 @@ W poniższej tabeli opisano wszystkie możliwe kombinacje elementów EventType i
 
 Klasę | provisioningState | Wyzwalacz dla powiadomienia
 ---|---|---
-PUT | Przyjmować | Zarządzana Grupa zasobów została utworzona i została pomyślnie zastawiona po rozpoczęciu aplikacji (przed rozpoczęciem wdrażania w ramach zarządzanej grupy zasobów).
+PUT | Accepted | Zarządzana Grupa zasobów została utworzona i została pomyślnie zastawiona po rozpoczęciu aplikacji (przed rozpoczęciem wdrażania w ramach zarządzanej grupy zasobów).
 PUT | Powodzenie | Pełna aprowizacji aplikacji zarządzanej zakończyła się pomyślnie po UMIESZCZENIU.
 PUT | Niepowodzenie | Niepowodzenie inicjowania aprowizacji wystąpienia aplikacji w dowolnym momencie.
 PATCH | Powodzenie | Po pomyślnej poprawek w wystąpieniu aplikacji zarządzanej w celu zaktualizowania tagów, zasad dostępu JIT lub tożsamości zarządzanej.
-DELETE | Usuwanie | Zaraz po zainicjowaniu przez użytkownika usunięcia wystąpienia aplikacji zarządzanej.
+DELETE | Usunąć | Zaraz po zainicjowaniu przez użytkownika usunięcia wystąpienia aplikacji zarządzanej.
 DELETE | Usunięte | Po pełnym i pomyślnym usunięciu zarządzanej aplikacji.
 DELETE | Niepowodzenie | Po wystąpieniu błędu w trakcie anulowania aprowizacji, który blokuje usunięcie.
 ## <a name="notification-schema"></a>Schemat powiadomień

@@ -153,7 +153,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. W polu tekstowym **adres URL logowania** wklej wartość **adresu URL logowania**, który został skopiowany z Azure Portal.
 
-    d. Otwórz w Notatniku certyfikat szyfrowany algorytmem Base64, skopiuj jego zawartość i wklej go w polu tekstowym **certyfikat X. 509** .
+    c. Otwórz w Notatniku certyfikat szyfrowany algorytmem Base64, skopiuj jego zawartość i wklej go w polu tekstowym **certyfikat X. 509** .
 
     d. Kliknij przycisk **Połącz teraz**.
 
@@ -177,7 +177,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze Acquire
 
     b. W polu tekstowym **Email** (Adres e-mail) wprowadź adres e-mail użytkownika, na przykład **B.simon@contoso.com** .
 
-    d. Kliknij przycisk **Prześlij**.
+    c. Kliknij przycisk **Prześlij**.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
@@ -185,7 +185,7 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po kliknięciu kafelka AcquireIO w panelu dostępu należy automatycznie zalogować się do AcquireIO, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

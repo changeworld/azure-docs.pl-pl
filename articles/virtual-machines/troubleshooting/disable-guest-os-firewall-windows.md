@@ -100,7 +100,7 @@ Wykonaj następujące kroki, aby użyć [rejestru zdalnego](https://support.micr
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  Uruchom ponownie usługę. Ponieważ nie można tego zrobić za pomocą rejestru zdalnego, należy użyć polecenia Usuń konsolę usługi.
+3.  Należy ponownie uruchomić usługę. Ponieważ nie można tego zrobić za pomocą rejestru zdalnego, należy użyć polecenia Usuń konsolę usługi.
 
 4.  Otwórz wystąpienie programu **Services. msc**.
 
@@ -118,7 +118,7 @@ Wykonaj następujące kroki, aby użyć [rejestru zdalnego](https://support.micr
 
 Jeśli masz sytuację, w której nie można nawiązać połączenia z maszyną wirtualną za pomocą żadnej metody, rozszerzenie niestandardowego skryptu zakończy się niepowodzeniem i będzie trzeba pracować w trybie OFFLINE, pracując bezpośrednio na dysku systemowym. W tym celu wykonaj następujące kroki:
 
-1.  [Dołącz dysk systemu do odzyskiwania maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Dołącz dysk systemowy do maszyny wirtualnej odzyskiwania](troubleshoot-recovery-disks-portal-windows.md).
 
 2.  Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania.
 
@@ -160,6 +160,6 @@ Jeśli masz sytuację, w której nie można nawiązać połączenia z maszyną w
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [Odłączanie dysku systemowego i ponowne utworzenie maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md).
+10. [Odłącz dysk systemowy i Utwórz ponownie maszynę wirtualną](troubleshoot-recovery-disks-portal-windows.md).
 
 11. Sprawdź, czy problem został rozwiązany.

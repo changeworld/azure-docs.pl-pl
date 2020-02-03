@@ -18,17 +18,17 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76718607"
 ---
-# <a name="heading"></a>Przykładowe dane w kontenerach obiektów blob platformy Azure, programu SQL Server i tabel programu Hive
+# <a name="heading"></a>Przykładowe dane w kontenerach obiektów blob platformy Azure, SQL Server i tabelach Hive
 
 Następujące artykuły zawierają opis przykładowe dane są przechowywane w jednej z trzech różnych lokalizacji platformy Azure:
 
-* [**Dane w kontenerze obiektów blob platformy Azure** ](sample-data-blob.md) są próbkowane tak, pobierając je programowo i próbkowanie go za pomocą przykładowego kodu Python.
-* [**Dane programu SQL Server** ](sample-data-sql-server.md) są próbkowane tak, przy użyciu programu SQL i języka programowania Python. 
-* [**Dane tabeli hive** ](sample-data-hive.md) są próbkowane tak, przy użyciu zapytań programu Hive.
+* [**Dane kontenera obiektów blob platformy Azure**](sample-data-blob.md) są próbkowane przez pobranie go programowo, a następnie próbkowanie go przy użyciu przykładowego kodu w języku Python.
+* [**SQL Server dane**](sample-data-sql-server.md) są próbkowane przy użyciu języka SQL i programowania w języku Python. 
+* Próbkowanie [**danych tabeli Hive**](sample-data-hive.md) przy użyciu zapytań programu Hive.
 
-To zadanie próbkowania jest krok [Team Data Science naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+To zadanie próbkowania jest krokiem w [procesie nauki o danych zespołowych (przetwarzania TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-**Dlaczego przykładowe dane?**
+**Dlaczego dane przykładowe?**
 
 Jeśli zestaw danych, która ma zostać analizowanie jest duża, zazwyczaj przyczyną jest dobrym pomysłem jest obniżenie częstotliwości próbkowania danych, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w zarządzaniu. Downsizing mogą ułatwić zrozumienie, eksplorację i inżynierowanie danych. Ta rola próbkowania w procesie Cortana Analytics ma na celu umożliwienie szybkiego tworzenia prototypów funkcji przetwarzania danych i modeli uczenia maszynowego.
 

@@ -22,23 +22,23 @@ ms.locfileid: "76722173"
 
 Ten artykuł zawiera przykładowe skrypty Hive, które są używane do eksplorowania danych tabel programu Hive w klastrze usługi HDInsight Hadoop.
 
-To zadanie jest to krok w [zespołu danych dla celów naukowych](overview.md).
+To zadanie jest krokiem w [procesie nauki danych zespołu](overview.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że masz:
 
-* Utworzone konto magazynu platformy Azure. Aby uzyskać instrukcje, zobacz [Tworzenie konta usługi Azure Storage](../../storage/common/storage-account-create.md)
-* Zainicjowano obsługę administracyjną dostosowane klaster Hadoop w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [dostosować Azure HDInsight klastry Hadoop dla usługi Advanced Analytics](customize-hadoop-cluster.md).
-* Danych został przekazany do tabel programu Hive w klastrach usługi Azure HDInsight Hadoop. Jeśli nie, postępuj zgodnie z instrukcjami [tworzenie i ładowanie danych do tabel programu Hive](move-hive-tables.md) najpierw przekazywania danych do tabel programu Hive.
-* Włączony zdalny dostęp do klastra. Aby uzyskać instrukcje, zobacz [dostęp węzeł główny klastra Hadoop](customize-hadoop-cluster.md).
-* Aby uzyskać instrukcje dotyczące sposobu przesłać zapytania Hive, zobacz [jak przesłać zapytania Hive](move-hive-tables.md#submit)
+* Utworzone konto magazynu platformy Azure. Jeśli potrzebujesz instrukcji, zobacz [Tworzenie konta usługi Azure Storage](../../storage/common/storage-account-create.md)
+* Zainicjowano obsługę administracyjną dostosowane klaster Hadoop w usłudze HDInsight. Jeśli potrzebujesz instrukcji, zobacz [Dostosowywanie klastrów Azure HDInsight Hadoop na potrzeby zaawansowanej analizy](customize-hadoop-cluster.md).
+* Danych został przekazany do tabel programu Hive w klastrach usługi Azure HDInsight Hadoop. Jeśli tak nie jest, postępuj zgodnie z instrukcjami w temacie [Tworzenie i ładowanie danych do tabel programu Hive](move-hive-tables.md) , aby najpierw przekazać dane do tabel programu Hive.
+* Włączony zdalny dostęp do klastra. Jeśli potrzebujesz instrukcji, zobacz [dostęp do węzła głównego klastra usługi Hadoop](customize-hadoop-cluster.md).
+* Jeśli potrzebujesz instrukcji dotyczących przesyłania zapytań Hive, zobacz [Jak przesłać zapytania Hive](move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Przykładowe skrypty zapytania Hive do eksploracji danych
-1. Zliczanie uwagi na partycję  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Zliczanie uwagi na dzień  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+1. Pobierz liczbę obserwacji na partycję `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Pobierz liczbę obserwacji dziennie `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 3. Pobierz poziomy w kolumnie podzielonych na kategorie  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Pobierz liczbę poziomów w połączeniu z dwóch kolumn podzielonych na kategorie  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. Pobierz liczbę poziomów w połączeniu dwóch kategorii kolumn `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 5. Rozpoczynanie dystrybucji dla kolumny liczbowe  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. Prowadzenie rekordów Sprzęganie dwóch tabel
@@ -69,5 +69,5 @@ W tym artykule założono, że masz:
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Skrypty dodatkowe scenariusze danych podróży taksówek
-Przykłady kwerend, które są specyficzne dla [danych podróży taksówek NYC](https://chriswhong.com/open-data/foil_nyc_taxi/) scenariusze są również dostępne w [repozytorium GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Te zapytania już mają określony schemat danych i gotowe do wysłania do uruchomienia.
+Przykłady zapytań, które są specyficzne dla scenariuszy [danych dotyczących rejsów z NYCem](https://chriswhong.com/open-data/foil_nyc_taxi/) , są również dostępne w [repozytorium GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Te zapytania już mają określony schemat danych i gotowe do wysłania do uruchomienia.
 

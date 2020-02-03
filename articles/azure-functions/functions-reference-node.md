@@ -267,10 +267,10 @@ Umożliwia zapis do dzienników funkcji przesyłania strumieniowego na domyślny
 
 | Metoda                 | Opis                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | Zapisuje dane w dzienniku na poziomie błędu lub niższym.   |
-| **warn(_message_)**    | Zapisuje dane w dzienniku na poziomie ostrzeżeń lub niższym. |
-| **info(_message_)**    | Zapisuje dane w dzienniku lub niższym poziomie informacji.    |
-| **verbose(_message_)** | Zapisuje dane w celu pełnego rejestrowania na poziomie.           |
+| **błąd (_komunikat_)**   | Zapisuje dane w dzienniku na poziomie błędu lub niższym.   |
+| **warn (_komunikat_)**    | Zapisuje dane w dzienniku na poziomie ostrzeżeń lub niższym. |
+| **informacje (_komunikat_)**    | Zapisuje dane w dzienniku lub niższym poziomie informacji.    |
+| **verbose (_komunikat_)** | Zapisuje dane w celu pełnego rejestrowania na poziomie.           |
 
 Poniższy przykład zapisuje dziennik na poziomie śledzenia ostrzeżeń:
 
@@ -344,12 +344,12 @@ Obiekt `context.req` (Request) ma następujące właściwości:
 
 | Właściwość      | Opis                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _body_        | Obiekt, który zawiera treść żądania.               |
+| _jednostce_        | Obiekt, który zawiera treść żądania.               |
 | _nagłówka_     | Obiekt, który zawiera nagłówki żądania.                   |
-| _method_      | Metoda HTTP żądania.                                |
+| _Method_      | Metoda HTTP żądania.                                |
 | _originalUrl_ | Adres URL żądania.                                        |
 | _Krocz_      | Obiekt, który zawiera parametry routingu żądania. |
-| _query_       | Obiekt, który zawiera parametry zapytania.                  |
+| _dotyczących_       | Obiekt, który zawiera parametry zapytania.                  |
 | _rawBody_     | Treść komunikatu jako ciąg.                           |
 
 
@@ -359,10 +359,10 @@ Obiekt `context.res` (odpowiedź) ma następujące właściwości:
 
 | Właściwość  | Opis                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | Obiekt, który zawiera treść odpowiedzi.         |
+| _jednostce_    | Obiekt, który zawiera treść odpowiedzi.         |
 | _nagłówka_ | Obiekt, który zawiera nagłówki odpowiedzi.             |
 | _isRaw_   | Wskazuje, że formatowanie dla odpowiedzi jest pomijane.    |
-| _status_  | Kod stanu HTTP odpowiedzi.                     |
+| _Stany_  | Kod stanu HTTP odpowiedzi.                     |
 
 ### <a name="accessing-the-request-and-response"></a>Uzyskiwanie dostępu do żądania i odpowiedzi 
 

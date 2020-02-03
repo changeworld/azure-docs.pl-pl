@@ -80,11 +80,11 @@ Poniższe linki służą do konfigurowania protokołu TLS 1,2 i dozwolonych szyf
 
 | Język | Obsługiwane protokoły TLS 1,2 | Dokumentacja |
 |----------|-------------------|---------------|
-| C        | Tak               | [Link](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Tak               | [Link](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Tak               | [Link](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Tak               | [Link](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Tak               | [Link](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | Yes               | [Link](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Yes               | [Link](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Yes               | [Link](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Yes               | [Link](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Yes               | [Link](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>Korzystanie z protokołu TLS 1,2 w konfiguracji IoT Edge

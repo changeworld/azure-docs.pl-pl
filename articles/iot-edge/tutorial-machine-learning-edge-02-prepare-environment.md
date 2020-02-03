@@ -44,7 +44,7 @@ Maszyna wirtualna programu Development zostanie skonfigurowana przy użyciu:
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
   * [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
   * [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
-  * [Program PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
+  * [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 
 Maszyna wirtualna dla deweloperów nie jest ściśle wymagana — wszystkie narzędzia programistyczne można uruchomić na komputerze lokalnym. Jednak zdecydowanie zalecamy użycie maszyny wirtualnej w celu zagwarantowania pola poziomu odtwarzania.
 
@@ -144,7 +144,7 @@ Teraz, gdy masz połączenie z maszyną deweloperskią, Dodaj przydatne rozszerz
     * Python
     * C#
     * Docker
-    * PowerShell
+    * Program PowerShell
 
 ## <a name="set-up-iot-hub-and-storage"></a>Konfigurowanie IoT Hub i magazynu
 

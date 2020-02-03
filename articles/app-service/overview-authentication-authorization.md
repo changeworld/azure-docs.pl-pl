@@ -13,7 +13,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76715111"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
+# <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w Azure App Service
 
 > [!NOTE]
 > W tej chwili usługa AAD v2 (w tym MSAL) nie jest obsługiwana w przypadku usługi Azure App Services i Azure Functions. Sprawdź aktualizacje.
@@ -31,7 +31,7 @@ Bezpieczne uwierzytelnianie i autoryzacja wymagają dokładnego poznania zabezpi
 
 Aby uzyskać informacje specyficzne dla natywnych aplikacji mobilnych, zobacz [uwierzytelnianie użytkowników i autoryzacja dla aplikacji mobilnych za pomocą Azure App Service](../app-service-mobile/app-service-mobile-auth.md).
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 Moduł uwierzytelniania i autoryzacji jest uruchamiany w tej samej piaskownicy, w której znajduje się kod aplikacji. Gdy jest włączona, każde przychodzące żądanie HTTP przechodzi przez niego przed przekazaniem przez kod aplikacji.
 
@@ -75,7 +75,7 @@ Po [włączeniu rejestrowania aplikacji](troubleshoot-diagnostic-logs.md)będą 
 
 App Service używa [tożsamości federacyjnej](https://en.wikipedia.org/wiki/Federated_identity), w której dostawca tożsamości innej firmy zarządza tożsamościami użytkowników i przepływem uwierzytelniania. Pięć dostawców tożsamości jest dostępnych domyślnie: 
 
-| Dostawca | Punkt końcowy logowania |
+| Provider | Punkt końcowy logowania |
 | - | - |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
 | [Konto Microsoft](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
@@ -98,7 +98,7 @@ Przepływ uwierzytelniania jest taki sam dla wszystkich dostawców, ale różni 
 
 W poniższej tabeli przedstawiono kroki przepływu uwierzytelniania.
 
-| Czynność | Bez zestawu SDK dostawcy | Z zestawem SDK dostawcy |
+| Krok | Bez zestawu SDK dostawcy | Z zestawem SDK dostawcy |
 | - | - | - |
 | 1. Podpisz użytkownika w | Przekierowuje klienta do `/.auth/login/<provider>`. | Kod klienta podpisuje użytkownika bezpośrednio przy użyciu zestawu SDK dostawcy i odbiera token uwierzytelniania. Aby uzyskać więcej informacji, zobacz dokumentację dostawcy. |
 | 2. po uwierzytelnieniu | Dostawca przekierowuje klienta do `/.auth/login/<provider>/callback`. | Kod klienta [zapisuje token od dostawcy](app-service-authentication-how-to.md#validate-tokens-from-providers) , aby `/.auth/login/<provider>` do walidacji. |

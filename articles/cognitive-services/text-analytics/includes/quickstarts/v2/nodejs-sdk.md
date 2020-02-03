@@ -74,7 +74,7 @@ Obiekt Response jest listą zawierającą informacje o analizie dla każdego dok
 ## <a name="code-examples"></a>Przykłady kodu
 
 * [Uwierzytelnianie klienta](#authenticate-the-client)
-* [Analiza tonacji](#sentiment-analysis)
+* [analiza tonacji](#sentiment-analysis)
 * [Wykrywanie języka](#language-detection)
 * [Rozpoznawanie jednostek](#entity-recognition)
 * [Wyodrębnianie kluczowych fraz](#key-phrase-extraction)
@@ -87,7 +87,7 @@ Utwórz nowy obiekt [TextAnalyticsClient](https://docs.microsoft.com/javascript/
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
 
-## <a name="sentiment-analysis"></a>Analiza opinii
+## <a name="sentiment-analysis"></a>Analiza tonacji
 
 Utwórz listę obiektów słownika zawierającego dokumenty, które chcesz przeanalizować. Wywołaj metodę [tonacji ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) klienta i otrzymaj zwrócony [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult). Wykonaj iterację na liście wyników, a następnie wydrukuj identyfikator każdego dokumentu i ocenę tonacji. Wynik zbliżony do 0 wskazuje negatywną tonacji, natomiast wynik zbliżony do 1 wskazuje pozytywny tonacji.
 

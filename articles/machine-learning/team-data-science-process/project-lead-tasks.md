@@ -48,7 +48,7 @@ W tym samouczku przyjęto założenie, że [Menedżer grupy](group-manager-tasks
 Aby sklonować repozytoria i zmodyfikować zawartość na komputerze lokalnym lub Data Science Virtual Machine (DSVM) lub skonfigurować usługę Azure File Storage i zainstalować ją w DSVM, należy również wziąć pod uwagę tę listę kontrolną:
 
 - Subskrypcja platformy Azure.
-- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zobacz [dodatku platformami i narzędziami](platforms-and-tools.md#appendix).
+- Na maszynie zainstalowano narzędzie git. Jeśli używasz DSVM, program git jest wstępnie zainstalowany. W przeciwnym razie zapoznaj się z [dodatkiem platformy i narzędzia](platforms-and-tools.md#appendix).
 - Jeśli chcesz użyć DSVM, system Windows lub Linux DSVM utworzony i skonfigurowany na platformie Azure. Aby uzyskać więcej informacji i instrukcje, zapoznaj się z [dokumentacją Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
 - W przypadku systemu Windows DSVM na komputerze zainstalowano program [git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . W pliku *README.MD* przewiń w dół do sekcji **pobieranie i instalacja** , a następnie wybierz **najnowszy Instalator**. Pobierz instalatora *exe* ze strony Instalatora i uruchom go. 
 - W przypadku systemu Linux DSVM klucz publiczny skonfigurowany na DSVM i dodany do usługi Azure DevOps. Aby uzyskać więcej informacji i instrukcje, zobacz sekcję **Tworzenie klucza publicznego SSH** w [dodatku platformy i narzędzia](platforms-and-tools.md#appendix). 
@@ -95,6 +95,6 @@ Jeśli musisz dostosować zawartość repozytorium projektu w celu spełnienia o
 
 Poniżej znajdują się linki do szczegółowych opisów innych ról i zadań zdefiniowanych przez proces nauka danych zespołu:
 
-- [Menedżer grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md)
-- [Zadania kierownik zespołu dla zespołu do nauki o danych](team-lead-tasks.md)
+- [Zadania Menedżera grupy dla zespołu ds. analizy danych](group-manager-tasks.md)
+- [Zadania lidera zespołu dla zespołu ds. analizy danych](team-lead-tasks.md)
 - [Indywidualne zadania współautor dla zespołu ds. analizy danych](project-ic-tasks.md)

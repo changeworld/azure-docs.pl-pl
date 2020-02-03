@@ -84,7 +84,7 @@ Na ekranie **nowe żądanie ściągnięcia** , w razie potrzeby, przejdź do rep
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## <a name='ReviewandMerge-4'></a>Przegląd i scalanie
+## <a name='ReviewandMerge-4'></a>Przeglądanie i scalanie
 
 Po utworzeniu żądania ściągnięcia recenzenci otrzymują powiadomienie e-mail, aby przejrzeć żądanie ściągnięcia. Recenzenci sprawdzają, czy zmiany zadziałały, i sprawdzają zmiany, jeśli jest to możliwe. Recenzenci mogą wprowadzać komentarze, zażądać zmian i zatwierdzić lub odrzucić żądanie ściągnięcia na podstawie ich oceny. 
 

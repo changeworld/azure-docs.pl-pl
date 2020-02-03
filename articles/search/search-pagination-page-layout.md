@@ -53,7 +53,7 @@ Wyniki paginating wymagają zarówno `$top`, jak i `$skip`, gdzie `$top` określ
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
-## <a name="layout"></a>Layout
+## <a name="layout"></a>Układ
 
 Na stronie Wyniki wyszukiwania możesz chcieć wyświetlić obraz miniatury, podzestaw pól i link do strony kompletnego produktu.
 

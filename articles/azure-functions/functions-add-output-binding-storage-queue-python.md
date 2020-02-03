@@ -182,7 +182,7 @@ Gdy funkcja generuje odpowiedź HTTP dla przeglądarki sieci Web, wywoła równi
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
@@ -204,7 +204,7 @@ Gdy funkcja generuje odpowiedź HTTP dla przeglądarki sieci Web, wywoła równi
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     az storage queue list --output tsv
@@ -227,7 +227,7 @@ Gdy funkcja generuje odpowiedź HTTP dla przeglądarki sieci Web, wywoła równi
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))

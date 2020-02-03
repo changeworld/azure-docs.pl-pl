@@ -116,7 +116,7 @@ Funkcje podzielonych na kategorie można utworzyć w następujący sposób:
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="blob-binningfeature"></a>Kwantowanie generacji funkcji
+### <a name="blob-binningfeature"></a>Generowanie funkcji pakowania
 Podczas generowania funkcji kwanty, możemy wykonać następujące czynności:
 
 1. Dodaj sekwencję kolumn do pojemnika kolumny liczbowej
@@ -130,7 +130,7 @@ Podczas generowania funkcji kwanty, możemy wykonać następujące czynności:
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="sql-featuregen"></a>Zapisywanie danych z powrotem w obiektów blob platformy Azure i używania w usłudze Azure Machine Learning
+## <a name="sql-featuregen"></a>Zapisywanie danych z powrotem do obiektu blob platformy Azure i zużywanie w Azure Machine Learning
 Po zbadaniu danych i utworzeniu niezbędnych funkcji można przekazać dane (próbkowane lub featurized) do obiektu blob platformy Azure i użyć go w Azure Machine Learning, wykonując następujące czynności: dodatkowe funkcje można utworzyć w Azure Machine Learning Studio (klasyczny). 
 
 1. Zapis ramki danych do pliku lokalnego

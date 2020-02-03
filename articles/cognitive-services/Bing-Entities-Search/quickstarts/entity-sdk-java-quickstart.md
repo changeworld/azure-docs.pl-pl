@@ -23,7 +23,7 @@ Użyj tego poradnika Szybki start, aby zacząć wyszukiwać jednostki za pomocą
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Zestaw Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* Zestaw [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
 * Zestaw SDK wyszukiwania jednostek Bing dla języka Java
 

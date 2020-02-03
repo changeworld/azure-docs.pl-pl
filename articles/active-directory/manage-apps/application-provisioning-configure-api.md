@@ -30,7 +30,7 @@ Azure Portal to wygodny sposób konfigurowania aprowizacji pojedynczych aplikacj
 **Przegląd kroków dotyczących używania Microsoft Graph interfejsów API do automatyzowania konfigurowania aprowizacji**
 
 
-|Czynność  |Szczegóły  |
+|Krok  |Szczegóły  |
 |---------|---------|
 |[Krok 1. Tworzenie aplikacji galerii](#step-1-create-the-gallery-application)     |Logowanie do klienta interfejsu API <br> Pobierz szablon aplikacji galerii <br> Tworzenie aplikacji galerii         |
 |[Krok 2. Utwórz zadanie aprowizacji na podstawie szablonu](#step-2-create-the-provisioning-job-based-on-the-template)     |Pobieranie szablonu łącznika aprowizacji <br> Tworzenie zadania aprowizacji         |
@@ -529,7 +529,7 @@ Content-type: application/json
 }
 
 ```
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
 - [Zapoznaj się z dokumentacją Microsoft Graph synchronizacji](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Integrowanie niestandardowej aplikacji Standard scim z usługą Azure AD](use-scim-to-provision-users-and-groups.md)

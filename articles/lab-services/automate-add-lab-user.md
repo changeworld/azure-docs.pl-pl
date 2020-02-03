@@ -25,7 +25,7 @@ Azure DevTest Labs umożliwia szybkie tworzenie samoobsługowych środowisk dewe
 Aby dodać użytkownika do laboratorium, należy dodać użytkownika do roli **użytkownika DevTest Labs** dla laboratorium. W tym artykule pokazano, jak zautomatyzować Dodawanie użytkownika do laboratorium przy użyciu jednego z następujących sposobów:
 
 - Szablony usługi Azure Resource Manager
-- Polecenia cmdlet programu PowerShell systemu Azure 
+- Polecenia cmdlet programu Azure PowerShell 
 - Interfejs wiersza polecenia platformy Azure.
 
 ## <a name="use-azure-resource-manager-templates"></a>Korzystanie z szablonów usługi Azure Resource Manager

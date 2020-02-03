@@ -22,7 +22,7 @@ Aby utworzyć subskrypcję usługi Event Grid, Wyślij żądanie do operacji two
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Na przykład, aby utworzyć subskrypcję zdarzeń dla konta magazynu o nazwie `examplestorage` w grupie zasobów o nazwie `examplegroup`, użyj następującego formatu:
+Aby na przykład utworzyć subskrypcję zdarzeń dla konta magazynu o nazwie `examplestorage` w grupie zasobów o nazwie `examplegroup`, użyj następującego formatu:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
@@ -34,24 +34,24 @@ Nazwa subskrypcji zdarzeń musi mieć długość 3 – 64 znaków i może zawier
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| destination | obiekt | Obiekt, który definiuje punkt końcowy. |
-| filter | obiekt | Opcjonalne pole do filtrowania typów zdarzeń. |
+| miejsce docelowe | obiekt | Obiekt, który definiuje punkt końcowy. |
+| Filtr | obiekt | Opcjonalne pole do filtrowania typów zdarzeń. |
 
 ### <a name="destination-object"></a>obiekt docelowy
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| endpointType | string | Typ punktu końcowego dla subskrypcji (webhook/HTTP, Centrum zdarzeń lub kolejki). | 
-| endpointUrl | string | Docelowy adres URL zdarzenia w tej subskrypcji zdarzeń. | 
+| endpointType | ciąg | Typ punktu końcowego dla subskrypcji (webhook/HTTP, Centrum zdarzeń lub kolejki). | 
+| endpointUrl | ciąg | Docelowy adres URL zdarzenia w tej subskrypcji zdarzeń. | 
 
 ### <a name="filter-object"></a>obiekt filtru
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | includedEventTypes | tablica | Dopasowanie, gdy typ zdarzenia w komunikacie zdarzenia jest dokładne dopasowanie do jednego z tych nazw typu event. Zgłasza błąd, gdy nazwa zdarzenia jest niezgodny z nazwy typu zdarzenia zarejestrowane dla źródła zdarzenia. Domyślna jest zgodna wszystkich typów zdarzeń. |
-| subjectBeginsWith | string | Dopasowanie prefiksu filtr zdarzeń do pola temat wiadomości. Domyślne lub pusty ciąg pasuje do wszystkich. | 
-| subjectEndsWith | string | Sufiks match filtr zdarzeń do pola temat wiadomości. Domyślne lub pusty ciąg pasuje do wszystkich. |
-| isSubjectCaseSensitive | string | Kontrolki jest rozróżniana wielkość liter, pasujące do filtrów. |
+| subjectBeginsWith | ciąg | Dopasowanie prefiksu filtr zdarzeń do pola temat wiadomości. Domyślne lub pusty ciąg pasuje do wszystkich. | 
+| subjectEndsWith | ciąg | Sufiks match filtr zdarzeń do pola temat wiadomości. Domyślne lub pusty ciąg pasuje do wszystkich. |
+| isSubjectCaseSensitive | ciąg | Kontrolki jest rozróżniana wielkość liter, pasujące do filtrów. |
 
 
 ## <a name="example-subscription-schema"></a>Przykład schemat subskrypcji
@@ -77,4 +77,4 @@ Nazwa subskrypcji zdarzeń musi mieć długość 3 – 64 znaków i może zawier
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
+* Aby zapoznać się z wprowadzeniem do Event Grid, zobacz [co to jest Event Grid?](overview.md)

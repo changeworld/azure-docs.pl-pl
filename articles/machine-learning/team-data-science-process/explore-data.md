@@ -20,12 +20,12 @@ ms.locfileid: "76721272"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Eksplorowanie danych w zespołowym przetwarzaniu danych dla celów naukowych
 
-Eksplorowanie danych jest to krok w [zespołu danych dla celów naukowych](overview.md).
+Eksplorowanie danych to krok w [zespołowym procesie nauki o danych](overview.md).
 
 Następujące artykuły zawierają opis eksplorować dane w trzech środowiskach innego magazynu, które są zazwyczaj używane w procesie nauki o danych:
 
-* Zapoznaj się z [kontenera obiektów blob platformy Azure](explore-data-blob.md) danych przy użyciu [Pandas](https://pandas.pydata.org/) pakiet języka Python.
-* Zapoznaj się z [programu SQL Server](explore-data-sql-server.md) danych przy użyciu języka SQL i za pomocą języka programowania, takich jak Python.
-* Zapoznaj się z [tabeli hive za pomocą](explore-data-hive-tables.md) danych przy użyciu zapytań programu Hive.
+* Eksplorowanie danych [kontenera obiektów blob platformy Azure](explore-data-blob.md) przy użyciu pakietu języka Python [Pandas](https://pandas.pydata.org/) .
+* Eksplorowanie danych [SQL Server](explore-data-sql-server.md) przy użyciu języka SQL i języków programowania, takich jak Python.
+* Eksplorowanie danych [tabeli Hive](explore-data-hive-tables.md) przy użyciu zapytań programu Hive.
 
 Ponadto film wideo, [wstępnie przetwarzający dane w Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/), zawiera opis często używanych modułów do czyszczenia i przekształcania danych.

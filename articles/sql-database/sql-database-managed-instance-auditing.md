@@ -130,7 +130,7 @@ W poniższej sekcji opisano konfigurację inspekcji wystąpienia zarządzanego.
 
      1. Obowiązkowe Zaloguj się do konta platformy Azure:
 
-        ![Zaloguj się w usłudze Azure](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
+        ![Logowanie do platformy Azure](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
      1. Wybierz subskrypcję, konto magazynu i kontener obiektów blob z listy rozwijanej lub Utwórz własny kontener, klikając pozycję **Utwórz**. Po zakończeniu kliknij przycisk **OK**:
 
@@ -171,7 +171,7 @@ Dzienniki inspekcji z wystąpienia zarządzanego mogą być wysyłane do nawet c
 
 5. Wybierz lokalizację docelową dla zdarzeń inspekcji — centrum zdarzeń, dzienniki Azure Monitor lub oba te elementy. Skonfiguruj dla każdego obiektu docelowego wymagane parametry (np. Log Analytics obszar roboczy).
 
-6. Kliknij pozycję **Zapisz**.
+6. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie ustawień diagnostycznych](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 

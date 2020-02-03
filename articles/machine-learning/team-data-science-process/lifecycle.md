@@ -20,7 +20,7 @@ ms.locfileid: "76720456"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Cykl życia zespołowego danych dla celów naukowych
 
-Team Data Science naukowych oferuje zalecane cyklu życia, który umożliwia tworzenie struktury projektów do nauki o danych. Cykl życia przedstawia pełne kroki, które są wykonywane przez pomyślne projekty. Jeśli używasz innego cyklu życia do nauki o danych, takich jak między branży standardowego procesu do wyszukiwania danych [(WYSOKĄ-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), Knowledge Discovery w bazach danych [(KDD)](https://wikipedia.org/wiki/Data_mining#Process), lub proces niestandardowej w organizacji , nadal można korzystać z przetwarzania TDSP opartego na zadaniach. 
+Team Data Science naukowych oferuje zalecane cyklu życia, który umożliwia tworzenie struktury projektów do nauki o danych. Cykl życia przedstawia pełne kroki, które są wykonywane przez pomyślne projekty. W przypadku korzystania z innego cyklu życia nauki dotyczącego danych, takiego jak standardowy proces produkcji na potrzeby wyszukiwania danych [("wyrazisty DM")](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), odnajdywania wiedzy w bazach danych [(KDD)](https://wikipedia.org/wiki/Data_mining#Process)lub własnego procesu niestandardowego w organizacji, można nadal używać przetwarzania TDSP opartego na zadaniach. 
 
 Ten cykl życia jest przeznaczona dla projektów do nauki o danych, które są przeznaczone do wysłania jako część inteligentnych aplikacji. Te aplikacje wdrażania modeli uczenia i sztucznej inteligencji maszynowego do analizy predykcyjnej. Projekty naukowo-badawcze i projekty analizy Improvised mogą również korzystać z tego procesu. Jednak w tych projektach, niektóre kroki opisane w tym miejscu może być niepotrzebne. 
 
@@ -28,9 +28,9 @@ Ten cykl życia jest przeznaczona dla projektów do nauki o danych, które są p
 
 Cykl życia przetwarzania TDSP składa się z pięć etapów głównych, które są wykonywane wielokrotnie. Etapy te obejmują:
 
-   1. [Poznawanie firmy](lifecycle-business-understanding.md)
-   2. [Pozyskiwanie danych i opis](lifecycle-data.md)
-   3. [Modelowanie](lifecycle-modeling.md)
+   1. [Zrozumienie biznesowe](lifecycle-business-understanding.md)
+   2. [Pozyskiwanie i zrozumienie danych](lifecycle-data.md)
+   3. [Modelu](lifecycle-modeling.md)
    4. [Wdrożenie](lifecycle-deployment.md)
    5. [Akceptacja klienta](lifecycle-acceptance.md)
 
@@ -43,12 +43,12 @@ Cykl życia przetwarzania TDSP w modelu za pomocą sekwencji iterowanej czynnoś
 
 Na każdym etapie firma Microsoft zapewnia następujące informacje:
 
-   * **Cele**: określonych celów.
-   * **Jak to zrobić**: zarys określonych zadań i wskazówki na temat sposobu ich ukończenia.
-   * **Artefakty**: elementów dostarczanych i pomocy technicznej, aby je utworzyć.
+   * **Cele**: określone cele.
+   * **Jak to zrobić**: zarys określonych zadań i wskazówki dotyczące ich kończenia.
+   * **Artefakty**: elementy dostarczane i pomoc techniczna do ich tworzenia.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Firma Microsoft oferuje instruktaży pełnej end-to-end, które przedstawiają wszystkie kroki w procesie dla konkretnych scenariuszy. [Przykładowe przewodniki](walkthroughs.md) artykuł zawiera listę scenariuszy wraz z linkami i opisy miniatur. Przewodniki pokazują, jak połączyć chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
+Firma Microsoft oferuje instruktaży pełnej end-to-end, które przedstawiają wszystkie kroki w procesie dla konkretnych scenariuszy. [Przykładowy artykuł instruktażowy](walkthroughs.md) zawiera listę scenariuszy z linkami i opisami miniatur. Przewodniki pokazują, jak połączyć chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji. 
 
-Przykłady sposób wykonywania kroków w TDSPs, które używają usługi Azure Machine Learning Studio, zobacz [przetwarzania TDSP za pomocą usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Aby zapoznać się z przykładami wykonywania kroków w TDSPs, które używają Azure Machine Learning Studio, zobacz [Korzystanie z przetwarzania TDSP z Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

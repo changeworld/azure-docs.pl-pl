@@ -46,7 +46,7 @@ Po zainstalowaniu lub zaktualizowaniu Azure PowerShell należy zainstalować mod
 Install-Module AzTable
 ```
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Add-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 

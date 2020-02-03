@@ -16,7 +16,7 @@ ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719810"
 ---
-# <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
+# <a name="get-started-with-sql-database-auditing"></a>Wprowadzenie do inspekcji bazy danych SQL
 
 Inspekcja usługi Azure [SQL Database](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie usługi Azure Storage, w obszarze roboczym log Analytics lub Event Hubs. Inspekcja również:
 
@@ -111,7 +111,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
 
     ![Centrum zdarzeń](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. Kliknij pozycję **Zapisz**.
+9. Kliknij przycisk **Save** (Zapisz).
 10. Jeśli chcesz dostosować zdarzenia poddane inspekcji, możesz to zrobić za pomocą [poleceń cmdlet programu PowerShell](#subheading-7) lub [interfejsu API REST](#subheading-9).
 11. Po skonfigurowaniu ustawień inspekcji można włączyć nową funkcję wykrywania zagrożeń i skonfigurować wiadomości e-mail w celu otrzymywania alertów zabezpieczeń. W przypadku korzystania z wykrywania zagrożeń otrzymywane są aktywne alerty dotyczące nietypowych działań bazy danych, które mogą wskazywać na potencjalne zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wykrywania zagrożeń](sql-database-threat-detection-get-started.md).
 

@@ -25,7 +25,7 @@ ms.locfileid: "76715769"
 
 ## <a name="azure-monitor-pricing-model"></a>Azure Monitor model cenowy
 
-Model rozliczeń w warstwie Podstawowa Azure Monitor jest przyjazny dla chmury, oparte na użyciu ceny ("płatność zgodnie z rzeczywistym użyciem"). Płacisz wyłącznie za użyte zasoby. Szczegóły cennika są dostępne dla [alertów, metryk, powiadomień](https://azure.microsoft.com/pricing/details/monitor/), [log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) i [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
+Model rozliczeń w warstwie Podstawowa Azure Monitor jest przyjazny dla chmury, oparte na użyciu ceny ("płatność zgodnie z rzeczywistym użyciem"). Płaci się wyłącznie za użyte zasoby. Szczegóły cennika są dostępne dla [alertów, metryk, powiadomień](https://azure.microsoft.com/pricing/details/monitor/), [log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) i [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
 
 Oprócz modelu płatność zgodnie z rzeczywistym użyciem dla danych dzienników Log Analytics ma rezerwacje pojemności, co pozwala zaoszczędzić do 25% w porównaniu z ceną płatność zgodnie z rzeczywistym użyciem. Cennik rezerwacji zdolności produkcyjnych umożliwia zakupienie rezerwacji rozpoczynającej się o 100 GB/dzień. Każde użycie powyżej poziomu rezerwacji będzie rozliczane według stawki płatności zgodnie z rzeczywistym użyciem. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/monitor/) o cenach rezerwacji pojemności.
 
@@ -60,7 +60,7 @@ Następnie, aby zobaczyć koszty Azure Monitor w ciągu ostatnich 30 dni, klikni
 1. Azure Monitor
 2. Application Insights
 3. Log Analytics
-4. Insight and Analytics
+4. Wgląd w dane i analizy
 
 Spowoduje to wyświetlenie widoku, takiego jak:
 
@@ -87,7 +87,7 @@ Wybierz link w kolumnie miesięczne użycie, aby Otwórz wykres, który pokazuje
 
 ## <a name="operations-management-suite-subscription-entitlements"></a>Uprawnienia do subskrypcji pakietu Operations Management Suite
 
-Klienci, którzy zakupili pakiet Microsoft Operations Management Suite E1 i E2 kwalifikują się do każdego węzła uprawnień do wprowadzania danych dla [usługi Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) i [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Aby otrzymać te uprawnienia dla obszarów roboczych usługi Log Analytics i zasoby usługi Application Insights w ramach danej subskrypcji: 
+Klienci, którzy zakupili Microsoft Operations Management Suite E1 i E2, mają uprawnienia do pozyskiwania danych na węzłach dla [log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) i [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Aby otrzymać te uprawnienia dla obszarów roboczych usługi Log Analytics i zasoby usługi Application Insights w ramach danej subskrypcji: 
 
 - Obszary robocze usługi log Analytics, należy używać "za węzeł (OMS)" warstwy cenowej.
 - Zasoby Application Insights powinny korzystać z warstwy cenowej "Enterprise".

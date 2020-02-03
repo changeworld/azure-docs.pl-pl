@@ -52,8 +52,8 @@ Poniższa tabela zawiera podsumowanie różnic identyfikatorów kont między bib
 | Identyfikator konta                | BIBLIOTEKA MSAL                                                         | Biblioteka ADAL 2.7. x      | Starsza wersja ADAL (przed ADAL 2.7. x) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | Identyfikator, który ma być odtwarzany            | `username`                                                   | `userId`        | `userId`                       |
-| unikatowy identyfikator, który nie jest odtwarzany | `identifier`                                                 | `homeAccountId` | ND                            |
-| Brak znanego identyfikatora konta               | Wykonywanie zapytania dotyczącego wszystkich kont za poorednictwem interfejsu API `allAccounts:` w programie `MSALPublicClientApplication` | ND             | ND                            |
+| unikatowy identyfikator, który nie jest odtwarzany | `identifier`                                                 | `homeAccountId` | Nie dotyczy                            |
+| Brak znanego identyfikatora konta               | Wykonywanie zapytania dotyczącego wszystkich kont za poorednictwem interfejsu API `allAccounts:` w programie `MSALPublicClientApplication` | Nie dotyczy             | Nie dotyczy                            |
 
 Jest to interfejs `MSALAccount` udostępniający te identyfikatory:
 
@@ -207,7 +207,7 @@ Ponieważ `homeAccountId` nie jest dostępna w starszych wersjach ADAL, należy 
                               error:(NSError * __autoreleasing *)error;
 ```
 
-Przykład:
+Na przykład:
 
 Cel-C:
 

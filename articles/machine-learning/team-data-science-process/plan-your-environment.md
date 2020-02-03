@@ -65,7 +65,7 @@ Gdzie dane wymagają przetworzenia lub modelowania?
 
 Aby zapoznać się z procedurami i zasobami w celu pozyskiwania lub ładowania danych do różnych środowisk magazynowania i przetwarzania, zobacz:
 
-* [Ładowanie danych w środowiskach magazynowania do analizy](ingest-data.md)
+* [Ładowanie danych do środowisk magazynu na potrzeby analiz](ingest-data.md)
 * [Importowanie danych szkoleniowych do Azure Machine Learning Studio (klasyczne) z różnych źródeł danych](../studio/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Czy dane muszą być przenoszone zgodnie z regularnym harmonogramem czy modyfikowane podczas migracji?
@@ -79,7 +79,7 @@ Aby uzyskać więcej informacji, zobacz [przenoszenie danych z lokalnego program
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Jaka część danych ma zostać przeniesiona na platformę Azure?
 
-Duże zestawy danych mogą przekroczyć pojemność magazynu w niektórych środowiskach. Aby zapoznać się z przykładem, zobacz Omówienie limitów rozmiaru dla Machine Learning Studio (klasyczny) w następnej sekcji. W takich przypadkach można użyć próbki danych podczas analizy. Aby uzyskać szczegółowe informacje dotyczące obniżenie częstotliwości próbkowania zestawu danych w różnych środowiskach Azure, zobacz [przykładowych danych w procesie nauki o danych zespołu](sample-data.md).
+Duże zestawy danych mogą przekroczyć pojemność magazynu w niektórych środowiskach. Aby zapoznać się z przykładem, zobacz Omówienie limitów rozmiaru dla Machine Learning Studio (klasyczny) w następnej sekcji. W takich przypadkach można użyć próbki danych podczas analizy. Aby uzyskać szczegółowe informacje na temat przedstawiania przykładowego zestawu danych w różnych środowiskach platformy Azure, zobacz [przykładowe dane w procesie nauki o danych zespołowych](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Pytania dotyczące danych cechy: typ, formatu i rozmiar
 
@@ -90,7 +90,7 @@ Te pytania są kluczowe do planowania środowiska magazynu i przetwarzania. Pomo
 * Wartości liczbowych
 * Podzielone na kategorie
 * Ciągi
-* Binary
+* Binarny
 
 ### <a name="how-is-your-data-formatted"></a>Jak są sformatowane dane?
 
@@ -108,8 +108,8 @@ Te pytania są kluczowe do planowania środowiska magazynu i przetwarzania. Pomo
 
 Wypełnij środowisko Azure Machine Learning Studio (klasyczne) na przykład:
 
-* Aby uzyskać listę formatów danych i typy obsługiwanych przez usługi Azure Machine Learning Studio, zobacz [formatów danych i typy danych obsługiwane](../studio/import-data.md#supported-data-formats-and-data-types) sekcji.
-* Aby uzyskać informacji na temat ograniczeń innych usług platformy Azure używane w procesie analytics, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* Listę formatów i typów danych obsługiwanych przez Azure Machine Learning Studio można znaleźć w sekcji [formaty danych i typy danych obsługiwane](../studio/import-data.md#supported-data-formats-and-data-types) .
+* Aby uzyskać informacje na temat ograniczeń innych usług platformy Azure używanych w procesie analizy, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Pytania dotyczące jakości danych: eksplorowanie i wstępne przetwarzanie
 
@@ -127,11 +127,11 @@ Ten krok ma na celu ułatwienie:
 * Formułowanie form, które sugerują najbardziej odpowiednie funkcje lub typ analizy
 * Formułowanie planów dotyczących dodatkowej zbierania danych
 
-Przydatne techniki inspekcji danych obejmują Obliczanie statystyk i wykresy wizualizacji. Aby uzyskać szczegółowe informacje dotyczące eksplorować zestaw danych w różnych środowiskach Azure, zobacz [Eksplorowanie danych w procesie nauki o danych zespołu](explore-data.md).
+Przydatne techniki inspekcji danych obejmują Obliczanie statystyk i wykresy wizualizacji. Aby uzyskać szczegółowe informacje na temat eksplorowania zestawu danych w różnych środowiskach platformy Azure, zobacz [Eksplorowanie danych w zespołowym procesie nauki danych](explore-data.md).
 
 ### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Czy dane wymagają przetwarzania wstępnego czy czyszczenia?
 
-Może być konieczne wstępne przetworzenie i oczyszczenie danych, aby można było efektywnie korzystać z zestawu danych w celu uczenia maszynowego. Dane pierwotne często są zakłóceniami i zawodowo. Może brakować wartości. Przy użyciu tych danych do modelowania może spowodować wyświetlenie nieprawdziwych wyników. Aby uzyskać opis, zobacz [zadania w celu przygotowania danych do rozszerzonego uczenia maszynowego](prepare-data.md).
+Może być konieczne wstępne przetworzenie i oczyszczenie danych, aby można było efektywnie korzystać z zestawu danych w celu uczenia maszynowego. Dane pierwotne często są zakłóceniami i zawodowo. Może brakować wartości. Przy użyciu tych danych do modelowania może spowodować wyświetlenie nieprawdziwych wyników. Aby uzyskać opis, zobacz [zadania przygotowujące dane do ulepszonej uczenia maszynowego](prepare-data.md).
 
 ## <a name="tools-and-languages-questions"></a>Pytania dotyczące narzędzi i języków
 
@@ -147,16 +147,16 @@ Istnieje wiele opcji języków, środowisk deweloperskich i narzędzi. Zapoznaj 
 
 * [Microsoft Azure PowerShell](/powershell/azure/overview) — język skryptu używany do administrowania zasobami platformy Azure w języku skryptów
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
-* [Zakup firmy revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
-* [Programu RStudio](https://www.rstudio.com)
+* [Analiza obrotów](https://www.microsoft.com/sql-server/machinelearningserver)
+* [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
 * [Notesy programu Jupyter](https://jupyter.org/)
-* [Microsoft Power BI](https://powerbi.microsoft.com)
+* [Power BI firmy Microsoft](https://powerbi.microsoft.com)
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>Identyfikowanie własnego scenariusza zaawansowanej analizy
 
-Po udzieleniu odpowiedzi na pytania z poprzedniej sekcji możesz określić, który scenariusz najlepiej pasuje do Twojego przypadku. Przykładowe scenariusze są opisane w [scenariusze zaawansowanej analizy w usłudze Azure Machine Learning](plan-sample-scenarios.md).
+Po udzieleniu odpowiedzi na pytania z poprzedniej sekcji możesz określić, który scenariusz najlepiej pasuje do Twojego przypadku. Przykładowe scenariusze są opisane w [scenariuszach dotyczących zaawansowanej analizy w Azure Machine Learning](plan-sample-scenarios.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

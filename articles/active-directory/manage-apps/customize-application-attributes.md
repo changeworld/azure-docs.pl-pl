@@ -109,7 +109,7 @@ Niektóre aplikacje obsługują jednak atrybuty niestandardowe, a usługa Azure 
 
 Aplikacje i systemy obsługujące Dostosowywanie listy atrybutów obejmują:
 
-- Salesforce
+- SalesForce
 - ServiceNow
 - Workday
 - Azure Active Directory (obsługiwane są[domyślne atrybuty usługi Azure AD interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) i niestandardowe rozszerzenia katalogu)
@@ -130,7 +130,7 @@ Podczas edytowania listy obsługiwanych atrybutów są dostępne następujące w
   - Atrybut *String* zawiera ciąg tekstowy.
 - **Klucz podstawowy?** -Czy atrybut jest zdefiniowany jako pole klucza podstawowego w schemacie obiektu docelowego.
 - **Wymagane?** -Czy atrybut jest wymagany do wypełnienia w aplikacji lub systemie docelowym.
-- **Multi-value?** -Czy atrybut obsługuje wiele wartości.
+- **Wiele wartości?** -Czy atrybut obsługuje wiele wartości.
 - **Dokładnie przypadek?** -Czy wartości atrybutów są oceniane w sposób uwzględniający wielkość liter.
 - **Wyrażenie interfejsu API** — nie używaj, o ile nie zostanie to zrobione przez dokumentację określonego łącznika aprowizacji (na przykład Workday).
 - **Atrybut obiektu przywoływany** — jeśli jest to atrybut typu referencyjnego, to menu umożliwia wybranie tabeli i atrybutu w aplikacji docelowej zawierającej wartość skojarzoną z atrybutem. Na przykład jeśli masz atrybut o nazwie "Department", którego przechowywana wartość odwołuje się do obiektu w oddzielnej tabeli "działS", wybierz pozycję "Departments.Name". Tabele odwołań i pola identyfikatora podstawowego obsługiwane przez daną aplikację są wstępnie skonfigurowane i obecnie nie można ich edytować za pomocą Azure Portal, ale można je edytować przy użyciu [interfejs API programu Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
@@ -318,8 +318,8 @@ Wybranie tej opcji spowoduje skuteczną ponowną synchronizację wszystkich uży
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Automatyzowanie użytkownika aprowizacji/Deprovisioning do aplikacji SaaS](user-provisioning.md)
+- [Automatyzacja aprowizacji użytkowników/anulowania obsługi administracyjnej w aplikacjach SaaS](user-provisioning.md)
 - [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)
-- [Filtrów określania zakresu na potrzeby aprowizacji użytkownika](define-conditional-rules-for-provisioning-user-accounts.md)
+- [Filtry zakresu dla aprowizacji użytkowników](define-conditional-rules-for-provisioning-user-accounts.md)
 - [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](use-scim-to-provision-users-and-groups.md)
 - [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)

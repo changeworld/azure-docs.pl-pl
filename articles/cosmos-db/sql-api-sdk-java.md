@@ -18,7 +18,7 @@ ms.locfileid: "76718177"
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [Kanał informacyjny zmian .NET](sql-api-sdk-dotnet-changefeed.md)
+> * [Źródło zmian platformy .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java (asynchroniczny)](sql-api-sdk-async-java.md)
@@ -30,16 +30,16 @@ ms.locfileid: "76718177"
 > * [Wykonawca zbiorczy — .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Moduł wykonawczy zbiorczej — Java](sql-api-sdk-bulk-executor-java.md)
 
-Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne. Użyj asynchronicznej obsługi [zestawu Java SDK SQL API Async](sql-api-sdk-async-java.md). 
+Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne. Aby zapewnić obsługę asynchroniczną, należy użyć [interfejsu API usługi Async Java dla języka SQL](sql-api-sdk-async-java.md). 
 
 | |  |
 |---|---|
-|**Zestaw SDK do pobrania**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
+|**Pobieranie zestawu SDK**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**Dokumentacja interfejsu API**|[Dokumentacja interfejsu API języka Java](/java/api/com.microsoft.azure.documentdb)|
-|**Przyczynia się do zestawu SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**Wprowadzenie**|[Wprowadzenie do zestawu SDK Java](sql-api-java-get-started.md)|
-|**Samouczek dotyczący aplikacji sieci Web**|[Opracowywanie aplikacji sieci Web za pomocą usługi Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimalne obsługiwane środowisko uruchomieniowe**|[Zestaw Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
+|**Współtworzenie zestawu SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Rozpoczęcie pracy**|[Wprowadzenie do zestawu Java SDK](sql-api-java-get-started.md)|
+|**Samouczek aplikacji sieci Web**|[Tworzenie aplikacji sieci Web za pomocą Azure Cosmos DB](sql-api-java-application.md)|
+|**Minimalne obsługiwane środowisko uruchomieniowe**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Informacje o wersji
 
@@ -127,7 +127,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 * Zwiększono wydajność serializacji Json.
-* Ta wersja zestawu SDK wymaga najnowszej wersji emulatora usługi Azure Cosmos dostępne do pobrania z https://aka.ms/cosmosdb-emulator.
+* Ta wersja zestawu SDK wymaga najnowszej wersji Azure Cosmos DB emulatora dostępnej do pobrania z https://aka.ms/cosmosdb-emulator.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 * Wewnętrzny zmiany dla bibliotek znajomych firmy Microsoft.
@@ -212,7 +212,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 * Dodano czas live (TTL) — Pomoc techniczna dla dokumentów.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
-* Zaimplementowane [podzielona na partycje kolekcje](partition-data.md) i [poziomów wydajności zdefiniowanych przez użytkownika](performance-levels.md).
+* Wdrożone [kolekcje partycjonowane](partition-data.md) i [poziomy wydajności zdefiniowane przez użytkownika](performance-levels.md).
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
 * Usunięto usterkę w HashPartitionResolver do generowania wartości skrótu w little endian aby były zgodne z innych zestawów SDK.
@@ -229,7 +229,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Obsługa danych Geoprzestrzennych indeksu
-* Weryfikuje Właściwość identyfikatora dla wszystkich zasobów. Identyfikatory zasobów nie może zawierać?, /, #, \, znaków ani kończyć się spacją.
+* Weryfikuje Właściwość identyfikatora dla wszystkich zasobów. Identyfikatory dla zasobów nie mogą zawierać znaków?,/, #, \, ani kończyć się spacją.
 * Dodaje nowy nagłówek "indeks przekształcania progress" ResourceResponse.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
@@ -239,7 +239,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 * ZESTAW SDK W WERSJI OGÓLNIE DOSTĘPNEJ
 
 ## <a name="release-and-retirement-dates"></a>Daty wydania i wycofania
-Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.
+Firma Microsoft zapewni powiadomienie co najmniej **12 miesięcy** przed WYCOFANIEM zestawu SDK w celu zapewnienia sprawnego przejścia do nowszej/obsługiwanej wersji.
 
 Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżącego zestawu SDK, w związku z tym jest zalecane, zawsze uaktualnienie do najnowszej wersji zestawu SDK tak szybko, jak to możliwe.
 
@@ -251,7 +251,7 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 >
 
 > [!WARNING]
-> Wszystkie wersje SQL SDK dla języka Java w wersji wcześniejszej niż **1.0.0** zostały wycofane z dniem **do 29 lutego 2016 r**.
+> Wszystkie wersje zestawu SQL SDK dla języka Java sprzed wersji **1.0.0** zostały wycofane **29 lutego 2016**.
 > 
 > 
 
@@ -261,7 +261,7 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 | --- | --- | --- |
 | [2.1.3](#2.1.3) |Mar 13, 2018 |--- |
 | [2.1.2](#2.1.2) |Mar 09, 2018 |--- |
-| [2.1.1](#2.1.1) |13 grudnia 2018 |--- |
+| [pkt](#2.1.1) |13 grudnia 2018 |--- |
 | [2.1.0](#2.1.0) |20 listopada 2018 |--- |
 | [2.0.0](#2.0.0) |21 września 2018 r. |--- |
 | [1.16.4](#1.16.4) |10 września 2018 r. |30 maja 2020 |
@@ -273,7 +273,7 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 | [1.14.0](#1.14.0) |28 października 2017 r. |30 maja 2020 |
 | [1.13.0](#1.13.0) |25 sierpnia 2017 r. |30 maja 2020 |
 | [1.12.0](#1.12.0) |11 lipca 2017 r. |30 maja 2020 |
-| [1.11.0](#1.11.0) |10 maja 2017 r. |30 maja 2020 |
+| [1.11.0](#1.11.0) |10 maja 2017 |30 maja 2020 |
 | [1.10.0](#1.10.0) |11 marca 2017 r. |30 maja 2020 |
 | [1.9.6](#1.9.6) |21 lutego 2017 r. |30 maja 2020 |
 | [1.9.5](#1.9.5) |31 stycznia 2017 r. |30 maja 2020 |
@@ -305,6 +305,6 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 ## <a name="faq"></a>Często zadawane pytania
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Zobacz także
-Aby dowiedzieć się więcej na temat usługi Cosmos DB, zobacz [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stronę usługi.
+## <a name="see-also"></a>Zobacz też
+Aby dowiedzieć się więcej na temat Cosmos DB, zobacz stronę usługi [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
 

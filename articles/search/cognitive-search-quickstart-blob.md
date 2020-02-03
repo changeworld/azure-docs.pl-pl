@@ -111,7 +111,7 @@ Indeksator jest procesem wysokiego poziomu sterującym procesem indeksowania. Ok
 
    ![Definicja indeksatora](media/cognitive-search-quickstart-blob/indexer-def.png)
 
-1. Kliknij przycisk **Prześlij**, aby utworzyć i od razu uruchomić indeksator.
+1. Kliknij przycisk **Prześlij**, aby utworzyć i jednocześnie uruchomić indeksator.
 
 ## <a name="monitor-status"></a>Monitorowanie stanu
 

@@ -31,7 +31,7 @@ W programie Apache Ambari są wyświetlane błędy podobne do:
 
 W węzłach procesu roboczego nie ma żadnego z wymienionych katalogów z alertu Ambari.
 
-## <a name="resolution"></a>Rozdzielczość
+## <a name="resolution"></a>Rozwiązanie
 
 Ręcznie Utwórz brakujące katalogi na węzłach procesu roboczego, których to dotyczy.
 

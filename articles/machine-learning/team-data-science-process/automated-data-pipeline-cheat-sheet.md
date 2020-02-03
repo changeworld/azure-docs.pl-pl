@@ -19,7 +19,7 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721867"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Ściągawka dotycząca zautomatyzowanego potoku danych dla prognoz usługi Azure Machine Learning
-**Microsoft Azure Machine Learning zautomatyzowanego potoku danych, okno ściągawka** ułatwia nawigowanie przy użyciu technologii, można użyć, aby przesłać dane do usługi Machine Learning web service, gdzie może zostać ocenione usługi analizy predykcyjnej model.
+**Arkusz Ściągawka zautomatyzowanych potoków danych** ułatwia nawigowanie po technologii, z której można korzystać w celu uzyskania danych do usługi Machine Learning sieci Web, w której może być wyliczony przez model analizy predykcyjnej. Microsoft Azure Machine Learning
 
 W zależności od tego, czy dane znajdują się lokalnie, w chmurze, czy w czasie rzeczywistym, istnieją różne mechanizmy przenoszenia danych do punktu końcowego usługi sieci Web w celu oceny.
 Ta ściągawka przeprowadzi Cię przez decyzji, które należy wprowadzić, jak również linki do artykułów, które mogą pomóc Ci opracować rozwiązania.
@@ -27,7 +27,7 @@ Ta ściągawka przeprowadzi Cię przez decyzji, które należy wprowadzić, jak 
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Pobierz ściągawkę potoku dane usługi Machine Learning
 Po pobraniu cheat-sheet, możesz wydrukować go w rozmiarze tabloidu (11 x 17 cali).
 
-Pobierz ściągawkę tutaj:  **[Microsoft Azure Machine Learning zautomatyzowanego potoku danych — ściągawka](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Pobierz arkusz Ściągawka tutaj:  **[Microsoft Azure Machine Learning zautomatyzowany Potok danych Ściągawka arkusz](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![Przegląd możliwości Microsoft Azure Machine Learning Studio (klasyczny)][op-cheat-sheet]
 
@@ -35,7 +35,7 @@ Pobierz ściągawkę tutaj:  **[Microsoft Azure Machine Learning zautomatyzowane
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Więcej pomocy na temat usługi Machine Learning Studio
-* Aby zapoznać się z omówieniem Microsoft Azure Machine Learning, zobacz [wprowadzenie do usługi machine learning na Microsoft Azure](../studio/what-is-machine-learning.md).
-* Aby dowiedzieć się, jak wdrożyć usługi internetowej przyznawania ocen, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
-* Aby uzyskać informacje dotyczące sposobu korzystania z usługi internetowej przyznawania ocen, zobacz [jak korzystanie z usługi Azure Machine Learning w sieci Web](../studio/consume-web-services.md).
+* Aby zapoznać się z omówieniem Microsoft Azure Machine Learning, zobacz [wprowadzenie do uczenia maszynowego na Microsoft Azure](../studio/what-is-machine-learning.md).
+* Aby uzyskać informacje na temat sposobu wdrażania usługi sieci Web oceniania, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
+* Aby zapoznać się z omówieniem sposobu korzystania z usługi sieci Web oceniania, zobacz [jak korzystać z usługi sieci web Azure Machine Learning](../studio/consume-web-services.md).
 

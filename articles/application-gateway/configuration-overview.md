@@ -93,7 +93,7 @@ Obsługiwany jest tylko 1 publiczny adres IP lub 1 prywatny adres IP. Adres IP f
 
 Adres IP frontonu jest skojarzony z *odbiornikiem*, który sprawdza przychodzące żądania w adresie IP frontonu.
 
-## <a name="listeners"></a>Odbiorniki
+## <a name="listeners"></a>Obiektów
 
 Odbiornik jest jednostką logiczną, która sprawdza przychodzące żądania połączeń przy użyciu portu, protokołu, hosta i adresu IP. Podczas konfigurowania odbiornika należy wprowadzić wartości pasujące do odpowiednich wartości w żądaniu przychodzącym na bramie.
 
@@ -121,7 +121,7 @@ Wybierz adres IP frontonu, który ma zostać skojarzony z tym odbiornikiem. Odbi
 
 Wybierz port frontonu. Wybierz istniejący port lub Utwórz nowy. Wybierz dowolną wartość z [dozwolonego zakresu portów](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Można użyć nie tylko dobrze znanych portów, na przykład 80 i 443, ale dowolnego dozwolonego niestandardowego portu, który jest odpowiedni. Port może być używany na potrzeby odbiorników publicznych lub odbiorników prywatnych.
 
-### <a name="protocol"></a>Protocol (Protokół)
+### <a name="protocol"></a>Protokół
 
 Wybierz pozycję HTTP lub HTTPS:
 
@@ -258,7 +258,7 @@ Ta funkcja jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym
 
 Opróżnianie połączeń pomaga bezpiecznie usunąć członków puli zaplecza podczas aktualizacji planowanych usług. To ustawienie można zastosować do wszystkich elementów członkowskich puli zaplecza podczas tworzenia reguły. Gwarantuje to, że wszystkie wyrejestrujące się wystąpienia puli zaplecza nadal utrzymują istniejące połączenia i obsługują żądania w celu skonfigurowania limitu czasu i nie otrzymają żadnych nowych żądań ani połączeń. Jedynym wyjątkiem są żądania związane z wyrejestrowywaniem wystąpień z powodu koligacji sesji zarządzanej przez bramę i będzie on nadal przekazywany do wyrejestrowania wystąpień. Opróżnianie połączeń dotyczy wystąpień zaplecza, które są jawnie usuwane z puli zaplecza.
 
-### <a name="protocol"></a>Protocol (Protokół)
+### <a name="protocol"></a>Protokół
 
 Application Gateway obsługuje zarówno protokół HTTP, jak i HTTPS w przypadku żądań routingu do serwerów zaplecza. W przypadku wybrania protokołu HTTP ruch do serwerów zaplecza jest niezaszyfrowany. Jeśli nieszyfrowana komunikacja nie jest akceptowalna, wybierz pozycję HTTPS.
 

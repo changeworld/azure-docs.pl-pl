@@ -20,7 +20,7 @@ ms.locfileid: "76721629"
 Na karcie **Marketplace** na stronie **Nowa oferta** można zapewnić potencjalnym klientom potencjalną obsługę marketingową, sprzedażową i informacje prawne oraz umowy oraz zarządzać klientami wygenerowanymi w portalu Marketplace. Ten długi formularz jest podzielony na cztery sekcje: **Omówienie**, **artefakty marketingowe**, **Zarządzanie potencjalnymi klientami**i warunki **prawne**.
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tej sekcji wprowadzasz ogólne informacje o ofercie portalu Azure Marketplace.  Gwiazdka (*) dołączona do nazwy pola wskazuje, że jest to wymagane.
 
@@ -34,7 +34,7 @@ W poniższej tabeli opisano przeznaczenie i zawartość tych pól. Wymagane pola
 | **\* podsumowania**               | Krótkie podsumowanie oferty. Maksymalna długość 100 znaków. <!--ADD PICTURE IN ACTION-->|
 | **Długi\* podsumowujący**          | Dłuższe podsumowanie oferty (chociaż może być takie samo, jak w przypadku **podsumowania**).  Maksymalna długość 256 znaków. <!--ADD PICTURE IN ACTION-->|
 | **\* opisu**           | Opis oferty.  Maksymalna długość 3000 znaków, obsługuje proste formatowanie HTML.<br/> W dolnej części musi znajdować się akapit o *minimalnych wymaganiach dotyczących sprzętu* . Na przykład: <br/> <p><u>Minimalne wymagania sprzętowe:</u> Linux x64 i arm32 OS, 1 GB pamięci RAM, 500 MB magazynu</p>
-| **\* identyfikatora marketingu**  | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków.  Przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **\* identyfikatora marketingu**  | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków.  Na przykład: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Podgląd identyfikatorów subskrypcji** | Dodaj jeden do 100 identyfikatorów subskrypcji dla recenzentów. Te białe subskrypcje będą miały dostęp do oferty po jej opublikowaniu. |
 | **Przydatne linki**          | Można z nich najlepiej skojarzyć wiele wybranych kategorii branżowych i technicznych.  Maksymalnie 10 dozwolonych. Upewnij się, że dodano co najmniej jeden link do dokumentacji i jeden link do zgodnych urządzeń IoT Edge z [wykazu urządzeń usługi Azure IoT](https://catalog.azureiotsolutions.com/). |
 | **Sugerowane kategorie\*** | Wybierz maksymalnie pięć kategorii. Zostaną one wyświetlone na stronie szczegółów produktu. Na stronach przeglądania wszystkie moduły IoT Edge są wyświetlane w kategorii *moduł Internet rzeczy \> IoT Edge* .|
@@ -94,7 +94,7 @@ Ta sekcja zawiera następujące podsekcje: **logo**, **zrzut ekranu**i **wideo**
 | *Zrzutów*  | Zrzuty ekranu są wyświetlane na stronie ze szczegółowymi informacjami o produkcie. Są one dobrym sposobem na wizualne komunikowanie się modułu IoT Edge i sposobu jego działania. Na przykład można wyświetlić diagramy architektury lub ilustracje przypadków użycia. Opcjonalne, ale maksymalnie pięć zrzutów ekranu na jednostkę SKU. |
 | **Nazwa**                  | Nazwa lub tytuł. Maksymalna długość 100 znaków.                             |
 | **Obraz**                 | Obraz przechwytywania ekranu, format 533x324 pikseli                               |
-| *Filmy wideo*  | Filmy wideo są wyświetlane na stronie szczegółów produktu. Są one dobrym sposobem na wizualne komunikowanie się modułu IoT Edge i sposobu jego działania. |
+| *Wideo*  | Filmy wideo są wyświetlane na stronie szczegółów produktu. Są one dobrym sposobem na wizualne komunikowanie się modułu IoT Edge i sposobu jego działania. |
 | **Nazwa**                  | Nazwa lub tytuł. Maksymalna długość 100 znaków.                             |
 | **Link**                  | Adres URL wideo, hostowany w serwisie YouTube lub Vimeo                                        |
 | **Miniaturk**             | Format PNG 533x324 pikseli                                                     |
@@ -159,7 +159,7 @@ Po pomyślnym opublikowaniu oferty zostanie zweryfikowane połączenie z liderem
 4. amp.com the tile -->
 
 
-## <a name="legal"></a>Informacje prawne
+## <a name="legal"></a>Prawidłowe
 
 Ta sekcja pozwala udostępnić dwa dokumenty prawne wymagane dla każdej oferty: zasady ochrony prywatności i warunki użytkowania.
 

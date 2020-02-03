@@ -17,7 +17,7 @@ Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalne
 Najtrudniejsze dane do wyodrębnienia to dane zdobyte na maszynie, ponieważ nie jest to dokładne dopasowanie tekstu. Wyodrębnianie danych [jednostek](luis-concept-entity-types.md) , które są poznanie maszynowe, musi być częścią [cyklu tworzenia](luis-concept-app-iteration.md) , dopóki nie uzyskasz pewności, że otrzymasz oczekiwane dane.
 
 ## <a name="data-location-and-key-usage"></a>Użycie danych lokalizacji i klucz
-Usługa LUIS udostępnia dane z opublikowanego [punktu końcowego](luis-glossary.md#endpoint). **Żądanie HTTPS** (POST lub GET) zawiera wypowiedź, a także niektóre konfiguracje opcjonalne, takie jak środowisk przejściowych lub produkcyjnych.
+LUIS udostępnia dane z opublikowanego [punktu końcowego](luis-glossary.md#endpoint). **Żądanie https** (post lub Get) zawiera wypowiedź, a także niektóre opcjonalne konfiguracje, takie jak środowiska przejściowe lub produkcyjne.
 
 #### <a name="v2-prediction-endpoint-requesttabv2"></a>[Żądanie punktu końcowego przewidywania wersji 2](#tab/V2)
 
@@ -31,12 +31,12 @@ Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v
 
 * * *
 
-`appID` jest dostępna na stronie **Ustawienia** aplikacji Luis oraz w ramach adresu URL (po `/apps/`) podczas edytowania tej aplikacji Luis. `subscription-key` Jest klucza punktu końcowego używanego na potrzeby zapytań Twojej aplikacji. Chociaż możesz użyć bezpłatnego klucza autorstwa/początkowego podczas uczenia się LUIS, ważne jest, aby zmienić klucz punktu końcowego na klucz, który obsługuje [oczekiwane użycie Luis](luis-boundaries.md#key-limits). `timezoneOffset` Jednostka jest minut.
+`appID` jest dostępna na stronie **Ustawienia** aplikacji Luis oraz w ramach adresu URL (po `/apps/`) podczas edytowania tej aplikacji Luis. `subscription-key` jest kluczem punktu końcowego używanym do wykonywania zapytań dotyczących aplikacji. Chociaż możesz użyć bezpłatnego klucza autorstwa/początkowego podczas uczenia się LUIS, ważne jest, aby zmienić klucz punktu końcowego na klucz, który obsługuje [oczekiwane użycie Luis](luis-boundaries.md#key-limits). Jednostka `timezoneOffset` to minuta.
 
-**Odpowiedzi HTTPS** zawiera wszystkie informacje na temat intencji i jednostki usługi LUIS można określić na podstawie bieżącego opublikowanego modelu albo punktu końcowego przejściowych lub produkcyjnych. Punkt końcowy adres URL znajduje się na [LUIS](luis-reference-regions.md) witryny sieci Web w **Zarządzaj** sekcji na **kluczy i punktów końcowych** strony.
+**Odpowiedź https** zawiera wszystkie zamierzenia i informacje o jednostce, które Luis mogą ustalić w oparciu o aktualnie opublikowany model punktu końcowego lub produkcyjnego. Adres URL punktu końcowego znajduje się w witrynie sieci Web [Luis](luis-reference-regions.md) w sekcji **Zarządzanie** na stronie **klucze i punkty końcowe** .
 
 ## <a name="data-from-intents"></a>Dane z opcjami
-Danych podstawowych jest najwyższym oceniania **intencji nazwa**. Odpowiedź na punkt końcowy jest:
+Dane podstawowe są największą **nazwą przeznaczenie**oceniania. Odpowiedź na punkt końcowy jest:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
@@ -140,7 +140,7 @@ Intencji są uporządkowane od najwyższego do najniższego wyniku.
 |Intencja|Ciąg|.intent intencji [0]|"GetStoreInfo"|0.984749258|
 |Intencja|Ciąg|.intent intencji [1]|"None"|0.0168218873|
 
-Jeśli dodasz ze wstępnie utworzonych domen, intencji wskazuje nazwa domeny, takich jak `Utilties` lub `Communication` oraz zamiar:
+W przypadku dodania wstępnie skompilowanych domen nazwa zamierzenia wskazuje domenę, taką jak `Utilties` lub `Communication`, a także zamiar:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
@@ -208,7 +208,7 @@ Większość czatbotów i aplikacje muszą mieć więcej niż nazwa metody konwe
 
 Więcej niż jednej jednostki może odnosić się pojedynczego wyrazu lub frazy w wypowiedź. W takim przypadku każdego pasującego obiektu jest zwracany za pomocą jego wynik.
 
-Wszystkie jednostki są zwracane w **jednostek** tablicy odpowiedzi z punktu końcowego:
+Wszystkie jednostki są zwracane w tablicy **jednostek** odpowiedzi z punktu końcowego:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
@@ -251,7 +251,7 @@ Zapoznaj się z [pomocą techniczną tokenu](luis-language-support.md#tokenizati
 
 ## <a name="simple-entity-data"></a>Proste jednostki danych
 
-A [jednostki prostej](reference-entity-simple.md) jest wartością maszyny do opanowania. Można go wyrazu lub frazy.
+[Prosta jednostka](reference-entity-simple.md) to wartość nadana przez maszynę. Można go wyrazu lub frazy.
 
 ## <a name="composite-entity-data"></a>Dane złożone jednostki
 
@@ -259,10 +259,10 @@ A [jednostki prostej](reference-entity-simple.md) jest wartością maszyny do op
 
 ## <a name="list-entity-data"></a>Lista danych jednostki
 
-[Jednostki listy](reference-entity-list.md) reprezentują stały, zamknięty zestaw powiązanych słów wraz z ich synonimami. Usługa LUIS nie wykrywa dodatkowe wartości dla jednostek z listy. Użyj **zaleca się** funkcji, aby zobaczyć sugestie dotyczące nowych słów na podstawie bieżącej listy. Jeśli istnieje więcej niż jednej jednostki listy z taką samą wartość, każdy obiekt jest zwracany w kwerendy punktu końcowego.
+[Jednostki listy](reference-entity-list.md) reprezentują stały, zamknięty zestaw powiązanych słów wraz z ich synonimami. Usługa LUIS nie wykrywa dodatkowe wartości dla jednostek z listy. Użyj opcji **zalecamy** , aby zobaczyć sugestie dotyczące nowych słów na podstawie bieżącej listy. Jeśli istnieje więcej niż jednej jednostki listy z taką samą wartość, każdy obiekt jest zwracany w kwerendy punktu końcowego.
 
 ## <a name="prebuilt-entity-data"></a>Wstępnie utworzone jednostki danych
-[Wstępnie utworzone](luis-concept-entity-types.md) jednostki są wykrywane na podstawie dopasowania wyrażenia regularnego przy użyciu typu open-source [aparatów rozpoznawania tekstu](https://github.com/Microsoft/Recognizers-Text) projektu. Wstępnie utworzone jednostki są zwracane w tablicy jednostek i użyj nazwy typu prefiksem `builtin::`. Poniższy tekst to wypowiedź przykład za pomocą zwrócone ze wstępnie utworzonych jednostek:
+Wstępnie [skompilowane](luis-concept-entity-types.md) jednostki są odnajdywane na podstawie wyrażenia regularnego zgodnego z rozpoznawaniem typu "Open Source [" — projektem tekstu](https://github.com/Microsoft/Recognizers-Text) . Wstępnie skompilowane jednostki są zwracane w tablicy jednostek i używają nazwy typu poprzedzonej prefiksem `builtin::`. Poniższy tekst to wypowiedź przykład za pomocą zwrócone ze wstępnie utworzonych jednostek:
 
 `Dec 5th send to +1 360-555-1212`
 
@@ -542,7 +542,7 @@ Jednostki [PersonName](luis-reference-prebuilt-person.md) i [GeographyV2](luis-r
 
 Nazwa osób może mieć pewne niewielkie format, w zależności od języka i kultury. Użyj wstępnie utworzonej jednostki **[PersonName](luis-reference-prebuilt-person.md)** lub **[prostej jednostki](luis-concept-entity-types.md#simple-entity)** z [rolami](luis-concept-roles.md) imię i nazwisko.
 
-Jeśli używasz prostej jednostki, upewnij się, że są podane przykłady, które używają pierwszej i ostatniej nazwy w różnych częściach wypowiedź, w wyrażenia długości o różnej długości i wyrażenia długości we wszystkich intencjach, w tym dla opcji Brak. [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
+Jeśli używasz prostej jednostki, upewnij się, że są podane przykłady, które używają pierwszej i ostatniej nazwy w różnych częściach wypowiedź, w wyrażenia długości o różnej długości i wyrażenia długości we wszystkich intencjach, w tym dla opcji Brak. Regularnie [Przeglądaj](luis-how-to-review-endoint-utt.md) wyrażenia długości punktu końcowego, aby oznaczyć wszystkie nazwy, które nie zostały prawidłowo przewidywalne.
 
 ### <a name="names-of-places"></a>Nazwy miejsc
 
@@ -550,7 +550,7 @@ Nazwy lokalizacji są ustawiane i znane, takie jak miasta, powiaty, Stany, prowi
 
 ### <a name="new-and-emerging-names"></a>Nowe i rozwijające się nazwy
 
-Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się nazwy, takie jak produkty lub firmy. Te typy nazw są najbardziej trudnym typem wyodrębniania danych. Zacznij od **[prostej jednostki](luis-concept-entity-types.md#simple-entity)** i Dodaj [listę fraz](luis-concept-feature.md). [Przegląd](luis-how-to-review-endoint-utt.md) wypowiedzi punktu końcowego w regularnych odstępach czasu, aby dodać etykietę żadnych nazw, które nie zostały poprawnie przewidzieć.
+Niektóre aplikacje wymagają można było znaleźć nowe i rozwijające się nazwy, takie jak produkty lub firmy. Te typy nazw są najbardziej trudnym typem wyodrębniania danych. Zacznij od **[prostej jednostki](luis-concept-entity-types.md#simple-entity)** i Dodaj [listę fraz](luis-concept-feature.md). Regularnie [Przeglądaj](luis-how-to-review-endoint-utt.md) wyrażenia długości punktu końcowego, aby oznaczyć wszystkie nazwy, które nie zostały prawidłowo przewidywalne.
 
 ## <a name="pattern-roles-data"></a>Wzorzec role danych
 Role różnią się kontekstowych jednostek.
@@ -681,13 +681,13 @@ Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v
 
 [Wzorzec. any](reference-entity-pattern-any.md) jest symbolem zastępczym o zmiennej długości używanym tylko w szablonie wzorca wypowiedź, aby oznaczyć, gdzie rozpoczyna się i kończą.
 
-## <a name="sentiment-analysis"></a>Analiza opinii
-Jeśli jest skonfigurowana analiza tonacji, odpowiedź w formacie json usługi LUIS obejmuje analizę tonacji. Dowiedz się więcej na temat analizy tonacji w [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentacji.
+## <a name="sentiment-analysis"></a>Analiza tonacji
+Jeśli jest skonfigurowana analiza tonacji, odpowiedź w formacie json usługi LUIS obejmuje analizę tonacji. Dowiedz się więcej o analizie tonacji w dokumentacji [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) .
 
 ### <a name="sentiment-data"></a>Dane opinii
 Dane opinii jest wynik w zakresie od 1 i 0, wskazując pozytywny (bliżej 1) lub ujemną (bliżej 0) tonacji danych.
 
-Gdy jest kultura `en-us`, odpowiedź jest:
+Gdy kultura jest `en-us`, odpowiedź jest:
 
 ```JSON
 "sentimentAnalysis": {
@@ -706,7 +706,7 @@ Dla wszystkich innych języków odpowiedź jest:
 
 
 ### <a name="key-phrase-extraction-entity-data"></a>Dane jednostki wyodrębnianie kluczowych fraz
-Jednostki wyodrębnianie kluczowych fraz zwraca kluczowych fraz w wypowiedź, dostarczone przez [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
+Jednostka wyodrębniania klucza zwraca kluczowe frazy w wypowiedź, dostarczone przez [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
 
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
@@ -1133,7 +1133,7 @@ Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v
 
 Jeśli wyraz lub frazę, pasuje do więcej niż jednej jednostki listy, kwerendy punktu końcowego zwraca każdy obiekt listy.
 
-Dla zapytania `when is the best time to go to red rock?`, a aplikacja ma słowo `red` w więcej niż jednej listy LUIS rozpoznaje wszystkie jednostki i zwraca tablicę jednostki jako część odpowiedzi JSON punktu końcowego:
+W przypadku zapytania `when is the best time to go to red rock?`, a aplikacja zawiera słowo `red` w więcej niż jednej liście, LUIS rozpoznaje wszystkie jednostki i zwraca tablicę jednostek jako część odpowiedzi punktu końcowego JSON:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Odpowiedź punktu końcowego przewidywania wersji 2](#tab/V2)
 
@@ -1268,4 +1268,4 @@ Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz [Dodaj jednostki](luis-how-to-add-entities.md) Aby dowiedzieć się więcej o sposobie dodawania jednostki z aplikacją usługi LUIS.
+Zobacz [Dodawanie jednostek](luis-how-to-add-entities.md) , aby dowiedzieć się więcej na temat dodawania jednostek do aplikacji Luis.

@@ -52,7 +52,7 @@ Aplikacje, które wymagają, aby rekord użytkownika był obecny w aplikacji prz
 
 * Zmniejsz koszty hostingu i konserwowania rozwiązań do aprowizacji opracowane przez niestandardowo.
 
-## <a name="choose-a-provisioning-method"></a>Wybierz metodę aprowizacji
+## <a name="choose-a-provisioning-method"></a>Wybór metody inicjowania obsługi
 
 Usługa Azure AD udostępnia kilka ścieżek integracji, które umożliwiają automatyczne Inicjowanie obsługi użytkowników dla aplikacji.
 

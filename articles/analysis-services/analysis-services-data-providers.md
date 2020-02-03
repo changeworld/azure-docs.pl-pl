@@ -20,7 +20,7 @@ Biblioteki klienckie są niezbędne dla aplikacji i narzędzi klienckich do łą
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Pobierz najnowsze biblioteki klienckie (Instalator Windows)  
 
-|Pobierz  |Wersja produktu  | 
+|Pobieranie  |Wersja produktu  | 
 |---------|---------|
 |[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.21.27    |
 |[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.21.27       |

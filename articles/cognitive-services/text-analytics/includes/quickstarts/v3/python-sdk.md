@@ -69,7 +69,7 @@ Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań za p
 * [Łączenie jednostek](#entity-linking)
 * [Wyodrębnianie kluczowych fraz](#key-phrase-extraction)
 
-## <a name="sentiment-analysis"></a>Analiza opinii
+## <a name="sentiment-analysis"></a>Analiza tonacji
 
 > [!NOTE]
 > Poniższy kod dotyczy tonacji Analysis v3, który jest w publicznej wersji zapoznawczej.
@@ -225,7 +225,7 @@ Personally Identifiable Information Entities:
         Offset:  33     Length:  11     Score: 0.850 
 ```
 
-## <a name="entity-linking"></a>Łączenie podmiotów
+## <a name="entity-linking"></a>Łączenie jednostek
 
 Utwórz nową funkcję o nazwie `entity_linking_example()`, która przyjmuje punkt końcowy i klucz jako argumenty, a następnie wywołuje funkcję `single_recognize_linked_entities()` i wykonuje iterację przez wyniki. Zwrócony obiekt odpowiedzi będzie zawierać listę wykrytych jednostek w `entities`, jeśli się powiedzie, i `error`, jeśli nie. Ponieważ połączone jednostki są jednoznacznie identyfikowane, wystąpienia tej samej jednostki są pogrupowane pod obiektem `entity` jako lista obiektów `match`.
 

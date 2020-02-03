@@ -27,11 +27,11 @@ ms.locfileid: "76720405"
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 * Obszar roboczy Azure Machine Learning z typem **wersji Enterprise Edition**. Zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).  Aby uaktualnić istniejący obszar roboczy do wersji Enterprise, zobacz [uaktualnianie do wersji Enterprise Edition](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com). 
 
@@ -68,7 +68,7 @@ W przeciwnym razie zostanie wyświetlona lista ostatnich zautomatyzowanych ekspe
         ----|----
         Format pliku| Definiuje układ i typ danych przechowywanych w pliku.
         Ogranicznik| Jeden lub więcej znaków do określenia granicy między oddzielnymi, niezależnymi regionami w postaci zwykłego tekstu lub innymi strumieniami danych.
-        Encoding| Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.
+        Kodowanie| Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.
         Nagłówki kolumn| Wskazuje, w jaki sposób nagłówki zestawu danych (jeśli istnieją) będą traktowane.
         Pomiń wiersze | Wskazuje, ile (jeśli istnieją) wiersze są pomijane w zestawie danych.
     
@@ -121,7 +121,7 @@ W przeciwnym razie zostanie wyświetlona lista ostatnich zautomatyzowanych ekspe
     Automatyczne cechowania| Wybierz, aby włączyć lub wyłączyć przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Przetwarzanie wstępne obejmuje automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych. [Dowiedz się więcej na temat przetwarzania wstępnego](#preprocess).
     Zablokowany algorytm| Wybierz algorytmy, które mają zostać wykluczone z zadania szkoleniowego.
     Kryterium zakończenia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkolenia zostanie zatrzymane. <br> *Czas zadania szkoleniowego (godz.)* : jak długo zezwolić na uruchomienie zadania szkoleniowego. <br> *Próg wyniku metryki*: minimalny wynik metryki dla wszystkich potoków. Dzięki temu w przypadku zdefiniowania metryki docelowej, która ma zostać osiągnięta, nie poświęcasz więcej czasu na zadanie szkoleniowe niż to konieczne.
-    Sprawdzanie poprawności| Wybierz jedną z opcji krzyżowego sprawdzania poprawności, która ma zostać użyta w zadaniu szkoleniowym. [Dowiedz się więcej na temat krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
+    Walidacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności, która ma zostać użyta w zadaniu szkoleniowym. [Dowiedz się więcej na temat krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
     Współbieżność| *Maksymalna liczba współbieżnych iteracji*: maksymalną liczbę potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie zostanie uruchomione więcej niż określona liczba iteracji. <br> *Maksymalna liczba rdzeni na iterację*: Wybierz limity wielordzeniowe, które mają być używane podczas korzystania z obliczeń wielordzeniowych.
 
 <a name="profile"></a>
@@ -135,13 +135,13 @@ Możesz uzyskać szeroką gamę statystyk podsumowujących dla zestawu danych, a
 
 Statystyka|Opis
 ------|------
-Funkcja| Nazwa sumowanej kolumny.
+Cecha| Nazwa sumowanej kolumny.
 Profil| Wizualizacja w wierszu oparta na wywnioskowanym typie. Na przykład ciągi, wartości logiczne i daty będą mieć liczby wartości, podczas gdy miejsca dziesiętne (liczbowe) mają przybliżone histogramy. Pozwala to na szybkie zrozumienie dystrybucji danych.
 Dystrybucja typów| Liczba wartości w wierszu dla typów w kolumnie. Wartości null są własnym typem, więc Wizualizacja jest przydatna do wykrywania nieparzystych lub brakujących wartości.
 Typ|Wywnioskowany typ kolumny. Możliwe wartości to: ciągi, wartości logiczne, daty i miejsca dziesiętne.
 Min.| Minimalna wartość kolumny. Puste wpisy są wyświetlane dla funkcji, których typ nie ma własnej kolejności (np. wartości logicznych).
 Maks.| Maksymalna wartość kolumny. 
-Liczba| Łączna liczba brakujących i nieobecnych wpisów w kolumnie.
+Licznik| Łączna liczba brakujących i nieobecnych wpisów w kolumnie.
 Liczba niebrakujących| Liczba wpisów w kolumnie, których nie ma. Puste ciągi i błędy są traktowane jako wartości, więc nie będą wchodzić w skład "niebrakującej liczby".
 Quantiles| Przybliżone wartości dla każdego quantileu, aby zapewnić rozkład danych.
 Średnia| Średnia arytmetyczna kolumny lub jej średnia.
@@ -183,11 +183,11 @@ W poniższej tabeli opisano aktualnie obsługiwane guardrails danych oraz powią
 
 Guardrail|Stan|&nbsp;warunku dla wyzwalacza&nbsp;
 ---|---|---
-Brak wartości&nbsp;&nbsp;ich przypisywaniu |**Przekazany** <br> <br> **FIXED**|    Brak wartości w żadnej z&nbsp;wejściowych kolumn <br> <br> Niektóre kolumny mają brakujące wartości
+Brak wartości&nbsp;&nbsp;ich przypisywaniu |**Przeniesione** <br> <br> **FIXED**|    Brak wartości w żadnej z&nbsp;wejściowych kolumn <br> <br> Niektóre kolumny mają brakujące wartości
 Krzyżowe sprawdzanie poprawności|**Odbywać**|Jeśli nie podano jawnego zestawu walidacji
-Wysoka&nbsp;kardynalności&nbsp;funkcja wykrywania&nbsp;|  **Przekazany** <br> <br>**Odbywać**|   Nie wykryto żadnych funkcji wysokiej kardynalności <br><br> Wykryto wysoką liczebność kolumn wejściowych
-Wykrywanie balansu klas |**Przekazany** <br><br><br>**Alerty** |Klasy są zrównoważone w danych szkoleniowych; Zestaw danych jest uznawany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, zgodnie z liczbą i stosunkiem próbek <br> <br> Klasy w danych szkoleniowych są niezrównoważone
-Spójność danych szeregów czasowych|**Przekazany** <br><br><br><br> **FIXED** |<br> Przeanalizowane wartości wybranych elementów {Horizon, lag, kroczących} i nie wykryto problemów braku związanych z pamięcią. <br> <br>Przeanalizowane zostały wartości wybrane w polu {Horizon, zwłoka, krocząca}, co może spowodować, że w Twoim doświadczeniu zabrakło pamięci. Okno zwłoki lub stopniowe zostało wyłączone.
+Wysoka&nbsp;kardynalności&nbsp;funkcja wykrywania&nbsp;|  **Przeniesione** <br> <br>**Odbywać**|   Nie wykryto żadnych funkcji wysokiej kardynalności <br><br> Wykryto wysoką liczebność kolumn wejściowych
+Wykrywanie balansu klas |**Przeniesione** <br><br><br>**Alerty** |Klasy są zrównoważone w danych szkoleniowych; Zestaw danych jest uznawany za zrównoważony, jeśli każda klasa ma dobrą reprezentację w zestawie danych, zgodnie z liczbą i stosunkiem próbek <br> <br> Klasy w danych szkoleniowych są niezrównoważone
+Spójność danych szeregów czasowych|**Przeniesione** <br><br><br><br> **FIXED** |<br> Przeanalizowane wartości wybranych elementów {Horizon, lag, kroczących} i nie wykryto problemów braku związanych z pamięcią. <br> <br>Przeanalizowane zostały wartości wybrane w polu {Horizon, zwłoka, krocząca}, co może spowodować, że w Twoim doświadczeniu zabrakło pamięci. Okno zwłoki lub stopniowe zostało wyłączone.
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
 
@@ -226,11 +226,11 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
 
     Pole| Wartość
     ----|----
-    Nazwa| Wprowadź unikatową nazwę wdrożenia.
+    Name (Nazwa)| Wprowadź unikatową nazwę wdrożenia.
     Opis| Wprowadź opis, aby lepiej zidentyfikować to wdrożenie.
     Typ obliczenia| Wybierz typ punktu końcowego, który chcesz wdrożyć: *Azure Kubernetes Service (AKS)* lub *Azure Container Instance (ACI)* .
-    Nazwa| *Dotyczy tylko AKS:* Wybierz nazwę klastra AKS, w którym chcesz wdrożyć.
-    Włączanie uwierzytelniania | Wybierz, aby zezwalać na uwierzytelnianie oparte na tokenach lub na podstawie klucza.
+    Name (Nazwa)| *Dotyczy tylko AKS:* Wybierz nazwę klastra AKS, w którym chcesz wdrożyć.
+    Włącz uwierzytelnianie | Wybierz, aby zezwalać na uwierzytelnianie oparte na tokenach lub na podstawie klucza.
     Używanie niestandardowych zasobów wdrażania| Włącz tę funkcję, jeśli chcesz przekazać własny skrypt oceniania i plik środowiska. [Dowiedz się więcej o skryptach oceniania](how-to-deploy-and-where.md#script).
 
     >[!Important]

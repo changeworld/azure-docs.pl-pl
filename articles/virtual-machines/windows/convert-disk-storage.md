@@ -111,7 +111,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 Wykonaj następujące kroki:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Wybierz MASZYNę wirtualną z listy **maszyn wirtualnych** w portalu.
 3. Jeśli maszyna wirtualna nie jest zatrzymana, wybierz pozycję **Zatrzymaj** w górnej części okienka **Przegląd** maszyny wirtualnej, a następnie poczekaj, aż maszyna wirtualna zostanie zatrzymana.
 3. W okienku dla maszyny wirtualnej wybierz pozycję **dyski** z menu.

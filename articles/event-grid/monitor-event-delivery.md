@@ -21,7 +21,7 @@ W tym artykule opisano sposób korzystania z portalu w celu wyświetlenia stanu 
 
 Event Grid zapewnia trwałe dostarczanie. Każdy z nich dostarcza każdy komunikat co najmniej raz dla każdej subskrypcji. Zdarzenia są natychmiast wysyłane do zarejestrowanego elementu webhook każdej subskrypcji. Jeśli element webhook nie potwierdzi odbioru zdarzenia w ciągu 60 sekund od pierwszej próby dostarczenia, Event Grid ponawianie prób dostarczenia zdarzenia.
 
-Informacje o dostarczanie zdarzeń i ponownych prób [dostarczanie komunikatów usługi Event Grid i ponów próbę](delivery-and-retry.md).
+Aby uzyskać informacje dotyczące dostarczania i ponawiania zdarzeń, [Event Grid dostarczania komunikatów i ponawiania próby](delivery-and-retry.md).
 
 ## <a name="delivery-metrics"></a>Metryki dostarczania
 
@@ -84,6 +84,6 @@ Możesz ustawić alerty dla tematu i metryk na poziomie domeny dla tematów nies
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Informacje o dostarczanie zdarzeń i ponownych prób [dostarczanie komunikatów usługi Event Grid i ponów próbę](delivery-and-retry.md).
+* Aby uzyskać informacje dotyczące dostarczania i ponawiania zdarzeń, [Event Grid dostarczania komunikatów i ponawiania próby](delivery-and-retry.md).
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
-* Aby szybko rozpocząć pracę, przy użyciu usługi Event Grid, zobacz [Utwórz i wyznaczać trasy zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).
+* Aby szybko rozpocząć korzystanie z Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych z Azure Event Grid](custom-event-quickstart.md).

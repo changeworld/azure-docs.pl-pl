@@ -20,11 +20,11 @@ ms.locfileid: "76720303"
 Ta strona zawiera opis typowych problemów z połączeniami danych wejściowych i sposób rozwiązać ten problem.
 
 ## <a name="input-events-not-received-by-job"></a>Zdarzenia wejściowe nie są odbierane przez zadania 
-1.  Przetestuj połączenie. Sprawdź łączność z wejściami i wyjściami przy użyciu **Testuj połączenie** przycisku dla wszystkich danych wejściowych i wyjściowych.
+1.  Przetestuj połączenie. Sprawdź łączność z wejściami i wyjściami przy użyciu przycisku **Testuj połączenie** dla każdego wejścia i wyjścia.
 
 2.  Sprawdź dane wejściowe.
 
-    1. Aby sprawdzić, czy dane wejściowe przepływają do Centrum zdarzeń, użyj [Eksploratora usługi Service Bus](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) połączyć się z usługi Azure Event Hub (Jeśli używane są wejścia Centrum zdarzeń).
+    1. Aby sprawdzić, czy dane wejściowe są przepływane do centrum zdarzeń, użyj [eksploratora Service Bus](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) , aby nawiązać połączenie z usługą Azure Event Hub (jeśli jest używane wejście do centrum zdarzeń).
         
     1. Użyj przycisku [**przykładowe dane**](stream-analytics-sample-data-input.md) dla każdego elementu wejściowego. Pobierz przykładowe dane wejściowe.
         
@@ -35,7 +35,7 @@ Ta strona zawiera opis typowych problemów z połączeniami danych wejściowych 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Źle sformułowane zdarzenia wejściowe powodują błędy deserializacji 
 Deserializacji problemy są spowodowane, gdy strumień wejściowy zadania usługi Stream Analytics zawiera źle sformułowane komunikaty. Na przykład nieprawidłowo sformułowany komunikat może być spowodowane przez brak nawiasu lub nawiasów w obiekcie JSON lub format sygnatury czasowej niepoprawne, w polu czas. 
  
-Gdy zadanie usługi Stream Analytics otrzymuje nieprawidłowo sformułowany komunikat z danych wejściowych, porzuca wiadomość i powiadamia użytkownika z ostrzeżeniem. Symbol ostrzeżenia jest wyświetlany na **dane wejściowe** Kafelek zadania usługi Stream Analytics. Znak to ostrzeżenie występuje, tak długo, jak długo zadanie jest w stanie uruchomienia:
+Gdy zadanie usługi Stream Analytics otrzymuje nieprawidłowo sformułowany komunikat z danych wejściowych, porzuca wiadomość i powiadamia użytkownika z ostrzeżeniem. Na kafelku **dane wejściowe** zadania Stream Analytics zostanie wyświetlony symbol ostrzegawczy. Znak to ostrzeżenie występuje, tak długo, jak długo zadanie jest w stanie uruchomienia:
 
 ![Kafelek usługi Azure Stream Analytics danych wejściowych.](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
@@ -53,11 +53,11 @@ Można wykonać poniższe kroki, aby analizować zdarzenia wejściowe szczegół
 
    ![Stream Analytics komunikat ostrzegawczy z przesunięciem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
-3. Aby znaleźć dane JSON z niepoprawny format, uruchom dostępne w kodzie CheckMalformedEvents.cs [repozytorium przykładów usługi GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Ten kod odczytuje identyfikator partycji: przesunięcie i drukuje dane, które znajdują się w tym przesunięciu. 
+3. Aby znaleźć dane JSON z nieprawidłowym formatem, uruchom kod CheckMalformedEvents.cs dostępny w [repozytorium przykładów usługi GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Ten kod odczytuje identyfikator partycji: przesunięcie i drukuje dane, które znajdują się w tym przesunięciu. 
 
 4. Po odczytaniu danych możesz przeanalizować i poprawić format serializacji.
 
-5. Możesz również [odczytywać zdarzenia z usługi IoT Hub za pomocą Eksploratora usługi Service Bus](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b).
+5. Można również [odczytywać zdarzenia z IoT Hub za pomocą eksploratora Service Bus](https://code.msdn.microsoft.com/How-to-read-events-from-an-1641eb1b).
 
 ## <a name="job-exceeds-maximum-event-hub-receivers"></a>Zadania przekracza maksymalny odbiorcy usługi Event Hubs
 Najlepszym rozwiązaniem jest dotyczące korzystania z usługi Event Hubs jest na potrzeby zapewnienia skalowalności zadania przez wiele grup odbiorców. Liczbę czytników w zadaniu Stream Analytics określone dane wejściowe wpływa na liczbę czytników w grupie jednego konsumenta. Dokładną liczbę odbiorników opiera się na szczegóły wewnętrznej implementacji logiki topologii skalowalnego w poziomie i nie jest widoczna zewnętrznie. Po uruchomieniu zadania lub podczas uaktualniania zadania, można zmienić liczbę czytników.
@@ -74,13 +74,13 @@ Aby dodać nową grupę odbiorców w wystąpieniu usługi Event Hubs, wykonaj na
 
 2. Znajdź usługi Event Hubs.
 
-3. Wybierz **usługi Event Hubs** w obszarze **jednostek** nagłówka.
+3. Wybierz **Event Hubs** w obszarze nagłówka **jednostki** .
 
 4. Wybierz Centrum zdarzeń według nazwy.
 
-5. Na **wystąpienie usługi Event Hubs** w obszarze **jednostek** nagłówka, wybierz **grupy konsumentów**. Grupa konsumentów o nazwie **$Default** znajduje się na liście.
+5. Na stronie **wystąpienie Event Hubs** w obszarze nagłówka **jednostki** wybierz pozycję **grupy odbiorców**. Zostanie wyświetlona Grupa odbiorców o nazwie **$default** .
 
-6. Wybierz **+ Grupa odbiorców** można dodać nowe grupy konsumentów. 
+6. Wybierz pozycję **+ Grupa odbiorców** , aby dodać nową grupę odbiorców. 
 
    ![Dodaj grupę odbiorców w usłudze Event Hubs](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
@@ -93,9 +93,9 @@ Jeśli przesyłania strumieniowego składnia zapytania odwołuje się do tego sa
 
 Następujące scenariusze, w których liczbę czytników w jednej partycji przekracza limit usługi Event Hubs do 5:
 
-* Wiele instrukcji "SELECT": Jeśli używasz wielu instrukcji SELECT, które odwołują się do **tego samego** Centrum zdarzeń do wprowadzania, każda instrukcja SELECT powoduje, że nowy odbiornik ma zostać utworzony.
-* UNION: Gdy używasz Unii, istnieje możliwość mają wielu danych wejściowych, które odwołują się do **tego samego** grupy Centrum i odbiorcę zdarzeń.
-* SAMOSPRZĘŻENIE: Korzystając z operacją DOŁĄCZYĆ SAMODZIELNIE, jest możliwe do odwoływania się do **tego samego** Centrum zdarzeń wiele razy.
+* Wielokrotne instrukcje SELECT: w przypadku używania wielu instrukcji SELECT odwołujących się do **tego samego** danych wejściowych centrum zdarzeń każda instrukcja SELECT powoduje utworzenie nowego odbiornika.
+* Unia: w przypadku korzystania z Unii możliwe jest posiadanie wielu danych wejściowych odwołujących się do tego **samego** centrum zdarzeń i grupy konsumentów.
+* Samosprzężenie: w przypadku korzystania z operacji samosprzężenia można odwoływać się do tego **samego** centrum zdarzeń wiele razy.
 
 Poniższe najlepsze rozwiązania może pomóc zmniejszyć scenariusze, w których liczbę czytników w jednej partycji przekracza limit usługi Event Hubs do 5.
 
@@ -139,11 +139,11 @@ Dla zapytań, w których co najmniej trzech danych wejściowych są podłączone
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 
-Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Aby uzyskać dalszą pomoc, wypróbuj nasze [forum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
+* [Wprowadzenie do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

@@ -35,4 +35,4 @@ Podczas uzgadniania protokołu TLS dozwolone są tylko następujące szyfry:
 
 ## <a name="customer-feedback"></a>Opinie klientów
 
-Mimo że wymuszenie stosowania protokołu TLS 1.2 jest najlepszą w swojej klasie opcją szyfrowania stosowaną w całym przemyśle i zostanie ona wprowadzona zgodnie z harmonogramem, chcemy poznać opinie klientów dotyczące ich określonych wdrożeń i problemów podczas wprowadzania protokołu TLS 1.2. W tym celu można wysłać komentarze do [iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com).
+Chociaż Wymuszanie protokołu TLS 1,2 to Najlepsza w swojej klasie funkcja szyfrowania, która zostanie włączona zgodnie z harmonogramem, nadal będziemy chcieli poznać klientów odnośnie do ich określonych wdrożeń i problemów, które przyjmą protokół TLS 1,2. W tym celu można wysłać komentarze do [iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com).

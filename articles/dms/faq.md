@@ -22,7 +22,7 @@ ms.locfileid: "76717777"
 
 Ten artykuł zawiera listę często zadawanych pytań dotyczących używania Azure Database Migration Service razem z powiązanymi odpowiedziami.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 **P. co to jest Azure Database Migration Service?**
 Azure Database Migration Service to w pełni zarządzana usługa, która umożliwia bezproblemowe Migrowanie z wielu źródeł baz danych do platform danych platformy Azure z minimalnym czasem przestoju. Usługa jest obecnie ogólnie dostępna, z trwającymi działaniami programistycznymi, które koncentrują się na:
@@ -51,7 +51,7 @@ Azure Database Migration Service jest preferowaną metodą migracji bazy danych 
 **P. jak Azure Database Migration Service porównać z ofertą Azure Migrate?**
 Azure Migrate pomaga w migracji lokalnych maszyn wirtualnych do usługi Azure IaaS. Usługa ocenia przydatność migracji i ustalanie rozmiarów na podstawie wydajności, a także umożliwia oszacowanie kosztów uruchamiania lokalnych maszyn wirtualnych na platformie Azure. Azure Migrate jest przydatne do przenoszenia i przesunięcia lokalnych obciążeń opartych na maszynach wirtualnych do maszyn wirtualnych platformy Azure IaaS. Jednak, w przeciwieństwie do Azure Database Migration Service, Azure Migrate nie jest wyspecjalizowaną ofertą usługi migracji bazy danych dla platform Azure PaaS relacyjnych baz danych, takich jak Azure SQL Database lub Azure SQL Database wystąpienia zarządzanego.
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
 **P. Jakie są wymagania wstępne dotyczące korzystania z Azure Database Migration Service?**
 Istnieje kilka wymagań wstępnych, aby zapewnić bezproblemowy przebieg Azure Database Migration Service podczas przeprowadzania migracji baz danych. Niektóre wymagania wstępne dotyczą wszystkich scenariuszy (par Source-Target) obsługiwanych przez usługę, a inne wymagania wstępne są unikatowe dla konkretnego scenariusza.
@@ -88,7 +88,7 @@ Możesz również określić port, który SQL Server nasłuchuje, badając dzien
 **P. Jak mogę skonfigurować Microsoft Azure Virtual Network?**
 Chociaż wiele samouczków firmy Microsoft, które mogą przeprowadzić Cię przez proces konfigurowania sieci wirtualnej, oficjalna dokumentacja jest wyświetlana w artykule [Virtual Network platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
-## <a name="usage"></a>Użycie
+## <a name="usage"></a>Sposób użycia
 
 **P. co to jest podsumowanie kroków wymaganych do użycia Azure Database Migration Service do przeprowadzenia migracji bazy danych?**
 Podczas typowej migracji prostej bazy danych:

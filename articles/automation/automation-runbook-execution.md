@@ -207,7 +207,7 @@ W poniższej tabeli opisano różne stany, które może przyjmować zadanie. Pro
 | Wznawianie |System wznawia zadanie po jego wstrzymaniu. |
 | Działanie |Zadanie jest uruchomione. |
 | Uruchamianie, oczekiwanie na zasoby |Zadanie zostało zwolnione, ponieważ osiągnęło odpowiedni limit [udostępniania](#fair-share) . Wkrótce wznawia od ostatniego punktu kontrolnego. |
-| Zatrzymane |Zadanie zostało zatrzymane przez użytkownika przed jego ukończeniem. |
+| Zatrzymano |Zadanie zostało zatrzymane przez użytkownika przed jego ukończeniem. |
 | Zatrzymywanie |System zatrzymuje zadanie. |
 | Suspended |Zadanie zostało zawieszone przez użytkownika, przez system lub za pomocą polecenia w elemencie Runbook. Jeśli element Runbook nie ma punktu kontrolnego, rozpocznie się od początku elementu Runbook. Jeśli ma punkt kontrolny, można go uruchomić ponownie i wznowić od ostatniego punktu kontrolnego. Element Runbook jest zawieszony tylko przez system w przypadku wystąpienia wyjątku. Domyślnie ErrorActionPreference jest ustawiony na **Kontynuuj**, co oznacza, że zadanie zachowuje się w przypadku błędu. Jeśli ta zmienna preferencji ma wartość **Zatrzymaj**, zadanie zawiesza się po błędzie. Dotyczy tylko [elementów Runbook środowiska graficznego i programu PowerShell](automation-runbook-types.md) . |
 | Zawieszanie |System próbuje zawiesić zadanie na żądanie użytkownika. Element Runbook musi dotrzeć do swojego następnego punktu kontrolnego, zanim będzie można go wstrzymać. Jeśli przeszedł już ostatni punkt kontrolny, kończy się przed jego wstrzymaniem. Dotyczy tylko [elementów Runbook środowiska graficznego i programu PowerShell](automation-runbook-types.md) . |

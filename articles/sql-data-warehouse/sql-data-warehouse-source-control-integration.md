@@ -37,7 +37,7 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
    ![Zarządzanie połączeniami](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Zarządzanie połączeniami")
 
-   ![Połączenie](media/sql-data-warehouse-source-control-integration/3-connect.png "Łączenie")
+   ![Połączenie](media/sql-data-warehouse-source-control-integration/3-connect.png "Połączenie")
 
 3. Klonowanie repozytorium repozytorium platformy Azure z projektu na komputerze lokalnym
 
@@ -63,7 +63,7 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
    ![Synchronizuj i wypchnij](media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Synchronizuj i wypchnij")  
 
-## <a name="validation"></a>Sprawdzanie poprawności
+## <a name="validation"></a>Walidacja
 
 1. Sprawdź, czy zmiany zostały wypchnięte do repozytorium platformy Azure przez zaktualizowanie kolumny tabeli w projekcie bazy danych za pomocą programu Visual Studio SQL Server Data Tools (SSDT)
 

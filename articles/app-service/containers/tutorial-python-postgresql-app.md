@@ -21,7 +21,7 @@ Usługa [Azure App Service](app-service-linux-intro.md) oferuje wysoce skalowaln
 
 ![Aplikacja internetowa Python Django w Azure App Service](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie bazy danych Azure Database for PostgreSQL i łączenie z nią aplikacji sieci Web
@@ -36,7 +36,7 @@ Kroki opisane w tym artykule można wykonać w systemie macOS, Linux lub Windows
 Przed rozpoczęciem pracy z tym samouczkiem:
 
 - [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-- Zainstaluj oprogramowanie [Git](https://git-scm.com/).
+- [Zainstaluj oprogramowanie Git](https://git-scm.com/).
 - Zainstaluj język [Python 3](https://www.python.org/downloads/).
 - Zainstaluj i uruchom program [PostgreSQL](https://www.postgresql.org/download/).
 
@@ -153,7 +153,7 @@ Większość pozostałych kroków tego artykułu korzysta z poleceń interfejsu 
 
 W tej sekcji utworzysz serwer Azure Database for PostgreSQL i bazę danych, a następnie nawiążesz połączenie z aplikacją sieci Web. Po wdrożeniu aplikacji sieci Web do Azure App Service aplikacja korzysta z tej bazy danych w chmurze. 
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Można utworzyć nową grupę zasobów dla serwera Azure Database for PostgreSQL lub użyć istniejącej grupy zasobów. 
 

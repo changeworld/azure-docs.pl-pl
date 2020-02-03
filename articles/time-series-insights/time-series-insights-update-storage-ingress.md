@@ -51,10 +51,10 @@ Poniżej znajduje się lista obsługiwanych typów danych.
 
 | Typ danych | Opis |
 |-----------|------------------|-------------|
-| bool      |   Typ danych, który ma jeden z dwóch stanów: true lub false.       |
+| logiczna      |   Typ danych, który ma jeden z dwóch stanów: true lub false.       |
 | Data i godzina    |   Reprezentuje chwilę w czasie, zwykle wyrażoną jako datę i godzinę dnia. Daty i godziny powinny mieć format ISO 8601.      |
 | double    |   Podwójna precyzja 64-bitowa IEEE 754 zmiennoprzecinkowa
-| string    |   Wartości tekstowe składające się z znaków Unicode.          |
+| ciąg    |   Wartości tekstowe składające się z znaków Unicode.          |
 
 #### <a name="objects-and-arrays"></a>Obiekty i tablice
 

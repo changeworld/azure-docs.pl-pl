@@ -30,7 +30,7 @@ Opis błędu zawiera komunikat "rozpoznawanie nazwy hosta nie powiodło się".
 
 Ten błąd wskazuje na problem z niestandardową konfiguracją DNS. Serwery DNS w sieci wirtualnej mogą przekazywać zapytania DNS do tłumaczeń cyklicznych platformy Azure w celu rozpoznania nazw hostów w tej sieci wirtualnej (zobacz [rozpoznawanie nazw w sieciach wirtualnych](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) , aby uzyskać szczegółowe informacje). Dostęp do cyklicznych tłumaczeń platformy Azure jest udostępniany za pośrednictwem wirtualnego adresu IP 168.63.129.16. Ten adres IP jest dostępny tylko z maszyn wirtualnych platformy Azure. Dlatego nie będzie to możliwe, jeśli używany jest serwer DNS lokalnego lub serwer DNS jest MASZYNą wirtualną platformy Azure, która nie jest częścią sieci wirtualnej klastra.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 1. Użyj polecenia SSH do maszyny wirtualnej, która jest częścią klastra, i uruchom polecenie `hostname -f`. Spowoduje to zwrócenie w pełni kwalifikowanej nazwy domeny hosta (nazywanej `<host_fqdn>` w poniższych instrukcjach).
 
@@ -56,7 +56,7 @@ Opis błędu zawiera komunikat "nie można nawiązać połączenia z kontem usł
 
 Usługi Azure Storage i SQL nie mają stałych adresów IP, dlatego musimy zezwolić na połączenia wychodzące ze wszystkimi adresami-IP, aby zezwolić na dostęp do tych usług. Dokładne kroki rozwiązania zależą od tego, czy skonfigurowano sieciową grupę zabezpieczeń (sieciowej grupy zabezpieczeń), czy reguły zdefiniowane przez użytkownika (UDR). Szczegółowe informacje o tych konfiguracjach można znaleźć w sekcji Sprawdzanie [ruchu sieciowego za pomocą usługi HDInsight z grupami zabezpieczeń sieci i trasami zdefiniowanymi przez użytkownika](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) .
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 * Jeśli klaster używa [sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
@@ -85,7 +85,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 Jest to problem z konfiguracją niestandardowej usługi DNS.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Sprawdź, czy 168.63.129.16 znajduje się w niestandardowym łańcuchu DNS. Serwery DNS w sieci wirtualnej mogą przekazywać zapytania DNS do tłumaczeń cyklicznych platformy Azure w celu rozpoznania nazw hostów w tej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazw w sieciach wirtualnych](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). Dostęp do cyklicznych tłumaczeń platformy Azure jest udostępniany za pośrednictwem wirtualnego adresu IP 168.63.129.16.
 

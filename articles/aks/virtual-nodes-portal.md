@@ -71,7 +71,7 @@ Funkcjonalność węzłów wirtualnych jest w dużym stopniu zależna od zestawu
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nie będzie wdrażać zasobników w węźle wirtualnym
 * [Węzły systemu Windows Server (obecnie dostępne w wersji zapoznawczej w AKS)](windows-container-cli.md) nie są obsługiwane razem z węzłami wirtualnymi. Węzłów wirtualnych można użyć do zaplanowania kontenerów systemu Windows Server bez potrzeby węzłów systemu Windows Server w klastrze AKS.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
