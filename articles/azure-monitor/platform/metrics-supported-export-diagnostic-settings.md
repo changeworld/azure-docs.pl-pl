@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: dcf5276393400be864e738d89bc5713f5aac242b
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152956"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963482"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Metryki platformy Azure Monitor eksportowane za pośrednictwem ustawień diagnostycznych
 
@@ -24,6 +24,19 @@ Metryki platformy z potoku usługi Azure monitor można wyeksportować do innych
 2. Korzystanie z [interfejsu API REST metryk](https://docs.microsoft.com/rest/api/monitor/metrics/list)
 
 Ze względu na złożonego w zapleczu Azure Monitor nie wszystkie metryki są eksportowane przy użyciu ustawień diagnostycznych. W poniższej tabeli wymieniono i nie można eksportować za pomocą ustawień diagnostycznych.
+
+Tabela zawiera następujące kolumny. 
+- Eksportować za pomocą ustawień diagnostycznych? 
+- ResourceType 
+- Metryka 
+- MetricDisplayName
+- Jednostka 
+- Agregacja
+
+
+> [!NOTE]
+> Poniższa tabela może mieć poziomy pasek przewijania u dołu. Jeśli uważasz, że brakuje informacji, sprawdź, czy pasek przewijania jest widoczny w lewo.  
+
 
 Eksportować za pomocą ustawień diagnostycznych? | ResourceType | Metryka | MetricDisplayName | Jednostka | Agregacja
 |----|-----|------|----|----|-----|
@@ -43,13 +56,13 @@ Tak | Microsoft.AnalysisServices/servers | mashup_engine_private_bytes_metric | 
 Tak | Microsoft.AnalysisServices/servers | mashup_engine_qpu_metric | M QPU aparatu | Liczba | Średnia
 Tak | Microsoft.AnalysisServices/servers | mashup_engine_virtual_bytes_metric | Liczba bajtów wirtualnych aparatu M | Bajty | Średnia
 Tak | Microsoft.AnalysisServices/servers | memory_metric | Pamięć | Bajty | Średnia
-Tak | Microsoft.AnalysisServices/servers | memory_thrashing_metric | Przeładowywanie pamięci | Procent | Średnia
+Tak | Microsoft.AnalysisServices/servers | memory_thrashing_metric | Migotanie pamięci | Procent | Średnia
 Tak | Microsoft.AnalysisServices/servers | MemoryLimitHard | Pamięć: sztywny limit pamięci | Bajty | Średnia
 Tak | Microsoft.AnalysisServices/servers | MemoryLimitHigh | Pamięć: limit pamięci jest wysoki | Bajty | Średnia
 Tak | Microsoft.AnalysisServices/servers | MemoryLimitLow | Pamięć: limit pamięci — niski | Bajty | Średnia
 Tak | Microsoft.AnalysisServices/servers | MemoryLimitVertiPaq | Pamięć: limit pamięci — tryb VertiPaq | Bajty | Średnia
 Tak | Microsoft.AnalysisServices/servers | MemoryUsage | Pamięć: użycie pamięci | Bajty | Średnia
-Tak | Microsoft.AnalysisServices/servers | private_bytes_metric | Prywatne bajty | Bajty | Średnia
+Tak | Microsoft.AnalysisServices/servers | private_bytes_metric | Bajty prywatne | Bajty | Średnia
 Tak | Microsoft.AnalysisServices/servers | ProcessingPoolBusyIOJobThreads | Wątki: wątki zadań we/wy puli przetwarzania | Liczba | Średnia
 Tak | Microsoft.AnalysisServices/servers | ProcessingPoolBusyNonIOThreads | Wątki: zajęte wątki innych niż we/wy puli przetwarzania | Liczba | Średnia
 Tak | Microsoft.AnalysisServices/servers | ProcessingPoolIdleIOJobThreads | Wątki: wątki zadań we/wy puli przetwarzania | Liczba | Średnia
@@ -171,7 +184,7 @@ Tak | Microsoft. łańcucha bloków/blockchainMembers | CpuUsagePercentageInDoub
 Tak | Microsoft. łańcucha bloków/blockchainMembers | IOReadBytes | Bajty odczytu we/wy | Bajty | Łącznie
 Tak | Microsoft. łańcucha bloków/blockchainMembers | IOWriteBytes | Bajty zapisu we/wy | Bajty | Łącznie
 Tak | Microsoft. łańcucha bloków/blockchainMembers | MemoryLimit | Limit pamięci | Bajty | Średnia
-Tak | Microsoft. łańcucha bloków/blockchainMembers | MemoryUsage | Memory Usage (Użycie pamięci) | Bajty | Średnia
+Tak | Microsoft. łańcucha bloków/blockchainMembers | MemoryUsage | Użycie pamięci | Bajty | Średnia
 Tak | Microsoft. łańcucha bloków/blockchainMembers | MemoryUsagePercentageInDouble | Procent użycia pamięci | Procent | Średnia
 Tak | Microsoft. łańcucha bloków/blockchainMembers | PendingTransactions | Oczekujące transakcje | Liczba | Średnia
 Tak | Microsoft. łańcucha bloków/blockchainMembers | ProcessedBlocks | Przetworzone bloki | Liczba | Łącznie
@@ -224,7 +237,7 @@ Tak | Microsoft.Cache/redis | cacheWrite6 | Zapis w pamięci podręcznej (fragme
 Tak | Microsoft.Cache/redis | cacheWrite7 | Zapis w pamięci podręcznej (fragmentu 7) | BytesPerSecond | Maksimum
 Tak | Microsoft.Cache/redis | cacheWrite8 | Zapis w pamięci podręcznej (fragmentu 8) | BytesPerSecond | Maksimum
 Tak | Microsoft.Cache/redis | cacheWrite9 | Zapis w pamięci podręcznej (fragmentu 9) | BytesPerSecond | Maksimum
-Tak | Microsoft.Cache/redis | connectedclients | Podłączeni klienci | Liczba | Maksimum
+Tak | Microsoft.Cache/redis | connectedclients | Połączeni klienci | Liczba | Maksimum
 Tak | Microsoft.Cache/redis | connectedclients0 | Połączeni klienci (fragmentu 0) | Liczba | Maksimum
 Tak | Microsoft.Cache/redis | connectedclients1 | Połączeni klienci (fragmentu 1) | Liczba | Maksimum
 Tak | Microsoft.Cache/redis | connectedclients2 | Połączeni klienci (fragmentu 2) | Liczba | Maksimum
@@ -302,7 +315,7 @@ Tak | Microsoft.Cache/redis | serverLoad6 | Ładowanie serwera (fragmentu 6) | P
 Tak | Microsoft.Cache/redis | serverLoad7 | Ładowanie serwera (fragmentu 7) | Procent | Maksimum
 Tak | Microsoft.Cache/redis | serverLoad8 | Ładowanie serwera (fragmentu 8) | Procent | Maksimum
 Tak | Microsoft.Cache/redis | serverLoad9 | Ładowanie serwera (fragmentu 9) | Procent | Maksimum
-Tak | Microsoft.Cache/redis | SetCommands | Zestawy | Liczba | Łącznie
+Tak | Microsoft.Cache/redis | SetCommands | Przywraca | Liczba | Łącznie
 Tak | Microsoft.Cache/redis | setcommands0 | Zestawy (fragmentu 0) | Liczba | Łącznie
 Tak | Microsoft.Cache/redis | setcommands1 | Zestawy (fragmentu 1) | Liczba | Łącznie
 Tak | Microsoft.Cache/redis | setcommands2 | Zestawy (fragmentu 2) | Liczba | Łącznie
@@ -423,14 +436,14 @@ Tak | Microsoft.CognitiveServices/accounts | BlockedCalls | Zablokowane wywołan
 Tak | Microsoft.CognitiveServices/accounts | CharactersTrained | Znaki przeszkolone | Liczba | Łącznie
 Tak | Microsoft.CognitiveServices/accounts | CharactersTranslated | Znaki tłumaczone | Liczba | Łącznie
 Tak | Microsoft.CognitiveServices/accounts | ClientErrors | Błędy klienta | Liczba | Łącznie
-Tak | Microsoft.CognitiveServices/accounts | Dane | Dane wejściowe | Bajty | Łącznie
-Tak | Microsoft.CognitiveServices/accounts | DataOut | Dane wyjściowe | Bajty | Łącznie
+Tak | Microsoft.CognitiveServices/accounts | Dane | Dane w | Bajty | Łącznie
+Tak | Microsoft.CognitiveServices/accounts | DataOut | Dane wychodzące | Bajty | Łącznie
 Tak | Microsoft.CognitiveServices/accounts | Opóźnienie | Opóźnienie | MilliSeconds | Średnia
 Tak | Microsoft.CognitiveServices/accounts | Błędy servererrors | Błędy serwera | Liczba | Łącznie
 Tak | Microsoft.CognitiveServices/accounts | SpeechSessionDuration | Czas trwania sesji mowy | Sekundy | Łącznie
 Tak | Microsoft.CognitiveServices/accounts | SuccessfulCalls | Pomyślne wywołania | Liczba | Łącznie
 Tak | Microsoft.CognitiveServices/accounts | TotalCalls | Łączna liczba wywołań | Liczba | Łącznie
-Tak | Microsoft.CognitiveServices/accounts | TotalErrors | Całkowita liczba błędów | Liczba | Łącznie
+Tak | Microsoft.CognitiveServices/accounts | TotalErrors | Łączna liczba błędów | Liczba | Łącznie
 Tak | Microsoft.CognitiveServices/accounts | TotalTokenCalls | Łączna liczba wywołań tokenów | Liczba | Łącznie
 Tak | Microsoft.CognitiveServices/accounts | TotalTransactions | Łączna liczba transakcji | Liczba | Łącznie
 Tak | Microsoft.Compute/virtualMachines | Wykorzystane środki CPU | Wykorzystane środki CPU | Liczba | Średnia
@@ -550,8 +563,8 @@ Tak | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Trafienie odcz
 Tak | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Chybienia odczytu pamięci podręcznej dysku danych w warstwie Premium | Chybienia odczytu pamięci podręcznej dysku z danymi Premium (wersja zapoznawcza) | Procent | Średnia
 Tak | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium | Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza) | Procent | Średnia
 Tak | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Brak odczytu pamięci podręcznej dysku systemu operacyjnego w warstwie Premium | Brak chybień w pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza) | Procent | Średnia
-Tak | Microsoft.ContainerInstance/containerGroups | CpuUsage | Wykorzystanie procesora | Liczba | Średnia
-Tak | Microsoft.ContainerInstance/containerGroups | MemoryUsage | Memory Usage (Użycie pamięci) | Bajty | Średnia
+Tak | Microsoft.ContainerInstance/containerGroups | CpuUsage | Użycie procesora CPU | Liczba | Średnia
+Tak | Microsoft.ContainerInstance/containerGroups | MemoryUsage | Użycie pamięci | Bajty | Średnia
 Tak | Microsoft.ContainerInstance/containerGroups | NetworkBytesReceivedPerSecond | Bajty odebrane przez sieć na sekundę | Bajty | Średnia
 Tak | Microsoft.ContainerInstance/containerGroups | NetworkBytesTransmittedPerSecond | Bajty przesyłane przez sieć na sekundę | Bajty | Średnia
 Tak | Microsoft.ContainerRegistry/registries | RunDuration | Czas trwania przebiegu | MS | Łącznie
@@ -575,8 +588,8 @@ Tak | Microsoft.DataBoxEdge/dataBoxEdgeDevices | HyperVMemoryUtilization | Oblic
 Tak | Microsoft.DataBoxEdge/dataBoxEdgeDevices | HyperVVirtualProcessorUtilization | Obliczenia brzegowe — procentowy procesor CPU | Procent | Średnia
 Tak | Microsoft.DataBoxEdge/dataBoxEdgeDevices | NICReadThroughput | Przepływność odczytu (Sieć) | BytesPerSecond | Średnia
 Tak | Microsoft.DataBoxEdge/dataBoxEdgeDevices | NICWriteThroughput | Przepływność zapisu (Sieć) | BytesPerSecond | Średnia
-Tak | Microsoft.DataBoxEdge/dataBoxEdgeDevices | Łączna pojemność | Łączna pojemność | Bajty | Średnia
-Tak | Microsoft.DataFactory/datafactories | FailedRuns | Przebiegi zakończone niepowodzeniem | Liczba | Łącznie
+Tak | Microsoft.DataBoxEdge/dataBoxEdgeDevices | Łączna pojemność | Całkowita pojemność | Bajty | Średnia
+Tak | Microsoft.DataFactory/datafactories | FailedRuns | Nieudane uruchomienia | Liczba | Łącznie
 Tak | Microsoft.DataFactory/datafactories | SuccessfulRuns | Pomyślne uruchomienia | Liczba | Łącznie
 Tak | Microsoft.DataFactory/factories | ActivityCancelledRuns | Metryki uruchomień działań | Liczba | Łącznie
 Tak | Microsoft.DataFactory/factories | ActivityFailedRuns | Metryki uruchamiania działań zakończonych niepowodzeniem | Liczba | Łącznie
@@ -664,29 +677,29 @@ Tak | Microsoft. Devices/konto | digitaltwins. Telemetry. nodes | Symbol zastęp
 Tak | Microsoft.Devices/IotHubs | c2d.commands.egress.abandon.success | Porzucone komunikaty C2D | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | c2d.commands.egress.complete.success | Zakończono dostarczanie komunikatów C2D | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | c2d.commands.egress.reject.success | Odrzucone komunikaty C2D | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | C2D. Methods. Failure | Zakończone niepowodzeniem wywołania metody bezpośredniej | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | C2D. Methods. Failure | Nieudane wywołania metody bezpośredniej | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | c2d.methods.requestSize | Rozmiar żądania wywołań metody bezpośredniej | Bajty | Średnia
 Tak | Microsoft.Devices/IotHubs | c2d.methods.responseSize | Rozmiar odpowiedzi wywołań metody bezpośredniej | Bajty | Średnia
 Tak | Microsoft.Devices/IotHubs | c2d.methods.success | Pomyślne wywołania metody bezpośredniej | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | c2d.twin.read.failure | Zakończone niepowodzeniem odczyty bliźniaczej reprezentacji z zaplecza | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | c2d.twin.read.size | Rozmiar odpowiedzi odczytów bliźniaczej reprezentacji z zaplecza | Bajty | Średnia
+Tak | Microsoft.Devices/IotHubs | c2d.twin.read.failure | Nieudane odczyty sznurów z zaplecza | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | c2d.twin.read.size | Rozmiar odpowiedzi na odwrocie od zaplecza | Bajty | Średnia
 Tak | Microsoft.Devices/IotHubs | c2d.twin.read.success | Pomyślne odczyty sznurów z zaplecza | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | c2d.twin.update.failure | Zakończone niepowodzeniem aktualizacje bliźniaczej reprezentacji z zaplecza | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | c2d.twin.update.failure | Niepowodzenie aktualizacji bliźniaczych z zaplecza | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | c2d.twin.update.size | Rozmiar aktualizacji przędzy od zaplecza | Bajty | Średnia
-Tak | Microsoft.Devices/IotHubs | c2d.twin.update.success | Pomyślne aktualizacje bliźniaczej reprezentacji z zaplecza | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | c2d.twin.update.success | Pomyślne aktualizacje bliźniaczych z zaplecza | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | C2DMessagesExpired | Komunikaty C2D wygasły (wersja zapoznawcza) | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | konfiguracje | Metryki konfiguracji | Liczba | Łącznie
-Nie | Microsoft.Devices/IotHubs | connectedDeviceCount | Połączone urządzenia (wersja zapoznawcza) | Liczba | Średnia
+Tak | Microsoft.Devices/IotHubs | komputerów | Metryki konfiguracji | Liczba | Łącznie
+Nie | Microsoft.Devices/IotHubs | connectedDeviceCount | Podłączone urządzenia (wersja zapoznawcza) | Liczba | Średnia
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.egress.builtIn.events | Routing: komunikaty dostarczane do komunikatów/zdarzeń | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.egress.eventHubs | Routing: komunikaty dostarczane do centrum zdarzeń | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.egress.serviceBusQueues | Routing: komunikaty dostarczone do kolejki Service Bus | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.egress.serviceBusTopics | Routing: komunikaty dostarczane do Service Bus tematu | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage | Routing: komunikaty dostarczane do magazynu | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage.blobs | Routing: obiekty blob dostarczone do magazynu | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage.bytes | Routing: dane dostarczone do magazynu | Bajty | Łącznie
+Tak | Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage.blobs | Routing: obiekty blob dostarczane do magazynu | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage.bytes | Routing: dane dostarczane do magazynu | Bajty | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.latency.builtIn.events | Routing: opóźnienie komunikatów dla komunikatów/zdarzeń | MS | Średnia
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.latency.eventHubs | Routing: opóźnienie komunikatu dla centrum zdarzeń | MS | Średnia
-Tak | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusQueues | Routing: opóźnienie komunikatu dla kolejki usługi Service Bus | MS | Średnia
+Tak | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusQueues | Routing: opóźnienie komunikatu dla kolejki Service Bus | MS | Średnia
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusTopics | Routing: opóźnienie komunikatu dla Service Bus tematu | MS | Średnia
 Tak | Microsoft.Devices/IotHubs | d2c.endpoints.latency.storage | Routing: opóźnienie komunikatu dla magazynu | MS | Średnia
 Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped | Routing: porzucone komunikaty telemetryczne  | Liczba | Łącznie
@@ -695,41 +708,41 @@ Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.invalid | Routing: komuni
 Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned | Routing: oddzielone komunikaty telemetryczne  | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.telemetry.egress.success | Routing: dostarczono komunikaty telemetryczne | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.allProtocol | Próby wysłania komunikatów telemetrycznych | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.sendThrottle | Liczba błędów ograniczania przepustowości | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.sendThrottle | Liczba błędów ograniczania | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.success | Wysłane komunikaty telemetryczne | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | d2c.twin.read.failure | Zakończone niepowodzeniem odczyty bliźniaczej reprezentacji z urządzeń | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | d2c.twin.read.size | Rozmiar odpowiedzi odczytów bliźniaczej reprezentacji z urządzeń | Bajty | Średnia
+Tak | Microsoft.Devices/IotHubs | d2c.twin.read.failure | Nieudane odczyty sznurów z urządzeń | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | d2c.twin.read.size | Rozmiar odpowiedzi dla sznurów odczytanych z urządzeń | Bajty | Średnia
 Tak | Microsoft.Devices/IotHubs | d2c.twin.read.success | Pomyślne odczyty sznurów z urządzeń | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | d2c.twin.update.failure | Zakończone niepowodzeniem aktualizacje bliźniaczej reprezentacji z urządzeń | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | d2c.twin.update.failure | Niepowodzenie aktualizacji bliźniaczych z urządzeń | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | d2c.twin.update.size | Rozmiar aktualizacji bliźniaczych z urządzeń | Bajty | Średnia
 Tak | Microsoft.Devices/IotHubs | d2c.twin.update.success | Pomyślne aktualizacje bliźniaczych urządzeń | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | dailyMessageQuotaUsed | Całkowita liczba użytych komunikatów | Liczba | Średnia
 Tak | Microsoft.Devices/IotHubs | deviceDataUsage | Całkowite użycie danych urządzenia | Bajty | Łącznie
 Tak | Microsoft.Devices/IotHubs | deviceDataUsageV2 | Całkowite użycie danych urządzenia (wersja zapoznawcza) | Bajty | Łącznie
-Tak | Microsoft.Devices/IotHubs | devices.connectedDevices.allProtocol | Połączone urządzenia (przestarzałe)  | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | devices.connectedDevices.allProtocol | Podłączone urządzenia (przestarzałe)  | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | Devices. totalDevices | Łączna liczba urządzeń (przestarzałe) | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | EventGridDeliveries | Dostawy Event Grid (wersja zapoznawcza) | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | EventGridLatency | Opóźnienie Event Grid (wersja zapoznawcza) | MS | Średnia
-Tak | Microsoft.Devices/IotHubs | jobs.cancelJob.failure | Zakończone niepowodzeniem anulowania zadań | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | jobs.cancelJob.failure | Nieudane anulowania zadań | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | jobs.cancelJob.success | Pomyślne anulowania zadań | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | zadania. ukończone | Zadania zakończone | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | jobs.createDirectMethodJob.failure | Zakończone niepowodzeniem zadania utworzenia wywołania metody | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | zadania. ukończone | Ukończone zadania | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | jobs.createDirectMethodJob.failure | Nie można utworzyć zadań wywołania metody | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | jobs.createDirectMethodJob.success | Pomyślne utworzenie zadań wywołania metody | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | jobs.createTwinUpdateJob.failure | Zakończone niepowodzeniem zadania utworzenia bliźniaczych aktualizacji | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | jobs.createTwinUpdateJob.failure | Nie można utworzyć dwuosiowych zadań aktualizacji | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | jobs.createTwinUpdateJob.success | Pomyślne utworzenie dwuosiowych zadań aktualizacji | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | zadania. Niepowodzenie | Zadania zakończone niepowodzeniem | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | jobs.listJobs.failure | Zakończone niepowodzeniem zadania wywołania listy | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | jobs.listJobs.failure | Wywołania zakończone niepowodzeniem do listy zadań | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | jobs.listJobs.success | Pomyślne wywołania do zadań na liście | Liczba | Łącznie
-Tak | Microsoft.Devices/IotHubs | jobs.queryJobs.failure | Zakończone niepowodzeniem zapytania o zadania | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | jobs.queryJobs.failure | Nieudane kwerendy zadań | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | jobs.queryJobs.success | Pomyślne zapytania dotyczące zadań | Liczba | Łącznie
 Nie | Microsoft.Devices/IotHubs | totalDeviceCount | Łączna liczba urządzeń (wersja zapoznawcza) | Liczba | Średnia
-Tak | Microsoft.Devices/IotHubs | twinQueries.failure | Zakończone niepowodzeniem zapytania o bliźniacze reprezentacje | Liczba | Łącznie
+Tak | Microsoft.Devices/IotHubs | twinQueries.failure | Niepowodzenie zapytań bliźniaczych | Liczba | Łącznie
 Tak | Microsoft.Devices/IotHubs | twinQueries.resultSize | Rozmiar wyniku zapytań bliźniaczych | Bajty | Średnia
 Tak | Microsoft.Devices/IotHubs | twinQueries.success | Pomyślne zapytania bliźniaczy | Liczba | Łącznie
 Tak | Microsoft.Devices/provisioningServices | AttestationAttempts | Próby zaświadczania | Liczba | Łącznie
 Tak | Microsoft.Devices/provisioningServices | DeviceAssignments | Przypisane urządzenia | Liczba | Łącznie
 Tak | Microsoft.Devices/provisioningServices | RegistrationAttempts | Próby rejestracji | Liczba | Łącznie
-Nie | Microsoft.DocumentDB/databaseAccounts | AvailableStorage | Dostępna pamięć | Bajty | Łącznie
+Nie | Microsoft.DocumentDB/databaseAccounts | AvailableStorage | Dostępny magazyn | Bajty | Łącznie
 Nie | Microsoft.DocumentDB/databaseAccounts | CassandraConnectionClosures | Zamknięcia połączeń Cassandra | Liczba | Łącznie
 Nie | Microsoft.DocumentDB/databaseAccounts | CassandraRequestCharges | Opłaty za żądania Cassandra | Liczba | Łącznie
 Nie | Microsoft.DocumentDB/databaseAccounts | CassandraRequests | Żądania Cassandra | Liczba | Liczba
@@ -751,8 +764,8 @@ Tak | Microsoft.DocumentDB/databaseAccounts | ReplicationLatency | Opóźnienie 
 Nie | Microsoft.DocumentDB/databaseAccounts | Dostępność | Dostępność usługi | Procent | Średnia
 Tak | Microsoft.DocumentDB/databaseAccounts | TotalRequests | Łączna liczba żądań | Liczba | Liczba
 Tak | Microsoft.DocumentDB/databaseAccounts | TotalRequestUnits | Łączna liczba jednostek żądania | Liczba | Łącznie
-Nie | Microsoft. EnterpriseKnowledgeGraph/usługi | FailureCount | Liczba niepowodzeń | Liczba | Liczba
-Nie | Microsoft. EnterpriseKnowledgeGraph/usługi | SuccessCount | Liczba powodzeń | Liczba | Liczba
+Nie | Microsoft. EnterpriseKnowledgeGraph/usługi | FailureCount | Liczba błędów | Liczba | Liczba
+Nie | Microsoft. EnterpriseKnowledgeGraph/usługi | SuccessCount | Liczba sukcesów | Liczba | Liczba
 Nie | Microsoft. EnterpriseKnowledgeGraph/usługi | SuccessLatency | Opóźnienie sukcesu | MilliSeconds | Średnia
 Nie | Microsoft. EnterpriseKnowledgeGraph/usługi | TransactionCount | Liczba transakcji | Liczba | Liczba
 Tak | Microsoft. EventGrid/domeny | DeadLetteredCount | Zdarzenia utraconych wiadomości | Liczba | Łącznie
@@ -867,7 +880,7 @@ Nie | Microsoft. Insights/składniki | Liczba żądań na sekundę | Żądania s
 Tak | Microsoft. Insights/składniki | żądania/czas trwania | Czas odpowiedzi serwera | MilliSeconds | Średnia
 Nie | Microsoft. Insights/składniki | żądania/niepowodzenie | Żądania zakończone niepowodzeniem | Liczba | Liczba
 Nie | Microsoft. Insights/składniki | żądania/częstotliwość | Liczba żądań serwera | CountPerSecond | Średnia
-Tak | Microsoft. Insights/składniki | ślady/liczba | Ślady | Liczba | Liczba
+Tak | Microsoft. Insights/składniki | ślady/liczba | Ścieżki | Liczba | Liczba
 Tak | Microsoft.KeyVault/vaults | ServiceApiHit | Całkowita liczba trafień interfejsu API usługi | Liczba | Liczba
 Tak | Microsoft.KeyVault/vaults | ServiceApiLatency | Ogólne opóźnienie interfejsu API usługi | MS | Średnia
 Tak | Microsoft.KeyVault/vaults | ServiceApiResult | Łączna liczba wyników interfejsu API usługi | Liczba | Liczba
@@ -961,7 +974,7 @@ Tak | Microsoft.Logic/workflows | TriggerThrottledEvents | Wyzwalaj zdarzenia og
 Tak | Microsoft.MachineLearningServices/workspaces | Aktywne rdzenie | Aktywne rdzenie | Liczba | Średnia
 Tak | Microsoft.MachineLearningServices/workspaces | Aktywne węzły | Aktywne węzły | Liczba | Średnia
 Tak | Microsoft.MachineLearningServices/workspaces | Ukończone uruchomienia | Ukończone uruchomienia | Liczba | Łącznie
-Tak | Microsoft.MachineLearningServices/workspaces | Przebiegi zakończone niepowodzeniem | Przebiegi zakończone niepowodzeniem | Liczba | Łącznie
+Tak | Microsoft.MachineLearningServices/workspaces | Nieudane uruchomienia | Nieudane uruchomienia | Liczba | Łącznie
 Tak | Microsoft.MachineLearningServices/workspaces | Rdzenie bezczynne | Rdzenie bezczynne | Liczba | Średnia
 Tak | Microsoft.MachineLearningServices/workspaces | Węzły bezczynne | Węzły bezczynne | Liczba | Średnia
 Tak | Microsoft.MachineLearningServices/workspaces | Opuszczanie rdzeni | Opuszczanie rdzeni | Liczba | Średnia
@@ -1101,21 +1114,21 @@ Tak | Microsoft.Network/networkWatchers/connectionMonitors | ChecksFailedPercent
 Tak | Microsoft.Network/networkWatchers/connectionMonitors | ProbesFailedPercent | % Sond nie powiodło się | Procent | Średnia
 Tak | Microsoft.Network/networkWatchers/connectionMonitors | RoundTripTimeMs | Czas błądzenia (MS) (wersja zapoznawcza) | MilliSeconds | Średnia
 Tak | Microsoft.Network/publicIPAddresses | ByteCount | Liczba bajtów | Liczba | Łącznie
-Tak | Microsoft.Network/publicIPAddresses | BytesDroppedDDoS | Atak DDoS — porzucone bajty przychodzące | BytesPerSecond | Maksimum
-Tak | Microsoft.Network/publicIPAddresses | BytesForwardedDDoS | Atak DDoS — bajty przychodzące przesłane dalej | BytesPerSecond | Maksimum
-Tak | Microsoft.Network/publicIPAddresses | BytesInDDoS | Atak DDoS — bajty przychodzące | BytesPerSecond | Maksimum
-Tak | Microsoft.Network/publicIPAddresses | DDoSTriggerSYNPackets | Pakiety przychodzące SYN w celu wyzwalania ograniczania skutków ataku DDoS | CountPerSecond | Maksimum
+Tak | Microsoft.Network/publicIPAddresses | BytesDroppedDDoS | Bajty przychodzące opuszczone DDoS | BytesPerSecond | Maksimum
+Tak | Microsoft.Network/publicIPAddresses | BytesForwardedDDoS | Przekazane bajty przychodzące DDoS | BytesPerSecond | Maksimum
+Tak | Microsoft.Network/publicIPAddresses | BytesInDDoS | Bajty przychodzące DDoS | BytesPerSecond | Maksimum
+Tak | Microsoft.Network/publicIPAddresses | DDoSTriggerSYNPackets | Pakiety przychodzących SYN wyzwalające łagodzenie DDoS | CountPerSecond | Maksimum
 Tak | Microsoft.Network/publicIPAddresses | DDoSTriggerTCPPackets | Przychodzące pakiety TCP do wyzwalania łagodzenia DDoS | CountPerSecond | Maksimum
 Tak | Microsoft.Network/publicIPAddresses | DDoSTriggerUDPPackets | Przychodzące pakiety UDP do wyzwalania łagodzenia DDoS | CountPerSecond | Maksimum
 Tak | Microsoft.Network/publicIPAddresses | IfUnderDDoSAttack | W obszarze atak DDoS | Liczba | Maksimum
 Tak | Microsoft.Network/publicIPAddresses | PacketCount | Liczba pakietów | Liczba | Łącznie
-Tak | Microsoft.Network/publicIPAddresses | PacketsDroppedDDoS | Atak DDoS — porzucone pakiety przychodzące | CountPerSecond | Maksimum
-Tak | Microsoft.Network/publicIPAddresses | PacketsForwardedDDoS | Atak DDoS — pakiety przychodzące przesłane dalej | CountPerSecond | Maksimum
-Tak | Microsoft.Network/publicIPAddresses | PacketsInDDoS | Atak DDoS — pakiety przychodzące | CountPerSecond | Maksimum
+Tak | Microsoft.Network/publicIPAddresses | PacketsDroppedDDoS | Odrzucone pakiety przychodzące DDoS | CountPerSecond | Maksimum
+Tak | Microsoft.Network/publicIPAddresses | PacketsForwardedDDoS | Przekazane pakiety przychodzące DDoS | CountPerSecond | Maksimum
+Tak | Microsoft.Network/publicIPAddresses | PacketsInDDoS | Pakiety przychodzące DDoS | CountPerSecond | Maksimum
 Tak | Microsoft.Network/publicIPAddresses | SynCount | Liczba SYN | Liczba | Łącznie
 Tak | Microsoft.Network/publicIPAddresses | TCPBytesDroppedDDoS | Liczba porzuconych bajtów przychodzących protokołu TCP DDoS | BytesPerSecond | Maksimum
 Tak | Microsoft.Network/publicIPAddresses | TCPBytesForwardedDDoS | Przekazane DDoS przychodzące bajty TCP | BytesPerSecond | Maksimum
-Tak | Microsoft.Network/publicIPAddresses | TCPBytesInDDoS | Atak DDoS — przychodzące bajty TCP | BytesPerSecond | Maksimum
+Tak | Microsoft.Network/publicIPAddresses | TCPBytesInDDoS | Przychodzące bajty TCP DDoS | BytesPerSecond | Maksimum
 Tak | Microsoft.Network/publicIPAddresses | TCPPacketsDroppedDDoS | Liczba porzuconych pakietów TCP przychodzących DDoS | CountPerSecond | Maksimum
 Tak | Microsoft.Network/publicIPAddresses | TCPPacketsForwardedDDoS | Przychodzące pakiety TCP przesłane dalej DDoS | CountPerSecond | Maksimum
 Tak | Microsoft.Network/publicIPAddresses | TCPPacketsInDDoS | Przychodzące pakiety TCP DDoS | CountPerSecond | Maksimum
@@ -1249,7 +1262,7 @@ Tak | Microsoft.OperationalInsights/workspaces | Average_Free pamięć wirtualn�
 Tak | Microsoft.OperationalInsights/workspaces | Bajty dysku Average_Logical/s | Bajty dysku logicznego/s | Liczba | Średnia
 Tak | Microsoft.OperationalInsights/workspaces | Odczyty Average_Page/s | Odczyty stron/s | Liczba | Średnia
 Tak | Microsoft.OperationalInsights/workspaces | Zapisy Average_Page/s | Zapisy stron/s | Liczba | Średnia
-Tak | Microsoft.OperationalInsights/workspaces | Average_Pages/s | Strony/s | Liczba | Średnia
+Tak | Microsoft.OperationalInsights/workspaces | Average_Pages/s | Stron/s | Liczba | Średnia
 Tak | Microsoft.OperationalInsights/workspaces | Average_Pct uprzywilejowany czas | Czas uprzywilejowany PCT | Liczba | Średnia
 Tak | Microsoft.OperationalInsights/workspaces | Czas użytkownika Average_Pct | Czas użytkownika PCT | Liczba | Średnia
 Tak | Microsoft.OperationalInsights/workspaces | Bajty dysku Average_Physical/s | Bajty dysku fizycznego/s | Liczba | Średnia
@@ -1271,11 +1284,11 @@ Tak | Microsoft.OperationalInsights/workspaces | Pamięć Average_Used pamięci 
 Tak | Microsoft.OperationalInsights/workspaces | Average_Users | Użytkownicy | Liczba | Średnia
 Tak | Microsoft.OperationalInsights/workspaces | Average_Virtual pamięci współdzielonej | Wirtualna pamięć udostępniona | Liczba | Średnia
 Tak | Microsoft.OperationalInsights/workspaces | Wydarzenie | Wydarzenie | Liczba | Średnia
-Tak | Microsoft.OperationalInsights/workspaces | Puls | Puls | Liczba | Łącznie
+Tak | Microsoft.OperationalInsights/workspaces | Sygnały | Sygnały | Liczba | Łącznie
 Tak | Microsoft.OperationalInsights/workspaces | Aktualizacja | Aktualizacja | Liczba | Średnia
 Tak | Microsoft.PowerBIDedicated/capacities | memory_metric | Pamięć | Bajty | Średnia
 Tak | Microsoft.PowerBIDedicated/capacities | memory_thrashing_metric | Migotanie pamięci (zbiory danych) | Procent | Średnia
-Tak | Microsoft.PowerBIDedicated/capacities | qpu_high_utilization_metric | Wysokie wykorzystanie jednostek QPU | Liczba | Łącznie
+Tak | Microsoft.PowerBIDedicated/capacities | qpu_high_utilization_metric | QPU wysokie wykorzystanie | Liczba | Łącznie
 Tak | Microsoft.PowerBIDedicated/capacities | QueryDuration | Czas trwania zapytania (zestawy danych) | MS | Średnia
 Tak | Microsoft.PowerBIDedicated/capacities | QueryPoolJobQueueLength | Długość kolejki zadań puli zapytań (zbiory danych) | Liczba | Średnia
 Nie | Microsoft. Relay/przestrzenie nazw | Połączeń ActiveConnections | Połączeń ActiveConnections | Liczba | Łącznie
@@ -1304,7 +1317,7 @@ Tak | Microsoft.ServiceBus/namespaces | Komunikaty incomingmessages | Komunikaty
 Tak | Microsoft.ServiceBus/namespaces | Żądania incomingrequests | Żądania przychodzące | Liczba | Łącznie
 Nie | Microsoft.ServiceBus/namespaces | Komunikaty | Liczba komunikatów w kolejce/temacie. | Liczba | Średnia
 Nie | Microsoft.ServiceBus/namespaces | NamespaceCpuUsage | Procesor CPU | Procent | Maksimum
-Nie | Microsoft.ServiceBus/namespaces | NamespaceMemoryUsage | Memory Usage (Użycie pamięci) | Procent | Maksimum
+Nie | Microsoft.ServiceBus/namespaces | NamespaceMemoryUsage | Użycie pamięci | Procent | Maksimum
 Tak | Microsoft.ServiceBus/namespaces | Komunikaty outgoingmessages | Komunikaty wychodzące | Liczba | Łącznie
 Nie | Microsoft.ServiceBus/namespaces | ScheduledMessages | Liczba zaplanowanych komunikatów w kolejce/temacie. | Liczba | Średnia
 Nie | Microsoft.ServiceBus/namespaces | Błędy servererrors | Błędy serwera. | Liczba | Łącznie
@@ -1354,7 +1367,7 @@ Tak | Microsoft.Sql/servers/databases | connection_successful | Udane połączen
 Tak | Microsoft.Sql/servers/databases | cpu_limit | Limit CPU | Liczba | Średnia
 Tak | Microsoft.Sql/servers/databases | cpu_percent | Procent użycia procesora CPU | Procent | Średnia
 Tak | Microsoft.Sql/servers/databases | cpu_used | Użycie procesora CPU | Liczba | Średnia
-Tak | Microsoft.Sql/servers/databases | zakleszczenie | Zakleszczenia | Liczba | Łącznie
+Tak | Microsoft.Sql/servers/databases | stanu | Zakleszczenia | Liczba | Łącznie
 Tak | Microsoft.Sql/servers/databases | dtu_consumption_percent | Procent użycia jednostek DTU | Procent | Średnia
 Tak | Microsoft.Sql/servers/databases | dtu_limit | DTU Limit | Liczba | Średnia
 Tak | Microsoft.Sql/servers/databases | dtu_used | Używane jednostki DTU | Liczba | Średnia
@@ -1527,8 +1540,8 @@ Tak | Microsoft. VMwareCloudSimple/virtualMachines | Procentowe użycie procesor
 Tak | Microsoft. VMwareCloudSimple/virtualMachines | PercentageCpuReady | Procent gotowych do użycia procesora | MS | Łącznie
 Tak | Microsoft.Web/hostingEnvironments/multiRolePools | ActiveRequests | Aktywne żądania | Liczba | Łącznie
 Tak | Microsoft.Web/hostingEnvironments/multiRolePools | AverageResponseTime | Średni czas odpowiedzi | Sekundy | Średnia
-Tak | Microsoft.Web/hostingEnvironments/multiRolePools | BytesReceived | Dane wejściowe | Bajty | Łącznie
-Tak | Microsoft.Web/hostingEnvironments/multiRolePools | BytesSent | Dane wyjściowe | Bajty | Łącznie
+Tak | Microsoft.Web/hostingEnvironments/multiRolePools | BytesReceived | Dane w | Bajty | Łącznie
+Tak | Microsoft.Web/hostingEnvironments/multiRolePools | BytesSent | Dane wychodzące | Bajty | Łącznie
 Tak | Microsoft.Web/hostingEnvironments/multiRolePools | CpuPercentage | Procent użycia procesora CPU | Procent | Średnia
 Tak | Microsoft.Web/hostingEnvironments/multiRolePools | DiskQueueLength | Długość kolejki dysku | Liczba | Średnia
 Tak | Microsoft.Web/hostingEnvironments/multiRolePools | Http101 | Http 101 | Liczba | Łącznie
@@ -1552,8 +1565,8 @@ Tak | Microsoft. Web/hostingEnvironments/workerPools | MemoryPercentage | Procen
 Tak | Microsoft. Web/hostingEnvironments/workerPools | WorkersAvailable | Dostępni pracownicy | Liczba | Średnia
 Tak | Microsoft. Web/hostingEnvironments/workerPools | Łączna | Łączna liczba procesów roboczych | Liczba | Średnia
 Tak | Microsoft. Web/hostingEnvironments/workerPools | WorkersUsed | Używani pracownicy | Liczba | Średnia
-Tak | Microsoft.Web/serverfarms | BytesReceived | Dane wejściowe | Bajty | Łącznie
-Tak | Microsoft.Web/serverfarms | BytesSent | Dane wyjściowe | Bajty | Łącznie
+Tak | Microsoft.Web/serverfarms | BytesReceived | Dane w | Bajty | Łącznie
+Tak | Microsoft.Web/serverfarms | BytesSent | Dane wychodzące | Bajty | Łącznie
 Tak | Microsoft.Web/serverfarms | CpuPercentage | Procent użycia procesora CPU | Procent | Średnia
 Tak | Microsoft.Web/serverfarms | DiskQueueLength | Długość kolejki dysku | Liczba | Średnia
 Tak | Microsoft.Web/serverfarms | HttpQueueLength | Długość kolejki http | Liczba | Średnia
@@ -1570,8 +1583,8 @@ Tak | Microsoft.Web/serverfarms | TcpTimeWait | Czas oczekiwania TCP | Liczba | 
 Tak | Microsoft.Web/sites | AppConnections | Połączenia | Liczba | Średnia
 Tak | Microsoft.Web/sites | AverageMemoryWorkingSet | Średni zestaw roboczy pamięci | Bajty | Średnia
 Tak | Microsoft.Web/sites | AverageResponseTime | Średni czas odpowiedzi | Sekundy | Średnia
-Tak | Microsoft.Web/sites | BytesReceived | Dane wejściowe | Bajty | Łącznie
-Tak | Microsoft.Web/sites | BytesSent | Dane wyjściowe | Bajty | Łącznie
+Tak | Microsoft.Web/sites | BytesReceived | Dane w | Bajty | Łącznie
+Tak | Microsoft.Web/sites | BytesSent | Dane wychodzące | Bajty | Łącznie
 Tak | Microsoft.Web/sites | CpuTime | Czas procesora CPU | Sekundy | Łącznie
 Tak | Microsoft.Web/sites | CurrentAssemblies | Bieżące zestawy | Liczba | Średnia
 Tak | Microsoft.Web/sites | FunctionExecutionCount | Liczba wykonań funkcji | Liczba | Łącznie
@@ -1579,7 +1592,7 @@ Tak | Microsoft.Web/sites | FunctionExecutionUnits | Jednostki wykonywania funkc
 Tak | Microsoft.Web/sites | Gen0Collections | Zbieranie elementów bezużytecznych generacji 0 | Liczba | Łącznie
 Tak | Microsoft.Web/sites | Gen1Collections | Wyrzucanie elementów bezużytecznych generacji 1 | Liczba | Łącznie
 Tak | Microsoft.Web/sites | Gen2Collections | Zbieranie elementów bezużytecznych generacji 2 | Liczba | Łącznie
-Tak | Microsoft.Web/sites | Handles | Liczba dojść | Liczba | Średnia
+Tak | Microsoft.Web/sites | Realizuj | Liczba dojść | Liczba | Średnia
 Tak | Microsoft.Web/sites | HealthCheckStatus | Stan sprawdzania kondycji | Liczba | Średnia
 Tak | Microsoft.Web/sites | Http101 | Http 101 | Liczba | Łącznie
 Tak | Microsoft.Web/sites | Http2xx | Http 2xx | Liczba | Łącznie
@@ -1598,7 +1611,7 @@ Tak | Microsoft.Web/sites | IoReadOperationsPerSecond | Operacje odczytu we/wy n
 Tak | Microsoft.Web/sites | IoWriteBytesPerSecond | Bajty zapisu we/wy na sekundę | BytesPerSecond | Łącznie
 Tak | Microsoft.Web/sites | IoWriteOperationsPerSecond | Operacje zapisu we/wy na sekundę | BytesPerSecond | Łącznie
 Tak | Microsoft.Web/sites | MemoryWorkingSet | Zestaw roboczy pamięci | Bajty | Średnia
-Tak | Microsoft.Web/sites | PrivateBytes | Prywatne bajty | Bajty | Średnia
+Tak | Microsoft.Web/sites | PrivateBytes | Bajty prywatne | Bajty | Średnia
 Tak | Microsoft.Web/sites | Żądania | Żądania | Liczba | Łącznie
 Tak | Microsoft.Web/sites | RequestsInApplicationQueue | Żądania w kolejce aplikacji | Liczba | Średnia
 Tak | Microsoft.Web/sites | Wątki | Liczba wątków | Liczba | Średnia
@@ -1607,8 +1620,8 @@ Tak | Microsoft.Web/sites | TotalAppDomainsUnloaded | Całkowita liczba zwolnion
 Tak | Microsoft.Web/sites/slots | AppConnections | Połączenia | Liczba | Średnia
 Tak | Microsoft.Web/sites/slots | AverageMemoryWorkingSet | Średni zestaw roboczy pamięci | Bajty | Średnia
 Tak | Microsoft.Web/sites/slots | AverageResponseTime | Średni czas odpowiedzi | Sekundy | Średnia
-Tak | Microsoft.Web/sites/slots | BytesReceived | Dane wejściowe | Bajty | Łącznie
-Tak | Microsoft.Web/sites/slots | BytesSent | Dane wyjściowe | Bajty | Łącznie
+Tak | Microsoft.Web/sites/slots | BytesReceived | Dane w | Bajty | Łącznie
+Tak | Microsoft.Web/sites/slots | BytesSent | Dane wychodzące | Bajty | Łącznie
 Tak | Microsoft.Web/sites/slots | CpuTime | Czas procesora CPU | Sekundy | Łącznie
 Tak | Microsoft.Web/sites/slots | CurrentAssemblies | Bieżące zestawy | Liczba | Średnia
 Tak | Microsoft.Web/sites/slots | FunctionExecutionCount | Liczba wykonań funkcji | Liczba | Łącznie
@@ -1616,7 +1629,7 @@ Tak | Microsoft.Web/sites/slots | FunctionExecutionUnits | Jednostki wykonywania
 Tak | Microsoft.Web/sites/slots | Gen0Collections | Zbieranie elementów bezużytecznych generacji 0 | Liczba | Łącznie
 Tak | Microsoft.Web/sites/slots | Gen1Collections | Wyrzucanie elementów bezużytecznych generacji 1 | Liczba | Łącznie
 Tak | Microsoft.Web/sites/slots | Gen2Collections | Zbieranie elementów bezużytecznych generacji 2 | Liczba | Łącznie
-Tak | Microsoft.Web/sites/slots | Handles | Liczba dojść | Liczba | Średnia
+Tak | Microsoft.Web/sites/slots | Realizuj | Liczba dojść | Liczba | Średnia
 Tak | Microsoft.Web/sites/slots | HealthCheckStatus | Stan sprawdzania kondycji | Liczba | Średnia
 Tak | Microsoft.Web/sites/slots | Http101 | Http 101 | Liczba | Łącznie
 Tak | Microsoft.Web/sites/slots | Http2xx | Http 2xx | Liczba | Łącznie
@@ -1635,7 +1648,7 @@ Tak | Microsoft.Web/sites/slots | IoReadOperationsPerSecond | Operacje odczytu w
 Tak | Microsoft.Web/sites/slots | IoWriteBytesPerSecond | Bajty zapisu we/wy na sekundę | BytesPerSecond | Łącznie
 Tak | Microsoft.Web/sites/slots | IoWriteOperationsPerSecond | Operacje zapisu we/wy na sekundę | BytesPerSecond | Łącznie
 Tak | Microsoft.Web/sites/slots | MemoryWorkingSet | Zestaw roboczy pamięci | Bajty | Średnia
-Tak | Microsoft.Web/sites/slots | PrivateBytes | Prywatne bajty | Bajty | Średnia
+Tak | Microsoft.Web/sites/slots | PrivateBytes | Bajty prywatne | Bajty | Średnia
 Tak | Microsoft.Web/sites/slots | Żądania | Żądania | Liczba | Łącznie
 Tak | Microsoft.Web/sites/slots | RequestsInApplicationQueue | Żądania w kolejce aplikacji | Liczba | Średnia
 Tak | Microsoft.Web/sites/slots | Wątki | Liczba wątków | Liczba | Średnia

@@ -3,12 +3,12 @@ title: Szacowanie kosztów planu zużycia w Azure Functions
 description: Dowiedz się, jak lepiej oszacować koszty, które mogą zostać naliczone podczas uruchamiania aplikacji funkcji w planie zużycia na platformie Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890317"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963992"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Szacowanie kosztów planu zużycia
 
@@ -47,7 +47,7 @@ Podczas szacowania ogólnych kosztów aplikacji funkcji i powiązanych usług U�
 
 | Koszt pokrewny | Opis |
 | ------------ | ----------- |
-| **Konto magazynu** | Każda aplikacja funkcji wymaga, aby masz skojarzone [konto usługi Azure Storage](../storage/common/storage-introduction.md#types-of-storage-accounts)ogólnego przeznaczenia, które jest [rozliczane osobno](https://azure.microsoft.com/pricing/details/storage/). To konto jest używane wewnętrznie przez środowisko uruchomieniowe funkcji, ale można go również użyć dla wyzwalaczy i powiązań magazynu. Jeśli nie masz konta magazynu, po utworzeniu aplikacji funkcji jest tworzona jedna z nich. Aby dowiedzieć się więcej, zobacz [wymagania dotyczące konta magazynu](functions-scale.md#storage-account-requirements).|
+| **Konto magazynu** | Każda aplikacja funkcji wymaga, aby masz skojarzone [konto usługi Azure Storage](../storage/common/storage-introduction.md#types-of-storage-accounts)ogólnego przeznaczenia, które jest [rozliczane osobno](https://azure.microsoft.com/pricing/details/storage/). To konto jest używane wewnętrznie przez środowisko uruchomieniowe funkcji, ale można go również użyć dla wyzwalaczy i powiązań magazynu. Jeśli nie masz konta magazynu, po utworzeniu aplikacji funkcji jest tworzona jedna z nich. Aby dowiedzieć się więcej, zobacz [wymagania dotyczące konta magazynu](storage-considerations.md#storage-account-requirements).|
 | **Application Insights** | Funkcje programu opierają się na [Application Insights](../azure-monitor/app/app-insights-overview.md) , aby zapewnić środowisko monitorowania o wysokiej wydajności dla aplikacji funkcji. Chociaż nie jest to wymagane, należy [włączyć integrację Application Insights](functions-monitoring.md#enable-application-insights-integration). Każdy miesiąc obejmuje bezpłatne przyznawanie danych telemetrycznych. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). |
 | **Przepustowość sieci** | Nie płacisz za transfer danych między usługami platformy Azure w tym samym regionie. Można jednak nanieść koszty transferów danych wychodzących do innego regionu lub poza platformą Azure. Aby dowiedzieć się więcej, zobacz [szczegóły cennika dotyczącego przepustowości](https://azure.microsoft.com/pricing/details/bandwidth/). |
 
@@ -208,12 +208,12 @@ Wyniki wyglądają podobnie jak w poniższym przykładzie:
 
 | Sygnatura czasowa \[czasu UTC\]          | name          | wartość       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 AM | Prywatne bajty | 209 932 288 |
-| 9/12/2019, 1:06:14\.994 AM | Prywatne bajty | 212 189 184 |
-| 9/12/2019, 1:06:30\.010 AM | Prywatne bajty | 231 714 816 |
-| 9/12/2019, 1:07:15\.040 AM | Prywatne bajty | 210 591 744 |
-| 9/12/2019, 1:12:16\.285 AM | Prywatne bajty | 216 285 184 |
-| 9/12/2019, 1:12:31\.376 AM | Prywatne bajty | 235 806 720 |
+| 9/12/2019, 1:05:14\.947 AM | Bajty prywatne | 209 932 288 |
+| 9/12/2019, 1:06:14\.994 AM | Bajty prywatne | 212 189 184 |
+| 9/12/2019, 1:06:30\.010 AM | Bajty prywatne | 231 714 816 |
+| 9/12/2019, 1:07:15\.040 AM | Bajty prywatne | 210 591 744 |
+| 9/12/2019, 1:12:16\.285 AM | Bajty prywatne | 216 285 184 |
+| 9/12/2019, 1:12:31\.376 AM | Bajty prywatne | 235 806 720 |
 
 ## <a name="function-level-metrics"></a>Metryki na poziomie funkcji
 

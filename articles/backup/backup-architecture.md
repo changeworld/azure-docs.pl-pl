@@ -3,12 +3,12 @@ title: Przegląd architektury
 description: Zawiera omówienie architektury, składników i procesów używanych przez usługę Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450197"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963941"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup architektura i składniki
 
@@ -48,7 +48,7 @@ Recovery Services magazyny mają następujące funkcje:
   - **Magazyn Geograficznie nadmiarowy (GRS)** : aby chronić przed awarią całego regionu, możesz użyć GRS. GRS replikuje dane do regionu pomocniczego. [Dowiedz się więcej](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Domyślnie magazyny Recovery Services używają GRS.
 
-## <a name="backup-agents"></a>Agenci tworzenia kopii zapasowych
+## <a name="backup-agents"></a>Agenci kopii zapasowych
 
 Azure Backup udostępnia różnych agentów kopii zapasowych, w zależności od tego, jakiego typu maszyny jest tworzona kopia zapasowa:
 
@@ -101,6 +101,23 @@ Uruchom przyrostową kopię zapasową |![Tak][green] |![Tak][green] |![Tak][gree
 Tworzenie kopii zapasowej deduplikowanych dysków | | | ![Częściowo][yellow]<br/><br/> W przypadku serwerów DPM/serwera usługi MAB wdrożonych tylko lokalnie.
 
 ![Klucz tabeli](./media/backup-architecture/table-key.png)
+
+## <a name="backup-policy-essentials"></a>Podstawy zasad tworzenia kopii zapasowych
+
+- Tworzone są zasady tworzenia kopii zapasowych na magazyn.
+- Zasady tworzenia kopii zapasowych można utworzyć dla tworzenia kopii zapasowych następujących obciążeń
+  - Maszyna wirtualna platformy Azure
+  - SQL na maszynie wirtualnej platformy Azure
+  - Udział plików platformy Azure
+- Zasady mogą być przypisane do wielu zasobów. Zasady kopii zapasowych maszyny wirtualnej platformy Azure mogą służyć do ochrony wielu maszyn wirtualnych platformy Azure.
+- Zasady składają się z dwóch składników
+  - Harmonogram: Kiedy należy wykonać kopię zapasową
+  - Przechowywanie: czas przechowywania poszczególnych kopii zapasowych.
+- Harmonogram może być definiowany jako "dzienny" lub "tygodniowy" w określonym punkcie czasu.
+- Przechowywanie można zdefiniować dla punktów kopii zapasowych "dziennych", "cotygodniowych", "Monthly", "rocznie".
+- "tydzień" odnosi się do kopii zapasowej w określonym dniu tygodnia, "miesięcznie" oznacza, że kopia zapasowa w określonym dniu miesiąca i "corocznie" odnosi się do kopii zapasowej w określonym dniu roku.
+- Przechowywanie "miesięcznie", "rocznie" punktów kopii zapasowych jest określane jako "LongTermRetention".
+- Po utworzeniu magazynu tworzone są również zasady tworzenia kopii zapasowych maszyny wirtualnej platformy Azure o nazwie "DefaultPolicy" i mogą służyć do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure.
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektura: Wbudowana kopia zapasowa maszyny wirtualnej platformy Azure
 

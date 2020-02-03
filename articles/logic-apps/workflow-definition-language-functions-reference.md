@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/23/2019
-ms.openlocfilehash: f1fd776f903b4f5b4f315147f460143c7843fdc9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 02/03/2020
+ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
+ms.sourcegitcommit: 85d52b799621d35d7df32c2cb1e339071c619bb3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689077"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966099"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Przewodnik referencyjny dotyczący używania funkcji w wyrażeniach dla Azure Logic Apps i automatyzacji
 
@@ -124,12 +124,12 @@ Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną l
 
 | Logiczna funkcja porównywania | Zadanie |
 | --------------------------- | ---- |
-| [i](../logic-apps/workflow-definition-language-functions-reference.md#and) | Sprawdź, czy wszystkie wyrażenia mają wartość PRAWDA. |
-| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Sprawdź, czy obie wartości są równoważne. |
-| [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Sprawdź, czy pierwsza wartość jest większa od drugiej wartości. |
+| [lub](../logic-apps/workflow-definition-language-functions-reference.md#and) | Sprawdź, czy wszystkie wyrażenia mają wartość PRAWDA. |
+| [ubiegł](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Sprawdź, czy obie wartości są równoważne. |
+| [mniejszą](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Sprawdź, czy pierwsza wartość jest większa od drugiej wartości. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Sprawdź, czy pierwsza wartość jest większa lub równa drugiej wartości. |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Sprawdź, czy wyrażenie ma wartość true lub false. W oparciu o wynik Zwraca określoną wartość. |
-| [less](../logic-apps/workflow-definition-language-functions-reference.md#less) | Sprawdź, czy pierwsza wartość jest mniejsza od drugiej wartości. |
+| [wcześniejsz](../logic-apps/workflow-definition-language-functions-reference.md#less) | Sprawdź, czy pierwsza wartość jest mniejsza od drugiej wartości. |
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Sprawdź, czy pierwsza wartość jest mniejsza lub równa drugiej wartości. |
 | [not](../logic-apps/workflow-definition-language-functions-reference.md#not) | Sprawdź, czy wyrażenie ma wartość false. |
 | [lub](../logic-apps/workflow-definition-language-functions-reference.md#or) | Sprawdź, czy co najmniej jedno wyrażenie ma wartość true. |
@@ -151,7 +151,7 @@ Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną l
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Zwróć wersję binarną dla ciągu zakodowanego algorytmem Base64. |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Zwraca wersję ciągu dla ciągu zakodowanego algorytmem Base64. |
 | [binarny](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Zwróć wersję binarną dla wartości wejściowej. |
-| [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Zwróć wersję logiczną dla wartości wejściowej. |
+| [logiczna](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Zwróć wersję logiczną dla wartości wejściowej. |
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Zwróć tablicę z wielu danych wejściowych. |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Zwróć identyfikator URI danych dla wartości wejściowej. |
 | [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Zwróć wersję binarną dla identyfikatora URI danych. |
@@ -160,7 +160,7 @@ Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną l
 | [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Zwróć wersję binarną dla identyfikatora URI danych. |
 | [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Zwraca ciąg, który zastępuje znaki ucieczki z zdekodowanymi wersjami. |
 | [encodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Zwraca ciąg, który zastępuje znaki w postaci niebezpiecznej adresów URL. |
-| [liczba zmiennoprzecinkowa](../logic-apps/workflow-definition-language-functions-reference.md#float) | Zwróć liczbę zmiennoprzecinkową dla wartości wejściowej. |
+| [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Zwróć liczbę zmiennoprzecinkową dla wartości wejściowej. |
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Zwróć wersję całkowitą dla ciągu. |
 | [kodu](../logic-apps/workflow-definition-language-functions-reference.md#json) | Zwróć wartość typu JavaScript Object Notation (JSON) lub obiekt dla ciągu lub XML. |
 | [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | Zwraca wersję ciągu dla wartości wejściowej. |
@@ -179,14 +179,14 @@ Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną l
 
 | Funkcja matematyczna | Zadanie |
 | ------------- | ---- |
-| [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | Zwróć wynik dodawania dwóch liczb. |
+| [dodana](../logic-apps/workflow-definition-language-functions-reference.md#add) | Zwróć wynik dodawania dwóch liczb. |
 | [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Zwróć wynik dzielenia dwóch liczb. |
 | [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Zwraca najwyższą wartość z zestawu liczb lub tablicy. |
 | [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Zwróć najniższą wartość z zestawu liczb lub tablicy. |
 | [Funkcja](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Zwróć resztę z dzielenia dwóch liczb. |
 | [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Zwróć produkt z mnożenia dwóch liczb. |
-| [rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Zwraca losową liczbę całkowitą z podanego zakresu. |
-| [range](../logic-apps/workflow-definition-language-functions-reference.md#range) | Zwróć tablicę liczb całkowitych, która zaczyna się od określonej liczby całkowitej. |
+| [Rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Zwraca losową liczbę całkowitą z podanego zakresu. |
+| [zakresu](../logic-apps/workflow-definition-language-functions-reference.md#range) | Zwróć tablicę liczb całkowitych, która zaczyna się od określonej liczby całkowitej. |
 | [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | Zwraca wynik odejmowania drugiej liczby od pierwszej liczby. |
 |||
 
@@ -441,7 +441,7 @@ I zwraca ten wynik:
 
 <a name="actions"></a>
 
-### <a name="actions"></a>akcje
+### <a name="actions"></a>wykonane
 
 Zwraca dane wyjściowe akcji w czasie wykonywania lub wartości z innych par nazw i wartości JSON, które można przypisać do wyrażenia. Domyślnie funkcja odwołuje się do całego obiektu akcji, ale można opcjonalnie określić właściwość, której wartość chcesz.
 W przypadku wersji skróconych zobacz [actionBody ()](#actionBody), [actionOutputs ()](#actionOutputs)i [Body ()](#body).
@@ -1030,7 +1030,7 @@ I zwraca ten wynik:
 
 <a name="body"></a>
 
-### <a name="body"></a>treść
+### <a name="body"></a>jednostce
 
 Zwróć `body` danych wyjściowych akcji w czasie wykonywania.
 Skrót `actions('<actionName>').outputs.body`.
@@ -1148,7 +1148,7 @@ I zwraca te wyniki:
 
 <a name="concat"></a>
 
-### <a name="concat"></a>concat
+### <a name="concat"></a>Concat
 
 Połącz dwa lub więcej ciągów i zwróć połączony ciąg.
 
@@ -1182,7 +1182,7 @@ I zwraca ten wynik: `"HelloWorld"`
 
 Sprawdź, czy kolekcja zawiera określony element.
 Zwraca wartość true, jeśli element zostanie znaleziony lub zwraca wartość false, jeśli nie znaleziono.
-Ta funkcja jest uwzględniana wielkość liter.
+Ta funkcja uwzględnia wielkość liter.
 
 ```
 contains('<collection>', '<value>')
@@ -1539,7 +1539,7 @@ I zwraca ten wynik: `3`
 
 <a name="dayOfYear"></a>
 
-### <a name="dayofyear"></a>dayOfYear
+### <a name="dayofyear"></a>dzieńroku
 
 Zwróć dzień roku z sygnatury czasowej.
 
@@ -1733,7 +1733,7 @@ I zwraca ten wynik: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
-### <a name="empty"></a>puste
+### <a name="empty"></a>ciągiem
 
 Sprawdź, czy kolekcja jest pusta.
 Zwraca wartość true, jeśli kolekcja jest pusta lub zwraca wartość false, jeśli nie jest pusta.
@@ -1769,7 +1769,7 @@ I zwraca te wyniki:
 
 <a name="endswith"></a>
 
-### <a name="endswith"></a>endsWith
+### <a name="endswith"></a>EndsWith
 
 Sprawdź, czy ciąg jest kończący się określonym podciągiem.
 Zwraca wartość true, jeśli znaleziono podciąg lub zwraca wartość false, jeśli nie znaleziono.
@@ -2032,7 +2032,7 @@ formatNumber(<number>, <format>, <locale>?)
 Załóżmy, że chcesz sformatować numer `1234567890`. Ten przykład formatuje ten numer jako ciąg "1 234 567 890,00".
 
 ```
-formatNumber(1234567890, "{0:0,0.00}", "en-us")
+formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 ```
 
 \* Przykład 2 "
@@ -2040,7 +2040,7 @@ formatNumber(1234567890, "{0:0,0.00}", "en-us")
 Załóżmy, że chcesz sformatować numer `1234567890`. Ten przykład formatuje liczbę na ciąg "1.234.567.890, 00".
 
 ```
-formatNumber(1234567890, "{0:0,0.00}", "is-is")
+formatNumber(1234567890, '{0:0,0.00}', 'is-is')
 ```
 
 *Przykład 3*
@@ -2048,7 +2048,7 @@ formatNumber(1234567890, "{0:0,0.00}", "is-is")
 Załóżmy, że chcesz sformatować numer `17.35`. Ten przykład służy do formatowania liczby do ciągu "$17,35".
 
 ```
-formatNumber(17.36, "{0:C2}")
+formatNumber(17.36, 'C2')
 ```
 
 *Przykład 4*
@@ -2056,7 +2056,7 @@ formatNumber(17.36, "{0:C2}")
 Załóżmy, że chcesz sformatować numer `17.35`. Ten przykład formatuje liczbę do ciągu "17, 35 KR".
 
 ```
-formatNumber(17.36, "{0:C2}", "is-is")
+formatNumber(17.36, 'C2', 'is-is')
 ```
 
 <a name="getFutureTime"></a>
@@ -2149,7 +2149,7 @@ I zwraca ten wynik: `"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
-### <a name="greater"></a>greater
+### <a name="greater"></a>mniejszą
 
 Sprawdź, czy pierwsza wartość jest większa od drugiej wartości.
 Zwraca wartość true, jeśli pierwsza wartość jest większa lub zwraca wartość false, jeśli jest mniejsza.
@@ -2353,7 +2353,7 @@ I zwraca ten wynik: `10`
 
 <a name="item"></a>
 
-### <a name="item"></a>element
+### <a name="item"></a>elementów
 
 W przypadku użycia wewnątrz powtarzającej się akcji nad tablicą zwraca bieżący element w tablicy podczas bieżącej iteracji akcji.
 Możesz również pobrać wartości z właściwości tego elementu.
@@ -2496,7 +2496,7 @@ Ten przykład tworzy zmienną licznika i zwiększa tę zmienną o jeden podczas 
 
 <a name="json"></a>
 
-### <a name="json"></a>json
+### <a name="json"></a>kodu
 
 Zwróć wartość typu JavaScript Object Notation (JSON) lub obiekt dla ciągu lub XML.
 
@@ -2728,7 +2728,7 @@ I zwróć ten wynik: `4`
 
 <a name="less"></a>
 
-### <a name="less"></a>less
+### <a name="less"></a>wcześniejsz
 
 Sprawdź, czy pierwsza wartość jest mniejsza od drugiej wartości.
 Zwraca wartość true, jeśli pierwsza wartość jest mniejsza lub zwraca wartość false, gdy pierwsza wartość jest większa.
@@ -2824,7 +2824,7 @@ Ten przykład przedstawia przykładowy adres URL wywołania zwrotnego, który mo
 
 <a name="max"></a>
 
-### <a name="max"></a>maks.
+### <a name="max"></a>Maksymalny
 
 Zwraca najwyższą wartość z listy lub tablicy z liczbami, które są włącznie na obu końcach.
 
@@ -2978,7 +2978,7 @@ multipartBody('<actionName>', <index>)
 
 <a name="not"></a>
 
-### <a name="not"></a>nie
+### <a name="not"></a>niemożliwe
 
 Sprawdź, czy wyrażenie ma wartość false.
 Zwraca wartość true, jeśli wyrażenie ma wartość false, lub zwraca wartość false, gdy wartość jest równa true.
@@ -3177,7 +3177,7 @@ I zwraca ten wynik: `"Sophia Owen"`
 
 <a name="rand"></a>
 
-### <a name="rand"></a>rand
+### <a name="rand"></a>Rand
 
 Zwraca losową liczbę całkowitą z podanego zakresu, która jest dopuszczająca tylko do końca początkowego.
 
@@ -3208,7 +3208,7 @@ I zwraca jedną z tych liczb jako wynik: `1`, `2`, `3`lub `4`
 
 <a name="range"></a>
 
-### <a name="range"></a>range
+### <a name="range"></a>zakresu
 
 Zwróć tablicę liczb całkowitych, która zaczyna się od określonej liczby całkowitej.
 
@@ -3239,9 +3239,9 @@ I zwraca ten wynik: `[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
-### <a name="replace"></a>replace
+### <a name="replace"></a>stępować
 
-Zamień podciąg na określony ciąg i zwróć ciąg wynikowy. Ta funkcja jest uwzględniana wielkość liter.
+Zamień podciąg na określony ciąg i zwróć ciąg wynikowy. Ta funkcja uwzględnia wielkość liter.
 
 ```
 replace('<text>', '<oldText>', '<newText>')
@@ -3383,7 +3383,7 @@ result('<scopedActionName>')
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*obiektu array*> | Array — Obiekt | Tablica zawierająca tablice danych wejściowych i wyjść z poszczególnych akcji, które pojawiają się w określonej akcji w zakresie |
+| <*obiektu array*> | Array — obiekt | Tablica zawierająca tablice danych wejściowych i wyjść z poszczególnych akcji, które pojawiają się w określonej akcji w zakresie |
 ||||
 
 *Przykład*
@@ -3581,7 +3581,7 @@ Oto zaktualizowany obiekt JSON:
 
 <a name="skip"></a>
 
-### <a name="skip"></a>Pomiń
+### <a name="skip"></a>Skocz
 
 Usuń elementy z przodu kolekcji i zwróć *wszystkie pozostałe* elementy.
 
@@ -3850,7 +3850,7 @@ I zwraca ten wynik: `10`
 
 <a name="substring"></a>
 
-### <a name="substring"></a>podciągu
+### <a name="substring"></a>podciąg
 
 Zwraca znaki z ciągu, zaczynając od określonej pozycji lub indeksu.
 Wartości indeksu zaczynają się od liczby 0.
@@ -4211,7 +4211,7 @@ I zwraca ten wynik: `"Hello World"`
 
 <a name="union"></a>
 
-### <a name="union"></a>unia
+### <a name="union"></a>Unii
 
 Zwraca kolekcję zawierającą *wszystkie* elementy z określonych kolekcji.
 Aby pojawił się w wyniku, element może pojawić się w dowolnej kolekcji przekazaną do tej funkcji. Jeśli co najmniej jeden element ma taką samą nazwę, w wyniku zostanie wyświetlony ostatni element o tej nazwie.
@@ -4520,7 +4520,7 @@ I zwraca ten wynik: `"http"`
 
 <a name="utcNow"></a>
 
-### <a name="utcnow"></a>UtcNow
+### <a name="utcnow"></a>utcNow
 
 Zwróć bieżącą sygnaturę czasową.
 
@@ -4565,7 +4565,7 @@ I zwraca ten wynik: `"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
-### <a name="variables"></a>zmienne
+### <a name="variables"></a>modyfikacj
 
 Zwraca wartość dla określonej zmiennej.
 

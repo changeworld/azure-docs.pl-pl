@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 9c24f54fe846459187488b0a65b2582914e25e2a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f2acb89597ef877543a2c4cc46f395aede41034b
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499352"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964502"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Samouczek: akceptowanie i odbieranie danych za pomocą udziału danych platformy Azure  
 
@@ -30,96 +30,108 @@ Przed zaakceptowaniem zaproszenia udziału danych upewnij się, że wszystkie wy
 
 * Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
 * Zaproszenie do udziału danych: zaproszenie od Microsoft Azure z podmiotem zatytułowanym "zaproszenie do udziału danych platformy Azure z **<yourdataprovider@domain.com>** ".
+* Zarejestruj dostawcę zasobów Microsoft. datashare. Postępuj zgodnie z instrukcjami opisanymi w temacie [Rozwiązywanie problemów z udziałem danych platformy Azure](data-share-troubleshoot.md) w celu zarejestrowania dostawcy zasobów udziału danych.
 
 ### <a name="receive-data-into-a-storage-account"></a>Odbierz dane do konta magazynu: 
 
 * Konto usługi Azure Storage: Jeśli jeszcze go nie masz, możesz utworzyć [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
-* Uprawnienie do dodawania przypisywania roli do konta magazynu, które jest obecne w uprawnieniach *Microsoft. Autoryzacja/Przypisywanie ról/zapis* . To uprawnienie istnieje w roli właściciela. 
-* Rejestracja dostawcy zasobów dla elementu Microsoft. datashare. Informacje o tym, jak to zrobić, zawiera dokumentacja [dostawcy zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) . 
-
-> [!IMPORTANT]
-> Aby zaakceptować i odebrać udział danych platformy Azure, musisz najpierw zarejestrować dostawcę zasobów Microsoft. datashare i musisz być właścicielem konta magazynu, do którego są akceptowane dane. Postępuj zgodnie z instrukcjami opisanymi w temacie [Rozwiązywanie problemów z udziałem danych platformy Azure](data-share-troubleshoot.md) , aby zarejestrować dostawcę zasobów udziału danych oraz dodać siebie jako właściciela konta magazynu. 
+* Uprawnienie do zapisu na koncie magazynu, które jest obecne w usłudze *Microsoft. Storage/storageAccounts/Write*. To uprawnienie istnieje w roli współautor. 
+* Uprawnienie do dodawania przypisania roli do konta magazynu, które jest obecne w *firmie Microsoft. Autoryzacja/przypisania ról/zapis*. To uprawnienie istnieje w roli właściciela.  
 
 ### <a name="receive-data-into-a-sql-based-source"></a>Odbieraj dane w źródle opartym na języku SQL:
 
-* Uprawnienie do pliku MSI udostępniania danych w celu uzyskania dostępu do Azure SQL Database lub Azure SQL Data Warehouse. Można to zrobić, wykonując następujące czynności: 
-    1. Ustaw siebie jako administratora Azure Active Directory dla serwera.
+* Uprawnienia do zapisu w bazach danych programu SQL Server, które znajdują się w *Microsoft. SQL/Servers/Databases/Write*. To uprawnienie istnieje w roli współautor. 
+* Uprawnienie do zarządzanej tożsamości zasobu udziału danych w celu uzyskania dostępu do Azure SQL Database lub Azure SQL Data Warehouse. Można to zrobić, wykonując następujące czynności: 
+    1. Ustaw siebie jako Azure Active Directory administrator programu SQL Server.
     1. Nawiąż połączenie z magazynem Azure SQL Database/danymi przy użyciu Azure Active Directory.
-    1. Użyj edytora zapytań (wersja zapoznawcza), aby wykonać poniższy skrypt w celu dodania pliku MSI udziału danych jako db_owner. Musisz nawiązać połączenie przy użyciu Active Directory, a nie SQL Server uwierzytelniania. 
+    1. Użyj edytora zapytań (wersja zapoznawcza), aby wykonać poniższy skrypt w celu dodania tożsamości zarządzanej udziału danych jako "db_datareader, db_datawriter, db_ddladmin". Musisz nawiązać połączenie przy użyciu Active Directory, a nie SQL Server uwierzytelniania. 
 
-```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
-```      
-Należy pamiętać, że *< share_acc_name >* to nazwa konta udziału danych. Jeśli konto udziału danych nie zostało jeszcze utworzone, możesz wrócić do tego wymagania wstępnego później.         
+        ```sql
+        create user "<share_acc_name>" from external provider; 
+        exec sp_addrolemember db_datareader, "<share_acc_name>"; 
+        exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
+        exec sp_addrolemember db_ddladmin, "<share_acc_name>";
+        ```      
+        Należy pamiętać, że *< share_acc_name >* to nazwa zasobu udziału danych. Jeśli zasób udział danych nie został jeszcze utworzony, możesz wrócić do tego wymagania wstępnego później.         
 
-* Adres IP klienta SQL Server dostęp do zapory: można to zrobić, wykonując następujące kroki: 1. Przejdź do obszarze *zapory i sieci wirtualne* 1. Kliknij przełącznik **, aby zezwolić na dostęp** do usług platformy Azure. 
+* Adres IP klienta SQL Server dostęp do zapory. Można to zrobić, wykonując następujące czynności: 
+    1. W programie SQL Server w Azure Portal przejdź do *zapór i sieci wirtualnych*
+    1. Kliknij przełącznik **, aby zezwolić na dostęp** do usług platformy Azure.
+    1. Kliknij pozycję **+ Dodaj adres IP klienta** , a następnie kliknij przycisk **Zapisz**. Adres IP klienta może ulec zmianie. Ten proces może wymagać powtarzania przy następnym udostępnieniu danych SQL z Azure Portal. Możesz również dodać zakres adresów IP. 
 
-Po ukończeniu tych wymagań wstępnych możesz otrzymywać dane do SQL Server.
+
+### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Odbieraj dane w klastrze Eksplorator danych platformy Azure: 
+
+* Klaster usługi Azure Eksplorator danych w tym samym centrum danych platformy Azure co klaster Eksplorator danych dostawcy danych: Jeśli jeszcze tego nie masz, możesz utworzyć [klaster Eksplorator danych platformy Azure](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal). Jeśli nie znasz centrum danych platformy Azure w klastrze dostawcy danych, możesz utworzyć klaster w dalszej części procesu.
+* Uprawnienie do zapisu w klastrze usługi Azure Eksplorator danych, który znajduje się w *witrynie Microsoft. Kusto/klastrów/Write*. To uprawnienie istnieje w roli współautor. 
+* Uprawnienie do dodawania przypisania roli do klastra usługi Azure Eksplorator danych, który jest obecny w *firmie Microsoft. Autoryzacja/przypisania ról/zapis*. To uprawnienie istnieje w roli właściciela. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="open-invitation"></a>Otwórz zaproszenie
 
-Sprawdź zaproszenie od dostawcy danych w skrzynce odbiorczej. Zaproszenie pochodzi z Microsoft Azure, zatytułowane **zaproszenie udziału danych platformy Azure z <yourdataprovider@domain.com>** . Zwróć uwagę na nazwę udziału, aby upewnić się, że zaakceptujesz prawidłowy udział, jeśli istnieje wiele zaproszeń. 
+1. Sprawdź zaproszenie od dostawcy danych w skrzynce odbiorczej. Zaproszenie pochodzi z Microsoft Azure, zatytułowane **zaproszenie udziału danych platformy Azure z <yourdataprovider@domain.com>** . Zwróć uwagę na nazwę udziału, aby upewnić się, że zaakceptujesz prawidłowy udział, jeśli istnieje wiele zaproszeń. 
 
-Wybierz pozycję **Wyświetl zaproszenie** , aby zobaczyć zaproszenie na platformie Azure. Spowoduje to przejście do widoku otrzymane udziały.
+1. Wybierz pozycję **Wyświetl zaproszenie** , aby zobaczyć zaproszenie na platformie Azure. Spowoduje to przejście do widoku otrzymane udziały.
 
-![Ogłoszeń](./media/invitations.png "Lista zaproszeń") 
+   ![Ogłoszeń](./media/invitations.png "Lista zaproszeń") 
 
-Wybierz udział, który chcesz wyświetlić. 
+1. Wybierz udział, który chcesz wyświetlić. 
 
 ## <a name="accept-invitation"></a>Zaakceptuj zaproszenie
-Upewnij się, że wszystkie pola są przeglądane, w tym **warunki użytkowania**. Jeśli akceptujesz warunki użytkowania, musisz zaznaczyć pole wyboru, aby wskazać, że zgadzasz się. 
+1. Upewnij się, że wszystkie pola są przeglądane, w tym **warunki użytkowania**. Jeśli akceptujesz warunki użytkowania, musisz zaznaczyć pole wyboru, aby wskazać, że zgadzasz się. 
 
-![Warunki użytkowania](./media/terms-of-use.png "Warunki użytkowania") 
+   ![Warunki użytkowania](./media/terms-of-use.png "Warunki użytkowania") 
 
-W obszarze *docelowe konto udziału danych*wybierz subskrypcję i grupę zasobów, w ramach której będziesz wdrażać udział danych. 
+1. W obszarze *docelowe konto udziału danych*wybierz subskrypcję i grupę zasobów, w ramach której będziesz wdrażać udział danych. 
 
-W polu **konto udostępniania danych** wybierz pozycję **Utwórz nową** , jeśli nie masz istniejącego konta udziału danych. W przeciwnym razie wybierz istniejące konto udziału danych, do którego chcesz zaakceptować udział danych. 
+   W polu **konto udostępniania danych** wybierz pozycję **Utwórz nową** , jeśli nie masz istniejącego konta udziału danych. W przeciwnym razie wybierz istniejące konto udziału danych, do którego chcesz zaakceptować udział danych. 
 
-W polu *Nazwa otrzymanego udziału* można pozostawić wartość domyślną określoną przez dane lub określić nową nazwę dla odebranego udziału. 
+   W polu **Nazwa otrzymanego udziału** można pozostawić wartość domyślną określoną przez dane lub określić nową nazwę dla odebranego udziału. 
 
-![Docelowe konto udziału danych](./media/target-data-share.png "Docelowe konto udziału danych") 
+   ![Docelowe konto udziału danych](./media/target-data-share.png "Docelowe konto udziału danych") 
 
-Po uzgodnieniu warunków użytkowania i określeniu lokalizacji dla udziału wybierz opcję *Zaakceptuj i skonfiguruj*. W przypadku wybrania tej opcji zostanie utworzona subskrypcja udziału, a na następnym ekranie zostanie wyświetlony monit o wybranie docelowego konta magazynu, do którego mają zostać skopiowane dane. 
+1. Po uzgodnieniu warunków użytkowania i określeniu lokalizacji dla udziału wybierz opcję *Zaakceptuj i skonfiguruj*. Zostanie utworzona subskrypcja udziału.
 
-![Zaakceptuj opcje](./media/accept-options.png "Zaakceptuj opcje") 
+   W przypadku udostępniania opartego na migawce następnym ekranie zostanie wyświetlony monit z prośbą o wybranie docelowego konta magazynu, do którego mają zostać skopiowane dane. 
 
-Jeśli wolisz zaakceptować zaproszenie teraz, ale skonfigurować magazyn w późniejszym czasie, wybierz opcję *Zaakceptuj i skonfiguruj później*. Ta opcja umożliwia późniejsze skonfigurowanie docelowego konta magazynu. Aby kontynuować konfigurowanie magazynu później, zobacz [jak skonfigurować swoją stronę konta magazynu](how-to-configure-mapping.md) , aby uzyskać szczegółowe instrukcje dotyczące wznawiania konfiguracji udziału danych. 
+   ![Zaakceptuj opcje](./media/accept-options.png "Zaakceptuj opcje") 
 
-Jeśli nie chcesz zaakceptować zaproszenia, wybierz pozycję *Odrzuć*. 
+   Jeśli wolisz zaakceptować zaproszenie teraz, ale później skonfigurujesz docelowy magazyn danych, wybierz opcję *Zaakceptuj i skonfiguruj później*. Aby kontynuować konfigurowanie magazynu później, zobacz stronę [Konfigurowanie mapowań zestawu danych](how-to-configure-mapping.md) , aby uzyskać szczegółowe instrukcje dotyczące wznawiania konfiguracji udziału danych. 
+
+   Aby uzyskać szczegółowe instrukcje dotyczące wznawiania konfiguracji udziału danych w miejscu, zobacz [Konfigurowanie mapowań zestawów danych](how-to-configure-mapping.md) . 
+
+   Jeśli nie chcesz zaakceptować zaproszenia, wybierz pozycję *Odrzuć*. 
 
 ## <a name="configure-storage"></a>Konfigurowanie magazynu
-W obszarze *docelowe ustawienia magazynu*wybierz subskrypcję, grupę zasobów i konto magazynu, do których chcesz otrzymywać dane. 
+1. W obszarze *docelowe ustawienia magazynu*wybierz subskrypcję, grupę zasobów i konto magazynu, do których chcesz otrzymywać dane. 
 
-![Ustawienia magazynu docelowego](./media/target-storage-settings.png "Magazyn docelowy") 
+   ![Ustawienia magazynu docelowego](./media/target-storage-settings.png "Magazyn docelowy") 
 
-Aby otrzymywać regularne odświeżanie danych, upewnij się, że zostały włączone ustawienia migawki. Należy zauważyć, że tylko harmonogram ustawień migawek zostanie wyświetlony, jeśli dostawca danych włączył go w udziale danych. 
+1. Aby otrzymywać regularne aktualizacje danych, upewnij się, że zostały włączone ustawienia migawki. Należy zauważyć, że tylko harmonogram ustawień migawek zostanie wyświetlony, jeśli dostawca danych włączył go w udziale danych. 
 
-![Ustawienia migawki](./media/snapshot-settings.png "Ustawienia migawki") 
+   ![Ustawienia migawki](./media/snapshot-settings.png "Ustawienia migawki") 
 
-Wybierz pozycję *Zapisz*. 
+1. Wybierz pozycję *Zapisz*. 
 
 > [!IMPORTANT]
-> Jeśli otrzymujesz dane oparte na języku SQL i chcesz otrzymywać te dane do źródła opartego na języku SQL, zapoznaj się z naszym przewodnikiem [Konfigurowanie mapowania zestawu danych](how-to-configure-mapping.md) , aby dowiedzieć się, jak skonfigurować SQL Server jako lokalizację docelową zestawu danych. 
+> Jeśli otrzymujesz dane oparte na języku SQL i chcesz otrzymywać te dane do źródła opartego na języku SQL, odwiedź stronę [Konfigurowanie mapowania zestawu danych](how-to-configure-mapping.md) , aby dowiedzieć się, jak skonfigurować SQL Server jako lokalizację docelową zestawu danych. 
 
 ## <a name="trigger-a-snapshot"></a>Wyzwalanie migawki
+Te kroki dotyczą tylko udostępniania opartego na migawce.
 
-Możesz wyzwolić migawkę na karcie otrzymane udziały — > Szczegóły, wybierając pozycję **Wyzwól migawkę**. Tutaj można wyzwolić pełną lub przyrostową migawkę danych. Jeśli po raz pierwszy otrzymujesz dane od dostawcy danych, wybierz pozycję pełna kopia. 
+1. Możesz wyzwolić migawkę na karcie otrzymane udziały — > Szczegóły, wybierając pozycję **Wyzwól migawkę**. Tutaj można wyzwolić pełną lub przyrostową migawkę danych. Jeśli po raz pierwszy otrzymujesz dane od dostawcy danych, wybierz pozycję pełna kopia. 
 
-![Wyzwalanie migawki](./media/trigger-snapshot.png "Wyzwalanie migawki") 
+   ![Wyzwalanie migawki](./media/trigger-snapshot.png "Wyzwalanie migawki") 
 
-Po *pomyślnym*zakończeniu ostatniego uruchomienia programu Otwórz konto magazynu, aby wyświetlić odebrane dane. 
+1. Po *pomyślnym*zakończeniu ostatniego uruchomienia Przejdź do docelowego magazynu danych, aby wyświetlić odebrane dane. Wybierz pozycję **zestawy danych**, a następnie kliknij link w ścieżce docelowej. 
 
-Aby sprawdzić, które konto magazynu zostało użyte, wybierz pozycję **zestawy danych**. 
-
-![Zestawy danych dla odbiorców](./media/consumer-datasets.png "Mapowanie zestawu danych klienta") 
+   ![Zestawy danych dla odbiorców](./media/consumer-datasets.png "Mapowanie zestawu danych klienta") 
 
 ## <a name="view-history"></a>Wyświetlanie historii
 Aby wyświetlić historię migawek, przejdź do obszaru otrzymane udziały — Historia >. W tym miejscu znajdziesz historię wszystkich migawek, które zostały wygenerowane w ciągu ostatnich 60 dni. 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku dowiesz się, jak akceptować i odbierać udział danych platformy Azure. Aby dowiedzieć się więcej o pojęciach dotyczących udziałów danych platformy Azure, przejdź do [pojęcia: Terminologia dotycząca udziałów danych platformy Azure](terminology.md).
+W ramach tego samouczka nauczysz się akceptować i odbierać udział danych platformy Azure. Aby dowiedzieć się więcej o pojęciach dotyczących udziałów danych platformy Azure, przejdź do [pojęcia: Terminologia dotycząca udziałów danych platformy Azure](terminology.md).

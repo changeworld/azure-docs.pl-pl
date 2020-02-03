@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425319"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962496"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady i ograniczenia haseł w usłudze Azure Active Directory
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady i ograniczenia haseł w Azure Active Directory
 
 W tym artykule opisano zasady haseł i wymagania dotyczące złożoności skojarzone z kontami użytkowników w dzierżawie usługi Azure Active Directory (Azure AD).
 
@@ -49,7 +49,7 @@ Zasady dwóch bram wymagają dwóch danych uwierzytelniania, takich jak **adres 
   * Administrator usługi Intune
   * Administrator usługi serwera proxy aplikacji
   * Administrator systemu Dynamics 365
-  * Administrator usługi Power BI
+  * usługa Power BI administrator
   * Administrator uwierzytelniania
   * Administrator uprzywilejowanego uwierzytelniania
 
@@ -85,8 +85,8 @@ W poniższej tabeli opisano ustawienia zasad haseł stosowane do kont użytkowni
 | Znaki nie są dozwolone | Znaki Unicode. |
 | Ograniczenia dotyczące haseł |<ul><li>Co najmniej 8 znaków i maksymalnie 256 znaków.</li><li>Wymaga trzech z czterech następujących elementów:<ul><li>Małe litery.</li><li>Wielkie litery.</li><li>Liczby (0-9).</li><li>Symbole (zobacz poprzednie ograniczenia dotyczące haseł).</li></ul></li></ul> |
 | Czas wygaśnięcia hasła (maksymalny wiek hasła) |<ul><li>Wartość domyślna: **90** dni.</li><li>Wartość można skonfigurować za pomocą polecenia cmdlet `Set-MsolPasswordPolicy` w module Azure Active Directory dla środowiska Windows PowerShell.</li></ul> |
-| Powiadomienie o wygaśnięciu hasła (gdy użytkownicy będą powiadamiani o wygaśnięciu hasła) |<ul><li>Wartość domyślna: **14** dni (przed wygaśnięciem hasła).</li><li>Wartość można skonfigurować za pomocą polecenia cmdlet `Set-MsolPasswordPolicy`.</li></ul> |
-| Wygaśnięcie hasła (przed wygaśnięciem hasła) |<ul><li>Wartość domyślna: **false** dni (wskazuje, że wygasa hasło jest włączone).</li><li>Wartość można skonfigurować dla poszczególnych kont użytkowników przy użyciu polecenia cmdlet `Set-MsolUser`.</li></ul> |
+| Powiadomienie o wygaśnięciu hasła (gdy użytkownicy są powiadamiani o wygaśnięciu hasła) |<ul><li>Wartość domyślna: **14** dni (przed wygaśnięciem hasła).</li><li>Wartość można skonfigurować za pomocą polecenia cmdlet `Set-MsolPasswordPolicy`.</li></ul> |
+| Wygaśnięcie hasła (niech hasło nigdy nie wygasa) |<ul><li>Wartość domyślna: **false** (wskazuje, że hasło ma datę wygaśnięcia).</li><li>Wartość można skonfigurować dla poszczególnych kont użytkowników przy użyciu polecenia cmdlet `Set-MsolUser`.</li></ul> |
 | Historia zmian haseł | *Nie* można ponownie użyć ostatniego hasła, gdy użytkownik zmieni hasło. |
 | Historia resetowania hasła | Ostatniego hasła *można* użyć ponownie, gdy użytkownik resetuje zapomniane hasło. |
 | Blokada konta | Po 10 nieudanych próbach logowania z nieprawidłowym hasłem użytkownik jest blokowany przez jedną minutę. Więcej nieprawidłowych prób logowania Zablokuj użytkownika w celu zwiększenia czasu trwania. [Inteligentna blokada](howto-password-smart-lockout.md) śledzi ostatnie trzy niewłaściwe skróty haseł, aby uniknąć zwiększenia licznika blokady dla tego samego hasła. Jeśli ktoś wprowadzi to samo złe hasło wielokrotnie, to zachowanie nie spowoduje zablokowania konta. |

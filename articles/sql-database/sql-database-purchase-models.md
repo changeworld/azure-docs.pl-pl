@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/01/2020
+ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973530"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964774"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wybierz między rdzeń wirtualny i modelami zakupów jednostek DTU
 
@@ -47,9 +47,9 @@ Poniższa tabela i wykres porównują i różnią się w zależności od modelu 
 
 W przypadku alokowanej warstwy obliczeniowej koszt obliczeń odzwierciedla łączną pojemność obliczeniową, która jest obsługiwana dla aplikacji.
 
-W warstwie usługi krytycznej dla firm automatycznie przydzielę co najmniej 3 repliki. Aby odzwierciedlić tę dodatkową alokację zasobów obliczeniowych, Cena w modelu zakupu opartego na rdzeń wirtualny wynosi około 2.7 x więcej w warstwie usługi krytycznej dla działania firmy niż w warstwie usług ogólnego przeznaczenia. Podobnie wyższa cena magazynu na GB w warstwie usługi krytycznej dla firm odzwierciedla wysokie i/O małe opóźnienia magazynu SSD.
+W warstwie usług Krytyczne dla działania firmy automatycznie przypisujemy co najmniej 3 repliki. Aby odzwierciedlić dodatkową alokację zasobów obliczeniowych, Cena w modelu zakupu opartego na rdzeń wirtualny wynosi około 2.7 x więcej w Krytyczne dla działania firmyej warstwie usług niż w warstwie usługi Ogólnego przeznaczenia. Podobnie wyższa cena magazynu na GB w warstwie usług Krytyczne dla działania firmy odzwierciedla wyższe limity we/wy i mniejsze opóźnienie magazynu SSD.
 
-Koszt magazynu kopii zapasowych jest taki sam dla warstwy usługi krytycznej dla działania firmy i warstwy usług ogólnego przeznaczenia, ponieważ obie warstwy korzystają z magazynu w warstwie Standardowa.
+Koszt magazynu kopii zapasowych jest taki sam dla warstwy usług Krytyczne dla działania firmy i Ogólnego przeznaczenia warstwy usług, ponieważ w obu warstwach jest używany magazyn standardowy w przypadku kopii zapasowych.
 
 ### <a name="serverless-compute-costs"></a>Koszty obliczeń bezserwerowych
 
@@ -67,7 +67,7 @@ Aby uzyskać więcej informacji o cenach magazynu, zobacz stronę z [cennikiem](
 
 Rdzeń wirtualny (rdzeń wirtualny) reprezentuje logiczny procesor CPU i oferuje możliwość wyboru między generacjami sprzętu i fizycznymi cechami sprzętu (na przykład liczby rdzeni, pamięci i rozmiaru magazynu). Model zakupu oparty na rdzeń wirtualny zapewnia elastyczność, kontrolę, przejrzystość poszczególnych zasobów oraz prostą metodę tłumaczenia lokalnych wymagań obciążeń do chmury. Ten model umożliwia wybranie zasobów obliczeniowych, pamięci i magazynu w oparciu o potrzeby związane z obciążeniem.
 
-W modelu zakupu opartego na rdzeń wirtualny można wybrać między warstwami usług [ogólnych](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytycznych](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) dla [pojedynczej bazy danych](sql-database-single-database-scale.md), [elastycznymi pulami](sql-database-elastic-pool.md)i [wystąpieniami zarządzanymi](sql-database-managed-instance.md). W przypadku pojedynczych baz danych można również wybrać [warstwę usługi na potrzeby skalowania](sql-database-service-tier-hyperscale.md).
+W modelu zakupu opartego na rdzeń wirtualny można wybrać warstwy usług [ogólnego przeznaczenia](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) i [krytyczne dla działania firmy](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) dla [pojedynczych baz danych](sql-database-single-database-scale.md), [pul elastycznych](sql-database-elastic-pool.md)i [wystąpień zarządzanych](sql-database-managed-instance.md). W przypadku pojedynczych baz danych można również wybrać [warstwę usługi na potrzeby skalowania](sql-database-service-tier-hyperscale.md).
 
 Model zakupu oparty na rdzeń wirtualny umożliwia niezależne wybieranie zasobów obliczeniowych i magazynowych, dopasowanie wydajności lokalnej i optymalizację cen. W modelu zakupu opartego na rdzeń wirtualny płacisz za:
 
@@ -83,8 +83,8 @@ Jeśli jedna baza danych lub Pula elastyczna zużywa ponad 300 DTU, przekonwerto
 
 Aby przekonwertować model zakupu oparty na jednostkach DTU na model zakupu oparty na rdzeń wirtualny, wybierz rozmiar obliczeń przy użyciu następujących reguł przycisku przewijania:
 
-- Co 100 DTU w warstwie Standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie usług ogólnego przeznaczenia.
-- Co 125 DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny w warstwie usługi krytycznej dla działania firmy.
+- Co 100 DTU w warstwie Standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie usług Ogólnego przeznaczenia.
+- Co 125 DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny w warstwie usług Krytyczne dla działania firmy.
 
 ## <a name="dtu-based-purchasing-model"></a>Model zakupu oparty na jednostkach DTU
 
@@ -102,7 +102,7 @@ Zasoby używane przez obciążenie nie wpływają na zasoby dostępne dla innych
 
 ![pole ograniczenia](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU są najbardziej przydatne do poznania zasobów względnych, które są przyłączone do baz danych Azure SQL w różnych rozmiarach obliczeniowych i warstwach usług. Na przykład:
+DTU są najbardziej przydatne do poznania zasobów względnych, które są przyłączone do baz danych Azure SQL w różnych rozmiarach obliczeniowych i warstwach usług. Przykład:
 
 - Podwajanie DTU przez zwiększenie rozmiaru obliczeń bazy danych jest równe Podwajanie zestawu zasobów dostępnych dla tej bazy danych.
 - Baza danych P11 usługi w warstwie Premium z 1750 DTU zapewnia większą moc obliczeniową jednostek DTU niż podstawowa baza danych warstwy usług z 5 DTU.  
@@ -125,7 +125,19 @@ Można dodać dodatkowe jednostek eDTU do istniejącej puli bez przestoju bazy d
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Określanie liczby DTU wymaganych przez obciążenie
 
-Jeśli chcesz przeprowadzić migrację istniejącego lokalnego lub SQL Server obciążenia maszyny wirtualnej do Azure SQL Database, użyj [kalkulatora jednostek DTU](https://dtucalculator.azurewebsites.net/) , aby przybliżyć wymaganą liczbę DTU. W przypadku istniejącego obciążenia Azure SQL Database należy użyć [szczegółowych informacji o wydajności zapytań](sql-database-query-performance.md) , aby zrozumieć użycie zasobów bazy danych (DTU) i uzyskać dokładniejszy wgląd w optymalizację obciążeń. [Sys. dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) dynamiczny widok zarządzania (DMV) umożliwia wyświetlenie zużycia zasobów w ciągu ostatniej godziny. Widok wykazu [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) przedstawia użycie zasobów w ciągu ostatnich 14 dni, ale przy niższej wierności średniej z pięciu minut.
+Jeśli chcesz przeprowadzić migrację istniejącego lokalnego lub SQL Server obciążenia maszyny wirtualnej do Azure SQL Database, użyj [kalkulatora jednostek DTU](https://dtucalculator.azurewebsites.net/) , aby przybliżyć wymaganą liczbę DTU. W przypadku istniejącego obciążenia Azure SQL Database należy użyć [szczegółowych informacji o wydajności zapytań](sql-database-query-performance.md) , aby zrozumieć użycie zasobów bazy danych (DTU) i uzyskać dokładniejszy wgląd w optymalizację obciążeń. Dynamiczny widok zarządzania [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) (DMV) umożliwia wyświetlenie zużycia zasobów w ciągu ostatniej godziny. Widok wykazu [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) przedstawia użycie zasobów w ciągu ostatnich 14 dni, ale przy niższej wierności średniej z pięciu minut.
+
+### <a name="determine-dtu-utilization"></a>Określanie użycia jednostek DTU
+
+Aby określić średnią wartość procentową wykorzystania jednostek DTU/eDTU względem limitu jednostek DTU/eDTU dla bazy danych lub puli elastycznej, należy użyć następującej formuły:
+
+`avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
+
+Wartości wejściowe dla tej formuły można uzyskać z [tabeli sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)i [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) widoków DMV. Innymi słowy, aby określić procent użycia jednostek DTU/eDTU w stosunku do limitu jednostek DTU/eDTU dla bazy danych lub puli elastycznej, należy wybrać największą wartość procentową z następujących elementów: `avg_cpu_percent`, `avg_data_io_percent`i `avg_log_write_percent` w danym momencie.
+
+> [!NOTE]
+> Limit liczby jednostek DTU bazy danych jest określany przez procesor, odczyty, zapisy i pamięć dla bazy danych. Jednak ponieważ aparat bazy danych SQL Server zwykle używa całej dostępnej pamięci dla pamięci podręcznej danych w celu zwiększenia wydajności, `avg_memory_usage_percent` wartość będzie zwykle bliska 100% niezależnie od bieżącego obciążenia bazy danych. W związku z tym nawet jeśli pamięć ma pośredni wpływ na limit jednostek DTU, nie jest używana w formule użycia jednostek DTU.
+>
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Obciążenia, które korzystają z elastycznej puli zasobów
 

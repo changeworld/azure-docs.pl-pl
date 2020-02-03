@@ -5,25 +5,25 @@ description: Utwórz wieloklasowy klasyfikator regresji logistycznej, aby przewi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4d22fd39eae5d5cf207d6d44819f0ce7ab2eceb5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311050"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963245"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Kompiluj klasyfikator, aby przewidzieć kategorię firmy przy użyciu programu Azure Machine Learning Designer.
 
-**Przykład projektanta 7**
+**Projektant (wersja zapoznawcza) — przykład 7**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ten przykład ilustruje sposób użycia modułów analizy tekstu do kompilowania potoku klasyfikacji tekstu w programie Azure Machine Learning Designer.
+Ten przykład ilustruje sposób użycia modułów analizy tekstu do kompilowania potoku klasyfikacji tekstu w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Celem klasyfikacji tekstu jest przypisanie pewnego fragmentu tekstu do co najmniej jednej wstępnie zdefiniowanej klasy lub kategorii. Fragment tekstu może być dokumentem, artykułem z wiadomościami, wyszukiwaniem, pocztą e-mail, Tweetem, biletami pomocy technicznej, opiniami dotyczącymi klientów, przeglądem produktów użytkowników itp. Aplikacje klasyfikacji tekstu obejmują kategoryzację artykułów gazetowych i treści wiadomości w postaci tematów, Organizowanie stron sieci Web w kategorie hierarchiczne, filtrowanie wiadomości e-mail z spamem, analiza tonacji, przewidywanie zamiaru użytkownika z zapytań wyszukiwania, routingu Pomoc techniczna biletów oraz analizowanie opinii klientów. 
 
@@ -35,7 +35,7 @@ Podstawowe kroki związane z modelem uczenia maszynowego z danymi tekstowymi są
 
 1. Wstępne przetwarzanie danych tekstowych
 
-1. Inżynieria cech
+1. Inżynieria funkcji
 
    Konwertuj funkcję tekstu na funkcję liczbową za pomocą modułu wyodrębniania funkcji, takiego jak mieszanie funkcji, Wyodrębnij funkcję n-gramową z danych tekstowych.
 
@@ -65,7 +65,7 @@ Nie można znaleźć artykułów dla niektórych firm, więc liczba rekordów je
 
 Moduł **tekstu przetwarzania wstępnego** jest używany do wstępnego przetwarzania danych tekstowych, takich jak wykrywanie zdań, tokenize zdania i tak dalej. Wszystkie obsługiwane opcje można znaleźć w artykule [**wstępnego przetwarzania tekstu**](algorithm-module-reference/preprocess-text.md) . Po wstępnym przetwarzaniu danych Tex korzystamy z modułu **Split Data** , aby losowo podzielić dane wejściowe, tak aby zestaw danych szkoleniowy zawierał 50% danych oryginalnych, a test dataset zawiera 50% oryginalnych danych.
 
-## <a name="feature-engineering"></a>Inżynieria cech
+## <a name="feature-engineering"></a>Inżynieria funkcji
 W tym przykładzie będziemy używać dwóch metod wykonywania zadań inżynieryjnych.
 
 ### <a name="feature-hashing"></a>Tworzenie skrótów funkcji

@@ -5,25 +5,25 @@ description: Postępuj zgodnie z tym przykładem klasyfikacji, aby przewidzieć 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: sgilley
 ms.date: 12/25/2019
-ms.openlocfilehash: 88f688608a0ae3d435699362f9326c7c02d494a4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 701bf186080ef627ef4621e959b281fd58aa4132
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311120"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963372"
 ---
 # <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Używanie podwyższania drzewa decyzyjnego do przewidywania zmian za pomocą narzędzia Azure Machine Learning Designer
 
-**Przykład projektanta 5**
+**Projektant (wersja zapoznawcza) — przykład 5**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Dowiedz się, jak utworzyć złożony potok uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant.
+Dowiedz się, jak utworzyć złożony potok uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza).
 
 Ten potok pociąga za **dwie klasy klasyfikatory drzewa decyzyjnego** , aby przewidzieć typowe zadania związane z zarządzaniem relacjami z klientami (CRM) dla klientów. Wartości i etykiety danych są podzielone na wiele źródeł danych i szyfrowane w celu zachowywanie anonimowości informacji o klientach, jednak nadal możemy używać projektanta do łączenia zestawów danych i uczenia modelu przy użyciu wartości zasłoniętych.
 
@@ -69,7 +69,7 @@ Najpierw kilka prostych operacji przetwarzania danych.
 
 Wizualizuj dane wyjściowe modułu **oceny modelu** , aby zobaczyć wydajność modelu w zestawie testów. 
 
-![Ocena wyników](./media/how-to-designer-sample-classification-churn/sample5-evaluate-1225.png)
+![Oceń wyniki](./media/how-to-designer-sample-classification-churn/sample5-evaluate-1225.png)
 
  Suwak **progu** można przenieść i zobaczyć zmianę metryk dla zadania klasyfikacji binarnej. 
 

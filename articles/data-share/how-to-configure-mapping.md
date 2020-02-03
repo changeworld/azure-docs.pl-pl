@@ -6,16 +6,16 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 754977788c5f6e5e574500552f670ba9083cf683
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ff432c2073536448c8194ebe537c8bf8cf00663
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490654"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964247"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Jak skonfigurować mapowanie zestawu danych dla odebranego udziału w udziale danych platformy Azure
 
-W tym artykule opisano sposób konfigurowania mapowania zestawu danych dla odebranego udziału za pomocą udziału danych platformy Azure. Należy to zrobić, Jeśli zaakceptujesz zaproszenie do udziału danych, ale wybrano opcję "Akceptuj i skonfiguruj później". Można skonfigurować mapowanie zestawu danych, jeśli trzeba zmienić miejsce docelowe dla danych, które są Ci udostępniane, lub jeśli chcesz otrzymywać dane do SQL Server. 
+W tym artykule opisano sposób konfigurowania mapowania zestawu danych dla odebranego udziału za pomocą udziału danych platformy Azure. Należy to zrobić, Jeśli zaakceptujesz zaproszenie do udziału danych, ale wybrano opcję "Akceptuj i skonfiguruj później" lub jeśli dane są udostępniane w miejscu. Można skonfigurować mapowanie zestawu danych, jeśli trzeba zmienić miejsce docelowe dla danych, które są Ci udostępniane, lub jeśli chcesz otrzymywać dane do SQL Server. 
 
 ## <a name="navigate-to-a-received-data-share"></a>Przejdź do odebranego udziału danych
 
@@ -27,9 +27,9 @@ Zaznacz pole wyboru obok zestawu danych, do którego chcesz przypisać miejsce d
 
 ![Mapuj do elementu docelowego](./media/dataset-map-target.png "Mapuj do elementu docelowego") 
 
-## <a name="select-a-new-destination-store"></a>Wybierz nowy magazyn docelowy
+## <a name="select-a-new-target-store"></a>Wybierz nowy magazyn docelowy
 
-Wybierz docelowy typ danych, w którym chcesz umieścić dane. Należy pamiętać, że wszystkie dane, które już istnieją na żadnym wcześniej mapowanym koncie magazynu, nie zostaną automatycznie przeniesione do nowego miejsca docelowego.
+Wybierz docelowy typ danych, w którym chcesz umieścić dane. W przypadku udostępniania opartego na migawce wszystkie dane, które już istnieją na żadnym wcześniej mapowanym koncie magazynu, nie zostaną automatycznie przeniesione do nowego magazynu docelowego. W przypadku udostępniania w miejscu wybierz magazyn danych w określonej lokalizacji. Lokalizacja to centrum danych platformy Azure, w którym znajduje się źródłowy magazyn danych dostawcy danych.
 
 ![Docelowe konto magazynu](./media/dataset-map-target-sql.png "Magazyn docelowy") 
 

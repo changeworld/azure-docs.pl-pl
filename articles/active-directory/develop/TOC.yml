@@ -740,18 +740,18 @@
   items:
     - name: Słownik
       href: developer-glossary.md
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Filmy wideo
+      href: identity-videos.md
     - name: Blog dotyczący usługi Azure AD
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Blog dla deweloperów platformy tożsamości firmy Microsoft
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Wypróbuj logowanie przy użyciu konta Microsoft
       href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Tożsamości zarządzane dla zasobów platformy Azure
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
     - name: Uzyskiwanie pomocy
       displayName: 'support, help options'
       href: developer-support-help-options.md
-    - name: Tożsamości zarządzane dla zasobów platformy Azure
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
-    - name: Wideo poświęcone platformie tożsamości firmy Microsoft
-      href: identity-videos.md

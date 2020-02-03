@@ -4,33 +4,18 @@ description: W tym artykule przedstawiono sposób tworzenia zasad tworzenia kopi
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554887"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963856"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Tworzenie zasad usługi Kopia zapasowa Azure Recovery Services przy użyciu interfejsu API REST
 
 Kroki tworzenia zasad tworzenia kopii zapasowych dla magazynu usługi Azure Recovery Services są opisane w [dokumencie interfejsu API REST zasad](/rest/api/backup/protectionpolicies/createorupdate). Poinformuj nas o tym, jak utworzyć zasady dla kopii zapasowej maszyny wirtualnej platformy Azure.
 
-## <a name="backup-policy-essentials"></a>Podstawy zasad tworzenia kopii zapasowych
-
-- Tworzone są zasady tworzenia kopii zapasowych na magazyn.
-- Zasady tworzenia kopii zapasowych można utworzyć dla tworzenia kopii zapasowych następujących obciążeń
-  - Maszyna wirtualna platformy Azure
-  - SQL na maszynie wirtualnej platformy Azure
-  - Udział plików platformy Azure
-- Zasady mogą być przypisane do wielu zasobów. Zasady kopii zapasowych maszyny wirtualnej platformy Azure mogą służyć do ochrony wielu maszyn wirtualnych platformy Azure.
-- Zasady składają się z dwóch składników
-  - Harmonogram: Kiedy należy wykonać kopię zapasową
-  - Przechowywanie: czas przechowywania poszczególnych kopii zapasowych.
-- Harmonogram może być definiowany jako "dzienny" lub "tygodniowy" w określonym punkcie czasu.
-- Przechowywanie można zdefiniować dla punktów kopii zapasowych "dziennych", "cotygodniowych", "Monthly", "rocznie".
-- "tydzień" odnosi się do kopii zapasowej w określonym dniu tygodnia, "miesięcznie" oznacza, że kopia zapasowa w określonym dniu miesiąca i "corocznie" odnosi się do kopii zapasowej w określonym dniu roku.
-- Przechowywanie "miesięcznie", "rocznie" punktów kopii zapasowych jest określane jako "LongTermRetention".
-- Po utworzeniu magazynu tworzone są również zasady tworzenia kopii zapasowych maszyny wirtualnej platformy Azure o nazwie "DefaultPolicy" i mogą służyć do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure.
+## <a name="create-or-update-a-policy"></a>Tworzenie lub aktualizowanie zasad
 
 Aby utworzyć lub zaktualizować zasady Azure Backup, użyj następującej operacji *Put*
 
@@ -282,4 +267,4 @@ Jeśli zasady są już używane do ochrony elementu, każda aktualizacja zasad s
 Aby uzyskać więcej informacji na temat Azure Backup interfejsów API REST, zobacz następujące dokumenty:
 
 - [Interfejs API REST dostawcy usługi Azure Recovery Services](/rest/api/recoveryservices/)
-- [Get started with Azure REST API (Rozpoczęcie pracy z interfejsem API REST platformy Azure)](/rest/api/azure/)
+- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)

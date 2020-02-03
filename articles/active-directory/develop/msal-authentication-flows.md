@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 01/30/2020
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bf241bc15ccdcf9e7d65f277c235f1aa668fcbe0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696644"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962099"
 ---
 # <a name="authentication-flows"></a>Przepływy uwierzytelniania
 
@@ -39,7 +39,7 @@ W tym artykule opisano różne przepływy uwierzytelniania udostępniane przez b
  
 W zależności od sposobu skompilowania klienta można użyć jednego (lub kilku) przepływów uwierzytelniania obsługiwanych przez platformę tożsamości firmy Microsoft.  Te przepływy mogą generować różne tokeny (id_tokens, tokeny odświeżenia, tokeny dostępu), a także kody autoryzacji i wymagać innych tokenów, aby działały. Ten wykres zawiera przegląd:
  
-|Przepływ | Wymaga | id_token | token dostępu | Odśwież token | kod autoryzacji | 
+|Przepływ | KONIECZN | id_token | token dostępu | Odśwież token | kod autoryzacji | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Przepływ kodu autoryzacji](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Niejawny przepływ](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -64,7 +64,7 @@ Aby uzyskać więcej informacji na temat korzystania z usługi MSAL.NET do inter
 
 Aby uzyskać więcej informacji na temat interakcyjnych wywołań w MSAL. js, zobacz temat [zachowanie monitu w programie MSAL. js Interactive Requests](msal-js-prompt-behavior.md).
 
-## <a name="implicit-grant"></a>Niejawne udzielenie
+## <a name="implicit-grant"></a>Niejawne przyznanie
 
 Usługa MSAL obsługuje [niejawny przepływ uwierzytelniania OAuth 2](v2-oauth2-implicit-grant-flow.md), który umożliwia aplikacji pobieranie tokenów z platformy tożsamości firmy Microsoft bez konieczności wymiany poświadczeń serwera zaplecza. Dzięki temu aplikacja może logować się do użytkownika, obsługiwać sesję i uzyskiwać tokeny do innych interfejsów API sieci Web, a wszystko to w kodzie JavaScript klienta.
 
@@ -74,7 +74,7 @@ Wiele nowoczesnych aplikacji sieci Web jest zbudowanych jako aplikacje jednostro
 
 Ten przepływ uwierzytelniania nie obejmuje scenariuszy aplikacji, które wykorzystują Międzyplatformowe platformy JavaScript, takie jak elektron i reagowanie na aplikacje natywne, ponieważ wymagają one dalszych możliwości interakcji z platformami macierzystymi.
 
-## <a name="authorization-code"></a>Kod autoryzacji
+## <a name="authorization-code"></a>kod autoryzacji
 
 MSAL obsługuje [przyznawanie kodu autoryzacji OAuth 2](v2-oauth2-auth-code-flow.md). Tego uprawnienia można używać w aplikacjach zainstalowanych na urządzeniu w celu uzyskania dostępu do chronionych zasobów, takich jak interfejsy API sieci Web. Pozwala to na dodawanie funkcji logowania i dostępu do interfejsu API do aplikacji mobilnych i klasycznych. 
 

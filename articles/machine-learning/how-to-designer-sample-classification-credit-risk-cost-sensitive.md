@@ -5,25 +5,25 @@ description: Tworzenie klasyfikatora i używanie niestandardowych skryptów jęz
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 1430db34f9c31cbd9d9df921650c628d265bccc5
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: ed8ee9b1c711ee0056377154379b8df56e0785df
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311091"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964604"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Kompilowanie klasyfikatora & używanie skryptów języka Python do przewidywania ryzyka kredytowego przy użyciu projektanta Azure Machine Learning
 
-**Przykład projektanta 4**
+**Projektant (wersja zapoznawcza) — przykład 4**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-W tym artykule opisano sposób tworzenia złożonego potoku uczenia maszynowego przy użyciu narzędzia Projektant. Dowiesz się, jak wdrożyć logikę niestandardową przy użyciu skryptów języka Python i porównać wiele modeli, aby wybrać najlepszą opcję.
+W tym artykule przedstawiono sposób tworzenia złożonego potoku uczenia maszynowego przy użyciu narzędzia Projektant (wersja zapoznawcza). Dowiesz się, jak wdrożyć logikę niestandardową przy użyciu skryptów języka Python i porównać wiele modeli, aby wybrać najlepszą opcję.
 
 Ten przykład pociąga za niego klasyfikatora do przewidywania ryzyka kredytowego przy użyciu informacji o aplikacji kredytowej, takich jak historia kredytów, wiek i liczba kart kredytowych. Można jednak zastosować Koncepcje opisane w tym artykule, aby poznać własne problemy z uczeniem maszynowym.
 

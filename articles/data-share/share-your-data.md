@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438733"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964429"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Samouczek: udostępnianie danych za pomocą udziału danych platformy Azure  
 
@@ -22,7 +22,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!div class="checklist"]
 > * Utwórz usługę Data Share.
 > * Dodaj zestawy danych do usługi Data Share.
-> * Włącz harmonogram synchronizacji dla usługi Data Share. 
+> * Włącz harmonogram migawek dla udziału danych. 
 > * Dodaj odbiorców do usługi Data Share. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -33,29 +33,40 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ### <a name="share-from-a-storage-account"></a>Udostępnianie z konta magazynu:
 
 * Konto usługi Azure Storage: Jeśli jeszcze go nie masz, możesz utworzyć [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Uprawnienie do dodawania przypisywania roli do konta magazynu, które jest obecne w uprawnieniach *Microsoft. Autoryzacja/Przypisywanie ról/zapis* . To uprawnienie istnieje w roli właściciela. 
+* Uprawnienie do zapisu na koncie magazynu, które jest obecne w usłudze *Microsoft. Storage/storageAccounts/Write*. To uprawnienie istnieje w roli współautor.
+* Uprawnienie do dodawania przypisania roli do konta magazynu, które jest obecne w *firmie Microsoft. Autoryzacja/przypisania ról/zapis*. To uprawnienie istnieje w roli właściciela. 
+
 
 ### <a name="share-from-a-sql-based-source"></a>Udostępnianie z poziomu źródła opartego na języku SQL:
 
-* Azure SQL Database lub Azure SQL Data Warehouse z tabelami i widokami, które chcesz udostępnić.
+* Azure SQL Database lub usługa Azure Synapse Analytics (wcześniej Azure SQL Data Warehouse) z tabelami i widokami, które chcesz udostępnić.
+* Uprawnienia do zapisu w bazach danych programu SQL Server, które znajdują się w *Microsoft. SQL/serwery/bazy danych/zapis*. To uprawnienie istnieje w roli współautor.
 * Uprawnienie do udziału danych w celu uzyskania dostępu do magazynu danych. Można to zrobić, wykonując następujące czynności: 
-    1. Ustaw siebie jako administratora Azure Active Directory dla serwera.
+    1. Ustaw siebie jako Azure Active Directory administrator programu SQL Server.
     1. Nawiąż połączenie z magazynem Azure SQL Database/danymi przy użyciu Azure Active Directory.
-    1. Użyj edytora zapytań (wersja zapoznawcza), aby wykonać poniższy skrypt w celu dodania pliku MSI udziału danych jako db_owner. Musisz nawiązać połączenie przy użyciu Active Directory, a nie SQL Server uwierzytelniania. 
+    1. Użyj edytora zapytań (wersja zapoznawcza), aby wykonać poniższy skrypt w celu dodania tożsamości zarządzanej zasobu udział danych jako db_datareader. Musisz nawiązać połączenie przy użyciu Active Directory, a nie SQL Server uwierzytelniania. 
     
-```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
-```                   
-Należy pamiętać, że *< share_acc_name >* jest nazwą konta udziału danych. Jeśli konto udziału danych nie zostało jeszcze utworzone, możesz wrócić do tego wymagania wstępnego później.  
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       Należy pamiętać, że *< share_acc_name >* to nazwa zasobu udziału danych. Jeśli zasób udział danych nie został jeszcze utworzony, możesz wrócić do tego wymagania wstępnego później.  
 
-* [Azure SQL Database użytkownikowi z dostępem `db_owner`](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) do nawigowania i wybierania tabel i/lub widoków, które chcesz udostępnić. 
+* Użytkownik Azure SQL Database z dostępem "db_datareader" do nawigowania i wybierania tabel i/lub widoków, które chcesz udostępnić. 
 
-* Adres IP klienta SQL Server dostęp do zapory: można to zrobić, wykonując następujące kroki: 1. Przejdź do obszarze *zapory i sieci wirtualne* 1. Kliknij przełącznik **, aby zezwolić na dostęp** do usług platformy Azure. 
+* Adres IP klienta SQL Server dostęp do zapory. Można to zrobić, wykonując następujące czynności: 
+    1. W programie SQL Server w Azure Portal przejdź do *zapór i sieci wirtualnych*
+    1. Kliknij przełącznik **, aby zezwolić na dostęp** do usług platformy Azure.
+    1. Kliknij pozycję **+ Dodaj adres IP klienta** , a następnie kliknij przycisk **Zapisz**. Adres IP klienta może ulec zmianie. Możesz również dodać zakres adresów IP. 
+
+### <a name="share-from-azure-data-explorer"></a>Udostępnianie z usługi Azure Eksplorator danych
+* Klaster Eksplorator danych platformy Azure z bazami danych, które chcesz udostępnić.
+* Uprawnienie do zapisu w klastrze Eksplorator danych platformy Azure, który znajduje się w *Microsoft. Kusto/klastrów/Write*. To uprawnienie istnieje w roli współautor.
+* Uprawnienie do dodawania przypisania roli do klastra usługi Azure Eksplorator danych, który jest obecny w *firmie Microsoft. Autoryzacja/przypisania ról/zapis*. To uprawnienie istnieje w roli właściciela.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-data-share-account"></a>Tworzenie konta udziału danych
 
@@ -91,7 +102,7 @@ Utwórz zasób udziału danych platformy Azure w grupie zasobów platformy Azure
 
 1. Wybierz pozycję **Utwórz**.   
 
-1. Wypełnij szczegóły dotyczące udziału danych. Określ nazwę, opis zawartości udziału i warunki użytkowania (opcjonalnie). 
+1. Wypełnij szczegóły dotyczące udziału danych. Określ nazwę, typ udziału, opis zawartości udziału i warunki użytkowania (opcjonalnie). 
 
     ![EnterShareDetails](./media/enter-share-details.png "Wprowadź szczegóły udostępniania") 
 
@@ -101,7 +112,7 @@ Utwórz zasób udziału danych platformy Azure w grupie zasobów platformy Azure
 
     ![Zestawy danych](./media/datasets.png "Zestawy danych")
 
-1. Wybierz typ zestawu danych, który chcesz dodać. W przypadku udostępniania z Azure SQL Database lub usługi Azure SQL DataWarehouse zostanie wyświetlony monit o podanie pewnych poświadczeń SQL. Uwierzytelnianie przy użyciu użytkownika utworzonego w ramach wymagań wstępnych.
+1. Wybierz typ zestawu danych, który chcesz dodać. Zostanie wyświetlona inna lista typów zestawów danych w zależności od typu udziału (migawka lub miejsce w miejscu) wybranej w poprzednim kroku. W przypadku udostępniania z poziomu Azure SQL Database lub Azure SQL Data Warehouse zostanie wyświetlony monit o podanie pewnych poświadczeń SQL. Uwierzytelnianie przy użyciu użytkownika utworzonego w ramach wymagań wstępnych.
 
     ![Adddatasets](./media/add-datasets.png "Dodaj zestawy danych")    
 
@@ -115,7 +126,7 @@ Utwórz zasób udziału danych platformy Azure w grupie zasobów platformy Azure
 
 1. Wybierz pozycję **Kontynuuj**
 
-1. Jeśli chcesz, aby odbiorca danych mógł uzyskać aktualizacje przyrostowe danych, Włącz harmonogram migawek. 
+1. W przypadku wybrania typu udziału migawek można skonfigurować harmonogram migawek w taki sposób, aby dostarczał aktualizacje danych do konsumenta danych. 
 
     ![EnableSnapshots](./media/enable-snapshots.png "Włącz migawki") 
 

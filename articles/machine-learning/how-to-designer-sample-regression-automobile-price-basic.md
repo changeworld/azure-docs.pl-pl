@@ -5,25 +5,25 @@ description: Utwórz model regresji ML, aby przewidzieć cenę samochodów, bez 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 18a9f9d49dce96b037f10a95a458e52d020fe6c7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 6f4fe941cc44211f9f5d5e77b11043257b43a8ea
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311074"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963301"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Korzystanie z regresji do przewidywania cen samochodów za pomocą narzędzia Azure Machine Learning Designer
 
-**Przykład projektanta 1**
+**Projektant (wersja zapoznawcza) — przykład 1**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Dowiedz się, jak utworzyć model regresji uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant.
+Dowiedz się, jak utworzyć model regresji uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza).
 
 Ten potok pociąga za **regresor liniowy** , aby przewidzieć cenę samochodu w oparciu o funkcje techniczne, takie jak marka, model, na mocy i rozmiar. Ponieważ próbujesz odpowiedzieć na pytanie "jak dużo?" jest to tzw. problem z regresją. Można jednak zastosować te same podstawowe kroki w tym przykładzie, aby rozwiązać dowolny typ problemu uczenia maszynowego, niezależnie od tego, czy jest to regresja, klasyfikacja, klastrowanie i tak dalej.
 

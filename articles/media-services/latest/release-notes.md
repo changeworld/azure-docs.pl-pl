@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: e7770a3faef0ccf7ca0f5b8c56f98007b8d89436
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 52d8dda8b543e5bdf3ca88ae3784df65be3a2ba1
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719844"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962947"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Informacje o wersji Azure Media Services v3
 
@@ -36,6 +36,13 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 
 Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="january-2020"></a>Styczeń 2020 r.
+
+### <a name="improvements-in-media-processors"></a>Ulepszenia procesorów multimediów
+
+- Ulepszona obsługa źródeł z przeplotem w analizie wideo — taka zawartość jest teraz niewłaściwie odtworzona przed wysłaniem do aparatów wnioskowania.
+- Podczas generowania miniatur z trybem "Najlepsza" koder wyszukuje teraz więcej niż 30 sekund, aby wybrać ramkę, która nie jest funkcją unchromatyczną.
+ 
 ## <a name="november-2019"></a>Listopad 2019 r.
 
 ### <a name="live-transcription-preview"></a>Podgląd transkrypcji na żywo
