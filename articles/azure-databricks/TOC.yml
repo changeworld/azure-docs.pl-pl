@@ -888,13 +888,19 @@
             - name: Śledzenie dostępu z zewnątrz
               href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
               maintainContext: true
+        - name: Tworzenie pulpitów nawigacyjnych za pomocą interfejsu MLflow Search API
+          href: /azure/databricks/applications/mlflow/build-dashboards
+          maintainContext: true
         - name: 'Zapisywania, ładowanie i wdrażanie modeli'
           items:
             - name: 'Omówienie zapisywania, ładowania i wdrażania'
               href: /azure/databricks/applications/mlflow/models
               maintainContext: true
-            - name: Przykłady modeli MLflow
-              href: /azure/databricks/applications/mlflow/  model-examples
+            - name: Przykład modelu MLflow
+              href: /azure/databricks/applications/mlflow/model-example
+              maintainContext: true
+            - name: Wdrażanie modelu uczenia scikit na platformie Azure
+              href: /azure/databricks/applications/mlflow/scikit-learn-model-deployment-on-azure-ml
               maintainContext: true
         - name: Odtwarzanie przebiegów z projektami MLflow
           href: /azure/databricks/applications/mlflow/projects
@@ -1411,7 +1417,7 @@
               maintainContext: true
         - name: Python
           items:
-            - name: Tworzenie klastra przy użyciu programu Anaconda
+            - name: Tworzenie klastra przy użyciu programu Conda
               href: /azure/databricks/kb/python/anaconda-environment
               maintainContext: true
             - name: Instalowanie i kompilowanie pakietu Cython
@@ -1465,6 +1471,9 @@
           items:
             - name: Uruchamianie kodu C++ w środowisku języka Scala
               href: /azure/databricks/kb/scala/running-c-plus-plus-code-scala
+              maintainContext: true
+            - name: Niepowodzenie współbieżnych zadań Spark JAR
+              href: /azure/databricks/kb/scala/spark-jar-job-error
               maintainContext: true
         - name: SQL
           items:

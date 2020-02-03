@@ -71,6 +71,8 @@
       href: service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md
     - name: Zarządzanie wpisami tajnymi
       href: service-fabric-mesh-howto-manage-secrets.md
+    - name: Przenoszenie aplikacji do innego regionu platformy Azure
+      href: move-across-regions.md
     - name: Znajdowanie przykładów
       href: service-fabric-mesh-howto-find-samples.md
 - name: Dokumentacja

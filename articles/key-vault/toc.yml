@@ -118,6 +118,8 @@
       href: event-grid-logicapps.md
     - name: Integracja z usługą Azure Policy
       href: azure-policy.md
+    - name: Integracja z usługą Azure Private Link (wersja zapoznawcza)
+      href: private-link-service.md
     - name: Funkcja rejestrowania usługi Azure Key Vault
       href: key-vault-logging.md
     - name: Uzyskiwanie dostępu za zaporami

@@ -64,15 +64,15 @@
 - name: Samples
   items:
     - name: 'Przykłady w języku C#'
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
     - name: Przykłady w języku Java
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
     - name: Przykłady skryptów w języku JavaScript
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=javascript'
     - name: Przykłady w języku Python
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: Przykłady dla interfejsu REST
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
 - name: Szkolenia
   items:
     - name: Wprowadzenie (Microsoft Learn)
@@ -131,6 +131,8 @@
       items:
         - name: Wersje interfejsu API
           href: search-api-versions.md
+        - name: Lista funkcji w wersji zapoznawczej
+          href: search-api-preview.md
         - name: Programowanie na platformie .NET
           href: search-howto-dotnet-sdk.md
         - name: Uaktualnianie zestawu SDK
@@ -149,7 +151,7 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: Uaktualnianie interfejsu API REST
           href: search-api-migration.md
-    - name: Tworzenie indeksów
+    - name: Tworzenie indeksu
       items:
         - name: Tworzenie podstawowego indeksu
           href: search-what-is-an-index.md
@@ -181,7 +183,7 @@
           href: search-howto-complex-data-types.md
         - name: Dane relacyjne modelu
           href: index-sql-relational-data.md
-    - name: Importowanie (indeksowanie)
+    - name: Indeksowanie (importowanie)
       items:
         - name: Omówienie importowania danych
           href: search-what-is-data-import.md
@@ -193,43 +195,45 @@
           href: search-howto-large-index.md
         - name: Obsługa równoczesnych aktualizacji
           href: search-howto-concurrency.md
-    - name: Indeksowanie danych obiektów blob platformy Azure
+    - name: Używanie indeksatora
       items:
-        - name: Używanie AI z danymi obiektów blob
-          href: search-blob-ai-integration.md
-        - name: Dodawanie wyszukiwania pełnotekstowego
-          href: search-blob-storage-integration.md
-        - name: Konfigurowanie indeksatora obiektów blob
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Konfigurowanie indeksatora usługi Azure Data Lake Storage Gen2
-          href: search-howto-index-azure-data-lake-storage.md
-        - name: Indeksowanie obiektów blob typu „jeden do wielu”
-          href: search-howto-index-one-to-many-blobs.md
-        - name: Indeksowanie obiektów blob CSV
-          href: search-howto-index-csv-blobs.md
-        - name: Indeksowanie obiektów blob JSON
-          href: search-howto-index-json-blobs.md
-    - name: Indeksowanie przy użyciu „indeksatorów”
-      items:
-        - name: Omówienie indeksatorów
+        - name: Konfiguruj indeksatory
           href: search-indexer-overview.md
-        - name: Indeksator usługi Azure Table Storage
-          href: search-howto-indexing-azure-tables.md
-        - name: Indeksator usługi Azure SQL DB
-          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Indeksator usługi Azure Cosmos DB
-          href: search-howto-index-cosmosdb.md
-        - name: Planowanie indeksatorów
-          href: search-howto-schedule-indexers.md
         - name: Mapowanie pól
           href: search-indexer-field-mappings.md
-        - name: Łączenie z wystąpieniem zarządzanym SQL
-          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-        - name: Łączenie z maszynami wirtualnymi z programem SQL Server
-          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Monitorowanie indeksatorów
           href: search-howto-monitor-indexers.md
-    - name: Wzbogacanie o sztuczną inteligencję
+        - name: Planowanie indeksatorów
+          href: search-howto-schedule-indexers.md
+        - name: Źródła danych
+          items:
+            - name: Obiekty blob platformy Azure
+              items:
+                - name: Wyszukiwanie w obiektach blob
+                  href: search-blob-storage-integration.md
+                - name: Omówienie stosowania obiektów blob ze sztuczną inteligencją
+                  href: search-blob-ai-integration.md
+                - name: Konfigurowanie indeksatora obiektów blob
+                  href: search-howto-indexing-azure-blob-storage.md
+                - name: Indeksowanie obiektów blob typu „jeden do wielu”
+                  href: search-howto-index-one-to-many-blobs.md
+                - name: Indeksowanie obiektów blob CSV
+                  href: search-howto-index-csv-blobs.md
+                - name: Indeksowanie obiektów blob JSON
+                  href: search-howto-index-json-blobs.md
+            - name: Azure Cosmos DB
+              href: search-howto-index-cosmosdb.md
+            - name: Usługa Azure Data Lake Storage 2. generacji
+              href: search-howto-index-azure-data-lake-storage.md
+            - name: Azure SQL Database
+              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+            - name: Azure Table Storage
+              href: search-howto-indexing-azure-tables.md
+            - name: Wystąpienia zarządzane SQL
+              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+            - name: Maszyny wirtualne z programem SQL Server
+              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+    - name: Wzbogacanie sztucznej inteligencji
       items:
         - name: Dołączanie zasobu usługi Cognitive Services
           href: cognitive-search-attach-cognitive-services.md
@@ -326,27 +330,31 @@
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure
-      href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'
+      href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
-    - name: .NET
-      href: /dotnet/api/?term=microsoft.azure.search
-    - name: .NET (zarządzanie)
-      href: /dotnet/api/?term=microsoft.azure.management.search
-    - name: Python (zarządzanie)
-      href: /python/api/?view=azure-python&term=search
-    - name: REST
-      href: /rest/api/searchservice
-    - name: REST (zarządzanie)
-      href: /rest/api/searchmanagement
-    - name: REST (wersja zapoznawcza)
-      items:
-        - name: Interfejs API w wersji 2019-05-06-Preview
-          href: search-api-preview.md
-        - name: Interfejs API resetowania umiejętności
-          href: preview-api-resetskills.md
     - name: Szablon usługi Resource Manager
       href: /azure/templates/microsoft.search/searchservices
+    - name: .NET
+      items:
+        - name: microsoft.azure.search
+          href: /dotnet/api/overview/azure/search?view=azure-dotnet
+        - name: microsoft.azure.management.search
+          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+    - name: REST
+      items:
+        - name: Wyszukiwanie 2019-05-06
+          href: /rest/api/searchservice
+        - name: Resetowanie umiejętności (api-version=2019-05-06-Preview)
+          href: preview-api-resetskills.md
+        - name: Zarządzanie 2015-08-15
+          href: /rest/api/searchmanagement
+        - name: Zarządzanie 2019-10-01-Preview
+          href: /rest/api/searchmanagement/index-2019-10-01-preview
+    - name: Python
+      items:
+        - name: Interfejs API zarządzania
+          href: /python/api/overview/azure/search?view=azure-python
     - name: Dokumentacja języka OData
       items:
         - name: Omówienie
@@ -373,44 +381,47 @@
           href: search-query-odata-search-score-function.md
         - name: Gramatyka języka OData
           href: search-query-odata-syntax-reference.md
-    - name: Dokumentacja umiejętności poznawczych
-      href: cognitive-search-predefined-skills.md
+    - name: Dokumentacja umiejętności
       items:
-        - name: Wyodrębnianie kluczowych fraz
-          href: cognitive-search-skill-keyphrases.md
-        - name: Wykrywanie języka
-          href: cognitive-search-skill-language-detection.md
-        - name: Rozpoznawanie jednostek
-          href: cognitive-search-skill-entity-recognition.md
-        - name: Funkcja scalająca tekst
-          href: cognitive-search-skill-textmerger.md
-        - name: Dzielenie tekstu
-          href: cognitive-search-skill-textsplit.md
-        - name: Opinia
-          href: cognitive-search-skill-sentiment.md
-        - name: Tłumaczenie tekstu
-          href: cognitive-search-skill-text-translation.md
-        - name: Analiza obrazu
-          href: cognitive-search-skill-image-analysis.md
-        - name: OCR
-          href: cognitive-search-skill-ocr.md
-        - name: Narzędzie do tworzenia kształtów
-          href: cognitive-search-skill-shaper.md
-        - name: Warunkowe
-          href: cognitive-search-skill-conditional.md
-        - name: Wyodrębnianie dokumentów
-          href: cognitive-search-skill-document-extraction.md
-        - name: Wykrywanie danych osobowych
-          href: cognitive-search-skill-pii-detection.md
-    - name: Umiejętności niestandardowe
-      items:
-        - name: Niestandardowy internetowy interfejs API
-          href: cognitive-search-custom-skill-web-api.md
-    - name: Przestarzałe umiejętności
-      href: cognitive-search-skill-deprecated.md
-      items:
-        - name: Rozpoznawanie jednostek nazwanych
-          href: cognitive-search-skill-named-entity-recognition.md
+        - name: Wbudowane umiejętności
+          items:
+            - name: Omówienie
+              href: cognitive-search-predefined-skills.md
+            - name: Warunkowe
+              href: cognitive-search-skill-conditional.md
+            - name: Wyodrębnianie dokumentów
+              href: cognitive-search-skill-document-extraction.md
+            - name: Rozpoznawanie jednostek
+              href: cognitive-search-skill-entity-recognition.md
+            - name: Analiza obrazu
+              href: cognitive-search-skill-image-analysis.md
+            - name: Wyodrębnianie kluczowych fraz
+              href: cognitive-search-skill-keyphrases.md
+            - name: Wykrywanie języka
+              href: cognitive-search-skill-language-detection.md
+            - name: OCR
+              href: cognitive-search-skill-ocr.md
+            - name: Wykrywanie danych osobowych
+              href: cognitive-search-skill-pii-detection.md
+            - name: Opinia
+              href: cognitive-search-skill-sentiment.md
+            - name: Narzędzie do tworzenia kształtów
+              href: cognitive-search-skill-shaper.md
+            - name: Funkcja scalająca tekst
+              href: cognitive-search-skill-textmerger.md
+            - name: Dzielenie tekstu
+              href: cognitive-search-skill-textsplit.md
+            - name: Tłumaczenie tekstu
+              href: cognitive-search-skill-text-translation.md
+        - name: Umiejętności niestandardowe
+          items:
+            - name: Niestandardowy internetowy interfejs API
+              href: cognitive-search-custom-skill-web-api.md
+        - name: Przestarzałe umiejętności
+          href: cognitive-search-skill-deprecated.md
+          items:
+            - name: Rozpoznawanie jednostek nazwanych
+              href: cognitive-search-skill-named-entity-recognition.md
 - name: Zasoby
   items:
     - name: Pomoc techniczna w społeczności platformy Azure

@@ -71,7 +71,7 @@
           href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
         - name: Wypychanie powiadomień na podstawie lokalizacji
           href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: samples.md
@@ -79,6 +79,8 @@
       href: samples-powershell.md
 - name: Pojęcia
   items:
+    - name: Transport Layer Security (TLS)
+      href: notification-hubs-tls12.md
     - name: Wskazówki dotyczące architektury powiadomień wypychanych w przedsiębiorstwie
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: Rejestracje urządzeń

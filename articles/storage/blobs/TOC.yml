@@ -82,11 +82,7 @@
             - name: 4 — Weryfikowanie metryk przepływności i opóźnienia
               href: storage-blob-scalable-app-verify-metrics.md
         - name: Hostowanie statycznej witryny internetowej
-          items:
-            - name: 1 — Tworzenie statycznej witryny internetowej
-              href: storage-blob-static-website-host.md
-            - name: 2 — Włączanie domeny niestandardowej z protokołem SSL
-              href: storage-blob-static-website-custom-domain.md
+          href: storage-blob-static-website-host.md
         - name: Projektowanie aplikacji pod kątem wysokiej dostępności
           items:
             - name: 1 — Uzyskiwanie wysokiej dostępności aplikacji
@@ -383,10 +379,12 @@
             - name: Korzystanie z emulatora usługi Azure Storage
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hostowanie statycznej witryny internetowej
-          href: storage-blob-static-website-how-to.md
-        - name: Mapowanie usługi Azure CDN na domenę niestandardową w celu uzyskania dostępu za pośrednictwem protokołu HTTPS
-          href: storage-https-custom-domain-cdn.md
-        - name: Konfigurowanie domeny niestandardowej
+          items:
+            - name: Hostowanie statycznej witryny internetowej
+              href: storage-blob-static-website-how-to.md
+            - name: Integracja z usługą Azure CDN
+              href: static-website-content-delivery-network.md
+        - name: Korzystanie z domeny niestandardowej
           href: storage-custom-domain-name.md
         - name: Kierowanie zdarzeń do niestandardowego punktu końcowego
           href: storage-blob-event-quickstart.md

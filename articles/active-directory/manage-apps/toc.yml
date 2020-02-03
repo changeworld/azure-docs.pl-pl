@@ -151,8 +151,8 @@
               href: methods-for-assigning-users-and-groups.md
             - name: Przypisywanie użytkownika do aplikacji
               href: assign-user-or-group-access-portal.md
-            - name: Tworzenie obszarów roboczych w Moich aplikacjach (wersja zapoznawcza)
-              href: access-panel-workspaces.md
+            - name: Tworzenie kolekcji w Moich aplikacjach
+              href: access-panel-collections.md
             - name: Używanie dostępu do aplikacji samoobsługowej
               href: access-panel-manage-self-service-access.md
             - name: Metody usuwania dostępu użytkownika do aplikacji

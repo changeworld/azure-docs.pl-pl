@@ -753,3 +753,5 @@
       href: developer-support-help-options.md
     - name: Tożsamości zarządzane dla zasobów platformy Azure
       href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+    - name: Wideo poświęcone platformie tożsamości firmy Microsoft
+      href: identity-videos.md
