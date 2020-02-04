@@ -63,6 +63,17 @@
         - name: Procedura wdrażania
           displayName: 'standards, fedramp, moderate'
           href: ./samples/fedramp-m/deploy.md
+    - name: FedRAMP High
+      items:
+        - name: Omówienie
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/index.md
+        - name: Mapowanie kontrolek
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/control-mapping.md
+        - name: Procedura wdrażania
+          displayName: 'standards, fedramp, high'
+          href: ./samples/fedramp-h/deploy.md
     - name: HIPAA HITRUST
       items:
         - name: Omówienie

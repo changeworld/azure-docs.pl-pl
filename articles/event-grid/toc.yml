@@ -138,6 +138,8 @@
       href: custom-disaster-recovery.md
     - name: Rozwiązywanie problemów
       href: troubleshoot-errors.md
+    - name: Włączanie dzienników diagnostycznych dla tematu
+      href: enable-diagnostic-logs-topic.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

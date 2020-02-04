@@ -64,8 +64,6 @@
         - name: Ciągła integracja z użyciem usługi Azure Pipelines
           displayName: DevOps
           href: template-tutorial-use-azure-pipelines.md
-        - name: Aktualizowanie skryptu wdrożenia programu VS do polecenia Az PowerShell
-          href: update-visual-studio-deployment-script.md
         - name: Korzystanie z praktyk bezpiecznego wdrażania
           displayName: adm
           href: deployment-manager-tutorial.md
@@ -145,6 +143,8 @@
           href: use-vs-code-to-create-template.md
         - name: Visual Studio
           href: create-visual-studio-deployment-project.md
+        - name: Aktualizowanie skryptu wdrożenia programu VS do modułu Az
+          href: update-visual-studio-deployment-script.md
         - name: IntelliJ IDEA
           href: create-templates-use-intellij.md
     - name: Wdrażanie szablonów

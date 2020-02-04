@@ -517,6 +517,8 @@
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
             - name: Konflikt portów podczas uruchamiania usług
               href: ./hadoop/troubleshoot-port-conflict.md
+            - name: Utracono dostęp do usługi Key Vault
+              href: ./hadoop/troubleshoot-lost-key-vault-access.md
 - name: Apache Kafka
   items:
     - name: Omówienie

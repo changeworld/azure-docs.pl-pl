@@ -79,6 +79,8 @@
           href: delete-aadds.md
         - name: Migrowanie z wdrożenia klasycznego (wersja zapoznawcza)
           href: migrate-from-classic-vnet.md
+        - name: Zmiana jednostki SKU
+          href: change-sku.md
     - name: Zabezpieczanie usługi Azure AD DS
       items:
         - name: Zabezpieczanie domeny zarządzanej

@@ -38,8 +38,12 @@
           href: ./ag/application-gateway-crs-rulegroups-rules.md
         - name: Omówienie reguł niestandardowych
           href: ./ag/custom-waf-rules-overview.md
+        - name: Reguły niestandardowe geodopasowania
+          href: ./ag/geomatch-custom-rules.md
         - name: Limity rozmiaru żądań i listy wykluczeń
           href: ./ag/application-gateway-waf-configuration.md
+        - name: Przegląd zasad zapory aplikacji internetowej
+          href: ./ag/policy-overview.md
     - name: Front Door
       items:
         - name: Reguły niestandardowe

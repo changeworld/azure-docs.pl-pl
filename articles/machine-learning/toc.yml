@@ -142,6 +142,8 @@
           href: how-to-manage-workspace.md
         - name: Interfejs wiersza polecenia platformy Azure
           href: how-to-manage-workspace-cli.md
+        - name: Używanie interfejsu REST
+          href: how-to-manage-rest.md
         - name: Używanie szablonu usługi Resource Manager
           displayName: arm
           href: how-to-create-workspace-template.md
@@ -194,6 +196,9 @@
         - name: Tworzenie zestawów danych z etykietami
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: Metodyka DevOps w zakresie pozyskiwania danych
+          displayName: 'data, ingestion, devops'
+          href: how-to-cicd-data-ingestion.md
     - name: Szkolenie modeli
       items:
         - name: Korzystanie z projektanta

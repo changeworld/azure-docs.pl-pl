@@ -389,6 +389,8 @@
               href: cognitive-search-predefined-skills.md
             - name: Warunkowe
               href: cognitive-search-skill-conditional.md
+            - name: Wyszukiwanie jednostek niestandardowych
+              href: cognitive-search-skill-custom-entity-lookup.md
             - name: Wyodrębnianie dokumentów
               href: cognitive-search-skill-document-extraction.md
             - name: Rozpoznawanie jednostek
