@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 0540c7b01d693975f34515c7d13f0477ac74d4a1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 26313c68305f4d7e6411d31fa12366442ce4bd38
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842260"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964181"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Szybki Start: Tworzenie projektu Azure Functions przy użyciu Visual Studio Code
 
@@ -18,31 +18,39 @@ W tym artykule opisano tworzenie funkcji reagującej na żądania HTTP przy uży
 
 Istnieje również wersja tego artykułu [oparta na interfejsie wiersza polecenia](functions-create-first-azure-function-azure-cli.md) .
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="configure-your-environment"></a>Konfigurowanie środowiska
 
-+ [Visual Studio Code](https://code.visualstudio.com/) na jednej z [obsługiwanych platform](https://code.visualstudio.com/docs/supporting/requirements#_platforms). 
-::: zone pivot="programming-language-csharp"
-+ Rozszerzenie dla Visual Studio Code. [ C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-::: zone-end
-::: zone pivot="programming-language-javascript,programming-language-typescript"
-+ [Node. js](https://nodejs.org/), Active LTS i Maintenance LTS wersje (zalecane 8.11.1 i 10.14.1).
-::: zone-end
+Przed rozpoczęciem upewnij się, że zostały spełnione następujące wymagania:
+
++ Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
++ [Node. js](https://nodejs.org/)wymagany przez system Windows for npm. Tylko [aktywne wersje LTS LTS i Maintenance ](https://nodejs.org/about/releases/). Aby sprawdzić swoją wersję, użyj polecenia `npm --version`.
+    Nie jest wymagana do lokalnego programowania w systemach MacOS i Linux.   
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-typescript"  
++ [Node. js](https://nodejs.org/), Active LTS i Maintenance — wersje LTS (zalecane 10.14.1). Aby sprawdzić swoją wersję, użyj polecenia `npm --version`.
+::: zone-end 
 ::: zone pivot="programming-language-python"
 + [Python 3,7](https://www.python.org/downloads/release/python-375/) lub [Python 3,6](https://www.python.org/downloads/release/python-368/), który jest obsługiwany przez Azure Functions. Środowisko Python 3,8 nie jest jeszcze obsługiwane. 
-
-+ [Rozszerzenie Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) dla Visual Studio Code.
-::: zone-end
+::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [Program PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ [Zestaw .NET Core SDK 2.2 +](https://www.microsoft.com/net/download)
-
-+ [Rozszerzenie programu PowerShell dla Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell). 
-::: zone-end
++ [Zestaw .NET Core SDK 2.2 +](https://www.microsoft.com/net/download)  
+::: zone-end  
++ [Visual Studio Code](https://code.visualstudio.com/) na jednej z [obsługiwanych platform](https://code.visualstudio.com/docs/supporting/requirements#_platforms).  
+::: zone pivot="programming-language-csharp"  
++ Rozszerzenie dla Visual Studio Code. [ C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  
+::: zone-end  
+::: zone pivot="programming-language-python"
++ [Rozszerzenie Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) dla Visual Studio Code.  
+::: zone-end  
+::: zone pivot="programming-language-powershell"
++ [Rozszerzenie programu PowerShell dla Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
+::: zone-end  
 
 + [Azure Functions rozszerzenie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) Visual Studio Code. 
-
-+ [Konto platformy Azure](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) z aktywną subskrypcją. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ## <a name="create-an-azure-functions-project"></a>Utwórz projekt lokalny 
 
@@ -60,111 +68,36 @@ W tej sekcji użyjesz Visual Studio Code, aby utworzyć projekt lokalnego Azure 
 1. Podaj następujące informacje na ekranie:
 
     ::: zone pivot="programming-language-csharp"
-
-    | Monit | Wartość | 
-    | ------ | ----- | 
-    | Wybierz język dla projektu funkcji | C# |
-    | Wybierz wersję | Azure Functions v2 | 
-    | Wybierz szablon dla pierwszej funkcji projektu | Wyzwalacz HTTP | 
-    | Podaj nazwę funkcji | HttpExample | 
-    | Podaj przestrzeń nazw | My. Functions | 
-    | Poziom autoryzacji | Anonimowe | 
-    | Wybierz, w jaki sposób chcesz otworzyć projekt | Dodaj do obszaru roboczego |
-
+    + **Wybierz język projektu funkcji**: Wybierz `C#`.
     ::: zone-end
-
     ::: zone pivot="programming-language-javascript"
-
-    | Monit | Wartość | 
-    | ------ | ----- | 
-    | Wybierz język dla projektu funkcji | JavaScript | 
-    | Wybierz wersję | Azure Functions v2 | 
-    | Wybierz szablon dla pierwszej funkcji projektu | Wyzwalacz HTTP | 
-    | Podaj nazwę funkcji | HttpExample | 
-    | Poziom autoryzacji | Anonimowe | 
-    | Wybierz, w jaki sposób chcesz otworzyć projekt | Dodaj do obszaru roboczego |
-
+    + **Wybierz język projektu funkcji**: Wybierz `JavaScript`.
     ::: zone-end
-
     ::: zone pivot="programming-language-typescript"
-
-    | Monit | Wartość | 
-    | ------ | ----- | 
-    | Wybierz język dla projektu funkcji | TypeScript | 
-    | Wybierz wersję | Azure Functions v2 | 
-    | Wybierz szablon dla pierwszej funkcji projektu | Wyzwalacz HTTP | 
-    | Podaj nazwę funkcji | HttpExample | 
-    | Poziom autoryzacji | Anonimowe | 
-    | Wybierz, w jaki sposób chcesz otworzyć projekt | Dodaj do obszaru roboczego |
-
+    + **Wybierz język projektu funkcji**: Wybierz `TypeScript`.
     ::: zone-end
-
     ::: zone pivot="programming-language-powershell"
-
-    | Monit | Wartość | 
-    | ------ | ----- | 
-    | Wybierz język dla projektu funkcji | PowerShell | 
-    | Wybierz wersję | Azure Functions v2 | 
-    | Wybierz szablon dla pierwszej funkcji projektu | Wyzwalacz HTTP | 
-    | Podaj nazwę funkcji | HttpExample | 
-    | Poziom autoryzacji | Anonimowe | 
-    | Wybierz, w jaki sposób chcesz otworzyć projekt | Dodaj do obszaru roboczego |
-
+    + **Wybierz język projektu funkcji**: Wybierz `PowerShell`.
     ::: zone-end
-
     ::: zone pivot="programming-language-python"
+    + **Wybierz język projektu funkcji**: Wybierz `Python`.
 
-    | Monit | Wartość | 
-    | ------ | ----- | 
-    | Wybierz język dla projektu funkcji | Python | 
-    | Wybierz wersję | Azure Functions v2 | 
-    | Wybierz alias języka Python, aby utworzyć środowisko wirtualne | Alias języka Python | 
-    | Wybierz szablon dla pierwszej funkcji projektu | Wyzwalacz HTTP | 
-    | Podaj nazwę funkcji | HttpExample | 
-    | Poziom autoryzacji | Anonimowe | 
-    | Wybierz, w jaki sposób chcesz otworzyć projekt | Dodaj do obszaru roboczego | 
-
+    + **Wybierz alias języka Python, aby utworzyć środowisko wirtualne**: Wybierz lokalizację interpretera języka Python. Jeśli lokalizacja nie jest wyświetlana, wpisz pełną ścieżkę do pliku binarnego języka Python.  
     ::: zone-end
 
-1. Visual Studio Code wykonuje następujące czynności:
-
-    + Tworzy projekt Azure Functions w nowym obszarze roboczym, który zawiera pliki konfiguracyjne [host. JSON](functions-host-json.md) i [Local. Settings. JSON](functions-run-local.md#local-settings-file) . 
-
+    + **Wybierz szablon dla pierwszej funkcji projektu**: Wybierz `HTTP trigger`.
+    
+    + **Podaj nazwę funkcji**: wpisz `HttpExample`.
+    
     ::: zone pivot="programming-language-csharp"
+    + **Podaj przestrzeń nazw**: wpisz `My.Functions`. 
+    ::: zone-end
 
-    + Tworzy [plik biblioteki klas HttpExample.cs](functions-dotnet-class-library.md#functions-class-library-project) , który implementuje funkcję.
+    + **Poziom autoryzacji**: Wybierz `Anonymous`, co umożliwia wszystkim użytkownikom wywoływanie punktu końcowego funkcji. Aby dowiedzieć się więcej o poziomie autoryzacji, zobacz [klucze autoryzacji](functions-bindings-http-webhook.md#authorization-keys).
 
-    ::: zone-end
-        
-    ::: zone pivot="programming-language-javascript"
-    
-    + Tworzy plik Package. JSON w folderze głównym.
+    + **Wybierz, w jaki sposób chcesz otworzyć projekt**: Wybierz `Add to workspace`.
 
-    + Tworzy folder HttpExample zawierający [plik definicji Function. JSON](functions-reference-node.md#folder-structure) oraz [plik index. js](functions-reference-node.md#exporting-a-function), plik Node. js, który zawiera kod funkcji.
-    
-    ::: zone-end
-    
-    ::: zone pivot="programming-language-typescript"
-    
-    + Tworzy plik Package. JSON i plik tsconfig. JSON w folderze głównym.
-
-    + Tworzy folder HttpExample, który zawiera [plik definicji Function. JSON](functions-reference-node.md#folder-structure) oraz [plik index. TS](functions-reference-node.md#typescript), plik TypeScript zawierający kod funkcji.
-    
-    ::: zone-end
-    
-    ::: zone pivot="programming-language-powershell"
-    
-    + Tworzy folder HttpExample zawierający [plik definicji Function. JSON](functions-reference-python.md#programming-model) oraz plik Run. ps1, który zawiera kod funkcji.
-    
-    ::: zone-end
-    
-    ::: zone pivot="programming-language-python"
-    
-    + Tworzy plik. txt wymagań na poziomie projektu, który zawiera listę pakietów wymaganych przez funkcje.
-    
-    + Tworzy folder HttpExample zawierający [plik definicji Function. JSON](functions-reference-python.md#programming-model) oraz \_\_init\_\_. PR, który zawiera kod funkcji.
-    
-    ::: zone-end
+1. Korzystając z tych informacji, Visual Studio Code generuje projekt Azure Functions z wyzwalaczem HTTP. Pliki projektu lokalnego można wyświetlić w Eksploratorze. Aby dowiedzieć się więcej na temat tworzonych plików, zobacz [pliki wygenerowanego projektu](functions-develop-vs-code.md#generated-project-files). 
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -186,13 +119,15 @@ Po sprawdzeniu, że funkcja działa poprawnie na komputerze lokalnym, można uż
 
 ## <a name="run-the-function-in-azure"></a>Uruchamianie funkcji na platformie Azure
 
-1. Skopiuj adres URL wyzwalacza HTTP z panelu **Dane wyjściowe**. Ponownie Dodaj `name` ciąg zapytania jako `?name=<yourname>` na końcu tego adresu URL i wykonaj żądanie.
+1. Wróć do obszaru **Azure: Functions** na pasku bocznym, a następnie rozwiń nową aplikację funkcji w ramach subskrypcji. Rozwiń węzeł **funkcje**, kliknij prawym przyciskiem myszy (Windows) lub Ctrl + kliknięcie (MacOS) w **HttpExample**, a następnie wybierz polecenie **Kopiuj adres URL funkcji**.
 
-    Adres URL, który wywołuje funkcję wyzwalaną przez protokół HTTP, powinien mieć następujący format:
+    ![Skopiuj adres URL funkcji dla nowego wyzwalacza HTTP](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 
-        http://<functionappname>.azurewebsites.net/api/httpexample?name=<yourname> 
+1. Wklej ten adres URL żądania HTTP na pasku adresu przeglądarki, Dodaj `name` ciąg zapytania jako `?name=Functions` na końcu tego adresu URL, a następnie wykonaj żądanie. Adres URL, który wywołuje funkcję wyzwalaną przez protokół HTTP, powinien mieć następujący format:
 
-1. Wklej nowy adres URL żądania HTTP na pasku adresu przeglądarki. Poniższy przykład przedstawia odpowiedź w przeglądarce do zdalnego żądania GET zwróconego przez funkcję: 
+        http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions 
+        
+    Poniższy przykład przedstawia odpowiedź w przeglądarce do zdalnego żądania GET zwróconego przez funkcję: 
 
     ![Odpowiedź funkcji wyświetlona w przeglądarce](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)
 

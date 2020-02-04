@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: f1553a5c9d55366b2764877b48d0606ff8e0b370
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8c63d314c253152d2815a70831870fe331071c68
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842191"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964169"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikowanie projektu na platformie Azure
 
@@ -21,29 +21,24 @@ W tej sekcji utworzysz aplikację funkcji i powiązane zasoby w ramach subskrypc
 
 1. Podaj następujące informacje na ekranie:
 
-    ::: zone pivot="programming-language-csharp,programming-language-powershell"
+    + **Wybierz subskrypcję**: wybierz subskrypcję do użycia. Nie zobaczysz tego, jeśli masz tylko jedną subskrypcję.
 
-    | Monit | Wartość | Opis |
-    | ------ | ----- | ----- |
-    | Wybierz subskrypcję | Twoja subskrypcja | Wyświetlane, gdy masz wiele subskrypcji. |
-    | Wybierz aplikacja funkcji na platformie Azure | + Utwórz nowe aplikacja funkcji | Publikowanie do istniejącej aplikacji funkcji spowoduje zastąpienie zawartości tej aplikacji na platformie Azure. |
-    | Wprowadź globalnie unikatową nazwę aplikacji funkcji | Unikatowa nazwa | Prawidłowe znaki dla nazwy aplikacji funkcji to `a-z`, `0-9` i `-`. |
-    | Wybierz lokalizację dla nowych zasobów | Region | Wybierz [region](https://azure.microsoft.com/regions/) blisko siebie. | 
-
+    + **Wybierz Aplikacja funkcji na platformie Azure**: Wybierz `+ Create new Function App` (nie `Advanced`). Ten artykuł nie obsługuje [zaawansowanego przepływu publikacji](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options). 
+    
+    >[!IMPORTANT]
+    > Publikowanie do istniejącej aplikacji funkcji spowoduje zastąpienie zawartości tej aplikacji na platformie Azure. 
+    
+    + **Wprowadź globalnie unikatową nazwę aplikacji funkcji**: wpisz nazwę, która jest prawidłowa w ścieżce URL. Wpisana nazwa zostanie sprawdzona, aby upewnić się, że jest ona unikatowa w Azure Functions. 
+    
+    ::: zone pivot="programming-language-python"
+    + **Wybierz środowisko uruchomieniowe**: Wybierz wersję języka Python, która była uruchomiona lokalnie. Aby sprawdzić swoją wersję, możesz użyć polecenia `python --version`.
     ::: zone-end
 
-    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python"
-
-    | Monit | Wartość | Opis |
-    | ------ | ----- | ----- |
-    | Wybierz subskrypcję | Twoja subskrypcja | Wyświetlane, gdy masz wiele subskrypcji. |
-    | Wybierz aplikacja funkcji na platformie Azure | + Utwórz nowe aplikacja funkcji | Publikowanie do istniejącej aplikacji funkcji spowoduje zastąpienie zawartości tej aplikacji na platformie Azure. |
-    | Wprowadź globalnie unikatową nazwę aplikacji funkcji | Unikatowa nazwa | Prawidłowe znaki dla nazwy aplikacji funkcji to `a-z`, `0-9` i `-`. |
-    | Wybierz środowisko uruchomieniowe | Twoja wersja | Wybierz wersję językową, która została uruchomiona lokalnie. |
-    | Wybierz lokalizację dla nowych zasobów | Region | Wybierz [region](https://azure.microsoft.com/regions/) blisko siebie. | 
-
+    ::: zone pivot="programming-language-javascript,programming-language-typescript"
+    + **Wybierz środowisko uruchomieniowe**: Wybierz wersję środowiska Node. js, która została uruchomiona lokalnie. Aby sprawdzić swoją wersję, możesz użyć polecenia `node --version`.
     ::: zone-end
 
+    + **Wybierz lokalizację dla nowych zasobów**: Aby uzyskać lepszą wydajność, wybierz [region](https://azure.microsoft.com/regions/) w sąsiedztwie. 
     
 1.  Po zakończeniu następujące zasoby platformy Azure są tworzone w ramach subskrypcji:
 
@@ -55,10 +50,6 @@ W tej sekcji utworzysz aplikację funkcji i powiązane zasoby w ramach subskrypc
 
     Po utworzeniu aplikacji funkcji i zastosowaniu pakietu wdrożeniowego zostanie wyświetlone powiadomienie. 
     
-1. Wybierz pozycję **Wyświetl dane wyjściowe** w tym powiadomieniu, aby wyświetlić wyniki tworzenia i wdrażania, w tym utworzone zasoby platformy Azure.
+1. Wybierz pozycję **Wyświetl dane wyjściowe** w tym powiadomieniu, aby wyświetlić wyniki tworzenia i wdrażania, w tym utworzone zasoby platformy Azure. W przypadku odrzucenia powiadomienia wybierz ikonę dzwonka w prawym dolnym rogu, aby zobaczyć ją ponownie.
 
     ![Utwórz pełne powiadomienie](media/functions-publish-project-vscode/function-create-notifications.png)
-
-1. Wróć do obszaru **Azure: Functions** na pasku bocznym, a następnie rozwiń nową aplikację funkcji w ramach subskrypcji. Rozwiń węzeł **funkcje**, kliknij prawym przyciskiem myszy (Windows) lub Ctrl + kliknięcie (MacOS) w **HttpExample**, a następnie wybierz polecenie **Kopiuj adres URL funkcji**.
-
-    ![Skopiuj adres URL funkcji dla nowego wyzwalacza HTTP](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

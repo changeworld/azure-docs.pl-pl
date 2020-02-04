@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/16/2020
 ms.author: glenga
-ms.openlocfilehash: c54145cf48912d3911a39e681d85cb6907be8e52
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842320"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964146"
 ---
 ## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
 
@@ -28,11 +28,17 @@ Azure Functions Core Tools integruje się z Visual Studio Code, aby umożliwić 
     Hello PowerShell
     ```
 
-    Możesz również wykonać żądanie GET z przeglądarki.
+    Możesz również wykonać żądanie GET z przeglądarki, korzystając z następującego adresu URL:
 
-    Gdy wywołasz punkt końcowy HttpTrigger bez przekazywania parametru `name` jako parametru zapytania lub w treści, funkcja zwróci błąd [HttpStatusCode]:: nieprawidłowego żądania. Gdy przeglądasz kod w programie Run. ps1, zobaczysz, że ten błąd występuje podczas projektowania.
+    <http://localhost:7071/api/HttpExample?name=PowerShell>
 
-1. Aby zatrzymać debugowanie, naciśnij klawisze Shift+F5.
+    Po wywołaniu punktu końcowego HttpTrigger bez przekazywania parametru `name` jako parametru zapytania lub w treści funkcja zwraca błąd `BadRequest`. Gdy przeglądasz kod w programie Run. ps1, zobaczysz, że ten błąd występuje podczas projektowania.
+
+1. Informacje o żądaniu są wyświetlane w panelu **terminalu** .
+
+    ![Wykonanie funkcji w panelu terminalu](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
+
+1. Aby zatrzymać debugowanie, naciśnij klawisze CTRL + C, aby zatrzymać podstawowe narzędzia.
 
 Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokalnym, możesz opublikować projekt na platformie Azure.
 

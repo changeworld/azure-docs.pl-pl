@@ -3,12 +3,12 @@ title: Tworzenie aplikacji funkcji w systemie Linux z poziomu Azure Portal
 description: Dowiedz się, jak utworzyć pierwszą funkcję platformy Azure do wykonywania bezserwerowego przy użyciu witryny Azure Portal.
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.openlocfilehash: 7689b24a4f9bf17d495917bbf4078d6e5fe4fcff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1492188f72eb4a691ddceb78aa269601f192e467
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971442"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963839"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Tworzenie aplikacji funkcji w systemie Linux w planie Azure App Service
 
@@ -26,7 +26,7 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com> przy
 
 Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia środowisko do wykonywania kodu funkcji. Umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie, skalowanie i udostępnianie zasobów. W tym artykule opisano tworzenie planu App Service podczas tworzenia aplikacji funkcji.
 
-1. Wybierz przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu witryny Azure Portal, a następnie wybierz pozycję **Obliczenia** > **Aplikacja funkcji**.
+1. Wybierz przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu Azure Portal, a następnie wybierz pozycję **COMPUTE** > **aplikacja funkcji**.
 
     ![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-create-flow.png)
 
@@ -42,9 +42,9 @@ Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcj
     | **OS** | Linux | Aplikacja funkcji jest uruchamiana w systemie Linux. |
     | **Publikowanie** | Code | Używany jest domyślny kontener systemu Linux dla **stosu środowiska uruchomieniowego** . Wszystko, co musisz podać, to kod projektu aplikacji funkcji. Innym rozwiązaniem jest opublikowanie niestandardowego [obrazu platformy Docker](functions-create-function-linux-custom-image.md). |
     | **[Plan hostingu](functions-scale.md)** | Plan usługi App Service | Plan hostingu określający sposób przydzielania zasobów do aplikacji funkcji. Po uruchomieniu w planie App Service można kontrolować [skalowanie aplikacji funkcji](functions-scale.md).  |
-    | **Plan usługi App Service/lokalizacja** | Utwórz plan | Wybierz pozycję **Utwórz nową** i podaj nazwę **planu App Service** . Wybierz **lokalizację** w [regionie](https://azure.microsoft.com/regions/) blisko siebie lub w niemal innych usługach, do których dostęp ma funkcja. Wybierz żądaną **[warstwę cenową](https://azure.microsoft.com/pricing/details/app-service/linux/)** . <br/>W tym samym planie App Service nie można uruchamiać aplikacji funkcji systemu Linux ani Windows. |
+    | **App Service plan/lokalizacja** | Utwórz plan | Wybierz pozycję **Utwórz nową** i podaj nazwę **planu App Service** . Wybierz **lokalizację** w [regionie](https://azure.microsoft.com/regions/) blisko siebie lub w niemal innych usługach, do których dostęp ma funkcja. Wybierz żądaną **[warstwę cenową](https://azure.microsoft.com/pricing/details/app-service/linux/)** . <br/>W tym samym planie App Service nie można uruchamiać aplikacji funkcji systemu Linux ani Windows. |
     | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz **.NET** dla funkcji w językach C# i F#. |
-    | **[Storage](../storage/common/storage-account-create.md)** |  Nazwa unikatowa w skali globalnej |  Utwórz konto magazynu używane przez aplikację funkcji. Nazwy kont usługi Magazyn muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Możesz również użyć istniejącego konta, które musi spełniać [wymagania dotyczące konta magazynu](functions-scale.md#storage-account-requirements). |
+    | **[Storage](../storage/common/storage-account-create.md)** |  Nazwa unikatowa w skali globalnej |  Utwórz konto magazynu używane przez aplikację funkcji. Nazwy kont usługi Magazyn muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Możesz również użyć istniejącego konta, które musi spełniać [wymagania dotyczące konta magazynu](storage-considerations.md#storage-account-requirements). |
     | **[Application Insights](functions-monitoring.md)** | Enabled (Włączony) | Application Insights jest domyślnie wyłączona. Zalecamy włączenie integracji Application Insights teraz i wybranie lokalizacji hostingu w najbliższej lokalizacji planu App Service. Jeśli chcesz to zrobić później, zobacz [Azure Functions monitorowania](functions-monitoring.md).  |
 
 3. Wybierz pozycję **Utwórz**, aby zaaprowizować aplikację funkcji i wdrożyć ją.

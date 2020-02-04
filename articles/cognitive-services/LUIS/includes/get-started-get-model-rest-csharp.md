@@ -6,18 +6,18 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/18/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 503482243f5aa2e7f833257a3a6eb91a3b5c5ec1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7800edafca46a2210b9552299605d54c9db07f1f
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503745"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76966920"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klucz początkowy.
+* Azure Language Understanding — tworzenie zasobu 32 klucz znaku i adres URL punktu końcowego tworzenia. Utwórz za pomocą [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) lub [interfejsu wiersza polecenia platformy Azure](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
 * Zaimportuj aplikację [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) z repozytorium GitHub-Services-Language-zrozumieć.
 * Identyfikator aplikacji LUIS dla zaimportowanej aplikacji TravelAgent. Identyfikator aplikacji jest wyświetlany na pulpicie nawigacyjnym aplikacji.
 * Identyfikator wersji w aplikacji, która odbiera wyrażenia długości. Domyślny identyfikator to „0.1”.
@@ -28,15 +28,11 @@ ms.locfileid: "73503745"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="get-luis-key"></a>Pobieranie klucza usługi LUIS
-
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
-
 ## <a name="change-model-programmatically"></a>Programowo Zmień model
 
-Służy C# do dodawania [interfejsu API](https://aka.ms/luis-apim-v3-authoring) jednostki, który jest obiektem do aplikacji. 
+Służy C# do dodawania [interfejsu API](https://aka.ms/luis-apim-v3-authoring) jednostki, który jest obiektem do aplikacji.
 
-1. Utwórz nową aplikację konsolową przeznaczoną C# dla języka z nazwą projektu i folderu `model-with-rest`. 
+1. Utwórz nową aplikację konsolową przeznaczoną C# dla języka z nazwą projektu i folderu `model-with-rest`.
 
     ```console
     dotnet new console -lang C# -n model-with-rest
@@ -58,29 +54,29 @@ Służy C# do dodawania [interfejsu API](https://aka.ms/luis-apim-v3-authoring) 
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using System.Linq;
-    
+
     // 3rd party NuGet packages
     using JsonFormatterPlus;
-    
+
     namespace AddUtterances
     {
         class Program
         {
-            // NOTE: use your starter key value
+            // NOTE: use your LUIS authoring key - 32 character value
             static string authoringKey = "YOUR-KEY";
-    
-            // NOTE: Replace this endpoint with your starter key endpoint
-            // for example, westus.api.cognitive.microsoft.com
+
+            // NOTE: Replace this endpoint with your authoring key endpoint
+            // for example, your-resource-name.api.cognitive.microsoft.com
             static string endpoint = "YOUR-ENDPOINT";
-    
+
             // NOTE: Replace this with the ID of your LUIS application
             static string appID = "YOUR-APP-ID";
-    
+
             // NOTE: Replace this your version number
             static string appVersion = "0.1";
-    
+
             static string host = String.Format("https://{0}/luis/authoring/v3.0-preview/apps/{1}/versions/{2}/", endpoint, appID, appVersion);
-    
+
             // GET request with authentication
             async static Task<HttpResponseMessage> SendGet(string uri)
             {
@@ -101,21 +97,21 @@ Służy C# do dodawania [interfejsu API](https://aka.ms/luis-apim-v3-authoring) 
                 {
                     request.Method = HttpMethod.Post;
                     request.RequestUri = new Uri(uri);
-    
+
                     if (!String.IsNullOrEmpty(requestBody))
                     {
                         request.Content = new StringContent(requestBody, Encoding.UTF8, "text/json");
                     }
-    
+
                     request.Headers.Add("Ocp-Apim-Subscription-Key", authoringKey);
                     return await client.SendAsync(request);
                 }
-            }        
+            }
             // Add utterances as string with POST request
             async static Task AddUtterances(string utterances)
             {
                 string uri = host + "examples";
-    
+
                 var response = await SendPost(uri, utterances);
                 var result = await response.Content.ReadAsStringAsync();
                 Console.WriteLine("Added utterances.");
@@ -125,12 +121,12 @@ Służy C# do dodawania [interfejsu API](https://aka.ms/luis-apim-v3-authoring) 
             async static Task Train()
             {
                 string uri = host  + "train";
-    
+
                 var response = await SendPost(uri, null);
                 var result = await response.Content.ReadAsStringAsync();
                 Console.WriteLine("Sent training request.");
                 Console.WriteLine(JsonFormatter.Format(result));
-            }    
+            }
             // Check status of training
             async static Task Status()
             {
@@ -138,7 +134,7 @@ Służy C# do dodawania [interfejsu API](https://aka.ms/luis-apim-v3-authoring) 
                 var result = await response.Content.ReadAsStringAsync();
                 Console.WriteLine("Requested training status.");
                 Console.WriteLine(JsonFormatter.Format(result));
-            }    
+            }
             // Add utterances, train, check status
             static void Main(string[] args)
             {
@@ -161,7 +157,7 @@ Służy C# do dodawania [interfejsu API](https://aka.ms/luis-apim-v3-authoring) 
                         'entityLabels': []
                     }
                 ]
-                ";            
+                ";
                 AddUtterances(utterances).Wait();
                 Train().Wait();
                 Status().Wait();
@@ -170,13 +166,17 @@ Służy C# do dodawania [interfejsu API](https://aka.ms/luis-apim-v3-authoring) 
     }
     ```
 
-1. Zastąp następujące wartości:
+1. Zastąp wartości zaczynające się od `YOUR-` własnymi wartościami.
 
-    * `YOUR-KEY` z kluczem początkowym
-    * `YOUR-ENDPOINT` z punktem końcowym, na przykład `westus2.api.cognitive.microsoft.com`
-    * `YOUR-APP-ID` z IDENTYFIKATORem aplikacji
+    |Informacje|Przeznaczenie|
+    |--|--|
+    |`YOUR-KEY`|Klucz tworzenia znaków 32.|
+    |`YOUR-ENDPOINT`| Twój punkt końcowy adresu URL tworzenia. Na przykład `replace-with-your-resource-name.api.cognitive.microsoft.com`. Nazwa zasobu jest ustawiana podczas tworzenia zasobu.|
+    |`YOUR-APP-ID`| Identyfikator aplikacji LUIS. |
 
-1. Skompiluj aplikację konsolową. 
+    Przypisane klucze i zasoby są widoczne w portalu LUIS w sekcji Zarządzanie na stronie **zasoby platformy Azure** . Identyfikator aplikacji jest dostępny w tej samej sekcji zarządzania na stronie **Ustawienia aplikacji** .
+
+1. Skompiluj aplikację konsolową.
 
     ```console
     dotnet build
@@ -188,13 +188,9 @@ Służy C# do dodawania [interfejsu API](https://aka.ms/luis-apim-v3-authoring) 
     dotnet run
     ```
 
-## <a name="luis-keys"></a>Klucze usługi LUIS
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu pracy z tym przewodnikiem Szybki Start Usuń plik z systemu plików. 
+Po zakończeniu pracy z tym przewodnikiem Szybki Start Usuń plik z systemu plików.
 
 ## <a name="next-steps"></a>Następne kroki
 
