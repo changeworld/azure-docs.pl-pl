@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.openlocfilehash: 2f1843690861a463c634f523e82facffc72b6743
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995509"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Omówienie stosowania rabatu za rezerwację do pojedynczego serwera usługi Azure Database for PostgreSQL
@@ -32,15 +32,15 @@ Rabat za pojemność zarezerwowaną pojedynczego serwera usługi Azure Database 
 
 W poniższych przykładach pokazano, w jaki sposób rabat za pojemność zarezerwowaną pojedynczego serwera usługi Azure Database for PostgreSQL jest stosowany w zależności od liczby zakupionych rdzeni oraz czasu ich działania.
 
-* **Przykład 1**: kupowanie Azure Database for PostgreSQL zarezerwowanych dla jednej pojemności serwera dla 8 rdzeń wirtualny. W przypadku korzystania z pojedynczego serwera usługi Azure Database for PostgreSQL z 16 rdzeniami wirtualnymi zgodnego z resztą atrybutów rezerwacji opłata jest naliczana według stawek płatności zgodnie z rzeczywistym użyciem za osiem rdzeni wirtualnych użycia mocy obliczeniowej pojedynczego serwera PostgreSQL, a rabat za rezerwację otrzymujesz na 1 godzinę użycia mocy obliczeniowej pojedynczego serwera PostgreSQL z 8 rdzeniami wirtualnymi.</br>
+* **Przykład 1**: Kupujesz pojemność zarezerwowaną pojedynczego serwera usługi Azure Database for PostgreSQL dla 8 rdzeni wirtualnych. W przypadku korzystania z pojedynczego serwera usługi Azure Database for PostgreSQL z 16 rdzeniami wirtualnymi zgodnego z resztą atrybutów rezerwacji opłata jest naliczana według stawek płatności zgodnie z rzeczywistym użyciem za osiem rdzeni wirtualnych użycia mocy obliczeniowej pojedynczego serwera PostgreSQL, a rabat za rezerwację otrzymujesz na 1 godzinę użycia mocy obliczeniowej pojedynczego serwera PostgreSQL z 8 rdzeniami wirtualnymi.</br>
 
 W pozostałych przykładach przyjęto założenie, że zakupiona pojemność zarezerwowana pojedynczego serwera usługi Azure Database for PostgreSQL dotyczy pojedynczego serwera usługi Azure Database for PostgreSQL z 16 rdzeniami wirtualnymi, a pozostałe atrybuty rezerwacji są zgodne z uruchomionymi pojedynczymi serwerami PostgreSQL.
 
-* **Przykład 2**: uruchamiasz dwa Azure Database for PostgreSQL pojedyncze serwery z 8 rdzeń wirtualny każdy na godzinę. Rabat za rezerwację 16 rdzeni wirtualnych jest stosowany do użycia mocy obliczeniowej dla obu pojedynczych serwerów usługi Azure Database for PostgreSQL z 8 rdzeniami wirtualnymi.
+* **Przykład 2**: Uruchamiasz 2 pojedyncze serwery usługi Azure Database for PostgreSQL, każdy z 8 rdzeniami wirtualnymi, na 1 godzinę. Rabat za rezerwację 16 rdzeni wirtualnych jest stosowany do użycia mocy obliczeniowej dla obu pojedynczych serwerów usługi Azure Database for PostgreSQL z 8 rdzeniami wirtualnymi.
 
-* **Przykład 3**: uruchomiono 1 16 rdzeń wirtualny Azure Database for PostgreSQL pojedynczym serwerze z 1 pm do 1:30 PM. Uruchamiasz kolejny pojedynczy serwer usługi Azure Database for PostgreSQL z 16 rdzeniami wirtualnymi od godziny 13:30 do 14:00. Obie te bazy danych są objęte rabatem na rezerwację.
+* **Przykład 3**: Uruchamiasz jeden pojedynczy serwer usługi Azure Database for PostgreSQL z 16 rdzeniami wirtualnymi od godziny 13:00 do 13:30. Uruchamiasz kolejny pojedynczy serwer usługi Azure Database for PostgreSQL z 16 rdzeniami wirtualnymi od godziny 13:30 do 14:00. Obie te bazy danych są objęte rabatem na rezerwację.
 
-* **Przykład 4**: uruchamiasz 1 16 rdzeń wirtualny Azure Database for PostgreSQL pojedynczym serwerze z 1 pm do 1:45 PM. Uruchamiasz kolejny pojedynczy serwer usługi Azure Database for PostgreSQL z 16 rdzeniami wirtualnymi od godziny 13:30 do 14:00. Za 15-minutowy okres jednoczesnego działania obu baz danych jest naliczana opłata według stawek płatności zgodnie z rzeczywistym użyciem. Na użycie zasobów obliczeniowych przez resztę czasu jest stosowany rabat na rezerwację.
+* **Przykład 4**: Uruchamiasz jeden pojedynczy serwer usługi Azure Database for PostgreSQL z 16 rdzeniami wirtualnymi od godziny 13:00 do 13:45. Uruchamiasz kolejny pojedynczy serwer usługi Azure Database for PostgreSQL z 16 rdzeniami wirtualnymi od godziny 13:30 do 14:00. Za 15-minutowy okres jednoczesnego działania obu baz danych jest naliczana opłata według stawek płatności zgodnie z rzeczywistym użyciem. Na użycie zasobów obliczeniowych przez resztę czasu jest stosowany rabat na rezerwację.
 
 Aby poznać zastosowanie swoich rezerwacji platformy Azure w raportach rozliczeń użycia i przejrzeć je, zobacz [Omówienie użycia rezerwacji platformy Azure](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
 

@@ -13,17 +13,17 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: f7d6c6cbe5b99cb429b5399df7ba9765c1553901
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991115"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Uzyskiwanie własności rozliczeń subskrypcji platformy Azure z innych kont
 
 Możesz zdecydować się przejąć własność subskrypcji platformy Azure, jeśli istniejący właściciel rozliczeń opuszcza organizację lub jeśli chcesz uregulować płatność za subskrypcje za pośrednictwem konta rozliczeniowego. Przejęcie własności przenosi obowiązki dotyczące rozliczeń subskrypcji na konto.
 
-Ten artykuł dotyczy konta rozliczeniowego związanego z umową klienta firmy Microsoft. [Sprawdź, czy masz dostęp do umowy klienta firmy Microsoft](#check-for-access).
+Ten artykuł dotyczy konta rozliczeniowego w ramach umowy klienta firmy Microsoft. [Sprawdź, czy masz dostęp do Umowy klienta firmy Microsoft](#check-for-access).
 
 Aby zażądać własności rozliczeń, musisz być **właścicielem sekcji faktury** lub **współautorem sekcji faktury**. Aby dowiedzieć się więcej zobacz sekcję dotyczącą [zadań ról sekcji faktury](understand-mca-roles.md#invoice-section-roles-and-tasks).
 
@@ -35,35 +35,35 @@ Aby zażądać własności rozliczeń, musisz być **właścicielem sekcji faktu
 
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeń w witrynie Azure Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Na stronie zakresy rozliczeń wybierz konto rozliczeniowe, które będzie używane do płacenia za użycie subskrypcji. Konto rozliczeniowe powinno być kontem typu **Umowa klienta firmy Microsoft**.
+3. Na stronie zakresów rozliczeniowych wybierz konto rozliczeniowe, które będzie używane do płacenia za użycie subskrypcji. Typ konta rozliczeniowego to **umowa klienta firmy Microsoft**.
 
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeń w portalu](./media/mca-request-billing-ownership/list-of-scopes.png)
 
     > [!NOTE]
     >
-    > Azure Portal zapamiętuje ostatni zakres rozliczeń, do którego uzyskuje się dostęp, i wyświetla zakres przy następnym Cost Managementniu i stronie rozliczeń. Strona zakresy rozliczeń nie zostanie wyświetlona, Jeśli odwiedzono Cost Management i rozliczenia wcześniej. Jeśli tak jest, sprawdź, czy jesteś w [odpowiednim zakresie](#check-for-access). Jeśli nie, [Przejdź do zakresu](view-all-accounts.md#switch-billing-scope-in-the-azure-portal) , aby wybrać konto rozliczeniowe dla umowy klienta firmy Microsoft.
+    > Witryna Azure Portal zapamiętuje ostatni zakres rozliczeniowy, do którego uzyskujesz dostęp, i wyświetla go przy następnym wejściu na stronę Zarządzanie kosztami i rozliczenia. Strona zakresów rozliczeniowych nie zostanie wyświetlona, jeśli wcześniej była odwiedzana strona Zarządzanie kosztami i rozliczenia. W takim przypadku sprawdź, czy jesteś we [właściwym zakresie](#check-for-access). W przeciwnym razie [przełącz zakres](view-all-accounts.md#switch-billing-scope-in-the-azure-portal), aby wybrać konto rozliczeniowe dla umowy klienta firmy Microsoft.
 
-4. Wybierz pozycję **Profile rozliczeń** z lewej strony.
+4. Po lewej stronie wybierz pozycję **Profile rozliczeniowe**.
 
-    ![Zrzut ekranu pokazujący Wybieranie profilów rozliczeń](./media/mca-request-billing-ownership/mca-select-profiles.png)     
+    ![Zrzut ekranu pokazujący wybieranie profilów rozliczeniowych](./media/mca-request-billing-ownership/mca-select-profiles.png)     
 
     > [!Note]
     >
-    > Jeśli nie widzisz profilów rozliczeń, nie jesteś w odpowiednim zakresie rozliczeń. Musisz wybrać konto rozliczeniowe dla umowy klienta firmy Microsoft, a następnie wybrać pozycję profile rozliczeń. Aby dowiedzieć się, jak zmienić zakresy, zobacz [Przełączanie zakresów rozliczeń w Azure Portal](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
+    > Jeśli nie widzisz profilów rozliczeniowych, nie jesteś w odpowiednim zakresie rozliczeniowym. Musisz wybrać konto rozliczeniowe dla umowy klienta firmy Microsoft, a następnie wybrać pozycję Profile rozliczeniowe. Aby dowiedzieć się, jak zmieniać zakresy, zobacz [Przełączanie zakresów rozliczeniowych w witrynie Azure Portal](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
 
-5. Wybierz **profil rozliczeń** z listy. Po przeniesieniu własności subskrypcji ich użycie będzie rozliczane w ramach tego profilu rozliczeń.
+5. Wybierz z listy pozycję **Profil rozliczeniowy**. Po przejęciu własności subskrypcji opłaty za użycie tych subskrypcji będą naliczane w tym profilu rozliczeniowym.
 
 6. Wybierz pozycję **Sekcje faktury** po lewej stronie.
 
     ![Zrzut ekranu przedstawiający wybieranie sekcji faktury](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
-7. Wybierz sekcję faktur z listy. Po przeniesieniu własności subskrypcji ich użycie zostanie przypisane do tej sekcji faktury profilu rozliczenia.
+7. Wybierz sekcję faktur z listy. Po przejęciu własności subskrypcji ich użycie zostanie przypisane do tej sekcji faktury profilu rozliczeniowego.
 
 8. Wybierz pozycję **Żądania przeniesienia** w lewym dolnym rogu, a następnie wybierz pozycję **Dodaj nowe żądanie**.
 
     ![Zrzut ekranu przedstawiający wybieranie żądań przeniesienia](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)
 
-9. Wprowadź adres e-mail użytkownika, od którego żądasz własności rozliczeń. Użytkownik musi być administratorem konta w ramach konta rozliczeń programu Microsoft Online Service lub właścicielem konta w umowie Enterprise Agreement. Aby uzyskać więcej informacji, zobacz [View your billing accounts in Azure portal](view-all-accounts.md) (Wyświetlanie kont rozliczeniowych w witrynie Azure Portal). Wybierz opcję **Wyślij żądanie przeniesienia**.
+9. Wprowadź adres e-mail użytkownika, od którego żądasz własności rozliczeń. Użytkownik musi być administratorem konta w ramach konta rozliczeń programu Microsoft Online Service lub właścicielem konta w umowie Enterprise Agreement. Aby uzyskać więcej informacji, zobacz [View your billing accounts in Azure portal](view-all-accounts.md) (Wyświetlanie kont rozliczeniowych w witrynie Azure Portal). Wybierz pozycję **Wyślij żądanie przeniesienia**.
 
     ![Zrzut ekranu przedstawiający wysyłanie żądania przeniesienia](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)
 
@@ -77,25 +77,25 @@ Aby zażądać własności rozliczeń, musisz być **właścicielem sekcji faktu
 
 ## <a name="check-the-transfer-request-status"></a>Sprawdzanie stanu żądania przeniesienia
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeń w witrynie Azure Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Na stronie zakresy rozliczeń wybierz konto rozliczeniowe, dla którego wysłano żądanie transferu.
+3. Na stronie zakresów rozliczeniowych wybierz konto rozliczeniowe, dla którego wysłano żądanie przeniesienia.
 
-4. Wybierz pozycję **Profile rozliczeń** z lewej strony.
+4. Po lewej stronie wybierz pozycję **Profile rozliczeniowe**.
 
-    ![Zrzut ekranu pokazujący Wybieranie profilów rozliczeń](./media/mca-request-billing-ownership/mca-select-profiles.png)     
+    ![Zrzut ekranu pokazujący wybieranie profilów rozliczeniowych](./media/mca-request-billing-ownership/mca-select-profiles.png)     
 
-5. Wybierz **profil rozliczeń** , dla którego wysłano żądanie transferu.
+5. Wybierz **profil rozliczeniowy**, dla którego wysłano żądanie przeniesienia.
 
 6. Wybierz pozycję **Sekcje faktury** po lewej stronie.
 
     ![Zrzut ekranu przedstawiający wybieranie sekcji faktury](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
-7. Wybierz z listy sekcję fakturę, dla której wysłano żądanie transferu.
+7. Wybierz z listy sekcję faktury, dla której wysłano żądanie przeniesienia.
 
 8. Wybierz pozycję **Żądania przeniesienia** w lewym dolnym rogu. Strona Żądania przeniesienia zawiera następujące informacje:
 
@@ -126,7 +126,7 @@ Aby zażądać własności rozliczeń, musisz być **właścicielem sekcji faktu
 
    |Kolumna  |Definicja|
    |---------|---------|
-   |Identyfikator żądania przeniesienia|Unikatowy identyfikator żądania przeniesienia. Jeśli przesyłasz wniosek o pomoc techniczną, podaj ten identyfikator, aby przyspieszyć obsługę wniosku przez zespół pomocy technicznej platformy Azure|
+   |Identyfikator żądania przeniesienia|Unikatowy identyfikator żądania przeniesienia. Jeśli przesyłasz wniosek o pomoc techniczną, przekaż ten identyfikator do działu pomocy technicznej platformy Azure|
    |Przeniesienia zażądano w dniu|Data wysłania żądania przeniesienia|
    |Żądanie przeniesienia zgłoszone przez|Adres e-mail użytkownika, który wysłał żądanie przeniesienia|
    |Żądanie przeniesienia wygasa| Data wygaśnięcia żądania przeniesienia|
@@ -164,7 +164,7 @@ Możesz zażądać własności rozliczeń wymienionych poniżej typów subskrypc
 
 W poniższej sekcji przedstawiono dodatkowe informacje na temat przenoszenia subskrypcji.
 
-### <a name="no-service-downtime"></a>Brak przestojów usługi
+### <a name="no-service-downtime"></a>Bez przestoju usługi
 
 Usługi platformy Azure w ramach subskrypcji będą działały bez jakiejkolwiek przerwy. W przypadku subskrypcji platformy Azure, które użytkownik wybierze do przeniesienia, przeniesiemy tylko relację rozliczeń.
 

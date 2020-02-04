@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 6ae55e0075883de08af516b71089f00353975b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992844"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Dodawanie, aktualizowanie lub usuwanie karty kredytowej dla platformy Azure
@@ -113,7 +113,7 @@ Aby zmienić formę płatności dla profilu rozliczeniowego, musisz być osobą 
 
 Jeśli chcesz zmienić domyślną formę płatności na czek/przelew, dowiedz się, jak [przełączyć profil rozliczeniowy na czek/przelew](pay-by-invoice.md).
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 1. W menu po lewej stronie kliknij pozycję **Profile rozliczeniowe**.
 

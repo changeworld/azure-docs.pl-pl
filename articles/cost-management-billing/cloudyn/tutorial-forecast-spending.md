@@ -1,25 +1,24 @@
 ---
 title: Samouczek — prognozowanie wydatków przy użyciu usługi Cloudyn na platformie Azure | Microsoft Docs
 description: W tym samouczku przedstawiono sposób prognozowania wydatków za pomocą historycznych danych użycia i wydatków.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: ab2a29eacbb2881dbfc0f383f70dbb5148506f5a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: 43b48cf96baaa01408d068de509e5be9fdf950ca
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987481"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769928"
 ---
-# <a name="tutorial-forecast-future-spending"></a>Samouczek: prognozowanie wydatków w przyszłości
+# <a name="tutorial-forecast-future-spending"></a>Samouczek: Prognozowanie wydatków w przyszłości
 
-Usługa Cloudyn umożliwia prognozowanie wydatków w przyszłości na podstawie historycznych danych o użyciu usług i wydatkach. Raporty usługi Cloudyn zawierają wszystkie dane dotyczące przewidywanych kosztów. Korzystając z przykładów w tym samouczku, zapoznasz się z przewidywanymi kosztami przy użyciu tych raportów. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Usługa Cloudyn umożliwia prognozowanie wydatków w przyszłości na podstawie historycznych danych o użyciu usług i wydatkach. Raporty usługi Cloudyn zawierają wszystkie dane dotyczące przewidywanych kosztów. Korzystając z przykładów w tym samouczku, zapoznasz się z przewidywanymi kosztami przy użyciu tych raportów. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Prognozowanie wydatków w przyszłości

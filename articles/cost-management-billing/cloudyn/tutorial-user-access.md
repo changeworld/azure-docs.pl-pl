@@ -1,23 +1,22 @@
 ---
 title: Samouczek — przypisywanie dostępu przy użyciu rozwiązania Cloudyn na platformie Azure | Microsoft Docs
 description: Ten samouczek zawiera informacje na temat przypisywania dostępu do danych rozwiązania Cloudyn przy użyciu kont użytkowników w celu zdefiniowania poziomów dostępu do jednostek.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: 412b296ed13c7708ed1a79f39ff08c3c1c559d19
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986928"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774004"
 ---
-# <a name="tutorial-assign-access-to-cloudyn-data"></a>Samouczek: przypisywanie dostępu do danych rozwiązania Cloudyn
+# <a name="tutorial-assign-access-to-cloudyn-data"></a>Samouczek: Przypisywanie dostępu do danych rozwiązania Cloudyn
 
 Prawa dostępu do danych rozwiązania Cloudyn są przyznawane za pośrednictwem funkcji zarządzania użytkownikami lub jednostkami. Konta użytkowników platformy Cloudyn określają dostęp do *jednostek* i funkcji administracyjnych. Istnieją dwa typy dostępu: administratora i użytkownika. O ile nie zmodyfikowano ich dla poszczególnych użytkowników, prawa dostępu administratora umożliwiają użytkownikowi nieograniczone korzystanie ze wszystkich funkcji w portalu Cloudyn, w tym z funkcji, takich jak: zarządzanie użytkownikami, zarządzanie listami adresatów oraz dostęp jednostki głównej do danych wszystkich jednostek. Dostęp użytkownika jest przeznaczony dla użytkowników końcowych i umożliwia im wyświetlanie raportów oraz tworzenie raportów przy użyciu dostępu do danych jednostki.
 

@@ -1,5 +1,5 @@
 ---
-title: Role rozliczeń dla umów dla klientów firmy Microsoft — Azure
+title: Role rozliczeń dla umów klienta firmy Microsoft — Azure
 description: Dowiedz się więcej o rolach rozliczeniowych dla umów klienta firmy Microsoft na potrzeby kont rozliczeniowych na platformie Azure.
 author: amberbhargava
 manager: amberbhargava
@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: eaec828abe83164d18796cfb2e795a363353fab4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987943"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Omówienie ról administracyjnych dla umowy klienta firmy Microsoft na platformie Azure
@@ -180,7 +180,7 @@ W poniższej tabeli przedstawiono, jaką należy mieć rolę, aby móc wykonywa�
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Zarządzanie rolami rozliczeniowymi w witrynie Azure Portal
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 

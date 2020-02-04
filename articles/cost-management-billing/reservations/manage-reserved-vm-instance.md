@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 08/06/2019
 ms.author: banders
 ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994053"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacjami zasobów platformy Azure
@@ -28,7 +28,7 @@ Jeśli zakupiono zarezerwowane wystąpienia maszyn wirtualnych na platformie Azu
 
 ## <a name="reservation-order-and-reservation"></a>Zamówienie rezerwacji i rezerwacja
 
-Podczas zakupu rezerwacji tworzone są dwa obiekty: **Zamówienie rezerwacji** i **rezerwacja**.
+Podczas zakupu rezerwacji są tworzone dwa obiekty: **Zamówienie rezerwacji** i **Rezerwacja**.
 
 W momencie zakupu zamówienie rezerwacji ma jedną rezerwację. Akcje, takie jak dzielenie, scalanie, częściowy zwrot lub wymiana, tworzą nowe rezerwacje w obszarze **zamówienia rezerwacji**.
 
@@ -44,7 +44,7 @@ Rezerwacja dziedziczy uprawnienia z zamówienia rezerwacji.
 
 Aby zaktualizować zakres rezerwacji:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Wszystkie usługi** > **Rezerwacje**.
 3. Wybierz rezerwację.
 4. Wybierz pozycję **Ustawienia** > **Konfiguracja**.
@@ -60,12 +60,12 @@ Zarządzanie rezerwacją możesz delegować, dodając osoby do ról w rezerwacji
 
 Możesz zarządzać dostępem do rezerwacji zamówień i rezerwacji niezależnie od subskrypcji, które otrzymują rabat związany z rezerwacją. Przyznanie komuś uprawnień do zarządzania zamówieniem rezerwacji lub rezerwacją nie daje tej osobie uprawnień do zarządzania subskrypcją. Podobnie przyznanie komuś uprawnień do zarządzania subskrypcją nie daje tej osobie uprawnień do zarządzania zamówieniem rezerwacji lub rezerwacją.
 
-Aby dokonać wymiany lub uzyskać zwrot pieniędzy, użytkownik musi mieć dostęp do zamówienia rezerwacji. W przypadku przyznawania uprawnień innej osobie najlepiej jest przyznać uprawnienia do zamówienia rezerwacji, a nie do rezerwacji.
+Aby dokonać wymiany lub zwrotu, użytkownik musi mieć dostęp do zamówienia rezerwacji. W przypadku przyznawania uprawnień innej osobie najlepiej jest przyznać uprawnienia do zamówienia rezerwacji, a nie do rezerwacji.
 
 
 Aby delegować zarządzanie dostępem do rezerwacji:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Wszystkie usługi** > **Rezerwacja** w celu wyświetlenia listy rezerwacji, do których masz dostęp.
 3. Wybierz rezerwację, dla której chcesz delegować dostęp do innych użytkowników.
 4. Wybierz pozycję **Kontrola dostępu (IAM)** .
@@ -120,7 +120,7 @@ W przypadku rezerwacji z pojedynczym zakresem można zoptymalizować rezerwację
 
 Aby zaktualizować ustawienie optymalizacji dla rezerwacji:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Wszystkie usługi** > **Rezerwacje**.
 3. Wybierz rezerwację.
 4. Wybierz pozycję **Ustawienia** > **Konfiguracja**.
@@ -134,7 +134,7 @@ Oszczędności związane z rezerwacjami platformy Azure wynikają jedynie ze sta
 
 Jeden ze sposobów wyświetlania użycia rezerwacji jest dostępny w witrynie Azure Portal.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Wybierz pozycję **Wszystkie usługi** > [**Rezerwacje**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) i zwróć uwagę na wartość **Wykorzystanie (%)** dla rezerwacji.  
   ![Obraz przedstawiający listę rezerwacji](./media/manage-reserved-vm-instance/reservation-list.png)
 3. Wybierz rezerwację.
@@ -163,7 +163,7 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
 - [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
 
@@ -183,4 +183,4 @@ Informacje o rabacie i użyciu:
 - [Understand how other reservation discounts are applied (Informacje na temat sposobu stosowania innych rabatów przy rezerwacji)](understand-reservation-charges.md)
 - [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](understand-reserved-instance-usage.md)
 - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](understand-reserved-instance-usage-ea.md)
-- [Koszty oprogramowania systemu Windows nieuwzględniane w przypadku wystąpień zarezerwowanych](reserved-instance-windows-software-costs.md)
+- [Windows software costs not included with Reservations (Koszty oprogramowania systemu Windows nieuwzględniane w przypadku rezerwacji)](reserved-instance-windows-software-costs.md)

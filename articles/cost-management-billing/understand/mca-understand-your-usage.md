@@ -1,5 +1,5 @@
 ---
-title: Umowa klienta firmy Microsoft — warunki użytkowania i opłaty związane z plikiem
+title: Terminy w pliku użycia i opłat dla umowy klienta firmy Microsoft
 description: Dowiedz się, jak interpretować sekcje pliku CSV dotyczącego użycia i opłat platformy Azure dla Twojego profilu rozliczeniowego.
 author: bandersmsft
 manager: jureid
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: b48cc5d5a36a382909adb250dd76b4f5783a4340
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990907"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Terminy w pliku użycia i opłat platformy Azure dla umowy klienta firmy Microsoft
@@ -35,11 +35,11 @@ Jeśli jesteś klientem z umową EA, możesz zauważyć, że terminy w pliku CSV
 | Plik CSV użycia dla umowy EA platformy Azure | Plik CSV użycia i opłat dla umowy klienta firmy Microsoft |
 | --- | --- |
 | Data | date |
-| Miesiąc| date |
-| Dzień | date |
-| Rok | date |
-| Produkt | product |
-| MeterId | meterID |
+| Month| date |
+| Day | date |
+| Year | date |
+| Product (Produkt) | product |
+| Identyfikator miernika | meterID |
 | MeterCategory | meterCategory |
 | MeterSubCategory | meterSubCategory |
 | MeterRegion | meterRegion |
@@ -53,8 +53,8 @@ Jeśli jesteś klientem z umową EA, możesz zauważyć, że terminy w pliku CSV
 | ServiceInfo1 | serviceInfo1 |
 | ServiceInfo2 | serviceInfo2 |
 | AdditionalInfo | additionalInfo |
-| Tagi | tagów |
-| StoreServiceIdentifier | ND |
+| Tagi | tags |
+| StoreServiceIdentifier | Nie dotyczy |
 | DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
@@ -65,7 +65,7 @@ Jeśli jesteś klientem z umową EA, możesz zauważyć, że terminy w pliku CSV
 
 Poniższe terminy są wyświetlane w pliku użycia i opłat platformy Azure.
 
-Okres obowiązywania Umowy | Opis
+Okres | Opis
 --- | ---
 invoiceId | Unikatowy identyfikator dokumentu w pliku PDF faktury
 previousInvoiceId | Odwołanie do oryginalnej faktury, jeśli ten element wiersza to zwrot kosztów
@@ -107,12 +107,12 @@ resourceLocation | Określa lokalizację centrum danych, w którym jest uruchomi
 location | Znormalizowana lokalizacja zasobu, jeśli dla tych samych regionów skonfigurowano różne lokalizacje zasobów
 quantity | Liczba jednostek zakupionych lub użytych
 unitOfMeasure | Jednostka miary dla rozliczeń usługi. Na przykład opłaty za usługi obliczeniowe są naliczane godzinowo.
-chargeType | Typ opłaty. Wartości: <ul><li>AsCharged — użycie: opłaty naliczane na podstawie użycia usługi platformy Azure. Obejmuje to użycie w odniesieniu do maszyn wirtualnych, za które nie są naliczane opłaty z powodu wystąpień zarezerwowanych.</li><li>AsCharged-PurchaseMarketplace: jednorazowe lub stałe opłaty cykliczne z zakupów w portalu Marketplace</li><li>AsCharged-UsageMarketplace: opłaty za usługi w portalu Marketplace, które są rozliczane na podstawie jednostek użycia</li></ul>
-isAzureCreditEligible | Flaga wskazująca, czy opłata za usługę kwalifikuje się do zapłaty za korzystanie z kredytów platformy Azure (wartości: true, false)
+chargeType | Typ opłaty. Wartości: <ul><li>AsCharged-Usage: opłaty naliczane na podstawie użycia usługi platformy Azure. Obejmuje to użycie w odniesieniu do maszyn wirtualnych, za które nie są naliczane opłaty z powodu wystąpień zarezerwowanych.</li><li>AsCharged-PurchaseMarketplace: Jednorazowe lub stałe opłaty cykliczne za zakupy w portalu Azure Marketplace</li><li>AsCharged-UsageMarketplace: Opłaty za usługi w portalu Azure Marketplace, które są rozliczane na podstawie jednostek użycia</li></ul>
+isAzureCreditEligible | Flaga wskazująca, czy opłata za usługę kwalifikuje się do zapłaty przy użyciu środków na korzystanie z platformy Azure (wartości: True, False)
 serviceInfo1 | Metadane dotyczące konkretnej usługi
 serviceInfo2 | Starsze pole, które zawiera opcjonalne metadane właściwe dla usługi
 additionalInfo | Dodatkowe metadane dotyczące konkretnej usługi.
-tagów | Tagi, które przypisujesz do zasobu
+tags | Tagi, które przypisujesz do zasobu
 
 ### <a name="make-sure-that-charges-are-correct"></a>Upewnij się, że opłaty są poprawne
 

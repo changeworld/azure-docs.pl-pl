@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 83937e31d844ba0cc8efc17f1ecefa2ad6e7a7c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992831"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Sprawdzanie użycia bezpłatnej usługi działającej w ramach bezpłatnego konta platformy Azure
@@ -24,7 +24,7 @@ Za korzystanie z bezpłatnych usług działających w ramach bezpłatnego konta 
 
 ## <a name="check-usage-in-the-azure-portal"></a>Sprawdzanie użycia w witrynie Azure Portal
 
-1.  Zaloguj się do [portalu Azure](https://portal.azure.com).
+1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2.  Wyszukaj pozycję **Subskrypcje**.
 
@@ -38,13 +38,13 @@ Za korzystanie z bezpłatnych usług działających w ramach bezpłatnego konta 
 
     Tabela zawiera następujące kolumny:
 
-* **Licznik:** Określa jednostkę miary używanej usługi.
-* **Użycie/limit:** Użycie i limit bieżącego miesiąca dla miernika.
+* **Miernik:** Określa jednostkę miary wykorzystywanej usługi.
+* **Użycie/limit:** Użycie i limit dla miernika w bieżącym miesiącu.
 * **Stan:** Stan użycia usługi. Na podstawie użycia jest określany jeden z następujących stanów:
-  * **Nie w użyciu:** Nie użyto miernika lub użycie miernika nie osiągnęło systemu rozliczeń.
-  * **Przekroczono \<daty >:** Przekroczono limit dla licznika na \<Data >.
-  * **Mało prawdopodobne, aby przekroczyć:** Mało prawdopodobne jest przekroczenie limitu dla licznika.
-  * **Przekracza \<daty >:** Istnieje możliwość przekroczenia limitu dla licznika na \<Data >.
+  * **Nieużywany:** Nie użyto miernika lub użycie miernika nie dotarło do systemu rozliczeń.
+  * **Przekroczono \<data>:** Przekroczono limit miernika dnia \<data>.
+  * **Małe prawdopodobieństwo przekroczenia:** Przekroczenie limitu dla miernika jest mało prawdopodobne.
+  * **Przekracza \<data>:** Prawdopodobnie nastąpi przekroczenie limitu dla miernika dnia \<data>.
 
 > [!IMPORTANT]
 >

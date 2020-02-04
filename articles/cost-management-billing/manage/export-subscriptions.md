@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 553cc7fd27571ebc925e33f824060c023664a369
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991778"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Eksportowanie i wyświetlanie informacji najwyższego poziomu dotyczących subskrypcji
@@ -28,9 +28,9 @@ Jeśli chcesz wyświetlić zestaw identyfikatorów subskrypcji skojarzonych z po
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 Pobrany plik JSON zawiera następujące informacje:
-- E-mail: adres e-mail skojarzony z Twoim kontem.
-- PUID: unikatowy identyfikator skojarzony z kontem rozliczeniowym.
-- SubscriptionIds: Lista subskrypcji, które należą do Twojego konta, wyliczane według identyfikatora subskrypcji.
+- Adres e-mail: Adres e-mail skojarzony z Twoim kontem.
+- Identyfikator PUID: Unikatowy identyfikator skojarzony z Twoim kontem rozliczeniowym.
+- Identyfikatory subskrypcji: Lista subskrypcji należących do Twojego konta uporządkowane według identyfikatora subskrypcji.
 
 ### <a name="subscriptionsjson-sample"></a>Przykładowy plik subscriptions.json
 

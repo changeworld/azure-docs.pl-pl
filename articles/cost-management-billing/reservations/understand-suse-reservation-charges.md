@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: banders
 ms.openlocfilehash: f3d0c123fcbd16f3a4125ad74f0502863b6ce6d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995262"
 ---
 # <a name="azure-software-plan-discount"></a>Rabat za plan oprogramowania na platformie Azure
@@ -71,7 +71,7 @@ Nazwa na platformie Marketplace i w witrynie Azure Portal:
 
 - SLES 12 SP3 dla HPC (subskrypcja Priorytetowa)
 
-|Maszyna wirtualna z oprogramowaniem SUSE | MeterId| Współczynnik| Przykładowy rozmiar maszyny wirtualnej|
+|Maszyna wirtualna z oprogramowaniem SUSE | Identyfikator miernika| Współczynnik| Przykładowy rozmiar maszyny wirtualnej|
 | -------| ------------------------| --- |--- |
 |SLES dla HPC — od 1 do 2 procesorów wirtualnych|e275a668-ce79-44e2-a659-f43443265e98|1|D2s_v3|
 |SLES dla HPC — od 3 do 4 procesorów wirtualnych|e531e1c0-09c9-4d83-b7d0-a2c6741faa22|2|D4s_v3|
@@ -83,7 +83,7 @@ Nazwa na platformie Marketplace i w witrynie Azure Portal:
 
 - SLES 12 SP3 dla HPC
 
-|Maszyna wirtualna z oprogramowaniem SUSE | MeterId | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
+|Maszyna wirtualna z oprogramowaniem SUSE | Identyfikator miernika | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
 | ------- | --- | ------------------------| --- |
 |SLES dla HPC — od 1 do 2 procesorów wirtualnych |8c94ad45-b93b-4772-aab1-ff92fcec6610|1|D2s_v3|
 |SLES dla HPC — od 3 do 4 procesorów wirtualnych|4ed70d2d-e2bb-4dcd-b6fa-42da71861a1c|1,92308|D4s_v3|
@@ -97,7 +97,7 @@ Nazwy na platformie Marketplace i w witrynie Azure Portal:
 - SLES for SAP 12 SP3 (subskrypcja Priorytetowa)
 - SLES for SAP 12 SP2 (subskrypcja Priorytetowa)
 
-|Maszyna wirtualna z oprogramowaniem SUSE | MeterId | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
+|Maszyna wirtualna z oprogramowaniem SUSE | Identyfikator miernika | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
 | ------- |------------------------| --- | --- |
 |SUSE Linux Enterprise Server dla SAP — subskrypcja Priorytetowa — od 1 do 2 procesorów wirtualnych|497fe0b6-fa3c-4e3d-a66b-836097244142|1|D2s_v3|
 |SUSE Linux Enterprise Server dla SAP — subskrypcja Priorytetowa — od 3 do 4 procesorów wirtualnych |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
@@ -111,7 +111,7 @@ Nazwy na platformie Marketplace i w witrynie Azure Portal:
 - SLES 12 SP3 (subskrypcja Priorytetowa)
 - SLES 11 SP4 (subskrypcja Priorytetowa)
 
-|Maszyna wirtualna z oprogramowaniem SUSE | MeterId | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
+|Maszyna wirtualna z oprogramowaniem SUSE | Identyfikator miernika | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
 | ------- |------------------------| --- |--- |
 |SLES — 1 procesor wirtualny|462cd632-ec6b-4663-b79f-39715f4e8b38|1|B1MS|
 |SLES — od 2 do 4 procesorów wirtualnych |924bee71-5eb8-424f-83ed-a58823c33908|2|D4s_v3|
@@ -137,7 +137,7 @@ Nazwy na platformie Marketplace i w witrynie Azure Portal:
 - SLES 15 (subskrypcja Standardowa)
 - SLES 12 SP3 (subskrypcja Standardowa)
 
-|Maszyna wirtualna z oprogramowaniem SUSE | MeterId | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
+|Maszyna wirtualna z oprogramowaniem SUSE | Identyfikator miernika | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
 | ------- |------------------------| --- |--- |
 |SLES — od 1 do 2 rdzeni procesorów wirtualnych |4b2fecfc-b110-4312-8f9d-807db1cb79ae|1|D2s_v3|
 |SLES — od 3 do 4 rdzeni procesorów wirtualnych |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1,92308|D4s_v3|
@@ -151,7 +151,7 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 Aby dowiedzieć się więcej na temat rezerwacji, zobacz następujące artykuły:
 
-- [Co to jest Azure Reservations?](save-compute-costs-reservations.md)
+- [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
 - [Opłacanie planów oprogramowania SUSE z góry dzięki rezerwacjom platformy Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Zarządzanie usługą Azure Reservations](manage-reserved-vm-instance.md)

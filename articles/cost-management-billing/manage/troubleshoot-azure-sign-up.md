@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: e13a55143e554a55a2902fc2350f6fde6a8afb09
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989295"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Rozwiązywanie problemów z tworzeniem konta na platformie Azure
@@ -32,7 +32,7 @@ Podczas próby utworzenia nowego konta w witrynie Microsoft Azure Portal lub w C
 
 Aby usunąć wszelkie błędy, wybierz problem, który występuje podczas próby utworzenia konta na platformie Azure.
 
-### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Błąd: *nie można kontynuować rejestracji z powodu problemu z Twoim kontem. Skontaktuj się z pomocą techniczną.*
+### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Błąd: *Nie można kontynuować tworzenia konta z powodu problemu z Twoim kontem. Skontaktuj się z działem pomocy technicznej dotyczącej rozliczeń.*
 
 Aby rozwiązać problem, wykonaj następujące kroki:
 
@@ -109,7 +109,7 @@ Upewnij się, że używasz prawidłowych poświadczeń logowania. Następnie spr
 
 Aby utworzyć subskrypcję platformy Azure w ramach programu licencjonowania Open, musisz dysponować prawidłowym kluczem aktywacji usług online (OSA, Online Service Activation), który ma skojarzony co najmniej jeden token platformy Azure w ramach programu licencjonowania Open. Jeśli nie masz klucza OSA, skontaktuj się z jednym z partnerów firmy Microsoft wymienionym w witrynie [Microsoft Pinpoint](https://pinpoint.microsoft.com/).
 
-### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Błąd: *nie masz uprawnień do subskrypcji platformy Azure*
+### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Błąd: *Nie masz uprawnień do subskrypcji platformy Azure*
 
 Aby rozwiązać ten problem, sprawdź ponownie, czy są poniższe kwestie są prawdziwe:
 
@@ -117,7 +117,7 @@ Aby rozwiązać ten problem, sprawdź ponownie, czy są poniższe kwestie są pr
 - Informacje o karcie kredytowej są poprawne.
 - Nie masz jeszcze konta Microsoft używającego tych samych informacji.
 
-### <a name="error-your-current-account-type-is-not-supported"></a>Błąd: *bieżący typ konta nie jest obsługiwany*
+### <a name="error-your-current-account-type-is-not-supported"></a>Błąd: *Bieżący typ konta nie jest obsługiwany*
 
 Ten problem może wystąpić, jeśli konto zostało zarejestrowane w [niezarządzanym katalogu usługi Azure AD](../../active-directory/users-groups-roles/directory-self-service-signup.md) i nie znajduje się w katalogu usługi Azure AD organizacji.
 
@@ -128,7 +128,7 @@ Aby rozwiązać ten problem, utwórz konto platformy Azure przy użyciu innego k
 Inne artykuły dotyczące rozwiązywania problemów z rozliczeniami i subskrypcjami platformy Azure
 
 - [Odrzucona karta](troubleshoot-declined-card.md)
-- [Problemy z logowaniem do subskrypcji](troubleshoot-sign-in-issue.md)
+- [Subscription sign-in issues (Problemy z logowaniem do subskrypcji)](troubleshoot-sign-in-issue.md)
 - [No subscriptions found (Nie odnaleziono żadnych subskrypcji)](no-subscriptions-found.md)
 - [Wyłączony widok kosztów przedsiębiorstwa](enterprise-mgmt-grp-troubleshoot-cost-view.md)
 

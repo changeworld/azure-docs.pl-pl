@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: banders
 ms.openlocfilehash: a35d7d4ef24218c96e305abf623f746c92c8aa87
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993702"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Dodawanie lub zmienianie administratorów subskrypcji platformy Azure
@@ -74,7 +74,7 @@ Jeśli nie wiesz, kto jest administratorem konta dla subskrypcji, wykonaj poniż
 
 * [Czym jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md)
 * [Understand the different roles in Azure (Omówienie ról na platformie Azure)](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Instrukcje: Kojarzenie lub Dodawanie subskrypcji platformy Azure do Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* [Instrukcje: Kojarzenie lub dodawanie subskrypcji platformy Azure do usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Uprawnienia ról administratorów w usłudze Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną

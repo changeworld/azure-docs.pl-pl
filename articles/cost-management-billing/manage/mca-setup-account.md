@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 117d657712eba8d24ab18987f3e761553c15a858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994638"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Konfigurowanie konta rozliczeniowego dla umowy klienta firmy Microsoft
@@ -97,7 +97,7 @@ W zależności od posiadanego dostępu administratorzy rozliczeń w rejestracji 
 | **Administrator przedsiębiorstwa (Tylko odczyt = Nie)** | **– Właściciel konta rozliczeniowego** </br> Zarządzanie wszystkimi elementami konta rozliczeniowego </br> **- Właściciel profilu rozliczeniowego** </br> Zarządzanie wszystkimi elementami profilu rozliczeniowego </br> **– Właściciel sekcji faktur dla wszystkich sekcji faktur** </br> Zarządzanie wszystkimi elementami w sekcjach faktur |
 | **Administrator przedsiębiorstwa (Tylko odczyt = Tak)** | **– Czytelnik konta rozliczeniowego** </br> Ma widok tylko do odczytu wszystkich elementów dotyczących konta rozliczeniowego</br> **- Czytelnik profilu rozliczeniowego** </br> Ma widok tylko do odczytu wszystkich elementów dotyczących profilu rozliczeniowego</br>**- Czytelnik sekcji faktur dla wszystkich sekcji faktur**</br> Ma widok tylko do odczytu wszystkich elementów w sekcji faktur|
 | **Administrator działu (Tylko odczyt = Nie)** |**- Właściciel sekcji faktur utworzonej dla jego działu** </br>Zarządzanie wszystkimi elementami sekcji faktur|
-| **Administrator działu (Tylko odczyt = Tak)**|**- Czytelnik sekcji faktur utworzonej dla jego działu**</br> Ma widok tylko do odczytu wszystkich elementów w sekcji faktury|
+| **Administrator działu (Tylko odczyt = Tak)**|**- Czytelnik sekcji faktur utworzonej dla jego działu**</br> Widok tylko do odczytu wszystkich elementów w sekcji faktur|
 | **Właściciel konta** | **- Twórca subskrypcji platformy Azure dla sekcji faktur utworzonej dla jego działu** </br>  Tworzenie subskrypcji platformy Azure dla swojej sekcji faktur|
 
 Dla nowego konta rozliczeniowego jest wybierana dzierżawa usługi Azure Active Directory (AD) podczas akceptowania umowy klienta firmy Microsoft. Jeśli dzierżawa dla organizacji nie istnieje, zostanie utworzona nowa dzierżawa. Dzierżawa reprezentuje organizację w usłudze Azure Active Directory. Globalni administratorzy dzierżawy w organizacji używają dzierżawy do zarządzania dostępem dla aplikacji i danych w organizacji.
@@ -186,7 +186,7 @@ Aby wykonać konfigurację, musisz mieć dostęp do nowego konta rozliczeniowego
 
     - Hierarchia rozliczeń odpowiadająca hierarchii umowy Enterprise Agreement zostanie utworzona na nowym koncie rozliczeniowym. Aby uzyskać więcej informacji, zobacz [Omówienie zmian w hierarchii rozliczeń](#understand-changes-to-your-billing-hierarchy).
     - Administratorzy rejestracji umowy Enterprise Agreement uzyskają dostęp do nowego konta rozliczeniowego, aby nadal zarządzać rozliczeniami dla organizacji.
-    - Rozliczenia subskrypcji platformy Azure są przenoszone do nowego konta. W **trakcie tego przejścia nie ma żadnego wpływu na usługi platformy Azure. Będą one nadal działać bez żadnych przerw w działaniu**.
+    - Rozliczenia subskrypcji platformy Azure są przenoszone do nowego konta. **Wykonywanie tego przenoszenia nie ma żadnego wpływu na usługi platformy Azure. Będą one nadal działać bez żadnych przerw**.
     - Jeśli masz rezerwacje platformy Azure, są one przenoszone do nowego konta rozliczeniowego z zachowaniem korzyści i terminu.
 
 4. Stan przenoszenia można monitorować na stronie **Stan przenoszenia**.
@@ -199,7 +199,7 @@ Aby wykonać konfigurację, musisz mieć dostęp do nowego konta rozliczeniowego
 
 ### <a name="azure-subscriptions"></a>Subskrypcje platformy Azure
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
@@ -219,7 +219,7 @@ Rezerwacje platformy Azure w ramach rejestracji umowy Enterprise Agreement będ�
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-account"></a>Dostęp administratorów przedsiębiorstwa dla konta rozliczeniowego
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
@@ -235,7 +235,7 @@ Administratorzy przedsiębiorstwa są wyświetlani jako właściciele konta rozl
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>Dostęp administratorów przedsiębiorstwa dla profilu rozliczeniowego
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
@@ -251,7 +251,7 @@ Administratorzy przedsiębiorstwa są wyświetlani jako właściciele profilu ro
 
 ### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>Dostęp administratorów przedsiębiorstwa, administratorów działu i właścicieli kont dla sekcji faktur
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 

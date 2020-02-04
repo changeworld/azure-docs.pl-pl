@@ -13,10 +13,10 @@ ms.date: 09/30/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 14346ceda9574d18050108e585d5ff4cdb133e31
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992025"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Wyświetlanie i pobieranie cennika platformy Azure organizacji
@@ -36,7 +36,7 @@ W zależności od zasad ustawionych dla organizacji przez administratora przedsi
 
    ![Zrzut ekranu przedstawiający użycie i opłaty w obszarze Rozliczenia](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 
-1. Wybierz ![zrzut ekranu pokazujący usługi Azure search w portalu](./media/ea-pricing/download-icon.png) **Pobierz** na miesiąc.
+1. Wybierz pozycję ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/ea-pricing/download-icon.png) **Pobierz** dla miesiąca.
 
 1. W obszarze **Arkusz cen** wybierz opcję **Pobierz plik CSV**.
 

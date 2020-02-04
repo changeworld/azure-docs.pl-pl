@@ -14,10 +14,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c9de7d5f7661e4083d3a2f5b53368616d0e6655a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992818"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scenariusze automatyzacji dotyczące rozliczeń i zarządzania kosztami
@@ -28,21 +28,21 @@ W tym artykule wymieniono typowe scenariusze dotyczące rozliczeń i zarządzani
 
 Interfejsów API rozliczeń i zarządzania kosztami można używać w kilku scenariuszach, aby uzyskać odpowiedzi na pytania dotyczące kosztów i użycia. Oto zarys typowych scenariuszy:
 
-- **Uzgadnianie faktur**: czy w firmie Microsoft naliczane są odpowiednie kwoty?  Jaki jest mój rachunek i czy mogę go obliczyć samodzielnie?
+- **Uzgadnianie faktur**: Czy opłata naliczona przez firmę Microsoft jest właściwa?  Jaki jest mój rachunek i czy mogę go obliczyć samodzielnie?
 
-- **Opłaty krzyżowe**: teraz, gdy wiemy, jak jest naliczana opłata, kto w mojej organizacji musi płacić?
+- **Opłaty łączone**: Znam już wysokość opłaty. Kto w mojej organizacji powinien zapłacić?
 
-- **Optymalizacja kosztów**: wiemy, ile z nich zostało naliczone. Jak zoptymalizować wydatki na platformę Azure?
+- **Optymalizacja kosztów**: Znam wysokość naliczonej opłaty. Jak zoptymalizować wydatki na platformę Azure?
 
-- **Śledzenie kosztów**: Chcę zobaczyć, jak dużo wydatków i z nich korzystamy na platformie Azure. Jakie są trendy? Jak lepiej korzystać z zasobów?
+- **Śledzenie kosztów**: Chcę sprawdzić, ile wydaję na platformę Azure i jak wygląda jej użycie w czasie. Jakie są trendy? Jak lepiej korzystać z zasobów?
 
-- **Wydatki na platformę Azure w miesiącu**: Jaka jest aktualna liczba wydatków bieżącego miesiąca? Czy należy wprowadzić jakieś zmiany dotyczące wydatków i/lub używania platformy Azure? W jakie dni miesiąca użycie platformy Azure jest największe?
+- **Wydatki na platformę Azure w miesiącu**: Ile wydano w bieżącym miesiącu? Czy należy wprowadzić jakieś zmiany dotyczące wydatków i/lub używania platformy Azure? W jakie dni miesiąca użycie platformy Azure jest największe?
 
-- **Alerty**: Jak mogę skonfigurować użycie oparte na zasobach lub alerty pieniężne?
+- **Alerty**: Jak skonfigurować użycie oparte na zasobach lub alerty pieniężne?
 
 ## <a name="scenario-to-api-mapping"></a>Mapowanie scenariuszy na interfejsy API
 
-|         API        | Uzgadnianie faktur    | Opłaty łączone    | Optymalizacja kosztów    | Śledzenie kosztów    | Wydatki w środku miesiąca    | Alerty    |
+|         Interfejs API        | Uzgadnianie faktur    | Opłaty łączone    | Optymalizacja kosztów    | Śledzenie kosztów    | Wydatki w środku miesiąca    | Alerty    |
 |:---------------------------:|:-------------------------:|:----------------:|:--------------------:|:----------------:|:------------------:|:---------:|
 | Budżety                     |                           |                  |           X          |                  |                    |     X     |
 | Opłaty za korzystanie z witryny Marketplace                |             X             |         X        |           X          |         X        |          X         |     X     |
@@ -64,43 +64,43 @@ Interfejsów API rozliczeń i zarządzania kosztami można używać w kilku scen
 ### <a name="consumption"></a>Zużycie
 Klienci korzystający z subskrypcji Web Direct i Enterprise mogą używać następujących interfejsów API, o ile nie zaznaczono inaczej:
 
--   [Interfejs API budżetów](https://docs.microsoft.com/rest/api/consumption/budgets) (*tylko Klienci korporacyjni*): Tworzenie budżetów kosztów i użycia dla zasobów, grup zasobów lub mierników rozliczeń. Po utworzeniu budżetów można skonfigurować alerty umożliwiające powiadamianie o przekroczeniu zdefiniowanych progów budżetów. Można również skonfigurować akcje, które mają być wykonywane po osiągnięciu kwoty budżetu.
+-   [Interfejs API budżetów](https://docs.microsoft.com/rest/api/consumption/budgets) (*tylko klienci korporacyjni*): umożliwia tworzenie budżetów kosztów lub budżetów użycia dla zasobów, grup zasobów bądź mierników rozliczeń. Po utworzeniu budżetów można skonfigurować alerty umożliwiające powiadamianie o przekroczeniu zdefiniowanych progów budżetów. Można również skonfigurować akcje, które mają być wykonywane po osiągnięciu kwoty budżetu.
 
--   [Interfejs API opłat w witrynie Marketplace](https://docs.microsoft.com/rest/api/consumption/marketplaces): pobieranie danych dotyczących obciążeń i użycia we wszystkich zasobach portalu Azure Marketplace (oferty partnerów platformy Azure). Danych tych można użyć do sumowania kosztów wszystkich zasobów witryny Marketplace lub analizowania kosztów/użycia określonych zasobów.
+-   [Interfejs API opłat za korzystanie z witryny Marketplace](https://docs.microsoft.com/rest/api/consumption/marketplaces): umożliwia uzyskanie danych opłat i danych użycia dla wszystkich zasobów witryny Azure Marketplace (oferty partnerów platformy Azure). Danych tych można użyć do sumowania kosztów wszystkich zasobów witryny Marketplace lub analizowania kosztów/użycia określonych zasobów.
 
--   [Interfejs API arkusza cen](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*tylko Klienci korporacyjni*): uzyskiwanie niestandardowych cen dla wszystkich liczników. Przedsiębiorstwa mogą łączyć te dane z danymi użycia oraz informacjami o użyciu witryny Marketplace w celu obliczania kosztów.
+-   [Interfejs API arkusza cen](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*tylko klienci korporacyjni*): umożliwia pobieranie niestandardowego cennika dla wszystkich mierników. Przedsiębiorstwa mogą łączyć te dane z danymi użycia oraz informacjami o użyciu witryny Marketplace w celu obliczania kosztów.
 
--   [Interfejs API zaleceń dotyczących rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations): Uzyskaj zalecenia dotyczące zakupu wystąpień zarezerwowanych maszyn wirtualnych. Zalecenia ułatwiają analizowanie przewidywanych oszczędności i kwot zakupów. Aby uzyskać więcej informacji, zobacz temat [APIs for Azure reservation automation](../reservations/reservation-apis.md) (Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure).
+-   [Interfejs API zaleceń dotyczących rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations): umożliwia uzyskanie zaleceń dotyczących zakupu wystąpień usługi Reserved VM Instances. Zalecenia ułatwiają analizowanie przewidywanych oszczędności i kwot zakupów. Aby uzyskać więcej informacji, zobacz [Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure](../reservations/reservation-apis.md).
 
--   [Interfejs API szczegółów rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationsdetails): Zobacz informacje dotyczące zakupionych wcześniej rezerwacji maszyn wirtualnych, takich jak zużycie zarezerwowane w porównaniu z ilością. Dane można wyświetlić na poziomie poszczególnych maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz temat [APIs for Azure reservation automation](../reservations/reservation-apis.md) (Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure).
+-   [Interfejs API szczegółów rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationsdetails): umożliwia uzyskanie informacji dotyczących zakupionych rezerwacji maszyn wirtualnych, takich jak bieżące zużycie na tle zarezerwowanego zużycia. Dane można wyświetlić na poziomie poszczególnych maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz [Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure](../reservations/reservation-apis.md).
 
--   [Interfejs API podsumowań rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationssummaries): Zobacz zagregowane informacje dotyczące rezerwacji maszyn wirtualnych zakupionych przez Twoją organizację, takich jak ilości zarezerwowane w przypadku użycia w agregacji. Aby uzyskać więcej informacji, zobacz temat [APIs for Azure reservation automation](../reservations/reservation-apis.md) (Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure).
+-   [Interfejs API podsumowań rezerwacji](https://docs.microsoft.com/rest/api/consumption/reservationssummaries): umożliwia uzyskanie zagregowanych informacji dotyczących rezerwacji maszyn wirtualnych zakupionych przez organizację, takich jak bieżące zużycie na tle zarezerwowanego zużycia w agregacji. Aby uzyskać więcej informacji, zobacz [Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure](../reservations/reservation-apis.md).
 
--   [Interfejs API szczegółów użycia](https://docs.microsoft.com/rest/api/consumption/usagedetails): Uzyskaj informacje o opłatach i użyciu dla wszystkich zasobów platformy Azure od firmy Microsoft. Informacje te mają postać szczegółowych rekordów i aktualnie są udostępniane raz dziennie dla jednego miernika. Informacji tych można użyć do sumowania kosztów wszystkich zasobów lub analizowania kosztów/użycia określonych zasobów.
+-   [Interfejs API szczegółów użycia](https://docs.microsoft.com/rest/api/consumption/usagedetails): umożliwia uzyskanie informacji o opłatach i użyciu dla wszystkich zasobów platformy Azure udostępnianych przez firmę Microsoft. Informacje te mają postać szczegółowych rekordów i aktualnie są udostępniane raz dziennie dla jednego miernika. Informacji tych można użyć do sumowania kosztów wszystkich zasobów lub analizowania kosztów/użycia określonych zasobów.
 
--   [Interfejs API RateCard](/previous-versions/azure/reference/mt219005(v=azure.100)): Uzyskaj stawki zliczania, jeśli jesteś klientem bezpośrednio korzystającym z sieci Web. Zwrócone informacje można połączyć z informacjami o użyciu zasobów w celu ręcznego obliczenia kwoty rachunku.
+-   [Interfejs API usługi RateCard](/previous-versions/azure/reference/mt219005(v=azure.100)): klienci korzystający z subskrypcji Web Direct mogą uzyskiwać stawki mierników. Zwrócone informacje można połączyć z informacjami o użyciu zasobów w celu ręcznego obliczenia kwoty rachunku.
 
--   [Nietaryfowy interfejs API użycia](/previous-versions/azure/reference/mt219003(v=azure.100)): Pobierz surowe informacje o użyciu, zanim platforma Azure wykonuje pomiary/obciążenie.
+-   [Interfejs API nieklasyfikowanego użycia](/previous-versions/azure/reference/mt219003(v=azure.100)): umożliwia pobieranie nieprzetworzonych informacji o użyciu przed rozpoczęciem pomiarów/naliczeniem opłat przez platformę Azure.
 
 ### <a name="billing"></a>Rozliczenia
--   [Interfejs API okresów rozliczeniowych](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Określ okres rozliczeniowy do przeanalizowania wraz z identyfikatorami faktur dla tego okresu. Identyfikatorów faktur można używać razem z interfejsem API faktur.
+-   [Interfejs API okresów rozliczeniowych](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): umożliwia określanie okresu rozliczeniowego do analizy i uzyskanie identyfikatorów faktur dla tego okresu. Identyfikatorów faktur można używać razem z interfejsem API faktur.
 
--   [Interfejs API faktur](/rest/api/billing/2019-10-01-preview/invoices): Pobierz adres URL pobierania dla faktury dla okresu rozliczeniowego w postaci pliku PDF.
+-   [Interfejs API faktur](/rest/api/billing/2019-10-01-preview/invoices): umożliwia uzyskanie adresu URL, za pomocą którego można pobrać fakturę w postaci pliku PDF za dany okres rozliczeniowy.
 
 ### <a name="enterprise-consumption"></a>Użycie w ramach subskrypcji Enterprise
 Następujące interfejsy API są dostępne tylko w przypadku korzystania z subskrypcji Enterprise:
 
--   [Interfejs API podsumowania balansu](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary): Uzyskaj miesięczne podsumowanie informacji dotyczących sald, nowych zakupów, opłat za usługę Azure Marketplace, korekt i opłat za użycie nadwyżkowe. Informacje te mogą dotyczyć bieżącego okresu rozliczeniowego lub dowolnego okresu w przeszłości. Przedsiębiorstwa mogą porównać te dane z ręcznie obliczonymi podsumowaniami opłat. Ten interfejs API nie udostępnia informacji dotyczących określonych zasobów ani zagregowanego widoku kosztów.
+-   [Interfejs API podsumowania salda](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary): umożliwia uzyskanie comiesięcznego podsumowania informacji dotyczących sald, nowych zakupów, opłat za usługę Azure Marketplace, korekt i opłat za użycie nadwyżkowe. Informacje te mogą dotyczyć bieżącego okresu rozliczeniowego lub dowolnego okresu w przeszłości. Przedsiębiorstwa mogą porównać te dane z ręcznie obliczonymi podsumowaniami opłat. Ten interfejs API nie udostępnia informacji dotyczących określonych zasobów ani zagregowanego widoku kosztów.
 
--   [Interfejs API szczegółów użycia](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail): Uzyskaj informacje na temat użycia platformy Azure (oferty firmy Microsoft) w bieżącym miesiącu, określonym okresie rozliczeniowym lub w niestandardowym okresie dat. Za pomocą tych danych przedsiębiorstwa mogą ręcznie obliczyć rachunki na podstawie stawki i zużycia. Przedsiębiorstwa mogą również użyć informacji dla poszczególnych działów/organizacji w celu podzielenia kosztów na organizacje. Dane te zapewniają wgląd w użycie/koszty z podziałem na zasoby.
+-   [Interfejs API szczegółów użycia](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail): umożliwia uzyskanie informacji o użyciu platformy Azure (dla ofert firmy Microsoft) w bieżącym miesiącu, wskazanym okresie rozliczeniowym lub okresie niestandardowym. Za pomocą tych danych przedsiębiorstwa mogą ręcznie obliczyć rachunki na podstawie stawki i zużycia. Przedsiębiorstwa mogą również użyć informacji dla poszczególnych działów/organizacji w celu podzielenia kosztów na organizacje. Dane te zapewniają wgląd w użycie/koszty z podziałem na zasoby.
 
--   [Interfejs API z opłatą w sklepie Marketplace](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge): Uzyskaj informacje na temat użycia platformy Azure (ofert partnerskich) w bieżącym miesiącu, określonym okresie rozliczeniowym lub w niestandardowym okresie dat. Za pomocą tych danych przedsiębiorstwa mogą ręcznie obliczyć rachunki na podstawie stawki i zużycia. Przedsiębiorstwa mogą również użyć informacji dla poszczególnych działów/organizacji w celu podzielenia kosztów na organizacje. Ten interfejs API zapewnia wgląd w użycie/koszty z podziałem na zasoby.
+-   [Interfejs API opłat za sklep Marketplace](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge): umożliwia uzyskanie informacji o użyciu platformy Azure (dla ofert partnerów) w bieżącym miesiącu, wskazanym okresie rozliczeniowym lub okresie niestandardowym. Za pomocą tych danych przedsiębiorstwa mogą ręcznie obliczyć rachunki na podstawie stawki i zużycia. Przedsiębiorstwa mogą również użyć informacji dla poszczególnych działów/organizacji w celu podzielenia kosztów na organizacje. Ten interfejs API zapewnia wgląd w użycie/koszty z podziałem na zasoby.
 
--   [Interfejs API arkusza cen](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet): Uzyskaj odpowiednią stawkę za każdy licznik dla danego okresu rejestracji i rozliczeń. Informacje o stawce można łączyć z danymi użycia oraz informacjami o użyciu witryny Marketplace w celu ręcznego obliczenia kwoty rachunku.
+-   [Interfejs API arkusza cen](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet): umożliwia uzyskanie odpowiedniej stawki za każdy miernik dla danej rejestracji i okresu rozliczeniowego. Informacje o stawce można łączyć z danymi użycia oraz informacjami o użyciu witryny Marketplace w celu ręcznego obliczenia kwoty rachunku.
 
--   [Interfejs API okresów rozliczeniowych](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Pobierz listę okresów rozliczeniowych. Interfejs API udostępnia również właściwość, która wskazuje trasę interfejsu API dla czterech zestawów danych interfejsu API przedsiębiorstwa, które odnoszą się do okresu rozliczeniowego: BalanceSummary, UsageDetails, opłaty w witrynie Marketplace i arkusza cen.
+-   [Interfejs API okresów rozliczeniowych](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): umożliwia uzyskanie listy okresów rozliczeniowych. Ten interfejs API udostępnia również właściwość wskazującą trasę interfejsu API dla czterech zestawów danych interfejsu API Enterprise dotyczących okresu rozliczeniowego: BalanceSummary, UsageDetails, Marketplace Charges i PriceSheet.
 
--   [Interfejs API zaleceń dotyczących wystąpień zarezerwowanych](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation): Spójrz na 7 dni, 30 dni lub 60 dni użytkowania maszyn wirtualnych i uzyskaj pojedyncze i udostępnione zalecenia dotyczące zakupu. Za pomocą tego interfejsu API można analizować przewidywane oszczędności i zalecane kwoty zakupów. Aby uzyskać więcej informacji, zobacz temat [APIs for Azure reservation automation](../reservations/reservation-apis.md) (Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure).
+-   [Interfejs API zaleceń dotyczących wystąpień zarezerwowanych](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation): udostępnia informacje o użyciu maszyn wirtualnych w okresie 7, 30 lub 60 dni i uzyskanie zaleceń dotyczących pojedynczych i współdzielonych zakupów. Za pomocą tego interfejsu API można analizować przewidywane oszczędności i zalecane kwoty zakupów. Aby uzyskać więcej informacji, zobacz [Interfejsy API na potrzeby automatyzacji rezerwacji platformy Azure](../reservations/reservation-apis.md).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

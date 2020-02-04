@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: a78edc29ef85430dc8af57e60dfcba1f2e46413e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991479"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zapobieganie nieoczekiwanym opłatom w rozliczeniach platformy Azure i zarządzanie kosztami
@@ -34,7 +34,7 @@ Kiedy rejestrujesz się na platformie Azure, możesz zrobić kilka rzeczy, aby l
 Użyj jednego z następujących narzędzi, aby oszacować koszt korzystania z usługi platformy Azure:
 - Kalkulator cen platformy Azure
 - Arkusz cen platformy Azure
-- Portal Azure
+- Azure Portal
 
 Obrazy w poniższych sekcjach pokazują przykładowe ceny w dolarach amerykańskich.
 
@@ -82,7 +82,7 @@ Po uruchomieniu usług platformy Azure regularnie sprawdzaj koszty, aby śledzi�
 
 4. Filtrować można według różnych właściwości, takich jak tagi, typ zasobu i przedział czasu. Kliknij pozycję **Dodaj filtr**, aby dodać filtr dla właściwości i wybrać wartości do odfiltrowania. Wybierz pozycję **Eksportuj**, aby wyeksportować widok do pliku z wartościami rozdzielanymi przecinkami (csv).
 
-5. Ponadto możesz klikać etykiety wykresu, aby zobaczyć dzienną historię wydatków dla konkretnych etykiet. Na przykład: na poniższym zrzucie ekranu kliknięcie pozycji maszyny wirtualne wyświetla dzienny koszt uruchamiania maszyn wirtualnych.
+5. Ponadto możesz klikać etykiety wykresu, aby zobaczyć dzienną historię wydatków dla konkretnych etykiet. Na przykład: Na poniższym zrzucie ekranu klikanie maszyn wirtualnych powoduje wyświetlenie dziennego kosztu działania tych maszyn.
 
     ![Zrzut ekranu przedstawiający widok historii wydatków w witrynie Azure Portal](./media/getting-started/costhistory.png)
 
@@ -131,8 +131,8 @@ Skontaktuj się ze swoim menedżerem konta lub partnerem platformy Azure, aby ro
 | Oferta | Zasoby |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | Umowa Enterprise Agreement (EA) | [Witryna EA Portal](https://ea.azure.com/), [dokumenty pomocy](https://ea.azure.com/helpdocs) i [raport usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
-| Cloud Solution Provider (CSP) | Porozmawiaj ze swoim dostawcą |
-| Sponsorowanie systemu Azure | [Portal dostępu sponsorowanego](https://www.microsoftazuresponsorships.com/) |
+| Dostawca rozwiązań w chmurze (CSP) | Porozmawiaj ze swoim dostawcą |
+| Dostęp sponsorowany Azure | [Portal dostępu sponsorowanego](https://www.microsoftazuresponsorships.com/) |
 
 Jeśli zarządzasz działem IT w dużej organizacji, zalecamy przeczytanie dokumentu [Szkielet platformy Azure dla przedsiębiorstw](/azure/architecture/cloud-adoption-guide/subscription-governance) i [oficjalnego dokumentu dla działu IT przedsiębiorstw](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (plik PDF do pobrania, tylko w języku angielskim).
 
@@ -166,7 +166,7 @@ W umowie dotyczącej poziomu usług (SLA) opisano zobowiązania firmy Microsoft 
 
 Aby zażądać środków:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/). Jeśli masz wiele kont, upewnij się, że korzystasz z tego, na które miał wpływ przestój na platformie Azure.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). Jeśli masz wiele kont, upewnij się, że korzystasz z tego, na które miał wpływ przestój na platformie Azure.
 2. Utwórz nowy wniosek o pomoc techniczną.
 3. W kategorii **Typ problemu** wybierz pozycję **Rozliczenia**.
 4. W obszarze **Typ problemu** wybierz pozycję **Żądanie zwrotu pieniędzy**.

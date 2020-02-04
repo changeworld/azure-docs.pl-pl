@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: banders
 ms.openlocfilehash: cf9bb7f3b9661d5957ad569fce7112fe16659761
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995951"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Kupowanie rezerwacji platformy Azure przy użyciu płatności miesięcznych
@@ -26,7 +26,7 @@ Miesięczne płatności są dostępne w przypadku następujących rozwiązań:
 - Maszyny wirtualne
 - Azure Storage
 - Baza danych SQL
-- Hurtownia danych SQL
+- SQL Data Warehouse
 - Cosmos DB
 - App Service — podatek od czynności cywilnoprawnych
 

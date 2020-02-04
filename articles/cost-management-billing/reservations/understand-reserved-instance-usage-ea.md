@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 06/30/2019
 ms.author: banders
 ms.openlocfilehash: af0769ae4e242c86a56ff63d5f7c9ecbe9382b48
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995418"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Pobieranie kosztów i użycia rezerwacji w ramach umowy Enterprise Agreement
@@ -33,7 +33,7 @@ Opłaty w witrynie Marketplace są łączone w danych użycia. Można wyświetla
 
 ## <a name="reservation-charges-in-azure-usage-data"></a>Opłaty za rezerwację w danych użycia platformy Azure
 
-Dane są podzielone na dwa oddzielne zestawy danych: _rzeczywisty koszt_ i _amortyzowany koszt_. Różnice między tymi dwoma zestawami danych:
+Dane zostają podzielone na dwa oddzielne zestawy danych: _Koszt rzeczywisty_ i _Koszt zamortyzowany_. Różnice między tymi dwoma zestawami danych:
 
 **Koszt rzeczywisty** — zawiera dane do uzgodnienia odnośnie do rachunku miesięcznego. Te dane obejmują koszty zakupu rezerwacji oraz szczegóły zastosowania rezerwacji. Dzięki tym danym można uzyskać informacje, która subskrypcja lub grupa zasobów bądź który zasób otrzymał rabat rezerwacji w określonym dniu. Wartość EffectivePrice dla użycia, które otrzymuje rabat rezerwacji wynosi zero.
 
@@ -46,7 +46,7 @@ Porównanie dwóch zestawów danych:
 | Zakupy rezerwacji | Dostępne w tym widoku.<br><br>  Aby pobrać ten filtr danych w zakresie ChargeType = &quot;Purchase&quot;. <br><br> Sprawdź ReservationID lub ReservationName, aby dowiedzieć się, której rezerwacji dotyczy opłata.  | Nie dotyczy tego widoku. <br><br> Koszty zakupu nie są podawane w danych amortyzowanych. |
 | EffectivePrice | Wartość jest równa zero w przypadku użycia, do którego przypisany jest rabat rezerwacji. | Wartość jest kosztem proporcjonalnym rezerwacji za godzinę dla użycia objętego rabatem rezerwacji. |
 | Niewykorzystana rezerwacja (zawiera liczbę godzin, przez którą rezerwacja nie została użyta w ciągu dnia i wartość pieniężną straty) | Nie dotyczy tego widoku. | Dostępne w tym widoku.<br><br> Aby pobrać te dane, filtruj pod kątem ChargeType = &quot;UnusedReservation&quot;.<br><br>  Sprawdź ReservationID lub ReservationName, aby dowiedzieć się, która rezerwacja była niedostatecznie wykorzystywana. Oto wartość przedstawiająca rezerwację zmarnowaną w ciągu dnia.  |
-| UnitPrice(Cena zasobu z arkusza cen) | Dostępna | Dostępna |
+| UnitPrice(Cena zasobu z arkusza cen) | Dostępne | Dostępne |
 
 Inne informacje dostępne w danych użycia platformy Azure uległy zmianie:
 
@@ -65,9 +65,9 @@ Można pobrać dane przy użyciu interfejsu API lub pobrać je z witryny Azure P
 
 Można wywołać [interfejs API szczegółów użycia](/rest/api/consumption/usagedetails/list), aby pobrać nowe dane. Aby uzyskać szczegółowe informacje na temat terminologii, zobacz [warunki użytkowania](../understand/understand-usage.md). Wywołujący powinien być administratorem Enterprise w ramach umowy Enterprise Agreement korzystającym z witryny [EA Portal](https://ea.azure.com). Administratorzy Enterprise z uprawnieniami tylko do odczytu mogą również pobierać dane.
 
-Należy pamiętać, że te dane nie są dostępne w usłudze [raportowanie interfejsów API dla klientów korporacyjnych — szczegóły użycia](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+Pamiętaj, że te dane nie są dostępne w [interfejsach API raportowania dla klientów Enterprise — szczegóły użycia](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-Oto przykładowe wywołanie interfejsu API szczegółów użycia:
+Oto przykład wywołania interfejsu API szczegółów użycia:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
@@ -89,7 +89,7 @@ Informacje przedstawione w poniższej tabeli dotyczące metryki i filtru mogą p
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Pobierz plik CSV użycia z nowymi danymi
 
-Jeśli jesteś administratorem EA, możesz pobrać plik CSV zawierający nowe dane użycia z witryny Azure Portal. Te dane nie są dostępne w portalu EA (ea.azure.com), należy pobrać plik użycia z programu Azure Portal (portal.azure.com), aby wyświetlić nowe dane.
+Jeśli jesteś administratorem EA, możesz pobrać plik CSV zawierający nowe dane użycia z witryny Azure Portal. Te dane nie są dostępne w portalu EA (ea.azure.com) — aby wyświetlić nowe dane, musisz pobrać plik użycia z witryny Azure Portal (portal.azure.com).
 
 W witrynie Azure Portal przejdź do obszaru [Zarządzanie kosztami i rozliczenia](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
 
@@ -111,7 +111,7 @@ Koszty zakupu rezerwacji są dostępne w danych dotyczących Kosztu rzeczywisteg
 
 ### <a name="get-underutilized-reservation-quantity-and-costs"></a>Pobieranie ilości i kosztów nieużywanej rezerwacji
 
-Pobierz amortyzowane dane kosztów i _Filtr dla elementu_ costtype _= UnusedReservation_. Otrzymasz ilość dziennej nieużywanej rezerwacji i koszt. Dane dla rezerwacji lub zamówienia rezerwacji można filtrować odpowiednio przy użyciu pól _ReservationId_ i _ProductOrderId_. Jeśli rezerwacja została wykorzystana w 100%, rekord ma ilość 0.
+Pobierz dane dotyczące Kosztu zamortyzowanego i filtruj dla _ChargeType_ _= UnusedReservation_. Otrzymasz ilość dziennej nieużywanej rezerwacji i koszt. Dane dla rezerwacji lub zamówienia rezerwacji można filtrować odpowiednio przy użyciu pól _ReservationId_ i _ProductOrderId_. Jeśli rezerwacja została wykorzystana w 100%, rekord ma ilość 0.
 
 ### <a name="amortize-reservation-costs"></a>Amortyzować koszty rezerwacji
 
@@ -148,7 +148,7 @@ Koszty rezerwacji są dostępne w [analizie kosztów](https://aka.ms/costanalysi
 
 ![Przykład, w którym przedstawiono, gdzie wybierać koszt zamortyzowany w analizie kosztów](./media/understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Grupuj według typu opłaty, aby wyświetlić podział użycia, zakupów i refundacji; lub według rezerwacji na potrzeby podziału rezerwacji i kosztów na żądanie. Pamiętaj jedyne koszty rezerwacji, które zobaczysz, gdy zaczniesz korzystać z rzeczywistych kosztów, ale koszty zostaną przyłączone do poszczególnych zasobów, które skorzystały z korzyści przy ustalaniu amortyzowanego kosztu. Zobaczysz także nowy typ opłaty **UnusedReservation** podczas naliczania kosztu zamortyzowanego.
+Grupuj według typu opłaty, aby wyświetlić podział użycia, zakupów i refundacji; lub według rezerwacji na potrzeby podziału rezerwacji i kosztów na żądanie. Należy pamiętać, że jedyne koszty rezerwacji, które będą widoczne w kosztach rzeczywistych, to zakupy, ale koszty będą przydzielone do poszczególnych zasobów, które wykorzystały świadczenie podczas naliczania kosztu zamortyzowanego. Zobaczysz także nowy typ opłaty **UnusedReservation** podczas naliczania kosztu zamortyzowanego.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
@@ -156,12 +156,12 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
-- [Co to jest Azure Reservations?](save-compute-costs-reservations.md)
+- [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../../sql-database/sql-database-reserved-capacity.md)
 - [Zarządzanie usługą Azure Reservations](manage-reserved-vm-instance.md)
-- [Omówienie stosowania rabatu na rezerwacje](../manage/understand-vm-reservation-charges.md)
+- [Jak jest stosowany rabat na rezerwacje](../manage/understand-vm-reservation-charges.md)
 - [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](understand-reserved-instance-usage.md)
 - [Koszty oprogramowania systemu Windows nieuwzględniane w przypadku wystąpień zarezerwowanych](reserved-instance-windows-software-costs.md)

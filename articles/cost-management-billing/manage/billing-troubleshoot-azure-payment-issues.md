@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
 ms.openlocfilehash: 986af72ed2ac10a285cfe32768d8541b7fce2428
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989997"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Rozwiązywanie problemów z płatnościami na platformie Azure
@@ -50,7 +50,7 @@ Aby rozwiązać ten problem, zobacz temat [No subscriptions found sign-in error 
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Nie można dokonać płatności za subskrypcję
 
-Jeśli zostanie wyświetlony komunikat o błędzie: *płatność jest zaległa. Wystąpił problem z Twoją* formą płatności lub *Niestety, nie można zapisać informacji. Zamknij przeglądarkę i spróbuj ponownie.* na karcie istnieje Oczekująca płatność, ponieważ karta została odrzucona przez instytucję finansową.
+Jeśli zostanie wyświetlony komunikat o błędzie: *Upłynął termin płatności. Wystąpił problem z Twoją formą płatności* lub *Niestety, nie można zapisać informacji. Zamknij przeglądarkę i spróbuj ponownie.* , na karcie znajduje się oczekująca płatność, ponieważ karta została odrzucona przez instytucję finansową.
 
 Sprawdź, czy karta kredytowa ma wystarczające saldo, aby była możliwość dokonania płatności. Jeśli tak nie jest, użyj innej karty, aby dokonać płatności, lub skontaktuj się z instytucją finansową, aby rozwiązać ten problem.
 
@@ -87,7 +87,7 @@ Aby dodać szczegóły karty, zaloguj się do portalu konta platformy Azure przy
 Inne artykuły dotyczące rozwiązywania problemów z rozliczeniami i subskrypcjami platformy Azure
 
 - [Odrzucona karta](troubleshoot-declined-card.md)
-- [Problemy z logowaniem do subskrypcji](troubleshoot-sign-in-issue.md)
+- [Subscription sign-in issues (Problemy z logowaniem do subskrypcji)](troubleshoot-sign-in-issue.md)
 - [No subscriptions found (Nie odnaleziono żadnych subskrypcji)](no-subscriptions-found.md)
 - [Wyłączony widok kosztów przedsiębiorstwa](enterprise-mgmt-grp-troubleshoot-cost-view.md)
 

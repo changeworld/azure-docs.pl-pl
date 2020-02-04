@@ -12,10 +12,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 3abfac5f915b5c1c6020701feaa356d7a043ef8d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991830"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Rozwiązywanie problemów z widokami kosztów przedsiębiorstwa
@@ -43,7 +43,7 @@ Jeśli podczas próby uzyskania dostępu do subskrypcji lub grupy zarządzania z
 
 ![Zrzut ekranu przedstawiający komunikat „Zasób jest niedostępny”.](./media/enterprise-mgmt-grp-troubleshoot-cost-view/asset-not-found.png)
 
-Poproś administratora subskrypcji platformy Azure lub administratora grupy zarządzania o udzielenie dostępu. Aby uzyskać więcej informacji, zobacz temat [Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Poproś administratora subskrypcji platformy Azure lub administratora grupy zarządzania o udzielenie dostępu. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Następne kroki
 - Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczną](https://go.microsoft.com/fwlink/?linkid=2083458).

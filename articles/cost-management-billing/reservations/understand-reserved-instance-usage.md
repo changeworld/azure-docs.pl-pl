@@ -1,5 +1,5 @@
 ---
-title: Użycie rezerwacji na platformie Azure dla pojedynczej subskrypcji
+title: Użycie rezerwacji platformy Azure dla pojedynczej subskrypcji
 description: Dowiedz się, jak odczytywać dane dotyczące użycia, aby zrozumieć, w jaki sposób zastosowana została rezerwacja platformy Azure dla indywidualnej subskrypcji z płatnością zgodnie z rzeczywistym użyciem.
 author: bandersmsft
 manager: yashr
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1404f8626086124aa2c6affcf2d173cef0be7df3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995366"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Informacje na temat użycia rezerwacji platformy Azure dla indywidualnej subskrypcji z płatnością zgodnie z rzeczywistym użyciem
@@ -33,8 +33,8 @@ W poniższych sekcjach założono, że uruchomiono maszynę wirtualną Standardo
 | Pole | Wartość |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
-|Ilość |1|
-|JSZ | Standardowa_DS1_v2|
+|Liczba |1|
+|SKU | Standardowa_DS1_v2|
 |Region | eastus |
 
 Część sprzętowa maszyny wirtualnej jest uwzględniona, ponieważ wdrożona maszyna wirtualna jest zgodna z atrybutami rezerwacji. Aby zobaczyć, jakie oprogramowanie systemu Windows nie jest objęte zarezerwowanym wystąpieniem maszyny wirtualnej, zobacz [Koszty oprogramowania systemu Windows zarezerwowanych wystąpień maszyn wirtualnych platformy Azure](reserved-instance-windows-software-costs.md)
@@ -55,7 +55,7 @@ Filtruj według pozycji **Dodatkowe informacje** i wpisz tekst **Identyfikator r
 
 1. Pozycja **ReservationId** w polu **Dodatkowe informacje** to rezerwacja zastosowana do maszyny wirtualnej.
 2. Pozycja **ConsumptionMeter** jest identyfikatorem miernika dla maszyny wirtualnej.
-3. Wiersz **podkategorii miernika** **Zarezerwowane podstawowe maszyny wirtualneu** przedstawia $0 kosztów w sekcji instrukcji. Koszt uruchomienia tej maszyny wirtualnej jest już opłacony przez rezerwację.
+3. Wiersz **podkategorii miernika** **Reservation-Base VM** reprezentuje koszt 0 USD w sekcji zestawienia. Koszt uruchomienia tej maszyny wirtualnej jest już opłacony przez rezerwację.
 4. **Identyfikator miernika** jest identyfikatorem miernika rezerwacji. Koszt tego miernika wynosi 0 USD. Ten identyfikator miernika pojawia się dla każdej maszyny wirtualnej, która jest uprawniona do rabatu na rezerwację.
 5. Maszyna wirtualna Standardowa_DS1_v2 ma jeden procesor wirtualny i jest wdrażana bez korzyści użycia hybrydowego platformy Azure. W związku z tym miernik ten obejmuje dodatkową opłatę za oprogramowanie systemu Windows. Aby znaleźć miernik odpowiadający maszynie wirtualnej serii D z 1 rdzeniem, zobacz [Koszty oprogramowywania systemu Windows zarezerwowanych wystąpień maszyn wirtualnych platformy Azure](reserved-instance-windows-software-costs.md). Jeśli masz korzyść użycia hybrydowego platformy Azure, ta dodatkowa opłata nie zostanie zastosowana.
 
@@ -68,8 +68,8 @@ Załóżmy, że uruchomiono usługę SQL Database Gen 4 w regionie Wschodnie sta
 | Pole | Wartość |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
-|Ilość |2|
-|Produkt| SQL Database Gen 4 (2 rdzenie)|
+|Liczba |2|
+|Product (Produkt)| SQL Database Gen 4 (2 rdzenie)|
 |Region | eastus |
 
 ### <a name="statement-section-of-csv-file"></a>Sekcja zestawienia w pliku CSV
@@ -96,12 +96,12 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
-- [Co to jest Azure Reservations?](save-compute-costs-reservations.md)
+- [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../../sql-database/sql-database-reserved-capacity.md)
 - [Zarządzanie usługą Azure Reservations](manage-reserved-vm-instance.md)
-- [Omówienie stosowania rabatu na rezerwacje](../manage/understand-vm-reservation-charges.md)
+- [Jak jest stosowany rabat na rezerwacje](../manage/understand-vm-reservation-charges.md)
 - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](understand-reserved-instance-usage-ea.md)
-- [Koszty oprogramowania systemu Windows nieuwzględniane w przypadku wystąpień zarezerwowanych](reserved-instance-windows-software-costs.md)
+- [Windows software costs not included with Reservations (Koszty oprogramowania systemu Windows nieuwzględniane w przypadku rezerwacji)](reserved-instance-windows-software-costs.md)

@@ -8,12 +8,12 @@ ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: effc7dfb8ca540d044b5698b90b3195da0f29b19
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.openlocfilehash: dfb46a40291a74cb8a2c172700f621ef835ef50e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547578"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769664"
 ---
 # <a name="azure-ea-portal-administration"></a>Administracja przy użyciu witryny Azure EA Portal
 
@@ -21,7 +21,7 @@ W tym artykule opisano typowe zadania wykonywane przez administratora w witrynie
 
 ## <a name="add-a-new-enterprise-administrator"></a>Dodawanie nowego administratora przedsiębiorstwa
 
-Administratorzy przedsiębiorstwa mają największe uprawnienia podczas zarządzania rejestracją w portalu Azure EA. Początkowy administrator platformy Azure EA został utworzony podczas konfigurowania umowy EA. Można jednak dodawać i usuwać nowych administratorów w dowolnym momencie. Nowi administratorzy są dodawani tylko przez istniejących administratorów. Aby uzyskać więcej informacji na temat dodawania dodatkowych administratorów przedsiębiorstwa, zobacz [Tworzenie innego administratora przedsiębiorstwa](ea-portal-get-started.md#create-another-enterprise-admin). Aby uzyskać więcej informacji o rolach i zadaniach dotyczących rozliczeń, zobacz [role profilu rozliczenia i zadania](understand-mca-roles.md#billing-profile-roles-and-tasks).
+Administratorzy przedsiębiorstwa mają największe uprawnienia podczas zarządzania rejestracją w portalu Azure EA. Początkowy administrator platformy Azure EA został utworzony podczas konfigurowania umowy EA. Można jednak dodawać i usuwać nowych administratorów w dowolnym momencie. Nowi administratorzy są dodawani tylko przez istniejących administratorów. Aby uzyskać więcej informacji na temat dodawania dodatkowych administratorów przedsiębiorstwa, zobacz sekcję [Tworzenie innego administratora przedsiębiorstwa](ea-portal-get-started.md#create-another-enterprise-administrator). Aby uzyskać więcej informacji o rolach i zadaniach dotyczących rozliczeń, zobacz sekcję [Role i zadania profilów rozliczeniowych](understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 ## <a name="update-user-state-from-pending-to-active"></a>Aktualizowanie stanu użytkownika z „oczekujące” na „aktywne”
 
@@ -31,7 +31,7 @@ Gdy nowi właściciele konta są po raz pierwszy dodawani do rejestracji w ramac
 
 Po utworzeniu działu przez administratora portalu Azure EA administrator oferty Azure Enterprise może dodać administratorów działu i skojarzyć ich z działem. Administrator działu może tworzyć nowe konta. Nowe konta są potrzebne do tworzenia subskrypcji portalu Azure EA.
 
-Aby uzyskać więcej informacji o dodawaniu administratora działu, zobacz [Tworzenie administratora działu w portalu Azure EA](ea-portal-get-started.md#add-a-department-admin).
+Aby uzyskać więcej informacji o dodawaniu administratora działu, zobacz [Tworzenie administratora działu w portalu Azure EA](ea-portal-get-started.md#add-a-department-administrator).
 
 ## <a name="associate-an-account-to-a-department"></a>Kojarzenie konta z działem
 
@@ -63,7 +63,7 @@ Administrator działu może wyświetlić limit przydziału wydatków, ale tylko 
     - W tym miejscu można także edytować nazwę działu i centrum kosztów.
  1. Wybierz pozycję **Zapisz**.
 
-Przydział wydatków działu będzie teraz widoczny w widoku listy działów na karcie dział. Po zakończeniu bieżącego zobowiązania Portal Azure EA będzie obsługiwać przydziały wydatków dla następnego okresu zobowiązania.
+Limit przydziału wydatków działu będzie teraz widoczny w widoku Lista działów na karcie Dział. Na koniec bieżącego zobowiązania witryna Azure EA Portal zachowa limity przydziału wydatków na następny okres zobowiązania.
 
 Kwota limitu przydziału dla działu jest niezależna od bieżącego zobowiązania pieniężnego. Ponadto kwota limitu przydziału i alerty są stosowane tylko do użycia tej samej firmy. Limit przydziału wydatków dla działu jest przeznaczony wyłącznie do celów informacyjnych i nie wymusza limitów wydatków.
 
@@ -208,7 +208,7 @@ Jeśli subskrypcja zostanie przeniesiona na konto w innej dzierżawie usługi Az
 
 Jeśli odbiorca musi ograniczyć dostęp do swoich zasobów platformy Azure, powinien rozważyć zaktualizowanie wszystkich wpisów tajnych skojarzonych z usługą. Większość zasobów można zaktualizować, wykonując następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. W menu Centrum wybierz pozycję **Wszystkie zasoby**.
 3. Wybierz zasób.
 4. Na stronie zasobu kliknij pozycję **Ustawienia**, aby wyświetlić i zaktualizować istniejące wpisy tajne.

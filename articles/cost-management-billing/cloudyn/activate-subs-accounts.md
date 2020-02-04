@@ -1,21 +1,20 @@
 ---
 title: Aktywowanie subskrypcji i kont platformy Azure | Microsoft Docs
 description: Umożliwianie dostępu za pomocą interfejsów API usługi Azure Resource Manager dla nowych i istniejących kont oraz rozwiązywanie typowych problemów dotyczących kont.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/19/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: a3d40e478d1fbb4a789124b72b73268db37540ab
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 6b788df15b14f8e2e0b394cf7002a1c8236d2c67
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987754"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770500"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktywowanie subskrypcji i kont platformy Azure za pomocą platformy Cloudyn
 
@@ -60,7 +59,7 @@ Dodając konto lub aktualizując subskrypcję przyznajesz platformie Cloudyn dos
 1. Jeśli chcesz zaktualizować _nieaktywowaną_ subskrypcję, która już istnieje na platformie Cloudyn w rozwiązaniu do zarządzania kontami, kliknij symbol ołówka (edycja) z prawej strony nadrzędnego _identyfikatora GUID dzierżawy_. Subskrypcje są grupowane w ramach dzierżawy nadrzędnej, należy więc unikać ich indywidualnego aktywowania.
     ![Wybieranie swojego identyfikatora dzierżawy w oknie Ponowne odnajdowanie subskrypcji](./media/activate-subs-accounts/existing-sub.png)
 2. W razie potrzeby wprowadź identyfikator dzierżawy. Jeśli nie znasz identyfikatora dzierżawy, wykonaj następujące czynności, aby go znaleźć:
-    1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+    1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
     2. W witrynie Azure Portal wybierz pozycję **Azure Active Directory**.
     3. Aby uzyskać identyfikator dzierżawy, wybierz pozycję **Właściwości** dla swojej dzierżawy usługi Azure AD.
     4. Skopiuj identyfikator GUID katalogu. Ta wartość jest Twoim identyfikatorem dzierżawy.
@@ -87,7 +86,7 @@ Przy pierwszym użyciu portalu Cloudyn możesz zobaczyć poniższe komunikaty, j
 
 - Komunikat *Wybrany klucz interfejsu API nie jest kluczem rejestracji najwyższego poziomu rejestrowania* wyświetlany w kreatorze **Konfigurowanie platformy Cloudyn**.
 - Komunikat *Bezpośrednia rejestracja — nie* wyświetlany w portalu umowy Enterprise Agreement.
-- *Nie znaleziono danych użycia w ciągu ostatnich 30 dni. Skontaktuj się z dystrybutorem, aby upewnić się, że w portalu Cloudyn włączono znaczniki dla Twojego konta platformy Azure* .
+- *Nie znaleziono danych użycia z ostatnich 30 dni. Skontaktuj się z dystrybutorem i upewnij się, że dla konta platformy Azure włączono znaczniki* wyświetlane w portalu Cloudyn.
 
 Poprzednie komunikaty oznaczają, że umowa Azure Enterprise Agreement została zakupiona od odsprzedawcy lub dostawcy rozwiązań w chmurze. Odsprzedawca lub dostawca rozwiązań w chmurze musi włączyć _znaczniki_ dla konta platformy Azure, aby można było wyświetlać dane na platformie Cloudyn.
 

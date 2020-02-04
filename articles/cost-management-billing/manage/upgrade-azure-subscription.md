@@ -14,10 +14,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e1e99313454c8352b96b8f11ec35f482521f7b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989776"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Uaktualnianie bezpłatnego konta platformy Azure lub konto subskrypcji Microsoft Azure for Students Starter
@@ -30,7 +30,7 @@ Jeśli zarejestrujesz się w celu uzyskania [konta subskrypcji Azure for Student
 
 ## <a name="upgrade-your-azure-free-account"></a>Uaktualnienie bezpłatnego konta platformy Azure
 
-Po uaktualnieniu bezpłatnego konta platformy Azure możesz zachować pozostałe środki przez pełne 30 dni od momentu zarejestrowania się. Na przykład: Jeśli użytkownik jest zalogowany w dniu 1 listopada i uaktualnienie w dniu 5 listopada, wszystkie niewykorzystane kredyty będą dostępne do 30 listopada. Masz również dostęp do bezpłatnych usług przez 12 miesięcy po uaktualnieniu.
+Po uaktualnieniu bezpłatnego konta platformy Azure możesz zachować pozostałe środki przez pełne 30 dni od momentu zarejestrowania się. Przykład: Rejestracja została przeprowadzona 1 listopada, a uaktualnienie 5 listopada. Wszystkie niewykorzystane środki będą dostępne do 30 listopada. Masz również dostęp do bezpłatnych usług przez 12 miesięcy po uaktualnieniu.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Subskrypcje**.

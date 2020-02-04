@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 793caae31841c0ea744a80a811c86aa4af63f60a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990972"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Terminy na fakturze za umowę klienta firmy Microsoft
@@ -38,7 +38,7 @@ W poniższych sekcjach wymieniono i opisano ważne terminy występujące na fakt
 
 ![Sekcja podsumowania faktury](./media/mca-understand-your-invoice/invoicesummary.png)
 
-| Okres obowiązywania Umowy | Opis |
+| Okres | Opis |
 | --- | --- |
 | Sprzedano dla |Adres podmiotu prawnego, wyświetlany we właściwościach konta rozliczeniowego|
 | Rachunek dla |Adres do rozliczeń w profilu rozliczeniowym, do którego jest wysyłana faktura, wyświetlany we właściwościach tego profilu|
@@ -54,7 +54,7 @@ Sekcja **Podsumowanie rozliczeń** zawiera opłaty naliczone od poprzedniego okr
 
 ![Sekcja podsumowania rozliczeń](./media/mca-understand-your-invoice/billingsummary.png)
 
-| Okres obowiązywania Umowy | Opis |
+| Okres | Opis |
 | --- | --- |
 | Opłaty|Łączna kwota opłat naliczonych na rzecz firmy Microsoft dla tego profilu rozliczeniowego od ostatniego okresu rozliczeniowego |
 | Środki |Środki otrzymane ze zwrotów |
@@ -78,12 +78,12 @@ Szczegóły przedstawiają koszty w poszczególnych sekcjach faktury z podziałe
 
 ![Sekcja szczegółów według faktury](./media/mca-understand-your-invoice/invoicesectiondetails.png)
 
-| Okres obowiązywania Umowy |Opis |
+| Okres |Opis |
 | --- | --- |
 | Cena jednostkowa | Obowiązująca cena jednostkowa usługi (w walucie podanej w cenniku) używana do oceniania użycia. Jest ona unikatowa dla produktu, rodziny usług, miernika i oferty. |
 | Ilość | Ilość zakupiona lub zużyta w okresie rozliczeniowym |
 | Opłaty/środki | Opłaty netto po zastosowaniu środków/zwrotów |
-| Kredyt na korzystanie z systemu Azure | Wartość środków na korzystanie z platformy Azure uwzględniana podczas obliczania wartości opłat/środków|
+| Środki na korzystanie z platformy Azure | Wartość środków na korzystanie z platformy Azure uwzględniana podczas obliczania wartości opłat/środków|
 | Stawka podatku | Stawka podatku w zależności od kraju/regionu |
 | Kwota podatku | Kwota naliczonego podatku zależna od stawki podatku |
 | Łącznie | Łączna kwota należności za zakup |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 8680a575872053f4b575db70ec649b6c1669b961
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992142"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Interfejsy API REST usługi Azure Enterprise
@@ -81,7 +81,7 @@ Punkt końcowy struktury Swagger jest dostępny w [interfejsach API raportowania
 
 W przypadku korzystania z interfejsu API wyświetlane są kody stanu odpowiedzi. Poniższa tabela zawiera odpowiednie opisy.
 
-| Kod stanu odpowiedzi | Wiadomość | Opis |
+| Kod stanu odpowiedzi | Komunikat | Opis |
 | --- | --- | --- |
 | 200 | OK | Brak błędów |
 | 401 | Brak autoryzacji | Nie znaleziono klucza interfejsu API, jest on nieprawidłowy, wygasł itd. |
@@ -122,11 +122,11 @@ Format JSON jest generowany na podstawie raportu CSV. W związku z tym format je
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | Subscription Name | SubscriptionName | SubscriptionName |   |
 | Data | Data | Data | Pokazuje datę uruchomienia raportu wykazu usług. Format to ciąg daty bez sygnatury czasowej. |
-| Miesiąc | Miesiąc | Miesiąc |   |
-| Dzień | Dzień | Dzień |   |
-| Rok | Rok | Rok |   |
-| Produkt | BillableItemName | Produkt |   |
-| Identyfikator miernika | ResourceGUID | MeterId |   |
+| Month | Month | Month |   |
+| Day | Day | Day |   |
+| Year | Year | Year |   |
+| Product (Produkt) | BillableItemName | Product (Produkt) |   |
+| Identyfikator miernika | ResourceGUID | Identyfikator miernika |   |
 | Kategoria miernika | Usługa | MeterCategory | Przydatne do znajdowania usług. Dotyczy usług, które mają wiele właściwości ServiceType. Na przykład maszyn wirtualnych. |
 | Podkategoria miernika | ServiceType | MeterSubCategory | Zapewnia drugi poziom szczegółowości dla usługi. Na przykład maszyna wirtualna A1 (system inny niż Windows).  |
 | Region miernika | ServiceRegion | MeterRegion | Trzeci poziom szczegółowości wymagany dla usługi. Przydatne do znajdowania kontekstu regionu identyfikatora GUID zasobu. |
@@ -144,7 +144,7 @@ Format JSON jest generowany na podstawie raportu CSV. W związku z tym format je
 | Store Service Identifier   | OrderNumber | StoreServiceIdentifier   |   |
 | Department Name | DepartmentName | DepartmentName |   |
 | Cost Center | CostCenter | CostCenter |   |
-| Jednostka miary | UnitOfMeasure | UnitOfMeasure | Przykładowe wartości: godziny, GB, zdarzenia, wypchnięcia, jednostka, Godziny korzystania z jednostki, MB, jednostki dzienne |
+| Jednostka miary | UnitOfMeasure | UnitOfMeasure | Przykładowe wartości: godziny, GB, zdarzenia, wypchnięcia, jednostka, godziny korzystania z jednostki, MB, jednostki dzienne |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Raport witryny Azure Marketplace
@@ -157,12 +157,12 @@ Format JSON jest generowany na podstawie raportu CSV. W związku z tym format je
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | Subscription Name | SubscriptionName |  SubscriptionName |
 | Data | BillingCycle |  Date (Tylko ciąg daty. Bez sygnatury czasowej)
-| Miesiąc | Miesiąc |  Miesiąc |
-| Dzień | Dzień |  Dzień |
-| Rok | Rok |  Rok |
+| Month | Month |  Month |
+| Day | Day |  Day |
+| Year | Year |  Year |
 | Identyfikator miernika | MeterResourceId |  MeterId |
 | Publisher Name | PublisherFriendlyName |  PublisherName |
-| Nazwa oferty | OfferFriendlyName |  OfferName |
+| Offer Name | OfferFriendlyName |  OfferName |
 | Plan Name | PlanFriendlyName |  PlanName |
 | Zużyta ilość | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
@@ -210,5 +210,5 @@ Mogą zostać wyświetlone komunikaty o błędach 400 i 404 (niedostępne) zwrac
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Administratorzy portalu EA platformy Azure powinni przeczytać artykuł [Administracja portalu Azure EA](ea-portal-administration.md), aby poznać typowe zadania administracyjne.
+- Administratorzy witryny Azure EA Portal powinni przeczytać artykuł [Administracja w witrynie Azure EA Portal](ea-portal-administration.md), aby poznać typowe zadania administracyjne.
 - Jeśli potrzebujesz pomocy w rozwiązywaniu problemów z witryną Azure EA Portal, zobacz [Rozwiązywanie problemów z dostępem do witryny Azure EA Portal](ea-portal-troubleshoot.md).

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: eb444f090c1b2047e3d71c1b2ec52699a61bd880
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989308"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Przeglądanie użycia zasobów platformy Azure przy użyciu interfejsu API REST
@@ -39,7 +39,7 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-Parametr `{subscriptionGuid}` jest wymagany i powinien zawierać identyfikator subskrypcji, który można odczytać przy użyciu poświadczeń podanych w tokenie interfejsu API. Element `{reportName}`.
+Parametr `{subscriptionGuid}` jest wymagany i powinien zawierać identyfikator subskrypcji, który można odczytać przy użyciu poświadczeń podanych w tokenie interfejsu API. `{reportName}`
 
 Wymagane są następujące nagłówki: 
 
@@ -89,7 +89,7 @@ Skonfiguruj parametry raportu w treści żądania HTTP. W poniższym przykładzi
 }
 ```
 
-Nie można usunąć zasobu typu
+Dla zasobu
 
 ## <a name="filtering-reports"></a>Filtrowanie raportów
 

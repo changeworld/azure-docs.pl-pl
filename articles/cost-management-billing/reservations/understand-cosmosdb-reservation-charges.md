@@ -10,10 +10,10 @@ ms.date: 09/30/2019
 ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: cb20c88577bba614c70fdf5a266d482d06aeca57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995561"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Omówienie stosowania rabatu za rezerwację dla usługi Azure Cosmos DB
@@ -76,7 +76,7 @@ Rabat za rezerwację jest stosowany do godzinowych kosztów przepływności usł
 
 Weź pod uwagę następujące wymagania dotyczące rezerwacji:
 
-* Wymagana przepływność: 50 000 RU/s  
+* Wymagana przepływność: 50 000 RU/s  
 * Używane regiony: 2
 
 W takim przypadku łączne opłaty na żądanie dotyczą ilości równej 500 dla miernika 100 RU/s w tych dwóch regionach. Całkowite zużycie jednostek RU/s wynosi 100 000 co godzinę.
@@ -85,7 +85,7 @@ W takim przypadku łączne opłaty na żądanie dotyczą ilości równej 500 dla
 
 Załóżmy na przykład, że potrzebujesz wdrożeń usługi Azure Cosmos DB w regionach Północno-środkowe stany USA i Zachodnie stany USA. Każdy region zużywa 50 000 RU/s przepływności. Zakup rezerwacji w wysokości 100 000 RU/s może całkowicie zrównoważyć opłaty za użycie na żądanie.
 
-Rabat, który obejmuje rezerwacja, jest obliczany następująco: zużycie przepływności * współczynnik rabatu za rezerwację dla danego regionu. W przypadku regionów Północno-środkowe stany USA i Zachodnie stany USA wskaźnik rabatu za rezerwację wynosi 1. W związku z tym łączna liczba jednostek RU/s objęta rabatem to 100 000. Ta wartość jest obliczana jako: 50 000 * 1 + 50 000 * 1 = 100 000 RU/s. Nie musisz uiszczać żadnych dodatkowych opłat według zwykłych stawek płatności zgodnie z rzeczywistym użyciem.
+Rabat, który obejmuje rezerwacja, jest obliczany następująco: zużycie przepływności * współczynnik rabatu za rezerwację dla danego regionu. W przypadku regionów Północno-środkowe stany USA i Zachodnie stany USA wskaźnik rabatu za rezerwację wynosi 1. W związku z tym łączna liczba jednostek RU/s objęta rabatem to 100 000. Ta wartość jest obliczana następująco: 50 000 * 1 + 50 000 * 1 = 100 000 RU/s. Nie musisz uiszczać żadnych dodatkowych opłat według zwykłych stawek płatności zgodnie z rzeczywistym użyciem.
 
 |Opis miernika | Region |Zużycie przepływności (RU/s) |Rabat za rezerwację dotyczący jednostek RU/s |
 |---------|---------|---------|---------|
@@ -101,9 +101,9 @@ Załóżmy na przykład, że potrzebujesz wdrożeń usługi Azure Cosmos DB w re
 |Azure Cosmos DB — 100 RU/s/godzinę — Australia Środkowa 2  |  Australia Środkowa 2   |  50 000  |  50 000   |
 |Azure Cosmos DB — 100 RU/s/godzinę — Francja Południowa  |  Francja Południowa   |  50 000 |  15 384  |
 
-Użycie 50 000 jednostek w regionie Australia Środkowa 2 odpowiada 75 000 RU/s rozliczanego (czyli znormalizowanego) użycia. Ta wartość jest obliczana następująco: zużycie przepływności * współczynnik rabatu za rezerwację dla danego regionu. Wynik to 75 000 RU/s rozliczanego (znormalizowanego) zużycia. Ta wartość jest obliczana jako: 50 000 * 1,5 = 75 000 RU/s.
+Użycie 50 000 jednostek w regionie Australia Środkowa 2 odpowiada 75 000 RU/s rozliczanego (czyli znormalizowanego) użycia. Ta wartość jest obliczana następująco: zużycie przepływności * współczynnik rabatu za rezerwację dla danego regionu. Wynik to 75 000 RU/s rozliczanego (znormalizowanego) zużycia. Ta wartość jest obliczana następująco: 50 000 * 1,5 = 75 000 RU/s.
 
-Zakup rezerwacji 100 000 RU/s obejmie 75 000 RU/s w regionie Australia Środkowa 2. Pozostanie 25 000 RU/s dla regionu Francja Południowa. Z pozostałych 25 000 RU/s rabat za rezerwację zostanie zastosowany dla 15 384 RU/s w regionie Francja Południowa. Wartość rabatu jest obliczana jako: 25 000/1,625 = 15 384 RU/s. Pozostałe 34 616 RU/s w regionie Francja Południowa zostanie rozliczonych według standardowych stawek płatności zgodnie z rzeczywistym użyciem.
+Zakup rezerwacji 100 000 RU/s obejmie 75 000 RU/s w regionie Australia Środkowa 2. Pozostanie 25 000 RU/s dla regionu Francja Południowa. Z pozostałych 25 000 RU/s rabat za rezerwację zostanie zastosowany dla 15 384 RU/s w regionie Francja Południowa. Wartość rabatu jest obliczana następująco: 25 000 / 1,625 = 15 384 RU/s. Pozostałe 34 616 RU/s w regionie Francja Południowa zostanie rozliczonych według standardowych stawek płatności zgodnie z rzeczywistym użyciem.
 
 System rozliczeń platformy Azure przypisze korzyść rozliczenia za rezerwację do pierwszego przetwarzanego wystąpienia, które pasuje do konfiguracji rezerwacji. W tym przykładzie jest to region Australia Środkowa 2.
 
@@ -118,7 +118,7 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
 * [Co to są rezerwacje platformy Azure](save-compute-costs-reservations.md)  
-* [Opłacanie zasobów usługi Azure Cosmos DB z góry za pomocą zarezerwowanej pojemności usługi Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)  
+* [Opłata z góry za zasoby usługi Azure Cosmos DB za pomocą zarezerwowanej pojemności usługi Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)  
 * [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../../sql-database/sql-database-reserved-capacity.md)  
 * [Zarządzanie rezerwacjami platformy Azure](manage-reserved-vm-instance.md)  
 * [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](understand-reserved-instance-usage.md)  

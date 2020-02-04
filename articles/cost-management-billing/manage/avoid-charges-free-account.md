@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 632d8ef84fc30ee7e97b8961d74fbb95ced42234
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990062"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Unikanie naliczania opłat za korzystanie z bezpłatnego konta platformy Azure
@@ -41,7 +41,7 @@ Po uaktualnieniu konta za korzystanie z usług, które nie są dostępne bezpła
 
 Bezpłatne usługi i ilości wygasną po upływie 12 miesięcy. Datę wygaśnięcia bezpłatnych usług możesz znaleźć w witrynie Azure Portal.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. W obszarze nawigacji po lewej stronie wybierz pozycję **Wszystkie usługi**.
 

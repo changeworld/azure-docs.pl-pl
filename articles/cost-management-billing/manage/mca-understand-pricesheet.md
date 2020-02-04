@@ -1,5 +1,5 @@
 ---
-title: Warunki w arkuszu cen umowy klienta firmy Microsoft — Azure
+title: Terminy w arkuszu cen dla umowy klienta firmy Microsoft — Azure
 description: Dowiedz się, jak interpretować dane dotyczące użycia i opłaty z tytułu umowy klienta firmy Microsoft.
 author: bandersmsft
 manager: jureid
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: banders
 ms.openlocfilehash: 44ead1d376bf8b57134380db90733ed48deda14e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994482"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Terminy w arkuszu cen dla umowy klienta firmy Microsoft
@@ -48,13 +48,13 @@ W poniższej sekcji opisano ważne terminy widoczne w arkuszu cen umowy klienta 
 | meterSubCategory  | Nazwa kategorii klasyfikacji podrzędnej miernika.  |
 | meterType  |  Nazwa typu miernika. |
 | meterRegion  | Nazwa regionu, w którym jest dostępny miernik usługi. Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych.    |
-| Produkt  | Nazwa produktu naliczane opłaty. Przykład: podstawowa baza danych SQL, a standardowa baza danych SQL  |
+| Product (Produkt)  | Nazwa produktu, za który naliczane są opłaty. Na przykład: podstawowa baza danych SQL lub standardowa baza danych SQL  |
 | productId  | Unikatowy identyfikator produktu, którego miernik jest wykorzystywany. |
 | productOrderName  | Nazwa zakupionego planu produktu. |
-| serviceFamily  | Typ usługi platformy Azure. Przykład: COMPUTE, Analytics, Security |
+| serviceFamily  | Typ usługi platformy Azure. Na przykład: obliczenia, analiza, zabezpieczenia |
 | tierMinimumUnits  | Definiuje dolną granicę zakresu warstwy, dla którego są zdefiniowane ceny. Na przykład jeśli zakres wynosi od 0 do 100, pole tierMinimumUnits będzie mieć wartość 0.  |
 | unitOfMeasure  | Identyfikuje jednostki miary dla rozliczeń usługi. Na przykład opłaty za usługi obliczeniowe są naliczane godzinowo. |
-| unitPrice  | Cena za jednostkę w momencie rozliczenia (nie jest to obowiązująca cena uśredniona) określona dla miernika i nazwy zamówienia produktu.  Uwaga: Cena jednostkowa nie jest taka sama jak cena obowiązująca w ramach pobierania szczegółów użycia w przypadku usług, które mają ceny różnicowe w różnych warstwach.  W przypadku usług z cennikiem wielowarstwowym obowiązująca cena jest stawką uśrednioną dla tych warstw i nie odpowiada cenie jednostkowej dla konkretnej warstwy. Cena uśredniona lub cena obowiązująca to cena netto wykorzystanej ilości dla wielu warstw (gdzie każda warstwa ma konkretną cenę jednostkową). |
+| unitPrice  | Cena za jednostkę w momencie rozliczenia (nie jest to obowiązująca cena uśredniona) określona dla miernika i nazwy zamówienia produktu.  Uwaga: Cena jednostkowa nie jest taka sama jak cena obowiązująca w pobieranych szczegółach użycia w przypadku usług, które mają zróżnicowane ceny w różnych warstwach.  W przypadku usług z cennikiem wielowarstwowym obowiązująca cena jest stawką uśrednioną dla tych warstw i nie odpowiada cenie jednostkowej dla konkretnej warstwy. Cena uśredniona lub cena obowiązująca to cena netto wykorzystanej ilości dla wielu warstw (gdzie każda warstwa ma konkretną cenę jednostkową). |
 
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft

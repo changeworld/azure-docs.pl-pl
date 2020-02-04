@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: e6858d51eec1bbcb100f71418337d74d19d6db5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994729"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Omówienie terminów występujących na fakturze za platformę Microsoft Azure
@@ -44,7 +44,7 @@ W górnej części pierwszej strony faktury znajduje się sekcja z informacjami 
 
 ![Sekcja faktury z informacjami o koncie](./media/understand-invoice/account-information-section.png)
 
-| Okres obowiązywania Umowy | Opis |
+| Okres | Opis |
 | --- | --- |
 | Numer zamówienia zakupu klienta |Opcjonalny numer zamówienia zakupu przypisany do Ciebie na potrzeby śledzenia |
 | Nr faktury |Unikatowy, wygenerowany przez firmę Microsoft numer faktury używany na potrzeby śledzenia |
@@ -65,7 +65,7 @@ Nazwa subskrypcji („Magazyn produkcyjny”) to nazwa subskrypcji dla tej faktu
 #### <a name="understand-the-previous-charges"></a>Omówienie poprzednich opłat
 Sekcje faktury dotyczące poprzedniego salda, płatności i zaległego salda podsumowują transakcje od ostatniego okresu rozliczeniowego.
 
-| Okres obowiązywania Umowy | Opis |
+| Okres | Opis |
 | --- | --- |
 | Poprzednie saldo |Łączna kwota należności z ostatniego okresu rozliczeniowego |
 | Płatności |Łączne płatności i kredyty zastosowane do ostatniego okresu rozliczeniowego |
@@ -74,9 +74,9 @@ Sekcje faktury dotyczące poprzedniego salda, płatności i zaległego salda pod
 #### <a name="understand-the-current-charges"></a>Opis sekcji opłat bieżących
 Sekcja Opłaty bieżące faktury zawiera szczegółowe informacje o opłatach miesięcznych za bieżący okres rozliczeniowy.
 
-| Okres obowiązywania Umowy | Opis |
+| Okres | Opis |
 | --- | --- |
-| Opłaty za użycie |Opłaty za zużycie to łączne miesięczne opłaty za subskrypcję dla bieżącego okresu rozliczeniowego|
+| Opłaty za zużycie |Opłaty za zużycie to łączne miesięczne opłaty za subskrypcję dla bieżącego okresu rozliczeniowego|
 | Rabaty |Rabaty dotyczące usług zastosowane do bieżącego okresu rozliczeniowego|
 | Korekty |Różne kredyty (bezpłatne użycie, środki itp.) lub opłaty zaległe stosowane do bieżącego okresu rozliczeniowego.<br/><br/>Jeśli na przykład korzystasz z oferty Visual Studio Enterprise z subskrypcją MSDN, w tym miejscu jest wyświetlany miesięczny kredyt. Jeśli anulujesz subskrypcję, zobaczysz miesięczne opłaty za użycie, które przekraczają miesięczny kredyt uzyskany w ramach oferty subskrypcji. Opłaty są naliczane na początku bieżącego okresu rozliczeniowego do daty anulowania subskrypcji. |
 
@@ -84,12 +84,12 @@ Sekcja Opłaty bieżące faktury zawiera szczegółowe informacje o opłatach mi
 
 W poniższej tabeli opisano widoczną na drugiej stronie faktury sekcję z informacjami o nabywcy oraz instrukcjami dotyczącymi płatności.
 
-| Okres obowiązywania Umowy |Opis |
+| Okres |Opis |
 | --- | --- |
 | Sprzedano dla |Adres profilu wymieniony na koncie. <br/><br/>Aby zmienić adres, zobacz [Jak zmienić informacje o profilu konta platformy Azure, takie jak kontaktowy adres e-mail, adres i numer telefonu](../manage/change-azure-account-profile.md).|
 | Instrukcje dokonywania płatności |Instrukcje dotyczące sposobu dokonywania płatności w zależności od formy płatności (na przykład za pomocą karty kredytowej lub na podstawie faktury). |
 
-#### <a name="usage-charges"></a>Opłaty za zużycie
+#### <a name="usage-charges"></a>Opłaty za użycie
 
 W sekcji Opłaty za użycie faktury są wyświetlane informacje dotyczące opłat na poziomie miernika.
 
@@ -97,14 +97,14 @@ W sekcji Opłaty za użycie faktury są wyświetlane informacje dotyczące opła
 
 W poniższej tabeli opisano nagłówki kolumn opłat za użycie wyświetlane na fakturze.
 
-| Okres obowiązywania Umowy |Opis |
+| Okres |Opis |
 | --- | --- |
 | Nazwa |Określa użycie dla usługi najwyższego poziomu |
 | Typ |Definiuje typ usługi platformy Azure, który może wpływać na stawkę |
 | Zasób |Określa jednostkę miary wykorzystywanego miernika |
 | Region |Określa lokalizację centrum danych pewnych usług, które są wyceniane na podstawie lokalizacji centrum danych |
 | Zużyte |Ilość miernika użyta w okresie rozliczeniowym |
-| Zawarte |Niepłatna ilość miernika w trakcie bieżącego okresu rozliczeniowego |
+| Dołączono |Niepłatna ilość miernika w trakcie bieżącego okresu rozliczeniowego |
 | Płatne |Pokazuje różnicę między zużytą ilością a uwzględnioną ilością. Rachunek jest wystawiany na tę kwotę. W przypadku ofert płatności zgodnie z rzeczywistym użyciem bez żadnej kwoty wliczonej w ofertę ta wartość jest taka sama jak wartość Zużyta ilość |
 | Stawka |Określa stawkę naliczaną na jednostkę płatną |
 | Wartość |Zawiera wynik mnożenia wartości z kolumny Ilość nadwyżkowego użycia przez wartość z kolumny Stawka. Jeśli zużyta ilość nie przekracza uwzględnionej ilości, ta kolumna nie zawiera żadnych opłat. |

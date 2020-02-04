@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c148351a4475bfdbee474a5e0951cc3b5717404e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995730"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>W jaki sposób jest stosowany rabat za wcześniejszy zakup usługi Azure Databricks
@@ -41,7 +41,7 @@ Aby określić użycie planu jednostek DBCU, w witrynie Azure Portal przejdź do
 
 ## <a name="how-discount-application-shows-in-usage-data"></a>Jak zastosowanie rabatu jest wyświetlane w danych dotyczących użycia
 
-Jeśli do Twojego użycia usługi Databricks jest stosowany rabat za wcześniejszy zakup, w danych dotyczących użycia są wyświetlane zerowe opłaty za użycie na żądanie. Aby uzyskać więcej informacji o kosztach i użyciu rezerwacji, zobacz temat [Get Enterprise Agreement reservation costs and usage](understand-reserved-instance-usage-ea.md) (Pobieranie kosztów i użycia rezerwacji w ramach umowy Enterprise Agreement).
+Jeśli do Twojego użycia usługi Databricks jest stosowany rabat za wcześniejszy zakup, w danych dotyczących użycia są wyświetlane zerowe opłaty za użycie na żądanie. Aby uzyskać więcej informacji na temat kosztów i użycia wystąpień zarezerwowanych, zobacz [Pobieranie kosztów i użycia wystąpień zarezerwowanych w ramach umowy Enterprise Agreement](understand-reserved-instance-usage-ea.md).
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
@@ -51,8 +51,8 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 - Aby dowiedzieć się, jak zarządzać wystąpieniem zarezerwowanym, zobacz [Zarządzanie rejestracjami platformy Azure](manage-reserved-vm-instance.md).
 - Aby dowiedzieć się więcej na temat oszczędności związanych z wcześniejszym zakupem usługi Azure Databricks, zobacz [Optymalizowanie kosztów usługi Azure Databricks dzięki wcześniejszemu zakupowi](prepay-databricks-reserved-capacity.md).
-- Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
-  - [Co to jest Azure Reservations?](save-compute-costs-reservations.md)
-  - [Zarządzanie rezerwacjami na platformie Azure](manage-reserved-vm-instance.md)
+- Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+  - [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
+  - [Zarządzanie rejestracjami platformy Azure](manage-reserved-vm-instance.md)
   - [Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem](understand-reserved-instance-usage.md)
   - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](understand-reserved-instance-usage-ea.md)

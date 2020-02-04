@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: a67f2985e2db8c48d7e50a91d20c76b88c1c55e6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991921"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Łączenie identyfikatora partnera z kontami platformy Azure
@@ -28,11 +28,11 @@ Partnerzy firmy Microsoft oferują usługi, które pomagają klientom osiągać 
 
 Przed połączeniem identyfikatora partnera klient musi zapewnić dostęp do swoich zasobów platformy Azure, korzystając z jednego z następujących rozwiązań:
 
-- **Gość**: Klient może dodać Cię jako użytkownika-gościa i przypisać role kontroli dostępu opartej na ROLACH (RBAC). Aby uzyskać więcej informacji, zobacz temat [Add guest users from another directory](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (Dodawanie użytkowników-gości z innego katalogu).
+- **Użytkownik-gość**: Klient może dodać Cię jako użytkownika-gościa i przypisać role kontroli dostępu na podstawie ról (RBAC). Aby uzyskać więcej informacji, zobacz temat [Add guest users from another directory](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (Dodawanie użytkowników-gości z innego katalogu).
 
-- **Konto katalogu**: Klient może utworzyć konto użytkownika w swoim własnym katalogu i przypisać dowolną rolę RBAC.
+- **Konto katalogu**: Klient może utworzyć dla Ciebie konto użytkownika w swoim własnym katalogu i przypisać dowolną rolę RBAC.
 
-- Nazwa **główna usługi**: Klient może dodać aplikację lub skrypt z organizacji w swoim katalogu i przypisać dowolną rolę RBAC. Tożsamość aplikacji lub skryptu jest znana jako nazwa główna usługi.
+- **Jednostka usługi**: Klient może dodać aplikację lub skrypt z organizacji w swoim katalogu i przypisać dowolną rolę RBAC. Tożsamość aplikacji lub skryptu jest znana jako nazwa główna usługi.
 
 ## <a name="link-to-a-partner-id"></a>Łączenie z identyfikatorem partnera
 
@@ -89,7 +89,7 @@ C:\> remove-AzManagementPartner -PartnerId 12345
     C:\ az extension add --name managementpartner
     ```
 
-2. Zaloguj się do dzierżawy klienta przy użyciu konta użytkownika lub nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz temat [Logowanie się za pomocą interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+2. Zaloguj się do dzierżawy klienta, używając konta użytkownika lub nazwy głównej usługi. Aby uzyskać więcej informacji, zobacz temat [Logowanie się za pomocą interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>

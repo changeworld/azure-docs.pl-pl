@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 7555fc490804a847e61a46f194e77c62f0a985d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989750"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Terminy na fakturze za umowę partnerską firmy Microsoft
@@ -36,7 +36,7 @@ Faktury są wystawiane co miesiąc. Opłaty naliczane od końca okresu rozliczen
 
 <!-- add screenshot -->
 
-| Okres obowiązywania Umowy | Opis |
+| Okres | Opis |
 | --- | --- |
 | Sprzedano dla |Adres podmiotu prawnego, wyświetlany we właściwościach konta rozliczeniowego|
 | Rachunek dla |Adres do rozliczeń w profilu rozliczeniowym, do którego jest wysyłana faktura, wyświetlany we właściwościach tego profilu|
@@ -52,7 +52,7 @@ Sekcja **Podsumowanie rozliczeń** zawiera opłaty naliczone od poprzedniego okr
 
 <!-- add screenshot -->
 
-| Okres obowiązywania Umowy | Opis |
+| Okres | Opis |
 | --- | --- |
 | Opłaty|Łączna kwota opłat naliczonych na rzecz firmy Microsoft dla tego profilu rozliczeniowego od ostatniego okresu rozliczeniowego |
 | Środki |Środki otrzymane ze zwrotów |

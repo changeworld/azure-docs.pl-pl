@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: ae33d320213cc526710845e78c23a83143a73771
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989906"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure
 
 Aby ułatwić zarządzanie użyciem i wydatkami w organizacji, klienci platformy Azure z umową Enterprise Agreement (EA) mogą przypisywać pięć odrębnych ról administracyjnych:
 
-- Administratora przedsiębiorstwa
+- Administrator przedsiębiorstwa
 - Administrator przedsiębiorstwa (tylko odczyt)
 - Administrator działu
 - Administrator działu (tylko odczyt)
@@ -38,10 +38,10 @@ W poniższych sekcjach opisano ograniczenia i możliwości poszczególnych ról.
 
 |Rola| Limit użytkowników|
 |---|---|
-|Administratora przedsiębiorstwa|Bez ograniczeń|
-|Administrator przedsiębiorstwa (tylko odczyt)|Bez ograniczeń|
-|Administrator działu|Bez ograniczeń|
-|Administrator działu (tylko odczyt)|Bez ograniczeń|
+|Administratora przedsiębiorstwa|Nieograniczona liczba|
+|Administrator przedsiębiorstwa (tylko odczyt)|Nieograniczona liczba|
+|Administrator działu|Nieograniczona liczba|
+|Administrator działu (tylko odczyt)|Nieograniczona liczba|
 |Właściciel konta|1 na konto<sup>1</sup>|
 
 <sup>1</sup> Każde konto wymaga unikatowego konta Microsoft lub konta służbowego.

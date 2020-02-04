@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a1cbbbcb110e9943f9714d9f6463c01b408fc1d7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993052"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Zmienianie informacji o profilu na koncie platformy Azure
@@ -76,7 +76,7 @@ Kontaktowy adres e-mail można zmienić, korzystając z jednej z następujących
 
 * Przejdź do obszaru [Informacje kontaktowe](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) w witrynie Azure Portal i wprowadź adres e-mail. Na podany adres będą wysyłane wiadomości dotyczące usług i komunikaty marketingowe. Adres e-mail w profilu w Centrum konta platformy Azure zostanie zaktualizowany automatycznie. Zaktualizowanie adresu e-mail w profilu nie spowoduje aktualizacji Twojego adresu e-mail logowania.
 
-* W witrynie [Azure Portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) wybierz ikonę z Twoimi inicjałami lub zdjęciem. Następnie wybierz menu kontekstowe ( **...** ). Następnie wybierz pozycję **moje informacje kontaktowe** z menu, a następnie wprowadź adres e-mail. Na podany adres będą wysyłane wiadomości dotyczące usług i komunikaty marketingowe. Adres e-mail w profilu w Centrum konta platformy Azure zostanie zaktualizowany automatycznie. Zaktualizowanie adresu e-mail w profilu nie spowoduje aktualizacji Twojego adresu e-mail logowania.
+* W witrynie [Azure Portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) wybierz ikonę z Twoimi inicjałami lub zdjęciem. Wybierz menu kontekstowe ( **...** ). Następnie wybierz pozycję **Moje informacje kontaktowe** z menu i wprowadź adres e-mail. Na podany adres będą wysyłane wiadomości dotyczące usług i komunikaty marketingowe. Adres e-mail w profilu w Centrum konta platformy Azure zostanie zaktualizowany automatycznie. Zaktualizowanie adresu e-mail w profilu nie spowoduje aktualizacji Twojego adresu e-mail logowania.
 
 ![Przykład aktualizacji adresu e-mail na platformie Azure](./media/change-azure-account-profile/azure-contact-information.png)
 

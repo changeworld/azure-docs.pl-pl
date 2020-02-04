@@ -1,5 +1,5 @@
 ---
-title: Zadania EA w umowie klienta firmy Microsoft — Azure
+title: Zadania umowy EA w umowie klienta firmy Microsoft — Azure
 description: Dowiedz się, jak wykonywać zadania umowy Enterprise Agreement na nowym koncie rozliczeniowym.
 author: amberbhargava
 manager: amberb
@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: 0cdf95b8d91938d6b9b4de413bc5d5dcb8caa2f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991245"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Wykonywanie zadań umowy Enterprise Agreement na koncie rozliczeniowym dla umowy klienta firmy Microsoft
@@ -29,9 +29,9 @@ Na poniższym schemacie pokazano organizację rozliczeń w ramach nowego konta r
 
 ![Obraz elementu ea-mca-post-transition-hierarchy](./media/mca-enterprise-operations/mca-post-transition-hierarchy.png)
 
-| Umowa Enterprise   | Umowa klienta firmy Microsoft    |
+| Enterprise Agreement   | Umowa klienta firmy Microsoft    |
 |------------------------|--------------------------------------------------------|
-| Rejestrowanie            | Profil rozliczeniowy służy do zarządzania rozliczeniami w organizacji, podobnie jak w przypadku rejestracji umowy Enterprise Agreement. Administratorzy przedsiębiorstwa stają się właścicielami profilu rozliczeniowego. Aby dowiedzieć się więcej o profilach rozliczeniowych, zobacz [Omówienie profilów rozliczeniowych](../understand/mca-overview.md#billing-profiles).
+| Rejestracja            | Profil rozliczeniowy służy do zarządzania rozliczeniami w organizacji, podobnie jak w przypadku rejestracji umowy Enterprise Agreement. Administratorzy przedsiębiorstwa stają się właścicielami profilu rozliczeniowego. Aby dowiedzieć się więcej o profilach rozliczeniowych, zobacz [Omówienie profilów rozliczeniowych](../understand/mca-overview.md#billing-profiles).
 | Dział            | Sekcja faktur służy do organizowania kosztów, podobnie jak w przypadku działów w rejestracji umowy Enterprise Agreement. Działy stają się sekcjami faktur, a administratorzy działów stają się właścicielami odpowiednich sekcji faktur. Aby dowiedzieć się więcej na temat sekcji faktur, zobacz [Omówienie sekcji faktur](../understand/mca-overview.md#invoice-sections). |
 | Konto               | Konta utworzone w ramach umowy Enterprise Agreement nie są obsługiwane na nowym koncie rozliczeniowym. Subskrypcje konta należą do sekcji faktur odpowiedniej dla ich działu. Właściciele konta mogą tworzyć subskrypcje dla swoich sekcji faktur i zarządzać nimi. |
 
@@ -88,7 +88,7 @@ Aby dowiedzieć się, jak zapewnić dostęp do profilu rozliczeniowego, zobacz [
 
 Po utworzeniu sekcji faktury można organizować koszty zgodnie z potrzebami, podobnie jak w przypadku działów w rejestracji umowy Enterprise Agreement. Nową sekcję faktury można utworzyć w witrynie Azure Portal. Aby dowiedzieć się więcej, zobacz [Tworzenie sekcji na fakturze w celu organizacji kosztów](mca-section-invoice.md).
 
-### <a name="create-a-new-account"></a>Utwórz nowe konto
+### <a name="create-a-new-account"></a>Tworzenie nowego konta
 
 Przypisując użytkownikom rolę twórcy subskrypcji platformy Azure w sekcjach faktury, można nadawać im uprawnienie do tworzenia subskrypcji platformy Azure, podobnie jak w przypadku kont utworzonych w ramach rejestracji umowy Enterprise Agreement. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [Zarządzanie rolami rozliczeniowymi w witrynie Azure Portal](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 

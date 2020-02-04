@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: c5068dc38597d64634f19297fa7784de8d55d590
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992558"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobieranie lub wyświetlanie faktury rozliczeniowej i danych dziennego użycia platformy Azure
@@ -119,7 +119,7 @@ Jeśli masz umowę klienta firmy Microsoft, możesz wyrazić zgodę na otrzymywa
 
 ### <a name="opt-out-of-getting-your-billing-profile-invoices-in-email"></a>Rezygnacja z otrzymywania faktur dla profilu rozliczeniowego w wiadomości e-mail
 
-Możesz zrezygnować z pobierania faktury pocztą e-mail, wykonując kroki opisane powyżej, a następnie klikając pozycję **Zrezygnuj**. Wszyscy właściciele, współautorzy, czytelnicy i menedżerowie faktury nie będą mogli otrzymywać faktur pocztą e-mail. Czytelnicy nie mogą zmieniać preferencji wysyłania faktur za pomocą poczty e-mail.
+Możesz zrezygnować z otrzymywania faktur za pomocą poczty e-mail, wykonując powyższe kroki i klikając pozycję **Zrezygnuj**. Rezygnacja z otrzymywania faktur w wiadomości e-mail obejmie także wszystkich właścicieli, współautorów, czytelników i menedżerów faktur. Czytelnicy nie mogą zmieniać preferencji wysyłania faktur za pomocą poczty e-mail.
 
 ## <a name="download-usage-in-azure-portal"></a>Pobieranie danych użycia w witrynie Azure Portal
 
@@ -139,7 +139,7 @@ Możesz zrezygnować z pobierania faktury pocztą e-mail, wykonując kroki opisa
 
 Aby przeglądać dane użycia jako klient z umową EA i pobierać je, musisz być administratorem przedsiębiorstwa, właścicielem konta lub administratorem działu z włączonymi zasadami wyświetlania opłat.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wyszukaj pozycję *Zarządzanie kosztami i rozliczenia*.
 
     ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)

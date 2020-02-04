@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: banders
 ms.openlocfilehash: f7382fc81bbb7e0f3ac61b19c1efa1e7de3e9ed7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995470"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>W jaki sposób rabat na rezerwacje jest stosowany do baz danych Azure SQL Database
@@ -37,13 +37,13 @@ Po wyłączeniu zasobu rabat za rezerwację automatycznie stosuje się do innego
 
 W poniższych przykładach pokazano, w jaki sposób rabat na pojemność zarezerwowaną usługi SQL Database jest stosowany w zależności od liczby zakupionych rdzeni oraz czasu ich działania.
 
-- Scenariusz 1: zakup zarezerwowanej pojemności SQL Database w przypadku 8-rdzeniowego SQL Database. Uruchomiono 16-rdzeniową bazę danych SQL Database, która pasuje do pozostałych atrybutów rezerwacji. Naliczono opłatę według stawki płatności zgodnie z rzeczywistym użyciem dla 8 rdzeni użycia zasobów obliczeniowych usługi SQL Database. Zastosowano rabat na rezerwację na jedną godzinę dla 8 rdzeni użycia zasobów obliczeniowych usługi SQL Database.
+- Scenariusz 1. Zakupiono pojemność zarezerwowaną usługi SQL Database dla 8-rdzeniowej bazy danych SQL Database. Uruchomiono 16-rdzeniową bazę danych SQL Database, która pasuje do pozostałych atrybutów rezerwacji. Naliczono opłatę według stawki płatności zgodnie z rzeczywistym użyciem dla 8 rdzeni użycia zasobów obliczeniowych usługi SQL Database. Zastosowano rabat na rezerwację na jedną godzinę dla 8 rdzeni użycia zasobów obliczeniowych usługi SQL Database.
 
 Na potrzeby pozostałych przykładów przyjęto założenie, że zakupiona pojemność zarezerwowana usługi SQL Database jest przeznaczona dla 16-rdzeniowej bazy danych SQL Database, a pozostałe atrybuty rezerwacji pasują do działających baz danych SQL Database.
 
-- Scenariusz 2. w ciągu jednej godziny uruchamiasz dwie bazy danych SQL z 8 rdzeniami. Rabat na rezerwację 16 rdzeni jest stosowany do użycia zasobów obliczeniowych dla obu 8-rdzeniowych baz danych SQL Database.
-- Scenariusz 3: uruchamianie 1 16 rdzeni SQL Database od 1 PM do 1:30 PM. Uruchomiono kolejną 16-rdzeniową bazę danych SQL Database od godziny 13:30 do 14:00. Obie te bazy danych są objęte rabatem na rezerwację.
-- Scenariusz 4: uruchamianie 1 16 rdzeni SQL Database od 1 PM do 1:45 PM. Uruchomiono kolejną 16-rdzeniową bazę danych SQL Database od godziny 13:30 do 14:00. Za 15-minutowy okres jednoczesnego działania obu baz danych jest naliczana opłata według stawek płatności zgodnie z rzeczywistym użyciem. Na użycie zasobów obliczeniowych przez resztę czasu jest stosowany rabat na rezerwację.
+- Scenariusz 2. Uruchomiono dwie 8-rdzeniowe bazy danych SQL Database na jedną godzinę. Rabat na rezerwację 16 rdzeni jest stosowany do użycia zasobów obliczeniowych dla obu 8-rdzeniowych baz danych SQL Database.
+- Scenariusz 3. Uruchomiono jedną 16-rdzeniową bazę danych SQL Database od godziny 13:00 do 13:30. Uruchomiono kolejną 16-rdzeniową bazę danych SQL Database od godziny 13:30 do 14:00. Obie te bazy danych są objęte rabatem na rezerwację.
+- Scenariusz 4. Uruchomiono jedną 16-rdzeniową bazę danych SQL Database od godziny 13:00 do 13:45. Uruchomiono kolejną 16-rdzeniową bazę danych SQL Database od godziny 13:30 do 14:00. Za 15-minutowy okres jednoczesnego działania obu baz danych jest naliczana opłata według stawek płatności zgodnie z rzeczywistym użyciem. Na użycie zasobów obliczeniowych przez resztę czasu jest stosowany rabat na rezerwację.
 
 Aby poznać zastosowanie swoich rezerwacji platformy Azure w raportach rozliczeń użycia i przejrzeć je, zobacz [Omówienie użycia rezerwacji platformy Azure](understand-reserved-instance-usage-ea.md).
 
@@ -53,9 +53,9 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
-- [Co to jest Azure Reservations?](save-compute-costs-reservations.md)
+- [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
 - [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../../sql-database/sql-database-reserved-capacity.md)
 - [Zarządzanie usługą Azure Reservations](manage-reserved-vm-instance.md)

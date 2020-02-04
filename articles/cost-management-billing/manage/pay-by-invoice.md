@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: banders
 ms.openlocfilehash: a0f012145788d2d1d4935e10691859e5aaf71255
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994339"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Płatność za subskrypcje platformy Azure przy użyciu faktury
@@ -25,23 +25,23 @@ Jeśli przełączysz się na płatność na podstawie faktury, konieczne będzie
 > [!IMPORTANT]
 > * Płatność na podstawie faktury (czekiem lub przelewem) jest dostępna tylko dla kont firmowych.
 > * Przed przełączeniem się na płatność na podstawie faktury musisz uregulować wszystkie zaległe opłaty.
-> * Obecnie płatność faktury nie jest obsługiwana w przypadku globalnej platformy Azure w Chinach.
+> * Obecnie płatność na podstawie faktury nie jest obsługiwana w przypadku globalnej platformy Azure w Chinach.
 
 ## <a name="request-to-pay-by-invoice"></a>Żądanie płatności na podstawie faktury
 
-1. Przejdź do [Azure Portal](https://portal.azure.com) , aby przesłać żądanie pomocy technicznej. Wyszukaj i wybierz pozycję **Pomoc i obsługa techniczna**.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com), aby przesłać żądanie obsługi. Wyszukaj i wybierz obszar **Pomoc i obsługa techniczna**.
 
-    ![Wyszukaj pomoc i pomoc techniczną, Microsoft Azure Portal](./media/pay-by-invoice/search-for-help-and-support.png)
+    ![Wyszukiwanie obszaru Pomoc i obsługa techniczna, witryna Microsoft Azure Portal](./media/pay-by-invoice/search-for-help-and-support.png)
 
 2. Wybierz pozycję **Nowe żądanie obsługi**.
 
-    ![Nowe łącze żądania obsługi, ekran Pomoc i obsługa techniczna, Microsoft Azure Portal](./media/pay-by-invoice/help-and-support.png)
+    ![Link Nowe żądanie obsługi, ekran Pomoc i obsługa techniczna, witryna Microsoft Azure Portal](./media/pay-by-invoice/help-and-support.png)
 
 2. W kategorii **Typ problemu** wybierz **Rozliczenia**. *Typ problemu* to kategoria żądania pomocy technicznej. Wybierz subskrypcję, która ma być opłacana za pomocą faktury, wybierz plan pomocy technicznej, a następnie pozycję **Dalej**.
 
 3. W kategorii **Typ problemu** wybierz **Płatność**. *Typ problemu* to podkategoria żądania pomocy technicznej.
 
-4. Wybierz pozycję **Przełącz na płatność według faktury** jako **podtyp problemu**.
+4. W kategorii **Podtyp problemu** wybierz pozycję **Przełączenie na płatność według faktury**.
 
 5. Wprowadź następujące informacje w polu **Szczegóły**, a następnie wybierz przycisk **Dalej**.
 
@@ -71,7 +71,7 @@ Jeśli przełączysz się na płatność na podstawie faktury, konieczne będzie
     - Informacje w polach **Nazwa firmy** i **Adres firmy** powinny być zgodne z informacjami podanymi dla konta platformy Azure. Aby wyświetlić lub zaktualizować informacje, zobacz [Zmiana informacji o profilu konta platformy Azure](change-azure-account-profile.md).
     - Przed zatwierdzeniem limitu kredytowego dodaj informacje kontaktowe dotyczące rozliczeń w witrynie Azure Portal. Szczegóły kontaktu powinny być powiązane z księgowością lub działem finansów firmy. Aby zaktualizować informacje kontaktowe dotyczące rozliczeń, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Profile).
 
-6. Sprawdź informacje kontaktowe i preferowaną metodę kontaktu, a następnie wybierz pozycję **Utwórz**.
+6. Zweryfikuj informacje kontaktowe i preferowaną metodę kontaktu, a następnie wybierz pozycję **Utwórz**.
 
 Jeśli konieczne jest sprawdzenie zdolności kredytowej z powodu wymaganej kwoty kredytu, wyślemy Ci odpowiedni wniosek.
 
@@ -85,33 +85,33 @@ Jeśli masz konto programu Microsoft Online Services, możesz przełączyć swoj
 
 Postępuj zgodnie z poniższymi instrukcjami, aby przełączyć subskrypcję platformy Azure na płatność na podstawie fakturę (czekiem lub przelewem). *Po przełączeniu na płatność na podstawie faktury (czekiem lub przelewem) nie można wrócić do płatności za pomocą karty kredytowej*.
 
-1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zalogować się jako administrator konta. Wyszukaj i wybierz pozycję **Cost Management + rozliczenia**.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com), aby zalogować się jako administrator konta. Wyszukaj i wybierz obszar **Zarządzanie kosztami i rozliczenia**.
 
-    ![Wyszukaj Cost Management i rozliczenia, Microsoft Azure Portal](./media/pay-by-invoice/search.png)
+    ![Wyszukiwanie obszaru Zarządzanie kosztami i rozliczenia, witryna Microsoft Azure Portal](./media/pay-by-invoice/search.png)
 
 1. Wybierz subskrypcję, którą chcesz przełączyć do płatności na podstawie faktury.
 1. Wybierz pozycję **Formy płatności**.
-1. Na pasku poleceń wybierz przycisk **płatność według faktury** .
+1. Na pasku poleceń wybierz przycisk **Płać na podstawie faktury**.
 
-    ![Przycisk płatność według faktury, formy płatności, Microsoft Azure Portal](./media/pay-by-invoice/pay-by-invoice.png)
+    ![Przycisk Płatność na podstawie faktury, Formy płatności, witryna Microsoft Azure Portal](./media/pay-by-invoice/pay-by-invoice.png)
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>Przełączanie profilu rozliczeniowego na płatność czekiem lub przelewem
 
 Postępuj zgodnie z poniższymi instrukcjami, aby przełączyć profil rozliczeniowy na płatność czekiem lub przelewem. Aby zmienić domyślną formę płatności profilu rozliczeniowego, musisz być osobą zarejestrowaną na platformie Azure.
 
-1. Przejdź do [Azure Portal](https://portal.azure.com) Wyświetl informacje o rozliczeniach. Wyszukaj i wybierz pozycję **Cost Management + rozliczenia**.
-1. Z menu wybierz pozycję **Profile rozliczeń**.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com), aby wyświetlić informacje o rozliczeniach. Wyszukaj i wybierz obszar **Zarządzanie kosztami i rozliczenia**.
+1. W menu wybierz pozycję **Profile rozliczeniowe**.
 
-    ![Elementy menu Profile rozliczeń, Cost Management i rozliczeń, Microsoft Azure Portal](./media/pay-by-invoice/billing-profile.png)
+    ![Element menu Profile rozliczeniowe, Zarządzanie kosztami i rozliczenia, witryna Microsoft Azure Portal](./media/pay-by-invoice/billing-profile.png)
 
 1. Wybierz profil rozliczeniowy.
-1. W menu **profil rozliczeń** wybierz pozycję **formy płatności**.
+1. W menu **Profil rozliczeniowy** wybierz pozycję **Formy płatności**.
 
-   ![Element menu formy płatności, profile rozliczeń, Cost Management, Microsoft Azure Portal](./media/pay-by-invoice/billing-profile-payment-methods.png)
+   ![Element menu Formy płatności, Profile rozliczeniowe, Zarządzanie kosztami, witryna Microsoft Azure Portal](./media/pay-by-invoice/billing-profile-payment-methods.png)
 
-1. Wybierz transparent informujący o tym, że kwalifikujesz się do płacenia za transfer/przelew.
+1. Wybierz baner z informacją o uprawnieniu do płatności czekiem lub przelewem.
 
-    ![Transparent do przełączania do opcji Check/Wire, form płatności, Microsoft Azure Portal](./media/pay-by-invoice/customer-led-switch-to-invoice.png)
+    ![Baner do przełączania na opcję płatności czekiem lub przelewem, Formy płatności, witryna Microsoft Azure Portal](./media/pay-by-invoice/customer-led-switch-to-invoice.png)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

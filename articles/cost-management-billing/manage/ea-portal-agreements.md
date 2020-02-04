@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: d748be3a304222831a55bb9319a04fba1e28e955
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992363"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Umowy EA platformy Azure i poprawki
@@ -72,16 +72,16 @@ Firma Microsoft nie będzie mieć dostępu do podanego narzutu ani skojarzonych 
 
 ### <a name="how-the-calculation-works"></a>W jaki sposób są wykonywane obliczenia
 
-Dostawca rozwiązań licencjonowania udostępnia pojedynczą procentową liczbę w witrynie EA Portal.  Wszystkie informacje komercyjne w portalu zostaną podniesione przez wartość procentową zapewnioną przez dostawcę. Przykład:
+Dostawca rozwiązań licencjonowania udostępnia pojedynczą procentową liczbę w witrynie EA Portal.  Wszystkie informacje handlowe dostępne w portalu zostaną podniesione o wartość procentową określoną przez dostawcę LSP. Przykład:
 
 - Klient podpisuje umowę EA z zobowiązaniami pieniężnymi w kwocie 100 000 USD.
 - Stawka miernika dla usługi A wynosi 10 USD/godzinę.
 - W witrynie EA Portal dostawca rozwiązań licencjonowania ustawia narzut w wysokości 10%.
 - W poniższym przykładzie przedstawiono sposób, w jaki klient zobaczy informacje handlowe:
-    - Saldo pieniężne: USD 110 000.
-    - Stawka miernika dla usługi A: 11 USD/godzinę.
-    - Informacje o użyciu/hostingu usługi A używane przez 100 godzin: USD 1 100.
-    - Saldo pieniężne dostępne dla klienta po rozliczeniu za usługę w wysokości: USD 108 900.
+    - Saldo środków pieniężnych: 110 000 USD.
+    - Stawka miernika dla usługi A: 11 USD/godzinę.
+    - Informacje o użyciu/hostingu usługi A za 100 godzin: 1100 USD.
+    - Saldo środków pieniężnych dostępne dla klienta po odliczeniu użycia usługi A: 108 900 USD.
 
 ### <a name="when-to-use-a-markup"></a>Kiedy korzystać z narzutu
 
@@ -101,14 +101,14 @@ Pamiętaj, aby przejrzeć informacje handlowe — informacje o saldzie środków
 
 ### <a name="how-to-add-a-price-markup"></a>Jak dodać narzut na cenę
 
-**Krok jeden: Dodawanie znaczników cen**
+**Krok pierwszy: Dodawanie narzutu na cenę**
 
 1. W witrynie Enterprise Portal kliknij pozycję **Raporty** w obszarze nawigacji po lewej.
 1. W obszarze _Podsumowanie użycia_ kliknij niebieskie słowo **Narzut**.
 1. Wprowadź wartość procentową narzutu (od -100 do 100), a następnie kliknij pozycję **Podgląd**.
 
 
-**Krok 2: przegląd i weryfikacja**
+**Krok drugi: Przegląd i sprawdzanie poprawności**
 
 Przejrzyj ceny z narzutem w obszarze _Podsumowanie użycia_ dla terminu zobowiązania w widoku klienta. Cena firmy Microsoft będzie nadal dostępna w widoku partnera. Widoki można przełączać za pomocą przełącznika „osoby” narzutu partnera w prawym górnym rogu.
 
@@ -116,7 +116,7 @@ Przejrzyj ceny z narzutem w obszarze _Podsumowanie użycia_ dla terminu zobowią
 1. Przed opublikowaniem można wprowadzać zmiany, wybierając pozycję **Edytuj** na karcie _Wyświetl podsumowanie użycia > Widok klienta_.  
   Ta sama wartość procentowa narzutu zostanie naliczona zarówno dla cen usług, jak i salda zobowiązań. Nie używaj tej funkcji, jeśli masz różne wartości procentowe dla salda środków pieniężnych i stawek mierników lub różne wartości procentowe dla różnych usług.
 
-**Krok 3. publikowanie**
+**Krok trzeci: Publikowanie**
 
 Po przejrzeniu i sprawdzeniu poprawności cen kliknij pozycję **Publikuj**.
   
@@ -124,7 +124,7 @@ Cennik z narzutem będzie dostępny dla administratorów przedsiębiorstw natych
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>Które rejestracje mają włączoną funkcję narzutu?
 
-Aby sprawdzić, czy rejestracja ma opublikowaną adiustację, kliknij przycisk **Zarządzaj** w lewym obszarze nawigacji, a następnie kliknij kartę **rejestracja** . Wybierz pole Rejestracja do sprawdzenia i Wyświetl stan znacznika w obszarze _szczegóły rejestracji_. Spowoduje to wyświetlenie bieżącego stanu funkcji narzutu dla tej umowy EA. Możliwe wartości to Wyłączone, Podgląd i Opublikowane.
+Aby sprawdzić, czy rejestracja ma opublikowany narzut, kliknij pozycję **Zarządzaj** na lewym pasku nawigacji, a następnie kliknij kartę **Rejestracja**. Zaznacz pole wyboru rejestracji, aby sprawdzić i wyświetlić stan narzutu w obszarze _Szczegóły rejestracji_. Spowoduje to wyświetlenie bieżącego stanu funkcji narzutu dla tej umowy EA. Możliwe wartości to Wyłączone, Podgląd i Opublikowane.
 
 ### <a name="how-can-the-customer-download-usage-estimates"></a>Jak klient może pobrać szacunkowe wartości użycia?
 
@@ -144,7 +144,7 @@ Partnerzy mogą korzystać z funkcji narzutu (w witrynie Azure EA) po przetworze
 | Wystąpienia obliczeniowe platformy Microsoft Azure — maszyny wirtualne w wersji 2 | EA: 350 rdzeni | Ogólnie dostępne maszyny wirtualne IaaS w wersji 2:<ul><li> Rodzina A0\_A7 — 350 rdzeni </li><li> Rodzina B\_A0\_A4 — 350 rdzeni </li><li> Rodzina A8\_A9 — 350 rdzeni </li><li> Rodzina DF — 350 rdzeni</li><li> GF — 350 rdzeni </li></ul>|
 | Usługi hostowane na platformie Microsoft Azure | 6 hostowanych usług | Tego limitu usług hostowanych nie można zwiększyć powyżej sześciu w przypadku pojedynczej subskrypcji. Jeśli potrzebujesz dodatkowych usług hostowanych, dodaj kolejne subskrypcje. |
 | Microsoft Azure Storage | 5 kont magazynu, każde o maksymalnym rozmiarze 100 TB. | Można zwiększyć liczbę kont magazynu do maksymalnie 20 na subskrypcję. Jeśli potrzebujesz dodatkowych kont magazynu, dodaj kolejne subskrypcje. |
-| SQL Azure | 149 baz danych dowolnego typu (tj. Web Edition lub Business Edition). |   |
+| Usługi SQL Azure | 149 baz danych dowolnego typu (tj. Web Edition lub Business Edition). |   |
 | Kontrola dostępu | 50 przestrzeni nazw na konto. 100 milionów transakcji kontroli dostępu na miesiąc |   |
 | Service Bus | 50 przestrzeni nazw na konto. 40 połączeń usługi Service Bus | Klienci, którzy kupują połączenia usługi Service Bus za pośrednictwem pakietów połączeń, będą mieć limity przydziału równe punktowi środkowemu między zakupionym pakietem połączeń a następną najwyższą wartością pakietu połączeń. Klienci, którzy wybiorą pakiet 500, będą mieli limit przydziału równy 750. |
 
@@ -211,7 +211,7 @@ Administratorzy przedsiębiorstwa mogą dodawać nowych właścicieli kont, koja
 1. Podaj przyjazną nazwę, której chcesz używać do identyfikowania tego konta na potrzeby raportowania.
 1. Wprowadź adres e-mail właściciela konta, który ma zostać skojarzony z nowym kontem.
 1. Potwierdź adres e-mail, który ma zostać skojarzony z nowym kontem.
-1. Kliknij pozycję **Dodaj**.
+1. Kliknij pozycję **Add** (Dodaj).
 1. Możesz dodać kolejne konto, klikając pozycję **Dodaj kolejne konto** lub klikając przycisk **Dodaj** w prawym dolnym rogu na lewym pasku narzędzi.
 1. Teraz właściciel konta może się zalogować, aby dodać odpowiednie subskrypcje w celu aprowizacji jednostek SKU planu
 
@@ -222,13 +222,13 @@ Administratorzy przedsiębiorstwa mogą dodawać nowych właścicieli kont, koja
 1. Kliknij pozycję **+ Dodaj konto**. Wprowadź konto Microsoft lub konto służbowe skojarzone z istniejącym kontem.
 1. Potwierdź konto Microsoft lub konto służbowe skojarzone z istniejącym kontem.
 1. Podaj nazwę, której chcesz używać do identyfikowania tego konta na potrzeby raportowania.
-1. Kliknij pozycję **Dodaj**.
+1. Kliknij pozycję **Add** (Dodaj).
 1. Możesz dodać kolejne konto, wybierając ponownie opcję **+ Dodaj konto**, lub wrócić do strony głównej, wybierając przycisk **Administrator**.  
 1. Jeśli klikniesz, aby wyświetlić stronę konta, nowo dodane konto zostanie wyświetlone w stanie „Oczekiwanie”. Jego stan zmieni się na „Aktywny” po pierwszym zalogowaniu się właściciela konta do witryny EA Portal.
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Tworzenie nowych subskrypcji przez istniejących lub nowych właścicieli kont
 
-**Krok 1: Logowanie do konta**
+**Krok pierwszy: Logowanie się do konta**
 1. W witrynie EA Portal wybierz kartę **Zarządzanie** i przejdź do pozycji **Subskrypcja** w górnym menu.
 1. Sprawdź fakt zalogowania jako właściciel konta.
 1. Kliknij pozycję **+Dodaj subskrypcję**.
@@ -238,7 +238,7 @@ Przy pierwszym dodawaniu subskrypcji do konta konieczne będzie podanie swoich i
 
 Przy pierwszym dodawaniu subskrypcji do konta zostanie wyświetlona prośba o zaakceptowanie umowy MOSA oraz planu taryfowego. Te sekcje NIE mają zastosowania do klientów posiadających umowę Enterprise Agreement, ale są obecnie niezbędne do aprowizacji Twojej subskrypcji. Poprawka do rejestracji umowy Microsoft Azure Enterprise zastępuje powyższe elementy, a Twoja relacja umowna nie ulegnie zmianie. Zaznacz pole wyboru oznaczające zaakceptowanie warunków.
 
-**Krok 2: Aktualizacja nazwy subskrypcji**
+**Krok drugi: Aktualizowanie nazwy subskrypcji**
 
 Wszystkie nowe subskrypcje zostaną dodane z domyślną nazwą subskrypcji „Microsoft Azure Enterprise”. Ważne jest, aby zaktualizować nazwę subskrypcji w celu odróżnienia jej od innych subskrypcji w ramach rejestracji przedsiębiorstwa i upewnić się, że można ją rozpoznać w raportach na poziomie przedsiębiorstwa.
 
@@ -259,11 +259,11 @@ Gdy nowi właściciele konta są po raz pierwszy dodawani do rejestracji, ich st
 
 Ten scenariusz występuje, gdy klient wdrożył usługi, korzystając z niewłaściwego numeru rejestracji, lub wybrał niewłaściwe usługi.
 
-Aby się upewnić, czy wdrożenie nastąpiło w ramach właściwej rejestracji, możesz sprawdzić informacje o uwzględnionych jednostkach za pośrednictwem arkusza cen. Zaloguj się jako administrator przedsiębiorstwa, a następnie kliknij pozycję **raporty** na lewym pasku nawigacyjnym, a następnie wybierz pozycję Karta **arkusza cen** . Kliknij ikonę pobierania w prawym górnym rogu i Znajdź odpowiednie numery części planu jednostki SKU z filtrem w kolumnie "uwzględniona ilość" i wybierz wartości większe niż "0".
+Aby się upewnić, czy wdrożenie nastąpiło w ramach właściwej rejestracji, możesz sprawdzić informacje o uwzględnionych jednostkach za pośrednictwem arkusza cen. Zaloguj się jako administrator przedsiębiorstwa i kliknij pozycję **Raporty** na lewym pasku nawigacyjnym, a następnie wybierz kartę **Arkusz cen**. Kliknij ikonę pobierania w prawym górnym rogu i znajdź odpowiednie numery części jednostek SKU planu, korzystając z filtru w kolumnie „Uwzględniona ilość”, i wybierz wartości większe niż „0”.
 
 Upewnij się, że plan pakietu OMS jest wyświetlany w arkuszu cen w obszarze uwzględnionych jednostek. Jeśli w rejestracji nie ma uwzględnionych jednostek dla planu pakietu OMS, być może Twój plan znajduje się w innej rejestracji. Skontaktuj się z pomocą techniczną witryny Azure Enterprise Portal pod adresem [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
 
-Jeśli uwzględnione jednostki usług w arkuszu cen nie pasują do wdrożonych elementów, np. Operational Insights dane w warstwie Premium przeanalizowane i Operational Insights dane standardowe przeanalizowane, oznacza to, że możesz mieć wdrożone usługi, które nie są objęte planem. Skontaktuj się z pomocą techniczną platformy Azure Enterprise Portal w [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) , aby pomóc nam dalej.
+Jeśli uwzględnione jednostki usług w arkuszu cen nie pasują do wdrożonych elementów, np. Przeanalizowane dane (warstwa Premium) usługi Operational Insights i Przeanalizowane dane (warstwa Standardowa) usługi Operational Insights, oznacza to, że być może wdrożono usługi, które nie są objęte planem. Skontaktuj się z pomocą techniczną witryny Azure Enterprise Portal pod adresem [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport), aby uzyskać dalszą pomoc.
 
 **Aprowizowane usługi w ramach jednostek SKU planu znajdują się w niewłaściwej rejestracji**
 
@@ -272,4 +272,4 @@ Jeśli masz wiele rejestracji i wdrożono usługi, korzystając z niewłaściweg
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się, jak rozpocząć korzystanie z witryny Azure EA Portal, zobacz [Wprowadzenie do witryny Azure EA Portal](ea-portal-get-started.md).
-- Administratorzy portalu EA platformy Azure powinni przeczytać artykuł [Administracja portalu Azure EA](ea-portal-administration.md), aby poznać typowe zadania administracyjne.
+- Administratorzy witryny Azure EA Portal powinni przeczytać artykuł [Administracja w witrynie Azure EA Portal](ea-portal-administration.md), aby poznać typowe zadania administracyjne.

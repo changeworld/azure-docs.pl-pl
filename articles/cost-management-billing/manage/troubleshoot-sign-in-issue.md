@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: 74cf3f197895823bcbd94db0bf3c7bd8065df767
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988138"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Rozwiązywanie problemów z logowaniem w przypadku subskrypcji platformy Azure
@@ -26,15 +26,15 @@ Ten przewodnik pomaga w rozwiązywaniu problemów, gdy nie można zalogować si�
 
 ## <a name="issues"></a>Problemy
 
-### <a name="page-hangs-in-the-loading-status"></a>Strona zawiesza się podczas ładowania
+### <a name="page-hangs-in-the-loading-status"></a>Strona zawiesza się w stanie ładowania
 
-Jeśli strona przeglądarki internetowej się zawiesza, spróbuj wykonać każdą z następujących czynności do czasu, gdy uda się przejść do witryny Azure Portal.
+Jeśli strona przeglądarki internetowej się zawiesza, spróbuj wykonać każdą z następujących czynności, aż uda się przejść do witryny Azure Portal.
 
 - Odśwież stronę.
 - Użyj innej przeglądarki internetowej.
-- Użyj prywatnego trybu przeglądania w przeglądarce. W przypadku programu Internet Explorer: kliknij kolejno pozycje **narzędzia** > **bezpieczeństwo** > **przeglądania w trybie InPrivate**, a następnie Przeglądaj i zaloguj się [Azure Portal](https://portal.azure.com/) do [centrum konta platformy Azure](https://account.azure.com/Subscriptions).
+- Użyj prywatnego trybu przeglądania w przeglądarce. W programie Internet Explorer: Kliknij kolejno pozycje **Narzędzia** > **Bezpieczeństwo** > **Przeglądanie InPrivate**, a następnie przejdź do witryny [Azure Portal](https://portal.azure.com/) lub [Centrum konta platformy Azure](https://account.azure.com/Subscriptions) i zaloguj się.
 
-### <a name="you-are-automatically-signed-in-as-a-different-user"></a>Następuje automatyczne zalogowanie Ciebie jako innego użytkownika
+### <a name="you-are-automatically-signed-in-as-a-different-user"></a>Użytkownik jest automatycznie logowany jako inny użytkownik
 
 Ten problem może wystąpić, jeśli w przeglądarce internetowej używasz więcej niż jednego konta użytkownika.
 
@@ -42,22 +42,22 @@ Aby rozwiązać ten problem, wypróbuj jedną z poniższych metod:
 
 - Wyczyść pamięć podręczną i usuń internetowe pliki cookie. W programie Internet Explorer kliknij kolejno pozycje **Narzędzia** > **Opcje internetowe** > **Usuń**. Upewnij się, że zaznaczone są pola wyboru plików tymczasowych, plików cookie, hasła i historii przeglądania, a następnie kliknij przycisk Usuń.
 - Zresetuj ustawienia programu Internet Explorer, aby przywrócić wszystkie ustawienia osobiste, które zostały wprowadzone. Kliknij kolejno pozycje **Narzędzia** > **Opcje internetowe** > **Zaawansowane** > zaznacz pole **Usuń ustawienia osobiste** > **Resetuj**.
-- Użyj prywatnego trybu przeglądania w przeglądarce. W przypadku programu Internet Explorer: kliknij kolejno pozycje **narzędzia** > **bezpieczeństwo** > **przeglądania w trybie InPrivate**, a następnie Przeglądaj i zaloguj się [Azure Portal](https://portal.azure.com/) do [centrum konta platformy Azure](https://account.azure.com/Subscriptions).
+- Użyj prywatnego trybu przeglądania w przeglądarce. W programie Internet Explorer:  Kliknij kolejno pozycje **Narzędzia** > **Bezpieczeństwo** > **Przeglądanie InPrivate**, a następnie przejdź do witryny [Azure Portal](https://portal.azure.com/) lub [Centrum konta platformy Azure](https://account.azure.com/Subscriptions) i zaloguj się.
 
 ### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Mogę się zalogować, ale widzę komunikat *Nie odnaleziono żadnych subskrypcji*
 
 Ten problem występuje, jeśli wybrano niewłaściwy katalog lub jeśli konto nie ma wystarczających uprawnień.
 
-**Scenariusz 1:** W [Azure Portal](https://portal.azure.com/) zostanie wyświetlony komunikat o błędzie
+**Scenariusz 1:** Komunikat o błędzie zostaje wyświetlony w witrynie [Azure Portal](https://portal.azure.com/)
 
 Aby rozwiązać ten problem:
 
 - Upewnij się, że wybrano prawidłowy katalog platformy Azure, klikając swoje konto w prawym górnym rogu.
 - Jeśli wybrano właściwy katalog platformy Azure, ale nadal pojawia się komunikat o błędzie, poproś [o dodanie konta jako właściciel](add-change-subscription-administrator.md).
 
-**Scenariusz 2:** W [centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions) zostanie wyświetlony komunikat o błędzie
+**Scenariusz 2:** Komunikat o błędzie zostaje wyświetlony w [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions)
 
-Sprawdź, czy używane konto ma uprawnienia administratora konta. Aby sprawdzić, kto jest administratorem konta, wykonaj następujące czynności:
+Sprawdź, czy użyte konto jest administratorem konta. Aby sprawdzić, kto jest administratorem konta, wykonaj następujące czynności:
 
 1. Zaloguj się do [widoku Subskrypcje w witrynie Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 

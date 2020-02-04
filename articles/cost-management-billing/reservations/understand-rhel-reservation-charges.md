@@ -1,5 +1,5 @@
 ---
-title: Zniżki w ramach planu rezerwacji Red Hat — platforma Azure
+title: Zniżki w ramach planu rezerwacji Red Hat — Azure
 description: Dowiedz się, jak są stosowane rabaty za plany oprogramowania Red Hat na maszynach wirtualnych.
 services: billing
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: cwatson
 ms.openlocfilehash: 280764d3b9185abd1d8112f641007a7dc1861b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995327"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Dowiedz się, jak na platformie Azure jest stosowany rabat za plany rezerwacji oprogramowania Red Hat Linux Enterprise
@@ -59,7 +59,7 @@ Nazwy na platformie Marketplace i w witrynie Azure Portal:
 - Red Hat Enterprise Linux 7.6
 - Red Hat Enterprise Linux 7 (najnowsza maszyna wirtualna z systemem Linux)
 
-|Maszyna wirtualna z systemem Red Hat | MeterId| Współczynnik| Przykładowy rozmiar maszyny wirtualnej|
+|Maszyna wirtualna z systemem Red Hat | Identyfikator miernika| Współczynnik| Przykładowy rozmiar maszyny wirtualnej|
 | -------| ------------------------| --- |--- |
 |Licencja na maszyny wirtualne — od 1 do 4 procesorów wirtualnych|077a07bb-20f8-4bc6-b596-ab7211a1e247|1|D4s_v3|
 |Licencja na maszyny wirtualne — od 1 do 4 procesorów wirtualnych|2f96d035-3bac-46d6-b2bc-c6daa0938536|1|D4s_v3|
@@ -83,7 +83,7 @@ Nazwy na platformie Marketplace i w witrynie Azure Portal:
 
 Nazwa na platformie Marketplace i w witrynie Azure Portal:
 
-|Maszyna wirtualna z systemem Red Hat | MeterId | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
+|Maszyna wirtualna z systemem Red Hat | Identyfikator miernika | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
 | ------- | --- | ------------------------| --- | --- |
 |Licencja na maszyny wirtualne — od 1 do 4 procesorów wirtualnych |4d902611-eed7-4060-a33e-3c7fdbac6406|1|D4s_v3|
 |Licencja na maszyny wirtualne — 5 lub więcej procesorów wirtualnych|6dfb482b-23ea-487f-810c-e66360f025de|2,333333333|D8s_v3|
@@ -92,7 +92,7 @@ Nazwa na platformie Marketplace i w witrynie Azure Portal:
 
 Nazwy na platformie Marketplace i w witrynie Azure Portal:
 
-|Maszyna wirtualna z systemem Red Hat | MeterId | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
+|Maszyna wirtualna z systemem Red Hat | Identyfikator miernika | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
 | ------- |------------------------| --- | --- |
 |Licencja na maszyny wirtualne — od 1 do 4 procesorów wirtualnych|e9711132-d9d9-450c-8203-25cfc4bce8de|1|D4s_v3|
 |Licencja na maszyny wirtualne — 5 lub więcej procesorów wirtualnych|93954aa4-b55f-4b7b-844d-a119d6bf3c4e|2|D8s_v3|
@@ -106,7 +106,7 @@ Nazwy na platformie Marketplace i w witrynie Azure Portal:
 - Red Hat Enterprise Linux 7.4 for SAP
 - Red Hat Enterprise Linux 7.5 for SAP
 
-|Maszyna wirtualna z systemem Red Hat | MeterId | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
+|Maszyna wirtualna z systemem Red Hat | Identyfikator miernika | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
 | ------- |------------------------| --- |--- |
 |Licencja na maszyny wirtualne — 1 procesor wirtualny|25889e91-c740-42ac-bc52-6b8f73b98575|1|D2s_v3|
 |Licencja na maszyny wirtualne — 2 procesory wirtualne|2a0c92c8-23a7-4dc9-a39c-c4a73a85b5da|1|D2s_v3|
@@ -134,7 +134,7 @@ Nazwy na platformie Marketplace i w witrynie Azure Portal:
 - Red Hat Enterprise Linux 7.2 for SAP HANA
 - Red Hat Enterprise Linux 7.3 for SAP HANA
 
-|Maszyna wirtualna z systemem Red Hat | MeterId | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
+|Maszyna wirtualna z systemem Red Hat | Identyfikator miernika | Współczynnik|Przykładowy rozmiar maszyny wirtualnej|
 | ------- |------------------------| --- |--- |
 |Licencja na maszyny wirtualne — 1 procesor wirtualny|be0a59d1-eed7-47ec-becd-453267753793|1|D2s_v3|
 |Licencja na maszyny wirtualne — 2 procesory wirtualne|3b97c9f5-f5d5-4fd3-a421-b78fca32a656|1|D2s_v3|

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/14/2019
 ms.author: banders
 ms.openlocfilehash: 7807129061328d1c6d563b9058987388e84c6e4c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995691"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Nieuwzględnianie kosztów oprogramowania w przypadku usługi Azure Reserved VM Instances
@@ -24,7 +24,7 @@ Rabaty na wystąpienia zarezerwowane maszyny wirtualnej i wydajność rezerwową
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Mierniki oprogramowania systemu Windows nieuwzględnione w koszcie rezerwacji
 
-| MeterId | Nazwa miernika w pliku użycia | Używane przez maszynę wirtualną |
+| Identyfikator miernika | Nazwa miernika w pliku użycia | Używane przez maszynę wirtualną |
 | ------- | ------------------------| --- |
 | e7e152ac-f29c-4cce-ad6e-026192c01ef2 | Zarezerwowane maszyny z systemem Windows Server — seria (1-rdzeniowe) | Seria B |
 | cac255a2-9f0f-4c62-8bd6-f0fa449c5f76 | Zarezerwowane maszyny z systemem Windows Server — seria (2-rdzeniowe) | Seria B |
@@ -49,7 +49,7 @@ Rabaty na wystąpienia zarezerwowane maszyny wirtualnej i wydajność rezerwową
 
 ## <a name="cloud-services-software-meters-not-included-in-reservation-cost"></a>Mierniki oprogramowania usług w chmurze nieuwzględnione w koszcie rezerwacji
 
-| MeterId | Nazwa miernika w pliku użycia |
+| Identyfikator miernika | Nazwa miernika w pliku użycia |
 | ------- | ------------------------|
 |ac9d47ff-ff68-4afc-a145-0c321cf8d0d5|Licencja na usługi Cloud Services — 1 procesor wirtualny|
 |e0434559-19ee-4132-9c46-05ad4044f3f7|Licencja na usługi Cloud Services — 2 procesory wirtualne|

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 41af65c2bfa35da30a0172ae7a39b3bad56597b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992129"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Rozwiązywanie problemów z dostępem do portalu Umowy Enterprise platformy Azure
@@ -146,9 +146,9 @@ Jeśli powyższe kroki rozwiązywania problemów nie powiodły się, prześlij �
 
 ### <a name="what-is-the-difference-between-a-workschool-account-and-microsoft-account"></a>Jaka jest różnica między kontem służbowym a kontem Microsoft?
 
-**Konto Microsoft:** Konta, które zostały skojarzone z IDENTYFIKATORem na żywo w [https://signup.live.com](https://signup.live.com).
+**Konto Microsoft:** Konta, które zostały skojarzone z identyfikatorem Live ID na stronie [https://signup.live.com](https://signup.live.com).
 
-**Konto służbowe:** Dostępne tylko dla firm, które skonfigurowali usługi Active Directory z Federacją w chmurze, a wszystkie konta znajdują się w jednej dzierżawie. Użytkowników można dodawać przy użyciu autoryzacji za pomocą konta służbowego, jeśli wewnętrzna usługa Active Directory firmy jest sfederowana z chmurą.
+**Konto służbowe:** Dostępne tylko dla firm, które skonfigurowały usługę Active Directory z federacją z chmurą i mają wszystkie konta w jednej dzierżawie. Użytkowników można dodawać przy użyciu autoryzacji za pomocą konta służbowego, jeśli wewnętrzna usługa Active Directory firmy jest sfederowana z chmurą.
 
   Od września 2016 r. firma Microsoft nie zezwala już na rejestrację służbowego adresu e-mail jako konta Microsoft. Aby uzyskać więcej informacji, zapoznaj się z następującymi materiałami: [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/).
 

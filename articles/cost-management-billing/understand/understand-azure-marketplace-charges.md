@@ -13,10 +13,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f94b79e03cf97275ec4dacf17e097e1678e81d10
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989425"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Informacje o opłatach za usługi zewnętrzne na platformie Azure
@@ -54,10 +54,10 @@ Jeśli masz umowę klienta firmy Microsoft (MCA) lub umowę partnerską firmy Mi
 
 Jeśli nie masz umowy MCA lub MPA, dostajesz oddzielne faktury z opłatami na rzecz innych firm. Możesz wyświetlać i pobierać faktury za usługi z platformy Azure Marketplace w witrynie Azure Portal, wykonując następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 1. W menu po lewej stronie wybierz pozycję **Faktury**.
-1. Kliknij kartę **Azure Marketplace i rezerwacje** .  ![Picture of Azure Marketplace i zastrzeżeń karta](./media/understand-azure-marketplace-charges/invoice-tabs.png)
+1. Kliknij kartę **Azure Marketplace i rezerwacje**.  ![Obraz przedstawiający kartę Azure Marketplace i rezerwacje](./media/understand-azure-marketplace-charges/invoice-tabs.png)
 1. Z listy rozwijanej subskrypcji wybierz subskrypcję zawierającą usługi zewnętrzne, za które chcesz wyświetlić faktury.
 
 ## <a name="external-spending-for-ea-customers"></a>Wydatki zewnętrzne dla klientów z umowami EA
@@ -68,7 +68,7 @@ Klienci z umowami EA mogą wyświetlać wydatki na usługi zewnętrzne i pobiera
 
 Podczas zakupu usługi zewnętrznej należy wybrać subskrypcję platformy Azure, w której zostaną utworzone jej zasoby. Metoda płatności skojarzona z wybraną subskrypcją platformy Azure zostanie użyta do płatności za usługę zewnętrzną. Aby zmienić metodę płatności za usługę zewnętrzną, należy [zmienić metodę płatności za subskrypcję platformy Azure ](../manage/change-credit-card.md) powiązaną z tą usługą zewnętrzną. Aby określić, z którą subskrypcją jest powiązane zamówienie usługi zewnętrznej, wykonaj następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Kliknij pozycję **Wszystkie zasoby** w menu nawigacji po lewej stronie.
      ![Zrzut ekranu przedstawiający element menu Wszystkie zasoby](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Wyszukaj usługę zewnętrzną.
@@ -97,7 +97,7 @@ Podczas zakupu usługi zewnętrznej należy wybrać subskrypcję platformy Azure
 ## <a name="cancel-an-external-service-order"></a>Anulowanie zamówienia usługi zewnętrznej
 Jeśli chcesz anulować zamówienie usługi zewnętrznej, usuń odpowiedni zasób w witrynie [Azure Portal](https://portal.azure.com).
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Kliknij pozycję **Wszystkie zasoby** w menu nawigacji po lewej stronie.
     ![Zrzut ekranu przedstawiający element menu Wszystkie zasoby](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Wyszukaj usługę zewnętrzną.

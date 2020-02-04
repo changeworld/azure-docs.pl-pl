@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: bb3aa7970f993ec5e0ceb50d10cc0907ed225c2f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995873"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Optymalizowanie kosztów usługi Azure Databricks dzięki wcześniejszemu zakupowi
@@ -41,8 +41,8 @@ Przed zakupem oblicz łączną ilość jednostek DBU używanych w różnych wars
 
 Plany usługi Databricks można kupić w witrynie [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D). Do zakupu wydajności rezerwowej potrzebna jest rola właściciela co najmniej w jednej subskrypcji Enterprise.
 
-- Musisz mieć rolę właściciela dla co najmniej jednego Umowa Enterprise (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) lub umowy klienta firmy Microsoft lub pojedynczej subskrypcji z stawką płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P).
-- W przypadku subskrypcji z umową EA należy włączyć opcję Dodaj wystąpienia zarezerwowane w portalu EA. Jeśli to ustawienie jest wyłączone, musisz być administratorem EA dla subskrypcji.
+- Wymagana jest rola właściciela co najmniej w jednej umowie Enterprise (numery ofert: MS-AZR-0017P i MS-AZR-0148P), umowie klienta firmy Microsoft lub indywidualnej subskrypcji ze stawkami płatności zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P).
+- W przypadku subskrypcji EA w witrynie EA portal musi być włączona opcja Dodaj wystąpienia zarezerwowane. Jeśli to ustawienie jest wyłączone, wymagane są uprawnienia administratora EA dla subskrypcji.
 - W przypadku subskrypcji Enterprise w witrynie [EA Portal](https://ea.azure.com/) musi być włączona opcja **Dodaj wystąpienia zarezerwowane**. Jeśli to ustawienie jest wyłączone, wymagane są uprawnienia administratora EA subskrypcji.
 
 **Aby dokonać zakupu:**
@@ -77,7 +77,7 @@ Jeśli masz pytania lub potrzebujesz pomocy, [utwórz wniosek o pomoc techniczn�
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
-  - [Co to jest Azure Reservations?](save-compute-costs-reservations.md)
+- Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
+  - [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
   - [Omówienie stosowania rabatu za wcześniejszy zakup jednostek DBCU usługi Azure Databricks](reservation-discount-databricks.md)
   - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](understand-reserved-instance-usage-ea.md)
