@@ -14,10 +14,8 @@
   items:
     - name: Biblioteka kliencka
       items:
-        - name: Analizowanie tekstu za pomocą wersji 3.0 (zapoznawczej)
+        - name: Analizowanie tekstu za pomocą biblioteki klienckiej
           href: quickstarts/text-analytics-sdk.md
-        - name: Analizowanie tekstu za pomocą wersji 2
-          href: quickstarts/text-analytics-sdk-v2.md
     - name: Interfejs API REST
       items:
         - name: Korzystanie z języka Java

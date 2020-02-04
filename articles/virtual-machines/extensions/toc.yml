@@ -64,19 +64,27 @@
           href: hpccompute-gpu-linux.md
         - name: Windows
           href: hpccompute-gpu-windows.md
-    - name: Log Analytics
+    - name: Azure Monitor
       items:
-        - name: Linux
-          href: oms-linux.md
-        - name: Windows
-          href: oms-windows.md
-    - name: Usługa Azure Monitor dla maszyn wirtualnych
-      items:
-        - name: Agent zależności dla systemu Linux
-          href: agent-dependency-linux.md
-        - name: Agent zależności dla systemu Windows
-          href: agent-dependency-windows.md
-    - name: PowerShell DSC
+        - name: Rozszerzenie diagnostyki
+          items:
+            - name: Linux
+              href: diagnostics-linux.md
+            - name: Windows
+              href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/extensions/toc.json
+        - name: Log Analytics
+          items:
+            - name: Linux
+              href: oms-linux.md
+            - name: Windows
+              href: oms-windows.md
+        - name: Usługa Azure Monitor dla maszyn wirtualnych
+          items:
+            - name: Agent zależności dla systemu Linux
+              href: agent-dependency-linux.md
+            - name: Agent zależności dla systemu Windows
+              href: agent-dependency-windows.md
+    - name: Rozszerzenie DSC programu PowerShell
       href: dsc-overview.md
       items:
         - name: DSC i system Windows
@@ -89,14 +97,6 @@
           href: dsc-template.md
     - name: Dostęp do maszyny wirtualnej
       href: vmaccess.md
-    - name: Diagnostyka maszyny wirtualnej
-      items:
-        - name: Linux
-          href: diagnostics-linux.md
-        - name: Windows
-          href: diagnostics-windows.md
-        - name: Korzystanie z szablonów
-          href: diagnostics-template.md
     - name: Rozszerzenia innych firm
       items:
         - name: Chef

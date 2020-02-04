@@ -47,8 +47,9 @@
     - name: Konfigurowanie uwierzytelniania w usłudze Azure AD dla wielu aplikacji na potrzeby sieci VPN użytkownika (wersja zapoznawcza)
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: Konfigurowanie automatyzacji (partnerzy usługi Virtual WAN)
-    - name: Pobieranie profili sieci VPN — globalnych i opartych na koncentratorach
       href: virtual-wan-configure-automation-providers.md
+    - name: Pobieranie profili sieci VPN — globalnych i opartych na koncentratorach
+      href: global-hub-profile.md
     - name: Configure routing (Konfigurowanie routingu)
       items:
         - name: Kierowanie ruchem z koncentratora wirtualnego do wirtualnego urządzenia sieciowego

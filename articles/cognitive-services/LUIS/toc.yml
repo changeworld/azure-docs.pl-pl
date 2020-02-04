@@ -67,21 +67,11 @@
     - name: Używanie z botem
       items:
         - name: 'Przy użyciu języka C#'
-          items:
-            - name: 1. Tworzenie podstawowego bota
-              href: luis-csharp-tutorial-bf-v4.md
-              displayName: 'bot framework, framework, sdk, abs'
-            - name: 2. Dodawanie telemetrii do usługi Application Insights
-              href: luis-tutorial-bot-csharp-appinsights.md
-              displayName: 'Application insight, kusto'
+          href: luis-csharp-tutorial-bf-v4.md
+          displayName: 'bot framework, framework, sdk, abs'
         - name: Przy użyciu środowiska Node.js
-          items:
-            - name: 1. Tworzenie podstawowego bota
-              displayName: 'bot framework, framework, sdk, abs'
-              href: luis-nodejs-tutorial-bf-v4.md
-            - name: 2. Dodawanie telemetrii do usługi Application Insights
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-nodejs-appinsights.md
+          displayName: 'bot framework, framework, sdk, abs'
+          href: luis-nodejs-tutorial-bf-v4.md
 - name: Pojęcia
   items:
     - name: Cykl projektowania oprogramowania

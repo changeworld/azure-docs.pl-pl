@@ -83,6 +83,8 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
     - name: Łączność między sieciami
       href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+    - name: Wdrożenie klasyczne
+      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic'
 - name: Przewodniki z instrukcjami
   items:
     - name: Planowanie
@@ -317,6 +319,8 @@
           href: what-is-ip-address-168-63-129-16.md
         - name: Rozwiązywanie problemów z łącznością z maszyną wirtualną platformy Azure
           href: troubleshoot-vm-connectivity.md
+    - name: Wdrożenie klasyczne
+      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

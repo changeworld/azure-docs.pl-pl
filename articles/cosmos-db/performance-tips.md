@@ -25,7 +25,7 @@ Azure Cosmos DB to szybka i elastyczna dystrybuowana baza danych, która bezprob
 
 Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Należy wziąć pod uwagę następujące opcje:
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Sieć
 <a id="direct-connection"></a>
 
 1. **Zasady połączenia: Użyj trybu połączenia bezpośredniego**
@@ -47,7 +47,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Na
      |Tryb połączenia  |Obsługiwany protokół  |Obsługiwane zestawy SDK  |Port API/usługi  |
      |---------|---------|---------|---------|
      |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Direct    |     TCP    |  Zestaw SDK dla platformy .NET    | Porty w zakresie 10000-20000 |
+     |Direct    |     TCP    |  Zestaw SDK .NET    | Porty w zakresie 10000-20000 |
 
      Azure Cosmos DB oferuje prosty i otwarty model programowania RESTful za pośrednictwem protokołu HTTPS. Ponadto oferuje wydajny protokół TCP, który jest również RESTful w swoim modelu komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Protokół TCP używa protokołu SSL do uwierzytelniania początkowego i szyfrowania ruchu sieciowego. Aby uzyskać najlepszą wydajność, Użyj protokołu TCP, gdy jest to możliwe.
 
@@ -165,7 +165,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Na
    > [!NOTE] 
    > Właściwość maxItemCount nie powinna być używana tylko do celów stronicowania. Jest to główne użycie, aby zwiększyć wydajność zapytań, zmniejszając maksymalną liczbę elementów zwracanych na jednej stronie.  
 
-   Możesz również ustawić rozmiar strony przy użyciu dostępnych zestawów SDK Azure Cosmos DB. Właściwość [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) w FeedOptions umożliwia ustawienie maksymalnej liczby elementów, które mają być zwracane w operacji wyliczania. Gdy `maxItemCount` ma wartość-1, zestaw SDK automatycznie znajdzie najbardziej optymalną wartość w zależności od rozmiaru dokumentu. Przykład:
+   Możesz również ustawić rozmiar strony przy użyciu dostępnych zestawów SDK Azure Cosmos DB. Właściwość [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) w FeedOptions umożliwia ustawienie maksymalnej liczby elementów, które mają być zwracane w operacji wyliczania. Gdy `maxItemCount` ma wartość-1, zestaw SDK automatycznie znajdzie najbardziej optymalną wartość w zależności od rozmiaru dokumentu. Na przykład:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

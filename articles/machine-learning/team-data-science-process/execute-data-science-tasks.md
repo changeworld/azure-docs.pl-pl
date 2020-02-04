@@ -19,10 +19,10 @@ ms.locfileid: "76722207"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Wykonania zadań dotyczących nauki o danych: eksploracji, modelowania i wdrożenia
 
-Typowe zadania wydobywania danych obejmują eksplorację danych, modelowania i wdrożenia. W tym artykule pokazano, jak **interakcyjna Eksploracja danych, analizy i raportowania (IDEAR)** i **zautomatyzowane modelowania i raportowania (AMAR)** narzędzia, aby wykonać kilka typowych zadań do nauki o danych Interakcyjna Eksploracja danych, analizy danych, raportowania i tworzenia modelu. Opcje wdrażania modelu w środowisku produkcyjnym mogą obejmować:
+Typowe zadania wydobywania danych obejmują eksplorację danych, modelowania i wdrożenia. W tym artykule pokazano, jak używać **interaktywnej eksploracji danych, analizy i raportowania (pomysł)** oraz **zautomatyzowanych narzędzi do modelowania i raportowania (Amar)** do wykonywania kilku typowych zadań związanych z nauką o danych, takich jak interaktywna Eksploracja danych, analiza danych, raportowanie i tworzenie modelu. Opcje wdrażania modelu w środowisku produkcyjnym mogą obejmować:
 
 - [Azure Machine Learning](../index.yml)
-- [Programu SQL Server z usługami uczenia Maszynowego](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
+- [SQL — serwer z usługami ML](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
@@ -38,7 +38,7 @@ Elementy dostarczane na końcu tej fazy jest raport eksploracji danych. Raport p
 
 Ta R opartych na języku znaczników markdown lub narzędzia na podstawie notesu Python zapewnia elastyczne i interaktywne narzędzie do oceny i zapoznaj się z zestawami danych. Użytkownicy mogą szybko wygenerować raporty z zestawu danych przy użyciu minimalnego kodowania. Użytkownicy mogą kliknąć przycisków, aby wyeksportować wyniki eksploracji interaktywne narzędzia do raport końcowy, który może być dostarczane do klientów lub używana do podejmowania decyzji, na które zmienne do uwzględnienia w kroku kolejnych modelowania.
 
-W tej chwili narzędzie działa tylko na ramki danych w pamięci. Pozwala określić parametry zestawu danych do eksplorowania na potrzeby pliku YAML. Aby uzyskać więcej informacji, zobacz [IDEAR w narzędzia do analizy danych przetwarzania TDSP](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
+W tej chwili narzędzie działa tylko na ramki danych w pamięci. Pozwala określić parametry zestawu danych do eksplorowania na potrzeby pliku YAML. Aby uzyskać więcej informacji, zobacz [pomysł w przetwarzania TDSP narzędzia do nauki o danych](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
 
 
 ## 2. <a name='ModelingUtility-2'></a> modelowanie
@@ -51,7 +51,7 @@ W poniższej sekcji dotyczącej zarządzania modelu pokazuje jak system rejestro
 
 ### <a name="model-training-modeling-and-reporting-using-the-amar-utility"></a>Model szkolenia: modelowania i raportowania za pomocą narzędzia AMAR
 
-[Zautomatyzowane modelowania i raportowania (AMAR) Narzędzie](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) zapewnia dostosowywalny, automatyzacji, dającą narzędzie do tworzenia modelu przy użyciu parametrów zaczynają wykonywania i porównywanie dokładność tych modeli. 
+[Narzędzie zautomatyzowanego modelowania i raportowania (Amar)](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) udostępnia dostosowywalne, częściowo zautomatyzowane narzędzie do tworzenia modeli przy użyciu funkcji czyszczenia parametrów i w celu porównania dokładności tych modeli. 
 
 Narzędzie do tworzenia modelu jest plikiem R Markdown, który można uruchomić w celu wygenerowania niezależna dane wyjściowe HTML za pomocą spisu treści ułatwiających przechodzenie przez jego różne sekcje. Trzy algorytmy są wykonywane po uruchomieniu pliku Markdown (zgrany): umorzyć regresji przy użyciu glmnet pakietu losowe lasu za pomocą pakietu randomForest i zwiększenie drzew przy użyciu pakietu xgboost). Każda z tych algorytmów tworzy uczonego modelu. Dokładność tych modeli jest porównywana i powierzchnie znaczenie względną funkcji są zgłaszane. Obecnie istnieją dwa narzędzia: jeden jest przeznaczony dla zadań Klasyfikacja binarna, a jeden jest przeznaczony dla zadań regresji. Podstawowe różnice między nimi jest parametry sterujące sposobem i dokładność metryki są określone dla tych zadań uczenia. 
 
@@ -62,20 +62,20 @@ Plik YAML służy do określania:
 - jakie algorytmy do uruchomienia 
 - Wybór parametry sterujące optymalizacji modelu:
     - cross-validation 
-    - ładowanie początkowe
+    - bootstrapping
     - złożeń krzyżowego sprawdzania poprawności
 - zestawy parametrów dla każdego algorytmu. 
 
 Liczba algorytmów, liczba złożeń optymalizacji, hiper parametrami i liczby zestawów parametrów do odchylenia za pośrednictwem również można zmodyfikować w pliku Yaml do szybkiego uruchamiania modeli. Na przykład można ich uruchomić przy użyciu mniejszej liczby złożeń CV, mniejszej liczby zestawów parametrów. Jeśli jest to zasadne, ich można również uruchomić bardziej wszechstronny z większej liczby złożeń CV lub większej liczby zestawów parametrów.
 
-Aby uzyskać więcej informacji, zobacz [zautomatyzowane modelowania i raportowania narzędzia w narzędzia do analizy danych przetwarzania TDSP](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling).
+Aby uzyskać więcej informacji, zobacz [zautomatyzowane narzędzia do modelowania i raportowania w przetwarzania TDSP narzędzia do nauki o danych](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling).
 
 ### <a name="model-management"></a>Zarządzanie modelami
 Po zostały skompilowane wielu modeli, należy zazwyczaj ma system rejestrowania modeli i zarządzania nimi. Zazwyczaj należy kombinację skryptów lub interfejsów API i bazy danych lub wersji systemu zaplecza. Jest kilka opcji, które należy rozważyć do wykonywania tych zadań zarządzania są:
 
-1. [Usługa Azure Machine Learning — Usługa Zarządzanie modelami](../index.yml)
-2. [ModelDB z uniwersytetu MIT](https://mitdbg.github.io/modeldb/) 
-3. [Programu SQL server jako system zarządzania modelu](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
+1. [Usługa zarządzania modelami Azure Machine Learning](../index.yml)
+2. [ModelDB z MIT](https://mitdbg.github.io/modeldb/) 
+3. [Serwer SQL — system zarządzania modelami](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 ## 3. <a name='Deployment-3'></a> wdrożenie
@@ -87,7 +87,7 @@ Istnieją różne podejścia i platformy, aby wdrożyć modele do produkcji. Pon
 
 
 - [Wdrażanie modelu w Azure Machine Learning](../how-to-deploy-and-where.md)
-- [Wdrażanie modelu w programie SQL server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Wdrażanie modelu w programie SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
@@ -95,21 +95,21 @@ Istnieją różne podejścia i platformy, aby wdrożyć modele do produkcji. Pon
 >
 >
 
-Dalsze przykłady są dostępne w instruktaży, które przedstawiają wszystkie kroki procesu **konkretnych scenariuszy**. Wymieniono i połączone z opisami miniatur w [przykładowe przewodniki](walkthroughs.md) artykułu. One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji.
+Dalsze przykłady są dostępne w przewodnikach, które pokazują wszystkie kroki procesu dla **konkretnych scenariuszy**. Są one wyświetlane i połączone z opisami miniatur w artykule [przykładowe instruktaże](walkthroughs.md) . One ilustrują sposób łączenia chmury, lokalnego narzędzia i usługi w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji.
 
 > [!NOTE]
-> Do wdrożenia przy użyciu usługi Azure Machine Learning Studio, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
+> Aby uzyskać wdrożenie przy użyciu Azure Machine Learning Studio, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
 >
 >
 
-### <a name="ab-testing"></a>Testowanie A/B
-W przypadku wielu modeli w środowisku produkcyjnym, może być przydatne do wykonania [A / B, testowanie](https://en.wikipedia.org/wiki/A/B_testing) porównywanie wydajności modeli. 
+### <a name="ab-testing"></a>A / B, testowanie
+Gdy wiele modeli jest w środowisku produkcyjnym, przydatne może być przeprowadzenie [testowania A/B](https://en.wikipedia.org/wiki/A/B_testing) w celu porównania wydajności modeli. 
 
  
 ## <a name="next-steps"></a>Następne kroki
 
-[Śledzić postęp projektów do nauki o danych](track-progress.md) pokazuje, jak analitykiem danych można śledzić postęp projektu nauki o danych.
+[Śledź postęp projektów analizy danych](track-progress.md) pokazuje, jak analityk danych może śledzić postęp projektu analizy danych.
 
-[Operacja i ciągłej integracji/ciągłego wdrażania modelu](ci-cd-flask.md) pokazuje, jak ciągła Integracja/ciągłe dostarczanie mogą być wykonywane przy użyciu modeli opracowanych.
+[Operacja modelowa i ciągłe/CD](ci-cd-flask.md) pokazują, jak Ci/CD można wykonać z rozwiniętymi modelami.
 
 
