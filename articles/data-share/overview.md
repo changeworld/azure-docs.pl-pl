@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660804"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964451"
 ---
 # <a name="what-is-azure-data-share"></a>Co to jest usługa Azure Data Share?
 
@@ -37,7 +37,7 @@ Innym przypadkiem użycia usługi Azure Data Share jest ustanowienie konsorcjum 
 
 ## <a name="how-it-works"></a>Zasady działania
 
-Udział danych platformy Azure oferuje obecnie udostępnianie oparte na migawce i udostępnianie w miejscu (w ograniczonej wersji zapoznawczej). 
+Udział danych platformy Azure oferuje obecnie udostępnianie oparte na migawce i udostępnianie w miejscu. 
 
 W ramach udostępniania opartego na migawce dane są przenoszone z subskrypcji platformy Azure dostawcy danych i gruntów w ramach subskrypcji platformy Azure klienta danych. Jako dostawca danych zastrzegasz udział danych i zapraszasz odbiorców do udziału danych. Odbiorcy danych otrzymują zaproszenie do udziału danych za pośrednictwem poczty e-mail. Gdy odbiorca danych zaakceptuje zaproszenie, może wyzwolić pełną migawkę danych, które zostały do nich udostępnione. Te dane są odbierane na koncie magazynu odbiorcy danych. Odbiorcy danych mogą odbierać regularne, przyrostowe aktualizacje danych, które są do nich udostępniane, aby zawsze miały najnowszą wersję danych. 
 
@@ -47,7 +47,7 @@ Dostawcy danych mogą oferować klientom danych przyrostowe aktualizacje danych,
 
 Gdy odbiorca danych akceptuje udział danych, może odbierać dane w wybranym przez siebie magazynie danych. Na przykład jeśli dostawca danych udostępnia dane za pomocą usługi Azure Blob Storage, odbiorca danych może odbierać te dane w Azure Data Lake Store. Podobnie, jeśli dostawca danych udostępnia dane z Azure SQL Data Warehouse, odbiorca danych może zdecydować, czy chcą otrzymywać dane do Azure Data Lake Store, Azure SQL Database czy Azure SQL Data Warehouse. W przypadku udostępniania z poziomu źródeł opartych na języku SQL odbiorca danych może również wybrać, czy mają oni odbierać dane w Parquet czy CSV. 
 
-Udostępnianie w miejscu jest obecnie w ograniczonej wersji zapoznawczej dla Eksplorator danych platformy Azure. Dostawcy danych mogą udostępniać dane tam, gdzie się znajdują, bez przemieszczania danych za pośrednictwem linku symbolicznego. Utwórz konto w celu uzyskania ograniczonej wersji zapoznawczej usługi Azure Eksplorator danych [udostępnianie w miejscu.](https://aka.ms/azuredatasharepreviewsignup) 
+W przypadku udostępniania w miejscu dostawcy danych mogą udostępniać dane, w których znajdują się bez kopiowania danych. Po ustanowieniu relacji udostępniania za pomocą przepływu zaproszenia zostanie utworzone łącze symboliczne między źródłowym magazynem danych dostawcy danych a docelowym magazynem danych odbiorcy danych. Konsument danych może odczytywać i wysyłać zapytania dotyczące danych w czasie rzeczywistym przy użyciu własnego magazynu danych. Zmiany w źródłowym magazynie danych są natychmiast dostępne dla konsumenta danych. Udostępnianie w miejscu jest obecnie dostępne w wersji zapoznawczej dla usługi Azure Eksplorator danych.
 
 ## <a name="key-capabilities"></a>Najważniejsze możliwości
 
@@ -56,6 +56,8 @@ Udział danych platformy Azure umożliwia dostawcom danych:
 * Udostępnianie danych z listy [obsługiwanych magazynów danych](supported-data-stores.md) klientom i partnerom spoza organizacji
 
 * Śledź użytkowników, którym udostępniono Twoje dane
+
+* Wybór migawki lub udostępnianie w miejscu
 
 * Jak często odbiorcy danych otrzymują aktualizacje danych
 
@@ -69,13 +71,13 @@ Udział danych platformy Azure umożliwia użytkownikom danych:
 
 * Akceptowanie lub odrzucanie zaproszenia udziału danych platformy Azure
 
-* Wyzwól pełną lub przyrostową migawkę udziału danych, który organizacja udostępniła Tobie
-
-* Zasubskrybuj udział danych, aby otrzymać najnowszą kopię danych za pomocą przyrostowej kopii migawek
-
 * Akceptuj dane udostępnione Tobie w [obsługiwanym magazynie danych](supported-data-stores.md).
 
-Wszystkie najważniejsze możliwości wymienione powyżej są obsługiwane za pośrednictwem platformy Azure lub interfejsów API REST. Aby uzyskać więcej informacji na temat korzystania z usługi Azure Data Share za pośrednictwem interfejsów API REST, zapoznaj się z dokumentacją referencyjną. 
+* Wyzwól pełną lub przyrostową migawkę udziału danych, który organizacja udostępniła Tobie
+
+* Zasubskrybuj udział danych, aby otrzymać najnowszą kopię danych za pomocą migawki przyrostowej
+
+Wszystkie najważniejsze możliwości wymienione powyżej są obsługiwane za pośrednictwem Azure Portal lub za pośrednictwem interfejsów API REST. Aby uzyskać więcej informacji na temat korzystania z usługi Azure Data Share za pośrednictwem interfejsów API REST, zapoznaj się z dokumentacją referencyjną. 
 
 ## <a name="security"></a>Zabezpieczenia
 
@@ -88,9 +90,9 @@ Udział danych platformy Azure wykorzystuje zarządzane tożsamości dla zasobó
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Listę regionów świadczenia usługi Azure, które udostępniają udział danych platformy Azure, można znaleźć na stronie [produkty dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=data-share/) i wyszukać udział danych platformy Azure. 
+Listę regionów świadczenia usługi Azure, które udostępniają udział danych platformy Azure, można znaleźć na stronie [produkty dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=data-share) i wyszukać udział danych platformy Azure. 
 
-Udział danych platformy Azure nie przechowuje żadnych danych. Dane są przechowywane w magazynie danych, który jest udostępniany. Na przykład, jeśli producent danych przechowuje swoje dane na koncie Azure Data Lake Store zlokalizowanym w regionie zachodnie stany USA, w którym są przechowywane dane. Jeśli udostępniają dane za pomocą konta usługi Azure Storage znajdującego się w regionie Europa Zachodnia, dane są przekazywane bezpośrednio do konta usługi Azure Storage znajdującego się w Europie Zachodniej. 
+Udział danych platformy Azure nie przechowuje kopii samych danych. Dane są przechowywane w magazynie danych, który jest udostępniany. Na przykład, jeśli producent danych przechowuje swoje dane na koncie Azure Data Lake Store zlokalizowanym w regionie zachodnie stany USA, w którym są przechowywane dane. Jeśli udostępniają dane za pomocą konta usługi Azure Storage znajdującego się w regionie Europa Zachodnia za pośrednictwem migawki, zazwyczaj dane są przekazywane bezpośrednio do konta usługi Azure Storage znajdującego się w regionie Europa Zachodnia.
 
 Usługa udziału danych platformy Azure nie musi być dostępna w Twoim regionie, aby można było korzystać z usługi. Jeśli na przykład dane są przechowywane na koncie usługi Azure Storage znajdującym się w regionie, w którym udział danych platformy Azure nie jest jeszcze dostępny, można nadal korzystać z usługi do udostępniania danych. 
 

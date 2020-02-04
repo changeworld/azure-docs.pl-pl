@@ -1,19 +1,19 @@
 ---
 title: Łączenie przykładowego kodu urządzenia w usłudze IoT Plug and Play w wersji zapoznawczej IoT Hub | Microsoft Docs
 description: Za pomocą środowiska Node. js Utwórz i uruchom Podgląd usługi IoT Plug and Play z przykładowym kodem urządzenia, który łączy się z usługą IoT Hub. Użyj narzędzia Azure IoT Explorer, aby wyświetlić informacje wysyłane przez urządzenie do centrum.
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/26/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 64f478d9d5c3330167df81de9766ff02eb943c98
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c5d69ae21cd240b0c68b9694a55de2cf879a1966
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531277"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964791"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-nodejs"></a>Szybki Start: łączenie przykładowej aplikacji urządzenia IoT Plug and Play w wersji zapoznawczej do IoT Hub (Node. js)
 

@@ -1,19 +1,19 @@
 ---
 title: Współpracuj z urządzeniem usługi IoT Plug and Play w wersji zapoznawczej podłączonym do rozwiązania Azure IoT | Microsoft Docs
 description: Użyj C# (.NET), aby nawiązać połączenie z urządzeniem usługi IoT Plug and Play w wersji zapoznawczej i korzystać z niego, które jest połączone z rozwiązaniem Azure IoT.
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/30/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 9e8bc6c4ad7ed852ddaae2e193b91887fcd92e47
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 0953f68839217c1c75eb86f8399ce023f3863ab4
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550778"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963975"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>Szybki Start: współdziałanie z urządzeniem IoT Plug and Play w wersji zapoznawczej,C#które jest połączone z rozwiązaniem ()
 
