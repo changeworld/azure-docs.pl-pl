@@ -3,8 +3,8 @@ title: Tworzenie rozwiązań za pomocą szablonów programu Visual Studio — Az
 description: Dowiedz się, jak szablony projektów programu Visual Studio mogą pomóc w implementacji i uruchomieniu obciążeń intensywnie korzystających z obliczeń na Azure Batch.
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a8cbc630be684371d8dc7917870d581c9a072db5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029581"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022753"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Korzystanie z szablonów projektów programu Visual Studio do szybkiego uruchamiania rozwiązań wsadowych
 

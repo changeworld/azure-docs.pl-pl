@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych maszyn z systemem Windows przy użyciu agenta 
 description: Użyj agenta Azure Backup Microsoft Recovery Services (MARS) do tworzenia kopii zapasowych maszyn z systemem Windows.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: c6e5ea1ed1ec9dd922793dfc6834238c431ddc38
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 990929cc95d1c25117873ca39415d33370456b91
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "76290873"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025541"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Tworzenie kopii zapasowych maszyn z systemem Windows za pomocą agenta MARS usługi Azure Backup
 
@@ -49,7 +49,7 @@ Elementy, których można utworzyć kopię zapasową, są zależne od tego, gdzi
 
 Jeśli maszyna ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwerze proxy zezwalają na te adresy URL i adres IP:
 
-#### <a name="urls"></a>Adresy URL
+#### <a name="urls"></a>Adresy
 
 * www\.msftncsi.com
 * *.Microsoft.com
@@ -68,7 +68,7 @@ Dostęp do wszystkich adresów URL i adresów IP wymienionych powyżej używa pr
 
 Magazyn Recovery Services przechowuje wszystkie utworzone kopie zapasowe i punkty odzyskiwania wraz z upływem czasu i zawiera zasady tworzenia kopii zapasowych stosowane do maszyn z kopią zapasową. Utwórz magazyn w następujący sposób:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) przy użyciu subskrypcji platformy Azure.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu subskrypcji platformy Azure.
 
 2. Wyszukaj i wybierz **Recovery Services magazynów**.
 
@@ -215,10 +215,10 @@ Utwórz zasady w następujący sposób:
         -   Kopie zapasowe wykonane w sobotę w ciągu ostatniego tygodnia miesiąca o północy i 6:00 PM są przechowywane przez 12 miesięcy.
         -   Kopie zapasowe wykonane w sobotę w ciągu ostatniego tygodnia marca są przechowywane przez 10 lat.
 
-    ![Przykład przechowywania](./media/backup-configure-vault/retention-example.png)
+        ![Przykład przechowywania](./media/backup-configure-vault/retention-example.png)
 
 
-11. W obszarze **Wybierz typ początkowej kopii zapasowej** Zdecyduj, czy chcesz pobrać początkową kopię zapasową za pośrednictwem sieci, lub Użyj kopii zapasowej offline (Aby uzyskać więcej informacji na temat odwołania do kopii zapasowej offline, zobacz ten [artykuł](backup-azure-backup-import-export.md)). Aby pobrać początkową kopię zapasową za pośrednictwem sieci, wybierz opcję **automatycznie przez sieć** , a następnie kliknij przycisk **dalej**.
+11. W obszarze **Wybierz typ początkowej kopii zapasowej** Zdecyduj, czy chcesz pobrać początkową kopię zapasową za pośrednictwem sieci, lub Użyj kopii zapasowej offline (Aby uzyskać więcej informacji na temat odwołania do kopii zapasowej offline, zobacz ten [artykuł](offline-backup-azure-data-box.md)). Aby pobrać początkową kopię zapasową za pośrednictwem sieci, wybierz opcję **automatycznie przez sieć** , a następnie kliknij przycisk **dalej**.
 
     ![Typ początkowej kopii zapasowej](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
@@ -245,7 +245,7 @@ Początkową kopię zapasową można uruchomić automatycznie za pośrednictwem 
 5. W centrum danych dane dysku są kopiowane na konto usługi Azure Storage.
 6. Azure Backup kopiuje dane z konta magazynu do magazynu, a przyrostowe kopie zapasowe są zaplanowane.
 
-[Dowiedz się więcej](backup-azure-backup-import-export.md) o rozsadzenia w trybie offline.
+[Dowiedz się więcej](offline-backup-azure-data-box.md) o rozsadzenia w trybie offline.
 
 ### <a name="enable-network-throttling"></a>Włącz ograniczanie sieci
 
@@ -259,7 +259,7 @@ Włącz ograniczanie sieci w następujący sposób:
 1. W agencie MARS kliknij pozycję **Zmień właściwości**.
 2. Na karcie **ograniczanie** poziomu, zaznacz opcję **Włącz ograniczenie przepustowości Internetu dla operacji tworzenia kopii zapasowej**.
 
-    ![Ograniczanie przepustowości sieci](./media/backup-configure-vault/throttling-dialog.png)
+    ![Ograniczanie sieci](./media/backup-configure-vault/throttling-dialog.png)
 3. Określ dozwoloną przepustowość podczas pracy i poza godzinami pracy. Wartości przepustowości zaczynają się od 512 KB/s i mogą trafiać do 1 023 MB/s. Następnie kliknij przycisk **OK**.
 
 ## <a name="run-an-on-demand-backup"></a>Uruchamianie kopii zapasowej na żądanie

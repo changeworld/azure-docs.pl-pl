@@ -2,20 +2,20 @@
 title: Analiza kosztów i budżet — Azure Batch
 description: Dowiedz się, jak uzyskać analizę kosztów i ustawić budżet dla podstawowych zasobów obliczeniowych i licencji na oprogramowanie używane do uruchamiania obciążeń usługi Batch.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
-ms.author: jushiman
-ms.openlocfilehash: 0cd17271d041b41f9f71c7861e29ab8116c74710
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.author: labrenne
+ms.openlocfilehash: 819b5e16f4730e9a1998234288e181772f7c1996
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930189"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022719"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Analiza kosztów i budżety dla Azure Batch
 

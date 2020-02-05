@@ -3,20 +3,20 @@ title: Instalowanie wirtualnego systemu plików w puli — Azure Batch | Microso
 description: Dowiedz się, jak zainstalować wirtualny system plików w puli wsadowej.
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: jushiman
-ms.openlocfilehash: eab8e509e4978de50968bc1d960ee34d46bc73b0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: a22117505dff35f9b92e3dd3c91dc8540557b218
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029144"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023042"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Instalowanie wirtualnego systemu plików w puli partii
 
@@ -172,17 +172,17 @@ Aby pobrać pliki dziennika do debugowania, użyj [OutputFiles](batch-task-outpu
 
 | Publisher | Oferta | JSZ | Udział Azure Files | Blobfuse | Instalacja systemu plików NFS | Instalacja CIFS |
 |---|---|---|---|---|---|---|
-| batch | rendering-centos73 | renderowanie | :heavy_check_mark: <br>Uwaga: zgodność z CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| batch | rendering-centos73 | dawania | :heavy_check_mark: <br>Uwaga: zgodność z CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16,04 – LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | credativ | Debian | 8, 9 | :heavy_check_mark: | y | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Uwaga: zgodne z CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | CentOS — kontener | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-batch | CentOS — kontener | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>Uwaga: obsługuje magazyn A_8 lub 9</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | ubuntu-server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-dsvm | linux-data-science-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS-HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7.6 | y | y | y | y |
+| Oracle | Oracle-Linux | 7,6 | y | y | y | y |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | y | y | y |
 
 ## <a name="next-steps"></a>Następne kroki

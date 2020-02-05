@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 61b43329fcc840bc68f454400a4b5e917f43110c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e111bcdde9381e8e418e7027d8294aa7dad7e39d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894586"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023875"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integracje partnerów
 
@@ -272,7 +272,7 @@ Usługa Turbonomic automatyzuje obciążenia dla chmur hybrydowych, jednocześni
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastyczna dokumentacja."
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor integrację Grafana."
 [influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor napływu integracji telegraf danych."
-[logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Dokumentacja monitora logiki."
+[logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Dokumentacja monitora logiki."
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Dokumentacja Moogsoft."
 [newrelic-doc]: https://newrelic.com/azure "Dokumentacja NewRelic."
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "Dokumentacja OpsGenie."

@@ -4,12 +4,12 @@ description: Przywróć maszynę wirtualną platformy Azure z punktu odzyskiwani
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: d0b2e85fa3dfb0168c40c6b8838c7b9890c92ab6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 23e34d65a06f5fbf3ad8ce53311862c680ddebd0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844011"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021988"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Przywracanie danych maszyny wirtualnej platformy Azure w Azure Portal
 
@@ -187,7 +187,7 @@ Istnieje kilka typowych scenariuszy, w których może być konieczne przywrócen
 **Przywracanie wielu maszyn wirtualnych kontrolera domeny w jednej domenie** | Jeśli inne kontrolery domeny w tej samej domenie można osiągnąć za pośrednictwem sieci, kontroler domeny może zostać przywrócony do dowolnej maszyny wirtualnej. Jeśli jest to ostatni pozostały kontroler domeny w domenie lub zostanie wykonane odzyskiwanie w sieci izolowanej, należy użyć [odzyskiwania lasu](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Przywracanie wielu domen w jednym lesie** | Zalecamy [odzyskanie lasu](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Przywracanie bez systemu operacyjnego** | Główna różnica między maszynami wirtualnymi platformy Azure i lokalnymi funkcjami hypervisor polega na tym, że żadna konsola maszyny wirtualnej nie jest dostępna na platformie Azure. Konsola programu jest wymagana w niektórych scenariuszach, takich jak odzyskiwanie przy użyciu odzyskiwania bez systemu operacyjnego (BMR). Jednak przywracanie maszyny wirtualnej z magazynu jest pełnym zamiennikiem BMR.
-**Przywracanie maszyn wirtualnych ze specjalnymi konfiguracjami sieci** | Specjalne konfiguracje sieci obejmują maszyny wirtualne korzystające z wewnętrznego lub zewnętrznego równoważenia obciążenia, przy użyciu wielu kart sieciowych lub wielu zarezerwowanych adresów IP. Te maszyny wirtualne można przywrócić przy użyciu [opcji Przywróć dysk](#restore-disks). Ta opcja powoduje utworzenie kopii dysków VHD na określonym koncie magazynu, a następnie można utworzyć maszynę wirtualną z [wewnętrznym](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) lub [zewnętrznym](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/) modułem równoważenia obciążenia, [wieloma](../virtual-machines/windows/multiple-nics.md)kartami sieciowymi lub [wieloma zastrzeżonymi adresami IP](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md), zgodnie z konfiguracją.
+**Przywracanie maszyn wirtualnych ze specjalnymi konfiguracjami sieci** | Specjalne konfiguracje sieci obejmują maszyny wirtualne korzystające z wewnętrznego lub zewnętrznego równoważenia obciążenia, przy użyciu wielu kart sieciowych lub wielu zarezerwowanych adresów IP. Te maszyny wirtualne można przywrócić przy użyciu [opcji Przywróć dysk](#restore-disks). Ta opcja powoduje utworzenie kopii dysków VHD na określonym koncie magazynu, a następnie można utworzyć maszynę wirtualną z [wewnętrznym](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) lub [zewnętrznym](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell) modułem równoważenia obciążenia, [wieloma](../virtual-machines/windows/multiple-nics.md)kartami sieciowymi lub [wieloma zastrzeżonymi adresami IP](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md), zgodnie z konfiguracją.
 **Sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń) na karcie sieciowej/podsieci** | Kopia zapasowa maszyny wirtualnej platformy Azure obsługuje tworzenie kopii zapasowych i przywracanie informacji sieciowej grupy zabezpieczeń na poziomie sieci wirtualnej, podsieci i karty sieciowej.
 **Przypięte strefy maszyny wirtualne** | Azure Backup obsługuje wykonywanie kopii zapasowych i przywracanie przypiętych do strefy maszyn wirtualnych. [Dowiedz się więcej](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
@@ -214,7 +214,7 @@ Po zainicjowaniu operacji przywracania usługa Backup tworzy zadanie śledzenia.
 Po przywróceniu maszyny wirtualnej można pamiętać o kilku kwestiach:
 
 - Rozszerzenia obecne w konfiguracji kopii zapasowej są zainstalowane, ale nie są włączone. Jeśli zobaczysz problem, zainstaluj ponownie rozszerzenia.
-- Jeśli kopia zapasowa maszyny wirtualnej ma statyczny adres IP, przywrócona maszyna wirtualna będzie mieć dynamiczny adres IP, aby uniknąć konfliktu. [Do przywróconej maszyny wirtualnej można dodać statyczny adres IP](/previous-versions/azurevirtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
+- Jeśli kopia zapasowa maszyny wirtualnej ma statyczny adres IP, przywrócona maszyna wirtualna będzie mieć dynamiczny adres IP, aby uniknąć konfliktu. [Do przywróconej maszyny wirtualnej można dodać statyczny adres IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip#how-to-add-a-static-internal-ip-to-an-existing-vm).
 - Przywrócona maszyna wirtualna nie ma zestawu dostępności. Jeśli używasz opcji Przywróć dysk, możesz [określić zestaw dostępności](../virtual-machines/windows/tutorial-availability-sets.md) podczas tworzenia maszyny wirtualnej na podstawie dysku przy użyciu podanego szablonu lub programu PowerShell.
 - Jeśli używasz dystrybucji systemu Linux opartej na chmurze, takiej jak Ubuntu, ze względów bezpieczeństwa hasło jest blokowane po przywróceniu. Aby [zresetować hasło](../virtual-machines/linux/reset-password.md), użyj rozszerzenia VMAccess na PRZYWRÓCONEJ maszynie wirtualnej. Zalecamy używanie kluczy SSH w tych dystrybucjach, więc nie trzeba resetować hasła po przywróceniu.
 - Jeśli nie możesz uzyskać dostępu do maszyny wirtualnej po przywróceniu z powodu nieprzerwanej relacji z kontrolerem domeny, wykonaj poniższe kroki, aby wyświetlić maszynę wirtualną:

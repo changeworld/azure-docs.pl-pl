@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921918"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024657"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
@@ -26,7 +26,7 @@ Plany zużycia i Premium automatycznie dodają moc obliczeniową, gdy kod jest u
 
 Plan Premium oferuje dodatkowe funkcje, takie jak wystąpienia obliczeniowe w warstwie Premium, możliwość utrzymywania nieokreślonych wystąpień i łączności między sieciami wirtualnymi.
 
-Plan App Service umożliwia korzystanie z dedykowanej infrastruktury zarządzanej przez użytkownika. Aplikacja funkcji nie jest skalowana na podstawie zdarzeń, co oznacza, że nigdy nie skaluje się w dół do zera. (Wymaga, aby [zawsze](#always-on) włączony).
+Plan App Service umożliwia korzystanie z dedykowanej infrastruktury zarządzanej przez użytkownika. Aplikacja funkcji nie jest skalowana na podstawie zdarzeń, co oznacza, że nigdy nie skaluje się do zera. (Wymaga, aby [zawsze](#always-on) włączony).
 
 ## <a name="hosting-plan-support"></a>Obsługa planu hostingu
 
@@ -44,9 +44,9 @@ Poniższa tabela przedstawia bieżący poziom wsparcia dla trzech planów hostin
 
 ## <a name="consumption-plan"></a>Plan Zużycie
 
-Gdy używasz planu zużycia, wystąpienia hosta Azure Functions są dynamicznie dodawane i usuwane na podstawie liczby zdarzeń przychodzących. Ten plan bezserwerowy wykorzystuje automatyczne skalowanie, a opłaty są naliczane za zasoby obliczeniowe tylko wtedy, gdy funkcje są uruchamiane. W ramach Planu użycia limit czasu wykonywania funkcji zostaje przekroczony po konfigurowalnym okresie czasu.
+Gdy używasz planu zużycia, wystąpienia hosta Azure Functions są dynamicznie dodawane i usuwane na podstawie liczby zdarzeń przychodzących. Ten plan bezserwerowy jest skalowany automatycznie i naliczana jest opłata za zasoby obliczeniowe tylko wtedy, gdy funkcje są uruchomione. W planie zużycia czas wykonywania funkcji jest przekroczenia przez konfigurowalny okres.
 
-Rozliczenia zależą od liczby wykonań, czasu wykonania oraz użytej pamięci. Rozliczenia są agregowane ze wszystkich funkcji w aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+Opłaty są naliczane na podstawie liczby wykonań, czasu wykonania i używanej pamięci. Rozliczanie jest agregowane we wszystkich funkcjach w ramach aplikacji funkcji. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
 Plan zużycia jest domyślnym planem hostingu i oferuje następujące korzyści:
 
@@ -152,7 +152,7 @@ Jednostką skalowania Azure Functions jest aplikacja funkcji. Gdy aplikacja funk
 
 Skalowanie może się różnić w zależności od liczby czynników i skalować w różny sposób w zależności od wybranego wyzwalacza i języka. Istnieje kilka złożonego zachowań do skalowania:
 
-* Pojedynczą aplikację funkcji można skalować w górę do maksymalnie 200 wystąpień. Pojedyncze wystąpienie może przetwarzać więcej niż jeden komunikat lub żądanie w tym samym czasie, więc nie ma ustawionego limitu liczby współbieżnych wykonań.
+* Pojedyncza aplikacja funkcji jest skalowana tylko do maksymalnie 200 wystąpień. Pojedyncze wystąpienie może przetwarzać więcej niż jeden komunikat lub żądanie w tym samym czasie, więc nie ma ustawionego limitu liczby współbieżnych wykonań.
 * W przypadku wyzwalaczy HTTP nowe wystąpienia będą przyliczane tylko co 1 sekundę.
 * W przypadku wyzwalaczy innych niż HTTP nowe wystąpienia będą przyliczane tylko co 30 sekund.
 

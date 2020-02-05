@@ -1,332 +1,270 @@
 ---
-title: Konfigurowanie szablonu urządzenia w aplikacji IoT Central platformy Azure | Microsoft Docs
-description: Dowiedz się, jak skonfigurować szablon urządzenia z pomiarami, ustawieniami, właściwościami, regułami i pulpitem nawigacyjnym.
-author: viv-liu
-ms.author: viviali
-ms.date: 06/19/2019
-ms.topic: conceptual
+title: Definiowanie nowego typu urządzenia IoT na platformie Azure IoT Central | Microsoft Docs
+description: W tym samouczku pokazano, jak utworzyć nowy szablon urządzenia usługi Azure IoT w aplikacji IoT Central platformy Azure. Zdefiniuj dane telemetryczne, stan, właściwości i polecenia dla danego typu.
+author: dominicbetts
+ms.author: dobett
+ms.date: 12/06/2019
+ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c4df07174a5d8826acd7682fa3035fcfd201c5c9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2313c347e3836b6fa9d6055f99c258624e44c51f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953098"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023790"
 ---
-# <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
-
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+# <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definiowanie nowego typu urządzenia IoT w aplikacji IoT Central platformy Azure
 
 Szablon urządzenia jest planem, który definiuje cechy i zachowania typu urządzenia, które nawiązuje połączenie z aplikacją IoT Central platformy Azure.
 
 Na przykład Konstruktor może utworzyć szablon urządzenia dla połączonego wentylatora o następujących cechach:
 
-- Pomiar telemetrii temperatury
-- Pomiar lokalizacji
-- Pomiar zdarzeń błędów silnika wentylatorów
-- Pomiar stanu działania wentylatora
-- Ustawienie szybkości wentylatora
-- Reguły, które wysyłają alerty
-- Pulpit nawigacyjny, który zapewnia ogólny widok urządzenia
+- Wysyła dane telemetryczne dotyczące temperatury
+- Wysyła Właściwość Location
+- Wysyła zdarzenia błędów silnika wentylatorowego
+- Wysyła stan operacyjny wentylatora
+- Zapewnia Właściwość szybkość wentylatorów zapisywalnych
+- Udostępnia polecenie ponownego uruchomienia urządzenia
+- Udostępnia ogólny widok urządzenia za pośrednictwem pulpitu nawigacyjnego
 
-Z tego szablonu urządzenia operator może tworzyć i łączyć urządzenia wentylatorów w rzeczywistości z nazwami, takimi jak **wentylator-1** i **wentylator-2**. Wszystkie te wentylatory mają miary, ustawienia, właściwości, reguły i pulpit nawigacyjny, które użytkownicy aplikacji mogą monitorować i zarządzać nimi.
-
-> [!NOTE]
-> Tylko konstruktory i Administratorzy mogą tworzyć, edytować i usuwać szablony urządzeń. Każdy użytkownik może tworzyć urządzenia na **Device Explorer** stronie z istniejących szablonów urządzeń.
-
-## <a name="create-a-device-template"></a>Tworzenie szablonu urządzenia
-
-1. Przejdź do strony **Szablony urządzeń** .
-
-2. Aby utworzyć szablon, Zacznij od wybrania opcji **+ Nowy**.
-
-3. Aby szybko rozpocząć pracę, wybierz spośród istniejących wstępnie skompilowanych szablonów. W przeciwnym razie wybierz opcję **niestandardowy**, wprowadź nazwę, a następnie kliknij przycisk **Utwórz** , aby skompilować własny szablon od podstaw.
-
-   ![Biblioteka szablonów urządzeń](./media/howto-set-up-template/newtemplate.png)
-
-4. Podczas tworzenia szablonu niestandardowego zostanie wyświetlona strona **szczegóły urządzenia** dla nowego szablonu urządzenia. IoT Central automatycznie tworzy symulowane urządzenie podczas tworzenia szablonu urządzenia. Symulowane urządzenie umożliwia testowanie zachowania aplikacji przed połączeniem rzeczywistego urządzenia.
-
-W poniższych sekcjach opisano poszczególne karty na stronie **szablonu urządzenia** .
-
-## <a name="measurements"></a>Miary
-
-Pomiary to dane pochodzące z urządzenia. Do szablonu urządzenia można dodać wiele pomiarów w celu dopasowania ich do możliwości urządzenia.
-
-- Pomiary **telemetrii** to liczbowe punkty danych zbierane przez urządzenie z upływem czasu. Są one reprezentowane jako ciągły strumień. Przykładem jest temperatura.
-- Pomiary **zdarzeń** to dane punktu w czasie, które reprezentują coś istotności na urządzeniu. Poziom ważności reprezentuje ważność zdarzenia. Przykładem jest błąd silnika wentylatoru.
-- Pomiary **stanu** przedstawiają stan urządzenia lub jego składników w danym okresie czasu. Na przykład tryb wentylatoru można zdefiniować jako **działający** i **zatrzymany** jako dwa możliwe stany.
-- Pomiary **lokalizacji** są współrzędne długości i szerokości geograficznej urządzenia w danym okresie czasu. Na przykład wentylator można przenieść z jednej lokalizacji do innej.
-
-### <a name="create-a-telemetry-measurement"></a>Tworzenie pomiaru telemetrii
-
-Aby dodać nową miarę telemetrię, wybierz pozycję **+ Nowa miara**, wybierz opcję **Telemetria** jako typ pomiaru, a następnie wprowadź szczegóły w formularzu.
+Z tego szablonu urządzenia operator może tworzyć i łączyć urządzenia wentylatorów w rzeczywistości. Wszystkie te wentylatory mają pomiary, właściwości i polecenia używane przez operatorów do monitorowania ich i zarządzania nimi. Operatory korzystają z pulpitów nawigacyjnych i formularzy urządzeń w celu współdziałania z urządzeniami wentylatorów.
 
 > [!NOTE]
-> Nazwy pól w szablonie urządzenia muszą być zgodne z nazwami właściwości w odpowiednim kodzie urządzenia, aby pomiar telemetrii był wyświetlany w aplikacji w przypadku połączenia rzeczywistego urządzenia. Wykonaj te same czynności podczas konfigurowania ustawień, właściwości urządzenia i poleceń w miarę dalszego definiowania szablonu urządzenia w poniższych sekcjach.
+> Tylko konstruktory i Administratorzy mogą tworzyć, edytować i usuwać szablony urządzeń. Każdy użytkownik może tworzyć urządzenia na stronie **urządzenia** z istniejących szablonów urządzeń.
 
-Na przykład można dodać nową miarę telemetrii dla temperatury:
+Program [IoT Plug and Play (wersja zapoznawcza)](../../iot-pnp/overview-iot-plug-and-play.md) umożliwia IoT Central integrację urządzeń bez konieczności pisania kodu urządzenia osadzonego. Na początku Plug and Play IoT (wersja zapoznawcza) to schemat modelu możliwości urządzenia, który opisuje możliwości urządzeń. W aplikacji IoT Central szablony urządzeń używają następujących modeli możliwości urządzenia IoT Plug and Play (wersja zapoznawcza).
 
-| Nazwa wyświetlana        | Nazwa pola    |  Jednostki    | Min.   |Maks.|
-| --------------------| ------------- |-----------|-------|---|
-| Temperatura         | temp          |  degC     |  0    |100|
+Jako Konstruktor można utworzyć szablony urządzeń za pomocą kilku opcji:
 
-![Formularz "Utwórz telemetrię" ze szczegółami pomiaru temperatury](./media/howto-set-up-template/measurementsform.png)
+- Zaprojektuj szablon urządzenia w IoT Central, a następnie Zaimplementuj jego model możliwości urządzenia w kodzie urządzenia.
+- Zaimportuj model możliwości urządzenia z [wykazu urządzeń z certyfikatem platformy Azure dla IoT](https://aka.ms/iotdevcat). Następnie Dodaj wszystkie właściwości i dostosowania chmury oraz pulpity nawigacyjne, których potrzebujesz IoT Central aplikacji.
+- Utwórz model możliwości urządzenia przy użyciu Visual Studio Code. Zaimplementuj swój kod urządzenia z modelu. Ręcznie zaimportuj model możliwości urządzenia do aplikacji IoT Central, a następnie Dodaj wszystkie właściwości, dostosowania i pulpity nawigacyjne, których potrzebuje aplikacja IoT Central.
+- Utwórz model możliwości urządzenia przy użyciu Visual Studio Code. Zaimplementuj swój kod urządzenia z modelu, a następnie połącz rzeczywiste urządzenie z aplikacją IoT Central przy użyciu połączenia urządzenia po raz pierwszy. IoT Central odnajduje i importuje model możliwości urządzenia z repozytorium publicznego. Następnie można dodać wszystkie właściwości, dostosowania i pulpity nawigacyjne, których aplikacja IoT Central musi być szablonem urządzenia.
 
-Po wybraniu opcji **Zapisz**pomiar **temperatury** pojawia się na liście pomiarów. W krótkim czasie widzisz wizualizację danych temperatury z symulowanego urządzenia.
+## <a name="create-a-device-template-from-the-device-catalog"></a>Tworzenie szablonu urządzenia z poziomu katalogu urządzeń
 
-Podczas wyświetlania telemetrii można wybrać jedną z następujących opcji agregacji: Average, minimum, maksimum, sum i Count. **Średnia** jest wybierana jako agregacja domyślna na wykresie.
+Jako Konstruktor możesz szybko rozpocząć tworzenie rozwiązania przy użyciu certyfikatu usługi IoT Plug and Play (wersja zapoznawcza). Zapoznaj się z listą w [wykazie urządzeń Azure IoT](https://catalog.azureiotsolutions.com/alldevices). IoT Central integrują się z katalogiem urządzeń, aby można było zaimportować model możliwości urządzenia z dowolnego z tych urządzeń z certyfikatem certyfikowanym Plug and Play IoT (wersja zapoznawcza). Aby utworzyć szablon urządzenia na podstawie jednego z tych urządzeń w IoT Central:
 
-> [!NOTE]
-> Typ danych pomiaru telemetrii jest liczbą zmiennoprzecinkową.
+1. Przejdź do strony **Szablony urządzeń** w aplikacji IoT Central.
+1. Wybierz pozycję **+ Nowy**, a następnie wybierz dowolne z certyfikowanych urządzeń Plug and Play IoT (wersja zapoznawcza) z wykazu. IoT Central tworzy szablon urządzenia w oparciu o ten model możliwości urządzenia.
+1. Dodaj do szablonu urządzenia wszystkie właściwości, dostosowania lub widoki w chmurze.
+1. Wybierz pozycję **Publikuj** , aby udostępnić szablon dla operatorów do wyświetlania i łączenia urządzeń.
 
-### <a name="create-an-event-measurement"></a>Tworzenie pomiaru zdarzenia
+## <a name="create-a-device-template-from-scratch"></a>Tworzenie szablonu urządzenia od podstaw
 
-Aby dodać nowe pomiary zdarzeń, wybierz pozycję **+ Nowa miara** i wybierz pozycję **zdarzenie** jako typ pomiaru. Wprowadź szczegóły w formularzu **tworzenia zdarzenia** .
+Szablon urządzenia zawiera:
 
-Podaj **nazwę wyświetlaną**, **nazwę pola**i szczegóły **ważności** zdarzenia. Można wybrać spośród trzech dostępnych poziomów ważności: **błąd**, **Ostrzeżenie**i **informacje**.
+- _Model możliwości urządzenia_ określający dane telemetryczne, właściwości i polecenia implementowane przez urządzenie. Te możliwości są zorganizowane w jeden lub więcej interfejsów.
+- _Właściwości chmury_ definiujące informacje o urządzeniach, które IoT Central aplikacji. Na przykład właściwość chmury może rejestrować datę ostatniej obsługi urządzenia. Te informacje nigdy nie są udostępniane na urządzeniu.
+- _Dostosowania_ pozwalają konstruktorowi zastępować niektóre definicje w modelu możliwości urządzenia. Na przykład Konstruktor może zastąpić nazwę właściwości urządzenia. Nazwy właściwości są wyświetlane na IoT Central pulpitów nawigacyjnych i formularzach.
+- _Pulpity nawigacyjne i formularze_ umożliwiają konstruktorowi Tworzenie interfejsu użytkownika, który umożliwia operatorom monitorowanie i zarządzanie urządzeniami podłączonymi do aplikacji.
 
-Na przykład można dodać nowe zdarzenie błędu dla usługi **wentylator** .
+Aby utworzyć szablon urządzenia w IoT Central:
 
-| Nazwa wyświetlana        | Nazwa pola    |  Domyślna ważność |
-| --------------------| ------------- |-----------|
-| Błąd silnika wentylatora     | fanmotorerror |  Błąd    |
+1. Przejdź do strony **Szablony urządzeń** w aplikacji IoT Central.
+1. Wybierz pozycję **+ nowy** > **niestandardowe**.
+1. Wprowadź nazwę szablonu, na przykład **czujnik środowiska**.
+1. Naciśnij klawisz **Enter**. IoT Central tworzy pusty szablon urządzenia.
 
-![Formularz "Tworzenie zdarzenia" zawierający szczegóły dotyczące zdarzenia wentylatoru](./media/howto-set-up-template/eventmeasurementsform.png)
+## <a name="manage-a-device-template"></a>Zarządzanie szablonem urządzenia
 
-Po wybraniu opcji **Zapisz**na liście pomiarów zostanie wyświetlona pozycja **błędu silnika wentylatorów** . W krótkim czasie zobaczysz wizualizację danych zdarzenia z symulowanego urządzenia.
+Można zmienić nazwę szablonu lub usunąć go ze strony głównej szablonu.
 
-Aby wyświetlić więcej szczegółów dotyczących zdarzenia, wybierz ikonę zdarzenia na wykresie:
+Po dodaniu modelu możliwości urządzenia do szablonu można go opublikować. Dopóki szablon nie zostanie opublikowany, nie można połączyć urządzenia na podstawie tego szablonu, aby operatory były widoczne na stronie **urządzenia** .
 
-![Szczegóły dotyczące zdarzenia "wentylator Motor" (błąd)](./media/howto-set-up-template/eventmeasurementsdetail.png)
+## <a name="create-a-capability-model"></a>Tworzenie modelu możliwości
 
-> [!NOTE]
-> Typ danych pomiaru zdarzenia to ciąg.
+Aby utworzyć model możliwości urządzenia, możesz:
 
-### <a name="create-a-state-measurement"></a>Utwórz pomiar stanu
+- Użyj IoT Central, aby utworzyć niestandardowy model od podstaw.
+- Importuj model z pliku JSON. Konstruktor urządzeń mógł używać Visual Studio Code do tworzenia modelu możliwości urządzenia dla aplikacji.
+- Wybierz jedno z urządzeń z katalogu urządzeń. Ta opcja Importuje model możliwości urządzenia Opublikowany przez producenta dla tego urządzenia. Model możliwości urządzenia zaimportowany jak ten jest automatycznie publikowany.
 
-Aby dodać nową miarę stanu, wybierz przycisk **+ nowy pomiar** i wybierz pozycję **stan** jako typ pomiaru. Wprowadź szczegóły w formularzu **tworzenia stanu** .
+## <a name="manage-a-capability-model"></a>Zarządzanie modelem możliwości
 
-Podaj szczegółowe informacje o **nazwie wyświetlanej**, **nazwie pola**i **wartościach** stanu. Każda wartość może mieć również nazwę wyświetlaną, która będzie używana, gdy wartość pojawia się na wykresach i tabelach.
+Po utworzeniu modelu możliwości urządzenia można:
 
-Na przykład można dodać nowy stan **trybu wentylator** , który ma dwie możliwe wartości, które urządzenie może wysyłać, **działać** i **zatrzymać**.
+- Dodaj interfejsy do modelu. Model musi mieć co najmniej jeden interfejs.
+- Edytuj metadane modelu, takie jak jego identyfikator, przestrzeń nazw i nazwa.
+- Usuń model.
 
-| Nazwa wyświetlana | Nazwa pola    |  Wartość 1   | Nazwa wyświetlana | Wartość 2    |Nazwa wyświetlana  |
-| -------------| ------------- |----------- | -------------| -----------| -------------|
-| Tryb wentylatora     | fanmode       |  1         | Działa    |     0      | Zatrzymane      |
+## <a name="create-an-interface"></a>Tworzenie interfejsu
 
-![Formularz "Edytuj stan" z szczegółowymi informacjami na temat trybu wentylatorów](./media/howto-set-up-template/statemeasurementsform.png)
+Możliwość urządzenia musi mieć co najmniej jeden interfejs. Interfejs jest kolekcją możliwości wielokrotnego użytku.
 
-Po wybraniu opcji **Zapisz**pomiar stanu **trybu wentylatoru** pojawia się na liście pomiarów. W krótkim czasie widzisz wizualizację danych stanu z symulowanego urządzenia.
+Aby utworzyć interfejs:
 
-Jeśli urządzenie wysyła zbyt wiele punktów danych w niewielkim czasie, pomiar stanu jest wyświetlany z inną wizualizacją. Wybierz wykres, aby wyświetlić wszystkie punkty danych w tym okresie w kolejności chronologicznej. Możesz również zawęzić zakres czasu, aby zobaczyć pomiar wykreślony na wykresie.
+1. Przejdź do modelu możliwości urządzenia i wybierz pozycję **+ Dodaj interfejs**.
 
-> [!NOTE]
-> Typ danych pomiaru stanu to ciąg.
+1. Na stronie **Wybieranie interfejsu** można:
 
-### <a name="create-a-location-measurement"></a>Utwórz miarę lokalizacji
+    - Utwórz niestandardowy interfejs od podstaw.
+    - Importuj istniejący interfejs z pliku. Konstruktor urządzeń mógł używać Visual Studio Code do tworzenia interfejsu dla urządzenia.
+    - Wybierz jeden z standardowych interfejsów, takich jak interfejs **informacji o urządzeniu** . Interfejsy standardowe określają możliwości typowe dla wielu urządzeń. Te standardowe interfejsy są publikowane przez usługę Azure IoT i nie mogą być w wersji ani edytowane.
 
-Aby dodać nowe pomiary lokalizacji, wybierz pozycję **+ nowy pomiar**, wybierz pozycję **Lokalizacja** jako typ pomiaru, a następnie wprowadź szczegóły w formularzu **Utwórz pomiar** .
+1. Po utworzeniu interfejsu wybierz opcję **Edytuj tożsamość** , aby zmienić nazwę wyświetlaną interfejsu.
 
-Na przykład możesz dodać nową miarę dane telemetrii lokalizacji:
+1. Jeśli zdecydujesz się utworzyć interfejs niestandardowy od podstaw, możesz dodać możliwości urządzenia. Możliwości urządzenia to dane telemetryczne, właściwości i polecenia.
 
-| Nazwa wyświetlana        | Nazwa pola    |
-| --------------------| ------------- |
-| Lokalizacja zasobu      |  assetloc     |
+### <a name="telemetry"></a>Telemetria
 
-![Formularz "Tworzenie lokalizacji" zawierający szczegóły pomiaru lokalizacji](./media/howto-set-up-template/locationmeasurementsform.png)
+Telemetrię jest strumieniem wartości wysyłanych z urządzenia, zazwyczaj z czujnika. Na przykład czujnik może zgłosić temperaturę otoczenia.
 
-Po wybraniu opcji **Zapisz**pomiar **lokalizacji** pojawia się na liście pomiarów. W krótkim czasie zobaczysz wizualizację danych lokalizacji z symulowanego urządzenia.
+W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji telemetrii:
 
-Podczas wyświetlania lokalizacji można wybrać jedną z następujących opcji: Najnowsza historia lokalizacji i lokalizacji. **Historia lokalizacji** jest stosowana tylko w wybranym zakresie czasu.
+| Pole | Opis |
+| ----- | ----------- |
+| Nazwa wyświetlana | Nazwa wyświetlana wartości telemetrii używanej na pulpitach nawigacyjnych i formularzach. |
+| Nazwa | Nazwa pola w komunikacie telemetrii. IoT Central generuje wartość dla tego pola z nazwy wyświetlanej, ale w razie potrzeby można wybrać własną wartość. |
+| Typ możliwości | Telemetrii. |
+| Typ semantyczny | Typ semantyczny telemetrii, taki jak temperatura, stan lub zdarzenie. Wybór typu semantycznego określa, które z poniższych pól są dostępne. |
+| Schemat | Typ danych telemetrii, taki jak Double, String lub Vector. Dostępne opcje są określane przez typ semantyczny. Schemat nie jest dostępny dla typów semantyki zdarzenia i stanu. |
+| Ważność | Dostępne tylko dla typu semantycznego zdarzenia. Te informacje dotyczą **błędu**, **informacji**lub **ostrzeżenia**. |
+| Wartości stanu | Dostępne tylko dla typu semantyki stanu. Zdefiniuj możliwe wartości stanu, z których każdy ma nazwę wyświetlaną, nazwę, typ wyliczenia i wartość. |
+| Jednostka | Jednostka wartości telemetrii, taka jak **mph**, **%** lub **&deg;C**. |
+| Jednostka wyświetlania | Jednostka wyświetlania do użycia na pulpitach nawigacyjnych i formularzach. |
+| Komentarz | Wszelkie komentarze dotyczące funkcji telemetrii. |
+| Opis | Opis możliwości telemetrii. |
 
-Typ danych pomiaru lokalizacji jest obiektem, który zawiera wartości długości geograficznej, szerokości geograficznej i opcjonalnej wysokości. Poniższy fragment kodu przedstawia strukturę JavaScript:
+### <a name="properties"></a>Właściwości
 
-```javascript
-assetloc: {
-  lon: floating point number,
-  lat: floating point number,
-  alt?: floating point number
-}
-```
+Właściwości reprezentują wartości punktu w czasie. Na przykład urządzenie może użyć właściwości do raportowania temperatury docelowej, do której próbujesz uzyskać dostęp. Można ustawić właściwości do zapisu z IoT Central.
 
-Po nawiązaniu połączenia rzeczywistej lokalizacji dodanej w polu pomiar zostanie zaktualizowany przy użyciu wartości wysyłanej przez urządzenie. Po skonfigurowaniu miary lokalizacji można [dodać mapę do wizualizacji lokalizacji na pulpicie nawigacyjnym urządzenia](#add-a-location-measurement-in-the-dashboard).
+W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji właściwości:
 
-## <a name="settings"></a>Ustawienia
+| Pole | Opis |
+| ----- | ----------- |
+| Nazwa wyświetlana | Nazwa wyświetlana wartości właściwości używanej na pulpitach nawigacyjnych i formularzach. |
+| Nazwa | Nazwa właściwości. IoT Central generuje wartość dla tego pola z nazwy wyświetlanej, ale w razie potrzeby można wybrać własną wartość. |
+| Typ możliwości | Wartość. |
+| Typ semantyczny | Typ semantyczny właściwości, taki jak temperatura, stan lub zdarzenie. Wybór typu semantycznego określa, które z poniższych pól są dostępne. |
+| Schemat | Typ danych właściwości, taki jak Double, String lub Vector. Dostępne opcje są określane przez typ semantyczny. Schemat nie jest dostępny dla typów semantyki zdarzenia i stanu. |
+| Zapisywalny | Jeśli właściwość nie jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central. Jeśli właściwość jest zapisywalna, urządzenie może raportować wartości właściwości do IoT Central i IoT Central może wysyłać do urządzenia aktualizacje właściwości.
+| Ważność | Dostępne tylko dla typu semantycznego zdarzenia. Te informacje dotyczą **błędu**, **informacji**lub **ostrzeżenia**. |
+| Wartości stanu | Dostępne tylko dla typu semantyki stanu. Zdefiniuj możliwe wartości stanu, z których każdy ma nazwę wyświetlaną, nazwę, typ wyliczenia i wartość. |
+| Jednostka | Jednostka wartości właściwości, takiej jak **mph**, **%** lub **&deg;C**. |
+| Jednostka wyświetlania | Jednostka wyświetlania do użycia na pulpitach nawigacyjnych i formularzach. |
+| Komentarz | Wszelkie komentarze dotyczące możliwości właściwości. |
+| Opis | Opis możliwości właściwości. |
 
-Ustawienia kontrolują urządzenie. Umożliwiają operatorom udostępnianie danych wejściowych na urządzeniu. Do szablonu urządzenia można dodać wiele ustawień, które są wyświetlane jako kafelki na karcie **Ustawienia** dla operatorów do użycia. Można dodać wiele typów ustawień: liczbę, tekst, datę, przełącznik i etykietę sekcji.
+### <a name="commands"></a>Polecenia
 
-Ustawienia mogą być w jednym z trzech stanów. Urządzenie zgłasza te Stany.
+Polecenia urządzenia można wywołać z IoT Central. Polecenia opcjonalne umożliwiają przekazywanie parametrów do urządzenia i odbieranie odpowiedzi z urządzenia. Na przykład można wywołać polecenie, aby ponownie uruchomić urządzenie w ciągu 10 sekund.
 
-- **Zsynchronizowano**: urządzenie zostało zmienione w celu odzwierciedlenia wartości ustawienia.
+W poniższej tabeli przedstawiono ustawienia konfiguracji dla funkcji polecenia:
 
-- **Oczekujące**: urządzenie jest obecnie zmieniane na wartość ustawienia.
+| Pole | Opis |
+| ----- | ----------- |
+| Nazwa wyświetlana | Nazwa wyświetlana polecenia użyta na pulpitach nawigacyjnych i formularzach. |
+| Nazwa | Nazwa polecenia. IoT Central generuje wartość dla tego pola z nazwy wyświetlanej, ale w razie potrzeby można wybrać własną wartość. |
+| Typ możliwości | Dotyczące. |
+| Polecenie | `SynchronousExecutionType`. |
+| Komentarz | Wszelkie komentarze dotyczące funkcji polecenia. |
+| Opis | Opis możliwości polecenia. |
+| Prośba | Jeśli ta funkcja jest włączona, definicja parametru żądania, w tym: nazwa, nazwa wyświetlana, schemat, jednostka i jednostka wyświetlania. |
+| Odpowiedź | Jeśli ta funkcja jest włączona, definicja odpowiedzi polecenia, w tym: nazwa, nazwa wyświetlana, schemat, jednostka i jednostka wyświetlania. |
 
-- **Błąd**: urządzenie zwróciło błąd.
+## <a name="manage-an-interface"></a>Zarządzanie interfejsem
 
-Na przykład możesz dodać nowe ustawienie szybkości wentylatorów, wybierając pozycję **Ustawienia** i wprowadzając nowe ustawienie **numeru** :
+Jeśli interfejs nie został opublikowany, można edytować możliwości zdefiniowane przez interfejs. Po opublikowaniu interfejsu, jeśli chcesz wprowadzić zmiany, musisz utworzyć nową wersję szablonu urządzenia i wersję interfejsu. W sekcji **Dostosowywanie** można wprowadzać zmiany, które nie wymagają przechowywania wersji, takie jak nazwy wyświetlane lub jednostki.
 
-| Nazwa wyświetlana  | Nazwa pola    |  Jednostki  | miejsca dziesiętne |Początkowego|
-| --------------| ------------- |---------| ---------|---- |
-| Szybkość wentylatorów     | fanSpeed      | RPM     | 2        | 0   |
+Możesz również wyeksportować interfejs jako plik JSON, jeśli chcesz użyć go ponownie w innym modelu możliwości.
 
-![Formularz "Konfiguruj numer" z informacjami o ustawieniach szybkości](./media/howto-set-up-template/settingsform.png)
+## <a name="add-cloud-properties"></a>Dodawanie właściwości chmury
 
-Po wybraniu opcji **Zapisz**ustawienie **szybkość wentylatoru** pojawia się jako kafelek. Operator może użyć ustawienia na stronie **Device Explorer** , aby zmienić szybkość wentylatorów urządzenia.
+Właściwości chmury służą do przechowywania informacji o urządzeniach w IoT Central. Właściwości chmury nigdy nie są wysyłane do urządzenia. Na przykład można użyć właściwości chmury do przechowywania nazwy klienta, który zainstalował urządzenie, lub daty jego ostatniej usługi.
 
-## <a name="properties"></a>Właściwości
+W poniższej tabeli przedstawiono ustawienia konfiguracji dla właściwości chmury:
 
-Właściwości to metadane skojarzone z urządzeniem, takie jak stała lokalizacja urządzenia i numer seryjny. Dodaj do szablonu urządzenia wiele właściwości, które są wyświetlane jako kafelki na karcie **Właściwości** . Właściwość ma typ, taki jak liczba, tekst, Data, przełącznik, Właściwość urządzenia, etykieta lub stała lokalizacja. Operator określa wartości właściwości podczas tworzenia urządzenia i można je edytować w dowolnym momencie. Właściwości urządzenia są tylko do odczytu i są wysyłane z urządzenia do aplikacji. Operator nie może zmienić właściwości urządzenia. Po nawiązaniu połączenia z rzeczywistym urządzeniem kafelek właściwości urządzenia jest aktualizowany w aplikacji.
+| Pole | Opis |
+| ----- | ----------- |
+| Nazwa wyświetlana | Nazwa wyświetlana wartości właściwości chmury używanej na pulpitach nawigacyjnych i formularzach. |
+| Nazwa | Nazwa właściwości chmury. IoT Central generuje wartość dla tego pola z nazwy wyświetlanej, ale w razie potrzeby można wybrać własną wartość. |
+| Typ semantyczny | Typ semantyczny właściwości, taki jak temperatura, stan lub zdarzenie. Wybór typu semantycznego określa, które z poniższych pól są dostępne. |
+| Schemat | Typ danych właściwości chmury, taki jak Double, String lub Vector. Dostępne opcje są określane przez typ semantyczny. |
 
-Są dostępne dwie kategorie właściwości:
+## <a name="add-customizations"></a>Dodawanie dostosowań
 
-- _Właściwości urządzenia_ , które urządzenie raportuje do aplikacji IoT Central. Właściwości urządzenia są wartościami tylko do odczytu raportowanymi przez urządzenie i są aktualizowane w aplikacji, gdy jest połączone rzeczywiste urządzenie.
-- _Właściwości aplikacji_ , które są przechowywane w aplikacji i mogą być edytowane przez operatora. Właściwości aplikacji są przechowywane tylko w aplikacji i nigdy nie są wyświetlane przez urządzenie.
+Dostosowań należy używać w przypadku konieczności modyfikacji zaimportowanego interfejsu lub dodania funkcji specyficznych dla IoT Central do funkcji. Można dostosować tylko pola, które nie łamią zgodności interfejsów. Możesz na przykład:
 
-Na przykład można dodać datę ostatniego serwisu dla urządzenia jako nową właściwość **Date** (Właściwość aplikacji) na karcie **Właściwości** :
+- Dostosuj nazwę wyświetlaną i jednostki możliwości.
+- Dodaj domyślny kolor, który ma być używany, gdy wartość pojawia się na wykresie.
+- Określ początkową, minimalną i maksymalną wartość właściwości.
 
-| Nazwa wyświetlana  | Nazwa pola | Wartość początkowa   |
-| --------------| -----------|-----------------|
-| Ostatnio serwisowane      | lastServiced        | 01/29/2019     |
+Nie można dostosować nazwy możliwości ani typu możliwości. Jeśli istnieją zmiany, których nie można wprowadzić w sekcji **Dostosowywanie** , musisz zmienić wersję szablonu i interfejsu urządzenia, aby zmodyfikować tę możliwość.
 
-![Formularz "Konfigurowanie ostatniego serwisu" na karcie "właściwości"](./media/howto-set-up-template/propertiesform.png)
+### <a name="generate-default-views"></a>Generuj widoki domyślne
 
-Po wybraniu opcji **Zapisz**jako kafelek zostanie wyświetlona data ostatniej obsługi urządzenia.
+Generowanie widoków domyślnych to szybki sposób wizualizacji ważnych informacji o urządzeniu. Istnieje maksymalnie trzy widoki domyślne wygenerowane dla szablonu urządzenia:
 
-Po utworzeniu kafelka można zmienić wartość właściwości aplikacji w **Device Explorer**.
+- **Polecenia** udostępniają widok z poleceniami urządzenia i umożliwiają operatorowi wysyłanie ich do urządzenia.
+- **Przegląd** zawiera widok z danymi telemetrycznymi urządzeń, wyświetlanie wykresów i metryk.
+- Informacje **o** programie zawierają informacje o urządzeniu, wyświetlając właściwości urządzenia.
 
-### <a name="create-a-location-property"></a>Utwórz Właściwość Location
+Po wybraniu opcji **Generuj domyślne widoki**zobaczysz, że zostały one automatycznie dodane w sekcji **widoki** szablonu urządzenia.
 
-Kontekst geograficzny można nadać dane lokalizacji na platformie Azure IoT Central i zamapować wszystkie współrzędne szerokości geograficznej i długości geograficznej lub ulicę. Azure Maps włącza tę możliwość w IoT Central.
+## <a name="add-dashboards"></a>Dodaj pulpity nawigacyjne
 
-Można dodać dwa typy właściwości lokalizacji:
+Dodaj pulpity nawigacyjne do szablonu urządzenia, aby umożliwić operatorom wizualizację urządzenia za pomocą wykresów i metryk. Dla szablonu urządzenia można mieć wiele pulpitów nawigacyjnych.
 
-- **Lokalizacja jako właściwość aplikacji**, która jest przechowywana w aplikacji. Właściwości aplikacji są przechowywane tylko w aplikacji i nigdy nie są wyświetlane przez urządzenie.
-- **Lokalizacja jako właściwość urządzenia**, która jest raportowana przez urządzenie do aplikacji. Tego typu właściwości najlepiej używać w przypadku lokalizacji statycznej.
+Aby dodać pulpit nawigacyjny do szablonu urządzenia:
 
-> [!NOTE]
-> Lokalizacja jako właściwość nie rejestruje historii. Jeśli wymagana jest historia, użyj miary lokalizacji.
+1. Przejdź do szablonu urządzenia i wybierz pozycję **widoki**.
+1. Wybierz **wizualizację urządzenia**.
+1. Wprowadź nazwę pulpitu nawigacyjnego w polu **Nazwa pulpitu nawigacyjnego**.
+1. Dodaj kafelki do pulpitu nawigacyjnego z listy kafelków statycznej, właściwości, chmury, telemetrii i poleceń. Przeciągnij i upuść kafelki, które chcesz dodać do pulpitu nawigacyjnego.
+1. Aby wykreolić wiele wartości telemetrii na pojedynczym kafelku wykresu, wybierz wartości telemetryczne, a następnie wybierz pozycję **Połącz**.
+1. Skonfiguruj wszystkie dodawane kafelki, aby dostosować sposób wyświetlania danych. Możesz to zrobić, wybierając ikonę koła zębatego lub wybierając pozycję **Zmień konfigurację** na kafelku wykresu.
+1. Rozmieść kafelki na pulpicie nawigacyjnym i zmień ich rozmiar.
+1. Zapisz zmiany.
 
-#### <a name="add-location-as-an-application-property"></a>Dodaj lokalizację jako właściwość aplikacji
+### <a name="configure-preview-device-to-view-dashboard"></a>Konfigurowanie urządzenia w wersji zapoznawczej do wyświetlania pulpitu nawigacyjnego
 
-Właściwość Location można utworzyć jako właściwość aplikacji przy użyciu Azure Maps w aplikacji IoT Central. Można na przykład dodać adres instalacji urządzenia:
+Aby wyświetlić i przetestować pulpit nawigacyjny, wybierz pozycję **Konfiguruj urządzenie w wersji zapoznawczej**. Dzięki temu pulpit nawigacyjny będzie widoczny po opublikowaniu. Użyj tej opcji, aby sprawdzić, czy w widokach są wyświetlane poprawne dane. Można wybrać jedną z następujących opcji:
 
-1. Przejdź do karty **Właściwości** .
+- Brak urządzenia w wersji zapoznawczej.
+- Rzeczywiste urządzenie testowe skonfigurowane dla szablonu urządzenia.
+- Istniejące urządzenie w aplikacji, używając identyfikatora urządzenia.
 
-2. W bibliotece wybierz pozycję **Lokalizacja**.
+## <a name="add-forms"></a>Dodawanie formularzy
 
-3. Skonfiguruj **nazwę wyświetlaną**, **nazwę pola**i (opcjonalnie) **początkową wartość** lokalizacji.
+Dodaj formularze do szablonu urządzenia, aby umożliwić operatorom zarządzanie urządzeniem przez wyświetlanie i Ustawianie właściwości. Operatory mogą edytować tylko właściwości chmury i zapisywalne właściwości urządzeń. Dla szablonu urządzenia można mieć wiele formularzy.
 
-    | Nazwa wyświetlana  | Nazwa pola | Wartość początkowa |
-    | --------------| -----------|---------|
-    | Adres instalacyjny | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
+Aby dodać formularz do szablonu urządzenia:
 
-   ![Formularz "Konfigurowanie lokalizacji" z informacjami o lokalizacji](./media/howto-set-up-template/locationcloudproperty2.png)
+1. Przejdź do szablonu urządzenia i wybierz pozycję **widoki**.
+1. Wybierz pozycję **Edytowanie urządzenia i dane w chmurze**.
+1. Wprowadź nazwę formularza w polu **nazwa formularza**.
+1. Wybierz liczbę kolumn, które mają być używane do układania formularza.
+1. Dodaj właściwości do istniejącej sekcji w formularzu lub wybierz pozycję Właściwości, a następnie wybierz pozycję **Dodaj sekcję**. Użyj sekcji, aby grupować właściwości w formularzu. Możesz dodać tytuł do sekcji.
+1. Skonfiguruj każdą właściwość w formularzu, aby dostosować jej zachowanie.
+1. Rozmieść właściwości w formularzu.
+1. Zapisz zmiany.
 
-   Istnieją dwa formaty obsługiwane do dodawania lokalizacji:
-   - **Lokalizacja jako adres**
-   - **Lokalizacja jako współrzędne**
+## <a name="publish-a-device-template"></a>Publikowanie szablonu urządzenia
 
-4. Wybierz pozycję **Zapisz**. Operator może zaktualizować wartość lokalizacji w **Device Explorer**.
+Aby można było połączyć urządzenie, które implementuje model możliwości urządzenia, należy opublikować szablon urządzenia.
 
-#### <a name="add-location-as-a-device-property"></a>Dodaj lokalizację jako właściwość urządzenia
+Po opublikowaniu szablonu urządzenia można wprowadzać tylko ograniczone zmiany w modelu możliwości urządzenia. Aby zmodyfikować interfejs, należy [utworzyć i opublikować nową wersję](./howto-version-device-template.md).
 
-Właściwość Location można utworzyć jako właściwość urządzenia zgłaszanego przez urządzenie. Na przykład jeśli chcesz śledzić lokalizację urządzenia:
+Aby opublikować szablon urządzenia, przejdź do szablonu urządzenia i wybierz pozycję **Publikuj**.
 
-1. Przejdź do karty **Właściwości** .
+Po opublikowaniu szablonu urządzenia operator może przejść do strony **urządzenia** i dodać rzeczywiste lub symulowane urządzenia, które używają szablonu urządzenia. Możesz nadal modyfikować i zapisywać szablon urządzenia w miarę wprowadzania zmian. Aby wypchnąć te zmiany do operatora w celu wyświetlenia na stronie **urządzenia** , należy wybrać opcję **Publikuj** za każdym razem.
 
-2. Wybierz pozycję **Właściwość urządzenia** z biblioteki.
-
-3. Skonfiguruj nazwę wyświetlaną i nazwę pola, a następnie wybierz pozycję **Lokalizacja** jako typ danych:
-
-    | Nazwa wyświetlana  | Nazwa pola | Typ danych |
-    | --------------| -----------|-----------|
-    | Lokalizacja urządzenia | deviceLocation | location  |
-
-   > [!NOTE]
-   > Nazwy pól muszą być zgodne z nazwami właściwości w odpowiednim kodzie urządzenia
-
-   ![Formularz "Konfigurowanie właściwości urządzenia" z informacjami o lokalizacji](./media/howto-set-up-template/locationdeviceproperty2.png)
-
-Po nawiązaniu połączenia z rzeczywistym urządzeniem lokalizacja dodana jako właściwość urządzenia jest aktualizowana przy użyciu wartości wysyłanej przez urządzenie. Po skonfigurowaniu właściwości Location można [dodać mapę do wizualizacji lokalizacji na pulpicie nawigacyjnym urządzenia](#add-a-location-property-in-the-dashboard).
-
-## <a name="commands"></a>Polecenia
-
-Polecenia służą do zdalnego zarządzania urządzeniem. Umożliwiają operatorom uruchamianie poleceń na urządzeniu. Do szablonu urządzenia można dodać wiele poleceń, które są wyświetlane jako kafelki na karcie **polecenia** dla operatorów do użycia. Jako Konstruktor urządzenia masz elastyczność definiowania poleceń zgodnie z wymaganiami.
-
-Czym różni się polecenie od ustawienia?
-
-- **Ustawienie**: ustawienie to konfiguracja, która ma zostać zastosowana do urządzenia. Urządzenie ma zachować tę konfigurację do momentu jego zmiany. Na przykład, chcesz ustawić temperaturę dla blokady i chcesz to ustawienie nawet po ponownym uruchomieniu blokady.
-
-- **Polecenie**: Użyj poleceń, aby natychmiast uruchomić polecenie na urządzeniu zdalnie z IoT Central. Jeśli urządzenie nie jest połączone, polecenie przejdzie w dół i zakończy się niepowodzeniem. Na przykład chcesz ponownie uruchomić urządzenie.
-
-Na przykład można dodać nowe polecenie **echo** , wybierając kartę **polecenia** , a następnie wybierając pozycję **+ nowe polecenie**i wprowadzając nowe szczegóły polecenia:
-
-| Nazwa wyświetlana  | Nazwa pola | Domyślny limit czasu | Typ danych |
-| --------------| -----------|---------------- | --------- |
-| Polecenie echo  | echo       |  30             | tekst      |
-
-![Formularz "Konfigurowanie polecenia" ze szczegółami dotyczącymi ECHA](./media/howto-set-up-template/commandsecho1.png)
-
-Po wybraniu opcji **Zapisz**polecenie **echo** pojawia się jako kafelek i jest gotowe do użycia z **Device Explorer** po nawiązaniu połączenia z rzeczywistym urządzeniem. Nazwy pól polecenia muszą być zgodne z nazwami właściwości w odpowiednim kodzie urządzenia w celu pomyślnego uruchomienia poleceń.
-
-[Poniżej znajduje się łącze do przykładowego kodu urządzenia C.](https://github.com/Azure/iot-central-firmware/blob/ad40358906aeb8f2040a822ba5292df866692c16/MXCHIP/mxchip_advanced/src/AzureIOTClient.cpp#L34)
-
-## <a name="rules"></a>Reguły
-
-Reguły umożliwiają operatorom monitorowanie urządzeń w czasie niemal rzeczywistym. Reguły automatycznie wywołują akcje, takie jak wysłanie wiadomości e-mail po wyzwoleniu reguły. Jeden typ reguły jest dostępny Dzisiaj:
-
-- **Reguła telemetrii**, która jest wyzwalana, gdy wybrana wartość telemetrii urządzenia przekroczy określony próg. [Dowiedz się więcej o regułach telemetrii](howto-create-telemetry-rules.md).
-
-## <a name="dashboard"></a>Pulpit nawigacyjny
-
-Pulpit nawigacyjny jest miejscem, w którym można wyświetlić informacje o urządzeniu. Jako Konstruktor Dodaj kafelki do tej strony, aby pomóc operatorom zrozumieć, jak działa urządzenie. Możesz dodać wiele typów kafelków pulpitu nawigacyjnego, takich jak obraz, wykres liniowy, wykres słupkowy, kluczowy wskaźnik wydajności (KPI), ustawienia i właściwości oraz etykieta.
-
-Na przykład możesz dodać kafelek **Ustawienia i właściwości** , aby wyświetlić wybrane wartości bieżących ustawień i właściwości, wybierając kartę **pulpit nawigacyjny** i kafelek z biblioteki:
-
-![Formularz "Konfigurowanie szczegółów urządzenia" z informacjami szczegółowymi dotyczącymi ustawień i właściwości](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
-
-Teraz, gdy operator przegląda pulpit nawigacyjny w **Device Explorer**, może zobaczyć kafelek.
-
-### <a name="add-a-location-measurement-in-the-dashboard"></a>Dodawanie pomiaru lokalizacji na pulpicie nawigacyjnym
-
-Jeśli skonfigurowano pomiar lokalizacji, można wizualizować lokalizację za pomocą mapy na pulpicie nawigacyjnym urządzenia. W przypadku pomiarów lokalizacji można wykreślić historię lokalizacji.
-
-1. Przejdź do karty **pulpit nawigacyjny** .
-
-1. Na pulpicie nawigacyjnym urządzenia wybierz pozycję **Mapuj** z biblioteki.
-
-1. Nadaj tytuł mapie. W poniższym przykładzie ustawiono **bieżącą lokalizację urządzenia**tytułowego. Następnie wybierz pomiar lokalizacji, który został wcześniej skonfigurowany na karcie **pomiary** . W poniższym przykładzie wybrano opcję pomiar **lokalizacji zasobu** :
-
-   ![Formularz "Konfigurowanie mapy" zawierający szczegóły dotyczące tytułu i właściwości](./media/howto-set-up-template/locationcloudproperty5map.png)
-
-1. Wybierz pozycję **Zapisz**. Kafelek Mapa teraz wyświetla wybraną lokalizację.
-
-Można zmienić rozmiar kafelka mapy. Gdy operator przegląda pulpit nawigacyjny w **Device Explorer**, wszystkie skonfigurowane kafelki pulpitu nawigacyjnego, w tym mapy lokalizacji, są widoczne.
-
-### <a name="add-a-location-property-in-the-dashboard"></a>Dodawanie właściwości Location na pulpicie nawigacyjnym
-
-Jeśli skonfigurowano Właściwość Location, można wizualizować lokalizację za pomocą mapy na pulpicie nawigacyjnym urządzenia.
-
-1. Przejdź do karty **pulpit nawigacyjny** .
-
-1. Na pulpicie nawigacyjnym urządzenia wybierz pozycję **Mapuj** z biblioteki.
-
-1. Nadaj tytuł mapie. W poniższym przykładzie ustawiono **bieżącą lokalizację urządzenia**tytułowego. Następnie wybierz właściwość Location, która została wcześniej skonfigurowana na karcie **Właściwości** . W poniższym przykładzie wybrano pomiar **lokalizacji urządzenia** :
-
-   ![Skonfiguruj formularz mapy z informacjami o tytule i właściwościach](./media/howto-set-up-template/locationcloudproperty6map.png)
-
-1. Wybierz pozycję **Zapisz**. Kafelek Mapa teraz wyświetla wybraną lokalizację.
-
-Można zmienić rozmiar kafelka mapy. Gdy operator przegląda pulpit nawigacyjny w **Device Explorer**, wszystkie skonfigurowane kafelki pulpitu nawigacyjnego, w tym mapy lokalizacji, są widoczne.
-
-Aby dowiedzieć się więcej na temat używania kafelków w usłudze Azure IoT Central, zobacz [Używanie kafelków pulpitu nawigacyjnego](howto-use-tiles.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy już wiesz, jak skonfigurować szablon urządzenia w aplikacji IoT Central platformy Azure, możesz:
+W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
-- [Utwórz nową wersję szablonu urządzenia](howto-version-device-template.md)
-- [Łączenie urządzenia zestawu deweloperskiego IoT DevKit z aplikacją usługi Azure IoT Central](howto-connect-devkit.md)
-- [Łączenie ogólnej aplikacji klienckiej z aplikacją usługi Azure IoT Central (Node. js)](howto-connect-nodejs.md)
+* Utwórz nowy szablon urządzenia IoT.
+* Utwórz właściwości chmury.
+* Utwórz dostosowania.
+* Zdefiniuj wizualizację dla danych telemetrycznych urządzenia.
+* Opublikuj szablon urządzenia.
+
+Następnie możesz:
+
+> [!div class="nextstepaction"]
+> [Łączenie urządzenia](howto-connect-devkit.md)

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 02/03/2020
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: ecc55c0d41f552d2c29fe5c964a7c40ab9e382ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bfc656911abf3349e03543e6bb668db977422738
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701386"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022634"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Instrukcje: Konfigurowanie logowania jednokrotnego w systemach macOS i iOS
 
@@ -71,7 +71,9 @@ Aby platforma tożsamości firmy Microsoft mogła dowiedzieć się, które aplik
 
 Sposób, w jaki platforma tożsamości firmy Microsoft informuje aplikacje, które używają tego samego identyfikatora aplikacji, jest przez ich **identyfikatory URI przekierowania**. Każda aplikacja może mieć wiele identyfikatorów URI przekierowania zarejestrowanych w portalu dołączania. Każda aplikacja w Twoim pakiecie będzie miała inny identyfikator URI przekierowania. Przykład:
 
-Identyfikator URI przekierowania APP1: `msauth.com.contoso.mytestapp1://auth` APP2 URI przekierowania: `msauth.com.contoso.mytestapp2://auth` APP3 URI przekierowania: `msauth.com.contoso.mytestapp3://auth`
+Identyfikator URI przekierowania APP1: `msauth.com.contoso.mytestapp1://auth`  
+Identyfikator URI przekierowania APP2: `msauth.com.contoso.mytestapp2://auth`  
+Identyfikator URI przekierowania APP3: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > Format identyfikatorów URI przekierowania musi być zgodny z formatem MSAL obsługuje, który jest udokumentowany w [wymaganiach dotyczących formatu identyfikatora URI przekierowania MSAL](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
@@ -96,6 +98,18 @@ Po poprawnym skonfigurowaniu uprawnień zobaczysz plik `entitlements.plist` w ka
 </plist>
 ```
 
+#### <a name="add-a-new-keychain-group"></a>Dodaj nową grupę pęku kluczy
+
+Dodaj nową grupę pęku kluczy do **możliwości**projektu. Grupa łańcucha kluczy powinna:
+* `com.microsoft.adalcache` w systemie iOS 
+* `com.microsoft.identity.universalstorage` w macOS.
+
+![przykład łańcucha kluczy](media/single-sign-on-macos-ios/keychain-example.png)
+
+Aby uzyskać więcej informacji, zobacz [grupy pęku kluczy](howto-v2-keychain-objc.md).
+
+## <a name="configure-the-application-object"></a>Konfigurowanie obiektu aplikacji
+
 Po włączeniu uprawnień łańcucha kluczy w każdej aplikacji i przygotowaniu się do korzystania z logowania jednokrotnego Skonfiguruj `MSALPublicClientApplication` z grupą dostępu łańcucha kluczy, tak jak w poniższym przykładzie:
 
 Cel-C:
@@ -113,16 +127,14 @@ Adres
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
 config.cacheConfig.keychainSharingGroup = "my.keychain.group"
-        
+
 do {
-    let application = try MSALPublicClientApplication(configuration: config)
-  // continue on with application          
+   let application = try MSALPublicClientApplication(configuration: config)
+  // continue on with application
 } catch let error as NSError {
   // handle error here
-}       
+}
 ```
-
-
 
 > [!WARNING]
 > Po udostępnieniu łańcucha kluczy w aplikacjach każda aplikacja może usuwać użytkowników, a nawet wszystkie tokeny w aplikacji.
@@ -206,7 +218,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
 ```
-    
+
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat [przepływów uwierzytelniania i scenariuszy aplikacji](authentication-flows-app-scenarios.md)

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 40c5f612b5b1571bb3d39f452d64a7005701f7c1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987674"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023807"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Tworzenie aplikacji IoT Central platformy Azure i zarządzanie nią z poziomu portalu CSP
 
@@ -23,25 +23,27 @@ Jako dostawca usług kryptograficznych możesz tworzyć Microsoft Azure aplikacj
 
 Aby rozpocząć, zaloguj się do swojego konta w portalu Microsoft Partner Portal i wybierz klienta, dla którego chcesz utworzyć aplikację IoT Central platformy Azure. Przejdź do usługi Service Management dla klienta z lewej strony nawigacyjnej.
 
-![Centrum partnerskie firmy Microsoft, widok klienta](media/howto-create-application-csp/image1.png)
+![Centrum partnerskie firmy Microsoft, widok klienta](media/howto-create-and-manage-applications-csp/image1.png)
 
 IoT Central platformy Azure jest wyświetlana jako usługa dostępna do administrowania. Wybierz link IoT Central platformy Azure na stronie, aby utworzyć nowe aplikacje lub zarządzać istniejącymi aplikacjami dla tego klienta.
 
-![Usługa Azure IoT Central dostępna do zarządzania](media/howto-create-application-csp/image2.png)
+![Usługa Azure IoT Central dostępna do zarządzania](media/howto-create-and-manage-applications-csp/image2.png)
 
 Na stronie Menedżer aplikacji IoT Central platformy Azure. Usługa Azure IoT Central utrzymuje kontekst, który pochodzi z Centrum partnerskiego firmy Microsoft i który został dostarczony do zarządzania tym konkretnym klientem. Ten komunikat jest wyświetlany w nagłówku strony Menedżera aplikacji. W tym miejscu możesz przejść do istniejącej aplikacji utworzonej wcześniej dla tego klienta, aby zarządzać lub utworzyć nową aplikację dla klienta.
 
-![Tworzenie Menedżera dla dostawców CSP](media/howto-create-application-csp/image3.png)
+![Tworzenie Menedżera dla dostawców CSP](media/howto-create-and-manage-applications-csp/image3.png)
 
 Aby utworzyć aplikację IoT Central platformy Azure, wybierz opcję **Kompiluj** w menu po lewej stronie. Wybierz jeden z szablonów branżowych lub wybierz **starszą aplikację** , aby utworzyć aplikację od podstaw. Spowoduje to załadowanie strony tworzenia aplikacji. Musisz ukończyć wszystkie pola na tej stronie, a następnie wybierz pozycję **Utwórz**. Znajdziesz więcej informacji na temat każdego z poniższych pól.
 
-![Tworzenie strony aplikacji dla dostawców CSP](media/howto-create-application-csp/image4.png)
+![Tworzenie strony aplikacji dla dostawców CSP](media/howto-create-and-manage-applications-csp/image4.png)
 
-![Tworzenie strony aplikacji dla dostawców CSP](media/howto-create-application-csp/image4-1.png)
+![Tworzenie strony aplikacji dla dostawców CSP](media/howto-create-and-manage-applications-csp/image4-1.png)
 
-![Tworzenie strony aplikacji dla informacji rozliczeniowych CSP](media/howto-create-application-csp/image4-2.png)
+![Tworzenie strony aplikacji dla informacji rozliczeniowych CSP](media/howto-create-and-manage-applications-csp/image4-2.png)
 
 ## <a name="pricing-plan"></a>Plan cenowy
+
+Możesz tworzyć aplikacje, które używają standardowego planu cen jako dostawcy usług kryptograficznych. Aby zaprezentować IoT Central platformy Azure klientom, możesz utworzyć aplikację, która korzysta z bezpłatnego planu cenowego. Dowiedz się więcej o planach cen bezpłatnych i standardowych na [stronie cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 Możesz tworzyć aplikacje, które używają standardowego planu cen jako dostawcy usług kryptograficznych. Aby zaprezentować IoT Central platformy Azure klientom, możesz utworzyć aplikację, która korzysta z bezpłatnego planu cenowego. Dowiedz się więcej o planach cen bezpłatnych i standardowych na [stronie cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
@@ -75,9 +77,6 @@ Aby dowiedzieć się więcej, zobacz [subskrypcje platformy Azure](https://docs.
 
 Wybierz [region lub lokalizację geograficzną, w](https://azure.microsoft.com/global-infrastructure/geographies/) której chcesz utworzyć aplikację IoT Central platformy Azure. Zazwyczaj należy wybrać region znajdujący się najbliżej Twoich urządzeń, aby uzyskać optymalną wydajność.
 
-> [!NOTE]
-> Szablony aplikacji w wersji zapoznawczej są obecnie dostępne tylko w lokalizacjach **Europy** i **Stany Zjednoczone** .
-
 Aby dowiedzieć się więcej, zobacz [regiony platformy Azure](https://azure.microsoft.com/global-infrastructure/regions/) i [usługa Azure lokalizacje geograficzne](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 Możesz zobaczyć regiony, w których usługa Azure IoT Central jest dostępna na stronie [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) .
@@ -87,11 +86,7 @@ Możesz zobaczyć regiony, w których usługa Azure IoT Central jest dostępna n
 
 ## <a name="application-template"></a>Szablon aplikacji
 
-Możesz wybrać Poniższy szablon aplikacji dla nowej aplikacji usługi Azure IoT Central.
-
-| Szablon aplikacji | Opis |
-| -------------------- | ----------- |
-| Starsza aplikacja   | Tworzy pustą aplikację, którą wypełnisz własnymi urządzeniami i szablonami urządzeń. |
+Wybierz szablon aplikacji, który ma być używany przez aplikację.
 
 
 ## <a name="next-steps"></a>Następne kroki

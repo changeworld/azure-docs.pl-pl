@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 6c539121914418f5373b333e9493e24f7769fa5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61df13e78dc7115d4f4d45ab18b9ffdae107dc96
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978991"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023263"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Tworzenie komunikacji równorzędnej sieci wirtualnej — różne modele wdrażania, ta sama subskrypcja
 
@@ -43,7 +43,7 @@ Za pomocą Azure Portal, [interfejsu wiersza polecenia](#cli) platformy Azure, [
 
 ## <a name="create-peering---azure-portal"></a>Tworzenie komunikacji równorzędnej — Azure Portal
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Konto, za pomocą którego logujesz się, musi mieć uprawnienia niezbędne do utworzenia komunikacji równorzędnej sieci wirtualnej. Listę uprawnień można znaleźć w temacie [uprawnienia komunikacji równorzędnej sieci wirtualnych](virtual-network-manage-peering.md#requirements-and-constraints).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com). Konto, za pomocą którego logujesz się, musi mieć uprawnienia niezbędne do utworzenia komunikacji równorzędnej sieci wirtualnej. Listę uprawnień można znaleźć w temacie [uprawnienia komunikacji równorzędnej sieci wirtualnych](virtual-network-manage-peering.md#requirements-and-constraints).
 2. Kliknij pozycję **+ Nowy**, kliknij pozycję **Sieć**, a następnie kliknij pozycję **Sieć wirtualna**.
 3. W bloku **Utwórz sieć wirtualną** wprowadź lub wybierz wartości dla następujących ustawień, a następnie kliknij pozycję **Utwórz**:
     - **Nazwa**: *myVnet1*
@@ -262,4 +262,4 @@ Po zakończeniu tego samouczka możesz chcieć usunąć zasoby utworzone w samou
 
 - Dokładnie zapoznaj się z ważnymi [ograniczeniami i zachowaniami komunikacji równorzędnej sieci wirtualnej](virtual-network-manage-peering.md#requirements-and-constraints) przed utworzeniem komunikacji równorzędnej sieci wirtualnej do użycia w środowisku produkcyjnym.
 - Dowiedz się więcej na temat wszystkich [ustawień komunikacji równorzędnej sieci wirtualnej](virtual-network-manage-peering.md#create-a-peering).
-- Dowiedz się, jak [utworzyć topologię sieci piasty i szprych](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) przy użyciu komunikacji równorzędnej sieci wirtualnych.
+- Dowiedz się, jak [utworzyć topologię sieci piasty i szprych](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) przy użyciu komunikacji równorzędnej sieci wirtualnych.

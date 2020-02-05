@@ -3,12 +3,12 @@ title: Tworzenie reguły Azure Load Balancer dla klastra
 description: Skonfiguruj Azure Load Balancer, aby otworzyć porty dla klastra Service Fabric platformy Azure.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351476"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025388"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otwieranie portów dla klastra Service Fabric
 
@@ -60,9 +60,9 @@ Polecenie interfejsu wiersza polecenia platformy Azure zawiera kilka parametrów
 
 
 >[!NOTE]
->Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Tworzenie modułu równoważenia obciążenia za pomocą interfejsu wiersza polecenia platformy Azure](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
+>Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Tworzenie modułu równoważenia obciążenia za pomocą interfejsu wiersza polecenia platformy Azure](../load-balancer/load-balancer-get-started-ilb-arm-cli.md).
 
-## <a name="powershell"></a>Program PowerShell
+## <a name="powershell"></a>PowerShell
 
 Program PowerShell jest nieco bardziej skomplikowany niż interfejs wiersza polecenia platformy Azure. Wykonaj następujące kroki koncepcyjne, aby utworzyć regułę:
 
@@ -96,7 +96,7 @@ $lb | Set-AzLoadBalancer
 W odniesieniu do `New-AzLoadBalancerRuleConfig` polecenie `-FrontendPort` reprezentuje port modułu równoważenia obciążenia dla połączeń zewnętrznych, a `-BackendPort` reprezentuje port, do którego nasłuchuje aplikacja usługi Service Fabric.
 
 >[!NOTE]
->Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia za pomocą programu PowerShell, zobacz [Tworzenie modułu równoważenia obciążenia za pomocą programu PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+>Aby uzyskać więcej informacji na temat tworzenia modułu równoważenia obciążenia za pomocą programu PowerShell, zobacz [Tworzenie modułu równoważenia obciążenia za pomocą programu PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

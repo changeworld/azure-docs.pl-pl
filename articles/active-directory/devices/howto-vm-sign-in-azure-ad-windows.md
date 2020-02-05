@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293457"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016038"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logowanie do maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu uwierzytelniania Azure Active Directory (wersja zapoznawcza)
 
@@ -85,7 +85,7 @@ Aby utworzyć maszynę wirtualną z systemem Windows Server 2019 Datacenter na p
 1. Zaloguj się do [Azure Portal](https://portal.azure.com)przy użyciu konta, które ma dostęp do tworzenia maszyn wirtualnych, a następnie wybierz pozycję **+ Utwórz zasób**.
 1. Wpisz **Windows Server** na pasku wyszukiwania portalu Marketplace.
    1. Kliknij pozycję **Windows Server** i wybierz opcję **Windows Server 2019 Datacenter** z listy rozwijanej wybierz plan oprogramowania.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 1. Na karcie Zarządzanie, Włącz opcję **Zaloguj się przy użyciu poświadczeń usługi AAD (wersja zapoznawcza)** w sekcji Azure Active Directory od pozycji wyłączone do **usługi.**
 1. Upewnij **się, że w sekcji**tożsamość jest ustawiona **tożsamość zarządzana przypisana przez system** . Ta akcja powinna nastąpić automatycznie po włączeniu logowania przy użyciu poświadczeń usługi Azure AD.
 1. Przejdź do reszty środowiska tworzenia maszyny wirtualnej. W tej wersji zapoznawczej konieczne będzie utworzenie nazwy użytkownika i hasła administratora dla maszyny wirtualnej.
@@ -239,9 +239,9 @@ Aby maszyna wirtualna mogła ukończyć proces przyłączania do usługi Azure A
 
    | Polecenie do uruchomienia | Oczekiwane dane wyjściowe |
    | --- | --- |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Popraw informacje o maszynie wirtualnej platformy Azure |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Prawidłowy identyfikator dzierżawy skojarzony z subskrypcją platformy Azure |
-   | zwinięcie-H Metadata: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Prawidłowy token dostępu wystawiony przez Azure Active Directory dla zarządzanej tożsamości przypisanej do tej maszyny wirtualnej |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/instance?api-version=2017-08-01"` | Popraw informacje o maszynie wirtualnej platformy Azure |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01"` | Prawidłowy identyfikator dzierżawy skojarzony z subskrypcją platformy Azure |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Prawidłowy token dostępu wystawiony przez Azure Active Directory dla zarządzanej tożsamości przypisanej do tej maszyny wirtualnej |
 
    > [!NOTE]
    > Token dostępu można zdekodować przy użyciu narzędzia, takiego jak [http://calebb.net/](http://calebb.net/). Sprawdź, czy identyfikator "AppID" w tokenie dostępu jest zgodny z zarządzaną tożsamością przypisaną do maszyny wirtualnej.

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760831"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026153"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkcje to informacje o akcjach i kontekście
 
@@ -132,6 +132,8 @@ Poniższe sekcje są typowymi rozwiązaniami dotyczącymi ulepszania funkcji wys
 Można poprawić zestawy funkcji, edytując je tak, aby były większe i bardziej gęste.
 
 Na przykład sygnatura czasowa do drugiego jest funkcją bardzo rozrzedzoną. Może być bardziej gęsty (efektywny) przez klasyfikowanie godzin do "rano", "środku dnia", "południka" itd.
+
+Informacje o lokalizacji również zwykle mają zalety tworzenia szerszych klasyfikacji. Na przykład współrzędne geograficzne długości geograficznej, takie jak: 47,67402 ° N, Long: 122,12154 ° W, jest zbyt precyzyjne i wymuszają model, aby poznać szerokość i długość geograficzną jako różne wymiary. Podczas próby personalizacji na podstawie informacji o lokalizacji pomocne jest grupowanie informacji o lokalizacji w większych sektorach. Prostym sposobem jest wybranie odpowiedniej dokładności zaokrąglania dla numerów lat, a także nałączenie szerokości i długości geograficznej do "obszarów" przez umieszczenie ich w jednym ciągu. Na przykład dobry sposób reprezentowania 47,67402 ° N, Long: 122,12154 ° w regionach około kilku kilometrów o szerokości "Location": "34.3, 12,1".
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Rozwiń zestawy funkcji z ekstrapolacją informacji

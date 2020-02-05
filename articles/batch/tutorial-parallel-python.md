@@ -2,20 +2,20 @@
 title: Uruchamianie równoległego obciążenia — usługa Azure Batch dla środowiska Python
 description: Samouczek — Równoległe przetwarzanie plików multimedialnych przy użyciu narzędzia ffmpeg w usłudze Azure Batch z zastosowaniem biblioteki klienta Batch Python
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: bc73c3c40754d1c3eeb6c86f6c9578047a22d73e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: d4277e383a5cb69ef5395cb6dc477d888abd1d0d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029252"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023093"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API Python
 
@@ -144,7 +144,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="upload-input-files"></a>Przekazywanie plików wejściowych
 
-W aplikacji odwołanie `blob_client` jest używane do utworzenia kontenera magazynu dla plików wejściowych w formacie MP4 oraz kontenera dla danych wyjściowych zadań podrzędnych. Następnie wywoływana jest funkcja `upload_file_to_container` w celu przekazania plików MP4 z lokalnego katalogu `InputFiles` do kontenera. Pliki w magazynie są zdefiniowane jako obiekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) usługi Batch, które następnie mogą zostać pobrane przez tę usługę do węzłów obliczeniowych.
+W aplikacji odwołanie `blob_client` jest używane do utworzenia kontenera magazynu dla plików wejściowych w formacie MP4 oraz kontenera dla danych wyjściowych zadań podrzędnych. Następnie wywoływana jest funkcja `upload_file_to_container` w celu przekazania plików MP4 z lokalnego katalogu `InputFiles` do kontenera. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych.
 
 ```python
 blob_client.create_container(input_container_name, fail_on_exist=False)

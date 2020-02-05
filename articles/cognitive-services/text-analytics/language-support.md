@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: fcf7051a631e74f2f6db918c7c861e32295ae9e8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3e7402be79f7b57a426543c35f08524e0da9d283
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732641"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024538"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejs API analizy tekstu
 
@@ -33,7 +33,7 @@ Jeśli masz zawartość wyrażoną w rzadziej używanym języku, możesz spróbo
 
 W przypadku analizy tonacji, wyodrębniania kluczowych fraz i rozpoznawania jednostek Lista obsługiwanych języków jest bardziej selektywna, ponieważ analizatory są udoskonalane w celu uwzględnienia reguł lingwistycznych dodatkowych języków. W przypadku nazwanego rozpoznawania jednostek v2 obsługa pełnego zestawu [typów jednostek](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) jest obecnie ograniczona do następujących języków: 
 * Polski
-* Chiński uproszczony
+* Chiński (uproszczony)
 * Francuski
 * Niemiecki
 * Hiszpański
@@ -51,8 +51,8 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | Arabski                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Czeski                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| Chiński uproszczony    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
-| Chiński tradycyjny   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
+| Chiński (uproszczony)    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Chiński (tradycyjny)   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | Duński                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Holenderski                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Polski               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
@@ -63,7 +63,7 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 | węgierski             |     `hu`      |           |             |           ✔ \*           |                |                    |
 | Włoski               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Japoński              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| Koreański                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
+| Koreański                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
 | Norweski (bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Polski                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Portugalski (Portugalia) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` również zaakceptowana |

@@ -1,6 +1,6 @@
 ---
-title: Sieci VLAN i podsieci w rozwiązaniu Azure VMware przez CloudSimple
-description: Informacje o sieciach VLAN i podsieciach w chmurze prywatnej CloudSimple
+title: Sieci VLAN i podsieci w rozwiązaniach VMware platformy Azure (Automatyczna synchronizacja)
+description: Informacje o sieciach VLAN i podsieciach w usłudze automatycznej synchronizacji w chmurze prywatnej
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0ce15c782ae70e16f55a28ec8c4b70f3b080f54
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372741"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024895"
 ---
 # <a name="vlans-and-subnets-overview"></a>Sieci VLAN i podsieci — Omówienie
 
-CloudSimple zapewnia sieć na region, w którym wdrożono usługę CloudSimple.  Sieć jest pojedynczą przestrzenią adresową TCP warstwy 3 z włączoną funkcją routingu.  Wszystkie chmury prywatne i podsieci utworzone w tym regionie mogą komunikować się ze sobą bez żadnej dodatkowej konfiguracji.  Rozproszone grupy portów można utworzyć na serwerze vCenter przy użyciu sieci VLAN.
+Automatyczna synchronizacja zapewnia sieć na region, w którym wdrożono usługę automatycznej synchronizacji. Sieć jest pojedynczą przestrzenią adresową TCP warstwy 3 z włączoną funkcją routingu. Wszystkie chmury prywatne i podsieci utworzone w tym regionie mogą komunikować się ze sobą bez żadnej dodatkowej konfiguracji. Rozproszone grupy portów można utworzyć na serwerze vCenter przy użyciu sieci VLAN.
 
-![Topologia sieci CloudSimple](media/cloudsimple-network-topology.png)
+![Automatyczna synchronizacja topologii sieci](media/cloudsimple-network-topology.png)
 
 ## <a name="vlans"></a>Sieci VLAN
 
-Dla każdej chmury prywatnej jest tworzona sieć VLAN (sieci warstwy 2).  Ruch warstwy 2 znajduje się w granicach chmury prywatnej, co umożliwia odizolowanie ruchu lokalnego w chmurze prywatnej.  Sieć VLAN utworzona w chmurze prywatnej może służyć do tworzenia grup portów rozproszonych tylko w tej chmurze prywatnej.  Sieć VLAN utworzona w chmurze prywatnej jest automatycznie konfigurowana na wszystkich przełącznikach połączonych z hostami w chmurze prywatnej.
+Dla każdej chmury prywatnej automatycznej synchronizacji są tworzone sieci VLAN (sieć warstwy 2). Ruch warstwy 2 znajduje się w granicach chmury prywatnej automatycznej synchronizacji, co umożliwia izolowanie ruchu lokalnego w ramach chmury prywatnej automatycznej synchronizacji. Sieć VLAN utworzona w chmurze prywatnej automatycznej synchronizacji może służyć do tworzenia grup portów rozproszonych tylko w tej chmurze prywatnej synchronizacji. Sieć VLAN utworzona w chmurze prywatnej automatycznej synchronizacji jest konfigurowana automatycznie na wszystkich przełącznikach podłączonych do hostów chmury prywatnej.
 
 ## <a name="subnets"></a>Podsieci
 
 Można utworzyć podsieć podczas tworzenia sieci VLAN przez zdefiniowanie przestrzeni adresowej podsieci. Adres IP z przestrzeni adresowej jest przypisywany jako brama podsieci. Do każdego klienta i regionu jest przypisywany pojedynczy prywatny obszar adresów warstwy 3. W Twoim regionie sieciowym można skonfigurować dowolną nienakładające się przestrzenie adresowe RFC 1918 z siecią lokalną lub siecią wirtualną platformy Azure.
 
-Wszystkie podsieci mogą komunikować się ze sobą domyślnie, co zmniejsza obciążenie związane z konfiguracją routingu między chmurami prywatnymi. Dane wschodnie i zachodnie między komputerami w tym samym regionie pozostają w tej samej sieci warstwy 3 i transferuje się za pośrednictwem infrastruktury sieci lokalnej w regionie. W przypadku komunikacji między chmurami prywatnymi w regionie nie są wymagane żadne dane wyjściowe. Takie podejście eliminuje spadek wydajności sieci WAN/ruchu wychodzącego w przypadku wdrażania różnych obciążeń w różnych chmurach prywatnych.
+Wszystkie podsieci mogą komunikować się ze sobą domyślnie, co zmniejsza obciążenie związane z konfiguracją routingu między chmurami prywatnymi automatycznej synchronizacji. Dane wschodnie i zachodnie między komputerami w tym samym regionie pozostają w tej samej sieci warstwy 3 i transferuje się za pośrednictwem infrastruktury sieci lokalnej w regionie. W przypadku komunikacji między chmurami prywatnymi automatycznej synchronizacji w regionie nie są wymagane żadne dane wyjściowe. Takie podejście eliminuje spadek wydajności sieci WAN/ruchu wychodzącego w przypadku wdrażania różnych obciążeń w różnych chmurach prywatnych automatycznej synchronizacji.
 
 ## <a name="vspherevsan-subnets-cidr-range"></a>zakres CIDR podsieci vSphere/sieci vSAN
 
-Chmura prywatna jest tworzona jako izolowany środowisko VMware (hosty ESXi, vCenter, sieci vSAN i NSX) zarządzane przez serwer vCenter.  Składniki zarządzania są wdrażane w sieci wybranej dla podsieci vSphere/sieci vSAN CIDR.  Zakres CIDR sieci jest podzielony na różne podsieci podczas wdrażania.
+Chmura prywatna do automatycznej synchronizacji jest tworzona jako izolowany środowisko VMware (hosty ESXi, vCenter, sieci vSAN i NSX) zarządzane przez serwer vCenter. Składniki zarządzania są wdrażane w sieci wybranej dla podsieci vSphere/sieci vSAN CIDR. Zakres CIDR sieci jest podzielony na różne podsieci podczas wdrażania.
 
 * Minimalna prefiks zakresu CIDR vSphere/sieci vSAN: **/24**
 * Maksymalna vSphere/sieci vSAN prefiks zakresu CIDR: **/21**
 
-> [!CAUTION]
-> Adresy IP w zakresie CIDR vSphere/sieci vSAN są zarezerwowane do użytku przez infrastrukturę chmury prywatnej.  Nie używaj adresu IP z tego zakresu na żadnej maszynie wirtualnej.
+> [!IMPORTANT]
+> Adresy IP w zakresie CIDR vSphere/sieci vSAN są zarezerwowane do użytku przez infrastrukturę chmury prywatnej do automatycznej synchronizacji. Nie używaj adresu IP z tego zakresu na żadnej maszynie wirtualnej.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>limity zakresu CIDR podsieci vSphere/sieci vSAN
 
-Wybranie rozmiaru zakresu CIDR podsieci vSphere/sieci vSAN ma wpływ na rozmiar chmury prywatnej.  W poniższej tabeli przedstawiono maksymalną liczbę węzłów na podstawie rozmiaru vSphere/sieci vSAN podsieci CIDR.
+Wybranie rozmiaru zakresu CIDR podsieci vSphere/sieci vSAN ma wpływ na rozmiar chmury prywatnej automatycznej synchronizacji. W poniższej tabeli przedstawiono maksymalną liczbę węzłów na podstawie rozmiaru vSphere/sieci vSAN podsieci CIDR.
 
 | Określona długość prefiksu CIDR vSphere/sieci vSAN | Maksymalna liczba węzłów |
 |---------------------------------------------------|-------------------------|
@@ -52,9 +52,9 @@ Wybranie rozmiaru zakresu CIDR podsieci vSphere/sieci vSAN ma wpływ na rozmiar 
 | /22 | 118 |
 | /21 | 220 |
 
-### <a name="management-subnets-created-on-a-private-cloud"></a>Podsieci zarządzania utworzone w chmurze prywatnej
+### <a name="management-subnets-created-on-an-avs-private-cloud"></a>Podsieci zarządzania utworzone w chmurze prywatnej automatycznej synchronizacji
 
-Podczas tworzenia chmury prywatnej tworzone są następujące podsieci zarządzania.
+Podczas tworzenia chmury prywatnej do automatycznej synchronizacji są tworzone następujące podsieci zarządzania.
 
 * **Zarządzanie systemem**. Sieć VLAN i podsieć dla sieci zarządzania ESXi hosty, serwer DNS, serwer vCenter.
 * **VMotion**. Sieć VLAN i podsieć dla sieci vMotion hostów ESXi.
@@ -66,7 +66,7 @@ Podczas tworzenia chmury prywatnej tworzone są następujące podsieci zarządza
 
 ### <a name="management-network-cidr-range-breakdown"></a>Podział zakresu CIDR sieci zarządzania
 
-określony zakres CIDR podsieci vSphere/sieci vSAN jest podzielony na wiele podsieci.  W poniższej tabeli przedstawiono przykład podziału dla dozwolonych prefiksów.  W przykładzie używa się 192.168.0.0 jako zakresu CIDR.
+określony zakres CIDR podsieci vSphere/sieci vSAN jest podzielony na wiele podsieci. W poniższej tabeli przedstawiono przykład podziału dla dozwolonych prefiksów. W przykładzie używa się 192.168.0.0 jako zakresu CIDR.
 
 Przykład:
 

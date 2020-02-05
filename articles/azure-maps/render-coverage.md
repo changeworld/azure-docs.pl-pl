@@ -1,6 +1,6 @@
 ---
 title: Pokrycie renderowania | Mapy Microsoft Azure
-description: Ten artykuł zawiera informacje na temat regionów, w których znajdują się elementy renderowania Microsoft Azure Maps, a także ich poziom renderowania.
+description: W tym artykule dowiesz się więcej na temat regionów, w których Microsoft Azure Maps renderuje pokrycie, oraz ich poziom renderowanych szczegółów.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 04e7aeddaa4e3aba38f1bf08893b0b0487109653
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910671"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025456"
 ---
 # <a name="azure-maps-render-coverage"></a>Pokrycie Azure Maps renderowania
 
-Azure Maps używa zarówno kafelków rastrowych, jak i kafelków wektorowych do tworzenia map. W najniższym rozwiązaniu cały świat jest dopasowany do jednego kafelka. Przy najwyższej rozdzielczości pojedynczy kafelek reprezentuje 38 metrów kwadratowych. W miarę powiększania mapy można zobaczyć bardziej szczegółowe informacje dotyczące kontynentów, regionów, miast i indywidualnych ulic. Aby uzyskać więcej informacji, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
+Azure Maps używa zarówno kafelków rastrowych, jak i kafelków wektorowych do tworzenia map. W najmniejszej rozdzielczości cały świat jest dopasowany do jednego kafelka. Przy najwyższej rozdzielczości pojedynczy kafelek reprezentuje 38 metrów kwadratowych. W miarę powiększania zobaczysz więcej szczegółów na temat kontynentów, regionów, miast i indywidualnych ulic. Aby uzyskać więcej informacji na temat kafelków, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
 
-Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystkich regionów. W poniższych tabelach przedstawiono informacje o tym, jaki poziom renderowanych szczegółów można oczekiwać z każdego regionu.
+Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystkich regionów. W poniższych tabelach szczegółowo przedstawiono poziom informacji, które można renderować dla każdego regionu.
 
-## <a name="legend"></a>Legenda
+## <a name="legend"></a>Legendy
 
 | Symbol | Znaczenie |
 |--------|---------|
@@ -66,13 +66,13 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Mali                             | ✓ | ✓ |
 | Mauretania                       | ✓ | ✓ |
 | Mauritius                        | ✓ | ✓ |
-| Wyspa Majotta                          | ✓ | ✓ |
+| Majotta                          | ✓ | ✓ |
 | Maroko                          | ✓ | ✓ |
 | Mozambik                       | ✓ | ✓ |
 | Namibia                          | ✓ | ✓ |
 | Niger                            | ✓ | ✓ |
 | Nigeria                          | ✓ | ✓ |
-| Réunion                          | ✓ | ✓ |
+| Reunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
 | Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha | ✓ | Ø |
 | Wyspy Świętego Tomasza i Książęca            | ✓ | Ø |
@@ -80,7 +80,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Sierra Leone                     | ✓ | ✓ |
 | Somalia                          | ✓ | ✓ |
 | Republika Południowej Afryki                     | ✓ | ✓ |
-| Sudan Południowy                      | ✓ | ✓ |
+| Sudan południowy                      | ✓ | ✓ |
 | Sudan                            | ✓ | ✓ |
 | Suazi                        | ✓ | ✓ |
 | Zjednoczone Republiki Tanzanii      | ✓ | ✓ |
@@ -112,7 +112,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Kostaryka                | ✓ | ✓ |
 | Kuba                      | ✓ | ✓ |
 | Curaçao                   | ✓ | ✓ |
-| Dominika                  | ✓ | ✓ |
+| Mini                  | ✓ | ✓ |
 | Dominikana        | ✓ | ✓ |
 | Ekwador                   | ✓ | ✓ |
 | Falklandy | ✓ | ✓ |
@@ -139,7 +139,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Saint Kitts i Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
 | Saint-Martin (francuski)     | ✓ | ✓ |
-| Saint Pierre i Miquelon | ✓ | ✓ |
+| Saint-Pierre i Miquelon | ✓ | ✓ |
 | Saint Vincent i Grenadyny | ✓ | ✓ |
 | Sint Maarten (holenderski)      | ✓ | ✓ |
 | Georgia Południowa i Sandwich Południowy | ✓ | ✓ |
@@ -206,7 +206,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Wietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Oceania
+## <a name="oceania"></a>Oceanii
 
 | Kraj/region | Zunifikowane kafelki rastrowe | Zunifikowane kafelki wektorowe |
 | ------ | :------------------: | :------------------: |
@@ -223,11 +223,11 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Nowa Kaledonia             |   | Ø |
 | Nowa Zelandia               | ✓ | ✓ |
 | Niue                      |   | Ø |
-| Norfolk            |   | Ø |
+| Wyspa Norfolk            |   | Ø |
 | Palau                     |   | Ø |
 | Papua Nowa Gwinea          |   | Ø |
 | Pitcairn                  |   | Ø |
-| Samoa                     |   | Ø |
+| Zachodniego                     |   | Ø |
 | Wyspy Salomona           |   | Ø|
 | Tokelau                   |   | Ø |
 | Tonga                     |   | Ø |
@@ -273,7 +273,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Liechtenstein             | ✓ | ✓ |
 | Litwa                 | ✓ | ✓ |
 | Luksemburg                | ✓ | ✓ |
-| Macedonia Północna           | ✓ | ✓ |
+| Północna Macedonia           | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
 | Mołdawia                   | ✓ | ✓ |
 | Monako                    | ✓ | ✓ |

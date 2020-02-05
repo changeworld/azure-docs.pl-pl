@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 52bec8bba7bb3ddf545e3bd1866775f0964c6ad3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893137"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025813"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopiowanie i Przekształcanie danych w Azure Cosmos DB (interfejs API SQL) za pomocą Azure Data Factory
 
@@ -24,7 +24,7 @@ ms.locfileid: "75893137"
 > * [Wersja 1](v1/data-factory-azure-documentdb-connector.md)
 > * [Bieżąca wersja](connector-azure-cosmos-db.md)
 
-W tym artykule opisano sposób używania działania kopiowania w programie Azure Data Factory do kopiowania danych z i do Azure Cosmos DB (interfejs API SQL) oraz do przekształcania danych w Azure Cosmos DB (SQL API). Aby dowiedzieć się więcej na temat usługi Azure Data Factory, przeczytaj [artykuł wprowadzający](introduction.md).
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z i do bazy danych Azure Cosmos DB (interfejs API SQL) oraz używania przepływu danych do przekształcania danych w bazie danych Azure Cosmos DB (interfejs API SQL). Aby dowiedzieć się więcej na temat usługi Azure Data Factory, przeczytaj [artykuł wprowadzający](introduction.md).
 
 >[!NOTE]
 >Ten łącznik obsługuje tylko Cosmos DB interfejsu API SQL. W przypadku interfejsu API MongoDB zapoznaj się z [łącznikiem dla interfejsu api Azure Cosmos DB MongoDB](connector-azure-cosmos-db-mongodb-api.md). Inne typy interfejsów API nie są obecnie obsługiwane.
@@ -268,6 +268,18 @@ Ustawienia specyficzne dla Azure Cosmos DB są dostępne na karcie **Opcje źró
 **Przepływność:** Ustaw opcjonalną wartość liczby jednostek ru, która ma zostać zastosowana do kolekcji CosmosDB dla każdego wykonywania tego przepływu danych podczas operacji odczytu. Wartość minimalna to 400.
 
 **Preferowane regiony:** Wybierz preferowane regiony odczytu dla tego procesu.
+
+#### <a name="json-settings"></a>Ustawienia JSON
+
+**Pojedynczy dokument:** Wybierz tę opcję, jeśli ADF ma traktować cały plik jako pojedynczy dokument JSON.
+
+**Nazwy kolumn bez cudzysłowu:** Wybierz tę opcję, jeśli nazwy kolumn w formacie JSON nie są ujęte w cudzysłów.
+
+**Ma Komentarze:** Użyj tego wyboru, jeśli dokumenty JSON mają komentarze w danych.
+
+**Pojedyncze cudzysłowy:** Ta wartość powinna zostać wybrana, jeśli kolumny i wartości w dokumencie są cytowane przy użyciu pojedynczych cudzysłowów.
+
+**Odwrócony ukośnik odwrotny:** Jeśli używasz ukośników odwrotnych do znaków ucieczki w formacie JSON, wybierz tę opcję.
 
 ### <a name="sink-transformation"></a>Przekształcanie ujścia
 

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — Omówienie węzłów
-description: Dowiedz się więcej o węzłach i pojęciach CloudSimple.
+title: Azure VMware Solutions (Automatyczna synchronizacja) — Omówienie węzłów
+description: Dowiedz się więcej o węzłach i pojęciach dotyczących automatycznej synchronizacji.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 08d8fc3e6f1f2f83cf3c4fee3fdafb0bd07e336c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899031"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024929"
 ---
-# <a name="cloudsimple-nodes-overview"></a>Przegląd węzłów CloudSimple
+# <a name="avs-nodes-overview"></a>Przegląd automatycznej synchronizacji węzłów
 
 Węzły są blokami konstrukcyjnymi chmury prywatnej. Węzeł:
 
 * Dedykowany Host obliczeniowy bez systemu operacyjnego, na którym zainstalowano VMware ESXi funkcji hypervisor  
-* Jednostka obliczeniowa, którą można zainicjować lub zarezerwować w celu utworzenia chmur prywatnych
-* Dostępne do aprowizacji lub rezerwowania w regionie, w którym jest dostępna usługa CloudSimple
+* Jednostka obliczeniowa, którą można zakupić lub zarezerwować do tworzenia chmur prywatnych
+* Dostępne do zakupu lub rezerwowania w regionie, w którym jest dostępna usługa automatycznej synchronizacji
 
-Chmurę prywatną można utworzyć na podstawie inicjowanych węzłów. Aby utworzyć chmurę prywatną, potrzebne są co najmniej trzy węzły tej samej jednostki SKU. Aby rozwinąć chmurę prywatną, Dodaj dodatkowe węzły.  Można dodać węzły do istniejącego klastra lub utworzyć nowy klaster przez węzły aprowizacji w Azure Portal i skojarzyć je z usługą CloudSimple.  Wszystkie węzły obsługiwane przez usługę CloudSimple są widoczne.  
+Chmurę prywatną można utworzyć z poziomu zakupionych węzłów. Aby utworzyć chmurę prywatną do automatycznej synchronizacji, potrzebne są co najmniej trzy węzły tej samej jednostki SKU. Aby rozwinąć chmurę prywatną do automatycznej synchronizacji, Dodaj dodatkowe węzły. Można dodać węzły do istniejącego klastra lub utworzyć nowy klaster przez wykupienie węzłów w Azure Portal i skojarzenie ich z usługą automatycznej synchronizacji. Wszystkie zakupione węzły są widoczne w ramach usługi automatycznej synchronizacji. 
 
 ## <a name="provisioned-nodes"></a>Węzły inicjowane
 
@@ -32,7 +32,7 @@ Węzły z zainicjowaną obsługą zapewniają pojemność płatność zgodnie z 
 * Jeśli płacisz za subskrypcję platformy Azure za pomocą karty kredytowej, karta jest rozliczana od razu.
 * Jeśli opłata jest naliczana według faktury, opłaty są naliczane na następnej fakturze.
 
-## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>Rozwiązanie VMware według jednostki SKU węzłów CloudSimple
+## <a name="vmware-solution-by-avs-nodes-sku"></a>Rozwiązanie VMware wg automatycznej synchronizacji węzłów SKU
 
 Następujące typy węzłów są dostępne do aprowizacji lub rezerwacji.
 
@@ -47,16 +47,18 @@ Następujące typy węzłów są dostępne do aprowizacji lub rezerwacji.
 
 ## <a name="limits"></a>Limity
 
-Poniższe limity węzłów mają zastosowanie do chmur prywatnych.
+Poniższe limity węzłów mają zastosowanie do automatycznej synchronizacji chmur prywatnych.
 
 | Zasób | Limit |
 |----------|-------|
-| Minimalna liczba węzłów do utworzenia chmury prywatnej | 3 |
-| Maksymalna liczba węzłów w klastrze w chmurze prywatnej | 16 |
-| Maksymalna liczba węzłów w chmurze prywatnej | 64 |
+| Minimalna liczba węzłów do utworzenia chmury prywatnej do automatycznej synchronizacji | 3 |
+| Maksymalna liczba węzłów w klastrze w chmurze prywatnej automatycznej synchronizacji | 16 |
+| Maksymalna liczba węzłów w chmurze prywatnej automatycznej synchronizacji | 64 |
 | Minimalna liczba węzłów w nowym klastrze | 3 |
 
 ## <a name="next-steps"></a>Następne kroki
 
+* Dowiedz się, jak [kupić węzły](create-nodes.md)
+* Informacje o [automatycznej synchronizacji chmur prywatnych](cloudsimple-private-cloud.md)
 * Dowiedz się, jak [inicjować obsługę węzłów](create-nodes.md)
 * Informacje o [chmurach prywatnych](cloudsimple-private-cloud.md)

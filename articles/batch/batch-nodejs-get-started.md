@@ -3,7 +3,7 @@ title: Samouczek — korzystanie z biblioteki klienta usługi Azure Batch dla ś
 description: Podstawowe pojęcia dotyczące usługi Azure Batch i tworzenie prostego rozwiązania przy użyciu języka Node.js.
 services: batch
 author: shwetams
-manager: gwallace
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shg
-ms.openlocfilehash: a6895773e0109aa0fb643e4fadf8a31ac5b1a33a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323400"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023654"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Wprowadzenie do zestawu SDK usługi Batch dla środowiska Node.js
 
@@ -67,7 +67,7 @@ To polecenie instaluje najnowszą wersję zestawu Node SDK usługi Azure Batch.
 
 ### <a name="step-2-create-an-azure-batch-account"></a>Krok 2. Tworzenie konta usługi Azure Batch
 
-Konto można utworzyć zarówno za pomocą witryny [Azure Portal](batch-account-create-portal.md), jak i wiersza polecenia ([PowerShell](batch-powershell-cmdlets-get-started.md) /[Interfejs wiersza polecenia platformy Azure](/cli/azure)).
+Można go utworzyć za pomocą [Azure Portal](batch-account-create-portal.md) lub z wiersza polecenia ([POWERSHELL](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)).
 
 Poniżej przedstawiono polecenia, które umożliwiają utworzenie konta za pomocą interfejsu wiersza polecenia platformy Azure.
 
@@ -279,14 +279,14 @@ W celu uzyskania dostępu do skryptu można go przekazać na konto usługi Azure
 
 Zadanie podrzędne przygotowania jest określane podczas przesyłania zadania usługi Azure Batch. Poniżej przedstawiono parametry konfiguracji zadania podrzędnego przygotowania:
 
-* **ID**: Unikatowy identyfikator zadania podrzędnego przygotowania
-* **commandLine**: Wiersz polecenia służący do wykonania wykonywalnego zadania podrzędnego
-* **resourceFiles**: Tablica obiektów zawierająca szczegółowe informacje o plikach, które należy pobrać w celu uruchomienia zadania podrzędnego.  Poniżej przedstawiono dostępne opcje
-    - blobSource: Identyfikator URI sygnatury dostępu współdzielonego danego pliku
-    - filePath: Ścieżka lokalna do pobrania i zapisania pliku
-    - fileMode: Dotyczy wyłącznie węzłów systemu Linux — opcja fileMode jest w formacie ósemkowym i domyślnie ma wartość 0770
-* **waitForSuccess**: Jeśli ma wartość „true”, zadanie podrzędne nie zostanie uruchomione w razie niepowodzenia zadania podrzędnego przygotowania
-* **runElevated**: Jeśli do uruchomienia zadania podrzędnego konieczne są podwyższone uprawnienia, należy ustawić wartość „true”.
+* **D**: unikatowy identyfikator zadania podrzędnego przygotowania
+* **commandLine**: wiersz polecenia służący do wykonania wykonywalnego zadania podrzędnego
+* **resourceFiles**: tablica obiektów zawierająca szczegółowe informacje o plikach, które należy pobrać w celu uruchomienia zadania podrzędnego.  Poniżej przedstawiono dostępne opcje
+    - blobSource: identyfikator URI sygnatury dostępu współdzielonego danego pliku
+    - filePath: ścieżka lokalna do pobrania i zapisania pliku
+    - fileMode: dotyczy wyłącznie węzłów systemu Linux, opcja fileMode jest w formacie ósemkowym i domyślnie ma wartość 0770
+* **waitForSuccess**: jeśli ma wartość „true”, zadanie podrzędne nie zostanie uruchomione w razie niepowodzenia zadania podrzędnego przygotowania
+* **runElevated**: jeśli do uruchomienia zadania podrzędnego konieczne są podwyższone uprawnienia, należy ustawić wartość „true”.
 
 Poniższy fragment kodu pokazuje przykładową konfigurację skryptu zadania podrzędnego przygotowania:
 
@@ -317,8 +317,8 @@ Po utworzeniu zadania konwertującego pliki csv można utworzyć dla niego zadan
 
 [Skrypt języka Python](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py) przyjmuje dwa parametry:
 
-* container name: Kontener magazynu, z którego pobierane są pliki
-* pattern: Opcjonalny parametr wzorca nazwy plików
+* nazwa kontenera: kontener magazynu, z którego pobierane są pliki
+* wzorzec: opcjonalny parametr wzorca nazwy plików
 
 Zakładamy, że mamy cztery kontenery: „con1”, „con2”, „con3” i „con4”. Następujący kod przedstawia przesyłanie zadań podrzędnych do utworzonego wcześniej zadania konwertującego pliki csv usługi Azure Batch.
 

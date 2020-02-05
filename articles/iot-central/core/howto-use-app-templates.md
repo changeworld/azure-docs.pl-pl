@@ -1,25 +1,49 @@
 ---
-title: Korzystanie z szablonów aplikacji na platformie Azure IoT Central | Microsoft Docs
-description: Jako operator, jak używać zestawów urządzeń w aplikacji IoT Central platformy Azure.
+title: Eksportowanie aplikacji IoT Central platformy Azure | Microsoft Docs
+description: Jako Menedżer rozwiązań Chcę wyeksportować szablon aplikacji, aby móc go użyć ponownie.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/30/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3cc6f82676f426240fba4cc4910246073aa9a556
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b5c8f7fd1c87ce279a8edd39aacb332b8aef28be
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982464"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023450"
 ---
-# <a name="use-application-templates"></a>Używanie szablonów aplikacji
+# <a name="export-your-application"></a>Eksportowanie aplikacji
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-W tym artykule opisano, jak Menedżer rozwiązań umożliwia tworzenie i używanie szablonów aplikacji.
+
+W tym artykule opisano, jak Menedżer rozwiązań w celu wyeksportowania aplikacji IoT Central, aby można było użyć jej ponownie.
+
+Dostępne są dwie opcje:
+
+- Kopię aplikacji można utworzyć, jeśli trzeba tylko utworzyć zduplikowaną kopię aplikacji.
+- Jeśli planujesz utworzyć wiele kopii, możesz utworzyć szablon aplikacji z aplikacji.
+
+## <a name="copy-your-application"></a>Kopiowanie aplikacji
+
+Można utworzyć kopię dowolnej aplikacji, minus wszystkie wystąpienia urządzeń, historię danych urządzeń i dane użytkowników. Kopia korzysta ze standardowego planu cenowego, w którym zostanie naliczona stawka. Nie można utworzyć aplikacji używającej bezpłatnego planu cenowego, kopiując aplikację.
+
+Wybierz pozycję **Kopiuj**. W oknie dialogowym Wprowadź szczegóły nowej aplikacji. Następnie wybierz pozycję **Kopiuj** , aby potwierdzić, że chcesz kontynuować. Aby dowiedzieć się więcej na temat pól w formularzu, zobacz [Tworzenie aplikacji](quick-deploy-iot-central.md) — Szybki Start.
+
+![Strona Ustawienia aplikacji](media/howto-use-app-templates/appcopy2.png)
+
+Po pomyślnym zakończeniu operacji kopiowania aplikacji możesz przejść do nowej aplikacji za pomocą linku.
+
+![Strona Ustawienia aplikacji](media/howto-use-app-templates/appcopy3a.png)
+
+Kopiowanie aplikacji powoduje także skopiowanie definicji reguł i akcji poczty e-mail. Niektóre akcje, takie jak Flow i Logic Apps, są powiązane z określonymi regułami za pośrednictwem identyfikatora reguły. Gdy reguła jest kopiowana do innej aplikacji, pobiera swój własny identyfikator reguły. W takim przypadku użytkownicy będą musieli utworzyć nową akcję, a następnie skojarzyć z nią nową regułę. Ogólnie rzecz biorąc, warto sprawdzić reguły i akcje, aby upewnić się, że są one aktualne w nowej aplikacji.
+
+> [!WARNING]
+> Jeśli pulpit nawigacyjny zawiera kafelki, które wyświetlają informacje o określonych urządzeniach, wówczas te kafelki pokazują **żądany zasób nie został odnaleziony** w nowej aplikacji. Należy ponownie skonfigurować te kafelki, aby wyświetlić informacje o urządzeniach w nowej aplikacji.
+
+## <a name="create-an-application-template"></a>Tworzenie szablonu aplikacji
 
 Podczas tworzenia aplikacji IoT Central platformy Azure Możesz wybrać wbudowane przykładowe szablony. Możesz również tworzyć własne szablony aplikacji z istniejących aplikacji IoT Central. Przy tworzeniu nowych aplikacji możesz użyć własnych szablonów aplikacji.
 
@@ -42,8 +66,6 @@ Podczas tworzenia szablonu aplikacji nie zawiera on następujących elementów:
 
 Dodaj te elementy ręcznie do wszystkich aplikacji utworzonych na podstawie szablonu aplikacji.
 
-## <a name="create-an-application-template"></a>Tworzenie szablonu aplikacji
-
 Aby utworzyć szablon aplikacji na podstawie istniejącej aplikacji IoT Central:
 
 1. Przejdź do sekcji **Administracja** w swojej aplikacji.
@@ -53,7 +75,7 @@ Aby utworzyć szablon aplikacji na podstawie istniejącej aplikacji IoT Central:
 
 ![Tworzenie szablonu aplikacji](media/howto-use-app-templates/create-template.png)
 
-## <a name="use-an-application-template"></a>Korzystanie z szablonu aplikacji
+### <a name="use-an-application-template"></a>Korzystanie z szablonu aplikacji
 
 Aby użyć szablonu aplikacji do utworzenia nowej aplikacji IoT Central, potrzebujesz wcześniej utworzonego **linku**umożliwiającego udostępnianie. Wklej link umożliwiający **udostępnianie** na pasku adresu przeglądarki. Zostanie wyświetlona strona **Tworzenie aplikacji** z wybranym szablonem aplikacji niestandardowej:
 
@@ -61,7 +83,7 @@ Aby użyć szablonu aplikacji do utworzenia nowej aplikacji IoT Central, potrzeb
 
 Wybierz plan cenowy i wypełnij pozostałe pola w formularzu. Następnie wybierz pozycję **Utwórz** , aby utworzyć nową aplikację IoT Centralową z szablonu aplikacji.
 
-## <a name="manage-application-templates"></a>Zarządzanie szablonami aplikacji
+### <a name="manage-application-templates"></a>Zarządzanie szablonami aplikacji
 
 Na stronie **eksport szablonu aplikacji** można usunąć lub zaktualizować szablon aplikacji.
 

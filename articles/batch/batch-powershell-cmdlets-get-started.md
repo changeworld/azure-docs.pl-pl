@@ -3,8 +3,8 @@ title: Rozpoczynanie pracy z programem PowerShell — Azure Batch | Microsoft Do
 description: Krótkie wprowadzenie do poleceń cmdlet programu Azure PowerShell, których można użyć do zarządzania zasobami usługi Batch.
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 01/15/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 48b728d0e5b710f3adaa576f012bdbd19effc20a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 26691ca6b9d078ef18ac852c67fa2ac88dff2722
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026592"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023008"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Zarządzanie zasobami usługi Batch za pomocą poleceń cmdlet programu PowerShell
 

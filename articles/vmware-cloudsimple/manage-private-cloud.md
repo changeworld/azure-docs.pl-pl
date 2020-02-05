@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie rozwiązaniem VMware platformy Azure za pomocą chmury prywatnej CloudSimple
-description: Opisuje możliwości dostępne do zarządzania zasobami i aktywności w chmurze prywatnej CloudSimple
+title: Zarządzaj chmurą prywatną Azure VMware Solutions (Automatyczna synchronizacja)
+description: W tym artykule opisano możliwości dostępne w celu zarządzania programem automatycznej synchronizacji zasobów i aktywności chmury prywatnej
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
@@ -8,87 +8,87 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 620c0226d3aca907352658ebbe1b94c7673d91cd
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 47bf2251f71204b99245c1a9d55ef87157c41dd8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812272"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014831"
 ---
-# <a name="manage-private-cloud-resources-and-activity"></a>Zarządzanie zasobami i aktywnością chmury prywatnej
+# <a name="manage-avs-private-cloud-resources-and-activities"></a>Zarządzanie automatyczna synchronizacja zasobów i działań w chmurze prywatnej
 
-Chmurami prywatnymi zarządza się z poziomu portalu CloudSimple.  Sprawdź stan, dostępne zasoby, działanie w chmurze prywatnej oraz inne ustawienia w portalu CloudSimple.
+W portalu do automatycznej synchronizacji są zarządzane chmury prywatne. Sprawdź stan, dostępne zasoby, aktywność w chmurze prywatnej automatycznej synchronizacji oraz inne ustawienia w portalu automatycznej synchronizacji.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="access-the-cloudsimple-portal"></a>Uzyskiwanie dostępu do portalu CloudSimple
+## <a name="access-the-avs-portal"></a>Dostęp do portalu automatycznej synchronizacji
 
-Dostęp do [portalu CloudSimple](access-cloudsimple-portal.md).
+Uzyskaj dostęp do [portalu automatycznej synchronizacji](access-cloudsimple-portal.md).
 
-## <a name="view-the-list-of-private-clouds"></a>Wyświetl listę chmur prywatnych
+## <a name="view-the-list-of-avs-private-clouds"></a>Wyświetl listę chmur prywatnych w wersji zapoznawczej
 
-Na karcie **chmury prywatne** na stronie **zasoby** są wyświetlane wszystkie chmury prywatne w ramach subskrypcji. Informacje obejmują nazwę, liczbę klastrów vSphere, lokalizację, bieżący stan chmury prywatnej i informacje o zasobach.
+Karta **prywatne chmury do automatycznej synchronizacji** na stronie **zasoby** zawiera listę wszystkich chmur prywatnych w Twojej subskrypcji. Informacje obejmują nazwę, liczbę klastrów vSphere, lokalizację, bieżący stan chmury prywatnej do automatycznej synchronizacji i informacje o zasobach.
 
-![Strona chmury prywatnej](media/manage-private-cloud.png)
+![Automatyczna synchronizacja strony chmury prywatnej](media/manage-private-cloud.png)
 
-Wybierz chmurę prywatną, aby uzyskać dodatkowe informacje i akcje.
+Wybierz chmurę prywatną do automatycznej synchronizacji, aby uzyskać dodatkowe informacje i akcje.
 
-## <a name="private-cloud-summary"></a>Podsumowanie chmury prywatnej
+## <a name="avs-private-cloud-summary"></a>Podsumowanie dotyczące automatycznej synchronizacji chmury prywatnej
 
-Wyświetl kompleksowe podsumowanie wybranej chmury prywatnej.  Strona podsumowania zawiera serwery DNS wdrożone w chmurze prywatnej.  Można skonfigurować przekazywanie DNS z lokalnych serwerów DNS do serwerów DNS w chmurze prywatnej.  Aby uzyskać więcej informacji na temat przekazywania DNS, zobacz [Konfigurowanie systemu DNS do rozpoznawania nazw w przypadku chmury prywatnej dla programu vCenter](https://docs.azure.cloudsimple.com/on-premises-dns-setup/)w środowisku lokalnym.
+Wyświetl kompleksowe podsumowanie wybranej chmury prywatnej automatycznej wersji zapoznawczej. Strona podsumowania zawiera serwery DNS wdrożone w chmurze prywatnej automatycznej synchronizacji. Można skonfigurować przesyłanie dalej DNS z lokalnych serwerów DNS do programu w celu automatycznej synchronizacji serwerów DNS w chmurze prywatnej. Aby uzyskać więcej informacji na temat przekazywania DNS, zobacz [Konfigurowanie systemu DNS do rozpoznawania nazw w celu automatycznej synchronizacji chmury prywatnej vCenter](https://docs.azure.cloudsimple.com/on-premises-dns-setup/)w środowisku lokalnym.
 
-![Podsumowanie chmury prywatnej](media/private-cloud-summary.png)
+![Podsumowanie dotyczące automatycznej synchronizacji chmury prywatnej](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Dostępne akcje
 
-* [Uruchom klienta vSphere](https://docs.azure.cloudsimple.com/vsphere-access/). Uzyskaj dostęp do programu vCenter dla tej chmury prywatnej.
-* [Kup węzły](create-nodes.md). Dodaj węzły do tej chmury prywatnej.
-* [Rozwiń węzeł](expand-private-cloud.md). Dodaj węzły do tej chmury prywatnej.
+* [Uruchom klienta vSphere](https://docs.azure.cloudsimple.com/vsphere-access/). Uzyskaj dostęp do programu vCenter w tej chmurze prywatnej automatycznej wersji.
+* [Kup węzły](create-nodes.md). Dodaj węzły do tej chmury prywatnej automatycznej wersji próbnej.
+* [Rozwiń węzeł](expand-private-cloud.md). Dodaj węzły do tej chmury prywatnej automatycznej wersji próbnej.
 * **Odświeżanie**. Zaktualizuj informacje na tej stronie.
-* **Usuń**. Chmurę prywatną można usunąć w dowolnym momencie. **Przed usunięciem upewnij się, że utworzono kopię zapasową wszystkich systemów i danych.** Usunięcie chmury prywatnej spowoduje usunięcie wszystkich maszyn wirtualnych, konfiguracji programu vCenter i danych. Kliknij pozycję **Usuń** w sekcji Podsumowanie dla wybranej chmury prywatnej. Po usunięciu wszystkie dane w chmurze prywatnej są usuwane w bezpiecznym, wysoce zgodnym procesie wymazywania.
-* [Zmień uprawnienia vSphere](escalate-private-cloud-privileges.md).  Eskalacja uprawnień do tej chmury prywatnej.
+* **Usuń**. Chmurę prywatną można usunąć w dowolnym momencie. **Przed usunięciem upewnij się, że utworzono kopię zapasową wszystkich systemów i danych.** Usunięcie chmury prywatnej automatycznej synchronizacji usuwa wszystkie maszyny wirtualne, konfigurację programu vCenter i dane. Kliknij pozycję **Usuń** w sekcji Podsumowanie dla wybranej chmury prywatnej automatycznej synchronizacji. Po usunięciu wszystkie dane w chmurze prywatnej automatycznej synchronizacji są usuwane w bezpiecznym, wysoce zgodnym procesie wymazywania.
+* [Zmień uprawnienia vSphere](escalate-private-cloud-privileges.md). Eskalować swoje uprawnienia do tej chmury prywatnej.
 
-## <a name="private-cloud-vlanssubnets"></a>Sieci VLAN/podsieci w chmurze prywatnej
+## <a name="avs-private-cloud-vlanssubnets"></a>Automatyczna synchronizacja sieci VLAN/podsieci w chmurze prywatnej
 
-Wyświetl listę zdefiniowanych sieci VLAN/podsieci dla wybranej chmury prywatnej.  Lista zawiera sieci VLAN i podsieci zarządzania utworzone podczas tworzenia chmury prywatnej.
+Wyświetl listę zdefiniowanych sieci VLAN/podsieci dla wybranej chmury prywatnej automatycznej wersji zapoznawczej. Lista zawiera sieci VLAN i podsieci zarządzania utworzone podczas tworzenia chmury prywatnej automatycznej synchronizacji.
 
-![Chmura prywatna — sieci VLAN/podsieci](media/private-cloud-vlans-subnets.png) 
+![Automatyczna synchronizacja chmur prywatnych — sieci VLAN/podsieci](media/private-cloud-vlans-subnets.png) 
 
 ### <a name="available-actions"></a>Dostępne akcje
 
 * [Dodawanie sieci VLAN/podsieci](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Dodaj sieć VLAN/podzestaw do tej chmury prywatnej.
 
 Wybierz sieć VLAN/podsieć dla następujących akcji
-* [Dołącz tabelę zapory](https://docs.azure.cloudsimple.com/firewall/). Dołącz tabelę zapory do tej chmury prywatnej.
+* [Dołącz tabelę zapory](https://docs.azure.cloudsimple.com/firewall/). Dołącz tabelę zapory do tej chmury prywatnej automatycznej wersji zaszeregowej.
 * **Edytowanie**
 * **Usuń** (tylko zdefiniowane przez użytkownika sieci VLAN/podsieci)
 
-## <a name="private-cloud-activity"></a>Aktywność chmury prywatnej
+## <a name="avs-private-cloud-activity"></a>Automatyczna synchronizacja działań w chmurze prywatnej
 
-Wyświetl następujące informacje dotyczące wybranej chmury prywatnej.  Informacje o działaniu to filtrowana lista wszystkich działań dla wybranej chmury prywatnej.  Ta strona zawiera maksymalnie 25 ostatnich działań.
+Wyświetl następujące informacje dotyczące wybranej chmury prywatnej automatycznej wersji zapoznawczej. Informacje o działaniu to filtrowana lista wszystkich działań dla wybranej chmury prywatnej automatycznej synchronizacji. Ta strona zawiera maksymalnie 25 ostatnich działań.
 
 * Ostatnie alerty
 * Ostatnie zdarzenia
 * Ostatnie zadania
 * Ostatnia Inspekcja
 
-![Chmura prywatna — aktywność](media/private-cloud-activity.png)
+![Automatyczna synchronizacja z chmurą prywatną — aktywność](media/private-cloud-activity.png)
 
 ## <a name="cloud-racks"></a>Stojaki w chmurze
 
-Stojaki w chmurze są blokami konstrukcyjnymi chmury prywatnej. Każdy stojak zapewnia jednostkę pojemności. CloudSimple automatycznie konfiguruje Stojaki w chmurze na podstawie wybranych opcji podczas tworzenia lub rozszerzania chmury prywatnej.  Zapoznaj się z pełną listą stojaków w chmurze, w tym chmurę prywatną, do której każdy jest przypisany.
+Stojaki w chmurze to bloki konstrukcyjne chmury prywatnej automatycznej synchronizacji. Każdy stojak zapewnia jednostkę pojemności. Automatyczna synchronizacja automatycznie konfiguruje Stojaki w chmurze na podstawie wybranych opcji podczas tworzenia lub rozszerzania chmury prywatnej do automatycznej synchronizacji. Zapoznaj się z pełną listą stojaków w chmurze, w tym chmurę prywatną do automatycznej synchronizacji, do której każdy jest przypisany.
 
-![Chmura prywatna — Stojaki w chmurze](media/private-cloud-cloudracks.png)
+![Automatyczna synchronizacja chmur prywatnych — Stojaki w chmurze](media/private-cloud-cloudracks.png)
 
 ## <a name="vsphere-management-network"></a>Sieć zarządzania vSphere
 
-Lista zasobów zarządzania VMware i maszyn wirtualnych aktualnie skonfigurowanych w chmurze prywatnej. Informacje obejmują wersję oprogramowania, w pełni kwalifikowaną nazwę domeny (FQDN) i adres IP zasobów.
+Lista zasobów zarządzania VMware i maszyn wirtualnych, które są aktualnie skonfigurowane w chmurze prywatnej automatycznej synchronizacji. Informacje obejmują wersję oprogramowania, w pełni kwalifikowaną nazwę domeny (FQDN) i adres IP zasobów.
 
-![Chmura prywatna — sieć zarządzania vSphere](media/private-cloud-vsphere-management-network.png)
+![Automatyczna synchronizacja chmury prywatnej — vSphere Management Network](media/private-cloud-vsphere-management-network.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Korzystanie z maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
-* Dowiedz się więcej o [chmurach prywatnych](cloudsimple-private-cloud.md)
+* Dowiedz się więcej o [automatycznej synchronizacji chmur prywatnych](cloudsimple-private-cloud.md)

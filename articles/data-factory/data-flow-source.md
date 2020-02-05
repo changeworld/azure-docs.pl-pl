@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 128b15bd5b3ba3c3ac891719bf5c3ec8e5137cce
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440217"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023518"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Transformacja źródła w strumieniu danych mapowania 
 
@@ -44,6 +44,8 @@ Po dodaniu źródła skonfiguruj go za pomocą karty **Ustawienia źródła** . 
 
 ![Karta Ustawienia źródła](media/data-flow/source1.png "Karta Ustawienia źródła")
 
+**Test Connection:** Sprawdź, czy usługa Spark przepływu danych może pomyślnie nawiązać połączenie z połączoną usługą używaną w źródłowym zestawie danych. Aby można było włączyć tę funkcję, tryb debugowania musi być włączony.
+
 **Dryfowanie schematu:** [dryfowanie schematu](concepts-data-flow-schema-drift.md) to zdolność fabryki danych do natywnej obsługi elastycznych schematów w przepływach danych bez konieczności jawnego definiowania zmian w kolumnach.
 
 * Zaznacz pole **Zezwalaj na dryf schematu** , jeśli kolumny źródłowe będą często zmieniane. To ustawienie umożliwia przepływ wszystkich przychodzących pól źródłowych do przepływu przez przekształcenia do ujścia.
@@ -69,13 +71,17 @@ Podobnie jak w przypadku schematów w zestawach danych, projekcja w źródle def
 
 ![Ustawienia na karcie projekcja](media/data-flow/source3.png "Projekcja")
 
-Jeśli plik tekstowy nie ma zdefiniowanego schematu, wybierz pozycję **Wykryj typ danych** , aby Data Factory próbkować i wywnioskować typy danych. Wybierz opcję **Definiuj domyślny format** , aby automatycznie wykrywać domyślne formaty danych. 
+Jeśli plik tekstowy nie ma zdefiniowanego schematu, wybierz pozycję **Wykryj typ danych** , aby Data Factory próbkować i wywnioskować typy danych. Wybierz opcję **Definiuj domyślny format** , aby automatycznie wykrywać domyślne formaty danych.
+
+**Zresetuj schemat resetuje** projekcję do elementów zdefiniowanych w zestawie danych, do których się odwołuje.
 
 Typy danych kolumny można modyfikować w transformacjach kolumn pochodnych w dół i w dół. Użyj przekształcenia SELECT, aby zmodyfikować nazwy kolumn.
 
 ### <a name="import-schema"></a>Importuj schemat
 
-Zestawy danych, takie jak Avro i CosmosDB, które obsługują złożone struktury, nie wymagają, aby definicje schematu istniały w zestawie danych. W związku z tym będzie można kliknąć przycisk **Importuj schemat** na karcie **projekcja** dla tych typów źródeł.
+Przycisk **Importuj schemat** na karcie **projekcje** umożliwia korzystanie z aktywnego klastra debugowania w celu utworzenia projekcji schematu. W tym miejscu są dostępne w każdym typie źródłowym, co spowoduje zastępowanie projekcji zdefiniowanej w zestawie danych. Obiekt DataSet nie zostanie zmieniony.
+
+Jest to przydatne w zestawach danych, takich jak Avro i CosmosDB, które obsługują złożone struktury, nie wymagają, aby definicje schematu istniały w zestawie danych.
 
 ## <a name="optimize-the-source-transformation"></a>Optymalizuj transformację źródłową
 

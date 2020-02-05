@@ -7,16 +7,16 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 90d171e3353061ffd855d9132c8a7fe40116e3cd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 93a77d73b5cc249c39609f98f055a7b1927dd6ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984107"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025490"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Samouczek: wdrażanie i przechodzenie przez szablon aplikacji centrum dystrybucji cyfrowej
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 W tym samouczku pokazano, jak rozpocząć pracę, wdrażając szablon aplikacji IoT Central **Digital Distribution Center** . Dowiesz się, jak wdrożyć szablon, co jest dołączone do pola i co warto zrobić dalej.
 
@@ -116,4 +116,4 @@ Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń szablon aplikacji, odw
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [koncepcji](./architecture-digital-distribution-center-pnp.md) rozwiązania centrum dystrybucji cyfrowej
 * Dowiedz się więcej na temat innych [szablonów detalicznych IoT Central](./overview-iot-central-retail-pnp.md)
-* Dowiedz się więcej o IoT Central zapoznaj się z [omówieniem IoT Central](../preview/overview-iot-central.md)
+* Dowiedz się więcej o IoT Central zapoznaj się z [omówieniem IoT Central](../core/overview-iot-central.md)

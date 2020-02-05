@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bc4b518cd2400cf3826b31a590d499c1ad031e7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3261e30d024cedba5885019a62cba1e296c1c00d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896535"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025558"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Zatwierdzanie lub odrzucanie żądań dla ról usługi Azure AD w Privileged Identity Management
 
@@ -37,54 +37,6 @@ Od listopada 2019 część Privileged Identity Management ról usługi Azure AD 
     ![Nowa wersja ról usługi Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
 
 Wykonaj kroki opisane w tym artykule, aby zatwierdzić lub odrzucić żądania dla ról usługi Azure AD.
-
-# <a name="previous-versiontabprevious"></a>[Poprzednia wersja](#tab/previous)
-
-## <a name="view-pending-requests"></a>Wyświetl oczekujące żądania
-
-W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, gdy żądanie roli usługi Azure AD oczekuje na zatwierdzenie. Te oczekujące żądania można wyświetlić w Privileged Identity Management.
-
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
-
-1. Otwórz **Azure AD Privileged Identity Management**.
-
-1. Kliknij pozycję **role usługi Azure AD**.
-
-1. Kliknij pozycję **Zatwierdź żądania**.
-
-    ![Role usługi Azure AD — zatwierdzanie żądań](./media/azure-ad-pim-approval-workflow/approve-requests.png)
-
-    Zostanie wyświetlona lista żądań oczekujących na zatwierdzenie.
-
-## <a name="approve-requests"></a>Zatwierdzanie żądań
-
-1. Wybierz żądania, które chcesz zatwierdzić, a następnie kliknij przycisk **Zatwierdź** , aby otworzyć okienko Zatwierdź wybrane żądania.
-
-    ![Zatwierdź listę żądań z wyróżnioną opcją zatwierdzania](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
-
-1. W polu **Przyczyna zatwierdzenia** wpisz przyczynę.
-
-    ![Zatwierdź okienko wybrane żądania z przyczyną zatwierdzenia](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
-
-1. Kliknij przycisk **Zatwierdź**.
-
-    Symbol stanu zostanie zaktualizowany przy użyciu zatwierdzenia.
-
-    ![Zatwierdź okienko wybrane żądania po kliknięciu przycisku Zatwierdź](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
-
-## <a name="deny-requests"></a>Odmów żądań
-
-1. Wybierz żądania, które chcesz odmówić, a następnie kliknij przycisk **Odmów** , aby otworzyć okienko Odmów wybranych żądań.
-
-    ![Zatwierdź listę żądań z wyróżnioną opcją Odmów](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
-
-1. W polu **Przyczyna odrzucenia** wpisz przyczynę.
-
-    ![Odmowa okienka wybrane żądania z powodu odrzucenia](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
-
-1. Kliknij przycisk **Odmów**.
-
-    Symbol stanu zostanie zaktualizowany z odmową.
 
 # <a name="new-versiontabnew"></a>[Nowa wersja](#tab/new)
 
@@ -135,6 +87,54 @@ Oto kilka informacji o powiadomieniach dotyczących przepływu pracy:
 
 >[!NOTE]
 >Administrator zasobów, który uważa, że zatwierdzona osoba nie powinna być aktywna, może usunąć przypisanie aktywnej roli w Privileged Identity Management. Mimo że administratorzy zasobów nie są powiadamiani o oczekujących żądaniach, chyba że są osobami zatwierdzającymi, mogą wyświetlać i anulować oczekujące żądania dla wszystkich użytkowników, wyświetlając oczekujące żądania w Privileged Identity Management.
+
+# <a name="previous-versiontabprevious"></a>[Poprzednia wersja](#tab/previous)
+
+## <a name="view-pending-requests"></a>Wyświetl oczekujące żądania
+
+W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, gdy żądanie roli usługi Azure AD oczekuje na zatwierdzenie. Te oczekujące żądania można wyświetlić w Privileged Identity Management.
+
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+
+1. Otwórz **Azure AD Privileged Identity Management**.
+
+1. Kliknij pozycję **role usługi Azure AD**.
+
+1. Kliknij pozycję **Zatwierdź żądania**.
+
+    ![Role usługi Azure AD — zatwierdzanie żądań](./media/azure-ad-pim-approval-workflow/approve-requests.png)
+
+    Zostanie wyświetlona lista żądań oczekujących na zatwierdzenie.
+
+## <a name="approve-requests"></a>Zatwierdzanie żądań
+
+1. Wybierz żądania, które chcesz zatwierdzić, a następnie kliknij przycisk **Zatwierdź** , aby otworzyć okienko Zatwierdź wybrane żądania.
+
+    ![Zatwierdź listę żądań z wyróżnioną opcją zatwierdzania](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
+
+1. W polu **Przyczyna zatwierdzenia** wpisz przyczynę.
+
+    ![Zatwierdź okienko wybrane żądania z przyczyną zatwierdzenia](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+
+1. Kliknij przycisk **Zatwierdź**.
+
+    Symbol stanu zostanie zaktualizowany przy użyciu zatwierdzenia.
+
+    ![Zatwierdź okienko wybrane żądania po kliknięciu przycisku Zatwierdź](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+
+## <a name="deny-requests"></a>Odmów żądań
+
+1. Wybierz żądania, które chcesz odmówić, a następnie kliknij przycisk **Odmów** , aby otworzyć okienko Odmów wybranych żądań.
+
+    ![Zatwierdź listę żądań z wyróżnioną opcją Odmów](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+
+1. W polu **Przyczyna odrzucenia** wpisz przyczynę.
+
+    ![Odmowa okienka wybrane żądania z powodu odrzucenia](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+
+1. Kliknij przycisk **Odmów**.
+
+    Symbol stanu zostanie zaktualizowany z odmową.
 
 ---
 

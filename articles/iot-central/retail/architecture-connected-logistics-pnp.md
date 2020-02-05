@@ -7,18 +7,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 797488632f04af9a170f05590154e50310570b28
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bde703310bb04cacbda0b90aec337cbbf1768d76
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890718"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021138"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>Architektura szablonu IoT Central połączonej aplikacji logistycznej
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Partnerzy & klienci mogą korzystać z szablonu aplikacji & następujące wskazówki umożliwiają tworzenie kompleksowych, **połączonych rozwiązań logistycznych**.
+
+Partnerzy & klienci mogą używać szablonu aplikacji & następujące wskazówki umożliwiają tworzenie kompleksowych, **połączonych rozwiązań logistycznych**.
 
 > [!div class="mx-imgBorder"]
 > ![połączonego pulpitu nawigacyjnego logistyki](./media/concept-connected-logistics-architecture/connected-logistics-architecture.png)
@@ -33,18 +33,18 @@ Partnerzy & klienci mogą korzystać z szablonu aplikacji & następujące wskaz�
 W poniższej sekcji opisano każdą część pozyskiwania danych telemetrycznych architektury koncepcyjnej ze znaczników IoT & bram
 
 ## <a name="iot-tags"></a>Tagi IoT
-Tagi IoT zapewniają fizyczne, otoczenie i czujniki środowiskowe, takie jak temperatura, wilgotność, wstrząsy, nachylenie & jasne. Tagi IoT zazwyczaj łączą się z urządzeniem bramy za pośrednictwem Zigbee (802.15.4). Tagi są niedrogie czujniki; w związku z tym można je odrzucić na końcu typowej podróży logistycznej, aby uniknąć problemów z odwrotną logistyką.
+Tagi IoT zapewniają fizyczne, otoczenie i czujniki środowiskowe, takie jak temperatura, wilgotność, wstrząsy, nachylenie & jasne. Tagi IoT zazwyczaj łączą się z urządzeniem bramy za poorednictwem Zigbee (802.15.4). Tagi są mniej kosztowne czujniki; Dzięki temu można je odrzucić na końcu typowej podróży logistycznej, aby uniknąć problemów z odwrotną logistyką.
 
 ## <a name="gateway"></a>Brama
-Bramy mogą również pełnić rolę tagów IoT z możliwością ich detekcji. Brama umożliwia nadrzędną łączność z usługą Azure IoT w chmurze (MQTT) za pośrednictwem kanałów komórkowych i sieci Wi-Fi.  Tryby połączenia Bluetooth, NFC i 802.15.4 Wireless sensor Network (WSN) są używane do komunikacji podrzędnej ze znacznikami IoT. Bramy zapewniają kompleksowe bezpieczeństwo łączności w chmurze, parowanie tagów IoT, agregację danych czujników, przechowywanie danych i możliwość konfigurowania progów alarmów.
+Bramy mogą również pełnić rolę tagów IoT z możliwością ich detekcji. Brama umożliwia nadrzędną łączność w chmurze Azure IoT (MQTT) przy użyciu kanałów komórkowych i sieci Wi-Fi.  Tryby połączenia Bluetooth, NFC i 802.15.4 Wireless sensor Network (WSN) są używane do komunikacji podrzędnej ze znacznikami IoT. Bramy zapewniają kompleksowe bezpieczeństwo łączności w chmurze, parowanie tagów IoT, agregację danych czujników, przechowywanie danych i możliwość konfigurowania progów alarmów.
 
 ## <a name="device-management-with-iot-central"></a>Zarządzanie urządzeniami za pomocą IoT Central 
 Azure IoT Central to platforma programistyczna rozwiązań, która upraszcza łączność, konfigurację i zarządzanie urządzeniami IoT. Platforma znacznie zmniejsza obciążenie i koszty związane z zarządzaniem urządzeniami IoT, operacjami i powiązanymi rozwiązaniami. Klienci & Partnerzy mogą tworzyć kompleksowe rozwiązania dla przedsiębiorstw, aby uzyskać pętlę do przesyłania opinii cyfrowych w ramach logistyki.
 
-## <a name="business-insights--actions-via-data-egress"></a>Informacje biznesowe dotyczące & działań za pośrednictwem danych wychodzących 
-Platforma IoT Central zapewnia zaawansowane opcje rozszerzalności za pośrednictwem funkcji ciągłego eksportowania danych (CDE) i interfejsów API. Szczegółowe informacje biznesowe oparte na przetwarzaniu danych telemetrycznych lub nieprzetworzonej telemetrii są zwykle eksportowane do preferowanych aplikacji biznesowych. Można to osiągnąć za pośrednictwem elementów webhook, Service Bus, Event Hub lub BLOB Storage w celu kompilowania, uczenia i wdrażania modeli uczenia maszynowego & dalszej wzbogacania szczegółowych informacji.
+## <a name="business-insights-and-actions-using-data-egress"></a>Szczegółowe informacje biznesowe i akcje przy użyciu danych wyjściowych 
+Platforma IoT Central zapewnia zaawansowane opcje rozszerzalności za poorednictwem ciągłego eksportowania danych (CDE) i interfejsów API. Szczegółowe informacje biznesowe oparte na przetwarzaniu danych telemetrycznych lub nieprzetworzonej telemetrii są zwykle eksportowane do preferowanych aplikacji biznesowych. Można to osiągnąć za pomocą elementów webhook, Service Bus, Event Hub lub BLOB Storage do kompilowania, uczenia i wdrażania modeli uczenia maszynowego & dodatkowego wzbogacania szczegółowych informacji.
 
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się, jak wdrożyć [szablon rozwiązanych rozwiązań logistycznych](./tutorial-iot-central-connected-logistics-pnp.md)
 * Dowiedz się więcej o [szablonach detalicznych IoT Central](./overview-iot-central-retail-pnp.md)
-* Dowiedz się więcej o IoT Central zapoznaj się z [omówieniem IoT Central](../preview/overview-iot-central.md)
+* Dowiedz się więcej o IoT Central zapoznaj się z [omówieniem IoT Central](../core/overview-iot-central.md)

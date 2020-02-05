@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773051"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022141"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Tworzenie rozwiązań dla handlu detalicznego za pomocą usługi Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Azure IoT Central to platforma aplikacji IoT, która zmniejsza obciążenie i koszty związane z opracowywaniem i konserwowaniem rozwiązań IoT klasy korporacyjnej oraz zarządzania nimi. Wybranie opcji kompilowania za pomocą usługi Azure IoT Central umożliwia skoncentrowanie się na czasie, pieniędzy i energii związanej z transformą działalności w firmie za pomocą danych IoT, a nie tylko utrzymaniem i aktualizacją złożonej i ciągle rosnącej infrastruktury IoT.
 
@@ -65,7 +65,7 @@ Zalety centrum dystrybucji cyfrowej obejmują:
 * Aparaty fotograficzne monitorują towary w miarę ich przybycia i przechodzą przez system przenośnika.
 * Automatyczna identyfikacja wadliwych towarów.
 * Wydajne śledzenie kolejności.
-* Obniżone koszty, Zwiększona produktywność i zoptymalizowane wykorzystanie.
+* Obniżone koszty, Zwiększona produktywność i zoptymalizowane użycie.
 
 Poniższy zrzut ekranu przedstawia wbudowany pulpit nawigacyjny w szablonie aplikacji. Pulpit nawigacyjny jest w pełni dostosowywany do konkretnych wymagań dotyczących rozwiązań: 
 
@@ -78,7 +78,7 @@ Aby dowiedzieć się więcej, zobacz samouczek [wdrażanie i przechodzenie przez
 
 W przypadku wielu detalistów warunki środowiskowe w ich magazynach są kluczowym odróżnianiem od ich konkurentów. Detaliści chcą zachować przyjemne warunki w swoich magazynach w celu skorzystania z korzyści dla klientów.  
 
-Jako Konstruktor rozwiązań można użyć szablonu aplikacji monitorowanie warunków analizy w sklepie IoT Central, aby utworzyć kompleksowe rozwiązanie. Szablon aplikacji umożliwia cyfrowe łączenie się ze środowiskiem magazynu detalicznego i monitorowanie go przy użyciu różnych urządzeń czujników. Te urządzenia czujnika generują dane telemetryczne, które można przekonwertować na usługi Business Insights w celu zmniejszenia kosztów operacyjnych i stworzenia doskonałego środowiska dla klientów.
+Jako Konstruktor rozwiązań można użyć szablonu aplikacji monitorowanie warunków analizy w sklepie IoT Central, aby utworzyć kompleksowe rozwiązanie. Szablon aplikacji umożliwia cyfrowe łączenie się ze środowiskiem magazynu detalicznego i monitorowanie go przy użyciu różnych rodzajów urządzeń czujników. Te urządzenia czujnika generują dane telemetryczne, które można przekonwertować na usługi Business Insights w celu zmniejszenia kosztów operacyjnych i stworzenia doskonałego środowiska dla klientów.
 
 Użyj szablonu aplikacji, aby:
 
@@ -149,8 +149,8 @@ Szablon aplikacji Centrum IoT Central Micro-zrealizować umożliwia konstruktoro
 
 Szablon aplikacji umożliwia wykonywanie: 
 
-- Bezproblemowo łącz różne czujniki IoT, takie jak roboty lub czujniki monitorowania warunku, do wystąpienia aplikacji IoT Central.
-- Monitoruj kondycję sieci czujnika i zarządzaj nimi oraz urządzeniami bramy w środowisku.
+- Bezproblemowo łącz różne rodzaje czujników IoT, takich jak w przypadku programu robotów lub czujników monitorowania warunku, do wystąpienia aplikacji IoT Central.
+- Monitoruj kondycję sieci czujnika i zarządzaj nimi oraz wszystkie urządzenia bramy w środowisku.
 - Utwórz reguły niestandardowe wokół warunków środowiska w centrum realizacji, aby wyzwolić odpowiednie alerty.
 - Przekształć warunki środowiska w centrum realizacji w szczegółowe dane, które mogą być wykorzystywane przez zespół ds. handlu detalicznego.
 - Wyeksportuj zagregowane informacje do istniejących lub nowych aplikacji firmowych, aby uzyskać korzyści dla członków działu sprzedaży detalicznej.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978900"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024589"
 ---
 # <a name="what-are-security-defaults"></a>Co to są wartości domyślne zabezpieczeń?
 
@@ -95,6 +95,8 @@ Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie każdy użytkow
 
 Jeśli użytkownik nie jest zarejestrowany do Multi-Factor Authentication, użytkownik będzie musiał zarejestrować się przy użyciu aplikacji Microsoft Authenticator, aby można było wykonać tę operację. Nie zostanie podany 14-dniowy okres rejestracji Multi-Factor Authentication.
 
+Dzierżawy usługi Exchange Online w wersji pre-2017 są domyślnie wyłączone. Aby uniknąć możliwości pętli logowania podczas uwierzytelniania za pomocą tych dzierżawców, należy [włączyć nowoczesne uwierzytelnianie](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+
 > [!NOTE]
 > Konto synchronizacji Azure AD Connect jest wykluczone z domyślnych ustawień zabezpieczeń i nie zostanie wyświetlony monit o zarejestrowanie się w usłudze lub przeprowadzenie uwierzytelniania wieloskładnikowego. Organizacje nie powinny używać tego konta do innych celów.
 
@@ -108,10 +110,10 @@ Domyślne ustawienia zabezpieczeń umożliwiają rejestrację i korzystanie z us
 
 |   | Domyślne ustawienia zabezpieczeń | Dostęp warunkowy |
 | --- | --- | --- |
-| Powiadomienie przez aplikację mobilną | X | X |
+| Powiadomienie za poorednictwem aplikacji mobilnej | X | X |
 | Kod weryfikacyjny z aplikacji mobilnej lub tokenu sprzętowego |   | X |
 | Wiadomość SMS na telefon |   | X |
-| Połączenie z telefonem |   | X |
+| Wywołanie telefonu |   | X |
 | Hasła aplikacji |   | X * * |
 
 \* * Hasła aplikacji są dostępne tylko w ramach usługi MFA dla poszczególnych użytkowników ze starszymi scenariuszami uwierzytelniania tylko wtedy, gdy są włączone przez administratorów.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961553"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024283"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów & ograniczenia Azure Cloud Shell
 
@@ -36,8 +36,8 @@ Znane rozwiązania dotyczące rozwiązywania problemów w Azure Cloud Shell obej
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Wyłączanie Cloud Shell w zablokowanym środowisku sieciowym
 
-- **Szczegóły**: Administratorzy mogą chcieć wyłączyć dostęp do Cloud Shell dla swoich użytkowników. Cloud Shell wykorzystuje dostęp do domeny `ux.console.azure.com`, którą można odmówić, zatrzymywać dowolny dostęp do punktu wejścia Cloud Shell, w tym portal.azure.com, shell.azure.com, Visual Studio Code rozszerzenia konta platformy Azure i docs.microsoft.com.
-- **Rozwiązanie**: Ogranicz dostęp do `ux.console.azure.com` za pośrednictwem ustawień sieciowych do środowiska. Ikona Cloud Shell nadal istnieje w portal.azure.com, ale nie nawiąże połączenia z usługą.
+- **Szczegóły**: Administratorzy mogą chcieć wyłączyć dostęp do Cloud Shell dla swoich użytkowników. Cloud Shell wykorzystuje dostęp do domeny `ux.console.azure.com`, którą można odmówić, zatrzymywać dowolny dostęp do punktu wejścia Cloud Shell, w tym portal.azure.com, shell.azure.com, Visual Studio Code rozszerzenia konta platformy Azure i docs.microsoft.com. W chmurze dla instytucji rządowych USA punkt wejścia jest `ux.console.azure.us`; nie ma odpowiednich shell.azure.us.
+- **Rozwiązanie**: Ogranicz dostęp do `ux.console.azure.com` lub `ux.console.azure.us` za pośrednictwem ustawień sieciowych do środowiska. Ikona Cloud Shell nadal istnieje w Azure Portal, ale nie nawiąże połączenia z usługą.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Okno dialogowe magazynu — błąd: 403 RequestDisallowedByPolicy
 
@@ -163,7 +163,7 @@ Azure Cloud Shell poważnie potraktuje dane osobowe, dane przechwycone i przecho
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>Eksportowanie
+### <a name="export"></a>Eksportuj
 W celu **wyeksportowania** ustawień użytkownika Cloud Shell zapisywanych danych, takich jak preferowana powłoka, rozmiar czcionki i typ czcionki, uruchom następujące polecenia.
 
 1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
@@ -183,7 +183,7 @@ Program PowerShell:
   ((Invoke-WebRequest -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}).Content | ConvertFrom-Json).properties | Format-List
 ```
 
-### <a name="delete"></a>Usuwanie
+### <a name="delete"></a>Usuń
 Aby **usunąć** ustawienia użytkownika Cloud Shell zapisywanych danych, takich jak preferowana powłoka, rozmiar czcionki i typ czcionki, uruchom następujące polecenia. Przy następnym uruchomieniu Cloud Shell zostanie wyświetlony monit o ponowne dołączenie udziału plików. 
 
 >[!Note]

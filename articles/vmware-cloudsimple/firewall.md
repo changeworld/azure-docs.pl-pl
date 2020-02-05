@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — Konfigurowanie tabel i reguł zapory
-description: Opisuje sposób konfigurowania tabel i zasad zapory chmury prywatnej w celu ograniczenia ruchu sieciowego w podsieciach i sieci VLAN.
+title: Azure VMware Solutions (Automatyczna synchronizacja) — Konfigurowanie tabel i reguł zapory
+description: Opisuje sposób konfigurowania tabel i reguł zapory chmury prywatnej w celu ograniczenia ruchu sieciowego w podsieciach i sieci VLAN.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: d133f4d0ac8cc8b70060563ad07da35e9fdf2d37
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606455"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025286"
 ---
-# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Konfigurowanie tabel i reguł zapory dla chmur prywatnych
+# <a name="set-up-firewall-tables-and-rules-for-avs-private-clouds"></a>Konfigurowanie tabel i reguł zapory na potrzeby automatycznej synchronizacji chmur prywatnych
 
 Tabele zapory i skojarzone reguły pozwalają określić ograniczenia dotyczące ruchu, który ma być stosowany do określonych podsieci i sieci VLAN.
 
@@ -24,7 +24,7 @@ Tabele zapory i skojarzone reguły pozwalają określić ograniczenia dotyczące
 
 ## <a name="add-a-new-firewall-table"></a>Dodaj nową tabelę zapory
 
-1. [Uzyskaj dostęp do portalu CloudSimple](access-cloudsimple-portal.md) i wybierz pozycję **Sieć** w menu po stronie.
+1. [Uzyskaj dostęp do portalu automatycznej synchronizacji](access-cloudsimple-portal.md) i wybierz pozycję **Sieć** w menu po stronie.
 2. Wybierz pozycję **tabele zapory**.
 3. Wybierz pozycję **Utwórz tabelę zapory**.
 
@@ -51,7 +51,7 @@ Reguły zapory określają sposób traktowania poszczególnych typów ruchu prze
 2. Skonfiguruj regułę w następujący sposób:
     * **Nazwa**. Nadaj regule nazwę.
     * **Priorytet**. Przypisz priorytet do reguły. Reguły o niższych numerach są wykonywane jako pierwsze.
-    * **Typ ruchu sieciowego**. Wybierz, czy reguła dotyczy ruchu w chmurze prywatnej, Internetu lub sieci VPN (bezstanowej), czy też dla publicznego adresu IP (stanowy).
+    * **Typ ruchu sieciowego**. Wybierz, czy reguła dotyczy synchronizacji prywatnej chmury, Internetu lub sieci VPN (bezstanowej), czy też dla publicznego adresu IP (stanowy).
     * **Protokół**. Wybierz protokół objęty regułą (TCP, UDP lub dowolny protokół).
     * **Kierunek**. Wybierz, czy reguła dotyczy ruchu przychodzącego, czy wychodzącego. Należy zdefiniować osobne reguły dla ruchu przychodzącego i wychodzącego.
     * **Akcja**. Wybierz akcję, która ma zostać podjęta, jeśli reguła jest zgodna (Zezwalaj lub Odmów).
@@ -75,5 +75,5 @@ Po zdefiniowaniu tabeli zapory można określić podsieci, które podlegają reg
 1. Na stronie **tabele zapory** > **sieci** wybierz tabelę zapory.
 2. Otwórz kartę **podłączone sieci VLAN/podsieć** .
 3. Kliknij przycisk **Dołącz do sieci VLAN/podsieci**.
-4. Wybierz chmurę prywatną i sieć VLAN. Wyświetlana jest nazwa skojarzonej podsieci i blok CIDR.
+4. Wybierz chmurę prywatną i sieć VLAN do automatycznej synchronizacji. Wyświetlana jest nazwa skojarzonej podsieci i blok CIDR.
 5. Kliknij przycisk **Prześlij**.

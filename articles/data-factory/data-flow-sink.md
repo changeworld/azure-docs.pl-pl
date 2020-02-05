@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440264"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020050"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformacja ujścia w przepływie danych mapowania
 
@@ -47,11 +47,17 @@ Po dodaniu ujścia skonfiguruj go za pomocą karty **ujścia** . W tym miejscu m
 
 **Weryfikuj schemat:** Jeśli wybrano opcję Weryfikuj schemat, przepływ danych zakończy się niepowodzeniem, jeśli nie zostanie znaleziona żadna kolumna w zdefiniowanym schemacie zestawu danych.
 
-## <a name="field-mapping"></a>Mapowanie pola
+## <a name="field-mapping"></a>Mapowanie pól
 
 Podobnie jak w przypadku transformacji SELECT, na karcie **Mapowanie** obiektu ujścia można zdecydować, które kolumny przychodzące będą zapisywane. Domyślnie wszystkie kolumny wejściowe, w tym kolumny przedzielone, są mapowane. Jest to nazywane **automapowaniem**.
 
 Po wyłączeniu automapowania będziesz mieć możliwość dodawania stałych mapowań opartych na kolumnach lub mapowań opartych na regułach. Mapowania oparte na regułach umożliwiają pisanie wyrażeń z dopasowaniem do wzorca, podczas gdy stałe mapowanie spowoduje zamapowanie nazw kolumn logicznych i fizycznych. Aby uzyskać więcej informacji na temat mapowania opartego na regułach, zobacz [wzorce kolumn w mapowaniu przepływu danych](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
+
+## <a name="custom-sink-ordering"></a>Niestandardowe porządkowanie obiektów sink
+
+Domyślnie dane są zapisywane w wielu ujściach w kolejności niedeterministycznej. Aparat wykonawczy będzie zapisywać dane równolegle, ponieważ logika transformacji zostanie zakończona, a kolejność zbiornika może się różnić w zależności od każdego uruchomienia. Aby określić i dokładnie ustalić kolejność zbiorników, Włącz **niestandardowe porządkowanie obiektów sink** na karcie Ogólne przepływu danych. Po włączeniu ujścia są zapisywane sekwencyjnie w kolejności rosnącej.
+
+![Niestandardowe porządkowanie obiektów sink](media/data-flow/custom-sink-ordering.png "Niestandardowe porządkowanie obiektów sink")
 
 ## <a name="data-preview-in-sink"></a>Podgląd danych w usłudze ujścia
 

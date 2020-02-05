@@ -2,18 +2,18 @@
 title: Konfigurowanie punktów końcowych węzła w puli Azure Batch | Microsoft Docs
 description: Jak skonfigurować lub wyłączyć dostęp do portów SSH lub RDP w węzłach obliczeniowych w puli Azure Batch.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: jushiman
-ms.openlocfilehash: 1ac4c7647125cd6164235e98a4a828f6b072cbee
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 098ccf999391412520989c4ec2433fd73bc0a72d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029463"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017228"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurowanie lub wyłączanie dostępu zdalnego do węzłów obliczeniowych w puli Azure Batch
 

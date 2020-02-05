@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 25dd4810cf8cccab8bcbf211da4f6abbcd147056
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605581"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020033"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Samouczek: Tworzenie puli hostów przy użyciu witryny Azure Marketplace
 
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Uruchamianie oferty portalu Azure Marketplace w celu aprowizacji nowej puli hostów
 
@@ -55,7 +55,7 @@ Oto co należy zrobić w przypadku bloku **podstawy** :
 3. Wprowadź rozdzieloną przecinkami listę użytkowników, którzy mogą logować się do klientów pulpitu wirtualnego systemu Windows i uzyskiwać dostęp do pulpitu po zakończeniu oferty portalu Azure Marketplace. Jeśli na przykład chcesz przypisać dostęp user1@contoso.com i user2@contoso.com, wprowadź "user1@contoso.com,user2@contoso.com".
 4. Wybierz pozycję **Utwórz nowy** i podaj nazwę nowej grupy zasobów.
 5. W polu **Lokalizacja**wybierz tę samą lokalizację co sieć wirtualna, która ma łączność z serwerem Active Directory.
-6. Kliknij przycisk **OK**.
+6. Wybierz pozycję **Dalej: Skonfiguruj maszyny wirtualne >** .
 
 >[!IMPORTANT]
 >Jeśli używasz czystego Azure Active Directory Domain Services i Azure Active Directory rozwiązanie, upewnij się, że Pula hostów została wdrożona w tym samym regionie co Azure Active Directory Domain Services, aby uniknąć błędów przyłączania do domeny i poświadczeń.
@@ -66,7 +66,7 @@ W bloku **Konfiguruj maszyny wirtualne** :
 
 1. Zaakceptuj wartości domyślne lub Dostosuj liczbę i rozmiar maszyn wirtualnych.
 2. Wprowadź prefiks nazw maszyn wirtualnych. Na przykład w przypadku wprowadzenia nazwy "prefiks" maszyny wirtualne będą nazywane "prefiksem-0", "prefiksem-1" i tak dalej.
-3. Kliknij przycisk **OK**.
+3. Wybierz pozycję **Dalej: ustawienia maszyny wirtualnej**.
 
 ### <a name="virtual-machine-settings"></a>Ustawienia maszyny wirtualnej
 
@@ -80,7 +80,7 @@ W bloku **ustawienia maszyny wirtualnej** :
 1. W polu **Źródło obrazu**wybierz źródło i wprowadź odpowiednie informacje na temat sposobu ich znalezienia i sposobu ich przechowywania. W przypadku wybrania opcji nie używaj dysków zarządzanych wybierz konto magazynu zawierające plik VHD.
 2. Wprowadź główną nazwę użytkownika i hasło konta domeny, które będzie przyłączać maszyny wirtualne do domeny Active Directory. Ta sama nazwa użytkownika i hasło zostaną utworzone na maszynach wirtualnych jako konto lokalne. Możesz zresetować te konta lokalne później.
 3. Wybierz sieć wirtualną, która ma łączność z serwerem Active Directory, a następnie wybierz podsieć do hostowania maszyn wirtualnych.
-4. Kliknij przycisk **OK**.
+4. Wybierz pozycję **Dalej: informacje o pulpicie wirtualnym systemu Windows**.
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Informacje o dzierżawie pulpitu wirtualnego systemu Windows
 
@@ -90,15 +90,14 @@ W bloku **Informacje o dzierżawie pulpitu wirtualnego systemu Windows** :
 2. W polu **Nazwa dzierżawy pulpitu wirtualnego systemu Windows**wprowadź nazwę dzierżawy, w której chcesz utworzyć pulę hostów.
 3. Określ typ poświadczeń, które mają być używane do uwierzytelniania jako właściciel usług pulpitu wirtualnego systemu Windows. Jeśli ukończono tworzenie jednostek [usługi i przypisań ról przy użyciu programu PowerShell](./create-service-principal-role-powershell.md), wybierz pozycję Nazwa **główna usługi**. Gdy zostanie wyświetlony **Identyfikator dzierżawy usługi Azure AD** , wprowadź identyfikator wystąpienia Azure Active Directory, które zawiera jednostkę usługi.
 4. Wprowadź poświadczenia dla konta administratora dzierżawy. Obsługiwane są tylko jednostki usługi z poświadczeniami hasła.
-5. Kliknij przycisk **OK**.
+5. Wybierz pozycję **Dalej: przegląd + Utwórz**.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>Ukończ instalację i Utwórz maszynę wirtualną
 
 Dla ostatnich dwóch bloków:
 
-1. W bloku **Podsumowanie** Przejrzyj informacje o instalacji. Jeśli musisz zmienić coś, Wróć do odpowiedniego bloku i wprowadź zmiany przed kontynuowaniem. Jeśli informacje wyglądają prawidłowo, wybierz przycisk **OK**.
-2. W bloku **kupowanie** zapoznaj się z dodatkowymi informacjami na temat zakupów w portalu Azure Marketplace.
-3. Wybierz pozycję **Utwórz** , aby wdrożyć pulę hostów.
+1. W bloku **Przegląd i tworzenie** Przejrzyj informacje o instalacji. Jeśli musisz zmienić coś, Wróć do odpowiedniego bloku i wprowadź zmiany przed kontynuowaniem. Jeśli informacje wyglądają prawidłowo, wybierz przycisk **OK**.
+2. Wybierz pozycję **Utwórz** , aby wdrożyć pulę hostów.
 
 W zależności od liczby tworzonych maszyn wirtualnych proces ten może potrwać 30 minut lub dłużej.
 

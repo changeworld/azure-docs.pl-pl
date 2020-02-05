@@ -1,7 +1,7 @@
 ---
-title: Dostęp do rozwiązań VMware platformy Azure przez CloudSimple z zasobów lokalnych
-titleSuffix: Azure VMware Solution by CloudSimple
-description: Uzyskiwanie dostępu do rozwiązania VMware platformy Azure przez CloudSimple z sieci lokalnej przez zaporę
+title: Uzyskiwanie dostępu do rozwiązań VMware (Automatyczna synchronizacja) z platformy Azure w środowisku lokalnym
+description: Uzyskiwanie dostępu do rozwiązań VMware platformy Azure (Automatyczna synchronizacja) z sieci lokalnej za pośrednictwem zapory
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/08/2019
@@ -9,54 +9,54 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 09b25dbdc8fc13c40ccd89b2cfd78611cedaac9d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452406"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024470"
 ---
-# <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Uzyskiwanie dostępu do środowiska chmury prywatnej CloudSimple i aplikacji z poziomu lokalnego
+# <a name="accessing-your-avs-private-cloud-environment-and-applications-from-on-premises"></a>Uzyskiwanie dostępu do własnego środowiska chmury prywatnej i aplikacji z poziomu lokalnego
 
-Połączenie można skonfigurować z sieci lokalnej do CloudSimple przy użyciu usługi Azure ExpressRoute lub sieci VPN typu lokacja-lokacja.  Uzyskaj dostęp do CloudSimple prywatnej chmury vCenter oraz wszelkich obciążeń, które są uruchamiane w chmurze prywatnej przy użyciu połączenia.  Można kontrolować, które porty są otwierane w ramach połączenia, za pomocą zapory w sieci lokalnej.  W tym artykule omówiono niektóre typowe wymagania dotyczące portów aplikacji.  W przypadku innych aplikacji zapoznaj się z dokumentacją aplikacji dotyczącą wymagań portów.
+Połączenie można skonfigurować z sieci lokalnej w celu automatycznej synchronizacji przy użyciu usługi Azure ExpressRoute lub sieci VPN typu lokacja-lokacja. Uzyskaj dostęp do narzędzia do automatycznej synchronizacji w chmurze prywatnej oraz wszelkich obciążeń uruchamianych w chmurze prywatnej automatycznej synchronizacji przy użyciu połączenia. Można kontrolować, które porty są otwierane w ramach połączenia, za pomocą zapory w sieci lokalnej. W tym artykule omówiono niektóre typowe wymagania dotyczące portów aplikacji. W przypadku innych aplikacji zapoznaj się z dokumentacją aplikacji dotyczącą wymagań portów.
 
 ## <a name="ports-required-for-accessing-vcenter"></a>Porty wymagane do uzyskania dostępu do programu vCenter
 
-Aby można było uzyskać dostęp do Menedżera usługi vCenter i NSX-T chmury prywatnej, porty zdefiniowane w poniższej tabeli muszą być otwarte na zaporze lokalnej.  
+Aby można było uzyskać dostęp do Menedżera automatycznej synchronizacji chmurowej usługi vCenter i NSX-T, porty zdefiniowane w poniższej tabeli muszą być otwarte na zaporze lokalnej. 
 
 | Port       | Źródło                           | Cel                      | Przeznaczenie                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)   | Lokalne serwery DNS          | Serwery DNS w chmurze prywatnej        | Wymagany do przekazywania wyszukiwania DNS *AZ.cloudsimple.IO* do serwerów DNS w chmurze prywatnej z sieci lokalnej.       |
-| 53 (UDP)   | Serwery DNS w chmurze prywatnej        | Lokalne serwery DNS          | Wymagane w celu przeprowadzenia przeszukiwania nazw domen lokalnych z usługi vCenter w chmurze prywatnej do lokalnych serwerów DNS. |
-| 80 (TCP)   | Sieć lokalna              | Sieć zarządzania chmurą prywatną | Wymagane do przekierowywania adresu URL programu vCenter z *protokołu HTTP* do *protokołu HTTPS*.                                                           |
-| 443 (TCP)  | Sieć lokalna              | Sieć zarządzania chmurą prywatną | Wymagane w celu uzyskania dostępu do Menedżera vCenter i NSX-T z sieci lokalnej.                                             |
-| 8000 (TCP) | Sieć lokalna              | Sieć zarządzania chmurą prywatną | Wymagany do vMotion maszyn wirtualnych ze swojej firmy w chmurze prywatnej.                                            |
-| 8000 (TCP) | Sieć zarządzania chmurą prywatną | Sieć lokalna              | Wymagane dla vMotion maszyn wirtualnych z chmury prywatnej do lokalnego.                                            |
+| 53 (UDP)   | Lokalne serwery DNS          | Automatyczna synchronizacja serwerów DNS w chmurze prywatnej        | Wymagane do przeszukiwania DNS przez *AZ. AVS.io* do automatycznej synchronizacji serwerów DNS w chmurze prywatnej z sieci lokalnej.     |
+| 53 (UDP)   | Automatyczna synchronizacja serwerów DNS w chmurze prywatnej        | Lokalne serwery DNS          | Wymagane do przesyłania dalej DNS wyszukiwania lokalnych nazw domen z funkcji automatycznej synchronizacji chmurowej programu vCenter do lokalnych serwerów DNS. |
+| 80 (TCP)   | Sieć lokalna              | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Wymagane do przekierowywania adresu URL programu vCenter z *protokołu HTTP* do *protokołu HTTPS*.                                                         |
+| 443 (TCP)  | Sieć lokalna              | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Wymagane w celu uzyskania dostępu do Menedżera vCenter i NSX-T z sieci lokalnej.                                           |
+| 8000 (TCP) | Sieć lokalna              | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Wymagany do vMotion maszyn wirtualnych z lokalnego do automatycznej synchronizacji chmury prywatnej.                                          |
+| 8000 (TCP) | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Sieć lokalna              | Wymagany do vMotion maszyn wirtualnych z chmury prywatnej do wersji lokalnej.                                          |
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>Porty wymagane do korzystania z lokalnej usługi Active Directory jako źródła tożsamości
 
-Aby skonfigurować lokalną usługi Active Directory jako źródło tożsamości w programie vCenter w chmurze prywatnej, należy otworzyć porty zdefiniowane w tabeli.  Zobacz [Używanie usługi Azure AD jako dostawcy tożsamości dla programu vCenter w chmurze prywatnej CloudSimple](https://docs.azure.cloudsimple.com/azure-ad/) na potrzeby czynności konfiguracyjnych.
+Aby skonfigurować lokalną usługi Active Directory jako źródło tożsamości w ramach automatycznej synchronizacji chmury prywatnej, należy otworzyć porty zdefiniowane w tabeli. Zobacz temat [Korzystanie z usługi Azure AD jako dostawcy tożsamości dla programu vCenter w ramach automatycznej synchronizacji wersji zapoznaj się z chmurą prywatną](https://docs.azure.cloudsimple.com/azure-ad/) .
 
 | Port         | Źródło                           | Cel                                         | Przeznaczenie                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)      | Serwery DNS w chmurze prywatnej        | Lokalne serwery DNS                             | Wymagane w celu przeprowadzenia przekazywania DNS nazwy lokalnych domen usługi Active Directory z chmury prywatnej vCenter do lokalnych serwerów DNS.          |
-| 389 (TCP/UDP) | Sieć zarządzania chmurą prywatną | Lokalne kontrolery domeny usługi Active Directory     | Wymagany do komunikacji z usługą LDAP z prywatnego serwera vCenter Cloud do kontrolerów domeny usługi Active Directory na potrzeby uwierzytelniania użytkowników.                |
-| 636 (TCP)     | Sieć zarządzania chmurą prywatną | Lokalne kontrolery domeny usługi Active Directory     | Wymagane w celu komunikacji z kontrolerami domeny usługi Active Directory w celu uwierzytelniania użytkowników przy użyciu protokołu Secure LDAP (LDAPs) z prywatnego serwera vCenter Cloud. |
-| 3268 (TCP)    | Sieć zarządzania chmurą prywatną | Lokalne serwery wykazu globalnego usługi Active Directory | Wymagane na potrzeby komunikacji z protokołem LDAP w wdrożeniach z wielodomenowym kontrolerem.                                                                        |
-| 3269 (TCP)    | Sieć zarządzania chmurą prywatną | Lokalne serwery wykazu globalnego usługi Active Directory | Wymagane w przypadku komunikacji LDAPs w wdrożeniach z wielodomenowym kontrolerem.                                                                       |                                           |
+| 53 (UDP)      | Automatyczna synchronizacja serwerów DNS w chmurze prywatnej        | Lokalne serwery DNS                             | Wymagane w celu przeprowadzenia przeszukiwania DNS lokalnych nazw domen usługi Active Directory z wersji próbnej wersji załączonej do lokalnych serwerów DNS.        |
+| 389 (TCP/UDP) | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Lokalne kontrolery domeny usługi Active Directory     | Wymagane w przypadku komunikacji z protokołem LDAP z programu reautomatyczna synchronizacja chmurowych serwerów vCenter do kontrolerów domeny usługi Active Directory na potrzeby uwierzytelniania użytkowników.              |
+| 636 (TCP)     | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Lokalne kontrolery domeny usługi Active Directory     | Wymagane w celu komunikacji przy użyciu protokołu Secure LDAP (LDAPs) z usługi automatycznej synchronizacji chmury prywatnej programu vCenter Server z kontrolerami domeny Active Directory na potrzeby uwierzytelniania użytkowników. |
+| 3268 (TCP)    | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Lokalne serwery wykazu globalnego usługi Active Directory | Wymagane na potrzeby komunikacji z protokołem LDAP w wdrożeniach z wielodomenowym kontrolerem.                                                                      |
+| 3269 (TCP)    | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Lokalne serwery wykazu globalnego usługi Active Directory | Wymagane w przypadku komunikacji LDAPs w wdrożeniach z wielodomenowym kontrolerem.                                                                     |                                           |
 
 ## <a name="common-ports-required-for-accessing-workload-virtual-machines"></a>Typowe porty wymagane do uzyskania dostępu do obciążeń maszyn wirtualnych
 
-Dostęp do obciążeń maszyny wirtualne uruchomione w chmurze prywatnej wymagają otwarcia portów na zaporze lokalnej.  W poniższej tabeli przedstawiono niektóre typowe porty wymagane i ich przeznaczenia.  Wymagania dotyczące portów specyficzne dla aplikacji można znaleźć w dokumentacji aplikacji.
+Dostęp do obciążeń maszyn wirtualnych działających w ramach automatycznej synchronizacji prywatnej chmury wymaga otwarcia portów na zaporze lokalnej. W poniższej tabeli przedstawiono niektóre typowe porty wymagane i ich przeznaczenia. Wymagania dotyczące portów specyficzne dla aplikacji można znaleźć w dokumentacji aplikacji.
 
 | Port         | Źródło                         | Cel                          | Przeznaczenie                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
-| 22 (TCP)      | Sieć lokalna            | Sieć obciążenia chmury prywatnej       | Bezpieczny dostęp powłoki do maszyn wirtualnych z systemem Linux działających w chmurze prywatnej.              |
-| 3389 (TCP)    | Sieć lokalna            | Sieć obciążenia chmury prywatnej       | Pulpit zdalny do maszyn wirtualnych z systemem Windows uruchomionych w chmurze prywatnej.                 |
-| 80 (TCP)      | Sieć lokalna            | Sieć obciążenia chmury prywatnej       | Uzyskaj dostęp do dowolnych serwerów sieci Web wdrożonych na maszynach wirtualnych działających w chmurze prywatnej.        |
-| 443 (TCP)     | Sieć lokalna            | Sieć obciążenia chmury prywatnej       | Uzyskaj dostęp do dowolnych bezpiecznych serwerów sieci Web wdrożonych na maszynach wirtualnych działających w chmurze prywatnej. |
-| 389 (TCP/UDP) | Sieć obciążenia chmury prywatnej | Lokalna sieć usługi Active Directory | Przyłączanie maszyn wirtualnych obciążeń systemu Windows do lokalnej domeny usługi Active Directory.       |
-| 53 (UDP)      | Sieć obciążenia chmury prywatnej | Sieć lokalna                  | Dostęp usługi DNS do obciążeń maszyn wirtualnych do lokalnych serwerów DNS.         |
+| 22 (TCP)      | Sieć lokalna            | Automatyczna synchronizacja sieci obciążeń chmur prywatnych       | Bezpieczny dostęp powłoki do maszyn wirtualnych z systemem Linux działających w ramach automatycznej synchronizacji chmury prywatnej.            |
+| 3389 (TCP)    | Sieć lokalna            | Automatyczna synchronizacja sieci obciążeń chmur prywatnych       | Pulpit zdalny do maszyn wirtualnych z systemem Windows uruchomiony w ramach automatycznej synchronizacji chmury prywatnej.               |
+| 80 (TCP)      | Sieć lokalna            | Automatyczna synchronizacja sieci obciążeń chmur prywatnych       | Uzyskaj dostęp do dowolnych serwerów sieci Web wdrożonych na maszynach wirtualnych działających w ramach automatycznej synchronizacji chmury prywatnej.      |
+| 443 (TCP)     | Sieć lokalna            | Automatyczna synchronizacja sieci obciążeń chmur prywatnych       | Uzyskaj dostęp do dowolnych bezpiecznych serwerów sieci Web wdrożonych na maszynach wirtualnych działających w ramach automatycznej synchronizacji chmury prywatnej. |
+| 389 (TCP/UDP) | Automatyczna synchronizacja sieci obciążeń chmur prywatnych | Lokalna sieć usługi Active Directory | Przyłączanie maszyn wirtualnych obciążeń systemu Windows do lokalnej domeny usługi Active Directory.     |
+| 53 (UDP)      | Automatyczna synchronizacja sieci obciążeń chmur prywatnych | Sieć lokalna                  | Dostęp usługi DNS do obciążeń maszyn wirtualnych do lokalnych serwerów DNS.       |
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -2,21 +2,21 @@
 title: Zdarzenie niepowodzenia zadania Azure Batch
 description: Odwołanie do zdarzenia niepowodzenia zadania usługi Batch. To zdarzenie będzie emitowane jako uzupełnienie zdarzenia ukończenia zadania i może służyć do wykrywania, kiedy zadanie zakończyło się niepowodzeniem.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/15/2019
-ms.author: jushiman
-ms.openlocfilehash: a3786eed56c22dcd2c756e935265faa763ca7072
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 2bc958d6dca2b3caae665e6f9b080c651ace9ea0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026181"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022889"
 ---
 # <a name="task-fail-event"></a>Zdarzenie niepowodzenia zadania
 

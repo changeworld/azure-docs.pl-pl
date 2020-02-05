@@ -12,12 +12,12 @@ ms.date: 01/29/2020
 ms.author: twhitney
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 3127ac10e30fab8abd49550dc517f68c8ecbf8e3
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5f3d1ee4156cff0e3e3c1d48f90400d387beef6f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907541"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023025"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Filmy dotyczące platformy tożsamości firmy Microsoft
 
@@ -33,6 +33,18 @@ Dowiedz się więcej na temat platformy tożsamości firmy Microsoft i bibliotek
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        Wprowadzenie do bibliotek MSAL
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
     :::column-end:::
     :::column:::
         Jak MSAL ułatwia uwierzytelnianie

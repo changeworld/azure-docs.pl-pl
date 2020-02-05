@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 86b7a1b373d80f0e6bb7f40f57f71d20e396a6c1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 27874e5731bd6fb9821e7aeda9333adbdbb79099
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934616"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023297"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Dokumentacja usługi Azure Digital bliźniaczych reprezentacji Swagger
 
@@ -93,11 +93,11 @@ Przykłady zawierają również kody błędów ułatwiające debugowanie lub usp
 ## <a name="swagger-oauth-20-authorization"></a>Autoryzacja OAuth 2,0 programu Swagger
 
 > [!NOTE]
-> * Podmiot zabezpieczeń, który utworzył zasób usługi Azure Digital bliźniaczych reprezentacji, będzie miał przypisanie roli administratora miejsca i będzie mógł tworzyć dodatkowe przypisania ról dla innych użytkowników. Takie Użytkownicy i ich role mogą być autoryzowane do wywoływania interfejsów API.
+> * Podmiot zabezpieczeń, który utworzył zasób usługi Azure Digital bliźniaczych reprezentacji, będzie miał przypisanie roli administratora miejsca i będzie mógł tworzyć dodatkowe przypisania ról dla innych użytkowników. Ci użytkownicy i ich role mogą być autoryzowane do wywoływania interfejsów API.
 
-1. Wykonaj kroki opisane w [tym przewodniku szybki start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) , aby utworzyć i skonfigurować aplikację usługi Azure AD. Alternatywnie możesz ponownie użyć istniejącej rejestracji aplikacji.
+1. Wykonaj kroki opisane w [przewodniku szybki start](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) , aby utworzyć i skonfigurować aplikację Azure Active Directory. Alternatywnie możesz ponownie użyć istniejącej rejestracji aplikacji.
 
-1. Dodaj następujący **adres URL przekierowania** do rejestracji aplikacji usługi Azure AD:
+1. Dodaj następujący **Identyfikator URI przekierowania** do Azure Active Directory rejestracji aplikacji:
 
     [![zarejestrować adres URL przekierowania struktury Swagger w usłudze AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
@@ -108,7 +108,9 @@ Przykłady zawierają również kody błędów ułatwiające debugowanie lub usp
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Adres URL dokumentacji interfejsu API REST zarządzania znajduje się w portalu  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Skopiuj **Identyfikator klienta** aplikacji usługi Azure AD.
+1. Zaznacz pole wyboru **niejawnie udziel** > **tokeny dostępu** , aby zezwolić na użycie niejawnego przepływu uwierzytelniania OAuth 2,0. Wybierz pozycję **Konfiguruj**, a następnie **Zapisz**.
+
+1. Skopiuj **Identyfikator klienta** aplikacji Azure Active Directory.
 
 Po zakończeniu rejestracji Azure Active Directory:
 

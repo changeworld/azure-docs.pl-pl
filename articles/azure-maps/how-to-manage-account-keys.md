@@ -1,19 +1,19 @@
 ---
-title: Zarządzanie kontem Azure Maps w witrynie Azure Portal | Mapy Microsoft Azure
+title: Zarządzaj kontem Azure Maps w Azure Portal | Mapy Microsoft Azure
 description: W tym artykule dowiesz się, jak za pomocą Azure Portal zarządzać kontem Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92c76780473372c3e2ef87cdf4da0f21a22d9ac6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: a983eab03e948d092af652962d75211eb8ee3e7b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911497"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025609"
 ---
 # <a name="manage-your-azure-maps-account"></a>Zarządzanie kontem Azure Maps
 
@@ -23,21 +23,21 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-a-new-account"></a>Utwórz nowe konto
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
-2. W lewym górnym rogu witryny Azure portal wybierz pozycję **Utwórz zasób**.
+2. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu Azure Portal.
 
 3. Wyszukaj i wybierz pozycję **Maps**. Następnie wybierz przycisk **Utwórz**.
 
 4. Wprowadź informacje dotyczące nowego konta.
 
-![Wprowadź informacje o koncie Azure Maps w Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)
+[![wprowadzić Azure Maps informacje o koncie w Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>Usuwanie konta
 
 Konto można usunąć z Azure Portal. Przejdź do strony Przegląd konta i wybierz pozycję **Usuń**.
 
-![Usuń konto Azure Maps w Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)
+[![usunąć konto Azure Maps w Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
 Zostanie wyświetlona strona potwierdzenia. Można potwierdzić usunięcie konta, wpisując jego nazwę.
 

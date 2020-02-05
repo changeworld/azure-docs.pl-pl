@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak rozwiązywać problemy z tworzenie
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 6baf878a1afac011997800b78f059e254e3f2a06
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9dbb76b3c0bb6c0ff1f4fb51fbf4846b74a3a1f3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845533"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019099"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Rozwiązywanie problemów dotyczących błędów kopii zapasowych w usłudze Azure Virtual Machines
 
@@ -278,6 +278,6 @@ Kopia zapasowa maszyny wirtualnej polega na wystawianiu poleceń migawek do maga
 Aby tworzenie kopii zapasowej maszyny wirtualnej IaaS było możliwe, należy włączyć protokół DHCP wewnątrz gościa. Jeśli potrzebujesz statycznego prywatnego adresu IP, skonfiguruj go za pomocą Azure Portal lub programu PowerShell. Upewnij się, że opcja DHCP wewnątrz maszyny wirtualnej jest włączona.
 Uzyskaj więcej informacji na temat konfigurowania statycznego adresu IP za pomocą programu PowerShell:
 
-* [Jak dodać statyczny wewnętrzny adres IP do istniejącej maszyny wirtualnej](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [Jak dodać statyczny wewnętrzny adres IP do istniejącej maszyny wirtualnej](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip#how-to-add-a-static-internal-ip-to-an-existing-vm)
 * [Zmień metodę alokacji dla prywatnego adresu IP przypisanego do interfejsu sieciowego](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 

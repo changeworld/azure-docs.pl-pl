@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure przez CloudSimple — rozciąga sieć lokalną do chmury prywatnej
-description: Opisuje sposób konfigurowania sieci VPN warstwy 2 między NSX-T w chmurze prywatnej CloudSimple i lokalnym autonomicznym klientem programu Edge NSX
+title: Azure VMware Solutions (Automatyczna synchronizacja) — rozciąganie lokalnych sieci warstwy 2 w celu automatycznej synchronizacji chmury prywatnej
+description: Opisuje sposób konfigurowania sieci VPN warstwy 2 między NSX-T w chmurze prywatnej automatycznej synchronizacji oraz lokalnego klienta usługi NSX Edge
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,29 +8,29 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232377"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019829"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrowanie obciążeń przy użyciu rozciągniętych sieci warstwy 2
 
-W tym przewodniku dowiesz się, jak używać sieci VPN warstwy 2 (L2VPN) w celu rozciągnięcia sieci warstwy 2 ze środowiska lokalnego do prywatnej chmury CloudSimple. To rozwiązanie umożliwia migrację obciążeń działających w lokalnym środowisku VMware do chmury prywatnej na platformie Azure w tej samej przestrzeni adresowej podsieci bez konieczności ponownego tworzenia pakietów IP obciążeń.
+W tym przewodniku dowiesz się, jak używać sieci VPN warstwy 2 (L2VPN) w celu rozciągnięcia sieci warstwy 2 ze środowiska lokalnego do chmury prywatnej do automatycznej synchronizacji. To rozwiązanie umożliwia migrację obciążeń działających w lokalnym środowisku VMware do chmury prywatnej do automatycznej synchronizacji na platformie Azure w ramach tej samej przestrzeni adresowej podsieci bez konieczności ponownego tworzenia adresów IP obciążeń.
 
 L2VPN oparte na rozciągnięciu sieci warstwy 2 mogą współpracować z sieciami opartymi na NSX i bez nich w lokalnym środowisku VMware. Jeśli nie masz sieci opartych na NSX na potrzeby obciążeń lokalnych, możesz użyć autonomicznej bramy usługi NSX Edge.
 
 > [!NOTE]
-> Ten przewodnik obejmuje scenariusz, w którym lokalne centra danych w chmurze prywatnej są połączone za pośrednictwem sieci VPN typu lokacja-lokacja.
+> Ten przewodnik obejmuje scenariusz, w którym lokalne centra danych w chmurze prywatnej i automatycznej synchronizacji są połączone za pośrednictwem sieci VPN typu lokacja-lokacja.
 
 ## <a name="deployment-scenario"></a>Scenariusz wdrażania
 
-Aby rozciągnąć sieć lokalną za pomocą usługi L2VPN, należy skonfigurować serwer L2VPN (router NSX-T tier0) i klienta programu L2VPN (źródłowy klient autonomiczny).  
+Aby rozciągnąć sieć lokalną za pomocą usługi L2VPN, należy skonfigurować serwer L2VPN (router NSX-T tier0) i klienta programu L2VPN (źródłowy klient autonomiczny). 
 
-W tym scenariuszu wdrażania Chmura prywatna jest połączona ze środowiskiem lokalnym za pośrednictwem tunelu sieci VPN typu lokacja-lokacja, która umożliwia lokalne zarządzanie chmurą i podsiecie vMotion w celu komunikowania się z nimi. To rozwiązanie jest niezbędne w przypadku programu vCenter vMotion (xVC-vMotion). NSX-T tier0 router jest wdrażany jako serwer L2VPN w chmurze prywatnej.
+W tym scenariuszu wdrażania Twoja chmura prywatna w wersji załączonej jest połączona ze środowiskiem lokalnym za pośrednictwem tunelu sieci VPN typu lokacja-lokacja, która umożliwia lokalne zarządzanie chmurą i podsieć vMotion w celu komunikowania się z nimi. To rozwiązanie jest niezbędne w przypadku programu vCenter vMotion (xVC-vMotion). NSX-T tier0 router jest wdrażany jako serwer L2VPN w chmurze prywatnej automatycznej synchronizacji.
 
-Autonomiczna NSX Edge jest wdrażana w środowisku lokalnym jako klient L2VPN, a następnie sparowany z serwerem L2VPN. Punkt końcowy tunelu GRE jest tworzony po każdej stronie i skonfigurowany do "rozciągnięcia" lokalnej sieci warstwy 2 do chmury prywatnej. Ta konfiguracja jest przedstawiona na poniższej ilustracji.
+Autonomiczna NSX Edge jest wdrażana w środowisku lokalnym jako klient L2VPN, a następnie sparowany z serwerem L2VPN. Punkt końcowy tunelu GRE jest tworzony po każdej stronie i skonfigurowany do "rozciągnięcia" lokalnej sieci warstwy 2 do chmury prywatnej automatycznej synchronizacji. Ta konfiguracja jest przedstawiona na poniższej ilustracji.
 
 ![Scenariusz wdrażania](media/l2vpn-deployment-scenario.png)
 
@@ -42,29 +42,29 @@ Przed wdrożeniem i skonfigurowaniem rozwiązania Sprawdź, czy zostały wprowad
 
 * Lokalna wersja vSphere to 6.7 U1 + lub 6.5 P03 +.
 * Licencja lokalna vSphere jest na poziomie przedsiębiorstwa plus (dla przełącznika rozproszonego vSphere).
-* Określ sieć warstwy 2 obciążenia do rozciągnięcia do chmury prywatnej.
+* Określ sieć warstwy 2 obciążenia do rozciągnięcia do chmury prywatnej automatycznej synchronizacji.
 * Zidentyfikuj sieć warstwy 2 w środowisku lokalnym w celu wdrożenia urządzenia klienckiego usługi L2VPN.
-* [Chmura prywatna została już utworzona](create-private-cloud.md).
-* Wersja autonomicznego urządzenia NSX-T Edge jest zgodna z wersją Menedżera NSX-T (NSX-T 2.3.0) używaną w środowisku chmury prywatnej.
+* [Została już utworzona chmura prywatna w wersji zaautomatycznej](create-private-cloud.md).
+* Wersja autonomicznego urządzenia NSX-T Edge jest zgodna z wersją Menedżera NSX-T (NSX-T 2.3.0) używaną w środowisku chmury prywatnej do automatycznej synchronizacji.
 * Grupa portów magistrali została utworzona w lokalnym serwerze vCenter z włączonymi transmisjami sfałszowanymi.
 * Publiczny adres IP został zarezerwowany do użycia dla autonomicznego adresu IP pasma klienta NSX-T, a do translacji między tymi dwoma adresami jest stosowane 1:1 NAT.
-* Funkcja przekazywania DNS jest ustawiana na lokalnych serwerach DNS dla domeny az.cloudsimple.io, aby wskazywała na serwery DNS w chmurze prywatnej.
+* Przekazywanie DNS jest ustawiane na lokalnych serwerach DNS dla AZ. AVS.io domenę, aby wskazać serwer DNS chmury prywatnej w chmurze automatycznej.
 * Opóźnienie RTT jest mniejsze niż lub równe 150 MS, co jest wymagane, aby vMotion działały między dwiema lokacjami.
 
 ## <a name="limitations-and-considerations"></a>Ograniczenia i zagadnienia
 
-W poniższej tabeli wymieniono obsługiwane wersje vSphere i typy adapterów sieci.  
+W poniższej tabeli wymieniono obsługiwane wersje vSphere i typy adapterów sieci. 
 
 | wersja vSphere | Typ źródłowego przełącznika vSwitch | Sterownik wirtualnej karty sieciowej | Docelowy typ przełącznika vSwitch | Obsługiwane? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Wszystkie | Usługa | Wszystkie | Usługa | Yes |
-| vSphere 6,7 UI lub nowszy, 6.5 P03 lub nowszy | Usługa | VMXNET3 | N-VDS | Yes |
+| Wszystko | Usługa | Wszystko | Usługa | Tak |
+| vSphere 6,7 UI lub nowszy, 6.5 P03 lub nowszy | Usługa | VMXNET3 | N-VDS | Tak |
 | vSphere 6,7 UI lub nowszy, 6.5 P03 lub nowszy | Usługa | E1000 | N-VDS | [Nieobsługiwane na VWware](https://kb.vmware.com/s/article/56991) |
-| vSphere 6,7 UI lub 6.5 P03, NSX-V lub wersje poniżej NSX-T 2.2, 6.5 P03 lub nowszy | Wszystkie | Wszystkie | N-VDS | [Nieobsługiwane na VWware](https://kb.vmware.com/s/article/56991) |
+| vSphere 6,7 UI lub 6.5 P03, NSX-V lub wersje poniżej NSX-T 2.2, 6.5 P03 lub nowszy | Wszystko | Wszystko | N-VDS | [Nieobsługiwane na VWware](https://kb.vmware.com/s/article/56991) |
 
 Od wersji programu VMware NSX-T 2,3:
 
-* Nie można jednocześnie skierować przełącznika logicznego na stronie chmury prywatnej, który jest rozciągany do lokalizacji lokalnej przez L2VPN. Rozciągany przełącznik logiczny nie może być podłączony do routera logicznego.
+* Nie można jednocześnie skierować przełącznika logicznego na stronie chmury prywatnej o automatycznej synchronizacji, który jest rozciągnięty do lokalizacji lokalnej za pośrednictwem L2VPN. Rozciągany przełącznik logiczny nie może być podłączony do routera logicznego.
 * L2VPN i sieci VPN oparte na trasach można skonfigurować tylko przy użyciu wywołań interfejsu API.
 
 Aby uzyskać więcej informacji, zobacz [wirtualne sieci prywatne](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) w dokumentacji programu VMware.
@@ -88,7 +88,7 @@ Aby uzyskać więcej informacji, zobacz [wirtualne sieci prywatne](https://docs.
 | VLAN | 472 |
 | CIDR| 10.250.3.0/24 |
 
-### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Schemat IP chmury prywatnej dla routera NSX-T tier0 (usługa sieci VPN L2)
+### <a name="avs-private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Automatyczna synchronizacja schematu protokołu IP chmury prywatnej dla NSX-T tier0
 
 | **Element** | **Wartość** |
 |------------|-----------------|
@@ -97,7 +97,7 @@ Aby uzyskać więcej informacji, zobacz [wirtualne sieci prywatne](https://docs.
 | Przełącznik logiczny (rozciągnięty) | Stretch_LS |
 | Interfejs sprzężenia zwrotnego (adres IP translatora adresów sieciowych) | 104.40.21.81 |
 
-### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Sieć chmury prywatnej, która ma być zmapowana do sieci rozproszonej
+### <a name="avs-private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Automatyczna synchronizacja sieci chmury prywatnej w celu zamapowania do sieci rozproszonej
 
 | **Element** | **Wartość** |
 |------------|-----------------|
@@ -116,7 +116,7 @@ Poniższe kroki pokazują, jak pobrać identyfikator routera logicznego usługi 
 
     ![Adres IP zarządzania uwagami](media/l2vpn-fetch02.png)
 
-3. Otwórz sesję SSH na adres IP zarządzania dla maszyny wirtualnej brzegowej. Uruchom ```get logical-router``` polecenie z nazwą użytkownika **admin** i hasłem **CloudSimple 123!** .
+3. Otwórz sesję SSH na adres IP zarządzania dla maszyny wirtualnej brzegowej. Uruchom ```get logical-router``` polecenie z nazwą użytkownika **admin** i hasłem **Automatyczna synchronizacja 123!** .
 
     ![Pobieranie danych wyjściowych routera logicznego](media/l2vpn-fetch03.png)
 
@@ -126,7 +126,7 @@ Poniższe kroki pokazują, jak pobrać identyfikator routera logicznego usługi 
 
     ![Tworzenie przełącznika logicznego](media/l2vpn-fetch04.png)
 
-6. Dołącz fikcyjny przełącznik do routera pomoc z linkiem lokalnego adresu IP lub dowolną nienakładaną się podsiecią z lokalnej lub prywatnej chmury. Zobacz [Dodawanie portu pobranego do routera logicznego warstwy 1](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) w dokumentacji programu VMware.
+6. Dołącz fikcyjny przełącznik do routera pomoc z linkiem lokalnego adresu IP lub dowolną nienakładaną się podsiecią z lokalnej lub własnej chmury prywatnej. Zobacz [Dodawanie portu pobranego do routera logicznego warstwy 1](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) w dokumentacji programu VMware.
 
     ![Dołącz przełącznik fikcyjny](media/l2vpn-fetch05.png)
 
@@ -148,17 +148,17 @@ Aby nawiązać połączenie sieci VPN opartej na trasach IPsec między routerem 
 
 ### <a name="allow-udp-5004500-for-ipsec"></a>Zezwalaj na protokół UDP 500/4500 dla protokołu IPsec
 
-1. [Utwórz publiczny adres IP](public-ips.md) dla interfejsu sprzężenia zwrotnego NSX-T tier0 w portalu CloudSimple.
+1. [Utwórz publiczny adres IP](public-ips.md) dla interfejsu sprzężenia zwrotnego NSX-T tier0 w portalu automatycznej synchronizacji.
 
 2. [Utwórz tabelę zapory](firewall.md) z regułami stanowymi, które zezwalają na ruch przychodzący UDP 500/4500 i Dołącz tabelę zapory do podsieci HostTransport NSX-T.
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Anonsuj adres IP interfejsu sprzężenia zwrotnego w sieci underlay
 
-1. Utwórz trasę o wartości null dla sieci interfejsu sprzężenia zwrotnego. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **trasy statyczne**. Kliknij pozycję **Add** (Dodaj). W polu **Sieć**wprowadź adres IP interfejsu sprzężenia zwrotnego. W przypadku **następnych przeskoków**kliknij przycisk **Dodaj**, określ wartość "null" dla następnego przeskoku i pozostaw wartość domyślną 1 dla opcji Odległość dla administratorów.
+1. Utwórz trasę o wartości null dla sieci interfejsu sprzężenia zwrotnego. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **trasy statyczne**. Kliknij pozycję **Dodaj**. W polu **Sieć**wprowadź adres IP interfejsu sprzężenia zwrotnego. W przypadku **następnych przeskoków**kliknij przycisk **Dodaj**, określ wartość "null" dla następnego przeskoku i pozostaw wartość domyślną 1 dla opcji Odległość dla administratorów.
 
     ![Dodawanie trasy statycznej](media/l2vpn-routing-security01.png)
 
-2. Utwórz listę prefiksów IP. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **listy prefiksów IP**. Kliknij pozycję **Add** (Dodaj). Wprowadź nazwę, aby zidentyfikować listę. W przypadku **prefiksów**kliknij dwukrotnie przycisk **Dodaj** . W pierwszym wierszu wprowadź wartość "0.0.0.0/0" dla **sieci** i "Odmów" dla **akcji**. W drugim wierszu wybierz **dowolne** dla **sieci** i **Zezwalaj** na **działanie**.
+2. Utwórz listę prefiksów IP. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **listy prefiksów IP**. Kliknij pozycję **Dodaj**. Wprowadź nazwę, aby zidentyfikować listę. W przypadku **prefiksów**kliknij dwukrotnie przycisk **Dodaj** . W pierwszym wierszu wprowadź wartość "0.0.0.0/0" dla **sieci** i "Odmów" dla **akcji**. W drugim wierszu wybierz **dowolne** dla **sieci** i **Zezwalaj** na **działanie**.
 3. Dołącz listę prefiksów IP do sąsiadów BGP (TOR). Dołączanie listy prefiksów IP do sąsiada BGP uniemożliwia anonsowanie trasy domyślnej w protokole BGP do przełączników TOR. Jednak każda inna trasa obejmująca trasę o wartości null anonsuje adres IP interfejsu sprzężenia zwrotnego z przełącznikami TOR.
 
     ![Utwórz listę prefiksów IP](media/l2vpn-routing-security02.png)
@@ -173,9 +173,9 @@ Aby nawiązać połączenie sieci VPN opartej na trasach IPsec między routerem 
 
 ## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>Konfigurowanie sieci VPN opartej na trasach na routerze tier0 NSX-T
 
-Użyj poniższego szablonu, aby wypełnić wszystkie szczegóły dotyczące konfigurowania sieci VPN opartej na trasach na NSX-T tier0 router. Identyfikatory UUID w każdym wywołaniu POST są wymagane w kolejnych wywołaniach POST. Adresy IP dla interfejsów sprzężenia zwrotnego i tunelu dla L2VPN muszą być unikatowe i nie nakładają się na sieci lokalne lub w chmurze prywatnej.
+Użyj poniższego szablonu, aby wypełnić wszystkie szczegóły dotyczące konfigurowania sieci VPN opartej na trasach na NSX-T tier0 router. Identyfikatory UUID w każdym wywołaniu POST są wymagane w kolejnych wywołaniach POST. Adresy IP dla interfejsów sprzężenia zwrotnego i tunelu dla L2VPN muszą być unikatowe i nie nakładają się na lokalne lub automatycznej synchronizacji sieci chmur prywatnych.
 
-Adresy IP wybrane dla sprzężenia zwrotnego i interfejsu tunelu używane dla L2VPN muszą być unikatowe i nie nakładają się na sieci lokalne lub w chmurze prywatnej. Sieć interfejsu sprzężenia zwrotnego musi być zawsze/32.
+Adresy IP wybrane dla sprzężenia zwrotnego i interfejsu tunelu używane dla L2VPN muszą być unikatowe i nie nakładają się na lokalne lub automatycznej synchronizacji sieci chmur prywatnych. Sieć interfejsu sprzężenia zwrotnego musi być zawsze/32.
 
 ```
 Loopback interface ip : 192.168.254.254/32
@@ -422,7 +422,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 ## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>Wdrażanie klienta autonomicznego NSX-T (lokalnego)
 
-Przed wdrożeniem upewnij się, że lokalne reguły zapory zezwalają na ruch przychodzący i wychodzących protokołu UDP 500/4500 z/do publicznego adresu IP CloudSimple, który został wcześniej zarezerwowany dla interfejsu sprzężenia zwrotnego routera T0 NSX-T. 
+Przed wdrożeniem sprawdź, czy lokalne reguły zapory zezwalają na ruch przychodzący i wychodzących protokołu UDP 500/4500 z/do publicznego adresu IP automatycznej synchronizacji, który został wcześniej zarezerwowany dla interfejsu sprzężenia zwrotnego NSX-T. 
 
 1. [Pobierz autonomiczny klient NSX Edge](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230) OVF i Wyodrębnij pliki z pobranego pakietu do folderu.
 
@@ -448,14 +448,14 @@ Przed wdrożeniem upewnij się, że lokalne reguły zapory zezwalają na ruch pr
 
     Rozwiń L2T:
 
-    * **Adres elementu równorzędnego**. Wprowadź adres IP zarezerwowany w portalu Azure CloudSimple dla interfejsu sprzężenia zwrotnego NSX-T tier0.
+    * **Adres elementu równorzędnego**. Wprowadź adres IP zastrzeżony w portalu automatycznej rejestracji Azure dla interfejsu sprzężenia zwrotnego NSX-T tier0.
     * **Kod elementu równorzędnego**. Wklej kod elementu równorzędnego uzyskany z ostatniego kroku wdrożenia serwera L2VPN.
     * **Interfejsy podrzędne VLAN (Identyfikator tunelu)** . Wprowadź identyfikator sieci VLAN do rozciągnięcia. W nawiasach () wprowadź wcześniej skonfigurowany identyfikator tunelu.
 
     Rozwiń węzeł pasma:
 
     * **Adres IP systemu DNS**. Wprowadź adres IP lokalnego systemu DNS.
-    * **Brama domyślna**.  Wprowadź domyślną bramę sieci VLAN, która będzie pełnić rolę bramy domyślnej dla tego klienta.
+    * **Brama domyślna**. Wprowadź domyślną bramę sieci VLAN, która będzie pełnić rolę bramy domyślnej dla tego klienta.
     * **Adres IP**. Wprowadź adres IP dla klienta autonomicznego.
     * **Długość prefiksu**. Wprowadź długość prefiksu sieci VLAN/podsieci.
     * **Administrator interfejsu wiersza polecenia/Włącz/hasło użytkownika root**. Ustaw hasło dla konta admin/Enable/root.

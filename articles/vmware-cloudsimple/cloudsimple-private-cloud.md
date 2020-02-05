@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — chmury prywatne
-description: Dowiedz się więcej na temat chmur prywatnych i pojęć związanych z CloudSimple.
+title: Azure VMware Solutions (Automatyczna synchronizacja) — automatyczna synchronizacja chmur prywatnych
+description: Dowiedz się więcej na temat automatycznej synchronizacji chmur i koncepcji prywatnych.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,56 +8,56 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2688edf281a6d8bc3d61e8e294c920f115f0f3f6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877946"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024957"
 ---
-# <a name="cloudsimple-private-cloud-overview"></a>Omówienie chmury prywatnej CloudSimple
+# <a name="avs-private-cloud-overview"></a>Omówienie automatycznej synchronizacji chmury prywatnej
 
-CloudSimple przekształca i rozszerza obciążenia oprogramowania VMware do chmur publicznych w ciągu kilku minut. Za pomocą usługi CloudSimple można lokalnie wdrożyć oprogramowanie VMware w infrastrukturze platformy Azure bez systemu operacyjnego. Wdrożenie jest przechowywane w lokalizacjach platformy Azure i w pełni integruje się z pozostałą częścią chmury platformy Azure.
+Automatyczna synchronizacja przekształca i rozszerza obciążenia oprogramowania VMware do chmur publicznych w ciągu kilku minut. Za pomocą usługi automatycznej synchronizacji można wdrożyć oprogramowanie VMware natywnie na platformie Azure bez systemu operacyjnego. Wdrożenie jest przechowywane w lokalizacjach platformy Azure i w pełni integruje się z pozostałą częścią chmury platformy Azure.
 
-Rozwiązanie CloudSimple zapewnia pełną ciągłość działania programu VMware. To rozwiązanie zapewnia korzyści z chmury publicznej:
+Rozwiązanie do automatycznej synchronizacji zapewnia pełną ciągłość działania programu VMware. To rozwiązanie zapewnia korzyści z chmury publicznej:
 
 * Elastyczność
 * Innowacja
-* Efektywność
+* Wydajność
 
-Dzięki CloudSimple można korzystać z modelu zużycia w chmurze, który obniża całkowity koszt posiadania. Oferuje on również Inicjowanie obsługi administracyjnej na żądanie, płatność zgodnie z oczekiwaniami i optymalizację wydajności.
+Dzięki automatycznej synchronizacji można korzystać z modelu zużycia w chmurze, który obniża całkowity koszt posiadania. Oferuje on również Inicjowanie obsługi administracyjnej na żądanie, płatność zgodnie z oczekiwaniami i optymalizację wydajności.
 
-CloudSimple jest w pełni zgodny z:
+Automatyczna synchronizacja jest w pełni zgodna z:
 
 * Istniejące narzędzia
-* Umiejętności
+* Nowych
 * Procesy
 
 Ta zgodność umożliwia zespołom zarządzanie obciążeniami w chmurze platformy Azure bez zakłócania tego typu zasad:
 
-* Sieć
-* Bezpieczeństwo  
+* Network (Sieć)
+* Zabezpieczenia  
 * Ochrona danych  
 * Inspekcja
 
-CloudSimple zarządza infrastrukturą i wszystkimi niezbędnymi usługami sieci i zarządzania. Usługa CloudSimple umożliwia zespołowi skoncentrowanie się na:
+Funkcja automatycznej synchronizacji zarządza infrastrukturą i wszystkimi niezbędnymi usługami sieci i zarządzania. Usługa automatycznej synchronizacji umożliwia zespołowi skoncentrowanie się na:
 
 * Wartość biznesowa
 * Inicjowanie obsługi aplikacji
-* Ciągłość działalności biznesowej
+* Ciągłość działania
 * Pomoc techniczna
 * Wymuszanie zasad
 
-## <a name="private-cloud-environment-overview"></a>Omówienie środowiska chmury prywatnej
+## <a name="avs-private-cloud-environment-overview"></a>Omówienie automatycznej synchronizacji środowiska chmury prywatnej
 
-Chmura prywatna to izolowany stos oprogramowania VMware, który obsługuje:
+Chmura prywatna w wersji zaautomatycznej to izolowany stos oprogramowania VMware, który obsługuje:
 
 * Hosty ESXi
 * vCenter
 * Sieci vSAN
 * NSX
 
-Chmurami prywatnymi zarządza się za pomocą portalu CloudSimple. Mają własny serwer vCenter we własnej domenie zarządzania.
+W portalu do automatycznej synchronizacji są zarządzane chmury prywatne. Mają własny serwer vCenter we własnej domenie zarządzania.
 
 Stos działa na:
 
@@ -69,25 +69,25 @@ Użytkownicy wykorzystują stos za pomocą natywnych narzędzi VMware, w tym:
 * vCenter
 * NSX Manager
 
-Można wdrażać dedykowane węzły w lokalizacjach platformy Azure. Następnie możesz zarządzać nimi za pomocą platformy Azure i usługi CloudSimple. Chmura prywatna składa się z co najmniej jednego klastra vSphere, a każdy klaster zawiera od 3 do 16 węzłów.
+Można wdrażać dedykowane węzły w lokalizacjach platformy Azure. Następnie możesz zarządzać nimi przy użyciu platformy Azure i automatycznej synchronizacji. Chmura prywatna do automatycznej synchronizacji składa się z co najmniej jednego klastra vSphere, a każdy klaster zawiera od 3 do 16 węzłów.
 
-Chmurę prywatną można utworzyć przy użyciu zakupionych węzłów płatność zgodnie z rzeczywistym użyciem lub zarezerwowanych, dedykowanych węzłów.
+Chmurę prywatną można utworzyć, korzystając z zakupionych węzłów płatność zgodnie z rzeczywistym użyciem lub zarezerwowanych, dedykowanych węzłów.
 
-Chmurę prywatną można podłączyć do środowiska lokalnego i sieci platformy Azure przy użyciu następujących połączeń:
+Można podłączyć chmurę prywatną automatycznej synchronizacji do środowiska lokalnego i sieci platformy Azure przy użyciu następujących połączeń:
 
 * Bezpieczeństwo
 * Prywatna sieć VPN
-* Azure ExpressRoute
+* Usługa ExpressRoute systemu Azure
 
-Środowisko chmury prywatnej zostało zaprojektowane w celu wyeliminowania pojedynczych punktów awarii:
+Środowisko chmury prywatnej do automatycznej synchronizacji zostało zaprojektowane z myślą o eliminacji pojedynczych punktów awarii:
 
 * Klastry ESXi są skonfigurowane z wysoką dostępnością vSphere i mają rozmiar co najmniej jeden węzeł zapasowy na potrzeby odporności.
 * Sieci vSAN zapewnia nadmiarowy magazyn podstawowy. Sieci vSAN wymaga co najmniej trzech węzłów w celu zapewnienia ochrony przed pojedynczym awarią. Można skonfigurować sieci vSAN w celu zapewnienia większej odporności dla większych klastrów.
 * Aby zapewnić ochronę przed awariami magazynu, można skonfigurować maszyny wirtualne programu vCenter, PSC i NSX Manager przy użyciu zasad magazynu RAID-10. vSphere HA chroni przed awariami węzłów i sieci.
 
-## <a name="scenarios-for-deploying-a-private-cloud"></a>Scenariusze wdrażania chmury prywatnej
+## <a name="scenarios-for-deploying-an-avs-private-cloud"></a>Scenariusze wdrażania chmury prywatnej do automatycznej synchronizacji
 
-Poniżej przedstawiono przykładowe przypadki użycia wdrożenia chmury prywatnej.
+Oto przykładowe przypadki użycia do automatycznej synchronizacji wdrożenia chmury prywatnej.
 
 ### <a name="data-center-retirement-or-migration"></a>Wycofanie lub migracja centrum danych
 
@@ -106,11 +106,11 @@ Poniżej przedstawiono przykładowe przypadki użycia wdrożenia chmury prywatne
 
 * Ustanów zdalny dostęp do danych, aplikacji i pulpitów w chmurze platformy Azure. Połączenia o wysokiej przepustowości umożliwiają szybkie przekazywanie i pobieranie danych w celu odzyskania zdarzeń. Sieci o małym opóźnieniu zapewniają krótszy czas odpowiedzi, który użytkownicy oczekują od aplikacji klasycznej.
 
-* Replikuj wszystkie zasady i sieci w chmurze przy użyciu portalu CloudSimple i znanych narzędzi VMware. Replikacja zmniejsza nakład pracy i ryzyko tworzenia i zarządzania implementacjami odzyskiwania po awarii i infrastruktury VDI.
+* Replikuj wszystkie zasady i sieci w chmurze przy użyciu portalu automatycznej synchronizacji i znanych narzędzi VMware. Replikacja zmniejsza nakład pracy i ryzyko tworzenia i zarządzania implementacjami odzyskiwania po awarii i infrastruktury VDI.
 
 ### <a name="high-performance-applications-and-databases"></a>Aplikacje i bazy danych o wysokiej wydajności
 
-* Uruchamiaj najbardziej wymagające obciążenia przy użyciu architektury ze zbyt zbieżną architekturą zapewnianą przez CloudSimple.
+* Uruchamiaj najbardziej wymagające obciążenia przy użyciu architektury ze zbyt zbieżną architekturą zapewnianą przez Autosynchronizacja.
 * Uruchamiaj oprogramowanie Oracle, Microsoft SQL Server, systemy oprogramowania pośredniczącego i bazy danych bez SQL o wysokiej wydajności.
 * Poznaj chmurę jako własne centrum danych z szybkimi połączeniami sieciowymi o szybkości 25 GB/s. Połączenia o dużej szybkości umożliwiają uruchamianie aplikacji hybrydowych obejmujących lokalne, VMware na platformie Azure i prywatne obciążenia platformy Azure bez naruszania wydajności.
 
@@ -123,16 +123,16 @@ Poniżej przedstawiono przykładowe przypadki użycia wdrożenia chmury prywatne
 
 ## <a name="limits"></a>Limity
 
-W poniższej tabeli wymieniono limity węzłów zasobów chmury prywatnej.
+W poniższej tabeli wymieniono limity węzłów dotyczące zasobów chmury prywatnej automatycznej synchronizacji.
 
-| Resource | Limit |
+| Zasób | Limit |
 |----------|-------|
-| Minimalna liczba węzłów do utworzenia chmury prywatnej | 3 |
-| Maksymalna liczba węzłów w klastrze w chmurze prywatnej | 16 |
-| Maksymalna liczba węzłów w chmurze prywatnej | 64 |
+| Minimalna liczba węzłów do utworzenia chmury prywatnej do automatycznej synchronizacji | 3 |
+| Maksymalna liczba węzłów w klastrze w chmurze prywatnej automatycznej synchronizacji | 16 |
+| Maksymalna liczba węzłów w chmurze prywatnej automatycznej synchronizacji | 64 |
 | Minimalna liczba węzłów w nowym klastrze | 3 |
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [utworzyć chmurę prywatną](create-private-cloud.md)
-* Dowiedz się, jak [skonfigurować środowisko chmury prywatnej](quickstart-create-private-cloud.md)
+* Dowiedz się [, jak utworzyć chmurę prywatną do automatycznej synchronizacji](create-private-cloud.md)
+* Dowiedz się, jak [skonfigurować środowisko chmury prywatnej do automatycznej synchronizacji](quickstart-create-private-cloud.md)

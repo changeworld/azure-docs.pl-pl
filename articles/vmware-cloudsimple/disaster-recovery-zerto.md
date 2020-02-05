@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure przez CloudSimple — korzystanie z chmury prywatnej jako lokacji awaryjnej dla obciążeń lokalnych
-description: Opis sposobu konfigurowania prywatnej chmury CloudSimple jako lokacji odzyskiwania po awarii dla lokalnych obciążeń programu VMware
+title: Azure VMware Solutions (Automatyczna synchronizacja) — Używanie chmury prywatnej do automatycznej obsługi obciążeń lokalnych
+description: Opisuje sposób konfigurowania chmury prywatnej automatycznej synchronizacji jako lokacji odzyskiwania po awarii dla lokalnych obciążeń programu VMware
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,30 +8,30 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1f34c4fb89d28a001a4af4d21879403a9ac5e860
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037427"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024708"
 ---
-# <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Skonfiguruj chmurę prywatną CloudSimple jako lokację odzyskiwania po awarii dla lokalnych obciążeń programu VMware
+# <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Skonfiguruj chmurę prywatną do automatycznej synchronizacji jako lokację odzyskiwania po awarii dla lokalnych obciążeń programu VMware
 
-Chmurę prywatną CloudSimple można skonfigurować jako lokację odzyskiwania dla aplikacji lokalnych, aby zapewnić ciągłość działania w przypadku awarii. Rozwiązanie odzyskiwania bazuje na replikacji wirtualnej Zerto jako platforma replikacji i aranżacji. Krytyczne infrastruktury i maszyny wirtualne aplikacji mogą być replikowane w sposób ciągły z lokalnego programu vCenter do chmury prywatnej. Możesz użyć chmury prywatnej do testowania pracy w trybie failover i zapewnić dostępność aplikacji podczas awarii. Podobne podejście można wykonać, aby skonfigurować chmurę prywatną jako lokację główną, która jest chroniona przez lokację odzyskiwania w innej lokalizacji.
+Chmurę prywatną do automatycznej synchronizacji można skonfigurować jako lokację odzyskiwania dla aplikacji lokalnych, aby zapewnić ciągłość działania w przypadku awarii. Rozwiązanie odzyskiwania bazuje na replikacji wirtualnej Zerto jako platforma replikacji i aranżacji. Krytyczne infrastruktury i maszyny wirtualne aplikacji mogą być replikowane w sposób ciągły z lokalnego programu vCenter do swojej chmury prywatnej. Do testowania pracy w trybie failover można użyć chmury prywatnej do automatycznej synchronizacji oraz zapewnić dostępność aplikacji podczas awarii. Podobne podejście można wykonać, aby skonfigurować chmurę prywatną do automatycznej synchronizacji jako lokację główną, która jest chroniona przez lokację odzyskiwania w innej lokalizacji.
 
 > [!NOTE]
 > Zapoznaj się z [zagadnieniami dotyczącymi ustalania rozmiarów dokumentu Zerto w przypadku replikacji wirtualnej Zerto](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) w celu uzyskania wskazówek dotyczących określania rozmiarów środowiska odzyskiwania po awarii.
 
-Rozwiązanie CloudSimple:
+Rozwiązanie do automatycznej synchronizacji:
 
 * Eliminuje konieczność skonfigurowania centrum danych przeznaczonego do odzyskiwania po awarii (DR).
-* Umożliwia korzystanie z lokalizacji platformy Azure, w których wdrożono CloudSimple na całym świecie.
+* Umożliwia korzystanie z lokalizacji platformy Azure, w której jest wdrażana automatyczna elastyczność geograficzna.
 * Zapewnia możliwość zmniejszenia kosztów wdrożenia i łącznego kosztu posiadania odzyskiwania po awarii.
 
 Rozwiązanie wymaga:
 
-* Instalowanie, Konfigurowanie i zarządzanie Zerto w chmurze prywatnej.
-* Udostępnianie własnych licencji dla usługi Zerto, gdy Chmura prywatna jest chroniona. Można sparować Zerto uruchomione w witrynie CloudSimple z lokacją lokalną na potrzeby licencjonowania.
+* Instaluj i Konfiguruj Zerto w chmurze prywatnej automatycznej synchronizacji, a następnie Zarządzaj nią.
+* Podaj własne licencje na Zerto, gdy Chmura prywatna jest chroniona. Można sparować Zerto uruchomione w witrynie automatycznej synchronizacji z lokacją lokalną w celu licencjonowania.
 
 Na poniższej ilustracji przedstawiono architekturę rozwiązania Zerto.
 
@@ -39,49 +39,49 @@ Na poniższej ilustracji przedstawiono architekturę rozwiązania Zerto.
 
 ## <a name="how-to-deploy-the-solution"></a>Jak wdrożyć rozwiązanie
 
-W poniższych sekcjach opisano, jak wdrożyć rozwiązanie DR przy użyciu replikacji wirtualnej Zerto w chmurze prywatnej.
+W poniższych sekcjach opisano, jak wdrożyć rozwiązanie DR przy użyciu replikacji wirtualnej Zerto w chmurze prywatnej automatycznej synchronizacji.
 
 1. [Wymagania wstępne](#prerequisites)
-2. [Opcjonalna konfiguracja w chmurze prywatnej CloudSimple](#optional-configuration-on-your-private-cloud)
-3. [Konfigurowanie ZVM i VRA w chmurze prywatnej CloudSimple](#set-up-zvm-and-vra-on-your-private-cloud)
+2. [Opcjonalna konfiguracja w chmurze prywatnej automatycznej synchronizacji](#optional-configuration-on-your-avs-private-cloud)
+3. [Skonfiguruj ZVM i VRA w chmurze prywatnej automatycznej synchronizacji](#set-up-zvm-and-vra-on-your-avs-private-cloud)
 4. [Konfigurowanie wirtualnej grupy ochrony Zerto](#set-up-zerto-virtual-protection-group)
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Aby włączyć replikację wirtualną Zerto z poziomu środowiska lokalnego do chmury prywatnej, należy spełnić następujące wymagania wstępne.
+Aby włączyć replikację wirtualną Zerto z poziomu środowiska lokalnego do chmury prywatnej automatycznej synchronizacji, należy spełnić następujące wymagania wstępne.
 
-1. [Skonfiguruj połączenie sieci VPN typu lokacja-lokacja między siecią lokalną a chmurą prywatną usługi CloudSimple](set-up-vpn.md).
-2. [Skonfiguruj wyszukiwanie DNS w taki sposób, aby składniki zarządzania chmurą prywatną były przekazywane do serwerów DNS w chmurze prywatnej](on-premises-dns-setup.md).  Aby włączyć przekazywanie wyszukiwania DNS, Utwórz wpis strefy przekazywania na lokalnym serwerze DNS dla `*.cloudsimple.io` CloudSimple serwerów DNS.
-3. Skonfiguruj wyszukiwanie DNS w taki sposób, że lokalne składniki programu vCenter są przekazywane do lokalnych serwerów DNS.  Serwery DNS muszą być dostępne z chmury prywatnej CloudSimple za pośrednictwem sieci VPN typu lokacja-lokacja. Aby uzyskać pomoc, Prześlij [żądanie pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), dostarczając poniższe informacje.  
+1. [Skonfiguruj połączenie sieci VPN typu lokacja-lokacja między siecią lokalną a chmurą prywatną do automatycznej synchronizacji](set-up-vpn.md).
+2. [Skonfiguruj wyszukiwanie DNS w taki sposób, aby składniki zarządzania chmurą prywatną do automatycznej synchronizacji zostały przekazane do wersji załączonej do serwerów DNS chmury prywatnej](on-premises-dns-setup.md). Aby włączyć przekazywanie wyszukiwania DNS, Utwórz wpis strefy przekazywania na lokalnym serwerze DNS, aby uzyskać `*.AVS.io` na potrzeby automatycznej synchronizacji serwerów DNS.
+3. Skonfiguruj wyszukiwanie DNS w taki sposób, że lokalne składniki programu vCenter są przekazywane do lokalnych serwerów DNS. Serwery DNS muszą być dostępne z chmury prywatnej automatycznej synchronizacji przy użyciu sieci VPN typu lokacja-lokacja. Aby uzyskać pomoc, Prześlij [żądanie pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), dostarczając poniższe informacje. 
 
     * Lokalna nazwa domeny DNS
     * Adresy IP lokalnego serwera DNS
 
-4. Zainstaluj system Windows Server w chmurze prywatnej. Serwer służy do instalowania Zerto Virtual Manager.
-5. [Eskalacja uprawnień CloudSimple](escalate-private-cloud-privileges.md).
-6. Utwórz nowego użytkownika w chmurze prywatnej vCenter z rolą administracyjną, która będzie używana jako konto usługi dla Menedżera wirtualnego Zerto.
+4. Zainstaluj system Windows Server w chmurze prywatnej automatycznej. Serwer służy do instalowania Zerto Virtual Manager.
+5. [Eskalacja uprawnień do automatycznej synchronizacji](escalate-private-cloud-privileges.md).
+6. Utwórz nowego użytkownika w ramach automatycznej synchronizacji w chmurze prywatnej programu vCenter z rolą administracyjną, która będzie używana jako konto usługi dla Zerto Virtual Manager.
 
-### <a name="optional-configuration-on-your-private-cloud"></a>Opcjonalna konfiguracja w chmurze prywatnej
+### <a name="optional-configuration-on-your-avs-private-cloud"></a>Opcjonalna konfiguracja w chmurze prywatnej automatycznej synchronizacji
 
-1. Utwórz co najmniej jedną pulę zasobów w chmurze prywatnej vCenter, która będzie używana jako pula zasobów docelowych dla maszyn wirtualnych w środowisku lokalnym.
-2. Utwórz co najmniej jeden folder w chmurze prywatnej vCenter do użycia jako foldery docelowe dla maszyn wirtualnych w środowisku lokalnym.
+1. Utwórz co najmniej jedną pulę zasobów w chmurze prywatnej chmury programu vCenter, która będzie używana jako docelowe pule zasobów dla maszyn wirtualnych w środowisku lokalnym.
+2. Utwórz co najmniej jeden folder w chmurze prywatnej chmury programu vCenter, który będzie używany jako foldery docelowe dla maszyn wirtualnych w środowisku lokalnym.
 3. Utwórz sieć VLAN dla sieci trybu failover i skonfiguruj reguły zapory. Otwórz [żądanie pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) , aby uzyskać pomoc.
 4. Tworzenie rozproszonych grup portów dla sieci trybu failover i sieci testowej w celu testowania pracy w trybie failover maszyn wirtualnych.
-5. Zainstaluj [serwery DHCP i DNS](dns-dhcp-setup.md) lub użyj Active Directory kontrolera domeny w środowisku chmury prywatnej.
+5. Zainstaluj [serwery DHCP i DNS](dns-dhcp-setup.md) lub użyj Active Directory kontroler domeny w środowisku chmury prywatnej do automatycznej synchronizacji.
 
-### <a name="set-up-zvm-and-vra-on-your-private-cloud"></a>Konfigurowanie ZVM i VRA w chmurze prywatnej
+### <a name="set-up-zvm-and-vra-on-your-avs-private-cloud"></a>Skonfiguruj ZVM i VRA w chmurze prywatnej automatycznej synchronizacji
 
-1. Zainstaluj program Zerto Virtual Manager (ZVM) w systemie Windows Server w chmurze prywatnej.
+1. Zainstaluj program Zerto Virtual Manager (ZVM) na serwerze z systemem Windows w chmurze prywatnej "Automatyczna synchronizacja".
 2. Zaloguj się do ZVM przy użyciu konta usługi utworzonego w poprzednich krokach.
 3. Konfigurowanie licencjonowania dla Zerto Virtual Manager.
-4. Zainstaluj urządzenie Zerto Virtual Replication (VRA) na hostach ESXi w chmurze prywatnej.
-5. Parowanie prywatnej chmury ZVM z lokalnym ZVMem.
+4. Zainstaluj urządzenie Zerto Virtual Replication (VRA) na hostach ESXi w chmurze prywatnej automatycznej synchronizacji.
+5. Poparz swoją ZVMą chmurę prywatną z lokalną usługą ZVM.
 
 ### <a name="set-up-zerto-virtual-protection-group"></a>Konfigurowanie wirtualnej grupy ochrony Zerto
 
 1. Utwórz nową wirtualną grupę ochrony (VPG) i określ priorytet dla VPG.
 2. Wybierz Maszyny wirtualne wymagające ochrony ciągłości działania i w razie potrzeby dostosuj kolejność rozruchu.
-3. Wybierz lokację odzyskiwania jako chmurę prywatną i domyślny serwer odzyskiwania jako klaster chmury prywatnej lub utworzoną grupę zasobów. Wybierz pozycję **vsanDatastore** dla magazynu danych odzyskiwania w chmurze prywatnej.
+3. Wybierz lokację odzyskiwania jako chmurę prywatną do automatycznej synchronizacji i domyślny serwer odzyskiwania jako klaster chmury prywatnej do automatycznej synchronizacji lub utworzoną grupę zasobów. Wybierz pozycję **vsanDatastore** dla magazynu danych odzyskiwania w chmurze prywatnej automatycznej synchronizacji.
 
     ![VPG](media/cloudsimple-zerto-vpg.png)
 
@@ -93,6 +93,6 @@ Aby włączyć replikację wirtualną Zerto z poziomu środowiska lokalnego do c
 6. W razie potrzeby dostosuj ustawienia sieci dla poszczególnych maszyn wirtualnych i Utwórz VPG.
 7. Test pracy w trybie failover po zakończeniu replikacji.
 
-## <a name="reference"></a>Tematy pomocy
+## <a name="reference"></a>Informacje ogólne
 
 [Dokumentacja Zerto](https://www.zerto.com/myzerto/technical-documentation/)

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — Konfigurowanie wysokiej dostępności z poziomu lokalnego do CloudSimple bramy sieci VPN
-description: Opisuje sposób konfigurowania połączenia wysokiej dostępności z poziomu środowiska lokalnego do bramy sieci VPN CloudSimple z włączoną obsługą wysokiej dostępności
+title: Azure VMware Solutions (Automatyczna synchronizacja) — Konfigurowanie wysokiej dostępności z poziomu lokalnego do automatycznej synchronizacji bramy sieci VPN
+description: Zawiera opis sposobu konfigurowania połączenia wysokiej dostępności z poziomu środowiska lokalnego z usługą automatycznej dostępności bramy sieci VPN w celu zapewnienia wysokiej jakości
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b6dc309c1405a07cf192301208a97975ca9ce256
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927304"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025269"
 ---
-# <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurowanie połączenia o wysokiej dostępności z poziomu lokalnego z bramą sieci VPN CloudSimple
+# <a name="configure-a-high-availability-connection-from-on-premises-to-an-avs-vpn-gateway"></a>Konfigurowanie połączenia o wysokiej dostępności z poziomu lokalnego z bramą sieci VPN do automatycznej synchronizacji
 
-Administratorzy sieci mogą skonfigurować połączenie sieci VPN typu lokacja-lokacja protokołu IPsec o wysokiej dostępności ze środowiska lokalnego do bramy sieci VPN CloudSimple.
+Administratorzy sieci mogą skonfigurować połączenie sieci VPN typu lokacja-lokacja usługi IPsec o wysokiej dostępności z poziomu środowiska lokalnego do automatycznej konfiguracji bramy sieci VPN.
 
 W tym przewodniku przedstawiono procedurę konfigurowania zapory lokalnej na potrzeby połączenia wysokiej dostępności sieci VPN typu lokacja-lokacja protokołu IPsec. Szczegółowe kroki są specyficzne dla typu zapory lokalnej. Przykładowo w tym przewodniku przedstawiono kroki dla dwóch typów zapór: Cisco ASA i Palo Alto Networks.
 
@@ -25,8 +25,8 @@ W tym przewodniku przedstawiono procedurę konfigurowania zapory lokalnej na pot
 
 Przed skonfigurowaniem zapory lokalnej należy wykonać poniższe zadania.
 
-1. Sprawdź, czy Twoja organizacja [zabrała](create-nodes.md) wymagane węzły i utworzyła co najmniej jedną chmurę prywatną CloudSimple.
-2. [Skonfiguruj bramę sieci VPN typu lokacja-lokacja](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) między siecią lokalną i chmurą prywatną CloudSimple.
+1. Sprawdź, czy Twoja organizacja [zabrała](create-nodes.md) wymagane węzły i utworzyła co najmniej jedną chmurę prywatną o automatycznej synchronizacji.
+2. [Skonfiguruj bramę sieci VPN typu lokacja-lokacja](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) między siecią lokalną a chmurą prywatną do automatycznej synchronizacji.
 
 Zobacz [Omówienie bram sieci VPN](cloudsimple-vpn-gateways.md) dla obsługiwanych propozycji fazy 1 i fazy 2.
 
@@ -34,7 +34,7 @@ Zobacz [Omówienie bram sieci VPN](cloudsimple-vpn-gateways.md) dla obsługiwany
 
 Instrukcje w tej sekcji dotyczą programu Cisco ASA w wersji 8,4 lub nowszej. W przykładzie konfiguracji jest wdrażana i konfigurowana w trybie protokołu IKEv1 oprogramowanie firmy Cisco adaptacyjnego urządzenia zabezpieczeń w wersji 9,10.
 
-Aby sieć VPN typu lokacja-lokacja działała, należy zezwolić na ruch wychodzący UDP 500/4500 i ESP (protokół IP 50) z podstawowego i pomocniczego publicznego adresu IP (peer IP) CloudSimple w interfejsie zewnętrznym lokalnej bramy sieci VPN Cisco ASA.
+Aby sieć VPN typu lokacja-lokacja działała, należy zezwolić na protokoły UDP 500/4500 i ESP (protokół IP 50) z podstawowego i pomocniczego publicznego adresu IP (peer IP) w interfejsie zewnętrznym lokalnej bramy sieci VPN Cisco ASA.
 
 ### <a name="1-configure-phase-1-ikev1"></a>1. Skonfiguruj fazę 1 (IKEv1)
 
@@ -71,7 +71,7 @@ ikev1 pre-shared-key *****
 
 ### <a name="4-configure-phase-2-ipsec"></a>4. Konfigurowanie fazy 2 (IPsec)
 
-Aby skonfigurować fazę 2 (IPsec), Utwórz listę kontroli dostępu (ACL), która definiuje ruch do zaszyfrowania i tunelowania. W poniższym przykładzie związany z tym ruch pochodzi z tunelu pochodzącego z lokalnej podsieci lokalnego (10.16.1.0/24) do podsieci zdalnej chmury prywatnej (192.168.0.0/24). Lista ACL może zawierać wiele wpisów w przypadku wielu podsieci między lokacjami.
+Aby skonfigurować fazę 2 (IPsec), Utwórz listę kontroli dostępu (ACL), która definiuje ruch do zaszyfrowania i tunelowania. W poniższym przykładzie związany z tym ruch pochodzi z tunelu pochodzącego z lokalnej podsieci lokalnego (10.16.1.0/24) do tej podsieci zdalnej chmury prywatnej (192.168.0.0/24). Lista ACL może zawierać wiele wpisów w przypadku wielu podsieci między lokacjami.
 
 W programie Cisco ASA w wersji 8,4 i nowszych można utworzyć obiekty lub grupy obiektów, które służą jako kontenery dla sieci, podsieci, adresów IP hostów lub wielu obiektów. Utwórz obiekt dla lokalnego i obiektu dla podsieci zdalnych i użyj ich dla list ACL kryptograficznego i instrukcji NAT.
 
@@ -82,7 +82,7 @@ object network AZ_inside
 subnet 10.16.1.0 255.255.255.0
 ```
 
-#### <a name="define-the-cloudsimple-remote-subnet-as-an-object"></a>Zdefiniuj podsieć zdalną CloudSimple jako obiekt
+#### <a name="define-the-avs-remote-subnet-as-an-object"></a>Zdefiniuj podsieć zdalną automatycznej synchronizacji jako obiekt
 
 ```
 object network CS_inside
@@ -97,7 +97,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5. Skonfiguruj zestaw transformacji
 
-Skonfiguruj zestaw transformacji (TS), który musi zawierać słowo kluczowe ```ikev1```. Atrybuty szyfrowania i wyznaczania wartości skrótu określone w TS muszą być zgodne z parametrami wymienionymi w [konfiguracji domyślnej dla bram sieci VPN CloudSimple](cloudsimple-vpn-gateways.md).
+Skonfiguruj zestaw transformacji (TS), który musi zawierać słowo kluczowe ```ikev1```. Atrybuty szyfrowania i wyznaczania wartości skrótu określone w TS muszą być zgodne z parametrami wymienionymi w [konfiguracji domyślnej w przypadku bram sieci VPN o automatycznej synchronizacji](cloudsimple-vpn-gateways.md#cryptographic-parameters).
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
@@ -143,13 +143,13 @@ Wyjście fazy 2:
 
 Instrukcje w tej sekcji dotyczą Palo Alto Networks w wersji 7,1 lub nowszej. W tym przykładzie konfiguracji wdrożono i skonfigurowano w trybie IKEv1 Palo Alto sieci maszyn wirtualnych w wersji 8.1.0.
 
-Aby sieć VPN typu lokacja-lokacja działała, należy zezwolić na ruch wychodzący UDP 500/4500 i ESP (protokół IP 50) z podstawowego i pomocniczego publicznego adresu IP (peer IP) CloudSimple w interfejsie zewnętrznym bramy Palo Alto Networks.
+Aby sieć VPN typu lokacja-lokacja działała, należy zezwolić na ruch wychodzący UDP 500/4500 i ESP (protokół IP 50) z podstawowego i pomocniczego publicznego adresu IP (peer IP) w interfejsie zewnętrznym bramy Palo Alto Networks.
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. Tworzenie podstawowych i pomocniczych interfejsów tunelu
 
 Zaloguj się do zapory Palo Alto, wybierz pozycję **Network** > **interfejsy** > **tunel** > **Dodaj**, skonfiguruj następujące pola i kliknij przycisk **OK**.
 
-* Nazwa interfejsu. Pierwsze pole jest wypełniane automatycznie za pomocą słowa kluczowego "Tunnel". W sąsiednim polu Wprowadź dowolną liczbę z zakresu od 1 do 9999. Ten interfejs będzie używany jako podstawowy interfejs tunelowania do przenoszenia ruchu między lokacjami między lokalnym centrum danych a chmurą prywatną.
+* Nazwa interfejsu. Pierwsze pole jest wypełniane automatycznie za pomocą słowa kluczowego "Tunnel". W sąsiednim polu Wprowadź dowolną liczbę z zakresu od 1 do 9999. Ten interfejs będzie używany jako podstawowy interfejs tunelowania do przenoszenia ruchu między lokacjami między lokalnym centrum danych a chmurą prywatną do automatycznej synchronizacji.
 * Komentować. Wprowadź komentarze umożliwiające łatwą identyfikację przeznaczenie tunelu
 * Profil przepływu. Pozostaw wartość domyślną.
 * Sygnatur. Przypisz interfejs do: routera wirtualnego: wybierz pozycję **domyślne**. 
@@ -158,14 +158,16 @@ Zaloguj się do zapory Palo Alto, wybierz pozycję **Network** > **interfejsy** 
 
 Ponieważ ta konfiguracja jest dla sieci VPN o wysokiej dostępności, wymagane są dwa interfejsy tunelu: jeden podstawowy i jeden pomocniczy. Powtórz poprzednie kroki, aby utworzyć pomocniczy interfejs tunelu. Wybierz inny identyfikator tunelu i inny nieużywany adres IP/32.
 
-### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. Skonfiguruj trasy statyczne dla podsieci chmury prywatnej, aby można było uzyskać dostęp do sieci VPN typu lokacja-lokacja.
+### <a name="2-set-up-static-routes-for-avs-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. Skonfiguruj trasy statyczne na potrzeby automatycznej synchronizacji podsieci chmury prywatnej, aby można było uzyskać dostęp do sieci VPN typu lokacja-lokacja
 
-Trasy są niezbędne, aby można było połączyć się z podsieciami w chmurze prywatnej usługi CloudSimple.
+Trasy są niezbędne dla podsieci lokalnych w celu uzyskania automatycznej synchronizacji podsieci chmury prywatnej.
 
 Wybierz kolejno pozycje **sieć** > **wirtualne routery** > *domyślne* > **trasy statyczne** > **Dodaj**, skonfiguruj następujące pola i kliknij przycisk **OK**.
 
 * Nazwij. Wprowadź dowolną nazwę, aby ułatwić identyfikację przeznaczenie trasy.
-* Punktu. Określ CloudSimple podsieci chmury prywatnej, które mają być osiągalne za pośrednictwem interfejsów tunelu S2S z lokalnego
+
+* Punktu. Określ podsieć w chmurze prywatnej automatycznej synchronizacji, która ma zostać osiągnięta za pośrednictwem interfejsów tunelu S2S z lokalnego
+
 * Interfejsu. Wybierz podstawowy interfejs tunelu utworzony w kroku-1 (sekcja-2) z listy rozwijanej. W tym przykładzie jest to Tunnel. 20.
 * Następny przeskok. Wybierz pozycję **Brak**.
 * Odległość administratora. Pozostaw wartość domyślną.
@@ -174,7 +176,7 @@ Wybierz kolejno pozycje **sieć** > **wirtualne routery** > *domyślne* > **tras
 * Profil BFD. Pozostaw wartość domyślną.
 * Monitorowanie ścieżki. Pozostaw niezaznaczone.
 
-Powtórz poprzednie kroki, aby utworzyć kolejną trasę dla podsieci chmury prywatnej, która ma być używana jako trasa pomocnicza/zapasowa za pośrednictwem pomocniczego interfejsu tunelu. Tym razem wybierz inny identyfikator tunelu i wyższą metrykę niż dla trasy podstawowej.
+Powtórz poprzednie kroki, aby utworzyć kolejną trasę do automatycznej synchronizacji podsieci chmury prywatnej, która ma być używana jako trasa pomocnicza/zapasowa za pośrednictwem pomocniczego interfejsu tunelu. Tym razem wybierz inny identyfikator tunelu i wyższą metrykę niż dla trasy podstawowej.
 
 ### <a name="3-define-the-cryptographic-profile"></a>3. Zdefiniuj profil kryptograficzny
 
@@ -197,17 +199,17 @@ Wybierz pozycję **sieć** > **rozwiń węzeł Profile sieciowe** > **bramy IKE*
 
 Karta Ogólne:
 
-* Nazwij. Wprowadź nazwę bramy IKE, z którą ma zostać nawiązana Komunikacja równorzędna z podstawowym elementem równorzędnym sieci VPN CloudSimple.
+* Nazwij. Wprowadź nazwę bramy IKE, z którą ma zostać nawiązana Komunikacja równorzędna z podstawowym elementem równorzędnym automatycznej synchronizacji.
 * Wersja. Wybierz **tryb tylko**do protokołu IKEv1.
 * Typ adresu. Wybierz pozycję **IPv4**.
 * Interfejsu. Wybierz interfejs publiczny lub zewnętrzny.
 * Lokalny adres IP. Pozostaw wartość domyślną.
 * Typ adresu IP elementu równorzędnego. Wybierz pozycję **adres IP**.
-* Adres elementu równorzędnego. Wprowadź adres IP elementu równorzędnego podstawowego CloudSimple sieci VPN.
+* Adres elementu równorzędnego. Wprowadź podstawowy adres IP elementu równorzędnego automatycznej synchronizacji w sieci VPN.
 * Ponowne. Wybierz **klucz wstępny**.
-* Klucz wstępny/Potwierdź klucz wstępny. Wprowadź klucz wstępny, aby dopasować klucz bramy sieci VPN CloudSimple.
+* Klucz wstępny/Potwierdź klucz wstępny. Wprowadź klucz wstępny, aby dopasować klucz bramy sieci VPN automatycznej synchronizacji.
 * Identyfikacja lokalna. Wprowadź publiczny adres IP lokalnej zapory Palo Alto.
-* Tożsamość elementu równorzędnego. Wprowadź adres IP elementu równorzędnego podstawowego CloudSimple sieci VPN.
+* Tożsamość elementu równorzędnego. Wprowadź podstawowy adres IP elementu równorzędnego automatycznej synchronizacji w sieci VPN.
 
 Karta Opcje zaawansowane:
 
@@ -234,7 +236,7 @@ Wybierz pozycję **sieć** > **rozwiń węzeł Profile sieci** > **Kryptografia 
 * Okres istnienia. Ustaw jako 30 minut.
 * Mogły. Pozostaw pole niezaznaczone.
 
-Powtórz poprzednie kroki, aby utworzyć inny profil kryptograficzny protokołu IPsec, który będzie używany jako element równorzędny CloudSimple sieci VPN. Ten sam profil kryptograficzny protokołu IPSEC może być również używany zarówno dla podstawowego, jak i pomocniczego tunelu IPsec (patrz Poniższa procedura).
+Powtórz poprzednie kroki, aby utworzyć inny profil kryptograficzny protokołu IPsec, który będzie używany jako pomocniczy równorzędny serwer sieci VPN. Ten sam profil kryptograficzny protokołu IPSEC może być również używany zarówno dla podstawowego, jak i pomocniczego tunelu IPsec (patrz Poniższa procedura).
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. Zdefiniuj profile monitora dla monitorowania tunelu
 
@@ -251,7 +253,7 @@ Wybierz pozycję **sieć** > **tunele IPSec** > **Dodaj**, skonfiguruj następuj
 
 Karta Ogólne:
 
-* Nazwij. Wprowadź dowolną nazwę podstawowego tunelu IPSEC do komunikacji równorzędnej z podstawowym elementem równorzędnym sieci VPN CloudSimple.
+* Nazwij. Wprowadź dowolną nazwę podstawowego tunelu IPSEC do komunikacji równorzędnej z podstawowym elementem równorzędnym automatycznej synchronizacji.
 * Interfejs tunelu. Wybierz podstawowy interfejs tunelu.
 * Wprowadź. Pozostaw wartość domyślną.
 * Typ adresu. Wybierz pozycję **IPv4**.
@@ -260,19 +262,19 @@ Karta Ogólne:
 * Włącz ochronę powtarzania. Pozostaw wartość domyślną.
 * Kopiuj nagłówek OT. Pozostaw pole niezaznaczone.
 * Monitor tunelu. Zaznacz pole wyboru.
-* Docelowy adres IP. Wprowadź dowolny adres IP należący do podsieci prywatnej chmury CloudSimple, który jest dozwolony za pośrednictwem połączenia lokacja-lokacja. Upewnij się, że interfejsy tunelu (takie jak Tunnel. 20-10.64.5.2/32 i Tunnel. 30-10.64.6.2/32) w Palo Alto mogą dotrzeć do adresu IP chmury prywatnej CloudSimple za pośrednictwem sieci VPN typu lokacja-lokacja. Zapoznaj się z następującą konfiguracją identyfikatorów serwera proxy.
+* Docelowy adres IP. Wprowadź dowolny adres IP należący do podsieci chmury prywatnej automatycznej synchronizacji, która jest dozwolona za pośrednictwem połączenia lokacja-lokacja. Upewnij się, że interfejsy tunelu (takie jak Tunnel. 20-10.64.5.2/32 i Tunnel. 30-10.64.6.2/32) w Palo Alto mogą dotrzeć do tego adresu IP chmury prywatnej w sieci VPN między lokacjami. Zapoznaj się z następującą konfiguracją identyfikatorów serwera proxy.
 * Profilu. Wybierz profil monitora.
 
 Karta identyfikatory serwera proxy: kliknij pozycję **IPv4** > **Dodaj** i skonfiguruj następujące elementy:
 
 * Identyfikator serwera proxy. Wprowadź dowolną nazwę dla interesującego ruchu. W jednym tunelu IPsec przeprowadzono wiele identyfikatorów serwera proxy.
-* LAN. Określ lokalnej podsieci lokalne, które mogą komunikować się z podsieciami chmury prywatnej za pośrednictwem sieci VPN typu lokacja-lokacja.
-* Zdalnego. Określ zdalne podsieci chmury prywatnej, które mogą komunikować się z podsieciami lokalnymi.
+* LAN. Określ lokalnej podsieci lokalne, które mogą komunikować się z podsieciami chmury prywatnej na potrzeby automatycznej synchronizacji za pośrednictwem sieci VPN typu lokacja-lokacja.
+* Zdalnego. Określ podsieć zdalną chmury prywatnej do automatycznej synchronizacji, która może komunikować się z podsieciami lokalnymi.
 * Protokol. Wybierz **dowolny**.
 
-Powtórz poprzednie kroki, aby utworzyć inny tunel protokołu IPsec do użycia dla równorzędnego CloudSimple sieci VPN.
+Powtórz poprzednie kroki, aby utworzyć inny tunel protokołu IPsec do użycia w przypadku równorzędnego połączenia sieci VPN z dodatkowym powtórzeniami.
 
-## <a name="references"></a>Dokumentacja
+## <a name="references"></a>Informacje
 
 Konfigurowanie translatora adresów sieciowych w programie Cisco ASA:
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: e23a4c39f93ea4de7f5dd38bb266d63ed52913cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845856"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023144"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie zasobów pojedynczej bazy danych w Azure SQL Database
 
@@ -93,8 +93,8 @@ else {
 - W przypadku uaktualniania do wyższej warstwy usług lub rozmiaru obliczeń maksymalny rozmiar bazy danych nie zwiększa się, chyba że jawnie określono większy rozmiar (wartość maksymalna).
 - Aby można było obniżyć wersję bazy danych, ilość używanej bazy danych musi być mniejsza niż maksymalny dozwolony rozmiar docelowej warstwy usługi i rozmiaru.
 - W przypadku obniżenia poziomu wersji **Premium** do warstwy **standardowa** obowiązuje dodatkowy koszt magazynu, jeśli oba (1) maksymalny rozmiar bazy danych jest obsługiwany w docelowym rozmiarze obliczeniowym i (2) maksymalny rozmiar przekracza ilość dołączonego miejsca docelowego. Jeśli na przykład baza danych P1 o maksymalnym rozmiarze 500 GB to S3, nastąpi zastosowanie dodatkowego kosztu magazynu, ponieważ S3 obsługuje maksymalny rozmiar 1 TB, a uwzględniona ilość miejsca w magazynie wynosi tylko 250 GB. W związku z tym dodatkowa kwota magazynu wynosi 500 GB – 250 GB = 250 GB. Aby uzyskać cennik dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywista ilość użytego miejsca jest mniejsza niż uwzględniona ilość miejsca w magazynie, można uniknąć tego dodatkowego kosztu, zmniejszając maksymalną wielkość bazy danych do uwzględnionej kwoty.
-- Podczas uaktualniania bazy danych z włączoną [replikacją geograficzną](sql-database-geo-replication-portal.md) należy uaktualnić jej pomocnicze bazy danych do żądanej warstwy usług i rozmiaru obliczeń przed uaktualnieniem podstawowej bazy danych (ogólne wskazówki dotyczące najlepszej wydajności). W przypadku uaktualniania do innego programu należy najpierw uaktualnić pomocniczą bazę danych.
-- W przypadku obniżenia poziomu bazy danych z włączoną [replikacją geograficzną](sql-database-geo-replication-portal.md) należy zmienić jej podstawowe bazy danych na żądaną warstwę usługi i rozmiar obliczeń przed obniżeniem poziomu pomocniczej bazy danych (ogólne wskazówki dotyczące najlepszej wydajności). W przypadku obniżenia poziomu do innej wersji najpierw wymagana jest starsza baza danych.
+- Podczas uaktualniania bazy danych z włączoną [replikacją geograficzną](sql-database-geo-replication-portal.md) należy uaktualnić jej pomocnicze bazy danych do żądanej warstwy usług i rozmiaru obliczeń przed uaktualnieniem podstawowej bazy danych (ogólne wskazówki dotyczące najlepszej wydajności). W przypadku uaktualniania do innej wersji należy najpierw uaktualnić pomocniczą bazę danych.
+- W przypadku obniżenia poziomu bazy danych z włączoną [replikacją geograficzną](sql-database-geo-replication-portal.md) należy zmienić jej podstawowe bazy danych na żądaną warstwę usługi i rozmiar obliczeń przed obniżeniem poziomu pomocniczej bazy danych (ogólne wskazówki dotyczące najlepszej wydajności). W przypadku zmiany wersji na starszą należy najpierw zmienić wersję podstawowej bazy danych.
 - Oferowane usługi przywracania różnią się w zależności do warstwy usługi. W przypadku obniżenia poziomu do warstwy **podstawowa** istnieje dolny okres przechowywania kopii zapasowej. Zobacz [Azure SQL Database kopii zapasowych](sql-database-automated-backups.md).
 - Nowe właściwości bazy danych są stosowane dopiero po zakończeniu wprowadzania zmian.
 

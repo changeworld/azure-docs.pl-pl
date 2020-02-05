@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310003"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020764"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
 
@@ -31,6 +31,10 @@ Zaplanowano uruchomienie aprowizacji w chmurze co 2 minuty. Co 2 minuty wszystki
 **P: widzi błędy synchronizacji skrótów haseł podczas pierwszego uruchomienia. Zalet?**
 
 Jest to oczekiwane. Błędy są spowodowane nieobecnością obiektu użytkownika w usłudze Azure AD. Gdy użytkownik zostanie zainicjowany do usługi Azure AD, skróty haseł powinny być inicjowane w kolejnym przebiegu. Zaczekaj na kilka przebiegów i upewnij się, że synchronizacja skrótów haseł nie ma już błędów.
+
+**P: co się stanie, jeśli wystąpienie Active Directory ma atrybuty, które nie są obsługiwane przez propozycję aprowizacji w chmurze (na przykład rozszerzenia katalogów)?**
+
+Zainicjowanie obsługi administracyjnej usług w chmurze i udostępnienie obsługiwanych atrybutów. Nieobsługiwane atrybuty nie zostaną zainicjowane do usługi Azure AD. Przejrzyj rozszerzenia katalogu w Active Directory i upewnij się, że te atrybuty nie są potrzebne do przepływu do usługi Azure AD. Jeśli wymagane jest co najmniej jeden atrybut, należy rozważyć użycie Azure AD Connect synchronizacji lub przeniesienie wymaganych informacji do jednego z obsługiwanych atrybutów (na przykład atrybuty rozszerzenia 1-15).
 
 **P: Jaka jest różnica między synchronizacją Azure AD Connect a obsługą chmury?**
 

@@ -2,21 +2,21 @@
 title: Uruchamianie równoległego obciążenia — usługa Azure Batch dla środowiska .NET
 description: Samouczek — Równoległe transkodowanie plików multimedialnych przy użyciu narzędzia ffmpeg w usłudze Azure Batch z zastosowaniem biblioteki klienta Batch .NET
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 6f12f54e510cb07fcf522d2fd5e2e83fce4dfa96
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 34e43789ffb29963d5013b4acc3ea710a961c838
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029262"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024062"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API .NET
 
@@ -171,7 +171,7 @@ CreateContainerIfNotExistAsync(blobClient, inputContainerName);
 CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
-Następnie pliki są przekazywane do kontenera wejściowego z lokalnego folderu `InputFiles`. Pliki w magazynie są zdefiniowane jako obiekty [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) usługi Batch, które następnie mogą zostać pobrane przez tę usługę do węzłów obliczeniowych. 
+Następnie pliki są przekazywane do kontenera wejściowego z lokalnego folderu `InputFiles`. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych. 
 
 Podczas przekazywania plików używane są dwie metody w pliku `Program.cs`:
 

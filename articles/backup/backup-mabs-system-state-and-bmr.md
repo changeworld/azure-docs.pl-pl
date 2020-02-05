@@ -3,12 +3,12 @@ title: System i ochrona przed odzyskiwaniem systemu od zera
 description: Użyj Azure Backup Server, aby utworzyć kopię zapasową stanu systemu i zapewnić ochronę przed odzyskiwaniem od zera (BMR).
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0e89b149fe8b06bdd70c72aa442f50125c5e3786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172260"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025507"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Tworzenie kopii zapasowej stanu systemu i przywracanie na komputerach bez systemu operacyjnego za pomocą Azure Backup Server
 
@@ -23,23 +23,23 @@ Azure Backup Server Tworzenie kopii zapasowej stanu systemu i zapewnia ochronę 
 
 Poniższa tabela zawiera podsumowanie informacji o tym, co można utworzyć i odzyskać. Aby uzyskać szczegółowe informacje na temat wersji aplikacji, które mogą być chronione przy użyciu stanu systemu i BMR, zobacz [co to jest Azure Backup Server kopia zapasowa?](backup-mabs-protection-matrix.md).
 
-|Backup|Problem|Odzyskaj z kopii zapasowej Azure Backup Server|Odzyskaj z kopii zapasowej stanu systemu|BMR|
+|Tworzenie kopii zapasowych|Problem|Odzyskaj z kopii zapasowej Azure Backup Server|Odzyskaj z kopii zapasowej stanu systemu|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**Dane pliku**<br /><br />Regularne kopie zapasowe danych<br /><br />BMR/kopia zapasowa stanu systemu|Utracone dane pliku|Tak|Nie|Nie|
-|**Dane pliku**<br /><br />Azure Backup Server kopii zapasowej danych plików<br /><br />BMR/kopia zapasowa stanu systemu|Utracony lub uszkodzony system operacyjny|Nie|Tak|Tak|
-|**Dane pliku**<br /><br />Azure Backup Server kopii zapasowej danych plików<br /><br />BMR/kopia zapasowa stanu systemu|Utracony serwer (nienaruszone woluminy danych)|Nie|Nie|Tak|
+|**Dane pliku**<br /><br />Regularne kopie zapasowe danych<br /><br />BMR/kopia zapasowa stanu systemu|Utracone dane pliku|Tak|N|N|
+|**Dane pliku**<br /><br />Azure Backup Server kopii zapasowej danych plików<br /><br />BMR/kopia zapasowa stanu systemu|Utracony lub uszkodzony system operacyjny|N|Tak|Tak|
+|**Dane pliku**<br /><br />Azure Backup Server kopii zapasowej danych plików<br /><br />BMR/kopia zapasowa stanu systemu|Utracony serwer (nienaruszone woluminy danych)|N|N|Tak|
 |**Dane pliku**<br /><br />Azure Backup Server kopii zapasowej danych plików<br /><br />BMR/kopia zapasowa stanu systemu|Utracony serwer (utracone woluminy danych)|Tak|Nie|Tak (BMR, po którym następuje regularne odzyskiwanie danych pliku kopii zapasowej)|
-|**Dane programu SharePoint**:<br /><br />Azure Backup Server kopii zapasowej danych farmy<br /><br />BMR/kopia zapasowa stanu systemu|Utracona witryna, listy, elementy listy, dokumenty|Tak|Nie|Nie|
-|**Dane programu SharePoint**:<br /><br />Azure Backup Server kopii zapasowej danych farmy<br /><br />BMR/kopia zapasowa stanu systemu|Utracony lub uszkodzony system operacyjny|Nie|Tak|Tak|
-|**Dane programu SharePoint**:<br /><br />Azure Backup Server kopii zapasowej danych farmy<br /><br />BMR/kopia zapasowa stanu systemu|Odzyskiwanie po awarii|Nie|Nie|Nie|
-|Windows Server 2012 R2 Hyper-V<br /><br />Azure Backup Server kopii zapasowej hosta lub gościa funkcji Hyper-V<br /><br />BMR/kopia zapasowa stanu systemu hosta|Utracona maszyna wirtualna|Tak|Nie|Nie|
-|Funkcja Hyper-V<br /><br />Azure Backup Server kopii zapasowej hosta lub gościa funkcji Hyper-V<br /><br />BMR/kopia zapasowa stanu systemu hosta|Utracony lub uszkodzony system operacyjny|Nie|Tak|Tak|
-|Funkcja Hyper-V<br /><br />Azure Backup Server kopii zapasowej hosta lub gościa funkcji Hyper-V<br /><br />BMR/kopia zapasowa stanu systemu hosta|Utracony host funkcji Hyper-V (nienaruszone maszyny wirtualne)|Nie|Nie|Tak|
-|Funkcja Hyper-V<br /><br />Azure Backup Server kopii zapasowej hosta lub gościa funkcji Hyper-V<br /><br />BMR/kopia zapasowa stanu systemu hosta|Utracony host funkcji Hyper-V (utracone maszyny wirtualne)|Nie|Nie|Tak<br /><br />BMR, po którym następuje regularne odzyskiwanie Azure Backup Server|
-|SQL Server/Exchange<br /><br />Kopia zapasowa aplikacji Azure Backup Server<br /><br />BMR/kopia zapasowa stanu systemu|Utracone dane aplikacji|Tak|Nie|Nie|
-|SQL Server/Exchange<br /><br />Kopia zapasowa aplikacji Azure Backup Server<br /><br />BMR/kopia zapasowa stanu systemu|Utracony lub uszkodzony system operacyjny|Nie|Y|Tak|
-|SQL Server/Exchange<br /><br />Kopia zapasowa aplikacji Azure Backup Server<br /><br />BMR/kopia zapasowa stanu systemu|Utracony serwer (nienaruszone dzienniki bazy danych/transakcji)|Nie|Nie|Tak|
-|SQL Server/Exchange<br /><br />Kopia zapasowa aplikacji Azure Backup Server<br /><br />BMR/kopia zapasowa stanu systemu|Utracony serwer (utracone dzienniki bazy danych/transakcji)|Nie|Nie|Tak<br /><br />Odzyskiwanie BMR, po którym następuje regularne odzyskiwanie Azure Backup Server|
+|**Dane programu SharePoint**:<br /><br />Azure Backup Server kopii zapasowej danych farmy<br /><br />BMR/kopia zapasowa stanu systemu|Utracona witryna, listy, elementy listy, dokumenty|Tak|N|N|
+|**Dane programu SharePoint**:<br /><br />Azure Backup Server kopii zapasowej danych farmy<br /><br />BMR/kopia zapasowa stanu systemu|Utracony lub uszkodzony system operacyjny|N|Tak|Tak|
+|**Dane programu SharePoint**:<br /><br />Azure Backup Server kopii zapasowej danych farmy<br /><br />BMR/kopia zapasowa stanu systemu|Odzyskiwanie po awarii|N|N|N|
+|Windows Server 2012 R2 Hyper-V<br /><br />Azure Backup Server kopii zapasowej hosta lub gościa funkcji Hyper-V<br /><br />BMR/kopia zapasowa stanu systemu hosta|Utracona maszyna wirtualna|Tak|N|N|
+|Funkcja Hyper-V<br /><br />Azure Backup Server kopii zapasowej hosta lub gościa funkcji Hyper-V<br /><br />BMR/kopia zapasowa stanu systemu hosta|Utracony lub uszkodzony system operacyjny|N|Tak|Tak|
+|Funkcja Hyper-V<br /><br />Azure Backup Server kopii zapasowej hosta lub gościa funkcji Hyper-V<br /><br />BMR/kopia zapasowa stanu systemu hosta|Utracony host funkcji Hyper-V (nienaruszone maszyny wirtualne)|N|N|Tak|
+|Funkcja Hyper-V<br /><br />Azure Backup Server kopii zapasowej hosta lub gościa funkcji Hyper-V<br /><br />BMR/kopia zapasowa stanu systemu hosta|Utracony host funkcji Hyper-V (utracone maszyny wirtualne)|N|N|Tak<br /><br />BMR, po którym następuje regularne odzyskiwanie Azure Backup Server|
+|SQL Server/Exchange<br /><br />Kopia zapasowa aplikacji Azure Backup Server<br /><br />BMR/kopia zapasowa stanu systemu|Utracone dane aplikacji|Tak|N|N|
+|SQL Server/Exchange<br /><br />Kopia zapasowa aplikacji Azure Backup Server<br /><br />BMR/kopia zapasowa stanu systemu|Utracony lub uszkodzony system operacyjny|N|Y|Tak|
+|SQL Server/Exchange<br /><br />Kopia zapasowa aplikacji Azure Backup Server<br /><br />BMR/kopia zapasowa stanu systemu|Utracony serwer (nienaruszone dzienniki bazy danych/transakcji)|N|N|Tak|
+|SQL Server/Exchange<br /><br />Kopia zapasowa aplikacji Azure Backup Server<br /><br />BMR/kopia zapasowa stanu systemu|Utracony serwer (utracone dzienniki bazy danych/transakcji)|N|N|Tak<br /><br />Odzyskiwanie BMR, po którym następuje regularne odzyskiwanie Azure Backup Server|
 
 ## <a name="how-system-state-backup-works"></a>Jak działa kopia zapasowa stanu systemu
 
@@ -140,7 +140,7 @@ Skonfiguruj grupę ochrony zgodnie z opisem w artykule [wdrażanie grup ochrony]
 
 12. Na stronie **Określanie zasad przechowywania w trybie online** wybierz, w jaki sposób punkty odzyskiwania tworzone na podstawie kopii zapasowych codziennie, co tydzień, co miesiąc i co roku mają być przechowywane na platformie Azure.
 
-13. Na stronie **Wybierz replikację online** wybierz, jak następuje początkowa pełna replikacja danych. Można replikować za pośrednictwem sieci lub wykonywać kopie zapasowe w trybie offline (w trybie offline). Kopia zapasowa offline używa funkcji importowania platformy Azure. Aby uzyskać więcej informacji, zobacz [przepływ pracy kopii zapasowej offline w Azure Backup](backup-azure-backup-import-export.md).
+13. Na stronie **Wybierz replikację online** wybierz, jak następuje początkowa pełna replikacja danych. Można replikować za pośrednictwem sieci lub wykonywać kopie zapasowe w trybie offline (w trybie offline). Kopia zapasowa offline używa funkcji importowania platformy Azure. Aby uzyskać więcej informacji, zobacz [przepływ pracy kopii zapasowej offline w Azure Backup](offline-backup-azure-data-box.md).
 
 14. Na stronie **Podsumowanie** przejrzyj ustawienia. Po wybraniu opcji **Utwórz grupę**następuje Replikacja początkowa danych. Po zakończeniu replikacji danych na stronie **stan** Grupa ochrony ma stan **OK**. Następnie odbywa się tworzenie kopii zapasowych zgodnie z ustawieniami grupy ochrony.
 

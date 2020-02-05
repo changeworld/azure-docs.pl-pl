@@ -6,13 +6,13 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 472fe621fc7a95317f143ef96a1d7f8b5adfe581
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688294"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016973"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z usługą Azure Virtual Network
 W tym dokumencie opisano funkcję integracji Azure App Service sieci wirtualnej i sposób jej konfigurowania z aplikacjami w [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Usługa Azure Virtual Networks][VNETOverview] (sieci wirtualnych) umożliwia umieszczanie wielu zasobów platformy Azure w sieci bez obsługi Internetu.  
@@ -74,7 +74,7 @@ Ta funkcja jest w wersji zapoznawczej, ale jest obsługiwana w przypadku obcią�
 * Można uzyskać dostęp tylko do adresów znajdujących się w zakresie RFC 1918. Są to adresy w blokach adresów 10.0.0.0/8, 172.16.0.0/12 i 192.168.0.0/16.
 * Nie można uzyskać dostępu do zasobów w ramach globalnych połączeń komunikacji równorzędnej
 * Nie można ustawić tras dla ruchu pochodzącego z aplikacji do sieci wirtualnej
-* Funkcja jest dostępna tylko w nowszych App Service jednostkach skalowania, które obsługują plany App Service PremiumV2.
+* Funkcja jest dostępna tylko w nowszych App Service jednostkach skalowania, które obsługują plany App Service PremiumV2. Należy zauważyć, że nie oznacza to, że aplikacja musi działać w jednostce SKU PremiumV2, która musi być uruchomiona w planie App Service, w którym jest dostępna opcja PremiumV2 (co oznacza, że jest to nowsza jednostka skalowania, w której ta funkcja integracji sieci wirtualnej jest również dostępna).
 * Podsieć integracji może być używana tylko przez jeden plan App Service
 * Funkcja nie może być używana przez aplikacje planu izolowanego, które znajdują się w App Service Environment
 * Ta funkcja wymaga nieużywanej podsieci, która jest/27 z 32 adresów lub większa w sieci wirtualnej Menedżer zasobów
@@ -251,7 +251,7 @@ Istnieją trzy powiązane opłaty za korzystanie z funkcji integracji sieci wirt
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 Chociaż ta funkcja jest łatwa do skonfigurowania, nie oznacza to, że Twoje środowisko nie będzie miało problemu. Jeśli wystąpią problemy z uzyskaniem dostępu do żądanego punktu końcowego, istnieją pewne narzędzia, których można użyć do testowania łączności z poziomu konsoli aplikacji. Istnieją dwie konsole, których można użyć. Jedna z nich jest konsolą kudu, a druga jest konsolą w Azure Portal. Aby nawiązać połączenie z konsolą kudu z poziomu aplikacji, przejdź do pozycji narzędzia-> kudu. Możesz również uzyskać dostęp do konsoli Kudo na stronie [sitename]. SCM. azurewebsites. NET. Po załadowaniu witryny sieci Web przejdź do karty konsola debugowania. Aby przejść do Azure Portal hostowanej konsoli, w aplikacji przejdź do pozycji narzędzia — > Konsola. 
 
-#### <a name="tools"></a>Narzędzia
+#### <a name="tools"></a>narzędzia
 Narzędzia **ping**, **nslookup** i **tracert** nie przełączają się za pomocą konsoli ze względu na ograniczenia zabezpieczeń. Aby wypełnić wartość void, dodano dwa osobne narzędzia. W celu przetestowania funkcjonalności DNS dodaliśmy narzędzie o nazwie nameresolver. exe. Składnia jest następująca:
 
     nameresolver.exe hostname [optional: DNS Server]

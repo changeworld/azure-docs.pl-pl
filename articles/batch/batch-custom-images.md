@@ -2,18 +2,18 @@
 title: Inicjowanie obsługi administracyjnej puli na podstawie zarządzanego obrazu — Azure Batch | Microsoft Docs
 description: Utwórz pulę usługi Batch z zasobu obrazu zarządzanego, aby udostępnić węzłom obliczeniowym oprogramowanie i dane aplikacji.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: jushiman
-ms.openlocfilehash: 3c7aafb5cfdd2e0127aa9969b904976cb93db614
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 1ef6be2ba9364203dceba54ab51325c05dbbbe41
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029752"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020152"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Tworzenie puli maszyn wirtualnych przy użyciu obrazu zarządzanego
 

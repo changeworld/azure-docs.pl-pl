@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037238"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026136"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w Azure Data Lake Storage Gen2
 
@@ -58,10 +58,15 @@ Nie można użyć list kontroli dostępu w celu zapewnienia poziomu dostępu, kt
 
 Aby ustawić uprawnienia na poziomie plików i katalogów, zobacz dowolny z następujących artykułów:
 
-|Jeśli chcesz użyć tego narzędzia:    |Zobacz ten artykuł:    |
+|||
 |--------|-----------|
-|Eksplorator magazynu Azure    |[Ustawianie uprawnień na poziomie plików i katalogów przy użyciu Eksplorator usługi Azure Storage z Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
-|Interfejs API REST    |[Ścieżka — aktualizacja](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Eksplorator magazynu Azure |[Użyj Eksplorator usługi Azure Storage do zarządzania katalogami, plikami i listami ACL w programie Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
+|.NET |[Użyj programu .NET do zarządzania katalogami, plikami i listami ACL w Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[Używanie języka Java do zarządzania katalogami, plikami i listami ACL w Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md)|
+|Python|[Używanie języka Python do zarządzania katalogami, plikami i listami ACL w Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
+|PowerShell|[Użyj programu PowerShell do zarządzania katalogami, plikami i listami ACL w Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md)|
+|Interfejs wiersza polecenia platformy Azure|[Korzystanie z interfejsu wiersza polecenia platformy Azure do zarządzania katalogami, plikami i listami ACL w Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
+|Interfejs API REST |[Ścieżka — aktualizacja](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Jeśli podmiot zabezpieczeń jest jednostką *usługi* , ważne jest użycie identyfikatora obiektu nazwy głównej usługi, a nie identyfikatora obiektu powiązanej rejestracji aplikacji. Aby uzyskać identyfikator obiektu jednostki usługi, Otwórz interfejs wiersza polecenia platformy Azure, a następnie użyj następujące polecenie: `az ad sp show --id <Your App ID> --query objectId`. Pamiętaj, aby zastąpić symbol zastępczy `<Your App ID>` IDENTYFIKATORem aplikacji rejestracji aplikacji.
@@ -100,7 +105,7 @@ Skrót **RWX** służy do wskazywania uprawnień do **odczytu, zapisu i wykonani
 |--------------|------------|------------------------|
 | 7            | `RWX`        | Odczyt (R) + zapis (W) + wykonanie (X) |
 | 5            | `R-X`        | Odczyt (R) + wykonanie (X)         |
-| 4            | `R--`        | Odczyt                   |
+| 4            | `R--`        | Odczytywanie                   |
 | 0            | `---`        | Brak uprawnień         |
 
 #### <a name="permissions-inheritance"></a>Dziedziczenie uprawnień
@@ -335,6 +340,6 @@ Listy ACL nie są dziedziczone. Jednak domyślne listy ACL mogą być używane d
 * [Listy ACL modelu POSIX w systemie Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Listy ACL korzystające z list kontroli dostępu w systemie Linux](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz także
 
 * [Omówienie Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

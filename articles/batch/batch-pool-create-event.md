@@ -2,21 +2,21 @@
 title: Zdarzenie tworzenia puli Azure Batch
 description: Odwołanie do zdarzenia tworzenia puli usługi Batch, które jest emitowane po utworzeniu puli. Zawartość dziennika spowoduje udostępnienie ogólnych informacji o puli.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: cb109daee20300d4564ecd40c0a3c14de0f3de1c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.author: labrenne
+ms.openlocfilehash: dea025b274278aa5fed2900c95b4a274541ffef9
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76929860"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022193"
 ---
 # <a name="pool-create-event"></a>Zdarzenie utworzenia puli
 

@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: ajburnle
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423096"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024606"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Szybki Start: Tworzenie nowej dzierżawy w Azure Active Directory
 Wszystkie zadania administracyjne, w tym tworzenie nowej dzierżawy dla swojej organizacji, możesz wykonywać przy użyciu portalu usługi Azure Active Directory (Azure AD). 
@@ -31,7 +31,7 @@ Po zalogowaniu się do witryny Azure Portal możesz utworzyć nową dzierżawę 
 
 ### <a name="to-create-a-new-tenant"></a>Aby utworzyć nową dzierżawę
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) Twojej organizacji przy użyciu konta administratora globalnego.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/)organizacji.
 
 1. Z menu Azure Portal wybierz pozycję **Utwórz zasób**.  
 
@@ -58,6 +58,7 @@ Twoja nowa dzierżawa zostanie utworzona i będzie miała domenę contoso.onmicr
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Jeśli nie zamierzasz nadal korzystać z tej aplikacji, możesz usunąć dzierżawę, wykonując następujące czynności:
 
+- Upewnij się, że zalogowano się do katalogu, który chcesz usunąć za pomocą filtru **katalogów i subskrypcji** w witrynie Azure Portal, a następnie w razie potrzeby przełączenie do katalogu docelowego.
 - Wybierz usługę **Azure Active Directory**, a następnie na stronie **Contoso — przegląd** wybierz pozycję **Usuń katalog**.
 
     Dzierżawa zostanie usunięta wraz ze skojarzonymi informacjami.

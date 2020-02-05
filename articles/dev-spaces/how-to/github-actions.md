@@ -1,17 +1,17 @@
 ---
 title: Akcje GitHub & usłudze Azure Kubernetes Service
 services: azure-dev-spaces
-ms.date: 11/04/2019
+ms.date: 02/04/2020
 ms.topic: conceptual
 description: Przejrzyj i przetestuj zmiany z żądania ściągnięcia bezpośrednio w usłudze Azure Kubernetes za pomocą akcji usługi GitHub i Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontenery, akcje GitHub, Helm, Siatka usług, routing w sieci usług, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771125"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026102"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akcje GitHub & usługi Azure Kubernetes (wersja zapoznawcza)
 
@@ -58,7 +58,6 @@ az ad sp create-for-rbac --sdk-auth --skip-assignment
 
 Zapisz dane wyjściowe JSON, ponieważ są używane w późniejszym kroku.
 
-
 Użyj [AZ AKS show][az-aks-show] , aby wyświetlić *Identyfikator* klastra AKS:
 
 ```cmd
@@ -93,7 +92,6 @@ Przejdź do repozytorium z rozwidleniem, a następnie kliknij pozycję *Ustawien
 1. *CLUSTER_NAME*: Nazwa klastra AKS, która jest w tym przykładzie *MyAKS*.
 1. *CONTAINER_REGISTRY*: *loginServer* dla ACR.
 1. *Host*: Host dla obszaru deweloperskiego, który przyjmuje formularz *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX*>, który jest w tym przykładzie *dev.bikesharingweb.fedcab0987.EUS.azds.IO*.
-1. *HOST_SUFFIX*: sufiks hosta dla obszaru dev, który jest w tym przykładzie *fedcab0987.EUS.azds.IO*.
 1. *IMAGE_PULL_SECRET*: Nazwa klucza tajnego, którego chcesz użyć, na przykład *Demonstracja-wpis tajny*.
 1. *MASTER_SPACE*: Nazwa nadrzędnego obszaru deweloperskiego, który w tym przykładzie jest *deweloperem*.
 1. *REGISTRY_USERNAME*: *clientId* z danych wyjściowych JSON z tworzenia jednostki usługi.
@@ -101,6 +99,8 @@ Przejdź do repozytorium z rozwidleniem, a następnie kliknij pozycję *Ustawien
 
 > [!NOTE]
 > Wszystkie te wpisy tajne są używane przez akcję GitHub i są konfigurowane w serwisie [GitHub/Workflows/Bikes. yml][github-action-yaml].
+
+Opcjonalnie, jeśli chcesz zaktualizować miejsce główne po scaleniu żądania ściągnięcia, Dodaj *GATEWAY_HOST* klucz tajny, który pobiera formularz *< MASTER_SPACE >. Gateway. <* HOST_SUFFIX >, który w tym przykładzie jest *dev.Gateway.fedcab0987.EUS.azds.IO*. Po scaleniu zmian w gałęzi głównej w rozwidleniu zostanie uruchomiona kolejna Akcja w celu odbudowania i uruchomienia całej aplikacji w głównym obszarze dev. W tym przykładzie obszarem głównym jest *dev*. Ta akcja jest konfigurowana w witrynie [GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Utwórz nową gałąź dla zmian kodu
 

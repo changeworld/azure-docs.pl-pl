@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 4c3d2352467a1ed8e7979acac403908303ba3bc4
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3f0f3528a59c721fe6926dd4c8c5039b680e1588
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834550"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025762"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurowanie tranzytu bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych
 
@@ -156,4 +156,4 @@ Add-AzVirtualNetworkPeering `
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [ograniczeniach i zachowaniu komunikacji równorzędnej sieci wirtualnej](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) i [ustawieniach komunikacji równorzędnej sieci wirtualnej](../virtual-network/virtual-network-manage-peering.md#create-a-peering) przed utworzeniem komunikacji równorzędnej sieci wirtualnej w środowisku produkcyjnym.
-* Dowiedz się, jak [utworzyć topologię sieciową gwiazdy](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) z komunikacją równorzędną sieci wirtualnej i tranzytem bramy.
+* Dowiedz się, jak [utworzyć topologię sieciową gwiazdy](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) z komunikacją równorzędną sieci wirtualnej i tranzytem bramy.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9633975f53b3e398537067b17a870f621d9a7435
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045050"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025711"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Korzystanie ze standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.74 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.81 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -162,9 +162,14 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="show-the-outbound-rule-for-your-load-balancer"></a>Wyświetlanie reguły ruchu wychodzącego dla modułu równoważenia obciążenia
+## <a name="configure-outbound-ports-and-idle-timeout"></a>Skonfiguruj porty wychodzące i limit czasu bezczynności
 
-Aby wyświetlić regułę wychodzącą utworzoną w module równoważenia obciążenia, użyj polecenie [AZ Network lb wychodzące-Rule list][az-network-lb-outbound-rule-list] i określ grupę zasobów węzła klastra AKS:
+> [!WARNING]
+> Poniższa sekcja jest przeznaczona dla zaawansowanych scenariuszy o większej skali sieci lub do rozwiązywania problemów z wyczerpaniem połączenia z konfiguracją domyślną. Aby zapewnić obsługę klastrów w dobrej kondycji, należy mieć dokładną inwentaryzację dostępnego przydziału dla maszyn wirtualnych i adresów IP.
+> 
+> Zmiana wartości dla *AllocatedOutboundPorts* i *IdleTimeoutInMinutes* może znacząco zmienić zachowanie reguły ruchu wychodzącego dla modułu równoważenia obciążenia. Przed zaktualizowaniem tych wartości [Load Balancer Przejrzyj reguły ruchu][azure-lb-outbound-rules-overview]wychodzącego, reguły ruchu wychodzącego [modułu równoważenia obciążenia][azure-lb-outbound-rules]i [połączenia wychodzące na platformie Azure][azure-lb-outbound-connections] , aby w pełni zrozumieć wpływ zmian.
+
+Przydzielono wychodzące porty i ich limity czasu bezczynności są [używane dla tego][azure-lb-outbound-connections]elementu. Domyślnie moduł równoważenia obciążenia *standardowej* jednostki SKU używa [automatycznego przypisywania dla liczby portów wychodzących opartych na rozmiarze puli zaplecza][azure-lb-outbound-preallocatedports] i limitu czasu bezczynności 30 minut dla każdego portu. Aby wyświetlić te wartości, użyj polecenie [AZ Network lb wychodzące-Rule list][az-network-lb-outbound-rule-list] , aby wyświetlić regułę ruchu wychodzącego dla modułu równoważenia obciążenia:
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -179,7 +184,46 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-W przykładowym wyjściu *AllocatedOutboundPorts* jest 0. Wartość dla *AllocatedOutboundPorts* oznacza, że alokacja portów podzestawu adresów sieciowych zostanie przywrócona do automatycznego przypisywania na podstawie rozmiaru puli zaplecza. Aby uzyskać więcej informacji, zobacz [Load Balancer reguł ruchu wychodzącego][azure-lb-outbound-rules] i [połączeń wychodzących na platformie Azure][azure-lb-outbound-connections] .
+Przykładowe dane wyjściowe pokazują wartość domyślną dla *AllocatedOutboundPorts* i *IdleTimeoutInMinutes*. Wartość 0 dla *AllocatedOutboundPorts* ustawia liczbę portów wychodzących przy użyciu automatycznego przypisywania dla liczby portów wychodzących na podstawie rozmiaru puli zaplecza. Na przykład jeśli klaster ma 50 lub mniej węzłów, przydzielono porty 1024 dla każdego węzła.
+
+Rozważ zmianę ustawienia *allocatedOutboundPorts* lub *IdleTimeoutInMinutes* , jeśli zamierzasz obsłużyć wyczerpanie adresów w oparciu o powyższą konfigurację domyślną. Każdy dodatkowy adres IP pozwala na 64 000 dodatkowych portów do alokacji, jednak usługa Azure usługa Load Balancer w warstwie Standardowa nie zwiększa automatycznie portów na węzeł po dodaniu większej liczby adresów IP. Można zmienić te wartości poprzez ustawienie parametrów *równoważenia obciążenia-ruchu wychodzącego* i *równoważenia obciążenia — bezczynny limit czasu* . Przykład:
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+> [!IMPORTANT]
+> Przed przystąpieniem do dostosowywania *allocatedOutboundPorts* należy [obliczyć limit przydziału][calculate-required-quota] , aby uniknąć problemów z łącznością lub skalowaniem. Wartość określona dla *allocatedOutboundPorts* musi być również wielokrotnością 8.
+
+Podczas tworzenia klastra można również użyć parametrów *równoważenia obciążenia-ruchu wychodzącego* i *równoważenia obciążenia-limit czasu bezczynności* , ale należy również określić moduł równoważenia obciążenia-wychodzący- *IP-Count*, *równoważenia obciążenia-wychodzącego*i IP, jak również *prefiksy równoważenia obciążenia* wychodzącego.  Przykład:
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-managed-outbound-ip-count 2 \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+W przypadku zmiany parametrów *równoważenia obciążenia — porty wychodzące* i *równoważenia obciążenia-limit czasu bezczynności* — ma wpływ na zachowanie profilu usługi równoważenia obciążenia, który ma wpływ na cały klaster.
+
+### <a name="required-quota-for-customizing-allocatedoutboundports"></a>Wymagany limit przydziału allocatedOutboundPorts
+Musisz mieć wystarczającą ilość wychodzącego adresu IP na podstawie liczby maszyn wirtualnych węzła i żądanych przyznanych portów wychodzących. Aby sprawdzić, czy masz wystarczającą ilość wychodzących adresów IP, należy użyć następującej formuły: 
+ 
+*outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
+ 
+Na przykład jeśli masz 3 *nodeVMs*i 50 000 *desiredAllocatedOutboundPorts*, musisz mieć co najmniej 3 *outboundIPs*. Zaleca się dołączenie dodatkowej pojemności wychodzącego adresu IP poza potrzebami. Ponadto należy uwzględnić automatyczne skalowanie klastra i możliwość uaktualniania puli węzłów przy obliczaniu wydajności wychodzącego adresu IP. W przypadku automatycznego skalowania klastra sprawdź bieżącą liczbę węzłów i maksymalną liczbę węzłów i użyj wyższej wartości. W przypadku uaktualniania należy uwzględnić dodatkową maszynę wirtualną węzłową dla każdej puli węzłów, która umożliwia uaktualnianie.
+ 
+Podczas ustawiania *IdleTimeoutInMinutes* na inną wartość niż domyślnie 30 minut należy wziąć pod uwagę, jak długo obciążenia będą wymagały połączenia wychodzącego. Należy również wziąć pod uwagę domyślną wartość limitu czasu dla usługi równoważenia obciążenia w *warstwie Standardowa* używanej poza AKS wynosi 4 minuty. Wartość *IdleTimeoutInMinutes* , która dokładniej odzwierciedla Twoje określone obciążenie AKS może pomóc w zmniejszeniu wyczerpania spalin spowodowanych przez nawiązanie połączeń, które nie są już używane.
 
 ## <a name="restrict-access-to-specific-ip-ranges"></a>Ograniczanie dostępu do określonych zakresów adresów IP
 
@@ -239,9 +283,12 @@ Dowiedz się więcej o usługach Kubernetes Services w [dokumentacji usług Kube
 [azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports

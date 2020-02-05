@@ -1,86 +1,95 @@
 ---
 title: Analizowanie danych urządzenia w aplikacji IoT Central platformy Azure | Microsoft Docs
-description: W tym artykule opisano sposób analizowania danych urządzenia w aplikacji IoT Central platformy Azure przy użyciu zapytań i wizualizacji.
-author: lmasieri
-ms.author: lmasieri
-ms.date: 06/09/2019
+description: Analizowanie danych urządzenia w aplikacji IoT Central platformy Azure.
+author: ankitgup
+ms.author: ankitgup
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: a467e0e6e8967cf963ad099f83de6718330aa43f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+manager: abjork
+ms.openlocfilehash: 7627421317458eb0ff9637b3497df11dacfddbff
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827979"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023858"
 ---
-# <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak analizować dane urządzeń za pomocą analizy
+# <a name="how-to-use-analytics-to-analyze-device-data"></a>Jak używać analiz do analizowania danych urządzenia
 
 *Ten artykuł dotyczy operatorów, konstruktorów i administratorów.*
 
-Usługa Azure IoT Central zapewnia rozbudowane funkcje analityczne, dzięki którym można zrozumieć duże ilości danych z urządzeń. Aby rozpocząć, odwiedź stronę **Analiza** w okienku po lewej stronie.
+
+
+Usługa Azure IoT Central zapewnia rozbudowane funkcje analityczne służące do analizowania trendów historycznych i skorelowania różnych telemetrii z urządzeń. Aby rozpocząć, odwiedź stronę **Analiza** w okienku po lewej stronie.
+
+## <a name="understanding-the-analytics-ui"></a>Informacje o interfejsie użytkownika analizy
+Interfejs użytkownika analizy składa się z trzech głównych składników:
+- **Panel konfiguracja danych:** Na panelu konfiguracja Zacznij od wybrania grupy urządzeń, dla której chcesz analizować dane. Następnie wybierz dane telemetryczne, które chcesz analizować, i wybierz metodę agregacji dla każdej telemetrii. **Podział przez** kontrolkę pomaga grupować dane przy użyciu właściwości urządzenia jako wymiarów.
+
+- **Kontrola czasu:** Kontrola czasu służy do wybierania czasu trwania, dla którego chcesz analizować dane. Możesz przeciągnąć dowolny koniec suwaka czasu, aby wybrać przedział czasu. Kontrola czasu ma także suwak **rozmiaru interwału** kontrolujący przedział lub rozmiar interwału używany do agregowania danych. 
+
+- **Kontrolka wykresu:** Kontrolka wykresu wizualizuje dane jako wykres liniowy. Widoczność poszczególnych wierszy można przełączać, współpracując z legendą wykresu. 
+
+
+  ![Przegląd interfejsu użytkownika analizy](media/howto-create-analytics/analyticsui.png)
+
 
 ## <a name="querying-your-data"></a>Wykonywanie zapytania dotyczącego danych
 
-Musisz wybrać **zestaw urządzeń**, dodać **Filtr** (opcjonalnie) i wybrać **okres** , aby rozpocząć pracę. Gdy skończysz, wybierz pozycję **Pokaż wyniki** , aby rozpocząć wizualizację danych.
+Należy rozpocząć od wybrania **grupy urządzeń**i danych telemetrycznych, które mają być analizowane. Gdy skończysz, wybierz pozycję **Analizuj** , aby rozpocząć wizualizację danych.
 
-* **Zestawy urządzeń:** [Zestaw urządzeń](howto-use-device-sets.md) to zdefiniowana przez użytkownika grupa urządzeń. Na przykład wszystkie chłodziarki w Oakland lub wszystkie turbiny wiatru rev 2,0.
+- **Grupa urządzeń:** [Grupa urządzeń](tutorial-use-device-groups.md) to zdefiniowana przez użytkownika grupa urządzeń. Na przykład wszystkie lodówki w Oakland lub wszystkie wersje 2,0 wiatru.
 
-* **Filtry:** Opcjonalnie możesz dodać filtry do wyszukiwania, aby stworzyć właściwy na swoich danych. Jednocześnie można dodać do 10 filtrów. Na przykład w obszarze wszystkie chłodziarki w Oakland Znajdź te, które miały temperaturę powyżej 60 stopni.
-* **Okres:** Domyślnie będziemy pobierać dane z ostatnich 10 minut. Tę wartość można zmienić na jeden z wstępnie zdefiniowanych zakresów czasu lub wybrać niestandardowy okres czasu.
+- Dane **telemetryczne:** Wybierz dane telemetryczne, które chcesz analizować i eksplorować. Możesz wybrać wiele telemetrii do przeanalizowania. Domyślna metoda agregacji jest ustawiana na wartość średnia dla liczb i liczby dla typu danych String. Obsługiwane metody agregacji dla liczbowych typów danych to Average, maksimum, minimum, Count i, sum.  Liczba obsługiwanych metod agregacji dla typu danych string to Count.
 
-  ![Zapytanie analityczne](media/howto-create-analytics/analytics-query.png)
+- **Podziel według:** Kontrolka "dzielenie przez" pomaga grupować dane przy użyciu właściwości urządzenia jako wymiarów. Wartości urządzenia i właściwości chmury są przyłączone wraz z danymi telemetrycznymi jako i gdy są wysyłane przez urządzenie. Jeśli właściwość chmury lub urządzenia została zaktualizowana, dane telemetryczne są pogrupowane według różnych wartości na wykresie.
 
-## <a name="visualizing-your-data"></a>Wizualizacja danych
-
-Po wykonaniu zapytania o dane można rozpocząć wizualizację. Możesz pokazać/ukryć pomiary, zmienić sposób agregowania danych, a następnie podzielić dane na różne właściwości.  
-
-* **Podziel według:** Dzielenie danych według właściwości urządzenia pozwala na dalsze przechodzenie do danych. Można na przykład podzielić wyniki według identyfikatora lub lokalizacji urządzenia.
-
-* **Pomiary:** Możesz wybrać opcję wyświetlania/ukrywania maksymalnie 10 różnych elementów telemetrycznych raportowanych przez urządzenia w danym momencie. Pomiary są takie jak temperatury i wilgotności.
-
-* **Agregacja:** Domyślnie dane są agregowane według średniej, ale można wybrać opcję zmiany agregacji danych na inną, aby odpowiadała potrzebom.
-
-   ![Wizualizacja analizy podzielona przez](media/howto-create-analytics/analytics-splitby.png)
+    > [!TIP]
+    > Aby wyświetlić dane osobno dla każdego urządzenia, wybierz opcję Identyfikator urządzenia w kontrolce "dzielenie przez".
 
 ## <a name="interacting-with-your-data"></a>Korzystanie z danych
 
-Istnieją różne sposoby zmiany wyników zapytania w celu spełnienia wymagań wizualizacji. Można zmienić widok wykresu i widok siatki, powiększyć i wyprowadzić, odświeżyć zestaw danych i zmodyfikować sposób wyświetlania wierszy.
+Po wykonaniu zapytania o dane możesz rozpocząć wizualizację na wykresie liniowym. Możesz pokazać/ukryć telemetrię, zmienić czas trwania, wyświetlić dane telemetryczne w siatce danych.
 
-* **Pokaż siatkę:** Wyniki są dostępne w formacie tabeli, umożliwiając wyświetlanie określonej wartości dla każdego punktu danych. Ten widok jest również zgodny ze standardami dostępności.
-* **Pokaż wykres:** Wyniki są wyświetlane w formacie wiersza ułatwiającym identyfikowanie trendów w górę i w dół oraz anomalii.
+- **Panel edytora czasu:** Domyślnie będziemy pobierać dane z ostatniego dnia. Możesz przeciągnąć dowolny koniec suwaka czasu, aby zmienić czas trwania. Można również użyć kontrolki kalendarza, aby wybrać jeden z wstępnie zdefiniowanych zasobników czasu lub wybrać niestandardowy zakres czasu. Kontrola czasu ma także suwak **rozmiaru interwału** kontrolujący przedział lub rozmiar interwału używany do agregowania danych.
 
-  ![Wyświetlanie widoku siatki dla analizy](media/howto-create-analytics/analytics-showgrid.png)
+    ![Edytor czasu](media/howto-create-analytics/timeeditorpanel.png)
 
-Opcja Powiększ umożliwia zalogowanie się do danych. Jeśli znajdziesz okres, na którym chcesz się skoncentrować w zestawie wyników, Użyj kursora, aby pomieścić obszar, w którym chcesz powiększyć, i użyj dostępnych kontrolek, aby wykonać jedną z następujących czynności:
+    - **Wewnętrzny suwak zakresu dat**: Użyj dwóch kontrolek punktu końcowego, przeciągając je w żądanym przedziale czasu. Ten wewnętrzny zakres dat jest ograniczony przez kontrolkę suwaka zewnętrznego zakresu dat.
+    
+   
+    - **Kontrolka suwaka zewnętrznego zakresu dat**: Użyj kontrolek punktu końcowego, aby wybrać zewnętrzny zakres dat, który będzie dostępny dla wewnętrznej kontroli zakresu dat.
 
-* **Powiększ:** Po wybraniu okresu powiększanie jest włączone i umożliwia powiększanie danych.
-* **Pomniejsz:** Ta kontrolka umożliwia pomniejszenie poziomu z ostatniego powiększenia. Na przykład jeśli powiększasz dane trzykrotnie, Pomniejsz w tym czasie zostanie pożądany jeden krok.
-* **Resetuj powiększenie:** Po wykonaniu różnych poziomów powiększania można użyć kontrolki resetowania powiększenia, aby powrócić do oryginalnego zestawu wyników.
+    - **Zwiększać i zmniejszać przycisków zakresu dat**: zwiększyć lub zmniejszyć czas span, wybierając przycisk albo interwał ma.
 
-  ![Powiększanie danych](media/howto-create-analytics/analytics-zoom.png)
+    - **Suwak rozmiaru interwału**: Użyj go, aby powiększyć i wykroczyć interwały w tym samym przedziale czasu. Ta akcja zapewnia dokładniejszą kontrolę ruchu między wycinkami dużych czasu. Można jej używać do wyświetlania szczegółowych widoków o wysokiej rozdzielczości, nawet do milisekund. Domyślny punkt początkowy suwaka jest ustawiany jako najbardziej optymalny widok danych z zaznaczenia, który równoważy rozdzielczość, szybkość zapytania i stopień szczegółowości.
+    
+    - **Selektor zakresu dat**: za pomocą tego formantu sieci Web można łatwo wybrać odpowiednie zakresy dat i godzin. Kontrolka umożliwia również przełączać się między różnych strefach czasowych. Po wprowadzeniu zmian do zastosowania w bieżącym obszarze roboczym wybierz pozycję Zapisz.
 
-Styl linii można zmienić zgodnie z potrzebami. Dostępne są cztery opcje:
+    > [!TIP]
+    > Rozmiar interwału jest określany dynamicznie na podstawie wybranego przedziału czasu. Mniejsze przedziały czasu umożliwią agregowanie danych do bardzo szczegółowych interwałów wynoszących maksymalnie kilka sekund.
 
-* **Wiersz:** Linia płaska między poszczególnymi punktami danych.
-* **Wygładź:** Linia zakrzywiona między poszczególnymi punktami.
-* **Krok:** Wiersz między każdym punktem na wykresie to krok.
-* **Punktowy:** Wszystkie punkty są kreślone na wykresie bez łączenia się z nimi.
 
-  ![Różne typy linii dostępne w analizie](media/howto-create-analytics/analytics-linetypes.png)
+- **Legenda wykresu:** Legenda wykresu przedstawia wybraną telemetrię na wykresie. Możesz umieścić wskaźnik myszy nad każdym elementem w legendzie, aby ustawić fokus na wykresie. W przypadku korzystania z funkcji "Split by" dane telemetryczne są pogrupowane według odpowiednich wartości wybranego wymiaru. Widoczność poszczególnych danych telemetrycznych lub całej grupy można zmienić, klikając nazwę grupy.  
 
-Na koniec można rozmieścić dane na osi Y, wybierając jeden z trzech trybów:
 
-* **Stos:** Wykres dla każdej miary jest układany, a każdy wykres ma własną oś Y. Wykresy skumulowane są przydatne, gdy zaznaczono wiele pomiarów i chcesz mieć odrębny widok tych pomiarów.
-* **Nieskumulowany:** Wykres dla każdej miary jest wykreślany na jedną oś Y, ale wartości osi Y są zmieniane na podstawie wyróżnionej miary. Wykresy nieskumulowane są przydatne, gdy chcesz nałożyć wiele miar i chcieć zobaczyć wzorce dla tych miar dla tego samego zakresu czasu.
-* **Współdzielona oś Y:** Wszystkie wykresy mają tę samą oś Y i wartości osi nie zmieniają się. Udostępnione wykresy osi Y są przydatne, gdy chcesz przyjrzeć się pojedynczej mierze w trakcie dzielenia danych na podzielone przez.
+- **Kontrolka formatu osi y:** tryb osi y jest przełączany przez dostępne opcje widoku osi y. Ten formant jest dostępny tylko wtedy, gdy różne telemetrii są wizualizowane. Oś y można ustawić, wybierając jeden z trzech trybów:
 
-  ![Rozmieszczanie danych na osi y z różnymi trybami wizualizacji](media/howto-create-analytics/analytics-yaxis.png)
+    - **Stos:** Wykres dla każdej telemetrii jest układany, a każdy wykres ma własną oś y. Ten tryb jest ustawiony jako domyślny.
+    - **Udostępnione:** Wykres dla każdej telemetrii jest wykreślany na tej samej osi y.
+    - **Nakładanie się:** Służy do układania wielu linii na tej samej osi y, przy czym dane osi y zmieniają się w oparciu o wybrany wiersz.
 
-## <a name="next-steps"></a>Następne kroki
+  ![Rozmieszczanie danych na osi y z różnymi trybami wizualizacji](media/howto-create-analytics/yaxiscontrol.png)
 
-Teraz, gdy wiesz już, jak utworzyć niestandardową analizę dla aplikacji IoT Central platformy Azure, w tym miejscu zalecanym następnym krokiem jest:
+- **Kontrolka powiększenia:** Opcja Powiększ umożliwia przechodzenie do szczegółów danych. Jeśli znajdziesz okres, na którym chcesz się skoncentrować w zestawie wyników, użyj wskaźnika myszy, aby uzyskać obszar, a następnie przeciągnij go do wybranego punktu końcowego. Następnie kliknij prawym przyciskiem myszy wybrany obszar i kliknij polecenie Powiększ.
 
-> [!div class="nextstepaction"]
-> [Przygotowywanie i łączenie aplikacji node. js](howto-connect-nodejs.md)
+  ![Powiększ dane](media/howto-create-analytics/zoom.png)
+
+W obszarze wielokropka istnieje więcej kontrolek wykresu do współpracy z danymi.
+
+- **Wyświetl siatkę:** Wyniki są dostępne w formacie tabeli, umożliwiając wyświetlanie określonej wartości dla każdego punktu danych.
+
+- **Upuść znacznik:** Kontrolka "Drop marker" umożliwia zakotwiczenie określonych punktów danych na wykresie. Jest to przydatne, gdy próbujesz porównać dane dla wielu wierszy w różnych okresach czasu.
+
+  ![Wyświetlanie widoku siatki dla analizy](media/howto-create-analytics/additionalchartcontrols.png)

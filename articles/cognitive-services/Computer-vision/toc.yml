@@ -135,8 +135,6 @@
         - name: Korzystanie z wystąpień kontenerów
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
-    - name: Korzystanie z usługi połączonej przetwarzania obrazów
-      href: vs-computer-vision-connected-service.md
     - name: Analizowanie klipów wideo w czasie rzeczywistym
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Dokumentacja
@@ -165,7 +163,7 @@
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable'
 - name: Zasoby
   items:
-    - name: Przykłady
+    - name: Samples
       items:
         - name: Zapoznanie z aplikacją do przetwarzania obrazów
           href: Tutorials/CSharpTutorial.md

@@ -1,27 +1,27 @@
 ---
-title: Zarządzanie uprawnieniami aplikacji z poziomu portalu My Apps (wersja zapoznawcza) — Azure Active Directory | Microsoft Docs
-description: Dowiedz się, jak zarządzać uprawnieniami aplikacji opartymi na chmurze dla aplikacji w portalu My Apps (wersja zapoznawcza).
+title: Zarządzanie uprawnieniami aplikacji z poziomu portalu Moje aplikacje — Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak zarządzać uprawnieniami aplikacji dla aplikacji w chmurze w organizacji z poziomu portalu Moje aplikacje.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: kasimpso
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705058"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022413"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>Edytuj lub Odwołaj uprawnienia aplikacji w portalu My Apps (wersja zapoznawcza)
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Edytowanie lub Odwoływanie uprawnień aplikacji w portalu Moje aplikacje
 
-Gdy korzystasz z aplikacji w organizacji w portalu **My Apps** (wersja zapoznawcza), często udzielasz uprawnień i zapisujesz informacje o koncie. Aby zapewnić bezpieczeństwo danych, warto przejrzeć i odwołać uprawnienia lub wyczyścić zapisane poświadczenia konta. Usunięcie uprawnień lub kont może spowodować uszkodzenie niektórych funkcji aplikacji. Jeśli masz problemy po usunięciu uprawnień lub kont, skontaktuj się z pomocą techniczną w organizacji w celu uzyskania dodatkowej pomocy.
+W przypadku korzystania z aplikacji w organizacji w portalu **Moje aplikacje** często udzielasz uprawnień i zapisujesz informacje o koncie. Aby zapewnić bezpieczeństwo danych, warto przejrzeć i odwołać uprawnienia lub wyczyścić zapisane poświadczenia konta. Usunięcie uprawnień lub kont może spowodować uszkodzenie niektórych funkcji aplikacji. Jeśli masz problemy po usunięciu uprawnień lub kont, skontaktuj się z pomocą techniczną w organizacji w celu uzyskania dodatkowej pomocy.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -46,11 +46,11 @@ Dolna część okna uprawnień zawiera informacje o tym, co Twój administrator 
 
 Po zarządzaniu uprawnieniami aplikacji i zapisanymi kontami w portalu **Moje aplikacje** można:
 
-- Organizuj aplikacje w różnych kategoriach utworzonych i udostępnianych przez organizację. Aby uzyskać więcej informacji, zobacz temat [dostęp i używanie obszarów roboczych w portalu My Apps (wersja zapoznawcza)](my-applications-portal-workspaces.md).
+- Organizuj aplikacje w różnych kategoriach utworzonych i udostępnianych przez organizację. Aby uzyskać więcej informacji, zobacz [dostęp i Używanie kolekcji w portalu My Apps](my-applications-portal-workspaces.md).
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 
-- [Aktualizowanie informacji o profilu i koncie](my-account-portal-overview.md). Instrukcje dotyczące aktualizowania danych osobowych, które są wyświetlane w portalu **My profile** (wersja zapoznawcza).
+- [Aktualizowanie informacji o profilu i koncie](my-account-portal-overview.md). Instrukcje dotyczące aktualizowania danych osobowych, które są wyświetlane w portalu **My profile** .
 
 - [Zarządzanie organizacjami](my-account-portal-organizations-page.md). Instrukcje dotyczące wyświetlania informacji związanych z organizacją i zarządzania nimi na stronie **organizacje** portalu **My profile** .
 

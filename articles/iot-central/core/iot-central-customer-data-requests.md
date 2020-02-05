@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 27cd2e58eabcd96414391cac1a517ea242a65c21
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3cf88b4d3c4c74493235d2997db4d464bb055b81
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809805"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023756"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 
@@ -36,8 +36,6 @@ W przypadku korzystania z usług Microsoft Enterprise Services firma Microsoft g
 Możliwość usuwania danych użytkownika jest dostępna tylko za pomocą strony Administracja IoT Central. Administratorzy aplikacji mogą wybrać użytkownika, który ma zostać usunięty, a następnie wybrać pozycję **Usuń** w prawym górnym rogu aplikacji, aby usunąć rekord. Administratorzy aplikacji mogą również usunąć pojedyncze konta, które nie są już skojarzone z daną aplikacją.
 
 Po usunięciu użytkownika żadne dalsze alerty nie będą wysyłane do nich pocztą e-mail. Jednak ich adresy e-mail muszą zostać usunięte osobno z każdego skonfigurowanego alertu.
-
-Aby uzyskać więcej informacji, zobacz [Konfigurowanie reguł i akcji dla urządzenia](tutorial-configure-rules.md).
 
 ## <a name="exporting-customer-data"></a>Eksportowanie danych klienta
 

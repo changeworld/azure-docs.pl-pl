@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457414"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022396"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurowanie zaawansowanej ochrony przed zagrożeniami dla usługi Azure Storage
 
@@ -29,7 +29,7 @@ Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage umożliwia po
 
 ## <a name="set-up-advanced-threat-protection"></a>Skonfiguruj zaawansowaną ochronę przed zagrożeniami
 
-Zaawansowana ochrona przed zagrożeniami jest domyślnie włączona dla konta magazynu. Można skonfigurować zaawansowaną ochronę przed zagrożeniami na kilka sposobów, które opisano w poniższych sekcjach.
+Można skonfigurować zaawansowaną ochronę przed zagrożeniami na kilka sposobów, które opisano w poniższych sekcjach.
 
 ### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 

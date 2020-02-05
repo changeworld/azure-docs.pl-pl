@@ -99,10 +99,8 @@
           href: ea-portal-rest-apis.md
         - name: Wystąpienia zarezerwowane maszyn wirtualnych z umowami EA platformy Azure
           href: ea-portal-vm-reservations.md
-        - name: Rozwiązywanie problemów z dostępem do portalu umowy Enterprise Agreement platformy Azure
+        - name: Rozwiązywanie problemów z dostępem do portalu Umowy Enterprise platformy Azure
           href: ea-portal-troubleshoot.md
-        - name: Zadania umowy EA w umowie klienta firmy Microsoft
-          href: mca-enterprise-operations.md
 - name: Rozwiązywanie problemów
   items:
     - name: Nie odnaleziono żadnych subskrypcji

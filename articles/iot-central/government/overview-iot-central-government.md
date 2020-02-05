@@ -7,22 +7,22 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a862a221f9fe2db5448473bddcca2a9932716e0e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 159691ee101e586419d2fd8df314947af28219dd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464080"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016514"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Tworzenie rozwiązań dla instytucji rządowych za pomocą usługi Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Zacznij korzystać z tworzenia rozwiązań w języku Smart City przy użyciu szablonów aplikacji platformy Azure IoT Central. Zacznij teraz od **monitorowania jakości wody**, **monitorowania zużycia wody**i **zarządzania odpadami**.
+
+Rozpocznij pracę z tworzeniem rozwiązań w postaci przyjaznego miasta przy użyciu szablonów aplikacji IoT Central platformy Azure. Zacznij teraz od **monitorowania jakości wody**, **monitorowania zużycia wody**i **zarządzania odpadami**.
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>Co to jest szablon aplikacji do monitorowania jakości wody?   
 
-Tradycyjne monitorowanie jakości wody polega na ręcznych technikach próbkowania i analizie laboratorium pól, co jest czasochłonne i kosztowne. Dzięki zdalnemu monitorowaniu jakości wody w czasie rzeczywistym problemy z jakością wody mogą być zarządzane przed wpływem obywateli. Ponadto dzięki zaawansowanej analizie, narzędziom wodnym i agencjom środowiskowym mogą działać wczesne ostrzeżenia o potencjalnych problemach z jakością wody oraz planować z wyprzedzeniem.  
+Tradycyjne monitorowanie jakości wody polega na ręcznych technikach próbkowania i analizie laboratorium pól, co jest czasochłonne i kosztowne. Przez zdalne monitorowanie jakości wody w czasie rzeczywistym problemy z jakością wody mogą być zarządzane przed wpływem obywateli. Ponadto dzięki zaawansowanej analizie, narzędziom wodnym i agencjom środowiskowym mogą działać wczesne ostrzeżenia o potencjalnych problemach z jakością wody oraz planować z wyprzedzeniem.  
 
 Aplikacja do monitorowania jakości wody to IoT Central szablon aplikacji, który ułatwia Stwórz opracowywanie rozwiązań IoT i umożliwia narzędziom wodnym cyfrowe monitorowanie jakości wody w inteligentnych miastach. 
 
@@ -40,7 +40,7 @@ Rozpocznij pracę z [samouczkiem dotyczącym monitorowania jakości wody](./tuto
 
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>Co to jest szablon aplikacji do monitorowania zużycia wody? 
 
-Tradycyjne śledzenie zużycia wody polega na ręcznym odczytywaniu liczników zużycia wody w lokacjach miernika. Więcej miast zastępuje tradycyjne liczniki z zaawansowanymi inteligentnymi miernikami umożliwiającą zdalne monitorowanie zużycia oraz zdalne kontrolowanie zaworów w celu sterowania przepływem wody. Monitorowanie zużycia wody połączone z cyfrowymi wiadomościami zwrotnymi dla obywateli może zwiększyć świadomość i zmniejszyć zużycie wody. 
+Tradycyjne śledzenie zużycia wody polega na ręcznym odczytywaniu liczników zużycia wody w lokacjach miernika. Więcej miast zastępuje tradycyjne liczniki z zaawansowanymi inteligentnymi miernikami umożliwiającą zdalne monitorowanie zużycia i zdalne sterowanie zaworami w celu kontrolowania przepływu wody. Monitorowanie zużycia wody połączone z cyfrowymi wiadomościami zwrotnymi dla obywateli może zwiększyć świadomość i zmniejszyć zużycie wody. 
 
 
 Aplikacja do monitorowania zużycia wody to szablon aplikacji IoT Central, który ułatwia Stwórz opracowywanie rozwiązań IoT, aby umożliwić narzędziom i miastachom wodnym zdalne monitorowanie i sterowanie przepływem wody w celu ograniczenia zużycia. 

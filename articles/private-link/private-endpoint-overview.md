@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 27b430ca6e90eba933662bd35d8d97b08234c84e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: cbb5882950636e281d311bf0536acf5b92cf11ea
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989029"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018605"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -61,6 +61,7 @@ Zasób link prywatny jest docelowym miejscem docelowym danego prywatnego punktu 
 |**Azure Database for PostgreSQL — pojedynczy serwer** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | Mójserwersql |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
+|**Usługa Azure Key Vault** | Microsoft.KeyVault/vaults    | magazyn |
  
 ## <a name="network-security-of-private-endpoints"></a>Zabezpieczenia sieciowe prywatnych punktów końcowych 
 Gdy korzystasz z prywatnych punktów końcowych dla usług platformy Azure, ruch jest zabezpieczony do określonego zasobu linku prywatnego. Platforma wykonuje kontrolę dostępu, aby sprawdzić poprawność połączeń sieciowych tylko do określonego zasobu linku prywatnego. Aby uzyskać dostęp do dodatkowych zasobów w ramach tej samej usługi platformy Azure, wymagane są dodatkowe prywatne punkty końcowe. 
@@ -118,6 +119,7 @@ W przypadku usług platformy Azure Użyj zalecanych nazw stref, zgodnie z opisem
 |Azure Database for PostgreSQL — pojedynczy serwer (Microsoft. DBforPostgreSQL/serwery)|postgresqlServer|privatelink.postgres.database.azure.com|
 |Azure Database for MySQL (Microsoft. DBforMySQL/serwery)|Mójserwersql|privatelink.mysql.database.azure.com|
 |Azure Database for MariaDB (Microsoft. DBforMariaDB/serwery)|mariadbServer|privatelink.mariadb.database.azure.com|
+|Azure Key Vault (magazyn/magazyny Microsoft. kluczy)|magazyn|privatelink.vaultcore.azure.net|
  
 Platforma Azure utworzy rekord DNS o nazwie kanonicznej (CNAME) w publicznym systemie DNS, aby przekierować rozwiązanie do sugerowanych nazw domen. Możliwe będzie przesłonięcie rozwiązania przy użyciu prywatnego adresu IP prywatnych punktów końcowych. 
  

@@ -9,16 +9,16 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 728c5dcbf94e030e860a222add6498824c66930d
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615401"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022124"
 ---
 # <a name="in-store-analytics-architecture"></a>Architektura analizy w sklepie
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Rozwiązania do analizy w sklepie umożliwiają monitorowanie różnych warunków w środowisku magazynu detalicznego. Te rozwiązania można skompilować przy użyciu jednego z szablonów aplikacji w ramach IoT Central i architektury poniżej jako wskazówki.
 
@@ -35,7 +35,7 @@ Przyjrzyjmy się kluczowym składnikom, które zwykle odgrywają część w rozw
 
 ## <a name="condition-monitoring-sensors"></a>Czujniki monitorowania warunku
 
-Rozwiązanie IoT rozpoczyna się od zestawu czujników przechwytywania znaczących sygnałów z w środowisku magazynu detalicznego. Jest to odzwierciedlone przez wiele czujników z lewej strony diagramu architektury powyżej.
+Rozwiązanie IoT rozpoczyna się od zestawu czujników przechwytywania znaczących sygnałów z w środowisku magazynu detalicznego. Jest to odzwierciedlone przez różne rodzaje czujników z lewej strony diagramu architektury powyżej.
 
 ## <a name="gateway-devices"></a>Urządzenia bramy
 
@@ -43,7 +43,7 @@ Wiele czujników IoT może strumieniowo pokazywać surowe sygnały bezpośrednio
 
 ## <a name="iot-central-application"></a>Aplikacja IoT Central
 
-Aplikacja Azure IoT Central pobiera dane z różnych czujników IoT jako urządzeń bramy w środowisku ze sklepu detalicznego i generuje zestaw istotnych informacji.
+Aplikacja platformy Azure IoT Central pozyskiwanie danych z różnych rodzajów czujników IoT jako urządzeń z bramą w sklepie detalicznym oraz generowanie zestawu istotnych informacji.
 
 Usługa Azure IoT Central zapewnia również dostosowane środowisko operatora magazynu umożliwiające im zdalne monitorowanie urządzeń infrastruktury i zarządzanie nimi.
 
@@ -51,8 +51,8 @@ Usługa Azure IoT Central zapewnia również dostosowane środowisko operatora m
 Aplikację IoT Central platformy Azure w ramach rozwiązania można skonfigurować do eksportowania nieprzetworzonych lub zagregowanych informacji do zestawu usługi Azure PaaS (platformy jako usługi), które umożliwiają manipulowanie danymi i wzbogacają te informacje przed przekazaniem ich do firmy Aplikacja. 
 
 ## <a name="business-application"></a>Aplikacja biznesowa
-Dane IoT mogą służyć do zarządzania różnymi aplikacjami biznesowymi wdrożonymi w środowisku handlu detalicznego. Menedżer sklepu detalicznego lub członek personelu może wykorzystać te aplikacje do wizualizacji szczegółowych informacji o firmie i podjęcia znaczących działań w czasie rzeczywistym. Aby dowiedzieć się, jak utworzyć pulpit nawigacyjny Power BI w czasie rzeczywistym dla Twojego zespołu sprzedaży detalicznej, postępuj zgodnie z [samouczkiem](./tutorial-in-store-analytics-create-app-pnp.md).
+Dane IoT mogą służyć do zarządzania różnymi rodzajami aplikacji firmowych wdrożonymi w środowisku handlu detalicznego. Menedżer sklepu detalicznego lub członek personelu może używać tych aplikacji do wizualizacji szczegółowych informacji o firmie i wykonywania znaczących działań w czasie rzeczywistym. Aby dowiedzieć się, jak utworzyć pulpit nawigacyjny Power BI w czasie rzeczywistym dla Twojego zespołu sprzedaży detalicznej, postępuj zgodnie z [samouczkiem](./tutorial-in-store-analytics-create-app-pnp.md).
 
 ## <a name="next-steps"></a>Następne kroki
 * Rozpocznij pracę z szablonami aplikacji do [wyewidencjonowania analizy w sklepie](https://aka.ms/checkouttemplate) oraz [monitorowania w sklepie](https://aka.ms/conditiontemplate) . 
-* Zapoznaj się z [samouczkiem kompleksowym](https://aka.ms/storeanalytics-tutorial) , który przeprowadzi Cię przez proces tworzenia rozwiązania wykorzystującego jeden z szablonów aplikacji do analizy w sklepie.
+* Zapoznaj się z [samouczkiem kompleksowym](https://aka.ms/storeanalytics-tutorial) , który przeprowadzi Cię przez proces tworzenia rozwiązania przy użyciu jednego z szablonów aplikacji do analizy w sklepie.

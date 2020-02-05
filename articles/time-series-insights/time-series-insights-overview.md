@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 12/11/2019
+ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: c068e33bc7844c464bc8a289387990128d96dd35
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a938dc69b2b0401a062b1db314d71100b4fbbc4f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861799"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024385"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co to jest usługa Azure Time Series Insights?
 
@@ -84,7 +84,7 @@ Aby rozpocząć, wykonaj następujące kroki.
 1. Przekaż dane referencyjne. To nie jest dodatkowa usługa.
 1. Przejrzyj i Wyświetl dane w kilka minut za pomocą Eksploratora Time Series Insights.
 
-## <a name="explorer"></a>Eksplorator
+## <a name="explorer"></a>Programie
 
 Wyświetlaj, analizuj i odnajduj trendy w danych przy użyciu Eksploratora Azure Time Series Insights.
 

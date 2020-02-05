@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b13349ae4293f6377429e9dc72b6c2cb43f92348
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35965f238ed5b7768dd174788453838c917adb32
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435128"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023229"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurowanie pulpitu nawigacyjnego aplikacji
 
@@ -48,7 +48,6 @@ Teraz po wyświetleniu domyślnego pulpitu nawigacyjnego aplikacji przez operato
 > [!div class="mx-imgBorder"]
 > ![kartę "pulpit nawigacyjny" z wyświetlanymi ustawieniami i właściwościami kafelka](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
 
-
 ## <a name="edit-tiles"></a>Edytuj kafelki
 
 Aby edytować kafelek na pulpicie nawigacyjnym, najpierw kliknij pozycję **Edytuj** w lewym górnym rogu strony, co spowoduje otwarcie trybu edycji pulpitu nawigacyjnego i wszystkich jego kafelków. 
@@ -70,7 +69,7 @@ Wizualizację wykresu można także zmienić, klikając ikonę **linijki** na ka
 
 Poniższa tabela zawiera podsumowanie użycia kafelków w usłudze Azure IoT Central:
  
-| Tile | Pulpit nawigacyjny | Opis
+| Tabliczek | Pulpit nawigacyjny | Opis
 | ----------- | ------- | ------- |
 | Zawartość | Pulpity nawigacyjne aplikacji i urządzeń |Kafelki obsługiwane przez promocji są kafelkami, które wyświetlają tekst nagłówka i opisu. Możesz również użyć tego kafelka jako kafelka linku, aby umożliwić użytkownikowi nawigację do adresu URL związanego z Twoją aplikacją.|
 | Obraz | Pulpity nawigacyjne aplikacji i urządzeń |Kafelki obrazu wyświetlają obraz niestandardowy i można go kliknąć. Za pomocą kafelka obrazu Dodaj grafikę do pulpitu nawigacyjnego i opcjonalnie Zezwól użytkownikowi na przejście do adresu URL istotnego dla aplikacji.|
@@ -87,4 +86,4 @@ Poniższa tabela zawiera podsumowanie użycia kafelków w usłudze Azure IoT Cen
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy już wiesz, jak skonfigurować pulpit nawigacyjny domyślnego aplikacji platformy Azure IoT Central, możesz [dowiedzieć się, jak przygotować i przekazać obrazy](howto-prepare-images.md).
+Teraz, gdy już wiesz, jak skonfigurować pulpit nawigacyjny domyślnego aplikacji platformy Azure IoT Central, możesz [dowiedzieć się, jak utworzyć osobisty pulpit nawigacyjny](howto-create-personal-dashboards.md).

@@ -40,7 +40,7 @@
   items:
     - name: Tworzenie jednostronicowej aplikacji internetowej
       href: tutorial-bing-news-search-single-page-app.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
@@ -56,10 +56,6 @@
       href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Uaktualnienie z wersji v5 do wersji v7 interfejsu API
       href: bing-news-upgrade-guide-v5-to-v7.md
-    - name: Praca z programem Visual Studio
-      items:
-        - name: Korzystanie z usługi połączonej wyszukiwania wiadomości Bing
-          href: vs-bing-news-search-connected-service.md
 - name: Pojęcia
   items:
     - name: Wysyłanie zapytań wyszukiwania

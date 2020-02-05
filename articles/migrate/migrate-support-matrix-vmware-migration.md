@@ -3,12 +3,12 @@ title: Obsługa migracji oprogramowania VMware w Azure Migrate
 description: Dowiedz się więcej o obsłudze migracji maszyn wirtualnych VMware w Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901541"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77013998"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Macierz obsługi migracji VMware
 
@@ -123,7 +123,7 @@ Po skonfigurowaniu urządzenia do replikacji przy użyciu szablonu komórki jajo
 
 - Dowiedz się więcej o [wymaganiach dotyczących urządzeń replikacji](migrate-replication-appliance.md#appliance-requirements) dla programu VMware.
 - Na urządzeniu musi być zainstalowany pakiet MySQL. Dowiedz się więcej o [opcjach instalacji](migrate-replication-appliance.md#mysql-installation).
-- Informacje o [adresach URL](migrate-replication-appliance.md#url-access) i [portach]() , do których urządzenie replikacji musi uzyskać dostęp.
+- Informacje o [adresach URL](migrate-replication-appliance.md#url-access) i [portach](migrate-replication-appliance.md#port-access) , do których urządzenie replikacji musi uzyskać dostęp.
 
 ## <a name="agent-based-ports"></a>Porty oparte na agentach
 

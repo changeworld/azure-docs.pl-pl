@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910432"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025439"
 ---
 # <a name="localization-support-in-azure-maps"></a>Obsługa lokalizacji w Azure Maps
 
@@ -52,7 +52,7 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | fi-FI      | Fiński                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-FR      | Francuski                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | fr-CA      | Francuski (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
-| gl-ES      | Galicyjski               |       |    ✓   |         |         |                   |                |
+| GL — ES      | Galicyjski               |       |    ✓   |         |         |                   |                |
 | de-DE.      | Niemiecki                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Grecki                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
 | gu      | Gujarati                |       |       |         |     ✓    |                   |                |
@@ -67,7 +67,7 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | kk-KZ      | Kazachski                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Koreański                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | es-419     | Łaciński (Ameryka Łacińska) |       |    ✓   |         |         |                   |                |
-| lv-LV      | Łotewski                |       |    ✓   |         |     ✓    |         ✓         |                |
+| LV — LV      | Łotewski                |       |    ✓   |         |     ✓    |         ✓         |                |
 | lt-LT      | Litewski             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | mk — MK      | Macedonii             |       |       |         |     ✓    |                   |                |
 | ms-MY      | Malajski (łaciński)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
@@ -82,7 +82,7 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | RO RO      | Rumuński               |       |    ✓    |         |     ✓    |         ✓         |                |
 | ru-RU      | Rosyjski                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | sr-Cyrl-RS | Serbski (Cyrylica)     |       |   Wirtualizacja SR-RS  |         |    Wirtualizacja SR-RS     |                   |                |
-| sr-Latn-RS | Serbski (łaciński)        |       |       |         |     Wirtualizacja sr-latn    |                   |                |
+| sr-latn-RS | Serbski (łaciński)        |       |       |         |     Wirtualizacja sr-latn    |                   |                |
 | sk-SK      | Słowacki             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | sl-SL      | Słoweński              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
 | es-ES      | Hiszpański                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -101,13 +101,15 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 ## <a name="azure-maps-supported-views"></a>Azure Maps obsługiwane widoki
 
 > [!Note]
-> Azure Maps zostało wydane w następujących krajach/regionach 1 sierpnia 2019:
+> 1 sierpnia 2019 Azure Maps zostało wydane w następujących krajach/regionach:
 >  * Argentyna
 >  * Indie
 >  * Maroko
 >  * Pakistan
 >
-> Po 1 sierpnia 2019 ustawienie parametru **widoku** spowoduje zdefiniowanie zwróconej zawartości mapy dla nowych regionów/krajów wymienionych powyżej. Zachęcamy do upewnienia się, że skonfigurowano parametr View jako wymagany dla interfejsów API REST i zestawów SDK używanych przez używane usługi.
+> Po 1 sierpnia 2019 parametr **widoku** określi zawartość zamapowanej mapy dla nowych regionów/krajów wymienionych powyżej. Parametr **widoku** Azure Maps (określany również jako "parametr regionu użytkownika") to dwuliterowy kod kraju ISO-3166, który będzie pokazywał poprawne mapy dla danego kraju/regionu, określając, który zestaw geopoznawczych treści jest zwracany przez usługi Azure Maps, w tym obramowania i etykiety wyświetlane na mapie. 
+
+Upewnij się, że skonfigurowano parametr **View** wymagany dla interfejsów API REST i zestawów SDK używanych przez usługi.
 >  
 >
 >  **Interfejsy API REST:**
@@ -135,15 +137,12 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 >    
 >  **Zestawy**
 >
->  Upewnij się, że skonfigurowano parametr View zgodnie z wymaganiami i masz najnowszą wersję zestawu Web SDK i Android SDK. Uwzględnione zestawy SDK:
+>  Upewnij się, że skonfigurowano parametr **View** zgodnie z wymaganiami i masz najnowszą wersję zestawu Web SDK i Android SDK. Uwzględnione zestawy SDK:
 >
 >    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-
-Parametr **widoku** Azure Maps (określany również jako "parametr regionu użytkownika") to dwuliterowy kod kraju ISO-3166, który będzie pokazywał poprawne mapy dla danego kraju/regionu, określając, który zestaw geopoznawczych treści jest zwracany przez usługi Azure Maps, w tym obramowania i etykiety wyświetlane na mapie. 
-
-Domyślnie parametr widoku jest ustawiony na **ujednolicony**, nawet jeśli nie został zdefiniowany w żądaniu. Jest odpowiedzialny za określenie lokalizacji użytkowników, a następnie ustawienie parametru widoku dla tej lokalizacji. Alternatywnie możesz ustawić opcję "View = Auto", która zwróci dane mapy na podstawie adresu IP żądania.  Parametr widoku w Azure Maps musi być używany zgodnie z obowiązującymi przepisami, włącznie z tymi, które dotyczą mapowania kraju, w którym są dostępne mapy, obrazy i inne dane oraz zawartość innych firm, do których uzyskuje się dostęp za pośrednictwem Azure Maps.
+Domyślnie parametr widoku jest ustawiony na **ujednolicony**, nawet jeśli nie został zdefiniowany w żądaniu. Określ lokalizację użytkowników, a następnie ustaw dla tej lokalizacji parametr **widoku** . Alternatywnie można ustawić wartość "View = Auto", która zwróci dane mapy na podstawie adresu IP żądania.  Parametr **widoku** w Azure Maps musi być używany zgodnie z obowiązującymi przepisami, łącznie z tymi prawami dotyczącymi mapowania kraju, w którym są udostępniane mapy, obrazy i inne dane oraz zawartość innych firm, do których użytkownik jest uprawniony do dostępu za pośrednictwem Azure Maps.
 
 
 W poniższej tabeli przedstawiono obsługiwane widoki.

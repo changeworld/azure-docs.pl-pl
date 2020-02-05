@@ -1,10 +1,10 @@
 ---
-title: Równoległe Uruchamianie zadań w celu optymalizowania zasobów obliczeniowych — Azure Batch
-description: Zwiększenie wydajności i obniżenie kosztów dzięki użyciu mniejszej liczby węzłów obliczeniowych i uruchamiania współbieżnych zadań w każdym węźle w puli Azure Batch
+title: Run tasks in parallel to optimize compute resources - Azure Batch
+description: Increase efficiency and lower costs by using fewer compute nodes and running concurrent tasks on each node in an Azure Batch pool
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
 ms.service: batch
@@ -12,22 +12,22 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/17/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1ee0db85818349938fcf5248e10e5eaac546bae5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5465771cb97ef9d8d5c451a6bafc61c4621d3c4b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930453"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023637"
 ---
-# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Uruchom zadania współbieżnie, aby zmaksymalizować użycie węzłów obliczeniowych wsadowych 
+# <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Run tasks concurrently to maximize usage of Batch compute nodes 
 
-Uruchamiając więcej niż jedno zadanie jednocześnie w każdym węźle obliczeniowym w puli Azure Batch, można zmaksymalizować użycie zasobów na mniejszej liczbie węzłów w puli. W przypadku niektórych obciążeń może to spowodować skrócenie czasu zadania i obniżenie kosztów.
+By running more than one task simultaneously on each compute node in your Azure Batch pool, you can maximize resource usage on a smaller number of nodes in the pool. For some workloads, this can result in shorter job times and lower cost.
 
-Chociaż niektóre scenariusze korzystają z przydzielenia wszystkich zasobów węzła do jednego zadania, niektóre sytuacje mogą korzystać z umożliwienia wielu zadań współdzielenia tych zasobów:
+While some scenarios benefit from dedicating all of a node's resources to a single task, several situations benefit from allowing multiple tasks to share those resources:
 
-* **Minimalizowanie transferu danych** , gdy zadania mogą udostępniać dane. W tym scenariuszu można znacznie zmniejszyć opłaty za transfer danych przez skopiowanie danych udostępnionych na mniejszą liczbę węzłów i wykonywanie zadań równolegle na każdym węźle. W szczególności ma to zastosowanie, jeśli dane, które mają być skopiowane do każdego węzła, muszą być transferowane między regionami geograficznymi.
+* **Minimizing data transfer** when tasks are able to share data. In this scenario, you can dramatically reduce data transfer charges by copying shared data to a smaller number of nodes and executing tasks in parallel on each node. This especially applies if the data to be copied to each node must be transferred between geographic regions.
 * **Maksymalizowanie użycia pamięci** , gdy zadania wymagają dużej ilości pamięci, ale tylko w krótkich okresach czasu i w zmiennym czasie wykonywania. Możesz użyć mniej, ale większych węzłów obliczeniowych z większą ilością pamięci, aby efektywnie obsłużyć takie skoki. Te węzły mają równolegle uruchomione wiele zadań w każdym węźle, ale każde zadanie będzie korzystać z plentiful pamięci węzłów w różnych godzinach.
 * **Ograniczenie liczby węzłów** w przypadku, gdy komunikacja między węzłami jest wymagana w ramach puli. Obecnie pule skonfigurowane pod kątem komunikacji między węzłami są ograniczone do 50 węzłów obliczeniowych. Jeśli każdy węzeł w takiej puli ma możliwość równoległego wykonywania zadań, można jednocześnie wykonać większą liczbę zadań.
 * **Replikacja lokalnego klastra obliczeniowego**, na przykład podczas pierwszego przenoszenia środowiska obliczeniowego na platformę Azure. Jeśli bieżące rozwiązanie lokalne wykonuje wiele zadań w każdym węźle obliczeniowym, można zwiększyć maksymalną liczbę zadań węzłów, aby dokładniej zdublować tę konfigurację.

@@ -11,20 +11,19 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: fea3440dd7c017b85d6fffa2ec0fe5d26cd98b97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702685"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022175"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Samouczek: Dostosowywanie pulpitu nawigacyjnego operatora i zarządzanie urządzeniami w usłudze Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-W tym samouczku pokazano, jak można użyć konstruktora, jak dostosować pulpit nawigacyjny operatora w aplikacji do analizy w Sklepie Azure IoT Central. Operatorzy aplikacji mogą korzystać z dostosowanego pulpitu nawigacyjnego, aby uruchamiać aplikację i zarządzać dołączonymi urządzeniami.
+W tym samouczku jako konstruktora dowiesz się, jak dostosować pulpit nawigacyjny operatora w aplikacji do analizy w Sklepie Azure IoT Central. Operatorzy aplikacji mogą korzystać z dostosowanego pulpitu nawigacyjnego, aby uruchamiać aplikację i zarządzać dołączonymi urządzeniami.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Zmień nazwę pulpitu nawigacyjnego
 > * Dostosowywanie kafelków obrazów na pulpicie nawigacyjnym
@@ -35,12 +34,12 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem pracy z tym samouczkiem, Konstruktor powinien zakończyć pracę z pierwszym samouczkiem, aby utworzyć aplikację analityczną usługi Azure IoT Central w sklepie i dodać urządzenia:
+Konstruktor powinien ukończyć ten samouczek, aby utworzyć aplikację analityczną w Sklepie Azure IoT Central i dodać urządzenia:
 
 * [Tworzenie aplikacji analizy w sklepie na platformie Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) (wymagane)
 
 ## <a name="change-the-dashboard-name"></a>Zmień nazwę pulpitu nawigacyjnego
-Aby dostosować pulpit nawigacyjny operatora, edytuj domyślny pulpit nawigacyjny w aplikacji. Opcjonalnie możesz utworzyć dodatkowe nowe pulpity nawigacyjne. Pierwszym krokiem dostosowania pulpitu nawigacyjnego w aplikacji jest zmiana nazwy.
+Aby dostosować pulpit nawigacyjny operatora, należy edytować domyślny pulpit nawigacyjny w aplikacji. Ponadto można tworzyć dodatkowe nowe pulpity nawigacyjne. Pierwszym krokiem dostosowania pulpitu nawigacyjnego w aplikacji jest zmiana nazwy.
 
 1. Przejdź do witryny sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) .
 
@@ -54,7 +53,7 @@ Aby dostosować pulpit nawigacyjny operatora, edytuj domyślny pulpit nawigacyjn
 
 1. Wprowadź przyjazną nazwę pulpitu nawigacyjnego w polu **Nazwa pulpitu nawigacyjnego.** W tym samouczku jest stosowana fikcyjna firma o nazwie contoso, a Przykładowa nazwa pulpitu nawigacyjnego to *contoso Dashboard*. 
 
-1. Wybierz pozycję **Zapisz**. Spowoduje to zapisanie zmian na pulpicie nawigacyjnym i wyłączenie trybu edycji.
+1. Wybierz pozycję **Zapisz**. Zmiany są zapisywane na pulpicie nawigacyjnym, a tryb edycji jest wyłączony.
 
     ![Nazwa pulpitu nawigacyjnego zmiany IoT Central platformy Azure](./media/tutorial-in-store-analytics-customize-dashboard-pnp/dashboard-change-name.png)
 
@@ -185,7 +184,7 @@ Aby edytować kafelek **ruch** dotyczący osób, aby wyświetlić dane telemetry
 
 1. W polu **Telemetria** wybierz **liczbę 1**, **liczbę 2**i **liczbę 3**. 
 
-1. Wybierz pozycję **Konfiguracja aktualizacji**. Spowoduje to wyczyszczenie istniejącej konfiguracji kafelka. 
+1. Wybierz pozycję **Konfiguracja aktualizacji**. Czyści istniejącą konfigurację na kafelku. 
 
 1. Wybierz pozycję **Konfiguruj** ponownie na kafelku **ruch osób** .
 

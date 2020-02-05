@@ -3,8 +3,8 @@ title: Wybierz rozmiary maszyn wirtualnych dla pul — Azure Batch | Microsoft D
 description: Jak wybierać dostępne rozmiary maszyn wirtualnych dla węzłów obliczeniowych w pulach Azure Batch
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/12/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 34ab09f7d8d47804992b8ef6864bfea60d1c9b4d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: be19de19dab92bc40ca5529ad578e033a98929cd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026611"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023569"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Wybieranie rozmiaru maszyny wirtualnej dla węzłów obliczeniowych w puli Azure Batch
 
@@ -78,7 +78,7 @@ Pule wsadowe w konfiguracji usługi w chmurze obsługują wszystkie [rozmiary ma
 | Seria A   | Bardzo małe       |
 | Seria Av2 | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |
 
-## <a name="size-considerations"></a>Istotne zagadnienia dotyczące rozmiaru
+## <a name="size-considerations"></a>Zagadnienia dotyczące rozmiaru
 
 * **Wymagania dotyczące aplikacji** — należy wziąć pod uwagę charakterystyki i wymagania aplikacji, które będą uruchamiane w węzłach. Takie czynniki jak to, czy aplikacja jest wielowątkowa oraz ile pamięci zużywa, mogą pomóc w wyborze najbardziej odpowiedniego i ekonomicznego rozmiar węzła. W przypadku [obciążeń MPI](batch-mpi.md) z obsługą wiele wystąpień lub aplikacji cuda należy odpowiednio [rozważyć wyspecjalizowane](../virtual-machines/linux/sizes-hpc.md) rozmiary maszyn wirtualnych lub maszyny wirtualne [obsługujące procesor GPU](../virtual-machines/linux/sizes-gpu.md) . (Zobacz [Używanie wystąpień obsługujących funkcję RDMA lub GPU w pulach wsadowym](batch-pool-compute-intensive-sizes.md)).
 

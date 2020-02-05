@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
-ms.openlocfilehash: de57776ea3bcc7486c5c26182c7e2a65e643d81c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7f43f69ebdac05b8f99739ea6b51453671b9a70a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863006"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024555"
 ---
 # <a name="integrate-azure-data-lake-storage-with-azure-services"></a>Integracja Azure Data Lake Storage z usługami platformy Azure
 
@@ -34,7 +34,7 @@ W poniższej tabeli wymieniono usługi platformy Azure, które obsługują Azure
 |Data Box|  [Używanie Azure Data Box do migrowania danych z lokalnego magazynu systemu plików HDFS do usługi Azure Storage](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
 |HDInsight | [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Korzystanie z interfejsu wiersza polecenia systemu plików HDFS z Data Lake Storage Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu Apache Hive w usłudze Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md) |
 |IoT Hub | [Używanie routingu komunikatów IoT Hub do wysyłania komunikatów z urządzenia do chmury do różnych punktów końcowych](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
-|Power BI|  [Analizowanie danych w Data Lake Storage Gen2 przy użyciu Power BI](data-lake-storage-use-power-bi.md) |
+|Power BI|  [Analizowanie danych w Data Lake Storage Gen2 przy użyciu Power BI](https://docs.microsoft.com/power-query/connectors/datalakestorage) |
 |Hurtownia danych SQL | [Używanie z Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
 |Usługi SQL Server Integration Services (SSIS) | [Menedżer połączeń usługi Azure Storage](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
 

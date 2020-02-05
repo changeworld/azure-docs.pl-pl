@@ -11,20 +11,20 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: b85dd8d899a7e5d7d9f9d41ad7e2872249ee29c5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9dcb185ab8375d46c75a12e6adaeeae2358c13ac
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702015"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022090"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Samouczek: eksportowanie danych z platformy Azure IoT Central i wizualizacja szczegółowych informacji w programie Power BI
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 W dwóch poprzednich samouczkach utworzono i dostosowano aplikację IoT Central przy użyciu szablonu aplikacji do **analizy w sklepie — wyewidencjonowywanie** . W tym samouczku skonfigurujesz aplikację IoT Central do eksportowania danych telemetrycznych zebranych z urządzeń. Następnie użyj Power BI, aby utworzyć niestandardowy pulpit nawigacyjny dla Menedżera sklepu w celu wizualizowania szczegółowych informacji uzyskanych na podstawie danych telemetrycznych.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Skonfiguruj aplikację IoT Central, aby wyeksportować dane telemetryczne do centrum zdarzeń.
 > * Użyj Logic Apps, aby wysyłać dane z centrum zdarzeń do zestawu danych przesyłania strumieniowego Power BI.
@@ -38,11 +38,11 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Konto usługi Power BI. Jeśli nie masz konta Power BI, przed rozpoczęciem Zarejestruj się, aby uzyskać [bezpłatną Power BI Pro wersję próbną](https://app.powerbi.com/signupredirect?pbi_source=web) .
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Przed utworzeniem centrum zdarzeń i aplikacji logiki należy utworzyć grupę zasobów, aby zarządzać nimi. Grupa zasobów powinna znajdować się w tej samej lokalizacji, w której znajduje się aplikacja **do analizy w sklepie — wyewidencjonowywanie** IoT Central. Aby utworzyć grupę zasobów:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 1. W okienku nawigacji po lewej stronie wybierz pozycję **grupy zasobów**. Następnie wybierz pozycję **Dodaj**.
 1. W polu **subskrypcja**wybierz nazwę subskrypcji platformy Azure, która została użyta do utworzenia aplikacji IoT Central.
 1. W polu Nazwa **grupy zasobów** wprowadź wartość _Retail-Store-Analysis_*.
@@ -58,7 +58,7 @@ Aby można było skonfigurować aplikację do monitorowania handlu detalicznego 
 
 1. W Azure Portal wybierz pozycję **Utwórz zasób** w lewym górnym rogu ekranu.
 1. W obszarze **Wyszukaj w portalu Marketplace**wprowadź _Event Hubs_, a następnie naciśnij klawisz **Enter**.
-1. Na stronie **Event Hubs** wybierz pozycję **Utwórz**.
+1. Na **usługi Event Hubs** wybierz opcję **Utwórz**.
 1. Na stronie **Tworzenie przestrzeni nazw** wykonaj następujące czynności:
     * Wprowadź unikatową nazwę przestrzeni nazw, takiej jak nazwa _użytkownika-sprzedaż-magazyn-analiza_. System sprawdza, czy ta nazwa jest dostępna.
     * Wybierz warstwę cenową **podstawowa** .
@@ -66,7 +66,7 @@ Aby można było skonfigurować aplikację do monitorowania handlu detalicznego 
     * Wybierz grupę zasobów **analizy handlu detalicznego** .
     * Wybierz tę samą lokalizację, która była używana dla aplikacji IoT Central.
     * Wybierz pozycję **Utwórz**. Może być konieczne odczekanie kilku minut, aż system udostępni Zasoby.
-1. W portalu przejdź do grupy zasobów **analizy handlu detalicznego** . Poczekaj na zakończenie wdrożenia. Może być konieczne wybranie opcji **Odśwież** , aby zaktualizować stan wdrożenia. Możesz również sprawdzić stan tworzenia przestrzeni nazw centrum zdarzeń w **powiadomieniach**.
+1. W portalu przejdź do grupy zasobów **analizy handlu detalicznego** . Zaczekaj na zakończenie wdrożenia. Może być konieczne wybranie opcji **Odśwież** , aby zaktualizować stan wdrożenia. Możesz również sprawdzić stan tworzenia przestrzeni nazw centrum zdarzeń w **powiadomieniach**.
 1. W grupie zasobów **analizy sprzedaży detalicznej** wybierz **Event Hubs przestrzeni nazw**. Zostanie wyświetlona strona główna **obszaru nazw Event Hubs** w portalu.
 
 Teraz masz **Event Hubs przestrzeni nazw**, możesz utworzyć **centrum zdarzeń** do użycia z aplikacją IoT Central:
@@ -384,7 +384,7 @@ Aby dodać logikę do projektu aplikacji logiki, wybierz pozycję **Widok kodu**
     * Zaznacz pole **sygnatura czasowa** , a następnie wybierz pozycję **x-opt-enqueuedtime** z listy **zawartość dynamiczna** .
     * Zaznacz pole **wilgotność** , a następnie wybierz pozycję **Zobacz więcej** obok pozycji **Analizuj dane telemetryczne**. Następnie wybierz pozycję **wilgotność**.
     * Wybierz pole **temperatura** , a następnie wybierz pozycję **Zobacz więcej** obok pozycji **Analizuj dane telemetryczne**. Następnie wybierz pozycję **temperatura**.
-    * Wybierz pozycję **Zapisz** , aby zapisać zmiany. Akcja **środowiska Strefa 1** wygląda podobnie do poniższego zrzutu ekranu: ![Strefa 1 środowisku](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-1-action.png)
+    * Wybierz **Zapisz** Aby zapisać zmiany. Akcja **środowiska Strefa 1** wygląda podobnie do poniższego zrzutu ekranu: ![Strefa 1 środowisku](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-1-action.png)
 1. Wybierz akcję **środowiska strefa 2** , a następnie wybierz pozycję **Dodaj akcję**.
 1. W obszarze **łączniki i akcje wyszukiwania**wprowadź **Power BI**, a następnie naciśnij klawisz **Enter**.
 1. Wybierz akcję **Dodaj wiersze do zestawu danych (wersja zapoznawcza)** .
@@ -396,7 +396,7 @@ Aby dodać logikę do projektu aplikacji logiki, wybierz pozycję **Widok kodu**
     * Zaznacz pole **sygnatura czasowa** , a następnie wybierz pozycję **x-opt-enqueuedtime** z listy **zawartość dynamiczna** .
     * Zaznacz pole **wilgotność** , a następnie wybierz pozycję **Zobacz więcej** obok pozycji **Analizuj dane telemetryczne**. Następnie wybierz pozycję **wilgotność**.
     * Wybierz pole **temperatura** , a następnie wybierz pozycję **Zobacz więcej** obok pozycji **Analizuj dane telemetryczne**. Następnie wybierz pozycję **temperatura**.
-    Wybierz pozycję **Zapisz** , aby zapisać zmiany.  Akcja **środowiska strefa 2** wygląda podobnie do poniższego zrzutu ekranu: ![Strefa 2 środowisku](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-2-action.png)
+    Wybierz **Zapisz** Aby zapisać zmiany.  Akcja **środowiska strefa 2** wygląda podobnie do poniższego zrzutu ekranu: ![Strefa 2 środowisku](./media/tutorial-in-store-analytics-visualize-insights-pnp/zone-2-action.png)
 1. Wybierz akcję **zajętości** , a następnie wybierz akcję **przełączenia przez identyfikator interfejsu** .
 1. Wybierz akcję **interfejs czasu mieszkania** i wybierz pozycję **Dodaj akcję**.
 1. W obszarze **łączniki i akcje wyszukiwania**wprowadź **Power BI**, a następnie naciśnij klawisz **Enter**.
@@ -409,7 +409,7 @@ Aby dodać logikę do projektu aplikacji logiki, wybierz pozycję **Widok kodu**
     * Zaznacz pole **sygnatura czasowa** , a następnie wybierz pozycję **x-opt-enqueuedtime** z listy **zawartość dynamiczna** .
     * Wybierz pole **czas mieszkania 1** , a następnie wybierz pozycję **Zobacz więcej** obok pozycji **Analizuj dane telemetryczne**. Następnie wybierz pozycję **DwellTime1**.
     * Wybierz pole **czas mieszkania 2** , a następnie wybierz pozycję **Zobacz więcej** obok pozycji **Analizuj dane telemetryczne**. Następnie wybierz pozycję **DwellTime2**.
-    * Wybierz pozycję **Zapisz** , aby zapisać zmiany. Akcja **interfejsu czasu mieszkania** wygląda podobnie do poniższego zrzutu ekranu: ![akcji zajętości](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-1.png)
+    * Wybierz **Zapisz** Aby zapisać zmiany. Akcja **interfejsu czasu mieszkania** wygląda podobnie do poniższego zrzutu ekranu: ![akcji zajętości](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-1.png)
 1. Wybierz akcję **Liczba osób** , a następnie wybierz pozycję **Dodaj akcję**.
 1. W obszarze **łączniki i akcje wyszukiwania**wprowadź **Power BI**, a następnie naciśnij klawisz **Enter**.
 1. Wybierz akcję **Dodaj wiersze do zestawu danych (wersja zapoznawcza)** .
@@ -421,7 +421,7 @@ Aby dodać logikę do projektu aplikacji logiki, wybierz pozycję **Widok kodu**
     * Zaznacz pole **sygnatura czasowa** , a następnie wybierz pozycję **x-opt-enqueuedtime** z listy **zawartość dynamiczna** .
     * Zaznacz pole **Długość kolejki 1** , a następnie wybierz pozycję **Zobacz więcej** obok pozycji **Analizuj dane telemetryczne**. Następnie wybierz pozycję **count1**.
     * Wybierz pole **Długość kolejki 2** , a następnie wybierz pozycję **Zobacz więcej** obok pozycji **Analizuj dane telemetryczne**. Następnie wybierz pozycję **count2**.
-    * Wybierz pozycję **Zapisz** , aby zapisać zmiany. Akcja **interfejsu liczba osób** wygląda podobnie do poniższego zrzutu ekranu: ![akcji zajętości](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-2.png)
+    * Wybierz **Zapisz** Aby zapisać zmiany. Akcja **interfejsu liczba osób** wygląda podobnie do poniższego zrzutu ekranu: ![akcji zajętości](./media/tutorial-in-store-analytics-visualize-insights-pnp/occupancy-action-2.png)
 
 Aplikacja logiki zostanie uruchomiona automatycznie. Aby wyświetlić stan każdego przebiegu, przejdź do strony **Przegląd** dla aplikacji logiki w Azure Portal:
 
@@ -440,7 +440,7 @@ Dodaj cztery kafelki wykresu liniowego, aby pokazać temperaturę i wilgotność
 
 | Ustawienie | #1 wykresu | #2 wykresu | #3 wykresu | #4 wykresu |
 | ------- | -------- | -------- | -------- | -------- |
-| Zestaw danych | Czujnik Strefa 1 | Czujnik Strefa 1 | Czujnik Strefa 2 | Czujnik Strefa 2 |
+| Dataset | Czujnik Strefa 1 | Czujnik Strefa 1 | Czujnik Strefa 2 | Czujnik Strefa 2 |
 | Typ wizualizacji | Wykres liniowy | Wykres liniowy | Wykres liniowy | Wykres liniowy |
 | Osi | Znacznik czasu | Znacznik czasu | Znacznik czasu | Znacznik czasu |
 | Wartości | Temperatura | Wilgotność | Temperatura | Wilgotność |
@@ -458,7 +458,7 @@ Dodaj cztery kafelki kart, aby wyświetlić najnowsze wartości temperatury i wi
 
 | Ustawienie | #1 karty | #2 karty | #3 karty | #4 karty |
 | ------- | ------- | ------- | ------- | ------- |
-| Zestaw danych | Czujnik Strefa 1 | Czujnik Strefa 1 | Czujnik Strefa 2 | Czujnik Strefa 2 |
+| Dataset | Czujnik Strefa 1 | Czujnik Strefa 1 | Czujnik Strefa 2 | Czujnik Strefa 2 |
 | Typ wizualizacji | Odrzucone | Odrzucone | Odrzucone | Odrzucone |
 | Pola | Temperatura | Wilgotność | Temperatura | Wilgotność |
 | Tytuł | Temperatura (F) | Wilgotność (%) | Temperatura (F) | Wilgotność (%) |
@@ -474,8 +474,8 @@ Dodaj cztery kafelki kart, aby wyświetlić długość kolejki i czas mieszkania
 
 | Ustawienie | #1 karty | #2 karty | #3 karty | #4 karty |
 | ------- | ------- | ------- | ------- | ------- |
-| Zestaw danych | Czujnik zajętości | Czujnik zajętości | Czujnik zajętości | Czujnik zajętości |
-| Typ wizualizacji | Wykres kolumnowy grupowany | Wykres kolumnowy grupowany | Urządzeń | Urządzeń |
+| Dataset | Czujnik zajętości | Czujnik zajętości | Czujnik zajętości | Czujnik zajętości |
+| Typ wizualizacji | Wykres kolumnowy grupowany | Wykres kolumnowy grupowany | Miernik | Miernik |
 | Osi    | Znacznik czasu | Znacznik czasu | ND | ND |
 | Wartość | Czas mieszkania 1 | Czas mieszkania 2 | Długość kolejki 1 | Długość kolejki 2 |
 | Przedział czasu | 60 minut | 60 minut |  ND | ND |
@@ -484,11 +484,11 @@ Dodaj cztery kafelki kart, aby wyświetlić długość kolejki i czas mieszkania
 
 Zmień rozmiar i Rozmieść kafelki na pulpicie nawigacyjnym tak, aby wyglądały tak jak na poniższym zrzucie ekranu:
 
-![Pulpit nawigacyjny Power BI](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard.png)
+![Pulpit nawigacyjny usługi Power BI](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard.png)
 
 Możesz dodać kilka dodatkowych zasobów graficznych, aby dodatkowo dostosować pulpit nawigacyjny:
 
-![Pulpit nawigacyjny Power BI](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard-graphics.png)
+![Pulpit nawigacyjny usługi Power BI](./media/tutorial-in-store-analytics-visualize-insights-pnp/pbi-dashboard-graphics.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

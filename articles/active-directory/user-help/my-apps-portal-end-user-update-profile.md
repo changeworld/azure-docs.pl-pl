@@ -2,31 +2,38 @@
 title: Aktualizowanie informacji o koncie & profilu z portalu Moje aplikacje — Azure AD
 description: Dowiedz się, jak zaktualizować profil i informacje o koncie służbowym, w tym o zmianie hasła, włączaniu resetowania hasła, aktualizowaniu metod weryfikacji zabezpieczeń, wyświetlaniu zasad użytkowania w organizacji i wylogowaniu z wszędzie tam, gdzie zarejestrowano Cię przy użyciu konta służbowego.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704871"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022283"
 ---
-# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>Aktualizowanie informacji o profilu i koncie służbowym w portalu Moje aplikacje
+# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Aktualizowanie informacji o profilu i koncie w portalu My Apps
 
-Możesz użyć swojego konta służbowego z portalem **Moje aplikacje** oparte na sieci Web, aby wyświetlać i uruchamiać wiele aplikacji opartych na chmurze w organizacji, aktualizować niektóre informacje o profilu i koncie, wyświetlać informacje o **grupach** oraz przeprowadzać **przeglądy dostępu** do aplikacji i grup. Jeśli nie masz dostępu do portalu **Moje aplikacje** , musisz skontaktować się z pomocą techniczną, aby uzyskać odpowiednie uprawnienia.
+Możesz użyć konta służbowego z portalem **Moje aplikacje** oparte na sieci Web, aby 
+
+- Wyświetlanie i uruchamianie wielu aplikacji opartych na chmurze w organizacji
+- Aktualizowanie niektórych informacji o profilu i koncie
+- Wyświetlanie informacji o **grupach**
+- Wykonaj **przeglądy dostępu** do aplikacji i grup. 
+
+Jeśli nie masz dostępu do portalu **Moje aplikacje** , musisz skontaktować się z pomocą techniczną, aby uzyskać odpowiednie uprawnienia.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, możesz znaleźć więcej informacji na temat sposobu konfigurowania i zarządzania aplikacjami opartymi na chmurze w [dokumentacji zarządzania aplikacjami](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> [!Important]
+> Ta zawartość jest przeznaczona dla użytkowników **moich aplikacji** . Jeśli jesteś administratorem, możesz znaleźć więcej informacji na temat sposobu konfigurowania i zarządzania aplikacjami opartymi na chmurze w [dokumentacji zarządzania aplikacjami](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="view-your-organization-related-profile-information"></a>Wyświetlanie informacji o profilu związanym z organizacją
 

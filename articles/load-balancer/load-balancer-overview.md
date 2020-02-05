@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 186e8ee232fc8e0500f55404b65e00d7af696230
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 376741005f0755d01c95baad8d3a3d33e9952933
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760933"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023909"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
-*Równoważenie obciążenia* polega na równomiernym rozłożeniu obciążenia (ruch sieciowy przychodzący) między grupą zasobów lub serwerów zaplecza. Platforma Azure oferuje [różne opcje równoważenia obciążenia](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) , które można wybrać w zależności od potrzeb. Ten dokument zawiera Azure Load Balancer.
+*Równoważenie obciążenia* polega na równomiernym rozłożeniu obciążenia (ruch sieciowy przychodzący) między grupą zasobów lub serwerów zaplecza. 
 
 Azure Load Balancer działa w warstwie cztery z modelem połączenia typu Open Systems (OSI). Jest to pojedynczy punkt kontaktu dla klientów. Load Balancer dystrybuuje przepływy przychodzące, które docierają do frontonu modułu równoważenia obciążenia z wystąpieniami puli zaplecza. Te przepływy są zależne od skonfigurowanych reguł równoważenia obciążenia i sond kondycji. Wystąpienia puli zaplecza mogą być Virtual Machinesami platformy Azure lub wystąpieniami w zestawie skalowania maszyn wirtualnych.
 
@@ -38,6 +38,11 @@ Azure Load Balancer działa w warstwie cztery z modelem połączenia typu Open S
 *Ilustracja: Równoważenie aplikacji wielowarstwowych przy użyciu Load Balancer publicznego i wewnętrznego*
 
 Aby uzyskać więcej informacji na temat poszczególnych składników usługi równoważenia obciążenia, zobacz [Azure Load Balancer składniki i ograniczenia](./concepts-limitations.md)
+
+>[!NOTE]
+> Platforma Azure udostępnia zestaw w pełni zarządzanych rozwiązań do równoważenia obciążenia dla Twoich scenariuszy. Jeśli potrzebujesz wysokiej wydajności, niskiego opóźnienia i równoważenia obciążenia warstwy 4, zobacz [co to jest Azure Load Balancer?](../load-balancer/load-balancer-overview.md) Jeśli szukasz globalnego równoważenia obciążenia DNS, zobacz [co to jest Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Kompleksowe scenariusze mogą przynieść korzyści wynikające z łączenia tych rozwiązań.
+>
+> Aby zapoznać się z porównaniem opcji równoważenia obciążenia platformy Azure, zobacz [Omówienie opcji równoważenia obciążenia na platformie Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="why-use-azure-load-balancer"></a>Dlaczego warto używać Azure Load Balancer?
 Za pomocą usługa Load Balancer w warstwie Standardowa można skalować aplikacje i tworzyć usługi o wysokiej dostępności. Moduł równoważenia obciążenia obsługuje scenariusze przychodzące i wychodzące. Moduł równoważenia obciążenia zapewnia małe opóźnienia i wysoką przepływność oraz skaluje do milionów przepływów dla wszystkich aplikacji TCP i UDP.

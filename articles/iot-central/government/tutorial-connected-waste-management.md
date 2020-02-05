@@ -7,22 +7,23 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 771e4a822df3e7d8eeee53174d657426bf226372
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990038"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016497"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Samouczek: Tworzenie połączonej aplikacji zarządzania odpadami w IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 W tym samouczku przedstawiono sposób tworzenia aplikacji do zarządzania odpadami w usłudze Azure IoT Central przy użyciu szablonu IoT Central **połączonego zarządzania odpadami** . 
 
-W tym samouczku dowiesz się, jak: 
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
 > [!div class="checklist"]
+
 > * Tworzenie połączonej aplikacji **zarządzania odpadami przy użyciu IoT Central platformy** Azure
 > * Eksplorowanie i dostosowywanie pulpitu nawigacyjnego operatora 
 > * Eksploruj szablon urządzenia z odłączonymi odpadami
@@ -33,12 +34,12 @@ W tym samouczku dowiesz się, jak:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten samouczek, musisz:
+Do ukończenia tego samouczka niezbędne są następujące elementy:
 -  Zalecana jest subskrypcja platformy Azure. Opcjonalnie możesz użyć bezpłatnej 7-dniowej wersji próbnej. Jeśli nie masz subskrypcji platformy Azure, możesz ją utworzyć na [stronie rejestracji na platformie Azure](https://aka.ms/createazuresubscription).
 
 ## <a name="create-connected-waste-management-app-in-iot-central"></a>Tworzenie połączonej aplikacji zarządzania odpadami w IoT Central
 
-W tej sekcji użyjemy **szablonu zarządzania odpadami** IoT Central platformy Azure w celu utworzenia połączonej aplikacji do zarządzania odpadami w programie IoT Central.
+W tej sekcji użyjesz **szablonu zarządzania odpadami** IoT Central platformy Azure, aby utworzyć przyłączoną aplikację zarządzania odpadami w programie IoT Central.
 
 Aby utworzyć nową aplikację usługi Azure IoT Central połączonego zarządzania odpadami:  
 
@@ -59,7 +60,7 @@ Aby utworzyć nową aplikację usługi Azure IoT Central połączonego zarządza
     * **URL** — Opcjonalnie możesz wybrać żądany adres URL. Adres URL można zmienić później. 
     * Jeśli masz subskrypcję platformy Azure, wprowadź swój *katalog, subskrypcję platformy Azure i region*. Jeśli nie masz subskrypcji, możesz włączyć **7-dniową bezpłatną wersję próbną** i uzupełnić wymagane informacje kontaktowe.  
 
-    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](../preview/quick-deploy-iot-central.md).
+    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](../core/quick-deploy-iot-central.md).
 
 5. Kliknij przycisk **Utwórz** w dolnej części strony. 
 
@@ -134,7 +135,7 @@ Aby wyświetlić szablon urządzenia:
 
 2. Na liście szablony urządzeń zostanie wyświetlony **pojemnik połączone odpady**. Otwórz program, klikając nazwę.
 
-3. Zapoznaj się z możliwościami szablonu urządzenia. Zobaczysz, że definiuje on czujniki, takie jak *poziom wypełnienia*, *odor*, *waga*, *Lokalizacja* itd.
+3. Zapoznaj się z możliwościami szablonu urządzenia. Zobaczysz, że definiuje on czujniki, takie jak *poziom wypełnienia*, *odor*, *waga*, *Lokalizacja*i inne.
 
    ![Szablon urządzenia](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -152,7 +153,7 @@ Spróbuj dostosować następujące elementy:
 ### <a name="add-a-cloud-property"></a>Dodaj właściwość chmury 
 
 1. Przejdź do **właściwości chmury** z menu szablonu urządzenia
-2. Dodaj nową właściwość chmury, klikając pozycję **+ Dodaj właściwość chmury**. W IoT Central można dodać właściwość, która jest istotna dla urządzenia, ale nie powinna zostać wysłana przez urządzenie. Przykładowo Właściwość chmury może być progiem alertu specyficznym dla obszaru instalacji, informacji o zasobach lub informacji o konserwacji itp. 
+2. Dodaj nową właściwość chmury, klikając pozycję **+ Dodaj właściwość chmury**. W IoT Central można dodać właściwość, która jest istotna dla urządzenia, ale nie powinna zostać wysłana przez urządzenie. Przykładowo Właściwość chmury może być progiem alertu specyficznym dla obszaru instalacji, informacji o zasobach lub informacji o konserwacji oraz innych informacji. 
 3. **Zapisz** wszystkie zmiany 
  
 ### <a name="views"></a>Widoki 

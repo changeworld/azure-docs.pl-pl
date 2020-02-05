@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: c9a153cc5b1b8c43a42b37d591a8946a545f63ff
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986436"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021291"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Samouczek: wdrażanie i Instruktaż szablonu aplikacji do monitorowania ciągłego pacjenta
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-W tym samouczku pokazano, jak uzyskać Konstruktor rozwiązań, jak rozpocząć pracę, wdrażając szablon aplikacji do monitorowania ciągłego pacjenta IoT Central. Dowiesz się, jak wdrożyć szablon, co jest dołączone do pola i co warto zrobić dalej.
+
+W tym samouczku pokazano, jak uzyskać Konstruktor rozwiązań, jak rozpocząć pracę, wdrażając szablon aplikacji do monitorowania ciągłego pacjenta IoT Central. Dowiesz się, jak wdrożyć szablon, co jest dołączone do pola i co możesz zrobić dalej.
 
 Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -34,7 +34,7 @@ Przejdź do [witryny sieci Web programu Azure IoT Central Application Manager](h
 >[!div class="mx-imgBorder"] 
 >![](media/app-manager-health.png) opieki zdrowotnej programu App Manager
 
-Kliknij przycisk **Utwórz aplikację** , aby rozpocząć tworzenie aplikacji, a następnie zaloguj się przy użyciu konta osobistego, służbowego lub szkolnego firmy Microsoft. Spowoduje to przejście do strony **Nowa aplikacja** .
+Kliknij przycisk **Utwórz aplikację** , aby rozpocząć tworzenie aplikacji, a następnie zaloguj się przy użyciu konta osobistego, służbowego lub szkolnego firmy Microsoft. Spowoduje to przejście do strony **nowej aplikacji** .
 
 ![Tworzenie opieki zdrowotnej aplikacji](media/app-manager-health-create.png)
 
@@ -52,13 +52,13 @@ Aby utworzyć aplikację:
 
 ### <a name="dashboards"></a>Pulpity nawigacyjne
 
-Po wdrożeniu szablonu aplikacji należy najpierw obsłużyć **pulpit nawigacyjny monitorowania Lamna**. Lamna opieka medyczna to fikcyjny system szpitaly, który zawiera dwie szpitale: Szpital szpital i Burkville. Na tym pulpicie nawigacyjnym operatora dla szpitala Woodgrove zobaczysz informacje i dane telemetryczne dotyczące urządzeń w tym szablonie wraz z zestawem poleceń, zadań i akcji, które można wykonać. Na pulpicie nawigacyjnym możesz:
+Po wdrożeniu szablonu aplikacji należy najpierw **obstawić pulpit nawigacyjny monitorowania Lamna**. Lamna opieka medyczna to fikcyjny system szpitaly, który zawiera dwie szpitale: Szpital szpital i Burkville. Na tym pulpicie nawigacyjnym operatora dla szpitala Woodgrove zobaczysz informacje i dane telemetryczne dotyczące urządzeń w tym szablonie wraz z zestawem poleceń, zadań i akcji, które można wykonać. Na pulpicie nawigacyjnym możesz:
 
 * Zobacz dane telemetryczne i właściwości urządzenia, takie jak **poziom baterii** urządzenia lub stan **łączności** .
 
 * Wyświetlanie **planu pomieszczeń** i lokalizacji urządzenia z poprawkami inteligentnymi.
 
-* **Ponownie Udostępnij** poprawkę inteligentnych cech dla nowego pacjenta.
+* Ponownie **Udostępnij** poprawkę inteligentnych cech dla nowego pacjenta.
 
 * Zapoznaj się z przykładem **pulpitu nawigacyjnego dostawcy** , który może zobaczyć zespół opieki szpitalowej w celu śledzenia ich pacjentów.
 
@@ -78,7 +78,7 @@ Na obu pulpitach nawigacyjnych zawsze możesz połączyć się z tą dokumentacj
 
 Po kliknięciu karty **Szablony urządzeń** zobaczysz, że istnieją dwa różne typy urządzeń, które są częścią szablonu:
 
-* **Poprawka inteligentnych elementów istotnych**: to urządzenie reprezentuje poprawkę, która mierzy różne istotne znaki, które mogą być używane do monitorowania pacjentów w i poza szpitalem. Jeśli klikniesz szablon, zobaczysz, że oprócz wysyłania danych urządzenia, takich jak poziom baterii i temperatura urządzenia, Poprawka również wysyła dane dotyczące kondycji pacjenta, takie jak szybkość układu oddechowego i nacisk krwi.
+* **Poprawka inteligentnych elementów istotnych**: to urządzenie reprezentuje poprawkę, która mierzy różne typy znaków istotnych. Może służyć do monitorowania pacjentów w i poza szpitalem. Jeśli klikniesz szablon, zobaczysz, że oprócz wysyłania danych urządzenia, takich jak poziom baterii i temperatura urządzenia, Poprawka również wysyła dane dotyczące kondycji pacjenta, takie jak szybkość układu oddechowego i nacisk krwi.
 
 * **Inteligentny nawiasy klamrowe**: to urządzenie reprezentuje nawiasy klamrowe, które mogą być używane podczas odzyskiwania z chirurgu do zastępowania kolan. Po kliknięciu tego szablonu zobaczysz możliwości, takie jak zakres ruchu i przyspieszanie, oprócz danych urządzenia.
 
@@ -102,7 +102,7 @@ Gdy przejdziesz do karty reguły, zobaczysz trzy reguły, które istnieją w sza
 
 ### <a name="devices"></a>Urządzenia
 
-Kliknij kartę **urządzenia** , a następnie wybierz wystąpienie **inteligentnego nawiasu kolanowego**. Zobaczysz, że istnieją trzy widoki umożliwiające Eksplorowanie informacji o konkretnym wybranym urządzeniu. Te widoki są tworzone i publikowane podczas kompilowania szablonu urządzenia dla urządzenia. Oznacza to, że będą one spójne dla wszystkich urządzeń, które są połączone lub symulowane.
+Kliknij kartę **urządzenia** , a następnie wybierz wystąpienie **inteligentnego nawiasu kolanowego**. Zobaczysz, że istnieją trzy widoki umożliwiające Eksplorowanie informacji o konkretnym wybranym urządzeniu. Te widoki są tworzone i publikowane podczas kompilowania szablonu urządzenia dla urządzenia, co oznacza, że będą one spójne na wszystkich urządzeniach, które są połączone lub symulowane.
 
 Widok **pulpitu nawigacyjnego** zawiera przegląd danych telemetrycznych i właściwości, które pochodzą z urządzenia, które są zorientowane na operator.
 

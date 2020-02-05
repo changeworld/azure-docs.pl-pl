@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770292"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025915"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Uczenie modelu aparatu rozpoznawania formularzy z etykietami przy użyciu narzędzia do etykietowania przykładowego
 
@@ -26,7 +26,6 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
 - Dostęp do programu rozpoznawania formularzy z ograniczonym dostępem. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess). Otrzymasz wiadomość e-mail z linkiem umożliwiającym utworzenie zasobu aparatu rozpoznawania formularza.
-- Dostęp do przykładowego narzędzia do etykietowania z aparatem rozpoznawania formularzy. Aby uzyskać dostęp, Wypełnij i prześlij [formularz żądania narzędzia etykiet aparatu rozpoznawania formularzy](https://aka.ms/LabelToolRequestAccess). Otrzymasz wiadomość e-mail z instrukcjami dotyczącymi uzyskiwania poświadczeń i uzyskiwania dostępu do prywatnego rejestru kontenerów. 
 - Zestaw składający się z co najmniej sześciu formularzy tego samego typu. Te dane będą używane do uczenia modelu i testowania formularza. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż pliki szkoleniowe do katalogu głównego kontenera magazynu obiektów BLOB na koncie usługi Azure Storage.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Konfigurowanie przykładowego narzędzia do etykietowania
@@ -38,18 +37,13 @@ Użyjesz aparatu platformy Docker, aby uruchomić przykładowe narzędzie do ety
     |:--|:--|:--|
     |Przykładowe narzędzie do etykietowania|2 rdzeń, 4 GB pamięci|4 rdzenie, 8 GB pamięci|
     
-1. Następnie będziesz potrzebować [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Jeśli jeszcze tego nie zrobiono, zainstaluj go na swojej maszynie.
-1. Następnie wprowadź następujące polecenie w wierszu polecenia. Wartości `<username>` i `<password>` znajdują się w wiadomości e-mail dotyczącej aparatu rozpoznawania w postaci usługi Zapraszamy!.
-    ```
-    docker login containerpreview.azurecr.io -u <username> -p <password>
-    ```
 1. Pobierz kontener narzędzia do etykietowania przykładowego za pomocą polecenia `docker pull`.
     ```
-    docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool:latest
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
 1. Teraz możesz przystąpić do uruchamiania kontenera z `docker run`.
     ```
-    docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
    To polecenie spowoduje udostępnienie przykładowego narzędzia do etykietowania za pomocą przeglądarki sieci Web. Przejdź do obszaru [http://localhost:3000](http://localhost:3000) (Ustawienia — Integracje i usługi).

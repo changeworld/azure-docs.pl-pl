@@ -7,16 +7,16 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: ce1b8e80806935ca3d35814e73790f191b3e4733
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5632d98d9d853d9a4b0882c28cad1836bb6f3cef
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984037"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025473"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Samouczek: wdrażanie i przechodzenie przez szablon aplikacji do zarządzania magazynem inteligentnym
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 W tym samouczku pokazano, jak rozpocząć pracę, wdrażając szablon IoT Central aplikacji do **zarządzania magazynem inteligentnym** . Dowiesz się, jak wdrożyć szablon, co jest dołączone do pola i co warto zrobić dalej.
 
@@ -25,12 +25,14 @@ W ramach tego samouczka nauczysz się, jak,
 * Przechodzenie przez aplikację 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 * Wdrożenie tej aplikacji nie wymaga określonych wymagań wstępnych
 * Zalecane jest posiadanie subskrypcji platformy Azure, ale możesz nawet spróbować bez niej
 
 ## <a name="create-smart-inventory-management-application-template"></a>Utwórz szablon aplikacji do zarządzania magazynem inteligentnym
 
 Możesz utworzyć aplikację, wykonując następujące czynności
+
 1. Przejdź do witryny sieci Web programu Azure IoT Central Application Manager. Wybierz pozycję **kompilacja** na pasku nawigacyjnym po lewej stronie, a następnie kliknij kartę **sprzedaż detaliczna** .
 
     > [!div class="mx-imgBorder"]
@@ -53,6 +55,7 @@ Możesz utworzyć aplikację, wykonując następujące czynności
 ## <a name="walk-through-the-application"></a>Przechodzenie przez aplikację 
 
 ### <a name="dashboard"></a>Pulpit nawigacyjny 
+
 Po pomyślnym wdrożeniu szablonu aplikacji domyślny pulpit nawigacyjny jest portalem ukierunkowanym przez operatora zarządzania magazynem inteligentnym. Podmiot gospodarczy Northwind jest fikcyjnym dostawcą magazynu inteligentnego, zarządzanym magazynem z technologią Bluetooth Low Energy (beli) i sklepem detalicznym z identyfikacją częstotliwości radiowych (RFID). Na tym pulpicie nawigacyjnym zostaną wyświetlone dwie różne bramy dostarczające dane telemetryczne dotyczące spisu wraz z skojarzonymi poleceniami, zadaniami i akcjami, które można wykonywać. Ten pulpit nawigacyjny jest wstępnie skonfigurowany do zaprezentowania krytycznego działania urządzenia do zarządzania magazynem inteligentnym.
 Pulpit nawigacyjny jest logicznie podzielony między dwie różne operacje zarządzania urządzeniami bramy. 
    * Magazyn jest wdrażany ze stałą bramą do obsługi spisu & znacznikiami na paletach na potrzeby śledzenia & śledzenia śladów w większej pojemności
@@ -72,7 +75,7 @@ Pulpit nawigacyjny jest logicznie podzielony między dwie różne operacje zarz�
 ## <a name="device-template"></a>Szablon urządzenia
 Kliknij kartę szablony urządzeń, a zobaczysz model możliwości bramy. Model możliwości jest strukturalny wokół dwóch różnych poleceń **& właściwości** i **bramy** bramy między bramami interfejsów
 
-**Właściwość & danych telemetrycznych bramy** — ten interfejs reprezentuje wszystkie dane telemetryczne związane z czujnikami, lokalizacją, informacjami o urządzeniu, a także możliwości właściwości sieci bliźniaczych, takich jak progi bramy & interwały aktualizacji.
+**Właściwość & danych telemetrycznych bramy** — ten interfejs reprezentuje wszystkie dane telemetryczne związane z czujnikami, lokalizacją, informacjami o urządzeniu i właściwościami sieci, takimi jak progi bramy i interwały aktualizacji.
 
 > [!div class="mx-imgBorder"]
 > ![pulpitu nawigacyjnego zarządzania magazynem inteligentnym](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
@@ -86,15 +89,15 @@ Kliknij kartę szablony urządzeń, a zobaczysz model możliwości bramy. Model 
 ## <a name="rules"></a>Reguły
 Wybierz kartę reguły, aby wyświetlić dwie różne reguły, które istnieją w tym szablonie aplikacji. Te reguły są skonfigurowane do wysyłania powiadomień e-mail do operatorów w celu przeprowadzenia dalszych badań.
 
-**Brama w trybie offline**: Ta reguła zostanie wyzwolona, jeśli Brama nie zgłosi do chmury przez długi czas. Brama może nie odpowiadać z powodu trybu niskiego stanu baterii, utraty łączności i kondycji urządzenia.
+**Brama w trybie offline**: Ta reguła zostanie wyzwolona, jeśli Brama nie zgłosi do chmury przez długi czas. Brama może nie odpowiadać z powodu trybu niskiego poziomu naładowania baterii, utraty łączności i kondycji urządzenia.
 
-**Nieznane znaczniki**: mają kluczowe znaczenie dla śledzenia każdego znacznika RFID & znaczników związanych z elementem zawartości. Jeśli Brama wykrywa zbyt wiele nieznanych tagów, jest to wskaźnik wyzwań związanych z synchronizacją z aplikacjami, które są źródłem znaczników.
+**Nieznane znaczniki**: niezwykle ważne jest, aby śledzić każde oznakowanie RFID & znaczniki związane z elementem zawartości. Jeśli Brama wykrywa zbyt wiele nieznanych tagów, jest to wskazanie wyzwań związanych z synchronizacją przy użyciu aplikacji zawierających Tagi.
 
 > [!div class="mx-imgBorder"]
 > ![pulpitu nawigacyjnego zarządzania magazynem inteligentnym](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
 ## <a name="jobs"></a>Zadania
-Wybierz kartę zadania, aby zobaczyć pięć różnych zadań, które istnieją w ramach tego szablonu aplikacji: można wykorzystać funkcję zadań do wykonywania operacji na całym rozwiązaniu. W tym miejscu zadania zarządzania spisem używają poleceń urządzenia & bliźniaczym możliwością wykonywania zadań takich jak,
+Wybierz kartę zadania, aby zobaczyć pięć różnych zadań, które istnieją w ramach tego szablonu aplikacji: funkcja zadań służy do wykonywania operacji na całym rozwiązaniu. W tym miejscu zadania zarządzania spisem służą do wykonywania zadań, takich jak,
    * Wyłączanie czytników na całej bramie
    * Modyfikowanie progu telemetrii między 
    * wykonaj skanowanie spisu na żądanie w całym rozwiązaniu.
@@ -112,4 +115,4 @@ Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń szablon aplikacji, odw
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [koncepcji zarządzania magazynem inteligentnym](./architecture-smart-inventory-management-pnp.md) zarządzania magazynem inteligentnym
 * Dowiedz się więcej na temat innych [szablonów detalicznych IoT Central](./overview-iot-central-retail-pnp.md)
-* Dowiedz się więcej o IoT Central zapoznaj się z [omówieniem IoT Central](../preview/overview-iot-central.md)
+* Dowiedz się więcej o IoT Central zapoznaj się z [omówieniem IoT Central](../core/overview-iot-central.md)

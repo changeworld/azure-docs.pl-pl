@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/03/2020
+ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765399"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023314"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak skonfigurować usługę Poster dla usługi bliźniaczych reprezentacji Digital
 
@@ -33,45 +33,15 @@ Za pośrednictwem klienta programu Poster deweloperzy rozwiązań mogą określi
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Konfigurowanie Azure Active Directory do użycia niejawnego przepływu uwierzytelniania OAuth 2,0
 
-Skonfiguruj aplikację Azure Active Directory tak, aby korzystała z niejawnego przepływu uwierzytelniania OAuth 2,0.
-
-1. Otwórz okienko **uprawnień interfejsu API** dla rejestracji aplikacji. Wybierz przycisk **Dodaj uprawnienie** . W okienku **uprawnienia żądania interfejsu API** wybierz pozycję **interfejsy API Moja organizacja używa** karty, a następnie wyszukaj:
-    
-    1. `Azure Digital Twins`. Wybierz interfejs API **Digital bliźniaczych reprezentacji platformy Azure** .
-
-        [Interfejs API wyszukiwania ![lub usługa Azure Digital bliźniaczych reprezentacji](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
-
-    1. Możesz też wyszukać `Azure Smart Spaces Service`. Wybierz interfejs API **usługi Azure Smart Spaces** .
-
-        [Interfejs API wyszukiwania ![dla usługi Azure Smart Spaces](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
-
-    > [!IMPORTANT]
-    > Nazwa i identyfikator interfejsu API usługi Azure AD, który będzie wyświetlany, zależy od dzierżawcy:
-    > * Przeszukaj `Azure Digital Twins`.
-    > * Inne konta Microsoft powinny szukać `Azure Smart Spaces Service`.
-
-1. Wybrany interfejs API jest wyświetlany jako **usługa Azure Digital bliźniaczych reprezentacji** w tym samym okienku **uprawnień interfejsu API żądania** . Wybierz listę rozwijaną **Odczyt (1)** , a następnie wybierz pole wyboru **Odczyt. zapis** . Wybierz przycisk **Dodaj uprawnienia** .
-
-    [![Dodawanie uprawnień interfejsu API do usługi Azure Digital bliźniaczych reprezentacji](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
-
-1. W zależności od ustawień organizacji może być konieczne wykonanie dodatkowych czynności w celu udzielenia administratorowi dostępu do tego interfejsu API. Aby uzyskać więcej informacji, skontaktuj się z administratorem. Po zatwierdzeniu dostępu administratora kolumna **wymagana zgoda administratora** w okienku **uprawnienia interfejsu API** będzie wyglądać podobnie do poniższego dla interfejsów API:
-
-    [![skonfigurować zatwierdzanie zgody administratora](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
-
-1. Skonfiguruj drugi **Identyfikator URI przekierowania** do `https://www.getpostman.com/oauth2/callback`.
+1. Wykonaj kroki opisane w [przewodniku szybki start](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) , aby utworzyć i skonfigurować aplikację Azure Active Directory. Alternatywnie możesz ponownie użyć istniejącej rejestracji aplikacji.
 
     [![skonfigurować nowego identyfikatora URI przekierowania.](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. Aby upewnić się, że [aplikacja jest zarejestrowana jako **Klient publiczny**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), Otwórz okienko **uwierzytelnianie** dla rejestracji aplikacji i przewiń w dół w tym okienku. W sekcji **domyślny typ klienta** wybierz pozycję **tak** dla **aplikacji Traktuj jako klient publiczny**i naciśnij przycisk **Zapisz**.
+1. Teraz Dodaj **Identyfikator URI przekierowania** do `https://www.getpostman.com/oauth2/callback`.
 
-    Sprawdź **tokeny dostępu** , aby włączyć ustawienie **Oauth2AllowImplicitFlow** w pliku manifest. JSON.
+1. Zaznacz pole wyboru **niejawnie udziel** > **tokeny dostępu** , aby zezwolić na użycie niejawnego przepływu uwierzytelniania OAuth 2,0. Wybierz pozycję **Konfiguruj**, a następnie **Zapisz**.
 
-    [![ustawienia konfiguracji klienta publicznego](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
-
-1. Skopiuj i Zachowaj **Identyfikator aplikacji** Azure Active Directory aplikacji. Jest on używany w kolejnych krokach.
-
-   [Identyfikator aplikacji Azure Active Directory ![](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
-
+1. Skopiuj **Identyfikator klienta** aplikacji Azure Active Directory.
 
 ## <a name="obtain-an-oauth-20-token"></a>Uzyskaj token OAuth 2,0
 
@@ -91,15 +61,13 @@ Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azur
 
 1. Przejdź do [www.getpostman.com](https://www.getpostman.com/) , aby pobrać aplikację.
 
-1. Otwórz aplikację Postman i kliknij pozycję New | Create new (Nowe | Utwórz nowe), a następnie wybierz pozycję Request (Żądanie). Wprowadź nazwę żądania. Wybierz kolekcję lub folder, w którym chcesz zapisać, a następnie kliknij przycisk Zapisz. 
-
 1. Chcemy wprowadzić żądanie GET. Wybierz kartę **autoryzacja** , wybierz pozycję OAuth 2,0, a następnie wybierz pozycję **Pobierz nowy token dostępu**.
 
     | Pole  | Wartość |
     |---------|---------|
     | Typ udzielania | `Implicit` |
     | Adres URL wywołania zwrotnego | `https://www.getpostman.com/oauth2/callback` |
-    | Adres URL uwierzytelniania | Użyj **adresu URL autoryzacji** z **kroku 2** |
+    | Adres URL uwierzytelniania | Użyj **adresu URL autoryzacji** z **kroku 1** |
     | Identyfikator klienta | Użyj **identyfikatora aplikacji** dla aplikacji Azure Active Directory, która została utworzona lub ponownie użyta w poprzedniej sekcji |
     | Zakres | Pozostaw puste |
     | Stan | Pozostaw puste |

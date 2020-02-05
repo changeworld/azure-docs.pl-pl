@@ -1,7 +1,7 @@
 ---
-title: Problemy z łącznością i siecią
+title: Connectivity and networking issues
 titleSuffix: Azure Cloud Services
-description: Ten artykuł zawiera listę często zadawanych pytań dotyczących łączności i sieci dla Microsoft Azure Cloud Services.
+description: This article lists the frequently asked questions about connectivity and networking for Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 22f7c0ba98390b391a79a121f120b8ab6172cfb9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845370"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019404"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy z łącznością i siecią dla platformy Azure Cloud Services: często zadawane pytania
 
@@ -101,8 +101,8 @@ Ponieważ to powiązanie nagłówka hosta jest wymuszane za pośrednictwem pliku
 
 Aby upewnić się, że publiczny adres IP usługi w chmurze (znany również jako adres VIP) nigdy nie zmienia się, dzięki czemu może być zwykle listy dozwolonych przez kilku konkretnych klientów, zalecamy, aby z nim skojarzony był zastrzeżony adres IP. W przeciwnym razie wirtualny adres IP dostarczony przez platformę Azure zostanie cofnięty po usunięciu wdrożenia. W przypadku pomyślnej operacji zamiany adresu VIP wymagane są indywidualne zastrzeżone adresy IP dla miejsc produkcyjnych i przejściowych. Bez nich operacja zamiany kończy się niepowodzeniem. Aby zarezerwować adres IP i skojarzyć go z usługą w chmurze, zobacz następujące artykuły:
 
-- [Zarezerwuj adres IP istniejącej usługi w chmurze](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [Kojarzenie zastrzeżonego adresu IP z usługą w chmurze przy użyciu pliku konfiguracji usługi](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+- [Zarezerwuj adres IP istniejącej usługi w chmurze](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+- [Kojarzenie zastrzeżonego adresu IP z usługą w chmurze przy użyciu pliku konfiguracji usługi](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 Jeśli masz więcej niż jedno wystąpienie dla ról, skojarzenie protokołu RIP z usługą w chmurze nie powinno powodować przestojów. Alternatywnie możesz dodać zakres adresów IP centrum danych platformy Azure do listy dozwolonych. Wszystkie zakresy adresów IP platformy Azure można znaleźć w [Centrum pobierania Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
 

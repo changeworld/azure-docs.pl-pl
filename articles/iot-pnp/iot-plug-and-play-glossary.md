@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ef5ce9cc1cda7f1ff6b1985771e20cb20123e264
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531205"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025643"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Słownik terminów dotyczących usługi IoT Plug and Play w wersji zapoznawczej
 
@@ -71,7 +71,7 @@ Usługa IoT Hub jest usługą zarządzaną, hostowaną w chmurze, która działa
 - Urządzenia wysyłające dane telemetryczne do rozwiązania opartego na chmurze.
 - Rozwiązanie oparte na chmurze służące do zarządzania podłączonymi urządzeniami.
 
-## <a name="azure-iot-device-sdk"></a>Zestaw SDK urządzenia usługi Azure IoT
+## <a name="azure-iot-device-sdk"></a>Zestaw SDK urządzeń usługi Azure IoT
 
 Istnieją zestawy SDK urządzeń dla wielu języków, których można użyć do tworzenia aplikacji klienckich urządzenia IoT Plug and Play. Jednym z wymagań dotyczących [certyfikacji urządzenia](#device-certification) jest użycie przez kod klienta urządzenia jednego z zestawów SDK urządzeń usługi Azure IoT.
 
@@ -117,7 +117,7 @@ Deweloper urządzenia używa [modelu możliwości urządzenia](#device-capabilit
 
 ## <a name="device-provisioning-service"></a>Usługa Device Provisioning
 
-Usługa [Azure IoT Central](#azure-iot-central) używa usługi Device Provisioning w celu zarządzania rejestracją i połączeniem urządzeń. Aby uzyskać więcej informacji, zobacz [łączność urządzenia w usłudze Azure IoT Central](../iot-central/preview/overview-iot-central-get-connected.md). Możesz również użyć usługi Device Provisioning, aby zarządzać rejestracją i połączeniem urządzeń z opartym na IoT Hub rozwiązaniu IoT. Aby uzyskać więcej informacji, zobacz temat [aprowizacji urządzeń przy użyciu usługi Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
+Usługa [Azure IoT Central](#azure-iot-central) używa usługi Device Provisioning w celu zarządzania rejestracją i połączeniem urządzeń. Aby uzyskać więcej informacji, zobacz [łączność urządzenia w usłudze Azure IoT Central](../iot-central/core/concepts-get-connected.md). Możesz również użyć usługi Device Provisioning, aby zarządzać rejestracją i połączeniem urządzeń z opartym na IoT Hub rozwiązaniu IoT. Aby uzyskać więcej informacji, zobacz temat [aprowizacji urządzeń przy użyciu usługi Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
 ## <a name="device-registration"></a>Rejestracja urządzenia
 
@@ -155,7 +155,7 @@ Język zapytań IoT Hub jest używany w wielu celach. Można na przykład użyć
 
 Urządzenie Plug and Play IoT to zwykle niezależne, autonomiczne urządzenie komputerowe, które zbiera dane lub steruje innymi urządzeniami oraz uruchamia oprogramowanie lub oprogramowanie układowe implementujące [model możliwości urządzenia](#device-capability-model).  Na przykład urządzenie IoT Plug and Play może być urządzeniem monitorującym środowisko lub kontrolerem systemu nawadniania inteligentnego. Możesz napisać rozwiązanie IoT hostowane w chmurze, aby móc polecenie, kontrolować i odbierać dane z urządzeń Plug and Play IoT. [Wykaz urządzeń z certyfikatem platformy Azure dla IoT](#certified-for-iot-device-catalog) zawiera listę dostępnych urządzeń Plug and Play IoT. Każde urządzenie Plug and Play IoT w wykazie zostało zweryfikowane i ma [model możliwości urządzenia](#device-capability-model).
 
-## <a name="microsoft-partner-center"></a>Centrum partnerskie Microsoft
+## <a name="microsoft-partner-center"></a>Centrum partnerskie firmy Microsoft
 
 [Centrum partnerskie firmy Microsoft](https://docs.microsoft.com/partner-center/) to miejsce, w którym organizacja zarządza kompleksową relacją z firmą Microsoft. Musisz mieć konto Centrum partnerskiego firmy Microsoft, aby móc certyfikowania [urządzenia IoT Plug and Play](#iot-plug-and-play-device) w [portalu Azure Certified for IoT](#azure-certified-for-iot-portal).
 

@@ -3,20 +3,22 @@ title: Zwiększanie IoT Central platformy Azure przy użyciu reguł niestandardo
 description: Jako deweloper rozwiązań Skonfiguruj aplikację IoT Central do wysyłania powiadomień e-mail, gdy urządzenie przestanie wysyłać dane telemetryczne. To rozwiązanie używa Azure Stream Analytics, Azure Functions i SendGrid.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 541cbc0c34a691f51c1a3a53f71920379c447f5d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987598"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022447"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Zwiększanie IoT Central platformy Azure za pomocą reguł niestandardowych przy użyciu Stream Analytics, Azure Functions i SendGrid
+
+
 
 Ten przewodnik zawiera informacje o sposobie rozbudowywania aplikacji IoT Central przy użyciu niestandardowych reguł i powiadomień. W przykładzie pokazano Wysyłanie powiadomienia do operatora, gdy urządzenie przestanie wysyłać dane telemetryczne. Rozwiązanie używa zapytania [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) w celu wykrycia, kiedy urządzenie zatrzymało wysyłanie danych telemetrycznych. Zadanie Stream Analytics używa [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) do wysyłania powiadomień e-mail przy użyciu [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
 
@@ -41,14 +43,16 @@ Utwórz aplikację IoT Central w witrynie programu [Azure IoT Central Applicatio
 | Ustawienie | Wartość |
 | ------- | ----- |
 | Plan cenowy | Standardowa |
-| Szablon aplikacji | Starsza aplikacja |
+| Szablon aplikacji | Analiza warunków w sklepie — monitorowanie |
 | Nazwa aplikacji | Zaakceptuj wartość domyślną lub wybierz własną nazwę |
 | Adres URL | Zaakceptuj domyślny lub wybierz własny unikatowy prefiks adresu URL |
 | Katalog | Dzierżawa Azure Active Directory |
 | Subskrypcja platformy Azure | Twoja subskrypcja platformy Azure |
-| Region | Stany Zjednoczone |
+| Region | Najbliższy region |
 
 Przykłady i zrzuty ekranu w tym artykule używają regionu **Stany Zjednoczone** . Wybierz lokalizację blisko siebie i upewnij się, że wszystkie zasoby zostały utworzone w tym samym regionie.
+
+Ten szablon aplikacji zawiera dwa symulowane urządzenia z termostatem, które wysyłają dane telemetryczne.
 
 ### <a name="resource-group"></a>Grupa zasobów
 
@@ -237,7 +241,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 To rozwiązanie używa zapytania Stream Analytics w celu wykrycia, kiedy urządzenie przestanie wysyłać dane telemetryczne przez ponad 120 sekund. Zapytanie używa danych telemetrycznych z centrum zdarzeń jako dane wejściowe. Zadanie wysyła wyniki zapytania do aplikacji funkcji. W tej sekcji skonfigurujesz zadanie Stream Analytics:
 
-1. W Azure Portal przejdź do zadania usługi Stream Analytics, w obszarze **topologia zadania** wybierz pozycję **wejścia**, wybierz pozycję **+ Dodaj dane wejściowe strumienia**, a następnie wybierz pozycję **centrum zdarzeń**.
+1. W Azure Portal przejdź do zadania Stream Analytics, w obszarze **topologia zadania** wybierz pozycję **wejścia**, wybierz pozycję **+ Dodaj dane wejściowe strumienia**, a następnie wybierz pozycję **centrum zdarzeń**.
 1. Skorzystaj z informacji podanych w poniższej tabeli, aby skonfigurować dane wejściowe przy użyciu utworzonego wcześniej centrum zdarzeń, a następnie wybierz pozycję **Zapisz**:
 
     | Ustawienie | Wartość |
@@ -307,7 +311,7 @@ To rozwiązanie używa zapytania Stream Analytics w celu wykrycia, kiedy urządz
 
 W witrynie sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) przejdź do aplikacji IoT Central utworzonej na podstawie szablonu contoso. W tej sekcji skonfigurujesz aplikację do przesyłania strumieniowego danych telemetrycznych z symulowanych urządzeń do centrum zdarzeń. Aby skonfigurować eksport:
 
-1. Przejdź do strony **eksport danych ciągłych** , wybierz pozycję **+ Nowy**, a następnie opcję **Azure Event Hubs**.
+1. Przejdź do strony **eksport danych** , wybierz pozycję **+ Nowy**, a następnie opcję **Azure Event Hubs**.
 1. Aby skonfigurować eksport, użyj następujących ustawień, a następnie wybierz pozycję **Zapisz**:
 
     | Ustawienie | Wartość |
@@ -328,15 +332,15 @@ Przed kontynuowaniem Zaczekaj, aż stan eksportu zostanie **uruchomiony** .
 
 W celu przetestowania rozwiązania można wyłączyć funkcję ciągłego eksportowania danych z IoT Central, aby symulować zatrzymane urządzenia:
 
-1. W aplikacji IoT Central przejdź do strony **eksport danych ciągłych** i wybierz pozycję **Eksportuj do Event Hubs** konfiguracja eksportu.
+1. W aplikacji IoT Central przejdź do strony **eksport danych** i wybierz pozycję **Eksportuj do Event Hubs** konfiguracja eksportu.
 1. Ustaw wartość **włączone** na **off** , a następnie wybierz pozycję **Zapisz**.
 1. Po upływie co najmniej dwóch minut **adres e-mail otrzymuje** jedną lub więcej wiadomości e-mail, które wyglądają jak następująca Przykładowa zawartość:
 
     ```txt
     The following device(s) have stopped sending telemetry:
 
-    Device ID   Time
-    7b169aee-c843-4d41-9f25-7a02671ee659    2019-05-09T14:28:59.954Z
+    Device ID         Time
+    Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
 ## <a name="tidy-up"></a>Uporządkowanego

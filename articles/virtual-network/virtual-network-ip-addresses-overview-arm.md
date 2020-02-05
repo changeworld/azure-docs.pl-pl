@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: abfd96eae38bf7c0ad145c2c262efc044b741cea
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936715"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024623"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -33,7 +33,7 @@ Możesz również utworzyć ciągły zakres statycznych publicznych adresów IP 
 > Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Azure Resource Manager i model klasyczny](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Ten artykuł dotyczy modelu wdrażania usługi Resource Manager zalecanego przez firmę Microsoft w przypadku większości nowych wdrożeń zamiast [klasycznego modelu wdrażania](virtual-network-ip-addresses-overview-classic.md).
 > 
 
-Jeśli znasz klasyczny model wdrażania, sprawdź [różnice w adresowaniu IP między wersją klasyczną i usługą Resource Manager](/previous-versions/azure/virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments).
+Jeśli znasz klasyczny model wdrażania, sprawdź [różnice w adresowaniu IP między wersją klasyczną i usługą Resource Manager](/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic#differences-between-resource-manager-and-classic-deployments).
 
 ## <a name="public-ip-addresses"></a>Publiczne adresy IP
 

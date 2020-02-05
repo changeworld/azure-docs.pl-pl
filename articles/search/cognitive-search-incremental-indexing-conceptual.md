@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988655"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024147"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Wprowadzenie do przyrostowego wzbogacania i buforowania na platformie Azure Wyszukiwanie poznawcze
 
@@ -26,7 +26,7 @@ Przyrostowe wzbogacanie dodaje buforowanie i stanowe do potoku wzbogacenia, zach
 
 Wzbogacanie przyrostowe dodaje pamięć podręczną do potoku wzbogacania. Indeksator buforuje wyniki z krakingu dokumentu oraz dane wyjściowe każdej umiejętności dla każdego dokumentu. Gdy zestawu umiejętności zostanie zaktualizowana, nastąpi ponowne uruchomienie tylko zmienionych lub podrzędnych. Zaktualizowane wyniki są zapisywane w pamięci podręcznej, a dokument zostanie zaktualizowany w indeksie wyszukiwania lub w sklepie merytorycznym.
 
-Fizycznie pamięć podręczna jest przechowywana w kontenerze obiektów BLOB na koncie usługi Azure Storage. Wszystkie indeksy w ramach usługi wyszukiwania mogą współużytkować to samo konto magazynu dla pamięci podręcznej indeksatora. Każdy indeksator ma przypisany unikatowy i niezmienny identyfikator pamięci podręcznej do kontenera, którego używa.
+Fizycznie pamięć podręczna jest przechowywana w kontenerze obiektów BLOB na koncie usługi Azure Storage. Pamięć podręczna używa również magazynu tabel do wewnętrznego rekordu przetwarzania aktualizacji. Wszystkie indeksy w ramach usługi wyszukiwania mogą współużytkować to samo konto magazynu dla pamięci podręcznej indeksatora. Każdy indeksator ma przypisany unikatowy i niezmienny identyfikator pamięci podręcznej do kontenera, którego używa.
 
 ## <a name="cache-configuration"></a>Konfiguracja pamięci podręcznej
 

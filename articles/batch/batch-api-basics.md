@@ -3,8 +3,8 @@ title: Omówienie dla deweloperów — Azure Batch | Microsoft Docs
 description: Opis funkcji usługi Batch i jej interfejsów API z punktu widzenia programowania.
 services: batch
 documentationcenter: .net
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 08/29/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 6ea5ce71622e98b60d68c1680382dc63c767999d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 4d6c4ff06783489ea7b6c3488cf6746d579b4c6a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029774"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025949"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch
 
@@ -79,7 +79,7 @@ Można uruchomić wiele obciążeń usługi Batch na jednym koncie usługi Batch
 
 ## <a name="azure-storage-account"></a>Konto usługi Azure Storage
 
-Większość rozwiązań usługi Batch używa usługi Azure Storage do przechowywania plików zasobów i plików wyjściowych. Na przykład zadania podrzędne usługi Batch (w tym standardowe, uruchamiania oraz przygotowania i zwolnienia zadań) muszą określać pliki zasobów, które znajdują się na koncie magazynu.
+Większość rozwiązań partii usługi Batch używa usługi Azure Storage do przechowywania plików zasobów i plików wyjściowych. Na przykład zadania podrzędne usługi Batch (w tym standardowe, uruchamiania oraz przygotowania i zwalniania zadań) zwykle określają pliki zasobów, które znajdują się na koncie magazynu.
 
 Usługa Batch obsługuje następujące typy kont usługi Azure Storage:
 
@@ -87,7 +87,7 @@ Usługa Batch obsługuje następujące typy kont usługi Azure Storage:
 * Konta ogólnego przeznaczenia, wersja 1 (GPv1)
 * Konta magazynu obiektów blob (aktualnie obsługiwane w przypadku pul w konfiguracji maszyny wirtualnej)
 
-Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview](../storage/common/storage-account-overview.md) (Omówienie konta usługi Azure Storage).
+Aby uzyskać więcej informacji dotyczących kont magazynu, zobacz temat [Azure Storage account overview (Omówienie konta usługi Azure Storage)](../storage/common/storage-account-overview.md).
 
 Konto magazynu można skojarzyć z kontem usługi Batch podczas tworzenia konta usługi Batch lub później. Wybierając konto magazynu, należy wziąć pod uwagę wymagania dotyczące kosztów i wydajności. Na przykład opcje konta magazynu GPv2 i Blob Storage obsługują większe [limity wydajności i skalowalności](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) w porównaniu z wersją GPv1. (Skontaktuj się z pomocą techniczną platformy Azure, aby zażądać zwiększenia limitu magazynu). Te opcje konta mogą zwiększyć wydajność rozwiązań usługi Batch, które zawierają dużą liczbę zadań równoległych, które odczytują lub zapisują dane na koncie magazynu.
 
@@ -142,8 +142,8 @@ Podczas tworzenia puli usługi Batch można określić konfigurację maszyny wir
     Listę systemów operacyjnych dostępnych dla pul konfiguracji usług Cloud Services można znaleźć w temacie [Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md) (Macierz zgodności zestawów SDK i wersji systemów operacyjnych gościa platformy Azure). Podczas tworzenia puli, która zawiera węzły usług Cloud Services, należy określić rozmiar węzła i jego *rodzinę systemów operacyjnych*. Cloud Services jest wdrażana na platformie Azure szybciej niż w przypadku maszyn wirtualnych z systemem Windows. Jeśli potrzebujesz pul systemu Windows, może się okazać, że usługi Cloud Services oferują korzystną wydajność związaną z czasem wdrażania.
 
     * *Rodzina systemów operacyjnych* określa też, które wersje platformy .NET są instalowane z systemem operacyjnym.
-    * Podobnie jak w przypadku ról procesów roboczych, w ramach usług Cloud Services można określić *wersję systemu operacyjnego*. Więcej informacji o rolach procesów roboczych można znaleźć w temacie [Cloud Services overview](../cloud-services/cloud-services-choose-me.md) (Omówienie usług Cloud Services).
-    * Tak samo jak w przypadku ról procesów roboczych zaleca się określenie `*` dla *wersji systemu operacyjnego*, aby węzły były uaktualniane automatycznie, a niedawno wydane wersje nie wymagały żadnej pracy. Podstawowym warunkiem wybrania określonej wersji systemu operacyjnego jest upewnienie się, czy została zachowana zgodność aplikacji, przez zezwolenie na testowanie zgodności z poprzednimi wersjami przed zezwoleniem na aktualizację wersji. Po weryfikacji można zaktualizować *wersję systemu operacyjnego* dla puli i zainstalować nowy obraz systemu operacyjnego — wszystkie uruchomione zadania podrzędne zostaną przerwane i ponownie umieszczone w kolejce.
+    * Podobnie jak w przypadku ról procesów roboczych w ramach usług Cloud Services można określić *wersję systemu operacyjnego* (więcej informacji o rolach procesów roboczych można znaleźć w sekcji [Cloud Services overview (Omówienie usług Cloud Services)](../cloud-services/cloud-services-choose-me.md)).
+    * Tak samo jak w przypadku ról procesów roboczych zaleca się określenie `*` dla *wersji systemu operacyjnego*, aby węzły były uaktualniane automatycznie, a niedawno wydane wersje nie wymagały żadnej pracy. Podstawowym warunkiem wybrania określonej wersji systemu operacyjnego jest upewnienie się, czy została zachowana zgodność aplikacji, przez zezwolenie na testowanie zgodności z poprzednimi wersjami przed zezwoleniem na aktualizację wersji. Po zakończeniu walidacji można zaktualizować *wersję systemu operacyjnego* dla puli i zainstalować nowy obraz systemu operacyjnego — wszystkie uruchomione zadania podrzędne zostaną przerwane i ponownie umieszczone w kolejce.
 
 W przypadku tworzenia puli musisz wybrać odpowiednią wartość elementu **nodeAgentSkuId**w zależności od systemu operacyjnego podstawowego obrazu dysku VHD. Można uzyskać mapowanie dostępnych identyfikatorów jednostek SKU agenta węzła na odwołania do obrazów systemu operacyjnego, wywołując [listę obsługiwanych jednostek SKU agenta węzła](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) .
 
@@ -245,7 +245,7 @@ Planowanie zadań między pulami odbywa się niezależnie. Między różnymi pul
 
 ### <a name="scheduled-jobs"></a>Zaplanowane zadania
 
-[Harmonogramy zadań][rest_job_schedules] umożliwiają tworzenie zadań cyklicznych w ramach usługi Batch. Harmonogram zadań określa, kiedy uruchamiać zadania, i zawiera specyfikacje zadań do uruchomienia. Możesz wybrać czas trwania harmonogramu — jak długo i kiedy obowiązuje harmonogram — oraz jak często w tym okresie powinny być tworzone zadania.
+[Harmonogramy zadań][rest_job_schedules] umożliwiają tworzenie zadań cyklicznych w ramach usługi Batch. Harmonogram zadań określa, kiedy uruchamiać zadania i zawiera specyfikacje zadań do uruchomienia. Możesz wybrać czas trwania harmonogramu — jak długo i kiedy obowiązuje harmonogram — oraz jak często w tym okresie powinny być tworzone zadania.
 
 ## <a name="task"></a>Zadanie
 
@@ -298,7 +298,7 @@ W przypadku dodawania lub aktualizacji zadania podrzędnego uruchamiania do istn
 >[!NOTE]
 > W usłudze Azure Batch wprowadzono ograniczenia dotyczące łącznego rozmiaru zadania uruchamiania, który obejmuje pliki zasobów oraz zmienne środowiskowe. Jeśli musisz zmniejszyć rozmiar zadania uruchomienia, masz do dyspozycji dwie metody:
 >
-> 1. Można użyć pakietów aplikacji do rozpowszechniania danych lub aplikacji w poszczególnych węzłach puli usługi Batch. Aby uzyskać więcej informacji na temat pakietów aplikacji, zobacz temat [Deploy applications to compute nodes with Batch application packages (Wdrażanie aplikacji w węzłach obliczeniowych za pomocą pakietów aplikacji usługi Batch)](batch-application-packages.md).
+> 1. Można rozpowszechniać dane lub aplikacje w poszczególnych węzłach puli usługi Batch za pomocą aplikacji. Aby uzyskać więcej informacji na temat pakietów aplikacji, zobacz temat [Deploy applications to compute nodes with Batch application packages (Wdrażanie aplikacji w węzłach obliczeniowych za pomocą pakietów aplikacji usługi Batch)](batch-application-packages.md).
 > 2. Możesz ręcznie utworzyć skompresowane archiwum zawierające pliki aplikacji. Przekaż skompresowane archiwum do usługi Azure Storage jako obiekt blob. Określ skompresowane archiwum jako plik zasobów dla zadania podrzędnego uruchamiania. Przed uruchomieniem wiersza polecenia zadania podrzędnego uruchamiania rozpakuj archiwum z wiersza polecenia. 
 >
 >    Aby rozpakować archiwum, można użyć wybranego narzędzia do archiwizacji. Narzędzie użyte do rozpakowywania archiwum trzeba będzie uwzględnić jako plik zasobów zadania podrzędnego uruchamiania.
@@ -314,9 +314,9 @@ Zadanie podrzędne Menedżera zadań jest uruchamiane przed innymi zadaniami pod
 * Zostaje automatycznie przesyłane jako zadanie przez usługę Batch po utworzeniu zadania.
 * Zostaje zaplanowane do wykonania przed innymi zadaniami w ramach zadania.
 * Jego skojarzony węzeł jest ostatnim do usunięcia z puli w przypadku zmniejszania puli.
-* Jego zakończenie może mieć związek z zakończeniem wszystkich zadań w zadaniu.
+* Jego zakończenie może mieć związek z zakończeniem wszystkich zadań podrzędnych w zadaniu.
 * Zadanie podrzędne Menedżera zadań otrzymuje najwyższy priorytet, jeśli musi zostać ponownie uruchomione. Jeśli węzeł bezczynny jest niedostępny, usługa Batch może przerwać jedno z innych uruchomionych zadań podrzędnych w puli, aby zwolnić miejsce na uruchomienie zadania podrzędnego Menedżera zadań.
-* Zadanie Menedżera zadań w ramach jednego zadania nie ma pierwszeństwa przed zadaniami innych zadań. W zadaniach przestrzegane są tylko priorytety na poziomie zadań.
+* Zadanie podrzędne Menedżera zadań w ramach jednego zadania nie ma pierwszeństwa przed zadaniami podrzędnymi innych zadań. W zadaniach przestrzegane są tylko priorytety na poziomie zadań.
 
 ### <a name="job-preparation-and-release-tasks"></a>Zadania przygotowania i zwolnienia zadań
 
@@ -431,7 +431,7 @@ Aby uzyskać więcej informacji na temat konfigurowania puli usługi Batch w sie
 
 Automatyczne skalowanie można włączyć, pisząc [formułę automatycznego skalowania](batch-automatic-scaling.md#automatic-scaling-formulas) i kojarząc ją z pulą. Usługa Batch używa formuły do określenia docelowej liczby węzłów w puli dla kolejnego interwału skalowania (interwału, który możesz skonfigurować). Ustawienia automatycznego skalowania puli można wybrać podczas jej tworzenia. Można również włączyć skalowanie puli później. Masz również możliwość aktualizowania ustawień skalowania już włączonych w puli.
 
-Na przykład może być wymagane zadanie przesyłania dużej liczby zadań do wykonania. Do puli można przypisać formułę skalowania, która dostosowuje liczbę węzłów w puli na podstawie bieżącej liczby zadań podrzędnych w kolejce oraz szybkości ich wykonywania w ramach zadania. Usługa Batch okresowo ocenia formułę i zmienia rozmiar puli w oparciu o obciążenie i innych ustawień formuły. Usługa dodaje węzły w przypadku dużej liczby zadań podrzędnych w kolejce i usuwa węzły w przypadku braku zadań podrzędnych, które znajdują się w kolejce lub są uruchomione.
+Na przykład może być wymagane zadanie przesyłania dużej liczby zadań do wykonania. Do puli można przypisać formułę skalowania, która dostosowuje liczbę węzłów w puli w oparciu o bieżącą liczbę zadań podrzędnych w kolejce oraz szybkość ich wykonywania w ramach zadania. Usługa Batch okresowo ocenia formułę i zmienia rozmiar puli w oparciu o obciążenie i innych ustawień formuły. Usługa dodaje węzły w przypadku dużej liczby zadań podrzędnych w kolejce i usuwa węzły w przypadku braku zadań podrzędnych, które znajdują się w kolejce lub są uruchomione.
 
 Formuła skalowania może opierać się na następujących metrykach:
 
@@ -513,11 +513,11 @@ Aby przeprowadzić dodatkowe debugowanie i rozwiązywanie problemów, można zal
 >
 >
 
-Jeśli chcesz ograniczyć lub wyłączyć dostęp do węzłów obliczeniowych za pośrednictwem protokołu RDP lub SSH, zobacz [Configure or disable remote access to compute nodes in an Azure Batch pool](pool-endpoint-configuration.md) (Konfigurowanie lub wyłączanie dostępu zdalnego do węzłów obliczeniowych w puli usługi Azure Batch).
+Jeśli chcesz ograniczyć lub wyłączyć dostęp do węzłów obliczeniowych za pośrednictwem protokołu RDP lub SSH, zobacz [Configure or disable remote access to compute nodes in an Azure Batch pool (Konfigurowanie lub wyłączanie dostępu zdalnego do węzłów obliczeniowych w puli usługi Azure Batch)](pool-endpoint-configuration.md).
 
 ### <a name="troubleshooting-problematic-compute-nodes"></a>Rozwiązywanie problemów z węzłami obliczeniowymi
 
-W sytuacjach, w których niektóre z zadań kończą się niepowodzeniem, aplikacja kliencka lub usługa Batch mogą badać metadane nieudanych zadań w celu identyfikacji nieprawidłowo funkcjonującego węzła. Każdemu węzłowi w puli zostaje nadany unikatowy identyfikator i węzeł, w którym jest uruchomione zadanie jest dołączony do metadanych zadania. Po zidentyfikowaniu problemu dotyczącego węzła można wykonać kilka powiązanych czynności:
+W sytuacjach, w których niektóre z zadań kończą się niepowodzeniem, aplikacja kliencka lub usługa Batch mogą badać metadane nieudanych zadań w celu identyfikacji nieprawidłowo funkcjonującego węzła. Każdemu węzłowi w puli zostaje nadany unikatowy identyfikator, a węzeł, w którym jest uruchomione zadanie, jest dołączany do metadanych zadania. Po zidentyfikowaniu problemu dotyczącego węzła można wykonać kilka powiązanych czynności:
 
 * **Ponowne uruchamianie węzła** ([rest][rest_reboot] | [.NET][net_reboot])
 

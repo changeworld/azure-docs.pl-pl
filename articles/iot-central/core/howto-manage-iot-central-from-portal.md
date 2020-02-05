@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1e206d9a1b14fc8ff1b92e4eb7217824d81212cf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990181"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018979"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Zarządzaj IoT Central z Azure Portal
 
@@ -41,14 +41,9 @@ Następnie wybierz pozycję **Utwórz**.
 
 Wypełnij wszystkie pola w formularzu. Ten formularz jest podobny do formularza wypełnianego, aby utworzyć aplikacje w witrynie sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) . Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji IoT Central](quick-deploy-iot-central.md) — Szybki Start.
 
-Możesz utworzyć IoT Central aplikację z ogólnie dostępnymi funkcjami, wybierając **starsze aplikacje** jako szablon aplikacji. wszystkie inne szablony aplikacji korzystają z funkcji publicznej wersji zapoznawczej.
-
 ![Utwórz formularz IoT Central](media/howto-manage-iot-central-from-portal/image6a.png)
 
 **Lokalizacja jest lokalizacją** geograficzną, [w której chcesz](https://azure.microsoft.com/global-infrastructure/geographies/) utworzyć aplikację. Zazwyczaj należy wybrać lokalizację, która jest fizycznie najbliżej Twoich urządzeń, aby uzyskać optymalną wydajność. Usługa Azure IoT Central jest obecnie dostępna w **Stany Zjednoczone**, **Australii**, **Azja i Pacyfik**lub w **Europie**.  Po wybraniu lokalizacji nie można przenieść aplikacji do innej lokalizacji później.
-
-> [!NOTE]
-> Szablony aplikacji w wersji zapoznawczej są obecnie dostępne tylko w lokalizacjach **Europy** i **Stany Zjednoczone** .
 
 
 Po wypełnieniu wszystkich pól wybierz pozycję **Utwórz**.

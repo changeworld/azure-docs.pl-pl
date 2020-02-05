@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — Konfigurowanie obciążeń DNS i DHCP dla chmury prywatnej
-description: Opisuje sposób konfigurowania usług DNS i DHCP dla aplikacji i obciążeń działających w środowisku chmury prywatnej CloudSimple
+title: Azure VMware Solutions (Automatyczna synchronizacja) — Konfigurowanie obciążeń DNS i DHCP na potrzeby automatycznej synchronizacji chmury prywatnej
+description: Opisuje sposób konfigurowania usług DNS i DHCP dla aplikacji i obciążeń działających w środowisku chmury prywatnej do automatycznej synchronizacji
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: f2a5cae868f2d8f3689f05dd9d466715ab2008a3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121866"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024691"
 ---
-# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>Konfigurowanie aplikacji DNS i DHCP oraz obciążeń w prywatnej chmurze CloudSimple
+# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-avs-private-cloud"></a>Skonfiguruj aplikacje i obciążenia systemu DNS i DHCP w chmurze prywatnej automatycznej synchronizacji
 
-Aplikacje i obciążenia działające w środowisku chmury prywatnej wymagają rozpoznawania nazw i usług DHCP do wyszukiwania i przypisywania adresów IP.  Aby zapewnić te usługi, wymagana jest właściwa infrastruktura DHCP i DNS.  Można skonfigurować maszynę wirtualną, aby udostępnić te usługi w środowisku chmury prywatnej.  
+Aplikacje i obciążenia działające w środowisku chmury prywatnej do automatycznej synchronizacji wymagają rozpoznawania nazw i usług DHCP do wyszukiwania i przypisywania adresów IP. Aby zapewnić te usługi, wymagana jest właściwa infrastruktura DHCP i DNS. Można skonfigurować maszynę wirtualną, aby udostępnić te usługi w środowisku chmury prywatnej automatycznej. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -27,7 +27,7 @@ Aplikacje i obciążenia działające w środowisku chmury prywatnej wymagają r
 
 ## <a name="linux-based-dns-server-setup"></a>Konfiguracja serwera DNS z systemem Linux
 
-System Linux oferuje różne pakiety do konfigurowania serwerów DNS.  Oto [Przykładowa konfiguracja z DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) z instrukcjami dotyczącymi KONFIGUROWANIA serwera DNS bind "open source".
+System Linux oferuje różne pakiety do konfigurowania serwerów DNS. Oto [Przykładowa konfiguracja z DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) z instrukcjami dotyczącymi KONFIGUROWANIA serwera DNS bind "open source".
 
 ## <a name="windows-based-setup"></a>Konfiguracja oparta na systemie Windows
 

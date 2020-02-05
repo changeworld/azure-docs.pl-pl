@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 114946fa37ae161aeb2efd5b7cd50444c5df4c2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 68d4dbff364f8d3fda72fc2377722031e9cccc3d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906715"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018894"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Tworzenie i uruchamianie zadania w aplikacji IoT Central platformy Azure
 
@@ -38,7 +38,9 @@ W tej sekcji pokazano, jak utworzyć i uruchomić zadanie. Pokazuje, jak zwięks
 
     ![Konfigurowanie zadania](./media/howto-run-a-job/configurejob.png)
 
-6. Po wybraniu urządzeń wybierz pozycję **Uruchom** lub **Zapisz**. Zadanie zostanie wyświetlone na stronie główne **zadania** . W tym widoku można zobaczyć aktualnie uruchomione zadanie i historię wszystkich poprzednio uruchomionych zadań. Uruchomione zadanie zawsze jest wyświetlane w górnej części listy. Zapisane zadanie można otworzyć ponownie w dowolnym momencie, aby kontynuować edycję lub uruchomienie.
+6. Po prawej stronie Wybierz urządzenia, na których chcesz uruchomić zadanie. Zaznaczając górne pole wyboru, wszystkie urządzenia są wybierane w całym zestawie urządzeń. Zaznaczając pole wyboru obok **nazwy**, wybierane są wszystkie urządzenia na bieżącej stronie.
+
+7. Po wybraniu urządzeń wybierz pozycję **Uruchom** lub **Zapisz**. Zadanie zostanie wyświetlone na stronie główne **zadania** . W tym widoku można zobaczyć aktualnie uruchomione zadanie i historię wszystkich poprzednio uruchomionych zadań. Uruchomione zadanie zawsze jest wyświetlane w górnej części listy. Zapisane zadanie można otworzyć ponownie w dowolnym momencie, aby kontynuować edycję lub uruchomienie.
 
     ![Wyświetl zadanie](./media/howto-run-a-job/viewjob.png)
 
@@ -103,6 +105,5 @@ Aby wyświetlić stan zadania i wszystkie urządzenia, których to dotyczy, wybi
 
 Teraz, gdy wiesz już, jak tworzyć zadania w aplikacji IoT Central platformy Azure, Oto kilka następnych kroków:
 
-- [Korzystanie ze zbiorów urządzeń](howto-use-device-sets.md)
 - [Zarządzanie urządzeniami](howto-manage-devices.md)
 - [Wersja szablonu urządzenia](howto-version-device-template.md)

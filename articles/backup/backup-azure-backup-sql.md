@@ -3,18 +3,18 @@ title: Tworzenie kopii zapasowych SQL Server na platformie Azure jako obciążen
 description: Wprowadzenie do tworzenia kopii zapasowych baz danych SQL Server przy użyciu usługi Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b5709eb845d07e3638e0c100c857e5538e293317
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ea55081d6f3b58c6c64c16e64c7a9d0f673ec196
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173260"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025405"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Tworzenie kopii zapasowych SQL Server na platformie Azure jako obciążenia programu DPM
 
 Ten artykuł przeprowadzi Cię przez kroki konfiguracji tworzenia kopii zapasowych baz danych SQL Server przy użyciu Azure Backup.
 
-Aby utworzyć kopię zapasową baz danych SQL Server na platformie Azure, musisz mieć konto platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+Aby utworzyć kopię zapasową baz danych SQL Server na platformie Azure, musisz mieć konto platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 Zarządzanie kopią zapasową bazy danych SQL Server na platformie Azure i odzyskiwanie z platformy Azure obejmuje trzy kroki:
 
@@ -103,7 +103,7 @@ Przed rozpoczęciem upewnij się, że spełniono wszystkie [wymagania wstępne](
 14. Kliknij przycisk **dalej** i wybierz odpowiednią opcję transferu początkowej kopii zapasowej na platformę Azure. Możesz wybrać opcję **automatycznie za pośrednictwem sieci** lub **kopii zapasowej offline**.
 
     * **Automatycznie przez sieć** transferuje dane kopii zapasowej na platformę Azure zgodnie z harmonogramem wybranym dla kopii zapasowej.
-    * Jak działa **kopia zapasowa offline** jest omówiona w [przepływie pracy kopii zapasowej offline w Azure Backup](backup-azure-backup-import-export.md).
+    * Jak działa **kopia zapasowa offline** — [Omówienie kopii zapasowej offline](offline-backup-overview.md).
 
     Wybierz odpowiedni mechanizm transferu, aby wysłać początkową kopię zapasową na platformę Azure, a następnie kliknij przycisk **dalej**.
 15. Po przejrzeniu szczegółów zasad na ekranie **Podsumowanie** kliknij przycisk **Utwórz grupę** , aby zakończyć przepływ pracy. Możesz kliknąć przycisk **Zamknij** i monitorować postęp zadania w obszarze roboczym Monitorowanie.

@@ -2,22 +2,22 @@
 title: Aktualizowanie informacji o grupach w portalu Moje aplikacje — Azure AD
 description: Dowiedz się, jak wyświetlać i aktualizować informacje związane z grupami, w tym wyświetlanie własnych grup, tworzenie nowych grup, wyświetlanie grup, do których należysz, i dołączanie do dowolnych grup, które nie są już częścią.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704956"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022300"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualizowanie informacji o grupach w portalu Moje aplikacje
 
@@ -98,8 +98,6 @@ Jeśli administrator udzielił Ci uprawnień do wyświetlania kafelka **grupy** 
 
 Po utworzeniu grupy można edytować jej szczegóły, w tym aktualizując dowolne z istniejących informacji.
 
-### <a name="to-edit-your-details"></a>Aby edytować szczegóły
-
 1. Wybierz grupę, którą chcesz edytować, na stronie **grupy** , a następnie wybierz pozycję **Edytuj szczegóły** na stronie *&lt;Group_Name&gt;* .
 
     Zostanie wyświetlone okno **Edytuj szczegóły** i można zaktualizować informacje dodane podczas pierwszego tworzenia grupy.
@@ -108,9 +106,7 @@ Po utworzeniu grupy można edytować jej szczegóły, w tym aktualizując dowoln
 
 ## <a name="add-or-remove-a-member"></a>Dodawanie lub usuwanie elementu członkowskiego
 
-Możesz dodawać lub usuwać elementy członkowskie dla dowolnych własnych grup.
-
-### <a name="to-add-or-remove-a-member"></a>Aby dodać lub usunąć członka
+Możesz dodawać lub usuwać członków dla dowolnych grup, których jesteś członkiem.
 
 1. Wybierz grupę, do której chcesz dodać członków, a następnie wybierz pozycję **+** na stronie *&lt;Group_Name&gt;* .
 
@@ -130,8 +126,6 @@ Możesz dodawać lub usuwać elementy członkowskie dla dowolnych własnych grup
 
 Jeśli Twoja organizacja zezwala na to, możesz odnowić grupę Office 365, rozszerzając datę wygaśnięcia.
 
-### <a name="to-renew-a-group"></a>Aby odnowić grupę
-
 1. Wybierz grupę pakietu Office 365, którą chcesz odnowić, a następnie wybierz pozycję **Odnów grupę**.
 
     ![Odnów grupę pakietu Office 365, rozszerzając datę wygaśnięcia](media/my-apps-portal/my-apps-portal-renew-group-link.png)
@@ -144,8 +138,6 @@ Jeśli Twoja organizacja zezwala na to, możesz odnowić grupę Office 365, rozs
 
 W dowolnym momencie możesz usunąć dowolną własną grupę. Jeśli jednak usuniesz grupę przez pomyłkę, musisz ją utworzyć i ponownie dodać członków.
 
-### <a name="to-delete-the-group"></a>Aby usunąć grupę
-
 1. Wybierz grupę, którą chcesz trwale usunąć, a następnie wybierz pozycję **Usuń grupę** na stronie *&lt;Group_Name&gt;* .
 
     ![Strona < Group_name > z wyróżnionym linkiem Usuń grupę](media/my-apps-portal/my-apps-portal-delete-group-link.png)
@@ -156,9 +148,7 @@ W dowolnym momencie możesz usunąć dowolną własną grupę. Jeśli jednak usu
 
 ## <a name="join-an-existing-group"></a>Dołącz do istniejącej grupy
 
-Możesz dołączyć już istniejącą grupę ze strony **grupy** .
-
-### <a name="to-join-or-leave-a-group"></a>Aby dołączyć lub opuścić grupę
+Możesz dołączyć lub opuścić już istniejącą grupę ze strony **grup** .
 
 1. Na stronie **grupy** wybierz pozycję **Dołącz do grupy** w obszarze **grupy, w której się** znajduje.
 
@@ -172,7 +162,7 @@ Możesz dołączyć już istniejącą grupę ze strony **grupy** .
 
 3. Jeśli dołączysz grupę przez pomyłkę lub jeśli nie musisz już jej częścią, możesz wybrać nazwę grupy na stronie **dołączanie grup** , a następnie wybrać pozycję **Opuść grupę**.
 
-    ![Strona Dołącz grupy z wyróżnionym przyciskiem Opuść grupę](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
+    ![Strona Dołącz grupy z wyróżnionym przyciskiem Opuść grupę](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

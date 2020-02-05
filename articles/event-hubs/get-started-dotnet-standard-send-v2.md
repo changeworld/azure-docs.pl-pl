@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: fc9ffc62e765f3b8c8fa418f3189f84686987821
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c8c6e2741eeeadf2afc0c027da8f9cf957c29c95
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907117"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023246"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs — .NET Core (Azure. Messaging. EventHubs) 
 Event Hubs to usługa, która przetwarza duże ilości danych zdarzeń (danych telemetrycznych) z podłączonych urządzeń i aplikacji. Po zebraniu danych do Event Hubs można przechowywać dane przy użyciu klastra magazynu lub zdarzenia procesów. Można na przykład przekształcić dane zdarzeń przy użyciu dostawcy analiz w czasie rzeczywistym. Ta funkcja zbierania i przetwarzania zdarzeń na dużą skalę jest kluczowym składnikiem nowoczesnych architektur aplikacji, w tym Internet rzeczy (IoT). Aby zapoznać się ze szczegółowym omówieniem usługi Event Hubs, zobacz [Omówienie usługi Event Hubs](event-hubs-about.md) i [Funkcje usługi Event Hubs](event-hubs-features.md).
@@ -118,9 +118,9 @@ W tej sekcji pokazano, jak napisać aplikację konsolową .NET Core, która odbi
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Tworzenie usługi Azure Storage i kontenera obiektów BLOB
 W tym przewodniku szybki start użyjesz usługi Azure Storage jako magazynu punktów kontrolnych. Wykonaj następujące kroki, aby utworzyć konto usługi Azure Storage. 
 
-1. [Utwórz konto usługi Azure Storage](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal)
-2. [Tworzenie kontenera obiektów BLOB](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [Pobierz parametry połączenia z kontem magazynu](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+1. [Utwórz konto usługi Azure Storage](/azure/storage/common/storage-account-create?tabs=azure-portal)
+2. [Tworzenie kontenera obiektów BLOB](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+3. [Pobierz parametry połączenia z kontem magazynu](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
     Zanotuj parametry połączenia i nazwę kontenera. Będziesz ich używać w kodzie Receive. 
 

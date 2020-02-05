@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: ddccd02e7157792d942309ae4f74933322f246f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225372"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023535"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia Azure
 
@@ -59,7 +59,7 @@ Inny scenariusz przypadków użycia jest przekazywanie nośników. Przekazywanie
 
 ## <a name="configure-source-ip-affinity-settings"></a>Konfigurowanie ustawień koligacji IP źródła
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portal Azure
 
 Konfigurację trybu dystrybucji można zmienić, modyfikując regułę równoważenia obciążenia w portalu.
 
@@ -74,7 +74,7 @@ Konfigurację trybu dystrybucji można zmienić, modyfikując regułę równowa�
 
 5. Wybierz tryb dystrybucji, a następnie kliknij przycisk **Zapisz**.
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Program Azure PowerShell
 
 W przypadku maszyn wirtualnych wdrożonych przy użyciu Menedżer zasobów należy użyć programu PowerShell, aby zmienić ustawienia dystrybucji modułu równoważenia obciążenia na istniejącą regułę równoważenia obciążenia. Następujące polecenie aktualizuje tryb dystrybucji: 
 
@@ -154,9 +154,9 @@ Poniższy przykład pokazuje, jak zmienić konfigurację trybu dystrybucji modu�
 
 ### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Zmień tryb dystrybucji dla wdrożonej zrównoważonym obciążeniu
 
-Aby zmienić istniejącą konfigurację wdrożenia przy użyciu modelu klasycznym wdrożeniu platformy Azure. Dodaj nagłówek `x-ms-version` i ustaw wartość w wersji 2014-09-01 lub nowszej.
+Aby zmienić istniejącą konfigurację wdrożenia przy użyciu modelu klasycznym wdrożeniu platformy Azure. Dodaj `x-ms-version` nagłówek i ustawia wartość do wersji 2014-09-01 lub nowszej.
 
-#### <a name="request"></a>Żądanie
+#### <a name="request"></a>Prośba
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml
@@ -193,6 +193,6 @@ Jak opisano wcześniej, ustaw `LoadBalancerDistribution` element sourceIP dla ko
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Omówienie usługi Azure Internal Load Balancer](load-balancer-internal-overview.md)
-* [Wprowadzenie do konfigurowania modułu równoważenia obciążenia dostępnego z Internetu](load-balancer-get-started-internet-arm-ps.md)
+* [Omówienie wewnętrznego modułu równoważenia obciążenia na platformie Azure](load-balancer-internal-overview.md)
+* [Wprowadzenie do konfigurowania modułu równoważenia obciążenia dostępnego z Internetu](quickstart-create-standard-load-balancer-powershell.md)
 * [Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md) (Konfigurowanie ustawień limitu czasu bezczynności protokołu TCP dla modułu równoważenia obciążenia)

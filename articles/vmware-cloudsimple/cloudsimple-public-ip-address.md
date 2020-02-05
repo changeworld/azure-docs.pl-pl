@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — publiczny adres IP
-description: Dowiedz się więcej o publicznych adresach IP i ich korzyściach na platformie Azure VMware przez CloudSimple
+title: Azure VMware Solutions (Automatyczna synchronizacja) — publiczny adres IP
+description: Informacje o publicznych adresach IP i ich korzyściach związanych z rozwiązaniami VMware platformy Azure (Automatyczna synchronizacja)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2cb9d0e33da4447760ae0be216c1dd9868c498bd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877680"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024980"
 ---
-# <a name="cloudsimple-public-ip-address-overview"></a>Publiczny adres IP CloudSimple — Omówienie
+# <a name="avs-public-ip-address-overview"></a>Przegląd informacji o publicznym adresie IP dotyczącej automatycznej synchronizacji
 
-Publiczny adres IP umożliwia zasobom internetowym komunikowanie się z zasobami w chmurze prywatnej w prywatnym adresie IP. Prywatny adres IP to maszyna wirtualna lub programowy moduł równoważenia obciążenia w usłudze vCenter w chmurze prywatnej. Publiczny adres IP umożliwia udostępnianie usług uruchomionych w chmurze prywatnej w Internecie.
+Publiczny adres IP pozwala zasobom internetowym komunikować się z ruchem przychodzącym w celu automatycznej synchronizacji zasobów chmury prywatnej przy użyciu prywatnego adresu IP. Prywatny adres IP to maszyna wirtualna lub programowy moduł równoważenia obciążenia w programie vCenter w chmurze prywatnej chmury. Publiczny adres IP pozwala uwidocznić usługi działające w chmurze prywatnej automatycznej synchronizacji z Internetem.
 
 Publiczny adres IP jest przydzielany do prywatnego adresu IP, dopóki nie zostanie przypisany. Publiczny adres IP można przypisać tylko do jednego prywatnego adresu IP.
 

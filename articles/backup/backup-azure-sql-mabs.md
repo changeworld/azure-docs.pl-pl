@@ -3,12 +3,12 @@ title: SQL Server kopii zapasowej przy użyciu Azure Backup Server
 description: W tym artykule przedstawiono procedurę konfiguracji tworzenia kopii zapasowych SQL Server baz danych przy użyciu programu Microsoft Azure Backup Server (serwera usługi MAB).
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: d5e0c49e2cad77e42960fafec9311b31d4cf2601
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 461faa2c88b8db9c1e3b2f9af19783b7d6b7fa07
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172659"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024011"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Tworzenie kopii zapasowych SQL Server na platformie Azure przy użyciu Azure Backup Server
 
@@ -101,7 +101,7 @@ Przed rozpoczęciem upewnij się, że [zainstalowano i przygotowano Azure Backup
 14. Kliknij przycisk **dalej** i wybierz odpowiednią opcję transferu początkowej kopii zapasowej na platformę Azure. Możesz wybrać opcję **automatycznie za pośrednictwem sieci** lub **kopii zapasowej offline**.
 
     * **Automatycznie przez sieć** transferuje dane kopii zapasowej na platformę Azure zgodnie z harmonogramem wybranym dla kopii zapasowej.
-    * Jak działa **kopia zapasowa offline** jest omówiona w [przepływie pracy kopii zapasowej offline w Azure Backup](backup-azure-backup-import-export.md).
+    * Jak działa **kopia zapasowa offline** — [Omówienie kopii zapasowej offline](offline-backup-overview.md).
 
     Wybierz odpowiedni mechanizm transferu, aby wysłać początkową kopię zapasową na platformę Azure, a następnie kliknij przycisk **dalej**.
 15. Po przejrzeniu szczegółów zasad na ekranie **Podsumowanie** kliknij przycisk **Utwórz grupę** , aby zakończyć przepływ pracy. Możesz kliknąć przycisk **Zamknij** i monitorować postęp zadania w obszarze roboczym Monitorowanie.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c40993df8033b9dbc49c81e8db2f9f01c6de37d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0aca5019f4f7fca47195fb8fb821b1af1ae9ec77
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424918"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024249"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Dostęp warunkowy: Blokuj starsze uwierzytelnianie
 
@@ -32,7 +32,7 @@ Poniższe kroki pomogą w tworzeniu zasad dostępu warunkowego w celu blokowania
 1. Nadaj zasadom nazwę. Firma Microsoft zaleca, aby organizacje utworzyły znaczący Standard nazw swoich zasad.
 1. W obszarze **przypisania**wybierz pozycję **Użytkownicy i grupy**
    1. W obszarze **dołączanie**wybierz pozycję **Wszyscy użytkownicy**.
-   1. W obszarze **Wyklucz**wybierz pozycję **Użytkownicy i grupy** , a następnie wybierz wszystkie konta, które muszą mieć możliwość korzystania z starszego uwierzytelniania. 
+   1. W obszarze **Wyklucz**wybierz pozycję **Użytkownicy i grupy** , a następnie wybierz wszystkie konta, które muszą mieć możliwość korzystania z starszego uwierzytelniania. Należy wykluczyć co najmniej jedno konto, aby zapobiec jego zablokowaniu. Jeśli nie wykluczasz żadnego konta, nie będziesz w stanie utworzyć tych zasad.
    1. Wybierz pozycję **Done** (Gotowe).
 1. W obszarze **aplikacje lub akcje w chmurze** wybierz pozycję **wszystkie aplikacje w chmurze**.
    1. Wybierz pozycję **Done** (Gotowe).

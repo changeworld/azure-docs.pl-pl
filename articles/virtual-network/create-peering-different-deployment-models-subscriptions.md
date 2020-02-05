@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 6d45e3d911b8070529c43d9069a3d0d2fa5d3e69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0429bf4968f457e201491db3df16f0004f216f30
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978995"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023280"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Tworzenie komunikacji równorzędnej sieci wirtualnej — różne modele wdrażania i subskrypcje
 
@@ -325,4 +325,4 @@ Po zakończeniu tego samouczka możesz chcieć usunąć zasoby utworzone w samou
 
 - Dokładnie zapoznaj się z ważnymi [ograniczeniami i zachowaniami komunikacji równorzędnej sieci wirtualnej](virtual-network-manage-peering.md#requirements-and-constraints) przed utworzeniem komunikacji równorzędnej sieci wirtualnej do użycia w środowisku produkcyjnym.
 - Dowiedz się więcej na temat wszystkich [ustawień komunikacji równorzędnej sieci wirtualnej](virtual-network-manage-peering.md#create-a-peering).
-- Dowiedz się, jak [utworzyć topologię sieci piasty i szprych](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) przy użyciu komunikacji równorzędnej sieci wirtualnych.
+- Dowiedz się, jak [utworzyć topologię sieci piasty i szprych](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) przy użyciu komunikacji równorzędnej sieci wirtualnych.

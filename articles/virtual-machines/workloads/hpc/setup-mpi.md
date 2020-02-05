@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie interfejsu przekazywania komunikatów dla HPC — w usłudze Azure Virtual Machines | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować MPI for HPC na platformie Azure.
+title: Konfigurowanie interfejsu przekazywania komunikatów dla HPC — Azure Virtual Machines | Microsoft Docs
+description: Dowiedz się, jak skonfigurować MPI dla HPC na platformie Azure.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -12,22 +12,22 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 541e42a72ea604c4d71dc546b14dea2f0857bcc1
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 469e926932ffa11ef9f2a262b78a587ba435549e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797512"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023994"
 ---
-# <a name="set-up-message-passing-interface-for-hpc"></a>Konfigurowanie interfejsu przekazywania komunikatów dla HPC
+# <a name="set-up-message-passing-interface-for-hpc"></a>Skonfiguruj interfejs przekazywania komunikatów dla HPC
 
-Komunikat przekazywania Interface (MPI) obciążenia to znaczną część tradycyjnych obciążeń obliczeń HPC. Funkcja SR-IOV włączone rozmiarów maszyn wirtualnych na platformie Azure Zezwalaj na prawie każdym flavor MPI, które ma być używany. 
+Obciążenia interfejsu przekazywania komunikatów (MPI) są znaczną częścią tradycyjnych obciążeń HPC. Rozmiary maszyn wirtualnych z obsługą wirtualizacji SR-IOV na platformie Azure zezwalają na użycie niemal wszystkich wersji MPI. 
 
-Uruchamianie zadań MPI na maszynach wirtualnych wymaga skonfigurowania partycję kluczy (p-keys) w dzierżawie. Postępuj zgodnie z instrukcjami w [odnajdywanie klucze partycji](#discover-partition-keys) sekcji, aby uzyskać szczegółowe informacje na temat określania wartości p-key.
+Uruchamianie zadań MPI na maszynach wirtualnych wymaga skonfigurowania kluczy partycji (p-Keys) w dzierżawie. Postępuj zgodnie z instrukcjami w sekcji [odnajdywanie kluczy partycji](#discover-partition-keys) , aby uzyskać szczegółowe informacje na temat określania wartości p-Key.
 
 ## <a name="ucx"></a>UCX
 
-[UCX](https://github.com/openucx/ucx) oferuje najwyższą wydajność na IB i współdziałanie z usługami MPICH i OpenMPI.
+[UCX](https://github.com/openucx/ucx) oferuje najlepszą wydajność w systemie IB i współpracuje z MPICH i OpenMPI.
 
 ```bash
 wget https://github.com/openucx/ucx/releases/download/v1.4.0/ucx-1.4.0.tar.gz
@@ -45,7 +45,7 @@ Zainstaluj UCX, jak opisano wcześniej.
 sudo yum install –y openmpi
 ```
 
-Build OpenMPI.
+Kompilacja OpenMPI.
 
 ```bash
 wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz
@@ -55,19 +55,19 @@ cd openmpi-4.0.0
 make -j 8 && make install
 ```
 
-Run OpenMPI.
+Uruchom OpenMPI.
 
 ```bash
 <ompi-install-path>/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml ucx --mca btl ^vader,tcp,openib -x UCX_NET_DEVICES=mlx5_0:1  -x UCX_IB_PKEY=0x0003  ./osu_latency
 ```
 
-Klucz partycji należy sprawdzić, jak wspomniano powyżej.
+Sprawdź swój klucz partycji, jak wspomniano powyżej.
 
 ## <a name="mpich"></a>MPICH
 
 Zainstaluj UCX, jak opisano wcześniej.
 
-Build MPICH.
+Kompilacja MPICH.
 
 ```bash
 wget https://www.mpich.org/static/downloads/3.3/mpich-3.3.tar.gz
@@ -83,11 +83,11 @@ Uruchamianie MPICH.
 <mpich-install-path>/bin/mpiexec -n 2 -hostfile ~/hostfile -env UCX_IB_PKEY=0x0003 -bind-to hwthread ./osu_latency
 ```
 
-Klucz partycji należy sprawdzić, jak wspomniano powyżej.
+Sprawdź swój klucz partycji, jak wspomniano powyżej.
 
 ## <a name="mvapich2"></a>MVAPICH2
 
-Build MVAPICH2.
+Kompilacja MVAPICH2.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.tar.gz
@@ -105,7 +105,7 @@ Uruchamianie MVAPICH2.
 
 ## <a name="platform-mpi-community-edition"></a>Platforma MPI Community Edition
 
-Zainstaluj wymagane pakiety dla Platform MPI.
+Zainstaluj wymagane pakiety dla MPI platformy.
 
 ```bash
 sudo yum install libstdc++.i686
@@ -118,15 +118,15 @@ Postępuj zgodnie z procesem instalacji.
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-[Pobierz Intel MPI](https://software.intel.com/mpi-library/choose-download).
+[Pobierz procesor Intel MPI](https://software.intel.com/mpi-library/choose-download).
 
-Zmień ustawienia zmiennej środowiskowej I_MPI_FABRICS w zależności od wersji. Intel MPI 2018, można użyć `I_MPI_FABRICS=shm:ofa` w przypadku 2019 r, użyj `I_MPI_FABRICS=shm:ofi`.
+Zmień zmienną środowiskową I_MPI_FABRICS w zależności od wersji. W przypadku procesora Intel MPI 2018 Użyj `I_MPI_FABRICS=shm:ofa` i dla 2019, użyj `I_MPI_FABRICS=shm:ofi`.
 
-Przypinanie proces działa prawidłowo dla 15, 30 i 60 Samodzielnym domyślnie.
+Przypinanie procesów działa prawidłowo domyślnie dla 15, 30 i 60 PPN.
 
-## <a name="osu-mpi-benchmarks"></a>Testy porównawcze OSU MPI
+## <a name="osu-mpi-benchmarks"></a>OSU MPI — testy porównawcze
 
-[Pobierz testy porównawcze MPI OSU](http://mvapich.cse.ohio-state.edu/benchmarks/) i untar.
+[Pobierz testy OSU MPI](http://mvapich.cse.ohio-state.edu/benchmarks/) i untar.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.5.tar.gz
@@ -134,26 +134,26 @@ tar –xvf osu-micro-benchmarks-5.5.tar.gz
 cd osu-micro-benchmarks-5.5
 ```
 
-Tworzenie testów porównawczych, za pomocą określonej biblioteki MPI:
+Tworzenie testów porównawczych przy użyciu określonej biblioteki MPI:
 
 ```bash
 CC=<mpi-install-path/bin/mpicc>CXX=<mpi-install-path/bin/mpicxx> ./configure 
 make
 ```
 
-Testy porównawcze MPI podlegają `mpi/` folderu.
+MPIe testy porównawcze znajdują się w folderze `mpi/`.
 
 
-## <a name="discover-partition-keys"></a>Odkryj kluczy partycji
+## <a name="discover-partition-keys"></a>Wykryj klucze partycji
 
-Odkryj klucze partycji (p-keys) do komunikacji z innymi maszynami wirtualnymi w tej samej dzierżawy (zestaw dostępności lub zestawie skalowania maszyn wirtualnych).
+Wykryj klucze partycji (p-Keys), aby komunikować się z innymi maszynami wirtualnymi w ramach tej samej dzierżawy (zestawu dostępności lub zestawu skalowania maszyn wirtualnych).
 
 ```bash
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 ```
 
-Większy z nich jest klucza dzierżawy, który powinien być używany z MPI. Przykład: Jeśli dostępne są następujące klucze p, 0x800b powinna służyć MPI.
+Większa z nich to klucz dzierżawy, który powinien być używany z MPI. Przykład: Jeśli następujące są klucze p, 0x800b należy używać z MPI.
 
 ```bash
 cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
@@ -162,14 +162,14 @@ cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 0x7fff
 ```
 
-Użyj partycji innej niż domyślny (0x7fff) Klucz partycji. UCX wymaga BITEM p-key, zostaje wyczyszczona. Na przykład ustawić UCX_IB_PKEY jako 0x000b dla 0x800b.
+Użyj partycji innej niż domyślna (0x7FFF). UCX wymaga wyczyszczenia MSBu p-Key. Na przykład ustaw UCX_IB_PKEY jako 0x000b dla 0x800b.
 
-Należy również zauważyć, że tak długo, jak istnieje dzierżawy (AVSet lub zestawu skalowania maszyn wirtualnych), PKEYs pozostają takie same. Ta zasada obowiązuje, nawet wtedy, gdy węzły zostaną dodane lub usunięte. Nowych dzierżaw uzyskać różne PKEYs.
+Należy również pamiętać, że dopóki dzierżawa (AVSet lub VMSS) istnieje, PKEYs pozostaje taka sama. Jest to prawdziwe nawet po dodaniu lub usunięciu węzłów. Nowi dzierżawcy uzyskują różne PKEYs.
 
 
 ## <a name="set-up-user-limits-for-mpi"></a>Konfigurowanie limitów użytkowników dla MPI
 
-Konfigurowanie limitów użytkowników dla MPI.
+Skonfiguruj limity użytkowników dla MPI.
 
 ```bash
 cat << EOF | sudo tee -a /etc/security/limits.conf
@@ -183,7 +183,7 @@ EOF
 
 ## <a name="set-up-ssh-keys-for-mpi"></a>Konfigurowanie kluczy SSH dla MPI
 
-Konfigurowanie kluczy SSH dla typów MPI, które tego wymagają.
+Skonfiguruj klucze SSH dla typów MPI, które tego wymagają.
 
 ```bash
 ssh-keygen -f /home/$USER/.ssh/id_rsa -t rsa -N ''
@@ -192,11 +192,12 @@ Host *
     StrictHostKeyChecking no
 EOF
 cat /home/$USER/.ssh/id_rsa.pub >> /home/$USER/.ssh/authorized_keys
+chmod 600 /home/$USER/.ssh/authorized_keys
 chmod 644 /home/$USER/.ssh/config
 ```
 
-Powyższej składni zakłada udostępnionego katalogu macierzystego, innego katalogu .ssh muszą zostać skopiowane do każdego węzła.
+Powyższa składnia zakłada, że udostępniony katalog macierzysty, w przeciwnym razie należy skopiować katalog SSH do każdego węzła.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) na platformie Azure.

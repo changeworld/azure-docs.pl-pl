@@ -2,20 +2,20 @@
 title: Szybki start na platformie Azure — uruchamianie zadania usługi Batch — .NET
 description: Szybkie uruchamianie Azure Batch przykładowego zadania i zadań z C# aplikacji za pomocą biblioteki klienckiej usługi Batch .NET.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: a11bc1d7b9c1f3443e9d066ac18d172ff027169e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 809ca9d9aafa813e05dea81eb05616eefcc65472
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029393"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017211"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Azure Batch za pomocą interfejsu API platformy .NET
 
@@ -119,7 +119,7 @@ Do interakcji z kontem magazynu aplikacja używa biblioteki klienta usługi Azur
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-Za pomocą odwołania `blobClient` aplikacja tworzy kontener w ramach konta magazynu i przekazuje pliki danych do kontenera. Pliki w magazynie są zdefiniowane jako obiekty [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) usługi Batch, które następnie mogą zostać pobrane przez tę usługę do węzłów obliczeniowych.
+Za pomocą odwołania `blobClient` aplikacja tworzy kontener w ramach konta magazynu i przekazuje pliki danych do kontenera. Pliki w magazynie są definiowane jako obiekty [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) usługi Batch, które następnie mogą być pobierane przez tę usługę do węzłów obliczeniowych.
 
 ```csharp
 List<string> inputFilePaths = new List<string>

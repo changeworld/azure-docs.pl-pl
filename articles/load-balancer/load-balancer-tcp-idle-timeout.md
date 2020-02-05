@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 565707b0e081a495f01f369125584038981b4ae8
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 39cd5b5d6e9d6007994ccc29732186ec6a8bdc2e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834662"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023892"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Skonfiguruj ustawienia limitu czasu bezczynności protokołu TCP dla Azure Load Balancer
 
@@ -65,6 +65,6 @@ $lb | Set-AzLoadBalancerRuleConfig -Name myLBrule -IdleTimeoutInMinutes 15
 
 [Przegląd wewnętrznego modułu równoważenia obciążenia](load-balancer-internal-overview.md)
 
-[Wprowadzenie do konfigurowania modułu równoważenia obciążenia dostępnego z Internetu](load-balancer-get-started-internet-arm-ps.md)
+[Wprowadzenie do konfigurowania modułu równoważenia obciążenia dostępnego z Internetu](quickstart-create-standard-load-balancer-powershell.md)
 
 [Configure a load balancer distribution mode](load-balancer-distribution-mode.md) (Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia)

@@ -4,12 +4,12 @@ description: Dowiedz się, jak Azure Backup umożliwia wysyłanie danych z sieci
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 162d129eaea83ef6623daaa063e8a088c021e25d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997364"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022617"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Przepływ pracy tworzenia kopii zapasowych w trybie offline w usłudze Azure Backup
 
@@ -75,6 +75,15 @@ W tej sekcji opisano przepływ pracy offline kopii zapasowych, dzięki czemu dan
 
     ![Ekran importowania](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
+2. Wybierz opcję **transfer przy użyciu moich własnych dysków**.
+
+    >[!NOTE]
+    >Zalecamy użycie opcji Azure Data Box, aby transferować dane początkowej kopii zapasowej do trybu offline. Ta opcja umożliwia zaoszczędzenie nakładu pracy wymaganego do pozyskania własnych dysków zgodnych z platformą Azure przez dostarczenie urządzeń usługi Azure Data Box, bezpiecznych i niezwiązanych z dostępem do danych, do których dane kopii zapasowej mogą być bezpośrednio zapisywane przez agenta MARS.
+
+3. Kliknij przycisk **dalej** i wprowadź uważnie dane wejściowe:
+
+    ![Wprowadź szczegóły dysku](./media/backup-azure-backup-import-export/your-disk-details.png)
+
    Opis danych wejściowych jest następujący:
 
     * **Lokalizacja tymczasowa**: tymczasowa lokalizacja przechowywania, w której zapisano początkową kopię zapasową. Lokalizacja przejściowa może znajdować się w udziale sieciowym lub na komputerze lokalnym. Jeśli komputer kopii i komputer źródłowy są inne, zalecamy określenie pełnej ścieżki sieciowej lokalizacji tymczasowej.
@@ -85,15 +94,15 @@ W tej sekcji opisano przepływ pracy offline kopii zapasowych, dzięki czemu dan
   
    Podaj dane wejściowe na ekranie i kliknij przycisk **dalej**. Zapisz podaną *lokalizację przemieszczania* i *nazwę zadania importowania platformy Azure*, ponieważ te informacje są wymagane do przygotowania dysków.
 
-2. Po wyświetleniu monitu zaloguj się do subskrypcji platformy Azure. Musisz się zalogować, aby Azure Backup mógł utworzyć aplikację Azure Active Directory i udostępnić wymagane uprawnienia dostępu do usługi Azure import.
+4. Po wyświetleniu monitu zaloguj się do subskrypcji platformy Azure. Musisz się zalogować, aby Azure Backup mógł utworzyć aplikację Azure Active Directory i udostępnić wymagane uprawnienia dostępu do usługi Azure import.
 
-    ![Utwórz kopię zapasową teraz](./media/backup-azure-backup-import-export/azurelogin.png)
+    ![Utwórz kopię zapasową teraz](./media/backup-azure-backup-import-export/azure-login.png)
 
-3. Ukończ przepływ pracy, a następnie w konsoli agenta Azure Backup kliknij pozycję **Utwórz kopię zapasową teraz**.
+5. Ukończ przepływ pracy, a następnie w konsoli agenta Azure Backup kliknij pozycję **Utwórz kopię zapasową teraz**.
 
     ![Utwórz kopię zapasową teraz](./media/backup-azure-backup-import-export/backupnow.png)
 
-4. Na stronie Potwierdzenie kreatora kliknij pozycję **Utwórz kopię zapasową**. Początkowa kopia zapasowa jest zapisywana w obszarze tymczasowym w ramach instalacji.
+6. Na stronie Potwierdzenie kreatora kliknij pozycję **Utwórz kopię zapasową**. Początkowa kopia zapasowa jest zapisywana w obszarze tymczasowym w ramach instalacji.
 
    ![Potwierdź, że wszystko jest gotowe do wykonania kopii zapasowej teraz](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
@@ -133,7 +142,7 @@ Narzędzie *AzureOfflineBackupDiskPrep* przygotowuje dyski SATA, które są wysy
 
 3. Wprowadź literę dysku bez kropki końcowej dla zainstalowanego dysku, który ma zostać przygotowany do przeniesienia na platformę Azure.
 4. Potwierdź formatowanie dysku po wyświetleniu monitu.
-5. Zostanie wyświetlony monit o zalogowanie się do subskrypcji platformy Azure. Wprowadź swoje poświadczenia.
+5. Zostanie wyświetlony monit o zalogowanie się do subskrypcji platformy Azure. Podaj swoje poświadczenia.
 
     ![Dane wejściowe narzędzia przygotowywania dysku platformy Azure](./media/backup-azure-backup-import-export/signindiskprep.png) <br/>
 
@@ -199,11 +208,10 @@ Po pomyślnym zakończeniu zadania importowania dane początkowej kopii zapasowe
 
 W czasie następnej zaplanowanej kopii zapasowej Azure Backup wykonuje przyrostową kopię zapasową.
 
-### <a name="cleaning-up-resources"></a>Oczyszczanie zasobów
+### <a name="cleaning-up-resources"></a>Czyszczenie zasobów
 
 Po zakończeniu początkowej kopii zapasowej można bezpiecznie usunąć dane zaimportowane do kontenera usługi Azure Storage i dane kopii zapasowej w lokalizacji tymczasowej.
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać odpowiedzi na pytania dotyczące przepływu pracy importowania/eksportowania platformy Azure, zapoznaj się z tematem [transfer danych do magazynu obiektów BLOB za pomocą usługi Microsoft Azure Import/Export](../storage/common/storage-import-export-service.md).
-

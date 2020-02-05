@@ -2,19 +2,19 @@
 title: Szybki start na platformie Azure — uruchamianie zadania usługi Batch — portal
 description: Dowiedz się, jak za pomocą Azure Portal utworzyć konto w usłudze Batch, pulę węzłów obliczeniowych oraz zadanie, które uruchamia podstawowe zadania w puli.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 9a166d20e402ed7b23fda4745c50aaf1a505b3aa
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 8d725834cb2dd86163909b2ae598e61026ae4bb9
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932267"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024113"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch w witrynie Azure Portal
 

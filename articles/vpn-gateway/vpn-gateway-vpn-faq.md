@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895982"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016752"
 ---
 # <a name="vpn-gateway-faq"></a>Brama VPN Gateway — często zadawane pytania
 
@@ -34,7 +34,7 @@ Można nawiązać połączenie z wieloma lokalizacjami za pomocą programu Windo
 
 Nie. 
 
-### <a name="what-are-my-cross-premises-connection-options"></a>Jakie są dostępne możliwości połączeń obejmujących wiele lokalizacji?
+### <a name="what-are-my-cross-premises-connection-options"></a>Jakie są moje opcje łączności między różnymi lokalizacjami?
 
 Obsługiwane są następujące połączenia obejmujące wiele lokalizacji:
 
@@ -68,14 +68,15 @@ Bramy oparte na zasadach wdrażają sieci VPN oparte na zasadach. Sieci VPN opar
 
 Bramy oparte na trasach wdrażają sieci VPN oparte na trasach. Sieci VPN oparte na trasach używają „tras” w funkcji przesyłania dalej IP lub tabeli routingu do kierowania pakietów do odpowiednich interfejsów tuneli. W dalszej kolejności interfejsy tuneli szyfrują lub odszyfrowują pakiety wchodzące do tuneli lub wychodzące z nich. Zasady lub selektor ruchu dla sieci VPN opartych na trasach są skonfigurowane jako każdy z każdym (lub symbole wieloznaczne).
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Czy mogę zaktualizować moją bramę sieci VPN opartą na zasadach do opartej na trasach?
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Czy mogę zaktualizować bramę sieci VPN opartą na zasadach, aby była oparta na trasach?
+
 Nie. Nie można zmienić typu bramy sieci wirtualnej platformy Azure z zasad opartych na trasach ani w inny sposób. Bramę należy usunąć i utworzyć ponownie. Cały taki proces zajmie około 60 minut. Adres IP bramy ani klucz wstępny (PSK) nie zostaną zachowane.
 1. Usuń wszystkie połączenia skojarzone z bramą do usunięcia.
 1. Usuń bramę:
-1. [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-1. [Azure PowerShell — wersja klasyczna](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Utwórz nową bramę odpowiedniego typu i zakończ konfigurowanie sieci VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   - [Azure PowerShell — klasyczny](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [Utwórz nową bramę żądanego typu i Ukończ konfigurację sieci VPN](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Czy potrzebuję podsieci „GatewaySubnet”?
 
@@ -89,11 +90,15 @@ Nie.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Czy można użyć adresu IP bramy sieci VPN przed jej utworzeniem?
 
-Nie. Aby uzyskać adres IP bramy, należy ją najpierw utworzyć. Adres IP ulegnie zmianie, jeśli brama VPN zostanie usunięta i ponownie utworzona.
+Bramy strefowo nadmiarowych i stref (jednostki SKU bramy, które mają _AZ_ w nazwie) są zależne od standardowego zasobu adresu IP platformy Azure o _standardowej jednostce SKU_ . Zasoby publicznych adresów IP jednostki SKU platformy Azure w warstwie Standardowa muszą używać metody alokacji statycznej. W związku z tym będziesz mieć publiczny adres IP dla bramy sieci VPN zaraz po utworzeniu zasobu publicznego adresu IP jednostki SKU, którego zamierzasz używać.
+
+W przypadku bram nadmiarowych i niestrefowych (jednostki SKU bramy, które _nie_ _mają nazwy_ ) nie można uzyskać adresu IP bramy sieci VPN przed jego utworzeniem. Adres IP zmienia się tylko w przypadku usunięcia i ponownego utworzenia bramy sieci VPN.
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>Czy mogę zażądać przypisania statycznego publicznego adresu IP do mojej bramy sieci VPN?
 
-Nie. Obsługiwane jest tylko dynamiczne przypisywanie adresów IP. Nie oznacza to jednak, że adres IP zmienia się po przypisaniu go do bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana adresu IP bramy sieci VPN, jest usunięcie bramy i jej ponowne utworzenie. Publiczny adres IP bramy sieci VPN nie zmienia się w przypadku zmiany rozmiaru, zresetowania ani w przypadku przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień bramy sieci VPN. 
+Jak wspomniano powyżej, strefy nadmiarowe i bramy strefowe (jednostki SKU bramy, które _AZ_ w nazwie) są zależne od standardowego zasobu adresu IP platformy Azure w _warstwie Standardowa_ . Zasoby publicznych adresów IP jednostki SKU platformy Azure w warstwie Standardowa muszą używać metody alokacji statycznej.
+
+W przypadku bram nadmiarowych i niestrefowych (jednostki SKU bramy, które _nie_ _mają nazwy_ ), obsługiwane jest tylko dynamiczne przypisywanie adresów IP. Nie oznacza to jednak, że adres IP zmienia się po przypisaniu go do bramy sieci VPN. Jedyna zmiana adresu IP bramy sieci VPN polega na tym, że brama została usunięta, a następnie ponownie utworzona. Publiczny adres IP bramy sieci VPN nie zmienia się w przypadku zmiany rozmiaru, zresetowania lub przeprowadzenia innej wewnętrznej konserwacji i uaktualnień bramy sieci VPN.
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>W jaki sposób następuje uwierzytelnienie tunelu VPN?
 

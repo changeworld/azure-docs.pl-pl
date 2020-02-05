@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 6fa4521cb50ecfc37004cbf9cff08644dc53f000
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6b89b667855d827acfb7c181da014cd0d0b4bfc4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990651"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022107"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Samouczek: Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 W tym samouczku przedstawiono kompilacje rozwiązań, w jaki sposób można utworzyć aplikację analityczną usługi Azure IoT Central w sklepie. Przykładowa aplikacja dotyczy sklepu detalicznego. Jest to rozwiązanie dla typowych potrzeb firmy, które należy monitorować i dostosowywać do warunków użytkowania i środowiska.
 
@@ -64,7 +64,7 @@ Aby utworzyć nową aplikację usługi Azure IoT Central:
 
 1. Wybierz pozycję **sprzedaż detaliczna**.  Na stronie detalicznej są wyświetlane kilka szablonów aplikacji sieci Web.
 
-Aby utworzyć nową aplikację do wyewidencjonowania analizy w sklepie, która korzysta z funkcji w wersji zapoznawczej:  
+Aby utworzyć nową aplikację do wyewidencjonowania analizy w sklepie:  
 
 1. Wybierz szablon aplikacja **do analizy w sklepie — wyewidencjonowywanie** . Ten szablon zawiera szablony urządzeń dla wszystkich urządzeń używanych w samouczku z wyjątkiem czujników RuuviTag. Szablon zawiera również pulpit nawigacyjny operatora służący do monitorowania wyewidencjonowywania i warunków środowiska oraz stanu urządzenia. 
 
@@ -75,7 +75,7 @@ Aby utworzyć nową aplikację do wyewidencjonowania analizy w sklepie, która k
 
 1. Jeśli masz subskrypcję platformy Azure, wprowadź swój *katalog, subskrypcję platformy Azure i region*. Jeśli nie masz subskrypcji, możesz włączyć **7-dniową bezpłatną wersję próbną** i uzupełnić wymagane informacje kontaktowe.  
 
-    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](../preview/quick-deploy-iot-central.md).
+    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](../core/quick-deploy-iot-central.md).
 
 1. Wybierz pozycję **Utwórz**.
 
@@ -84,6 +84,7 @@ Aby utworzyć nową aplikację do wyewidencjonowania analizy w sklepie, która k
     ![Azure IoT Central tworzenie informacji dotyczących rozliczeń aplikacji](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
 
 ## <a name="customize-application-settings"></a>Dostosuj ustawienia aplikacji
+
 Jako Konstruktor można zmienić kilka ustawień, aby dostosować środowisko użytkownika w aplikacji. W tej sekcji wybierzesz motyw wstępnie zdefiniowanej aplikacji. Opcjonalnie dowiesz się, jak utworzyć motyw niestandardowy i zaktualizować obraz aplikacji. Motyw niestandardowy pozwala ustawić kolory przeglądarki aplikacji, ikonę przeglądarki i logo aplikacji, które pojawiają się w czasopismu.
 
 Aby wybrać wstępnie zdefiniowaną kompozycję aplikacji:
@@ -162,7 +163,7 @@ Następnie dostosuj szablony urządzeń, dodając właściwości chmury. Właśc
 
 Po trzecie Dostosuj szablony urządzeń, tworząc widoki niestandardowe. Widoki umożliwiają operatorom wizualizację danych telemetrycznych i metadanych dla urządzeń, takich jak metryki i kondycja urządzenia.
 
-W tym miejscu są używane dwie pierwsze metody dostosowywania szablonu urządzenia do czujników RuuviTag. Aby uzyskać informacje na temat tworzenia widoków dla czujników, zobacz temat [Dodawanie symulowanego urządzenia do aplikacji do IoT Central](../preview/quick-create-pnp-device.md) — Szybki Start.
+W tym miejscu są używane dwie pierwsze metody dostosowywania szablonu urządzenia do czujników RuuviTag. Aby uzyskać informacje na temat tworzenia widoków dla czujników, zobacz temat [Dodawanie symulowanego urządzenia do aplikacji do IoT Central](../core/quick-create-pnp-device.md) — Szybki Start.
 
 Aby dostosować wbudowane interfejsy szablonu urządzenia RuuviTag:
 
@@ -202,7 +203,7 @@ Określ następujące wartości, aby utworzyć niestandardową właściwość do
 
 1. Wprowadź *lokalizację* wartości dla **nazwy wyświetlanej**. Ta wartość jest automatycznie kopiowana do pola **Nazwa** , która jest przyjazną nazwą właściwości. Możesz użyć skopiowanej wartości lub zmienić ją.
 
-1. Wybierz pozycję *ciąg* na liście rozwijanej **schematu** . Typ ciągu umożliwia skojarzenie ciągu nazwy lokalizacji z dowolnym urządzeniem na podstawie szablonu. Na przykład możesz skojarzyć obszar w sklepie z każdym urządzeniem. Opcjonalnie można ustawić **Typ semantyczny** właściwości na *Lokalizacja*, a to ustawienie automatycznie ustawia **schemat** na wartość *geopunkt*. Pozwala to skojarzyć współrzędne GPS z urządzeniem. 
+1. Wybierz pozycję *ciąg* na liście rozwijanej **schematu** . Typ ciągu umożliwia skojarzenie ciągu nazwy lokalizacji z dowolnym urządzeniem na podstawie szablonu. Na przykład możesz skojarzyć obszar w sklepie z każdym urządzeniem. Opcjonalnie można ustawić **Typ semantyczny** właściwości na *Lokalizacja*, a to ustawienie automatycznie ustawia **schemat** na wartość *geopunkt*. Pozwala on skojarzyć współrzędne GPS z urządzeniem. 
 
 1. Ustaw **minimalną długość** na *2*. 
 
@@ -225,12 +226,12 @@ W tym samouczku do kompilowania aplikacji należy użyć następującego zestawu
 - Czujnik **zajętości** symulowanej. Czujnik symulowany jest zawarty w szablonie aplikacji, więc nie trzeba go tworzyć. 
 
 > [!NOTE]
-> Jeśli nie masz prawdziwych urządzeń, możesz nadal wykonać ten samouczek, tworząc symulowane czujniki RuuviTag. Poniższe wskazówki obejmują procedurę tworzenia symulowanych RuuviTag. Nie trzeba tworzyć symulowanej bramy.
+> Jeśli nie masz prawdziwych urządzeń, możesz nadal wykonać ten samouczek, tworząc symulowane czujniki RuuviTag. Poniższe wskazówki obejmują procedurę tworzenia symulowanych RuuviTag. Nie musisz tworzyć symulowanej bramy.
 
-Wykonaj kroki opisane w poniższych dwóch artykułach, aby połączyć prawdziwą bramę Rigado i czujniki RuuviTag. Po zakończeniu Wróć do tego samouczka. Ponieważ szablony urządzeń zostały już utworzone w tym samouczku, nie trzeba ich ponownie tworzyć w następującym zestawie wskazówek.
+Wykonaj kroki opisane w poniższych dwóch artykułach, aby połączyć prawdziwą bramę Rigado i czujniki RuuviTag. Po zakończeniu Wróć do tego samouczka. Ponieważ szablony urządzeń zostały już utworzone w tym samouczku, nie trzeba ich utworzyć ponownie w następującym zestawie wskazówek.
 
-- Aby nawiązać połączenie z bramą usługi Rigado, zobacz [łączenie Rigado kaskada 500 z aplikacją IoT Central platformy Azure](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- Aby połączyć czujniki RuuviTag, zobacz [łączenie czujnika RuuviTag z aplikacją IoT Central platformy Azure](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Możesz również użyć tych wskazówek, aby utworzyć dwie symulowane czujniki, jeśli jest to konieczne.
+- Aby nawiązać połączenie z bramą usługi Rigado, zobacz [łączenie Rigado kaskada 500 z aplikacją IoT Central platformy Azure](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+- Aby połączyć czujniki RuuviTag, zobacz [łączenie czujnika RuuviTag z aplikacją IoT Central platformy Azure](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Możesz również użyć tych wskazówek, aby utworzyć dwie symulowane czujniki, jeśli jest to konieczne.
 
 ## <a name="add-rules-and-actions"></a>Dodawanie reguł i akcji
 W ramach korzystania z czujników w aplikacji IoT Central platformy Azure do monitorowania warunków można utworzyć reguły uruchamiania akcji w przypadku spełnienia określonych warunków. Reguła jest skojarzona z szablonem urządzenia i co najmniej jednym urządzeniem oraz zawiera warunki, które muszą zostać spełnione na podstawie danych telemetrycznych lub zdarzeń urządzeń. Reguła ma także co najmniej jedną skojarzoną akcję. Akcje mogą obejmować wysyłanie powiadomień e-mail lub wyzwalanie akcji elementu webhook w celu wysyłania danych do innych usług. Szablon aplikacji **do analizy w sklepie** zawiera kilka wstępnie zdefiniowanych reguł dla urządzeń w aplikacji.
@@ -249,7 +250,7 @@ Aby utworzyć regułę:
 
 1. Wybierz szablon urządzenia RuuviTag w polu **zakresy**. Zdefiniowana reguła będzie miała zastosowanie do wszystkich czujników opartych na tym szablonie. Opcjonalnie można utworzyć filtr, który będzie stosował regułę tylko do zdefiniowanego podzestawu czujników. 
 
-1. Wybierz `Relative humidity` jako dane **telemetryczne**. Jest to funkcja urządzenia dostosowana w poprzednim kroku.
+1. Wybierz `Relative humidity` jako dane **telemetryczne**. Jest to możliwość urządzenia dostosowana w poprzednim kroku.
 
 1. Wybierz `Is greater than` jako **operatora**. 
 
