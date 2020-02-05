@@ -2,31 +2,38 @@
 title: Lokalizowanie & korzystanie z aplikacji w portalu Moje aplikacje — Azure AD
 description: Dowiedz się, jak znaleźć Portal moje aplikacje, a następnie jak uzyskać dostęp do aplikacji opartych na chmurze w organizacji.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c15580481c153a58122db593f678998be485b57d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705007"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022309"
 ---
-# <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>Lokalizowanie aplikacji opartych na chmurze w organizacji i korzystanie z nich w portalu My Apps
+# <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Logowanie i uruchamianie aplikacji z poziomu portalu My Apps
 
-Możesz użyć swojego konta służbowego z portalem **Moje aplikacje** oparte na sieci Web, aby wyświetlać i uruchamiać wiele aplikacji opartych na chmurze w organizacji, aktualizować niektóre informacje o profilu i koncie, wyświetlać informacje o **grupach** oraz przeprowadzać **przeglądy dostępu** do aplikacji i grup. Jeśli nie masz dostępu do portalu **Moje aplikacje** , musisz skontaktować się z pomocą techniczną, aby uzyskać odpowiednie uprawnienia.
+Możesz użyć konta służbowego z portalem **Moje aplikacje** oparte na sieci Web, aby:
+
+- Wyświetlanie i uruchamianie wielu aplikacji opartych na chmurze w organizacji
+- Aktualizowanie informacji o profilu i koncie
+- Wyświetlanie informacji o **grupach**
+- Wykonaj **przeglądy dostępu** do aplikacji i grup
+
+Jeśli nie masz dostępu do portalu **Moje aplikacje** , skontaktuj się z pomocą techniczną, aby uzyskać odpowiednie uprawnienia.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, możesz znaleźć więcej informacji na temat sposobu konfigurowania i zarządzania aplikacjami opartymi na chmurze w [dokumentacji zarządzania aplikacjami](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> [!Important]
+> Ta zawartość jest przeznaczona dla użytkowników moich aplikacji. Jeśli jesteś administratorem, możesz znaleźć więcej informacji na temat sposobu konfigurowania i zarządzania aplikacjami opartymi na chmurze w [dokumentacji zarządzania aplikacjami](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="supported-browsers"></a>Obsługiwane przeglądarki
 
@@ -66,7 +73,8 @@ Pobierz i zainstaluj rozszerzenie na podstawie używanej przeglądarki:
 
 Ikona jest dodawana po prawej stronie paska **adresu** , co pozwala na logowanie i dostosowanie rozszerzenia.
 
-#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>Aby zmienić portal My Apps przy użyciu rozszerzenia
+## <a name="to-change-your-my-apps-portal-using-the-extension"></a>Aby zmienić portal My Apps przy użyciu rozszerzenia
+
 Możesz wybrać liczbę aplikacji, które mają być wyświetlane w **ostatnio używanej** sekcji, i zdecydować, czy zezwolić wewnętrznym adresom URL organizacji na przekierowywanie.
 
 1. Wybierz ikonę nowe **Moje aplikacje bezpieczne logowanie** ![ikona rozszerzenia](media/my-apps-portal/my-apps-portal-extension-icon.png) z prawej strony paska **adresu** , a następnie wybierz pozycję **Zaloguj się, aby rozpocząć**.
@@ -78,18 +86,20 @@ Możesz wybrać liczbę aplikacji, które mają być wyświetlane w **ostatnio u
     ![Strona ustawień rozszerzenia, pokazując dostępne dostosowania](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
 ## <a name="access-and-use-the-my-apps-portal-by-device"></a>Dostęp do portalu Moje aplikacje i korzystanie z niego według urządzenia
+
 Możesz uzyskiwać dostęp do portalu Moje aplikacje i korzystać z niego na swoim komputerze, z poziomu przeglądarki zarządzanej przez usługę Intune lub z urządzenia przenośnego z systemem iOS lub Android.
 
 ![Strona aplikacje w portalu Moje aplikacje](media/my-apps-portal/my-apps-portal-apps-page.png)
 
 ### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>Dostęp do portalu Moje aplikacje i korzystanie z niego na komputerze
+
 Jeśli masz uprawnienia do uzyskiwania dostępu do aplikacji opartych na chmurze w organizacji i korzystania z nich, możesz uzyskać do nich dostęp za pośrednictwem portalu **My Apps** .
 
-1. Zaloguj się do konta służbowego.
+1. Zaloguj się do swojego konta służbowego lub szkolnego na swoim komputerze.
 
-2. Otwórz przeglądarkę internetową i przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
+2. W obsługiwanej przeglądarce sieci Web otwórz i przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak `https://myapps.microsoft.com/contoso.com`.
 
-    Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
+    Zostanie wyświetlona strona **aplikacje** z widocznymi wszystkimi aplikacjami opartymi na chmurze, które są własnością Twojej organizacji, które są dostępne do użycia.
 
 3. Na stronie **aplikacje** wybierz aplikację, której chcesz używać.
 
@@ -101,7 +111,7 @@ Wyświetlaj aplikacje organizacji i używaj ich z Intune Managed Browser na urz�
 
 1. Na urządzeniu przenośnym Pobierz i zainstaluj aplikację Intune Managed Browser ze [sklepu Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) i [sklep Google Play](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Otwórz aplikację Intune Managed Browser, przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
+2. Otwórz aplikację Intune Managed Browser, przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak https://myapps.microsoft.com/contoso.com.
 
     Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
@@ -111,13 +121,13 @@ Wyświetlaj aplikacje organizacji i używaj ich z Intune Managed Browser na urz�
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>Dostęp do portalu Moje aplikacje i korzystanie z niego na urządzeniu z systemem iOS
 
-Wyświetl Portal **Moje aplikacje** i korzystaj z niego z urządzenia iPhone lub iPad z systemem iOS w wersji 7 lub nowszej. Możesz także zainstalować [aplikację mobilną moje aplikacje](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) , aby uzyskiwać dostęp do aplikacji organizacji na urządzeniach z systemem iOS. 
+Wyświetl Portal **Moje aplikacje** i korzystaj z niego z urządzenia iPhone lub iPad z systemem iOS w wersji 7 lub nowszej. Możesz także zainstalować [aplikację mobilną moje aplikacje](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) , aby uzyskiwać dostęp do aplikacji organizacji na urządzeniach z systemem iOS.
 
 1. Na urządzeniu przenośnym Uruchom aplikację przeglądarki sieci Web, taką jak Safari.
 
-2. Przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
+2. Przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak https://myapps.microsoft.com/contoso.com.
 
-    Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
+    Zostanie wyświetlona strona **aplikacje** z widocznymi wszystkimi aplikacjami opartymi na chmurze, które są własnością Twojej organizacji, które są dostępne do użycia.
 
 3. Na stronie **aplikacje** wybierz aplikację, której chcesz używać.
 
@@ -129,7 +139,7 @@ Wyświetl Portal **Moje aplikacje** i korzystaj z niego na urządzeniu z systeme
 
 1. Na urządzeniu przenośnym Uruchom aplikację przeglądarki sieci Web, np. Google Chrome.
 
-2. Przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
+2. Przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak https://myapps.microsoft.com/contoso.com.
 
     Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
@@ -141,17 +151,39 @@ Wyświetl Portal **Moje aplikacje** i korzystaj z niego na urządzeniu z systeme
 
 Jeśli administrator udzielił Ci uprawnień, możesz dodać nową aplikację do strony **aplikacje** .
 
-1. Na stronie **aplikacje** wybierz pozycję **Dodaj aplikację**.
+1. Na stronie **aplikacje** wykonaj jedną z następujących czynności:
+    - Jeśli jesteś w oryginalnym środowisku moje aplikacje, wybierz pozycję **Dodaj aplikację** , jak pokazano.
 
-    Zostanie wyświetlona strona **Dodawanie aplikacji** .
+      ![Strona Dodawanie aplikacji w portalu Moje aplikacje](media/my-apps-portal/my-apps-portal-add-apps-page.png)
 
-    ![Strona Dodawanie aplikacji w portalu Moje aplikacje](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+    - Jeśli jesteś w zaktualizowanym środowisku moje aplikacje, wybierz opcję **Dodaj aplikacje samoobsługowe**.
+
+       ![Strona Dodawanie aplikacji w portalu Moje aplikacje w witrynie myapplications.microsoft.com](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
 2. Wybierz aplikację, którą chcesz dodać z podanej listy, a następnie wybierz pozycję **Dodaj**.
 
 3. Aplikacja zostanie dodana do listy na stronie **aplikacje** .
 
-    Niektóre aplikacje mogą wymagać zatwierdzenia przez administratora przed dodaniem. W takiej sytuacji aplikacja nie została dodana do strony **aplikacje** do momentu zatwierdzenia jej przez administratora.
+    Niektóre aplikacje mogą wymagać zatwierdzenia przez administratora przed dodaniem. Gdy tak się stanie, aplikacja nie zostanie dodana do strony **aplikacje** do momentu zatwierdzenia przez administratora.
+
+## <a name="start-a-cloud-based-app"></a>Uruchamianie aplikacji opartej na chmurze
+
+Możesz uruchomić dowolne dostępne aplikacje oparte na chmurze z poziomu portalu **My Apps** . Zobaczysz tylko aplikacje, do których masz uprawnienia.
+
+- Na stronie **aplikacje** wybierz aplikację, której chcesz używać.
+
+    Zostanie otwarta nowa strona dla aplikacji, w której możesz zalogować się (w razie potrzeby) lub zacząć korzystać z aplikacji.
+
+## <a name="activities-in-the-my-apps-portal"></a>Działania w portalu My Apps
+
+Po przejściu do portalu **My Apps** możesz:
+
+- Organizuj aplikacje w różnych kategoriach utworzonych i udostępnianych przez organizację. Aby uzyskać więcej informacji, zobacz [dostęp i Używanie kolekcji w portalu My Apps](my-applications-portal-workspaces.md).
+
+- Przejrzyj, zaktualizuj lub Odwołaj uprawnienia przyznane aplikacjom. Aby uzyskać więcej informacji, zobacz [Edytowanie lub Odwoływanie uprawnień aplikacji w portalu Moje aplikacje](my-applications-portal-permissions-saved-accounts.md).
+
+>[!Note]
+>Jeśli nie widzisz żadnych dostępnych kolekcji lub kategorii, oznacza to, że administrator nie został skonfigurowany ani udostępniony Tobie. Skontaktuj się z pomocą techniczną w Twojej organizacji, aby uzyskać dodatkową pomoc lub uprawnienia do wyświetlania kolekcji udostępnionych.
 
 ## <a name="next-steps"></a>Następne kroki
 

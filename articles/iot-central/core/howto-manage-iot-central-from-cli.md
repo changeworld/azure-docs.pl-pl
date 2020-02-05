@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: f7d31966241e352583ee4338faff8aae7e1a09c6
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8526eb50faf300892c66ac186eac25adecf62231
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990253"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019030"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Zarządzanie IoT Central z poziomu interfejsu wiersza polecenia platformy Azure
 
@@ -48,30 +48,24 @@ az iotcentral app create \
   --display-name "My Custom Display Name"
 ```
 
-Te polecenia najpierw tworzą grupę zasobów w lokalizacji Wschodnie stany USA dla aplikacji. W poniższej tabeli opisano parametry używane z poleceniem **AZ iotcentral App Create** :
+Te polecenia najpierw tworzą grupę zasobów w regionie Wschodnie stany USA dla aplikacji. W poniższej tabeli opisano parametry używane z poleceniem **AZ iotcentral App Create** :
 
 | Parametr         | Opis |
 | ----------------- | ----------- |
 | resource-group    | Grupa zasobów zawierająca aplikację. Ta grupa zasobów musi już istnieć w Twojej subskrypcji. |
-| location          | Domyślnie to polecenie używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w **Stany Zjednoczone**, **Australii**, **Azja i Pacyfik**lub w lokalizacjach **Europy** . |
+| location          | Domyślnie to polecenie używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w regionach **Wschodnie stany USA**, **zachodnie stany USA**, **Europa Północna**lub **Europa Zachodnia** lub w **Australii** lub **Azja i Pacyfik** lokalizacje geograficzne. |
 | name              | Nazwa aplikacji w Azure Portal. |
 | poddomeny         | Poddomena w adresie URL aplikacji. W tym przykładzie adres URL aplikacji jest https://mysubdomain.azureiotcentral.com. |
 | sku               | Obecnie można użyć opcji **ST1** lub **ST2**. Zobacz [Cennik usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 | szablon          | Szablon aplikacji do użycia. Aby uzyskać więcej informacji, zobacz następującą tabelę: |
 | Nazwa wyświetlana      | Nazwa aplikacji wyświetlana w interfejsie użytkownika. |
 
-**Szablon aplikacji z ogólnie dostępnymi funkcjami**
+**Szablony aplikacji**
 
 | Nazwa szablonu            | Opis |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Tworzy pustą aplikację, którą wypełnisz własnymi urządzeniami i szablonami urządzeń.
-
-
-**Szablony aplikacji z funkcjami publicznej wersji zapoznawczej**
-
-| Nazwa szablonu            | Opis |
-| ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | Tworzy pustą aplikację typu Plug and Play w wersji zapoznawczej, która umożliwia wypełnienie własnymi szablonami urządzeń i urządzeniami. |
+| iotc-pnp-preview@1.0.0   | Tworzy pustą aplikację Plug and Play (wersja zapoznawcza) do zapełniania własnymi szablonami urządzeń i urządzeniami. |
 | iotc-condition@1.0.0     | Tworzy aplikację z szablonem monitorowania stanu w sklepie. Ten szablon służy do łączenia i monitorowania środowiska magazynu. |
 | iotc-consumption@1.0.0   | Tworzy aplikację z szablonem monitorowania zużycia wody. Ten szablon służy do monitorowania i kontrolowania przepływu wody. |
 | iotc-distribution@1.0.0  | Tworzy aplikację z szablonem dystrybucji cyfrowej. Ten szablon umożliwia zwiększenie wydajności produkcji magazynu przez zasoby i akcje kluczy digitalizing. |
@@ -83,9 +77,6 @@ Te polecenia najpierw tworzą grupę zasobów w lokalizacji Wschodnie stany USA 
 | iotc-quality@1.0.0       | Tworzy aplikację z szablonem monitorowania jakości wody. Ten szablon służy do cyfrowego monitorowania jakości wody.|
 | iotc-store@1.0.0         | Tworzy aplikację z szablonem analizy w sklepie — wyewidencjonowywanie. Ten szablon służy do monitorowania i zarządzania przepływem wyewidencjonowania w sklepie. |
 | iotc-waste@1.0.0         | Tworzy aplikację z połączonym szablonem zarządzania odpadami. Ten szablon służy do monitorowania pojemników odpadów i operatorów pól wysyłania. |
-
-> [!NOTE]
-> Szablony aplikacji w wersji zapoznawczej są obecnie dostępne tylko w lokalizacjach **Europy** i **Stany Zjednoczone** .
 
 ## <a name="view-your-applications"></a>Wyświetl swoje aplikacje
 

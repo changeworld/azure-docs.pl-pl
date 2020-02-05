@@ -3,19 +3,19 @@ title: Zarządzaj rachunkiem i Konwertuj z bezpłatnego planu cenowego w aplikac
 description: Skontaktuj się z administratorem, aby dowiedzieć się, jak zarządzać rozliczeniami i przechodzić z planu cen bezpłatnych do standardowego planu cenowego w aplikacji IoT Central platformy Azure
 author: v-krghan
 ms.author: v-krghan
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: e45109842a081b437c20de81321bf70f909efa2a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 58503784f28a3ba0a6290a2209ce9fdccc14b4e4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982367"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023773"
 ---
-# <a name="view-your-bill-in-iot-central-application"></a>Wyświetlanie rachunku IoT Central aplikacji
+# <a name="manage-your-bill-in-an-iot-central-application"></a>Zarządzanie rozliczeniami w aplikacji IoT Central
 
 W tym artykule opisano, jak administrator może zarządzać rozliczeniami w aplikacji IoT Central platformy Azure w sekcji Administracja. Dowiesz się, jak przenieść aplikację z bezpłatnego planu cenowego do standardowego planu cenowego, a także jak uaktualnić lub obniżyć plan cenowy.
 
@@ -24,6 +24,9 @@ Aby uzyskać dostęp do sekcji **Administracja** i korzystać z niej, musisz mie
 ## <a name="move-from-free-to-standard-pricing-plan"></a>Przejdź od bezpłatnej do standardowego planu cen
 
 - Aplikacje korzystające z bezpłatnego planu cenowego są bezpłatne przez siedem dni przed ich wygaśnięciem. Aby uniknąć utraty danych, można przenieść je do standardowego planu cenowego w dowolnym momencie przed wygaśnięciem.
+- W przypadku aplikacji korzystających ze standardowego planu cenowego są naliczone opłaty za każde urządzenie, a pierwsze dwa urządzenia są bezpłatne dla każdej aplikacji.
+
+Więcej informacji o cenach znajdziesz na [stronie cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 W sekcji Cennik możesz przenieść aplikację z bezpłatnej do standardowego planu cenowego.
 
@@ -31,11 +34,11 @@ Aby ukończyć ten proces samoobsługowy, wykonaj następujące kroki:
 
 1. Przejdź do strony **cennika** w sekcji **Administracja** .
 
-    ![Stan wersji próbnej](media/howto-administer/freetrialbilling.png)
+    ![Stan wersji próbnej](media/howto-view-bill/freetrialbilling.png)
 
 1. Wybierz pozycję **Konwertuj na płatny plan**.
 
-    ![Konwertuj wersję próbną](media/howto-administer/convert.png)
+    ![Konwertuj wersję próbną](media/howto-view-bill/convert.png)
 
 1. Wybierz odpowiednie Azure Active Directory, a następnie subskrypcję platformy Azure, która ma być używana dla aplikacji korzystającej z płatnego planu.
 
@@ -46,23 +49,25 @@ Aby ukończyć ten proces samoobsługowy, wykonaj następujące kroki:
 
 ## <a name="how-to-change-your-application-pricing-plan"></a>Jak zmienić plan cenowy aplikacji
 
-- W przypadku aplikacji korzystających ze standardowego planu cenowego są naliczone opłaty za każde urządzenie, a pierwsze dwa urządzenia są bezpłatne dla każdej aplikacji.
+W przypadku aplikacji korzystających ze standardowego planu cenowego są naliczone opłaty za każde urządzenie, a pierwsze dwa urządzenia są bezpłatne dla każdej aplikacji.
 
 W sekcji Cennik można w dowolnym momencie uaktualnić lub obniżyć plan cen usługi Azure IoT.
 
 1. Przejdź do strony **cennika** w sekcji **Administracja** .
 
-    ![Stan wersji próbnej](media/howto-administer/pricing.png)
+    ![Stan wersji próbnej](media/howto-view-bill/pricing.png)
 
 1. Wybierz **Plan** , a następnie kliknij przycisk **Zapisz** w celu uaktualnienia lub obniżenia poziomu.
 
-Więcej informacji o cenach znajdziesz na [stronie cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
-
 ## <a name="view-your-bill"></a>Wyświetlanie rachunku
 
-Aby wyświetlić rachunek, przejdź do strony **cennika** w sekcji **Administracja** . Na stronie z cennikiem platformy Azure zostanie otwarta nowa karta, w której będzie widoczny rachunek dla każdej aplikacji IoT Central platformy Azure.
+1. Wybierz odpowiednie Azure Active Directory, a następnie subskrypcję platformy Azure, która ma być używana dla aplikacji korzystającej z płatnego planu.
 
+1. Po wybraniu opcji **Konwertuj**Twoja aplikacja korzysta z planu płatnego, a opłaty są naliczane.
+
+> [!Note]
+> Domyślnie jest konwertowany na plan cenowy w *warstwie Standardowa 2* .
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz już, jak wyświetlić rachunek w aplikacji Azure IoT Central, sugerowanym następnym krokiem jest zapoznanie się z tematem [Dostosowywanie interfejsu użytkownika aplikacji](howto-customize-ui.md) w usłudze Azure IoT Central.
+Teraz, gdy wiesz już, jak zarządzać rozliczeniami w aplikacji IoT Central platformy Azure, sugerowanym następnym krokiem jest zapoznanie się z tematem [Dostosowywanie interfejsu użytkownika aplikacji](howto-customize-ui.md) na platformie Azure IoT Central.

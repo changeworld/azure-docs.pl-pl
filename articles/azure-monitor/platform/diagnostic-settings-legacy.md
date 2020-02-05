@@ -6,13 +6,13 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 01/21/2020
-ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715846"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016259"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualizacja kolekcji i eksportu dzienników aktywności platformy Azure
 [Dziennik aktywności platformy Azure](platform-logs-overview.md) to [Dziennik platformy](platform-logs-overview.md) , który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Metoda wysyłania wpisów dziennika aktywności do [centrum zdarzeń lub konta magazynu](activity-log-export.md) lub do [log Analyticsego obszaru roboczego](activity-log-collect.md) została zmieniona w celu korzystania z [ustawień diagnostycznych](diagnostic-settings.md). W tym artykule opisano różnice między metodami oraz sposób czyszczenia starszych ustawień w obszarze przygotowanie do zmiany ustawień diagnostycznych.
@@ -53,6 +53,9 @@ Dodano następującą kolumnę:
 - Authorization_d
 - Claims_d
 - Properties_d
+
+> [!IMPORTANT]
+> W niektórych przypadkach wartości w tych kolumnach mogą być pisane wielkimi literami. Jeśli masz zapytanie zawierające te kolumny, należy użyć [operatora = ~](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) do wykonania porównania bez uwzględniania wielkości liter.
 
 ## <a name="work-with-legacy-settings"></a>Pracuj ze starszymi ustawieniami
 Starsze ustawienia zbierania dziennika aktywności będą nadal działały, jeśli nie zdecydujesz się zamienić na ustawienie diagnostyczne. Użyj następującej metody, aby zarządzać profilem dziennika dla subskrypcji.

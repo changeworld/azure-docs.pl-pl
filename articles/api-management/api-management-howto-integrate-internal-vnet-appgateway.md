@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 129f407dd66b32ea097daf4ed9110ffbba23660c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442701"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017603"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrowanie API Management w wewnętrznej sieci wirtualnej z Application Gateway
 
@@ -185,6 +185,9 @@ $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $l
 Gdy powyższe polecenie zakończy się pomyślnie, odwołuje się do [konfiguracji DNS wymaganej do](api-management-using-with-internal-vnet.md#apim-dns-configuration) uzyskania dostępu do tej usługi API Management wewnętrznej sieci wirtualnej. Ten krok może potrwać ponad pół godziny.
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Skonfiguruj niestandardową nazwę domeny w API Management
+
+> [!IMPORTANT]
+> [Nowy portal dla deweloperów](api-management-howto-developer-portal.md) wymaga również włączenia połączenia z punktem końcowym zarządzania API Management, a także z poniższymi krokami.
 
 ### <a name="step-1"></a>Krok 1
 

@@ -1,6 +1,6 @@
 ---
-title: Usługa Microsoft Azure Data Box Gateway przypadki użycia | Dokumentacja firmy Microsoft
-description: W tym artykule opisano przypadki użycia dla bramy pole danych platformy Azure, rozwiązanie magazynu urządzenie wirtualne, które pozwala na przesyłanie danych do platformy Azure
+title: Microsoft Azure Data Box Gateway przypadków użycia | Microsoft Docs
+description: Opisuje przypadki użycia Azure Data Box Gateway, rozwiązanie do magazynowania urządzeń wirtualnych, które umożliwia przesyłanie danych do platformy Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,92 +8,92 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754181"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022685"
 ---
-# <a name="use-cases-for-azure-data-box-gateway"></a>Przypadki użycia dla bramy pola danych platformy Azure
+# <a name="use-cases-for-azure-data-box-gateway"></a>Przypadki użycia dla Azure Data Box Gateway
 
-Brama pola danych platformy Azure jest urządzenie magazynujące w chmurze bramy znajduje się w środowisku lokalnym, który wysyła obraz, multimediów i inne dane na platformie Azure. Ta brama magazynu w chmurze jest aprowizowane w Twojej funkcji hypervisor maszyny wirtualnej. Można zapisać danych do tego urządzenia wirtualnego za pomocą protokołów systemu plików NFS i protokołu SMB, które następnie wysyła do platformy Azure. Ten artykuł zawiera szczegółowy opis scenariuszy, w którym można wdrożyć to urządzenie.
+Azure Data Box Gateway to urządzenie bramy magazynu w chmurze, które znajduje się w Twoim miejscu i wysyła obraz, Multimedia i inne dane na platformę Azure. Ta brama magazynu w chmurze jest maszyną wirtualną zainicjowaną w funkcji hypervisor. Dane są zapisywane na tym urządzeniu wirtualnym przy użyciu protokołów NFS i SMB, które następnie wysyła do platformy Azure. Ten artykuł zawiera szczegółowy opis scenariuszy, w których można wdrożyć to urządzenie.
 
-Użyj bramy pola danych w następujących scenariuszach:
+Użyj Data Box Gateway w następujących scenariuszach:
 
-- Aby stale pozyskiwanie dużych ilości danych.
-- Archiwizowanie danych w sposób bezpieczny i skuteczny chmury.
-- Opłata za transfer danych przyrostowych za pośrednictwem sieci po początkowej zbiorczego transferu jest wykonywane przy użyciu pola danych.
+- Ciągłe pozyskiwanie dużych ilości danych.
+- Archiwizowanie danych w chmurze w bezpieczny i wydajny sposób.
+- W przypadku przyrostowego transferu danych przez sieć po zakończeniu wstępnego transferu zbiorczego za pomocą urządzenie Data Box.
 
-Każdy z tych scenariuszy opisano szczegółowo w kolejnych sekcjach.
+Każdy z tych scenariuszy został szczegółowo opisany w kolejnych sekcjach.
 
 
-## <a name="continuous-data-ingestion"></a>Pozyskiwanie danych ciągłego
+## <a name="continuous-data-ingestion"></a>Ciągłe pozyskiwanie danych
 
-Jedną z podstawowych zalet bramy pola danych jest możliwość stale pozyskiwania danych w urządzeniu kopiowania do chmury, niezależnie od rozmiaru danych.
+Jedną z głównych zalet Data Box Gateway jest możliwość ciągłego pozyskiwania danych do urządzenia w celu kopiowania ich do chmury, niezależnie od rozmiaru danych.
 
-Ponieważ dane są zapisywane z urządzeniem bramy, urządzenie przekazywanie danych do usługi Azure Storage. Urządzenie automatycznie zarządza magazynem, usuwając pliki lokalnie po osiągnięciu określonego progu, zachowując metadanych. Utrzymywanie lokalną kopię metadanych umożliwia urządzenie bramy przekazać zmiany tylko, gdy plik zostanie zaktualizowany. Danych przekazanych do Twojego urządzenia bramy powinny być zgodnie z wytycznymi podanymi w [przekazywanie danych do zastrzeżenia](data-box-gateway-limits.md#data-upload-caveats).
+Gdy dane są zapisywane na urządzeniu bramy, urządzenie przekazuje dane do usługi Azure Storage. Urządzenie automatycznie zarządza magazynem przez usunięcie plików lokalnie podczas zachowywania metadanych po osiągnięciu określonego progu. Przechowywanie lokalnej kopii metadanych umożliwia urządzeniu bramy przekazywanie zmian tylko wtedy, gdy plik zostanie zaktualizowany. Dane przekazane do urządzenia bramy powinny być zgodne z wytycznymi dotyczącymi [zastrzeżenia przekazywania danych](data-box-gateway-limits.md#data-upload-caveats).
 
-Jako urządzenie wypełni się dane, uruchamia, ograniczania szybkości transferu danych przychodzących (zgodnie z potrzebami) aby dopasować częstotliwość, z jaką dane są przekazywane do chmury. Aby monitorować ciągłe wprowadzanie na urządzeniu, należy użyć alertów. Te alerty są wywoływane, gdy ograniczenie rozpoczyna się i są czyszczone po ograniczenie została zatrzymana.
+Gdy urządzenie jest wypełniane danymi, zaczyna ograniczać szybkość transferu danych przychodzących (w razie potrzeby), aby odpowiadały szybkości, z jaką dane są przekazywane do chmury. Do monitorowania ciągłego pozyskiwania na urządzeniu należy używać alertów. Te alerty są wywoływane po rozpoczęciu ograniczania i są usuwane po zatrzymaniu ograniczania.
 
 ## <a name="cloud-archival-of-data"></a>Archiwizowanie danych w chmurze
 
-Jeśli chcesz przechowywać dane na potrzeby długoterminowego w chmurze za pomocą bramy pola danych. Możesz użyć **archiwum** warstw magazynowania do długoterminowego przechowywania danych.
+Użyj Data Box Gateway, jeśli chcesz przechowywać dane przez długi czas w chmurze. Możesz użyć warstwy **archiwum** magazynu do długoterminowego przechowywania.
 
-Warstwę archiwum jest zoptymalizowany do przechowywania rzadko używanych danych, przez co najmniej 180 dni. **Archiwum** warstwa oferuje najniższe koszty magazynowania, ale ma najwyższe koszty dostępu. Aby uzyskać więcej informacji, przejdź do [warstwę dostępu archiwum](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier).
+Warstwa archiwum jest zoptymalizowana pod kątem przechowywania rzadko używanych danych przez co najmniej 180 dni. Warstwa **archiwum** zapewnia najniższe koszty magazynowania, ale ma największe koszty dostępu. Aby uzyskać więcej informacji, przejdź do [warstwy dostępu archiwizowanie](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier).
 
-### <a name="move-data-to-archive-tier"></a>Przenoszenie danych do warstwy archiwum
+### <a name="move-data-to-archive-tier"></a>Przenieś dane do warstwy Archiwum
 
-Przed rozpoczęciem upewnij się, że uruchomione urządzenie bramy pola danych. Wykonaj kroki opisane szczegółowo w [samouczka: Przygotowanie do wdrożenia usługi Azure Gateway pole danych](data-box-gateway-deploy-prep.md) i zachować do następnego samouczka, dopóki nie uzyskasz działającego urządzenia.
+Przed rozpoczęciem upewnij się, że masz uruchomione urządzenie Data Box Gateway. Wykonaj kroki opisane w [samouczku: przygotowanie do wdrożenia Azure Data Box Gateway](data-box-gateway-deploy-prep.md) i dalsze przechodzenie do następnego samouczka, dopóki nie będziesz mieć urządzenia operacyjnego.
 
-- Korzystanie z urządzenia bramy pola danych do przekazania danych na platformę Azure za pośrednictwem zwykłych transferu, zgodnie z opisem w [transferu danych za pośrednictwem bramy pola danych](data-box-gateway-deploy-add-shares.md).
-- Po przekazaniu danych należy przenieść ją do warstwy archiwum. Możesz ustawić warstwę obiektu blob na dwa sposoby: Skrypt programu Azure PowerShell lub zasady zarządzania cyklem życia magazynu platformy Azure.  
-    - Jeśli przy użyciu programu Azure PowerShell, postępuj zgodnie z tymi [kroki](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) przenoszenia danych do warstwy archiwum.
-    - Jeśli za pomocą zarządzania cyklem życia platformy Azure, wykonaj następujące kroki, aby przenieść dane do warstwy archiwum.
-        - [Zarejestruj](/azure/storage/common/storage-lifecycle-management-concepts) skorzystania z wersji zapoznawczej usługę zarządzania cyklem życia obiektów Blob pod kątem używania archiwum warstwy.
-        - Użyj następujących zasad do [pozyskiwania danych archiwum na](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
-- Po obiekty BLOB są oznaczone jako archiwum, ich można już nie można modyfikować przez bramę, chyba że są one przenoszone do warstwy gorąca lub zimnych. Jeśli plik znajduje się w magazynie lokalnym, wszelkie zmiany wprowadzone do lokalnej kopii (w tym usuwa) nie są przekazywane do warstwy archiwum.
-- Do odczytywania danych w magazynie archiwalnym, należy wypełnienia przez zmianę warstwy obiektu blob na gorącą lub chłodną. [Odświeżanie udziału](data-box-gateway-manage-shares.md#refresh-shares) w bramie nie przywrócenia z magazynu trwałego obiektu blob.
+- Za pomocą urządzenia Data Box Gateway Przekaż dane na platformę Azure, postępując zgodnie z opisem w temacie [transfer danych za pośrednictwem Data Box Gateway](data-box-gateway-deploy-add-shares.md).
+- Po przekazaniu danych należy przenieść je do warstwy archiwum. Warstwę obiektów BLOB można ustawić na dwa sposoby: Azure PowerShell skryptu lub zasad zarządzania cyklem życia usługi Azure Storage.  
+    - W przypadku używania Azure PowerShell wykonaj następujące [kroki](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) , aby przenieść dane do warstwy archiwum.
+    - W przypadku korzystania z zarządzania cyklem życia platformy Azure wykonaj następujące kroki, aby przenieść dane do warstwy archiwum.
+        - [Zarejestruj](/azure/storage/common/storage-lifecycle-management-concepts) się, aby uzyskać podgląd usługi zarządzania cyklem życia obiektów BLOB do korzystania z warstwy archiwum.
+        - Użyj następujących zasad, aby [zarchiwizować dane dotyczące](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest)pozyskiwania.
+- Gdy obiekty blob są oznaczone jako archiwalne, nie mogą być już modyfikowane przez bramę, chyba że są przenoszone do warstwy gorąca lub zimna. Jeśli plik znajduje się w magazynie lokalnym, wszelkie zmiany wprowadzone w lokalnej kopii (w tym usunięcia) nie są przekazywane do warstwy archiwum.
+- Aby odczytywać dane w magazynie archiwalnym, należy je zmienić, zmieniając warstwę obiektów BLOB na gorącą lub chłodną. [Odświeżanie udziału](data-box-gateway-manage-shares.md#refresh-shares) w bramie nie powoduje odświeżenia obiektu BLOB.
 
-Aby uzyskać więcej informacji, Dowiedz się więcej na temat [zarządzania usługi Azure Blob cykl życia magazynu](/azure/storage/common/storage-lifecycle-management-concepts).
+Aby uzyskać więcej informacji, Dowiedz się więcej na temat [zarządzania cyklem życia usługi Azure Blob Storage](/azure/storage/common/storage-lifecycle-management-concepts).
 
-## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>Transfer początkowy zbiorcze następuje transferu przyrostowego
+## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>Początkowy transfer zbiorczy, po którym następuje transfer przyrostowy
 
-Urządzenie Data Box i bramy pola danych ze sobą należy używać do przekazywania masowego w dużych ilości danych, a następnie Transfery przyrostowe, zwiększając. Na użytek urządzenia Data Box w celu wykonania transferu zbiorczego w tryb offline (inicjatora początkowej) i bramy pola danych Transfery przyrostowe, zwiększając (bieżące źródło danych) za pośrednictwem sieci.
+Używaj urządzenie Data Box i Data Box Gateway razem, gdy chcesz wykonać zbiorcze przekazywanie dużej ilości danych, a następnie Przyrostowe transfery. Użyj urządzenie Data Box do transferu zbiorczego w trybie offline (początkowy inicjator) i Data Box Gateway dla transferów przyrostowych (ciągłe źródło danych) za pośrednictwem sieci.
 
-### <a name="seed-the-data-with-data-box"></a>Umieszczenia danych za pomocą urządzenia Data Box
+### <a name="seed-the-data-with-data-box"></a>Wypełnianie danych za pomocą urządzenie Data Box
 
-Wykonaj następujące kroki, aby skopiować dane do urządzenia Data Box i przekazać go do usługi Azure Storage.
+Wykonaj następujące kroki, aby skopiować dane do urządzenie Data Box i przekazać je do usługi Azure Storage.
 
-1. [Zamówienie usługi Data Box](/azure/databox/data-box-deploy-ordered).
-2. [Konfigurowanie usługi Data Box](/azure/databox/data-box-deploy-set-up).
-3. [Kopiowanie danych do urządzenia Data Box za pomocą protokołu SMB](/azure/databox/data-box-deploy-copy-data).
-4. [Sprawdź przekazywania danych na platformie Azure, zwracają urządzenia Data Box](/azure/databox/data-box-deploy-picked-up).
-5. Po zakończeniu przekazywania danych na platformie Azure wszystkie dane należy w kontenerach usługi Azure storage. Na koncie magazynu urządzenia Data Box przejdź do kontenera obiektów Blob (i plik), aby upewnić się, że wszystkie dane są kopiowane. Zanotuj nazwę kontenera, ponieważ ta nazwa będzie używana później. Na przykład w poniższym zrzucie ekranu `databox` kontenera będzie używany do transferu przyrostowego.
+1. [Zamów urządzenie Data Box](/azure/databox/data-box-deploy-ordered).
+2. [Skonfiguruj urządzenie Data Box](/azure/databox/data-box-deploy-set-up).
+3. [Skopiuj dane do urządzenie Data Box za pośrednictwem protokołu SMB](/azure/databox/data-box-deploy-copy-data).
+4. [Zwróć urządzenie Data Box, zweryfikuj przekazywanie danych na platformę Azure](/azure/databox/data-box-deploy-picked-up).
+5. Po zakończeniu przekazywania danych do platformy Azure wszystkie dane powinny znajdować się w kontenerach usługi Azure Storage. Na koncie magazynu dla urządzenie Data Box przejdź do kontenera obiektów BLOB (i plików), aby upewnić się, że wszystkie dane zostały skopiowane. Zanotuj nazwę kontenera, ponieważ będziesz używać tej nazwy później. Na przykład na poniższym zrzucie ekranu do transferu przyrostowego zostanie użyty kontener `databox`.
 
     ![Kontener z danymi na urządzenie Data Box](media/data-box-gateway-use-cases/data-container1.png)
 
-To przeniesienie zbiorcze kończy początkowej fazie rozmieszczania.
+Ten transfer zbiorczy kończy początkową fazę wypełniania.
 
-### <a name="ongoing-feed-with-data-box-gateway"></a>Trwającą źródła danych za pomocą bramy pola danych
+### <a name="ongoing-feed-with-data-box-gateway"></a>Ciągłe źródło danych za pomocą Data Box Gateway
 
-Wykonaj następujące kroki dla ciągłego wprowadzania przez bramę pola danych.
+Wykonaj następujące kroki, aby uzyskać bieżące pozyskiwanie przez Data Box Gateway.
 
-1. Utwórz udział chmury w bramie pola danych. Ten udział automatyczne przekazywanie danych do konta usługi Azure Storage. Przejdź do **udziałów** w zasobie bramy pola danych i kliknij przycisk **+ Dodaj udział**.
+1. Utwórz udział w chmurze na Data Box Gateway. Ten udział automatycznie przekazuje wszystkie dane do konta usługi Azure Storage. Przejdź do pozycji **udziały** w zasobie Data Box Gateway i kliknij pozycję **+ Dodaj udział**.
 
     ![Kliknij pozycję + Dodaj udział](media/data-box-gateway-use-cases/add-share1.png)
 
-2. Upewnij się, że ten udział mapuje do kontenera, który zawiera wprowadzonych danych. Aby uzyskać **kontenera obiektów blob wybierz**, wybierz **Użyj istniejącej** i przejdź do kontenera, w której została przeniesiona danych z urządzenia Data Box.
+2. Upewnij się, że ten udział jest mapowany do kontenera zawierającego dane z wypełnieniem. W obszarze **Wybieranie kontenera obiektów BLOB**wybierz pozycję **Użyj istniejącego** i przejdź do kontenera, w którym dane z urządzenie Data Box zostały przeniesione.
 
-    ![Ustawienia udziału](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
+    ![Ustawienia udostępniania](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
 
-3. Po utworzeniu udziału Odśwież udział. Ta operacja zostanie odświeżona w środowisku lokalnym udostępniasz zawartość z platformy Azure.
+3. Po utworzeniu udziału Odśwież udział. Ta operacja odświeża udział lokalny przy użyciu zawartości z platformy Azure.
 
     ![Odśwież udział](media/data-box-gateway-use-cases/refresh-share1.png)
 
-    Gdy udział jest zsynchronizowana, jeśli pliki zostały zmodyfikowane na kliencie bramy pola danych przekaże zmiany przyrostowe.
+    Po zsynchronizowaniu udziału Data Box Gateway przeniesie przyrostowe zmiany, jeśli pliki zostały zmodyfikowane na komputerze klienckim.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj [wymagania systemowe usługi Data Box Gateway](data-box-gateway-system-requirements.md).
 - Zapoznaj się z [limitami usługi Data Box Gateway](data-box-gateway-limits.md).

@@ -1,6 +1,6 @@
 ---
-title: Zmniejszanie rozwiązań VMware platformy Azure według chmury prywatnej CloudSimple
-description: Opisuje, jak zmniejszyć chmurę prywatną CloudSimple.
+title: Zmniejsz chmurę prywatną rozwiązań Azure VMware (Automatyczna synchronizacja)
+description: Opisuje, jak zmniejszyć chmurę prywatną.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 07/01/2019
@@ -8,52 +8,53 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0ea764081cd0b4d5c6d44cd7364d1e9a89a3cec3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108598"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014270"
 ---
-# <a name="shrink-a-cloudsimple-private-cloud"></a>Zmniejsz chmurę prywatną CloudSimple
+# <a name="shrink-an-avs-private-cloud"></a>Zmniejsz swoją chmurę prywatną
 
-CloudSimple zapewnia elastyczność dynamicznego zmniejszania liczby chmur prywatnych.  Chmura prywatna składa się z co najmniej jednego klastra vSphere. Każdy klaster może zawierać od 3 do 16 węzłów. Podczas zmniejszania chmury prywatnej można usunąć węzeł z istniejącego klastra lub usunąć cały klaster. 
+Funkcja automatycznej synchronizacji zapewnia elastyczność dynamicznego zmniejszania automatycznej synchronizacji w chmurze prywatnej. Chmura prywatna do automatycznej synchronizacji składa się z co najmniej jednego klastra vSphere. Każdy klaster może zawierać od 3 do 16 węzłów. Podczas zmniejszania chmury prywatnej automatycznej synchronizacji należy usunąć węzeł z istniejącego klastra lub usunąć cały klaster. 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby zmniejszyć chmurę prywatną, należy spełnić następujące warunki.  Klaster zarządzania (pierwszy klaster) utworzony podczas tworzenia chmury prywatnej nie może zostać usunięty.
+Przed skróceniem chmury prywatnej automatycznej synchronizacji należy spełnić następujące warunki. Klaster zarządzania (pierwszy klaster) jest tworzony podczas tworzenia chmury prywatnej automatycznej synchronizacji. Nie można go usunąć.
 
-* Klaster vSphere musi mieć trzy węzły.  Nie można zmniejszyć klastra z tylko trzema węzłami.
+* Klaster vSphere musi mieć trzy węzły. Nie można zmniejszyć klastra z tylko trzema węzłami.
 * Łączny zużyty magazyn nie powinien przekraczać całkowitej pojemności po zmniejszeniu poziomu klastra.
-* Sprawdź, czy jakiekolwiek reguły usługi Distributed Resource Scheduler (DRS) uniemożliwiają vMotion maszyny wirtualnej.  Jeśli istnieją reguły, wyłącz lub Usuń reguły.  Reguły DRS obejmują reguły koligacji maszyny wirtualnej z hostem.
+* Sprawdź, czy jakiekolwiek reguły usługi Distributed Resource Scheduler (DRS) uniemożliwiają vMotion maszyny wirtualnej. Jeśli istnieją reguły, wyłącz lub Usuń reguły. Reguły DRS obejmują reguły koligacji maszyny wirtualnej z hostem.
 
-## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
+
+## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="shrink-a-private-cloud"></a>Zmniejszanie chmury prywatnej
+## <a name="shrinking-an-avs-private-cloud"></a>Zmniejszanie automatycznej synchronizacji w chmurze prywatnej
 
-1. [Dostęp do portalu CloudSimple](access-cloudsimple-portal.md).
+1. [Uzyskaj dostęp do portalu automatycznej synchronizacji](access-cloudsimple-portal.md).
 
 2. Otwórz stronę **zasoby** .
 
-3. Kliknij chmurę prywatną, którą chcesz zmniejszyć
+3. Kliknij chmurę prywatną automatycznej synchronizacji, którą chcesz zmniejszyć
 
 4. Na stronie Podsumowanie kliknij przycisk **Zmniejsz**.
 
-    ![Zmniejsz chmurę prywatną](media/shrink-private-cloud.png)
+    ![Zmniejsz redyskową chmurę prywatną](media/shrink-private-cloud.png)
 
 5. Wybierz klaster, który chcesz zmniejszyć lub usunąć. 
 
-    ![Zmniejsz chmurę prywatną — wybierz klaster](media/shrink-private-cloud-select-cluster.png)
+    ![Zmniejsz swoją chmurę prywatną do automatycznej synchronizacji — wybierz klaster](media/shrink-private-cloud-select-cluster.png)
 
 6. Wybierz pozycję **Usuń jeden węzeł** lub **Usuń cały klaster**. 
 
 7. Weryfikowanie pojemności klastra
 
-8. Kliknij pozycję **Prześlij** , aby zmniejszyć chmurę prywatną.
+8. Kliknij pozycję **Prześlij** , aby zmniejszyć chmurę prywatną do automatycznej synchronizacji.
 
-Rozpocznie się zmniejszanie chmury prywatnej.  Postęp można monitorować w zadaniach.  Proces zmniejszania może potrwać kilka godzin w zależności od danych, które muszą zostać ponownie zsynchronizowane w sieci vSAN.
+Rozpocznie się zmniejszanie liczby operacji w chmurze prywatnej automatycznej. Postęp można monitorować w zadaniach. Proces zmniejszania może potrwać kilka godzin w zależności od danych, które muszą zostać ponownie zsynchronizowane w sieci vSAN.
 
 > [!NOTE]
 > 1. Jeśli zmniejszasz chmurę prywatną przez usunięcie ostatniego lub jedynego klastra w centrum danych, centrum danych nie zostanie usunięte.
@@ -63,4 +64,4 @@ Rozpocznie się zmniejszanie chmury prywatnej.  Postęp można monitorować w za
 ## <a name="next-steps"></a>Następne kroki
 
 * [Korzystanie z maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
-* Dowiedz się więcej o [chmurach prywatnych](cloudsimple-private-cloud.md)
+* Dowiedz się więcej o [automatycznej synchronizacji chmur prywatnych](cloudsimple-private-cloud.md)

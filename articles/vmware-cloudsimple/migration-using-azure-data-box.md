@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f368ad7cf9b83195e35a2283de7a3644cc9fc317
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552910"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019761"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Migrowanie danych do rozwiązania VMware platformy Azure przy użyciu Azure Data Box
 
 Rozwiązanie Microsoft Azure urządzenie Data Box w chmurze umożliwia szybkie, niedrogie i niezawodne wysyłanie terabajtów (TBs) danych do platformy Azure. Bezpieczny transfer danych jest przyspieszany przez wysłanie do Ciebie należącego do firmy Microsoft urządzenia magazynującego Data Box. Każde urządzenie magazynujące ma maksymalną przydatną pojemność magazynu wynoszącą 80 TB i jest transportowana do centrum danych przez przewoźnika regionalnego. Urządzenie ma odporność na ochronę i zabezpieczanie danych podczas przesyłania.
 
-Korzystając z urządzenie Data Box, można zbiorczo migrować dane programu VMware do chmury prywatnej. Dane z lokalnego środowiska VMware vSphere są kopiowane do urządzenie Data Box za pośrednictwem protokołu sieciowego systemu plików (NFS). Migracja danych zbiorczych polega na zapisywaniu kopii maszyn wirtualnych, konfiguracji i skojarzonych danych w danym momencie do urządzenie Data Box, a następnie ich ręcznego dostarczania na platformę Azure.
+Za pomocą urządzenie Data Box można przeprowadzić zbiorczą migrację danych VMware do chmury prywatnej automatycznej synchronizacji. Dane z lokalnego środowiska VMware vSphere są kopiowane do urządzenie Data Box za pośrednictwem protokołu sieciowego systemu plików (NFS). Migracja danych zbiorczych polega na zapisywaniu kopii maszyn wirtualnych, konfiguracji i skojarzonych danych w danym momencie do urządzenie Data Box, a następnie ich ręcznego dostarczania na platformę Azure.
 
 W tym artykule omówiono następujące informacje:
 
@@ -27,7 +27,7 @@ W tym artykule omówiono następujące informacje:
 * Kopiowanie danych z lokalnego środowiska VMware do urządzenie Data Box za pomocą systemu plików NFS.
 * Przygotowywanie do powrotu urządzenie Data Box.
 * Przygotowywanie danych obiektów BLOB do kopiowania do rozwiązania VMware platformy Azure.
-* Kopiowanie danych z platformy Azure do chmury prywatnej.
+* Kopiowanie danych z platformy Azure do chmury prywatnej automatycznej synchronizacji.
 
 ## <a name="scenarios"></a>Scenariusze
 
@@ -44,11 +44,11 @@ Aby przeprowadzić migrację danych zbiorczych, użyj urządzenie Data Box w nas
 
 * Utwórz sieć wirtualną i konto magazynu w tym samym regionie, w którym zainicjowano rozwiązanie VMware platformy Azure.
 
-* Utwórz [połączenie sieci wirtualnej platformy Azure](cloudsimple-azure-network-connection.md) z chmury prywatnej do sieci wirtualnej, w której utworzono konto magazynu, wykonując czynności opisane w temacie [łączenie usługi Azure Virtual Network do CloudSimple przy użyciu ExpressRoute](virtual-network-connection.md).
+* Utwórz [połączenie sieci wirtualnej platformy Azure](cloudsimple-azure-network-connection.md) z chmury prywatnej automatycznej synchronizacji z siecią wirtualną, w której utworzono konto magazynu, wykonując kroki opisane w temacie [łączenie sieci wirtualnej platformy Azure w celu wykonania automatycznej synchronizacji przy użyciu ExpressRoute](virtual-network-connection.md).
 
 ## <a name="set-up-data-box-for-nfs"></a>Konfigurowanie urządzenie Data Box dla systemu plików NFS
 
-Połącz się z urządzenie Data Box lokalnym interfejsem użytkownika sieci Web, wykonując kroki opisane w sekcji "łączenie z urządzeniem" w [samouczku: kabel i Połącz się z Azure Data Box](../databox/data-box-deploy-set-up.md).  Skonfiguruj urządzenie Data Box tak, aby zezwalała na dostęp do klientów NFS:
+Połącz się z urządzenie Data Box lokalnym interfejsem użytkownika sieci Web, wykonując kroki opisane w sekcji "łączenie z urządzeniem" w [samouczku: kabel i Połącz się z Azure Data Box](../databox/data-box-deploy-set-up.md). Skonfiguruj urządzenie Data Box tak, aby zezwalała na dostęp do klientów NFS:
 
 1. W lokalnym interfejsie użytkownika sieci Web przejdź do strony **łączenie i kopiowanie** . W obszarze **Ustawienia systemu plików NFS**wybierz pozycję **dostęp z klienta systemu plików NFS**. 
 
@@ -95,7 +95,7 @@ Udział w systemie plików NFS z urządzenie Data Box musi być zainstalowany ja
 
    ![Dodawanie nowego magazynu danych — konfiguracja systemu plików NFS](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. W kroku 4 kreatora wybierz hosty ESXi, w których chcesz zainstalować magazyn danych, a następnie wybierz pozycję **dalej**.  W klastrze wybierz wszystkie hosty, aby zapewnić migrację maszyn wirtualnych.
+6. W kroku 4 kreatora wybierz hosty ESXi, w których chcesz zainstalować magazyn danych, a następnie wybierz pozycję **dalej**. W klastrze wybierz wszystkie hosty, aby zapewnić migrację maszyn wirtualnych.
 
    ![Dodawanie nowego magazynu danych — wybierz hosty](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -103,7 +103,7 @@ Udział w systemie plików NFS z urządzenie Data Box musi być zainstalowany ja
 
 ## <a name="copy-data-to-the-data-box-nfs-datastore"></a>Kopiuj dane do magazynu danych systemu urządzenie Data Box NFS
 
-Maszyny wirtualne można migrować lub sklonować do nowego magazynu danych.  Wszystkie nieużywane maszyny wirtualne, które mają zostać poddane migracji, można migrować do magazynu danych systemu plików NFS urządzenie Data Box przy użyciu opcji **Storage vMotion** . Aktywne maszyny wirtualne można sklonować do magazynu danych systemu urządzenie Data Box NFS.
+Maszyny wirtualne można migrować lub sklonować do nowego magazynu danych. Wszystkie nieużywane maszyny wirtualne, które mają zostać poddane migracji, można migrować do magazynu danych systemu plików NFS urządzenie Data Box przy użyciu opcji **Storage vMotion** . Aktywne maszyny wirtualne można sklonować do magazynu danych systemu urządzenie Data Box NFS.
 
 * Zidentyfikuj i wystaw maszyny wirtualne, które mogą być **przenoszone**.
 * Zidentyfikuj i wystaw maszyny wirtualne, które muszą zostać **sklonowane**.
@@ -133,7 +133,7 @@ Maszyna wirtualna zostanie zmigrowana do magazynu danych systemu plików NFS z u
 
 ### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>Klonowanie maszyny wirtualnej lub szablonu maszyny wirtualnej do urządzenie Data Box magazynu danych
 
-1. Kliknij prawym przyciskiem myszy maszynę wirtualną lub szablon maszyny wirtualnej, który ma zostać sklonowany. Wybierz **klon**  > **klonowania do maszyny wirtualnej**.
+1. Kliknij prawym przyciskiem myszy maszynę wirtualną lub szablon maszyny wirtualnej, który ma zostać sklonowany. Wybierz **klon** > **klonowania do maszyny wirtualnej**.
 
     ![Klonowanie maszyny wirtualnej](media/databox-migration-vm-clone.png)
 
@@ -157,7 +157,7 @@ Maszyny wirtualne zostaną sklonowane i zapisane w magazynie danych systemu plik
 
 ### <a name="copy-iso-files-to-the-data-box-datastore"></a>Kopiuj pliki ISO do urządzenie Data Box magazynu danych
 
-1. W lokalnym interfejsie użytkownika vCenter sieci Web, przejdź do obszaru **Magazyn**.  Wybierz pozycję **DATAbox — magazyn** danych, a następnie wybierz pozycję **pliki**. Utwórz nowy folder do przechowywania plików ISO.
+1. W lokalnym interfejsie użytkownika vCenter sieci Web, przejdź do obszaru **Magazyn**. Wybierz pozycję **DATAbox — magazyn** danych, a następnie wybierz pozycję **pliki**. Utwórz nowy folder do przechowywania plików ISO.
 
     ![Kopiuj ISO — Utwórz nowy folder](media/databox-migration-create-folder.png)
 
@@ -213,28 +213,28 @@ Wykonaj kroki opisane w artykule [zwróć Azure Data Box i Zweryfikuj przekazywa
 
 ## <a name="copy-data-from-azure-storage-to-azure-vmware-solution"></a>Kopiowanie danych z usługi Azure Storage do rozwiązania VMware platformy Azure
 
-Dane skopiowane na urządzenie urządzenie Data Box będą dostępne na koncie usługi Azure Storage, gdy stan zamówienia urządzenie Data Box zostanie wyświetlony jako zakończony. Dane można teraz skopiować do rozwiązania VMware platformy Azure. Dane na koncie magazynu muszą zostać skopiowane do magazynu danych sieci vSAN w chmurze prywatnej przy użyciu protokołu NFS. 
+Dane skopiowane na urządzenie urządzenie Data Box będą dostępne na koncie usługi Azure Storage, gdy stan zamówienia urządzenie Data Box zostanie wyświetlony jako zakończony. Dane można teraz skopiować do rozwiązania VMware platformy Azure. Dane na koncie magazynu muszą zostać skopiowane do magazynu danych sieci vSAN w chmurze prywatnej automatycznej synchronizacji przy użyciu protokołu NFS. 
 
-Najpierw skopiuj dane usługi BLOB Storage na dysk zarządzany na maszynie wirtualnej z systemem Linux na platformie Azure przy użyciu **AzCopy**. Udostępnij dysk zarządzany za pomocą systemu plików NFS, zainstaluj udział NFS jako magazyn danych w chmurze prywatnej, a następnie skopiuj dane. Ta metoda umożliwia szybszą kopię danych w chmurze prywatnej.
+Najpierw skopiuj dane usługi BLOB Storage na dysk zarządzany na maszynie wirtualnej z systemem Linux na platformie Azure przy użyciu **AzCopy**. Udostępnij dysk zarządzany za pomocą systemu plików NFS, zainstaluj udział NFS jako magazyn danych w chmurze prywatnej automatycznej synchronizacji, a następnie skopiuj dane. Ta metoda umożliwia szybsze kopiowanie danych do chmury prywatnej automatycznej synchronizacji.
 
-### <a name="copy-data-to-your-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>Skopiuj dane do chmury prywatnej za pomocą maszyny wirtualnej z systemem Linux i dysków zarządzanych, a następnie wyeksportuj jako udział NFS
+### <a name="copy-data-to-your-avs-private-cloud-using-a-linux-virtual-machine-and-managed-disks-and-then-export-as-nfs-share"></a>Skopiuj dane do chmury prywatnej automatycznej synchronizacji przy użyciu maszyny wirtualnej z systemem Linux i dysków zarządzanych, a następnie wyeksportuj ją jako udział NFS
 
 1. Utwórz [maszynę wirtualną z systemem Linux](../virtual-machines/linux/quick-create-portal.md) na platformie Azure w tym samym regionie, w którym utworzono konto magazynu i ma połączenie z siecią wirtualną platformy Azure z chmurą prywatną.
 
-2. Utwórz dysk zarządzany, którego pojemność magazynu jest większa niż ilość danych obiektów blob, a następnie [Dołącz je do maszyny wirtualnej z systemem Linux](../virtual-machines/linux/attach-disk-portal.md).  Jeśli ilość danych obiektów BLOB jest większa niż pojemność największego dostępnego dysku zarządzanego, dane muszą zostać skopiowane w wielu krokach lub przy użyciu wielu dysków zarządzanych.
+2. Utwórz dysk zarządzany, którego pojemność magazynu jest większa niż ilość danych obiektów blob, a następnie [Dołącz je do maszyny wirtualnej z systemem Linux](../virtual-machines/linux/attach-disk-portal.md). Jeśli ilość danych obiektów BLOB jest większa niż pojemność największego dostępnego dysku zarządzanego, dane muszą zostać skopiowane w wielu krokach lub przy użyciu wielu dysków zarządzanych.
 
 3. Nawiąż połączenie z maszyną wirtualną z systemem Linux i zainstaluj dysk zarządzany.
 
 4. Zainstaluj program [AzCopy na maszynie wirtualnej z systemem Linux](../storage/common/storage-use-azcopy-v10.md).
 
-5. Pobierz dane z magazynu obiektów blob platformy Azure na dysk zarządzany przy użyciu AzCopy.  Składnia polecenia: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`.  Zastąp `<storage-account-name>` nazwą konta usługi Azure Storage i `<container-name>` kontenerem zawierającym dane skopiowane za pomocą urządzenie Data Box.
+5. Pobierz dane z magazynu obiektów blob platformy Azure na dysk zarządzany przy użyciu AzCopy. Składnia polecenia: `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`. Zastąp `<storage-account-name>` nazwą konta usługi Azure Storage i `<container-name>` kontenerem zawierającym dane skopiowane za pomocą urządzenie Data Box.
 
 6. Zainstaluj serwer NFS na maszynie wirtualnej z systemem Linux:
 
     - W dystrybucji Ubuntu/Debian: `sudo apt install nfs-kernel-server`.
     - W dystrybucji systemu Linux w przedsiębiorstwie: `sudo yum install nfs-utils`.
 
-7. Zmień uprawnienia folderu na dysku zarządzanym, w którym skopiowano dane z usługi Azure Blob Storage.  Zmień uprawnienia dla wszystkich folderów, które mają zostać wyeksportowane jako udział w systemie plików NFS.
+7. Zmień uprawnienia folderu na dysku zarządzanym, w którym skopiowano dane z usługi Azure Blob Storage. Zmień uprawnienia dla wszystkich folderów, które mają zostać wyeksportowane jako udział w systemie plików NFS.
 
     ```bash
     chmod -R 755 /<folder>/<subfolder>
@@ -247,7 +247,7 @@ Najpierw skopiuj dane usługi BLOB Storage na dysk zarządzany na maszynie wirtu
     sudo vi /etc/exports
     ```
     
-    Wprowadź następujące wiersze w pliku dla każdego adresu IP hosta ESXi w chmurze prywatnej.  Jeśli tworzysz udziały dla wielu folderów, Dodaj wszystkie foldery.
+    Wprowadź następujące wiersze w pliku dla każdego ESXi IP hosta w chmurze prywatnej automatycznej synchronizacji. Jeśli tworzysz udziały dla wielu folderów, Dodaj wszystkie foldery.
 
     ```bash
     /<folder>/<subfolder> <ESXiNode1IP>(rw,sync,no_root_squash,no_subtree_check)
@@ -261,11 +261,11 @@ Najpierw skopiuj dane usługi BLOB Storage na dysk zarządzany na maszynie wirtu
 10. Uruchom ponownie serwer jądra systemu plików NFS przy użyciu polecenia `sudo systemctl restart nfs-kernel-server`.
 
 
-### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>Zainstaluj udział NFS maszyny wirtualnej z systemem Linux jako magazyn danych w prywatnym klastrze vCenter w chmurze, a następnie skopiuj dane
+### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-an-avs-private-cloud-vcenter-cluster-and-then-copy-data"></a>Zainstaluj udział NFS maszyny wirtualnej z systemem Linux jako magazyn danych w ramach automatycznej synchronizacji w chmurze prywatnej chmury programu vCenter, a następnie skopiuj dane
 
-Udział w systemie plików NFS z maszyny wirtualnej z systemem Linux musi być zainstalowany jako magazyn danych w klastrze programu vCenter w chmurze prywatnej. Po zainstalowaniu programu dane można kopiować z magazynu danych systemu plików NFS do magazynu sieci vSAN danych w chmurze prywatnej.
+Udział plików NFS z maszyny wirtualnej z systemem Linux musi być zainstalowany jako magazyn danych w klastrze programu vCenter w chmurze prywatnej chmury. Po zainstalowaniu programu dane można kopiować z magazynu danych systemu plików NFS do magazynu sieci vSAN danych w chmurze prywatnej chmury.
 
-1. Zaloguj się do swojego prywatnego serwera usługi Cloud vCenter.
+1. Zaloguj się do swojego serwera vCenter Private Cloud w chmurze.
 
 2. Kliknij prawym przyciskiem myszy pozycję **Datacenter**, wybierz pozycję Magazyn, wybierz pozycję **nowy magazyn** **danych**, a następnie wybierz pozycję **dalej**.
 
@@ -279,11 +279,11 @@ Udział w systemie plików NFS z maszyny wirtualnej z systemem Linux musi być z
 
    ![Dodawanie nowego magazynu danych — wersja systemu plików NFS](media/databox-migration-add-datastore-nfs-version.png)
 
-5. W kroku 3 kreatora określ nazwę magazynu danych, ścieżkę i serwer.  Na potrzeby serwera można użyć adresu IP maszyny wirtualnej z systemem Linux.  Ścieżka folderu będzie w formacie `/<folder>/<subfolder>/`.
+5. W kroku 3 kreatora określ nazwę magazynu danych, ścieżkę i serwer. Na potrzeby serwera można użyć adresu IP maszyny wirtualnej z systemem Linux. Ścieżka folderu będzie w formacie `/<folder>/<subfolder>/`.
 
    ![Dodawanie nowego magazynu danych — konfiguracja systemu plików NFS](media/databox-migration-add-datastore-nfs-configuration.png)
 
-6. W kroku 4 kreatora wybierz hosty ESXi, w których chcesz zainstalować magazyn danych, a następnie wybierz pozycję **dalej**.  W klastrze wybierz wszystkie hosty, aby zapewnić migrację maszyn wirtualnych.
+6. W kroku 4 kreatora wybierz hosty ESXi, w których chcesz zainstalować magazyn danych, a następnie wybierz pozycję **dalej**. W klastrze wybierz wszystkie hosty, aby zapewnić migrację maszyn wirtualnych.
 
    ![Dodawanie nowego magazynu danych — wybierz hosty](media/databox-migration-add-datastore-nfs-select-hosts.png)
 
@@ -291,13 +291,13 @@ Udział w systemie plików NFS z maszyny wirtualnej z systemem Linux musi być z
 
 ### <a name="add-virtual-machines-and-virtual-machine-templates-from-an-nfs-datastore-to-the-inventory"></a>Dodawanie maszyn wirtualnych i szablonów maszyn wirtualnych z magazynu danych systemu plików NFS do spisu
 
-1. W prywatnym interfejsie użytkownika sieci Web vCenter w chmurze przejdź do obszaru **Magazyn**.  Wybierz magazyn danych NFS maszyny wirtualnej z systemem Linux, a następnie wybierz pozycję **pliki**.
+1. W obszarze internetowy interfejs użytkownika programu do automatycznej synchronizacji w chmurze możesz przejść do obszaru **Magazyn**. Wybierz magazyn danych NFS maszyny wirtualnej z systemem Linux, a następnie wybierz pozycję **pliki**.
 
     ![Wybieranie plików z magazynu danych NFS](media/databox-migration-datastore-select-files.png)
 
-2. Wybierz folder zawierający maszynę wirtualną lub szablon maszyny wirtualnej.  W okienku szczegółów wybierz plik. vmx dla maszyny wirtualnej lub pliku. vmtx dla szablonu maszyny wirtualnej.
+2. Wybierz folder zawierający maszynę wirtualną lub szablon maszyny wirtualnej. W okienku szczegółów wybierz plik. vmx dla maszyny wirtualnej lub pliku. vmtx dla szablonu maszyny wirtualnej.
 
-3. Wybierz pozycję **zarejestruj maszynę** wirtualną w celu zarejestrowania maszyny wirtualnej w programie vCenter w chmurze prywatnej.
+3. Wybierz pozycję **zarejestruj maszynę** wirtualną w celu zarejestrowania maszyny wirtualnej w programie vCenter prywatnej chmury do automatycznej synchronizacji.
 
     ![Zarejestruj maszynę wirtualną](media/databox-migration-datastore-register-vm.png)
 
@@ -305,29 +305,29 @@ Udział w systemie plików NFS z maszyny wirtualnej z systemem Linux musi być z
 
 4. Powtórz kroki 3 i 4 dla wszystkich maszyn wirtualnych i szablonów maszyn wirtualnych.
 
-5. Przejdź do folderu, który zawiera pliki ISO.  Wybierz pliki ISO, a następnie wybierz pozycję **Kopiuj do** , aby skopiować pliki do folderu w magazynie danych sieci vSAN.
+5. Przejdź do folderu, który zawiera pliki ISO. Wybierz pliki ISO, a następnie wybierz pozycję **Kopiuj do** , aby skopiować pliki do folderu w magazynie danych sieci vSAN.
 
-Maszyny wirtualne i szablony maszyn wirtualnych są teraz dostępne w chmurze prywatnej programu vCenter. Te maszyny wirtualne należy przenieść z magazynu danych systemu plików NFS do magazynu danych sieci vSAN przed ich włączeniem. Można użyć opcji **vMotion magazynu** i wybrać magazyn danych sieci vSAN jako element docelowy dla maszyn wirtualnych.
+Maszyny wirtualne i szablony maszyn wirtualnych są teraz dostępne w ramach automatycznej synchronizacji w chmurze prywatnej chmury. Te maszyny wirtualne należy przenieść z magazynu danych systemu plików NFS do magazynu danych sieci vSAN przed ich włączeniem. Można użyć opcji **vMotion magazynu** i wybrać magazyn danych sieci vSAN jako element docelowy dla maszyn wirtualnych.
 
 Szablony maszyn wirtualnych muszą być sklonowane z magazynu danych systemu plików NFS maszyny wirtualnej z systemem Linux do magazynu danych sieci vSAN.
 
 ### <a name="clean-up-your-linux-virtual-machine"></a>Wyczyść maszynę wirtualną z systemem Linux
 
-Po skopiowaniu wszystkich danych do chmury prywatnej można usunąć magazyn danych systemu plików NFS z chmury prywatnej:
+Po skopiowaniu wszystkich danych do chmury prywatnej automatycznej synchronizacji można usunąć magazyn danych systemu plików NFS z chmury prywatnej do automatycznej synchronizacji:
 
 1. Upewnij się, że wszystkie maszyny wirtualne i szablony są przenoszone i sklonowane do magazynu danych sieci vSAN.
 
 2. Usuń ze spisu wszystkie szablony maszyn wirtualnych z magazynu danych systemu plików NFS.
 
-3. Odinstaluj magazyn danych maszyny wirtualnej systemu Linux z chmury prywatnej vCenter.
+3. Odinstaluj magazyn danych maszyny wirtualnej systemu Linux z poziomu programu vCenter prywatnej chmury do automatycznej synchronizacji.
 
 4. Usuń maszynę wirtualną i dysk zarządzany z platformy Azure.
 
-5. Jeśli nie chcesz przechowywać danych transferowanych przez urządzenie Data Box na koncie magazynu, Usuń konto usługi Azure Storage.  
+5. Jeśli nie chcesz przechowywać danych transferowanych przez urządzenie Data Box na koncie magazynu, Usuń konto usługi Azure Storage. 
     
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [urządzenie Data Box](../databox/data-box-overview.md).
-* Dowiedz się więcej na temat różnych opcji [migrowania obciążeń do chmury prywatnej](migrate-workloads.md).
+* Dowiedz się więcej na temat różnych opcji [migrowania obciążeń do chmury prywatnej automatycznej synchronizacji](migrate-workloads.md).

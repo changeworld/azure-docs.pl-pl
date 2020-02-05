@@ -79,8 +79,6 @@
           href: face-resource-container-config.md
         - name: Korzystanie z wystąpień kontenerów
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: Korzystanie z usługi połączonej rozpoznawania twarzy
-      href: vs-face-connected-service.md
 - name: Dokumentacja
   items:
     - name: Interfejs API rozpoznawania twarzy

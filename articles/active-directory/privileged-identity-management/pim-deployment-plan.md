@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 02/04/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021848"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026000"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Wdróż Azure AD Privileged Identity Management (PIM)
 
@@ -99,7 +99,7 @@ W poniższej sekcji znajdują się informacje ułatwiające zidentyfikowanie wsz
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Uczestnicy projektu: Privileged Identity Management dla ról usługi Azure AD
 
-| Nazwa | Rola | Akcja |
+| Nazwa | Rola | Działanie |
 | --- | --- | --- |
 | Nazwa i adres e-mail | **Architekt tożsamości lub Administrator globalny platformy Azure**<br/>Przedstawiciel zespołu ds. zarządzania tożsamościami odpowiedzialny za definiowanie sposobu wyrównywania tej zmiany z podstawową infrastrukturą zarządzania tożsamościami w organizacji. | SO/R/I |
 | Nazwa i adres e-mail | **Menedżer linii/właściciela usługi**<br/>Przedstawiciel od właścicieli IT usługi lub grupy usług. Są one kluczowym sposobem podejmowania decyzji i pomocy w rozwinięcia Privileged Identity Management dla zespołu. | SO/R/I |
@@ -109,7 +109,7 @@ W poniższej sekcji znajdują się informacje ułatwiające zidentyfikowanie wsz
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Uczestnicy projektu: Privileged Identity Management dla ról zasobów platformy Azure
 
-| Nazwa | Rola | Akcja |
+| Nazwa | Rola | Działanie |
 | --- | --- | --- |
 | Nazwa i adres e-mail | **Właściciel subskrypcji/zasobu**<br/>Przedstawiciel z właścicieli IT dla każdej subskrypcji lub zasobu, który ma zostać wdrożony Privileged Identity Management | SO/R/I |
 | Nazwa i adres e-mail | **Właściciel zabezpieczeń**<br/>Przedstawiciel zespołu ds. zabezpieczeń, który może się wylogować, aby plan spełniał wymagania dotyczące zabezpieczeń Twojej organizacji. | SO/R |
@@ -120,7 +120,7 @@ W poniższej sekcji znajdują się informacje ułatwiające zidentyfikowanie wsz
 
 W ramach procesu planowania musisz najpierw wyrazić zgodę na i włączyć Privileged Identity Management, postępując zgodnie z naszymi artykułem [Privileged Identity Management](pim-getting-started.md) . Włączenie Privileged Identity Management zapewnia dostęp do niektórych funkcji, które są specjalnie zaprojektowane w celu ułatwienia wdrożenia.
 
-Jeśli celem jest wdrożenie Privileged Identity Management dla zasobów platformy Azure, należy postępować zgodnie z naszymi [zasobami platformy Azure, aby zarządzać w Privileged Identity Management](pim-resource-roles-discover-resources.md) artykule. Tylko właściciele każdego zasobu, grupy zasobów i subskrypcji będą mogli odnajdywać je w Privileged Identity Management. Jeśli jesteś administratorem globalnym próbującym wdrożyć Privileged Identity Management zasobów platformy Azure, możesz podwyższyć [poziom dostępu do zarządzania wszystkimi subskrypcjami platformy Azure](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , aby zapewnić sobie dostęp do wszystkich zasobów platformy Azure w katalogu do odnajdowania. Jednak przed zarządzaniem swoimi zasobami przy użyciu Privileged Identity Management zalecamy zatwierdzenie od poszczególnych właścicieli subskrypcji.
+Jeśli celem jest wdrożenie Privileged Identity Management dla zasobów platformy Azure, należy postępować zgodnie z naszymi [zasobami platformy Azure, aby zarządzać w Privileged Identity Management](pim-resource-roles-discover-resources.md) artykule. Tylko właściciele subskrypcji i grupy zarządzania mogą odnajdywać te zasoby i dołączać je do Privileged Identity Management. Po dołączeniu funkcja PIM będzie dostępna dla właścicieli na wszystkich poziomach, takich jak grupa zarządzania, subskrypcja, Grupa zasobów i zasób. Jeśli jesteś administratorem globalnym próbującym wdrożyć Privileged Identity Management zasobów platformy Azure, możesz podwyższyć [poziom dostępu do zarządzania wszystkimi subskrypcjami platformy Azure](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) , aby zapewnić sobie dostęp do wszystkich zasobów platformy Azure w katalogu do odnajdowania. Jednak przed zarządzaniem swoimi zasobami przy użyciu Privileged Identity Management zalecamy zatwierdzenie od poszczególnych właścicieli subskrypcji.
 
 ### <a name="enforce-principle-of-least-privilege"></a>Wymuś zasadę najniższych uprawnień
 
@@ -250,9 +250,9 @@ Przed zaimplementowaniem rozwiązania Privileged Identity Management warto podwy
 
 | Rola | Wymaganie usługi MFA | Powiadomienia | Wymagaj zatwierdzenia | Osoby zatwierdzającej | Czas trwania aktywacji | Administrator aktywny | Aktywne wygaśnięcie | Kwalifikujące się wygaśnięcie |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Właściciel krytycznych subskrypcji | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Inni właściciele subskrypcji | 1 godzina | Brak | Nie dotyczy | 3 miesiące |
-| Administrator dostępu użytkowników z mniej krytycznymi subskrypcjami | :heavy_check_mark: | :heavy_check_mark: | y | Brak | 1 godzina | Brak | Nie dotyczy | 3 miesiące |
-| Współautor maszyny wirtualnej | y | :heavy_check_mark: | y | Brak | 3 godziny | Brak | Nie dotyczy | 6 miesięcy |
+| Właściciel krytycznych subskrypcji | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Inni właściciele subskrypcji | 1 godzina | Brak | nd. | 3 miesiące |
+| Administrator dostępu użytkowników z mniej krytycznymi subskrypcjami | :heavy_check_mark: | :heavy_check_mark: | y | Brak | 1 godzina | Brak | nd. | 3 miesiące |
+| Współautor maszyny wirtualnej | y | :heavy_check_mark: | y | Brak | 3 godziny | Brak | nd. | 6 miesięcy |
 
 W poniższej tabeli opisano poszczególne ustawienia.
 
@@ -350,7 +350,7 @@ Jeśli Privileged Identity Management nie zadziałała prawidłowo w środowisku
 
 #### <a name="azure-ad-roles"></a>Role usługi Azure AD
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 1. Otwórz **Azure AD Privileged Identity Management**.
 1. Kliknij pozycję **role usługi Azure AD** , a następnie kliknij pozycję **role**.
 1. Dla każdej skonfigurowanej roli kliknij przycisk wielokropka ( **...** ) dla wszystkich użytkowników z uprawnionym przypisaniem.
@@ -358,7 +358,7 @@ Jeśli Privileged Identity Management nie zadziałała prawidłowo w środowisku
 
 #### <a name="azure-resource-roles"></a>Role zasobów platformy Azure
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 1. Otwórz **Azure AD Privileged Identity Management**.
 1. Kliknij pozycję **zasoby platformy Azure** , a następnie kliknij subskrypcję lub zasób, które chcesz przywrócić.
 1. Kliknij pozycję **role**.
@@ -373,7 +373,7 @@ Pomyślnie wdrożono Privileged Identity Management w środowisku produkcyjnym t
 
 W celu lepszego zabezpieczenia dzierżawy należy używać wbudowanych funkcji alertów Privileged Identity Management. Aby uzyskać więcej informacji, zobacz [alerty zabezpieczeń](pim-how-to-configure-security-alerts.md#security-alerts). Te alerty obejmują: Administratorzy nie używają uprzywilejowanych ról, są przypisywane role poza Privileged Identity Management, role są aktywowane zbyt często i nie tylko. Aby w pełni chronić organizację, należy regularnie przechodzić przez listę alertów i rozwiązać problemy. Alerty można wyświetlać i usuwać w następujący sposób:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 1. Otwórz **Azure AD Privileged Identity Management**.
 1. Kliknij pozycję **role usługi Azure AD** , a następnie kliknij pozycję **alerty**.
 

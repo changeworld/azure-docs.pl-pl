@@ -3,13 +3,13 @@ title: Kopia zapasowa offline dla programu DPM i usługi Azure Backup Server
 description: Azure Backup umożliwia wysyłanie danych z sieci za pomocą usługi Azure Import/Export. W tym artykule wyjaśniono przepływ pracy kopii zapasowej offline dla programu DPM i Azure Backup Server (serwera usługi MAB).
 ms.reviewer: saurse
 ms.topic: conceptual
-ms.date: 05/08/2018
-ms.openlocfilehash: 259be99efdef29e3f7971632adf76c03175bba01
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 1/28/2020
+ms.openlocfilehash: 6be75062ab0ce06784d8cd7c833e0070476acf60
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996327"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022583"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Tryb offline — przepływ pracy tworzenia kopii zapasowych dla programu DPM i Azure Backup Server
 
@@ -56,13 +56,74 @@ Przed zainicjowaniem przepływu pracy tworzenia kopii zapasowej offline upewnij 
     | Stany Zjednoczone | [Link](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | Chiny | [Link](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
-* Utworzono konto usługi Azure Storage z *klasycznym* modelem wdrażania w ramach subskrypcji, z której pobrano plik ustawień publikowania, jak pokazano poniżej:
+* Konto usługi Azure Storage z modelem wdrażania *Menedżer zasobów* zostało utworzone w ramach subskrypcji, z poziomu której pobrano plik ustawień publikowania, jak pokazano poniżej:
 
-  ![Tworzenie klasycznego konta magazynu](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
+  ![Tworzenie konta magazynu przy użyciu programu Menedżer zasobów Development](./media/backup-azure-backup-import-export/storage-account-resource-manager.png)
 
 * Tworzona jest lokalizacja tymczasowa, która może być udziałem sieciowym lub dodatkowym dyskiem na komputerze, wewnętrznym lub zewnętrznym, z wystarczającą ilością miejsca na dysku do przechowywania kopii początkowej. Na przykład, jeśli próbujesz utworzyć kopię zapasową serwera plików 500-GB, upewnij się, że obszar przejściowy jest co najmniej 500 GB. (Mniejsza ilość jest używana z powodu kompresji).
 * W odniesieniu do dysków, które będą wysyłane do platformy Azure, należy się upewnić, że używane są tylko dyski SSD 2,5 cala lub 2,5 cala lub 3,5 cala SATA II/III. Możesz użyć dysków twardych o pojemności do 10 TB. Zapoznaj się z [dokumentacją usługi Azure Import/Export](../storage/common/storage-import-export-requirements.md#supported-hardware) , aby zapoznać się z najnowszym zestawem dysków obsługiwanych przez usługę.
 * Dyski SATA muszą być połączone z komputerem (nazywanym *komputerem kopiującym*), z którego są wykonywane kopie kopii zapasowych z *lokalizacji tymczasowej* do dysków SATA. Upewnij się, że funkcja BitLocker jest włączona na *komputerze kopiowania*
+
+## <a name="prepare-the-server-for-the-offline-backup-process"></a>Przygotowywanie serwera do procesu tworzenia kopii zapasowej w trybie offline
+
+>[!NOTE]
+> Jeśli nie możesz znaleźć wymienionych narzędzi, takich jak *AzureOfflineBackupCertGen. exe* , w instalacji agenta Mars, zapisz do AskAzureBackupTeam@microsoft.com, aby uzyskać do nich dostęp.
+
+* Otwórz wiersz polecenia z podwyższonym poziomem uprawnień na serwerze i uruchom następujące polecenie:
+
+    ```cmd
+    AzureOfflineBackupCertGen.exe CreateNewApplication SubscriptionId:<Subs ID>
+    ```
+
+    Narzędzie utworzy aplikację usługi AD w trybie offline platformy Azure, jeśli taka nie istnieje.
+
+    Jeśli aplikacja już istnieje, ten plik wykonywalny poproszony zostanie o ręczne przekazanie certyfikatu do aplikacji w dzierżawie. Wykonaj kroki opisane poniżej w [tej sekcji](#manually-upload-offline-backup-certificate) , aby ręcznie przekazać certyfikat do aplikacji.
+
+* Narzędzie AzureOfflineBackup. exe wygeneruje plik OfflineApplicationParams. XML.  Skopiuj ten plik na serwer z programem serwera usługi MAB lub DPM.
+* Zainstaluj [najnowszego agenta Mars](https://aka.ms/azurebackup_agent) na serwerze DPM/Azure Backup (serwera usługi MAB).
+* Zarejestruj serwer na platformie Azure.
+* Uruchom następujące polecenie:
+
+    ```cmd
+    AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname configured with Azure Data Box>
+    ```
+
+* Powyższe polecenie spowoduje utworzenie pliku `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml`
+
+## <a name="manually-upload-offline-backup-certificate"></a>Ręcznie Przekaż certyfikat kopii zapasowej offline
+
+Wykonaj poniższe kroki, aby ręcznie przekazać certyfikat kopii zapasowej offline do wcześniej utworzonej aplikacji Azure Active Directory przeznaczonej do tworzenia kopii zapasowych w trybie offline.
+
+1. Zaloguj się do Portalu Azure.
+2. Przejdź do **Azure Active Directory** > **rejestracje aplikacji**
+3. Przejdź do karty **posiadane aplikacje** i Znajdź aplikację z formatem nazwy wyświetlanej `AzureOfflineBackup _<Azure User Id` jak pokazano poniżej:
+
+    ![Znajdź aplikację na karcie aplikacje należące do firmy](./media/backup-azure-backup-import-export/owned-applications.png)
+
+4. Kliknij aplikację. Na karcie **Zarządzanie** w okienku po lewej stronie przejdź do pozycji **Certyfikaty & wpisy tajne**.
+5. Sprawdź, czy istnieją już istniejące certyfikaty lub klucze publiczne. Jeśli nie istnieje, możesz bezpiecznie usunąć aplikację, klikając przycisk **Usuń** na stronie **Przegląd** aplikacji. Po wykonaniu tych czynności można ponowić próbę [przygotowania serwera do procesu tworzenia kopii zapasowej w trybie offline](#prepare-the-server-for-the-offline-backup-process) i pominąć poniższe kroki. W przeciwnym razie wykonaj następujące kroki na serwerze DPM/Azure Backup Server (serwera usługi MAB), na którym chcesz skonfigurować kopie zapasowe w trybie offline.
+6. Otwórz kartę **Zarządzanie aplikacjami certyfikatów komputerów** > **osobista** i poszukaj certyfikatu z nazwą `CB_AzureADCertforOfflineSeeding_<ResourceId>`
+7. Wybierz certyfikat powyżej, kliknij prawym przyciskiem myszy **wszystkie zadania** , a następnie **wyeksportuj**, bez klucza prywatnego, w formacie CER.
+8. Przejdź do aplikacji Azure offline Backup w Azure Portal.
+9. Kliknij pozycję **Zarządzaj** certyfikatami >  **& wpisy tajne** > **Przekaż certyfikat**i przekaż certyfikat wyeksportowany w poprzednim kroku.
+
+    ![Przekaż certyfikat](./media/backup-azure-backup-import-export/upload-certificate.png)
+10. Na serwerze otwórz rejestr, wpisując **regedit** w oknie uruchamiania.
+11. Przejdź do wpisu rejestru *Computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider*.
+12. Kliknij prawym przyciskiem myszy pozycję **CloudBackupProvider** i Dodaj nową wartość ciągu o nazwie `AzureADAppCertThumbprint_<Azure User Id>`
+
+    >[!NOTE]
+    > Uwaga: aby znaleźć identyfikator użytkownika platformy Azure, wykonaj jedną z następujących czynności:
+    >
+    >1. Na platformie Azure połączonej z programem PowerShell uruchom polecenie `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as appears in the portal”`.
+    >2. Przejdź do ścieżki rejestru: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;`
+
+13. Kliknij prawym przyciskiem myszy ciąg dodany w poprzednim kroku i wybierz polecenie **Modyfikuj**. W polu wartość Podaj odcisk palca certyfikatu wyeksportowanego w kroku 7, a następnie kliknij przycisk **OK**.
+14. Aby uzyskać wartość odcisku palca, kliknij dwukrotnie certyfikat, a następnie wybierz kartę **szczegóły** i przewiń w dół do momentu wyświetlenia pola odcisk palca. Kliknij pozycję **odcisk palca** i skopiuj wartość.
+
+    ![Kopiuj wartość z pola odcisku palca](./media/backup-azure-backup-import-export/thumbprint-field.png)
+
+15. Przejdź do sekcji [przepływ pracy](#workflow) , aby kontynuować proces tworzenia kopii zapasowej offline.
 
 ## <a name="workflow"></a>Przepływ pracy
 
@@ -104,7 +165,7 @@ Informacje przedstawione w tej sekcji ułatwiają zakończenie przepływu pracy 
 
 Narzędzie *AzureOfflineBackupDiskPrep* służy do przygotowywania dysków SATA, które są wysyłane do najbliższego centrum danych platformy Azure. To narzędzie jest dostępne w katalogu instalacyjnym Agenta Recovery Services w następującej ścieżce:
 
-    *\\Microsoft Azure Recovery Services Agent\\Utils\\*
+`*\\Microsoft Azure Recovery Services Agent\Utils\*`
 
 1. Przejdź do katalogu i Skopiuj katalog **AzureOfflineBackupDiskPrep** do komputera kopii, na którym są połączone dyski SATA, które mają zostać przygotowane. Upewnij się, że w odniesieniu do komputera kopii:
 
@@ -218,4 +279,3 @@ Podczas kolejnej zaplanowanej kopii zapasowej Program Azure Backup wykonuje przy
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać odpowiedzi na pytania dotyczące przepływu pracy importowania/eksportowania platformy Azure, zapoznaj się z tematem [transfer danych do magazynu obiektów BLOB za pomocą usługi Microsoft Azure Import/Export](../storage/common/storage-import-export-service.md).
-

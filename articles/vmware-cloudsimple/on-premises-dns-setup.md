@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — Konfigurowanie usługi DNS dla chmury prywatnej CloudSimple
-description: Opisuje sposób konfigurowania rozpoznawania nazw DNS na potrzeby dostępu do programu vCenter Server w chmurze prywatnej CloudSimple z lokalnych stacji roboczych
+title: Azure VMware Solutions (Automatyczna synchronizacja) — Konfigurowanie systemu DNS do automatycznej synchronizacji chmury prywatnej
+description: Opisuje sposób konfigurowania rozpoznawania nazw DNS w celu uzyskania dostępu do programu vCenter Server w chmurze prywatnej o automatycznej synchronizacji z lokalnej stacji roboczej
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,34 +8,34 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: eadedcea7e6010cf93d118b3781630053609d29f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108796"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019608"
 ---
-# <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurowanie systemu DNS do rozpoznawania nazw dla prywatnego dostępu vCenter w chmurze z lokalnych stacji roboczych
+# <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurowanie systemu DNS do rozpoznawania nazw w celu automatycznej synchronizacji dostępu do programu vCenter w chmurze prywatnej z poziomu lokalnych stacji roboczych
 
-Aby uzyskać dostęp do serwera vCenter w chmurze prywatnej CloudSimple z lokalnych stacji roboczych, należy skonfigurować rozpoznawanie adresów DNS, aby serwer vCenter mógł zostać rozkierowany przy użyciu nazwy hosta i adresu IP.
+Aby uzyskać dostęp do serwera vCenter w chmurze prywatnej o automatycznej synchronizacji z lokalnych stacji roboczych, należy skonfigurować rozpoznawanie adresów DNS, aby serwer vCenter mógł zostać rozkierowany przy użyciu nazwy hosta i adresu IP.
 
-## <a name="obtain-the-ip-address-of-the-dns-server-for-your-private-cloud"></a>Uzyskaj adres IP serwera DNS dla chmury prywatnej
+## <a name="obtain-the-ip-address-of-the-dns-server-for-your-avs-private-cloud"></a>Uzyskaj adres IP serwera DNS dla chmury prywatnej do automatycznej synchronizacji
 
-1. Zaloguj się do [portalu CloudSimple](access-cloudsimple-portal.md).
+1. Zaloguj się do [portalu automatycznej](access-cloudsimple-portal.md)rejestracji.
 
-2. Przejdź do **zasobów** > **chmurami prywatnymi** i wybierz chmurę prywatną, z którą chcesz nawiązać połączenie.
+2. Przejdź do **zasobów** > **automatycznej synchronizacji chmur prywatnych** i wybierz chmurę prywatną do automatycznej synchronizacji, z którą chcesz nawiązać połączenie.
 
-3. Na stronie **Podsumowanie** w chmurze prywatnej w obszarze **podstawowe informacje**Skopiuj adres IP serwera DNS w chmurze prywatnej.
+3. Na stronie **Podsumowanie** chmury prywatnej automatycznej synchronizacji w sekcji **podstawowe informacje**Skopiuj adres IP serwera DNS w chmurze automatycznej synchronizacji.
 
-    ![Serwery DNS w chmurze prywatnej](media/private-cloud-dns-server.png)
+    ![Automatyczna synchronizacja serwerów DNS w chmurze prywatnej](media/private-cloud-dns-server.png)
 
 
 Użyj dowolnej z tych opcji dla konfiguracji DNS.
 
-* [Utwórz strefę na serwerze DNS dla *. cloudsimple.io](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [Utwórz usługę przesyłania dalej warunkowego na lokalnym serwerze DNS, aby rozwiązać ten problem *. cloudsimple.io](#create-a-conditional-forwarder)
+* [Utwórz strefę na serwerze DNS dla *. AVS.io](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [Utwórz usługę przesyłania dalej warunkowego na lokalnym serwerze DNS, aby rozwiązać ten problem *. AVS.io](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>Utwórz strefę na serwerze DNS dla *. cloudsimple.io
+## <a name="create-a-zone-on-the-dns-server-for-avsio"></a>Utwórz strefę na serwerze DNS dla *. AVS.io
 
 Można skonfigurować strefę jako strefę zastępczą i wskazać serwery DNS w chmurze prywatnej do rozpoznawania nazw. Ta sekcja zawiera informacje dotyczące korzystania z serwera DNS BIND lub serwera DNS systemu Microsoft Windows.
 
@@ -71,14 +71,14 @@ zone "az.cloudsimple.io"
 5. Wprowadź nazwę strefy, a następnie kliknij przycisk **dalej**.
 
     ![Nowa strefa](media/DNS05.png)
-6. Wprowadź adresy IP serwerów DNS dla chmury prywatnej uzyskanej z portalu CloudSimple.
+6. Wprowadź adresy IP serwerów DNS dla swojej chmury prywatnej automatycznej wersji zastosowanej w portalu do automatycznej synchronizacji.
 
     ![Nowa strefa](media/DNS06.png)
 7. W razie potrzeby kliknij przycisk **dalej** , aby zakończyć pracę Instalatora kreatora.
 
 ## <a name="create-a-conditional-forwarder"></a>Tworzenie usługi przesyłania dalej warunkowego
 
-Usługa przesyłania dalej warunkowego przekazuje wszystkie żądania rozpoznawania nazw DNS do wywskazanego serwera. W przypadku tej konfiguracji każde żądanie do *. cloudsimple.io jest przekazywane do serwerów DNS znajdujących się w chmurze prywatnej. W poniższych przykładach pokazano, jak skonfigurować usługi przesyłania dalej na różnych typach serwerów DNS.
+Usługa przesyłania dalej warunkowego przekazuje wszystkie żądania rozpoznawania nazw DNS do wywskazanego serwera. W przypadku tej konfiguracji każde żądanie do *. AVS.io jest przekazywany do serwerów DNS znajdujących się w chmurze prywatnej automatycznej synchronizacji. W poniższych przykładach pokazano, jak skonfigurować usługi przesyłania dalej na różnych typach serwerów DNS.
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Tworzenie usługi przesyłania dalej warunkowej na serwerze DNS BIND
 
@@ -99,4 +99,4 @@ zone "az.cloudsimple.io" {
 2. Kliknij prawym przyciskiem myszy pozycję **usługi przesyłania dalej warunkowe** i wybierz opcję dodania nowej usługi przesyłania dalej warunkowego.
 
     ![Warunkowy serwer usługi przesyłania dalej 1 systemu Windows](media/DNS08.png)
-3. Wprowadź domenę DNS i adres IP serwerów DNS w chmurze prywatnej, a następnie kliknij przycisk **OK**.
+3. Wprowadź domenę DNS i adres IP serwerów DNS w chmurze prywatnej automatycznej synchronizacji, a następnie kliknij przycisk **OK**.

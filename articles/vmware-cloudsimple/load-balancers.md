@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure według CloudSimple — wybierz rozwiązanie do równoważenia obciążenia dla chmur prywatnych CloudSimple
-description: Opisuje opcje równoważenia obciążenia wdrażanie aplikacji w chmurze prywatnej
+title: Azure VMware Solutions (Automatyczna synchronizacja) — Wybierz rozwiązanie do równoważenia obciążenia na potrzeby automatycznej synchronizacji chmur prywatnych
+description: Opisuje opcje równoważenia obciążenia wdrażanie aplikacji w chmurze prywatnej automatycznej synchronizacji
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 405bc9d95b8d82e2181e2fb828d6bcc00c8c4639
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045738"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014882"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Wybierz rozwiązanie do równoważenia obciążenia dla chmur prywatnych CloudSimple
+# <a name="choose-a-load-balancing-solution-for-avs-private-clouds"></a>Wybierz rozwiązanie równoważenia obciążenia na potrzeby automatycznej synchronizacji chmur prywatnych
 
-Podczas wdrażania aplikacji w chmurze prywatnej CloudSimple można wybrać dowolną z kilku opcji równoważenia obciążenia.
+W przypadku wdrażania aplikacji w chmurze prywatnej automatycznej synchronizacji można wybrać dowolną z kilku opcji równoważenia obciążenia.
 
-Możesz wybrać wirtualny lub oparty na oprogramowaniu moduł równoważenia obciążenia w chmurze prywatnej usługi CloudSimple, a nawet użyć modułu równoważenia obciążenia (P7) platformy Azure działającego w ramach subskrypcji platformy Azure, aby frontonować maszyny wirtualne warstwy sieci Web działające w chmurze prywatnej CloudSimple. Oto kilka opcji:
+Możesz wybrać wirtualny lub oparty na oprogramowaniu moduł równoważenia obciążenia w chmurze prywatnej automatycznej synchronizacji, a nawet użyć modułu równoważenia obciążenia (P7) platformy Azure działającego w ramach subskrypcji platformy Azure w celu frontonu maszyn wirtualnych warstwy sieci Web działających w chmurze prywatnej automatycznej synchronizacji. Oto kilka opcji:
 
 ## <a name="virtual-load-balancers"></a>Wirtualne moduły równoważenia obciążenia
 
@@ -29,13 +29,13 @@ Niektórzy popularni dostawcy to: NginX: http://nginx.org/en/docs/http/load_bala
 
 ## <a name="azure-l7-load-balancer"></a>Moduł równoważenia obciążenia (P7) platformy Azure
 
-W przypadku korzystania z usługi Azure Application Gateway jako modułu równoważenia obciążenia P7 dla aplikacji działającej w chmurze prywatnej nie trzeba zarządzać oprogramowaniem usługi równoważenia obciążenia. Oprogramowanie usługi równoważenia obciążenia jest zarządzane przez platformę Azure. Wszystkie maszyny wirtualne warstwy sieci Web w chmurze prywatnej używają prywatnych adresów IP i nie wymagają dodatkowych reguł translatora adresów sieciowych ani publicznych adresów IP do rozpoznawania nazw. Maszyny wirtualne warstwy sieci Web komunikują się z Application Gateway platformy Azure za pośrednictwem połączenia prywatnego, o małym opóźnieniu i dużej przepustowości.
+W przypadku korzystania z usługi Azure Application Gateway jako modułu równoważenia obciążenia P7 dla aplikacji działającej w chmurze prywatnej w wersji załadunkowej nie trzeba zarządzać oprogramowaniem usługi równoważenia obciążenia. Oprogramowanie usługi równoważenia obciążenia jest zarządzane przez platformę Azure. Wszystkie maszyny wirtualne w warstwie sieci Web w chmurze prywatnej automatycznej wersji próbnej używają prywatnych adresów IP i nie wymagają dodatkowych reguł translatora adresów sieciowych ani publicznych adresów IP w celu rozpoznawania nazw. Maszyny wirtualne warstwy sieci Web komunikują się z Application Gateway platformy Azure za pośrednictwem połączenia prywatnego, o małym opóźnieniu i dużej przepustowości.
 
 Aby dowiedzieć się więcej o konfigurowaniu tego rozwiązania, zapoznaj się z przewodnikiem po rozwiązaniu dotyczącym korzystania z usługi Azure Application Gateway jako modułu równoważenia obciążenia P7.
 
 ## <a name="azure-internal-load-balancer"></a>Wewnętrzny moduł równoważenia obciążenia platformy Azure
 
-Jeśli zdecydujesz się uruchomić aplikację w ramach wdrożenia hybrydowego, w którym warstwa frontonu internetowego jest uruchomiona w sieci wirtualnej platformy Azure w ramach subskrypcji platformy Azure, a warstwa bazy danych aplikacji jest uruchomiona na maszynach wirtualnych programu VMware w chmurze prywatnej CloudSimple, możesz użyć wewnętrznego ładowania platformy Azure Moduł równoważenia obciążenia (P4) przed maszynami wirtualnymi warstwy bazy danych na potrzeby zarządzania ruchem.
+Jeśli zdecydujesz się uruchomić aplikację w ramach wdrożenia hybrydowego, w którym warstwa frontonu internetowego jest uruchomiona w sieci wirtualnej platformy Azure w ramach subskrypcji platformy Azure, a warstwa bazy danych aplikacji jest uruchomiona na maszynach wirtualnych VMware w ramach automatycznej synchronizacji chmury prywatnej, możesz użyć wewnętrznego modułu równoważenia obciążenia platformy Azure (L 4 moduł równoważenia obciążenia przed maszynami wirtualnymi warstwy bazy danych na potrzeby zarządzania ruchem.
 
 Aby dowiedzieć się więcej, zobacz Dokumentacja [wewnętrzna Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) platformy Azure.
 

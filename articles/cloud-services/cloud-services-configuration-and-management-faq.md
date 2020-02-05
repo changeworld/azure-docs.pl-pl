@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 50dd6e2387abbf5b24adcee708dd2ff387e33261
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845382"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019421"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy związane z konfiguracją i zarządzaniem w usłudze Azure Cloud Services: często zadawane pytania
 
@@ -174,11 +174,11 @@ Zobacz [Nowy: konfigurowalny limit czasu bezczynności dla Azure Load Balancer](
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Jak mogę skojarzyć statyczny adres IP z moją usługą w chmurze?
 Aby skonfigurować statyczny adres IP, należy utworzyć zastrzeżoną wartość adresu IP. Ten zastrzeżony adres IP można skojarzyć z nową usługą w chmurze lub istniejącym wdrożeniem. Aby uzyskać szczegółowe informacje, zobacz następujące dokumenty:
-* [Jak utworzyć zastrzeżony adres IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Zarezerwuj adres IP istniejącej usługi w chmurze](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Skojarz zastrzeżony adres IP z nową usługą w chmurze](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Skojarz zastrzeżony adres IP z uruchomionym wdrożeniem](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Kojarzenie zastrzeżonego adresu IP z usługą w chmurze przy użyciu pliku konfiguracji usługi](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [Jak utworzyć zastrzeżony adres IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#manage-reserved-vips)
+* [Zarezerwuj adres IP istniejącej usługi w chmurze](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Skojarz zastrzeżony adres IP z nową usługą w chmurze](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Skojarz zastrzeżony adres IP z uruchomionym wdrożeniem](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-running-deployment)
+* [Kojarzenie zastrzeżonego adresu IP z usługą w chmurze przy użyciu pliku konfiguracji usługi](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Jakie są funkcje i możliwości, które zapewnia usługa Azure Basic adresy IP/identyfikatory i DDOS?
 Platforma Azure ma adresy IP/identyfikatory na serwerach fizycznych centrów danych, aby chronić je przed zagrożeniami. Ponadto klienci mogą wdrażać rozwiązania zabezpieczeń innych firm, takie jak zapory aplikacji sieci Web, zapory sieciowe, ochrona przed złośliwym oprogramowaniem, Wykrywanie intruzów, systemy zapobiegania (identyfikatory/adresy IP) i nie tylko. Aby uzyskać więcej informacji, zobacz [Ochrona danych i zasobów oraz zgodność z globalnymi standardami zabezpieczeń](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity).

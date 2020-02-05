@@ -1,42 +1,43 @@
 ---
 title: Zarządzanie urządzeniami w aplikacji IoT Central platformy Azure | Microsoft Docs
 description: Jako operator, Dowiedz się, jak zarządzać urządzeniami w aplikacji IoT Central platformy Azure.
-author: ellenfosborne
-ms.author: elfarber
-ms.date: 06/09/2019
+author: sarahhubbard
+ms.author: sahubbar
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: adcaa29ed894f2d61871f467369bcdd05f8cc593
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: dfbfd65223ddad5e8a20958d62ef86b5aa16af43
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601587"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023484"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Zarządzanie urządzeniami w aplikacji IoT Central platformy Azure
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+
 
 W tym artykule opisano, jak za pomocą operatora zarządzać urządzeniami w aplikacji IoT Central platformy Azure. Jako operator można:
 
 - Strona **urządzenia** służy do wyświetlania, dodawania i usuwania urządzeń podłączonych do aplikacji IoT Central platformy Azure.
 - Przechowywanie aktualnych danych spisu urządzeń.
-- Zadbaj o aktualność metadanych urządzenia, zmieniając wartości przechowywane we właściwościach urządzenia.
-- Kontroluj zachowanie urządzeń, aktualizując ustawienia na określonym urządzeniu ze strony **Ustawienia** .
+- Zadbaj o aktualność metadanych urządzenia, zmieniając wartości przechowywane we właściwościach urządzenia z widoków.
+- Kontroluj zachowanie urządzeń, aktualizując ustawienia na określonym urządzeniu w widokach.
 
 ## <a name="view-your-devices"></a>Wyświetlanie urządzeń
 
 Aby wyświetlić pojedyncze urządzenie:
 
-1. Wybierz pozycję **urządzenia** w okienku po lewej stronie. W tym miejscu zostanie wyświetlona lista [szablonów urządzeń](howto-set-up-template.md).
+1. Wybierz pozycję **urządzenia** w okienku po lewej stronie. W tym miejscu zostanie wyświetlona lista wszystkich urządzeń i szablonów urządzeń.
 
-1. Wybierz szablon urządzenia na liście **Szablony** .
+1. Wybierz szablon urządzenia.
 
 1. W okienku po prawej stronie **urządzenia** zostanie wyświetlona lista urządzeń utworzonych na podstawie tego szablonu. Wybierz pojedyncze urządzenie, aby wyświetlić stronę szczegółów urządzenia dla tego urządzenia:
 
     ![Strona szczegółów urządzenia](./media/howto-manage-devices/devicelist.png)
+
 
 ## <a name="add-a-device"></a>Dodawanie urządzenia
 
@@ -48,7 +49,11 @@ Aby dodać urządzenie do aplikacji usługi Azure IoT Central:
 
 1. Wybierz pozycję + **Nowy**.
 
-1. Wybierz opcję **rzeczywiste** lub **symulowane**. Rzeczywiste urządzenie dotyczy urządzenia fizycznego połączonego z aplikacją Azure IoT Central. Urządzenie symulowane ma przykładowe dane wygenerowane przez usługę Azure IoT Central.
+1. Zmień przełącznik **symulowany** na **włączony** lub **wyłączony**. Rzeczywiste urządzenie dotyczy urządzenia fizycznego połączonego z aplikacją Azure IoT Central. Urządzenie symulowane ma przykładowe dane wygenerowane przez usługę Azure IoT Central.
+
+1. Kliknij pozycję **Utwórz**.
+
+1. To urządzenie jest teraz widoczne na liście urządzeń dla tego szablonu. Wybierz urządzenie, aby wyświetlić stronę szczegóły urządzenia, która zawiera wszystkie widoki dla urządzenia.
 
 ## <a name="import-devices"></a>Importuj urządzenia
 
@@ -64,44 +69,48 @@ Aby przeprowadzić zbiorczą rejestrację urządzeń w aplikacji:
 1. Na panelu po lewej stronie wybierz szablon urządzenia, dla którego chcesz utworzyć zbiorczo urządzenia.
 
     > [!NOTE]
-    > Jeśli nie masz jeszcze szablonu urządzenia, możesz zaimportować urządzenia w obszarze **nieskojarzone urządzenia** i zarejestrować je bez szablonu. Po zaimportowaniu urządzeń można je skojarzyć z szablonem.
+    > Jeśli nie masz jeszcze szablonu urządzenia, możesz zaimportować urządzenia ze **wszystkich urządzeń** i zarejestrować je bez szablonu. Po zaimportowaniu urządzeń można migrować je do szablonu.
 
 1. Wybierz pozycję **Importuj**.
 
     ![Importuj akcję](./media/howto-manage-devices/bulkimport1a.png)
 
+
 1. Wybierz plik CSV, który zawiera listę identyfikatorów urządzeń do zaimportowania.
 
-1. Importowanie urządzenia rozpocznie się po przekazaniu pliku. Można śledzić stan importu u góry siatki urządzeń.
+1. Importowanie urządzenia rozpocznie się po przekazaniu pliku. Stan importowania można śledzić w panelu Operacje na urządzeniu. Ten panel jest wyświetlany automatycznie po rozpoczęciu importowania lub dostęp do niego za pomocą ikony dzwonka w prawym górnym rogu.
 
-1. Po zakończeniu importowania na siatce urządzeń zostanie wyświetlony komunikat o powodzeniu.
+1. Po zakończeniu importowania w panelu Operacje urządzenia zostanie wyświetlony komunikat o powodzeniu.
 
     ![Powodzenie importowania](./media/howto-manage-devices/bulkimport3a.png)
 
-Jeśli operacja importowania urządzenia nie powiedzie się, na siatce urządzeń zostanie wyświetlony komunikat o błędzie. Zostanie wygenerowany plik dziennika, który przechwytuje wszystkie błędy, które można pobrać.
 
-**Kojarzenie urządzeń z szablonem**
+Jeśli operacja importowania urządzenia nie powiedzie się, zostanie wyświetlony komunikat o błędzie w panelu Operacje na urządzeniu. Zostanie wygenerowany plik dziennika, który przechwytuje wszystkie błędy, które można pobrać.
 
-W przypadku rejestrowania urządzeń przez uruchomienie importu w obszarze **nieskojarzone urządzenia**zostaną utworzone urządzenia bez skojarzenia szablonu urządzenia. Urządzenia muszą być skojarzone z szablonem, aby eksplorować dane oraz inne szczegóły dotyczące urządzenia. Wykonaj następujące kroki, aby skojarzyć urządzenia z szablonem:
+**Migrowanie urządzeń do szablonu**
+
+W przypadku rejestrowania urządzeń przez uruchomienie importowania w obszarze **wszystkie urządzenia**urządzenia są tworzone bez skojarzenia szablonu urządzenia. Urządzenia muszą być skojarzone z szablonem, aby eksplorować dane oraz inne szczegóły dotyczące urządzenia. Wykonaj następujące kroki, aby skojarzyć urządzenia z szablonem:
 
 1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
 
-1. Na panelu po lewej stronie wybierz pozycję **nieskojarzone urządzenia**:
+1. Na panelu po lewej stronie wybierz pozycję **wszystkie urządzenia**:
 
     ![Nieskojarzone urządzenia](./media/howto-manage-devices/unassociateddevices1a.png)
 
+
+1. Użyj filtru na siatce, aby określić, czy wartość w kolumnie **szablon urządzenia** jest "nieskojarzona" dla dowolnego urządzenia.
+
 1. Wybierz urządzenia, które chcesz skojarzyć z szablonem:
 
-1. Wybierz pozycję **Skojarz**:
+1. Wybierz pozycję **Migruj**:
 
     ![Skojarz urządzenia](./media/howto-manage-devices/unassociateddevices2a.png)
 
-1. Wybierz szablon z listy dostępnych szablonów i wybierz pozycję **Skojarz**.
+
+1. Wybierz szablon z listy dostępnych szablonów i wybierz pozycję **Migruj**.
 
 1. Wybrane urządzenia są skojarzone z wybranym szablonem urządzenia.
 
-> [!NOTE]
-> Po skojarzeniu urządzenia z szablonem nie można go usunąć ani skojarzyć z innym szablonem.
 
 ## <a name="export-devices"></a>Eksportuj urządzenia
 
@@ -111,19 +120,21 @@ Aby wyeksportować zbiorczo urządzenia z aplikacji:
 
 1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
 
-1. Na panelu po lewej stronie wybierz szablon urządzenia, z którego mają zostać wyeksportowane urządzenia.
+1. W lewym okienku wybierz szablon urządzenia, z którego mają zostać wyeksportowane urządzenia.
 
 1. Wybierz urządzenia, które chcesz wyeksportować, a następnie wybierz akcję **Eksportuj** .
 
-    ![Eksportowanie](./media/howto-manage-devices/export1a.png)
+    ![Eksportuj](./media/howto-manage-devices/export1a.png)
 
-1. Rozpocznie się proces eksportowania. Stan można śledzić w górnej części siatki.
+
+1. Rozpocznie się proces eksportowania. Stan można śledzić za pomocą panelu Operacje na urządzeniu.
 
 1. Po zakończeniu eksportowania zostanie wyświetlony komunikat o powodzeniu wraz z linkiem umożliwiającym pobranie wygenerowanego pliku.
 
-1. Wybierz **komunikat o powodzeniu** , aby pobrać plik do folderu lokalnego na dysku.
+1. Wybierz link **Pobierz plik** , aby pobrać plik do folderu lokalnego na dysku.
 
     ![Powodzenie eksportowania](./media/howto-manage-devices/export2a.png)
+
 
 1. Wyeksportowany plik CSV zawiera następujące kolumny: Identyfikator urządzenia, nazwa urządzenia, klucze urządzeń i odciski palca certyfikatu x509:
 
@@ -134,7 +145,7 @@ Aby wyeksportować zbiorczo urządzenia z aplikacji:
     * IOTC_X509THUMBPRINT_PRIMARY
     * IOTC_X509THUMBPRINT_SECONDARY
 
-Aby uzyskać więcej informacji na temat parametrów połączenia i połączeń rzeczywistych urządzeń z aplikacją IoT Central, zobacz [łączność urządzeń w usłudze Azure IoT Central](concepts-connectivity.md).
+Aby uzyskać więcej informacji na temat parametrów połączenia i łączenia rzeczywistych urządzeń z aplikacją IoT Central, zobacz [łączność urządzenia w usłudze Azure IoT Central](concepts-get-connected.md).
 
 ## <a name="delete-a-device"></a>Usuwanie urządzenia
 
@@ -144,44 +155,30 @@ Aby usunąć urządzenie prawdziwe lub symulowane z aplikacji IoT Central platfo
 
 1. Wybierz szablon urządzenia, które chcesz usunąć.
 
-1. Zaznacz pole wyboru obok urządzenia, które ma zostać usunięte.
+1. Użyj narzędzi filtru do filtrowania i wyszukiwania urządzeń. Zaznacz pole wyboru obok pozycji urządzenia do usunięcia.
 
-1. Wybierz pozycję **Usuń**.
-
-## <a name="change-a-device-setting"></a>Zmiana ustawienia urządzenia
-
-Ustawienia sterują zachowaniem urządzenia. Innymi słowy, umożliwiają one dostarczenie danych wejściowych na urządzeniu. Ustawienia urządzenia można wyświetlać i aktualizować na stronie **szczegóły urządzenia** .
-
-1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
-
-1. Wybierz szablon urządzenia urządzenia, którego ustawienia chcesz zmienić.
-
-1. Wybierz kartę **Ustawienia** . W tym miejscu zobaczysz wszystkie ustawienia urządzenia i ich bieżące wartości. Dla każdego ustawienia można sprawdzić, czy urządzenie jest nadal synchronizowane.
-
-1. Zmodyfikuj ustawienia do potrzebnych wartości. Można modyfikować wiele ustawień jednocześnie i aktualizować je wszystkie w tym samym czasie.
-
-1. Wybierz pozycję **Aktualizuj**. Wartości są wysyłane do urządzenia. Gdy urządzenie potwierdzi zmianę ustawienia, stan ustawienia wraca do **synchronizacji**.
+1. Wybierz pozycję **Usuń**. Stan tego usunięcia można śledzić w panelu Operacje na urządzeniu.
 
 ## <a name="change-a-property"></a>Zmiana właściwości
 
-Właściwości to metadane urządzenia skojarzone z urządzeniem, takie jak miasto i numer seryjny. Właściwości można wyświetlać i aktualizować na stronie **szczegółów urządzenia** .
+Właściwości chmury to metadane urządzenia skojarzone z urządzeniem, takie jak miasto i numer seryjny. Właściwości zapisywalne sterują zachowaniem urządzenia. Innymi słowy, umożliwiają one dostarczenie danych wejściowych na urządzeniu.  Właściwości urządzenia są ustawiane przez urządzenie i są tylko do odczytu w ramach IoT Central. Można wyświetlać i aktualizować właściwości w widokach **szczegóły urządzenia** dla urządzenia.
 
 1. Wybierz pozycję **urządzenia** w okienku po lewej stronie.
 
-1. Wybierz szablon urządzenia, którego właściwości chcesz zmienić.
+1. Wybierz szablon urządzenia urządzenia, którego właściwości chcesz zmienić, a następnie wybierz urządzenie docelowe.
 
-1. Wybierz kartę **Właściwości** , w której zobaczysz wszystkie właściwości.
+1. Wybierz widok, który zawiera właściwości urządzenia, ten widok umożliwia wprowadzanie wartości i wybranie opcji **Zapisz** w górnej części strony. Tutaj zobaczysz właściwości urządzenia i ich bieżące wartości. Właściwości chmury i zapisywalne właściwości mają pola edytowalne, podczas gdy właściwości urządzenia są tylko do odczytu. Dla właściwości do zapisu można zobaczyć stan synchronizacji u dołu pola. 
 
-1. Zmodyfikuj właściwości aplikacji, tak aby były potrzebne wartości. Jednocześnie można modyfikować wiele właściwości i aktualizować je wszystkie w tym samym czasie. Wybierz pozycję **Aktualizuj**.
+1. Zmodyfikuj właściwości do potrzebnych wartości. Można modyfikować wiele właściwości jednocześnie i aktualizować je wszystkie w tym samym czasie.
 
-> [!NOTE]
-> Nie można zmienić wartości _Właściwości urządzenia_. Właściwości urządzenia są ustawiane przez urządzenie i są tylko do odczytu w ramach aplikacji IoT Central platformy Azure.
+1. Wybierz pozycję **Zapisz**. Jeśli Zapisano właściwości do zapisu, wartości są wysyłane do urządzenia. Gdy urządzenie potwierdzi zmianę właściwości zapisywalnej, stan zwraca z powrotem do **synchronizowane**. Jeśli Zapisano Właściwość chmury, wartość jest aktualizowana.
+
 
 ## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy wiesz już, jak zarządzać urządzeniami w aplikacji IoT Central platformy Azure, Oto sugerowany następny krok:
 
 > [!div class="nextstepaction"]
-> [Jak korzystać z zestawów urządzeń](howto-use-device-sets.md)
+> [Jak używać grup urządzeń](tutorial-use-device-groups.md)
 
 <!-- Next how-tos in the sequence -->

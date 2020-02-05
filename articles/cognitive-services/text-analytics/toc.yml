@@ -64,8 +64,6 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Korzystanie z usługi Kubernetes Service (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-    - name: Korzystanie z usługi połączonej analizy tekstu
-      href: vs-text-connected-service.md
 - name: Dokumentacja
   items:
     - name: Dokumentacja interfejsu wiersza polecenia

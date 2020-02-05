@@ -7,16 +7,16 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d979c4210c7de4588338c8e3c30b179056102d0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3a64ca5b0c2a092f895873e097ea6beb9a235a37
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498800"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017704"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>Architektura referencyjna monitorowania zużycia wody 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Rozwiązania do monitorowania zużycia wody można skompilować za pomocą **szablonu aplikacji platformy Azure IoT Central** jako startowej aplikacji IoT. Ten artykuł zawiera wskazówki dotyczące architektury referencyjnej wysokiego poziomu dotyczące tworzenia kompleksowych rozwiązań. 
 
@@ -32,9 +32,9 @@ Pojęcia:
 Przyjrzyjmy się kluczowym składnikom, które zwykle odgrywają część w rozwiązaniu do monitorowania zużycia wody.
 
 ## <a name="devices-and-connectivity"></a>Urządzenia i łączność 
-W tej sekcji odnosimy się do urządzeń używanych do rozwiązań elektronicznych, takich jak monitorowanie jakości wody lub monitorowanie zużycia wody, ogólnie jako urządzenia inteligentnej wody. Urządzenia inteligentnej wody mogą być licznikami przepływów, monitorów jakości wody, inteligentne zawory, Detektory wycieków itp.
+Ta sekcja odnosi się do urządzeń używanych do elektronicznych rozwiązań wodnych, takich jak monitorowanie jakości wody lub monitorowanie zużycia wody, zazwyczaj jako urządzenia inteligentnej wody. Urządzenia inteligentnej wody mogą być licznikami przepływów, monitorów jakości wody, inteligentne zawory, Detektory wycieków itd.
 
-Urządzenia używane w rozwiązaniach Smart wodna zwykle są połączone za pośrednictwem sieci rozległych (LPWAN) z niską przepustowością za pośrednictwem operatora sieci innej firmy. W przypadku tych typów urządzeń można korzystać z [mostka urządzenia usługi azure IoT Central](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) , aby wysyłać dane urządzenia do aplikacji IoT na platformie Azure IoT Central. Alternatywnie mogą istnieć bramy urządzeń z możliwością IP i mogą łączyć się bezpośrednio z IoT Central.
+Urządzenia używane w rozwiązaniach Smart wodna zwykle są połączone za pomocą sieci rozległych (LPWAN) z niską przepustowością przez operatora sieci innej firmy. W przypadku tych typów urządzeń możesz użyć [mostka urządzenia usługi Azure IoT Central](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) , aby wysłać dane urządzenia do aplikacji IoT na platformie Azure IoT Central. Alternatywnie mogą istnieć bramy urządzeń z możliwością IP i mogą łączyć się bezpośrednio z IoT Central.
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central to platforma aplikacji IoT, która umożliwia szybkie rozpoczęcie pracy z rozwiązaniem IoT. Możesz Marka, dostosowywać i zintegrować rozwiązanie z usługami innych firm.
@@ -44,11 +44,11 @@ Po połączeniu urządzeń z urządzeniami inteligentnymi do IoT Central uzyskas
 ## <a name="extensibility-and-integrations"></a>Rozszerzalność i integracje 
 Aplikację IoT można zwiększyć w IoT Central i opcjonalnie:
 * Przekształcaj i Integruj dane IoT na potrzeby zaawansowanej analizy, na przykład szkolenia modeli uczenia maszynowego za pośrednictwem ciągłego eksportu danych z aplikacji IoT Central
-* Automatyzowanie przepływów pracy w innych systemach przez wyzwalanie akcji za pośrednictwem Microsoft Flow lub elementów webhook z aplikacji IoT Central
+* Automatyzowanie przepływów pracy w innych systemach przez wyzwalanie akcji przy użyciu Microsoft Flow lub elementów webhook z aplikacji IoT Central
 * programowo uzyskać dostęp do aplikacji IoT w IoT Central za poorednictwem IoT Central interfejsów API
 
 ## <a name="business-applications"></a>Aplikacje biznesowe 
-Dane IoT mogą służyć do zarządzania różnymi aplikacjami biznesowymi w ramach narzędzia wodnego. Aby dowiedzieć się, jak połączyć aplikację monitorowania zużycia wody IoT Central z usługami pól, postępuj zgodnie z samouczkiem dotyczącym [integracji z usługami pól usługi Dynamics 365](./how-to-configure-connected-field-services.md) 
+Dane IoT mogą służyć do zarządzania różnymi rodzajami aplikacji firmowych w ramach narzędzia wodnego. Aby dowiedzieć się, jak połączyć aplikację monitorowania zużycia wody IoT Central z usługami pól, postępuj zgodnie z samouczkiem dotyczącym [integracji z usługami pól usługi Dynamics 365](./how-to-configure-connected-field-services.md) 
 
 
 ## <a name="next-steps"></a>Następne kroki

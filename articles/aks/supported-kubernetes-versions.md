@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: bba4196547bda3d3ddcf3344032de5b9286639a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996752"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026119"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -96,7 +96,7 @@ New Supported Version List
 * Nowe wersje **pomocnicze** programu Kubernetes
   * Wszyscy użytkownicy są powiadamiani publicznie o nowej wersji i o wersji, która zostanie usunięta.
   * Po wydaniu nowej wersji poprawki najstarsza wersja poprawki jest usuwana w tym samym czasie.
-  * Klienci mają **60 dni** od publicznej daty powiadomienia, aby przeprowadzić uaktualnienie do obsługiwanej wersji pomocniczej.
+  * Klienci mają **30 dni** od publicznej daty powiadomienia, aby przeprowadzić uaktualnienie do obsługiwanej wersji pomocniczej.
 * Nowe wersje **poprawek** Kubernetes
   * Wszyscy użytkownicy otrzymają powiadomienie o wydaniu nowej wersji poprawki i przeprowadź uaktualnienie do najnowszej wersji poprawki.
   * Użytkownicy mający **30 dni** na uaktualnienie do nowszej obsługiwanej wersji poprawki. Użytkownicy mają **30 dni** , aby przeprowadzić uaktualnienie do obsługiwanej wersji poprawki przed usunięciem najstarszego elementu.
@@ -139,7 +139,7 @@ az aks get-versions --location eastus --output table
 
 **Co się stanie, gdy klient uaktualnia klaster Kubernetes z nieobsługiwaną wersją pomocniczą?**
 
-Jeśli korzystasz z wersji *n-3* , jesteś poza pomocą techniczną i zostanie wyświetlony monit o uaktualnienie. Jeśli uaktualnienie z wersji n-3 do n-2 powiedzie się, jesteś teraz w naszych zasadach pomocy technicznej. Na przykład:
+Jeśli korzystasz z wersji *n-3* , jesteś poza pomocą techniczną i zostanie wyświetlony monit o uaktualnienie. Jeśli uaktualnienie z wersji n-3 do n-2 powiedzie się, jesteś teraz w naszych zasadach pomocy technicznej. Przykład:
 
 - Jeśli najstarsza obsługiwana wersja AKS to *1.13. a* i jesteś w wersji *1.12. b* lub starszej, jesteś poza pomocą techniczną.
 - Jeśli uaktualnienie z programu *1.12. b* do *1.13. a* lub nowsze, nastąpi powrót do usługi w ramach naszych zasad pomocy technicznej.

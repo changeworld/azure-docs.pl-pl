@@ -3,23 +3,23 @@ title: Dostosowywanie interfejsu użytkownika usługi Azure IoT Central | Micros
 description: Jak dostosować motyw i linki pomocy dla aplikacji Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 829ea1bcca36dfba2da3e3946b48b7249f69ee62
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953592"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018435"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Dostosowywanie interfejsu użytkownika usługi Azure IoT Central
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+W tym artykule opisano, jak administrator może dostosować interfejs użytkownika aplikacji, stosując niestandardowe motywy i modyfikując linki pomocy, aby wskazywały własne niestandardowe zasoby pomocy. 
 
-W tym artykule opisano, jak administrator może dostosować interfejs użytkownika aplikacji, stosując niestandardowe motywy i modyfikując linki pomocy, aby wskazywały własne niestandardowe zasoby pomocy.
+
 
 Poniższy zrzut ekranu przedstawia stronę korzystającą ze standardowego motywu:
 
@@ -41,7 +41,7 @@ Na tej stronie można dostosować następujące aspekty aplikacji:
 
 Obraz PNG, nie większy niż 1 MB, z przezroczystym tłem. To logo jest wyświetlane w lewym okienku na pasku tytułu aplikacji IoT Central.
 
-Jeśli obraz logo zawiera nazwę aplikacji, można ukryć tekst nazwy aplikacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie aplikacją](./howto-administer.md#change-application-name-and-url).
+Jeśli obraz logo zawiera nazwę aplikacji, można ukryć tekst nazwy aplikacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie aplikacją](howto-administer.md#change-application-name-and-url).
 
 ### <a name="browser-icon-favicon"></a>Ikona przeglądarki (favicon)
 
@@ -78,4 +78,4 @@ Możesz również dodać nowe wpisy do menu Pomoc i usunąć domyślne wpisy:
 Teraz, gdy już wiesz, jak dostosować interfejs użytkownika w aplikacji IoT Central, Oto kilka sugerowanych następnych kroków:
 
 - [Administruj swoją aplikacją](./howto-administer.md)
-- [Dodawanie kafelków do pulpitu nawigacyjnego](./howto-add-tiles-to-your-dashboard.md)
+- [Dodawanie kafelków do pulpitu nawigacyjnego](howto-add-tiles-to-your-dashboard.md)

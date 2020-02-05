@@ -1,26 +1,27 @@
 ---
 title: Zarządzanie użytkownikami i rolami w aplikacji IoT Central platformy Azure | Microsoft Docs
 description: Jako administrator, jak zarządzać użytkownikami i rolami w aplikacji IoT Central platformy Azure
-author: v-krghan
-ms.author: v-krghan
-ms.date: 07/29/2019
+author: lmasieri
+ms.author: lmasieri
+ms.date: 12/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: 937c4a4dbf976564cbf8dc562bdec3b328fc2bc0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+manager: corywink
+ms.openlocfilehash: 8826ec5b8876a3f9e5b613641cc0d759545f04c4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950095"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018957"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Zarządzanie użytkownikami i rolami w aplikacji IoT Central
 
-W tym artykule opisano, jak administrator może dodawać, edytować i usuwać użytkowników w aplikacji IoT Central platformy Azure oraz jak zarządzać rolami w aplikacji IoT Central platformy Azure.
 
-Aby uzyskać dostęp do sekcji **Administracja** i korzystać z niej, musisz mieć rolę **administratora** dla aplikacji IoT Central platformy Azure. Jeśli utworzysz aplikację IoT Central platformy Azure, zostanie ona automatycznie przypisana do roli **administratora** dla tej aplikacji.
 
+W tym artykule opisano, jak administrator może dodawać, edytować i usuwać użytkowników w aplikacji IoT Central platformy Azure. W tym artykule opisano również sposób zarządzania rolami w aplikacji IoT Central platformy Azure.
+
+Aby uzyskać dostęp do sekcji **Administracja** i korzystać z niej, musisz mieć rolę **administratora** dla aplikacji IoT Central platformy Azure. Jeśli utworzysz aplikację IoT Central platformy Azure, zostanie ona automatycznie dodana do roli **administratora** dla tej aplikacji.
 
 ## <a name="add-users"></a>Dodawanie użytkowników
 
@@ -29,17 +30,19 @@ Każdy użytkownik musi mieć konto użytkownika, aby można było zalogować si
 Aby uzyskać więcej informacji, zobacz [konto Microsoft pomocy](https://support.microsoft.com/products/microsoft-account?category=manage-account) i [szybkiego startu: Dodawanie nowych użytkowników do Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 1. Aby dodać użytkownika do aplikacji IoT Central, przejdź do strony **Użytkownicy** w sekcji **Administracja** .
-
-    ![Lista użytkowników](media/howto-administer/image1.png)
+    
+    > [!div class="mx-imgBorder"]
+    >![Zarządzanie użytkownikami](media/howto-manage-users-roles/manage-users-pnp.png)
 
 1. Aby dodać użytkownika, na stronie **Użytkownicy** wybierz pozycję **+ Dodaj użytkownika**.
 
 1. Wybierz rolę dla użytkownika z menu rozwijanego **rola** . Dowiedz się więcej o rolach w sekcji [Zarządzanie rolami](#manage-roles) w tym artykule.
 
-    ![Wybór roli](media/howto-administer/image3.png)
+    > [!div class="mx-imgBorder"]
+    >![Dodaj użytkownika i wybierz rolę](media/howto-manage-users-roles/add-user-pnp.png)
 
     > [!NOTE]
-    >  Aby dodać użytkowników zbiorczo, wprowadź identyfikatory użytkowników wszystkich użytkowników, których chcesz dodać rozdzielone średnikami. Wybierz rolę z menu rozwijanego **rola** . Następnie wybierz pozycję **Zapisz**.
+    > Użytkownik, który znajduje się w roli niestandardowej, która przyzna im uprawnienia do dodawania innych użytkowników, może dodawać tylko użytkowników do roli z tymi samymi lub mniej uprawnień niż ich własna rola.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>Edytuj role przypisane do użytkowników
 
@@ -54,22 +57,210 @@ Aby usunąć użytkowników, zaznacz jedno lub więcej pól wyboru na stronie **
 
 ## <a name="manage-roles"></a>Zarządzanie rolami
 
-Role umożliwiają kontrolę nad tym, kto w organizacji może wykonywać różne zadania w IoT Central. Istnieją trzy role, które można przypisać do użytkowników aplikacji.
+Role umożliwiają kontrolowanie, kto w organizacji może wykonywać różne zadania w IoT Central. Istnieją trzy wbudowane role, które można przypisać do użytkowników aplikacji. Możesz również [utworzyć role niestandardowe](#create-a-custom-role) , jeśli potrzebujesz precyzyjnej kontroli.
+
+> [!div class="mx-imgBorder"]
+> ![zarządzać wyborem ról](media/howto-manage-users-roles/manage-roles-pnp.png)
 
 ### <a name="administrator"></a>Administrator
 
-Użytkownicy z rolą **administrator** mają dostęp do wszystkich funkcji w aplikacji.
+Użytkownicy z rolą **administrator** mogą zarządzać każdą częścią aplikacji i kontrolować ją, w tym rozliczenia.
 
 Użytkownik, który tworzy aplikację, jest automatycznie przypisywany do roli **administratora** . W roli **administratora** zawsze musi być co najmniej jeden użytkownik.
 
-### <a name="application-builder"></a>Konstruktor aplikacji
+### <a name="builder"></a>Konstruktor
 
-Użytkownicy w roli programu **Application Builder** mogą wykonywać wszystkie czynności w aplikacji, z wyjątkiem administrowania aplikacją. Konstruktory mogą tworzyć, edytować i usuwać szablony i urządzenia urządzeń, zarządzać zestawami urządzeń oraz uruchamiać analizy i zadania. Konstruktorzy nie będą mieli dostępu do sekcji **administrowania** aplikacji.
+Użytkownicy w roli **konstruktora** mogą zarządzać każdą częścią aplikacji, ale nie mogą wprowadzać zmian na kartach Administracja lub ciągła eksport danych.
 
-### <a name="application-operator"></a>Operator aplikacji
+### <a name="operator"></a>Operator
 
-Użytkownicy z rolą **operatora aplikacji** nie mogą wprowadzać zmian w szablonach urządzeń i nie mogą administrować aplikacji. Operatory mogą dodawać i usuwać urządzenia, zarządzać zestawami urządzeń oraz uruchamiać analizy i zadania. Operatory nie będą miały dostępu do stron programu **Application Builder** i **administrowania** .
+Użytkownicy w roli **operatora** mogą monitorować kondycję i stan urządzenia. Nie mogą wprowadzać zmian w szablonach urządzeń ani administrować aplikacjami. Operatory mogą dodawać i usuwać urządzenia, zarządzać zestawami urządzeń oraz uruchamiać analizy i zadania. 
+
+## <a name="create-a-custom-role"></a>Tworzenie roli niestandardowej
+
+Jeśli rozwiązanie wymaga dokładniejszych kontroli dostępu, można utworzyć niestandardowe role z niestandardowymi zestawami uprawnień. Aby utworzyć rolę niestandardową, przejdź do strony **role** w sekcji **Administracja** aplikacji. Następnie wybierz pozycję **+ Nowa rola**, a następnie Dodaj nazwę i opis roli. Wybierz uprawnienia wymagane przez rolę, a następnie wybierz pozycję **Zapisz**.
+
+Użytkowników można dodawać do roli niestandardowej w taki sam sposób, jak w przypadku dodawania użytkowników do roli wbudowanej.
+
+> [!div class="mx-imgBorder"]
+> ![utworzyć niestandardową rolę](media/howto-manage-users-roles/create-custom-role-pnp.png)
+
+### <a name="custom-role-options"></a>Opcje roli niestandardowej
+
+Podczas definiowania roli niestandardowej należy wybrać zestaw uprawnień, które użytkownik otrzymuje, jeśli są członkami roli. Niektóre uprawnienia są zależne od innych. Jeśli na przykład dodasz uprawnienie **Aktualizowanie pulpitów nawigacyjnych aplikacji** do roli, zostanie automatycznie dodane uprawnienie **Wyświetl pulpity nawigacyjne aplikacji** . Poniższa tabela zawiera podsumowanie dostępnych uprawnień i ich zależności, których można użyć podczas tworzenia ról niestandardowych.
+
+#### <a name="managing-devices"></a>Zarządzanie urządzeniami
+
+**Uprawnienia szablonu urządzenia**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak     |
+| Zarządzaj | Wyświetl <br/> Inne zależności: wyświetlanie wystąpień urządzeń  |
+| Pełna kontrola | Wyświetlanie, zarządzanie <br/> Inne zależności: wyświetlanie wystąpień urządzeń |
+
+**Uprawnienia wystąpienia urządzenia**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń |
+| Aktualizacja | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
+| Create | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
+| Usuń | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
+| Wykonaj polecenia | Aktualizuj, Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
+| Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie, usuwanie, wykonywanie poleceń <br/> Inne zależności: wyświetlanie szablonów urządzeń i grup urządzeń  |
+
+**Uprawnienia grup urządzeń**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń |
+| Aktualizacja | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń   |
+| Create | Wyświetl, Aktualizuj <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń   |
+| Usuń | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń   |
+| Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie <br/> Inne zależności: wyświetlanie szablonów urządzeń i wystąpień urządzeń |
+
+**Uprawnienia do zarządzania łącznością urządzeń**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Odczytaj wystąpienie | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń, grup urządzeń, wystąpień urządzeń |
+| Zarządzanie wystąpieniem | Brak |
+| Odczytaj Global | Brak   |
+| Zarządzaj globalnym | Odczytaj Global |
+| Pełna kontrola | Odczyt wystąpienia, Zarządzanie wystąpieniem, odczyt globalny, zarządzanie globalne. <br/> Inne zależności: wyświetlanie szablonów urządzeń, grup urządzeń, wystąpień urządzeń |
+
+**Uprawnienia zadań**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
+| Aktualizacja | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
+| Create | Wyświetl, Aktualizuj <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
+| Usuń | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń |
+| Realizacja | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń; Aktualizowanie wystąpień urządzenia; Wykonywanie poleceń w wystąpieniach urządzeń |
+| Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie, usuwanie, wykonywanie <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń i grup urządzeń; Aktualizowanie wystąpień urządzenia; Wykonywanie poleceń w wystąpieniach urządzeń |
+
+**Uprawnienia reguł**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak <br/> Inne zależności: wyświetlanie szablonów urządzeń |
+| Aktualizacja | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń |
+| Create | Wyświetl, Aktualizuj <br/> Inne zależności: wyświetlanie szablonów urządzeń |
+| Usuń | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń |
+| Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie <br/> Inne zależności: wyświetlanie szablonów urządzeń |
+
+#### <a name="managing-the-app"></a>Zarządzanie aplikacją
+
+**Uprawnienia do ustawień aplikacji**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
+| Kopiuj | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń, grup urządzeń, pulpitów nawigacyjnych, eksportowanie danych, znakowanie, linki pomocy, role niestandardowe i reguły |
+| Usuń | Wyświetl   |
+| Pełna kontrola | Wyświetlanie, aktualizowanie, kopiowanie, usuwanie <br/> Inne zależności: wyświetlanie szablonów urządzeń, grup urządzeń, pulpitów nawigacyjnych aplikacji, eksportowanie danych, znakowanie, linki pomocy, role niestandardowe i reguły |
+
+**Uprawnienia eksportowania szablonu aplikacji**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak     |
+| Eksportuj | Wyświetl <br/> Inne zależności: wyświetlanie szablonów urządzeń, wystąpień urządzeń, grup urządzeń, pulpitów nawigacyjnych, eksportowanie danych, znakowanie, linki pomocy, role niestandardowe i reguły |
+| Pełna kontrola | Wyświetl, Eksportuj <br/> Inne zależności: wyświetlanie szablonów urządzeń, grup urządzeń, pulpitów nawigacyjnych aplikacji, eksportowanie danych, znakowanie, linki pomocy, role niestandardowe i reguły |
+
+**Uprawnienia do rozliczeń**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Zarządzaj | Brak     |
+| Pełna kontrola | Zarządzaj |
+
+#### <a name="managing-users-and-roles"></a>Zarządzanie użytkownikami i rolami
+
+**Uprawnienia ról niestandardowych**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak |
+| Aktualizacja | Wyświetl |
+| Create | Wyświetl, Aktualizuj |
+| Usuń | Wyświetl |
+| Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie |
+
+**Uprawnienia do zarządzania użytkownikami**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak <br/> Inne zależności: Wyświetlanie ról niestandardowych |
+| Dodawanie | Wyświetl <br/> Inne zależności: Wyświetlanie ról niestandardowych |
+| Usuń | Wyświetl <br/> Inne zależności: Wyświetlanie ról niestandardowych |
+| Pełna kontrola | Wyświetlanie, Dodawanie, usuwanie <br/> Inne zależności: Wyświetlanie ról niestandardowych |
+
+> [!NOTE]
+> Użytkownik, który znajduje się w roli niestandardowej, która przyzna im uprawnienia do dodawania innych użytkowników, może dodawać tylko użytkowników do roli z tymi samymi lub mniej uprawnień niż ich własna rola.
+
+#### <a name="customizing-the-app"></a>Dostosowywanie aplikacji
+
+**Uprawnienia pulpitu nawigacyjnego aplikacji**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
+| Create | Wyświetl, Aktualizuj |
+| Usuń | Wyświetl   |
+| Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie |
+
+**Osobiste uprawnienia pulpitów nawigacyjnych**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
+| Create | Wyświetl, Aktualizuj   |
+| Usuń | Wyświetl   |
+| Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie |
+
+**Uprawnienia do znakowania, favicon i kolorów**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
+| Pełna kontrola | Wyświetl, Aktualizuj |
+
+**Uprawnienia do linków**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
+| Pełna kontrola | Wyświetl, Aktualizuj |
+
+#### <a name="extending-the-app"></a>Rozszerzanie aplikacji
+
+**Uprawnienia eksportu danych**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak     |
+| Aktualizacja | Wyświetl   |
+| Create | Wyświetl, Aktualizuj  |
+| Usuń | Wyświetl   |
+| Pełna kontrola | Wyświetlanie, aktualizowanie, tworzenie i usuwanie |
+
+**Uprawnienia tokenu interfejsu API**
+
+| Nazwa | Zależności |
+| ---- | -------- |
+| Wyświetl | Brak     |
+| Create | Wyświetl   |
+| Usuń | Wyświetl   |
+| Pełna kontrola | Wyświetlanie, tworzenie, usuwanie |
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz już, jak zarządzać użytkownikami i rolami w usłudze Azure IoT Central, sugerowanym następnym krokiem jest zapoznanie się z informacjami na temat [wyświetlania rachunku](howto-view-bill.md) na platformie Azure IoT Central.
+Teraz, gdy wiesz już, jak zarządzać użytkownikami i rolami w aplikacji IoT Central platformy Azure, sugerowanym następnym krokiem jest zapoznanie się z informacjami na temat [zarządzania rachunkiem](howto-view-bill.md).

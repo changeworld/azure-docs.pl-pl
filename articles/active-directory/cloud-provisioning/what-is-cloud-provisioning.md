@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef73abdd6bfdadd0078c30ad1b0145cdae41722
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 69b8cbdba018b9d03dca67573b1f4fe6efa546b6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767607"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024045"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Co to jest aprowizacja w chmurze programu Azure AD Connect?
 Azure AD Connect aprowizacji w chmurze to nowy Agent firmy Microsoft, który zaprojektowano w celu spełnienia celów tożsamości hybrydowej dla synchronizacji użytkowników, grup i kontaktów z usługą Azure AD.  Można go używać razem z Azure AD Connect synchronizacją i zapewnia następujące korzyści:
@@ -46,6 +46,8 @@ Poniższa tabela zawiera porównanie między Azure AD Connect i Azure AD Connect
 | Obsługa obiektów kontaktów |● |● |
 | Obsługa obiektów urządzeń |● | |
 | Zezwalaj na podstawowe dostosowywanie przepływów atrybutów |● |● |
+| Sychronize atrybuty usługi Exchange Online |● |● |
+| Synchronizuj atrybuty rozszerzenia 1-15 |● |● |
 | Synchronizowanie atrybutów usługi AD zdefiniowanych przez klienta (rozszerzenia katalogów) |● | |
 | Obsługa synchronizacji skrótów haseł |●|●|
 | Obsługa uwierzytelniania przekazywanego |●||
@@ -60,7 +62,7 @@ Poniższa tabela zawiera porównanie między Azure AD Connect i Azure AD Connect
 | Umożliwia zaawansowane dostosowywanie przepływów atrybutów |● | |
 | Obsługa zapisywania zwrotnego (hasła, urządzenia, grupy) |● | |
 | Obsługa Azure AD Domain Services|● | |
-| Konfiguracja hybrydowa programu Exchange |● | |
+| [Stornowanie hybrydowe programu Exchange](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | Obsługa ponad 50 000 obiektów na domenę usługi AD |● | |
 
 ## <a name="next-steps"></a>Następne kroki 

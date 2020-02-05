@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12c624c6798ca48cad9312cafaf3425091a82a71
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fde46ddfe85ca2cd1aa4ba65c8bd93d4db328410
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867457"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019047"
 ---
 # <a name="what-are-application-templates"></a>Co to są szablony aplikacji?
 
@@ -26,44 +26,27 @@ Szablony aplikacji składają się z:
 - Wstępnie skonfigurowane reguły i zadania
 - Zaawansowana dokumentacja obejmująca samouczki i porady
 
-## <a name="preview-templates"></a>Podgląd szablonów
+Szablon aplikacji jest wybierany podczas tworzenia aplikacji. Nie można zmienić szablonu po utworzeniu aplikacji.
 
-Wybór szablonu aplikacji określa, czy aplikacja używa IoT Central funkcji w wersji zapoznawczej, takich jak Plug and Play dla urządzeń.
+## <a name="custom-templates"></a>Szablony niestandardowe
 
-Obecnie szablon aplikacji, który używa _ogólnie dostępnych_ funkcji, to:
+Jeśli chcesz utworzyć aplikację od podstaw, wybierz jeden z dwóch niestandardowych szablonów aplikacji:
 
-- Aplikacja niestandardowa > Starsza aplikacja
+- Aplikacja niestandardowa
+- Aplikacja niestandardowa (starsza wersja)
 
-
-Obecnie szablony aplikacji korzystające z funkcji _publicznej wersji zapoznawczej_ są następujące:
-
-- Aplikacja niestandardowa > App Preview
-- Logistyka podłączona > sieci sprzedaży
-- Centrum dystrybucji cyfrowej > sieci sprzedaży
-- Monitorowanie warunków sprzedaży > w sklepie
-- Sprzedaż detaliczna > w sklepie — wyewidencjonowywanie
-- Centrum sprzedaży > Micro-zrealizować
-- Zarządzanie magazynem w programie > sieci sprzedaży
-- Monitorowanie miernika inteligentnego > energii
-- Monitorowanie na panelu słonecznym > energii
-- Zarządzanie odpadami przez instytucje rządowe >
-- Monitorowanie zużycia wody przez rząd >
-- Monitorowanie jakości wody dla instytucji > rządowych
-- Opieka zdrowotna > ciągłego monitorowania pacjenta
-
-> [!NOTE]
-> Szablony **starszej aplikacji** są obecnie dostępne w **Stany Zjednoczone**, **Australii**, **Azja i Pacyfik**lub w lokalizacjach **Europy** , podczas gdy inne szablony są obecnie dostępne tylko w **Europie** i w **Stanach Zjednoczonych** .
+Wybierz szablon **aplikacji niestandardowej** , chyba że masz konkretną przyczynę użycia starszego szablonu.
 
 ## <a name="industry-focused-templates"></a>Szablony skoncentrowane na branży
 
 Azure IoT Central to platforma aplikacji branżowych niezależny od. Szablony aplikacji to przykładowe, dostępne w branży przykłady dla tych branż
 
-- [Sprzedaż detaliczna](../retail/overview-iot-central-retail-pnp.md)
+- [Stępują](../retail/overview-iot-central-retail-pnp.md)
   - Połączona logistyka
   - Cyfrowe centrum dystrybucji
   - Monitorowanie warunku analizy w sklepie
   - Analiza w sklepie — wyewidencjonowywanie
-  - Zarządzanie zapasami inteligentnymi
+  - Inteligentne zarządzanie magazynem
 - [Energii](../energy/overview-iot-central-energy.md)
   - Monitorowanie inteligentnych liczników
   - Monitorowanie paneli słonecznych

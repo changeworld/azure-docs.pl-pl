@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544025"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023127"
 ---
 # <a name="what-is-password-writeback"></a>Co to jest zapisywanie zwrotne haseł?
 
@@ -164,7 +164,7 @@ Hasła *nie* są zapisywane z powrotem w żadnej z następujących sytuacji:
    * Wszystkie zainicjowane przez administratora Resetowanie hasła użytkownika końcowego w [centrum administracyjnym Microsoft 365](https://admin.microsoft.com)
 
 > [!WARNING]
-> Użycie pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w lokalnych Active Directory narzędziach administracyjnych, takich jak Active Directory Użytkownicy i komputery, lub Centrum administracyjne usługi Active Directory jest obsługiwana jako funkcja w wersji zapoznawczej programu Azure AD Connect. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Implementacja synchronizacji skrótów haseł z synchronizacją Azure AD Connect](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon).
+> Użycie pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w lokalnych Active Directory narzędziach administracyjnych, takich jak Active Directory Użytkownicy i komputery, lub Centrum administracyjne usługi Active Directory jest obsługiwana jako funkcja w wersji zapoznawczej programu Azure AD Connect. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Implementacja synchronizacji skrótów haseł z synchronizacją Azure AD Connect](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon).
 
 ## <a name="next-steps"></a>Następne kroki
 

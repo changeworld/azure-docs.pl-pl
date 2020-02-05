@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie VMware firmy Azure przez CloudSimple — zarządzanie maszynami wirtualnymi w chmurze prywatnej na platformie Azure
-description: Opisuje sposób zarządzania maszynami wirtualnymi chmury prywatnej usługi CloudSimple w Azure Portal, w tym dodawania dysków, zmiany pojemności maszyny wirtualnej i dodawania interfejsów sieciowych
+title: Azure VMware Solutions (Automatyczna synchronizacja) — Zarządzanie maszynami wirtualnymi chmur prywatnych w systemie Azure
+description: Opisuje sposób zarządzania maszynami wirtualnymi chmur prywatnych w Azure Portal, takich jak dodawanie dysków, zmiana pojemności maszyny wirtualnej i Dodawanie interfejsów sieciowych
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,30 +8,30 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0cce1dc7ff3935a3174d4e96b553a5485950df73
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037470"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77015001"
 ---
-# <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Zarządzanie maszynami wirtualnymi w chmurze prywatnej CloudSimple na platformie Azure
+# <a name="manage-your-avs-private-cloud-virtual-machines-in-azure"></a>Zarządzanie maszynami wirtualnymi chmury prywatnej w chmurze na platformie Azure
 
-Aby zarządzać maszynami wirtualnymi [utworzonymi dla prywatnej chmury CloudSimple](azure-create-vm.md), zaloguj się do [Azure Portal](https://portal.azure.com). Wyszukaj i wybierz pozycję Virtual (Wyszukaj w obszarze **wszystkie usługi** lub **Virtual Machines** w menu po stronie).
+Aby zarządzać maszynami wirtualnymi [utworzonymi dla chmury prywatnej automatycznej synchronizacji](azure-create-vm.md), zaloguj się do [Azure Portal](https://portal.azure.com). Wyszukaj i wybierz pozycję Virtual (Wyszukaj w obszarze **wszystkie usługi** lub **Virtual Machines** w menu po stronie).
 
 ## <a name="control-virtual-machine-operation"></a>Sterowanie operacją maszyny wirtualnej
 
 Poniższe kontrolki są dostępne na stronie **Przegląd** dla wybranej maszyny wirtualnej.
 
-| Formant | Opis |
+| Kontrola | Opis |
 | ------------ | ------------- |
-| Połącz | Nawiąż połączenie z określoną maszyną wirtualną.  |
-| Start | Uruchom określoną maszynę wirtualną.  |
+| Łączenie | Nawiąż połączenie z określoną maszyną wirtualną.  |
+| Rozpocznij | Uruchom określoną maszynę wirtualną.  |
 | Ponowne uruchamianie | Zamknij i Wyłącz określoną maszynę wirtualną.  |
 | Stop | Zamknij konkretną maszynę wirtualną.  |
 | Przechwytywanie | Przechwyć obraz określonej maszyny wirtualnej, aby można było go użyć jako obrazu do utworzenia innych maszyn wirtualnych. Zobacz [Tworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure](../virtual-machines/windows/classic/capture-image.md).   |
-| Przenieś | Przejdź do określonej maszyny wirtualnej.  |
-| Usuwanie | Usuń określoną maszynę wirtualną.  |
+| Move | Przejdź do określonej maszyny wirtualnej.  |
+| Usuń | Usuń określoną maszynę wirtualną.  |
 | Odśwież | Odśwież dane na ekranie.  |
 
 ### <a name="view-performance-information"></a>Wyświetlanie informacji o wydajności
@@ -43,20 +43,20 @@ Wyświetlane są następujące wykresy.
 | Element | Opis |
 | ------------ | ------------- |
 | Procesor CPU (średnia) | Średnie użycie procesora (w procentach) w wybranym interwale.   |
-| Sieć | Ruch do i z sieci (MB) przez wybrany interwał.  |
+| Network (Sieć) | Ruch do i z sieci (MB) przez wybrany interwał.  |
 | Bajty dysku | Łączna ilość danych odczytanych z dysku i zapisywana na dysku (MB) w wybranym interwale.  |
 | Operacje dysków | Średnia liczba operacji dyskowych (operacji na sekundę) w wybranym interwale. |
 
 ## <a name="manage-vm-disks"></a>Zarządzaj dyskami maszyny Wirtualnej
 
-Aby dodać dysk maszyny wirtualnej, Otwórz stronę **dyski** dla wybranej maszyny wirtualnej. Aby dodać dysk, kliknij przycisk **Dodaj dysk**. Skonfiguruj następujące ustawienia, wprowadzając lub wybierając opcję wbudowaną. Kliknij polecenie **Zapisz**.
+Aby dodać dysk maszyny wirtualnej, Otwórz stronę **dyski** dla wybranej maszyny wirtualnej. Aby dodać dysk, kliknij przycisk **Dodaj dysk**. Skonfiguruj następujące ustawienia, wprowadzając lub wybierając opcję wbudowaną. Kliknij pozycję **Zapisz**.
 
    | Element | Opis |
    | ------------ | ------------- |
-   | Name | Wprowadź nazwę identyfikującą dysk.  |
-   | Size | Wybierz jeden z dostępnych rozmiarów.  |
+   | Nazwa | Wprowadź nazwę identyfikującą dysk.  |
+   | Rozmiar | Wybierz jeden z dostępnych rozmiarów.  |
    | Kontroler SCSI | Wybierz kontroler SCSI. Dostępne kontrolery różnią się w zależności od różnych obsługiwanych systemów operacyjnych.  |
-   | Tryb | Określa, w jaki sposób dysk uczestniczy w migawce. Wybierz jedną z następujących opcji: <br> -Niezależne trwałe: Wszystkie dane zapisywane na dysku są zapisywane na stałe.<br> -Niezależne, nietrwałe: Zmiany wprowadzone na dysku są odrzucane po wyłączeniu lub zresetowaniu maszyny wirtualnej.  Ten tryb umożliwia zawsze ponowne uruchomienie maszyny wirtualnej w tym samym stanie. Aby uzyskać więcej informacji, zobacz [dokumentację programu VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
+   | Tryb | Określa, w jaki sposób dysk uczestniczy w migawce. Wybierz jedną z następujących opcji: <br> -Niezależne trwałe: wszystkie dane zapisywane na dysku są zapisywane trwale.<br> -Niezależne, nietrwałe: zmiany zapisywane na dysku są odrzucane po wyłączeniu lub zresetowaniu maszyny wirtualnej. Ten tryb umożliwia zawsze ponowne uruchomienie maszyny wirtualnej w tym samym stanie. Aby uzyskać więcej informacji, zobacz [dokumentację programu VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
 
 Aby usunąć dysk, zaznacz go i kliknij przycisk **Usuń**.
 
@@ -72,12 +72,12 @@ Aby zmienić pojemność maszyny wirtualnej, Otwórz stronę **rozmiar** wybrane
 
 ## <a name="manage-network-interfaces"></a>Zarządzanie interfejsami sieciowymi
 
-Aby dodać interfejs, kliknij przycisk **Dodaj interfejs sieciowy**. Skonfiguruj wszystkie poniższe ustawienia, wprowadzając lub wybierając opcję wbudowaną. Kliknij polecenie **Zapisz**.
+Aby dodać interfejs, kliknij przycisk **Dodaj interfejs sieciowy**. Skonfiguruj wszystkie poniższe ustawienia, wprowadzając lub wybierając opcję wbudowaną. Kliknij pozycję **Zapisz**.
 
-   | Formant | Opis |
+   | Kontrola | Opis |
    | ------------ | ------------- |
-   | Name | Wprowadź nazwę identyfikującą interfejs.  |
-   | Sieć | Wybierz z listy skonfigurowanych sieci w chmurze prywatnej vSphere.  |
+   | Nazwa | Wprowadź nazwę identyfikującą interfejs.  |
+   | Network (Sieć) | Wybierz z listy skonfigurowanych sieci w vSphere prywatnej chmury automatycznej.  |
    | Kartę | Wybierz adapter vSphere z listy dostępnych typów skonfigurowanych dla maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz artykuł z bazy wiedzy VMware z [wybieraniem karty sieciowej dla maszyny wirtualnej](https://kb.vmware.com/s/article/1001805). |
    | Włącz przy rozruchu | Zdecyduj, czy włączyć sprzęt kart sieciowych podczas uruchamiania maszyny wirtualnej. Wartość domyślna to **enable**. |
 
