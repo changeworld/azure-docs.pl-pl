@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8c832982a5525b0296155197d89684932cebaa95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418841"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986108"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Obsługa AZ module w Azure Automation
 
@@ -18,7 +18,7 @@ Usługa Azure Automation obsługuje możliwość korzystania z polecenia [AZ mod
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-W przypadku korzystania z polecenia AZ module w Azure Automation należy wziąć pod uwagę wiele rzeczy. Elementy Runbook i moduły mogą być używane przez rozwiązania wyższego poziomu na koncie usługi Automation. Edytowanie elementów Runbook lub uaktualnianie modułów może potencjalnie powodować problemy z elementami Runbook. Przed zaimportowaniem nowych modułów `Az` należy uważnie przetestować wszystkie elementy Runbook i rozwiązania na osobnym koncie usługi Automation. Wszelkie modyfikacje modułów mogą negatywnie rozwiązaniu do [uruchamiania/zatrzymywania](automation-solution-vm-management.md) . Zaleca się, aby nie zmieniać modułów i elementów Runbook na kontach usługi Automation, które zawierają jakiekolwiek rozwiązania. To zachowanie nie jest specyficzne dla AZ modules. Takie zachowanie należy wziąć pod uwagę w przypadku wprowadzenia wszelkich zmian w Twoim koncie usługi Automation.
+W przypadku korzystania z polecenia AZ module w Azure Automation należy wziąć pod uwagę wiele rzeczy. Elementy Runbook i moduły mogą być używane przez rozwiązania wyższego poziomu na koncie usługi Automation. Edytowanie elementów Runbook lub uaktualnianie modułów może potencjalnie powodować problemy z elementami Runbook. Przed zaimportowaniem nowych modułów `Az` należy uważnie przetestować wszystkie elementy Runbook i rozwiązania na osobnym koncie usługi Automation. Wszelkie modyfikacje modułów mogą mieć negatywny wpływ na rozwiązanie do [uruchamiania/zatrzymywania](automation-solution-vm-management.md) . Nie zaleca się modyfikowania modułów i elementów Runbook na kontach usługi Automation, które zawierają jakiekolwiek rozwiązania. To zachowanie nie jest specyficzne dla AZ modules. Takie zachowanie należy wziąć pod uwagę w przypadku wprowadzenia wszelkich zmian w Twoim koncie usługi Automation.
 
 Importowanie modułu `Az` na koncie usługi Automation nie powoduje automatycznego importowania modułu w sesji programu PowerShell, którego używają elementy Runbook. Moduły są importowane do sesji programu PowerShell w następujących sytuacjach:
 

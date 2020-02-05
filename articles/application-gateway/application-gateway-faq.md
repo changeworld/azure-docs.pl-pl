@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770088"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986006"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -68,7 +68,9 @@ Jeśli używasz publicznego adresu IP jako punktu końcowego, możesz znaleźć 
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Jakie są ustawienia limitu czasu utrzymywania aktywności i limitu czasu bezczynności protokołu TCP?
 
- W jednostkach SKU Application Gateway V1 limit czasu utrzymywania aktywności wynosi 120 sekund. Limit czasu utrzymywania aktywności dla jednostki SKU v2 wynosi 75 sekund. Limit czasu bezczynności protokołu TCP to wartość domyślna 4-minutowa w wirtualnym adresie IP frontonu (VIP) Application Gateway.
+*Limit czasu utrzymywania aktywności* określa, jak długo Application Gateway będzie czekać na wysłanie przez klienta kolejnego żądania HTTP przed ponownym użyciem lub zamknięciem. *Limit czasu bezczynności protokołu TCP* określa, jak długo połączenie TCP jest przechowywane w przypadku braku aktywności. 
+
+*Limit czasu utrzymywania aktywności* w jednostce SKU Application Gateway v1 wynosi 120 sekund, a w jednostce SKU v2 jest 75 sekund. *Limit czasu bezczynności protokołu TCP* to domyślna wartość 4-minutowa w WIRTUALNYm adresie IP frontonu (VIP) zarówno w wersji 1, jak i w wersji 2 programu Application Gateway. 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Czy nazwa adresu IP lub DNS jest zmieniana w okresie istnienia bramy aplikacji?
 
