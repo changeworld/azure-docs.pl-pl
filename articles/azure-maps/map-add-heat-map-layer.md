@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 98c8db4e4b866879a437d1ffad6668cbae42fcdf
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933585"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986244"
 ---
 # <a name="add-a-heat-map-layer"></a>Dodawanie warstwy mapy cieplnej
 
@@ -49,7 +49,7 @@ map.sources.add(datasource);
 //Load a dataset of points, in this case earthquake data from the USGS.
 datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson');
 
-//Create a heatmap and add it to the map.
+//Create a heat map and add it to the map.
 map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
   radius: 10,
   opacity: 0.8
@@ -108,14 +108,12 @@ Zobacz <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>spójną mapę termicz
 
 > [!TIP]
 > Po włączeniu klastrowania w źródle danych punkty, które są blisko siebie, są pogrupowane jako punkt klastrowany. Można użyć liczby punktów każdego klastra jako wyrażenia wagi dla mapy cieplnej. Może to znacznie zmniejszyć liczbę punktów, które mają być renderowane. Liczba punktów klastra jest przechowywana we właściwości `point_count` funkcji Point: 
-
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
-
-> Jeśli promień klastrowania ma tylko kilka pikseli, w renderowaniu może być mała różnica wizualna. Większa liczba grup usługi RADIUS zwiększa liczbę punktów w każdym klastrze i poprawia wydajność mapę cieplną.
+> Jeśli promień klastrowania ma tylko kilka pikseli, w renderowaniu będzie niewielka różnica wizualna. Większa liczba grup usługi RADIUS zwiększa liczbę punktów w każdym klastrze i poprawia wydajność mapę cieplną.
 
 ## <a name="next-steps"></a>Następne kroki
 

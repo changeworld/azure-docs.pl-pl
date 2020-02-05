@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028513"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988655"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Wprowadzenie do przyrostowego wzbogacania i buforowania na platformie Azure Wyszukiwanie poznawcze
 
@@ -97,7 +97,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 Celem pamięci podręcznej jest uniknięcie niepotrzebnego przetwarzania, ale Załóżmy, że wprowadzasz zmiany w umiejętności, którą indeksator nie wykrywa (na przykład w przypadku zmiany elementu w kodzie zewnętrznym, np. z niestandardową umiejętnością).
 
-W takim przypadku można użyć możliwości [resetowania](preview-api-resetskills.md) w celu wymuszenia przetworzenia konkretnej umiejętności, w tym wszelkich umiejętności podrzędnych, które są zależne od danych wyjściowych tej umiejętności. Ten interfejs API akceptuje żądanie POST z listą umiejętności, które powinny być unieważnione i oznaczone do ponownego przetworzenia. Po zresetowaniu umiejętności Uruchom indeksator w celu wywołania potoku.
+W takim przypadku można użyć możliwości [resetowania](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) w celu wymuszenia przetworzenia konkretnej umiejętności, w tym wszelkich umiejętności podrzędnych, które są zależne od danych wyjściowych tej umiejętności. Ten interfejs API akceptuje żądanie POST z listą umiejętności, które powinny być unieważnione i oznaczone do ponownego przetworzenia. Po zresetowaniu umiejętności Uruchom indeksator w celu wywołania potoku.
 
 ## <a name="change-detection"></a>Wykrywanie zmian
 
@@ -136,39 +136,27 @@ Przetwarzanie przyrostowe szacuje definicję zestawu umiejętności i decyduje o
 * Zmiany w projekcjach w sklepie wiedzy, wyniki dotyczące przeprojektowania dokumentów
 * Mapowania pól wyjściowych zostały zmienione w indeksatorze w wyniku przeprojektowania dokumentów do indeksu
 
-## <a name="api-reference-content-for-incremental-enrichment"></a>Zawartość referencyjna interfejsu API na potrzeby wzbogacania przyrostowego
+## <a name="api-reference"></a>Dokumentacja interfejsów API
 
-`api-version=2019-05-06-Preview` REST udostępnia interfejsy API do wzbogacania przyrostowego, z dodatkiem do indeksatorów, umiejętności i źródeł danych. [Oficjalne dokumenty referencyjne](https://docs.microsoft.com/rest/api/searchservice/) są przeznaczone dla ogólnie dostępnych interfejsów API i nie obejmują funkcji w wersji zapoznawczej. Poniższa sekcja zawiera zawartość referencyjną dla interfejsów API, których dotyczy problem.
+Wersja interfejsu API REST `2019-05-06-Preview` zapewnia przyrostowe wzbogacanie za poorednictwem dodatkowych właściwości indeksatorów, umiejętności i źródeł danych. Oprócz dokumentacji referencyjnej zapoznaj się z artykułem [Konfigurowanie buforowania dla wzbogacania przyrostowego](search-howto-incremental-index.md) , aby uzyskać szczegółowe informacje na temat wywoływania interfejsów API.
 
-Informacje o użyciu i przykłady można znaleźć w temacie [Konfigurowanie buforowania na potrzeby wzbogacania przyrostowego](search-howto-incremental-index.md).
++ [Tworzenie indeksatora (API-Version = 2019-05 -06 — wersja zapoznawcza)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-### <a name="indexers"></a>Indeksatory
++ [Update indeksator (API-Version = 2019-05 -06 — wersja zapoznawcza)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-[Tworzenie indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer) i [indeksatora aktualizacji](https://docs.microsoft.com/rest/api/searchservice/update-indexer) spowoduje teraz uwidocznienie nowych właściwości dotyczących pamięci podręcznej:
++ [Update zestawu umiejętności (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (nowy parametr URI żądania)
 
-+ `StorageAccountConnectionString`: parametry połączenia z kontem magazynu, które będą używane do buforowania wyników pośrednich.
++ [Resetowanie umiejętności (API-Version = 2019-05 -06 — wersja zapoznawcza)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ `EnableReprocessing`: domyślnie ustawiona na `true`, gdy ustawiona na `false`, dokumenty będą nadal zapisywane w pamięci podręcznej, ale żaden z istniejących dokumentów nie zostanie przetworzony w oparciu o dane pamięci podręcznej.
++ Indeksatory baz danych (Azure SQL, Cosmos DB). Niektóre indeksatory pobierają dane za poorednictwem zapytań. W przypadku zapytań, które pobierają dane, [Aktualizacja źródła danych](https://docs.microsoft.com/rest/api/searchservice/update-data-source) obsługuje nowy parametr na żądanie **ignoreResetRequirement**, który powinien zostać ustawiony na `true`, gdy akcja aktualizacji nie powinna unieważnić pamięci podręcznej. 
 
-+ `ID` (tylko do odczytu): `ID` jest identyfikatorem kontenera w ramach konta usługi `annotationCache` Storage, który będzie używany jako pamięć podręczna dla tego indeksatora. Ta pamięć podręczna będzie unikatowa dla tego indeksatora i jeśli indeksator zostanie usunięty i ponownie utworzony przy użyciu tej samej nazwy, `ID` zostanie wygenerowane ponownie. Nie można ustawić `ID`, jest on zawsze generowany przez usługę.
-
-### <a name="skillsets"></a>Zestawy umiejętności
-
-+ [Aktualizacja zestawu umiejętności](https://docs.microsoft.com/rest/api/searchservice/update-skillset) obsługuje nowy parametr żądania: `disableCacheReprocessingChangeDetection`, który powinien zostać ustawiony na `true`, gdy chcesz, aby żadne aktualizacje istniejących dokumentów nie były aktualizowane w oparciu o bieżącą akcję.
-
-+ [Resetowanie umiejętności](preview-api-resetskills.md) to nowa operacja służąca do unieważnienia zestawu umiejętności.
-
-### <a name="datasources"></a>Źródła danych
-
-+ Niektóre indeksatory pobierają dane za poorednictwem zapytań. W przypadku zapytań, które pobierają dane, [Aktualizacja źródła danych](https://docs.microsoft.com/rest/api/searchservice/update-data-source) obsługuje nowy parametr na `ignoreResetRequirement`żądania, który powinien zostać ustawiony na `true`, gdy akcja aktualizacji nie powinna unieważnić pamięci podręcznej.
-
-Używaj `ignoreResetRequirement` oszczędnie, ponieważ może to doprowadzić do niezamierzonej niespójności danych, która nie zostanie łatwo wykryta.
+  Używaj **ignoreResetRequirement** oszczędnie, ponieważ może to doprowadzić do niezamierzonej niespójności danych, które nie zostaną łatwo wykryte.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przyrostowe wzbogacanie to zaawansowana funkcja, która rozszerza śledzenie zmian na umiejętności i wzbogacanie AI. Jak umiejętności się, wzbogacanie przyrostowe gwarantuje najmniejszą możliwą ilość pracy, jednocześnie zapewniając spójność dokumentów.
+Przyrostowe wzbogacanie to zaawansowana funkcja, która rozszerza śledzenie zmian na umiejętności i wzbogacanie AI. Wzbogacanie AIncremental umożliwia ponowne użycie istniejącej przetworzonej zawartości podczas iteracji nad projektem zestawu umiejętności.
 
-Zacznij od dodania pamięci podręcznej do istniejącego indeksatora lub Dodaj pamięć podręczną podczas definiowania nowego indeksatora.
+W następnym kroku należy włączyć buforowanie w istniejącym indeksatorze lub dodać pamięć podręczną podczas definiowania nowego indeksatora.
 
 > [!div class="nextstepaction"]
 > [Skonfiguruj buforowanie na potrzeby wzbogacania przyrostowego](search-howto-incremental-index.md)

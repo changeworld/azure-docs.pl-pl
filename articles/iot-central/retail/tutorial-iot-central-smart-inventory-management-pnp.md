@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: d72636265ff3ac654faba91d1420b502b35d3192
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ce1b8e80806935ca3d35814e73790f191b3e4733
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888997"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984037"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Samouczek: wdrażanie i przechodzenie przez szablon aplikacji do zarządzania magazynem inteligentnym
 
@@ -33,19 +33,22 @@ W ramach tego samouczka nauczysz się, jak,
 Możesz utworzyć aplikację, wykonując następujące czynności
 1. Przejdź do witryny sieci Web programu Azure IoT Central Application Manager. Wybierz pozycję **kompilacja** na pasku nawigacyjnym po lewej stronie, a następnie kliknij kartę **sprzedaż detaliczna** .
 
-> [!div class="mx-imgBorder"]
-> ![pulpitu nawigacyjnego zarządzania magazynem inteligentnym](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![pulpitu nawigacyjnego zarządzania magazynem inteligentnym](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
 
-2. Wybierz kartę **sprzedaż detaliczna** i wybierz pozycję **Utwórz aplikację** w obszarze * * Zarządzanie magazynem inteligentnym * *
+2. Wybierz kartę **sprzedaż detaliczna** i wybierz pozycję **Utwórz aplikację** w obszarze **Zarządzanie magazynem inteligentnym**
 
 3. **Utwórz aplikację** spowoduje otwarcie formularza nowej aplikacji i zapełnienie żądanych szczegółów, jak pokazano poniżej.
    **Nazwa aplikacji**: możesz użyć domyślnej sugerowanej nazwy lub wprowadzić przyjazną nazwę aplikacji.
-   **Adres URL**: możesz użyć sugerowanego domyślnego adresu URL lub wprowadzić przyjazny unikatowy adres URL, który można dopamiętać. Następnie zalecane jest ustawienie domyślne, jeśli masz już subskrypcję platformy Azure lub możesz zacząć od siedmiu dni bezpłatnej wersji próbnej, a następnie wybrać opcję konwersji płatnej zgodnie z rzeczywistym użyciem w dowolnym momencie przed wygaśnięciem.
+   **Adres URL**: możesz użyć sugerowanego domyślnego adresu URL lub wprowadzić przyjazny unikatowy adres URL, który można dopamiętać. Następnie ustawienie domyślne jest zalecane, jeśli masz już subskrypcję platformy Azure. Możesz zacząć od 7-dniowego planu cenowego w wersji próbnej i wybrać konwersję do standardowego planu cenowego w dowolnym momencie przed wygaśnięciem okresu bezpłatnego.
    **Informacje o rozliczeniach**: katalog, subskrypcja platformy Azure i szczegółowe informacje o regionie są wymagane do aprowizacji zasobów.
    **Utwórz**: wybierz pozycję Utwórz w dolnej części strony, aby wdrożyć aplikację.
 
-> [!div class="mx-imgBorder"]
-> ![pulpitu nawigacyjnego zarządzania magazynem inteligentnym](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    > [!div class="mx-imgBorder"]
+    > ![pulpitu nawigacyjnego zarządzania magazynem inteligentnym](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![informacje o rozliczeniu zarządzania magazynem inteligentnego](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>Przechodzenie przez aplikację 
 

@@ -9,38 +9,38 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 83e8f6d684d6d39102fd682653cd19816a9f7b10
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911092"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988604"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Dodawanie warstwy kafelków do mapy
 
-W tym artykule pokazano, jak można nałożyć warstwę kafelków na mapie. Warstwy kafelków umożliwiają nakładanie obrazów na kafelkach mapy podstawowej Azure Maps. Więcej informacji o Azure Maps systemie rozmieszczania można znaleźć w dokumentacji [poziomów powiększenia i siatki kafelków](zoom-levels-and-tile-grid.md) .
+W tym artykule pokazano, jak nałożyć warstwę kafelków na mapie. Warstwy kafelków umożliwiają nakładanie obrazów na kafelkach mapy podstawowej Azure Maps. Aby uzyskać więcej informacji na Azure Maps rozdzielenie systemu, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
 
-Warstwa kafelków jest ładowana na kafelkach z serwera. Te obrazy mogą być wstępnie renderowane i przechowywane jak każdy inny obraz na serwerze przy użyciu konwencji nazewnictwa, która jest rozpoznawana przez warstwę kafelków, lub usługi dynamicznej, która generuje obrazy na bieżąco. Istnieją trzy różne konwencje nazewnictwa usługi kafelków obsługiwane przez Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) klasy: 
+Warstwa kafelków jest ładowana na kafelkach z serwera. Te obrazy mogą być wstępnie renderowane lub dynamicznie renderowane. Wstępnie renderowane obrazy są przechowywane jak każdy inny obraz na serwerze przy użyciu konwencji nazewnictwa, która jest rozpoznawana przez warstwę kafelków. Dynamicznie renderowane obrazy używają usługi do ładowania obrazów blisko czasu rzeczywistego. Istnieją trzy różne konwencje nazewnictwa usługi kafelków obsługiwane przez Azure Maps [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) klasy: 
 
-* X, Y, z notacją powiększenia w oparciu o poziom powiększenia, x to kolumna, a Y to pozycja w wierszu kafelka w siatce kafelków.
-* Quadkey-kombinacja x, y, Powiększ informacje w postaci pojedynczej wartości ciągu, która jest unikatowym identyfikatorem dla kafelka.
-* Współrzędne pola powiązanego obwiedni mogą służyć do określania obrazu w formacie `{west},{south},{east},{north}`, który jest często używany przez [usługi mapowania sieci Web (WMS)](https://www.opengeospatial.org/standards/wms).
+* X, Y, notacja powiększenia-X to kolumna, Y jest pozycją w wierszu kafelka w siatce kafelków, a w notacji Powiększ wartość na podstawie poziomu powiększenia.
+* Notacja Quadkey — łączy x, y i Powiększ informacje w jedną wartość ciągu. Ta wartość ciągu jest unikatowym identyfikatorem dla pojedynczego kafelka.
+* Pole ograniczenia — Określ obraz w formacie współrzędnych pola ograniczenia: `{west},{south},{east},{north}`. Ten format jest często używany przez [usługi mapowania sieci Web (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
-> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) to doskonały sposób wizualizacji dużych zestawów danych na mapie. Nie tylko można wygenerować warstwy kafelków z obrazu, ale dane wektorowe mogą być również renderowane jako warstwa kafelków. Przez renderowanie danych wektorowych jako warstwy kafelków, formant mapy musi ładować tylko kafelki, które mogą być znacznie mniejsze w rozmiarze pliku niż dane wektorowe, które reprezentują. Ta technika jest używana przez wiele osób, które muszą renderować miliony wierszy danych na mapie.
+> [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) to doskonały sposób wizualizacji dużych zestawów danych na mapie. Nie tylko można wygenerować warstwy kafelków z obrazu, dane wektorowe mogą być również renderowane jako warstwa kafelków. Przez renderowanie danych wektorowych jako warstwy kafelków, formant mapy musi ładować kafelki, które są mniejsze w rozmiarze pliku niż dane wektorowe, które reprezentują. Ta technika jest często używana do renderowania milionów wierszy danych na mapie.
 
-Adres URL kafelka przesłany do warstwy kafelków musi być adresem URL protokołu HTTP/HTTPS do zasobu TileJSON lub szablonem adresu URL kafelka, który używa następujących parametrów: 
+Adres URL kafelka przesłany do warstwy kafelków musi być adresem URL http lub HTTPS do zasobu TileJSON lub szablonem adresu URL kafelka, który używa następujących parametrów: 
 
 * Pozycja `{x}`-X kafelka. Wymaga również `{y}` i `{z}`.
 * Pozycja `{y}`-Y kafelka. Wymaga również `{x}` i `{z}`.
 * `{z}` — poziom powiększenia kafelka. Wymaga również `{x}` i `{y}`.
 * Identyfikator quadkey na kafelku oparty na konwencji nazewnictwa systemu kafelków mapy Bing. `{quadkey}`
 * `{bbox-epsg-3857}`-ciąg pola ograniczenia w formacie `{west},{south},{east},{north}` w systemie referencyjnym EPSG 3857.
-* `{subdomain}` — symbol zastępczy, w którym zostaną dodane wartości poddomeny, jeśli zostały określone.
+* `{subdomain}` — symbol zastępczy dla wartości poddomeny, jeśli zostanie określony, `subdomain` zostanie dodana.
 
 ## <a name="add-a-tile-layer"></a>Dodawanie warstwy kafelków
 
- Ten przykład pokazuje, jak utworzyć warstwę kafelków, która wskazuje zestaw kafelków korzystających z systemu dzielenia x, y. Źródłem tej warstwy kafelków jest nałożenie radaru pogody z [Iowa środowiska Mesonet Iowa University](https://mesonet.agron.iastate.edu/ogc/). Podczas przeglądania danych radarowych najlepiej, aby użytkownicy mogli jasno widzieć etykiety miast podczas nawigowania po mapie. można to zrobić, wstawiając warstwę kafelka poniżej warstwy `labels`.
+ Ten przykład pokazuje, jak utworzyć warstwę kafelków, która wskazuje zestaw kafelków. Ten przykład używa systemu dzielenia x, y, powiększenia. Źródłem tej warstwy kafelków jest nałożenie radaru pogody z [Iowa środowiska Mesonet Iowa University](https://mesonet.agron.iastate.edu/ogc/). Podczas przeglądania danych radarowych najlepiej widzimy etykiety miast podczas nawigowania po mapie. To zachowanie można zaimplementować, wstawiając warstwę kafelków poniżej warstwy `labels`.
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.

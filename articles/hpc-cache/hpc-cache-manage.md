@@ -4,18 +4,18 @@ description: Jak zarządzać i aktualizować pamięć podręczną Azure HPC przy
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867081"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988885"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Zarządzanie pamięcią podręczną przy użyciu Azure Portal
 
-Na stronie Przegląd pamięci podręcznej w Azure Portal są wyświetlane szczegóły projektu, stan pamięci podręcznej i podstawowe statystyki pamięci podręcznej. Ma także kontrolki do usuwania pamięci podręcznej, opróżniania danych do długoterminowego przechowywania lub aktualizacji oprogramowania.
+Na stronie Przegląd pamięci podręcznej w Azure Portal są wyświetlane szczegóły projektu, stan pamięci podręcznej i podstawowe statystyki pamięci podręcznej. Ma także kontrolki do zatrzymywania lub uruchamiania pamięci podręcznej, usuwania pamięci podręcznej, opróżniania danych do długoterminowego przechowywania i aktualizacji oprogramowania.
 
 Aby otworzyć stronę przegląd, wybierz zasób pamięci podręcznej w Azure Portal. Na przykład Załaduj stronę **wszystkie zasoby** i kliknij nazwę pamięci podręcznej.
 
@@ -23,12 +23,29 @@ Aby otworzyć stronę przegląd, wybierz zasób pamięci podręcznej w Azure Por
 
 Przyciski w górnej części strony mogą pomóc w zarządzaniu pamięcią podręczną:
 
+* **Uruchamianie** i [**Zatrzymywanie**](#stop-the-cache) — wstrzymywanie operacji pamięci podręcznej
 * [**Opróżnianie**](#flush-cached-data) — zapisuje zmienione dane w celu przechowywania
 * [**Upgrade**](#upgrade-cache-software) — aktualizuje oprogramowanie pamięci podręcznej
 * **Refresh** -ponownie ładuje stronę przeglądu
 * [**Usuń**](#delete-the-cache) — trwale niszczy pamięć podręczną
 
 Przeczytaj więcej na temat tych opcji poniżej.
+
+## <a name="stop-the-cache"></a>Zatrzymaj pamięć podręczną
+
+Można zatrzymać pamięć podręczną, aby zmniejszyć koszty w nieaktywnym okresie. Nie są naliczane opłaty za czas przestoju, gdy pamięć podręczna jest zatrzymana, ale opłaty są naliczane za przydzieloną pamięć podręczną. (Aby uzyskać szczegółowe informacje, zobacz stronę z [cennikiem](https://aka.ms/hpc-cache-pricing) ).
+
+Zatrzymana pamięć podręczna nie odpowiada na żądania klientów. Przed zatrzymaniem pamięci podręcznej należy odinstalować klientów.
+
+Przycisk **Zatrzymaj** wstrzymuje aktywną pamięć podręczną. Przycisk **Zatrzymaj** jest dostępny, gdy stan pamięci podręcznej jest w **dobrej kondycji** lub ma negatywny wpływ na **wydajność**.
+
+![zrzut ekranu górnych przycisków z wyróżnioną pozycją Zatrzymaj i podręczny komunikat opisujący akcję zatrzymania i pytanie "czy chcesz kontynuować?" z opcją Yes (domyślnie) i bez przycisków](media/stop-cache.png)
+
+Po kliknięciu przycisku tak, aby potwierdzić zatrzymywanie pamięci podręcznej, pamięć podręczna automatycznie opróżni swoją zawartość do miejsc docelowych magazynu. Ten proces może zająć trochę czasu, ale zapewnia spójność danych. Na koniec stan pamięci podręcznej zmieni się na **zatrzymany**.
+
+Aby ponownie uaktywnić zatrzymaną pamięć podręczną, kliknij przycisk **Uruchom** . Nie jest wymagany żaden monit.
+
+![zrzut ekranu górnych przycisków z wyróżnioną pozycją Start](media/start-cache.png)
 
 ## <a name="flush-cached-data"></a>Opróżnij buforowane dane
 
@@ -68,13 +85,14 @@ W przypadku usunięcia pamięci podręcznej nie ma to żadnego oddziaływania na
 > [!NOTE]
 > Pamięć podręczna Azure HPC nie zapisuje automatycznie zmienionych danych z pamięci podręcznej w systemach magazynu zaplecza przed usunięciem pamięci podręcznej.
 >
-> Aby upewnić się, że wszystkie dane w pamięci podręcznej zostały zapisaną do magazynu długoterminowego, wykonaj następującą procedurę:
+> Aby upewnić się, że wszystkie dane w pamięci podręcznej zostały zapisaną do magazynu długoterminowego, [Zatrzymaj pamięć podręczną](#stop-the-cache) przed jego usunięciem. Upewnij się, że stan **został zatrzymany** przed kliknięciem przycisku Usuń.
+<!--... written to long-term storage, follow this procedure:
 >
-> 1. [Usuń](hpc-cache-edit-storage.md#remove-a-storage-target) każdy docelowy magazyn z pamięci podręcznej platformy Azure HPC przy użyciu przycisku Usuń na stronie miejsce docelowe magazynu. System automatycznie zapisuje wszystkie zmienione dane z pamięci podręcznej do systemu magazynu zaplecza przed usunięciem obiektu docelowego.
-> 1. Poczekaj na całkowite usunięcie miejsca docelowego magazynu. Proces może potrwać godzinę lub dłużej, jeśli istnieje dużo danych do zapisu z pamięci podręcznej. Gdy to zrobisz, powiadomienie portalu wskazuje, że operacja usunięcia zakończyła się pomyślnie, a miejsce docelowe magazynu znika z listy.
-> 1. Po usunięciu wszystkich obiektów docelowych, których dotyczy ten magazyn, można bezpiecznie usunąć pamięć podręczną.
+> 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
+> 1. Wait for the storage target to be completely removed. The process can take an hour or longer if there is a lot of data to write from the cache. When it is done, a portal notification says that the delete operation was successful, and the storage target disappears from the list.
+> 1. After all affected storage targets have been deleted, it is safe to delete the cache.
 >
-> Alternatywnie można użyć opcji [Flush](#flush-cached-data) , aby zapisać dane buforowane, ale istnieje małe ryzyko utraty pracy, jeśli klient zapisuje zmiany w pamięci podręcznej po zakończeniu opróżniania, ale przed zniszczeniem wystąpienia pamięci podręcznej.
+> Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
 ## <a name="cache-metrics-and-monitoring"></a>Metryki pamięci podręcznej i monitorowanie
 

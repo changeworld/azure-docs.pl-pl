@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a5885df67464095061d9a95aa59010a1629fb8f8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5adc94061cd656b0654fba6609d36ecfd38c75d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930344"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988043"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Rozwiązywanie problemów dotyczących hybrydowych procesów roboczych elementów Runbook
 
@@ -22,7 +22,7 @@ Ten artykuł zawiera informacje dotyczące rozwiązywania problemów z hybrydowy
 
 ## <a name="general"></a>Ogólne
 
-Hybrydowy proces roboczy elementu Runbook zależy od agenta, który komunikuje się z kontem usługi Automation w celu zarejestrowania procesu roboczego, odbierania zadań elementu Runbook i stanu raportu. Dla systemu Windows ten Agent jest agentem Log Analytics dla systemu Windows (określanym również jako Microsoft Monitoring Agent (MMA)). W przypadku systemu Linux jest to Agent Log Analytics dla systemu Linux.
+Hybrydowy proces roboczy elementu Runbook zależy od agenta, który komunikuje się z kontem usługi Automation w celu zarejestrowania procesu roboczego, odbierania zadań elementu Runbook i stanu raportu. Dla systemu Windows ten Agent jest agentem Log Analytics dla systemu Windows, nazywanym również Microsoft Monitoring Agent (MMA). W przypadku systemu Linux jest to Agent Log Analytics dla systemu Linux.
 
 ### <a name="runbook-execution-fails"></a>Scenariusz: wykonanie elementu Runbook nie powiodło się
 
@@ -34,11 +34,11 @@ Wykonanie elementu Runbook nie powiodło się i zostanie wyświetlony następuj�
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Element Runbook zostanie wkrótce zawieszony po próbie jego wykonania trzykrotnie. Istnieją warunki, które mogą przerwać zakończenie działania elementu Runbook. Komunikat o błędzie pokrewny może nie zawierać żadnych dodatkowych informacji.
+Element Runbook zostanie zawieszony wkrótce po ponownym uruchomieniu. Istnieją warunki, które mogą przerwać zakończenie działania elementu Runbook. Komunikat o błędzie pokrewny może nie zawierać żadnych dodatkowych informacji.
 
 #### <a name="cause"></a>Przyczyna
 
-Oto potencjalne możliwe przyczyny:
+Możliwe są następujące przyczyny:
 
 * Elementy Runbook nie mogą uwierzytelniać się za pomocą zasobów lokalnych
 
@@ -52,7 +52,7 @@ Oto potencjalne możliwe przyczyny:
 
 Sprawdź, czy komputer ma dostęp wychodzący do *. azure-automation.net na porcie 443.
 
-Komputery z uruchomionym hybrydowym procesem roboczym elementu Runbook powinny spełniać minimalne wymagania sprzętowe, zanim proces roboczy zostanie skonfigurowany do obsługi tej funkcji. Elementy Runbook i procesy w tle, których używają, mogą spowodować nadmierne użycie systemu i spowodować opóźnienia zadań elementu Runbook lub przekroczenia limitów czasu.
+Komputery z uruchomionym hybrydowym procesem roboczym elementu Runbook powinny spełniać minimalne wymagania sprzętowe, zanim proces roboczy zostanie skonfigurowany do obsługi tej funkcji. Elementy Runbook i proces w tle, których używają, mogą spowodować nadmierne użycie systemu i spowodować opóźnienia zadań elementu Runbook lub przekroczenia limitów czasu.
 
 Upewnij się, że komputer, na którym zostanie uruchomiona funkcja hybrydowego procesu roboczego elementu Runbook, spełnia minimalne wymagania sprzętowe. W takim przypadku należy monitorować użycie procesora i pamięci, aby określić korelację między wydajnością hybrydowych procesów roboczych elementów Runbook i systemu Windows. Każda pamięć lub wykorzystanie procesora CPU może wskazywać potrzebę uaktualnienia zasobów. Możesz również wybrać inny zasób obliczeniowy, który może obsługiwać minimalne wymagania i skalę, gdy wymagania dotyczące obciążenia wskazują, że jest to konieczne.
 
@@ -72,7 +72,6 @@ At line:3 char:1
     + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
 ```
-
 #### <a name="cause"></a>Przyczyna
 
 Ten błąd występuje podczas próby użycia [konta Uruchom jako](../manage-runas-account.md) w elemencie Runbook, który jest uruchamiany w hybrydowym procesie roboczym elementu Runbook, gdzie nie istnieje certyfikat konta Uruchom jako. Hybrydowe procesy robocze elementów Runbook nie mają domyślnie elementu zawartości certyfikatu lokalnego, co jest wymagane przez konto Uruchom jako do prawidłowego działania.
@@ -80,6 +79,33 @@ Ten błąd występuje podczas próby użycia [konta Uruchom jako](../manage-runa
 #### <a name="resolution"></a>Rozdzielczość
 
 Jeśli hybrydowy proces roboczy elementu Runbook jest maszyną wirtualną platformy Azure, możesz zamiast tego użyć [zarządzanych tożsamości dla zasobów platformy Azure](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) . Ten scenariusz upraszcza uwierzytelnianie, umożliwiając uwierzytelnianie w zasobach platformy Azure przy użyciu tożsamości zarządzanej maszyny wirtualnej platformy Azure zamiast konta Uruchom jako. Gdy hybrydowy proces roboczy elementu Runbook jest maszyną lokalną, należy zainstalować na tym komputerze certyfikat konta Uruchom jako. Aby dowiedzieć się, jak zainstalować certyfikat, zobacz procedurę uruchamiania programu PowerShell Runbook Export-RunAsCertificateToHybridWorker w [uruchomionych elementach Runbook w hybrydowym procesie roboczym elementu Runbook](../automation-hrw-run-runbooks.md).
+
+### <a name="error-403-on-registration"></a>Scenariusz: Błąd 403 podczas rejestrowania hybrydowego procesu roboczego elementu Runbook
+
+#### <a name="issue"></a>Problem
+
+Początkowa faza rejestracji procesu roboczego kończy się niepowodzeniem i pojawia się następujący błąd (403).
+
+```error
+"Forbidden: You don't have permission to access / on this server."
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Możliwe są następujące przyczyny:
+* Istnieje nieprawidłowy typ identyfikatora obszaru roboczego lub klucza obszaru roboczego (podstawowego) w ustawieniach agenta. 
+* Hybrydowy proces roboczy elementu Runbook nie może pobrać konfiguracji, powodując błąd łączenia konta. Gdy platforma Azure umożliwia korzystanie z rozwiązań, obsługuje tylko niektóre regiony do łączenia obszaru roboczego Log Analytics i konta usługi Automation. Istnieje również możliwość, że na komputerze jest ustawiona nieprawidłowa data i/lub godzina. Jeśli czas wynosi +/-15 minut od bieżącego czasu, dołączanie kończy się niepowodzeniem.
+
+#### <a name="resolution"></a>Rozdzielczość
+
+##### <a name="mistyped-workspace-idkey"></a>Niewpisany identyfikator/klucz obszaru roboczego
+Aby sprawdzić, czy identyfikator obszaru roboczego agenta lub klucz obszaru roboczego został wpisany w sposób nieprawidłowy, zobacz [Dodawanie lub usuwanie obszaru roboczego — Agent systemu](../../azure-monitor/platform/agent-manage.md#windows-agent) Windows dla agenta systemu Windows lub [Dodawanie lub usuwanie agenta obszaru roboczego — Linux](../../azure-monitor/platform/agent-manage.md#linux-agent) dla agenta Linux.  Upewnij się, że wybrano pełny ciąg z Azure Portal i skopiuj go i wklej uważnie.
+
+##### <a name="configuration-not-downloaded"></a>Nie pobrano konfiguracji
+
+Obszar roboczy Log Analytics i konto usługi Automation muszą znajdować się w połączonym regionie. Listę obsługiwanych regionów można znaleźć w temacie [Azure Automation i log Analytics mapowania obszaru roboczego](../how-to/region-mappings.md).
+
+Może być również konieczne zaktualizowanie daty i/lub strefy czasowej komputera. W przypadku wybrania niestandardowego zakresu czasu upewnij się, że zakres jest w formacie UTC, który może się różnić od lokalnej strefy czasowej.
 
 ## <a name="linux"></a>Linux
 
@@ -108,40 +134,13 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 Poniższa lista zawiera procesy uruchomione dla hybrydowego procesu roboczego elementu Runbook systemu Linux. Są one dostępne w katalogu `/var/opt/microsoft/omsagent/state/automationworker/`.
 
 
-* **OMS. conf** — ta wartość jest procesem Menedżera procesów roboczych. Jest on uruchamiany bezpośrednio z DSC.
+* **OMS. conf** — proces Menedżera procesów roboczych. Jest on uruchamiany bezpośrednio z DSC.
 
-* **Worker. conf** — ten proces jest zarejestrowanego przez proces hybrydowego procesu roboczego, który jest uruchamiany przez Menedżera procesów roboczych. Ten proces jest używany przez Update Management i jest niewidoczny dla użytkownika. Ten proces nie jest obecny, jeśli na komputerze nie jest włączone rozwiązanie Update Management.
+* **Worker. conf** — proces samoobsługowego zarejestrowanego hybrydowego procesu roboczego, który jest uruchamiany przez Menedżera procesów roboczych. Ten proces jest używany przez Update Management i jest niewidoczny dla użytkownika. Ten proces nie jest obecny, jeśli na komputerze nie jest włączone rozwiązanie Update Management.
 
-* **możesz/Worker. conf** — ten proces to proces hybrydowego procesu roboczego możesz. Proces hybrydowego procesu roboczego możesz służy do wykonywania elementów Runbook użytkownika w hybrydowym procesie roboczym elementu Runbook. Różni się on od automatycznej rejestracji hybrydowego procesu roboczego w kluczowym szczegółowo, że używa innej konfiguracji. Ten proces nie występuje, jeśli Azure Automation rozwiązanie jest wyłączone i nie zarejestrowano hybrydowego procesu roboczego możesz Linux.
+* **możesz/Worker. conf** — możesz hybrydowy proces roboczy. Proces hybrydowego procesu roboczego możesz służy do wykonywania elementów Runbook użytkownika w hybrydowym procesie roboczym elementu Runbook. Różni się on od automatycznej rejestracji hybrydowego procesu roboczego w kluczowym szczegółowo, że używa innej konfiguracji. Ten proces nie występuje, jeśli Azure Automation rozwiązanie jest wyłączone i nie zarejestrowano hybrydowego procesu roboczego możesz Linux.
 
 Jeśli Agent nie jest uruchomiony, uruchom następujące polecenie, aby uruchomić usługę: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
-
-### <a name="error-403-on-registration"></a>Scenariusz: Błąd 403 podczas rejestrowania hybrydowego procesu roboczego elementu Runbook
-
-#### <a name="issue"></a>Problem
-
-Początkowa faza rejestracji procesu roboczego kończy się niepowodzeniem i pojawia się następujący błąd (403).
-
-```error
-"Forbidden: You don't have permission to access / on this server."
-```
-
-#### <a name="cause"></a>Przyczyna
-
-Możliwe są następujące przyczyny:
-* Istnieje nieprawidłowy typ identyfikatora obszaru roboczego lub klucza obszaru roboczego (podstawowego) w ustawieniach agenta. 
-* Hybrydowy proces roboczy elementu Runbook nie może pobrać konfiguracji, powodując błąd łączenia konta. Gdy platforma Azure umożliwia korzystanie z rozwiązań, obsługuje tylko niektóre regiony do łączenia obszaru roboczego Log Analytics i konta usługi Automation. Istnieje również możliwość, że na komputerze jest ustawiona nieprawidłowa data i/lub godzina. Jeśli czas wynosi +/-15 minut od bieżącego czasu, dołączanie kończy się niepowodzeniem.
-
-#### <a name="resolution"></a>Rozdzielczość
-
-##### <a name="mistyped-workspace-idkey"></a>Niewpisany identyfikator/klucz obszaru roboczego
-Aby sprawdzić, czy identyfikator obszaru roboczego agenta lub klucz obszaru roboczego został wpisany w sposób nieprawidłowy, zobacz [Dodawanie lub usuwanie obszaru roboczego — Agent systemu](../../azure-monitor/platform/agent-manage.md#windows-agent) Windows dla agenta systemu Windows lub [Dodawanie lub usuwanie agenta obszaru roboczego — Linux](../../azure-monitor/platform/agent-manage.md#linux-agent) dla agenta Linux.  Upewnij się, że wybrano pełny ciąg z Azure Portal i skopiuj go i wklej uważnie.
-
-##### <a name="configuration-not-downloaded"></a>Nie pobrano konfiguracji
-
-Obszar roboczy Log Analytics i konto usługi Automation muszą znajdować się w połączonym regionie. Listę obsługiwanych regionów można znaleźć w temacie [Azure Automation i log Analytics mapowania obszaru roboczego](../how-to/region-mappings.md).
-
-Może być również konieczne zaktualizowanie daty i/lub strefy czasowej komputera. W przypadku wybrania niestandardowego zakresu czasu upewnij się, że zakres jest w formacie UTC, który może się różnić od lokalnej strefy czasowej.
 
 ### <a name="class-does-not-exist"></a>Scenariusz: określona Klasa nie istnieje
 
@@ -181,7 +180,7 @@ Przyczyną tego problemu może być Microsoft Azure przez serwer proxy lub zapor
 
 #### <a name="resolution"></a>Rozdzielczość
 
-Dzienniki są przechowywane lokalnie na każdym hybrydowym procesie roboczym w witrynie C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Możesz sprawdzić, czy w dzienniku zdarzeń **aplikacji i usług Logs\Microsoft-SMA\Operations** i **Application and Services Logs\Operations Manager** znajdują się jakieś zdarzenia ostrzegawcze lub dotyczące błędów, które wskazują na to, czy problem ma wpływ na dołączanie roli do Azure Automation lub problemów w ramach normalnych operacji. Aby uzyskać dodatkową pomoc w rozwiązywaniu problemów z agentem Log Analytics, zobacz [Rozwiązywanie problemów z log Analytics agentem systemu Windows](../../azure-monitor/platform/agent-windows-troubleshoot.md).
+Dzienniki są przechowywane lokalnie na każdym hybrydowym procesie roboczym w witrynie C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Możesz sprawdzić, czy w dzienniku zdarzeń **aplikacji i usług Logs\Microsoft-SMA\Operations** i **aplikacji i usług Logs\Operations Manager** znajdują się jakieś zdarzenia ostrzegawcze, które wskazują łączność lub inny problem, który ma wpływ na dołączanie roli do Azure Automation lub problemów w ramach normalnych operacji. Aby uzyskać dodatkową pomoc w rozwiązywaniu problemów z agentem Log Analytics, zobacz [Rozwiązywanie problemów z log Analytics agentem systemu Windows](../../azure-monitor/platform/agent-windows-troubleshoot.md).
 
 [Dane wyjściowe i komunikaty elementu Runbook](../automation-runbook-output-and-messages.md) są wysyłane do Azure Automation od hybrydowych procesów roboczych, podobnie jak zadania elementu Runbook działające w chmurze. Możesz również włączyć strumienie pełnych i postępu w taki sam sposób, jak w przypadku innych elementów Runbook.
 

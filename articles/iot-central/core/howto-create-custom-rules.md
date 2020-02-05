@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435000"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987598"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Zwiększanie IoT Central platformy Azure za pomocą reguł niestandardowych przy użyciu Stream Analytics, Azure Functions i SendGrid
 
@@ -40,7 +40,7 @@ Utwórz aplikację IoT Central w witrynie programu [Azure IoT Central Applicatio
 
 | Ustawienie | Wartość |
 | ------- | ----- |
-| Plan płatności | Płatność zgodnie z rzeczywistym użyciem |
+| Plan cenowy | Standardowa |
 | Szablon aplikacji | Starsza aplikacja |
 | Nazwa aplikacji | Zaakceptuj wartość domyślną lub wybierz własną nazwę |
 | Adres URL | Zaakceptuj domyślny lub wybierz własny unikatowy prefiks adresu URL |
@@ -67,7 +67,7 @@ Użyj [Azure Portal, aby utworzyć przestrzeń nazw Event Hubs](https://portal.a
 | Lokalizacja | Wschodnie stany USA |
 | Jednostki przepływności | 1 |
 
-### <a name="stream-analytics-job"></a>Zadanie usługi Stream Analytics
+### <a name="stream-analytics-job"></a>Zadanie Stream Analytics
 
 Użyj [Azure Portal, aby utworzyć zadanie Stream Analytics](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) z następującymi ustawieniami:
 
@@ -255,7 +255,7 @@ To rozwiązanie używa zapytania Stream Analytics w celu wykrycia, kiedy urządz
     | Alias danych wyjściowych | emailnotification |
     | Subskrypcja | Twoja subskrypcja |
     | Aplikacja funkcji | Aplikacja funkcji |
-    | Funkcja  | Wyzwalacz_Http1 |
+    | Funkcja  | HttpTrigger1 |
 
 1. W obszarze **topologia zadania**wybierz pozycję **zapytanie** i Zastąp istniejące zapytanie następującym SQL:
 

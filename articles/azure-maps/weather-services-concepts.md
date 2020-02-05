@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911024"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991395"
 ---
 # <a name="weather-services-in-azure-maps"></a>Usługi pogodowe w Azure Maps
 
@@ -21,13 +21,13 @@ W tym artykule przedstawiono pojęcia dotyczące [Azure Maps usług pogodowych](
 
 ## <a name="unit-types"></a>Typy jednostek
 
-Niektóre interfejsy API usługi pogodowej umożliwiają użytkownikowi określenie, czy dane są zwracane w jednostkach metrycznych lub brytyjskich. Zwracana odpowiedź dla tych interfejsów API również zawiera wartość UnitType, która może być używana na potrzeby tłumaczeń jednostek. Zapoznaj się z tabelą poniżej, aby zinterpretować te wartości.
+Niektóre interfejsy API usługi pogodowej umożliwiają użytkownikowi określenie, czy dane są zwracane w jednostkach metrycznych lub brytyjskich. Zwrócone odpowiedzi dla tych interfejsów API obejmują wartości UnitType i numeric, które mogą być używane na potrzeby tłumaczeń jednostek. Aby interpretować te wartości, zobacz poniższą tabelę.
 
 |unitType|Opis         |
 |--------|--------------------|
 |0       |3                |
 |1       |15              |
-|2       |mile               |
+|2       |Odległość               |
 |3       |części milimetra          |
 |4       |centymetr          |
 |5       |wyższy               |
@@ -52,7 +52,7 @@ Niektóre interfejsy API usługi pogodowej umożliwiają użytkownikowi określe
 
 ## <a name="weather-icons"></a>Ikony pogody
 
-Niektóre interfejsy API usługi Pogoda zwracają kody ikon (iconCode) w odpowiedzi — wartość liczbową, która może służyć do definiowania ikony. Nie łącz bezpośrednio z tymi obrazami z aplikacji, adresy URL mogą i zmienią się.
+Niektóre interfejsy API usługi Pogoda zwracają `iconCode` w odpowiedzi. `iconCode` jest wartością numeryczną używaną do definiowania ikony. Nie łącz bezpośrednio z tymi obrazami z aplikacji, adresy URL mogą i zmienią się.
 
 | Numer ikony |Ikona| Dzień | Godzinach | Tekst |
 |-------------|:----:|-----|-------|------|
@@ -77,12 +77,12 @@ Niektóre interfejsy API usługi Pogoda zwracają kody ikon (iconCode) w odpowie
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Tak |  Nie    | Częściowo Sunny z Flurries|
 | 22           |![](./media/weather-services-concepts/snow-i.png)                      | Tak |  Tak   | Krab|
 | 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Tak |  Nie    | W większości chmur z śniegiem|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Tak |  Tak   | Ice |
+| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Tak |  Tak   | Eliminacj |
 | 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Tak |  Tak   | Sleet|
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Tak |  Tak   | Zamrażanie deszczu|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Tak |  Tak   | Deszcz i śnieg|
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | Tak |  Tak   | Gorąca|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Tak |  Tak   | Zimny|
+| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Tak |  Tak   | Chłodn|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | Tak |  Tak   | Wiatr|
 | 33           |![](./media/weather-services-concepts/clear-night.png)                | Nie  |  Tak   | Wyczyść|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nie  |  Tak   | Przede wszystkim|
@@ -100,7 +100,7 @@ Niektóre interfejsy API usługi Pogoda zwracają kody ikon (iconCode) w odpowie
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Skala kolorów obrazów radarowych i satelitarnych
 
-Za pomocą [funkcji Pobierz mapę kafelka w wersji 2 interfejsu API](https://aka.ms/AzureMapsWeatherTiles) użytkownicy mogą żądać najnowszych obrazów satelitarnych i w podczerwieni. Zapoznaj się z poniższym przewodnikiem, aby ułatwić interpretowanie kolorów używanych na potrzeby kafelków radarowych i satelitarnych.
+Za pomocą [funkcji Pobierz mapę kafelka w wersji 2 interfejsu API](https://aka.ms/AzureMapsWeatherTiles) użytkownicy mogą żądać najnowszych obrazów satelitarnych i w podczerwieni. Zobacz Poniższy przewodnik, aby pomóc w interpretacji kolorów używanych na potrzeby kafelków radarowych i satelitarnych.
 
 ### <a name="radar-images"></a>Obrazy radarowe
 

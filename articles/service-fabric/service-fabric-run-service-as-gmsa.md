@@ -1,27 +1,33 @@
 ---
 title: Uruchamianie usługi Service Fabric platformy Azure przy użyciu konta gMSA
-description: Dowiedz się, jak uruchomić usługę jako gMSA Service Fabric w klastrze autonomicznym systemu Windows.
+description: Dowiedz się, jak uruchomić usługę jako konto usługi zarządzane przez grupę (gMSA) na Service Fabric autonomicznym klastrze systemu Windows.
 author: dkkapur
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: 99d8089bd12d05e46f91e55c933d58d50baa92f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464262"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988400"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Uruchamianie usługi za pomocą zarządzanego konta usługi grupy
-W klastrze autonomicznym systemu Windows Server można uruchomić usługę jako konto usługi zarządzane przez grupę (gMSA) przy użyciu zasad RunAs.  Domyślnie aplikacje Service Fabric są uruchamiane w ramach konta, w ramach którego działa proces Fabric. exe. Uruchamianie aplikacji na różnych kontach, nawet w udostępnianym środowisku hostowanym, sprawia, że są one bezpieczniejsze od siebie nawzajem. Należy zauważyć, że ta funkcja używa Active Directory lokalnie w domenie, a nie Azure Active Directory (Azure AD). Korzystając z gMSA, nie ma hasła ani zaszyfrowanego hasła przechowywanego w manifeście aplikacji.  Możesz również uruchomić usługę jako [Active Directory użytkownika lub grupę](service-fabric-run-service-as-ad-user-or-group.md).
 
-Poniższy przykład pokazuje, jak utworzyć konto gMSA o nazwie *SVC-test $* ; Jak wdrożyć to konto usługi zarządzanej w węzłach klastra; i sposób konfigurowania podmiotu zabezpieczeń użytkownika.
+W klastrze autonomicznym systemu Windows Server można uruchomić usługę jako *konto usługi zarządzane przez grupę* (gMSA) przy użyciu zasad *runas* .  Domyślnie Service Fabric aplikacje są uruchamiane w ramach konta, w ramach którego działa proces `Fabric.exe`. Uruchamianie aplikacji na różnych kontach, nawet w udostępnianym środowisku hostowanym, sprawia, że są one bezpieczniejsze od siebie nawzajem. Korzystając z gMSA, nie ma hasła ani zaszyfrowanego hasła przechowywanego w manifeście aplikacji.  Możesz również uruchomić usługę jako [Active Directory użytkownika lub grupę](service-fabric-run-service-as-ad-user-or-group.md).
+
+Poniższy przykład pokazuje, jak utworzyć konto gMSA o nazwie *SVC-test $* , jak wdrożyć to konto usługi zarządzanej w węzłach klastra oraz jak skonfigurować podmiot użytkownika.
+
+> [!NOTE]
+> Korzystanie z gMSA z autonomicznym klastrem Service Fabric wymaga Active Directory lokalnie w domenie (a nie Azure Active Directory (Azure AD)).
 
 Wymagania wstępne:
+
 - Domena wymaga klucza głównego KDS.
 - W domenie musi być co najmniej jeden kontroler domeny systemu Windows Server 2012 (lub R2).
 
-1. Aby administrator domeny Active Directory utworzyć konto usługi zarządzane przez grupę przy użyciu `New-ADServiceAccount` polecenia cmdlet i upewnij się, że `PrincipalsAllowedToRetrieveManagedPassword` zawiera wszystkie węzły klastra usługi Service Fabric. `AccountName`, `DnsHostName`i `ServicePrincipalName` muszą być unikatowe.
+1. Aby administrator domeny Active Directory utworzyć konto usługi zarządzane przez grupę przy użyciu polecenia cmdlet `New-ADServiceAccount` i upewnić się, że `PrincipalsAllowedToRetrieveManagedPassword` zawiera wszystkie węzły klastra Service Fabric. `AccountName`, `DnsHostName`i `ServicePrincipalName` muszą być unikatowe.
 
     ```powershell
     New-ADServiceAccount -name svc-Test$ -DnsHostName svc-test.contoso.com  -ServicePrincipalNames http/svc-test.contoso.com -PrincipalsAllowedToRetrieveManagedPassword SfNode0$,SfNode1$,SfNode2$,SfNode3$,SfNode4$
@@ -35,7 +41,7 @@ Wymagania wstępne:
     Test-AdServiceAccount svc-Test$
     ```
 
-3. Skonfiguruj nazwę główną użytkownika i skonfiguruj RunAsPolicy do odwoływania się do użytkownika.
+3. Skonfiguruj nazwę główną użytkownika i skonfiguruj `RunAsPolicy`, aby odwoływać się do [użytkownika](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#runas).
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -55,14 +61,14 @@ Wymagania wstępne:
     </ApplicationManifest>
     ```
 
-> [!NOTE] 
-> Jeśli zastosujesz zasady RunAs do usługi, a manifest usługi deklaruje zasoby punktów końcowych przy użyciu protokołu HTTP, należy określić **SecurityAccessPolicy**.  Aby uzyskać więcej informacji, zobacz [przypisywanie zasad dostępu zabezpieczeń dla punktów końcowych http i https](service-fabric-assign-policy-to-endpoint.md). 
+> [!NOTE]
+> Jeśli zastosujesz zasady RunAs do usługi, a manifest usługi deklaruje zasoby punktów końcowych przy użyciu protokołu HTTP, należy określić **SecurityAccessPolicy**.  Aby uzyskać więcej informacji, zobacz [przypisywanie zasad dostępu zabezpieczeń dla punktów końcowych http i https](service-fabric-assign-policy-to-endpoint.md).
 >
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-Następnym krokiem jest zapoznanie się z następującymi artykułami:
-* [Omówienie modelu aplikacji](service-fabric-application-model.md)
-* [Określanie zasobów w manifeście usługi](service-fabric-service-manifest-resources.md)
-* [Wdrażanie aplikacji](service-fabric-deploy-remove-applications.md)
+Poniższe artykuły przeprowadzą Cię przez kolejne kroki:
+
+- [Omówienie modelu aplikacji](service-fabric-application-model.md)
+- [Określanie zasobów w manifeście usługi](service-fabric-service-manifest-resources.md)
+- [Wdrażanie aplikacji](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

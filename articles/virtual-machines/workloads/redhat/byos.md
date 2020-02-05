@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: alsin
-ms.openlocfilehash: 911d86dd7cb03479d9bde49d8fce0f7861e32e27
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980139"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989845"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux Przenieś własne obrazy z subskrypcji na platformę Azure
+
 Obrazy Red Hat Enterprise Linux (RHEL) są dostępne na platformie Azure za pośrednictwem modelu "płatność zgodnie z rzeczywistym użyciem" (PAYG) lub "Przenieś własną subskrypcję" (Red Hat Gold Image). Ten dokument zawiera omówienie obrazów Red Hat Gold na platformie Azure.
 
 ## <a name="important-points-to-consider"></a>Ważne kwestie, które należy wziąć pod uwagę
@@ -170,25 +171,41 @@ Poniżej znajduje się przykładowy skrypt. Należy zastąpić grupę zasobów, 
     New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
+## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>Szyfrowanie Red Hat Enterprise Linux dołączenia do własnych złotych obrazów subskrypcji
+
+Red Hat Enterprise Linux można zabezpieczyć obrazy ze stosu do własnych subskrypcji, korzystając z [Azure Disk Encryption](../../linux/disk-encryption-overview.md). Jednak przed włączeniem szyfrowania **należy** zarejestrować subskrypcję.  Szczegółowe informacje na temat rejestrowania obrazu RHEL BYOS Gold są dostępne w witrynie Red Hat. Zobacz [, jak zarejestrować i subskrybować system w portalu Red Hat Customer przy użyciu usługi Red Hat Subscription-Manager](https://access.redhat.com/solutions/253273). Jeśli masz aktywną subskrypcję Red Hat, możesz również przeczytać temat [Tworzenie kluczy aktywacji w portalu Red Hat Customer Portal](https://access.redhat.com/articles/1378093).
+
+Azure Disk Encryption nie są obsługiwane w [obrazach niestandardowych Red Hat](/linux/redhat-create-upload-vhd). Dodatkowe wymagania dotyczące programu ADE i wymagania wstępne są udokumentowane w [Azure Disk Encryption dla maszyn wirtualnych z systemem Linux](../../linux/disk-encryption-overview.md#additional-vm-requirements).
+
+Kroki dotyczące stosowania Azure Disk Encryption są dostępne w [Azure Disk Encryption scenariuszach na maszynach wirtualnych z systemem Linux i w](../../linux/disk-encryption-linux.md) powiązanych artykułach.  
+
 ## <a name="additional-information"></a>Dodatkowe informacje
-- Jeśli spróbujesz zainicjować obsługę administracyjną maszyny wirtualnej w subskrypcji, która nie jest włączona dla tej oferty, zostanie wyświetlony następujący błąd i należy skontaktować się z firmą Microsoft lub Red Hat w celu włączenia subskrypcji.
+
+- Jeśli spróbujesz zainicjować obsługę administracyjną maszyny wirtualnej w ramach subskrypcji, która nie jest włączona dla tej oferty, zostanie wyświetlony następujący błąd:
+
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
+    
+    W takim przypadku skontaktuj się z firmą Microsoft lub Red Hat, aby włączyć subskrypcję.
 
-- W przypadku tworzenia migawki z obrazu RHEL BYOS i publikowania obrazu w [galerii obrazów udostępnionych](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)należy podać informacje o planie zgodne z oryginalnym źródłem migawki. Na przykład polecenie może wyglądać jak (zanotuj parametry planu w ostatnim wierszu):
+- Jeśli zmodyfikujesz migawkę z obrazu RHEL BYOS i spróbujesz opublikować ten obraz niestandardowy w [galerii obrazów udostępnionych](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries), musisz podać informacje o planie zgodne z oryginalnym źródłem migawki. Na przykład polecenie może wyglądać następująco:
+
     ```azurecli
     az vm create –image \
     "/subscriptions/GUID/resourceGroups/GroupName/providers/Microsoft.Compute/galleries/GalleryName/images/ImageName/versions/1.0.0" \
     -g AnotherGroupName --location EastUS2 -n VMName \
     --plan-publisher redhat --plan-product rhel-byos --plan-name rhel-lvm75
     ```
+    Zanotuj parametry planu w ostatnim wierszu powyżej.
+
+    [Azure Disk Encryption](#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) nie są obsługiwane w obrazach niestandardowych.
 
 - Jeśli używasz automatyzacji do inicjowania obsługi maszyn wirtualnych z obrazów RHEL BYOS, musisz dostarczyć parametry planu podobne do tego, co zostało pokazane powyżej. Na przykład jeśli używasz Terraform, podaj informacje o planie w [bloku planu](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
 
 ## <a name="next-steps"></a>Następne kroki
-* Przewodnik krok po kroku i szczegółowe informacje o programie dla dostępu do chmury są dostępne w [dokumentacji usługi Red Hat Cloud Access.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)
-* Dowiedz się więcej o [infrastrukturze aktualizacji usługi Azure Red Hat](./redhat-rhui.md).
-* Aby dowiedzieć się więcej na temat wszystkich obrazów Red Hat na platformie Azure, przejdź do [strony dokumentacji](./redhat-images.md).
-* Informacje o zasadach obsługi systemu Red Hat dla wszystkich wersji programu RHEL można znaleźć na stronie [cykl życia Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .
-* Dodatkową dokumentację dotyczącą obrazów RHEL Gold można znaleźć w [dokumentacji Red Hat](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).
+- Przewodnik krok po kroku i szczegółowe informacje o programie dla dostępu do chmury są dostępne w [dokumentacji usługi Red Hat Cloud Access.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)
+- Dowiedz się więcej o [infrastrukturze aktualizacji usługi Azure Red Hat](./redhat-rhui.md).
+- Aby dowiedzieć się więcej na temat wszystkich obrazów Red Hat na platformie Azure, przejdź do [strony dokumentacji](./redhat-images.md).
+- Informacje o zasadach obsługi systemu Red Hat dla wszystkich wersji programu RHEL można znaleźć na stronie [cykl życia Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .
+- Dodatkową dokumentację dotyczącą obrazów RHEL Gold można znaleźć w [dokumentacji Red Hat](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bde2fcad6f84e4a2df5268d1135e88a263b65ee0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949120"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982912"
 ---
 # <a name="date-claims-transformations"></a>Przekształceń oświadczeń dat
 
@@ -114,6 +114,35 @@ W poniższym przykładzie zademonstrowano konwersję `dateOfBirth` (Data typ dan
 - Oświadczenia wyjściowe:
     - **oświadczenie outputclaim**: 1559347200 (1 czerwca 2019 12:00:00 am)
 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+
+Konwertuje element ClaimType **DateTime** na **datę** ClaimType. Transformacja oświadczeń usuwa format czasu z daty.
+
+| Element | TransformationClaimType | Typ danych | Uwagi |
+| ---- | ----------------------- | --------- | ----- |
+| Oświadczenie inputclaim | Oświadczenie inputclaim | Data i godzina | Wartość oświadczenia do przekonwertowania. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | date | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+
+W poniższym przykładzie zademonstrowano konwersję `systemDateTime` (typ danych dateTime) na inne `systemDate` żądania (Data typ danych).
+
+```XML
+<ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="systemDate" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Przykład
+
+- Oświadczenia wejściowe:
+  - **oświadczenie inputclaim**: 1559347200 (1 czerwca 2019 12:00:00 am)
+- Oświadczenia wyjściowe:
+  - **oświadczenie outputclaim**: 2019-06-01
+
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
 Pobierz bieżącą datę i godzinę UTC i Dodaj wartość do elementu ClaimType.
@@ -143,7 +172,7 @@ Ustal, czy jedna wartość daty i godziny jest późniejsza, wcześniejsza lub r
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie inputclaim | firstDateTime | Data i godzina | Pierwszy element dateTime, aby porównać, czy jest on wcześniejszy, czy późniejszy niż drugi dateTime. Wartość null zgłasza wyjątek. |
 | Oświadczenie inputclaim | secondDateTime | Data i godzina | Druga data/godzina do porównania, czy jest wcześniejsza lub późniejsza niż pierwsza wartość daty i godziny. Wartość zerowa jest traktowana jako bieżąca datetTime. |
-| InputParameter | operator | string | Jedna z następujących wartości: taka sama, późniejsza niż lub wcześniejsza niż. |
+| InputParameter | zakład | string | Jedna z następujących wartości: taka sama, późniejsza niż lub wcześniejsza niż. |
 | InputParameter | timeSpanInSeconds | int | Dodaj przedział czasu do pierwszej wartości daty i godziny. |
 | Oświadczenie outputclaim | wynik | wartość logiczna | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 

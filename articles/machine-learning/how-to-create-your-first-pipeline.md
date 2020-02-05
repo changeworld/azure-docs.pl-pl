@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 01ab09383a29db38d2ce8c7c513bed76aafcc44a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b50fcea6f1a479ac295a3a6832d1ab828e01ea3d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845945"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986397"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoków uczenia maszynowego za pomocą zestawu SDK Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 * [Skonfiguruj środowisko programistyczne](how-to-configure-environment.md) , aby zainstalować zestaw SDK Azure Machine Learning, lub Użyj [wystąpienia obliczeniowego Azure Machine Learning (wersja zapoznawcza)](concept-compute-instance.md) z już zainstalowanym zestawem SDK.
 
 > [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z **Północno-środkowe stany USA**, * * Wschodnie stany USA 2 * *, **europa Północna** lub **Południowe Zjednoczone Królestwo**.
+> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
 
 Zacznij od dołączenia obszaru roboczego:

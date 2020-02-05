@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/31/2019
-ms.openlocfilehash: 40660c0397f8b7fd7c370e2e0f697cae26b9bb48
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/28/2020
+ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927151"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990525"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Infrastruktura Integration Runtime w usłudze Azure Data Factory
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory do zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
@@ -48,7 +48,7 @@ Na poniższym diagramie przedstawiono, jak różnych infrastruktur Integration R
 
 ![Różne typy infrastruktur Integration Runtime](media/concepts-integration-runtime/different-integration-runtimes.png)
 
-## <a name="azure-integration-runtime"></a>Środowisko uruchomieniowe integracji Azure
+## <a name="azure-integration-runtime"></a>Azure Integration Runtime
 Infrastruktura Azure Integration Runtime zapewnia następujące funkcje:
 
 - Uruchamianie przepływów danych na platformie Azure 
@@ -141,9 +141,9 @@ W przypadku zastosowania do wykonania przenoszenia danych, środowisko IR (Self-
 ### <a name="azure-ssis-ir-location"></a>Lokalizacja środowiska IR Azure-SSIS
 Wybór odpowiedniej lokalizacji dla środowiska IR Azure-SSIS jest kluczowy dla osiągnięcia wysokiej wydajności obciążeń wyodrębnianie-przekształcanie-ładowanie (ETL).
 
-- Lokalizacja Azure-SSIS IR nie musi być taka sama jak lokalizacja fabryki danych, ale powinna być taka sama jak lokalizacja własnego serwera Azure SQL Database/Managed instance, gdzie SSISDB ma być hostowana. Dzięki temu środowisko IR Azure-SSIS może z łatwością uzyskać dostęp do bazy SSISDB bez wytwarzania dużego ruchu między różnymi lokalizacjami.
-- Jeśli nie masz istniejącego serwera wystąpienia Azure SQL Database/zarządzanego do hostowania SSISDB, ale masz lokalne źródła danych/miejsca docelowe, należy utworzyć nowy serwer wystąpienia Azure SQL Database/zarządzanego w tej samej lokalizacji sieci wirtualnej podłączonej do sieci lokalnej.  W ten sposób można utworzyć Azure-SSIS IR przy użyciu nowego serwera wystąpienia Azure SQL Database/zarządzanego i dołączenia do tej sieci wirtualnej, a wszystko to w tej samej lokalizacji, co skutecznie minimalizuje ruchy danych w różnych lokalizacjach.
-- Jeśli lokalizacja istniejącego serwera Azure SQL Database/zarządzanego wystąpienia, gdzie SSISDB jest hostowana, nie jest taka sama jak lokalizacja sieci wirtualnej podłączonej do sieci lokalnej, najpierw utwórz Azure-SSIS IR przy użyciu istniejącego serwera wystąpienia Azure SQL Database/zarządzanego i przyłączania do innej sieci wirtualnej w tej samej lokalizacji, a następnie skonfiguruj sieć wirtualną do połączenia sieci wirtualnej między różnymi lokalizacjami.
+- Lokalizacja Azure-SSIS IR nie musi być taka sama jak lokalizacja fabryki danych, ale powinna być taka sama jak lokalizacja własnego Azure SQL Database lub serwera wystąpienia zarządzanego, gdzie SSISDB ma być hostowana. Dzięki temu środowisko IR Azure-SSIS może z łatwością uzyskać dostęp do bazy SSISDB bez wytwarzania dużego ruchu między różnymi lokalizacjami.
+- Jeśli nie masz istniejącego serwera Azure SQL Database lub wystąpienia zarządzanego do hostowania SSISDB, ale masz lokalne źródła danych/miejsca docelowe, należy utworzyć nowy Azure SQL Database lub zarządzany serwer wystąpienia w tej samej lokalizacji sieci wirtualnej podłączonej do sieci lokalnej.  W ten sposób można utworzyć Azure-SSIS IR przy użyciu nowego Azure SQL Database lub serwera wystąpienia zarządzanego i dołączenia do tej sieci wirtualnej, a wszystko to w tej samej lokalizacji, co skutecznie minimalizuje ruchy danych w różnych lokalizacjach.
+- Jeśli lokalizacja istniejącego Azure SQL Database lub serwera wystąpienia zarządzanego, gdzie SSISDB jest hostowany, nie jest taka sama jak lokalizacja sieci wirtualnej podłączonej do sieci lokalnej, najpierw utwórz Azure-SSIS IR przy użyciu istniejącej Azure SQL Database lub Serwer wystąpienia zarządzanego i przyłączanie innej sieci wirtualnej w tej samej lokalizacji, a następnie Konfigurowanie sieci wirtualnej do połączenia sieci wirtualnej między różnymi lokalizacjami.
 
 Na poniższym diagramie przedstawiono ustawienia lokalizacji usługi Data Factory i jej czasy uruchomienia integracji:
 
@@ -163,13 +163,13 @@ Działanie kopiowania wymaga połączonych usług źródła i ujścia w celu zde
 
 Działanie wyszukiwania i uzyskiwania metadanych jest wykonywane w środowisku Integration Runtime skojarzonym z połączoną usługą magazynu danych.
 
-### <a name="transformation-activity"></a>Działanie przekształcania
+### <a name="external-transformation-activity"></a>Zewnętrzne działanie transformacji
 
-Każde działanie przekształcania zawiera docelową obliczeniową usługę połączoną, która wskazuje infrastrukturę Integration Runtime. To wystąpienie infrastruktury Integration Runtime jest miejscem, z którego wysyłane jest działanie przekształcania.
+Każde działanie zewnętrznego przekształcenia, które wykorzystuje zewnętrzny aparat obliczeniowy, ma docelową połączoną usługę obliczeniową, która wskazuje na środowisko Integration Runtime. To wystąpienie środowiska Integration Runtime określa lokalizację, z której wysyłane jest zewnętrzne działanie transformacji kodowanej ręcznie.
 
 ### <a name="data-flow-activity"></a>Działanie przepływu danych
 
-Działanie przepływu danych jest wykonywane na skojarzonym z nim środowisku Integration Runtime. 
+Działania przepływu danych są wykonywane w skojarzonym z nim środowisku Azure Integration Runtime. Obliczenia platformy Spark wykorzystywane przez przepływy danych są określane przez właściwości przepływu danych w Azure Integration Runtime i są w pełni zarządzane przez moduł ADF.
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:

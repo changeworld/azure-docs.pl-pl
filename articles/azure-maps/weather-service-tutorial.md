@@ -3,22 +3,22 @@ title: 'Samouczek: Dołączanie danych z czujników z danymi prognoz pogody przy
 description: W tym samouczku pokazano, jak sprzęgać dane czujników z danymi prognoz pogody z Microsoft Azure Maps usługi Pogoda przy użyciu Azure Notebooks (Python).
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/09/2019
+ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 1a1493033717b18bef5d80b28d06004c901ffb29
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910791"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989624"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Samouczek: Dołączanie danych z czujników z danymi prognoz pogody przy użyciu Azure Notebooks (Python)
 
-Energia wiatru jest jednym Alternatywnym źródłem energii dla paliw kopalnych, aby zwalczać zmiany klimatyczne. Ponieważ sam wiatr nie jest spójny ze względu na charakter, operatorzy energii wiatrowej muszą kompilować modele ML (Machine Learning), aby przewidzieć moc zasilania wiatru w celu spełnienia zapotrzebowania na energię elektryczną i zapewnić stabilność siatki. W tym samouczku opisano sposób, w jaki Azure Maps dane prognozy pogodowej można łączyć z zestawem danych demonstracyjnych lokalizacji czujników z odczytami pogody. Dane prognozy pogody są żądane przez wywołanie Azure Maps usługi pogodowej.
+Energia wiatru jest jednym Alternatywnym źródłem energii dla paliw kopalnych, aby zwalczać zmiany klimatyczne. Ze względu na to, że wiatr nie jest spójny z natury, operatory siły wiatru muszą kompilować modele uczenia maszynowego (ML), aby przewidzieć moc wiatru. To prognozowanie jest niezbędne do spełnienia wymagań dotyczących energii elektrycznej i zapewnienia stabilności siatki. W tym samouczku opisano sposób, w jaki Azure Maps dane prognozy pogody są łączone z danymi demonstracyjnymi dla odczytów pogodowych. Dane prognozy pogody są żądane przez wywołanie Azure Maps usługi pogodowej.
 
 W tym samouczku zostaną wykonane następujące czynności:
 
@@ -51,15 +51,16 @@ Aby zapoznać się z notesami platformy Azure i wiedzieć, jak rozpocząć prac�
 Aby załadować wszystkie wymagane moduły i struktury, uruchom następujący skrypt:
 
 ```python
-import aiohttp
 import pandas as pd
 import datetime
 from IPython.display import Image, display
+!pip install aiohttp
+import aiohttp
 ```
 
 ## <a name="import-weather-data"></a>Importuj dane pogodowe
 
-Na potrzeby tego samouczka będziemy używać odczytywania danych pogody z czujników zainstalowanych w czterech różnych turbinach wiatru. Przykładowe dane składają się z 30-dniowych odczytów pogody zebranych z centrów danych pogody w każdej lokalizacji turbiny. Dane demonstracyjne zawierają odczyty danych dla temperatury, szybkość wiatru i kierunek. Możesz pobrać z tego [miejsca](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data)dane demonstracyjne. Poniższy skrypt importuje dane demonstracyjne do notesu platformy Azure.
+Na potrzeby tego samouczka będziemy używać odczytywania danych pogody z czujników zainstalowanych w czterech różnych turbinach wiatru. Przykładowe dane składają się z 30 dni od odczytu pogody. Te odczyty są zbierane z centrów danych pogody w każdej lokalizacji turbiny. Dane demonstracyjne zawierają odczyty danych dla temperatury, szybkość wiatru i kierunek. Możesz pobrać z tego [miejsca](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data)dane demonstracyjne. Poniższy skrypt importuje dane demonstracyjne do notesu platformy Azure.
 
 ```python
 df = pd.read_csv("./data/weather_dataset_demo.csv")
@@ -67,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Żądaj codziennych danych prognoz
 
-W naszym przykładowym scenariuszu chcemy zażądać codziennej prognozy dla każdej lokalizacji czujnika. Poniższy skrypt wywołuje [dzienny interfejs API prognozowania](https://aka.ms/AzureMapsWeatherDailyForecast) Azure Maps usługi Pogoda, aby uzyskać dzienną prognozę pogody dla każdego turbiny wiatru w ciągu następnych 15 dni od bieżącej daty.
+W naszym scenariuszu chcemy zażądać codziennej prognozy dla każdej lokalizacji czujnika. Poniższy skrypt wywołuje [dzienny interfejs API prognozowania](https://aka.ms/AzureMapsWeatherDailyForecast) Azure Maps usługi Pogoda, aby uzyskać dzienną prognozę pogody dla każdego turbiny wiatru w ciągu następnych 15 dni od bieżącej daty.
 
 
 ```python
@@ -128,7 +129,7 @@ display(Image(poi_range_map))
 ![Lokalizacje turbin](./media/weather-service-tutorial/location-map.png)
 
 
-W celu zwiększenia danych demonstracyjnych za pomocą danych prognozy będziemy grupować dane prognozy z danymi demonstracyjnymi na podstawie identyfikatora stacji dla centrum danych pogody.
+Będziemy grupować dane prognozy z danymi demonstracyjnymi na podstawie identyfikatora stacji centrum danych pogody. To grupowanie rozszerza dane demonstracyjne o dane prognozy. 
 
 ```python
 # Group forecasted data for all locations
@@ -156,7 +157,7 @@ grouped_weather_data.get_group(station_ids[0]).reset_index()
 
 ## <a name="plot-forecast-data"></a>Kreśl dane prognozy
 
-Aby zobaczyć, jak szybkość i kierunek wiatru zmieniają się w ciągu następnych 15 dni, zostanie wyświetlona wartość prognozowanych wartości w dniach, dla których są przewidywane.
+Przekreślmy prognozowane wartości w dniach, dla których są prognozowane. Ten wykres pozwala nam zobaczyć prędkość i kierunek zmiany kierunku wiatru przez następne 15 dni.
 
 ```python
 # Plot wind speed
@@ -175,7 +176,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-Poniższe wykresy przedstawiają wizualizację danych prognozy dla zmiany szybkości wiatru (wykres lewy) i kierunek (z prawej strony wykresu) w ciągu następnych 15 dni od dnia, gdy dane są żądane.
+Poniższe wykresy przedstawiają wizualizację danych prognoz. Aby zmienić szybkość wiatru, zobacz lewy wykres. Aby zmienić kierunek wiatru, zobacz odpowiedni wykres. Te dane są przewidywane w ciągu następnych 15 dni od dnia, w którym dane są żądane.
 
 <center>
 
@@ -184,7 +185,7 @@ Poniższe wykresy przedstawiają wizualizację danych prognozy dla zmiany szybko
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób wywoływania Azure Maps interfejsów API REST w celu uzyskania danych prognozy pogody i wizualizacji danych na wykresach.
+W tym samouczku przedstawiono sposób wywoływania Azure Maps interfejsów API REST w celu uzyskania danych prognozy pogody. Wiesz również, jak wizualizować dane na wykresach.
 
 Aby dowiedzieć się więcej o sposobie wywoływania Azure Maps interfejsów API REST w programie Azure Notebooks, zobacz [Routing EV przy użyciu Azure Notebooks](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
 

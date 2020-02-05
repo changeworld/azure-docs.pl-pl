@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b82001b8bceac620dec9f1fe6ef47f4aa81b1011
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b6c70e1a5c7e5b81157c09a794ff75e276a20d1f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425619"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982742"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj własny profil techniczny w Azure Active Directory B2C zasad niestandardowych
 
@@ -189,15 +189,16 @@ Możesz również wywołać profil techniczny interfejsu API REST z logiką bizn
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Ustawianie. showContinueButton | Nie | Wyświetla przycisk Kontynuuj. Możliwe wartości: `true` (wartość domyślna) lub `false` |
-| Ustawianie. showCancelButton | Nie | Wyświetla przycisk Anuluj. Możliwe wartości: `true` (wartość domyślna) lub `false` |
 | ustawienie. operatmode | Nie | Dla strony logowania ta właściwość kontroluje zachowanie pola username, takie jak walidacja danych wejściowych i komunikaty o błędach. Oczekiwane wartości: `Username` lub `Email`. |
+| AllowGenerationOfClaimsWithNullValues| Nie| Zezwalaj na generowanie elementu Claim z wartością null. Na przykład w przypadku użytkownika nie jest zaznaczone pole wyboru.|
 | ContentDefinitionReferenceId | Tak | Identyfikator [definicji zawartości](contentdefinitions.md) skojarzonej z tym profilem technicznym. |
 | EnforceEmailVerification | Nie | W przypadku rejestrowania lub edytowania profilu wymusza weryfikację poczty e-mail. Możliwe wartości: `true` (wartość domyślna) lub `false`. |
-| setting.showSignupLink | Nie | Wyświetla przycisk rejestracji. Możliwe wartości: `true` (wartość domyślna) lub `false` |
 | Ustawianie. retryLimit | Nie | Określa, ile razy użytkownik może próbować podać dane, które są sprawdzane względem profilu technicznego weryfikacji. Na przykład użytkownik próbuje zarejestrować się przy użyciu konta, które już istnieje, i kontynuuje podejmowanie prób aż do osiągnięcia limitu.
 | SignUpTarget | Nie | Docelowy identyfikator wymiany programu Exchange. Gdy użytkownik kliknie przycisk rejestracji, Azure AD B2C wykonuje określony identyfikator programu Exchange. |
-
+| Ustawianie. showCancelButton | Nie | Wyświetla przycisk Anuluj. Możliwe wartości: `true` (wartość domyślna) lub `false` |
+| Ustawianie. showContinueButton | Nie | Wyświetla przycisk Kontynuuj. Możliwe wartości: `true` (wartość domyślna) lub `false` |
+| setting.showSignupLink | Nie | Wyświetla przycisk rejestracji. Możliwe wartości: `true` (wartość domyślna) lub `false` |
+| Ustawianie. forgotPasswordLinkLocation| Nie| Wyświetla łącze zapomniane hasło. Możliwe wartości: `AfterInput` (domyślnie) łącze jest wyświetlane w dolnej części strony lub `None` usuwa łącze zapomniane hasło.| 
 ## <a name="cryptographic-keys"></a>Klucze kryptograficzne
 
 Element **CryptographicKeys** nie jest używany.

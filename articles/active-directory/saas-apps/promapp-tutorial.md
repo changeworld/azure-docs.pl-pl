@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Promapp | Dokumentacja firmy Microsoft'
-description: W tym samouczku dowiesz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Promapp.
+title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą nintex Promapp | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i nintex Promapp.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,103 +11,80 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 01/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 2ddb8777a6470c0e739545e71867a694022d1723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 581c850801c153996031378cbf470457264cad3d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093599"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984476"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Promapp
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>Samouczek Azure Active Directory: integracja logowania jednokrotnego (SSO) z usługą nintex Promapp
 
-W tym samouczku dowiesz się, jak zintegrować Promapp w usłudze Azure Active Directory (Azure AD).
-Ta integracja zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę nintex Promapp z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi nintex Promapp z usługą Azure AD można:
 
-* Możesz użyć usługi Azure AD w celu kontrolowania, kto ma dostęp do Promapp.
-* Aby umożliwić użytkownikom automatyczne logowanie do Promapp (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji: witryna Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do nintex Promapp.
+* Zezwól użytkownikom na automatyczne logowanie do nintex Promapp przy użyciu kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Aby dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Promapp, musisz mieć:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz zarejestrować się w celu [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
-* Subskrypcja Promapp, która ma logowanie jednokrotne włączone.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO, nintex Promapp).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka możesz skonfigurować i testowanie usługi Azure AD rejestracji jednokrotnej w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Promapp obsługuje logowanie Jednokrotne zainicjowane przez Dostawcę i inicjowane przez dostawcę tożsamości.
+* Nintex Promapp obsługuje logowanie jednokrotne **z użyciem SP i dostawcy tożsamości**
+* Nintex Promapp obsługuje inicjowanie aprowizacji użytkowników **just in Time**
 
-* Promapp obsługę użytkownika just-in-time.
+## <a name="adding-nintex-promapp-from-the-gallery"></a>Dodawanie nintex Promapp z galerii
 
-## <a name="add-promapp-from-the-gallery"></a>Dodaj Promapp z galerii
+Aby skonfigurować integrację usługi nintex Promapp w usłudze Azure AD, musisz dodać Promapp nintex z galerii do listy zarządzanych aplikacji SaaS.
 
-Aby skonfigurować integrację Promapp w usłudze Azure AD, należy dodać Promapp z galerii z listą zarządzanych aplikacji SaaS.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **nintex Promapp** w polu wyszukiwania.
+1. Wybierz pozycję **nintex Promapp** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**:
+## <a name="configure-and-test-azure-ad-single-sign-on-for-nintex-promapp"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla nintex Promapp
 
-    ![Wybierz pozycję Azure Active Directory](common/select-azuread.png)
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą nintex Promapp przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w nintex Promapp.
 
-2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą nintex Promapp, wykonaj następujące bloki konstrukcyjne:
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj logowanie JEDNOkrotne w usłudze nintex Promapp](#configure-nintex-promapp-sso)** , aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    * **[Utwórz użytkownika testowego programu nintex Promapp](#create-nintex-promapp-test-user)** , aby uzyskać odpowiednika B. Simon w nintex Promapp, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-3. Aby dodać aplikację, wybierz pozycję **nową aplikację** w górnej części okna:
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-    ![Wybierz nową aplikację](common/add-new-app.png)
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-4. W polu wyszukiwania wprowadź **Promapp**. Wybierz **Promapp** w wynikach wyszukiwania, a następnie wybierz **Dodaj**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **nintex Promapp** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-     ![Wyniki wyszukiwania](common/search-new-app.png)
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+1. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
 
-W tej sekcji możesz skonfigurować i przetestować usługę Azure AD logowanie jednokrotne za pomocą Promapp przy użyciu użytkownika testu o nazwie Britta Simon.
-Aby włączyć logowanie jednokrotne, należy ustanowić relację między użytkownikiem usługi Azure AD i odpowiedniego użytkownika w Promapp.
+    1. W polu **Identyfikator** wprowadź adres URL w tym wzorcu:
 
-Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Promapp, należy wykonać następujące czynności:
-
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  do włączenia tej funkcji dla użytkowników.
-2. **[Konfigurowanie Promapp logowania jednokrotnego](#configure-promapp-single-sign-on)**  na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  do testowania usługi Azure AD logowania jednokrotnego.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  włączyć usługi Azure AD logowanie jednokrotne dla użytkownika.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  można sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
-
-W tej sekcji włączysz usługę Azure AD logowania jednokrotnego w witrynie Azure portal.
-
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z Promapp, wykonaj następujące czynności:
-
-1. W [witryny Azure portal](https://portal.azure.com/), na stronie Promapp integracji aplikacji wybierz **logowanie jednokrotne**:
-
-    ![Wybierz opcję logowania jednokrotnego](common/select-sso.png)
-
-2. W **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML/WS-Fed** trybu, aby włączyć logowanie jednokrotne:
-
-    ![Wybierz jedną metodę logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na **Ustaw się logowanie jednokrotne z SAML** wybierz opcję **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okno dialogowe:
-
-    ![Ikona edycji](common/edit-urls.png)
-
-4. W **podstawową konfigurację protokołu SAML** okno dialogowe, jeśli chcesz skonfigurować aplikację w trybie inicjowane przez dostawcę tożsamości, wykonaj następujące czynności.
-
-    ![Podstawowy plik konfiguracji SAML, okno dialogowe](common/idp-intiated.png)
-
-    1. W **identyfikator** wprowadź adres URL, w tym wzorcu:
-
-       | |
+        | |
         |--|
         | `https://go.promapp.com/TENANTNAME/`|
         | `https://au.promapp.com/TENANTNAME/`|
@@ -117,129 +94,101 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z Promapp, wykonaj na
         |   |
 
        > [!NOTE]
-       > Integracja usługi Azure AD za pomocą Promapp jest obecnie skonfigurowany tylko w przypadku zainicjowanych przez usługę uwierzytelniania. (Oznacza to, przechodząc do adresu URL Promapp inicjuje proces uwierzytelniania). Ale **adres URL odpowiedzi** pole jest polem wymaganym.
+       > Integracja usługi Azure AD z usługą nintex Promapp jest obecnie skonfigurowana tylko w przypadku uwierzytelniania zainicjowanego przez usługę. (Oznacza to, że przechodzenie do adresu URL nintex Promapp powoduje zainicjowanie procesu uwierzytelniania). Pole **adresu URL odpowiedzi** jest polem wymaganym.
 
-    1. W **adres URL odpowiedzi** wprowadź adres URL, w tym wzorcu:
+    1. W polu **adres URL odpowiedzi** wprowadź adres URL w tym wzorcu:
 
        `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate.aspx`
 
-5. Aby skonfigurować aplikację w trybie zainicjowanego przez dostawcę usług, zaznacz **Ustaw dodatkowe adresy URL**. W **adres URL logowania** wprowadź adres URL, w tym wzorcu:
+1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-      `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
-
-    ![Promapp domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/metadata-upload-additional-signon.png)
-
-   
+    W polu **adres URL logowania** wprowadź adres URL w tym wzorcu: `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE]
-    > Te wartości symboli zastępczych. Należy użyć rzeczywistego identyfikatora, adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej Promapp](https://www.promapp.com/about-us/contact-us/) można pobrać wartości. Może również odnosić się do wzorców objętego **podstawową konfigurację protokołu SAML** okno dialogowe, w witrynie Azure portal.
+    > Te wartości są symbolami zastępczymi. Musisz użyć rzeczywistego identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej nintex Promapp](https://www.promapp.com/about-us/contact-us/) , aby uzyskać wartości. Można również odnieść się do wzorców przedstawionych w oknie dialogowym podstawowe informacje o **konfiguracji SAML** w Azure Portal.
 
-6. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** stronie **certyfikat podpisywania SAML** zaznacz **Pobierz** łącze obok **certyfikat (Base64)** , zgodnie z wymaganiami, a następnie Zapisz certyfikat na komputerze:
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-7. W **Konfigurowanie Promapp** sekcji, skopiuj odpowiednie adresy URL, w zależności od wymagań:
+1. W sekcji **Konfigurowanie nintex Promapp** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
-    ![Skopiuj adresy URL konfiguracji](common/copy-configuration-urls.png)
-
-    1. **Adres URL logowania**.
-
-    1. **Usługa Azure AD identyfikator**.
-
-    1. **Adres URL wylogowania**.
-
-### <a name="configure-promapp-single-sign-on"></a>Konfigurowanie Promapp logowania jednokrotnego
-
-1. Zaloguj się do witryny firmy Promapp jako administrator.
-
-2. W menu w górnej części okna wybierz **administratora**:
-   
-    ![Wybierz administratora][12]
-
-3. Wybierz **skonfigurować**:
-   
-    ![Wybierz opcję Konfiguruj][13]
-
-4. W **zabezpieczeń** okna dialogowego pole, wykonaj następujące kroki.
-   
-    ![Okno dialogowe zabezpieczeń][14]
-    
-    1. Wklej **adres URL logowania** skopiowaną z witryny Azure portal do **adres URL logowania jednokrotnego logowania** pole.
-    
-    1. W **logowania jednokrotnego — tryb logowania jednokrotnego** listy wybierz **opcjonalnie**. Wybierz pozycję **Zapisz**.
-
-       > [!NOTE]
-       > Tryb opcjonalne jest tylko do celów testowych. Po zakończeniu konfiguracji wybierz **wymagane** w **logowania jednokrotnego — tryb logowania jednokrotnego** listy, aby wymusić uwierzytelnianie za pomocą usługi Azure AD wszystkich użytkowników.
-
-    1. Otwórz w Notatniku certyfikat, który został pobrany w poprzedniej sekcji. Skopiuj zawartość certyfikatu bez pierwszego wiersza ( **---BEGIN CERTIFICATE---** ) lub ostatni wiersz ( **---END CERTIFICATE---** ). Wklej zawartość w certyfikacie **certyfikat x.509 logowania jednokrotnego** , a następnie wybierz **Zapisz**.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika testu o nazwie Britta Simon w witrynie Azure portal.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-1. W witrynie Azure portal wybierz **usługi Azure Active Directory** w okienku po lewej stronie wybierz **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**:
-
-    ![Wybierz opcję Wszyscy użytkownicy](common/users.png)
-
-2. Wybierz **nowego użytkownika** w górnej części ekranu:
-
-    ![Wybierz nowego użytkownika](common/new-user.png)
-
-3. W **użytkownika** okna dialogowego pole, wykonaj następujące kroki.
-
-    ![Okno dialogowe użytkownika](common/user-properties.png)
-
-    1. W polu **Nazwa** wpisz **BrittaSimon**.
-  
-    1. W **nazwa_użytkownika** wprowadź **BrittaSimon @\<domenatwojejfirmy >.\< Rozszerzenia >** . (Na przykład BrittaSimon@contoso.com.)
-
-    1. Wybierz **Pokaż hasło**i zanotuj wartość, która znajduje się w **hasło** pole.
-
-    1. Wybierz pozycję **Utwórz**.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można udostępnić Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej Promapp.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do nintex Promapp.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz pozycję **Promapp**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **nintex Promapp**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-2. Na liście aplikacji wybierz **Promapp**.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Lista aplikacji](common/all-applications.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-3. W okienku po lewej stronie wybierz **użytkowników i grup**:
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Wybieranie pozycji Użytkownicy i grupy](common/users-groups-blade.png)
+## <a name="configure-nintex-promapp-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze nintex Promapp
 
-4. Wybierz pozycję **Dodaj użytkownika**, a następnie **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+1. Zaloguj się do witryny firmy nintex Promapp jako administrator.
 
-    ![Wybieranie pozycji Dodaj użytkownika](common/add-assign-user.png)
+2. W menu w górnej części okna wybierz pozycję **administrator**:
 
-5. W **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** listy użytkowników, a następnie kliknij **wybierz** znajdujący się u dołu ekranu.
+    ![Wybierz administratora][12]
 
-6. Jeśli oczekujesz wartość roli dla asercji SAML **wybierz rolę** okna dialogowego wybierz odpowiednią rolę dla użytkownika z listy. Kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+3. Wybierz pozycję **Konfiguruj**:
 
-7. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
+    ![Wybierz pozycję Konfiguruj][13]
 
-### <a name="just-in-time-user-provisioning"></a>Inicjowanie obsługi użytkowników just in time
+4. W oknie dialogowym **zabezpieczenia** wykonaj następujące czynności.
 
-Promapp obsługę użytkownika just-in-time. Ta funkcja jest włączona domyślnie. Jeśli użytkownik jeszcze nie istnieje w Promapp, nowy katalog jest tworzony po uwierzytelnieniu.
+    ![Zabezpieczenia — okno dialogowe][14]
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+    1. Wklej **adres URL logowania** skopiowany z Azure Portal do pola **adres URL logowania jednokrotnego** .
 
-Teraz należy przetestować konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego za pomocą panelu dostępu.
+    1. Na liście **tryb logowania** jednokrotnego (SSO) wybierz pozycję **opcjonalne**. Wybierz pozycję **Zapisz**.
 
-Po wybraniu kafelka Promapp w panelu dostępu użytkownik powinien automatyczne logowanie do wystąpienia Promapp, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [dostępu i użycia aplikacji w portalu Moje aplikacje](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+       > [!NOTE]
+       > Tryb opcjonalny służy tylko do celów testowych. Po zakończeniu konfiguracji wybierz pozycję **wymagane** na liście **tryb logowania jednokrotnego (SSO** ), aby wymusić uwierzytelnienie wszystkich użytkowników w usłudze Azure AD.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+    1. W Notatniku otwórz certyfikat pobrany w poprzedniej sekcji. Skopiuj zawartość certyfikatu bez pierwszego wiersza ( **-----Rozpocznij certyfikat-----** ) lub ostatni wiersz ( **----------certyfikatu końcowego**). Wklej zawartość certyfikatu do pola **certyfikat logowania jednokrotnego (SSO-x. 509** ), a następnie wybierz pozycję **Zapisz**.
 
-- [Samouczków dotyczących integrowania aplikacji SaaS przy użyciu usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+### <a name="create-nintex-promapp-test-user"></a>Utwórz użytkownika testowego nintex Promapp
 
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+W tej sekcji użytkownik o nazwie B. Simon został utworzony w nintex Promapp. Nintex Promapp obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w programie nintex Promapp, zostanie utworzony nowy po uwierzytelnieniu.
+
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
+
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+
+Po kliknięciu kafelka nintex Promapp w panelu dostępu należy automatycznie zalogować się do Promapp nintex, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+
+## <a name="additional-resources"></a>Zasoby dodatkowe
+
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj usługę nintex Promapp w usłudze Azure AD](https://aad.portal.azure.com/)
 
 <!--Image references-->
 

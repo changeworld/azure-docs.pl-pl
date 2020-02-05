@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 06fdb9733ad9c173c88936e5502214b58f5d10ee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911077"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985921"
 ---
 # <a name="interact-with-the-map"></a>Korzystanie z mapy
 
-W tym artykule pokazano, jak używać właściwości [zdarzenia klasy mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) do wyróżniania zdarzeń na mapie i na różnych warstwach mapy. Pokazano w nim także, jak używać właściwości zdarzenia klasy mapy do wyróżniania zdarzeń podczas korzystania z znacznika HTML.
+W tym artykule pokazano, jak używać [klasy zdarzeń map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events). Właściwość wyróżniania zdarzeń na mapie i na różnych warstwach mapy. Możesz również wyróżnić zdarzenia podczas korzystania z znacznika HTML.
 
 ## <a name="interact-with-the-map"></a>Korzystanie z mapy
 
-Odtwórz przy użyciu mapy poniżej i zobacz odpowiednie zdarzenia myszy wyróżnione po prawej stronie. Możesz kliknąć **kartę js** , aby wyświetlić i edytować kod JavaScript. Możesz również kliknąć przycisk **Edytuj na CodePen** i edytować kod w CodePen.
+Odtwórz przy użyciu mapy poniżej i zobacz odpowiednie zdarzenia myszy wyróżnione po prawej stronie. Możesz kliknąć **kartę js** , aby wyświetlić i edytować kod JavaScript. Możesz również kliknąć pozycję **Edytuj na CodePen** , aby zmodyfikować kod w CodePen.
 
 <br/>
 
@@ -31,7 +31,7 @@ Odtwórz przy użyciu mapy poniżej i zobacz odpowiednie zdarzenia myszy wyróż
 
 ## <a name="interact-with-map-layers"></a>Korzystanie z warstw mapy
 
-Poniższy kod wyróżnia nazwę zdarzeń, które są wyzwalane podczas korzystania z warstwy symboli. Warstwa symbol, bąbelki, linia i Wielokąt obsługują ten sam zestaw zdarzeń. Warstwy mapy cieplnej i kafelki nie obsługują żadnego z tych zdarzeń.
+Poniższy kod wyróżnia wywoływane zdarzenie podczas korzystania z warstwy symboli. Warstwa symbol, bąbelki, linia i Wielokąt obsługują ten sam zestaw zdarzeń. Warstwy mapy cieplnej i kafelki nie obsługują żadnego z tych zdarzeń.
 
 <br/>
 

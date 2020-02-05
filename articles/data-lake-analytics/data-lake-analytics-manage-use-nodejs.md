@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 3b5b11b148910e9bd1348b20a25fa8383fc2ec9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21d59f6543df7fe9d1fad47a006260bff9c93e2b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812739"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988060"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Zarządzanie usługą Azure Data Lake Analytics za pomocą zestawu Azure SDK dla środowiska Node.js
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "60812739"
 W tym artykule opisano, jak zarządzać kontami, źródłami danych, użytkownikami i zadaniami usługi Azure Data Lake Analytics za pomocą aplikacji napisanych przy użyciu zestawu Azure SDK dla środowiska Node.js. 
 
 Obsługiwane są następujące wersje:
-* **Środowisko node.js w wersji: 0.10.0 lub wyższej**
+* **Środowisko Node.js w wersji 0.10.0 lub wyższej**
 * **Wersja interfejsu API REST dla konta: 2015-10-01-preview**
 * **Wersja interfejsu API REST dla katalogu: 2015-10-01-preview**
 * **Wersja interfejsu API REST dla zadania: 2016-03-20-preview**
@@ -131,5 +131,3 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 
 ## <a name="see-also"></a>Zobacz także
 * [Zestaw Microsoft Azure SDK dla środowiska Node.js](https://github.com/azure/azure-sdk-for-node)
-* [Zestaw Microsoft Azure SDK dla środowiska Node.js — Data Lake Store Management](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
-

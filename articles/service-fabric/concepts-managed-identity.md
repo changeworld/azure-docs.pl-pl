@@ -4,12 +4,12 @@ description: Dowiedz się więcej na temat używania tożsamości zarządzanych 
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: f477acab332cf39de2504c675b04abb5b14a305f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934967"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986754"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Korzystanie z tożsamości zarządzanych dla platformy Azure z Service Fabric (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Zarządzane tożsamości dla systemu Azure są oparte na kilku najważniejszych 
 
 - Nazwa **główna usługi** — obiekt Azure Active Directory, który reprezentuje projekcję aplikacji usługi AAD w danej dzierżawie (Zobacz też [nazwę główną usługi](../active-directory/develop/developer-glossary.md#service-principal-object)).
 
-Są to dwa typy zarządzanych tożsamości:
+Istnieją dwa typy tożsamości zarządzanych:
 
 - **Tożsamość zarządzana przypisana przez system** jest włączona bezpośrednio w wystąpieniu usługi platformy Azure.  Cykl życia tożsamości przypisanej do systemu jest unikatowy dla wystąpienia usługi platformy Azure, na którym jest włączona.
 - **Tożsamość zarządzana przypisana przez użytkownika** jest tworzona jako autonomiczny zasób platformy Azure. Tożsamość może być przypisana do co najmniej jednego wystąpienia usługi platformy Azure i jest zarządzana oddzielnie od cyklów życia tych wystąpień.

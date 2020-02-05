@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f78ef583a58b8a51276823a2a4730540b6735bb0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896351"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988424"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption dla maszyn wirtualnych z systemem Linux 
 
-Usługa Azure Disk Encryption pomaga chronić dane zgodnie z wymaganiami organizacji w zakresie zabezpieczeń i zgodności. Używa funkcji [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systemu Linux, aby zapewnić szyfrowanie woluminów dla systemu operacyjnego i dysków danych maszyn wirtualnych platformy Azure, a ponadto jest zintegrowane z [Azure Key Vault](../../key-vault/index.yml) , aby pomóc w kontroli i zarządzaniu kluczami szyfrowania dysków i wpisami tajnymi. 
+Azure Disk Encryption pomaga chronić dane i zabezpieczać je w celu spełnienia wymagań dotyczących zabezpieczeń i zgodności w organizacji. Używa funkcji [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systemu Linux, aby zapewnić szyfrowanie woluminów dla systemu operacyjnego i dysków danych maszyn wirtualnych platformy Azure, a ponadto jest zintegrowane z [Azure Key Vault](../../key-vault/index.yml) , aby pomóc w kontroli i zarządzaniu kluczami szyfrowania dysków i wpisami tajnymi. 
 
 Jeśli używasz [Azure Security Center](../../security-center/index.yml), zostanie wyświetlony alert, jeśli masz maszyny wirtualne, które nie są zaszyfrowane. Alerty wyświetlane jako o wysokiej ważności i zaleca się zaszyfrowanie tych maszyn wirtualnych.
 
@@ -58,16 +58,16 @@ Dystrybucje serwera z systemem Linux, które nie są zatwierdzone przez platform
 | Ubuntu | 18,04| Dysk systemu operacyjnego i danych |
 | Ubuntu | 16.04| Dysk systemu operacyjnego i danych |
 | Ubuntu | 14.04.5</br>[Dzięki dostrojeniu jądra platformy Azure do wersji 4,15 lub nowszej](disk-encryption-troubleshooting.md) | Dysk systemu operacyjnego i danych |
-| RHEL | 7.7 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
-| RHEL | 7.6 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 7,7 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
+| RHEL | 7,6 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7.5 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7.4 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7.3 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 7.2 | Dysk systemu operacyjnego i danych (patrz Uwaga poniżej) |
 | RHEL | 6.8 | Dysk danych (patrz Uwaga poniżej) |
 | RHEL | 6.7 | Dysk danych (patrz Uwaga poniżej) |
-| CentOS | 7.7 | Dysk systemu operacyjnego i danych |
-| CentOS | 7.6 | Dysk systemu operacyjnego i danych |
+| CentOS | 7,7 | Dysk systemu operacyjnego i danych |
+| CentOS | 7,6 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.5 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.4 | Dysk systemu operacyjnego i danych |
 | CentOS | 7.3 | Dysk systemu operacyjnego i danych |
@@ -78,7 +78,9 @@ Dystrybucje serwera z systemem Linux, które nie są zatwierdzone przez platform
 | SLES | 12-SP3 | Dysk z danymi |
 
 > [!NOTE]
-> Nowa implementacja elementu ADE jest obsługiwana w przypadku systemu operacyjnego RHEL i dysku danych dla obrazów z opcją płatność zgodnie z rzeczywistym użyciem. ADE nie jest obecnie obsługiwane w przypadku obrazów RHEL z własnymi subskrypcjami (BYOS). 
+> Nowa implementacja Azure Disk Encryption jest obsługiwana w przypadku systemu operacyjnego RHEL i dysku danych dla obrazów z opcją płatność zgodnie z rzeczywistym użyciem.  
+>
+> ADE jest również obsługiwane w przypadku RHELowych obrazów z subskrypcją, ale dopiero **po** zarejestrowaniu subskrypcji. Aby uzyskać więcej informacji, zobacz [Red Hat Enterprise Linux przenoszenie własnych subskrypcji Gold na platformie Azure](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
 
 ## <a name="additional-vm-requirements"></a>Dodatkowe wymagania dotyczące maszyn wirtualnych
 

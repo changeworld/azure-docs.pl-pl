@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 11/19/2019
-ms.openlocfilehash: 4f1fe1ea031cd7831ffb24ee4302d6834a8d9976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/03/2019
+ms.openlocfilehash: 305af8e8acd7e7a54fae8c831d36bee0aad4ad6b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981885"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990984"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Usługa Azure SQL Transparent Data Encryption z kluczem zarządzanym przez klienta
 
@@ -124,7 +124,7 @@ Po przywróceniu dostępu do klucza przełączenie bazy danych w tryb online wym
 
 - Jeśli dostęp do klucza zostanie przywrócony w ciągu 8 godzin, baza danych zostanie przewarta w ciągu następnej godziny.
 
-- Jeśli dostęp do klucza jest przywracany po przekroczeniu 8 godzin, funkcja Autokorekty nie jest możliwa i przywrócenie bazy danych może zająć znaczną ilość czasu w zależności od rozmiaru bazy danych i wymaga otwarcia biletu pomocy technicznej. Gdy baza danych zostanie przywrócona w trybie online, wcześniej skonfigurowane ustawienia na poziomie serwera, takie jak konfiguracja [grupy trybu failover](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) , historia przywracania do punktu w czasie i Tagi zostaną utracone. W związku z tym zaleca się zaimplementowanie systemu powiadomień, który pozwala identyfikować i rozwiązywać podstawowe problemy z dostępem do klucza w ciągu 8 godzin.
+- Jeśli dostęp do klucza zostanie przywrócony po upływie ponad 8 godzin, funkcja Autokorekty nie jest możliwa i przełączenie bazy danych wymaga wykonania dodatkowych czynności w portalu i może zająć znaczną ilość czasu w zależności od rozmiaru bazy danych. Gdy baza danych zostanie przywrócona w trybie online, wcześniej skonfigurowane ustawienia na poziomie serwera, takie jak konfiguracja [grupy trybu failover](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) , historia przywracania do punktu w czasie i Tagi **zostaną utracone**. W związku z tym zaleca się zaimplementowanie systemu powiadomień, który pozwala identyfikować i rozwiązywać podstawowe problemy z dostępem do klucza w ciągu 8 godzin.
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Przypadkowe odwoływanie dostępu do funkcji ochrony TDE
 

@@ -1,22 +1,22 @@
 ---
-title: Włącz i pracuj z dziennikami diagnostycznymi usługi Azure bastionu | Microsoft Docs
+title: Włącz i pracuj z dziennikami diagnostycznymi usługi Azure bastionu
 description: W tym artykule dowiesz się, jak włączyć i korzystać z dzienników diagnostycznych usługi Azure bastionu.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8ae421b48f3cfa8055f636052c990f99e0c775b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2167a17d5d388c97ad357398c4ac2676e43be5a4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512407"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989454"
 ---
 # <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Włącz i pracuj z dziennikami diagnostycznymi bastionu
 
-Gdy użytkownicy łączą się z obciążeniami przy użyciu usługi Azure bastionu, usługa bastionu może rejestrować diagnostykę sesji zdalnych. Następnie można użyć diagnostyki, aby zobaczyć, którzy użytkownicy połączeni z zadaniami, w których czasie, od tego momentu i innych informacji dotyczących rejestrowania. Aby móc korzystać z diagnostyki, należy włączyć dzienniki diagnostyczne na platformie Azure bastionu. Ten artykuł ułatwia włączenie dzienników diagnostycznych, a następnie wyświetlenie dzienników.
+Gdy użytkownicy łączą się z obciążeniami przy użyciu usługi Azure bastionu, usługa bastionu może rejestrować diagnostykę sesji zdalnych. Następnie można użyć diagnostyki, aby zobaczyć, którzy użytkownicy połączeni z tymi obciążeniami, w jakim czasie, od miejsca i inne informacje dotyczące rejestrowania. Aby móc korzystać z diagnostyki, należy włączyć dzienniki diagnostyczne na platformie Azure bastionu. Ten artykuł ułatwia włączenie dzienników diagnostycznych, a następnie wyświetlenie dzienników.
 
 ## <a name="enable"></a>Włącz dziennik diagnostyczny
 

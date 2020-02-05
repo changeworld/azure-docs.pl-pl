@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 15bf6533106fe826c56b38cfb345c509d6d67966
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844096"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984816"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Co to są cele obliczeniowe w Azure Machine Learning? 
 
@@ -58,7 +58,7 @@ Możesz tworzyć Azure Machine Learning wystąpienia obliczeniowe (wersja zapozn
 Po utworzeniu te zasoby obliczeniowe są automatycznie częścią obszaru roboczego w przeciwieństwie do innych rodzajów obiektów docelowych obliczeń.
 
 > [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z **Północno-środkowe stany USA**, * * Wschodnie stany USA 2 * *, **europa Północna** lub **Południowe Zjednoczone Królestwo**.
+> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
 
 ### <a name="compute-clusters"></a>Klastry obliczeniowe

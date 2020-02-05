@@ -3,12 +3,12 @@ title: Zmień ustawienia klastra Service Fabric platformy Azure
 description: W tym artykule opisano ustawienia sieci szkieletowej oraz zasady uaktualniania sieci szkieletowej, które można dostosować.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 284e8ad566192f027d466ad08d66c2fc5265381d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f42cfd1b41ab463c3c3042987b5d0a0b3b00f67e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905202"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986193"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosuj ustawienia klastra Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej dla klastra Service Fabric, które można dostosować. W przypadku klastrów hostowanych na platformie Azure można dostosować ustawienia za pomocą [Azure Portal](https://portal.azure.com) lub szablonu Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra platformy Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych można dostosować ustawienia, aktualizując plik *ClusterConfig. JSON* i wykonując uaktualnienie konfiguracji w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -831,7 +831,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|ciąg, wartość domyślna to ""| Statyczny |Nazwa sieci do użycia podczas konfigurowania sieci kontenera.|
-|ContainerNetworkSetup|bool, wartość domyślna to FALSE| Statyczny |Określa, czy należy skonfigurować sieć kontenera.|
+|ContainerNetworkSetup|bool, wartość domyślna to FALSE (Linux), a wartość domyślna to TRUE (Windows)| Statyczny |Określa, czy należy skonfigurować sieć kontenera.|
 |FabricDataRoot |Ciąg | Niedozwolone |Katalog główny danych Service Fabric. Wartość domyślna dla platformy Azure to d:\svcfab |
 |FabricLogRoot |Ciąg | Niedozwolone |Katalog główny dziennika usługi Service Fabric. Jest to miejsce, w którym są umieszczane dzienniki i ślady SF. |
 |NodesToBeRemoved|ciąg, wartość domyślna to ""| Dynamiczny |Węzły, które powinny zostać usunięte w ramach uaktualnienia konfiguracji. (Tylko w przypadku wdrożeń autonomicznych)|

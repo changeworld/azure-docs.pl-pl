@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121362"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985938"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -28,7 +28,7 @@ W tym artykule są wykorzystywane [Azure Portal](https://portal.azure.com) i int
 | Rejestrowanie aplikacji | Windows, Linux | App Service system plików i/lub obiekty blob usługi Azure Storage | Rejestruje komunikaty generowane przez kod aplikacji. Komunikaty mogą być generowane przez wybrany przez siebie platformę sieci Web lub z kodu aplikacji bezpośrednio przy użyciu standardowego wzorca rejestrowania języka. Każdy komunikat ma przypisaną jedną z następujących kategorii: **krytyczny**, **błąd**, **Ostrzeżenie**, **informacje**, **debugowanie**i **śledzenie**. Aby określić, jak ma być pełne rejestrowanie, należy ustawić poziom ważności po włączeniu rejestrowania aplikacji.|
 | Rejestrowanie serwera sieci Web| Windows | App Service systemu plików lub obiektów BLOB usługi Azure Storage| Nieprzetworzone dane żądania HTTP w [rozszerzonym formacie W3C plików dziennika](/windows/desktop/Http/w3c-logging). Każdy komunikat dziennika zawiera dane, takie jak metoda HTTP, identyfikator URI zasobu, adres IP klienta, Port klienta, agent użytkownika, kod odpowiedzi itd. |
 | Szczegółowe komunikaty o błędach| Windows | System plików App Service | Kopie stron błędów *. htm* , które zostałyby wysłane do przeglądarki klienta. Ze względów bezpieczeństwa szczegółowe strony błędów nie powinny być wysyłane do klientów w środowisku produkcyjnym, ale App Service mogą zapisać stronę błędu za każdym razem, gdy wystąpi błąd aplikacji, który ma kod HTTP 400 lub nowszy. Strona może zawierać informacje, które mogą pomóc w ustaleniu, dlaczego serwer zwraca kod błędu. |
-| Śledzenie żądań nie powiodło się | Windows | System plików App Service | Szczegółowe informacje o śledzeniu żądań zakończonych niepowodzeniem, w tym śledzenia składników usług IIS używanych do przetwarzania żądania oraz czasu wykonywanego w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność lokacji lub odizolować określony błąd HTTP. Dla każdego żądania zakończonego niepowodzeniem jest generowany jeden folder, który zawiera plik dziennika XML, i arkusz stylów XSL, w którym ma być wyświetlany plik dziennika. |
+| Śledzenie nieudanych żądań | Windows | System plików App Service | Szczegółowe informacje o śledzeniu żądań zakończonych niepowodzeniem, w tym śledzenia składników usług IIS używanych do przetwarzania żądania oraz czasu wykonywanego w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność lokacji lub odizolować określony błąd HTTP. Dla każdego żądania zakończonego niepowodzeniem jest generowany jeden folder, który zawiera plik dziennika XML, i arkusz stylów XSL, w którym ma być wyświetlany plik dziennika. |
 | Rejestrowanie wdrożenia | Windows, Linux | System plików App Service | Rejestruje informacje o publikowaniu zawartości w aplikacji. Rejestrowanie wdrożenia odbywa się automatycznie i nie ma konfigurowalnych ustawień rejestrowania wdrożenia. Pomaga określić przyczynę niepowodzenia wdrożenia. Na przykład jeśli używasz [niestandardowego skryptu wdrożenia](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script), możesz użyć rejestrowania wdrożenia, aby określić, dlaczego skrypt kończy się niepowodzeniem. |
 
 > [!NOTE]
@@ -188,7 +188,7 @@ W poniższej tabeli przedstawiono obsługiwane typy i opisy dzienników:
 | AppServiceHTTPLogs | Tak | Tak | Dzienniki serwera sieci Web |
 | AppServiceEnvironmentPlatformLogs | Tak | Tak | App Service Environment: skalowanie, zmiany konfiguracji i dzienniki stanu|
 | AppServiceAuditLogs | Tak | Tak | Działanie logowania za pośrednictwem protokołu FTP i kudu |
-| AppServiceFileAuditLogs | TBA | TBA | Zmiany plików za pośrednictwem protokołu FTP i kudu |
+| AppServiceFileAuditLogs | TBA | Tak | Zmiany plików za pośrednictwem protokołu FTP i kudu |
 | AppServiceAppLogs | TBA | Java SE & Tomcat | Dzienniki aplikacji |
 
 ## <a name="nextsteps"></a> Następne kroki

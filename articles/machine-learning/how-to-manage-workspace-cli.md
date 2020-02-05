@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 11/05/2019
-ms.openlocfilehash: f22145541369093f9cb8a2e9d06b705b6b2121df
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 715ea6239e070fe5ebb78c2e2766aabf1f491fcc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289870"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988162"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Tworzenie obszaru roboczego dla Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -106,6 +106,9 @@ Aby utworzyć nowy obszar roboczy, w którym __usługi są tworzone automatyczni
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
+
+> [!NOTE]
+> W nazwie obszaru roboczego nie jest rozróżniana wielkość liter.
 
 Dane wyjściowe tego polecenia są podobne do następujących:
 

@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6fa4521cb50ecfc37004cbf9cff08644dc53f000
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702020"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990651"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Samouczek: Tworzenie aplikacji do analizy w sklepie na platformie Azure IoT Central
 
@@ -34,7 +34,7 @@ Rozwiązanie do tworzenia i monitorowania stanu jest opracowywane w trzech czę�
 * Dostosuj pulpit nawigacyjny, aby umożliwić operatorom monitorowanie urządzeń i zarządzanie nimi
 * Konfigurowanie eksportu danych w celu umożliwienia menedżerom sklepu uruchamiania analiz i wizualizacji szczegółowych informacji
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie aplikacji dla sklepu detalicznego za pomocą szablonu usługi Azure IoT Central **in-Store Analytics — wyewidencjonowywanie**
 > * Dostosowywanie ustawień aplikacji
@@ -80,6 +80,8 @@ Aby utworzyć nową aplikację do wyewidencjonowania analizy w sklepie, która k
 1. Wybierz pozycję **Utwórz**.
 
     ![Strona Tworzenie aplikacji usługi Azure IoT Central](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template.png)
+
+    ![Azure IoT Central tworzenie informacji dotyczących rozliczeń aplikacji](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
 
 ## <a name="customize-application-settings"></a>Dostosuj ustawienia aplikacji
 Jako Konstruktor można zmienić kilka ustawień, aby dostosować środowisko użytkownika w aplikacji. W tej sekcji wybierzesz motyw wstępnie zdefiniowanej aplikacji. Opcjonalnie dowiesz się, jak utworzyć motyw niestandardowy i zaktualizować obraz aplikacji. Motyw niestandardowy pozwala ustawić kolory przeglądarki aplikacji, ikonę przeglądarki i logo aplikacji, które pojawiają się w czasopismu.
@@ -186,7 +188,7 @@ Dla typu telemetrii `humidity` wprowadź następujące zmiany:
 
 1. Zmień opcję **typu semantycznego** z *Brak* na *wilgotność*.  Opcjonalnie Ustaw wartości schematu dla typu telemetrii wilgotności w widoku rozwiniętych schematów. Ustawienia schematu umożliwiają tworzenie szczegółowych wymagań dotyczących sprawdzania poprawności danych śledzonych przez czujniki. Można na przykład ustawić minimalną i maksymalną wartość zakresu operacyjnego dla danego interfejsu.
 
-1. Wybierz pozycję **Zapisz** , aby zapisać zmiany.
+1. Wybierz **Zapisz** Aby zapisać zmiany.
 
     ![Dostosowywanie szablonu urządzenia usługi Azure IoT Central RuuviTag](./media/tutorial-in-store-analytics-create-app-pnp/ruuvitag-device-template-customize.png)
 

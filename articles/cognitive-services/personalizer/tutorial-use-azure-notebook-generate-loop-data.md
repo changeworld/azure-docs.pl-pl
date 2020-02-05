@@ -8,96 +8,95 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 02/03/2020
 ms.author: diberry
-ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 03e8b658f7edf4640d738e5ea3af84953185d0f5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007600"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986839"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Samouczek: używanie programu Personalizujer w notesie platformy Azure
 
-W tym samouczku uruchomiono pętlę personalizacji w notesie platformy Azure, ukazującą kompleksowy cykl życia pętli personalizacji. 
+W tym samouczku uruchomiono pętlę personalizacji w notesie platformy Azure, ukazującą kompleksowy cykl życia pętli personalizacji.
 
 Pętla sugeruje, który typ kawy powinien być zamówiony przez klienta. Użytkownicy i ich preferencje są przechowywane w zestawie danych użytkownika. Informacje o kawy są przechowywane w zestawie danych kawy.
 
 ## <a name="users-and-coffee"></a>Użytkownicy i kawa
 
-Notes wybiera losowego użytkownika, godzinę dnia i typ pogody z zestawu danych. Podsumowanie informacji o użytkowniku:
+Notes, symulowanie interakcji użytkownika z witryną sieci Web, wybieranie losowego użytkownika, pory dnia i typu pogody z zestawu danych. Podsumowanie informacji o użytkowniku:
 
 |Klienci — funkcje kontekstu|Razy dziennie|Typy pogodowe|
 |--|--|--|
-|Alicja<br>Bob<br>Cathy<br>Dave|Dobry<br>Południe<br>Wieczorem|Sunny<br>Rainy<br>Sosna| 
+|Alicja<br>Bob<br>Cathy<br>Dave|Dobry<br>Południe<br>Wieczorem|Sunny<br>Rainy<br>Sosna|
 
-Aby ułatwić spersonalizowanie naukę, w miarę upływu czasu, poprawna opcja kawy dla każdej osoby, _system_ wie również o pozostałej odniesieniu do kawy.
+Aby ułatwić personalizację, w miarę upływu czasu _system_ wie również o wyborze kawy dla każdej osoby.
 
 |Funkcje działania kawy|Typy temperatury|Miejsca pochodzenia|Typy palone|Ekologiczn|
 |--|--|--|--|--|
-|Cappacino|Gorąca|Kenya|Ciemny|Ekologiczn|
+|Cappacino|Gorąca|Kenia|Ciemny|Ekologiczn|
 |Zimna rozwiązania brew|Chłodn|Brazylia|Jasny|Ekologiczn|
 |Iced środowiska Mocha|Chłodn|Etiopia|Jasny|Nie organiczny|
 |Latte|Gorąca|Brazylia|Ciemny|Nie organiczny|
 
-
-Pętla personalizacji ma **na celu znalezienie** najlepszego dopasowania między użytkownikami i kawą tak długo, jak to możliwe. 
+Pętla personalizacji ma **na celu znalezienie** najlepszego dopasowania między użytkownikami i kawą tak długo, jak to możliwe.
 
 Kod dla tego samouczka jest dostępny w [repozytorium programu Personalizacja przykłady](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook).
 
 ## <a name="how-the-simulation-works"></a>Jak działa symulacja
 
-Na początku działającego systemu sugestie z personalizacji działają tylko pomyślnie od 20% do 30% (wskazywane przez wynik nagrody 1). Po kilku żądaniach system ulepsza.
+Na początku działającego systemu sugestie z personalizacji działają tylko pomyślnie od 20% do 30%. Ten sukces jest wskazywany przez wynagrodzenie wysłane z powrotem do interfejsu API nagradzania personalizacji z wynikiem 1. Po wystąpieniu pewnego wywołania rangi i nagrody system ulepsza.
 
-Po początkowych żądaniach 10 000 należy przeprowadzić ocenę w trybie offline. Umożliwia to programowi Personalizujemu przeglądanie danych i zaproponowanie lepszych zasad uczenia się. Zastosuj nowe zasady uczenia i ponownie uruchom Notes z 2 000 żądaniami. Pętla będzie działać lepiej.
+Po początkowych żądaniach Uruchom ocenę w trybie offline. Umożliwia to programowi Personalizujemu przeglądanie danych i zaproponowanie lepszych zasad uczenia się. Zastosuj nowe zasady uczenia i ponownie uruchom Notes z 20% poprzedniej liczby żądań. Pętla będzie działać lepiej przy użyciu nowych zasad nauki.
 
 ## <a name="rank-and-reward-calls"></a>Wywołania rangi i nagrody
 
 Dla każdego z kilku tysięcy wywołań usługi personalizacji, Notes platformy Azure wysyła żądanie **rangi** do interfejsu API REST:
 
 * Unikatowy identyfikator dla zdarzenia rangi/żądania
-* Kontekst — wybór losowy użytkownika, Pogoda i godzinę — symulowanie użytkownika w witrynie sieci Web lub na urządzeniu przenośnym
-* Funkcje — _wszystkie_ dane kawy — z którego Personalizuj wykonuje sugestię
+* Funkcje kontekstu — wybór losowy użytkownika, Pogoda i godzinę — symulowanie użytkownika w witrynie sieci Web lub na urządzeniu przenośnym
+* Akcje z funkcjami — _wszystkie_ dane kawowe — z których Personalizuj wykonuje sugestię
 
-System otrzymuje rangę opcji kawy, a następnie porównuje tę prognozę ze znanym wyborem użytkownika przez ten sam dzień i pogoda. Jeśli znany wybór jest taki sam jak wybór przewidywany, **wynagrodzenie** 1 jest wysyłane z powrotem do personalizacji. W przeciwnym razie wynagrodzenie wynosi 0. 
+System odbiera żądanie, a następnie porównuje to prognozę ze znanym wyborem użytkownika przez ten sam dzień i pogoda. Jeśli znany wybór jest taki sam jak wybór przewidywany, **wynagrodzenie** 1 jest wysyłane z powrotem do personalizacji. W przeciwnym razie otrzymaną opłatą jest 0.
 
 > [!Note]
-> Jest to symulacja, dzięki czemu algorytm dla nagrody jest prosty. W rzeczywistym scenariuszu algorytm powinien używać logiki biznesowej, prawdopodobnie z wagami różnych aspektów środowiska klienta, aby określić wynik nagrody. 
+> Jest to symulacja, dzięki czemu algorytm dla nagrody jest prosty. W rzeczywistym scenariuszu algorytm powinien używać logiki biznesowej, prawdopodobnie z wagami różnych aspektów środowiska klienta, aby określić wynik nagrody.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Konto [notesu platformy Azure](https://notebooks.azure.com/) . 
-* [Zasób personalizacji platformy Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). 
-    * Jeśli zasób personalizacji został już użyty, upewnij się, że dane w Azure Portal dla zasobu zostały [wyczyszczone](how-to-settings.md#clear-data-for-your-learning-loop) . 
-* Przekaż wszystkie pliki [tego przykładu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) do projektu notesu platformy Azure. 
+* Konto [notesu platformy Azure](https://notebooks.azure.com/) .
+* [Zasób personalizacji platformy Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
+    * Jeśli zasób personalizacji został już użyty, upewnij się, że dane w Azure Portal dla zasobu zostały [wyczyszczone](how-to-settings.md#clear-data-for-your-learning-loop) .
+* Przekaż wszystkie pliki [tego przykładu](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) do projektu notesu platformy Azure.
 
 Opisy plików:
 
 * [Personalizacja. ipynb](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/Personalizer.ipynb) to Notes Jupyter dla tego samouczka.
 * [Zestaw danych użytkownika](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/users.json) jest przechowywany w obiekcie JSON.
-* [Zestaw danych kawy](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) jest przechowywany w obiekcie JSON. 
+* [Zestaw danych kawy](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) jest przechowywany w obiekcie JSON.
 * [Przykładowy kod JSON żądania](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/example-rankrequest.json) jest oczekiwanym FORMATEM żądania post do interfejsu API rangi.
 
 ## <a name="configure-personalizer-resource"></a>Konfiguruj zasób personalizacji
 
-W Azure Portal Skonfiguruj [zasób personalizacji](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) z **częstotliwością aktualizacji** z ustawioną na 15 sekund i **poczekaj** na 15 sekund. Te wartości można znaleźć na stronie **[Konfiguracja](how-to-settings.md#configure-service-settings-in-the-azure-portal)** . 
+W Azure Portal Skonfiguruj [zasób personalizacji](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) z **częstotliwością aktualizacji** z ustawioną na 15 sekund i **poczekaj** na 15 sekund. Te wartości można znaleźć na stronie **[Konfiguracja](how-to-settings.md#configure-service-settings-in-the-azure-portal)** .
 
 |Ustawienie|Wartość|
 |--|--|
 |Aktualizuj częstotliwość modelu|15 sekund|
-|nagradzany czas oczekiwania|15 sekund|
+|Nagradzany czas oczekiwania|15 sekund|
 
-Te wartości mają bardzo krótki czas trwania, aby można było wyświetlić zmiany w tym samouczku. Te wartości nie powinny być używane w scenariuszu produkcyjnym, bez weryfikowania, że osiągają cel w pętli personalizacji. 
+Te wartości mają bardzo krótki czas trwania, aby można było wyświetlić zmiany w tym samouczku. Te wartości nie powinny być używane w scenariuszu produkcyjnym, bez weryfikowania, że osiągają cel w pętli personalizacji.
 
 ## <a name="set-up-the-azure-notebook"></a>Konfigurowanie notesu platformy Azure
 
-1. Zmień jądro na `Python 3.6`. 
+1. Zmień jądro na `Python 3.6`.
 1. Otwórz plik `Personalizer.ipynb`.
 
 ## <a name="run-notebook-cells"></a>Uruchamianie komórek notesu
 
-Uruchom każdą komórkę wykonywalną i poczekaj na jej zwrócenie. Wiadomo, że jest to wykonywane, gdy nawiasy obok komórki wyświetlają liczbę zamiast `*`. W poniższych sekcjach wyjaśniono, co każda komórka wykonuje programowo i czego można oczekiwać na dane wyjściowe. 
+Uruchom każdą komórkę wykonywalną i poczekaj na jej zwrócenie. Wiadomo, że jest to wykonywane, gdy nawiasy obok komórki wyświetlają liczbę zamiast `*`. W poniższych sekcjach wyjaśniono, co każda komórka wykonuje programowo i czego można oczekiwać na dane wyjściowe.
 
 ### <a name="include-the-python-modules"></a>Uwzględnij moduły języka Python
 
@@ -106,7 +105,7 @@ Uwzględnij wymagane moduły języka Python. Komórka nie ma danych wyjściowych
 ```python
 import json
 import matplotlib.pyplot as plt
-import random 
+import random
 import requests
 import time
 import uuid
@@ -114,7 +113,7 @@ import uuid
 
 ### <a name="set-personalizer-resource-key-and-name"></a>Określ nazwę i klucz zasobu personalizacji
 
-W Azure Portal Znajdź klucz i punkt końcowy na stronie **szybkiego startu** zasobu Personalizacja. Zmień wartość `<your-resource-name>` na nazwę zasobu personalizacji. Zmień wartość `<your-resource-key>` na klucz personalizacji. 
+W Azure Portal Znajdź klucz i punkt końcowy na stronie **szybkiego startu** zasobu Personalizacja. Zmień wartość `<your-resource-name>` na nazwę zasobu personalizacji. Zmień wartość `<your-resource-key>` na klucz personalizacji.
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -136,11 +135,11 @@ def currentDateTime():
 
 ### <a name="get-the-last-model-update-time"></a>Pobierz ostatni czas aktualizacji modelu
 
-Gdy funkcja, `get_last_updated`, jest wywoływana, funkcja drukuje datę i godzinę ostatniej modyfikacji modelu. 
+Gdy funkcja, `get_last_updated`, jest wywoływana, funkcja drukuje datę i godzinę ostatniej modyfikacji modelu.
 
 Te komórki nie mają danych wyjściowych. Funkcja wykonuje ostatnią datę uczenia modelu po wywołaniu.
 
-Funkcja używa interfejsu API REST do [pobierania właściwości modelu](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties). 
+Funkcja używa interfejsu API REST do [pobierania właściwości modelu](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties).
 
 ```python
 # ititialize variable for model's last modified date
@@ -149,18 +148,18 @@ modelLastModified = ""
 
 ```python
 def get_last_updated(currentModifiedDate):
-    
+
     print('-----checking model')
-    
+
     # get model properties
     response = requests.get(personalization_model_properties_url, headers = headers, params = None)
-    
+
     print(response)
     print(response.json())
 
     # get lastModifiedTime
     lastModifiedTime = json.dumps(response.json()["lastModifiedTime"])
-    
+
     if (currentModifiedDate != lastModifiedTime):
         currentModifiedDate = lastModifiedTime
         print(f'-----model updated: {lastModifiedTime}')
@@ -174,28 +173,28 @@ Te komórki nie mają danych wyjściowych. Funkcja wyprowadza wartości usługi 
 
 ```python
 def get_service_settings():
-    
+
     print('-----checking service settings')
-    
+
     # get learning policy
     response = requests.get(personalization_model_policy_url, headers = headers, params = None)
-    
+
     print(response)
     print(response.json())
-    
+
     # get service settings
     response = requests.get(personalization_service_configuration_url, headers = headers, params = None)
-    
+
     print(response)
     print(response.json())
 ```
 
 ### <a name="construct-urls-and-read-json-data-files"></a>Konstruowanie adresów URL i odczytywanie plików danych JSON
 
-Ta komórka 
+Ta komórka
 
-* kompiluje adresy URL używane w wywołaniach REST 
-* ustawia nagłówek zabezpieczeń przy użyciu klucza zasobu narzędzia Personalizacja 
+* kompiluje adresy URL używane w wywołaniach REST
+* ustawia nagłówek zabezpieczeń przy użyciu klucza zasobu narzędzia Personalizacja
 * Ustawia losowy inicjator dla identyfikatora zdarzenia rangi
 * odczytuje w plikach danych JSON
 * wywołania `get_last_updated` metodzie — zasady uczenia zostały usunięte z przykładowych danych wyjściowych
@@ -225,8 +224,8 @@ requestpath = "example-rankrequest.json"
 # initialize random
 random.seed(time.time())
 
-userpref = None 
-rankactionsjsonobj = None 
+userpref = None
+rankactionsjsonobj = None
 actionfeaturesobj = None
 
 with open(users) as handle:
@@ -234,10 +233,10 @@ with open(users) as handle:
 
 with open(coffee) as handle:
     actionfeaturesobj = json.loads(handle.read())
-    
+
 with open(requestpath) as handle:
-    rankactionsjsonobj = json.loads(handle.read())  
-    
+    rankactionsjsonobj = json.loads(handle.read())
+
 get_last_updated(modelLastModified)
 get_service_settings()
 
@@ -245,8 +244,8 @@ print(f'User count {len(userpref)}')
 print(f'Coffee count {len(actionfeaturesobj)}')
 ```
 
-Sprawdź, czy dane wyjściowe `rewardWaitTime` i `modelExportFrequency` są ustawione na 15 sekund. 
-    
+Sprawdź, czy dane wyjściowe `rewardWaitTime` i `modelExportFrequency` są ustawione na 15 sekund.
+
 ```console
 -----checking model
 <Response [200]>
@@ -265,21 +264,21 @@ Coffee count 4
 
 Ta Poprzednia komórka jest pierwszą komórką, która wywołuje do personalizacji. Upewnij się, że kod stanu REST w danych wyjściowych jest `<Response [200]>`. Jeśli wystąpi błąd, na przykład 404, ale upewnij się, że klucz zasobu i nazwa są poprawne, Załaduj ponownie Notes.
 
-Upewnij się, że liczba kawy i użytkowników to 4. Jeśli wystąpi błąd, sprawdź, czy zostały przekazane wszystkie 3 pliki JSON. 
+Upewnij się, że liczba kawy i użytkowników to 4. Jeśli wystąpi błąd, sprawdź, czy zostały przekazane wszystkie 3 pliki JSON.
 
 ### <a name="set-up-metric-chart-in-azure-portal"></a>Skonfiguruj wykres metryk w Azure Portal
 
 W dalszej części tego samouczka długotrwały proces działania 10 000 żądań jest widoczny z przeglądarki z polem tekstowym aktualizowanie. Po zakończeniu długotrwałego procesu może być łatwiej widoczny na wykresie lub jako łączna suma. Aby wyświetlić te informacje, użyj metryk dostarczanych z zasobem. Możesz utworzyć wykres teraz, gdy zakończysz żądanie do usługi, a następnie Odśwież wykres okresowo, gdy trwa proces długotrwały.
 
 1. W Azure Portal wybierz zasób personalizacji.
-1. W obszarze nawigacji zasobów wybierz pozycję **metryki** poniżej monitorowanie. 
+1. W obszarze nawigacji zasobów wybierz pozycję **metryki** poniżej monitorowanie.
 1. Na wykresie wybierz pozycję **Dodaj metrykę**.
 1. Przestrzeń nazw zasobu i metryki została już ustawiona. Wystarczy wybrać metrykę **udanych wywołań** i agregację **sum**.
 1. Zmień filtr czasu na ostatnie 4 godziny.
 
     ![Skonfiguruj wykres metryk w Azure Portal, dodając metrykę dla udanych wywołań dla ostatnich 4 godzin.](./media/tutorial-azure-notebook/metric-chart-setting.png)
 
-    Na wykresie powinny być widoczne trzy pomyślne wywołania. 
+    Na wykresie powinny być widoczne trzy pomyślne wywołania.
 
 ### <a name="generate-a-unique-event-id"></a>Generuj unikatowy identyfikator zdarzenia
 
@@ -300,7 +299,7 @@ Ta funkcja wybiera unikatowy użytkownik, Pogoda i godzinę dnia, a następnie d
 
 Komórka nie ma danych wyjściowych. Gdy funkcja jest wywoływana, zwraca nazwę użytkownika losowego, losową pogodę i losowy czas dziennie.
 
-Lista 4 użytkowników i ich preferencje — dla zwięzłości są wyświetlane tylko niektóre preferencje: 
+Lista 4 użytkowników i ich preferencje — dla zwięzłości są wyświetlane tylko niektóre preferencje:
 
 ```json
 {
@@ -336,7 +335,7 @@ Lista 4 użytkowników i ich preferencje — dla zwięzłości są wyświetlane 
 ```
 
 ```python
-def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, rankjsonobj):   
+def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, rankjsonobj):
     name = namesoption[random.randint(0,3)]
     weather = weatheropt[random.randint(0,2)]
     timeofday = timeofdayopt[random.randint(0,2)]
@@ -347,12 +346,12 @@ def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, r
 
 ### <a name="add-all-coffee-data"></a>Dodaj wszystkie dane kawy
 
-Ta funkcja dodaje całą listę kawy do obiektu JSON w celu wysłania do żądania rangi. 
+Ta funkcja dodaje całą listę kawy do obiektu JSON w celu wysłania do żądania rangi.
 
 Komórka nie ma danych wyjściowych. Funkcja zmienia `rankjsonobj` po wywołaniu.
 
 
-Przykładem funkcji pojedynczej kawy jest: 
+Przykładem funkcji pojedynczej kawy jest:
 
 ```json
 {
@@ -363,7 +362,7 @@ Przykładem funkcji pojedynczej kawy jest:
         "origin": "kenya",
         "organic": "yes",
         "roast": "dark"
-        
+
     }
 }
 ```
@@ -382,34 +381,34 @@ Ta funkcja porównuje preferencje użytkownika dotyczące kawy, na podstawie pog
 ```python
 def get_reward_from_simulated_data(name, weather, timeofday, prediction):
     if(userpref[name][weather][timeofday] == str(prediction)):
-        return 1 
+        return 1
     return 0
-``` 
+```
 
 ### <a name="loop-through-calls-to-rank-and-reward"></a>Pętla przez wywołania rangi i nagrody
 
-Następna komórka to _główna_ część notesu, pobierająca losowego użytkownika, pobierającego listę kawy, wysyłającą oba elementy do interfejsu API rangi. Porównanie prognoz z znanymi preferencjami użytkownika, a następnie wysłanie premii z powrotem do usługi personalizacji. 
+Następna komórka to _główna_ część notesu, pobierająca losowego użytkownika, pobierającego listę kawy, wysyłającą oba elementy do interfejsu API rangi. Porównanie prognoz z znanymi preferencjami użytkownika, a następnie wysłanie premii z powrotem do usługi personalizacji.
 
-Pętla jest uruchamiana `num_requests` razy. Personalizacja potrzebuje kilku tysięcy wywołań do rangi i nagrody, aby utworzyć model. 
+Pętla jest uruchamiana `num_requests` razy. Personalizacja potrzebuje kilku tysięcy wywołań do rangi i nagrody, aby utworzyć model.
 
 Przykład kodu JSON wysyłanego do interfejsu API rangi znajduje się poniżej. Lista kawy nie jest kompletna dla zwięzłości. Cały kod JSON dla kawy można zobaczyć w `coffee.json`.
 
 Dane JSON wysłane do interfejsu API rangi:
 
 ```json
-{ 
-   'contextFeatures':[ 
-      { 
+{
+   'contextFeatures':[
+      {
          'timeofday':'Evening',
          'weather':'Snowy',
          'name':'Alice'
       }
    ],
-   'actions':[ 
-      { 
+   'actions':[
+      {
          'id':'Cappucino',
-         'features':[ 
-            { 
+         'features':[
+            {
                'type':'hot',
                'origin':'kenya',
                'organic':'yes',
@@ -419,7 +418,7 @@ Dane JSON wysłane do interfejsu API rangi:
       }
         ...rest of coffee list
    ],
-   'excludedActions':[ 
+   'excludedActions':[
 
    ],
    'eventId':'b5c4ef3e8c434f358382b04be8963f62',
@@ -436,8 +435,8 @@ Odpowiedź JSON z interfejsu API rangi:
         {'id': 'Iced mocha', 'probability': 0.05 },
         {'id': 'Cappucino', 'probability': 0.05 },
         {'id': 'Cold brew', 'probability': 0.05 }
-    ], 
-    'eventId': '5001bcfe3bb542a1a238e6d18d57f2d2', 
+    ],
+    'eventId': '5001bcfe3bb542a1a238e6d18d57f2d2',
     'rewardActionId': 'Latte'
 }
 ```
@@ -450,14 +449,14 @@ Na koniec Każda pętla pokazuje losowy wybór użytkownika, Pogoda, pory dnia i
 
 Funkcja używa:
 
-* Ranga: interfejs API REST w celu [uzyskania rangi](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank). 
+* Ranga: interfejs API REST w celu [uzyskania rangi](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank).
 * Wynagrodzenie: interfejs API REST do [raportowania nagrody](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward).
 
 ```python
 def iterations(n, modelCheck, jsonFormat):
 
     i = 1
-    
+
     # default reward value - assumes failed prediction
     reward = 0
 
@@ -473,8 +472,8 @@ def iterations(n, modelCheck, jsonFormat):
     namesopt = ['Alice', 'Bob', 'Cathy', 'Dave']
     weatheropt = ['Sunny', 'Rainy', 'Snowy']
     timeofdayopt = ['Morning', 'Afternoon', 'Evening']
-    
-    
+
+
     while(i <= n):
 
         # create unique id to associate with an event
@@ -484,16 +483,16 @@ def iterations(n, modelCheck, jsonFormat):
         [name, weather, timeofday] = add_random_user_and_contextfeatures(namesopt, weatheropt, timeofdayopt, jsonFormat)
 
         # add action features to rank
-        add_action_features(jsonFormat) 
+        add_action_features(jsonFormat)
 
         # show JSON to send to Rank
-        print('To: ', jsonFormat)    
+        print('To: ', jsonFormat)
 
         # choose an action - get prediction from Personalizer
         response = requests.post(personalization_rank_url, headers = headers, params = None, json = jsonFormat)
 
-        # show Rank prediction 
-        print ('From: ',response.json())    
+        # show Rank prediction
+        print ('From: ',response.json())
 
         # compare personalization service recommendation with the simulated data to generate a reward value
         prediction = json.dumps(response.json()["rewardActionId"]).replace('"','')
@@ -502,7 +501,7 @@ def iterations(n, modelCheck, jsonFormat):
         # show result for iteration
         print(f'   {i} {currentDateTime()} {name} {weather} {timeofday} {prediction} {reward}')
 
-        # send the reward to the service 
+        # send the reward to the service
         response = requests.post(personalization_reward_url + eventid + "/reward", headers = headers, params= None, json = { "value" : reward })
 
         # for every N rank requests, compute total correct  total
@@ -513,7 +512,7 @@ def iterations(n, modelCheck, jsonFormat):
 
             print("**** 10% of loop found")
 
-            get_last_updated(modelLastModified) 
+            get_last_updated(modelLastModified)
 
         # aggregate so chart is easier to read
         if(i % 10 == 0):
@@ -522,7 +521,7 @@ def iterations(n, modelCheck, jsonFormat):
              total = 0
 
         i = i + 1
-        
+
     # Print out dateTime
     currentDateTime()
 
@@ -530,7 +529,7 @@ def iterations(n, modelCheck, jsonFormat):
 ```
 
 ## <a name="run-for-10000-iterations"></a>Uruchom dla iteracji 10 000
-Uruchom pętlę personalizacji dla iteracji 10 000. To jest długotrwałe zdarzenie. Nie zamykaj przeglądarki z uruchomionym notesem. Odśwież wykres metryk w Azure Portal okresowo, aby zobaczyć łączną liczbę wywołań do usługi. Gdy masz około 20 000 wywołań, ranga i wynagrodzenie dla każdej iteracji pętli, wykonywane są iteracje. 
+Uruchom pętlę personalizacji dla iteracji 10 000. To jest długotrwałe zdarzenie. Nie zamykaj przeglądarki z uruchomionym notesem. Odśwież wykres metryk w Azure Portal okresowo, aby zobaczyć łączną liczbę wywołań do usługi. Gdy masz około 20 000 wywołań, ranga i wynagrodzenie dla każdej iteracji pętli, wykonywane są iteracje.
 
 ```python
 # max iterations
@@ -547,7 +546,7 @@ jsonTemplate = rankactionsjsonobj
 
 
 
-## <a name="chart-results-to-see-improvement"></a>Wyniki wykresu, aby zobaczyć ulepszenie 
+## <a name="chart-results-to-see-improvement"></a>Wyniki wykresu, aby zobaczyć ulepszenie
 
 Utwórz wykres na podstawie `count` i `rewards`.
 
@@ -569,16 +568,16 @@ createChart(count,rewards)
 
 ## <a name="reading-the-chart"></a>Odczytywanie wykresu
 
-Ten wykres pokazuje powodzenie modelu dla bieżących domyślnych zasad nauki. 
+Ten wykres pokazuje powodzenie modelu dla bieżących domyślnych zasad nauki.
 
 ![Ten wykres pokazuje pomyślne bieżące zasady uczenia w czasie trwania testu.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Idealnym miejscem docelowym, który kończy się na końcu testu, pętla jest przeciętnie Częstotliwość powodzeń zbliżoną do 100 procent minus eksploracji. Domyślna wartość eksploracji to 20%. 
+Idealnym miejscem docelowym, który kończy się na końcu testu, pętla jest przeciętnie Częstotliwość powodzeń zbliżoną do 100 procent minus eksploracji. Domyślna wartość eksploracji to 20%.
 
 `100-20=80`
 
-Ta wartość eksploracji znajduje się w Azure Portal dla zasobu Personalizacja na stronie **Konfiguracja** . 
+Ta wartość eksploracji znajduje się w Azure Portal dla zasobu Personalizacja na stronie **Konfiguracja** .
 
 Aby znaleźć lepsze zasady uczenia na podstawie danych do interfejsu API rangi, uruchom [ocenę w trybie offline](how-to-offline-evaluation.md) w portalu dla pętli personalizacji.
 
@@ -586,19 +585,19 @@ Aby znaleźć lepsze zasady uczenia na podstawie danych do interfejsu API rangi,
 
 1. W Azure Portal Otwórz stronę **oceny** zasobów dla programu Personalizacja.
 1. Wybierz pozycję **Utwórz ocenę**.
-1. Wprowadź wymagane dane nazwy oceny i zakres dat dla oceny pętli. Zakres dat powinien zawierać tylko dni, w których użytkownik koncentruje się na potrzeby oceny. 
+1. Wprowadź wymagane dane nazwy oceny i zakres dat dla oceny pętli. Zakres dat powinien zawierać tylko dni, w których użytkownik koncentruje się na potrzeby oceny.
     ![w Azure Portal Otwórz stronę oceny zasobów personalizacji. Wybierz pozycję Utwórz ocenę. Wprowadź nazwę ewaluacyjną i zakres dat.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
     Celem tej oceny w trybie offline jest ustalenie, czy istnieją lepsze zasady uczenia dotyczące funkcji i akcji używanych w tej pętli. Aby znaleźć lepsze zasady uczenia, upewnij się, że **Funkcja odnajdywania optymalizacji** jest włączona.
 
-1. Wybierz **przycisk OK** , aby rozpocząć obliczanie. 
-1. Na tej stronie **oceny** są wyświetlane nowe oceny i ich bieżący stan. W zależności od ilości danych, ta Ocena może zająć trochę czasu. Możesz wrócić do tej strony po kilku minutach, aby zobaczyć wyniki. 
-1. Po zakończeniu oceny Wybierz ocenę, a następnie wybierz opcję **porównanie różnych zasad nauki**. Przedstawiono w nim dostępne zasady uczenia i sposób ich zachowania z danymi. 
-1. Wybierz najważniejsze zasady uczenia w tabeli i wybierz pozycję **Zastosuj**. Spowoduje to zastosowanie _najlepszych_ zasad uczenia w modelu i ponowne przeszkolenie. 
+1. Wybierz **przycisk OK** , aby rozpocząć obliczanie.
+1. Na tej stronie **oceny** są wyświetlane nowe oceny i ich bieżący stan. W zależności od ilości danych, ta Ocena może zająć trochę czasu. Możesz wrócić do tej strony po kilku minutach, aby zobaczyć wyniki.
+1. Po zakończeniu oceny Wybierz ocenę, a następnie wybierz opcję **porównanie różnych zasad nauki**. Przedstawiono w nim dostępne zasady uczenia i sposób ich zachowania z danymi.
+1. Wybierz najważniejsze zasady uczenia w tabeli i wybierz pozycję **Zastosuj**. Spowoduje to zastosowanie _najlepszych_ zasad uczenia w modelu i ponowne przeszkolenie.
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>Zmień częstotliwość modelu aktualizacji na 5 minut
 
-1. W Azure Portal nadal w obszarze zasób Personalizacja wybierz stronę **Konfiguracja** . 
+1. W Azure Portal nadal w obszarze zasób Personalizacja wybierz stronę **Konfiguracja** .
 1. Zmień **częstotliwość aktualizacji modelu** i zmniejsz **czas oczekiwania** na 5 minut, a następnie wybierz pozycję **Zapisz**.
 
 Dowiedz się więcej na temat [nagrody czasu oczekiwania](concept-rewards.md#reward-wait-time) i [częstotliwości aktualizacji modelu](how-to-settings.md#model-update-frequency).
@@ -608,7 +607,7 @@ Dowiedz się więcej na temat [nagrody czasu oczekiwania](concept-rewards.md#rew
 get_service_settings()
 ```
 
-Sprawdź, czy dane wyjściowe `rewardWaitTime` i `modelExportFrequency` są ustawione na 5 minut. 
+Sprawdź, czy dane wyjściowe `rewardWaitTime` i `modelExportFrequency` są ustawione na 5 minut.
 ```console
 -----checking model
 <Response [200]>
@@ -623,9 +622,9 @@ User count 4
 Coffee count 4
 ```
 
-## <a name="validate-new-learning-policy"></a>Weryfikuj nowe zasady uczenia 
+## <a name="validate-new-learning-policy"></a>Weryfikuj nowe zasady uczenia
 
-Wróć do notesu platformy Azure i Kontynuuj, wykonując tę samą pętlę, ale tylko dla iteracji 2 000. Odśwież wykres metryk w Azure Portal okresowo, aby zobaczyć łączną liczbę wywołań do usługi. Gdy masz około 4 000 wywołań, ranga i wynagrodzenie dla każdej iteracji pętli, wykonywane są iteracje. 
+Wróć do notesu platformy Azure i Kontynuuj, wykonując tę samą pętlę, ale tylko dla iteracji 2 000. Odśwież wykres metryk w Azure Portal okresowo, aby zobaczyć łączną liczbę wywołań do usługi. Gdy masz około 4 000 wywołań, ranga i wynagrodzenie dla każdej iteracji pętli, wykonywane są iteracje.
 
 ```python
 # max iterations
@@ -650,7 +649,7 @@ createChart(count2,rewards2)
 
 ## <a name="review-the-second-chart"></a>Przejrzyj drugi wykres
 
-Drugi wykres powinien pokazać widoczny wzrost prognoz klasyfikacji z preferencjami użytkownika. 
+Drugi wykres powinien pokazać widoczny wzrost prognoz klasyfikacji z preferencjami użytkownika.
 
 ![Drugi wykres powinien pokazać widoczny wzrost prognoz klasyfikacji z preferencjami użytkownika.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
 
@@ -658,10 +657,10 @@ Drugi wykres powinien pokazać widoczny wzrost prognoz klasyfikacji z preferencj
 
 Jeśli nie planujesz kontynuować pracy z serią samouczków, Oczyść następujące zasoby:
 
-* Usuń projekt notesu platformy Azure. 
-* Usuń zasób personalizacji. 
+* Usuń projekt notesu platformy Azure.
+* Usuń zasób personalizacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Notes Jupyter i pliki danych](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) używane w tym przykładzie są dostępne w repozytorium GitHub dla personalizacji. 
+[Notes Jupyter i pliki danych](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) używane w tym przykładzie są dostępne w repozytorium GitHub dla personalizacji.
 

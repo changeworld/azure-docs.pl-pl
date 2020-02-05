@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823655"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987026"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Wprowadzenie do narzędzi Elastic Database
 
@@ -54,7 +54,7 @@ Aby skompilować pliki JAR i zacząć pracę z przykładowym projektem, wykonaj 
     
 5. Aby dowiedzieć się więcej o możliwościach biblioteki klienta, należy eksperymentować z różnymi opcjami. Możesz zapoznać się z kodem, aby dowiedzieć się więcej o implementacji przykładowej aplikacji.
 
-    ![Postęp — Java][5]
+    ![Progress-java][5]
     
 Gratulacje! Pomyślnie skompilowano i uruchomiono pierwszą aplikację podzielonej na fragmenty przy użyciu narzędzi Elastic Database w Azure SQL Database. Użyj programu Visual Studio lub SQL Server Management Studio, aby nawiązać połączenie z bazą danych SQL, i zapoznaj się z fragmentów utworzonym przykładem. Zobaczysz nowe przykładowe bazy danych fragmentu oraz bazę danych Menedżera map fragmentu utworzoną przez przykład. 
 
@@ -81,7 +81,7 @@ Aby zainstalować bibliotekę, przejdź do [witryny Microsoft. Azure. SQLDatabas
 
 Aby pobrać i uruchomić przykład, wykonaj następujące kroki: 
 
-1. Pobierz [przykładowe narzędzia Elastic DB Tools for Azure SQL — wprowadzenie](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6) z witryny MSDN. Rozpakuj przykład do wybranej lokalizacji.
+1. Pobierz [Narzędzie Elastic DB Tools for Azure SQL — przykład wprowadzenie](https://github.com/Azure/elastic-db-tools). Rozpakuj przykład do wybranej lokalizacji.
 
 2. Aby utworzyć projekt, Otwórz rozwiązanie *ElasticScaleStarterKit. sln* z *C#* katalogu.
 
@@ -91,7 +91,7 @@ Aby pobrać i uruchomić przykład, wykonaj następujące kroki:
 
 5. Aby dowiedzieć się więcej o możliwościach biblioteki klienta, należy eksperymentować z różnymi opcjami. Należy zwrócić uwagę na kroki wykonywane przez aplikację w danych wyjściowych w konsoli, aby poznać kod w tle.
    
-    ![Wykonywane][4]
+    ![Postęp][4]
 
 Gratulacje! Pomyślnie skompilowano i uruchomiono pierwszą aplikację podzielonej na fragmenty przy użyciu narzędzi Elastic Database w SQL Database. Użyj programu Visual Studio lub SQL Server Management Studio, aby nawiązać połączenie z bazą danych SQL, i zapoznaj się z fragmentów utworzonym przykładem. Zobaczysz nowe przykładowe bazy danych fragmentu oraz bazę danych Menedżera map fragmentu utworzoną przez przykład.
 
@@ -114,7 +114,7 @@ Gratulacje! Pomyślnie skompilowano i uruchomiono pierwszą aplikację podzielon
 
 * **Scalanie istniejących fragmentów**: scalanie fragmentu odbywa się również przy użyciu narzędzia Split-Merge. Aby uzyskać więcej informacji, zobacz temat [przeniesienie danych między skalowanymi bazami danych w chmurze](sql-database-elastic-scale-overview-split-and-merge.md).   
 
-## <a name="cost"></a>Koszty
+## <a name="cost"></a>Koszt
 
 Biblioteka narzędzi Elastic Database Tools jest bezpłatna. W przypadku korzystania z Elastic Database narzędzi nie są naliczane żadne dodatkowe opłaty poza kosztem korzystania z platformy Azure. 
 
@@ -127,7 +127,7 @@ Aby uzyskać informacje o cenach, zobacz [szczegóły cennika SQL Database](http
 Aby uzyskać więcej informacji na temat narzędzi Elastic Database, zobacz następujące artykuły:
 
 * Przykłady kodu: 
-  * Narzędzia Elastic Database ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * Narzędzia Elastic Database ([.NET](https://github.com/Azure/elastic-db-tools), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Narzędzia Elastic Database dla integracji z usługą Azure SQL — Entity Framework](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Elastyczność fragmentu w centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [powiadomienie dotyczące skalowania elastycznego](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)

@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 963572e19be71bf572357aadeee443696210a262
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546354"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984969"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
@@ -1236,7 +1236,7 @@ Azure Machine Learning zestawu SDK dla języka Python v 1.0.30.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure Machine Learning zestaw SDK przygotowania do przygotowywania danych
 
-Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już instalował `numpy` i `pandas` pakietów. Zobacz [zaktualizowane instrukcje dotyczące instalacji](https://aka.ms/aml-data-prep-installation).
+Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już instalował `numpy` i `pandas` pakietów. Zobacz [zaktualizowane instrukcje dotyczące instalacji](https://github.com/Microsoft/AMLDataPrepDocs).
 
 + **Nowe funkcje**
   + Teraz można użyć przekształcenia Pivot.
@@ -1421,7 +1421,7 @@ Uwaga: zestaw SDK języka Python dla przygotowywania danych nie będzie już ins
     - Histogram
     - Skumulowany wykres słupkowy
     - Skrzynka Box
-    - Punktowy
+    - Wykres punktowy
     - Wykres bąbelkowy
 + Portal będzie teraz dynamicznie generował raporty dotyczące eksperymentów. Gdy użytkownik przesyła do eksperymentu przebieg, raport zostanie automatycznie wygenerowany z zarejestrowanymi metrykami i wykresami, aby umożliwić porównanie różnych przebiegów.
 

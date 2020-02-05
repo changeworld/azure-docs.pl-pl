@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df640f11e8a0e8af22c96a662a602e0de508715c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442795"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985054"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autoryzuj konta dewelopera przy użyciu Azure Active Directory na platformie Azure API Management
 
@@ -50,17 +50,17 @@ W tym artykule opisano sposób włączania dostępu do portalu dla deweloperów 
    ![Procedura dodawania dostawcy tożsamości w Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. W przeglądarce Otwórz inną kartę. 
 11. Przejdź do [Rejestracje aplikacji Azure Portal](https://go.microsoft.com/fwlink/?linkid=2083908) , aby zarejestrować aplikację w Active Directory.
-12. W obszarze **Zarządzanie** wybierz pozycję **Rejestracje aplikacji**.
+12. W obszarze **Zarządzaj**wybierz pozycję **rejestracje aplikacji**.
 13. Wybierz pozycję **Nowa rejestracja**. Na stronie **zarejestruj aplikację** Ustaw wartości w następujący sposób:
     
-* Ustaw **nazwę** na opisową. na przykład *deweloper — Portal*
-* Ustaw **obsługiwane typy kont** **tylko na konta w tym katalogu organizacji**. 
-* Ustaw **Identyfikator URI przekierowania** na wartość uzyskaną w kroku 9. 
-* Wybierz pozycję **zarejestruj**. 
+    * Ustaw **nazwę** na opisową. na przykład *deweloper — Portal*
+    * Ustaw **obsługiwane typy kont** **tylko na konta w tym katalogu organizacji**. 
+    * Ustaw **Identyfikator URI przekierowania** na wartość uzyskaną w kroku 9. 
+    * Wybierz pozycję **zarejestruj**. 
 
 14.  Po zarejestrowaniu aplikacji Skopiuj **Identyfikator aplikacji (klienta)** ze strony **Przegląd** . 
 15. Wróć do wystąpienia API Management. W oknie **Dodawanie dostawcy tożsamości** wklej wartość **identyfikatora aplikacji (klienta)** do pola **Identyfikator klienta** .
-16. Przejdź z powrotem do konfiguracji usługi Azure AD, wybierz pozycję **certyfikaty & wpisy tajne** w obszarze **Zarządzaj**. Wybierz przycisk **Nowy klucz tajny klienta**. Wprowadź wartość w polu **Opis**, wybierz dowolną opcję w polu **Wygasa** i wybierz polecenie **Dodaj**. Skopiuj wartość klucza tajnego klienta przed opuszczeniem strony. Będą one potrzebne w kolejnym kroku. 
+16. Przejdź z powrotem do konfiguracji usługi Azure AD, wybierz pozycję **certyfikaty & wpisy tajne** w obszarze **Zarządzaj**. Wybierz przycisk **nowy klucz tajny klienta** . Wprowadź wartość w polu **Opis**, wybierz dowolną opcję **wygaśnięcia** i wybierz pozycję **Dodaj**. Skopiuj wartość klucza tajnego klienta przed opuszczeniem strony. Będą one potrzebne w kolejnym kroku. 
 17. W obszarze **Zarządzaj**wybierz pozycję **uwierzytelnianie** , a następnie pozycję **tokeny ID** w obszarze **niejawne udzielenie**
 18. Wróć do wystąpienia API Management, wklej wpis tajny do pola **klucz tajny klienta** .
 
@@ -71,10 +71,10 @@ W tym artykule opisano sposób włączania dostępu do portalu dla deweloperów 
 
 19. Okno **Dodawanie dostawcy tożsamości** zawiera również pole tekstowe **dozwolone dzierżawy** . W tym miejscu należy określić domeny wystąpień usługi Azure AD, do których chcesz udzielić dostępu do interfejsów API wystąpienia usług API Management. Można rozdzielić wiele domen z wierszami, spacjami lub przecinkami.
 
-> [!NOTE]
-> W sekcji **dozwolone dzierżawy** możesz określić wiele domen. Zanim użytkownik będzie mógł zalogować się z innej domeny niż oryginalna domena, w której zarejestrowano aplikację, Administrator globalny innej domeny musi udzielić uprawnienia aplikacji dostępu do danych katalogu. Aby udzielić uprawnienia, Administrator globalny powinien: a. Przejdź do `https://<URL of your developer portal>/aadadminconsent` (na przykład https://contoso.portal.azure-api.net/aadadminconsent).
-> b. Wpisz nazwę domeny dzierżawy usługi Azure AD, do której chcesz udzielić dostępu.
-> d. Wybierz pozycję **Prześlij**. 
+    > [!NOTE]
+    > W sekcji **dozwolone dzierżawy** możesz określić wiele domen. Zanim użytkownik będzie mógł zalogować się z innej domeny niż oryginalna domena, w której zarejestrowano aplikację, Administrator globalny innej domeny musi udzielić uprawnienia aplikacji dostępu do danych katalogu. Aby udzielić uprawnienia, Administrator globalny powinien: a. Przejdź do `https://<URL of your developer portal>/aadadminconsent` (na przykład https://contoso.portal.azure-api.net/aadadminconsent).
+    > b. Wpisz nazwę domeny dzierżawy usługi Azure AD, do której chcesz udzielić dostępu.
+    > d. Wybierz pozycję **Prześlij**. 
 
 20.  Po określeniu odpowiedniej konfiguracji wybierz pozycję **Dodaj**.
 
@@ -95,7 +95,7 @@ Teraz możesz dodać zewnętrzne grupy usługi Azure AD z karty **grupy** wystą
 
 1. Wybierz kartę **Grupy**.
 2. Wybierz przycisk **Dodaj grupę usługi AAD** .
-   ![przycisk "Dodaj grupę usługi AAD"](./media/api-management-howto-aad/api-management-with-aad008.png)
+    ![przycisk "Dodaj grupę usługi AAD"](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. Wybierz grupę, którą chcesz dodać.
 4. Naciśnij przycisk **Wybierz** .
 
@@ -105,11 +105,11 @@ Użytkownicy ze skonfigurowanego wystąpienia usługi Azure AD mogą teraz logow
 
 ## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a>Portal dla deweloperów <a id="log_in_to_dev_portal"/> — Dodawanie uwierzytelniania konta usługi Azure AD
 
-W portalu dla deweloperów logowanie za pomocą usługi AAD jest możliwe za pomocą widżetu **przyciski uwierzytelniania OAuth** . Element widget jest już uwzględniony na stronie logowania domyślnej zawartości portalu deweloperów.
-
-![Widżet przycisków usługi AAD](./media/api-management-howto-aad/portal-oauth-widget.png)
+W portalu dla deweloperów logowanie za pomocą usługi AAD jest możliwe za pomocą **przycisku logowania: widżet uwierzytelniania OAuth** . Element widget jest już uwzględniony na stronie logowania domyślnej zawartości portalu deweloperów.
 
 Mimo że nowe konto zostanie utworzone automatycznie za każdym razem, gdy nowy użytkownik zaloguje się za pomocą usługi AAD, można rozważyć dodanie tego samego widżetu do strony rejestracji.
+
+**Formularz rejestracji: element widget uwierzytelniania OAuth** reprezentuje formularz używany do rejestracji przy użyciu protokołu OAuth.
 
 > [!IMPORTANT]
 > Aby zmiany w usłudze AAD zaczęły obowiązywać, należy [ponownie opublikować Portal](api-management-howto-developer-portal-customize.md#publish) .

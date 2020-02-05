@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9fd1e72568b4f0c8813a5d050ce7fa7214ca7cd9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c362829b1babf954868452a3858da1f319008a9a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722445"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990780"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnostyka usługi Load Balancer w warstwie Standardowa przy użyciu metryk, alertów i kondycji zasobów
 
@@ -41,6 +41,8 @@ Różne konfiguracje usługa Load Balancer w warstwie Standardowa zapewniają na
 | Stan sondy kondycji (dostęp DIP) | Publiczny i wewnętrzny moduł równoważenia obciążenia | Usługa Load Balancer w warstwie Standardowa używa rozproszonej usługi badania kondycji, która monitoruje kondycję punktu końcowego aplikacji zgodnie z ustawieniami konfiguracji. Ta Metryka zawiera Zagregowany widok filtrowany lub na punkt końcowy każdego punktu końcowego wystąpienia w puli modułu równoważenia obciążenia. Możesz zobaczyć, jak Load Balancer przegląda kondycję aplikacji zgodnie z konfiguracją sondy kondycji. |  Średnia |
 | Pakiety SYN (Synchronize) | Publiczny i wewnętrzny moduł równoważenia obciążenia | Usługa Load Balancer w warstwie Standardowa nie przerywa połączeń Transmission Control Protocol (TCP) ani nie współdziała z przepływami pakietów TCP lub UDP. Przepływy i ich uzgodnienia są zawsze między wystąpieniem źródłowym a maszyną wirtualną. Aby lepiej rozwiązać problemy ze scenariuszami protokołu TCP, można użyć liczników pakietów SYN, aby zrozumieć, ile prób połączenia TCP zostało nawiązane. Metryka zgłasza liczbę odebranych pakietów TCP SYN.| Średnia |
 | Połączenia z przyłączaniem | Publiczny moduł równoważenia obciążenia |Usługa Load Balancer w warstwie Standardowa raportuje liczbę przepływów wychodzących, które są zamaskowane do frontonu publicznego adresu IP. Porty translatora adresów sieciowych (Resource Address Translation) to zasób exhaustible. Ta Metryka może wskazywać na to, jak silna aplikacja jest zależna od przychodzących przepływów. Są raportowane liczniki dla zakończonych powodzeniem i zakończonych niepowodzeniem przepływów przychodzących obiektów przeruchowych, które mogą służyć do rozwiązywania problemów i zrozumienia kondycji przepływów wychodzących.| Średnia |
+| Przydzielono porty przydziałów adresów sieciowych | Publiczny moduł równoważenia obciążenia | usługa Load Balancer w warstwie Standardowa zgłasza liczbę portów przyznanych przez wystąpienie wewnętrznej bazy danych | Obliczon. |
+| Używane porty | Publiczny moduł równoważenia obciążenia | Usługa Load Balancer w warstwie Standardowa raportuje liczbę portów, które są używane dla wystąpienia zaplecza. | Średnia | 
 | Liczniki bajtów |  Publiczny i wewnętrzny moduł równoważenia obciążenia | Usługa Load Balancer w warstwie Standardowa raportuje dane przetworzone na fronton. Można zauważyć, że bajty nie są równomiernie dystrybuowane między wystąpieniami zaplecza. Jest to oczekiwane, ponieważ algorytm Load Balancer platformy Azure jest oparty na przepływach | Średnia |
 | Liczniki pakietów |  Publiczny i wewnętrzny moduł równoważenia obciążenia | Usługa Load Balancer w warstwie Standardowa zgłasza pakiety przetwarzane na fronton.| Średnia |
 
@@ -195,7 +197,7 @@ W poniższej tabeli wymieniono różne stany kondycji zasobów i ich opisy:
 
 | Stan kondycji zasobu | Opis |
 | --- | --- |
-| Dostępne | Zasób standardowego modułu równoważenia obciążenia jest w dobrej kondycji i jest dostępny. |
+| Dostępna | Zasób standardowego modułu równoważenia obciążenia jest w dobrej kondycji i jest dostępny. |
 | Niedostępny | Zasób standardowego modułu równoważenia obciążenia nie jest w dobrej kondycji. Diagnozuj kondycję, wybierając pozycję **Azure Monitor** > **metryki**.<br>(Stan*niedostępny* może również oznaczać, że zasób nie jest połączony z usługą równoważenia obciążenia w warstwie Standardowa). |
 | Nieznane | Stan kondycji zasobu dla zasobu standardowego modułu równoważenia obciążenia nie został jeszcze zaktualizowany.<br>(*Nieznany* stan może również oznaczać, że zasób nie jest połączony z usługą równoważenia obciążenia w warstwie Standardowa).  |
 

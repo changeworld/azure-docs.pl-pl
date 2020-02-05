@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 7c8485a5521709452217fb4ab1832b6a42cce9ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382467"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988264"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Samouczek: jednostronicowa aplikacja wyszukiwania wideo
 Interfejs API wyszukiwania wideo Bing umożliwia wyszukiwanie w Internecie i uzyskiwanie wyników wideo odpowiadających zapytaniu wyszukiwania. W tym samouczku utworzymy jednostronicową aplikację internetową, która wyświetla wyniki wyszukiwania na stronie przy użyciu interfejsu API wyszukiwania Bing. Aplikacja zawiera składniki HTML, CSS i JavaScript.
@@ -87,7 +87,7 @@ function getSubscriptionKey() {
     return key;
 }
 ```
-Tag HTML `<form>``onsubmit` wywołuje funkcję `bingWebSearch`, aby zwrócić wyniki wyszukiwania. Funkcja `bingWebSearch` używa funkcji `getSubscriptionKey()` w celu uwierzytelnienia każdego zapytania. Jak pokazano w poprzedniej definicji, funkcja `getSubscriptionKey` monituje użytkownika o klucz, jeśli klucz nie został wprowadzony. Klucz jest następnie przechowywany w celu ciągłego używania przez aplikację.
+Tag HTML `<form>``onsubmit` wywołuje funkcję `bingWebSearch`, aby zwrócić wyniki wyszukiwania. Funkcja `bingWebSearch` używa funkcji `getSubscriptionKey()` w celu uwierzytelnienia każdego zapytania. Jak pokazano w poprzedniej definicji, funkcja `getSubscriptionKey` monituje użytkownika o klucz, jeśli klucz nie został wprowadzony. Klucz jest następnie przechowywany w celu ciągłego użycia przez aplikację.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
@@ -120,7 +120,7 @@ function bingSearchOptions(form) {
 
     var options = [];
     options.push("mkt=" + form.where.value);
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
 
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -138,7 +138,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-Na przykład parametr `SafeSearch` w rzeczywistym wywołaniu interfejsu API może mieć wartość `strict`, `moderate`, lub `off`, przy czym `moderate` jest wartością domyślną. Jednak w naszym formularzu jest używane pole wyboru, które ma tylko dwa stany. Kod JavaScript konwertuje to ustawienie do wartości `strict` lub `off` (wartość `moderate` nie jest używana).
+Na przykład parametr `SafeSearch` w rzeczywistym wywołaniu interfejsu API może być `strict`lub `moderate`z `moderate` jako domyślny.
 
 ## <a name="performing-the-request"></a>Wykonywanie żądania
 Mając podane zapytanie, ciąg opcji i klucz interfejsu API, funkcja `BingWebSearch` używa obiektu `XMLHttpRequest`, aby wysłać żądanie do punktu końcowego wyszukiwania Bing. Możesz użyć poniższego globalnego punktu końcowego lub niestandardowego punktu końcowego [poddomeny](../../cognitive-services/cognitive-services-custom-subdomains.md) , który jest wyświetlany w Azure Portal dla zasobu.

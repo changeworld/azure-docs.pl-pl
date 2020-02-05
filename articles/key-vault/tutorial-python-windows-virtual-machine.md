@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 52791719e518f6a6b1a4178d8b9a010f1db14fc4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4078f2a005dcd324fa9c1d31cdca4b1f8337eecd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003857"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988383"
 ---
-# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Samouczek: Używanie Azure Key Vault z maszyną wirtualną z systemem Windows w języku Python
+# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Samouczek: używanie Azure Key Vault z maszyną wirtualną z systemem Windows w języku Python
 
 Azure Key Vault pomaga chronić wpisy tajne, takie jak klucze interfejsu API, parametry połączenia bazy danych potrzebne do uzyskiwania dostępu do aplikacji, usług i zasobów IT.
 
@@ -39,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Dla systemów Windows, Mac i Linux:
-  * [Usługa Git](https://git-scm.com/downloads)
+  * [Git](https://git-scm.com/downloads)
   * Ten samouczek wymaga uruchomienia interfejsu wiersza polecenia platformy Azure lokalnie. Musisz mieć zainstalowany interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="about-managed-service-identity"></a>Informacje o tożsamości usługi zarządzanej
@@ -100,7 +100,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Ten wpis tajny zawiera wartość **MySecret**.
 
-## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 Maszynę wirtualną można utworzyć za pomocą jednej z następujących metod:
 
 * [Interfejs wiersza polecenia platformy Azure](../virtual-machines/windows/quick-create-cli.md)
@@ -136,7 +136,7 @@ Aby zalogować się do maszyny wirtualnej, postępuj zgodnie z instrukcjami poda
 
 ## <a name="create-and-run-a-sample-python-app"></a>Tworzenie i uruchamianie przykładowej aplikacji w języku Python
 
-W następnej sekcji znajduje się przykładowy plik o nazwie *Sample.py*. Używa biblioteki [żądań](http://docs.python-requests.org/en/master/) do wykonywania wywołań http.
+W następnej sekcji znajduje się przykładowy plik o nazwie *Sample.py*. Używa biblioteki [żądań](https://2.python-requests.org/en/master/) do wykonywania wywołań http.
 
 ## <a name="edit-samplepy"></a>Edytowanie pliku Sample.py
 

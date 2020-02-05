@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772029"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990712"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Rozwiązywanie problemów z urządzeniem Azure Migrate i odnajdywanie
 
@@ -39,14 +39,7 @@ Jeśli zostanie wyświetlony komunikat o błędzie "podany plik manifestu jest n
 Taka sytuacja może wystąpić, jeśli komputer urządzenia znajduje się za serwerem proxy.
 
 - Upewnij się, że podajesz poświadczenia autoryzacji, jeśli serwer proxy ich potrzebuje.
-- Jeśli używasz serwera proxy zapory opartego na adresie URL w celu kontrolowania łączności wychodzącej, Dodaj te adresy URL do listy dozwolonych:
-
-    - [Adresy URL dla oceny oprogramowania VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Adresy URL dla oceny funkcji Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-    - [Adresy URL migracji bez agentów programu VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Adresy URL migracji na podstawie agenta VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Adresy URL migracji funkcji Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-
+- Jeśli używasz serwera proxy zapory opartego na adresie URL w celu kontrolowania łączności wychodzącej, Dodaj [te adresy URL](migrate-appliance.md#url-access) do listy dozwolonych.
 - Jeśli używasz przechwycenia serwera proxy do łączenia się z Internetem, zaimportuj certyfikat serwera proxy na maszynę wirtualną urządzenia, wykonując [następujące kroki](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
 ##  <a name="datetime-synchronization-error"></a>Błąd synchronizacji daty/godziny

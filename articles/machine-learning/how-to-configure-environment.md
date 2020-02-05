@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0fef7d6f59b8893ff400914f491f421cddf436b7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 56d6e8642ffd127f0982485902c466b76cbaaeed
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842924"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986516"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Aby zainstalować środowisko zestawu SDK dla [komputera lokalnego](#local), [Ju
 [Wystąpienie obliczeniowe Azure Machine Learning (wersja zapoznawcza)](concept-compute-instance.md) to bezpieczna, oparta na chmurze stacja robocza platformy Azure, która zapewnia analitykom danych za pomocą serwera Jupyter notesu, JupyterLab i w pełni przygotowanego środowiska ml.
 
 > [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z **Północno-środkowe stany USA**, * * Wschodnie stany USA 2 * *, **europa Północna** lub **Południowe Zjednoczone Królestwo**.
+> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.
 
 Nie ma nic do zainstalowania lub skonfigurowania wystąpienia obliczeniowego.  Utwórz ją w dowolnym momencie w obszarze roboczym Azure Machine Learning. Podaj tylko nazwę i określ typ maszyny wirtualnej platformy Azure. Wypróbuj teraz ten [Samouczek: Konfigurowanie środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).

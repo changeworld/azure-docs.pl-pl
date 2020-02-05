@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457459"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988247"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -37,7 +37,7 @@ Polecenie Sync różni się od polecenia copy na kilka sposobów:
 
 ## <a name="related-conceptual-articles"></a>Pokrewne artykuły koncepcyjne
 
-- [Wprowadzenie do narzędzia AzCopy](storage-use-azcopy-v10.md)
+- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
 - [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
 - [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
 - [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)
@@ -141,13 +141,13 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--exclude-Path** ciąg Wyklucz te ścieżki podczas kopiowania. Ta opcja nie obsługuje symboli wieloznacznych (*). Sprawdza prefiks ścieżki względnej (na przykład: Moja folder; folder/subDirName/plik. PDF). W przypadku użycia w połączeniu z przechodzeniem konta ścieżki nie uwzględniają nazwy kontenera.
 
-**--exclude-String wykluczanie** plików, w których nazwa jest zgodna z listą wzorców. Na przykład: *. jpg;* . PDF; exactname
+**--exclude-String wykluczanie** plików, w których nazwa jest zgodna z listą wzorców. Na przykład: \*. jpg;\*. PDF; exactname
 
 **-h,--** Pomoc dotycząca synchronizacji
 
 **--include — ciąg atrybutów** (tylko system Windows) Uwzględnij tylko pliki, których atrybuty pasują do listy atrybutów. Na przykład: A; Wolumin ®
 
-**--dołączany** ciąg do wzorca zawiera tylko pliki, w których nazwa jest zgodna z listą wzorców. Na przykład: *. jpg;* . PDF; exactname
+**--dołączany** ciąg do wzorca zawiera tylko pliki, w których nazwa jest zgodna z listą wzorców. Na przykład: \*. jpg;\*. PDF; exactname
 
 **--ciąg na poziomie dziennika** definiuje szczegółowość dziennika dla pliku dziennika, dostępne poziomy: info (wszystkie żądania i odpowiedzi), ostrzeżenie (wolne odpowiedzi), błąd (tylko Nieudane żądania) i brak (bez dzienników wyjściowych). (informacje domyślne). (wartość domyślna: "INFO")
 

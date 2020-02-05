@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6e375e809308da8be0723fb2fcbdf718e9fb5479
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1f71476e398d5fd4466fd861e35ecc3f5b3666b9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957769"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987615"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Przewodnik po interfejsie użytkownika usługi Azure IoT Central
 
@@ -71,7 +71,7 @@ Górne menu jest wyświetlane na każdej stronie:
 - Aby wyszukać szablony urządzeń i urządzenia, wprowadź wartość **wyszukiwania** .
 - Aby zmienić język lub motyw interfejsu użytkownika, wybierz ikonę **Ustawienia** .
 - Aby wylogować się z aplikacji, wybierz ikonę **konta** .
-- Aby uzyskać pomoc i pomoc techniczną, wybierz pozycję rozwijaną **Pomoc**, aby uzyskać listę zasobów. W przypadku wersji próbnej, zasoby pomocy technicznej obejmują dostęp do [rozmowy na żywo](howto-show-hide-chat.md).
+- Aby uzyskać pomoc i pomoc techniczną, wybierz pozycję rozwijaną **Pomoc**, aby uzyskać listę zasobów. W aplikacji w ramach bezpłatnego planu cenowego zasoby pomocy technicznej obejmują dostęp do [rozmowy na żywo](howto-show-hide-chat.md).
 
 Możesz wybrać jasny lub ciemny motyw interfejsu użytkownika:
 
@@ -109,7 +109,7 @@ Na stronie _Zestawy urządzeń_ są wyświetlane zestawy urządzeń utworzone pr
 
 Strona analizy przedstawia wykresy, które ułatwiają zrozumienie zachowania urządzeń połączonych z aplikacją. Operator używa tej strony do monitorowania i badania problemów z połączonymi urządzeniami. Konstruktor może zdefiniować wykresy wyświetlane na tej stronie. Aby dowiedzieć się więcej, zobacz artykuł [Create custom analytics for your Azure IoT Central application (Tworzenie niestandardowej analizy dla aplikacji usługi Azure IoT Central)](howto-use-device-sets.md).
 
-## <a name="jobs"></a>Stanowiska
+## <a name="jobs"></a>Zadania
 
 ![Strona zadań](media/overview-iot-central-tour/jobs.png)
 

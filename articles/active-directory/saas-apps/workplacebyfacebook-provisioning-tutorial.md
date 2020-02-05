@@ -15,23 +15,34 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996939"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985179"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie miejsca pracy przez serwis Facebook w celu automatycznego aprowizacji użytkowników
 
-Celem tego samouczka jest przedstawienie czynności, które należy wykonać w miejscu pracy przez serwis Facebook i usługę Azure AD w celu automatycznego aprowizacji i dezaktywowania kont użytkowników z usługi Azure AD do miejsca pracy w serwisie Facebook.
+W tym samouczku opisano kroki, które należy wykonać w obu miejscach pracy przez serwis Facebook i Azure Active Directory (Azure AD) w celu skonfigurowania automatycznego aprowizacji użytkowników. Po skonfigurowaniu usługa Azure AD automatycznie inicjuje i cofa obsługę administracyjną użytkowników i grup w [miejscu pracy za](https://work.workplace.com/) pomocą usługi Azure AD Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
+
+> [!NOTE]
+> Aplikacja usługi Azure AD innej firmy w miejscu pracy przez serwis Facebook została zatwierdzona. Klienci nie będą mieli przerw w świadczeniu usług w 16 grudnia. W obszarze roboczym przez konsolę administracyjną serwisu Facebook zostanie wyświetlona Uwaga wskazująca termin 28 lutego – 2020, gdy konieczne będzie przejście do nowej aplikacji. Pracujemy nad zachowaniem tego przejścia, jak to możliwe, i udostępnienia aktualizacji w tym miejscu na końcu miesiąca.
+
+## <a name="capabilities-supported"></a>Obsługiwane możliwości
+> [!div class="checklist"]
+> * Tworzenie użytkowników w miejscu pracy przez serwis Facebook
+> * Usuwanie użytkowników w miejscu pracy przez serwis Facebook, gdy nie wymagają już dostępu
+> * Utrzymywanie synchronizacji atrybutów użytkownika między usługą Azure AD i miejscem pracy przez serwis Facebook
+> * [Logowanie](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial) jednokrotne do miejsca pracy przez serwis Facebook (zalecane)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do skonfigurowania integracji usługi Azure AD z aplikacją Workplace by Facebook potrzebne są następujące elementy:
+Scenariusz opisany w tym samouczku założono, że masz już następujące wymagania wstępne:
 
-- Subskrypcji usługi Azure AD
-- Miejsce pracy w ramach subskrypcji z włączoną obsługą logowania jednokrotnego w serwisie Facebook
+* [Dzierżawa usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Konto użytkownika w usłudze Azure AD z [uprawnieniami](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) do konfigurowania aprowizacji (np. administratora aplikacji, administratora aplikacji w chmurze, właściciela aplikacji lub administratora globalnego)
+* Miejsce pracy w ramach subskrypcji z włączoną obsługą logowania jednokrotnego w serwisie Facebook
 
 > [!NOTE]
 > Nie zalecamy używania środowiska produkcyjnego do testowania czynności opisanych w tym samouczku.
@@ -41,68 +52,119 @@ Aby przetestować czynności opisane w tym samouczku, należy postępować zgodn
 - Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="assigning-users-to-workplace-by-facebook"></a>Przypisywanie użytkowników do miejsca pracy przez serwis Facebook
+## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Planowanie wdrożenia aprowizacji
+1. Dowiedz się [, jak działa usługa aprowizacji](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Określ, kto będzie [objęty zakresem aprowizacji](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Określ dane, które mają być [mapowane między usługą Azure AD i miejscem pracy przez serwis Facebook](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
 
-Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi kont użytkowników są synchronizowane tylko użytkownicy i grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
+## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurowanie miejsca pracy przez serwis Facebook w celu obsługi aprowizacji za pomocą usługi Azure AD
 
 Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do miejsca pracy przez aplikację w serwisie Facebook. Po ustaleniu tych użytkowników możesz przypisać je do miejsca pracy przez aplikację Facebook, postępując zgodnie z poniższymi instrukcjami:
-
-[Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
-
-### <a name="important-tips-for-assigning-users-to-workplace-by-facebook"></a>Ważne porady dotyczące przypisywania użytkowników do miejsca pracy przez serwis Facebook
 
 *   Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do miejsca pracy przez serwis Facebook w celu przetestowania konfiguracji aprowizacji. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
 *   Podczas przypisywania użytkownika do miejsca pracy przez serwis Facebook należy wybrać prawidłową rolę użytkownika. Rola "dostęp domyślny" nie działa w przypadku aprowizacji.
 
-## <a name="enable-user-provisioning"></a>Włącz Inicjowanie obsługi użytkowników
+## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>Krok 3. Dodawanie miejsca pracy przez serwis Facebook z galerii aplikacji usługi Azure AD
 
-Ta sekcja przeprowadzi Cię przez proces łączenia usługi Azure AD z miejscem pracy przez interfejs API aprowizacji konta użytkownika w serwisie Facebook i konfigurowania usługi aprowizacji w celu tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w miejscu pracy przez usługę Facebook w oparciu o użytkowników i grupę przypisanie w usłudze Azure AD.
+Dodaj miejsce pracy przez serwis Facebook z galerii aplikacji usługi Azure AD, aby rozpocząć zarządzanie obsługą w miejscu pracy przez serwis Facebook. Jeśli wcześniej skonfigurowano miejsce pracy w usłudze Facebook dla logowania jednokrotnego, możesz użyć tej samej aplikacji. Jednak zaleca się utworzenie osobnej aplikacji podczas wstępnego testowania integracji. Dowiedz się więcej o dodawaniu aplikacji z galerii [tutaj](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app).
 
->[!Tip]
->Możesz również włączyć logowanie jednokrotne oparte na protokole SAML w miejscu pracy przez serwis Facebook, postępując zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje napadają nawzajem.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4. Zdefiniuj, kto będzie w zakresie aprowizacji 
 
-### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>Aby skonfigurować Inicjowanie obsługi konta użytkownika w miejscu pracy przez serwis Facebook w usłudze Azure AD:
+Usługa Azure AD Provisioning umożliwia określenie zakresu użytkowników, którzy będą obsługiwani w oparciu o przypisanie do aplikacji i lub na podstawie atrybutów użytkownika/grupy. Jeśli wybierzesz zakres, który zostanie zainicjowany do aplikacji na podstawie przypisania, możesz wykonać następujące [kroki](../manage-apps/assign-user-or-group-access-portal.md) , aby przypisać użytkowników i grupy do aplikacji. Jeśli zdecydujesz się na określenie zakresu, który zostanie zainicjowany na podstawie atrybutów użytkownika lub grupy, możesz użyć filtru określania zakresu, zgodnie z opisem w [tym miejscu](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-Celem tej sekcji jest zaprojektowanie sposobu włączania obsługi kont użytkowników Active Directory w miejscu pracy przez serwis Facebook.
+* Podczas przypisywania użytkowników i grup do miejsca pracy przez serwis Facebook należy wybrać rolę inną niż **domyślny dostęp**. Użytkownicy z domyślną rolą dostępu są wykluczeni z aprowizacji i zostaną oznaczeni jako nieskutecznie uprawnieni do dzienników aprowizacji. Jeśli jedyną rolą dostępną w aplikacji jest domyślna rola dostępu, można [zaktualizować manifest aplikacji](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) , aby dodać dodatkowe role. 
 
-Usługa Azure AD obsługuje automatyczne synchronizowanie szczegółowych informacji o koncie przypisanych użytkowników do miejsca pracy przez serwis Facebook. Ta automatyczna synchronizacja umożliwia miejsce pracy przez serwis Facebook w celu uzyskania danych potrzebnych do autoryzowania dostępu do użytkowników przed podjęciem próby zalogowania się po raz pierwszy. W przypadku odwołania dostępu do usługi Azure AD użytkownicy z miejsca pracy w serwisie Facebook są również nieudostępniani.
+* Zacznij od małych. Przetestuj przy użyciu małego zestawu użytkowników i grup przed przekazaniem ich do wszystkich osób. W przypadku wybrania dla zakresu aprowizacji przypisanych użytkowników i grup można kontrolować ten sposób, przypisując do aplikacji jednego lub dwóch użytkowników lub grupy. Gdy zakres jest ustawiony dla wszystkich użytkowników i grup, można określić [Filtr określania zakresu na podstawie atrybutu](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory** > aplikacje dla **przedsiębiorstw** > **wszystkie aplikacje** .
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-2. Jeśli masz już skonfigurowany obszar roboczy w serwisie Facebook do logowania jednokrotnego, Wyszukaj swoje wystąpienie miejsca pracy przez serwis Facebook przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i Wyszukaj **miejsce pracy przez serwis Facebook** w galerii aplikacji. Wybierz pozycję miejsce pracy według serwisu Facebook z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Wybierz swoje wystąpienie miejsca pracy przez serwis Facebook, a następnie wybierz kartę **Inicjowanie obsługi** .
+2. Na liście Aplikacje wybierz pozycję **miejsce pracy w serwisie Facebook**.
 
-4. Ustaw **tryb aprowizacji** na **automatyczny**. 
+    ![Link aplikacji Workplace by Facebook na liście Aplikacje](common/all-applications.png)
+
+3. Wybierz kartę **aprowizacji** .
+
+    ![Karta aprowizacji](common/provisioning.png)
+
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
+
+    ![Karta aprowizacji](common/provisioning-automatic.png)
+
+5. W sekcji **poświadczenia administratora** kliknij pozycję **Autoryzuj**. Nastąpi przekierowanie do miejsca pracy przy użyciu strony autoryzacji w serwisie Facebook. Wprowadź miejsce pracy według nazwy użytkownika w usłudze Facebook i kliknij przycisk **Kontynuuj** . Kliknij pozycję **Testuj połączenie** , aby zapewnić, że usługa Azure AD może połączyć się z miejscem pracy przez serwis Facebook. Jeśli połączenie nie powiedzie się, upewnij się, że miejsce pracy przez konto w serwisie Facebook ma uprawnienia administratora, a następnie spróbuj ponownie.
 
     ![aprowizacji](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. W sekcji **poświadczenia administratora** wprowadź token dostępu z miejsca pracy przez administratora serwisu Facebook i ustaw wartość adresu URL dzierżawy na `https://www.facebook.com/scim/v1/`. Zobacz te [instrukcje](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) dotyczące tworzenia tokenu dostępu do miejsca pracy. 
+    ![autoryzować](./media/workplacebyfacebook-provisioning-tutorial/workplacelogin.png)
 
-6. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z miejscem pracy przez aplikację w serwisie Facebook. Jeśli połączenie nie powiedzie się, upewnij się, że miejsce pracy przez konto w serwisie Facebook ma uprawnienia administratora zespołu.
+6. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, a następnie zaznacz pole wyboru **Wyślij powiadomienie e-mail po wystąpieniu błędu** .
 
-7. Wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji w polu **E-mail powiadomienia** , i zaznacz pole wyboru.
+    ![Wiadomość E-mail z powiadomieniem](common/provisioning-notification-email.png)
 
-8. Kliknij przycisk **Zapisz.**
+7. Wybierz pozycję **Zapisz**.
 
-9. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkowników w miejscu pracy przez serwis Facebook.**
+8. W sekcji **mapowania** wybierz pozycję **Synchronizuj Azure Active Directory użytkowników w miejscu pracy przez serwis Facebook**.
 
-10. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do miejsca pracy w serwisie Facebook. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowywania do kont użytkowników w miejscu pracy przez serwis Facebook dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+9. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do miejsca pracy przez serwis Facebook, w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowywania do kont użytkowników w miejscu pracy przez serwis Facebook dla operacji aktualizacji. Jeśli zdecydujesz się zmienić [pasujący atrybut docelowy](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), należy się upewnić, że w miejscu pracy przez interfejs API usługi Facebook jest obsługiwany Filtrowanie użytkowników na podstawie tego atrybutu. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
+
+   |Atrybut|Typ|
+   |---|---|
+   |userName|Ciąg|
+   |displayName|Ciąg|
+   |aktywne|Wartość logiczna|
+   |title|Wartość logiczna|
+   |wiadomości e-mail [typ eq "Praca"] .value|Ciąg|
+   |name.givenName|Ciąg|
+   |name.familyName|Ciąg|
+   |Nazwa. sformatowana|Ciąg|
+   |adresy [typ EQ "Work"]. sformatowane|Ciąg|
+   |.streetAddress adresy [typ eq "Praca"]|Ciąg|
+   |adresy [typ EQ "Work"]. locale|Ciąg|
+   |addresss [Type EQ "Work"]. region|Ciąg|
+   |addresss [Type EQ "Work"]. Country|Ciąg|
+   |.postalCode adresy [typ eq "Praca"]|Ciąg|
+   |adresy [Type EQ "Other"]. sformatowane|Ciąg|
+   |wartość phoneNumbers [typ eq "Praca"]|Ciąg|
+   |wartość phoneNumbers [eq wpisz "wyraz mobile"]|Ciąg|
+   |wartość phoneNumbers [typ eq "faksu"]|Ciąg|
+   |externalId|Ciąg|
+   |preferredLanguage|Ciąg|
+   |urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Manager|Ciąg|
+   |urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Department|Ciąg|
+
+10. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Aby włączyć usługę Azure AD Provisioning w miejscu pracy przez serwis Facebook, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
-12. Kliknij przycisk **Zapisz.**
+    ![Stan aprowizacji jest przełączany](common/provisioning-toggle-on.png)
 
-Aby uzyskać więcej informacji na temat konfigurowania automatycznej aprowizacji, zobacz [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
+12. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić w miejscu pracy przez serwis Facebook, wybierając odpowiednie wartości w **zakresie** w sekcji **Ustawienia** .
 
-Możesz teraz utworzyć konto testowe. Poczekaj aż do 20 minut, aby sprawdzić, czy konto zostało zsynchronizowane z miejscem pracy w serwisie Facebook.
+    ![Zakres aprowizacji](common/provisioning-scope.png)
 
-> [!NOTE]
-> Aplikacja usługi Azure AD innej firmy w miejscu pracy przez serwis Facebook została zatwierdzona. Klienci nie będą mieli przerw w świadczeniu usług w 16 grudnia. W obszarze roboczym przez konsolę administracyjną serwisu Facebook zostanie wyświetlona Uwaga wskazująca termin 28 lutego – 2020, gdy konieczne będzie przejście do nowej aplikacji. Pracujemy nad zachowaniem tego przejścia, jak to możliwe, i udostępnienia aktualizacji w tym miejscu na końcu miesiąca.
+13. Gdy wszystko będzie gotowe do udostępnienia, kliknij przycisk **Zapisz**.
+
+    ![Zapisywanie konfiguracji aprowizacji](common/provisioning-configuration-save.png)
+
+Ta operacja uruchamia początkowy cykl synchronizacji wszystkich użytkowników i grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Cykl początkowy trwa dłużej niż kolejne cykle, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. 
+
+## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorowanie wdrożenia
+Po skonfigurowaniu aprowizacji Użyj następujących zasobów do monitorowania wdrożenia:
+
+1. Użyj [dzienników aprowizacji](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) , aby określić, którzy użytkownicy zostali zainicjowani pomyślnie lub niepomyślnie
+2. Sprawdź [pasek postępu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , aby zobaczyć stan cyklu aprowizacji oraz sposób jego zakończenia.
+3. Jeśli konfiguracja aprowizacji wydaje się być w złej kondycji, aplikacja zostanie przestawiona na kwarantannę. Więcej informacji o Stanach kwarantanny znajduje się [tutaj](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+
+## <a name="troubleshooting-tips"></a>Porady dotyczące rozwiązywania problemów
+*  Jeśli zobaczysz, że użytkownik zostanie niepomyślnie utworzony i istnieje zdarzenie dziennika inspekcji z kodem "1789003", oznacza to, że użytkownik pochodzi z niezweryfikowanej domeny.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](tutorial-list.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie logowania jednokrotnego](workplacebyfacebook-tutorial.md)
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)

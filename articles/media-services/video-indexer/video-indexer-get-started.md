@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 01/13/2020
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1f3d442ea7cf6d95427aaa9c072410119e2735af
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941552"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989811"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Szybki Start: jak utworzyć konto i przekazać swoje pierwsze wideo
 
@@ -49,15 +49,17 @@ Listę formatów plików, których można używać z Video Indexer, zawiera arty
 
     Po zakończeniu analizowania przez usługę Video Indexer otrzymasz powiadomienie z linkiem do tego pliku wideo i krótki opis tego, co znaleziono w tym nagraniu. Na przykład: osoby, tematy i wyniki przetwarzania OCR.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="see-also"></a>Zobacz także
 
 Aby uzyskać więcej informacji [, zobacz Przekazywanie i indeksowanie filmów wideo](upload-index-videos.md) .
 
 Po przekazaniu i poindeksowania wideo możesz zacząć korzystać z witryny sieci Web [Video Indexer](video-indexer-view-edit.md) lub [Video Indexer portalu dla deweloperów](video-indexer-use-apis.md) , aby zobaczyć szczegółowe informacje o filmie wideo. 
 
-## <a name="see-also"></a>Zobacz także
+[Rozpocznij korzystanie z interfejsów API](video-indexer-use-apis.md)
 
-[Omówienie usługi Video Indexer](video-indexer-overview.md)
+## <a name="next-steps"></a>Następne kroki
 
-[Rozpoczynanie korzystania z interfejsów API](video-indexer-use-apis.md).
+Szczegółowe wprowadzenie można znaleźć w naszym [laboratorium wprowadzającym](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md). 
+
+Na końcu warsztatu będziesz mieć dobrą wiedzę o rodzaju informacji, które mogą zostać wyodrębnione z zawartości wideo i audio, ale bardziej przygotowasz się do identyfikowania możliwości związanych z analizą zawartości, wideo o skoku AI na platformie Azure i demonstracją kilka scenariusze dotyczące Video Indexer.
 

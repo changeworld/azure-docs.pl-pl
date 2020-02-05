@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977254"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986665"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Samouczek: tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania w sieci Web Bing
 
@@ -105,7 +105,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,7 +128,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-Opcja `SafeSearch` może być ustawiona na `strict`, `moderate` lub `off`, gdzie `moderate` będzie ustawieniem domyślnym dla interfejsu API wyszukiwania w sieci Web Bing. Ten formularz korzysta z pola wyboru, które ma dwa stany. W tym fragmencie kodu opcja SafeSearch została ustawiona na `strict` lub `off`, wartości `moderate` nie użyto.
+Opcja `SafeSearch` może być ustawiona na `strict`, `moderate` lub `off`, gdzie `moderate` będzie ustawieniem domyślnym dla interfejsu API wyszukiwania w sieci Web Bing. Ten formularz używa pola wyboru, które ma dwa stany: `strict` lub `moderate`.
 
 Jeśli zaznaczono którekolwiek pole wyboru **Podwyższ poziom**, parametr `answerCount` zostanie dodany do zapytania. Parametr `answerCount` jest wymagany w przypadku korzystania z parametru `promote`. W tym fragmencie kodu wartość została ustawiona na `9`, aby zwracać wszystkie dostępne typy wyników.
 > [!NOTE]

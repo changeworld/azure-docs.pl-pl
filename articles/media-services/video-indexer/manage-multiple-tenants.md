@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie wieloma dzierżawami przy użyciu Video Indexer — Azure
-description: W tym artykule sugeruje integracji różne opcje zarządzania wielu dzierżaw za pomocą indeksatora wideo.
+title: Zarządzanie wieloma dzierżawcami przy użyciu Video Indexer — Azure
+description: W tym artykule przedstawiono różne opcje integracji umożliwiające zarządzanie wieloma dzierżawcami przy użyciu Video Indexer.
 services: media-services
 documentationcenter: ''
 author: ika-microsoft
@@ -13,70 +13,70 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: a9b75c3454c67112b0e00c7ea4b4e8c676ebcc97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949466"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990508"
 ---
 # <a name="manage-multiple-tenants"></a>Zarządzanie wieloma dzierżawami
 
-W tym artykule omówiono różne opcje do zarządzania wieloma dzierżawami za pomocą indeksatora wideo. Wybierz metodę, która jest najbardziej odpowiednie dla danego scenariusza:
+W tym artykule omówiono różne opcje zarządzania wieloma dzierżawcami przy użyciu Video Indexer. Wybierz metodę, która jest najbardziej odpowiednia dla danego scenariusza:
 
-* Wideo konta indeksatora na dzierżawę
-* Konto usługi Video Indexer jednego dla wszystkich dzierżaw
-* Subskrypcja platformy Azure dla dzierżawy
+* Konto Video Indexer na dzierżawcę
+* Pojedyncze konto Video Indexer dla wszystkich dzierżawców
+* Subskrypcja platformy Azure na dzierżawcę
 
-## <a name="video-indexer-account-per-tenant"></a>Wideo konta indeksatora na dzierżawę
+## <a name="video-indexer-account-per-tenant"></a>Konto Video Indexer na dzierżawcę
 
-Korzystając z tej architektury, konto usługi Video Indexer jest tworzony dla każdej dzierżawy. Dzierżawcy mają pełną izolację w trwałych i obliczeniowych warstwy.  
+W przypadku korzystania z tej architektury konto Video Indexer jest tworzone dla każdej dzierżawy. Dzierżawcy mają pełną izolację w warstwie trwałej i obliczeniowej.  
 
-![Wideo konta indeksatora na dzierżawę](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
-
-### <a name="considerations"></a>Zagadnienia do rozważenia
-
-* Klienci nie należy udostępniać konta magazynu (chyba że ręcznie skonfigurowane przez klienta).
-* Klienci nie mają obliczeniowych (jednostek zarezerwowanych) i nie wpływać na czas zadania przetwarzania od siebie.
-* Można łatwo usunąć dzierżawę z systemu, usuwając konto usługi Video Indexer.
-* Istnieje możliwość udostępniania niestandardowe modele między dzierżawami.
-
-    Upewnij się, że nie jest wymagane Udostępnianie niestandardowych modeli biznesowych.
-* Trudniejsze do zarządzania z powodu wielu Video Indexer (i skojarzone usługi Media Services) konta w dzierżawie.
-
-> [!TIP]
-> Utwórz konto administratora systemu w [portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/) i zapewnić odpowiedni dzierżawcom za pomocą interfejsu API autoryzacji [tokenu dostępu do konta](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token).
-
-## <a name="single-video-indexer-account-for-all-users"></a>Konto usługi Video Indexer jednego dla wszystkich użytkowników
-
-Korzystając z tej architektury, klient jest odpowiedzialny za izolacji dzierżawców. Wszystkich dzierżaw musi używać jednego konta indeksatora wideo za pomocą jednego konta usługi Azure Media Service. Podczas przekazywania, wyszukiwania lub usuwania zawartości, klient będzie musiał filtrować wyniki właściwe dla tej dzierżawy.
-
-![Konto usługi Video Indexer jednego dla wszystkich użytkowników](./media/manage-multiple-tenants/single-video-indexer-account-for-all-users.png)
-
-Po wybraniu tej opcji dostosowywania modeli (osoby, języka i marek) można udostępnione lub izolowany między dzierżawami, filtrując modele przez dzierżawcę.
-
-Gdy [przekazywanie filmów wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), można określić atrybutu innej partycji w dzierżawie. Dzięki temu będzie izolacji w [interfejsu API wyszukiwania](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Przez określenie atrybutu partycji w interfejsie API wyszukiwania zostanie wyświetlony tylko wyniki określonej partycji. 
+![Konto Video Indexer na dzierżawcę](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
-* Możliwość udostępniania zawartości i dostosowywania modeli między dzierżawami.
-* Jednej dzierżawy ma wpływ na wydajność innych dzierżaw.
-* Klient potrzebuje do tworzenia złożonych zarządzania warstwą Video Indexer.
+* Klienci nie współdzielą kont magazynu (o ile nie zostały ręcznie skonfigurowane przez klienta).
+* Klienci nie współdzielą zasobów obliczeniowych (jednostek zarezerwowanych) i nie wpływają na czasy przetwarzania zadań.
+* Dzierżawę można łatwo usunąć z systemu, usuwając konto Video Indexer.
+* Nie ma możliwości udostępniania niestandardowych modeli między dzierżawcami.
+
+    Upewnij się, że nie ma wymagań firmy do udostępniania niestandardowych modeli.
+* Trudniejsze do zarządzania ze względu na wiele kont Video Indexer (i skojarzonych Media Services) na dzierżawę.
 
 > [!TIP]
-> Możesz użyć [priorytet](upload-index-videos.md) atrybutu zadaniom dzierżaw.
+> Utwórz użytkownika administracyjnego dla systemu w [portalu Video Indexer Developer](https://api-portal.videoindexer.ai/) i użyj interfejsu API autoryzacji, aby zapewnić dzierżawcom odpowiedni [token dostępu do konta](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token).
 
-## <a name="azure-subscription-per-tenant"></a>Subskrypcja platformy Azure dla dzierżawy 
+## <a name="single-video-indexer-account-for-all-users"></a>Pojedyncze konto Video Indexer dla wszystkich użytkowników
 
-Korzystając z tej architektury, każda dzierżawa ma własnej subskrypcji platformy Azure. Dla każdego użytkownika utworzysz nowe konto usługi Video Indexer w ramach subskrypcji dzierżawy.
+W przypadku korzystania z tej architektury klient jest odpowiedzialny za izolację dzierżawców. Wszyscy dzierżawcy muszą używać jednego konta Video Indexer z pojedynczym kontem usługi Azure Media. Podczas przekazywania, wyszukiwania lub usuwania zawartości Klient będzie musiał odfiltrować odpowiednie wyniki dla tej dzierżawy.
 
-![Subskrypcja platformy Azure dla dzierżawy](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
+![Pojedyncze konto Video Indexer dla wszystkich użytkowników](./media/manage-multiple-tenants/single-video-indexer-account-for-all-users.png)
+
+W przypadku tej opcji modele dostosowania (osoba, język i marki) mogą być udostępniane lub izolowane między dzierżawcami przez filtrowanie modeli według dzierżawców.
+
+Podczas [przekazywania filmów wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)można określić inny atrybut partycji dla dzierżawy. Pozwoli to na izolację w [interfejsie API wyszukiwania](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Określenie atrybutu Partition w interfejsie API wyszukiwania spowoduje uzyskanie tylko wyników określonej partycji. 
+
+### <a name="considerations"></a>Zagadnienia do rozważenia
+
+* Możliwość udostępniania zawartości i modeli dostosowywania między dzierżawcami.
+* Jeden dzierżawca ma wpływ na wydajność innych dzierżawców.
+* Klient musi utworzyć złożoną warstwę zarządzania na Video Indexer.
+
+> [!TIP]
+> Aby określić priorytety zadań dzierżawców, można użyć atrybutu [priorytetu](upload-index-videos.md) .
+
+## <a name="azure-subscription-per-tenant"></a>Subskrypcja platformy Azure na dzierżawcę 
+
+W przypadku korzystania z tej architektury każda dzierżawa będzie miała własną subskrypcję platformy Azure. Dla każdego użytkownika zostanie utworzone nowe konto Video Indexer w ramach subskrypcji dzierżawy.
+
+![Subskrypcja platformy Azure na dzierżawcę](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
 
 * Jest to jedyna opcja, która umożliwia rozdzielenie rozliczeń.
-* Integracja ta ma większe koszty zarządzania niż konto usługi Video Indexer na dzierżawę. Karta nie jest to wymagane, zalecane jest aby użyć jednego z innych opcji, które opisano w tym artykule.
+* Ta integracja ma więcej kosztów związanych z zarządzaniem niż Video Indexer konta na dzierżawcę. Jeśli rozliczenia nie są wymagane, zaleca się użycie jednej z innych opcji opisanych w tym artykule.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Omówienie](video-indexer-overview.md)

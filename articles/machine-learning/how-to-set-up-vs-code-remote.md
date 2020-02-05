@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 27243f47df7da22ab4adda088bdf631c1030dd6c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f5607c5d41a028a20a4658a67a7ce487a75f0d7c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845202"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990355"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktywna debugowanie w wystąpieniu obliczeniowym Azure Machine Learning przy użyciu VS Code zdalnego
 
 W tym artykule dowiesz się, jak skonfigurować Visual Studio Code zdalne dla wystąpienia obliczeniowego Azure Machine Learning, dzięki czemu możesz **interaktywnie debugować kod** z vs Code. 
 
 > [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z **Północno-środkowe stany USA**, * * Wschodnie stany USA 2 * *, **europa Północna** lub **Południowe Zjednoczone Królestwo**.
+> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
 
 + [Wystąpienie obliczeniowe Azure Machine Learning](concept-compute-instance.md) jest w pełni zarządzaną stacją roboczą opartą na chmurze dla analityków danych i udostępniają funkcje zarządzania i gotowości przedsiębiorstwa dla administratorów IT. 
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d31ef856103d809fc02a183603bc45f9d94939c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112624"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990566"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Samouczek: Tworzenie aplikacji do monitorowania zużycia wody w IoT Central
 
@@ -66,6 +66,7 @@ Aby utworzyć nową aplikację monitorowania zużycia wody w usłudze Azure IoT 
 
     ![Strona Tworzenie aplikacji usługi Azure IoT Central](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
 
+    ![Azure IoT Central tworzenie informacji dotyczących rozliczeń aplikacji](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 6. Aplikacja do monitorowania zużycia wody została już utworzona przy użyciu szablonu **monitorowania zużycia wody** w usłudze Azure IoT Central.
 
 Gratulacje! Ukończono tworzenie aplikacji do monitorowania jakości wody, która zawiera wstępnie skonfigurowane:
@@ -126,7 +127,7 @@ Aplikacja do **monitorowania zużycia wody** obejmuje dwa szablony urządzeń re
 Aby wyświetlić szablon urządzenia:
 
 1. Kliknij pozycję **Szablony urządzeń** w lewym okienku nawigacji aplikacji w IoT Central. 
-    Na liście szablony urządzeń zostaną wyświetlone dwa urządzenia i **inteligentny zawór** **przepływu** .
+    Na liście szablony urządzeń będą widoczne dwa **mierniki przepływu** szablonów urządzeń i **zawory inteligentne**
 
    ![Szablon urządzenia](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 
@@ -154,7 +155,7 @@ Szablon urządzenia monitora zużycia wody jest dostarczany ze wstępnie zdefini
 
   ![Widoki szablonów urządzeń](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
-### <a name="publish"></a>Publikowanie 
+### <a name="publish"></a>Publikuj 
 Jeśli zostały wprowadzone jakiekolwiek zmiany, upewnij się, że szablon urządzenia jest **opublikowany** . 
 
 ### <a name="create-a-new-device-template"></a>Tworzenie nowego szablonu urządzenia 

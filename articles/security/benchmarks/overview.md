@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 2d12fa85fbc134ba2578795619db89f4a5058b26
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: de6bbb81b04b93cce8ab7ddaf1d983cb7e4a700d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934760"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990593"
 ---
-# <a name="overview-of-azure-security-controls"></a>Omówienie formantów zabezpieczeń platformy Azure
+# <a name="overview-of-azure-security-controls"></a>Omówienie kontroli zabezpieczeń platformy Azure
 
 Test porównawczy zabezpieczeń platformy Azure zawiera zalecenia, które pomagają ulepszyć zabezpieczenia aplikacji i danych na platformie Azure.
 
@@ -51,4 +51,5 @@ Poznamy Twoją szczegółową opinię i aktywne uczestnictwo w pracy z usługą 
 ## <a name="next-steps"></a>Następne kroki
 
 - Zobacz pierwszą kontrolę zabezpieczeń: [zabezpieczenia sieci](security-control-network-security.md)
+- Przeczytaj [wprowadzenie do usługi Azure Security test](introduction.md)
 - Pobieranie [arkusza programu Excel dotyczącego usługi Azure Security test w wersji 1](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/spreadsheets)

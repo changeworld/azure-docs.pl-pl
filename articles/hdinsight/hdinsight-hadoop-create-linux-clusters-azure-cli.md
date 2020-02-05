@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/24/2019
-ms.openlocfilehash: 80a13e504b7cb075692256d5c813a95c51002ab6
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/03/2020
+ms.openlocfilehash: 0921caa19ee86ddf2766642211d8204059550b02
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495125"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990695"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Tworzenie klastrów usługi HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -46,7 +46,7 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
 
     |Parametr | Opis |
     |---|---|
-    |`--size`| Liczba węzłów procesu roboczego w klastrze. W tym artykule jest stosowana zmienna `clusterSizeInNodes` jako wartość przekazaną do `--size`. |
+    |`--workernode-count`| Liczba węzłów procesu roboczego w klastrze. W tym artykule jest stosowana zmienna `clusterSizeInNodes` jako wartość przekazaną do `--workernode-count`. |
     |`--version`| Wersja klastra usługi HDInsight. W tym artykule jest stosowana zmienna `clusterVersion` jako wartość przekazaną do `--version`. Zobacz również: [obsługiwane wersje usługi HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
     |`--type`| Typ klastra usługi HDInsight, taki jak: Hadoop, interactivehive, HBase, Kafka, burza, Spark, Rserver, mlservices.  W tym artykule jest stosowana zmienna `clusterType` jako wartość przekazaną do `--type`. Zobacz również: [typy i konfiguracja klastra](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
     |`--component-version`|Wersje różnych składników usługi Hadoop, w wersjach rozdzielonych spacjami w formacie "Component = Version". W tym artykule jest stosowana zmienna `componentVersion` jako wartość przekazaną do `--component-version`. Zobacz również: [składniki usługi Hadoop](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
@@ -120,12 +120,12 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
@@ -172,7 +172,6 @@ Teraz, gdy klaster usługi HDInsight został pomyślnie utworzony przy użyciu i
 ### <a name="apache-hadoop-clusters"></a>Klastry Apache Hadoop
 
 * [Korzystanie z Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
-* [Korzystanie z Apache świni z usługą HDInsight](hadoop/hdinsight-use-pig.md)
 * [Korzystanie z MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Klastry Apache HBase

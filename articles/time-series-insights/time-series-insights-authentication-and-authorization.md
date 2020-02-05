@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863482"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984604"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Uwierzytelnianie i autoryzacja interfejsu API Azure Time Series Insights
 
@@ -28,7 +28,7 @@ W tym dokumencie opisano sposób rejestrowania aplikacji w Azure Active Director
 > * Najnowsza [Biblioteka uwierzytelniania firmy Microsoft (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
 > * [Biblioteka Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
-## <a name="service-principal"></a>Jednostka usługi
+## <a name="service-principal"></a>Nazwa główna usługi
 
 W poniższych sekcjach opisano sposób konfigurowania aplikacji w celu uzyskiwania dostępu do interfejsu API Time Series Insights w imieniu aplikacji. Aplikacja może następnie badać lub publikować dane referencyjne w środowisku Time Series Insights przy użyciu własnych poświadczeń aplikacji za pośrednictwem Azure Active Directory.
 
@@ -93,7 +93,7 @@ Na **krok 3**oddzielenie poświadczeń aplikacji i użytkownika pozwala:
 
    1. Token można następnie przesłać do nagłówka `Authorization`, gdy aplikacja wywołuje interfejs API Time Series Insights.
 
-* Alternatywnie deweloperzy mogą zdecydować się na uwierzytelnianie za pomocą MSAL. Przeczytaj o [migracji do MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) , aby dowiedzieć się więcej. 
+* Alternatywnie deweloperzy mogą zdecydować się na uwierzytelnianie za pomocą MSAL. Zapoznaj się z informacjami na temat [migracji do MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) i Zobacz nasze [dane referencyjne zarządzania C# dla środowiska Azure Time Series Insights za pomocą](time-series-insights-manage-reference-data-csharp.md) artykułu, aby dowiedzieć się więcej. 
 
 ## <a name="common-headers-and-parameters"></a>Wspólne nagłówki i parametry
 

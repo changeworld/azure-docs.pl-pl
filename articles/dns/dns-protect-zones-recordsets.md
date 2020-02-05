@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: rohink
-ms.openlocfilehash: 64c71047c60482ff198dbba833d4d0a35c80c60d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 549090f04f4969b00dc1c8ee8d5cc70a50523ca8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932412"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983830"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Jak chronić strefy i rekordy DNS
 
@@ -205,7 +205,7 @@ Następujące polecenie programu PowerShell tworzy blokadę CanNotDelete względ
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType "Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
 Innym sposobem, aby zapobiec przypadkowemu usunięciu strefy jest użycie niestandardowej roli w celu upewnienia się, że operator i konta usług używane do zarządzania strefami nie mają uprawnień do usuwania strefy. Gdy musisz usunąć strefę, możesz wymusić usunięcie dwuetapowe, a najpierw udzielić uprawnień do usuwania strefy (w zakresie strefy, aby zapobiec usunięciu niewłaściwej strefy) i sekundę, aby usunąć strefę.

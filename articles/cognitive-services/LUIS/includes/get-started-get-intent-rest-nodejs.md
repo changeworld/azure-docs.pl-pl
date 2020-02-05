@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: c7354ecce9873cd65580dc2a9d79f9f3b8ac37db
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 9252fbbf0895bf821c119272ac37d3af1c91fc89
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966662"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987797"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966662"
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com)
 1. Kliknij przycisk [utwórz **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Wprowadź wszystkie wymagane ustawienia dla klucza czasu wykonywania:
+1. Wprowadź wszystkie wymagane ustawienia dla klucza **czasu wykonywania** :
 
     |Ustawienie|Wartość|
     |--|--|
@@ -89,11 +89,11 @@ Użyj środowiska Node. js, aby wykonać zapytanie dotyczące [punktu końcowego
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. Zastąp wartości `YOUR-KEY` i `YOUR-ENDPOINT` własnym kluczem predykcyjnym i punktem końcowym.
+1. Zastąp wartości `YOUR-KEY` i `YOUR-ENDPOINT` **własnym kluczem i** punktem końcowym przewidywania.
 
     |Informacje|Przeznaczenie|
     |--|--|
-    |`YOUR-KEY`|Klucz predykcyjny dla 32 znaków.|
+    |`YOUR-KEY`|Klucz **środowiska uruchomieniowego** przewidywania znaków 32.|
     |`YOUR-ENDPOINT`| Punkt końcowy adresu URL przewidywania. Na przykład `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Zainstaluj zależności `request`, `request-promise`i `querystring` za pomocą tego polecenia:

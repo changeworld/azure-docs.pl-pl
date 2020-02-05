@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/31/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b49c873112358db4fec2992ef3d2d61161e8b373
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840183"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982419"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -45,7 +45,7 @@ Element **TrustFrameworkPolicy** zawiera następujące atrybuty:
 | tenantId | Tak | Unikatowy identyfikator dzierżawy, do której należy ta zasada. |
 | `PolicyId` | Tak | Unikatowy identyfikator zasad. Ten identyfikator musi być poprzedzony *B2C_1A_* |
 | PublicPolicyUri | Tak | Identyfikator URI dla zasad, który jest kombinacją identyfikatora dzierżawy i identyfikatora zasad. |
-| DeploymentMode | Nie | Możliwe wartości: `Production`, `Debugging`lub `Development`. Wartość domyślna to `Production`. Ta właściwość służy do debugowania zasad. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](troubleshoot-with-application-insights.md). |
+| DeploymentMode | Nie | Możliwe wartości: `Production`lub `Development`. Wartość domyślna to `Production`. Ta właściwość służy do debugowania zasad. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](troubleshoot-with-application-insights.md). |
 | UserJourneyRecorderEndpoint | Nie | Punkt końcowy, który jest używany, gdy ustawienie **DeploymentMode** ma wartość `Development`. Wartość musi być `urn:journeyrecorder:applicationinsights`. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](troubleshoot-with-application-insights.md). |
 
 

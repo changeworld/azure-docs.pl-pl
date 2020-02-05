@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: cf6b94418516f681bf6c782fe02f3434faa5374e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426278"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986992"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Usługa Azure Stream Analytics dane wyjściowe usługi Azure Cosmos DB  
 Azure Stream Analytics może kierować [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) do danych wyjściowych JSON, co umożliwia archiwizowanie danych i uruchamianie zapytań o małym opóźnieniu na dane JSON bez struktury. W tym dokumencie opisano najlepsze rozwiązania dotyczące wdrażania tej konfiguracji.
@@ -97,7 +97,7 @@ Szybkość zdarzeń przychodzących w Event Hubs wynosi dwa razy większe niż A
 
 Dzięki 1,2 Stream Analytics jest bardziej inteligentna w korzystaniu z 100 procent dostępnej przepływności w Azure Cosmos DB z nielicznymi reprocesami przesyłania lub ograniczania szybkości. Zapewnia to lepszy komfort obsługi innych obciążeń, takich jak zapytania uruchomione w kontenerze w tym samym czasie. Jeśli chcesz zobaczyć, jak Stream Analytics skaluje się z Azure Cosmos DB jako ujścia dla 1 000 do 10 000 komunikatów na sekundę, wypróbuj [Ten przykładowy projekt platformy Azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb).
 
-Przepływność Azure Cosmos DB danych wyjściowych jest taka sama jak w przypadku 1,0 i 1,1. Ponieważ 1,2 nie jest obecnie domyślnym, można [ustawić poziom zgodności](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) zadania Stream Analytics przy użyciu portalu lub za pomocą [wywołania interfejsu API REST zadania tworzenia Stream Analytics](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). *Zdecydowanie zalecamy* używanie poziomu zgodności 1,2 w Stream Analytics z Azure Cosmos DB.
+Przepływność Azure Cosmos DB danych wyjściowych jest taka sama jak w przypadku 1,0 i 1,1. *Zdecydowanie zalecamy* używanie poziomu zgodności 1,2 w Stream Analytics z Azure Cosmos DB.
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>Ustawienia Azure Cosmos DB dla danych wyjściowych JSON
 

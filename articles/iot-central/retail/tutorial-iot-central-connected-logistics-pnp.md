@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 17d429444b81746a5c5082b8310c5208bc35f3d2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6ddf0a5300caa5e202b16fc4f376056489cd9b61
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889040"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984294"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Samouczek: wdrażanie i przechodzenie przez połączony szablon aplikacji logistycznej
 
@@ -32,19 +32,22 @@ W ramach tego samouczka nauczysz się, jak,
 Możesz utworzyć aplikację, wykonując następujące czynności
 1. Przejdź do witryny sieci Web programu Azure IoT Central Application Manager. Wybierz pozycję **kompilacja** na pasku nawigacyjnym po lewej stronie, a następnie kliknij kartę **sprzedaż detaliczna** .
 
-> [!div class="mx-imgBorder"]
-> ![połączonego pulpitu nawigacyjnego logistyki](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![połączonego pulpitu nawigacyjnego logistyki](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
 
 2. Wybierz pozycję **Utwórz aplikację** w ramach **połączonej aplikacji logistycznej**
 
 3. **Utwórz aplikację** spowoduje otwarcie formularza nowej aplikacji i zapełnienie żądanych szczegółów, jak pokazano poniżej.
    * **Nazwa aplikacji**: możesz użyć domyślnej sugerowanej nazwy lub wprowadzić przyjazną nazwę aplikacji.
-   * **Adres URL**: możesz użyć sugerowanego domyślnego adresu URL lub wprowadzić przyjazny unikatowy adres URL, który można dopamiętać. Następnie zalecane jest ustawienie domyślne, jeśli masz już subskrypcję platformy Azure. możesz zacząć od siedmiu dni bezpłatnej wersji próbnej i wybrać opcję konwersji płatnej zgodnie z rzeczywistym użyciem w dowolnym momencie przed wygaśnięciem zakończenia okresu bezpłatnego.
+   * **Adres URL**: możesz użyć sugerowanego domyślnego adresu URL lub wprowadzić przyjazny unikatowy adres URL, który można dopamiętać. Następnie ustawienie domyślne jest zalecane, jeśli masz już subskrypcję platformy Azure. Możesz zacząć od 7-dniowego planu cenowego w wersji próbnej i wybrać konwersję do standardowego planu cenowego w dowolnym momencie przed wygaśnięciem okresu bezpłatnego.
    * **Informacje o rozliczeniach**: katalog, subskrypcja platformy Azure i szczegółowe informacje o regionie są wymagane do aprowizacji zasobów.
    * **Utwórz** : wybierz pozycję Utwórz w dolnej części strony, aby wdrożyć aplikację.
 
-> [!div class="mx-imgBorder"]
-> ![połączonego pulpitu nawigacyjnego logistyki](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+    > [!div class="mx-imgBorder"]
+    > ![połączonego pulpitu nawigacyjnego logistyki](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![informacje o rozliczeniu z rozliczeniami logistycznymi](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>Przechodzenie przez aplikację 
 

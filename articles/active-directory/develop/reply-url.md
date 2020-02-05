@@ -10,17 +10,22 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702525"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983099"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Identyfikator URI przekierowania lub adres URL odpowiedzi i ograniczenia
 
 Identyfikator URI przekierowania lub adres URL odpowiedzi to lokalizacja, do której serwer autoryzacji wyśle użytkownika, gdy aplikacja zostanie pomyślnie autoryzowana, a następnie zostanie udzielony kod autoryzacji lub token dostępu. Kod lub token jest zawarty w identyfikatorze URI przekierowania lub token odpowiedzi, dlatego ważne jest, aby zarejestrować poprawną lokalizację w ramach procesu rejestracji aplikacji.
 
+ Do adresów URL odpowiedzi są stosowane następujące ograniczenia:
+
+    * Adres URL odpowiedzi musi rozpoczynać się od schematu `https`.
+    * W adresie URL odpowiedzi jest rozróżniana wielkość liter. Jego wielkość liter musi być zgodna z wielkością liter w ścieżce URL działającej aplikacji. Na przykład jeśli aplikacja zawiera jako część ścieżki `.../abc/response-oidc`, nie określaj `.../ABC/response-oidc` w adresie URL odpowiedzi. Ponieważ przeglądarka sieci Web traktuje ścieżki w miarę uwzględniania wielkości liter, pliki cookie powiązane z `.../abc/response-oidc` mogą być wykluczone w przypadku przekierowania do niezgodnego `.../ABC/response-oidc` adresu URL.
+    
 ## <a name="maximum-number-of-redirect-uris"></a>Maksymalna liczba identyfikatorów URI przekierowania
 
 W poniższej tabeli przedstawiono maksymalną liczbę identyfikatorów URI przekierowania, które można dodać podczas rejestrowania aplikacji.

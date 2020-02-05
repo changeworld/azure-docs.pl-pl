@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 879e1911c715688c2fed4044e23f437b3bbef7b2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 90d171e3353061ffd855d9132c8a7fe40116e3cd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890675"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984107"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Samouczek: wdrażanie i przechodzenie przez szablon aplikacji centrum dystrybucji cyfrowej
 
@@ -34,19 +34,22 @@ Możesz utworzyć aplikację, wykonując następujące czynności
 
 1. Przejdź do witryny sieci Web programu Azure IoT Central Application Manager. Wybierz pozycję **kompilacja** na pasku nawigacyjnym po lewej stronie, a następnie kliknij kartę **sprzedaż detaliczna** .
 
-> [!div class="mx-imgBorder"]
-> ![centrum dystrybucji cyfrowej](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![centrum dystrybucji cyfrowej](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
-2. Wybierz kartę **sprzedaż detaliczna** , a następnie wybierz pozycję **Utwórz aplikację** w obszarze * * aplikacja centrum dystrybucji Digital * *
+2. Wybierz kartę **sprzedaż detaliczna** i wybierz pozycję **Utwórz aplikację** w obszarze **aplikacja centrum dystrybucji cyfrowej**
 
 3. **Utwórz aplikację** spowoduje otwarcie formularza nowej aplikacji i zapełnienie żądanych szczegółów, jak pokazano poniżej.
    **Nazwa aplikacji**: możesz użyć domyślnej sugerowanej nazwy lub wprowadzić przyjazną nazwę aplikacji.
-   **Adres URL**: możesz użyć sugerowanego domyślnego adresu URL lub wpisać przyjazny unikatowy, zapamiętany adres URL. Następnie ustawienie domyślne jest zalecane, jeśli masz już subskrypcję platformy Azure. W przeciwnym razie możesz zacząć korzystać z siedmiu-dniowej bezpłatnej wersji próbnej i wybrać opcję konwersji płatnej zgodnie z rzeczywistym użyciem w dowolnym momencie przed wygaśnięciem końcowej wersji.
+   **Adres URL**: możesz użyć sugerowanego domyślnego adresu URL lub wprowadzić przyjazny unikatowy adres URL, który można dopamiętać. Następnie ustawienie domyślne jest zalecane, jeśli masz już subskrypcję platformy Azure. Możesz zacząć od 7-dniowego planu cenowego w wersji próbnej i wybrać konwersję do standardowego planu cenowego w dowolnym momencie przed wygaśnięciem okresu bezpłatnego.
    **Informacje o rozliczeniach**: katalog, subskrypcja platformy Azure i szczegółowe informacje o regionie są wymagane do aprowizacji zasobów.
    **Utwórz**: wybierz pozycję Utwórz w dolnej części strony, aby wdrożyć aplikację.
 
-> [!div class="mx-imgBorder"]
-> ![centrum dystrybucji cyfrowej](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > [!div class="mx-imgBorder"]
+    > ![centrum dystrybucji cyfrowej](./media/tutorial-iot-central-ddc/ddc-create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![informacje o rozliczeniu dystrybucji cyfrowej](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>Przechodzenie przez pulpit nawigacyjny aplikacji 
 

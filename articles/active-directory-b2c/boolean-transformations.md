@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dcebcc3e2021938f3fd3bde236ef08e4f26b8a97
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949895"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983082"
 ---
 # <a name="boolean-claims-transformations"></a>Przekształcenia logiczne oświadczeń
 
@@ -114,6 +114,44 @@ Profil techniczny z własnym potwierdzeniem wywołuje profil techniczny **logowa
     - **valueToCompareTo**: true
 - Wynik: zgłoszono błąd
 
+## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
+
+Sprawdza, czy wartość logiczna oświadczeń jest równa `true` lub `false`, i zwraca wynik kompresji. 
+
+| Element | TransformationClaimType  | Typ danych  | Uwagi |
+| ---- | ------------------------ | ---------- | ----- |
+| Oświadczenie inputclaim | Oświadczenie inputclaim | wartość logiczna | Wartość oświadczenia, która ma zostać potwierdzona. |
+| InputParameter |valueToCompareTo | wartość logiczna | Wartość do porównania (true lub false). |
+| Oświadczenie outputclaim | Oświadczenie inputclaim | wartość logiczna | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+
+
+Następująca transformacja oświadczeń pokazuje, jak sprawdzić wartość elementu ClaimType Boolean z wartością `true`. Jeśli wartość `IsAgeOver21Years` ClaimType jest równa `true`, transformacja oświadczeń zwraca `true`, w przeciwnym razie `false`.
+
+```XML
+<ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="valueToCompareTo" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+      <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Przykład
+
+- Oświadczenia wejściowe:
+    - **oświadczenie inputclaim**: FAŁSZ
+- Parametry wejściowe:
+    - **valueToCompareTo**: true
+- Oświadczenia wyjściowe:
+    - **compareResult**: FAŁSZ 
+
+
+
 ## <a name="notclaims"></a>NotClaims
 
 Wykonuje operację not dla oświadczenie inputclaim logicznego i ustawia oświadczenie outputclaim z wynikiem operacji.
@@ -174,4 +212,3 @@ Następująca transformacja oświadczeń pokazuje, jak `Or` dwa elementy Claims 
     - **inputClaim2**: FAŁSZ
 - Oświadczenia wyjściowe:
     - **oświadczenie outputclaim**: true
-

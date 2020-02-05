@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647230"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990610"
 ---
 # <a name="add-storage-targets"></a>Dodawanie lokalizacji docelowych magazynu
 
@@ -38,8 +38,6 @@ Nowy kontener można utworzyć na podstawie tej strony tuż przed dodaniem go.
 Aby zdefiniować kontener obiektów blob platformy Azure, wprowadź te informacje.
 
 ![zrzut ekranu przedstawiający stronę Dodawanie miejsca docelowego magazynu, wypełniony informacjami o nowym obiekcie docelowym usługi Azure Blob Storage](media/hpc-cache-add-blob.png)
-
-<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **Nazwa docelowego magazynu** — Ustaw nazwę identyfikującą ten element docelowy magazynu w pamięci podręcznej platformy Azure HPC.
 * **Typ docelowy** — wybierz **obiekt BLOB**.
@@ -150,9 +148,9 @@ Ta tabela zawiera podsumowanie różnic między modelami użycia:
 
 | Model użycia | Tryb buforowania | Weryfikacja zaplecza | Maksymalne opóźnienie zapisu |
 | ---- | ---- | ---- | ---- |
-| Czytaj duże, rzadko występujące zapisy | Odczyt | Nigdy | Brak |
+| Czytaj duże, rzadko występujące zapisy | Odczytywanie | Nigdy | Brak |
 | Ponad 15% zapisów | Odczyt/zapis | Nigdy | 1 godzina |
-| Klienci pomijają pamięć podręczną | Odczyt | 30 sekund | Brak |
+| Klienci pomijają pamięć podręczną | Odczytywanie | 30 sekund | Brak |
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c50edb03fe849c70596c0bfb3cdc2dafa15f136f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480205"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982793"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Zdefiniuj profil techniczny hasła jednorazowego w zasadach niestandardowych Azure AD B2C
 
@@ -77,6 +77,7 @@ Następujące ustawienia mogą służyć do konfigurowania generowania i obsług
 | CodeLength | Nie | Długość kodu. Wartością domyślną jest `6`. |
 | CharacterSet | Nie | Zestaw znaków dla kodu sformatowany do użycia w wyrażeniu regularnym. Na przykład `a-z0-9A-Z`. Wartością domyślną jest `0-9`. Zestaw znaków musi zawierać co najmniej 10 różnych znaków w określonym zestawie. |
 | NumRetryAttempts | Nie | Liczba prób weryfikacji przed kodem jest uznawana za nieprawidłową. Wartością domyślną jest `5`. |
+| Operacja | Tak | Operacja do wykonania. Możliwe wartości: `GenerateCode`lub `VerifyCode`. |
 | ReuseSameCode | Nie | Czy należy określić zduplikowany kod zamiast generować nowy kod, gdy dany kod nie wygasł i jest nadal ważny. Wartością domyślną jest `false`. |
 
 ### <a name="returning-error-message"></a>Zwracany komunikat o błędzie

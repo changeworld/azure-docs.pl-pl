@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4c729d2502464df021df4d03e989d489b2d1ecea
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 89c4dd294cbbf0953545e1055e32adfc5f7cce28
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954593"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990797"
 ---
 # <a name="manage-your-iot-central-application"></a>Zarządzanie aplikacją IoT Central
 
@@ -40,9 +40,9 @@ Aby zmienić obraz aplikacji, zobacz [Przygotowywanie i przekazywanie obrazów d
 
 ## <a name="copy-an-application"></a>Kopiowanie aplikacji
 
-Można utworzyć kopię dowolnej aplikacji, minus wszystkie wystąpienia urządzeń, historię danych urządzeń i dane użytkowników. Kopia jest aplikacją z płatność zgodnie z rzeczywistym użyciem, za którą zostanie naliczona opłata. W ten sposób nie można utworzyć aplikacji w wersji próbnej.
+Można utworzyć kopię dowolnej aplikacji, minus wszystkie wystąpienia urządzeń, historię danych urządzeń i dane użytkowników. Kopia korzysta ze standardowego planu cenowego, w którym zostanie naliczona stawka. W ten sposób nie można utworzyć aplikacji korzystającej z planu cen bezpłatnych.
 
-Wybierz pozycję **Kopiuj**. W oknie dialogowym Wprowadź szczegóły nowej aplikacji z opcją płatność zgodnie z rzeczywistym użyciem. Następnie wybierz pozycję **Kopiuj** , aby potwierdzić, że chcesz kontynuować. Dowiedz się więcej o polach w tym formularzu w temacie [Tworzenie aplikacji](quick-deploy-iot-central.md) — Szybki Start.
+Wybierz pozycję **Kopiuj**. W oknie dialogowym Wprowadź szczegóły nowej aplikacji. Następnie wybierz pozycję **Kopiuj** , aby potwierdzić, że chcesz kontynuować. Dowiedz się więcej o polach w tym formularzu w temacie [Tworzenie aplikacji](quick-deploy-iot-central.md) — Szybki Start.
 
 ![Strona Ustawienia aplikacji](media/howto-administer/appcopy2.png)
 
@@ -71,7 +71,7 @@ Przykłady korzystania z zestawów SDK Azure Resource Manager można znaleźć w
 
 Aby dowiedzieć się więcej, zobacz następujące repozytoria i pakiety usługi GitHub:
 
-| Język | Kopie | Pakiet |
+| Język | Repozytorium | Pakiet |
 | ---------| ---------- | ------- |
 | Węzeł | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)

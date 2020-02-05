@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833897"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013754"
 ---
 ## <a name="limitations"></a>Ograniczenia
 
 - Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
-- Obsługiwane są następujące serie maszyn wirtualnych: DSv3 i ESv3. 
+- Obsługiwane są następujące serie maszyn wirtualnych: DSv3, ESv3 i Fsv2. 
 
 ## <a name="benefits"></a>Korzyści 
 
@@ -73,7 +73,7 @@ Infrastruktura obsługująca maszyny wirtualne może być czasami aktualizowana 
 **Kontrola konserwacji** udostępnia klientom opcję pomijania regularnych aktualizacji platformy zaplanowanych na ich dedykowanych hostach, a następnie zastosuje ją w wybranym momencie w 35 dziennym oknie.
 
 > [!NOTE]
->  Kontrola konserwacji jest obecnie w ograniczonym etapie wersji zapoznawczej i wymaga procesu dołączania. Zastosuj do tej wersji zapoznawczej, przesyłając [ankietę nominacji](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u).
+>  Kontrola konserwacji jest obecnie dostępna w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz **Kontrolowanie aktualizacji z kontrolą konserwacji przy użyciu [interfejsu wiersza polecenia](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) lub [programu PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)** .
 
 ## <a name="capacity-considerations"></a>Zagadnienia dotyczące wydajności
 

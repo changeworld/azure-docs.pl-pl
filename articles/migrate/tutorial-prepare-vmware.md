@@ -1,18 +1,15 @@
 ---
 title: Przygotowywanie maszyn wirtualnych VMware do oceny/migracji za pomocą Azure Migrate
 description: Dowiedz się, jak przygotować się do oceny/migracji maszyn wirtualnych VMware za pomocą Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 25dab303ce62e33a09346d14c0a08a43b715075d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028906"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989138"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Przygotowywanie maszyn wirtualnych VMware na potrzeby oceny i migracji na platformę Azure
 
@@ -41,8 +38,12 @@ Wymagane są te uprawnienia.
 **Zadanie podrzędne** | **Uprawnienia**
 --- | ---
 **Tworzenie projektu Azure Migrate** | Twoje konto platformy Azure wymaga uprawnień do utworzenia projektu.
-**Rejestrowanie urządzenia Azure Migrate** | Azure Migrate używa uproszczonego urządzenia Azure Migrate do oceny maszyn wirtualnych VMware z oceną serwera Azure Migrate oraz do uruchamiania [migracji bez agentów](server-migrate-overview.md) maszyn wirtualnych VMware z migracją na serwer Azure Migrate. To urządzenie umożliwia odnajdywanie maszyn wirtualnych i wysyłanie metadanych maszyn wirtualnych i danych wydajności do Azure Migrate.<br/><br/>Podczas rejestracji Azure Migrate tworzy dwie aplikacje Azure Active Directory (Azure AD), które jednoznacznie identyfikują urządzenie i potrzebują uprawnień do tworzenia tych aplikacji.<br/> — Pierwsza aplikacja komunikuje się z punktami końcowymi usługi Azure Migrate.<br/> — Druga aplikacja uzyskuje dostęp do Azure Key Vault utworzonego podczas rejestracji w celu przechowywania ustawień konfiguracji i informacji o aplikacji usługi Azure AD.
+**Rejestrowanie urządzenia Azure Migrate** | Azure Migrate używa uproszczonego urządzenia Azure Migrate do oceny maszyn wirtualnych VMware z oceną serwera Azure Migrate oraz do uruchamiania [migracji bez agentów](server-migrate-overview.md) maszyn wirtualnych VMware z migracją na serwer Azure Migrate. To urządzenie umożliwia odnajdywanie maszyn wirtualnych i wysyłanie metadanych maszyn wirtualnych i danych wydajności do Azure Migrate.<br/><br/>Podczas rejestracji urządzenia następujący dostawcy rejestru są zarejestrowani z subskrypcją wybraną w ramach urządzenia — Microsoft. OffAzure, Microsoft. migrować i Microsoft. Rejestracja dostawcy zasobów umożliwia skonfigurowanie subskrypcji do pracy z dostawcą zasobów. Do zarejestrowania dostawców zasobów należy mieć rolę współautor lub właściciela w ramach subskrypcji.<br/><br/> W ramach dołączania Azure Migrate tworzy dwie aplikacje Azure Active Directory (Azure AD):<br/> — Pierwsza aplikacja jest używana do komunikacji (uwierzytelniania i autoryzacji) między agentami działającymi na urządzeniu przy użyciu odpowiednich usług działających na platformie Azure. Ta aplikacja nie ma uprawnień do wykonywania wywołań ARM lub dostępu RBAC w żadnym z zasobów.<br/> — Druga aplikacja jest używana wyłącznie w celu uzyskania dostępu do magazynu kluczy utworzonego w ramach subskrypcji użytkownika w celu migracji bez wykorzystania agentów. Jest on dostarczany z dostępem RBAC w Azure Key Vault (utworzony w dzierżawie klienta) w przypadku inicjowania odnajdowania z urządzenia.
 **Tworzenie Key Vault** | Aby przeprowadzić migrację maszyn wirtualnych VMware przy użyciu migracji Azure Migrate serwera, Azure Migrate tworzy Key Vault do zarządzania kluczami dostępu do konta magazynu replikacji w ramach subskrypcji. Aby utworzyć magazyn, musisz mieć uprawnienia do przypisywania ról w grupie zasobów, w której znajduje się projekt Azure Migrate.
+
+
+
+
 
 
 ### <a name="assign-permissions-to-create-project"></a>Przypisywanie uprawnień do tworzenia projektu
@@ -80,9 +81,9 @@ Dzierżawy/Administrator globalny mogą udzielić uprawnień w następujący spo
 
 Dzierżawa/Administrator globalny może przypisać rolę dewelopera aplikacji do konta. [Dowiedz się więcej](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
-### <a name="assign-role-assignment-permissions"></a>Przypisywanie uprawnień do przypisywania ról
+### <a name="assign-permissions-to-create-a-key-vault"></a>Przypisywanie uprawnień do tworzenia Key Vault
 
-Aby umożliwić Azure Migrate tworzenia Key Vault, przypisz uprawnienia do przypisywania ról w następujący sposób:
+Aby umożliwić Azure Migrate tworzenia Key Vault, należy przypisać uprawnienia w następujący sposób:
 
 1. W grupie zasobów w Azure Portal wybierz pozycję **Kontrola dostępu (IAM)** .
 2. W obszarze **Sprawdź dostęp**Znajdź odpowiednie konto i kliknij je, aby wyświetlić uprawnienia.

@@ -4,12 +4,12 @@ description: Dowiedz się, jak zarządzać kopiami zapasowymi maszyny wirtualnej
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 3c4c4341286b7ee4f382192d291e08c83ff64994
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172975"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989692"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Zarządzanie kopiami zapasowymi maszyn wirtualnych platformy Azure za pomocą usługi Azure Backup
 
@@ -30,7 +30,7 @@ Kopiami zapasowymi można zarządzać przy użyciu pulpitu nawigacyjnego i przec
 
 Aby wyświetlić maszyny wirtualne na pulpicie nawigacyjnym magazynu:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 2. W menu centrum wybierz pozycję **Przeglądaj**. Na liście zasobów wpisz **Usługi odzyskiwania**. Podczas wpisywania lista jest filtrowana na podstawie danych wejściowych. Wybierz **Recovery Services magazynów**.
 
     ![Tworzenie magazynu usługi Recovery Services](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -38,32 +38,32 @@ Aby wyświetlić maszyny wirtualne na pulpicie nawigacyjnym magazynu:
 3. Aby ułatwić sobie korzystanie z programu, kliknij prawym przyciskiem myszy magazyn i wybierz pozycję **Przypnij do pulpitu nawigacyjnego**.
 4. Otwórz pulpit nawigacyjny magazynu.
 
-    ![Otwórz blok pulpit nawigacyjny i ustawienia magazynu](./media/backup-azure-manage-vms/full-view-rs-vault.png)
+    ![Otwórz okienko pulpit nawigacyjny i ustawienia magazynu](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
 5. Na kafelku **elementy kopii zapasowej** wybierz pozycję **Azure Virtual Machines**.
 
     ![Otwórz kafelek elementy kopii zapasowej](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. W bloku **elementy kopii zapasowej** można wyświetlić listę chronionych maszyn wirtualnych. W tym przykładzie magazyn chroni jedną maszynę wirtualną: demobackup.  
+6. W okienku **elementy kopii zapasowej** można wyświetlić listę chronionych maszyn wirtualnych. W tym przykładzie magazyn chroni jedną maszynę wirtualną: demobackup.  
 
-    ![Wyświetlanie bloku elementów kopii zapasowej](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Wyświetlanie okienka elementy kopii zapasowej](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 7. Na pulpicie nawigacyjnym elementu magazynu zmodyfikuj zasady tworzenia kopii zapasowych, uruchom kopię zapasową na żądanie, Zatrzymaj lub Wznów ochronę maszyn wirtualnych, Usuń dane kopii zapasowej, Wyświetl punkty przywracania i uruchom przywracanie.
 
-    ![Pulpit nawigacyjny elementy kopii zapasowej i blok ustawienia](./media/backup-azure-manage-vms/item-dashboard-settings.png)
+    ![Pulpit nawigacyjny elementy kopii zapasowej i okienko ustawień](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
 ## <a name="manage-backup-policy-for-a-vm"></a>Zarządzanie zasadami tworzenia kopii zapasowych dla maszyny wirtualnej
 
 Aby zarządzać zasadami tworzenia kopii zapasowych:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/). Otwórz pulpit nawigacyjny magazynu.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/). Otwórz pulpit nawigacyjny magazynu.
 2. Na kafelku **elementy kopii zapasowej** wybierz pozycję **Azure Virtual Machines**.
 
     ![Otwórz kafelek elementy kopii zapasowej](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. W bloku **elementy kopii zapasowej** można wyświetlić listę chronionych maszyn wirtualnych i stan ostatniej kopii zapasowej z najnowszym czasem punktów przywracania.
+3. W okienku **elementy kopii zapasowej** można wyświetlić listę chronionych maszyn wirtualnych i stan ostatniej kopii zapasowej z najnowszym czasem punktów przywracania.
 
-    ![Wyświetlanie bloku elementów kopii zapasowej](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Wyświetlanie okienka elementy kopii zapasowej](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 4. Na pulpicie nawigacyjnym elementu magazynu można wybrać zasady tworzenia kopii zapasowych.
 
@@ -85,8 +85,8 @@ Aby wyzwolić kopię zapasową na żądanie:
 
     ![Opcja Utwórz kopię zapasową teraz](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. W obszarze **Typ zarządzania kopiami zapasowymi**wybierz pozycję **maszyna wirtualna platformy Azure**. Zostanie wyświetlony blok **element kopia zapasowa (maszyna wirtualna platformy Azure)** .
-3. Wybierz maszynę wirtualną i wybierz pozycję Utwórz **kopię zapasową teraz** , aby utworzyć kopię zapasową na żądanie. Zostanie wyświetlony blok **kopia zapasowa teraz** .
+2. W obszarze **Typ zarządzania kopiami zapasowymi**wybierz pozycję **maszyna wirtualna platformy Azure**. Zostanie wyświetlone okienko **element kopia zapasowa (maszyna wirtualna platformy Azure)** .
+3. Wybierz maszynę wirtualną i wybierz pozycję Utwórz **kopię zapasową teraz** , aby utworzyć kopię zapasową na żądanie. Zostanie wyświetlone okienko **Tworzenie kopii zapasowej teraz** .
 4. W polu **Zachowaj kopię zapasową** do Określ datę przechowywania kopii zapasowej.
 
     ![Kalendarz tworzenia kopii zapasowej teraz](./media/backup-azure-manage-vms/backup-now-check.png)
@@ -128,7 +128,7 @@ Aby zatrzymać ochronę i usunąć dane maszyny wirtualnej:
 
 ## <a name="resume-protection-of-a-vm"></a>Wznów ochronę maszyny wirtualnej
 
-W przypadku wybrania opcji [Zatrzymaj ochronę i Zachowaj dane kopii zapasowej](#stop-protection-and-retain-backup-data) podczas zatrzymywania ochrony maszyny wirtualnej można użyć polecenie **Wznów tworzenie kopii zapasowej**. Ta opcja jest niedostępna w przypadku wybrania opcji [Zatrzymaj ochronę i Usuń dane kopii](#stop-protection-and-delete-backup-data) zapasowej lub [Usuń dane kopii zapasowej](#delete-backup-data).
+W przypadku wybrania opcji [Zatrzymaj ochronę i Zachowaj dane kopii zapasowej](#stop-protection-and-retain-backup-data) podczas zatrzymywania ochrony maszyny wirtualnej możesz użyć przycisku **Wznów tworzenie kopii zapasowej**. Ta opcja jest niedostępna w przypadku wybrania opcji [Zatrzymaj ochronę i Usuń dane kopii](#stop-protection-and-delete-backup-data) zapasowej lub [Usuń dane kopii zapasowej](#delete-backup-data).
 
 Aby wznowić ochronę maszyny wirtualnej:
 
@@ -157,6 +157,8 @@ Istnieją dwa sposoby usuwania danych kopii zapasowej maszyny wirtualnej:
     ![Usuwanie danych kopii zapasowej](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
   * Aby usunąć dane kopii zapasowej dla elementu, wybierz pozycję **Usuń**. Komunikat z powiadomieniem informuje o tym, że dane kopii zapasowej zostały usunięte.
+
+Aby chronić dane, Azure Backup obejmuje funkcję usuwania nietrwałego. W przypadku usuwania nietrwałego nawet po usunięciu kopii zapasowej (wszystkie punkty odzyskiwania) maszyny wirtualnej dane kopii zapasowej są przechowywane przez 14 dodatkowych dni. Aby uzyskać więcej informacji, zobacz [dokumentację usuwania nietrwałego](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
 
   > [!NOTE]
   > Usunięcie danych kopii zapasowej powoduje usunięcie wszystkich skojarzonych punktów odzyskiwania. Nie można wybrać określonych punktów odzyskiwania do usunięcia.

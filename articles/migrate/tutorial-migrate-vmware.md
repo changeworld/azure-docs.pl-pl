@@ -4,12 +4,12 @@ description: Dowiedz się, jak uruchomić migrację maszyn wirtualnych VMware be
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 79ba3f17b225357267cbd114659851614279bb7f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028693"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989369"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrowanie maszyn wirtualnych VMware na platformę Azure (bez wykorzystania agentów)
 
@@ -97,7 +97,7 @@ Azure Migrate wymaga wprowadzenia zmian w maszynie wirtualnej w celu zapewnienia
 
 ### <a name="prepare-windows-server-vms"></a>Przygotowywanie maszyn wirtualnych z systemem Windows Server
 
-**Akcja** | **Szczegóły** | **Instrukcje**
+**Akcja** | **Szczegóły** | **Wskazówek**
 --- | --- | ---
 Upewnij się, że woluminy systemu Windows na maszynie wirtualnej platformy Azure używają tych samych przypisań liter dysku co lokalna maszyna wirtualna. | Skonfiguruj zasady sieci SAN jako wszystkie. | 1. Zaloguj się do maszyny wirtualnej przy użyciu konta administratora, a następnie otwórz okno polecenia.<br/> 2. Wpisz polecenie **diskpart** , aby uruchomić narzędzie Diskpart.<br/> 3. Wpisz **zasady sieci San = OnlineAll**<br/> 4. wpisz exit, aby opuścić program DiskPart, i Zamknij wiersz polecenia.
 Włączanie konsoli dostępu szeregowego platformy Azure dla maszyny wirtualnej platformy Azure | Ułatwia to rozwiązywanie problemów. Nie ma potrzeby ponownego uruchamiania maszyny wirtualnej. Maszyna wirtualna platformy Azure rozpocznie rozruch przy użyciu obrazu dysku, co jest równoznaczne z ponownym uruchomieniem nowej maszyny wirtualnej. | Postępuj zgodnie z [tymi instrukcjami](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console) , aby włączyć.
@@ -148,7 +148,7 @@ Po ukończeniu odnajdywania można rozpocząć replikację maszyn wirtualnych VM
 
 5. W obszarze **Maszyny wirtualne** wyszukaj potrzebne maszyny wirtualne i sprawdź każdą maszynę wirtualną, którą chcesz migrować. Następnie kliknij przycisk **Dalej: ustawienia docelowe**.
 
-    ![Wybierz maszyny wirtualne](./media/tutorial-migrate-vmware/select-vms.png)
+    ![Wybieranie maszyn wirtualnych](./media/tutorial-migrate-vmware/select-vms.png)
 
 6. W obszarze **Ustawienia elementu docelowego** wybierz subskrypcję i docelowy region migracji, a następnie określ grupę zasobów, w której będą znajdować się maszyny wirtualne platformy Azure po migracji. W obszarze **Sieć wirtualna** wybierz sieć wirtualną/podsieć platformy Azure, do której zostaną dołączone maszyny wirtualne platformy Azure po migracji.
 7. W obszarze **Korzyść użycia hybrydowego platformy Azure**:
@@ -184,7 +184,7 @@ Jeśli jest to pierwsza maszyna wirtualna, która jest replikowana w projekcie A
 - **Service Bus**: migracja serwera Azure Migrate przy użyciu usługi Service Bus wysyła do urządzenia komunikaty aranżacji replikacji.
 - **Konto magazynu bramy**: Migracja serwera używa konta magazynu bramy do przechowywania informacji o stanie replikowanych maszyn wirtualnych.
 - **Konto magazynu dzienników**: urządzenie Azure Migrate przekazuje dzienniki replikacji dla maszyn wirtualnych do konta magazynu dzienników. Azure Migrate stosuje informacje o replikacji do dysków zarządzanych repliki.
-- **Magazyn kluczy**: urządzenie Azure Migrate używa magazynu kluczy do zarządzania parametrami połączenia dla magistrali usług i kluczy dostępu dla kont magazynu używanych w replikacji. Należy skonfigurować uprawnienia, które Magazyn kluczy musi uzyskać dostęp do konta magazynu podczas przygotowywania. [Przejrzyj te uprawnienia](tutorial-prepare-vmware.md#assign-role-assignment-permissions).   
+- **Magazyn kluczy**: urządzenie Azure Migrate używa magazynu kluczy do zarządzania parametrami połączenia dla magistrali usług i kluczy dostępu dla kont magazynu używanych w replikacji. Należy skonfigurować uprawnienia, które Magazyn kluczy musi uzyskać dostęp do konta magazynu podczas przygotowywania. [Przejrzyj te uprawnienia](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault).   
 
 
 ## <a name="track-and-monitor"></a>Śledzenie i monitorowanie

@@ -1,27 +1,23 @@
 ---
-title: Migrowanie lokalnych maszyn fizycznych lub maszyn wirtualnych na platformę Azure za pomocą migracji Azure Migrate Server | Microsoft Docs
-description: W tym artykule opisano sposób migrowania lokalnych maszyn fizycznych lub maszyn wirtualnych na platformę Azure przy użyciu migracji Azure Migrate Server.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Migrowanie maszyn jako serwera fizycznego na platformę Azure za pomocą Azure Migrate.
+description: W tym artykule opisano sposób migrowania maszyn fizycznych na platformę Azure przy użyciu Azure Migrate.
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.author: raynew
+ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028805"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989760"
 ---
-# <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrowanie serwerów fizycznych lub zwirtualizowanych na platformę Azure 
+# <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrowanie maszyn jako serwerów fizycznych na platformę Azure
 
-W tym artykule pokazano, jak przeprowadzić migrację fizycznych lub zwirtualizowanych serwerów na platformę Azure. Narzędzie migracji Azure Migrate Server oferuje migrację serwerów fizycznych i zwirtualizowanych przy użyciu replikacji opartej na agentach. Za pomocą tego narzędzia można migrować szeroką gamę maszyn na platformę Azure:
+W tym artykule opisano sposób migrowania maszyn jako serwerów fizycznych na platformę Azure przy użyciu narzędzia do migracji Azure Migrate: Server. Migrowanie maszyn przez traktowanie ich jako serwerów fizycznych jest przydatne w wielu scenariuszach:
 
 - Migruj lokalne serwery fizyczne.
 - Migrowanie maszyn wirtualnych zwirtualizowanych przez platformy takie jak Xen, KVM.
-- Migrowanie maszyn wirtualnych funkcji Hyper-V lub VMware. Jest to przydatne, jeśli z jakiegoś powodu nie można użyć standardowego przepływu migracji, który Azure Migrate migracji serwera dla [funkcji Hyper-V](tutorial-migrate-hyper-v.md), migracji [bez agenta VMware](tutorial-migrate-vmware.md) lub migracji [opartej na agencie VMware](tutorial-migrate-vmware-agent.md) .
+- Migrowanie maszyn wirtualnych funkcji Hyper-V lub oprogramowania VMware, jeśli z jakiegoś powodu nie można użyć standardowego procesu migracji dla [funkcji Hyper-V](tutorial-migrate-hyper-v.md)lub migracji [VMware](server-migrate-overview.md) .
 - Migrowanie maszyn wirtualnych działających w chmurach prywatnych.
 - Migrowanie maszyn wirtualnych działających w chmurach publicznych, takich jak Amazon Web Services (AWS) lub Google Cloud Platform (GCP).
 
@@ -175,7 +171,7 @@ Pierwszym krokiem migracji jest skonfigurowanie urządzenia do replikacji. Pobie
 
 ### <a name="download-the-replication-appliance-installer"></a>Pobierz Instalatora urządzenia replikacji
 
-1. Na **serwerach**Azure Migrate Project > w programie ***Azure Migrate: Migracja serwera**, kliknij przycisk **odkryj**.
+1. Na **serwerach**Azure Migrate Project >, w **Azure Migrate: Migracja serwera**, kliknij przycisk **odkryj**.
 
     ![Odnajdywanie maszyn wirtualnych](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 
@@ -205,7 +201,7 @@ Zakończenie rejestracji może potrwać do 15 minut, dopóki odnalezione maszyny
 
 ## <a name="install-the-mobility-service"></a>Instalowanie usługi mobilności
 
-Na maszynach, które mają zostać zmigrowane, należy zainstalować agenta usługi mobilności. Instalatory agentów są dostępne na urządzeniu replikacji. Możesz znaleźć odpowiedni Instalator i zainstalować agenta na każdej maszynie, która ma zostać zmigrowana. W tym celu wykonaj następujące czynności:
+Na maszynach, które mają zostać zmigrowane, należy zainstalować agenta usługi mobilności. Instalatory agentów są dostępne na urządzeniu replikacji. Możesz znaleźć odpowiedni Instalator i zainstalować agenta na każdej maszynie, która ma zostać zmigrowana. Wykonaj następujące czynności:
 
 1. Zaloguj się do urządzenia replikacji.
 2. Przejdź do **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**.
@@ -266,8 +262,7 @@ Teraz wybierz maszyny do migracji.
 
 2. W obszarze **replikacja**> **Ustawienia źródła** > **czy maszyny są zwirtualizowane?** wybierz opcję **niezwirtualizowane/inne**.
 3. W **urządzeniu lokalnym**wybierz nazwę skonfigurowanego urządzenia Azure Migrate.
-4. W programie **vCenter Server**Określ nazwę serwera vCenter do zarządzania maszynami wirtualnymi lub serwer vSphere, na którym są hostowane maszyny wirtualne.
-5. W obszarze **serwer przetwarzania**wybierz nazwę urządzenia replikacji.
+4. W obszarze **serwer przetwarzania**wybierz nazwę urządzenia replikacji.
 6. W obszarze **poświadczenia gościa**należy określić konto administratora maszyny wirtualnej, które będzie używane do instalacji wypychanej usługi mobilności. W tym samouczku zainstalowano usługę mobilności ręcznie, więc można dodać dowolne konto fikcyjne. Następnie kliknij przycisk **Dalej: maszyny wirtualne**.
 
     ![Replikowanie maszyn wirtualnych](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
@@ -275,7 +270,7 @@ Teraz wybierz maszyny do migracji.
 7. W **Virtual Machines**w **ustawieniach migracji importu z oceny?** pozostaw ustawienie domyślne **nie, określ ustawienia migracji ręcznie**.
 8. Sprawdź wszystkie maszyny wirtualne, które chcesz zmigrować. Następnie kliknij przycisk **Dalej: ustawienia docelowe**.
 
-    ![Wybierz maszyny wirtualne](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
+    ![Wybieranie maszyn wirtualnych](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 
 9. W obszarze **Ustawienia elementu docelowego** wybierz subskrypcję i docelowy region migracji, a następnie określ grupę zasobów, w której będą znajdować się maszyny wirtualne platformy Azure po migracji.

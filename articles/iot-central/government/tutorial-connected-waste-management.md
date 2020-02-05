@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 771e4a822df3e7d8eeee53174d657426bf226372
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112644"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990038"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Samouczek: Tworzenie połączonej aplikacji zarządzania odpadami w IoT Central
 
@@ -64,7 +64,10 @@ Aby utworzyć nową aplikację usługi Azure IoT Central połączonego zarządza
 5. Kliknij przycisk **Utwórz** w dolnej części strony. 
 
     ![Strona aplikacji Azure IoT Central tworzenie połączonych odpadów](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    
+    ![IoT Central Azure — tworzenie połączonych informacji rozliczeniowych](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
+ 
 6. Utworzono przyłączoną aplikację zarządzania odpadami przy użyciu **szablonu zarządzania odpadami**w usłudze Azure IoT Central. 
 
 Gratulacje! Nowo utworzona aplikacja zawiera wstępnie skonfigurowane:
@@ -131,7 +134,7 @@ Aby wyświetlić szablon urządzenia:
 
 2. Na liście szablony urządzeń zostanie wyświetlony **pojemnik połączone odpady**. Otwórz program, klikając nazwę.
 
-3. Familirize z szablonem urządzenia możliwości. Zobaczysz, że definiuje on czujniki, takie jak *poziom wypełnienia*, *odor*, *waga*, *Lokalizacja* itd.
+3. Zapoznaj się z możliwościami szablonu urządzenia. Zobaczysz, że definiuje on czujniki, takie jak *poziom wypełnienia*, *odor*, *waga*, *Lokalizacja* itd.
 
    ![Szablon urządzenia](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -157,7 +160,7 @@ Spróbuj dostosować następujące elementy:
 
   ![Widoki szablonów urządzeń](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
 
-### <a name="publish"></a>Publikowanie 
+### <a name="publish"></a>Publikuj 
 
 * Jeśli zostały wprowadzone jakiekolwiek zmiany, upewnij się, że szablon urządzenia jest **opublikowany** . 
 

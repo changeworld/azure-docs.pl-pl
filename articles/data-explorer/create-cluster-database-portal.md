@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie klastra i bazy danych usługi Azure Data Explorer'
+title: 'Szybki Start: Tworzenie klastra Eksplorator danych i bazy danych platformy Azure'
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć klaster i bazę danych usługi Azure Data Explorer oraz pozyskiwać (ładować) dane.
 author: orspod
 ms.author: orspodek
@@ -7,19 +7,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 10030cf69009c59fa607ad68c3b7ab19c7a22860
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 895b26fc7f35303cbef6c9df543c87ca435c2290
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326724"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984357"
 ---
-# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Szybki start: Tworzenie klastra i bazy danych usługi Azure Data Explorer
+# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Szybki start: tworzenie klastra i bazy danych usługi Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
 > * [Interfejs wiersza polecenia](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
+> * [Program PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Szablon usługi ARM](create-cluster-database-resource-manager.md)
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-cluster"></a>Tworzenie klastra
 
@@ -41,7 +41,7 @@ W grupie zasobów platformy Azure utwórz klaster usługi Azure Data Explorer, k
 
 1. Wyszukaj pozycję *Azure Data Explorer*.
 
-   ![Wyszukaj zasoby](media/create-cluster-database-portal/search-resources.png)
+   ![Wyszukiwanie zasobów](media/create-cluster-database-portal/search-resources.png)
 
 1. W obszarze **Azure Data Explorer** w dolnej części ekranu wybierz pozycję **Utwórz**.
 
@@ -51,19 +51,19 @@ W grupie zasobów platformy Azure utwórz klaster usługi Azure Data Explorer, k
 
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | Subscription | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla klastra.|
-    | Resource group | Twoja grupa zasobów | Użyj istniejącej grupy zasobów lub utwórz nową. |
+    | Subskrypcja | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla klastra.|
+    | Grupa zasobów | Twoja grupa zasobów | Użyj istniejącej grupy zasobów lub utwórz nową. |
     | Nazwa klastra | Unikatowa nazwa klastra | Wybierz unikatową nazwę, która identyfikuje Twój klaster. Do podanej nazwy klastra jest dołączana nazwa domeny *[region].kusto.windows.net*. Nazwa może zawierać tylko małe litery i cyfry. Musi zawierać od 4 do 22 znaków.
     | Region | *Zachodnie stany USA* lub *zachodnie stany USA 2* | Wybierz pozycję *zachodnie stany USA* lub *zachodnie stany USA 2* (Jeśli używane są strefy dostępności) dla tego przewodnika Szybki Start. W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom.
     | Strefy dostępności | *1*, *2*i/lub *3* | Umieść wystąpienia klastra w różnych strefach dostępności w tym samym regionie (opcjonalnie). [Strefy dostępności platformy Azure](/azure/availability-zones/az-overview) są unikatowymi lokalizacjami fizycznymi w tym samym regionie świadczenia usługi Azure. Chronią one klaster Eksplorator danych platformy Azure i dane ze względu na awarię części regionu. Węzły klastra są tworzone domyślnie w tym samym centrum danych. Wybierając kilka stref dostępności, można wyeliminować single point of failure i zapewnić wysoką dostępność. Wdrożenie w strefach dostępności jest możliwe tylko podczas tworzenia klastra i nie można go modyfikować w późniejszym czasie.
-    | Specyfikacje obliczeń | *D13_v2* | Na potrzeby tego przewodnika Szybki start wybierz najtańszą specyfikację. W przypadku systemu produkcyjnego wybierz specyfikację, która najlepiej odpowiada Twoim potrzebom.
+    | Specyfikacja środowiska obliczeniowego | *D13_v2* | Na potrzeby tego przewodnika Szybki start wybierz najtańszą specyfikację. W przypadku systemu produkcyjnego wybierz specyfikację, która najlepiej odpowiada Twoim potrzebom.
     | | | |
 
 1. Wybierz pozycję **Przeglądanie + tworzenie**, aby przejrzeć szczegóły swojego klastra, a następnie wybierz pozycję **Utwórz**, aby aprowizować klaster. Aprowizacja zazwyczaj trwa około 10 minut.
 
 1. Po zakończeniu wdrażania wybierz pozycję **Przejdź do zasobu**.
 
-    ![Przejdź do zasobu](media/create-cluster-database-portal/notification-resource.png)
+    ![Przechodzenie do zasobu](media/create-cluster-database-portal/notification-resource.png)
 
 ## <a name="create-a-database"></a>Tworzenie bazy danych
 
@@ -123,6 +123,6 @@ Jeśli zamierzasz skorzystać z pozostałych przewodników Szybki start i samouc
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Szybki start: Pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer](ingest-data-event-hub.md)
+> [Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer](ingest-data-event-hub.md)
 
 

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 84fa6b1d7f48ac7aea44e693a7df8945ba180d29
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 125cde85d3caa6fd1a33045e85c5383f83a669bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658648"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982538"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Samouczek: wprowadzenie do tworzenia pierwszego eksperymentu z użyciem zestawu SDK języka Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
 Jeśli masz niestandardowe widżety lub Preferuj przy użyciu Jupyter/JupyterLab wybierz listę rozwijaną **Jupyter** po prawej stronie, a następnie wybierz pozycję **Jupyter** lub **JupyterLab**. Zostanie otwarte nowe okno przeglądarki.
 
 > [!NOTE]
-> Wystąpienia obliczeniowe (wersja zapoznawcza) są obecnie dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**z obsługą innych regionów już wkrótce.
+> Wystąpienia obliczeniowe (wersja zapoznawcza) są obecnie dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.  Do uruchomienia notesu można użyć maszyny wirtualnej lub wystąpienia obliczeniowego. Maszyna wirtualna będzie kontynuowała pracę i ponoszenia kosztów, chyba że zostanie zatrzymana. Możesz ją zatrzymać ręcznie z karty **obliczenia** w Studio lub zobaczyć [wpis w blogu](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342) na temat włączania zaplanowanego automatycznego zamknięcia dla maszyn wirtualnych platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki

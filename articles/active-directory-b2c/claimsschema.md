@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3c3bb0cb6726326cda7ede46ba09fa6d17c2ba2c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713075"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983048"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,16 +42,16 @@ Element **ClaimsSchema** definiuje typy roszczeń, do których można odwoływa�
 
 Element **ClaimType** zawiera następujący atrybut:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany dla typu zgłoszenia. Inne elementy mogą używać tego identyfikatora w zasadach. |
+| Identyfikator | Tak | Identyfikator, który jest używany dla typu zgłoszenia. Inne elementy mogą używać tego identyfikatora w zasadach. |
 
 Element **ClaimType** zawiera następujące elementy:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | Tytuł wyświetlany użytkownikom na różnych ekranach. Wartość może być [zlokalizowana](localization.md). |
-| DataType | 0:1 | Typ oświadczenia. Można użyć typów danych Boolean, Date, dateTime, int, Long, String, StringCollection, alternativeSecurityIdCollection. |
+| DisplayName | 1:1 | Tytuł wyświetlany użytkownikom na różnych ekranach. Wartość może być [zlokalizowana](localization.md). |
+| DataType | 1:1 | Typ żądania. Można użyć typów danych typu Boolean, Date, dateTime, int, Long, String i StringCollection. Typ danych pierwotnych reprezentuje odpowiednik typu C# danych zmiennej. ciągcollection reprezentuje kolekcję ciągów. Aby uzyskać więcej informacji [ C# , zobacz Typy i zmienne](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). Data jest zgodna z Konwencją ISO 8601. |
 | DefaultPartnerClaimTypes | 0:1 | Domyślne typy roszczeń partnera, które mają być używane przez określony protokół. Wartość można zastąpić w **PartnerClaimType** określonym w elementach **oświadczenie inputclaim** lub **oświadczenie outputclaim** . Użyj tego elementu, aby określić nazwę domyślną dla protokołu.  |
 | Bitowa | 0:1 | Opcjonalny ciąg znaków maskowania, który można zastosować podczas wyświetlania żądania. Na przykład numer telefonu 324-232-4343 może być maskowany jako XXX-XXX-4343. |
 | UserHelpText | 0:1 | Opis typu zgłoszenia, który może być przydatny dla użytkowników, aby zrozumieć jego przeznaczenie. Wartość może być [zlokalizowana](localization.md). |
@@ -65,14 +65,14 @@ PredicateValidationReference| 0:1 | Odwołanie do elementu **PredicateValidation
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| Protokół | 0: n | Lista protokołów z domyślną nazwą typu zgłoszenia partnera. |
+| Protocol (Protokół) | 1: n | Lista protokołów z domyślną nazwą typu zgłoszenia partnera. |
 
 Element **Protocol** zawiera następujące atrybuty:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name (Nazwa) | Yes | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C. Możliwe wartości to: OAuth1, OAuth2, SAML2, OpenIdConnect. |
-| PartnerClaimType | Yes | Nazwa typu zgłoszenia do użycia. |
+| Nazwa | Tak | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C. Możliwe wartości to: OAuth1, OAuth2, SAML2, OpenIdConnect. |
+| PartnerClaimType | Tak | Nazwa typu zgłoszenia do użycia. |
 
 W poniższym przykładzie, gdy platforma obsługi tożsamości współdziała z dostawcą tożsamości SAML2 lub aplikacją jednostki uzależnionej, wniosek o **nazwisko** jest mapowany do `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, z OpenIdConnect i OAuth2, to wniosek jest mapowany do `family_name`.
 
@@ -104,9 +104,9 @@ W związku z tym token JWT wystawiony przez Azure AD B2C emituje `family_name` *
 
 Element **Mask** zawiera następujące atrybuty:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| `Type` | Yes | Typ maski żądania. Możliwe wartości: `Simple` lub `Regex`. Wartość `Simple` wskazuje, że prosta maska tekstu jest stosowana do wiodącej części żądania ciągu. Wartość `Regex` wskazuje, że wyrażenie regularne jest stosowane do żądania ciągu jako całości.  Jeśli `Regex` wartość jest określona, opcjonalny atrybut musi również być zdefiniowany za pomocą wyrażenia regularnego do użycia. |
+| `Type` | Tak | Typ maski żądania. Możliwe wartości: `Simple` lub `Regex`. Wartość `Simple` wskazuje, że prosta maska tekstu jest stosowana do wiodącej części żądania ciągu. Wartość `Regex` wskazuje, że wyrażenie regularne jest stosowane do żądania ciągu jako całości.  Jeśli `Regex` wartość jest określona, opcjonalny atrybut musi również być zdefiniowany za pomocą wyrażenia regularnego do użycia. |
 | `Regex` | Nie | Jeśli **`Type`** jest ustawiona na `Regex`, Określ wyrażenie regularne, które ma być używane.
 
 Poniższy przykład konfiguruje zgłoszenie do numerów **telefonu** przy użyciu maski `Simple`:
@@ -144,7 +144,7 @@ Struktura środowiska tożsamości renderuje tylko pierwszą literę adresu e-ma
 
 Element **ograniczenia** może zawierać następujący atrybut:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nie | Metoda służąca do scalania wartości wyliczenia z obiektem ClaimType w zasadach nadrzędnych z tym samym identyfikatorem. Użyj tego atrybutu podczas zastępowania żądania określonego w zasadach podstawowych. Możliwe wartości: `Append`, `Prepend`lub `ReplaceAll`. Wartość `Append` jest kolekcją danych, które powinny być dołączane na końcu kolekcji określonej w zasadach nadrzędnych. Wartość `Prepend` jest kolekcją danych, które powinny zostać dodane przed kolekcją określoną w zasadach nadrzędnych. Wartość `ReplaceAll` jest kolekcją danych określonych w zasadach nadrzędnych, które powinny być ignorowane. |
 
@@ -152,17 +152,17 @@ Element **ograniczenia** zawiera następujące elementy:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| Wyliczenie | 1: n | Dostępne opcje w interfejsie użytkownika dla użytkownika, które mają zostać wybrane dla roszczeń, takie jak wartość z listy rozwijanej. |
+| Licznik | 1: n | Dostępne opcje w interfejsie użytkownika dla użytkownika, które mają zostać wybrane dla roszczeń, takie jak wartość z listy rozwijanej. |
 | Wzorce | 1:1 | Wyrażenie regularne, które ma być używane. |
 
-### <a name="enumeration"></a>Wyliczenie
+### <a name="enumeration"></a>Licznik
 
 Element **Enumeration** zawiera następujące atrybuty:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Tekst | Yes | Ciąg wyświetlany, który jest wyświetlany użytkownikowi w interfejsie użytkownika dla tej opcji. |
-|Wartość | Yes | Wartość żądania skojarzona z wybraniem tej opcji. |
+| Tekst | Tak | Ciąg wyświetlany, który jest wyświetlany użytkownikowi w interfejsie użytkownika dla tej opcji. |
+|Wartość | Tak | Wartość żądania skojarzona z wybraniem tej opcji. |
 | SelectByDefault | Nie | Wskazuje, czy ta opcja powinna być wybrana domyślnie w interfejsie użytkownika. Możliwe wartości: true lub false. |
 
 W poniższym przykładzie zostanie skonfigurowane pole listy rozwijanej **miasto** z wartością domyślną `New York`:
@@ -188,9 +188,9 @@ Lista miast listy rozwijanej z wartością domyślną ustawioną na Nowy Jork:
 
 Element **Pattern** może zawierać następujące atrybuty:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| RegularExpression | Yes | Wyrażenie regularne, które musi być zgodne z typem oświadczeń, aby było prawidłowe. |
+| RegularExpression | Tak | Wyrażenie regularne, które musi być zgodne z typem oświadczeń, aby było prawidłowe. |
 | HelpText | Nie | Wzorzec lub wyrażenie regularne dla tego żądania. |
 
 Poniższy przykład służy do konfigurowania zgłoszenia **wiadomości e-mail** przy użyciu walidacji danych wejściowych i tekstu pomocy:
@@ -354,7 +354,7 @@ Typ danych wejściowych użytkownika **tylko do odczytu** służy do udostępnia
 ```
 
 
-### <a name="paragraph"></a>Akapitu
+### <a name="paragraph"></a>Przepisów
 
 Typ danych wejściowych użytkownika **akapitu** służy do podania pola, które wyświetla tekst tylko w znaczniku akapitu. Na przykład &lt;p&gt;tekst&lt;/p&gt;.
 

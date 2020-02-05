@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą O.C. Napisu Czarnecka - AppreciateHub | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i O.C. Napisu Czarnecka - AppreciateHub.
+title: 'Samouczek: integracja Azure Active Directory z usługą O.C. Tanner — AppreciateHub | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i O.C. Tanner - AppreciateHub.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,121 +11,82 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 01/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 8814dc9ba94ca7fa56a2225c71895520467bf05f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 768756e013a4301ea11f5f9478178bdad46f9d67
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095817"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984000"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą O.C. Napisu Czarnecka - AppreciateHub
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oc-tanner---appreciatehub"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą O.C. Tanner — AppreciateHub
 
-W tym samouczku dowiesz się, jak zintegrować O.C. Napisu Czarnecka - AppreciateHub za pomocą usługi Azure Active Directory (Azure AD).
-Integrowanie O.C. Napisu Czarnecka - AppreciateHub z usługą Azure AD oferuje następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować O.C. Tanner-AppreciateHub z Azure Active Directory (Azure AD). Po zintegrowaniu O.C. Tanner — AppreciateHub z usługą Azure AD:
 
-* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do O.C. Napisu Czarnecka - AppreciateHub.
-* Umożliwia użytkownikom można automatycznie zalogowany do O.C. Napisu Czarnecka - AppreciateHub (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do O.C. Tanner - AppreciateHub.
+* Zezwól użytkownikom na automatyczne logowanie do O.C. Tanner — AppreciateHub z kontami usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą O.C. Napisu Czarnecka - AppreciateHub, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* O.C. Napisu Czarnecka - AppreciateHub logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* O.C. Tanner — subskrypcja z włączonym logowaniem jednokrotnym (SSO) usługi AppreciateHub.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* O.C. Obsługuje AppreciateHub napisu Czarnecka - **tożsamości** jednokrotne logowanie inicjowane przez
+* O.C. Tanner-AppreciateHub obsługuje **dostawcy tożsamości** zainicjowane Logowanie jednokrotne
 
-## <a name="adding-oc-tanner---appreciatehub-from-the-gallery"></a>Dodawanie O.C. Napisu Czarnecka - AppreciateHub z galerii
+* Po skonfigurowaniu O.C. Tanner-AppreciateHub można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych w organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-Aby skonfigurować integrację O.C. Napisu Czarnecka - AppreciateHub w usłudze Azure AD, musisz dodać O.C. Napisu Czarnecka - AppreciateHub z galerii z listą zarządzanych aplikacji SaaS.
+## <a name="adding-oc-tanner---appreciatehub-from-the-gallery"></a>Dodawanie O.C. Tanner — AppreciateHub z galerii
 
-**Aby dodać O.C. Napisu Czarnecka - AppreciateHub z galerii, wykonaj następujące czynności:**
+Aby skonfigurować integrację O.C. Tanner-AppreciateHub do usługi Azure AD, musisz dodać O.C. Tanner AppreciateHub z galerii do listy zarządzanych aplikacji SaaS.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **O.C. Tanner-AppreciateHub** w polu wyszukiwania.
+1. Wybierz pozycję **O.C. Tanner-AppreciateHub** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-oc-tanner---appreciatehub"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla O.C. Tanner — AppreciateHub
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą O.C. Tanner-AppreciateHub przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w O.C. Tanner - AppreciateHub.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą O.C. Tanner-AppreciateHub, wykonaj następujące bloki konstrukcyjne:
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj O.C. Tanner-AppreciateHub Logowanie jednokrotne](#configure-oc-tanner---appreciatehub-sso)** — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    * **[Utwórz użytkownika testowego O.C. Tanner-AppreciateHub](#create-oc-tanner---appreciatehub-test-user)** , aby dysponować odpowiednikiem B. Simon w O.C. Tanner-AppreciateHub, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
-4. W polu wyszukiwania wpisz **O.C. Napisu Czarnecka - AppreciateHub**, wybierz opcję **O.C. Napisu Czarnecka - AppreciateHub** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-     ![O.C. Napisu Czarnecka - AppreciateHub na liście wyników](common/search-new-app.png)
+1. W [Azure Portal](https://portal.azure.com/)na stronie **O.C. Tanner-AppreciateHub** Application Integration Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą O.C. Napisu Czarnecka - AppreciateHub w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Logowanie jednokrotne do pracy, relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w O.C. Napisu Czarnecka - AppreciateHub musi zostać nawiązane.
+1. W sekcji **Podstawowa konfiguracja protokołu SAML** użytkownik nie musi wykonywać żadnych kroków, ponieważ aplikacja jest już wstępnie zintegrowana z platformą Azure.
 
-Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą O.C. Napisu Czarnecka - AppreciateHub, należy wykonać poniższe bloki konstrukcyjne:
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie O.C. Napisu Czarnecka - AppreciateHub logowania jednokrotnego](#configure-oc-tanner---appreciatehub-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Utwórz O.C. Napisu Czarnecka - użytkownika testowego AppreciateHub](#create-oc-tanner---appreciatehub-test-user)**  — aby odpowiednikiem Britta Simon w O.C. Napisu Czarnecka - AppreciateHub połączonego z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
-
-W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
-
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z O.C. Napisu Czarnecka - AppreciateHub, wykonaj następujące czynności:
-
-1. W [witryny Azure portal](https://portal.azure.com/)na **O.C. Napisu Czarnecka - AppreciateHub** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
-
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
-
-2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
-
-    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
-
-3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
-
-    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-4. W sekcji **Podstawowa konfiguracja protokołu SAML**, jeśli masz **plik metadanych dostawcy usługi**, wykonaj następujące kroki:
-
-    >[!NOTE]
-    >Możesz pobrać **plik metadanych usługodawcy** z [tutaj](https://fed.appreciatehub.com/fed/sp/metadata)
-
-    a. Kliknij pozycję **Przekaż plik metadanych**.
-
-    ![Przekazywanie pliku metadanych](common/upload-metadata.png)
-
-    b. Kliknij **logo folderu**, aby wybrać plik metadanych, a następnie kliknij pozycję **Przekaż**.
-
-    ![wybierz plik metadanych](common/browse-upload-metadata.png)
-
-    c. Po pomyślnym przekazaniu pliku metadanych **identyfikator** i **adres URL odpowiedzi** wartości Uzyskaj automatycznie wypełnione w sekcji podstawową konfigurację protokołu SAML.
-
-     ![O.C. Napisu Czarnecka - AppreciateHub domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/idp-intiated.png)
-
-    > [!Note]
-    > Jeśli **identyfikator** i **adres URL odpowiedzi** wartości nie uzyskać polulated automatycznie, a następnie wprowadź wartości ręcznie zgodnie z wymaganiami. Skontaktuj się z [O.C. Napisu Czarnecka - zespół obsługi klienta AppreciateHub](mailto:sso@octanner.com) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
-
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
-
-    ![Link pobierania certyfikatu](common/metadataxml.png)
-
-6. Na **Konfigurowanie O.C. Napisu Czarnecka - AppreciateHub** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+1. W sekcji **set up O.C. Tanner-AppreciateHub** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -133,80 +94,66 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z O.C. Napisu Czarnec
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-### <a name="configure-oc-tanner---appreciatehub-single-sign-on"></a>Konfigurowanie O.C. Napisu Czarnecka - AppreciateHub logowanie jednokrotne
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Aby skonfigurować logowanie jednokrotne na **O.C. Napisu Czarnecka - AppreciateHub** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure w celu [O.C. Napisu Czarnecka - zespołem pomocy technicznej AppreciateHub](mailto:sso@octanner.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
-
-W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
-
-1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-
-    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
-
-2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-
-    ![Przycisk Nowy użytkownik](common/new-user.png)
-
-3. We właściwościach użytkownika wykonaj następujące kroki.
-
-    ![Okno dialogowe Użytkownik](common/user-properties.png)
-
-    a. W polu **Nazwa** wprowadź **BrittaSimon**.
-  
-    b. W **nazwa_użytkownika** użytkownika typu pola, takie jak BrittaSimon@contoso.com.
-
-    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
-
-    d. Kliknij pozycję **Utwórz**.
+1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+1. We właściwościach **użytkownika** wykonaj następujące kroki:
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji należy włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do O.C. Napisu Czarnecka - AppreciateHub.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi O.C. Tanner - AppreciateHub.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **O.C. Napisu Czarnecka - AppreciateHub**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Na liście Aplikacje wybierz pozycję **O.C. Tanner-AppreciateHub**.
+1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-2. Na liście aplikacji wybierz **O.C. Napisu Czarnecka - AppreciateHub**.
+1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![O.C. Napisu Czarnecka - AppreciateHub łącze na liście aplikacji](common/all-applications.png)
+    ![Link Dodaj użytkownika](common/add-assign-user.png)
 
-3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
+1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+## <a name="configure-oc-tanner---appreciatehub-sso"></a>Konfigurowanie O.C. Tanner — AppreciateHub Logowanie jednokrotne
 
-4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+Aby skonfigurować Logowanie jednokrotne na stronie **O.C. Tanner-AppreciateHub** , należy wysłać pobrany **kod XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [O.C. Tanner-AppreciateHub](mailto:sso@octanner.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+### <a name="create-oc-tanner---appreciatehub-test-user"></a>Utwórz O.C. Tanner — AppreciateHub użytkownika testowego
 
-5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w O.C. Tanner - AppreciateHub.
 
-6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+**Aby utworzyć użytkownika o nazwie Britta Simon w O.C. Tanner-AppreciateHub, wykonaj następujące czynności:**
 
-7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+Skontaktuj się z [zespołem pomocy technicznej O.C. Tanner-AppreciateHub](mailto:sso@octanner.com) , aby utworzyć użytkownika, który ma jako atrybut NameID taką samą wartość jak nazwa użytkownika Britta Simon w usłudze Azure AD.
 
-### <a name="create-oc-tanner---appreciatehub-test-user"></a>Utwórz O.C. Napisu Czarnecka - AppreciateHub użytkownika testowego
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Britta Simon w O.C. Napisu Czarnecka - AppreciateHub.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-**Aby utworzyć użytkownika o nazwie Britta Simon w O.C. Napisu Czarnecka - AppreciateHub, wykonaj następujące czynności:**
+Po kliknięciu O.C. Kafelek Tanner-AppreciateHub w panelu dostępu należy automatycznie zalogować się do O.C. Tanner-AppreciateHub, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-Poproś użytkownika [O.C. Napisu Czarnecka - zespołem pomocy technicznej AppreciateHub](mailto:sso@octanner.com) Aby utworzyć użytkownika mającego jako atrybut nameID taką samą wartość jak nazwa użytkownika w pozycji Britta simon w usłudze Azure AD.
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu O.C. Napisu Czarnecka - AppreciateHub kafelka w panelu dostępu użytkownik powinien być automatycznie zalogowany do O.C. Napisu Czarnecka - AppreciateHub, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
-
-## <a name="additional-resources"></a>Dodatkowe zasoby
-
-- [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wypróbuj O.C. Tanner-AppreciateHub z usługą Azure AD](https://aad.portal.azure.com/)
+
+- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chronić O.C. Tanner-AppreciateHub z zaawansowaną widocznością i kontrolkami](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

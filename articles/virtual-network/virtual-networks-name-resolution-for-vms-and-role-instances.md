@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75368039"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991035"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw zasobów w sieciach wirtualnych platformy Azure
 
@@ -31,13 +31,13 @@ Kiedy zasoby wdrożone w sieciach wirtualnych muszą rozpoznać nazwy domen jako
 Używany typ rozpoznawania nazw zależy od tego, w jaki sposób zasoby muszą komunikować się ze sobą. W poniższej tabeli przedstawiono scenariusze i odpowiednie rozwiązania rozpoznawania nazw:
 
 > [!NOTE]
-> W zależności od danego scenariusza warto użyć funkcji Azure DNS Private Zones, która jest obecnie dostępna w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Using Azure DNS for private domains (Korzystanie z usługi Azure DNS na potrzeby domen prywatnych)](../dns/private-dns-overview.md).
+> W zależności od danego scenariusza warto używać Azure DNS stref prywatnych. Aby uzyskać więcej informacji, zobacz [Using Azure DNS for private domains (Korzystanie z usługi Azure DNS na potrzeby domen prywatnych)](../dns/private-dns-overview.md).
 >
 
 | **Scenariusz** | **Rozwiązanie** | **Suffix** |
 | --- | --- | --- |
-| Rozpoznawanie nazw między maszynami wirtualnymi znajdującymi się w tej samej sieci wirtualnej lub wystąpieniami roli Cloud Services platformy Azure w tej samej usłudze w chmurze. | [Azure DNS Private Zones](../dns/private-dns-overview.md) lub [rozpoznawanie nazw udostępniane przez platformę Azure](#azure-provided-name-resolution) |Nazwa hosta lub nazwa FQDN |
-| Rozpoznawanie nazw między maszynami wirtualnymi w różnych sieciach wirtualnych lub wystąpieniach ról w różnych usługach w chmurze. |[Azure DNS Private Zones](../dns/private-dns-overview.md) lub serwery DNS zarządzane przez klienta przesyłają dalej zapytania między sieciami wirtualnymi w celu rozpoznania ich przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
+| Rozpoznawanie nazw między maszynami wirtualnymi znajdującymi się w tej samej sieci wirtualnej lub wystąpieniami roli Cloud Services platformy Azure w tej samej usłudze w chmurze. | [Azure DNS stref prywatnych](../dns/private-dns-overview.md) lub [rozpoznawania nazw udostępnianych przez platformę Azure](#azure-provided-name-resolution) |Nazwa hosta lub nazwa FQDN |
+| Rozpoznawanie nazw między maszynami wirtualnymi w różnych sieciach wirtualnych lub wystąpieniach ról w różnych usługach w chmurze. |[Azure DNS strefy prywatne](../dns/private-dns-overview.md) lub serwery DNS zarządzane przez klienta przekazujące zapytania między sieciami wirtualnymi w celu rozpoznania ich przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Rozpoznawanie nazw z Azure App Service (aplikacja sieci Web, funkcja lub bot) przy użyciu integracji sieci wirtualnej z wystąpieniami roli lub maszynami wirtualnymi w tej samej sieci wirtualnej. |Serwery DNS zarządzane przez klienta przesyłają zapytania między sieciami wirtualnymi w celu rozpoznawania przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Rozpoznawanie nazw z App Service Web Apps do maszyn wirtualnych w tej samej sieci wirtualnej. |Serwery DNS zarządzane przez klienta przesyłają zapytania między sieciami wirtualnymi w celu rozpoznawania przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Rozpoznawanie nazw od App Service Web Apps w jednej sieci wirtualnej do maszyn wirtualnych w innej sieci wirtualnej. |Serwery DNS zarządzane przez klienta przesyłają zapytania między sieciami wirtualnymi w celu rozpoznawania przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |

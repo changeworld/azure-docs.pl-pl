@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a4a97ebd0e44bfd3b0ee167a2f3a7da435ac5087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f56a724174b81966642b2870360014597436eade
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513005"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981093"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Monitorowanie sesji i zarządzanie nim w usłudze Azure bastionu
 
@@ -40,7 +40,7 @@ Można wybrać zestaw sesji i wymusić ich rozłączenie. Poniższe kroki pokazu
 
 1. Przejdź do zasobu usługi Azure bastionu i wybierz pozycję **sesje** ze strony bastionu platformy Azure.
 
-   ![Nimi](./media/session-monitoring/navigate.png)
+   ![nimi](./media/session-monitoring/navigate.png)
 2. Po wybraniu sesji zostanie wyświetlona lista sesji zdalnych.
 
    ![Wyświetl sesje](./media/session-monitoring/list.png)

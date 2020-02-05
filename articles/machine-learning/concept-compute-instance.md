@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769115"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984850"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co to jest wystąpienie obliczeniowe Azure Machine Learning?
 
@@ -27,7 +27,7 @@ Użyj wystąpienia obliczeniowego jako w pełni skonfigurowanego i zarządzanego
 Wystąpienia obliczeniowe są zwykle używane jako środowiska deweloperskie.  Mogą one również służyć jako cel obliczeniowy do szkolenia i inferencing na potrzeby programowania i testowania.  W przypadku dużych zadań [klaster obliczeniowy Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) z funkcjami skalowania wielu węzłów jest lepszym rozwiązaniem docelowym obliczeń.
 
 > [!NOTE]
-> Wystąpienia obliczeniowe są obecnie dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**z obsługą innych regionów już wkrótce.
+> Wystąpienia obliczeniowe są obecnie dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**z obsługą innych regionów już wkrótce.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
 
 ## <a name="why-use-a-compute-instance"></a>Dlaczego warto używać wystąpienia obliczeniowego?

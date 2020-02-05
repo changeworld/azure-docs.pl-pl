@@ -8,18 +8,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720186"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982620"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Samouczek: przewidywanie ceny za samochód przy użyciu projektanta (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-W tym dwuczęściowym samouczku dowiesz się, jak za pomocą projektanta Azure Machine Learning utworzyć i wdrożyć rozwiązanie do analizy predykcyjnej, które przewiduje cenę dowolnego samochodu.
+W tym dwuczęściowym samouczku dowiesz się, jak używać projektanta Azure Machine Learning do uczenia i wdrażania modelu uczenia maszynowego, który przewiduje cenę dowolnego samochodu. Projektant jest narzędziem typu "przeciągnij i upuść", które pozwala tworzyć modele uczenia maszynowego bez pojedynczego wiersza kodu.
 
 W pierwszej części samouczka dowiesz się, jak:
 
@@ -45,13 +45,15 @@ Do utworzenia potoku Azure Machine Learning jest wymagany obszar roboczy Azure M
 
 ### <a name="create-a-new-workspace"></a>Utwórz nowy obszar roboczy
 
+Aby można było korzystać z projektanta, najpierw potrzebny jest obszar roboczy Azure Machine Learning. Obszar roboczy jest zasobem najwyższego poziomu dla Azure Machine Learning, stanowi scentralizowane miejsce do pracy ze wszystkimi artefaktami tworzonymi w Azure Machine Learning.
+
 Jeśli masz obszar roboczy Azure Machine Learning z wersją Enterprise, [Przejdź do następnej sekcji](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Tworzenie potoku
 
-1. Zaloguj się do [ml.Azure.com](https://ml.azure.com)i wybierz obszar roboczy, z którym chcesz współpracować.
+1. Zaloguj się do <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.Azure.com</a>i wybierz obszar roboczy, z którym chcesz współpracować.
 
 1. Wybierz pozycję **Projektant**.
 
@@ -60,6 +62,30 @@ Jeśli masz obszar roboczy Azure Machine Learning z wersją Enterprise, [Przejd�
 1. Wybierz **łatwe w użyciu wstępnie skompilowane moduły**.
 
 1. W górnej części kanwy wybierz domyślną potoku Nazwa potoku **— utworzony**. Zmień jej nazwę na funkcja *prognozowanie cen na urządzeniu mobilnym*. Nazwa nie musi być unikatowa.
+
+## <a name="set-the-default-compute-target"></a>Ustaw domyślny cel obliczeń
+
+Potok jest uruchamiany w obiekcie docelowym obliczeń, który jest zasobem obliczeniowym dołączonym do obszaru roboczego. Po utworzeniu obiektu docelowego obliczeń można użyć go ponownie do przyszłych przebiegów.
+
+Można ustawić **domyślny obiekt docelowy obliczeń** dla całego potoku, co spowoduje, że każdy moduł domyślnie użyje tego samego obiektu docelowego obliczeń. Można jednak określić cele obliczeń dla poszczególnych modułów.
+
+1. Obok nazwy potoku wybierz **ikonę koła zębatego** , ![zrzut ekranu ikony koła zębatego](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) w górnej części kanwy, aby otworzyć okienko **Ustawienia** .
+
+1. W okienku **Ustawienia** z prawej strony kanwy wybierz pozycję **Wybierz element docelowy obliczeń**.
+
+    Jeśli masz już dostępny element docelowy obliczeń, możesz wybrać go do uruchomienia tego potoku.
+
+    > [!NOTE]
+    > Projektant może uruchamiać eksperymenty tylko na Azure Machine Learning docelowych obliczeń. Inne elementy docelowe obliczeń nie będą wyświetlane.
+
+1. Wprowadź nazwę zasobu obliczeniowego.
+
+1. Wybierz pozycję **Zapisz**.
+
+    > [!NOTE]
+    > Utworzenie zasobu obliczeniowego trwa około 5 minut. Po utworzeniu zasobu można go ponownie wykorzystać i pominąć ten czas oczekiwania na przyszłe uruchomienia.
+    >
+    > Zasób obliczeniowy jest automatycznie skalowany na zero węzłów, gdy jest bezczynny, aby zaoszczędzić koszt. Gdy używasz go ponownie po opóźnieniu, może wystąpić około pięć minut czasu oczekiwania podczas skalowania kopii zapasowej.
 
 ## <a name="import-data"></a>Importowanie danych
 
@@ -77,7 +103,7 @@ Możesz wizualizować dane, aby zrozumieć zestaw danych, który będzie używan
 
 1. Wybierz moduł **dane cen samochodów (RAW)** .
 
-1. W okienku właściwości z prawej strony kanwy wybierz pozycję dane **wyjściowe**.
+1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pozycję dane **wyjściowe**.
 
 1. Wybierz ikonę grafu, aby wizualizować dane.
 
@@ -93,9 +119,9 @@ Zestawy danych zwykle wymagają pewnego przetworzenia przed analizą. Podczas in
 
 ### <a name="remove-a-column"></a>Usuwanie kolumny
 
-Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W tym zestawie danych w kolumnie **znormalizowanych strat** brakuje wielu wartości, dlatego ta kolumna jest wykluczana z modelu całkowicie.
+Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W tym zestawie danych w kolumnie **znormalizowana strata** brakuje wielu wartości, więc ta kolumna nie zostanie całkowicie wykluczona z modelu.
 
-1. Wprowadź wartość **SELECT** w polu wyszukiwania w górnej części palety, aby znaleźć moduł **SELECT Columns in DataSet** .
+1. W palecie modułów z lewej strony kanwy rozwiń sekcję **Przekształcanie danych** i Znajdź **pozycję Wybieranie kolumn w zestawie danych** .
 
 1. Przeciągnij moduł **Wybierz kolumny w zestawie danych** na kanwę. Upuść moduł poniżej modułu DataSet.
 
@@ -109,7 +135,9 @@ Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W ty
 
 1. Wybierz pozycję **Wybierz kolumny w zestawie danych** .
 
-1. W okienku właściwości po prawej stronie kanwy wybierz pozycję **wszystkie kolumny**.
+1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pozycję **Edytuj kolumnę**.
+
+1. Rozwiń listę rozwijaną **nazwy kolumn** obok pozycji **Dołącz**, a następnie wybierz pozycję **wszystkie kolumny**.
 
 1. Wybierz **+** , aby dodać nową regułę.
 
@@ -123,7 +151,7 @@ Podczas uczenia modelu trzeba wykonać coś dotyczące brakujących danych. W ty
 
 1. Wybierz pozycję **Wybierz kolumny w zestawie danych** . 
 
-1. W okienku właściwości zaznacz pole tekstowe **komentarz** i wprowadź *wykluczenie normalnych strat*.
+1. W okienku Szczegóły modułu z prawej strony kanwy zaznacz pole tekstowe **komentarz** i wprowadź *wykluczenie normalnych strat*.
 
     Komentarze będą wyświetlane na grafie, aby ułatwić organizowanie potoku.
 
@@ -134,13 +162,15 @@ Zestaw danych nadal ma brakujące wartości po usunięciu kolumny **znormalizowa
 > [!TIP]
 > Czyszczenie brakujących wartości z danych wejściowych jest wymaganiem wstępnym w przypadku korzystania z większości modułów w projektancie.
 
-1. Wprowadź **Wyczyść** w polu wyszukiwania, aby znaleźć **nieczysty moduł danych** .
+1. W palecie modułów z lewej strony kanwy rozwiń sekcję **transformacja danych**i Znajdź **czysty brakujący moduł danych** .
 
 1. Przeciągnij **nieczysty moduł danych** do kanwy potoku. Połącz go z modułem **Wybieranie kolumn w zestawie danych** . 
 
-1. W okienku właściwości wybierz pozycję **Usuń cały wiersz** w obszarze **Tryb czyszczenia**.
+1. Wybierz **czysty moduł danych** .
 
-1. W okienku właściwości w polu **komentarz** wprowadź *Usuń brakujące wiersze wartości*. 
+1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pozycję **Usuń cały wiersz** w obszarze **Tryb czyszczenia**.
+
+1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pole **komentarz** i wprowadź *Usuń brakujące wiersze wartości*. 
 
     Potok powinien teraz wyglądać następująco:
     
@@ -156,26 +186,28 @@ Ponieważ chcesz przewidzieć cenę, która jest liczbą, możesz użyć algoryt
 
 Dzielenie danych to typowe zadanie w usłudze Machine Learning. Dane zostaną podzielone na dwa oddzielne zestawy danych. Jeden zestaw danych będzie szkolić model, a drugi przetestuje, jak dobrze działa model.
 
-1. Wprowadź **Podziel dane** w polu wyszukiwania, aby znaleźć moduł **Split Data** . Połącz lewy port modułu **czyste brakujące dane** z modułem **Split Data** .
+1. W palecie modułów rozwiń sekcję **Przekształcanie danych** i Znajdź moduł **Split Data** .
+
+1. Przeciągnij moduł **Split Data** na kanwę potoku.
+
+1. Połącz lewy port modułu **czyste brakujące dane** z modułem **Split Data** .
 
     > [!IMPORTANT]
     > Upewnij się, że lewe porty wyjściowe **czyste brakujące dane** łączą się, aby **podzielić dane**. Lewy port zawiera oczyszczone dane. Prawidłowy port zawiera dane z przekoszykiem.
 
 1. Wybierz moduł **Split Data** .
 
-1. W okienku właściwości ustaw **ułamek wierszy w pierwszym zestawie danych wyjściowych** na 0,7.
+1. W okienku Szczegóły modułu z prawej strony kanwy Ustaw **ułamek wierszy w pierwszym zestawie danych wyjściowych** na 0,7.
 
     Ta opcja dzieli na 70 procent danych, aby szkolić model i 30 procent na potrzeby testowania. Zestaw danych 70 procent będzie dostępny przez lewy port wyjściowy. Pozostałe dane będą dostępne przez właściwy port wyjściowy.
 
-1. W **okienku właściwości wpisz polecenie** *Podziel zestaw danych na zestaw szkoleniowy (0,7) i zestaw testów (0,3)* .
+1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pole **komentarz** i wprowadź *Podziel zestaw danych na zestaw szkoleniowy (0,7) i zestaw testów (0,3)* .
 
 ### <a name="train-the-model"></a>Trenowanie modelu
 
 Nauczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Algorytm tworzy model, który objaśnia relacje między funkcjami a ceną zaprezentowaną przez dane szkoleniowe.
 
-1. Aby wybrać algorytm uczenia, usuń zaznaczenie pola wyszukiwania palety modułu.
-
-1. Rozwiń **algorytmy Machine Learning**.
+1. W palecie modułów rozwiń węzeł **Machine Learning algorytmy**.
     
     Ta opcja umożliwia wyświetlenie kilku kategorii modułów, których można użyć do zainicjowania algorytmów uczenia.
 
@@ -192,9 +224,11 @@ Nauczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Algorytm
 
     ![Zrzut ekranu przedstawiający poprawną konfigurację modułu uczenie modelu. Moduł regresja liniowa łączy się z lewym portem modułu uczenia modelowego, a moduł Split Data łączy się z odpowiednim portem modelu uczenia](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
+1. W palecie modułów rozwiń sekcję **szkolenia modułów**i przeciągnij moduł **uczenie modelu** na kanwę.
+
 1. Wybierz moduł **uczenie modelu** .
 
-1. W okienku właściwości wybierz pozycję **Edytuj selektor kolumny** .
+1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pozycję Edytuj selektor **kolumny** .
 
 1. W oknie dialogowym **etykieta kolumny** rozwiń menu rozwijane i wybierz pozycję **nazwy kolumn**. 
 
@@ -204,7 +238,7 @@ Nauczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Algorytm
 
     ![Zrzut ekranu przedstawiający poprawną konfigurację potoku po dodaniu modułu uczenie modelu.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="score-a-machine-learning-model"></a>Ocena modelu uczenia maszynowego
+### <a name="add-the-score-model-module"></a>Dodawanie modułu modelu oceny
 
 Po nauczeniu modelu przy użyciu 70 procent danych, można użyć go do oceny pozostałych 30 procent, aby zobaczyć, jak dobrze działa model.
 
@@ -212,7 +246,7 @@ Po nauczeniu modelu przy użyciu 70 procent danych, można użyć go do oceny po
 
 1. Połącz dane wyjściowe modułu **uczenie modelu** z lewym portem wejściowym **modelu wynikowego**. Połącz dane wyjściowe testu (prawy port) modułu **Split Data (dane** wejściowe) z odpowiednim portem wejściowym **modelu wynikowego**.
 
-## <a name="evaluate-a-machine-learning-model"></a>Oceń model uczenia maszynowego
+### <a name="add-the-evaluate-model-module"></a>Dodawanie modułu Evaluate Model (Ewaluacja modelu)
 
 Użyj modułu **oceny modelu** , aby oszacować, jak dobrze Model przedstawia test zestawu danych.
 
@@ -226,7 +260,20 @@ Użyj modułu **oceny modelu** , aby oszacować, jak dobrze Model przedstawia te
 
 ## <a name="run-the-pipeline"></a>Uruchamianie potoku
 
-[!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
+Teraz, gdy potok jest skonfigurowany, można przesłać uruchomienie potoku.
+
+1. W górnej części kanwy wybierz pozycję **Uruchom**.
+
+1. W oknie dialogowym **Konfigurowanie uruchomienia potoku** wybierz pozycję **+ nowy eksperyment** do **eksperymentu**.
+
+    > [!NOTE]
+    > Grupy eksperymentów działają podobnie. W przypadku uruchomienia potoku wiele razy można wybrać ten sam eksperyment dla kolejnych uruchomień.
+
+    1. Wprowadź opisową nazwę **eksperymentu**.
+
+    1. Wybierz pozycję **Uruchom**.
+    
+    Możesz wyświetlić stan przebiegu i szczegóły w prawym górnym rogu kanwy.
 
 ### <a name="view-scored-labels"></a>Wyświetlanie etykiet z wynikami
 
@@ -234,7 +281,7 @@ Po zakończeniu przebiegu można wyświetlić wyniki uruchomienia potoku. Najpie
 
 1. Wybierz moduł **model oceny** , aby wyświetlić jego dane wyjściowe.
 
-1. W okienku właściwości wybierz pozycję **wyjście** > ikonę grafu ![ikona wizualizacji](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png), aby wyświetlić wyniki.
+1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pozycję **wyjście** > ikonę grafu ![ikona wizualizacja](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png), aby wyświetlić wyniki.
 
     W tym miejscu możesz zobaczyć przewidywane ceny i rzeczywiste ceny z danych testowych.
 
@@ -246,7 +293,7 @@ Użyj **modelu szacowania** , aby zobaczyć, jak dobrze szkolony model jest wyko
 
 1. Wybierz moduł **Oceń model** , aby wyświetlić jego dane wyjściowe.
 
-1. W okienku właściwości wybierz pozycję **wyjście** > ikona Graf ![ikona wizualizacji](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png), aby wyświetlić wyniki.
+1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pozycję **wyjście** > ikonę grafu ![ikona wizualizacji](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png), aby wyświetlić wyniki.
 
 Następujące statystyki są wyświetlane dla modelu:
 
@@ -260,16 +307,11 @@ W przypadku wszystkich powyższych statystyk mniejsze wartości oznaczają lepsz
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
+Pomiń tę sekcję, jeśli chcesz kontynuować w części 2 samouczka [Wdrażanie modeli](tutorial-designer-automobile-price-deploy.md).
+
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-
-W pierwszej części tego samouczka zostały wykonane następujące zadania:
-
-* Tworzenie potoku
-* Przygotowywanie danych
-* Trenowanie modelu
-* Ocena i Ocena modelu
 
 W części drugiej dowiesz się, jak wdrożyć model jako punkt końcowy w czasie rzeczywistym.
 

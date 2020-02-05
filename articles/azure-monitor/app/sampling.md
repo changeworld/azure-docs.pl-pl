@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899079"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989981"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -347,12 +347,13 @@ Typy telemetrii, które mogą być dołączone lub wykluczone z próbkowania, to
 
 ### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>Konfigurowanie próbkowania o stałej szybkości dla aplikacji OpenCensus Python
 
-1. Instrumentacja aplikacji przy użyciu najnowszych [OpenCensusch eksportujących Azure monitor](../../azure-monitor/app/opencensus-python.md).
+Instrumentacja aplikacji przy użyciu najnowszych [OpenCensusch eksportujących Azure monitor](../../azure-monitor/app/opencensus-python.md).
 
 > [!NOTE]
-> Próbkowanie z ustaloną szybkością jest dostępne tylko przy użyciu funkcji eksportowania śladów. Oznacza to, że żądania przychodzące i wychodzące są jedynymi typami danych telemetrycznych, w przypadku których można skonfigurować próbkowanie.
+> Próbkowanie ustalonej stawki nie jest dostępne dla eksportera metryk. Oznacza to, że metryki niestandardowe są jedynymi typami danych telemetrycznych, w przypadku których nie można skonfigurować pobierania próbek. Eksporter metryk wyśle wszystkie dane telemetryczne, które śledzi.
 
-2. Możesz określić element `sampler` w ramach konfiguracji elementu `Tracer`. Jeśli nie zostanie podany jawny próbnik, domyślnie będzie używany `ProbabilitySampler`. `ProbabilitySampler` będzie używać stawki 1/10000 domyślnie, co oznacza, że jeden z żądań 10000 zostanie wysłany do Application Insights. Jeśli chcesz określić częstotliwość próbkowania, zobacz instrukcje poniżej.
+#### <a name="fixed-rate-sampling-for-tracing"></a>Próbkowanie z ustaloną szybkością dla śledzenia ####
+Możesz określić element `sampler` w ramach konfiguracji elementu `Tracer`. Jeśli nie zostanie podany jawny próbnik, domyślnie będzie używany `ProbabilitySampler`. `ProbabilitySampler` będzie używać stawki 1/10000 domyślnie, co oznacza, że jeden z żądań 10000 zostanie wysłany do Application Insights. Jeśli chcesz określić częstotliwość próbkowania, zobacz instrukcje poniżej.
 
 Aby określić częstotliwość próbkowania, należy się upewnić, że `Tracer` określa próbkowanie z częstotliwością próbkowania z zakresu od 0,0 do 1,0 włącznie. Częstotliwość próbkowania 1,0 reprezentuje 100%, co oznacza, że wszystkie żądania będą wysyłane jako dane telemetryczne do Application Insights.
 
@@ -362,6 +363,16 @@ tracer = Tracer(
         instrumentation_key='00000000-0000-0000-0000-000000000000',
     ),
     sampler=ProbabilitySampler(1.0),
+)
+```
+
+#### <a name="fixed-rate-sampling-for-logs"></a>Próbkowanie z ustaloną szybkością dla dzienników ####
+Próbkowanie o stałym współczynniku można skonfigurować dla `AzureLogHandler` przez zmodyfikowanie `logging_sampling_rate` opcjonalnego argumentu. Jeśli żaden argument nie zostanie podany, zostanie użyta częstotliwość próbkowania 1,0. Częstotliwość próbkowania 1,0 reprezentuje 100%, co oznacza, że wszystkie żądania będą wysyłane jako dane telemetryczne do Application Insights.
+
+```python
+exporter = metrics_exporter.new_metrics_exporter(
+    instrumentation_key='00000000-0000-0000-0000-000000000000',
+    logging_sampling_rate=0.5,
 )
 ```
 

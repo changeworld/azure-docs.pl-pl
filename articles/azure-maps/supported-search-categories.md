@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: de44d07b5ebc6a898e3c098f16e553e9d4a46150
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910409"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988295"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps obsługiwanych kategorii
 
-Podczas [wyszukiwania kategorii](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) w poszukiwaniu interesujących punktów należy użyć setek obsługiwanych kategorii. Poniżej znajduje się lista kodów kategorii dla obsługiwanych nazw kategorii. Kody kategorii są generowane dla kategorii najwyższego poziomu. Wszystkie podkategorie współdzielą ten sam kod kategorii. Należy pamiętać, że ta lista kategorii może ulec zmianie z nowymi wersjami danych.
+Podczas [wyszukiwania kategorii](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) w poszukiwaniu interesujących punktów należy użyć setek obsługiwanych kategorii. Poniżej znajduje się lista kodów kategorii dla obsługiwanych nazw kategorii. Kody kategorii są generowane dla kategorii najwyższego poziomu. Wszystkie podkategorie współdzielą ten sam kod kategorii. Ta lista kategorii może ulec zmianie z nowymi wersjami danych.
 
 <br/>
 
@@ -73,7 +73,7 @@ Podczas [wyszukiwania kategorii](https://docs.microsoft.com/rest/api/maps/search
 | Ważne\_TURYSTYCZNe\_przyciągania nie | budynek, Obserwatorium, Arch, Tunnel, Statue, wieża, mostek, planetarium, Mausoleum/słaby, Monument, otwór wodna, naturalny przyciągania nie, ważna baza turystyczna, przyciągania nie, piramidy, Promenade, Pagoda, Castle, Palace, ostrosłup, Fort, Brama, kraj |
 | Tworzenie\_przemysłowych | odlewnie, paliwo, budynek przemysłowe, fabryka |
 | \_wypoczynek | pucharing, snooker, Pool bilardowej, latający klub, odpowiedzialna Studio szkoły, sauna, solarium Massage, rekreacyjny, spa |
-| BIBLIOTEKA | biblioteka |
+| BIBLIOTEKI | biblioteki |
 | \_PRODUKCYJNy | Produkcja |
 | MARINA | basen Yacht, Marina |
 | DO | supermarketse, rolnicy, publiczne, nieformalne, rynek |
@@ -86,7 +86,7 @@ Podczas [wyszukiwania kategorii](https://docs.microsoft.com/rest/api/maps/search
 | NIGHTLIFE | Słupek, klub karaoke, klub jazzowy, klub prywatny, pasek win, klub komedia, Cocktail Bar, Discotheque, Nightlife |
 | Organizacja\_\_RZĄDowej | Organizacja nierządowa |
 | Otwórz obszar\_\_PARKowanie | Otwórz obszar parkingowy, przeparkowanie partii |
-| INNE | miejscowość, bezpłatna strefa handlu, koło ruchu, nieznany |
+| RÓŻNYCH | miejscowość, bezpłatna strefa handlu, koło ruchu, nieznany |
 | PARKING\_warsztat | Warsztat parkingowy |
 | Zaparkowanie\_\_obszaru | Witryna historyczna, Lakeshore, Seashore, rzeka Scenic obszar, obszar polowania połowowego, Battlefield, zimy Sport, Pochylnia uruchamiania łodzi, konserwowanie, obszar lasu, obszar rekreacyjny,, Cemetery obszar Wilderness, parkowanie obszaru rekreacyjnego, lasy:, Las, ogrody, ogródki, rezerwa dzikia, rezerwa na charakter, stacja lasu, rezerwa na łowiectwo, rezerwacja lasów, parkowanie |
 | Stacja\_BENZYNy | Stacja benzyn |

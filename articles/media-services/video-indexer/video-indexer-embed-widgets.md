@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ed3e2cf9830e3776886e662fd27f43f76728d6b2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545895"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988723"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Osadź Video Indexer widżety w aplikacjach
 
@@ -86,9 +86,9 @@ Aby osadzić prywatny film wideo, należy przekazać token dostępu w atrybucie 
     
 Aby uzyskać zawartość widżetu wglądu w szczegółowe dane, użyj jednego z następujących elementów:<br/>
 - Interfejs API usługi [Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) .<br/>
-- [Token uzyskiwania dostępu do wideo](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?). Dodaj go jako parametr zapytania do adresu URL. Określ ten adres URL jako wartość **src** dla elementu iframe, jak pokazano wcześniej.
+- [Token uzyskiwania dostępu do wideo](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Dodaj go jako parametr zapytania do adresu URL. Określ ten adres URL jako wartość **src** dla elementu iframe, jak pokazano wcześniej.
 
-Aby zapewnić możliwości edytowania szczegółowych informacji w osadzonym elemencie widget, należy przekazać token dostępu, który obejmuje uprawnienia do edycji. Użyj [widżetu Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) lub [Uzyskaj token dostępu wideo](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) z `&allowEdit=true`. 
+Aby zapewnić możliwości edytowania szczegółowych informacji w osadzonym elemencie widget, należy przekazać token dostępu, który obejmuje uprawnienia do edycji. Użyj [widżetu Get Insights](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) lub [Uzyskaj token dostępu wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) z `&allowEdit=true`. 
 
 ## <a name="widgets-interaction"></a>Interakcje z widżetami
 
@@ -264,6 +264,23 @@ Aby wyłączyć napisy, można przekazać `captions` wartość parametru jako `f
 
 #### <a name="autoplay"></a>Autoodtwarzania
 Domyślnie gracz rozpocznie odtwarzanie filmu wideo. Możesz zrezygnować z przekazywania `&autoplay=false` do poprzedniego adresu URL osadzania.
+
+## <a name="code-samples"></a>Przykłady kodu
+
+Zobacz repozytorium [przykłady kodu](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets) zawierające przykłady Video Indexer interfejsu API i widżetów:
+
+| Plik/folder                       | Opis                                |
+|-----------------------------------|--------------------------------------------|
+| `azure-media-player`              | Ładowanie wideo indeksatora wideo w niestandardowych Azure Media Player                        |
+| `azure-media-player-vi-insights`  | Osadź informacje o poddanej analizie przy użyciu Azure Media Player niestandardowej                             |
+| `control-vi-embedded-player`      | Osadź odtwarzacz VI i kontroluj go z zewnątrz                                    |
+| `custom-index-location`           | Osadź informacje o VI z niestandardowej lokalizacji zewnętrznej (może to być odbiorca obiektu BLOB)     |
+| `embed-both-insights`             | Podstawowe użycie usługi VI Insights zarówno dla gracza, jak i szczegółowych informacji                            |
+| `embed-insights-with-AMP`         | Osadź widżet danych VI Insights z niestandardowym Azure Media Player                      |
+| `customize-the-widgets`           | Osadź elementy widget VI z dostosowanymi opcjami                                     |
+| `embed-both-widgets`              | Osadź informacje o programie Player i analizie i Komunikuj się między nimi                      |
+| `url-generator`                   | Generuje niestandardowy adres URL osadzania widżetów na podstawie opcji określonych przez użytkownika             |
+| `html5-player`                    | Osadź informacje o VI i przeanalizie przy użyciu domyślnego odtwarzacza wideo HTML5                            |
 
 ## <a name="next-steps"></a>Następne kroki
 

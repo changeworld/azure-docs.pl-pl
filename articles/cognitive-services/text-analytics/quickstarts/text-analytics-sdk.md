@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: analiza tekstua Biblioteka kliencka v3 | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start Wykryj język przy użyciu interfejs API analizy tekstu z usługi Azure Cognitive Services.
+description: Skorzystaj z tego przewodnika Szybki Start, aby połączyć aplikacje z interfejs API analizy tekstu z poziomu platformy Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,46 +10,79 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/23/2020
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 89680ad61296cd225bb87d2d6b46259586304da2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+zone_pivot_groups: programming-languages-text-analytics
+ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774100"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987919"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-v3"></a>Szybki Start: korzystanie z biblioteki klienta analiza tekstu w wersji 3
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Szybki Start: korzystanie z biblioteki klienta analiza tekstu
 
 Rozpocznij pracę z biblioteką klienta analiza tekstu. Wykonaj następujące kroki, aby zainstalować pakiet i wypróbować przykładowy kod dla podstawowych zadań.
 
-Użyj `3.0-preview` wersji analiza tekstu biblioteki klienckiej do wykonania:
+Użyj biblioteki klienta analiza tekstu do wykonania:
 
-* Analiza tonacji (publiczna wersja zapoznawcza)
+* Analiza opinii
 * Wykrywanie języka
-* Rozpoznawanie jednostek nazwanych (publiczna wersja zapoznawcza)
+* Rozpoznawanie jednostek
 * Wyodrębnianie kluczowych fraz
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/v3/csharp.md)]
+> [!IMPORTANT]
+> * Najnowsza wersja zapoznawcza interfejs API analizy tekstu jest `3.0-preview`, która obejmuje publiczną wersję zapoznawczą dla ulepszonej [Analiza tonacji](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) i [nazwanego rozpoznawania jednostek (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Najnowsza stabilna wersja jest `2.1`.
+>    * Pamiętaj, aby postępować zgodnie z instrukcjami dotyczącymi używanej wersji.
+> * Kod w tym artykule używa metod synchronicznych i niezabezpieczonych magazynów poświadczeń z przyczyn uproszczenia. W przypadku scenariuszy produkcyjnych zaleca się użycie wsadowych metod asynchronicznych w celu zapewnienia wydajności i skalowalności. Zapoznaj się z dokumentacją referencyjną poniżej.
+
+[!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/v3/python-sdk.md)]
+> [!IMPORTANT]
+> * Najnowsza wersja zapoznawcza interfejs API analizy tekstu jest `3.0-preview`, która obejmuje publiczną wersję zapoznawczą dla ulepszonej [Analiza tonacji](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) i [nazwanego rozpoznawania jednostek (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Najnowsza stabilna wersja jest `2.1`.
+>    * Pamiętaj, aby postępować zgodnie z instrukcjami dotyczącymi używanej wersji.
+> * Kod w tym artykule używa metod synchronicznych i niezabezpieczonych magazynów poświadczeń z przyczyn uproszczenia. W przypadku scenariuszy produkcyjnych zaleca się użycie wsadowych metod asynchronicznych w celu zapewnienia wydajności i skalowalności. Zapoznaj się z dokumentacją referencyjną poniżej. 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-[!INCLUDE [Java quickstart](../includes/quickstarts/v3/java-sdk.md)]
+> [!IMPORTANT]
+> * Ten przewodnik Szybki Start dotyczy tylko wersji `3.0-preview` biblioteki klienckiej analiza tekstu, która obejmuje publiczną wersję zapoznawczą dla ulepszonego [Analiza tonacji](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) i [nazwanego rozpoznawania jednostek (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+>    * Pamiętaj, aby postępować zgodnie z instrukcjami dotyczącymi używanej wersji.
+> * Kod w tym artykule używa metod synchronicznych i niezabezpieczonych magazynów poświadczeń z przyczyn uproszczenia. W przypadku scenariuszy produkcyjnych zaleca się użycie wsadowych metod asynchronicznych w celu zapewnienia wydajności i skalowalności. Zapoznaj się z dokumentacją referencyjną poniżej.
+
+[!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
 ::: zone-end
 
-::: zone pivot="programming-language-nodejs"
+::: zone pivot="programming-language-javascript"
 
-[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v3/nodejs-sdk.md)]
+> [!IMPORTANT]
+> * Najnowsza wersja zapoznawcza interfejs API analizy tekstu jest `3.0-preview`, która obejmuje publiczną wersję zapoznawczą dla ulepszonej [Analiza tonacji](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) i [nazwanego rozpoznawania jednostek (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Najnowsza stabilna wersja jest `2.1`.
+>    * Pamiętaj, aby postępować zgodnie z instrukcjami dotyczącymi używanej wersji.
+> * Kod w tym artykule używa metod synchronicznych i niezabezpieczonych magazynów poświadczeń z przyczyn uproszczenia. W przypadku scenariuszy produkcyjnych zaleca się użycie wsadowych metod asynchronicznych w celu zapewnienia wydajności i skalowalności. Zapoznaj się z dokumentacją referencyjną poniżej.
+
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-other"
+
+## <a name="additional-language-support"></a>Obsługa dodatkowych języków
+
+Jeśli kliknięto tę kartę, prawdopodobnie nie widzisz przewodnika Szybki Start w ulubionym języku programowania. Nie martw się, możemy korzystać z dodatkowych przewodników Szybki Start. Użyj tabeli, aby znaleźć odpowiedni przykład dla języka programowania.
+
+| Język | Dostępna wersja | 
+|----------|------------------------|
+| Ruby     | [Wersja 2,1](ruby-sdk.md)          | 
+| Go       | [Wersja 2,1](go-sdk.md)          | 
 
 ::: zone-end
 

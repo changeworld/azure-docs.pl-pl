@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530701"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988179"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Partnerzy platformy Azure Cosmos DB NoSQL migracji i application development
 
@@ -21,7 +21,6 @@ Od migracji NoSQL do tworzenia aplikacji można wybierać spośród różnych na
 
 |**Partner**  |**Funkcje i środowisko**  |**Obsługiwane kraje/regiony**  |**Skontaktuj się z**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | Migracja danych z MongoDB do Azure Cosmos DB. <br/> Imanis danych umożliwia globalny przedsiębiorstwom szybko i łatwo migrować lokalnych lub w chmurze bazy danych MongoDB do usługi Azure Cosmos DB. Dane Imanis zapewnia podejście do migracji bez wykorzystania agentów przyrostowe nieustannego w chmurze dla magazynów danych bazy danych MongoDB, które upraszcza migrację i znacznie skraca czas przestoju.|  Stany Zjednoczone  |   [Witryny sieci Web](https://www.cohesity.com/products/imanis-data/)      |
 |![Striim][2]    |  [Przenoszenie danych w czasie rzeczywistym do usługi Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z wielu różnych źródeł danych. <br/> Striim upraszcza gromadzenie i przenoszenie danych w czasie rzeczywistym z różnych źródeł lokalnych, takich jak dokument przedsiębiorstwa i relacyjne bazy danych, czujniki i pliki dzienników w Azure Cosmos DB. |   Stany Zjednoczone   |  [Witryny sieci Web](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Partnerzy będący Integratorami systemów
@@ -59,7 +58,6 @@ Od migracji NoSQL do tworzenia aplikacji można wybierać spośród różnych na
 Aby dowiedzieć się więcej o niektórych z innymi partnerami firmy Microsoft, zobacz [witryny partnera firmy Microsoft](https://partner.microsoft.com/en-US/).
 
 <!--Image references-->
-[1]: ./media/partners-migration-cosmosdb/imanisdata_logo.png
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png
 [3]: ./media/partners-migration-cosmosdb/altoros_logo.png
 [4]: ./media/partners-migration-cosmosdb/attunix_logo.png

@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f6e16ed6646340a5c623ecd027e8b0fe323bf7f9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910624"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988944"
 ---
 # <a name="azure-maps-routing-coverage"></a>Pokrycie routingu Azure Maps
 
-Ten artykuł zawiera informacje o pokryciu dotyczące Azure Maps routingu. Podczas wyszukiwania optymalnej trasy z lokalizacji A do B Azure Maps mogą zapewnić wysoce dokładne czasy podróży, zaktualizowane informacje o podróży i instrukcje trasy. Trasa będzie uwzględniać dodatkowe terminy wyszukiwania, takie jak bieżący ruch, typ pojazdu i warunki, aby uniknąć. Możliwość optymalizacji trasy zależy od regionu, w którym Azure Maps ma różne poziomy informacji i dokładności dla różnych regionów. Poniższa tabela zawiera listę regionów i rodzaj informacji, z których można żądać ich.
+Ten artykuł zawiera informacje o pokryciu dotyczące Azure Maps routingu. W zapytaniu wyszukiwania Azure Maps zwraca optymalną trasę z lokalizacji A do lokalizacji B. Masz zapewnione dokładne czasy podróży, aktualizacje informacji o podróży i instrukcje dotyczące trasy. Możesz również dodać dodatkowe parametry wyszukiwania, takie jak bieżący ruch, typ pojazdu i warunki, aby uniknąć. Optymalizacja trasy zależy od regionu. Dzieje się tak, ponieważ Azure Maps ma różne poziomy informacji i dokładności dla różnych regionów. Poniższa tabela zawiera listę regionów i rodzaj informacji, z których można żądać ich.
  
 Zapoznaj się z pokryciem [**geokodowania**](geocoding-coverage.md).       
 Zapoznaj się z pokryciem [**ruchu**](traffic-coverage.md).  
 Zapoznaj się z pokryciem [**renderowania**](render-coverage.md).
 <br>  
-**Legenda**
+**Legendy**
 
 | Symbol             | Znaczenie                                |
 |--------------------|----------------------------------------|
@@ -95,7 +95,7 @@ Poniższa tabela zawiera informacje o pokryciu dotyczące Azure Maps routingu.
 | Kolumbia                       |        ✓       |         ✓            |             |
 | Kostaryka                     |        ✓       |                      |             |
 | Kuba                           |        ✓       |                      |             |
-| Dominika                       |        ✓       |                      |             |
+| Mini                       |        ✓       |                      |             |
 | Dominikana             |        ✓       |                      |             |
 | Ekwador                        |        ✓       |                      |             |
 | Salwador                    |        ✓       |                      |             |
@@ -112,7 +112,7 @@ Poniższa tabela zawiera informacje o pokryciu dotyczące Azure Maps routingu.
 | Paragwaj                       |        ✓       |                      |             |
 | Peru                           |        ✓       |         ✓            |             |
 | Saint Kitts i Nevis            |        ✓       |                      |             |
-| Saint Lucia                      |        ✓       |                      |             |
+| St. Lucia                      |        ✓       |                      |             |
 | Saint Vincent & Grenadyny       |        ✓       |                      |             |
 | Surinam                       |        ✓       |                      |             |
 | Trinidad & Tobago              |        ✓       |                      |             |
@@ -190,7 +190,7 @@ Poniższa tabela zawiera informacje o pokryciu dotyczące Azure Maps routingu.
 | Liechtenstein                  |        ✓       |         ✓            |             |
 | Litwa                      |        ✓       |         ✓            |     ✓      | 
 | Luksemburg                     |        ✓       |         ✓            |     ✓      | 
-| Macedonia Północna                |        ✓       |                      |             |
+| Północna Macedonia                |        ✓       |                      |             |
 | Malta                          |        ✓       |         ✓            |             |
 | Mołdawia                        |        ✓       |                      |             |
 | Monako                         |        ✓       |         ✓            |             |

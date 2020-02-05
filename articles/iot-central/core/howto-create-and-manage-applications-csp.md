@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453968"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987674"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Tworzenie aplikacji IoT Central platformy Azure i zarządzanie nią z poziomu portalu CSP
 
@@ -39,9 +39,11 @@ Aby utworzyć aplikację IoT Central platformy Azure, wybierz opcję **Kompiluj*
 
 ![Tworzenie strony aplikacji dla dostawców CSP](media/howto-create-application-csp/image4-1.png)
 
-## <a name="payment-plan"></a>Plan płatności
+![Tworzenie strony aplikacji dla informacji rozliczeniowych CSP](media/howto-create-application-csp/image4-2.png)
 
-Jako dostawcę CSP można tworzyć tylko aplikacje z opcją płatność zgodnie z rzeczywistym użyciem. Aby zaprezentować IoT Central platformy Azure klientom, możesz utworzyć aplikację próbną osobno. Więcej informacji na temat wersji próbnej i aplikacji z opcją płatność zgodnie z rzeczywistym użyciem można znaleźć na [stronie cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+## <a name="pricing-plan"></a>Plan cenowy
+
+Możesz tworzyć aplikacje, które używają standardowego planu cen jako dostawcy usług kryptograficznych. Aby zaprezentować IoT Central platformy Azure klientom, możesz utworzyć aplikację, która korzysta z bezpłatnego planu cenowego. Dowiedz się więcej o planach cen bezpłatnych i standardowych na [stronie cennika usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 ## <a name="application-name"></a>Nazwa aplikacji
 

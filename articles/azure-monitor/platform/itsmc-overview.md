@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie łącznik zarządzania usługami IT
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: JYOTHIRMAISURI
+author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 83d5b7ffb49a08d02d5dd34ad561ce725ead7e0e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 68aff01ea541a24be1f8d526fecbb6a9d2c30086
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289139"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990678"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Łączenie platformy Azure z narzędziami narzędzia ITSM przy użyciu łącznik zarządzania usługami IT
 
@@ -66,7 +66,7 @@ Aby można było utworzyć połączenie, należy dodać rozwiązanie łącznik I
    >[!NOTE]
    >W ramach trwającego przejścia z Microsoft Operations Management Suite (OMS) do Azure Monitor, obszary robocze OMS są teraz określane jako Log Analytics obszary robocze.
 
-5. Kliknij przycisk **Utwórz**.
+5. Kliknij pozycję **Utwórz**.
 
 Gdy zasób rozwiązania zostanie wdrożony, w prawym górnym rogu okna pojawi się powiadomienie.
 
@@ -152,7 +152,7 @@ Pulpit nawigacyjny zawiera również informacje o stanie łącznika, który moż
 
 Możesz również wizualizować zdarzenia zsynchronizowane z komputerami, na których ma to wpływ, w ramach rozwiązania Service Map.
 
-Service Map automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Umożliwia ona wyświetlenie Twoich serwerów tak, jak o nich myślisz — jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączeń TCP bez konieczności konfiguracji innej niż instalacja agenta. [Dowiedz się więcej](../../azure-monitor/insights/service-map.md).
+Service Map automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Pozwala to na wyświetlanie Twoich serwerów w miarę ich działania — jako połączone systemy, które dostarczają usługi krytyczne. Service Map przedstawia połączenia między serwerami, procesami i portami w ramach dowolnej architektury połączonej z protokołem TCP bez konieczności konfiguracji innej niż Instalacja agenta. [Dowiedz się więcej](../../azure-monitor/insights/service-map.md).
 
 Jeśli używasz rozwiązania Service Map, możesz wyświetlić elementy pomocy technicznej utworzone w rozwiązaniach narzędzia ITSM, jak pokazano w następującym przykładzie:
 
@@ -185,10 +185,10 @@ ServiceDeskWorkItemType_s="Incident"
 - Priorytet
 - Eskalacja
 - Utworzony przez
-- Rozwiązany przez
+- Rozwiązane przez
 - Zamknięte przez
 - Źródło
-- Przypisane do
+- Przypisano do
 - Kategoria
 - Tytuł
 - Opis
@@ -209,7 +209,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Utworzony przez
 - Zamknięte przez
 - Źródło
-- Przypisane do
+- Przypisano do
 - Tytuł
 - Typ
 - Kategoria
@@ -220,7 +220,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Priorytet
 - Ryzyko
 - Wpływ
-- Przypisane do
+- Przypisano do
 - Data utworzenia
 - Data zamknięcia
 - Data ostatniej modyfikacji
@@ -249,9 +249,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Category_s | Kategoria |
 | Title_s|  Krótki opis |
 | Description_s|  Uwagi |
-| CreatedDate_t|  Otwarte |
+| CreatedDate_t|  Otworzyć |
 | ClosedDate_t| Zamknięte|
-| ResolvedDate_t|Rozwiązane|
+| ResolvedDate_t|Klienta|
 | Computer (Komputer)  | Element konfiguracji |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Dane wyjściowe żądania zmiany usługi ServiceNow

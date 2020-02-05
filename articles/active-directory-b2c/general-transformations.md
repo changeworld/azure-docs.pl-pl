@@ -8,21 +8,50 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/27/2019
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 639277177bf63e659e5b0ea804eca5e20f956831
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 98d9730168764f0ba683a246f9ac224c13d3bf31
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948894"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982810"
 ---
 # <a name="general-claims-transformations"></a>Ogólne przekształcenia oświadczeń
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 W tym artykule przedstawiono przykłady użycia ogólnych przekształceń oświadczeń schematu programu Identity Experience Framework w Azure Active Directory B2C (Azure AD B2C). Aby uzyskać więcej informacji, zobacz [ClaimsTransformations](claimstransformations.md).
+
+## <a name="copyclaim"></a>CopyClaim
+
+Kopiuj wartość żądania do innej. Oba oświadczenia muszą pochodzić z tego samego typu.
+
+| Element | TransformationClaimType | Typ danych | Uwagi |
+| ---- | ----------------------- | --------- | ----- |
+| Oświadczenie inputclaim | Oświadczenie inputclaim | String, int | Typ zgłoszenia, który ma zostać skopiowany. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | String, int | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+
+Ta transformacja oświadczeń służy do kopiowania wartości z ciągu lub oświadczenia liczbowego do innego oświadczenia. Poniższy przykład kopiuje wartość externalEmail roszczeń do żądania e-mail.
+
+```XML
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Przykład
+
+- Oświadczenia wejściowe:
+    - **oświadczenie inputclaim**: bob@contoso.com
+- Oświadczenia wyjściowe:
+    - **oświadczenie outputclaim**: bob@contoso.com 
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
@@ -62,7 +91,7 @@ Mieszaj podany zwykły tekst przy użyciu soli i wpisu tajnego. Algorytmem wyzna
 | Oświadczenie inputclaim | formacie | string | Dane wejściowe do zaszyfrowania |
 | Oświadczenie inputclaim | Solo | string | Parametr soli. Można utworzyć wartość losową przy użyciu transformacji oświadczeń `CreateRandomString`. |
 | InputParameter | randomizerSecret | string | Wskazuje istniejący **klucz zasad**Azure AD B2C. Aby utworzyć nowy klucz zasad: w dzierżawie Azure AD B2C w obszarze **Zarządzaj**wybierz pozycję **platforma obsługi tożsamości**. Wybierz pozycję **klucze zasad** , aby wyświetlić klucze, które są dostępne w dzierżawie. Wybierz pozycję **Dodaj**. W obszarze **Opcje**wybierz pozycję **Ręczne**. Podaj nazwę (prefiks *B2C_1A_* może zostać dodany automatycznie). W polu tekstowym **wpis tajny** wprowadź dowolne tajne, na przykład 1234567890. W obszarze **użycie klucza**wybierz pozycję **podpis**. Wybierz pozycję **Utwórz**. |
-| Oświadczenie outputclaim | hash | string | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. W `plaintext` oświadczenie inputclaim. |
+| Oświadczenie outputclaim | skrótu | string | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. W `plaintext` oświadczenie inputclaim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

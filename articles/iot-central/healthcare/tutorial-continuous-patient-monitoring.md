@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 97a215d8f111753c8fcc857fe4c48956c1236b3b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c9a153cc5b1b8c43a42b37d591a8946a545f63ff
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027446"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986436"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Samouczek: wdrażanie i Instruktaż szablonu aplikacji do monitorowania ciągłego pacjenta
 
@@ -21,7 +21,7 @@ ms.locfileid: "73027446"
 
 W tym samouczku pokazano, jak uzyskać Konstruktor rozwiązań, jak rozpocząć pracę, wdrażając szablon aplikacji do monitorowania ciągłego pacjenta IoT Central. Dowiesz się, jak wdrożyć szablon, co jest dołączone do pola i co warto zrobić dalej.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie szablonu aplikacji
@@ -36,14 +36,15 @@ Przejdź do [witryny sieci Web programu Azure IoT Central Application Manager](h
 
 Kliknij przycisk **Utwórz aplikację** , aby rozpocząć tworzenie aplikacji, a następnie zaloguj się przy użyciu konta osobistego, służbowego lub szkolnego firmy Microsoft. Spowoduje to przejście do strony **Nowa aplikacja** .
 
->[!div class="mx-imgBorder"] 
->![utworzyć](media/app-manager-health-create.png) opieki zdrowotnej aplikacji
+![Tworzenie opieki zdrowotnej aplikacji](media/app-manager-health-create.png)
+
+![Utwórz informacje dotyczące rozliczeń w usłudze Application opieka](media/app-manager-health-create-billinginfo.png)
 
 Aby utworzyć aplikację:
 
 1. Usługa Azure IoT Central automatycznie sugeruje nazwę aplikacji w oparciu o wybrany szablon. Możesz zaakceptować tę nazwę lub wprowadzić własną przyjazną nazwę aplikacji, na przykład **ciągłe monitorowanie pacjenta**. Usługa Azure IoT Central generuje również unikatowy prefiks adresu URL na podstawie nazwy aplikacji. Jeśli chcesz, możesz zmienić ten prefiks adresu URL na bardziej zapamiętanie.
 
-2. Możesz wybrać, czy chcesz utworzyć aplikację w **wersji próbnej** , czy aplikację z **płatnością zgodnie z rzeczywistym** użyciem. **Wersje próbne** aplikacji są bezpłatne przez siedem dni przed ich wygaśnięciem i zezwalają na maksymalnie pięć bezpłatnych urządzeń. W dowolnym momencie przed wygaśnięciem można przekonwertować te aplikacje na typ Płatność zgodnie z rzeczywistym użyciem. W przypadku tworzenia aplikacji w wersji próbnej należy wprowadzić informacje kontaktowe i zdecydować, czy otrzymywać informacje i porady od firmy Microsoft. Aplikacje **płatne zgodnie** z rzeczywistym użyciem obsługują do dwóch bezpłatnych urządzeń i wymagają umieszczenia informacji o subskrypcji platformy Azure.
+2. Możesz wybrać, czy chcesz utworzyć aplikację, korzystając z *bezpłatnego* planu cenowego, czy też jednego z *standardowych* planów cenowych. Aplikacje tworzone za pomocą planu bezpłatnego są bezpłatne przez siedem dni przed ich wygaśnięciem i zezwalają na maksymalnie pięć bezpłatnych urządzeń. Możesz przenieść aplikację z planu bezpłatnego do standardowego planu cen w dowolnym momencie przed jego wygaśnięciem. Jeśli wybierzesz plan bezpłatny, musisz wprowadzić swoje informacje kontaktowe i zdecydować, czy otrzymywać informacje i porady od firmy Microsoft. Aplikacje tworzone przy użyciu planu standardowego obsługują do dwóch bezpłatnych urządzeń i wymagają wprowadzenia informacji o subskrypcji platformy Azure na potrzeby rozliczania.
 
 3. Wybierz pozycję **Utwórz** w dolnej części strony, aby wdrożyć aplikację.
 

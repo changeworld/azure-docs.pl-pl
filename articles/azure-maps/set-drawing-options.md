@@ -3,21 +3,21 @@ title: Moduł narzędzi do rysowania | Mapy Microsoft Azure
 description: W tym artykule dowiesz się, jak ustawiać dane dotyczące opcji rysowania przy użyciu zestawu SDK sieci Web Microsoft Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 09/04/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2f23d4d7962fc4a01ac2f9d20dc834bcd2f08be5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6c64820cdfa03e833bfd2fbad3ba7489170b14e5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910590"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988927"
 ---
 # <a name="use-the-drawing-tools-module"></a>Korzystanie z modułu narzędzi do rysowania
 
-Zestaw SDK sieci Web Azure Maps udostępnia *moduł narzędzi do rysowania*. Ten moduł ułatwia rysowanie i edytowanie kształtów na mapie przy użyciu urządzenia wejściowego, takiego jak mysz, na naszym ekranie dotykowym. Podstawową klasą tego modułu jest [Menedżer rysowania](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-) i zapewnia wszystkie możliwości, które są konieczne do rysowania i edytowania kształtów na mapie. Menedżera rysunku można używać bezpośrednio i zintegrować z interfejsem użytkownika niestandardowego paska narzędzi lub użyć wbudowanej klasy [paska narzędzi rysunku](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) . 
+Zestaw SDK sieci Web Azure Maps udostępnia *moduł narzędzi do rysowania*. Ten moduł ułatwia rysowanie i edytowanie kształtów na mapie przy użyciu urządzenia wejściowego, takiego jak mysz lub ekran dotykowy. Podstawową klasą tego modułu jest [Menedżer rysowania](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). Menedżer rysowania udostępnia wszystkie funkcje, które są konieczne do rysowania i edytowania kształtów na mapie. Może być używana bezpośrednio i jest zintegrowana z niestandardowym interfejsem użytkownika paska narzędzi. Można również użyć wbudowanej klasy [paska narzędzi rysunku](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) . 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Ładowanie modułu narzędzi do rysowania na stronie sieci Web
 
@@ -30,7 +30,7 @@ Zestaw SDK sieci Web Azure Maps udostępnia *moduł narzędzi do rysowania*. Ten
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.js"></script>
         ```
 
-    - Alternatywnie Załaduj moduł narzędzi do rysowania dla kodu źródłowego zestawu SDK sieci Web Azure Maps lokalnie, używając pakietu [Azure-Maps-Drawing-Tools](https://www.npmjs.com/package/azure-maps-drawing-tools) npm, a następnie hostowania go w aplikacji. Ten pakiet zawiera również definicje języka TypeScript. Użyj tego polecenia:
+    - Można też załadować moduł narzędzi do rysowania dla kodu źródłowego Azure Maps Web SDK lokalnie przy użyciu pakietu [Azure-Maps-Drawing-Tools](https://www.npmjs.com/package/azure-maps-drawing-tools) npm, a następnie hostować go przy użyciu aplikacji. Ten pakiet zawiera również definicje języka TypeScript. Użyj tego polecenia:
     
         > **npm Zainstaluj platformę Azure — Maps — narzędzia do rysowania**
     
@@ -43,7 +43,7 @@ Zestaw SDK sieci Web Azure Maps udostępnia *moduł narzędzi do rysowania*. Ten
 
 ## <a name="use-the-drawing-manager-directly"></a>Korzystanie z Menedżera rysowania bezpośrednio
 
-Teraz, gdy moduł narzędzi do rysowania został załadowany do aplikacji, można użyć [Menedżera rysowania](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-) , aby umożliwić rysowanie i edycję na mapie. Możesz określić opcje dla Menedżera rysowania podczas tworzenia jego wystąpienia lub alternatywnie użyć funkcji `drawingManager.setOptions()`.
+Po załadowaniu modułu narzędzi do rysowania w aplikacji można włączyć możliwości rysowania i edytowania za pomocą [Menedżera rysowania](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). Możesz określić opcje dla Menedżera rysowania podczas tworzenia jego wystąpienia lub alternatywnie użyć funkcji `drawingManager.setOptions()`.
 
 ### <a name="set-the-drawing-mode"></a>Ustawianie trybu rysowania
 
@@ -83,7 +83,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 });
 ```
 
-Poniżej znajduje się przykładowy kod implementujący funkcję, która pozwala na swobodne narysowanie wielokątów na mapie, a następnie pozostawienie lewego przycisku myszy i przeciąganie go wokół siebie. 
+ Ten przykładowy kod implementuje funkcje rysowania wielokąta na mapie. Po prostu przytrzymaj lewy przycisk myszy i przeciągnij go wokół siebie, swobodnie.
 
 <br/>
 
@@ -121,7 +121,7 @@ Dowiedz się, jak używać dodatkowych funkcji modułu narzędzi do rysowania:
 Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Menedżer rysowania](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)

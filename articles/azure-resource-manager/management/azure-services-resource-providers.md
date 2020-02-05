@@ -3,12 +3,12 @@ title: Dostawcy zasobów według usług platformy Azure
 description: Wyświetla listę wszystkich przestrzeni nazw dostawcy zasobów dla Azure Resource Manager i pokazuje usługę platformy Azure dla tej przestrzeni nazw.
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: cdf56c5c84f8837538c2f59b34c3bcf4265d78cb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d16c5fe148f8b6c907c897963e72cb84bc9ae2d5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644311"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984374"
 ---
 # <a name="resource-providers-for-azure-services"></a>Dostawcy zasobów dla usług platformy Azure
 
@@ -32,7 +32,7 @@ W tym artykule pokazano, jak przestrzenie nazw dostawcy zasobów są mapowane na
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
 | Microsoft.AzureStack | rdzeń |
 | Microsoft.Batch | [Batch](../../batch/index.yml) |
-| Microsoft.Billing | [Rozliczenia](/azure/billing/) |
+| Microsoft.Billing | [Cost Management i rozliczanie](/azure/billing/) |
 | Microsoft.BingMaps | [Mapy Bing](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft. łańcucha bloków | [Usługa Azure łańcucha bloków](/azure/blockchain/workbench/) |
 | Microsoft.Blueprint | [Plany platformy Azure](/azure/governance/blueprints/) |
@@ -130,19 +130,19 @@ W tym artykule pokazano, jak przestrzenie nazw dostawcy zasobów są mapowane na
 | Microsoft.Scheduler | [Scheduler](/azure/scheduler/) |
 | Microsoft.Search | [Azure Search](../../search/index.yml) |
 | Microsoft.Security | [Security Center](../../security-center/index.yml) |
-| Microsoft. SecurityInsights | [Azure Sentinel](/azure/sentinel/) |
+| Microsoft. SecurityInsights | [Wskaźnik na platformie Azure](/azure/sentinel/) |
 | Microsoft. SerialConsole | [Konsola szeregowa platformy Azure](../../virtual-machines/troubleshooting/serial-console-windows.md) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.ServiceFabricMesh | [Siatka Service Fabric](../../service-fabric-mesh/index.yml) |
-| Microsoft.SignalRService | [Usługa Azure SignalR Service](../../azure-signalr/index.yml) |
+| Microsoft.SignalRService | [Usługa sygnałów platformy Azure](../../azure-signalr/index.yml) |
 | Microsoft.SiteRecovery | [Site Recovery](../../site-recovery/index.yml) |
 | Microsoft.Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../sql-database/index.yml)<br />[SQL Data Warehouse](/azure/sql-data-warehouse/) |
 | Microsoft.SqlVirtualMachine | [Program SQL Server na maszynach wirtualnych platformy Azure](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
-| Microsoft.Storage | [Magazyn](../../storage/index.yml) |
+| Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft.StorageCache | [Pamięć podręczna Azure HPC](/azure/hpc-cache/) |
-| Microsoft.StorageSync | [Magazyn](../../storage/index.yml) |
+| Microsoft.StorageSync | [Storage](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](/azure/storsimple/) |
 | Microsoft.StreamAnalytics | [Stream Analytics](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | rdzeń |

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: pozyskiwanie danych monitorowania na platformie Azure Eksplorator danych bez jednego wiersza kodu'
+title: 'Samouczek: pozyskiwanie danych monitorowania bez kodu — Eksplorator danych platformy Azure'
 description: W ramach tego samouczka nauczysz się, jak pozyskiwać dane monitorowania do platformy Azure Eksplorator danych bez jednego wiersza kodu i wysyłać zapytania o dane.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836563"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986210"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Samouczek: pozyskiwanie i wykonywanie zapytań dotyczących danych monitorowania na platformie Azure Eksplorator danych 
 

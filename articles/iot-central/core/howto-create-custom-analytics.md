@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5c22e29e51d9f2fc58720c555b8ad3b03d791db6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39d99b8b6167411fc75677878b7f82a27deab958
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435030"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987632"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozszerzając IoT Central platformy Azure z analizą niestandardową przy użyciu Azure Databricks
 
@@ -39,7 +39,7 @@ Utwórz aplikację IoT Central w witrynie programu [Azure IoT Central Applicatio
 
 | Ustawienie | Wartość |
 | ------- | ----- |
-| Plan płatności | Płatność zgodnie z rzeczywistym użyciem |
+| Plan cenowy | Standardowa |
 | Szablon aplikacji | Starsza aplikacja |
 | Nazwa aplikacji | Zaakceptuj wartość domyślną lub wybierz własną nazwę |
 | Adres URL | Zaakceptuj domyślny lub wybierz własny unikatowy prefiks adresu URL |
@@ -132,7 +132,7 @@ Skorzystaj z informacji w poniższej tabeli, aby utworzyć klaster:
 | ------- | ----- |
 | Nazwa klastra | centralanalysis |
 | Tryb klastra | Standardowa |
-| Wersja usługi Databricks Runtime | 5,3 (Scala 2,11, Spark 2.4.0) |
+| Wersja Databricks Runtime | 5,3 (Scala 2,11, Spark 2.4.0) |
 | Wersja języka Python | 3 |
 | Włączanie skalowania automatycznego | Nie |
 | Przerwij po minutach braku aktywności | 30 |

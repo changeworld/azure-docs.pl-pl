@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 100f059f7c9f18ab6920f50c850b3b8d5a617908
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 69582291ca1da95003e26a6922899defd7d5e477
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840200"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982402"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informacje o profilach technicznych w Azure Active Directory B2C zasadach niestandardowych
 
@@ -40,6 +40,7 @@ Profil techniczny umożliwia realizację następujących typów scenariuszy:
 - [Samodzielne](self-asserted-technical-profile.md) współpracujące z użytkownikiem. Na przykład Zbierz poświadczenia użytkownika w celu zalogowania się, renderowania strony rejestracji lub resetowania hasła.
 - [Zarządzanie sesjami](custom-policy-reference-sso.md) — obsługa różnych typów sesji.
 - **Application Insights**
+- [Hasło](one-time-password-technical-profile.md) jednorazowe — zapewnia obsługę zarządzania generowaniem i weryfikacją hasła jednorazowego. 
 
 ## <a name="technical-profile-flow"></a>Przepływ profilu technicznego
 

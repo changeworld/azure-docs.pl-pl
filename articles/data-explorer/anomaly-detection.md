@@ -1,5 +1,5 @@
 ---
-title: Wykrywanie anomalii szeregów czasowych i prognozowanie na platformie Azure Eksplorator danych
+title: Wykrywanie anomalii szeregów czasowych & prognozowanie — Azure Eksplorator danych
 description: Dowiedz się, jak analizować dane szeregów czasowych na potrzeby wykrywania anomalii i prognozowania przy użyciu usługi Azure Eksplorator danych.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0e06569a3a6948836201b333501bf2de0416d4ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 4a7463d6149a921a4a29b43eaebb78a01543323a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766042"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985829"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Wykrywanie anomalii i prognozowanie na platformie Azure Eksplorator danych
 

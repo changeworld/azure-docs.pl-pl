@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 35bcf822b97d5e4028ec99c417ec1f54952350a4
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 23ac98f91c989c9bedb6b91e6a7ce26dc164ac5a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966742"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987795"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966742"
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com)
 1. Kliknij przycisk [utwórz **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Wprowadź wszystkie wymagane ustawienia dla klucza czasu wykonywania:
+1. Wprowadź wszystkie wymagane ustawienia dla klucza **czasu wykonywania** :
 
     |Ustawienie|Wartość|
     |--|--|
@@ -50,7 +50,7 @@ Użyj języka Python, aby wykonać zapytanie dotyczące [punktu końcowego przew
 
     try:
 
-        key = 'YOUR-KEY'
+        key = 'YOUR-KEY' # your Runtime key
         endpoint = 'YOUR-ENDPOINT' # such as 'your-resource-name.api.cognitive.microsoft.com'
         appId = 'df67dcdb-c37d-46af-88e1-8b97951ca1c2'
         utterance = 'turn on all lights'
@@ -75,11 +75,11 @@ Użyj języka Python, aby wykonać zapytanie dotyczące [punktu końcowego przew
         print(f'{e}')
     ```
 
-1. Zastąp wartości `YOUR-KEY` i `YOUR-ENDPOINT` własnym kluczem predykcyjnym i punktem końcowym.
+1. Zastąp wartości `YOUR-KEY` i `YOUR-ENDPOINT` **własnym kluczem i** punktem końcowym przewidywania.
 
     |Informacje|Przeznaczenie|
     |--|--|
-    |`YOUR-KEY`|Klucz predykcyjny dla 32 znaków.|
+    |`YOUR-KEY`|Klucz **środowiska uruchomieniowego** przewidywania znaków 32.|
     |`YOUR-ENDPOINT`| Punkt końcowy adresu URL przewidywania. Na przykład `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Zainstaluj zależność `requests`. Służy do wprowadzania żądań HTTP:

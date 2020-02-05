@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/29/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5a20f40c893c36823906d5cecadd9be21b8a4fd2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0bda94344a22f39daf104e7b95e33723187c4aa1
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836018"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983014"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -52,7 +52,7 @@ Element **ClaimsProvider** zawiera następujące elementy podrzędne:
 | Element | Wystąpień | Opis |
 | ------- | ---------- | ----------- |
 | Domain | 0:1 | Ciąg, który zawiera nazwę domeny dostawcy zgłoszeń. Na przykład jeśli dostawca oświadczeń zawiera profil techniczny w serwisie Facebook, nazwa domeny to Facebook.com. Ta nazwa domeny jest używana dla wszystkich profilów technicznych zdefiniowanych w dostawcy oświadczeń, chyba że zostanie zastąpiona przez profil techniczny. Nazwa domeny może być również przywoływana w **domain_hint**. Aby uzyskać więcej informacji, zobacz sekcję logowanie za pomocą funkcji **przekierowanie do dostawcy społecznościowego** [Konfigurowanie bezpośredniego logowania przy użyciu Azure Active Directory B2C](direct-signin.md). |
-| DisplayName | 1:1 | Ciąg, który zawiera nazwę dostawcy oświadczeń, który może być wyświetlany użytkownikom. |
+| DisplayName | 1:1 | Ciąg, który zawiera nazwę dostawcy oświadczeń. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Zestaw profilów technicznych obsługiwanych przez dostawcę usług |
 
 **ClaimsProvider** organizuje sposób, w jaki profile techniczne odnoszą się do dostawcy oświadczeń. Poniższy przykład przedstawia dostawcę oświadczeń Azure Active Directory z profilami technicznymi Azure Active Directory:

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 5560cb31e31f7cf33ac8ae71d649e88be3dbb6e6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1f04bc18405c5a5a9612c0de6dd76f22450c7f04
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112505"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990394"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Samouczek: Tworzenie i przechodzenie przez szablon aplikacji monitorującej panel słoneczny 
 
@@ -52,8 +52,9 @@ Tę aplikację można utworzyć w trzech prostych krokach:
     * **7-dniowa bezpłatna wersja próbna**: Jeśli masz już subskrypcję platformy Azure, zalecane jest ustawienie domyślne. Jeśli nie masz subskrypcji platformy Azure, Zacznij od bezpłatnej wersji próbnej.
     * **Informacje o rozliczeniach**: sama aplikacja jest bezpłatna. Szczegóły katalogu, subskrypcji platformy Azure i regionu są wymagane do aprowizacji zasobów aplikacji.
     * Kliknij przycisk **Utwórz** w dolnej części strony, a Twoja aplikacja zostanie utworzona na minutę lub w ten sposób.
-        > [!div class="mx-imgBorder"]
-        > ![](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png) formularz nowej aplikacji
+        ![](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png) formularz nowej aplikacji
+        
+        ![Nowe informacje o rozliczeniu formularza aplikacji](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Weryfikowanie aplikacji i danych symulowanych

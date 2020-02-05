@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 2dd74f13f9342e45e38dafed2de8338876c8ae36
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 02cb7738e20df6aba8690c9fe2ee718144bad114
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966902"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987799"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966902"
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com)
 1. Kliknij przycisk [utwórz **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Wprowadź wszystkie wymagane ustawienia dla klucza czasu wykonywania:
+1. Wprowadź wszystkie wymagane ustawienia dla klucza **czasu wykonywania** :
 
     |Ustawienie|Wartość|
     |--|--|
@@ -63,7 +63,7 @@ Użyj języka go, aby wykonać zapytanie dotyczące [punktu końcowego przewidyw
         // utterance for public app
         var utterance = "turn on all lights"
 
-        // YOUR-KEY - your  key
+        // YOUR-KEY - your **Runtime** key
         var endpointKey = "YOUR-KEY"
 
         // YOUR-ENDPOINT - example is your-resource-name.api.cognitive.microsoft.com
@@ -96,11 +96,11 @@ Użyj języka go, aby wykonać zapytanie dotyczące [punktu końcowego przewidyw
     }
     ```
 
-1. Zastąp wartości `YOUR-KEY` i `YOUR-ENDPOINT` własnym kluczem predykcyjnym i punktem końcowym.
+1. Zastąp wartości `YOUR-KEY` i `YOUR-ENDPOINT` **własnym kluczem i** punktem końcowym przewidywania.
 
     |Informacje|Przeznaczenie|
     |--|--|
-    |`YOUR-KEY`|Klucz predykcyjny dla 32 znaków.|
+    |`YOUR-KEY`|Klucz **środowiska uruchomieniowego** przewidywania znaków 32.|
     |`YOUR-ENDPOINT`| Punkt końcowy adresu URL przewidywania. Na przykład `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Za pomocą wiersza polecenia w tym samym katalogu, w którym został utworzony plik, wprowadź następujące polecenie, aby skompilować plik go:

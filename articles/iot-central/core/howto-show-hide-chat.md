@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: d861a5d1da6ebc9cedbe2dff764cd5b6e7dd04e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f858e0dd475361ff097f5a05ae01df2af00e4eca
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827400"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989998"
 ---
 # <a name="toggle-live-chat"></a>Przełączanie czatu na żywo
 
 W tym artykule opisano sposób przełączania rozmowy na żywo w aplikacji IoT Central. Korzystając z rozmowy na żywo, możesz uzyskać dostęp do pomocy technicznej.
 
 > [!NOTE]
-> Opcja rozmowa jest dostępna tylko w przypadku subskrypcji wersji próbnej.
+> Opcja czatu jest dostępna tylko dla aplikacji utworzonych przy użyciu bezpłatnego planu cenowego.
 
 ## <a name="chat-with-us"></a>Porozmawiaj z nami
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cd06d4cbf62078c2c7a5def4a0032ddce97d67f0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 27b430ca6e90eba933662bd35d8d97b08234c84e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842456"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989029"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -130,9 +130,7 @@ Poniższa tabela zawiera listę znanych ograniczeń dotyczących używania prywa
 
 |Ograniczenia |Opis |Środki zaradcze  |
 |---------|---------|---------|
-|Reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) i trasy zdefiniowane przez użytkownika nie mają zastosowania do prywatnego punktu końcowego    |SIECIOWEJ grupy zabezpieczeń nie jest obsługiwany w prywatnych punktach końcowych. W podsieciach zawierających prywatny punkt końcowy może być skojarzonych sieciowej grupy zabezpieczeń, więc reguły nie będą obowiązywać w przypadku ruchu przetwarzanego przez prywatny punkt końcowy. Aby wdrażać prywatne punkty końcowe w podsieci, należy [wyłączyć wymuszanie zasad sieciowych](disable-private-endpoint-network-policy.md) . SIECIOWEJ grupy zabezpieczeń jest nadal wymuszane dla innych obciążeń hostowanych w tej samej podsieci. Trasy w dowolnej podsieci klienta będą używać prefiksu/32, zmiana domyślnego zachowania routingu wymaga podobnego UDR  | Kontroluj ruch przy użyciu reguł sieciowej grupy zabezpieczeń dla ruchu wychodzącego na klientach źródłowych. Wdróż pojedyncze trasy z prefiksem/32, aby przesłonić prywatne trasy punktów końcowych        |
-|  Virtual Network komunikacji równorzędnej z prywatnymi punktami końcowymi nie są obsługiwane   |   Podczas nawiązywania połączenia z prywatnymi punktami końcowymi w Virtual Network komunikacji równorzędnej bez żadnych innych obciążeń nie jest obsługiwane       | Wdróż pojedynczą maszynę wirtualną na Virtual Network komunikacji równorzędnej w celu włączenia łączności |
-|Wyspecjalizowane obciążenia nie mogą uzyskać dostępu do prywatnych punktów końcowych    |   Następujące usługi wdrożone w sieci wirtualnej nie mogą uzyskać dostępu do żadnego prywatnego zasobu linku przy użyciu prywatnych punktów końcowych:<br>Plan usługi App Service</br>Wystąpienie kontenera platformy Azure</br>Azure NetApp Files</br>Dedykowany moduł HSM platformy Azure<br>       |   Brak środków zaradczych w trakcie okresu zapoznawczego.       |
+|Reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) i trasy zdefiniowane przez użytkownika nie mają zastosowania do prywatnego punktu końcowego    |SIECIOWEJ grupy zabezpieczeń nie jest obsługiwany w prywatnych punktach końcowych. W podsieciach zawierających prywatny punkt końcowy może być skojarzonych sieciowej grupy zabezpieczeń, więc reguły nie będą obowiązywać w przypadku ruchu przetwarzanego przez prywatny punkt końcowy. Aby wdrażać prywatne punkty końcowe w podsieci, należy [wyłączyć wymuszanie zasad sieciowych](disable-private-endpoint-network-policy.md) . SIECIOWEJ grupy zabezpieczeń jest nadal wymuszane dla innych obciążeń hostowanych w tej samej podsieci. Trasy w dowolnej podsieci klienta będą używać prefiksu/32, zmiana domyślnego zachowania routingu wymaga podobnego UDR  | Kontroluj ruch przy użyciu reguł sieciowej grupy zabezpieczeń dla ruchu wychodzącego na klientach źródłowych. Wdróż pojedyncze trasy z prefiksem/32, aby przesłonić prywatne trasy punktów końcowych. Dzienniki przepływu sieciowej grupy zabezpieczeń i informacje monitorowania dla połączeń wychodzących są nadal obsługiwane i mogą być używane        |
 
 
 ## <a name="next-steps"></a>Następne kroki

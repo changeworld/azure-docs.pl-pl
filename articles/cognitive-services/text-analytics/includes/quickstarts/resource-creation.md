@@ -4,15 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 9623398e51260d88df3d8fd88e3affaf7f906a64
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 254fe3602bdb6a05f3a3225035460b88ebd3e23f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76159030"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987360"
 ---
-Zacznij korzystać z interfejs API analizy tekstu z jedną z poniższych opcji.
-
+Potrzebujesz klucza i punktu końcowego z zasobu analiza tekstu, aby połączyć aplikację. Uzyskaj je, tworząc jeden z poniższych zasobów:
 
 * <a href="https://azure.microsoft.com/try/cognitive-services/my-apis/?api=text-analytics" title="utworzyć zasób próbny analiza tekstu" target="_blank">utworzyć zasób <span class="docon docon-navigate-external x-hidden-focus"></span> próbny</a>
     * Nie jest wymagana żadna subskrypcja platformy Azure. 

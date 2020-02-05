@@ -1,14 +1,14 @@
 ---
 title: Szybki Start — Tworzenie obrazu kontenera uruchamiania &
-description: Szybko uruchamiaj zadania z Azure Container Registry, aby kompilować i uruchamiać obraz kontenera na żądanie w chmurze.
+description: Szybko uruchamiaj zadania z Azure Container Registry, aby kompilować i uruchamiać obraz kontenera platformy Docker na żądanie w chmurze.
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.openlocfilehash: f0b510607a4d0acf12e0b9caa43835c1cfe6a83d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/31/2020
+ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454950"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986278"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Szybki Start: kompilowanie i uruchamianie obrazu kontenera za pomocą zadań Azure Container Registry
 
@@ -44,7 +44,7 @@ W tym przykładzie jest tworzony rejestr *podstawowy* , opcja zoptymalizowana po
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Tworzenie obrazu z pliku dockerfile
 
-Teraz Użyj Azure Container Registry do skompilowania obrazu. Najpierw Utwórz katalog roboczy, a następnie utwórz pliku dockerfile o nazwie *pliku dockerfile* z następującą zawartością. Jest to prosty przykład, aby utworzyć obraz kontenera systemu Linux, ale możesz utworzyć własne, standardowe pliku dockerfile i obrazy kompilacji dla innych platform.
+Teraz Użyj Azure Container Registry do skompilowania obrazu. Najpierw Utwórz katalog roboczy, a następnie utwórz pliku dockerfile o nazwie *pliku dockerfile* z następującą zawartością. Jest to prosty przykład, aby utworzyć obraz kontenera systemu Linux, ale możesz utworzyć własne, standardowe pliku dockerfile i obrazy kompilacji dla innych platform. Przykłady poleceń w tym artykule są sformatowane dla powłoki bash.
 
 ```bash
 echo FROM hello-world > Dockerfile
@@ -53,7 +53,9 @@ echo FROM hello-world > Dockerfile
 Uruchom polecenie [AZ ACR Build][az-acr-build] , aby skompilować obraz. Po pomyślnym skompilowaniu obraz jest wypychany do rejestru. Poniższy przykład wypycha obraz `sample/hello-world:v1`. `.` na końcu polecenia ustawia lokalizację pliku dockerfile, w tym przypadku bieżący katalog.
 
 ```azurecli-interactive
-az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
+az acr build --image sample/hello-world:v1 \
+  --registry myContainerRegistry008 \
+  --file Dockerfile . 
 ```
 
 Dane wyjściowe z pomyślnej kompilacji i wypychania są podobne do następujących:
@@ -110,22 +112,16 @@ Run ID: ca8 was successful after 10s
 
 ## <a name="run-the-image"></a>Uruchamianie obrazu
 
-Teraz możesz szybko uruchomić utworzony wcześniej obraz i wypchnąć go do rejestru. W przepływie pracy tworzenia kontenera może to być etap walidacji przed wdrożeniem obrazu.
+Teraz możesz szybko uruchomić utworzony wcześniej obraz i wypchnąć go do rejestru. W tym miejscu Użyj polecenia [AZ ACR Run][az-acr-run] , aby uruchomić polecenie Container. W przepływie pracy tworzenia kontenera może to być etap walidacji przed wdrożeniem obrazu lub można umieścić polecenie w [wieloetapowym pliku YAML][container-registry-tasks-multi-step]. 
 
-Utwórz plik *quickrun. YAML* w lokalnym katalogu roboczym z następującą zawartością dla pojedynczego kroku. Zastąp nazwę serwera logowania w rejestrze dla *\<acrLoginServer\>* . Nazwa serwera logowania ma format *\<Registry-name\>. azurecr.IO* (wszystkie małe litery), na przykład *mycontainerregistry008.azurecr.IO*. W tym przykładzie założono, że utworzono i wypychasz obraz `sample/hello-world:v1` w poprzedniej sekcji:
-
-```yml
-steps:
-  - cmd: <acrLoginServer>/sample/hello-world:v1
-```
-
-W `cmd` kroku w tym przykładzie jest uruchamiany kontener w konfiguracji domyślnej, ale `cmd` obsługuje dodatkowe parametry `docker run` lub nawet inne polecenia `docker`.
-
-Uruchom kontener za pomocą następującego polecenia:
+Poniższy przykład używa `$Registry`, aby określić rejestr, w którym uruchamiane jest polecenie:
 
 ```azurecli-interactive
-az acr run --registry myContainerRegistry008 --file quickrun.yaml .
+az acr run --registry myContainerRegistry008 \
+  --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
+
+Parametr `cmd` w tym przykładzie służy do uruchamiania kontenera w konfiguracji domyślnej, ale `cmd` obsługuje dodatkowe parametry `docker run` lub nawet inne polecenia `docker`.
 
 Dane wyjściowe będą podobne do następujących:
 
@@ -182,10 +178,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start użyto funkcji zadań ACR do szybkiego kompilowania, wypychania i uruchamiania obrazu kontenera platformy Docker w systemie Azure. Przejdź do samouczków Azure Container Registry, aby dowiedzieć się więcej o używaniu zadań ACR do automatyzowania kompilacji i aktualizacji obrazów.
+W tym przewodniku szybki start użyto funkcji zadań ACR do szybkiego kompilowania, wypychania i uruchamiania obrazu kontenera platformy Docker na platformie Azure bez lokalnej instalacji platformy Docker. Przejdź do samouczków Azure Container Registry zadań, aby dowiedzieć się więcej o używaniu zadań ACR do automatyzowania kompilacji i aktualizacji obrazów.
 
 > [!div class="nextstepaction"]
-> [Samouczki Azure Container Registry][container-registry-tutorial-quick-task]
+> [Samouczki zadań Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -201,10 +197,12 @@ W tym przewodniku szybki start użyto funkcji zadań ACR do szybkiego kompilowan
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-build]: /cli/azure/acr#az-acr-build
+[az-acr-run]: /cli/azure/acr#az-acr-run
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tasks-overview]: container-registry-tasks-overview.md
+[container-registry-tasks-multi-step]: container-registry-tasks-multi-step.md
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [azure-cli-install]: /cli/azure/install-azure-cli

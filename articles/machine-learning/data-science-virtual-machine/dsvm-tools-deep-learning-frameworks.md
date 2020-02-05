@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 65bc11282726d9e66dbed8fa1fbb75fc1b89c1d1
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3dfb2c201138a65379aa509ce1bf10894ab6819b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615504"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984714"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Głębokie uczenie i platformy AI dla Data Science VM platformy Azure
 Poniżej wymieniono platformy uczenia głębokiego na DSVM.
@@ -115,7 +115,7 @@ Poniżej wymieniono platformy uczenia głębokiego na DSVM.
 
 |    |           |
 | ------------- | ------------- |
-| Obsługiwane wersje | 1.2.0 |
+| Obsługiwane wersje | 1.2.0 (Ubuntu 16,04, Windows 2016, Windows 2019), 1.4.0 (Ubuntu 18,04) |
 | Obsługiwane wersje DSVM      | Linux |
 | Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | Zainstalowane w języku [Python 3,5](dsvm-tools-languages.md#python-linux-edition). Przykładowe notesy Jupyter są dołączone, a przykłady znajdują się w/dsvm/Samples/pytorch. |
 | Jak uruchomić go      | Terminal: Aktywuj poprawne środowisko, a następnie uruchom Język Python.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Connect, a następnie otwórz katalog PyTorch dla przykładów.  |
@@ -124,7 +124,7 @@ Poniżej wymieniono platformy uczenia głębokiego na DSVM.
 
 |    |           |
 | ------------- | ------------- |
-| Obsługiwane wersje | 1.13 |
+| Obsługiwane wersje | 1,13 |
 | Obsługiwane wersje DSVM      | Windows, Linux |
 | Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | Zainstalowane w języku Python 3,5 w systemach [Linux](dsvm-tools-languages.md#python-linux-edition) i Python 3,6 w [systemie Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) |
 | Jak uruchomić go      | Terminal: Aktywuj poprawne środowisko, a następnie uruchom Język Python. <br/> * Jupyter: Połącz się z [Jupyter](provision-vm.md) lub [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine), a następnie otwórz katalog TensorFlow dla przykładów.   |
@@ -133,7 +133,7 @@ Poniżej wymieniono platformy uczenia głębokiego na DSVM.
 
 |    |           |
 | ------------- | ------------- |
-| Obsługiwane wersje | 1.12 |
+| Obsługiwane wersje | 1,12 |
 | Obsługiwane wersje DSVM      | Linux |
 | Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | tensorflow_model_server jest dostępny w terminalu. |
 | Jak uruchomić go      |  Przykłady są dostępne [online](https://www.tensorflow.org/serving/).   |

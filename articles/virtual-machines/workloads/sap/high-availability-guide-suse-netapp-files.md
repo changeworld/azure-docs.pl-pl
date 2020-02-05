@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: c2d6e3e42c581c255f207af4a5008e2d09c50a7d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887125"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990945"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP
 
@@ -185,7 +185,7 @@ Rozważając Azure NetApp Files dla architektury SAP NetWeaver w systemie SUSE w
 Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualne. Następnie należy utworzyć moduł równoważenia obciążenia i użyć maszyn wirtualnych w pulach zaplecza.
 
 1. Tworzenie grupy zasobów
-1. Tworzenie sieci wirtualnej
+1. Tworzenie Virtual Network
 1. Utwórz zestaw dostępności dla ASCS  
    Ustaw maksymalną domenę aktualizacji
 1. Utwórz maszynę wirtualną 1  
@@ -253,7 +253,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **frontonu). QAS. ASCS**)
          1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.1.1.20**)
-         1. Kliknij przycisk OK
+         1. Kliknij przycisk OK.
       1. 10.1.1.21 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki w obszarze "a", aby utworzyć adres IP dla wykres WYWOŁUJĄCYCH (na przykład **10.1.1.21** i **fronton. QAS. Wykres WYWOŁUJĄCYCH**)
    1. Tworzenie pul zaplecza
@@ -269,7 +269,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej sondy kondycji (na przykład **kondycja. QAS. ASCS**)
          1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
-         1. Kliknij przycisk OK
+         1. Kliknij przycisk OK.
       1. Port 621**01** dla ASCS wykres wywołujących
             * Powtórz powyższe kroki w sekcji "c", aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**01** i **kondycja). QAS. Wykres WYWOŁUJĄCYCH**)
    1. Reguły równoważenia obciążenia
@@ -280,7 +280,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Wybieranie **portów ha**
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
-         1. Kliknij przycisk OK
+         1. Kliknij przycisk OK.
          * Powtórz powyższe kroki, aby utworzyć reguły równoważenia obciążenia dla wykres WYWOŁUJĄCYCH (na przykład **LB. QAS. Wykres WYWOŁUJĄCYCH**)
 1. Alternatywnie, jeśli scenariusz wymaga podstawowego modułu równoważenia obciążenia (wewnętrznego), wykonaj następujące czynności:  
    1. Utwórz adresy IP frontonu
@@ -288,7 +288,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **frontonu). QAS. ASCS**)
          1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.1.1.20**)
-         1. Kliknij przycisk OK
+         1. Kliknij przycisk OK.
       1. 10.1.1.21 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki w obszarze "a", aby utworzyć adres IP dla wykres WYWOŁUJĄCYCH (na przykład **10.1.1.21** i **fronton. QAS. Wykres WYWOŁUJĄCYCH**)
    1. Tworzenie pul zaplecza
@@ -298,13 +298,13 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Kliknij pozycję Dodaj maszynę wirtualną.
          1. Wybierz zestaw dostępności utworzony wcześniej dla ASCS 
          1. Wybierz Maszyny wirtualne klastra SCS
-         1. Kliknij przycisk OK
+         1. Kliknij przycisk OK.
    1. Tworzenie sond kondycji
       1. Port 620**00** dla ASCS
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej sondy kondycji (na przykład **kondycja. QAS. ASCS**)
          1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
-         1. Kliknij przycisk OK
+         1. Kliknij przycisk OK.
       1. Port 621**01** dla ASCS wykres wywołujących
             * Powtórz powyższe kroki w sekcji "c", aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**01** i **kondycja). QAS. Wykres WYWOŁUJĄCYCH**)
    1. Reguły równoważenia obciążenia
@@ -315,7 +315,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Utrzymywanie protokołu **TCP**, wprowadź port **3200**
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
-         1. Kliknij przycisk OK
+         1. Kliknij przycisk OK.
       1. Dodatkowe porty dla ASCS
          * Powtórz powyższe kroki w obszarze "d" dla portów 36**00**, 39**00**, 81**00**, 5**00**, 5**00**14, 5**00**16 i TCP dla ASCS
       1. Dodatkowe porty dla ASCS wykres WYWOŁUJĄCYCH
@@ -341,7 +341,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    </code></pre>
 
    > [!NOTE]
-   > Nie używaj kresek w nazwach hostów węzłów klastra. W przeciwnym razie klaster nie będzie działał. Jest to znane ograniczenie, a SUSE działa z poprawkami. Poprawka zostanie wydana jako poprawka pakietu SAP-SUSE-Cloud-Connector.
+   > Znany problem związany z używaniem łącznika w nazwach hostów został rozwiązany z wersją **3.1.1** pakietu **SAP-SUSE-Cluster-Connector**. Upewnij się, że używasz co najmniej wersji 3.1.1 pakietu SAP-SUSE-Cluster-Connector, jeśli w nazwie hosta są używane węzły klastra z kreską. W przeciwnym razie klaster nie będzie działał. 
 
    Upewnij się, że zainstalowano nową wersję łącznika klastra SAP SUSE. Stary został wywołany sap_suse_cluster_connector, a nowy o nazwie **SAP-SUSE-Cluster-Connector**.
 
@@ -907,7 +907,7 @@ Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno plat
    <pre><code>sudo service waagent restart
    </code></pre>
 
-## <a name="install-database"></a>Instalowanie bazy danych
+## <a name="install-database"></a>Zainstaluj bazę danych
 
 W tym przykładzie system SAP NetWeaver jest instalowany na SAP HANA. Dla tej instalacji można użyć każdej obsługiwanej bazy danych. Aby uzyskać więcej informacji na temat instalowania SAP HANA na platformie Azure, zobacz [wysoka dostępność SAP HANA na platformie azure Virtual Machines][sap-hana-ha]. Listę obsługiwanych baz danych można znaleźć w temacie [SAP Note 1928533][1928533].
 

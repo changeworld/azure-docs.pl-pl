@@ -4,12 +4,12 @@ description: Dowiedz się, jak przygotować się do oceny/migracji maszyn wirtua
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1315b52e4ee6f39c27d21e3307d228219bc953d7
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028925"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984748"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Przygotowanie do oceny i migracji maszyn wirtualnych funkcji Hyper-V na platformę Azure
 
@@ -39,10 +39,10 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Musisz skonfigurować uprawnienia do wdrożenia Azure Migrate.
 
-- Uprawnienia do konta platformy Azure w celu utworzenia projektu Azure Migrate.
-- Uprawnienia dla Twojego konta, które zarejestrują urządzenie Azure Migrate. Urządzenie służy do odnajdywania i oceny migrowanych maszyn wirtualnych funkcji Hyper-V. Podczas rejestracji urządzenia Azure Migrate tworzy dwie aplikacje Azure Active Directory (Azure AD), które w unikatowy sposób identyfikują urządzenie:
-    - Pierwsza aplikacja komunikuje się z punktami końcowymi usługi Azure Migrate.
-    - Druga aplikacja uzyskuje dostęp do Azure Key Vault, który jest tworzony podczas rejestracji, do przechowywania informacji o aplikacji usługi Azure AD i ustawień konfiguracji urządzenia.
+**Zadanie podrzędne** | **Uprawnienia**
+--- | ---
+**Tworzenie projektu Azure Migrate** | Twoje konto platformy Azure wymaga uprawnień do utworzenia projektu.
+**Rejestrowanie urządzenia Azure Migrate** | Azure Migrate używa uproszczonego urządzenia Azure Migrate do odnajdywania i oceniania maszyn wirtualnych funkcji Hyper-v za pomocą oceny serwera Azure Migrate. To urządzenie umożliwia odnajdywanie maszyn wirtualnych i wysyłanie metadanych maszyn wirtualnych i danych wydajności do Azure Migrate.<br/><br/>Podczas rejestracji urządzenia następujący dostawcy rejestru są zarejestrowani z subskrypcją wybraną w ramach urządzenia — Microsoft. OffAzure, Microsoft. migrować i Microsoft. Rejestracja dostawcy zasobów umożliwia skonfigurowanie subskrypcji do pracy z dostawcą zasobów. Do zarejestrowania dostawców zasobów należy mieć rolę współautor lub właściciela w ramach subskrypcji.<br/><br/> W ramach dołączania Azure Migrate tworzy aplikację Azure Active Directory (Azure AD):<br/> Aplikacja usługi AAD służy do komunikacji (uwierzytelniania i autoryzacji) między agentami działającymi na urządzeniu przy użyciu odpowiednich usług działających na platformie Azure. Ta aplikacja nie ma uprawnień do wykonywania wywołań ARM lub dostępu RBAC w żadnym z zasobów.
 
 
 
@@ -59,15 +59,14 @@ Sprawdź, czy masz uprawnienia do tworzenia projektu Azure Migrate.
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Przypisywanie uprawnień do zarejestrowania urządzenia
 
-Można przypisać uprawnienia Azure Migrate do tworzenia aplikacji usługi Azure AD utworzonych podczas rejestracji urządzenia przy użyciu jednej z następujących metod:
+Można przypisać uprawnienia dla Azure Migrate, aby utworzyć aplikację usługi Azure AD podczas rejestracji urządzenia, korzystając z jednej z następujących metod:
 
 - Dzierżawa/Administrator globalny może udzielić uprawnień użytkownikom w dzierżawie, aby tworzyć i rejestrować aplikacje usługi Azure AD.
 - Dzierżawa/Administrator globalny może przypisać rolę dewelopera aplikacji (z uprawnieniami) do konta.
 
-Warto zauważyć, że:
-
-- Aplikacje nie mają żadnych innych uprawnień dostępu do subskrypcji innych niż opisane powyżej.
-- Te uprawnienia są potrzebne tylko podczas rejestrowania nowego urządzenia. Po skonfigurowaniu urządzenia można usunąć uprawnienia.
+> [!NOTE]
+> - Aplikacja nie ma żadnych innych uprawnień dostępu do subskrypcji innej niż opisane powyżej.
+> - Te uprawnienia są potrzebne tylko podczas rejestrowania nowego urządzenia. Po skonfigurowaniu urządzenia można usunąć uprawnienia.
 
 
 #### <a name="grant-account-permissions"></a>Udziel uprawnień konta
@@ -140,7 +139,7 @@ Uruchom skrypt w następujący sposób:
 
 Wartości skrótu to:
 
-| **Skrót** | **Wartość** |
+| **Skrótu** | **Wartość** |
 | --- | --- |
 | **ALGORYTMU** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |

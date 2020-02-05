@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87c0b62cec0b61bfc52ec31233ca7c1f947fdd98
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846133"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989522"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Konfigurowanie Azure Monitor aplikacji języka Python (wersja zapoznawcza)
 
@@ -336,9 +336,9 @@ Poniżej przedstawiono eksporterów, którzy OpenCensus są zamapowane na typy d
         main()
     ```
 
-6. Do dzienników można także dodawać niestandardowe wymiary. Zostaną one wyświetlone jako pary klucz-wartość w `customDimensions` w Azure Monitor.
+6. Możesz również dodać właściwości niestandardowe do wiadomości dziennika w argumencie słowa kluczowego *ekstra* przy użyciu pola custom_dimensions. Zostaną one wyświetlone jako pary klucz-wartość w `customDimensions` w Azure Monitor.
 > [!NOTE]
-> Aby ta funkcja działała, konieczne jest przekazanie słownika jako argumentu do dzienników, ponieważ wszystkie inne struktury danych zostaną zignorowane. Aby zachować formatowanie ciągów, Zapisz je w słowniku i przekaż je jako argumenty.
+> Aby ta funkcja działała, należy przekazać słownik do pola custom_dimensions. Jeśli przejdziesz argumenty dowolnego innego typu, rejestrator zignoruje je.
 
     ```python
     import logging
@@ -350,7 +350,17 @@ Poniżej przedstawiono eksporterów, którzy OpenCensus są zamapowane na typy d
     logger.addHandler(AzureLogHandler(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
     )
-    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+    # Use properties in logging statements
+    logger.warning('action', extra=properties)
+
+    # Use properties in exception logs
+    try:
+        result = 1 / 0  # generate a ZeroDivisionError
+    except Exception:
+    logger.exception('Captured an exception.', extra=properties)
     ```
 
 7. Aby uzyskać szczegółowe informacje na temat wzbogacania dzienników przy użyciu danych kontekstu śledzenia, zobacz [integracja dzienników](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)OpenCensus języka Python.

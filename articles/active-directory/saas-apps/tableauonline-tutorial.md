@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z usługą Tableau Online | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Tableau Online.
+title: 'Samouczek: integracja Azure Active Directory z usługą Tableau online | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Tableau online.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,87 +11,74 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/05/2019
+ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 5e405dc4ea323a6869207de53b7577ee960924eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 187600edb599f5a5775e1b847ed1cb3a49f3b827
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089229"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985615"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Tableau Online
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Tableau online
 
-W tym samouczku dowiesz się, jak zintegrować Tableau Online z usługą Azure Active Directory (Azure AD).
-Integrowanie Tableau Online z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę Tableau online z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi Tableau w trybie online z usługą Azure AD można:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do usługi Online firmy Tableau.
-* Użytkownikom można automatycznie zalogowany do usługi Online firmy Tableau (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-* Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+* Kontrolka w usłudze Azure AD, która ma dostęp do usługi Tableau online.
+* Zezwól użytkownikom na automatyczne logowanie do Tableau online przy użyciu kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z usługą Tableau Online, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* TABLEAU Online logowanie jednokrotne włączone subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
+* Subskrypcja z włączonym logowaniem jednokrotnym w usłudze Tableau online.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje Online TABLEAU **SP** jednokrotne logowanie inicjowane przez
+* Usługa Tableau online obsługuje logowanie jednokrotne w usłudze **SP**
+* Po skonfigurowaniu usługi Tableau online można wymusić kontrolę sesji, która chroni eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolka sesji rozszerzy od dostępu warunkowego. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-tableau-online-from-the-gallery"></a>Dodawanie Tableau Online za pomocą galerii
+## <a name="adding-tableau-online-from-the-gallery"></a>Dodawanie Tableau online z galerii
 
-Aby skonfigurować integrację Tableau online w usłudze Azure AD, należy dodać Tableau Online z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację usługi Tableau w usłudze Azure AD, musisz dodać Tableau online z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Tableau Online z galerii, wykonaj następujące czynności:**
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
+1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
+1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
+1. W sekcji **Dodaj z galerii** wpisz **Tableau online** w polu wyszukiwania.
+1. Wybierz pozycję **Tableau online** w panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-1. W **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-    ![Przycisk Azure Active Directory](common/select-azuread.png)
+W tej sekcji można skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD w usłudze Tableau online na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w usłudze Tableau online.
 
-2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD w usłudze Tableau online, wykonaj następujące bloki konstrukcyjne:
 
-    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj Logowanie jednokrotne w usłudze Tableau online](#configure-tableau-online-sso)** — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    1. **[Utwórz użytkownika testowego usługi Tableau online](#create-tableau-online-test-user)** , aby uzyskać odpowiednik B. Simon w usłudze Tableau online, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
-
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
-
-4. W polu wyszukiwania wpisz **Tableau Online**, wybierz opcję **Tableau Online** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
-
-     ![TABLEAU Online na liście wyników](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
-
-W tej sekcji, konfigurowania i testowania usługi Azure AD logowanie jednokrotne z usługą Online Tableau w oparciu o nazwie użytkownika testowego **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w dokumentacji Online Tableau musi zostać ustanowione.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z usługą Tableau Online, należy wykonać poniższe bloki konstrukcyjne:
-
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie Tableau Online logowania jednokrotnego](#configure-tableau-online-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego Tableau Online](#create-tableau-online-test-user)**  — aby odpowiednikiem Britta Simon w Tableau Online, które jest połączone z usługi Azure AD reprezentacja użytkownika.
-6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługi Azure AD logowanie jednokrotne z usługą Tableau Online, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD w usłudze Tableau online, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Tableau Online** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Tableau online** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
 2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
@@ -103,20 +90,20 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z usługą Tableau Onl
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Adresy URL i domen w trybie Online TABLEAU pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+    ![Tableau domeny online i adresy URL Logowanie jednokrotne](common/sp-identifier.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz następujący adres URL: `https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
 
     > [!NOTE]
-    > Zostanie wyświetlony `<entityid>` wartość z **Konfigurowanie Tableau Online** sekcji, w tym samouczku. Wartość Identyfikatora jednostki będą **usługi Azure AD identyfikator** wartość w **Konfigurowanie Tableau Online** sekcji.
+    > Otrzymasz wartość `<entityid>` z sekcji **Konfiguracja Tableau online** w tym samouczku. Wartość identyfikatora jednostki będzie wartością **identyfikatora usługi Azure AD** w sekcji **Konfiguracja Tableau online** .
 
-5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/metadataxml.png)
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. Na **Konfigurowanie Tableau Online** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie usługi Tableau online** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -124,51 +111,7 @@ Aby skonfigurować usługi Azure AD logowanie jednokrotne z usługą Tableau Onl
 
     b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
-
-### <a name="configure-tableau-online-single-sign-on"></a>Konfigurowanie Tableau Online logowania jednokrotnego
-
-1. W oknie innej przeglądarki logowanie jednokrotne do aplikacji Tableau Online. Przejdź do **ustawienia** i następnie **uwierzytelniania**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
-
-2. Aby włączyć protokół SAML, w obszarze **typy uwierzytelniania** sekcji. Sprawdź **włączyć dodatkową metodę uwierzytelniania** , a następnie sprawdź **SAML** pola wyboru.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
-
-3. Przewiń w dół do **Importuj plik metadanych do usługi Online firmy Tableau** sekcji.  Kliknij przycisk Przeglądaj, a następnie Importuj plik metadanych, który został pobrany z usługi Azure AD. Następnie kliknij przycisk **Zastosuj**.
-
-   ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
-
-4. W **dopasowania potwierdzenia** sekcji, Wstaw nazwę odpowiedniego potwierdzenie dostawcy tożsamości dla **adres e-mail**, **imię**, i **nazwisko**. Aby uzyskać te informacje z usługi Azure AD: 
-  
-    a. W witrynie Azure portal, przejdź na **Tableau Online** strony integracji aplikacji.
-
-    b. W **atrybutów użytkowników i oświadczeń** kliknij ikonę edycji.
-
-   ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/attributesection.png)
-
-    c. Skopiuj wartość przestrzeni nazw dla tych atrybutów: givenname, poczty e-mail i nazwisko wykonując następujące kroki:
-
-   ![Usługa Azure AD logowanie jednokrotne](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
-
-    d. Kliknij przycisk **user.givenname** wartość
-
-    e. Skopiuj wartości z **Namespace** pola tekstowego.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/attributesection2.png)
-
-    f. Aby skopiować przestrzeń nazw wartości dla poczty e-mail i nazwisko, powtórz powyższe kroki.
-
-    g. Przełącz się do aplikacji firmy Tableau Online, a następnie ustaw **atrybutów użytkowników i oświadczeń** sekcji w następujący sposób:
-
-    * Adres e-mail: **poczty** lub **userprincipalname**
-
-    * Imię: **givenname**
-
-    * Nazwisko: **nazwisko**
-
-    ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+    d. Adres URL wylogowywania
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -188,24 +131,24 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon\@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon\@yourcompanydomain. Extension**  
     Na przykład BrittaSimon\@contoso.com
 
-    c. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do usługi Online firmy Tableau.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Tableau online.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **Tableau Online**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Tableau online**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Tableau Online**.
+2. Na liście Aplikacje wybierz pozycję **Tableau online**.
 
-    ![Tableau Online łącze na liście aplikacji](common/all-applications.png)
+    ![Link Tableau online na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -221,30 +164,76 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-tableau-online-test-user"></a>Tworzenie użytkownika testowego Tableau Online
+## <a name="configure-tableau-online-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Tableau online
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Tableau w trybie Online.
+1. W innym oknie przeglądarki Zaloguj się do aplikacji online Tableau. Przejdź do pozycji **Ustawienia** , a następnie pozycję **uwierzytelnianie**.
 
-1. Na **Tableau Online**, kliknij przycisk **ustawienia** i następnie **uwierzytelniania** sekcji. Przewiń w dół do **Zarządzanie użytkownikami** sekcji. Kliknij przycisk **Add Users** a następnie kliknij przycisk **wprowadź adresy E-mail**.
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+
+2. Aby włączyć protokół SAML, w sekcji **typy uwierzytelniania** . Zaznacz **opcję Włącz dodatkową metodę uwierzytelniania** , a następnie zaznacz pole wyboru **SAML** .
+
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+
+3. Przewiń w dół, aby **zaimportować plik metadanych do sekcji Tableau online** .  Kliknij przycisk Przeglądaj i zaimportuj plik metadanych, który został pobrany z usługi Azure AD. Następnie kliknij przycisk **Zastosuj**.
+
+   ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+
+4. W sekcji **potwierdzenia dopasowania** Wstaw odpowiednią nazwę potwierdzenia dostawcy tożsamości dla **adresu e-mail**, **imienia**i **nazwiska**. Aby uzyskać te informacje z usługi Azure AD: 
+  
+    a. W Azure Portal przejdź na stronę integracji aplikacji **online Tableau** .
+
+    b. W sekcji **atrybuty użytkownika & oświadczenia** kliknij ikonę edycji.
+
+   ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/attributesection.png)
+
+    d. Skopiuj wartość przestrzeni nazw dla tych atrybutów: imięname, email i nazwisko, wykonując następujące czynności:
+
+   ![Logowanie jednokrotne w usłudze Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+
+    d. Kliknij pozycję **użytkownik. dana** wartośćname
+
+    e. Skopiuj wartość z pola tekstowego **przestrzeń nazw** .
+
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/attributesection2.png)
+
+    f. Aby skopiować wartości przestrzeni nazw dla wiadomości e-mail i nazwiska, powtórz powyższe kroki.
+
+    g. Przejdź do aplikacji Tableau online, a następnie ustaw **& atrybuty użytkownika** w następujący sposób:
+
+    * Wiadomość e-mail: **poczta** lub **userPrincipalName**
+
+    * Imię: **podaną** nazwę
+
+    * Nazwisko: **nazwisko**
+
+    ![Konfigurowanie logowania jednokrotnego](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+
+### <a name="create-tableau-online-test-user"></a>Utwórz użytkownika testowego usługi Tableau online
+
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w usłudze Tableau online.
+
+1. W witrynie **Tableau online**, kliknij pozycję **Ustawienia** , a następnie sekcję **uwierzytelnianie** . Przewiń w dół do sekcji **Zarządzanie użytkownikami** . Kliknij pozycję **Dodaj użytkowników** , a następnie kliknij pozycję **wprowadź adresy e-mail**.
   
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
-2. Wybierz **Dodawanie użytkowników do uwierzytelniania (SAML)** . W **wprowadź adresy e-mail** textbox Dodaj britta.simon\@contoso.com
+2. Wybierz pozycję **Dodaj użytkowników dla (SAML) uwierzytelnianie**. W polu tekstowym **wprowadź adresy e-mail** Dodaj Britta. simon\@contoso.com
   
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 
-3. Kliknij przycisk **dodawania użytkowników**.
+3. Kliknij pozycję **Dodaj użytkowników**.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Tableau Online, w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze programu Tableau w trybie Online dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Tableau online w panelu dostępu należy automatycznie zalogować się do Tableau online, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

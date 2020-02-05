@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c62b247da9447138bd7e5d84dfe49fdf75a06fd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434968"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990763"
 ---
 <!---
 Purpose of an Overview article: 
@@ -69,6 +69,13 @@ Konstruktor może też dostosować interfejs użytkownika aplikacji usługi Azur
 - Definiowanie układu właściwości i ustawień w szablonie urządzenia.
 - Konfigurowanie niestandardowych pulpitów nawigacyjnych ułatwiających operatorom odnajdywanie szczegółowych informacji i szybsze rozwiązywanie problemów.
 - Konfigurowanie niestandardowych analiz w celu eksplorowania danych serii czasu na połączonych urządzeniach.
+
+## <a name="pricing"></a>Cennik
+
+Możesz utworzyć aplikację IoT Central przy użyciu 7-dniowej bezpłatnej wersji próbnej lub użyć planu cenowego w warstwie Standardowa.
+
+- Aplikacje tworzone za pomocą planu *bezpłatnego* są bezpłatne przez siedem dni i obsługują maksymalnie pięć urządzeń. Możesz przekonwertować je tak, aby używały standardowego planu cenowego w dowolnym momencie przed wygaśnięciem.
+- W przypadku aplikacji tworzonych przy użyciu planu w *warstwie Standardowa* są naliczane opłaty za poszczególne urządzenia. możesz wybrać plan cenowy w **warstwie Standardowa 1** lub **standardowa 2** z dwoma bezpłatnymi urządzeniami. Dowiedz się więcej o [cenach IoT Central](https://aka.ms/iotcentral-pricing).
 
 ## <a name="connect-your-devices"></a>Podłącz swoje urządzenia
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 6bfbbb38d164dcb179541084de3ffeb89f44668d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e985fdda4638529e8ade2c700456d595ff355e8a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911312"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988740"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Korzystanie z modułu Azure Maps Services
 
@@ -31,7 +31,7 @@ Zestaw SDK sieci Web Azure Maps zawiera *moduł usług*. Ten moduł jest bibliot
 
     - Alternatywnie możesz załadować moduł usługi dla kodu źródłowego Azure Maps Web SDK lokalnie przy użyciu pakietu [Azure-Maps-REST](https://www.npmjs.com/package/azure-maps-rest) npm, a następnie hostować go w aplikacji. Ten pakiet zawiera również definicje języka TypeScript. Użyj tego polecenia:
     
-        > **npm install azure-maps-rest**
+        > **npm Zainstaluj platformę Azure — Maps — REST**
     
         Następnie Dodaj odwołanie do skryptu do `<head>` elementu pliku:
 

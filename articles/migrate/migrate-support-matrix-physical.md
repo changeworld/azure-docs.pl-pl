@@ -3,12 +3,12 @@ title: Obsługa oceny serwera fizycznego przy użyciu Azure Migrate
 description: Dowiedz się więcej o obsłudze oceny serwera fizycznego za pomocą Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846575"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990338"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Macierz obsługi dla oceny serwera fizycznego 
 
@@ -38,7 +38,7 @@ Aby ocenić maszyny lokalne na potrzeby migracji na platformę Azure z tego arty
 | **Pomoc techniczna**                | **Szczegóły**               
 | :-------------------       | :------------------- |
 | **Wdrożenie serwera fizycznego**       | Serwer fizyczny może być autonomiczny lub wdrożony w klastrze. |
-| **Uprawnienia**           | **System Windows:** Skonfiguruj konto użytkownika lokalnego na wszystkich serwerach z systemem Windows, które mają zostać uwzględnione w odnajdywaniu. Należy dodać konto użytkownika do tych grup — Użytkownicy Pulpit zdalny, użytkownicy i Dzienniki wydajności. <br/> System **Linux:** Na serwerach z systemem Linux, które mają zostać odnajdywane, jest potrzebne konto główne. |
+| **Uprawnienia**           | **System Windows:** Skonfiguruj konto użytkownika lokalnego lub domeny na wszystkich serwerach z systemem Windows, które mają zostać uwzględnione w odnajdywaniu. Należy dodać konto użytkownika do tych grup — Użytkownicy Pulpit zdalny, użytkownicy i Dzienniki wydajności. <br/> System **Linux:** Na serwerach z systemem Linux, które mają zostać odnajdywane, jest potrzebne konto główne. |
 | **System operacyjny** | Wszystkie systemy operacyjne [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) i [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) są obsługiwane z wyjątkiem następujących:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 

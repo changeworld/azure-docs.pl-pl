@@ -3,18 +3,18 @@ title: Dokumentacja pliku host. JSON dla Azure Functions 2. x
 description: Dokumentacja referencyjna dotycząca pliku Azure Functions hosta. JSON z użyciem środowiska uruchomieniowego v2.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 782998e49b9af3bf4d2ae5a561faaca399c6809f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6c4cfbb40c0337a6141d3b1f9844a33227a4963f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978815"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988706"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Dokumentacja pliku host. JSON dla Azure Functions 2. x i nowszych 
 
 > [!div class="op_single_selector" title1="Wybierz wersję środowiska uruchomieniowego Azure Functions, którego używasz: "]
 > * [Wersja 1](functions-host-json-v1.md)
-> * [Wersja 2](functions-host-json.md)
+> * [Wersja 2 +](functions-host-json.md)
 
 Plik metadanych *hosta. JSON* zawiera globalne opcje konfiguracji, które mają wpływ na wszystkie funkcje aplikacji funkcji. W tym artykule wymieniono dostępne ustawienia zaczynające się od wersji 2. x środowiska uruchomieniowego Azure Functions.  
 
@@ -27,7 +27,7 @@ Niektóre ustawienia pliku host. JSON są używane tylko w przypadku uruchamiani
 
 ## <a name="sample-hostjson-file"></a>Przykładowy plik host. JSON
 
-Następujący przykładowy plik *host. JSON* ma wszystkie możliwe opcje (z wyjątkiem tych, które są przeznaczone tylko do użytku wewnętrznego).
+Następujący przykładowy plik *host. JSON* dla wersji 2. x + ma wszystkie możliwe opcje (z wyjątkiem tych, które są przeznaczone tylko do użytku wewnętrznego).
 
 ```json
 {
@@ -270,7 +270,7 @@ Ustawienia konfiguracji dla [monitora kondycji hosta](https://github.com/Azure/a
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------| 
-|włączony|true|Określa, czy funkcja jest włączona. | 
+|dostępny|true|Określa, czy funkcja jest włączona. | 
 |healthCheckInterval|10 sekund|Przedział czasu między okresowymi kontrolami kondycji w tle. | 
 |healthCheckWindow|2 minuty|Przedział czasu, który jest używany w połączeniu z ustawieniem `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maksymalna liczba przypadków, w których Sprawdzenie kondycji może zakończyć się niepowodzeniem przed zainicjowaniem odtwarzania hosta.| 
@@ -280,7 +280,7 @@ Ustawienia konfiguracji dla [monitora kondycji hosta](https://github.com/Azure/a
 
 Ustawienia konfiguracji można znaleźć w tematach [wyzwalacze i powiązania HTTP](functions-bindings-http-webhook.md#hostjson-settings).
 
-## <a name="logging"></a>rejestrowanie
+## <a name="logging"></a>Rejestrować
 
 Steruje zachowaniem rejestrowania aplikacji funkcji, w tym Application Insights.
 
@@ -339,7 +339,7 @@ Zależność zarządzana to funkcja, która jest obecnie obsługiwana tylko w pr
 }
 ```
 
-## <a name="queues"></a>kolejki
+## <a name="queues"></a>tworzone
 
 Ustawienia konfiguracji można znaleźć w temacie [wyzwalacze i powiązania kolejki magazynu](functions-bindings-storage-queue.md#host-json).  
 
@@ -377,7 +377,7 @@ Ustawienia konfiguracji dla zachowania pojedynczej blokady. Aby uzyskać więcej
 
 ## <a name="version"></a>version
 
-Ciąg wersji `"version": "2.0"` jest wymagany dla aplikacji funkcji, która jest przeznaczona dla środowiska uruchomieniowego v2.
+Ta wartość wskazuje wersję schematu pliku host. JSON. Ciąg wersji `"version": "2.0"` jest wymagany dla aplikacji funkcji, która jest przeznaczona dla środowiska uruchomieniowego v2 lub nowszej wersji. Brak zmian schematu pliku host. JSON między wersjami 2 i v3.
 
 ## <a name="watchdirectories"></a>watchDirectories
 

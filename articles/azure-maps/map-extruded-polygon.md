@@ -9,21 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 36914240caf3c1321dfa0102bd87cb29173f8b1d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f01e07ea2bbfd0f6b3b0cc19dd219d71984a0d45
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911068"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988570"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Dodaj warstwę wytłoczenia wielokąta do mapy
 
-W tym artykule pokazano, jak za pomocą warstwy wytłoczenia wielokąta renderować obszary `Polygon` i `MultiPolygon` funkcji geometrie jako kształty wyciągnięcia na mapie. Zestaw SDK sieci Web Azure Maps obsługuje również tworzenie okręgów geometrie zgodnie z definicją w [schemacie rozszerzonego kodu JSON](extend-geojson.md#circle). Te okręgi są przekształcane na wielokąty, gdy są renderowane na mapie. Wszystkie funkcje geometrie można także łatwo aktualizować, jeśli zawinięte z [Atlasem. Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) — Klasa.
-
+W tym artykule pokazano, jak za pomocą warstwy wytłoczenia wielokąta renderować obszary `Polygon` i `MultiPolygon` funkcji geometrie jako kształty wyciągnięcia. Zestaw SDK sieci Web Azure Maps obsługuje renderowanie okręgu geometrie zgodnie z definicją w [schemacie Extended GEOJSON](extend-geojson.md#circle). Te okręgi można przekształcać na wielokąty, gdy są renderowane na mapie. Wszystkie funkcje geometrie można łatwo aktualizować, gdy są opakowane w [Atlas. Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) — Klasa.
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Użyj warstwy wytłoczenia wielokątu
 
-Gdy [warstwa wytłoczenia wielokąta](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) jest połączona ze źródłem danych i załadowana na mapie, renderuje obszary `Polygon` i `MultiPolygon` funkcji jako kształty wyciągnięcia. Właściwości `height` i `base` warstwy wytłoczenia wielokąta definiują odległość bazową od powierzchni i wysokości naciągnięcia kształtu w **licznikach**. Poniższy kod przedstawia sposób tworzenia wielokątów, dodawania go do źródła danych i renderowania przy użyciu klasy warstwy wytłoczenia wielokąta.
+Połącz [warstwę wytłoczenia wielokąta](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) ze źródłem danych. Następnie załadowano ją na mapie. Warstwa wytłoczenia wielokąta renderuje obszary `Polygon` i `MultiPolygon` funkcji jako kształty wyciągnięcia. Właściwości `height` i `base` warstwy wytłoczenia wielokąta definiują odległość bazową od powierzchni i wysokości naciągnięcia kształtu w **licznikach**. Poniższy kod ilustruje sposób tworzenia wielokątów, dodawania go do źródła danych i renderowania przy użyciu klasy warstwy wytłoczenia wielokąt.
 
 > [!Note]
 > Wartość `base` zdefiniowana w warstwie wytłoczenia wielokąta powinna być mniejsza lub równa liczbie `height`.
@@ -34,9 +33,9 @@ Gdy [warstwa wytłoczenia wielokąta](https://docs.microsoft.com/javascript/api/
 Zobacz <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>Wielokąt</a> wyciągać się z piórem Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.</iframe>
 
 
-## <a name="add-data-driven-multipolygons"></a>Dodawanie wielokątów opartych na danych
+## <a name="add-data-driven-polygons"></a>Dodawanie wielokątów opartych na danych
 
-Mapę na mapie choropleth można renderować przy użyciu warstwy wytłoczenia Wielokąt, ustawiając jej `height` i `fillColor` właściwości proporcjonalnie do miary zmiennej statystycznej w `Polygon` i `MultiPolygon` funkcji geometrie. Poniższy przykładowy kod przedstawia wytłaczaną mapę na mapie choropleth U. S na podstawie pomiaru gęstości populacji według stanu.
+Mapę na mapie choropleth można renderować przy użyciu warstwy wytłoczenia wielokąta. Ustaw właściwości `height` i `fillColor` warstwy wytłoczenia na wartość zmiennej statystycznej w `Polygon` i `MultiPolygon` funkcji geometrie. Poniższy przykładowy kod przedstawia wytłaczaną mapę na mapie choropleth U. S na podstawie pomiaru gęstości populacji według stanu.
 
 <br/>
 
@@ -62,7 +61,7 @@ Azure Maps używa rozszerzonej wersji schematu GEOJSON, który zawiera definicj�
 } 
 ```
 
-Azure Maps Web SDK konwertuje te funkcje `Point` na funkcje `Polygon` pod okapem i mogą być renderowane na mapie przy użyciu warstwy wytłoczenia Wielokąt, jak pokazano w poniższym przykładzie kodu.
+Azure Maps Web SDK konwertuje te funkcje `Point` na funkcje `Polygon` pod okapem. Te funkcje `Point` mogą być renderowane na mapie przy użyciu warstwy wytłoczenia wielokątów, jak pokazano w poniższym przykładzie kodu.
 
 <br/>
 
@@ -72,7 +71,7 @@ Zapoznaj się z <a href='https://codepen.io/azuremaps/pen/zYYYrxo'>wielokąta dr
 
 ## <a name="customize-a-polygon-extrusion-layer"></a>Dostosuj warstwę wytłoczenia wielokąta
 
-Warstwa wytłoczenia wielokątów kilka opcji stylów. Oto narzędzie do wypróbowania.
+Warstwa wytłoczenia wielokąta ma kilka opcji stylów. Oto narzędzie do wypróbowania.
 
 <br/>
 

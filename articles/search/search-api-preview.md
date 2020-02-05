@@ -7,38 +7,51 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 9985e7ac70c5851699839a95d1e23af4dcca35e7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 02/03/2020
+ms.openlocfilehash: fd21a4b821e1911e94d542a0922e5269786c365d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935096"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991069"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Funkcje w wersji zapoznawczej na platformie Azure Wyszukiwanie poznawcze
 
 W tym artykule wymieniono funkcje obecnie dostępne w wersji zapoznawczej. Funkcje, które przechodzą z wersji zapoznawczej do ogólnej dostępności, są usuwane z tej listy. Możesz sprawdzić [Aktualizacje usług](https://azure.microsoft.com/updates/?product=search) lub [co nowego](whats-new.md) w anonsach dotyczących ogólnej dostępności.
 
-W przypadku niektórych funkcji w wersji zapoznawczej w portalu i zestawie .NET SDK interfejs API REST zawsze ma funkcje w wersji zapoznawczej. Bieżąca wersja interfejsu API wersji zapoznawczej jest `2019-05-06-Preview`.
+W przypadku niektórych funkcji w wersji zapoznawczej w portalu i zestawie .NET SDK interfejs API REST zawsze ma funkcje w wersji zapoznawczej. 
+
++ W przypadku operacji wyszukiwania bieżąca wersja interfejsu API w wersji zapoznawczej jest [`2019-05-06-Preview`](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview)
++ W przypadku operacji zarządzania bieżąca wersja zapoznawcza jest [`2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview)
 
 > [!IMPORTANT]
 > Funkcje wersji zapoznawczej są dostępne bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="features-in-public-preview"></a>Funkcje w publicznej wersji zapoznawczej
+## <a name="ai-enrichment-features"></a>Funkcje wzbogacania AI
 
-+ [Wyszukiwanie jednostek niestandardowych (wersja zapoznawcza)](cognitive-search-skill-custom-entity-lookup.md ) wyszukuje tekst na podstawie niestandardowej, zdefiniowanej przez użytkownika listy słów i fraz. Korzystając z tej listy, etykieta wszystkie dokumenty z dowolnymi zgodnymi jednostkami. Umiejętność obsługuje również stopień dopasowywania rozmytego, który można zastosować, aby znaleźć dopasowania, które są podobne, ale nie są bardzo dokładne. 
+Zapoznaj się z najnowszymi ulepszeniami wzbogacenia AI za pomocą [interfejsu API wyszukiwania w wersji zapoznawczej](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview).
 
-+ [Wykrywanie danych osobowych (wersja zapoznawcza)](cognitive-search-skill-pii-detection.md) to umiejętność wykorzystywana podczas indeksowania, która wyodrębnia dane osobowe z tekstu wejściowego i umożliwia zamaskowanie tego tekstu na różne sposoby.
++ [Umiejętność wyszukiwania jednostek niestandardowych (wersja zapoznawcza)](cognitive-search-skill-custom-entity-lookup.md ) jest umiejętnością poznawczej, która szuka tekstu na podstawie niestandardowej, zdefiniowanej przez użytkownika listy słów i fraz. Korzystając z tej listy, etykieta wszystkie dokumenty z dowolnymi zgodnymi jednostkami. Umiejętność obsługuje również stopień dopasowywania rozmytego, który można zastosować, aby znaleźć dopasowania, które są podobne, ale nie są bardzo dokładne. 
+
++ [Umiejętność wykrywania danych osobowych (wersja zapoznawcza)](cognitive-search-skill-pii-detection.md) to umiejętność wykorzystywana podczas indeksowania, która wyodrębnia dane osobowe z tekstu wejściowego i umożliwia zamaskowanie tego tekstu na różne sposoby.
 
 + [Wzbogacanie przyrostowe (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md) dodaje buforowanie do potoku wzbogacania, umożliwiając ponowne użycie istniejących danych wyjściowych, jeśli dopuszczająca modyfikacja, taka jak aktualizacja zestawu umiejętności lub innego obiektu, nie spowoduje zmiany zawartości. Buforowanie dotyczy tylko ulepszonych dokumentów utworzonych przez zestawu umiejętności.
+
++ [Magazyn merytoryczny (wersja zapoznawcza)](knowledge-store-concept-intro.md) to nowe miejsce docelowe potoku wzbogacania opartego na AI. Struktura danych fizycznych istnieje w usłudze Azure Blob Storage i Azure Table Storage oraz jest tworzona i wypełniana podczas uruchamiania indeksatora, który ma dołączony zestawu umiejętności poznawcze. Definicja samego sklepu wiedzy została określona w definicji zestawu umiejętności. W ramach definicji sklepu merytorycznego można kontrolować struktury fizyczne danych za pomocą elementów *projekcji* , które określają, jak dane są w kształcie, czy dane są przechowywane w magazynie tabel lub w magazynie obiektów blob, oraz czy istnieje wiele widoków.
+
+## <a name="indexing-and-query-features"></a>Funkcje indeksowania i zapytania
+
+Funkcje programu Indexer Preview są dostępne w interfejsie API wyszukiwania w wersji zapoznawczej. 
 
 + [Cosmos DB indeksator](search-howto-index-cosmosdb.md) obsługuje interfejs API MongoDB (wersja zapoznawcza), interfejs Gremlin API (wersja zapoznawcza) i interfejs API Cassandra (wersja zapoznawcza).
 
 + [Azure Data Lake Storage Gen2 indeksator (wersja zapoznawcza)](search-howto-index-azure-data-lake-storage.md) może indeksować zawartość i metadane z Data Lake Storage Gen2.
 
-+ [Magazyn merytoryczny (wersja zapoznawcza)](knowledge-store-concept-intro.md) to nowe miejsce docelowe potoku wzbogacania opartego na AI. Struktura danych fizycznych istnieje w usłudze Azure Blob Storage i Azure Table Storage oraz jest tworzona i wypełniana podczas uruchamiania indeksatora, który ma dołączony zestawu umiejętności poznawcze. Definicja samego sklepu wiedzy została określona w definicji zestawu umiejętności. W ramach definicji sklepu merytorycznego można kontrolować struktury fizyczne danych za pomocą elementów *projekcji* , które określają, jak dane są w kształcie, czy dane są przechowywane w magazynie tabel lub w magazynie obiektów blob, oraz czy istnieje wiele widoków.
-
 + [parametr zapytania moreLikeThis (wersja zapoznawcza)](search-more-like-this.md) umożliwia znalezienie dokumentów, które są istotne dla określonego dokumentu. Ta funkcja została zamieszczona w wcześniejszych wersjach zapoznawczych. 
+
+## <a name="management-features"></a>Funkcje zarządzania
+
++ [Obsługa prywatnego punktu końcowego](service-create-private-endpoint.md) za pomocą [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) interfejsu API REST zarządzania. Można utworzyć usługę, która ma ograniczenia dotyczące dostępu do punktu końcowego.
 
 ## <a name="earlier-preview-features"></a>Wcześniejsze funkcje w wersji zapoznawczej
 

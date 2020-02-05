@@ -3,18 +3,18 @@ title: 'Samouczek: Tworzenie aplikacji lokalizatora sklepu przy użyciu Azure Ma
 description: W tym samouczku dowiesz się, jak utworzyć aplikację sieci Web lokalizatora magazynu za pomocą Microsoft Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910965"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987009"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Samouczek: Tworzenie lokalizatora sklepu za pomocą Azure Maps
 
@@ -51,7 +51,7 @@ Aby zmaksymalizować przydatność tego lokalizatora sklepów, dołączymy ukła
 
 ![szkieletem aplikacji lokalizatora magazynu kawy firmy Contoso na urządzeniu przenośnym](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
-Powyższe szkielety pokazują dość prostą aplikację. Aplikacja zawiera pole wyszukiwania, listę pobliskich sklepów, mapę z kilkoma znacznikami (symbolami) i okno podręczne, które wyświetla dodatkowe informacje, gdy użytkownik wybierze znacznik. Poniżej znajduje się bardziej szczegółowa lista funkcji wbudowanych w lokalizatorze sklepów w tym samouczku:
+Powyższe szkielety pokazują dość prostą aplikację. Aplikacja zawiera pole wyszukiwania, listę magazynów w pobliżu oraz mapę, która ma pewne znaczniki, takie jak symbole. I ma okno podręczne, które wyświetla dodatkowe informacje, gdy użytkownik wybierze znacznik. Poniżej znajduje się bardziej szczegółowa lista funkcji wbudowanych w lokalizatorze sklepów w tym samouczku:
 
 * Wszystkie lokalizacje z zaimportowanego pliku danych rozdzielanych tabulatorami są ładowane na mapie.
 * Użytkownik może przesuwać i powiększać mapę, wyszukiwać i wybierać przycisk GPS Moja lokalizacja.
@@ -81,12 +81,12 @@ Patrząc na zrzut ekranu danych, możemy zauważyć następujące rzeczy:
     
 * Informacje o lokalizacji są przechowywane przy użyciu kolumn **AddressLine** (Adres), **City** (Miasto), **Municipality** (Gmina), **AdminDivision** (Województwo), **PostCode** (Kod pocztowy) i **Country** (Kraj).  
 * Kolumny **Latitude** (Szerokość geograficzna) i **Longitude** (Długość geograficzna) zawierają współrzędne dla każdej lokalizacji kawiarni Contoso Coffee. Jeśli nie masz informacji o współrzędnych lokalizacji, możesz je ustalić przy użyciu usług wyszukiwania w usłudze Azure Maps.
-* Kilka dodatkowych kolumn zawiera metadane dotyczące kawiarni: numer telefonu, kolumny wartości logicznych dla punktów dostępowych sieci Wi-Fi i dostępności dla wózków inwalidzkich oraz godziny otwarcia i zamknięcia kawiarni w formacie 24-godzinnym. Możesz utworzyć własne kolumny zawierające metadane, które lepiej odpowiadają Twoim danym lokalizacji.
+* Niektóre dodatkowe kolumny zawierają metadane związane z kawiarniami: numer telefonu, kolumny logiczne oraz czas otwierania i zamykania w formacie 24-godzinnym. Kolumny logiczne służą do dostępności sieci Wi-Fi i niepełnosprawnych. Możesz utworzyć własne kolumny zawierające metadane, które lepiej odpowiadają Twoim danym lokalizacji.
 
 > [!Note]
 > Usługa Azure Maps renderuje dane w postaci kulistego odwzorowania walcowego równokątnego „EPSG:3857”, ale odczytuje dane w układzie współrzędnych „EPSG:4325”, który korzysta z systemu odniesienia WGS84. 
 
-Istnieje wiele sposobów uwidocznienia zestawu danych dla aplikacji. Jedno podejście polega na załadowaniu danych do bazy danych i uwidocznieniu usługi internetowej, która wykonuje zapytania względem danych i wysyła wyniki do przeglądarki użytkownika. Ta opcja jest idealnym rozwiązaniem w przypadku dużych lub często aktualizowanych zestawów danych. Jednak ta opcja wymaga znacznie więcej pracy deweloperskiej i ma wyższy koszt. 
+Istnieje wiele sposobów uwidocznienia zestawu danych dla aplikacji. Jednym z metod jest załadowanie danych do bazy danych i uwidocznienie usługi sieci Web, która wysyła zapytania do danych. Następnie możesz wysłać wyniki do przeglądarki użytkownika. Ta opcja jest idealnym rozwiązaniem w przypadku dużych lub często aktualizowanych zestawów danych. Jednak ta opcja wymaga większej liczby prac programistycznych i ma wyższy koszt. 
 
 Innym rozwiązaniem jest przekonwertowanie tego zestawu danych na prosty plik tekstowy, który przeglądarka może łatwo analizować. Plik może być hostowany razem z aplikacją. Ta opcja jest uproszczona, ale sprawdza się tylko w przypadku mniejszych zestawów danych, ponieważ użytkownik pobiera wszystkie dane. Dla tego zestawu danych używamy prostego pliku tekstowego, ponieważ rozmiar pliku jest mniejszy niż 1 MB.  
 
@@ -105,7 +105,7 @@ Jeśli otworzysz plik tekstowy w Notatniku, będzie on wyglądał podobnie, jak 
 
 ## <a name="set-up-the-project"></a>Konfigurowanie projektu
 
-Aby utworzyć projekt, można użyć programu [Visual Studio](https://visualstudio.microsoft.com) lub innego wybranego edytora kodu. W folderze projektu utwórz trzy pliki: *index.html*, *index.css* i *index.js*. Te pliki definiują układ, styl i logikę aplikacji. Utwórz folder o nazwie *data* (dane) i dodaj do niego plik *ContosoCoffee.txt*. Utwórz inny folder o nazwie *images* (obrazy). W tej aplikacji używamy dziesięciu obrazów dla ikon, przycisków i znaczników na mapie. Możesz [pobrać te obrazy](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Folder projektu powinien teraz wyglądać podobnie jak na poniższej ilustracji:
+Aby utworzyć projekt, można użyć programu [Visual Studio](https://visualstudio.microsoft.com) lub innego wybranego edytora kodu. W folderze projektu utwórz trzy pliki: *index.html*, *index.css* i *index.js*. Te pliki definiują układ, styl i logikę aplikacji. Utwórz folder o nazwie *data* (dane) i dodaj do niego plik *ContosoCoffee.txt*. Utwórz inny folder o nazwie *images* (obrazy). W tej aplikacji używamy 10 obrazów dla ikon, przycisków i znaczników na mapie. Możesz [pobrać te obrazy](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Folder projektu powinien teraz wyglądać podobnie jak na poniższej ilustracji:
 
 <center>
 
@@ -115,7 +115,7 @@ Aby utworzyć projekt, można użyć programu [Visual Studio](https://visualstud
 
 Aby utworzyć interfejs użytkownika, dodaj kod do pliku *index.html*:
 
-1. Dodaj następujące tagi `meta` do elementu `head` pliku *index.html*. Tagi te definiują zestaw znaków (UTF-8), mówią programom Internet Explorer i Microsoft Edge, aby używały najnowszej wersji przeglądarki, i określają okienko ekranu, które dobrze się sprawdza w przypadku układów dynamicznych.
+1. Dodaj następujące tagi `meta` do elementu `head` pliku *index.html*. Tag `charset` definiuje zestaw znaków (UTF-8). Wartość `http-equiv` informuje Internet Explorer i Microsoft Edge o korzystaniu z najnowszych wersji przeglądarki. A ostatni tag `meta` określa okienko ekranu, które dobrze sprawdza się w przypadku odpowiadających układów.
 
     ```HTML
     <meta charset="utf-8">
@@ -375,13 +375,13 @@ Następnym krokiem jest zdefiniowanie stylów CSS. Style CSS definiują układ s
     }
    ```
 
-Jeśli uruchomisz aplikację teraz, zobaczysz nagłówek, pole wyszukiwania i przycisk wyszukiwania, ale mapa nie będzie widoczna, ponieważ nie została jeszcze załadowana. Jeśli spróbujesz wykonać wyszukiwanie, nic się nie stanie. Aby uzyskać dostęp do wszystkich funkcji lokalizatora sklepów, musimy skonfigurować logikę JavaScript, która została opisana w następnej sekcji.
+Uruchom aplikację teraz, zobaczysz nagłówek, pole wyszukiwania i przycisk wyszukiwania. Jednak mapa nie jest widoczna, ponieważ nie została jeszcze załadowana. Jeśli spróbujesz wykonać wyszukiwanie, nic się nie stanie. Musimy skonfigurować logikę JavaScript, która została opisana w następnej sekcji. Ta logika uzyskuje dostęp do wszystkich funkcji lokalizatora magazynu.
 
 ## <a name="wire-the-application-with-javascript"></a>Powiązanie aplikacji za pomocą języka JavaScript
 
-Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz musimy dodać kod JavaScript, aby ładować i analizować dane, a następnie renderować te dane na mapie. Aby rozpocząć, otwórz plik *index.js* i dodaj do niego kod zgodnie z opisem w poniższych krokach.
+Wszystko jest teraz skonfigurowane w interfejsie użytkownika. Nadal musimy dodać kod JavaScript w celu załadowania i przeanalizowania danych, a następnie renderowania danych na mapie. Aby rozpocząć, otwórz plik *index.js* i dodaj do niego kod zgodnie z opisem w poniższych krokach.
 
-1. Dodaj opcje globalne, aby ułatwić aktualizowanie ustawień. Ponadto zdefiniuj zmienne dla mapy, okna podręcznego, źródła danych, warstwy ikon, znacznika HTML wyświetlającego środek obszaru wyszukiwania i dla wystąpienie klienta usługi wyszukiwania usługi Azure Maps.
+1. Dodaj opcje globalne, aby ułatwić aktualizowanie ustawień. Zdefiniuj zmienne dla mapy, okna wyskakującego, źródła danych, warstwy ikon, znacznika HTML, który wyświetla centrum obszaru wyszukiwania oraz wystąpienie Azure Maps klienta usługi wyszukiwania.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -395,7 +395,7 @@ Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz mus
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Dodaj kod do pliku *index.js*. Poniższy kod inicjuje mapę, dodaje [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events), który czeka, aż ładowanie strony zostanie ukończone, podłącza zdarzenia w celu monitorowania ładowania mapy oraz obsługuje przycisk wyszukiwania i przycisk Moja lokalizacja.
+1. Dodaj kod do pliku *index.js*. Poniższy kod inicjuje mapę. Dodaliśmy [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) czekający na zakończenie ładowania strony. Następnie tworzymy zdarzenia w celu monitorowania ładowania mapy, a następnie przydzielenia funkcji dla przycisku wyszukiwania i przycisku Moje lokalizacje.
 
    Kiedy użytkownik wybierze przycisk wyszukiwania lub naciśnie klawisz Enter po wprowadzeniu lokalizacji w polu wyszukiwania, inicjowane jest wyszukiwanie rozmyte względem zapytania użytkownika. Aby ograniczyć wyniki wyszukiwania do tych krajów/regionów, należy przekazać tablicę wartości ISO 2 kraju do `countrySet` opcji. Ograniczenie krajów/regionów do wyszukiwania pomaga zwiększyć dokładność zwracanych wyników. 
   
@@ -544,7 +544,7 @@ Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz mus
 
 1. Po załadowaniu zestawu danych w odbiorniku zdarzeń `ready` mapy zdefiniuj zestaw warstw w celu renderowania danych. Warstwa bąbelkowa jest używana do renderowania punktów danych klastra. Warstwa symboli jest używana do renderowania liczby punktów w każdym klastrze powyżej warstwy bąbelkowej. Druga warstwa symboli renderuje ikonę niestandardową dla poszczególnych lokalizacji na mapie.
 
-   Dodaj zdarzenia `mouseover` i `mouseout` do warstwy bąbelkowej i warstwy ikon, aby zmieniać kursor myszy, gdy użytkownik umieści go na klastrze lub ikonie na mapie. Dodaj zdarzenie `click` do bąbelkowej warstwy klastra. Zdarzenie `click` powiększa mapę na dwóch poziomach i środkuje mapę na klastrze, kiedy użytkownik wybierze jakiś klaster. Dodaj zdarzenie `click` do warstwy ikon. Zdarzenie `click` wyświetla okno podręczne, które pokazuje szczegółowe informacje o kawiarni, kiedy użytkownik wybierze ikonę określonej lokalizacji. Dodaj do mapy zdarzenie, które monitoruje, kiedy mapa przestanie być przesuwana. Gdy to zdarzenie zostanie wyzwolone, zaktualizuj elementy na panelu listy.  
+   Dodaj zdarzenia `mouseover` i `mouseout` do warstwy bąbelkowej i warstwy ikon, aby zmieniać kursor myszy, gdy użytkownik umieści go na klastrze lub ikonie na mapie. Dodaj zdarzenie `click` do bąbelkowej warstwy klastra. To `click` powiększania zdarzeń na mapie dwa poziomy i wyśrodkuje mapę w klastrze, gdy użytkownik wybierze dowolny klaster. Dodaj zdarzenie `click` do warstwy ikon. Zdarzenie `click` wyświetla okno podręczne, które pokazuje szczegółowe informacje o kawiarni, kiedy użytkownik wybierze ikonę określonej lokalizacji. Dodaj do mapy zdarzenie, które monitoruje, kiedy mapa przestanie być przesuwana. Gdy to zdarzenie zostanie wyzwolone, zaktualizuj elementy na panelu listy.  
 
     ```JavaScript
     //Create a bubble layer to render clustered data points.
@@ -686,7 +686,7 @@ Na tym etapie w interfejsie użytkownika wszystko jest skonfigurowane. Teraz mus
     }
     ```
 
-1. Gdy panel listy zostanie zaktualizowany, obliczana jest odległość od środka mapy do wszystkich lokalizacji w formie punktów w bieżącym widoku mapy. Lokalizacje są następnie sortowane według odległości. Generowany jest kod HTML w celu wyświetlania każdej lokalizacji na panelu listy.
+1. Gdy panel listy zostanie zaktualizowany, odległość jest obliczana. Ta odległość pochodzi z centrum mapy do wszystkich funkcji punktów w bieżącym widoku mapy. Lokalizacje są następnie sortowane według odległości. Generowany jest kod HTML w celu wyświetlania każdej lokalizacji na panelu listy.
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';

@@ -9,44 +9,44 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/17/2019
+ms.date: 02/03/2020
 ms.author: diberry
-ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165743"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987958"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>Szybki Start: pobieranie zamierzeń za pomocą przeglądarki
 
-Aby zrozumieć, co zwraca punkt końcowy przewidywania usługi LUIS, wyświetl wynik przewidywania w przeglądarce internetowej. 
+Aby zrozumieć, co zwraca punkt końcowy przewidywania usługi LUIS, wyświetl wynik przewidywania w przeglądarce internetowej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby można było wykonywać zapytania dotyczące aplikacji publicznej, potrzebne są:
 
-* Własny Language Understanding (LUIS) do tworzenia i prognozowania, który można uzyskać z [portalu Luis (wersja zapoznawcza)](https://preview.luis.ai/). Jeśli nie masz jeszcze subskrypcji, aby utworzyć klucz, możesz zarejestrować się w celu uzyskania [bezpłatnego konta](https://azure.microsoft.com/free/). 
-* Identyfikator aplikacji publicznej: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. 
+* Własny Language Understanding (LUIS) do tworzenia i prognozowania, który można uzyskać z [portalu Luis (wersja zapoznawcza)](https://preview.luis.ai/). Jeśli nie masz jeszcze subskrypcji, aby utworzyć klucz, możesz zarejestrować się w celu uzyskania [bezpłatnego konta](https://azure.microsoft.com/free/).
+* Identyfikator aplikacji publicznej: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`.
 
 ## <a name="use-the-browser-to-see-predictions"></a>Używanie przeglądarki do wyświetlania prognoz
 
-1. Otwórz przeglądarkę internetową. 
+1. Otwórz przeglądarkę internetową.
 1. Użyj pełnych adresów URL poniżej, zastępując `YOUR-KEY` własnymi procesami tworzenia lub przewidywania. Żądania ODBIERAją żądania i obejmują autoryzację, za pomocą LUIS tworzenia lub klucza przewidywania, jako parametru ciągu zapytania.
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[Żądanie prognozowania v3](#tab/V3-1-1)
-    
-    
+
+
     Format adresu URL v3 dla żądania **Get** Endpoint (według gniazd) to:
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
     `
 
     #### <a name="v2-prediction-requesttabv2-1-2"></a>[Żądanie przewidywania w wersji 2](#tab/V2-1-2)
-    
+
     Format adresu URL w wersji 2 dla żądania **Get** Endpoint:
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
     `
@@ -97,7 +97,7 @@ Aby można było wykonywać zapytania dotyczące aplikacji publicznej, potrzebne
 
     * * *
 
-1. Aby wyświetlić wszystkie intencje, Dodaj odpowiedni parametr ciągu zapytania. 
+1. Aby wyświetlić wszystkie intencje, Dodaj odpowiedni parametr ciągu zapytania.
 
     #### <a name="v3-prediction-endpointtabv3-3-1"></a>[Punkt końcowy przewidywania v3](#tab/V3-3-1)
 
@@ -174,7 +174,7 @@ Aby można było wykonywać zapytania dotyczące aplikacji publicznej, potrzebne
     ```
 
 
-<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->   
+<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->
 
 ## <a name="next-steps"></a>Następne kroki
 

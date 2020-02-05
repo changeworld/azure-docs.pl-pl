@@ -1,49 +1,49 @@
 ---
-title: Łączenie do Eksploratora danych platformy Azure z usługi Azure Databricks przy użyciu języka Python
-description: W tym temacie dowiesz się, jak uzyskać dostęp do danych w Eksploratorze danych Azure przy użyciu jednej z dwóch metod uwierzytelniania za pomocą biblioteki Python w usłudze Azure Databricks.
+title: Nawiązywanie połączenia z usługą Azure Eksplorator danych z Azure Databricks przy użyciu języka Python
+description: W tym temacie pokazano, jak używać biblioteki języka Python w Azure Databricks do uzyskiwania dostępu do danych z usługi Azure Eksplorator danych przy użyciu jednej z dwóch metod uwierzytelniania.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 55257d441916971b505432247f28033d6222c3be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03dee0570faa863ca411ed91f2a6ec85a1e38380
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861223"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985683"
 ---
-# <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Łączenie do Eksploratora danych platformy Azure z usługi Azure Databricks przy użyciu języka Python
+# <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>Nawiązywanie połączenia z usługą Azure Eksplorator danych z poziomu Azure Databricks przy użyciu języka Python
 
-[Usługa Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) to platforma analizy oparta na platformie Apache Spark, która jest zoptymalizowana pod kątem platformy Microsoft Azure. Ten artykuł pokazuje, jak używać biblioteki Python w usłudze Azure Databricks dostępu do danych z Eksploratora danych usługi Azure. Istnieje kilka sposobów uwierzytelniania za pomocą Eksploratora danych platformy Azure, w tym logowanie do urządzenia i aplikacji usługi Azure Active Directory (Azure AD).
+[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) to oparta na Apache Spark platforma analityczna zoptymalizowana pod kątem platformy Microsoft Azure. W tym artykule pokazano, jak używać biblioteki języka Python w Azure Databricks, aby uzyskać dostęp do danych z usługi Azure Eksplorator danych. Istnieje kilka sposobów uwierzytelniania przy użyciu usługi Azure Eksplorator danych, w tym logowania do urządzenia i aplikacji Azure Active Directory (Azure AD).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Tworzenie klastra Eksplorator danych platformy Azure i bazy danych](/azure/data-explorer/create-cluster-database-portal).
-- [Tworzenie obszaru roboczego usługi Azure Databricks](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). W obszarze **usługa Azure Databricks**w **warstwy cenowej** listy rozwijanej wybierz **Premium**. Zaznacz to pole wyboru umożliwia przechowywanie poświadczeń i odwoływać się do nich w notesach i zadań za pomocą kluczy tajnych w usłudze Azure Databricks.
+- [Utwórz klaster Eksplorator danych i bazę danych platformy Azure](/azure/data-explorer/create-cluster-database-portal).
+- [Utwórz obszar roboczy Azure Databricks](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace). W obszarze **Azure Databricks usługi**, na liście rozwijanej **warstwa cenowa** wybierz pozycję **Premium**. Wybranie tej opcji umożliwia używanie Azure Databricks wpisów tajnych do przechowywania poświadczeń i odwoływania się do nich w notesach i zadaniach.
 
-- [Tworzenie klastra](https://docs.azuredatabricks.net/user-guide/clusters/create.html) w usłudze Azure Databricks z następującymi specyfikacjami (potrzebnych do uruchomienia notesów przykładowe ustawienia minimalna):
+- [Utwórz klaster](https://docs.azuredatabricks.net/user-guide/clusters/create.html) w Azure Databricks z następującymi specyfikacjami (minimalne ustawienia niezbędne do uruchomienia przykładowych notesów):
 
    ![Specyfikacje dotyczące tworzenia klastra](media/connect-from-databricks/databricks-create-cluster.png)
 
-## <a name="install-the-python-library-on-your-azure-databricks-cluster"></a>Zainstaluj bibliotekę języka Python w klastrze usługi Azure Databricks
+## <a name="install-the-python-library-on-your-azure-databricks-cluster"></a>Instalowanie biblioteki języka Python w klastrze Azure Databricks
 
-Aby zainstalować [biblioteki Python](/azure/kusto/api/python/kusto-python-client-library) w klastrze usługi Azure Databricks:
+Aby zainstalować [bibliotekę języka Python](/azure/kusto/api/python/kusto-python-client-library) w klastrze Azure Databricks:
 
-1. Przejdź do obszaru roboczego usługi Azure Databricks i [utworzyć bibliotekę](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
-2. [Przekazywanie pakietu PyPI języka Python lub Python Egg](https://docs.azuredatabricks.net/user-guide/libraries.html#upload-a-python-pypi-package-or-python-egg).
-   - Przekaż, instalowanie i dołączanie biblioteki do klastra usługi Databricks.
-   - Wprowadź nazwę PyPi: **azure kusto danych**.
+1. Przejdź do obszaru roboczego Azure Databricks i [Utwórz bibliotekę](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library).
+2. [Przekaż pakiet języka Python PyPI lub jaja języka Python](https://docs.azuredatabricks.net/user-guide/libraries.html#upload-a-python-pypi-package-or-python-egg).
+   - Przekaż, zainstaluj i Dołącz bibliotekę do klastra datakostks.
+   - Wprowadź nazwę PyPi: **Azure-Kusto-Data**.
 
-## <a name="connect-to-azure-data-explorer-by-using-a-device-login"></a>Łączenie z Eksploratora danych platformy Azure za pomocą logowanie do urządzenia
+## <a name="connect-to-azure-data-explorer-by-using-a-device-login"></a>Nawiązywanie połączenia z usługą Azure Eksplorator danych przy użyciu logowania do urządzenia
 
-[Importowanie notesów](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) przy użyciu [zapytania ADX — urządzenia — logowanie](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-device-login.ipynb) notesu. Następnie można łączyć z do Eksploratora danych Azure przy użyciu poświadczeń.
+[Zaimportuj Notes](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) przy użyciu notesu [Query-ADX-Device-login](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-device-login.ipynb) . Następnie możesz nawiązać połączenie z usługą Azure Eksplorator danych przy użyciu swoich poświadczeń.
 
-## <a name="connect-to-adx-by-using-an-azure-ad-app"></a>Łączenie z ADX za pomocą aplikacji usługi Azure AD
+## <a name="connect-to-adx-by-using-an-azure-ad-app"></a>Nawiązywanie połączenia z usługą ADX przy użyciu aplikacji usługi Azure AD
 
-1. Tworzenie aplikacji usługi Azure AD przez [inicjowania obsługi administracyjnej aplikacji usługi Azure AD](/azure/kusto/management/access-control/how-to-provision-aad-app).
-1. Udzielanie dostępu do aplikacji usługi Azure AD w bazie danych Azure Eksplorator danych w następujący sposób:
+1. Utwórz aplikację usługi Azure AD, udostępniając [aplikację usługi Azure AD](/azure/kusto/management/access-control/how-to-provision-aad-app).
+1. Przyznaj dostęp do aplikacji usługi Azure AD w usłudze Azure Eksplorator danych Database w następujący sposób:
 
     ```kusto
     .set database <DB Name> users ('aadapp=<AAD App ID>;<AAD Tenant ID>') 'AAD App to connect Spark to ADX
@@ -56,27 +56,27 @@ Aby zainstalować [biblioteki Python](/azure/kusto/api/python/kusto-python-clien
 
 ### <a name="find-your-azure-ad-tenant-id"></a>Znajdź swój identyfikator dzierżawy usługi Azure AD
 
-W celu uwierzytelnienia aplikacji platformy Azure, Eksplorator danych używa identyfikatora dzierżawy usługi Azure AD. Aby znaleźć swój identyfikator dzierżawy, użyj następującego adresu URL. Zastąp domenę w poszukiwaniu *twojadomena*.
+Aby można było uwierzytelnić aplikację, usługa Azure Eksplorator danych używa identyfikatora dzierżawy usługi Azure AD. Aby znaleźć swój identyfikator dzierżawy, użyj następującego adresu URL. Zastąp domenę do *twojadomena*.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-Jeśli na przykład Twoja domena to *contoso.com*, adres URL to [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Wybierz ten adres URL, aby wyświetlić wyniki. Pierwszy wiersz jest następująca: 
+Jeśli na przykład Twoja domena to *contoso.com*, adres URL to [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Wybierz ten adres URL, aby wyświetlić wyniki. Pierwszy wiersz jest następujący: 
 
 ```
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-Identyfikator dzierżawy `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. 
+Identyfikator dzierżawy jest `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. 
 
-### <a name="store-and-secure-your-azure-ad-app-id-and-key"></a>Store i zabezpieczanie usługi Azure AD, Identyfikatora aplikacji oraz klucza 
+### <a name="store-and-secure-your-azure-ad-app-id-and-key"></a>Przechowywanie i zabezpieczanie identyfikatora i klucza aplikacji usługi Azure AD 
 
-Store i zabezpieczanie usługi Azure AD, Identyfikatora aplikacji i klucz przy użyciu usługi Azure Databricks [wpisów tajnych](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) w następujący sposób:
-1. [Konfigurowanie interfejsu wiersza polecenia](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli).
-1. [Instalowanie interfejsu wiersza polecenia](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
-1. [Konfigurowanie uwierzytelniania](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication).
-1. Konfigurowanie [wpisów tajnych](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) przy użyciu następujących przykładowych poleceniach:
+Przechowuj i zabezpieczaj identyfikator i klucz aplikacji usługi Azure AD, używając Azure Databricks wpisów [tajnych](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) w następujący sposób:
+1. [Skonfiguruj interfejs wiersza polecenia](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-the-cli).
+1. [Zainstaluj interfejs wiersza polecenia](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+1. [Skonfiguruj uwierzytelnianie](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#set-up-authentication).
+1. Skonfiguruj wpisy [tajne](https://docs.azuredatabricks.net/user-guide/secrets/index.html#secrets) przy użyciu następujących przykładowych poleceń:
 
     ```databricks secrets create-scope --scope adx```
 
@@ -86,5 +86,5 @@ Store i zabezpieczanie usługi Azure AD, Identyfikatora aplikacji i klucz przy u
 
     ```databricks secrets list --scope adx```
 
-### <a name="import-a-notebook"></a>Importowanie notesów
-[Importowanie notesów](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) przy użyciu [zapytania-ADX-AAD-App](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-AAD-App.ipynb) Notes, aby nawiązać połączenie z Eksploratora danych usługi Azure. Zaktualizuj wartości symboli zastępczych z nazwą klastra, nazwę bazy danych i identyfikator dzierżawy usługi Azure AD
+### <a name="import-a-notebook"></a>Importowanie notesu
+[Zaimportuj Notes](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-a-notebook) przy użyciu notesu [Query-ADX-AAD-App](https://github.com/Azure/azure-kusto-docs-samples/blob/master/Databricks_notebooks/Query-ADX-AAD-App.ipynb) , aby nawiązać połączenie z usługą Azure Eksplorator danych. Zaktualizuj wartości symboli zastępczych nazwą klastra, nazwą bazy danych i IDENTYFIKATORem dzierżawy usługi Azure AD.

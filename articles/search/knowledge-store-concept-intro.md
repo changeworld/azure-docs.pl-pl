@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754099"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988638"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Wprowadzenie do magazynów wiedzy na platformie Azure Wyszukiwanie poznawcze
 
@@ -133,147 +133,11 @@ Po wprowadzeniu wzbogaceń do magazynu dowolne narzędzie lub technologia, któr
 
 ## <a name="api-reference"></a>Dokumentacja interfejsów API
 
-Ta sekcja jest wersją dokumentu referencyjnego [Create zestawu umiejętności (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) zmodyfikowaną w celu uwzględnienia definicji `knowledgeStore`. 
+Wersja interfejsu API REST `2019-05-06-Preview` zapewnia magazyn wiedzy za poorednictwem dodatkowych definicji w witrynie umiejętności. Oprócz odwołania, aby uzyskać szczegółowe informacje na temat wywoływania interfejsów API, zobacz artykuł [Tworzenie sklepu merytorycznego korzystającego z programu Poster](knowledge-store-create-rest.md) .
 
-### <a name="example---knowledgestore-embedded-in-a-skillset"></a>Przykład — knowledgeStore osadzony w zestawu umiejętności
++ [Create zestawu umiejętności (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
++ [Update zestawu umiejętności (API-Version = 2019-05 -06 — wersja zapoznawcza)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
-Poniższy przykład pokazuje `knowledgeStore` w dolnej części definicji zestawu umiejętności. 
-
-* Użyj **wpisu post** lub **Put** , aby sformułować żądanie.
-* Użyj `api-version=2019-05-06-Preview` wersji interfejsu API REST, aby uzyskać dostęp do funkcji sklepu z bazami danych. 
-
-```http
-POST https://[servicename].search.windows.net/skillsets?api-version=2019-05-06-Preview
-api-key: [admin key]
-Content-Type: application/json
-```
-
-Treść żądania jest dokumentem JSON, który definiuje zestawu umiejętności, który obejmuje `knowledgeStore`.
-
-```json
-{
-  "name": "my-skillset-name",
-  "description": "Extract organization entities and generate a positive-negative sentiment score from each document.",
-  "skills":
-  [
-    {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "organizations"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-  ],
-  "cognitiveServices": 
-    {
-    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-    "description": "mycogsvcs resource in West US 2",
-    "key": "<YOUR-COGNITIVE-SERVICES-KEY>"
-    },
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [  
-                { "tableName": "Organizations", "generatedKeyName": "OrganizationId", "source": "/document/organizations*"}, 
-                { "tableName": "Sentiment", "generatedKeyName": "SentimentId", "source": "/document/mySentiment"}
-                ], 
-                "objects": [ ], 
-                "files": [  ]       
-            }    
-        ]     
-    } 
-}
-```
-
-### <a name="request-body-syntax"></a>Składnia treści żądania  
-
-Poniższy kod JSON określa `knowledgeStore`, który jest częścią [`skillset`](https://docs.microsoft.com/rest/api/searchservice/create-skillset), który jest wywoływany przez `indexer` (niepokazywany). Jeśli masz już doświadczenie w korzystaniu z wzbogacania AI, zestawu umiejętności określa kompozycję wzbogaconego dokumentu. Zestawu umiejętności musi zawierać co najmniej jedną umiejętność, najprawdopodobniej umiejętność kształtowania, jeśli są modulowane struktury danych.
-
-Składnia do tworzenia struktury ładunku żądania jest następująca.
-
-```json
-{   
-    "name" : "Required for POST, optional for PUT requests which sets the name on the URI",  
-    "description" : "Optional. Anything you want, or null",  
-    "skills" : "Required. An array of skills. Each skill has an odata.type, name, input and output parameters",
-    "cognitiveServices": "A key to Cognitive Services, used for billing.",
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [ 
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    . . .
-                ], 
-                "objects": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>", 
-                    "source": "<DOCUMENT-PATH>", 
-                    }
-                ], 
-                "files": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>",
-                    "source": "/document/normalized_images/*"
-                    }
-                ]  
-            },
-            {
-                "tables": [ ],
-                "objects": [ ],
-                "files":  [ ]
-            }  
-        ]     
-    } 
-}
-```
-
-`knowledgeStore` ma dwie właściwości: `storageConnectionString` do konta usługi Azure Storage, a `projections` definiujący magazyn fizyczny. Możesz użyć dowolnego konta magazynu, ale jest to ekonomiczne, aby korzystać z usług w tym samym regionie.
-
-Kolekcja `projections` zawiera obiekty projekcji. Każdy obiekt projekcji musi mieć `tables`, `objects`, `files` (jeden z nich), który jest określony lub ma wartość null. Powyższa składnia zawiera dwa obiekty, jeden w pełni określony, a druga pełna wartość null. W obiekcie projekcji, gdy zostanie on wyrażony w magazynie, wszelkie relacje między danymi, jeśli zostały wykryte, są zachowywane. 
-
-Utwórz tyle obiektów projekcji, ile potrzebujesz, aby obsługiwać izolację i konkretne scenariusze (na przykład struktury danych używane do eksploracji, a także te, które są potrzebne w obciążeniu analizy danych). Możesz uzyskać izolację i dostosowanie dla konkretnych scenariuszy, ustawiając `source` i `storageContainer` lub `table` na różne wartości w obiekcie. Aby uzyskać więcej informacji i przykładów, zobacz [Praca z projekcjami w sklepie z bazami](knowledge-store-projection-overview.md)danych.
-
-|Właściwość      | Informacje zawarte w tym artykule dotyczą | Opis|  
-|--------------|------------|------------|  
-|`storageConnectionString`| `knowledgeStore` | Wymagany. W tym formacie: `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
-|`projections`| `knowledgeStore` | Wymagany. Kolekcja obiektów właściwości składająca się z `tables`, `objects`, `files` i ich odpowiednich właściwości. Nieużywane projekcje można ustawić na wartość null.|  
-|`source`| Wszystkie projekcje| Ścieżka do węzła drzewa wzbogacania, który jest elementem głównym projekcji. Ten węzeł jest wynikiem dowolnych umiejętności w zestawu umiejętności. Ścieżki rozpoczynają się od `/document/`, reprezentującego wzbogacony dokument, ale można je rozszerzyć do `/document/content/` lub do węzłów w drzewie dokumentu. Przykłady: `/document/countries/*` (wszystkie kraje) lub `/document/countries/*/states/*` (wszystkie Stany we wszystkich krajach). Aby uzyskać więcej informacji na temat ścieżek dokumentów, zobacz [pojęcia i kompozycje zestawu umiejętności](cognitive-search-working-with-skillsets.md).|
-|`tableName`| `tables`| Tabela do utworzenia w usłudze Azure Table Storage. |
-|`storageContainer`| `objects`, `files`| Nazwa kontenera do utworzenia w usłudze Azure Blob Storage. |
-|`generatedKeyName`| `tables`| Kolumna utworzona w tabeli, która jednoznacznie identyfikuje dokument. Potok wzbogacania wypełnia tę kolumnę wygenerowanymi wartościami.|
-
-
-### <a name="response"></a>Odpowiedź  
-
- W przypadku pomyślnego żądania powinien zostać wyświetlony kod stanu "201 utworzony". Domyślnie treść odpowiedzi będzie zawierać kod JSON dla utworzonej definicji zestawu umiejętności. Odwołaj, że magazyn wiedzy nie jest tworzony do momentu wywołania indeksatora, który odwołuje się do tego zestawu umiejętności.
 
 ## <a name="next-steps"></a>Następne kroki
 

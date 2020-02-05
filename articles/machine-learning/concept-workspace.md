@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: d013fc257bc03d7961a4f2d5ae52d0fde12c83bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f3c2b1aa8f41b382bea96b33108d23bf09850c78
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844079"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984765"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co to jest obszar roboczy Azure Machine Learning?
 
@@ -79,7 +79,7 @@ Można również wykonać następujące zadania zarządzania obszarem roboczym:
 | Tworzenie maszyny wirtualnej notesu |   | **&check;** | |     |
 
 > [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z **Północno-środkowe stany USA**, * * Wschodnie stany USA 2 * *, **europa Północna** lub **Południowe Zjednoczone Królestwo**.
+> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.
 
 ## <a name='create-workspace'></a>Tworzenie obszaru roboczego
@@ -92,6 +92,9 @@ Istnieje wiele sposobów tworzenia obszaru roboczego:
 * Użyj [zestawu SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) , aby utworzyć obszar roboczy na bieżąco ze skryptów języka Python lub notesów Jupiter
 * Użyj [szablonu Azure Resource Manager](how-to-create-workspace-template.md) lub [interfejsu wiersza polecenia Azure Machine Learning](reference-azure-machine-learning-cli.md) , gdy zachodzi potrzeba automatyzacji lub dostosowania tworzenia przy użyciu firmowych standardów zabezpieczeń.
 * Jeśli pracujesz w Visual Studio Code, użyj [rozszerzenia vs Code](tutorial-setup-vscode-extension.md).
+
+> [!NOTE]
+> W nazwie obszaru roboczego nie jest rozróżniana wielkość liter.
 
 ## <a name="upgrade"></a>Uaktualnianie do wersji Enterprise
 

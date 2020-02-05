@@ -10,19 +10,19 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 45f9f9d1c9c8414f7d3c97aab05b012a16079f40
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c07e880ea9b3c382d3c6ecde51dfe8f4ab5c24fc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843535"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988434"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Wdrażanie modelu w celu Azure Machine Learning wystąpień obliczeniowych
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 > [!NOTE]
-> Wystąpienia obliczeniowe (wersja zapoznawcza) są dostępne tylko dla obszarów roboczych z **Północno-środkowe stany USA**, * * Wschodnie stany USA 2 * *, **europa Północna** lub **Południowe Zjednoczone Królestwo**.
+> Wystąpienia obliczeniowe (wersja zapoznawcza) są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**z obsługą innych regionów już wkrótce.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.  Model można wdrożyć w wystąpieniu obliczeniowym lub na maszynie wirtualnej notesu, wykonując kroki opisane w tym artykule.
 
 Dowiedz się, jak za pomocą Azure Machine Learning wdrożyć model jako usługę sieci Web w wystąpieniu Azure Machine Learning COMPUTE. Użyj wystąpień obliczeniowych, jeśli spełniony jest jeden z następujących warunków:

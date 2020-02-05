@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7659c8187f7f4763b51b09362c94dad9554ed1c0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840302"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982844"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,69 +125,71 @@ Element **SingleSignon** zawiera następujący atrybut:
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Zakres | Tak | Zakres zachowania logowania jednokrotnego. Możliwe wartości: `Suppressed`, `Tenant`, `Application`lub `Policy`. Wartość `Suppressed` wskazuje, że zachowanie jest pomijane. Na przykład w przypadku sesji logowania jednokrotnego dla użytkownika nie jest utrzymywana żadna sesja, a użytkownik jest zawsze monitowany o wybranie dostawcy tożsamości. Wartość `TrustFramework` wskazuje, że zachowanie jest stosowane dla wszystkich zasad w strukturze zaufania. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla struktury zaufania nie jest monitowany o wybranie dostawcy tożsamości. Wartość `Tenant` wskazuje, że zachowanie jest stosowane do wszystkich zasad w dzierżawie. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla dzierżawy nie jest monitowany o wybranie dostawcy tożsamości. Wartość `Application` wskazuje, że zachowanie jest stosowane do wszystkich zasad dla aplikacji wysyłającej żądanie. Na przykład użytkownik przechodzenia przez dwie przejazdy zasad dla aplikacji nie jest monitowany o wybranie dostawcy tożsamości. Wartość `Policy` wskazuje, że zachowanie dotyczy tylko zasad. Na przykład użytkownik przechodzący przez dwie przedziały zasad dla struktury zaufania jest monitowany o wybranie dostawcy tożsamości podczas przełączania między zasadami. |
-| KeepAliveInDays | Tak | Określa, jak długo użytkownik jest zalogowany. Ustawienie wartości 0 powoduje wyłączenie funkcji KMSI. Aby uzyskać więcej informacji, zobacz temat nie [wylogowuj mnie](custom-policy-keep-me-signed-in.md). |
+| KeepAliveInDays | Tak | Controls how long the user remains signed in. Setting the value to 0 turns off KMSI functionality. For more information, see [Keep me signed in](custom-policy-keep-me-signed-in.md). |
+|EnforceIdTokenHintOnLogout| Nie|  Force to pass a previously issued ID token to the logout endpoint as a hint about the end user's current authenticated session with the client. Possible values: `false` (default), or `true`. For more infomation, see [Web sign-in with OpenID Connect](openid-connect.md).  |
+
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
-Element **JourneyInsights** zawiera następujące atrybuty:
+The **JourneyInsights** element contains the following attributes:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Tak | Wartość musi być `ApplicationInsights`. |
-| InstrumentationKey | Tak | Ciąg, który zawiera klucz Instrumentacji dla elementu Application Insights. |
-| Deweloper | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, Application Insights przyspiesza dane telemetryczne za pomocą potoku przetwarzania. To ustawienie jest dobre w przypadku programowania, ale jest ograniczone do dużych woluminów, szczegółowe dzienniki działań są przeznaczone tylko do pomocy w opracowywaniu zasad niestandardowych. Nie używaj trybu deweloperskiego w środowisku produkcyjnym. Dzienniki zbierają wszystkie oświadczenia wysyłane do i od dostawców tożsamości podczas opracowywania. Jeśli jest używany w środowisku produkcyjnym, programista przyjmuje odpowiedzialność za dane OSOBowe (informacje z możliwością zidentyfikowaną prywatnie) zebrane w dzienniku usługi App Insights. Te szczegółowe dzienniki są zbierane tylko wtedy, gdy ta wartość jest ustawiona na `true`.|
-| ClientEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, program wyśle Application Insights skrypt po stronie klienta do śledzenia widoku strony i błędów po stronie klienta. |
-| ServerEnabled | Tak | Możliwe wartości: `true` lub `false`. Jeśli `true`, program wysyła istniejący kod JSON UserJourneyRecorder jako zdarzenie niestandardowe do Application Insights. |
-| TelemetryVersion | Tak | Wartość musi być `1.0.0`. |
+| TelemetryEngine | Tak | The value must be `ApplicationInsights`. |
+| InstrumentationKey | Tak | The string that contains the instrumentation key for the application insights element. |
+| DeveloperMode | Tak | Possible values: `true` or `false`. If `true`, Application Insights expedites the telemetry through the processing pipeline. This setting is good for development, but constrained at high volumes The detailed activity logs are designed only to aid in development of custom policies. Do not use development mode in production. Logs collect all claims sent to and from the identity providers during development. If used in production, the developer assumes responsibility for PII (Privately Identifiable Information) collected in the App Insights log that they own. These detailed logs are only collected when this value is set to `true`.|
+| ClientEnabled | Tak | Possible values: `true` or `false`. If `true`, sends the Application Insights client-side script for tracking page view and client-side errors. |
+| ServerEnabled | Tak | Possible values: `true` or `false`. If `true`, sends the existing UserJourneyRecorder JSON as a custom event to Application Insights. |
+| TelemetryVersion | Tak | The value must be `1.0.0`. |
 
-Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](troubleshoot-with-application-insights.md)
+For more information, see [Collecting Logs](troubleshoot-with-application-insights.md)
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
-Korzystając z zasad niestandardowych w Azure AD B2C, można wysłać parametr w ciągu zapytania. Przekazanie parametru do punktu końcowego HTML pozwala na dynamiczną zmianę zawartość strony. Na podstawie parametru przekazywanego z aplikacji internetowej lub aplikacji mobilnej można na przykład zmienić obraz tła na stronie rejestracji lub logowania usługi Azure AD B2C. Azure AD B2C przekazuje parametry ciągu zapytania do dynamicznego pliku HTML, takiego jak plik aspx.
+By using custom policies in Azure AD B2C, you can send a parameter in a query string. Przekazanie parametru do punktu końcowego HTML pozwala na dynamiczną zmianę zawartość strony. Na podstawie parametru przekazywanego z aplikacji internetowej lub aplikacji mobilnej można na przykład zmienić obraz tła na stronie rejestracji lub logowania usługi Azure AD B2C. Azure AD B2C passes the query string parameters to your dynamic HTML file, such as aspx file.
 
-Poniższy przykład przekazuje parametr o nazwie `campaignId` z wartością `hawaii` w ciągu zapytania:
+The following example passes a parameter named `campaignId` with a value of `hawaii` in the query string:
 
 `https://login.microsoft.com/contoso.onmicrosoft.com/oauth2/v2.0/authorize?pB2C_1A_signup_signin&client_id=a415078a-0402-4ce3-a9c6-ec1947fcfb3f&nonce=defaultNonce&redirect_uri=http%3A%2F%2Fjwt.io%2F&scope=openid&response_type=id_token&prompt=login&campaignId=hawaii`
 
-Element **ContentDefinitionParameters** zawiera następujący element:
+The **ContentDefinitionParameters** element contains the following element:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| ContentDefinitionParameter | 0: n | Ciąg zawierający parę wartości klucza, która jest dołączana do ciągu zapytania w identyfikatorze URI ładowania definicji zawartości. |
+| ContentDefinitionParameter | 0: n | A string that contains the key value pair that's appended to the query string of a content definition load URI. |
 
-Element **ContentDefinitionParameter** zawiera następujący atrybut:
+The **ContentDefinitionParameter** element contains the following attribute:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Nazwa | Tak | Nazwa pary klucz wartość. |
+| Nazwa | Tak | The name of the key value pair. |
 
-Aby uzyskać więcej informacji, zobacz [Konfigurowanie interfejsu użytkownika z zawartością dynamiczną przy użyciu zasad niestandardowych](custom-policy-ui-customization-dynamic.md)
+For more information, see [Configure the UI with dynamic content by using custom policies](custom-policy-ui-customization-dynamic.md)
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
-Element **profilu technicznym** zawiera następujący atrybut:
+The **TechnicalProfile** element contains the following attribute:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Tak | Wartość musi być `PolicyProfile`. |
+| Identyfikator | Tak | The value must be `PolicyProfile`. |
 
-**Profilu technicznym** zawiera następujące elementy:
+The **TechnicalProfile** contains the following elements:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | Ciąg, który zawiera nazwę profilu technicznego, który jest wyświetlany użytkownikom. |
-| Opis | 0:1 | Ciąg, który zawiera opis profilu technicznego, który jest wyświetlany użytkownikom. |
-| Protocol (Protokół) | 1:1 | Protokół używany w Federacji. |
-| Metadane | 0:1 | Kolekcja *elementów* par klucz/wartość wykorzystywana przez protokół do komunikowania się z punktem końcowym w trakcie transakcji w celu skonfigurowania interakcji między jednostką uzależnioną i innymi uczestnikami społeczności. |
-| OutputClaims | 0:1 | Lista typów roszczeń, które są pobierane jako dane wyjściowe w profilu technicznym. Każdy z tych elementów zawiera odwołanie do elementu **ClaimType** zdefiniowanego już w sekcji **ClaimsSchema** lub w zasadach, z których dziedziczy ten plik zasad. |
-| SubjectNamingInfo | 0:1 | Nazwa podmiotu używana w tokenach. |
+| DisplayName | 1:1 | The string that contains the name of the technical profile. |
+| Opis | 0:1 | The string that contains the description of the technical profile. |
+| Protocol (Protokół) | 1:1 | The protocol used for the federation. |
+| Metadane | 0:1 | The collection of *Item* of key/value pairs utilized by the protocol for communicating with the endpoint in the course of a transaction to configure interaction between the relying party and other community participants. |
+| OutputClaims | 1:1 | A list of claim types that are taken as output in the technical profile. Each of these elements contains reference to a **ClaimType** already defined in the **ClaimsSchema** section or in a policy from which this policy file inherits. |
+| SubjectNamingInfo | 1:1 | The subject name used in tokens. |
 
-Element **Protocol** zawiera następujący atrybut:
+The **Protocol** element contains the following attribute:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Nazwa | Tak | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. Wartość `OpenIdConnect` reprezentuje standard protokołu OpenID Connect Connect 1,0 zgodnie ze specyfikacją OpenID Connect Foundation. `SAML2` reprezentuje standard protokołu SAML 2,0 zgodnie ze specyfikacją języka Oasis. Nie używaj tokenu SAML w środowisku produkcyjnym. |
+| Nazwa | Tak | The name of a valid protocol supported by Azure AD B2C that is used as part of the technical profile. Possible values: `OpenIdConnect` or `SAML2`. The `OpenIdConnect` value represents the OpenID Connect 1.0 protocol standard as per OpenID foundation specification. The `SAML2` represents the SAML 2.0 protocol standard as per OASIS specification. Nie używaj tokenu SAML w środowisku produkcyjnym. |
 
 ## <a name="outputclaims"></a>OutputClaims
 

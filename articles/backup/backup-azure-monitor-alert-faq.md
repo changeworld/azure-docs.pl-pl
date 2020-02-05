@@ -4,50 +4,49 @@ description: W tym artykule znajdują się odpowiedzi na często zadawane pytani
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172926"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989573"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Alert monitorowania Azure Backup — często zadawane pytania
 
-W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące alertu monitorowania platformy Azure.
+W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące monitorowania i raportowania Azure Backup.
 
 ## <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Jak mogę sprawdzić, czy dane raportowania rozpoczęły przepływ do konta magazynu?
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Jak mogę sprawdzić, czy dane raportowania zaczynają przepływać do obszaru roboczego Log Analytics (LA)?
 
-Przejdź do skonfigurowanego konta magazynu i wybierz pozycję kontenery. Jeśli kontener zawiera wpis Insights-Logs-azurebackupreport, wskazuje, że dane raportowania zostały uruchomione w.
+Przejdź do skonfigurowanego obszaru roboczego LA, przejdź do pozycji menu **dzienniki** i uruchom zapytanie CoreAzureBackup | zajmie 1. Jeśli zobaczysz zwracany rekord, oznacza to, że dane rozpoczęły przepływ do obszaru roboczego. Początkowe wypychanie danych może potrwać do 24 godzin.
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Jaka jest częstotliwość wypychania danych do konta magazynu i pakietu zawartości Azure Backup w Power BI?
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Jaka jest częstotliwość wypychania danych do obszaru roboczego LA?
 
-  W przypadku użytkowników dnia 0, wypychanie danych do konta magazynu trwa około 24 godzin. Po zakończeniu początkowej wypychania dane są odświeżane przy częstotliwości pokazanej na poniższej ilustracji.
+Dane diagnostyczne z magazynu są napompowane do obszaru roboczego Log Analytics z pewnym opóźnieniem. Każde zdarzenie dociera do obszaru roboczego Log Analytics od 20 do 30 minut po wypchnięciu z magazynu Recovery Services. Poniżej znajdują się dalsze szczegółowe informacje na temat opóźnienia:
 
-* Dane dotyczące **zadań**, **alertów**, **elementów kopii zapasowych**, **magazynów**, **serwerów chronionych**i **zasad** są wypychane do konta magazynu klienta, tak jak i po jego zarejestrowaniu.
+* W przypadku wszystkich rozwiązań alerty wbudowane w usłudze Backup są wypychane po ich utworzeniu. Tak więc zazwyczaj pojawiają się w obszarze roboczym Log Analytics po 20 – 30 minutach.
+* W przypadku wszystkich rozwiązań zadania tworzenia kopii zapasowej na żądanie i zadania przywracania są wypychane po ich zakończeniu.
+* W przypadku wszystkich rozwiązań z wyjątkiem kopii zapasowej SQL zaplanowane zadania tworzenia kopii zapasowej są wypychane zaraz po zakończeniu.
+* W przypadku kopii zapasowej SQL, ponieważ kopie zapasowe dzienników mogą odbywać się co 15 minut, informacje dotyczące wszystkich ukończonych zadań tworzenia kopii zapasowej, w tym dzienników, są przetwarzane wsadowe i wypychane co 6 godzin.
+* W przypadku wszystkich rozwiązań, inne informacje, takie jak element kopii zapasowej, zasady, punkty odzyskiwania, magazyn itd., są wypychane co najmniej raz dziennie.
+* Zmiana konfiguracji kopii zapasowej (na przykład zmiana zasad lub zasad edycji) wyzwala wypychanie wszystkich powiązanych informacji o kopii zapasowej.
 
-* Dane związane z **magazynem** są przekazywane do konta magazynu klienta co 24 godziny.
+### <a name="how-long-can-i-retain-reporting-data"></a>Jak długo można przechowywać dane raportowania?
 
-    ![Częstotliwość wypychania danych raportów Azure Backup](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+Po utworzeniu obszaru roboczego LA, możesz wybrać opcję zachowywania danych przez maksymalnie 2 lata. Domyślnie obszar roboczy LA zachowuje dane przez 31 dni.
 
-* Power BI ma [zaplanowane odświeżanie raz dziennie](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Możesz wykonać ręczne odświeżanie danych w Power BI dla pakietu zawartości.
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>Czy po skonfigurowaniu obszaru roboczego LA zobaczysz wszystkie moje dane w raportach?
 
-### <a name="how-long-can-i-retain-reports"></a>Jak długo można przechowywać raporty?
-
-Podczas konfigurowania konta magazynu można wybrać okres przechowywania danych raportu na koncie magazynu. Wykonaj krok 6 w sekcji [Konfigurowanie konta magazynu dla raportów](backup-azure-configure-reports.md#configure-storage-account-for-reports) . Możesz również [analizować raporty w programie Excel](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) i zapisywać je na dłuższy okres przechowywania na podstawie Twoich potrzeb.
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Czy po skonfigurowaniu konta magazynu zobaczysz wszystkie dane w raportach?
-
- Wszystkie dane wygenerowane po skonfigurowaniu konta magazynu są przekazywane do konta magazynu i dostępne w raportach. Zadania w toku nie są wypychane na potrzeby raportowania. Po zakończeniu zadania lub niepowodzeniu zostanie ono wysłane do raportów.
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Czy jeśli konto magazynu zostało już skonfigurowane do wyświetlania raportów, czy mogę zmienić konfigurację tak, aby korzystała z innego konta magazynu?
-
-Tak, możesz zmienić konfigurację tak, aby wskazywała na inne konto magazynu. Po nawiązaniu połączenia z pakietem zawartości Azure Backup Użyj nowo skonfigurowanego konta magazynu. Ponadto po skonfigurowaniu innego konta magazynu Nowe przepływy danych na tym koncie magazynu. Starsze dane (przed zmianą konfiguracji) nadal pozostają na starszym koncie magazynu.
+ Wszystkie dane wygenerowane po skonfigurowaniu ustawień diagnostycznych są wypychane do obszaru roboczego LA i dostępne w raportach. Zadania w toku nie są wypychane na potrzeby raportowania. Po zakończeniu zadania lub niepowodzeniu zostanie ono wysłane do raportów.
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Czy mogę wyświetlać raporty w magazynach i subskrypcjach?
 
-Tak, można skonfigurować to samo konto magazynu w różnych magazynach w celu wyświetlenia raportów między magazynami. Ponadto można skonfigurować to samo konto magazynu dla magazynów w różnych subskrypcjach. Następnie można użyć tego konta magazynu podczas łączenia się z pakietem zawartości Azure Backup w Power BI, aby wyświetlić raporty. Wybrane konto magazynu musi znajdować się w tym samym regionie co magazyn Recovery Services.
+Tak. możesz wyświetlać raporty w magazynach i subskrypcjach, a także w regionach. Twoje dane mogą znajdować się w jednym obszarze roboczym LA lub grupie z LA obszarów roboczych.
+
+### <a name="can-i-view-reports-across-tenants"></a>Czy mogę wyświetlać raporty w ramach dzierżawców?
+
+Jeśli jesteś użytkownikiem [usługi Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) z delegowanym dostępem do subskrypcji klientów lub obszarów roboczych La, możesz użyć raportów kopii zapasowych, aby wyświetlić dane we wszystkich dzierżawach.
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak długo trwa stan zadania agenta usługi Azure Backup na potrzeby odzwierciedlenia w portalu?
 
@@ -85,7 +84,7 @@ Tak. W następujących sytuacjach powiadomienia nie są wysyłane:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z innymi często zadawanymi NZP:
+Zapoznaj się z innymi często zadawanymi pytaniami:
 
-* [Często zadawane pytania](backup-azure-vm-backup-faq.md) dotyczące kopii zapasowych maszyn wirtualnych platformy Azure.
-* [Często zadawane pytania](backup-azure-file-folder-backup-faq.md) dotyczące agenta Azure Backup
+* [Często zadawane pytania](backup-azure-vm-backup-faq.md) dotyczące tworzenia kopii zapasowych maszyn wirtualnych platformy Azure.
+* [Często zadawane pytania](backup-azure-file-folder-backup-faq.md) dotyczące agenta usługi Azure Backup
