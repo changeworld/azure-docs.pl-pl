@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703692"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931271"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Samouczek: Tworzenie i Konfigurowanie wystąpienia Azure Active Directory Domain Services
 
@@ -93,6 +93,9 @@ Wypełnij pola w oknie *podstawy* Azure Portal, aby utworzyć wystąpienie usłu
 
     Nie ma niczego do skonfigurowania na potrzeby dystrybuowania AD DS platformy Azure między strefami. Platforma Azure automatycznie obsługuje dystrybucję zasobów. Aby uzyskać więcej informacji i sprawdzić dostępność regionów, zobacz [co to są strefy dostępności na platformie Azure?][availability-zones]
 
+1. **Jednostka SKU** określa wydajność, częstotliwość tworzenia kopii zapasowych i maksymalną liczbę relacji zaufania lasów, które można utworzyć. Jednostkę SKU można zmienić po utworzeniu domeny zarządzanej, jeśli Twoje wymagania biznesowe lub zmiany zostały zmienione. Aby uzyskać więcej informacji, zobacz [pojęcia związane z usługą Azure AD DS SKU][concepts-sku].
+
+    Na potrzeby tego samouczka wybierz *standardową* jednostkę SKU.
 1. *Las* to konstrukcja logiczna używana przez Active Directory Domain Services do grupowania jednej lub wielu domen. Domyślnie domena zarządzana AD DS platformy Azure jest tworzona jako Las *użytkownika* . Ten typ lasu służy do synchronizowania wszystkich obiektów z usługi Azure AD, w tym wszystkich kont użytkowników utworzonych w środowisku lokalnym AD DS. Las *zasobów* synchronizuje tylko użytkowników i grupy utworzone bezpośrednio w usłudze Azure AD. Lasy zasobów są obecnie w wersji zapoznawczej. Aby uzyskać więcej informacji o lasach *zasobów* , w tym o tym, dlaczego można korzystać z jednej z nich i jak utworzyć relacje zaufania lasów z lokalnymi domenami AD DS, zobacz [Omówienie lasów zasobów platformy Azure AD DS][resource-forests].
 
     Na potrzeby tego samouczka wybierz opcję utworzenia lasu *użytkownika* .
@@ -105,7 +108,7 @@ Aby szybko utworzyć domenę zarządzaną platformy Azure AD DS, możesz wybrać
 * Tworzy podsieć o nazwie *aadds-Subnet* przy użyciu zakresu adresów IP *10.0.1.0/24*.
 * Synchronizuje *wszystkich* użytkowników z usługi Azure AD do domeny zarządzanej AD DS platformy Azure.
 
-1. Wybierz pozycję **Przegląd + Utwórz** , aby zaakceptować te domyślne opcje konfiguracji.
+Wybierz pozycję **Przegląd + Utwórz** , aby zaakceptować te domyślne opcje konfiguracji.
 
 ## <a name="deploy-the-managed-domain"></a>Wdróż domenę zarządzaną
 
@@ -200,6 +203,7 @@ Przed przyłączeniem maszyn wirtualnych do domeny i wdrożeniem aplikacji korzy
 [skus]: overview.md
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

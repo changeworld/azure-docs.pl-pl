@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 5aa75de694d05ce31becc6996aca419dff256a3f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769169"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023552"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji usługi Load Balancer
 
@@ -257,6 +257,6 @@ Podstawowa Publiczna Load Balancer udostępnia stan sondy kondycji podsumowany d
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md)
-- [Wprowadzenie do tworzenia publicznego modułu równoważenia obciążenia w usłudze Resource Manager przy użyciu programu PowerShell](load-balancer-get-started-internet-arm-ps.md)
+- [Wprowadzenie do tworzenia publicznego modułu równoważenia obciążenia w usłudze Resource Manager przy użyciu programu PowerShell](quickstart-create-standard-load-balancer-powershell.md)
 - [Interfejs API REST umożliwiający sond kondycji](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - Żądanie nowych możliwości sondę kondycji za pomocą [równoważenia obciążenia w usłudze Uservoice](https://aka.ms/lbuservoice)

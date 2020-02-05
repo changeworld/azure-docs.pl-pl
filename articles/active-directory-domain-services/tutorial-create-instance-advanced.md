@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 46764fdae89d5af4c9dedf4037d07dc48d1cda83
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e969ed4f525d0b3d17339b9f9a6111ad81b0125
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703677"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931639"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Samouczek: Tworzenie i Konfigurowanie wystąpienia Azure Active Directory Domain Services z zaawansowanymi opcjami konfiguracji
 
@@ -94,6 +94,9 @@ Wypełnij pola w oknie *podstawy* Azure Portal, aby utworzyć wystąpienie usłu
 
     Nie ma niczego do skonfigurowania na potrzeby dystrybuowania AD DS platformy Azure między strefami. Platforma Azure automatycznie obsługuje dystrybucję zasobów. Aby uzyskać więcej informacji i sprawdzić dostępność regionów, zobacz [co to są strefy dostępności na platformie Azure?][availability-zones]
 
+1. **Jednostka SKU** określa wydajność, częstotliwość tworzenia kopii zapasowych i maksymalną liczbę relacji zaufania lasów, które można utworzyć. Jednostkę SKU można zmienić po utworzeniu domeny zarządzanej, jeśli Twoje wymagania biznesowe lub zmiany zostały zmienione. Aby uzyskać więcej informacji, zobacz [pojęcia związane z usługą Azure AD DS SKU][concepts-sku].
+
+    Na potrzeby tego samouczka wybierz *standardową* jednostkę SKU.
 1. *Las* to konstrukcja logiczna używana przez Active Directory Domain Services do grupowania jednej lub wielu domen. Domyślnie domena zarządzana AD DS platformy Azure jest tworzona jako Las *użytkownika* . Ten typ lasu służy do synchronizowania wszystkich obiektów z usługi Azure AD, w tym wszystkich kont użytkowników utworzonych w środowisku lokalnym AD DS. Las *zasobów* synchronizuje tylko użytkowników i grupy utworzone bezpośrednio w usłudze Azure AD. Lasy zasobów są obecnie w wersji zapoznawczej. Aby uzyskać więcej informacji o lasach *zasobów* , w tym o tym, dlaczego można korzystać z jednej z nich i jak utworzyć relacje zaufania lasów z lokalnymi domenami AD DS, zobacz [Omówienie lasów zasobów platformy Azure AD DS][resource-forests].
 
     Na potrzeby tego samouczka wybierz opcję utworzenia lasu *użytkownika* .
@@ -102,9 +105,9 @@ Wypełnij pola w oknie *podstawy* Azure Portal, aby utworzyć wystąpienie usłu
 
 1. Aby ręcznie skonfigurować dodatkowe opcje, wybierz pozycję **dalej — sieć**. W przeciwnym razie wybierz pozycję **Przegląd + Utwórz** , aby zaakceptować domyślne opcje konfiguracji, a następnie przejdź do sekcji, aby [wdrożyć domenę zarządzaną](#deploy-the-managed-domain). Po wybraniu tej opcji Utwórz konfigurowane są następujące wartości domyślne:
 
-* Tworzy sieć wirtualną o nazwie *aadds-VNET* , która używa zakresu adresów IP *10.0.1.0/24*.
-* Tworzy podsieć o nazwie *aadds-Subnet* przy użyciu zakresu adresów IP *10.0.1.0/24*.
-* Synchronizuje *wszystkich* użytkowników z usługi Azure AD do domeny zarządzanej AD DS platformy Azure.
+    * Tworzy sieć wirtualną o nazwie *aadds-VNET* , która używa zakresu adresów IP *10.0.1.0/24*.
+    * Tworzy podsieć o nazwie *aadds-Subnet* przy użyciu zakresu adresów IP *10.0.1.0/24*.
+    * Synchronizuje *wszystkich* użytkowników z usługi Azure AD do domeny zarządzanej AD DS platformy Azure.
 
 ## <a name="create-and-configure-the-virtual-network"></a>Utwórz i skonfiguruj sieć wirtualną
 
@@ -125,7 +128,7 @@ Wypełnij pola w oknie *sieci* w następujący sposób:
     1. Jeśli wybierzesz opcję utworzenia sieci wirtualnej, wprowadź nazwę sieci wirtualnej, na przykład *myVnet*, a następnie podaj zakres adresów, na przykład *10.0.1.0/24*.
     1. Utwórz dedykowaną podsieć z nieprawidłową nazwą, taką jak *DomainServices*. Podaj zakres adresów, taki jak *10.0.1.0/24*.
 
-    ![Tworzenie sieci wirtualnej i podsieci do użycia z usługą Azure AD Domain Services](./media/tutorial-create-instance-advanced/create-vnet.png)
+    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     Upewnij się, że wybrano zakres adresów należący do zakresu prywatnych adresów IP. Zakresy adresów IP, których nie ma w publicznej przestrzeni adresowej, powodują błędy w usłudze Azure AD DS.
 
@@ -248,5 +251,6 @@ Aby wyświetlić tę domenę zarządzaną w działaniu, należy utworzyć maszyn
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->

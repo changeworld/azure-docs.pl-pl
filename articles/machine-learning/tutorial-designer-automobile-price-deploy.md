@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 470e633b2c64283db9b6a5b1cd777a6a054dad16
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719793"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933994"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Samouczek: Wdrażanie modelu uczenia maszynowego za pomocą narzędzia Projektant (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,6 +38,8 @@ Aby wdrożyć potok, należy najpierw skonwertować potok szkoleniowy do potoku 
 ### <a name="create-a-real-time-inference-pipeline"></a>Tworzenie potoku w czasie rzeczywistym
 
 1. Nad kanwą potoku wybierz pozycję **Utwórz potok wnioskowania** > **potoku w czasie rzeczywistym**.
+
+    ![Zrzut ekranu przedstawiający miejsce znalezienia przycisku Utwórz potok](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
 
     Potok powinien teraz wyglądać następująco: 
 
