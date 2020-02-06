@@ -1150,6 +1150,9 @@
             - name: Analizowanie problemów z wydajnością interfejsu użytkownika
               href: /azure/databricks/kb/cloud/har-log-analysis
               maintainContext: true
+            - name: Brak postępu realizacji zadań w obszarze roboczym
+              href: /azure/databricks/kb/cloud/azure-vnet-jobs-not-progressing
+              maintainContext: true
         - name: Klastry
           items:
             - name: Obliczanie liczby rdzeni w klastrze
@@ -1248,6 +1251,9 @@
               maintainContext: true
             - name: Nie można odczytać plików w rozszerzeniu WASB
               href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
+            - name: Optymalizowanie wydajności odczytu ze źródeł danych JDBC
+              href: /azure/databricks/kb/data-sources/jdbc-optimize-read
               maintainContext: true
         - name: DBFS
           items:

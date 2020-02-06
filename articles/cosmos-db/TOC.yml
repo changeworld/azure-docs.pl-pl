@@ -1048,6 +1048,9 @@
         - name: Używanie programu Spring Boot Starter
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
           maintainContext: true
+        - name: Przewodnik dla deweloperów danych Spring
+          href: /java/azure/spring-framework/how-to-guides-spring-data-cosmosdb
+          maintainContext: true
         - name: Sterownik ODBC
           href: odbc-driver.md
     - name: Migracja danych do usługi Cosmos DB

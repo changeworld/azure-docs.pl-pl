@@ -152,6 +152,8 @@
           href: deploy-nested-template-environments.md
         - name: Używanie tożsamości zarządzanych przez platformę Azure do wdrażania środowisk
           href: use-managed-identities-environments.md
+        - name: Alerty zabezpieczeń dla środowisk
+          href: environment-security-alerts.md
     - name: Zarządzanie szablonami wielokrotnego użytku
       items:
         - name: Obrazy niestandardowe a formuły

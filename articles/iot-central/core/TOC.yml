@@ -9,134 +9,132 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Tworzenie nowej aplikacji
+    - name: 1. Tworzenie nowej aplikacji
       href: quick-deploy-iot-central.md
+    - name: 2. Dodawanie symulowanego urządzenia
+      href: quick-create-pnp-device.md
+    - name: 3. Konfigurowanie reguł i akcji
+      href: quick-configure-rules.md
+    - name: 4. Monitorowanie urządzeń
+      href: quick-monitor-devices.md
 - name: Samouczki
   items:
-    - name: 1 — Definiowanie nowego typu urządzenia
-      href: tutorial-define-device-type.md
-    - name: 2 — Konfigurowanie reguł
-      href: tutorial-configure-rules.md
-    - name: 3 — Dostosowywanie widoku operatora
-      href: tutorial-customize-operator.md
-    - name: 4 — Monitorowanie urządzeń
-      href: tutorial-monitor-devices.md
-    - name: 5 — Dodawanie urządzenia
-      href: tutorial-add-device.md
+    - name: Łączenie się
+      items:
+        - name: Łączenie urządzenia Plug and Play (wersja zapoznawcza)
+          href: tutorial-connect-pnp-device.md
+        - name: Tworzenie szablonu urządzenia bramy
+          href: tutorial-define-gateway-device-type.md
+        - name: Łączenie urządzenia usługi IoT Edge
+          href: tutorial-add-edge-as-leaf-device.md
+    - name: Zachowanie łączności
+      items:
+        - name: Tworzenie grupy urządzeń
+          href: tutorial-use-device-groups.md
+    - name: Przekształcanie
+      items:
+        - name: Tworzenie reguły
+          href: tutorial-create-telemetry-rules.md
+        - name: Używanie interfejsu API REST
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: Pojęcia
   items:
     - name: Architektura
       href: concepts-architecture.md
-    - name: Łączność
-      href: concepts-connectivity.md
     - name: Co to są szablony aplikacji?
       href: concepts-app-templates.md
+    - name: Łączenie się
+      href: concepts-get-connected.md
+    - name: Łączenie urządzeń usługi IoT Edge
+      href: concepts-iot-edge.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Łączenie urządzeń
-      items:
-        - name: Przygotowywanie i łączenie aplikacji Node.js (ogólnej)
-          href: howto-connect-nodejs.md
-        - name: Przygotowywanie i łączenie zestawu deweloperskiego IoT MXChip
-          href: howto-connect-devkit.md
-        - name: Przygotowywanie i łączenie urządzenia Raspberry Pi (Python)
-          href: howto-connect-raspberry-pi-python.md
-        - name: 'Przygotowywanie i łączenie urządzenia Raspberry Pi (C#)'
-          href: howto-connect-raspberry-pi-csharp.md
-        - name: Przygotowywanie i łączenie urządzenia z systemem Windows IoT Core
-          href: howto-connect-windowsiotcore.md
-        - name: Przygotowywanie i łączenie urządzenia SensorTile.box
-          href: howto-connect-sensortile.md
-        - name: Monitorowanie łączności urządzeń przy użyciu wiersza polecenia
-          href: howto-use-iotc-explorer.md
-    - name: Zarządzanie urządzeniami
+    - name: Łączenie się
       items:
         - name: Konfigurowanie szablonu urządzenia
           href: howto-set-up-template.md
-        - name: Zarządzanie urządzeniami
-          href: howto-manage-devices.md
-        - name: Uruchamianie zadania
-          href: howto-run-a-job.md
-        - name: Korzystanie ze zbiorów urządzeń
-          href: howto-use-device-sets.md
-        - name: Wersjonowanie szablonu urządzenia
-          href: howto-version-device-template.md
-    - name: Monitorowanie i analizowanie
-      items:
-        - name: Tworzenie reguły telemetrii
-          href: howto-create-telemetry-rules.md
-        - name: Tworzenie reguły zdarzeń
-          href: howto-create-event-rules.md
-        - name: Analizowanie danych urządzenia
-          href: howto-create-analytics.md
-    - name: Akcje i rozszerzalność
-      items:
-        - name: Grupowanie wielu akcji w regułach
-          href: howto-use-action-groups.md
-        - name: Tworzenie akcji elementów webhook dla reguł
-          href: howto-create-webhooks.md
-        - name: Tworzenie przepływów pracy w usłudze Microsoft Flow
-          href: howto-add-microsoft-flow.md
-        - name: Tworzenie przepływów pracy w usłudze Azure Logic Apps
-          href: howto-build-azure-logic-apps.md
-        - name: Wyzwalanie funkcji usługi Azure Functions
-          href: howto-trigger-azure-functions.md
-        - name: Eksportowanie danych
-          items:
-            - name: Eksportowanie do usług Event Hubs i Service Bus
-              href: howto-export-data-event-hubs-service-bus.md
-            - name: Eksportowanie do usługi Blob Storage
-              href: howto-export-data-blob-storage.md
-        - name: Tworzenie reguł niestandardowych
-          href: howto-create-custom-rules.md
-        - name: Tworzenie niestandardowych analiz
-          href: howto-create-custom-analytics.md
-        - name: Wizualizacja danych w usłudze Power BI
-          href: howto-connect-powerbi.md
+        - name: Przygotowywanie i łączenie zestawu deweloperskiego IoT MXChip
+          href: howto-connect-devkit.md
+        - name: Przygotowywanie i łączenie urządzenia RuuviTag
+          href: howto-connect-ruuvi.md
+        - name: Przygotowywanie i łączenie urządzenia Rigado Cascade 500
+          href: howto-connect-rigado-cascade-500.md
         - name: Łączenie innych chmur IoT
           href: howto-build-iotc-device-bridge.md
+    - name: Zachowanie łączności
+      items:
+        - name: Monitorowanie łączności urządzeń przy użyciu interfejsu wiersza polecenia platformy Azure
+          href: howto-monitor-devices-azure-cli.md
+        - name: Wersjonowanie szablonu urządzenia
+          href: howto-version-device-template.md
+        - name: Zarządzanie urządzeniami
+          href: howto-manage-devices.md
+        - name: Konfigurowanie reguł
+          href: howto-configure-rules.md
+        - name: Analizowanie danych urządzenia
+          href: howto-create-analytics.md
+        - name: Dodawanie kafelków do pulpitu nawigacyjnego
+          href: howto-add-tiles-to-your-dashboard.md
+        - name: Tworzenie osobistych pulpitów nawigacyjnych usługi Azure IoT Central
+          href: howto-create-personal-dashboards.md
+        - name: Uruchamianie zadania
+          href: howto-run-a-job.md
+        - name: Wersjonowanie szablonu urządzenia
+          href: howto-version-device-template.md
+    - name: Przekształcanie
+      items:
+        - name: Konfigurowanie ciągłego eksportu danych
+          href: howto-export-data.md
+        - name: Tworzenie elementów webhook w regułach
+          href: howto-create-webhooks.md
+        - name: Łączenie grup akcji usługi Azure Monitor w regułach
+          href: howto-use-action-groups.md
+        - name: Tworzenie reguł niestandardowych
+          href: howto-create-custom-rules.md
+        - name: Tworzenie niestandardowych analiz przy użyciu usługi Databricks
+          href: howto-create-custom-analytics.md
     - name: Administracja
       items:
         - name: Zarządzanie aplikacją
-          href: howto-administer.md
-        - name: Zarządzanie użytkownikami i rolami
-          href: howto-manage-users-roles.md
-        - name: Wyświetlanie rachunku
-          href: howto-view-bill.md
-        - name: Dostosowywanie interfejsu użytkownika aplikacji
-          href: howto-customize-ui.md
-        - name: Przygotowywanie i przekazywanie obrazu
-          href: howto-prepare-images.md
-        - name: Dodawanie kafelków do pulpitu nawigacyjnego
-          href: howto-add-tiles-to-your-dashboard.md
-        - name: Korzystanie z kafelków pulpitu nawigacyjnego
-          href: howto-use-tiles.md
-        - name: Używanie szablonów aplikacji
-          href: howto-use-app-templates.md
-        - name: Zarządzanie z poziomu witryny Azure Portal
-          href: howto-manage-iot-central-from-portal.md
-        - name: Zarządzanie z poziomu interfejsu wiersza polecenia platformy Azure
-          href: howto-manage-iot-central-from-cli.md
-        - name: Zarządzanie z poziomu programu Azure PowerShell
-          href: howto-manage-iot-central-from-powershell.md
-        - name: Tworzenie aplikacji i zarządzanie nią jako dostawca CSP
-          href: howto-create-and-manage-applications-csp.md
-    - name: Personalizacja
-      items:
-        - name: Tworzenie osobistych pulpitów nawigacyjnych usługi Azure IoT Central
-          href: howto-create-personal-dashboards.md
-        - name: Zarządzanie preferencjami
-          href: howto-manage-preferences.md
-        - name: Przełączanie czatu na żywo
-          href: howto-show-hide-chat.md
+          items:
+            - name: Zmienianie ustawień aplikacji
+              href: howto-administer.md
+            - name: Zarządzanie użytkownikami i rolami
+              href: howto-manage-users-roles.md
+            - name: Zarządzanie rachunkiem
+              href: howto-view-bill.md
+            - name: Dostosowywanie interfejsu użytkownika aplikacji
+              href: howto-customize-ui.md
+            - name: Eksportowanie aplikacji
+              href: howto-use-app-templates.md
+        - name: Zarządzanie z innych miejsc
+          items:
+            - name: Zarządzanie z poziomu witryny Azure Portal
+              href: howto-manage-iot-central-from-portal.md
+            - name: Zarządzanie z poziomu interfejsu wiersza polecenia platformy Azure
+              href: howto-manage-iot-central-from-cli.md
+            - name: Zarządzanie z poziomu programu Azure PowerShell
+              href: howto-manage-iot-central-from-powershell.md
+            - name: Zarządzanie z poziomu portalu CSP
+              href: howto-create-and-manage-applications-csp.md
+        - name: Personalizowanie aplikacji
+          items:
+            - name: Zarządzanie osobistymi preferencjami
+              href: howto-manage-preferences.md
+            - name: Przełączanie czatu na żywo
+              href: howto-show-hide-chat.md
 - name: Powiązane
   items:
-    - name: Rozwiązania
+    - name: Szablony aplikacji branżowych
       items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: Akceleratory rozwiązań IoT
-          href: /azure/iot-accelerators
+        - name: Sprzedaż detaliczna
+          href: ../retail/overview-iot-central-retail-pnp.md
+        - name: Energetyczna
+          href: ../energy/overview-iot-central-energy.md
+        - name: Instytucje rządowe
+          href: ../government/overview-iot-central-government.md
+        - name: Opieka zdrowotna
+          href: ../healthcare/overview-iot-central-healthcare.md
     - name: Usługi platformy
       items:
         - name: Usługa IoT Hub
@@ -161,6 +159,8 @@
   items:
     - name: Opcje wsparcia technicznego i pomocy
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Interfejs API REST
+      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Żądania danych klienta
       href: iot-central-customer-data-requests.md
     - name: Obsługiwane przeglądarki

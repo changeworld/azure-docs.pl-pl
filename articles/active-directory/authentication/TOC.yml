@@ -4,16 +4,13 @@
   items:
     - name: Co to jest uwierzytelnianie?
       href: overview-authentication.md
-- name: Szybki start
-  items:
-    - name: Konfigurowanie resetowania hasła
-      href: quickstart-sspr.md
 - name: Samouczki
+  expanded: true
   items:
-    - name: 1. Włączanie uwierzytelniania wieloskładnikowego dla aplikacji
+    - name: Włączanie samoobsługowego resetowania hasła
+      href: tutorial-enable-sspr.md
+    - name: Włączanie uwierzytelniania wieloskładnikowego dla aplikacji
       href: tutorial-mfa-applications.md
-    - name: 2. Włączanie pilotażu samoobsługowego resetowania hasła
-      href: tutorial-sspr-pilot.md
     - name: Włączanie integracji samoobsługowego resetowania hasła ze środowiskiem lokalnym
       href: tutorial-enable-writeback.md
     - name: Integracja z usługą Azure Identity Protection
