@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect agenta aprowizacji: Historia wersji systemu | Microsoft Docs'
+title: 'Azure AD Connect agenta aprowizacji: historia wersji | Microsoft Docs'
 description: W tym artykule wymieniono wszystkie wersje agenta aprowizacji Azure AD Connect i opisano nowe funkcje oraz naprawione problemy
 services: active-directory
 documentationcenter: ''
@@ -12,27 +12,38 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 02/04/2020
 ms.subservice: app-mgmt
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ce9549765f6a912b3e95f99d11da20347b82ad8
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: cac9eac2d17fa0a4f1db487d4c7f8beb67de24a9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326463"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030685"
 ---
-# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect agenta aprowizacji: Historia wersji
+# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect agenta aprowizacji: historia wersji
 W tym artykule wymieniono wersje i funkcje agenta aprowizacji Azure Active Directory Connect, który został wystawiony. Zespół usługi Azure AD regularnie aktualizuje agenta aprowizacji za pomocą nowych funkcji i funkcjonalności. Agent aprowizacji jest automatycznie aktualizowany po wydaniu nowej wersji. 
 
 Zalecamy włączenie autoaktualizacji dla agentów, aby upewnić się, że masz najnowsze funkcje i poprawki błędów. Firma Microsoft zapewnia bezpośrednią pomoc techniczną dotyczącą najnowszej wersji agenta i jednej wersji.
+
+## <a name="11960"></a>1.1.96.0
+
+### <a name="release-status"></a>Stan wydania
+
+4 grudnia 2019: wydano do pobrania
+
+### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
+
+* Obejmuje obsługę [Azure AD Connect aprowizacji w chmurze](../cloud-provisioning/what-is-cloud-provisioning.md) w celu synchronizowania danych użytkowników, kontaktów i grup z Active Directory lokalnych do usługi Azure AD
+
 
 ## <a name="11670"></a>1.1.67.0
 
 ### <a name="release-status"></a>Stan wydania
 
-9 września 2019: Wydane na potrzeby aktualizacji AutoUpdate
+9 września 2019: wydano do aktualizacji AutoUpdate
 
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 
@@ -49,7 +60,7 @@ Zalecamy włączenie autoaktualizacji dla agentów, aby upewnić się, że masz 
 
 ### <a name="release-status"></a>Stan wydania
 
-23 stycznia 2019: Wydane do pobrania
+23 stycznia 2019: wydano do pobrania
 
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 

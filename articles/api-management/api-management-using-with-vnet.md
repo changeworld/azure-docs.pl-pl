@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 59839df1e67c5ea7f18df373ad0530a2ea740209
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889540"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030901"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management z sieciami wirtualnymi
 Sieci wirtualne platformy Azure umożliwiają umieszczanie dowolnych zasobów platformy Azure w sieci nieobsługującej routingu internetowego, do której kontrolujesz dostęp. Te sieci mogą następnie być połączone z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure, Zacznij od informacji tutaj: [Omówienie usługi azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -110,20 +110,20 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
 
 | Porty źródłowe/docelowe | Kierunek          | Protokół transportowy |   [Tagi usług](../virtual-network/security-overview.md#service-tags) <br> Źródło/miejsce docelowe   | Cel (*)                                                 | Typ Virtual Network |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
-| * / 80, 443                  | Przychodzące            | TCP                | INTERNET/VIRTUAL_NETWORK            | Komunikacja z klientem do API Management                      | Zewnętrzne             |
-| * / 3443                     | Przychodzące            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Punkt końcowy zarządzania dla Azure Portal i programu PowerShell         | Wewnętrzna & zewnętrzna  |
-| * / 80, 443                  | Wychodzące           | TCP                | VIRTUAL_NETWORK/magazyn             | **Zależność od usługi Azure Storage**                             | Wewnętrzna & zewnętrzna  |
-| * / 80, 443                  | Wychodzące           | TCP                | VIRTUAL_NETWORK/usługi azureactivedirectory | Azure Active Directory (jeśli dotyczy)                   | Wewnętrzna & zewnętrzna  |
-| * / 1433                     | Wychodzące           | TCP                | VIRTUAL_NETWORK/SQL                 | **Dostęp do punktów końcowych usługi Azure SQL**                           | Wewnętrzna & zewnętrzna  |
-| */5671, 5672, 443          | Wychodzące           | TCP                | VIRTUAL_NETWORK/EventHub            | Zależność dla dziennika do zasad usługi Event Hub i agenta monitorowania | Wewnętrzna & zewnętrzna  |
-| * / 445                      | Wychodzące           | TCP                | VIRTUAL_NETWORK/magazyn             | Zależność od udziału plików platformy Azure dla usługi GIT                      | Wewnętrzna & zewnętrzna  |
-| * / 1886                     | Wychodzące           | TCP                | VIRTUAL_NETWORK/INTERNET            | Potrzeba opublikowania stanu kondycji w celu Resource Health          | Wewnętrzna & zewnętrzna  |
-| * / 443                     | Wychodzące           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Publikowanie dzienników diagnostycznych i metryk                        | Wewnętrzna & zewnętrzna  |
-| * / 25                       | Wychodzące           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
-| */587                      | Wychodzące           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
-| * / 25028                    | Wychodzące           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
+| * / 80, 443                  | Przychodzący            | TCP                | INTERNET/VIRTUAL_NETWORK            | Komunikacja z klientem do API Management                      | Zewnętrzna             |
+| * / 3443                     | Przychodzący            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Punkt końcowy zarządzania dla Azure Portal i programu PowerShell         | Wewnętrzna & zewnętrzna  |
+| * / 80, 443                  | Wychodzący           | TCP                | VIRTUAL_NETWORK/magazyn             | **Zależność od usługi Azure Storage**                             | Wewnętrzna & zewnętrzna  |
+| * / 80, 443                  | Wychodzący           | TCP                | VIRTUAL_NETWORK/usługi azureactivedirectory | Azure Active Directory (jeśli dotyczy)                   | Wewnętrzna & zewnętrzna  |
+| * / 1433                     | Wychodzący           | TCP                | VIRTUAL_NETWORK/SQL                 | **Dostęp do punktów końcowych usługi Azure SQL**                           | Wewnętrzna & zewnętrzna  |
+| */5671, 5672, 443          | Wychodzący           | TCP                | VIRTUAL_NETWORK/EventHub            | Zależność dla dziennika do zasad usługi Event Hub i agenta monitorowania | Wewnętrzna & zewnętrzna  |
+| * / 445                      | Wychodzący           | TCP                | VIRTUAL_NETWORK/magazyn             | Zależność od udziału plików platformy Azure dla usługi GIT                      | Wewnętrzna & zewnętrzna  |
+| * / 1886                     | Wychodzący           | TCP                | VIRTUAL_NETWORK/INTERNET            | Potrzeba opublikowania stanu kondycji w celu Resource Health          | Wewnętrzna & zewnętrzna  |
+| * / 443                     | Wychodzący           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Publikowanie dzienników diagnostycznych i metryk                        | Wewnętrzna & zewnętrzna  |
+| * / 25                       | Wychodzący           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
+| */587                      | Wychodzący           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
+| * / 25028                    | Wychodzący           | TCP                | VIRTUAL_NETWORK/INTERNET            | Nawiązywanie połączenia z przekaźnikiem SMTP w celu wysyłania wiadomości e-mail                    | Wewnętrzna & zewnętrzna  |
 | * / 6381 - 6383              | Przychodzące & wychodzące | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Dostęp do pamięci podręcznej platformy Azure dla wystąpień Redis między RoleInstances          | Wewnętrzna & zewnętrzna  |
-| * / *                        | Przychodzące            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Load Balancer infrastruktury platformy Azure                          | Wewnętrzna & zewnętrzna  |
+| * / *                        | Przychodzący            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Load Balancer infrastruktury platformy Azure                          | Wewnętrzna & zewnętrzna  |
 
 >[!IMPORTANT]
 > Porty, dla których *przeznaczenie* jest **pogrubienie** , są wymagane do pomyślnego wdrożenia usługi API Management. Zablokowanie innych portów spowoduje jednak obniżenie wydajności i monitorowanie uruchomionej usługi.
@@ -137,8 +137,8 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
     | Środowisko platformy Azure | Punkty końcowe                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, gdzie `East US 2` jest eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Platforma Azure dla instytucji rządowych  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure (Chiny)       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure w Chinach — 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
 + **Przekaźnik SMTP**: wychodząca łączność sieciowa dla przekaźnika SMTP, która jest rozpoznawana w obszarze `smtpi-co1.msn.com`hosta, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com`, `smtpi-sin.msn.com` i `ies.global.microsoft.com`
 
@@ -150,13 +150,7 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
 
   * Włącz punkty końcowe usługi w podsieci, w której wdrożono usługę API Management. [Punkty końcowe usługi][ServiceEndpoints] muszą być włączone dla usług Azure SQL, Azure Storage, Azure EventHub i Azure ServiceBus. Włączenie punktów końcowych bezpośrednio z API Management delegowanej podsieci do tych usług pozwala im korzystać z sieci szkieletowej Microsoft Azure zapewniającej optymalny Routing ruchu usług. W przypadku korzystania z punktów końcowych usługi przy użyciu wymuszonego tunelowego zarządzania interfejsem API powyższy ruch usług platformy Azure nie jest wymuszany. Inne API Management ruchu zależności usługi są wymuszane tunelowanie i nie można go utracić lub usługa API Management nie działa prawidłowo.
     
-  * Cały ruch płaszczyzny kontroli z Internetu do punktu końcowego zarządzania usługi API Management jest kierowany przez określony zestaw przychodzących adresów IP hostowanych przez API Management. Gdy ruch wymuszony jest tunelowany, odpowiedzi nie będą symetryczne mapowanie z powrotem na te adresy IP źródła przychodzącego. Aby przezwyciężyć ograniczenie, musimy dodać następujące trasy zdefiniowane przez użytkownika ([UDR][UDRs]) w celu kierowania ruchu z powrotem do platformy Azure przez ustawienie miejsca docelowego tych tras hosta na wartość "Internet". Zestaw przychodzących adresów IP dla ruchu płaszczyzny kontroli jest następujący:
-    
-     | Środowisko platformy Azure | Adresy IP zarządzania                                                                                                                                                                                                                                                                                                                                                              |
-    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Public      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32 |
-    | Platforma Azure dla instytucji rządowych  | 52.127.42.160/32, 52.127.34.192/32 |
-    | Azure (Chiny)       | 139.217.51.16/32, 139.217.171.176/32 |
+  * Cały ruch płaszczyzny kontroli z Internetu do punktu końcowego zarządzania usługi API Management jest kierowany przez określony zestaw przychodzących adresów IP hostowanych przez API Management. Gdy ruch wymuszony jest tunelowany, odpowiedzi nie będą symetryczne mapowanie z powrotem na te adresy IP źródła przychodzącego. Aby przezwyciężyć ograniczenie, musimy dodać następujące trasy zdefiniowane przez użytkownika ([UDR][UDRs]) w celu kierowania ruchu z powrotem do platformy Azure przez ustawienie miejsca docelowego tych tras hosta na wartość "Internet". Zbiór przychodzących adresów IP dla ruchu płaszczyzny kontroli jest udokumentowany [płaszczyzny kontroli adresy IP](#control-plane-ips)
 
   * W przypadku innych zależności usługi API Management, które są wymuszane tunelowanie, powinien istnieć sposób, aby rozpoznać nazwę hosta i skontaktować się z punktem końcowym. Obejmują one
       - Metryki i monitorowanie kondycji
@@ -167,7 +161,7 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
 ## <a name="troubleshooting"> </a>Rozwiązywanie problemów
 * **Początkowa konfiguracja**: Jeśli początkowe wdrożenie usługi API Management w podsieci nie powiedzie się, zaleca się najpierw wdrożyć maszynę wirtualną w tej samej podsieci. Następne pulpit zdalny do maszyny wirtualnej i sprawdza, czy istnieje połączenie z jednym z poniższych zasobów w ramach subskrypcji platformy Azure
     * Obiekt BLOB usługi Azure Storage
-    * Baza danych SQL Azure
+    * Azure SQL Database
     * Azure Storage Table
 
   > [!IMPORTANT]
@@ -182,7 +176,7 @@ Platforma Azure rezerwuje niektóre adresy IP w poszczególnych podsieciach i ni
 
 Oprócz adresów IP używanych przez infrastrukturę sieci wirtualnej platformy Azure, każde wystąpienie usługi API Management w podsieci używa dwóch adresów IP na jednostkę SKU Premium lub jeden adres IP dla jednostki SKU dewelopera. Każde wystąpienie rezerwuje dodatkowy adres IP dla zewnętrznego modułu równoważenia obciążenia. Podczas wdrażania w wewnętrznej sieci wirtualnej wymaga dodatkowego adresu IP dla wewnętrznego modułu równoważenia obciążenia.
 
-W przypadku obliczenia przekraczającego minimalny rozmiar podsieci, w której można wdrożyć API Management to/29, które daje trzy adresy IP.
+W przypadku obliczenia przekraczającego minimalny rozmiar podsieci, w której można wdrożyć API Management to/29, które udostępniają trzy użyteczne adresy IP.
 
 ## <a name="routing"></a> Routing
 + Publiczny adres IP ze zrównoważonym obciążeniem (VIP) zostanie zarezerwowany w celu zapewnienia dostępu do wszystkich punktów końcowych usługi.
@@ -196,6 +190,70 @@ W przypadku obliczenia przekraczającego minimalny rozmiar podsieci, w której m
 * W przypadku wdrożeń wieloregionowych API Management skonfigurowanych w trybie wewnętrznej sieci wirtualnej użytkownicy są odpowiedzialni za Zarządzanie równoważeniem obciążenia w wielu regionach, które są właścicielami routingu.
 * Połączenie z zasobu w sieci wirtualnej sieci równorzędnej w innym regionie w celu API Management usługi w trybie wewnętrznym nie będzie działało z powodu ograniczenia platformy. Aby uzyskać więcej informacji, zobacz [zasoby w jednej sieci wirtualnej nie mogą komunikować się z wewnętrznym modułem równoważenia obciążenia platformy Azure w równorzędnej sieci wirtualnej](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)
 
+## <a name="control-plane-ips"></a> Adresy IP płaszczyzny kontroli
+
+Adresy IP są podzielone przez **środowisko platformy Azure**. W przypadku zezwolenia na adres IP żądań przychodzących oznaczony przy użyciu **szablonu globalnego** musi być listy dozwolonych wraz z adresem IP specyficznym dla **regionu** .
+
+| **Środowisko platformy Azure**|   **Region**|  **Adres IP**|
+|-----------------|-------------------------|---------------|
+| Azure Public| Południowo-środkowe stany USA (globalne)| 104.214.19.224|
+| Azure Public| Północno-środkowe stany USA (globalne)| 52.162.110.80|
+| Azure Public| Zachodnio-środkowe stany USA| 52.253.135.58|
+| Azure Public| Korea Środkowa| 40.82.157.167|
+| Azure Public| Zachodnie Zjednoczone Królestwo| 51.137.136.0|
+| Azure Public| Japonia Zachodnia| 40.81.185.8|
+| Azure Public| Północno-środkowe stany USA| 40.81.47.216|
+| Azure Public| Południowe Zjednoczone Królestwo| 51.145.56.125|
+| Azure Public| Indie Zachodnie| 40.81.89.24|
+| Azure Public| Wschodnie stany USA| 52.224.186.99|
+| Azure Public| Europa Zachodnia| 51.145.179.78|
+| Azure Public| Japonia Wschodnia| 52.140.238.179|
+| Azure Public| Francja Środkowa| 40.66.60.111|
+| Azure Public| Kanada Wschodnia| 52.139.80.117|
+| Azure Public| Północne Zjednoczone Emiraty Arabskie| 20.46.144.85|
+| Azure Public| Brazylia Południowa| 191.233.24.179|
+| Azure Public| Azja Południowo-Wschodnia| 40.90.185.46|
+| Azure Public| Północna Republika Południowej Afryki| 102.133.130.197|
+| Azure Public| Kanada Środkowa| 52.139.20.34|
+| Azure Public| Korea Południowa| 40.80.232.185|
+| Azure Public| Indie Środkowe| 13.71.49.1|
+| Azure Public| Zachodnie stany USA| 13.64.39.16|
+| Azure Public| Australia Południowo-Wschodnia| 20.40.160.107|
+| Azure Public| Australia Środkowa| 20.37.52.67|
+| Azure Public| Indie Południowe| 20.44.33.246|
+| Azure Public| Środkowe stany USA| 13.86.102.66|
+| Azure Public| Australia Wschodnia| 20.40.125.155|
+| Azure Public| Zachodnie stany USA 2| 51.143.127.203|
+| Azure Public| Wschodnie stany USA 2 — EUAP| 52.253.229.253|
+| Azure Public| Środkowe stany USA — EUAP| 52.253.159.160|
+| Azure Public| Południowo-środkowe stany USA| 20.188.77.119|
+| Azure Public| Wschodnie stany USA 2| 20.44.72.3|
+| Azure Public| Europa Północna| 52.142.95.35|
+| Azure Public| Azja Wschodnia| 52.139.152.27|
+| Azure Public| Francja Południowa| 20.39.80.2|
+| Azure Public| Szwajcaria Zachodnia| 51.107.96.8|
+| Azure Public| Australia Środkowa 2| 20.39.99.81|
+| Azure Public| Środkowy Zjednoczone Emiraty Arabskie| 20.37.81.41|
+| Azure Public| Szwajcaria Północna| 51.107.0.91|
+| Azure Public| Zachodnia Republika Południowej Afryki| 102.133.0.79|
+| Azure Public| Niemcy Środkowo-Zachodnie| 51.116.96.0|
+| Azure Public| Niemcy Północne| 51.116.0.0|
+| Azure Public| Norwegia Wschodnia| 51.120.2.185|
+| Azure Public| Norwegia Zachodnia| 51.120.130.134|
+| Azure w Chinach — 21Vianet| Chiny Północne (globalna)| 139.217.51.16|
+| Azure w Chinach — 21Vianet| Chiny Wschodnie (globalna)| 139.217.171.176|
+| Azure w Chinach — 21Vianet| Chiny Północne| 40.125.137.220|
+| Azure w Chinach — 21Vianet| Chiny Wschodnie| 40.126.120.30|
+| Azure w Chinach — 21Vianet| Chiny Północne 2| 40.73.41.178|
+| Azure w Chinach — 21Vianet| Chiny Wschodnie 2| 40.73.104.4|
+| Azure Government| USGov Wirginia (globalna)| 52.127.42.160|
+| Azure Government| USGov Texas (globalna)| 52.127.34.192|
+| Azure Government| USGov Wirginia| 52.227.222.92|
+| Azure Government| USGov Iowa| 13.73.72.21|
+| Azure Government| USGov Arizona| 52.244.32.39|
+| Azure Government| USGov Texas| 52.243.154.118|
+| Azure Government| USDoD środkowe| 52.182.32.132|
+| Azure Government| USDoD wschód| 52.181.32.192|
 
 ## <a name="related-content"> </a>Powiązana zawartość
 * [Łączenie Virtual Network z zapleczem przy użyciu usługi VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)

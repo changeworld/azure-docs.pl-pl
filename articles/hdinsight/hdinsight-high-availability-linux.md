@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747861"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030878"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w usłudze HDInsight
 
@@ -38,7 +38,7 @@ Aby uzyskać nazwy hostów dla różnych typów węzłów w klastrze, należy u�
 > [!IMPORTANT]  
 > Nie należy kojarzyć wartości liczbowej z czy węzłem jest podstawowy czy pomocniczy. Wartość liczbowa jest obecna tylko w celu zapewnienia unikatowej nazwy dla każdego węzła.
 
-### <a name="nimbus-nodes"></a>Węzły Nimbus
+### <a name="nimbus-nodes"></a>Nimbus węzły
 
 Węzły Nimbus są dostępne w klastrach Apache Storm. Węzły Nimbus zapewniają podobną funkcjonalność do usługi Hadoop JobTracker przez dystrybuowanie i monitorowanie procesów między węzłami procesów roboczych. Usługa HDInsight udostępnia dwa węzły Nimbus dla klastrów burzowych
 
@@ -99,9 +99,9 @@ Można połączyć się z węzłami, które nie są bezpośrednio dostępne za p
 
 |Metoda |Opis |
 |---|---|
-|SSH|Po nawiązaniu połączenia z węzłem głównym przy użyciu protokołu SSH można nawiązać połączenie z innymi węzłami w klastrze przy użyciu protokołu SSH z węzła głównego. Aby uzyskać więcej informacji, zobacz dokument [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
+|Protokół SSH|Po nawiązaniu połączenia z węzłem głównym przy użyciu protokołu SSH można nawiązać połączenie z innymi węzłami w klastrze przy użyciu protokołu SSH z węzła głównego. Aby uzyskać więcej informacji, zobacz dokument [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
 |Tunel SSH|Jeśli musisz uzyskać dostęp do usługi sieci Web hostowanej na jednym z węzłów, które nie są uwidocznione w Internecie, musisz użyć tunelu SSH. Aby uzyskać więcej informacji, zobacz artykuł [Używanie tunelu SSH z usługą HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) .|
-|Usługa Azure Virtual Network|Jeśli klaster usługi HDInsight jest częścią Virtual Network platformy Azure, wszystkie zasoby w tym samym Virtual Network mogą bezpośrednio uzyskać dostęp do wszystkich węzłów w klastrze. Aby uzyskać więcej informacji, zapoznaj się z dokumentem [Planowanie sieci wirtualnej dla usługi HDInsight](hdinsight-plan-virtual-network-deployment.md) .|
+|Azure Virtual Network|Jeśli klaster usługi HDInsight jest częścią Virtual Network platformy Azure, wszystkie zasoby w tym samym Virtual Network mogą bezpośrednio uzyskać dostęp do wszystkich węzłów w klastrze. Aby uzyskać więcej informacji, zapoznaj się z dokumentem [Planowanie sieci wirtualnej dla usługi HDInsight](hdinsight-plan-virtual-network-deployment.md) .|
 
 ## <a name="how-to-check-on-a-service-status"></a>Jak sprawdzić stan usługi
 
@@ -231,7 +231,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 ## <a name="how-to-access-log-files-on-the-head-nodes"></a>Jak uzyskać dostęp do plików dziennika w węzłach głównych
 
-### <a name="ssh"></a>SSH
+### <a name="ssh"></a>Protokół SSH
 
 W przypadku połączenia z węzłem głównym za pośrednictwem protokołu SSH pliki dzienników można znaleźć w obszarze **/var/log**. Na przykład **/var/log/Hadoop-Yarn/Yarn** zawiera dzienniki dla przędzy.
 
@@ -270,7 +270,7 @@ Podczas tworzenia klastra można określić rozmiar węzłów. Poniższe informa
 
 * **Azure Portal**: podczas tworzenia klastra można ustawić rozmiar węzłów używanych przez klaster:
 
-    ![Obraz Kreatora tworzenia klastra z wybranym rozmiarem węzła](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
+    ![Obraz Kreatora tworzenia klastra z wybranym rozmiarem węzła](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
 * **Interfejs wiersza polecenia platformy Azure**: w przypadku korzystania z [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) polecenie, można ustawić rozmiar węzłów głowy, procesu roboczego i dozorcy przy użyciu parametrów `--headnode-size`, `--workernode-size`i `--zookeepernode-size`.
 

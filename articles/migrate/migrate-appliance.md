@@ -3,12 +3,12 @@ title: Urządzenie usługi Azure Migrate
 description: Zawiera omówienie urządzenia Azure Migrate używanego w ocenie i migracji serwera.
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6311f24a9c977b5f8b34384f0754f041a0c57ce7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990746"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031667"
 ---
 # <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 
@@ -37,7 +37,7 @@ Maszyna fizyczna |  Azure Migrate: Ocena serwera |  Odnajdywanie serwerów fizyc
 **Wartość skrótu** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 **serwer vCenter/Host** | Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej.<br/><br/> vCenter Server uruchomione 5,5, 6,0, 6,5 lub 6,7.
 **Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem. <br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> 
-**Discovery** (Odnajdywanie) | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z pojedynczym vCenter Server.
+**Odnajdowa** | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z pojedynczym vCenter Server.
 **Składniki urządzenia** | Aplikacja zarządzania: aplikacja sieci Web w urządzeniu do wprowadzania danych przez użytkownika podczas wdrażania.<br/> Agent odnajdywania: zbiera dane konfiguracji maszyny.<br/> Agent oceny: Zbierz dane wydajności.<br/> Agent DRA: organizuje replikację maszyny wirtualnej i koordynuje komunikację między maszynami/platformą Azure.<br/> Brama: wysyła zreplikowane dane na platformę Azure.<br/> Usługa aktualizacji AutoUpdate: aktualizuje składniki (są uruchamiane co 24 godziny).
 **VDDK (migracja bez wykorzystania agentów)** | W przypadku korzystania z migracji bez agenta z migracją Azure Migrate Server należy zainstalować na maszynie wirtualnej urządzenia VMware vSphere VDDK.
 
@@ -48,14 +48,14 @@ Maszyna fizyczna |  Azure Migrate: Ocena serwera |  Odnajdywanie serwerów fizyc
 --- | ---
 **Pobierz format** | Folder spakowany (z dyskiem VHD)
 **Link pobierania** | https://aka.ms/migrate/appliance/hyperv 
-**Rozmiar pobieranych plików** | 10 GB
+**Rozmiar pobieranych plików** | 10 GB
 **Licencjonowan** | Pobrany szablon urządzenia zawiera licencję ewaluacyjną systemu Windows Server 2016, która jest ważna przez 180 dni. Jeśli okres próbny zbliża się do wygaśnięcia, zalecamy pobranie i wdrożenie nowego urządzenia albo Aktywowanie licencji na maszynę wirtualną urządzenia.
 **Wdrażanie urządzenia**   |  Urządzenie jest wdrażane jako maszyna wirtualna funkcji Hyper-V.<br/> Maszyna wirtualna z urządzeniem Azure Migrate jest maszyną wirtualną funkcji Hyper-V w wersji 5,0.<br/> Na hoście funkcji Hyper-V musi być uruchomiony system Windows Server 2012 R2 lub nowszy.<br/> Host wymaga wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
 **Sprzęt** | Zasoby na hoście funkcji Hyper-V przydzielają 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.
 **Wartość skrótu** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Host funkcji Hyper-V** | Uruchamianie systemu Windows Server 2012 R2 lub nowszego.
 **Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem. <br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> 
-**Discovery** (Odnajdywanie) | Urządzenie może wykryć do 5000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
+**Odnajdowa** | Urządzenie może wykryć do 5000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
 **Składniki urządzenia** | Aplikacja zarządzania: aplikacja sieci Web w urządzeniu do wprowadzania danych przez użytkownika podczas wdrażania.<br/> Agent odnajdywania: zbiera dane konfiguracji maszyny.<br/> Agent oceny: Zbierz dane wydajności.<br/>  Usługa aktualizacji AutoUpdate: aktualizuje składniki (są uruchamiane co 24 godziny).
 
 
@@ -63,14 +63,14 @@ Maszyna fizyczna |  Azure Migrate: Ocena serwera |  Odnajdywanie serwerów fizyc
 
 **Wymaganie** | **Bezpośrednim** 
 --- | ---
-**Pobierz format** | Folder spakowany (z skryptem Instalatora programu PowerShell)
+**Pobierz format** | Folder spakowany (z skryptem Instalatora opartym na programie PowerShell)
 **Link pobierania** | [Link pobierania](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Rozmiar pobieranych plików** | 59,7 MB
-**Sprzęt** | Dedykowana maszyna fizyczna lub maszyna wirtualna. Urządzenie z systemem wymaga 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
+**Sprzęt** | Dedykowany komputer fizyczny lub Użyj maszyny wirtualnej. Urządzenie z systemem wymaga 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
 **Wartość skrótu** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
-**Oprogramowanie** | Na komputerze powinien działać system Windows Server 2016. 
+**System operacyjny** | Na komputerze powinien działać system Windows Server 2016. 
 **Wdrażanie urządzenia**   |  Skrypt Instalatora urządzenia jest pobierany z portalu (w folderze spakowanym). <br/> Rozpakujesz folder i uruchomisz skrypt programu PowerShell (AzureMigrateInstaller. ps1).
-**Discovery** (Odnajdywanie) | Urządzenie może wykryć do 250 serwerów fizycznych.
+**Odnajdowa** | Urządzenie może wykryć do 250 serwerów fizycznych.
 **Składniki urządzenia** | Aplikacja zarządzania: aplikacja sieci Web w urządzeniu do wprowadzania danych przez użytkownika podczas wdrażania.<br/> Agent odnajdywania: zbiera dane konfiguracji maszyny.<br/> Agent oceny: Zbierz dane wydajności.<br/>  Usługa aktualizacji AutoUpdate: aktualizuje składniki (są uruchamiane co 24 godziny).
 
 
@@ -91,9 +91,10 @@ dc.services.visualstudio.com | Przekaż Dzienniki aplikacji używane do wewnętr
 *.vault.azure.net | Zarządzanie wpisami tajnymi w Azure Key Vault.
 aka.ms/* | Zezwalaj na dostęp do linków aliasów. Używany do Azure Migrate aktualizacji urządzenia.
 download.microsoft.com/download | Zezwalaj na pobieranie z usługi Microsoft Download.
-*.servicebus.windows.net | **Używane do migracji bez agentów programu VMware**<br/><br/> Komunikacja między urządzeniem a usługą Azure Migrate.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | **Używane do migracji bez agentów programu VMware**<br/><br/> Połącz się z adresami URL usługi Azure Migrate.
-*.blob.core.windows.net |  **Używane do migracji bez agentów programu VMware**<br/><br/>Przekazywanie danych do magazynu.
+*.servicebus.windows.net | Komunikacja między urządzeniem a usługą Azure Migrate.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Połącz się z adresami URL usługi Azure Migrate.
+*.hypervrecoverymanager.windowsazure.com | **Używane do migracji bez agentów programu VMware**<br/><br/> Połącz się z adresami URL usługi Azure Migrate.
+*.blob.core.windows.net |  **Używane do migracji bez agentów programu VMware**<br/><br/>Przekaż dane do magazynu na potrzeby migracji.
 
 
 
@@ -104,7 +105,7 @@ download.microsoft.com/download | Zezwalaj na pobieranie z usługi Microsoft Dow
 
 Oto dane wydajności maszyny wirtualnej VMware, które urządzenie zbiera i wysyła do platformy Azure.
 
-**Dane** | **Counter** | **Wpływ oceny**
+**Dane** | **Przeciw** | **Wpływ oceny**
 --- | --- | ---
 Użycie procesora CPU | cpu.usage.average | Zalecany rozmiar maszyny wirtualnej/koszt
 Użycie pamięci | mem.usage.average | Zalecany rozmiar maszyny wirtualnej/koszt
@@ -123,7 +124,7 @@ Przepływność zapisu kart sieciowych (MB na sekundę) | net.transmitted.averag
 
 Poniżej znajduje się pełna lista metadanych maszyn wirtualnych VMware, które urządzenie zbiera i wysyła do platformy Azure.
 
-**Dane** | **Counter**
+**Dane** | **Przeciw**
 --- | --- 
 **Szczegóły maszyny** | 
 IDENTYFIKATOR MASZYNY WIRTUALNEJ | vm.Config.InstanceUuid 
@@ -158,7 +159,7 @@ Adresy IPv6 | vm.Guest.Net
 Przepływność odczytu (MB na sekundę) | NET. Receive. Average
 Przepływność zapisu (MB na sekundę) | net.transmitted.average
 **Szczegóły ścieżki spisu** | 
-Nazwa | container.GetType().Name
+Name (Nazwa) | container.GetType().Name
 Typ obiektu podrzędnego | wbudowane. Typ podrzędny
 Szczegóły odwołania | wbudowane. MoRef
 Szczegóły nadrzędne | Kontener. Parent
@@ -177,7 +178,7 @@ Szczegóły hosta na maszynę wirtualną | ((HostSystem) kontener). MASZYN
 
 Poniżej przedstawiono dane wydajności maszyny wirtualnej funkcji Hyper-IT zbierane i wysyłane na platformę Azure.
 
-**Klasa licznika wydajności** | **Counter** | **Wpływ oceny**
+**Klasa licznika wydajności** | **Przeciw** | **Wpływ oceny**
 --- | --- | ---
 Procesor wirtualny funkcji hypervisor funkcji Hyper-V | Czas działania gościa (%) | Zalecany rozmiar maszyny wirtualnej/koszt
 Maszyna wirtualna pamięć dynamiczna funkcji Hyper-V | Bieżące ciśnienie (%)<br/> Ilość pamięci fizycznej widocznej dla gościa (MB) | Zalecany rozmiar maszyny wirtualnej/koszt

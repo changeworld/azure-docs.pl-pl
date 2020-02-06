@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/01/2019
-ms.openlocfilehash: e253d168fadd5aff46e70ba00a4021415c0ea6f7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242040"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030033"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Szybki Start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu Azure Portal
 
@@ -35,7 +35,7 @@ Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą 
 
 Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. W menu po lewej stronie przejdź do **+ Utwórz zasób** > **Analytics** > **HDInsight**.
 
@@ -72,7 +72,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
     |Konto magazynu podstawowego|Użyj listy rozwijanej, aby wybrać istniejące konto magazynu, lub wybierz pozycję **Utwórz nowe**. Jeśli utworzysz nowe konto, nazwa musi mieć długość od 3 do 24 znaków i może zawierać tylko cyfry i małe litery|
     |Kontener|Użyj autowypełnianej wartości.|
 
-    ![Wprowadzenie do usługi HDInsight w systemie Linux zapewnia wartości magazynu klastra](./media/apache-kafka-get-started/azure-portal-cluster-storage-blank.png "Podaj wartości magazynu na potrzeby tworzenia klastra usługi HDInsight")
+    ![Wprowadzenie do usługi HDInsight w systemie Linux zapewnia wartości magazynu klastra](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "Podaj wartości magazynu na potrzeby tworzenia klastra usługi HDInsight")
 
     Wybierz kartę **zabezpieczenia i sieć** .
 
@@ -80,7 +80,7 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
    Jeśli chcesz połączyć klaster z siecią wirtualną, wybierz sieć wirtualną z listy rozwijanej **Sieć wirtualna**.
 
-   ![Dodawanie klastra do sieci wirtualnej](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vn.png)
+   ![Dodawanie klastra do sieci wirtualnej](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
     Wybierz kartę **Konfiguracja i Cennik** .
 

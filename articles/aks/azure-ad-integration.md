@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 9a82b51083a7d31bc39c4556712c1489bad8bca0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103786"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031479"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integracja Azure Active Directory z usługą Azure Kubernetes Service
 
@@ -50,13 +50,13 @@ Aby zapewnić uwierzytelnianie usługi Azure AD dla klastra AKS, tworzone są dw
 
 Pierwsza aplikacja usługi Azure AD jest stosowana w celu uzyskania członkostwa w grupie usługi Azure AD użytkownika. Aby utworzyć tę aplikację w Azure Portal:
 
-1. Wybierz pozycję **Azure Active Directory** > **rejestracje aplikacji** > **nową rejestrację**.
+1. Wybierz pozycję **Azure Active Directory** > **rejestracje aplikacji** > **Nowa rejestracja**.
 
     a. Nadaj aplikacji nazwę, taką jak *AKSAzureADServer*.
 
     b. W przypadku **obsługiwanych typów kont**wybierz opcję **konta tylko w tym katalogu organizacji**.
     
-    c. Wybierz pozycję **Sieć Web** dla opcji Typ URI przekierowania, a następnie wprowadź dowolną wartość w formacie URI *https://aksazureadserver* , na przykład.
+    c. Wybierz pozycję **Sieć Web** dla opcji Typ URI przekierowania, a następnie wprowadź dowolną wartość w formacie URI, taką jak *https://aksazureadserver* .
 
     d. Po zakończeniu wybierz pozycję **zarejestruj** .
 
@@ -110,13 +110,20 @@ Pierwsza aplikacja usługi Azure AD jest stosowana w celu uzyskania członkostwa
 
 Druga aplikacja usługi Azure AD jest używana po zalogowaniu się przy użyciu interfejsu wiersza polecenia Kubernetes (polecenia kubectl).
 
-1. Wybierz pozycję **Azure Active Directory** > **rejestracje aplikacji** > **nową rejestrację**.
+1. Wybierz pozycję **Azure Active Directory** > **rejestracje aplikacji** > **Nowa rejestracja**.
 
     a. Nadaj aplikacji nazwę, taką jak *AKSAzureADClient*.
 
     b. W przypadku **obsługiwanych typów kont**wybierz opcję **konta tylko w tym katalogu organizacji**.
 
-    c. W polu Typ URI przekierowania wybierz pozycję **Sieć Web** , a następnie wprowadź dowolną wartość w formacie *https://aksazureadclient* URI, taką jak.
+    c. W polu Typ URI przekierowania wybierz pozycję **Sieć Web** , a następnie wprowadź dowolną wartość w formacie URI, taką jak *https://aksazureadclient* .
+
+    >[!NOTE]
+    >Jeśli tworzysz nowy klaster z obsługą kontroli dostępu RBAC do obsługi Azure Monitor kontenerów, Dodaj następujące dwa dodatkowe adresy URL przekierowania do tej listy jako typy aplikacji **sieci Web** . Wartość pierwszego podstawowego adresu URL powinna być `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`, a druga podstawowa wartość adresu URL powinna być `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
+    >
+    >Jeśli używasz tej funkcji w Chinach platformy Azure, najpierw należy `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` pierwszą podstawową wartość adresu URL, a druga podstawowa wartość adresu URL powinna być `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
+    >
+    >Aby uzyskać więcej informacji, zobacz [temat jak skonfigurować funkcję Live Data (wersja zapoznawcza)](../azure-monitor/insights/container-insights-livedata-setup.md) dla Azure monitor kontenerów i instrukcje dotyczące konfigurowania uwierzytelniania w sekcji [Konfigurowanie uwierzytelniania zintegrowanego usługi AD](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication) .
 
     d. Po zakończeniu wybierz pozycję **zarejestruj** .
 
@@ -146,7 +153,7 @@ Druga aplikacja usługi Azure AD jest używana po zalogowaniu się przy użyciu 
 
 Następnie Uzyskaj identyfikator dzierżawy platformy Azure. Ta wartość jest używana podczas tworzenia klastra AKS.
 
-Na Azure Portal wybierz pozycję**Właściwości** **Azure Active Directory** > i zanotuj **Identyfikator katalogu**. Podczas tworzenia klastra AKS z obsługą usługi Azure AD ta wartość jest określana jako identyfikator dzierżawy.
+Na Azure Portal wybierz pozycję **Azure Active Directory** > **Właściwości** i zanotuj **Identyfikator katalogu**. Podczas tworzenia klastra AKS z obsługą usługi Azure AD ta wartość jest określana jako identyfikator dzierżawy.
 
 ![Uzyskaj identyfikator dzierżawy platformy Azure](media/aad-integration/tenant-id.png)
 
@@ -180,7 +187,7 @@ Tworzenie klastra AKS trwa kilka minut.
 
 Przed użyciem konta Azure Active Directory z klastrem AKS należy utworzyć powiązanie role lub role klastra. Role definiują uprawnienia do udzielenia, a powiązania stosują je do wybranych użytkowników. Te przypisania można zastosować do danej przestrzeni nazw lub całego klastra. Aby uzyskać więcej informacji, zobacz [Korzystanie z autoryzacji RBAC][rbac-authorization].
 
-Najpierw użyj polecenia [AZ AKS Get-Credentials][az-aks-get-credentials] z `--admin` argumentem, aby zalogować się do klastra z dostępem administratora.
+Najpierw użyj polecenia [AZ AKS Get-Credentials][az-aks-get-credentials] z argumentem `--admin`, aby zalogować się do klastra z dostępem administratora.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
@@ -254,7 +261,7 @@ Pobierz kontekst dla użytkownika niebędącego administratorem przy użyciu pol
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Po uruchomieniu `kubectl` polecenia zostanie wyświetlony monit o uwierzytelnienie przy użyciu platformy Azure. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby zakończyć proces, jak pokazano w następującym przykładzie:
+Po uruchomieniu polecenia `kubectl` zostanie wyświetlony monit o uwierzytelnienie przy użyciu platformy Azure. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby zakończyć proces, jak pokazano w następującym przykładzie:
 
 ```console
 $ kubectl get nodes
@@ -278,7 +285,7 @@ error: You must be logged in to the server (Unauthorized)
 
 - W zależności od tego, czy konto użytkownika znajduje się w tej samej dzierżawie usługi Azure AD, jest zdefiniowany odpowiedni identyfikator obiektu, czy nazwa UPN.
 - Użytkownik nie jest członkiem więcej niż 200 grup.
-- Wpis tajny zdefiniowany w rejestracji aplikacji dla serwera jest zgodny z wartością skonfigurowaną `--aad-server-app-secret`za pomocą.
+- Wpis tajny zdefiniowany w rejestracji aplikacji dla serwera jest zgodny z wartością skonfigurowaną za pomocą `--aad-server-app-secret`.
 
 ## <a name="next-steps"></a>Następne kroki
 

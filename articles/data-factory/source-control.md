@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1cc5932eca520b0bbc0c592b54d36ea8b5942b08
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646901"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031633"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Kontrola źródła w Azure Data Factory
 
@@ -139,10 +139,10 @@ W okienku Konfiguracja są wyświetlane następujące ustawienia repozytorium Gi
 
 | **Ustawienie** | **Opis**  | **Wartość**  |
 |:--- |:--- |:--- |
-| **Typ repozytorium** | Typ repozytorium kodu Azure Repos. | Witryna GitHub |
+| **Typ repozytorium** | Typ repozytorium kodu Azure Repos. | GitHub |
 | **Korzystanie z usługi GitHub Enterprise** | Zaznacz pole wyboru usługi GitHub Enterprise | niezaznaczony (domyślnie) |
 | **Adres URL przedsiębiorstwa usługi GitHub** | Główny adres URL dla przedsiębiorstwa usługi GitHub. Na przykład: https://github.mydomain.com. Wymagane tylko wtedy, gdy wybrano korzystanie z usługi **GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
-| **Konto GitHub** | Nazwa konta usługi GitHub. Tę nazwę można znaleźć z protokołu https:\//GitHub.com/{account name}/{Repository Name}. Przechodzenie na stronę z prośbą o wprowadzenie poświadczeń OAuth usługi GitHub na Twoje konto w usłudze GitHub. | `<your GitHub account name>` |
+| **Konto usługi GitHub** | Nazwa konta usługi GitHub. Tę nazwę można znaleźć z protokołu https:\//GitHub.com/{account name}/{Repository Name}. Przechodzenie na stronę z prośbą o wprowadzenie poświadczeń OAuth usługi GitHub na Twoje konto w usłudze GitHub. | `<your GitHub account name>` |
 | **Nazwa repozytorium**  | Nazwa repozytorium kodu usługi GitHub. Konta usługi GitHub zawierają repozytoria Git do zarządzania kodem źródłowym. Można utworzyć nowe repozytorium lub użyć istniejącego repozytorium, które już znajduje się na Twoim koncie. | `<your repository name>` |
 | **Rozgałęzienie współpracy** | Gałąź współpracy GitHub, która jest używana do publikowania. Domyślnie jest to główna. Zmień to ustawienie, jeśli chcesz opublikować zasoby z innej gałęzi. | `<your collaboration branch>` |
 | **Folder główny** | Twój folder główny w gałęzi współpracy usługi GitHub. |`<your root folder name>` |
@@ -157,7 +157,7 @@ W okienku Konfiguracja są wyświetlane następujące ustawienia repozytorium Gi
 
 - Integracja usługi GitHub z Data Factory narzędziami autorskimi programu działa tylko w ogólnie dostępnej wersji programu Data Factory.
 
-- Z pojedynczej gałęzi GitHub można pobrać maksymalnie 1 000 jednostek dla każdego typu zasobu (na przykład potoków i zestawów danych). Jeśli ten limit zostanie osiągnięty, sugerowane jest podzielenie zasobów na osobne fabryki.
+- Z pojedynczej gałęzi GitHub można pobrać maksymalnie 1 000 jednostek dla każdego typu zasobu (na przykład potoków i zestawów danych). Jeśli ten limit zostanie osiągnięty, sugerowane jest podzielenie zasobów na osobne fabryki. To ograniczenie nie jest dostępne w usłudze Azure DevOps git.
 
 ## <a name="switch-to-a-different-git-repo"></a>Przełącz na inne repozytorium git
 
@@ -187,7 +187,7 @@ Gdy wszystko będzie gotowe do scalenia zmian z gałęzi funkcji z gałęzią ws
 
 ### <a name="configure-publishing-settings"></a>Konfigurowanie ustawień publikowania
 
-Aby skonfigurować gałąź Publikuj, czyli gałąź, w której zapisano Menedżer zasobów szablony — Dodaj plik `publish_config.json` do folderu głównego w gałęzi współpracy. Data Factory odczytuje ten plik, szuka pola `publishBranch`i tworzy nową gałąź (jeśli jeszcze nie istnieje) z podaną wartością. Następnie zapisuje wszystkie szablony Menedżer zasobów w określonej lokalizacji. Przykład:
+Aby skonfigurować gałąź Publikuj, czyli gałąź, w której zapisano Menedżer zasobów szablony — Dodaj plik `publish_config.json` do folderu głównego w gałęzi współpracy. Data Factory odczytuje ten plik, szuka pola `publishBranch`i tworzy nową gałąź (jeśli jeszcze nie istnieje) z podaną wartością. Następnie zapisuje wszystkie szablony Menedżer zasobów w określonej lokalizacji. Na przykład:
 
 ```json
 {
@@ -249,10 +249,15 @@ Jeśli gałąź publikowania nie jest zsynchronizowana z gałęzią główną i 
 
 1. Usuń bieżące repozytorium git
 1. Skonfiguruj ponownie usługę git przy użyciu tych samych ustawień, ale upewnij się, że wybrano opcję **Importuj istniejące zasoby Data Factory do repozytorium** , a następnie wybierz pozycję **Nowa gałąź**
-1. Usuń wszystkie zasoby z gałęzi współpracy
 1. Utwórz żądanie ściągnięcia, aby scalić zmiany w gałęzi współpracy 
 
-## <a name="provide-feedback"></a>Prześlij opinię
+Poniżej przedstawiono przykładowe sytuacje, które mogą spowodować nieodświeżoną gałąź publikowania:
+- Użytkownik ma wiele rozgałęzień. W jednej gałęzi funkcji zostały usunięte połączone usługi, która nie jest skojarzona z AKV (AKV połączone usługi są publikowane bezpośrednio, niezależnie od tego, czy znajdują się w usłudze git, czy nie), a nigdy nie zostały scalone z gałęzią funkcji w brnach współpracy.
+- Użytkownik zmodyfikował fabrykę danych przy użyciu zestawu SDK lub programu PowerShell
+- Użytkownik przeniósł wszystkie zasoby do nowej gałęzi i próbował przeprowadzić publikowanie po raz pierwszy. Połączone usługi należy tworzyć ręcznie podczas importowania zasobów.
+- Użytkownik przekazuje ręcznie AKV połączonej usługi lub Integration Runtime JSON. Odwołują się do tego zasobu z innego zasobu, np. zestawu danych, połączonej usługi lub potoku. Połączona usługa nieAKVa utworzona za pomocą środowiska użytkownika jest publikowana natychmiast, ponieważ poświadczenia muszą być szyfrowane. W przypadku przekazania zestawu danych, który odwołuje się do połączonej usługi i próby opublikowania, środowisko użytkownika zezwoli na to, ponieważ istnieje w środowisku usługi git. Zostanie on odrzucony w czasie publikowania, ponieważ nie istnieje w usłudze Data Factory.
+
+## <a name="provide-feedback"></a>Przekaż opinię
 Wybierz **opinię** , aby skomentować informacje o funkcjach lub powiadomić firmę Microsoft o problemach z narzędziem:
 
 ![Opinia](media/author-visually/provide-feedback.png)

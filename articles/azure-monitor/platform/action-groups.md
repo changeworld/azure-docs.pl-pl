@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 01d3edb3de9e57fa7fa8db2ede863c2aa3e100ed
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901472"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030749"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup akcji i zarządzanie nimi w Azure Portal
 Grupa akcji to zbiór preferencji powiadomień definiowanych przez właściciela subskrypcji platformy Azure. Alerty Azure Monitor i Service Health umożliwiają Powiadamianie użytkowników o wyzwoleniu alertu. Różne alerty mogą korzystać z tej samej grupy akcji lub różnych grup akcji w zależności od wymagań użytkownika. W ramach subskrypcji można skonfigurować maksymalnie 2 000 grup akcji.
@@ -62,7 +62,7 @@ Aby uzyskać informacje na temat sposobu konfigurowania grup akcji przy użyciu 
 
 ## <a name="manage-your-action-groups"></a>Zarządzanie grupami akcji
 
-Po utworzeniu grupy akcji jest ona widoczna w sekcji **grupy akcji** okienka **monitorowanie** . Wybierz grupę akcji, do której chcesz zarządzać:
+Po utworzeniu grupy akcji można wyświetlić **grupy akcji** , wybierając pozycję **Zarządzaj akcjami** na stronie miejsce docelowe **alertów** w okienku **monitorowanie** . Wybierz grupę akcji, do której chcesz zarządzać:
 
 * Dodawanie, edytowanie lub usuwanie akcji.
 * Usuń grupę akcji.
@@ -80,7 +80,7 @@ W grupie akcji może istnieć ograniczona liczba akcji elementu Runbook.
 ### <a name="azure-app-push-notifications"></a>Powiadomienia push aplikacji platformy Azure
 W grupie akcji może istnieć ograniczona liczba akcji aplikacji platformy Azure.
 
-### <a name="email"></a>Adres e-mail
+### <a name="email"></a>Email
 Wiadomości e-mail będą wysyłane z następujących adresów e-mail. Upewnij się, że filtrowanie poczty e-mail jest skonfigurowane odpowiednio
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -111,7 +111,7 @@ W grupie akcji może istnieć ograniczona liczba akcji aplikacji logiki.
 
 Akcja elementu webhook grup akcji umożliwia korzystanie z Azure Active Directory w celu zabezpieczenia połączenia między grupą akcji i chronionym internetowym interfejsem API (punkt końcowy elementu webhook). Poniżej opisano ogólny przepływ pracy w celu skorzystania z zalet tej funkcji. Omówienie aplikacji usługi Azure AD i nazw głównych usług można znaleźć w temacie [Microsoft Identity platform (v 2.0) — Omówienie](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
 
-1. Utwórz aplikację usługi Azure AD dla chronionego internetowego interfejsu API. Zobacz https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
+1. Utwórz aplikację usługi Azure AD dla chronionego internetowego interfejsu API. Zobacz: https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
     - Skonfiguruj chroniony interfejs API do wywoływania przez aplikację demona.
     
 1. Włącz grupy akcji, aby korzystać z aplikacji usługi Azure AD.
@@ -202,7 +202,7 @@ Aby uzyskać dodatkowe informacje, zobacz [informacje dotyczące ograniczania sz
 
 W grupie akcji może istnieć ograniczona liczba akcji programu SMS.  
 
-### <a name="voice"></a>Głos
+### <a name="voice"></a>Połączenia głosowe
 Zobacz artykuł [Informacje o ograniczeniu szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
 W grupie akcji może istnieć ograniczona liczba akcji głosowych.

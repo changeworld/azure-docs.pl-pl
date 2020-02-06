@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: c5cb8366465d5983823184c87eb54fad6aaffbd0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705925"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031616"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak skonfigurować ExpressRoute Direct
 
 Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośrednio do globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Aby uzyskać więcej informacji, zobacz [About ExpressRoute Direct (Usługa ExpressRoute Direct)](expressroute-erdirect-about.md).
 
-## <a name="resources"></a>Utwórz zasób
+## <a name="resources"></a>Tworzenie zasobu
 
 1. Logowanie do platformy Azure i wybierz subskrypcję. Zasób bezpośrednio z usługi ExpressRoute i obwodów usługi ExpressRoute musi być w tej samej subskrypcji.
 
@@ -27,7 +27,13 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
 
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. Wyświetl listę wszystkich lokalizacji, w którym są obsługiwane bezpośrednio z usługi ExpressRoute.
+   
+2. Zarejestruj ponownie swoją subskrypcję w usłudze Microsoft. Network, aby uzyskać dostęp do interfejsów API expressrouteportslocation i expressrouteport.
+
+   ```powershell
+   Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
+   ```   
+3. Wyświetl listę wszystkich lokalizacji, w którym są obsługiwane bezpośrednio z usługi ExpressRoute.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
@@ -60,7 +66,7 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. Określa, czy lokalizacja z wymienionych powyżej ma dostępną przepustowość
+4. Określa, czy lokalizacja z wymienionych powyżej ma dostępną przepustowość
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
@@ -82,7 +88,7 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
                           }
                         ]
    ```
-4. Tworzenie zasobu usługi ExpressRoute bezpośrednio na podstawie lokalizacji wybrano tak powyżej
+5. Tworzenie zasobu usługi ExpressRoute bezpośrednio na podstawie lokalizacji wybrano tak powyżej
 
    Usługa ExpressRoute bezpośrednio obsługuje QinQ i Dot1Q hermetyzacji. Jeśli wybrano QinQ, każdy obwód usługi ExpressRoute zostanie dynamicznie przypisany S Tag i będą unikatowe w obrębie całej zasobów bezpośrednio z usługi ExpressRoute. Każdy Tag języka C, w ramach obwodu muszą być unikatowe w ramach obwodu, ale nie między bezpośrednio usługi ExpressRoute.  
 
@@ -149,7 +155,7 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
    Circuits                   : []
    ```
 
-## <a name="state"></a>Zmień stan administrator łączy
+## <a name="state"></a>Zmień stan administratora linków
 
   Ten proces powinien służyć do przeprowadzenia testu warstwy 1, zapewnia, że każdy obejmującej wiele połączeń jest prawidłowo poprawionego do każdego routera dla podstawowego i pomocniczego.
 1. Szczegółowe informacje bezpośrednio z usługi ExpressRoute.
@@ -217,7 +223,7 @@ Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośred
    Circuits                   : []
    ```
 
-   Użyj tej samej procedury z `AdminState = "Disabled"` włączyć porty w dół.
+   Aby wyłączyć porty, Użyj tej samej procedury co `AdminState = "Disabled"`.
 
 ## <a name="circuit"></a>Tworzenie obwodu
 
@@ -271,4 +277,4 @@ Utwórz obwód zasobu bezpośrednio z usługi ExpressRoute.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat usługi ExpressRoute bezpośrednio zobacz [Przegląd](expressroute-erdirect-about.md).
+Aby uzyskać więcej informacji na temat usługi ExpressRoute Direct, zobacz [Omówienie](expressroute-erdirect-about.md).

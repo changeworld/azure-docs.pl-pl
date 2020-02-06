@@ -137,6 +137,8 @@
               href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
         - name: Niepowodzenie alokacji usługi w chmurze
           href: cloud-services-allocation-failures.md
+        - name: Aplikacje nie obsługują protokołu TLS 1.2
+          href: applications-dont-support-TLS-1-2.md
         - name: Typowe przyczyny powtarzania cykli ról usługi w chmurze
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
         - name: Domyślny rozmiar folderu TEMP jest zbyt mały dla roli

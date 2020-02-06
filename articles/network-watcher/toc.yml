@@ -7,6 +7,8 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
+    - name: Monitor połączeń (wersja zapoznawcza)
+      href: connection-monitor-2-preview.md
     - name: Diagnozowanie problemu z filtrowaniem ruchu na maszynie wirtualnej — portal
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Diagnozowanie problemu z filtrowaniem ruchu na maszynie wirtualnej — PowerShell

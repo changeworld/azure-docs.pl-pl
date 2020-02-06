@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ba8a76cd4d3804bcb062ae0554e3fe7002804ed2
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513460"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031684"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w Application Insights
 
@@ -134,7 +134,7 @@ Jeśli klient musi skonfigurować ten katalog z określonymi wymaganiami dotycz�
 
 `C:\Users\username\AppData\Local\Temp` jest używany do utrwalania danych. Ta lokalizacja nie jest konfigurowalna z katalogu konfiguracji, a uprawnienia dostępu do tego folderu są ograniczone do określonego użytkownika z wymaganymi poświadczeniami. (Aby uzyskać więcej informacji, zobacz [implementacja](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)).
 
-###  <a name="net"></a>.NET
+###  <a name="net"></a>.Net
 
 Domyślnie `ServerTelemetryChannel` używa folderu danych lokalnej aplikacji użytkownika `%localAppData%\Microsoft\ApplicationInsights` lub folderu tymczasowego `%TMP%`. (Zobacz tutaj [implementację](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) ).
 
@@ -175,11 +175,22 @@ Domyślnie `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` jest używany do utrwa
 
 Prefiks folderu `appInsights-node` można przesłonić, zmieniając wartość w czasie wykonywania zmiennej statycznej `Sender.TEMPDIR_PREFIX` znaleziona w polu [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
 
+### <a name="opencensus-python"></a>OpenCensus Python
 
+Domyślnie OpenCensus Python SDK używa bieżącego folderu użytkownika `%username%/.opencensus/.azure/`. Uprawnienia dostępu do tego folderu są ograniczone do bieżącego użytkownika i administratorów. (Zobacz tutaj [implementację](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) ). Folder z danymi utrwalanymi zostanie nazwany po pliku języka Python, który wygenerował dane telemetryczne.
+
+Lokalizację pliku magazynu można zmienić, przekazując parametr `storage_path` w konstruktorze używanego przez eksportera.
+
+```python
+AzureLogHandler(
+  connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000',
+  storage_path='<your-path-here>',
+)
+```
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Jak mogę wysyłać dane do Application Insights przy użyciu protokołu TLS 1,2?
 
-Aby zapewnić bezpieczeństwo danych przesyłanych do Application Insightsych punktów końcowych, zdecydowanie zachęcamy klientów do konfigurowania aplikacji do korzystania z co najmniej Transport Layer Security (TLS) 1,2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**, i branży szybko rozwijających się do porzucenia pomocy technicznej dla tych starszych protokołów. 
+Aby zapewnić bezpieczeństwo danych przesyłanych do Application Insightsych punktów końcowych, zdecydowanie zachęcamy klientów do konfigurowania aplikacji do korzystania z co najmniej Transport Layer Security (TLS) 1,2. Starsza wersja protokołu TLS/SSL (SSL) została uznana za narażoną, a mimo to nadal pracują w celu zapewnienia zgodności z poprzednimi wersjami, nie jest to **zalecane**, a branża szybko przenosi się do porzucenia, aby uzyskać pomoc techniczną dla tych starszych protokołów. 
 
 [Rada normy zabezpieczeń PCI](https://www.pcisecuritystandards.org/) ustawił [termin ostateczny 30 czerwca 2018,](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) aby wyłączyć starsze wersje protokołu TLS/SSL i uaktualnić je do bezpieczniejsze protokoły. Gdy platforma Azure pozostanie w starszej wersji, jeśli aplikacja/klienci nie mogą komunikować się za pomocą co najmniej protokołu TLS 1,2, nie będzie możliwe wysyłanie danych do Application Insights. Podejście wykonywane do testowania i weryfikowania obsługi protokołu TLS aplikacji będzie się różnić w zależności od systemu operacyjnego/platformy, a także od języka/platformy używanej przez aplikację.
 
@@ -195,12 +206,12 @@ Firma Microsoft nie zaleca jawnie ustawienia aplikacji do używania protokołu T
 |Monitor stanu | Obsługiwane, wymagana konfiguracja | Monitor stanu korzysta z [konfiguracji systemu operacyjnego](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [konfiguracji platformy .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) do obsługi protokołu TLS 1,2.
 |Node.js |  Obsługiwane w programie v 10.5.0 może być wymagana konfiguracja. | Użyj [oficjalnej dokumentacji protokołu TLS/SSL języka Node. js](https://nodejs.org/api/tls.html) dla każdej konfiguracji specyficznej dla aplikacji. |
 |Java | Obsługiwane, JDK support for TLS 1,2 zostało dodane w [JDK 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) i [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 [domyślnie używa protokołu TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
-|Linux | Dystrybucje systemu Linux, zwykle zależą od [OpenSSL](https://www.openssl.org) obsługę protokołu TLS 1.2.  | Sprawdź [dziennika zmian OpenSSL](https://www.openssl.org/news/changelog.html) aby upewnić się, używana wersja biblioteki openssl jest obsługiwana.|
-| Windows 8.0 10 | Obsługiwane i domyślnie włączona. | Aby upewnić się, że nadal używasz [domyślne ustawienia](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
-| System Windows Server 2012 2016 | Obsługiwane i domyślnie włączona. | Aby upewnić się, że nadal używasz [ustawienia domyślne](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 | Obsługiwane, ale nie jest włączony domyślnie. | Zobacz [zabezpieczeń TLS (Transport Layer), ustawień rejestru](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) strony, aby uzyskać szczegółowe informacje o sposobie włączania.  |
-| Windows Server 2008 SP2 | Obsługa protokołu TLS 1.2 wymaga aktualizacji. | Zobacz [aktualizacji, aby dodać obsługę protokołu TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) w systemie Windows Server 2008 z dodatkiem SP2. |
-|Windows Vista | Nieobsługiwane. | ND
+|Linux | Dystrybucje systemu Linux zależą od [OpenSSL](https://www.openssl.org) obsługi TLS 1,2.  | Sprawdź [Dziennik zmian OpenSSL](https://www.openssl.org/news/changelog.html) , aby potwierdzić, że wersja OpenSSL jest obsługiwana.|
+| Windows 8.0 10 | Obsługiwane i domyślnie włączona. | , Aby upewnić się, że nadal używasz [ustawień domyślnych](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| System Windows Server 2012 2016 | Obsługiwane i domyślnie włączona. | Aby potwierdzić, że nadal używasz [ustawień domyślnych](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 z dodatkiem SP1 i Windows Server 2008 R2 z dodatkiem SP1 | Obsługiwane, ale nie jest włączony domyślnie. | Aby uzyskać szczegółowe informacje na temat włączania, zobacz stronę [Ustawienia rejestru Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
+| Windows Server 2008 SP2 | Obsługa protokołu TLS 1.2 wymaga aktualizacji. | Zobacz [Aktualizacja, aby dodać obsługę protokołu TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) w systemie Windows Server 2008 z dodatkiem SP2. |
+|Windows Vista | Nieobsługiwane. | Nie dotyczy
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Sprawdź wersję OpenSSL, w której działa dystrybucja systemu Linux
 
@@ -234,15 +245,15 @@ Zestawy SDK różnią się między platformami i istnieje kilka składników, kt
 
 | Twoja akcja | Zebrane klasy danych (zobacz następną tabelę) |
 | --- | --- |
-| [Dodawanie Application Insights SDK do projektu sieci Web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskować<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Session<br/>liczby użytkowników |
+| [Dodawanie Application Insights SDK do projektu sieci Web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskować<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>użytkownicy |
 | [Instalowanie monitor stanu w usługach IIS][redfield] |Zależności<br/>ServerContext<br/>Wywnioskować<br/>Liczniki wydajności |
-| [Dodawanie Application Insights SDK do aplikacji sieci Web Java][java] |ServerContext<br/>Wywnioskować<br/>Prośba<br/>Session<br/>liczby użytkowników |
-| [Dodaj zestaw SDK JavaScript do strony sieci Web][client] |ClientContext <br/>Wywnioskować<br/>Strona<br/>ClientPerf<br/>Ajax |
+| [Dodawanie Application Insights SDK do aplikacji sieci Web Java][java] |ServerContext<br/>Wywnioskować<br/>Żądanie<br/>Sesja<br/>użytkownicy |
+| [Dodaj zestaw SDK JavaScript do strony sieci Web][client] |ClientContext <br/>Wywnioskować<br/>Stronic<br/>ClientPerf<br/>Ajax |
 | [Definiowanie właściwości domyślnych][apiproperties] |**Właściwości** wszystkich zdarzeń standardowych i niestandardowych |
-| [TrackMetric wywołań][api] |Wartości liczbowe<br/>**Właściwości** |
-| [Śledzenie wywołań *][api] |Nazwa zdarzenia<br/>**Właściwości** |
-| [Wywołanie metody Trackexception][api] |**Wyjątki**<br/>Zrzut stosu<br/>**Właściwości** |
-| Zestaw SDK nie może zbierać danych. Przykład: <br/> -nie można uzyskać dostępu do liczników wydajności<br/> -wyjątek w inicjatorze telemetrii |Diagnostyka zestawu SDK |
+| [TrackMetric wywołań][api] |Wartości liczbowe<br/>**Aœciwoœci** |
+| [Śledzenie wywołań *][api] |Nazwa zdarzenia<br/>**Aœciwoœci** |
+| [Wywołanie metody Trackexception][api] |**Wyjątki**<br/>Zrzut stosu<br/>**Aœciwoœci** |
+| Zestaw SDK nie może zbierać danych. Na przykład: <br/> -nie można uzyskać dostępu do liczników wydajności<br/> -wyjątek w inicjatorze telemetrii |Diagnostyka zestawu SDK |
 
 W przypadku [zestawów SDK dla innych platform][platforms]Zobacz dokumenty.
 
@@ -250,14 +261,14 @@ W przypadku [zestawów SDK dla innych platform][platforms]Zobacz dokumenty.
 
 | Klasa zebranych danych | Zawiera (nie jest to pełna lista) |
 | --- | --- |
-| **Właściwości** |**Wszystkie dane — określone przez kod** |
+| **Aœciwoœci** |**Wszystkie dane — określone przez kod** |
 | DeviceContext |`Id`, IP, ustawienia regionalne, model urządzenia, Sieć, typ sieci, nazwa OEM, rozdzielczość ekranu, wystąpienie roli, nazwa roli, typ urządzenia |
 | ClientContext |System operacyjny, ustawienia regionalne, język, Sieć, rozdzielczość okna |
-| Session |`session id` |
+| Sesja |`session id` |
 | ServerContext |Nazwa komputera, ustawienia regionalne, system operacyjny, urządzenie, sesja użytkownika, kontekst użytkownika, operacja |
 | Wywnioskować |Lokalizacja geograficzna z adresu IP, sygnatury czasowej, systemu operacyjnego, przeglądarki |
 | Metryki |Nazwa i wartość metryki |
-| Wydarzenia |Nazwa i wartość zdarzenia |
+| Zdarzenia |Nazwa i wartość zdarzenia |
 | PageViews |Adres URL i nazwa strony lub nazwa ekranu |
 | Wydajność klienta |Nazwa adresu URL/strony, czas ładowania przeglądarki |
 | Ajax |Wywołania HTTP ze strony sieci Web na serwer |

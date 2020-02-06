@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744770"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030930"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalowanie klastrów usługi Azure HDInsight
 
@@ -29,7 +29,7 @@ Klaster można skalować ręcznie przy użyciu jednej z metod opisanych poniżej
 
 Firma Microsoft udostępnia następujące narzędzia do skalowania klastrów:
 
-|Narzędzie | Opis|
+|Spuninst | Opis|
 |---|---|
 |[PowerShell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -clustername \<nazwa klastra >-TargetInstanceCount \<NewSize >|
 |[AzureRM programu PowerShell](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -clustername \<nazwa klastra >-TargetInstanceCount \<NewSize >|
@@ -37,7 +37,7 @@ Firma Microsoft udostępnia następujące narzędzia do skalowania klastrów:
 |[Interfejs wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md)|Zmiana rozmiaru klastra usługi Azure HDInsight \<ClusterName > \<liczby wystąpień docelowych > |
 |[Azure Portal](https://portal.azure.com)|Otwórz okienko klastra usługi HDInsight, wybierz pozycję **rozmiar klastra** w menu po lewej stronie, a następnie w okienku rozmiar klastra wpisz liczbę węzłów procesu roboczego i wybierz pozycję Zapisz.|  
 
-![Azure Portal skalowanie — opcja klastra](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
+![Azure Portal skalowanie — opcja klastra](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
 Korzystając z dowolnej z tych metod, można skalować klaster usługi HDInsight w górę lub w dół w ciągu kilku minut.
 
@@ -126,7 +126,7 @@ Aby ręcznie skasować tę uruchomioną aplikację, wykonaj następujące polece
 yarn application -kill <application_id>
 ```
 
-Przykład:
+Na przykład:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

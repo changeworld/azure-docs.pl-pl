@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 6a9385a49e85806464e8f9ccf11d9232fae42435
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461132"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906781"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotuj plik VHD lub VHDX systemu Windows do przekazania do platformy Azure
 
@@ -33,6 +33,22 @@ Aby uzyskać informacje o zasadach pomocy technicznej dla maszyn wirtualnych pla
 > Instrukcje zawarte w tym artykule dotyczą:
 >1. 64-bitowa wersja systemu Windows Server 2008 R2 i nowszych systemów operacyjnych Windows Server. Aby uzyskać informacje o uruchamianiu 32-bitowego systemu operacyjnego na platformie Azure, zobacz [obsługa 32-bitowych systemów operacyjnych na maszynach wirtualnych platformy Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
 >2. Jeśli do migracji obciążenia, takiego jak Azure Site Recovery lub Azure Migrate, zostanie użyte dowolne narzędzie do odzyskiwania po awarii, ten proces jest nadal wymagany, a następnie następuje w systemie operacyjnym gościa w celu przygotowania obrazu przed migracją.
+
+## <a name="system-file-checker-sfc-command"></a>Narzędzie System File Checker (SFC) — polecenie
+
+### <a name="run-windows-system-file-checker-utility-run-sfc-scannow-on-os-prior-to-generalization-step-of-creating-customer-os-image"></a>Uruchom narzędzie sprawdzania plików systemu Windows (Uruchom sfc/scannow) w systemie operacyjnym przed etapem uogólniania tworzenia obrazu systemu operacyjnego klienta
+
+Narzędzie System File Checker (SFC) służy do weryfikowania i zastępowania plików systemu Windows.
+
+Aby uruchomić polecenie SFC:
+
+1. Otwórz wiersz polecenia CMD z podwyższonym poziomem uprawnień jako administrator.
+1. Wpisz `sfc /scannow` i wybierz **klawisz ENTER**.
+
+    ![Narzędzie sprawdzania plików systemowych](media/prepare-for-upload-vhd-image/system-file-checker.png)
+
+
+Po zakończeniu skanowania programu SFC spróbuj zainstalować aktualizacje systemu Windows i ponownie uruchomić komputer.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Konwertowanie dysku wirtualnego na stały rozmiar i na dysk VHD
 
@@ -348,7 +364,7 @@ Upewnij się, że maszyna wirtualna jest w dobrej kondycji, bezpieczna i RDP:
 
    - Operatorzy kopii zapasowych
 
-   - Wszyscy
+   - Widzieć
 
    - Użytkownicy
 

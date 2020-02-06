@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: e51e96c0c553bcf37284878cab11f3ec592ddd05
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8879884cf3d882e6a6b441244ed139072bedeeb
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753391"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029473"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indeksowanie przy użyciu interfejsu API Azure Cosmos DB dla MongoDB
 
@@ -32,6 +32,89 @@ W przypadku kont obsługujących protokół komunikacyjny w wersji 3,6 jedynym d
 Prawdziwe indeksy złożone są obsługiwane dla kont korzystających z protokołu sieci 3,6. Następujące polecenie spowoduje utworzenie indeksu złożonego dla pól "a" i "b": `db.coll.createIndex({a:1,b:1})`
 
 Indeksy złożone mogą służyć do wydajnego sortowania wielu pól jednocześnie, takich jak: `db.coll.find().sort({a:1,b:1})`
+
+### <a name="track-the-index-progress"></a>Śledzenie postępu indeksowania
+
+Wersja 3,6 interfejsu API Azure Cosmos DB dla kont MongoDB obsługuje polecenie `currentOp()` do śledzenia postępu indeksowania w wystąpieniu bazy danych. To polecenie zwraca dokument zawierający informacje o operacjach w toku w wystąpieniu bazy danych. Polecenie `currentOp` służy do śledzenia wszystkich operacji w toku natywnych MongoDB w interfejsie API Azure Cosmos DB dla MongoDB, to polecenie obsługuje tylko śledzenie operacji indeksu.
+
+Poniżej przedstawiono kilka przykładów, które pokazują, jak za pomocą polecenia `currentOp` śledzić postęp indeksowania:
+
+• Pobierz postęp indeksu dla kolekcji:
+
+   ```shell
+   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+   ```
+
+• Pobierz postęp indeksu dla wszystkich kolekcji w bazie danych:
+
+  ```shell
+  db.currentOp({"command.$db": <databaseName>})
+  ```
+
+• Pobierz postęp indeksu dla wszystkich baz danych i kolekcji na koncie usługi Azure Cosmos:
+
+  ```shell
+  db.currentOp({"command.createIndexes": { $exists : true } })
+  ```
+
+Szczegóły postępu indeksu zawierają procent postępu dla bieżącej operacji indeksu. Poniższy przykład pokazuje format dokumentu wyjściowego dla różnych etapów postępu indeksu:
+
+1. Jeśli operacja indeksowania w kolekcji "foo" i bazie danych "bar", która ma zakończono indeksowanie 60%, będzie miała następujący dokument wyjściowy. `Inprog[0].progress.total` pokazuje 100 jako zakończenie docelowy.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 60 %",
+                "progress" : {
+                        "done" : 60,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+        "ok" : 1
+   }
+   ```
+
+2. W przypadku operacji indeksu, która właśnie rozpoczęła się w kolekcji "foo" i bazie danych "bar", dokument wyjściowy może pokazywać postęp 0%, dopóki nie osiągnie do mierzalnego poziomu.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 0 %",
+                "progress" : {
+                        "done" : 0,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+       "ok" : 1
+   }
+   ```
+
+3. Po zakończeniu operacji indeksu w toku w dokumencie wyjściowym są wyświetlane puste operacje niedziałania.
+
+   ```json
+   {
+      "inprog" : [],
+      "ok" : 1
+   }
+   ```
 
 ## <a name="indexing-for-version-32"></a>Indeksowanie dla wersji 3,2
 

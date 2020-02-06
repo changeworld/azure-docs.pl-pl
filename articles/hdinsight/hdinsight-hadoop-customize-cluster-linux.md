@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 555596ba1040fcbd5c9131869fd275d749e0d734
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0930bbcfff41a667f08f5dfc5744c16476ddd8a1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934024"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031456"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów usługi Azure HDInsight za pomocą akcji skryptu
 
@@ -138,16 +138,16 @@ Po zastosowaniu skryptu do klastra stan klastra zmienia się z **uruchomione** n
 Skrypty akcji skryptu mogą być używane w następujących narzędziach:
 
 * Witryna Azure Portal
-* Program Azure PowerShell
+* Azure PowerShell
 * Klasyczny interfejs wiersza polecenia platformy Azure
 * Zestaw SDK HDInsight An .NET
 
 Usługa HDInsight udostępnia skrypty umożliwiające zainstalowanie następujących składników w klastrach usługi HDInsight:
 
-| Nazwa | Skrypt |
+| Name (Nazwa) | Skrypt |
 | --- | --- |
 | Dodawanie konta usługi Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zobacz [Dodawanie dodatkowych kont magazynu do usługi HDInsight](hdinsight-hadoop-add-storage.md). |
-| Instalowanie rozwiązania Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobacz [Instalowanie i używanie odcienia w klastrach usługi HDInsight Hadoop](hdinsight-hadoop-hue-linux.md). |
+| Zainstaluj odcień |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobacz [Instalowanie i używanie odcienia w klastrach usługi HDInsight Hadoop](hdinsight-hadoop-hue-linux.md). |
 | Wstępne ładowanie bibliotek Hive |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Zobacz [Dodawanie niestandardowych bibliotek Apache Hive podczas tworzenia klastra usługi HDInsight](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Używanie akcji skryptu podczas tworzenia klastra
@@ -156,9 +156,9 @@ W tej sekcji opisano różne sposoby używania akcji skryptu podczas tworzenia k
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Użyj akcji skryptu podczas tworzenia klastra z Azure Portal
 
-1. Rozpocznij tworzenie klastra zgodnie z opisem w temacie [Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md). Podczas tworzenia klastra docieramy do kroku 6, **Akcje skryptu**. Przejdź do **opcjonalnego** > **i Prześlij nowy**.
+1. Rozpocznij tworzenie klastra zgodnie z opisem w temacie [Tworzenie klastrów opartych na systemie Linux w usłudze HDInsight przy użyciu Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md). Na karcie **Konfiguracja i Cennik** wybierz pozycję **+ Dodaj akcję skryptu**.
 
-    ![Akcja skryptu Azure Portal klastra](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-classic-script-action.png)
+    ![Akcja skryptu Azure Portal klastra](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
 1. Użyj wpisu __skryptu__ , aby wybrać utworzony skrypt. Aby użyć niestandardowego skryptu, wybierz opcję __niestandardowy__. Podaj __nazwę__ i __Identyfikator URI skryptu bash__ dla skryptu.
 
@@ -169,7 +169,7 @@ W tej sekcji opisano różne sposoby używania akcji skryptu podczas tworzenia k
     | Właściwość | Wartość |
     | --- | --- |
     | Wybierz skrypt | Aby użyć własnego skryptu, wybierz opcję __niestandardowy__. W przeciwnym razie wybierz jeden z podanych skryptów. |
-    | Nazwa |Określ nazwę akcji skryptu. |
+    | Name (Nazwa) |Określ nazwę akcji skryptu. |
     | Identyfikator URI skryptu bash |Określ identyfikator URI skryptu. |
     | Head/Worker/Zookeeper |Określ węzły, w których skrypt jest uruchamiany: **główna**, **proces roboczy**lub **dozorcy**. |
     | Parametry |Określ parametry, jeśli są wymagane przez skrypt. |
@@ -180,9 +180,9 @@ W tej sekcji opisano różne sposoby używania akcji skryptu podczas tworzenia k
 
     ![Operacje wielu skryptów usługi HDInsight](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
-    Po zakończeniu dodawania skryptów wybierz przycisk __Wybierz__ , a następnie kliknij przycisk __dalej__ , aby przejść do sekcji __Podsumowanie klastra__ .
+    Po zakończeniu dodawania skryptów Wróć do karty **Konfiguracja i Cennik** .
 
-1. Aby utworzyć klaster, wybierz pozycję __Utwórz__ na podstawie __podsumowania klastra__ .
+1. Wykonaj pozostałe kroki tworzenia klastra w zwykły sposób.
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Używanie akcji skryptu z szablonów Azure Resource Manager
 
@@ -204,7 +204,7 @@ Uzyskaj więcej informacji na temat wdrażania szablonu:
 
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 
-* [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
+* [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Użyj akcji skryptu podczas tworzenia klastra z Azure PowerShell
 
@@ -249,7 +249,7 @@ Przejdź do [Azure Portal](https://portal.azure.com):
     | Właściwość | Wartość |
     | --- | --- |
     | Wybierz skrypt | Aby użyć własnego skryptu, wybierz opcję __niestandardowy__. W przeciwnym razie wybierz podany skrypt. |
-    | Nazwa |Określ nazwę akcji skryptu. |
+    | Name (Nazwa) |Określ nazwę akcji skryptu. |
     | Identyfikator URI skryptu bash |Określ identyfikator URI skryptu. |
     | Head/Worker/Zookeeper |Określ węzły, w których skrypt jest uruchamiany: **główna**, **proces roboczy**lub **dozorcy**. |
     | Parametry |Określ parametry, jeśli są wymagane przez skrypt. |
@@ -327,7 +327,7 @@ Aby zapoznać się z przykładem użycia zestawu SDK platformy .NET do zastosowa
 
 ### <a name="the-azure-portal"></a>Witryna Azure Portal
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. W menu po lewej stronie przejdź do **wszystkich usług** > **Analytics** > **klastrów usługi HDInsight**.
 
@@ -347,9 +347,9 @@ Aby zapoznać się z przykładem użycia zestawu SDK platformy .NET do zastosowa
 
     ![Usuwanie akcji utrwalonego skryptu](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
-### <a name="azure-powershell"></a>Program Azure PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
-| Polecenia cmdlet  programu | Funkcja |
+| parametr | Funkcja |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |Pobierz informacje o akcjach utrwalonego skryptu. |
 | `Get-AzHDInsightScriptActionHistory` |Pobierz historię akcji skryptu zastosowanych do klastra lub szczegółowych informacji dotyczących określonego skryptu. |
@@ -365,7 +365,7 @@ Poniższy przykładowy skrypt demonstruje użycie poleceń cmdlet do podniesieni
 
 ### <a name="the-azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia platformy Azure
 
-| Polecenia cmdlet  programu | Funkcja |
+| parametr | Funkcja |
 | --- | --- |
 | `azure hdinsight script-action persisted list <clustername>` |Pobierz listę utrwalonych akcji skryptów. |
 | `azure hdinsight script-action persisted show <clustername> <scriptname>` |Pobierz informacje o określonej akcji utrwalonego skryptu. |
@@ -421,7 +421,7 @@ Za pomocą interfejsu użytkownika sieci Web Ambari można wyświetlać informac
 
 ### <a name="the-apache-ambari-web-ui"></a>Interfejs użytkownika sieci Web Apache Ambari
 
-1. W przeglądarce przejdź do adresu `https://CLUSTERNAME.azurehdinsight.net`. Zastąp **CLUSTERNAME** nazwą klastra usługi HDInsight:
+1. W przeglądarce przejdź do `https://CLUSTERNAME.azurehdinsight.net`. Zastąp **CLUSTERNAME** nazwą klastra usługi HDInsight:
 
     Po wyświetleniu monitu wprowadź nazwę konta administratora, **administratora**i hasła dla klastra. Może zajść konieczność wprowadzenia ponownie poświadczeń administratora w formularzu sieci Web.
 
@@ -495,7 +495,7 @@ Aby uzyskać informacje na temat nawiązywania połączenia z klastrem przy uży
 
 Jeśli klaster został utworzony przed 15 marca 2016, w historii akcji skryptu może nie być wyświetlany wpis. Zmiany rozmiarów klastra powodują, że skrypty pojawiają się w historii akcji skryptu.
 
-Istnieją jednak dwa wyjątki:
+Istnieją dwa wyjątki:
 
 * Klaster został utworzony przed 1 września 2015. Ta data jest w przypadku wprowadzenia akcji skryptu. Każdy klaster utworzony przed tą datą nie mógł używać akcji skryptu do tworzenia klastra.
 

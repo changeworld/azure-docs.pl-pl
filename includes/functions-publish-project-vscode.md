@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 8c63d314c253152d2815a70831870fe331071c68
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964169"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029288"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikowanie projektu na platformie Azure
 
@@ -46,7 +46,7 @@ W tej sekcji utworzysz aplikację funkcji i powiązane zasoby w ramach subskrypc
     + **[Konto magazynu](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** : konto magazynu w warstwie Standardowa jest tworzone z unikatową nazwą, która jest oparta na nazwie aplikacji funkcji.
     + **[Plan hostingu](../articles/azure-functions/functions-scale.md)** : plan zużycia jest tworzony w regionie zachodnie stany USA w celu hostowania aplikacji funkcji bezserwerowej.
     + **Aplikacja funkcji**: projekt jest wdrażany do i uruchamiany w tej nowej aplikacji funkcji.
-    + **[Application Insights]()** : wystąpienie, które jest połączone z aplikacją funkcji, jest tworzone na podstawie nazwy funkcji.
+    + **Application Insights**: wystąpienie, które jest połączone z aplikacją funkcji, jest tworzone na podstawie nazwy funkcji.
 
     Po utworzeniu aplikacji funkcji i zastosowaniu pakietu wdrożeniowego zostanie wyświetlone powiadomienie. 
     

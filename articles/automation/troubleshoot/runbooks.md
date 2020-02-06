@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 71344f954990952856f031829f13273e062b62c5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933167"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031752"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami Runbook
 
@@ -56,7 +56,7 @@ Ten błąd ma dwie przyczyny główne:
 * Różne wersje modułów AzureRM.
 * Próbujesz uzyskać dostęp do zasobów w oddzielnej subskrypcji.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Jeśli ten błąd wystąpi po zaktualizowaniu jednego modułu AzureRM, należy zaktualizować wszystkie moduły AzureRM do tej samej wersji.
 
@@ -106,7 +106,7 @@ Ten błąd może wystąpić, jeśli:
 
 * Użytkownik Azure Active Directory, który próbuje uzyskać szczegóły subskrypcji, nie jest skonfigurowany jako administrator subskrypcji.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Wykonaj następujące kroki, aby określić, czy masz uwierzytelnienie na platformie Azure i czy masz dostęp do subskrypcji, którą próbujesz wybrać:
 
@@ -140,7 +140,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 Jeśli masz uwierzytelnianie wieloskładnikowe na koncie platformy Azure, nie możesz używać Azure Active Directory użytkownika do uwierzytelniania na platformie Azure. Zamiast tego należy użyć certyfikatu lub nazwy głównej usługi do uwierzytelniania na platformie Azure.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Aby użyć certyfikatu z poleceniami cmdlet klasycznego modelu wdrażania platformy Azure, zapoznaj się z tematem [Tworzenie i Dodawanie certyfikatu w celu zarządzania usługami platformy Azure](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx). Aby użyć nazwy głównej usługi z poleceniami cmdlet Azure Resource Manager, zobacz [Tworzenie jednostki usługi przy użyciu Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) i [uwierzytelnianie jednostki usługi za pomocą Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
@@ -166,7 +166,7 @@ At line:16 char:1
 
 Ten błąd jest spowodowany przez użycie poleceń cmdlet AzureRM i AZ w elemencie Runbook. Występuje podczas importowania `Az` przed zaimportowaniem `AzureRM`.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Polecenia cmdlet AZ i AzureRM nie mogą być importowane i używane w tym samym elemencie Runbook. Aby dowiedzieć się więcej na temat AZ poleceń cmdlet w Azure Automation, zobacz [AZ module Support in Azure Automation](../az-modules.md).
 
@@ -184,7 +184,7 @@ Exception: A task was canceled.
 
 Ten błąd może być spowodowany użyciem nieaktualnych modułów platformy Azure.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Ten błąd można rozwiązać przez zaktualizowanie modułów platformy Azure do najnowszej wersji.
 
@@ -200,7 +200,7 @@ Podczas wykonywania elementów Runbook element Runbook nie może zarządzać zas
 
 Element Runbook nie używa poprawnego kontekstu podczas uruchamiania.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Podczas pracy z wieloma subskrypcjami kontekst subskrypcji może zostać utracony podczas wywoływania elementów Runbook. Aby upewnić się, że kontekst subskrypcji jest przekazywany do elementów Runbook, należy dodać do polecenia cmdlet parametr `AzureRmContext` i przekazać do niego kontekst. Zaleca się również używanie `Disable-AzureRmContextAutosave` polecenia cmdlet z zakresem **procesu** , aby upewnić się, że używane poświadczenia są używane tylko dla bieżącego elementu Runbook.
 
@@ -248,7 +248,7 @@ Ten błąd może wystąpić z następujących powodów:
 * Moduł zawierający polecenie cmdlet nie został zaimportowany do konta usługi Automation.
 * Moduł zawierający polecenie cmdlet zostanie zaimportowany, ale jest nieaktualny.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Ten błąd można rozwiązać, wykonując jedno z następujących zadań:
 
@@ -280,7 +280,7 @@ Ten błąd występuje z powodu jednego z następujących problemów.
 
 * Zbyt dużo danych wyjątku. Element Runbook podjął próbę zapisania zbyt dużej ilości danych wyjątku w strumieniu wyjściowym.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 * Limit pamięci, gniazda sieciowe. Sugerowane sposoby pracy w ramach limitów pamięci to dzielenie obciążenia między wiele elementów Runbook, przetwarzanie mniejszej ilości danych w pamięci, unikanie zapisywania niepotrzebnych danych wyjściowych z elementów Runbook i Dowiedz się, ile punktów kontrolnych jest zapisywanych w przepływie pracy programu PowerShell elementów Runbook. Użyj metody Clear, takiej jak `$myVar.clear`, aby wyczyścić zmienne i użyć `[GC]::Collect` do natychmiastowego uruchomienia wyrzucania elementów bezużytecznych. Te akcje zmniejszają rozmiar pamięci elementu Runbook w czasie wykonywania.
 
@@ -310,7 +310,7 @@ No certificate was found in the certificate store with thumbprint
 
 Ten błąd występuje, gdy nazwa zasobu poświadczenia jest nieprawidłowa. Ten błąd może również wystąpić, jeśli nazwa użytkownika i hasło użyte do skonfigurowania zasobu poświadczenia usługi Automation są nieprawidłowe.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Aby określić, co się stało, wykonaj następujące czynności:
 
@@ -365,7 +365,7 @@ Object reference not set to an instance of an object
 
 Występuje znany problem, w którym element Start-AzureRmAutomationRunbook nie obsługuje prawidłowo strumienia wyjściowego, jeśli zawiera on obiekty.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Aby rozwiązać ten problem, zaleca się zaimplementowanie logiki sondowania i użycie polecenia cmdlet [Get-AzureRmAutomationJobOutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) w celu pobrania danych wyjściowych. Przykład tej logiki jest zdefiniowany w poniższym przykładzie.
 
@@ -407,7 +407,7 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 Jeśli element Runbook jest przepływem pracy programu PowerShell, przechowuje złożone obiekty w deserializowanym formacie, aby zachować stan elementu Runbook, jeśli przepływ pracy zostanie zawieszony.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Niektóre z następujących trzech rozwiązań rozwiązują ten problem:
 
@@ -429,7 +429,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 Ten błąd występuje, gdy wykonanie zadania przekracza 500-minutowy bezpłatny limit przydziału dla Twojego konta. Ten limit przydziału dotyczy wszystkich typów zadań wykonywania zadań. Niektóre z tych zadań mogą służyć do testowania zadania, uruchamiania zadania z portalu, wykonywania zadania przy użyciu elementów webhook lub planowania zadania do wykonania przy użyciu Azure Portal lub w centrum danych. Aby dowiedzieć się więcej o cenach usługi Automation, zobacz [Cennik usługi Automation](https://azure.microsoft.com/pricing/details/automation/).
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Jeśli chcesz użyć więcej niż 500 minut przetwarzania miesięcznie, musisz zmienić subskrypcję z warstwy Bezpłatna na warstwę podstawowa. Możesz przeprowadzić uaktualnienie do warstwy Podstawowa, wykonując następujące czynności:
 
@@ -452,7 +452,7 @@ Zadanie elementu Runbook kończy się niepowodzeniem z powodu błędu:
 
 Ten błąd jest spowodowany tym, że aparat programu PowerShell nie może znaleźć polecenia cmdlet używanego w elemencie Runbook. Ten błąd może być spowodowany brakiem modułu zawierającego polecenie cmdlet w ramach konta, wystąpił konflikt nazw z nazwą elementu Runbook lub polecenie cmdlet istnieje również w innym module, a Automatyzacja nie może rozpoznać nazwy.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Niektóre z poniższych rozwiązań rozwiązują ten problem:
 
@@ -477,7 +477,7 @@ To zachowanie jest zaprojektowana w piaskownicy platformy Azure z powodu "uczciw
 
 Element Runbook działał ponad 3-godzinny limit dozwolony przez sprawiedliwy udział w piaskownicy systemu Azure.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Jednym z zalecanych rozwiązań jest uruchomienie elementu Runbook w [hybrydowym procesie roboczym elementu Runbook](../automation-hrw-run-runbooks.md).
 
@@ -505,7 +505,7 @@ Podczas próby wywołania elementu webhook dla Azure Automation elementu Runbook
 
 Element webhook, który próbujesz wywołać, jest wyłączony lub wygasł.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Jeśli element webhook jest wyłączony, można ponownie włączyć element webhook za pomocą Azure Portal. po wygaśnięciu elementu webhook należy go usunąć i utworzyć ponownie. Możesz [odnowić element webhook](../automation-webhooks.md#renew-webhook) , jeśli jeszcze go nie wygasł.
 
@@ -523,7 +523,7 @@ Podczas uruchamiania `Get-AzureRmAutomationJobOutput` polecenia cmdlet zostanie 
 
 Ten błąd może wystąpić podczas pobierania danych wyjściowych zadania z elementu Runbook, który ma wiele [strumieni pełnych](../automation-runbook-output-and-messages.md#verbose-stream).
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Istnieją dwa sposoby rozwiązania tego błędu:
 
@@ -544,7 +544,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 Ten błąd może wystąpić po rozpoczęciu zadania programu PowerShell w elemencie Runbook, który działa na platformie Azure. Takie zachowanie może wystąpić, ponieważ elementy Runbook działające w piaskownicy platformy Azure mogą nie działać w [trybie pełnego języka](/powershell/module/microsoft.powershell.core/about/about_language_modes).
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Istnieją dwa sposoby rozwiązania tego błędu:
 
@@ -552,6 +552,22 @@ Istnieją dwa sposoby rozwiązania tego błędu:
 * Jeśli element Runbook ma ten komunikat o błędzie, uruchom go na hybrydowym procesie roboczym elementu Runbook
 
 Aby dowiedzieć się więcej na temat tego zachowania i innych zachowań Azure Automation elementów Runbook, zobacz [zachowanie elementu Runbook](../automation-runbook-execution.md#runbook-behavior).
+
+## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>Scenariusz: hybrydowy proces roboczy elementu Runbook systemu Linux odbiera monit o podanie hasła podczas podpisywania elementu Runbook
+
+### <a name="issue"></a>Problem
+
+Uruchomienie polecenia **sudo** dla hybrydowego procesu roboczego elementu Runbook systemu Linux powoduje pobranie nieoczekiwanego monitu o podanie hasła.
+
+### <a name="cause"></a>Przyczyna
+
+Konto nxautomationuser agenta Log Analytics dla systemu Linux nie zostało poprawnie skonfigurowane w pliku sudo. Hybrydowy proces roboczy elementu Runbook wymaga odpowiedniej konfiguracji uprawnień konta i innych danych, aby można było podpisywać elementy Runbook w ramach procesu roboczego elementu Runbook systemu Linux.
+
+### <a name="resolution"></a>Rozwiązanie
+
+* Upewnij się, że hybrydowy proces roboczy elementu Runbook ma plik wykonywalny GnuPG (GPG) na komputerze.
+
+* Sprawdź konfigurację konta nxautomationuser w pliku sudo. Zobacz [Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook](../automation-hrw-run-runbooks.md)
 
 ## <a name="other"></a>Mój problem nie jest wymieniony powyżej
 

@@ -94,21 +94,17 @@
       href: user-help-device-remediation.md
 - name: Pomoc dotycząca portalu Moje aplikacje
   items:
-    - name: Uzyskiwanie dostępu do portalu Moje aplikacje i korzystanie z niego
+    - name: Logowanie do portalu Moje aplikacje i korzystanie z niego
       href: my-apps-portal-end-user-access.md
     - name: Aktualizowanie informacji o profilu i koncie
       href: my-apps-portal-end-user-update-profile.md
     - name: Aktualizowanie informacji o grupach
       href: my-apps-portal-end-user-groups.md
+    - name: Organizowanie aplikacji przy użyciu kolekcji
+      href: my-applications-portal-workspaces.md
+    - name: Edytowanie lub odwoływanie uprawnień aplikacji
+      href: my-applications-portal-permissions-saved-accounts.md
     - name: Wykonywanie własnych przeglądów dostępu
       href: my-apps-portal-end-user-access-reviews.md
     - name: Rozwiązywanie problemów
       href: my-apps-portal-end-user-troubleshoot.md
-- name: Pomoc do portalu Moje aplikacje (wersja zapoznawcza)
-  items:
-    - name: Uzyskiwanie dostępu do portalu Moje aplikacje i korzystanie z niego
-      href: my-applications-portal-access.md
-    - name: Dostęp do obszarów roboczych i korzystanie z nich
-      href: my-applications-portal-workspaces.md
-    - name: Edytowanie lub odwoływanie uprawnień aplikacji
-      href: my-applications-portal-permissions-saved-accounts.md

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9d9deca0365e13a0a8ad7404a476b05d0afef077
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 072c7bd5b5b292ca4f0e53c59fcb7e9771331a94
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934997"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031735"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Reguły niestandardowe dla zapory aplikacji sieci Web V2 na platformie Azure Application Gateway
 
@@ -133,7 +133,7 @@ Musi być jednym z następujących operatorów:
 - GreaterThanOrEqual
 - Zaczyna się od
 - EndsWith
-- Wyrażeń
+- Wyrażenie regularne
 - Geodopasowanie (wersja zapoznawcza)
 
 ### <a name="negate-condition-optional"></a>Negate warunek [opcjonalny]

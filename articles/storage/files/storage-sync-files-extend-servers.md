@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f71a27ea4da6bce5832287e948e0731672280196
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e3154b9635da889ed7f0484fc04c565c27e9241b
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699488"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031513"
 ---
-# <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Samouczek: Rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync
+# <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Samouczek: rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync
 
-W tym artykule pokazano podstawowe kroki rozszerzania pojemności magazynu w systemie Windows Server przy użyciu usługi Azure File Sync. Mimo że w tym samouczku użyto systemu Windows Server na maszynie wirtualnej platformy Azure, ten proces jest zazwyczaj wykonywany na serwerach lokalnych. Instrukcje wdrażania usługi Azure File Sync w środowisku znajdują się w artykule [Deploy Azure File Sync](storage-sync-files-deployment-guide.md) (Wdrażanie usługi Azure File Sync).
+W tym artykule przedstawiono podstawowe kroki rozszerzania pojemności magazynu systemu Windows Server przy użyciu Azure File Sync. Chociaż samouczek zawiera system Windows Server jako maszynę wirtualną platformy Azure, zazwyczaj ten proces należy wykonać w przypadku serwerów lokalnych. Instrukcje wdrażania usługi Azure File Sync w środowisku znajdują się w artykule [Deploy Azure File Sync](storage-sync-files-deployment-guide.md) (Wdrażanie usługi Azure File Sync).
 
 > [!div class="checklist"]
 > * Wdrażanie usługi synchronizacji magazynu
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [Azure portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Przygotowywanie środowiska
 
@@ -69,7 +69,7 @@ Po wdrożeniu konta usługi Azure Storage należy utworzyć udział plików.
 
 1. Wybierz nowy udział plików. W lokalizacji udziału plików wybierz polecenie **Przekaż**.
 
-    ![Przekaż plik](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
+    ![Przekazywanie pliku](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
 
 1. Przejdź do folderu _FilesToSync_, w którym został utworzony plik TXT, wybierz plik _mytestdoc.txt_ i wybierz pozycję **Przekaż**.
 
@@ -81,7 +81,7 @@ Na tym etapie utworzono konto magazynu i udział plików zawierający jeden plik
 
 1. Przejdź do witryny Azure Portal i rozwiń menu po lewej stronie. W lewym górnym rogu wybierz pozycję **Utwórz zasób**.
 1. W polu wyszukiwania nad listą zasobów **Azure Marketplace** wpisz nazwę **Windows Server 2016 Datacenter** i wybierz ją w wynikach. Wybierz pozycję **Utwórz**.
-1. Przejdź do karty **Ustawienia podstawowe**. W obszarze **Szczegóły projektu** wybierz grupę zasobów utworzoną w ramach tego samouczka.
+1. Przejdź do karty **podstawowe informacje** . W obszarze **szczegóły projektu**wybierz grupę zasobów utworzoną dla tego samouczka.
 
    ![Wprowadzanie podstawowych informacji o maszynie wirtualnej w bloku portalu](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
@@ -111,7 +111,7 @@ Na tym etapie utworzono konto magazynu i udział plików zawierający jeden plik
 
 1. Po zakończeniu wdrażania maszyny wirtualnej wybierz pozycję **Przejdź do zasobu**.
 
-   ![Przejdź do zasobu](./media/storage-sync-files-extend-servers/vm-gotoresource.png)
+   ![Przechodzenie do zasobu](./media/storage-sync-files-extend-servers/vm-gotoresource.png)
 
 Na tym etapie utworzono nową maszynę wirtualną i dołączono dysk z danymi. Następnie możesz nawiązać połączenie z maszyną wirtualną.
 
@@ -136,7 +136,7 @@ Na tym etapie utworzono nową maszynę wirtualną i dołączono dysk z danymi. N
 
 W przypadku systemu Windows Server 2016 Datacenter wyłącz ustawienie Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer. Ten krok jest wymagany tylko w przypadku początkowej rejestracji serwera. Tę pozycję można włączyć ponownie po zarejestrowaniu serwera.
 
-Na maszynie wirtualnej z systemem Windows Server 2016 Datacenter automatycznie otwiera się Menedżer serwera.  Jeśli Menedżer serwera nie otworzy się domyślnie, wyszukaj go w Eksploratorze plików.
+Na maszynie wirtualnej z systemem Windows Server 2016 Datacenter automatycznie otwiera się Menedżer serwera.  Jeśli Menedżer serwera nie jest domyślnie otwarty, wyszukaj go w menu Start.
 
 1. W **Menedżerze serwera** wybierz pozycję **Serwer lokalny**.
 
@@ -217,12 +217,12 @@ Aby wdrożyć usługę Azure File Sync, zacznij od umieszczenia zasobu **Usługi
 
    W otwartym okienku wprowadź następujące informacje:
 
-   | Value | Opis |
+   | Wartość | Opis |
    | ----- | ----- |
    | **Nazwa** | Unikatowa nazwa (na subskrypcję) dla usługi synchronizacji magazynu.<br><br>W tym samouczku użyj nazwy _afssyncservice02_. |
    | **Subskrypcja** | Subskrypcja platformy Azure używana na potrzeby tego samouczka. |
    | **Grupa zasobów** | Grupa zasobów, która zawiera usługę synchronizacji magazynu.<br><br>W tym samouczku użyj grupy zasobów _afsresgroup101918_. |
-   | **Location** | East US |
+   | **Lokalizacja** | Wschodnie stany USA |
 
 1. Po zakończeniu wybierz pozycję **Utwórz** w celu wdrożenia **usługi synchronizacji magazynu**.
 1. Wybierz kartę **Powiadomienia**, a następnie pozycję **Przejdź do zasobu**.
@@ -263,7 +263,7 @@ Interfejs użytkownika rejestracji serwera powinien zostać otwarty automatyczni
 
    | | |
    | ----- | ----- |
-   | Value | Opis |
+   | Wartość | Opis |
    | **Subskrypcja platformy Azure** | Subskrypcja, która zawiera usługę synchronizacji magazynu na potrzeby tego samouczka. |
    | **Grupa zasobów** | Grupa zasobów, która zawiera usługę synchronizacji magazynu. W tym samouczku użyj grupy zasobów _afsresgroup101918_. |
    | **Usługa synchronizacji magazynu** | Nazwa usługi synchronizacji magazynu. W tym samouczku użyj nazwy _afssyncservice02_. |
@@ -282,7 +282,7 @@ Grupa synchronizacji definiuje topologię synchronizacji dla zestawu plików. Gr
 
 1. Wprowadź następujące informacje, aby utworzyć grupę synchronizacji z punktem końcowym chmury:
 
-   | Value | Opis |
+   | Wartość | Opis |
    | ----- | ----- |
    | **Nazwa grupy synchronizacji** | Ta nazwa musi być unikatowa w obrębie usługi synchronizacji magazynu, ale może być to dowolna nazwa logiczna z Twojego punktu widzenia. W tym samouczku użyj nazwy *afssyncgroup*.|
    | **Subskrypcja** | Subskrypcja, w której wdrożono usługę synchronizacji magazynu na potrzeby tego samouczka. |
@@ -305,9 +305,9 @@ Punkt końcowy serwera reprezentuje określoną lokalizację na zarejestrowanym 
 
    | | |
    | ----- | ----- |
-   | Value | Opis |
+   | Wartość | Opis |
    | **Zarejestrowany serwer** | Nazwa utworzonego serwera. Na potrzeby tego samouczka użyj nazwy *afsvm101918*. |
-   | **Path** | Ścieżka systemu Windows Server do utworzonego dysku. Na potrzeby tego samouczka użyj nazwy *f:\filestosync*. |
+   | **Ścieżka** | Ścieżka systemu Windows Server do utworzonego dysku. Na potrzeby tego samouczka użyj nazwy *f:\filestosync*. |
    | **Obsługa warstw w chmurze** | Pozostaw tę funkcję wyłączoną na potrzeby tego samouczka. |
    | **Wolne miejsce w woluminie** | Pozostaw to pole puste na potrzeby tego samouczka. |
 
@@ -321,9 +321,9 @@ Pliki zostały teraz zsynchronizowane między udziałem plików platformy Azure 
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono podstawowe kroki rozszerzania pojemności magazynu w systemie Windows Server przy użyciu usługi Azure File Sync. Aby bardziej szczegółowo zapoznać się z planowaniem wdrażania usługi Azure File Sync, zobacz:
+W tym samouczku przedstawiono podstawowe kroki umożliwiające zwiększenie pojemności magazynu systemu Windows Server przy użyciu Azure File Sync. Dokładniejsze Omówienie wdrażania Azure File Sync można znaleźć w temacie:
 
 > [!div class="nextstepaction"]
 > [Planowanie wdrażania usługi Azure File Sync](./storage-sync-files-planning.md)

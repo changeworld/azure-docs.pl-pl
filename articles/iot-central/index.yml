@@ -10,72 +10,72 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: f43c21d483bbb43bb270a7a70c4de6be1fb90f35
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: ab2843a4076e4700b584a1e09c0c58271cf61328
+  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73890760"
+  ms.lasthandoff: 02/05/2020
+  ms.locfileid: "77021257"
 highlightedContent:
   items:
   - title: Co to jest usługa IoT Central?
     itemType: overview
-    url: ./preview/overview-iot-central.md
+    url: ./core/overview-iot-central.md
   - title: Co to są szablony aplikacji?
     itemType: concept
     url: ./core/concepts-app-templates.md
   - title: Architektura usługi Azure IoT Central
     itemType: architecture
-    url: ./preview/concepts-architecture.md
+    url: ./core/concepts-architecture.md
   - title: Tworzenie nowej aplikacji
     itemType: quickstart
-    url: ./preview/quick-deploy-iot-central.md
+    url: ./core/quick-deploy-iot-central.md
   - title: Definiowanie typu urządzenia i dodawanie urządzenia
     itemType: tutorial
-    url: ./preview/howto-set-up-template.md
+    url: ./core/howto-set-up-template.md
   - title: Monitorowanie urządzeń
     itemType: tutorial
-    url: ./preview/tutorial-create-telemetry-rules.md
+    url: ./core/tutorial-create-telemetry-rules.md
 conceptualContent:
   items:
-  - title: Łączenie się (funkcje w wersji zapoznawczej)
+  - title: Łączenie się
     links:
-    - url: ./preview/howto-set-up-template.md
+    - url: ./core/howto-set-up-template.md
       itemType: how-to-guide
       text: Konfigurowanie szablonu urządzenia
-    - url: ./preview/tutorial-connect-pnp-device.md
+    - url: ./core/tutorial-connect-pnp-device.md
       itemType: tutorial
-      text: Łączenie urządzenia IoT Plug and Play
+      text: Łączenie urządzenia IoT Plug and Play (wersja zapoznawcza)
     footerLink:
-      url: ./preview/index.yml
+      url: ./core/index.yml
       text: Zobacz więcej
-  - title: Zachowanie łączności (funkcje w wersji zapoznawczej)
+  - title: Zachowanie łączności
     links:
-    - url: ./preview/tutorial-use-device-groups.md
+    - url: ./core/tutorial-use-device-groups.md
       itemType: how-to-guide
       text: Korzystanie z grup urządzeń
-    - url: ./preview/howto-manage-devices.md
+    - url: ./core/howto-manage-devices.md
       itemType: how-to-guide
       text: Zarządzanie urządzeniami
     - url: ./core/howto-run-a-job.md
       itemType: concept
       text: Jak uruchomić zadanie
-    - url: ./preview/howto-create-analytics.md
+    - url: ./core/howto-create-analytics.md
       itemType: how-to-guide
       text: Analizowanie danych urządzenia
     footerLink:
-      url: ./preview/index.yml
+      url: ./core/index.yml
       text: Zobacz więcej
-  - title: Przekształcanie (funkcje w wersji zapoznawczej)
+  - title: Przekształcanie
     links:
-    - url: ./preview/tutorial-create-telemetry-rules.md
+    - url: ./core/tutorial-create-telemetry-rules.md
       itemType: how-to-guide
       text: Tworzenie reguły telemetrii
-    - url: ./preview/howto-export-data.md
+    - url: ./core/howto-export-data.md
       itemType: how-to-guide
       text: Konfigurowanie ciągłego eksportu danych
     footerLink:
-      url: ./preview/index.yml
+      url: ./core/index.yml
       text: Zobacz więcej
 productDirectory:
   title: Rozpoczynanie tworzenia z użyciem szablonów aplikacji branżowych

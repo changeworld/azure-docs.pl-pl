@@ -44,6 +44,8 @@
           href: ./ag/application-gateway-waf-configuration.md
         - name: Przegląd zasad zapory aplikacji internetowej
           href: ./ag/policy-overview.md
+        - name: Omówienie ochrony przed botami
+          href: ./ag/bot-protection-overview.md
     - name: Front Door
       items:
         - name: Reguły niestandardowe

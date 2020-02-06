@@ -3,12 +3,12 @@ title: Azure Monitor Instalatora dla kontenerów dane dynamiczne (wersja zapozna
 description: W tym artykule opisano sposób konfigurowania widoku w czasie rzeczywistym dzienników kontenerów (stdout/stderr) i zdarzeń bez używania polecenia kubectl z Azure Monitor dla kontenerów.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404698"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030691"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Jak skonfigurować funkcję Live Data (wersja zapoznawcza)
 
@@ -101,7 +101,7 @@ Należy ponownie skonfigurować rejestrację klienta usługi Azure AD, aby umoż
 Aby uzyskać więcej informacji na temat zaawansowanej konfiguracji zabezpieczeń w programie Kubernetes, zapoznaj się z [dokumentacją Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). 
 
 >[!NOTE]
->Jeśli tworzysz nowy klaster z obsługą kontroli dostępu do sieci, zobacz [integrowanie Azure Active Directory z usługą Azure Kubernetes](../../aks/azure-ad-integration.md) i postępuj zgodnie z instrukcjami, aby skonfigurować uwierzytelnianie w usłudze Azure AD. Podczas wykonywania kroków w celu utworzenia aplikacji klienckiej w tej sekcji wyróżnia się dwa adresy URL przekierowania, które należy utworzyć dla Azure Monitor kontenerów. 
+>Jeśli tworzysz nowy klaster z obsługą kontroli dostępu do sieci, zobacz [integrowanie Azure Active Directory z usługą Azure Kubernetes](../../aks/azure-ad-integration.md) i postępuj zgodnie z instrukcjami, aby skonfigurować uwierzytelnianie w usłudze Azure AD. Podczas wykonywania kroków w celu utworzenia aplikacji klienckiej w tej sekcji wyróżniane są dwa adresy URL przekierowania, które należy utworzyć dla Azure Monitor kontenery pasujące do tych określonych w kroku 3 poniżej.
 
 ### <a name="client-registration-reconfiguration"></a>Ponowna konfiguracja rejestracji klienta
 

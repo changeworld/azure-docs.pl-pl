@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.custom: mvc
-ms.openlocfilehash: 214a88ad8b0f5dd0352004edc125705ad2f04fc7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2751f30bdea46a30aa12bd458a12d7640cba404
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494136"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029553"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Szybki Start: Tworzenie klastra Apache Spark w usłudze Azure HDInsight przy użyciu Azure Portal
 
@@ -59,7 +59,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
     |Konto magazynu podstawowego|Użyj automatycznie wypełnionej wartości.|
     |Kontener|Użyj automatycznie wypełnionej wartości.|
 
-    ![Utwórz podstawowe konfiguracje klastra usługi HDInsight Spark](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "Tworzenie klastra Spark w usłudze HDInsight konfiguracje podstawowe")
+    ![Utwórz podstawowe konfiguracje klastra usługi HDInsight Spark](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "Tworzenie klastra Spark w usłudze HDInsight konfiguracje podstawowe")
 
     Wybierz pozycję **Recenzja + Utwórz** , aby kontynuować.
 

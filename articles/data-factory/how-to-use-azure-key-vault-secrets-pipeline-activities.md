@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 837d62784a56ad0f17471cca5a660819d4a83e12
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926757"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031496"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Używanie wpisów tajnych usługi Azure Key Vault w działaniach potoku
 
@@ -49,7 +49,7 @@ Ta funkcja opiera się na tożsamości zarządzanej przez fabrykę danych.  Dowi
 
     |Właściwość  |Wartość  |
     |---------|---------|
-    |Bezpieczne wyjście     |Prawda         |
+    |Bezpieczne wyjście     |True         |
     |Adres URL     |[Tajna wartość identyfikatora URI]? API-version = 7.0         |
     |Metoda     |GET         |
     |Uwierzytelnianie     |Tożsamość usługi zarządzanej         |
@@ -63,7 +63,7 @@ Ta funkcja opiera się na tożsamości zarządzanej przez fabrykę danych.  Dowi
     > [!CAUTION]
     > Ustaw opcję bezpieczne wyjście na wartość true, aby uniemożliwić Logowanie wartości klucza tajnego w postaci zwykłego tekstu.  Wszelkie dalsze działania, które zużywają tę wartość, powinny mieć ustawioną opcję bezpiecznego wprowadzania wartość true.
 
-5. Aby użyć wartości w innym działaniu, użyj następującego wyrażenia kodu **@activity("Web"). Output. Value)** .
+5. Aby użyć wartości w innym działaniu, użyj następującego wyrażenia kodu **@activity("Web"). Output. Value**.
 
     ![Wyrażenie kodu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

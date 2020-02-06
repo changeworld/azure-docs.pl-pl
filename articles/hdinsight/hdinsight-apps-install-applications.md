@@ -8,16 +8,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 68bbe22a4a6f7697c2bfab291412aae85efc32e9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 9643e1f77be400a89a8dfaecdc2f7e1205a1938b
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917001"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031320"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalowanie aplikacji Apache Hadoop innych firm w usłudze Azure HDInsight
 
-Informacje o instalowaniu innych firm [Apache Hadoop](https://hadoop.apache.org/) aplikacji w usłudze Azure HDInsight. Aby uzyskać instrukcje instalowania własnej aplikacji, zobacz [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Instalowanie niestandardowych aplikacji usługi HDInsight).
+Dowiedz się, jak zainstalować aplikację [Apache Hadoop](https://hadoop.apache.org/) innej firmy w usłudze Azure HDInsight. Aby uzyskać instrukcje instalowania własnej aplikacji, zobacz [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md) (Instalowanie niestandardowych aplikacji usługi HDInsight).
 
 Aplikacji HDInsight to aplikacja, którą użytkownicy mogą zainstalować w klastrze usługi HDInsight. Te aplikacje mogą być opracowane przez firmę Microsoft, niezależnych dostawców oprogramowania (ISV) lub samodzielnie.  
 
@@ -26,11 +26,11 @@ Na poniższej liście przedstawiono opublikowane aplikacje:
 |Aplikacja |Typy klastrów | Opis |
 |---|---|---|
 |[Platforma analizy AtScale](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/atscale.atscale) |Hadoop |AtScale przekształca klaster usługi HDInsight w skalowalny w poziomie serwer OLAP, co umożliwia interakcyjne wykonywanie zapytań o miliardy wierszy danych przy użyciu narzędzi analizy biznesowej, które już znasz, własnych i miłości — od programu Microsoft Excel, Power BI, Tableau Software to QlikView. |
-|[CDAP dla usługi HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP to pierwsza ujednolicona platforma integracji dla danych Big Data, która skraca czas do wartości dla usługi Hadoop i umożliwia udostępnienie danych samoobsługi. Polecenie Open Source i rozszerzalne, CDAP usuwa przeszkody dla innowacji. Wymagania: cztery regiony regionu, minimum D3 v2. |
+|[CDAP dla usługi HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP to pierwsza ujednolicona platforma integracji dla danych Big Data, która skraca czas do wartości dla usługi Hadoop i umożliwia udostępnienie danych samoobsługi. Polecenie Open Source i rozszerzalne, CDAP usuwa przeszkody dla innowacji. Wymagania: 4 regiony regionów, minimum D3 2. |
 |[Datameer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/datameer.datameer) |Hadoop |Samoobsługowa platforma Datameer na potrzeby przygotowywania, eksplorowania i zarządzania danymi na potrzeby analiz przyspiesza przekształcanie złożonych danych z wielu źródeł w cenne informacje dostępne dla działalności firmy, dostarczając szybszy, inteligentniejszy wgląd w skalę przedsiębiorstwa. |
 |[Dataiku DSS w usłudze HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS na platformie do nauki o danych w przedsiębiorstwie, która umożliwia analitykom danych i specjalistom ds. danych współpracę w celu projektowania i uruchamiania nowych produktów i usług danych w bardziej wydajny sposób, dzięki czemu nieprzetworzone dane mają wpływ na przewidywania. |
 |[Aplikacja WANdisco Fusion HDI](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBase, burza, Kafka |Utrzymywanie spójnych danych w środowisku rozproszonym jest wyzwaniem wielu operacji na danych. WANdisco Fusion, platforma oprogramowania klasy korporacyjnej, rozwiązuje ten problem przez włączenie niestrukturalnej spójności danych w dowolnym środowisku. |
-|[H2O SparklingWater dla usługi HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/h2o-ai.h2o-sparklingwater) |platforma Spark |W przypadku wody musującej z obsługą następujących algorytmów rozproszonych: GLM, algorytmie Bayesa, rozproszony Las losowy, komputer do zwiększania gradientu, głębokie Neuronowyche sieci, uczenie głębokie, K-oznacza, PPW, uogólnione modele o niskiej rangi, wykrywanie anomalii, autokodery. |
+|[H2O SparklingWater dla usługi HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/h2o-ai.h2o-sparklingwater) |platforma Spark |W przypadku wody musującej można używać następujących algorytmów rozproszonych: GLM, algorytmie Bayesa, rozproszony Las losowy, komputer do zwiększania gradientów, głębokie neuronowych sieci, uczenie głębokie, K-oznacza, PPW, uogólnione modele o niskiej rangi, wykrywanie anomalii, autokodery. |
 |[Striim do integracji danych w czasie rzeczywistym z usługą HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/striim.hdinsightintegration) |Hadoop, HBase, burza, Spark, Kafka |Striim (wymawiane "Stream") to kompleksowa integracja danych przesyłania strumieniowego i platforma analizy, umożliwiająca ciągłe pozyskiwanie, przetwarzanie i analizowanie różnorodnych strumieni danych. |
 |[Jumbune analizy BigData w przedsiębiorstwie](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Na wysokim poziomie Jumbune wspiera przedsiębiorstwa przez, 1. Przyspieszenie tez, & MapReduce, oparty na aparacie Spark, środowisko Java, Scala wydajność obciążeń. 2. Proaktywne monitorowanie klastra Hadoop, 3. Ustanawianie zarządzania jakością danych w rozproszonym systemie plików. |
 |[Kyligence Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kyligence.kyligence) |Hadoop,HBase,Spark |Obsługiwane przez Apache Kylin, usługa Kyligence Enterprise umożliwia korzystanie z analizy danych Big Data. Jako aparat OLAP przedsiębiorstwa na platformie Hadoop firma Kyligence Enterprise umożliwia analitykom biznesowym tworzenie architektów w usłudze Hadoop dzięki standardowym branżom danych i metodologiom analizy biznesowej. |
@@ -41,7 +41,7 @@ Na poniższej liście przedstawiono opublikowane aplikacje:
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |platforma Spark |Aplikacja danych Unravel dla klastra usługi HDInsight Spark. |
 |[Data Catalogy z linią wodną](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/waterline_data.waterline_data) |platforma Spark |Wykazy, organizują i zarządza danymi przy użyciu AI do autotagów danych z warunkami biznesowymi. Wykaz posługiwać się biznesowych firmy wodnej jest składnikiem Powodzenie krytycznych, samoobsługowej analizy, zgodności i nadzoru i w celu zarządzania. |
 
-W instrukcjach podanych w tym artykule jest używana witryna Azure Portal. Można również wyeksportować szablon usługi Azure Resource Manager z portalu lub uzyskać kopię szablonu usługi Resource Manager od dostawców i użyj programu Azure PowerShell i klasycznego wiersza polecenia platformy Azure, aby wdrożyć szablon.  Zobacz [tworzenie technologii Apache Hadoop klastrów HDInsight za pomocą szablonów usługi Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+W instrukcjach podanych w tym artykule jest używana witryna Azure Portal. Można również wyeksportować szablon usługi Azure Resource Manager z portalu lub uzyskać kopię szablonu usługi Resource Manager od dostawców i użyj programu Azure PowerShell i klasycznego wiersza polecenia platformy Azure, aby wdrożyć szablon.  Zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight przy użyciu szablonów Menedżer zasobów](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Jeśli chcesz zainstalować aplikacje usługi HDInsight w istniejącym klastrze usługi HDInsight, musisz dysponować klastrem usługi HDInsight. Aby go utworzyć, zobacz artykuł [Tworzenie klastrów](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). Możesz także zainstalować aplikacje usługi HDInsight podczas tworzenia klastra usługi HDInsight.
@@ -51,8 +51,8 @@ Poniższa procedura pokazuje sposób instalacji aplikacji usługi HDInsight w is
 
 **Instalowanie aplikacji usługi HDInsight**
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Z menu po lewej stronie przejdź do strony **wszystkie usługi** > **analizy na platformie** > **HDInsight**.
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
+2. W menu po lewej stronie przejdź do **wszystkich usług** > **Analytics** > **klastrów usługi HDInsight**.
 3. Wybierz klaster usługi HDInsight z listy.  Jeśli nie masz klastra, musisz go najpierw utworzyć.  Zobacz [Tworzenie klastrów](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
 4. W kategorii **Ustawienia** wybierz pozycję **aplikacje**. W oknie głównym można zobaczyć listę zainstalowanych aplikacji. 
    
@@ -65,15 +65,18 @@ Poniższa procedura pokazuje sposób instalacji aplikacji usługi HDInsight w is
 Możesz zobaczyć stan instalacji w powiadomieniach portalu (wybierz ikonę dzwonka w górnej części portalu). Po zainstalowaniu aplikacji, aplikacja zostanie wyświetlona na liście zainstalowane aplikacje.
 
 ## <a name="install-applications-during-cluster-creation"></a>Instalowanie aplikacji podczas tworzenia klastra
-Aplikacje usługi HDInsight możesz także zainstalować podczas tworzenia klastra. W trakcie procesu aplikacje usługi HDInsight są instalowane po utworzeniu i uruchomieniu klastra. Aby zainstalować aplikacje podczas tworzenia klastra przy użyciu Azure Portal, użyj opcji **niestandardowej** zamiast domyślnej opcji **szybkie tworzenie** .
+
+Aplikacje usługi HDInsight możesz także zainstalować podczas tworzenia klastra. W trakcie procesu aplikacje usługi HDInsight są instalowane po utworzeniu i uruchomieniu klastra. Aby zainstalować aplikacje podczas tworzenia klastra przy użyciu Azure Portal, na karcie **Konfiguracja i Cennik** wybierz pozycję **+ Dodaj aplikację**.
+
+![Azure Portal aplikacji konfiguracyjnych klastra](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
 
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>Lista zainstalowanych aplikacji HDInsight i ich właściwości
 Portal zawiera listę zainstalowanych aplikacji usługi HDInsight dla klastra oraz właściwości poszczególnych zainstalowanych aplikacji.
 
-**Listę aplikacji HDInsight i wyświetlić właściwości**
+**Wyświetlanie listy aplikacji i właściwości wyświetlania usługi HDInsight**
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Z menu po lewej stronie przejdź do strony **wszystkie usługi** > **analizy na platformie** > **HDInsight**.
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
+2. W menu po lewej stronie przejdź do **wszystkich usług** > **Analytics** > **klastrów usługi HDInsight**.
 3. Wybierz klaster usługi HDInsight z listy.
 4. W kategorii **Ustawienia** wybierz pozycję **aplikacje**. W oknie głównym można zobaczyć listę zainstalowanych aplikacji. 
    
@@ -83,12 +86,12 @@ Portal zawiera listę zainstalowanych aplikacji usługi HDInsight dla klastra or
     |Właściwość | Opis |
     |---|---|
     |Nazwa aplikacji |Nazwa aplikacji. |
-    |State |Stan aplikacji. |
-    |Strona sieci Web |Adres URL aplikacji sieci Web wdrożonej w węźle brzegowym. Poświadczenie jest identyczne z poświadczeniami użytkownika protokołu HTTP skonfigurowanymi dla klastra. |
+    |Stan |Stan aplikacji. |
+    |Stron |Adres URL aplikacji sieci Web wdrożonej w węźle brzegowym. Poświadczenie jest identyczne z poświadczeniami użytkownika protokołu HTTP skonfigurowanymi dla klastra. |
     |Punkt końcowy SSH |Do łączenia się z węzłem brzegowym można użyć protokołu SSH. Poświadczenia protokołu SSH są identyczne z poświadczeniami użytkownika protokołu SSH skonfigurowanymi dla klastra. Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
     |Opis | Opis aplikacji. |
 
-6. Aby usunąć aplikację, kliknij prawym przyciskiem myszy aplikację, a następnie kliknij przycisk **Usuń** z menu kontekstowego.
+6. Aby usunąć aplikację, kliknij prawym przyciskiem myszy aplikację, a następnie kliknij polecenie **Usuń** z menu kontekstowego.
 
 ## <a name="connect-to-the-edge-node"></a>Łączenie z węzłem krawędzi
 Z węzłem krawędzi możesz połączyć się przy użyciu protokołów HTTP i SSH. Informacje o punkcie końcowym można znaleźć w [portalu](#list-installed-hdinsight-apps-and-properties). Aby uzyskać informacje, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -98,11 +101,11 @@ Poświadczenia punktu końcowego protokołu HTTP to poświadczenia użytkownika 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 Zobacz [Troubleshoot the installation](hdinsight-apps-install-custom-applications.md#troubleshoot-the-installation) (Rozwiązywanie problemów z instalacją).
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć nieopublikowane aplikację HDInsight w usłudze HDInsight.
-* [Publikowanie aplikacji usługi HDInsight](hdinsight-apps-publish-applications.md): Dowiedz się, jak publikować niestandardowe aplikacje usługi HDInsight w portalu Azure Marketplace.
-* [MSDN: Zainstaluj aplikację](https://msdn.microsoft.com/library/mt706515.aspx)usługi HDInsight: Dowiedz się, jak definiować aplikacje usługi HDInsight.
+## <a name="next-steps"></a>Następne kroki
+* [Instalowanie niestandardowych aplikacji usługi HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć nieopublikowaną aplikację usługi HDInsight w usłudze HDInsight.
+* [Publikowanie aplikacji usługi HDInsight](hdinsight-apps-publish-applications.md): dowiedz się, jak opublikować niestandardowe aplikacje usługi HDInsight w portalu Azure Marketplace.
+* [MSDN: instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): dowiedz się, jak zdefiniować aplikacje usługi HDInsight.
 * [Dostosowywanie klastrów usługi HDInsight opartych na systemie Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md): dowiedz się, jak instalować dodatkowe aplikacje za pomocą akcji skryptu.
-* [Tworzenie klastrów opartych na systemie Linux Apache Hadoop w HDInsight przy użyciu szablonów usługi Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Dowiedz się, jak wywoływać szablony usługi Resource Manager w celu tworzenia klastrów HDInsight.
+* [Tworzenie klastrów Apache Hadoop opartych na systemie Linux w usłudze HDInsight przy użyciu szablonów Menedżer zasobów](hdinsight-hadoop-create-linux-clusters-arm-templates.md): informacje o sposobie wywoływania szablonów Menedżer zasobów do tworzenia klastrów usługi HDInsight.
 * [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md) (Używanie pustych węzłów krawędzi w usłudze HDInsight): dowiedz się, jak za pomocą pustego węzła krawędzi uzyskiwać dostęp do klastra usługi HDInsight oraz testować i hostować aplikacje usługi HDInsight.
 
