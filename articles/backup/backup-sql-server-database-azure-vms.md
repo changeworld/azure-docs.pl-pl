@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak utworzyć kopię zapasową SQL Ser
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773114"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029575"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -109,6 +109,9 @@ Należy unikać używania następujących elementów w nazwach baz danych:
 * Ukośnik "/"
 
 Aliasowanie jest dostępne dla nieobsługiwanych znaków, ale zalecamy ich uniknięcie. Aby uzyskać więcej informacji, zobacz [Understanding the Table Service Data Model (Omówienie modelu danych usługi Table Service)](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+
+>[!NOTE]
+>Operacja **konfigurowania ochrony** baz danych zawierających znaki specjalne, takie jak "+" lub "&", nie jest obsługiwana. Można zmienić nazwę bazy danych lub włączyć funkcję **autoochrony**, która może pomyślnie chronić te bazy danych.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -281,7 +284,7 @@ Jeśli musisz wyłączyć funkcję autoochrony, wybierz nazwę wystąpienia w ob
 
 ## <a name="next-steps"></a>Następne kroki
 
-Omawiane kwestie:
+Instrukcje:
 
 * [Przywracanie kopii zapasowych SQL Server baz danych](restore-sql-database-azure-vm.md)
 * [Zarządzanie kopiami zapasowymi baz danych SQL Server](manage-monitor-sql-database-backup.md)

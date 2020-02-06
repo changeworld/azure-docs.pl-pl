@@ -164,8 +164,6 @@
               href: concepts-data-flow-overview.md
             - name: Tryb debugowania
               href: concepts-data-flow-debug-mode.md
-            - name: Obsługa plików JSON
-              href: concepts-data-flow-json.md
             - name: Odchylenia od schematu
               href: concepts-data-flow-schema-drift.md
             - name: Wzorce kolumn
