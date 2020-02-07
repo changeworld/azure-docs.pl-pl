@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793485"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059656"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Monitorowanie użycia zasobów i działania zapytań w usłudze Azure Wyszukiwanie poznawcze
 
@@ -26,7 +26,7 @@ Ten artykuł zawiera informacje na temat opcji monitorowania, sposobu włączani
 
 ## <a name="metrics-at-a-glance"></a>Metryki w skrócie
 
-Sekcje **użycia** i **monitorowania** wbudowane na stronie przeglądu raportują o zużyciu zasobów i metrykach wykonywania zapytań. Te informacje stają się dostępne zaraz po rozpoczęciu korzystania z usługi, bez konieczności konfigurowania. Ta strona jest odświeżana co kilka minut. W przypadku finalizowania decyzji o [tym, która warstwa ma być używana do obciążeń produkcyjnych](search-sku-tier.md)lub [dostosowywania liczby aktywnych replik i partycji](search-capacity-planning.md), te metryki mogą pomóc w podejmowaniu tych decyzji, pokazując, jak szybko zużywane są zasoby. jak również Bieżąca konfiguracja obsługuje istniejące obciążenie.
+Sekcje **użycia** i **monitorowania** wbudowane na stronie przeglądu raportują o zużyciu zasobów i metrykach wykonywania zapytań. Te informacje stają się dostępne zaraz po rozpoczęciu korzystania z usługi, bez konieczności konfigurowania. Ta strona jest odświeżana co kilka minut. Jeśli podejmujesz decyzje dotyczące warstwy, [która ma być używana na potrzeby obciążeń produkcyjnych](search-sku-tier.md), lub czy należy [dostosować liczbę aktywnych replik i partycji](search-capacity-planning.md), te metryki mogą pomóc w podejmowaniu tych decyzji, pokazując, jak szybko zużywane są zasoby i jak również Bieżąca konfiguracja obsługuje istniejące obciążenie.
 
 Karta **użycie** pokazuje dostępność zasobów względem bieżących [limitów](search-limits-quotas-capacity.md). Poniższa ilustracja dotyczy bezpłatnej usługi, która jest ograniczona do 3 obiektów każdego typu i 50 MB miejsca w magazynie. Usługa podstawowa lub standardowa ma wyższe limity i w przypadku zwiększenia liczby partycji Maksymalna ilość miejsca w magazynie jest proporcjonalna.
 
@@ -66,7 +66,7 @@ Zarówno dzienniki Azure Monitor, jak i magazyn obiektów BLOB są dostępne jak
 
 Następna sekcja przeprowadzi Cię przez kroki umożliwiające włączenie i użycie usługi Azure Blob Storage w celu zbierania i uzyskiwania dostępu do danych dziennika utworzonych przez operacje Wyszukiwanie poznawcze platformy Azure.
 
-## <a name="enable-logging"></a>Włącz rejestrowanie
+## <a name="enable-logging"></a>Włączanie rejestrowania
 
 Rejestrowanie dla obciążeń indeksowania i zapytań jest domyślnie wyłączone i zależy od rozwiązań dodatków zarówno dla infrastruktury rejestrowania, jak i długoterminowego magazynu zewnętrznego. Same dane utrwalone na platformie Azure Wyszukiwanie poznawcze są tworzonymi i zarządzanymi obiektami, dlatego dzienniki muszą być przechowywane w innym miejscu.
 
@@ -76,24 +76,26 @@ W tej sekcji dowiesz się, jak używać magazynu obiektów BLOB do przechowywani
 
    Konto magazynu musi znajdować się w tym samym regionie co usługa Azure Wyszukiwanie poznawcze.
 
-2. Otwórz stronę omówienia usługi wyszukiwania. W okienku nawigacji po lewej stronie przewiń w dół do **monitorowania** , a następnie kliknij pozycję **Włącz monitorowanie**.
+2. Otwórz stronę omówienia usługi wyszukiwania. W okienku nawigacji po lewej stronie przewiń w dół do obszarze **monitorowanie** i kliknij pozycję **Ustawienia diagnostyczne**.
 
-   ![Włącz monitorowanie](./media/search-monitor-usage/enable-monitoring.png "Włączanie monitorowania")
+   ![Ustawienia diagnostyczne](./media/search-monitor-usage/diagnostic-settings.png "Ustawienia diagnostyczne")
 
-3. Wybierz dane, które chcesz wyeksportować: dzienniki, metryki lub oba te elementy. Możesz skopiować go do konta magazynu, wysłać do centrum zdarzeń lub wyeksportować do Azure Monitor dzienników.
+3. Wybierz pozycję **Dodaj ustawienie diagnostyczne**
+
+4. Wybierz dane, którą chcesz wyeksportować: dzienniki, metryki lub obu. Możesz skopiować go do konta magazynu, wysłać do centrum zdarzeń lub wyeksportować do Azure Monitor dzienników.
 
    W przypadku archiwizowania do usługi BLOB Storage musi istnieć tylko konto magazynu. Kontenery i obiekty blob zostaną utworzone w miarę konieczności podczas eksportowania danych dziennika.
 
    ![Konfigurowanie archiwum magazynu obiektów BLOB](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurowanie archiwum magazynu obiektów BLOB")
 
-4. Zapisz profil.
+5. Zapisz profil
 
-5. Rejestrowanie testowe przez tworzenie lub usuwanie obiektów (tworzy zdarzenia dziennika) i przesyłając zapytania (generuje metryki). 
+6. Rejestrowanie testowe przez tworzenie lub usuwanie obiektów (tworzy zdarzenia dziennika) i przesyłając zapytania (generuje metryki). 
 
 Rejestrowanie jest włączone po zapisaniu profilu. Kontenery są tworzone tylko w przypadku działania do rejestrowania lub mierzenia. Po skopiowaniu danych na konto magazynu dane są formatowane jako kod JSON i umieszczane w dwóch kontenerach:
 
-* Insights-Logs-operationlogs: w przypadku dzienników ruchu wyszukiwania
-* Insights-Metrics-pt1m: for Metrics
+* insights — dzienniki operationlogs: dzienników ruchu wyszukiwania
+* insights — metryki pt1m: dla metryki
 
 **Trwa godzinę, zanim kontenery pojawią się w magazynie obiektów BLOB. Dla każdego kontenera istnieje jeden obiekt BLOB o godzinie.**
 
@@ -108,49 +110,49 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>Schemat dziennika
 Obiekty blob zawierające dzienniki ruchu usługi wyszukiwania są uporządkowane zgodnie z opisem w tej sekcji. Każdy obiekt BLOB ma jeden element główny o nazwie **Records** zawierający tablicę obiektów dziennika. Każdy obiekt BLOB zawiera rekordy dla wszystkich operacji, które miały miejsce w danej godzinie.
 
-| Nazwa | Typ | Przykład | Uwagi |
+| Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
-| time |datetime |"2018 R-12-07T00:00:43.6872559 Z" |Sygnatura czasowa operacji |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DOMYŚLNE/DOSTAWCY/<br/> Programu. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |Identyfikator zasobu |
-| operationName |string |"Query. Search" |Nazwa operacji |
-| operationVersion |string |"2019-05-06" |Używana wersja interfejsu API |
-| category |string |"OperationLogs" |stałego |
-| resultType |string |Prawnego |Możliwe wartości: sukces lub niepowodzenie |
-| resultSignature |int |200 |Kod wyniku HTTP |
-| Milisekundach) |int |50 |Czas trwania operacji w milisekundach |
-| properties |obiekt |Zapoznaj się z poniższą tabelą. |Obiekt zawierający dane specyficzne dla operacji |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
+| resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/> FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twoje ResourceId |
+| operationName |ciąg |"Query.Search" |Nazwa operacji |
+| operationVersion |ciąg |"2019-05-06" |Używana wersja interfejsu api |
+| category |ciąg |"OperationLogs" |— stała |
+| resultType |ciąg |Komunikat "success" |Możliwe wartości: powodzenie lub niepowodzenie |
+| resultSignature |int |200 |Kod wyniku protokołu HTTP |
+| durationMS |int |50 |Czas trwania działania (w milisekundach) |
+| właściwości |obiekt |Zobacz poniższą tabelę |Obiekt zawierający dane specyficzne dla operacji |
 
 **Schemat właściwości**
 
-| Nazwa | Typ | Przykład | Uwagi |
+| Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
-| Opis |string |"GET/Indexes (" Content ")/docs" |Punkt końcowy operacji |
-| Zapytanie |string |"? Search = AzureSearch & $count = true & API-Version = 2019-05-06" |Parametry zapytania |
+| Opis |ciąg |"Pobierz /indexes('content')/docs" |Operacja punktu końcowego |
+| Zapytanie |ciąg |"? Search = AzureSearch & $count = true & API-Version = 2019-05-06" |Parametry zapytania |
 | Dokumenty |int |42 |Liczba przetworzonych dokumentów |
-| indexName |string |"testindex" |Nazwa indeksu skojarzonego z operacją |
+| indexName |ciąg |"testindex" |Nazwa indeksu skojarzone z operacją |
 
-## <a name="metrics-schema"></a>Schemat metryk
+## <a name="metrics-schema"></a>Schemat metryki
 
 Metryki są przechwytywane dla żądań zapytań.
 
-| Nazwa | Typ | Przykład | Uwagi |
+| Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DOMYŚLNE/DOSTAWCY/<br/>Programu. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |Identyfikator zasobu |
-| metricName |string |Opóźnienie |Nazwa metryki |
-| time |datetime |"2018 R-12-07T00:00:43.6872559 Z" |Sygnatura czasowa operacji |
-| Obliczon |int |64 |Średnia wartość próbek pierwotnych w interwale czasu metryki |
-| minimalny |int |37 |Minimalna wartość próbek pierwotnych w interwale czasu metryki |
-| Długość |int |78 |Maksymalna wartość próbek pierwotnych w interwale czasu metryki |
-| ogólnego |int |258 |Całkowita wartość próbek pierwotnych w interwale czasu metryki |
-| count |int |4 |Liczba nieprzetworzonych próbek użytych do wygenerowania metryki |
-| timegrain |string |"PT1M" |Ziarno czasu metryki w ISO 8601 |
+| resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/>FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Identyfikator zasobu |
+| metricName |ciąg |"Opóźnienie" |Nazwa metryki |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
+| średnia |int |64 |Średnia wartość próbek pierwotnych w odstępie czasu metryki |
+| minimalnie |int |37 |Minimalna wartość nieprzetworzoną próbek w odstępie czasu metryki |
+| maksymalnie |int |78 |Wartość maksymalna pierwotne próbek w odstępie czasu metryki |
+| łącznie |int |258 |Łączna wartość pierwotne próbek w odstępie czasu metryki |
+| {1&gt;count&lt;1} |int |4 |Liczba próbek raw, używany do generowania metrykę |
+| ziarna czasu |ciąg |"PT1M" |Ziarno czasu metryką przy podejmowaniu ISO 8601 |
 
-Wszystkie metryki są raportowane w odstępach jednej minuty. Każda Metryka uwidacznia wartości minimalne, maksymalne i średnie na minutę.
+Wszystkie metryki są raportowane w odstępach jednej minuty. Każdy pomiar przedstawia wartości minimalna, maksymalna i średnia na minutę.
 
-W przypadku metryki SearchQueriesPerSecond minimum jest najmniejszą wartością dla zapytań wyszukiwania na sekundę, które zostały zarejestrowane w tej minucie. Ta sama zasada dotyczy wartości maksymalnej. Średnia, to wartość zagregowana w całej minucie.
-Pomyśl o tym scenariuszu w ciągu jednej minuty: co najmniej jedna sekunda wysokiego obciążenia, która jest maksymalną wartością dla SearchQueriesPerSecond, a następnie 58 sekund średniego obciążenia, a wreszcie jedna sekunda z tylko jednym zapytaniem, co jest minimalne.
+Metryki SearchQueriesPerSecond minimalna jest najniższa wartość dla zapytania wyszukiwania na sekundę, który został zarejestrowany w ciągu tej minuty. To samo dotyczy maksymalnej wartości. Średnia, to agregacji przez całą minutę.
+Pomyśl o tym scenariuszu podczas jednej minuty: sekundy wysoki załadować oznacza to maksymalną SearchQueriesPerSecond, następuje 58 sekund średnie obciążenie i na koniec co sekundę przy użyciu tylko jednego zapytania, który jest minimalnym warunkiem.
 
-Dla ThrottledSearchQueriesPercentage, minimum, maksimum, Average i Total, ma taką samą wartość: procent zapytań wyszukiwania, które zostały ograniczone, od łącznej liczby zapytań wyszukiwania w ciągu jednej minuty.
+Aby uzyskać ThrottledSearchQueriesPercentage, minimalna, maksymalna, średnia i total, wszystkie mają taką samą wartość: procent zapytań wyszukiwania, które zostały ograniczone z łączna liczba zapytań wyszukiwania w ciągu jednej minuty.
 
 ## <a name="download-and-open-in-visual-studio-code"></a>Pobierz i Otwórz w Visual Studio Code
 

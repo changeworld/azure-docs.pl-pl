@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/19/2017
-ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/06/2020
+ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402441"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062136"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Agent Health rozwiązanie w Azure Monitor
 Agent Health rozwiązanie na platformie Azure pomaga zrozumieć, w przypadku wszystkich agentów raportowanych bezpośrednio do Log Analytics obszaru roboczego w Azure Monitor lub System Center Operations Manager grupie zarządzania połączonej z Azure Monitor, które nie odpowiadają i przesyłanie danych operacyjnych.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
@@ -31,7 +31,7 @@ Jeśli grupa zarządzania System Center Operations Manager jest połączona z ob
 
 Aby uzyskać więcej informacji na temat aktualizowania pakietów administracyjnych rozwiązania, zobacz artykuł [Connect Operations Manager to Log Analytics](../../azure-monitor/platform/om-agents.md) (Połączenie programu Operations Manager z usługą Log Analytics).
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 Dodaj Agent Health rozwiązanie do obszaru roboczego Log Analytics przy użyciu procesu opisanego w temacie [Dodawanie rozwiązań](solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 
@@ -79,7 +79,7 @@ Tworzony jest rekord o typie **Heartbeat**.  Te rekordy mają właściwości pod
 | `Version` | Log Analytics agenta lub Operations Manager wersja agenta.|
 | `SCAgentChannel` | Wartością jest *Direct* i/lub *SCManagementServer*.|
 | `IsGatewayInstalled` | Jeśli zainstalowano bramę Log Analytics, wartość jest *równa true*; w przeciwnym razie wartość jest *równa false*.|
-| `ComputerIP` | Adres IP komputera.|
+| `ComputerIP` | Publiczny adres IP komputera. Na maszynach wirtualnych platformy Azure zostanie wyświetlony publiczny adres IP, jeśli jest dostępny. W przypadku maszyn wirtualnych używających prywatnych adresów IP spowoduje to wyświetlenie adresu usługi Azure translator adresów sieciowych (nie jest to prywatny adres.). |
 | `RemoteIPCountry` | Lokalizacja geograficzna, w której wdrożony jest komputer.|
 | `ManagementGroupName` | Nazwa grupy zarządzania programu Operations Manager.|
 | `SourceComputerId` | Unikatowy identyfikator komputera.|

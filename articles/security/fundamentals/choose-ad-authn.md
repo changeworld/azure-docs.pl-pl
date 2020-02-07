@@ -1,5 +1,6 @@
 ---
-title: Wybierz właściwą metodę uwierzytelniania dla swojego rozwiązania tożsamości hybrydowej usługi Azure AD | Microsoft Docs
+title: Uwierzytelnianie dla rozwiązań tożsamości hybrydowej usługi Azure AD
+titleSuffix: Active Directory
 description: Ten przewodnik pomaga CEOs, dyrektorzy działu informatyki, CISOs, starszym architektom tożsamości, architektom w przedsiębiorstwach i bezpieczeństwie oraz podejmującym decyzje IT odpowiedzialne za wybór metody uwierzytelniania dla swojego rozwiązania do obsługi tożsamości hybrydowej usługi Azure AD w średnich i dużych organizacjach.
 keywords: ''
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 2865ce640389c0250f14a53088a94aff15ddf1c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f32980b736232449d24de8721f354d9ca5dd03ab
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460688"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064431"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz właściwą metodę uwierzytelniania dla Azure Active Directory rozwiązanie do tworzenia tożsamości hybrydowej
 
@@ -173,9 +174,9 @@ Na poniższym diagramie przedstawiono składniki architektury wysokiego poziomu 
 
 |Kwestie do rozważenia|Synchronizacja skrótów haseł + bezproblemowe logowanie jednokrotne|Uwierzytelnianie przekazywane i bezproblemowe logowanie jednokrotne|Federacja z usługami AD FS|
 |:-----|:-----|:-----|:-----|
-|Gdzie jest wykonywane uwierzytelnianie?|W chmurze|W chmurze po bezpiecznej weryfikacji hasła przy użyciu lokalnego agenta uwierzytelniania|Lokalne|
-|Jakie są wymagania dotyczące serwera lokalnego poza systemem aprowizacji: Azure AD Connect?|Brak|Jeden serwer dla każdego dodatkowego agenta uwierzytelniania|Co najmniej dwa serwery AD FS<br><br>Dwa lub więcej serwerów WAP w sieci obwodowej/strefy DMZ|
-|Jakie są wymagania dotyczące lokalnego Internetu i sieci poza systemem aprowizacji?|Brak|[Wychodzący dostęp do Internetu](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) z serwerów z uruchomionymi agentami uwierzytelniania|[Przychodzący dostęp do Internetu](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) do serwerów WAP na obrzeżu<br><br>Dostęp do sieci przychodzącej do serwerów AD FS z serwerów WAP na obrzeżu<br><br>Równoważenie obciążenia sieciowego|
+|Gdzie jest wykonywane uwierzytelnianie?|W chmurze|W chmurze po bezpiecznej weryfikacji hasła przy użyciu lokalnego agenta uwierzytelniania|Lokalnie|
+|Jakie są wymagania dotyczące serwera lokalnego poza systemem aprowizacji: Azure AD Connect?|None|Jeden serwer dla każdego dodatkowego agenta uwierzytelniania|Co najmniej dwa serwery AD FS<br><br>Dwa lub więcej serwerów WAP w sieci obwodowej/strefy DMZ|
+|Jakie są wymagania dotyczące lokalnego Internetu i sieci poza systemem aprowizacji?|None|[Wychodzący dostęp do Internetu](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) z serwerów z uruchomionymi agentami uwierzytelniania|[Przychodzący dostęp do Internetu](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) do serwerów WAP na obrzeżu<br><br>Dostęp do sieci przychodzącej do serwerów AD FS z serwerów WAP na obrzeżu<br><br>Równoważenie obciążenia sieciowego|
 |Czy istnieje wymagania dotyczące certyfikatu SSL?|Nie|Nie|Tak|
 |Czy istnieje rozwiązanie do monitorowania kondycji?|Niewymagane|Stan agenta udostępniany przez [Centrum administracyjne Azure Active Directory](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |Czy użytkownicy uzyskują Logowanie jednokrotne do zasobów w chmurze z urządzeń przyłączonych do domeny w sieci firmowej?|Tak, aby [bezproblemowe logowanie jednokrotne](../../active-directory/hybrid/how-to-connect-sso.md)|Tak, aby [bezproblemowe logowanie jednokrotne](../../active-directory/hybrid/how-to-connect-sso.md)|Tak|
@@ -191,7 +192,7 @@ Na poniższym diagramie przedstawiono składniki architektury wysokiego poziomu 
 > [!NOTE]
 > Kontrolki niestandardowe w dostępie warunkowym usługi Azure AD nie obsługują obecnie rejestracji urządzeń.
 
-## <a name="recommendations"></a>Polecane elementy
+## <a name="recommendations"></a>Zalecenia
 System tożsamości zapewnia użytkownikom dostęp do aplikacji w chmurze i aplikacji biznesowych, które są migrowane i udostępniane w chmurze. Aby zapewnić nieuprawnionym użytkownikom produktywność i złe działania z poufnych danych organizacji, uwierzytelnianie kontroluje dostęp do aplikacji.
 
 Użyj lub Włącz synchronizację skrótów haseł dla wybranej metody uwierzytelniania, z następujących powodów:

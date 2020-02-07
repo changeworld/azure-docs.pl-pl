@@ -4,15 +4,15 @@ description: Jak dołączyć dysk danych zarządzanych do maszyny Wirtualnej z s
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0610b235d218c24c108e39aeb9bd3b2cf8c9c663
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8b651d6e5ca9262d38f5bfb9e10c404e2614809e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463435"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77055672"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Dołączanie dysku danych zarządzanych do maszyny Wirtualnej z systemem Windows przy użyciu witryny Azure portal
 
@@ -23,29 +23,29 @@ W tym artykule pokazano, jak dołączyć nowy dysk danych zarządzanych na maszy
 
 1. Przejdź do [Azure Portal](https://portal.azure.com) , aby dodać dysk danych. Wyszukaj i wybierz pozycję **maszyny wirtualne**.
 2. Wybierz maszynę wirtualną z listy.
-3. Na **maszyny wirtualnej** wybierz opcję **dysków**.
-4. Na **dysków** wybierz opcję **Dodaj dysk danych**.
-5. Z listy rozwijanej dla nowego dysku, wybierz **Utwórz dysk**.
-6. W **Tworzenie dysku zarządzanego** stronie, wpisz nazwę dla dysku i Dostosuj inne ustawienia zgodnie z potrzebami. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
-7. W **dysków** wybierz opcję **Zapisz** Aby zapisać nową konfigurację dysku dla maszyny Wirtualnej.
-8. Po platforma Azure utworzy dysk i dołącza go do maszyny wirtualnej, nowy dysk ma na liście ustawień dysku maszyny wirtualnej w obszarze **dysków z danymi**.
+3. Na stronie **maszyna wirtualna** wybierz pozycję **dyski**.
+4. Na stronie **dyski** wybierz pozycję **Dodaj dysk danych**.
+5. Na liście rozwijanej dla nowego dysku wybierz pozycję **Utwórz dysk**.
+6. Na stronie **Utwórz dysk zarządzany** wpisz nazwę dysku i dostosuj inne ustawienia w razie potrzeby. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
+7. Na stronie **dyski** wybierz pozycję **Zapisz** , aby zapisać nową konfigurację dysków dla maszyny wirtualnej.
+8. Po utworzeniu dysku przez platformę Azure i dołączeniu go do maszyny wirtualnej nowy dysk zostanie wyświetlony na liście ustawień dyskowych maszyny wirtualnej w obszarze **dyski danych**.
 
 
 ## <a name="initialize-a-new-data-disk"></a>Inicjowanie nowy dysk danych
 
 1. Nawiąż połączenie z maszyną wirtualną.
-1. Wybierz pozycję Windows **Start** menu w uruchomionej maszyny Wirtualnej i wprowadź **diskmgmt.msc** w polu wyszukiwania. **Przystawki Zarządzanie dyskami** otwarta konsola.
-2. Zarządzanie dyskami rozpoznaje, że masz nowe, niezainicjowanych dysków i **Zainicjuj dysk** zostanie wyświetlone okno.
-3. Sprawdź nowy dysk jest wybrany, a następnie wybierz pozycję **OK** zainicjować go.
-4. Nowy dysk pojawi się jako **nieprzydzielone**. Kliknij prawym przyciskiem myszy w dowolnym miejscu na dysku i wybierz **nowy wolumin prosty**. **Kreatorze nowych woluminów prostych** zostanie otwarte okno.
-5. Postępuj zgodnie z instrukcjami kreatora, zapewniają, że wszystkie ustawienia domyślne, a po zakończeniu wybierz **Zakończ**.
-6. Zamknij **Zarządzanie dyskami**.
-7. Pojawi się okno podręczne, informujący o tym, należy sformatować nowy dysk przed jego użyciem. Wybierz **Format dysku**.
-8. W **Formatuj nowy dysk** , sprawdź ustawienia, a następnie wybierz pozycję **Start**.
+1. Wybierz menu **Start** systemu Windows w ramach URUCHOMIONEJ maszyny wirtualnej i w polu wyszukiwania wpisz **diskmgmt. msc** . Zostanie otwarta konsola **Zarządzanie dyskami** .
+2. Funkcja zarządzania dyskami rozpoznaje, że masz nowy, niezainicjowany dysk i zostanie wyświetlone okno **Inicjowanie dysku** .
+3. Sprawdź, czy wybrano nowy dysk, a następnie wybierz przycisk **OK** , aby go zainicjować.
+4. Nowy dysk zostanie wyświetlony jako **przydzielony**. Kliknij prawym przyciskiem myszy w dowolnym miejscu na dysku i wybierz pozycję **Nowy wolumin prosty**. Zostanie otwarte okno **Kreator nowych woluminów prostych** .
+5. Wykonaj czynności wykonywane przez kreatora, zachowując wszystkie ustawienia domyślne i po zakończeniu wybierz pozycję **Zakończ**.
+6. Zamknij **przystawkę Zarządzanie dyskami**.
+7. Pojawi się okno podręczne, informujący o tym, należy sformatować nowy dysk przed jego użyciem. Wybierz pozycję **Formatuj dysk**.
+8. W oknie **Formatuj nowy dysk** Sprawdź ustawienia, a następnie wybierz pozycję **Uruchom**.
 9. Zostanie wyświetlone ostrzeżenie z informacją, że formatowanie dyski na partycje powoduje usunięcie wszystkich danych. Kliknij przycisk **OK**.
-10. Po zakończeniu formatowania wybierz **OK**.
+10. Po zakończeniu formatowania wybierz **przycisk OK**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Możesz również [dołączanie dysku danych przy użyciu programu PowerShell](attach-disk-ps.md).
-- Jeśli aplikacja wymaga użyć *D:* dysku do przechowywania danych, możesz [zmienić literę dysku tymczasowego Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+- [Dysk danych można również dołączyć przy użyciu programu PowerShell](attach-disk-ps.md).
+- Jeśli aplikacja musi używać dysku *D:* do przechowywania danych, można [zmienić literę dysku na dysku tymczasowym systemu Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

@@ -1,5 +1,6 @@
 ---
-title: Pięć kroków w celu zabezpieczenia infrastruktury tożsamości w Azure Active Directory
+title: Zabezpieczanie infrastruktury tożsamości usługi Azure AD
+titleSuffix: Azure Active Directory
 description: Ten dokument przedstawia listę ważnych działań, które Administratorzy powinni wdrożyć, aby ułatwić im ochronę organizacji przy użyciu funkcji usługi Azure AD
 author: martincoetzer
 manager: manmeetb
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d3afc784688a14e4d5d2fc6ae9dc5c1a9e45c4a0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903590"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057213"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości
 

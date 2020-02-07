@@ -3,12 +3,12 @@ title: Azure Monitor Instalatora dla kontenerów dane dynamiczne (wersja zapozna
 description: W tym artykule opisano sposób konfigurowania widoku w czasie rzeczywistym dzienników kontenerów (stdout/stderr) i zdarzeń bez używania polecenia kubectl z Azure Monitor dla kontenerów.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030691"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063768"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Jak skonfigurować funkcję Live Data (wersja zapoznawcza)
 
@@ -114,7 +114,7 @@ Aby uzyskać więcej informacji na temat zaawansowanej konfiguracji zabezpiecze�
     >[!NOTE]
     >Jeśli używasz tej funkcji w Chinach platformy Azure, najpierw należy `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` pierwszą podstawową wartość adresu URL, a druga podstawowa wartość adresu URL powinna być `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`. 
     
-4. Po zarejestrowaniu adresów URL przekierowania w obszarze **Ustawienia zaawansowane**wybierz pozycję Opcje **dostępu tokeny** i **identyfikatory** , a następnie Zapisz zmiany.
+4. Po zarejestrowaniu adresów URL przekierowania, w obszarze **niejawne przyznanie**, wybierz opcje tokeny **dostępu** i **tokeny identyfikatora** , a następnie Zapisz zmiany.
 
 >[!NOTE]
 >Konfigurowanie uwierzytelniania przy użyciu Azure Active Directory logowania jednokrotnego można wykonać tylko podczas początkowego wdrażania nowego klastra AKS. Nie można skonfigurować logowania jednokrotnego na dla klastra usługi AKS już wdrożone.

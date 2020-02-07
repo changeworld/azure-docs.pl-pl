@@ -11,20 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumi
-ms.openlocfilehash: 86726eefb53638036a4e9207c648bf5ffe6c866e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 1aa4328a6d5367ef356ce33807289a873c93d90f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595383"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056703"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zasady punktu końcowego usługi dla sieci wirtualnej (wersja zapoznawcza)
 
 Zasady punktu końcowego usługi sieci wirtualnej umożliwiają filtrowanie ruchu sieci wirtualnej do usług platformy Azure, zezwalając na stosowanie tylko wybranych zasobów usług platformy Azure w punktach końcowych usługi. Zasady punktu końcowego zapewniają szczegółową kontrolę dostępu w przypadku ruchu w sieci wirtualnej do usług platformy Azure.
 
-Ta funkcja jest dostępna w __wersji zapoznawczej__ dla następujących regionów i usług platformy Azure:
-
-__Azure Storage__: WestCentralUS, WestUS2, NorthCentralUS, SouthCentralUS, CentralUS, EastUS2.
+Ta funkcja jest dostępna w __wersji zapoznawczej__ we wszystkich publicznych regionach platformy Azure dla usługi Azure STorage.
 
 Najbardziej aktualne powiadomienia dotyczące wersji zapoznawczej można znaleźć na stronie [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -45,7 +43,7 @@ Zasady punktu końcowego usługi dla sieci wirtualnej zapewniają następujące 
 
    Zasady punktu końcowego zapewniają skalowalne w poziomie, wysoce dostępne rozwiązanie, które umożliwia filtrowanie ruchu w usługach platformy Azure z sieci wirtualnych za pośrednictwem punktów końcowych usługi. Żadne dodatkowe nakłady nie są wymagane, aby utrzymywać centralne urządzenia sieciowe do obsługi ruchu w sieciach wirtualnych.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 - Możesz skonfigurować zasady punktu końcowego, aby ograniczyć ruch w sieci wirtualnej do wybranych zasobów usług platformy Azure. W ramach wersji zapoznawczej obsługujemy zasady punktu końcowego dla usługi Azure Storage. 
 - Zasady punktu końcowego są konfigurowane w podsieci sieci wirtualnej. Aby zastosować zasady, punkty końcowe usług powinny być włączone w podsieci dla wszystkich usług platformy Azure wymienionych w tych zasadach.
@@ -125,7 +123,7 @@ Zasady punktu końcowego usługi dla sieci wirtualnej zapewniają następujące 
 - Domyślnie sieciowe grupy zabezpieczeń zezwalają na ruch wychodzący z Internetu, w tym ruch sieci wirtualnej do usług platformy Azure.
 - Jeśli chcesz odrzucić cały wychodzący ruch internetowy i zezwolić tylko na ruch do określonych zasobów usług platformy Azure: 
 
-  Krok 1: Skonfiguruj sieciowe grupy zabezpieczeń, aby zezwolić na ruch wychodzący tylko do usług platformy Azure w regionach punktu końcowego, korzystając z *tagów usług platformy Azure*. Aby uzyskać więcej informacji, zobacz [tagi usług dla sieciowych grup zabezpieczeń](https://aka.ms/servicetags)
+  Krok 1. Skonfiguruj sieciowe grupy zabezpieczeń, aby zezwolić na ruch wychodzący tylko do usług platformy Azure w regionach punktu końcowego, korzystając z *tagów usług platformy Azure*. Aby uzyskać więcej informacji, zobacz [tagi usług dla sieciowych grup zabezpieczeń](https://aka.ms/servicetags)
       
   Na przykład reguły sieciowych grup zabezpieczeń ograniczające dostęp tylko do regionów punktu końcowego wyglądają następująco:
 
@@ -135,7 +133,7 @@ Zasady punktu końcowego usługi dla sieci wirtualnej zapewniają następujące 
   Deny all
   ```
 
-  Krok 2: Zastosuj zasady punktu końcowego usługi z dostępem tylko do wybranych zasobów usługi platformy Azure.
+  Krok 2. Zastosuj zasady punktu końcowego usługi z dostępem tylko do wybranych zasobów usługi platformy Azure.
 
   > [!WARNING]  
   > Jeśli sieciowa grupa zabezpieczeń nie została skonfigurowana w celu ograniczania dostępu usługi platformy Azure sieci wirtualnej do regionów punktu końcowego, możesz uzyskać dostęp do zasobów usługi w innych regionach, nawet jeśli zostaną zastosowane zasady punktu końcowego.
@@ -182,7 +180,7 @@ Za korzystanie z zasad punktu końcowego usługi nie są naliczane dodatkowe op�
 
 Następujące limity są wymuszane w zasadach punktu końcowego usługi: 
 
- |Resource | Limit domyślny |
+ |Zasób | Limit domyślny |
  |---------|---------------|
  |ServiceEndpointPoliciesPerSubscription |500 |
  |ServiceEndpintPoliciesPerSubnet|100 |

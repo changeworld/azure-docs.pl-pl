@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Skonfiguruj rozwiązania Zscaler jeden na potrzeby automatycznej aprowizacji użytkowników w Azure Active Directory | Microsoft Docs'
+title: 'Samouczek: Konfigurowanie rozwiązania Zscaler jeden dla automatycznej aprowizacji użytkowników w Azure Active Directory | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i anulowania aprowizacji kont użytkowników w celu rozwiązania Zscaler jednego.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: de9dce04b6f27b6ae6f5c5caeed5728370359558
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 87413932acee576934ee50b59546371b03ceaf7e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515384"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064176"
 ---
-# <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Samouczek: Skonfiguruj rozwiązania Zscaler jeden na potrzeby automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie rozwiązania Zscaler jeden dla automatycznej aprowizacji użytkowników
 
 W tym samouczku przedstawiono kroki, które należy wykonać w rozwiązania Zscaler jeden i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i grup w celu rozwiązania Zscaler.
 
@@ -53,11 +53,11 @@ Aby dodać rozwiązania Zscaler jeden z portalu Marketplace, wykonaj następują
 
 2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
 4. W polu wyszukiwania wpisz **rozwiązania Zscaler** , a następnie wybierz pozycję **rozwiązania Zscaler (jeden** ) w panelu wyników. Aby dodać aplikację, wybierz pozycję **Dodaj**.
 
@@ -84,7 +84,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Konfigurowanie automatycznej aprowizacji użytkowników dla rozwiązania Zscaler w usłudze Azure AD
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **pozycję aplikacje** > dla przedsiębiorstw**wszystkie aplikacje** > **rozwiązania Zscaler jeden**.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **rozwiązania Zscaler**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -102,7 +102,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 5. W sekcji **poświadczenia administratora** Wypełnij pola **adres URL dzierżawy** i **token tajny** , podając ustawienia dla rozwiązania Zscaler jednego konta, zgodnie z opisem w kroku 6.
 
-6. Aby uzyskać adres URL dzierżawy i token tajny, przejdź do pozycji **Administracja** > **Ustawienia uwierzytelniania** w interfejsie użytkownika rozwiązania Zscaler jednego portalu. W obszarze **Typ uwierzytelniania**wybierz pozycję **SAML**.
+6. Aby uzyskać adres URL dzierżawy i token tajny, przejdź do pozycji **administracja** > **Ustawienia uwierzytelniania** w interfejsie użytkownika rozwiązania Zscaler jednego portalu. W obszarze **Typ uwierzytelniania**wybierz pozycję **SAML**.
 
     ![Rozwiązania Zscaler jedno z ustawień uwierzytelniania](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
@@ -154,13 +154,13 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 Ta operacja uruchamia początkową synchronizację wszystkich użytkowników lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż w przypadku późniejszej synchronizacji. Są one wykonywane co około 40 minut, o ile jest uruchomiona usługa Azure AD Provisioning. 
 
-Możesz użyć sekcji **szczegóły synchronizacji** , aby monitorować postęp i postępować zgodnie z raportem dotyczącym działań aprowizacji. Ten raport opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w witrynie rozwiązania Zscaler.
+Możesz użyć sekcji Szczegóły synchronizacji, aby monitorować postęp i postępować zgodnie z raportem **dotyczącym** działań aprowizacji. Ten raport opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w witrynie rozwiązania Zscaler.
 
 Aby uzyskać informacje na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki

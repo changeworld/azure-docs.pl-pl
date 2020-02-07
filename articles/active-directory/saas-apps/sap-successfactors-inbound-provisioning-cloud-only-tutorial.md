@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 2ae951896e9c97826264990dc33b9a1930b0eec2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 09501a80d6ddcbbc9fa6cc08e36f47beb13d1663
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530055"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063226"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Samouczek: Konfigurowanie aprowizacji oprogramowania SAP SuccessFactors w usłudze Azure AD (wersja zapoznawcza)
-Celem tego samouczka jest przedstawienie czynności, które należy wykonać w celu udostępnienia danych procesu roboczego od SuccessFactors pracowników centralnych do Azure Active Directory z opcjonalnym zapisem adresu e-mail do SuccessFactors. Ta integracja jest dostępna w publicznej wersji zapoznawczej i obsługuje pobieranie ponad [70 atrybutów użytkownika](../manage-apps/sap-successfactors-attribute-reference.md) z SuccessFactors Employee Central. 
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w celu udostępnienia danych procesu roboczego od SuccessFactors pracowników centralnych do Azure Active Directory z opcjonalnym zapisem adresu e-mail do SuccessFactors. Ta integracja jest dostępna w publicznej wersji zapoznawczej i obsługuje pobieranie ponad [70 atrybutów użytkownika](../app-provisioning/sap-successfactors-attribute-reference.md) z SuccessFactors Employee Central. 
 
 >[!NOTE]
 >Skorzystaj z tego samouczka, jeśli użytkownicy, którym chcesz zainicjować obsługę administracyjną SuccessFactors, są użytkownikami tylko w chmurze, którzy nie potrzebują lokalnego konta usługi AD. Jeśli użytkownicy wymagają tylko lokalnego konta usługi AD lub konta usług AD i Azure AD, zapoznaj się z samouczkiem dotyczącym [konfigurowania oprogramowania SAP SuccessFactors, aby Active Directory](sap-successfactors-inbound-provisioning-tutorial.md#overview) Inicjowanie obsługi użytkowników. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-[Usługa aprowizacji użytkowników Azure Active Directory](../manage-apps/user-provisioning.md) integruje się z [centralnym pracownikiem SuccessFactors](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) w celu zarządzania cyklem życia tożsamości użytkowników. 
+[Usługa aprowizacji użytkowników Azure Active Directory](../app-provisioning/user-provisioning.md) integruje się z [centralnym pracownikiem SuccessFactors](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) w celu zarządzania cyklem życia tożsamości użytkowników. 
 
 Przepływy pracy aprowizacji użytkowników SuccessFactors obsługiwane przez usługę aprowizacji użytkowników w usłudze Azure AD umożliwiają automatyzację następujących scenariuszy dotyczących zasobów ludzkich i zarządzania cyklem życia tożsamości:
 
-* **Zatrudnianie nowych pracowników** — po dodaniu nowego pracownika do usługi SuccessFactors konto użytkownika jest automatycznie tworzone w Azure Active Directory i opcjonalnie pakiet Office 365 oraz [inne aplikacje SaaS obsługiwane przez usługę Azure AD](../manage-apps/user-provisioning.md)z zwrotem adresu e-mail na SuccessFactors.
+* **Zatrudnianie nowych pracowników** — po dodaniu nowego pracownika do usługi SuccessFactors konto użytkownika jest automatycznie tworzone w Azure Active Directory i opcjonalnie pakiet Office 365 oraz [inne aplikacje SaaS obsługiwane przez usługę Azure AD](../app-provisioning/user-provisioning.md)z zwrotem adresu e-mail na SuccessFactors.
 
-* **Aktualizacje atrybutu pracownika i profilu** — gdy rekord pracownika zostanie zaktualizowany w SuccessFactors (takie jak nazwa, tytuł lub Menedżer), jego konto użytkownika zostanie automatycznie zaktualizowane Azure Active Directory i opcjonalnie pakiet Office 365 oraz [inne aplikacje SaaS obsługiwane przez usługę Azure AD](../manage-apps/user-provisioning.md).
+* **Aktualizacje atrybutu pracownika i profilu** — gdy rekord pracownika zostanie zaktualizowany w SuccessFactors (takie jak nazwa, tytuł lub Menedżer), jego konto użytkownika zostanie automatycznie zaktualizowane Azure Active Directory i opcjonalnie pakiet Office 365 oraz [inne aplikacje SaaS obsługiwane przez usługę Azure AD](../app-provisioning/user-provisioning.md).
 
-* **Zakończenie zatrudnienia pracownika** — gdy pracownik zostanie zakończony w SuccessFactors, jego konto użytkownika zostanie automatycznie wyłączone w Azure Active Directory i opcjonalnie w pakiecie Office 365 i [innych aplikacjach SaaS obsługiwanych przez usługę Azure AD](../manage-apps/user-provisioning.md).
+* **Zakończenie zatrudnienia pracownika** — gdy pracownik zostanie zakończony w SuccessFactors, jego konto użytkownika zostanie automatycznie wyłączone w Azure Active Directory i opcjonalnie w pakiecie Office 365 i [innych aplikacjach SaaS obsługiwanych przez usługę Azure AD](../app-provisioning/user-provisioning.md).
 
-* Przedziały **pracownika** — gdy pracownik jest ponownie zatrudniany w usłudze SuccessFactors, jego stare konto może zostać automatycznie ponownie uaktywnione lub zainicjowane (zależnie od preferencji) do Azure Active Directory i opcjonalnie pakietu Office 365 i [innych aplikacji SaaS obsługiwanych przez usługę Azure AD](../manage-apps/user-provisioning.md).
+* Przedziały **pracownika** — gdy pracownik jest ponownie zatrudniany w usłudze SuccessFactors, jego stare konto może zostać automatycznie ponownie uaktywnione lub zainicjowane (zależnie od preferencji) do Azure Active Directory i opcjonalnie pakietu Office 365 i [innych aplikacji SaaS obsługiwanych przez usługę Azure AD](../app-provisioning/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Dla kogo to rozwiązanie do aprowizacji użytkowników jest najlepiej dopasowane?
 
@@ -60,7 +60,7 @@ W tej sekcji opisano kompleksową architekturę rozwiązania obsługi użytkowni
 * **Autorytatywny przepływ danych HR — od SuccessFactors do Azure Active Directory:** W tym przepływie zdarzenia procesu roboczego (takie jak nowe zatrudnienie, transfery, zakończenia) są najpierw wykonywane w chmurze SuccessFactors Employee Central, a następnie dane zdarzenia są przenoszone do Azure Active Directory. W zależności od zdarzenia może to prowadzić do tworzenia/aktualizowania/włączania/wyłączania operacji w usłudze Azure AD.
 * **Przepływ zapisywania zwrotnego wiadomości e-mail — od lokalnego Active Directory do SuccessFactors:** Po zakończeniu tworzenia konta w Azure Active Directory wartość atrybutu adresu e-mail lub nazwa UPN wygenerowanego w usłudze Azure AD może zostać zapisana z powrotem do SuccessFactors.
 
-  ![Przegląd](./media/sap-successfactors-inbound-provisioning/sf2aad-overview.png)
+  ![Omówienie](./media/sap-successfactors-inbound-provisioning/sf2aad-overview.png)
 
 ### <a name="end-to-end-user-data-flow"></a>Przepływ danych kompleksowego użytkownika
 
@@ -79,7 +79,7 @@ Konfigurowanie obsługi administracyjnej użytkowników w chmurze opartej na us�
 * Przekształcenie atrybutu 
 * Filtry określania zakresu
 
-Zapoznaj się z [planem wdrożenia usługi Cloud HR](../manage-apps/plan-cloud-hr-provision.md) , aby uzyskać wyczerpujące wytyczne dotyczące tych tematów. 
+Zapoznaj się z [planem wdrożenia usługi Cloud HR](../app-provisioning/plan-cloud-hr-provision.md) , aby uzyskać wyczerpujące wytyczne dotyczące tych tematów. 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Konfigurowanie SuccessFactors na potrzeby integracji
 
@@ -153,7 +153,7 @@ Ta sekcja zawiera kroki dla aprowizacji konta użytkownika z SuccessFactors do u
 
 **Aby skonfigurować SuccessFactors do aprowizacji usługi Azure AD:**
 
-1. Przejdź do usługi <https://portal.azure.com>
+1. Przejdź do strony <https://portal.azure.com>
 
 2. Na lewym pasku nawigacyjnym wybierz pozycję **Azure Active Directory**
 
@@ -211,14 +211,14 @@ W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z Succe
    > Podczas konfigurowania aplikacji do aprowizacji po raz pierwszy należy przetestować i zweryfikować mapowania atrybutów oraz wyrażenia, aby upewnić się, że daje żądany wynik. Firma Microsoft zaleca używanie filtrów określania zakresu w obszarze **zakres obiektów źródłowych** do testowania mapowań za pomocą kilku użytkowników testowych z SuccessFactors. Po sprawdzeniu, czy mapowania działają, można usunąć filtr lub stopniowo rozwijać go, aby uwzględnić więcej użytkowników.
 
    > [!CAUTION] 
-   > Domyślne zachowanie aparatu aprowizacji polega na wyłączeniu/usunięciu użytkowników, którzy wykraczają poza zakres. Może to nie być pożądane w SuccessFactors do integracji z usługą Azure AD. Aby zastąpić to zachowanie domyślne, odnoszące się do artykułu [Pomiń usuwanie kont użytkowników, które wykraczają poza zakres](../manage-apps/skip-out-of-scope-deletions.md)
+   > Domyślne zachowanie aparatu aprowizacji polega na wyłączeniu/usunięciu użytkowników, którzy wykraczają poza zakres. Może to nie być pożądane w SuccessFactors do integracji z usługą Azure AD. Aby zastąpić to zachowanie domyślne, odnoszące się do artykułu [Pomiń usuwanie kont użytkowników, które wykraczają poza zakres](../app-provisioning/skip-out-of-scope-deletions.md)
   
 1. W polu **Akcje obiektu docelowego** można globalnie filtrować akcje wykonywane na Active Directory. **Tworzenie** i **Aktualizowanie** są najczęściej używane.
 
 1. W sekcji **mapowania atrybutów** można zdefiniować, w jaki sposób poszczególne atrybuty SuccessFactors są mapowane na atrybuty Active Directory.
 
   >[!NOTE]
-  >Aby uzyskać pełną listę atrybutów SuccessFactors obsługiwanych przez aplikację, zapoznaj się z [odwołaniem do atrybutu SuccessFactors](../manage-apps/sap-successfactors-attribute-reference.md)
+  >Aby uzyskać pełną listę atrybutów SuccessFactors obsługiwanych przez aplikację, zapoznaj się z [odwołaniem do atrybutu SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 
 1. Kliknij istniejące mapowanie atrybutów, aby je zaktualizować, lub kliknij pozycję **Dodaj nowe mapowanie** u dołu ekranu, aby dodać nowe mapowania. Mapowanie poszczególnych atrybutów obsługuje te właściwości:
@@ -229,7 +229,7 @@ W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z Succe
 
          * **Stała** — Zapisz statyczną, stałą wartość ciągu w atrybucie usługi AD.
 
-         * **Expression** — umożliwia zapisanie niestandardowej wartości atrybutu AD na podstawie jednego lub większej liczby atrybutów SuccessFactors. [Aby uzyskać więcej informacji, zobacz ten artykuł w wyrażeniach](../manage-apps/functions-for-customizing-application-data.md).
+         * **Expression** — umożliwia zapisanie niestandardowej wartości atrybutu AD na podstawie jednego lub większej liczby atrybutów SuccessFactors. [Aby uzyskać więcej informacji, zobacz ten artykuł w wyrażeniach](../app-provisioning/functions-for-customizing-application-data.md).
 
       * **Atrybut źródłowy** — atrybut użytkownika z SuccessFactors
 
@@ -261,7 +261,7 @@ Po zakończeniu konfiguracji aplikacji SuccessFactorsing (Inicjowanie obsługi a
 
 1. Na karcie **aprowizacji** Ustaw **stan aprowizacji** na **włączone**.
 
-2. Kliknij pozycję **Zapisz**.
+2. Kliknij przycisk **Save** (Zapisz).
 
 3. Ta operacja rozpocznie synchronizację początkową, która może potrwać zmienną liczbę godzin w zależności od liczby użytkowników w dzierżawie SuccessFactors. Możesz sprawdzić, czy pasek postępu śledzi postęp cyklu synchronizacji. 
 
@@ -274,11 +274,11 @@ Po zakończeniu konfiguracji aplikacji SuccessFactorsing (Inicjowanie obsługi a
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej o obsługiwanych atrybutach SuccessFactors na potrzeby inicjowania obsługi przychodzącej](../manage-apps/sap-successfactors-attribute-reference.md)
+* [Dowiedz się więcej o obsługiwanych atrybutach SuccessFactors na potrzeby inicjowania obsługi przychodzącej](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [Dowiedz się, jak skonfigurować funkcję zapisywania zwrotnego wiadomości e-mail w usłudze SuccessFactors](sap-successfactors-writeback-tutorial.md)
-* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)
 * [Dowiedz się, jak skonfigurować Logowanie jednokrotne między SuccessFactors i Azure Active Directory](successfactors-tutorial.md)
 * [Dowiedz się, jak zintegrować inne aplikacje SaaS z Azure Active Directory](tutorial-list.md)
-* [Dowiedz się, jak eksportować i importować konfiguracje aprowizacji](../manage-apps/export-import-provisioning-configuration.md)
+* [Dowiedz się, jak eksportować i importować konfiguracje aprowizacji](../app-provisioning/export-import-provisioning-configuration.md)
 
 

@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: e590c07c3969865d573838352a8a778caa1cc799
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 02/06/2020
+ms.author: tanmaygore
+ms.openlocfilehash: 3632e12f5e58f8cadefb1e666cf4014026e24358
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901731"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057021"
 ---
 W tym artykule skatalogowano najbardziej typowe błędy i środki zaradcze w trakcie migracji zasobów IaaS z klasycznego modelu wdrażania platformy Azure do stosu usługi Azure Resource Manager.
 
@@ -25,7 +25,7 @@ W tym artykule skatalogowano najbardziej typowe błędy i środki zaradcze w tra
 | Sieć wirtualna {nazwa_sieci_wirtualnej} nie istnieje. |Może to się zdarzyć, jeśli sieć wirtualna została utworzona w nowej witrynie Azure Portal. Rzeczywista nazwa Virtual Network jest zgodna ze wzorcem "Grupa * \<nazwę sieci wirtualnej >" |
 | Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie {nazwa_rozszerzenia}, które nie jest obsługiwane w usłudze Azure Resource Manager. Zaleca się odinstalowanie go z maszyny wirtualnej przed kontynuowaniem migracji. |Rozszerzenia XML, takie jak BGInfo 1.\* nie są obsługiwane w Azure Resource Manager. W związku z tym nie można migrować tych rozszerzeń. Jeśli te rozszerzenia pozostaną zainstalowane na maszynie wirtualnej, zostaną automatycznie odinstalowane przed ukończeniem migracji. |
 | Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie VMSnapshot/VMSnapshotLinux, które nie jest obecnie obsługiwane dla migracji. Odinstaluj je z maszyny wirtualnej i dodaj ponownie za pomocą usługi Azure Resource Manager po zakończeniu migracji |Jest to scenariusz, w którym maszyna wirtualna jest skonfigurowana na potrzeby usługi Azure Backup. Ponieważ obecnie jest to nieobsługiwany scenariusz, należy postępować zgodnie z obejściem w https://aka.ms/vmbackupmigration |
-| Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie {nazwa_rozszerzenia}, którego stan nie jest zgłaszany z maszyny wirtualnej. Z tego powodu nie można migrować maszyny wirtualnej. Upewnij się, że stan rozszerzenia jest zgłaszany, lub odinstaluj rozszerzenie z maszyny wirtualnej i ponów próbę migracji. <br><br> Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie {nazwa_rozszerzenia} zgłaszające stan procedury obsługi: {stan_procedury_obsługi}. Hence, the VM cannot be migrated. Upewnij się, że zgłaszanym stanem procedury obsługi rozszerzenia jest {stan_procedury_obsługi} lub odinstaluj rozszerzenie z maszyny wirtualnej i ponów próbę migracji. <br><br> Agent maszyny wirtualnej dla maszyny wirtualnej {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zgłasza ogólny stan agenta jako Niegotowy. Z tego powodu nie można migrować maszyny wirtualnej, jeśli ma ona rozszerzenie, które można migrować. Upewnij się, że agent maszyny wirtualnej zgłasza ogólny stan agenta jako Gotowy. Zapoznaj się z https://aka.ms/classiciaasmigrationfaqs. |Agent gościa platformy Azure i rozszerzenia maszyny wirtualnej potrzebują wychodzącego dostępu do Internetu dla konta magazynu maszyny wirtualnej w celu wypełnienia ich stanu. Typowe przyczyny niepowodzenia stanu obejmują następujące sytuacje: <li> grupa zabezpieczeń sieci blokuje wychodzący dostęp do Internetu, <li> Jeśli sieć wirtualna ma lokalne serwery DNS i połączenie DNS zostało utracone <br><br> Jeśli nieobsługiwany stan jest nadal wyświetlany, możesz odinstalować rozszerzenia, aby pominąć to sprawdzanie i kontynuować migrację. |
+| Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie {nazwa_rozszerzenia}, którego stan nie jest zgłaszany z maszyny wirtualnej. Z tego powodu nie można migrować maszyny wirtualnej. Upewnij się, że stan rozszerzenia jest zgłaszany, lub odinstaluj rozszerzenie z maszyny wirtualnej i ponów próbę migracji. <br><br> Maszyna wirtualna {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zawiera rozszerzenie {nazwa_rozszerzenia} zgłaszające stan procedury obsługi: {stan_procedury_obsługi}. Z tego powodu nie można migrować maszyny wirtualnej. Upewnij się, że zgłaszanym stanem procedury obsługi rozszerzenia jest {stan_procedury_obsługi} lub odinstaluj rozszerzenie z maszyny wirtualnej i ponów próbę migracji. <br><br> Agent maszyny wirtualnej dla maszyny wirtualnej {nazwa_maszyny_wirtualnej} w usłudze hostowanej {nazwa_usługi_hostowanej} zgłasza ogólny stan agenta jako Niegotowy. Z tego powodu nie można migrować maszyny wirtualnej, jeśli ma ona rozszerzenie, które można migrować. Upewnij się, że agent maszyny wirtualnej zgłasza ogólny stan agenta jako Gotowy. Zapoznaj się z https://aka.ms/classiciaasmigrationfaqs. |Agent gościa platformy Azure i rozszerzenia maszyny wirtualnej potrzebują wychodzącego dostępu do Internetu dla konta magazynu maszyny wirtualnej w celu wypełnienia ich stanu. Typowe przyczyny niepowodzenia stanu obejmują następujące sytuacje: <li> grupa zabezpieczeń sieci blokuje wychodzący dostęp do Internetu, <li> Jeśli sieć wirtualna ma lokalne serwery DNS i połączenie DNS zostało utracone <br><br> Jeśli nieobsługiwany stan jest nadal wyświetlany, możesz odinstalować rozszerzenia, aby pominąć to sprawdzanie i kontynuować migrację. |
 | Migracja wdrożenia {nazwa_wdrożenia} w usłudze hostowanej {nazwa_usługi_hostowanej} nie jest obsługiwana, ponieważ zawiera ono wiele zestawów dostępności. |Obecnie można migrować tylko usługi hostowane, które mają nie więcej niż 1 zestaw dostępności. Aby obejść ten problem, przenieś dodatkowe zestawy dostępności i maszyny wirtualne w tych zestawach dostępności do innej usługi hostowanej. |
 | Migracja wdrożenia {nazwa_wdrożenia} w usłudze hostowanej {nazwa_usługi_hostowanej} nie jest obsługiwana, ponieważ zawiera ono maszyny wirtualne niebędące częścią zestawu dostępności, choć usługa hostowana zawiera taki zestaw. |Obejście problemu w przypadku tego scenariusza polega na przeniesieniu wszystkich maszyn wirtualnych do jednego zestawu dostępności lub usunięciu wszystkich maszyn wirtualnych z zestawu dostępności w usłudze hostowanej. |
 | Konto magazynu/usługa hostowana/sieć wirtualna {nazwa_sieci_wirtualnej} jest w trakcie migracji i dlatego nie można jej zmienić |Ten błąd występuje w przypadku, gdy po zakończeniu operacji migracji „Prepare” dla zasobu wyzwalana jest operacja, która spowodowałaby wprowadzenie zmiany w zasobie. Z powodu blokady na płaszczyźnie zarządzania po wykonaniu operacji „Prepare” wszelkie zmiany zasobu są blokowane. Aby odblokować płaszczyznę zarządzania, można uruchomić operację migracji „Commit” w celu ukończenia migracji lub operację migracji „Abort” w celu wycofania operacji „Prepare”. |
@@ -163,7 +163,7 @@ Update-AzureVM       b0ad3d4c-4v68-45vb-xxc1-134fd010d0f8 Succeeded
 
 Po zakończeniu procesu migracji można przenieść maszynę wirtualną do innej subskrypcji. Jednak jeśli masz wpis tajny/certyfikat na maszynie wirtualnej, który odwołuje się do zasobu usługi Key Vault, przenoszenie aktualnie nie jest obsługiwane. Poniższe instrukcje umożliwią obejście tego problemu. 
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Program PowerShell
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "MyRG" -Name "MyVM"
 Remove-AzVMSecret -VM $vm

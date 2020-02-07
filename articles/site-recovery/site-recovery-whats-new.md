@@ -3,20 +3,18 @@ title: Co nowego w Azure Site Recovery
 description: Zawiera podsumowanie nowych funkcji i najnowszych aktualizacji usługi Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cae653c9e51e2a497d6fa3781415a1f836053593
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934938"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064533"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co nowego w usłudze Site Recovery
 
 Usługa [Azure Site Recovery](site-recovery-overview.md) jest regularnie aktualizowana i ulepszana. Aby pomóc Ci zachować aktualność, ten artykuł zawiera informacje o najnowszych wersjach, nowych funkcjach i nowej zawartości. Ta strona jest regularnie aktualizowana.
 
 Możesz postępować zgodnie z Site Recovery powiadomieniami o aktualizacji w kanale [aktualizacji platformy Azure](https://azure.microsoft.com/updates/?product=site-recovery) .
-
-
 
 ## <a name="supported-updates"></a>Obsługiwane aktualizacje
 
@@ -30,18 +28,18 @@ W przypadku składników Site Recovery obsługiwane są wersje N-4, gdzie N to n
 [Pakiet zbiorczy 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Pakiet zbiorczy 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-
-
 [Dowiedz się więcej](service-updates-how-to.md) na temat instalacji i obsługi aktualizacji.
 
 ## <a name="updates-january-2020"></a>Aktualizacje (styczeń 2020)
 
 ### <a name="update-rollup-44"></a>Pakiet zbiorczy aktualizacji 44
+
 [Pakiet zbiorczy aktualizacji 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) udostępnia następujące aktualizacje.
 
 **Aktualizacja** | **Szczegóły**
 --- | ---
-**Rozwiązywanie poprawek/ulepszeń** | Wiele aktualizacji Site Recovery agentów i dostawców (zgodnie z opisem w pakiecie zbiorczym).
+**Dostawcy i agenci** | Nie było żadnych aktualizacji dla dostawców Site Recovery i agentów.
+**Rozwiązywanie poprawek/ulepszeń** | Szereg poprawek i ulepszeń, które opisano szczegółowo w pakiecie zbiorczym.
 
 ### <a name="azure-vmware-disaster-recovery"></a>Odzyskiwanie po awarii programu VMware Azure
 
@@ -334,7 +332,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Funkcja** | **Szczegóły**
 --- | ---
 **System plików BRTFS systemu Linux** | Site Recovery teraz obsługuje replikację maszyn wirtualnych VMware przy użyciu systemu plików BRTFS. Replikacja nie jest obsługiwana, jeśli:<br/><br/>-Wolumin systemu plików BTRFS jest zmieniany po włączeniu replikacji.<br/><br/>— System plików jest rozłożony na wiele dysków.<br/><br/>— System plików BTRFS obsługuje macierz RAID.
-**Windows Server 2019** | Dodano obsługę dla maszyn z systemem Windows Server 2019.
+**System Windows Server 2019** | Dodano obsługę dla maszyn z systemem Windows Server 2019.
 
 
 ## <a name="updates-january-2019"></a>Aktualizacje (styczeń 2019)
@@ -391,7 +389,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 **Obsługa systemu Linux** |  Dodano pomoc techniczną dla Oracle Linux 6,8, Oracle Linux 6,9 i Oracle Linux 7,0 z jądrem zgodnym z systemem Red Hat oraz dla jądra w wersji 5 dla przedsiębiorstw (UEK).
 **LVM** | Dodano obsługę dla woluminów LVM i LVM2.<br/><br/> Katalog/Boot na partycji dysku i na woluminach LVM jest teraz obsługiwany.
 **Katalogi** | Dodano obsługę tych katalogów jako osobne partycje lub systemy plików, które nie znajdują się na tym samym dysku systemowym:<br/><br/> /(root),/Boot,/usr,/usr/local,/var,/etc.
-**Windows Server 2008** | Dodano obsługę dla dysków dynamicznych.
+**System Windows Server 2008** | Dodano obsługę dla dysków dynamicznych.
 **Tryb failover** | Ulepszony czas pracy w trybie failover dla maszyn wirtualnych VMware, gdzie storvsc i vsbus nie są sterownikami rozruchowymi
 **Obsługa interfejsu UEFI** | Maszyny wirtualne platformy Azure nie obsługują typu rozruchu UEFI. Teraz można migrować lokalne serwery fizyczne z interfejsem UEFI do platformy Azure za pomocą Site Recovery. Site Recovery migruje serwer, konwertując typ rozruchu na system BIOS przed migracją. Site Recovery poprzednio obsługiwać tę konwersję tylko dla maszyn wirtualnych. Pomoc techniczna jest dostępna dla serwerów fizycznych z systemem Windows Server 2012 lub nowszym.
 
@@ -485,7 +483,7 @@ Funkcje dodane w tym miesiącu zostały podsumowane w tabeli.
 --- | ---
 **Obsługa systemu Linux** | Dodano obsługę do RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> Maszyny wirtualne oparte na systemie Linux, które używają stylu partycji tabeli partycji GUID (GPT) w trybie zgodności ze starszymi wersjami systemu BIOS, są teraz obsługiwane. Aby uzyskać więcej informacji, przejrzyj [często zadawane pytania dotyczące maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) .
 **Odzyskiwanie po awarii dla maszyn wirtualnych po migracji** | Obsługa włączenia odzyskiwania po awarii do regionu pomocniczego dla lokalnej maszyny wirtualnej VMware migrowanej do platformy Azure bez konieczności odinstalowywania usługi mobilności na maszynie wirtualnej przed włączeniem replikacji.
-**Windows Server 2008** | Obsługa migracji maszyn z systemem Windows Server 2008 R2/2008 64-bit i 32-bit.<br/><br/> Tylko migracja (replikacja i tryb failover). Powrót po awarii nie jest obsługiwany.
+**System Windows Server 2008** | Obsługa migracji maszyn z systemem Windows Server 2008 R2/2008 64-bit i 32-bit.<br/><br/> Tylko migracja (replikacja i tryb failover). Powrót po awarii nie jest obsługiwany.
 
 ## <a name="updates-july-2018"></a>Aktualizacje (lipiec 2018)
 

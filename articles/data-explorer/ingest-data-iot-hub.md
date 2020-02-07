@@ -7,14 +7,14 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780287"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064992"
 ---
-# <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Pozyskiwanie danych z IoT Hub na platformie Azure Eksplorator danych (wersja zapoznawcza)
+# <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>Pozyskiwanie danych z IoT Hub na platformie Azure Eksplorator danych 
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
@@ -80,7 +80,7 @@ Teraz nawiążesz połączenie z IoT Hubą z usługi Azure Eksplorator danych. P
     **Ustawienie** | **Opis pola**
     |---|---|
     | Nazwa połączenia danych | Nazwa połączenia, które chcesz utworzyć na platformie Azure Eksplorator danych
-    | IoT Hub | Nazwa IoT Hub |
+    | Centrum IoT | Nazwa IoT Hub |
     | Zasady dostępu współdzielonego | Nazwa zasad dostępu współdzielonego. Musi mieć uprawnienia do odczytu |
     | Grupa konsumentów |  Grupa odbiorców zdefiniowana w IoT Hub wbudowanym punkcie końcowym |
     | Właściwości systemu zdarzeń | [Właściwości systemu zdarzeń IoT Hub](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Podczas dodawania właściwości systemu [Utwórz](/azure/kusto/management/tables#create-table) lub [zaktualizuj](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schemat i [Mapowanie](/azure/kusto/management/mappings) tabeli w celu uwzględnienia wybranych właściwości. | | | 

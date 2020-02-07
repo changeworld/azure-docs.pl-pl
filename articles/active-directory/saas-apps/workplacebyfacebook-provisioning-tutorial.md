@@ -15,19 +15,41 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985179"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064147"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie miejsca pracy przez serwis Facebook w celu automatycznego aprowizacji użytkowników
 
 W tym samouczku opisano kroki, które należy wykonać w obu miejscach pracy przez serwis Facebook i Azure Active Directory (Azure AD) w celu skonfigurowania automatycznego aprowizacji użytkowników. Po skonfigurowaniu usługa Azure AD automatycznie inicjuje i cofa obsługę administracyjną użytkowników i grup w [miejscu pracy za](https://work.workplace.com/) pomocą usługi Azure AD Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
 
-> [!NOTE]
-> Aplikacja usługi Azure AD innej firmy w miejscu pracy przez serwis Facebook została zatwierdzona. Klienci nie będą mieli przerw w świadczeniu usług w 16 grudnia. W obszarze roboczym przez konsolę administracyjną serwisu Facebook zostanie wyświetlona Uwaga wskazująca termin 28 lutego – 2020, gdy konieczne będzie przejście do nowej aplikacji. Pracujemy nad zachowaniem tego przejścia, jak to możliwe, i udostępnienia aktualizacji w tym miejscu na końcu miesiąca.
+## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Migrowanie do nowego miejsca pracy przez aplikację w serwisie Facebook
+Jeśli masz istniejącą integrację z miejscem pracy w serwisie Facebook, zapoznaj się z poniższą sekcją o zmianach. Jeśli konfigurujesz miejsce pracy przez serwis Facebook po raz pierwszy, możesz pominąć tę sekcję i przejść do obszaru obsługiwane możliwości. 
+
+#### <a name="whats-changing"></a>Co się zmieni?
+* Zmiany po stronie usługi Azure AD: Metoda autoryzacji do aprowizacji użytkowników w miejscu pracy ma historycznie długi token tajny. Wkrótce zostanie wyświetlona zmiana metody autoryzacji na przyznanie autoryzacji OAuth. 
+* Zmiany po stronie miejsca pracy: wcześniej aplikacja usługi Azure AD była integracją niestandardową w miejscu pracy przez serwis Facebook. Teraz zostanie wyświetlona usługa Azure AD w katalogu integracji miejsca pracy jako aplikacja innej firmy. 
+
+ 
+
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Co należy zrobić, aby przeprowadzić migrację istniejącej integracji niestandardowej do nowej aplikacji?
+Jeśli masz istniejącą integrację z miejscem pracy z prawidłowym tokenem, **nie jest wymagana żadna akcja**. W każdym tygodniu automatycznie Migrujemy klientów do nowej aplikacji. Jest to realizowane całkowicie w tle. Jeśli nie możesz zaczekać i chcieć przenieść do nowej aplikacji ręcznie, możesz dodać nowe wystąpienie miejsca pracy z galerii i ponownie skonfigurować aprowizacji. Wszystkie nowe wystąpienia miejsca pracy będą automatycznie korzystać z nowej wersji aplikacji. 
+
+ 
+Jeśli integracja z miejscem pracy odbywa się w kwarantannie, należy ponownie podać prawidłowy token, aby przeprowadzić migrację użytkownika. Sekcja poświadczenia administratora będzie wyszarzona, ale można dołączyć następujące elementy ( **? Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = true**) do adresu URL, aby ponownie zapisać poświadczenia. 
+
+https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
+
+ 
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>Sekcja poświadczeń administratora jest wyszarzona w mojej aplikacji i nie mogę jej zapisać. Dlaczego?
+Sekcja poświadczeń administratora została zablokowana dla istniejących klientów w miejscu pracy. Po przeprowadzeniu migracji dzierżawy do nowej aplikacji w miejscu pracy można ponownie zaktualizować sekcję poświadczenia administratora. Jeśli nie możesz czekać, możesz użyć powyższego adresu URL, aby edytować aplikację. 
+
+ 
+#### <a name="when-will-these-changes-happen"></a>Kiedy te zmiany zostaną wykonane?
+Wszystkie nowe wystąpienia miejsca pracy będą już używać nowej metody integracji/autoryzacji. Istniejące integracje zostaną stopniowo migrowane w lutym. Migracja zostanie zakończona dla wszystkich dzierżawców na koniec miesiąca. 
 
 ## <a name="capabilities-supported"></a>Obsługiwane możliwości
 > [!div class="checklist"]
@@ -77,7 +99,7 @@ Usługa Azure AD Provisioning umożliwia określenie zakresu użytkowników, kt�
 
 * Zacznij od małych. Przetestuj przy użyciu małego zestawu użytkowników i grup przed przekazaniem ich do wszystkich osób. W przypadku wybrania dla zakresu aprowizacji przypisanych użytkowników i grup można kontrolować ten sposób, przypisując do aplikacji jednego lub dwóch użytkowników lub grupy. Gdy zakres jest ustawiony dla wszystkich użytkowników i grup, można określić [Filtr określania zakresu na podstawie atrybutu](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -157,10 +179,10 @@ Po skonfigurowaniu aprowizacji Użyj następujących zasobów do monitorowania w
 2. Sprawdź [pasek postępu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , aby zobaczyć stan cyklu aprowizacji oraz sposób jego zakończenia.
 3. Jeśli konfiguracja aprowizacji wydaje się być w złej kondycji, aplikacja zostanie przestawiona na kwarantannę. Więcej informacji o Stanach kwarantanny znajduje się [tutaj](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="troubleshooting-tips"></a>Porady dotyczące rozwiązywania problemów
+## <a name="troubleshooting-tips"></a>Wskazówki dotyczące rozwiązywania problemów
 *  Jeśli zobaczysz, że użytkownik zostanie niepomyślnie utworzony i istnieje zdarzenie dziennika inspekcji z kodem "1789003", oznacza to, że użytkownik pochodzi z niezweryfikowanej domeny.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

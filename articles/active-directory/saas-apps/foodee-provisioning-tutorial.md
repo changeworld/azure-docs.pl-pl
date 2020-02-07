@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170068"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057829"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Foodee na potrzeby automatycznego aprowizacji użytkowników
 
 W tym artykule opisano sposób konfigurowania Azure Active Directory (Azure AD) w Foodee i usłudze Azure AD w celu automatycznego aprowizacji lub anulowania aprowizacji użytkowników lub grup w usłudze Foodee.
 
 > [!NOTE]
-> W tym artykule opisano łącznik, który jest oparty na usłudze aprowizacji użytkowników usługi Azure AD. Aby dowiedzieć się, co to jest usługa i jak to działa, i aby uzyskać odpowiedzi na często zadawane pytania, zobacz [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS przy użyciu Azure Active Directory](../manage-apps/user-provisioning.md).
+> W tym artykule opisano łącznik, który jest oparty na usłudze aprowizacji użytkowników usługi Azure AD. Aby dowiedzieć się, co to jest usługa i jak to działa, i aby uzyskać odpowiedzi na często zadawane pytania, zobacz [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS przy użyciu Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Ten łącznik jest obecnie w wersji zapoznawczej. Aby uzyskać więcej informacji na temat funkcji "warunki użytkowania" platformy Azure na potrzeby funkcji wersji zapoznawczej, przejdź do [uzupełniających warunków użytkowania dla Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)wersjach zapoznawczych.
 
@@ -118,11 +118,11 @@ Skonfiguruj automatyczne Inicjowanie obsługi użytkowników dla Foodee w usłud
 
 1. W obszarze **poświadczenia administratora**wykonaj następujące czynności:
 
-   a. W polu **adres URL dzierżawy** wprowadź wcześniej pobraną wartość **https: \//Concierge. żywność. ee/Standard scim/v2** .
+   a. W polu **adres URL dzierżawy** wprowadź wcześniej pobraną wartość **https:\//Concierge.food.ee/scim/v2** .
 
    b. W polu **token Secret** wprowadź wcześniej pobraną wartość **tokenu interfejsu API** .
    
-   d. Aby upewnić się, że usługa Azure AD może nawiązać połączenie z usługą Foodee, wybierz pozycję **Testuj połączenie**. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi Foodee ma uprawnienia administratora, a następnie spróbuj ponownie.
+   c. Aby upewnić się, że usługa Azure AD może nawiązać połączenie z usługą Foodee, wybierz pozycję **Testuj połączenie**. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi Foodee ma uprawnienia administratora, a następnie spróbuj ponownie.
 
     ![Link połączenia testowego](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -150,7 +150,7 @@ Skonfiguruj automatyczne Inicjowanie obsługi użytkowników dla Foodee w usłud
     ![Foodee mapowania użytkowników](media/Foodee-provisioning-tutorial/groupattribute.png)
 
 1. Aby zatwierdzić zmiany, wybierz pozycję **Zapisz**.
-1. Skonfiguruj filtry zakresu. Aby dowiedzieć się, jak to zrobić, zapoznaj się z instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Skonfiguruj filtry zakresu. Aby dowiedzieć się, jak to zrobić, zapoznaj się z instrukcjami w [samouczku dotyczącym filtru określania zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 1. Aby włączyć usługę Azure AD Provisioning for Foodee, w sekcji **Ustawienia** Zmień **stan aprowizacji** na **włączone**.
 
@@ -164,15 +164,15 @@ Skonfiguruj automatyczne Inicjowanie obsługi użytkowników dla Foodee w usłud
 
     ![Przycisk zapisywania konfiguracji aprowizacji](common/provisioning-configuration-save.png)
 
-Poprzednia operacja uruchamia początkową synchronizację użytkowników lub grup, które zostały zdefiniowane na liście rozwijanej **zakres** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje. Aby uzyskać więcej informacji, zobacz [jak długo trwa inicjowanie obsługi administracyjnej użytkowników?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
+Poprzednia operacja uruchamia początkową synchronizację użytkowników lub grup, które zostały zdefiniowane na liście rozwijanej **zakres** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje. Aby uzyskać więcej informacji, zobacz [jak długo trwa inicjowanie obsługi administracyjnej użytkowników?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Możesz użyć bieżącej sekcji **stanu** , aby monitorować postęp i postępować zgodnie z raportem dotyczącym aktywności aprowizacji. Raport opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w systemie Foodee. Aby uzyskać więcej informacji, zobacz [Sprawdzanie stanu aprowizacji użytkowników](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Aby zapoznać się z dziennikami aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
+Możesz użyć bieżącej sekcji **stanu** , aby monitorować postęp i postępować zgodnie z raportem dotyczącym aktywności aprowizacji. Raport opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w systemie Foodee. Aby uzyskać więcej informacji, zobacz [Sprawdzanie stanu aprowizacji użytkowników](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Aby zapoznać się z dziennikami aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)

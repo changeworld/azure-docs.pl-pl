@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 2ae6314accf5ad9143e1e103239c2e7c884ec947
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6980518da00e6849c327ca712bbeadaa816ae479
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776640"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056669"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Konfigurowanie dzienników przepływu sieciowej grupy zabezpieczeń na podstawie szablonu Azure Resource Manager
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
-> - [Program PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Interfejs wiersza polecenia platformy Azure](network-watcher-nsg-flow-logging-cli.md)
 > - [Interfejs API REST](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
@@ -38,7 +38,7 @@ W tym artykule przedstawiono sposób programowego włączania [dzienników usłu
 
 ## <a name="nsg-flow-logs-object"></a>Obiekt dzienników przepływu sieciowej grupy zabezpieczeń
 
-Obiekt dzienników przepływu sieciowej grupy zabezpieczeń ze wszystkimi parametrami jest wyświetlany poniżej.
+Obiekt dzienników przepływu sieciowej grupy zabezpieczeń ze wszystkimi parametrami jest przedstawiony poniżej.
 Pełny przegląd właściwości można znaleźć w [dokumentacji szablonów przepływu sieciowej grupy zabezpieczeń](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters).
 
 ```json
@@ -171,6 +171,6 @@ Istnieje kilka sposobów, aby sprawdzić, czy wdrożenie zakończyło się pomy�
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak wizualizować dane przepływu usługi sieciowej grupy zabezpieczeń przy użyciu:
-* [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+* [Power BI firmy Microsoft](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 * [Narzędzia Open Source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 * [Analiza ruchu platformy Azure](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)

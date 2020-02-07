@@ -3,14 +3,14 @@ title: Konfigurowanie środowiska projektowego systemu Windows
 description: Zainstaluj środowisko uruchomieniowe, zestaw SDK i narzędzia oraz utwórz lokalny klaster projektowy. Po ukończeniu tej konfiguracji wszystko będzie gotowe do kompilowania aplikacji w systemie Windows.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 02/05/2020
 ms.custom: sfrev
-ms.openlocfilehash: 70a819636b786cedce5bbd0abd0d2594738cbfb9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6768f45e61880370295ce7725e553828e66f3d39
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904112"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062119"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 
@@ -29,7 +29,7 @@ Aby kompilować i uruchamiać [aplikacje Service Fabric platformy Azure][1] na k
 
 Na potrzeby tworzenia aplikacji obsługiwane są następujące wersje systemu operacyjnego:
 
-* Windows 7
+* Windows 7
 * Windows 8/Windows 8.1
 * Windows Server 2012 R2
 * Windows Server 2016
@@ -68,8 +68,8 @@ Jeśli potrzebujesz tylko zestawu SDK, możesz zainstalować ten pakiet:
 
 Bieżące wersje:
 
-* Service Fabric zestawu SDK i narzędzi 4.0.464
-* 7\.0.464 środowiska uruchomieniowego Service Fabric
+* Service Fabric zestawu SDK i narzędzi 4.0.466
+* 7\.0.466 środowiska uruchomieniowego Service Fabric
 
 Aby uzyskać listę obsługiwanych wersji, zobacz [Service Fabric wersje](service-fabric-versions.md)
 

@@ -16,18 +16,18 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cae5458a9b9456d26363802ee9b06aaa842e72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712348"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063598"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Znane problemy i rozwiązania z standard scim 2,0 zgodności protokołów aprowizacji użytkowników usługi Azure AD
 
 Azure Active Directory (Azure AD) mogą automatycznie inicjować obsługę użytkowników i grup w dowolnej aplikacji lub systemie, który jest przedsunięty przez usługę sieci Web, przy użyciu interfejsu zdefiniowanego w systemie w ramach [specyfikacji protokołu zarządzania tożsamościami (standard scim 2,0) dla wielu domen](https://tools.ietf.org/html/draft-ietf-scim-api-19). 
 
-Obsługa protokołu Standard scim 2,0 w usłudze Azure AD jest opisana w temacie [Używanie systemu do zarządzania tożsamościami między domenami (standard scim) w celu automatycznego aprowizacji użytkowników i grup z Azure Active Directoryymi do aplikacji](use-scim-to-provision-users-and-groups.md), które zawierają listę konkretnych części protokołu, które implementuje w celu automatycznego aprowizacji użytkowników i grup z usługi Azure AD do aplikacji obsługujących standard scim 2,0.
+Obsługa protokołu Standard scim 2,0 w usłudze Azure AD jest opisana w temacie [Używanie systemu do zarządzania tożsamościami między domenami (standard scim) w celu automatycznego aprowizacji użytkowników i grup z Azure Active Directoryymi do aplikacji](../app-provisioning/use-scim-to-provision-users-and-groups.md), które zawierają listę konkretnych części protokołu, które implementuje w celu automatycznego aprowizacji użytkowników i grup z usługi Azure AD do aplikacji obsługujących standard scim 2,0.
 
 W tym artykule opisano bieżące i wcześniejsze problemy związane z przystąpieniem usługi Azure AD User Provisioning do protokołu Standard scim 2,0 i obejście tego problemu.
 
@@ -38,10 +38,10 @@ W tym artykule opisano bieżące i wcześniejsze problemy związane z przystąpi
 
 | **Problem ze zgodnością w programie Standard scim 2,0** |  **FIXED?** | **Popraw datę**  |  
 |---|---|---|
-| Usługa Azure AD wymaga "/scim", aby znajdować się w katalogu głównym adresu URL punktu końcowego Standard scim aplikacji  | Yes  |  18 grudnia, 2018 | 
-| Atrybuty rozszerzenia używają notacji kropki "." przed nazwami atrybutów zamiast dwukropka ":" notacji |  Yes  | 18 grudnia, 2018  | 
-|  Żądania poprawek dla atrybutów wielowartościowych zawierają nieprawidłową składnię filtru ścieżki | Yes  |  18 grudnia, 2018  | 
-|  Żądania utworzenia grupy zawierają nieprawidłowy identyfikator URI schematu | Yes  |  18 grudnia, 2018  |  
+| Usługa Azure AD wymaga "/scim", aby znajdować się w katalogu głównym adresu URL punktu końcowego Standard scim aplikacji  | Tak  |  18 grudnia, 2018 | 
+| Atrybuty rozszerzenia używają notacji kropki "." przed nazwami atrybutów zamiast dwukropka ":" notacji |  Tak  | 18 grudnia, 2018  | 
+|  Żądania poprawek dla atrybutów wielowartościowych zawierają nieprawidłową składnię filtru ścieżki | Tak  |  18 grudnia, 2018  | 
+|  Żądania utworzenia grupy zawierają nieprawidłowy identyfikator URI schematu | Tak  |  18 grudnia, 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Czy poprawki dotyczące usług zostały automatycznie zastosowane do mojej istniejącej aplikacji Standard scim?
 
@@ -113,5 +113,5 @@ Tak. Jeśli aplikacja została zakodowana w starym zachowaniu, która istniała 
 
 
 ## <a name="next-steps"></a>Następne kroki
-[Dowiedz się więcej o aprowizacji i dezaktywowaniu aplikacji SaaS](user-provisioning.md)
+[Dowiedz się więcej o aprowizacji i dezaktywowaniu aplikacji SaaS](../app-provisioning/user-provisioning.md)
 

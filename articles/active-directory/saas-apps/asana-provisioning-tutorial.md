@@ -16,12 +16,12 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a237e4295f17ce37f622022d318e9f2aff24d7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276586"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058935"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Asana na potrzeby automatycznego aprowizacji użytkowników
 
@@ -89,7 +89,7 @@ Ta sekcja przeprowadzi Cię przez proces łączenia usługi Azure AD z interfejs
 
 1. W sekcji **mapowania** wybierz pozycję **Synchronizuj Azure Active Directory użytkowników do Asana**.
 
-1. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które mają być synchronizowane z usługi Azure AD do Asana. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w programie Asana for Updates. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany. Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów obsługi użytkowników](../manage-apps/customize-application-attributes.md).
+1. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które mają być synchronizowane z usługi Azure AD do Asana. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w programie Asana for Updates. Wybierz pozycję **Zapisz** , aby zatwierdzić wszelkie zmiany. Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów obsługi użytkowników](../app-provisioning/customize-application-attributes.md).
 
 1. Aby włączyć usługę Azure AD Provisioning for Asana, w sekcji **Ustawienia** Zmień **stan aprowizacji** na **włączone**.
 
@@ -97,10 +97,10 @@ Ta sekcja przeprowadzi Cię przez proces łączenia usługi Azure AD z interfejs
 
 Teraz początkowa synchronizacja jest uruchamiana dla wszystkich użytkowników przypisanych do Asana w sekcji **Użytkownicy** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Sekcja **szczegóły synchronizacji** służy do monitorowania postępu i wykonywania linków do dzienników aktywności aprowizacji. Dzienniki inspekcji opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji Asana.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [raport dotyczący automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [raport dotyczący automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Skonfiguruj logowanie jednokrotne](asana-tutorial.md)

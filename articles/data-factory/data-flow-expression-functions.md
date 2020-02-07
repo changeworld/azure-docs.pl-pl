@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 68771ee3d2ae2d43245bd217bedcf59b987786f1
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5492850944b04ea4b4d30dd206e7b297b34c075c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716724"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062850"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Wyrażenia transformacji danych w mapowaniu przepływu danych 
 
@@ -934,8 +934,8 @@ Funkcja CumeDist oblicza pozycję wartości względem wszystkich wartości w par
 * ``cumeDist()``
 ___
 ### <code>denseRank</code>
-<code><b>denseRank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-Oblicza rangę wartości w grupie wartości. Wynik to jeden i liczba wierszy poprzedzających lub równych bieżącemu wierszowi w kolejności partycji. Wartości nie będą powodować przerw w sekwencji. Gęsta ranga działa nawet wtedy, gdy dane nie są sortowane i wyszukują zmiany w wartościach * ``denseRank(salesQtr, salesAmt)``
+<code><b>denseRank() => integer</b></code><br/><br/>
+Oblicza rangę wartości w grupie wartości określonej w klauzuli Order by okna. Wynik to jeden i liczba wierszy poprzedzających lub równych bieżącemu wierszowi w kolejności partycji. Wartości nie będą powodować przerw w sekwencji. Gęsta ranga działa nawet wtedy, gdy dane nie są sortowane i wyszukują zmiany w wartościach * ``denseRank()``
 ___
 ### <code>lag</code>
 <code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
@@ -954,8 +954,8 @@ Funkcja NTile dzieli wiersze dla każdej partycji okna na `n` zasobników od 1 d
 * ``nTile(numOfBuckets)``
 ___
 ### <code>rank</code>
-<code><b>rank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-Oblicza rangę wartości w grupie wartości. Wynik to jeden i liczba wierszy poprzedzających lub równych bieżącemu wierszowi w kolejności partycji. Wartości będą generować przerwy w sekwencji. Ranga działa nawet wtedy, gdy dane nie są sortowane i wyszukują zmiany w wartościach * ``rank(salesQtr, salesAmt)``
+<code><b>rank() => integer</b></code><br/><br/>
+Oblicza rangę wartości w grupie wartości określonej w klauzuli Order by okna. Wynik to jeden i liczba wierszy poprzedzających lub równych bieżącemu wierszowi w kolejności partycji. Wartości będą generować przerwy w sekwencji. Ranga działa nawet wtedy, gdy dane nie są sortowane i wyszukują zmiany w wartościach * ``rank()``
 ___
 ### <code>rowNumber</code>
 <code><b>rowNumber() => integer</b></code><br/><br/>

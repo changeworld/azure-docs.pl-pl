@@ -1,92 +1,94 @@
 ---
-title: Jak rozwiązywać problemy środowisko uruchomieniowe usługi Azure Functions jest nieosiągalny.
+title: 'Błąd rozwiązywania problemów: środowisko uruchomieniowe usługi Azure Functions jest nieosiągalny'
 description: Dowiedz się, jak rozwiązywać problemy z nieprawidłowym kontem magazynu.
 author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 910b582cb40b9f8aff6a553621b4677d6b019826
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963890"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063785"
 ---
-# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Jak rozwiązywać problemy ze środowiskiem uruchomieniowym funkcji jest nieosiągalny "
+# <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Błąd rozwiązywania problemów: "środowisko uruchomieniowe usługi Azure Functions jest nieosiągalny"
 
-Ten artykuł ma na celu rozwiązywanie problemów z komunikatem o błędzie "środowisko uruchomieniowe funkcji jest nieosiągalny", gdy jest wyświetlany w Azure Portal. W przypadku wystąpienia tego błędu w portalu zostanie wyświetlony następujący ciąg błędu.
+Ten artykuł pomaga w rozwiązywaniu problemów z następującym ciągiem błędu, który pojawia się w Azure Portal:
 
-`Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
+> "Błąd: środowisko uruchomieniowe usługi Azure Functions jest nieosiągalny. Kliknij tutaj, aby uzyskać szczegółowe informacje na temat konfiguracji magazynu ".
 
-Dzieje się tak, gdy nie można uruchomić środowisko uruchomieniowe usługi Azure Functions. Najbardziej typową przyczyną wystąpienia tego błędu jest aplikacja funkcji, która utraci dostęp do konta magazynu. Aby dowiedzieć się więcej, zobacz [wymagania dotyczące konta magazynu](storage-considerations.md#storage-account-requirements).
+Ten problem występuje, gdy nie można uruchomić środowisko uruchomieniowe usługi Azure Functions. Najbardziej typową przyczyną problemu jest to, że aplikacja funkcji utraciła dostęp do konta magazynu. Aby uzyskać więcej informacji, zobacz [wymagania dotyczące konta magazynu](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements).
 
 Pozostała część tego artykułu pomaga rozwiązywać następujące przyczyny tego błędu, w tym informacje dotyczące identyfikowania i rozwiązywania każdego przypadku.
 
-+ [Usunięto konto magazynu](#storage-account-deleted)
-+ [Usunięto ustawienia aplikacji konta magazynu](#storage-account-application-settings-deleted)
-+ [Poświadczenia konta magazynu są nieprawidłowe](#storage-account-credentials-invalid)
-+ [Konto magazynu jest niedostępne](#storage-account-inaccessible)
-+ [Przekroczono limit przydziału dziennych wykonań](#daily-execution-quota-full)
-+ [Twoja aplikacja znajduje się za zaporą](#app-is-behind-a-firewall)
-
-
-## <a name="storage-account-deleted"></a>Usunięto konto magazynu
+## <a name="storage-account-was-deleted"></a>Konto magazynu zostało usunięte
 
 Każda aplikacja funkcji wymaga konta magazynu do działania. Jeśli to konto zostanie usunięte, funkcja nie będzie działać.
 
-### <a name="how-to-find-your-storage-account"></a>Jak znaleźć konto magazynu
+Zacznij od przejrzenia nazwy konta magazynu w ustawieniach aplikacji. `AzureWebJobsStorage` lub `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` zawiera nazwę konta magazynu opakowaną w ciągu połączenia. Aby uzyskać więcej informacji, zobacz temat informacje o [ustawieniach aplikacji dla Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
 
-Zacznij od przejrzenia nazwy konta magazynu w ustawieniach aplikacji. `AzureWebJobsStorage` lub `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` będzie zawierać nazwę konta magazynu opakowaną w ciągu połączenia. Więcej szczegółowych informacji znajduje się w [dokumentacji dotyczącej ustawień aplikacji](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
+Wyszukaj swoje konto magazynu w Azure Portal, aby sprawdzić, czy nadal istnieje. Jeśli został usunięty, Utwórz ponownie konto magazynu i Zastąp parametry połączenia magazynu. Kod funkcji zostanie utracony i konieczne będzie jego ponowne wdrożenie.
 
-Wyszukaj swoje konto magazynu w Azure Portal, aby sprawdzić, czy jeszcze nie istnieje. Jeśli został usunięty, należy ponownie utworzyć konto magazynu i zastąpić parametry połączenia magazynu. Kod funkcji zostanie utracony i konieczne będzie ponowne wdrożenie ponownie.
+## <a name="storage-account-application-settings-were-deleted"></a>Ustawienia aplikacji konta magazynu zostały usunięte
 
-## <a name="storage-account-application-settings-deleted"></a>Usunięto ustawienia aplikacji konta magazynu
-
-W poprzednim kroku, jeśli nie masz parametrów połączenia konta magazynu, prawdopodobnie został on usunięty lub nadpisany. Usuwanie ustawień aplikacji jest najczęściej wykonywane w przypadku używania miejsc wdrożenia lub skryptów Azure Resource Manager do ustawiania ustawień aplikacji.
+W poprzednim kroku, jeśli nie możesz znaleźć parametrów połączenia konta magazynu, prawdopodobnie został on usunięty lub nadpisany. Najczęściej trwa usuwanie ustawień aplikacji w przypadku używania miejsc wdrożenia lub skryptów Azure Resource Manager do ustawiania ustawień aplikacji.
 
 ### <a name="required-application-settings"></a>Wymagane ustawienia aplikacji
 
-* Wymagane
+* Wymagane:
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
-* Wymagane dla funkcji planu zużycia
+* Wymagane dla funkcji planu zużycia:
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-[Tutaj Przeczytaj informacje o tych ustawieniach aplikacji](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
+Aby uzyskać więcej informacji, zobacz temat informacje o [ustawieniach aplikacji dla Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
 
-### <a name="guidance"></a>Wskazówka
+### <a name="guidance"></a>Wskazówki
 
-* Nie sprawdzaj ustawień gniazda dla żadnego z tych ustawień. Podczas wymiany miejsc wdrożenia podział aplikacji funkcji.
+* Nie sprawdzaj ustawień gniazda dla żadnego z tych ustawień. W przypadku wymiany miejsc wdrożenia funkcja jest przerywana.
 * Nie należy modyfikować tych ustawień w ramach zautomatyzowanych wdrożeń.
 * Te ustawienia muszą być podane i ważne podczas tworzenia. Automatyczne wdrożenie, które nie zawiera tych ustawień, powoduje, że aplikacja funkcji nie zostanie uruchomiona, nawet jeśli ustawienia zostaną dodane później.
 
-## <a name="storage-account-credentials-invalid"></a>Nieprawidłowe poświadczenia konta magazynu
+## <a name="storage-account-credentials-are-invalid"></a>Poświadczenia konta magazynu są nieprawidłowe
 
-Jeśli klucze magazynu zostaną ponownie wygenerowane, należy zaktualizować powyższe parametry połączenia konta magazynu. [Przeczytaj więcej na temat zarządzania kluczami magazynu tutaj](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+W przypadku ponownego wygenerowania kluczy magazynu należy zaktualizować wcześniej omówione parametry połączenia konta magazynu. Aby uzyskać więcej informacji na temat zarządzania kluczami magazynu, zobacz [Tworzenie konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
-## <a name="storage-account-inaccessible"></a>Konto magazynu jest niedostępne
+## <a name="storage-account-is-inaccessible"></a>Konto magazynu jest niedostępne
 
-Aplikacja funkcji musi mieć dostęp do konta magazynu. Typowe problemy z zablokowaniem dostępu do funkcji do konta magazynu są następujące:
+Aplikacja funkcji musi mieć dostęp do konta magazynu. Typowe problemy z zablokowaniem dostępu aplikacji funkcji do konta magazynu są następujące:
 
-+ aplikacje funkcji wdrożone w środowiskach App Service (ASE) bez poprawnych reguł sieci, aby umożliwić ruch do i z konta magazynu.
+* Aplikacja funkcji jest wdrażana w App Service Environment bez poprawnych reguł sieciowych w celu zezwolenia na ruch do i z konta magazynu.
 
-+ Zapora konta magazynu jest włączona i nie jest skonfigurowana w taki sposób, aby zezwalała na ruch do i z funkcji. Aby dowiedzieć się więcej, zobacz [Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage](../storage/common/storage-network-security.md).
+* Zapora konta magazynu jest włączona i nie jest skonfigurowana w taki sposób, aby zezwalała na ruch do i z funkcji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zapór i sieci wirtualnych usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-## <a name="daily-execution-quota-full"></a>Pełny limit przydziału dziennego wykonania
+## <a name="daily-execution-quota-is-full"></a>Dzienny limit przydziału wykonywania jest pełny
 
 W przypadku skonfigurowania dziennego przydziału wykonywania aplikacja funkcji jest tymczasowo wyłączona, co spowoduje, że wiele kontrolek portalu stanie się niedostępna. 
 
-+ Aby sprawdzić w [Azure Portal](https://portal.azure.com), Otwórz pozycję **funkcje platformy** > **aplikacja funkcji ustawienia** w aplikacji funkcji. Gdy ustawisz **dzienny limit przydziału użycia** , zobaczysz następujący komunikat:
+Aby sprawdzić limit przydziału w [Azure Portal](https://portal.azure.com), wybierz pozycję **funkcje platformy** > **aplikacja funkcji ustawienia** w aplikacji funkcji. Jeśli osiągnięto **dzienny limit przydziału użycia** , zostanie wyświetlony następujący komunikat:
 
-    `The function app has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+  > "Aplikacja funkcji osiągnął dzienny limit przydziału użycia i został zatrzymany do następnego 24-godzinnego okresu czasu".
 
-+ Aby rozwiązać ten problem, Usuń lub Zwiększ dzienny limit przydziału i ponownie uruchom aplikację. W przeciwnym razie wykonywanie aplikacji jest blokowane do następnego dnia.
+Aby rozwiązać ten problem, Usuń lub Zwiększ dzienny limit przydziału, a następnie uruchom ponownie aplikację. W przeciwnym razie wykonywanie aplikacji jest blokowane do następnego dnia.
 
 ## <a name="app-is-behind-a-firewall"></a>Aplikacja znajduje się za zaporą
 
-Środowisko uruchomieniowe funkcji będzie nieosiągalne, jeśli aplikacja funkcji jest hostowana w ramach [wewnętrznego równoważenia obciążenia App Service Environment](../app-service/environment/create-ilb-ase.md) i jest skonfigurowana do blokowania przychodzącego ruchu internetowego lub ma [ograniczenia przychodzące IP](functions-networking-options.md#inbound-ip-restrictions) skonfigurowane do blokowania dostępu do Internetu. Azure Portal wykonuje wywołania bezpośrednio do uruchomionej aplikacji w celu pobrania listy funkcji, a także nawiązuje wywołania HTTP do punktu końcowego KUDU. Ustawienia poziomu platformy na karcie `Platform Features` będą nadal dostępne.
+Środowisko uruchomieniowe funkcji może być nieosiągalne z jednego z następujących powodów:
 
-Aby sprawdzić konfigurację środowiska ASE, przejdź do sieciowej grupy zabezpieczeń podsieci, w której znajduje się środowisko ASE, i Sprawdź reguły ruchu przychodzącego, aby zezwolić na ruch pochodzący z publicznego adresu IP komputera, na którym uzyskujesz dostęp do aplikacji. Portalu można także użyć z komputera połączonego z siecią wirtualną, na której działa aplikacja lub maszyna wirtualna działająca w sieci wirtualnej. [Więcej informacji na temat konfiguracji reguły ruchu przychodzącego można znaleźć tutaj](../app-service/environment/network-info.md#network-security-groups)
+* Aplikacja funkcji jest hostowana w ramach [wewnętrznego równoważenia obciążenia App Service Environment](../app-service/environment/create-ilb-ase.md) i jest skonfigurowana do blokowania przychodzącego ruchu internetowego.
+
+* Aplikacja funkcji ma [Ograniczenia adresów IP dla ruchu przychodzącego](functions-networking-options.md#inbound-ip-restrictions) , które są skonfigurowane do blokowania dostępu do Internetu. 
+
+Azure Portal wykonuje wywołania bezpośrednio do uruchomionej aplikacji w celu pobrania listy funkcji i wysyła wywołania HTTP do punktu końcowego kudu. Ustawienia na poziomie platformy na karcie **funkcje platformy** są nadal dostępne.
+
+Aby sprawdzić konfigurację App Service Environment:
+1. Przejdź do sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) podsieci, w której znajduje się App Service Environment.
+1. Sprawdź poprawność reguł ruchu przychodzącego, aby zezwolić na ruch pochodzący z publicznego adresu IP komputera, na którym uzyskujesz dostęp do aplikacji. 
+   
+Portalu można także użyć z komputera, który jest połączony z siecią wirtualną, na której uruchomiona jest aplikacja lub do maszyny wirtualnej działającej w sieci wirtualnej. 
+
+Aby uzyskać więcej informacji na temat konfiguracji reguł ruchu przychodzącego, zobacz sekcję "sieciowe grupy zabezpieczeń" [zagadnienia dotyczące sieci App Service Environment](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups).
 
 ## <a name="next-steps"></a>Następne kroki
 

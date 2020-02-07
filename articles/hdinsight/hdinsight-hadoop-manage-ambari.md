@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311660"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063802"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Apache Ambari
 
@@ -32,7 +32,7 @@ Platforma [Apache Ambari](https://ambari.apache.org) upraszcza zarządzanie Hado
 Interfejs użytkownika sieci Web Ambari jest dostępny w klastrze usługi HDInsight w `https://CLUSTERNAME.azurehdinsight.net`, gdzie `CLUSTERNAME` jest nazwą klastra.
 
 > [!IMPORTANT]  
-> Połączenie z usługą Ambari w usłudze HDInsight wymaga protokołu HTTPS. Po wyświetleniu monitu o uwierzytelnienie Użyj nazwy konta administratora i hasła podanego podczas tworzenia klastra.
+> Połączenie z usługą Ambari w usłudze HDInsight wymaga protokołu HTTPS. Po wyświetleniu monitu o uwierzytelnienie Użyj nazwy konta administratora i hasła podanego podczas tworzenia klastra. Jeśli nie zostanie wyświetlony monit o podanie poświadczeń, sprawdź ustawienia sieci, aby upewnić się, że nie występuje problem z łącznością między klientem i klastrami usługi Azure HDInsight.
 
 ## <a name="ssh-tunnel-proxy"></a>Tunel SSH (proxy)
 
@@ -58,7 +58,7 @@ Gdy zostanie otwarta strona, zanotuj pasek u góry. Ten pasek zawiera następuj�
 |Usługi|Informacje i ustawienia konfiguracji usług w klastrze.|
 |Hosts|Ustawienia informacji i konfiguracji dla węzłów w klastrze.|
 |Alerty|Dziennik informacji, ostrzeżeń i alertów krytycznych.|
-|Administratora|Stos/usługi oprogramowania zainstalowane w klastrze, informacje o koncie usługi i zabezpieczenia protokołu Kerberos.|
+|Administrator|Stos/usługi oprogramowania zainstalowane w klastrze, informacje o koncie usługi i zabezpieczenia protokołu Kerberos.|
 |Przycisk administratora|Ambari Management, ustawienia użytkownika i wyloguj się.|
 
 ## <a name="monitoring"></a>Monitorowanie
@@ -115,7 +115,7 @@ Wybranie usługi spowoduje wyświetlenie bardziej szczegółowych informacji na 
 
 ![Informacje podsumowania usługi Apache Ambari](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
 
-#### <a name="quick-links"></a>Szybkie łącza
+#### <a name="quick-links"></a>Szybkie linki
 
 W niektórych usługach w górnej części strony są wyświetlane łącza **szybki** link. Może to służyć do uzyskiwania dostępu do interfejsów użytkownika sieci Web specyficznych dla usługi, takich jak:
 
@@ -159,7 +159,7 @@ Na stronie **hosty** są wyświetlane wszystkie hosty w klastrze. Aby zarządza�
     |Włącz tryb konserwacji|Pomija alerty dla hosta. Ten tryb należy włączyć, jeśli wykonujesz akcje generujące alerty. Na przykład zatrzymywanie i uruchamianie usługi.|
     |Wyłącz tryb konserwacji|Zwraca hosta do normalnego alertu.|
     |Stop|Powoduje zatrzymanie elementu datanode lub NodeManagers na hoście.|
-    |Rozpocznij|Uruchamia element datanode lub NodeManagers na hoście.|
+    |Początek|Uruchamia element datanode lub NodeManagers na hoście.|
     |Ponowne uruchamianie|Kończy i uruchamia węzeł datanode lub NodeManagers na hoście.|
     |Zlikwidować|Usuwa hosta z klastra. **Nie należy używać tej akcji w klastrach usługi HDInsight.**|
     |Recommission|Dodaje wcześniej zlikwidowanego hosta do klastra. **Nie należy używać tej akcji w klastrach usługi HDInsight.**|

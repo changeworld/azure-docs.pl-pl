@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 808a17fcf303c6eb72f11f5379fa172302dc782a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022141"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059860"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Tworzenie rozwiązań dla handlu detalicznego za pomocą usługi Azure IoT Central
 
@@ -160,7 +160,7 @@ Poniższy zrzut ekranu przedstawia wbudowany pulpit nawigacyjny w szablonie apli
 > [!div class="mx-imgBorder"]
 > ](./media/overview-iot-central-retail/MFC-Dashboard.png) centrum ![Micro-zrealizować
 
-Aby dowiedzieć się więcej, zapoznaj się z samouczkiem [wdrażanie i przechodzenie do szablonu aplikacji Centrum programu Micro-zrealizować](./tutorial-iot-central-smart-inventory-management-pnp.md) .
+Aby dowiedzieć się więcej, zapoznaj się z samouczkiem [wdrażanie i przechodzenie do szablonu aplikacji Centrum programu Micro-zrealizować](./tutorial-micro-fulfillment-center-pnp.md) .
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -170,5 +170,5 @@ Aby rozpocząć tworzenie rozwiązania do sprzedaży detalicznej:
 * [Wdrażanie i przechodzenie przez połączony szablon aplikacji logistycznej](./tutorial-iot-central-connected-logistics-pnp.md).
 * [Wdróż i przeprowadź procedurę za pomocą szablonu aplikacji Digital Distribution Center](./tutorial-iot-central-digital-distribution-center-pnp.md).
 * [Wdróż i przeprowadź procedurę przy użyciu szablonu aplikacji do zarządzania magazynem inteligentnym](./tutorial-iot-central-smart-inventory-management-pnp.md).
-* [Wdróż i zapoznaj się z szablonem aplikacji Centrum programu Micro-zrealizować](./tutorial-iot-central-smart-inventory-management-pnp.md).
+* [Wdróż i zapoznaj się z szablonem aplikacji Centrum programu Micro-zrealizować](./tutorial-micro-fulfillment-center-pnp.md).
 * Dowiedz się więcej o IoT Central w [IoT Central przegląd](../preview/overview-iot-central.md).

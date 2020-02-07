@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967707"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063853"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
@@ -44,7 +44,7 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 W przypadku większości organizacji zabezpieczenia zasobów firmy są zależne od integralności kont uprzywilejowanych, które administrują systemami IT i zarządzają nimi. Cybernetycznymi — atakujący koncentrują się na uprzywilejowanym dostępie do systemów infrastruktury (takich jak Active Directory i Azure Active Directory), aby uzyskać dostęp do poufnych danych organizacji. 
 
-Tradycyjne podejścia, które koncentrują się na zabezpieczaniu punktów wejścia i wyjścia sieci jako podstawowy obwód zabezpieczeń, są mniej efektywne ze względu na wzrost użycia aplikacji SaaS i urządzeń osobistych w Internecie. Naturalnym sposobem zastąpienia obwodowych zabezpieczeń sieci w złożonych nowoczesnych przedsiębiorstwach jest uwierzytelnianie i kontrola autoryzacji w warstwie tożsamości organizacji.
+Tradycyjne podejścia, które koncentrują się na zabezpieczaniu punktów wejścia i wyjścia sieci jako podstawowy obwód zabezpieczeń, są mniej efektywne ze względu na wzrost użycia aplikacji SaaS i urządzeń osobistych w Internecie. Naturalną wymianą dla obwodu zabezpieczeń sieci w złożonej nowoczesnej firmie jest kontrola uwierzytelniania i autoryzacji w warstwie tożsamości organizacji.
 
 Uprzywilejowane konta administracyjne są skutecznie kontrolujące ten nowy "obwód zabezpieczeń". Ochrona dostępu uprzywilejowanego jest niezwykle ważna niezależnie od tego, czy środowisko działa lokalnie, w chmurze, czy w ramach usług hostowanych w chmurze. Ochrona dostępu administracyjnego do określonych źródłami ataków wymaga wykonania kompletnego i przydatnegoego podejścia do izolowania systemów organizacji przed zagrożeniami. 
 
@@ -241,7 +241,7 @@ Wymaganie kierownictwa w języku C, menedżerów wysokiego poziomu, kluczowych p
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Używanie dedykowanych stacji roboczych do administrowania usługą Azure AD
 
-Osoby atakujące mogą próbować uzyskać dostęp do kont uprzywilejowanych w celu uzyskania dostępu do danych i systemów organizacji, dzięki czemu mogą one zakłócać integralność i autentyczność danych za pośrednictwem złośliwego kodu, który zmienia logikę programu lub przeprowadza inspekcję podczas wprowadzania poświadczeń przez administratora. Stacje robocze z dostępem uprzywilejowanym (PAW, Privileged Access Workstation) zapewniają dedykowany system operacyjny do realizacji zadań poufnych, który jest zabezpieczony przed atakami internetowymi i wektorami zagrożenia. Oddzielenie tych wrażliwych zadań i kont od codziennych stacji roboczych i urządzeń zapewnia bardzo silną ochronę przed atakami polegającymi na wyłudzaniu informacji, lukami w zabezpieczeniach aplikacji i systemu operacyjnego, różne ataki personifikacji i ataki kradzieży poświadczeń, takie jak naciśnięcie klawisza Rejestrowanie, przekazywanie-mieszanie i przekazywanie biletów. Wdrażając uprzywilejowane stacje robocze dostępu, można zmniejszyć ryzyko wprowadzenia poświadczeń administratora przez administratorów z wyjątkiem środowiska pulpitu, które zostało zaostrzone. Aby uzyskać więcej informacji, zobacz [stacje robocze dostępu uprzywilejowanego](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Osoby atakujące mogą próbować uzyskać dostęp do kont uprzywilejowanych w celu uzyskania dostępu do danych i systemów organizacji, dzięki czemu mogą one zakłócać integralność i autentyczność danych za pośrednictwem złośliwego kodu, który zmienia logikę programu lub przeprowadza inspekcję podczas wprowadzania poświadczeń przez administratora. Stacje robocze dostępu uprzywilejowanego (dostępem uprzywilejowanym) zapewniają dedykowany system operacyjny dla poufnych zadań, które są chronione przed atakami internetowymi i nosicielami zagrożeń. Oddzielenie tych wrażliwych zadań i kont od codziennych stacji roboczych i urządzeń zapewnia bardzo silną ochronę przed atakami polegającymi na wyłudzaniu informacji, lukami w zabezpieczeniach aplikacji i systemu operacyjnego, różne ataki personifikacji i ataki kradzieży poświadczeń, takie jak naciśnięcie klawisza Rejestrowanie, przekazywanie-mieszanie i przekazywanie biletów. Wdrażając uprzywilejowane stacje robocze dostępu, można zmniejszyć ryzyko wprowadzenia poświadczeń administratora przez administratorów z wyjątkiem środowiska pulpitu, które zostało zaostrzone. Aby uzyskać więcej informacji, zobacz [stacje robocze dostępu uprzywilejowanego](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Przejrzyj Narodowy Instytut standardów i zaleceń dotyczących technologii związanych z obsługą zdarzeń 
 
@@ -298,11 +298,11 @@ Integracja dzienników platformy Azure umożliwia integrowanie nieprzetworzonych
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>Implementowanie aprowizacji użytkowników dla połączonych aplikacji
 
-Usługa Azure AD umożliwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach w chmurze (SaaS), takich jak Dropbox, Salesforce, usługi ServiceNow i tak dalej. Aby uzyskać więcej informacji, zobacz [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS przy użyciu usługi Azure AD](../manage-apps/user-provisioning.md).
+Usługa Azure AD umożliwia automatyzację tworzenia, obsługi i usuwania tożsamości użytkowników w aplikacjach w chmurze (SaaS), takich jak Dropbox, Salesforce, usługi ServiceNow i tak dalej. Aby uzyskać więcej informacji, zobacz [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS przy użyciu usługi Azure AD](../app-provisioning/user-provisioning.md).
 
 #### <a name="integrate-information-protection"></a>Integrowanie ochrony informacji
 
-Usługa MCAS umożliwia badanie plików i Ustawianie zasad na podstawie etykiet klasyfikacji Azure Information Protection, co zapewnia lepszą widoczność i kontrolę nad danymi w chmurze. Skanuj i Klasyfikuj pliki w chmurze i stosuj etykiety usługi Azure Information Protection. Aby uzyskać więcej informacji, zobacz [integracji usługi Azure Information Protection](https://docs.microsoft.com/cloud-app-security/azip-integration).
+Usługa MCAS umożliwia badanie plików i Ustawianie zasad na podstawie etykiet klasyfikacji Azure Information Protection, co zapewnia lepszą widoczność i kontrolę nad danymi w chmurze. Skanuj i Klasyfikuj pliki w chmurze i stosuj etykiety usługi Azure Information Protection. Aby uzyskać więcej informacji, zobacz [Azure Information Protection Integration](https://docs.microsoft.com/cloud-app-security/azip-integration).
 
 #### <a name="configure-conditional-access"></a>Konfigurowanie dostępu warunkowego
 
@@ -318,7 +318,7 @@ Aby zapewnić ochronę dostępu użytkowników w połączonych aplikacjach, zale
 * Zapobieganie wyciekom danych
 * Minimalizacja ryzyka i zautomatyzowanego zapobiegania zagrożeniom i wymuszania zasad
 
-Agent Cloud App Security SIEM integruje Cloud App Security z serwerem SIEM w celu umożliwienia scentralizowanego monitorowania alertów i działań związanych z pakietem Office 365. Jest on uruchamiany na serwerze i pobiera alerty i działania z Cloud App Security i strumieniuje je na serwerze SIEM. Aby uzyskać więcej informacji, zobacz [integracja rozwiązania SIEM](https://docs.microsoft.com/cloud-app-security/siem).
+Agent Cloud App Security SIEM integruje Cloud App Security z serwerem SIEM w celu umożliwienia scentralizowanego monitorowania alertów i działań związanych z pakietem Office 365. Jest on uruchamiany na serwerze i pobiera alerty i działania z Cloud App Security i strumieniuje je na serwerze SIEM. Aby uzyskać więcej informacji, zobacz [Siem Integration](https://docs.microsoft.com/cloud-app-security/siem).
 
 ## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>Etap 4. kontynuowanie tworzenia obronności w celu uzyskania bardziej aktywnej stan zabezpieczeń
 

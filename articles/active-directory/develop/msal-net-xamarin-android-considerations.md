@@ -13,12 +13,12 @@ ms.date: 04/24/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c916ac98774600c16eb26ed43b8ae4b273137865
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
-ms.translationtype: MT
+ms.openlocfilehash: 54df91d38541fbe17a28c9ae083ae0e7d0c9d88d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695011"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063666"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Zagadnienia specyficzne dla platformy Xamarin Android z MSAL.NET
 W tym artykule omówiono określone zagadnienia dotyczące korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
@@ -71,16 +71,19 @@ Ten wiersz zapewnia, że formant wraca do MSAL po zakończeniu interaktywnej cz�
 
 ## <a name="update-the-android-manifest"></a>Aktualizowanie manifestu systemu Android
 `AndroidManifest.xml` powinna zawierać następujące wartości:
-```csharp
+```xml
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="msal{client_id}" android:host="auth" />
+        <data android:scheme="msauth"
+              android:host="Enter_the_Package_Name"
+              android:path="/Enter_the_Signature_Hash"/>
          </intent-filter>
 </activity>
 ```
+Zastąp nazwę pakietu zarejestrowanego w Azure Portal dla wartości `android:host=`. Zastąp skrót klucza zarejestrowany w Azure Portal dla wartości `android:path=`. Wartość skrótu podpisu **nie** powinna być zakodowana w adresie URL. Upewnij się, że na początku skrótu podpisu występuje wiodąca `/`.
 
 Można też [utworzyć działanie w kodzie](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) , a nie edytować `AndroidManifest.xml`ręcznie. W tym celu należy utworzyć klasę, która ma atrybut `Activity` i `IntentFilter`. Klasa, która reprezentuje te same wartości powyższego kodu XML:
 
@@ -141,6 +144,6 @@ Prawdopodobną przyczyną jest to, że program Visual Studio nie zaktualizował 
 
 Więcej szczegółowych informacji i przykładów znajduje się w punkcie [uwagi dotyczące określonych](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) przykładowych plików README.MD:
 
-| Przykład | Platforma | Opis |
+| Sample | Platforma | Opis |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, platformy UWP | Prosta aplikacja interfejsu Xamarin Forms, która przedstawia, jak używać MSAL do uwierzytelniania kont MSA i Azure AD za pośrednictwem punktu końcowego AADD v 2.0, a następnie uzyskiwać dostęp do Microsoft Graph przy użyciu tokenu z wynikiem. <br>![Topologia](media/msal-net-xamarin-android-considerations/topology.png) |

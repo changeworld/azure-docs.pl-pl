@@ -1,5 +1,6 @@
 ---
-title: Informacje o świecie bez hasła Azure Active Directory | Microsoft Docs
+title: Uwierzytelnianie bez hasła w usłudze Azure AD
+titleSuffix: Active Directory
 description: Ten przewodnik pomaga CEOs, dyrektorzy działu informatyki, CISOs, starszym architektom tożsamości, architektom przedsiębiorstwa oraz zabezpieczeniom i organom IT odpowiedzialnym za wybór metody uwierzytelniania bezhasła dla ich implementacji Azure Active Directory.
 keywords: bezhasło, azuread
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 5fc6a4a23573995cf791a21ec7cf3a7d68d048e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945582"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064482"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Świat bez hasła przy użyciu Azure Active Directory
 
@@ -208,7 +209,7 @@ Administratorzy mogą włączyć obsługę FIDO2 w usłudze Azure AD i przypisa�
 
 * Azure AD
 
-* Usługa Azure Multi-Factor Authentication
+* Azure Multi-Factor Authentication
 
 * Podgląd rejestracji połączonej
 
@@ -283,8 +284,8 @@ Oto kilka czynników, które należy wziąć pod uwagę podczas wybierania techn
 
 ||**Windows Hello dla firm**|**Logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator**|**FIDO2 klucze zabezpieczeń**|
 |:-|:-|:-|:-|
-|**Wymagania wstępne**| Windows 10, wersja 1809 lub nowsza<br>Usługa Active Directory systemu Azure| Aplikacja Microsoft Authenticator<br>Telefon (urządzenia z systemem iOS i Android z systemem Android 6,0 lub nowszym)|Windows 10, wersja 1809 lub nowsza<br>Usługa Active Directory systemu Azure|
-|**Tryb**|Platforma|Oprogramowanie|Sprzęt|
+|**Wymagania wstępne**| Windows 10, wersja 1809 lub nowsza<br>Azure Active Directory| Aplikacja Microsoft Authenticator<br>Telefon (urządzenia z systemem iOS i Android z systemem Android 6,0 lub nowszym)|Windows 10, wersja 1809 lub nowsza<br>Azure Active Directory|
+|**Wyst**|Platforma|Oprogramowanie|Sprzęt|
 |**Systemy i urządzenia**|KOMPUTER z wbudowaną moduł TPM (TPM)<br>Rozpoznawanie kodu PIN i biometrii |Rozpoznawanie kodu PIN i biometrii na telefonie|FIDO2 urządzenia zabezpieczające zgodne z firmą Microsoft|
 |**Środowisko użytkownika**|Zaloguj się przy użyciu kodu PIN lub rozpoznawania biometrycznego (twarzy, Iris lub odcisku palca) z urządzeniami z systemem Windows.<br>Uwierzytelnianie przy użyciu systemu Windows Hello jest powiązane z urządzeniem; Aby uzyskać dostęp do zasobów firmy, użytkownik potrzebuje zarówno urządzenia, jak i składnika logowania, takiego jak kod PIN lub czynnik biometryczny.|Zaloguj się przy użyciu telefonu komórkowego z funkcją skanowania odcisków palców, rozpoznawania twarzy lub tęczówki lub numeru PIN.<br>Użytkownicy logują się do konta służbowego lub osobistego z komputera lub telefonu komórkowego.|Zaloguj się przy użyciu urządzenia zabezpieczeń FIDO2 (biometrii, kod PIN i NFC)<br>Użytkownik może uzyskać dostęp do urządzenia w oparciu o kontrolki organizacji i uwierzytelniać się na podstawie kodu PIN, biometrii przy użyciu urządzeń, takich jak klucze zabezpieczeń USB i karty inteligentne obsługujące NFC, klucze lub noszenia.|
 |**Włączone scenariusze**| Korzystanie z urządzenia z systemem Windows bez hasła.<br>Dotyczy dedykowanego komputera służbowego z możliwością logowania jednokrotnego do urządzenia i aplikacji.|Rozwiązanie z obsługą hasła bez miejsca przy użyciu telefonu komórkowego.<br>Dotyczy uzyskiwania dostępu do służbowych aplikacji w sieci Web z dowolnego urządzenia.|Środowisko pracy bez hasła dla pracowników korzystających z biometrii, numeru PIN i NFC.<br>Dotyczy komputerów udostępnionych i lokalizacji, w których telefon komórkowy nie jest żywotną opcją (na przykład dla personelu pomocy technicznej, kiosku publicznego lub zespołu szpitalowego)|

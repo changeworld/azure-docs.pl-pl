@@ -3,12 +3,12 @@ title: Zrozumienie blokowania zasobów
 description: Dowiedz się więcej na temat opcji blokowania w planach platformy Azure w celu ochrony zasobów podczas przypisywania planu.
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406408"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057349"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania zasobów w planach platformy Azure
 
@@ -21,7 +21,7 @@ Nie można jednak zmienić trybów blokowania poza planami.
 
 Zasoby utworzone przez artefakty w przypisaniu planu mają cztery stany: **nie zablokowane**, **tylko do odczytu**, **nie można edytować/usuwać**ani **nie mogą go usunąć**. Każdy typ artefaktu może być w stanie **niezablokowanym** . Poniższa tabela może służyć do określenia stanu zasobu:
 
-|Tryb|Typ zasobu artefaktu|State|Opis|
+|Tryb|Typ zasobu artefaktu|Stan|Opis|
 |-|-|-|-|
 |Nie blokuj|*|Niezablokowane|Zasoby nie są chronione przez plany. Ten stan jest również używany w przypadku zasobów dodanych do elementu " **tylko do odczytu** " lub nie **usuwaj** artefaktu grupy zasobów spoza przypisania planu.|
 |Tylko do odczytu|Grupa zasobów|Nie można edytować/usunąć|Grupa zasobów jest tylko do odczytu i nie można modyfikować tagów w grupie zasobów. **Niezablokowane** zasoby mogą być dodawane, przenoszone, zmieniane lub usuwane z tej grupy zasobów.|
@@ -102,6 +102,26 @@ W niektórych scenariuszach projektowych lub zabezpieczających może być konie
   }
 }
 ```
+
+## <a name="exclude-an-action-from-a-deny-assignment"></a>Wyklucz akcję z przypisania odmowy
+
+Podobnie jak w przypadku [wykluczenia podmiotu zabezpieczeń](#exclude-a-principal-from-a-deny-assignment) [w przypisaniu planu](../../../role-based-access-control/deny-assignments.md) , można wykluczyć określone [operacje RBAC](../../../role-based-access-control/resource-provider-operations.md). W bloku **właściwości. blokady** w tym samym miejscu, w którym znajduje się **excludedPrincipals** , można dodać **excludedActions** :
+
+```json
+"locks": {
+    "mode": "AllResourcesDoNotDelete",
+    "excludedPrincipals": [
+        "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+        "38833b56-194d-420b-90ce-cff578296714"
+    ],
+    "excludedActions": [
+        "Microsoft.ContainerRegistry/registries/push/write",
+        "Microsoft.Authorization/*/read"
+    ]
+},
+```
+
+Chociaż **excludedPrincipals** musi być jawne, wpisy **excludedActions** mogą używać `*` do dopasowania symboli wieloznacznych w operacjach RBAC.
 
 ## <a name="next-steps"></a>Następne kroki
 

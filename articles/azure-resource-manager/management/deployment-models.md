@@ -2,13 +2,13 @@
 title: Wdrażanie za pomocą usługi Resource Manager i klasyczne
 description: W tym artykule opisano różnice między modelem wdrażania przy użyciu usługi Resource Manager a modelem klasycznym (lub przy użyciu zarządzania usługami).
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: 4d7f17dace81198724a62dcc665c8c31acbcf6de
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.date: 02/06/2020
+ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168843"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064516"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Wdrożenie przy użyciu usługi Azure Resource Manager a wdrożenie klasyczne: omówienie modeli wdrażania i stanu zasobów
 
@@ -76,7 +76,7 @@ Tylko zasoby utworzone przy użyciu usługi Resource Manager obsługują tagi. N
 
 Poniższy diagram przedstawia zasoby obliczeniowe, sieciowe i magazynu wdrożone przy użyciu usługi Resource Manager.
 
-![Menedżer zasobów — architektura](./media/deployment-models/arm_arch3.png)
+![Architektura usługi Resource Manager](./media/deployment-models/arm_arch3.png)
 
 Pamiętaj o następujących relacjach między zasobami:
 
@@ -99,7 +99,7 @@ Klasyczne rozwiązanie dla hostowania maszyny wirtualnej obejmuje następujące 
 
 W poniższej tabeli opisano zmiany dotyczące interakcji dostawców zasobów obliczeniowych, sieciowych i magazynu:
 
-| Element | Klasyczny | Resource Manager |
+| Element | Wdrożenie klasyczne | Resource Manager |
 | --- | --- | --- |
 | Usługa w chmurze dla maszyn wirtualnych |Usługa w chmurze stanowiła kontener do przechowywania maszyn wirtualnych wymagających dostępności na platformie oraz równoważenia obciążenia. |Usługa w chmurze nie jest już obiektem wymaganym do utworzenia maszyny wirtualnej przy użyciu nowego modelu. |
 | Sieci wirtualne |Sieć wirtualna jest opcjonalna dla maszyny wirtualnej. W przypadku uwzględnienia sieci wirtualnej nie można wdrożyć przy użyciu Menedżer zasobów. |Maszyna wirtualna wymaga sieci wirtualnej, która została wdrożona przy użyciu usługi Resource Manager. |

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2de0cdd32428884170f549afacdbd52c3a10c93f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530038"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060052"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>Samouczek: Konfigurowanie zapisywania zwrotnego atrybutów z usługi Azure AD do oprogramowania SAP SuccessFactors (wersja zapoznawcza)
 Celem tego samouczka jest wyświetlenie czynności, które należy wykonać w celu uzyskania atrybutów zapisywania zwrotnego z usługi Azure AD do SuccessFactors Employee Central. Jedynym atrybutem, który jest obecnie obsługiwany dla zapisywania zwrotnego jest atrybut poczty e-mail. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Po skonfigurowaniu integracji przychodzącej aprowizacji przy użyciu funkcji [SuccessFactors do lokalnej aplikacji do aprowizacji usługi AD](sap-successfactors-inbound-provisioning-tutorial.md) lub [SuccessFactors w aplikacji Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) Provisioning można opcjonalnie skonfigurować aplikację zapisywania zwrotnego SuccessFactors, aby zapisać adres E-mail z powrotem do SuccessFactors. 
 
@@ -106,7 +106,7 @@ Ta sekcja zawiera kroki dla programu
 
 **Aby skonfigurować zapisywanie zwrotne SuccessFactors:**
 
-1. Przejdź do usługi <https://portal.azure.com>
+1. Przejdź do strony <https://portal.azure.com>
 
 2. Na lewym pasku nawigacyjnym wybierz pozycję **Azure Active Directory**
 
@@ -170,7 +170,7 @@ Po zakończeniu konfiguracji aplikacji SuccessFactorsing (Inicjowanie obsługi a
 
 1. Na karcie **aprowizacji** Ustaw **stan aprowizacji** na **włączone**.
 
-2. Kliknij pozycję **Zapisz**.
+2. Kliknij przycisk **Save** (Zapisz).
 
 3. Ta operacja rozpocznie synchronizację początkową, która może potrwać zmienną liczbę godzin w zależności od liczby użytkowników w dzierżawie SuccessFactors. Możesz sprawdzić, czy pasek postępu śledzi postęp cyklu synchronizacji. 
 
@@ -183,8 +183,8 @@ Po zakończeniu konfiguracji aplikacji SuccessFactorsing (Inicjowanie obsługi a
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)
 * [Dowiedz się, jak skonfigurować Logowanie jednokrotne między SuccessFactors i Azure Active Directory](successfactors-tutorial.md)
 * [Dowiedz się, jak zintegrować inne aplikacje SaaS z Azure Active Directory](tutorial-list.md)
-* [Dowiedz się, jak eksportować i importować konfiguracje aprowizacji](../manage-apps/export-import-provisioning-configuration.md)
+* [Dowiedz się, jak eksportować i importować konfiguracje aprowizacji](../app-provisioning/export-import-provisioning-configuration.md)
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c4547bddeea8b67bd3377124b1c299662fea3e6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274168"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063547"
 ---
 # <a name="configure-linked-sign-on"></a>Konfigurowanie połączonego logowania
 
@@ -50,4 +50,4 @@ Jeśli aplikacja nie została dodana do dzierżawy usługi Azure AD, zobacz [Dod
 ## <a name="next-steps"></a>Następne kroki
 
 - [Przypisywanie użytkowników lub grup do aplikacji](methods-for-assigning-users-and-groups.md)
-- [Konfigurowanie automatycznego inicjowania obsługi konta użytkownika](configure-automatic-user-provisioning-portal.md)
+- [Konfigurowanie automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/configure-automatic-user-provisioning-portal.md)

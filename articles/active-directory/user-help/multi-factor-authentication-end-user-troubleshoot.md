@@ -2,7 +2,7 @@
 title: Typowe problemy & rozwiązania z uwierzytelnianiem kont — Azure AD
 description: Poznaj potencjalne problemy i rozwiązania niektórych typowych problemów z weryfikacją dwuskładnikową oraz konta służbowego.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.workload: identity
@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 498c150706cd62168b7c45b1bcf36ad6c3a8b63b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3f44884f54278f7b4d07a265604f4a256d66e8a8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705211"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062544"
 ---
 # <a name="common-problems-and-solutions-with-two-factor-verification-and-your-work-or-school-account"></a>Typowe problemy i rozwiązania przy użyciu weryfikacji dwuskładnikowej oraz konta służbowego
 
@@ -83,9 +83,9 @@ Jeśli masz nowe urządzenie przenośne, musisz skonfigurować je do pracy z wer
 
 2. Zaktualizuj swoje informacje o koncie i urządzeniu na stronie **dodatkowej weryfikacji zabezpieczeń** , usuwając stare urządzenie i dodając nowe. Aby uzyskać więcej informacji, zobacz artykuł [Zarządzanie ustawieniami metody weryfikacji dwuskładnikowej](multi-factor-authentication-end-user-manage-settings.md) .
 
-3. Element opcjonalny. Pobierz, zainstaluj i skonfiguruj aplikację Microsoft Authenticator na urządzeniu przenośnym, wykonując czynności opisane w artykule [pobieranie i instalowanie aplikacji Microsoft Authenticator](user-help-auth-app-download-install.md) .
+3. Opcjonalny. Pobierz, zainstaluj i skonfiguruj aplikację Microsoft Authenticator na urządzeniu przenośnym, wykonując czynności opisane w artykule [pobieranie i instalowanie aplikacji Microsoft Authenticator](user-help-auth-app-download-install.md) .
 
-4. Element opcjonalny. Włącz weryfikację dwuskładnikową dla zaufanych urządzeń, wykonując czynności opisane w sekcji **Włączanie weryfikacji dwuskładnikowej w** artykule [Zarządzanie ustawieniami metody weryfikacji dwuskładnikowej](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) .
+4. Opcjonalny. Włącz weryfikację dwuskładnikową dla zaufanych urządzeń, wykonując czynności opisane w sekcji **Włączanie weryfikacji dwuskładnikowej w** artykule [Zarządzanie ustawieniami metody weryfikacji dwuskładnikowej](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) .
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Mam problemy z logowaniem się na urządzeniu przenośnym podczas podróży
 
@@ -103,7 +103,7 @@ Jeśli używasz weryfikacji dwuetapowej przy użyciu konta służbowego (na przy
 
 Jeśli wykonano te kroki, ale nadal występują problemy, skontaktuj się z działem pomocy technicznej w celu uzyskania pomocy.
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
 - [Zarządzanie ustawieniami metody weryfikacji dwuskładnikowej](multi-factor-authentication-end-user-manage-settings.md)
 

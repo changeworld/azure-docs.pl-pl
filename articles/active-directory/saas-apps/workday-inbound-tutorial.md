@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a7e5dc9c177dbddda8bf229ec7949f53b70e616c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613770"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064310"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznego aprowizacji użytkowników
 
 Celem tego samouczka jest przedstawienie czynności, które należy wykonać w celu zaimportowania profilów procesów roboczych z produktu Workday do obu Active Directory i Azure Active Directory, z opcjonalnym zapisem adresu e-mail i nazwą użytkownika w dniach roboczych.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-[Usługa aprowizacji użytkowników Azure Active Directory](../manage-apps/user-provisioning.md) integruje się z [interfejsem API zasobów ludzkich firmy Workday](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) , aby udostępnić konta użytkowników. Usługa Azure AD używa tego połączenia, aby włączyć następujące przepływy pracy aprowizacji użytkowników:
+[Usługa aprowizacji użytkowników Azure Active Directory](../app-provisioning/user-provisioning.md) integruje się z [interfejsem API zasobów ludzkich firmy Workday](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) , aby udostępnić konta użytkowników. Usługa Azure AD używa tego połączenia, aby włączyć następujące przepływy pracy aprowizacji użytkowników:
 
 * **Inicjowanie obsługi administracyjnej użytkowników w celu Active Directory aprowizacji** wybranych zestawów użytkowników z produktu Workday w jednej lub kilku domenach Active Directory.
 
@@ -40,13 +40,13 @@ Celem tego samouczka jest przedstawienie czynności, które należy wykonać w c
 
 Przepływy pracy aprowizacji użytkowników platformy Workday obsługiwane przez usługę aprowizacji użytkowników w usłudze Azure AD umożliwiają automatyzację następujących scenariuszy dotyczących zasobów ludzkich i zarządzania cyklem życia tożsamości:
 
-* **Zatrudnianie nowych pracowników** — po dodaniu nowego pracownika do produktu Workday konto użytkownika jest automatycznie tworzone w Active Directory, Azure Active Directory i opcjonalnie z pakietem Office 365 i [innymi aplikacjami SaaS obsługiwanymi przez usługę Azure AD](../manage-apps/user-provisioning.md), z możliwością zapisu z tyłu adresu e-mail do produktu Workday.
+* **Zatrudnianie nowych pracowników** — po dodaniu nowego pracownika do produktu Workday konto użytkownika jest automatycznie tworzone w Active Directory, Azure Active Directory i opcjonalnie z pakietem Office 365 i [innymi aplikacjami SaaS obsługiwanymi przez usługę Azure AD](../app-provisioning/user-provisioning.md), z możliwością zapisu z tyłu adresu e-mail do produktu Workday.
 
-* **Aktualizacje atrybutu pracownika i profilu** — gdy rekord pracownika zostanie zaktualizowany w dniach roboczych (na przykład nazwa, tytuł lub Menedżer), jego konto użytkownika zostanie automatycznie zaktualizowane w Active Directory, Azure Active Directory i opcjonalnie pakiet Office 365 i [inne aplikacje SaaS obsługiwane przez usługę Azure AD](../manage-apps/user-provisioning.md).
+* **Aktualizacje atrybutu pracownika i profilu** — gdy rekord pracownika zostanie zaktualizowany w dniach roboczych (na przykład nazwa, tytuł lub Menedżer), jego konto użytkownika zostanie automatycznie zaktualizowane w Active Directory, Azure Active Directory i opcjonalnie pakiet Office 365 i [inne aplikacje SaaS obsługiwane przez usługę Azure AD](../app-provisioning/user-provisioning.md).
 
-* **Zakończenie zatrudnienia pracownika** — gdy pracownik zostanie przerwany w dniach roboczych, jego konto użytkownika jest automatycznie wyłączone w Active Directory, Azure Active Directory i opcjonalnie pakiet Office 365 i [inne aplikacje SaaS obsługiwane przez usługę Azure AD](../manage-apps/user-provisioning.md).
+* **Zakończenie zatrudnienia pracownika** — gdy pracownik zostanie przerwany w dniach roboczych, jego konto użytkownika jest automatycznie wyłączone w Active Directory, Azure Active Directory i opcjonalnie pakiet Office 365 i [inne aplikacje SaaS obsługiwane przez usługę Azure AD](../app-provisioning/user-provisioning.md).
 
-* Przedziały **pracownika** — gdy pracownik jest ponownie zatrudniany w dniu Workday, jego stare konto może zostać automatycznie ponownie uaktywnione lub zainicjowane (zależnie od preferencji) do Active Directory, Azure Active Directory i opcjonalnie pakietu Office 365 i [innych aplikacji SaaS obsługiwanych przez usługę Azure AD](../manage-apps/user-provisioning.md).
+* Przedziały **pracownika** — gdy pracownik jest ponownie zatrudniany w dniu Workday, jego stare konto może zostać automatycznie ponownie uaktywnione lub zainicjowane (zależnie od preferencji) do Active Directory, Azure Active Directory i opcjonalnie pakietu Office 365 i [innych aplikacji SaaS obsługiwanych przez usługę Azure AD](../app-provisioning/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Dla kogo to rozwiązanie do aprowizacji użytkowników jest najlepiej dopasowane?
 
@@ -69,7 +69,7 @@ W tej sekcji opisano kompleksową architekturę rozwiązania obsługi użytkowni
 * **Autorytatywny przepływ danych HR — od dnia roboczego do Active Directory lokalnego:** W tym przepływie zdarzenia procesu roboczego (takie jak nowe zatrudnienie, transfery, zakończenia) są najpierw wykonywane w dzierżawie usługi HR w usłudze w chmurze, a następnie dane zdarzenia są przesyłane do Active Directory lokalnych za pośrednictwem usług Azure AD i agenta aprowizacji. W zależności od zdarzenia może to prowadzić do tworzenia/aktualizowania/włączania/wyłączania operacji w usłudze AD.
 * **Przepływy zwrotne poczty e-mail i nazwy użytkownika — od Active Directory lokalnego do produktu Workday:** Po zakończeniu tworzenia konta w Active Directory zostanie ono zsynchronizowane z usługą Azure AD za pośrednictwem Azure AD Connect, a atrybut e-mail i nazwa użytkownika mogą zostać zapisana z powrotem do produktu Workday.
 
-![Przegląd](./media/workday-inbound-tutorial/wd_overview.png)
+![Omówienie](./media/workday-inbound-tutorial/wd_overview.png)
 
 ### <a name="end-to-end-user-data-flow"></a>Przepływ danych kompleksowego użytkownika
 
@@ -312,9 +312,9 @@ W tym kroku zostanie udzielone uprawnienie "zabezpieczenia domeny" dotyczące da
    | ---------- | ---------- |
    | Pobierz i umieść | Dane procesu roboczego: raporty dotyczące publicznych procesów roboczych |
    | Pobierz i umieść | Dane osoby: służbowe informacje kontaktowe |
-   | Pobierz | Dane procesu roboczego: wszystkie pozycje |
-   | Pobierz | Dane procesu roboczego: bieżące informacje o kadrze |
-   | Pobierz | Dane procesu roboczego: tytuł działalności w profilu procesu roboczego |
+   | Get | Dane procesu roboczego: wszystkie pozycje |
+   | Get | Dane procesu roboczego: bieżące informacje o kadrze |
+   | Get | Dane procesu roboczego: tytuł działalności w profilu procesu roboczego |
    | Pobierz i umieść | Konta Workday |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Konfigurowanie uprawnień zasad zabezpieczeń procesów firmy
@@ -345,7 +345,7 @@ W tym kroku zostanie udzielone uprawnienie "zabezpieczenia procesu biznesowego" 
 
 1. Wprowadź aktywację w polu wyszukiwania, a następnie kliknij link **Aktywuj oczekujące zmiany zasad zabezpieczeń**.
 
-    ![Uaktywnij](./media/workday-inbound-tutorial/wd_isu_16.png "Aktywuj")
+    ![Uaktywnij](./media/workday-inbound-tutorial/wd_isu_16.png "Activate")
 
 1. Rozpocznij zadanie Aktywuj oczekujące zmiany zasad zabezpieczeń, wprowadzając komentarz do celów inspekcji, a następnie kliknij przycisk **OK**.
 1. Ukończ zadanie na następnym ekranie, zaznaczając pole wyboru **Potwierdź**, a następnie kliknij przycisk **OK**.
@@ -472,7 +472,7 @@ W tym kroku ustanawiamy łączność z produktem Workday i Active Directory w Az
 
    * Kliknij przycisk **Testuj połączenie** . Jeśli test połączenia zakończy się pomyślnie, kliknij przycisk **Zapisz** u góry. Jeśli to się nie powiedzie, sprawdź, czy poświadczenia dla produktu Workday i poświadczenia usługi AD skonfigurowane w instalatorze agenta są prawidłowe.
 
-     ![Portal Azure](./media/workday-inbound-tutorial/wd_1.png)
+     ![Portalu Azure](./media/workday-inbound-tutorial/wd_1.png)
 
    * Po pomyślnym zapisaniu poświadczeń w sekcji **mapowania** zostanie wyświetlone mapowanie domyślne **Synchronizacja procesów roboczych programu Workday do lokalnego Active Directory**
 
@@ -502,7 +502,7 @@ W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z produ
    > Podczas konfigurowania aplikacji do aprowizacji po raz pierwszy należy przetestować i zweryfikować mapowania atrybutów oraz wyrażenia, aby upewnić się, że daje żądany wynik. Firma Microsoft zaleca używanie filtrów określania zakresu w obszarze **zakres obiektów źródłowych** do testowania mapowań za pomocą kilku użytkowników testowych z produktu Workday. Po sprawdzeniu, czy mapowania działają, można usunąć filtr lub stopniowo rozwijać go, aby uwzględnić więcej użytkowników.
 
    > [!CAUTION] 
-   > Domyślne zachowanie aparatu aprowizacji polega na wyłączeniu/usunięciu użytkowników, którzy wykraczają poza zakres. Może to nie być pożądane w ramach integracji z usługą AD. Aby zastąpić to zachowanie domyślne, odnoszące się do artykułu [Pomiń usuwanie kont użytkowników, które wykraczają poza zakres](../manage-apps/skip-out-of-scope-deletions.md)
+   > Domyślne zachowanie aparatu aprowizacji polega na wyłączeniu/usunięciu użytkowników, którzy wykraczają poza zakres. Może to nie być pożądane w ramach integracji z usługą AD. Aby zastąpić to zachowanie domyślne, odnoszące się do artykułu [Pomiń usuwanie kont użytkowników, które wykraczają poza zakres](../app-provisioning/skip-out-of-scope-deletions.md)
   
 1. W polu **Akcje obiektu docelowego** można globalnie filtrować akcje wykonywane na Active Directory. **Tworzenie** i **Aktualizowanie** są najczęściej używane.
 
@@ -516,7 +516,7 @@ W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z produ
 
          * **Stała** — Zapisz statyczną, stałą wartość ciągu w atrybucie usługi AD.
 
-         * **Expression** — umożliwia zapisanie niestandardowej wartości atrybutu AD na podstawie jednego lub większej liczby atrybutów produktu Workday. [Aby uzyskać więcej informacji, zobacz ten artykuł w wyrażeniach](../manage-apps/functions-for-customizing-application-data.md).
+         * **Expression** — umożliwia zapisanie niestandardowej wartości atrybutu AD na podstawie jednego lub większej liczby atrybutów produktu Workday. [Aby uzyskać więcej informacji, zobacz ten artykuł w wyrażeniach](../app-provisioning/functions-for-customizing-application-data.md).
 
       * **Atrybut źródłowy** — atrybut użytkownika z produktu Workday. Jeśli atrybutu, którego szukasz, nie ma, zobacz [Dostosowywanie listy atrybutów użytkownika produktu Workday](#customizing-the-list-of-workday-user-attributes).
 
@@ -537,29 +537,29 @@ W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z produ
 
 1. Aby zapisać mapowania, kliknij pozycję **Zapisz** w górnej części sekcji Mapowanie atrybutów.
 
-   ![Portal Azure](./media/workday-inbound-tutorial/wd_2.png)
+   ![Portalu Azure](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Poniżej przedstawiono przykładowe mapowania atrybutów między dniem Workday i Active Directory przy użyciu niektórych typowych wyrażeń
 
 * Wyrażenie, które jest mapowane na atrybut *parentDistinguishedName* , jest używane do udostępniania użytkownikowi różnych jednostek organizacyjnych na podstawie jednego lub większej liczby atrybutów źródłowych produktu Workday. Ten przykład tu umieszcza użytkowników w różnych jednostkach organizacyjnych na podstawie miejscowości, w której znajdują się.
 
-* Atrybut *userPrincipalName* w Active Directory jest generowany przy użyciu funkcji usuwania duplikatów [SelectUniqueValue](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue) , która sprawdza obecność wygenerowanej wartości w docelowej domenie usługi AD i ustawia ją tylko wtedy, gdy jest unikatowa.  
+* Atrybut *userPrincipalName* w Active Directory jest generowany przy użyciu funkcji usuwania duplikatów [SelectUniqueValue](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) , która sprawdza obecność wygenerowanej wartości w docelowej domenie usługi AD i ustawia ją tylko wtedy, gdy jest unikatowa.  
 
-* [W tym miejscu znajduje się dokumentacja dotycząca pisania wyrażeń](../manage-apps/functions-for-customizing-application-data.md). Ta sekcja zawiera przykłady dotyczące usuwania znaków specjalnych.
+* [W tym miejscu znajduje się dokumentacja dotycząca pisania wyrażeń](../app-provisioning/functions-for-customizing-application-data.md). Ta sekcja zawiera przykłady dotyczące usuwania znaków specjalnych.
 
 | ATRYBUT WORKDAY | ATRYBUT USŁUGI ACTIVE DIRECTORY |  PASUJE IDENTYFIKATOR? | UTWÓRZ/ZAKTUALIZUJ |
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Tak** | Zapisywane tylko w przypadku tworzenia |
 | **PreferredNameData**    |  cn    |   |   Zapisywane tylko w przypadku tworzenia |
 | **SelectUniqueValue (join ("\@", join (".", \[FirstName\], \[LastName\]), "contoso.com"), join ("\@", join (".", Mid (\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), join ("\@", join (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Zapisywane tylko w przypadku tworzenia 
-| **Zastąp(Mid(Zastąp(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapisywane tylko w przypadku tworzenia |
-| **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | Utwórz i zaktualizuj |
+| **Replace (Mid (Zastąp (\[UserID\],, "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\]) ",," ",,), 1, 20),," ([\\\\.)\*\$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Zapisywane tylko w przypadku tworzenia |
+| **Przełącznik (\[aktywny\],, "0", "true", "1", "false")** |  accountDisabled      |     | Utwórz i zaktualizuj |
 | **Imię**   | givenName       |     |    Utwórz i zaktualizuj |
 | **Nazwisko**   |   numery seryjne   |     |  Utwórz i zaktualizuj |
 | **PreferredNameData**  |  displayName |     |   Utwórz i zaktualizuj |
-| **Firma**         | company   |     |  Utwórz i zaktualizuj |
+| **Przedsiębiorstwo**         | company   |     |  Utwórz i zaktualizuj |
 | **SupervisoryOrganization**  | department  |     |  Utwórz i zaktualizuj |
-| **ManagerReference**   | menedżer  |     |  Utwórz i zaktualizuj |
+| **ManagerReference**   | Menedżer  |     |  Utwórz i zaktualizuj |
 | **BusinessTitle**   |  title     |     |  Utwórz i zaktualizuj | 
 | **AddressLineData**    |  Adres  |     |   Utwórz i zaktualizuj |
 | **Gmina**   |   l   |     | Utwórz i zaktualizuj |
@@ -567,10 +567,10 @@ W tej sekcji skonfigurujesz sposób przepływu danych przez użytkownika z produ
 | **CountryReferenceTwoLetter**    |  c  |     |         Utwórz i zaktualizuj |
 | **CountryRegionReference** |  St     |     | Utwórz i zaktualizuj |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Utwórz i zaktualizuj |
-| **PostalCode**  |   postalCode  |     | Utwórz i zaktualizuj |
+| **Pocztowy**  |   postalCode  |     | Utwórz i zaktualizuj |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Utwórz i zaktualizuj |
 | **Fax**      | facsimileTelephoneNumber     |     |    Utwórz i zaktualizuj |
-| **Mobile**  |    Telefon komórkowy       |     |       Utwórz i zaktualizuj |
+| **Urządzenie**  |    Telefon komórkowy       |     |       Utwórz i zaktualizuj |
 | **LocalReference** |  preferredLanguage  |     |  Utwórz i zaktualizuj |                                               
 | **Przełącznik (\[gmina miejska\]"OU = użytkownicy standardowi, OU = users, OU = default, OU = Locations, DC = contoso, DC = com", "Dallas", "OU = Standard users, OU = users, OU = Dallas, OU = Locations, DC = contoso, DC = com", "Austin", "OU = users Standards, OU = users, OU = Austin, OU = Locations, DC = contoso, DC = com", "Seattle", "OU = standardowy użytkownicy, OU = users, OU = Seattle, OU = Locations, DC = contoso, DC = com", "Londyn", "OU = użytkownicy Standards, OU = users, OU = Londyn, OU = Locations, DC = contoso, DC = com")**  | parentDistinguishedName     |     |  Utwórz i zaktualizuj |
 
@@ -653,7 +653,7 @@ W tej sekcji opisano sposób przepływu danych przez użytkowników z produktu W
 
       * **Stała** — Zapisz statyczną, stałą wartość ciągu w atrybucie usługi AD.
 
-      * **Expression** — umożliwia zapisanie niestandardowej wartości atrybutu AD na podstawie jednego lub większej liczby atrybutów produktu Workday. [Aby uzyskać więcej informacji, zobacz ten artykuł w wyrażeniach](../manage-apps/functions-for-customizing-application-data.md).
+      * **Expression** — umożliwia zapisanie niestandardowej wartości atrybutu AD na podstawie jednego lub większej liczby atrybutów produktu Workday. [Aby uzyskać więcej informacji, zobacz ten artykuł w wyrażeniach](../app-provisioning/functions-for-customizing-application-data.md).
 
    * **Atrybut źródłowy** — atrybut użytkownika z produktu Workday. Jeśli atrybutu, którego szukasz, nie ma, zobacz [Dostosowywanie listy atrybutów użytkownika produktu Workday](#customizing-the-list-of-workday-user-attributes).
 
@@ -737,7 +737,7 @@ Po zakończeniu konfiguracji aplikacji inicjowania obsługi dla programu Workday
 
 1. Na karcie **aprowizacji** Ustaw **stan aprowizacji** na **włączone**.
 
-2. Kliknij pozycję **Zapisz**.
+2. Kliknij przycisk **Save** (Zapisz).
 
 3. Ta operacja rozpocznie synchronizację początkową, która może potrwać zmienną liczbę godzin w zależności od liczby użytkowników w dzierżawie produktu Workday. 
 
@@ -745,7 +745,7 @@ Po zakończeniu konfiguracji aplikacji inicjowania obsługi dla programu Workday
 
 5. Po zakończeniu synchronizacji początkowej zostanie zapisany raport z podsumowaniem inspekcji na karcie **aprowizacji** , jak pokazano poniżej.
 
-   ![Portal Azure](./media/workday-inbound-tutorial/wd_3.png)
+   ![Portalu Azure](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
@@ -848,7 +848,7 @@ Podczas sugerowania nowego pomysłu Sprawdź, czy ktoś inny już sugerował pod
 * Przejdź do **Panelu sterowania** -> **Odinstaluj lub Zmień menu programu**
 * Wyszukaj wersję odpowiadającą wpisowi **Microsoft Azure AD Połącz agenta aprowizacji**
 
-  ![Portal Azure](./media/workday-inbound-tutorial/pa_version.png)
+  ![Portalu Azure](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Czy firma Microsoft automatycznie wypychanie aktualizacji agenta aprowizacji?
 
@@ -984,7 +984,7 @@ Oto jak można obsługiwać takie wymagania dotyczące konstruowania nazwy *posp
      | ----------------- | -------------------- |
      | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
      | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
-     | Firma | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data[wd:Organization_Data/wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Company']/wd:Organization_Reference/@wd:Descriptor |
+     | Firma | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: ID [@wd:type= "Organization_Type_ID"] = "Company"]/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [@wd:type= "Organization_Type_ID"] = "nadzorcze"]/WD: Organization_Name/Text () |
   
    Skontaktuj się z zespołem w programie Workday, że wyrażenie interfejsu API powyżej jest prawidłowe dla konfiguracji dzierżawy w Twojej firmie. W razie potrzeby można je edytować zgodnie z opisem w sekcji [Dostosowywanie listy atrybutów użytkownika produktu Workday](#customizing-the-list-of-workday-user-attributes).
@@ -995,10 +995,10 @@ Oto jak można obsługiwać takie wymagania dotyczące konstruowania nazwy *posp
 
      | Atrybut Workday | Wyrażenie XPATH interfejsu API |
      | ----------------- | -------------------- |
-     | CountryReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Alpha-3_Code']/text() |
+     | CountryReference | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= "ISO_3166-1_Alpha-3_Code"]/text () |
      | CountryReferenceFriendly | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/@wd:Descriptor |
-     | CountryReferenceNumeric | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Numeric-3_Code']/text() |
-     | CountryReferenceTwoLetter | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Alpha-2_Code']/text() |
+     | CountryReferenceNumeric | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= "ISO_3166-1_Numeric-3_Code"]/text () |
+     | CountryReferenceTwoLetter | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= "ISO_3166-1_Alpha-2_Code"]/text () |
      | CountryRegionReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Region_Reference/@wd:Descriptor |
 
   Skontaktuj się z zespołem usługi Workday, że powyższe wyrażenia interfejsu API są prawidłowe dla konfiguracji dzierżawy w Twojej firmie. W razie potrzeby można je edytować zgodnie z opisem w sekcji [Dostosowywanie listy atrybutów użytkownika produktu Workday](#customizing-the-list-of-workday-user-attributes).
@@ -1023,9 +1023,9 @@ Oto jak można obsługiwać takie wymagania dotyczące konstruowania nazwy *posp
     )
      ```
     Zobacz też:
-  * [Switch — Składnia funkcji](../manage-apps/functions-for-customizing-application-data.md#switch)
-  * [Składnia funkcji join](../manage-apps/functions-for-customizing-application-data.md#join)
-  * [Dołącz składnię funkcji](../manage-apps/functions-for-customizing-application-data.md#append)
+  * [Switch — Składnia funkcji](../app-provisioning/functions-for-customizing-application-data.md#switch)
+  * [Składnia funkcji join](../app-provisioning/functions-for-customizing-application-data.md#join)
+  * [Dołącz składnię funkcji](../app-provisioning/functions-for-customizing-application-data.md#append)
 
 #### <a name="how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute"></a>Jak używać SelectUniqueValue do generowania unikatowych wartości dla atrybutu samAccountName?
 
@@ -1043,17 +1043,17 @@ Jak działa powyższe wyrażenie: Jeśli użytkownik ma Jan Kowalski, najpierw p
 
 Zobacz też:
 
-* [Funkcja MID — składnia](../manage-apps/functions-for-customizing-application-data.md#mid)
-* [Zamień składnię funkcji](../manage-apps/functions-for-customizing-application-data.md#replace)
-* [Składnia funkcji SelectUniqueValue](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue)
+* [Funkcja MID — składnia](../app-provisioning/functions-for-customizing-application-data.md#mid)
+* [Zamień składnię funkcji](../app-provisioning/functions-for-customizing-application-data.md#replace)
+* [Składnia funkcji SelectUniqueValue](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue)
 
 #### <a name="how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets"></a>Jak mogę usunąć znaki diakrytyczne i przekonwertować je na normalne alfabety angielskie?
 
-Użyj funkcji [NormalizeDiacritics](../manage-apps/functions-for-customizing-application-data.md#normalizediacritics) , aby usunąć znaki specjalne w imię i nazwisko użytkownika, podczas konstruowania adresu e-mail lub wartości CN dla użytkownika.
+Użyj funkcji [NormalizeDiacritics](../app-provisioning/functions-for-customizing-application-data.md#normalizediacritics) , aby usunąć znaki specjalne w imię i nazwisko użytkownika, podczas konstruowania adresu e-mail lub wartości CN dla użytkownika.
 
-## <a name="troubleshooting-tips"></a>Porady dotyczące rozwiązywania problemów
+## <a name="troubleshooting-tips"></a>Wskazówki dotyczące rozwiązywania problemów
 
-Ta sekcja zawiera szczegółowe wskazówki dotyczące rozwiązywania problemów z inicjowaniem obsługi administracyjnej w ramach integracji z programem Workday przy użyciu dzienników inspekcji usługi Azure AD i dzienników Podgląd zdarzeń systemu Windows Server. Jest on kompilowany na podstawie ogólnych kroków rozwiązywania problemów i koncepcji przechwyconych w [samouczku: Raportowanie dotyczące automatycznego aprowizacji kont użytkowników](../manage-apps/check-status-user-account-provisioning.md)
+Ta sekcja zawiera szczegółowe wskazówki dotyczące rozwiązywania problemów z inicjowaniem obsługi administracyjnej w ramach integracji z programem Workday przy użyciu dzienników inspekcji usługi Azure AD i dzienników Podgląd zdarzeń systemu Windows Server. Jest on kompilowany na podstawie ogólnych kroków rozwiązywania problemów i koncepcji przechwyconych w [samouczku: Raportowanie dotyczące automatycznego aprowizacji kont użytkowników](../app-provisioning/check-status-user-account-provisioning.md)
 
 W tej części omówiono następujące aspekty rozwiązywania problemów:
 
@@ -1209,7 +1209,7 @@ Jeśli usługa aprowizacji nie może nawiązać połączenia z dniem Workday lub
 |#|Scenariusz błędu |Prawdopodobne przyczyny|Zalecane rozwiązanie|
 |--|---|---|---|
 |1.| Niepowodzenia operacji eksportu w dzienniku inspekcji z *błędem komunikatu: OperationsError-SvcErr: Wystąpił błąd operacji. Nie skonfigurowano nadrzędnego odwołania dla usługi katalogowej. W związku z tym usługa katalogowa nie może wystawić odwołań do obiektów spoza tego lasu.* | Ten błąd jest zwykle wyświetlany, jeśli jednostka organizacyjna *kontenera Active Directory* nie jest ustawiona poprawnie lub jeśli występują problemy z mapowaniem wyrażenia użytego dla *parentDistinguishedName*. | Sprawdź parametr *Active Directory* jednostki organizacyjnej kontenera dla literówki. Jeśli korzystasz z elementu *parentDistinguishedName* podczas mapowania atrybutów, upewnij się, że zawsze wynikiem jego oceny jest znany kontener w ramach domeny usługi AD. Sprawdź zdarzenie *eksportu* w dziennikach inspekcji, aby wyświetlić wygenerowaną wartość. |
-|2.| Niepowodzenia operacji eksportu w dzienniku inspekcji z kodem błędu: *SystemForCrossDomainIdentityManagementBadResponse* i komunikat *o błędzie: ConstraintViolation-AtrErr: wartość w żądaniu jest nieprawidłowa. Wartość atrybutu nie ma akceptowalnego zakresu wartości. Szczegóły \nError: CONSTRAINT_ATT_TYPE — firma*. | Chociaż ten błąd jest specyficzny dla atrybutu *firmy* , może zostać wyświetlony ten błąd dla innych atrybutów, takich jak *CN* . Ten błąd występuje ze względu na ograniczenie schematu wymuszane przez usługi AD. Domyślnie atrybuty, takie jak *firma* i *CN* w usłudze AD, mają górny limit wynoszący 64 znaków. Jeśli wartość pochodząca z produktu Workday przekracza 64 znaków, zobaczysz ten komunikat o błędzie. | Sprawdź zdarzenie *eksportu* w dziennikach inspekcji, aby wyświetlić wartość atrybutu zgłoszonego w komunikacie o błędzie. Rozważ Obcinanie wartości z produktu Workday przy użyciu funkcji [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) lub zmianę mapowań na atrybut AD, który nie ma ograniczeń o podobnej długości.  |
+|2.| Niepowodzenia operacji eksportu w dzienniku inspekcji z kodem błędu: *SystemForCrossDomainIdentityManagementBadResponse* i komunikat *o błędzie: ConstraintViolation-AtrErr: wartość w żądaniu jest nieprawidłowa. Wartość atrybutu nie ma akceptowalnego zakresu wartości. Szczegóły \nError: CONSTRAINT_ATT_TYPE — firma*. | Chociaż ten błąd jest specyficzny dla atrybutu *firmy* , może zostać wyświetlony ten błąd dla innych atrybutów, takich jak *CN* . Ten błąd występuje ze względu na ograniczenie schematu wymuszane przez usługi AD. Domyślnie atrybuty, takie jak *firma* i *CN* w usłudze AD, mają górny limit wynoszący 64 znaków. Jeśli wartość pochodząca z produktu Workday przekracza 64 znaków, zobaczysz ten komunikat o błędzie. | Sprawdź zdarzenie *eksportu* w dziennikach inspekcji, aby wyświetlić wartość atrybutu zgłoszonego w komunikacie o błędzie. Rozważ Obcinanie wartości z produktu Workday przy użyciu funkcji [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) lub zmianę mapowań na atrybut AD, który nie ma ograniczeń o podobnej długości.  |
 
 #### <a name="ad-user-account-update-errors"></a>Błędy aktualizacji konta użytkownika usługi AD
 
@@ -1348,7 +1348,7 @@ Aby to zmienić, należy użyć programu [Workday Studio](https://community.work
 
 ### <a name="exporting-and-importing-your-configuration"></a>Eksportowanie i importowanie konfiguracji
 
-Zapoznaj się z artykułem [Eksportowanie i Importowanie konfiguracji aprowizacji](../manage-apps/export-import-provisioning-configuration.md)
+Zapoznaj się z artykułem [Eksportowanie i Importowanie konfiguracji aprowizacji](../app-provisioning/export-import-provisioning-configuration.md)
 
 ## <a name="managing-personal-data"></a>Zarządzanie danymi osobowymi
 
@@ -1362,7 +1362,7 @@ W odniesieniu do przechowywania danych usługa Azure AD Provisioning nie generuj
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)
 * [Dowiedz się, jak skonfigurować Logowanie jednokrotne między produktem Workday i Azure Active Directory](workday-tutorial.md)
 * [Dowiedz się, jak zintegrować inne aplikacje SaaS z Azure Active Directory](tutorial-list.md)
 * [Dowiedz się, jak używać interfejsów API Microsoft Graph do zarządzania konfiguracjami aprowizacji](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

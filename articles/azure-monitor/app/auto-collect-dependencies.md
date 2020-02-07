@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6fe43eb5963f2918f41ad15f1904f883b5e9c298
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e774690fae2314b8db6e14f19a67c7ae1ce3a203
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678298"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064278"
 ---
 # <a name="dependency-auto-collection"></a>Automatyczne zbieranie zależności
 
@@ -24,7 +24,7 @@ Poniżej znajduje się obecnie obsługiwana Lista wywołań zależności, które
 | Struktury aplikacji| Wersje |
 | ------------------------|----------|
 | ASP.NET WebForms | 4.5 + |
-| ASP.NET MVC | 4 + |
+| ASP.NET MVC | 4+ |
 | ASP.NET WebAPI | 4.5 + |
 | ASP.NET Core | 1.1 + |
 | <b>Biblioteki komunikacji</b> |
@@ -43,8 +43,8 @@ Poniżej znajduje się obecnie obsługiwana Lista wywołań zależności, które
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>Struktury aplikacji</b> |  |
 | [Spring](https://spring.io/) | 3.0 |
-| [Rozruch sprężynowy](https://spring.io/projects/spring-boot) | 1.5.9 +<sup> *</sup> |
-| Serwletu Java | 3.1 + |
+| [Rozruch sprężynowy](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
+| Serwletu Java | 3.1+ |
 | <b>Biblioteki komunikacji</b> |  |
 | [Klient Apache http](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3 +<sup>†</sup> |
 | <b>Klienci magazynu</b> | |
@@ -53,7 +53,7 @@ Poniżej znajduje się obecnie obsługiwana Lista wywołań zależności, które
 | [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1 +<sup>†</sup> |
 | [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1 +<sup>†</sup> |
 | <b>Biblioteki rejestrowania</b> | |
-| [Logback](https://logback.qos.ch/) | 1 + |
+| [Logback](https://logback.qos.ch/) | 1+ |
 | [Log4J](https://logging.apache.org/log4j/) | 1.2 + |
 | <b>Biblioteki metryk</b> |  |
 | JMX | 1.0 + |
@@ -82,12 +82,13 @@ Poniżej znajduje się obecnie obsługiwana Lista wywołań zależności, które
 
 | Biblioteki komunikacji | Wersje |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Wszystko |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Wszyscy |
 
 ## <a name="next-steps"></a>Następne kroki
 
 - Skonfiguruj niestandardowe Śledzenie zależności dla [platformy .NET](../../azure-monitor/app/asp-net-dependencies.md).
 - Skonfiguruj niestandardowe Śledzenie zależności dla [języka Java](../../azure-monitor/app/java-agent.md).
+- Skonfiguruj niestandardowe Śledzenie zależności dla języka [Python OpenCensus](../../azure-monitor/app/opencensus-python-dependency.md).
 - [Napisz niestandardową telemetrię zależności](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
 - Zobacz [model danych](../../azure-monitor/app/data-model.md) dla typów Application Insights i modelu danych.
 - Sprawdź [platformy](../../azure-monitor/app/platforms.md) obsługiwane przez Application Insights.

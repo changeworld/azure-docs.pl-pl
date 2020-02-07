@@ -2,7 +2,7 @@
 title: Wyświetlanie i wyszukanie najnowszego działania związanego z logowaniem ze strony Moje logowanie (wersja zapoznawcza) — Azure Active Directory | Microsoft Docs
 description: Szczegółowe informacje na temat sposobu wyświetlania i wyszukiwania ostatnich działań związanych z logowaniem ze strony Moje logowania w portalu My account.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: rhicock
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: 2d31519c1c7e09c4eb8db64e2c37b8412fee9ab5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: b68e7b517ddaa9b2aaef00cf87d5b6e63871654b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705109"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064023"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Wyświetlanie i wyszukiwanie ostatnich działań związanych z logowaniem ze strony Moje logowania (wersja zapoznawcza)
 

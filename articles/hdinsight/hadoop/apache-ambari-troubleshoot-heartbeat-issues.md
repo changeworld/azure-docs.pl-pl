@@ -1,18 +1,18 @@
 ---
 title: Problemy pulsu Apache Ambari w usłudze Azure HDInsight
 description: Przegląd różnych powodów problemów pulsu Apache Ambari w usłudze Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 09/11/2019
-ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 02/06/2020
+ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964621"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057077"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Problemy pulsu Apache Ambari w usłudze Azure HDInsight
 
@@ -22,13 +22,13 @@ W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązani
 
 ### <a name="issue"></a>Problem
 
-Agent Ambari ma duże użycie procesora CPU, które powoduje utratę alertów z interfejsu użytkownika Ambari, który dla niektórych węzłów zostaje utracony. Alert utracony pulsu jest zwykle przejściowy. 
+Agent Ambari ma duże użycie procesora CPU, które powoduje utratę alertów z interfejsu użytkownika Ambari, który dla niektórych węzłów zostaje utracony. Alert utracony pulsu jest zwykle przejściowy.
 
 ### <a name="cause"></a>Przyczyna
 
 Ze względu na różne błędy agenta Ambari, w rzadkich przypadkach, Agent Ambari — może mieć wysokie wykorzystanie procesora CPU (w pobliżu 100).
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 1. Określ identyfikator procesu (PID) Ambari-Agent:
 
@@ -61,13 +61,13 @@ Ze względu na różne błędy agenta Ambari, w rzadkich przypadkach, Agent Amba
 
 ### <a name="issue"></a>Problem
 
-Nie uruchomiono agenta Ambari, który powoduje, że w przypadku niektórych węzłów zostanie utracony alert z interfejsu użytkownika Ambari.
+Agent Ambari nie został uruchomiony, co spowoduje utratę alertów z interfejsu użytkownika Ambari, który dla niektórych węzłów zostanie utracony pulsu agenta Ambari.
 
 ### <a name="cause"></a>Przyczyna
 
 Alerty są spowodowane przez agenta Ambari, który nie jest uruchomiony.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 1. Potwierdzenie stanu Ambari-Agent:
 
@@ -81,7 +81,7 @@ Alerty są spowodowane przez agenta Ambari, który nie jest uruchomiony.
     ps -ef | grep failover
     ```
 
-    Jeśli usługi kontrolera trybu failover nie są uruchomione, prawdopodobnie z powodu problemu nie można zablokować uruchomienia kontrolera trybu failover z poziomu agenta usługi HDInsight. Sprawdź dziennik HDInsight-Agent z pliku `/var/log/hdinsight-agent/hdinsight-agent.out`.
+    Jeśli usługi kontrolera trybu failover nie są uruchomione, prawdopodobnie z powodu problemu uniemożliwienie uruchomienia kontrolera trybu failover przez agenta usługi HDInsight. Sprawdź dziennik HDInsight-Agent z pliku `/var/log/hdinsight-agent/hdinsight-agent.out`.
 
 ## <a name="scenario-heartbeat-lost-for-ambari"></a>Scenariusz: Utracono puls dla Ambari
 
@@ -93,9 +93,9 @@ Agent pulsu Ambari został utracony.
 
 Dzienniki pakietu OMS powodują wysokie wykorzystanie procesora CPU.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-* Wyłącz rejestrowanie pakietu OMS za pomocą modułu PowerShell [disable-AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) . 
+* Wyłącz rejestrowanie Azure Monitor przy użyciu polecenia cmdlet [disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) programu PowerShell.
 * Usuń plik dziennika `mdsd.warn`
 
 ---

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837941"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064686"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
@@ -69,7 +69,7 @@ Ważne jest, aby zrozumieć typy obciążeń działające w klastrach usługi HD
 
 * Rozważ, czy rozwiązanie lub usługa monitorowania będzie przydatna. Program Microsoft System Center udostępnia [pakiet administracyjny usługi HDInsight](https://www.microsoft.com/download/details.aspx?id=42521). Do zbierania i scentralizowania dzienników można także używać narzędzi innych firm, takich jak Apache Chukwa i Ganglia. Wiele firm oferuje usługi do monitorowania rozwiązań danych Big Data opartych na usłudze Hadoop, na przykład: Center, Compuware APM, Sematext SPM i Zettaset Orchestrator.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>Krok 2. Zarządzanie wersjami usługi klastrowania i przeglądanie dzienników akcji skryptów
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>Krok 2. Zarządzanie wersjami usługi klastrowania i wyświetlanie dzienników
 
 Typowy klaster usługi HDInsight używa kilku usług i pakietów oprogramowania typu Open Source (takich jak Apache HBase, Apache Spark itd.). W przypadku niektórych obciążeń, takich jak Bioinformatics, może być konieczne zachowanie historii dziennika konfiguracji usługi oprócz dzienników wykonywania zadań.
 
@@ -89,9 +89,21 @@ Za pomocą interfejsu użytkownika Ambari można pobrać konfigurację dla dowol
 
 [Akcje skryptu](hdinsight-hadoop-customize-cluster-linux.md) usługi HDInsight uruchamiają skrypty w klastrze ręcznie lub po ich określeniu. Na przykład akcje skryptu mogą służyć do instalowania dodatkowego oprogramowania w klastrze lub do zmiany ustawień konfiguracji z wartości domyślnych. Dzienniki akcji skryptu mogą zapewniać wgląd w błędy, które wystąpiły podczas instalacji klastra, a także zmiany ustawień konfiguracji, które mogą mieć wpływ na wydajność i dostępność klastra.  Aby wyświetlić stan akcji skryptu, wybierz przycisk **Ops** w interfejsie użytkownika Ambari lub uzyskaj dostęp do dzienników stanu na domyślnym koncie magazynu. Dzienniki magazynu są dostępne w `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`.
 
+### <a name="view-ambari-alerts-status-logs"></a>Wyświetlanie dzienników stanu alertów Ambari
+
+Usługa Apache Ambari zapisuje zmiany stanu alertu w `ambari-alerts.log`. Pełna ścieżka jest `/var/log/ambari-server/ambari-alerts.log`. Aby włączyć debugowanie dziennika, Zmień właściwość w `/etc/ambari-server/conf/log4j.properties.` zmienić, a następnie pozycję `# Log alert state changes` z:
+
+```
+log4j.logger.alerts=INFO,alerts
+
+to
+
+log4j.logger.alerts=DEBUG,alerts
+```
+
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>Krok 3. zarządzanie plikami dziennika wykonywania zadań klastra
 
-Następnym krokiem jest przejrzenie plików dziennika wykonywania zadań dla różnych usług.  Usługi mogą obejmować Apache HBase, Apache Spark i wiele innych. Klaster Hadoop tworzy dużą liczbę pełnych dzienników, dzięki czemu można określić, które dzienniki są przydatne (i które nie są).  Zrozumienie systemu rejestrowania jest ważne w przypadku kierowania zarządzania plikami dziennika.  Poniżej znajduje się przykładowy plik dziennika.
+Następnym krokiem jest przejrzenie plików dziennika wykonywania zadań dla różnych usług.  Usługi mogą obejmować Apache HBase, Apache Spark i wiele innych. Klaster Hadoop tworzy dużą liczbę pełnych dzienników, dzięki czemu można określić, które dzienniki są przydatne (i które nie są).  Zrozumienie systemu rejestrowania jest ważne w przypadku kierowania zarządzania plikami dziennika.  Poniższy obraz przedstawia przykładowy plik dziennika.
 
 ![Przykładowe dane wyjściowe przykładowego pliku dziennika usługi HDInsight](./media/hdinsight-log-management/hdi-log-file-example.png)
 

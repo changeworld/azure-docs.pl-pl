@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f578840726543027a8c1b1db9bd88ea42f6e85fa
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264071"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062153"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalowanie i konfigurowanie bramy danych lokalnych
 
@@ -24,12 +24,12 @@ Aby dowiedzieć się więcej o tym, jak Azure Analysis Services współpracuje z
 
 **Minimalne wymagania:**
 
-* Program .NET Framework 4.5
+* Platforma .NET 4,5
 * 64 — bitowa wersja systemu Windows 8/Windows Server 2012 R2 (lub nowszego)
 
-**Zalecane:**
+**Rekomendowane**
 
-* Procesor 8-rdzeniowy
+* 8-rdzeniowy procesor CPU
 * 8 GB pamięci
 * 64 — bitowa wersja systemu Windows 8/Windows Server 2012 R2 (lub nowszego)
 
@@ -43,8 +43,6 @@ Aby dowiedzieć się więcej o tym, jak Azure Analysis Services współpracuje z
 * Podczas instalacji bramy konto użytkownika, które jest zalogowany na komputerze, musi mieć uprawnienia Logowanie jako usługa. Po zakończeniu instalacji usługa lokalnej bramy danych używa konta NT SERVICE\PBIEgwService do logowania się jako usługa. Można określić inne konto podczas instalacji lub usług po zakończeniu instalacji. Upewnij się, że ustawienia zasady grupy umożliwiają zarówno konto, za pomocą którego zalogowano się podczas instalacji, jak i wybrane konto usługi ma uprawnienia Logowanie jako usługa.
 * Zaloguj się do platformy Azure przy użyciu konta w usłudze Azure AD dla tej samej [dzierżawy](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) , która jest zarejestrowana w ramach subskrypcji. Konta B2B (gość) platformy Azure nie są obsługiwane podczas instalowania i rejestrowania bramy.
 * Jeśli źródła danych znajdują się w usłudze Azure Virtual Network (VNet), należy skonfigurować właściwość serwera [AlwaysUseGateway](analysis-services-vnet-gateway.md) .
-* Opisana tutaj Brama (Unified) nie jest obsługiwana w regionach platformy Azure (Niemcy). Zamiast tego należy użyć **dedykowanej bramy lokalnej dla Azure Analysis Services**zainstalowanej z **Szybki Start** serwera w portalu. 
-
 
 ## <a name="download"></a>Przesłać
 
@@ -64,7 +62,7 @@ Aby dowiedzieć się więcej o tym, jak Azure Analysis Services współpracuje z
 
 3. Zaloguj się do platformy Azure. Konto musi znajdować się w Azure Active Directory Twojej dzierżawy. To konto jest używane przez administratora bramy. Konta B2B (gość) platformy Azure nie są obsługiwane podczas instalowania i rejestrowania bramy.
 
-   ![Zaloguj się w usłudze Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![Logowanie do platformy Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
    > Jeśli zalogujesz się przy użyciu konta domeny, zostanie ono zamapowane na konto organizacyjne w usłudze Azure AD. Konto organizacyjne jest używane jako Administrator bramy.
@@ -75,14 +73,14 @@ Aby utworzyć zasób bramy na platformie Azure, musisz zarejestrować lokalne wy
 
 1.  Wybierz pozycję **zarejestruj nową bramę na tym komputerze**.
 
-    ![Zarejestruj](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Zarejestruj subskrypcję](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Wpisz nazwę i klucz odzyskiwania dla bramy. Domyślnie brama używa domyślnego regionu subskrypcji. Jeśli musisz wybrać inny region, wybierz pozycję **Zmień region**.
 
     > [!IMPORTANT]
     > Zapisz klucz odzyskiwania w bezpiecznym miejscu. Klucz odzyskiwania jest wymagany w celu przejęcia, przeprowadzenia migracji lub przywrócenia bramy. 
 
-   ![Zarejestruj](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Zarejestruj subskrypcję](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Tworzenie zasobu bramy platformy Azure
@@ -107,7 +105,7 @@ Po zainstalowaniu i zarejestrowaniu bramy musisz utworzyć zasób bramy na platf
 
    * **Nazwa instalacji**: Jeśli instalacja bramy nie została jeszcze wybrana, wybierz bramę zainstalowaną na komputerze i zarejestrowano. 
 
-     Gdy wszystko będzie gotowe, kliknij przycisk **Utwórz**.
+     Gdy skończysz, kliknij przycisk **Utwórz**.
 
 ## <a name="connect-servers"></a>Łączenie serwerów z zasobem bramy
 
@@ -127,7 +125,7 @@ Po zainstalowaniu i zarejestrowaniu bramy musisz utworzyć zasób bramy na platf
 
     ![Pomyślne połączenie serwera z bramą](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-To już wszystko. Jeśli konieczne jest otwarcie portów lub Rozwiązywanie problemów, należy sprawdzić, czy [lokalna Brama danych](analysis-services-gateway.md)jest Wyewidencjonuj.
+Gotowe. Jeśli konieczne jest otwarcie portów lub Rozwiązywanie problemów, należy sprawdzić, czy [lokalna Brama danych](analysis-services-gateway.md)jest Wyewidencjonuj.
 
 ## <a name="next-steps"></a>Następne kroki
 

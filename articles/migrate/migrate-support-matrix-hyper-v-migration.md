@@ -3,12 +3,12 @@ title: Obsługa migracji funkcji Hyper-V w Azure Migrate
 description: Dowiedz się więcej o obsłudze migracji funkcji Hyper-V za pomocą Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 4ca946597417ccde0e00c8bf09c70207bc4f85b9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031650"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064465"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Macierz obsługi dla migracji funkcji Hyper-V
 
@@ -23,10 +23,10 @@ Można wybrać maksymalnie 10 maszyn wirtualnych na potrzeby replikacji. Jeśli 
 
 | **Pomoc techniczna**                | **Szczegóły**               
 | :-------------------       | :------------------- |
-| **Wdrożenie**       | Host funkcji Hyper-V może być autonomiczny lub wdrożony w klastrze. |
+| **Wdrożenie**       | Host funkcji Hyper-V może być autonomiczny lub wdrożony w klastrze. <br/>Na hostach funkcji Hyper-V należy zainstalować oprogramowanie do replikacji Azure Migrate (dostawca replikacji funkcji Hyper-V).|
 | **Uprawnienia**           | Wymagane są uprawnienia administratora na hoście funkcji Hyper-V. |
 | **System operacyjny hosta** | Windows Server 2019, Windows Server 2016 lub Windows Server 2012 R2. |
-| **Dostęp do adresu URL** | Hosty funkcji Hyper-V muszą mieć dostęp do tych adresów URL:<br/><br/> -login.microsoftonline.com: Kontrola dostępu i zarządzanie tożsamościami przy użyciu Active Directory.<br/><br/> -*. backup.windowsazure.com: transfer i koordynacja danych replikacji. Migrowanie adresów URL usługi.<br/><br/> -*. blob.core.windows.net: przekazywanie danych do kont magazynu.<br/><br/> -dc.services.visualstudio.com: Przekaż Dzienniki aplikacji używane do wewnętrznego monitorowania.<br/><br/> - time.windows.com | Weryfikuje synchronizację czasu między systemem i czasem globalnym.
+| **Dostęp do adresu URL** | Oprogramowanie dostawcy replikacji na hostach funkcji Hyper-V będzie potrzebować dostępu do tych adresów URL:<br/><br/> -login.microsoftonline.com: Kontrola dostępu i zarządzanie tożsamościami przy użyciu Active Directory.<br/><br/> -*. backup.windowsazure.com: transfer i koordynacja danych replikacji. Migrowanie adresów URL usługi.<br/><br/> -*. blob.core.windows.net: przekazywanie danych do kont magazynu.<br/><br/> -dc.services.visualstudio.com: Przekaż Dzienniki aplikacji używane do wewnętrznego monitorowania.<br/><br/> -time.windows.com: sprawdza synchronizację czasu między systemem i czasem globalnym.
 | **Dostęp do portu** |  Połączenia wychodzące na porcie HTTPS 443 do wysyłania danych replikacji maszyny wirtualnej.
 
 ## <a name="hyper-v-vms"></a>Maszyny wirtualne funkcji Hyper-V
@@ -34,8 +34,6 @@ Można wybrać maksymalnie 10 maszyn wirtualnych na potrzeby replikacji. Jeśli 
 | **Pomoc techniczna**                  | **Szczegóły**               
 | :----------------------------- | :------------------- |
 | **System operacyjny** | Wszystkie systemy operacyjne [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) i [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , które są obsługiwane przez platformę Azure. |
-| **Uprawnienia**           | Musisz mieć uprawnienia administratora na wszystkich maszynach wirtualnych funkcji Hyper-V, które chcesz ocenić. |
-| **Usługi integracji**       | [Usługi integracji funkcji Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) muszą być uruchomione na maszynach wirtualnych, które oceniasz, aby przechwycić informacje o systemie operacyjnym. |
 | **Wymagane zmiany dotyczące platformy Azure** | Niektóre maszyny wirtualne mogą wymagać zmian, aby mogły być uruchamiane na platformie Azure. Przed migracją musisz ręcznie wprowadzić zmiany. Odpowiednie artykuły zawierają instrukcje, jak to zrobić. |
 | **Rozruch systemu Linux**                 | Jeśli/Boot znajduje się na dedykowanej partycji, powinien znajdować się na dysku systemu operacyjnego i nie można go rozłożyć na wiele dysków.<br/> Jeśli/boot jest częścią partycji głównej (/), partycja "/" powinna znajdować się na dysku systemu operacyjnego i nie może obejmować innych dysków. |
 | **Rozruch z interfejsem UEFI**                  | Migrowana maszyna wirtualna na platformie Azure zostanie automatycznie przekonwertowana na maszynę wirtualną rozruchową w systemie BIOS. Na maszynie wirtualnej powinien działać system Windows Server 2012 lub nowszy. Dysk systemu operacyjnego powinien mieć maksymalnie pięć partycji lub mniej, a rozmiar dysku systemu operacyjnego musi być mniejszy niż 300 GB.
@@ -55,15 +53,13 @@ Można wybrać maksymalnie 10 maszyn wirtualnych na potrzeby replikacji. Jeśli 
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny wirtualnej platformy Azure
 
-Wszystkie lokalne maszyny wirtualne replikowane na platformę Azure muszą spełniać wymagania dotyczące maszyny wirtualnej platformy Azure podsumowane w tej tabeli. Gdy Site Recovery uruchamia sprawdzanie wymagań wstępnych dotyczących replikacji, sprawdzenie zakończy się niepowodzeniem, jeśli niektóre wymagania nie zostaną spełnione.
+Wszystkie lokalne maszyny wirtualne replikowane na platformę Azure muszą spełniać wymagania dotyczące maszyny wirtualnej platformy Azure podsumowane w tej tabeli.
 
 **Składnik** | **Wymagania** | **Szczegóły**
 --- | --- | ---
-System operacyjny gościa | Weryfikuje obsługiwane systemy operacyjne VMware VM do migracji.<br/> Możliwe jest Migrowanie dowolnego obciążenia działającego w obsługiwanym systemie operacyjnym. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Architektura systemu operacyjnego gościa | 64-bitowa. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 Rozmiar dysku systemu operacyjnego | Do 2 048 GB. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 Liczba dysków systemu operacyjnego | 1 | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Liczba dysków danych | 64 lub mniej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
+Liczba dysków danych | 16 lub mniej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 Rozmiar dysku danych | Do 4 095 GB | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 Karty sieciowe | Obsługiwane są wiele kart. |
 Udostępniony wirtualny dysk twardy | Nieobsługiwane. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.

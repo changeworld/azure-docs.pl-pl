@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Konfigurowanie usługi rozwiązania Zscaler ZSCloud w celu automatycznego aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+title: 'Samouczek: Konfigurowanie rozwiązania Zscaler ZSCloud dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
 description: W ramach tego samouczka dowiesz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i anulowania aprowizacji kont użytkowników w usłudze rozwiązania Zscaler ZSCloud.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 34d3a7fb299ba143eee01b6b7184f1c566d41aba
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515456"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062680"
 ---
-# <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi rozwiązania Zscaler ZSCloud w celu automatycznego aprowizacji użytkowników
+# <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie rozwiązania Zscaler ZSCloud dla automatycznej aprowizacji użytkowników
 
 W tym samouczku dowiesz się, jak skonfigurować usługę Azure Active Directory (Azure AD) w celu automatycznego aprowizacji i anulowania aprowizacji użytkowników i/lub grup do rozwiązania Zscaler ZSCloud.
 
@@ -78,9 +78,9 @@ Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników n
 Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu tworzenia, aktualizowania i wyłączania użytkowników i grup w usłudze rozwiązania Zscaler ZSCloud na podstawie przypisań użytkowników i grup w usłudze Azure AD.
 
 > [!TIP]
-> Możesz również włączyć rejestrację jednokrotną opartą na protokole SAML dla rozwiązania Zscaler ZSCloud. Jeśli to zrobisz, postępuj zgodnie z instrukcjami podanymi w samouczku Logowanie jednokrotne w programie [rozwiązania Zscaler ZSCloud](zscaler-zsCloud-tutorial.md). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, ale te dwie funkcje uzupełniają się wzajemnie.
+> Możesz również włączyć rejestrację jednokrotną opartą na protokole SAML dla rozwiązania Zscaler ZSCloud. Jeśli to zrobisz, postępuj zgodnie z instrukcjami podanymi w [samouczku logowanie](zscaler-zsCloud-tutorial.md)jednokrotne w programie rozwiązania Zscaler ZSCloud. Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, ale te dwie funkcje uzupełniają się wzajemnie.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) i wybierz pozycję **aplikacje** > dla przedsiębiorstw**wszystkie aplikacje** > **rozwiązania Zscaler ZSCloud**:
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **rozwiązania Zscaler ZSCloud**:
 
     ![Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -110,7 +110,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 7. Po wprowadzeniu wartości w polach **adres URL dzierżawy** i **token tajny** wybierz pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z usługą rozwiązania Zscaler ZSCloud. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi rozwiązania Zscaler ZSCloud ma uprawnienia administratora, a następnie spróbuj ponownie.
 
-    ![Testuj połączenie](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
+    ![Testowanie połączenia](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
 
 8. W polu **E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji. Wybierz opcję **Wyślij powiadomienie e-mail w przypadku wystąpienia błędu**:
 
@@ -138,7 +138,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 15. Aby włączyć usługę Azure AD Provisioning dla rozwiązania Zscaler ZSCloud, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** :
 
-    ![Stan aprowizacji](./media/zscaler-zscloud-provisioning-tutorial/provisioningstatus.png)
+    ![Stan zastrzegania](./media/zscaler-zscloud-provisioning-tutorial/provisioningstatus.png)
 
 16. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić rozwiązania Zscaler ZSCloud, wybierając odpowiednie wartości w obszarze **zakres** w sekcji **Ustawienia** :
 
@@ -154,7 +154,7 @@ Aby uzyskać informacje na temat sposobu odczytywania dzienników aprowizacji us
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki

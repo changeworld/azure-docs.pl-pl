@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/03/2020
+ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 49c5566454a93307dedd150a3508b33dbd7506e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1abcd22621d427244f9b0533aaea46cbf1f356ad
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022362"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064040"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Korzystanie z kolekcji w portalu My Apps
 
-Obszary robocze są różnymi widokami aplikacji wyświetlanymi w portalu **Moje aplikacje** . Aplikacje mogą być pogrupowane w kolekcje według funkcji działu lub roli użytkownika. Jeśli nie widzisz żadnych dostępnych kolekcji lub kategorii, oznacza to, że administrator nie został skonfigurowany ani udostępniony Tobie. Skontaktuj się z pomocą techniczną w Twojej organizacji, aby uzyskać dodatkową pomoc lub uprawnienia do wyświetlania kolekcji udostępnionych.
+Kolekcje są różnymi widokami aplikacji wyświetlanymi w portalu **My Apps** . Aplikacje mogą być pogrupowane w kolekcje według funkcji działu lub roli użytkownika. Jeśli nie widzisz żadnych dostępnych kolekcji lub kategorii, oznacza to, że administrator nie został skonfigurowany ani udostępniony Tobie. Skontaktuj się z pomocą techniczną w Twojej organizacji, aby uzyskać dodatkową pomoc lub uprawnienia do wyświetlania kolekcji udostępnionych.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -46,7 +46,7 @@ Po zorganizowaniu aplikacji w różnych kategoriach w portalu **My Apps** możes
 
 - Przejrzyj, zaktualizuj lub Odwołaj uprawnienia przyznane aplikacjom. Aby uzyskać więcej informacji, zobacz [Edytowanie lub Odwoływanie uprawnień aplikacji w portalu Moje aplikacje](my-applications-portal-permissions-saved-accounts.md).
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 
 - [Aktualizowanie informacji o profilu i koncie](my-account-portal-overview.md). Instrukcje dotyczące aktualizowania danych osobowych, które są wyświetlane w portalu **My profile** .
 

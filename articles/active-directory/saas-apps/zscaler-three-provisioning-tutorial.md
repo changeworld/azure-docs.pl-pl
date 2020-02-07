@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Skonfiguruj rozwiązania Zscaler trzy na potrzeby automatycznego inicjowania obsługi użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+title: 'Samouczek: Konfigurowanie rozwiązania Zscaler trzech na potrzeby automatycznego inicjowania obsługi użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
 description: W ramach tego samouczka dowiesz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i anulowania aprowizacji kont użytkowników, aby rozwiązania Zscaler trzy.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 43ae028e57578634c34c69357a264fdb180b8a1f
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 177bc34162c2b5e4dadc54e1166c5f6061068bae
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515358"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064108"
 ---
-# <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Samouczek: Skonfiguruj rozwiązania Zscaler trzy dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie rozwiązania Zscaler trzech dla automatycznej aprowizacji użytkowników
 
 W tym samouczku dowiesz się, jak skonfigurować usługę Azure Active Directory (Azure AD) w celu automatycznego aprowizacji i anulowania aprowizacji użytkowników i/lub grup, aby rozwiązania Zscaler trzy.
 
@@ -79,7 +79,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 > [!TIP]
 > Możesz również włączyć logowanie jednokrotne oparte na protokole SAML dla rozwiązania Zscaler trzech. Jeśli to zrobisz, postępuj zgodnie z instrukcjami podanymi w [samouczku logowania](zscaler-three-tutorial.md)jednokrotnego rozwiązania Zscaler. Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, ale te dwie funkcje uzupełniają się wzajemnie.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) i wybierz pozycję **aplikacje** > dla przedsiębiorstw**wszystkie aplikacje** > **rozwiązania Zscaler trzy**:
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **rozwiązania Zscaler trzy**:
 
     ![Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -109,7 +109,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 7. Po wprowadzeniu wartości w polach **adres URL dzierżawy** i **token tajny** wybierz pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z rozwiązania zscalerą trzy. Jeśli połączenie nie powiedzie się, upewnij się, że rozwiązania Zscaler trzy konto ma uprawnienia administratora i spróbuj ponownie.
 
-    ![Testuj połączenie](./media/zscaler-three-provisioning-tutorial/test-connection.png)
+    ![Testowanie połączenia](./media/zscaler-three-provisioning-tutorial/test-connection.png)
 
 8. W polu **E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji. Wybierz opcję **Wyślij powiadomienie e-mail w przypadku wystąpienia błędu**:
 
@@ -137,7 +137,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 15. Aby włączyć usługę Azure AD Provisioning dla rozwiązania Zscaler trzy, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** :
 
-    ![Stan aprowizacji](./media/zscaler-three-provisioning-tutorial/provisioning-status.png)
+    ![Stan zastrzegania](./media/zscaler-three-provisioning-tutorial/provisioning-status.png)
 
 16. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić, aby rozwiązania Zscaler trzy, wybierając odpowiednie wartości w obszarze **zakres** w sekcji **Ustawienia** :
 
@@ -153,7 +153,7 @@ Aby uzyskać informacje na temat sposobu odczytywania dzienników aprowizacji us
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki

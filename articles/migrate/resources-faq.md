@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: baf01c0a0d5c6154305f7137c24deb0365b5e812
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989352"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062102"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: typowe pytania
 
@@ -55,7 +55,7 @@ Ocena serwera to narzędzie do planowania migracji. Planista wdrażania Site Rec
 
 Przejrzyj Azure Migrate obsługiwane lokalizacje geograficzne dla [maszyn wirtualnych VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) i [maszyn wirtualnych funkcji Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v).
 
-## <a name="how-do-i-get-started"></a>Jak rozpocząć pracę?
+## <a name="how-do-i-get-started"></a>Jak rozpocząć?
 
 Należy zidentyfikować potrzebne narzędzie i dodać je do projektu Azure Migrate. W przypadku dodawania narzędzia niezależnego dostawcy oprogramowania lub przenoszenia:
 - Zacznij od uzyskania licencji lub zarejestrowania się w celu skorzystania z bezpłatnej wersji próbnej zgodnie z zasadami dotyczącymi narzędzi. Licencjonowanie dla narzędzi jest zgodne z modelem niezależnego dostawcy oprogramowania lub narzędzia.
@@ -67,9 +67,7 @@ Możesz centralnie śledzić swoją drogę migracji z poziomu projektu Azure Mig
 [Dowiedz się, jak](how-to-delete-project.md) usunąć projekt. 
 
 
-## <a name="do-machines-retain-domain-identity-after-migration"></a>Czy maszyny zachowują tożsamość domeny po migracji?
 
-Przy założeniu, że usługi domenowe są [zintegrowane z platformą Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/), członkostwo w domenie i tożsamość komputera w domenie, są zachowywane po migracji. 
 
 ## <a name="next-steps"></a>Następne kroki
 Zapoznaj się z [omówieniem Azure Migrate](migrate-services-overview.md).

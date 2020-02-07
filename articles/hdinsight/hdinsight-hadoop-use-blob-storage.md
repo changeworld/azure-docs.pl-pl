@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 1e115c59cab4c340f927da516b5f937abf42e985
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55cddf5317938dea353517cde7260a1aa531d1df
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839658"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061262"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Azure Storage w połączeniu z klastrami usługi Azure HDInsight
 
 Aby analizować dane w klastrze usługi HDInsight, możesz przechowywać dane w [usłudze Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)/[Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)lub kombinację. Te opcje magazynu umożliwiają bezpieczne usuwanie klastrów usługi HDInsight, które są używane do obliczeń bez utraty danych użytkownika.
 
-Apache Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. Podczas procesu tworzenia klastra usługi HDInsight można określić kontener obiektów BLOB w usłudze Azure Storage jako domyślny system plików lub za pomocą usługi HDInsight 3,6. można wybrać usługę Azure Storage lub Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 jako pliki domyślne System z kilkoma wyjątkami. Aby uzyskać pomoc techniczną dotyczącą korzystania z Data Lake Storage generacji 1 jako magazynu domyślnego i połączonego, zobacz [dostępność klastra usługi HDInsight](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
+Apache Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. Podczas procesu tworzenia klastra usługi HDInsight jako domyślny system plików można określić kontener obiektów BLOB w usłudze Azure Storage, a w przypadku usługi HDInsight 3,6 można wybrać opcję Azure Storage lub Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 jako domyślny system Files z kilkoma wyjątkami. Aby uzyskać pomoc techniczną dotyczącą korzystania z Data Lake Storage generacji 1 jako magazynu domyślnego i połączonego, zobacz [dostępność klastra usługi HDInsight](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
 
 W tym artykule omówiono współdziałanie usługi Azure Storage z klastrami usługi HDInsight. Aby dowiedzieć się, jak Data Lake Storage Gen 1 współpracuje z klastrami usługi HDInsight, zobacz [Korzystanie z Azure Data Lake Storage z klastrami Azure HDInsight](hdinsight-hadoop-use-data-lake-store.md). Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight, zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -27,9 +27,9 @@ W tym artykule omówiono współdziałanie usługi Azure Storage z klastrami us�
 
 | Rodzaj konta magazynu | Obsługiwane usługi | Obsługiwane warstwy wydajności | Obsługiwane warstwy dostępu |
 |----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (ogólnego przeznaczenia wersja 2)  | Obiekt blob     | Standardowa                    | Gorące, chłodne i archiwalne\*   |
-| Storage (ogólnego przeznaczenia w wersji 1)   | Obiekt blob     | Standardowa                    | Nie dotyczy                    |
-| BlobStorage                    | Obiekt blob     | Standardowa                    | Gorące, chłodne i archiwalne\*   |
+| StorageV2 (ogólnego przeznaczenia wersja 2)  | Obiekt blob     | Standard                    | Gorące, chłodne i archiwalne\*   |
+| Storage (ogólnego przeznaczenia w wersji 1)   | Obiekt blob     | Standard                    | Nie dotyczy                    |
+| BlobStorage                    | Obiekt blob     | Standard                    | Gorące, chłodne i archiwalne\*   |
 
 Nie zaleca się używania domyślnego kontenera obiektów BLOB do przechowywania danych firmowych. Dobrym rozwiązaniem jest usunięcie domyślnego kontenera obiektów blob po każdym użyciu, aby obniżyć koszty magazynowania. Kontener domyślny zawiera Dzienniki aplikacji i systemu. Koniecznie pobierz dzienniki przed usunięciem kontenera.
 
@@ -122,7 +122,7 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>Zidentyfikuj ścieżkę magazynu z Abmari
+## <a name="identify-storage-path-from-ambari"></a>Zidentyfikuj ścieżkę magazynu z Ambari
 
 * Aby zidentyfikować pełną ścieżkę do skonfigurowanego domyślnego magazynu, przejdź do:
 
@@ -146,7 +146,7 @@ Domyślny kontener obiektów blob przechowuje informacje dotyczące klastra, tak
 
 Firma Microsoft udostępnia następujące narzędzia do pracy z usługą Azure Storage:
 
-| Narzędzie | Linux | OS X | Windows |
+| Narzędzie | Linux | OS X | System Windows |
 | --- |:---:|:---:|:---:|
 | [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Interfejs wiersza polecenia platformy Azure](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |

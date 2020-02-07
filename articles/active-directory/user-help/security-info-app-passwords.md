@@ -2,7 +2,7 @@
 title: Tworzenie haseł aplikacji ze strony informacje zabezpieczające (wersja zapoznawcza) — Azure AD
 description: Twórz automatycznie generowane hasła (hasła aplikacji), które mają być używane z dowolną aplikacją nieobsługującą przeglądarki, lub dowolną aplikacją, która nie obsługuje weryfikacji dwuskładnikowej w organizacji. To hasło aplikacji jest oddzielone od normalnego hasła i można je skonfigurować ze strony z informacjami o zabezpieczeniach.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
-ms.author: lizross
-ms.openlocfilehash: d4076e379755518421ef79eca542ebdc99294a11
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704893"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064074"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Tworzenie haseł aplikacji na stronie informacje zabezpieczające (wersja zapoznawcza)
 

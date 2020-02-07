@@ -4,14 +4,14 @@ description: W tym przewodniku szybki start dowiesz się, jak utworzyć magazyn 
 ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 07/17/2018
+ms.date: 02/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 430a560f3ae8e9abc6c5e7a34c24d9d2f262fd79
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172007"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057179"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Tworzenie kopii zapasowej maszyny wirtualnej na platformie Azure
 
@@ -21,7 +21,7 @@ W tym przewodniku Szybki start opisano wykonywanie kopii zapasowej istniejącej 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+Zaloguj się do [Azure portal](https://portal.azure.com).
 
 ## <a name="select-a-vm-to-back-up"></a>Wybór maszyny wirtualnej, której kopia zapasowa ma być tworzona
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: e8717d10f61dfd50b9cdfa20a91203a5842d4c7d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: de80094c3fd2df7d2f8b32d1e968e9bebea847a1
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185382"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064346"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Dodawanie, zmienianie lub usuwanie podsieci sieci wirtualnej
 
@@ -49,11 +49,12 @@ Konto, do którego należy się zalogować lub połączyć się z platformą Azu
    - **Sieciowa Grupa zabezpieczeń**: można skojarzyć zero lub jedną istniejącą grupę zabezpieczeń sieci z podsiecią w celu filtrowania przychodzącego i wychodzącego ruchu sieciowego dla podsieci. Grupa zabezpieczeń sieci musi znajdować się w tej samej subskrypcji i lokalizacji co sieć wirtualna. Dowiedz się więcej o [grupach zabezpieczeń sieci](security-overview.md) i [sposobach tworzenia sieciowej grupy zabezpieczeń](tutorial-filter-network-traffic.md).
    - **Tabela tras**: można skojarzyć zero lub jedną istniejącą tabelę tras z podsiecią w celu kontrolowania routingu ruchu sieciowego do innych sieci. Tabela tras musi znajdować się w tej samej subskrypcji i lokalizacji co sieć wirtualna. Dowiedz się więcej na temat [routingu platformy Azure](virtual-networks-udr-overview.md) i [sposobu tworzenia tabeli tras](tutorial-create-route-table-portal.md)
    - **Punkty końcowe usługi:** Dla podsieci może być włączonych zero lub wiele punktów końcowych usługi. Aby włączyć punkt końcowy usługi dla usługi, wybierz usługę lub usługi, dla których chcesz włączyć punkty końcowe usługi z listy **usług** . Lokalizacja jest konfigurowana automatycznie dla punktu końcowego. Domyślnie punkty końcowe usługi są konfigurowane dla regionu sieci wirtualnej. W przypadku usługi Azure Storage w celu obsługi regionalnych scenariuszy trybu failover punkty końcowe są automatycznie konfigurowane do [sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
-   - **Delegowanie podsieci:** Podsieć może mieć zero dla wielu delegowanych uprawnień. Delegowanie podsieci daje jawne uprawnienia do usługi w celu tworzenia zasobów specyficznych dla usługi w podsieci przy użyciu unikatowego identyfikatora podczas wdrażania usługi. Aby delegować do usługi, wybierz usługę, z której chcesz delegować listę **usług** .
-
+   
        Aby usunąć punkt końcowy usługi, usuń zaznaczenie usługi, dla której chcesz usunąć punkt końcowy usługi. Aby dowiedzieć się więcej na temat punktów końcowych usługi i usług, dla których można je włączyć, zobacz [Omówienie punktów końcowych usługi sieci wirtualnej](virtual-network-service-endpoints-overview.md). Po włączeniu punktu końcowego usługi dla usługi należy również włączyć dostęp do sieci dla podsieci dla zasobu utworzonego za pomocą usługi. Jeśli na przykład zostanie włączony punkt końcowy usługi *Microsoft. Storage*, należy również włączyć dostęp do sieci do wszystkich kont usługi Azure Storage, do których chcesz udzielić dostępu do sieci. Aby uzyskać szczegółowe informacje o sposobie włączania dostępu do sieci w podsieciach, dla których włączono punkt końcowy usługi, zobacz dokumentację dla poszczególnych usług, dla których włączono punkt końcowy usługi.
 
      Aby sprawdzić, czy punkt końcowy usługi jest włączony dla podsieci, należy wyświetlić [obowiązujące trasy](diagnose-network-routing-problem.md) dla dowolnego interfejsu sieciowego w podsieci. Gdy punkt końcowy jest skonfigurowany, zostanie wyświetlona trasa *Domyślna* z prefiksami adresów usługi i nextHopType **VirtualNetworkServiceEndpoint**. Aby dowiedzieć się więcej na temat routingu, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
+   - **Delegowanie podsieci:** Podsieć może mieć zero dla wielu delegowanych uprawnień. Delegowanie podsieci daje jawne uprawnienia do usługi w celu tworzenia zasobów specyficznych dla usługi w podsieci przy użyciu unikatowego identyfikatora podczas wdrażania usługi. Aby delegować do usługi, wybierz usługę, z której chcesz delegować listę **usług** .
+
 6. Aby dodać podsieć do wybranej sieci wirtualnej, wybierz **przycisk OK**.
 
 **Polecenia**
@@ -99,7 +100,7 @@ Podsieć można usunąć tylko wtedy, gdy nie ma żadnych zasobów w podsieci. J
 
 Aby wykonać zadania w podsieciach, Twoje konto musi być przypisane do roli [współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub do roli [niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , do której przypisano odpowiednie działania wymienione w poniższej tabeli:
 
-|Akcja                                                                   |   Nazwa                                       |
+|Akcja                                                                   |   Name (Nazwa)                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft.Network/virtualNetworks/subnets/read                           |   Odczytaj podsieć sieci wirtualnej              |
 |Microsoft.Network/virtualNetworks/subnets/write                          |   Utwórz lub zaktualizuj podsieć sieci wirtualnej  |
