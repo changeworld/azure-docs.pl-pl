@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cba8a4fd64b948d7a3e443426ca1f779af68a3fe
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841676"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049022"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Przenoszenie własnego klucza do Apache Kafka w usłudze Azure HDInsight
 
@@ -63,7 +63,7 @@ Usługa HDInsight obsługuje tylko Azure Key Vault. Jeśli masz własny magazyn 
 
     ![Apache Kafka generuje nazwę klucza](./media/apache-kafka-byok/apache-kafka-create-key.png "Generuj nazwę klucza")
 
-    d. Wybierz utworzony klucz z listy kluczy.
+    c. Wybierz utworzony klucz z listy kluczy.
 
     ![Lista kluczy magazynu kluczy Apache Kafka](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
@@ -81,7 +81,7 @@ Usługa HDInsight obsługuje tylko Azure Key Vault. Jeśli masz własny magazyn 
 
     ![Ustaw pozycję Wybierz podmiot zabezpieczeń dla zasad dostępu Azure Key Vault](./media/apache-kafka-byok/azure-portal-add-access-policy.png)
 
-    d. Ustawianie **uprawnień klucza** do **pobierania**, **odwinięcia klucza**i **zawijania klucza**.
+    c. Ustawianie **uprawnień klucza** do **pobierania**, **odwinięcia klucza**i **zawijania klucza**.
 
     ![Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy1](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "Ustawianie uprawnień klucza dla Azure Key Vault dostępu policy1")
 
@@ -95,9 +95,13 @@ Usługa HDInsight obsługuje tylko Azure Key Vault. Jeśli masz własny magazyn 
 
 ## <a name="create-hdinsight-cluster"></a>Tworzenie klastra usługi HDInsight
 
-Teraz możesz utworzyć nowy klaster usługi HDInsight. BYOK można stosować tylko do nowych klastrów podczas tworzenia klastra. Nie można usunąć szyfrowania z klastrów BYOK i nie można dodać BYOK do istniejących klastrów.
+Teraz możesz utworzyć nowy klaster usługi HDInsight. Na karcie **podstawy** wybierz pozycję **Kafka** dla **typu klastra**.
 
-![Kafka szyfrowanie dysków w Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
+![Azure Portal wybierz typ Kafka](./media/apache-kafka-byok/azure-portal-cluster-basics-type-kafka.png)
+
+BYOK można stosować tylko do nowych klastrów podczas tworzenia klastra. Nie można usunąć szyfrowania z klastrów BYOK i nie można dodać BYOK do istniejących klastrów.
+
+![Kafka szyfrowanie dysków w Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
 
 Podczas tworzenia klastra Podaj pełny adres URL klucza, w tym wersję klucza. Na przykład `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Należy również przypisać zarządzaną tożsamość do klastra i podać identyfikator URI klucza. Aby uzyskać szczegółowe informacje dotyczące tworzenia klastra, zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](./apache-kafka-get-started.md)
 

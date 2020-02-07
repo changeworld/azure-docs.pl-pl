@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: e8df7ffd285b0d49f5d4a87585e769b5b0bbafe9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513154"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049043"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Dostosowywanie modelu języka za pomocą interfejsów API Video Indexer
 
@@ -105,9 +105,8 @@ Odpowiedź zawiera metadane dotyczące nowo przeszkolonego modelu języka wraz z
 }
 ```
 
-W przypadku [przekazywania wideo do indeksu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) i dla parametru **languageModelId** podczas ponownego [indeksowania filmu wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)należy używać zwracanej wartości **identyfikatora** modelu języka dla parametru **linguisticModelId** .
+Zwrócony **Identyfikator** jest unikatowym identyfikatorem używanym do rozróżniania modeli języka, podczas gdy **languageModelId** jest używany do [przekazywania wideo do indeksowania](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) i ponownego indeksowania interfejsów API [wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (znanych również jako **linguisticModelId** w Video Indexer interfejsów API przekazywania/poindeksowania).
 
- 
 ## <a name="delete-a-language-model"></a>Usuwanie modelu języka
 
 Interfejs API [usuwania modelu języka](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) usuwa niestandardowy model języka z określonego konta. Wszystkie filmy wideo, które były używane w modelu języka, będą zachować ten sam indeks do momentu ponownego indeksowania wideo. Jeśli ponownie indeksujesz wideo, możesz przypisać nowy model języka do wideo. W przeciwnym razie Video Indexer będzie używać domyślnego modelu do ponownego indeksowania wideo.

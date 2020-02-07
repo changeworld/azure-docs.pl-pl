@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dcbc03257b8bfeacda700f60f2724f2d02ec147d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429266"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048271"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Zrozumienie i wywoływanie metod bezpośrednich z IoT Hub
 
@@ -73,7 +73,10 @@ Bezpośrednie wywołania metod na urządzeniu to wywołania HTTPS, które skład
     }
     ```
 
-Limit czasu w sekundach. Jeśli limit czasu nie jest ustawiony, wartość domyślna to 30 sekund.
+Wartość podana jako `responseTimeoutInSeconds` w żądaniu to czas, jaki usługa IoT Hub musi oczekiwać na zakończenie wykonywania bezpośredniej metody na urządzeniu. Ustaw ten limit czasu na co najmniej tak długo, jak oczekiwany czas wykonania metody bezpośredniej przez urządzenie. Jeśli limit czasu nie zostanie podany, zostanie użyta wartość domyślna wynosząca 30 sekund. Minimalne i maksymalne wartości `responseTimeoutInSeconds` są odpowiednio 5 i 300 sekund.
+
+Wartość podana jako `connectTimeoutInSeconds` w żądaniu to czas wywołania metody bezpośredniej, którą IoT Hub usługa musi oczekiwać na odłączenie urządzenia do trybu online. Wartość domyślna to 0, co oznacza, że urządzenia muszą już być w trybie online przy wywołaniu metody bezpośredniej. Maksymalna wartość `connectTimeoutInSeconds` to 300 sekund.
+
 
 #### <a name="example"></a>Przykład
 
@@ -98,7 +101,10 @@ curl -X POST \
 
 Aplikacja zaplecza odbiera odpowiedź składającą się z następujących elementów:
 
-* *Kod stanu HTTP*, który jest używany w przypadku błędów pochodzących z IoT Hub, w tym błąd 404 dla urządzeń, które nie są obecnie połączone.
+* *Kod stanu HTTP*:
+  * 200 wskazuje pomyślne wykonanie metody bezpośredniej;
+  * 404 wskazuje, że identyfikator urządzenia jest nieprawidłowy lub że urządzenie nie zostało w trybie online po wywołaniu metody bezpośredniej i dla `connectTimeoutInSeconds` (Użyj dołączonego komunikatu o błędzie, aby zrozumieć główną przyczynę);
+  * 504 wskazuje limit czasu bramy spowodowany przez urządzenie, które nie odpowiada na wywołanie metody bezpośredniej w `responseTimeoutInSeconds`.
 
 * *Nagłówki* , które zawierają element ETag, identyfikator żądania, typ zawartości i kodowanie zawartości.
 
@@ -160,7 +166,7 @@ Poniższa sekcja dotyczy protokołu AMQP.
 
 Urządzenie odbiera bezpośrednie żądania metod przez utworzenie linku odbierającego na adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
 
-Komunikat AMQP dociera do linku odbierającego, który reprezentuje żądanie metody. Ten temat zawiera następujące sekcje:
+Komunikat AMQP dociera do linku odbierającego, który reprezentuje żądanie metody. Zawiera następujące sekcje:
 
 * Właściwość identyfikatora korelacji, która zawiera identyfikator żądania, który powinien zostać przesłany z powrotem do odpowiedniej metody odpowiedzi.
 

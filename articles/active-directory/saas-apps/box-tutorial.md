@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd4ad3e2e3da9dce3a5bab36137ce65807b6a9a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: ab129315f398061eaa427f05f3bd4b1cabff0dc3
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293729"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046772"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>Samouczek Azure Active Directory: integracja logowania jednokrotnego (SSO) z usługą Box
 
@@ -46,7 +46,7 @@ W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure A
 * Usługa Box obsługuje logowanie jednokrotne inicjowane przez **SP**
 * Obsługuje [ **Automatyczne** Inicjowanie obsługi i cofanie aprowizacji użytkowników](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial) (zalecane)
 * Usługa Box obsługuje aprowizowanie użytkowników typu **just in time**
-* Po skonfigurowaniu pola można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po skonfigurowaniu pola można wymusić kontrolę sesji, która chroni eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolka sesji rozszerzy od dostępu warunkowego. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-box-from-the-gallery"></a>Dodawanie usługi Box z galerii
 
@@ -89,7 +89,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL: `box.net`
 
     > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Aby uzyskać wartość, skontaktuj się z [zespołem pomocy technicznej klienta usługi Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość adresu URL logowania nie jest prawdziwa. Zaktualizuj wartość przy użyciu rzeczywistego adresu URL logowania. Aby uzyskać wartość, skontaktuj się z [zespołem pomocy technicznej klienta usługi Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
@@ -105,7 +105,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -145,7 +145,7 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po kliknięciu kafelka Box w panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi Box, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -155,6 +155,6 @@ Po kliknięciu kafelka Box w panelu dostępu powinno nastąpić automatyczne zal
 
 - [Wypróbuj usługę Azure AD](https://aad.portal.azure.com/)
 
-- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-box)
+- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Ochrona za pomocą pola z zaawansowaną widocznością i kontrolkami](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Ochrona za pomocą pola z zaawansowaną widocznością i kontrolkami](https://docs.microsoft.com/cloud-app-security/protect-box)

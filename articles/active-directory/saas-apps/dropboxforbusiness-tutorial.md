@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf5b3c79e39e9baef49ce2c14408a15c3686a6a8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: df7fc366c5087e66c3022c212870397d77e6e34d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293440"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046760"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>Samouczek: Integrowanie usługi Dropbox dla firm z usługą Azure Active Directory
 
@@ -44,7 +44,7 @@ Aby rozpocząć, potrzebne są następujące elementy:
 * W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. Aplikacja Dropbox dla Firm obsługuje logowanie jednokrotne inicjowane przez **SP**
 
 * Usługa Dropbox dla firm obsługuje [Automatyczne Inicjowanie obsługi i cofanie aprowizacji użytkowników](dropboxforbusiness-tutorial.md)
-* Po skonfigurowaniu usługi Dropbox można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po skonfigurowaniu usługi Dropbox można wymusić kontrolę sesji, która chroni eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolka sesji rozszerzy od dostępu warunkowego. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>Dodawanie aplikacji Dropbox dla Firm z galerii
 
@@ -101,7 +101,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     b. Identyfikator usługi Azure AD
 
-    d. Adres URL wylogowywania
+    c. Adres URL wylogowywania
 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
@@ -114,7 +114,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie Britta Sim
    1. W polu **Nazwa** wprowadź wartość `Britta Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `BrittaSimon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -146,39 +146,39 @@ W tej sekcji zostanie włączone Logowanie jednokrotne w usłudze Britta Simon, 
 
 3. Aby ręcznie skonfigurować usługi Dropbox dla firm, Otwórz nowe okno przeglądarki sieci Web i przejdź do dzierżawy usługi Dropbox dla firm i zaloguj się do dzierżawy usługi Dropbox dla firm. i wykonaj następujące czynności:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/dropboxforbusiness-tutorial/ic769509.png "Konfigurowanie logowania jednokrotnego")
+    ![Skonfiguruj logowanie jednokrotne](./media/dropboxforbusiness-tutorial/ic769509.png "Konfigurowanie logowania jednokrotnego")
 
 4. Kliknij **ikonę użytkownika** i wybierz kartę **Settings** (Ustawienia).
 
-    ![Konfigurowanie logowania jednokrotnego](./media/dropboxforbusiness-tutorial/configure1.png "Konfigurowanie logowania jednokrotnego")
+    ![Skonfiguruj logowanie jednokrotne](./media/dropboxforbusiness-tutorial/configure1.png "Konfigurowanie logowania jednokrotnego")
 
 5. W okienku nawigacji po lewej stronie kliknij pozycję **Admin console** (Konsola administracyjna).
 
-    ![Konfigurowanie logowania jednokrotnego](./media/dropboxforbusiness-tutorial/configure2.png "Konfigurowanie logowania jednokrotnego")
+    ![Skonfiguruj logowanie jednokrotne](./media/dropboxforbusiness-tutorial/configure2.png "Konfigurowanie logowania jednokrotnego")
 
 6. W obszarze **Admin console** (Konsola administracyjna) kliknij pozycję **Settings** (Ustawienia) w okienku nawigacji po lewej stronie.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/dropboxforbusiness-tutorial/configure3.png "Konfigurowanie logowania jednokrotnego")
+    ![Skonfiguruj logowanie jednokrotne](./media/dropboxforbusiness-tutorial/configure3.png "Konfigurowanie logowania jednokrotnego")
 
 7. Wybierz opcję **Single sign-on** (Logowanie jednokrotne) w sekcji **Authentication** (Uwierzytelnianie).
 
-    ![Konfigurowanie logowania jednokrotnego](./media/dropboxforbusiness-tutorial/configure4.png "Konfigurowanie logowania jednokrotnego")
+    ![Skonfiguruj logowanie jednokrotne](./media/dropboxforbusiness-tutorial/configure4.png "Konfigurowanie logowania jednokrotnego")
 
 8. W sekcji **Single sign-on** (Logowanie jednokrotne) wykonaj następujące kroki:  
 
-    ![Konfigurowanie logowania jednokrotnego](./media/dropboxforbusiness-tutorial/configure5.png "Konfigurowanie logowania jednokrotnego")
+    ![Skonfiguruj logowanie jednokrotne](./media/dropboxforbusiness-tutorial/configure5.png "Konfigurowanie logowania jednokrotnego")
 
     a. Wybierz pozycję **wymagane** jako opcję z listy rozwijanej dla **logowania jednokrotnego**.
 
     b. Kliknij pozycję **Add sign-in URL** (Dodaj adres URL logowania), a następnie w polu tekstowym **Identity provider sign-in URL** (Adres URL logowania dostawcy tożsamości) wklej wartość **adresu URL logowania**, która została skopiowana z witryny Azure Portal, i wybierz pozycję  **Done** (Gotowe).
 
-    ![Konfigurowanie logowania jednokrotnego](./media/dropboxforbusiness-tutorial/configure6.png "Konfigurowanie logowania jednokrotnego")
+    ![Skonfiguruj logowanie jednokrotne](./media/dropboxforbusiness-tutorial/configure6.png "Konfigurowanie logowania jednokrotnego")
 
-    d. Kliknij pozycję **Upload certificate** (Przekaż certyfikat), a następnie przejdź do **pliku certyfikatu zakodowanego w formacie Base64**, który został pobrany z witryny Azure Portal.
+    c. Kliknij pozycję **Upload certificate** (Przekaż certyfikat), a następnie przejdź do **pliku certyfikatu zakodowanego w formacie Base64**, który został pobrany z witryny Azure Portal.
 
     d. Kliknij pozycję **Copy link** (Kopiuj link) i wklej skopiowaną wartość w polu tekstowym **Adres URL logowania** w sekcji **Domena i adresy URL aplikacji Dropbox dla Firm** w witrynie Azure Portal.
 
-    e. Kliknij pozycję **Zapisz**.
+    e. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-dropbox-for-business-test-user"></a>Tworzenie użytkownika testowego aplikacji Dropbox dla Firm
 
@@ -191,12 +191,12 @@ W tej sekcji w aplikacji Dropbox dla Firm jest tworzony użytkownik o nazwie Bri
 
 Po wybraniu kafelka usługi Dropbox dla firm w panelu dostępu należy automatycznie zalogować się do usługi Dropbox dla firm, dla której skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/cloud-app-security/protect-dropbox)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Ochrona usługi Dropbox przy użyciu zaawansowanej widoczności i kontrolek](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Ochrona usługi Dropbox przy użyciu zaawansowanej widoczności i kontrolek](https://docs.microsoft.com/cloud-app-security/protect-dropbox)

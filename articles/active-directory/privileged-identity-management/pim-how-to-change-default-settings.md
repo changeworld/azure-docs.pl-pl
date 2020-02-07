@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a480327efacee2d1eb74353b2d0ef7885a6194
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024215"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048085"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurowanie ustawień roli usługi Azure AD w Privileged Identity Management
 
@@ -43,12 +43,8 @@ Wykonaj kroki opisane w tym artykule, aby zatwierdzić lub odrzucić żądania d
 Wykonaj następujące kroki, aby otworzyć ustawienia roli usługi Azure AD.
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu użytkownika z rolą [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
-
-1. Otwórz **Azure AD Privileged Identity Management**.
-
-1. Wybierz pozycję **role usługi Azure AD**.
-
-1. Wybierz pozycję **Ustawienia roli**.
+gt
+1. Otwórz **Azure AD Privileged Identity Management** &gt; **role usługi Azure AD** &gt; **ustawień roli**.
 
     ![Strona ustawień roli z listą ról zasobów platformy Azure](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -89,7 +85,7 @@ Privileged Identity Management zapewnia opcjonalne wymuszanie Multi-Factor Authe
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Wymagaj Multi-Factor Authentication przy aktywnym przypisaniu
 
-W niektórych przypadkach może być konieczne przypisanie użytkownika lub grupy do roli przez krótki czas trwania (na przykład jeden dzień). W takim przypadku przypisani użytkownicy nie muszą zażądać aktywacji. W tym scenariuszu Privileged Identity Management nie może wymusić uwierzytelniania wieloskładnikowego, gdy użytkownik korzysta z przypisania roli, ponieważ jest już aktywne w roli od momentu, w którym jest przypisany.
+W niektórych przypadkach można chcieć przypisać użytkownika do roli przez krótki czas trwania (na przykład jeden dzień). W takim przypadku przypisani użytkownicy nie muszą zażądać aktywacji. W tym scenariuszu Privileged Identity Management nie może wymusić uwierzytelniania wieloskładnikowego, gdy użytkownik korzysta z przypisania roli, ponieważ jest już aktywne w roli od momentu, w którym jest przypisany.
 
 Aby upewnić się, że administrator zasobów spełniający przypisanie, należy wymusić uwierzytelnianie wieloskładnikowe przy aktywnym przypisaniu, zaznaczając pole **wymagaj Multi-Factor Authentication w aktywnym przypisaniu** .
 
@@ -115,11 +111,11 @@ Jeśli chcesz wymagać zatwierdzenia w celu aktywowania roli, wykonaj następuj�
 
 1. Zaznacz pole wyboru **Wymagaj zatwierdzenia do uaktywnienia** .
 
-1. Wybierz pozycję **Wybierz osoby zatwierdzające** , aby otworzyć stronę **Wybierz członka lub grupę** .
+1. Wybierz pozycję **Wybierz osoby zatwierdzające**.
 
     ![Wybierz okienko użytkownika lub grupy, aby wybrać osoby zatwierdzające](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Wybierz co najmniej jednego użytkownika lub grupę, a następnie kliknij przycisk **Wybierz**. Możesz dodać dowolną kombinację użytkowników i grup. Musisz wybrać co najmniej jedną osobę zatwierdzającą. Brak domyślnych osób zatwierdzających.
+1. Wybierz co najmniej jednego użytkownika, a następnie kliknij przycisk **Wybierz**. Musisz wybrać co najmniej jedną osobę zatwierdzającą. Brak domyślnych osób zatwierdzających.
 
     Wybrane opcje zostaną wyświetlone na liście wybranych osób zatwierdzających.
 
@@ -135,7 +131,7 @@ Wykonaj następujące kroki, aby otworzyć ustawienia roli usługi Azure AD.
 
 1. Wybierz pozycję **role usługi Azure AD**.
 
-1. Wybierz **ustawienia**.
+1. Wybierz pozycję **Ustawienia**.
 
     ![Role usługi Azure AD — ustawienia](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -208,7 +204,7 @@ Jeśli chcesz delegować wymagane zatwierdzenie w celu aktywowania roli, wykonaj
 
     ![Role usługi Azure AD — ustawienia — wymaga zatwierdzenia](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. Wybierz co najmniej jedną osobę zatwierdzającą oprócz roli administrator ról uprzywilejowanych, a następnie kliknij przycisk **Wybierz**. Możesz wybrać użytkowników lub grupy. Zalecamy dodanie co najmniej dwóch osób zatwierdzających. Nawet jeśli dodasz Cię jako osobę zatwierdzającą, nie możesz samodzielnie zatwierdzać aktywacji roli. Wybrane opcje zostaną wyświetlone na liście wybranych osób zatwierdzających.
+1. Wybierz co najmniej jedną osobę zatwierdzającą oprócz roli administrator ról uprzywilejowanych, a następnie kliknij przycisk **Wybierz**. Zalecamy dodanie co najmniej dwóch osób zatwierdzających. Nawet jeśli dodasz Cię jako osobę zatwierdzającą, nie możesz samodzielnie zatwierdzać aktywacji roli. Wybrane opcje zostaną wyświetlone na liście wybranych osób zatwierdzających.
 
 1. Po określeniu wszystkich ustawień roli wybierz pozycję **Zapisz** , aby zapisać zmiany.
 

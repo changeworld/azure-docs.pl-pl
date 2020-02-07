@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 12/23/2019
-ms.openlocfilehash: 48d4df5684c84e195810439912dd610f5af364d4
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/06/2020
+ms.openlocfilehash: b20a615691d95c04574e2909f69b5a83a97f9d14
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964485"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048949"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Skonfiguruj własne środowisko IR jako serwer proxy dla Azure-SSIS IR w usłudze ADF
 
@@ -149,7 +149,7 @@ Pozostałe zadania przemieszczania uruchomione w Azure-SSIS IR nie będą rozlic
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
-- Obecnie są obsługiwane tylko zadania przepływu danych z menedżerami połączenia ODBC/OLEDB/Flated File Connection i ODBC/OLEDB/płaskimi plikami. 
+- Obecnie obsługiwane są tylko zadania przepływu danych korzystające z menedżerów połączeń ODBC/OLEDB/prostych plików oraz ODBC/OLEDB/prostych źródeł plików lub lokalizacji docelowej OLEDB. 
 - Obecnie są obsługiwane tylko połączone usługi platformy Azure Blob Storage skonfigurowane z **kluczem konta**/**URI SAS**/uwierzytelnianie **nazwy głównej usługi** .
 
 ## <a name="next-steps"></a>Następne kroki

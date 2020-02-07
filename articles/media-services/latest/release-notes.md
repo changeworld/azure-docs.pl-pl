@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 52d8dda8b543e5bdf3ca88ae3784df65be3a2ba1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b3d5e1f814a8eb083ab01623051f1b5b3723a9f1
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962947"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049624"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Informacje o wersji Azure Media Services v3
 
@@ -90,7 +90,7 @@ Media Services v3 zapowiedźuje Podgląd 24 godzin x 365 dni aktywnego kodowania
 
 #### <a name="deprecation-of-media-processors"></a>Wycofanie procesorów multimediów
 
-Ogłaszamy przestarzałe *Azure Media Indexer* i *Azure Media Indexer 2 wersji zapoznawczej*. Aby uzyskać daty wycofania, zobacz temat ten [starszy składnik](../previous/legacy-components.md) . [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje te starsze procesory nośników.
+Ogłaszamy przestarzałe *Azure Media Indexer* i *Azure Media Indexer 2 wersji zapoznawczej*. Aby uzyskać daty wycofania, zobacz temat [starsze składniki](../previous/legacy-components.md) . [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) zastępuje te starsze procesory nośników.
 
 Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer i Azure Media Indexer 2 do Azure Media Services Video Indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -180,7 +180,7 @@ Media Services wersja 3 jest teraz obsługiwana w chmurach narodowych platformy 
 
 Do schematów Azure Event Grid dla Media Services dodano zdarzenie [Microsoft. Media. JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) .
 
-## <a name="january-2019"></a>Styczeń 2019
+## <a name="january-2019"></a>Styczeń 2019 r.
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Pliki Media Encoder Standard i MPI 
 
@@ -204,15 +204,15 @@ Moduł interfejsu wiersza polecenia 2,0 jest teraz dostępny dla [Azure Media Se
 ### <a name="new-commands"></a>Nowe polecenia
 
 - [AZ AMS Account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [AZ AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
 - [AZ AMS — zasób](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [AZ AMS Asset-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
 - [AZ AMS Content-Key-Policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
 - [zadanie AZ AMS](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
 - [AZ AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
 - [AZ AMS Live-Output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [AZ AMS Streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [AZ AMS Streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
 - [AZ AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) — umożliwia zarządzanie jednostkami zarezerwowanymi multimediów. Aby uzyskać więcej informacji, zobacz [skalowanie jednostek zarezerwowanych multimediów](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Nowe funkcje i istotne zmiany
@@ -308,7 +308,7 @@ Video Indexer wersja GA została ogłoszona w sierpniu. Aby uzyskać nowe inform
 
 ### <a name="plans-for-changes"></a>Plany dotyczące zmian
 
-#### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure w wersji 2.0
+#### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
  
 Dostępny jest moduł interfejsu wiersza polecenia platformy Azure 2,0 zawierający operacje na wszystkich funkcjach (w tym na żywo, Zasady kluczy zawartości, filtry kont/zasobów, zasady przesyłania strumieniowego). 
 
@@ -320,7 +320,7 @@ Jeśli utworzono zasoby lub filtry kont z zakresu od 09/28 do 10/12 przy użyciu
 
 ## <a name="may-2018---preview"></a>Maj 2018 — wersja zapoznawcza
 
-### <a name="net-sdk"></a>Zestaw SDK dla platformy .NET
+### <a name="net-sdk"></a>Zestaw SDK .NET
 
 Zestaw SDK platformy .NET zawiera następujące funkcje:
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288963"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049743"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Konfigurowanie wizualizacji zależności bez agenta na potrzeby oceny
 
@@ -62,7 +62,7 @@ Wizualizacja zależności bez agenta nie wymaga instalowania agentów na kompute
 
 Skonfiguruj konto użytkownika, które ma wymagane uprawnienia, aby Ocena serwera mogła uzyskać dostęp do maszyny wirtualnej w celu odnajdywania. Możesz określić jedno konto użytkownika.
 
-- **Wymagane uprawnienie na maszynach wirtualnych z systemem Windows**: konto użytkownika wymaga dostępu "Gość".
+- **Wymagane uprawnienie na maszynach wirtualnych z systemem Windows**: konto użytkownika musi być kontem lokalnym lub administratorem domeny.
 - **Wymagane uprawnienie na maszynach wirtualnych z systemem Linux**: wymagane jest uprawnienie główne na tym koncie. Alternatywnie konto użytkownika wymaga tych dwóch możliwości w plikach/bin/netstat i/bin/ls: CAP_DAC_READ_SEARCH i CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Dodaj konto użytkownika do urządzenia
@@ -76,7 +76,7 @@ Dodaj konto w następujący sposób:
 3. Wybierz **system operacyjny**.
 4. Podaj przyjazną nazwę dla konta.
 5. Podaj **nazwę użytkownika** i **hasło**
-6. Kliknij pozycję **Zapisz**.
+6. Kliknij przycisk **Save** (Zapisz).
 7. Kliknij przycisk **Zapisz i Rozpocznij odnajdywanie**.
 
     ![Dodaj konto użytkownika maszyny wirtualnej](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -96,7 +96,7 @@ Wybierz maszyny, na których chcesz włączyć odnajdowanie zależności.
 
 Po rozpoczęciu odnajdywania zależności będzie można wizualizować zależności 6 godzin.
 
-## <a name="visualize-dependencies"></a>Wizualizowanie zależności
+## <a name="visualize-dependencies"></a>Wizualizacja zależności
 
 1. W **Azure Migrate: Ocena serwera**, kliknij przycisk **odnalezione serwery**.
 2. Wyszukaj maszynę, dla której chcesz wyświetlić mapę zależności.

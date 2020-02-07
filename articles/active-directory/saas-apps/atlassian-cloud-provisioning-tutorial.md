@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 604dca2861b7a7126d2e37b5a01bcb85c530546e
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 7ddccef00cf1b5ad524c0e1eaa7aed52c0e55197
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561465"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059355"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie chmury Atlassian na potrzeby automatycznego aprowizacji użytkowników
 
 Celem tego samouczka jest przedstawienie czynności, które należy wykonać w chmurze Atlassian i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup w chmurze Atlassian.
 
 > [!NOTE]
-> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -122,7 +122,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/notification.png)
 
-10. Kliknij pozycję **Zapisz**.
+10. Kliknij przycisk **Save** (Zapisz).
 
 11. W sekcji **mapowania** wybierz kolejno pozycje **Synchronizuj Azure Active Directory użytkownicy z chmurą Atlassian**.
 
@@ -140,7 +140,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Inicjowanie obsługi administracyjnej w chmurze Atlassian](./media/atlassian-cloud-provisioning-tutorial/group-mapping.png)
 
-15. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+15. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 16. Aby włączyć usługę Azure AD Provisioning dla chmury Atlassian, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
@@ -156,7 +156,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w chmurze Atlassian.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Ograniczenia łącznika
 
@@ -164,14 +164,14 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 * Chmura Atlassian nie obsługuje już dzisiaj nazw grup. Oznacza to, że wszelkie zmiany wartości displayName grupy w usłudze Azure AD nie będą aktualizowane i odzwierciedlane w chmurze Atlassian.
 * Wartość atrybutu użytkownika **poczty** w usłudze Azure AD jest wypełniana tylko wtedy, gdy użytkownik ma skrzynkę pocztową programu Microsoft Exchange. Jeśli użytkownik nie ma takiego elementu, zaleca się zamapowanie innego żądanego atrybutu na atrybut **wiadomości e-mail** w chmurze Atlassian.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png

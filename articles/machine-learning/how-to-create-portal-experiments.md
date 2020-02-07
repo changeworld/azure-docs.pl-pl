@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720405"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046113"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Twórz, eksploruj i wdrażaj zautomatyzowane eksperymenty uczenia maszynowego za pomocą programu Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -47,7 +47,7 @@ W przeciwnym razie zostanie wyświetlona lista ostatnich zautomatyzowanych ekspe
 
 ## <a name="create-and-run-experiment"></a>Tworzenie i uruchamianie eksperymentu
 
-1. Wybierz pozycję **+ Utwórz eksperyment** i wypełnij formularz.
+1. Wybierz pozycję **+ Nowy zautomatyzowany przebieg** i wypełnij formularz.
 
 1. Wybierz zestaw danych z kontenera magazynu lub Utwórz nowy zestaw danych. Zestawy danych mogą być tworzone na podstawie plików lokalnych, adresów URL sieci Web, magazynów danych lub otwartych zestawów danych platformy Azure. 
 
@@ -113,16 +113,19 @@ W przeciwnym razie zostanie wyświetlona lista ostatnich zautomatyzowanych ekspe
 
         1. Wybierz horyzont prognoz: wskaż, ile jednostek czasu (min/godzina/dni/tygodnie/miesiące/lata) będzie można przewidzieć na przyszłość. Dalszy model jest wymagany do przewidywania w przyszłości, tym mniej dokładne stanie się. [Dowiedz się więcej o prognozowaniu i prognozowaniu horyzontu](how-to-auto-train-forecast.md).
 
-1. Obowiązkowe Konfiguracje dodawania: dodatkowe ustawienia, których można użyć w celu lepszego kontrolowania zadania szkoleniowego. W przeciwnym razie wartości domyślne są stosowane na podstawie wyboru eksperymentu i danych. 
+1. Obowiązkowe Wyświetl ustawienia konfiguracji dodawania: dodatkowe ustawienia, których można użyć w celu lepszego kontrolowania zadania szkoleniowego. W przeciwnym razie wartości domyślne są stosowane na podstawie wyboru eksperymentu i danych. 
 
     Dodatkowe konfiguracje|Opis
     ------|------
     Metryka podstawowa| Główna Metryka używana do oceniania modelu. [Dowiedz się więcej o metrykach modelu](how-to-configure-auto-train.md#explore-model-metrics).
-    Automatyczne cechowania| Wybierz, aby włączyć lub wyłączyć przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Przetwarzanie wstępne obejmuje automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych. [Dowiedz się więcej na temat przetwarzania wstępnego](#preprocess).
+    Automatyczne cechowania| Wybierz, aby włączyć lub wyłączyć przetwarzanie wstępne wykonywane przez automatyczne Uczenie maszynowe. Przetwarzanie wstępne obejmuje automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych. Nieobsługiwane w przypadku typu zadania prognozowanie szeregów czasowych. [Dowiedz się więcej na temat przetwarzania wstępnego](#featurization). 
+    Wyjaśnij najlepszy model | Wybierz, aby włączyć lub wyłączyć, aby pokazać wyjaśnienie zalecanego najlepszego modelu
     Zablokowany algorytm| Wybierz algorytmy, które mają zostać wykluczone z zadania szkoleniowego.
     Kryterium zakończenia| Po spełnieniu któregokolwiek z tych kryteriów zadanie szkolenia zostanie zatrzymane. <br> *Czas zadania szkoleniowego (godz.)* : jak długo zezwolić na uruchomienie zadania szkoleniowego. <br> *Próg wyniku metryki*: minimalny wynik metryki dla wszystkich potoków. Dzięki temu w przypadku zdefiniowania metryki docelowej, która ma zostać osiągnięta, nie poświęcasz więcej czasu na zadanie szkoleniowe niż to konieczne.
     Walidacja| Wybierz jedną z opcji krzyżowego sprawdzania poprawności, która ma zostać użyta w zadaniu szkoleniowym. [Dowiedz się więcej na temat krzyżowego sprawdzania poprawności](how-to-configure-auto-train.md).
-    Współbieżność| *Maksymalna liczba współbieżnych iteracji*: maksymalną liczbę potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie zostanie uruchomione więcej niż określona liczba iteracji. <br> *Maksymalna liczba rdzeni na iterację*: Wybierz limity wielordzeniowe, które mają być używane podczas korzystania z obliczeń wielordzeniowych.
+    Współbieżność| *Maksymalna liczba współbieżnych iteracji*: maksymalną liczbę potoków (iteracji) do przetestowania w zadaniu szkoleniowym. Zadanie nie zostanie uruchomione więcej niż określona liczba iteracji.
+
+1. Obowiązkowe Wyświetl ustawienia cechowania: Jeśli zdecydujesz się włączyć **Automatyczne cechowania** w formularzu **dodatkowych ustawień konfiguracji** , w tym formularzu będzie można określić, które kolumny mają być wykonywane featurizations, i wybrać wartość statystyczną, która ma być używana w przypadku brakujących wartości.
 
 <a name="profile"></a>
 
@@ -151,17 +154,13 @@ Skośność| Mierzona, jak różne dane tej kolumny pochodzą z rozkładu normal
 Kurtoza| Mierzona, jak silnie naśladowanie danych tej kolumny jest porównywane z rozkładem normalnym.
 
 
-<a name="preprocess"></a>
+<a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>Zaawansowane opcje cechowania
 
-Podczas konfigurowania eksperymentów można włączyć ustawienie zaawansowane `feauturization`. 
+Automatyczne Uczenie maszynowe oferuje automatyczne przetwarzanie i guardrails danych w celu ułatwienia identyfikowania potencjalnych problemów z danymi i zarządzania nimi. 
 
-|Konfiguracja cechowania | Opis |
-| ------------- | ------------- |
-|"feauturization" = "FeaturizationConfig"| Wskazuje dostosowany krok cechowania. [Dowiedz się, jak dostosować cechowania](how-to-configure-auto-train.md#customize-feature-engineering).|
-|"feauturization" = "off"| Wskazuje, że krok cechowania nie powinien być wykonywany automatycznie.|
-|"feauturization" = "Auto"| Wskazuje, że w ramach wstępnego przetwarzania następujących kroków guardrails danych i cechowania są wykonywane automatycznie.|
+### <a name="preprocessing"></a>Przetwarzania wstępnego
 
 |Przetwarzanie wstępne&nbsp;kroków| Opis |
 | ------------- | ------------- |
@@ -177,7 +176,7 @@ Podczas konfigurowania eksperymentów można włączyć ustawienie zaawansowane 
 
 ### <a name="data-guardrails"></a>Guardrails danych
 
-Automatyczne Uczenie maszynowe oferuje guardrailsy danych, które ułatwiają identyfikację potencjalnych problemów dotyczących danych (np. brakujących wartości, nierównowagi klasy) i ułatwiają podejmowanie działań naprawczych w celu uzyskania lepszych wyników. Istnieje wiele najlepszych rozwiązań, które są dostępne i mogą być stosowane w celu uzyskania wiarygodnych wyników. 
+Guardrails danych są stosowane automatycznie, aby pomóc w zidentyfikowaniu potencjalnych problemów dotyczących danych (np. brakujących wartości, nierównowagi klasy) i ułatwienia działania naprawcze w celu uzyskania lepszych wyników. Istnieje wiele najlepszych rozwiązań, które są dostępne i mogą być stosowane w celu uzyskania wiarygodnych wyników. 
 
 W poniższej tabeli opisano aktualnie obsługiwane guardrails danych oraz powiązane Stany, które użytkownicy mogą napotkać podczas przesyłania eksperymentu.
 
@@ -191,14 +190,11 @@ Spójność danych szeregów czasowych|**Przeniesione** <br><br><br><br> **FIXED
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
 
-Wybierz pozycję **Rozpocznij** , aby uruchomić eksperyment. Proces przygotowywania eksperymentu może potrwać do 10 minut. Zadania szkoleniowe mogą zająć więcej niż 2-3 minut więcej czasu dla każdego potoku.
+Wybierz pozycję **Zakończ** , aby uruchomić eksperyment. Proces przygotowywania eksperymentu może potrwać do 10 minut. Zadania szkoleniowe mogą zająć więcej niż 2-3 minut więcej czasu dla każdego potoku.
 
 ### <a name="view-experiment-details"></a>Wyświetl szczegóły eksperymentu
 
->[!NOTE]
-> Należy okresowo wybierać pozycję **Odśwież** , aby wyświetlić stan uruchomienia. 
-
-Zostanie otwarty ekran Szczegóły **uruchamiania** na karcie **szczegóły** . Na tym ekranie przedstawiono podsumowanie przebiegu eksperymentu, w tym **stan uruchomienia**. 
+Zostanie otwarty ekran Szczegóły **uruchamiania** na karcie **szczegóły** . Na tym ekranie przedstawiono podsumowanie przebiegu eksperymentu, w tym pasek stanu u góry obok numeru uruchomienia. 
 
 Karta **modele** zawiera listę modeli utworzonych uporządkowaną według wyniku pomiaru. Domyślnie model, który ocenia najwyższy poziom w oparciu o wybraną metrykę, znajduje się w górnej części listy. Gdy zadanie szkoleniowe próbuje więcej modeli, zostaną dodane do listy. Użyj tego, aby szybko porównać metryki dla modeli produkowanych do tej pory.
 
@@ -218,9 +214,9 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
 
 1. Istnieje kilka opcji wdrażania. 
 
-    + Opcja 1: Aby wdrożyć najlepszy model (zgodnie ze zdefiniowanymi kryteriami metryki), wybierz pozycję Wdróż najlepszy model na karcie Szczegóły.
+    + Opcja 1: Aby wdrożyć najlepszy model (zgodnie ze zdefiniowanymi kryteriami metryki), wybierz przycisk **Wdróż najlepszy model** na karcie **szczegóły** .
 
-    + Opcja 2: Aby wdrożyć określoną iterację modelu z tego eksperymentu, przejdź do szczegółów modelu, aby otworzyć kartę Szczegóły modelu i wybierz pozycję Wdróż model.
+    + Opcja 2: Aby wdrożyć określoną iterację modelu z tego eksperymentu, przejdź do szczegółów modelu, aby otworzyć kartę **Szczegóły modelu** i wybierz pozycję **Wdróż model**.
 
 1. Wypełnij okienko **Wdróż model** .
 
@@ -229,7 +225,7 @@ Automatyczna ML pomaga wdrożyć model bez pisania kodu:
     Name (Nazwa)| Wprowadź unikatową nazwę wdrożenia.
     Opis| Wprowadź opis, aby lepiej zidentyfikować to wdrożenie.
     Typ obliczenia| Wybierz typ punktu końcowego, który chcesz wdrożyć: *Azure Kubernetes Service (AKS)* lub *Azure Container Instance (ACI)* .
-    Name (Nazwa)| *Dotyczy tylko AKS:* Wybierz nazwę klastra AKS, w którym chcesz wdrożyć.
+    Nazwa obliczeniowa| *Dotyczy tylko AKS:* Wybierz nazwę klastra AKS, w którym chcesz wdrożyć.
     Włącz uwierzytelnianie | Wybierz, aby zezwalać na uwierzytelnianie oparte na tokenach lub na podstawie klucza.
     Używanie niestandardowych zasobów wdrażania| Włącz tę funkcję, jeśli chcesz przekazać własny skrypt oceniania i plik środowiska. [Dowiedz się więcej o skryptach oceniania](how-to-deploy-and-where.md#script).
 
@@ -244,7 +240,7 @@ Teraz masz działającą usługę sieci Web do generowania prognoz! Możesz prze
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Wypróbuj kompleksowy samouczek dotyczący [tworzenia pierwszego zautomatyzowanego eksperymentu ml z Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
+* Wypróbuj kompleksowy samouczek dotyczący [tworzenia pierwszego zautomatyzowanego eksperymentu ml przy użyciu programu Azure Machine Learning Studio](tutorial-first-experiment-automated-ml.md). 
 * [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md) i Azure Machine Learning.
 * Zapoznaj się z [automatycznymi wynikami uczenia maszynowego](how-to-understand-automated-ml.md).
 * [Dowiedz się, jak korzystać z usługi sieci Web](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).

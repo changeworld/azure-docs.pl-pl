@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845933"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046414"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Dodawanie certyfikatu SSL w Azure App Service
 
@@ -37,6 +37,9 @@ Aby wykonać następujące czynności:
 - Tylko bezpłatny certyfikat: Mapuj poddomenę (na przykład `www.contoso.com`) na App Service przy użyciu [rekordu CNAME](app-service-web-tutorial-custom-domain.md#map-a-cname-record).
 
 ## <a name="private-certificate-requirements"></a>Wymagania dotyczące certyfikatu prywatnego
+
+> [!NOTE]
+> Usługa Azure Web Apps **nie obsługuje AES256** , a wszystkie pliki PFX powinny być szyfrowane za pomocą usługi TrippleDES.
 
 [Bezpłatny App Service certyfikat zarządzany](#create-a-free-certificate-preview) lub [certyfikat App Service](#import-an-app-service-certificate) już spełnia wymagania App Service. Jeśli zdecydujesz się przekazać lub zaimportować certyfikat prywatny do App Service, certyfikat musi spełniać następujące wymagania:
 
@@ -112,7 +115,7 @@ Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu k
 
 | Ustawienie | Opis |
 |-|-|
-| Nazwa | Przyjazna nazwa certyfikatu App Service. |
+| Name (Nazwa) | Przyjazna nazwa certyfikatu App Service. |
 | Nazwa hosta z wydaną domeną | W tym miejscu określ domenę główną. Wystawiony certyfikat zabezpiecza *zarówno* domenę główną, jak i `www` poddomenę. W wystawionym certyfikacie pole Common Name (nazwa pospolita) zawiera domenę główną, a pole Alternatywna nazwa podmiotu zawiera domenę `www`. Aby zabezpieczyć tylko każdą poddomenę, określ w pełni kwalifikowaną nazwę domeny podrzędnej domeny (na przykład `mysubdomain.contoso.com`).|
 | Subskrypcja | Subskrypcja, która będzie zawierać certyfikat. |
 | Grupa zasobów | Grupa zasobów, która będzie zawierać certyfikat. Możesz na przykład użyć nowej grupy zasobów lub wybrać tę samą grupę zasobów co App Service aplikacji. |
@@ -133,7 +136,7 @@ Na stronie **stan Key Vault** kliknij pozycję **Key Vault repozytorium** , aby 
 
 | Ustawienie | Opis |
 |-|-|
-| Nazwa | Unikatowa nazwa, która składa się z znaków alfanumerycznych i kresek. |
+| Name (Nazwa) | Unikatowa nazwa, która składa się z znaków alfanumerycznych i kresek. |
 | Grupa zasobów | Zgodnie z zaleceniem wybierz tę samą grupę zasobów co certyfikat App Service. |
 | Lokalizacja | Wybierz tę samą lokalizację, w której znajduje się aplikacja App Service. |
 | Warstwa cenowa | Aby uzyskać więcej informacji, zobacz [Azure Key Vault szczegóły cennika](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -191,7 +194,7 @@ Skorzystaj z poniższej tabeli, aby wybrać certyfikat.
 | Ustawienie | Opis |
 |-|-|
 | Subskrypcja | Subskrypcja, do której należy Key Vault. |
-| Magazyn kluczy | Magazyn z certyfikatem, który ma zostać zaimportowany. |
+| Usługa Key Vault | Magazyn z certyfikatem, który ma zostać zaimportowany. |
 | Certyfikat | Wybierz z listy PKCS12 certyfikatów w magazynie. Wszystkie certyfikaty PKCS12 w magazynie są wyświetlane z odciskiem palca, ale nie wszystkie są obsługiwane w App Service. |
 
 Po zakończeniu operacji zobaczysz certyfikat na liście **Certyfikaty klucza prywatnego** . Jeśli importowanie nie powiedzie się z powodu błędu, certyfikat nie spełnia [wymagań dotyczących App Service](#private-certificate-requirements).
@@ -362,7 +365,7 @@ Teraz możesz usunąć certyfikat App Service. W okienku nawigacji po lewej stro
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
@@ -370,6 +373,6 @@ Teraz możesz usunąć certyfikat App Service. W okienku nawigacji po lewej stro
 
 * [Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL](configure-ssl-bindings.md)
 * [Wymuszanie protokołu HTTPS](configure-ssl-bindings.md#enforce-https)
-* [Enforce TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
+* [Wymuś protokół TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [Używanie certyfikatu protokołu SSL w kodzie aplikacji](configure-ssl-certificate-in-code.md)
 * [Często zadawane pytania: certyfikaty App Service](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5eb5cedf14af9a013a5b6a1eba5df40d665cbad5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7ad6b7150a43a286a4bec39a0482e08f50d95c06
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74181671"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048061"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu klawisza F5
 
@@ -31,7 +31,7 @@ W tym samouczku dowiesz się, jak zintegrować F5 z Azure Active Directory (Azur
 * Zezwól użytkownikom na automatyczne logowanie do programu F5 przy użyciu kont usługi Azure AD.
 * Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z logowaniem jednokrotnym w usłudze Azure AD, zobacz Logowanie jednokrotne [do aplikacji w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -350,7 +350,7 @@ Ta sekcja jest przeznaczona do użycia, jeśli nie można użyć konfiguracji z 
 
     b. Kliknij przycisk **OK**.
 
-    d. Zostanie utworzony łącznik, a certyfikat jest automatycznie gotowy z pliku XML metadanych.
+    c. Zostanie utworzony łącznik, a certyfikat jest automatycznie gotowy z pliku XML metadanych.
     
     ![Konfiguracja F5 (na podstawie nagłówka)](./media/headerf5-tutorial/configure30.png)
 
@@ -380,7 +380,7 @@ Ta sekcja jest przeznaczona do użycia, jeśli nie można użyć konfiguracji z 
 
     ![Konfiguracja F5 (na podstawie nagłówka)](./media/headerf5-tutorial/configure32.png)
  
-    d. Określ **nazwę** (HeaderAppAzureSAMLPolicy w przykładzie).
+    c. Określ **nazwę** (HeaderAppAzureSAMLPolicy w przykładzie).
 
     d. Inne ustawienia można dostosować, zapoznaj się z dokumentacją F5.
 
@@ -424,7 +424,7 @@ Ta sekcja jest przeznaczona do użycia, jeśli nie można użyć konfiguracji z 
  
     b. Kliknij pozycję serwer wirtualny, przewiń do sekcji **zasady dostępu** , na liście rozwijanej **Profil dostępu** i wybierz utworzone zasady SAML (w przykładzie HeaderAppAzureSAMLPolicy).
 
-    d. Kliknij przycisk **Aktualizuj**
+    c. Kliknij przycisk **Aktualizuj**
  
     ![Konfiguracja F5 (na podstawie nagłówka)](./media/headerf5-tutorial/configure41.png)
 

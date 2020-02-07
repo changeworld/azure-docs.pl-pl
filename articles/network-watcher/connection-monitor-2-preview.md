@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: c993a08a4163d50a9632055da355e39b5bdde004
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026889"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049616"
 ---
-# <a name="overview"></a>Przegląd
+# <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Ujednolicone Monitorowanie łączności z monitorem połączeń (wersja zapoznawcza)
 
 Monitor połączeń (wersja zapoznawcza) zapewnia ujednolicone kompleksowe funkcje monitorowania połączeń w usłudze Azure Network Watcher na potrzeby wdrożeń hybrydowych i chmurowych platformy Azure. Usługa Azure Network Watcher udostępnia narzędzia do monitorowania, diagnozowania i wyświetlania metryk związanych z łącznością dla wdrożeń platformy Azure.
 
@@ -78,8 +78,8 @@ _Monitor połączeń_ monitoruje komunikację w regularnych odstępach czasu i i
 
 ### <a name="accessing-connection-monitor-preview"></a>Uzyskiwanie dostępu do monitora połączeń (wersja zapoznawcza)
 
-1. Network Watcher dostępu przy użyciu następującego linku:[https://ms.portal.azure.com/?Microsoft\_Azure\_Network\_connectionmonitorpreview=true#blade/Microsoft\_Azure\_Network/NetworkWatcherMenuBlade/connectionMonitorPreview](https://ms.portal.azure.com/?Microsoft_Azure_Network_connectionmonitorpreview=true#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/connectionMonitorPreview)
-2. Kliknij kartę "Monitor połączeń (wersja zapoznawcza)" w sekcji monitorowanie w okienku po lewej stronie Network Watcher. Ta karta będzie widoczna tylko wtedy, gdy dostęp do Network Watcher jest uzyskiwany przy użyciu linku określonego w kroku 1.
+1. Na stronie głównej Azure Portal odwiedź stronę Network Watcher
+2. Kliknij kartę "Monitor połączeń (wersja zapoznawcza)" w sekcji monitorowanie w okienku po lewej stronie Network Watcher.
 3. Można wyświetlić wszystkie monitory połączeń, które są tworzone za pomocą funkcji Monitor połączeń (wersja zapoznawcza). Wszystkie monitory połączeń utworzone przy użyciu klasycznego środowiska karty Monitor połączeń będą widoczne na karcie Monitor połączeń.
 
     ![Tworzenie monitora połączeń](./media/connection-monitor-2-preview/cm-resource-view.png)
@@ -423,7 +423,7 @@ Aby utworzyć grupę testową w monitorze połączeń, należy określić warto�
 
       ![Dodaj TG](./media/connection-monitor-2-preview/add-test-config.png)
 
-Wszystkie źródła i miejsca docelowe dodane do grupy testowej z określoną konfiguracją testu są podzielone na poszczególne testy. Przykład:
+Wszystkie źródła i miejsca docelowe dodane do grupy testowej z określoną konfiguracją testu są podzielone na poszczególne testy. Na przykład:
 
 * Grupa testowa: TG1
 * Źródła: 3 (A, B, C)
@@ -497,7 +497,7 @@ Listę można filtrować na podstawie:
 
 ![Filtruj testy](./media/connection-monitor-2-preview/cm-view.png)
 
-Przykład:
+Na przykład:
 
 1. Aby sprawdzić wszystkie testy przez cały monitor połączeń (wersja zapoznawcza), gdzie Source IP = 10.192.64.56:
    1. Zmień widok na "testy"
@@ -578,8 +578,8 @@ Typ zasobu — Microsoft. Network/networkWatchers/connectionMonitors
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % Sond nie powiodło się | Procent | Średnia | % sond monitorowania łączności nie powiodło się | Nie wymiarów |
 | AverageRoundtripMs | Średni czas błądzenia (MS) | MilliSeconds | Średnia | Średni czas błądzenia sieci (MS) dla sond monitorowania łączności przesyłanych między źródłem a miejscem docelowym |             Nie wymiarów |
-| ChecksFailedPercent (wersja zapoznawcza) | % Sprawdzenia nie powiodło się (wersja zapoznawcza) | Procent | Średnia | % kontroli nie powiodło się dla testu |List:-ConnectionMonitorResourceId-SourceAddress-SourceName-identyfikator sourceresourceid-SourceType-Protocol-DestinationAddress-DestinationName-DestinationResourceId-DestinationType-DestinationPort-TestGroupName-TestConfigurationName- Okolicy |
-| RoundTripTimeMs (wersja zapoznawcza) | Czas błądzenia (MS) (wersja zapoznawcza) | MS | Średnia | Czas błądzenia (MS) dla czeków wysyłanych między źródłem a miejscem docelowym. Ta wartość nie jest średnia | List:-ConnectionMonitorResourceId-SourceAddress-SourceName-identyfikator sourceresourceid-SourceType-Protocol-DestinationAddress-DestinationName-DestinationResourceId-DestinationType-DestinationPort-TestGroupName-TestConfigurationName- Okolicy |
+| ChecksFailedPercent (wersja zapoznawcza) | % Sprawdzenia nie powiodło się (wersja zapoznawcza) | Procent | Średnia | % kontroli nie powiodło się dla testu | * ConnectionMonitorResourceId <br> * SourceAddress <br> * SourceName <br> * Identyfikator sourceresourceid <br> * SourceType <br> * Protokół <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * Region |
+| RoundTripTimeMs (wersja zapoznawcza) | Czas błądzenia (MS) (wersja zapoznawcza) | Milisekundy | Średnia | Czas błądzenia (MS) dla czeków wysyłanych między źródłem a miejscem docelowym. Ta wartość nie jest średnia | * ConnectionMonitorResourceId <br> * SourceAddress <br> * SourceName <br> * Identyfikator sourceresourceid <br> * SourceType <br> * Protokół <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * Region |
 
  ![Monitorowanie metryk](./media/connection-monitor-2-preview/monitor-metrics.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka Python za pomocą usługi Azure DevOps Projects'
+title: 'Szybki start: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka Python za pomocą usługi Azure DevOps Projects'
 description: Usługa DevOps Projects ułatwia rozpoczęcie pracy z platformą Azure. Umożliwia uruchomienie aplikacji w wybranej usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -16,30 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: cb4e27aeada4f1b5f9e06279382327dcc51cc7dc
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b912dfe3fb6461a925977192a6631ecac1357d35
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899603"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049837"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka Python za pomocą usługi Azure DevOps Projects
 
-Usługa Azure DevOps Projects oferuje prosty sposób na utworzenie zasobów platformy Azure i skonfigurowanie potoku ciągłej integracji/ciągłego wdrażania dla aplikacji w języku Python.  
+W tym przewodniku szybki start użyjesz uproszczonego środowiska Azure DevOps Projects, aby skonfigurować potok ciągłej integracji (CI) i ciągłe dostarczanie dla aplikacji w języku Python w Azure Pipelines. Za pomocą Azure DevOps Projects można skonfigurować wszystko, czego potrzebujesz do tworzenia, wdrażania i monitorowania aplikacji. 
 
-Jeśli nie masz subskrypcji platformy Azure, możesz uzyskać ją bezpłatnie za pośrednictwem programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- Konto i organizacja [usługi Azure DevOps](https://azure.microsoft.com/services/devops/) .
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
- Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines.  Możesz bezpłatnie utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure w wybranej subskrypcji platformy Azure.
+Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure w wybranej subskrypcji platformy Azure.
 
-1. Zaloguj się do [Portalu Microsoft Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com), a następnie w okienku po lewej stronie wybierz pozycję **Utwórz zasób**. 
 
-2. Wybierz ikonę **Utwórz zasób** w lewym okienku, a następnie wyszukaj pozycję **DevOps Projects**.  
+   ![Tworzenie zasobu platformy Azure w Azure Portal](_img/azure-devops-project-python/fullbrowser.png)
 
-3. Wybierz pozycję **Utwórz**.
-
-    ![Rozpoczynanie konfigurowania ciągłego dostarczania](_img/azure-devops-project-python/fullbrowser.png)
+1. Wyszukaj i wybierz pozycję **DevOps projects**, a następnie wybierz pozycję **Utwórz**.
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Wybieranie przykładowej aplikacji i usługi platformy Azure
 

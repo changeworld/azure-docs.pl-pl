@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 56c2d96e6e4a5900770aaefcabb424eddb1cbde6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531391"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048358"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Co to są przepływy danych przetwarzanie?
 
@@ -42,9 +42,9 @@ Wizualnie Skanuj dane w sposób niezależny od kodu, aby usunąć wszelkie eleme
 
 | Łącznik | Format danych | Typ uwierzytelniania |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | Klucz konta |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parquet | Klucz konta |
 | [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md) | CSV | Jednostka usługi |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | Klucz konta, nazwa główna usługi |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parquet | Klucz konta, nazwa główna usługi |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | Uwierzytelnianie SQL |
 | [Analiza usługi Azure Synapse](connector-azure-sql-data-warehouse.md) | - | Uwierzytelnianie SQL |
 

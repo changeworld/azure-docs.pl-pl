@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: ef2b98821b28d8a49e5f16bf1c6ac176eb8b5793
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: b9f434f2d3c06d3db0bfda7c5853cc835ff64035
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407258"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047763"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generuj plik żądania podpisania certyfikatu
 
@@ -26,6 +26,10 @@ Wygeneruj plik żądania podpisania certyfikatu (CSR), którego firma Apple uży
 1. Wybierz pozycję **dostęp do łańcucha kluczy**, rozwiń węzeł **Asystent certyfikatów**, a następnie wybierz pozycję **Żądaj certyfikatu z urzędu certyfikacji**.
 
     ![Żądanie nowego certyfikatu za pomocą narzędzia Keychain Access](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
+    
+> [!NOTE]
+> Domyślnie system OS X wybiera pierwszy element w kategorii, która została wybrana w narzędziu dostępu do łańcucha kluczy. Może to być problematyczne, jeśli użytkownik znajduje się w sekcji **Certyfikaty** , a **urząd certyfikacji relacji deweloperów firmy Apple na całym świecie** *nie* jest pierwszym elementem na liście. Przed zażądaniem certyfikatu upewnij się, że znajdujesz się w sekcji **Certyfikaty** , a następnie wybierz **urząd certyfikacji relacji deweloperów Apple Worldwide**.
+
 
 1. Wybierz **adres E-mail użytkownika**, wprowadź wartość **Nazwa pospolita** , upewnij się, że określono opcję **Zapisano na dysku**, a następnie wybierz pozycję **Kontynuuj**. Pozostaw puste **adresy E-mail urzędu certyfikacji** , ponieważ nie jest to wymagane.
 

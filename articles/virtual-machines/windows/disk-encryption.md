@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 8833a70b88b59c59dd373f1cfa9535fd7205ceb5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0ea9da894b9738fff634937294a07cc4b10624f0
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837752"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048874"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dla usługi Azure Managed disks
 
@@ -73,7 +73,7 @@ Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
 - Dyski, migawki i obrazy zaszyfrowane przy użyciu kluczy zarządzanych przez klienta nie mogą zostać przeniesione do innej subskrypcji.
 - Jeśli używasz Azure Portal do utworzenia zestawu szyfrowania dysku, nie możesz używać migawek teraz.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Konfigurowanie Azure Key Vault i DiskEncryptionSet
 
@@ -174,7 +174,7 @@ $diskEncryptionSet=Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName
 
 $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Empty -DiskSizeInGB $diskSizeinGiB -StorageAccountType $diskSKU -Lun $diskLUN -DiskEncryptionSetId $diskEncryptionSet.Id 
 
-Update-AzVM -ResourceGroupName $rgName -VM $vm
+Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
 
 ```
 

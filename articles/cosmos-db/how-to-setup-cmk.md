@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 7a77a54dc59ec427bf6abdf8fc1d410533b5be44
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 56cbae7ae56c4b482ac6de201c7a2c8aacb81e59
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771900"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048589"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Skonfiguruj klucze zarządzane przez klienta dla konta usługi Azure Cosmos za pomocą Azure Key Vault
 
@@ -21,18 +21,18 @@ ms.locfileid: "76771900"
 
 Dane przechowywane na koncie usługi Azure Cosmos są automatycznie i szyfrowane bezproblemowo. Azure Cosmos DB oferuje dwie opcje zarządzania kluczami używanymi do szyfrowania danych w spoczynku:
 
-- **Klucze zarządzane przez usługę** — domyślnie firma Microsoft zarządza kluczami używanymi do szyfrowania danych na koncie usługi Azure Cosmos.
+- **Klucze zarządzane przez usługę**: domyślnie firma Microsoft zarządza kluczami używanymi do szyfrowania danych na koncie usługi Azure Cosmos.
 
-- **Klucze zarządzane przez klienta (CMK)** — Opcjonalnie możesz dodać drugą warstwę szyfrowania przy użyciu własnych kluczy.
+- **Klucze zarządzane przez klienta (CMK)** : Opcjonalnie możesz dodać drugą warstwę szyfrowania przy użyciu własnych kluczy.
 
-Klucze zarządzane przez klienta muszą być przechowywane w [Azure Key Vault](../key-vault/key-vault-overview.md) i udostępniać klucz dla każdego konta usługi Azure Cosmos, które jest włączone przy użyciu kluczy zarządzanych przez klienta. Ten klucz służy do szyfrowania wszystkich danych przechowywanych na tym koncie.
+Klucze zarządzane przez klienta muszą być przechowywane w [Azure Key Vault](../key-vault/key-vault-overview.md) i zapewniać klucz dla każdego konta usługi Azure Cosmos, które jest włączone przy użyciu kluczy zarządzanych przez klienta. Ten klucz służy do szyfrowania wszystkich danych przechowywanych na tym koncie.
 
 > [!NOTE]
-> Obecnie klucze zarządzane przez klienta są dostępne tylko dla nowych kont usługi Azure Cosmos i należy je skonfigurować podczas tworzenia konta.
+> Obecnie klucze zarządzane przez klienta są dostępne tylko dla nowych kont usługi Azure Cosmos. Należy je skonfigurować podczas tworzenia konta.
 
 ## <a id="register-resource-provider"></a>Zarejestruj dostawcę zasobów Azure Cosmos DB dla subskrypcji platformy Azure
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/), przejdź do subskrypcji platformy Azure i wybierz pozycję **dostawcy zasobów** na karcie **Ustawienia** :
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/), przejdź do subskrypcji platformy Azure, a następnie wybierz pozycję **dostawcy zasobów** na karcie **Ustawienia** :
 
    ![Wpis "dostawcy zasobów" z menu po lewej stronie](./media/how-to-setup-cmk/portal-rp.png)
 
@@ -42,7 +42,7 @@ Klucze zarządzane przez klienta muszą być przechowywane w [Azure Key Vault](.
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Skonfiguruj wystąpienie Azure Key Vault
 
-Używanie kluczy zarządzanych przez klienta z Azure Cosmos DB wymaga ustawienia dwóch właściwości w wystąpieniu Azure Key Vault, które ma być używane do hostowania kluczy szyfrowania. Te właściwości obejmują **usuwanie nietrwałe** i **nie Przeczyść**. Te właściwości nie są domyślnie włączone, można je włączyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+Używanie kluczy zarządzanych przez klienta z Azure Cosmos DB wymaga ustawienia dwóch właściwości w wystąpieniu Azure Key Vault, które ma być używane do hostowania kluczy szyfrowania. Te właściwości obejmują **usuwanie nietrwałe** i **nie Przeczyść**. Te właściwości nie są domyślnie włączone. Można je włączyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 Aby dowiedzieć się, jak włączyć te właściwości na istniejącym wystąpieniu Azure Key Vault, zobacz sekcję "Włączanie usuwania nietrwałego" i "Włączanie ochrony przed czyszczeniem" w jednym z następujących artykułów:
 
@@ -55,17 +55,17 @@ Aby dowiedzieć się, jak włączyć te właściwości na istniejącym wystąpie
 
    !["Zasady dostępu" z menu po lewej stronie](./media/how-to-setup-cmk/portal-akv-ap.png)
 
-1. Wybierz pozycję **+ Dodaj zasady dostępu**
+1. Wybierz pozycję **+ Dodaj zasady dostępu**.
 
-1. W menu rozwijanym **uprawnienia klucza** wybierz pozycję **Pobierz**, **Odpakuj klucz** i **zawiń klucz** :
+1. W menu rozwijanym **uprawnienia klucza** wybierz pozycję **Pobierz**, **Odpakuj klucz**i **Zawijaj uprawnienia klucza** :
 
    ![Wybieranie odpowiednich uprawnień](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. W obszarze **Wybierz podmiot zabezpieczeń**wybierz pozycję **nie wybrano**. Następnie wyszukaj **Azure Cosmos DB** podmiot zabezpieczeń i wybierz go. Na koniec kliknij pozycję **Wybierz** u dołu (Jeśli podmiot zabezpieczeń **Azure Cosmos DB** nie znajduje się na liście, może być konieczne ponowne zarejestrowanie dostawcy zasobów **Microsoft. DocumentDB** zgodnie z opisem w sekcji [Rejestrowanie dostawcy zasobów](#register-resource-provider) w tym artykule):
+1. W obszarze **Wybierz podmiot zabezpieczeń**wybierz pozycję **nie wybrano**. Następnie wyszukaj **Azure Cosmos DB** podmiot zabezpieczeń i wybierz go. Na koniec wybierz **pozycję Wybierz** u dołu. Jeśli podmiot zabezpieczeń **Azure Cosmos DB** nie znajduje się na liście, może być konieczne ponowne zarejestrowanie dostawcy zasobów **Microsoft. DocumentDB** zgodnie z opisem w sekcji [Rejestrowanie dostawcy zasobów](#register-resource-provider) w tym artykule.
 
    ![Wybierz Azure Cosmos DB podmiotu zabezpieczeń](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
-1. Wybierz pozycję **Dodaj** , aby dodać nowe zasady dostępu
+1. Wybierz pozycję **Dodaj** , aby dodać nowe zasady dostępu.
 
 ## <a name="generate-a-key-in-azure-key-vault"></a>Wygeneruj klucz w Azure Key Vault
 
@@ -73,13 +73,13 @@ Aby dowiedzieć się, jak włączyć te właściwości na istniejącym wystąpie
 
    ![Wpis "klucze" z menu po lewej stronie](./media/how-to-setup-cmk/portal-akv-keys.png)
 
-1. Wybierz pozycję **Generuj/Importuj**, podaj nazwę nowego klucza, wybierz rozmiar klucza RSA (co najmniej 3072 jest zalecane w celu uzyskania najlepszego zabezpieczenia), a następnie wybierz pozycję **Utwórz**:
+1. Wybierz pozycję **Generuj/Importuj**, podaj nazwę nowego klucza, a następnie wybierz rozmiar klucza RSA. Aby zapewnić najlepsze zabezpieczenia, zalecamy co najmniej 3072. Następnie wybierz pozycję **Utwórz**:
 
    ![Utwórz nowy klucz](./media/how-to-setup-cmk/portal-akv-gen.png)
 
-1. Po utworzeniu klucza wybierz nowo utworzony klucz, a następnie w bieżącej wersji.
+1. Po utworzeniu klucza wybierz nowo utworzony klucz, a następnie jego bieżącą wersję.
 
-1. Skopiuj **Identyfikator klucza** klucza z wyjątkiem części po ostatnim ukośniku:
+1. Skopiuj **Identyfikator klucza**klucza, z wyjątkiem części po ostatnim ukośniku:
 
    ![Kopiowanie identyfikatora klucza klucza](./media/how-to-setup-cmk/portal-akv-keyid.png)
 
@@ -87,15 +87,15 @@ Aby dowiedzieć się, jak włączyć te właściwości na istniejącym wystąpie
 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Podczas tworzenia nowego konta Azure Cosmos DB z Azure Portal wybierz opcję **klucz zarządzany przez klienta** w kroku **szyfrowanie** . W polu **Identyfikator URI klucza** wklej identyfikator URI/klucz Azure Key Vault klucza skopiowanego z poprzedniego kroku:
+Po utworzeniu nowego konta Azure Cosmos DB z Azure Portal wybierz opcję **klucz zarządzany przez klienta** w kroku **szyfrowanie** . W polu **Identyfikator URI klucza** wklej identyfikator URI/klucz Azure Key Vault klucza skopiowanego z poprzedniego kroku:
 
 ![Ustawianie parametrów CMK w Azure Portal](./media/how-to-setup-cmk/portal-cosmos-enc.png)
 
 ### <a name="using-azure-powershell"></a>Korzystanie z programu Azure PowerShell
 
-Podczas tworzenia nowego konta Azure Cosmos DB przy użyciu programu PowerShell
+Podczas tworzenia nowego konta Azure Cosmos DB przy użyciu programu PowerShell:
 
-- Przekaż identyfikator URI klucza Azure Key Vault skopiowanego wcześniej we właściwości **keyVaultKeyUri** w **Właściwości**
+- Przekaż identyfikator URI klucza Azure Key Vault skopiowanego wcześniej we właściwości **keyVaultKeyUri** w **właściwościobject**.
 
 - Użyj **2019-12-12** jako wersji interfejsu API.
 
@@ -122,7 +122,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Location $accountLocation -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-### <a name="using-azure-resource-manager-template"></a>Korzystanie z szablonu usługi Azure Resource Manager
+### <a name="using-an-azure-resource-manager-template"></a>Korzystanie z szablonu Azure Resource Manager
 
 Podczas tworzenia nowego konta usługi Azure Cosmos za pomocą szablonu Azure Resource Manager:
 
@@ -191,13 +191,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-### <a name="is-there-any-additional-charge-when-using-customer-managed-keys"></a>Czy w przypadku korzystania z kluczy zarządzanych przez klienta występuje dodatkowa opłata?
+### <a name="is-there-any-additional-charge-for-using-customer-managed-keys"></a>Czy jest dostępna dodatkowa opłata za korzystanie z kluczy zarządzanych przez klienta?
 
-Tak. Aby obsłużyć dodatkowe obciążenie obliczeniowe wymagane do zarządzania szyfrowaniem i odszyfrowywaniem danych przy użyciu kluczy zarządzanych przez klienta, wszystkie operacje wykonywane na koncie usługi Azure Cosmos zużywają 25% wzrostu [jednostek żądania](./request-units.md).
+Tak. Aby obsłużyć dodatkowe obciążenie obliczeniowe wymagane do zarządzania szyfrowaniem i odszyfrowywaniem danych przy użyciu kluczy zarządzanych przez klienta, wszystkie operacje wykonywane na koncie usługi Azure Cosmos zużywają 25% wzrostu w [jednostkach żądania](./request-units.md).
 
 ### <a name="what-data-gets-encrypted-with-the-customer-managed-keys"></a>Jakie dane są szyfrowane za pomocą kluczy zarządzanych przez klienta?
 
-Wszystkie dane przechowywane na koncie usługi Azure Cosmos są szyfrowane przy użyciu kluczy zarządzanych przez klienta, z wyjątkiem następujących meta danych:
+Wszystkie dane przechowywane na koncie usługi Azure Cosmos są szyfrowane przy użyciu kluczy zarządzanych przez klienta, z wyjątkiem następujących metadanych:
 
 - Nazwy [kont Azure Cosmos DB, baz danych i kontenerów](./account-overview.md#elements-in-an-azure-cosmos-account)
 
@@ -205,7 +205,7 @@ Wszystkie dane przechowywane na koncie usługi Azure Cosmos są szyfrowane przy 
 
 - Ścieżki właściwości zadeklarowane w [zasadach indeksowania](./index-policy.md)
 
-- Wartości [klucza partycji](./partitioning-overview.md) kontenera
+- Wartości [kluczy partycji](./partitioning-overview.md) kontenera
 
 ### <a name="are-customer-managed-keys-supported-for-existing-azure-cosmos-accounts"></a>Czy dla istniejących kont usługi Azure Cosmos są obsługiwane klucze zarządzane przez klienta?
 
@@ -213,11 +213,11 @@ Ta funkcja jest obecnie dostępna tylko dla nowych kont.
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>Czy istnieje plan obsługi bardziej szczegółowego stopnia szczegółowości niż klucze poziomu konta?
 
-Obecnie nie są brane pod uwagę klucze poziomu kontenera.
+Obecnie nie są uwzględniane klucze poziomu kontenera.
 
-### <a name="how-does-customer-managed-keys-affect-a-backup"></a>Jak klucze zarządzane przez klienta wpływają na kopię zapasową?
+### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Jak klucze zarządzane przez klienta wpływają na kopię zapasową?
 
-Azure Cosmos DB [regularnie i automatycznie tworzy kopie zapasowe](./online-backup-and-restore.md) danych przechowywanych na koncie. Ta operacja tworzy kopię zapasową zaszyfrowanych danych. Aby można było użyć przywróconej kopii zapasowej, wymagany jest klucz szyfrowania używany w momencie tworzenia kopii zapasowej. Oznacza to, że nie zostały wprowadzone żadne odwołania, a wersja klucza, która była używana w momencie tworzenia kopii zapasowej, nadal jest włączona.
+Azure Cosmos DB [regularnie i automatycznie tworzy kopie zapasowe](./online-backup-and-restore.md) danych przechowywanych na koncie. Ta operacja tworzy kopię zapasową zaszyfrowanych danych. Aby można było użyć przywróconej kopii zapasowej, wymagany jest klucz szyfrowania używany w momencie tworzenia kopii zapasowej. Oznacza to, że nie wprowadzono odwołania, a wersja klucza, która była używana w momencie tworzenia kopii zapasowej, nadal będzie włączona.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Jak mogę odwołać klucz szyfrowania?
 
@@ -235,5 +235,5 @@ Jedyną operacją możliwą do odwołania klucza szyfrowania jest usunięcie kon
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [szyfrowaniu danych w Azure Cosmos DB](./database-encryption-at-rest.md)
-- Zapoznaj się z omówieniem [bezpiecznego dostępu do danych w Cosmos DB](secure-access-to-data.md)
+- Dowiedz się więcej [na temat szyfrowania danych w Azure Cosmos DB](./database-encryption-at-rest.md).
+- Zapoznaj się z omówieniem [bezpiecznego dostępu do danych w Cosmos DB](secure-access-to-data.md).

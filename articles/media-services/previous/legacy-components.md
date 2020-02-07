@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: juliako
-ms.openlocfilehash: 457f5b8eb0a740800f9cc0fa69bd554f0679ae9a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.openlocfilehash: bbf3ba17e7f91e88136f2dac50c908262100e77a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509176"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048776"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services starsze składniki
 
@@ -26,7 +26,7 @@ W miarę upływu czasu wprowadzono stałe ulepszenia i ulepszenia składników u
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Plany wycofania starszych składników i wskazówki dotyczące migracji
 
-Ogłaszamy przestarzałe procesory multimediów w *systemie Windows Azure Media Encoder* (WAME) i *Azure Media Encoder* (azwa). Te procesory są wycofywane z 1 marca, 2020.
+Ogłaszamy przestarzałe procesory multimediów w *systemie Windows Azure Media Encoder* (WAME) i *Azure Media Encoder* (azwa). Te procesory są wycofywane z 31 marca, 2020.
 
 * [Migrowanie z systemu Windows Azure Media Encoder do Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [Migrowanie z Azure Media Encoder do Media Encoder Standard](migrate-azure-media-encoder.md)

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0c6fab0c9e26630bd54830044da56dba20564b3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3723631609a04f6d12abcaac1f9d7733bf3caa01
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025900"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048622"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Tworzenie konta usługi Batch w witrynie Azure Portal
 
@@ -31,7 +31,7 @@ Ogólne informacje o kontach usługi Batch i scenariuszach można znaleźć w [o
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. Zaloguj się do [Portalu Azure][azure_portal].
+1. Zaloguj się do [Azure portal][azure_portal].
 
 1. Wybierz pozycję **Utwórz zasób** > **Compute** > **Usługa Batch**.
 
@@ -45,7 +45,7 @@ Ogólne informacje o kontach usługi Batch i scenariuszach można znaleźć w [o
 
     b. **Grupa zasobów**: wybierz istniejącą grupę zasobów dla nowego konta usługi Batch. Opcjonalnie można utworzyć nową grupę zasobów.
 
-    d. **Nazwa konta**: wybrana nazwa musi być unikatowa w obrębie regionu świadczenia usługi Azure, w którym konto zostanie utworzone (zobacz **Lokalizacja** poniżej). Nazwa konta może zawierać tylko małe litery lub cyfry i musi mieć od 3 do 24 znaków.
+    c. **Nazwa konta**: wybrana nazwa musi być unikatowa w obrębie regionu świadczenia usługi Azure, w którym konto zostanie utworzone (zobacz **Lokalizacja** poniżej). Nazwa konta może zawierać tylko małe litery lub cyfry i musi mieć od 3 do 24 znaków.
 
     d. **Lokalizacja**: region świadczenia usługi Azure, w którym ma zostać utworzone konto usługi Batch. Tylko regiony obsługiwane przez subskrypcję i grupę zasobów są wyświetlane jako opcje.
 
@@ -53,7 +53,7 @@ Ogólne informacje o kontach usługi Batch i scenariuszach można znaleźć w [o
 
       ![Tworzenie konta magazynu][storage_account]
 
-    f. **Tryb alokacji puli**: na karcie Ustawienia **Zaawansowane** można określić tryb alokacji puli jako **usługę Batch** lub **subskrypcję użytkownika**. W przypadku większości scenariuszy zaakceptuj domyślną **usługę Batch**.
+    f. **Tryb alokacji puli**: na karcie Ustawienia **Zaawansowane** można określić tryb alokacji puli jako **usługę Batch** lub **subskrypcję użytkownika**. w przypadku większości scenariuszy zaakceptuj wartość domyślną **Usługa Batch**.
 
       ![Tryb alokacji puli usługi Batch][pool_allocation]
 
@@ -83,7 +83,7 @@ Jeśli wybrano tworzenie konta usługi Batch w trybie subskrypcji użytkownika, 
 
 Podczas tworzenia pierwszego konta usługi Batch w trybie subskrypcji użytkownika należy zarejestrować subskrypcję w usłudze Batch. (Jeśli wcześniej zostało to już zrobione, przejdź do następnej sekcji).
 
-1. Zaloguj się do [Portalu Azure][azure_portal].
+1. Zaloguj się do [Azure portal][azure_portal].
 
 1. Wybierz pozycję **Wszystkie usługi** > **Subskrypcje**, a następnie wybierz subskrypcję, której chcesz użyć dla konta usługi Batch.
 
@@ -117,6 +117,14 @@ Podczas tworzenia konta usługi Batch w trybie subskrypcji użytkownika należy 
 Jeśli wolisz udzielić dostępu do magazynu kluczy ręcznie, przejdź do sekcji **zasady dostępu** w magazynie kluczy i wybierz pozycję **Dodaj zasady dostępu** i Wyszukaj **Microsoft Azure Batch**. Po wybraniu tej opcji należy skonfigurować **uprawnienia klucza tajnego** za pomocą menu rozwijanego. Azure Batch musi mieć co najmniej uprawnienia **Get**, **list**, **Set**i **delete** .
 
 ![Uprawnienia klucza tajnego dla Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
+
+
+> [!NOTE]
+> Upewnij się, że pola wyboru **Virtual Machines platformy Azure do wdrożenia** i **Azure Resource Manager dla wdrożenia szablonu** są zaznaczone w obszarze **zasady dostępu** dla połączonego zasobu **Key Vault** .
+> 
+> ![obowiązkowe zasady dostępu Key Vault](./media/batch-account-create-portal/key-vault-access-policy.png) nie jest to wymagane podczas tworzenia konta wsadowego w Azure Portal. Opcja jest domyślnie zaznaczona.
+
+
 
 ### <a name="configure-subscription-quotas"></a>Konfigurowanie limitów przydziału subskrypcji
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 843dd403bc5434e2c79ee0bb85eb781b56bf3ec9
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a2f39b6f58b250d68a3b2ce962f158c7df36d812
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291451"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046597"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu produktu Workday
 
@@ -45,7 +45,7 @@ W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure A
 
 * Usługa Workday **obsługuje usługę** zainicjowaną przez usługę SSO.
 
-* Po skonfigurowaniu produktu Workday można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po skonfigurowaniu produktu Workday można wymusić kontrolę sesji, która chroni eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolka sesji rozszerzy od dostępu warunkowego. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workday-from-the-gallery"></a>Dodawanie produktu Workday z galerii
 
@@ -87,7 +87,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `http://www.workday.com`
 
-    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://impl.workday.com/<tenant>/login-saml.htmld`
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE]
     > Te wartości nie są rzeczywiste. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania i adresu URL odpowiedzi. Adres URL odpowiedzi musi mieć poddomenę na przykład: www, WD2, WD3, WD3-Impl, WD5, WD5-Impl).
@@ -128,7 +128,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -164,7 +164,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. W polu tekstowym **adres URL przekierowania logowania**, **adres URL przekierowania limitu czasu** i **adres URL przekierowania urządzenia przenośnego** , wklej **adres URL logowania** skopiowany z sekcji **Konfigurowanie produktu Workday** Azure Portal.
 
-    d. W polu tekstowym **adres URL przekierowania Wyloguj** wklej **adres URL wylogowania** , który został skopiowany z sekcji **Konfigurowanie produktu Workday** Azure Portal.
+    c. W polu tekstowym **adres URL przekierowania Wyloguj** wklej **adres URL wylogowania** , który został skopiowany z sekcji **Konfigurowanie produktu Workday** Azure Portal.
 
     d. W polu tekstowym **używane dla środowisk** wybierz nazwę środowiska.  
 
@@ -183,15 +183,15 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 5. W sekcji **dostawcy tożsamości SAML** wykonaj następujące czynności:
 
-    ![Dostawcy tożsamości SAML](./media/workday-tutorial/IC7829271.png "Dostawcy tożsamości języka SAML")
+    ![Dostawcy tożsamości SAML](./media/workday-tutorial/IC7829271.png "Dostawcy tożsamości SAML")
 
     a. W polu tekstowym **Nazwa dostawcy tożsamości** wpisz nazwę dostawcy (na przykład: *SPInitiatedSSO*).
 
     b. W Azure Portal w sekcji **Konfigurowanie produktu Workday** skopiuj wartość **Identyfikator usługi Azure AD** , a następnie wklej ją do pola tekstowego **wystawcy** .
 
-    ![Dostawcy tożsamości SAML](./media/workday-tutorial/IC7829272.png "Dostawcy tożsamości języka SAML")
+    ![Dostawcy tożsamości SAML](./media/workday-tutorial/IC7829272.png "Dostawcy tożsamości SAML")
 
-    d. W Azure Portal w sekcji **Konfigurowanie produktu Workday** skopiuj wartość **adres URL wylogowania** , a następnie wklej ją do pola tekstowego **adres URL odpowiedzi na wylogowanie** .
+    c. W Azure Portal w sekcji **Konfigurowanie produktu Workday** skopiuj wartość **adres URL wylogowania** , a następnie wklej ją do pola tekstowego **adres URL odpowiedzi na wylogowanie** .
 
     d. W Azure Portal w sekcji **Konfigurowanie produktu Workday** skopiuj wartość **adres URL logowania** , a następnie wklej ją do pola tekstowego **adres URL usługi SSO dostawcy tożsamości** .
 
@@ -199,11 +199,11 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     f. Kliknij pozycję **certyfikat klucza publicznego dostawcy tożsamości**, a następnie kliknij przycisk **Utwórz**.
 
-    ![Tworzenie](./media/workday-tutorial/IC782928.png "Create")
+    ![Tworzenie](./media/workday-tutorial/IC782928.png "Tworzenie")
 
     g. Kliknij pozycję **Utwórz klucz publiczny x509**.
 
-    ![Tworzenie](./media/workday-tutorial/IC782929.png "Create")
+    ![Tworzenie](./media/workday-tutorial/IC782929.png "Tworzenie")
 
 6. W sekcji **Wyświetl klucz publiczny x509** wykonaj następujące czynności:
 
@@ -213,7 +213,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. W polu tekstowym **prawidłowy** typ wpisz prawidłową wartość z atrybutu certyfikatu.
 
-    d.  W polu tekstowym **prawidłowy dla** wpisz prawidłową wartość atrybutu dla certyfikatu.
+    c.  W polu tekstowym **prawidłowy dla** wpisz prawidłową wartość atrybutu dla certyfikatu.
 
     > [!NOTE]
     > Możesz uzyskać aktualną datę od i datę ważności z pobranego certyfikatu, klikając go dwukrotnie.  Daty są wyświetlane na karcie **szczegóły** .
@@ -234,13 +234,13 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. Wybierz pozycję **nie rób korekt w zainicjowanym programie Sp żądanie uwierzytelniania**.
 
-    d. Jako **metodę podpisu żądania uwierzytelniania**wybierz pozycję **SHA256**.
+    c. Jako **metodę podpisu żądania uwierzytelniania**wybierz pozycję **SHA256**.
 
     ![Metoda podpisu żądania uwierzytelniania](./media/workday-tutorial/WorkdaySSOConfiguration.png "Metoda podpisu żądania uwierzytelniania")
 
     d. Kliknij przycisk **OK**.
 
-    ![OK](./media/workday-tutorial/IC782933.png "OK")
+    ![Ok](./media/workday-tutorial/IC782933.png "OK")
 
     > [!NOTE]
     > Upewnij się, że poprawnie skonfigurowano Logowanie jednokrotne. Jeśli włączysz logowanie jednokrotne przy użyciu nieprawidłowej konfiguracji, możesz nie być w stanie wprowadzić aplikacji z poświadczeniami i zablokować. W tej sytuacji dzień Workday zawiera adres URL logowania do kopii zapasowej, w którym użytkownicy mogą logować się przy użyciu swojej zwykłej nazwy użytkownika i hasła w następującym formacie: [adres URL w dniach roboczych]/login.Flex? redirect = n
@@ -253,16 +253,16 @@ W tej sekcji utworzysz użytkownika o nazwie B. Simon w usłudze Workday. Wspó�
 
 Po wybraniu kafelka Workday w panelu dostępu należy automatycznie zalogować się do dnia roboczego, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Wypróbuj usługę Workday z usługą Azure AD](https://aad.portal.azure.com)
 
-- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-workday)
+- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Jak chronić dzień roboczy przy użyciu zaawansowanej widoczności i kontroli](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chronić dzień roboczy przy użyciu zaawansowanej widoczności i kontroli](https://docs.microsoft.com/cloud-app-security/protect-workday)

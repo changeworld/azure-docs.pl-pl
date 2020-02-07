@@ -7,28 +7,27 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 02/03/2020
-ms.openlocfilehash: ac937519ca3fa9381fe4970f2e4336fe4a0a9227
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: e4679d5a04be7b8c0145fd93818e4187170b4194
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989335"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049682"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Szybki Start: Tworzenie klastra Apache Spark w usłudze Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure
 
-W tym przewodniku szybki start dowiesz się, jak utworzyć klaster Apache Spark w usłudze Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure. Platforma Apache Spark umożliwia szybką analizę danych i używanie klastrów obliczeniowych korzystających z funkcji przetwarzania w pamięci. [Interfejs wiersza polecenia (CLI) platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) to międzyplatformowe środowisko wiersza polecenia firmy Microsoft służące do zarządzania zasobami platformy Azure.
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+W tym przewodniku szybki start dowiesz się, jak utworzyć klaster Apache Spark w usłudze Azure HDInsight przy użyciu interfejsu wiersza polecenia (CLI) platformy Azure. Azure HDInsight jest zarządzaną usługą analityczną typu „open source” o szerokim zakresie, z przeznaczeniem dla przedsiębiorstw. Platforma Apache Spark dla usługi HDInsight umożliwia szybkie analizowanie danych i przetwarzanie klastrów przy użyciu przetwarzania w pamięci. Interfejs wiersza polecenia platformy Azure to wieloplatformowe środowisko wiersza polecenia do zarządzania zasobami platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) w celu wykonania kroków.
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli), jeśli nie chcesz używać Azure Cloud Shell.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-apache-spark-cluster"></a>Tworzenie klastra platformy Apache Spark
 
-1. Zaloguj się do subskrypcji platformy Azure. Jeśli planujesz używać Azure Cloud Shell, wybierz opcję **Wypróbuj** w prawym górnym rogu bloku kodu. W przeciwnym razie wprowadź poniższe polecenie:
+1. Zaloguj się do subskrypcji platformy Azure. Jeśli planujesz używać Azure Cloud Shell, wybierz opcję **Wypróbuj** w prawym górnym rogu poniższego bloku kodu. W przeciwnym razie wprowadź następujące polecenie:
 
     ```azurecli-interactive
     az login
@@ -141,7 +140,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start przedstawiono sposób tworzenia klastra Apache Spark w usłudze Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure.  Przejdź do następnego samouczka, aby dowiedzieć się, jak uruchamiać interakcyjne zapytania dotyczące przykładowych danych za pomocą klastra Spark w usłudze HDInsight.
+W tym przewodniku szybki start przedstawiono sposób tworzenia klastra Apache Spark w usłudze Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure.  Przejdź do następnego samouczka, aby dowiedzieć się, jak uruchamiać interakcyjne zapytania dotyczące przykładowych danych za pomocą klastra usługi HDInsight.
 
 > [!div class="nextstepaction"]
 > [Uruchamianie interakcyjnych zapytań na platformie Apache Spark](./apache-spark-load-data-run-query.md)

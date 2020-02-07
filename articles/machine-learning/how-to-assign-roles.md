@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: aba613911328b1272ebb07eeae633932cb4a442f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935356"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064754"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Zarządzanie dostępem do obszaru roboczego Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Aby uzyskać więcej informacji na temat określonych ról wbudowanych, zobacz [
 
 Jeśli jesteś właścicielem obszaru roboczego, możesz dodawać i usuwać role dla obszaru roboczego. Możesz również przypisywać role do użytkowników. Skorzystaj z poniższych linków, aby dowiedzieć się, jak zarządzać dostępem:
 - [Interfejs użytkownika Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-- [Program PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Interfejs wiersza polecenia platformy Azure](/azure/role-based-access-control/role-assignments-cli)
 - [Interfejs API REST](/azure/role-based-access-control/role-assignments-rest)
 - [Szablony Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
@@ -112,9 +112,65 @@ Aby uzyskać więcej informacji na temat ról niestandardowych, zobacz [role nie
 
 Aby uzyskać więcej informacji o operacjach (działania), których można użyć z rolami niestandardowymi, zobacz [operacje dostawcy zasobów](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
+
+## <a name="frequently-asked-questions"></a>Często zadawane pytania
+
+
+### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>PYTANIE: Jakie są uprawnienia potrzebne do wykonywania różnych akcji w ramach usługi Azure Machine Learning?
+
+Poniższa tabela zawiera podsumowanie działań Azure Machine Learning i uprawnienia wymagane do ich wykonania w najniższym zakresie. Przykładowo, jeśli działanie może być wykonywane z zakresem obszaru roboczego (kolumna 4), wówczas cały wyższy zakres z tym uprawnieniem będzie również działać automatycznie. Wszystkie ścieżki w tej tabeli są **ścieżkami względnymi** do `Microsoft.MachineLearningServices/`.
+
+| Działanie | Zakres poziomu subskrypcji | Zakres poziomu grupy zasobów | Zakres obszaru roboczego |
+|---|---|---|---|
+| Utwórz nowy obszar roboczy | Niewymagane | Właściciel lub współautor | Nie dotyczy (jest właścicielem lub dziedziczy wyższy zakres roli po utworzeniu) |
+| Utwórz nowy klaster obliczeniowy | Niewymagane | Niewymagane | Właściciel, współautor lub rola niestandardowa zezwalająca na: `workspaces/computes/write` |
+| Utwórz nową maszynę wirtualną notesu | Niewymagane | Właściciel lub współautor | Niemożliwa |
+| Utwórz nowe wystąpienie obliczeniowe | Niewymagane | Niewymagane | Właściciel, współautor lub rola niestandardowa zezwalająca na: `workspaces/computes/write` |
+| Działanie płaszczyzny danych, takie jak przesyłanie przebiegu, uzyskiwanie dostępu do danych, Wdrażanie modelu lub potoku publikowania | Niewymagane | Niewymagane | Właściciel, współautor lub rola niestandardowa zezwalająca na: `workspaces/*/write` <br/> Należy zauważyć, że magazyn danych jest również wymagany w obszarze roboczym, aby umożliwić plikowi MSI dostęp do tych samych zasobów na koncie magazynu. |
+
+
+### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>PYTANIE: Jak mogę wyświetlić listę wszystkich ról niestandardowych w mojej subskrypcji?
+
+W interfejsie wiersza polecenia platformy Azure Uruchom następujące polecenie.
+
+```azurecli-interactive
+az role definition list --subscription <sub-id> --custom-role-only true
+```
+
+### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>PYTANIE: Jak mogę znaleźć definicję roli dla roli w mojej subskrypcji?
+
+W interfejsie wiersza polecenia platformy Azure Uruchom następujące polecenie. Należy pamiętać, że `<role-name>` powinny być w tym samym formacie zwracanym przez polecenie powyżej.
+
+```azurecli-interactive
+az role definition list -n <role-name> --subscription <sub-id>
+```
+
+### <a name="q-how-do-i-update-a-role-definition"></a>PYTANIE: Jak mogę zaktualizować definicję roli?
+
+W interfejsie wiersza polecenia platformy Azure Uruchom następujące polecenie.
+
+```azurecli-interactive
+az role definition update --role-definition update_def.json --subscription <sub-id>
+```
+
+Należy pamiętać, że należy mieć uprawnienia do całego zakresu nowej definicji roli. Jeśli na przykład ta nowa rola ma zakres między trzema subskrypcjami, musisz mieć uprawnienia do wszystkich trzech subskrypcji. 
+
+> [!NOTE]
+> Zastosowanie aktualizacji ról może zająć od 15 minut do godziny.
+### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>PYTANIE: Czy mogę zdefiniować rolę, która uniemożliwia Aktualizowanie wersji obszaru roboczego? 
+
+Tak, możesz zdefiniować rolę, która uniemożliwi Aktualizowanie wersji obszaru roboczego. Ponieważ aktualizacja obszaru roboczego jest wywołaniem poprawki w obiekcie obszaru roboczego, można to zrobić, wykonując następujące czynności w tablicy `"NotActions"` w definicji JSON: 
+
+`"Microsoft.MachineLearningServices/workspaces/write"`
+
+### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>PYTANIE: Jakie uprawnienia są potrzebne do wykonania operacji przydziałów w obszarze roboczym? 
+
+Do wykonywania operacji związanych z przydziałami w obszarze roboczym wymagane są uprawnienia na poziomie subskrypcji. Oznacza to, że limity przydziału poziomu subskrypcji lub poziomu obszaru roboczego dla zarządzanych zasobów obliczeniowych mogą wystąpić tylko wtedy, gdy masz uprawnienia do zapisu w zakresie subskrypcji. 
+
+
 ## <a name="next-steps"></a>Następne kroki
 
 - [Omówienie zabezpieczeń przedsiębiorstwa](concept-enterprise-security.md)
 - [Bezpieczne uruchamianie eksperymentów i wnioskowania/wyniku w sieci wirtualnej](how-to-enable-virtual-network.md)
-- [Samouczek: Trenowanie modeli](tutorial-train-models-with-aml.md)
+- [Samouczek: uczenie modeli](tutorial-train-models-with-aml.md)
 - [Operacje dostawcy zasobów](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

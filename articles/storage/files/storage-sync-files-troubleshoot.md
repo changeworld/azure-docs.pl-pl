@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 887c10097187f193f55c6e301be3e739a16d6bf7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b5a6b62e423b982cd7a852de844cd561997ba1e7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906911"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048421"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -213,7 +213,7 @@ Punkt końcowy serwera może nie rejestrować aktywności synchronizacji przez k
 > [!Note]  
 > Jeśli stan serwera w bloku zarejestrowane serwery jest "pojawia się w trybie offline", wykonaj kroki opisane w [punkcie końcowym serwera ma stan kondycji "brak działania" lub "oczekiwanie", a stan serwera w bloku zarejestrowane serwery to "pojawia się w trybie offline"](#server-endpoint-noactivity) .
 
-## <a name="sync"></a>Synchronizacja
+## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Jeśli plik został utworzony bezpośrednio w udziale plików platformy Azure za pośrednictwem protokołu SMB lub za pośrednictwem portalu, jak długo trwa synchronizacja pliku z serwerami w grupie synchronizacji?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -311,10 +311,10 @@ Aby wyświetlić te błędy, uruchom skrypt programu PowerShell **FileSyncErrors
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Rozwiązywanie problemów na błędy synchronizacji plików/katalogów
 **Błędy synchronizacji dla elementu dziennika ItemResults**  
 
-| WYNIK | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowanie |
+| HRESULT | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowanie |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Plik warstwowy na serwerze nie jest dostępny. Ten problem występuje, gdy plik warstwowy nie został odwołany przed usunięciem punktu końcowego serwera. | Aby rozwiązać ten problem, zobacz [pliki warstwowe nie są dostępne na serwerze po usunięciu punktu końcowego serwera](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ folder zależny nie jest jeszcze zsynchronizowany. Ten element zostanie zsynchronizowany po zsynchronizowaniu zależnych zmian. | Żadna akcja nie jest wymagana. |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ folder zależny nie jest jeszcze zsynchronizowany. Ten element zostanie zsynchronizowany po zsynchronizowaniu zależnych zmian. | Żadna akcja nie jest wymagana. Jeśli błąd będzie się powtarzał przez kilka dni, Użyj skryptu programu PowerShell FileSyncErrorsReport. ps1, aby określić, dlaczego folder zależny nie jest jeszcze zsynchronizowany. |
 | 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ folder zależny nie jest jeszcze zsynchronizowany i sesja synchronizacji nie powiodła się. Ten element zostanie zsynchronizowany po zsynchronizowaniu zależnych zmian. | Żadna akcja nie jest wymagana. Jeśli błąd będzie się powtarzać, zbadaj błąd sesji synchronizacji. |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę podanego pliku lub katalogu. Aby uzyskać więcej informacji, zobacz [Obsługa nieobsługiwanych znaków](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę podanego pliku lub katalogu. Aby uzyskać więcej informacji, zobacz [Obsługa nieobsługiwanych znaków](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) . |
@@ -354,7 +354,7 @@ Poniższa tabela zawiera wszystkie znaki Unicode, Azure File Sync nie są jeszcz
 
 | | |
 |-|-|
-| **HRESULT** | 0x800704c7 |
+| **WYNIK** | 0x800704c7 |
 | **HRESULT (dziesiętny)** | -2147023673 | 
 | **Ciąg błędu** | ERROR_CANCELLED |
 | **Wymagana korekta** | Nie |
@@ -365,10 +365,10 @@ Sesje synchronizacji mogą się nie powieść z różnych przyczyn, w tym serwer
 
 | | |
 |-|-|
-| **HRESULT** | 0x80072ee7 |
+| **WYNIK** | 0x80072ee7 |
 | **HRESULT (dziesiętny)** | -2147012889 | 
 | **Ciąg błędu** | WININET_E_NAME_NOT_RESOLVED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -376,7 +376,7 @@ Sesje synchronizacji mogą się nie powieść z różnych przyczyn, w tym serwer
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8004c |
+| **WYNIK** | 0x80c8004c |
 | **HRESULT (dziesiętny)** | -2134376372 |
 | **Ciąg błędu** | ECS_E_USER_REQUEST_THROTTLED |
 | **Wymagana korekta** | Nie |
@@ -387,7 +387,7 @@ Nie jest wymagana żadna akcja; serwer ponowi próbę. Jeśli ten błąd będzie
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83075 |
+| **WYNIK** | 0x80c83075 |
 | **HRESULT (dziesiętny)** | -2134364043 |
 | **Ciąg błędu** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **Wymagana korekta** | Nie |
@@ -398,7 +398,7 @@ Nie jest wymagana żadna akcja. Po przywróceniu pliku lub udziału plików (pun
 
 | | |
 |-|-|
-| **HRESULT** | 0x80041295 |
+| **WYNIK** | 0x80041295 |
 | **HRESULT (dziesiętny)** | -2147216747 |
 | **Ciąg błędu** | SYNC_E_METADATA_INVALID_OPERATION |
 | **Wymagana korekta** | Nie |
@@ -409,10 +409,10 @@ Ten błąd występuje zazwyczaj wtedy, gdy aplikacja kopii zapasowej tworzy miga
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8305f |
+| **WYNIK** | 0x80c8305f |
 | **HRESULT (dziesiętny)** | -2134364065 |
 | **Ciąg błędu** | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyskać dostępu do udziału plików platformy Azure, co może być spowodowane tym, że udział plików platformy Azure lub konto magazynu, na którym udział się znajduje, już nie istnieje. Ten błąd można rozwiązać, wykonując następujące czynności:
 
@@ -425,10 +425,10 @@ Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyska�
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c86044 |
+| **WYNIK** | 0x80c86044 |
 | **HRESULT (dziesiętny)** | -2134351804 |
 | **Ciąg błędu** | ECS_E_AZURE_AUTHORIZATION_FAILED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ agent Azure File Sync nie ma uprawnień dostępu do udziału plików platformy Azure. Ten błąd można rozwiązać, wykonując następujące czynności:
 
@@ -441,10 +441,10 @@ Ten błąd występuje, ponieważ agent Azure File Sync nie ma uprawnień dostęp
 
 | | |
 |-|-|
-| **HRESULT** | 0x80C83060 |
+| **WYNIK** | 0x80C83060 |
 | **HRESULT (dziesiętny)** | -2134364064 |
 | **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 1. Sprawdź, czy można rozpoznać nazwę DNS magazynu z serwera.
 
@@ -458,10 +458,10 @@ Ten błąd występuje, ponieważ agent Azure File Sync nie ma uprawnień dostęp
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8308a |
+| **WYNIK** | 0x80c8308a |
 | **HRESULT (dziesiętny)** | -2134364022 |
 | **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_UNKNOWN_ERROR |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 1. [Sprawdź, czy konto magazynu istnieje.](#troubleshoot-storage-account)
 2. [Sprawdź, czy ustawienia zapory i sieci wirtualnej na koncie magazynu są prawidłowo skonfigurowane (jeśli włączono)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
@@ -470,10 +470,10 @@ Ten błąd występuje, ponieważ agent Azure File Sync nie ma uprawnień dostęp
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83092 |
+| **WYNIK** | 0x80c83092 |
 | **HRESULT (dziesiętny)** | -2134364014 |
 | **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_LOCKED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ konto magazynu ma [blokadę zasobów](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)tylko do odczytu. Aby rozwiązać ten problem, Usuń blokadę zasobów tylko do odczytu na koncie magazynu. 
 
@@ -481,10 +481,10 @@ Ten błąd występuje, ponieważ konto magazynu ma [blokadę zasobów](https://d
 
 | | |
 |-|-|
-| **HRESULT** | 0x8e5e044e |
+| **WYNIK** | 0x8e5e044e |
 | **HRESULT (dziesiętny)** | -1906441138 |
 | **Ciąg błędu** | JET_errWriteConflict |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, gdy występuje problem dotyczący wewnętrznej bazy danych używanej przez Azure File Sync. Jeśli wystąpi ten problem, Utwórz żądanie pomocy technicznej, a my skontaktujemy się z Tobą, aby pomóc Ci rozwiązać ten problem.
 
@@ -492,10 +492,10 @@ Ten błąd występuje, gdy występuje problem dotyczący wewnętrznej bazy danyc
 
 | | |
 |-|-|
-| **HRESULT** | 0x80C8306B |
+| **WYNIK** | 0x80C8306B |
 | **HRESULT (dziesiętny)** | -2134364053 |
 | **Ciąg błędu** | ECS_E_AGENT_VERSION_BLOCKED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, gdy wersja agenta usługi Azure File Sync zainstalowana na serwerze nie jest obsługiwana. Aby rozwiązać ten problem, należy [przeprowadzić uaktualnienie]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) do [obsługiwanej wersji agenta]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions).
 
@@ -503,10 +503,10 @@ Ten błąd występuje, gdy wersja agenta usługi Azure File Sync zainstalowana n
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8603e |
+| **WYNIK** | 0x80c8603e |
 | **HRESULT (dziesiętny)** | -2134351810 |
 | **Ciąg błędu** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje po przekroczeniu limitu magazynowania udziałów plików platformy Azure, co może wystąpić w przypadku zastosowania limitu przydziału dla udziału plików platformy Azure lub przekroczenia limitów użycia dla udziału plików platformy Azure. Aby uzyskać więcej informacji, zobacz [bieżące limity dla udziału plików platformy Azure](storage-files-scale-targets.md).
 
@@ -529,10 +529,10 @@ Jeśli udział jest pełny i nie ustawiono limitu przydziału, jednym z możliwy
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c86030 |
+| **WYNIK** | 0x80c86030 |
 | **HRESULT (dziesiętny)** | -2134351824 |
 | **Ciąg błędu** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, gdy udział plików platformy Azure jest niedostępny. Aby rozwiązać problem:
 
@@ -545,10 +545,10 @@ Jeśli udział plików platformy Azure został usunięty, należy utworzyć nowy
 
 | | |
 |-|-|
-| **HRESULT** | 0x80C83076 |
+| **WYNIK** | 0x80C83076 |
 | **HRESULT (dziesiętny)** | -2134364042 |
 | **Ciąg błędu** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, gdy subskrypcja platformy Azure jest zawieszona. Synchronizacja zostanie ponownie włączona po przywróceniu subskrypcji platformy Azure. Zobacz [Dlaczego moja subskrypcja platformy Azure jest wyłączona i jak ją uaktywnić?](../../cost-management-billing/manage/subscription-disabled.md) Aby uzyskać więcej informacji.
 
@@ -556,10 +556,10 @@ Ten błąd występuje, gdy subskrypcja platformy Azure jest zawieszona. Synchron
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8306c |
+| **WYNIK** | 0x80c8306c |
 | **HRESULT (dziesiętny)** | -2134364052 |
 | **Ciąg błędu** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, gdy udział plików platformy Azure jest niedostępny z powodu zapory konta magazynu lub gdy konto magazynu należy do sieci wirtualnej. Sprawdź, czy ustawienia zapory i sieci wirtualnej na koncie magazynu są skonfigurowane prawidłowo. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień zapory i sieci wirtualnej](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings). 
 
@@ -567,7 +567,7 @@ Ten błąd występuje, gdy udział plików platformy Azure jest niedostępny z p
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c80219 |
+| **WYNIK** | 0x80c80219 |
 | **HRESULT (dziesiętny)** | -2134375911 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
 | **Wymagana korekta** | Nie |
@@ -583,10 +583,10 @@ Jeśli ten błąd będzie się powtarzać dłużej niż kilka godzin, Utwórz ż
 
 | | |
 |-|-|
-| **HRESULT** | 0x800b0109 |
+| **WYNIK** | 0x800b0109 |
 | **HRESULT (dziesiętny)** | -2146762487 |
 | **Ciąg błędu** | CERT_E_UNTRUSTEDROOT |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd może wystąpić, jeśli Twoja organizacja korzysta z serwera proxy przerywania protokołu SSL lub jeśli złośliwy podmiot przechwytuje ruch między serwerem i usługą Azure File Sync. Jeśli masz pewność, że jest to oczekiwane zachowanie (ponieważ Twoja organizacja korzysta z serwera proxy przerywania protokołu SSL), możesz pominąć weryfikację certyfikatu, przesłaniając ustawienie za pomocą wartości rejestru.
 
@@ -608,10 +608,10 @@ Po ustawieniu tej wartości rejestru agent usługi Azure File Sync zaakceptuje k
 
 | | |
 |-|-|
-| **HRESULT** | 0x80072EE2 |
+| **WYNIK** | 0x80072EE2 |
 | **HRESULT (dziesiętny)** | -2147012894 |
 | **Ciąg błędu** | WININET_E_TIMEOUT |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -619,10 +619,10 @@ Po ustawieniu tej wartości rejestru agent usługi Azure File Sync zaakceptuje k
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c80300 |
+| **WYNIK** | 0x80c80300 |
 | **HRESULT (dziesiętny)** | -2134375680 |
 | **Ciąg błędu** | ECS_E_SERVER_CREDENTIAL_NEEDED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd zazwyczaj występuje, ponieważ czas serwera jest niepoprawny. Jeśli serwer jest uruchomiony na maszynie wirtualnej, sprawdź, czy czas na hoście jest prawidłowy.
 
@@ -630,10 +630,10 @@ Ten błąd zazwyczaj występuje, ponieważ czas serwera jest niepoprawny. Jeśli
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83078 |
+| **WYNIK** | 0x80c83078 |
 | **HRESULT (dziesiętny)** | -2134364040 |
 | **Ciąg błędu** | ECS_E_AUTH_SRV_CERT_EXPIRED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ wygasł certyfikat używany do uwierzytelniania.
 
@@ -654,10 +654,10 @@ Jeśli certyfikat uwierzytelniania klienta wygasł, wykonaj następujące czynno
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c80228 |
+| **WYNIK** | 0x80c80228 |
 | **HRESULT (dziesiętny)** | -2134375896 |
 | **Ciąg błędu** | ECS_E_AUTH_SRV_CERT_NOT_FOUND |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ nie znaleziono certyfikatu używanego do uwierzytelniania.
 
@@ -674,10 +674,10 @@ Aby rozwiązać ten problem, wykonaj następujące kroki:
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83079 |
+| **WYNIK** | 0x80c83079 |
 | **HRESULT (dziesiętny)** | -2134364039 |
 | **Ciąg błędu** | ECS_E_AUTH_IDENTITY_NOT_FOUND |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ usuwanie punktu końcowego serwera nie powiodło się, a punkt końcowy jest teraz w stanie częściowo usuniętym. Aby rozwiązać ten problem, spróbuj ponownie usunąć punkt końcowy serwera.
 
@@ -685,15 +685,15 @@ Ten błąd występuje, ponieważ usuwanie punktu końcowego serwera nie powiodł
 
 | | |
 |-|-|
-| **HRESULT** | 0x8e5e0211 |
+| **WYNIK** | 0x8e5e0211 |
 | **HRESULT (dziesiętny)** | -1906441711 |
 | **Ciąg błędu** | JET_errLogDiskFull |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 | | |
-| **HRESULT** | 0x80c8031a |
+| **WYNIK** | 0x80c8031a |
 | **HRESULT (dziesiętny)** | -2134375654 |
 | **Ciąg błędu** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ wolumin jest pełny. Ten błąd często występuje, gdy pliki spoza punktu końcowego serwera zużywają przestrzeń na woluminie. Zwolnij miejsce na woluminie poprzez dodanie kolejnych punktów końcowych serwera, przeniesienie plików na inny wolumin lub zwiększenie rozmiaru woluminu, na którym znajduje się punkt końcowy serwera.
 
@@ -701,7 +701,7 @@ Ten błąd występuje, ponieważ wolumin jest pełny. Ten błąd często występ
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8300f |
+| **WYNIK** | 0x80c8300f |
 | **HRESULT (dziesiętny)** | -2134364145 |
 | **Ciąg błędu** | ECS_E_REPLICA_NOT_READY |
 | **Wymagana korekta** | Nie |
@@ -712,20 +712,20 @@ Ten błąd występuje, ponieważ punkt końcowy w chmurze został utworzony przy
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8023b |
+| **WYNIK** | 0x80c8023b |
 | **HRESULT (dziesiętny)** | -2134375877 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 | | |
-| **HRESULT** | 0x80c8021c |
+| **WYNIK** | 0x80c8021c |
 | **HRESULT (dziesiętny)** | -2134375908 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 | | |
-| **HRESULT** | 0x80c80253 |
+| **WYNIK** | 0x80c80253 |
 | **HRESULT (dziesiętny)** | -2134375853 |
 | **Ciąg błędu** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 W przypadkach, gdy występuje wiele na błędy synchronizacji plików, sesja synchronizacji może się nie powieść. <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
 
@@ -736,10 +736,10 @@ W przypadkach, gdy występuje wiele na błędy synchronizacji plików, sesja syn
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c80019 |
+| **WYNIK** | 0x80c80019 |
 | **HRESULT (dziesiętny)** | -2134376423 |
 | **Ciąg błędu** | ECS_E_SYNC_INVALID_PATH |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i nie jest punktem ponownej analizy lub istniejącym punktem końcowym serwera.
 
@@ -747,10 +747,10 @@ Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i
 
 | | |
 |-|-|
-| **HRESULT** | 0x80C80277 |
+| **WYNIK** | 0x80C80277 |
 | **HRESULT (dziesiętny)** | -2134375817 |
 | **Ciąg błędu** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ załadowana wersja sterownika filtru obsługi warstw w chmurze (StorageSync.sys) jest niezgodna z usługą agenta synchronizacji usługi Storage (FileSyncSvc). Jeśli agent usługi Azure File Sync został uaktualniony, ponownie uruchom serwer, aby zakończyć instalację. Jeśli błąd będzie nadal występował, odinstaluj agenta, uruchom ponownie serwer i ponownie zainstaluj agenta usługi Azure File Sync.
 
@@ -758,7 +758,7 @@ Ten błąd występuje, ponieważ załadowana wersja sterownika filtru obsługi w
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8004b |
+| **WYNIK** | 0x80c8004b |
 | **HRESULT (dziesiętny)** | -2134376373 |
 | **Ciąg błędu** | ECS_E_SERVICE_UNAVAILABLE |
 | **Wymagana korekta** | Nie |
@@ -769,7 +769,7 @@ Ten błąd występuje, ponieważ usługa Azure File Sync jest niedostępna. Ten 
 
 | | |
 |-|-|
-| **HRESULT** | 0x80131500 |
+| **WYNIK** | 0x80131500 |
 | **HRESULT (dziesiętny)** | -2146233088 |
 | **Ciąg błędu** | COR_E_EXCEPTION |
 | **Wymagana korekta** | Nie |
@@ -780,10 +780,10 @@ Ten błąd występuje, ponieważ synchronizacja nie powiodła się z powodu wyj�
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83073 |
+| **WYNIK** | 0x80c83073 |
 | **HRESULT (dziesiętny)** | -2134364045 |
 | **Ciąg błędu** | ECS_E_STORAGE_ACCOUNT_FAILED_OVER |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ konto magazynu zostało przełączone w tryb failover do innego regionu. Usługa Azure File Sync nie obsługuje funkcji przełączania konta magazynu w tryb failover. Kont magazynu zawierających udziały plików platformy Azure używane jako punkty końcowe w chmurze w usłudze Azure File Sync nie należy przełączać w tryb failover. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych. Aby rozwiązać ten problem, przenieś konto magazynu do regionu podstawowego.
 
@@ -791,7 +791,7 @@ Ten błąd występuje, ponieważ konto magazynu zostało przełączone w tryb fa
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8020e |
+| **WYNIK** | 0x80c8020e |
 | **HRESULT (dziesiętny)** | -2134375922 |
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Wymagana korekta** | Nie |
@@ -802,10 +802,10 @@ Ten błąd występuje z powodu wewnętrznego problemu z bazą danych synchroniza
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83088 |
+| **WYNIK** | 0x80c83088 |
 | **HRESULT (dziesiętny)** | -2134364024 | 
 | **Ciąg błędu** | ECS_E_INVALID_AAD_TENANT |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ obecnie usługa Azure File Sync nie obsługuje przenoszenia subskrypcji do innej dzierżawy usługi Azure Active Directory.
  
@@ -818,10 +818,10 @@ Aby rozwiązać ten problem, wykonaj jedną z następujących czynności:
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83096 |
+| **WYNIK** | 0x80c83096 |
 | **HRESULT (dziesiętny)** | -2134364010 | 
 | **Ciąg błędu** | ECS_E_MGMT_STORAGEACLSBYPASSNOTSET |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, gdy ustawienia zapory i sieci wirtualnej są włączone na koncie magazynu, a wyjątek "Zezwalaj na dostęp zaufanych usług firmy Microsoft do tego konta magazynu" nie jest zaznaczony. Aby rozwiązać ten problem, wykonaj czynności opisane w sekcji [Konfigurowanie ustawień zapory i sieci wirtualnej](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) w podręczniku wdrażania.
 
@@ -829,10 +829,10 @@ Ten błąd występuje, gdy ustawienia zapory i sieci wirtualnej są włączone n
 
 | | |
 |-|-|
-| **HRESULT** | 0x80070005 |
+| **WYNIK** | 0x80070005 |
 | **HRESULT (dziesiętny)** | -2147024891 |
 | **Ciąg błędu** | ERROR_ACCESS_DENIED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd może wystąpić, jeśli konto NT AUTHORITY\SYSTEM nie ma uprawnień do folderu System Volume Information na woluminie, na którym znajduje się punkt końcowy serwera. Uwaga Jeśli pojedyncze pliki nie są synchronizowane z ERROR_ACCESS_DENIED, wykonaj kroki opisane w sekcji [Rozwiązywanie problemów według błędów synchronizacji plików/katalogów](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshooting-per-filedirectory-sync-errors) .
 
@@ -848,10 +848,10 @@ Aby rozwiązać ten problem, wykonaj następujące kroki:
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8027e |
+| **WYNIK** | 0x80c8027e |
 | **HRESULT (dziesiętny)** | -2134375810 |
 | **Ciąg błędu** | ECS_E_SYNC_REPLICA_ROOT_CHANGED |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ usługa Azure File Sync nie obsługuje usuwania i ponownego tworzenia udziału plików platformy Azure w tej samej grupie synchronizacji. 
 
@@ -867,10 +867,10 @@ Aby rozwiązać ten problem, usuń i utwórz ponownie grupę synchronizacji, wyk
 
 | | |
 |-|-|
-| **HRESULT** | 0x80190133 |
+| **WYNIK** | 0x80190133 |
 | **HRESULT (dziesiętny)** | -2145844941 |
 | **Ciąg błędu** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
-| **Wymagana korekta** | Tak |
+| **Wymagana korekta** | Yes |
 
 Ten błąd występuje, ponieważ Azure File Sync nie obsługuje przekierowania HTTP (kod stanu 3xx). Aby rozwiązać ten problem, należy wyłączyć Przekierowywanie HTTP na serwerze proxy lub urządzeniu sieciowym.
 
@@ -878,7 +878,7 @@ Ten błąd występuje, ponieważ Azure File Sync nie obsługuje przekierowania H
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c83085 |
+| **WYNIK** | 0x80c83085 |
 | **HRESULT (dziesiętny)** | -2134364027 |
 | **Ciąg błędu** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
 | **Wymagana korekta** | Nie |
@@ -894,7 +894,7 @@ Ten błąd występuje, gdy operacja pozyskiwania danych przekracza limit czasu. 
 4. Wybierz połączone konto magazynu. Jeśli łącze nie powiedzie się, konto magazynu, do którego istnieje odwołanie, zostało usunięte.
     ![zrzut ekranu przedstawiający okienko szczegółów punktu końcowego w chmurze z linkiem do konta magazynu.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -975,7 +975,7 @@ if ($storageAccount -eq $null) {
 2. Wybierz pozycję **pliki** , aby wyświetlić listę udziałów plików.
 3. Sprawdź, czy udział plików, do którego odwołuje się punkt końcowy w chmurze, pojawia się na liście udziałów plików (należy to zanotować w kroku 1 powyżej).
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -998,11 +998,11 @@ if ($fileShare -eq $null) {
 
     Jeśli **usługi hybrydowej File Sync** nie ma na liście, wykonaj następujące czynności:
 
-    - Kliknij pozycję **Dodaj**.
+    - Kliknij pozycję **Add** (Dodaj).
     - W polu **rola** wybierz pozycję **czytnik i dostęp do danych**.
     - W polu **Wybierz** wpisz **File Sync usługi hybrydowej**, wybierz rolę i kliknij przycisk **Zapisz**.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Hybrid File Sync Service" }
 
@@ -1088,7 +1088,7 @@ Jeśli nie ma warstwy do Azure Files:
 
 ### <a name="tiering-errors-and-remediation"></a>Błędy i korygowanie warstw
 
-| WYNIK | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowanie |
+| HRESULT | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowanie |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | Nie można wykonać warstwy dla pliku, ponieważ jest on używany. | Żadna akcja nie jest wymagana. Plik zostanie warstwowy, gdy nie jest już używany. |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | Nie można wykonać warstwy dla pliku, ponieważ jest on wykluczony przez synchronizację. | Żadna akcja nie jest wymagana. Pliki na liście wykluczeń synchronizacji nie mogą być warstwowe. |
@@ -1128,7 +1128,7 @@ Jeśli nie można odwołać plików:
 
 ### <a name="recall-errors-and-remediation"></a>Błędy i korygowanie odwołania
 
-| WYNIK | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowanie |
+| HRESULT | HRESULT (dziesiętny) | Ciąg błędu | Problem | Korygowanie |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070079 | -2147942521 | ERROR_SEM_TIMEOUT | Odzyskanie pliku nie powiodło się z powodu przekroczenia limitu czasu operacji we/wy. Ten problem może wystąpić z kilku powodów: ograniczenia zasobów serwera, niska łączność sieciowa lub problem z usługą Azure Storage (na przykład ograniczenie przepustowości). | Żadna akcja nie jest wymagana. Jeśli błąd będzie się powtarzać przez kilka godzin, otwórz zgłoszenie do pomocy technicznej. |
 | 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | Odzyskanie pliku nie powiodło się z powodu problemu z siecią.  | Jeśli błąd będzie się powtarzał, sprawdź łączność sieciową z udziałem plików platformy Azure. |
@@ -1259,7 +1259,7 @@ Jeśli problem nie zostanie rozwiązany, uruchom narzędzie AFSDiag:
 5. Odtwórz problem. Po zakończeniu wprowadź **D**.
 6. Plik. zip zawierający pliki dzienników i plików śledzenia jest zapisywany w katalogu wyjściowym, który został określony.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 - [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)
 - [Azure Files często zadawane pytania](storage-files-faq.md)
 - [Rozwiązywanie problemów z usługą Azure Files w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)

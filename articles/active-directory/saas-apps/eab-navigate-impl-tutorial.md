@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d02a9dbc5b89c4156b7ff8b6a49adb7f00fef83
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 465b41aaf3c3b16dcba489d1ea9ba951a3108c8e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969826"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046580"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-impl"></a>Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) za pomocą EAB nawigacji IMPL
 
@@ -83,12 +83,15 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
-
+1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól: w polu tekstowym **Identyfikator (identyfikator jednostki)** wprowadź dokładnie następującą wartość: `https://impl.bouncer.eab.com`
+    
+    W polu tekstowym **adres URL odpowiedzi (adres URL usługi konsumenckej odbiorcy)** wprowadź obie następujące wartości jako oddzielne wiersze: `https://impl.bouncer.eab.com/sso/saml2/acs`
+    `https://impl.bouncer.eab.com/sso/saml2/acs/`
+    
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.navigate.impl.eab.com/`
 
     > [!NOTE]
-    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem pomocy technicznej EAB](mailto:jmahoney@eab.com) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj wartość przy użyciu rzeczywistego adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej EAB](mailto:EABTechSupport@eab.com) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** kliknij przycisk Kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
@@ -104,7 +107,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -126,11 +129,11 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-eab-navigate-impl-sso"></a>Konfigurowanie EAB nawigowania po usłudze IMPL
 
-Aby skonfigurować Logowanie jednokrotne w witrynie **EAB, przejdź** do strony Impl, musisz wysłać **adres URL metadanych federacji aplikacji** do EAB, przejdź do [zespołu pomocy technicznej Impl](mailto:jmahoney@eab.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować Logowanie jednokrotne w witrynie **EAB, przejdź** do strony Impl, musisz wysłać **adres URL metadanych federacji aplikacji** do EAB, przejdź do [zespołu pomocy technicznej Impl](mailto:EABTechSupport@eab.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-eab-navigate-impl-test-user"></a>Utwórz EAB nawigację IMPL użytkownika testowego
 
-W tej sekcji utworzysz użytkownika o nazwie B. Simon w EAB nawigacji IMPL. Współpracuj z [zespołem pomocy technicznej EAB nawigowanie po Impl](mailto:jmahoney@eab.com) , aby dodać użytkowników na platformie EAB nawigację Impl. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie B. Simon w EAB nawigacji IMPL. Współpracuj z [zespołem pomocy technicznej EAB nawigowanie po Impl](mailto:EABTechSupport@eab.com) , aby dodać użytkowników na platformie EAB nawigację Impl. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
@@ -138,7 +141,7 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po kliknięciu kafelka EAB przejdź do IMPL w panelu dostępu należy automatycznie zalogować się do IMPL EAB, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

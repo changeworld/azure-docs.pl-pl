@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie Dialpad dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników do Dialpad.
+title: 'Samouczek: Konfigurowanie Dialpad dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników w usłudze Dialpad.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,163 +15,163 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 32e634bc089417aaa8080b30a5f77f663a3d8b33
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9f39277644547a625d87a39681f0c5520996cbd6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611778"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058370"
 ---
-# <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Dialpad dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Dialpad na potrzeby automatycznego aprowizacji użytkowników
 
-Celem tego samouczka jest pokazują kroki do wykonania w Dialpad i usługi Azure Active Directory (Azure AD), aby skonfigurować usługę Azure AD automatycznie aprowizacji i cofania aprowizacji użytkowników i/lub grup w celu Dialpad.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w Dialpad i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup do Dialpad.
 
 > [!NOTE]
->  W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../manage-apps/user-provisioning.md).
+>  Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-> Ten łącznik jest obecnie w wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania dla funkcji w wersji zapoznawczej, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ten łącznik jest obecnie w wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania funkcji w wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania dla Microsoft Azure podglądów](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, iż już następujące wymagania wstępne:
+Scenariusz opisany w tym samouczku założono, że masz już następujące wymagania wstępne:
 
 * Dzierżawa usługi Azure AD.
-* [Dzierżawy Dialpad](https://www.dialpad.com/pricing/).
+* [Dzierżawa Dialpad](https://www.dialpad.com/pricing/).
 * Konto użytkownika w Dialpad z uprawnieniami administratora.
 
 ## <a name="assign-users-to-dialpad"></a>Przypisywanie użytkowników do Dialpad
-Usługa Azure Active Directory używa koncepcji o nazwie przypisania, aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście automatyczna aprowizacja użytkowników są synchronizowane tylko użytkowników i/lub grup, które zostały przypisane do aplikacji w usłudze Azure AD.
+Azure Active Directory używa koncepcji zwanej zadaniami w celu określenia, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznej aprowizacji użytkowników są synchronizowane tylko użytkownicy i/lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy zdecydować, użytkowników i/lub grup w usłudze Azure AD muszą mieć dostęp do Dialpad. Po decyzję, możesz przypisać użytkownikom i/lub grup Dialpad zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD potrzebują dostępu do Dialpad. Po ustaleniu tych użytkowników i/lub grup można przypisywać do Dialpad, postępując zgodnie z poniższymi instrukcjami:
  
-* [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md) 
+* [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md) 
 
  ## <a name="important-tips-for-assigning-users-to-dialpad"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Dialpad
 
- * Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do Dialpad do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
+ * Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do Dialpad w celu przetestowania automatycznej konfiguracji inicjowania obsługi użytkowników. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-* Podczas przypisywania użytkowników do Dialpad, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z rolą domyślnego dostępu są wykluczane z inicjowania obsługi administracyjnej.
+* Podczas przypisywania użytkownika do Dialpad należy wybrać dowolną prawidłową rolę specyficzną dla aplikacji (jeśli jest dostępna) w oknie dialogowym przypisania. Użytkownicy z domyślną rolą dostępu są wykluczeni z aprowizacji.
 
-## <a name="setup-dialpad-for-provisioning"></a>Konfigurowanie Dialpad do inicjowania obsługi
+## <a name="setup-dialpad-for-provisioning"></a>Konfiguracja Dialpad na potrzeby aprowizacji
 
-Przed skonfigurowaniem Dialpad dla użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD, należy pobrać niektóre informacje o udostępnianiu z Dialpad.
+Przed skonfigurowaniem usługi Dialpad do automatycznego aprowizacji użytkowników w usłudze Azure AD należy pobrać pewne informacje o aprowizacji z Dialpad.
 
-1. Zaloguj się do Twojej [konsoli administracyjnej Dialpad](https://dialpadbeta.com/login) i wybierz **ustawienia administratora**. Upewnij się, że **mojej firmy** wybrania z listy rozwijanej. Przejdź do **uwierzytelniania > klucze interfejsu API**.
+1. Zaloguj się do [konsoli administracyjnej Dialpad](https://dialpadbeta.com/login) i wybierz pozycję **Ustawienia administratora**. Upewnij się, że na liście rozwijanej wybrano **moją firmę** . Przejdź do **uwierzytelniania > klucze interfejsu API**.
 
-    ![Dialpad Dodaj Standard SCIM](media/dialpad-provisioning-tutorial/dialpad01.png)
+    ![Dialpad Dodaj Standard scim](media/dialpad-provisioning-tutorial/dialpad01.png)
 
-2. Wygeneruj nowy klucz, klikając **Dodaj klucz** i konfigurowania właściwości wpisu tajnego token.
+2. Wygeneruj nowy klucz, klikając pozycję **Dodaj klucz** i konfigurując właściwości tokenu tajnego.
 
-    ![Dialpad Dodaj Standard SCIM](media/dialpad-provisioning-tutorial/dialpad02.png)
+    ![Dialpad Dodaj Standard scim](media/dialpad-provisioning-tutorial/dialpad02.png)
 
-    ![Dialpad Dodaj Standard SCIM](media/dialpad-provisioning-tutorial/dialpad03.png)
+    ![Dialpad Dodaj Standard scim](media/dialpad-provisioning-tutorial/dialpad03.png)
 
-3. Kliknij przycisk **kliknij, aby wyświetlić wartość** przycisk ostatnio utworzone klucz interfejsu API, a następnie skopiuj wartość wyświetlana. Ta wartość zostanie wprowadzona w **klucz tajny tokenu** pola na karcie Aprowizacja Dialpad aplikacji w witrynie Azure portal. 
+3. Kliknij przycisk **kliknij, aby pokazać wartość** dla ostatnio utworzonego klucza interfejsu API i skopiuj pokazaną wartość. Ta wartość zostanie wprowadzona w polu **token tajny** na karcie aprowizacji aplikacji Dialpad w Azure Portal. 
 
-    ![Dialpad Utwórz Token](media/dialpad-provisioning-tutorial/dialpad04.png)
+    ![Utwórz token Dialpad](media/dialpad-provisioning-tutorial/dialpad04.png)
 
 ## <a name="add-dialpad-from-the-gallery"></a>Dodaj Dialpad z galerii
 
-W przypadku konfigurowania Dialpad dla użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD, musisz dodać Dialpad z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować Dialpad do automatycznego aprowizacji użytkowników w usłudze Azure AD, musisz dodać Dialpad z galerii aplikacji usługi Azure AD do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać Dialpad z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W **[Azure Portal](https://portal.azure.com)** w lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
 
-    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-
-    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
-
-3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okienka.
-
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
-
-4. W polu wyszukiwania wprowadź **Dialpad**, wybierz opcję **Dialpad** w panelu wyników.
-    ![Dialpad na liście wyników](common/search-new-app.png)
-
-5. Przejdź do **adresu URL** wyróżniono poniżej w osobnej przeglądarce. 
-
-    ![Dialpad Dodaj Standard SCIM](media/dialpad-provisioning-tutorial/dialpad05.png)
-
-6. W prawym górnym rogu wybierz **logowanie > Użyj Dialpad online**.
-
-    ![Dialpad Dodaj Standard SCIM](media/dialpad-provisioning-tutorial/dialpad06.png)
-
-7. Podobnie jak Dialpad OpenIDConnect aplikacji, wybierz można zalogować się do Dialpad przy użyciu swojego konta służbowego Microsoft.
-
-    ![Dialpad Dodaj Standard SCIM](media/dialpad-provisioning-tutorial/loginpage.png)
-
-8. Po pomyślnym uwierzytelnieniu zaakceptować monit o wyrażenie zgody na strona zgody użytkownika. Aplikacja zostanie następnie automatycznie dodana do dzierżawy, a następnie nastąpi przekierowanie do swojego konta Dialpad.
-
-    ![Dialpad Dodaj Standard SCIM](media/dialpad-provisioning-tutorial/redirect.png)
-
- ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Konfigurowanie automatycznej aprowizacji użytkowników do Dialpad
-
-Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączanie użytkowników i/lub grup w Dialpad oparciu o przypisania użytkownika i/lub grupy w usłudze Azure AD.
-
-### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla Dialpad w usłudze Azure AD:
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz **wszystkie aplikacje**.
+2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Dialpad**.
+3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
+
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+
+4. W polu wyszukiwania wpisz **Dialpad**, a następnie wybierz pozycję **Dialpad** w panelu wyniki.
+    ![Dialpad na liście wyników](common/search-new-app.png)
+
+5. Przejdź do **adresu URL** wyróżnionego poniżej w oddzielnej przeglądarce. 
+
+    ![Dialpad Dodaj Standard scim](media/dialpad-provisioning-tutorial/dialpad05.png)
+
+6. W prawym górnym rogu wybierz pozycję **Zaloguj się > Użyj Dialpad online**.
+
+    ![Dialpad Dodaj Standard scim](media/dialpad-provisioning-tutorial/dialpad06.png)
+
+7. Ponieważ Dialpad jest aplikacją OpenIDConnect, wybierz logowanie do Dialpad przy użyciu konta służbowego firmy Microsoft.
+
+    ![Dialpad Dodaj Standard scim](media/dialpad-provisioning-tutorial/loginpage.png)
+
+8. Po pomyślnym uwierzytelnieniu Zaakceptuj monit o zgodę na stronie zgody. Aplikacja zostanie następnie automatycznie dodana do dzierżawy i nastąpi przekierowanie do konta Dialpad.
+
+    ![Dialpad Dodaj Standard scim](media/dialpad-provisioning-tutorial/redirect.png)
+
+ ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Konfigurowanie automatycznej aprowizacji użytkowników do Dialpad
+
+Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu tworzenia, aktualizowania i wyłączania użytkowników i/lub grup w programie Dialpad na podstawie przypisań użytkowników i/lub grup w usłudze Azure AD.
+
+### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi użytkowników dla Dialpad w usłudze Azure AD:
+
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście Aplikacje wybierz pozycję **Dialpad**.
 
     ![Link Dialpad na liście aplikacji](common/all-applications.png)
 
-3. Wybierz **aprowizacji** kartę.
+3. Wybierz kartę **aprowizacji** .
 
-    ![Udostępnianie](common/provisioning.png)
+    ![Karta aprowizacji](common/provisioning.png)
 
-4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-    ![Udostępnianie](common/provisioning-automatic.png)
+    ![Karta aprowizacji](common/provisioning-automatic.png)
 
-5. W obszarze **poświadczeń administratora** sekcji danych wejściowych `https://dialpad.com/scim` w **adres URL dzierżawy**. Wartość, która pobierane i zapisane wcześniej Dialpad w danych wejściowych **klucz tajny tokenu**. Kliknij przycisk **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z Dialpad. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto Dialpad ma uprawnienia administratora i spróbuj ponownie.
+5. W sekcji **poświadczenia administratora** wprowadź `https://dialpad.com/scim` w **adresie URL dzierżawy**. Wprowadź wartość, która została pobrana i zapisana wcześniej z Dialpad w **tokenie tajnym**. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może się połączyć z usługą Dialpad. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi Dialpad ma uprawnienia administratora, a następnie spróbuj ponownie.
 
-    ![Adres URL dzierżawy + tokenu](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adres URL dzierżawy + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru - **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
+6. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru — **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
 
     ![Wiadomość E-mail z powiadomieniem](common/provisioning-notification-email.png)
 
-7. Kliknij polecenie **Zapisz**.
+7. Kliknij przycisk **Save** (Zapisz).
 
-8. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do Dialpad**.
+8. W sekcji **mapowania** wybierz pozycję **Synchronizuj Azure Active Directory użytkowników do Dialpad**.
 
-    ![Mapowania użytkownika Dialpad](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
+    ![Dialpad mapowania użytkowników](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
 
-9. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD Dialpad w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w Dialpad operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
+9. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD, do Dialpad w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w programie Dialpad for Updates. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
 
-    ![Atrybuty użytkownika Dialpad](media/dialpad-provisioning-tutorial/dialpad07.png)
+    ![Dialpad atrybuty użytkownika](media/dialpad-provisioning-tutorial/dialpad07.png)
 
-10. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Aby włączyć usługi Azure AD, usługi dla Dialpad inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji.
+11. Aby włączyć usługę Azure AD Provisioning dla Dialpad, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
-    ![Stan aprowizacji przełączona w](common/provisioning-toggle-on.png)
+    ![Stan aprowizacji jest przełączany](common/provisioning-toggle-on.png)
 
-12. Definiowanie użytkowników i/lub grup, które chcesz, aby obsługiwać je na Dialpad, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
+12. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić Dialpad, wybierając odpowiednie wartości w **zakresie** w sekcji **Ustawienia** .
 
-    ![Inicjowanie obsługi administracyjnej zakresu](common/provisioning-scope.png)
+    ![Zakres aprowizacji](common/provisioning-scope.png)
 
-13. Gdy wszystko jest gotowe do aprowizowania, kliknij przycisk **Zapisz**.
+13. Gdy wszystko będzie gotowe do udostępnienia, kliknij przycisk **Zapisz**.
 
     ![Zapisywanie konfiguracji aprowizacji](common/provisioning-configuration-save.png)
 
-Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do raportu działań w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD, inicjowania obsługi usługi na Dialpad aprowizacji.
+Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w witrynie Dialpad.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowania po aprowizacji konta użytkowników](../manage-apps/check-status-user-account-provisioning.md)
+Aby uzyskać więcej informacji na temat odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md)
 ##  <a name="connector-limitations"></a>Ograniczenia łącznika
-* Dialpad nie obsługuje obecnie zmienia nazwę grupy. Oznacza to, że wszelkie zmiany **displayName** grupy w usłudze Azure AD nie zostanie zaktualizowany i zostaną uwzględnione w Dialpad.
+* Dialpad nie obsługuje już dzisiaj nazw grup. Oznacza to, że wszelkie zmiany wartości **DisplayName** grupy w usłudze Azure AD nie zostaną zaktualizowane i odzwierciedlone w Dialpad.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)

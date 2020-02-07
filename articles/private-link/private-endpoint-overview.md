@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cbb5882950636e281d311bf0536acf5b92cf11ea
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018605"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048441"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co to jest prywatny punkt końcowy platformy Azure?
 
@@ -24,7 +24,7 @@ Prywatny punkt końcowy platformy Azure to interfejs sieciowy, który nawiązuje
 
 |Właściwość  |Opis |
 |---------|---------|
-|Nazwa    |    Unikatowa nazwa w obrębie grupy zasobów.      |
+|Name (Nazwa)    |    Unikatowa nazwa w obrębie grupy zasobów.      |
 |Podsieć    |  Podsieć do wdrożenia i przydzielenia prywatnych adresów IP z sieci wirtualnej. Wymagania dotyczące podsieci znajdują się w sekcji ograniczenia w tym artykule.         |
 |Zasób link prywatny    |   Zasób link prywatny do łączenia się przy użyciu identyfikatora zasobu lub aliasu z listy dostępnych typów. Dla całego ruchu wysyłanego do tego zasobu zostanie wygenerowany unikatowy identyfikator sieci.       |
 |Podzasób docelowy   |      Podzasób do nawiązania połączenia. Każdy typ zasobu link prywatny ma różne opcje, które można wybrać na podstawie preferencji.    |
@@ -54,7 +54,7 @@ Zasób link prywatny jest docelowym miejscem docelowym danego prywatnego punktu 
 |---------|---------|---------|
 |**Usługa link prywatny** (Twoja usługa)   |  Microsoft. Network/privateLinkServices       | ciągiem |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  Program SQL Server (sqlServer)        |
-|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  Program SQL Server (sqlServer)        |
+|**Analiza usługi Azure Synapse** | Microsoft.Sql/servers    |  Program SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  Obiekt BLOB (BLOB, blob_secondary)<BR> Tabela (tabela, table_secondary)<BR> Kolejka (Kolejka, queue_secondary)<BR> Plik (plik, file_secondary)<BR> Sieć Web (sieć Web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Obiekt BLOB (BLOB, blob_secondary)<BR> Gen2 systemu plików Data Lake (system plików DFS, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabela|

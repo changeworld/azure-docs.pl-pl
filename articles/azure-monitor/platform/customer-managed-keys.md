@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 01/11/2020
-ms.openlocfilehash: e677b2e958d25181b972b2696584355f8a1a465b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/05/2020
+ms.openlocfilehash: eff751465c7b64429968b0305e6ad483943c374b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901282"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048185"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor konfigurację klucza zarządzanego przez klienta 
 
@@ -95,7 +95,7 @@ Procedura nie jest obecnie obsługiwana w interfejsie użytkownika, a proces apr
 > [!IMPORTANT]
 > Wszystkie żądania interfejsu API muszą zawierać Token autoryzacji okaziciela w nagłówku żądania.
 
-Przykład:
+Na przykład:
 
 ```rst
 GET
@@ -308,54 +308,31 @@ W okresie wczesnego dostępu do funkcji klaster ADX jest inicjowany ręcznie prz
 > [!NOTE]
 > Ten krok należy wykonać **dopiero** po otrzymaniu potwierdzenia od grupy produktów za pośrednictwem kanału firmy Microsoft, że **zainicjowano Inicjowanie obsługi administracyjnej magazynu danych Azure monitor (ADX)** . W przypadku kojarzenia obszarów roboczych i pozyskiwania danych przed rozpoczęciem **aprowizacji**dane zostaną usunięte i nie będzie można ich odzyskać.
 
-**Kojarzenie obszaru roboczego z zasobem *klastra* przy użyciu [obszarów roboczych — Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) interfejsu API**
-
 Aby uzyskać Application Insights konfigurację CMK, postępuj zgodnie z zawartością dodatku dla tego kroku.
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2015-11-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
 {
   "properties": {
-    "source": "Azure",
-    "customerId": "<workspace-id>",
-    "features": {
-      "clusterDefinitionId": "<cluster-id>" 
+    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     }
-  },
-  "id": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>",
-  "name": "<workspace-name>",
-  "type": "Microsoft.OperationalInsights/workspaces",
-  "location": "<region-name>"
 }
 ```
-"clusterDefinitionId" jest wartością "clusterId" podaną w odpowiedzi z poprzedniego kroku
+*ClusterDefinitionId* jest wartością *clusterId* podaną w odpowiedzi z poprzedniego kroku.
 
 **Odpowiedź**
 
 ```json
 {
   "properties": {
-    "source": "Azure",
-    "customerId": "workspace-id",
-    "retentionInDays": value,
-    "features": {
-      "legacy": value,
-      "searchVersion": value,
-      "clusterDefinitionId": "cluster-id"
+    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     },
-    "workspaceCapping": {
-      "dailyQuotaGb": value,
-      "quotaNextResetTime": "timeStamp",
-      "dataIngestionStatus": "RespectQuota"
-    }
-  },
-  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
-  "name": "workspace-name",
-  "type": "Microsoft.OperationalInsights/workspaces",
-  "location": "region-name"
+  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
+  "name": "workspace-name/cluster",
+  "type": "microsoft.operationalInsights/workspaces/linkedServices",
 }
 ```
 

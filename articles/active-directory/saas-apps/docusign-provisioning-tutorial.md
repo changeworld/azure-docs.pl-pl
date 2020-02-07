@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie aplikacji DocuSign do automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i DocuSign.
+title: 'Samouczek: Konfigurowanie DocuSign dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i DocuSign.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,89 +15,89 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121d147a3f8c91f17e955120b2c14f7dbd3da592
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 88b65c8e8962ad8420ded47da1a343672123c589
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60280119"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058182"
 ---
-# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie aplikacji DocuSign do automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie DocuSign na potrzeby automatycznego aprowizacji użytkowników
 
-Celem tego samouczka jest pokazanie czynności, które należy wykonać w DocuSign i Azure AD, do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do aplikacji DocuSign.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w DocuSign i usłudze Azure AD w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników z usługi Azure AD do DocuSign.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
+Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
-*   Dzierżawy usługi Azure Active directory.
-*   DocuSign logowanie jednokrotne włączone subskrypcji.
-*   Konto użytkownika w usłudze DocuSign z uprawnieniami administratora zespołu.
+*   Dzierżawa usługi Azure Active Directory.
+*   Subskrypcja z włączonym logowaniem jednokrotnym w usłudze DocuSign.
+*   Konto użytkownika w DocuSign z uprawnieniami administratora zespołu.
 
-## <a name="assigning-users-to-docusign"></a>Przypisywanie użytkowników do aplikacji DocuSign
+## <a name="assigning-users-to-docusign"></a>Przypisywanie użytkowników do DocuSign
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
+Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi kont użytkowników są synchronizowane tylko użytkownicy i grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji DocuSign. Po decyzję, możesz przypisać użytkowników do aplikacji DocuSign, zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji DocuSign. Po ustaleniu tych użytkowników możesz przypisać je do aplikacji DocuSign, postępując zgodnie z poniższymi instrukcjami:
 
-[Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-docusign"></a>Ważne wskazówki dotyczące przypisywania użytkowników do aplikacji DocuSign
+### <a name="important-tips-for-assigning-users-to-docusign"></a>Ważne wskazówki dotyczące przypisywania użytkowników do DocuSign
 
-*   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do aplikacji DocuSign do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników.
+*   Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do DocuSign w celu przetestowania konfiguracji aprowizacji. Dodatkowi użytkownicy mogą zostać przypisani później.
 
-*   Podczas przypisywania użytkowników do aplikacji DocuSign, należy wybrać poprawnej roli użytkownika. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
+*   Podczas przypisywania użytkownika do DocuSign należy wybrać prawidłową rolę użytkownika. Rola "dostęp domyślny" nie działa w przypadku aprowizacji.
 
 > [!NOTE]
-> Usługa Azure AD nie obsługuje grupy inicjowania obsługi administracyjnej za pomocą aplikacji Docusign, tylko użytkownicy mogą być udostępniane.
+> Usługa Azure AD nie obsługuje aprowizacji grup w aplikacji Docusign, ale tylko użytkownicy mogą być obsługiwani.
 
-## <a name="enable-user-provisioning"></a>Włącz Aprowizację użytkowników
+## <a name="enable-user-provisioning"></a>Włącz Inicjowanie obsługi użytkowników
 
-Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika aplikacja DocuSign firmy aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz konta użytkowników przypisane w usłudze DocuSign na podstawie przypisania użytkowników i grup w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API aprowizacji usługi Azure AD do konta użytkownika DocuSign, a następnie Konfigurując usługę aprowizacji do tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w usłudze DocuSign na podstawie przypisywania użytkowników i grup w usłudze Azure AD.
 
 > [!Tip]
-> Można też włączyć opartej na SAML logowania jednokrotnego dla aplikacji DocuSign, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+> Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla DocuSign, postępując zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="to-configure-user-account-provisioning"></a>Aby skonfigurować, inicjowanie obsługi administracyjnej konta użytkownika:
+### <a name="to-configure-user-account-provisioning"></a>Aby skonfigurować Inicjowanie obsługi konta użytkownika:
 
-Jest celem tej sekcji omówiono sposób włączania aprowizacji użytkowników, kont użytkowników usługi Active Directory do DocuSign.
+Celem tej sekcji jest zaprojektowanie sposobu włączania obsługi administracyjnej użytkowników Active Directory kont użytkowników w usłudze DocuSign.
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje** .
 
-1. Jeśli już skonfigurowano DocuSign dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi DocuSign, korzystając z pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **DocuSign** w galerii aplikacji. Wybierz DocuSign w wynikach wyszukiwania, a następnie dodaj go do listy aplikacji.
+1. Jeśli już skonfigurowano DocuSign do logowania jednokrotnego, Wyszukaj wystąpienie elementu DocuSign przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i Wyszukaj **Docusign** w galerii aplikacji. Wybierz pozycję DocuSign z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
-1. Wybierz wystąpienie aplikacji DocuSign, a następnie wybierz **aprowizacji** kartę.
+1. Wybierz wystąpienie elementu DocuSign, a następnie wybierz kartę **Inicjowanie obsługi** .
 
-1. Ustaw **tryb obsługi administracyjnej** do **automatyczne**. 
+1. Ustaw **tryb aprowizacji** na **automatyczny**. 
 
-    ![Inicjowanie obsługi administracyjnej](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![aprowizacji](./media/docusign-provisioning-tutorial/provisioning.png)
 
-1. W obszarze **poświadczeń administratora** sekcji, skonfiguruj następujące ustawienia konfiguracji:
+1. W sekcji **poświadczenia administratora** podaj następujące ustawienia konfiguracji:
    
-    a. W **nazwy użytkownika administratora** pola tekstowego, typ, nazwa, która ma konta DocuSign **Administrator systemu** profilu w DocuSign.com przypisane.
+    a. W polu tekstowym **Nazwa użytkownika administratora** wpisz nazwę konta Docusign z profilem **administratora systemu** w Docusign.com przypisane.
    
-    b. W **hasło administratora** pole tekstowe, wpisz hasło dla tego konta.
+    b. W polu tekstowym **hasło administratora** wpisz hasło dla tego konta.
 
-1. W witrynie Azure portal kliknij pozycję **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z aplikacji DocuSign.
+1. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z aplikacją Docusign.
 
-1. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia o błędach aprowizacji i zaznacz pole wyboru.
+1. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru.
 
 1. Kliknij przycisk **Zapisz.**
 
-1. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do DocuSign.**
+1. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkowników do Docusign.**
 
-1. W **mapowania atrybutów** Przejrzyj atrybutów użytkowników, które są synchronizowane z usługi Azure AD DocuSign. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w usłudze DocuSign do operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+1. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do Docusign. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w programie Docusign for Updates. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
-1. Aby włączyć usługi Azure AD, inicjowania obsługi usługi dla aplikacji DocuSign, zmień **stanie aprowizacji** do **na** w sekcji Ustawienia
+1. Aby włączyć usługę Azure AD Provisioning dla usługi DocuSign, Zmień **stan aprowizacji** na **włączone** w sekcji Ustawienia.
 
 1. Kliknij przycisk **Zapisz.**
 
-Rozpoczyna się wstępna synchronizacja wszystkich użytkowników przypisanych do aplikacji DocuSign w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji DocuSign.
+Rozpocznie się początkową synchronizację wszystkich użytkowników przypisanych do DocuSign w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji Docusign.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie logowania jednokrotnego](docusign-tutorial.md)

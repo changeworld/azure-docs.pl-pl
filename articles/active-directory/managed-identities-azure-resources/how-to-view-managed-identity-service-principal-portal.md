@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51aeabaa4bb7fa9884c95cf0da2dc68ba5b64b0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f8f48f73248e2108e79b8e244ed0d7b51855092a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184098"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048149"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Wyświetl nazwę główną usługi tożsamości zarządzanej w Azure Portal
 
@@ -42,7 +42,7 @@ W tym artykule dowiesz się, jak wyświetlić nazwę główną usługi tożsamo�
 Ta procedura przedstawia sposób wyświetlania nazwy głównej usługi maszyny wirtualnej z włączoną tożsamością przypisanej do systemu (te same kroki dotyczą aplikacji).
 
 1. Kliknij **Azure Active Directory** a następnie kliknij pozycję **aplikacje dla przedsiębiorstw**.
-2. W obszarze **Typ aplikacji**wybierz pozycję **wszystkie aplikacje**.
+2. W obszarze **Typ aplikacji**wybierz pozycję **wszystkie aplikacje** , a następnie kliknij pozycję **Zastosuj**.
 3. W polu filtr wyszukiwania wpisz nazwę maszyny wirtualnej lub aplikacji, która ma włączoną tożsamość zarządzaną, lub wybierz ją z wyświetlonej listy.
 
    ![Wyświetlanie jednostki usługi zarządzania tożsamościami w portalu](./media/how-to-view-managed-identity-service-principal-portal/view-managed-identity-service-principal-portal.png)

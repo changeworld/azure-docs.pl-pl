@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/24/2020
-ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 01/31/2020
+ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765763"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047846"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor dla maszyn wirtualnych ogólnie dostępna (GA) często zadawanych pytań
 
@@ -37,7 +37,9 @@ W przeszłości włączono rozwiązanie ServiceMap w obszarze roboczym i skonfig
 
 
 ## <a name="how-do-i-upgrade"></a>Jak mogę uaktualnić?
-Każda maszyna wirtualna wymagająca uaktualnienia zostanie zidentyfikowana na karcie **wprowadzenie** w Azure Monitor dla maszyn wirtualnych w Azure Portal. Możesz uaktualnić pojedynczą maszynę wirtualną lub wybrać wiele, aby uaktualnić razem. Użyj następującego polecenia, aby przeprowadzić uaktualnienie przy użyciu programu PowerShell:
+Gdy obszar roboczy Log Analytics zostanie uaktualniony do najnowszej wersji Azure Monitor do maszyn wirtualnych, zostanie uaktualniony Agent zależności na każdej z maszyn wirtualnych dołączonych do tego obszaru roboczego. Każda maszyna wirtualna wymagająca uaktualnienia zostanie zidentyfikowana na karcie **wprowadzenie** w Azure Monitor dla maszyn wirtualnych w Azure Portal. W przypadku wybrania opcji uaktualnienia maszyny wirtualnej program przeprowadzi uaktualnienie obszaru roboczego dla tej maszyny wirtualnej wraz z innymi maszynami wirtualnymi dołączonymi do tego obszaru roboczego. Można wybrać pojedynczą maszynę wirtualną lub wiele maszyn wirtualnych, grup zasobów lub subskrypcji. 
+
+Użyj następującego polecenia, aby uaktualnić obszar roboczy przy użyciu programu PowerShell:
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
@@ -97,7 +99,7 @@ Oczekujemy, że aktualizacja Azure Monitor dla maszyn wirtualnych na początku s
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Funkcja kondycji jest w ograniczonej publicznej wersji zapoznawczej
 
-Otrzymamy wiele doskonałych opinii od klientów dotyczących zestawu funkcji kondycji maszyn wirtualnych. Ta funkcja wzbudza duże zainteresowanie, a jej możliwości obsługi monitorowania przepływów pracy są bardzo pożądane. Planujemy wprowadzić serię zmian, aby dodać funkcje i odpowiedzieć na otrzymane opinie. 
+Otrzymamy wiele doskonałych opinii od klientów dotyczących zestawu funkcji kondycji maszyn wirtualnych. Istnieje wiele interesów tej funkcji i ekscytację nad jej potencjałem do obsługi przepływów pracy monitorowania. Planujemy wprowadzić serię zmian w celu dodania funkcji i rozwiązania otrzymanej opinii. 
 
 Aby zminimalizować wpływ tych zmian na nowych klientów, przeniesionomy tę funkcję do **ograniczonej publicznej wersji zapoznawczej**. Ta aktualizacja miała miejsce w październiku 2019.
 
@@ -119,4 +121,4 @@ Jeśli jesteś istniejącym klientem korzystającym z funkcji kondycji i chcesz 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby poznać wymagania i metod, które pomagają monitorować maszyny wirtualne, zobacz [wdrożenia usługi Azure Monitor dla maszyn wirtualnych](vminsights-enable-overview.md).
+Aby poznać wymagania i metody, które ułatwiają monitorowanie maszyn wirtualnych, zobacz [wdrażanie Azure monitor dla maszyn wirtualnych](vminsights-enable-overview.md).

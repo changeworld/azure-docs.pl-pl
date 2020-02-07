@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 0ba21fe3789fba03cd4814d19fb103c3a2559c13
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75662937"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054901"
 ---
 | Zasób | Domyślny/maksymalny limit | Uwaga |
 | --- | --- | --- |
@@ -21,14 +21,14 @@ ms.locfileid: "75662937"
 | Odbiorniki HTTP |100<sup>1</sup> | |
 | Reguły równoważenia obciążenia HTTP |100<sup>1</sup> | |
 | Ustawienia protokołu HTTP zaplecza |100<sup>1</sup> | |
-| Wystąpienia na bramę |32 | |
-| Certyfikaty SSL |100<sup>1</sup> |1 na odbiorniki HTTP |
+| Wystąpienia na bramę |JEDNOSTKA SKU V1 — 32<br>JEDNOSTKA SKU V2 — 125 | |
+| Certyfikaty SSL |100<sup>1</sup> |1 na odbiornik HTTP |
 | Maksymalny rozmiar certyfikatu SSL |JEDNOSTKA SKU V1 — 10 KB<br>WERSJA 2 SKU — 16 KB| |
 | Certyfikaty uwierzytelniania |100 | |
 | Zaufane certyfikaty główne |100 | |
 | Minimalny limit czasu żądania |1 sekunda | |
 | Maksymalny limit czasu żądania |24 godziny | |
-| Liczba witryn |100<sup>1</sup> |1 na odbiorniki HTTP |
+| Liczba witryn |100<sup>1</sup> |1 na odbiornik HTTP |
 | Mapowania adresów URL na odbiornik |1 | |
 | Maksymalna liczba reguł opartych na ścieżce na mapę URL|100||
 | Konfiguracja przekierowania |100<sup>1</sup>| |

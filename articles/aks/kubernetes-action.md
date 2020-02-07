@@ -7,20 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: cc2d6df952b2e0aa9b9f4d4e1dcb4859a5bb3790
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 62fcdf01250728cf84726db7e9b39452a4d4e5ff
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130532"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046345"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Akcje GitHub dotyczące wdrażania w usłudze Kubernetes Service
 
 Dzięki [akcjom GitHub](https://help.github.com/en/articles/about-github-actions) można tworzyć zautomatyzowane przepływy pracy tworzenia oprogramowania. Akcja Kubernetes [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) ułatwia wdrażanie klastrów usługi Azure Kubernetes. Akcja ustawia docelowy kontekst klastra AKS, który może być używany przez inne akcje, takie jak [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/k8s-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) itp. lub uruchomić dowolne polecenia polecenia kubectl.
-
-> [!IMPORTANT]
-> Akcje usługi GitHub są obecnie dostępne w wersji beta. Musisz najpierw [utworzyć konto, aby dołączyć do wersji zapoznawczej](https://github.com/features/actions) przy użyciu konta usługi GitHub.
-> 
 
 Przepływ pracy jest definiowany przez plik YAML (. yml) w ścieżce `/.github/workflows/` w repozytorium. Ta definicja zawiera różne kroki i parametry wchodzące w skład przepływu pracy.
 
@@ -29,12 +25,12 @@ Dla przepływu pracy AKS, plik ma trzy sekcje:
 |Sekcja  |Zadania  |
 |---------|---------|
 |**Uwierzytelnianie** | Zaloguj się do prywatnego rejestru kontenerów (ACR) |
-|**Kompilacja** | Kompilowanie & wypychanie obrazu kontenera  |
+|**Utworzenia** | Kompilowanie & wypychanie obrazu kontenera  |
 |**Wdrażanie** | 1. Ustaw docelowy klaster AKS |
 | |2. tworzenie wpisu tajnego rejestru ogólnego/Docker w klastrze Kubernetes  |
 ||3. Wdróż w klastrze Kubernetes|
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
 [Nazwę główną usługi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) można utworzyć przy użyciu polecenia [AZ AD Sp Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) w [interfejsie użytkownika platformy Azure](https://docs.microsoft.com/cli/azure/). Można uruchomić to polecenie przy użyciu [Azure Cloud Shell](https://shell.azure.com/) w Azure Portal lub wybierając przycisk **Wypróbuj** .
 
@@ -78,11 +74,11 @@ Postępuj zgodnie z instrukcjami, aby skonfigurować wpisy tajne:
 
 Kompilacja i wypychanie obrazów kontenera odbywa się przy użyciu akcji `Azure/docker-login@v1`. Aby wdrożyć obraz kontenera w AKS, musisz użyć akcji `Azure/k8s-deploy@v1`. Ta akcja ma pięć parametrów:
 
-| **Parametr**  | **Wyjaśnienie**  |
+| **Konstruktora**  | **Wyjaśnienie**  |
 |---------|---------|
-| **namespace** | Obowiązkowe Wybierz docelową przestrzeń nazw Kubernetes. Jeśli przestrzeń nazw nie zostanie podana, polecenia zostaną uruchomione w domyślnej przestrzeni nazw | 
+| **obszaru** | Obowiązkowe Wybierz docelową przestrzeń nazw Kubernetes. Jeśli przestrzeń nazw nie zostanie podana, polecenia zostaną uruchomione w domyślnej przestrzeni nazw | 
 | **manifesty** |  Potrzeb Ścieżka do plików manifestu, która będzie używana do wdrażania |
-| **images** | Obowiązkowe W pełni kwalifikowany adres URL zasobów przeznaczonych do podstawiania plików manifestu |
+| **rastrow** | Obowiązkowe W pełni kwalifikowany adres URL zasobów przeznaczonych do podstawiania plików manifestu |
 | **imagepullsecrets** | Obowiązkowe Nazwa wpisu tajnego rejestru platformy Docker, który został już skonfigurowany w klastrze. Każda z tych nazw tajnych jest dodawana w polu imagePullSecrets dla obciążeń znalezionych w wejściowych plikach manifestu |
 | **polecenia kubectl — wersja** | Obowiązkowe Instaluje określoną wersję pliku binarnego polecenia kubectl |
 

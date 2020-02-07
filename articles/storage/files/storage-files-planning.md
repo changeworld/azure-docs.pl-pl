@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906269"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062867"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
-[Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ Azure Files jest w pełni zarządzany, wdrażanie go w scenariuszach produkcyjnych jest znacznie łatwiejsze niż Wdrażanie serwera plików lub urządzenia NAS oraz zarządzanie nim. Ten artykuł dotyczy tematów, które należy wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
+[Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ Azure Files jest w pełni zarządzany, wdrażanie go w scenariuszach produkcyjnych jest znacznie łatwiejsze niż Wdrażanie serwera plików lub urządzenia NAS oraz zarządzanie nim. Ten artykuł dotyczy tematów, które należy wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
 
 ## <a name="management-concepts"></a>Pojęcia związane z zarządzaniem
 
@@ -47,7 +47,7 @@ Azure Files oferuje dwie wbudowane, wygodne metody dostępu do danych, których 
 
 W poniższej tabeli przedstawiono sposób, w jaki użytkownicy i aplikacje mogą uzyskiwać dostęp do udziału plików platformy Azure:
 
-| | Bezpośredni dostęp do chmury | Usługa Azure File Sync |
+| | Bezpośredni dostęp do chmury | Azure File Sync |
 |------------------------|------------|-----------------|
 | Jakich protokołów należy używać? | Azure Files obsługuje protokół SMB 2,1, protokół SMB 3,0 i interfejs API REST plików. | Uzyskaj dostęp do udziału plików platformy Azure za pomocą dowolnego obsługiwanego protokołu w systemie Windows Server (SMB, NFS, FTPS itp.) |  
 | Gdzie działa Twoje obciążenie? | **Na platformie Azure**: Azure Files oferuje bezpośredni dostęp do danych. | **W środowisku lokalnym z powolnej sieci**: klienci z systemami Windows, Linux i macOS mogą instalować lokalny udział plików systemu Windows jako szybką pamięć podręczną udziału plików platformy Azure. |
@@ -120,7 +120,7 @@ Istnieje możliwość zmniejszenia rozmiaru udziału przystosowanego poniżej u�
 
 W poniższej tabeli przedstawiono kilka przykładów tych wzorów dla rozmiarów udostępnianych udziałów:
 
-|Pojemność (GiB) | Liczba operacji we/wy na sekundę punktu odniesienia | Operacje we/wy na sekundę | Ruch wychodzący (MiB/s) | Ruch przychodzący (MiB/s) |
+|Pojemność (GiB) | Liczba IOPS linii bazowej | Operacje we/wy na sekundę | Ruch wychodzący (MiB/s) | Ruch przychodzący (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Do 300     | 66   | 44   |
 |500         | 500     | Do 1 500   | 90   | 60   |
@@ -204,8 +204,7 @@ Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie u
 Standardowe udziały plików z 100 TiB limit pojemności są dostępne globalnie we wszystkich regionach platformy Azure —
 
 - LRS: wszystkie regiony, z wyjątkiem Północna Republika Południowej Afryki i Zachodnia Republika Południowej Afryki.
-   - Chmury krajowe (rządowe, Niemcy i Chiny) są obsługiwane za pośrednictwem programu PowerShell i interfejsu wiersza polecenia platformy Azure. Brak obsługi portalu. 
-   - Wschodnie stany USA, Wschodnie stany USA 2 i Europa Zachodnia: wszystkie nowe konta są obsługiwane. Niewielka liczba istniejących kont nie ukończyła procesu uaktualniania. Możesz sprawdzić, czy istniejące konta magazynu ukończyły proces uaktualniania, podejmując próbę [włączenia dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
+   - Wschodnie stany USA i Europa Zachodnia: wszystkie nowe konta są obsługiwane. Niewielka liczba istniejących kont nie ukończyła procesu uaktualniania. Możesz sprawdzić, czy istniejące konta magazynu ukończyły proces uaktualniania, podejmując próbę [włączenia dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
 
 - ZRS: wszystkie regiony, z wyjątkiem regionu Japonia Wschodnia, Europa Północna, Północna Republika Południowej Afryki.
 - GRS/GZRS: nieobsługiwane.

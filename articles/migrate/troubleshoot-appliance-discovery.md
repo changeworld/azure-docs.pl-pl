@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990712"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048700"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Rozwiązywanie problemów z urządzeniem Azure Migrate i odnajdywanie
 
@@ -78,7 +78,7 @@ Jeśli wystąpi błąd połączenia, może nie być możliwe nawiązanie połąc
 Jeśli zostanie wyświetlony błąd 60030 lub 60031, "Azure Key Vault operacji zarządzania nie powiodła się", wykonaj następujące czynności:
 - Upewnij się, że konto użytkownika platformy Azure używane do zarejestrowania urządzenia ma co najmniej uprawnienia współautora w ramach subskrypcji.
 - Upewnij się, że konto ma dostęp do magazynu kluczy określonego w komunikacie o błędzie, a następnie spróbuj ponownie wykonać operację.
-- Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft.
+- Jeśli problem będzie się powtarzał, skontaktuj się z pomocą techniczną firmy Microsoft.
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) o wymaganych rolach i uprawnieniach platformy Azure.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Błąd 60028: nie można zainicjować odnajdywania
@@ -139,9 +139,9 @@ Jeśli usuniesz maszyny wirtualne i nadal pojawią się one w portalu, odczekaj 
 
 Azure Migrate obsługuje odnajdywanie aplikacji, ról i funkcji przy użyciu Azure Migrate: Ocena serwera. Odnajdywanie aplikacji jest obecnie obsługiwane tylko przez oprogramowanie VMware. [Dowiedz się więcej](how-to-discover-applications.md) na temat wymagań i kroków dotyczących konfigurowania funkcji odnajdywania aplikacji.
 
-Typowe błędy odnajdowania aplikacji zostały podsumowane w tabeli.
+Typowe błędy odnajdowania aplikacji zostały podsumowane w tabeli. 
 
-**Error** | **Przyczyna** | **Akcja**
+**Porn** | **Przyczyna** | **Akcja**
 --- | --- | --- | ---
 10000: "nie można odnaleźć aplikacji zainstalowanych na serwerze". | Taka sytuacja może wystąpić, jeśli system operacyjny komputera nie jest w systemie Windows lub Linux. | Funkcja odnajdywania aplikacji jest używana tylko w systemie Windows/Linux.
 10001: "nie można pobrać aplikacji zainstalowanych na serwerze". | Błąd wewnętrzny — niektóre brakujące pliki w urządzeniu. | Contact Microsoft Support.

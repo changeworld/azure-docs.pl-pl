@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867432"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049884"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Tworzenie woluminu SMB dla usługi Azure NetApp Files
 
@@ -40,16 +40,16 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 * Odpowiednie porty muszą być otwarte na odpowiednim serwerze Windows Active Directory (AD).  
     Wymagane porty są następujące: 
 
-    |     Usługa           |     Port     |     Protocol (Protokół)     |
+    |     Usługa           |     Port     |     Protokół     |
     |-----------------------|--------------|------------------|
     |    Usługi sieci Web AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    ND       |    Odpowiedź echa    |
-    |    Protokół Kerberos           |    464       |    TCP           |
-    |    Protokół Kerberos           |    464       |    UDP           |
-    |    Protokół Kerberos           |    88        |    TCP           |
-    |    Protokół Kerberos           |    88        |    UDP           |
+    |    ICMPv4             |    Nie dotyczy       |    Odpowiedź echa    |
+    |    Udziałem           |    464       |    TCP           |
+    |    Udziałem           |    464       |    UDP           |
+    |    Udziałem           |    88        |    TCP           |
+    |    Udziałem           |    88        |    UDP           |
     |    LDAP               |    389       |    TCP           |
     |    LDAP               |    389       |    UDP           |
     |    LDAP               |    3268      |    TCP           |
@@ -73,6 +73,8 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
     Jeśli masz kontrolery domeny, które są nieosiągalne za pośrednictwem delegowanej podsieci Azure NetApp Files, możesz przesłać żądanie pomocy technicznej platformy Azure w celu zmiany zakresu z **globalnego** (domyślnego) na **lokację**.  Azure NetApp Files musi komunikować się tylko z kontrolerami domeny w lokacji, w której znajduje się Azure NetApp Files przestrzeń adresowa delegowanej podsieci.
 
     Zobacz [projektowanie topologii lokacji](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) dotyczącej witryn i usług AD. 
+    
+Zobacz Azure NetApp Files usługi [SMB — często zadawane pytania](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) dotyczące dodatkowych informacji o usłudze AD. 
 
 ## <a name="create-an-active-directory-connection"></a>Utwórz połączenie Active Directory
 

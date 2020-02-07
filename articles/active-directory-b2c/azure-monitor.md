@@ -10,17 +10,17 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/03/2020
-ms.openlocfilehash: 108c9c1112327a3fcadeff4c4074f31f976a4e3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 02/05/2020
+ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026759"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046034"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitoruj Azure AD B2C z Azure Monitor
 
-Użyj Azure Monitor, aby kierować zdarzenia dotyczące działań użycia Azure Active Directory B2C (Azure AD B2C) do różnych rozwiązań monitorowania. Dzienniki można zachować do długoterminowego użytku lub zintegrować z narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń innych firm (SIEM), aby uzyskać wgląd w środowisko.
+Użyj Azure Monitor, aby kierować dzienniki logowania i [inspekcji](view-audit-logs.md) w usłudze Azure Active Directory B2C (Azure AD B2C) do różnych rozwiązań monitorowania. Dzienniki można zachować do długoterminowego użytku lub zintegrować z narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń innych firm (SIEM), aby uzyskać wgląd w środowisko.
 
 Zdarzenia dziennika można kierować do:
 
@@ -44,7 +44,7 @@ Azure AD B2C wykorzystuje [monitorowanie Azure Active Directory](../active-direc
 
 Użytkownik autoryzuje użytkownika w katalogu Azure AD B2C ( **Dostawca usługi**), aby skonfigurować wystąpienie Azure monitor w ramach dzierżawy, które zawiera subskrypcję platformy Azure ( **klienta**). Aby utworzyć autoryzację, należy wdrożyć szablon [Azure Resource Manager](../azure-resource-manager/index.yml) w dzierżawie usługi Azure AD zawierającym subskrypcję programu. W poniższych sekcjach omówiono proces.
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 W dzierżawie usługi Azure Active Directory (Azure AD), która zawiera subskrypcję platformy Azure (*nie* katalog zawierający dzierżawę Azure AD B2C), [Utwórz grupę zasobów](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). Wprowadź następujące wartości:
 
@@ -84,8 +84,8 @@ Aby dołączyć dzierżawę usługi Azure AD ( **klienta**), utwórz [szablon Az
 
 Pobierz Azure Resource Manager szablonu i plików parametrów:
 
-- [rgDelegatedResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement. JSON](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement. Parameters. JSON](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 Następnie zaktualizuj plik parametrów przy użyciu zarejestrowanych wcześniej wartości. Poniższy fragment kodu JSON przedstawia przykład pliku parametrów szablonu Azure Resource Manager. W przypadku `authorizations.value.roleDefinitionId`Użyj [wbudowanej wartości roli](../role-based-access-control/built-in-roles.md) *współautor*, `b24988ac-6180-42a0-ab88-20f7382dd24c`.
 
@@ -213,10 +213,10 @@ Po przeprowadzeniu delegowania zarządzania zasobami i wybraniu subskrypcji moż
 
 Aby skonfigurować ustawienia monitorowania dla Azure AD B2C dzienników aktywności:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. Wybierz **Azure Active Directory**
-1. W obszarze **monitorowanie**, wybierz opcję **ustawień diagnostycznych**.
+1. W obszarze **monitorowanie**wybierz pozycję **Ustawienia diagnostyczne**.
 1. Wybierz pozycję **+ Dodaj ustawienie diagnostyczne**.
 
     ![Okienko ustawień diagnostycznych w Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)

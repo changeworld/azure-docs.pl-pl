@@ -8,19 +8,19 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: gregman
-ms.openlocfilehash: 99474246bf1ff5cbcc39861d56f05aa38f177f31
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.author: philmea
+ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510043"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045890"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Uruchom Azure IoT Edge w systemie Windows Server Virtual Machines
 
 Środowisko uruchomieniowe usługi Azure IoT Edge to, co jest przekształcany urządzenia urządzenia usługi IoT Edge. Środowisko uruchomieniowe można wdrożyć na urządzeniach jako małej, jak Raspberry Pi lub tak duże jak serwer przemysłowe. Gdy urządzenie zostanie skonfigurowany ze środowiskiem uruchomieniowym usługi IoT Edge, możesz rozpocząć wdrażanie logikę biznesową w chmurze.
 
-Aby dowiedzieć się więcej na temat sposobu działania środowiska uruchomieniowego usługi IoT Edge i jakie składniki wchodzą, zobacz [zrozumieć środowisko uruchomieniowe usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md).
+Aby dowiedzieć się więcej o tym, jak działa środowisko uruchomieniowe IoT Edge i jakie składniki są uwzględnione, zobacz [Omówienie środowiska uruchomieniowego Azure IoT Edge i jego architektury](iot-edge-runtime.md).
 
 W tym artykule przedstawiono procedurę uruchamiania środowiska uruchomieniowego Azure IoT Edge na maszynie wirtualnej z systemem Windows Server 2019 przy użyciu oferty [systemu Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace. Postępuj zgodnie z instrukcjami w obszarze [Instalowanie środowiska uruchomieniowego Azure IoT Edge](how-to-install-iot-edge-windows.md) w systemie Windows, aby używać go z innymi wersjami.
 
@@ -98,7 +98,7 @@ W tym artykule przedstawiono procedurę uruchamiania środowiska uruchomienioweg
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy masz urządzenia usługi IoT Edge zaopatrzony zainstalowanego środowiska uruchomieniowego, można [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md).
+Teraz, gdy masz zainstalowaną IoT Edge urządzenie z zainstalowanym środowiskiem uruchomieniowym, możesz [wdrożyć moduły IoT Edge](how-to-deploy-modules-portal.md).
 
 Jeśli masz problemy z instalacją środowiska uruchomieniowego Edge prawidłowo, zapoznaj się ze stroną [rozwiązywania problemów](troubleshoot.md) .
 

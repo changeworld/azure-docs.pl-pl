@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15ec201851cf52f651e32959b30c1d8579eb1cea
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 80ffaba6713027d216958e0be2cd4ae35a8d2d70
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152400"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063445"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie macierzy priorytetowej dla automatycznej aprowizacji użytkowników
 
 Celem tego samouczka jest przedstawienie czynności, które należy wykonać w ramach macierzy priorytetów i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup na potrzeby macierzy priorytetowych.
 
 > [!NOTE]
-> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania funkcji w wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania dla Microsoft Azure podglądów](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -81,7 +81,7 @@ Aby skonfigurować macierz priorytetową dla automatycznej aprowizacji użytkown
 
 3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź wartość **macierz priorytetowa**, a następnie wybierz pozycję **macierz priorytetowa** w panelu wyniki. 
 
@@ -108,7 +108,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 ### <a name="to-configure-automatic-user-provisioning-for-priority-matrix-in-azure-ad"></a>Aby skonfigurować automatyczną obsługę administracyjną dla macierzy priorytetowej w usłudze Azure AD:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -132,7 +132,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Wiadomość E-mail z powiadomieniem](common/provisioning-notification-email.png)
 
-7. Kliknij pozycję **Zapisz**.
+7. Kliknij przycisk **Save** (Zapisz).
 
 8. W sekcji **mapowania** wybierz kolejno pozycje **Synchronizuj Azure Active Directory użytkownicy do priorytetowej macierzy**.
 
@@ -142,7 +142,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Priorytetowe atrybuty użytkownika macierzy](media/priority-matrix-provisioning-tutorial/userattributes.png)
 
-10. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Aby włączyć usługę Azure AD Provisioning na potrzeby macierzy priorytetowej, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
@@ -158,15 +158,15 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w macierzy priorytetowej.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)
 
 

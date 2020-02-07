@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 7f9bd55054fca6b45a25ef737a1a00872e536ca8
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75908944"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048892"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps projekty "open source" dla społeczności
 
-Są to inicjatywy typu open source, oparte na społeczności, tworzone i obsługiwane przez zespół Azure Maps, ale nie są częścią standardowych ofert produktu lub usług. Poniżej znajduje się lista najpopularniejszych Azure Maps utworzonych projektów typu "open source" i przykładów.
+Te inicjatywy typu "open source" dla społeczności są tworzone i obsługiwane przez zespół Azure Maps. Nie są one częścią standardowych ofert produktu lub usług.
+
+Poniżej wymieniono niektóre z najpopularniejszych, Azure Maps projekty i przykłady typu open source.
 
 | Nazwa projektu | Opis |
 |-|-|
@@ -27,7 +29,7 @@ Są to inicjatywy typu open source, oparte na społeczności, tworzone i obsług
 | [Przykłady Azure Active Directory Azure Maps &](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Kolekcja przykładów, które pokazują, jak używać Azure Active Directory z Azure Maps. | 
 | [Implementowanie analizy przestrzennej IoT przy użyciu Azure Maps](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Śledzenie i przechwytywanie istotnych zdarzeń występujących w miejscu i czasie jest typowym scenariuszem IoT. |
 | [Przykłady Jupyter Notebook Azure Maps](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Kolekcja przykładów języka Python przy użyciu usług REST Azure Maps. |
-| [Bot Framework — zagadnienia dotyczące punktu orientacyjnego](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Umiejętność w zakresie zainteresowania oferuje punkt POI funkcje powiązane z wirtualnym asystentem przy użyciu Azure Maps z Azure Bot Service i platformą bot. |
+| [Bot Framework — zagadnienia dotyczące punktu orientacyjnego](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Umiejętność w zakresie zainteresowania oferuje punkt POI funkcje dla Asystenta wirtualnego przy użyciu Azure Maps z Azure Bot Service i platformą bot. |
 
 Dłuższa lista obejmująca projekty typu open source utworzona przez społeczność jest dostępna [tutaj](https://github.com/microsoft/Maps/blob/master/AzureMaps.md)
 

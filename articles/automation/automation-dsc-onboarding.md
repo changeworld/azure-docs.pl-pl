@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 89e86a6702be7314b99975cac90818252eb07df7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834109"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046233"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Dołączanie maszyn w celu zarządzania przez Azure Automation konfigurację stanu
 
@@ -53,7 +53,7 @@ W poniższych sekcjach opisano, jak można dołączyć każdy typ maszyny do Azu
 Azure Automation konfiguracja stanu umożliwia łatwe dołączanie maszyn wirtualnych platformy Azure w celu zarządzania konfiguracją przy użyciu Azure Portal, szablonów Azure Resource Manager lub programu PowerShell. W obszarze okapu i bez administratora, który ma zdalny dostęp do maszyny wirtualnej, rozszerzenie konfiguracji żądanego stanu maszyny wirtualnej platformy Azure rejestruje maszynę wirtualną z konfiguracją stanu Azure Automation.
 Ponieważ rozszerzenie konfiguracji żądanego stanu maszyny wirtualnej platformy Azure jest uruchamiane asynchronicznie, należy wykonać kroki w celu śledzenia postępu lub rozwiązywania problemów, które znajdują się w sekcji [**Rozwiązywanie problemów z dołączaniem do maszyny wirtualnej platformy Azure**](#troubleshooting-azure-virtual-machine-onboarding) .
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 W [Azure Portal](https://portal.azure.com/)przejdź do konta Azure Automation, do którego chcesz dołączyć maszyny wirtualne. Na stronie Konfiguracja stanu i na karcie **węzły** kliknij pozycję **+ Dodaj**.
 
@@ -70,7 +70,7 @@ W obszarze **rejestracja**wprowadź [wartości lokalnych Configuration Manager p
 Usługi Azure Virtual Machines można wdrażać i dołączać do konfiguracji stanu Azure Automation za pośrednictwem Azure Resource Manager szablonów. Zobacz temat [serwer zarządzany przez usługę konfiguracji żądanego stanu](https://azure.microsoft.com/resources/templates/101-automation-configuration/) , aby zapoznać się z przykładowym szablonem służącym do dołączania istniejącej maszyny wirtualnej w celu Azure Automation konfiguracji stanu.
 Jeśli zarządzasz zestawem skalowania maszyn wirtualnych, zapoznaj się z przykładową [konfiguracją zestawu skalowania maszyn wirtualnych za pomocą Azure Automation](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 Polecenie cmdlet [register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) może służyć do dołączania maszyn wirtualnych na platformie Azure przy użyciu programu PowerShell.
 Jednak jest to obecnie tylko zaimplementowane dla maszyn z systemem Windows (polecenie cmdlet wyzwala tylko rozszerzenie systemu Windows).

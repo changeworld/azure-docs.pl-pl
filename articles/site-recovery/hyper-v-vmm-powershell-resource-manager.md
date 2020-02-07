@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: a46bca5c5c55338f8bea7e1ff370f92ce6a2d577
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841050"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048616"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V w lokacji dodatkowej przy użyciu programu PowerShell (Menedżer zasobów)
 
@@ -75,7 +75,7 @@ Upewnij się, że masz Azure PowerShell gotowy do użycia:
    Set-AzContext –SubscriptionID <subscriptionId>
    ```
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
 
 1. Utwórz grupę zasobów Azure Resource Manager, jeśli jej nie masz.
 
@@ -219,9 +219,9 @@ Aby sprawdzić zakończenie operacji, wykonaj kroki opisane w sekcji [monitorowa
 1. Uruchom to polecenie, aby pobrać sieci dla źródłowego serwera Virtual Machine Manager i docelowego serwera Virtual Machine Manager.
 
    ```azurepowershell
-   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[0]
+   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Fabric $Servers[0]
 
-   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[1]
+   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Fabric $Servers[1]
    ```
 
    > [!NOTE]

@@ -1,125 +1,75 @@
 ---
 title: Wprowadzenie do usługi Azure Internet of Things (IoT)
 description: Wprowadzenie z wyjaśnieniem podstaw usługi Azure IoT i usług IoT wraz z przykładami ułatwiającymi zilustrowanie zastosowań IoT.
-author: robinsh
+author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/11/2018
-ms.author: robinsh
-ms.openlocfilehash: ce82a2cc4cc936d2e0a7a8b82cbc0ed7e5c6eb52
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.date: 01/15/2020
+ms.author: dobett
+ms.openlocfilehash: c79f18669e1b13f79491e98658107221b43f3ff5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048645"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046177"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co to jest usługa Azure Internet of Things (IoT)?
 
-Azure Internet of Things (IoT) to kolekcja zarządzanych przez firmę Microsoft usług w chmurze, które łączą, monitorują i kontrolują miliardy zasobów Internetu rzeczy. Mówiąc prościej, na rozwiązanie IoT składa się co najmniej jedno urządzenie IoT i co najmniej jedna usługa zaplecza w chmurze, które komunikują się ze sobą. 
+Azure Internet of Things (IoT) to kolekcja zarządzanych przez firmę Microsoft usług w chmurze, które łączą, monitorują i kontrolują miliardy zasobów Internetu rzeczy. W prostszej postaci rozwiązanie IoT składa się z co najmniej jednego urządzenia IoT, które komunikuje się z co najmniej jedną usługą zaplecza hostowaną w chmurze. 
 
-W tym artykule omówiono podstawowe informacje dotyczące IoT, przeanalizowano przypadki zastosowań i krótko objaśniono osiem dostępnych usług. Zrozumienie tego, jakie opcje są dostępne, pozwoli Ci ustalić, którym z nich warto przyjrzeć się bliżej, aby zaprojektować własny scenariusz.
+## <a name="iot-devices"></a>Urządzenia IoT
 
-## <a name="introduction"></a>Wprowadzenie
+Urządzenie IoT zwykle składa się z tablicy obwodowej z dołączanymi czujnikami, które używają sieci Wi-Fi do łączenia się z Internetem. Na przykład:
 
-Oto główne elementy rozwiązania IoT: urządzenia, usługi zaplecza i komunikacja między nimi. 
+* Czujnik ciśnienia na zdalnej pompie naftowej.
+* Czujniki temperatury i wilgotności w jednostce klimatyzacyjnej.
+* Przyspieszeniomierz w wIndie.
+* Czujniki obecności w pokoju.
 
-### <a name="iot-devices"></a>Urządzenia IoT
+Istnieje wiele różnych urządzeń dostępnych od różnych producentów do tworzenia rozwiązań. Aby uzyskać listę urządzeń certyfikowanych do pracy z usługą Azure IoT Hub, zobacz [wykaz urządzeń z certyfikatem platformy Azure dla IoT](https://catalog.azureiotsolutions.com/alldevices). Do tworzenia prototypów można użyć urządzeń, takich jak [zestawu deweloperskiego IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) lub [Raspberry Pi](https://www.raspberrypi.org/). Devkit ma wbudowane czujniki do temperatury, ciśnienia, wilgotności i żyroskop, przyspieszeniomierza i Magnetometer. Raspberry Pi umożliwia dołączenie wielu różnych typów czujników. 
 
-Urządzenie zazwyczaj składa się z płytki drukowanej z dołączonymi czujnikami łączącymi się z Internetem. Wiele urządzeń komunikuje się za pośrednictwem mikroukładu sieci Wi-Fi. Poniżej przedstawiono kilka przykładów urządzeń IoT:
+Firma Microsoft udostępnia [zestawy SDK urządzeń](../iot-hub/iot-hub-devguide-sdks.md) Open Source, za pomocą których można tworzyć aplikacje działające na urządzeniach. Te [zestawy SDK upraszczają i przyspieszają](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/) opracowywanie rozwiązań IoT.
 
-* czujniki ciśnienia na zdalnej pompie olejowej,
-* czujniki temperatury i wilgotności w klimatyzatorze,
-* akcelerometry w windzie,
-* czujniki obecności w pomieszczeniu.
+## <a name="communication"></a>Komunikacja
 
-Dwa urządzenia, które są często używane do tworzenia prototypów, to układ podstawowy MX Chip IoT Devkit od firmy Microsoft i urządzenia Raspberry PI. Układ MX Chip Devkit ma wbudowane czujniki temperatury, ciśnienia i wilgotności, a także żyroskop i akcelerometr, magnetometr oraz układ sieci Wi-Fi. Raspberry PI to urządzenie IoT, do którego można dołączyć wiele różnego rodzaju czujników, co pozwala wybrać dokładnie to, co jest potrzebne w danym scenariuszu. 
+Zazwyczaj urządzenia IoT wysyłają dane telemetryczne z czujników do usług zaplecza w chmurze. Jednak inne typy komunikacji mogą być takie jak usługa zaplecza do wysyłania poleceń do urządzeń. Poniżej przedstawiono kilka przykładów komunikacji między urządzeniem i chmurą oraz z chmurą i urządzeniem:
 
-Aby uzyskać więcej informacji na temat dostępnych urządzeń IoT, zapoznaj się z największym branżowym [wykazem urządzeń z certyfikatem IoT](https://catalog.azureiotsolutions.com/alldevices).
+* Przenośna wózek chłodniczy wysyła do IoT Hub temperaturę co 5 minut. 
 
-[Zestawy SDK urządzeń IoT](../iot-hub/iot-hub-devguide-sdks.md) umożliwiają tworzenie aplikacji uruchamianych na urządzeniach w celu realizacji odpowiednich zadań. Przy użyciu zestawów SDK można wysyłać dane telemetryczne do centrum IoT, odbierać komunikaty oraz aktualizacje z usługi IoT Hub i tak dalej.
+* Usługa zaplecza wysyła do urządzenia polecenie, aby zmienić częstotliwość wysyłania telemetrii w celu ułatwienia zdiagnozowania problemu. 
 
-### <a name="communication"></a>Komunikacja
+* Urządzenie wysyła alerty na podstawie wartości odczytywanych z czujników. Na przykład urządzenie monitorujące reaktor usługi Batch w zakładzie chemicznym wysyła alert, gdy temperatura przekracza określoną wartość.
 
-Komunikacja urządzenia z usługami zaplecza może przebiegać w obu kierunkach. Poniżej przedstawiono kilka przykładowych sposobów, w jakie urządzenie może komunikować się z rozwiązaniem zaplecza.
+* Urządzenia wysyłają informacje do wyświetlenia na pulpicie nawigacyjnym do wyświetlania przez operatorów ludzkich. Na przykład w potoku, w którym można określić temperaturę, ciśnienie i przepływy, umożliwia operatorom monitorowanie funkcji. 
 
-#### <a name="examples"></a>Przykłady 
+[Zestawy SDK urządzeń IoT](../iot-hub/iot-hub-devguide-sdks.md) i IoT Hub obsługują typowe [Protokoły komunikacyjne](../iot-hub/iot-hub-devguide-protocols.md) , takie jak http, MQTT i AMQP.
 
-* Urządzenie może co 5 minut wysyłać informacje o temperaturze z ciężarówki-chłodni do usługi IoT Hub. 
-
-* Usługa zaplecza może zażądać od urządzenia częstszego wysyłania danych telemetrycznych, aby ułatwić zdiagnozowanie problemu. 
-
-* Urządzenie może wysyłać alerty oparte na wartościach rejestrowanych przez jego czujniki. Na przykład w przypadku monitorowania reaktora okresowego w zakładzie chemicznym można wysyłać alert, gdy temperatura przekroczy określoną wartość.
-
-* Urządzenie może przesyłać informacje do pulpitu nawigacyjnego, który jest wyświetlany osobom pełniącym role operatorów. Na przykład w pomieszczeniu sterowania w rafinerii operatorom mogą być wyświetlane wartości temperatury i ciśnienia dla każdego rurociągu, a także wolumin materiału przepływającego przez ten rurociąg. 
-
-Te i inne zadania można zaimplementować przy użyciu [zestawów SDK urządzeń IoT](../iot-hub/iot-hub-devguide-sdks.md).
-
-#### <a name="connection-considerations"></a>Zagadnienia dotyczące połączeń
-
-Podłączanie urządzeń w sposób bezpieczny i niezawodny jest często największym wyzwaniem w rozwiązaniach IoT. Wynika to z tego, że urządzenia IoT charakteryzują się innymi cechami niż pozostałe rozwiązania klienckie, takie jak przeglądarki i aplikacje mobilne. W szczególności urządzenia IoT:
+Urządzenia IoT mają różne cechy w porównaniu z innymi klientami, takimi jak przeglądarki i aplikacje mobilne. Zestawy SDK urządzeń ułatwiają rozwiązywanie problemów związanych z bezpiecznym i niezawodnym połączeniem urządzeń z usługą zaplecza.  W szczególności urządzenia IoT:
 
 * są często systemami osadzonymi bez osoby pełniącej rolę operatora (w odróżnieniu od telefonu);
-
 * mogą być wdrażane w lokalizacjach zdalnych, gdzie dostęp fizyczny jest bardzo kosztowny;
-
-* mogą być dostępne tylko za pośrednictwem zaplecza rozwiązania. Nie istnieje inny sposób interakcji z urządzeniem;
-
+* mogą być dostępne tylko za pośrednictwem zaplecza rozwiązania.
 * mogą mieć ograniczone zasoby w zakresie zasilania i przetwarzania;
-
 * mogą korzystać z przerywanej, powolnej lub kosztownej łączności sieciowej;
-
 * mogą wymagać używania zastrzeżonych, niestandardowych lub branżowych protokołów aplikacji;
 
-### <a name="back-end-services"></a>Usługi zaplecza 
+## <a name="back-end-services"></a>Usługi zaplecza 
 
-Oto niektóre inne funkcje, które mogą zapewniać usługi zaplecza.
+W rozwiązaniu IoT usługa zaplecza udostępnia funkcje takie jak:
 
 * Odbieranie telemetrii z urządzeń we właściwej skali i określanie sposobu przetwarzania i przechowywania tych danych.
-
 * Analizowanie danych telemetrycznych w celu udostępnienia szczegółowych informacji, w czasie rzeczywistym lub po fakcie.
-
 * Wysyłanie poleceń z chmury do określonego urządzenia. 
+* Inicjowanie obsługi administracyjnej urządzeń i sterowanie urządzeniami, które mogą łączyć się z infrastrukturą.
+* Kontrolowanie stanu urządzeń i monitorowanie ich aktywności.
+* Zarządzanie oprogramowaniem układowym zainstalowanym na urządzeniach.
 
-* Aprowizowanie urządzeń oraz kontrolowanie tego, które mogą łączyć się z infrastrukturą.
+Na przykład w rozwiązaniu do zdalnego monitorowania stacji dokującej, zaplecze w chmurze używa danych telemetrycznych z pomp do identyfikacji nietypowego zachowania. Gdy usługa zaplecza zidentyfikuje anomalię, może automatycznie wysłać polecenie z powrotem do urządzenia w celu podjęcia działań naprawczych. Ten proces generuje pętlę automatycznego sprzężenia zwrotnego między urządzeniem i chmurą, która znacznie zwiększa wydajność rozwiązania.
 
-* Śledzenie stanu urządzeń i monitorowanie ich działania.
+## <a name="azure-iot-examples"></a>Przykłady usługi Azure IoT
 
-Na przykład w scenariuszu konserwacji predykcyjnej zaplecze chmury przechowuje historyczne dane telemetryczne. Rozwiązanie używa tych danych do identyfikowania potencjalnych nietypowych zachowań określonych pomp zanim spowodują one rzeczywisty problem. Za pomocą analizy danych może ono ustalić, że rozwiązanie prewencyjne polega na wysłaniu z powrotem do urządzenia polecenia podjęcia akcji naprawczej. Ten proces generuje pętlę automatycznego sprzężenia zwrotnego między urządzeniem i chmurą, która znacznie zwiększa wydajność rozwiązania.
-
-## <a name="an-iot-example"></a>Przykład IoT
-
-Poniżej przedstawiono przykład tego, jak dzięki technologii IoT pewna firma zaoszczędziła miliony dolarów. 
-
-Ta firma to ogromna farma, na której hoduje się bydło — setki tysięcy krów. Śledzenie tak wielu krów i trzymanie ręki na pulsie ich zdrowia to prawdziwe wyzwanie, które wymaga częstego jeżdżenia samochodami. Na każdej krowie firma umieściła czujniki, które wysyłają informacje, takie jak współrzędne GPS i temperatura, do usługi zaplecza w celu zapisania ich w bazie danych.
-
-Następnie usługa analityczna skanuje dane przychodzące i analizuje je dla każdej krowy w celu ustalenia odpowiedzi na pytania podobne do następujących:
-
-* Czy krowa ma podwyższoną temperaturę? Jak długo krowa ma podwyższoną temperaturę? Jeśli dłużej niż jeden dzień, usługa pobiera współrzędne GPS i wysyła zlecenie odszukania krowy w celu ewentualnego podania jej antybiotyków. 
-
-* Czy krowa przebywa w tym samym miejscu dłużej niż jeden dzień? Jeśli tak, usługa pobiera współrzędne GPS i wysyła zlecenie odszukania krowy. Czy krowa spadła ze wzniesienia? Czy krowa jest ranna? czy krowa potrzebuje pomocy? 
-
-Zaimplementowanie tego rozwiązania IoT umożliwiło firmie szybkie sprawdzanie kondycji krów i podejmowanie ich leczenia, a także skrócenie czasu spędzanego na jeżdżeniu w celu sprawdzania kondycji zwierząt, co pozwoliło na oszczędzenie dużej ilości pieniędzy. Aby poznać więcej rzeczywistych przykładów tego, jak firmy wykorzystują IoT, zobacz [Microsoft Technical Case Studies for IoT](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured) (Techniczne analizy przypadków firmy Microsoft dotyczące IoT). 
-
-## <a name="iot-services"></a>Usługi IoT
-
-Na platformie Azure istnieje kilka usług powiązanych z IoT i ustalenie, której najlepiej użyć, może być trudne. Niektóre z nich, takie jak IoT Central i akceleratory rozwiązań IoT, zapewniają szablony ułatwiające tworzenie własnych rozwiązań i szybkie rozpoczynanie pracy. Możesz również opracować całkowicie własne rozwiązanie za pomocą innych dostępnych usług — wszystko zależy od tego, ile pomocy chcesz uzyskać oraz ile chcesz mieć kontroli. Oto lista dostępnych usług oraz możliwości ich zastosowań.
-
-1. [**IoT Central**](../iot-central/core/overview-iot-central.md): to jest platforma aplikacji IoT, która upraszcza tworzenie rozwiązań IoT i pomaga w zmniejszeniu obciążenia i kosztów operacji zarządzania IoT oraz rozwoju. Aby rozpocząć, wybierz szablon dla danego typu urządzenia, a następnie utwórz i przetestuj podstawową aplikację usługi IoT Central, której będą używać operatorzy urządzeń. Aplikacja usługi IoT Central umożliwi Ci też monitorowanie urządzeń i aprowizację nowych urządzeń. Ta usługa jest przeznaczona dla prostych rozwiązań, które nie wymagają znaczącego dostosowania usług.
-
-2. [**Akceleratory rozwiązań IoT**](/azure/iot-suite): jest to zbiór rozwiązań PaaS, za pomocą których można przyspieszyć opracowywanie rozwiązań IoT. Pracę rozpoczyna się od udostępnionego rozwiązania IoT, a następnie w pełni dostosowuje się to rozwiązanie do własnych potrzeb. Aby dostosować zaplecze, wymagane są umiejętności związane z językiem Java lub platformą .NET, natomiast w celu dostosowania wizualizacji — z językiem JavaScript. 
-
-3. [**IoT Hub**](/azure/iot-hub/): ta usługa pozwala na łączenie się urządzeń z centrum IoT oraz na monitorowanie i kontrolowanie miliardów urządzeń IoT. Jest ona szczególnie przydatna, jeśli jest potrzebna komunikacja dwukierunkowa między urządzeniami IoT a zapleczem. Jest to usługa bazowa dla usługi IoT Central i akceleratorów rozwiązań IoT. 
-
-4. [**IoT Hub Device Provisioning Service**](/azure/iot-dps/): jest to usługa pomocnika dla usługi IoT Hub, za pomocą której można bezpiecznie aprowizować urządzenia w centrum IoT. Usługa ta pozwala łatwo błyskawicznie aprowizować miliony urządzeń, zamiast aprowizować je jedno po drugim. 
-
-5. [**IoT Edge**](/azure/iot-edge/): ta usługa jest oparta na usłudze IoT Hub. Za jej pomocą można analizować dane na urządzeniach IoT zamiast w chmurze. Dzięki przeniesieniu części obciążenia na brzeg można wysyłać mniej komunikatów do chmury. 
-
-6. [**Azure Digital Twins**](../digital-twins/index.yml): ta usługa umożliwia tworzenie kompleksowych modeli środowiska fizycznego. Umożliwia ona modelowanie relacji i interakcji między osobami, obszarami i urządzeniami. Na przykład można określać potrzeby konserwacyjne dla fabryki, analizować wymagania energetyczne w czasie rzeczywistym dla sieci elektrycznej lub optymalizować użycie dostępnej przestrzeni w biurze.
-
-7. [**Time Series Insights**](/azure/time-series-insights): ta usługa pozwala na przechowywanie, wizualizowanie i odpytywanie dużych ilości danych szeregów czasowych generowanych przez urządzenia IoT. Można jej używać razem z usługą IoT Hub. 
-
-8. [**Azure Maps**](/azure/azure-maps): ta usługa zapewnia informacje geograficzne aplikacjom internetowym i mobilnym. Dostępny jest pełny zestaw interfejsów API REST, a także internetowa kontrolka JavaScript, za pomocą których można tworzyć elastyczne aplikacje działające na komputerach oraz aplikacje mobilne dla urządzeń zarówno firmy Apple, jak i z systemem Windows.
+Aby zapoznać się z przykładami dotyczącymi sposobu korzystania z usługi Azure IoT przez organizacje, zobacz [techniczne analizy przypadków firmy Microsoft dla IoT](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured). 
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -127,6 +77,6 @@ Rzeczywiste przypadki zastosowań biznesowych i opisy używanej architektury mo�
 
 W [katalogu projektów IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) można znaleźć kilka przykładowych projektów do wypróbowania z układem IoT DevKit. 
 
-Aby zapoznać się z bardziej wyczerpującym opisem różnych usług i sposobów ich używania, zobacz [Usługi i technologie Azure IoT](iot-services-and-technologies.md).
+Aby uzyskać bardziej szczegółowy opis różnych usług i sposobu ich używania, zobacz [usługi i technologie Azure IoT](iot-services-and-technologies.md).
 
 Szczegółowe omówienie architektury IoT można znaleźć w temacie [Architektura referencyjna IoT platformy Microsoft Azure](https://aka.ms/iotrefarchitecture).

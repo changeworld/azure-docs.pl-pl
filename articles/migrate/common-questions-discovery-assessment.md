@@ -3,12 +3,12 @@ title: Często zadawane pytania — odnajdywanie, Ocena i analiza zależności w
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności w programie Azure Migrate.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513290"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059491"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności
 
@@ -16,6 +16,8 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
 - [Ogólne pytania](resources-faq.md) dotyczące Azure Migrate.
 - [Pytania](common-questions-appliance.md) dotyczące urządzenia Azure Migrateowego.
+- [Pytania](common-questions-server-migration.md) dotyczące migracji serwera.
+
 
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Ile maszyn wirtualnych można odnajdywać za pomocą urządzenia?

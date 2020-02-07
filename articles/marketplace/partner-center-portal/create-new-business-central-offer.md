@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 22a5b86c8b3df4da5fe338a8ba1230d0247a5826
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4c0467039cf4fefd7625f1146c4bade99b49304d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046008"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048722"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Utwórz nową ofertę Dynamics 365 Business Central
 
@@ -57,7 +57,7 @@ Utwórz listę ofert klientom z linkiem do bezpłatnej wersji próbnej, podając
 > [!NOTE]
 > Tokeny wysyłane przez aplikację za pomocą linku do wersji próbnej mogą być używane tylko w celu uzyskania informacji o użytkowniku za pomocą usługi Azure Active Directory (Azure AD) w celu zautomatyzowania tworzenia kont w aplikacji. Konta Microsoft nie są obsługiwane na potrzeby uwierzytelniania przy użyciu tego tokenu.
 
-#### <a name="contact-me"></a>Kontakt ze mną
+#### <a name="contact-me"></a>Skontaktuj się z nami
 
 Zbierz informacje kontaktowe klienta, łącząc system zarządzania relacjami z klientami (CRM). Klient zostanie poproszony o zgodę na udostępnienie swoich informacji. Te szczegóły klienta, wraz z nazwą oferty, IDENTYFIKATORem i źródłem witryny Marketplace, gdzie znalazły ofertę, zostaną wysłane do skonfigurowanego systemu CRM. Aby uzyskać więcej informacji o konfigurowaniu programu CRM, zobacz [łączenie z usługą Zarządzanie potencjalnymi klientami](#connect-lead-management). 
 
@@ -108,19 +108,9 @@ Wybierz co najmniej jedną i maksymalnie trzy kategorie, które będą używane 
 
 Wprowadź numer wersji oferty. Klienci będą widzieć tę wersję na liście na stronie szczegółów oferty.
 
-### <a name="standard-contract"></a>Kontrakt standardowy
+### <a name="terms-and-conditions"></a>Warunki i postanowienia
 
-Aby uprościć proces zakupów dla klientów i zmniejszyć złożoność prawną dla dostawców oprogramowania, firma Microsoft oferuje standardowy szablon kontraktu, aby ułatwić obsługę transakcji w portalu Marketplace.
-
-Zamiast przedstawiać niestandardowe warunki i postanowienia, możesz zaoferować oprogramowanie w ramach standardowej umowy, której klienci muszą jedynie Zweryfikuj i akceptować.
-
-Kontrakt standardowy można znaleźć tutaj: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Aby korzystać z kontraktu standardowego, zaznacz pole wyboru **Użyj kontraktu standardowego?** .
-
-#### <a name="terms-of-use"></a>Warunki użytkowania
-
-Jeśli nie sprawdzisz pola **Używaj standardowej umowy?** , musisz podać własne warunki prawne użytkowania w polu **warunki użytkowania** . Wprowadź do 10 000 znaków tekstu lub, jeśli warunki użytkowania wymagają dłuższego opisu, podaj adres URL, pod którym można znaleźć dodatkowe postanowienia licencyjne. Klienci będą musieli zaakceptować te warunki, aby wypróbować aplikację.
+Podaj własne warunki prawne i postanowienia w polu Warunki **i** postanowienia. Możesz także podać adres URL, pod którym można znaleźć warunki i postanowienia. Klienci będą musieli zaakceptować te warunki, aby wypróbować ofertę.
 
 ## <a name="offer-listing"></a>Lista oferty
 
@@ -131,7 +121,7 @@ Musisz zdefiniować szczegóły witryny Marketplace (nazwę oferty, opis, obrazy
 > [!NOTE]
 > Oferta zawartości oferty (na przykład opis, dokumenty, zrzuty ekranu, warunki użytkowania itp.) nie jest wymagana w języku angielskim, tak długo, jak opis oferty zaczyna się od frazy "Ta aplikacja jest dostępna tylko w języku innym niż angielski]". Można także zapewnić *przydatny adres URL linku* do oferowania zawartości w języku innym niż ten, który jest używany w ofercie dotyczącej oferty.
 
-### <a name="name"></a>Nazwa
+### <a name="name"></a>Name (Nazwa)
 
 Nazwa wprowadzona w tym miejscu będzie wyświetlana klientom jako tytuł oferty. To pole jest wstępnie wypełniane tekstem wprowadzonym dla **aliasu oferty** podczas tworzenia oferty, ale można zmienić tę wartość. Ta nazwa może być znakiem towarowym (i może zawierać znaki towarowe lub autorskie). Nazwa nie może być dłuższa niż 50 znaków i nie może zawierać żadnych znaków emoji.
 
@@ -172,7 +162,7 @@ Skorzystaj z poniższych instrukcji, aby użyć edytora tekstu sformatowanego:
 
      ![Używanie edytora tekstu sformatowanego do wcięcia](./media/text-editor5.png)
 
-### <a name="search-keywords"></a>Wyszukaj słowa kluczowe
+### <a name="search-keywords"></a>Słowa kluczowe wyszukiwania
 
 Opcjonalnie możesz wprowadzić do trzech słów kluczowych wyszukiwania, aby pomóc klientom w znalezieniu oferty w portalu Marketplace. Aby uzyskać najlepsze wyniki, spróbuj użyć tych słów kluczowych również w opisie.
 
@@ -218,7 +208,7 @@ Obraz Hero jest opcjonalny. Jeśli postanowisz jeden, musi on mierzyć 815 x 290
 
 Dodaj zrzuty ekranu pokazujące, jak działa Twoja oferta. Wymagane są co najmniej trzy zrzuty ekranu i można dodać maksymalnie pięć. Wszystkie zrzuty ekranu muszą mieć 1280 x 720 pikseli.
 
-#### <a name="videos"></a>Filmy
+#### <a name="videos"></a>Filmy wideo
 
 Opcjonalnie możesz dodać maksymalnie pięć filmów wideo, które demonstrują Twoją ofertę. Te filmy wideo powinny być hostowane w usłudze YouTube i/lub Vimeo. Dla każdej z nich wprowadź nazwę filmu wideo, jego adres URL i obraz miniatury filmu wideo (1280 x 720 pikseli)
 
@@ -398,7 +388,7 @@ Opcjonalnie możesz przekazać plik **automatyzacji testów aplikacji** tutaj (.
 
 Jeśli konto testowe jest konieczne, aby nasz zespół certyfikacji mógł prawidłowo przejrzeć Twoją ofertę, Przekaż plik PDF, doc lub docx do informacji o **kontach testowych** .
 
-## <a name="publish"></a>Publikuj
+## <a name="publish"></a>Publikowanie
 
 ### <a name="submit-offer-to-preview"></a>Prześlij ofertę do wersji zapoznawczej
 

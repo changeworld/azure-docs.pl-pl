@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa2d58a40c623cc451ca30aaa9d75a4a6b3d4c0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7902112c1694bacfeb45b5f20db80d5136642169
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983881"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047951"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) przy użyciu narzędzia Azure AD SAML Toolkit
 
@@ -45,6 +45,7 @@ Aby rozpocząć, potrzebne są następujące elementy:
 W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
 * Zestaw narzędzi języka SAML usługi Azure AD obsługuje protokół SSO zainicjowany przez usługę **SP**
+* Po skonfigurowaniu programu Azure AD SAML Toolkit można wymusić kontrolę sesji, która chroni eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolka sesji rozszerzy od dostępu warunkowego. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-azure-ad-saml-toolkit-from-the-gallery"></a>Dodawanie zestawu narzędzi SAML usługi Azure AD z galerii
 
@@ -76,17 +77,17 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **usługi Azure AD SAML Toolkit** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
 1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia. Ustawienia można pobrać przy użyciu strony konfiguracji SAML Toolkit języka SAML. 
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
 1. Na stronie **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://samltoolkit.azurewebsites.net/SAML/Login/<3digitnumber>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://samltoolkit.azurewebsites.net/`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL: `https://samltoolkit.azurewebsites.net`
 
-    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL: `https://samltoolkit.azurewebsites.net/SAML/Consume/<3digitnumber>`
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL: `https://samltoolkit.azurewebsites.net/SAML/Consume`
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (RAW)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
@@ -164,7 +165,7 @@ W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure A
 
 Po kliknięciu kafelka usługi Azure AD SAML Toolkit w panelu dostępu należy automatycznie zalogować się do zestawu narzędzi SAML usługi Azure AD, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -173,3 +174,7 @@ Po kliknięciu kafelka usługi Azure AD SAML Toolkit w panelu dostępu należy a
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Wypróbuj usługę Azure AD SAML Toolkit z usługą Azure AD](https://aad.portal.azure.com/)
+
+- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chronić zestaw narzędzi SAML usługi Azure AD za pomocą zaawansowanej widoczności i kontrolek](https://docs.microsoft.com/cloud-app-security/protect-azure)

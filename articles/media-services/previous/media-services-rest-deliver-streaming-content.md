@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8e3c2b7f4087f0f47466eff47b22c59dad19892e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774942"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050003"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Publikowanie Azure Media Services zawartości przy użyciu interfejsu REST 
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ Można przesyłać strumieniowo plik MP4 z adaptacyjną szybkością transmisji 
 
 Lokalizatora przesyłania strumieniowego OnDemand można także użyć do kompilowania adresów URL, które wskazują pliki MP4, które mogą być stopniowo pobierane.  
 
-W tym artykule pokazano, jak utworzyć lokalizator przesyłania strumieniowego OnDemand, aby opublikować element zawartości i utworzyć gładkie i HLS adresy URL przesyłania strumieniowego. Przedstawiono w nim również adresy URL pobierania progresywnego.
+W tym artykule pokazano, jak utworzyć lokalizator przesyłania strumieniowego OnDemand, aby opublikować element zawartości i utworzyć gładkie i HLS adresy URL przesyłania strumieniowego. Przedstawiono w nim również sposób tworzenia progresywnych adresów URL pobierania.
 
 W [poniższej](#types) sekcji przedstawiono typy wyliczeniowe, których wartości są używane w wywołaniach Rest.   
 
@@ -46,7 +46,7 @@ W [poniższej](#types) sekcji przedstawiono typy wyliczeniowe, których wartośc
 Aby uzyskać informacje na temat nawiązywania połączenia z interfejsem API usługi AMS, zobacz [dostęp do interfejsu api Azure Media Services przy użyciu uwierzytelniania w usłudze Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Po pomyślnym nawiązaniu połączenia z https://media.windows.net otrzymasz przekierowanie 301 określające inny Media Services identyfikator URI. Należy wykonać kolejne wywołania nowego identyfikatora URI.
+>Po pomyślnym nawiązaniu połączenia z https://media.windows.netotrzymasz przekierowanie 301 określające inny Media Services identyfikator URI. Należy wykonać kolejne wywołania nowego identyfikatora URI.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>Tworzenie lokalizatora przesyłania strumieniowego OnDemand
 Aby utworzyć lokalizator przesyłania strumieniowego OnDemand i uzyskać adresy URL, należy wykonać następujące czynności:
@@ -190,10 +190,10 @@ przykład:
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 [Omówienie interfejsu API REST usługi Media Services Operations](media-services-rest-how-to-use.md)
 
 [Konfigurowanie zasad dostarczania elementów zawartości](media-services-rest-configure-asset-delivery-policy.md)

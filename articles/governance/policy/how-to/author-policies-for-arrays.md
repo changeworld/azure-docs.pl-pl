@@ -3,12 +3,12 @@ title: Tworzenie zasad dla właściwości tablicy zasobów
 description: Dowiedz się, jak korzystać z parametrów tablicy i wyrażeń języka tablicowego, oszacować alias [*] i dołączać elementy z regułami definicji Azure Policy.
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023195"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050081"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Tworzenie zasad dla właściwości tablicy zasobów platformy Azure
 
@@ -140,8 +140,7 @@ Oczekiwany **Typ** warunku `equals` to _ciąg_. Ponieważ **allowedLocations** j
 
 ### <a name="evaluating-the--alias"></a>Ocenianie aliasu [*]
 
-Aliasy, które mają **\[\*\]** dołączone do ich nazwy wskazują, że **Typ** jest _tablicą_. Zamiast oceniać wartość całej tablicy, **\[\*\]** umożliwia ocenę każdego elementu tablicy pojedynczo, z logicznym i między nimi. Istnieją trzy standardowe scenariusze, które dla każdej oceny elementu są użyteczne w: _Brak_, _dowolne_lub _wszystkie_ elementy są zgodne.
-W przypadku złożonych scenariuszy należy użyć [Count](../concepts/definition-structure.md#count).
+Aliasy, które mają **\[\*\]** dołączone do ich nazwy wskazują, że **Typ** jest _tablicą_. Zamiast oceniać wartość całej tablicy, **\[\*\]** umożliwia ocenę każdego elementu tablicy pojedynczo, z logicznym i między nimi. Istnieją trzy standardowe scenariusze, które dla każdej oceny elementu są użyteczne w: _Brak_, _dowolne_lub _wszystkie_ elementy są zgodne. W przypadku złożonych scenariuszy należy użyć [Count](../concepts/definition-structure.md#count).
 
 Aparat zasad wyzwala **efekt** w **then** tylko wtedy, gdy reguła **if** ma wartość true.
 Jest to ważne, aby zrozumieć w kontekście sposobu, w jaki **\[\*\]** oblicza każdy pojedynczy element tablicy.
@@ -187,28 +186,28 @@ Poniższe wyniki są wynikiem kombinacji warunku i przykładową regułę zasad 
 |Warunek |Wynik | Scenariusz |Wyjaśnienie |
 |-|-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Nothing |Brak dopasowania |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_ , a efekt nie jest wyzwalany. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Policy effect |Brak dopasowania |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_ i zostanie wyzwolony efekt. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Policy effect |Co najmniej jedno dopasowanie |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Efekt zasad |Brak dopasowania |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_ i zostanie wyzwolony efekt. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Efekt zasad |Co najmniej jedno dopasowanie |Jeden element tablicy ma wartość false (127.0.0.1! = 127.0.0.1) i jeden jako true (127.0.0.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
 |`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Co najmniej jedno dopasowanie |Oba elementy tablicy są oceniane jako prawdziwe (10.0.4.1! = 127.0.0.1 i 10.0.4.1! = 192.168.1.1), więc warunek **notEquals** ma _wartość true_. Operator logiczny ma wartość false (**nie** _true_), więc efekt nie zostanie wyzwolony. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Policy effect |Not all match |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Policy effect |Not all match |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_. The logical operator evaluates as true (**not** _false_), so the effect is triggered. |
-|`{<field>,"Equals":"127.0.0.1"}` |Nothing |All match |One array element evaluates as true (127.0.0.1 == 127.0.0.1) and one as false (127.0.0.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nothing |All match |Both array elements evaluate as false (10.0.4.1 == 127.0.0.1 and 10.0.4.1 == 192.168.1.1), so the **Equals** condition is _false_ and the effect isn't triggered. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Efekt zasad |Nie wszystkie dopasowania |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Efekt zasad |Nie wszystkie dopasowania |Oba elementy tablicy są oceniane jako false (10.0.4.1 = = 127.0.0.1 i 10.0.4.1 = = 192.168.1.1), więc warunek **Equals** ma _wartość false_. Operator logiczny ma wartość true (**nie** _false_), więc efekt zostanie wyzwolony. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nothing |Wszystkie dopasowania |Jeden element tablicy ma wartość true (127.0.0.1 = = 127.0.0.1) i jeden jako wartość false (127.0.0.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Wszystkie dopasowania |Oba elementy tablicy są oceniane jako false (10.0.4.1 = = 127.0.0.1 i 10.0.4.1 = = 192.168.1.1), więc warunek **równości** ma _wartość false_ , a efekt nie jest wyzwalany. |
 
-## <a name="the-append-effect-and-arrays"></a>The append effect and arrays
+## <a name="the-append-effect-and-arrays"></a>Efekt dołączania i tablice
 
-The [append effect](../concepts/effects.md#append) behaves differently depending on if the **details.field** is a **\[\*\]** alias or not.
+[Efekt dołączania](../concepts/effects.md#append) zachowuje się inaczej w zależności od tego, czy **pole Details** ma **\[\*alias \]** .
 
-- When not a **\[\*\]** alias, append replaces the entire array with the **value** property
-- When a **\[\*\]** alias, append adds the **value** property to the existing array or creates the new array
+- Gdy nie jest **\[\*alias \]** , Append zastępuje całą tablicę właściwością **Value**
+- Gdy **\[\*alias \]** , Append dodaje właściwość **Value** do istniejącej tablicy lub tworzy nową tablicę
 
-For more information, see the [append examples](../concepts/effects.md#append-examples).
+Aby uzyskać więcej informacji, zobacz [przykłady dołączania](../concepts/effects.md#append-examples).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Review examples at [Azure Policy samples](../samples/index.md).
+- Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
-- Understand how to [programmatically create policies](programmatically-create.md).
-- Learn how to [remediate non-compliant resources](remediate-resources.md).
-- Review what a management group is with [Organize your resources with Azure management groups](../../management-groups/overview.md).
+- Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
+- Dowiedz się, jak [skorygować niezgodne zasoby](remediate-resources.md).
+- Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

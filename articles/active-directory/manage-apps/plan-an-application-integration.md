@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1291db8cd895a1104183ae2b5388eb6a23305874
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895930"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063384"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Przewodnik po rozpoczęciu integracji Azure Active Directory z aplikacjami
 
@@ -85,7 +85,7 @@ Jeśli chcesz dodać aplikację niestandardową do galerii aplikacji platformy A
 W poniższych artykułach opisano sposoby zarządzania dostępem do aplikacji, które zostały zintegrowane z usługą Azure AD przy użyciu łączników usługi Azure AD i usługi Azure AD.
 
 * [Zarządzanie dostępem do aplikacji przy użyciu usługi Azure AD](what-is-access-management.md)
-* [Automatyzacja za pomocą łączników usługi Azure AD](user-provisioning.md)
+* [Automatyzacja za pomocą łączników usługi Azure AD](../app-provisioning/user-provisioning.md)
 * [Assigning users to an application](../active-directory-applications-guiding-developers-assigning-users.md) (Przypisywanie użytkowników do aplikacji)
 * [Assigning groups to an application](../active-directory-applications-guiding-developers-assigning-groups.md) (Przypisywanie grup do aplikacji)
 * [Udostępnianie kont](../active-directory-sharing-accounts.md)
@@ -95,7 +95,7 @@ Aby uzyskać szczegółowe informacje, możesz pobrać Azure Active Directory pl
 
 Aby pobrać plan wdrożenia z Azure Portal:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Wybierz pozycję **aplikacje dla przedsiębiorstw** | wybierz | **plan wdrożenia** **aplikacji** .
 
 Przekaż opinię na temat planów wdrażania, pobierając [ankietę dotyczącą planu wdrożenia](https://aka.ms/DeploymentPlanFeedback).

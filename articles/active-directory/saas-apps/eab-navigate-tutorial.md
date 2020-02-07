@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03de10f9ea3bc3bf13a0fffaf22805412456a6f9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e185f4065fee0399104feadc27f038dd9c4a612
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992352"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046698"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate"></a>Samouczek Azure Active Directory: integracja logowania jednokrotnego (SSO) przy użyciu EAB nawigacji
 
@@ -45,7 +45,8 @@ W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure A
 
 * EAB nawigowanie obsługuje logowanie jednokrotne w programie **SP**
 
-* Po skonfigurowaniu EAB można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+> [!NOTE]
+> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
 
 ## <a name="adding-eab-navigate-from-the-gallery"></a>Dodawanie EAB Nawiguj z galerii
 
@@ -57,7 +58,6 @@ Aby skonfigurować integrację EAB, przejdź do usługi Azure AD, musisz dodać 
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
 1. W sekcji **Dodaj z galerii** wpisz **EAB Nawiguj** w polu wyszukiwania.
 1. Wybierz pozycję **EAB przejdź** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD na potrzeby nawigacji EAB
 
@@ -82,32 +82,21 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W sekcji **Podstawowa konfiguracja protokołu SAML**, jeśli masz **plik metadanych dostawcy usługi**, wykonaj następujące kroki:
+1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
+    
+    W polu tekstowym **Identyfikator (identyfikator jednostki)** wprowadź dokładnie następującą wartość: `https://bouncer.eab.com`
+    
+    W polu tekstowym **adres URL odpowiedzi (adres URL usługi konsumenckej odbiorcy)** wprowadź obie następujące wartości jako oddzielne wiersze: `https://bouncer.eab.com/sso/saml2/acs`
+    `https://bouncer.eab.com/sso/saml2/acs/`
+    
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.navigate.eab.com/`
 
-    a. Kliknij pozycję **Przekaż plik metadanych**.
+    > [!NOTE]
+    > Ta wartość nie jest prawdziwa. Zaktualizuj wartość przy użyciu rzeczywistego adresu URL logowania. Aby uzyskać wartość, skontaktuj się z [zespołem obsługi klienta EAB](mailto:EABTechSupport@eab.com) . Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Przekazywanie pliku metadanych](common/upload-metadata.png)
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** kliknij przycisk Kopiuj, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    b. Kliknij **logo folderu**, aby wybrać plik metadanych, a następnie kliknij pozycję **Przekaż**.
-
-    ![wybierz plik metadanych](common/browse-upload-metadata.png)
-
-    d. Po pomyślnym przekazaniu pliku metadanych wartość **identyfikatora** zostanie wypełniona automatycznie w sekcji Podstawowa konfiguracja SAML.
-
-    ![EAB Nawiguj informacje logowania jednokrotnego w domenach i adresach URL](common/sp-identifier.png)
-
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.navigate.eab.com`
-
-    > [!Note]
-    > Jeśli wartość **Identyfikator** nie zostanie automatycznie wypełniona, wpisz tę wartość ręcznie zgodnie z wymaganiami. Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Aby uzyskać tę wartość, skontaktuj się z [zespołem obsługi klienta EAB](mailto:jmahoney@eab.com) . Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
-
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (RAW)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
-
-    ![Link do pobierania certyfikatu](common/certificateraw.png)
-
-1. W sekcji **konfigurowanie nawigowania po EAB** skopiuj odpowiednie adresy URL na podstawie wymagań.
-
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -141,19 +130,19 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-eab-navigate-sso"></a>Konfigurowanie EAB nawigowania po rejestracji jednokrotnej
 
-Aby skonfigurować Logowanie jednokrotne w witrynie **EAB** , musisz wysłać pobrany **certyfikat (RAW)** i odpowiednie skopiowane adresy URL z usługi Azure Portal do [EAB](mailto:jmahoney@eab.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować Logowanie jednokrotne na stronie **EAB** , musisz wysłać **adres URL metadanych federacji aplikacji** do EAB, aby [przejść do zespołu pomocy technicznej](mailto:EABTechSupport@eab.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-eab-navigate-test-user"></a>Utwórz użytkownika testowego EAB
 
-W tej sekcji utworzysz użytkownika o nazwie B. Simon w EAB. Współpracuj z [zespołem pomocy technicznej EAB](mailto:jmahoney@eab.com) , aby dodać użytkowników z platformy nawigacji EAB. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie B. Simon w EAB. Współpracuj z [zespołem pomocy technicznej EAB](mailto:EABTechSupport@eab.com) , aby dodać użytkowników z platformy nawigacji EAB. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka EAB Nawiguj w panelu dostępu należy automatycznie zalogować się do EAB, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

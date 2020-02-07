@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9519aaf7b57f5f4fbafa7248d3d524aea5d22c46
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922404"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048917"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps zasięg mobilności
 
-[Usługa mobilności](https://aka.ms/AzureMapsMobilityService) Azure Maps umożliwia korzystanie z funkcji tranzytu publicznego, udziału rowerowego i routingu Scooter z opcjami planowania podróży Multimodal. W przypadku tranzytu publicznego usługa oferuje wyszukiwanie w pobliżu stacji, zatrzymań i linii oraz zawiera informacje, takie jak zaplanowana i w czasie rzeczywistym Procedura wejścia, lista zatrzymań i trasy tras, a także szczegółowe i Multimodal trasy krok po kroku i alerty usługi. Usługa mobilności zwraca również informacje o dostępności w czasie rzeczywistym i statycznej w celu samodzielnego udostępniania samochodów i udostępnionych rowerów i Scooters.
+Azure Maps oferuje [usługę mobilności](https://aka.ms/AzureMapsMobilityService). Usługa mobilności skraca czas projektowania aplikacji z tranzytem publicznym, udziałem roweru i funkcjami udostępniania Scooter. Oferuje opcję kierowania z opcjami planowania podróży Multimodal. Funkcje do tranzytu publicznego obejmują wyszukiwanie w pobliżu stacji, wyszukiwanie zatrzymań, wyszukiwanie linii tranzytowych, pobieranie informacji o harmonogramie, pobieranie przychodzących tranzytów w czasie rzeczywistym oraz wyświetlanie listy zatrzymanych i prowadnic tras. Usługa zwraca informacje o dostępności w czasie rzeczywistym i statyczne do udostępnionych pojazdów, takich jak samochody, rowery i Scooters. Interfejs API zwraca szczegółowe i Multimodal trasy krok po kroku i alerty usług.
 
-Azure Maps nie ma tego samego poziomu informacji i dokładności dla wszystkich miast i krajów/regionów. Możliwość wywołania danych tranzytowych zależy od miasta, a dane mogą nie zawierać wszystkich opcji tranzytu publicznego i agencji, które obsługują miasto.
+Azure Maps nie ma tego samego poziomu informacji i dokładności dla wszystkich miast i krajów/regionów. Możliwość wywołania danych tranzytowych zależy od miasta. Dane mogą nie zawierać wszystkich opcji tranzytu publicznego i agencji, które obsługują miasto.
 
 Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilności Azure Maps.
 
@@ -46,7 +46,7 @@ Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilno
 | Peru | Cusco, Lima |
 | Portoryko | Juan San |
 | Urugwaj | Montevideo (, Punta del Este |
-| Stany Zjednoczone | <p>Albany (NY), Albuquerque (NM), mocowanie (klucza uwierzytelniania), Appleton-Oshkosh-Neenah (WI), Asheville (NC), Ateny (), Atlanta (GA), Austin (TX), Bakersfield (CA), Baltimore), Bellevue (WA), zgięcie Redmond (lub), Berkshire County (MA), Birmingham (AL), Bloomington (w), Boise (ID), Boston (MA), Boulder (CO), Brevard County (FL), Buffalo (NY), Butte (MT), Wyspy Zielonego Przylądka), powiat (PA), Champaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (TN), Cheyenne (WY), Chicago (IL), Cincinnati (niestety), powiat (FL), Cleveland (np.), Coachella (CA), Kolorado sprężyny (CO), Kolumbia (TN), Kolumbia (SC), Columbus (), korpus Christi (TX), Dallas/dalej (TX), Dayton (), Delaware, Denver (CO), Des Moines (IA), Detroit (MI), Duluth (MN), El Paso (TX), Eugene (lub), Fairbanks (klucza uwierzytelniania), Fargo (ND), Fayetteville (NC), Flagstaff (AZ), krzesiwowych (MI) Fort Collins (CO), Fort Wayne (w programie), Fresno (CA), Gainesville (FL), Grand Rozwidleni (ND), Grand Rapids (MI), Zielona kieszeń (WI), Greensboro (NC), Greenville (SC), Gunnison (CO), Hampton drogi (VA), Hanford (CA), Hartford (CT), Hernando County (FL), Hinesville (GA), (Honolulu (HI), Houston (TX), Humboldt County (CA), Huntsville (AL), Indianapolis (w), Ithaca (w),, Jacksona (MS), Jacksona (TN), Jacksonville-St. Jan powiat (FL), Johnsonem City (TN), Jonesboro (AR), Joplin (MO), Juneau (klucza uwierzytelniania), Kalamazoo (MI), Kalispell (MT), Kansas City (MO), Kauai (HI), Ketchum (ID), Knoxville (TN), Lafayette (w), Lancaster (PA), Lansing (MI), Las Vegas (NV), Lawrence (KS), Lewandowski County (FL), Lexington (KY), powiat Lincoln (lub), mały Rock (AR), Los Angeles (CA), Louisville (KY), Madison (WI), Manchester (NH), McAllen (TX), Memphis (TN), Miami (FL), Milwaukee/Waukesha (WI), Minneapolis-St. Paul (MN), Missoula (MT), Modesto (USA), Moline (IL), Monroe powiat (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), biały nawaho kraj), New Haven (CT), New Orleans (LA), NYC-NJ), Ocala (FL), Okaloosa powiat (FL), Oklahoma City (OK), Omaha (NE), Orlando (FL), Panama City (FL), Pensacola (FL), Peoria (IL), Philadelphia (PA), Phoenix (AZ), Pittsburgh (PA), Portland (ME), Portland (lub), Racine (WI), Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke Dolina (VA-Lynchburg), Rochester (NY), Rocky górski Narodowy Park), Dolina nieautoryzowany (lub), Roseburg (lub), Roseville (CA), Sacramento (CA), Salem (lub), sole Lake City (UT), San Antonio (TX), San Diego (CA), San Luis Obispo (CA), Santa Barbara (CA), Santa Fe (NM), Sarasota (FL), Savannah (GA), Seacoast region (NH), Seattle-Tacoma-Bellevue (WA), obszar wnęki SF (CA), Sioux Miasto (IA), Siouxd (SD), sitka (klucza uwierzytelniania), Spokane (WA), Springfield (IL), Springfield (masa), St. George (UT), St. Louis (MO), (CA), Stockton-Syracuse (w), Utica (FL), Tallahassee-St. Petersburg (FL), Tampa Terre (IN), Toledo (), Topeka (KS), przechodzenie przez miasto (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Volusia powiat (FL), Waco (TX), Waszyngton (DC), Waterbury (CT), Wichita (KS), Wilmington (NC), Yakima (WA), Jorku</p>|
+| Stany Zjednoczone Ameryki | <p>Albany (NY), Albuquerque (NM), mocowanie (klucza uwierzytelniania), Appleton-Oshkosh-Neenah (WI), Asheville (NC), Ateny (), Atlanta (GA), Austin (TX), Bakersfield (CA), Baltimore), Bellevue (WA), zgięcie Redmond (lub), Berkshire County (MA), Birmingham (AL), Bloomington (w), Boise (ID), Boston (MA), Boulder (CO), Brevard County (FL), Buffalo (NY), Butte (MT), Wyspy Zielonego Przylądka), powiat (PA), Champaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (TN), Cheyenne (WY), Chicago (IL), Cincinnati (niestety), powiat (FL), Cleveland (np.), Coachella (CA), Kolorado sprężyny (CO), Kolumbia (TN), Kolumbia (SC), Columbus (), korpus Christi (TX), Dallas/dalej (TX), Dayton (), Delaware, Denver (CO), Des Moines (IA), Detroit (MI), Duluth (MN), El Paso (TX), Eugene (lub), Fairbanks (klucza uwierzytelniania), Fargo (ND), Fayetteville (NC), Flagstaff (AZ), krzesiwowych (MI) Fort Collins (CO), Fort Wayne (w programie), Fresno (CA), Gainesville (FL), Grand Rozwidleni (ND), Grand Rapids (MI), Zielona kieszeń (WI), Greensboro (NC), Greenville (SC), Gunnison (CO), Hampton drogi (VA), Hanford (CA), Hartford (CT), Hernando County (FL), Hinesville (GA), (Honolulu (HI), Houston (TX), Humboldt County (CA), Huntsville (AL), Indianapolis (w), Ithaca (w),, Jacksona (MS), Jacksona (TN), Jacksonville-St. Jan powiat (FL), Johnsonem City (TN), Jonesboro (AR), Joplin (MO), Juneau (klucza uwierzytelniania), Kalamazoo (MI), Kalispell (MT), Kansas City (MO), Kauai (HI), Ketchum (ID), Knoxville (TN), Lafayette (w), Lancaster (PA), Lansing (MI), Las Vegas (NV), Lawrence (KS), Lewandowski County (FL), Lexington (KY), powiat Lincoln (lub), mały Rock (AR), Los Angeles (CA), Louisville (KY), Madison (WI), Manchester (NH), McAllen (TX), Memphis (TN), Miami (FL), Milwaukee/Waukesha (WI), Minneapolis-St. Paul (MN), Missoula (MT), Modesto (USA), Moline (IL), Monroe powiat (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), biały nawaho kraj), New Haven (CT), New Orleans (LA), NYC-NJ), Ocala (FL), Okaloosa powiat (FL), Oklahoma City (OK), Omaha (NE), Orlando (FL), Panama City (FL), Pensacola (FL), Peoria (IL), Philadelphia (PA), Phoenix (AZ), Pittsburgh (PA), Portland (ME), Portland (lub), Racine (WI), Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke Dolina (VA-Lynchburg), Rochester (NY), Rocky górski Narodowy Park), Dolina nieautoryzowany (lub), Roseburg (lub), Roseville (CA), Sacramento (CA), Salem (lub), sole Lake City (UT), San Antonio (TX), San Diego (CA), San Luis Obispo (CA), Santa Barbara (CA), Santa Fe (NM), Sarasota (FL), Savannah (GA), Seacoast region (NH), Seattle-Tacoma-Bellevue (WA), obszar wnęki SF (CA), Sioux Miasto (IA), Siouxd (SD), sitka (klucza uwierzytelniania), Spokane (WA), Springfield (IL), Springfield (masa), St. George (UT), St. Louis (MO), (CA), Stockton-Syracuse (w), Utica (FL), Tallahassee-St. Petersburg (FL), Tampa Terre (IN), Toledo (), Topeka (KS), przechodzenie przez miasto (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Volusia powiat (FL), Waco (TX), Waszyngton (DC), Waterbury (CT), Wichita (KS), Wilmington (NC), Yakima (WA), Jorku</p>|
 | \+ Wyspy Dziewicze Stanów Zjednoczonych | Wyspy Dziewicze Stanów Zjednoczonych * |
 
 
@@ -56,7 +56,7 @@ Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilno
 |--------|---------|
 | Australia      | <p>Adelajda, Alicja sprężyny, Bowen, Brisbane, Bundaberg QLD, granie, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, Wyspa magnetyczna, Maryborough-Hervey Bay, Melbourne, Nowa Południowa Walia, Perth, RockHampton, Południowo-Wschodnia Queensland, Sydney, Toowoomba, Townsville, stan Wiktoria, Warwick, Yeppoon</p> |
 | Chiny | <p> Changchun, Changsha, Chengdu, Czungking, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Szanghaj Guangzhou, Shenzhen, Zhengzhou</P>| 
-| SRA Hongkong | Hongkong SAR *|
+| Hongkong | Hongkong SAR *|
 | SRA Makau | Makau SAR *|
 | Indie | Ahmedabad, Bengaluru, Delhi, Mumbaj, Mysuru, Pune|
 | Indonezja | Bandung, Banyuwangi, Batam, Denpasar, Dżakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
@@ -77,7 +77,7 @@ Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilno
 |----------------|---------|
 | Andora        | Andora La Vella |
 | Atenach         | Chios | 
-| Austria        | Wiedeń |
+| Austria        | Konwencj |
 | Białoruś        | Gomel, Grodno, Polotsk & Novopolotsk, Zhlobin, Vileyka, Maladziečna, Mińsk, Rechytsa | 
 | Belgia        | Belgijsk |
 | Boliwia        | La Paz, Santa Cruz de la Sierra | 
@@ -85,7 +85,7 @@ Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilno
 | Bułgaria       | <p>Balchik, Blagoevgrad, Burgas, Dobrich, Gabrovo, Haskovo, Kardzhali, Lovech, Nessebar, Pazardzhik, Pleven, Plovdiv, Ruse, Shumen, Sliven, Stara Zagora, Vratsa, Yambol, Varna, Weliko, Sofia</P> |
 | Chorwacja | Crikvenica, Dubrovnik, Rijeka, Slovanski Brod, Zagrzeb | 
 | Cypr | Larnaca, Limassol, Nikozja | 
-| Republika Czeska | Brno, Jablonec, Karlovy Zróżnicuj, Liberec, Ostrava, Praga | 
+| Czechy | Brno, Jablonec, Karlovy Zróżnicuj, Liberec, Ostrava, Praga | 
 | Dania   | Danii |
 | Estonia   | Estońskiej |   
 | Finlandia   | Hämeenlinna, Helsinki, Joensuu, Jyväskylä, Kajaani, Kouvola - Kotka, Kuopio, Lappeenranta, Mikkeli, Oulu, Seinäjoki, Tampere, Turku, Vaasa|
@@ -118,7 +118,7 @@ Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilno
 | Szwecja | Goteborg/Gothenburg/Jonkoping, Malmö kommun-Malmö, Norrköping Och Linköping, Sztokholm, Sundsvall |
 | Szwajcaria | Basel, Genewa, Yverdon-les-Bains, Zurych | 
 | Turcja | Adana-Mersin, Ankara, Antalya, Balıkesir, bilecik, Bolu, Bursa, Denizli, duzce, Elazig, Eskisehir, Stambuł, Izmir-Aydin, Kahramanmaras, Kayseri, Konya, Malatya, Muğla, Samsun, Şanlıurfa |    
-| Zjednoczone Królestwo | Wschodnie Anglia, wschód Midlands, Londyn i Południowo-Wschodnia, północno-wschodnia, północne Zachodnie, Irlandia Północna, Szkocja, południowe zachodnie, Walia, zachodnie Midlands, Yorkshire |
+| Wielka Brytania | Wschodnie Anglia, wschód Midlands, Londyn i Południowo-Wschodnia, północno-wschodnia, północne Zachodnie, Irlandia Północna, Szkocja, południowe zachodnie, Walia, zachodnie Midlands, Yorkshire |
 | Ukraina | Kharkiv, Zhytomyr, Kijów, Lviv, Chernivtsi |
 
 
@@ -127,14 +127,14 @@ Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilno
 | Kraj/region |  Miasto (obszar Metro) |
 |---------|---------|
 | Bahrajn | Bahrajnu |
-| Egipt | Cairo    |
+| Egipt | Kair    |
 | Izrael| Izrael  |
 | Kenia | Nairobi  | 
 | Madagaskar | Antananarywa |
 | Maroko | Casablanca, Khouribga, Tétouan|
 | Katar| Doha|
 | Arabia Saudyjska | Thuwal |
-| Republika Południowej Afryki | Kapsztad |
+| Republika Południowej Afryki | Miasto Wyspy Zielonego |
 | Tunezja | Kairouan |
 | Zjednoczone Emiraty Arabskie  | Abu Zabi, Dubaj |
 

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 012300c95fd1edd135b97f52ed3702ce3e7ef0bd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894899"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048968"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -95,11 +95,11 @@ W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są automa
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Zaawansowane przetwarzanie wstępne: opcjonalne cechowania
 
-Dostępne są również dodatkowe zaawansowane procesy przetwarzania wstępnego i cechowania, takie jak guardrails danych, kodowanie i przekształcenia. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-create-portal-experiments.md#preprocess). Włącz to ustawienie przy użyciu:
+Dostępne są również dodatkowe zaawansowane procesy przetwarzania wstępnego i cechowania, takie jak guardrails danych, kodowanie i przekształcenia. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-create-portal-experiments.md#featurization). Włącz to ustawienie przy użyciu:
 
-+ Azure Machine Learning Studio: wybierz opcję **Wyświetl ustawienia cechowania** w sekcji **uruchomienie konfiguracji** , [wykonując następujące kroki](how-to-create-portal-experiments.md).
++ Azure Machine Learning Studio: Włącz **Automatyczne cechowania** w sekcji **Wyświetl dodatkową konfigurację** , [wykonując następujące kroki](how-to-create-portal-experiments.md#create-and-run-experiment).
 
-+ Zestaw SDK języka Python: Określanie `"feauturization": auto' / 'off' / FeaturizationConfig` dla [klasy`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
++ Zestaw SDK języka Python: Określanie `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` dla [klasy`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
 ## <a name="prevent-over-fitting"></a>Zapobiegaj nadmiernemu dopasowaniu
 
@@ -139,7 +139,7 @@ Krzyżowe sprawdzanie poprawności (CV) to proces tworzenia wielu podzbiorów da
 
 Należy wziąć pod uwagę następujące przeszkolone modele i ich odpowiadające im uczenia i testy.
 
-| Model | Dokładność szkolenia | Dokładność testu |
+| Modelowanie | Dokładność szkolenia | Dokładność testu |
 |-------|----------------|---------------|
 | A | 99,9% | 95% |
 | B | 87% | 87% |

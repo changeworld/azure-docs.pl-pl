@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf72566a0aa2547de7b88cb838b2f6ff1828c6f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 986aa000102cfed01666c8a95c00847ecc0cd651
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293100"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047266"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Amazon Web Services (AWS)
 
@@ -34,7 +34,7 @@ Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zo
 
 ![Diagram relacji usług Azure AD i AWS](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Można skonfigurować wiele identyfikatorów dla wielu wystąpień. Przykład:
+Można skonfigurować wiele identyfikatorów dla wielu wystąpień. Na przykład:
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -65,7 +65,7 @@ Aby rozpocząć, potrzebne są następujące elementy:
 W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
 * Usługi Amazon Web Services (AWS) obsługują logowanie jednokrotne inicjowane przez **dostawcę usługi i dostawcę tożsamości**
-* Po skonfigurowaniu Amazon Web Services (AWS) można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po skonfigurowaniu Amazon Web Services (AWS) można wymusić kontrolę sesji, która chroni eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolka sesji rozszerzy od dostępu warunkowego. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
@@ -130,7 +130,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij przycisk **Utwórz**.
+   1. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -175,7 +175,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. W obszarze **Nazwa dostawcy**wpisz nazwę dostawcy (na przykład: *WAAD*).
 
-    d. Aby przekazać pobrany **plik metadanych** z Azure Portal, wybierz pozycję **Wybierz plik**.
+    c. Aby przekazać pobrany **plik metadanych** z Azure Portal, wybierz pozycję **Wybierz plik**.
 
     d. Wybierz **Następny krok**.
 
@@ -195,7 +195,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. W obszarze **Wybierz dostawcę saml 2,0**wybierz wcześniej utworzony **dostawca SAML** (na przykład: *WAAD*).
 
-    d. Wybierz pozycję **Allow programmatic and AWS Management Console access** (Zezwalaj na dostęp programowy i za pomocą konsoli AWS Management Console).
+    c. Wybierz pozycję **Allow programmatic and AWS Management Console access** (Zezwalaj na dostęp programowy i za pomocą konsoli AWS Management Console).
   
     d. Wybierz pozycję **Dalej: uprawnienia**.
 
@@ -211,7 +211,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. W polu **Opis roli**wprowadź opis.
 
-    d. Wybierz pozycję **Utwórz rolę**.
+    c. Wybierz pozycję **Utwórz rolę**.
 
     d. Utwórz dowolną liczbę ról zgodnie z potrzebami i zamapuj je na dostawcę tożsamości.
 
@@ -252,7 +252,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
     }
     ```
 
-    d. Wybierz pozycję **Przejrzyj zasady** , aby sprawdzić poprawność zasad.
+    c. Wybierz pozycję **Przejrzyj zasady** , aby sprawdzić poprawność zasad.
 
     ![Zrzut ekranu przedstawiający stronę Tworzenie zasad](./media/amazon-web-service-tutorial/policy5.png)
 
@@ -264,7 +264,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. W polu **Opis**wprowadź następujące zasady umożliwią **pobranie ról z kont usługi AWS**.
 
-    d. Wybierz pozycję **Utwórz zasady**.
+    c. Wybierz pozycję **Utwórz zasady**.
 
 17. Utwórz nowe konto użytkownika w usłudze IAM AWS.
 
@@ -276,7 +276,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     ![Zrzut ekranu przedstawiający przycisk Dodaj użytkownika](./media/amazon-web-service-tutorial/policy4.png)
 
-    d. W sekcji **Dodawanie użytkownika** :
+    c. W sekcji **Dodawanie użytkownika** :
 
     ![Zrzut ekranu przedstawiający stronę Dodawanie użytkownika z wyróżnioną nazwą użytkownika i typem dostępu](./media/amazon-web-service-tutorial/adduser1.png)
 
@@ -294,7 +294,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. Wyszukaj nowo utworzone zasady w sekcji **AzureAD_SSOUserRole_Policy** filtru.
 
-    d. Wybierz zasady, a następnie wybierz kolejno pozycje **Dalej: przegląd**.
+    c. Wybierz zasady, a następnie wybierz kolejno pozycje **Dalej: przegląd**.
 
 19. Zapoznaj się z zasadami dla dołączonego użytkownika.
 
@@ -312,7 +312,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. Wprowadź te poświadczenia w sekcji aprowizacji użytkowników usługi Azure AD, aby pobrać role z konsoli AWS.
 
-    d. Wybierz polecenie **Zamknij**.
+    c. Wybierz polecenie **Zamknij**.
 
 ### <a name="how-to-configure-role-provisioning-in-amazon-web-services-aws"></a>Jak skonfigurować Inicjowanie obsługi administracyjnej w Amazon Web Services (AWS)
 
@@ -328,7 +328,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     b. Podaj wpis tajny użytkownika usług AWS w polu **Secret Token** (Token wpisu tajnego).
 
-    d. Wybierz pozycję **Testuj połączenie**.
+    c. Wybierz pozycję **Testuj połączenie**.
 
     d. Zapisz ustawienie, wybierając pozycję **Zapisz**.
 
@@ -365,7 +365,7 @@ Po kliknięciu kafelka Amazon Web Services (AWS) na panelu dostępu powinno nast
 
   * Połączona długość roli ARN i SAML-Provider ARN dla importowanej roli nie może zawierać więcej niż 119 znaków
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -375,9 +375,9 @@ Po kliknięciu kafelka Amazon Web Services (AWS) na panelu dostępu powinno nast
 
 - [Wypróbuj Amazon Web Services (AWS) z usługą Azure AD](https://aad.portal.azure.com/)
 
-- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-aws)
+- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Jak chronić Amazon Web Services (AWS) z zaawansowaną widocznością i kontrolkami](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chronić Amazon Web Services (AWS) z zaawansowaną widocznością i kontrolkami](https://docs.microsoft.com/cloud-app-security/protect-aws)
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

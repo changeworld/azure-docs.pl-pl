@@ -7,17 +7,17 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: ba21ec6ba82ac4984d3c51fc46f88de2cd56b2b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 83902ea5a3e73603311a0c469126ed603d0ebd16
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933691"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064873"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Analizowanie danych na platformie Eksplorator danych Azure za pomocą rozszerzenia Jupyter Notebook i Kqlmagic
 
 Jupyter Notebook to aplikacja sieci Web Open Source, która umożliwia tworzenie i udostępnianie dokumentów zawierających kod na żywo, równania, wizualizacje i tekst opisowy. Użycie obejmuje czyszczenie i Przekształcanie danych, symulację liczbową, modelowanie statystyczne, wizualizację danych i uczenie maszynowe.
-[Jupyter Notebook](https://jupyter.org/) obsługuje funkcje Magic, które zwiększają możliwości jądra dzięki obsłudze dodatkowych poleceń. KQL Magic to polecenie, które rozszerza możliwości jądra języka Python w Jupyter Notebook, aby można było uruchamiać zapytania w języku Kusto w sposób natywny. Możesz łatwo łączyć język zapytań Python i Kusto, aby wykonywać zapytania i wizualizować dane przy użyciu zaawansowanej biblioteki `render` Plot.ly zintegrowanej z poleceniami. Źródła danych do uruchamiania zapytań są obsługiwane. Te źródła danych obejmują platformę Azure Eksplorator danych, szybką i wysoce skalowalną usługę eksploracji danych na potrzeby danych dzienników i telemetrii, a także Azure Monitor dzienników i Application Insights. KQL Magic działa również z rozszerzeniem Azure Notebooks, Jupyter Lab i Visual Studio Code Jupyter.
+[Jupyter Notebook](https://jupyter.org/) obsługuje funkcje Magic, które zwiększają możliwości jądra dzięki obsłudze dodatkowych poleceń. KQL Magic to polecenie, które rozszerza możliwości jądra języka Python w Jupyter Notebook, aby można było uruchamiać zapytania w języku Kusto w sposób natywny. Możesz łatwo łączyć język zapytań Python i Kusto, aby wykonywać zapytania i wizualizować dane przy użyciu zaawansowanej biblioteki Plot.ly zintegrowanej z poleceniami `render`. Źródła danych do uruchamiania zapytań są obsługiwane. Te źródła danych obejmują platformę Azure Eksplorator danych, szybką i wysoce skalowalną usługę eksploracji danych na potrzeby danych dzienników i telemetrii, a także Azure Monitor dzienników i Application Insights. KQL Magic działa również z rozszerzeniem Azure Notebooks, Jupyter Lab i Visual Studio Code Jupyter.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -44,7 +44,7 @@ Jupyter Notebook to aplikacja sieci Web Open Source, która umożliwia tworzenie
     
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Nawiązywanie połączenia z klastrem pomocy usługi Azure Eksplorator danych
 
-Użyj poniższego polecenia, aby nawiązać połączenie z bazą danych *przykładów* hostowaną w klastrze *pomocy* . W przypadku użytkowników usługi AAD innych niż Microsoft należy zastąpić nazwę `Microsoft.com` dzierżawy dzierżawie usługi AAD.
+Użyj poniższego polecenia, aby nawiązać połączenie z bazą danych *przykładów* hostowaną w klastrze *pomocy* . W przypadku użytkowników w usłudze Microsoft AAD Zastąp nazwę dzierżawy `Microsoft.com` usługą AAD.
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
@@ -52,7 +52,7 @@ Użyj poniższego polecenia, aby nawiązać połączenie z bazą danych *przykł
 
 ## <a name="query-and-visualize"></a>Zapytanie i wizualizacja
 
-Wykonywanie zapytań dotyczących danych przy użyciu [operatora renderowania](/azure/kusto/query/renderoperator) i wizualizacji danych przy użyciu biblioteki Ploy.ly. To zapytanie i wizualizacja udostępnia zintegrowane środowisko, które korzysta z natywnej KQL. Kqlmagic obsługuje większość wykresów z `timepivot`wyjątkiem `pivotchart`,, `ladderchart`i. Renderowanie jest obsługiwane ze wszystkimi atrybutami `ysplit`z wyjątkiem `accumulate` `kind`,, i. 
+Wykonywanie zapytań dotyczących danych przy użyciu [operatora renderowania](/azure/kusto/query/renderoperator) i wizualizacji danych przy użyciu biblioteki Ploy.ly. To zapytanie i wizualizacja udostępnia zintegrowane środowisko, które korzysta z natywnej KQL. Kqlmagic obsługuje większość wykresów, z wyjątkiem `timepivot`, `pivotchart`i `ladderchart`. Renderowanie jest obsługiwane ze wszystkimi atrybutami, z wyjątkiem `kind`, `ysplit`i `accumulate`. 
 
 ### <a name="query-and-render-piechart"></a>Zapytania i renderowanie piechart
 
@@ -87,7 +87,7 @@ Jeśli nie podoba Ci się domyślna paleta kolorów, Dostosuj wykresy przy użyc
     %kql --palettes -popup_window
     ```
 
-1. Wybierz paletę `cool` kolorów i ponownie Renderuj zapytanie:
+1. Wybierz paletę kolorów `cool` i ponownie Renderuj zapytanie:
 
     ```python
     %%kql -palette_name "cool"
@@ -100,7 +100,7 @@ Jeśli nie podoba Ci się domyślna paleta kolorów, Dostosuj wykresy przy użyc
 
 ## <a name="parameterize-a-query-with-python"></a>Sparametryzuj zapytania przy użyciu języka Python
 
-KQL Magic umożliwia prostą wymianę między językiem zapytań Kusto i Python. Aby dowiedzieć się więcej: [Sparametryzuj swoje zapytanie Magic KQL w języku Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
+KQL Magic umożliwia prostą wymianę między językiem zapytań Kusto i Python. Aby dowiedzieć się więcej: [SPARAMETRYZUJ KQL Magic Query w języku Python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
 
 ### <a name="use-a-python-variable-in-your-kql-query"></a>Używanie zmiennej języka Python w zapytaniu KQL
 
@@ -121,7 +121,7 @@ StormEvents
 
 ### <a name="convert-query-results-to-pandas-dataframe"></a>Konwertuj wyniki zapytania na Pandas Dataframe
 
-Możesz uzyskać dostęp do wyników zapytania KQL w ramce Dataframe. Uzyskuj dostęp do ostatnich wykonanych wyników zapytania `_kql_raw_result_` według zmiennej i łatwo Konwertuj wyniki do Pandas Dataframe w następujący sposób:
+Możesz uzyskać dostęp do wyników zapytania KQL w ramce Dataframe. Uzyskuj dostęp do ostatnich wykonanych wyników zapytania według zmiennej `_kql_raw_result_` i łatwo Konwertuj wyniki do Pandas Dataframe w następujący sposób:
 
 ```python
 df = _kql_raw_result_.to_dataframe()
@@ -130,9 +130,9 @@ df.head(10)
 
 ### <a name="example"></a>Przykład
 
-W wielu scenariuszach analizy można utworzyć notesy wielokrotnego użytku, które zawierają wiele zapytań i podawanie wyników z jednego zapytania do kolejnych zapytań. W poniższym przykładzie przedstawiono użycie zmiennej `statefilter` języka Python do filtrowania danych.
+W wielu scenariuszach analizy można utworzyć notesy wielokrotnego użytku, które zawierają wiele zapytań i podawanie wyników z jednego zapytania do kolejnych zapytań. Poniższy przykład używa zmiennej języka Python `statefilter` do filtrowania danych.
 
-1. Uruchom zapytanie, aby wyświetlić 10 najważniejszych Stanów z maksymalną `DamageProperty`wartością:
+1. Uruchom zapytanie, aby wyświetlić 10 najważniejszych Stanów z maksymalną `DamageProperty`:
 
     ```python
     %%kql
@@ -150,7 +150,7 @@ W wielu scenariuszach analizy można utworzyć notesy wielokrotnego użytku, kt�
     statefilter
     ```
 
-1. Uruchom zapytanie przy użyciu `let` instrukcji i zmiennej języka Python:
+1. Uruchom zapytanie przy użyciu instrukcji `let` i zmiennej języka Python:
 
     ```python
     %%kql
@@ -168,7 +168,7 @@ W wielu scenariuszach analizy można utworzyć notesy wielokrotnego użytku, kt�
     ```
 
 > [!TIP]
-> Aby uzyskać informacje o wszystkich dostępnych konfiguracjach `%config KQLmagic`, użyj programu. W celu rozwiązywania problemów i przechwytywania błędów Kusto, takich jak problemy z połączeniem i nieprawidłowe zapytania, należy użyć`%config Kqlmagic.short_errors=False`
+> Aby uzyskać informacje o wszystkich dostępnych konfiguracjach, użyj `%config Kqlmagic`. W celu rozwiązywania problemów i przechwytywania błędów Kusto, takich jak problemy z połączeniem i nieprawidłowe zapytania, użyj `%config Kqlmagic.short_errors=False`
 
 ## <a name="next-steps"></a>Następne kroki
 

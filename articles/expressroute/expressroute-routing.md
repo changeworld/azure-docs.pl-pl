@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901585"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048168"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -205,7 +205,7 @@ Możesz kupić więcej niż jeden obwód usługi ExpressRoute na region geopolit
 | Zachodnia Republika Południowej Afryki | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
 | **Emiraty**| |
 | Północne Zjednoczone Emiraty Arabskie | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
-| Środkowe Zjednoczone Emiraty Arabskie | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
+| Środkowy Zjednoczone Emiraty Arabskie | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
 Wszystkie trasy anonsowane przez firmę Microsoft zostaną oznaczone odpowiednią wartością społeczności. 
@@ -223,13 +223,14 @@ Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do
 | Exchange Online * * | 12076:5010 |
 | SharePoint Online * * | 12076:5020 |
 | Skype dla firm Online * * | 12076:5030 |
-| CRM Online |12076:5040 |
+| CRM Online * * * |12076:5040 |
 | Usługa Azure globalnego usług * | 12076:5050 |
-| Usługa Active Directory systemu Azure |12076:5060 |
+| Azure Active Directory |12076:5060 |
 | Inne usługi online pakietu Office 365 * * | 12076:5100 |
 
-\* Usługi globalne platformy Azure obejmują tylko usługę Azure DevOps.
-\* * Autoryzacja wymagana przez firmę Microsoft, zapoznaj się z tematem [Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft](how-to-routefilter-portal.md) 
+\* Usługi globalne platformy Azure zawierają tylko usługę Azure DevOps.
+\* * Autoryzacja wymagana przez firmę Microsoft, zapoznaj się z tematem [Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy microsoft](how-to-routefilter-portal.md)\
+Program CRM Online obsługuje Dynamics v 8.2 i poniżej. W przypadku wyższych wersji wybierz społeczność regionalną dla wdrożeń programu Dynamics.
 
 > [!NOTE]
 > Firma Microsoft nie uznaje żadnych wartości społeczności BGP ustawionych na trasach anonsowanych do firmy Microsoft.

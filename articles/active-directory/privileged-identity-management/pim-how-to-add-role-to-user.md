@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/17/2019
+ms.date: 01/05/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7cbb8c07b75509825795da45d8352140afd0864
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024232"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047104"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Przypisywanie ról usługi Azure AD w Privileged Identity Management
 
@@ -61,19 +61,9 @@ Wykonaj następujące kroki, aby użytkownik mógł kwalifikować się do roli a
 
 1. Wybierz rolę, którą chcesz przypisać, a następnie kliknij przycisk **Wybierz**.
 
-    Zostanie otwarta strona **Wybieranie elementu członkowskiego lub grupy** .
+1. Wybierz członka, do którego chcesz przypisać rolę, a następnie wybierz pozycję **Wybierz**.
 
-1. Wybierz członka lub grupę, która ma zostać przypisana do roli, a następnie wybierz pozycję **Wybierz**.
-
-    ![Wybierz okienko elementu członkowskiego lub grupy](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
-
-    Zostanie otwarte okienko ustawienia członkostwa.
-
-1. Na liście **Typ przypisania** wybierz pozycję **kwalifikujące się** lub **aktywne**.
-
-    ![Okienko ustawień członkostw](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
-
-    Privileged Identity Management dla zasobów platformy Azure oferuje dwa różne typy przypisania:
+1. Na liście **Typ przypisania** w okienku **Ustawienia członkostwa** wybierz pozycję **kwalifikujące się** lub **aktywne**.
 
     - **Kwalifikujące się** przypisania wymagają, aby członek roli wykonywał akcję do korzystania z roli. Akcje te mogą obejmować przeprowadzenie uwierzytelniania wieloskładnikowego (MFA), podanie uzasadnienia biznesowego lub żądanie zatwierdzenia od wyznaczonych osób zatwierdzających.
 
@@ -83,13 +73,9 @@ Wykonaj następujące kroki, aby użytkownik mógł kwalifikować się do roli a
 
     W zależności od ustawień roli pole wyboru może nie być wyświetlane lub może być niemodyfikowalne.
 
-1. Aby określić określony czas trwania przypisania, usuń zaznaczenie pola wyboru i zmodyfikuj datę i godzinę rozpoczęcia i/lub zakończenia.
+1. Aby określić określony czas trwania przypisania, usuń zaznaczenie pola wyboru i zmodyfikuj datę i godzinę rozpoczęcia i/lub zakończenia. Po zakończeniu wybierz pozycję **gotowe**.
 
     ![Ustawienia członkostw — Data i godzina](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. Po zakończeniu wybierz pozycję **gotowe**.
-
-    ![Nowe przypisanie — Dodaj](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
 1. Aby utworzyć nowe przypisanie roli, wybierz pozycję **Dodaj**. Zostanie wyświetlone powiadomienie o stanie.
 
@@ -171,7 +157,7 @@ Domyślnie nowi użytkownicy *kwalifikują* się tylko do roli administratora us
 
     ![Lista członków z trwałą zmianą](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members-permanent.png)
 
-## <a name="remove-a-user-from-a-role"></a>Usuwanie użytkownika z roli
+## <a name="remove-a-user-from-a-role"></a>Usuwa użytkownika z roli
 
 Możesz usunąć użytkowników z przypisań ról, ale upewnij się, że zawsze istnieje co najmniej jeden użytkownik, który jest stałym administratorem globalnym. Jeśli nie masz pewności, którzy użytkownicy nadal potrzebują przypisań ról, możesz [rozpocząć przegląd dostępu dla tej roli](pim-how-to-start-security-review.md).
 

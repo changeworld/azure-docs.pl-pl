@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 719686cb123355359391c5cb1e517ff9cfd88371
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231742"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046194"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrowanie usługi Azure Application Gateway i zapory aplikacji sieci Web z wersji 1 do wersji 2
 
@@ -25,7 +25,7 @@ Migracja obejmuje dwa etapy:
 
 W tym artykule opisano migrację konfiguracji. Migracja ruchu klienta różni się w zależności od konkretnego środowiska. [Dostępne są](#migrate-client-traffic)jednak pewne ogólne zalecenia dotyczące wysokiego poziomu.
 
-## <a name="migration-overview"></a>Migrowanie — omówienie
+## <a name="migration-overview"></a>Przegląd migracji
 
 Dostępny jest skrypt Azure PowerShell, który wykonuje następujące czynności:
 
@@ -102,7 +102,7 @@ Aby uruchomić skrypt:
    * **appgwName: [ciąg]: opcjonalne**. Jest to ciąg określony jako Nazwa nowej Standard_v2 lub WAF_v2 bramy. Jeśli ten parametr nie zostanie podany, Nazwa istniejącej bramy V1 zostanie użyta z sufiksem *_v2* dołączenia.
    * **sslCertificates: [PSApplicationGatewaySslCertificate]: opcjonalne**.  Rozdzielana przecinkami lista obiektów PSApplicationGatewaySslCertificate, które tworzysz do reprezentowania certyfikatów SSL z bramy V1, musi zostać przekazana do nowej bramy v2. Dla każdego certyfikatu SSL skonfigurowanego dla standardowej bramy v1 lub WAF V1 można utworzyć nowy obiekt PSApplicationGatewaySslCertificate za pomocą polecenia `New-AzApplicationGatewaySslCertificate` pokazanego tutaj. Wymagana jest ścieżka do pliku certyfikatu SSL i hasła.
 
-       Ten parametr jest opcjonalny tylko wtedy, gdy nie masz skonfigurowanych odbiorników HTTPS dla bramy v1 lub WAF. Jeśli masz co najmniej jedną konfigurację odbiornika HTTPS, musisz określić ten parametr.
+     Ten parametr jest opcjonalny tylko wtedy, gdy nie masz skonfigurowanych odbiorników HTTPS dla bramy v1 lub WAF. Jeśli masz co najmniej jedną konfigurację odbiornika HTTPS, musisz określić ten parametr.
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,12 +114,17 @@ Aby uruchomić skrypt:
         -Password $password
       ```
 
-      W poprzednim przykładzie można przekazać `$mySslCert1, $mySslCert2` (rozdzielone przecinkami) jako wartości tego parametru.
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: opcjonalne**. Rozdzielana przecinkami lista obiektów PSApplicationGatewayTrustedRootCertificate, które są tworzone w celu reprezentowania [zaufanych certyfikatów głównych](ssl-overview.md) na potrzeby uwierzytelniania wystąpień zaplecza z poziomu bramy v2.  
+     W poprzednim przykładzie można przekazać `$mySslCert1, $mySslCert2` (rozdzielone przecinkami) jako wartości tego parametru.
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: opcjonalne**. Rozdzielana przecinkami lista obiektów PSApplicationGatewayTrustedRootCertificate, które są tworzone w celu reprezentowania [zaufanych certyfikatów głównych](ssl-overview.md) na potrzeby uwierzytelniania wystąpień zaplecza z poziomu bramy v2.
+   
+      ```azurepowershell
+      $certFilePath = ".\rootCA.cer"
+      $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
+      ```
 
       Aby utworzyć listę obiektów PSApplicationGatewayTrustedRootCertificate, zobacz [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
    * **privateIpAddress: [ciąg]: opcjonalne**. Określony prywatny adres IP, który ma zostać skojarzony z nową bramą w wersji 2.  Ta wartość musi należeć do tej samej sieci wirtualnej, która została przydzielona dla nowej bramy v2. Jeśli ta wartość nie zostanie określona, skrypt przydziela prywatny adres IP dla bramy v2.
-    * **publicIpResourceId: [ciąg]: opcjonalne**. Identyfikator resourceId zasobu publicznego adresu IP (standardowej jednostki SKU) w subskrypcji, który ma zostać przydzielony do nowej bramy v2. Jeśli ta wartość nie zostanie określona, skrypt przydziela nowy publiczny adres IP w tej samej grupie zasobów. Nazwa to nazwa bramy w wersji 2 z dołączoną opcją *-IP* .
+   * **publicIpResourceId: [ciąg]: opcjonalne**. Identyfikator resourceId istniejącego zasobu publicznego adresu IP (standardowej jednostki SKU) w subskrypcji, który ma zostać przydzielony do nowej bramy w wersji 2. Jeśli ta wartość nie zostanie określona, skrypt przydziela nowy publiczny adres IP w tej samej grupie zasobów. Nazwa to nazwa bramy w wersji 2 z dołączoną opcją *-IP* .
    * **validateMigration: [przełącznik]: opcjonalny**. Użyj tego parametru, jeśli chcesz, aby skrypt wykonał pewne podstawowe operacje porównujące konfigurację po utworzeniu bramy v2 i kopii konfiguracji. Domyślnie żadna weryfikacja nie jest wykonywana.
    * **enableAutoScale: [przełącznik]: opcjonalny**. Użyj tego parametru, jeśli chcesz, aby skrypt umożliwiał automatyczne skalowanie w nowej bramie v2 po jej utworzeniu. Domyślnie Skalowanie automatyczne jest wyłączone. Zawsze można włączyć ją później na nowo utworzonej bramie w wersji 2.
 
@@ -132,10 +137,10 @@ Aby uruchomić skrypt:
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
-      -sslCertificates $Certs `
+      -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `
-      -publicIpResourceId "MyPublicIP" `
+      -publicIpResourceId "/subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/publicIPAddresses/MyPublicIP" `
       -validateMigration -enableAutoScale
    ```
 

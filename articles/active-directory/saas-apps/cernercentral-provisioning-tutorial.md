@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e80373fa28f1ea24d6a2d5fc2c147bf81b2b279
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276524"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058320"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie programu Cerner Central dla automatycznej aprowizacji użytkowników
 
@@ -111,23 +111,23 @@ Aby zapewnić obsługę kont użytkowników w programie Cerner Central, należy 
 
 1. Wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji w polu **E-mail powiadomienia** , a następnie zaznacz pole wyboru poniżej.
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 1. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkowników i grup, które mają być synchronizowane z usługi Azure AD do programu Cerner Central. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowywania do kont użytkowników i grup w programie Cerner Central for Updates. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
 
 1. Aby włączyć usługę Azure AD Provisioning dla programu Cerner Central, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 Spowoduje to rozpoczęcie synchronizacji początkowej dla wszystkich użytkowników i/lub grup przypisanych do programu Cerner Central w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji centralnej programu CERN.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Program Cerner Central: publikowanie danych tożsamości przy użyciu usługi Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Samouczek: Konfigurowanie centrum CERN dla logowania jednokrotnego za pomocą Azure Active Directory](cernercentral-tutorial.md)
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki

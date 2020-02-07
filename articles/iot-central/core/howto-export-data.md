@@ -8,12 +8,12 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 058fe9aea87879fe85dcbc6dcb864fd841fcb049
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026798"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049699"
 ---
 # <a name="export-your-azure-iot-central-data"></a>Eksportowanie danych usługi Azure IoT Central
 
@@ -62,10 +62,14 @@ W przypadku wybrania Service Bus jako miejsca docelowego eksportu kolejki i tema
 
 Jeśli nie masz istniejącego konta usługi Azure Storage do eksportowania, wykonaj następujące czynności:
 
-1. Utwórz [nowe konto magazynu w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Możesz dowiedzieć się więcej na temat tworzenia nowych [kont usługi Azure Blob Storage](https://aka.ms/blobdocscreatestorageaccount) lub [kont magazynu Azure Data Lake Storage v2](../../storage/blobs/data-lake-storage-quickstart-create-account.md).
+1. Utwórz [nowe konto magazynu w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Możesz dowiedzieć się więcej na temat tworzenia nowych [kont usługi Azure Blob Storage](https://aka.ms/blobdocscreatestorageaccount) lub [kont magazynu Azure Data Lake Storage v2](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Eksport danych umożliwia zapisanie danych tylko na kontach magazynu, które obsługują blokowe obiekty blob. Poniżej znajduje się lista znanych zgodnych typów kont magazynu: 
 
-    - W przypadku wybrania opcji eksportowania danych do konta magazynu Azure Data Lake Storage v2 należy wybrać **BlobStorage** jako **rodzaj konta**.
-    - Dane można eksportować do kont magazynu w ramach subskrypcji innych niż te dla aplikacji IoT Central. W tym przypadku zostanie nawiązane połączenie przy użyciu parametrów połączenia.
+    |Warstwa wydajności|Typ konta|
+    |-|-|
+    |Standard|Ogólnego przeznaczenia v2|
+    |Standard|Ogólnego przeznaczenia v1|
+    |Standard|Blob Storage|
+    |Premium|Blokuj Blob Storage|
 
 2. Utwórz kontener na koncie magazynu. Przejdź do swojego konta magazynu. W obszarze **BLOB Service**wybierz pozycję **Przeglądaj obiekty blob**. Wybierz pozycję **+ kontener** u góry, aby utworzyć nowy kontener.
 

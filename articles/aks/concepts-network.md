@@ -1,18 +1,17 @@
 ---
 title: Pojęcia — obsługa sieci w usłudze Azure Kubernetes Services (AKS)
 description: Dowiedz się więcej na temat sieci w usłudze Azure Kubernetes Service (AKS), w tym korzystającą wtyczki kubenet i Azure CNI Networking, kontrolerów przychodzących, modułów równoważenia obciążenia i statycznych adresów IP.
-services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 86fa59a3d1c07aae842404c465b908e550708071
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547969"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047456"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -97,7 +96,7 @@ Zarówno korzystającą wtyczki kubenet, jak i Azure CNI zapewniają łącznoś�
 
 Między korzystającą wtyczki kubenet i Azure CNI istnieją następujące różnice dotyczące zachowań:
 
-| Możliwość                                                                                   | Korzystającą wtyczki kubenet   | Azure CNI |
+| Możliwości                                                                                   | Korzystającą wtyczki kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
 | Wdróż klaster w istniejącej lub nowej sieci wirtualnej                                            | Obsługiwane — UDR ręcznie | Obsługiwane |
 | Łączność pod kątem                                                                         | Obsługiwane | Obsługiwane |
@@ -115,7 +114,7 @@ Niezależnie od modelu sieci, z którego korzystasz, zarówno korzystającą wty
 * Platforma Azure może automatycznie tworzyć i konfigurować zasoby sieci wirtualnej podczas tworzenia klastra AKS.
 * Możesz ręcznie utworzyć i skonfigurować zasoby sieci wirtualnej i dołączyć je do tych zasobów podczas tworzenia klastra AKS.
 
-Mimo że funkcje, takie jak punkty końcowe usługi lub UDR, są obsługiwane zarówno w korzystającą wtyczki kubenet, jak i na platformie Azure CNI, [zasady pomocy technicznej dla AKS][support-policies] określają, jakie zmiany można wprowadzić. Przykład:
+Mimo że funkcje, takie jak punkty końcowe usługi lub UDR, są obsługiwane zarówno w korzystającą wtyczki kubenet, jak i na platformie Azure CNI, [zasady pomocy technicznej dla AKS][support-policies] określają, jakie zmiany można wprowadzić. Na przykład:
 
 * Jeśli ręcznie utworzysz zasoby sieci wirtualnej dla klastra AKS, jest ono obsługiwane podczas konfigurowania własnych UDR lub punktów końcowych usługi.
 * Jeśli platforma Azure automatycznie tworzy zasoby sieci wirtualnej dla klastra AKS, nie jest obsługiwane ręczne zmienianie tych zasobów zarządzanych przez AKS w celu skonfigurowania własnych UDR lub punktów końcowych usługi.
@@ -134,7 +133,7 @@ Inną wspólną funkcją transferu danych przychodzących jest protokół SSL/TL
 
 Możesz również skonfigurować kontroler transferu danych przychodzących, aby zachować źródłowy adres IP klienta w przypadku żądań do kontenerów w klastrze AKS. Gdy żądanie klienta jest kierowane do kontenera w klastrze AKS za pośrednictwem kontrolera transferu danych przychodzących, oryginalny źródłowy adres IP tego żądania nie będzie dostępny dla kontenera docelowego. Po włączeniu *zachowywania źródłowego adresu IP klienta*jest dostępny źródłowy adres IP klienta w nagłówku żądania w obszarze *X-forwardd-for*. W przypadku korzystania z funkcji zachowywania źródłowych adresów IP klienta na kontrolerze transferu danych przychodzących nie można używać przekazywania protokołu SSL. Przechowywanie źródłowych adresów IP klienta i przekazywanie protokołu SSL mogą być używane z innymi usługami, takimi jak typ *modułu równoważenia obciążenia* .
 
-## <a name="network-security-groups"></a>Sieciowe grupy zabezpieczeń
+## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 
 Sieciowa Grupa zabezpieczeń filtruje ruch dla maszyn wirtualnych, takich jak węzły AKS. Podczas tworzenia usług, takich jak moduł równoważenia obciążenia, platforma Azure automatycznie konfiguruje wszystkie potrzebne reguły sieciowej grupy zabezpieczeń. Nie należy ręcznie konfigurować zasad sieciowych grup zabezpieczeń w celu filtrowania ruchu dla zasobników w klastrze AKS. Zdefiniuj wszystkie wymagane porty i przekazanie w ramach manifestów usługi Kubernetes, a platforma Azure umożliwia tworzenie i aktualizowanie odpowiednich reguł. Możesz również użyć zasad sieciowych, jak opisano w następnej sekcji, aby automatycznie zastosować reguły filtru ruchu do zasobników.
 

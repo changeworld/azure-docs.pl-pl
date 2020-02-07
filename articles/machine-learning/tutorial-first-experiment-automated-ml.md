@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/04/2020
+ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982436"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048287"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,11 +69,15 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
 
 1. Utwórz nowy zestaw danych, wybierając pozycję **z plików lokalnych** z listy rozwijanej **+ Utwórz zestaw danych** . 
 
+    1. W **podstawowym formularzu informacji** nadaj zestawowi danych nazwę i podaj opcjonalny opis. Automatyczna ML w Azure Machine Learning Studio obecnie obsługuje tylko tabelaryczne zestawy danych, więc typ DataSet powinien domyślnie mieć wartość tabelaryczną.
+
+    1. Wybierz pozycję **dalej** w lewym dolnym rogu
+
+    1. W formularzu **Magazyn danych i wybór plików** wybierz domyślny magazyn danych, który został automatycznie skonfigurowany podczas tworzenia obszaru roboczego, **workspaceblobstore (Azure Blob Storage)** . Jest to miejsce, w którym przekażesz plik danych w celu udostępnienia go w Twoim obszarze roboczym.
+
     1. Wybierz pozycję **Przeglądaj**.
     
     1. Wybierz plik **csv bankmarketing_train** na komputerze lokalnym. Jest to plik pobrany jako [warunek wstępny](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
-
-    1. Wybierz **Tabelaryczny** jako typ zestawu danych. 
 
     1. Nadaj zestawowi danych unikatową nazwę i podaj opcjonalny opis. 
 
@@ -86,10 +90,10 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
         Pole|Opis| Wartość dla samouczka
         ---|---|---
         Format pliku|Definiuje układ i typ danych przechowywanych w pliku.| Lista
-        Ogranicznik|Co najmniej jeden znak służący do określania granicy między&nbsp; oddzielnych, niezależnych regionów w postaci zwykłego tekstu lub innych strumieni danych. |Przecinek
-        Encoding|Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.| UTF-8
+        Ogranicznik|Co najmniej jeden znak służący do określania granicy między&nbsp; oddzielnych, niezależnych regionów w postaci zwykłego tekstu lub innych strumieni danych. |Pliku
+        Kodowanie|Identyfikuje tablicę znaków, która ma być używana do odczytywania zestawu danych.| UTF-8
         Nagłówki kolumn| Wskazuje, w jaki sposób nagłówki zestawu danych (jeśli istnieją) będą traktowane.| Wszystkie pliki mają te same nagłówki
-        Pomiń wiersze | Wskazuje, ile (jeśli istnieją) wiersze są pomijane w zestawie danych.| Brak
+        Pomiń wiersze | Wskazuje, ile (jeśli istnieją) wiersze są pomijane w zestawie danych.| None
 
     1. Formularz **schematu** umożliwia dalsze Konfigurowanie danych na potrzeby tego eksperymentu. Na potrzeby tego przykładu wybierz przełącznik przełącznika dla funkcji **day_of_week** , więc nie dodawaj go do tego eksperymentu. Wybierz opcję **Dalej**.
 
@@ -132,22 +136,22 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
         Dodatkowe konfiguracje&nbsp;|Opis|&nbsp;wartości dla&nbsp;— samouczek
         ------|---------|---
         Metryka podstawowa| Metryka oceny, według której będzie mierzony algorytm uczenia maszynowego.|AUC_weighted
-        Automatyczne cechowania| Włącza przetwarzanie wstępne. Obejmuje to automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych.| Włączenie
-        Zablokowane algorytmy | Algorytmy, które mają zostać wykluczone z zadania szkoleniowego| Brak
+        Automatyczne cechowania| Włącza przetwarzanie wstępne. Obejmuje to automatyczne czyszczenie danych, przygotowanie i transformację do generowania funkcji syntetycznych.| Włączanie
+        Zablokowane algorytmy | Algorytmy, które mają zostać wykluczone z zadania szkoleniowego| None
         Kryterium zakończenia| Jeśli kryteria są spełnione, zadanie szkolenia zostanie zatrzymane. |Czas&nbsp;zadania&nbsp;szkolenia (godziny): 1 <br> Próg&nbsp;&nbsp;metryki: brak
-        Sprawdzanie poprawności | Wybierz typ i liczbę testów.|Typ walidacji:<br>&nbsp;k — złóż&nbsp;a krzyżowego sprawdzania poprawności <br> <br> Liczba walidacji: 2
-        Współbieżność| Maksymalna liczba wykonanych równoległych iteracji i użytych rdzeni na iterację| Maksymalnie&nbsp;współbieżnych&nbsp;iteracji: 5<br> Maksymalna liczba rdzeni&nbsp;&nbsp;na&nbsp;iteracja: brak
+        Walidacja | Wybierz typ i liczbę testów.|Typ walidacji:<br>&nbsp;k — złóż&nbsp;a krzyżowego sprawdzania poprawności <br> <br> Liczba walidacji: 2
+        Współbieżność| Maksymalna liczba wykonanych równoległych iteracji na iterację| Maksymalnie&nbsp;współbieżnych&nbsp;iteracji: 5
         
         Wybierz pozycję **Zapisz**.
 
-1. Wybierz pozycję **Zakończ** , aby uruchomić eksperyment. Zostanie otwarty ekran **szczegóły uruchamiania** ze **stanem Uruchom** jako przygotowanie eksperymentu.
+1. Wybierz pozycję **Zakończ** , aby uruchomić eksperyment. Po rozpoczęciu przygotowania eksperymentu zostanie otwarty ekran **szczegóły uruchamiania** ze **stanem Uruchom** na górze.
 
 >[!IMPORTANT]
 > Przygotowanie eksperymentu trwa do **10-15 minut** .
 > Po uruchomieniu usługi zajmiemy **2-3 minut więcej czasu dla każdej iteracji**.  
 > Wybierz pozycję **Odśwież** okresowo, aby zobaczyć stan przebiegu w miarę postępu eksperymentu.
 >
-> W środowisku produkcyjnym najkorzystniej można wyszukać trochę. Jednak w tym samouczku zalecamy rozpoczęcie eksplorowania przetestowanych algorytmów na karcie modele po ich zakończeniu, gdy inne nadal działają. 
+> W środowisku produkcyjnym najkorzystniej można wyszukać trochę. Jednak w tym samouczku zalecamy rozpoczęcie eksplorowania przetestowanych algorytmów na karcie **modele** po ich zakończeniu, gdy inne nadal działają. 
 
 ##  <a name="explore-models"></a>Eksploruj modele
 
@@ -165,7 +169,7 @@ Automatyczne Uczenie maszynowe w programie Azure Machine Learning Studio umożli
 
 W przypadku tego eksperymentu wdrożenie do usługi sieci Web oznacza, że instytucja finansowa ma teraz iteracyjne i skalowalne rozwiązanie sieci Web służące do identyfikowania potencjalnych klientów z krótkoterminowymi wpłatami. 
 
-Po zakończeniu przebiegu Wróć do strony **szczegóły uruchamiania** i wybierz kartę **modele** . Wybierz pozycję **Odśwież**. 
+Po zakończeniu przebiegu Wróć do strony **szczegóły uruchamiania** i wybierz kartę **modele** .
 
 W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy model na podstawie metryki **AUC_weighted** .  Wdrażamy ten model, ale zaleca się wdrożenie trwa około 20 minut. Proces wdrażania obejmuje kilka czynności, takich jak rejestrowanie modelu, Generowanie zasobów i konfigurowanie ich dla usługi sieci Web.
 
@@ -177,9 +181,9 @@ W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy mod
     ----|----
     Nazwa wdrożenia| My-automl-Deploy
     Opis wdrożenia| Moje pierwsze zautomatyzowane wdrożenie eksperymentu w usłudze Machine Learning
-    Typ obliczeń | Wybierz wystąpienie obliczeniowe platformy Azure (ACI)
-    Włączanie uwierzytelniania| Wyłącz. 
-    Korzystanie z wdrożeń niestandardowych| Wyłącz. Zezwala na Autogenerowanie domyślnego pliku sterownika (skrypt oceniania) i pliku środowiska. 
+    Typ obliczenia | Wybierz wystąpienie obliczeniowe platformy Azure (ACI)
+    Włącz uwierzytelnianie| Wyłącza. 
+    Korzystanie z wdrożeń niestandardowych| Wyłącza. Zezwala na Autogenerowanie domyślnego pliku sterownika (skrypt oceniania) i pliku środowiska. 
     
     W tym przykładzie używamy ustawień domyślnych, które są dostępne w menu *Zaawansowane* . 
 
@@ -216,11 +220,11 @@ W tym samouczku zautomatyzowanym uczenia maszynowego użyto Azure Machine Learni
 > [!div class="nextstepaction"]
 > [Korzystanie z usługi sieci Web](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ Dowiedz się więcej na temat [przetwarzania wstępnego](how-to-create-portal-experiments.md#preprocess).
++ Dowiedz się więcej o [cechowania](how-to-create-portal-experiments.md#featurization).
 + Dowiedz się więcej na temat [profilowania danych](how-to-create-portal-experiments.md#profile).
 + Dowiedz się więcej o [automatycznym uczeniu maszynowym](concept-automated-ml.md).
 + Aby uzyskać więcej informacji na temat metryk i wykresów klasyfikacji, zobacz artykuł [Omówienie automatycznego uczenia maszynowego](how-to-understand-automated-ml.md#classification) .
 
 >[!NOTE]
 > Ten zestaw danych marketingu dla banku jest udostępniany w ramach [licencji Creative Commons Attribution (CCO: Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/). Wszystkie prawa do poszczególnych treści bazy danych są licencjonowane w ramach [licencji na zawartość bazy danych](https://creativecommons.org/publicdomain/zero/1.0/) i dostępne w witrynie [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Ten zestaw danych był początkowo dostępny w [bazie danych Machine Learning UCI](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
-> [Moro et al., 2014] S. Moro, P. Cortez i P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing (Podejście oparte na danych do prognozowania powodzenia telemarketingu bankowego). Systemy pomocy technicznej, Elsevier, 62:22-31 czerwca 2014.
+> [Moro et al., 2014] S. Moro, P. Cortez i P. Rita. Oparte na danych podejście do przewidywania sukcesu telemarketingu bankowego. Systemy pomocy technicznej, Elsevier, 62:22-31 czerwca 2014.

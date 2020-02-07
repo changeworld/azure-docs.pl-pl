@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: f7d62487605c26a68e7c71b6d95d7814da0a07c9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776393"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049667"
 ---
-# <a name="linux-support"></a>Linux Support
+# <a name="linux-support"></a>Obsługa systemu Linux
 
 Możesz użyć zestawu Linux SDK dla pulpitu wirtualnego systemu Windows, aby skompilować autonomiczny Klient pulpitu wirtualnego systemu Windows. Można go również użyć do włączenia obsługi pulpitu wirtualnego systemu Windows w aplikacji klienckiej. Ten krótki przewodnik wyjaśnia, co to jest zestaw Linux SDK i jak zacząć z niego korzystać.
 
@@ -55,7 +55,7 @@ Przed rozpoczęciem opracowywania klienta systemu Linux dla pulpitu wirtualnego 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Możesz zażądać dostępu do zestawu Linux SDK na naszym [forum społeczności Tech](https://go.microsoft.com/fwlink/?linkid=2116541).
+Zestaw SDK jest obecnie w trakcie opracowywania. Zaktualizujemy ten dokument przy użyciu instrukcji, aby uzyskać dostęp do zestawu SDK, gdy jest on dostępny.
 
 Zapoznaj się z naszą dokumentacją dla następujących klientów:
 

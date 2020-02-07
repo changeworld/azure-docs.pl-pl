@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5b1daab724d979206983ee758760790967abc06d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 310b3778a43c74db30940368d35c39c99f64a28c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513426"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049990"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji Azure Media Services
 
@@ -60,7 +60,7 @@ Zobacz również [Migrowanie z Azure Media Indexer i Azure Media Indexer 2 do Az
 
 ### <a name="deprecation-of-media-processors"></a>Wycofanie procesorów multimediów
 
-Ogłaszamy przestarzałe procesory nośników z *systemami Windows Azure Media Encoder* (WAME) i *Azure Media Encoder* (azwa), które są wycofywane z 1 marca, 2020.
+Ogłaszamy przestarzałe procesory multimediów w *systemie Windows Azure Media Encoder* (WAME) i *Azure Media Encoder* (azwa). Aby uzyskać daty wycofania, zobacz temat ten [starszy składnik](legacy-components.md) .
 
 Aby uzyskać szczegółowe informacje, zobacz [Migrowanie WAME do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) i [Migrowanie azwa do Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
 
@@ -90,7 +90,7 @@ Najnowsza wersja usługi zawiera niewielkie zmiany formatowania komunikatów o b
 
 Od 12 maja 2018 kanały na żywo nie będą już obsługiwać protokołu pozyskiwania strumienia transportowego RTP/MPEG-2. Przeprowadź migrację z protokołów RTP/MPEG-2 do protokołu RTMP lub pofragmentowanych plików MP4 (Smooth Streaming).
 
-## <a name="october-2017-release"></a>Wersja z października 2017 r.
+## <a name="october-2017-release"></a>Wydanie z października 2017
 > [!IMPORTANT] 
 > Media Services jest przestarzałą obsługą kluczy uwierzytelniania usługi Azure Access Control Service. 22 czerwca 2018 nie można już uwierzytelniać się za pomocą Media Services zaplecza za pośrednictwem kodu przy użyciu kluczy Access Control Service. Musisz zaktualizować swój kod, aby używać Azure Active Directory (Azure AD) na potrzeby [uwierzytelniania opartego na usłudze Azure AD](media-services-use-aad-auth-to-access-ams-api.md). Obejrzyj informacje o ostrzeżeniach dotyczących tej zmiany w Azure Portal.
 
@@ -112,7 +112,7 @@ Od 12 maja 2018 kanały na żywo nie będą już obsługiwać protokołu pozyski
     * Koder standardowy obsługuje metadane wejściowe i Generowanie miniatur w bardzo krótkim wideo.
     * Ulepszenia dekodera H. 264 używane w standardowym Koderie eliminują niektóre rzadkie artefakty. 
 
-#### <a name="media-analytics"></a>Analiza multimediów
+#### <a name="media-analytics"></a>Media Analytics
 Ogólna dostępność Azure Media Redactor: ten procesor multimedialny wykonuje zachowywanie anonimowości przez rozmycie twarzy wybranych osób i jest idealnym rozwiązaniem do użycia w scenariuszach bezpieczeństwa publicznego i multimediów. 
 
 Aby zapoznać się z omówieniem tego nowego procesora, zobacz [ten wpis w blogu](https://azure.microsoft.com/blog/azure-media-redactor/). Aby uzyskać informacje na temat dokumentacji i ustawień, zobacz [redagowanie twarzy przy użyciu Azure Media Analytics](media-services-face-redaction.md).
@@ -178,7 +178,7 @@ Aby uzyskać więcej informacji, zobacz [ten blog](https://blogs.msdn.microsoft.
 Niektórzy klienci mogą przechodzić przez problem z tagiem REPEAT w manifeście Smooth Streaming. Aby uzyskać więcej informacji, zobacz [tę sekcję](media-services-deliver-content-overview.md#known-issues).
 
 ## <a id="apr_changes16"></a>Wydanie z kwietnia 2016
-### <a name="media-analytics"></a>Analiza multimediów
+### <a name="media-analytics"></a>Media Analytics
  Media Services wprowadzono Media Analytics do zaawansowanej analizy filmów wideo. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Media Services Analytics](media-services-analytics-overview.md).
 
 ### <a name="apple-fairplay-preview"></a>Apple FairPlay (wersja zapoznawcza)
@@ -373,7 +373,7 @@ Zestaw Media Services SDK dla platformy .NET jest teraz w wersji 3.0.0.7
   
     Aby użyć niestandardowej nazwy domeny jako nazwy punktu końcowego Media Services streaming, Dodaj niestandardowe nazwy hostów do punktu końcowego przesyłania strumieniowego. Użyj Media Services interfejsów API REST lub zestawu .NET SDK, aby dodać niestandardowe nazwy hostów.
   
-    Obowiązują następujące zastrzeżenia:
+    Stosuje się następujące zagadnienia:
   
   * Musisz mieć własność niestandardowej nazwy domeny.
   * Własność nazwy domeny musi być zweryfikowana przez Media Services. Aby sprawdzić poprawność domeny, Utwórz rekord CName, który mapuje domenę nadrzędną MediaServicesAccountId na zweryfikowanie strefy DNS MediaServices-DNS.
@@ -561,7 +561,7 @@ W wersji z listopada zestawu SDK wprowadzono następujące funkcje:
 
 * Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

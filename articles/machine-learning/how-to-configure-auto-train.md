@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4396c82851969b39841ba77fb8aba9679363474
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986499"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048584"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,20 +45,20 @@ Automatyczne machine learning obsługuje następujące algorytmy podczas automat
 
 Klasyfikacja | Regresja | Prognozowanie szeregów czasowych
 |-- |-- |--
-[Regresja logistyczna](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastyczne Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastyczne Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Jasny GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Jasny GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Jasny GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Ulepszanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Ulepszanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Ulepszanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Regresja logistyczna](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Sieć elastyczna](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Sieć elastyczna](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Lekki GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Lekki GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Lekki GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Zwiększanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Zwiększanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Zwiększanie gradientu](https://scikit-learn.org/stable/modules/ensemble.html#regression)
 [Drzewo decyzyjne](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Drzewo decyzyjne](https://scikit-learn.org/stable/modules/tree.html#regression)|[Drzewo decyzyjne](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K najbliższym sąsiadów](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K najbliższym sąsiadów](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K najbliższym sąsiadów](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Liniowy SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[Lasso HURTOWI](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[Lasso HURTOWI](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Klasyfikacja wektorów pomocy technicznej (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stochastycznego spadku gradientu (wstecznej Propagacji)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stochastycznego spadku gradientu (wstecznej Propagacji)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[Losowe lasu](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Losowe lasu](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Losowe lasu](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Bardzo losowego drzew](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Bardzo losowego drzew](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Bardzo losowego drzew](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Najbliższe sąsiednie sąsiedzi](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[Najbliższe sąsiednie sąsiedzi](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[Najbliższe sąsiednie sąsiedzi](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Liniowy SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Klasyfikacja wektorów pomocy technicznej (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stochastycznego gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stochastycznego gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Las losowy](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Las losowy](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Las losowy](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Skrajnie losowe drzewa](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Skrajnie losowe drzewa](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Skrajnie losowe drzewa](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN Classifier](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[Klasyfikator DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [DNN — klasyfikator liniowy](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Regresor liniowy](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Regresor liniowy](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Bayesa firmy](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Szybka Regresor liniowa](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[AutoARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Stochastycznego spadku gradientu (wstecznej Propagacji)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Gradient online z Regresorem](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[Algorytm Bayesa Bayesa](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Szybka Regresor liniowa](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[AutoARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Stochastycznego gradientu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Gradient online z Regresorem](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
 |[Klasyfikator średniej Perceptron](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
 |[Klasyfikator liniowy SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
 
@@ -117,11 +117,11 @@ Można określić oddzielne zestawy pouczenia i walidacji bezpośrednio w konstr
 
 ### <a name="k-folds-cross-validation"></a>K złożeń krzyżowe sprawdzanie poprawności
 
-Użyj `n_cross_validations` ustawienie, aby określić liczbę krzyżowego sprawdzania poprawności. Szkoleniowy zestaw danych zostanie ona podzielona losowo na `n_cross_validations` złożeń taki sam rozmiar. Podczas każdego krzyżowego sprawdzania poprawności round jednym z złożeń będzie służyć do sprawdzania poprawności modelu skonfigurowanych pod kątem w pozostałych złożeń. Ten proces powtarza się dla `n_cross_validations` Zaokrągla do momentu poszczególnych etapów jest używany jeden raz w postanowieniach sprawdzania poprawności. Średnie wyniki dla wszystkich `n_cross_validations` zaokrągla zostaną zgłoszone, a odpowiedni model zostanie retrained, szkolenie dla całego zestawu danych.
+Użyj ustawienia `n_cross_validations`, aby określić liczbę operacji sprawdzania krzyżowego. Zestaw danych szkoleniowych zostanie losowo podzielony na `n_cross_validations` zgięcia o równym rozmiarze. Podczas każdego krzyżowego sprawdzania poprawności round jednym z złożeń będzie służyć do sprawdzania poprawności modelu skonfigurowanych pod kątem w pozostałych złożeń. Ten proces powtarza się dla `n_cross_validations` zaokrągla do momentu, gdy każde zgięcie zostanie użyte raz jako zestaw walidacji. Zostaną zgłoszone średnie wyniki dla wszystkich `n_cross_validations` zaokrąglenia, a odpowiedni model zostanie przeszukany w całym zestawie danych szkoleniowych.
 
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo, krzyżowe sprawdzanie poprawności (powtarza losowe Podpróbkowanie)
 
-Użyj `validation_size` Aby określić procent zestaw danych szkoleniowych, które mają być używane do sprawdzania poprawności i użyj `n_cross_validations` Aby określić liczbę krzyżowego sprawdzania poprawności. Podczas każdego cross weryfikacji round podzestaw rozmiar `validation_size` będą wybierane losowo do sprawdzania poprawności modelu skonfigurowanych pod kątem w pozostałych danych. Ponadto ocenia średnią dla wszystkich `n_cross_validations` zaokrągla zostaną zgłoszone, a odpowiedni model zostanie retrained, szkolenie dla całego zestawu danych. Monte Carlo nie jest obsługiwana w przypadku prognozowania szeregów czasowych.
+Użyj `validation_size`, aby określić procentowy zestaw danych szkoleniowych, który ma być używany do walidacji, a następnie użyj `n_cross_validations`, aby określić liczbę operacji krzyżowych. Podczas każdego zaokrąglania krzyżowego, podzbiór rozmiaru `validation_size` będzie losowo wybierany do walidacji modelu przeszkolonego na pozostałych danych. Na koniec zostaną zgłoszone średnie oceny wszystkich `n_cross_validations`, a odpowiedni model zostanie przeszukany w całym zestawie danych szkoleniowych. Monte Carlo nie jest obsługiwana w przypadku prognozowania szeregów czasowych.
 
 ### <a name="custom-validation-dataset"></a>Zestaw niestandardowego sprawdzania poprawności danych
 
@@ -131,7 +131,7 @@ Użyj niestandardowego zestawu danych walidacji, jeśli podział losowy nie jest
 
 Następnie określić, gdzie będzie uczony model. Automatyczne eksperymentu uczenia maszynowego, szkolenia można uruchomić na następujących opcji obliczeniowych:
 *   Komputer lokalny, takich jak lokalne stacjonarnym lub przenośnym — zazwyczaj, gdy masz mały zestaw danych i są nadal w fazie eksploracji.
-*   Komputer zdalny w chmurze — [Machine Learning zarządzane obliczeń Azure](concept-compute-target.md#amlcompute) to zarządzana usługa, która umożliwia szkolenie modeli uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure.
+*   Maszyna zdalna w chmurze — [Azure Machine Learning zarządzane obliczenia](concept-compute-target.md#amlcompute) to usługa zarządzana, która umożliwia uczenie modeli uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure.
 
     Zobacz tę [witrynę usługi GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) , aby poznać przykłady notesów z lokalnymi i zdalnymi obiektami docelowymi obliczeniowymi.
 
@@ -143,7 +143,7 @@ Następnie określić, gdzie będzie uczony model. Automatyczne eksperymentu ucz
 
 ## <a name="configure-your-experiment-settings"></a>Skonfiguruj ustawienia eksperymentu
 
-Istnieje kilka opcji, które umożliwiają skonfigurowanie Twoje zautomatyzowane eksperymentu uczenia maszynowego. Te parametry są ustawiane przez utworzenie wystąpienia `AutoMLConfig` obiektu. Zapoznaj się z pełną listą parametrów w [klasie AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
+Istnieje kilka opcji, które umożliwiają skonfigurowanie Twoje zautomatyzowane eksperymentu uczenia maszynowego. Te parametry są ustawiane przez utworzenie wystąpienia obiektu `AutoMLConfig`. Zapoznaj się z pełną listą parametrów w [klasie AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
 
 Oto niektóre przykłady:
 
@@ -189,12 +189,18 @@ Zapoznaj się z określonymi definicjami tych metryk w temacie [Omówienie zauto
 
 ### <a name="data-featurization"></a>Cechowania danych
 
-W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są [automatycznie skalowane i znormalizowane](concept-automated-ml.md#preprocess) , aby ułatwić *określonym* algorytmom, które są wrażliwe na funkcje różnej skali.  Można jednak również włączyć dodatkowe cechowania, takie jak brakujące wartości, które nie przypisywania, kodowania i transformacji. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-create-portal-experiments.md#preprocess).
+W każdym automatycznym doświadczeniu uczenia maszynowego Twoje dane są [automatycznie skalowane i znormalizowane](concept-automated-ml.md#preprocess) , aby ułatwić *określonym* algorytmom, które są wrażliwe na funkcje różnej skali.  Można jednak również włączyć dodatkowe cechowania, takie jak brakujące wartości, które nie przypisywania, kodowania i transformacji. [Dowiedz się więcej na temat tego, co obejmuje cechowania](how-to-create-portal-experiments.md#featurization).
 
-Aby włączyć tę cechowania, określ `"featurization": 'auto'` dla [klasy`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+Podczas konfigurowania eksperymentów można włączyć ustawienie zaawansowane `featurization`. W poniższej tabeli przedstawiono zaakceptowane ustawienia dla cechowania w [klasie`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+
+|Konfiguracja cechowania | Opis |
+| ------------- | ------------- |
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| Wskazuje dostosowany krok cechowania. [Dowiedz się, jak dostosować cechowania](how-to-configure-auto-train.md#customize-feature-engineering).|
+|`"featurization": 'off'`| Wskazuje, że krok cechowania nie powinien być wykonywany automatycznie.|
+|`"featurization": 'auto'`| Wskazuje, że w ramach przetwarzania wstępnego [guardrails danych i kroki cechowania](how-to-create-portal-experiments.md#advanced-featurization-options) są wykonywane automatycznie.|
 
 > [!NOTE]
-> Zautomatyzowane kroki wstępnego przetwarzania w usłudze Machine Learning (normalizacja funkcji, obsługa brakujących danych, konwertowanie tekstu na liczbowe itp.) staje się częścią modelu źródłowego. Przy użyciu modelu dla prognoz te same kroki przetwarzania wstępnego zastosowane podczas uczenia są automatycznie stosowane do danych wejściowych.
+> Zautomatyzowane kroki cechowania uczenia maszynowego (normalizacja funkcji, obsługa brakujących danych, konwertowanie tekstu na liczbowe itp.) staje się częścią modelu źródłowego. Korzystając z modelu dla prognoz, te same kroki cechowania stosowane podczas uczenia są automatycznie stosowane do danych wejściowych.
 
 ### <a name="time-series-forecasting"></a>Prognozowanie szeregów czasowych
 Zadanie `forecasting` szeregów czasowych wymaga dodatkowych parametrów w obiekcie Configuration:
@@ -301,7 +307,7 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Przesyłanie eksperymentu do uruchamiania i wygenerować model. Przekaż `AutoMLConfig` do `submit` metodę w celu wygenerowania modelu.
+Przesyłanie eksperymentu do uruchamiania i wygenerować model. Przekaż `AutoMLConfig` do metody `submit`, aby wygenerować model.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)
@@ -309,7 +315,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 >[!NOTE]
 >Zależności są najpierw instalowane na nowej maszynie.  Może upłynąć do 10 minut, zanim są wyświetlane dane wyjściowe.
->Ustawienie `show_output` do `True` skutkuje dane wyjściowe są wyświetlane w konsoli.
+>Ustawienie `show_output`, aby `True` wyniki w danych wyjściowych wyświetlanych w konsoli.
 
 ### <a name="exit-criteria"></a>Kryteria wyjścia
 Istnieje kilka opcji, które można zdefiniować, aby zakończyć eksperyment.
@@ -319,7 +325,7 @@ Istnieje kilka opcji, które można zdefiniować, aby zakończyć eksperyment.
 
 ### <a name="explore-model-metrics"></a>Eksplorowanie metryk modelu
 
-Możesz wyświetlić wyniki szkolenia w widżecie lub inline, jeśli jesteś w notesie. Zobacz [śledzenia i oceniać modele](how-to-track-experiments.md#view-run-details) Aby uzyskać więcej informacji.
+Możesz wyświetlić wyniki szkolenia w widżecie lub inline, jeśli jesteś w notesie. Aby uzyskać więcej informacji [, zobacz Śledzenie i szacowanie modeli](how-to-track-experiments.md#view-run-details) .
 
 ## <a name="understand-automated-ml-models"></a>Zrozumienie zautomatyzowanych modeli ML
 
@@ -397,7 +403,7 @@ Użyj tych 2 interfejsów API w pierwszym kroku dopasowanego modelu, aby poznać
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Miejsce:
+   Gdzie:
 
    |Dane wyjściowe|Definicja|
    |----|--------|
@@ -408,7 +414,7 @@ Użyj tych 2 interfejsów API w pierwszym kroku dopasowanego modelu, aby poznać
    |Przekształcenia|Lista transformacji zastosowanych do funkcji wejściowych do generowania przetworzonych funkcji.|
    
 ### <a name="customize-feature-engineering"></a>Dostosuj Inżynieria funkcji
-Aby dostosować Inżynieria funkcji, określ `"feauturization":FeaturizationConfig`.
+Aby dostosować Inżynieria funkcji, określ `"featurization": FeaturizationConfig`.
 
 Obsługiwane dostosowania obejmują:
 
@@ -515,6 +521,6 @@ Aby uzyskać ogólne informacje na temat sposobu włączenia wyjaśnień modelu 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [jak i gdzie można wdrożyć model](how-to-deploy-and-where.md).
+Dowiedz się więcej o tym [, jak i gdzie wdrożyć model](how-to-deploy-and-where.md).
 
 Dowiedz się więcej o tym, [Jak szkolić model regresji z automatycznym uczeniem maszynowym](tutorial-auto-train-models.md) lub [jak korzystać z funkcji automatycznego uczenia maszynowego w ramach zasobu zdalnego](how-to-auto-train-remote.md).

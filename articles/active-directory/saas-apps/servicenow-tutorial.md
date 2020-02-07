@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c18613233d6dec59c76db120ed7f089dfbb5fbac
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293695"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046717"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą usługi ServiceNow
 
@@ -52,7 +52,7 @@ W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure A
 
 * Usługi ServiceNow obsługuje [Automatyczne Inicjowanie obsługi użytkowników](servicenow-provisioning-tutorial.md).
 
-* Po skonfigurowaniu usługi ServiceNow można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po skonfigurowaniu usługi ServiceNow można wymusić kontrolę sesji, która chroni eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolka sesji rozszerzy od dostępu warunkowego. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 * Aby włączyć logowanie jednokrotne, można skonfigurować aplikację klasyczną usługi ServiceNow (Mobile) w usłudze Azure AD. Obsługuje zarówno użytkowników systemu Android, jak i iOS. W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
@@ -141,7 +141,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
     ![Zrzut ekranu użytkowników i grup z wyróżnioną pozycją Dodaj użytkownika](common/add-assign-user.png)
 
 1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie wybierz **pozycję Wybierz**.
-1. Jeśli oczekujesz, że jakakolwiek wartość roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz z listy odpowiednią rolę dla użytkownika. Następnie wybierz opcję **Wybierz**.
+1. Jeśli oczekujesz, że jakakolwiek wartość roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz z listy odpowiednią rolę dla użytkownika. Następnie wybierz **pozycję Wybierz**.
 1. W oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Przypisz**.
 
 ### <a name="configure-azure-ad-sso-for-servicenow-express"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD dla usługi ServiceNow Express
@@ -193,7 +193,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
      ![Zrzut ekranu strony Dodatki systemowe z integracją — wyróżniono Instalatora Logowanie jednokrotne z wieloma dostawcami](./media/servicenow-tutorial/tutorial_servicenow_04.png "Aktywuj wtyczkę")
 
-    d. Wybierz wtyczkę. Kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Aktywuj/Uaktualnij**.
+    c. Wybierz wtyczkę. Kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Aktywuj/Uaktualnij**.
 
      ![Zrzut ekranu przedstawiający menu po kliknięciu prawym przyciskiem myszy z wyróżnioną pozycją Aktywuj/Uaktualnij](./media/servicenow-tutorial/tutorial_activate.png "Aktywuj wtyczkę")
 
@@ -300,7 +300,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
         1. Wprowadź **adres URL metadanych federacji aplikacji** , który został skopiowany z Azure Portal.
 
-        1. Wybierz pozycję **Import** (Importuj).
+        1. Wybierz pozycję **Importuj**.
 
     1. Odczytuje adres URL metadanych dostawcy tożsamości i wypełnia wszystkie informacje o polach.
 
@@ -353,7 +353,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie B. Simon w usługi Servic
 
     b. Przestaw przełącznik **Enable debug logging for the multiple provider SSO integration** (Włącz rejestrowanie debugowania dla integracji logowania jednokrotnego u wielu dostawców) w prawo.
 
-    d. W **polu tabeli User (użytkownik**) wpisz **user_name**.
+    c. W **polu tabeli User (użytkownik**) wpisz **user_name**.
 
 4. W oknie dialogowym **Logowanie** jednokrotne wybierz pozycję **Dodaj nowy certyfikat**.
 
@@ -367,7 +367,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie B. Simon w usługi Servic
 
     b. Wybierz pozycję **Active** (Aktywne).
 
-    d. W obszarze **Format**wybierz opcję **PEM**.
+    c. W obszarze **Format**wybierz opcję **PEM**.
 
     d. W obszarze **Typ**wybierz pozycję **certyfikat magazynu zaufania**.
 
@@ -387,7 +387,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie B. Simon w usługi Servic
 
     b. W polu **adres URL dostawcy tożsamości**wklej wartość identyfikatora dostawcy tożsamości skopiowanego z Azure Portal.
 
-    d. W przypadku **AuthnRequest dostawcy tożsamości**wklej wartość adresu URL żądania uwierzytelniania skopiowanego z Azure Portal.
+    c. W przypadku **AuthnRequest dostawcy tożsamości**wklej wartość adresu URL żądania uwierzytelniania skopiowanego z Azure Portal.
 
     d. W przypadku **SingleLogoutRequest dostawcy tożsamości**wklej wartość adresu URL wylogowywania skopiowanego z Azure Portal.
 
@@ -401,7 +401,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie B. Simon w usługi Servic
 
     b. W przypadku **zasad NameID**wprowadź **nazwę urn: języka Oasis: names: TC: SAML: 1.1: NameID-format: nieokreślone**.
 
-    d. W przypadku **metody AuthnContextClassRef**wprowadź `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password`.
+    c. W przypadku **metody AuthnContextClassRef**wprowadź `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password`.
 
     d. W przypadku **tworzenia elementu AuthnContextClass**Przełącz go na wyłączony (niezaznaczony).
 
@@ -416,7 +416,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie B. Simon w usługi Servic
 
     b. Dla **identyfikatora jednostki/wystawcy**wprowadź adres URL dzierżawy usługi usługi ServiceNow.
 
-    d. W polu **Identyfikator URI odbiorców**wprowadź adres URL dzierżawy usługi usługi ServiceNow.
+    c. W polu **Identyfikator URI odbiorców**wprowadź adres URL dzierżawy usługi usługi ServiceNow.
 
     d. W przypadku **przesunięcia zegara**wprowadź **60**.
 
@@ -443,7 +443,7 @@ Po wybraniu kafelka usługi ServiceNow w panelu dostępu należy automatycznie z
 
     ![Zrzut ekranu przedstawiający stronę Dodawanie wystąpienia z wyróżnioną pozycją Kontynuuj](./media/servicenow-tutorial/test04.png)
 
-    d. Na stronie **Logowanie** wykonaj następujące czynności:
+    c. Na stronie **Logowanie** wykonaj następujące czynności:
 
     ![Zrzut ekranu strony logowania z wyróżnionym użyciem logowania zewnętrznego](./media/servicenow-tutorial/test01.png)
 
@@ -455,7 +455,7 @@ Po wybraniu kafelka usługi ServiceNow w panelu dostępu należy automatycznie z
 
         ![Zrzut ekranu przedstawiający stronę główną aplikacji](./media/servicenow-tutorial/test02.png)
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -467,6 +467,6 @@ Po wybraniu kafelka usługi ServiceNow w panelu dostępu należy automatycznie z
 
 - [Wypróbuj usługi ServiceNow z usługą Azure AD](https://aad.portal.azure.com)
 
-- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Jak chronić usługi ServiceNow z zaawansowaną widocznością i kontrolkami](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chronić usługi ServiceNow z zaawansowaną widocznością i kontrolkami](https://docs.microsoft.com/cloud-app-security/protect-servicenow)

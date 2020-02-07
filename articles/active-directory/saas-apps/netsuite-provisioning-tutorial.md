@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie Netsuite OneWorld dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Netsuite OneWorld.
+title: 'Samouczek: Konfigurowanie OneWorld pakietu dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory a pakietem OneWorld.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,86 +15,86 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 928070ae7e5c9077c6f77e8cb7beb36815f47d6a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4c9a823e6515c2bfe09e1ab7bcef471eb8169e75
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515841"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063299"
 ---
-# <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Netsuite do automatycznej aprowizacji użytkowników
+# <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie pakietu dla automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest pokazanie czynności, które należy wykonać w Netsuite OneWorld i Azure AD, do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do Netsuite.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w pakietach OneWorld i Azure AD w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników z usługi Azure AD do pakietu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
+Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
-*   Dzierżawy usługi Azure Active directory.
-*   Subskrypcja Netsuite OneWorld. Należy pamiętać, że automatyczna aprowizacja użytkowników jest obecnie obsługiwane tylko w przypadku NetSuite OneWorld.
-*   Konto użytkownika w Netsuite z uprawnieniami administratora.
+*   Dzierżawa usługi Azure Active Directory.
+*   Subskrypcja OneWorld pakietu. Należy pamiętać, że automatyczne Inicjowanie obsługi użytkowników jest obecnie obsługiwane tylko z pakietem OneWorld.
+*   Konto użytkownika w pakiecie z uprawnieniami administratora.
 
-## <a name="assigning-users-to-netsuite-oneworld"></a>Przypisywanie użytkowników do Netsuite OneWorld
+## <a name="assigning-users-to-netsuite-oneworld"></a>Przypisywanie użytkowników do pakietu OneWorld
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
+Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi kont użytkowników są synchronizowane tylko użytkownicy i grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji Netsuite. Po decyzję, możesz przypisać użytkowników do aplikacji Netsuite, zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji pakietu. Po ustaleniu tych użytkowników można przypisać je do swojej aplikacji pakietu, postępując zgodnie z poniższymi instrukcjami:
 
-[Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Netsuite OneWorld
+### <a name="important-tips-for-assigning-users-to-netsuite-oneworld"></a>Ważne porady dotyczące przypisywania użytkowników do pakietu OneWorld
 
-*   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do Netsuite do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
+*   Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do pakietu servicesuite w celu przetestowania konfiguracji aprowizacji. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-*   Podczas przypisywania użytkowników do Netsuite, należy wybrać poprawnej roli użytkownika. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
+*   Podczas przypisywania użytkownika do pakietu, należy wybrać prawidłową rolę użytkownika. Rola "dostęp domyślny" nie działa w przypadku aprowizacji.
 
-## <a name="enable-user-provisioning"></a>Włącz Aprowizację użytkowników
+## <a name="enable-user-provisioning"></a>Włącz Inicjowanie obsługi użytkowników
 
-Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika w Netsuite aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz konta użytkowników przypisane w Netsuite na podstawie przypisania użytkowników i grup w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API inicjowania obsługi konta użytkownika usługi Azure AD i konfigurowania usługi aprowizacji w celu tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w ramach pakietu z zestawu na podstawie przypisania użytkowników i grup w usłudze Azure AD.
 
 > [!TIP] 
-> Można też włączyć opartej na SAML logowania jednokrotnego dla Netsuite, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+> Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla pakietu, postępując zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="to-configure-user-account-provisioning"></a>Aby skonfigurować, inicjowanie obsługi administracyjnej konta użytkownika:
+### <a name="to-configure-user-account-provisioning"></a>Aby skonfigurować Inicjowanie obsługi konta użytkownika:
 
-Jest celem tej sekcji omówiono sposób włączania kont użytkowników usługi Active Directory do Netsuite Inicjowanie obsługi użytkowników.
+Celem tej sekcji jest zaprojektowanie sposobu włączania obsługi administracyjnej użytkowników Active Directory kont użytkowników do pakietu.
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje** .
 
-1. Jeśli już skonfigurowano Netsuite dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi Netsuite przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **Netsuite** w galerii aplikacji. Wybierz Netsuite z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+1. Jeśli już skonfigurowano pakiet dla logowania jednokrotnego, Wyszukaj swoje wystąpienie pakietu w polu wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i Wyszukaj **zestaw** w galerii aplikacji. Wybierz pozycję zestaw sieci z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
 
-1. Wybierz wystąpienie Netsuite, a następnie wybierz **aprowizacji** kartę.
+1. Wybierz swoje wystąpienie z pakietu, a następnie wybierz kartę **aprowizacji** .
 
-1. Ustaw **tryb obsługi administracyjnej** do **automatyczne**. 
+1. Ustaw **tryb aprowizacji** na **automatyczny**. 
 
-    ![Inicjowanie obsługi administracyjnej](./media/netsuite-provisioning-tutorial/provisioning.png)
+    ![aprowizacji](./media/netsuite-provisioning-tutorial/provisioning.png)
 
-1. W obszarze **poświadczeń administratora** sekcji, skonfiguruj następujące ustawienia konfiguracji:
+1. W sekcji **poświadczenia administratora** podaj następujące ustawienia konfiguracji:
    
-    a. W **nazwy użytkownika administratora** pola tekstowego, typ, nazwa, która ma konta Netsuite **Administrator systemu** profilu w Netsuite.com przypisane.
+    a. W polu tekstowym **Nazwa użytkownika administratora** wpisz nazwę konta pakietu, które ma profil **administratora systemu** w NetSuite.com przypisane.
    
-    b. W **hasło administratora** pole tekstowe, wpisz hasło dla tego konta.
+    b. W polu tekstowym **hasło administratora** wpisz hasło dla tego konta.
       
-1. W witrynie Azure portal kliknij pozycję **Testuj połączenie** zapewniające usługi Azure AD connect można Netsuite aplikacji.
+1. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z aplikacją pakietu.
 
-1. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia o błędach aprowizacji i zaznacz pole wyboru.
-
-1. Kliknij przycisk **Zapisz.**
-
-1. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do Netsuite.**
-
-1. W **mapowania atrybutów** Przejrzyj atrybutów użytkowników, które są synchronizowane z usługi Azure AD Netsuite. Należy zauważyć, że atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w Netsuite operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
-
-1. Aby włączyć usługi Azure AD, usługi dla Netsuite inicjowania obsługi administracyjnej, zmień **stanie aprowizacji** do **na** w sekcji Ustawienia
+1. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru.
 
 1. Kliknij przycisk **Zapisz.**
 
-Rozpoczyna się wstępna synchronizacja użytkowników i/lub grupy przypisane do Netsuite w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji Netsuite.
+1. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkownicy z pakietem.**
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+1. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD z pakietem. Należy zauważyć, że atrybuty wybrane jako **pasujące** właściwości są używane w celu dopasowania do kont użytkowników w pakiecie dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+
+1. Aby włączyć usługę Azure AD Provisioning dla pakietu, Zmień **stan aprowizacji** na **włączone** w sekcji Ustawienia.
+
+1. Kliknij przycisk **Zapisz.**
+
+Rozpocznie się początkową synchronizację wszystkich użytkowników i/lub grup przypisanych do pakietu, w sekcji Użytkownicy i grupy. Należy pamiętać, że synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły około 40 minut, o ile usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji pakietu.
+
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie logowania jednokrotnego](netsuite-tutorial.md)

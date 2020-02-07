@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Konfigurowanie systemu Zendesk na potrzeby automatycznego aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+title: 'Samouczek: Konfigurowanie systemu Zendesk dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i anulowania aprowizacji kont użytkowników w usłudze systemu Zendesk.
 services: active-directory
 documentationcenter: ''
@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f9d819533b97a126a324ab867b7185fd6415847
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a480119ee88521b920be88669f6d80e3754d24d3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851977"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062753"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie systemu Zendesk na potrzeby automatycznego aprowizacji użytkowników
 
 W tym samouczku przedstawiono kroki, które należy wykonać w systemu Zendesk i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i anulowania aprowizacji użytkowników i grup w usłudze systemu Zendesk.
 
 > [!NOTE]
-> Ten samouczek zawiera opis łącznika, który jest zbudowany na podstawie usługi Azure AD User Provisioning. Aby uzyskać informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji typu "oprogramowanie jako usługa" (SaaS) za pomocą Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ten samouczek zawiera opis łącznika, który jest zbudowany na podstawie usługi Azure AD User Provisioning. Aby uzyskać informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji typu "oprogramowanie jako usługa" (SaaS) za pomocą Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -50,11 +50,11 @@ Aby dodać systemu Zendesk z portalu Marketplace, wykonaj następujące kroki.
 
 2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
 4. W polu wyszukiwania wprowadź **systemu Zendesk** i wybierz pozycję **systemu Zendesk** w panelu wyników. Aby dodać aplikację, wybierz pozycję **Dodaj**.
 
@@ -83,7 +83,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Konfigurowanie automatycznej aprowizacji użytkowników dla systemu Zendesk w usłudze Azure AD
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **pozycję aplikacje** > dla przedsiębiorstw**wszystkie aplikacje** > **systemu Zendesk**.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **systemu Zendesk**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -105,9 +105,9 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
    * W polu **token Secret** Wypełnij token tajny, zgodnie z opisem w kroku 6.
 
-   * W polu **domena** Wypełnij poddomenę dzierżawy systemu Zendesk. Na przykład w przypadku konta z adresem URL `https://my-tenant.zendesk.com`dzierżawy dla domeny podrzędnej jest **moja dzierżawa**.
+   * W polu **domena** Wypełnij poddomenę dzierżawy systemu Zendesk. Na przykład w przypadku konta z adresem URL dzierżawy `https://my-tenant.zendesk.com`Moja Poddomena to **moja dzierżawa**.
 
-6. Token tajny dla konta usługi systemu Zendesk znajduje się w obszarze**Ustawienia** **interfejsu API** >  **administratora** > . Upewnij się, że **dostęp do tokenu** jest ustawiony na **włączone**.
+6. Token tajny dla konta systemu Zendesk znajduje się w obszarze **administrator** > **Ustawienia** > **interfejsu API** . Upewnij się, że **dostęp do tokenu** jest ustawiony na **włączone**.
 
     ![Ustawienia administratora systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
 
@@ -139,7 +139,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Systemu Zendesk pasujące atrybuty grupy](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
 
-14. Aby skonfigurować filtry zakresu, postępuj zgodnie z instrukcjami w [samouczku filtr zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Aby skonfigurować filtry zakresu, postępuj zgodnie z instrukcjami w [samouczku filtr zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 15. Aby włączyć usługę Azure AD Provisioning for systemu Zendesk, w sekcji **Ustawienia** Zmień **stan aprowizacji** na **włączone**.
 
@@ -155,9 +155,9 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 Ta operacja uruchamia początkową synchronizację wszystkich użytkowników lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż w przypadku późniejszej synchronizacji. Są one wykonywane co około 40 minut, o ile jest uruchomiona usługa Azure AD Provisioning. 
 
-Możesz użyć sekcji **szczegóły synchronizacji** , aby monitorować postęp i postępować zgodnie z raportem dotyczącym działań aprowizacji. Ten raport opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w systemie systemu Zendesk.
+Możesz użyć sekcji Szczegóły synchronizacji, aby monitorować postęp i postępować zgodnie z raportem **dotyczącym** działań aprowizacji. Ten raport opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w systemie systemu Zendesk.
 
-Aby uzyskać informacje na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać informacje na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Ograniczenia łącznika
 
@@ -167,12 +167,12 @@ Aby uzyskać informacje na temat sposobu odczytywania dzienników aprowizacji us
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zendesk-tutorial/tutorial_general_01.png

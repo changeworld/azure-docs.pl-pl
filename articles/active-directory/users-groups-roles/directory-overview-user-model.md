@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027733"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046338"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Użytkownicy, grupy, licencje i role w dużych organizacjach
 
@@ -31,7 +31,7 @@ Ten artykuł, przeznaczony dla administratorów usługi Azure AD, zawiera wprowa
 
 ## <a name="assign-users-to-groups"></a>Przypisywanie użytkowników do grup
 
-Grup usługi Azure AD można użyć do przypisania licencji wielu użytkownikom lub przypisania użytkownikom dostępu do wdrożonych aplikacji przedsiębiorstwa. Grupy umożliwiają przypisywanie ról administratora w usłudze Azure AD oraz przyznawanie dostępu do zasobów zewnętrznych, takich jak aplikacje SaaS lub witryny programu SharePoint.
+Grup usługi Azure AD można użyć do przypisania licencji wielu użytkownikom lub przypisania użytkownikom dostępu do wdrożonych aplikacji przedsiębiorstwa. Za pomocą grup można przypisywać wszystkie role administratorów z wyjątkiem administratora globalnego w usłudze Azure AD lub można udzielić dostępu do zasobów zewnętrznych, takich jak aplikacje SaaS lub witryny programu SharePoint.
 
 Aby zwiększyć elastyczność i ograniczyć nakład pracy związanej z zarządzaniem członkostwem w grupach, w usłudze Azure AD można używać [grup dynamicznych](groups-create-rule.md), które pozwalają automatycznie zwiększać i zmniejszać liczbę członków w grupie. Dla każdego użytkownika, który jest członkiem co najmniej jednej grupy dynamicznej potrzebna jest licencja usługi Azure AD w wersji Premium P1.
 

@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6a17570a62728d5b4f9c99e3c4c939b5c77cb3df
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 47ee05113d46f66efd02978fed09cf72edc5ac1c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080211"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049937"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurowanie usługi ExpressRoute Direct przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośrednio połączyć się z globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Aby uzyskać więcej informacji, zobacz [dotyczące usługi ExpressRoute bezpośrednie łączenie](expressroute-erdirect-about.md).
+Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośrednio połączyć się z globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Aby uzyskać więcej informacji, zobacz [Informacje o programie ExpressRoute Direct Connect](expressroute-erdirect-about.md).
 
-## <a name="resources"></a>Utwórz zasób
+## <a name="resources"></a>Tworzenie zasobu
 
 1. Logowanie do platformy Azure i wybierz subskrypcję, która zawiera usługi ExpressRoute. Zasób bezpośrednio z usługi ExpressRoute i obwodów usługi ExpressRoute musi być w tej samej subskrypcji. W interfejsie wiersza polecenia platformy Azure uruchom następujące polecenia:
 
@@ -38,7 +38,12 @@ Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośred
    az account set --subscription "<subscription ID>"
    ```
 
-2. Wyświetl wszystkie lokalizacje, w którym są obsługiwane bezpośrednio z usługi ExpressRoute:
+2. Zarejestruj ponownie swoją subskrypcję w usłudze Microsoft. Network, aby uzyskać dostęp do interfejsów API expressrouteportslocation i expressrouteport
+
+   ```azurecli
+   az provider register --namespace Microsoft.Network
+   ```
+3. Wyświetl wszystkie lokalizacje, w którym są obsługiwane bezpośrednio z usługi ExpressRoute:
     
    ```azurecli
    az network express-route port location list
@@ -105,7 +110,7 @@ Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośred
    }
    ]
    ```
-3. Określ, czy jeden z lokalizacji wymienionych w poprzednim kroku ma dostępną przepustowość:
+4. Określ, czy jeden z lokalizacji wymienionych w poprzednim kroku ma dostępną przepustowość:
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
@@ -131,7 +136,7 @@ Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośred
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-4. Utwórz zasób usługi bezpośrednio z usługi ExpressRoute, która zależy od lokalizacji, który został wybrany w poprzednich krokach.
+5. Utwórz zasób usługi bezpośrednio z usługi ExpressRoute, która zależy od lokalizacji, który został wybrany w poprzednich krokach.
 
    Usługa ExpressRoute bezpośrednio obsługuje QinQ i Dot1Q hermetyzacji. Jeśli wybierzesz QinQ, każdy obwód usługi ExpressRoute jest dynamicznie przypisywany S Tag i są unikatowe w obrębie całej zasobów bezpośrednio z usługi ExpressRoute. Każdy Tag języka C, w ramach obwodu muszą być unikatowe w ramach obwodu, ale nie dla zasobów ExpressRoute bezpośrednio.  
 
@@ -146,7 +151,7 @@ Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośred
    ```
 
    > [!NOTE]
-   > Możesz również ustawić **hermetyzacji** atrybutu **Dot1Q**. 
+   > Można również ustawić atrybut **hermetyzacji** na **Dot1Q**. 
    >
 
    **Przykładowe dane wyjściowe**
@@ -203,11 +208,11 @@ Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośred
    }  
    ```
 
-## <a name="state"></a>Zmiana AdminState dla łączy
+## <a name="state"></a>Zmień AdminState dla linków
 
 Ten proces umożliwia przeprowadzanie testów warstwy 1. Upewnij się, że każdy obejmującej wiele połączeń jest zainstalowane odpowiednie poprawki do poszczególnych routerów w portów podstawowych i pomocniczych.
 
-1. Ustaw łącza **włączone**. Powtórz ten krok, aby ustawić każdy link **włączone**.
+1. Ustaw linki do **włączenia**. Powtórz ten krok, aby ustawić wszystkie łącza do **włączone**.
 
    Łącza [0] jest podstawowy port i łącza [1] jest dodatkowych portów.
 
@@ -271,7 +276,7 @@ Ten proces umożliwia przeprowadzanie testów warstwy 1. Upewnij się, że każd
    }
    ```
 
-   Użyj tej samej procedury, aby w dół do portów przy użyciu `AdminState = "Disabled"`.
+   Użyj tej samej procedury, aby obsłużyć porty przy użyciu `AdminState = "Disabled"`.
 
 ## <a name="circuit"></a>Tworzenie obwodu
 
@@ -328,4 +333,4 @@ Utwórz obwód zasobu bezpośrednio z usługi ExpressRoute:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat usługi ExpressRoute bezpośrednio zobacz [Przegląd](expressroute-erdirect-about.md).
+Aby uzyskać więcej informacji na temat usługi ExpressRoute Direct, zobacz [Omówienie](expressroute-erdirect-about.md).

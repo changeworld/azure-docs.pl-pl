@@ -16,28 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 monikerRange: vsts
-ms.openlocfilehash: 11edeb35119e2c598fd83fd89c65ba4dc4679650
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 35eebeaa393ff75ada11752aaf9f195efddfa12b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256104"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049794"
 ---
 #  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>Szybki Start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania w Azure Pipelines dla środowiska Node. js z Azure DevOps Projects
 
-Usługa Azure DevOps Projects oferuje prosty sposób na utworzenie zasobów platformy Azure i skonfigurowanie potoku ciągłej integracji/ciągłego wdrażania dla aplikacji Node.js w usłudze Azure Pipelines.  
+W tym przewodniku szybki start użyjesz uproszczonego Azure DevOps Projects, aby skonfigurować potok ciągłej integracji (CI) i ciągłe dostarczanie (CD) dla aplikacji node. js w programie Azure Pipelines. Za pomocą Azure DevOps Projects można skonfigurować wszystko, czego potrzebujesz do tworzenia, wdrażania i monitorowania aplikacji. 
 
-Jeśli nie masz subskrypcji platformy Azure, możesz uzyskać ją bezpłatnie za pośrednictwem programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- Konto i organizacja [usługi Azure DevOps](https://azure.microsoft.com/services/devops/) .
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
 Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure w wybranej subskrypcji platformy Azure.
 
-1. Zaloguj się do [Portalu Microsoft Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com), a następnie w okienku po lewej stronie wybierz pozycję **Utwórz zasób**. 
 
-1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**, a następnie wyszukaj pozycję **DevOps Projects**. 
+   ![Tworzenie zasobu platformy Azure w Azure Portal](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-    ![Utwórz zasób konfiguracji ciągłego dostarczania](_img/azure-devops-project-nodejs/create-azure-resource.png)
+1. Wyszukaj i wybierz pozycję **DevOps projects**, a następnie wybierz pozycję **Utwórz**.
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Wybieranie przykładowej aplikacji i usługi platformy Azure
 
@@ -52,16 +55,16 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurowanie usługi Azure DevOps i subskrypcji platformy Azure 
 
 1. Utwórz nową organizację usługi Azure DevOps lub wybierz istniejącą organizację. 
+   
+   1. Wprowadź nazwę dla projektu.
+      
+   1. Wybierz swoją subskrypcję platformy Azure i lokalizację, wprowadź nazwę aplikacji, a następnie wybierz pozycję **Gotowe**.  
+      Po kilku minutach w witrynie Azure Portal zostanie wyświetlony pulpit nawigacyjny usługi DevOps Projects. Aplikacja przykładowa zostanie skonfigurowana w repozytorium w organizacji usługi Azure DevOps, skompilowana i wdrożona na platformie Azure. Ten pulpit nawigacyjny zapewnia wgląd w repozytorium kodu, potok ciągłej integracji/ciągłego wdrażania i aplikację na platformie Azure.
+   
+1. Wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
+   
+   ![Widok pulpitu nawigacyjnego potoku CI/CD](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-    a. Wprowadź nazwę dla projektu.
-
-    b. Wybierz swoją subskrypcję platformy Azure i lokalizację, wprowadź nazwę aplikacji, a następnie wybierz pozycję **Gotowe**.  
-    Po kilku minutach w witrynie Azure Portal zostanie wyświetlony pulpit nawigacyjny usługi DevOps Projects. Aplikacja przykładowa zostanie skonfigurowana w repozytorium w organizacji usługi Azure DevOps, skompilowana i wdrożona na platformie Azure. Ten pulpit nawigacyjny zapewnia wgląd w repozytorium kodu, potok ciągłej integracji/ciągłego wdrażania i aplikację na platformie Azure.
-     
-3. Wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
-
-    ![Widok pulpitu nawigacyjnego potoku CI/CD](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
-    
 Usługa DevOps Projects automatycznie skonfigurowała wyzwalacz kompilacji i wydania ciągłej integracji.  Możesz teraz rozpocząć pracę w zespole nad aplikacją Node.js w ramach procesu ciągłej integracji/ciągłego wdrażania, który umożliwia automatyczne wdrożenie najnowszej wersji w witrynie internetowej.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Zatwierdzanie zmian kodu i wykonywanie ciągłej integracji/ciągłego wdrażania
@@ -153,6 +156,6 @@ Podczas konfigurowania procesu ciągłej integracji/ciągłego wdrażania zosta�
 > [!div class="nextstepaction"]
 > [Dostosowywanie procesu ciągłego wdrażania](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
-## <a name="videos"></a>Filmy
+## <a name="videos"></a>Filmy wideo
 
 > [!VIDEO https://www.youtube.com/embed/3etwjubReJs]

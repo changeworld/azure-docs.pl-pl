@@ -1,29 +1,31 @@
 ---
 title: Azure Database for MySQL szyfrowanie danych za pomocą klucza zarządzanego przez klienta
-description: Azure Database for MySQL szyfrowanie danych za pomocą klucza zarządzanego przez klienta umożliwia Bring Your Own Key (BYOK) na potrzeby ochrony danych w czasie spoczynku oraz pozwala organizacjom wdrożyć Rozdzielenie obowiązków w zakresie zarządzania kluczami i danymi.
+description: Azure Database for MySQL szyfrowanie danych za pomocą klucza zarządzanego przez klienta umożliwia Bring Your Own Key (BYOK) na potrzeby ochrony danych przechowywanych w czasie spoczynku. Pozwala to również organizacjom na wdrażanie rozdzieleń obowiązków związanych z zarządzaniem kluczami i danymi.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 7c54b3010b42d56ffa9b701b76c7aef51095404c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 3f68ae9665b6235d44411835299721b835745252
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028648"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048319"
 ---
-# <a name="azure-database-for-mysql-data-encryption-with-customer-managed-key"></a>Azure Database for MySQL szyfrowanie danych za pomocą klucza zarządzanego przez klienta
+# <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL szyfrowanie danych za pomocą klucza zarządzanego przez klienta
 
 > [!NOTE]
 > W tej chwili należy zażądać dostępu do korzystania z tej funkcji. Aby to zrobić, skontaktuj się z AskAzureDBforMySQL@service.microsoft.com.
 
-Azure Database for MySQL szyfrowanie danych za pomocą klucza zarządzanego przez klienta umożliwia Bring Your Own Key (BYOK) na potrzeby ochrony danych w czasie spoczynku oraz pozwala organizacjom wdrożyć Rozdzielenie obowiązków w zakresie zarządzania kluczami i danymi. W przypadku szyfrowania zarządzanego przez klienta użytkownik jest odpowiedzialny za i w pełnej kontroli cyklu życia klucza (tworzenia kluczy, przekazywania, rotacji, usuwania), uprawnień do użycia kluczy i inspekcji operacji na kluczach.
+Azure Database for MySQL szyfrowanie danych za pomocą klucza zarządzanego przez klienta umożliwia Bring Your Own Key (BYOK) na potrzeby ochrony danych przechowywanych w czasie spoczynku. Pozwala to również organizacjom na wdrażanie rozdzieleń obowiązków związanych z zarządzaniem kluczami i danymi. W przypadku szyfrowania zarządzanego przez klienta użytkownik jest odpowiedzialny za i w pełni kontrolować cykl życia klucza, uprawnienia do użycia kluczy oraz inspekcje operacji na kluczach.
 
-W przypadku Azure Database for MySQL szyfrowanie danych jest ustawiane na poziomie serwera. W przypadku tej formy szyfrowania danych klucz jest używany do szyfrowania klucza szyfrowania bazy danych (.), który jest kluczem asymetryczny zarządzanym przez klienta przechowywanym w Azure Key Vaultm przez klienta i zarządzanym przez klienta [(AKV)](../key-vault/key-Vault-secure-your-key-Vault.md), opartym na chmurze zewnętrznym systemem zarządzania kluczami. AKV jest wysoce dostępny i udostępnia skalowalny bezpieczny magazyn dla kluczy kryptograficznych RSA, opcjonalnie obsługiwane w przypadku FIPS 140-2 Level 2 sprawdzone sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). Nie zezwala na bezpośredni dostęp do przechowywanego klucza, ale zapewnia usługi szyfrowania/odszyfrowywania przy użyciu klucza do autoryzowanych jednostek. Klucz może być wygenerowany przez Key Vault, zaimportowano lub [przetransferowany do Key Vault z urządzenia modułu HSM Premium](../key-vault/key-Vault-hsm-protected-keys.md).
+W przypadku Azure Database for MySQL należy ustawić szyfrowanie danych na poziomie serwera. W przypadku tej formy szyfrowania danych należy użyć klucza w celu szyfrowania klucza szyfrowania danych. Klucz szyfrowania danych jest kluczem zarządzanym przez klienta, który jest przechowywany w wystąpieniu [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) klienta i zarządzanym przez klienta. W dalszej części tego artykułu został opisany bardziej szczegółowo.
+
+Key Vault to oparty na chmurze zewnętrzny system zarządzania kluczami. Jest ona wysoce dostępna i zapewnia skalowalny, bezpieczny magazyn dla kluczy kryptograficznych RSA, opcjonalnie obsługiwane przez program FIPS 140-2 Level 2 sprawdzone sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). Nie zezwala na bezpośredni dostęp do przechowywanego klucza, ale zapewnia usługi szyfrowania i odszyfrowywania do autoryzowanych jednostek. Key Vault może wygenerować klucz, zaimportować go lub [przetransferować z lokalnego urządzenia HSM](../key-vault/key-Vault-hsm-protected-keys.md).
 
 > [!NOTE]
-> Ta funkcja jest dostępna we wszystkich regionach świadczenia usługi Azure, w których Azure Database for MySQL obsługuje warstwy cenowe Ogólnego przeznaczenia i zoptymalizowane pod kątem pamięci.
+> Ta funkcja jest dostępna we wszystkich regionach świadczenia usługi Azure, w których Azure Database for MySQL obsługuje warstwy cenowe "Ogólnego przeznaczenia" i "zoptymalizowane pod kątem pamięci".
 
 ## <a name="benefits"></a>Korzyści
 
@@ -32,98 +34,96 @@ Szyfrowanie danych dla Azure Database for MySQL zapewnia następujące korzyści
 * Większa przejrzystość, szczegółowa kontrola i zarządzanie kluczem szyfrowania.
 * Centralne zarządzanie i organizacja kluczy, udostępniając je w Azure Key Vault.
 * Możliwość wdrożenia separacji obowiązków w zakresie zarządzania kluczami i danymi w organizacji.
-* Zarządzanie kluczami za pomocą zarządzania danymi w organizacji, dzięki czemu administrator Key Vault może odwołać uprawnienia dostępu do klucza w celu niedostępowania zaszyfrowanych baz danych.
-* Większe zaufanie od klientów końcowych, ponieważ Azure Key Vault zaprojektowano w taki sposób, aby firma Microsoft nie widziała ani nie wyodrębni kluczy szyfrowania.
+* Możliwość oddzielenia zarządzania kluczami od zarządzania danymi w organizacji, dzięki czemu administrator Key Vault może odwołać uprawnienia dostępu do klucza, aby uniemożliwić dostęp do zaszyfrowanej bazy danych.
+* Większe zaufanie od użytkowników końcowych, ponieważ firma Microsoft nie może wyświetlić lub wyodrębnić kluczy szyfrowania w Key Vault.
 
 ## <a name="terminology-and-description"></a>Terminologia i opis
 
-**Klucz szyfrowania danych (undek)** — symetryczny klucz AES256 używany do szyfrowania partycji lub bloku danych. Szyfrowanie każdego bloku danych przy użyciu innego klucza sprawia, że ataki analizy kryptograficznej są trudniejsze. Dostęp do DEKs jest wymagany przez dostawcę zasobów lub wystąpienie aplikacji, które szyfruje i odszyfrowuje określony blok. Gdy klucz szyfrowania danych jest zastępowany nowym kluczem, tylko dane w skojarzonym bloku muszą zostać ponownie zaszyfrowane przy użyciu nowego klucza.
+**Klucz szyfrowania danych (unencryption)** : symetryczny klucz AES256 używany do szyfrowania partycji lub bloku danych. Szyfrowanie każdego bloku danych przy użyciu innego klucza sprawia, że ataki analizy kryptograficznej są trudniejsze. Dostęp do DEKs jest wymagany przez dostawcę zasobów lub wystąpienie aplikacji, które szyfruje i odszyfrowuje określony blok. Gdy zastąpisz klucz szyfrowania danych za pomocą nowego klucza, tylko dane w skojarzonym bloku muszą zostać ponownie zaszyfrowane przy użyciu nowego klucza.
 
-**Klucz szyfrowania klucza (KEK)** — klucz szyfrowania służący do szyfrowania kluczy szyfrowania danych. Użycie klucza szyfrowania klucza, który nigdy nie pozostawia Key Vault, pozwala na szyfrowanie kluczy szyfrowania danych i sterowanie nimi. Jednostka, która ma dostęp do elementu KEK, może być różna od jednostki, która wymaga tego elementu. Ponieważ KEK jest wymagany do odszyfrowania DEKs, KEK jest efektywnie jednym punktem, przez który DEKs może być skutecznie usunięty przez usunięcie KEK.
+**Klucz szyfrowania klucza (KEK)** : klucz szyfrowania używany do szyfrowania DEKs. Element KEK, który nigdy nie pozostawia Key Vault umożliwia zaszyfrowanie i kontrola DEKs. Jednostka, która ma dostęp do KEK, może różnić się od jednostki, która wymaga tego klucza. Ponieważ KEK jest wymagany do odszyfrowania DEKs, KEK jest efektywnie jednym punktem, przez który DEKs może być skutecznie usunięty przez usunięcie KEK.
 
-Klucze szyfrowania danych, zaszyfrowane przy użyciu kluczy szyfrowania kluczy, są przechowywane oddzielnie i tylko jednostka mająca dostęp do klucza szyfrowania klucza może odszyfrować te klucze szyfrowania danych. Aby uzyskać więcej informacji, zobacz [zabezpieczenia w szyfrowaniu](../security/fundamentals/encryption-atrest.md)w stanie spoczynku.
+DEKs szyfrowany za pomocą KEKs są przechowywane oddzielnie. Tylko jednostka z dostępem do KEK może odszyfrować te DEKs. Aby uzyskać więcej informacji, zobacz [zabezpieczenia w szyfrowaniu](../security/fundamentals/encryption-atrest.md)w stanie spoczynku.
 
-## <a name="how-data-encryption-with-customer-managed-key-works"></a>Jak działa szyfrowanie danych z kluczem zarządzanym przez klienta
+## <a name="how-data-encryption-with-a-customer-managed-key-works"></a>Jak działa szyfrowanie danych z kluczem zarządzanym przez klienta
 
-![Korzystanie z własnego klucza — przegląd](media/concepts-data-access-and-security-data-encryption/mysqloverview.png)
+![Diagram przedstawiający przegląd Bring Your Own Key](media/concepts-data-access-and-security-data-encryption/mysqloverview.png)
 
-Aby serwer MySQL mógł używać kluczy zarządzanych przez klienta przechowywanych w programie AKV do szyfrowania danych w programie, administrator Key Vault musi przyznać następujące prawa dostępu do serwera przy użyciu jego unikatowej tożsamości:
+Aby serwer MySQL mógł używać kluczy zarządzanych przez klienta przechowywanych w Key Vault na potrzeby szyfrowania danych w programie, administrator Key Vault ma następujące prawa dostępu do serwera:
 
-* **Get** -do pobierania publicznej części i właściwości klucza w Key Vault
-* **wrapKey** — aby można było szyfrować klucz szyfrowania danych
-* **unwrapKey** — aby można było odszyfrować klucz szyfrowania danych
+* **Pobierz**: w celu pobrania publicznej części i właściwości klucza w magazynie kluczy.
+* **wrapKey**: aby można było zaszyfrować klucz szyfrowania danych.
+* **unwrapKey**: aby można było odszyfrować klucz szyfrowania danych.
 
-Key Vault administrator może również [włączyć rejestrowanie zdarzeń inspekcji Key Vault](../azure-monitor/insights/azure-key-vault.md), aby mogły być później poddane inspekcji.
+Administrator magazynu kluczy może również [włączyć rejestrowanie Key Vault zdarzeń inspekcji](../azure-monitor/insights/azure-key-vault.md), aby mogły być później poddane inspekcji.
 
-Gdy serwer jest skonfigurowany do korzystania z klucza zarządzanego przez klienta, który jest przechowywany w Key Vault, serwer wysyła do Key Vault do szyfrowania szyfrowanie danych. Key Vault zwraca zaszyfrowany klucz szyfrowania danych, który jest przechowywany w bazie. Analogicznie, jeśli jest to konieczne, serwer wysyła chronione szyfrowanie szyfrowania danych do Key Vault na potrzeby odszyfrowywania. Audytorzy mogą używać Azure Monitor do przeglądania dzienników AuditEvent Key Vault, jeśli rejestrowanie jest włączone.
+Gdy serwer jest skonfigurowany do korzystania z klucza zarządzanego przez klienta przechowywanego w magazynie kluczy, serwer wysyła do magazynu kluczy, w którym są szyfrowane. Key Vault zwraca zaszyfrowany klucz szyfrowania danych, który jest przechowywany w bazie. Analogicznie, jeśli jest to konieczne, serwer wysyła chronione szyfrowanie szyfrowania danych do magazynu kluczy w celu odszyfrowania. Audytorzy mogą używać Azure Monitor do przeglądania dzienników zdarzeń inspekcji Key Vault, jeśli rejestrowanie jest włączone.
 
 ## <a name="requirements-for-configuring-data-encryption-for-azure-database-for-mysql"></a>Wymagania dotyczące konfigurowania szyfrowania danych dla Azure Database for MySQL
 
-### <a name="requirements-for-configuring-akv"></a>Wymagania dotyczące konfigurowania AKV
+Poniżej przedstawiono wymagania dotyczące konfigurowania Key Vault:
 
-* Key Vault i Azure Database for MySQL muszą należeć do tej samej dzierżawy Azure Active Directory (AAD). Key Vault i interakcje między dzierżawcami nie są obsługiwane. Późniejsze przeniesienie zasobów wymaga ponownego skonfigurowania szyfrowania danych. Dowiedz się więcej o przenoszeniu zasobów.
-* Funkcja usuwania nietrwałego musi być włączona na Key Vault, aby chronić przed usunięciem klucza przypadkowej utraty danych (lub Key Vault). Zasoby usunięte nietrwale są przechowywane przez 90 dni, chyba że w międzyczasie zostanie odzyskany lub usunięty przez klienta. Akcje odzyskania i przeczyszczania mają własne uprawnienia skojarzone z zasadami dostępu Key Vault. Funkcja usuwania nietrwałego jest domyślnie wyłączona i można ją włączyć za pomocą programu PowerShell lub interfejsu wiersza polecenia. Nie można jej włączyć za pośrednictwem Azure Portal.
-* Przyznaj Azure Database for MySQL dostęp do Key Vault za pomocą uprawnień **Get, wrapKey, unwrapKey** przy użyciu unikatowej tożsamości zarządzanej. W przypadku korzystania z Azure Portal unikatowa identyfikacja jest automatycznie tworzona podczas włączania szyfrowania danych w programie MySQL. Aby uzyskać szczegółowe instrukcje krok po kroku dotyczące korzystania z Azure Portal, zobacz [Konfigurowanie szyfrowania danych dla programu MySQL](howto-data-encryption-portal.md) .
+* Key Vault i Azure Database for MySQL muszą należeć do tej samej dzierżawy Azure Active Directory (Azure AD). Między dzierżawcami Key Vault i interakcje serwera nie są obsługiwane. Późniejsze przeniesienie zasobów wymaga ponownego skonfigurowania szyfrowania danych.
+* Należy włączyć funkcję usuwania nietrwałego w magazynie kluczy, aby chronić przed utratą danych w przypadku, gdy zostanie usunięte przypadkowe wystąpienie (lub Key Vault). Zasoby usunięte nietrwale są przechowywane przez 90 dni, chyba że użytkownik odzyskuje lub przeczyści je w międzyczasie. Akcje odzyskania i przeczyszczania mają własne uprawnienia skojarzone z zasadami dostępu Key Vault. Funkcja usuwania nietrwałego jest domyślnie wyłączona, ale można ją włączyć za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure (należy zauważyć, że nie można włączyć jej za pomocą Azure Portal).
+* Przyznaj Azure Database for MySQL dostęp do magazynu kluczy za pomocą uprawnień Get, wrapKey i unwrapKey przy użyciu unikatowej tożsamości zarządzanej. W Azure Portal unikatowa tożsamość jest tworzona automatycznie po włączeniu szyfrowania danych w programie MySQL. Szczegółowe instrukcje krok po kroku znajdują Azure Portal się w temacie [Konfigurowanie szyfrowania danych dla programu MySQL](howto-data-encryption-portal.md) .
 
-* W przypadku korzystania z zapory z AKV należy włączyć opcję *Zezwalaj zaufanym usługom firmy Microsoft na pominięcie zapory*.
+* W przypadku korzystania z zapory z Key Vault należy włączyć opcję **Zezwalaj zaufanym usługom firmy Microsoft na pomijanie zapory**.
 
-### <a name="requirements-for-configuring-customer-key"></a>Wymagania dotyczące konfigurowania klucza klienta
+Poniżej przedstawiono wymagania dotyczące konfigurowania klucza zarządzanego przez klienta:
 
 * Klucz zarządzany przez klienta, który ma być używany na potrzeby szyfrowania, może być tylko asymetryczny, RSA 2028.
 * Data aktywacji klucza (jeśli jest ustawiona) musi być datą i godziną w przeszłości. Data wygaśnięcia (jeśli jest ustawiona) musi być przyszłą datą i godziną.
 * Klucz musi być w stanie *włączony* .
-* W przypadku importowania istniejącego klucza do Key Vault upewnij się, że jest on udostępniany w obsługiwanych formatach plików (`.pfx`, `.byok`, `.backup`).
+* W przypadku importowania istniejącego klucza do magazynu kluczy upewnij się, że jest on udostępniany w obsługiwanych formatach plików (`.pfx`, `.byok`, `.backup`).
 
-## <a name="recommendations-when-using-data-encryption-using-customer-managed-key"></a>Zalecenia dotyczące korzystania z szyfrowania danych przy użyciu klucza zarządzanego przez klienta
+## <a name="recommendations"></a>Zalecenia
 
-### <a name="recommendation-for-configuring-akv"></a>Zalecenie dotyczące konfigurowania AKV
+W przypadku korzystania z szyfrowania danych przy użyciu klucza zarządzanego przez klienta poniżej przedstawiono zalecenia dotyczące konfigurowania Key Vault:
 
-* Ustaw blokadę zasobów na Key Vault, aby określić, kto może usunąć ten krytyczny zasób i zapobiegać przypadkowemu lub nieautoryzowanemu usunięciu. Dowiedz się więcej o blokadach zasobów.
-* Włącz inspekcję i raportowanie dla wszystkich kluczy szyfrowania: Key Vault zawiera dzienniki, które można łatwo wstrzyknąć do innych informacji o zabezpieczeniach i narzędzi do zarządzania zdarzeniami. Azure Monitor Log Analytics to jeden przykład usługi, która jest już zintegrowana.
+* Ustaw blokadę zasobów Key Vault, aby określić, kto może usunąć ten krytyczny zasób i zapobiegać przypadkowemu lub nieautoryzowanemu usuwaniu.
+* Włącz inspekcję i raportowanie dla wszystkich kluczy szyfrowania. Key Vault udostępnia dzienniki, które można łatwo wstrzyknąć do innych informacji o zabezpieczeniach i narzędzi do zarządzania zdarzeniami. Azure Monitor Log Analytics to jeden przykład usługi, która jest już zintegrowana.
 
-* Upewnij się, że Key Vault i Azure Database for MySQL znajdują się w tym samym regionie, aby zapewnić szybszy dostęp do operacji zawijania/odpakowania danych.
+* Upewnij się, że Key Vault i Azure Database for MySQL znajdują się w tym samym regionie, aby zapewnić szybszy dostęp do operacji zawijania i odpakowania danych.
 
-### <a name="recommendation-for-configuring-customer-managed-key"></a>Zalecenie dotyczące konfigurowania klucza zarządzanego przez klienta
+Poniżej przedstawiono zalecenia dotyczące konfigurowania klucza zarządzanego przez klienta:
 
-* Przechowuj kopię klucza zarządzanego przez klienta (KEK) w bezpiecznym miejscu lub wykorzystaj ją w usłudze Escrow.
+* Przechowuj kopię klucza zarządzanego przez klienta w bezpiecznym miejscu lub wykorzystaj ją w usłudze Escrow.
 
-* Jeśli klucz jest generowany w Key Vault, Utwórz kopię zapasową klucza przed użyciem klucza w AKV po raz pierwszy. Kopię zapasową można przywrócić tylko do Azure Key Vault. Dowiedz się więcej na temat polecenia [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyVault/backup-azkeyVaultkey) .
+* Jeśli Key Vault generuje klucz, Utwórz kopię zapasową klucza przed użyciem klucza po raz pierwszy. Możesz przywrócić kopię zapasową tylko do Key Vault. Aby uzyskać więcej informacji na temat polecenia Backup, zobacz [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyVault/backup-azkeyVaultkey).
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>Niedostępny warunek klucza zarządzanego przez klienta
 
-W przypadku skonfigurowania szyfrowania danych z kluczem zarządzanym przez klienta w Azure Key Vault (AKV), aby serwer mógł pozostać w trybie online, wymagany jest ciągły dostęp do tego klucza. Jeśli serwer utraci dostęp do klucza zarządzanego przez klienta w programie AKV, w ciągu 10 minut serwer zacznie odrzucać wszystkie połączenia z odpowiednim komunikatem o błędzie i zmienić stan serwera na **niedostępny**. Jedyną akcją, którą można wykonać w bazie danych w stanie niedostępnym, jest usunięcie jej.
+W przypadku konfigurowania szyfrowania danych przy użyciu klucza zarządzanego przez klienta w programie Key Vault dostęp do tego klucza jest wymagany, aby serwer mógł pozostać w trybie online. Jeśli serwer utraci dostęp do klucza zarządzanego przez klienta w Key Vault, serwer rozpoczyna odrzucanie wszystkich połączeń w ciągu 10 minut. Serwer wystawia odpowiedni komunikat o błędzie i zmieni stan serwera na *niedostępny*. Jedyną akcją dozwoloną dla bazy danych w tym stanie jest usunięcie jej.
 
-### <a name="accidental-key-access-revocation-from-the-azure-key-vault-akv"></a>Przypadkowe odwoływanie dostępu do klucza z Azure Key Vault (AKV)
+### <a name="accidental-key-access-revocation-from-key-vault"></a>Przypadkowe odwoływanie dostępu do klucza z Key Vault
 
-Może się zdarzyć, że ktoś z wystarczającymi prawami dostępu do Key Vault przypadkowo wyłącza dostęp serwera do klucza przez:
+Może się zdarzyć, że ktoś mający wystarczające prawa dostępu do Key Vault przypadkowo wyłącza dostęp serwera do klucza przez:
 
-* Odwoływanie uprawnień Key Vault Get, wrapKey, unwrapKey z serwera
-* Usuwanie klucza
-* Usuwanie Key Vault
-* zmiana reguł zapory Key Vault
+* Odwoływanie uprawnień Get, wrapKey i unwrapKey magazynu kluczy z serwera.
+* Usuwanie klucza.
+* Usuwanie magazynu kluczy.
+* Zmiana reguł zapory magazynu kluczy.
 
-* Usuwanie tożsamości zarządzanej serwera w Azure Active Directory
+* Usuwanie tożsamości zarządzanej serwera w usłudze Azure AD.
 
-## <a name="monitoring-of-the-customer-managed-key-in-the-key-vault"></a>Monitorowanie klucza zarządzanego przez klienta w Key Vault
+## <a name="monitor-the-customer-managed-key-in-key-vault"></a>Monitoruj klucz zarządzany przez klienta w Key Vault
 
-Aby monitorować stan bazy danych i włączyć alert o utracie dostępu do funkcji ochrony TDE, skonfiguruj następujące funkcje platformy Azure:
+Aby monitorować stan bazy danych i włączyć alerty na potrzeby utraty dostępu do funkcji ochrony za pomocą szyfrowania danych, skonfiguruj następujące funkcje platformy Azure:
 
-* [Azure Resource Health](../service-health/resource-health-overview.md) — niedostępna baza danych, która utraciła dostęp do klucza klienta, będzie wyświetlana jako "niedostępna" po odmowie pierwszego połączenia z bazą danych.
-* [Dziennik aktywności](../service-health/alerts-activity-log-service-notifications.md) — Jeśli dostęp do klucza klienta w Key Vault zarządzanym przez klienta nie powiedzie się, wpisy zostaną dodane do dziennika aktywności. Utworzenie alertów dla tych zdarzeń umożliwi przywrócenie dostępu tak szybko, jak to możliwe.
+* [Azure Resource Health](../service-health/resource-health-overview.md): niedostępna baza danych, która utraciła dostęp do klucza klienta, jest wyświetlana jako "niedostępna" po odmowie pierwszego połączenia z bazą danych.
+* [Dziennik aktywności](../service-health/alerts-activity-log-service-notifications.md): Jeśli dostęp do klucza klienta w Key Vault zarządzanym przez klienta nie powiedzie się, wpisy zostaną dodane do dziennika aktywności. Można przywrócić dostęp najszybciej, jak to możliwe, w przypadku tworzenia alertów dla tych zdarzeń.
 
-* [Grupy akcji](../azure-monitor/platform/action-groups.md) można definiować w celu wysyłania powiadomień i alertów na podstawie preferencji, na przykład wiadomości E-mail/SMS/wypychania/głosu, aplikacji logiki, elementu webhook, narzędzia ITSM lub elementu Runbook usługi Automation.
+* [Grupy akcji](../azure-monitor/platform/action-groups.md): Zdefiniuj te, aby wysyłać powiadomienia i alerty na podstawie Twoich preferencji.
 
-## <a name="restore-and-replica-with-customers-managed-key-in-the-key-vault"></a>Przywracanie i replika z kluczem zarządzanym klienta w Key Vault
+## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Przywracanie i replikowanie z kluczem zarządzanym klienta w Key Vault
 
-Gdy Azure Database for MySQL jest szyfrowany przy użyciu klucza zarządzanego przez klienta przechowywanego w Key Vault, każda nowo utworzona kopia serwera (za pomocą operacji przywracania lokalnego lub w trybie geograficznym lub za pośrednictwem odczytu replik) również zostanie zaszyfrowana przy użyciu klucza zarządzanego tego samego klienta. Można je jednak zmienić w taki sposób, aby odzwierciedlały klucz zarządzany nowego klienta na potrzeby szyfrowania. Gdy klucz zarządzany przez klienta zostanie zmieniony, stare kopie zapasowe serwera rozpocznie się przy użyciu najnowszego klucza.
+Gdy Azure Database for MySQL jest szyfrowany przy użyciu klucza zarządzanego przez klienta przechowywanego w Key Vault, nowo utworzona kopia serwera zostanie również zaszyfrowana. Tę nową kopię można wykonać za pomocą operacji w trybie lokalnym lub z możliwością przywracania geograficznego albo za pomocą replik odczytu. Jednak kopię można zmienić w celu odzwierciedlenia klucza zarządzanego nowego klienta na potrzeby szyfrowania. Gdy klucz zarządzany przez klienta zostanie zmieniony, stare kopie zapasowe serwera zaczynają korzystać z najnowszego klucza.
 
-Aby uniknąć problemów podczas ustanawiania konfiguracji szyfrowania danych zarządzanych przez klienta podczas przywracania lub tworzenia repliki odczytu, należy wykonać następujące kroki na serwerze głównym i przywracaniu/serwer repliki:
+Aby uniknąć problemów podczas konfigurowania szyfrowania danych zarządzanych przez klienta podczas przywracania lub tworzenia repliki odczytu, należy wykonać następujące kroki na serwerach głównych i przywróconych/replice:
 
 * Zainicjuj proces przywracania lub odczytywania repliki z głównego Azure Database for MySQL.
-* Nowo utworzony serwer (przywrócony/Replica) jest przechowywany w stanie niedostępnym, ponieważ jego unikatowa tożsamość nie otrzymała jeszcze uprawnień do Azure Key Vault (AKV)
-* Na serwerze przywróconym/repliki ponownie sprawdź poprawność klucza zarządzanego przez klienta w ustawieniach szyfrowania danych, aby upewnić się, że nowo utworzony serwer ma nadane uprawnienia zawijania/odwinięcia do klucza przechowywanego w AKV.
-
-* W celu zapewnienia, że szyfrowanie danych jest zachowywane na serwerze głównym oraz przywracane/replikowane, należy wykonać obie powyższe czynności.
+* Zachowaj nowo utworzony serwer (przywrócony/Replica) w stanie niedostępnym, ponieważ jego unikatowa tożsamość nie otrzymała jeszcze uprawnień do Key Vault.
+* Na serwerze przywrócenia/repliki ponownie sprawdź poprawność klucza zarządzanego przez klienta w ustawieniach szyfrowania danych. Gwarantuje to, że nowo utworzony serwer ma uprawnienia zawijania i odwinięcia klucza przechowywanego w Key Vault.
 
 ## <a name="next-steps"></a>Następne kroki
 

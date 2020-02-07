@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Java — Azure DevOps Projects'
+title: 'Szybki Start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Java — Azure DevOps Projects'
 description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Umożliwia uruchomienie aplikacji w wybranej usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -16,30 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: 49514022dc00afcd07002c7a3278c18a606e5ad5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1a276770887bee39972ba8630fb13f52bcbe802d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203734"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049979"
 ---
-# <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Szybki start: Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania dla aplikacji Java za pomocą Azure DevOps Projects
+# <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Szybki Start: Konfigurowanie potoku ciągłej integracji/ciągłego wdrażania dla aplikacji Java za pomocą Azure DevOps Projects
 
-W tym artykule z przewodnikiem Szybki Start użyjesz uproszczonego środowiska Azure DevOps Projects, aby skonfigurować potok ciągłej integracji (CI) i ciągłego dostarczania (CD) dla aplikacji Java w Azure Pipelines. Możesz również użyć Azure DevOps Projects, aby utworzyć inne zasoby platformy Azure.  
+W tym przewodniku szybki start użyjesz uproszczonego Azure DevOps Projects, aby skonfigurować potok ciągłej integracji (CI) i ciągłego dostarczania (CD) dla aplikacji Java w Azure Pipelines. Za pomocą Azure DevOps Projects można skonfigurować wszystko, czego potrzebujesz do tworzenia, wdrażania i monitorowania aplikacji. 
 
-Jeśli nie masz subskrypcji platformy Azure, możesz uzyskać ją bezpłatnie za pośrednictwem programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- Konto i organizacja [usługi Azure DevOps](https://azure.microsoft.com/services/devops/) .
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-  Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure w wybranej subskrypcji platformy Azure.
+Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure w wybranej subskrypcji platformy Azure.
 
-1. Zaloguj się do [Portalu Microsoft Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com), a następnie w okienku po lewej stronie wybierz pozycję **Utwórz zasób**. 
 
-1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**, a następnie wyszukaj pozycję **DevOps Projects**.  
+   ![Tworzenie zasobu platformy Azure w Azure Portal](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
 
-2. Wybierz pozycję **Utwórz**.
-
-    ![Tworzenie zasobu platformy Azure w DevOps Projects](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
+1. Wyszukaj i wybierz pozycję **DevOps projects**, a następnie wybierz pozycję **Utwórz**.
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Wybieranie przykładowej aplikacji i usługi platformy Azure
 
@@ -53,18 +54,17 @@ Przykłady w języku Java obejmują kilka struktur aplikacji do wyboru.
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurowanie usługi Azure DevOps i subskrypcji platformy Azure 
 
 1. Utwórz nową organizację usługi Azure DevOps lub wybierz istniejącą organizację. 
-
-    a. Wybierz nazwę projektu. 
-
-    b. Wybierz lokalizację i subskrypcję platformy Azure, wybierz nazwę aplikacji, a następnie wybierz przycisk **Gotowe**.  
-    Po kilku minutach w witrynie Azure Portal zostanie wyświetlony pulpit nawigacyjny usługi DevOps Projects. Aplikacja przykładowa zostanie skonfigurowana w repozytorium w organizacji usługi Azure DevOps, skompilowana i wdrożona na platformie Azure. Ten pulpit nawigacyjny zapewnia wgląd w repozytorium kodu, potok ciągłej integracji/ciągłego wdrażania i aplikację na platformie Azure.
-    
-
+   
+   1. Wybierz nazwę projektu. 
+   
+   1. Wybierz lokalizację i subskrypcję platformy Azure, wybierz nazwę aplikacji, a następnie wybierz przycisk **Gotowe**.  
+   Po kilku minutach w witrynie Azure Portal zostanie wyświetlony pulpit nawigacyjny usługi DevOps Projects. Aplikacja przykładowa zostanie skonfigurowana w repozytorium w organizacji usługi Azure DevOps, skompilowana i wdrożona na platformie Azure. Ten pulpit nawigacyjny zapewnia wgląd w repozytorium kodu, potok ciągłej integracji/ciągłego wdrażania i aplikację na platformie Azure.
+   
 2. Wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
+   
+   ![Wyświetlanie pulpitu nawigacyjnego aplikacji w Azure Portal](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
 
-    ![Wyświetlanie pulpitu nawigacyjnego aplikacji w Azure Portal](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
-    
-   Usługa DevOps Projects automatycznie skonfigurowała wyzwalacz kompilacji i wydania ciągłej integracji.  Możesz teraz rozpocząć pracę w zespole nad aplikacją w języku Java w ramach procesu ciągłej integracji/ciągłego wdrażania, który umożliwia automatyczne wdrożenie najnowszej wersji w witrynie internetowej.
+Usługa DevOps Projects automatycznie skonfigurowała wyzwalacz kompilacji i wydania ciągłej integracji.  Możesz teraz rozpocząć pracę w zespole nad aplikacją w języku Java w ramach procesu ciągłej integracji/ciągłego wdrażania, który umożliwia automatyczne wdrożenie najnowszej wersji w witrynie internetowej.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Zatwierdzanie zmian kodu i wykonywanie ciągłej integracji/ciągłego wdrażania
 

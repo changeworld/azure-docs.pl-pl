@@ -3,18 +3,18 @@ title: Obsługa oceny VMware w Azure Migrate
 description: Dowiedz się więcej o obsłudze oceny VMware w Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2fab94b66e09d3923e481326b3650f1beb621dc4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846181"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048764"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Macierz obsługi dla oceny oprogramowania VMware 
 
 Ten artykuł podsumowuje ustawienia i ograniczenia dotyczące oceny maszyn wirtualnych VMware za pomocą [Azure Migrate: Ocena serwera](migrate-services-overview.md#azure-migrate-server-migration-tool). Jeśli szukasz informacji na temat migrowania maszyn wirtualnych VMware na platformę Azure, zapoznaj się z [macierzą obsługi migracji](migrate-support-matrix-vmware-migration.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aby ocenić maszyny lokalne na potrzeby migracji na platformę Azure z tego artykułu, należy dodać Azure Migrate: Narzędzie do oceny serwera do projektu Azure Migrate. Należy wdrożyć [urządzenie Azure Migrate](migrate-appliance.md). Urządzenie stale odnajduje maszyny lokalne i wysyła dane dotyczące konfiguracji i wydajności na platformę Azure. Po odnajdywaniu maszyn można zebrać odnalezione maszyny do grup i uruchomić ocenę dla grupy.
 
@@ -25,7 +25,7 @@ Aby ocenić maszyny lokalne na potrzeby migracji na platformę Azure z tego arty
 --- | ---
 **Limity oceny**| Odkrywaj i oceniaj do 35 000 maszyn wirtualnych VMware w jednym [projekcie](migrate-support-matrix.md#azure-migrate-projects).
 **Limity projektu** | Możesz utworzyć wiele projektów w ramach subskrypcji platformy Azure. Projekt może obejmować maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V i serwery fizyczne oraz limity oceny.
-**Discovery** (Odnajdywanie) | Urządzenie Azure Migrate może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.
+**Odnajdowa** | Urządzenie Azure Migrate może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.
 **Ocena** | Można dodać do 35 000 maszyn w jednej grupie.<br/><br/> W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
 
 [Dowiedz się więcej](concepts-assessment-calculation.md) na temat ocen.
@@ -37,7 +37,7 @@ Oprócz odnajdywania maszyn Azure Migrate: Ocena serwera może wykrywać aplikac
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-**Discovery** (Odnajdywanie) | Odnajdywanie jest bezagentem, przy użyciu poświadczeń gościa komputera i zdalnie uzyskuje dostęp do maszyn przy użyciu usług WMI i wywołań SSH.
+**Odnajdowa** | Odnajdywanie jest bezagentem, przy użyciu poświadczeń gościa komputera i zdalnie uzyskuje dostęp do maszyn przy użyciu usług WMI i wywołań SSH.
 **Obsługiwane maszyny** | Lokalne maszyny wirtualne programu VMware.
 **System operacyjny maszyny** | Wszystkie wersje systemów Windows i Linux.
 **poświadczenia vCenter** | Konto vCenter Server z dostępem tylko do odczytu i uprawnienia do Virtual Machines > operacji gościa.
@@ -65,7 +65,7 @@ Azure Migrate używa [urządzenia Azure Migrate](migrate-appliance.md) do odnajd
 
 ## <a name="port-access"></a>Dostęp do portu
 
-**urządzenia** | **Połączenie**
+**Pliku** | **Połączenie**
 --- | ---
 Wprowadzony | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/><br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Połączenia wychodzące na porcie 443 (HTTPS), 5671 i 5672 (AMQP) do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 Serwer vCenter | Połączenia przychodzące na porcie TCP 443 umożliwiające urządzeniu zbieranie metadanych dotyczących konfiguracji i wydajności dla ocen. <br/><br/> Urządzenie domyślnie łączy się z programem vCenter na porcie 443. Jeśli serwer vCenter nasłuchuje na innym porcie, można zmodyfikować port podczas konfigurowania odnajdywania.
@@ -86,9 +86,9 @@ Hosty ESXi | **Wymagane tylko w przypadku [odnajdywania aplikacji](https://docs.
 **Łączność z Internetem** | Jeśli maszyny nie są połączone z Internetem, należy zainstalować na nich bramę Log Analytics.
 
 
-## <a name="agentless-dependency-visualization"></a>Bezagentowa wizualizacja zależności
+## <a name="agentless-dependency-visualization"></a>Wizualizacja zależności bez agenta
 
-Ta opcja jest obecnie dostępna w wersji zapoznawczej. [Dowiedz się więcej](how-to-create-group-machine-dependencies-agentless.md). Wymagania zostały podsumowane w poniższej tabeli.
+Ta opcja jest obecnie w wersji zapoznawczej. [Dowiedz się więcej](how-to-create-group-machine-dependencies-agentless.md). Wymagania zostały podsumowane w poniższej tabeli.
 
 **Wymaganie** | **Szczegóły**
 --- | ---
@@ -96,7 +96,7 @@ Ta opcja jest obecnie dostępna w wersji zapoznawczej. [Dowiedz się więcej](ho
 **Obsługa maszyn wirtualnych** | Obecnie obsługiwane tylko w przypadku maszyn wirtualnych VMware.
 **Maszyny wirtualne z systemem Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bitowe)
 **Maszyny wirtualne z systemem Linux** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Konto systemu Windows** |  Wizualizacja wymaga konta użytkownika z dostępem gościa.
+**Konto systemu Windows** |  Wizualizacja wymaga konta lokalnego lub administratora domeny.
 **Konto systemu Linux** | Wizualizacja wymaga konta użytkownika z uprawnieniami głównymi.<br/><br/> Alternatywnie konto użytkownika wymaga tych uprawnień w przypadku plików/bin/netstat i/bin/ls: CAP_DAC_READ_SEARCH i CAP_SYS_PTRACE.
 **Agenci maszyn wirtualnych** | Na maszynach wirtualnych nie jest wymagany żaden Agent.
 **Narzędzia VMware** | Narzędzia VMware muszą być zainstalowane i uruchomione na maszynach wirtualnych, które mają być analizowane.

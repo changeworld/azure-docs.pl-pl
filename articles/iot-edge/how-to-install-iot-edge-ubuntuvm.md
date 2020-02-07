@@ -8,19 +8,19 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: gregman
-ms.openlocfilehash: 84dd1b6d657dfe5061f53698114f3dc4e0197571
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.author: philmea
+ms.openlocfilehash: 49a783e1360aeddc8eeaadba442acf578d9d6f7f
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510060"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046041"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Uruchom Azure IoT Edge na Ubuntu Virtual Machines
 
 Środowisko uruchomieniowe usługi Azure IoT Edge to, co jest przekształcany urządzenia urządzenia usługi IoT Edge. Środowisko uruchomieniowe można wdrożyć na urządzeniach jako małej, jak Raspberry Pi lub tak duże jak serwer przemysłowe. Gdy urządzenie zostanie skonfigurowany ze środowiskiem uruchomieniowym usługi IoT Edge, możesz rozpocząć wdrażanie logikę biznesową w chmurze.
 
-Aby dowiedzieć się więcej na temat sposobu działania środowiska uruchomieniowego usługi IoT Edge i jakie składniki wchodzą, zobacz [zrozumieć środowisko uruchomieniowe usługi Azure IoT Edge oraz jej architektury](iot-edge-runtime.md).
+Aby dowiedzieć się więcej o tym, jak działa środowisko uruchomieniowe IoT Edge i jakie składniki są uwzględnione, zobacz [Omówienie środowiska uruchomieniowego Azure IoT Edge i jego architektury](iot-edge-runtime.md).
 
 W tym artykule przedstawiono procedurę uruchamiania środowiska uruchomieniowego Azure IoT Edge na maszynie wirtualnej Ubuntu 16,04 przy użyciu wstępnie skonfigurowanego [Azure IoT Edge w ofercie usługi Ubuntu Azure Marketplace](https://aka.ms/azure-iot-edge-ubuntuvm).
 
@@ -96,7 +96,7 @@ Aby SSH do tej maszyny wirtualnej po zakończeniu instalacji, użyj publicIpAddr
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy masz urządzenia usługi IoT Edge zaopatrzony zainstalowanego środowiska uruchomieniowego, można [wdrożyć moduły usługi IoT Edge](how-to-deploy-modules-portal.md).
+Teraz, gdy masz zainstalowaną IoT Edge urządzenie z zainstalowanym środowiskiem uruchomieniowym, możesz [wdrożyć moduły IoT Edge](how-to-deploy-modules-portal.md).
 
 Jeśli masz problemy z instalacją środowiska uruchomieniowego IoT Edge prawidłowo, zapoznaj się ze stroną [rozwiązywania problemów](troubleshoot.md) .
 

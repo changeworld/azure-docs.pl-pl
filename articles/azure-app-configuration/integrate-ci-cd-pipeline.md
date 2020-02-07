@@ -1,38 +1,32 @@
 ---
-title: 'Samouczek: integracja z potokiem ciągłej integracji i dostarczania'
-titleSuffix: Azure App Configuration
-description: W ramach tego samouczka nauczysz się generować plik konfiguracji przy użyciu danych w konfiguracji aplikacji platformy Azure podczas ciągłej integracji i dostarczania
+title: Integrowanie konfiguracji aplikacji platformy Azure przy użyciu potoku ciągłej integracji i dostarczania
+description: Dowiedz się, jak wdrożyć ciągłą integrację i dostarczanie przy użyciu konfiguracji aplikacji platformy Azure
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 02/24/2019
+ms.date: 01/30/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: cd40b52c20a3cafdbbeef093b574d44b9163c7b2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c744557471a9b37bd620bb9195bdb709c24649ab
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899380"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047287"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integracja z potokiem ciągłej integracji/ciągłego wdrażania
 
-W tym artykule opisano różne sposoby używania danych z konfiguracji aplikacji platformy Azure w systemie ciągłej integracji i ciągłego wdrażania.
+W tym artykule wyjaśniono, jak używać danych z konfiguracji aplikacji platformy Azure w systemie ciągłej integracji i ciągłego wdrażania.
 
 ## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>Korzystanie z konfiguracji aplikacji w potoku usługi Azure DevOps
 
-Jeśli masz potok Azure DevOps, możesz pobrać wartości klucza z konfiguracji aplikacji i ustawić je jako zmienne zadań. [Rozszerzenie DevOps konfiguracji aplikacji platformy Azure](https://go.microsoft.com/fwlink/?linkid=2091063) to moduł dodatku, który udostępnia tę funkcję. Po prostu postępuj zgodnie z instrukcjami, aby użyć rozszerzenia w sekwencji zadań kompilacja lub wydanie.
+Jeśli masz potok Azure DevOps, możesz pobrać wartości klucza z konfiguracji aplikacji i ustawić je jako zmienne zadań. [Rozszerzenie DevOps konfiguracji aplikacji platformy Azure](https://go.microsoft.com/fwlink/?linkid=2091063) to moduł dodatku, który udostępnia tę funkcję. Postępuj zgodnie z instrukcjami, aby użyć rozszerzenia w sekwencji zadań kompilacja lub wydanie.
 
 ## <a name="deploy-app-configuration-data-with-your-application"></a>Wdrażanie danych konfiguracji aplikacji za pomocą aplikacji
 
-Uruchomienie aplikacji może się nie powieść, jeśli jest ona zależna od konfiguracji aplikacji platformy Azure i nie można się z nią skontaktować. Można zwiększyć odporność aplikacji na zaradzenie sobie z takimi zdarzeniami, jednak jest to mało prawdopodobne. W tym celu należy spakować bieżące dane konfiguracji do pliku, który jest wdrażany wraz z aplikacją i załadowany lokalnie podczas jego uruchamiania. To podejście gwarantuje, że aplikacja ma domyślne wartości ustawień co najmniej. Te wartości są zastępowane przez wszelkie nowsze zmiany w magazynie konfiguracji aplikacji, gdy jest on dostępny.
+Uruchomienie aplikacji może się nie powieść, jeśli jest ona zależna od konfiguracji aplikacji platformy Azure i nie można się z nią skontaktować. Zwiększenie odporności aplikacji przez pakowanie danych konfiguracyjnych do pliku, który jest wdrażany wraz z aplikacją i ładowany lokalnie podczas uruchamiania aplikacji. To podejście gwarantuje, że aplikacja ma domyślne wartości ustawień podczas uruchamiania. Te wartości są zastępowane przez wszelkie nowsze zmiany w magazynie konfiguracji aplikacji, gdy jest on dostępny.
 
-Za pomocą funkcji [eksportu](./howto-import-export-data.md#export-data) usługi Azure App Configuration można zautomatyzować proces pobierania bieżących danych konfiguracji w postaci pojedynczego pliku. Następnie osadź ten plik w kroku kompilacja lub wdrożenie w potoku ciągłej integracji i ciągłego wdrażania (CI/CD).
+Za pomocą funkcji [eksportu](./howto-import-export-data.md#export-data) usługi Azure App Configuration można zautomatyzować proces pobierania bieżących danych konfiguracji w postaci pojedynczego pliku. Następnie można osadzić ten plik w kroku kompilacja lub wdrożenie w potoku ciągłej integracji i ciągłego wdrażania (CI/CD).
 
 Poniższy przykład pokazuje, jak uwzględnić dane konfiguracji aplikacji jako krok kompilacji dla aplikacji sieci Web wprowadzonej w przewodnikach Szybki Start. Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z konfiguracją aplikacji](./quickstart-aspnet-core-app.md) .
 
@@ -54,10 +48,7 @@ Aby przeprowadzić kompilację w chmurze, w usłudze Azure DevOps na przykład u
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-
-    Dodaj *Parametry ConnectionString* skojarzone z magazynem konfiguracji aplikacji jako zmienną środowiskową.
-
-2. Otwórz *program.cs*i zaktualizuj metodę `CreateWebHostBuilder`, aby użyć wyeksportowanego pliku JSON przez wywołanie metody `config.AddJsonFile()`.
+1. Otwórz *program.cs*i zaktualizuj metodę `CreateWebHostBuilder`, aby użyć wyeksportowanego pliku JSON przez wywołanie metody `config.AddJsonFile()`.  Dodaj również przestrzeń nazw `System.Reflection`.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -75,7 +66,8 @@ Aby przeprowadzić kompilację w chmurze, w usłudze Azure DevOps na przykład u
 
 ### <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
 
-1. Ustaw zmienną środowiskową o nazwie **ConnectionString**i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. Jeśli używasz wiersza polecenia systemu Windows, uruchom następujące polecenie i ponownie uruchom wiersz polecenia, aby zezwolić na wprowadzenie zmiany:
+1. Ustaw zmienną środowiskową o nazwie **ConnectionString**i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. 
+    Jeśli używasz wiersza polecenia systemu Windows, uruchom następujące polecenie i ponownie uruchom wiersz polecenia, aby zezwolić na wprowadzenie zmiany:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

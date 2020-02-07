@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3d9316f42c8d0ac5b44cda2e484ca4c92110813d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479152"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045936"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Niestandardowa Weryfikacja poczty e-mail w Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Pamiętaj, aby ukończyć sekcję, w której [tworzysz klucz interfejsu API Send
 
 Następnie Zapisz klucz interfejsu API SendGrid w kluczu zasad Azure AD B2C, aby uzyskać informacje dotyczące zasad.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 1. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog Azure AD B2C.
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 1. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości**.
@@ -389,6 +389,36 @@ Aby uzyskać więcej informacji, Zobacz Profil techniczny i [formant DisplayCont
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
+```
+
+## <a name="optional-localize-your-email"></a>Obowiązkowe Lokalizowanie poczty e-mail
+
+Aby zlokalizować tę wiadomość e-mail, musisz wysłać zlokalizowane ciągi do SendGrid lub dostawcę poczty e-mail. Na przykład lokalizowanie tematu wiadomości e-mail, treści, wiadomości z kodem lub podpisu wiadomości e-mail. W tym celu można użyć transformacji oświadczeń [GetLocalizedStringsTransformation](string-transformations.md) do kopiowania zlokalizowanych ciągów do typów oświadczeń. W `GenerateSendGridRequestBody` transformacji oświadczeń, która generuje ładunek JSON, używa oświadczeń wejściowych, które zawierają zlokalizowane ciągi.
+
+1. W zasadach Zdefiniuj następujące oświadczenia ciągu: subject, Message, codeIntro i Signature.
+1. Zdefiniuj transformację oświadczeń [GetLocalizedStringsTransformation](string-transformations.md) , aby zastąpić zlokalizowane wartości ciągu do oświadczeń z kroku 1.
+1. Zmień `GenerateSendGridRequestBody` przekształcenie oświadczeń, tak aby korzystały z oświadczeń wejściowych z poniższym fragmentem kodu XML.
+1. Zaktualizuj szablon SendGrind, tak aby korzystał z parametrów dynamicznych zamiast wszystkich ciągów, które będą lokalizowane przez Azure AD B2C.
+
+```XML
+<ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
+    <InputClaim ClaimTypeReferenceId="subject" TransformationClaimType="personalizations.0.dynamic_template_data.subject" />
+    <InputClaim ClaimTypeReferenceId="otp" TransformationClaimType="personalizations.0.dynamic_template_data.otp" />
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.dynamic_template_data.email" />
+    <InputClaim ClaimTypeReferenceId="message" TransformationClaimType="personalizations.0.dynamic_template_data.message" />
+    <InputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="personalizations.0.dynamic_template_data.codeIntro" />
+    <InputClaim ClaimTypeReferenceId="signature" TransformationClaimType="personalizations.0.dynamic_template_data.signature" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="template_id" DataType="string" Value="d-1234567890" />
+    <InputParameter Id="from.email" DataType="string" Value="my_email@mydomain.com" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="sendGridReqBody" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
 ```
 
 ## <a name="next-steps"></a>Następne kroki

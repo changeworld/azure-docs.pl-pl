@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 9d00024351c18789e26120cc2af006b9aac4232d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767844"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057842"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie programu dla automatycznej aprowizacji użytkowników
 
 W tym artykule dowiesz się, jak skonfigurować usługę Azure Active Directory (Azure AD) w celu automatycznego aprowizacji i cofania aprowizacji użytkowników lub grup do udostępnienia.
 
 > [!NOTE]
-> W tym artykule opisano łącznik, który jest oparty na usłudze aprowizacji użytkowników usługi Azure AD. Aby uzyskać ważne informacje dotyczące tej usługi i odpowiedzi na często zadawane pytania, zobacz [Automatyzowanie aprowizacji użytkowników i Cofanie udostępniania aplikacji SaaS przy użyciu Azure Active Directory](../manage-apps/user-provisioning.md).
+> W tym artykule opisano łącznik, który jest oparty na usłudze aprowizacji użytkowników usługi Azure AD. Aby uzyskać ważne informacje dotyczące tej usługi i odpowiedzi na często zadawane pytania, zobacz [Automatyzowanie aprowizacji użytkowników i Cofanie udostępniania aplikacji SaaS przy użyciu Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Ten łącznik jest obecnie w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -132,7 +132,7 @@ Aby skonfigurować automatyczną obsługę administracyjną dla programu obsług
  
    a. W polu **adres URL dzierżawy** wprowadź **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** .  
    b. W polu **token Secret** wprowadź wartość tokenu uwierzytelniania Standard scim, która została zapisana w kroku 6 sekcji "Konfigurowanie usługi dla aprowizacji".  
-   d. Wybierz pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z serwerem programu. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi klienta ma uprawnienia *administratora* , a następnie spróbuj ponownie.
+   c. Wybierz pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z serwerem programu. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi klienta ma uprawnienia *administratora* , a następnie spróbuj ponownie.
 
 1. W polu **E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, która powinna otrzymywać powiadomienia o błędach aprowizacji, a następnie zaznacz pole wyboru **Wyślij powiadomienie e-mail, gdy wystąpi błąd** .
 
@@ -156,7 +156,7 @@ Aby skonfigurować automatyczną obsługę administracyjną dla programu obsług
 
     ![Okienko "Mapowanie atrybutów" grupy](media/harness-provisioning-tutorial/groupattributes.png)
 
-1. Aby skonfigurować filtry określania zakresu, zobacz Tworzenie [aplikacji opartych na atrybutach przy użyciu filtrów zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Aby skonfigurować filtry określania zakresu, zobacz Tworzenie [aplikacji opartych na atrybutach przy użyciu filtrów zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 1. W obszarze **Ustawienia**, aby włączyć usługę Azure AD Provisioning dla programu, Przełącz przełącznik **stanu aprowizacji** na **włączony**.
 
@@ -172,13 +172,13 @@ Aby skonfigurować automatyczną obsługę administracyjną dla programu obsług
 
 Ta operacja uruchamia początkową synchronizację użytkowników lub grup, które są inicjowane. Synchronizacja początkowa trwa dłużej niż w późniejszym czasie. Synchronizacje odbywają się około co 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Aby monitorować postęp, przejdź do sekcji **szczegóły synchronizacji** . Możesz również śledzić łącza do raportu działań aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w ramach programu.
 
-Aby uzyskać więcej informacji o sposobie odczytywania dzienników aprowizacji usługi Azure AD, zobacz [raport dotyczący automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji o sposobie odczytywania dzienników aprowizacji usługi Azure AD, zobacz [raport dotyczący automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)

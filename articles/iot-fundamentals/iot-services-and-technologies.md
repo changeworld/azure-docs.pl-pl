@@ -1,22 +1,22 @@
 ---
 title: Technologie i rozwiązania Internetu rzeczy (IoT) na platformie Azure
 description: Opisuje zbiór technologii i usług, za pomocą których można utworzyć rozwiązanie Azure IoT.
-author: robinsh
+author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
-ms.author: robinsh
-ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.author: dobett
+ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457179"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046063"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>Technologie i usługi platformy Azure służące do tworzenia rozwiązań IoT
 
-Technologie i usługi Azure IoT umożliwiają tworzenie różnorodnych rozwiązań IoT, które umożliwiają transformację cyfrową w organizacji. Możesz na przykład:
+Technologie i usługi Azure IoT umożliwiają tworzenie różnorodnych rozwiązań IoT, które umożliwiają transformację cyfrową w organizacji. Można na przykład:
 
 - Za pomocą [usługi Azure IoT Central](https://apps.azureiotcentral.com), zarządzanej platformy aplikacji IoT, można tworzyć i wdrażać bezpieczne rozwiązanie IoT klasy korporacyjnej. IoT Central funkcje kolekcji szablonów aplikacji specyficznych dla branż, takich jak handel detaliczny i opieka medyczna, w celu przyspieszenia procesu tworzenia rozwiązań.
 - Rozwiń bazę kodu typu open source dla [akceleratora rozwiązania](https://www.azureiotsolutions.com) Azure IoT, aby zaimplementować wspólny scenariusz IoT, taki jak zdalne monitorowanie lub konserwacja predykcyjna.
@@ -42,7 +42,7 @@ Akceleratory rozwiązań usługi Azure IoT zapewniają wysoki poziom kontroli na
 
   - Zdalne monitorowanie
   - Połączona fabryka
-  - Konserwacja predykcyjna
+  - Konserwacja zapobiegawcza
   - Symulacja urządzenia
 
 Baza kodu open source dla wszystkich akceleratorów rozwiązań jest dostępna w witrynie GitHub. Pobierz kod, aby dostosować Akcelerator rozwiązania w celu spełnienia określonych wymagań IoT.
@@ -83,6 +83,8 @@ IoT Central używa cyfrowego bliźniaczych reprezentacji do synchronizowania urz
 ### <a name="data-and-analytics"></a>Dane i analiza
 
 Urządzenia IoT zazwyczaj generują duże ilości danych szeregów czasowych, takich jak odczyty temperatury z czujników. [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) może nawiązać połączenie z usługą IoT Hub, odczytać strumień danych telemetrycznych z urządzeń, przechowywać te dane i umożliwić wykonywanie zapytań i wizualizację.
+
+[Azure Maps](/azure/azure-maps) jest kolekcją usług geoprzestrzennych, które używają danych do odwzorowania w celu zapewnienia dokładnego kontekstu geograficznego w aplikacjach sieci Web i mobilnych. Możesz użyć interfejsu API REST, opartej na sieci Web kontrolki JavaScript lub Android SDK do kompilowania aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
