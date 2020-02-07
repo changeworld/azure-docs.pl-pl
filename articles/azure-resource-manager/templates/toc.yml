@@ -161,6 +161,8 @@
         - name: Wdrażanie — interfejs API REST
           displayName: deployment
           href: deploy-rest.md
+        - name: Wdrażanie z repozytorium GitHub
+          href: deploy-to-azure-button.md
         - name: Wdrożenie warunkowe
           href: template-deploy-what-if.md
         - name: Ponowne wdrażanie w przypadku błędu

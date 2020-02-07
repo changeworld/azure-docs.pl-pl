@@ -437,7 +437,7 @@
       href: vmware-azure-disaster-recovery-powershell.md
     - name: Konfigurowanie odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformę Azure przy użyciu programu PowerShell
       href: hyper-v-azure-powershell-resource-manager.md
-    - name: Konfigurowanie odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V (z programem VMM) na platformę Azure przy użyciu programu PowerShell
+    - name: Konfigurowanie odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V (z programem VMM) przy użyciu programu PowerShell
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: Dodawanie elementów runbook usługi Automation do planów odzyskiwania
       href: site-recovery-runbook-automation.md

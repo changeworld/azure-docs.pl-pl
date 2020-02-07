@@ -252,9 +252,13 @@
           href: backup-azure-backup-cloud-as-tape.md
     - name: Kopia zapasowa offline
       items:
-        - name: Konfigurowanie tworzenia kopii zapasowej offline
+        - name: Omówienie
+          href: offline-backup-overview.md
+        - name: Tworzenie kopii zapasowej offline za pomocą usługi Azure Data Box
+          href: offline-backup-azure-data-box.md
+        - name: Tworzenie kopii zapasowej offline za pomocą usługi Import/Export (MARS)
           href: backup-azure-backup-import-export.md
-        - name: Kopia zapasowa offline dla programu DPM i usługi Azure Backup Server
+        - name: Tworzenie kopii zapasowej offline za pomocą usługi Import/Export (DPM/MABS)
           href: backup-azure-backup-server-import-export-.md
     - name: Monitorowanie i alerty
       items:
