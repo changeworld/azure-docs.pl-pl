@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 02/06/2020
+ms.openlocfilehash: 980569edf8322c6c22a4357a5b946ded85f0ebe4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240371"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063745"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Używanie dzienników Azure Monitor do monitorowania klastrów usługi HDInsight
 
@@ -26,9 +26,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Obszar roboczy usługi Log Analytics**. Ten obszar roboczy można traktować jako unikatowe środowisko dzienników Azure Monitor z własnym repozytorium danych, źródłami danych i rozwiązaniami. Aby uzyskać instrukcje, zobacz [Utwórz obszar roboczy usługi Log Analytics](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
+* Obszar roboczy usługi Log Analytics. Ten obszar roboczy można traktować jako unikatowe środowisko dzienników Azure Monitor z własnym repozytorium danych, źródłami danych i rozwiązaniami. Aby uzyskać instrukcje, zobacz [Tworzenie obszaru roboczego log Analytics](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
 
-* **Klaster usługi Azure HDInsight**. Obecnie można użyć dzienników Azure Monitor z następującymi typami klastrów usługi HDInsight:
+* Klaster usługi Azure HDInsight. Obecnie można użyć dzienników Azure Monitor z następującymi typami klastrów usługi HDInsight:
 
   * Hadoop
   * HBase
@@ -37,9 +37,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
   * platforma Spark
   * Storm
 
-  Aby uzyskać instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight, zobacz [Rozpoczynanie pracy z usługą Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
+  Instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight można znaleźć w temacie [Rozpoczynanie pracy z usługą Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
 
-* **Azure PowerShell AZ module**.  Zobacz [wprowadzenie do nowego Azure PowerShell AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+* Azure PowerShell AZ module.  Zobacz [wprowadzenie do nowego Azure PowerShell AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
 
 > [!NOTE]  
 > Zaleca się umieszczenie klastra HDInsight i obszar roboczy usługi Log Analytics, w tym samym regionie, w celu zapewnienia lepszej wydajności. Dzienniki Azure Monitor nie są dostępne we wszystkich regionach świadczenia usługi Azure.
@@ -50,15 +50,15 @@ W tej sekcji skonfigurujesz istniejącego klastra usługi HDInsight Hadoop używ
 
 1. Na [Azure Portal](https://portal.azure.com/)wybierz swój klaster.  Aby uzyskać instrukcje, zobacz [listę i wyświetlanie klastrów](./hdinsight-administer-use-portal-linux.md#showClusters) . Klaster zostanie otwarty na nowej stronie portalu.
 
-1. W obszarze **monitorowanie**wybierz pozycję **Operations Management Suite**.
+1. W obszarze **monitorowanie**wybierz pozycję **Azure monitor**.
 
-1. W widoku głównym w obszarze **monitorowanie pakietu OMS**wybierz pozycję **Włącz**.
+1. W widoku głównym w obszarze **integracja Azure monitor**wybierz pozycję **Włącz**.
 
 1. Z listy rozwijanej **Wybierz obszar roboczy** wybierz istniejący obszar roboczy log Analytics.
 
 1. Wybierz pozycję **Zapisz**.  Może potrwać kilka minut, aby zapisać ustawienia.
 
-    ![Aby włączyć monitorowanie klastrów HDInsight](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "Włącz monitorowanie dla klastrów HDInsight")
+    ![Włącz monitorowanie klastrów usługi HDInsight](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "Włącz monitorowanie klastrów usługi HDInsight")
 
 ## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Włączanie dzienników Azure Monitor przy użyciu Azure PowerShell
 
@@ -100,7 +100,7 @@ Poniżej przedstawiono dostępne rozwiązania HDInsight:
 * Monitorowanie platformy Spark usługi HDInsight
 * Monitorowanie usługi HDInsight Storm
 
-Aby uzyskać instrukcje zainstalować rozwiązanie do zarządzania, zobacz [rozwiązań do zarządzania na platformie Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Aby eksperymentować, Zainstaluj rozwiązanie do monitorowania usługi HDInsight Hadoop. Gdy wszystko będzie gotowe, zostanie wyświetlony **HDInsightHadoop** kafelka na liście **Podsumowanie**. Wybierz **HDInsightHadoop** kafelka. Rozwiązanie HDInsightHadoop wygląda następująco:
+Instrukcje dotyczące instalowania rozwiązania do zarządzania programu znajdują się [w temacie rozwiązania zarządzania na platformie Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Aby eksperymentować, Zainstaluj rozwiązanie do monitorowania usługi HDInsight Hadoop. Gdy wszystko będzie gotowe, zobaczysz kafelek **HDInsightHadoop** na liście **Podsumowanie**. Wybierz kafelek **HDInsightHadoop** . Rozwiązanie HDInsightHadoop wygląda następująco:
 
 ![Widok rozwiązania monitorowania HDInsight](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
@@ -114,10 +114,10 @@ Usługa Azure monitor obsługuje również zbieranie i analizowanie metryk wydaj
 
 Usługa HDInsight obsługuje inspekcję klastra przy użyciu dzienników Azure Monitor przez zaimportowanie następujących typów dzienników:
 
-* `log_gateway_audit_CL`-Ta tabela zawiera dzienniki inspekcji z węzłów bramy klastra, które pokazują pomyślne i nieudane próby zalogowania.
-* `log_auth_CL`-Ta tabela zawiera dzienniki protokołu SSH z pomyślnymi i nieudanymi próbami logowania.
-* `log_ambari_audit_CL`-Ta tabela zawiera dzienniki inspekcji z Ambari.
-* `log_ranger_audti_CL`-Ta tabela zawiera dzienniki inspekcji z platformy Apache Ranger na klastrach ESP.
+* `log_gateway_audit_CL` — ta tabela zawiera dzienniki inspekcji z węzłów bramy klastra, które pokazują pomyślne i nieudane próby zalogowania.
+* `log_auth_CL` — ta tabela zawiera dzienniki protokołu SSH z zakończonymi sukcesem i nieudanymi próbami logowania.
+* `log_ambari_audit_CL` — ta tabela zawiera dzienniki inspekcji z Ambari.
+* `log_ranger_audti_CL` — ta tabela zawiera dzienniki inspekcji z platformy Apache Ranger na klastrach ESP.
 
 ## <a name="next-steps"></a>Następne kroki
 

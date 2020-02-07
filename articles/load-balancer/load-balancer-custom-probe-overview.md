@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5aa75de694d05ce31becc6996aca419dff256a3f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5517b6434d8d654e8aa7e28bec8f6d2a3d9ca73b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023552"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056686"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy kondycji usługi Load Balancer
 
@@ -29,15 +29,15 @@ Sondy kondycji obsługują wiele protokołów. Dostępność określonego protok
 
 | | Standardowy SKU | Podstawowy SKU |
 | --- | --- | --- |
-| [Typy sondy](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Badanie zachowania w dół](#probedown) | Wszystkie sondy, wszystkie przepływy TCP nadal. | Wszystkie sondy w dół, wszystkie przepływy TCP wygasają. | 
+| [Typy sond](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
+| [Zachowanie podczas sondowania](#probedown) | Wszystkie sondy, wszystkie przepływy TCP nadal. | Wszystkie sondy w dół, wszystkie przepływy TCP wygasają. | 
 
 
 >[!IMPORTANT]
 >Zapoznaj się z tym dokumentem w całości, w tym ważne [wskazówki dotyczące projektowania](#design) poniżej, aby utworzyć niezawodną usługę.
 
 >[!IMPORTANT]
->Sondy kondycji Load Balancer pochodzą z adresu IP 168.63.129.16 i nie mogą być blokowane w przypadku sondowania do oznaczania wystąpienia.  Przegląd [źródłowego adresu IP sondy](#probesource) Aby uzyskać szczegółowe informacje.
+>Sondy kondycji Load Balancer pochodzą z adresu IP 168.63.129.16 i nie mogą być blokowane w przypadku sondowania do oznaczania wystąpienia.  Przejrzyj [źródłowy adres IP sondy](#probesource) , aby uzyskać szczegółowe informacje.
 
 ## <a name="probes"></a>Konfiguracja sondy
 
@@ -74,12 +74,12 @@ Na potrzeby tego przykładu, gdy wystąpiło wykrycie, platforma zajmie trochę 
 
 można założyć, że reakcja na niepowodzenie sondy trwa od minimum do 10 sekund, a maksymalnie 15 sekund, aby reagować na zmianę sygnału z aplikacji.  W tym przykładzie przedstawiono, jak to zrobić, ale nie jest możliwe prognozowanie dokładnego czasu trwania Poza powyższymi wskazówkami przedstawionymi w tym przykładzie.
  
-## <a name="types"></a>Typy sondy
+## <a name="types"></a>Typy sond
 
 Protokół używany przez sondę kondycji można skonfigurować na jedną z następujących czynności:
 
 - [Odbiorniki TCP](#tcpprobe)
-- [Punktów końcowych HTTP](#httpprobe)
+- [Punkty końcowe HTTP](#httpprobe)
 - [Punkty końcowe HTTPS](#httpsprobe)
 
 Dostępne protokoły zależą od używanej jednostki SKU Load Balancer:
@@ -89,7 +89,7 @@ Dostępne protokoły zależą od używanej jednostki SKU Load Balancer:
 | Standardowy SKU |    &#9989; |   &#9989; |   &#9989; |
 | Podstawowy SKU |   &#9989; |   &#9989; | &#10060; |
 
-### <a name="tcpprobe"></a> Sonda TCP
+### <a name="tcpprobe"></a>Sonda TCP
 
 Sondy protokołu TCP zainicjować połączenie, wykonując trzy kierunkową Otwórz TCP uzgadniania z zdefiniowany port.  Sondy TCP przerywają połączenie z czterema sposobem zamykania protokołu TCP.
 
@@ -112,10 +112,10 @@ Poniżej pokazano, jak można wyrazić ten rodzaj konfiguracji sondy w szablonie
       },
 ```
 
-### <a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP / HTTPS sondowania
+### <a name="httpprobe"></a><a name="httpsprobe"></a> Sonda protokołu HTTP/HTTPS
 
 >[!NOTE]
->Sondy protokołu HTTPS jest dostępna tylko dla [Balancer w warstwie standardowa](load-balancer-standard-overview.md).
+>Sonda HTTPS jest dostępna tylko dla [Usługa Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
 
 Sondy protokołu HTTP i HTTPS kompilują sondę TCP i wystawią HTTP GET z określoną ścieżką. Obsługa obu tych sond HTTP GET ścieżek względnych. Sondy protokołu HTTPS są takie same jak sondy HTTP, dodając Transport Layer Security (TLS, znana wcześniej jako SSL) otoki. Sonda kondycji jest oznaczony jako, gdy wystąpienie odpowiada ze stanem HTTP 200 przed upływem limitu czasu.  Sonda kondycji próbuje domyślnie sprawdzić skonfigurowany port sondy kondycji co 15 sekund. Interwał sondy minimalna to 5 sekund. Łączny czas trwania wszystkich interwałów nie może przekroczyć 120 sekund.
 
@@ -128,7 +128,7 @@ Jeśli korzystasz z usług w chmurze i mieć role sieci web, które używają w3
 
 HTTP / sondy protokołu HTTPS nie powiedzie się po:
 * Końcowego sondy zwraca kod odpowiedzi HTTP inne niż 200 (na przykład, 403, 404 lub 500). Spowoduje to natychmiastowe oznaczenie sondy kondycji. 
-* Punkt końcowy sondy nie reaguje w ogóle w okresie 31-sekundowego limitu czasu. Jeśli sonda zostanie oznaczona jako Nieuruchomiona i zostanie osiągnięta suma wszystkich przedziałów czasu, nie ma odpowiedzi na wiele żądań sondowania.
+* Punkt końcowy sondy nie odpowiada wcale w czasie minimalnym interwału sondowania i 30-sekundowym przedziale czasu. Jeśli sonda zostanie oznaczona jako Nieuruchomiona i zostanie osiągnięta suma wszystkich przedziałów czasu, nie ma odpowiedzi na wiele żądań sondowania.
 * Końcowego sondy zamyka połączenie za pośrednictwem resetowania TCP.
 
 Poniżej pokazano, jak można wyrazić ten rodzaj konfiguracji sondy w szablonie Menedżer zasobów:
@@ -157,13 +157,13 @@ Poniżej pokazano, jak można wyrazić ten rodzaj konfiguracji sondy w szablonie
       },
 ```
 
-### <a name="guestagent"></a>Sondowanie agenta gościa (tylko wersja klasyczna)
+### <a name="guestagent"></a>Sonda agenta gościa (tylko wersja klasyczna)
 
 Role usługi w chmurze (role procesu roboczego i role sieci web) używać agenta gościa na potrzeby sondy monitorowania domyślnie.  Sonda agenta gościa jest ostatnią konfiguracją.  Zawsze używaj sondy kondycji jawnie z sondą TCP lub HTTP. Sondowanie agenta gościa nie jest tak skuteczne, jak sondy jawnie zdefiniowane w przypadku większości scenariuszy aplikacji.
 
 Sondowanie agenta gościa jest wyboru agenta gościa wewnątrz maszyny Wirtualnej. Następnie odbiera i odpowiada za pomocą odpowiedź HTTP 200 OK, tylko wtedy, gdy wystąpienie jest w stanie gotowe. (Inne stany są zajęte, odtwarzanie lub zatrzymywania).
 
-Aby uzyskać więcej informacji, zobacz [Konfigurowanie pliku definicji usługi (csdef) dla sondy kondycji](https://msdn.microsoft.com/library/azure/ee758710.aspx) lub [zacznij od utworzenia publicznego modułu równoważenia obciążenia dla usług w chmurze](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie pliku definicji usługi (csdef) dla sond kondycji](https://msdn.microsoft.com/library/azure/ee758710.aspx) lub Rozpoczynanie [pracy przez utworzenie publicznego modułu równoważenia obciążenia dla usług Cloud Services](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services).
 
 Jeśli agent gościa nie odpowiada przy użyciu protokołu HTTP 200 OK, moduł równoważenia obciążenia oznacza wystąpienie jako nie odpowiada. Następnie zatrzymuje, wysyłając przepływy do tego wystąpienia. Moduł równoważenia obciążenia w dalszym ciągu Sprawdź wystąpienie. 
 
@@ -184,7 +184,7 @@ Każdy punkt końcowy zaplecza, który osiągnął prawidłowy stan, jest uprawn
 > [!NOTE]
 > Jeśli sonda kondycji jest zmieniana, moduł równoważenia obciążenia czeka dłużej przed ponownym umieszczeniem punktu końcowego zaplecza w dobrej kondycji. Czas oczekiwania dodatkowe chroni użytkownika i infrastruktura i zamierzone zasady.
 
-## <a name="probedown"></a>Badanie zachowania w dół
+## <a name="probedown"></a>Zachowanie podczas sondowania
 
 ### <a name="tcp-connections"></a>Połączenia protokołu TCP
 
@@ -252,11 +252,11 @@ Podstawowa Publiczna Load Balancer udostępnia stan sondy kondycji podsumowany d
 ## <a name="limitations"></a>Ograniczenia
 
 - Sondy protokołu HTTPS nie obsługują wzajemnego uwierzytelniania przy użyciu certyfikatu klienta.
-- Sondy assumehHealth nie powiodą się, gdy są włączone znaczniki czasu protokołu TCP.
+- W przypadku włączenia znaczników czasu TCP należy założyć, że sondy kondycji zakończą się niepowodzeniem.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md)
-- [Wprowadzenie do tworzenia publicznego modułu równoważenia obciążenia w usłudze Resource Manager przy użyciu programu PowerShell](quickstart-create-standard-load-balancer-powershell.md)
-- [Interfejs API REST umożliwiający sond kondycji](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
-- Żądanie nowych możliwości sondę kondycji za pomocą [równoważenia obciążenia w usłudze Uservoice](https://aka.ms/lbuservoice)
+- [Wprowadzenie do tworzenia publicznego modułu równoważenia obciążenia w Menedżer zasobów przy użyciu programu PowerShell](quickstart-create-standard-load-balancer-powershell.md)
+- [Interfejs API REST dla sond kondycji](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- Zażądaj nowych możliwości sondowania kondycji za pomocą usługi [Uservoice Load Balancer](https://aka.ms/lbuservoice)

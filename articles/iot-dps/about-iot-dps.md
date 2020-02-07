@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 15eaba5b1102ddb282d72497093b8554a6b4cf56
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904875"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061628"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Aprowizowanie urządzeń za pomocą usługi Azure IoT Hub Device Provisioning Service
 Platforma Microsoft Azure zapewnia bogaty zestaw zintegrowanych usług w chmurze publicznej spełniający wszelkie potrzeby rozwiązania IoT. IoT Hub Device Provisioning Service (DPS) to usługa pomocnika dla IoT Hub, która umożliwia zainicjowanie obsługi "just in Time" do odpowiedniego centrum IoT Hub bez konieczności interwencji człowieka. Usługa DPS umożliwia bezpieczne i skalowalne Inicjowanie obsługi milionów urządzeń.
@@ -80,8 +80,10 @@ Usługa DPS ma wiele funkcji, dzięki czemu jest idealnym rozwiązaniem do aprow
 * **Lista rejestracji** zawierająca pełny rejestr urządzeń/grup urządzeń, które w pewnym momencie mogą zostać zarejestrowane. Lista rejestracji zawiera informacje dotyczące żądanej konfiguracji urządzenia po jego zarejestrowaniu i może być aktualizowana w dowolnym momencie.
 * **Wiele zasad alokacji** do kontrolowania, w jaki sposób usługa DPS przypisuje urządzenia do centrów IoT w ramach obsługi Twoich scenariuszy: najniższy czas oczekiwania (domyślnie) i Konfiguracja statyczna za pośrednictwem listy rejestracji. Czas oczekiwania jest określany przy użyciu tej samej metody co [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
 * **Monitorowanie i rejestrowanie diagnostyczne** w celu zapewnienia poprawnego działania.
-* **Obsługa wielocentrów** umożliwia usłudze DPS późne wiązanie urządzeń z Centrum IoT w czasie wykonywania. Usługa DPS może komunikować się z centrami w wielu subskrypcjach platformy Azure.
-* **Obsługa wielu regionów** pozwala usłudze DPS przypisywać urządzenia do centrów IoT w innych regionach.
+* **Obsługa wielu centrów** umożliwia usłudze Device Provisioning Service przypisywanie urządzeń do więcej niż jednego centrum IoT. Usługa Device Provisioning Service może komunikować się z centrami w wielu subskrypcjach platformy Azure.
+* **Obsługa wielu regionów** umożliwia usłudze Device Provisioning Service przypisywanie urządzeń do centrów IoT w innych regionach.
+* **Szyfrowanie danych** przechowywanych w trybie REST umożliwia szyfrowanie i odszyfrowywanie danych w usłudze Device Provisioning w sposób przezroczysty przy użyciu 256-BITOWEGO szyfrowania AES, jednego z najsilniejszych szyfrów blokowych i jest zgodnych ze standardem FIPS 140-2.
+
 
 Więcej informacji o pojęciach i funkcjach z zakresu aprowizowania urządzeń możesz znaleźć w artykułach na temat [pojęć dotyczących urządzeń](concepts-device.md), [pojęć dotyczących usługi](concepts-service.md) oraz [pojęć dotyczących zabezpieczeń](concepts-security.md).
 

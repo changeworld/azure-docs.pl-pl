@@ -2,13 +2,13 @@
 title: Obsługiwane wersje klastra w usłudze Azure Service Fabric
 description: Dowiedz się więcej o wersjach klastra w usłudze Azure Service Fabric, łącznie z linkiem do najnowszych wydań z blogu zespołu Service Fabric.
 ms.topic: troubleshooting
-ms.date: 01/28/2020
-ms.openlocfilehash: 80ecf0861f3d740fff6b68b0373f94d0e2845a9d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/05/2020
+ms.openlocfilehash: 0950c93c09c89ad92fc4f77f9f82937deb9e489e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903485"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064856"
 ---
 # <a name="supported-service-fabric-versions"></a>Obsługiwane Service Fabric wersje
 
@@ -27,12 +27,12 @@ W poniższej tabeli wymieniono wersje Service Fabric i ich daty końcowe pomocy 
 | --- | --- |--- | --- |
 | Wszystkie wersje klastra przed 5.3.121 | 5.1.158.* |Mniejsze niż lub równe wersji 2,3 |20 stycznia 2017 |
 | 5.3.* | 5.1.158.* |Mniejsze niż lub równe wersji 2,3 |24 lutego 2017 |
-| 5.4.* | 5.1.158.* |Mniejsze niż lub równe wersji 2,4 |10 maja 2017 r.       |
+| 5.4.* | 5.1.158.* |Mniejsze niż lub równe wersji 2,4 |10 maja 2017       |
 | 5.5.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,5 |10 sierpnia 2017 r.    |
 | 5.6.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,6 |13 października 2017 r.   |
 | 5.7.* | 5.4.164.* |Mniejsze niż lub równe wersji 2,7 |15 grudnia 2017  |
 | 6.0.* | 5.6.205.* |Mniejsze niż lub równe wersji 2,8 |30 marca 2018     |
-| 6.1.* | 5.7.221.* |Mniejsze niż lub równe wersji 3,0 |15 lipca 2018 r.      |
+| 6.1.* | 5.7.221.* |Mniejsze niż lub równe wersji 3,0 |15 lipca 2018      |
 | 6.2.* | 6.0.232.* |Mniejsze niż lub równe wersji 3,1 |26 października 2018   |
 | 6.3.* | 6.1.480.* |Mniejsze niż lub równe wersji 3,2 |31 marca 2019  |
 | 6.4.* | 6.2.301.* |Mniejsze niż lub równe wersji 3,3 |15 września 2019 |
@@ -101,3 +101,4 @@ W poniższej tabeli wymieniono nazwy wersji Service Fabric i odpowiadające im n
 | 6,5 CU5 | 6.5.676.9590 | 6.5.467.1 |
 | 7,0 RTO | 7.0.457.9590 | 7.0.457.1 |
 | 7,0 ZASTOSUJESZ PAKIETU CU2 | 7.0.464.9590 | 7.0.464.1 |
+| 7,0 CU3 | 7.0.466.9590 | 7.0.465.1 |

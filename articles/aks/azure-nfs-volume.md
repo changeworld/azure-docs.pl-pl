@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549261"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063819"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Ręczne tworzenie i używanie woluminu systemu plików NFS (sieciowy system plików) z systemem Linux za pomocą usługi Azure Kubernetes Service (AKS)
 Udostępnianie danych między kontenerami jest często niezbędnym składnikiem usług i aplikacji opartych na kontenerach. Zwykle istnieją różne zasobniki, które wymagają dostępu do tych samych informacji na zewnętrznym woluminie trwałym.    
@@ -74,7 +74,7 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-Serwer zostanie uruchomiony ponownie (ze względu na skrypt), a serwer NFS można zainstalować do AKS
+Serwer zostanie ponownie uruchomiony (ze względu na skrypt) i można zainstalować serwer NFS w AKS.
 
 >[!IMPORTANT]  
 >Pamiętaj, aby zastąpić **AKS_SUBNET** poprawną z nich w klastrze, lub inny "*" spowoduje otwarcie serwera NFS do wszystkich portów i połączeń.
@@ -93,7 +93,8 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>Łączenie klastra AKS z serwerem NFS
-Serwer systemu plików NFS można połączyć z naszym klastrem, udostępniając wolumin trwały i liczbę trwałych roszczeń, która określa, jak uzyskać dostęp do woluminu.  
+Serwer systemu plików NFS można połączyć z naszym klastrem, udostępniając wolumin trwały i liczbę trwałych roszczeń, która określa, jak uzyskać dostęp do woluminu.
+
 Konieczne jest połączenie dwóch usług w tych samych lub równorzędnych sieciach wirtualnych. Instrukcje dotyczące konfigurowania klastra w tej samej sieci wirtualnej są następujące: [Tworzenie klastra AKS w istniejącej sieci wirtualnej][aks-virtual-network]
 
 Gdy znajdują się w tej samej sieci wirtualnej (lub komunikacji równorzędnej), należy zainicjować obsługę woluminu trwałego i trwałego w klastrze AKS. Kontenery mogą następnie zainstalować dysk NFS w katalogu lokalnym.

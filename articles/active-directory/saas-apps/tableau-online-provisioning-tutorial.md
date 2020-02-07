@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie Tableau Online dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub anulować aprowizację kont użytkowników do usługi Online firmy Tableau.
+title: 'Samouczek: Konfigurowanie usługi Tableau online w celu automatycznego aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i anulowania aprowizacji kont użytkowników w usłudze Tableau online.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,166 +16,166 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e203e88de8d806f489e5a7ab9bfd227c8232f84
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 5fae770950810899f7c6583fa401110c3e85022b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670899"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064222"
 ---
-# <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Tableau Online dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Tableau online w celu automatycznego aprowizacji użytkowników
 
-Ten samouczek przedstawia kroki do wykonania w Tableau Online i usługi Azure Active Directory (Azure AD) do konfigurowania usługi Azure AD do automatycznego aprowizowania lub anulować aprowizację użytkowników i grup do Tableau w trybie Online.
+W tym samouczku przedstawiono kroki, które należy wykonać w Tableau online i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i anulowania aprowizacji użytkowników i grup w usłudze Tableau online.
 
 > [!NOTE]
-> W tym samouczku opisano łącznika, który bazuje na usłudze usługa aprowizowania użytkowników w usłudze Azure AD. Aby uzyskać informacji na temat tej usługi nie, jak działa i często zadawane pytania, zobacz [Automatyzowanie aprowizacji użytkowników i anulowania obsługi aplikacjom software-as-a-service (SaaS) w usłudze Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ten samouczek zawiera opis łącznika, który jest zbudowany na podstawie usługi Azure AD User Provisioning. Aby uzyskać informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji typu "oprogramowanie jako usługa" (SaaS) za pomocą Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz:
+Scenariusz opisany w tym samouczku założono, że masz:
 
 *   Dzierżawa usługi Azure AD.
-*   A [dzierżawy Tableau Online](https://www.tableau.com/).
-*   Konto użytkownika w usłudze Tableau Online z uprawnieniami administratora.
+*   [Dzierżawa usługi Tableau online](https://www.tableau.com/).
+*   Konto użytkownika w usłudze Tableau online z uprawnieniami administratora.
 
 > [!NOTE]
-> Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API Rest usługi Online firmy Tableau](https://onlinehelp.tableau.com/current/api/rest_api/en-us/help.htm). Ten interfejs API jest dostępna dla deweloperów, Tableau w trybie Online.
+> Integracja z obsługą administracyjną usługi Azure AD opiera się na [interfejsie API REST Tableau online](https://onlinehelp.tableau.com/current/api/rest_api/en-us/help.htm). Ten interfejs API jest dostępny dla Tableau deweloperów w trybie online.
 
-## <a name="add-tableau-online-from-the-azure-marketplace"></a>Dodaj Tableau w trybie Online w portalu Azure Marketplace
-Przed skonfigurowaniem Tableau Online dla użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD należy dodać Tableau Online w portalu Azure Marketplace z listą zarządzanych aplikacji SaaS.
+## <a name="add-tableau-online-from-the-azure-marketplace"></a>Dodawanie Tableau online z portalu Azure Marketplace
+Przed skonfigurowaniem usługi Tableau online w celu automatycznego aprowizacji użytkowników w usłudze Azure AD Dodaj Tableau online z portalu Azure Marketplace do listy zarządzanych aplikacji SaaS.
 
-Aby dodać Tableau Online w portalu Marketplace, wykonaj następujące kroki.
+Aby dodać Tableau online z portalu Marketplace, wykonaj następujące kroki.
 
-1. W [witryny Azure portal](https://portal.azure.com), w okienku nawigacji po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W [Azure Portal](https://portal.azure.com)w okienku nawigacji po lewej stronie wybierz pozycję **Azure Active Directory**.
 
-    ![Ikona usługi Azure Active Directory](common/select-azuread.png)
+    ![Ikona Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-
-    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
-
-3. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja** w górnej części okna dialogowego.
-
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
-
-4. W polu wyszukiwania wprowadź **Tableau Online** i wybierz **Tableau Online** z panelu wyników. Aby dodać aplikację, wybierz **Dodaj**.
-
-    ![TABLEAU Online na liście wyników](common/search-new-app.png)
-
-## <a name="assign-users-to-tableau-online"></a>Przypisywanie użytkowników do usługi Online firmy Tableau
-
-Usługa Azure Active Directory korzysta z koncepcji, o nazwie *przypisania* ustalenie, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście automatyczna aprowizacja użytkowników są synchronizowane tylko użytkowników lub grup, które zostały przypisane do aplikacji w usłudze Azure AD.
-
-Przed skonfigurowaniem i włączanie automatycznej aprowizacji użytkowników, należy zdecydować, którzy użytkownicy lub grupy w usłudze Azure AD muszą mieć dostęp do usługi Online firmy Tableau. Aby przypisać tych użytkowników lub grup do usługi Online firmy Tableau, postępuj zgodnie z instrukcjami [przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
-
-### <a name="important-tips-for-assigning-users-to-tableau-online"></a>Ważne wskazówki dotyczące przypisywania użytkowników do usługi Online firmy Tableau
-
-*   Firma Microsoft zaleca, aby przypisać jeden użytkownik usługi Azure AD Tableau online, aby przetestować automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników lub grup.
-
-*   Po użytkownik zostanie przypisany do usługi Online firmy Tableau, zaznacz wszystkie prawidłową rolą specyficzne dla aplikacji, jeśli to możliwe, w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
-
-## <a name="configure-automatic-user-provisioning-to-tableau-online"></a>Konfigurowanie automatycznej aprowizacji użytkownika Tableau Online
-
-Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi aprowizacji usługi Azure AD. Umożliwia tworzenie, aktualizowanie i wyłączyć użytkownikom lub grupom w Tableau Online na podstawie użytkownika lub przypisań do grup w usłudze Azure AD.
-
-> [!TIP]
-> Ponadto można włączyć opartej na SAML logowanie jednokrotne dla Tableau Online. Postępuj zgodnie z instrukcjami w [Tableau pojedynczego logowania jednokrotnego samouczek Online](tableauonline-tutorial.md). Logowanie jednokrotne można skonfigurować niezależnie od automatyczna aprowizacja użytkowników, mimo że te dwie funkcje uzupełniają się wzajemnie.
-
-### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Konfigurowanie automatycznej aprowizacji użytkowników dla Tableau Online w usłudze Azure AD
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **Tableau Online**.
+2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **Tableau Online**.
+3. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Tableau Online łącze na liście aplikacji](common/all-applications.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-3. Wybierz **aprowizacji** kartę.
+4. W polu wyszukiwania wprowadź **Tableau online** i wybierz pozycję **Tableau online** w panelu wyników. Aby dodać aplikację, wybierz pozycję **Dodaj**.
 
-    ![TABLEAU Online aprowizacji](./media/tableau-online-provisioning-tutorial/ProvisioningTab.png)
+    ![Tableau online na liście wyników](common/search-new-app.png)
 
-4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+## <a name="assign-users-to-tableau-online"></a>Przypisywanie użytkowników do Tableau online
 
-    ![Tryb aprowizacji TABLEAU Online](./media/tableau-online-provisioning-tutorial/ProvisioningCredentials.png)
+Azure Active Directory używa koncepcji zwanej *zadaniami* w celu określenia, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznej aprowizacji użytkowników są synchronizowane tylko użytkownicy lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-5. W obszarze **poświadczeń administratora** sekcji, wprowadź domenę, nazwę użytkownika administratora, hasło administratora i adres URL zawartości konta Online firmy Tableau:
+Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników należy zdecydować, którzy użytkownicy lub grupy w usłudze Azure AD potrzebują dostępu do Tableau online. Aby przypisać tych użytkowników lub grupy do Tableau online, postępuj zgodnie z instrukcjami w temacie [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
 
-   * W **domeny** należy wypełnić w poddomeny, w oparciu o krok 6.
+### <a name="important-tips-for-assigning-users-to-tableau-online"></a>Ważne porady dotyczące przypisywania użytkowników do Tableau online
 
-   * W **nazwa użytkownika administratora** pole, wprowadź nazwę użytkownika konta administratora w Twojej dzierżawie Clarizen. Może to być na przykład admin@contoso.com.
+*   Zalecamy przypisanie pojedynczego użytkownika usługi Azure AD do Tableau online w celu przetestowania automatycznej konfiguracji inicjowania obsługi użytkowników. Możesz później przypisywać dodatkowych użytkowników lub grupy.
 
-   * W **hasło administratora** pole, wprowadź hasło do konta administratora, który odpowiada nazwa użytkownika administratora.
+*   Po przypisaniu użytkownika do Tableau online wybierz dowolną prawidłową rolę specyficzną dla aplikacji, jeśli jest dostępna, w oknie dialogowym przypisanie. Użytkownicy z **domyślną rolą dostępu** są wykluczeni z aprowizacji.
 
-   * W **adres URL zawartości** należy wypełnić w poddomeny, w oparciu o krok 6.
+## <a name="configure-automatic-user-provisioning-to-tableau-online"></a>Konfigurowanie automatycznej aprowizacji użytkowników w usłudze Tableau online
 
-6. Po zalogowaniu Twoje konto administracyjne dla usługi Online firmy Tableau można uzyskać wartości **domeny** i **adres URL zawartości** z adresu URL strony administratora.
+Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning. Służy do tworzenia, aktualizowania i wyłączania użytkowników lub grup w usłudze Tableau online na podstawie przypisań użytkowników lub grup w usłudze Azure AD.
 
-    * **Domeny** dla usługi Online firmy Tableau można skopiować konta z tej części adresu URL:
+> [!TIP]
+> Można również włączyć logowanie jednokrotne oparte na protokole SAML dla usługi Tableau online. Postępuj zgodnie z instrukcjami w samouczku Logowanie jednokrotne w [usłudze Tableau online](tableauonline-tutorial.md). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, chociaż te dwie funkcje uzupełniają się wzajemnie.
 
-        ![Tableau Online Domain](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+### <a name="configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Konfigurowanie automatycznej aprowizacji użytkowników w usłudze Tableau online w usłudze Azure AD
 
-    * **Adres URL zawartości** dla usługi Online firmy Tableau można skopiować konta z tej sekcji. Jest to wartość, która jest zdefiniowana podczas tworzenia konta. W tym przykładzie wartość to "contoso":
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **Tableau online**.
 
-        ![Adres URL zawartości Online TABLEAU](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście Aplikacje wybierz pozycję **Tableau online**.
+
+    ![Link Tableau online na liście aplikacji](common/all-applications.png)
+
+3. Wybierz kartę **aprowizacji** .
+
+    ![Inicjowanie obsługi Tableau online](./media/tableau-online-provisioning-tutorial/ProvisioningTab.png)
+
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
+
+    ![Tableau tryb aprowizacji online](./media/tableau-online-provisioning-tutorial/ProvisioningCredentials.png)
+
+5. W sekcji **poświadczenia administratora** wprowadź wartość w polach domena, nazwa użytkownika administratora, hasło administratora i adres URL zawartości konta usługi Tableau online:
+
+   * W polu **domena** Wypełnij poddomenę w oparciu o krok 6.
+
+   * W polu **Nazwa użytkownika administratora** wprowadź nazwę użytkownika konta administratora w dzierżawie Clarizen. Może to być na przykład admin@contoso.com.
+
+   * W polu **hasło administratora** wprowadź hasło konta administratora, które odnosi się do nazwy użytkownika administratora.
+
+   * W polu **adres URL zawartości** Wypełnij poddomenę w oparciu o krok 6.
+
+6. Po zalogowaniu się do konta administracyjnego usługi Tableau online można uzyskać wartości dla **domeny** i **adresu URL** z adresu URL strony administracyjnej.
+
+    * **Domenę** dla konta usługi Tableau online można skopiować z tej części adresu URL:
+
+        ![Tableau domenę online](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+
+    * **Adres URL zawartości** dla konta usługi Tableau online można skopiować z tej sekcji. Jest to wartość zdefiniowana podczas konfigurowania konta. W tym przykładzie wartość jest "contoso":
+
+        ![Adres URL zawartości Tableau online](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
-        > Twoje **domeny** może być różna od przedstawionego w tym miejscu.
+        > **Domena** może się różnić od podanej tutaj.
 
-7. Po wypełnieniu pól wyświetlane w kroku 5 wybierz **Testuj połączenie** aby upewnij się, że usługi Azure AD można połączyć się z Tableau w trybie Online. Jeśli połączenie nie powiedzie się, upewnij się, że konta Online firmy Tableau ma uprawnienia administratora i spróbuj ponownie.
+7. Po wypełnieniu pól przedstawionych w kroku 5 wybierz pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z usługą Tableau online. Jeśli połączenie nie powiedzie się, upewnij się, że konto online Tableau ma uprawnienia administratora, a następnie spróbuj ponownie.
 
-    ![TABLEAU Online Testuj połączenie](./media/tableau-online-provisioning-tutorial/TestConnection.png)
+    ![Połączenie testowe Tableau online](./media/tableau-online-provisioning-tutorial/TestConnection.png)
 
-8. W **wiadomość E-mail z powiadomieniem** pole, wprowadź adres e-mail osoby lub grupy do odbierania powiadomień błąd inicjowania obsługi administracyjnej. Wybierz **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria** pole wyboru.
+8. W polu **E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, aby otrzymywać powiadomienia o błędach aprowizacji. Zaznacz pole wyboru **Wyślij powiadomienie e-mail po wystąpieniu błędu** .
 
-    ![Wiadomość E-mail z powiadomieniem Online TABLEAU](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
+    ![Wiadomość E-mail z powiadomieniem Tableau online](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
 9. Wybierz pozycję **Zapisz**.
 
-10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do Tableau**.
+10. W sekcji **mapowania** wybierz pozycję **Synchronizuj Azure Active Directory użytkowników do Tableau**.
 
-    ![Synchronizacja użytkownika Online TABLEAU](./media/tableau-online-provisioning-tutorial/UserMappings.png)
+    ![Tableau synchronizacji użytkowników online](./media/tableau-online-provisioning-tutorial/UserMappings.png)
 
-11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD Tableau w trybie Online w **mapowania atrybutów** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w dokumentacji Online Tableau operacji aktualizacji. Aby zapisać zmiany, wybierz pozycję **Zapisz**.
+11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD, do Tableau online w sekcji **mapowania atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowywania kont użytkowników w usłudze Tableau online dla operacji aktualizacji. Aby zapisać zmiany, wybierz pozycję **Zapisz**.
 
-    ![TABLEAU pasującego użytkownika atrybuty w trybie Online](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
+    ![Tableau w trybie online pasujące atrybuty użytkownika](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
 
-12. W obszarze **mapowania** zaznacz **synchronizacji Azure grup usługi Active Directory do Tableau**.
+12. W sekcji **mapowania** wybierz pozycję **Synchronizuj grupy Azure Active Directory do Tableau**.
 
-    ![TABLEAU Online grupy synchronizacji](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
+    ![Tableau synchronizacji grup online](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
 
-13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD Tableau w trybie Online w **mapowania atrybutów** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w dokumentacji Online Tableau operacji aktualizacji. Aby zapisać zmiany, wybierz pozycję **Zapisz**.
+13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD do Tableau online w sekcji **mapowania atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowywania kont użytkowników w usłudze Tableau online dla operacji aktualizacji. Aby zapisać zmiany, wybierz pozycję **Zapisz**.
 
-    ![TABLEAU Online pasującego grupy atrybutów](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
+    ![Tableau w trybie online pasujące atrybuty grupy](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
 
-14. Aby skonfigurować filtrów określania zakresu, postępuj zgodnie z instrukcjami [zakresu filtru samouczek](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Aby skonfigurować filtry zakresu, postępuj zgodnie z instrukcjami w [samouczku filtr zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Aby włączyć usługi Azure AD w inicjowania obsługi dla usługi Online firmy Tableau **ustawienia** sekcji, zmień **stanie aprowizacji** do **na**.
+15. Aby włączyć usługę Azure AD Provisioning for Tableau online, w sekcji **Ustawienia** Zmień **stan aprowizacji** na **włączone**.
 
-    ![Stan inicjowania obsługi administracyjnej TABLEAU Online](./media/tableau-online-provisioning-tutorial/ProvisioningStatus.png)
+    ![Tableau stanu aprowizacji online](./media/tableau-online-provisioning-tutorial/ProvisioningStatus.png)
 
-16. Zdefiniuj użytkowników lub grup, które mają aprowizację Tableau online. W **ustawienia** wybierz wartości, które mają w **zakres**.
+16. Zdefiniuj użytkowników lub grupy, które chcesz udostępnić Tableau online. W sekcji **Ustawienia** wybierz wartości, które mają być w **zakresie**.
 
-    ![Zakres Online TABLEAU](./media/tableau-online-provisioning-tutorial/ScopeSync.png)
+    ![Tableau zakres online](./media/tableau-online-provisioning-tutorial/ScopeSync.png)
 
-17. Gdy wszystko będzie gotowe do aprowizowania, wybierz pozycję **Zapisz**.
+17. Gdy wszystko będzie gotowe do udostępnienia, wybierz pozycję **Zapisz**.
 
-    ![Zapisz Online TABLEAU:](./media/tableau-online-provisioning-tutorial/SaveProvisioning.png)
+    ![Tableau zapisywanie online](./media/tableau-online-provisioning-tutorial/SaveProvisioning.png)
 
-Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacji początkowej trwa dłużej niż synchronizacje nowsze. Występują one co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. 
+Ta operacja uruchamia początkową synchronizację wszystkich użytkowników lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż w przypadku późniejszej synchronizacji. Są one wykonywane co około 40 minut, o ile jest uruchomiona usługa Azure AD Provisioning. 
 
-Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków, aby raport o działaniach aprowizacji. Raport w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD, usługi online firmy Tableau inicjowania obsługi administracyjnej.
+Możesz użyć sekcji Szczegóły synchronizacji, aby monitorować postęp i postępować zgodnie z raportem **dotyczącym** działań aprowizacji. Ten raport opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w witrynie Tableau online.
 
-Aby uzyskać informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać informacje na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/tableau-online-provisioning-tutorial/tutorial_general_01.png

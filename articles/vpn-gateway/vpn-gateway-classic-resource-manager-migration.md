@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2017
+ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: 966df2a01d0178c19c2ae6e698a6610bf0e321c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c1a75630c6419816b048495ee87d24c81979af16
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425821"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064771"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN Gateway klasyczny do Menedżer zasobów migracji
 Bramy sieci VPN można teraz migrować z klasycznego do Menedżer zasobów model wdrażania. Więcej informacji o Azure Resource Manager [funkcjach i korzyściach](../azure-resource-manager/management/overview.md)można znaleźć w artykule. W tym artykule szczegółowo opisano sposób migrowania z wdrożeń klasycznych do nowszej wersji Menedżer zasobów opartej na modelu. 

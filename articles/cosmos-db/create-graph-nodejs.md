@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 966dfbf0280351c605e6dc20fc65178aee83d099
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 7ab259886409610fc89c35f4c96c9babb977b44d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735249"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061845"
 ---
-# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Szybki start: tworzenie aplikacji Node.js za pomocą konta interfejsu API języka Gremlin dla usługi Azure Cosmos DB
+# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Szybki Start: Tworzenie aplikacji node. js przy użyciu Azure Cosmos DB konta interfejsu API Gremlin
 
 > [!div class="op_single_selector"]
 > * [Konsola Gremlin](create-graph-gremlin-console.md)
@@ -26,17 +26,12 @@ ms.locfileid: "68735249"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
-
-Ten przewodnik Szybki Start przedstawia sposób Azure Cosmos DB tworzenia konta [interfejsu API Gremlin](graph-introduction.md) , bazy danych i grafu przy użyciu Azure Portal. Następnie przy użyciu sterownika open source [Node.js Gremlin](https://www.npmjs.com/package/gremlin) zostanie utworzona i uruchomiona aplikacja konsoli.
+W tym przewodniku szybki start utworzysz konto interfejsu API Azure Cosmos DB Gremlin (Graph) z Azure Portal i zarządzasz nim, a następnie dodasz dane przy użyciu aplikacji node. js sklonowanej z usługi GitHub. Azure Cosmos DB to wielomodelowa usługa bazy danych, która pozwala szybko tworzyć i wysyłać zapytania dotyczące dokumentów, tabel, kluczy i wartościowych baz danych przy użyciu dystrybucji globalnej i możliwości skalowania w poziomie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
-Przed uruchomieniem tego przykładu muszą być spełnione następujące wymagania wstępne:
-* [Node.js](https://nodejs.org/en/) w wersji 0.10.29 lub nowszej
-* [Usługa Git](https://git-scm.com/)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz je bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- [Node. js 0.10.29 +](https://nodejs.org/).
+- [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
 
@@ -74,7 +69,9 @@ Teraz sklonujemy aplikację interfejsu API języka Gremlin z repozytorium GitHub
 
 Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-string). 
 
-Wszystkie poniższe fragmenty kodu pochodzą z pliku app.js.
+Wszystkie poniższe fragmenty kodu pochodzą z pliku *app.js*.
+
+Ta Aplikacja konsolowa używa sterownika Gremlin środowiska [Node. js](https://www.npmjs.com/package/gremlin) programu Open Source.
 
 * Tworzenie klienta języka Gremlin.
 
@@ -97,7 +94,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.js.
 
     ```
 
-  Wszystkie konfiguracje są w pliku `config.js`, który będziemy edytować w [następnej sekcji](#update-your-connection-string).
+  Konfiguracje są wszystkie w *pliku config. js*, który edytujemy w [poniższej sekcji](#update-your-connection-string).
 
 * W celu wykonywania różnych operacji języka Gremlin zdefiniowano serie funkcji. To jest jedna z nich:
 
@@ -151,15 +148,15 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.js.
 
 ## <a name="update-your-connection-string"></a>Aktualizowanie parametrów połączenia
 
-1. Otwórz plik config.js. 
+1. Otwórz plik *config. js* . 
 
-2. W pliku config.js przypisz kluczowi `config.endpoint` wartość **Identyfikator URI Gremlin** ze strony **Przegląd** w witrynie Azure Portal. 
+2. W *pliku config. js*wypełnij klucz `config.endpoint` wartością **Endpoint Gremlin** na stronie **Przegląd** konta Cosmos DB w Azure Portal. 
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
-    ![Wyświetlanie i kopiowanie klucza dostępu w witrynie Azure Portal, blok Klucze](./media/create-graph-nodejs/gremlin-uri.png)
+    ![Wyświetlanie i kopiowanie klucza dostępu w Azure Portal, Strona przegląd](./media/create-graph-nodejs/gremlin-uri.png)
 
-3. W pliku config.js przypisz elementowi config.primaryKey wartość z pola **Klucz podstawowy** na stronie **Klucze** w witrynie Azure Portal. 
+3. W *pliku config. js*Wypełnij wartość config. PrimaryKey wartością **klucza podstawowego** ze strony **klucze** konta Cosmos DB w Azure Portal. 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -167,7 +164,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.js.
 
 4. Wprowadź nazwę bazy danych i nazwę grafu (kontenera) dla wartości parametrów config.database i config.collection. 
 
-Oto przykład wypełnionego pliku config.js:
+Oto przykład tego, jak ukończony plik *config. js* powinien wyglądać następująco:
 
 ```javascript
 var config = {}
@@ -183,7 +180,7 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>Uruchamianie aplikacji konsolowej
 
-1. Otwórz okno terminala i za pomocą polecenia `cd` przejdź do katalogu instalacyjnego pliku package.json uwzględnionego w projekcie.
+1. Otwórz okno terminalu i przejdź do katalogu instalacyjnego pliku *Package. JSON* , który jest zawarty w projekcie, przy użyciu polecenia `cd`.
 
 2. Uruchom polecenie `npm install`, aby zainstalować wymagane moduły npm, w tym `gremlin`.
 
@@ -209,7 +206,7 @@ Spróbuj uzupełnić wartość `g.V()` ciągiem `.has('firstName', 'Thomas')`, a
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule wyjaśniono sposób tworzenia konta usługi Azure Cosmos DB, tworzenia grafu za pomocą Eksploratora danych i uruchamiania aplikacji. Teraz możesz tworzyć bardziej złożone zapytania i implementować zaawansowaną logikę przechodzenia grafu za pomocą języka Gremlin. 
+W tym artykule przedstawiono sposób tworzenia konta Azure Cosmos DB, tworzenia wykresu przy użyciu Eksplorator danych i uruchamiania aplikacji node. js w celu dodania danych do grafu. Teraz możesz tworzyć bardziej złożone zapytania i implementować zaawansowaną logikę przechodzenia grafu za pomocą języka Gremlin. 
 
 > [!div class="nextstepaction"]
 > [Wykonywanie zapytań przy użyciu języka Gremlin](tutorial-query-graph.md)

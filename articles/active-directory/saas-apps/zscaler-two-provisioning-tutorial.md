@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Skonfiguruj dwie rozwiązania Zscaler dla automatycznej aprowizacji użytkowników w Azure Active Directory | Microsoft Docs'
+title: 'Samouczek: Konfigurowanie rozwiązania Zscaler dwóch dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
 description: W ramach tego samouczka dowiesz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i anulowania aprowizacji kont użytkowników w celu rozwiązania Zscaler dwóch.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: e254cae22e3991aebc23188b8947f0e7efd9c5f5
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 364b106e7c1f01269ac02b0c2851f8824ea0f58c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515417"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062697"
 ---
-# <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie dwóch rozwiązania Zscaler dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie rozwiązania Zscaler dwóch dla automatycznej aprowizacji użytkowników
 
 W tym samouczku dowiesz się, jak skonfigurować usługę Azure Active Directory (Azure AD) w celu automatycznego aprowizacji i anulowania aprowizacji użytkowników i/lub grup, aby rozwiązania Zscaler dwa.
 
@@ -77,9 +77,9 @@ Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników n
 Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu tworzenia, aktualizowania i wyłączania użytkowników i grup w programie rozwiązania Zscaler w oparciu o przypisania użytkowników i grup w usłudze Azure AD.
 
 > [!TIP]
-> Możesz również włączyć logowanie jednokrotne oparte na protokole SAML dla rozwiązania Zscaler dwóch. Jeśli to zrobisz, postępuj zgodnie z instrukcjami podanymi w [samouczku logowania](zscaler-two-tutorial.md)jednokrotnego w rozwiązania Zscaler. Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, ale te dwie funkcje uzupełniają się wzajemnie.
+> Możesz również włączyć logowanie jednokrotne oparte na protokole SAML dla rozwiązania Zscaler dwóch. Jeśli to zrobisz, postępuj zgodnie z instrukcjami podanymi w [samouczku logowania jednokrotnego w rozwiązania Zscaler](zscaler-two-tutorial.md). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, ale te dwie funkcje uzupełniają się wzajemnie.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) i wybierz pozycję **aplikacje** > dla przedsiębiorstw**wszystkie aplikacje** > **rozwiązania Zscaler dwa**:
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje** > **rozwiązania Zscaler dwa**:
 
     ![Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -97,7 +97,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 5. W sekcji **poświadczenia administratora** wprowadź **adres URL dzierżawy** i **klucz tajny** konta rozwiązania Zscaler, zgodnie z opisem w następnym kroku.
 
-6. Aby uzyskać **adres URL dzierżawy** i **token wpisu tajnego**, przejdź do pozycji **Administracja** > **Ustawienia uwierzytelniania** w dwóch portalach rozwiązania Zscaler i wybierz pozycję **SAML** w obszarze **Typ uwierzytelniania**:
+6. Aby uzyskać **adres URL dzierżawy** i **token tajny**, przejdź do pozycji **Administracja** > **Ustawienia uwierzytelniania** w dwóch portalach rozwiązania Zscaler i wybierz pozycję **SAML** w obszarze **Typ uwierzytelniania**:
 
     ![Rozwiązania Zscaler dwa ustawienia uwierzytelniania](./media/zscaler-two-provisioning-tutorial/secret-token-1.png)
 
@@ -109,7 +109,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 7. Po wprowadzeniu wartości w polach **adres URL dzierżawy** i **token tajny** wybierz pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z usługą rozwiązania Zscaler. Jeśli połączenie nie powiedzie się, upewnij się, że konto rozwiązania Zscaler ma uprawnienia administratora i spróbuj ponownie.
 
-    ![Testuj połączenie](./media/zscaler-two-provisioning-tutorial/test-connection.png)
+    ![Testowanie połączenia](./media/zscaler-two-provisioning-tutorial/test-connection.png)
 
 8. W polu **E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji. Wybierz opcję **Wyślij powiadomienie e-mail w przypadku wystąpienia błędu**:
 
@@ -137,7 +137,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
 15. Aby włączyć usługę Azure AD Provisioning dla rozwiązania Zscaler dwóch, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** :
 
-    ![Stan aprowizacji](./media/zscaler-two-provisioning-tutorial/provisioning-status.png)
+    ![Stan zastrzegania](./media/zscaler-two-provisioning-tutorial/provisioning-status.png)
 
 16. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić do rozwiązania Zscaler dwóch, wybierając odpowiednie wartości w obszarze **zakres** w sekcji **Ustawienia** :
 
@@ -153,7 +153,7 @@ Informacje o sposobie odczytywania dzienników aprowizacji usługi Azure AD znaj
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki

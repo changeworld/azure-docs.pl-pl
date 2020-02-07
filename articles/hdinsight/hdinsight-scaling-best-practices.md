@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/05/2020
+ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030930"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064635"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalowanie klastrów usługi Azure HDInsight
 
@@ -216,6 +216,10 @@ Jeśli gałąź została pozostawiona za pliki tymczasowe, można ręcznie oczy�
 Jeśli klastry są wykonywane w trybie awaryjnym często podczas skalowania w dół do mniej niż trzech węzłów procesów roboczych, a poprzednie kroki nie działają, można uniknąć, aby klaster przeprowadził się do trybu awaryjnego, zachowując co najmniej trzy węzły procesu roboczego.
 
 Utrzymywanie trzech węzłów procesu roboczego jest droższe niż skalowanie w dół tylko do jednego węzła procesu roboczego, ale uniemożliwi to zablokowanie klastra w trybie awaryjnym.
+
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>Skalowanie usługi HDInsight do jednego węzła procesu roboczego
+
+Nawet jeśli klaster jest skalowany w dół do 1 węzła, węzeł procesu roboczego 0 nadal będzie przeżyje. Węzeł procesu roboczego 0 nigdy nie może zostać zlikwidowany.
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>Uruchom polecenie, aby wyjść z trybu awaryjnego
 

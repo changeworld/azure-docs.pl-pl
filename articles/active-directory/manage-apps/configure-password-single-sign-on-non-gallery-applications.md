@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d191abafbaad123ed47f8eaae6cdd4e48478da7a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422639"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063530"
 ---
 # <a name="configure-password-single-sign-on"></a>Konfigurowanie logowania jednokrotnego przy użyciu hasła
 
-Po dodaniu aplikacji [galerii](add-gallery-app.md) lub [aplikacji sieci Web bez galerii](add-non-gallery-app.md) do aplikacji usługi Azure AD Enterprise jedną z opcji logowania jednokrotnego jest dostęp do [logowania](what-is-single-sign-on.md#password-based-sso)jednokrotnego opartego na hasłach. Ta opcja jest dostępna dla dowolnej sieci Web ze stroną logowania w formacie HTML. Logowanie jednokrotne oparte na hasłach, nazywane również magazynem haseł, umożliwia zarządzanie dostępem użytkowników i hasłami do aplikacji sieci Web, które nie obsługują federacji tożsamości. Jest to również przydatne w scenariuszach, w których kilku użytkowników musi udostępniać pojedyncze konto, na przykład na kontach aplikacji Media społecznościowych w organizacji. 
+Po [dodaniu aplikacji galerii](add-gallery-app.md) lub [aplikacji sieci Web bez galerii](add-non-gallery-app.md) do aplikacji usługi Azure AD Enterprise jedną z opcji logowania jednokrotnego jest dostęp do [logowania jednokrotnego opartego na hasłach](what-is-single-sign-on.md#password-based-sso). Ta opcja jest dostępna dla dowolnej sieci Web ze stroną logowania w formacie HTML. Logowanie jednokrotne oparte na hasłach, nazywane również magazynem haseł, umożliwia zarządzanie dostępem użytkowników i hasłami do aplikacji sieci Web, które nie obsługują federacji tożsamości. Jest to również przydatne w scenariuszach, w których kilku użytkowników musi udostępniać pojedyncze konto, na przykład na kontach aplikacji Media społecznościowych w organizacji. 
 
 Logowanie jednokrotne oparte na hasłach to doskonały sposób, aby szybko rozpocząć Integrowanie aplikacji z usługą Azure AD, dzięki czemu można:
 
@@ -38,19 +38,19 @@ Logowanie jednokrotne oparte na hasłach to doskonały sposób, aby szybko rozpo
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Jeśli aplikacja nie została dodana do dzierżawy usługi Azure AD, zobacz [Dodawanie aplikacji galerii](add-gallery-app.md) lub [Dodawanie aplikacji](add-non-gallery-app.md)niebędącej galerią.
+Jeśli aplikacja nie została dodana do dzierżawy usługi Azure AD, zobacz [Dodawanie aplikacji galerii](add-gallery-app.md) lub Dodawanie aplikacji niebędącej [galerią](add-non-gallery-app.md).
 
 ## <a name="open-the-app-and-select-password-single-sign-on"></a>Otwórz aplikację i wybierz pozycję Logowanie jednokrotne hasła
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator aplikacji w chmurze lub administrator aplikacji dla dzierżawy usługi Azure AD.
 
-2. Przejdź do **Azure Active Directory** > **aplikacji przedsiębiorstwa**. Zostanie wyświetlona Losowa przykład aplikacji w dzierżawie usługi Azure AD. 
+2. Przejdź do **Azure Active Directory** > **aplikacje dla przedsiębiorstw**. Zostanie wyświetlona Losowa przykład aplikacji w dzierżawie usługi Azure AD. 
 
 3. W menu **Typ aplikacji** wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **Zastosuj**.
 
 4. Wprowadź nazwę aplikacji w polu wyszukiwania, a następnie wybierz aplikację z wyników.
 
-5. W sekcji **Zarządzanie** wybierz pozycję **Logowanie**jednokrotne. 
+5. W sekcji **Zarządzanie** wybierz pozycję **Logowanie jednokrotne**. 
 
 6. Wybierz pozycję **oparte na hasłach**.
 
@@ -68,7 +68,7 @@ Jeśli aplikacja nie została dodana do dzierżawy usługi Azure AD, zobacz [Dod
 
 Jeśli próba analizy usługi Azure AD nie powiedzie się, można skonfigurować logowanie ręcznie.
 
-1. W obszarze  **\<nazwa aplikacji > Konfiguracja**wybierz **pozycję \<skonfiguruj nazwę aplikacji > Ustawienia logowania** jednokrotnego hasła, aby wyświetlić stronę **Konfigurowanie logowania** . 
+1. W obszarze **\<nazwa aplikacji > konfiguracja**wybierz pozycję **Skonfiguruj \<nazwę aplikacji > Ustawienia logowania** jednokrotnego, aby wyświetlić stronę **Konfigurowanie logowania** . 
 
 2. Wybierz pozycję **ręcznie Wykryj pola logowania**. Pojawią się dodatkowe instrukcje opisujące Ręczne wykrywanie pól logowania.
 
@@ -92,7 +92,7 @@ Po przechwyceniu strony logowania można przypisać użytkowników i grupy, a ta
 > [!NOTE]
 > Możesz przekazać logo kafelka aplikacji za pomocą przycisku **Przekaż logo** na karcie **Konfiguracja** dla aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Przypisywanie użytkowników lub grup do aplikacji](methods-for-assigning-users-and-groups.md)
-- [Konfigurowanie automatycznego inicjowania obsługi konta użytkownika](configure-automatic-user-provisioning-portal.md)
+- [Konfigurowanie automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/configure-automatic-user-provisioning-portal.md)

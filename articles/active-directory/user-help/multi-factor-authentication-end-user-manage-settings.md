@@ -2,7 +2,7 @@
 title: Zmiana metody i ustawień weryfikacji dwuskładnikowej — Azure AD
 description: Dowiedz się, jak zmienić metodę weryfikacji zabezpieczeń i ustawienia dla konta służbowego na stronie dodatkowej weryfikacji zabezpieczeń.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
@@ -11,13 +11,13 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.author: lizross
-ms.openlocfilehash: e48834800f1fe3d34c13a87cfb3d8ef00c9e6bff
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 457608af9a5ffc06a778e900363bc8138fcb4e99
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705279"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062595"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Zmiana metody i ustawień weryfikacji dwuskładnikowej
 

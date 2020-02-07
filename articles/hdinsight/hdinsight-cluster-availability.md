@@ -1,20 +1,19 @@
 ---
 title: 'Monitorowanie: Apache Ambari & Azure Monitor dzienników — Azure HDInsight'
 description: Informacje na temat używania dzienników Ambari i Azure Monitor do monitorowania kondycji i dostępności klastra.
-keywords: monitorowanie, Ambari, monitor, log Analytics, alert, dostępność, kondycja
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/25/2019
-ms.openlocfilehash: a21610fefcfe1632dffbfd8e055497476f7e59c1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 02/06/2020
+ms.openlocfilehash: 383366fa3e436c79bed28a7c47f1e9daa5f0d9de
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687820"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060182"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>Jak monitorować dostępność klastra za pomocą programu Apache Ambari i dzienników Azure Monitor
 
@@ -96,9 +95,9 @@ Jako warunek wstępny potrzebny będzie obszar roboczy Log Analytics do przechow
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Włącz integrację dzienników Azure Monitor usługi HDInsight
 
-Na stronie zasób klastra usługi HDInsight w portalu wybierz pozycję **Operations Management Suite**. Następnie wybierz pozycję **Włącz** , a następnie wybierz obszar roboczy log Analytics z listy rozwijanej.
+Na stronie zasób klastra usługi HDInsight w portalu wybierz pozycję **Azure monitor**. Następnie wybierz pozycję **Włącz** , a następnie wybierz obszar roboczy log Analytics z listy rozwijanej.
 
-![Pakiet Operations Management Suite](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
+![Pakiet Operations Management Suite](media/hdinsight-cluster-availability/azure-portal-monitoring.png)
 
 ### <a name="query-metrics-and-logs-tables"></a>Zapytanie dotyczące metryk i tabel dzienników
 

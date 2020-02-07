@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Konfigurowanie GoToMeeting dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Konfigurowanie spotkanie GoToMeeting dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a usługą GoToMeeting.
 services: active-directory
 documentationCenter: na
@@ -15,85 +15,85 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e3145d0faaa3aecb90b582b3b6ef0063572ff43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0ac06fc3018b4230cbf32712067c48400599082
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60430787"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058267"
 ---
-# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie GoToMeeting dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie spotkanie GoToMeeting na potrzeby automatycznego aprowizacji użytkowników
 
-Celem tego samouczka jest pokazanie czynności, które należy wykonać w GoToMeeting i Azure AD w celu automatycznego aprowizowania lub cofania aprowizacji kont użytkowników z usługi Azure AD do GoToMeeting.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w spotkanie GoToMeeting i usłudze Azure AD w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników z usługi Azure AD do spotkanie GoToMeeting.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące elementy:
+Scenariusz opisany w tym samouczku założono, że masz już następujące elementy:
 
-*   Dzierżawy usługi Azure Active directory.
-*   GoToMeeting logowanie jednokrotne włączone subskrypcji.
-*   Konto użytkownika w GoToMeeting z uprawnieniami administratora zespołu.
+*   Dzierżawa usługi Azure Active Directory.
+*   Subskrypcja z włączonym logowaniem jednokrotnym w usłudze spotkanie GoToMeeting.
+*   Konto użytkownika w spotkanie GoToMeeting z uprawnieniami administratora zespołu.
 
-## <a name="assigning-users-to-gotomeeting"></a>Przypisywanie użytkowników do GoToMeeting
+## <a name="assigning-users-to-gotomeeting"></a>Przypisywanie użytkowników do spotkanie GoToMeeting
 
-Usługa Azure Active Directory używa koncepcji o nazwie "przypisania", aby określić, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście Inicjowanie obsługi administracyjnej konta użytkowników są synchronizowane tylko użytkowników i grup, które "przypisano" do aplikacji w usłudze Azure AD.
+Azure Active Directory używa koncepcji o nazwie "przydziały", aby określić, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi kont użytkowników są synchronizowane tylko użytkownicy i grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i włącz usługę aprowizacji, musisz zdecydować, jakie użytkowników i/lub grup w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji GoToMeeting. Po decyzję, możesz przypisać użytkowników do aplikacji GoToMeeting, zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem usługi aprowizacji należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD reprezentują użytkowników, którzy potrzebują dostępu do aplikacji spotkanie GoToMeeting. Po ustaleniu tych użytkowników możesz przypisać je do aplikacji spotkanie GoToMeeting, postępując zgodnie z poniższymi instrukcjami:
 
-[Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>Ważne wskazówki dotyczące przypisywania użytkowników do GoToMeeting
+### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>Ważne wskazówki dotyczące przypisywania użytkowników do spotkanie GoToMeeting
 
-*   Zalecane jest jeden użytkownik usługi Azure AD jest przypisane do GoToMeeting do testowania konfiguracji aprowizacji. Później można przypisać dodatkowych użytkowników i/lub grup.
+*   Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do spotkanie GoToMeeting w celu przetestowania konfiguracji aprowizacji. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-*   Podczas przypisywania użytkowników do GoToMeeting, należy wybrać poprawnej roli użytkownika. Rola "Domyślnego dostępu" nie działa w przypadku inicjowania obsługi administracyjnej.
+*   Podczas przypisywania użytkownika do spotkanie GoToMeeting należy wybrać prawidłową rolę użytkownika. Rola "dostęp domyślny" nie działa w przypadku aprowizacji.
 
-## <a name="enable-automated-user-provisioning"></a>Włącz automatyczną Aprowizację użytkowników
+## <a name="enable-automated-user-provisioning"></a>Włącz automatyczne Inicjowanie obsługi użytkowników
 
-Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytkownika w GoToMeeting aprowizujący interfejs API i konfigurowanie inicjowania obsługi usługi do tworzenia, aktualizacji, a następnie wyłącz konta użytkowników przypisane w GoToMeeting na podstawie przypisania użytkowników i grup w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez proces łączenia się z interfejsem API aprowizacji usługi Azure AD do konta użytkownika spotkanie GoToMeeting, a następnie Konfigurując usługę aprowizacji do tworzenia, aktualizowania i wyłączania przypisanych kont użytkowników w usłudze spotkanie GoToMeeting na podstawie przypisywania użytkowników i grup w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć opartej na SAML logowania jednokrotnego dla GoToMeeting, wykonując instrukcje podane w [witryny Azure portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatyczną aprowizację, chociaż te dwie funkcje uzupełnienie siebie nawzajem.
+> Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla spotkanie GoToMeeting, postępując zgodnie z instrukcjami podanymi w [Azure Portal](https://portal.azure.com). Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Aby skonfigurować, aprowizacja kont użytkowników:
+### <a name="to-configure-automatic-user-account-provisioning"></a>Aby skonfigurować automatyczne Inicjowanie obsługi konta użytkownika:
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > wszystkie aplikacje** sekcji.
+1. W [Azure Portal](https://portal.azure.com)przejdź do sekcji **Azure Active Directory > aplikacje dla przedsiębiorstw > Wszystkie aplikacje** .
 
-1. Jeśli już skonfigurowano GoToMeeting dla logowania jednokrotnego, wyszukiwania dla swojego wystąpienia usługi GoToMeeting przy użyciu pola wyszukiwania. W przeciwnym razie wybierz **Dodaj** i wyszukaj **GoToMeeting** w galerii aplikacji. Wybierz GoToMeeting z wyników wyszukiwania, a następnie dodaj go do listy aplikacji.
+1. Jeśli już skonfigurowano spotkanie GoToMeeting do logowania jednokrotnego, Wyszukaj wystąpienie elementu spotkanie GoToMeeting przy użyciu pola wyszukiwania. W przeciwnym razie wybierz pozycję **Dodaj** i Wyszukaj **spotkanie GoToMeeting** w galerii aplikacji. Wybierz pozycję spotkanie GoToMeeting z wyników wyszukiwania, a następnie dodaj ją do listy aplikacji.
 
-1. Wybierz wystąpienie GoToMeeting, a następnie wybierz **aprowizacji** kartę.
+1. Wybierz wystąpienie elementu spotkanie GoToMeeting, a następnie wybierz kartę **Inicjowanie obsługi** .
 
-1. Ustaw **aprowizacji** tryb **automatyczne**. 
+1. Ustaw tryb **aprowizacji** na **automatyczny**. 
 
-    ![Inicjowanie obsługi administracyjnej](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![aprowizacji](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. W sekcji poświadczenia administratora wykonaj następujące czynności:
    
-    a. W **nazwy użytkownika administratora GoToMeeting** polu tekstowym wpisz nazwę użytkownika administratora.
+    a. W polu tekstowym **Nazwa użytkownika administratora spotkanie GoToMeeting** wpisz nazwę użytkownika administratora.
 
-    b. W **hasło administratora GoToMeeting** pola tekstowego, hasło administratora.
+    b. W polu tekstowym **hasło administratora spotkanie GoToMeeting** hasło administratora.
 
-1. W witrynie Azure portal kliknij pozycję **Testuj połączenie** aby upewnij się, Azure AD można połączyć się z aplikacji GoToMeeting. Jeśli połączenie nie powiedzie się, upewnij się, konto usługi GoToMeeting ma uprawnienia administratora zespołu i spróbuj **"Poświadczeń administratora"** krok ponownie.
+1. W Azure Portal kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z aplikacją spotkanie GoToMeeting. Jeśli połączenie nie powiedzie się, upewnij się, że konto spotkanie GoToMeeting ma uprawnienia administratora zespołu, a następnie spróbuj ponownie wykonać krok **"poświadczenia administratora"** .
 
-1. Wprowadź adres e-mail osoby lub grupy, który powinien zostać wyświetlony inicjowania obsługi administracyjnej powiadomienia o błędach w **wiadomość E-mail z powiadomieniem** pola, a następnie zaznacz pole wyboru.
-
-1. Kliknij przycisk **Zapisz.**
-
-1. W sekcji mapowania, wybierz **synchronizacji Azure użytkownicy usługi Active Directory do GoToMeeting.**
-
-1. W **mapowania atrybutów** Przejrzyj atrybutów użytkowników, które są synchronizowane z usługi Azure AD GoToMeeting. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w GoToMeeting dla operacji aktualizacji. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
-
-1. Aby włączyć usługi Azure AD, inicjowania obsługi usługi GoToMeeting, zmień **stanie aprowizacji** do **na** w sekcji Ustawienia
+1. Wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji w polu **E-mail powiadomienia** , i zaznacz pole wyboru.
 
 1. Kliknij przycisk **Zapisz.**
 
-Rozpoczyna się wstępna synchronizacja użytkowników i/lub grupy przypisane do GoToMeeting w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi dzienników aktywności, które opisują każdą akcję wykonaną przez usługę aprowizacji w aplikacji GoToMeeting.
+1. W sekcji mapowania wybierz pozycję **synchronizuj Azure Active Directory użytkowników do spotkanie GoToMeeting.**
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+1. W sekcji **mapowania atrybutów** Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do spotkanie GoToMeeting. Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w programie spotkanie GoToMeeting for Updates. Wybierz przycisk Zapisz, aby zatwierdzić zmiany.
+
+1. Aby włączyć usługę Azure AD Provisioning dla usługi spotkanie GoToMeeting, Zmień **stan aprowizacji** na **włączone** w sekcji Ustawienia.
+
+1. Kliknij przycisk **Zapisz.**
+
+Rozpocznie się początkową synchronizację wszystkich użytkowników i/lub grup przypisanych do spotkanie GoToMeeting w sekcji Użytkownicy i grupy. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak usługa jest uruchomiona. Za pomocą sekcji **szczegóły synchronizacji** można monitorować postęp i wykonywać linki do dzienników aktywności aprowizacji, które opisują wszystkie akcje wykonywane przez usługę aprowizacji w aplikacji spotkanie GoToMeeting.
+
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 * [Konfigurowanie logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
 

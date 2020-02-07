@@ -2,7 +2,7 @@
 title: Konfigurowanie adresu e-mail jako metody weryfikacji — Azure AD
 description: Jak skonfigurować informacje zabezpieczające (wersja zapoznawcza) w celu zweryfikowania tożsamości przy użyciu adresu e-mail jako metody weryfikacji.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.author: lizross
-ms.openlocfilehash: a4555ccd5e4f80b7230c1e0992219bd46153220d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 9488b96dda15b0ffb794f83826dc299a5f397b77
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704905"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064006"
 ---
 # <a name="set-up-an-email-address-as-your-verification-method"></a>Skonfiguruj adres e-mail jako metodę weryfikacji
 

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie Menedżera haseł hodowca & cyfrowego magazynu dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników na Menedżera haseł hodowca & cyfrowego magazynu.
+title: 'Samouczek: Konfigurowanie Menedżera haseł programu opiekuna & magazynem cyfrowym dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Azure Active Directory, aby automatycznie udostępniać i cofać obsługę administracyjną kont użytkowników dla programu opiekuna haseł & magazynu cyfrowego.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,76 +15,76 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 74bfe37323a17bde19e4a9bf4ec28c9c3910b37f
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 236527a9889879f872ef8c3867a7ec3c1b1ba0a3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666247"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057528"
 ---
-# <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Menedżera haseł hodowca & cyfrowego magazynu dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Menedżera haseł programu opiekuna & magazynem cyfrowym dla automatycznej aprowizacji użytkowników
 
-Celem tego samouczka jest zademonstrowanie czynności wykonywanych w Menedżera haseł hodowca & cyfrowego magazynu i usługi Azure Active Directory (Azure AD) do konfigurowania usługi Azure AD do automatycznego aprowizowania lub cofania aprowizacji użytkowników i/lub grup w celu hodowca hasła Menedżer & cyfrowego magazynu.
+Celem tego samouczka jest przedstawienie czynności, które należy wykonać w Menedżerze haseł opiekuna & magazynu cyfrowego i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup do Menedżera haseł programu opiekuna & magazynu cyfrowego.
 
 > [!NOTE]
-> W tym samouczku opisano łącznika, który został zbudowany na podstawie usługi aprowizacji użytkownika usługi Azure AD. Ważne szczegółowe informacje na temat tej usługi nie, jak działa i często zadawane pytania, [Automatyzowanie aprowizacji użytkowników i anulowania obsługi do aplikacji SaaS w usłudze Azure Active Directory](../manage-apps/user-provisioning.md).
+> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania dla funkcji w wersji zapoznawczej, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania funkcji w wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania dla Microsoft Azure podglądów](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku przyjęto założenie, iż już następujące wymagania wstępne:
+Scenariusz opisany w tym samouczku założono, że masz już następujące wymagania wstępne:
 
 * Dzierżawa usługi Azure AD
-* [Menedżer haseł hodowca & cyfrowego magazynu dzierżawy](https://keepersecurity.com/pricing.html?t=e)
-* Konto użytkownika, w Menedżera haseł hodowca & cyfrowego magazynu z uprawnieniami administratora.
+* [Menedżer haseł opiekuna & dzierżawy magazynu cyfrowego](https://keepersecurity.com/pricing.html?t=e)
+* Konto użytkownika w Menedżerze haseł opiekuna & magazyn cyfrowy z uprawnieniami administratora.
 
-## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>Dodaj Menedżera haseł hodowca & cyfrowego magazynu z galerii
+## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>Dodawanie Menedżera haseł programu opiekuna & magazynu cyfrowego z galerii
 
-Przed skonfigurowaniem Menedżera haseł hodowca & cyfrowego magazynu dla automatycznej aprowizacji użytkowników z usługą Azure AD, należy dodać Menedżera haseł hodowca & cyfrowego magazynu z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
+Przed skonfigurowaniem usługi Menedżer haseł programu opiekuna & magazynem cyfrowym w celu automatycznego aprowizacji użytkowników w usłudze Azure AD należy dodać Menedżera haseł programu opiekuna & magazynu cyfrowego z galerii aplikacji usługi Azure AD do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Menedżera haseł hodowca & cyfrowego magazynu z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
+**Aby dodać Menedżera haseł programu opiekuna & magazynu cyfrowego z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)** , w panelu nawigacyjnym po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W **[Azure Portal](https://portal.azure.com)** w lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
 
-    ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa](common/enterprise-applications.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, wybierz **nową aplikację** znajdujący się u góry okienka.
+3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
 
-    ![Nowy przycisk aplikacji](common/add-new-app.png)
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wprowadź **Menedżera haseł hodowca & cyfrowego magazynu**, wybierz opcję **Menedżera haseł hodowca & cyfrowego magazynu** panel wyników, a następnie kliknij **Dodaj**przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wprowadź wartość **Menedżer haseł programu opiekuna & magazynie cyfrowym**, wybierz pozycję **Menedżer haseł opiekuna & magazyn cyfrowy** w panelu wyniki, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
     ![Usługa Keeper Password Manager & Digital Vault na liście wyników](common/search-new-app.png)
 
-## <a name="assigning-users-to-keeper-password-manager--digital-vault"></a>Przypisywanie użytkowników do Menedżera haseł hodowca & cyfrowego magazynu
+## <a name="assigning-users-to-keeper-password-manager--digital-vault"></a>Przypisywanie użytkowników do Menedżera haseł programu opiekuna & magazynu cyfrowego
 
-Usługa Azure Active Directory korzysta z koncepcji, o nazwie *przypisania* ustalenie, użytkowników, którzy otrzymają dostęp do wybranych aplikacji. W kontekście automatyczna aprowizacja użytkowników są synchronizowane tylko użytkowników i/lub grup, które zostały przypisane do aplikacji w usłudze Azure AD.
+Azure Active Directory używa koncepcji zwanej *zadaniami* w celu określenia, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznej aprowizacji użytkowników są synchronizowane tylko użytkownicy i/lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
 
-Przed Skonfiguruj i Włącz automatyczne aprowizowanie użytkowników, należy zdecydować, użytkowników i/lub grup w usłudze Azure AD muszą mieć dostęp do Menedżera haseł hodowca & cyfrowego magazynu. Po decyzję, można przypisać użytkowników i/lub grup do Menedżera haseł hodowca & cyfrowego magazynu zgodnie z instrukcjami w tym miejscu:
+Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD potrzebują dostępu do Menedżera haseł opiekuna & magazynie cyfrowym. Po ustaleniu tych użytkowników i/lub grup do Menedżera haseł programu opiekuna & magazynu cyfrowego, postępując zgodnie z poniższymi instrukcjami:
 
-* [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
+* [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-keeper-password-manager--digital-vault"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Menedżera haseł hodowca & cyfrowego magazynu
+### <a name="important-tips-for-assigning-users-to-keeper-password-manager--digital-vault"></a>Ważne porady dotyczące przypisywania użytkowników do Menedżera haseł programu opiekuna & magazynu cyfrowego
 
-* Zalecane jest, pojedynczego użytkownika usługi Azure AD jest przypisane do Menedżera haseł hodowca & cyfrowego magazynu do testowania automatyczne aprowizowanie konfiguracji użytkowników. Później można przypisać dodatkowych użytkowników i/lub grup.
+* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do Menedżera haseł opiekuna & cyfrowy magazyn do testowania automatycznej konfiguracji inicjowania obsługi użytkowników. Dodatkowych użytkowników i/lub grupy można przypisywać później.
 
-* Gdy przypisanie użytkownika do Menedżera haseł hodowca & cyfrowego magazynu, należy wybrać prawidłową rolą specyficzne dla aplikacji (jeśli jest dostępny) w oknie dialogowym przydział. Użytkownicy z **domyślnego dostępu** roli są wyłączone, od zainicjowania obsługi administracyjnej.
+* Podczas przypisywania użytkownika do Menedżera haseł programu opiekuna & magazynu cyfrowego należy wybrać dowolną prawidłową rolę specyficzną dla aplikacji (jeśli jest dostępna) w oknie dialogowym przypisania. Użytkownicy z **domyślną rolą dostępu** są wykluczeni z aprowizacji.
 
-## <a name="configuring-automatic-user-provisioning-to-keeper-password-manager--digital-vault"></a>Konfigurowanie automatycznej aprowizacji użytkowników na Menedżera haseł hodowca & cyfrowego magazynu 
+## <a name="configuring-automatic-user-provisioning-to-keeper-password-manager--digital-vault"></a>Konfigurowanie automatycznego aprowizacji użytkowników do Menedżera haseł programu opiekuna & magazynu cyfrowego 
 
-Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD inicjowania obsługi usługi do tworzenia, aktualizacji i wyłączyć użytkowników i/lub grupy w Menedżerze hasło hodowca & cyfrowego magazynu oparte na użytkownika i/lub przypisania grupy w usłudze Azure AD.
+Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu tworzenia, aktualizowania i wyłączania użytkowników i/lub grup w Menedżerze haseł opiekunów & magazynu cyfrowego na podstawie przypisań użytkowników i/lub grup w usłudze Azure AD.
 
 > [!TIP]
-> Można też włączyć opartej na SAML logowanie jednokrotne dla Menedżera haseł hodowca & cyfrowego magazynu, postępując zgodnie z instrukcjami dostarczone w [Menedżera haseł hodowca & cyfrowego magazyn pojedynczego logowania jednokrotnego samouczek](keeperpasswordmanager-tutorial.md). Logowanie jednokrotne można skonfigurować niezależnie od automatyczna aprowizacja użytkowników, że te dwie funkcje uzupełnienie siebie nawzajem.
+> Możesz również włączyć funkcję logowania jednokrotnego opartego na protokole SAML dla Menedżera haseł programu opiekuna & magazynie cyfrowym, postępując zgodnie z instrukcjami podanymi w [Menedżerze haseł opiekuna & użyciu logowania](keeperpasswordmanager-tutorial.md)jednokrotnego w magazynie cyfrowym. Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, chociaż te dwie funkcje napadają nawzajem.
 
-### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Aby skonfigurować automatyczna aprowizacja użytkowników dla Menedżera haseł hodowca & cyfrowego magazynu w usłudze Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi użytkowników dla Menedżera haseł programu opiekuna & magazynie cyfrowym w usłudze Azure AD:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz **wszystkie aplikacje**.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
@@ -92,87 +92,87 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
     ![Link do usługi Keeper Password Manager & Digital Vault na liście aplikacji](common/all-applications.png)
 
-3. Wybierz **aprowizacji** kartę.
+3. Wybierz kartę **aprowizacji** .
 
-    ![Udostępnianie](common/provisioning.png)
+    ![Karta aprowizacji](common/provisioning.png)
 
-4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
+4. Ustaw **tryb aprowizacji** na **automatyczny**.
 
-    ![Udostępnianie](common/provisioning-automatic.png)
+    ![Karta aprowizacji](common/provisioning-automatic.png)
 
-5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **adres URL dzierżawy** i **klucz tajny tokenu** hodowca Menedżera haseł i konta magazynu cyfrowych, zgodnie z opisem w kroku 6.
+5. W sekcji **poświadczenia administratora** wprowadź **adres URL dzierżawy** i **klucz tajny** Menedżera haseł opiekuna & konto magazynu cyfrowego zgodnie z opisem w kroku 6.
 
-6. Zaloguj się do Twojej [konsoli administracyjnej hodowca](https://keepersecurity.com/console/#login). Kliknij pozycję **administratora** i wybierz istniejący węzeł lub Utwórz nową. Przejdź do **aprowizacji** kartę, a następnie wybierz pozycję **Dodaj metodę**.
+6. Zaloguj się do [konsoli administracyjnej programu opiekuna](https://keepersecurity.com/console/#login). Kliknij pozycję **administrator** i wybierz istniejący węzeł lub Utwórz nowy. Przejdź do karty **Inicjowanie obsługi administracyjnej** i wybierz pozycję **Dodaj metodę**.
 
-    ![Konsola administracyjna hodowca](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
+    ![Konsola administracyjna opiekuna](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
-    Wybierz **Standard SCIM (System do zarządzania tożsamościami międzydomenowe**.
+    Wybierz pozycję **Standard scim (system do zarządzania tożsamościami między domenami**.
 
-    ![Hodowca Dodaj Standard SCIM](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
+    ![Dodaj Standard scim](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
-    Kliknij przycisk **tworzenie, inicjowanie obsługi administracyjnej Token**.
+    Kliknij pozycję **Utwórz token aprowizacji**.
 
-    ![Hodowca Tworzenie punktu końcowego](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
+    ![Punkt końcowy tworzenia opiekuna](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
-    Skopiuj wartości pól **adresu URL** i **tokenu** i wklej je do **adres URL dzierżawy** i **klucz tajny tokenu** w usłudze Azure AD. Kliknij przycisk **Zapisz** do zakończenia inicjowania obsługi administracyjnej instalacji na hodowca.
+    Skopiuj wartości dla **adresu URL** i **tokenu** , a następnie wklej je do **adresu URL dzierżawy** i **tokenu tajnego** w usłudze Azure AD. Kliknij przycisk **Zapisz** , aby zakończyć instalację aprowizacji na opiekuna.
 
-    ![Hodowca Utwórz Token](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
+    ![Tworzenie tokenu przez opiekuna](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
-7. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD connect można na Menedżera haseł hodowca & cyfrowego magazynu. Jeśli połączenie nie powiedzie się, upewnij się, że Twoje konto menedżera haseł hodowca & cyfrowego magazynu ma uprawnienia administratora i spróbuj ponownie.
+7. Po wypełnieniu pól przedstawionych w kroku 5 kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z menedżerem haseł opiekuna & magazynu cyfrowego Jeśli połączenie nie powiedzie się, upewnij się, że Menedżer haseł opiekuna & konto magazynu cyfrowego ma uprawnienia administratora i spróbuj ponownie.
 
-    ![Adres URL dzierżawy + tokenu](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adres URL dzierżawy + token](common/provisioning-testconnection-tenanturltoken.png)
 
-8. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru - **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
+8. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru — **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
 
     ![Wiadomość E-mail z powiadomieniem](common/provisioning-notification-email.png)
 
-9. Kliknij polecenie **Zapisz**.
+9. Kliknij przycisk **Save** (Zapisz).
 
-10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory na Menedżera haseł hodowca & cyfrowego magazynu**.
+10. W sekcji **mapowania** wybierz pozycję **Synchronizuj Azure Active Directory użytkowników do programu opiekuna Password Manager & magazynu cyfrowego**.
 
-    ![Hodowca mapowania użytkownika](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
+    ![Mapowania użytkowników opiekunów](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
-11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD na Menedżera haseł hodowca & cyfrowego magazynu w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w Menedżera haseł hodowca & cyfrowego magazynu dla operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
+11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD z menedżerem haseł opiekuna & magazynie cyfrowym w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowywania kont użytkowników w Menedżerze haseł opiekuna & magazynu cyfrowego dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
 
-    ![Hodowca atrybutów użytkownika](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
+    ![Atrybuty użytkownika opiekuna](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
-12. W obszarze **mapowania** zaznacz **synchronizacji Azure grup usługi Active Directory na Menedżera haseł hodowca & cyfrowego magazynu**.
+12. W sekcji **mapowania** wybierz pozycję **Synchronizuj grupy Azure Active Directory do Menedżera haseł programu opiekuna & magazynu cyfrowego**.
 
-    ![Mapowania posiadacza grup](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
+    ![Mapowania grup opiekunów](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
-13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD na Menedżera haseł hodowca & cyfrowego magazynu w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania grup w Menedżera haseł hodowca & cyfrowego magazynu dla operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
+13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD z menedżerem haseł opiekuna & magazynie cyfrowym w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania grup w Menedżerze haseł opiekuna & magazynu cyfrowego dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
 
-    ![Hodowca grupy atrybutów](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
+    ![Atrybuty grupy opiekunów](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
-14. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Aby włączyć usługi Azure AD, inicjowania obsługi usługi Menedżera haseł hodowca & cyfrowego magazynu, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji.
+15. Aby włączyć usługę Azure AD aprowizacji dla Menedżera haseł programu opiekuna & magazynie cyfrowym, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
 
-    ![Stan aprowizacji przełączona w](common/provisioning-toggle-on.png)
+    ![Stan aprowizacji jest przełączany](common/provisioning-toggle-on.png)
 
-16. Zdefiniuj użytkowników i/lub grup, które chcesz aby obsługiwać je na Menedżera haseł hodowca & cyfrowego magazynu, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
+16. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić menedżerowi haseł programu opiekuna & magazynu cyfrowego, wybierając odpowiednie wartości w **zakresie** w sekcji **Ustawienia** .
 
-    ![Inicjowanie obsługi administracyjnej zakresu](common/provisioning-scope.png)
+    ![Zakres aprowizacji](common/provisioning-scope.png)
 
-17. Gdy wszystko jest gotowe do aprowizowania, kliknij przycisk **Zapisz**.
+17. Gdy wszystko będzie gotowe do udostępnienia, kliknij przycisk **Zapisz**.
 
     ![Zapisywanie konfiguracji aprowizacji](common/provisioning-configuration-save.png)
 
-Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi administracyjnej raportu działań w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD, inicjowania obsługi usługi na Menedżera haseł hodowca & Vault cyfrowych.
+Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w Menedżerze haseł opiekuna & magazynem cyfrowym.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Ograniczenia łącznika
 
-* Menedżer haseł hodowca & cyfrowego magazynu wymaga **wiadomości e-mail** i **nazwy użytkownika** mieć taką samą wartość źródła wszelkie aktualizacje do obu atrybutów będzie modyfikować inną wartość.
-* Menedżer haseł hodowca & cyfrowego magazynu obsługi Usuwa użytkownika, nie tylko wyłączyć. Wyłączeni użytkownicy będą wyświetlane, jako zablokowany w interfejsie użytkownika konsoli administratora hodowca.
+* Menedżer haseł programu opiekuna & magazyn cyfrowy wymaga, aby **wiadomości e-mail** i **Nazwa użytkownika** miały taką samą wartość Source, ponieważ wszystkie aktualizacje atrybutów spowodują modyfikację drugiej wartości.
+* Menedżer haseł programu opiekuna & magazyn cyfrowy nie obsługuje usuwania użytkowników, należy wyłączyć. Użytkownicy niepełnosprawni będą wyświetlani jako Zablokowani w interfejsie użytkownika konsoli administracyjnej programu opiekuna.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i Uzyskaj raporty dotyczące inicjowania obsługi administracyjnej działania](../manage-apps/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)
 
