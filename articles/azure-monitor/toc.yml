@@ -8,6 +8,8 @@
       href: terminology.md
     - name: Często zadawane pytania
       href: faq.md
+    - name: Co nowego?
+      href: whats-new.md
 - name: Przewodniki Szybki start
   items:
     - name: Monitorowanie zasobu platformy Azure

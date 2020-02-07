@@ -4,6 +4,12 @@
   items:
     - name: Informacje o wirtualnej sieci WAN
       href: virtual-wan-about.md
+    - name: Architektura
+      items:
+        - name: Migrowanie do usługi Virtual WAN
+          href: migrate-from-hub-spoke-topology.md
+        - name: Architektura globalnej sieci tranzytowej
+          href: virtual-wan-global-transit-network-architecture.md
 - name: Samouczki
   items:
     - name: Tworzenie połączenia typu lokacja-lokacja
@@ -18,12 +24,6 @@
       href: virtual-wan-locations-partners.md
     - name: Zasady protokołu IPsec
       href: virtual-wan-ipsec.md
-    - name: Architektura
-      items:
-        - name: Migrowanie do usługi Virtual WAN
-          href: migrate-from-hub-spoke-topology.md
-        - name: Architektura globalnej sieci tranzytowej
-          href: virtual-wan-global-transit-network-architecture.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Łączenie bramy sieci wirtualnej z usługą Virtual WAN

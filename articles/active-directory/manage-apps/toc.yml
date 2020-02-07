@@ -5,10 +5,10 @@
   items:
     - name: Co to jest zarządzanie aplikacjami w chmurze i logowanie jednokrotne?
       href: what-is-application-management.md
-    - name: Co to jest aprowizowanie aplikacji?
-      href: user-provisioning.md
     - name: Co to jest serwer proxy aplikacji dla aplikacji lokalnych?
       href: what-is-application-proxy.md
+    - name: Co to jest aprowizowanie aplikacji?
+      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Przewodniki Szybki start
   items:
     - name: Dodawanie aplikacji w chmurze z galerii
@@ -72,16 +72,6 @@
               href: howto-saml-token-encryption.md
             - name: Portale użytkowników końcowych
               href: end-user-experiences.md
-    - name: Aprowizowanie aplikacji (SCIM)
-      items:
-        - name: Jak działa aprowizacja
-          href: how-provisioning-works.md
-        - name: Planowanie wdrożenia automatycznego aprowizowania użytkowników
-          href: plan-auto-user-provisioning.md
-    - name: Aprowizacja w usłudze Cloud HR
-      items:
-        - name: Planowanie wdrożenia aprowizowania użytkowników w usłudze Cloud HR
-          href: plan-cloud-hr-provision.md
     - name: Serwer proxy aplikacji dla aplikacji lokalnych
       items:
         - name: Serwer proxy aplikacji
@@ -237,60 +227,6 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Błąd podczas używania dostępu do aplikacji samoobsługowej
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Aprowizowanie aplikacji (SCIM)
-      items:
-        - name: Konfigurowanie aprowizacji dla aplikacji z galerii
-          href: configure-automatic-user-provisioning-portal.md
-        - name: Tworzenie punktu końcowego SCIM i konfigurowanie aprowizacji
-          href: use-scim-to-provision-users-and-groups.md
-        - name: Edytowanie mapowań atrybutów
-          items:
-            - name: Dostosowywanie mapowań atrybutów
-              href: Customize-application-attributes.md
-            - name: Pisanie wyrażeń do mapowania atrybutów
-              href: functions-for-customizing-application-data.md
-        - name: Dołączanie użytkowników i grup do zakresu lub ich wykluczanie
-          items:
-            - name: Określanie zakresu użytkowników lub grup do aprowizacji
-              href: define-conditional-rules-for-provisioning-user-accounts.md
-            - name: Pomijanie usuwania dla użytkowników spoza zakresu
-              href: skip-out-of-scope-deletions.md
-        - name: Monitorowanie aprowizacji i raportowanie
-          items:
-            - name: Monitorowanie stanu i wydajności aprowizacji
-              href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Raport dotyczący aprowizacji aplikacji
-              href: check-status-user-account-provisioning.md
-            - name: Eksportowanie i importowanie konfiguracji
-              href: export-import-provisioning-configuration.md
-        - name: Automatyzowanie konfiguracji przy użyciu programu MS Graph
-          href: application-provisioning-configure-api.md
-        - name: Rozwiązywanie problemów z aprowizowaniem użytkowników
-          items:
-            - name: Rozwiązywanie problemów z aprowizowaniem aplikacji
-              href: application-provisioning-config-problem.md
-            - name: Stan kwarantanny
-              href: application-provisioning-quarantine-status.md
-            - name: Dzienniki aprowizowania
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Synchronizowanie atrybutu mapowania — aplikacja z galerii
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Długie godziny — aplikacja z galerii
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Problem z autoryzacją (nie można zapisać poświadczeń administratora)
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: Użytkownicy nie są aprowizowani
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: Aprowizowani są nieprawidłowi użytkownicy
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
-            - name: Zadanie aprowizacji w kwarantannie
-              href: application-provisioning-quarantine-status.md
-            - name: Brak atrybutu źródłowego
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Zadanie aprowizacji działa wolno
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Dzienniki aprowizowania
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
     - name: Serwer proxy aplikacji dla aplikacji lokalnych
       items:
         - name: Konfigurowanie łączników
@@ -391,28 +327,10 @@
           href: secure-hybrid-access.md
 - name: Dokumentacja
   items:
-    - name: Aprowizowanie aplikacji (SCIM)
-      items:
-        - name: Pisanie wyrażeń do mapowania atrybutów
-          href: functions-for-customizing-application-data.md
-        - name: Wybór metody aprowizacji
-          href: isv-automatic-provisioning-multi-tenant-apps.md
-    - name: Aprowizacja w usłudze Cloud HR
-      items:
-        - name: Dokumentacja atrybutów rozwiązania SuccessFactors
-          href: sap-successfactors-attribute-reference.md
-        - name: Dokumentacja atrybutów rozwiązania Workday
-          href: workday-attribute-reference.md
-    - name: Agent aprowizacji programu Azure AD Connect
-      items:
-        - name: Historia wersji agenta aprowizacji
-          href: provisioning-agent-release-version-history.md
-    - name: Serwer proxy aplikacji dla aplikacji lokalnych
-      items:
-        - name: Serwer proxy aplikacji — często zadawane pytania
-          href: application-proxy-faq.md
-        - name: Historia wersji serwera proxy aplikacji
-          href: application-proxy-release-version-history.md
+    - name: Serwer proxy aplikacji — często zadawane pytania
+      href: application-proxy-faq.md
+    - name: Historia wersji serwera proxy aplikacji
+      href: application-proxy-release-version-history.md
 - name: Zasoby
   items:
     - name: Pomoc techniczna i opcje pomocy dla deweloperów
