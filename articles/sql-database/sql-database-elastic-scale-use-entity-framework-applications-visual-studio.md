@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 4198b3a9213ed535c6649c50a20f2ff957d60c94
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823488"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087189"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Elastic Database bibliotekę kliencką z Entity Framework
 
@@ -27,7 +27,7 @@ W tym dokumencie przedstawiono zmiany w aplikacji Entity Framework, które są k
 Aby pobrać kod dla tego artykułu:
 
 * Wymagany jest program Visual Studio 2012 lub nowszy. 
-* Pobierz [przykład integracji z narzędziami Elastic DB dla platformy Azure SQL — Entity Framework](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) z subskrypcją MSDN. Rozpakuj próbkę na wybraną lokalizację.
+* Pobierz [przykład integracji narzędzi elastycznych baz danych dla platformy Azure SQL — Entity Framework](https://github.com/Azure/elastic-db-tools/). Rozpakuj próbkę na wybraną lokalizację.
 * Uruchom program Visual Studio. 
 * W programie Visual Studio wybierz pozycję Plik — > Otwórz projekt/rozwiązanie. 
 * W oknie dialogowym **Otwórz projekt** przejdź do pobranego przykładu i wybierz **EntityFrameworkCodeFirst. sln** , aby otworzyć przykład. 
@@ -192,13 +192,13 @@ Przykłady kodu pokazują, że domyślny Konstruktor ponownie zapisuje wymagane 
 
 | Bieżący Konstruktor | Ponownie napisano konstruktora dla danych | Konstruktor podstawowy | Uwagi |
 | --- | --- | --- | --- |
-| Element WebContext () |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |Połączenie musi być funkcją mapy fragmentu i kluczem routingu zależnym od danych. Należy przekazać automatyczne tworzenie połączeń przez EF, a zamiast tego użyć mapy fragmentu do brokera połączenia. |
-| Element Context (String) |ElasticScaleContext (ShardMap, TKey) |DbContext (DbConnection, bool) |Połączenie jest funkcją mapy fragmentu oraz klucza routingu zależnego od danych. Stała Nazwa bazy danych lub parametry połączenia nie działają zgodnie z oczekiwaniami przez mapę fragmentu. |
-| Element WebContext (DbCompiledModel) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Połączenie zostanie utworzone dla danej mapy fragmentu i klucza fragmentowania z udostępnionym modelem. Skompilowany model jest przenoszona do podstawowego c'tor. |
+| MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |Połączenie musi być funkcją mapy fragmentu i kluczem routingu zależnym od danych. Należy przekazać automatyczne tworzenie połączeń przez EF, a zamiast tego użyć mapy fragmentu do brokera połączenia. |
+| Element Context (String) |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |Połączenie jest funkcją mapy fragmentu oraz klucza routingu zależnego od danych. Stała Nazwa bazy danych lub parametry połączenia nie działają zgodnie z oczekiwaniami przez mapę fragmentu. |
+| MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Połączenie zostanie utworzone dla danej mapy fragmentu i klucza fragmentowania z udostępnionym modelem. Skompilowany model jest przenoszona do podstawowego c'tor. |
 | Element Context (DbConnection, bool) |ElasticScaleContext (ShardMap, TKey, bool) |DbContext (DbConnection, bool) |Połączenie musi zostać wywnioskowane z mapy fragmentu i klucza. Nie można go podać jako danych wejściowych (chyba że dane wejściowe już używają mapy fragmentu i klucza). Wartość logiczna jest przenoszona. |
-| Element Context (String, DbCompiledModel) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Połączenie musi zostać wywnioskowane z mapy fragmentu i klucza. Nie można go podać jako danych wejściowych (chyba że dane wejściowe używają mapy fragmentu i klucza). Skompilowany model jest przenoszona. |
+| MyContext(string, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, DbCompiledModel, bool) |Połączenie musi zostać wywnioskowane z mapy fragmentu i klucza. Nie można go podać jako danych wejściowych (chyba że dane wejściowe używają mapy fragmentu i klucza). Skompilowany model jest przenoszona. |
 | Element WebContext (ObjectContext, bool) |ElasticScaleContext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Nowy Konstruktor musi upewnić się, że wszystkie połączenia w obiekcie ObjectContext przekazane jako dane wejściowe są przekierowywane do połączenia zarządzanego przez elastyczne skalowanie. Szczegółowa dyskusja o obiektach ObjectContext wykracza poza zakres tego dokumentu. |
-| Element Context (DbConnection, DbCompiledModel, bool) |ElasticScaleContext (ShardMap, TKey, DbCompiledModel, bool) |DbContext (DbConnection, DbCompiledModel, bool); |Połączenie musi zostać wywnioskowane z mapy fragmentu i klucza. Nie można podać połączenia jako danych wejściowych (chyba że dane wejściowe już używają mapy fragmentu i klucza). Model i wartość logiczna są przesyłane do konstruktora klasy bazowej. |
+| Element Context (DbConnection, DbCompiledModel, bool) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool) |DbContext (DbConnection, DbCompiledModel, bool); |Połączenie musi zostać wywnioskowane z mapy fragmentu i klucza. Nie można podać połączenia jako danych wejściowych (chyba że dane wejściowe już używają mapy fragmentu i klucza). Model i wartość logiczna są przesyłane do konstruktora klasy bazowej. |
 
 ## <a name="shard-schema-deployment-through-ef-migrations"></a>Fragmentu wdrażanie schematu przy użyciu migracji EF
 

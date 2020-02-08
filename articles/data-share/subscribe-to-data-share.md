@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f2acb89597ef877543a2c4cc46f395aede41034b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964502"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083111"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Samouczek: akceptowanie i odbieranie danych za pomocą udziału danych platformy Azure  
 
@@ -30,7 +30,7 @@ Przed zaakceptowaniem zaproszenia udziału danych upewnij się, że wszystkie wy
 
 * Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
 * Zaproszenie do udziału danych: zaproszenie od Microsoft Azure z podmiotem zatytułowanym "zaproszenie do udziału danych platformy Azure z **<yourdataprovider@domain.com>** ".
-* Zarejestruj dostawcę zasobów Microsoft. datashare. Postępuj zgodnie z instrukcjami opisanymi w temacie [Rozwiązywanie problemów z udziałem danych platformy Azure](data-share-troubleshoot.md) w celu zarejestrowania dostawcy zasobów udziału danych.
+* Zarejestruj [dostawcę zasobów Microsoft. datashare](concepts-roles-permissions.md#resource-provider-registration) w subskrypcji platformy Azure, w której utworzysz zasób udziału danych i subskrypcję platformy Azure, w której znajdują się docelowe magazyny danych platformy Azure.
 
 ### <a name="receive-data-into-a-storage-account"></a>Odbierz dane do konta magazynu: 
 
@@ -57,7 +57,7 @@ Przed zaakceptowaniem zaproszenia udziału danych upewnij się, że wszystkie wy
 * Adres IP klienta SQL Server dostęp do zapory. Można to zrobić, wykonując następujące czynności: 
     1. W programie SQL Server w Azure Portal przejdź do *zapór i sieci wirtualnych*
     1. Kliknij przełącznik **, aby zezwolić na dostęp** do usług platformy Azure.
-    1. Kliknij pozycję **+ Dodaj adres IP klienta** , a następnie kliknij przycisk **Zapisz**. Adres IP klienta może ulec zmianie. Ten proces może wymagać powtarzania przy następnym udostępnieniu danych SQL z Azure Portal. Możesz również dodać zakres adresów IP. 
+    1. Kliknij pozycję **+ Dodaj adres IP klienta** , a następnie kliknij przycisk **Zapisz**. Adres IP klienta może ulec zmianie. Ten proces może wymagać powtarzania przy następnym otrzymaniu danych do obiektu docelowego SQL z Azure Portal. Możesz również dodać zakres adresów IP. 
 
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Odbieraj dane w klastrze Eksplorator danych platformy Azure: 
@@ -68,7 +68,7 @@ Przed zaakceptowaniem zaproszenia udziału danych upewnij się, że wszystkie wy
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 ## <a name="open-invitation"></a>Otwórz zaproszenie
 

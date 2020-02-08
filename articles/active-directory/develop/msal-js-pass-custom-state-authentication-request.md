@@ -3,22 +3,22 @@ title: Przekaż stan niestandardowy w żądaniach uwierzytelniania (MSAL. js) | 
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak przekazać niestandardową wartość parametru stanu w żądaniu uwierzytelniania przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/16/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: be2dd887358aa00c87a4b5668a99c425d83b59dc
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1c05956f83ad3a6491627be8916fac2c8be2b7ff
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696031"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084934"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Przekazywanie stanu niestandardowego w żądaniach uwierzytelniania przy użyciu MSAL. js
 
@@ -51,7 +51,7 @@ export type AuthenticationParameters = {
 > Pomijanie pamięci podręcznej powinno być używane tylko w scenariuszach, w których wiadomo, że aktualnie buforowane dane nie mają aktualnych informacji.
 > Takie jak narzędzie administracyjne, które dodaje role do użytkownika, który musi uzyskać nowy token ze zaktualizowanymi rolami.
 
-Przykład:
+Na przykład:
 
 ```javascript
 let loginRequest = {

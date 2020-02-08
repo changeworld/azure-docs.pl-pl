@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fbd2b227c9292593a7652044ef4c013bf0cfaf8e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8188fac270eadb6e09cc3561ddefb05aa59ba661
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017007"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087130"
 ---
 # <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>Skonfiguruj połączenie sieci VPN z chmurą prywatną do automatycznej synchronizacji
 
@@ -63,7 +63,7 @@ W poniższym przykładzie pokazano Importowanie połączenia za pomocą **klient
 
 4. Wybierz plik konfiguracji OpenVPN (. ovpn) dla protokołu, którego chcesz użyć, a następnie kliknij przycisk **Otwórz**.
 
-    ![VPN](media/import-p2s-vpn-config-choose-ovpn.png)
+    ![Sieć VPN](media/import-p2s-vpn-config-choose-ovpn.png)
 
 Połączenie zostanie wyświetlone w menu lepkość.
 
@@ -71,7 +71,7 @@ Połączenie zostanie wyświetlone w menu lepkość.
 
 Aby nawiązać połączenie z siecią VPN za pomocą OpenVPNego, wybierz połączenie z menu. Ikona menu jest aktualizowana w celu wskazania, że połączenie zostało nawiązane.
 
-![VPN](media/vis03.png)
+![Sieć VPN](media/vis03.png)
 
 ### <a name="connecting-to-multiple-avs-private-clouds"></a>Łączenie z wieloma chmurami prywatnymi automatycznej synchronizacji
 
@@ -87,7 +87,7 @@ Połączenie sieci VPN typu punkt-lokacja rozwiązuje nazwy DNS pierwszej utworz
 
 4. Kliknij prawym przyciskiem myszy ikonę lepkość na pasku systemowym komputera i wybierz pozycję **Preferencje**.
 
-    ![VPN](media/vis00.png)
+    ![Sieć VPN](media/vis00.png)
 
 5. Wybierz połączenie sieci VPN do automatycznej synchronizacji.
 
@@ -97,7 +97,7 @@ Połączenie sieci VPN typu punkt-lokacja rozwiązuje nazwy DNS pierwszej utworz
 
     ![Edytowanie połączenia sieci VPN](media/viscosity-edit-connection.png)
 
-7. Kliknij kartę **Sieć** , a następnie wprowadź adres IP serwera DNS w chmurze automatycznej synchronizacji rozdzielony przecinkami lub spacją i domeną jako ```AVS.io```. Wybierz opcję **Ignoruj ustawienia DNS wysyłane przez serwer sieci VPN**.
+7. Kliknij kartę **Sieć** , a następnie wprowadź adres IP serwera DNS w chmurze automatycznej synchronizacji rozdzielony przecinkami lub spacją i domeną jako ```az.cloudsimple.io```. Wybierz opcję **Ignoruj ustawienia DNS wysyłane przez serwer sieci VPN**.
 
     ![Sieci VPN](media/viscosity-edit-connection-networking.png)
 
@@ -117,4 +117,4 @@ Aby skonfigurować lokalną bramę sieci VPN w trybie wysokiej dostępności, zo
 
 > [!IMPORTANT]
 >    1. Na urządzeniu sieci VPN ustaw wartość opcji ograniczania TCP = 1200. Lub jeśli urządzenia sieci VPN nie obsługują funkcji ograniczania, można zamiast tego ustawić jednostkę MTU w interfejsie tunelu na 1240 bajtów.
-> 2. Po skonfigurowaniu sieci VPN typu lokacja-lokacja Prześlij dalej żądania DNS dla *. AVS.io na serwery DNS chmury prywatnej do automatycznej synchronizacji. Postępuj zgodnie z instrukcjami w [lokalnej konfiguracji DNS](on-premises-dns-setup.md).
+> 2. Po skonfigurowaniu sieci VPN typu lokacja-lokacja Prześlij dalej żądania DNS dla *. cloudsimple.io do serwerów DNS chmury prywatnej w chmurze automatycznej. Postępuj zgodnie z instrukcjami w [lokalnej konfiguracji DNS](on-premises-dns-setup.md).

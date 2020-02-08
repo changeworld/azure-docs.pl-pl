@@ -1,0 +1,84 @@
+---
+title: IdentitySelector — element interfejsu użytkownika
+description: Opisuje element interfejsu użytkownika Microsoft. ManagedIdentity. IdentitySelector dla Azure Portal. Służy do przypisywania tożsamości zarządzanych do zasobu.
+author: tfitzmac
+ms.topic: conceptual
+ms.date: 02/06/2020
+ms.author: tomfitz
+ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087546"
+---
+# <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft. ManagedIdentity. IdentitySelector — element interfejsu użytkownika
+
+Kontrolka służąca do przypisywania [tożsamości zarządzanych](../../active-directory/managed-identities-azure-resources/overview.md) dla zasobu we wdrożeniu.
+
+## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+
+Kontrolka składa się z następujących elementów:
+
+![Microsoft. ManagedIdentity. IdentitySelector — pierwszy krok](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
+
+Gdy użytkownik wybierze pozycję **Dodaj**, zostanie otwarty poniższy formularz. Użytkownik może wybrać co najmniej jedną tożsamość przypisaną do użytkownika dla zasobu.
+
+![Microsoft. ManagedIdentity. IdentitySelector — drugi krok](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
+
+Wybrane tożsamości są wyświetlane w tabeli. Użytkownik może dodawać lub usuwać elementy z tej tabeli.
+
+![Microsoft. ManagedIdentity. IdentitySelector — trzeci krok](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
+
+## <a name="schema"></a>Schemat
+
+```json
+{
+  "name": "identity",
+  "type": "Microsoft.ManagedIdentity.IdentitySelector",
+  "label": "Managed Identity Configuration",
+  "toolTip": {
+    "systemAssignedIdentity": "Enable system assigned identity to grant the resource access to other existing resources.",
+    "userAssignedIdentity": "Add user assigned identities to grant the resource access to other existing resources."
+  },
+  "defaultValue": {
+    "systemAssignedIdentity": "Off"
+  },
+  "options": {
+    "hideSystemAssignedIdentity": false,
+    "hideUserAssignedIdentity": false
+  },
+  "visible": true
+}
+```
+
+## <a name="sample-output"></a>Przykładowe dane wyjściowe
+
+```json
+{
+  "identity": {
+    "value": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/xxxx/resourceGroups/TestResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/TestUserIdentity1": {}
+      }
+    }
+  }
+}
+```
+
+## <a name="remarks"></a>Uwagi
+
+- Użyj elementu **DefaultValue. systemAssignedIdentity** , aby ustawić wartość początkową dla kontrolki opcji tożsamości przypisanej do systemu. Wartość domyślna to **off**. Dozwolone są następujące wartości:
+  - **On** — skojarzona z systemem tożsamość jest przypisana do zasobu.
+  - **Wyłączone** — tożsamość przypisana do systemu nie jest przypisana do zasobu.
+  - **Tylko** on— skojarzona z systemem tożsamość jest przypisywana do zasobu. Użytkownicy nie mogą edytować tej wartości podczas wdrażania.
+  - **OffOnly** — tożsamość przypisana do systemu nie jest przypisana do zasobu. Użytkownicy nie mogą edytować tej wartości podczas wdrażania.
+
+- Jeśli **opcja Options. hideSystemAssignedIdentity** ma **wartość true**, nie jest wyświetlany interfejs użytkownika służący do konfigurowania tożsamości przypisanej do systemu. Wartość domyślna tej opcji to **false**.
+- Jeśli **opcja Options. hideUserAssignedIdentity** ma **wartość true**, interfejs użytkownika służący do konfigurowania tożsamości przypisanej przez użytkownika nie jest wyświetlany. Zasób nie ma przypisanej tożsamości przypisanej do użytkownika. Wartość domyślna tej opcji to **false**.
+
+## <a name="next-steps"></a>Następne kroki
+
+- Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
+- Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).

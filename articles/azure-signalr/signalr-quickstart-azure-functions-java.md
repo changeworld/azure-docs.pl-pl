@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR Service bez użycia serwera Przewodnik Szybki Start — Java
+title: Używanie języka Java do tworzenia pokoju rozmów z usługą Azure Functions i usługi sygnalizującej
 description: Przewodnik Szybki start pokazujący, jak za pomocą usług Azure SignalR Service i Azure Functions utworzyć pokój czatu.
 author: sffamily
 ms.service: signalr
@@ -7,38 +7,36 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 9e4e64b99a69e523547bae04146c7460d08bc1df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 890fc381afe0146e721e084e2dcd7eae9215d004
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775867"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083204"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-java"></a>Szybki start: Tworzenie pokoju rozmów przy użyciu funkcji Azure SignalR Service przy użyciu języka Java
+# <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Szybki Start: używanie języka Java do tworzenia pokoju rozmów z usługą Azure Functions i usługi sygnalizującej
 
-Usługa Azure SignalR Service umożliwia łatwe dodawanie funkcji czasu rzeczywistego do aplikacji. Usługa Azure Functions to bezserwerowa platforma, która pozwala uruchamiać kod bez zarządzania jakąkolwiek infrastrukturą. W tym przewodniku Szybki start dowiesz się, jak utworzyć bezserwerową aplikację czatu w czasie rzeczywistym za pomocą usług SignalR Service i Functions.
+Usługa Azure Signal Service umożliwia łatwe dodawanie funkcji w czasie rzeczywistym do aplikacji, a Azure Functions jest platformą bezserwerową, która umożliwia uruchamianie kodu bez konieczności zarządzania infrastrukturą. W tym przewodniku szybki start używasz języka Java do kompilowania bezserwerowej aplikacji do rozmowy w czasie rzeczywistym przy użyciu usługi sygnalizującej i funkcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Czynności przedstawione w tym przewodniku Szybki start można wykonywać w systemie macOS, Windows lub Linux.
+- Edytor kodu, taki jak [Visual Studio Code](https://code.visualstudio.com/)
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing). Służy do lokalnego uruchamiania aplikacji funkcji platformy Azure.
 
-Upewnij się, że masz zainstalowany edytor kodu, taki jak [Visual Studio Code](https://code.visualstudio.com/).
+   > [!NOTE]
+   > Wymagane powiązania usługi sygnalizujące w języku Java są obsługiwane tylko w podstawowych narzędziach funkcji platformy Azure w wersji 2.4.419 (host w wersji 2.0.12332) lub nowszej.
 
-Zainstaluj [podstawowe narzędzia usługi Azure Functions (w wersji 2)](https://github.com/Azure/azure-functions-core-tools#installing), aby móc lokalnie uruchamiać aplikacje funkcji platformy Azure.
+   > [!NOTE]
+   > Aby zainstalować rozszerzenia, Azure Functions Core Tools wymaga zainstalowanego [zestaw .NET Core SDK](https://www.microsoft.com/net/download) . Do tworzenia aplikacji funkcji platformy Azure dla w języku JavaScript nie jest jednak wymagana jakakolwiek wiedza dotycząca platformy .NET.
+
+- [Zestaw Java developer Kit](https://www.azul.com/downloads/zulu/), wersja 8
+- [Apache Maven](https://maven.apache.org), wersja 3,0 lub nowsza
 
 > [!NOTE]
-> Aby użyć powiązania usługi SignalR w języku Java, upewnij się, że używasz wersji 2.4.419 lub nowszej podstawowe narzędzia usługi Azure Functions (wersja 2.0.12332 hosta).
+> Czynności przedstawione w tym przewodniku Szybki start można wykonywać w systemie macOS, Windows lub Linux.
 
-Aby możliwe było instalowanie rozszerzeń, podstawowe narzędzia usługi Azure Functions wymagają zainstalowanego [zestawu .NET Core SDK](https://www.microsoft.com/net/download). Do tworzenia aplikacji funkcji platformy Azure dla w języku JavaScript nie jest jednak wymagana jakakolwiek wiedza dotycząca platformy .NET.
-
-Aby opracowywać aplikacje funkcji przy użyciu języka Java, trzeba mieć zainstalowane następujące składniki:
-
-* Zestaw [Java Developer Kit](https://www.azul.com/downloads/zulu/), wersja 8.
-* Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="log-in-to-azure"></a>Logowanie się do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> przy użyciu danych konta Azure.
 
@@ -58,24 +56,24 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
 
     ![Tworzenie usługi SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. W edytorze kodu, otwórz *rozmowy/src/java* folderu w repozytorium sklonowane.
+1. W edytorze kodu Otwórz folder *src/Chat/Java* w sklonowanym repozytorium.
 
 1. Zmień nazwę pliku *local.settings.sample.json* na *local.settings.json*.
 
 1. W pliku **local.settings.json** wklej parametry połączenia jako wartość ustawienia **AzureSignalRConnectionString**. Zapisz plik.
 
-1. Główny plik, który zawiera funkcje znajdują się w *src/chat/java/src/main/java/com/function/Functions.java*:
+1. Główny plik, który zawiera funkcje są w języku *src/Chat/Java/src/Main/Java/com/funkcja/Functions. Java*:
 
     - **negotiate** — ta funkcja generuje i zwraca ważne informacje o połączeniu przy użyciu danych wejściowych powiązania *SignalRConnectionInfo*.
-    - **SendMessage** — odbiera wiadomości rozmowy w treści żądania i używa *SignalR* danych wyjściowych powiązanie wysyłać wiadomość do wszystkich połączonych aplikacji klienckich.
+    - **SendMessage** — odbiera komunikat rozmowy w treści żądania i używa powiązania danych wyjściowych *sygnalizującego* , aby emitować komunikat do wszystkich połączonych aplikacji klienckich.
 
-1. W terminalu, upewnij się, że jesteś w *rozmowy/src/java* folderu. Tworzenie aplikacji funkcji.
+1. Upewnij się, że jesteś w folderze *src/Chat/Java* . Kompiluj aplikację funkcji.
 
     ```bash
     mvn clean package
     ```
 
-1. Uruchom lokalnie aplikację funkcji.
+1. Uruchom aplikację funkcji lokalnie.
 
     ```bash
     mvn azure-functions:run
@@ -85,9 +83,9 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com/> prz
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start została skompilowana i uruchomienia aplikacji bez użycia serwera w czasie rzeczywistym przy użyciu narzędzia Maven. Następnie Dowiedz się więcej o sposobie tworzenia funkcji platformy Azure dla języka Java, od podstaw.
+W tym przewodniku szybki start utworzono i uruchomiono aplikację bezserwerową w czasie rzeczywistym przy użyciu Maven. Następnie Dowiedz się, jak utworzyć Azure Functions języka Java od podstaw.
 
 > [!div class="nextstepaction"]
 > [Tworzenie pierwszej funkcji przy użyciu języka Java i Maven](../azure-functions/functions-create-first-java-maven.md)

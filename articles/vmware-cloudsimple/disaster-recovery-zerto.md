@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f34c4fb89d28a001a4af4d21879403a9ac5e860
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024708"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083134"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Skonfiguruj chmurę prywatną do automatycznej synchronizacji jako lokację odzyskiwania po awarii dla lokalnych obciążeń programu VMware
 
@@ -51,7 +51,7 @@ W poniższych sekcjach opisano, jak wdrożyć rozwiązanie DR przy użyciu repli
 Aby włączyć replikację wirtualną Zerto z poziomu środowiska lokalnego do chmury prywatnej automatycznej synchronizacji, należy spełnić następujące wymagania wstępne.
 
 1. [Skonfiguruj połączenie sieci VPN typu lokacja-lokacja między siecią lokalną a chmurą prywatną do automatycznej synchronizacji](set-up-vpn.md).
-2. [Skonfiguruj wyszukiwanie DNS w taki sposób, aby składniki zarządzania chmurą prywatną do automatycznej synchronizacji zostały przekazane do wersji załączonej do serwerów DNS chmury prywatnej](on-premises-dns-setup.md). Aby włączyć przekazywanie wyszukiwania DNS, Utwórz wpis strefy przekazywania na lokalnym serwerze DNS, aby uzyskać `*.AVS.io` na potrzeby automatycznej synchronizacji serwerów DNS.
+2. [Skonfiguruj wyszukiwanie DNS w taki sposób, aby składniki zarządzania chmurą prywatną do automatycznej synchronizacji zostały przekazane do wersji załączonej do serwerów DNS chmury prywatnej](on-premises-dns-setup.md). Aby włączyć przekazywanie wyszukiwania DNS, Utwórz wpis strefy przekazywania na lokalnym serwerze DNS, aby uzyskać `*.cloudsimple.io` na potrzeby automatycznej synchronizacji serwerów DNS.
 3. Skonfiguruj wyszukiwanie DNS w taki sposób, że lokalne składniki programu vCenter są przekazywane do lokalnych serwerów DNS. Serwery DNS muszą być dostępne z chmury prywatnej automatycznej synchronizacji przy użyciu sieci VPN typu lokacja-lokacja. Aby uzyskać pomoc, Prześlij [żądanie pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), dostarczając poniższe informacje. 
 
     * Lokalna nazwa domeny DNS
@@ -93,6 +93,6 @@ Aby włączyć replikację wirtualną Zerto z poziomu środowiska lokalnego do c
 6. W razie potrzeby dostosuj ustawienia sieci dla poszczególnych maszyn wirtualnych i Utwórz VPG.
 7. Test pracy w trybie failover po zakończeniu replikacji.
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Dokumentacja
 
 [Dokumentacja Zerto](https://www.zerto.com/myzerto/technical-documentation/)

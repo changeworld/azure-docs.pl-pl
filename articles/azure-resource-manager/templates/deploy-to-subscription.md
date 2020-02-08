@@ -3,12 +3,12 @@ title: Wdrażanie zasobów w ramach subskrypcji
 description: Opisuje sposób tworzenia grupy zasobów w szablonie Azure Resource Manager. Przedstawiono w nim również sposób wdrażania zasobów w zakresie subskrypcji platformy Azure.
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: aed22cab9281f272421a574efebcf346139348d5
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: b11668466fe3954dc5bc90435d5dfd016ca9791c
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121883"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086720"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Tworzenie grup zasobów i zasobów na poziomie subskrypcji
 
@@ -229,7 +229,7 @@ Poniższy przykład tworzy grupę zasobów i wdraża konto magazynu w grupie zas
 
 ## <a name="create-policies"></a>Tworzenie zasad
 
-### <a name="assign-policy"></a>Przypisz zasady
+### <a name="assign-policy"></a>Przypisywanie zasad
 
 Poniższy przykład przypisuje istniejącą definicję zasad do subskrypcji. Jeśli zasady pobierają parametry, podaj je jako obiekt. Jeśli zasady nie przyjmują parametrów, Użyj domyślnego pustego obiektu.
 
@@ -357,6 +357,11 @@ New-AzDeployment `
   -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
+
+## <a name="template-samples"></a>Przykłady szablonów
+
+* Utwórz grupę zasobów, Zablokuj ją i nadaj jej uprawnienia. Zobacz [tutaj](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+* Tworzenie grupy zasobów, zasad i przypisania zasad.  Zobacz [tutaj](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Następne kroki
 

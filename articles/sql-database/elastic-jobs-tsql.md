@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/07/2020
+ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861340"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087348"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Tworzenie Elastic Database zadań i zarządzanie nimi przy użyciu języka Transact-SQL (T-SQL)
 
@@ -189,10 +189,13 @@ Aby na przykład zgrupować wszystkie wyniki z tego samego wykonania zadania, na
 
 Poniższy przykład tworzy nowe zadanie w celu zbierania danych wydajności z wielu baz danych.
 
-Domyślnie agent zadań będzie mógł utworzyć tabelę do przechowywania zwracanych wyników. W związku z tym logowanie skojarzone z poświadczeniem używanym do poświadczania danych wyjściowych musi mieć wystarczające uprawnienia do wykonania tej akcji. Jeśli chcesz ręcznie utworzyć tabelę przed czasem, musi ona mieć następujące właściwości:
+Domyślnie Agent zadania utworzy tabelę wyjściową do przechowywania zwracanych wyników. W związku z tym podmiot zabezpieczeń bazy danych skojarzony z poświadczeniem wyjściowym musi mieć co najmniej następujące uprawnienia: `CREATE TABLE` w bazie danych, `ALTER`, `SELECT`, `INSERT`, `DELETE` w tabeli wyjściowej lub jej schemacie oraz `SELECT` w widoku wykazu [sys. Indexs](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) .
+
+Jeśli chcesz ręcznie utworzyć tabelę przed czasem, musi ona mieć następujące właściwości:
 1. Kolumny o poprawnej nazwie i typach danych dla zestawu wyników.
 2. Dodatkowa kolumna dla internal_execution_id z typem danych unikatowym.
 3. Indeks nieklastrowany o nazwie `IX_<TableName>_Internal_Execution_ID` w kolumnie internal_execution_id.
+4. Wszystkie uprawnienia wymienione powyżej, z wyjątkiem uprawnień `CREATE TABLE` w bazie danych.
 
 Nawiąż połączenie z [*bazą danych zadań*](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenia:
 
@@ -1192,7 +1195,7 @@ GO
 Poniższe widoki są dostępne w [bazie danych zadań](sql-database-job-automation-overview.md#job-database).
 
 
-|Wyświetl  |Opis  |
+|Widok  |Opis  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Pokazuje historię wykonywania zadań.      |
 |[zadania](#jobs-view)     |   Pokazuje wszystkie zadania.      |

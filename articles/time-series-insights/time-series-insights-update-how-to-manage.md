@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/19/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: b70604c62ae21f9c433b3cd7d9e59f4ccebb61bd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 1ec0d9c7ecf16c60c32abdf08b358268f460edb0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861731"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087220"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Udostępnianie wersji zapoznawczej Azure Time Series Insights i zarządzanie nią
 
 W tym artykule opisano sposób tworzenia środowiska Azure Time Series Insights w wersji zapoznawczej i zarządzania nim przy użyciu [Azure Portal](https://portal.azure.com/).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Środowiska Azure Time Series Insights w wersji zapoznawczej to środowiska *z opcją płatność zgodnie z rzeczywistym* użyciem.
 

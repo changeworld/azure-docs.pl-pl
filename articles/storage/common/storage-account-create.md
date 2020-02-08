@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/17/2020
+ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2ef90e1cb883a2d22b355ff4105ae0ce3c73ad6d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 86aaebe652968a2ea33fd8e15f9de9c1dff31a30
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759857"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086965"
 ---
 # <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
@@ -32,9 +32,17 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Brak.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ten artykuł instruktażowy wymaga modułu Azure PowerShell AZ w wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby określić bieżącą wersję. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
+Aby utworzyć konto usługi Azure Storage przy użyciu programu PowerShell, upewnij się, że zainstalowano moduł Azure PowerShell module AZ w wersji 0,7 lub nowszej. Aby uzyskać więcej informacji, zobacz [wprowadzenie do Azure PowerShell AZ module](/powershell/azure/new-azureps-module-az).
+
+Aby znaleźć bieżącą wersję, uruchom następujące polecenie:
+
+```powershell
+Get-InstalledModule -Name "Az"
+```
+
+Aby zainstalować lub uaktualnić Azure PowerShell, zobacz [install Azure PowerShell module](/powershell/azure/install-Az-ps).
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
@@ -55,7 +63,7 @@ Przycisk uruchamia interaktywną powłokę, której można użyć, aby wykonać 
 
 ### <a name="install-the-cli-locally"></a>Instalowanie interfejsu wiersza polecenia lokalnie
 
-Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać lokalnie. Ten artykuł z artykułu wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+Interfejs wiersza polecenia platformy Azure możesz również zainstalować i używać go lokalnie. Ten artykuł z artykułu wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
 # <a name="templatetabtemplate"></a>[Szablon](#tab/template)
 
@@ -63,15 +71,15 @@ Brak.
 
 ---
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-Zaloguj się do [portalu Azure](https://portal.azure.com).
+Zaloguj się do [Azure portal](https://portal.azure.com).
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Zaloguj się do subskrypcji platformy Azure za pomocą `Connect-AzAccount` polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami do uwierzytelniania.
+Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby przeprowadzić uwierzytelnianie.
 
 ```powershell
 Connect-AzAccount
@@ -83,13 +91,13 @@ Aby uruchomić Azure Cloud Shell, zaloguj się do [Azure Portal](https://portal.
 
 Aby zalogować się do lokalnej instalacji interfejsu wiersza polecenia, uruchom polecenie [AZ login](/cli/azure/reference-index#az-login) :
 
-```cli
+```azurecli-interactive
 az login
 ```
 
 # <a name="templatetabtemplate"></a>[Szablon](#tab/template)
 
-ND
+Nie dotyczy
 
 ---
 
@@ -105,7 +113,7 @@ Konto magazynu **ogólnego przeznaczenia, wersja 2** zapewnia dostęp do wszystk
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Najpierw użyj polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) w programie PowerShell, aby utworzyć nową grupę zasobów:
 
@@ -113,6 +121,7 @@ Najpierw użyj polecenia [New-AzResourceGroup](/powershell/module/az.resources/n
 # put resource group in a variable so you can use the same group name going forward,
 # without hard-coding it repeatedly
 $resourceGroup = "storage-resource-group"
+$location = "westus"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
@@ -120,7 +129,6 @@ Jeśli nie masz pewności, który region należy określić dla parametru `-Loca
 
 ```powershell
 Get-AzLocation | select Location
-$location = "westus"
 ```
 
 Następnie utwórz konto magazynu ogólnego przeznaczenia w wersji 2 z magazynem Geograficznie nadmiarowy z dostępem do odczytu (RA-GRS) za pomocą polecenia [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) . Pamiętaj, że nazwa konta magazynu musi być unikatowa w obrębie platformy Azure, więc Zastąp wartość symbolu zastępczego w nawiasach własnym unikatowymi wartościami:
@@ -134,7 +142,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> Jeśli planujesz używać [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), Dołącz `-EnableHierarchicalNamespace $True` do tej listy parametrów. 
+> Jeśli planujesz używać [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/), Dołącz `-EnableHierarchicalNamespace $True` do tej listy parametrów.
 
 Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z inną opcją replikacji, należy zastąpić żądaną wartość w poniższej tabeli dla parametru **SkuName** .
 
@@ -142,7 +150,7 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z inną opcją r
 |---------|---------|
 |Magazyn lokalnie nadmiarowy (LRS)     |Standard_LRS         |
 |Magazyn strefowo nadmiarowy (ZRS)     |Standard_ZRS         |
-|Magazyn geograficznie nadmiarowy     |Standard_GRS         |
+|Magazyn geograficznie nadmiarowy (GRS)     |Standard_GRS         |
 |Magazyn geograficznie nadmiarowy dostępny do odczytu (GRS)     |Standard_RAGRS         |
 |Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza)    |Standard_GZRS         |
 |Strefa geograficzna z dostępem do odczytu — magazyn nadmiarowy (RA-GZRS) (wersja zapoznawcza)    |Standard_RAGZRS         |
@@ -185,7 +193,7 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 z inną opcją r
 |---------|---------|
 |Magazyn lokalnie nadmiarowy (LRS)     |Standard_LRS         |
 |Magazyn strefowo nadmiarowy (ZRS)     |Standard_ZRS         |
-|Magazyn geograficznie nadmiarowy     |Standard_GRS         |
+|Magazyn geograficznie nadmiarowy (GRS)     |Standard_GRS         |
 |Magazyn geograficznie nadmiarowy dostępny do odczytu (GRS)     |Standard_RAGRS         |
 |Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza)    |Standard_GZRS         |
 |Strefa geograficzna z dostępem do odczytu — magazyn nadmiarowy (RA-GZRS) (wersja zapoznawcza)    |Standard_RAGZRS         |
@@ -230,7 +238,7 @@ Usunięcie konta magazynu spowoduje usunięcie całego konta, w tym wszystkich d
 1. Przejdź do konta magazynu w [Azure Portal](https://portal.azure.com).
 1. Kliknij polecenie **Usuń**.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aby usunąć konto magazynu, użyj polecenia [Remove-AzStorageAccount](/powershell/module/az.storage/remove-azstorageaccount) :
 
@@ -282,7 +290,7 @@ W tym artykule z tego artykułu opisano tworzenie standardowego konta magazynu o
 > [!div class="nextstepaction"]
 > [Praca z obiektami blob za pomocą witryny Azure Portal](../blobs/storage-quickstart-blobs-portal.md)
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!div class="nextstepaction"]
 > [Praca z obiektami blob za pomocą programu PowerShell](../blobs/storage-quickstart-blobs-powershell.md)

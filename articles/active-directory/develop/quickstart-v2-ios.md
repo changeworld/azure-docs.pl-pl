@@ -2,22 +2,22 @@
 title: Microsoft Identity platform iOS i macOS — Szybki Start | Azure
 description: Dowiedz się, jak logować użytkowników i Microsoft Graph zapytań w aplikacji dla systemu iOS lub macOS.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/24/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 25e37d27805adb47fae19bdcc0e94253f8c4ccf2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4dea0feb5d5a1cb42640b1fc05bb185e970ae8af
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703460"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084501"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Szybki Start: Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji dla systemu iOS lub macOS
 
@@ -179,7 +179,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Miejsce: ||
+> |Gdzie: ||
 > |---------|---------|
 > | `clientId` | Identyfikator aplikacji z aplikacji zarejestrowanej w witrynie *portal.azure.com* |
 > | `authority` | Punkt końcowy platformy tożsamości firmy Microsoft. W większości przypadków będzie to adres *https<span/>://login.microsoftonline.com/common* |
@@ -243,7 +243,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Miejsce:||
+> |Gdzie:||
 > |---------|---------|
 > | `scopes` | Zawiera żądane zakresy (czyli `[ "user.read" ]` dla Microsoft Graph lub `[ "<Application ID URL>/scope" ]` niestandardowych interfejsów API sieci Web (`api://<Application ID>/access_as_user`) |
 
@@ -258,7 +258,7 @@ let silentParams = MSALSilentTokenParameters(scopes: kScopes, account: account)
 self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Miejsce: ||
+> |Gdzie: ||
 > |---------|---------|
 > | `scopes` | Zawiera żądane zakresy (czyli `[ "user.read" ]` dla Microsoft Graph lub `[ "<Application ID URL>/scope" ]` niestandardowych interfejsów API sieci Web (`api://<Application ID>/access_as_user`) |
 > | `account` | Konto, dla którego jest żądany token. Ten przewodnik Szybki Start dotyczy aplikacji o pojedynczym koncie. Jeśli chcesz utworzyć aplikację obejmującą wiele kont, musisz zdefiniować logikę, aby zidentyfikować konto, które będzie używane dla żądań tokenów przy użyciu `applicationContext.account(forHomeAccountId: self.homeAccountId)` |

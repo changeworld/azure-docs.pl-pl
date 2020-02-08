@@ -2,22 +2,22 @@
 title: Agenci autoryzacji i sposoby ich włączania | Azure
 description: Dowiedz się więcej o różnych agentach autoryzacji Biblioteka Microsoft Authentication Library (MSAL) umożliwia korzystanie z aplikacji systemu Android i włączanie ich.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698003"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085338"
 ---
 # <a name="authorization-agents-android"></a>Agenci autoryzacji (Android)
 
@@ -79,14 +79,14 @@ Następujące przeglądarki zostały przetestowane w celu sprawdzenia, czy prawi
 | | Wbudowana przeglądarka | Chrome | Opera  | Microsoft Edge | Przeglądarka UC | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | Nexus 4 (interfejs API 17) | chodzenia | chodzenia |nie dotyczy |nie dotyczy |nie dotyczy |nie dotyczy |
-| Samsung S7 (interfejs API 25) | chodzenia | chodzenia | chodzenia | chodzenia | fail |chodzenia |
-| Huawei (interfejs API 26) |Pass * * | chodzenia | fail | chodzenia | chodzenia |chodzenia |
-| Vivo (interfejs API 26) |chodzenia|chodzenia|chodzenia|chodzenia|chodzenia|fail|
-| Piksel 2 (interfejs API 26) |chodzenia | chodzenia | chodzenia | chodzenia | fail |chodzenia |
+| Samsung S7 (interfejs API 25) | chodzenia | chodzenia | chodzenia | chodzenia | udało |chodzenia |
+| Huawei (interfejs API 26) |Pass * * | chodzenia | udało | chodzenia | chodzenia |chodzenia |
+| Vivo (interfejs API 26) |chodzenia|chodzenia|chodzenia|chodzenia|chodzenia|udało|
+| Piksel 2 (interfejs API 26) |chodzenia | chodzenia | chodzenia | chodzenia | udało |chodzenia |
 | Oppo | chodzenia | nie dotyczy * * * |nie dotyczy  |nie dotyczy |nie dotyczy | nie dotyczy|
-| OnePlus (interfejs API 25) |chodzenia | chodzenia | chodzenia | chodzenia | fail |chodzenia |
-| Nexus (interfejs API 28) |chodzenia | chodzenia | chodzenia | chodzenia | fail |chodzenia |
-|MI | chodzenia | chodzenia | chodzenia | chodzenia | fail |chodzenia |
+| OnePlus (interfejs API 25) |chodzenia | chodzenia | chodzenia | chodzenia | udało |chodzenia |
+| Nexus (interfejs API 28) |chodzenia | chodzenia | chodzenia | chodzenia | udało |chodzenia |
+|DRUGIE | chodzenia | chodzenia | chodzenia | chodzenia | udało |chodzenia |
 
 \* Wbudowana przeglądarka Samsung to Samsung Internet.  
 \* * Wbudowana przeglądarka Huawei jest przeglądarką Huawei.  

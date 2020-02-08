@@ -3,22 +3,22 @@ title: Unikaj ponownego ładowania stron (MSAL. js) | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak uniknąć ponownego ładowania strony podczas uzyskiwania i odnawiania tokenów w trybie dyskretnym przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e68798861d5799a4314bd9cd9b2eeeadb926a90f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 63944a5a9af34c2d4cf98eeb870a730df49654e5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696150"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084959"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Unikaj ponownego ładowania stron podczas uzyskiwania i odnawiania tokenów dyskretnie przy użyciu MSAL. js
 Biblioteka Microsoft Authentication Library for JavaScript (MSAL. js) używa ukrytych elementów `iframe` do uzyskiwania i odnawiania tokenów w trybie dyskretnym w tle. Usługa Azure AD zwraca token z powrotem do zarejestrowanego redirect_uri określonego w żądaniu tokenu (domyślnie jest to Strona główna aplikacji). Ponieważ odpowiedzią jest 302, wynikiem jest kod HTML odpowiadający `redirect_uri` wczytywanie w `iframe`. Zwykle `redirect_uri` aplikacji jest stroną główną i spowoduje to ponowne załadowanie.
@@ -35,7 +35,7 @@ Ustaw właściwość `redirect_uri` w pliku config na prostą stronę, która ni
 
 ## <a name="initialization-in-your-main-app-file"></a>Inicjowanie w głównym pliku aplikacji
 
-Jeśli aplikacja jest strukturalna w taki sposób, że istnieje jeden centralny plik języka JavaScript, który definiuje inicjalizację, Routing i inne elementy aplikacji, można warunkowo załadować moduły aplikacji w zależności od tego, czy aplikacja jest ładowana w `iframe`, czy nie. Przykład:
+Jeśli aplikacja jest strukturalna w taki sposób, że istnieje jeden centralny plik języka JavaScript, który definiuje inicjalizację, Routing i inne elementy aplikacji, można warunkowo załadować moduły aplikacji w zależności od tego, czy aplikacja jest ładowana w `iframe`, czy nie. Na przykład:
 
 In AngularJS: app.js
 

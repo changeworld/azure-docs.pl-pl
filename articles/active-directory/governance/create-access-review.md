@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
+ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932626"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084450"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu do grup i aplikacji w przeglądach dostępu usługi Azure AD
 
@@ -93,7 +93,7 @@ Aby uzyskać więcej informacji, zobacz [wymagania dotyczące licencji](access-r
 
     ![Tworzenie przeglądu dostępu — po zakończeniu ustawień](./media/create-access-review/upon-completion-settings.png)
 
-1. Jeśli chcesz automatycznie usunąć dostęp dla użytkowników, których odmówiono, ustaw opcję **automatycznie Zastosuj wyniki do zasobu** do **włączenia**. Jeśli chcesz ręcznie zastosować wyniki po zakończeniu przeglądu, ustaw przełącznik do **wyłączenia**.
+1. Jeśli chcesz automatycznie usunąć, dostęp dla użytkowników, którym odmówiono, ustaw **Automatyczne stosowanie wyników do zasobu** do **włączenia**. Jeśli chcesz ręcznie zastosować wyniki po zakończeniu przeglądu, ustaw przełącznik do **wyłączenia**.
 
 1. Użyj listy **powinien nie odpowiadać** , aby określić, co się dzieje w przypadku użytkowników, którzy nie są recenzowani przez recenzenta w okresie przeglądu. To ustawienie nie ma wpływu na użytkowników, którzy zostali ręcznie przejrzał przez recenzentów. Jeśli ostateczna decyzja recenzenta jest odmowa, dostęp użytkownika zostanie usunięty.
 
@@ -127,6 +127,20 @@ Po określeniu ustawień przeglądu dostępu kliknij przycisk **Uruchom**. Przeg
 Domyślnie usługa Azure AD wysyła wiadomość e-mail do recenzentów wkrótce po rozpoczęciu przeglądu. Jeśli nie chcesz, aby usługa Azure AD wysłała wiadomość e-mail, pamiętaj, aby poinformować recenzentów, że przegląd dostępu oczekuje na jego zakończenie. Można wyświetlić instrukcje dotyczące sposobu [przeglądania dostępu do grup lub aplikacji](perform-access-review.md). Jeśli Twoje przeglądy są przeznaczone dla Gości, aby zapoznać się z własnym dostępem, Pokaż im instrukcje dotyczące sposobu [przeglądania dostępu do grup lub aplikacji](review-your-access.md).
 
 Jeśli przypisano Gości jako recenzentów, którzy nie zaakceptowali zaproszenia, nie otrzymają wiadomości e-mail od przeglądów dostępu, ponieważ najpierw muszą zaakceptować zaproszenie przed rozpoczęciem przeglądu.
+
+## <a name="access-review-status-table"></a>Tabela stanu przeglądu dostępu
+
+| Stan | Definicja |
+|--------|------------|
+|NotStarted | Przegląd został utworzony, odnajdywanie użytkowników oczekuje na uruchomienie. |
+|Inicjacj   | Odnajdywanie użytkowników jest w toku, aby zidentyfikować wszystkich użytkowników, którzy są częścią przeglądu. |
+|Uruchamianie | Przegląd rozpoczyna się. Jeśli powiadomienia e-mail są włączone, wiadomości e-mail są wysyłane do recenzentów. |
+|W toku | Przegląd został rozpoczęty. Powiadomienia e-mail, które zostały włączone, są wysyłane do recenzentów. Recenzenci mogą przesyłać decyzje do daty ukończenia. |
+|Podając | Przegląd jest wykonywany i wiadomości e-mail są wysyłane do właściciela przeglądu. |
+|Autoprzegląd | Przegląd znajduje się na etapie recenzowania systemu. System rejestruje decyzje dla użytkowników, którzy nie zostali zrecenzowani w oparciu o zalecenia lub wstępnie skonfigurowane decyzje. |
+|Przejrzane ponownie | Decyzje zostały zarejestrowane przez system dla wszystkich użytkowników, którzy nie zostali zrecenzowani. Przegląd jest gotowy do **dalszego zastosowania, jeśli włączono** funkcję autoapply. |
+|Stosuje | Dostęp do użytkowników, którzy zostali zatwierdzeni, nie zmieni się. |
+|Stosowane | Odmowa dostępu użytkowników, jeśli istnieją, zostały usunięte z zasobu lub katalogu. |
 
 ## <a name="create-reviews-via-apis"></a>Tworzenie przeglądów za pośrednictwem interfejsów API
 

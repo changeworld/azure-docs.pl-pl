@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bbd8a12820432ce2f131dda29af6740a2f04e18
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024725"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083154"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Skonfiguruj chmurę prywatną do automatycznej synchronizacji jako miejsce docelowe odzyskiwania po awarii za pomocą programu VMware Site Recovery Manager
 
@@ -101,7 +101,7 @@ Można dodać zewnętrznego dostawcę tożsamości, zgodnie z opisem w temacie [
 
 Aby zapewnić wyszukiwanie adresów IP, zarządzanie adresami IP oraz usługi rozpoznawania nazw dla obciążeń w chmurze prywatnej automatycznej synchronizacji, należy skonfigurować serwer DHCP i DNS zgodnie z opisem w temacie [Konfigurowanie aplikacji DNS i DHCP oraz obciążeń w chmurze prywatnej automatycznej synchronizacji](dns-dhcp-setup.md).
 
-Domena *. avs.io jest używana przez maszyny wirtualne zarządzania i hosty w chmurze prywatnej automatycznej synchronizacji. Aby rozwiązać żądania do tej domeny, skonfiguruj przekazywanie DNS na serwerze DNS zgodnie z opisem w temacie [Tworzenie usługi przesyłania dalej warunkowego](on-premises-dns-setup.md#create-a-conditional-forwarder).
+Domena *. cloudsimple.io jest używana przez maszyny wirtualne zarządzania i hosty w chmurze prywatnej automatycznej synchronizacji. Aby rozwiązać żądania do tej domeny, skonfiguruj przekazywanie DNS na serwerze DNS zgodnie z opisem w temacie [Tworzenie usługi przesyłania dalej warunkowego](on-premises-dns-setup.md#create-a-conditional-forwarder).
 
 ### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>Instalowanie urządzenia replikacji vSphere w środowisku lokalnym
 
@@ -133,7 +133,7 @@ Przed zainstalowaniem vRA i SRM należy eskalować uprawnienia programu vCenter 
 Instalacja składa się z następujących ogólnych kroków:
 
 1. [Eskalacja uprawnień](escalate-private-cloud-privileges.md).
-2. Utwórz użytkownika w chmurze prywatnej automatycznej synchronizacji na potrzeby replikacji vSphere i instalacji SRM. Wyjaśniono poniżej w [interfejsie użytkownika programu vCenter: Utwórz użytkownika w chmurze prywatnej automatycznej synchronizacji na potrzeby instalacji vRA & SRM](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation).
+2. Utwórz użytkownika w chmurze prywatnej automatycznej synchronizacji na potrzeby replikacji vSphere i instalacji SRM. Wyjaśniono poniżej w [interfejsie użytkownika programu vCenter: Utwórz użytkownika w chmurze prywatnej automatycznej synchronizacji na potrzeby instalacji vRA &AMP; SRM](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation).
 3. Przygotuj środowisko chmury prywatnej do automatycznej synchronizacji na potrzeby instalacji vRA.
 4. Wdróż vRA w chmurze prywatnej automatycznej synchronizacji przy użyciu OVF w pliku VR ISO from vmware.com. W przypadku vRA 6,5 [ten blog VMware](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices) ma odpowiednie informacje.
 5. Skonfiguruj reguły zapory dla vRA. Poniżej wyjaśniono w [portalu automatycznej konfiguracji: Konfigurowanie reguł zapory dla vRA](#avs-portal-configure-firewall-rules-for-vra).
@@ -219,7 +219,7 @@ Masz pełną kontrolę nad replikacją vSphere i oprogramowaniem SRM w środowis
 
  W tym samym czasie [można jednocześnie używać zarówno technologii replikacji opartej na tablicy, jak i vSphere](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) . Jednak muszą być stosowane do oddzielnych zestawów maszyn wirtualnych (dana maszyna wirtualna może być chroniona przez replikację opartą na tablicy lub replikację vSphere, ale nie oba te elementy). Ponadto witrynę automatycznej synchronizacji można skonfigurować jako lokację odzyskiwania dla wielu chronionych witryn. Zobacz [SRM opcje Wielolokacjowe](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) , aby uzyskać informacje na temat konfiguracji z konfiguracją wiele lokacji.
 
-## <a name="references"></a>Informacje
+## <a name="references"></a>Dokumentacja
 
 * [Dokumentacja programu VMware Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [Limity operacyjne dla Site Recovery Manager 6,5](https://kb.vmware.com/s/article/2147110)

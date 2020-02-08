@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844556"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086643"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Samouczek: publikowanie, subskrybowanie zdarzeń lokalnie
 
@@ -47,7 +47,7 @@ Istnieje kilka sposobów wdrażania modułów na urządzeniu IoT Edge i wszystki
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrożenia
 
-Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON.  Posiada trzy kroki: **Dodaj moduły**, **określić trasy**, i **Przejrzyj wdrożenia**.
+Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON.  Składa się z trzech kroków: **Dodawanie modułów**, **Określanie tras**i **przeglądanie wdrożenia**.
 
 ### <a name="add-modules"></a>Dodaj moduły
 
@@ -64,8 +64,7 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
     ```json
         {
           "Env": [
-            "inbound__clientAuth__clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,21 +78,17 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
         }
     ```    
  1. Kliknij pozycję **Zapisz**
- 1. Przejdź do następnej sekcji, aby dodać moduł Azure Functions przed ich wdrożeniem.
+ 1. Przejdź do następnej sekcji, aby dodać moduł subskrybenta Azure Event Grid przed ich wdrożeniem.
 
     >[!IMPORTANT]
-    > W tym samouczku zostanie wdrożony moduł Event Grid z wyłączonym uwierzytelnianiem klienta i zezwolisz subskrybentom protokołu HTTP. W przypadku obciążeń produkcyjnych zaleca się włączenie uwierzytelniania klienta i Zezwalanie na tylko subskrybenci HTTPs. Aby uzyskać więcej informacji na temat bezpiecznego konfigurowania modułu Event Grid, zobacz [zabezpieczenia i uwierzytelnianie](security-authentication.md).
+    > W tym samouczku zostanie wdrożony moduł Event Grid z wyłączonym uwierzytelnianiem klienta. W przypadku obciążeń produkcyjnych zaleca się włączenie uwierzytelniania klienta. Aby uzyskać więcej informacji na temat bezpiecznego konfigurowania modułu Event Grid, zobacz [zabezpieczenia i uwierzytelnianie](security-authentication.md).
     > 
     > Jeśli używasz maszyny wirtualnej platformy Azure jako urządzenia brzegowego, Dodaj regułę portu przychodzącego, aby zezwolić na ruch przychodzący na porcie 4438. Aby uzyskać instrukcje dotyczące dodawania reguły, zobacz [Jak otworzyć porty na maszynie wirtualnej](../../virtual-machines/windows/nsg-quickstart-portal.md).
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Wdróż moduł IoT Edge usługi Azure Functions
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Wdróż moduł IoT Edge subskrybenta Event Grid
 
-W tej sekcji przedstawiono sposób wdrażania modułu Azure Functions IoT, który będzie pełnić rolę subskrybenta Event Grid, do którego można dostarczyć zdarzenia.
-
->[!IMPORTANT]
->Ta sekcja zawiera wdrożenie przykładowego modułu subskrybowania opartego na funkcji platformy Azure. Może to być dowolny niestandardowy moduł IoT, który może nasłuchiwać żądań POST protokołu HTTP.
-
+W tej sekcji przedstawiono sposób wdrażania innego modułu IoT, który będzie działać jako procedura obsługi zdarzeń, do którego mogą być dostarczane zdarzenia.
 
 ### <a name="add-modules"></a>Dodaj moduły
 
@@ -102,23 +97,8 @@ W tej sekcji przedstawiono sposób wdrażania modułu Azure Functions IoT, któr
 1. Podaj nazwę, obraz i opcje tworzenia kontenera:
 
    * **Nazwa**: subskrybent
-   * **Identyfikator URI obrazu**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **Opcje tworzenia kontenera**:
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **Identyfikator URI obrazu**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Opcje tworzenia kontenera**: brak
 1. Kliknij pozycję **Zapisz**
 1. Kliknij przycisk **dalej** , aby przejść do sekcji trasy
 
@@ -129,7 +109,7 @@ Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejś�
 ### <a name="submit-the-deployment-request"></a>Prześlij żądanie wdrożenia
 
 1. Sekcja Przegląd przedstawia manifest wdrożenia JSON, który został utworzony na podstawie wybranych opcji w poprzedniej sekcji. Upewnij się, że na liście JSON są widoczne zarówno moduły: **eventgridmodule** , jak i **subskrybent** . 
-1. Przejrzyj informacje o wdrożeniu, a następnie wybierz **przesyłania**. Po przesłaniu wdrożenia wrócisz do strony **urządzenia** .
+1. Przejrzyj informacje o wdrożeniu, a następnie wybierz pozycję **Prześlij**. Po przesłaniu wdrożenia wrócisz do strony **urządzenia** .
 1. W **sekcji modułów**Sprawdź, czy na liście znajdują się zarówno **eventgrid** , jak i moduły **subskrybenta** . I sprawdź, czy w polu **Deployment (wdrożenie** i **raportowane przez urządzenia** ) ustawiono wartość **tak**.
 
     Uruchomienie modułu na urządzeniu może potrwać kilka minut, a następnie zgłoszone z powrotem do IoT Hub. Odśwież stronę, aby zobaczyć zaktualizowany stan.
@@ -191,7 +171,7 @@ Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temac
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -199,7 +179,7 @@ Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temac
     ```
 
     >[!NOTE]
-    > Właściwość **EndpointType** określa, że subskrybent jest elementem **webhook**.  **EndpointUrl** określa adres URL, pod którym subskrybent nasłuchuje zdarzeń. Ten adres URL odnosi się do wdrożonej wcześniej przykładowej funkcji platformy Azure.
+    > Właściwość **EndpointType** określa, że subskrybent jest elementem **webhook**.  **EndpointUrl** określa adres URL, pod którym subskrybent nasłuchuje zdarzeń. Ten adres URL odnosi się do wdrożonego wcześniej przykładu subskrybenta platformy Azure.
 2. Uruchom następujące polecenie, aby utworzyć subskrypcję tematu. Upewnij się, że został wyświetlony kod stanu HTTP `200 OK`.
 
     ```sh
@@ -223,7 +203,7 @@ Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temac
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -275,7 +255,7 @@ Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temac
     Przykładowe dane wyjściowe:
 
     ```sh
-        Received event data [
+        Received Event:
             {
               "id": "eventId-func-0",
               "topic": "sampleTopic1",
@@ -289,7 +269,6 @@ Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temac
                 "model": "Monster"
               }
             }
-          ]
     ```
 
 ## <a name="cleanup-resources"></a>Oczyszczanie zasobów

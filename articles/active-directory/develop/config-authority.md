@@ -3,22 +3,22 @@ title: Konfigurowanie dostawców tożsamości (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak używać różnych urzędów, takich jak B2C, suwerenne chmury i użytkownicy-Goście, z MSAL dla systemów iOS i macOS.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: aaef7c4c0e2fa295e6e20976df5cce1523a70c43
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697782"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085207"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Instrukcje: Konfigurowanie MSAL dla systemów iOS i macOS w celu korzystania z różnych dostawców tożsamości
 
@@ -180,7 +180,7 @@ Może być konieczne przekazanie różnych zakresów do poszczególnych suwerenn
 
 Jeśli adres URL urzędu jest ustawiony na `"login.microsoftonline.com/common"`, użytkownik zostanie zalogowany do swojej dzierżawy domowej. Niektóre aplikacje mogą jednak wymagać podpisania użytkownika w innej dzierżawie, a niektóre aplikacje współpracują tylko z jedną dzierżawą.
 
-Aby podpisać użytkownika w określonej dzierżawie, skonfiguruj `MSALPublicClientApplication` z określonym Urzędem. Przykład:
+Aby podpisać użytkownika w określonej dzierżawie, skonfiguruj `MSALPublicClientApplication` z określonym Urzędem. Na przykład:
 
 `https://login.microsoftonline.com/469fdeb4-d4fd-4fde-991e-308a78e4bea4`
 

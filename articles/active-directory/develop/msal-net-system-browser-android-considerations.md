@@ -3,22 +3,22 @@ title: Zagadnienia dotyczące przeglądarki systemu Android w programie (MSAL.NE
 titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących używania przeglądarek systemu w programie Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9346a4d5eaabb2af490afc13d5785a8f8233e53f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c144c6dd090669ca16c03050cbb8b59ff0cc224f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695056"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084576"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Zagadnienia dotyczące przeglądarki systemu Android system z MSAL.NET
 
@@ -51,11 +51,11 @@ Oprócz obsługi przeglądarek z kartami niestandardowymi w oparciu o nasze test
 ## <a name="devices-and-browsers-tested"></a>Przetestowane urządzenia i przeglądarki
 W poniższej tabeli wymieniono urządzenia i przeglądarki, które zostały przetestowane.
 
-| | &ast; przeglądarki     |  Wynik  | 
+| | Przeglądarka&ast;     |  Wynik  | 
 | ------------- |:-------------:|:-----:|
 | Huawei/jeden + | &ast; Chrome | Zakończony powodzeniem|
-| Huawei/jeden + | Edge&ast; | Zakończony powodzeniem|
-| Huawei/jeden + | Firefox&ast; | Zakończony powodzeniem|
+| Huawei/jeden + | &ast; brzegowe | Zakończony powodzeniem|
+| Huawei/jeden + | &ast; Firefox | Zakończony powodzeniem|
 | Huawei/jeden + | Brave&ast; | Zakończony powodzeniem|
 | Jeden + | Ecosia&ast; | Zakończony powodzeniem|
 | Jeden + | Kiwi&ast; | Zakończony powodzeniem|

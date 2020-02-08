@@ -1,14 +1,14 @@
 ---
-title: Przykład — FedRAMP wysokie Mapowanie formantów
+title: Kontrolki przykładowe wysokiej strategii FedRAMP
 description: Sterowanie mapowaniem przykładu FedRAMP High plan. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 4b4d644497eb98ed88f57803e99cf27a419523fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 93e2de3f19e0577645337df029789336a35b024d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941381"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087332"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Sterowanie mapowaniem przykładu FedRAMP High plan
 
@@ -89,11 +89,11 @@ Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics ob
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>Odpowiedź na błędy przetwarzania inspekcji w usłudze AU-5
 
@@ -102,7 +102,7 @@ Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , któ
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) przegląd, analiza i raportowanie inspekcji | Przegląd i analiza Centralna
 
@@ -110,11 +110,11 @@ Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics ob
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) przegląd inspekcji, analiza i raportowanie | Możliwości integracji/skanowania i monitorowania
 
@@ -123,12 +123,12 @@ Te definicje zasad umożliwiają również inspekcję konfiguracji dzienników d
 Aby zapoznać się ze szczegółowym skanowaniem i monitorowaniem luk w zabezpieczeniach, zalecamy korzystanie z platformy Azure, a także Azure Security Center.
 
 - Wersja zapoznawcza \[\]: Ocena luk w zabezpieczeniach powinna być włączona na Virtual Machines
-- \[Podgląd\]: Włączanie usługi Azure Monitor dla maszyn wirtualnych
+- \]podglądu \[: Włącz Azure Monitor dla maszyn wirtualnych
 - \[podglądu\]: Włącz Azure Monitor dla VM Scale Sets (VMSS)
-- Ocena luk w zabezpieczeniach powinna być włączona na Twoich serwerach SQL
+- Ocena luk w zabezpieczeniach powinna być włączona na serwerach SQL
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Ocena luk w zabezpieczeniach powinna być włączona w wystąpieniach zarządzanych SQL
-- Ocena luk w zabezpieczeniach powinna być włączona na Twoich serwerach SQL
+- Ocena luk w zabezpieczeniach powinna być włączona na serwerach SQL
 - Luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach należy skorygować
 - Luki w zabezpieczeniach baz danych SQL należy skorygować
 - Usterki należy skorygować przez rozwiązanie do oceny luk w zabezpieczeniach
@@ -141,15 +141,15 @@ Te definicje zasad umożliwiają również inspekcję konfiguracji dzienników d
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Wdrażanie inspekcji na serwerach SQL
 - Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń
@@ -241,7 +241,7 @@ Ten plan pomaga wymusić silne hasła, przypisując definicje [Azure Policy](../
 Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacji przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują luki w zabezpieczeniach systemu operacyjnego, luki w zabezpieczeniach SQL i luki w zabezpieczeniach maszyn wirtualnych w programie Azure Security Center. Azure Security Center udostępnia funkcje raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym. Ten plan przypisuje również definicje zasad, które przeprowadzają inspekcję i wymuszanie zaawansowanych zabezpieczeń danych na serwerach SQL. Zaawansowane zabezpieczenia danych obejmują ocenę luk w zabezpieczeniach i zaawansowane funkcje ochrony przed zagrożeniami, które ułatwiają zrozumienie luk w zabezpieczeniach wdrożonych zasobów.
 
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Luki w zabezpieczeniach konfiguracji zabezpieczeń w zestawach skalowania maszyn wirtualnych należy skorygować
 - Luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach wirtualnych należy skorygować
@@ -293,7 +293,7 @@ Ten plan pomaga chronić poufne i integralność przesyłanych informacji przez 
 Ten plan pomaga wymusić zasady korzystania z formantów cryptograph, aby chronić informacje przechowywane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które wymuszają określone kontrolki cryptograph i inspekcji używają słabych ustawień kryptograficznych. Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną konfigurację kryptograficzną, może pomóc w podejmowaniu działań naprawczych w celu zapewnienia, że zasoby są skonfigurowane zgodnie z zasadami zabezpieczeń informacji. Definicje zasad przypisane przez ten plan wymagają szyfrowania dla kont usługi Data Lake Storage; Wymagaj przezroczystego szyfrowania danych w bazach danych SQL; i Przeprowadź inspekcję braku szyfrowania dla baz danych SQL, dysków maszyny wirtualnej i zmiennych konta usługi Automation.
 
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Wdróż przezroczyste szyfrowanie danych SQL DB
 - Szyfrowanie dysków powinno być stosowane na maszynach wirtualnych
@@ -333,13 +333,13 @@ Ten plan ułatwia monitorowanie systemu przez inspekcjonowanie i wymuszanie reje
 
 - \[wersji zapoznawczej\]: Inspekcja wdrożenia agenta Log Analytics — nielista obrazów maszyn wirtualnych
 - Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics w VMSS-VM Image (OS) na liście
-- \[Podgląd\]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność
+- Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Linux VM Scale Sets (VMSS)
-- \[Podgląd\]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
-- \[Podgląd\]: Wdrażanie Log Analytics Agent for Windows VMs
+- \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Wdróż zaawansowaną ochronę przed zagrożeniami na kontach magazynu
 - Wdrażanie inspekcji na serwerach SQL

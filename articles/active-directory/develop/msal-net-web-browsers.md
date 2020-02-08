@@ -3,22 +3,22 @@ title: Korzystanie z przeglądarek internetowych (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących korzystania z platformy Xamarin Android z biblioteką uwierzytelniania firmy Microsoft dla programu .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b0b0ac05e54619af0b1dd4a68918a89681f845bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695079"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084603"
 ---
 # <a name="using-web-browsers-msalnet"></a>Korzystanie z przeglądarek internetowych (MSAL.NET)
 
@@ -43,17 +43,17 @@ MSAL.NET to biblioteka wieloplatformowa, która ma kod specyficzny dla platformy
 
 Ogólnie rzecz biorąc, zaleca się korzystanie z ustawień domyślnych platformy i jest to zwykle przeglądarka systemu. Przeglądarka systemowa jest lepsza do zapamiętywania użytkowników, którzy zalogowali się wcześniej. Jeśli musisz zmienić to zachowanie, użyj `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>W skrócie
+### <a name="at-a-glance"></a>Na pierwszy rzut oka
 
-| Struktura        | Osadzić | System | Domyślne |
+| .NET Framework        | Osadzić | System | Domyślne |
 | ------------- |-------------| -----| ----- |
-| Klasyczny .NET     | Tak | Tak ^ | Osadzić |
+| Klasyczny .NET     | Yes | Tak ^ | Osadzić |
 | .NET Core     | Nie | Tak ^ | System |
 | .NET Standard | Nie | Tak ^ | System |
-| Platforma UWP | Tak | Nie | Osadzić |
-| Xamarin.Android | Tak | Tak  | System |
-| Xamarin.iOS | Tak | Tak  | System |
-| Xamarin.Mac| Tak | Nie | Osadzić |
+| Platforma UWP | Yes | Nie | Osadzić |
+| Xamarin.Android | Yes | Yes  | System |
+| Xamarin.iOS | Yes | Yes  | System |
+| Xamarin.Mac| Yes | Nie | Osadzić |
 
 ^ Wymaga "http://localhost" identyfikator URI przekierowania
 
@@ -149,7 +149,7 @@ Istnieją pewne różnice wizualne między osadzonym widokiem WebView a przeglą
 
 **Logowanie interakcyjne przy użyciu usługi MSAL.NET z osadzonym widokiem WebView:**
 
-![osadzona](media/msal-net-web-browsers/embedded-webview.png)
+![Osadzić](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interakcyjne logowanie za pomocą usługi MSAL.NET przy użyciu przeglądarki systemowej:**
 

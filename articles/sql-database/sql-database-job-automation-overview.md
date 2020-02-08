@@ -9,13 +9,13 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 01/25/2019
-ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/07/2020
+ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810090"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083122"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatyzowanie zadań zarządzania za pomocą zadań bazy danych
 
@@ -66,7 +66,7 @@ Istnieje kilka podstawowych pojęć dotyczących zadań agenta SQL:
 ### <a name="job-steps"></a>Kroki zdania
 
 Kroki zadania agenta SQL to sekwencje akcji, które mają być wykonywane przez agenta SQL. Każdy krok ma następny krok, który ma zostać wykonany, jeśli krok zakończy się pomyślnie lub nie powiedzie się. W razie niepowodzenia jest określana liczba ponownych prób.
-Program SQL Agent umożliwia tworzenie różnych typów kroków zadań, takich jak krok zadania Transact-SQL, który wykonuje pojedynczą partię języka Transact-SQL względem bazy danych lub polecenie systemu operacyjnego/kroki programu PowerShell, które mogą wykonać niestandardowy skrypt systemu operacyjnego, kroki zadania SSIS umożliwiają ładowanie danych przy użyciu Środowisko uruchomieniowe SSIS lub kroki [replikacji](sql-database-managed-instance-transactional-replication.md) , które mogą publikować zmiany z bazy danych w innych bazach danych.
+Program SQL Agent umożliwia tworzenie różnych typów kroków zadań, takich jak krok zadania Transact-SQL, który wykonuje pojedynczą partię języka Transact-SQL względem bazy danych lub polecenie systemu operacyjnego/kroki programu PowerShell, które mogą wykonać niestandardowy skrypt systemu operacyjnego, kroki zadania SSIS umożliwiają ładowanie danych przy użyciu środowiska uruchomieniowego usług SSIS lub czynności [replikacji](sql-database-managed-instance-transactional-replication.md) , które mogą publikować zmiany z bazy danych do innych baz danych.
 
 [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) to funkcja aparatu bazy danych, która umożliwia publikowanie zmian wprowadzonych w jednej lub wielu tabelach w jednej bazie danych oraz publikowanie/dystrybuowanie ich do zestawu baz danych subskrybenta. Publikowanie zmian jest implementowane za pomocą następujących typów kroków zadania agenta SQL:
 
@@ -202,7 +202,9 @@ Agent zadań elastycznych jest bezpłatny. Ta baza danych zadań jest rozliczana
 
 W ramach bieżącej wersji zapoznawczej do utworzenia agenta zadań elastycznych jest wymagana istniejąca baza danych Azure SQL Database (w warstwie S0 lub wyższej).
 
-Nie jest wymagane, aby *baza danych zadań* była nowa, ale powinna być wyczyszczonym, pustym wystąpieniem bazy danych w warstwie usługi S0 lub wyższej. Zalecana warstwa usługi dla *bazy danych zadań* to warstwa S1 lub wyższa, ale tak naprawdę zależy to od wymaganej wydajności na potrzeby zadań: liczby kroków zadań oraz liczby powtórzeń i częstotliwości ich uruchamiania. Na przykład baza danych w warstwie S0 może być wystarczająca na potrzeby agenta zadań, który uruchamia kilka zadań na godzinę, ale uruchamianie zadań co minutę może nie być wystarczająco wydajne i lepszym rozwiązaniem będzie skorzystanie z wyższej warstwy usługi.
+*Baza danych zadań* nie musi być nowością, ale powinna być celem czystego, pustego, S0 lub wyższej usługi. Zalecany cel usługi *bazy danych zadań* ma wartość S1 lub wyższą, ale optymalny wybór zależy od potrzeb związanych z wydajnością zadań: liczby kroków zadań, liczby elementów docelowych zadania i częstotliwości uruchamiania zadań. Na przykład baza danych S0 może być wystarczająca dla agenta zadań, który uruchamia kilka zadań o godzinie docelowej mniejszej niż dziesięć baz danych, ale uruchamianie zadania co minutę może być niedostatecznie szybkie w przypadku bazy danych S0, a wyższa warstwa usług może być lepsza. 
+
+Jeśli operacje dotyczące bazy danych zadań są wolniejsze niż oczekiwane, [Monitoruj](sql-database-monitor-tune-overview.md#monitor-database-performance) wydajność bazy danych i wykorzystanie zasobów w bazie danych zadań w okresach spowolnienia przy użyciu Azure Portal lub [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV. Jeśli użycie zasobu, takiego jak procesor CPU, we/wy danych lub zapis w dzienniku, zbliża się do 100% i jest skorelowane z okresami spowolnienia, należy rozważyć przyrostowe skalowanie bazy danych do wyższych celów usługi (w [modelu DTU](sql-database-service-tiers-dtu.md) lub w [modelu rdzeń wirtualny](sql-database-service-tiers-vcore.md)), dopóki wydajność bazy danych zadań zostanie dostatecznie zwiększona.
 
 
 ##### <a name="job-database-permissions"></a>Uprawnienia dotyczące bazy danych zadań
@@ -212,7 +214,7 @@ Podczas tworzenia agenta zadań ma miejsce tworzenie schematu, tabel i roli o na
 
 |Nazwa roli  |Uprawnienia do schematu „jobs”  |Uprawnienia do schematu „jobs_internal”  |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    Brak     |
+|**jobs_reader**     |    SELECT     |    None     |
 
 > [!IMPORTANT]
 > Przed udzieleniem dostępu do *bazy danych zadań* na poziomie administratora bazy danych rozważ konsekwencje takiego działania w zakresie zabezpieczeń. Złośliwy użytkownik z uprawnieniami do tworzenia lub edytowania zadań może utworzyć lub edytować zadanie korzystające z przechowywanych poświadczeń do nawiązywania połączenia z kontrolowaną przez niego bazą danych, co może mu umożliwić określenie hasła poświadczeń.
@@ -250,6 +252,10 @@ W poniższych przykładach pokazano, jak różne definicje grup docelowych są d
 
 **Przykład 5** i **przykład 6** zawierają zaawansowane scenariusze, w których serwery SQL platformy Azure, pule elastyczne i bazy danych można łączyć za pomocą reguł dołączania i wykluczania.<br>
 **Przykład 7** pokazuje, że w trakcie uruchamiania zadania można również wyliczać fragmenty na mapie fragmentów.
+
+> [!NOTE]
+> Sama baza danych zadań może być obiektem docelowym zadania. W tym scenariuszu baza danych zadań jest traktowana jak każda inna docelowa baza danych. Użytkownik zadania musi być utworzony i ma przyznane odpowiednie uprawnienia w bazie danych zadań, a poświadczenia zakresu bazy danych dla użytkownika zadania muszą także istnieć w bazie danych zadań, podobnie jak w przypadku każdej innej docelowej bazy danych.
+>
 
 #### <a name="job"></a>Zadanie
 

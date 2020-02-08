@@ -1,6 +1,6 @@
 ---
-title: Protokołu AMQP 1.0 w usłudze Azure Service Bus i Event Hubs przewodnik dotyczący protokołu | Dokumentacja firmy Microsoft
-description: Przewodnik dotyczący protokołu wyrażeń i opis protokołu AMQP 1.0 w usłudze Azure Service Bus i Event Hubs
+title: AMQP 1,0 Azure Service Bus i Event Hubs Przewodnik po protokole | Microsoft Docs
+description: Przewodnik po protokole do wyrażeń i opisów AMQP 1,0 w Azure Service Bus i Event Hubs
 services: service-bus-messaging,event-hubs
 documentationcenter: .net
 author: axisc
@@ -14,199 +14,208 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d706e9b3351b0693a1f352e15b6b9b0cc5c7a65d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749448"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086150"
 ---
-# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Protokołu AMQP 1.0 w przewodnik dotyczący protokołu usługi Azure Service Bus i Event Hubs
+# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 Azure Service Bus i Event Hubs Przewodnik po protokole
 
-1\.0 protokołu zaawansowane kolejkowanie komunikatów jest standardowy protokół ramek i transferu dla asynchronicznie, bezpieczną i niezawodną transferu wiadomości między dwiema stronami. Jest to podstawowy protokół komunikatów usługi Azure Service Bus i usługi Azure Event Hubs. Obie te usługi obsługują także protokół HTTPS. Własności protokołu SBMP, który jest również obsługiwany jest wycofywane na rzecz protokołu AMQP.
+Protokół Advanced Message Queueing Protocol 1,0 to ustandaryzowany protokół obsługi ramek i transferu w celu asynchronicznego, bezpiecznego i niezawodnego przesyłania komunikatów między dwiema stronami. Jest to podstawowy protokół Azure Service Bus Messaging i Azure Event Hubs. Obie usługi obsługują również protokół HTTPS. Zastrzeżony protokół SBMP, który jest również obsługiwany, jest stopniowo wycofywany na korzyść AMQP.
 
-Protokołu AMQP 1.0 jest wynikiem współpracy szerokiego branży, który o nazwie vhacks dostawców oprogramowania pośredniczącego, takich jak Microsoft i Red Hat obejmującej wielu użytkowników oprogramowania pośredniczącego obsługi komunikatów, takie jak JP Morgan Chase reprezentujący branży usług finansowych. Forum techniczne normalizacji specyfikacje rozszerzenie i protokół AMQP jest OASIS i osiągnięcia formalne zatwierdzania międzynarodowego standardu jako 19494 ISO/IEC.
+AMQP 1,0 to wynik szerokiej współpracy branżowej, która współpracowała z dostawcami oprogramowania pośredniczącego, takimi jak firma Microsoft i Red Hat, z wieloma użytkownikami oprogramowania pośredniczącego do obsługi komunikatów, takimi jak JP Morgan Chase reprezentujący branżę usług finansowych. Forum normalizacyjne techniczne dla protokołów AMQP i specyfikacji rozszerzeń jest języka Oasis i uzyskało formalne zatwierdzenie jako standard międzynarodowy jako ISO/IEC 19494.
 
 ## <a name="goals"></a>Cele
 
-W tym artykule krótko podsumowano podstawowe pojęcia dotyczące protokołu AMQP 1.0 komunikatów specyfikacji oraz niewielki zestaw oceniać robocze specyfikacje rozszerzenia, które są aktualnie kończy się działanie Komitet Techniczny AMQP języka OASIS oraz wyjaśniono, jak usługa Azure Service Bus implementuje i opiera się na tych specyfikacji.
+W tym artykule krótko podsumowano podstawowe koncepcje specyfikacji obsługi komunikatów w systemie AMQP 1,0 oraz mały zestaw wersji roboczych specyfikacji rozszerzeń, które są obecnie finalizowane w Komitecie technicznym języka Oasis AMQP i wyjaśniono, jak Azure Service Bus implementuje i wykorzystuje te specyfikacje.
 
-Celem jest dla każdego dewelopera, aby można było korzystać z usługi Azure Service Bus za pośrednictwem protokołu AMQP 1.0 przy użyciu dowolnego istniejącego stosu klienta protokołu AMQP 1.0 na dowolnej platformie.
+Celem jest dla każdego dewelopera korzystającego z dowolnego istniejącego stosu klienta AMQP 1,0 na dowolnej platformie, aby możliwe było współdziałanie z Azure Service Bus za pośrednictwem AMQP 1,0.
 
-Typowe ogólnego przeznaczenia stosów protokołu AMQP 1.0, takich jak Apache protonów lub AMQP.NET Lite zawierają już implementację wszystkich protokołów core protokołu AMQP 1.0. Te podstawowe gestów czasami są ujęte w nawiasy API wyższego poziomu; Protonów Apache nawet oferuje dwa imperatywne API Messenger i reaktywne API reaktora.
+Typowe stosy AMQP 1,0, takie jak Apache Proton lub AMQP.NET Lite, już implementują wszystkie podstawowe protokoły AMQP 1,0. Te podstawowe gesty są czasami opakowane przy użyciu interfejsu API wyższego poziomu. Program Apache Proton oferuje dwa, bezwzględny interfejs API programu Messenger i reaktywny interfejs API reaktora.
 
-W poniższym dyskusji przyjęto założenie, zarządzania połączenia AMQP, sesje i łączy i obsługa transferów ramki i sterowanie przepływem są obsługiwane przez odpowiednie stosu (np. Apache protonów-C) i nie wymagają dużo, jeśli istnieje szczególną uwagę od deweloperów aplikacji. Przyjęto założenie, abstrakcyjnie istnienie kilka interfejsów API podstawowych takich jak możliwość nawiązywania połączenia, a także tworzenie pewnego rodzaju *nadawcy* i *odbiorcy* abstrakcji obiektów, który następnie mają pewne kształt `send()` i `receive()` operacji, odpowiednio.
+W poniższej dyskusji przyjęto założenie, że zarządzanie połączeniami AMQP, sesjami i łączami oraz obsługą transferów ramek i sterowania przepływem jest obsługiwane przez odpowiedni stos (na przykład Apache Proton-C) i nie wymaga wielu szczególnych uwagi od deweloperów aplikacji. Częściowo zakładamy istnienie kilku prymitywów interfejsu API, takich jak możliwość nawiązywania połączenia, oraz do tworzenia niektórych postaci obiektów abstrakcji *nadawcy* i *odbiorników* , które następnie mają odpowiednio kształt `send()` i `receive()`.
 
-Podczas omawiania zaawansowane możliwości usługi Azure Service Bus, takie jak przeglądanie komunikatów lub zarządzania sesjami, te funkcje zostały wyjaśnione w warunkach protokołu AMQP, ale także jako warstwowej pseudo-wdrożenia na podstawie tego zakładanego abstrakcji interfejsu API.
+W przypadku korzystania z zaawansowanych możliwości Azure Service Bus, takich jak przeglądanie komunikatów lub zarządzanie sesjami, te funkcje są wyjaśnione w AMQPe, ale również jako w warstwowych implementacjach interfejsów API.
 
 ## <a name="what-is-amqp"></a>Co to jest AMQP?
 
-Protokół AMQP jest protokołem ramek i transferu. Ramek oznacza, że zapewnia strukturę strumieniom danych binarnych, które będą działać w dowolnym kierunku połączenia sieciowego. Struktura zapewnia nakreślenia odrębnych bloków danych, nazywane *ramek*, aby być wymieniane między stronami w połączonych. Możliwości przeniesienia, upewnij się, obie strony komunikujące się ustanowić udostępnione opis po ramki są przenoszone i podczas transferu uznaje się pełne informacje.
+AMQP to protokół ramek i transferu. Ramka oznacza, że zapewnia strukturę strumieni danych binarnych, które są przesyłane w dowolnym kierunku połączenia sieciowego. Struktura zawiera rozróżnienie dla różnych bloków danych, nazywanych *ramkami*, do wymiany między połączonymi stronami. Możliwości transferu zapewniają, że obie strony komunikują się, że obie osoby komunikujące się w nich mogą ustalić, kiedy ramki są transferowane, a transfery są uznawane za kompletne.
 
-W przeciwieństwie do wersji wcześniej wygasłe projekt produkowane przez grupę roboczą protokołu AMQP, które są nadal używane przez kilku brokerami protokołu AMQP 1.0 ostateczne i standardowych grupy roboczej nie określają obecność brokera komunikatów lub dowolnego określonego topologii jednostki wewnątrz brokera komunikatów.
+W przeciwieństwie do wcześniej wygasłych wersji roboczych utworzonych przez AMQP grupę roboczą, które są nadal używane przez kilku brokerów komunikatów, ostateczny i ustandaryzowany protokół AMQP 1,0 nie nakazuje obecności brokera komunikatów ani żadnej określonej topologii dla jednostki wewnątrz brokera komunikatów.
 
-Protokół może służyć do symetryczne komunikacji peer-to-peer, interakcji z brokerami, które obsługują kolejek i publikowania/subskrybowania jednostek, jak usługi Azure Service Bus. Może również służyć interakcji z infrastrukturą obsługi wiadomości gdzie wzorce interakcji różnią się od regularnych kolejki, tak jak w przypadku za pomocą usługi Azure Event Hubs. Centrum zdarzeń działa podobnie jak kolejka, gdy zdarzenia są wysyłane do niego, ale działa więcej takich jak usługi serial magazynu, gdy zdarzenia są odczytywane z jest on nieco podobny stacji taśm. Klient wybiera przesunięcie w strumieniu danych o dostępności i jest następnie udostępniany wszystkie zdarzenia z tego przesunięcie na najnowszy dostępny.
+Protokół ten może służyć do symetrycznej komunikacji równorzędnej w celu interakcji z brokerami komunikatów obsługującymi kolejki i jednostki publikowania/subskrybowania, jak Azure Service Bus. Może również służyć do interakcji z infrastrukturą obsługi komunikatów, w której wzorce interakcji różnią się od zwykłych kolejek, tak jak w przypadku Event Hubs platformy Azure. Centrum zdarzeń działa jak kolejka, gdy do niej są wysyłane zdarzenia, ale działa podobnie jak usługa magazynu szeregowego, gdy zdarzenia są odczytywane. jest nieco podobna do stacji taśm. Klient wybiera przesunięcie w dostępnym strumieniu danych, a następnie obsługuje wszystkie zdarzenia z tego przesunięcia do najnowszej dostępnej wersji.
 
-Protokół AMQP 1.0 jest zaprojektowane jako extensible umożliwiające dalsze specyfikacji w celu zwiększenia jego możliwości. Specyfikacje trzy rozszerzenia omówionych w tym dokumencie przedstawiono to. Do komunikacji w ramach istniejącej infrastruktury protokołu HTTPS/Websocket Konfigurowanie natywnej portów TCP protokołu AMQP może być trudne. Specyfikacja powiązania definiuje sposób warstwy protokołu AMQP przez Websocket. Do interakcji z infrastrukturą obsługi wiadomości w czasie żądania/odpowiedzi do celów zarządzania lub umożliwiają korzystanie z zaawansowanych funkcji, specyfikacji protokołu AMQP zarządzania definiuje prymitywów wymagane interakcji podstawowe. Dla integracji modelu federacyjnej autoryzacji Specyfikacja oświadczeń — zabezpieczenia na poziomie protokołu AMQP definiuje, jak skojarzyć i odnowić tokenach autoryzacji skojarzone z łącza.
+Protokół AMQP 1,0 został zaprojektowany tak, aby był rozszerzalny, umożliwiając dalsze specyfikacje, aby zwiększyć jego możliwości. Trzy specyfikacje rozszerzeń omówione w tym dokumencie ilustrują to. W przypadku komunikacji za pośrednictwem istniejącej infrastruktury HTTPS/WebSockets Konfigurowanie natywnych portów AMQP TCP może być trudne. Specyfikacja powiązania definiuje, jak warstwa AMQP przez obiekty WebSockets. W celu interakcji z infrastrukturą obsługi komunikatów w celach związanych z zarządzaniem lub w celu zapewnienia zaawansowanych funkcji Specyfikacja AMQP Management definiuje wymagane podstawowe elementy bazowe interakcji. W przypadku integracji z federacyjnym modelem autoryzacji AMQP Specyfikacja zabezpieczeń oparta na oświadczeniach definiuje sposób kojarzenia i odnawiania tokenów autoryzacji skojarzonych z linkami.
 
-## <a name="basic-amqp-scenarios"></a>Podstawowe scenariusze protokołu AMQP
+## <a name="basic-amqp-scenarios"></a>Podstawowe scenariusze AMQP
 
-W tej sekcji opisano podstawowe użycie protokołu AMQP 1.0 przy użyciu usługi Azure Service Bus, w tym tworzenie połączeń, sesje i łącza i transferu wiadomości do i z jednostek usługi Service Bus, takich jak kolejki, tematy i subskrypcje.
+W tej sekcji objaśniono podstawowe użycie AMQP 1,0 z Azure Service Bus, które obejmują tworzenie połączeń, sesji i linków oraz przenoszenie komunikatów do i z jednostek Service Bus, takich jak kolejki, tematy i subskrypcje.
 
-Najbardziej autorytatywne źródło, aby dowiedzieć się więcej o tym, jak działa protokół AMQP jest specyfikacji protokołu AMQP 1.0, ale specyfikację został napisany dokładnie Przewodnik wdrożenia, a nie uczyć protokołu. Ta sekcja koncentruje się na wprowadzenie tyle terminologii, zgodnie z potrzebami do opisywania, jak Usługa Service Bus używa protokołu AMQP 1.0. Aby uzyskać bardziej szczegółowe wprowadzenie do protokołu AMQP, jak również szersze omówienie protokołu AMQP 1.0, możesz przejrzeć [ten kurs wideo][this video course].
+Najbardziej autorytatywne źródło informacji o tym, jak działa AMQP, jest specyfikacją AMQP 1,0, ale specyfikacja została zapisywana w celu precyzyjnego wdrożenia przewodnika, a nie do uczenia się protokołu. Ta sekcja koncentruje się na wprowadzaniu tyle terminologii, ile jest potrzebnych do opisywania, w jaki sposób Service Bus używa AMQP 1,0. Aby zapoznać się z bardziej szczegółowym wprowadzeniem do AMQP, a także szerszej dyskusji na temat AMQP 1,0, możesz przejrzeć [ten kurs wideo][this video course].
 
-### <a name="connections-and-sessions"></a>Połączenia i sesji
+### <a name="connections-and-sessions"></a>Połączenia i sesje
 
-AMQP wywołuje programy komunikujące się *kontenery*; te zawierają *węzłów*, które są jednostkami komunikujące się wewnątrz tych kontenerów. Kolejka może być takim węzłem. Protokół AMQP umożliwia Multipleksowanie, dzięki czemu jedno połączenie może służyć do wielu ścieżek komunikacji między węzłami. na przykład klienta aplikacji jednocześnie może odbierać z jednej kolejki i wysyłać do kolejnej kolejki za pośrednictwem tego samego połączenia sieciowego.
+AMQP wywołuje *kontenery*programów komunikujących się; zawierają *węzły*, które są komunikującymi się jednostkami w tych kontenerach. Kolejka może być węzłem. AMQP umożliwia obsługę multipleksera, dlatego pojedyncze połączenie może być używane dla wielu ścieżek komunikacji między węzłami. na przykład klient aplikacji może jednocześnie odbierać z jednej kolejki i wysyłać do innej kolejki za pośrednictwem tego samego połączenia sieciowego.
 
 ![][1]
 
-Połączenie sieciowe jest tym samym zakotwiczone w kontenerze. Jest on inicjowane przez kontener w roli klienta, dzięki czemu wychodzące połączenie gniazda TCP do kontenera w roli odbiornik nasłuchuje i akceptuje połączenia przychodzące TCP. Uzgadnianie połączenia zawiera negocjowania wersję protokołu, zgłaszając lub negocjowania protokołu Transport Level Security (TLS/SSL) a uzgadnianie uwierzytelnianie i autoryzacja w zakresie połączenia, który jest oparty na SASL.
+Połączenie sieciowe jest zakotwiczone w kontenerze. Jest inicjowany przez kontener w roli klienta, co powoduje wychodzące połączenie gniazda TCP z kontenerem w roli odbiornika, który nasłuchuje i akceptuje przychodzące połączenia TCP. Uzgadnianie połączenia obejmuje negocjowanie wersji protokołu, deklarowanie lub negocjowanie użycia zabezpieczeń na poziomie transportu (TLS/SSL) oraz uzgadnianie uwierzytelniania i autoryzacji w zakresie połączenia opartym na protokole SASL.
 
-Usługa Azure Service Bus wymaga użycia protokołu TLS przez cały czas. Obsługuje połączenia za pośrednictwem portu TCP 5671, według którego połączenia TCP jest najpierw nałożony z protokołem TLS przed wejściem uzgadnianie protokołu AMQP i obsługuje połączenia za pośrednictwem portu TCP 5672 zgodnie z którą serwer natychmiast oferuje wymagane uaktualnienie połączenia protokołu TLS używa modelu ustalonym protokołu AMQP. Powiązanie funkcji WebSockets AMQP tworzy tunel za pośrednictwem portu TCP 443, który następnie jest odpowiednikiem połączeń AMQP 5671.
+Azure Service Bus wymaga użycia protokołu TLS przez cały czas. Obsługuje ona połączenia przez port TCP 5671, zgodnie z którym połączenie TCP jest najpierw nakładane na protokół TLS przed wprowadzeniem uzgadniania protokołu AMQP, a także obsługuje połączenia za pośrednictwem portu TCP 5672, zgodnie z którym serwer natychmiast oferuje obowiązkowe uaktualnienie połączenia do protokołu TLS przy użyciu modelu zalecanego przez AMQP. Powiązanie AMQP WebSockets tworzy tunel przez port TCP 443, który następnie jest równoważny z połączeniami AMQP 5671.
 
-Po skonfigurowaniu połączenia i TLS, Service Bus oferuje dwie opcje mechanizmu SASL:
+Po skonfigurowaniu połączenia i protokołu TLS Service Bus oferuje dwie opcje mechanizmu SASL:
 
-* ZWYKŁY SASL jest powszechnie używany do przekazywania poświadczeń użytkownika i hasło do serwera. Usługa Service Bus nie ma konta, ale o nazwie [zasady zabezpieczenia dostępu do udostępnionych](service-bus-sas.md), która przyznaje prawa i skojarzone z kluczem. Nazwa reguły jest używana jako nazwa użytkownika i klucza (zgodnie z algorytmem base64 tekstu) jest używany jako hasło. Praw skojarzonych z wybranym reguły określające dozwolone połączenia operacje.
-* SASL ANONIMOWEGO jest używana do pomijanie SASL autoryzacji, gdy klient chce używać model (CBS) oświadczenia — zabezpieczenia na poziomie, który jest opisany w dalszej części. Po wybraniu tej opcji, mogą anonimowo ustanowić połączenia klienta przez krótki czas, w którym klient może komunikować się tylko z punktem końcowym CBS, wykonać uzgadnianie CBS.
+* SASL PLAIN jest często używany do przekazywania poświadczeń nazwy użytkownika i hasła do serwera. Service Bus nie ma kont, ale nazwanych [reguł zabezpieczeń dostępu współdzielonego](service-bus-sas.md), które przyznają prawa i są skojarzone z kluczem. Nazwa reguły jest używana jako hasło jako nazwa użytkownika i klucz (jako tekst zakodowany w formacie base64). Prawa skojarzone z wybraną regułą regulują operacje dozwolone w ramach połączenia.
+* Protokół SASL jest używany do pomijania autoryzacji SASL, gdy klient chce użyć modelu opartego na oświadczeniach zabezpieczeń (CBS), który został opisany w dalszej części. Po wybraniu tej opcji połączenie klienta może być określane anonimowo przez krótki czas, w którym klient może współdziałać z punktem końcowym CBS, a uzgadnianie CBS musi zostać zakończone.
 
-Po nawiązaniu połączenia transportowego kontenery każdego zadeklarować maksymalny rozmiar ramki są one gotowy obsłużyć, a po upłynięciu limitu czasu bezczynności one będzie jednostronnie Rozłącz, jeśli nie ma działania w ramach połączenia.
+Po nawiązaniu połączenia transportowego kontenery każdy deklarują maksymalny rozmiar ramki, który chcą obsłużyć, oraz po upływie limitu czasu bezczynności, jeśli połączenie nie zostanie przerwane.
 
-Które deklarują, jak wiele równoczesnych kanały są obsługiwane. Kanał jest ścieżką jednokierunkowe, ruchu wychodzącego, wirtualnej transferu na podstawie połączenia. Sesja trwa kanału z każdego z połączonych kontenerów w celu utworzenia ścieżki komunikacji dwukierunkowej.
+Deklarują również, ile współbieżnych kanałów są obsługiwane. Kanał to jednokierunkowy, wychodząca ścieżka transferu wirtualnego na górze połączenia. Sesja pobiera kanał z każdego połączonego kontenera w celu utworzenia dwukierunkowej ścieżki komunikacji.
 
-Sesje mają model sterowania przepływem na podstawie okna; Po utworzeniu sesji każdej ze stron oświadcza, ile klatek jest gotowy do akceptowania do jej okna odbierania. Jak ramki exchange strony, wypełnienie przeniesionych ramek, że okno i transfery zatrzymany po zapełnieniu okna i dopóki okno uzyska resetowania lub używając rozwinięte *przepływ performative* (*performative* jest Protokół AMQP okres gestów na poziomie protokołu wymieniane między dwiema stronami).
+Sesje mają model sterowania przepływem oparty na oknie; Po utworzeniu sesji każda ze stron deklaruje, ile ramek jest do zaakceptowania w oknie odbierania. Gdy strony wymieniają ramki, przenoszone ramki wypełniają okno i transfery Zatrzymaj, gdy okno jest zapełnione i dopóki okno nie zostanie zresetowane lub rozwinięte przy użyciu *przepływu performative* (*PERFORMATIVE* to termin AMQP dla gestów poziomu protokołu wymienianych między obiema stronami).
 
-Ten model oparty na oknach jest z grubsza podobny do koncepcji TCP sterowaniu przepływem na podstawie okna, ale na poziomie sesji w gniazda. Koncepcja protokołu zezwalanie na wiele jednoczesnych sesji istnieje tak, aby ruch o wysokim priorytecie, który może presją ostatnie ograniczone normalnym ruchu, takich jak na drogach lane express.
+Ten model oparty na oknach jest w przybliżeniu podobny do koncepcji TCP sterowania przepływem opartym na oknach, ale na poziomie sesji w gnieździe. Koncepcja protokołu zezwalająca na wiele współbieżnych sesji istnieje, tak że ruch o wysokim priorytecie może być rushed, a poprzedni ruch z ograniczeniami, na przykład na torze ekspresowym Express.
 
-Usługa Azure Service Bus używa obecnie dokładnie jednej sesji dla każdego połączenia. Usługa Service Bus maksymalny ramki — rozmiar wynosi 262 144 bajty (w bajtach 256 KB) dla usługi Service Bus wersji Standard i centrów zdarzeń. Jest 1 048 576 (1 MB) dla usługi Service Bus w warstwie Premium. Usługa Service Bus nie nakłada żadnych określonego poziomu sesji ograniczania systemu windows, ale regularnie resetuje okna jako część sterowanie przepływem na poziomie łącza (zobacz [następnej sekcji](#links)).
+Azure Service Bus obecnie używa dokładnie jednej sesji dla każdego połączenia. Maksymalny rozmiar ramki Service Bus wynosi 262 144 bajtów (256 – K b) dla Service Bus Standard i Event Hubs. Jest to 1 048 576 (1 MB) dla Service Bus Premium. Service Bus nie nakłada żadnych określonych okien ograniczania przepustowości, ale resetuje okno regularnie w ramach sterowania przepływem na poziomie linku (zobacz [następną sekcję](#links)).
 
-Połączenia, kanałów i sesje są tymczasowych. Jeśli połączenie podstawowe zwija połączeń, musi wznawiana tunelu TLS, kontekst autoryzacji SASL i sesji.
+Połączenia, kanały i sesje są nieulotne. Jeśli połączenie podstawowe jest zwinięte, należy ponownie nawiązać połączenia, tunel protokołu TLS, kontekst autoryzacji SASL i sesje.
+
+### <a name="amqp-outbound-port-requirements"></a>Wymagania dotyczące portów wychodzących AMQP
+
+Klienci korzystający z połączeń AMQP za pośrednictwem protokołu TCP potrzebują portów 5671 i 5672 do otwarcia w lokalnej zaporze. Wraz z tymi portami może być konieczne otwarcie dodatkowych portów, jeśli funkcja [EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) jest włączona. `EnableLinkRedirect` to nowa funkcja obsługi komunikatów, która pomaga w pomijaniu jednego przeskoku podczas odbierania komunikatów, co pomaga zwiększyć przepływność. Klient zacznie komunikować się bezpośrednio z usługą zaplecza za pośrednictwem zakresu portów 104XX, jak pokazano na poniższej ilustracji. 
+
+![Lista portów docelowych][4]
+
+Klient platformy .NET może zakończyć się niepowodzeniem z użyciem gniazda SocketException ("podjęto próbę uzyskania dostępu do gniazda w sposób zabroniony przez jego uprawnienia dostępu"), jeśli te porty są blokowane przez zaporę. Tę funkcję można wyłączyć, ustawiając `EnableAmqpLinkRedirect=false` w ciągu connectiong, co zmusza klientów do komunikacji z usługą zdalną przez port 5671.
+
 
 ### <a name="links"></a>Linki
 
-Protokół AMQP przesyłanie komunikatów za pośrednictwem łącza. Ścieżka komunikacji, utworzony za pośrednictwem sesji, która umożliwia przesyłania komunikatów w jednym kierunku; jest link Negocjowanie stan transferu to łącze i dwukierunkowej między stronami w połączonych.
+AMQP przesyła komunikaty przez linki. Link jest ścieżką komunikacyjną utworzoną za pośrednictwem sesji, która umożliwia przesyłanie komunikatów w jednym kierunku; negocjowanie stanu transferu odbywa się nad łączem i dwukierunkową między połączonymi stronami.
 
 ![][2]
 
-Łącza mogą być tworzone przy użyciu dowolnego kontenera, w dowolnym momencie i za pośrednictwem istniejącej sesji, co sprawia, że protokół AMQP różni się od wielu innych protokołów, w tym HTTP i MQTT, gdzie inicjowania transferu i ścieżki transferu jest wyłączne uprawnień innych firm, tworzenia Połączenie gniazda.
+Linki można tworzyć za pomocą kontenera w dowolnym momencie i za pośrednictwem istniejącej sesji, co sprawia, że AMQP różni się od wielu innych protokołów, w tym HTTP i MQTT, gdzie inicjowanie transferów i ścieżki transferu jest wyłącznym uprawnieniem do tworzenia Połączenie gniazda.
 
-Inicjowanie łącza kontenera zadaje przeciwny kontener, aby zaakceptować łącze i go wybierze roli nadawcy i adresata. W związku z tym kontener może zainicjować tworzenie jednokierunkowe albo zaufanych ścieżek komunikacji dwukierunkowej, z drugim modelowane jako pary łączy.
+Kontener inicjujący łączenie prosi o odłączenie kontenera w celu zaakceptowania linku i wybiera rolę nadawcy lub odbiornika. W związku z tym, każdy kontener może inicjować Tworzenie jednokierunkowych lub dwukierunkowe ścieżek komunikacyjnych, z których każdy jest modelem par łączy.
 
-Łącza są o nazwie i skojarzone z węzłów. Jak wspomniano na początku, węzły są komunikujące się jednostki w kontenerze.
+Linki mają nazwę i są skojarzone z węzłami. Jak wspomniano na początku, węzły są komunikującymi się jednostkami wewnątrz kontenera.
 
-W usłudze Service Bus węzeł odpowiada bezpośrednio kolejki, tematu, subskrypcji lub kolejki utraconych wiadomości podrzędnej kolejki lub subskrypcji. Nazwa węzła używana na protokół AMQP w związku z tym jest względnej nazwy jednostki w przestrzeni nazw usługi Service Bus. Jeśli kolejka jest o nazwie `myqueue`, również jest jej nazwa węzła protokołu AMQP. Subskrypcji tematu następuje po Konwencji interfejsu API protokołu HTTP, posortowana w kolekcji zasobów "subskrypcje", a tym samym subskrypcji **sub** na temat **mytopic** ma nazwę węzła AMQP  **sub-mytopic/subskrypcje**.
+W Service Bus węzeł jest bezpośrednio równoważny z kolejką, tematem, subskrypcją lub podkolejką utraconych wiadomości w kolejce lub subskrypcji. Nazwa węzła używana w AMQP to nazwa względna jednostki wewnątrz przestrzeni nazw Service Bus. Jeśli kolejka ma nazwę `myqueue`, to również jej nazwa węzła AMQP. Subskrypcja tematu jest zgodna z Konwencją interfejsu API protokołu HTTP przez sortowanie do kolekcji zasobów "subskrypcje", a tym samym subskrypcja **podrzędna** tematu **zawiera AMQP** nazwa węzła **/subskrypcje/sub**.
 
-Klienta nawiązującego połączenie jest również wymagane do używania nazwy lokalnego węzła usługi do tworzenia łączy; Usługa Service Bus nie jest normatywnych dotyczących tych nazw węzła i nie interpretuje je. Stosy klienta protokołu AMQP 1.0 zazwyczaj korzystają ze schematu do zapewnienia specyficzne te nazwy węzłów tymczasowych w zakresie klienta.
+Klient łączący jest również wymagany do tworzenia linków przy użyciu nazwy lokalnego węzła. Service Bus nie zawiera opisów tych nazw węzłów i nie interpretuje ich. Stosy klientów z systemem AMQP 1,0 zwykle używają schematu, aby zapewnić, że te nazwy tymczasowych węzłów są unikatowe w zakresie klienta.
 
-### <a name="transfers"></a>Transfery
+### <a name="transfers"></a>Sunięcia
 
-Po ustanowieniu łącze wiadomości można przesyłać za pośrednictwem tego łącza. W AMQP, transferu jest wykonywane za pomocą gestu jawne protokołu ( *transferu* performative) który przenosi wiadomości od nadawcy do odbiorcy za pośrednictwem łącza. Przeniesienie została ukończona, gdy jej "rozliczenia", co oznacza, że obie strony ustalonymi udostępnionego znajomości wynik ten transfer.
+Po nawiązaniu połączenia można przesłać komunikaty za pośrednictwem tego linku. W programie AMQP transfer jest wykonywany z jawnym gestem protokołu ( *transfer* performative), który przenosi komunikat z nadawcy do odbiorcy przez łącze. Przeniesienie jest zakończone, gdy jest "rozliczane", co oznacza, że obie strony ustanowiły wspólne zrozumienie wyniku tego transferu.
 
 ![][3]
 
-W najprostszym przypadku nadawcy możliwość wysyłania komunikatów, "wstępnie rozliczona", co oznacza, że klient nie jest zainteresowany wynikiem i odbiornik nie zapewnia żadnych opinię na temat wyniki operacji. Ten tryb jest obsługiwane przez usługę Service Bus na poziomie protokołu AMQP, ale nie są widoczne w żadnym z interfejsów API klienta.
+W najprostszym przypadku nadawca może zdecydować się na wysłanie komunikatów ", które zostały wstępnie rozliczone", co oznacza, że klient nie interesuje wyników, a odbiorca nie poda żadnej opinii na temat wyniku operacji. Ten tryb jest obsługiwany przez Service Bus na poziomie protokołu AMQP, ale nie został ujawniony w żadnym z interfejsów API klienta.
 
-Regularne przypadek jest komunikaty są wysyłane nierozliczonych i odbiornika następnie wskazuje zatwierdzenia lub odrzucenia przy użyciu *dyspozycji* performative. Odrzucenia występuje, gdy odbiornik nie może akceptować wiadomości z dowolnego powodu wiadomość o odrzuceniu zawiera informacje dotyczące przyczyny, która jest strukturą błąd definicją protokołu AMQP. Jeśli wiadomości zostały odrzucone z powodu błędów wewnętrznych wewnątrz usługi Service Bus, usługa zwraca dodatkowe informacje w tej struktury, który może służyć zapewniające wskazówki diagnostyki do personelu działu pomocy technicznej, jeśli zgłaszasz żądania pomocy technicznej. Później dowiesz się więcej na temat błędów.
+Regularna sytuacja polega na tym, że komunikaty są wysyłane bez rozliczenia, a odbiorca wskazuje akceptację lub odrzucenie przy użyciu performative *dyspozycji* . Odrzucanie występuje, gdy odbiorca nie może zaakceptować komunikatu z jakiegokolwiek powodu, a komunikat o odrzuceniu zawiera informacje o przyczynie, czyli strukturę błędu zdefiniowaną przez AMQP. Jeśli komunikaty są odrzucane z powodu błędów wewnętrznych w Service Bus, usługa zwraca dodatkowe informacje wewnątrz tej struktury, które mogą być używane do udostępniania wskazówek diagnostycznych pracownikowi pomocy technicznej w przypadku zgłoszenia żądań pomocy technicznej. Więcej informacji o błędach można znaleźć w dalszej części artykułu.
 
-Jest specjalną postać odrzucenia *wydane* stanu, co oznacza, że odbiorca ma zastrzeżeń Technical Preview do transferu, ale również nie jest zainteresowany rozliczanie transferu. Tego przypadku istnieje, na przykład, gdy komunikat jest dostarczany do klienta usługi Service Bus, a klient zdecyduje się na "Porzuć" wiadomość, ponieważ nie może wykonywać pracę wynikających z przetwarzania komunikatu; dostarczanie komunikatów, sama nie jest na pozycji błędu. Zmiana tego stanu jest *zmodyfikowane* stanu, co pozwala na komunikat zmiany, ponieważ jest on zwalniany. Ten stan nie jest używana przez usługę Service Bus w chwili obecnej.
+Specjalna forma odrzucenia jest stanem *wydania* , który wskazuje, że odbiorca nie ma technicznych obiektów do przekazania, ale również nie interesuje się w rozliczeniu transferu. Taka sytuacja występuje na przykład wtedy, gdy komunikat jest dostarczany do klienta Service Bus, a klient zdecyduje się na "Porzuć" komunikat, ponieważ nie może wykonać pracy w wyniku przetwarzania komunikatu; samo dostarczenie wiadomości nie jest zgodne z błędem. Zmiana tego stanu jest *zmieniona* , co pozwala na wprowadzenie zmian w wiadomości w miarę ich zwolnienia. Ten stan nie jest już używany przez Service Bus.
 
-Specyfikacja protokołu AMQP 1.0 definiuje dodatkowe dyspozycji stan o nazwie *odebrane*, to w szczególności pozwala obsługiwać łącze odzyskiwania. Link odzyskiwania umożliwia przywracanie stanu łącza i wszelkie oczekujące dostaw nowe połączenie i sesji, gdy poprzednie połączenie i sesji zostały utracone.
+Specyfikacja AMQP 1,0 definiuje kolejny stan dyspozycji o nazwie *Received*, który szczególnie pomaga obsłużyć odzyskiwanie linków. Odzyskiwanie linków umożliwia przywracanie stanu linku i wszystkich oczekujących dostaw na nowe połączenie i sesję, gdy wcześniejsze połączenie i sesja zostały utracone.
 
-Usługa Service Bus nie obsługuje odzyskiwania łącze; Jeśli klient utraci połączenie do usługi Service Bus z komunikatem nierozliczonych przeniesienie oczekujące, transfer tej wiadomości zostaną utracone i klient musi ponownie, ponownie ustanowić połączenie i spróbuj ponownie transferu.
+Service Bus nie obsługuje odzyskiwania linków; Jeśli Klient utraci połączenie w celu Service Bus z oczekującym nierozstrzygniętym transferem komunikatów, ten transfer komunikatów zostanie utracony, a klient musi ponownie nawiązać połączenie, nawiązać ponownie połączenie i ponowić próbę przeniesienia.
 
-W efekcie usługi Service Bus i Event Hubs "co najmniej raz" obsługuje transfer, gdzie można czuwać komunikatu przechowywane i zaakceptowane nadawcy, ale czynności nie pomocy technicznej "dokładnie jednokrotne" transferu na poziomie protokołu AMQP, gdy system będzie podejmowana próba odzyskania łącze i Przejdź do negocjowania stanu dostarczania, aby uniknąć jego duplikowania na potrzeby transferu komunikatów.
+W związku z tym Service Bus i Event Hubs obsługiwać "co najmniej raz", gdzie nadawca może być zapewniony dla wiadomości przechowywanej i akceptowanej, ale nie obsługuje transferów "dokładnie raz" na poziomie AMQP, gdzie system podejmie próbę odzyskania linku i Kontynuuj negocjowanie stanu dostarczania, aby uniknąć duplikowania transferu komunikatów.
 
-Aby zrekompensować możliwy duplikat wysyła, Usługa Service Bus obsługuje wykrywania duplikatów jako opcjonalna funkcja w kolejek i tematów. Wykrywanie duplikatów rejestruje identyfikatorów komunikatów komunikaty przychodzące w przedziale czasu zdefiniowanych przez użytkownika, a następnie wszystkich wiadomości wysłanych o takich samych identyfikatorów komunikatów podczas tego samego okna w trybie dyskretnym spada.
+Aby skompensować możliwe niezduplikowane komunikaty, Service Bus obsługuje wykrywanie duplikatów jako opcjonalną funkcję w kolejkach i tematach. Wykrywanie duplikatów rejestruje identyfikatory komunikatów wszystkich komunikatów przychodzących w przedziale czasu zdefiniowanym przez użytkownika, a następnie w trybie dyskretnym odrzuca wszystkie komunikaty wysyłane z tymi samymi identyfikatorami komunikatów w tym samym oknie.
 
 ### <a name="flow-control"></a>Sterowanie przepływem
 
-Oprócz modelu kontroli przepływu z poziomu sesji omówionych wcześniej każde łącze posiada własny model kontroli przepływu. Sterowanie przepływem na poziomie sesji chroni kontenera z konieczności obsługi zbyt wiele ramek na raz, sterowanie przepływem na poziomie łącza powoduje umieszczenie aplikacji odpowiada za liczbę komunikatów, które chce obsługiwać ze łącze i kiedy.
+Oprócz modelu sterowania przepływem na poziomie sesji, który został wcześniej omówiony, każdy link ma własny model sterowania przepływem. Sterowanie przepływem na poziomie sesji chroni kontener przed zajściem zbyt wielu ramek jednocześnie, sterowanie przepływem na poziomie łącza umieszcza aplikację, która będzie mogła obsługiwać wiele komunikatów, które chcą obsłużyć z linku.
 
 ![][4]
 
-Łącze, transfery tylko zdarzyć, gdy nadawca ma wystarczającą ilość *łączenie środków*. Kredyt łącze jest zbioru liczników, odbiornika zdarzenia za pomocą *przepływ* performative, która obejmuje łącze. Gdy nadawca jest przypisane łącze środków, próbuje użycie tego środki przez dostarczanie wiadomości. Każdego zmniejsza dostarczania wiadomości łącze pozostałe środki o 1. Po wyczerpaniu środków łącze Zatrzymaj dostaw.
+W przypadku linku transfery mogą wystąpić tylko wtedy, gdy nadawca dysponuje wystarczającym *środkiem konsolidacji*. Link kredyt jest licznikiem ustawionym przez odbiornik przy użyciu performative *przepływu* , który jest objęty zakresem linku. Gdy nadawca ma przypisany kredyt, próbuje użyć tego kredytu, dostarczając komunikaty. Każde dostarczanie komunikatów zmniejsza pozostałe środki w wysokości łącznej o 1. Gdy zostanie użyte środki łącza, dostawy są zatrzymane.
 
-Kiedy roli odbiornik usługi Service Bus, natychmiast zapewnia nadawcy środkami łącze często tak, aby od razu można wysyłać wiadomości. W przypadku użycia środków link usługi Service Bus od czasu do czasu wysyła *przepływu* performative przez nadawcę do zaktualizowania salda środków łącza.
+Gdy Service Bus znajduje się w roli odbiornika, natychmiast udostępnia nadawcy z dużą wysokością kredytu, dzięki czemu komunikaty mogą być wysyłane od razu. Gdy jest używany kredyt łącza, Service Bus sporadycznie wysyła performative przepływu do nadawcy w celu zaktualizowania salda *środków* łącza.
 
-W roli nadawcy usługi Service Bus wysyła wiadomości do użycie kredyt oczekujących łącze.
+W roli nadawcy Service Bus wysyła wiadomości w celu użycia wszelkich zaległych środków łącza.
 
-Wywołanie "otrzymywać" na poziomie interfejsu API przekłada się na *przepływ* performative są wysyłane do usługi Service Bus przez klienta i usługi Service Bus używa tego kredytu wykonując pierwszy dostępne, odblokowane komunikat z kolejki, blokowanie, i przesłanie ich. Jeśli żaden komunikat nie jest łatwo dostępne do dostarczania, wszelkie oczekujące środki przez dowolny link nawiązać z czy określonego obiektu pozostaje zarejestrowane w kolejności przybycia i zablokowane i przesyłane, gdy tylko staną się dostępne, aby wszystkie oczekujące środki na korzystanie z komunikatów.
+Wywołanie "Receive" na poziomie interfejsu API tłumaczy do performative *przepływu* wysyłanego do Service Bus przez klienta i Service Bus zużywa te środki, pobierając pierwszy dostępną, odblokowany komunikat z kolejki, blokując ją i przekazując ją. Jeśli nie ma żadnych komunikatów, które są dostępne do dostarczenia, wszelkie zaległe środki związane z tym konkretną jednostką pozostaną zarejestrowane w kolejności przybycia, a komunikaty są blokowane i przesyłane, gdy staną się dostępne, aby można było korzystać z jakichkolwiek zaległych środków.
 
-Blokadę komunikatu jest zwalniany, gdy transfer jest rozliczany jako jeden z terminala stany *zaakceptowane*, *odrzucone*, lub *wydane*. Komunikat zostanie usunięty z usługi Service Bus, gdy stan końcowy jest *zaakceptowane*. Pozostaje w usłudze Service Bus i są dostarczane do następnego odbiorcy, gdy transfer osiągnie innych Państw. Usługa Service Bus automatycznie przenosi wiadomość do kolejki utraconych wiadomości jednostki po osiągnięciu maksymalna liczba prób dostarczenia dozwoloną dla jednostki z powodu odrzucenia powtarzanych lub wersji.
+Blokada komunikatu jest publikowana, gdy transfer zostanie rozliczony do jednego z Stanów końcowych *przyjętych*, *odrzuconych*lub *wydanych*. Wiadomość zostanie usunięta z Service Bus, gdy stan końcowy zostanie *zaakceptowany*. Pozostanie w Service Bus i zostanie dostarczone do następnego odbiorcy, gdy transfer osiągnie jakikolwiek inny stan. Service Bus automatycznie przenosi komunikat do kolejki utraconych danych jednostki, gdy osiągnie maksymalną liczbę dostaw dozwoloną dla jednostki z powodu powtarzających się odrzuceń lub wydań.
 
-Mimo że interfejsów API usługi Service Bus nie ujawniaj bezpośrednio takiej opcji już dziś, klienta protokołu AMQP niższego poziomu, można użyć danego modelu środki łącze włączyć interakcji "pull-style" wystawiających jedną jednostkę kredytu na każde żądanie odbioru do modelu "push-style" wystawianie dużej liczby połączyć środki na korzystanie z, a następnie komunikaty, gdy tylko staną się dostępne bez dalszej interakcji. Wypychania jest świadczona za pośrednictwem [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) lub [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) ustawienia właściwości. Gdy są one różna od zera, klienta protokołu AMQP używa go jako środków łącza.
+Mimo że interfejsy API Service Bus nie ujawniają bezpośrednio takiej opcji, klient protokołu AMQP niskiego poziomu może użyć modelu kredytowego dla linku w celu przeprowadzenia interakcji "w stylu ściągania" wystawiającej jedną jednostkę kredytu dla każdego żądania odbioru w modelu "push-Style" przez wystawianie dużej liczby kredytów łączy, a następnie otrzymywanie komunikatów, gdy staną się dostępne bez żadnej dalszej interakcji. Wypychanie jest obsługiwane za pomocą ustawień właściwości [MessagingFactory. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) lub [MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) . Jeśli są one inne niż zero, klient AMQP używa go jako łącznego kredytu.
 
-W tym kontekście jest ważne dowiedzieć się, że zegar wygasania blokadę komunikatu w jednostki rozpoczyna się, gdy komunikat jest pobierana z obiektu, nie po umieszczeniu komunikatu w sieci. Zawsze wtedy, gdy klient wskazuje gotowości do odbierania komunikatów przez wysłanie linku środków, dlatego należy się spodziewać się aktywnie ściąganie wiadomości w sieci i gotowe do obsługi tych. W przeciwnym razie blokadę komunikatu mogło wygasnąć przed nawet świadczy wiadomości. Użyj linku środki kontroli przepływu bezpośrednio powinny odzwierciedlać natychmiastowego gotowości do czynienia z dostępnych komunikatów wysłanych do odbiorcy.
+W tym kontekście ważne jest, aby zrozumieć, że zegar czasu wygaśnięcia blokady komunikatu w jednostce jest uruchamiany, gdy komunikat jest pobierany z jednostki, a nie w momencie umieszczenia komunikatu w sieci. Za każdym razem, gdy klient wskaże gotowość do odbierania komunikatów przez wystawienie kredytu łącza, oczekuje się, że będzie ona aktywnie ściągać komunikaty w sieci i być gotowa do ich obsługi. W przeciwnym razie blokada komunikatów mogła wygasnąć, zanim komunikat zostanie nawet dostarczony. Użycie kontroli przepływu w ramach konsolidacji musi bezpośrednio odzwierciedlać natychmiastową gotowość do postępowania z dostępnymi komunikatami wysyłanymi do odbiorcy.
 
-Podsumowując poniższe sekcje zawierają schematyczny omówienie przepływu performative podczas interakcje interfejsu API. Każda sekcja zawiera opis różnych operacji logicznej. Niektóre z tych kontaktów może być "z opóźnieniem," co oznacza, że ich może być wykonana tylko gdy jest to wymagane. Tworzenie nadawcy wiadomości nie może powodować interakcji sieci, do momentu pierwszego wiadomość jest wysyłana lub wymagane.
+W obszarze Podsumowanie poniższe sekcje zawierają opis schematu przepływu performative podczas różnych interakcji interfejsu API. Każda sekcja zawiera opis innej operacji logicznej. Niektóre z tych interakcji mogą być "opóźnione", co oznacza, że mogą być wykonywane tylko wtedy, gdy jest to wymagane. Utworzenie nadawcy wiadomości może nie spowodować interakcji sieciowej do momentu wysłania lub zażądania pierwszej wiadomości.
 
-Strzałki w poniższej tabeli oznaczają kierunek przepływu performative.
+Strzałki w poniższej tabeli pokazują kierunek przepływu performative.
 
-#### <a name="create-message-receiver"></a>Utwórz odbiornik komunikatów
+#### <a name="create-message-receiver"></a>Utwórz odbiorcę wiadomości
 
 | Klient | Service Bus |
 | --- | --- |
-| --> Dołącz ()<br/>Nazwa = {Nazwa linku}<br/>Obsługa = {liczbowych uchwyt}<br/>Rola =**odbiorcy**,<br/>Źródło = {nazwa jednostki}<br/>docelowy = {identyfikator klienta link}<br/>) |Klient dołącza do jednostki jako odbiorcy |
-| Usługa Service Bus odpowiada dołączanie jego końcem łącza |< — dołączanie ()<br/>Nazwa = {Nazwa linku}<br/>Obsługa = {liczbowych uchwyt}<br/>Rola =**nadawcy**,<br/>Źródło = {nazwa jednostki}<br/>docelowy = {identyfikator klienta link}<br/>) |
+| --> dołączyć (<br/>Nazwa = {Nazwa łącza},<br/>uchwyt = {dojście numeryczne},<br/>rola =**odbiornik**,<br/>Źródło = {Nazwa jednostki},<br/>Target = {identyfikator łącza klienta}<br/>) |Klient dołącza do jednostki jako odbiornik |
+| Odpowiedzi Service Bus dołączania końca linku |< — Dołącz (<br/>Nazwa = {Nazwa łącza},<br/>uchwyt = {dojście numeryczne},<br/>rola =**nadawca**,<br/>Źródło = {Nazwa jednostki},<br/>Target = {identyfikator łącza klienta}<br/>) |
 
 #### <a name="create-message-sender"></a>Tworzenie nadawcy wiadomości
 
 | Klient | Service Bus |
 | --- | --- |
-| --> Dołącz ()<br/>Nazwa = {Nazwa linku}<br/>Obsługa = {liczbowych uchwyt}<br/>Rola =**nadawcy**,<br/>Źródło = {klienta łącza ID}<br/>docelowy = {nazwa jednostki}<br/>) |Brak akcji |
-| Brak akcji |< — dołączanie ()<br/>Nazwa = {Nazwa linku}<br/>Obsługa = {liczbowych uchwyt}<br/>Rola =**odbiorcy**,<br/>Źródło = {klienta łącza ID}<br/>docelowy = {nazwa jednostki}<br/>) |
+| --> dołączyć (<br/>Nazwa = {Nazwa łącza},<br/>uchwyt = {dojście numeryczne},<br/>rola =**nadawca**,<br/>Źródło = {identyfikator łącza klienta},<br/>Target = {Nazwa jednostki}<br/>) |Brak akcji |
+| Brak akcji |< — Dołącz (<br/>Nazwa = {Nazwa łącza},<br/>uchwyt = {dojście numeryczne},<br/>rola =**odbiornik**,<br/>Źródło = {identyfikator łącza klienta},<br/>Target = {Nazwa jednostki}<br/>) |
 
-#### <a name="create-message-sender-error"></a>Tworzenie nadawcy wiadomości (błąd)
-
-| Klient | Service Bus |
-| --- | --- |
-| --> Dołącz ()<br/>Nazwa = {Nazwa linku}<br/>Obsługa = {liczbowych uchwyt}<br/>Rola =**nadawcy**,<br/>Źródło = {klienta łącza ID}<br/>docelowy = {nazwa jednostki}<br/>) |Brak akcji |
-| Brak akcji |< — dołączanie ()<br/>Nazwa = {Nazwa linku}<br/>Obsługa = {liczbowych uchwyt}<br/>Rola =**odbiorcy**,<br/>Źródło = null,<br/>target=null<br/>)<br/><br/><--odłączyć ()<br/>Obsługa = {liczbowych uchwyt}<br/>zamknięte =**true**,<br/>błąd = {informacje o błędzie}<br/>) |
-
-#### <a name="close-message-receiversender"></a>Zamknij komunikat odbiornik/nadawcy
+#### <a name="create-message-sender-error"></a>Utwórz nadawcę wiadomości (błąd)
 
 | Klient | Service Bus |
 | --- | --- |
-| --> odłączyć ()<br/>Obsługa = {liczbowych uchwyt}<br/>closed=**true**<br/>) |Brak akcji |
-| Brak akcji |<--odłączyć ()<br/>Obsługa = {liczbowych uchwyt}<br/>closed=**true**<br/>) |
+| --> dołączyć (<br/>Nazwa = {Nazwa łącza},<br/>uchwyt = {dojście numeryczne},<br/>rola =**nadawca**,<br/>Źródło = {identyfikator łącza klienta},<br/>Target = {Nazwa jednostki}<br/>) |Brak akcji |
+| Brak akcji |< — Dołącz (<br/>Nazwa = {Nazwa łącza},<br/>uchwyt = {dojście numeryczne},<br/>rola =**odbiornik**,<br/>Źródło = null,<br/>Target = null<br/>)<br/><br/><--Odłącz (<br/>uchwyt = {dojście numeryczne},<br/>zamknięte =**true**,<br/>błąd = {informacje o błędzie}<br/>) |
 
-#### <a name="send-success"></a>Wyślij (Powodzenie)
+#### <a name="close-message-receiversender"></a>Zamknij odbiorcę/nadawcę wiadomości
 
 | Klient | Service Bus |
 | --- | --- |
-| --> () transferu<br/>dostarczanie id = {liczbowych uchwyt}<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,, bardziej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |Brak akcji |
-| Brak akcji |<--(dyspozycji<br/>Rola odbiornik,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy}<br/>settled=**true**,<br/>Stan =**zaakceptowane**<br/>) |
+| --> odłączania (<br/>uchwyt = {dojście numeryczne},<br/>zamknięte =**true**<br/>) |Brak akcji |
+| Brak akcji |<--Odłącz (<br/>uchwyt = {dojście numeryczne},<br/>zamknięte =**true**<br/>) |
+
+#### <a name="send-success"></a>Wyślij (powodzenie)
+
+| Klient | Service Bus |
+| --- | --- |
+| --> transfer (<br/>Identyfikator dostarczania = {dojście numeryczne},<br/>Delivery-tag = {dojście binarne},<br/>rozliczone =**Fałsz**,, więcej =**Fałsz**,<br/>State =**null**,<br/>Wznów =**Fałsz**<br/>) |Brak akcji |
+| Brak akcji |<--Dyspozycja (<br/>Rola = odbiornik,<br/>First = {Delivery ID},<br/>Last = {Delivery ID},<br/>rozliczone =**true**,<br/>stan =**zaakceptowane**<br/>) |
 
 #### <a name="send-error"></a>Wyślij (błąd)
 
 | Klient | Service Bus |
 | --- | --- |
-| --> () transferu<br/>dostarczanie id = {liczbowych uchwyt}<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,, bardziej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |Brak akcji |
-| Brak akcji |<--(dyspozycji<br/>Rola odbiornik,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy}<br/>settled=**true**,<br/>Stan =**odrzucone**()<br/>błąd = {informacje o błędzie}<br/>)<br/>) |
+| --> transfer (<br/>Identyfikator dostarczania = {dojście numeryczne},<br/>Delivery-tag = {dojście binarne},<br/>rozliczone =**Fałsz**,, więcej =**Fałsz**,<br/>State =**null**,<br/>Wznów =**Fałsz**<br/>) |Brak akcji |
+| Brak akcji |<--Dyspozycja (<br/>Rola = odbiornik,<br/>First = {Delivery ID},<br/>Last = {Delivery ID},<br/>rozliczone =**true**,<br/>State =**odrzucone**(<br/>błąd = {informacje o błędzie}<br/>)<br/>) |
 
 #### <a name="receive"></a>Odbieranie
 
 | Klient | Service Bus |
 | --- | --- |
-| --> () przepływu<br/>link-credit=1<br/>) |Brak akcji |
-| Brak akcji |< transferu ()<br/>dostarczanie id = {liczbowych uchwyt}<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,<br/>więcej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |
-| --> () dyspozycji<br/>Rola =**odbiorcy**,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy}<br/>settled=**true**,<br/>Stan =**zaakceptowane**<br/>) |Brak akcji |
+| --> Flow (<br/>link-credit=1<br/>) |Brak akcji |
+| Brak akcji |< transfer (<br/>Identyfikator dostarczania = {dojście numeryczne},<br/>Delivery-tag = {dojście binarne},<br/>rozliczone =**Fałsz**,<br/>więcej =**Fałsz**,<br/>State =**null**,<br/>Wznów =**Fałsz**<br/>) |
+| --> Dyspozycja (<br/>rola =**odbiornik**,<br/>First = {Delivery ID},<br/>Last = {Delivery ID},<br/>rozliczone =**true**,<br/>stan =**zaakceptowane**<br/>) |Brak akcji |
 
-#### <a name="multi-message-receive"></a>Odbierać wiele wiadomości
+#### <a name="multi-message-receive"></a>Odbieranie z obsługą wiadomości
 
 | Klient | Service Bus |
 | --- | --- |
-| --> () przepływu<br/>link-credit=3<br/>) |Brak akcji |
-| Brak akcji |< transferu ()<br/>dostarczanie id = {liczbowych uchwyt}<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,<br/>więcej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |
-| Brak akcji |< transferu ()<br/>dostarczanie id = {liczbowych uchwyt + 1},<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,<br/>więcej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |
-| Brak akcji |< transferu ()<br/>dostarczanie id = {liczbowych uchwyt + 2},<br/>dostarczanie tag = {binarne uchwyt}<br/>rozliczane =**false**,<br/>więcej =**false**,<br/>Stan =**null**,<br/>Wznów =**false**<br/>) |
-| --> () dyspozycji<br/>Rola odbiornik,<br/>najpierw = {identyfikator dostawy}<br/>ostatnie = {identyfikator dostawy + 2},<br/>settled=**true**,<br/>Stan =**zaakceptowane**<br/>) |Brak akcji |
+| --> Flow (<br/>link-credit=3<br/>) |Brak akcji |
+| Brak akcji |< transfer (<br/>Identyfikator dostarczania = {dojście numeryczne},<br/>Delivery-tag = {dojście binarne},<br/>rozliczone =**Fałsz**,<br/>więcej =**Fałsz**,<br/>State =**null**,<br/>Wznów =**Fałsz**<br/>) |
+| Brak akcji |< transfer (<br/>Identyfikator dostarczania = {dojście numeryczne + 1},<br/>Delivery-tag = {dojście binarne},<br/>rozliczone =**Fałsz**,<br/>więcej =**Fałsz**,<br/>State =**null**,<br/>Wznów =**Fałsz**<br/>) |
+| Brak akcji |< transfer (<br/>Delivery-ID = {dojście numeryczne + 2},<br/>Delivery-tag = {dojście binarne},<br/>rozliczone =**Fałsz**,<br/>więcej =**Fałsz**,<br/>State =**null**,<br/>Wznów =**Fałsz**<br/>) |
+| --> Dyspozycja (<br/>Rola = odbiornik,<br/>First = {Delivery ID},<br/>Last = {Delivery ID + 2},<br/>rozliczone =**true**,<br/>stan =**zaakceptowane**<br/>) |Brak akcji |
 
 ### <a name="messages"></a>Komunikaty
 
-W poniższych sekcjach opisano z sekcji standardowy komunikat protokołu AMQP właściwości, które są używane przez usługę Service Bus oraz sposobu mapowania ich na zestaw API usługi Service Bus.
+W poniższych sekcjach wyjaśniono, które właściwości w standardowych sekcjach komunikatów AMQP są używane przez Service Bus i jak są mapowane na Service Bus zestaw interfejsów API.
 
-Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowane na protokół AMQP firmy `application-properties` mapy.
+Wszystkie właściwości, które aplikacja musi definiować, powinny być mapowane na mapę `application-properties` AMQP.
 
 #### <a name="header"></a>nagłówek
 
@@ -214,7 +223,7 @@ Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowa
 | --- | --- | --- |
 | durable |- |- |
 | priority |- |- |
-| ttl |Czas wygaśnięcia dla tego komunikatu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| czas wygaśnięcia |Czas wygaśnięcia dla tej wiadomości |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | first-acquirer |- |- |
 | delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
@@ -222,197 +231,197 @@ Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowa
 
 | Nazwa pola | Sposób użycia | Nazwa interfejsu API |
 | --- | --- | --- |
-| message-id |Zdefiniowane przez aplikację, dowolny identyfikator dla tego komunikatu. Używane do wykrywania duplikatów. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| user-id |Identyfikator użytkownika zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
-| to |Identyfikator docelowego zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[Do](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| subject |Identyfikator celu wiadomości zdefiniowanych przez aplikację, nie są interpretowane przez usługę Service Bus. |[Etykieta](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| reply-to |Wskaźnik ścieżki odpowiedzi zdefiniowany przez aplikację nie są interpretowane przez usługę Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| correlation-id |Identyfikator korelacji zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| content-type |Zdefiniowane przez aplikację wskaźnik typu zawartości dla treści nie interpretowane przez usługę Service Bus. |[Typ zawartości](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| content-encoding |Zdefiniowane przez aplikację kodowanie zawartości wskaźnik dla treści nie interpretowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
-| absolute-expiry-time |Deklaruje, w których bezwzględną błyskawicznych komunikat wygasa. Ignorowane na dane wejściowe (nagłówek stwierdzamy TTL), autorytatywny w danych wyjściowych. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| creation-time |Deklaruje co wiadomość została utworzona. Nie są używane przez usługę Service Bus |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
-| group-id |Zdefiniowane przez aplikację identyfikator powiązany zestaw komunikatów. Używane dla sesji magistrali usług. |[Identyfikator sesji](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| group-sequence |Licznik identyfikowanie numer sekwencji względne wiadomości wewnątrz sesji. Ignorowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
+| Identyfikator komunikatu |Zdefiniowany przez aplikację identyfikator dowolnej postaci dla tego komunikatu. Używany do wykrywania duplikatów. |[Identyfikatora](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Identyfikator użytkownika |Identyfikator użytkownika zdefiniowany przez aplikację, nieinterpretowany przez Service Bus. |Niedostępne za pomocą interfejsu API Service Bus. |
+| na |Zdefiniowany przez aplikację identyfikator docelowy, nieinterpretowany przez Service Bus. |[Do](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |Identyfikator przeznaczenie komunikatu zdefiniowany przez aplikację, nieinterpretowany przez Service Bus. |[Oznakowan](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| reply-to |Zdefiniowany przez aplikację wskaźnik ścieżki odpowiedzi, nieinterpretowany przez Service Bus. |[From](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Identyfikator korelacji |Zdefiniowany przez aplikację identyfikator korelacji, nieinterpretowany przez Service Bus. |[Korelacj](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type |Zdefiniowany przez aplikację wskaźnik typu zawartości dla treści, nieinterpretowany przez Service Bus. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-encoding |Zdefiniowany przez aplikację wskaźnik kodowania zawartości dla treści, nieinterpretowany przez Service Bus. |Niedostępne za pomocą interfejsu API Service Bus. |
+| absolute-expiry-time |Deklaruje, że bezwzględnie utraci komunikat. Zignorowano w danych wejściowych (zaobserwowane jest czas wygaśnięcia nagłówka), autorytatywny dla danych wyjściowych. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| creation-time |Deklaruje, kiedy wiadomość została utworzona. Nieużywane przez Service Bus |Niedostępne za pomocą interfejsu API Service Bus. |
+| group-id |Identyfikator zdefiniowany przez aplikację dla powiązanego zestawu komunikatów. Używany do sesji Service Bus. |[SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Sekwencja grup |Licznik identyfikujący względny numer sekwencji komunikatu w ramach sesji. Zignorowane przez Service Bus. |Niedostępne za pomocą interfejsu API Service Bus. |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
-#### <a name="message-annotations"></a>Adnotacje wiadomości
+#### <a name="message-annotations"></a>Adnotacje komunikatów
 
-Istnieje kilka innych usługi Service bus komunikat właściwości, które nie są częścią właściwości komunikatu protokołu AMQP i są przekazywane jako `MessageAnnotations` wiadomości.
+Istnieje kilka innych właściwości komunikatów usługi Service Bus, które nie są częścią właściwości komunikatu AMQP i są przesyłane jako `MessageAnnotations` w komunikacie.
 
-| Klucz mapy adnotacji | Sposób użycia | Nazwa interfejsu API |
+| Klucz mapowania adnotacji | Sposób użycia | Nazwa interfejsu API |
 | --- | --- | --- |
-| x-opt-scheduled-enqueue-time | Deklaruje co komunikat powinien pojawić się w jednostce |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x-opt-partition-key | Klucz zdefiniowanych przez aplikację, które określają, które partycji komunikat powinny znaleźć się w. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-opt-via-partition-key | Zdefiniowane przez aplikację klucza partycji wartość, gdy transakcja jest używany do wysyłania komunikatów za pośrednictwem kolejki transferu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-opt-enqueued-time | Zdefiniowane przez usługę czasu UTC reprezentujący rzeczywisty czas enqueuing wiadomości. Dane wejściowe są ignorowane na. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-opt-sequence-number | Zdefiniowane przez usługę unikatowy numer przypisany do wiadomości. | [sequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x-opt-offset | Numer sekwencji zdefiniowane przez usługę umieszczonych w kolejce wiadomości. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x-opt-locked-until | Zdefiniowane przez usługę. Data i godzina, do której zostanie zablokowane wiadomości w kolejce/subskrypcji. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-opt-deadletter-source | Zdefiniowane przez usługę. Odebranie komunikatu z kolejki utraconych wiadomości, źródło oryginalnej wiadomości. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-scheduled-enqueue-time | Deklaruje, w którym czasie komunikat powinien pojawić się w jednostce |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
+| x-opt-Partition-Key | Klucz zdefiniowany przez aplikację wskazujący partycję, w której ma być używany komunikat. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x-opt-Via-Partition-Key | Zdefiniowana przez aplikację wartość klucza partycji, gdy transakcja ma być używana do wysyłania wiadomości za pośrednictwem kolejki transferu. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
+| x-opt-w czasie | Czas UTC zdefiniowany przez usługę reprezentujący rzeczywisty czas umieszczenie komunikatu. Zignorowano przy wejściu. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
+| x-opt-sequence-number | Unikatowy numer zdefiniowany przez usługę przypisany do wiadomości. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
+| x-opt-offset | Zdefiniowany przez usługę numer sekwencyjny wiadomości w kolejce. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
+| x-opt-locked-until | Zdefiniowane przez usługę. Data i godzina, do której wiadomość zostanie zablokowana w kolejce/subskrypcji. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
+| x-opt-deadletter-source | Zdefiniowane przez usługę. Jeśli wiadomość zostanie odebrana z kolejki utraconych wiadomości, Źródło oryginalnej wiadomości. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
 
-### <a name="transaction-capability"></a>Transakcja funkcji
+### <a name="transaction-capability"></a>Możliwość transakcji
 
-Transakcja grupuje dwóch lub więcej operacji w zakresie wykonywania. Ze względu na charakter takich transakcji musi zapewnić, że wszystkie operacje należących do danej grupy operacji powodzenie lub niepowodzenie wspólnie.
+Grupy transakcji grupuje dwie lub więcej operacji jednocześnie do zakresu wykonywania. O charakterze taka transakcja musi zapewnić, że wszystkie operacje należące do danej grupy operacji kończą się powodzeniem lub niepowodzeniem.
 Operacje są pogrupowane według identyfikatora `txn-id`.
 
-Do interakcji z transakcji, klient działa jako `transaction controller` , która kontroluje operacje, które powinny być zgrupowane razem. Usługa Service Bus pełni rolę `transactional resource` i wykonuje pracę, zgodnie z żądaniem `transaction controller`.
+W przypadku interakcji transakcyjnej klient działa jako `transaction controller`, który kontroluje operacje, które powinny być zgrupowane razem. Usługa Service Bus działa jako `transactional resource` i wykonuje działania zgodnie z żądaniem `transaction controller`.
 
-Klient i usługa komunikują się za pośrednictwem `control link` , która została ustanowiona przez klienta. `declare` i `discharge` komunikaty są wysyłane przez kontroler za pośrednictwem łącza kontroli można przydzielić i odpowiednio realizowania transakcji (nie przedstawiają one granic transakcji pracy). Ten Link nie jest wykonywana rzeczywistych operacji wysyłania i odbierania. Każdej żądanej operacji transakcji jest jawnie oznaczone symbolem żądaną `txn-id` i w związku z tym może wystąpić na dowolny link w połączeniu. Jeśli łącze kontroli jest zamknięty, gdy istnieją transakcje zakończona, utworzone przez siebie, następnie wszystkie takie natychmiast wycofywania transakcji, a próby wykonania dalszych transakcji pracy na ich doprowadzi do błędu. Wiadomości na formant łącza nie może być wstępnie uregulowane.
+Klient i usługa komunikują się za pośrednictwem `control link`, który jest ustanowiony przez klienta. Komunikaty `declare` i `discharge` są wysyłane przez kontroler za pośrednictwem linku kontroli w celu przydzielania i ukończenia transakcji odpowiednio (nie reprezentują rozgraniczenia pracy transakcyjnej). Rzeczywiste wysyłanie/odbieranie nie jest wykonywane dla tego linku. Każda żądana operacja transakcyjna jest jawnie identyfikowana przy użyciu żądanej `txn-id` i dlatego może wystąpić na dowolnym łączu połączenia. Jeśli łącze kontrolne jest zamknięte, gdy istnieją naliczane transakcje, a następnie wszystkie takie transakcje są natychmiast wycofywane i próby wykonania dalszych operacji transakcyjnych na nich zakończą się niepowodzeniem. Komunikaty na linku kontroli nie mogą być wstępnie rozliczane.
 
-Każde połączenie musi zainicjować link własny kontroli w taki sposób, aby mieć możliwość rozpoczęcia i zakończenia transakcji. Usługa definiuje specjalny docelowy, który działa jako `coordinator`. Klient/kontroler ustanawia łącze kontroli do tego obiektu docelowego. Formant łącza jest poza granicami jednostki, oznacza to, że tego samego łącza kontroli może służyć do inicjowania i zwalnia transakcje dla wielu jednostek.
+Każde połączenie musi inicjować swój własny link kontroli, aby można było rozpocząć i zakończyć transakcje. Usługa definiuje specjalne miejsce docelowe, które działa jako `coordinator`. Klient/kontroler nawiązuje połączenie z tym obiektem docelowym. Link sterujący znajduje się poza granicą jednostki, to oznacza, że ten sam link kontrolny może służyć do inicjowania i zwalniania transakcji dla wielu jednostek.
 
 #### <a name="starting-a-transaction"></a>Uruchamianie transakcji
 
-Aby rozpocząć transakcji pracy. Kontroler musi uzyskać `txn-id` z koordynatora. Jest to realizowane przez wysłanie `declare` wpisz wiadomość. Jeśli deklaracja się powiedzie, koordynator odpowiada za pomocą sytuacji dyspozycji niesie ze sobą przypisane `txn-id`.
+, Aby rozpocząć pracę transakcyjną. Kontroler musi uzyskać `txn-id` od koordynatora. Robi to przez wysłanie komunikatu typu `declare`. Jeśli deklaracja zostanie zakończona pomyślnie, koordynator odpowie z wynikiem dyspozycji, który przenosi przypisane `txn-id`.
 
-| Klient (kontroler) | | Usługa Service Bus (koordynator) |
+| Klient (kontroler) | | Service Bus (koordynator) |
 | --- | --- | --- |
-| Dołącz)<br/>Nazwa = {Nazwa linku}<br/>... ,<br/>Rola =**nadawcy**,<br/>target=**Coordinator**<br/>) | ------> |  |
-|  | <------ | Dołącz)<br/>Nazwa = {Nazwa linku}<br/>... ,<br/>target=Coordinator()<br/>) |
-| Transfer)<br/>dostarczanie id = 0,...)<br/>{AmqpValue (**Declare()** )}| ------> |  |
-|  | <------ | (dyspozycji <br/> najpierw = 0, ostatnia = 0, <br/>Stan =**Declared**()<br/>**Identyfikator transakcji**= {identyfikator transakcji}<br/>))|
+| Klej<br/>Nazwa = {Nazwa łącza},<br/>... ,<br/>rola =**nadawca**,<br/>Target =**koordynator**<br/>) | ------> |  |
+|  | <------ | Klej<br/>Nazwa = {Nazwa łącza},<br/>... ,<br/>target=Coordinator()<br/>) |
+| sunięć<br/>Identyfikator dostarczania = 0,...)<br/>{AmqpValue (**DECLARE ()** )}| ------> |  |
+|  | <------ | dyspozycji <br/> pierwsze = 0, ostatnie = 0, <br/>State =**zadeklarowane**(<br/>**transakcja-ID**= {Transaction ID}<br/>))|
 
-#### <a name="discharging-a-transaction"></a>Wykonującej transakcji
+#### <a name="discharging-a-transaction"></a>Rozładowywanie transakcji
 
-Kontroler stwierdza transakcji pracy, wysyłając `discharge` wiadomości z koordynatorem. Kontroler wskazuje, że chce przekazać ani wycofać transakcji pracy przez ustawienie `fail` flagi treści zrzutu. W przypadku nie można wykonać zrzutu koordynator wiadomości jest odrzucane ten wynik wykonywania `transaction-error`.
+Kontroler kończy działanie transakcyjne przez wysłanie do koordynatora komunikatu `discharge`. Kontroler wskazuje, że chce zatwierdzić lub wycofać czynności transakcyjne przez ustawienie flagi `fail` w treści zrzutu. Jeśli koordynator nie jest w stanie zakończyć zrzutu, komunikat zostanie odrzucony z wynikiem przeprowadzenia `transaction-error`.
 
-> Uwaga: niepowodzenie = true odwołuje się do wycofania transakcji i kończyć się niepowodzeniem = false odwołuje się do zatwierdzenia.
+> Uwaga: błąd = true oznacza wycofanie transakcji i niepowodzenie = false oznacza zatwierdzenie.
 
-| Klient (kontroler) | | Usługa Service Bus (koordynator) |
+| Klient (kontroler) | | Service Bus (koordynator) |
 | --- | --- | --- |
-| Transfer)<br/>dostarczanie id = 0,...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | (dyspozycji <br/> najpierw = 0, ostatnia = 0, <br/>Stan = (zadeklarowanych<br/>transakcji id = {Identyfikator transakcji}<br/>))|
-| | . . . <br/>Transakcji pracy<br/>na inne linki<br/> . . . |
-| Transfer)<br/>dostarczanie id = 57,...)<br/>{AmqpValue)<br/>**Zwalnia (identyfikator transakcji = 0,<br/>się nie powieść = false)** )}| ------> |  |
-| | <------ | (dyspozycji <br/> najpierw = 57, ostatnia = 57, <br/>state=**Accepted()** )|
+| sunięć<br/>Identyfikator dostarczania = 0,...)<br/>{AmqpValue (DECLARE ())}| ------> |  |
+|  | <------ | dyspozycji <br/> pierwsze = 0, ostatnie = 0, <br/>State = zadeklarowane (<br/>transakcja-ID = {Transaction ID}<br/>))|
+| | . . . <br/>Działania transakcyjne<br/>na inne linki<br/> . . . |
+| sunięć<br/>Identyfikator dostarczania = 57,...)<br/>{ AmqpValue (<br/>**Zrzut (transakcja-ID = 0,<br/>niepowodzenie = false)** )}| ------> |  |
+| | <------ | dyspozycji <br/> pierwsze = 57, ostatnie = 57, <br/>State =**zaakceptowane ()** )|
 
-#### <a name="sending-a-message-in-a-transaction"></a>Wysyłanie komunikatu w ramach transakcji
+#### <a name="sending-a-message-in-a-transaction"></a>Wysyłanie komunikatu w transakcji
 
-Wszystkie transakcyjnych zadań odbywa się ze stanem transakcyjnych dostarczania `transactional-state` , niesie ze sobą identyfikator transakcji. W przypadku wysyłania komunikatów, transakcyjną stanu odbywa się przez ramkę transferu wiadomości. 
+Wszystkie transakcyjne zadania są wykonywane ze transakcyjnym stanem dostarczania `transactional-state`, który przeniesie identyfikator transakcja. W przypadku wysyłania komunikatów stan transakcyjny jest przenoszony przez ramkę transferu wiadomości. 
 
-| Klient (kontroler) | | Usługa Service Bus (koordynator) |
+| Klient (kontroler) | | Service Bus (koordynator) |
 | --- | --- | --- |
-| Transfer)<br/>dostarczanie id = 0,...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | (dyspozycji <br/> najpierw = 0, ostatnia = 0, <br/>Stan = (zadeklarowanych<br/>transakcji id = {Identyfikator transakcji}<br/>))|
-| Transfer)<br/>Obsługa = 1,<br/>dostarczanie id = 1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)** )<br/>{ładunek}| ------> |  |
-| | <------ | (dyspozycji <br/> najpierw = 1, ostatnia = 1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))|
+| sunięć<br/>Identyfikator dostarczania = 0,...)<br/>{AmqpValue (DECLARE ())}| ------> |  |
+|  | <------ | dyspozycji <br/> pierwsze = 0, ostatnie = 0, <br/>State = zadeklarowane (<br/>transakcja-ID = {Transaction ID}<br/>))|
+| sunięć<br/>dojście = 1,<br/>Identyfikator dostarczania = 1, <br/>**State =<br/>TransactionalState (<br/>transakcja-ID = 0)** )<br/>ładunku| ------> |  |
+| | <------ | dyspozycji <br/> pierwsze = 1, ostatnie = 1, <br/>State =**TransactionalState (<br/>transakcja-ID = 0,<br/>wyniku = zaakceptowane ()** )|
 
-#### <a name="disposing-a-message-in-a-transaction"></a>Usuwanie wiadomości w ramach transakcji
+#### <a name="disposing-a-message-in-a-transaction"></a>Likwidowanie wiadomości w transakcji
 
-Komunikat dyspozycji obejmuje operacje, takie jak `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer`. Aby wykonać te operacje w ramach transakcji, należy przekazać `transactional-state` z dyspozycji.
+Dyspozycja komunikatów obejmuje operacje, takie jak `Complete` / `Abandon` / `DeadLetter` / `Defer`. Aby wykonać te operacje w ramach transakcji, Przekaż `transactional-state` z dyspozycją.
 
-| Klient (kontroler) | | Usługa Service Bus (koordynator) |
+| Klient (kontroler) | | Service Bus (koordynator) |
 | --- | --- | --- |
-| Transfer)<br/>dostarczanie id = 0,...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | (dyspozycji <br/> najpierw = 0, ostatnia = 0, <br/>Stan = (zadeklarowanych<br/>transakcji id = {Identyfikator transakcji}<br/>))|
-| | <------ |Transfer)<br/>Obsługa = 2,<br/>dostarczanie id = 11 <br/>Stan = null)<br/>{ładunek}|  
-| (dyspozycji <br/> najpierw = 11, ostatnia = 11 <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))| ------> |
+| sunięć<br/>Identyfikator dostarczania = 0,...)<br/>{AmqpValue (DECLARE ())}| ------> |  |
+|  | <------ | dyspozycji <br/> pierwsze = 0, ostatnie = 0, <br/>State = zadeklarowane (<br/>transakcja-ID = {Transaction ID}<br/>))|
+| | <------ |sunięć<br/>dojście = 2,<br/>Identyfikator dostarczania = 11, <br/>State = null)<br/>ładunku|  
+| dyspozycji <br/> pierwsze = 11, ostatnie = 11, <br/>State =**TransactionalState (<br/>transakcja-ID = 0,<br/>wyniku = zaakceptowane ()** )| ------> |
 
 
-## <a name="advanced-service-bus-capabilities"></a>Zaawansowane funkcje usługi Service Bus
+## <a name="advanced-service-bus-capabilities"></a>Zaawansowane możliwości Service Bus
 
-W tej sekcji omówiono zaawansowane funkcje usługi Azure Service Bus, które są oparte na rozszerzeniach projekt na protokół AMQP, obecnie opracowywane Komitet Techniczny OASIS dla protokołu AMQP. Usługa Service Bus implementuje najnowsze wersje tych projektów i przyjmuje zmiany wprowadzone tylko te projekty osiągnąć stan standard.
+W tej części omówiono zaawansowane możliwości Azure Service Bus, które są oparte na rozszerzeniach roboczych do AMQP, obecnie opracowywanych w Komitecie technicznym języka Oasis dla AMQP. Service Bus implementuje najnowsze wersje tych wersji roboczych i przyjmuje zmiany wprowadzone w miarę osiągnięcia stanu wersji roboczej.
 
 > [!NOTE]
-> Komunikaty usługi Service Bus zaawansowane operacje są obsługiwane przez wzorzec żądań/odpowiedzi. Szczegółowe informacje o tych operacji są opisane w artykule [protokołu AMQP 1.0 w usłudze Service Bus: operacje na podstawie odpowiedzi żądań](service-bus-amqp-request-response.md).
+> Zaawansowane operacje Service Bus komunikatów są obsługiwane za pomocą wzorca żądania/odpowiedzi. Szczegóły tych operacji są opisane w artykule [AMQP 1,0 w Service Bus: operacje oparte na odpowiedzi na żądanie](service-bus-amqp-request-response.md).
 > 
 > 
 
-### <a name="amqp-management"></a>Zarządzanie protokołu AMQP
+### <a name="amqp-management"></a>AMQP Management
 
-Specyfikacji protokołu AMQP zarządzania jest pierwszym rozszerzenia projektu omówionych w tym artykule. Ta specyfikacja definiuje zestaw protokołów warstwowo protokołu AMQP, które umożliwiają interakcje z infrastrukturą obsługi wiadomości za pośrednictwem protokołu AMQP. Specyfikacja definiuje ogólny operacje, takie jak *tworzenie*, *odczytu*, *aktualizacji*, i *Usuń* do zarządzania jednostkami wewnątrz Infrastruktura obsługi komunikatów i zestaw operacji zapytania.
+Specyfikacja AMQP Management to pierwszy z tych rozszerzeń, które zostały omówione w tym artykule. Ta specyfikacja definiuje zestaw protokołów warstwowych na podstawie protokołu AMQP, który pozwala na interakcje zarządzania z infrastrukturą obsługi komunikatów w AMQP. Specyfikacja definiuje operacje ogólne, takie jak *Tworzenie*, *odczytywanie*, *Aktualizowanie*i *usuwanie* w celu zarządzania jednostkami wewnątrz infrastruktury obsługi komunikatów i zestawem operacji zapytań.
 
-Wszystkie te gesty wymagają interakcji żądanie/odpowiedź, między klientem a infrastruktura obsługi komunikatów, a w związku z tym specyfikacja definiuje sposób modelu tego wzorca interakcji na podstawie protokołu AMQP: klient łączy się infrastruktury obsługi wiadomości inicjuje sesję, a następnie tworzy parę łącza. Na jedno łącze klient działa jako nadawcy, a na drugim działa jako odbiornik, co powoduje utworzenie pary łączy, które mogą pełnić rolę kanału dwukierunkowego.
+Wszystkie te gesty wymagają interakcji żądania/odpowiedzi między klientem i infrastrukturą obsługi komunikatów, dlatego specyfikacja definiuje, jak modelować ten wzorzec interakcji w oparciu o AMQP: klient łączy się z infrastrukturą obsługi komunikatów, inicjuje sesję, a następnie tworzy parę linków. W przypadku jednego linku klient pełni rolę nadawcy, a drugie działa jako odbiornik, tworząc parę łączy, które mogą pełnić rolę kanału dwukierunkowego.
 
 | Operacja logiczna | Klient | Service Bus |
 | --- | --- | --- |
-| Tworzenie ścieżki odpowiedzi żądania |--> Dołącz ()<br/>Nazwa = {*nazwę łącza*},<br/>Obsługa = {*liczbowych uchwyt*},<br/>Rola =**nadawcy**,<br/>źródło =**null**,<br/>target = "Zarządzanie myentity / $"<br/>) |Brak akcji |
-| Tworzenie ścieżki odpowiedzi żądania |Brak akcji |\<--dołączyć ()<br/>Nazwa = {*nazwę łącza*},<br/>Obsługa = {*liczbowych uchwyt*},<br/>Rola =**odbiorcy**,<br/>Źródło = null,<br/>target = "myentity"<br/>) |
-| Tworzenie ścieżki odpowiedzi żądania |--> Dołącz ()<br/>Nazwa = {*nazwę łącza*},<br/>Obsługa = {*liczbowych uchwyt*},<br/>Rola =**odbiorcy**,<br/>Źródło = "myentity / $" Zarządzanie,<br/>target = "identyfikator myclient$"<br/>) | |
-| Tworzenie ścieżki odpowiedzi żądania |Brak akcji |\<--dołączyć ()<br/>Nazwa = {*nazwę łącza*},<br/>Obsługa = {*liczbowych uchwyt*},<br/>Rola =**nadawcy**,<br/>Źródło = "myentity"<br/>target = "identyfikator myclient$"<br/>) |
+| Utwórz ścieżkę odpowiedzi na żądanie |--> dołączyć (<br/>Nazwa = {*Nazwa łącza*},<br/>uchwyt = {*dojście numeryczne*},<br/>rola =**nadawca**,<br/>Źródło =**null**,<br/>Target = "Entity/$management"<br/>) |Brak akcji |
+| Utwórz ścieżkę odpowiedzi na żądanie |Brak akcji |\<— Dołącz (<br/>Nazwa = {*Nazwa łącza*},<br/>uchwyt = {*dojście numeryczne*},<br/>rola =**odbiornik**,<br/>Źródło = null,<br/>Target = "Moja jednostka"<br/>) |
+| Utwórz ścieżkę odpowiedzi na żądanie |--> dołączyć (<br/>Nazwa = {*Nazwa łącza*},<br/>uchwyt = {*dojście numeryczne*},<br/>rola =**odbiornik**,<br/>source = "Entity/$management",<br/>Target = "WebClient $ ID"<br/>) | |
+| Utwórz ścieżkę odpowiedzi na żądanie |Brak akcji |\<— Dołącz (<br/>Nazwa = {*Nazwa łącza*},<br/>uchwyt = {*dojście numeryczne*},<br/>rola =**nadawca**,<br/>Źródło = "Moja jednostka",<br/>Target = "WebClient $ ID"<br/>) |
 
-Posiadanie tej pary łączy w miejscu, wykonania żądania/odpowiedzi jest proste: żądanie jest wiadomością wysłaną do jednostki wewnątrz infrastruktura obsługi komunikatów, która obsługuje ten wzorzec. W tym komunikacie żądania *odpowiedzi* pole *właściwości* sekcji jest ustawiona na *docelowej* identyfikator dla tego połączenia, na którym dostarczyć odpowiedź. Jednostka obsługi przetwarza żądanie, a następnie dostarcza odpowiedzi przez łącze którego *docelowej* identyfikator jest zgodny wskazany *Odpowiedz do* identyfikator.
+Mając tę parę linków, implementacja żądania/odpowiedzi jest prosta: żądanie jest komunikatem wysyłanym do jednostki wewnątrz infrastruktury obsługi komunikatów, która rozumie ten wzorzec. W tym komunikacie żądania w polu *odpowiedź do* w sekcji *Właściwości* jest ustawiany identyfikator *docelowy* dla łącza, na którym ma być dostarczana odpowiedź. Jednostka obsługi przetwarza żądanie, a następnie dostarcza odpowiedź za pośrednictwem linku, którego identyfikator *docelowy* pasuje do wskazanego identyfikatora *odpowiedzi* .
 
-Wzorzec wymaga oczywiście, że kontener klienta i identyfikator generowany przez klienta jako miejsce docelowe odpowiedzi są unikatowe dla wszystkich klientów i, ze względów bezpieczeństwa również trudne do przewidzenia.
+Wzorzec oczywiście wymaga, aby kontener klienta i identyfikator wygenerowany przez klienta dla miejsca docelowego odpowiedzi były unikatowe dla wszystkich klientów i ze względów bezpieczeństwa trudno było przewidzieć.
 
-Wymianę komunikatów, używane przez protokół zarządzania i innych protokołów, które używają tego samego wzorca odbywa się na poziomie aplikacji; nie mogą określać nowych gestów na poziomie protokołu AMQP. Jest zamierzone, tak aby aplikacje mogą korzystać natychmiastowego tych rozszerzeń, za pomocą zgodne stosów protokołu AMQP 1.0.
+Wymiany komunikatów używanych przez protokół zarządzania i dla wszystkich innych protokołów, które używają tego samego wzorca, są wykonywane na poziomie aplikacji; nie definiują one nowych gestów poziomu protokołu AMQP. Jest to zamierzone, dzięki czemu aplikacje mogą korzystać z tych rozszerzeń za pomocą zgodnych stosów AMQP 1,0.
 
-Usługa Service Bus nie obecnie zaimplementowaniem dowolne z podstawowych funkcji specyfikacji zarządzania, ale wzorzec żądań/odpowiedzi ze specyfikacją zarządzania jest podstawowe dla funkcji oświadczeń — zabezpieczenia na poziomie i niemal wszystkich zaawansowanych funkcje omówione w poniższych sekcjach:
+Service Bus obecnie nie implementuje żadnych podstawowych funkcji specyfikacji zarządzania, ale wzorzec żądania/odpowiedzi zdefiniowany przez specyfikację zarządzania jest podstawą dla funkcji zabezpieczeń opartych na oświadczeniach i dla niemal wszystkich zaawansowanych możliwości omówionych w następujących sekcjach:
 
 ### <a name="claims-based-authorization"></a>Autoryzacja oparta na oświadczeniach
 
-Projekt specyfikacji protokołu AMQP oświadczenia na podstawie-autoryzacji (CBS) jest oparta na wzorcu zarządzania specyfikacji żądania/odpowiedzi i opisano uogólnionego modelu używania tokenów zabezpieczeń z obsługą protokołu AMQP.
+Wersja robocza AMQP oświadczeń-based-Authorization (CBS) jest oparta na wzorcu żądania/odpowiedzi specyfikacji zarządzania i opisuje Uogólniony model, w którym można używać federacyjnych tokenów zabezpieczających z AMQP.
 
-Model zabezpieczeń domyślnego protokołu AMQP opisano we wprowadzeniu opiera się na SASL i integruje się z uzgadniania połączenia protokołu AMQP. Używa mechanizmu SASL ma tę zaletę, że zapewnia extensible modelu, dla którego zdefiniowano zestaw mechanizmów z mogą korzystać dowolny protokół, który formalnie leans na SASL. Wśród tych mechanizmów są "Zwykły" przesyłania nazwy użytkownika i hasła, "Zewnętrzna", aby powiązać z zabezpieczeniami na poziomie protokołu TLS "ANONYMOUS", aby wyrazić braku jawnego uwierzytelniania/autoryzacji i szerokiej gamy dodatkowe mechanizmy, które umożliwiają przekazywanie poświadczenia uwierzytelniania lub autoryzacji lub tokenów.
+Domyślny model zabezpieczeń AMQP omówiony w wprowadzeniu jest oparty na protokole SASL i integruje się z uzgadnianiem połączenia AMQP. Użycie protokołu SASL ma zalety, aby zapewniać rozszerzalny model, dla którego zdefiniowano zestaw mechanizmów, z których każdy protokół, który formalnie dzieli się na SASL, może skorzystać z zalet. Wśród tych mechanizmów są "zwykłe" do przenoszenia nazw użytkowników i haseł, "zewnętrzne", aby powiązać zabezpieczenia na poziomie protokołu TLS, "ANONIMOWe", co oznacza brak jawnego uwierzytelniania/autoryzacji i wiele różnorodnych dodatkowych mechanizmów zezwalających na przekazywanie poświadczeń uwierzytelniania i/lub tokenów autoryzacji.
 
-Integracja SASL firmy AMQP ma dwie wady:
+Integracja SASL AMQP ma dwie wady:
 
-* Wszystkie poświadczenia i tokeny są ograniczone do połączenia. To infrastruktura obsługi komunikatów może być w celu zapewnienia kontroli dostępu zróżnicowane na podstawie jednostek; na przykład dzięki czemu elementu nośnego tokenu wysyłać do kolejki A, ale nie do kolejki B. W kontekście autoryzacji zakotwiczone w ramach połączenia nie jest możliwość używania jednego połączenia i jeszcze używanie tokenów dostępu innej kolejki A i B. kolejki
-* Tokeny dostępu są zazwyczaj ważne tylko przez ograniczony czas. Ważność ta wymaga od użytkownika okresowo ponownie pobrać tokenów i stanowi przy tym okazję do wystawcy tokenów odmowy wystawianie świeże tokenie, jeśli zostały zmienione uprawnienia dostępu użytkownika. Połączenia AMQP może trwać przez dłuższy czas. SASL model zapewnia tylko szansę, aby ustawić token w czasie połączenia, co oznacza, że infrastruktura obsługi komunikatów, albo ma, aby odłączyć klienta, gdy token jest ważny, lub musi zaakceptować ryzyko umożliwienia dalszego komunikacji z klientem kto firmy prawa dostępu został odwołany w międzyczasie.
+* Wszystkie poświadczenia i tokeny są objęte zakresem połączenia. Infrastruktura obsługi komunikatów może chcieć zapewnić zróżnicowaną kontrolę dostępu dla poszczególnych jednostek. na przykład umożliwienie okaziciela tokenu do wysłania do kolejki A, ale nie do kolejki B. W przypadku kontekstu autoryzacji zakotwiczonego w połączeniu nie można użyć jednego połączenia i jeszcze użyć różnych tokenów dostępu dla kolejki A i kolejki B.
+* Tokeny dostępu są zwykle ważne tylko przez ograniczony czas. To poprawność wymaga, aby użytkownik okresowo ponownie nabywał tokeny, i umożliwia wystawcy token odmowę wydania nowego tokenu, Jeśli zmieniono uprawnienia dostępu użytkownika. Połączenia AMQP mogą być ostatnio przez długi czas. Model SASL pozwala tylko na ustawienie tokenu w czasie połączenia, co oznacza, że infrastruktura obsługi komunikatów musi rozłączyć klienta po wygaśnięciu tokenu lub musi zaakceptować ryzyko, aby umożliwić kontynuowanie komunikacji z klientem prawa dostępu mogły zostać odwołane w tymczasowym.
 
-Specyfikację protokołu AMQP CBS implementowany przez usługi Service Bus umożliwia obejście elegancki dla obu tych problemów: Umożliwia ona klienta, aby skojarzyć tokenów dostępu z każdego węzła i zaktualizować tych tokenów, zanim wygasną, bez przerywania przepływu wiadomości.
+Specyfikacja AMQP CBS zaimplementowana przez Service Bus umożliwia eleganckie obejście obu tych problemów: umożliwia klientowi kojarzenie tokenów dostępu z każdym węzłem i aktualizowanie tych tokenów przed ich wygaśnięciem, bez przerywania przepływu komunikatów.
 
-CBS definiuje węzłem zarządzanie wirtualnym o nazwie *$cbs*, muszą być dostarczone przez infrastruktura obsługi komunikatów. Węzeł zarządzania akceptuje tokeny w imieniu innych węzłów w infrastrukturze obsługi wiadomości.
+CBS definiuje wirtualny węzeł zarządzania o nazwie *$CBS*, który ma być udostępniany przez infrastrukturę obsługi komunikatów. Węzeł zarządzania akceptuje tokeny w imieniu innych węzłów w infrastrukturze obsługi wiadomości.
 
-Gest protokół jest żądanie/nietypizowana odpowiedź programu exchange zgodnie z definicją w specyfikacji zarządzania. Czy oznacza, że klient nawiąże pary łączy z *$cbs* węzeł i następnie przekazuje żądania wychodzące łącze, a następnie czeka na odpowiedź na łącza przychodzącego.
+Gest protokołu jest wymianą żądania/odpowiedzi zgodnie z definicją w specyfikacji zarządzania. Oznacza to, że klient ustanowi parę linków z węzłem *$CBS* , a następnie przekaże żądanie dotyczące łącza wychodzącego, a następnie czeka na odpowiedź w łączu przychodzącym.
 
 Komunikat żądania ma następujące właściwości aplikacji:
 
-| Klucz | Optional (Opcjonalność) | Typ wartości | Wartość zawartości |
+| Klucz | Optional (Opcjonalność) | Typ wartości | Zawartość wartości |
 | --- | --- | --- | --- |
-| Operacja |Nie |string |**Umieść token** |
-| type |Nie |string |Typ tokenu dotyczy żądanie put. |
-| name |Nie |string |Do której stosują się token "audience". |
-| wygaśnięcie |Tak |timestamp |Czas wygaśnięcia tokenu. |
+| operation |Nie |ciąg |**Put-token** |
+| type |Nie |ciąg |Typ umieszczanego tokenu. |
+| name |Nie |ciąg |"Odbiorcy", do którego ma zastosowanie token. |
+| Datę |Yes |sygnatura czasowa |Czas wygaśnięcia tokenu. |
 
-*Nazwa* właściwość identyfikuje jednostki, z którym token jest włączona. W usłudze Service Bus jest ścieżka do kolejki lub tematu/subskrypcji. *Typu* właściwość identyfikuje typ tokenu:
+Właściwość *name* identyfikuje jednostkę, z którą ma zostać skojarzony token. W Service Bus jest to ścieżka do kolejki lub tematu/subskrypcji. Właściwość *Type* identyfikuje typ tokenu:
 
 | Typ tokenu | Opis tokenu | Typ treści | Uwagi |
 | --- | --- | --- | --- |
-| amqp:jwt |Tokenu Web JSON (JWT) |Protokół AMQP wartość (ciąg) |Nie jest jeszcze dostępna. |
-| amqp:swt |Prosty Token sieci Web (SWT) |Protokół AMQP wartość (ciąg) |Obsługiwane tylko w przypadku SWT tokeny wystawione przez usługi AAD/usługi ACS |
-| servicebus.windows.net:sastoken |Token sygnatury dostępu Współdzielonego usługi Service Bus |Protokół AMQP wartość (ciąg) |- |
+| amqp:jwt |Token sieci Web JSON (JWT) |AMQP — wartość (ciąg) |Jeszcze niedostępne. |
+| amqp:swt |Prosty token sieci Web (SWT) |AMQP — wartość (ciąg) |Obsługiwane tylko dla tokenów SWT wystawionych przez usługę AAD/ACS |
+| servicebus.windows.net:sastoken |Token SAS Service Bus |AMQP — wartość (ciąg) |- |
 
-Tokeny przyznaje prawa. Usługa Service Bus obsługującemu trzy podstawowe prawa: "Wyślij" umożliwia wysyłanie "Nasłuchiwania" umożliwia odbieranie i "Manage" umożliwia manipulowanie jednostek. SWT tokeny wystawione przez usługi AAD/ACS jawnie uwzględnić te prawa jako oświadczenia. Tokeny sygnatur dostępu Współdzielonego usługi Service Bus można znaleźć reguły skonfigurowane na przestrzeń nazw lub jednostki, a te zasady są skonfigurowane przy użyciu uprawnień. Podpisywania tokenu przy użyciu klucza skojarzone z tą regułą ten sposób sprawia, że token express odpowiednich praw. Token skojarzone z jednostki przy użyciu *put token* pozwala połączonego komputera klienckiego do interakcji z jednostką na token praw. Link, w którym klient ma na *nadawcy* rola wymaga "Send" bezpośrednio; podjęcia *odbiorcy* rola wymaga "Nasłuchiwania" po prawej.
+Tokeny przyznaje prawa. Service Bus wie o trzech podstawowych prawach: "Send" umożliwia wysyłanie, "Listen" włącza otrzymywanie, a "manage" włącza manipulowanie jednostkami. Tokeny SWT wystawiane przez usługę AAD/ACS jawnie zawierają te prawa jako oświadczenia. Tokeny sygnatury dostępu współdzielonego Service Bus odwołują się do reguł skonfigurowanych dla przestrzeni nazw lub jednostek. te reguły są konfigurowane z prawami. Podpisywanie tokenu z kluczem skojarzonym z tą regułą powoduje, że token wyraża odpowiednie prawa. Token skojarzony z jednostką przy użyciu elementu *Put-token* umożliwia połączonemu klientowi współpracującie z jednostką na prawach tokenu. Link, w którym klient przejmuje rolę *nadawcy* , wymaga prawa "Wyślij"; wykonanie operacji "Listen" w ramach roli *odbiornika* wymaga prawa "nasłuchiwanie".
 
-Komunikat odpowiedzi zawiera następujące *właściwości aplikacji* wartości
+Komunikat odpowiedzi zawiera następujące wartości *właściwości aplikacji*
 
-| Klucz | Optional (Opcjonalność) | Typ wartości | Wartość zawartości |
+| Klucz | Optional (Opcjonalność) | Typ wartości | Zawartość wartości |
 | --- | --- | --- | --- |
-| Kod stanu: |Nie |int |Kod odpowiedzi HTTP **[specyfikacją RFC2616]** . |
-| status-description |Tak |string |Opis stanu. |
+| stan — kod |Nie |int |Kod odpowiedzi HTTP **[RFC2616]** . |
+| stan — opis |Yes |ciąg |Opis stanu. |
 
-Klient może wywołać *put token* wielokrotnie i dla dowolnej jednostki w infrastrukturze obsługi wiadomości. Tokeny są ograniczone do bieżącego klienta i zakotwiczone w bieżącym połączeniu, co oznacza, że serwer porzuca wszystkie tokeny zachowane po spadku połączenia.
+Klient może wielokrotnie wywoływać *token Put* i dla każdej jednostki w infrastrukturze obsługi wiadomości. Tokeny są objęte zakresem bieżącego klienta i zakotwiczone w bieżącym połączeniu, co oznacza, że serwer porzuca wszelkie zachowane tokeny, gdy połączenie zostanie odłączone.
 
-Bieżąca implementacja usługi Service Bus zezwala tylko CBS w połączeniu z metodą SASL "ANONYMOUS". Połączenia SSL/TLS, zawsze musi istnieć przed uzgadnianie SASL.
+Bieżąca implementacja Service Bus zezwala tylko na CBS w połączeniu z metodą SASL "ANONYMOUS". Połączenie SSL/TLS musi zawsze istnieć przed uzgodnieniem SASL.
 
-Mechanizm anonimowe, w związku z tym musi być obsługiwana przez wybranego klienta protokołu AMQP 1.0. Dostęp anonimowy oznacza, że uzgadniania połączenia początkowego, takich jak tworzenie początkowej sesji możliwe bez usługi Service Bus, wiedząc, który tworzy połączenie.
+W związku z tym mechanizm anonimowy musi być obsługiwany przez wybranego klienta AMQP 1,0. Dostęp anonimowy oznacza, że początkowe uzgadnianie połączeń, w tym tworzenie początkowej sesji, odbywa się bez Service Bus znajomości osoby tworzącej połączenie.
 
-Po nawiązaniu połączenia i sesji, dołączając łącza do *$cbs* węzła i wysyłanie *put token* żądania tylko dozwolone są operacje. Należy ustawić prawidłowy token pomyślnie za pomocą *put token* żądania do jednego z węzłów jednostki w ciągu 20 sekund po nawiązaniu połączenia, w przeciwnym razie połączenie zostanie jednostronnie porzucone przez usługę Service Bus.
+Po nawiązaniu połączenia i sesji, dołączeniu linków do węzła *$CBS* i wysłania żądania *Put token* są jedynymi dozwolonymi operacjami. Prawidłowy token musi zostać pomyślnie ustawiony przy użyciu żądania *Put tokenu* dla pewnego węzła jednostki w ciągu 20 sekund od nawiązania połączenia. w przeciwnym razie połączenie zostanie utworzone jednostronnie przez Service Bus.
 
-Klient jest następnie odpowiedzialna za rejestrowanie informacji o wygaśnięciu tokenu. Po wygaśnięciu tokenu usługi Service Bus niezwłocznie porzuca wszystkie łącza połączenia na odpowiednie jednostki. Aby zapobiec występuje problem, klient token można zastąpić dla węzła z nowym w dowolnym momencie za pośrednictwem wirtualnej *$cbs* węzła zarządzania o tej samej *put token* gestu i bez pobierania sposób ładunku ruch tego przepływów dla innego łącza.
+Klient jest w dalszym ciągu odpowiedzialny za śledzenie wygaśnięcia tokenu. Po wygaśnięciu tokenu Service Bus natychmiast porzuca wszystkie linki połączenia z odpowiednią jednostką. Aby uniknąć wystąpienia problemu, klient może zastąpić token dla węzła nowym, w dowolnym momencie za pomocą węzła Virtual *$CBS* Management za pomocą tego samego gestu *Put token* i bez uzyskiwania informacji o ruchu ładunku, który przepływa na różnych łączach.
 
-### <a name="send-via-functionality"></a>Wysyłanie przez funkcje
+### <a name="send-via-functionality"></a>Funkcje wysyłania
 
-[Send via / Transfer nadawcy](service-bus-transactions.md#transfers-and-send-via) jest funkcją, umożliwiająca usługi Service bus do przodu danej komunikatów do jednostki docelowej przy użyciu innej jednostki. Ta funkcja jest używana do wykonywania operacji między jednostkami w ramach jednej transakcji.
+[Nadawca Wyślij za pośrednictwem/transfer](service-bus-transactions.md#transfers-and-send-via) to funkcja, która umożliwia usłudze Service Bus przekazywanie danej wiadomości do jednostki docelowej za pośrednictwem innej jednostki. Ta funkcja służy do wykonywania operacji między jednostkami w ramach jednej transakcji.
 
-Dzięki tej funkcji, Utwórz nadawcy i ustanowić łącze do `via-entity`. Podczas ustanawiania łącza, dodatkowe informacje są przekazywane do ustanowienia wartość true, miejsce docelowe komunikatów/transfer ten Link. Po dołączanie zakończy się powodzeniem, wszystkie komunikaty wysyłane na ten link, są automatycznie przekazywane do *jednostki docelowej* za pośrednictwem *za pośrednictwem jednostki*. 
+Za pomocą tej funkcji utworzysz nadawcę i nawiążesz połączenie z `via-entity`. Podczas ustanawiania łącza są przekazywane dodatkowe informacje w celu ustalenia prawdziwej lokalizacji docelowej komunikatów/transferów na tym łączu. Po pomyślnym dołączeniu wszystkie komunikaty wysłane w tym linku są automatycznie przekazywane do *jednostki docelowej* za pośrednictwem *jednostki*. 
 
-> Uwaga: Authentication zapewnia dostęp do wykonania dla obu *za pośrednictwem jednostki* i *jednostki docelowej* przed nawiązaniem tego łącza.
+> Uwaga: przed ustanowieniem tego linku należy przeprowadzić *uwierzytelnianie zarówno dla jednostki, jak i* *obiektu docelowego* .
 
 | Klient | | Service Bus |
 | --- | --- | --- |
-| Dołącz)<br/>Nazwa = {Nazwa linku}<br/>Rola = nadawcy<br/>Źródło = {klienta łącza ID}<br/>docelowy = **{za pośrednictwem entity}** ,<br/>**Właściwości mapy = [(<br/>com.microsoft:transfer adresu =<br/>{jednostki docelowej})]** ) | ------> | |
-| | <------ | Dołącz)<br/>Nazwa = {Nazwa linku}<br/>Rola odbiornik,<br/>Źródło = {klienta łącza ID}<br/>target={via-entity},<br/>Właściwości mapy [() =<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
+| Klej<br/>Nazwa = {Nazwa łącza},<br/>Rola = nadawca,<br/>Źródło = {identyfikator łącza klienta},<br/>Target = **{Via-Entity}** ,<br/>**Properties = map [(<br/>com. Microsoft: transfer-Destination-Address =<br/>{miejsce_docelowe-Entity})]** ) | ------> | |
+| | <------ | Klej<br/>Nazwa = {Nazwa łącza},<br/>Rola = odbiornik,<br/>Źródło = {identyfikator łącza klienta},<br/>Target = {Via-Entity},<br/>Właściwości = mapa [(<br/>com.microsoft:transfer-destination-address=<br/>{Destination-Entity})] ) |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat protokołu AMQP, skorzystaj z następujących linków:
+Aby dowiedzieć się więcej na temat AMQP, odwiedź następujące linki:
 
-* [Omówienie AMQP usługi Service Bus]
-* [Obsługa protokołu AMQP 1.0 tematów i kolejek usługi Service Bus na partycje]
-* [Protokół AMQP w usłudze Service Bus dla systemu Windows Server]
+* [Service Bus AMQP — Omówienie]
+* [Obsługa AMQP 1,0 Service Bus dla kolejek i tematów podzielonych na partycje]
+* [AMQP w Service Bus dla systemu Windows Server]
 
 [this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp-protocol-guide/amqp1.png
@@ -420,6 +429,6 @@ Aby dowiedzieć się więcej na temat protokołu AMQP, skorzystaj z następując
 [3]: ./media/service-bus-amqp-protocol-guide/amqp3.png
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
-[Omówienie AMQP usługi Service Bus]: service-bus-amqp-overview.md
-[Obsługa protokołu AMQP 1.0 tematów i kolejek usługi Service Bus na partycje]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[Protokół AMQP w usłudze Service Bus dla systemu Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+[Service Bus AMQP — Omówienie]: service-bus-amqp-overview.md
+[Obsługa AMQP 1,0 Service Bus dla kolejek i tematów podzielonych na partycje]: service-bus-partitioned-queues-and-topics-amqp-overview.md
+[AMQP w Service Bus dla systemu Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx

@@ -2,7 +2,7 @@
 title: Przewodnik migracji biblioteki ADAL do MSAL dla systemu Android | Azure
 description: Dowiedz się, jak przeprowadzić migrację aplikacji dla systemu Android biblioteki Azure Active Directory Authentication Library (ADAL) do biblioteki uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
 ms.date: 09/6/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 0c7b059fd8d9b34ad6d1e565431d39ffc706cb45
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696711"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084057"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Przewodnik migracji biblioteki ADAL do MSAL dla systemu Android
 
@@ -56,7 +56,7 @@ Publiczny interfejs API MSAL wprowadza ważne zmiany, w tym:
 - MSAL obsługuje konfigurację deklaratywną dla:
   - Identyfikator klienta, identyfikator URI przekierowania.
   - Osadzona przeglądarka vs
-  - wykazu
+  - Wykazu
   - Ustawienia protokołu HTTP, takie jak Odczyt i limit czasu połączenia
 
 ## <a name="your-app-registration-and-migration-to-msal"></a>Rejestracja i migracja aplikacji do MSAL
@@ -65,7 +65,7 @@ Nie musisz zmieniać istniejącej rejestracji aplikacji, aby używać MSAL. Jeś
 
 W przypadku rejestracji aplikacji w portalu zostanie wyświetlona karta **uprawnienia interfejsu API** . Zawiera listę interfejsów API i uprawnień (zakresów), dla których aplikacja jest obecnie skonfigurowana do żądania dostępu do programu. Pokazuje także listę nazw zakresów skojarzonych z poszczególnymi uprawnieniami interfejsu API.
 
-### <a name="user-consent"></a>Zgoda użytkownika
+### <a name="user-consent"></a>Wyrażanie zgody użytkownika
 
 Za pomocą biblioteki ADAL i punktu końcowego usługi AAD V1 użytkownik wyraża zgodę na posiadane zasoby. Dzięki MSAL i platformie tożsamości firmy Microsoft można zażądać ich przyrostowo. Poprawna zgoda jest przydatna w przypadku uprawnień, które użytkownik może rozważyć wysoki poziom uprawnień, lub w przeciwnym razie, jeśli nie podano z oczywistym wyjaśnieniem przyczyny tego uprawnienia. W bibliotece ADAL te uprawnienia mogły spowodować, że użytkownik porzucają logowanie do aplikacji.
 

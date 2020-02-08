@@ -3,22 +3,22 @@ title: Zainicjuj aplikacje klienckie MSAL. js | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje na temat inicjowania aplikacji klienckich przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e350f4fc3d40b45a1308e1edd9331dc7f71399c5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696133"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084044"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Inicjuj aplikacje klienckie przy użyciu MSAL. js
 W tym artykule opisano inicjowanie biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js) przy użyciu wystąpienia aplikacji agent użytkownika. Aplikacja agent użytkownika jest formą publicznej aplikacji klienckiej, w której kod klienta jest wykonywany w agencie użytkownika, takim jak przeglądarka sieci Web. Ci klienci nie przechowują wpisów tajnych, ponieważ kontekst przeglądarki jest otwarty. Aby dowiedzieć się więcej na temat typów aplikacji klienta i opcji konfiguracji aplikacji, zapoznaj się z [omówieniem](msal-client-applications.md).
@@ -124,7 +124,7 @@ Poniżej znajduje się całkowity zbiór konfigurowalnych opcji, które są obec
 
 - **postLogoutRedirectUri**: opcjonalne.  Przekierowuje użytkownika do `postLogoutRedirectUri` po wylogowaniu. Wartość domyślna to `redirectUri`.
 
-- **navigateToLoginRequestUrl**: opcjonalne. Możliwość wyłączenia domyślnej nawigacji na stronie początkowej po zalogowaniu się. Wartość domyślna to „true”. Jest on używany tylko w przypadku przepływów przekierowywania.
+- **navigateToLoginRequestUrl**: opcjonalne. Możliwość wyłączenia domyślnej nawigacji na stronie początkowej po zalogowaniu się. Wartość domyślna to true. Jest on używany tylko w przypadku przepływów przekierowywania.
 
 - **cacheLocation**: opcjonalne.  Ustawia magazyn przeglądarki na `localStorage` lub `sessionStorage`. Wartość domyślna to `sessionStorage`.
 

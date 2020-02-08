@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2019
-ms.openlocfilehash: a01258799efa81c8d3ddba398facaa90c24c2513
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ae799e9a852b8700399ef695c54b3348174b560c
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150029"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069408"
 ---
 # <a name="overview-of-the-azure-monitor-agents"></a>Omówienie agentów Azure Monitor 
 Zasoby obliczeniowe, takie jak maszyny wirtualne, generują dane w celu monitorowania ich wydajności i dostępności, podobnie jak w przypadku [innych zasobów w chmurze](../insights/monitor-azure-resource.md). Zasoby obliczeniowe, chociaż mają również system operacyjny gościa i obciążenia, które muszą być monitorowane. Zbieranie danych monitorowania z wewnątrz zasobu wymaga agenta. W tym artykule opisano agentów używanych przez Azure Monitor i można określić, które z nich muszą spełniać wymagania dotyczące konkretnego środowiska.
@@ -31,11 +31,11 @@ Azure Monitor ma trzech agentów, którzy mają określone funkcje. W zależnoś
 
 Poniższa tabela zawiera krótkie porównanie różnych agentów. Zapoznaj się z resztą tego artykułu, aby uzyskać szczegółowe informacje o każdej z nich.
 
-| | Rozszerzenie diagnostyki platformy Azure | Agent Log Analytics | Agent zależności |
+| | Rozszerzenie diagnostyki platformy Azure | Agent usługi Log Analytics | Agent zależności |
 |:---|:---|:---|:---|
 | Obsługiwane środowiska | Azure | Azure<br>Inna chmura<br>Lokalnie | Azure<br>Inna chmura<br>Lokalnie |
-| Systemy operacyjne | Windows<br>Linux | Windows<br>Linux | Windows<br>Linux
-| Zależności agentów  | Brak | Brak | Wymaga agenta Log Analytics |
+| Systemy operacyjne | System Windows<br>Linux | System Windows<br>Linux | System Windows<br>Linux
+| Zależności agentów  | None | None | Wymaga agenta Log Analytics |
 | Zebrane dane | Dzienniki zdarzeń<br>Zdarzenia ETW<br>Dziennik systemu<br>Wydajność<br>Dzienniki usług IIS<br>Dzienniki wyjściowe śledzenia aplikacji platformy .NET<br>Zrzuty awaryjne | Dzienniki zdarzeń<br>Dziennik systemu<br>Wydajność<br>Dzienniki usług IIS<br>Niestandardowe dzienniki<br>Dane z rozwiązań | Szczegóły procesu i zależności<br>Metryki połączenia sieciowego |
 | Dane wysyłane do | Azure Storage<br>Metryki Azure Monitor<br>Centrum zdarzeń | Dzienniki usługi Azure Monitor | Dzienniki usługi Azure Monitor |
 
@@ -60,10 +60,10 @@ Scenariusze obsługiwane przez rozszerzenie Diagnostyka Azure obejmują następu
 * Zbadaj problemy z rozruchem maszyny wirtualnej, korzystając z [diagnostyki rozruchu](../../virtual-machines/troubleshooting/boot-diagnostics.md).
 * Skopiuj dane z aplikacji działających na maszynie wirtualnej [, aby Application Insights](diagnostics-extension-to-application-insights.md) integrację z innym monitorowaniem aplikacji.
 
-## <a name="log-analytics-agent"></a>Agent Log Analytics
+## <a name="log-analytics-agent"></a>Agent usługi Log Analytics
 [Agent log Analytics](log-analytics-agent.md) zbiera dane monitorowania z systemu operacyjnego gościa i obciążeń maszyn wirtualnych na platformie Azure, innych dostawców chmury i lokalnie. Gromadzi dane w obszarze roboczym Log Analytics.
 
-Agent Log Analytics jest tym samym agentem, który jest używany przez System Center Operations Manager, oraz komputery z wieloma domową do komunikacji z grupą zarządzania i Azure Monitor jednocześnie. Ten agent jest również wymagany przez niektóre rozwiązania w Azure Monitor.
+Agent Log Analytics jest tym samym agentem, który jest używany przez System Center Operations Manager i komputery z wieloma domową agentów do komunikacji z grupą zarządzania i Azure Monitor jednocześnie. Ten agent jest również wymagany przez niektóre rozwiązania w Azure Monitor.
 
 Agent Log Analytics dla systemu Windows jest często określany jako Microsoft Management Agent (MMA). Agent Log Analytics dla systemu Linux jest często nazywany agentem pakietu OMS.
 

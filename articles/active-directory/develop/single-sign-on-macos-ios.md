@@ -4,7 +4,7 @@ titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne (SSO) w systemach macOS i iOS.
 services: active-directory
 documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/03/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: bfc656911abf3349e03543e6bb668db977422738
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022634"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085535"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Instrukcje: Konfigurowanie logowania jednokrotnego w systemach macOS i iOS
 
@@ -69,7 +69,7 @@ Aby włączyć logowanie jednokrotne w aplikacjach, należy wykonać następują
 
 Aby platforma tożsamości firmy Microsoft mogła dowiedzieć się, które aplikacje mogą udostępniać tokeny, te aplikacje muszą mieć ten sam identyfikator klienta lub identyfikator aplikacji. Jest to unikatowy identyfikator, który został dostarczony podczas rejestracji pierwszej aplikacji w portalu.
 
-Sposób, w jaki platforma tożsamości firmy Microsoft informuje aplikacje, które używają tego samego identyfikatora aplikacji, jest przez ich **identyfikatory URI przekierowania**. Każda aplikacja może mieć wiele identyfikatorów URI przekierowania zarejestrowanych w portalu dołączania. Każda aplikacja w Twoim pakiecie będzie miała inny identyfikator URI przekierowania. Przykład:
+Sposób, w jaki platforma tożsamości firmy Microsoft informuje aplikacje, które używają tego samego identyfikatora aplikacji, jest przez ich **identyfikatory URI przekierowania**. Każda aplikacja może mieć wiele identyfikatorów URI przekierowania zarejestrowanych w portalu dołączania. Każda aplikacja w Twoim pakiecie będzie miała inny identyfikator URI przekierowania. Na przykład:
 
 Identyfikator URI przekierowania APP1: `msauth.com.contoso.mytestapp1://auth`  
 Identyfikator URI przekierowania APP2: `msauth.com.contoso.mytestapp2://auth`  
@@ -149,7 +149,7 @@ MSAL zapewnia obsługę uwierzytelniania obsługiwanego przez brokera Microsoft 
 
 Poniższe kroki umożliwiają włączenie logowania jednokrotnego przy użyciu brokera uwierzytelniania dla aplikacji:
 
-1. Zarejestruj format URI przekierowania zgodnego z brokerem dla aplikacji w informacji. plist aplikacji. Format identyfikatora URI przekierowania zgodnego z brokerem jest `msauth.<app.bundle.id>://auth`. Zastąp element "< App .Binding. ID >" "IDENTYFIKATORem pakietu aplikacji. Przykład:
+1. Zarejestruj format URI przekierowania zgodnego z brokerem dla aplikacji w informacji. plist aplikacji. Format identyfikatora URI przekierowania zgodnego z brokerem jest `msauth.<app.bundle.id>://auth`. Zastąp element "< App .Binding. ID >" "IDENTYFIKATORem pakietu aplikacji. Na przykład:
 
     ```xml
     <key>CFBundleURLSchemes</key>

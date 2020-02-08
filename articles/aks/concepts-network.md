@@ -5,13 +5,14 @@ author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
+ms.custom: fasttrack-edit
 ms.author: mlearned
-ms.openlocfilehash: 86fa59a3d1c07aae842404c465b908e550708071
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047456"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084281"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -106,6 +107,8 @@ Między korzystającą wtyczki kubenet i Azure CNI istnieją następujące róż
 | Dostęp do zasobów zabezpieczonych przez punkty końcowe usługi                                             | Obsługiwane | Obsługiwane |
 | Uwidacznianie usług Kubernetes Services za pomocą usługi równoważenia obciążenia, bramy aplikacji lub kontrolera transferu danych przychodzących | Obsługiwane | Obsługiwane |
 | Domyślne Azure DNS i strefy prywatne                                                          | Obsługiwane | Obsługiwane |
+
+W przypadku systemu DNS, z dodatkiem korzystającą wtyczki kubenet i usługą Azure CNI w systemie DNS jest oferowana przez CoreDNS, zestaw demonów działający w AKS. Aby uzyskać więcej informacji na temat CoreDNS na Kubernetes, zobacz [Dostosowywanie usługi DNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). CoreDNS jest domyślnie skonfigurowany do przesyłania nieznanych domen do serwerów DNS węzłów, innymi słowy, do funkcji DNS Virtual Network platformy Azure, w której wdrożono klaster AKS. W związku z tym strefy Azure DNS i prywatne będą działać w przypadku zasobników z systemem AKS.
 
 ### <a name="support-scope-between-network-models"></a>Zakres pomocy technicznej między modelami sieci
 

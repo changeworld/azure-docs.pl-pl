@@ -3,12 +3,12 @@ title: Pakowanie aplikacji Service Fabric platformy Azure
 description: Dowiedz się więcej o pakowaniu aplikacji Service Fabric platformy Azure i sposobach przygotowania do wdrożenia w klastrze.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639687"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083620"
 ---
 # <a name="package-an-application"></a>Tworzenie pakietu aplikacji
 
@@ -43,7 +43,7 @@ Nazwy folderów odpowiadają atrybutom **nazw** każdego odpowiadającego elemen
 
 ## <a name="use-setupentrypoint"></a>Użyj SetupEntryPoint
 
-Typowymi scenariuszami używania **SetupEntryPoint** są sytuacje, w których należy uruchomić plik wykonywalny przed uruchomieniem usługi lub trzeba wykonać operację z podniesionymi uprawnieniami. Przykład:
+Typowymi scenariuszami używania **SetupEntryPoint** są sytuacje, w których należy uruchomić plik wykonywalny przed uruchomieniem usługi lub trzeba wykonać operację z podniesionymi uprawnieniami. Na przykład:
 
 * Konfigurowanie i Inicjowanie zmiennych środowiskowych wymaganych przez plik wykonywalny usługi. Nie jest ograniczony tylko do plików wykonywalnych pisanych za pośrednictwem modeli programowania Service Fabric. Na przykład npm. exe wymaga pewnych zmiennych środowiskowych skonfigurowanych do wdrażania aplikacji node. js.
 * Konfigurowanie kontroli dostępu przez zainstalowanie certyfikatów zabezpieczeń.
@@ -52,13 +52,13 @@ Aby uzyskać więcej informacji na temat konfigurowania **SetupEntryPoint**, zob
 
 <a id="Package-App"></a>
 
-## <a name="configure"></a>Konfiguracja
+## <a name="configure"></a>Konfigurowanie
 
 ### <a name="build-a-package-by-using-visual-studio"></a>Tworzenie pakietu przy użyciu programu Visual Studio
 
-Jeśli używasz programu Visual Studio 2015 do tworzenia aplikacji, możesz użyć polecenia Package, aby automatycznie utworzyć pakiet pasujący do opisanego powyżej układu.
+Jeśli używasz programu Visual Studio do tworzenia aplikacji, możesz użyć polecenia *Package* , aby automatycznie utworzyć pakiet pasujący do opisanego powyżej układu.
 
-Aby utworzyć pakiet, kliknij prawym przyciskiem myszy projekt aplikacji w Eksplorator rozwiązań i wybierz polecenie pakiet, jak pokazano poniżej:
+Aby utworzyć pakiet, kliknij prawym przyciskiem myszy projekt aplikacji w *Eksplorator rozwiązań* i wybierz polecenie **pakiet** :
 
 ![Pakowanie aplikacji za pomocą programu Visual Studio][vs-package-command]
 

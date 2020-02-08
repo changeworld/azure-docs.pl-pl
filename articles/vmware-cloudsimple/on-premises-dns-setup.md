@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eadedcea7e6010cf93d118b3781630053609d29f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019608"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083086"
 ---
 # <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurowanie systemu DNS do rozpoznawania nazw w celu automatycznej synchronizacji dostępu do programu vCenter w chmurze prywatnej z poziomu lokalnych stacji roboczych
 
@@ -32,10 +32,10 @@ Aby uzyskać dostęp do serwera vCenter w chmurze prywatnej o automatycznej sync
 
 Użyj dowolnej z tych opcji dla konfiguracji DNS.
 
-* [Utwórz strefę na serwerze DNS dla *. AVS.io](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [Utwórz usługę przesyłania dalej warunkowego na lokalnym serwerze DNS, aby rozwiązać ten problem *. AVS.io](#create-a-conditional-forwarder)
+* [Utwórz strefę na serwerze DNS dla *. cloudsimple.io](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [Utwórz usługę przesyłania dalej warunkowego na lokalnym serwerze DNS, aby rozwiązać ten problem *. cloudsimple.io](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-avsio"></a>Utwórz strefę na serwerze DNS dla *. AVS.io
+## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>Utwórz strefę na serwerze DNS dla *. cloudsimple.io
 
 Można skonfigurować strefę jako strefę zastępczą i wskazać serwery DNS w chmurze prywatnej do rozpoznawania nazw. Ta sekcja zawiera informacje dotyczące korzystania z serwera DNS BIND lub serwera DNS systemu Microsoft Windows.
 
@@ -78,7 +78,7 @@ zone "az.cloudsimple.io"
 
 ## <a name="create-a-conditional-forwarder"></a>Tworzenie usługi przesyłania dalej warunkowego
 
-Usługa przesyłania dalej warunkowego przekazuje wszystkie żądania rozpoznawania nazw DNS do wywskazanego serwera. W przypadku tej konfiguracji każde żądanie do *. AVS.io jest przekazywany do serwerów DNS znajdujących się w chmurze prywatnej automatycznej synchronizacji. W poniższych przykładach pokazano, jak skonfigurować usługi przesyłania dalej na różnych typach serwerów DNS.
+Usługa przesyłania dalej warunkowego przekazuje wszystkie żądania rozpoznawania nazw DNS do wywskazanego serwera. W przypadku tej konfiguracji każde żądanie do *. cloudsimple.io jest przekazywane do serwerów DNS znajdujących się w chmurze prywatnej automatycznej synchronizacji. W poniższych przykładach pokazano, jak skonfigurować usługi przesyłania dalej na różnych typach serwerów DNS.
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Tworzenie usługi przesyłania dalej warunkowej na serwerze DNS BIND
 

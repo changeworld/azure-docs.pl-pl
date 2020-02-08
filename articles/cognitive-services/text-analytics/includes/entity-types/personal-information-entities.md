@@ -6,30 +6,110 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/21/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3aa4da9a9cf3d1d4b664e81f1fd18f2b225d731d
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73800036"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086908"
 ---
 ## <a name="personal-information-entity-types"></a>Typy jednostek informacji osobistych:
 
+### <a name="person"></a>Person (Osoba)
+Rozpoznawaj nazwiska osób w tekście.
+
+Języki:
+* Publiczna wersja zapoznawcza: `English`
+
+| Nazwa podtypu | Opis                                               | Dostępne począwszy od wersji modelu |
+|--------------|-----------------------------------------------------------|----------------------------------------|
+| Nie dotyczy          | Rozpoznane nazwy, na przykład `Bill Gates`, `Marie Curie` | `2020-02-01`                           |
+
+### <a name="organization"></a>Organizacja  
+
+Rozpoznawaj organizacje, firmy, agencje, firmy, trefle i inne grupy osób.
+
+Języki: 
+
+* Publiczna wersja zapoznawcza: `English`
+
+| Nazwa podtypu | Opis                                                                                       | Dostępne począwszy od wersji modelu|
+|--------------|---------------------------------------------------------------------------------------------------|--------------|
+| Nie dotyczy          | organizacje, na przykład `Microsoft`, `NASA``National Oceanic and Atmospheric Administration` | `2020-02-01` |
+
 ### <a name="phone-number"></a>Numer telefonu
 
-Numery telefonów. 
+Numery telefonów (tylko numery telefonów USA). 
 
 Języki:
 
 * Publiczna wersja zapoznawcza: `English`
 
-| Nazwa podtypu           | Opis                                           |
-|------------------------|-------------------------------------------------------|
-| Nie dotyczy                    | Numery telefonów, na przykład `+1 123-123-123`.          |
-| Numer telefonu UE        | Numery telefonów specyficzne dla Unii Europejskiej.         |
-| Numer telefonu komórkowego UE | Numery telefonów komórkowych specyficzne dla Unii Europejskiej. |
+| Nazwa podtypu | Opis                                    | Dostępne począwszy od wersji modelu |
+|--------------|------------------------------------------------|----------------------------------------|
+| Nie dotyczy          | Numery telefonów US, na przykład `(312) 555-0176` | `2020-02-01`                           |
+
+### <a name="email"></a>Email
+
+Adres e-mail. 
+
+Języki:
+
+* Publiczna wersja zapoznawcza: `English`
+
+| Nazwa podtypu | Opis                                      | Dostępne począwszy od wersji modelu |
+|--------------|--------------------------------------------------|----------------------------------------|
+| Nie dotyczy          | Adres e-mail, na przykład `support@contoso.com` | `2020-02-01`                           |
+
+### <a name="url"></a>Adres URL
+
+Internetowe adresy URL.
+
+Języki:
+
+* Publiczna wersja zapoznawcza: `English`
+
+| Nazwa podtypu | Opis                                          | Dostępne począwszy od wersji modelu |
+|--------------|------------------------------------------------------|----------------------------------------|
+| Nie dotyczy          | Adresy URL do witryn sieci Web, na przykład `https://www.bing.com` | `2020-02-01`                           |
+
+### <a name="ip-address"></a>Adres IP
+
+Adres protokołu internetowego
+
+Języki:
+
+* Publiczna wersja zapoznawcza: `English`
+
+| Nazwa podtypu | Opis                              | Dostępne począwszy od wersji modelu |
+|--------------|------------------------------------------|----------------------------------------|
+| Nie dotyczy          | Adres sieciowy na przykład `10.0.0.101` | `2020-02-01`                           |
+
+### <a name="quantity"></a>Liczba 
+
+Ilości liczbowe
+
+Języki:
+
+* Publiczna wersja zapoznawcza: `English`
+
+| Nazwa podtypu | Opis                   | Dostępne począwszy od wersji modelu |
+|--------------|-------------------------------|----------------------------------------|
+| Wiek          | `90 days old`, `30 years old` | `2020-02-01`                           |
+
+### <a name="datetime"></a>DateTime
+
+Jednostki daty i godziny
+
+Języki:
+
+* Publiczna wersja zapoznawcza: `English`
+
+| Nazwa podtypu | Opis                   | Dostępne począwszy od wersji modelu |
+|--------------|-------------------------------|----------------------------------------|
+| Date         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
 ### <a name="eu-gps-coordinates"></a>Współrzędne GPS w Unii Europejskiej
 
@@ -39,13 +119,15 @@ Języki:
 
 * Publiczna wersja zapoznawcza: `English`
 
-| Nazwa podtypu | Opis                               |
-|--------------|-------------------------------------------|
-| Nie dotyczy          | Współrzędne GPS w Unii Europejskiej |
+| Nazwa podtypu | Opis                               | Dostępne począwszy od wersji modelu |
+|--------------|-------------------------------------------|----------------------------------------|
+| Nie dotyczy          | Współrzędne GPS w Unii Europejskiej | `2019-10-01`                           |
 
 ### <a name="azure-information"></a>Informacje o platformie Azure
 
 Identyfikowalne informacje dotyczące platformy Azure, w tym informacje o uwierzytelnianiu i parametry połączenia. 
+
+* Dostępne począwszy od wersji modelu `2019-10-01`.
 
 Języki:
 
@@ -59,13 +141,15 @@ Języki:
 | Parametry połączenia usługi Azure IoT           | Parametry połączenia dla Internetu rzeczy (IoT) platformy Azure.                        |
 | Hasło ustawienia publikowania platformy Azure        | Hasło dla ustawień publikowania platformy Azure.                                        |
 | Azure Redis Cache parametry połączenia   | Parametry połączenia dla pamięci podręcznej platformy Azure dla Redis.                             |
-| SAS platformy Azure                             | Parametry połączenia dla oprogramowania Azure jako usługi (SAS).                     |
+| Azure SAS                             | Parametry połączenia dla oprogramowania Azure jako usługi (SAS).                     |
 | Azure Service Bus parametry połączenia   | Parametry połączenia dla usługi Azure Service Bus.                                |
 | Klucz konta usługi Azure Storage             | Klucz konta dla konta usługi Azure Storage.                                   |
 | Klucz konta usługi Azure Storage (ogólny)   | Ogólny klucz konta dla konta usługi Azure Storage.                           |
 | SQL Server parametry połączenia          | Parametry połączenia dla programu SQL Server.                                         |
 
 ### <a name="identification"></a>Identyfikatora
+
+* Dostępne począwszy od wersji modelu `2019-10-01`.
 
 Języki:
 

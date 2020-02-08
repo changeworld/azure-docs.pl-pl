@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8cf1f8ecb68e31f93c19d93d6ebc4f8ef37724e7
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 09558a8d1e4e2dc68cefd2c870f54e008d10b97b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028441"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083553"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Utwórz konto, które obsługuje klucze zarządzane przez klienta dla tabel i kolejek
 
@@ -35,41 +35,93 @@ Można utworzyć konto magazynu, które opiera się na kluczu szyfrowania konta 
 
 ### <a name="register-to-use-the-account-encryption-key"></a>Zarejestruj się, aby użyć klucza szyfrowania konta
 
+Aby zarejestrować się w celu korzystania z klucza szyfrowania konta z usługą Queue lub Table Storage, użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Aby zarejestrować się w programie PowerShell, wywołaj polecenie [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
+
+```powershell
+Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForQueues
+Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForTables
+```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
 Aby zarejestrować się w interfejsie wiersza polecenia platformy Azure, wywołaj polecenie [AZ Feature Register](/cli/azure/feature#az-feature-register) .
 
-Aby zarejestrować się w celu korzystania z klucza szyfrowania konta z usługą queue storage:
-
 ```azurecli
-az feature register --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForQueues
+az feature register --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForQueues
+az feature register --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForTables
 ```
 
-Aby zarejestrować się w celu korzystania z klucza szyfrowania konta w usłudze Table Storage:
+# <a name="templatetabtemplate"></a>[Szablon](#tab/template)
 
-```azurecli
-az feature register --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForTables
-```
+Nie dotyczy
+
+---
 
 ### <a name="check-the-status-of-your-registration"></a>Sprawdź stan rejestracji
 
-Aby sprawdzić stan rejestracji w usłudze queue storage:
+Aby sprawdzić stan rejestracji dla magazynu kolejki lub tabeli, użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-```azurecli
-az feature show --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForQueues
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Aby sprawdzić stan rejestracji w programie PowerShell, wywołaj polecenie [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
+
+```powershell
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForQueues
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName AllowAccountEncryptionKeyForTables
 ```
 
-Aby sprawdzić stan rejestracji w usłudze Table Storage:
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+Aby sprawdzić stan rejestracji w interfejsie wiersza polecenia platformy Azure, wywołaj polecenie [AZ Feature](/cli/azure/feature#az-feature-show) .
 
 ```azurecli
-az feature show --namespace Microsoft.Storage --name AllowAccountEncryptionKeyForTables
+az feature show --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForQueues
+az feature show --namespace Microsoft.Storage \
+    --name AllowAccountEncryptionKeyForTables
 ```
+
+# <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+
+Nie dotyczy
+
+---
 
 ### <a name="re-register-the-azure-storage-resource-provider"></a>Zarejestruj ponownie dostawcę zasobów usługi Azure Storage
 
-Po zatwierdzeniu rejestracji należy ponownie zarejestrować dostawcę zasobów usługi Azure Storage. Wywołaj polecenie [AZ Provider Register](/cli/azure/provider#az-provider-register) :
+Po zatwierdzeniu rejestracji należy ponownie zarejestrować dostawcę zasobów usługi Azure Storage. Użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby ponownie zarejestrować dostawcę zasobów.
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Aby ponownie zarejestrować dostawcę zasobów przy użyciu programu PowerShell, wywołaj polecenie [register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) .
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
+```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+Aby ponownie zarejestrować dostawcę zasobów przy użyciu interfejsu wiersza polecenia platformy Azure, wywołaj polecenie [AZ Provider Register](/cli/azure/provider#az-provider-register) .
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
 ```
+
+# <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+
+Nie dotyczy
+
+---
 
 ## <a name="create-an-account-that-uses-the-account-encryption-key"></a>Tworzenie konta korzystającego z klucza szyfrowania konta
 
@@ -80,31 +132,52 @@ Konto magazynu musi być kontem ogólnego przeznaczenia w wersji 2. Można utwor
 > [!NOTE]
 > Opcjonalnie można skonfigurować tylko magazyn kolejek i tabel, aby szyfrować dane przy użyciu klucza szyfrowania konta podczas tworzenia konta magazynu. Magazyn obiektów blob i Azure Files zawsze używają klucza szyfrowania konta do szyfrowania danych.
 
-### <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Aby użyć interfejsu wiersza polecenia platformy Azure do utworzenia konta magazynu, które opiera się na kluczu szyfrowania konta, upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure w wersji 2.0.80 lub nowszej. Aby uzyskać więcej informacji, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Aby użyć programu PowerShell do utworzenia konta magazynu, które opiera się na kluczu szyfrowania konta, upewnij się, że zainstalowano moduł Azure PowerShell w wersji 3.4.0 lub nowszej. Aby uzyskać więcej informacji, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
+
+Następnie utwórz konto magazynu ogólnego przeznaczenia w wersji 2, wywołując polecenie [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) z odpowiednimi parametrami:
+
+- Dołącz opcję `-EncryptionKeyTypeForQueue` i ustaw jej wartość na `Account`, aby użyć klucza szyfrowania konta do szyfrowania danych w usłudze queue storage.
+- Dołącz opcję `-EncryptionKeyTypeForTable` i ustaw jej wartość na `Account`, aby użyć klucza szyfrowania konta do szyfrowania danych w usłudze Table Storage.
+
+Poniższy przykład pokazuje, jak utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 skonfigurowane dla magazynu geograficznie nadmiarowego do odczytu (RA-GRS), które korzysta z klucza szyfrowania konta do szyfrowania danych zarówno dla magazynu kolejek, jak i tabeli. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami:
+
+```powershell
+New-AzStorageAccount -ResourceGroupName <resource_group> `
+    -AccountName <storage-account> `
+    -Location <location> `
+    -SkuName "Standard_RAGRS" `
+    -Kind StorageV2 `
+    -EncryptionKeyTypeForTable Account `
+    -EncryptionKeyTypeForQueue Account
+```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+Aby użyć interfejsu wiersza polecenia platformy Azure do utworzenia konta magazynu, które opiera się na kluczu szyfrowania konta, upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure w wersji 2.0.80 lub nowszej. Aby uzyskać więcej informacji, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 Następnie utwórz konto magazynu ogólnego przeznaczenia w wersji 2, wywołując polecenie [AZ Storage account Create](/cli/azure/storage/account#az-storage-account-create) z odpowiednimi parametrami:
 
 - Dołącz opcję `--encryption-key-type-for-queue` i ustaw jej wartość na `Account`, aby użyć klucza szyfrowania konta do szyfrowania danych w usłudze queue storage.
 - Dołącz opcję `--encryption-key-type-for-table` i ustaw jej wartość na `Account`, aby użyć klucza szyfrowania konta do szyfrowania danych w usłudze Table Storage.
 
-Poniższy przykład pokazuje, jak utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 skonfigurowane dla usługi LRS, które używa klucza szyfrowania konta do szyfrowania danych zarówno dla kolejki, jak i dla magazynu tabel. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami:
+Poniższy przykład pokazuje, jak utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 skonfigurowane dla magazynu geograficznie nadmiarowego do odczytu (RA-GRS), które korzysta z klucza szyfrowania konta do szyfrowania danych zarówno dla magazynu kolejek, jak i tabeli. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami:
 
 ```azurecli
 az storage account create \
     --name <storage-account> \
     --resource-group <resource-group> \
     --location <location> \
-    --sku Standard_LRS \
+    --sku Standard_RAGRS \
     --kind StorageV2 \
     --encryption-key-type-for-table Account \
     --encryption-key-type-for-queue Account
 ```
 
-### <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+# <a name="templatetabtemplate"></a>[Szablon](#tab/template)
 
-Poniższy przykład JSON tworzy konto magazynu ogólnego przeznaczenia w wersji 2 skonfigurowane dla usługi LRS, które korzysta z klucza szyfrowania konta do szyfrowania danych zarówno dla kolejki, jak i dla magazynu tabel. Pamiętaj, aby zastąpić wartości zastępcze w nawiasach ostrych własnymi wartościami:
+Poniższy przykład JSON tworzy konto magazynu ogólnego przeznaczenia w wersji 2, które jest skonfigurowane na potrzeby magazynu geograficznie nadmiarowego do odczytu (RA-GRS) i używa klucza szyfrowania konta do szyfrowania danych zarówno dla magazynu kolejek, jak i tabeli. Pamiętaj, aby zastąpić wartości zastępcze w nawiasach ostrych własnymi wartościami:
 
 ```json
 "resources": [
@@ -116,7 +189,7 @@ Poniższy przykład JSON tworzy konto magazynu ogólnego przeznaczenia w wersji 
         "dependsOn": [],
         "tags": {},
         "sku": {
-            "name": "[parameters('Standard_LRS')]"
+            "name": "[parameters('Standard_RAGRS')]"
         },
         "kind": "[parameters('StorageV2')]",
         "properties": {
@@ -151,11 +224,32 @@ Po utworzeniu konta, które opiera się na kluczu szyfrowania konta, zobacz jede
 
 Aby sprawdzić, czy usługa na koncie magazynu korzysta z klucza szyfrowania konta, wywołaj polecenie [AZ Storage account](/cli/azure/storage/account#az-storage-account-show) dla interfejsu wiersza polecenia platformy Azure. To polecenie zwraca zestaw właściwości konta magazynu i ich wartości. Poszukaj pola `keyType` dla każdej usługi we właściwości szyfrowania i sprawdź, czy jest ona ustawiona na `Account`.
 
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+Aby sprawdzić, czy usługa na koncie magazynu korzysta z klucza szyfrowania konta, wywołaj polecenie [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) . To polecenie zwraca zestaw właściwości konta magazynu i ich wartości. Poszukaj pola `KeyType` dla każdej usługi we właściwości `Encryption` i sprawdź, czy jest ona ustawiona na `Account`.
+
+```powershell
+$account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account>
+$account.Encryption.Services.Queue
+$account.Encryption.Services.Table
+```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+Aby sprawdzić, czy usługa na koncie magazynu korzysta z klucza szyfrowania konta, wywołaj polecenie [AZ Storage account](/cli/azure/storage/account#az-storage-account-show) . To polecenie zwraca zestaw właściwości konta magazynu i ich wartości. Poszukaj pola `keyType` dla każdej usługi we właściwości szyfrowania i sprawdź, czy jest ona ustawiona na `Account`.
+
 ```azurecli
 az storage account show /
     --name <storage-account> /
     --resource-group <resource-group>
 ```
+
+# <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+
+Nie dotyczy
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 

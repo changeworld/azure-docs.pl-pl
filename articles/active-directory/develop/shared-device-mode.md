@@ -3,7 +3,7 @@ title: Tryb udostępnionego urządzenia dla urządzeń z systemem Android | Azur
 description: Dowiedz się więcej o trybie udostępnionego urządzenia, który umożliwia pracownikom Firstline współużytkowanie urządzenia z systemem Android
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 1/15/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 53fa82cf6eaaba09353ba21a12ae9677b9264b1a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9928b64d286cc5072f28f7cc17e4af3e95662cd0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701471"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085618"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Tryb udostępnionego urządzenia dla urządzeń z systemem Android
 
@@ -85,9 +85,9 @@ Poniższe różnice mają zastosowanie w zależności od tego, czy aplikacja jes
 
 |  | Urządzenie trybu udostępnionego  | U rządzenie osobiste |
 |---------|---------|---------|
-| **Konta**     | Pojedyncze konto | Wiele kont |
-| **Logowanie** | Cały świat | Cały świat |
-| **Wylogowywanie** | Cały świat | Każda aplikacja może kontrolować, czy wylogowywanie jest lokalne dla aplikacji, czy dla rodziny aplikacji. |
+| **Rachunkowość**     | Pojedyncze konto | Wiele kont |
+| **Logowanie** | Globalny | Globalny |
+| **Wylogowywanie** | Globalny | Każda aplikacja może kontrolować, czy wylogowywanie jest lokalne dla aplikacji, czy dla rodziny aplikacji. |
 | **Obsługiwane typy kont** | Tylko konta służbowe | Obsługiwane konta osobiste i służbowe  |
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Dlaczego warto obsługiwać tylko tryb pojedynczego konta

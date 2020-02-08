@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844619"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086630"
 ---
 # <a name="persist-state-in-windows"></a>Stan utrwalania w systemie Windows
 
@@ -212,13 +212,13 @@ Zamiast instalować wolumin, można utworzyć katalog w systemie hosta i zainsta
     ```
 ## <a name="persist-events"></a>Zdarzenia utrwalania
 
-Aby włączyć trwałość zdarzeń, należy najpierw włączyć trwałość metadanych w ramach instalacji woluminu lub instalacji katalogu hosta za pomocą powyższych sekcji.
+Aby włączyć trwałość zdarzeń, należy najpierw włączyć trwałość zdarzeń przez zainstalowanie woluminu lub instalację katalogu hosta za pomocą powyższych sekcji.
 
 Ważne kwestie dotyczące utrwalania zdarzeń:
 
 * Zdarzenia utrwalania są włączane dla każdej subskrypcji zdarzeń i są zgodą na zamontowanie woluminu lub katalogu.
 * Trwałość zdarzenia jest konfigurowana w subskrypcji zdarzeń podczas tworzenia i nie można jej modyfikować po utworzeniu subskrypcji zdarzeń. Aby przełączać trwałość zdarzeń, należy usunąć i ponownie utworzyć subskrypcję zdarzeń.
-* Utrwalanie zdarzeń jest niemal zawsze wolniejsze niż w przypadku operacji w pamięci, jednak różnica między szybkością zależy od charakterystyki dysku. Kompromis między szybkością i niezawodnością jest nieodłączny od wszystkich systemów obsługi komunikatów, ale jest to noticible o dużej skali.
+* Utrwalanie zdarzeń jest niemal zawsze wolniejsze niż w przypadku operacji w pamięci, jednak różnica między szybkością zależy od charakterystyki dysku. Kompromis między szybkością i niezawodnością jest nieodłączny dla wszystkich systemów obsługi komunikatów, ale tylko w dużej skali.
 
 Aby włączyć trwałość zdarzeń w subskrypcji zdarzeń, ustaw `persistencePolicy` na `true`:
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841118"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087029"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Samouczek: uczenie i wdrażanie modelu z poziomu interfejsu wiersza polecenia
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Dowiedz się, jak wykonać następujące czynności:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 * Aby korzystać z poleceń interfejsu wiersza polecenia w tym dokumencie ze **środowiska lokalnego**, wymagany jest [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -97,7 +97,7 @@ Jeśli zostanie wyświetlony komunikat o tym, że rozszerzenie jest już zainsta
 az extension update -n azure-cli-ml
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Grupa zasobów to podstawowy kontener zasobów na platformie Azure. Podczas pracy z Azure Machine Learning Grupa zasobów będzie zawierać obszar roboczy Azure Machine Learning. Będzie również zawierać inne usługi platformy Azure używane przez obszar roboczy. Na przykład jeśli nauczysz model przy użyciu zasobów obliczeniowych opartych na chmurze, ten zasób zostanie utworzony w grupie zasobów.
 
@@ -381,7 +381,7 @@ To polecenie służy do wdrażania nowej usługi o nazwie `myservice`przy użyci
 
 Plik `inferenceConfig.yml` zawiera informacje dotyczące sposobu używania modelu do wnioskowania. Na przykład odwołuje się do skryptu wejścia (`score.py`) i zależności oprogramowania. 
 
-Aby uzyskać więcej informacji na temat struktury tego pliku, zobacz [Schemat konfiguracji wnioskowania](reference-azure-machine-learning-cli.md#inference-configuration-schema). Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
+Aby uzyskać więcej informacji na temat struktury tego pliku, zobacz [Schemat konfiguracji wnioskowania](reference-azure-machine-learning-cli.md#inference-configuration-schema). Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli przy użyciu Azure Machine Learning](how-to-deploy-and-where.md#prepare-deployment-artifacts).
 
 `aciDeploymentConfig.yml` opisuje środowisko wdrożenia używane do hostowania usługi. Konfiguracja wdrożenia jest specyficzna dla typu obliczenia używanego na potrzeby wdrożenia. W takim przypadku używane jest wystąpienie kontenera platformy Azure. Aby uzyskać więcej informacji, zobacz [Schemat konfiguracji wdrożenia](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 

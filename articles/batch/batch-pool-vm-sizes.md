@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: be19de19dab92bc40ca5529ad578e033a98929cd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c18190ec5e5d079d51630a976681717a78a46e00
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023569"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087051"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Wybieranie rozmiaru maszyny wirtualnej dla węzłów obliczeniowych w puli Azure Batch
 
@@ -36,38 +36,40 @@ Istnieje kilka wyjątków i ograniczeń umożliwiających wybranie rozmiaru masz
 
 Pule wsadowe w konfiguracji maszyny wirtualnej obsługują niemal wszystkie rozmiary maszyn wirtualnych ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)). Zapoznaj się z poniższą tabelą, aby dowiedzieć się więcej o obsługiwanych rozmiarach i ograniczeniach.
 
-Wszystkie rozmiary maszyn wirtualnych promocyjnych i w wersji zapoznawczej nie są zagwarantowane dla pomocy technicznej.
+| Seria maszyn wirtualnych  | Obsługiwane rozmiary |
+|------------|---------|
+| Podstawowa A | Wszystkie rozmiary *z wyjątkiem* Basic_A0 (a0) |
+| A | Wszystkie rozmiary *z wyjątkiem* Standard_A0 |
+| Av2 | Wszystkie rozmiary |
+| B | None |
+| DC | None |
+| Dv2, DSv2 | Wszystkie rozmiary |
+| Dv3, Dsv3 | Wszystkie rozmiary |
+| Dav4, Dasv4 | Brak — nie jest jeszcze dostępna |
+| EV3, Esv3 | Wszystkie rozmiary, z wyjątkiem E64is_v3 i E64i_v3 |
+| Eav4, Easv4 | Brak — nie jest jeszcze dostępna |
+| F, FS | Wszystkie rozmiary |
+| Fsv2 | Wszystkie rozmiary |
+| G, GS | Wszystkie rozmiary |
+| H | Wszystkie rozmiary |
+| HB<sup>1</sup> | Wszystkie rozmiary |
+| HBv2<sup>1</sup> | Wszystkie rozmiary |
+| HC<sup>1</sup> | Wszystkie rozmiary |
+| Ls | Wszystkie rozmiary |
+| Lsv2 | Brak — nie jest jeszcze dostępna |
+| M<sup>1</sup> | Wszystkie rozmiary, z wyjątkiem M64, M64m, M128, M128m |
+| Mv2 | Brak — nie jest jeszcze dostępna |
+| SIECIOWEGO | Wszystkie rozmiary |
+| NCv2<sup>1</sup> | Wszystkie rozmiary |
+| Seria NCV3<sup>1</sup> | Wszystkie rozmiary |
+| ND<sup>1</sup> | Wszystkie rozmiary |
+| NDv2<sup>1</sup> | Brak — nie jest jeszcze dostępna |
+| Magazyn | Wszystkie rozmiary |
+| NVv3<sup>1</sup> | Wszystkie rozmiary |
+| NVv4 | None |
+| SAP HANA | None |
 
-| Seria maszyn wirtualnych  | Obsługiwane rozmiary | Tryb alokacji puli kont wsadowych<sup>1</sup> |
-|------------|---------|-----------------|
-| Podstawowa seria A | Wszystkie rozmiary *z wyjątkiem* Basic_A0 (a0) | Dowolne |
-| Seria A | Wszystkie rozmiary *z wyjątkiem* Standard_A0 | Dowolne |
-| Seria Av2 | Wszystkie rozmiary | Dowolne |
-| Seria B | Brak | Niedostępne |
-| Seria DC | Brak | Niedostępne |
-| Dv2, DSv2 — seria | Wszystkie rozmiary | Dowolne |
-| Dv3, Dsv3 — seria | Wszystkie rozmiary | Dowolne |
-| EV3, Esv3 — seria | Wszystkie rozmiary | Dowolne |
-| Seria Fsv2 | Wszystkie rozmiary | Dowolne |
-| Seria H | Wszystkie rozmiary | Dowolne |
-| HB-seria<sup>2</sup> | Wszystkie rozmiary | Dowolne |
-| HC — seria<sup>2</sup> | Wszystkie rozmiary | Dowolne |
-| Seria Ls | Wszystkie rozmiary | Dowolne |
-| Seria Lsv2 | Brak | Niedostępne |
-| Seria M | Standard_M64ms (tylko niski priorytet), Standard_M128s (tylko niski priorytet) | Dowolne |
-| Seria Mv2 | Brak | Niedostępne |
-| Seria NC | Wszystkie rozmiary | Dowolne |
-| NCv2 — seria<sup>2</sup> | Wszystkie rozmiary | Dowolne |
-| Seria NCV3 — seria<sup>2</sup> | Wszystkie rozmiary | Dowolne |
-| ND — seria<sup>2</sup> | Wszystkie rozmiary | Dowolne |
-| Seria NDv2 | Wszystkie rozmiary | Tryb subskrypcji użytkownika |
-| Seria NV | Wszystkie rozmiary | Dowolne |
-| Seria NVv3 | Brak | Niedostępne |
-| SAP HANA | Brak | Niedostępne |
-
-<sup>1</sup> niektóre nowsze serie maszyn wirtualnych są początkowo obsługiwane częściowo. Te serie maszyn wirtualnych można przydzielić przez konta usługi Batch z **trybem alokacji puli** ustawionym na **subskrypcję użytkownika**. Zobacz [Zarządzanie kontami usługi Batch](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) , aby uzyskać więcej informacji na temat konfiguracji konta usługi Batch. Zobacz [przydziały i limity](batch-quota-limit.md) , aby dowiedzieć się, jak zażądać limitu przydziału dla tych częściowo obsługiwanych serii maszyn wirtualnych dla kont usługi Batch **subskrypcji użytkowników** .  
-
-<sup>2</sup> te rozmiary maszyn wirtualnych można przydzielyć w pulach wsadowym w konfiguracji maszyny wirtualnej, ale należy zażądać [zwiększenia limitu przydziału](batch-quota-limit.md#increase-a-quota).
+<sup>1</sup> te rozmiary maszyn wirtualnych można przydzielyć w pulach wsadowym w konfiguracji maszyny wirtualnej, ale należy utworzyć nowe konto wsadowe i zażądać [zwiększenia limitu przydziału](batch-quota-limit.md#increase-a-quota). To ograniczenie zostanie usunięte, gdy przydział vCPU na serię maszyn wirtualnych jest w pełni obsługiwany dla kont usługi Batch.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Pule w konfiguracji usługi w chmurze
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "74815359"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086995"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalowanie i uruchamianie kontenerów usługi mowy (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Kontenery mowy umożliwiają klientom tworzenie architektury aplikacji mowy, kt�
 > [!IMPORTANT]
 > Wszystkie kontenery mowy są obecnie oferowane w ramach [publicznej wersji zapoznawczej "Gated"](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio). Ogłoszenie zostanie wykonane, gdy kontenery mowy postępują z ogólnie dostępnymi wersjami.
 
-| Funkcja | Funkcje | Najnowsze |
+| Funkcja | Funkcje | Ostatnia |
 |--|--|--|
 | Zamiana mowy na tekst | Przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub nagrania audio w trybie wsadowym do tekstu z wynikami pośrednimi. | 2.0.0 |
 | Custom Speech do tekstu | Korzystając z modelu niestandardowego z [portalu Custom Speech](https://speech.microsoft.com/customspeech), przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub przetwarzanie wsadowe audio do tekstu z wynikami pośrednimi. | 2.0.0 |
@@ -39,9 +39,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Poniższe wymagania wstępne przed użyciem kontenerów mowy:
 
-| Wymagane | Przeznaczenie |
+| Wymagany | Przeznaczenie |
 |--|--|
-| Aparat platformy Docker | Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br> |
+| Aparat platformy Docker | Aparat platformy Docker musi być zainstalowany na [komputerze-hoście](#the-host-computer). Platforma Docker zawiera pakiety, które konfigurują środowisko platformy Docker w systemach [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Podstawowe informacje dotyczące platformy Docker i kontenera można znaleźć w temacie [Omówienie platformy Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **W systemie Windows**program Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br> |
 | Znajomość platformy Docker | Należy dysponować podstawową wiedzą na temat pojęć platformy Docker, takich jak rejestry, repozytoria, kontenery i obrazy kontenerów, a także znajomość podstawowych poleceń `docker`. |
 | Zasób mowy | Aby można było korzystać z tych kontenerów, musisz mieć:<br><br>Zasób usługi Azure _Speech_ do pobrania skojarzonego klucza interfejsu API i identyfikatora URI punktu końcowego. Obie wartości są dostępne na stronach przeglądów **mowy** i kluczy Azure Portal. Są one wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : jeden z dwóch dostępnych kluczy zasobów na stronie **kluczy**<br><br>**{ENDPOINT_URI}** : punkt końcowy określony na stronie **Przegląd** |
 
@@ -367,11 +367,11 @@ To polecenie:
 ***
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing).
+> Aby można było uruchomić kontener, należy określić opcje `Eula`, `Billing`i `ApiKey`. w przeciwnym razie kontener nie zostanie uruchomiony.  Aby uzyskać więcej informacji, zobacz [rozliczenia](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Zbadaj punkt końcowy przewidywania kontenera
 
-| Kontenery | Adres URL hosta zestawu SDK | Protocol (Protokół) |
+| Containers | Adres URL hosta zestawu SDK | Protokół |
 |--|--|--|
 | Zamiana mowy na tekst i Custom Speech na tekst | `ws://localhost:5000` | WS |
 | Zamiana tekstu na mowę i niestandardowego tekstu na mowę | `http://localhost:5000` | HTTP |
@@ -392,7 +392,7 @@ Można korzystać z tego kontenera i innego kontenera Cognitive Services platfor
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
-## <a name="stop-the-container"></a>Zatrzymywanie kontenera
+## <a name="stop-the-container"></a>Zatrzymaj kontener
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
@@ -408,7 +408,7 @@ Kontenery mowy wysyłają informacje o rozliczeniach do platformy Azure przy uż
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](speech-container-configuration.md).
+Aby uzyskać więcej informacji na temat tych opcji, zobacz [Konfigurowanie kontenerów](speech-container-configuration.md).
 
 <!--blogs/samples/video courses -->
 
@@ -425,7 +425,7 @@ W tym artykule przedstawiono koncepcje i przepływ pracy służące do pobierani
   * *Niestandardowa Zamiana tekstu na mowę*
 * Obrazy kontenerów są pobierane z rejestru kontenerów na platformie Azure.
 * Obrazy kontenera Uruchom na platformie Docker.
-* Można użyć interfejsu API REST lub zestawu SDK do wywoływania operacji w kontenerach mowy przez określenie identyfikatora URI hosta kontenera.
+* Bez względu na to, czy korzystasz z interfejsu API REST (tylko Zamiana tekstu na mowę), czy zestawu SDK (zamiana mowy na tekst lub zamiany tekstu na mowę), należy określić identyfikator URI hosta kontenera. 
 * Podczas tworzenia wystąpienia kontenera wymagane jest podanie informacji dotyczących rozliczeń.
 
 > [!IMPORTANT]

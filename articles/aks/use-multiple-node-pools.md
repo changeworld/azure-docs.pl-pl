@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e494a5141a96409fc6691df3a5f1194600ad0c32
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901527"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086484"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -565,7 +565,7 @@ Zaktualizowanie klastra AKS może potrwać kilka minut, w zależności od ustawi
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Przypisywanie publicznego adresu IP na węzeł w puli węzłów
 
 > [!WARNING]
-> W trakcie korzystania z wersji zapoznawczej przypisywania publicznego adresu IP na węzeł nie można jej używać z jednostką *SKU usługa Load Balancer w warstwie Standardowa w AKS* ze względu na ewentualne reguły modułu równoważenia obciążenia powodujące konflikt z obsługą maszyny wirtualnej. W wersji zapoznawczej należy użyć *podstawowej jednostki SKU Load Balancer* , jeśli trzeba przypisać publiczny adres IP na węzeł.
+> W trakcie korzystania z wersji zapoznawczej przypisywania publicznego adresu IP na węzeł nie można jej używać z jednostką *SKU usługa Load Balancer w warstwie Standardowa w AKS* ze względu na ewentualne reguły modułu równoważenia obciążenia powodujące konflikt z obsługą maszyny wirtualnej. W wyniku tego ograniczenia pule agentów systemu Windows nie są obsługiwane w tej funkcji w wersji zapoznawczej. W wersji zapoznawczej należy użyć *podstawowej jednostki SKU Load Balancer* , jeśli trzeba przypisać publiczny adres IP na węzeł.
 
 Węzły AKS nie wymagają swoich własnych publicznych adresów IP do komunikacji. Jednak niektóre scenariusze mogą wymagać, aby węzły w puli węzłów miały własne publiczne adresy IP. Przykładem są gry, w których konsola programu musi nawiązać bezpośrednie połączenie z maszyną wirtualną w chmurze, aby zminimalizować liczbę przeskoków. Można to osiągnąć, rejestrując się w celu uzyskania oddzielnej funkcji w wersji zapoznawczej, publicznego adresu IP węzła (wersja zapoznawcza).
 

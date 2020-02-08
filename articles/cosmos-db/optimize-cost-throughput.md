@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/07/2020
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053367"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087089"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optymalizacja kosztu zaalokowanej przepływności w Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Oferując model przepływności aprowizacji, Azure Cosmos DB oferuje przewidywal
 
 Możesz rozpocząć od minimalnej przepływności wynoszącej 400 RU/s i skalować do dziesiątki milionów żądań na sekundę, a nawet więcej. Każde żądanie, które można wydać w odniesieniu do kontenera lub bazy danych usługi Azure Cosmos, takie jak żądanie odczytu, żądanie zapisu, żądanie zapytania, procedury składowane ma odpowiedni koszt odejmowany od zainicjowanej przepływności. Jeśli zainicjujesz 400 RU/s i wystawisz zapytanie, że koszt 40 jednostek ru, będzie można wydać 10 takich zapytań na sekundę. Każde żądanie wykraczające poza ten będzie miało wartość rate-Limited i należy ponowić próbę żądania. Jeśli używasz sterowników klienta, obsługują logikę automatycznego ponawiania.
 
-Przepustowość można zainicjować przy użyciu baz danych lub kontenerów, a Każda strategia może pomóc zaoszczędzić koszty w zależności od tego scenariusza.
+Przepływność można aprowizować dla baz danych lub kontenerów, a każda strategia może ułatwić oszczędzanie kosztów w zależności od scenariusza.
 
 ## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Optymalizuj przez zainicjowanie przepływności na różnych poziomach
 
@@ -53,12 +53,12 @@ Poniżej przedstawiono kilka wytycznych dotyczących podejmowania decyzji dotycz
 
 Jak pokazano w poniższej tabeli, w zależności od wyboru interfejsu API, można zainicjować przepływność na różnej szczegółowości.
 
-|API|W przypadku **udostępnionej** przepływności Skonfiguruj |W przypadku **dedykowanej** przepływności Skonfiguruj |
+|Interfejs API|W przypadku **udostępnionej** przepływności Skonfiguruj |W przypadku **dedykowanej** przepływności Skonfiguruj |
 |----|----|----|
-|Interfejs SQL API|Database (Baza danych)|Kontener|
-|Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB|Database (Baza danych)|Collection|
-|Interfejs API rozwiązania Cassandra|przestrzeń kluczy|Tabela|
-|Interfejs API języka Gremlin|Konto bazy danych|Graf|
+|Interfejs API SQL|Baza danych|Kontener|
+|Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB|Baza danych|Collection|
+|Interfejs API rozwiązania Cassandra|Przestrzeń kluczy|Tabela|
+|Interfejs API języka Gremlin|Konto bazy danych|Graph|
 |Interfejs API tabel|Konto bazy danych|Tabela|
 
 Dzięki aprowizacji przepływności na różnych poziomach można zoptymalizować koszty na podstawie charakterystyki obciążenia. Jak wspomniano wcześniej, można programowo i w dowolnym momencie zwiększyć lub zmniejszyć zainicjowaną przepływność dla poszczególnych kontenerów lub zbiorowo w zestawie kontenerów. Elastycznie skalowanie przepływności w miarę zmian obciążenia oznacza płatność wyłącznie za skonfigurowane przepływność. Jeśli kontener lub zbiór kontenerów są dystrybuowane w wielu regionach, to przepływność skonfigurowana na kontenerze lub zestaw kontenerów jest gwarantowany do udostępnienia we wszystkich regionach.
@@ -123,7 +123,7 @@ Możesz również ustawić alerty, aby sprawdzić, czy liczba żądań o ogranic
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>Elastyczne skalowanie przepływności i na żądanie 
 
-Ze względu na to, że opłaty są naliczane zgodnie z zainicjowaną przepływność, dopasowanie nieużywanej przepływności do Twoich potrzeb może pomóc uniknąć naliczania opłat za niewykorzystaną przepływność. Zainicjowaną przepustowość można skalować w górę lub w dół w miarę potrzeb.  
+Ze względu na to, że opłaty są naliczane zgodnie z zainicjowaną przepływność, dopasowanie nieużywanej przepływności do Twoich potrzeb może pomóc uniknąć naliczania opłat za niewykorzystaną przepływność. Zainicjowaną przepustowość można skalować w górę lub w dół w miarę potrzeb. Jeśli Twoje potrzeby związane z przepływem pracy są bardzo przewidywalne, możesz użyć Azure Functions i użyć wyzwalacza czasomierza, aby [zwiększyć lub zmniejszyć przepływność zgodnie z harmonogramem](scale-on-schedule.md). 
 
 * Monitorowanie użycia jednostek ru i współczynnika żądań z ograniczoną szybkością może ujawnić, że nie ma potrzeby utrzymywania obsługi w całej firmie przez cały dzień lub tydzień. Użytkownik może odbierać mniej ruchu w nocy lub w weekendy. Korzystając z Azure Portal lub Azure Cosmos DB natywnych zestawów SDK lub interfejsu API REST, można w dowolnym momencie skalować swoją zainicjowaną przepływność. Interfejs API REST Azure Cosmos DB udostępnia punkty końcowe do programistycznego aktualizowania poziomu wydajności kontenerów, co pozwala na bezpośrednie dostosowanie przepływności do kodu w zależności od godziny lub dnia tygodnia. Operacja jest wykonywana bez żadnego przestoju i zazwyczaj obowiązuje w czasie krótszym niż minutę. 
 

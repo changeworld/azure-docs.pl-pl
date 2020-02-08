@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: a8265680f74b2d5679d1ebfbb2873dd096f498a3
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964429"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083053"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Samouczek: udostępnianie danych za pomocą udziału danych platformy Azure  
 
@@ -29,6 +29,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 * Subskrypcja platformy Azure: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/) .
 * Adres e-mail logowania odbiorcy platformy Azure (przy użyciu aliasu poczty e-mail nie będzie działał).
+* Jeśli źródłowy magazyn danych platformy Azure znajduje się w innej subskrypcji platformy Azure niż ta, która będzie używana do tworzenia zasobu udziału danych, zarejestruj [dostawcę zasobów Microsoft. datashare](concepts-roles-permissions.md#resource-provider-registration) w subskrypcji, w której znajduje się magazyn danych platformy Azure. 
 
 ### <a name="share-from-a-storage-account"></a>Udostępnianie z konta magazynu:
 
@@ -57,7 +58,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 * Adres IP klienta SQL Server dostęp do zapory. Można to zrobić, wykonując następujące czynności: 
     1. W programie SQL Server w Azure Portal przejdź do *zapór i sieci wirtualnych*
     1. Kliknij przełącznik **, aby zezwolić na dostęp** do usług platformy Azure.
-    1. Kliknij pozycję **+ Dodaj adres IP klienta** , a następnie kliknij przycisk **Zapisz**. Adres IP klienta może ulec zmianie. Możesz również dodać zakres adresów IP. 
+    1. Kliknij pozycję **+ Dodaj adres IP klienta** , a następnie kliknij przycisk **Zapisz**. Adres IP klienta może ulec zmianie. Ten proces może wymagać powtarzania przy następnym udostępnieniu danych SQL z Azure Portal. Możesz również dodać zakres adresów IP. 
 
 ### <a name="share-from-azure-data-explorer"></a>Udostępnianie z usługi Azure Eksplorator danych
 * Klaster Eksplorator danych platformy Azure z bazami danych, które chcesz udostępnić.
@@ -66,7 +67,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-share-account"></a>Tworzenie konta udziału danych
 
@@ -82,7 +83,7 @@ Utwórz zasób udziału danych platformy Azure w grupie zasobów platformy Azure
 
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | Nazwa | *datashareacount* | Określ nazwę konta udziału danych. |
+    | Name (Nazwa) | *datashareacount* | Określ nazwę konta udziału danych. |
     | Subskrypcja | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla konta udziału danych.|
     | Grupa zasobów | *test-resource-group* | Użyj istniejącej grupy zasobów lub utwórz nową. |
     | Lokalizacja | *Wschodnie stany USA 2* | Wybierz region dla konta udziału danych.

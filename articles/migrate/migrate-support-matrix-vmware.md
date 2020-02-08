@@ -3,12 +3,12 @@ title: Obsługa oceny VMware w Azure Migrate
 description: Dowiedz się więcej o obsłudze oceny VMware w Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 2fab94b66e09d3923e481326b3650f1beb621dc4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 1b3e81653ba934b209755391f08e60ef603e645a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048764"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086781"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Macierz obsługi dla oceny oprogramowania VMware 
 
@@ -99,7 +99,7 @@ Ta opcja jest obecnie w wersji zapoznawczej. [Dowiedz się więcej](how-to-creat
 **Konto systemu Windows** |  Wizualizacja wymaga konta lokalnego lub administratora domeny.
 **Konto systemu Linux** | Wizualizacja wymaga konta użytkownika z uprawnieniami głównymi.<br/><br/> Alternatywnie konto użytkownika wymaga tych uprawnień w przypadku plików/bin/netstat i/bin/ls: CAP_DAC_READ_SEARCH i CAP_SYS_PTRACE.
 **Agenci maszyn wirtualnych** | Na maszynach wirtualnych nie jest wymagany żaden Agent.
-**Narzędzia VMware** | Narzędzia VMware muszą być zainstalowane i uruchomione na maszynach wirtualnych, które mają być analizowane.
+**Narzędzia VMware** | Narzędzia VMware muszą być zainstalowane i uruchomione na maszynach wirtualnych, które mają być analizowane. <br/> Jeśli wersja narzędzi VMware jest z zakresu od 9,10 do 10.2.0, upewnij się, że została ona uaktualniona do ponad 10.2.0.
 **poświadczenia vCenter** | Konto vCenter Server z dostępem tylko do odczytu i uprawnienia do Virtual Machines > operacji gościa.
 **Dostęp do portu** | Na hostach ESXi z maszynami wirtualnymi, które chcesz analizować, urządzenie Azure Migrate musi mieć możliwość nawiązania połączenia z portem TCP 443.
 

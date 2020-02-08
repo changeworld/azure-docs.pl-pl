@@ -7,33 +7,34 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 2e5ae90cf6ee8bccc9919c88bc695bf944f58a67
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812073"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069442"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Omówienie portalu komercyjnej witryny Marketplace w centrum partnerskim
 
 Witamy w portalu komercyjnej witryny Marketplace w centrum partnerskim firmy Microsoft. [Komercyjny Portal Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/) został zaprojektowany, aby pomóc Ci w Zarabiaj produktów i usług, dotrzeć do klientów i rozwijać swoją firmę.
 
-W tej dokumentacji omówiono podstawowe informacje dotyczące tworzenia i używania konta Centrum partnerskiego, tworzenia nowych ofert oprogramowania jako usługi (SaaS), które mogą być wymienione w witrynie [Azure Marketplace](https://azuremarketplace.microsoft.com/) lub [AppSource](https://appsource.microsoft.com/), zarządzania istniejącymi ofertami SaaS. Udostępnianie zasobów, aby pomóc Ci w pytaniach i zbierać swoją opinię. 
+W tej dokumentacji omówiono podstawowe informacje dotyczące tworzenia i używania konta Centrum partnerskiego, tworzenia nowych ofert oprogramowania jako usługi (SaaS), które mogą być wymienione w witrynie [Azure Marketplace](https://azuremarketplace.microsoft.com/) lub [AppSource](https://appsource.microsoft.com/), zarządzania istniejącymi ofertami SaaS oraz zapewniać zasoby pomagające w pytaniach i zbieraniu opinii. 
 
 ## <a name="about-microsofts-commercial-marketplace"></a>Informacje o komercyjnym rynku firmy Microsoft
 
-Przedsiębiorstwa, instytucje rządowe i organizacje wszystkich rozmiarów szukają rozwiązań biznesowych, innowacyjnej technologii i usług umożliwiających korzystanie z usługi [Azure Marketplace](https://azuremarketplace.microsoft.com/) i Azure Portal magazynów sieci Web [AppSource](https://appsource.microsoft.com/) [w środowisku produkcyjnym](https://portal.azure.com). [Dostawcy rozwiązań w chmurze](https://partner.microsoft.com/cloud-solution-provider)i zespoły sprzedaży firmy Microsoft. 
+Przedsiębiorstwa, instytucje rządowe i organizacje wszystkich rozmiarów szukają rozwiązań biznesowych, innowacyjnej technologii i usług umożliwiających korzystanie z usługi [Azure Marketplace](https://azuremarketplace.microsoft.com/) i magazynów sieci Web [AppSource](https://appsource.microsoft.com/) , a [Azure Portal środowiska](https://portal.azure.com), [dostawcy rozwiązań w chmurze](https://partner.microsoft.com/cloud-solution-provider)i zespołów sprzedaży firmy Microsoft. 
 
 Centrum partnerskie to centralne środowisko partnera firmy Microsoft. W przypadku organizacji, które przechodzą na rynek firmy Microsoft i Skorzystaj z witryny Marketplace, centrum partnerskie to portal, za pomocą którego wydawcy tworzą oferty i zarządzają ofertami, udostępniają pokazy dotyczące stacji testowych i wyświetlają analizy na temat wydajności oferty. 
 
 ## <a name="migration-from-cloud-partner-portal"></a>Migracja z portal Cloud Partner
 
-Centrum partnerskie zwiększa integrację wszystkich aspektów relacji firmy Microsoft z wydawcami oprogramowania. W ramach tej ewolucji przeprowadzimy migrację funkcji [Portal Cloud partner](https://cloudpartner.azure.com/) do Centrum partnerskiego. 
+Centrum partnerskie zwiększa integrację wszystkich aspektów relacji firmy Microsoft z wydawcami oprogramowania. W ramach tej ewolucji przeprowadzimy migrację funkcji [Portal Cloud partner](https://cloudpartner.azure.com/) do Centrum partnerskiego.
 
-**Obecnie centrum partnerskie obsługuje tylko Tworzenie ofert typu "oprogramowanie jako usługa" (SaaS) i zarządzanie nimi.**
+>[!NOTE]
+>Obecnie centrum partnerskie obsługuje tworzenie ofert typu "oprogramowanie jako usługa" (SaaS) i zarządzanie nimi, oferty aplikacji platformy Azure, Dynamics 365 dla ofert klientów, zaangażowanie & oferty usługi PowerApps, Dynamics 365 dla ofert operacji i Dynamics 365 dla Oferty biznesowe firmy. Kolejne oferty będą obsługiwane wkrótce.
 
-Istniejący wydawcy z portalu Marketplace znajdą znane, ale udoskonalone środowisko użytkownika z intuicyjnym interfejsem. Powiadomienia w portalu i za pośrednictwem poczty e-mail będą informować wydawców o migracji. Użytkownicy będą bezproblemowo kierowani do odpowiedniej lokalizacji. Ten proces nie ma wpływu na klientów. 
+Istniejący wydawcy z portalu Marketplace znajdą znane, ale udoskonalone środowisko użytkownika z intuicyjnym interfejsem. Powiadomienia w portalu i za pośrednictwem poczty e-mail będą informować wydawców o migracji. Użytkownicy będą bezproblemowo kierowani do odpowiedniej lokalizacji. Ten proces nie ma wpływu na klientów.
 
 ### <a name="improvements-on-user-experience-and-billing"></a>Ulepszenia środowiska użytkownika i rozliczeń
 

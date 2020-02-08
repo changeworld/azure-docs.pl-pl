@@ -3,18 +3,18 @@ title: Tagi zasobów dla organizacji logicznej
 description: Pokazuje, jak zastosować Tagi do organizowania zasobów platformy Azure na potrzeby rozliczeń i zarządzania nimi.
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 0b2fff801b01afce0907bf86887fb110478377c1
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5751f2d1bc123c5918ae0fabc5b908b5f4fec71d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665153"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087313"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
 Znaczniki do zasobów platformy Azure są stosowane w celu logicznego organizowania ich w taksonomię. Każdy tag składa się z nazwy i pary wartości. Na przykład można zastosować nazwę „Środowisko” i wartość „Produkcyjne” do wszystkich zasobów w środowisku produkcyjnym.
 
-Po zastosowaniu tagów można pobrać wszystkie zasoby w subskrypcji o nazwie i wartości konkretnego tagu. Tagi umożliwiają pobranie powiązanych zasobów z różnych grup zasobów. To pomocne rozwiązanie, gdy trzeba zorganizować zasoby w celach rozliczeniowych lub zarządzania.
+Po zastosowaniu tagów można pobrać wszystkie zasoby w subskrypcji o nazwie i wartości konkretnego tagu. Tagi umożliwiają pobieranie pokrewnych zasobów z różnych grup zasobów. To pomocne rozwiązanie, gdy trzeba zorganizować zasoby w celach rozliczeniowych lub zarządzania.
 
 Taksonomia powinna uwzględniać samoobsługową strategię tagowania metadanych, a także strategię automatycznego tagowania, która pozwala zmniejszyć obciążenie użytkownikami i zwiększyć dokładność.
 
@@ -45,7 +45,7 @@ Aby wymusić reguły tagowania i konwencje, można użyć [Azure Policy](../../g
 
 [!INCLUDE [Tag policies](../../../includes/azure-policy-samples-general-tags.md)]
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershell"></a>Program PowerShell
 
 Aby wyświetlić istniejące tagi dla *grupy zasobów*, użyj:
 
@@ -394,7 +394,7 @@ Aby przechowywać wiele wartości w jednym tagu, zastosuj ciąg JSON reprezentuj
 
 ### <a name="apply-tags-from-resource-group"></a>Zastosuj Tagi z grupy zasobów
 
-Aby zastosować Tagi z grupy zasobów do zasobu, użyj funkcji [resources](../templates/template-functions-resource.md#resourcegroup) . Podczas pobierania wartości tagu użyj składni `tags.[tag-name]` zamiast składni `tags.tag-name`, ponieważ niektóre znaki nie są poprawnie analizowane w notacji kropkowej.
+Aby zastosować Tagi z grupy zasobów do zasobu, użyj funkcji [resources](../templates/template-functions-resource.md#resourcegroup) . Podczas pobierania wartości tagu użyj składni `tags[tag-name]` zamiast składni `tags.tag-name`, ponieważ niektóre znaki nie są poprawnie analizowane w notacji kropkowej.
 
 ```json
 {
@@ -436,7 +436,7 @@ Azure Portal i program PowerShell używają [interfejsu API REST Menedżer zasob
 
 ## <a name="tags-and-billing"></a>Znaczniki i rozliczanie
 
-Tagów można użyć do grupowania danych dotyczących rozliczeń. Na przykład jeśli jest uruchomionych wiele maszyn wirtualnych różnych organizacji, możesz użyć tagów do grupowania użycia według centrum kosztu. Tagi umożliwiają również kategoryzowanie kosztów według środowiska uruchomieniowego, na przykład na potrzeby rozliczania użycia maszyn uruchomionych w środowisku produkcyjnym.
+Za pomocą tagów można grupować dane dotyczące rozliczeń. Jeśli na przykład używasz wielu maszyn wirtualnych dla różnych organizacji, użyj tagów, aby grupować użycie według centrum kosztów. Za pomocą tagów można również klasyfikować koszty według środowiska uruchomieniowego, takich jak użycie rozliczeń dla maszyn wirtualnych działających w środowisku produkcyjnym.
 
 Informacje o tagach można uzyskać za pomocą [interfejsów API użycia zasobów platformy Azure i RateCard](../../billing/billing-usage-rate-card-overview.md) lub pliku z wartościami rozdzielanymi przecinkami (CSV). Plik użycia można pobrać z [centrum konta platformy Azure](https://account.azure.com/Subscriptions) lub Azure Portal. Aby uzyskać więcej informacji, zobacz [pobieranie lub wyświetlanie faktury rozliczeń na platformie Azure oraz danych dziennego użycia](../../billing/billing-download-azure-invoice-daily-usage-date.md). Podczas pobierania pliku użycia z Centrum konta platformy Azure wybierz pozycję **wersja 2**. W przypadku usług, które obsługują Tagi z rozliczeniami, Tagi są wyświetlane w kolumnie **Tagi** .
 

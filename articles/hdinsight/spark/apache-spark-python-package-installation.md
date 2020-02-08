@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529647"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087111"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Bezpieczne zarządzanie środowiskiem Python w usłudze Azure HDInsight za pomocą akcji skryptu
 
@@ -24,7 +24,7 @@ Usługa HDInsight ma dwie wbudowane instalacje języka Python w klastrze Spark, 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Subskrypcja platformy Azure. Zobacz [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -49,11 +49,11 @@ Istnieją dwa typy składników typu "open source", które są dostępne w usłu
 
 Klaster usługi HDInsight Spark jest tworzony z instalacją Anaconda. W klastrze są zainstalowane dwie instalacje języka Python, Anaconda Python 2,7 i Python 3,5. W poniższej tabeli przedstawiono domyślne ustawienia języka Python dla platformy Spark, usługi Livy i Jupyter.
 
-| |Python 2.7|Python 3,5|
+| |Python 2,7|Python 3,5|
 |----|----|----|
 |Ścieżka|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Domyślnie ustawiona na 2,7|ND|
-|Livy|Domyślnie ustawiona na 2,7|ND|
+|platforma Spark|Domyślnie ustawiona na 2,7|Nie dotyczy|
+|Livy|Domyślnie ustawiona na 2,7|Nie dotyczy|
 |Jupyter|Jądro PySpark|Jądro PySpark3|
 
 ## <a name="safely-install-external-python-packages"></a>Bezpieczne Instalowanie zewnętrznych pakietów języka Python
@@ -122,7 +122,7 @@ Klaster usługi HDInsight zależy od wbudowanego środowiska języka Python, zar
 
 ## <a name="known-issue"></a>Znany problem
 
-Istnieje znana usterka dla Anaconda w wersji 4.7.11 i 4.7.12. Jeśli zobaczysz akcje skryptu zawieszające się w `"Collecting package metadata (repodata.json): ...working..."` i kończy się niepowodzeniem z `"Python script has been killed due to timeout after waiting 3600 secs"`. Możesz pobrać [ten skrypt](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) i uruchomić go jako akcje skryptu na wszystkich węzłach, aby rozwiązać ten problem.
+Istnieje znana usterka dla Anaconda w wersji 4.7.11, 4.7.12 i 4.8.0. Jeśli zobaczysz akcje skryptu zawieszające się w `"Collecting package metadata (repodata.json): ...working..."` i kończy się niepowodzeniem z `"Python script has been killed due to timeout after waiting 3600 secs"`. Możesz pobrać [ten skrypt](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) i uruchomić go jako akcje skryptu na wszystkich węzłach, aby rozwiązać ten problem.
 
 Aby sprawdzić wersję programu Anaconda, można używać protokołu SSH w węźle nagłówka klastra i uruchamiać `/usr/bin/anaconda/bin/conda --v`.
 

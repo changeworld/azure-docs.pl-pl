@@ -3,22 +3,22 @@ title: Dostosuj przeglądarki & WebViews (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak dostosować środowisko MSAL w przeglądarce dla systemu iOS/macOS w celu logowania użytkowników.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: fad3a90bd11104b4d770ddc1c527cba7d299d150
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 759f61860c62bcb668db6844df28c52fa28eac80
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697629"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085903"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Instrukcje: Dostosowywanie przeglądarek i WebViews dla systemu iOS/macOS
 
@@ -65,10 +65,10 @@ Przeglądarka, z której korzystasz, ma wpływ na środowisko logowania jednokro
 
 | Technologia    | Typ przeglądarki  | dostępność systemu iOS | dostępność macOS | Udostępnia pliki cookie i inne dane  | Dostępność MSAL | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | System | iOS12 i w górę | macOS 10,15 i up | Tak | Tylko system iOS | wystąpienia z/Safari
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | System | iOS11 i w górę | ND | Tak | Tylko system iOS |  wystąpienia z/Safari
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | System | iOS11 i w górę | ND | Nie | Tylko system iOS | Nie * *
-| **SFSafariViewController** | System | iOS10 | ND | Tak | Tylko system iOS |  wystąpienia z/Safari
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | System | iOS12 i w górę | macOS 10,15 i up | Yes | tylko system iOS | wystąpienia z/Safari
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | System | iOS11 i w górę | Nie dotyczy | Yes | tylko system iOS |  wystąpienia z/Safari
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | System | iOS11 i w górę | Nie dotyczy | Nie | tylko system iOS | Nie * *
+| **SFSafariViewController** | System | iOS10 | Nie dotyczy | Yes | tylko system iOS |  wystąpienia z/Safari
 | **WKWebView**  | W aplikacji | iOS8 i w górę | macOS 10,10 i up | Nie | iOS i macOS | Nie * *
 
 \* * Aby logowanie jednokrotne działało, tokeny muszą być udostępniane między aplikacjami. Wymaga to pamięci podręcznej tokenu lub aplikacji brokera, takiej jak Microsoft Authenticator dla systemu iOS.
@@ -87,7 +87,7 @@ Każde żądanie można skonfigurować w celu przesłaniania domyślnej przeglą
 
 Ponadto MSAL obsługuje przekazywanie w niestandardowym `WKWebView` przez ustawienie właściwości `MSALInteractiveTokenParameters.webviewParameters.customWebView`.
 
-Przykład:
+Na przykład:
 
 Obiektowy C
 ```objc

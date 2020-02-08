@@ -3,18 +3,21 @@ title: Przywracanie Azure Files przy użyciu programu PowerShell
 description: W tym artykule dowiesz się, jak przywrócić Azure Files przy użyciu usługi Azure Backup i programu PowerShell.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: c1c116033dbf44e6e1f332195a18c7dfdbcd6c71
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776341"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086824"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Przywracanie Azure Files przy użyciu programu PowerShell
 
 W tym artykule wyjaśniono, jak przywrócić cały udział plików lub określone pliki z punktu przywracania utworzonego przez usługę [Azure Backup](backup-overview.md) przy użyciu programu Azure PowerShell.
 
 Można przywrócić cały udział plików lub konkretne pliki w udziale. Można przywrócić do oryginalnej lokalizacji lub do alternatywnej lokalizacji.
+
+> [!WARNING]
+> Upewnij się, że wersja PS została uaktualniona do wersji minimalnej dla "AZ. RecoveryServices 2.6.0" dla kopii zapasowych AFS. Aby uzyskać więcej informacji, zapoznaj się z [sekcją](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) , w której znajduje się wymóg zmiany.
 
 ## <a name="fetch-recovery-points"></a>Pobierz punkty odzyskiwania
 

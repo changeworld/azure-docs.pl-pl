@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986006"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086540"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -22,7 +22,7 @@ Poniżej znajdują się często zadawane pytania dotyczące usługi Azure Applic
 
 ## <a name="general"></a>Ogólne
 
-### <a name="what-is-application-gateway"></a>Co to jest Application Gateway
+### <a name="what-is-application-gateway"></a>Co to jest usługa Application Gateway?
 
 Usługa Azure Application Gateway udostępnia kontroler dostarczania aplikacji (ADC) jako usługę. Oferuje różne możliwości równoważenia obciążenia warstwy 7 dla aplikacji. Ta usługa jest wysoce dostępna, skalowalna i w pełni zarządzana przez platformę Azure.
 
@@ -134,9 +134,9 @@ Tak. Można skonfigurować opróżnianie połączenia w celu zmiany elementów c
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Czy mogę zmienić rozmiar wystąpienia z średniego na duży bez zakłóceń?
 
-Tak. Platforma Azure dystrybuuje wystąpienia między domenami aktualizacji i błędów, aby upewnić się, że wystąpienia nie powiodą się w tym samym czasie. Application Gateway obsługuje skalowanie przez dodanie wielu wystąpień tej samej bramy w celu udostępnienia obciążenia.
+Tak.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Czy Application Gateway jest zawsze wdrożona w sieci wirtualnej?
 
@@ -322,7 +322,7 @@ Aby uzyskać więcej informacji, zobacz temat [OWASPs Top-10](https://www.owasp.
 
 ### <a name="does-waf-support-ddos-protection"></a>Czy WAF obsługuje ochronę DDoS?
 
-Tak. Możesz włączyć ochronę przed atakami DDoS dla sieci wirtualnej, gdzie jest wdrożona brama aplikacji. Te ustawienia zapewniają, że usługa Azure DDoS Protection chroni także wirtualny adres IP bramy aplikacji.
+Tak. Ochronę DDoS można włączyć w sieci wirtualnej, w której wdrożono bramę aplikacji. To ustawienie zapewnia, że usługa Azure DDoS Protection chroni również wirtualny adres IP bramy aplikacji (VIP).
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Czy istnieją wskazówki dotyczące migracji z jednostki SKU w wersji 1 do wersji 2 SKU?
 
@@ -401,7 +401,7 @@ Jeśli jednak chcesz używać Application Gateway v2 tylko z prywatnym adresem I
     
     b. Zezwalaj na ruch ze źródła jako tag usługi **AzureLoadBalancer** oraz port docelowy i docelowy jako **dowolne**
     
-    d. Odrzuć cały ruch przychodzący ze źródła jako tag usługi **internetowej** oraz port docelowy i docelowy jako **dowolny**. Nadaj tej regule *minimalny priorytet* w regułach ruchu przychodzącego
+    c. Odrzuć cały ruch przychodzący ze źródła jako tag usługi **internetowej** oraz port docelowy i docelowy jako **dowolny**. Nadaj tej regule *minimalny priorytet* w regułach ruchu przychodzącego
     
     d. Zachowaj domyślne reguły, takie jak Zezwalanie na VirtualNetwork przychodzące, aby dostęp do prywatnego adresu IP nie był blokowany
     

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260858"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082957"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Tworzenie zestawów danych Azure Machine Learning
 
@@ -55,7 +55,7 @@ Istnieją dwa typy zestawów danych, w zależności od tego, jak użytkownicy zu
 
 Aby dowiedzieć się więcej o nadchodzących zmianach interfejsu API, zobacz temat [zmiana interfejsu API zestawu danych](https://aka.ms/tabular-dataset).
 
-## <a name="create-datasets"></a>Utwórz zestawy danych
+## <a name="create-datasets"></a>Tworzenie zestawów danych
 
 Tworząc zestaw danych, utworzysz odwołanie do lokalizacji źródła danych wraz z kopią jej metadanych. Ponieważ dane pozostają w istniejącej lokalizacji, nie pociągnie za sobą dodatkowych kosztów magazynowania. Można utworzyć zarówno `TabularDataset`, jak i `FileDataset` zestawy danych za pomocą zestawu SDK języka Python lub strony docelowej obszaru roboczego (wersja zapoznawcza).
 
@@ -109,11 +109,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Ocalałe|Pclass|Nazwa|Biciu|Wiek|SibSp|Parch|Ticket|Bezprzewodow|Kabin|Zaokrętowanie
+| |PassengerId|Ocalałe|Pclass|Name (Nazwa)|Biciu|Wiek|SibSp|Parch|Równ|Bezprzewodow|Kabin|Zaokrętowanie
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|Fałsz|3|Braund, Mr. Owen Harris|mężczyzna|22,0|1|0|A/5 21171|7,2500||S
-1|2|Prawda|1|Cumings, Pani. Jan Bradley (Florencji Briggs th...|kobieta|38,0|1|0|KOMPUTER 17599|71,2833|C85|C
-2|3|Prawda|3|Heikkinen, chybień. Laina|kobieta|26,0|0|0|STON/O2. 3101282|7,9250||S
+0|1|False|3|Braund, Mr. Owen Harris|mężczyzna|22,0|1|0|A/5 21171|7,2500||S
+1|2|True|1|Cumings, Pani. Jan Bradley (Florencji Briggs th...|kobieta|38,0|1|0|KOMPUTER 17599|71,2833|C85|C
+2|3|True|3|Heikkinen, chybień. Laina|kobieta|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Użyj metody [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) na klasie `TabularDatasetFactory`, aby odczytać Azure SQL Database:
 
@@ -177,7 +177,7 @@ Aby utworzyć zestaw danych w programie Studio:
 
 ## <a name="register-datasets"></a>Rejestrowanie zestawów danych
 
-Aby ukończyć proces tworzenia, zarejestruj zestawy danych w obszarze roboczym. Użyj metody [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) , aby zarejestrować zestawy danych w obszarze roboczym, aby udostępnić je innym osobom i używać ich w różnych eksperymentach:
+Aby ukończyć proces tworzenia, zarejestruj zestawy danych w obszarze roboczym. Użyj metody [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) , aby zarejestrować zestawy danych w obszarze roboczym, aby udostępnić je innym osobom i używać ich w różnych eksperymentach:
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,

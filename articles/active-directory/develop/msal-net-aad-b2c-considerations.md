@@ -3,7 +3,7 @@ title: Azure AD B2C (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących używania Azure AD B2C z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834199"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084012"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Korzystanie z MSAL.NET do logowania użytkowników przy użyciu tożsamości społecznościowych
 
@@ -78,7 +78,7 @@ tym:
 
 - `policy` być jednym z poprzednich ciągów (na przykład `PolicySignUpSignIn`).
 - `ParentActivityOrWindow` jest wymagany dla systemu Android (działanie) i opcjonalnie dla innych platform, które obsługują nadrzędny interfejs użytkownika, na przykład Windows w systemie Windows i UIViewController na platformie iOS. Więcej informacji można znaleźć [w tym miejscu w oknie dialogowym interfejsu użytkownika](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow).
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` to metoda, która odnajduje konto dla określonych zasad. Przykład:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` to metoda, która odnajduje konto dla określonych zasad. Na przykład:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -182,6 +182,6 @@ Jedną z opcji jest użycie żądania "name" jako preferowanej nazwy użytkownik
 
 Więcej szczegółów na temat pozyskiwania tokenów interaktywnie za pomocą usługi MSAL.NET dla aplikacji Azure AD B2C przedstawiono w poniższym przykładzie.
 
-| Przykład | Platforma | Opis|
+| Sample | Platforma | Opis|
 |------ | -------- | -----------|
-|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, platformy UWP | Prosta aplikacja Xamarin Forms, która przedstawia, jak używać MSAL.NET do uwierzytelniania użytkowników za pośrednictwem Azure AD B2C i uzyskiwać dostęp do internetowego interfejsu API przy użyciu tokenów z wynikiem.|
+|[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, platformy UWP | Prosta aplikacja Xamarin Forms, która przedstawia, jak używać MSAL.NET do uwierzytelniania użytkowników za pośrednictwem Azure AD B2C i uzyskiwać dostęp do internetowego interfejsu API przy użyciu tokenów z wynikiem.|

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z chmurą Prisma | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i chmurą Prisma.
+title: 'Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu logowania jednokrotnego w chmurze Prisma Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i logowaniem jednokrotnym w chmurze Prisma.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,72 +11,73 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd2e74b51e690c13bbc7d3b00603405ed80dd953
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: e40a5f02a62d1e01e58c1d8a5ca03f0c80a75c84
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71106939"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086569"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-prisma-cloud"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z chmurą Prisma
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-prisma-cloud-sso"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu logowania jednokrotnego w chmurze Prisma
 
-W tym samouczku dowiesz się, jak zintegrować chmurę Prisma z usługą Azure Active Directory (Azure AD). W przypadku integracji chmury Prisma z usługą Azure AD można:
+W tym samouczku dowiesz się, jak zintegrować Logowanie jednokrotne w chmurze Prisma z usługą Azure Active Directory (Azure AD). W przypadku integrowania logowania jednokrotnego w chmurze Prisma z usługą Azure AD można:
 
-* Kontrolka w usłudze Azure AD, która ma dostęp do chmury Prisma.
-* Zezwól użytkownikom na automatyczne logowanie do usługi Prisma Cloud przy użyciu kont usługi Azure AD.
+* Kontrolka w usłudze Azure AD, która ma dostęp do logowania jednokrotnego w chmurze Prisma.
+* Zezwól użytkownikom na automatyczne logowanie do Prisma logowania jednokrotnego w chmurze przy użyciu kont usługi Azure AD.
 * Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby rozpocząć, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Subskrypcja z włączonym logowaniem jednokrotnym w chmurze Prisma.
+* Subskrypcja obsługująca Logowanie jednokrotne w chmurze Prisma (SSO).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Chmura Prisma obsługuje logowanie jednokrotne w usłudze **dostawcy tożsamości**
+* Logowanie jednokrotne w chmurze Prisma obsługuje **dostawcy tożsamości** zainicjowane Logowanie jednokrotne
 
-* Chmura Prisma obsługuje Inicjowanie obsługi użytkowników **just in Time**
+* Logowanie jednokrotne w chmurze Prisma obsługuje Inicjowanie obsługi użytkowników **just in Time**
 
-## <a name="adding-prisma-cloud-from-the-gallery"></a>Dodawanie chmury Prisma z galerii
+* Po skonfigurowaniu logowania jednokrotnego w chmurze Prisma można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-Aby skonfigurować integrację Prisma w chmurze z usługą Azure AD, musisz dodać chmurę Prisma z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-prisma-cloud-sso-from-the-gallery"></a>Dodawanie logowania jednokrotnego w chmurze Prisma z galerii
+
+Aby skonfigurować integrację logowania jednokrotnego w chmurze Prisma w usłudze Azure AD, musisz dodać Logowanie jednokrotne w chmurze Prisma z galerii do listy zarządzanych aplikacji SaaS.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
 1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
-1. W sekcji **Dodaj z galerii** wpisz **Prisma Cloud** w polu wyszukiwania.
-1. Wybierz pozycję **Prisma Cloud** w panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+1. W sekcji **Dodaj z galerii** wpisz **Prisma w chmurze Logowanie jednokrotne** w polu wyszukiwania.
+1. Wybierz pozycję **Prisma Logowanie jednokrotne w chmurze** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-prisma-cloud"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla chmury Prisma
+## <a name="configure-and-test-azure-ad-single-sign-on-for-prisma-cloud-sso"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD na potrzeby logowania jednokrotnego w chmurze Prisma
 
-Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą chmury Prisma przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w chmurze Prisma.
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą logowania jednokrotnego w chmurze Prisma przy użyciu użytkownika testowego o nazwie **B. Simon** Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w usłudze Prisma Cloud SSO.
 
-Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą chmury Prisma, wykonaj następujące bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu logowania jednokrotnego w chmurze Prisma, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
     1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 1. **[Skonfiguruj Logowanie jednokrotne w chmurze Prisma](#configure-prisma-cloud-sso)** , aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz użytkownika testowego w chmurze Prisma](#create-prisma-cloud-test-user)** , aby dysponować odpowiednikiem B. Simon w chmurze Prisma, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+    1. **[Utwórz użytkownika testowego logowania jednokrotnego w chmurze Prisma](#create-prisma-cloud-sso-test-user)** , aby dysponować odpowiednikiem B. Simon w usłudze Prisma Cloud SSO, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji w **chmurze Prisma** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **logowania jednokrotnego w chmurze Prisma** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
 1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
@@ -89,13 +90,13 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     b. Wartości **adresu URL odpowiedzi** są stałe i są już wstępnie wypełnione w Azure Portal. Musisz wybrać odpowiedni adres URL zgodnie z wymaganiami.
 
     > [!NOTE]
-    > Wartość identyfikatora nie jest prawdziwe. Zaktualizuj wartość za pomocą rzeczywisty identyfikator. Skontaktuj się z [zespołem pomocy technicznej Prisma Cloud Client](mailto:support@paloaltonetworks.com) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość identyfikatora nie jest prawdziwa. Zaktualizuj wartość za pomocą rzeczywistego identyfikatora. Skontaktuj się z [zespołem obsługi klienta rejestracji jednokrotnej w chmurze Prisma](mailto:support@paloaltonetworks.com) , aby uzyskać wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](common/certificatebase64.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. W sekcji **Konfigurowanie usługi Prisma Cloud** skopiuj odpowiednie adresy URL na podstawie wymagań.
+1. W sekcji **Konfigurowanie logowania jednokrotnego w chmurze Prisma** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -104,22 +105,22 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz **nowego użytkownika** w górnej części ekranu.
+1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź wartość username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do chmury Prisma.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Prisma Cloud SSO.
 
 1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście Aplikacje wybierz pozycję **Prisma Cloud**.
+1. Na liście Aplikacje wybierz pozycję **Prisma Cloud SSO**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
-   ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
+   ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
@@ -131,25 +132,26 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-prisma-cloud-sso"></a>Konfigurowanie logowania jednokrotnego w chmurze Prisma
 
-Aby skonfigurować Logowanie jednokrotne w usłudze **Prisma w chmurze** , musisz wysłać pobrany **certyfikat (base64)** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej chmury Prisma](mailto:support@paloaltonetworks.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne na stronie logowania **JEDNOkrotnego w chmurze Prisma** , należy wysłać pobrany **certyfikat (base64)** i odpowiednie skopiowane adresy URL z usługi Azure Portal do [Prisma chmury obsługi logowania jednokrotnego w chmurze](mailto:support@paloaltonetworks.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-### <a name="create-prisma-cloud-test-user"></a>Utwórz użytkownika testowego w chmurze Prisma
+### <a name="create-prisma-cloud-sso-test-user"></a>Utwórz użytkownika testowego logowania jednokrotnego w chmurze Prisma
 
-W tej sekcji użytkownik o nazwie B. Simon został utworzony w chmurze Prisma. Chmura Prisma obsługuje obsługę just-in-Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w chmurze Prisma, zostanie utworzona nowa, gdy zostanie podjęta próba uzyskania dostępu do chmury Prisma.
+W tej sekcji użytkownik o nazwie B. Simon jest tworzony w usłudze Prisma w chmurze logowania jednokrotnego. Logowanie jednokrotne w chmurze Prisma obsługuje Inicjowanie obsługi just-in-Time, które jest domyślnie włączone. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze Prisma w chmurze Logowanie jednokrotne, zostanie utworzona nowa usługa podczas próby dostępu do usługi Prisma w chmurze logowania jednokrotnego.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Prisma Cloud w panelu dostępu należy automatycznie zalogować się do chmury Prisma, dla której skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Logowanie jednokrotne w chmurze Prisma w panelu dostępu należy automatycznie zalogować się do usługi Prisma w chmurze logowania jednokrotnego, dla którego skonfigurowano logowanie jednozarejestrowane. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wypróbuj chmurę Prisma z usługą Azure AD](https://aad.portal.azure.com/)
+- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
+- [Wypróbuj Logowanie jednokrotne w chmurze Prisma w usłudze Azure AD](https://aad.portal.azure.com/)

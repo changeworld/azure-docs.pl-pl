@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/28/2019
+ms.date: 02/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 179df26eb0cc75899c9b509ebe00410ffa916dc8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52179f15829981d59ff060784a49eccef89bb186
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935196"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083712"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Publiczna łączność z punktem końcowym dla Virtual Machines przy użyciu usługi Azure usługa Load Balancer w warstwie Standardowa w scenariuszach wysokiej dostępności SAP
 
@@ -29,7 +29,7 @@ Zakres tego artykułu opisuje konfiguracje, które umożliwią łączność wych
 Jeśli używasz Pacemaker z agentem usługi Azure ogrodzeniem w rozwiązaniu wysokiej dostępności, maszyny wirtualne muszą mieć łączność wychodzącą z interfejsem API zarządzania platformy Azure.  
 Artykuł zawiera kilka opcji umożliwiających wybranie opcji najlepiej dopasowanej do danego scenariusza.  
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W przypadku implementowania wysokiej dostępności dla rozwiązań SAP za pośrednictwem klastrowania jeden z niezbędnych składników jest [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). Platforma Azure oferuje dwie jednostki SKU modułu równoważenia obciążenia: standardowa i podstawowa.
 
@@ -45,7 +45,7 @@ Systemy SAP często zawierają poufne dane biznesowe. Są one rzadko akceptowane
 
 Przykłady scenariuszy, które wymagają dostępu do publicznego punktu końcowego platformy Azure, to:  
 - Używanie agenta usługi Azure ogrodzenia jako mechanizmu ogrodzenia w klastrach Pacemaker
-- Usługa Azure Backup
+- Azure Backup
 - Azure Site Recovery  
 - Używanie repozytorium publicznego na potrzeby stosowania poprawek do systemu operacyjnego
 - Przepływ danych aplikacji SAP może wymagać łączności wychodzącej z publicznym punktem końcowym
@@ -106,7 +106,7 @@ Konfiguracja będzie wyglądać następująco:
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
    ```
 
-4. Utwórz reguły sieciowej grupy zabezpieczeń, aby ograniczyć dostęp do określonych publicznych punktów końcowych. Jeśli istnieje sieciowa Grupa zabezpieczeń, możesz ją dostosować. W poniższym przykładzie pokazano, jak zezwalać na dostęp tylko do interfejsu API zarządzania platformy Azure: 
+4. Utwórz reguły sieciowej grupy zabezpieczeń, aby ograniczyć dostęp do określonych publicznych punktów końcowych. Jeśli istnieje sieciowa Grupa zabezpieczeń, możesz ją dostosować. W poniższym przykładzie pokazano, jak włączyć dostęp do interfejsu API zarządzania platformy Azure: 
    1. Przejdź do sieciowej grupy zabezpieczeń
    1. Kliknij pozycję Reguły zabezpieczeń dla ruchu wychodzącego
    1. Dodaj regułę, aby **odmówić** wszystkim dostępowi wychodzącemu do **Internetu**.

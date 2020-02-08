@@ -3,22 +3,22 @@ title: Publiczne i poufne aplikacje klienckie (MSAL) | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje na temat klienta publicznego i poufnych aplikacji klienckich w bibliotece uwierzytelniania firmy Microsoft (MSAL).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/25/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 75ea183a9968c65957bcf2a4d39966d2553db84f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d59819c0ab614b0f6cc102c7ebe8c760fb851599
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696593"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084121"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Klient publiczny i poufne aplikacje klienckie
 Biblioteka Microsoft Authentication Library (MSAL) definiuje dwóch typów klientów: klientów publicznych i poufnych klientów. Dwa typy klientów są rozróżniane przez ich możliwość bezpiecznego uwierzytelniania z serwerem autoryzacji i zachowania poufności poświadczeń klienta. W przeciwieństwie do biblioteki Azure AD Authentication Library (ADAL) jest używany *kontekst uwierzytelniania* (który jest połączeniem z usługą Azure AD).
@@ -46,7 +46,7 @@ Poniżej przedstawiono niektóre podobieństwa i różnice między klientem publ
 Jeśli użyto biblioteki ADAL, możesz zauważyć, że w przeciwieństwie do kontekstu uwierzytelniania biblioteki ADAL w MSAL identyfikator klienta (nazywany również *identyfikatorem aplikacji* lub *identyfikatorem*aplikacji) jest przekazywany raz podczas konstruowania aplikacji. Nie trzeba go ponownie przekazywać, gdy aplikacja uzyska token. Dotyczy to zarówno publicznej, jak i poufnej aplikacji klienckiej. W przypadku konstruktorów poufnych aplikacji klienckich są również przesyłane poświadczenia klienta: klucz tajny, który udostępnia dostawcy tożsamości.
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej:
+Dowiedz się więcej na temat:
 - [Opcje konfiguracji aplikacji klienckiej](msal-client-application-configuration.md)
 - [Tworzenie wystąpienia aplikacji klienckich za pomocą MSAL.NET](msal-net-initializing-client-applications.md)
 - [Tworzenie wystąpienia aplikacji klienckich przy użyciu MSAL. js](msal-js-initializing-client-applications.md)

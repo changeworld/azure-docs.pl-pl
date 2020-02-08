@@ -3,16 +3,19 @@ title: Zarządzanie kopiami zapasowymi udziałów plików platformy Azure przy u
 description: Dowiedz się, jak używać programu PowerShell do zarządzania udziałami plików platformy Azure i ich monitorować za pomocą usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9004e16c4b7c6ee704460d744612bafcd32831b9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a9dc421db740963fc5cd11e868eb383694376ce1
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776419"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083167"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Zarządzanie kopiami zapasowymi udziałów plików platformy Azure przy użyciu programu PowerShell
 
 W tym artykule opisano, jak za pomocą usługi Azure PowerShell zarządzać udziałami plików platformy Azure, których kopie zapasowe mają być tworzone przez usługę Azure Backup.
+
+> [!WARNING]
+> Upewnij się, że wersja PS została uaktualniona do wersji minimalnej dla "AZ. RecoveryServices 2.6.0" dla kopii zapasowych AFS. Aby uzyskać więcej informacji, zapoznaj się z [sekcją](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) , w której znajduje się wymóg zmiany.
 
 ## <a name="modify-the-protection-policy"></a>Modyfikowanie zasad ochrony
 

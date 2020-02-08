@@ -9,12 +9,12 @@ ms.date: 12/13/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 2f52d72a1f2e3c3d1f3495c4b7f6f633db30778e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437289"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086607"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Samouczek: reagowanie na zdarzenia Blob Storage w IoT Edge (wersja zapoznawcza)
 W tym artykule opisano sposób wdrażania Blob Storage platformy Azure w module IoT, który mógłby pełnić rolę Event Grid wydawcy do wysyłania zdarzeń dotyczących tworzenia obiektów blob i usuwania obiektów BLOB do Event Grid.  
@@ -47,7 +47,7 @@ Istnieje kilka sposobów wdrażania modułów na urządzeniu IoT Edge i wszystki
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurowanie manifestu wdrożenia
 
-Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON.  Posiada trzy kroki: **Dodaj moduły**, **określić trasy**, i **Przejrzyj wdrożenia**.
+Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdrożenia, sposób przepływu danych między modułami i żądane właściwości bliźniaczych reprezentacjach modułów. Azure Portal zawiera kreatora, który przeprowadzi Cię przez proces tworzenia manifestu wdrożenia, zamiast ręcznego tworzenia dokumentu JSON.  Składa się z trzech kroków: **Dodawanie modułów**, **Określanie tras**i **przeglądanie wdrożenia**.
 
 ### <a name="add-modules"></a>Dodaj moduły
 
@@ -62,9 +62,8 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
     ```json
         {
           "Env": [
-           "inbound:serverAuth:tlsPolicy=enabled",
-           "inbound:clientAuth:clientCert:enabled=false",
-           "outbound:webhook:httpsOnly=false"
+           "inbound__serverAuth__tlsPolicy=enabled",
+           "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,18 +78,15 @@ Manifest wdrożenia jest dokumentem JSON, który opisuje jakie moduły do wdroż
     ```    
 
  1. Kliknij pozycję **Zapisz**
- 1. Przejdź do następnej sekcji, aby dodać moduł Azure Functions
+ 1. Przejdź do następnej sekcji, aby dodać moduł subskrybenta Azure Event Grid przed ich wdrożeniem.
 
     >[!IMPORTANT]
-    > W ramach tego samouczka nauczysz się wdrożyć moduł Event Grid, aby zezwolić na żądania HTTP/HTTPs, uwierzytelnianie klienta wyłączone i Zezwalanie na subskrybenci HTTP. W przypadku obciążeń produkcyjnych zaleca się włączenie tylko żądań HTTPs i subskrybentów z włączonym uwierzytelnianiem klienta. Aby uzyskać więcej informacji na temat bezpiecznego konfigurowania modułu Event Grid, zobacz [zabezpieczenia i uwierzytelnianie](security-authentication.md).
+    > W tym samouczku dowiesz się, jak wdrożyć moduł Event Grid, aby zezwolić na żądania HTTP/HTTPs, a uwierzytelnianie klienta zostało wyłączone. W przypadku obciążeń produkcyjnych zaleca się włączenie tylko żądań HTTPs i subskrybentów z włączonym uwierzytelnianiem klienta. Aby uzyskać więcej informacji na temat bezpiecznego konfigurowania modułu Event Grid, zobacz [zabezpieczenia i uwierzytelnianie](security-authentication.md).
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Wdróż moduł IoT Edge usługi Azure Functions
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Wdróż moduł IoT Edge subskrybenta Event Grid
 
-W tej sekcji przedstawiono sposób wdrażania modułu Azure Functions IoT, który będzie pełnić rolę subskrybenta Event Grid, do którego można dostarczyć zdarzenia.
-
->[!IMPORTANT]
->Ta sekcja zawiera wdrożenie przykładowego modułu subskrybowania opartego na funkcji platformy Azure. Może to być dowolny niestandardowy moduł IoT, który może nasłuchiwać żądań POST protokołu HTTP.
+W tej sekcji przedstawiono sposób wdrażania innego modułu IoT, który będzie działać jako procedura obsługi zdarzeń, do którego mogą być dostarczane zdarzenia.
 
 ### <a name="add-modules"></a>Dodaj moduły
 
@@ -99,23 +95,8 @@ W tej sekcji przedstawiono sposób wdrażania modułu Azure Functions IoT, któr
 1. Podaj nazwę, obraz i opcje tworzenia kontenera:
 
    * **Nazwa**: subskrybent
-   * **Identyfikator URI obrazu**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **Opcje tworzenia kontenera**:
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **Identyfikator URI obrazu**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Opcje tworzenia kontenera**: brak
 1. Kliknij pozycję **Zapisz**
 1. Przejdź do następnej sekcji, aby dodać moduł Blob Storage platformy Azure
 
@@ -133,7 +114,7 @@ W tej sekcji pokazano, jak wdrożyć moduł Blob Storage platformy Azure, który
    * **Identyfikator URI obrazu**: MCR.Microsoft.com/Azure-Blob-Storage:Latest
    * **Opcje tworzenia kontenera**:
 
-```json
+   ```json
        {
          "Env":[
            "LOCAL_STORAGE_ACCOUNT_NAME=<your storage account name>",
@@ -149,19 +130,18 @@ W tej sekcji pokazano, jak wdrożyć moduł Blob Storage platformy Azure, który
            }
          }
        }
-```
-> [!IMPORTANT]
-> - Moduł Blob Storage umożliwia publikowanie zdarzeń przy użyciu protokołów HTTPS i HTTP. 
-> - W przypadku włączenia uwierzytelniania opartego na kliencie dla EventGrid upewnij się, że Zaktualizowano wartość EVENTGRID_ENDPOINT, aby umożliwić korzystanie z protokołu HTTPS w następujący sposób: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438` 
-> - Dodaj inną zmienną środowiskową `AllowUnknownCertificateAuthority=true` do powyższego kodu JSON. Podczas rozmowy z EventGrid za pośrednictwem protokołu HTTPS **AllowUnknownCertificateAuthority** umożliwia modułowi magazynu ufanie certyfikatom serwera EventGrid z podpisem własnym.
+   ```
 
-
+   > [!IMPORTANT]
+   > - Moduł Blob Storage umożliwia publikowanie zdarzeń przy użyciu protokołów HTTPS i HTTP. 
+   > - W przypadku włączenia uwierzytelniania opartego na kliencie dla EventGrid upewnij się, że Zaktualizowano wartość EVENTGRID_ENDPOINT, aby zezwolić na używanie protokołu HTTPS, np.: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`.
+   > - Dodaj również inną zmienną środowiskową `AllowUnknownCertificateAuthority=true` do powyższego kodu JSON. Podczas rozmowy z EventGrid za pośrednictwem protokołu HTTPS **AllowUnknownCertificateAuthority** umożliwia modułowi magazynu ufanie certyfikatom serwera EventGrid z podpisem własnym.
 
 4. Zaktualizuj skopiowany kod JSON przy użyciu następujących informacji:
 
    - Zastąp `<your storage account name>` nazwą, którą można zapamiętać. Nazwy kont powinny składać się z od 3 do 24 znaków, z małymi literami i cyframi. Bez spacji.
 
-   - Zastąp `<your storage account key>` kluczem Base64 o 64-bajcie. Możesz wygenerować klucz za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów.
+   - Zastąp `<your storage account key>` kluczem Base64 o 64-bajcie. Klucz można wygenerować za pomocą narzędzi, takich jak [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). Użyjesz tych poświadczeń do uzyskania dostępu do magazynu obiektów blob z innych modułów.
 
    - Zastąp `<event grid module name>` nazwą modułu Event Grid.
    - Zastąp `<storage mount>` zgodnie z systemem operacyjnym kontenera.
@@ -181,7 +161,7 @@ Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejś�
 ### <a name="review-deployment"></a>Przegląd wdrożenia
 
 1. Sekcja Przegląd przedstawia manifest wdrożenia JSON, który został utworzony na podstawie wybranych opcji w poprzedniej sekcji. Upewnij się, że zobaczysz następujące cztery moduły: **$edgeAgent**, **$edgeHub**, **eventgridmodule**, **Subscriber** i **azureblobstorageoniotedge** , że wszystkie wdrażane.
-2. Przejrzyj informacje o wdrożeniu, a następnie wybierz **przesyłania**.
+2. Przejrzyj informacje o wdrożeniu, a następnie wybierz pozycję **Prześlij**.
 
 ## <a name="verify-your-deployment"></a>Weryfikowanie wdrożenia
 
@@ -221,42 +201,41 @@ Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejś�
 2. Subskrybenci mogą rejestrować się w przypadku zdarzeń opublikowanych w temacie. Aby odebrać każde zdarzenie, musisz utworzyć subskrypcję Event Grid dla tematu **MicrosoftStorage** .
     1. Utwórz plik blobsubscription. JSON z następującą zawartością. Aby uzyskać szczegółowe informacje o ładunku, zapoznaj się z naszą [dokumentacją interfejsu API](api.md)
 
-    ```json
+       ```json
         {
           "properties": {
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
         }
-    ```
+       ```
 
-    >[!NOTE]
-    > Właściwość **EndpointType** określa, że subskrybent jest elementem **webhook**.  **EndpointUrl** określa adres URL, pod którym subskrybent nasłuchuje zdarzeń. Ten adres URL odnosi się do wdrożonej wcześniej przykładowej funkcji platformy Azure.
+       >[!NOTE]
+       > Właściwość **EndpointType** określa, że subskrybent jest elementem **webhook**.  **EndpointUrl** określa adres URL, pod którym subskrybent nasłuchuje zdarzeń. Ten adres URL odnosi się do wdrożonej wcześniej przykładowej funkcji platformy Azure.
 
     2. Uruchom następujące polecenie, aby utworzyć subskrypcję tematu. Upewnij się, że został wyświetlony kod stanu HTTP `200 OK`.
 
-    ```sh
-    curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
-    ```
+       ```sh
+       curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
+       ```
 
-    > [!IMPORTANT]
-    > - W przypadku przepływu HTTPS w przypadku włączenia uwierzytelniania klienta za pośrednictwem klucza SAS należy dodać określony wcześniej klucz sygnatury dostępu współdzielonego jako nagłówek. Z tego względu żądanie zwinięcie będzie: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
-    > - W przypadku przepływu HTTPS, jeśli uwierzytelnianie klienta jest włączone za pośrednictwem certyfikatu, żądanie zwinięcie będzie:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-
+       > [!IMPORTANT]
+       > - W przypadku przepływu HTTPS w przypadku włączenia uwierzytelniania klienta za pośrednictwem klucza SAS należy dodać określony wcześniej klucz sygnatury dostępu współdzielonego jako nagłówek. Z tego względu żądanie zwinięcie będzie: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+       > - W przypadku przepływu HTTPS, jeśli uwierzytelnianie klienta jest włączone za pośrednictwem certyfikatu, żądanie zwinięcie będzie:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
     3. Uruchom następujące polecenie, aby sprawdzić, czy subskrypcja została pomyślnie utworzona. Należy zwrócić kod stanu HTTP 200 OK.
 
-    ```sh
-    curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
-    ```
+       ```sh
+       curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
+       ```
 
-    Przykładowe dane wyjściowe:
+       Przykładowe dane wyjściowe:
 
-    ```json
+       ```json
         {
           "id": "/iotHubs/eg-iot-edge-hub/devices/eg-edge-device/modules/eventgridmodule/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5",
           "type": "Microsoft.EventGrid/eventSubscriptions",
@@ -266,18 +245,18 @@ Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejś�
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
         }
-    ```
+       ```
 
-    > [!IMPORTANT]
-    > - W przypadku przepływu HTTPS w przypadku włączenia uwierzytelniania klienta za pośrednictwem klucza SAS należy dodać określony wcześniej klucz sygnatury dostępu współdzielonego jako nagłówek. Z tego względu żądanie zwinięcie będzie: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-    > - W przypadku przepływu HTTPS, jeśli uwierzytelnianie klienta jest włączone za pośrednictwem certyfikatu, żądanie zwinięcie będzie: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > [!IMPORTANT]
+       > - W przypadku przepływu HTTPS w przypadku włączenia uwierzytelniania klienta za pośrednictwem klucza SAS należy dodać określony wcześniej klucz sygnatury dostępu współdzielonego jako nagłówek. Z tego względu żądanie zwinięcie będzie: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - W przypadku przepływu HTTPS, jeśli uwierzytelnianie klienta jest włączone za pośrednictwem certyfikatu, żądanie zwinięcie będzie: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
-2. Pobierz [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) i [Połącz je z lokalnym magazynem](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
+3. Pobierz [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) i [Połącz je z lokalnym magazynem](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
 
 ## <a name="verify-event-delivery"></a>Weryfikowanie dostarczania zdarzeń
 
@@ -289,7 +268,7 @@ Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejś�
     Przykładowe dane wyjściowe:
 
     ```json
-            Received event data [
+            Received Event:
             {
               "id": "d278f2aa-2558-41aa-816b-e6d8cc8fa140",
               "topic": "MicrosoftStorage",
@@ -309,7 +288,6 @@ Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejś�
                 "blobType": "BlockBlob"
               }
             }
-          ]
     ```
 
 ### <a name="verify-blobdeleted-event-delivery"></a>Weryfikowanie dostarczania zdarzeń BlobDeleted
@@ -320,7 +298,7 @@ Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejś�
     Przykładowe dane wyjściowe:
     
     ```json
-            Received event data [
+            Received Event:
             {
               "id": "ac669b6f-8b0a-41f3-a6be-812a3ce6ac6d",
               "topic": "MicrosoftStorage",
@@ -340,7 +318,6 @@ Zachowaj trasy domyślne, a następnie wybierz pozycję **dalej** , aby przejś�
                 "blobType": "BlockBlob"
               }
             }
-          ]
     ```
 
 Gratulacje! Samouczek został ukończony. Poniższe sekcje zawierają szczegółowe informacje na temat właściwości zdarzenia.
@@ -351,27 +328,27 @@ Poniżej znajduje się lista obsługiwanych właściwości zdarzeń oraz ich typ
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| temat | string | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Ta wartość jest podawana przez usługę Event Grid. |
-| subject | string | Zdefiniowana przez wydawcę ścieżka do tematu zdarzenia. |
-| eventType | string | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
-| eventTime | string | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
-| id | string | Unikatowy identyfikator zdarzenia. |
+| temat | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
+| subject | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| eventType | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
 | data | obiekt | Dane zdarzenia magazynu obiektów BLOB. |
-| dataVersion | string | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
-| metadataVersion | string | Wersja schematu metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Ta wartość jest podawana przez usługę Event Grid. |
+| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| api | string | Operacja, która wyzwoliła zdarzenie. Może to być jedna z następujących wartości: <ul><li>BlobCreated — dozwolone wartości to: `PutBlob` i `PutBlockList`</li><li>BlobDeleted — dozwolone wartości to `DeleteBlob`, `DeleteAfterUpload` i `AutoDelete`. <p>Zdarzenie `DeleteAfterUpload` jest generowane, gdy obiekt BLOB zostanie automatycznie usunięty, ponieważ żądana Właściwość deleteAfterUpload ma wartość true. </p><p>zdarzenie `AutoDelete` jest generowane, gdy obiekt BLOB zostanie automatycznie usunięty, ponieważ deleteAfterMinutes żądana wartość właściwości wygasła.</p></li></ul>|
-| clientRequestId | string | Identyfikator żądania dostarczonego przez klienta dla operacji interfejsu API magazynu. Tego identyfikatora można użyć do skorelowania dzienników diagnostycznych usługi Azure Storage przy użyciu pola "Client-Request-ID" w dziennikach i można go podać w żądaniach klientów przy użyciu nagłówka "x-MS-Client-Request-ID". Aby uzyskać szczegółowe informacje, zobacz [format dziennika](/rest/api/storageservices/storage-analytics-log-format). |
-| requestId | string | Identyfikator żądania wygenerowanego przez usługę dla operacji interfejsu API magazynu. Może służyć do skorelowania dzienników diagnostycznych usługi Azure Storage przy użyciu pola "Request-ID-Header" w dziennikach i jest zwracana z inicjowania wywołania interfejsu API w nagłówku "x-MS-Request-ID". Zobacz [format dziennika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| Element ETag | string | Wartość, której można użyć do warunkowego wykonywania operacji. |
-| contentType | string | Typ zawartości określony dla obiektu BLOB. |
+| api | ciąg | Operacja, która wyzwoliła zdarzenie. Może to być jedna z następujących wartości: <ul><li>BlobCreated — dozwolone wartości to: `PutBlob` i `PutBlockList`</li><li>BlobDeleted — dozwolone wartości to `DeleteBlob`, `DeleteAfterUpload` i `AutoDelete`. <p>Zdarzenie `DeleteAfterUpload` jest generowane, gdy obiekt BLOB zostanie automatycznie usunięty, ponieważ żądana Właściwość deleteAfterUpload ma wartość true. </p><p>zdarzenie `AutoDelete` jest generowane, gdy obiekt BLOB zostanie automatycznie usunięty, ponieważ deleteAfterMinutes żądana wartość właściwości wygasła.</p></li></ul>|
+| clientRequestId | ciąg | Identyfikator żądania dostarczonego przez klienta dla operacji interfejsu API magazynu. Tego identyfikatora można użyć do skorelowania dzienników diagnostycznych usługi Azure Storage przy użyciu pola "Client-Request-ID" w dziennikach i można go podać w żądaniach klientów przy użyciu nagłówka "x-MS-Client-Request-ID". Aby uzyskać szczegółowe informacje, zobacz [format dziennika](/rest/api/storageservices/storage-analytics-log-format). |
+| requestId | ciąg | Identyfikator żądania wygenerowanego przez usługę dla operacji interfejsu API magazynu. Może służyć do skorelowania dzienników diagnostycznych usługi Azure Storage przy użyciu pola "Request-ID-Header" w dziennikach i jest zwracana z inicjowania wywołania interfejsu API w nagłówku "x-MS-Request-ID". Zobacz [format dziennika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| Element ETag | ciąg | Wartość, której można użyć do warunkowego wykonywania operacji. |
+| contentType | ciąg | Typ zawartości określony dla obiektu BLOB. |
 | contentLength | liczba całkowita | Rozmiar obiektu BLOB w bajtach. |
-| blobType | string | Typ obiektu BLOB. Prawidłowe wartości to "BlockBlob" lub "PageBlob". |
-| url | string | Ścieżka do obiektu BLOB. <br>Jeśli klient używa interfejsu API REST usługi BLOB, ten adres URL ma następującą strukturę: *\<Storage-account-name\>. blob.core.windows.net/\<nazwa kontenera\>/\<nazwa pliku\>* . <br>Jeśli klient używa interfejsu API REST Data Lake Storage, ten adres URL ma następującą strukturę: *\<Storage-account-name\>. dfs.core.windows.net/\<File-System-name\>/\<nazwa pliku\>* . |
+| blobType | ciąg | Typ obiektu BLOB. Prawidłowe wartości to "BlockBlob" lub "PageBlob". |
+| url | ciąg | Ścieżka do obiektu BLOB. <br>Jeśli klient używa interfejsu API REST usługi BLOB, ten adres URL ma następującą strukturę: *\<Storage-account-name\>. blob.core.windows.net/\<nazwa kontenera\>/\<nazwa pliku\>* . <br>Jeśli klient używa interfejsu API REST Data Lake Storage, ten adres URL ma następującą strukturę: *\<Storage-account-name\>. dfs.core.windows.net/\<File-System-name\>/\<nazwa pliku\>* . |
 
 
 ## <a name="next-steps"></a>Następne kroki

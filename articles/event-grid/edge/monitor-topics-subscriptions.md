@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 79b223de7a0a0cfdaf799b1f80e585a2a55f7e82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849736"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086681"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Monitorowanie tematów i subskrypcji zdarzeń
 
@@ -40,7 +40,7 @@ Skonfiguruj moduł do emisji metryk przez ustawienie zmiennej środowiskowej `me
         }
  ```    
 
-Metryki będą dostępne w `5888/metrics` module dla protokołów HTTP i `4438/metrics` dla protokołu HTTPS. Na przykład `http://<modulename>:4438/metrics?api-version=2019-01-01-preview` w przypadku protokołu HTTP. W tym momencie moduł metryk może sondować punkt końcowy, aby zbierać metryki jak w tej [przykładowej architekturze](https://github.com/veyalla/ehm).
+Metryki będą dostępne w `5888/metrics` module dla protokołów HTTP i `4438/metrics` dla protokołu HTTPS. Na przykład `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` w przypadku protokołu HTTP. W tym momencie moduł metryk może sondować punkt końcowy, aby zbierać metryki jak w tej [przykładowej architekturze](https://github.com/veyalla/ehm).
 
 ## <a name="available-metrics"></a>Dostępne metryki
 
@@ -63,9 +63,9 @@ Oba tematy i subskrypcje zdarzeń emitują metryki, aby uzyskać wgląd w inform
 | Metryka | Opis |
 | ------ | ----------- |
 | deliverySuccessCounts | Liczba zdarzeń pomyślnie dostarczonych do skonfigurowanego punktu końcowego
-| deliveryFailureCounts | Liczba prób dostarczenia zdarzenia nie mogła zostać skonfigurowanym punktem końcowym
+| deliveryFailureCounts | Liczba zdarzeń, które nie zostały dostarczone do skonfigurowanego punktu końcowego
 | deliverySuccessLatencyMs | Opóźnienie zdarzeń zakończonych powodzeniem w milisekundach
 | deliveryFailureLatencyMs | Opóźnienie niepowodzeń dostarczania zdarzeń w milisekundach
 | systemDelayForFirstAttemptMs | Opóźnienie zdarzeń systemu przed pierwszą próbą dostarczenia w milisekundach
 | deliveryAttemptsCount | Liczba prób dostarczenia zdarzenia — sukces i niepowodzenie
-| expiredCounts | Liczba zdarzeń, które nie mogą zostać dostarczone 
+| expiredCounts | Liczba zdarzeń, które wygasły i nie zostały dostarczone do skonfigurowanego punktu końcowego

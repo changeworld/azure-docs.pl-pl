@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f903ca541582dfa0f3980bb65a3fef3c4b774a7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916778"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084017"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Obsługa wyjątków i błędów MSAL
 
@@ -78,7 +78,7 @@ MSAL uwidacznia pole `Classification`, które można odczytać, aby zapewnić le
 | UserPasswordExpired | Hasło użytkownika wygasło. | Wywołaj AcquireTokenInteractively (), aby użytkownik mógł zresetować swoje hasło. |
 | PromptNeverFailed| Uwierzytelnianie interaktywne zostało wywołane z monitem o podanie parametru = nigdy, wymuszając MSAL na podstawie plików cookie przeglądarki i nie wyświetlaj przeglądarki. To nie powiodło się. | Wywołaj AcquireTokenInteractively () bez monitowania. Brak |
 | AcquireTokenSilentFailed | Zestaw MSAL SDK nie ma wystarczających informacji do pobrania tokenu z pamięci podręcznej. Może to być spowodowane brakiem tokenów w pamięci podręcznej lub nie znaleziono konta. Komunikat o błędzie zawiera więcej szczegółów.  | Call AcquireTokenInteractively (). |
-| Brak    | Nie podano dalszych szczegółów. Warunek może zostać rozpoznany przez interakcję użytkownika podczas przepływu uwierzytelniania interaktywnego. | Call AcquireTokenInteractively (). |
+| None    | Nie podano dalszych szczegółów. Warunek może zostać rozpoznany przez interakcję użytkownika podczas przepływu uwierzytelniania interaktywnego. | Call AcquireTokenInteractively (). |
 
 ## <a name="net-code-example"></a>Przykład kodu platformy .NET
 

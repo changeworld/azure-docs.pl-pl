@@ -13,18 +13,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 841ff610509c0d580ff8dca3a9fc14b816d56f1c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9760f09f2588f09263c96cf8c1be74129b117009
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983226"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085381"
 ---
 # <a name="authentication-basics"></a>Podstawowe informacje o uwierzytelnianiu
 
 ## <a name="what-is-authentication"></a>Co to jest uwierzytelnianie
 
-W tym artykule omówiono wiele pojęć związanych z uwierzytelnianiem, które należy zrozumieć w celu utworzenia chronionych aplikacji sieci Web, interfejsów API sieci Web lub aplikacji wywołujących chronione interfejsy API sieci Web. Jeśli zobaczysz termin, którego nie znasz, wypróbuj nasz (słownik) [Developer-glossary.md].
+W tym artykule omówiono wiele pojęć związanych z uwierzytelnianiem, które należy zrozumieć w celu utworzenia chronionych aplikacji sieci Web, interfejsów API sieci Web lub aplikacji wywołujących chronione interfejsy API sieci Web. Jeśli zobaczysz termin, którego nie znasz, wypróbuj nasz [słownik](developer-glossary.md).
 
 **Uwierzytelnianie** to proces potwierdzania użytkownika. Uwierzytelnianie jest czasami określane terminem AuthN.
 
@@ -38,7 +38,7 @@ Scentralizowany dostawca tożsamości jest jeszcze ważniejszy dla aplikacji, kt
 
 Platforma tożsamości firmy Microsoft upraszcza uwierzytelnianie dla deweloperów aplikacji, dostarczając tożsamość jako usługę, z obsługą standardowych protokołów, takich jak [OAuth 2,0](https://oauth.net/2/) i [OpenID Connect Connect](https://openid.net/connect/), a także bibliotek typu "open source" dla różnych platform, które ułatwiają szybkie rozpoczęcie tworzenia kodu. Dzięki temu deweloperzy mogą tworzyć aplikacje, które logują się do wszystkich tożsamości firmy Microsoft, uzyskują tokeny, aby wywoływać [Microsoft Graph](https://developer.microsoft.com/graph/), inne interfejsy API firmy Microsoft lub interfejsy API zaprojektowane przez deweloperów. Aby uzyskać więcej informacji, zobacz [ewolucja platformy tożsamości firmy Microsoft](about-microsoft-identity-platform.md).
 
-### <a name="tenants"></a>dzierżaw
+### <a name="tenants"></a>Dzierżawcy
 
 Dostawca tożsamości w chmurze służy do zapewniania wielu organizacji. Aby zapewnić, że użytkownicy z różnych organizacji są oddzielni, usługa Azure AD jest dzielona na dzierżawców z jedną dzierżawą na organizację.
 
@@ -85,7 +85,7 @@ Aby dostawca tożsamości mógł wiedzieć, że użytkownik ma dostęp do okreś
 
 * Dostosuj znakowanie aplikacji w oknie dialogowym logowania. Jest to ważne, ponieważ jest to pierwsze środowisko użytkownika z Twoją aplikacją.
 * Zdecyduj, czy chcesz zezwolić użytkownikom na logowanie się tylko wtedy, gdy należą do organizacji. Jest to jedna aplikacja dzierżawy. Lub zezwól użytkownikom na logowanie się przy użyciu dowolnego konta służbowego. Jest to aplikacja wielodostępna. Możesz również zezwolić na osobiste konta Microsoft lub konto społecznościowe w serwisie LinkedIn, Google i tak dalej.
-* uprawnienia zakresu żądania. Na przykład można zażądać zakresu "User. Read", który przyznaje uprawnienia do odczytu profilu zalogowanego użytkownika.
+* Uprawnienia zakresu żądania. Na przykład można zażądać zakresu "User. Read", który przyznaje uprawnienia do odczytu profilu zalogowanego użytkownika.
 * Zdefiniuj zakresy, które definiują dostęp do internetowego interfejsu API. Zwykle, gdy aplikacja chce uzyskać dostęp do interfejsu API, będzie musiała zażądać uprawnień do zdefiniowanych zakresów.
 * Udostępnij wpis tajny w usłudze Azure AD, który udowadnia tożsamość aplikacji w usłudze Azure AD.  Ma to zastosowanie w przypadku, gdy aplikacja jest poufną aplikacją kliencką. Poufna aplikacja kliencka to aplikacja, która umożliwia bezpieczne przechowywanie poświadczeń. Wymagają one zaufanego serwera wewnętrznej bazy danych do przechowywania poświadczeń.
 

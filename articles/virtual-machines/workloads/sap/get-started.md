@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42df2d24aad1465a200203e648feb97d4e96fd18
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e5ea4bba693a6785dae4075da7b13154593bb4c
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989828"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087372"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -119,8 +119,9 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 - [Usługa Azure Data Factory oferuje integrację danych oprogramowania SAP HANA i Business Warehouse](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
-## <a name="change-log"></a>Dziennik zmian
+## <a name="change-log"></a>Dziennik zmiany
 
+- 02/07/2020: zmiana [łączności publicznej punktu końcowego dla maszyn wirtualnych przy użyciu usługi Azure Standard ILB w scenariuszach dotyczących oprogramowania SAP ha](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) do aktualizowania przykładowego ZRZUTu sieciowej grupy zabezpieczeń
 - 02/03/2020: zmiana [wysokiej dostępności dla oprogramowania SAP NW na maszynach wirtualnych platformy Azure w systemie SLES for SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) i [wysokiej dostępności dla oprogramowania SAP NW na maszynach wirtualnych platformy Azure na platformie SLES z ANF for SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) , aby usunąć ostrzeżenie dotyczące używania łącznika w nazwach hostów węzłów klastra na SLES
 - 01/28/2020: Zmień [wysoką dostępność SAP HANA na maszynach wirtualnych platformy Azure w systemie RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) , aby wyrównać limity czasu SAP HANA zasobów klastra do zaleceń dotyczących limitu czasu Red Hat
 - 01/17/2020: zmiana [grup umieszczania bliskości platformy Azure w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) aby zmienić sekcję przenoszenie istniejących maszyn wirtualnych do grupy umieszczania w sąsiedztwie

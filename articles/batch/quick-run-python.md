@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: uruchamianie zadania Azure Batch — interfejs API języka Python'
+title: Uruchamianie zadania Azure Batch za pomocą interfejsu API języka Python
 description: Szybkie uruchamianie Azure Batch przykładowego zadania i zadań przy użyciu biblioteki klienckiej języka Python w usłudze Batch. Poznaj kluczowe pojęcia związane z usługą Batch.
 services: batch
 author: LauraBrenner
@@ -12,32 +12,28 @@ ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 87c08c403a1e5eefd7645572f593b20037a8212b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017109"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086046"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu API języka Python
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Szybki Start: korzystanie z interfejsu API języka Python w celu uruchomienia zadania Azure Batch
 
-Ten przewodnik Szybki start przedstawia uruchamianie zadania usługi Azure Batch z poziomu aplikacji utworzonej w oparciu o interfejs API języka Python usługi Azure Batch.  Po ukończeniu tego przewodnika Szybki start będziesz rozumieć kluczowe pojęcia związane z usługą Batch, co pozwoli na wypróbowanie tej usługi z bardziej realistycznymi obciążeniami na większą skalę.
+W tym przewodniku szybki start użyjesz interfejsu API języka Python, aby uruchomić zadanie Azure Batch z aplikacji. Aplikacja przekazuje pliki danych wejściowych do usługi Azure Storage i tworzy *pulę* węzłów obliczeniowych wsadowych (maszyn wirtualnych). Następnie tworzy *zadanie* , które uruchamia *zadania* , aby przetwarzać każdy plik wejściowy w puli przy użyciu polecenia Basic.
 
-Aplikacja przekazuje kilka plików danych wejściowych do usługi Azure Storage oraz tworzy *pulę* węzłów obliczeniowych (maszyn wirtualnych) usługi Batch. Następnie aplikacja tworzy przykładowe *zadanie*, które uruchamia *zadania podrzędne* w celu przetworzenia każdego pliku wejściowego w puli przy użyciu podstawowego polecenia.
- 
+Tutaj przedstawiono kluczowe pojęcia związane z usługą Batch i gotowe do wypróbowania partii z bardziej realistycznymi obciążeniami w większej skali.
+
 ![Przegląd przepływu pracy Azure Batch](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Środowisko Python w wersji 2.7 lub 3.3 albo nowszej](https://www.python.org/downloads/)
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Konto **Azure Batch** i połączone konto **usługi Azure Storage** . Użyj [Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia](quick-create-cli.md) , aby utworzyć te konta.
+- [Python](https://python.org/downloads), wersja 2,7 lub 3,3 lub nowsza, łącznie z menedżerem pakietów [PIP](https://pip.pypa.io/en/stable/installing/)
 
-* Menedżer pakietów [pip](https://pip.pypa.io/en/stable/installing/)
-
-* Konto usługi Azure Batch i połączone konto usługi Azure Storage. Aby utworzyć te konta, skorzystaj z przewodników Szybki start dla usługi Batch i [witryny Azure Portal](quick-create-portal.md) lub [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md). 
-
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -59,7 +55,7 @@ W środowisku projektowym Python zainstaluj wymagane pakiety przy użyciu mened�
 pip install -r requirements.txt
 ```
 
-Otwórz plik `config.py`. Zaktualizuj ciągi poświadczeń konta usługi Batch i konta magazynu, podając wartości uzyskane dla Twoich kont. Przykład:
+Otwórz plik `config.py`. Zaktualizuj ciągi poświadczeń konta usługi Batch i konta magazynu, podając wartości uzyskane dla Twoich kont. Na przykład:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -69,7 +65,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-## <a name="run-the-app"></a>Uruchomienie aplikacji
+## <a name="run-the-app"></a>Uruchamianie aplikacji
 
 Aby zobaczyć przepływ pracy usługi Batch w akcji, uruchom skrypt:
 

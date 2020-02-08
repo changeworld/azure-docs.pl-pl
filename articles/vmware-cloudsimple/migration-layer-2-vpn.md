@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d4e25074203ddcc016f54842f25f52017c6137f0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019829"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083228"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrowanie obciążeń przy użyciu rozciągniętych sieci warstwy 2
 
@@ -48,7 +48,7 @@ Przed wdrożeniem i skonfigurowaniem rozwiązania Sprawdź, czy zostały wprowad
 * Wersja autonomicznego urządzenia NSX-T Edge jest zgodna z wersją Menedżera NSX-T (NSX-T 2.3.0) używaną w środowisku chmury prywatnej do automatycznej synchronizacji.
 * Grupa portów magistrali została utworzona w lokalnym serwerze vCenter z włączonymi transmisjami sfałszowanymi.
 * Publiczny adres IP został zarezerwowany do użycia dla autonomicznego adresu IP pasma klienta NSX-T, a do translacji między tymi dwoma adresami jest stosowane 1:1 NAT.
-* Przekazywanie DNS jest ustawiane na lokalnych serwerach DNS dla AZ. AVS.io domenę, aby wskazać serwer DNS chmury prywatnej w chmurze automatycznej.
+* Funkcja przesyłania dalej DNS jest ustawiana na lokalnych serwerach DNS dla domeny az.cloudsimple.io, co oznacza, że serwery DNS w chmurze rekoderów prywatnych.
 * Opóźnienie RTT jest mniejsze niż lub równe 150 MS, co jest wymagane, aby vMotion działały między dwiema lokacjami.
 
 ## <a name="limitations-and-considerations"></a>Ograniczenia i zagadnienia
@@ -57,10 +57,10 @@ W poniższej tabeli wymieniono obsługiwane wersje vSphere i typy adapterów sie
 
 | wersja vSphere | Typ źródłowego przełącznika vSwitch | Sterownik wirtualnej karty sieciowej | Docelowy typ przełącznika vSwitch | Obsługiwane? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Wszystko | Usługa | Wszystko | Usługa | Tak |
-| vSphere 6,7 UI lub nowszy, 6.5 P03 lub nowszy | Usługa | VMXNET3 | N-VDS | Tak |
+| Wszyscy | Usługa | Wszyscy | Usługa | Yes |
+| vSphere 6,7 UI lub nowszy, 6.5 P03 lub nowszy | Usługa | VMXNET3 | N-VDS | Yes |
 | vSphere 6,7 UI lub nowszy, 6.5 P03 lub nowszy | Usługa | E1000 | N-VDS | [Nieobsługiwane na VWware](https://kb.vmware.com/s/article/56991) |
-| vSphere 6,7 UI lub 6.5 P03, NSX-V lub wersje poniżej NSX-T 2.2, 6.5 P03 lub nowszy | Wszystko | Wszystko | N-VDS | [Nieobsługiwane na VWware](https://kb.vmware.com/s/article/56991) |
+| vSphere 6,7 UI lub 6.5 P03, NSX-V lub wersje poniżej NSX-T 2.2, 6.5 P03 lub nowszy | Wszyscy | Wszyscy | N-VDS | [Nieobsługiwane na VWware](https://kb.vmware.com/s/article/56991) |
 
 Od wersji programu VMware NSX-T 2,3:
 
@@ -154,16 +154,16 @@ Aby nawiązać połączenie sieci VPN opartej na trasach IPsec między routerem 
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Anonsuj adres IP interfejsu sprzężenia zwrotnego w sieci underlay
 
-1. Utwórz trasę o wartości null dla sieci interfejsu sprzężenia zwrotnego. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **trasy statyczne**. Kliknij pozycję **Dodaj**. W polu **Sieć**wprowadź adres IP interfejsu sprzężenia zwrotnego. W przypadku **następnych przeskoków**kliknij przycisk **Dodaj**, określ wartość "null" dla następnego przeskoku i pozostaw wartość domyślną 1 dla opcji Odległość dla administratorów.
+1. Utwórz trasę o wartości null dla sieci interfejsu sprzężenia zwrotnego. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **trasy statyczne**. Kliknij pozycję **Add** (Dodaj). W polu **Sieć**wprowadź adres IP interfejsu sprzężenia zwrotnego. W przypadku **następnych przeskoków**kliknij przycisk **Dodaj**, określ wartość "null" dla następnego przeskoku i pozostaw wartość domyślną 1 dla opcji Odległość dla administratorów.
 
     ![Dodawanie trasy statycznej](media/l2vpn-routing-security01.png)
 
-2. Utwórz listę prefiksów IP. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **listy prefiksów IP**. Kliknij pozycję **Dodaj**. Wprowadź nazwę, aby zidentyfikować listę. W przypadku **prefiksów**kliknij dwukrotnie przycisk **Dodaj** . W pierwszym wierszu wprowadź wartość "0.0.0.0/0" dla **sieci** i "Odmów" dla **akcji**. W drugim wierszu wybierz **dowolne** dla **sieci** i **Zezwalaj** na **działanie**.
+2. Utwórz listę prefiksów IP. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **listy prefiksów IP**. Kliknij pozycję **Add** (Dodaj). Wprowadź nazwę, aby zidentyfikować listę. W przypadku **prefiksów**kliknij dwukrotnie przycisk **Dodaj** . W pierwszym wierszu wprowadź wartość "0.0.0.0/0" dla **sieci** i "Odmów" dla **akcji**. W drugim wierszu wybierz **dowolne** dla **sieci** i **Zezwalaj** na **działanie**.
 3. Dołącz listę prefiksów IP do sąsiadów BGP (TOR). Dołączanie listy prefiksów IP do sąsiada BGP uniemożliwia anonsowanie trasy domyślnej w protokole BGP do przełączników TOR. Jednak każda inna trasa obejmująca trasę o wartości null anonsuje adres IP interfejsu sprzężenia zwrotnego z przełącznikami TOR.
 
     ![Utwórz listę prefiksów IP](media/l2vpn-routing-security02.png)
 
-4. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **BGP** > **Neighbors**. Wybierz pierwszy sąsiada. Kliknij pozycję **edytuj** > **rodziny adresów**. W przypadku rodziny IPv4 należy edytować kolumnę **out Filter** i wybrać utworzoną przez siebie listę prefiksów IP. Kliknij pozycję **Zapisz**. Powtórz ten krok dla drugiego sąsiada.
+4. Zaloguj się do Menedżera NSX-T i wybierz kolejno pozycje **sieć** > **Routing** > **routery** > **Provider-LR** > **Routing** > **BGP** > **Neighbors**. Wybierz pierwszy sąsiada. Kliknij pozycję **edytuj** > **rodziny adresów**. W przypadku rodziny IPv4 należy edytować kolumnę **out Filter** i wybrać utworzoną przez siebie listę prefiksów IP. Kliknij przycisk **Save** (Zapisz). Powtórz ten krok dla drugiego sąsiada.
 
     ![dołączyć prefiks IP lista 1](media/l2vpn-routing-security03.png) ![Dołącz prefiks IP lista 2](media/l2vpn-routing-security04.png)
 

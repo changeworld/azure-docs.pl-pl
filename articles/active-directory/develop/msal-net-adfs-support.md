@@ -3,22 +3,22 @@ title: Obsługa AD FS w MSAL.NET | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej na temat obsługi Active Directory Federation Services (AD FS) w bibliotece uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 6e40a03e70fa04855037165462761c56f13acc58
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a0dd9b339ca6372a34ff46222cad347eb1a673f9
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695623"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084996"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Obsługa Active Directory Federation Services w MSAL.NET
 Active Directory Federation Services (AD FS) w systemie Windows Server umożliwia dodawanie uwierzytelniania i autoryzacji na podstawie OpenID Connect Connect i OAuth 2,0 na potrzeby aplikacji, które tworzysz. Aplikacje te mogą następnie uwierzytelniać użytkowników bezpośrednio przed AD FS. Aby uzyskać więcej informacji, Przeczytaj [AD FS scenariusze dla deweloperów](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios).

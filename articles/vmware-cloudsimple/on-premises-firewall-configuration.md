@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 09b25dbdc8fc13c40ccd89b2cfd78611cedaac9d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a9760b5c7a70c58a1afe1b14b781a35f2b9b18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024470"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082970"
 ---
 # <a name="accessing-your-avs-private-cloud-environment-and-applications-from-on-premises"></a>Uzyskiwanie dostępu do własnego środowiska chmury prywatnej i aplikacji z poziomu lokalnego
 
@@ -24,9 +24,9 @@ Połączenie można skonfigurować z sieci lokalnej w celu automatycznej synchro
 
 Aby można było uzyskać dostęp do Menedżera automatycznej synchronizacji chmurowej usługi vCenter i NSX-T, porty zdefiniowane w poniższej tabeli muszą być otwarte na zaporze lokalnej. 
 
-| Port       | Źródło                           | Cel                      | Przeznaczenie                                                                                                                |
+| Port       | Element źródłowy                           | Element docelowy                      | Przeznaczenie                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)   | Lokalne serwery DNS          | Automatyczna synchronizacja serwerów DNS w chmurze prywatnej        | Wymagane do przeszukiwania DNS przez *AZ. AVS.io* do automatycznej synchronizacji serwerów DNS w chmurze prywatnej z sieci lokalnej.     |
+| 53 (UDP)   | Lokalne serwery DNS          | Automatyczna synchronizacja serwerów DNS w chmurze prywatnej        | Wymagany do przekazywania wyszukiwania DNS *AZ.cloudsimple.IO* w celu automatycznej synchronizacji serwerów DNS w chmurze prywatnej w sieci lokalnej.     |
 | 53 (UDP)   | Automatyczna synchronizacja serwerów DNS w chmurze prywatnej        | Lokalne serwery DNS          | Wymagane do przesyłania dalej DNS wyszukiwania lokalnych nazw domen z funkcji automatycznej synchronizacji chmurowej programu vCenter do lokalnych serwerów DNS. |
 | 80 (TCP)   | Sieć lokalna              | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Wymagane do przekierowywania adresu URL programu vCenter z *protokołu HTTP* do *protokołu HTTPS*.                                                         |
 | 443 (TCP)  | Sieć lokalna              | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Wymagane w celu uzyskania dostępu do Menedżera vCenter i NSX-T z sieci lokalnej.                                           |
@@ -37,7 +37,7 @@ Aby można było uzyskać dostęp do Menedżera automatycznej synchronizacji chm
 
 Aby skonfigurować lokalną usługi Active Directory jako źródło tożsamości w ramach automatycznej synchronizacji chmury prywatnej, należy otworzyć porty zdefiniowane w tabeli. Zobacz temat [Korzystanie z usługi Azure AD jako dostawcy tożsamości dla programu vCenter w ramach automatycznej synchronizacji wersji zapoznaj się z chmurą prywatną](https://docs.azure.cloudsimple.com/azure-ad/) .
 
-| Port         | Źródło                           | Cel                                         | Przeznaczenie                                                                                                                                          |
+| Port         | Element źródłowy                           | Element docelowy                                         | Przeznaczenie                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)      | Automatyczna synchronizacja serwerów DNS w chmurze prywatnej        | Lokalne serwery DNS                             | Wymagane w celu przeprowadzenia przeszukiwania DNS lokalnych nazw domen usługi Active Directory z wersji próbnej wersji załączonej do lokalnych serwerów DNS.        |
 | 389 (TCP/UDP) | Automatyczna synchronizacja sieci zarządzania chmurą prywatną | Lokalne kontrolery domeny usługi Active Directory     | Wymagane w przypadku komunikacji z protokołem LDAP z programu reautomatyczna synchronizacja chmurowych serwerów vCenter do kontrolerów domeny usługi Active Directory na potrzeby uwierzytelniania użytkowników.              |
@@ -49,7 +49,7 @@ Aby skonfigurować lokalną usługi Active Directory jako źródło tożsamości
 
 Dostęp do obciążeń maszyn wirtualnych działających w ramach automatycznej synchronizacji prywatnej chmury wymaga otwarcia portów na zaporze lokalnej. W poniższej tabeli przedstawiono niektóre typowe porty wymagane i ich przeznaczenia. Wymagania dotyczące portów specyficzne dla aplikacji można znaleźć w dokumentacji aplikacji.
 
-| Port         | Źródło                         | Cel                          | Przeznaczenie                                                                              |
+| Port         | Element źródłowy                         | Element docelowy                          | Przeznaczenie                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22 (TCP)      | Sieć lokalna            | Automatyczna synchronizacja sieci obciążeń chmur prywatnych       | Bezpieczny dostęp powłoki do maszyn wirtualnych z systemem Linux działających w ramach automatycznej synchronizacji chmury prywatnej.            |
 | 3389 (TCP)    | Sieć lokalna            | Automatyczna synchronizacja sieci obciążeń chmur prywatnych       | Pulpit zdalny do maszyn wirtualnych z systemem Windows uruchomiony w ramach automatycznej synchronizacji chmury prywatnej.               |

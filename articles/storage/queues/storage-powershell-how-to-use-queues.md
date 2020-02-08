@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 94e28c59c3281dc6c1d65ce782568233d0e23f03
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: bd2f372bdcb949b64f748d186a9b060bb9cbec4a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313845"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087057"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonywanie operacji usługi Azure Queue Storage przy użyciu programu Azure PowerShell
 
@@ -25,7 +25,7 @@ Azure queue storage to usługa służąca do przechowywania dużej liczby komuni
 > * Pobieranie kolejki
 > * Dodawanie komunikatu
 > * Odczytaj wiadomość
-> * Usuwanie wiadomości
+> * Usuń komunikat
 > * Usuwanie kolejki
 
 Ta procedura wymaga, aby moduł Azure PowerShell AZ w wersji 0,7 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
@@ -34,7 +34,7 @@ Brak poleceń cmdlet programu PowerShell dla płaszczyzny danych dla kolejek. Ab
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -78,7 +78,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
 
-Poniższy przykład najpierw nawiązuje połączenie z usługą Azure Storage przy użyciu kontekstu konta magazynu, który obejmuje nazwę konta magazynu i jego klucz dostępu. Następnie wywołuje polecenie cmdlet [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) , aby utworzyć kolejkę o nazwie "QueueName".
+Poniższy przykład najpierw nawiązuje połączenie z usługą Azure Storage przy użyciu kontekstu konta magazynu, który obejmuje nazwę konta magazynu i jego klucz dostępu. Następnie wywołuje polecenie cmdlet [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) , aby utworzyć kolejkę o nazwie "howtoqueue".
 
 ```powershell
 $queueName = "howtoqueue"
@@ -188,7 +188,7 @@ W tym artykule poznasz informacje o zarządzaniu podstawowym magazynem kolejek p
 > * Pobieranie kolejki
 > * Dodawanie komunikatu
 > * Przeczytaj następną wiadomość
-> * Usuwanie wiadomości
+> * Usuń komunikat
 > * Usuwanie kolejki
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Polecenia cmdlet Microsoft Azure PowerShell Storage

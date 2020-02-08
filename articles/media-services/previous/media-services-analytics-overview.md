@@ -15,25 +15,21 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844347"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069629"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics na platformie Media Services 
 
 ## <a name="retirement-plans"></a>Plany wycofania
 
 > [!IMPORTANT]
-> Następujący starszy procesor nośnika zostanie wycofany w 2020, Zobacz szczegółowe informacje w poniższej tabeli. 
+> Niektóre procesory multimediów są wycofywane. Aby uzyskać daty wycofania i więcej informacji, zobacz temat [składniki starszej wersji](legacy-components.md) . 
 
-|Nazwa procesora multimediów|Data wycofania|Uwagi dodatkowe|
-|---|---|
-|[Azure Media Indexer](media-services-index-content.md)|1 października z 2020|Ten procesor multimediów zostanie zastąpiony przez [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md)
- 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Więcej organizacji używa wideo jako preferowanego nośnika do uczenia pracowników, zaangażowania ich klientów i dokumentowania funkcji firmy. Chmura obliczeniowa zapewnia sposób przechowywania, przesyłania strumieniowego i uzyskiwania dostępu do tych dużych plików multimedialnych. Jednak w miarę wzrostu rozmiaru zawartości wideo firma potrzebuje równie efektywnego sposobu wyodrębniania szczegółowych informacji z zawartości. 
 
@@ -49,7 +45,7 @@ Procesory multimediów usługi Analiza multimediów tworzą pliki MP4 lub JSON. 
 
 ## <a name="media-analytics-services"></a>Usługi Media Analytics
 
-### <a name="indexer"></a>Indeksator
+### <a name="indexer"></a>Indeksatora
 Za pomocą Azure Media Indexer można przeszukiwać zawartość i generować ścieżki zamkniętego podpisu. Aby uzyskać szczegółowe informacje i przykłady, zobacz [indeksowanie plików multimedialnych za pomocą Azure Media Indexer](media-services-index-content.md).
 
 ### <a name="motion-detector"></a>Wykrywanie ruchu
@@ -136,13 +132,13 @@ Odpowiedź:
        ]
     }
 
-## <a name="demos"></a>Wersje demonstracyjne
+## <a name="demos"></a>Pokazy
 Zobacz [demonstracje Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 Zobacz [anonsowanie Media Services analizy](https://azure.microsoft.com/blog/introducing-azure-media-analytics/).
 
 <!-- Images -->

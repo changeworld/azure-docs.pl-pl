@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844636"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086657"
 ---
 # <a name="persist-state-in-linux"></a>Stan utrwalania w systemie Linux
 
@@ -49,17 +49,17 @@ Na przykład następująca konfiguracja spowoduje utworzenie woluminu **egmetada
 ```json
  {
   "Env": [
-    "inbound:serverAuth:tlsPolicy=strict",
-    "inbound:serverAuth:serverCert:source=IoTEdge",
-    "inbound:clientAuth:sasKeys:enabled=false",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=true",
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge",
-    "outbound:webhook:httpsOnly=true",
-    "outbound:webhook:skipServerCertValidation=false",
-    "outbound:webhook:allowUnknownCA=true"
+    "inbound__serverAuth__tlsPolicy=strict",
+    "inbound__serverAuth__serverCert__source=IoTEdge",
+    "inbound__clientAuth__sasKeys__enabled=false",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=true",
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge",
+    "outbound__webhook__httpsOnly=true",
+    "outbound__webhook__skipServerCertValidation=false",
+    "outbound__webhook__allowUnknownCA=true"
   ],
   "HostConfig": {
     "Binds": [
@@ -116,7 +116,8 @@ Zamiast woluminu platformy Docker można również zainstalować folder hosta.
     {
          "HostConfig": {
             "Binds": [
-                "<your-directory-name-here>:/app/metadataDb"
+                "<your-directory-name-here>:/app/metadataDb",
+                "<your-directory-name-here>:/app/eventsDb",
              ]
          }
     }
@@ -127,17 +128,17 @@ Zamiast woluminu platformy Docker można również zainstalować folder hosta.
     ```json
     {
           "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
           ],
           "HostConfig": {
                 "Binds": [
@@ -156,7 +157,7 @@ Zamiast woluminu platformy Docker można również zainstalować folder hosta.
     ```
 
     >[!IMPORTANT]
-    >Nie zmieniaj drugiej części wartości powiązania. Wskazuje konkretną lokalizację w module. W przypadku modułu Event Grid w systemie Linux musi być **/App/Metadata**.
+    >Nie zmieniaj drugiej części wartości powiązania. Wskazuje konkretną lokalizację w module. W przypadku modułu Event Grid w systemie Linux trzeba mieć **/App/metadataDb** i **/App/eventsDb**
 
 
 ## <a name="persist-events"></a>Zdarzenia utrwalania
@@ -167,7 +168,7 @@ Ważne kwestie dotyczące utrwalania zdarzeń:
 
 * Zdarzenia utrwalania są włączane dla każdej subskrypcji zdarzeń i są zgodą na zamontowanie woluminu lub katalogu.
 * Trwałość zdarzenia jest konfigurowana w subskrypcji zdarzeń podczas tworzenia i nie można jej modyfikować po utworzeniu subskrypcji zdarzeń. Aby przełączać trwałość zdarzeń, należy usunąć i ponownie utworzyć subskrypcję zdarzeń.
-* Utrwalanie zdarzeń jest niemal zawsze wolniejsze niż w przypadku operacji w pamięci, jednak różnica między szybkością zależy od charakterystyki dysku. Kompromis między szybkością i niezawodnością jest nieodłączny dla wszystkich systemów obsługi komunikatów, ale ogólnie rzecz biorąc tylko noticible na dużą skalę.
+* Utrwalanie zdarzeń jest niemal zawsze wolniejsze niż w przypadku operacji w pamięci, jednak różnica między szybkością zależy od charakterystyki dysku. Kompromis między szybkością i niezawodnością jest nieodłączny dla wszystkich systemów obsługi komunikatów, ale ogólnie mówiąc, tylko w dużej skali.
 
 Aby włączyć trwałość zdarzeń w subskrypcji zdarzeń, ustaw `persistencePolicy` na `true`:
 

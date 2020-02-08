@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: daa98d703a115e663032639d78f51b26ed1c7ba3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f024bac535ed792d8480c991e470cf5d85932b8
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441872"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083016"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki Azure Cosmos DB
 
@@ -34,8 +34,8 @@ Jako globalnie dystrybuowana baza danych Cosmos DB zapewnia kompleksową umowy S
 
 |Typ operacji  | Pojedynczy region |Wiele regionów (zapis w jednym regionie)|Wiele regionów (zapisy w regionie wieloregionowym) |
 |---------|---------|---------|-------|
-|Operacje zapisu    | 99,99    |99,99   |99,999|
-|Operacje odczytu     | 99,99    |99,999  |99,999|
+|Powoduje    | 99,99    |99,99   |99,999|
+|Odczytywan     | 99,99    |99,999  |99,999|
 
 > [!NOTE]
 > W ramach tej usługi rzeczywista dostępność zapisu dla nieodświeżonego, sesji, spójnego prefiksu i wzorów spójności ostatecznej jest znacznie wyższa niż opublikowana umowy SLA. Rzeczywista dostępność odczytu dla wszystkich poziomów spójności jest znacznie wyższa niż opublikowana umowy SLA.
@@ -59,9 +59,9 @@ Awarie regionalne nie są niczym niezwykłym, a usługa Azure Cosmos DB zapewnia
 - **Konta wieloregionowe z regionem jednokrotnego zapisu (awaria regionu odczytu):**
   - Podczas przestoju regionu odczytu te konta pozostaną wysoce dostępne do odczytu i zapisu.
   - Region, którego dotyczy problem, jest automatycznie rozłączany i zostanie oznaczony jako w trybie offline. [Zestawy sdk Azure Cosmos DB](sql-api-sdk-dotnet.md) będą przekierowywać wywołania odczytu do następnego dostępnego regionu na liście preferowanych regionów.
-  - Jeśli żaden z regionów na liście preferowanych regionów nie jest dostępny, wywołania automatycznie wracają do bieżącego regionu zapisu.
+  - Jeśli żaden z regionów na liście preferowanych regionów nie jest dostępny, wywołania automatycznie powracają do bieżącego regionu zapisu.
   - W kodzie aplikacji nie są wymagane żadne zmiany w celu obsługi awarii regionu odczytu. Ostatecznie, gdy zagrożony region jest z powrotem w trybie online, wcześniej zmieniony region odczytu zostanie automatycznie zsynchronizowany z bieżącym regionem zapisu i będzie on ponownie dostępny do objęcia żądaniami odczytu.
-  - Dalsze operacje odczytu są przekierowywane do odzyskanego regionu bez konieczności wprowadzania jakichkolwiek zmian w kodzie aplikacji. Podczas pracy w trybie failover i ponownego przyłączania do poprzedniego regionu, gwarancje spójności odczytu są nadal uznawane przez Cosmos DB.
+  - Kolejne odczyty są przekierowywane do odzyskanego regionu bez konieczności wprowadzania jakichkolwiek zmian w kodzie aplikacji. Podczas pracy w trybie failover i ponownego przyłączania do poprzedniego regionu, gwarancje spójności odczytu są nadal uznawane przez Cosmos DB.
 
 - Nawet w rzadkich i niezbyt krótkich przypadkach, gdy region platformy Azure jest nieodwracalnie nieodwracalny, nie ma utraty danych, jeśli konto Cosmos dla wieloregionu jest skonfigurowane z *silną* spójnością. W przypadku trwałego odzyskania regionu zapisu, wieloregionowego konta Cosmos skonfigurowanego ze spójnością nieodświeżoną, potencjalne okno utraty danych jest ograniczone do okna nieodświeżonego (*K* lub *T*), gdzie K = 100 000 aktualizacji i T = 5 minut. W przypadku sesji, spójnego i ostatecznego poziomu spójności, potencjalne okno utraty danych jest ograniczone do maksymalnie 15 minut. Aby uzyskać więcej informacji na temat elementów docelowych RTO i RPO dla Azure Cosmos DB, zobacz [poziomy spójności i trwałość danych](consistency-levels-tradeoffs.md#rto)
 
@@ -71,9 +71,9 @@ Oprócz odporności między regionami można teraz włączyć **nadmiarowość s
 
 W przypadku obsługi stref dostępności Azure Cosmos DB zapewnia, że repliki są umieszczane w wielu strefach w danym regionie w celu zapewnienia wysokiej dostępności i odporności podczas awarii stref. W tej konfiguracji nie wprowadzono żadnych zmian w czasie oczekiwania i innych umowy SLA. W przypadku awarii pojedynczej strefy nadmiarowość stref zapewnia pełną trwałość danych z elementem RPO = 0 i dostępnością z RTO = 0.
 
-Nadmiarowość stref to *dodatkowa* funkcja [replikacji z wieloma wzorcami](how-to-multi-master.md) . Sama nadmiarowość stref nie jest w stanie zapewnić odporności regionalnej. Na przykład w przypadku regionalnego systemu przestoju lub małego opóźnienia w regionach zaleca się, aby oprócz nadmiarowości strefy była dostępna wiele regionów zapisu.
+Nadmiarowość stref to *dodatkowa* funkcja [replikacji z wieloma wzorcami](how-to-multi-master.md) . W celu uzyskania odporności regionalnej nie można korzystać z samej nadmiarowości strefy. Na przykład w przypadku regionalnego systemu przestoju lub małego opóźnienia w regionach zaleca się, aby oprócz nadmiarowości strefy była dostępna wiele regionów zapisu.
 
-Podczas konfigurowania wieloregionowych zapisów dla konta usługi Azure Cosmos możesz zrezygnować z nadmiarowości strefy bez dodatkowych kosztów. W przeciwnym razie zapoznaj się z poniższymi uwagami dotyczącymi cen obsługi nadmiarowości stref. Aby włączyć nadmiarowość stref dla istniejącego regionu na koncie usługi Azure Cosmos, należy usunąć ten region i dodać go ponownie z włączoną nadmiarowością stref.
+Podczas konfigurowania wieloregionowych zapisów dla konta usługi Azure Cosmos możesz zrezygnować z nadmiarowości strefy bez dodatkowych kosztów. W przeciwnym razie zapoznaj się z poniższymi uwagami dotyczącymi cen obsługi nadmiarowości stref. Nadmiarowość strefy można włączyć w istniejącym regionie konta usługi Azure Cosmos, usuwając region i dodając go ponownie z włączonym nadmiarowością strefy.
 
 Ta funkcja jest dostępna w następujących regionach świadczenia usługi Azure:
 
@@ -103,9 +103,9 @@ Poniższa tabela zawiera podsumowanie możliwości wysokiej dostępności różn
 |Cena | Stawka rozliczenia w jednym regionie | Stawka rozliczenia strefy dostępności pojedynczego regionu | Wieloregionowa stawka rozliczeniowa |
 |Awarie stref — utrata danych | Utrata danych | Brak utraty danych | Brak utraty danych |
 |Awarie stref — dostępność | Utrata dostępności | Brak utraty dostępności | Brak utraty dostępności |
-|Opóźnienie odczytu | Między regionami | Między regionami | Niska |
-|Opóźnienie zapisu | Między regionami | Między regionami | Niska |
-|Awaria regionalna — utrata danych | Utrata danych |  Utrata danych | Utrata danych <br/><br/> W przypadku używania ograniczonej spójności nieodświeżonej z wieloma Master i więcej niż jednym regionem utrata danych jest ograniczona do granicy nieaktualnej konfiguracji skonfigurowanej na Twoim koncie. <br/><br/> Można uniknąć utraty danych podczas awarii regionalnej, konfigurując silną spójność z wieloma regionami. Ta opcja ma wpływ na dostępność i wydajność.      |
+|Opóźnienie odczytu | Między regionami | Między regionami | Małe |
+|Opóźnienie zapisu | Między regionami | Między regionami | Małe |
+|Awaria regionalna — utrata danych | Utrata danych |  Utrata danych | Utrata danych <br/><br/> W przypadku używania ograniczonej spójności niezgodności z wieloma wzorcami i więcej niż jednym regionem utrata danych jest ograniczona do granicy nieaktualnej konfiguracji skonfigurowanej na Twoim koncie. <br /><br />Można uniknąć utraty danych podczas regionalnej awarii, konfigurując silną spójność z wieloma regionami. Ta opcja ma wpływ na dostępność i wydajność. Można ją skonfigurować tylko na kontach, które są skonfigurowane do zapisu w jednym regionie. |
 |Awaria regionalna — dostępność | Utrata dostępności | Utrata dostępności | Brak utraty dostępności |
 |Przepływność | X RU/s zainicjowana przepływność | X RU/s zainicjowana przepływność | przepustowość z obsługą jednostki RU/s <br/><br/> Ten tryb konfiguracji wymaga dwukrotnej ilości przepływności w porównaniu do jednego regionu z Strefy dostępności, ponieważ istnieją dwa regiony. |
 
@@ -151,7 +151,7 @@ Strefy dostępności można włączyć przy użyciu Azure Portal podczas tworzen
 
 Następnie możesz zapoznać się z następującymi artykułami:
 
-- [Dostępność i wydajność kompromisy dla różnych poziomów spójności](consistency-levels-tradeoffs.md)
+- [Wady dostępności i wydajności dla różnych poziomów spójności](consistency-levels-tradeoffs.md)
 - [Globalnie skalowanie przepływności aprowizacji](scaling-throughput.md)
 - [Globalna dystrybucja — pod okapem](global-dist-under-the-hood.md)
 - [Poziomy spójności w Azure Cosmos DB](consistency-levels.md)

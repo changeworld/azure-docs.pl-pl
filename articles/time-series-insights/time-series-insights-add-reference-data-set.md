@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.custom: seodec18
-ms.openlocfilehash: 71041012bc77da6d7613deb178c3cec1413e57e2
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/07/2020
+ms.custom: seodec18~~~~
+ms.openlocfilehash: 79628ed44753577023464ef6208027e1b7996d30
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314893"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087247"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Utwórz zestaw danych referencyjnych dla środowiska Time Series Insights przy użyciu Azure Portal
 
@@ -26,7 +26,7 @@ Zestaw danych referencyjnych to kolekcja elementów, które rozszerzają zdarzen
 
 Dane referencyjne nie są przyłączone wstecz. W takim przypadku tylko bieżące i przyszłe dane przychodzące są dopasowywane i dołączane do zestawu dat odwołania po jego skonfigurowaniu i przekazaniu.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Film wideo
 
 ### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Dowiedz się więcej o modelu danych referencyjnych usługi Time Series Insights.</br>
 
@@ -34,7 +34,7 @@ Dane referencyjne nie są przyłączone wstecz. W takim przypadku tylko bieżąc
 
 ## <a name="add-a-reference-data-set"></a>Dodawanie zestawu danych referencyjnych
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. Znajdź istniejące środowisko Azure Time Series Insights. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie Azure Portal. Wybierz środowisko usługi Time Series Insights.
 

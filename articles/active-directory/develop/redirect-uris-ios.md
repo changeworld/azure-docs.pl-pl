@@ -4,7 +4,7 @@ titleSuffix: Microsoft identity platform
 description: Dowiedz się więcej o różnicach między biblioteką uwierzytelniania firmy Microsoft dla usługi ObjectiveC (MSAL for iOS i macOS) oraz biblioteką uwierzytelniania usługi Azure AD dla ObjectiveC (ADAL. ObjC) i sposób migracji między nimi.
 services: active-directory
 documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: b7fe65938b6f96a649a5a2a9ec1d1b921a95dd49
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c36c6b1b1b08de6d2db9a7f7f9ebd3b162c02383
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703086"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085642"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Używanie identyfikatorów URI przekierowania z biblioteką uwierzytelniania firmy Microsoft dla systemów iOS i macOS
 
@@ -40,7 +40,7 @@ Jednak może zajść potrzeba zmiany identyfikatora URI przekierowania dla zaawa
 
 Aby platforma tożsamości firmy Microsoft mogła udostępniać tokeny w aplikacjach, każda aplikacja musi mieć ten sam identyfikator klienta lub identyfikator aplikacji. Jest to unikatowy identyfikator podany podczas rejestrowania aplikacji w portalu (nie identyfikator pakietu aplikacji, który rejestruje się na aplikację przy użyciu firmy Apple).
 
-Identyfikatory URI przekierowania muszą być różne dla każdej aplikacji systemu iOS. Dzięki temu usługa tożsamości firmy Microsoft może jednoznacznie identyfikować różne aplikacje, które współużytkują identyfikator aplikacji. Każda aplikacja może mieć wiele identyfikatorów URI przekierowania zarejestrowanych w Azure Portal. Każda aplikacja w Twoim pakiecie będzie miała inny identyfikator URI przekierowania. Przykład:
+Identyfikatory URI przekierowania muszą być różne dla każdej aplikacji systemu iOS. Dzięki temu usługa tożsamości firmy Microsoft może jednoznacznie identyfikować różne aplikacje, które współużytkują identyfikator aplikacji. Każda aplikacja może mieć wiele identyfikatorów URI przekierowania zarejestrowanych w Azure Portal. Każda aplikacja w Twoim pakiecie będzie miała inny identyfikator URI przekierowania. Na przykład:
 
 Uwzględniając następujące zarejestrowane aplikacje w Azure Portal:
 
@@ -82,7 +82,7 @@ MSAL sprawdzi, czy identyfikator URI przekierowania prawidłowo rejestruje i zwr
 
 ## <a name="use-a-custom-redirect-uri"></a>Użyj niestandardowego identyfikatora URI przekierowania
 
-Aby użyć niestandardowego identyfikatora URI przekierowania, należy przekazać parametr `redirectUri`, aby `MSALPublicClientApplicationConfig` i przekazać ten obiekt do `MSALPublicClientApplication` po zainicjowaniu obiektu. Jeśli identyfikator URI przekierowania jest nieprawidłowy, inicjator zwróci `nil` i ustawi `redirectURIError`z dodatkowymi informacjami.  Przykład:
+Aby użyć niestandardowego identyfikatora URI przekierowania, należy przekazać parametr `redirectUri`, aby `MSALPublicClientApplicationConfig` i przekazać ten obiekt do `MSALPublicClientApplication` po zainicjowaniu obiektu. Jeśli identyfikator URI przekierowania jest nieprawidłowy, inicjator zwróci `nil` i ustawi `redirectURIError`z dodatkowymi informacjami.  Na przykład:
 
 Cel-C:
 

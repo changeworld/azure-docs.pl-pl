@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2019
+ms.date: 02/07/2020
 ms.author: barclayn
-ms.openlocfilehash: d814058866991b3d94363125870c27ae170b3ae8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 682f0b66f7632bce16ae134e71ea27c4df976f43
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064363"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087101"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Szyfrowanie danych platformy Azure — w spoczynku
 
@@ -262,77 +262,77 @@ Szyfrowanie po stronie klienta Azure SQL Database danych jest obsługiwane za po
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Po stronie serwera przy użyciu klucza zarządzanego przez usługę**     | **Po stronie serwera przy użyciu klucza zarządzanego przez klienta**             | **Po stronie klienta przy użyciu klucza zarządzanego przez klienta**      |
 | **AI i Machine Learning**      |                    |                    |                    |
-| Azure Cognitive Search           | Tak                | Tak                | -                  |
-| Azure Machine Learning           | Tak                | Tak                | -                  |
-| Azure Machine Learning Studio    | Tak                | Wersja zapoznawcza, RSA 2048-bit | -               |
-| Power BI                         | Tak                | Wersja zapoznawcza, RSA 2048-bit | -                  |
+| Azure Cognitive Search           | Yes                | Yes                | -                  |
+| Azure Machine Learning           | Yes                | Yes                | -                  |
+| Azure Machine Learning Studio    | Yes                | Wersja zapoznawcza, RSA 2048-bit | -               |
+| Power BI                         | Yes                | Wersja zapoznawcza, RSA 2048-bit | -                  |
 | **Analiza**                    |                    |                    |                    |
-| Usługa Azure Stream Analytics           | Tak                | -                  | -                  |
-| Event Hubs                       | Tak                | Tak, wszystkie długości RSA. | -                  |
-| Funkcje                        | Tak                | Tak, wszystkie długości RSA. | -                  |
-| Azure Analysis Services          | Tak                | -                  | -                  |
-| Azure Data Catalog               | Tak                | -                  | -                  |
-| Apache Kafka w usłudze Azure HDInsight  | Tak                | Wszystkie długości RSA.   | -                  |
-| Azure Monitor Application Insights | Tak                | Tak                | -                  |
-| Azure Monitor Log Analytics | Tak                | Tak                | -                  |
-| Azure Data Explorer              | Tak                | Tak                | -                  |
-| Azure Data Factory               | Tak                | Tak                | -                  |
-| Azure Data Lake Store            | Tak                | Tak, RSA 2048-bit  | -                  |
+| Usługa Azure Stream Analytics           | Yes                | -                  | -                  |
+| Event Hubs                       | Yes                | Tak, wszystkie długości RSA. | -                  |
+| Funkcje                        | Yes                | Tak, wszystkie długości RSA. | -                  |
+| Azure Analysis Services          | Yes                | -                  | -                  |
+| Azure Data Catalog               | Yes                | -                  | -                  |
+| Apache Kafka w usłudze Azure HDInsight  | Yes                | Wszystkie długości RSA.   | -                  |
+| Azure Monitor Application Insights | Yes                | Yes                | -                  |
+| Azure Monitor Log Analytics | Yes                | Yes                | -                  |
+| Azure Data Explorer              | Yes                | Yes                | -                  |
+| Azure Data Factory               | Yes                | Yes                | -                  |
+| Azure Data Lake Store            | Yes                | Tak, RSA 2048-bit  | -                  |
 | **Kontenery**                   |                    |                    |                    |
-| Azure Kubernetes Service         | Tak                | Tak                | -                  |
-| Container Instances              | Tak                | Tak                | -                  |
-| Container Registry               | Tak                | Tak                | -                  |
+| Azure Kubernetes Service         | Yes                | Yes                | -                  |
+| Container Instances              | Yes                | Yes                | -                  |
+| Container Registry               | Yes                | Yes                | -                  |
 | **Obliczanie**                      |                    |                    |                    |
-| Maszyny wirtualne                 | Tak                | Tak, RSA 2048-bit  | -                  |
-| Zestaw skalowania maszyn wirtualnych        | Tak                | Tak, RSA 2048-bit  | -                  |
-| SAP HANA                         | Tak                | Tak, RSA 2048-bit  | -                  |
-| App Service                      | Tak                | Tak                | -                  |
-| Automatyzacja                       | Tak                | Tak                | -                  |
-| Portalu Azure                     | Tak                | Tak                | -                  |
-| Logic Apps                       | Tak                | Tak                | -                  |
-| Azure Managed Applications       | Tak                | Tak                | -                  |
-| Service Bus                      | Tak                | Tak                | -                  |
-| Site Recovery                    | Tak                | Tak                | -                  |
+| Maszyny wirtualne                 | Yes                | Tak, RSA 2048-bit  | -                  |
+| Zestaw skalowania maszyn wirtualnych        | Yes                | Tak, RSA 2048-bit  | -                  |
+| SAP HANA                         | Yes                | Tak, RSA 2048-bit  | -                  |
+| App Service                      | Yes                | Yes                | -                  |
+| Automatyzacja                       | Yes                | Yes                | -                  |
+| Portal Azure                     | Yes                | Yes                | -                  |
+| Logic Apps                       | Yes                | Yes                | -                  |
+| Azure Managed Applications       | Yes                | Yes                | -                  |
+| Service Bus                      | Yes                | Yes                | -                  |
+| Site Recovery                    | Yes                | Yes                | -                  |
 | **Bazy danych**                    |                    |                    |                    |
-| Program SQL Server w usłudze Virtual Machines   | Tak                | Tak, RSA 2048-bit  | Tak                |
-| Azure SQL Database               | Tak                | Tak, RSA 2048-bit  | Tak                |
-| Azure SQL Database MariaDB   | Tak                | -                  | -                  |
-| Azure SQL Database dla programu MySQL     | Tak                | Tak                | -                  |
-| Azure SQL Database PostgreSQL | Tak               | Tak                | -                  |
-| Azure Synapse Analytics          | Tak                | Tak, RSA 2048-bit  | Tak                |
-| SQL Server Stretch Database      | Tak                | Tak, RSA 2048-bit  | Tak                |
-| Table Storage                    | Tak                | Tak                | Tak                |
-| Azure Cosmos DB                  | Tak                | Tak                | -                  |
-| Azure Databricks                 | Tak                | Tak                | -                  |
+| Program SQL Server w usłudze Virtual Machines   | Yes                | Tak, RSA 2048-bit  | Yes                |
+| Azure SQL Database               | Yes                | Tak, RSA 2048-bit  | Yes                |
+| Azure SQL Database MariaDB   | Yes                | -                  | -                  |
+| Azure SQL Database dla programu MySQL     | Yes                | Yes                | -                  |
+| Azure SQL Database PostgreSQL | Yes               | Yes                | -                  |
+| Azure Synapse Analytics          | Yes                | Tak, RSA 2048-bit  | Yes                |
+| SQL Server Stretch Database      | Yes                | Tak, RSA 2048-bit  | Yes                |
+| Table Storage                    | Yes                | Yes                | Yes                |
+| Azure Cosmos DB                  | Yes                | Yes                | -                  |
+| Azure Databricks                 | Yes                | Yes                | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps                     | Tak                | -                  | Tak                |
-| Azure Repos                      | Tak                | -                  | Tak                |
+| Azure DevOps                     | Yes                | -                  | Yes                |
+| Azure Repos                      | Yes                | -                  | Yes                |
 | **Tożsamość**                     |                    |                    |                    |
-| Azure Active Directory           | Tak                | -                  | -                  |
-| Azure Active Directory Domain Services | Tak          | Tak, RSA 2048-bit  | -                  |
+| Azure Active Directory           | Yes                | -                  | -                  |
+| Azure Active Directory Domain Services | Yes          | Tak, RSA 2048-bit  | -                  |
 | **Integration**                  |                    |                    |                    |
-| Service Bus                      | Tak                | Tak                | Tak                |
-| Event Grid                       | Tak                | -                  | -                  |
-| API Management                   | Tak                | -                  | -                  |
+| Service Bus                      | Yes                | Yes                | Yes                |
+| Event Grid                       | Yes                | -                  | -                  |
+| API Management                   | Yes                | -                  | -                  |
 | **Usługi IoT**                 |                    |                    |                    |
-| Centrum IoT                          | Tak                | Tak                | Tak                |
+| Usługa IoT Hub                          | Yes                | Yes                | Yes                |
 | **Zarządzanie i nadzór**    |                    |                    |                    |
-| Azure Site Recovery              | Tak                | -                  | -                  |
+| Azure Site Recovery              | Yes                | -                  | -                  |
 | **Multimedialny**                        |                    |                    |                    |
-| Media Services                   | Tak                | -                  | Tak                |
+| Media Services                   | Yes                | -                  | Yes                |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | Tak                | Tak, RSA 2048-bit  | Tak                |
-| Magazyn na dysku                     | Tak                | Tak                | -                  |
-| Zarządzana Disk Storage             | Tak                | Tak                | -                  |
-| File Storage                     | Tak                | Tak, RSA 2048-bit  | -                  |
-| Queue Storage                    | Tak                | Tak                | Tak                |
-| Avere vFXT                       | Tak                | -                  | -                  |
-| Azure NetApp Files               | Tak                | -                  | -                  |
-| Archive Storage                  | Tak                | Tak, RSA 2048-bit  | -                  |
-| Magazyn StorSimple                       | Tak                | Tak, RSA 2048-bit  | Tak                |
-| Azure Backup                     | Tak                | Tak                | Tak                |
-| Data Box                         | Tak                | -                  | Tak                |
-| Data Box Edge                    | Tak                | Tak                | -                  |
+| Blob Storage                     | Yes                | Tak, RSA 2048-bit  | Yes                |
+| Disk Storage                     | Yes                | Yes                | -                  |
+| Zarządzana Disk Storage             | Yes                | Yes                | -                  |
+| File Storage                     | Yes                | Tak, RSA 2048-bit  | -                  |
+| Queue Storage                    | Yes                | Yes                | Yes                |
+| Avere vFXT                       | Yes                | -                  | -                  |
+| Azure NetApp Files               | Yes                | -                  | -                  |
+| Archive Storage                  | Yes                | Tak, RSA 2048-bit  | -                  |
+| Magazyn StorSimple                       | Yes                | Tak, RSA 2048-bit  | Yes                |
+| Azure Backup                     | Yes                | Yes                | Yes                |
+| Data Box                         | Yes                | -                  | Yes                |
+| Data Box Edge                    | Yes                | Yes                | -                  |
 
 ## <a name="conclusion"></a>Podsumowanie
 

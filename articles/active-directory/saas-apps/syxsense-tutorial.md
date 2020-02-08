@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43787bfffcb04e816f58cdcc0d9e61a61f1f16fd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 684b8c31524c55ad3335c02ec1268f1afea78a93
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050249"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086592"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą Syxsense
 
@@ -30,7 +30,7 @@ W tym samouczku dowiesz się, jak zintegrować usługę Syxsense z usługą Azur
 * Zezwól użytkownikom na automatyczne logowanie się do usługi Syxsense przy użyciu kont w usłudze Azure AD.
 * Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -85,7 +85,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2`
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.cloudmanagementsuite.com/samlautologin`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2/Acs`
 
 1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
@@ -118,7 +118,7 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -144,11 +144,11 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 1. Kliknij **ikonę Ustawienia**.
 
-    ![Konfiguracja Syssense](./media/syxsense-tutorial/configure1.png)
+    ![Konfiguracja Syxsense](./media/syxsense-tutorial/configure1.png)
 
 1. Kliknij opcję **uwierzytelnianie zewnętrzne** i podaj wartość **adresu URL metadanych federacji aplikacji** w polu tekstowym **metadanych SAML 2.0** , a następnie kliknij przycisk **Zapisz**.
 
-    ![Konfiguracja Syssense](./media/syxsense-tutorial/configure2.png)
+    ![Konfiguracja Syxsense](./media/syxsense-tutorial/configure2.png)
 
 ### <a name="create-syxsense-test-user"></a>Utwórz użytkownika testowego Syxsense
 
@@ -156,18 +156,17 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 1. Kliknij pozycję **konta użytkowników** w lewym panelu nawigacyjnym.
 
-    ![Konfiguracja Syssense](./media/syxsense-tutorial/user1.png)
+    ![Konfiguracja Syxsense](./media/syxsense-tutorial/user1.png)
 
 1. Kliknij pozycję **Add** (Dodaj).
 
-    ![Konfiguracja Syssense](./media/syxsense-tutorial/user2.png)
+    ![Konfiguracja Syxsense](./media/syxsense-tutorial/user2.png)
 
 1. Podaj szczegóły użytkownika zgodnie z wymaganiami organizacji, a następnie kliknij przycisk **Zapisz**.
 
-    ![Konfiguracja Syssense](./media/syxsense-tutorial/user3.png)
+    ![Konfiguracja Syxsense](./media/syxsense-tutorial/user3.png)
 
-
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
@@ -175,9 +174,9 @@ Po kliknięciu kafelka Syxsense w panelu dostępu należy automatycznie zalogowa
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

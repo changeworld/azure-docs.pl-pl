@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 7534d425a9a7e00c4e57c0d9faea0750d311dcaf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3f5e8c76fcf5f6088698e785e3203ab65bf04de1
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549945"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084485"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Szybki Start: Dodawanie logowania do aplikacji sieci Web w języku Java przez firmę Microsoft
 
@@ -61,7 +61,7 @@ Do uruchomienia tego przykładu potrzebne są:
 >    - Pozostaw teraz pustą wartość **URI przekierowania** , a następnie wybierz pozycję **zarejestruj**.
 > 1. Na stronie **Przegląd** Znajdź wartość **Identyfikator aplikacji (klienta)** i **Identyfikator katalogu (dzierżawcy)** aplikacji. Skopiuj te wartości później.
 > 1. Wybierz **uwierzytelnianie** z menu, a następnie Dodaj następujące informacje:
->    - W obszarze **identyfikatory URI przekierowania**Dodaj `http://localhost:8080/msal4jsample/secure/aad` i `http://localhost:8080/msal4jsample/graph/me`.
+>    - W obszarze **identyfikatory URI przekierowania**Dodaj `https://localhost:8080/msal4jsample/secure/aad` i `https://localhost:8080/msal4jsample/graph/me`.
 >    - Wybierz pozycję **Zapisz**.
 > 1. Wybierz pozycję **certyfikaty & wpisy tajne** z menu i w sekcji wpisy **tajne klienta** kliknij **nowy klucz tajny klienta**:
 >
@@ -75,7 +75,7 @@ Do uruchomienia tego przykładu potrzebne są:
 >
 > Aby uzyskać przykładowy kod dla tego przewodnika Szybki Start, należy wykonać następujące czynności:
 >
-> 1. Dodaj adresy URL odpowiedzi jako `http://localhost:8080/msal4jsamples/secure/aad` i `http://localhost:8080/msal4jsamples/graph/me`.
+> 1. Dodaj adresy URL odpowiedzi jako `https://localhost:8080/msal4jsamples/secure/aad` i `https://localhost:8080/msal4jsamples/graph/me`.
 > 1. Utwórz klucz tajny klienta.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Wprowadź zmiany automatycznie]()
@@ -91,23 +91,36 @@ Do uruchomienia tego przykładu potrzebne są:
 
  1. Wyodrębnij plik zip do folderu lokalnego.
  1. Jeśli używasz zintegrowanego środowiska programistycznego, Otwórz przykład w ulubionym środowisku IDE (opcjonalnie).
-
  1. Otwórz plik Application. Properties, który znajduje się w folderze src/Main/sources/folder i Zastąp wartości pól *AAD. clientId*, *AAD. Authority* i *AAD. secretKey* odpowiednimi wartościami **identyfikatora aplikacji**, **identyfikatora dzierżawy** i **wpisu tajnego klienta** w następujący sposób:
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
     aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
+    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
     ```
 
-> [!div renderon="docs"]
-> Miejsce:
->
-> - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
-> - `Enter_the_Client_Secret_Here` — jest **kluczem tajnym klienta** utworzonym w **certyfikatach & wpisy tajne** dla zarejestrowanej aplikacji.
-> - `Enter_the_Tenant_Info_Here` — jest wartością **identyfikatora katalogu (dzierżawy)** zarejestrowanej aplikacji.
+    > [!div renderon="docs"]
+    > Gdzie:
+    >
+    > - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
+    > - `Enter_the_Client_Secret_Here` — jest **kluczem tajnym klienta** utworzonym w **certyfikatach & wpisy tajne** dla zarejestrowanej aplikacji.
+    > - `Enter_the_Tenant_Info_Here` — jest wartością **identyfikatora katalogu (dzierżawy)** zarejestrowanej aplikacji.
+
+ 1. Aby używać protokołu HTTPS z localhost, Wypełnij właściwości Server. SSL. Key. Aby wygenerować certyfikat z podpisem własnym, użyj narzędzia klucza (dołączonego do środowiska JRE).
+
+   ```
+   Example: 
+   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+
+   server.ssl.key-store-type=PKCS12  
+   server.ssl.key-store=classpath:keystore.p12  
+   server.ssl.key-store-password=password  
+   server.ssl.key-alias=testCert 
+   ```
+
+   Umieść wygenerowany plik magazynu kluczy w folderze "Resources" (zasoby).
 
 #### <a name="step-4-run-the-code-sample"></a>Krok 4. Uruchamianie przykładu kodu
 
@@ -117,11 +130,11 @@ Uruchom ją bezpośrednio z poziomu środowiska IDE przy użyciu osadzonego serw
 
 ##### <a name="running-from-ide"></a>Uruchamianie z IDE
 
-Jeśli aplikacja sieci Web jest uruchamiana z poziomu środowiska IDE, kliknij pozycję Uruchom, a następnie przejdź do strony głównej projektu. W tym przykładzie adres URL standardowej strony głównej jest http://localhost:8080
+Jeśli aplikacja sieci Web jest uruchamiana z poziomu środowiska IDE, kliknij pozycję Uruchom, a następnie przejdź do strony głównej projektu. W tym przykładzie adres URL standardowej strony głównej jest https://localhost:8080.
 
 1. Na stronie frontonu wybierz przycisk **Zaloguj** , aby przekierować do Azure Active Directory i monitować użytkownika o ich poświadczenia.
 
-1. Po uwierzytelnieniu użytkownik zostanie przekierowany do *http://localhost:8080/msal4jsample/secure/aad* . Są one teraz zalogowane, a na stronie zostaną wyświetlone informacje o zalogowanym koncie. Przykładowy interfejs użytkownika ma następujące przyciski:
+1. Po uwierzytelnieniu użytkownik zostanie przekierowany do *https://localhost:8080/msal4jsample/secure/aad* . Są one teraz zalogowane, a na stronie zostaną wyświetlone informacje o zalogowanym koncie. Przykładowy interfejs użytkownika ma następujące przyciski:
     - *Wyloguj*: podpisuje bieżącego użytkownika poza aplikacją i przekierowuje je do strony głównej.
     - *Pokaż informacje o użytkowniku*: uzyskuje token dla Microsoft Graph i wywołuje Microsoft Graph z żądaniem zawierającym token, który zwraca podstawowe informacje o zalogowanym użytkowniku.
 

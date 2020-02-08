@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 06d15d66df0b2ec0049d4b2fffae6a9909b05dca
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 35cded14977988c80455a9c28a0e01e7913d58f4
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549142"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069510"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące uwierzytelniania i autoryzacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -122,7 +122,7 @@ W tym artykule dotyczącym najlepszych rozwiązań opisano uwierzytelnianie i au
 
 Aby uzyskać więcej informacji na temat operacji klastra w programie AKS, zobacz następujące najlepsze rozwiązania:
 
-* [Obsługa wielu dzierżawców i izolowania klastrów][aks-best-practices-scheduler]
+* [Obsługa wielu dzierżawców i izolowania klastrów][aks-best-practices-cluster-isolation]
 * [Podstawowe funkcje usługi Kubernetes Scheduler][aks-best-practices-scheduler]
 * [Zaawansowane funkcje usługi Scheduler Kubernetes][aks-best-practices-advanced-scheduler]
 

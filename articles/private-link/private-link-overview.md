@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6e2c1af03d5d6ccfbcb15a2dd33bc2e987be4d48
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 810f2b376e9983743617dae77d74d596a7fbe663
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543124"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084187"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Co to jest łącze prywatne platformy Azure? (Wersja zapoznawcza)
 Link prywatny platformy Azure umożliwia dostęp do usług Azure PaaS Services (na przykład Azure Storage, Azure Cosmos DB i SQL Database) oraz hostowanych usług klienta i partnerskich platformy Azure za pośrednictwem [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej. Ruch między siecią wirtualną a usługą odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Możesz również utworzyć własną [prywatną usługę linku](private-link-service-overview.md) w sieci wirtualnej (VNET) i dostarczyć ją prywatnie do klientów. Środowisko instalacji i użycia korzystające z prywatnego linku platformy Azure jest spójne w przypadku usługi Azure PaaS, należącej do klienta i udostępnionych usług partnerskich.
@@ -44,12 +44,13 @@ Połączenie prywatne platformy Azure zapewnia następujące korzyści:
 |Prywatne łącze dla usług należących do klienta|Usługi linków prywatnych w tle usługa Load Balancer w warstwie Standardowa | Wszystkie regiony publiczne  | Wersja zapoznawcza  |
 |Link prywatny dla usług Azure PaaS Services   | Azure Storage        |  Wszystkie regiony publiczne      | Wersja zapoznawcza <br/> [Dowiedz się więcej](/azure/storage/common/storage-private-endpoints).  |
 |  | Usługa Azure Data Lake Storage 2. generacji        |  Wszystkie regiony publiczne      | Wersja zapoznawcza <br/> [Dowiedz się więcej](/azure/storage/common/storage-private-endpoints).  |
-|  |  Baza danych SQL Azure         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
+|  |  Azure SQL Database         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
 ||Azure SQL Data Warehouse| Wszystkie regiony publiczne |Wersja zapoznawcza|
 ||Azure Cosmos DB| Zachodnio-środkowe stany USA, zachodnie stany USA |Wersja zapoznawcza|
 |  |  Azure Database for PostgreSQL — pojedynczy serwer         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
 |  |  Azure Database for MySQL         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
 |  |  Azure Database for MariaDB         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
+|  |  W usłudze Azure Key Vault         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
 
 Aby zapoznać się z najbardziej aktualnymi powiadomieniami, zapoznaj się ze [stroną usługi Azure Virtual Network Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -62,7 +63,7 @@ Usługa Azure Private link jest zintegrowana z usługą Azure Monitor, która um
     - Dane przetwarzane przez usługę linku prywatnego (WE/wychodzącym)
     - Dostępność portów NAT  
  
-## <a name="pricing"></a>Cennik   
+## <a name="pricing"></a>Ceny   
 Aby uzyskać szczegółowe informacje o cenach, zobacz [Cennik usługi Azure Private link](https://azure.microsoft.com/pricing/details/private-link/).
  
 ## <a name="faqs"></a>Często zadawane pytania  

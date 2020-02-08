@@ -2,18 +2,18 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: virtual-machines
-author: singhkays
+author: tanmaygore
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/18/2018
-ms.author: kasing
+ms.date: 02/06/2020
+ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a7a3c6edbbeca96a90f8003fda1b92fc8bf99fec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021308"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068420"
 ---
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Czy ten plan migracji wpływa na moje istniejące usługi lub aplikacje uruchomione na maszynach wirtualnych platformy Azure? 
 
@@ -37,7 +37,7 @@ Możesz przerwać migrację, o ile zasoby są w stanie przygotowania. Wycofanie 
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>Czy mogę wycofać migrację w przypadku niepowodzenia operacji zatwierdzenia? 
 
-Nie można przerwać migracji, jeśli operacja zatwierdzenia nie powiedzie się. Wszystkie operacje migracji, w tym operacja zatwierdzenia, są idempotentne. Dlatego zalecamy podjęcie ponownej próby wykonania operacji po chwili. Jeśli błąd będzie występować nadal, utwórz bilet pomocy technicznej lub wpis z tagiem ClassicIaaSMigration na naszym [forum maszyn wirtualnych](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows).
+Nie można przerwać migracji, jeśli operacja zatwierdzenia nie powiedzie się. Wszystkie operacje migracji, w tym operacja zatwierdzenia, są idempotentne. Dlatego zalecamy podjęcie ponownej próby wykonania operacji po chwili. Jeśli nadal wystąpi błąd, Utwórz bilet pomocy technicznej lub Utwórz wpis na forum w witrynie [Microsoft Q & a](https://docs.microsoft.com/answers/index.html).
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Czy muszę kupić kolejny obwód usługi ExpressRoute, jeśli muszę używać infrastruktury IaaS w ramach usługi Resource Manager? 
 
@@ -49,7 +49,7 @@ Podczas migracji zasoby są przekształcane z klasycznych na zasoby usługi Reso
 
 ## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Utworzono kopię zapasową moich klasycznych maszyn wirtualnych w magazynie. Czy mogę migrować maszyny wirtualne z trybu klasycznego do trybu usługi Resource Manager i chronić je w magazynie usługi Recovery Services?
 
-<a name="vault">Po</a> przeniesieniu maszyny wirtualnej z klasycznej do Menedżer zasobów trybu kopie zapasowe wykonane przed migracją nie zostaną zmigrowane do nowo zmigrowanej Menedżer zasobów maszyny wirtualnej. Jeśli jednak chcesz zachować kopie zapasowe klasycznych maszyn wirtualnych, wykonaj następujące kroki przed migracją. 
+Po przeniesieniu maszyny wirtualnej z klasycznej do Menedżer zasobów trybu kopie zapasowe wykonane przed migracją nie zostaną zmigrowane do nowo zmigrowanej Menedżer zasobów maszyny wirtualnej. Jeśli jednak chcesz zachować kopie zapasowe klasycznych maszyn wirtualnych, wykonaj następujące kroki przed migracją. 
 
 1. W magazynie Recovery Services przejdź do karty **elementy chronione** i wybierz maszynę wirtualną. 
 2. Kliknij polecenie Zatrzymaj ochronę. Pozostaw opcję *Usuń powiązane dane kopii zapasowych***niezaznaczoną**.

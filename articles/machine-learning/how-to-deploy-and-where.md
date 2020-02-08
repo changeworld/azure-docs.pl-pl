@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932393"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083242"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -172,22 +172,22 @@ Punkty końcowe wielu modeli używają kontenera udostępnionego do hostowania w
 
 Przykład E2E, który pokazuje, jak używać wielu modeli za pojedynczym punktem końcowym kontenerów, zobacz [ten przykład](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
 
-## <a name="prepare-to-deploy"></a>Przygotowywanie do wdrożenia
+## <a name="prepare-deployment-artifacts"></a>Przygotowanie artefaktów wdrożenia
 
 Aby wdrożyć model, potrzebne są następujące elementy:
 
-* **Skrypt wejściowy**. Ten skrypt akceptuje żądania, ocenia żądania przy użyciu modelu i zwraca wyniki.
+* **Skrypt wejścia & zależności kodu źródłowego**. Ten skrypt akceptuje żądania, ocenia żądania przy użyciu modelu i zwraca wyniki.
 
     > [!IMPORTANT]
     > * Skrypt wejścia jest specyficzny dla modelu. Musi on zrozumieć format danych żądania przychodzącego, format danych oczekiwanych przez model i format danych zwracanych do klientów.
     >
     >   Jeśli dane żądania są w formacie, który nie jest użyteczny przez model, skrypt może przekształcić go w akceptowalny format. Może również przekształcić odpowiedź przed zwróceniem jej do klienta.
     >
-    > * Zestaw SDK Azure Machine Learning nie umożliwia usługom sieci Web ani IoT Edge wdrożeń w celu uzyskania dostępu do magazynu danych lub zestawów. Jeśli wdrożony model musi uzyskać dostęp do danych przechowywanych poza wdrożeniem, takich jak dane na koncie usługi Azure Storage, należy opracować niestandardowe rozwiązanie kodu przy użyciu odpowiedniego zestawu SDK. Na przykład [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python).
+    > * Usługi sieci Web i wdrożenia IoT Edge nie są w stanie uzyskać dostępu do magazynów danych obszaru roboczego ani do ich zestawów. Jeśli wdrożona usługa musi uzyskać dostęp do danych przechowywanych poza wdrożeniem, takich jak dane na koncie usługi Azure Storage, należy opracować niestandardowe rozwiązanie kodu przy użyciu odpowiedniego zestawu SDK. Na przykład [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python).
     >
     >   Alternatywą, która może obsłużyć twój scenariusz, jest [Prognoza wsadowa](how-to-use-parallel-run-step.md), która zapewnia dostęp do magazynów danych podczas oceniania.
 
-* **Zależności**, takie jak skrypty pomocnika lub pakiety Python/Conda wymagane do uruchomienia skryptu lub modelu wprowadzania.
+* **Środowisko wnioskowania**. Obraz podstawowy z zainstalowanymi zależnościami pakietów wymaganymi do uruchomienia modelu.
 
 * **Konfiguracja wdrożenia** dla elementu docelowego obliczeń, który hostuje wdrożony model. Ta konfiguracja zawiera opis zagadnień dotyczących pamięci i procesora CPU wymaganych do uruchomienia modelu.
 
@@ -201,7 +201,7 @@ Skrypt zawiera dwie funkcje, które ładują i uruchamiają model:
 
 * `init()`: Zazwyczaj ta funkcja ładuje model do obiektu globalnego. Ta funkcja jest uruchamiana tylko raz, gdy zostanie uruchomiony kontener platformy Docker dla usługi sieci Web.
 
-* `run(input_data)`: Ta funkcja wykorzystuje model do przewidywania wartości w oparciu o dane wejściowe. Dane wejściowe i wyjściowe przebiegu zazwyczaj używają formatu JSON do serializacji i deserializacji. Możesz również korzystać z nieprzetworzonych danych binarnych. Dane można przekształcić przed wysłaniem ich do modelu lub przed zwróceniem ich do klienta.
+* `run(input_data)`: Ta funkcja używa modelu do przewidywania wartości na podstawie danych wejściowych. Dane wejściowe i wyjściowe przebiegu zazwyczaj używają formatu JSON do serializacji i deserializacji. Możesz również korzystać z nieprzetworzonych danych binarnych. Dane można przekształcić przed wysłaniem ich do modelu lub przed zwróceniem ich do klienta.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Lokalizowanie plików modelu w skrypcie wprowadzania
 
@@ -215,7 +215,7 @@ AZUREML_MODEL_DIR jest zmienną środowiskową utworzoną podczas wdrażania us�
 
 W poniższej tabeli opisano wartość AZUREML_MODEL_DIR w zależności od liczby wdrożonych modeli:
 
-| Wdrażanie | Wartość zmiennej środowiskowej |
+| Wdrożenie | Wartość zmiennej środowiskowej |
 | ----- | ----- |
 | Jeden model | Ścieżka do folderu zawierającego model. |
 | Wiele modeli | Ścieżka do folderu zawierającego wszystkie modele. Modele są zlokalizowane według nazwy i wersji w tym folderze (`$MODEL_NAME/$VERSION`) |
@@ -485,7 +485,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inferenceconfig"></a>2. Zdefiniuj InferenceConfig
+### <a name="2-define-your-inference-environment"></a>2. Zdefiniuj środowisko wnioskowania
 
 Konfiguracja wnioskowania opisuje, jak skonfigurować model do tworzenia prognoz. Ta konfiguracja nie jest częścią skryptu wejścia. Odwołuje się do skryptu wejścia i służy do lokalizowania wszystkich zasobów wymaganych przez wdrożenie. Jest on używany później podczas wdrażania modelu.
 
@@ -538,7 +538,7 @@ Poniższa tabela zawiera przykład tworzenia konfiguracji wdrożenia dla każdeg
 
 | Docelowy zasób obliczeniowy | Przykład konfiguracji wdrożenia |
 | ----- | ----- |
-| Lokalna | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Lokalny | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -547,41 +547,6 @@ Klasy dla lokalnych, Azure Container Instances i usług sieci Web AKS można zai
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-#### <a name="profiling"></a>Profilowanie
-
-Przed wdrożeniem modelu jako usługi można go profilować, aby określić optymalne wymagania dotyczące procesora i pamięci. Aby profilować model, można użyć zestawu SDK lub interfejsu wiersza polecenia. W poniższych przykładach pokazano, jak profilować model przy użyciu zestawu SDK.
-
-> [!IMPORTANT]
-> W przypadku korzystania z profilowania konfiguracja wnioskowania nie może odwoływać się do Azure Machine Learning środowiska. Zamiast tego należy zdefiniować zależności oprogramowania przy użyciu `conda_file` parametru `InferenceConfig` obiektu.
-
-```python
-import json
-test_data = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10]
-]})
-
-profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(True)
-profiling_results = profile.get_results()
-print(profiling_results)
-```
-
-Ten kod wyświetla wynik podobny do następującego:
-
-```python
-{'cpu': 1.0, 'memoryInGB': 0.5}
-```
-
-Wyniki profilowania modelu są emitowane jako obiekt `Run`.
-
-Aby uzyskać informacje na temat korzystania z profilowania z interfejsu wiersza polecenia, zobacz [AZ ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
-
-Aby uzyskać więcej informacji, zobacz następujące dokumenty:
-
-* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
-* [Schemat pliku konfiguracji wnioskowania](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Wdróż do celu
 
@@ -977,7 +942,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Po utworzeniu pakietu można użyć `package.pull()`, aby ściągnąć obraz do lokalnego środowiska Docker. W danych wyjściowych tego polecenia zostanie wyświetlona nazwa obrazu. Przykład: 
+Po utworzeniu pakietu można użyć `package.pull()`, aby ściągnąć obraz do lokalnego środowiska Docker. W danych wyjściowych tego polecenia zostanie wyświetlona nazwa obrazu. Na przykład: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
@@ -1085,8 +1050,8 @@ docker kill mycontainer
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby usunąć wdrożonej usługi sieci web, użyj `service.delete()`.
-Aby usunąć zarejestrowanego modelu, użyj `model.delete()`.
+Aby usunąć wdrożoną usługę sieci Web, użyj `service.delete()`.
+Aby usunąć zarejestrowany model, użyj `model.delete()`.
 
 Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą usługi [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) i [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
@@ -1094,7 +1059,7 @@ Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą usługi [WebSe
 
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrażaniem](how-to-troubleshoot-deployment.md)
-* [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)
+* [Zabezpieczanie Azure Machine Learning usług sieci Web przy użyciu protokołu SSL](how-to-secure-web-service.md)
 * [Korzystanie z modelu Azure Machine Learning wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)

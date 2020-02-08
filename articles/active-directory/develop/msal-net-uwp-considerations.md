@@ -3,22 +3,22 @@ title: PLATFORMY UWP — zagadnienia (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Informacje o określonych kwestiach dotyczących używania platforma uniwersalna systemu Windows z biblioteką uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 549e36099e06d665ecab879ceb3c38987d000852
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4803b2bda63ef0e14137aaafe95a422089e7f671
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695096"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083659"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Zagadnienia dotyczące platforma uniwersalna systemu Windows z MSAL.NET
 W systemie platformy UWP istnieje kilka kwestii, które należy wziąć pod uwagę podczas korzystania z MSAL.NET.
@@ -63,7 +63,7 @@ Aby uzyskać szczegółowe informacje, zobacz [brokera uwierzytelniania w sieci 
 ## <a name="next-steps"></a>Następne kroki
 Więcej szczegółowych informacji znajduje się w następujących przykładach:
 
-Przykład | Platforma | Opis 
+Sample | Platforma | Opis 
 |------ | -------- | -----------|
-|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | Platforma UWP | Platforma uniwersalna systemu Windows aplikacji klienckiej używającej msal.net, która uzyskuje dostęp do Microsoft Graph w celu uwierzytelniania użytkowników za pomocą punktu końcowego usługi Azure AD v 2.0. <br>![Topologia](media/msal-net-uwp-considerations/topology-native-uwp.png)|
+|[Active-Directory-dotnet-Native-platformy UWP-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | Platforma UWP | Platforma uniwersalna systemu Windows aplikacji klienckiej używającej msal.net, która uzyskuje dostęp do Microsoft Graph w celu uwierzytelniania użytkowników za pomocą punktu końcowego usługi Azure AD v 2.0. <br>![Topologia](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, platformy UWP | Prosta aplikacja interfejsu Xamarin Forms, która przedstawia, jak używać MSAL do uwierzytelniania kont MSA i Azure AD za pośrednictwem punktu końcowego usługi AAD w wersji 2.0 oraz uzyskiwać dostęp do Microsoft Graph przy użyciu tokenu z wynikiem. <br>![Topologia](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

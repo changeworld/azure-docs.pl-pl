@@ -11,19 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 2/7/2019
+ms.date: 2/7/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55b31dec0531add8e8c3b40bd9cc3e031ef30000
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b5a74e03a5b166af85c809725c2c8b9a13b7e4f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066384"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085451"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników przy użyciu Azure Active Directory (Azure AD)
+# <a name="develop-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników przy użyciu Azure Active Directory (Azure AD)
 
 Jako deweloper aplikacji możesz użyć interfejsu API zarządzania użytkownikami (standard scim) między domenami, aby włączyć automatyczną obsługę administracyjną użytkowników i grup między aplikacją a usługą Azure AD. W tym artykule opisano sposób tworzenia punktu końcowego Standard scim i integracji z usługą Azure AD Provisioning. Specyfikacja Standard scim zawiera wspólny schemat użytkownika na potrzeby aprowizacji. W połączeniu z standardami Federacji, takimi jak SAML lub OpenID Connect Connect, standard scim zapewnia administratorom kompleksowe, oparte na standardach rozwiązanie do zarządzania dostępem.
 
@@ -722,6 +722,34 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
 
 *HTTP/1.1 204 Brak zawartości*
 
+### <a name="security-requirements"></a>Wymagania dotyczące zabezpieczeń
+**Wersje protokołu TLS**
+
+Jedyne akceptowalne wersje protokołu TLS to TLS 1,2 i TLS 1,3. Żadna inna wersja protokołu TLS nie jest dozwolona. Nie jest dozwolona żadna wersja protokołu SSL. 
+- Klucze RSA muszą mieć co najmniej 2 048 bitów.
+- Klucze ECC muszą mieć co najmniej 256 bitów, generowane przy użyciu zatwierdzonej krzywej eliptycznej
+
+
+**Długości kluczy**
+
+Wszystkie usługi muszą używać certyfikatów X. 509 wygenerowanych przy użyciu kluczy kryptograficznych o wystarczającej długości, co oznacza:
+
+**Mechanizmy szyfrowania**
+
+Wszystkie usługi muszą być skonfigurowane tak, aby korzystały z następujących mechanizmów szyfrowania w kolejności określonej poniżej. Należy pamiętać, że jeśli masz tylko certyfikat RSA, instalacja mechanizmów szyfrowania ECDSA nie ma żadnego skutku. </br>
+
+Minimalny pasek mechanizmów szyfrowania TLS 1,2:
+
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+
 ## <a name="step-3-build-a-scim-endpoint"></a>Krok 3. Tworzenie punktu końcowego Standard scim
 
 Tworząc usługę sieci Web Standard scim, która jest obsługiwana przy użyciu Azure Active Directory, można włączyć automatyczne Inicjowanie obsługi użytkowników dla praktycznie dowolnej aplikacji lub magazynu tożsamości.
@@ -814,10 +842,6 @@ Deweloperzy korzystający z bibliotek interfejsu wiersza polecenia mogą hostowa
 ```csharp
  private static void Main(string[] arguments)
  {
- // Microsoft.SystemForCrossDomainIdentityManagement.IMonitor, 
- // Microsoft.SystemForCrossDomainIdentityManagement.IProvider and 
- // Microsoft.SystemForCrossDomainIdentityManagement.Service are all defined in 
- // Microsoft.SystemForCrossDomainIdentityManagement.Service.dll.  
 
  Microsoft.SystemForCrossDomainIdentityManagement.IMonitor monitor = 
    new DevelopersMonitor();
@@ -907,10 +931,6 @@ Aby hostować usługę w Internet Information Services, programista utworzy zest
 ```csharp
  public class Startup
  {
- // Microsoft.SystemForCrossDomainIdentityManagement.IWebApplicationStarter, 
- // Microsoft.SystemForCrossDomainIdentityManagement.IMonitor and  
- // Microsoft.SystemForCrossDomainIdentityManagement.Service are all defined in 
- // Microsoft.SystemForCrossDomainIdentityManagement.Service.dll.  
 
  Microsoft.SystemForCrossDomainIdentityManagement.IWebApplicationStarter starter;
 

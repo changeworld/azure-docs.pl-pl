@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: juliako
-ms.openlocfilehash: bbf3ba17e7f91e88136f2dac50c908262100e77a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: HT
+ms.openlocfilehash: cfc9d944f7851f9b802e18c861fd16438171b8e7
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048776"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069586"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services starsze składniki
 
@@ -35,8 +35,8 @@ Ogłaszamy również wycofanie następujących Media Analytics procesorów multi
  
 |Nazwa procesora multimediów|Data wycofania|Uwagi dodatkowe|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 1 października z 2020|Ten procesor multimediów zostanie zastąpiony przez [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer 2 do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).|
-|[Azure Media Indexer](media-services-index-content.md)|1 października z 2020|Ten procesor multimediów zostanie zastąpiony przez [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md)
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)|1 stycznia, 2020|Ten procesor multimediów jest zastępowany przez [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer 2 do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).|
+|[Azure Media Indexer](media-services-index-content.md)|1 marca 2023|Ten procesor multimediów jest zastępowany przez [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Aby uzyskać więcej informacji, zobacz [Migrowanie z Azure Media Indexer do Azure Media Services Video Indexer](migrate-indexer-v1-v2.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

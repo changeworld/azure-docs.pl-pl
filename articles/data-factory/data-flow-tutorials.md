@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 01/14/2020
-ms.openlocfilehash: 543d1599201a318a399b98ff855fd9cf241f1f4c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: HT
+ms.date: 02/06/2020
+ms.openlocfilehash: 00b51c14a24b525d98e9634a4f416177364228cb
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048257"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069594"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Samouczki wideo dotyczące przepływów mapowania danych
 
@@ -19,7 +19,7 @@ Poniżej znajduje się lista map filmów dotyczących przepływu danych, które 
 
 Gdy aktualizacje są stale wprowadzane do produktu, niektóre funkcje zostały dodane lub inne funkcje w bieżącym środowisku użytkownika Azure Data Factory.
 
-## <a name="getting-started"></a>Getting Started
+## <a name="getting-started"></a>Wprowadzenie
 
 [Wprowadzenie do mapowania przepływów danych w Azure Data Factory](http://youtu.be/MFw7t_8tuV4)
 
@@ -132,3 +132,7 @@ Gdy aktualizacje są stale wprowadzane do produktu, niektóre funkcje zostały d
 [Modele logiczne a modele fizyczne](http://youtu.be/K5tgzLjEE9Q)
 
 [Wykrywanie zmian danych źródłowych](http://youtu.be/CaxIlI7oXfI?hd=1)
+
+## <a name="data-flow-expressions"></a>Wyrażenia przepływu danych
+
+[Wyrażenia daty/godziny](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)

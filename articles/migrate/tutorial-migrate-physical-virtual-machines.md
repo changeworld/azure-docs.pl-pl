@@ -4,12 +4,12 @@ description: W tym artykule opisano sposób migrowania maszyn fizycznych na plat
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3fbc94464c139add6e275890e1a1e415b2826f0d
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989760"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069527"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrowanie maszyn jako serwerów fizycznych na platformę Azure
 
@@ -25,7 +25,7 @@ W tym artykule opisano sposób migrowania maszyn jako serwerów fizycznych na pl
 [Azure Migrate](migrate-services-overview.md) udostępnia centralne centrum do śledzenia odnajdywania, oceny i migracji lokalnych aplikacji i obciążeń oraz wystąpień maszyn wirtualnych w chmurze do platformy Azure. Centrum udostępnia Azure Migrate narzędzia do oceny i migracji, a także oferty niezależnych dostawców oprogramowania (ISV) innych firm.
 
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Przygotuj platformę Azure do migracji za pomocą narzędzia migracji Azure Migrate Server.
 > * Sprawdź wymagania dotyczące maszyn, które mają zostać poddane migracji, i przygotuj maszynę do Azure Migrate urządzenia do replikacji, które służy do odnajdywania i migrowania maszyn na platformę Azure.
@@ -194,7 +194,7 @@ Pierwszym krokiem migracji jest skonfigurowanie urządzenia do replikacji. Pobie
 
     ![Finalizowanie rejestracji](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-Zakończenie rejestracji może potrwać do 15 minut, dopóki odnalezione maszyny nie pojawią się w Azure Migrate migracji na serwer. Jako że maszyny wirtualne są odnajdywane, wzrasta liczba **odnalezionych serwerów** .
+Po zakończeniu rejestracji może upłynąć trochę czasu, dopóki odnalezione maszyny nie pojawią się w ramach migracji na serwer Azure Migrate. Jako że maszyny wirtualne są odnajdywane, wzrasta liczba **odnalezionych serwerów** .
 
 ![Odnalezione serwery](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 

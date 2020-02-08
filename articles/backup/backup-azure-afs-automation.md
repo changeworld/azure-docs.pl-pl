@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowej Azure Files przy użyciu programu PowerShell
 description: W tym artykule dowiesz się, jak utworzyć kopię zapasową Azure Files przy użyciu usługi Azure Backup i programu PowerShell.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773101"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086947"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Tworzenie kopii zapasowej Azure Files przy użyciu programu PowerShell
 
@@ -44,6 +44,13 @@ Zapoznaj się z dokumentacją [polecenia cmdlet](/powershell/module/az.recoverys
 Skonfiguruj program PowerShell w następujący sposób:
 
 1. [Pobierz najnowszą wersję polecenia AZ PowerShell](/powershell/azure/install-az-ps). Minimalna wymagana wersja to 1.0.0.
+
+> [!WARNING]
+> Minimalna wersja PS wymagana na potrzeby wersji zapoznawczej to "AZ 1.0.0". Ze względu na nadchodzące zmiany w odniesieniu do systemu, minimalna wymagana wersja PS to "AZ. RecoveryServices 2.6.0". Bardzo ważne jest, aby uaktualnić wszystkie istniejące wersje systemu PS do tej wersji. W przeciwnym razie istniejące skrypty zostaną przerwane po rozpoczęciu. Zainstaluj minimalną wersję z następującymi poleceniami PS
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
 
 2. Znajdź Azure Backup poleceń cmdlet programu PowerShell za pomocą tego polecenia:
 
@@ -81,7 +88,7 @@ Skonfiguruj program PowerShell w następujący sposób:
 
 9. W danych wyjściowych polecenia Sprawdź, czy **RegistrationState** zmiany zostały **zarejestrowane**. Jeśli nie, uruchom ponownie polecenie cmdlet **register-AzResourceProvider** .
 
-## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu Usług odzyskiwania
 
 Magazyn Recovery Services jest zasobem Menedżer zasobów, dlatego należy umieścić go w grupie zasobów. Można użyć istniejącej grupy zasobów lub można utworzyć grupę zasobów za pomocą polecenia cmdlet **New-AzResourceGroup** . Podczas tworzenia grupy zasobów należy określić nazwę i lokalizację grupy zasobów.
 
@@ -241,19 +248,32 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Ważna uwaga — identyfikacja elementu kopii zapasowej dla kopii zapasowych AFS
+
+Ta sekcja zawiera opis zmian w pobieraniu elementów kopii zapasowej dla kopii zapasowych z wersji zapoznawczej do usługi GA.
+
+Podczas włączania tworzenia kopii zapasowej dla programu AFS użytkownik dostarcza przyjazną nazwę udziału plików klienta jako nazwę jednostki i tworzony jest element kopii zapasowej. Element kopii zapasowej "name" jest unikatowym identyfikatorem utworzonym przez usługę Azure Backup. Zazwyczaj identyfikator obejmuje przyjazną nazwę użytkownika. Jednak wprowadzono zmiany w sposobie, w jaki usługi platformy Azure wewnętrznie identyfikują udział plików platformy Azure w sposób unikatowy. Oznacza to, że unikatowa nazwa elementu kopii zapasowej dla tworzenia kopii w ramach programu AFS będzie identyfikatorem GUID i nie będzie miała żadnego powiązania z przyjazną nazwą klienta. Aby poznać unikatową nazwę każdego elementu, wystarczy uruchomić polecenie ```Get-AzRecoveryServicesBackupItem``` z odpowiednimi filtrami dla backupManagementType i Obciążeniatype, aby uzyskać wszystkie odpowiednie elementy, a następnie obserwować pole Name w zwracanym obiekcie/odpowiedzi PS. Jest zawsze zalecane, aby wyświetlić listę elementów, a następnie pobrać ich unikatową nazwę z pola "nazwa" w odpowiedzi. Ta wartość umożliwia filtrowanie elementów za pomocą parametru "name". W przeciwnym razie użyj parametru FriendlyName, aby pobrać element z przyjazną nazwą/identyfikatorem klienta.
+
+> [!WARNING]
+> Upewnij się, że wersja PS została uaktualniona do wersji minimalnej dla "AZ. RecoveryServices 2.6.0" dla kopii zapasowych AFS. W tej wersji filtr "FriendlyName" jest dostępny dla polecenia ```Get-AzRecoveryServicesBackupItem```. Przekaż nazwę udziału plików platformy Azure do parametru FriendlyName. W przypadku przekazania nazwy udziału plików platformy Azure do parametru "name" Ta wersja zgłasza ostrzeżenie, aby przekazać przyjazną nazwę do parametru przyjaznej nazwy. Nieinstalowanie tej minimalnej wersji może spowodować niepowodzenie istniejących skryptów. Zainstaluj minimalną wersję PS przy użyciu poniższego polecenia.
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
+
 ## <a name="trigger-an-on-demand-backup"></a>Wyzwalanie kopii zapasowej na żądanie
 
 Użyj [Narzędzia Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) , aby uruchomić kopię zapasową na żądanie dla chronionego udziału plików platformy Azure.
 
-1. Pobierz konto magazynu i udział plików z kontenera w magazynie, który przechowuje dane kopii zapasowej za pomocą [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
-2. Aby rozpocząć zadanie tworzenia kopii zapasowej, należy uzyskać informacje o maszynie wirtualnej za pomocą [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
+1. Pobierz konto magazynu z kontenera w magazynie, który przechowuje dane kopii zapasowej za pomocą [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
+2. Aby rozpocząć zadanie tworzenia kopii zapasowej, Uzyskaj informacje o udziale plików platformy Azure za pomocą [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
 3. Uruchom kopię zapasową na żądanie przy użyciu[kopii zapasowej AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
 
 Wykonaj kopię zapasową na żądanie w następujący sposób:
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
+$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -FriendlyName "testAzureFS"
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
@@ -272,6 +292,9 @@ Migawki udziałów plików platformy Azure są używane podczas wykonywania kopi
 Kopie zapasowe na żądanie mogą służyć do przechowywania migawek przez 10 lat. Harmonogramy mogą służyć do uruchamiania skryptów programu PowerShell na żądanie z wybranym przechowywaniem, a tym samym wykonywania migawek w regularnych odstępach czasu każdego tygodnia, miesiąca lub roku. Podczas tworzenia zwykłych migawek zapoznaj się z [ograniczeniami tworzenia kopii zapasowych na żądanie](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share) przy użyciu usługi Azure Backup.
 
 Jeśli szukasz przykładowych skryptów, możesz zapoznać się z przykładowym skryptem w witrynie GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>) przy użyciu Azure Automation elementu Runbook, który umożliwia okresowe planowanie tworzenia kopii zapasowych i ich zachowanie nawet do 10 lat.
+
+> [!WARNING]
+> Upewnij się, że wersja PS została uaktualniona do minimalnej wersji dla "AZ. RecoveryServices 2.6.0" w celu tworzenia kopii zapasowych w elementach Runbook usługi Automation. Należy zastąpić stary moduł "AzureRM" za pomocą modułu "AZ". W tej wersji filtr "FriendlyName" jest dostępny dla polecenia ```Get-AzRecoveryServicesBackupItem```. Przekaż nazwę udziału plików platformy Azure do parametru FriendlyName. W przypadku przekazania nazwy udziału plików platformy Azure do parametru "name" Ta wersja zgłasza ostrzeżenie, aby przekazać przyjazną nazwę do parametru przyjaznej nazwy.
 
 ## <a name="next-steps"></a>Następne kroki
 

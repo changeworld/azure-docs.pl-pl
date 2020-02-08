@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9824f5cfd7b42860079536232b8a5ad40ea608c9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3243aa4c68e1cd6030986dc44cca47a555dc5356
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638361"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087157"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Znane problemy i rozwiązywanie problemów Azure Machine Learning
 
@@ -76,7 +76,7 @@ Jeśli obserwujesz `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' di
 
 ## <a name="fpgas"></a>Układy FPGA
 
-Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają wymagane i zostało zatwierdzone dla limitu przydziału FPGA. Aby zażądać dostępu, wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai
+Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają wymagane i zostało zatwierdzone dla limitu przydziału FPGA. Aby zażądać dostępu, Wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Zautomatyzowane uczenie maszynowe
 
@@ -119,13 +119,13 @@ Ten błąd występuje, jeśli masz niezgodną wersję między `azureml-core` i `
 pip install --upgrade azureml-dataprep
 ```
 
-## <a name="databricks"></a>Usługa Databricks
+## <a name="databricks"></a>Databricks
 
 Problemy z usługi Databricks i Azure Machine Learning.
 
 ### <a name="failure-when-installing-packages"></a>Błąd podczas instalowania pakietów
 
-Azure Machine Learning Instalacja zestawu SDK kończy się niepowodzeniem na Azure Databricks po zainstalowaniu większej liczby pakietów. Niektóre pakiety, takich jak `psutil`, mogą powodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety przez zamarzanie wersji biblioteki. Ten problem jest związany z kostkami, a nie z zestawem SDK Azure Machine Learning. Ten problem może również wystąpić z innymi bibliotekami. Przykład:
+Azure Machine Learning Instalacja zestawu SDK kończy się niepowodzeniem na Azure Databricks po zainstalowaniu większej liczby pakietów. Niektóre pakiety, takie jak `psutil`, mogą spowodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety przez zamarzanie wersji biblioteki. Ten problem jest związany z kostkami, a nie z zestawem SDK Azure Machine Learning. Ten problem może również wystąpić z innymi bibliotekami. Przykład:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -172,7 +172,7 @@ Jeśli zobaczysz błąd `FailToSendFeather` podczas odczytywania danych w klastr
 * Dodaj `azureml-dataprep` w wersji 1.1.8 lub nowszej.
 * Dodaj `pyarrow` w wersji 0,11 lub nowszej.
 
-## <a name="azure-portal"></a>Portal Azure
+## <a name="azure-portal"></a>Portalu Azure
 
 Jeśli przejdziesz bezpośrednio, aby wyświetlić obszar roboczy z Udostępnij link z zestawu SDK lub w portalu, nie można wyświetlić strony z normalnej Przegląd informacji o subskrypcji w rozszerzeniu. Ponadto nie można przełączyć się do innego obszaru roboczego. Jeśli zachodzi potrzeba wyświetlenia innego obszaru roboczego, obejście to przejście bezpośrednio do [Azure Machine Learning Studio](https://ml.azure.com) i wyszukanie nazwy obszaru roboczego.
 
@@ -191,7 +191,7 @@ Niektóre z tych akcji są wyświetlane w obszarze __działania__ obszaru robocz
 
 ## <a name="resource-quotas"></a>Limity przydziałów zasobów
 
-Dowiedz się więcej o [limity przydziałów zasobów](how-to-manage-quotas.md) można napotkać podczas pracy z usługą Azure Machine Learning.
+Dowiedz się więcej na temat [przydziałów zasobów](how-to-manage-quotas.md) , które można napotkać podczas pracy z Azure Machine Learning.
 
 ## <a name="authentication-errors"></a>Błędy uwierzytelniania
 
@@ -306,3 +306,9 @@ Aby załadować wszystkie obrazy z etykietami, wybierz **pierwszy** przycisk. **
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Naciśnięcie klawisza Esc podczas etykietowania dla wykrywania obiektów tworzy etykietę o zerowej wielkości w lewym górnym rogu. Przesyłanie etykiet w tym stanie nie powiodło się.
 
 Usuń etykietę, klikając znak krzyżyka obok niego.
+
+## <a name="run-or-experiment-deletion"></a>Usuwanie uruchamiania lub eksperymentu
+
+Eksperymenty można archiwizować przy użyciu metody [eksperyment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) lub z widoku karty eksperymenty w programie Azure Machine Learning Studio Client. Ta akcja ukrywa eksperyment z zapytań i widoków list, ale nie usuwa go.
+
+Trwałe usuwanie pojedynczych eksperymentów lub przebiegów nie jest obecnie obsługiwane. Aby uzyskać więcej informacji na temat usuwania zasobów obszaru roboczego, zobacz [Eksportowanie lub usuwanie danych obszaru roboczego usługi Machine Learning](how-to-export-delete-data.md).
