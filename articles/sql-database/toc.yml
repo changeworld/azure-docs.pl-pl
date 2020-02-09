@@ -463,6 +463,8 @@
                       href: saas-multitenantdb-schema-management.md
                     - name: Proces ETL na potrzeby analizy
                       href: saas-multitenantdb-tenant-analytics.md
+        - name: Prośba o zwiększenie limitów przydziałów
+          href: quota-increase-request.md
 - name: Bazy danych SQL
   items:
     - name: Dokumentacja baz danych SQL
