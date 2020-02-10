@@ -3,12 +3,12 @@ title: Użyj Azure Backup Server, aby utworzyć kopię zapasową obciążeń
 description: W tym artykule dowiesz się, jak przygotować środowisko do ochrony i tworzenia kopii zapasowych obciążeń przy użyciu Microsoft Azure Backup Server (serwera usługi MAB).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979888"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111600"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie Azure Backup Server
 
@@ -51,7 +51,7 @@ Ochrona obciążeń za pomocą Azure Backup Server ma wiele wszystkie szczegół
 
 Jeśli nie chcesz uruchamiać serwera podstawowego na platformie Azure, możesz uruchomić serwer programu na maszynie wirtualnej funkcji Hyper-V, maszynie wirtualnej VMware lub hoście fizycznym. Zalecane minimalne wymagania dotyczące sprzętu serwerowego są dwa rdzenie i 8 GB pamięci RAM. Obsługiwane systemy operacyjne są wymienione w poniższej tabeli:
 
-| System operacyjny | Platforma | JSZ |
+| System operacyjny | Platforma | SKU |
 |:--- | --- |:--- |
 | Windows Server 2019 |64-bitowa |Standard, Datacenter, Essentials |
 | Windows Server 2016 i najnowsze dodatki Service Pack |64-bitowa |Standard, Datacenter, Essentials  |
@@ -66,6 +66,8 @@ Magazyn programu DPM można deduplikowany przy użyciu funkcji deduplikacji syst
 > * Komputer, który jest serwerem zarządzania programu System Center Operations Manager
 > * Komputer, na którym jest uruchomiony program Exchange Server
 > * Komputer, który jest węzłem klastra
+>
+> Instalowanie Azure Backup Server nie jest obsługiwane w systemie Windows Server Core lub Microsoft Hyper-V Server.
 
 Zawsze dołączaj Azure Backup Server do domeny. Jeśli planujesz przeniesienie serwera do innej domeny, najpierw zainstaluj Azure Backup Server a następnie Przyłącz serwer do nowej domeny. Przeniesienie istniejącej maszyny Azure Backup Server do nowej domeny po wdrożeniu nie jest *obsługiwane*.
 
@@ -90,13 +92,13 @@ Aby edytować ustawienia replikacji magazynu:
 
 ### <a name="downloading-the-software-package"></a>Pobieranie pakietu oprogramowania
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Jeśli masz już otwarty magazyn Recovery Services, przejdź do kroku 3. Jeśli nie masz otwartego magazynu Recovery Services, ale znajdują się one w Azure Portal, w menu głównym kliknij przycisk **Przeglądaj**.
 
    * Na liście zasobów wpisz **Usługi odzyskiwania**.
    * Po rozpoczęciu pisania zawartość listy będzie filtrowana w oparciu o wpisywane dane. Po wyświetleniu pozycji **Magazyny Usług odzyskiwania** kliknij ją.
 
-     ![Tworzenie magazynu usługi Recovery Services — krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Tworzenie magazynu Usług odzyskiwania — krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
      Zostanie wyświetlona lista magazynów Usług odzyskiwania.
    * Wybierz magazyn z listy magazynów Usług odzyskiwania.
@@ -215,7 +217,7 @@ Po zakończeniu procesu wyodrębniania zaznacz pole wyboru, aby uruchomić świe
     ![Azure Backup Server PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Po pomyślnym zakończeniu rejestracji serwera Microsoft Azure Backup, Kreator instalacji ogólnej przejdzie do instalacji i konfiguracji SQL Server i składników Azure Backup Server. Po zakończeniu instalacji składnika SQL Server składniki Azure Backup Server zostaną zainstalowane.
 
-    ![Usługa Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+    ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 Po zakończeniu kroku instalacji zostaną również utworzone ikony pulpitu produktu. Po prostu kliknij dwukrotnie ikonę, aby uruchomić produkt.
 
@@ -283,14 +285,14 @@ W tym samym czasie subskrypcja platformy Azure musi być w dobrej kondycji. Aby 
 
 Po uzyskaniu informacji o stanie łączności z platformą Azure i subskrypcji platformy Azure Możesz użyć poniższej tabeli, aby dowiedzieć się, jak to miało wpływ na oferowane funkcje tworzenia kopii zapasowej/przywracania.
 
-| Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej w systemie Azure | Utwórz kopię zapasową na dysku | Przywróć z platformy Azure | Przywracanie z dysku |
+| Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej na platformie Azure | Utwórz kopię zapasową na dysku | Przywróć z platformy Azure | Przywracanie z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Połączone |Aktywne |Dozwolone |Dozwolone |Dozwolone |Dozwolone |
-| Połączone |Wygasłe |Zatrzymane |Zatrzymane |Dozwolone |Dozwolone |
-| Połączone |Anulowanie aprowizacji |Zatrzymane |Zatrzymane |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymane |
-| Utracono łączność > 15 dni |Aktywne |Zatrzymane |Zatrzymane |Dozwolone |Dozwolone |
-| Utracono łączność > 15 dni |Wygasłe |Zatrzymane |Zatrzymane |Dozwolone |Dozwolone |
-| Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymane |Zatrzymane |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymane |
+| Połączone |Aktywne |Występować |Występować |Występować |Występować |
+| Połączone |Wygasłe |Zatrzymano |Zatrzymano |Występować |Występować |
+| Połączone |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
+| Utracono łączność > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Występować |Występować |
+| Utracono łączność > 15 dni |Wygasłe |Zatrzymano |Zatrzymano |Występować |Występować |
+| Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie po utracie łączności
 

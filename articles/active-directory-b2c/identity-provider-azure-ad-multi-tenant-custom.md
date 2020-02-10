@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f7bf9fea1b1e15d1ca24686a84e272dd60ceaf5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 9d8d13ec955867eb574b5f0d782727d6ff8d063a
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061594"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111545"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania do Azure Active Directory z wieloma dzierżawcami przy użyciu zasad niestandardowych w programie Azure Active Directory B2C
 
@@ -50,6 +50,19 @@ Aby włączyć Logowanie użytkowników z określonej organizacji usługi Azure 
 1. Wybierz pozycję **certyfikaty & wpisy tajne**, a następnie wybierz pozycję **nowy klucz tajny klienta**.
 1. Wprowadź **Opis** wpisu tajnego, wybierz pozycję Wygaśnięcie, a następnie wybierz pozycję **Dodaj**. Zapisz **wartość** wpisu tajnego do użycia w późniejszym kroku.
 
+## <a name="configuring-optional-claims"></a>Konfigurowanie oświadczeń opcjonalnych
+
+Jeśli chcesz uzyskać `family_name` i `given_name` oświadczenia z usługi Azure AD, możesz skonfigurować opcjonalne oświadczenia dla aplikacji w Azure Portal interfejsie użytkownika lub manifeście aplikacji. Aby uzyskać więcej informacji, zobacz [jak dostarczyć opcjonalne oświadczenia do aplikacji usługi Azure AD](../active-directory/develop/active-directory-optional-claims.md).
+
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wyszukaj i wybierz **Azure Active Directory**.
+1. W sekcji **Zarządzanie** wybierz pozycję **rejestracje aplikacji**.
+1. Wybierz aplikację, dla której chcesz skonfigurować oświadczenia opcjonalne.
+1. W sekcji **Zarządzanie** wybierz pozycję **Konfiguracja tokenu (wersja zapoznawcza)** .
+1. Wybierz pozycję **Dodaj opcjonalne**pole.
+1. Wybierz typ tokenu, który chcesz skonfigurować.
+1. Wybierz opcjonalne oświadczenia do dodania.
+1. Kliknij pozycję **Add** (Dodaj).
+
 ## <a name="create-a-policy-key"></a>Tworzenie klucza zasad
 
 Należy przechowywać klucz aplikacji utworzony w dzierżawie Azure AD B2C.
@@ -63,19 +76,6 @@ Należy przechowywać klucz aplikacji utworzony w dzierżawie Azure AD B2C.
 1. W **kluczu tajnym**wprowadź wcześniej zarejestrowany klucz tajny klienta.
 1. W obszarze **użycie klucza**wybierz pozycję `Signature`.
 1. Wybierz pozycję **Utwórz**.
-
-## <a name="configuring-optional-claims"></a>Konfigurowanie oświadczeń opcjonalnych
-
-Jeśli chcesz uzyskać `family_name` i `given_name` oświadczenia z usługi Azure AD, możesz skonfigurować opcjonalne oświadczenia dla aplikacji w Azure Portal interfejsie użytkownika lub manifeście aplikacji. Aby uzyskać więcej informacji, zobacz [jak dostarczyć opcjonalne oświadczenia do aplikacji usługi Azure AD](../active-directory/develop/active-directory-optional-claims.md).
-
-1. Zaloguj się do [Azure portal](https://portal.azure.com). Wyszukaj i wybierz **Azure Active Directory**.
-1. W sekcji **Zarządzanie** wybierz pozycję **rejestracje aplikacji**.
-1. Wybierz aplikację, dla której chcesz skonfigurować oświadczenia opcjonalne.
-1. W sekcji **Zarządzanie** wybierz pozycję **Konfiguracja tokenu (wersja zapoznawcza)** .
-1. Wybierz pozycję **Dodaj opcjonalne**pole.
-1. Wybierz typ tokenu, który chcesz skonfigurować.
-1. Wybierz opcjonalne oświadczenia do dodania.
-1. Kliknij pozycję **Add** (Dodaj).
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 

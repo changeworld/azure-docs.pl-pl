@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275521"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111573"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Włączanie dostępu zdalnego do Power BI Mobile przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -95,7 +95,7 @@ Teraz możesz przystąpić do konfigurowania serwer proxy aplikacji usługi Azur
 
    b. W przypadku **trybu logowania**jednokrotnego wybierz pozycję **zintegrowane uwierzytelnianie systemu Windows**.
 
-   d. Ustaw **nazwę SPN aplikacji wewnętrznej** na ustawioną wcześniej wartość.  
+   c. Ustaw **nazwę SPN aplikacji wewnętrznej** na ustawioną wcześniej wartość.  
 
    d. Wybierz **delegowaną tożsamość logowania** dla łącznika, który ma być używany w imieniu użytkowników. Aby uzyskać więcej informacji, zobacz [Praca z różnymi tożsamościami lokalnymi i w chmurze](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
@@ -138,9 +138,6 @@ Aby aplikacja mobilna Power BI mogła łączyć się z usługami raportów i uzy
 3. Wprowadź prawidłowe poświadczenia dla użytkownika i wybierz pozycję **Zaloguj się**. Zobaczysz elementy z serwera usług Reporting Services.
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>Krok 5. Konfigurowanie zasad usługi Intune dla urządzeń zarządzanych (opcjonalnie)
-
-> [!NOTE]
-> Ta funkcja jest obecnie dostępna tylko w systemie iOS.
 
 Za pomocą Microsoft Intune można zarządzać aplikacjami klienckimi używanymi przez pracowników firmy. Usługa Intune umożliwia korzystanie z takich funkcji, jak szyfrowanie danych i dodatkowe wymagania dotyczące dostępu. Aby dowiedzieć się więcej o zarządzaniu aplikacjami za poorednictwem usługi Intune, zobacz Zarządzanie aplikacjami w usłudze Intune. Aby umożliwić aplikacji mobilnej Power BI współpracują z zasadami usługi Intune, wykonaj następujące czynności.
 

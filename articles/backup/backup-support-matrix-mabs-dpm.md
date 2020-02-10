@@ -3,12 +3,12 @@ title: Macierz obsługi programu serwera usługi MAB & System Center DPM
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej w przypadku używania serwera Microsoft Azure Backup (serwera usługi MAB) lub programu System Center DPM do tworzenia kopii zapasowych zasobów lokalnych i maszyn wirtualnych platformy Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f9ee31525f2ee5a19aebe0a9258dff3ecfdcbb92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841171"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111467"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Macierz obsługi dla tworzenia kopii zapasowych za pomocą serwera Microsoft Azure Backup lub programu System Center DPM
 
@@ -24,7 +24,7 @@ SERWERA usługi MAB jest oparta na programie System Center DPM i oferuje podobn�
 
 - Do uruchomienia serwera usługi MAB nie jest wymagana żadna licencja programu System Center.
 - W przypadku programów serwera usługi MAB i DPM platforma Azure zapewnia długoterminowe przechowywanie kopii zapasowych. Ponadto program DPM umożliwia tworzenie kopii zapasowych danych w celu przechowywania długoterminowego na taśmie. SERWERA usługi MAB nie zapewnia tej funkcji.
-- Można utworzyć kopię zapasową podstawowego serwera DPM przy użyciu pomocniczego serwera programu DPM. Serwer pomocniczy będzie chronić bazę danych serwera podstawowego i repliki źródła danych przechowywane na serwerze podstawowym. W razie awarii serwera podstawowego serwer pomocniczy może nadal chronić obciążenia chronione przez serwer podstawowy do czasu, aż serwer podstawowy stanie się ponownie dostępny.  SERWERA usługi MAB nie zapewnia tej funkcji.
+- Można utworzyć kopię zapasową podstawowego serwera DPM przy użyciu pomocniczego serwera programu DPM. Serwer pomocniczy będzie chronić bazę danych serwera podstawowego i repliki źródła danych przechowywane na serwerze podstawowym. Jeśli serwer podstawowy ulegnie awarii, serwer pomocniczy może nadal chronić obciążenia chronione przez serwer podstawowy, dopóki serwer podstawowy nie będzie ponownie dostępny.  SERWERA usługi MAB nie zapewnia tej funkcji.
 
 Pobierasz serwera usługi MAB z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=57520). Może być uruchamiany lokalnie lub na maszynie wirtualnej platformy Azure.
 
@@ -75,13 +75,16 @@ Azure Backup może tworzyć kopie zapasowe wystąpień programu DPM/serwera usł
 **SERWERA usługi MAB lokalnie** | Obsługiwane 64-bitowe systemy operacyjne:<br/><br/> SERWERA usługi MAB v3 i nowsze: Windows Server 2019 (standard, Datacenter, Essentials). <br/><br/> SERWERA usługi MAB v2 i nowsze: Windows Server 2016 (standard, Datacenter, Essentials).<br/><br/> Wszystkie wersje serwera usługi MAB: Windows Server 2012 R2.<br/><br/>Wszystkie wersje serwera usługi MAB: Windows Storage Server 2012 R2.
 **Lokalna DPM** | Serwer fizyczny/maszyna wirtualna funkcji Hyper-V: System Center 2012 z dodatkiem SP1 lub nowszy.<br/><br/> Maszyna wirtualna VMware: System Center 2012 R2 z aktualizacją Update 5 lub nowszą.
 
+>[!NOTE]
+>Instalowanie Azure Backup Server nie jest obsługiwane w systemie Windows Server Core lub Microsoft Hyper-V Server.
+
 ## <a name="management-support"></a>Obsługa zarządzania
 
-**Problem** | **Szczegóły**
+**Wykonaj** | **Szczegóły**
 --- | ---
 **Instalacja** | Zainstaluj program DPM/serwera usługi MAB na maszynie z pojedynczym przeznaczeniem.<br/><br/> Nie należy instalować programu DPM/serwera usługi MAB na kontrolerze domeny na komputerze z instalacją roli serwera aplikacji, na komputerze z uruchomionym programem Microsoft Exchange Server lub System Center Operations Manager lub w węźle klastra.<br/><br/> Zapoznaj się ze [wszystkimi wymaganiami systemowymi programu DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
 **Domeny** | Program DPM/serwera usługi MAB powinien być przyłączony do domeny. Najpierw zainstaluj program DPM/serwera usługi MAB do domeny. Przeniesienie programu DPM/serwera usługi MAB do nowej domeny po wdrożeniu nie jest obsługiwane.
-**Magazyn** | Nowoczesne magazyny kopii zapasowych (MB) jest obsługiwane przez program DPM 2016/serwera usługi MAB v2 i nowsze. Nie jest on dostępny dla serwera usługi MAB v1.
+**Storage** | Nowoczesne magazyny kopii zapasowych (MB) jest obsługiwane przez program DPM 2016/serwera usługi MAB v2 i nowsze. Nie jest on dostępny dla serwera usługi MAB v1.
 **SERWERA usługi MAB uaktualnienie** | Można bezpośrednio zainstalować serwera usługi MAB v3 lub uaktualnić do serwera usługi MAB v3 z wersji serwera usługi MAB v2. [Dowiedz się więcej](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **Przesuwanie serwera usługi MAB** | Przeniesienie serwera usługi MAB na nowy serwer podczas zachowywania magazynu jest obsługiwane, jeśli używasz MB.<br/><br/> Serwer musi mieć taką samą nazwę jak oryginalna. Nie można zmienić nazwy, jeśli chcesz zachować tę samą pulę magazynów i użyć tej samej bazy danych serwera usługi MAB do przechowywania punktów odzyskiwania danych.<br/><br/> Konieczna będzie kopia zapasowa bazy danych serwera usługi MAB, ponieważ należy ją przywrócić.
 
@@ -131,7 +134,7 @@ Brak łączności przez ponad 15 dni | Wygasłe lub anulowano obsługę administ
 
 Dane, których kopię zapasową utworzono w programie DPM/serwera usługi MAB, są przechowywane na dysku lokalnym.
 
-**Magazyn** | **Szczegóły**
+**Storage** | **Szczegóły**
 --- | ---
 **MB** | Nowoczesne magazyny kopii zapasowych (MB) jest obsługiwane przez program DPM 2016/serwera usługi MAB v2 i nowsze. Nie jest on dostępny dla serwera usługi MAB v1.
 **SERWERA usługi MAB magazynu na maszynie wirtualnej platformy Azure** | Dane są przechowywane na dyskach platformy Azure dołączonych do maszyny wirtualnej programu DPM/serwera usługi MAB, które są zarządzane w programie DPM/serwera usługi MAB. Liczba dysków, które mogą być używane dla puli magazynów programu DPM/serwera usługi MAB, jest ograniczona przez rozmiar maszyny wirtualnej.<br/><br/> Maszyna wirtualna a2:4 dyski; Maszyna wirtualna A3:8 dysków; Maszyna wirtualna A4:16 dysków o maksymalnym rozmiarze 1 TB dla każdego dysku. Ta wartość określa łączną pulę magazynów kopii zapasowych, która jest dostępna.<br/><br/> Ilość danych, dla których można utworzyć kopię zapasową, zależy od liczby i rozmiaru dołączonych dysków.

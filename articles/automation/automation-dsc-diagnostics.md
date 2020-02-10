@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bbc9048452c5361306dd05e712090543bb1066ce
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850350"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111538"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Przekazywanie danych Azure Automation konfiguracji stanu do dzienników Azure Monitor
 
@@ -74,9 +74,9 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 
 ## <a name="view-the-state-configuration-logs"></a>Wyświetlanie dzienników konfiguracji stanu
 
-Po skonfigurowaniu integracji z dziennikami Azure Monitor dla danych konfiguracji stanu usługi Automation w bloku **węzły DSC** na koncie usługi Automation zostanie wyświetlony przycisk **Wyszukiwanie w dzienniku** . Kliknij przycisk **Przeszukaj dziennik** , aby wyświetlić dzienniki danych węzła DSC.
+Po skonfigurowaniu integracji z dziennikami Azure Monitor dla danych konfiguracji stanu usługi Automation można je wyświetlić, wybierając pozycję **dzienniki** w sekcji **monitorowanie** w lewym okienku na stronie Konfiguracja stanu (DSC).  
 
-![Przycisk przeszukiwania dzienników](media/automation-dsc-diagnostics/log-search-button.png)
+![Dzienniki](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
 Zostanie otwarty blok **przeszukiwanie dzienników** , w którym zostanie wyświetlona operacja **DscNodeStatusData** dla każdego węzła konfiguracji stanu, a operacja **DscResourceStatusData** dla każdego [zasobu DSC](/powershell/scripting/dsc/resources/resources) wywołana w konfiguracji węzła zastosowana do tego węzła.
 
@@ -84,11 +84,14 @@ Operacja **DscResourceStatusData** zawiera informacje o błędach dla wszystkich
 
 Kliknij każdą operację na liście, aby wyświetlić dane dla tej operacji.
 
-Dzienniki można także wyświetlić, przeszukując Azure Monitor dzienniki.
-Zobacz [Znajdowanie danych przy użyciu wyszukiwania w dziennikach](../log-analytics/log-analytics-log-searches.md).
-Wpisz następujące zapytanie, aby znaleźć dzienniki konfiguracji stanu: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
+Dzienniki można także wyświetlić, przeszukując Azure Monitor dzienniki. Zobacz [Znajdowanie danych przy użyciu wyszukiwania w dziennikach](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview). Wpisz następujące zapytanie, aby znaleźć dzienniki konfiguracji stanu.
 
-Możesz również zawęzić zapytanie według nazwy operacji. Na przykład: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
+```
+AzureDiagnostics
+| where Category == 'DscNodeStatus' 
+| where OperationName contains 'DSCNodeStatusData'
+| where ResultType != 'Compliant'
+```
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Wyślij wiadomość e-mail, gdy sprawdzanie zgodności konfiguracji stanu nie powiedzie się
 
@@ -136,7 +139,7 @@ Diagnostyka z Azure Automation tworzy dwie kategorie rekordów w Azure Monitor d
 | DscReportStatus |Czy sprawdzanie zgodności zostało pomyślnie wykonane. |
 | ConfigurationMode | Jak konfiguracja jest stosowana do węzła. Możliwe wartości to __"ApplyOnly"__ , __"ApplyandMonitior"__ i __"ApplyandAutoCorrect"__ . <ul><li>__ApplyOnly__: Konfiguracja DSC stosuje konfigurację i nie wykonuje żadnych dalszych operacji, chyba że nowa konfiguracja jest wypychana do węzła docelowego lub gdy nowa konfiguracja zostanie pościągnięta z serwera. Po początkowej aplikacji nowej konfiguracji DSC nie sprawdza dryfu od wcześniej skonfigurowanego stanu. Konfiguracja DSC próbuje zastosować konfigurację do momentu, aż __ApplyOnly__ zacznie obowiązywać. </li><li> __ApplyAndMonitor__: jest to wartość domyślna. LCM stosuje wszelkie nowe konfiguracje. Po początkowej aplikacji nowej konfiguracji, jeśli węzeł docelowy zostanie przedryfem z żądanego stanu, DSC zgłosi niezgodność w dziennikach. Konfiguracja DSC próbuje zastosować konfigurację do momentu, aż __ApplyAndMonitor__ zacznie obowiązywać.</li><li>__ApplyAndAutoCorrect__: Konfiguracja DSC stosuje wszelkie nowe konfiguracje. Po początkowym zastosowaniu nowej konfiguracji, jeśli węzeł docelowy zostanie przedryfem z żądanego stanu, DSC zgłosi niezgodność w dziennikach, a następnie ponownie zastosuje bieżącą konfigurację.</li></ul> |
 | HostName_s | Nazwa zarządzanego węzła. |
-| IPAddress | Adres IPv4 węzła zarządzanego. |
+| adres IP | Adres IPv4 węzła zarządzanego. |
 | Kategoria | DscNodeStatus |
 | Zasób | Nazwa konta Azure Automation. |
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawcę dla obiektu wywołującego. |
@@ -153,7 +156,7 @@ Diagnostyka z Azure Automation tworzy dwie kategorie rekordów w Azure Monitor d
 | ResourceGroup | Nazwa grupy zasobów dla konta usługi Automation. |
 | ResourceProvider | Programu. AUTOMATYZACJI |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |GUID, który jest identyfikatorem korelacji raportu zgodności. |
+| CorrelationId |GUID, który jest IDENTYFIKATORem korelacji raportu zgodności. |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
@@ -184,7 +187,7 @@ Diagnostyka z Azure Automation tworzy dwie kategorie rekordów w Azure Monitor d
 | ResourceGroup | Nazwa grupy zasobów dla konta usługi Automation. |
 | ResourceProvider | Programu. AUTOMATYZACJI |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |GUID, który jest identyfikatorem korelacji raportu zgodności. |
+| CorrelationId |GUID, który jest IDENTYFIKATORem korelacji raportu zgodności. |
 
 ## <a name="summary"></a>Podsumowanie
 

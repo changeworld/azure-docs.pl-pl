@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044897"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111572"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania pakietem Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -21,7 +21,7 @@ ms.locfileid: "76044897"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Aktualizacja rozwiązania
-> To rozwiązanie zostało zastąpione przez rozwiązanie "ogólne dostępność" [pakietu Office 365](../../sentinel/connect-office-365.md) na [platformie Azure](../../sentinel/overview.md) — dane i [rozwiązanie do monitorowania i raportowania usługi Azure AD](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Razem z udoskonaloną konfiguracją zapewnią zaktualizowaną wersję poprzedniego rozwiązania Azure Monitor Office 365. Możesz nadal korzystać z istniejącego rozwiązania do 30 marca 2020.
+> To rozwiązanie zostało zastąpione przez rozwiązanie "ogólne dostępność" [pakietu Office 365](../../sentinel/connect-office-365.md) na [platformie Azure](../../sentinel/overview.md) — dane i [rozwiązanie do monitorowania i raportowania usługi Azure AD](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Razem z udoskonaloną konfiguracją zapewnią zaktualizowaną wersję poprzedniego rozwiązania Azure Monitor Office 365. Możesz nadal korzystać z istniejącego rozwiązania do 30 kwietnia 2020.
 > 
 > Azure — badanie informacji o zabezpieczeniach i rozwiązania do zarządzania zdarzeniami w chmurze, które pozyskają dzienniki i udostępniają dodatkowe funkcje SIEM, w tym wykrywania, badań, łowiectwa i uczenia maszynowego. Korzystanie z funkcji wskaźnikowej platformy Azure umożliwi teraz pozyskiwanie dzienników zarządzania aktywnością programu Office 365 i programu Exchange.
 > 
@@ -37,8 +37,8 @@ ms.locfileid: "76044897"
 >
 > ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-march-30th"></a>P: Czy możliwe jest dołączenie rozwiązania pakietu Office 365 Azure Monitor od teraz do 30 marca?
-> Nie, Azure Monitor skrypty dołączania rozwiązania pakietu Office 365 nie są już dostępne. Rozwiązanie zostanie usunięte 30 marca.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>P: Czy możliwe jest dołączenie rozwiązania Azure Monitor pakietu Office 365 od teraz do 30 kwietnia?
+> Nie, Azure Monitor skrypty dołączania rozwiązania pakietu Office 365 nie są już dostępne. Rozwiązanie zostanie usunięte 30 kwietnia.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>P: czy tabele i schematy zostaną zmienione?
 > Nazwa i schemat tabeli **pakietu Office** będą nadal takie same, jak w bieżącym rozwiązaniu. Można nadal używać tych samych zapytań w nowym rozwiązaniu, wykluczając zapytania, które odwołują się do danych usługi Azure AD.
@@ -95,7 +95,7 @@ ms.locfileid: "76044897"
 > Funkcja badania platformy Azure obejmuje wbudowane pulpity nawigacyjne oparte na zabezpieczeniach, niestandardowe zapytania dotyczące alertów, zapytania dotyczące łowiectwa, badanie i automatyczne możliwości odpowiedzi na podstawie dzienników pakietu Office 365 i usługi Azure AD. Więcej informacji można znaleźć w witrynie GitHub i samouczków platformy Azure, aby dowiedzieć się więcej:
 >
 > - [Wykrywaj zagrożenia wbudowane](../../sentinel/tutorial-detect-threats-built-in.md)
-> - [Tworzenie niestandardowych reguł analitycznych w celu wykrywania podejrzanych zagrożeń](../../sentinel/tutorial-detect-threats-custom.md)
+> - [Tworzenie niestandardowych reguł analitycznych do wykrywania podejrzanych zagrożeń](../../sentinel/tutorial-detect-threats-custom.md)
 > - [Monitoruj dane](../../sentinel/tutorial-monitor-your-data.md)
 > - [Zbadaj zdarzenia za pomocą platformy Azure — wskaźnik](../../sentinel/tutorial-investigate-cases.md)
 > - [Konfigurowanie zautomatyzowanych odpowiedzi na zagrożenia na platformie Azure — wskaźnik](../../sentinel/tutorial-respond-threats-playbook.md)
@@ -104,11 +104,11 @@ ms.locfileid: "76044897"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>P: czy wskaźnik "platformy Azure" udostępnia dodatkowe łączniki jako część rozwiązania?
 > Tak, zobacz [źródła danych w programie Azure wskaźnikowym Connect](../../sentinel/connect-data-sources.md).
 > 
-> ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>P: co się stanie w dniu 30 marca? Czy muszę odłączania wcześniej?
+> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>P: co się stanie w dniu 30 kwietnia? Czy muszę odłączania wcześniej?
 > 
 > - Nie będzie można odbierać danych z rozwiązania usługi **Office 365** . Rozwiązanie nie będzie już dostępne w witrynie Marketplace
 > - W przypadku klientów z wskaźnikiem na platformie Azure — rozwiązanie obszaru roboczego Log Analytics w usłudze **Office 365** zostanie uwzględnione w rozwiązaniu usługi Azure **SecurityInsights** .
-> - Jeśli rozwiązanie nie zostanie odłączania ręcznie, dane zostaną rozłączone automatycznie 30 marca.
+> - Jeśli Twoje rozwiązanie nie zostanie odłączania ręcznie, dane zostaną rozłączone automatycznie 30 kwietnia.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>P: czy dane zostaną przesłane do nowego rozwiązania?
 > Tak. Po usunięciu rozwiązania **pakietu Office 365** z obszaru roboczego jego dane staną się tymczasowo niedostępne, ponieważ schemat został usunięty. Po włączeniu nowego łącznika **pakietu Office 365** w kontrolce wskaźnikowej schemat zostanie przywrócony do obszaru roboczego, a wszystkie zebrane dane staną się dostępne. 
@@ -247,10 +247,10 @@ Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. 
 
 | Kolumna | Opis |
 |:--|:--|
-| Operations | Zawiera informacje o aktywnych użytkownikach ze wszystkich monitorowanych subskrypcji pakietu Office 365. Zobaczysz również liczbę działań, które wystąpiły w czasie.
-| Wymiana | Pokazuje podział działań programu Exchange Server, takich jak uprawnienie Dodawanie-Skrzynka pocztowa, lub ustawienie-Skrzynka pocztowa. |
-| SharePoint | Przedstawia najważniejsze działania wykonywane przez użytkowników w dokumentach programu SharePoint. Podczas przechodzenia do szczegółów z tego kafelka na stronie wyszukiwania są wyświetlane szczegółowe informacje o tych działaniach, takie jak dokument docelowy i lokalizacja tego działania. Na przykład dla zdarzenia, do którego jest uzyskiwany dostęp do pliku, będzie można wyświetlić dokument, do którego jest uzyskiwany dostęp, jego nazwę skojarzonego konta i adres IP. |
-| Usługa Active Directory systemu Azure | Obejmuje działania najważniejszych użytkowników, takie jak resetowanie hasła użytkownika i logowania. Po przejściu do szczegółów będzie można zobaczyć szczegóły tych działań, jak w przypadku stanu wyniku. Jest to szczególnie przydatne, jeśli chcesz monitorować podejrzane działania na Azure Active Directory. |
+| Operacje | Zawiera informacje o aktywnych użytkownikach ze wszystkich monitorowanych subskrypcji pakietu Office 365. Zobaczysz również liczbę działań, które wystąpiły w czasie.
+| Exchange | Pokazuje podział działań programu Exchange Server, takich jak uprawnienie Dodawanie-Skrzynka pocztowa, lub ustawienie-Skrzynka pocztowa. |
+| Sharepoint | Przedstawia najważniejsze działania wykonywane przez użytkowników w dokumentach programu SharePoint. Podczas przechodzenia do szczegółów z tego kafelka na stronie wyszukiwania są wyświetlane szczegółowe informacje o tych działaniach, takie jak dokument docelowy i lokalizacja tego działania. Na przykład dla zdarzenia, do którego jest uzyskiwany dostęp do pliku, będzie można wyświetlić dokument, do którego jest uzyskiwany dostęp, jego nazwę skojarzonego konta i adres IP. |
+| Azure Active Directory | Obejmuje działania najważniejszych użytkowników, takie jak resetowanie hasła użytkownika i logowania. Po przejściu do szczegółów będzie można zobaczyć szczegóły tych działań, jak w przypadku stanu wyniku. Jest to szczególnie przydatne, jeśli chcesz monitorować podejrzane działania na Azure Active Directory. |
 
 
 
@@ -266,15 +266,15 @@ Następujące właściwości są wspólne dla wszystkich rekordów pakietu Offic
 | Właściwość | Opis |
 |:--- |:--- |
 | Typ | *Pakiet Office* |
-| ClientIP | Adres IP urządzenia, które było używane podczas zarejestrowania działania. Adres IP jest wyświetlany w formacie IPv4 lub IPv6. |
-| OfficeWorkload | Usługa Office 365, do której odwołuje się rekord.<br><br>AzureActiveDirectory<br>Wymiana<br>SharePoint|
+| ClientIP | Adres IP urządzenia, który został użyty podczas rejestrowania działania. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
+| OfficeWorkload | Usługa Office 365, do której odwołuje się rekord.<br><br>AzureActiveDirectory<br>Exchange<br>Sharepoint|
 | Operacja | Nazwa działania użytkownika lub administratora.  |
-| OrganizationId | Identyfikator GUID dzierżawy pakietu Office 365 w organizacji. Ta wartość będzie zawsze taka sama dla organizacji, niezależnie od usługi Office 365, w której występuje. |
-| RecordType | Typ wykonywanej operacji. |
-| ResultStatus | Wskazuje, czy akcja (określona we właściwości Operation) zakończyła się powodzeniem. Możliwe wartości to sukces, PartiallySucceeded lub niepowodzenie. W przypadku działania administracyjnego programu Exchange wartością jest true lub false. |
+| Identyfikatorem organizationid | Identyfikator GUID dzierżawy pakietu Office 365 w organizacji. Ta wartość będzie zawsze taka sama dla organizacji, niezależnie od usługi Office 365, w której występuje. |
+| recordType | Typ wykonywanej operacji. |
+| ResultStatus | Wskazuje, czy akcja (określona we właściwości Operation) zakończyła się powodzeniem, czy nie. Możliwe wartości to sukces, PartiallySucceeded lub niepowodzenie. W przypadku działania administracyjnego programu Exchange wartością jest true lub false. |
 | UserId | Nazwa UPN użytkownika, który wykonał akcję, która spowodowała zarejestrowanie rekordu; na przykład my_name@my_domain_name. Należy pamiętać, że rekordy dla działania wykonywanego przez konta systemu (takie jak SHAREPOINT\system lub systemowe NTAUTHORITY\SYSTEM) również są uwzględnione. | 
 | UserKey | Alternatywny identyfikator użytkownika zidentyfikowany we właściwości UserId.  Na przykład ta właściwość jest wypełniana unikatowym IDENTYFIKATORem (PUID) usługi Passport dla zdarzeń wykonywanych przez użytkowników w usługach SharePoint, OneDrive dla firm i Exchange. Ta właściwość może również określać taką samą wartość jak Właściwość UserID dla zdarzeń występujących w innych usługach i zdarzeń wykonywanych przez konta systemowe|
-| UserType | Typ użytkownika, który wykonał operację.<br><br>Administrator<br>Aplikacja<br>DcAdmin<br>Regular<br>Zarezerwowane<br>ServicePrincipal<br>System |
+| UserType | Typ użytkownika, który wykonał operację.<br><br>Administrator<br>Aplikacja<br>DcAdmin<br>Ustalon<br>Zarezerwowany<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Baza Azure Active Directory
@@ -284,7 +284,7 @@ Następujące właściwości są wspólne dla wszystkich Azure Active Directory 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| recordType     | AzureActiveDirectory |
 | AzureActiveDirectory_EventType | Typ zdarzenia usługi Azure AD. |
 | Właściwości ExtendedProperties | Właściwości rozszerzone zdarzenia usługi Azure AD. |
 
@@ -303,14 +303,14 @@ Te rekordy są tworzone, gdy użytkownik Active Directory próbuje się zalogowa
 | `UserDomain` | Informacje o tożsamości dzierżawy (TII). | 
 
 
-### <a name="azure-active-directory"></a>Usługa Active Directory systemu Azure
+### <a name="azure-active-directory"></a>Azure Active Directory
 
 Te rekordy są tworzone w przypadku wprowadzenia zmian lub uzupełnień do Azure Active Directory obiektów.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| recordType     | AzureActiveDirectory |
 | AADTarget | Użytkownik wykonał akcję (identyfikowaną przez właściwość operacji). |
 | Zewnętrzny | Nazwa główna użytkownika lub usługi, która wykonał akcję. |
 | ActorContextId | Identyfikator GUID organizacji, do której należy aktor. |
@@ -343,8 +343,8 @@ Te rekordy są tworzone po wprowadzeniu zmian w konfiguracji programu Exchange.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Wymiana |
-| RecordType     | ExchangeAdmin |
+| OfficeWorkload | Exchange |
+| recordType     | ExchangeAdmin |
 | ExternalAccess |  Określa, czy polecenie cmdlet zostało uruchomione przez użytkownika w organizacji, przez personel centrum danych firmy Microsoft lub konto usługi centrum danych, czy przez administratora delegowanego. Wartość false wskazuje, że polecenie cmdlet zostało uruchomione przez kogoś w organizacji. Wartość true wskazuje, że polecenie cmdlet zostało uruchomione przez personel centrum danych, konto usługi centrum danych lub administratora delegowanego. |
 | ModifiedObjectResolvedName |  Jest to przyjazna dla użytkownika nazwa obiektu, który został zmodyfikowany przez polecenie cmdlet. Jest to rejestrowane tylko wtedy, gdy polecenie cmdlet modyfikuje obiekt. |
 | OrganizationName | Nazwa dzierżawy. |
@@ -358,10 +358,10 @@ Te rekordy są tworzone po wprowadzeniu zmian lub uzupełnień do skrzynek poczt
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Wymiana |
-| RecordType     | ExchangeItem |
+| OfficeWorkload | Exchange |
+| recordType     | ExchangeItem |
 | ClientInfoString | Informacje dotyczące klienta poczty e-mail użytego do wykonania tej operacji, takie jak wersja przeglądarki, wersja programu Outlook i informacje o urządzeniu przenośnym. |
-| Client_IPAddress | Adres IP urządzenia, który został użyty podczas rejestrowania operacji. Adres IP jest wyświetlany w formacie IPv4 lub IPv6. |
+| Client_IPAddress | Adres IP urządzenia, który został użyty podczas rejestrowania operacji. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
 | ClientMachineName | Nazwa komputera, który hostuje klienta programu Outlook. |
 | ClientProcessName | Klient poczty e-mail, który był używany do uzyskiwania dostępu do skrzynki pocztowej. |
 | ClientVersion | Wersja klienta poczty e-mail. |
@@ -381,8 +381,8 @@ Te rekordy są tworzone podczas tworzenia wpisu inspekcji skrzynki pocztowej.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Wymiana |
-| RecordType     | ExchangeItem |
+| OfficeWorkload | Exchange |
+| recordType     | ExchangeItem |
 | Element | Reprezentuje element, na którym wykonano operację | 
 | SendAsUserMailboxGuid | Identyfikator GUID programu Exchange skrzynki pocztowej, do której uzyskano dostęp do wysyłania wiadomości e-mail. |
 | SendAsUserSmtp | Adres SMTP użytkownika, który jest personifikowany. |
@@ -396,7 +396,7 @@ Te rekordy są tworzone po wprowadzeniu zmian lub uzupełnień do grup programu 
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Wymiana |
+| OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
 | AffectedItems | Informacje o każdym elemencie w grupie. |
 | CrossMailboxOperations | Wskazuje, czy operacja dotyczyła więcej niż jednej skrzynki pocztowej. |
@@ -415,8 +415,8 @@ Te właściwości są wspólne dla wszystkich rekordów programu SharePoint.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | SharePoint |
-| OfficeWorkload | SharePoint |
+| OfficeWorkload | Sharepoint |
+| OfficeWorkload | Sharepoint |
 | EventSource | Wskazuje, że zdarzenie wystąpiło w programie SharePoint. Możliwe wartości to SharePoint lub ObjectModel. |
 | ItemType | Typ obiektu, do którego uzyskano dostęp lub zmodyfikowany. Zobacz tabelę ItemType, aby uzyskać szczegółowe informacje na temat typów obiektów. |
 | MachineDomainInfo | Informacje o operacjach synchronizacji urządzeń. Te informacje są raportowane tylko wtedy, gdy znajdują się w żądaniu. |
@@ -432,8 +432,8 @@ Te rekordy są tworzone po wprowadzeniu zmian w konfiguracji programu SharePoint
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | SharePoint |
-| OfficeWorkload | SharePoint |
+| OfficeWorkload | Sharepoint |
+| OfficeWorkload | Sharepoint |
 | CustomEvent | Opcjonalny ciąg dla zdarzeń niestandardowych. |
 | Event_Data |  Opcjonalny ładunek dla zdarzeń niestandardowych. |
 | ModifiedProperties | Właściwość jest uwzględniana dla zdarzeń administracyjnych, takich jak dodanie użytkownika jako członka lokacji lub grupy administratorów kolekcji witryn. Właściwość zawiera nazwę zmodyfikowanej właściwości (na przykład grupy administratorów lokacji), nową wartość zmodyfikowanej właściwości (takiego użytkownika, który został dodany jako administrator lokacji) i poprzednią wartość zmodyfikowanego obiektu. |
@@ -445,7 +445,7 @@ Te rekordy są tworzone w odpowiedzi na operacje na plikach w programie SharePoi
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | SharePoint |
+| OfficeWorkload | Sharepoint |
 | OfficeWorkload | SharePointFileOperation |
 | DestinationFileExtension | Rozszerzenie pliku, który jest kopiowany lub przenoszony. Ta właściwość jest wyświetlana tylko dla zdarzeń FileCopied i FileMoved. |
 | DestinationFileName | Nazwa pliku, który jest kopiowany lub przenoszony. Ta właściwość jest wyświetlana tylko dla zdarzeń FileCopied i FileMoved. |

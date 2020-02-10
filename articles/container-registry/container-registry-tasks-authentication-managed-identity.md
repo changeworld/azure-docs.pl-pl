@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: b2f5a9bacf96eb098e307a6a8df3e13cb9d04bd0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513420"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111771"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Korzystanie z tożsamości zarządzanej przez platformę Azure w zadaniach ACR 
 
@@ -91,12 +91,12 @@ W zależności od wymagań zadania Przyznaj tożsamości uprawnienia dostępu do
 
 Użyj [interfejsu wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md) lub innych narzędzi platformy Azure, aby zarządzać dostępem opartym na rolach do zasobów. Na przykład uruchom polecenie [AZ role Assign Create][az-role-assignment-create] , aby przypisać tożsamość roli do zasobu. 
 
-Poniższy przykład przypisuje zarządzanej tożsamości uprawnienia do ściągania z rejestru kontenerów. Polecenie określa identyfikator jednostki *usługi* tożsamości i *Identyfikator zasobu* docelowego rejestru.
+Poniższy przykład przypisuje zarządzanej tożsamości uprawnienia do ściągania z rejestru kontenerów. Polecenie określa *Identyfikator podmiotu zabezpieczeń* tożsamości zadania i *Identyfikator zasobu* docelowego rejestru.
 
 
 ```azurecli
 az role assignment create \
-  --assignee <servicePrincipalID> \
+  --assignee <principalID> \
   --scope <registryID> \
   --role acrpull
 ```
@@ -115,7 +115,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Aby dodać poświadczenia dla tożsamości przypisanej do użytkownika w celu uwierzytelnienia przy użyciu rejestru *targetregistry*, Przekaż `use-identity` z wartością *identyfikatora klienta* tożsamości. Przykład:
+Aby dodać poświadczenia dla tożsamości przypisanej do użytkownika w celu uwierzytelnienia przy użyciu rejestru *targetregistry*, Przekaż `use-identity` z wartością *identyfikatora klienta* tożsamości. Na przykład:
 
 ```azurecli
 az acr task credential add \

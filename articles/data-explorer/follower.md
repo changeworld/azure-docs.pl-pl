@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: eb0b5ea960aa7bc9158791d1fc9fa0986e7d99e6
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 20b667ae345e468bcd3db25d85b7c9de561af4bc
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281346"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111482"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Używanie bazy danych programu do uzupełniania w celu dołączania baz danych na platformie Azure Eksplorator danych
 
@@ -61,7 +61,7 @@ var followerResourceGroupName = "followerResouceGroup";
 var leaderResourceGroup = "leaderResouceGroup";
 var leaderClusterName = "leader";
 var followerClusterName = "follower";
-var attachedDatabaseConfigurationName = "adc";
+var attachedDatabaseConfigurationName = "uniqueNameForAttachedDatabaseConfiguration";
 var databaseName = "db"; // Can be specific database name or * for all databases
 var defaultPrincipalsModificationKind = "Union"; 
 var location = "North Central US";
@@ -113,7 +113,7 @@ follower_resource_group_name = "followerResouceGroup"
 leader_resouce_group_name = "leaderResouceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
-attached_database_Configuration_name = "adc"
+attached_database_Configuration_name = "uniqueNameForAttachedDatabaseConfiguration"
 database_name  = "db" # Can be specific database name or * for all databases
 default_principals_modification_kind  = "Union"
 location = "North Central US"
@@ -180,7 +180,7 @@ W tej sekcji dowiesz się, jak dołączyć bazę danych do istniejącej klastra 
     "variables": {},
     "resources": [
         {
-            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
+            "name": "[parameters('attachedDatabaseConfigurationsName')]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
             "location": "[parameters('location')]",
@@ -206,8 +206,8 @@ Szablon Azure Resource Manager można wdrożyć za [pomocą Azure Portal](https:
 
 |**Ustawienie**  |**Opis**  |
 |---------|---------|
-|Nazwa klastra z flagami     |  Nazwa klastra programu z instrukcjami.  |
-|Nazwa dołączonych konfiguracji bazy danych    |    Nazwa dołączonego obiektu konfiguracji bazy danych. Nazwa musi być unikatowa na poziomie klastra.     |
+|Nazwa klastra z flagami     |  Nazwa klastra programu z instrukcjami. Jest to klaster, na którym zostanie wdrożony ten szablon.  |
+|Nazwa dołączonych konfiguracji bazy danych    |    Nazwa dołączonego obiektu konfiguracji bazy danych. Nazwa może być dowolnym ciągiem, o ile jest unikatowa na poziomie klastra.     |
 |Nazwa bazy danych     |      Nazwa bazy danych, która ma zostać zastosowana. Jeśli chcesz postępować zgodnie z bazami danych lidera, użyj znaku "*".   |
 |Identyfikator zasobu klastra lidera    |   Identyfikator zasobu dla klastra lidera.      |
 |Rodzaj modyfikacji domyślnych podmiotów zabezpieczeń    |   Domyślny rodzaj modyfikacji głównej. Może być `Union`, `Replace` lub `None`. Aby uzyskać więcej informacji na temat domyślnego rodzaju modyfikacji podmiotu zabezpieczeń, zobacz [Podstawowe polecenie kontroli rodzaju modyfikacji](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
@@ -250,7 +250,7 @@ var resourceManagementClient = new KustoManagementClient(serviceCreds){
 var followerResourceGroupName = "testrg";
 //The cluster and database that are created as part of the prerequisites
 var followerClusterName = "follower";
-var attachedDatabaseConfigurationsName = "adc";
+var attachedDatabaseConfigurationsName = "uniqueName";
 
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
@@ -278,7 +278,7 @@ var followerClusterName = "follower";
 //The cluster and database that are created as part of the Prerequisites
 var followerDatabaseDefinition = new FollowerDatabaseDefinition()
     {
-        AttachedDatabaseConfigurationName = "adc",
+        AttachedDatabaseConfigurationName = "uniqueName",
         ClusterResourceId = $"/subscriptions/{followerSubscriptionId}/resourceGroups/{followerResourceGroupName}/providers/Microsoft.Kusto/Clusters/{followerClusterName}"
     };
 
@@ -312,7 +312,7 @@ kusto_management_client = KustoManagementClient(credentials, follower_subscripti
 
 follower_resource_group_name = "followerResouceGroup"
 follower_cluster_name = "follower"
-attached_database_configurationName = "adc"
+attached_database_configurationName = "uniqueName"
 
 #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
@@ -348,7 +348,7 @@ follower_resource_group_name = "followerResourceGroup"
 leader_resource_group_name = "leaderResourceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
-attached_database_configuration_name = "adc"
+attached_database_configuration_name = "uniqueName"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceGroups/" + follower_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + follower_cluster_name
 
@@ -366,8 +366,8 @@ Podczas dołączania bazy danych określ **"domyślny rodzaj modyfikacji**". Dom
 |**Natur** |**Opis**  |
 |---------|---------|
 |**Unii**     |   Dołączone podmioty zabezpieczeń bazy danych zawsze będą zawierać pierwotne podmioty zabezpieczeń bazy danych oraz dodatkowe nowe podmioty zabezpieczeń dodane do bazy danych programu do wykonania.      |
-|**Zastąp**   |    Brak dziedziczenia podmiotów zabezpieczeń z oryginalnej bazy danych. Dla dołączonej bazy danych należy utworzyć nowe podmioty zabezpieczeń.     |
-|**Brak**   |   Dołączone podmioty zabezpieczeń bazy danych zawierają tylko główne bazy danych bez dodatkowych podmiotów zabezpieczeń.      |
+|**Stępować**   |    Brak dziedziczenia podmiotów zabezpieczeń z oryginalnej bazy danych. Dla dołączonej bazy danych należy utworzyć nowe podmioty zabezpieczeń.     |
+|**Dawaj**   |   Dołączone podmioty zabezpieczeń bazy danych zawierają tylko główne bazy danych bez dodatkowych podmiotów zabezpieczeń.      |
 
 Aby uzyskać więcej informacji na temat używania poleceń sterowania do konfigurowania autoryzowanych podmiotów zabezpieczeń, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower).
 
