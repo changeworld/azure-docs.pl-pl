@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: Dokumentacja aprowizacji aplikacji i usług kadr
+summary: Aprowizacja aplikacji usługi Azure Active Directory umożliwia automatyczne tworzenie tożsamości użytkowników i zarządzanie nimi w aplikacjach w chmurze (SaaS). Usługa Azure AD oferuje również aprowizację w aplikacjach działu kadr w chmurze. Z naszych przewodników Szybki start, samouczków i wskazówek dowiesz się, jak wdrażać aprowizację w usługach kadr i aplikacjach w chmurze oraz zarządzać nią.
+metadata:
+  title: Dokumentacja aprowizacji aplikacji
+  description: Aprowizacja aplikacji usługi Azure Active Directory umożliwia automatyczne tworzenie tożsamości użytkowników i zarządzanie nimi w aplikacjach w chmurze (SaaS). Usługa Azure AD oferuje również aprowizację w aplikacjach działu kadr w chmurze. Z naszych przewodników Szybki start, samouczków i wskazówek dowiesz się, jak wdrażać aprowizację w usługach kadr i aplikacjach w chmurze oraz zarządzać nią.
+  ms.service: active-directory
+  ms.subservice: app-mgmt
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 02/06/2020
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: 02d9ee235de798e0c6095e0cbf60c08eabec53cd
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77065505"
+landingContent:
+- title: Aprowizowanie użytkowników i grup w aplikacji w chmurze
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest aprowizowanie aplikacji?
+      url: user-provisioning.md
+    - text: Jak działa aprowizacja
+      url: how-provisioning-works.md
+  - linkListType: tutorial
+    links:
+    - text: Aprowizacja w usłudze SAP Cloud Platform Identity Authentication
+      url: /azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Aprowizacja w programie Oracle Fusion ERP
+      url: /azure/active-directory/saas-apps/oracle-fusion-erp-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Aprowizacja w usłudze Atlassian Cloud
+      url: /azure/active-directory/saas-apps/atlassian-cloud-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+  - linkListType: how-to-guide
+    links:
+    - text: Dodajesz aplikację z galerii? Konfigurowanie aprowizacji w aplikacji
+      url: configure-automatic-user-provisioning-portal.md
+    - text: Dostosowywanie mapowań atrybutów
+      url: customize-application-attributes.md
+    - text: Korzystanie z filtrów określania zakresu
+      url: define-conditional-rules-for-provisioning-user-accounts.md
+- title: Tworzenie aplikacji korzystającej ze standardu SCIM na potrzeby aprowizacji
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Aprowizacja przy użyciu standardu SCIM (Identity Standards Blog)
+      url: https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzysz aplikację? Automatyczna aprowizacja przy użyciu standardu SCIM
+      url: use-scim-to-provision-users-and-groups.md
+- title: Zarządzanie aprowizacją przychodzącą w usłudze Cloud HR
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Planowanie wdrożenia aprowizacji użytkowników w usłudze Cloud HR
+      url: plan-cloud-hr-provision.md
+  - linkListType: tutorial
+    links:
+    - text: Aprowizacja w produkcie Workday
+      url: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Aprowizacja w produkcie SAP SuccessFactors
+      url: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context

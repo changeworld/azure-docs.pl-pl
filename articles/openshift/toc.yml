@@ -47,6 +47,8 @@
             - name: Wyłączanie usługi Azure Monitor dla kontenerów
               href: ../azure-monitor/insights/container-insights-optout-openshift.md
               maintainContext: true
+    - name: Uruchamianie uprzywilejowanych kontenerów w klastrze usługi Azure Red Hat OpenShift
+      href: howto-run-privileged-containers.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia usługi Azure Red Hat OpenShift

@@ -1,0 +1,107 @@
+- name: Dokumentacja aprowizacji aplikacji i usług kadr
+  href: index.yml
+- name: Omówienie
+  expanded: true
+  items:
+    - name: Co to jest aprowizowanie aplikacji?
+      href: user-provisioning.md
+- name: Samouczki
+  items:
+    - name: G Suite
+      href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: ServiceNow
+      href: /azure/active-directory/saas-apps/servicenow-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Amazon Web Services (AWS) — aprowizowanie roli
+      href: '/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context'
+    - name: Workday
+      href: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: SAP SuccessFactors
+      href: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Wszystkie zintegrowane aplikacje z galerii
+      href: /azure/active-directory/saas-apps
+- name: Pojęcia
+  expanded: true
+  items:
+    - name: Jak działa aprowizacja aplikacji
+      href: how-provisioning-works.md
+    - name: Planowanie wdrożenia aprowizacji aplikacji
+      href: plan-auto-user-provisioning.md
+    - name: Planowanie wdrożenia aprowizacji w usłudze Cloud HR
+      href: plan-cloud-hr-provision.md
+- name: Przewodniki z instrukcjami
+  expanded: true
+  items:
+    - name: Konfigurowanie aprowizacji dla aplikacji z galerii
+      href: configure-automatic-user-provisioning-portal.md
+    - name: Edytowanie mapowań atrybutów
+      items:
+        - name: Dostosowywanie mapowań atrybutów
+          href: customize-application-attributes.md
+        - name: Pisanie wyrażeń do mapowania atrybutów
+          href: functions-for-customizing-application-data.md
+    - name: Dołączanie użytkowników i grup do zakresu lub ich wykluczanie
+      items:
+        - name: Określanie zakresu użytkowników lub grup do aprowizacji
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: Pomijanie usuwania dla użytkowników spoza zakresu
+          href: skip-out-of-scope-deletions.md
+    - name: Monitorowanie aprowizacji i raportowanie
+      items:
+        - name: Monitorowanie stanu i wydajności aprowizacji
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Raport dotyczący aprowizacji aplikacji
+          href: check-status-user-account-provisioning.md
+        - name: Eksportowanie i importowanie konfiguracji
+          href: export-import-provisioning-configuration.md
+    - name: Rozwiązywanie problemów z aprowizacją aplikacji
+      items:
+        - name: Rozwiązywanie problemów z aprowizowaniem aplikacji
+          href: application-provisioning-config-problem.md
+        - name: Stan kwarantanny
+          href: application-provisioning-quarantine-status.md
+        - name: Problem z autoryzacją (nie można zapisać poświadczeń administratora)
+          href: application-provisioning-config-problem-storage-limit.md
+        - name: Użytkownicy nie są aprowizowani
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: Aprowizowani są nieprawidłowi użytkownicy
+          href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: Brak atrybutu źródłowego
+          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: Zadanie aprowizacji działa wolno
+          href: application-provisioning-when-will-provisioning-finish.md
+        - name: Dzienniki aprowizowania
+          href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Tworzenie punktu końcowego SCIM i konfigurowanie aprowizacji
+      href: use-scim-to-provision-users-and-groups.md
+    - name: Automatyzowanie konfiguracji przy użyciu programu MS Graph
+      href: application-provisioning-configure-api.md
+- name: Dokumentacja
+  items:
+    - name: Wybór metody aprowizacji
+      href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: Aprowizacja w usłudze Cloud HR
+      items:
+        - name: Dokumentacja atrybutów rozwiązania SuccessFactors
+          href: sap-successfactors-attribute-reference.md
+        - name: Dokumentacja atrybutów rozwiązania Workday
+          href: workday-attribute-reference.md
+    - name: Agent aprowizacji programu Azure AD Connect
+      items:
+        - name: Historia wersji agenta aprowizacji
+          href: provisioning-agent-release-version-history.md
+- name: Zasoby
+  items:
+    - name: Pomoc techniczna i opcje pomocy dla deweloperów
+      href: /azure/active-directory/develop/developer-support-help-options
+    - name: Forum z opiniami na temat platformy Azure
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Forum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Cennik
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: Aktualizacje usług
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Filmy wideo
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

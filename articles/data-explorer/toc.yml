@@ -98,7 +98,7 @@
           href: ingest-data-kafka.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: Sformatowane dane json
+        - name: Dane w formacie JSON
           href: ingest-json-formats.md
     - name: Zapytania o dane
       items:

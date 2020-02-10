@@ -25,6 +25,9 @@
         - name: Tworzenie zautomatyzowanego eksperymentu uczenia maszynowego
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+        - name: Prognozowanie popytu przy użyciu zautomatyzowanego uczenia maszynowego (dane dotyczące wypożyczania rowerów)
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-automated-ml-forecast.md
     - name: Zestaw SDK dla języka Python
       items:
         - name: Tworzenie pierwszego eksperymentu uczenia maszynowego

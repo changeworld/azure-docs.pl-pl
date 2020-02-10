@@ -72,6 +72,8 @@
               href: howto-saml-token-encryption.md
             - name: Portale użytkowników końcowych
               href: end-user-experiences.md
+    - name: Aplikacja w chmurze — widoczność i kontrola
+      href: cloud-app-security.md
     - name: Serwer proxy aplikacji dla aplikacji lokalnych
       items:
         - name: Serwer proxy aplikacji
