@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: caa249dda4215dfcef13df96d2dd4245cae49efd
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 5d84b1b951cd1a48a385083f5ce2e2aaf1cba8d7
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595756"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110648"
 ---
-# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Samouczek: Testowanie łączności z centrum IoT za pomocą urządzenia symulowanego
+# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Samouczek: testowanie łączności z centrum IoT za pomocą urządzenia symulowanego
 
 W tym samouczku użyjesz narzędzi portalu usługi Azure IoT Hub i poleceń interfejsu wiersza polecenia platformy Azure, aby przetestować łączność urządzeń. W tym samouczku został użyty również prosty symulator urządzenia działający na komputerze stacjonarnym.
 
@@ -39,7 +39,7 @@ Skrypty interfejsu wiersza polecenia uruchamiane w tym samouczku wymagają [rozs
 az extension add --name azure-cli-iot-ext
 ```
 
-Uruchamiana w tym samouczku aplikacja symulatora urządzenia została napisana przy użyciu środowiska Node.js. Należy Node.js v10.x.x lub później na komputerze deweloperskim.
+Uruchamiana w tym samouczku aplikacja symulatora urządzenia została napisana przy użyciu środowiska Node.js. Potrzebujesz środowiska Node. js v10. x. x lub nowszego na komputerze deweloperskim.
 
 Możesz pobrać środowisko Node.js dla wielu platform ze strony [nodejs.org](https://nodejs.org).
 
@@ -50,6 +50,8 @@ node --version
 ```
 
 Pobierz przykładowy projekt symulatora urządzenia Node.js ze strony https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip i wyodrębnij archiwum ZIP.
+
+Upewnij się, że port 8883 jest otwarty w zaporze. Przykład urządzenia w tym samouczku używa protokołu MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
@@ -154,7 +156,7 @@ Urządzenie zostało pomyślnie uwierzytelnione przy użyciu tokenu SAS wygenero
 
 Urządzenie może korzystać z dowolnego z następujących protokołów w celu nawiązania połączenia z centrum IoT:
 
-| Protocol | Port wychodzący |
+| Protokół | Port wychodzący |
 | --- | --- |
 | MQTT |8883 |
 | MQTT za pośrednictwem obiektów WebSocket |443 |
@@ -176,7 +178,7 @@ Najpierw należy pobrać aktualne parametry połączenia urządzenia symulowaneg
 az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
-Aby uruchomić symulowane urządzenie, która wysyła komunikaty, przejdź do **iot hub\Tutorials\ConnectivityTests** folderu w kodzie, który został pobrany.
+Aby uruchomić symulowane urządzenie, które wysyła komunikaty, przejdź do folderu **IoT-hub\Tutorials\ConnectivityTests** w pobranym kodzie.
 
 W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i uruchomić aplikację urządzenia symulowanego:
 
@@ -257,7 +259,7 @@ Oprócz otrzymywania na bieżąco żądanych zmian właściwości urządzenie sy
 
 Jeśli nie potrzebujesz już tego centrum IoT, usuń je oraz grupę zasobów z poziomu portalu. Aby to zrobić, wybierz grupę zasobów **tutorials-iot-hub-rg** zawierającą centrum IoT Hub, a następnie kliknij przycisk **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób sprawdzania kluczy urządzenia, sprawdzania łączności urządzenia z chmurą i chmury z urządzeniem oraz sprawdzania synchronizacji bliźniaczej reprezentacji urządzenia. Aby dowiedzieć się więcej na temat monitorowania centrum IoT, zapoznaj się z artykułem z instrukcjami dotyczącymi monitorowania usługi IoT Hub.
 

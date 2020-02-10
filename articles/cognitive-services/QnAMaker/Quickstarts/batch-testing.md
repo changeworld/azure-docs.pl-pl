@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/19/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 9483db2187c05fe8e0f4fa2d41c17b8748ba3db7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474039"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108995"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Szybki Start: testowa baza wiedzy z pytaniami wsadowymi i oczekiwanymi odpowiedziami
 
@@ -24,7 +24,7 @@ Użyj narzędzia do testowania wsadowego QnA Maker do testowania baz wiedzy w za
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Utwórz usługę QNA Maker](create-publish-knowledge-base.md#create-a-new-qna-maker-knowledge-base) lub Użyj istniejącej usługi, która używa języka angielskiego dla przykładowego dokumentu użytego w tym przewodniku Szybki Start.
+* [Utwórz usługę QNA Maker](create-publish-knowledge-base.md) lub Użyj istniejącej usługi, która używa języka angielskiego.
 * Pobieranie [przykładowego pliku `.docx`owego](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
 * Pobierz [Narzędzie do testowania wsadowego](https://aka.ms/qnamakerbatchtestingtool), Wyodrębnij plik wykonywalny z pliku `.zip`.
 
@@ -41,9 +41,16 @@ Użyj narzędzia do testowania wsadowego QnA Maker do testowania baz wiedzy w za
     * Nazwa usługi Azure QnA
     * Język — język angielski
 1. Wprowadź nazwę `Multi-turn batch test quickstart` jako nazwę bazy wiedzy.
-1. W **kroku 4**zaznacz opcję **Włącz wyodrębnianie z obsługą wieloskładnikową z adresów URL, plików PDF lub DOCX**.
-1. Wprowadź **domyślny tekst odpowiedzi** `Quickstart - can't find answer`. W środowisku produkcyjnym bazy wiedzy te informacje powinny być dokładniejsze dla użytkownika, ale w tym przewodniku szybki start działa prosta odpowiedź.
-1. Nadal w **kroku 4**wybierz pozycję **+ Dodaj plik** , a następnie wybierz pozycję pobrana `.docx` pliku w sekcji wymagania wstępne.
+
+1. W **kroku 4**Skonfiguruj ustawienia w następującej tabeli:
+
+    |Ustawienie|Wartość|
+    |--|--|
+    |**Włącz wyodrębnianie wieloskładnikowe z adresów URL, plików PDF lub DOCX.**|Zaznaczone|
+    |**Domyślny tekst odpowiedzi**| `Batch test - default answer not found.`|
+    |**+ Dodaj plik**|Wybierz listę pobranych plików `.docx` w sekcji wymagania wstępne.|
+    |**Chit — rozmowa**|Wybierz **profesjonalne**|
+
 1. W **kroku 5**wybierz pozycję **Utwórz swoją KB**.
 
     Po zakończeniu procesu tworzenia w portalu zostanie wyświetlona edytowalna baza wiedzy.
@@ -67,9 +74,9 @@ Aby użyć narzędzia Test Batch, Utwórz plik o nazwie `batch-test-data-1.tsv` 
 |--|--|--|
 |Identyfikator bazy wiedzy|Identyfikator bazy wiedzy został znaleziony na stronie publikowanie. Przetestuj kilka baz wiedzy w jednej usłudze jednocześnie w pojedynczym pliku przy użyciu różnych identyfikatorów bazy wiedzy w pojedynczym pliku.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (ciąg znaków 36 wyświetlany jako część `POST`) |
 |Pytanie|Tekst pytania, który użytkownik wprowadzi. maksymalnie 1 000 znaków.|`How do I sign out?`|
-|Tagi metadanych|opcjonalnie|`topic:power` używa formatu _wartości klucz: wartość_|
-|Górny parametr|opcjonalnie|`25`|
-|Oczekiwany identyfikator odpowiedzi|opcjonalnie|`13`|
+|Tagi metadanych|obowiązkowe|`topic:power` używa formatu _wartości klucz: wartość_|
+|Górny parametr|obowiązkowe|`25`|
+|Oczekiwany identyfikator odpowiedzi|obowiązkowe|`13`|
 
 W przypadku tego bazy wiedzy Dodaj 3 wiersze tylko dwóch wymaganych kolumn do pliku. Pierwszą kolumną jest identyfikator bazy wiedzy, a druga kolumna powinna być następującą listą pytań:
 
@@ -137,7 +144,7 @@ Skorzystaj z poniższej tabeli, aby zrozumieć, jak znaleźć wartości pól dla
 
 1. W portalu QnA na stronie **Edycja** dodaj metadane `topic:power` na następujące pytania:
 
-    |Pytania|
+    |Masz|
     |--|
     |Naliczanie opłat za pakiet Pro 4|
     |Sprawdź poziom baterii|
@@ -160,7 +167,7 @@ Istnieją dwa główne scenariusze testowania wsadowego:
 * **Przetwarzaj pliki dziennika rozmów** — Określ największą odpowiedź dla wcześniej niewidzianych pytań — najbardziej typową sytuacją jest, aby przetworzyć plik dziennika zapytań, taki jak pytania użytkownika z rozmowy bot. Utwórz test pliku wsadowego z tylko wymaganymi kolumnami. Test zwraca największą odpowiedź dla każdego pytania. Nie oznacza to, że jest to prawidłowa odpowiedź. Po zakończeniu tego testu przejdź do testu weryfikacyjnego.
 * **Test weryfikacji** — Sprawdź poprawność oczekiwanej odpowiedzi. Ten test wymaga sprawdzenia poprawności wszystkich pytań i pasujących oczekiwanych odpowiedzi w teście wsadowym. Może to wymagać ręcznego procesu.
 
-W poniższej procedurze przyjęto założenie, że scenariusz polega na przetwarzaniu dzienników rozmowy przy użyciu 
+W poniższej procedurze przyjęto założenie, że scenariusz polega na przetwarzaniu dzienników rozmowy przy użyciu
 
 1. Utwórz nowy plik testu wsadowego w celu uwzględnienia opcjonalnych danych `batch-test-data-2.tsv`. Dodaj 6 wierszy z oryginalnego pliku wejściowego testu wsadowego, a następnie Dodaj metadane, Top i identyfikator zestawu QnA dla każdego wiersza.
 

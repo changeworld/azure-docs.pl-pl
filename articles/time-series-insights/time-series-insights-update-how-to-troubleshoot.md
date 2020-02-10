@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a306707f0ed47fba8fd854d820554bc1bd80e8bc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861578"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110303"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Diagnozowanie i rozwiązywanie problemów dotyczących środowiska w wersji zapoznawczej
 
@@ -78,7 +78,7 @@ Dane mogą być wysyłane bez identyfikatora szeregów czasowych.
 Upewnij się, że z nazwą i wartością są zgodne z następującymi zasadami:
 
 * W nazwie właściwości sygnatury czasowej jest uwzględniana wielkość liter.
-* Wartość właściwości timestamp, która pochodzi ze źródła zdarzenia jako ciąg JSON, ma format `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Na przykład taki ciąg `“2008-04-12T12:53Z”`.
+* Wartość właściwości timestamp, która pochodzi ze źródła zdarzenia jako ciąg JSON, ma format `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Przykładem takiego ciągu jest `“2008-04-12T12:53Z”`.
 
 Najprostszym sposobem, aby upewnić się, że nazwa właściwości sygnatury czasowej została przechwycona i działa prawidłowo, to użycie Eksploratora Time Series Insights w wersji zapoznawczej. W Eksploratorze Time Series Insights w wersji zapoznawczej Użyj wykresu, aby wybrać okres czasu po podaniu nazwy właściwości sygnatury czasowej. Kliknij prawym przyciskiem myszy zaznaczenie i wybierz opcję **Eksploruj zdarzenia** . Pierwszy nagłówek kolumny jest nazwą właściwości znacznika czasu. Powinien on mieć `($ts)` obok słowa `Timestamp`, a nie:
 

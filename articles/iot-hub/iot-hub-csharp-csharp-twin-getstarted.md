@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: c07b110f0d4c31713ab432b5b5e337f3b69dfc55
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 426430c075cfcb084cfe3238ebd83a19e909369b
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147717"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110772"
 ---
 # <a name="get-started-with-device-twins-net"></a>Wprowadzenie do bliźniaczych reprezentacji urządzeń (.NET)
 
@@ -37,6 +37,8 @@ W tym samouczku utworzysz następujące aplikacje konsolowe platformy .NET:
 * Program Visual Studio.
 
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
+
+* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
@@ -76,7 +78,7 @@ W tej sekcji utworzysz aplikację konsolową .NET przy użyciu C#programu, któr
     using Microsoft.Azure.Devices;
     ```
 
-1. Dodaj następujące pola do klasy **Program**: Zamień `{iot hub connection string}` na IoT Hub parametry połączenia, które zostały skopiowane w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string).
+1. Dodaj następujące pola do klasy **Program**: Zastąp `{iot hub connection string}` parametrami połączenia IoT Hub skopiowanymi w polu [Pobierz parametry połączenia z usługą IoT Hub](#get-the-iot-hub-connection-string).
 
     ```csharp  
     static RegistryManager registryManager;
@@ -138,7 +140,7 @@ W następnej sekcji utworzysz aplikację urządzenia, która zgłosi informacje 
 
 W tej sekcji utworzysz aplikację konsolową platformy .NET, która łączy się z centrum jako **myDeviceId**, a następnie aktualizuje raportowane właściwości w taki sposób, aby zawierała informacje, które są połączone z siecią komórkową.
 
-1. W programie Visual Studio, wybierz **pliku** > **New** > **projektu**. W obszarze **Utwórz nowy projekt**wybierz pozycję **aplikacja konsoli (.NET Framework)** , a następnie wybierz przycisk **dalej**.
+1. W programie Visual Studio wybierz pozycje **Plik** > **Nowy** > **Projekt**. W obszarze **Utwórz nowy projekt**wybierz pozycję **aplikacja konsoli (.NET Framework)** , a następnie wybierz przycisk **dalej**.
 
 1. W obszarze **Konfigurowanie nowego projektu**Nadaj projektowi nazwę **ReportConnectivity**. W obszarze **rozwiązanie**wybierz opcję **Dodaj do rozwiązania**, a następnie wybierz pozycję **Utwórz**.
 
@@ -156,7 +158,7 @@ W tej sekcji utworzysz aplikację konsolową platformy .NET, która łączy się
     using Newtonsoft.Json;
     ```
 
-1. Dodaj następujące pola do klasy **Program**: Zamień `{device connection string}` na parametry połączenia urządzenia zanotowane w zarejestrowaniu [nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
+1. Dodaj następujące pola do klasy **Program**: Zastąp `{device connection string}` parametrami połączenia urządzenia zanotowanymi w temacie [Rejestrowanie nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp  
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
@@ -231,7 +233,7 @@ W tej sekcji utworzysz aplikację konsolową platformy .NET, która łączy się
 
 1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Ustaw projekty startowe**.
 
-1. W polu**projekt uruchomieniowy** **typowych właściwości** > wybierz pozycję **wiele projektów startowych**. Dla **ReportConnectivity**wybierz pozycję **Rozpocznij** jako **akcję**. Aby zapisać zmiany, wybierz pozycję **OK**.  
+1. W obszarze **wspólne właściwości** > **projekt startowy**wybierz opcję **wiele projektów startowych**. Dla **ReportConnectivity**wybierz pozycję **Rozpocznij** jako **akcję**. Aby zapisać zmiany, wybierz pozycję **OK**.  
 
 1. Uruchom tę aplikację, klikając prawym przyciskiem myszy projekt **ReportConnectivity** i wybierając polecenie **Debuguj**, a następnie **Rozpocznij nowe wystąpienie**. Powinna zostać wyświetlona aplikacja, która pobiera informacje o bliźniaczych, a następnie wysyła łączność jako ***raportowaną Właściwość***.
 
@@ -249,7 +251,7 @@ W tym samouczku opisano konfigurowanie nowego centrum IoT Hub w witrynie Azure P
 
 Więcej informacji można znaleźć w następujących zasobach:
 
-* Aby dowiedzieć się, jak wysyłać dane telemetryczne z urządzeń, zapoznaj się z samouczkiem wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md) .
+* Aby dowiedzieć się, jak wysyłać dane telemetryczne z urządzeń, zapoznaj się z samouczkiem [wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md) .
 
 * Aby dowiedzieć się, jak skonfigurować urządzenia za pomocą odpowiednich właściwości z sznurka urządzenia, zobacz Samouczek dotyczący [konfigurowania urządzeń](tutorial-device-twins.md) .
 

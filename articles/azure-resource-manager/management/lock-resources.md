@@ -2,40 +2,39 @@
 title: Zablokuj zasoby, aby uniemożliwić zmiany
 description: Zablokuj użytkownikom możliwość aktualizowania lub usuwania krytycznych zasobów platformy Azure, stosując blokadę dla wszystkich użytkowników i ról.
 ms.topic: conceptual
-ms.date: 05/14/2019
-ms.openlocfilehash: b7c6c7980f12e7f9015f4504f461733100b14ea8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/07/2020
+ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644362"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109545"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zablokuj zasoby, aby zapobiec nieoczekiwanym zmianom
 
 Jako administrator możesz zablokować subskrypcję, grupę zasobów lub zasób, aby zapobiec przypadkowemu usunięciu lub zmodyfikowaniu kluczowych zasobów przez innych użytkowników w organizacji. Poziom blokady można ustawić na wartość **CanNotDelete** lub **ReadOnly**. W portalu blokady są nazywane odpowiednio **usuwaniem** i **tylko do odczytu** .
 
 * **CanNotDelete** oznacza, że autoryzowani użytkownicy nadal mogą odczytywać i modyfikować zasób, ale nie mogą usunąć tego zasobu. 
-* **ReadOnly** oznacza, że autoryzowani użytkownicy mogą odczytywać zasoby, ale nie mogą usuwać ani aktualizować zasobu. Zastosowanie tej blokady jest podobne do ograniczenia wszystkich autoryzowanych użytkowników do uprawnień udzielonych przez rolę **czytelnika** . 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* **ReadOnly** oznacza, że autoryzowani użytkownicy mogą odczytywać zasoby, ale nie mogą usuwać ani aktualizować zasobu. Zastosowanie tej blokady jest podobne do ograniczenia wszystkich autoryzowanych użytkowników do uprawnień udzielonych przez rolę **czytelnika** .
 
 ## <a name="how-locks-are-applied"></a>Jak są stosowane blokady
 
 W przypadku zastosowania blokady w zakresie nadrzędnym wszystkie zasoby w tym zakresie dziedziczą tę samą blokadę. Nawet zasoby dodawane później dziedziczą blokadę z elementu nadrzędnego. Pierwszeństwo ma najbardziej restrykcyjną blokadę dziedziczenia.
 
-W przeciwieństwie do kontroli dostępu opartej na rolach blokady zarządzania są używane do stosowania ograniczenia do wszystkich użytkowników i ról. Aby dowiedzieć się więcej o ustawianiu uprawnień dla użytkowników i ról, zobacz [Access Control oparte na rolach platformy Azure](../../role-based-access-control/role-assignments-portal.md).
+W przeciwieństwie do kontroli dostępu opartej na rolach, można użyć blokad zarządzania do zastosowania ograniczeń dla wszystkich użytkowników i ról. Aby dowiedzieć się więcej o ustawianiu uprawnień dla użytkowników i ról, zobacz [Access Control oparte na rolach platformy Azure](../../role-based-access-control/role-assignments-portal.md).
 
-Blokady usługi Resource Manager dotyczą tylko operacji wykonywanych na płaszczyźnie zarządzania, która składa się z operacji wysyłanych do witryny `https://management.azure.com`. Blokady nie ograniczają sposobu wykonywania własnych funkcji przez zasoby. Zmiany zasobów są ograniczone, ale operacje zasobów nie są ograniczone. Na przykład blokada tylko do odczytu na SQL Database uniemożliwia usunięcie lub zmodyfikowanie bazy danych. Nie uniemożliwia to tworzenia, aktualizowania ani usuwania danych w bazie danych. Transakcje danych są dozwolone, ponieważ te operacje nie są wysyłane do `https://management.azure.com`.
+Blokady Menedżer zasobów dotyczą tylko operacji wykonywanych w płaszczyźnie zarządzania, która składa się z operacji wysyłanych do `https://management.azure.com`. Blokady nie ograniczają sposobu wykonywania własnych funkcji przez zasoby. Zmiany zasobów są ograniczone, ale operacje zasobów nie są ograniczone. Na przykład blokada tylko do odczytu na SQL Database uniemożliwia usunięcie lub zmodyfikowanie bazy danych. Nie uniemożliwia to tworzenia, aktualizowania ani usuwania danych w bazie danych. Transakcje danych są dozwolone, ponieważ te operacje nie są wysyłane do `https://management.azure.com`.
 
 Zastosowanie **tylko do odczytu** może prowadzić do nieoczekiwanych wyników, ponieważ niektóre operacje, które nie wydają się do modyfikacji zasobu, rzeczywiście wymagają akcji blokowanych przez blokadę. Blokadę **ReadOnly** można zastosować do zasobu lub do grupy zasobów zawierającej zasób. Niektóre typowe przykłady operacji blokowanych przez blokadę tylko do **odczytu** są następujące:
 
-* Blokada **tylko do odczytu** na koncie magazynu uniemożliwia wszystkim użytkownikom wyświetlanie kluczy. Operacje listy kluczy są obsługiwane za pomocą żądania POST, ponieważ zwrócone klucze są dostępne dla operacji zapisu.
+* Blokada **tylko do odczytu** na koncie magazynu uniemożliwia wszystkim użytkownikom wyświetlanie kluczy. Operacja Lista kluczy jest obsługiwana za pomocą żądania POST, ponieważ zwracane klucze są dostępne dla operacji zapisu.
 
 * Blokada **tylko do odczytu** w zasobie App Service uniemożliwia programowi Visual Studio Eksplorator serwera wyświetlanie plików dla zasobu, ponieważ ta interakcja wymaga dostępu do zapisu.
 
 * Blokada **tylko do odczytu** w grupie zasobów zawierającej maszynę wirtualną uniemożliwia wszystkim użytkownikom uruchamianie lub ponowne uruchamianie maszyny wirtualnej. Te operacje wymagają żądania POST.
 
 ## <a name="who-can-create-or-delete-locks"></a>Kto może tworzyć lub usuwać blokady
+
 Aby utworzyć lub usunąć blokady zarządzania, musisz mieć dostęp do akcji `Microsoft.Authorization/*` lub `Microsoft.Authorization/locks/*`. Spośród wbudowanych ról tylko **Właściciel** i **Administrator dostępu użytkowników** mają dostęp do tych akcji.
 
 ## <a name="managed-applications-and-locks"></a>Zarządzane aplikacje i blokady
@@ -58,7 +57,12 @@ Aby usunąć wszystkie elementy usługi, w tym zablokowaną grupę zasobów infr
 
 ![Usuń usługę](./media/lock-resources/delete-service.png)
 
+## <a name="azure-backups-and-locks"></a>Kopie zapasowe i blokady platformy Azure
+
+Jeśli zablokujesz grupę zasobów utworzoną przez usługę Azure Backup, kopie zapasowe będą kończyć się niepowodzeniem. Usługa obsługuje maksymalnie 18 punktów przywracania. W przypadku blokady **CanNotDelete** usługa Backup nie może oczyścić punktów przywracania. Aby uzyskać więcej informacji, zobacz [często zadawane pytania — tworzenie kopii zapasowych maszyn wirtualnych platformy Azure](../../backup/backup-azure-vm-backup-faq.md).
+
 ## <a name="portal"></a>Portal
+
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>Szablon
@@ -134,7 +138,7 @@ Poniższy przykład przedstawia szablon, który tworzy plan usługi App Service,
 
 Aby zapoznać się z przykładem ustawienia blokady grupy zasobów, zobacz [Tworzenie grupy zasobów i blokowanie jej](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershell"></a>Program PowerShell
 Wdrożone zasoby można blokować za pomocą Azure PowerShell przy użyciu polecenia [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) .
 
 Aby zablokować zasób, podaj nazwę zasobu, jego typ zasobu i nazwę grupy zasobów.

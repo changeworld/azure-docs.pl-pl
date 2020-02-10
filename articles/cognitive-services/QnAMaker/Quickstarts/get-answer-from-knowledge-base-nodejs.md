@@ -2,15 +2,15 @@
 title: 'Szybki start: uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, Node.js — QnA Maker'
 description: W tym samouczku Szybki start opartym na protokole REST i środowisku Node.js opisano sposób programowego uzyskiwania odpowiedzi z bazy wiedzy.
 ms.topic: quickstart
-ms.date: 01/28/2020
+ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCHANGE-20200128
-ms.openlocfilehash: 89c7c71860accb322be522e1a655e4db6288634d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e8077235852e8776c4e52403cbac3e4bccc6c4f1
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844249"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109783"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Szybki Start: uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu środowiska Node. js
 

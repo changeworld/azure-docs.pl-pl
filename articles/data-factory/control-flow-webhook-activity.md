@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: b2f7c35e6ddb3c6ed0a3032d7ea6d4c53043c17b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 70c67a99274eaedc5592c7b90b1ef80a3a17acf8
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122910"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110006"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Działanie elementu webhook w Azure Data Factory
 Możesz użyć działania elementu webhook, aby kontrolować wykonywanie potoków za pomocą kodu niestandardowego. Korzystając z działania elementu webhook, klienci mogą wywołać punkt końcowy i przekazać adres URL wywołania zwrotnego. Uruchomienie potoku oczekuje na wywołanie wywołania zwrotnego przed przejściem do następnego działania.
@@ -53,17 +53,63 @@ Możesz użyć działania elementu webhook, aby kontrolować wykonywanie potokó
 
 
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
 name | Nazwa działania elementu webhook | Ciąg | Yes |
 type | Musi być ustawiona na **element webhook**. | Ciąg | Yes |
-method | Metoda interfejsu API REST dla docelowego punktu końcowego. | parametry. Obsługiwane typy: "POST" | Yes |
+method | Metoda interfejsu API REST dla docelowego punktu końcowego. | Ciąg. Obsługiwane typy: "POST" | Yes |
 url | Docelowy punkt końcowy i ścieżka | Ciąg (lub wyrażenie z typem ResultType ciągu). | Yes |
-nagłówka | Nagłówki wysyłane do żądania. Na przykład, aby ustawić język i typ dla żądania: "heads": {"Accept-Language": "en-us", "Content-Type": "Application/JSON"}. | Ciąg (lub wyrażenie z typem ResultType ciągu) | Tak, nagłówek Content-Type jest wymagany. "headers":{ "Content-Type":"application/json"} |
+nagłówki | Nagłówki wysyłane do żądania. Na przykład, aby ustawić język i typ dla żądania: "heads": {"Accept-Language": "en-us", "Content-Type": "Application/JSON"}. | Ciąg (lub wyrażenie z typem ResultType ciągu) | Tak, nagłówek Content-Type jest wymagany. "headers":{ "Content-Type":"application/json"} |
 jednostce | Reprezentuje ładunek, który jest wysyłany do punktu końcowego. | Prawidłowy kod JSON (lub wyrażenie z typem ResultType JSON). Zobacz schemat ładunku żądania w sekcji [schematu ładunku żądania](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) . | Yes |
 uwierzytelnianie | Metoda uwierzytelniania używana do wywoływania punktu końcowego. Obsługiwane typy to "podstawowa" lub "ClientCertificate". Aby uzyskać więcej informacji, zobacz sekcję [uwierzytelnianie](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0) . Jeśli uwierzytelnianie nie jest wymagane, Wyklucz tę właściwość. | Ciąg (lub wyrażenie z typem ResultType ciągu) | Nie |
 timeout | Jak długo działanie będzie oczekiwać na wywołanie &#39;callBackUri.&#39; Jak długo działanie będzie oczekiwać na wywołanie elementu "callBackUri". Wartość domyślna to 10mins ("00:10:00"). Format to TimeSpan, np. hh: mm: SS | Ciąg | Nie |
 Stan raportu dla wywołania zwrotnego | Zezwala użytkownikowi na raportowanie stanu niepowodzenia aktywności elementu webhook, co oznacza działanie jako zakończone niepowodzeniem | Wartość logiczna | Nie |
+
+## <a name="authentication"></a>Uwierzytelnianie
+
+Poniżej przedstawiono obsługiwane typy uwierzytelniania w działaniu elementu webhook.
+
+### <a name="none"></a>None
+
+Jeśli uwierzytelnianie nie jest wymagane, nie należy uwzględniać właściwości "Authentication".
+
+### <a name="basic"></a>Podstawowa
+
+Określ nazwę użytkownika i hasło, które mają być używane z uwierzytelnianiem podstawowym.
+
+```json
+"authentication":{
+   "type":"Basic",
+   "username":"****",
+   "password":"****"
+}
+```
+
+### <a name="client-certificate"></a>certyfikat klienta
+
+Określ zawartość pliku PFX i hasło w formacie base64.
+
+```json
+"authentication":{
+   "type":"ClientCertificate",
+   "pfx":"****",
+   "password":"****"
+}
+```
+
+### <a name="managed-identity"></a>Tożsamość zarządzana
+
+Określ identyfikator URI zasobu, dla którego będzie wymagany token dostępu przy użyciu tożsamości zarządzanej fabryki danych. Aby wywołać interfejs API zarządzania zasobami platformy Azure, użyj `https://management.azure.com/`. Aby uzyskać więcej informacji na temat sposobu działania tożsamości zarządzanych, zobacz [stronę Omówienie zarządzanych tożsamości dla zasobów platformy Azure](/azure/active-directory/managed-identities-azure-resources/overview).
+
+```json
+"authentication": {
+    "type": "MSI",
+    "resource": "https://management.azure.com/"
+}
+```
+
+> [!NOTE]
+> Jeśli Fabryka danych została skonfigurowana przy użyciu repozytorium git, musisz przechowywać poświadczenia w Azure Key Vault, aby używać uwierzytelniania podstawowego lub certyfikatu klienta. Azure Data Factory nie zapisuje haseł w usłudze git.
 
 ## <a name="additional-notes"></a>Uwagi dodatkowe
 

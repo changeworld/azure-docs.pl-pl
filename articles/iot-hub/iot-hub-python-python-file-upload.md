@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 6dfbcc7a3e76842546326742d801c913451855f3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f1c0c046c40ff8edbc33c5e93e4207d9fe2fc67a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001119"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110747"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Przekazywanie plików z urządzenia do chmury przy użyciu IoT Hub (Python)
 
@@ -43,6 +43,8 @@ Na końcu tego samouczka uruchomisz aplikację konsolową języka Python:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
+* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Przekazywanie pliku z aplikacji urządzenia
@@ -62,7 +64,7 @@ W tej sekcji utworzysz aplikację urządzenia w celu przekazania pliku do centru
 
 3. Za pomocą edytora tekstów Utwórz plik **FileUpload.py** w folderze roboczym.
 
-4. Dodaj następujące `import` instrukcje i zmienne na początku pliku **FileUpload.py** . 
+4. Dodaj następujące instrukcje i zmienne `import` na początku pliku **FileUpload.py** . 
 
     ```python
     import time
@@ -78,7 +80,7 @@ W tej sekcji utworzysz aplikację urządzenia w celu przekazania pliku do centru
     FILENAME = "[File name for storage]"
     ```
 
-5. W pliku Zastąp `[Device Connection String]` ciąg połączeniem urządzenia usługi IoT Hub. Zamień `[Full path to file]` na ścieżkę do pliku testowego, który został utworzony, lub dowolny plik na urządzeniu, które chcesz przekazać. Zamień `[File name for storage]` na nazwę, którą chcesz nadać plikowi po przekazaniu do magazynu obiektów BLOB. 
+5. W pliku Zastąp `[Device Connection String]` parametrami połączenia urządzenia IoT Hub. Zastąp `[Full path to file]` ścieżką do utworzonego pliku testowego lub dowolnym plikiem na urządzeniu, które chcesz przekazać. Zastąp `[File name for storage]` nazwą, którą chcesz nadać plikowi po przekazaniu do magazynu obiektów BLOB. 
 
 6. Utwórz wywołanie zwrotne dla funkcji **upload_blob** :
 
@@ -90,7 +92,7 @@ W tej sekcji utworzysz aplikację urządzenia w celu przekazania pliku do centru
             print ( "...file upload callback returned: " + str(result) )
     ```
 
-7. Dodaj następujący kod, aby połączyć klienta i przekazać plik. Uwzględnij `main` również procedurę:
+7. Dodaj następujący kod, aby połączyć klienta i przekazać plik. Uwzględnij również procedurę `main`:
 
     ```python
     def iothub_file_upload_sample_run():

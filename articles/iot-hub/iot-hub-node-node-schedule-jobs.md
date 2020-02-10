@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 124af71e458e103392c554a9c86d679f691df5b9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5053935f52153f0cd6ff2f05c5153732f5bda945
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147658"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110847"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Planowanie i emitowanie zadań (Node. js)
 
@@ -30,9 +30,9 @@ Koncepcyjnie, zadanie otacza jedną z tych akcji i śledzi postęp wykonywania w
 
 Dowiedz się więcej o każdej z tych funkcji w następujących artykułach:
 
-* Sznurki i właściwości urządzenia: [Wprowadzenie do bliźniaczych reprezentacji urządzeń](iot-hub-node-node-twin-getstarted.md) i [samouczek: Jak korzystać z właściwości sznurka urządzenia](tutorial-device-twins.md)
+* Sznurki i właściwości urządzenia: [wprowadzenie do bliźniaczych reprezentacjii urządzeń](iot-hub-node-node-twin-getstarted.md) i [Samouczek: jak korzystać z właściwości sznurka urządzenia](tutorial-device-twins.md)
 
-* Metody bezpośrednie: [Przewodnik dla deweloperów IoT Hub — bezpośrednie metody](iot-hub-devguide-direct-methods.md) i [Samouczek: metody bezpośrednie](quickstart-control-device-node.md)
+* Metody bezpośrednie: [przewodnik dewelopera IoT Hub — bezpośrednie metody](iot-hub-devguide-direct-methods.md) i [Samouczek: metody bezpośrednie](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -53,6 +53,8 @@ Na końcu tego samouczka masz dwie aplikacje Node. js:
 * Node. js w wersji 10.0. x lub nowszej. [Przygotuj środowisko programistyczne](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) , w którym opisano sposób instalowania środowiska Node. js na potrzeby tego samouczka w systemie Windows lub Linux.
 
 * Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut).
+
+* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
@@ -89,7 +91,7 @@ W tej sekcji utworzysz aplikację konsolową środowiska Node. js, która reaguj
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Dodaj zmienną **connectionString** i użyj jej do utworzenia wystąpienia **Client**. Zastąp `{yourDeviceConnectionString}` wartość symbolu zastępczego parametrami połączenia urządzenia, które zostały wcześniej skopiowane.
+5. Dodaj zmienną **connectionString** i użyj jej do utworzenia wystąpienia **Client**. Zastąp wartość symbolu zastępczego `{yourDeviceConnectionString}` parametrami połączenia urządzenia, które zostały wcześniej skopiowane.
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
@@ -166,7 +168,7 @@ W tej sekcji utworzysz aplikację konsolową środowiska Node. js, która inicju
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Dodaj następujące deklaracje zmiennych. Zastąp wartość [](#get-the-iot-hub-connection-string) symboluzastępczegowartościąskopiowanąwpoluPobierzparametrypołączeniausługiIoT`{iothubconnectionstring}` Hub. Jeśli zarejestrowano urządzenie inne niż **myDeviceId**, należy zmienić je w warunku zapytania.
+5. Dodaj następujące deklaracje zmiennych. Zastąp wartość symbolu zastępczego `{iothubconnectionstring}` wartością skopiowaną w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string). Jeśli zarejestrowano urządzenie inne niż **myDeviceId**, należy zmienić je w warunku zapytania.
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -295,6 +297,6 @@ Teraz można uruchomić aplikacje.
 
 W tym samouczku użyto zadania do zaplanowania metody bezpośredniej dla urządzenia i aktualizacji właściwości sznurka urządzenia.
 
-Aby nadal zacząć korzystać z wzorców IoT Hub i zarządzania urządzeniami, takich jak Zdalna aktualizacja oprogramowania układowego, [zobacz Samouczek: Jak wykonać aktualizację](tutorial-firmware-update.md)oprogramowania układowego.
+Aby nadal zacząć korzystać z wzorców IoT Hub i zarządzania urządzeniami, takimi jak zdalne przez aktualizację oprogramowania układowego, zobacz [Samouczek: jak wykonać aktualizację oprogramowania układowego](tutorial-firmware-update.md).
 
 Aby kontynuować wprowadzenie do IoT Hub, zobacz [wprowadzenie do Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

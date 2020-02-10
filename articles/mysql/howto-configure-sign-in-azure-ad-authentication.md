@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 10dae81bf0ca8958f7c10aebef501fc604c4839c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706052"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110614"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Używanie Azure Active Directory do uwierzytelniania za pomocą programu MySQL
 
@@ -40,42 +40,7 @@ Tylko jeden administrator usługi Azure AD można utworzyć na serwerze MySQL, a
 
 W przyszłej wersji Firma Microsoft będzie obsługiwać Określanie grupy usługi Azure AD zamiast pojedynczego użytkownika w celu posiadania wielu administratorów, ale nie jest to obecnie obsługiwane.
 
-## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>Tworzenie użytkowników usługi Azure AD w Azure Database for MySQL
-
-Aby dodać użytkownika usługi Azure AD do bazy danych Azure Database for MySQL, wykonaj następujące czynności po nawiązaniu połączenia (zobacz sekcję w dalszej części How to Connect):
-
-1. Najpierw upewnij się, że `<user>@yourtenant.onmicrosoft.com` użytkownika usługi Azure AD jest prawidłowym użytkownikiem w dzierżawie usługi Azure AD.
-2. Zaloguj się do swojego wystąpienia Azure Database for MySQL jako użytkownik administracyjny usługi Azure AD.
-3. Utwórz `<user>@yourtenant.onmicrosoft.com` użytkownika w Azure Database for MySQL.
-
-**Przykład:**
-
-```sql
-CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
-```
-
-W przypadku nazw użytkowników, które przekraczają 32 znaków, zaleca się użycie aliasu, który ma być używany podczas nawiązywania połączenia: 
-
-Przykład:
-
-```sql
-CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
-```
-
-> [!NOTE]
-> Uwierzytelnienie użytkownika za pomocą usługi Azure AD nie daje użytkownikowi żadnych uprawnień dostępu do obiektów w bazie danych Azure Database for MySQL. Musisz przyznać użytkownikowi wymagane uprawnienia ręcznie.
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Tworzenie grup usługi Azure AD w Azure Database for MySQL
-
-Aby włączyć grupę usługi Azure AD w celu uzyskania dostępu do bazy danych, należy użyć tego samego mechanizmu co w przypadku użytkowników, ale zamiast tego należy określić nazwę grupy:
-
-**Przykład:**
-
-```sql
-CREATE AADUSER 'Prod_DB_Readonly';
-```
-
-Gdy logujesz się, członkowie grupy będą używać osobistych tokenów dostępu, ale Podpisz z nazwą grupy określoną jako nazwa użytkownika.
+Po skonfigurowaniu administratora możesz teraz zalogować się:
 
 ## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>Nawiązywanie połączenia z Azure Database for MySQL przy użyciu usługi Azure AD
 
@@ -156,12 +121,53 @@ Podczas łączenia należy użyć tokenu dostępu jako hasła użytkownika progr
 Korzystając z interfejsu wiersza polecenia, można nawiązać połączenie za pomocą tej krótkiej nazwy: 
 
 **Przykład (Linux/macOS):**
-
-MySQL-h mydb.mysql.database.azure.com \--User user@tenant.onmicrosoft.com@mydb \--Enable-zwykły — wtyczka \--Password =`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`  
+```
+mysql -h mydb.mysql.database.azure.com \ 
+  --user user@tenant.onmicrosoft.com@mydb \ 
+  --enable-cleartext-plugin \ 
+  --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
+```
 
 Zwróć uwagę na ustawienie "Enable-zwykły tekst-wtyczka" — należy użyć podobnej konfiguracji z innymi klientami, aby upewnić się, że token jest wysyłany do serwera bez mieszania.
 
 Masz teraz uwierzytelnienie na serwerze MySQL przy użyciu uwierzytelniania usługi Azure AD.
+
+## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>Tworzenie użytkowników usługi Azure AD w Azure Database for MySQL
+
+Aby dodać użytkownika usługi Azure AD do bazy danych Azure Database for MySQL, wykonaj następujące czynności po nawiązaniu połączenia (zobacz sekcję w dalszej części How to Connect):
+
+1. Najpierw upewnij się, że `<user>@yourtenant.onmicrosoft.com` użytkownika usługi Azure AD jest prawidłowym użytkownikiem w dzierżawie usługi Azure AD.
+2. Zaloguj się do swojego wystąpienia Azure Database for MySQL jako użytkownik administracyjny usługi Azure AD.
+3. Utwórz `<user>@yourtenant.onmicrosoft.com` użytkownika w Azure Database for MySQL.
+
+**Przykład:**
+
+```sql
+CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
+```
+
+W przypadku nazw użytkowników, które przekraczają 32 znaków, zaleca się użycie aliasu, który ma być używany podczas nawiązywania połączenia: 
+
+Przykład:
+
+```sql
+CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
+```
+
+> [!NOTE]
+> Uwierzytelnienie użytkownika za pomocą usługi Azure AD nie daje użytkownikowi żadnych uprawnień dostępu do obiektów w bazie danych Azure Database for MySQL. Musisz przyznać użytkownikowi wymagane uprawnienia ręcznie.
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Tworzenie grup usługi Azure AD w Azure Database for MySQL
+
+Aby włączyć grupę usługi Azure AD w celu uzyskania dostępu do bazy danych, należy użyć tego samego mechanizmu co w przypadku użytkowników, ale zamiast tego należy określić nazwę grupy:
+
+**Przykład:**
+
+```sql
+CREATE AADUSER 'Prod_DB_Readonly';
+```
+
+Gdy logujesz się, członkowie grupy będą używać osobistych tokenów dostępu, ale Podpisz z nazwą grupy określoną jako nazwa użytkownika.
 
 ## <a name="token-validation"></a>Sprawdzanie poprawności tokenu
 
@@ -176,7 +182,7 @@ Uwierzytelnianie usługi Azure AD w Azure Database for MySQL zapewnia, że użyt
 
 Większość sterowników jest obsługiwanych, jednak Pamiętaj, aby użyć ustawień do wysyłania hasła w postaci zwykłego tekstu, więc token zostanie wysłany bez modyfikacji.
 
-* C/C++
+* SC++
   * libmysqlclient: obsługiwane
   * MySQL-Connector-c + +: obsługiwane
 * Java
@@ -194,7 +200,7 @@ Większość sterowników jest obsługiwanych, jednak Pamiętaj, aby użyć usta
 * Perl
   * DBD:: MySQL: obsługiwane
   * NET:: MySQL: nieobsługiwane
-* Go
+* Przejdź
   * go-SQL-Driver: obsługiwane, Dodawanie `?tls=true&allowCleartextPasswords=true` do parametrów połączenia
 
 ## <a name="next-steps"></a>Następne kroki

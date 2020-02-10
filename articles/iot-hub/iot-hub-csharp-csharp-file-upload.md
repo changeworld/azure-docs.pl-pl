@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: db020092c076680eddd575f8e7e85a2060603dd8
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b379f158672a9df3056acb09c63c392869a53283
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147775"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108710"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Przekazywanie plików z urządzenia do chmury przy użyciu IoT Hub (.NET)
 
@@ -26,11 +26,11 @@ W tym samouczku przedstawiono kod w oknie [wysyłanie komunikatów z chmury do u
 
 * Użyj powiadomień przekazywania plików IoT Hub, aby wyzwolić przetwarzanie pliku w zapleczu aplikacji.
 
-Wysyłanie danych telemetrycznych [z urządzenia do](quickstart-send-telemetry-dotnet.md) przewodnika Szybki Start dotyczącego usługi IoT Hub i [wysyłanie komunikatów z chmury do urządzeń za pomocą](iot-hub-csharp-csharp-c2d.md) samouczka IoT Hub przedstawia podstawowe funkcje przesyłania komunikatów z urządzenia do chmury i IoT Hub z chmury do urządzenia. Samouczek [Konfigurowanie routingu komunikatów z IoT Hub](tutorial-routing.md) zawiera opis sposobu niezawodnego przechowywania komunikatów przesyłanych z urządzeń do chmury w Microsoft Azure usłudze BLOB Storage. Jednak w niektórych scenariuszach nie można łatwo zmapować danych wysyłanych przez urządzenia do bezwzględnie niewielkich komunikatów z urządzenia do chmury, które IoT Hub akceptowane. Przykład:
+[Wysyłanie danych telemetrycznych z urządzenia do](quickstart-send-telemetry-dotnet.md) przewodnika Szybki Start dotyczącego usługi IoT Hub i [wysyłanie komunikatów z chmury do urządzeń za pomocą](iot-hub-csharp-csharp-c2d.md) samouczka IoT Hub przedstawia podstawowe funkcje przesyłania komunikatów z urządzenia do chmury i IoT Hub z chmury do urządzenia. Samouczek [Konfigurowanie routingu komunikatów z IoT Hub](tutorial-routing.md) zawiera opis sposobu niezawodnego przechowywania komunikatów przesyłanych z urządzeń do chmury w Microsoft Azure usłudze BLOB Storage. Jednak w niektórych scenariuszach nie można łatwo zmapować danych wysyłanych przez urządzenia do bezwzględnie niewielkich komunikatów z urządzenia do chmury, które IoT Hub akceptowane. Na przykład:
 
 * Duże pliki zawierające obrazy
 
-* Wideo
+* Filmy wideo
 
 * Próbkowanie danych drgań z wysoką częstotliwością
 
@@ -53,13 +53,15 @@ Na końcu tego samouczka uruchomisz dwie aplikacje konsolowe programu .NET:
 
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
 
+* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Przekazywanie pliku z aplikacji urządzenia
 
 W tej sekcji zmodyfikujesz aplikację urządzenia utworzoną w temacie [wysyłanie komunikatów z chmury do urządzenia za pomocą IoT Hub](iot-hub-csharp-csharp-c2d.md) , aby odbierać komunikaty z chmury do urządzenia z Centrum IoT Hub.
 
-1. W programie Visual Studio Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt **SimulatedDevice** , a następnie wybierz pozycję **Dodaj** > **istniejący element**. Znajdź plik obrazu i dołącz go do projektu. W tym samouczku założono, `image.jpg`że obraz ma nazwę.
+1. W programie Visual Studio Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt **SimulatedDevice** , a następnie wybierz pozycję **Dodaj** > **istniejący element**. Znajdź plik obrazu i dołącz go do projektu. W tym samouczku założono, że obraz ma nazwę `image.jpg`.
 
 1. Kliknij prawym przyciskiem myszy obraz, a następnie wybierz polecenie **Właściwości**. Upewnij się, że wartość **Kopiuj do katalogu wyjściowego** jest ustawiona na **zawsze Kopiuj**.
 
@@ -90,7 +92,7 @@ W tej sekcji zmodyfikujesz aplikację urządzenia utworzoną w temacie [wysyłan
     }
     ```
 
-    `UploadToBlobAsync` Metoda przyjmuje nazwę pliku i źródło strumienia pliku, który ma zostać przekazany i obsługuje przekazywanie do magazynu. Aplikacja konsoli wyświetla czas potrzebny na przekazanie pliku.
+    Metoda `UploadToBlobAsync` przyjmuje nazwę pliku i źródło strumienia pliku, który ma zostać przekazany i obsługuje przekazywanie do magazynu. Aplikacja konsoli wyświetla czas potrzebny na przekazanie pliku.
 
 1. Dodaj następujący wiersz w metodzie **Main** , bezpośrednio przed `Console.ReadLine()`:
 
@@ -103,7 +105,7 @@ W tej sekcji zmodyfikujesz aplikację urządzenia utworzoną w temacie [wysyłan
 
 ## <a name="get-the-iot-hub-connection-string"></a>Pobierz parametry połączenia usługi IoT Hub
 
-W tym artykule opisano tworzenie usługi zaplecza w celu odbierania komunikatów powiadomień o przekazywaniu plików z Centrum IoT utworzonego w artykule wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md). Aby odbierać komunikaty powiadomień o przekazywaniu plików, usługa musi mieć uprawnienia do **połączenia z usługą** . Domyślnie każdy IoT Hub jest tworzony przy użyciu zasad dostępu współdzielonego o nazwie **Usługa** , która przyznaje to uprawnienie.
+W tym artykule opisano tworzenie usługi zaplecza w celu odbierania komunikatów powiadomień o przekazywaniu plików z Centrum IoT utworzonego w artykule [wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md). Aby odbierać komunikaty powiadomień o przekazywaniu plików, usługa musi mieć uprawnienia do **połączenia z usługą** . Domyślnie każdy IoT Hub jest tworzony przy użyciu zasad dostępu współdzielonego o nazwie **Usługa** , która przyznaje to uprawnienie.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -129,7 +131,7 @@ W tej sekcji utworzysz aplikację konsolową .NET, która odbiera komunikaty pow
     using Microsoft.Azure.Devices;
     ```
 
-1. Dodaj następujące pola do klasy **Program**: Zastąp wartość [](#get-the-iot-hub-connection-string) symboluzastępczegoparametramipołączeniausługiIoTHub,którezostaływcześniejskopiowanewpoluPobierzparametrypołączeniausługiIoT`{iot hub connection string}` Hub:
+1. Dodaj następujące pola do klasy **Program**: Zastąp `{iot hub connection string}` wartość symbolu zastępczego parametrami połączenia usługi IoT Hub skopiowanymi wcześniej w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string):
 
     ```csharp
     static ServiceClient serviceClient;
@@ -177,7 +179,7 @@ Teraz wszystko jest gotowe do uruchomienia aplikacji.
 
 1. W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy, a następnie wybierz pozycję **Ustaw projekty startowe**.
 
-1. W polu**projekt startowy** **Właściwości** > wspólne wybierz opcję **wiele projektów startowych**, a następnie wybierz akcję **Rozpocznij** dla **ReadFileUploadNotification** i **SimulatedDevice**. Aby zapisać zmiany, wybierz pozycję **OK**.
+1. W obszarze **wspólne właściwości** > **projekt startowy**wybierz opcję **wiele projektów startowych**, a następnie wybierz akcję **Rozpocznij** dla **ReadFileUploadNotification** i **SimulatedDevice**. Aby zapisać zmiany, wybierz pozycję **OK**.
 
 1. Naciśnij klawisz **F5**. Należy uruchomić obie aplikacje. Powinno zostać wyświetlone zakończono przekazywanie w jednej aplikacji konsolowej, a komunikat powiadomienia o przekazaniu odebrany przez inną aplikację konsolową. Możesz użyć [Azure Portal](https://portal.azure.com/) lub Eksplorator serwera programu Visual Studio, aby sprawdzić obecność przekazanego pliku na koncie usługi Azure Storage.
 

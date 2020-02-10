@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8f22e575b609b0dcd56bf9a1f49fffd41f14e898
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b5f2b42728fd6f3d61695b4f88cc416015dd97cb
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062204"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108258"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Zaloguj się do swoich kont przy użyciu aplikacji Microsoft Authenticator
 
@@ -116,7 +116,7 @@ Aby uzyskać instrukcje niezbędne do zalogowania się do konta służbowego lub
 | Czy po włączeniu weryfikacji dwuetapowej dla mojego konta należy zatwierdzić dwie powiadomienia? | Nie. Zalogowanie się do konto Microsoft przy użyciu telefonu jest również traktowane jako weryfikacja dwuetapowa, więc nie jest wymagane żadne drugie zatwierdzenie. |
 | Co zrobić, Jeśli utracisz mój telefon lub nie masz go? Jak mogę uzyskać dostęp do mojego konta? | Zawsze możesz wybrać łącze Użyj zamiast tego hasła na stronie logowania, aby przełączyć się z powrotem do korzystania z hasła. Jeśli jednak korzystasz z weryfikacji dwuetapowej, nadal musisz użyć drugiej metody do zweryfikowania swojej tożsamości.<br><br>**Ważne**<br>Zdecydowanie zachęcamy do upewnienia się, że masz więcej niż jedną, aktualną metodę weryfikacji skojarzoną z Twoim kontem.<br><br>Możesz zarządzać metodami weryfikacji dla kont osobistych na stronie [ustawień zabezpieczeń](https://account.live.com/proofs/manage) . W przypadku kont służbowych możesz przejść na stronę [dodatkowej weryfikacji zabezpieczeń](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) w organizacji lub stronę **Zachowaj bezpieczeństwo konta** , jeśli administrator włączył informacje zabezpieczające. Więcej informacji o zabezpieczeniach znajduje się w temacie Informacje o zabezpieczeniach [(wersja zapoznawcza) — Omówienie](user-help-security-info-overview.md).<br><br>Jeśli nie możesz zarządzać metodami weryfikacji, musisz skontaktować się z administratorem. |
 | Jak mogę zatrzymać korzystanie z tej funkcji i wrócić do korzystania z mojego hasła? | W przypadku kont osobistych wybierz link **zamiast tego użyj hasła** podczas logowania. Ostatni wybór jest zapamiętany i oferowany domyślnie przy następnym logowaniu. Jeśli kiedykolwiek zechcesz wrócić do korzystania z logowania za pomocą telefonu, wybierz łącze **Użyj zamiast niego aplikacji** podczas logowania.<br><br>W przypadku kont służbowych należy wyrejestrować urządzenie ze strony **Ustawienia** aplikacji Microsoft Authenticator lub wyłączyć urządzenie z obszaru **& aktywności urządzeń** w Twoim profilu. Aby uzyskać więcej informacji na temat wyłączania urządzenia z profilu, zobacz [Aktualizowanie informacji o profilu i koncie z portalu My Apps](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information). |
-| Dlaczego nie mogę używać więcej niż jednego konta służbowego do logowania za pomocą telefonu? | Telefon musi być zarejestrowany w ramach jednego konta służbowego. Jeśli chcesz włączyć logowanie za pomocą telefonu dla innego konta służbowego, musisz najpierw wyrejestrować stare urządzenie za pomocą strony **ustawień** . |
+| Dlaczego nie mogę używać więcej niż jednego konta służbowego do logowania za pomocą telefonu? | Telefon musi być zarejestrowany w ramach jednego konta służbowego. Jeśli chcesz włączyć logowanie za pomocą telefonu dla innego konta służbowego, musisz wyrejestrować konto z tego urządzenia za pośrednictwem strony **ustawień** . |
 | Czy mogę zalogować się do komputera przy użyciu telefonu? | W przypadku komputera zalecamy zalogowanie się przy użyciu funkcji Windows Hello w systemie Windows 10. Funkcja Windows Hello umożliwia zalogowanie się przy użyciu wyglądu, odcisku palca lub numeru PIN. |
 
 ## <a name="next-steps"></a>Następne kroki

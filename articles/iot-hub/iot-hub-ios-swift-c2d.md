@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 1875e3437c13a678532c05b4057126f785b9125c
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 544b1108a3c79da50969f7fdd33cfb9af373d854
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147532"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110868"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Wysyłanie komunikatów z chmury do urządzeń za pomocą IoT Hub (iOS)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub to w pełni zarządzana usługa, która pomaga zapewnić niezawodne i niezawodną komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania. Wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-ios.md) pokazuje, jak utworzyć Centrum IoT, zainicjować w nim tożsamość urządzenia i kod aplikacji symulowanego urządzenia, która wysyła komunikaty z urządzenia do chmury.
+Azure IoT Hub to w pełni zarządzana usługa, która pomaga zapewnić niezawodne i niezawodną komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania. [Wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-ios.md) pokazuje, jak utworzyć Centrum IoT, zainicjować w nim tożsamość urządzenia i kod aplikacji symulowanego urządzenia, która wysyła komunikaty z urządzenia do chmury.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
@@ -51,11 +51,13 @@ Na końcu tego artykułu są uruchamiane dwa szybkie projekty systemu iOS:
 
 * Najnowsza wersja menedżera [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
 
+* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 ## <a name="simulate-an-iot-device"></a>Symulowanie urządzenia IoT
 
 W tej sekcji Symulowano urządzenie z systemem iOS z uruchomioną aplikacją, która umożliwia odbieranie komunikatów z chmury do urządzeń z Centrum IoT. 
 
-Jest to przykładowe urządzenie utworzone w artykule wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-ios.md). Jeśli masz już uruchomiony program, możesz pominąć tę sekcję.
+Jest to przykładowe urządzenie utworzone w artykule [wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-ios.md). Jeśli masz już uruchomiony program, możesz pominąć tę sekcję.
 
 ### <a name="install-cocoapods"></a>Instalowanie zasobników CocoaPods
 
@@ -157,11 +159,11 @@ Oprócz instalacji zasobników wymaganych przez projekt polecenie instalacji two
 
 Teraz można przystąpić do korzystania z dwóch aplikacji do wysyłania i odbierania komunikatów z chmury do urządzenia.
 
-1. W przykładowej aplikacji dla **systemu iOS** działającej na symulowanym urządzeniu IoT kliknij przycisk **Uruchom**. Aplikacja uruchamia wysyłanie komunikatów z urządzenia do chmury, ale również zaczyna nasłuchuje komunikatów z chmury do urządzenia.
+1. W **przykładowej aplikacji dla systemu iOS** działającej na symulowanym urządzeniu IoT kliknij przycisk **Uruchom**. Aplikacja uruchamia wysyłanie komunikatów z urządzenia do chmury, ale również zaczyna nasłuchuje komunikatów z chmury do urządzenia.
 
    ![Wyświetlanie przykładowej aplikacji urządzenia IoT](media/iot-hub-ios-swift-c2d/view-d2c.png)
 
-2. W przykładowej aplikacji **klienta usługi IoTHub** działającej na urządzeniu symulowanej usługi wprowadź identyfikator urządzenia IoT, do którego chcesz wysłać wiadomość. 
+2. W **przykładowej aplikacji klienta usługi IoTHub** działającej na urządzeniu symulowanej usługi wprowadź identyfikator urządzenia IoT, do którego chcesz wysłać wiadomość. 
 
 3. Napisz wiadomość w postaci zwykłego tekstu, a następnie kliknij przycisk **Wyślij**.
 

@@ -2,15 +2,15 @@
 title: 'Szybki start: uzyskiwanie odpowiedzi z bazy wiedzy — środowisko REST, Go — QnA Maker'
 description: W tym samouczku Szybki start opartym na protokole REST i języku Go opisano sposób programowego uzyskiwania odpowiedzi z bazy wiedzy.
 ms.topic: quickstart
-ms.date: 01/28/2020
+ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCHANGE-20200128
-ms.openlocfilehash: 2a91342be0f1bfa440d6c4092d94eb03eed554ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a4b3fe6e037b73a33fe452c7c16471bfb88d6067
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844232"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109894"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Szybki Start: uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka go
 

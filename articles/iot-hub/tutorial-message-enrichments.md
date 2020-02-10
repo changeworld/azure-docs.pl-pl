@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2c2ac5d3de37a1a89ebd63b89666f164444e0a63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d16954760d1f2bf11ec5575f912ee32810696590
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773774"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108221"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Samouczek: korzystanie z wzbogacania komunikatów IoT Hub platformy Azure
 
@@ -38,7 +38,10 @@ Poniżej przedstawiono zadania, które należy wykonać w celu wykonania tego sa
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Wymagana jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Instalacja programu [Visual Studio](https://www.visualstudio.com/).
+* Zainstalować program [Visual Studio](https://www.visualstudio.com/).
+
+* Upewnij się, że port 8883 jest otwarty w zaporze. Przykład urządzenia w tym samouczku używa protokołu MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -73,7 +76,7 @@ Jeśli jeszcze tego nie zrobiono, Otwórz [okno Cloud Shell](https://shell.azure
 
 Poniżej przedstawiono zasoby utworzone przez skrypt. *Ulepszony* oznacza, że zasób jest przeznaczony dla komunikatów z wzbogacaniem. *Oryginalna* oznacza, że zasób jest przeznaczony dla komunikatów, które nie są wzbogacane.
 
-| Nazwa | Wartość |
+| Name (Nazwa) | Wartość |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | nazwa kontenera | Oryginał  |
@@ -293,7 +296,7 @@ Za pomocą szablonu Menedżer zasobów można tworzyć i konfigurować zasoby, r
 
    Poniżej przedstawiono zasoby utworzone przez załadowanie szablonu. **Ulepszony** oznacza, że zasób jest przeznaczony dla komunikatów z wzbogacaniem. **Oryginalna** oznacza, że zasób jest przeznaczony dla komunikatów, które nie są wzbogacane. Są to te same wartości, które są używane w skrypcie interfejsu wiersza polecenia platformy Azure.
 
-   | Nazwa | Wartość |
+   | Name (Nazwa) | Wartość |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | nazwa kontenera | Oryginał  |

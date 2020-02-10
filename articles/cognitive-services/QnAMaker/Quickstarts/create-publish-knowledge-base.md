@@ -1,61 +1,55 @@
 ---
 title: 'Szybki Start: Tworzenie, uczenie i publikowanie bazy wiedzy — QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: Ten przewodnik Szybki Start przedstawia sposób tworzenia QnA Maker bazy wiedzy (KB) na podstawie zawartości, na przykład często zadawanych pytań lub podręczników produktów. Baza wiedzy QnA Maker w tym przykładzie jest tworzona na podstawie prostych często zadawanych pytań i odpowiedzi na pytania dotyczące odzyskiwania klucza funkcji BitLocker.
-author: diberry
-manager: nitinme
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Ten artykuł zawiera przykład tworzenia bazy wiedzy QnA Makerej na podstawie prostej strony internetowej często zadawanych pytań i odpowiedzi na nie QnA Maker.
 ms.topic: quickstart
-ms.date: 01/29/2020
-ms.author: diberry
-ms.openlocfilehash: a3bdc118be96630ebcf3bf63a2948976dc9b4261
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/08/2020
+ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901673"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108732"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Szybki Start: Tworzenie, uczenie i publikowanie bazy wiedzy QnA Maker
 
-Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Ten artykuł zawiera przykład tworzenia bazy wiedzy QnA Makerej na podstawie prostej witryny sieci Web często zadawanych pytań i odpowiedzi na pytania dotyczące odzyskiwania klucza funkcji BitLocker.
+Na podstawie własnej zawartości, takiej jak często zadawane pytania lub podręczniki produktów, możesz utworzyć bazę wiedzy usługi QnA Maker. Ten artykuł zawiera przykład tworzenia bazy wiedzy QnA Makerej na podstawie prostej strony internetowej często zadawanych pytań i odpowiedzi na nie QnA Maker.
 
-Uwzględnij osobowość chit-chat, aby Twoja wiedza była bardziej interesująca dla użytkowników.
-
-[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-
-## <a name="prerequisite"></a>Warunek wstępny
+## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!div class="checklist"]
 > * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+> * Utworzono [zasób](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) QnA Maker w Azure Portal. Pamiętaj o IDENTYFIKATORze Azure Active Directory, subskrypcji, nazwie zasobu QnA wybranym podczas tworzenia zasobu.
 
-## <a name="create-a-new-qna-maker-knowledge-base"></a>Tworzenie nowej bazy wiedzy QnA Maker
+## <a name="create-your-first-qna-maker-knowledge-base"></a>Tworzenie pierwszej QnA Maker bazy wiedzy
 
 1. Zaloguj się do portalu [QnAMaker.AI](https://QnAMaker.ai) przy użyciu poświadczeń platformy Azure.
 
 1. W portalu QnA Maker wybierz pozycję **Utwórz bazę wiedzy**.
 
-1. Na stronie **Tworzenie** wybierz pozycję **Utwórz usługę QNA**. Nastąpi przekierowanie do witryny [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) w celu skonfigurowania usługi QnA Maker w ramach subskrypcji.
+1. Na stronie **Tworzenie** przejdź do **kroku 1** , jeśli masz już zasób QNA Maker.
 
-1. W Azure Portal Utwórz zasób. Pamiętaj o IDENTYFIKATORze Azure Active Directory, subskrypcji, nazwie zasobu QnA wybranej podczas tworzenia zasobu.
-1. Wróć do portalu QnA Maker, Odśwież stronę sieci Web w portalu, aby kontynuować tworzenie bazy wiedzy. Wybierz istniejącą dzierżawę, subskrypcję i nowy zasób. Wybierz język. Będzie to język używany dla wszystkich baz wiedzy w tej usłudze QnA Maker.
+    Jeśli jeszcze nie utworzono zasobu, wybierz pozycję **Utwórz usługę QNA**. Nastąpi przekierowanie do witryny [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) w celu skonfigurowania usługi QnA Maker w ramach subskrypcji. Pamiętaj o IDENTYFIKATORze Azure Active Directory, subskrypcji, nazwie zasobu QnA wybranym podczas tworzenia zasobu.
+
+    Po zakończeniu tworzenia zasobu w Azure Portal Wróć do portalu QnA Maker, Odśwież stronę przeglądarki i przejdź do **kroku 2**.
+
+1. W **kroku 3**wybierz pozycję Active Directory, subskrypcję, usługę (zasób) i język dla wszystkich baz wiedzy utworzonych w usłudze.
 
    ![Zrzut ekranu przedstawiający wybór bazy wiedzy usługi QnA Maker Service](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. Nazwij swoją bazę wiedzy, **QNA KB**.
+1. W **kroku 3**nazwij swoją bazę wiedzy **QNA KB**.
 
-1. Dodaj przykładowy dokument programu Word jako adres URL:
+1. W **kroku 4**Skonfiguruj ustawienia w następującej tabeli:
 
-    `https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`
+    |Ustawienie|Wartość|
+    |--|--|
+    |**Włącz wyodrębnianie wieloskładnikowe z adresów URL, plików PDF lub DOCX.**|Zaznaczone|
+    |**Domyślny tekst odpowiedzi**| `Quickstart - default answer not found.`|
+    |**+ Dodaj adres URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**Chit — rozmowa**|Wybierz **profesjonalne**|
 
-1. Wybierz pozycję `+ Add URL`.
+1. W **kroku 5**wybierz pozycję **Utwórz swoją KB**.
 
-1. Dodaj  **_profesjonalne_ Chit — czat** do swojej bazy wiedzy.
-
-1. Wybierz **tworzenie wiedzy**.
-
-    Proces wyodrębniania może potrwać kilka minut, aby zapoznać się z dokumentem i zidentyfikować pytania i odpowiedzi.
+    Proces wyodrębniania zajmuje kilka chwil, aby odczytać dokument i zidentyfikować pytania i odpowiedzi.
 
     Po pomyślnym utworzeniu bazy wiedzy przez QnA Maker zostanie otwarta strona **bazy wiedzy** . Zawartość bazy wiedzy można edytować na tej stronie.
 
@@ -78,7 +72,7 @@ Uwzględnij osobowość chit-chat, aby Twoja wiedza była bardziej interesująca
 
 ## <a name="save-and-train"></a>Zapisywanie i szkolenie
 
-W prawym górnym rogu wybierz pozycję **Zapisz i przeszkol**, aby zapisać wprowadzone zmiany i przeszkolić model usługi QnA Maker. Zmiany nie są przechowywane, o ile nie zostaną zapisane.
+W prawym górnym rogu wybierz pozycję **Zapisz i pouczenie** , aby zapisać zmiany i QNA Maker uczenia. Zmiany nie są przechowywane, o ile nie zostaną zapisane.
 
 ## <a name="test-the-knowledge-base"></a>Testowanie bazy wiedzy
 
@@ -105,7 +99,7 @@ Po opublikowaniu bazy wiedzy zawartość bazy wiedzy jest przenoszona z indeksu 
 
     ![Zrzut ekranu przedstawiający pomyślne opublikowanie](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
 
-## <a name="create-a-bot"></a>Utwórz bota
+## <a name="create-a-bot"></a>Utwórz bot
 
 Po opublikowaniu można utworzyć Bot na stronie **publikowania** :
 
@@ -120,7 +114,7 @@ Po wprowadzeniu zmian w bazie wiedzy i ponownym opublikowaniu nie trzeba podejmo
 
 1. Na stronie tworzenia Azure Bot Service zostanie otwarta nowa karta przeglądarki dla Azure Portal. Skonfiguruj usługę Azure bot. Bot i QnA Maker mogą korzystać z planu usługi aplikacji sieci Web, ale nie mogą udostępniać aplikacji sieci Web. Oznacza to, że **Nazwa aplikacji** dla bot musi być inna niż nazwa aplikacji dla usługi QNA Maker.
 
-    * **Do**
+    * **Nie**
         * Zmień obsługę bot — Jeśli nie jest unikatowa.
         * Wybierz pozycję język zestawu SDK. Po utworzeniu bot można pobrać kod do lokalnego środowiska deweloperskiego i kontynuować proces opracowywania.
     * **Nie**
@@ -145,13 +139,16 @@ Utworzono nową bazę wiedzy, dodano publiczny adres URL do bazy wiedzy, dodano 
 
 Po opublikowaniu bazy wiedzy utworzono bot i przetestowano bot.
 
-Zostało to wykonane w ciągu kilku minut bez konieczności pisania kodu i czyszczenia zawartości.
+Zostało to wykonane w ciągu kilku minut bez konieczności pisania kodu lub czyszczenia zawartości.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Wyczyść QnA Maker i zasoby struktury bot w Azure Portal.
+Jeśli nie chcesz kontynuować korzystania z następnego przewodnika Szybki Start, Usuń QnA Maker i zasoby struktury bot w Azure Portal.
 
 ## <a name="next-steps"></a>Następne kroki
+
+> [!div class="nextstepaction"]
+> [Dodawanie pytań za pomocą metadanych](add-question-metadata-portal.md)
 
 Więcej informacji:
 
@@ -159,5 +156,4 @@ Więcej informacji:
 * QnA Maker [źródła danych](../concepts/knowledge-base.md).
 * [Ustawienia konfiguracji zasobów bot](../tutorials/create-qna-bot.md).
 
-> [!div class="nextstepaction"]
-> [Dodawanie pytań za pomocą metadanych](add-question-metadata-portal.md)
+

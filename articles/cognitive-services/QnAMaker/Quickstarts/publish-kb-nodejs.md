@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 3ca664afc458f794e07782354d0bad5c46c66537
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3df0a486baa2184a58ac33c24a5d13973885890f
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474025"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109507"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Szybki Start: QnA Maker interfejsów API REST dla środowiska Node. js
 
@@ -23,7 +23,7 @@ Rozpocznij pracę z interfejsami API REST QnA Maker dla środowiska Node. js. Wy
 
 Użyj QnA Maker interfejsów API REST dla środowiska Node. js, aby:
 
-* Utwórz bazę wiedzy
+* Tworzenie bazy wiedzy
 * Zastępowanie bazy wiedzy
 * Publikowanie bazy wiedzy
 * Usuwanie bazy wiedzy
@@ -98,7 +98,7 @@ Ustaw następujące wartości środowiskowe:
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
 
-## <a name="create-a-knowledge-base"></a>Utwórz bazę wiedzy
+## <a name="create-a-knowledge-base"></a>Tworzenie bazy wiedzy
 
 Baza wiedzy zapisuje pary pytań i odpowiedzi utworzone na podstawie obiektu JSON:
 
@@ -170,6 +170,6 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 >[Samouczek: Tworzenie i odpowiadanie na KB](../tutorials/create-publish-query-in-portal.md)
 
 * [Co to jest interfejs API usługi QnA Maker?](../Overview/overview.md)
-* [Edytowanie wiedzy](../how-to/edit-knowledge-base.md)
+* [Edytowanie bazy wiedzy](../how-to/edit-knowledge-base.md)
 * [Pobierz analizę użycia](../how-to/get-analytics-knowledge-base.md)
 * Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/rest-api/rest-api.js).

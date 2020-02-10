@@ -8,12 +8,12 @@ ms.date: 01/14/2020
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 5f4728c4b604c606d12edcc7a00879b31e54bc85
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f016902f6cf7e0238dadb97d816f4590caec112e
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264275"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109329"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Rozwiązywanie problemów z kwerendą podczas korzystania z Azure Cosmos DB
 
@@ -224,8 +224,8 @@ Zasady indeksowania:
 Zaktualizowane zapytanie (zawiera obie właściwości w klauzuli `ORDER BY`):
 
 ```sql
-SELECT * FROM c 
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” 
+SELECT * FROM c
+WHERE c.foodGroup = “Soups, Sauces, and Gravies”
 ORDER BY c.foodGroup, c._ts ASC
 ```
 
@@ -262,7 +262,7 @@ Zaktualizowane zasady indeksowania:
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>Optymalizowanie wyrażeń SPRZĘŻENIa przy użyciu podzapytania
 Podzapytania z wieloma wartościami mogą optymalizować wyrażenia `JOIN` przez wypychanie predykatów po każdym wyrażeniu SELECT-wielu, a nie po wszystkich sprzężeniach krzyżowych w klauzuli `WHERE`.
 
-Rozpatrzmy następujące zapytanie:
+Rozważ następujące zapytanie:
 
 ```sql
 SELECT Count(1) AS Count
@@ -315,7 +315,7 @@ Te zapytania byłyby również zoptymalizowane przez dołączenie klucza partycj
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup IN(“Soups, Sauces, and Gravies”, “"Vegetables and Vegetable Products”) and  c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
 Zapytania, które mają filtry zakresu w kluczu partycji lub nie mają żadnych filtrów w kluczu partycji, muszą mieć wartość "wentylator-out" i sprawdzać każdy indeks partycji fizycznej pod kątem wyników.

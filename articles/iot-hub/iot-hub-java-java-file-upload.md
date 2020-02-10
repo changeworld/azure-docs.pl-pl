@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 81b80edcd2e880488e203960f8e2a6aa71b69679
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161832"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110382"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Przekazywanie plików z urządzenia do chmury przy użyciu IoT Hub (Java)
 
@@ -26,10 +26,10 @@ W tym samouczku przedstawiono kod w oknie [wysyłanie komunikatów z chmury do u
 
 * Użyj powiadomień przekazywania plików IoT Hub, aby wyzwolić przetwarzanie pliku w zapleczu aplikacji.
 
-Wysyłanie danych telemetrycznych [z urządzenia do](quickstart-send-telemetry-java.md) przewodnika Szybki Start dotyczącego usługi IoT Hub i [wysyłanie komunikatów z chmury do urządzeń za pomocą](iot-hub-java-java-c2d.md) samouczka IoT Hub przedstawia podstawowe funkcje przesyłania komunikatów z urządzenia do chmury i IoT Hub z chmury do urządzenia. Samouczek [Konfigurowanie routingu komunikatów z IoT Hub](tutorial-routing.md) zawiera opis sposobu niezawodnego przechowywania komunikatów przesyłanych z urządzenia do chmury w usłudze Azure Blob Storage. Jednak w niektórych scenariuszach nie można łatwo zmapować danych wysyłanych przez urządzenia do bezwzględnie niewielkich komunikatów z urządzenia do chmury, które IoT Hub akceptowane. Na przykład:
+[Wysyłanie danych telemetrycznych z urządzenia do](quickstart-send-telemetry-java.md) przewodnika Szybki Start dotyczącego usługi IoT Hub i [wysyłanie komunikatów z chmury do urządzeń za pomocą](iot-hub-java-java-c2d.md) samouczka IoT Hub przedstawia podstawowe funkcje przesyłania komunikatów z urządzenia do chmury i IoT Hub z chmury do urządzenia. Samouczek [Konfigurowanie routingu komunikatów z IoT Hub](tutorial-routing.md) zawiera opis sposobu niezawodnego przechowywania komunikatów przesyłanych z urządzenia do chmury w usłudze Azure Blob Storage. Jednak w niektórych scenariuszach nie można łatwo zmapować danych wysyłanych przez urządzenia do bezwzględnie niewielkich komunikatów z urządzenia do chmury, które IoT Hub akceptowane. Na przykład:
 
 * Duże pliki zawierające obrazy
-* Wideo
+* Filmy wideo
 * Próbkowanie danych drgań z wysoką częstotliwością
 * Niektóre formy wstępnie przetworzonych danych.
 
@@ -52,15 +52,17 @@ Na końcu tego samouczka uruchomisz dwie aplikacje konsolowe Java:
 
 * Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut).
 
+* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Przekazywanie pliku z aplikacji urządzenia
 
 W tej sekcji zmodyfikujesz aplikację urządzenia utworzoną w temacie [wysyłanie komunikatów z chmury do urządzeń za pomocą IoT Hub](iot-hub-java-java-c2d.md) w celu przekazania pliku do usługi IoT Hub.
 
-1. Skopiuj plik obrazu do `simulated-device` folderu i `myimage.png`zmień jego nazwę.
+1. Skopiuj plik obrazu do folderu `simulated-device` i zmień jego nazwę na `myimage.png`.
 
-2. Za pomocą edytora tekstów Otwórz `simulated-device\src\main\java\com\mycompany\app\App.java` plik.
+2. Za pomocą edytora tekstów Otwórz plik `simulated-device\src\main\java\com\mycompany\app\App.java`.
 
 3. Dodaj deklarację zmiennej do klasy **aplikacji** :
 
@@ -122,7 +124,7 @@ W tej sekcji zmodyfikujesz aplikację urządzenia utworzoną w temacie [wysyłan
 
 ## <a name="get-the-iot-hub-connection-string"></a>Pobierz parametry połączenia usługi IoT Hub
 
-W tym artykule opisano tworzenie usługi zaplecza do odbierania komunikatów powiadomień o przekazywaniu plików z Centrum IoT Hub utworzonego w artykule wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-java.md). Aby odbierać komunikaty powiadomień o przekazywaniu plików, usługa musi mieć uprawnienia do **połączenia z usługą** . Domyślnie każdy IoT Hub jest tworzony przy użyciu zasad dostępu współdzielonego o nazwie **Usługa** , która przyznaje to uprawnienie.
+W tym artykule opisano tworzenie usługi zaplecza do odbierania komunikatów powiadomień o przekazywaniu plików z Centrum IoT Hub utworzonego w artykule [wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-java.md). Aby odbierać komunikaty powiadomień o przekazywaniu plików, usługa musi mieć uprawnienia do **połączenia z usługą** . Domyślnie każdy IoT Hub jest tworzony przy użyciu zasad dostępu współdzielonego o nazwie **Usługa** , która przyznaje to uprawnienie.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -136,9 +138,9 @@ W tej sekcji utworzysz aplikację konsolową Java, która odbiera komunikaty pow
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-file-upload-notification -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. W wierszu polecenia przejdź do nowego `read-file-upload-notification` folderu.
+2. W wierszu polecenia przejdź do nowego folderu `read-file-upload-notification`.
 
-3. Za pomocą edytora tekstów Otwórz `pom.xml` plik `read-file-upload-notification` w folderze i Dodaj następujący zależność do węzła **zależności** . Dodanie zależności umożliwia korzystanie z pakietu **iothub-Java-Service-Client** w aplikacji w celu komunikowania się z usługą IoT Hub:
+3. Za pomocą edytora tekstów Otwórz plik `pom.xml` w folderze `read-file-upload-notification` i Dodaj następujący zależność do węzła **zależności** . Dodanie zależności umożliwia korzystanie z pakietu **iothub-Java-Service-Client** w aplikacji w celu komunikowania się z usługą IoT Hub:
 
     ```xml
     <dependency>
@@ -151,9 +153,9 @@ W tej sekcji utworzysz aplikację konsolową Java, która odbiera komunikaty pow
     > [!NOTE]
     > Możesz sprawdzić, czy masz najnowszą wersję **usługi IoT-Service-Client** przy użyciu funkcji [wyszukiwania Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Zapisz i Zamknij `pom.xml` plik.
+4. Zapisz i zamknij plik `pom.xml`.
 
-5. Za pomocą edytora tekstów Otwórz `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` plik.
+5. Za pomocą edytora tekstów Otwórz plik `read-file-upload-notification\src\main\java\com\mycompany\app\App.java`.
 
 6. Dodaj do pliku następujące instrukcje **importowania**:
 
@@ -165,7 +167,7 @@ W tej sekcji utworzysz aplikację konsolową Java, która odbiera komunikaty pow
     import java.util.concurrent.Executors;
     ```
 
-7. Dodaj następujące zmienne na poziomie klasy do klasy **App**. Zastąp wartość [](#get-the-iot-hub-connection-string) symboluzastępczegoparametramipołączeniausługiIoTHub,którezostaływcześniejskopiowanewpoluPobierzparametrypołączeniausługiIoT`{Your IoT Hub connection string}` Hub:
+7. Dodaj następujące zmienne na poziomie klasy do klasy **App**. Zastąp `{Your IoT Hub connection string}` wartość symbolu zastępczego parametrami połączenia usługi IoT Hub skopiowanymi wcześniej w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string):
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";
@@ -228,7 +230,7 @@ W tej sekcji utworzysz aplikację konsolową Java, która odbiera komunikaty pow
     }
     ```
 
-10. Zapisz i Zamknij `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` plik.
+10. Zapisz i zamknij plik `read-file-upload-notification\src\main\java\com\mycompany\app\App.java`.
 
 11. Użyj następującego polecenia, aby skompilować aplikację **Read-File-Upload-Notification** i wyszukać błędy:
 
@@ -240,13 +242,13 @@ W tej sekcji utworzysz aplikację konsolową Java, która odbiera komunikaty pow
 
 Teraz wszystko jest gotowe do uruchomienia aplikacji.
 
-W wierszu polecenia w `read-file-upload-notification` folderze Uruchom następujące polecenie:
+W wierszu polecenia w folderze `read-file-upload-notification` Uruchom następujące polecenie:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-W wierszu polecenia w `simulated-device` folderze Uruchom następujące polecenie:
+W wierszu polecenia w folderze `simulated-device` Uruchom następujące polecenie:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"

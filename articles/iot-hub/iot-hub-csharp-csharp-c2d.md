@@ -9,22 +9,22 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 99acd43128bedcf3dba470f84c0a406861d77e2d
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 7805b9b3f000b2bc2e45272ab9ff469d5711e581
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147791"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110199"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Wysyłanie komunikatów z chmury do urządzenia przy użyciu IoT Hub (.NET)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub to w pełni zarządzana usługa, która pomaga zapewnić niezawodne i niezawodną komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania. Wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md) pokazuje, jak utworzyć Centrum IoT, zainicjować w nim tożsamość urządzenia i kod aplikacji urządzenia, która wysyła komunikaty z urządzenia do chmury.
+Azure IoT Hub to w pełni zarządzana usługa, która pomaga zapewnić niezawodne i niezawodną komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania. [Wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md) pokazuje, jak utworzyć Centrum IoT, zainicjować w nim tożsamość urządzenia i kod aplikacji urządzenia, która wysyła komunikaty z urządzenia do chmury.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Ten samouczek kompiluje na temat wysyłania danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md). Przedstawiono w nim sposób wykonywania następujących zadań:
+Ten samouczek kompiluje na temat [wysyłania danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md). Przedstawiono w nim sposób wykonywania następujących zadań:
 
 * Z zaplecza rozwiązania Wyślij komunikaty z chmury do urządzenia do jednego urządzenia za pośrednictwem IoT Hub.
 
@@ -49,6 +49,8 @@ Na końcu tego samouczka uruchamiasz dwie aplikacje konsolowe programu .NET.
 * Visual Studio
 
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
+
+* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="receive-messages-in-the-device-app"></a>Odbieranie wiadomości w aplikacji urządzenia
 
@@ -75,25 +77,25 @@ W tej sekcji zmodyfikuj aplikację urządzenia utworzoną w obszarze Wysyłanie 
     }
    ```
 
-1. Dodaj następującą metodę w metodzie **Main** , bezpośrednio przed `Console.ReadLine()` wierszem:
+1. Dodaj następującą metodę w metodzie **Main** bezpośrednio przed wierszem `Console.ReadLine()`:
 
    ```csharp
    ReceiveC2dAsync();
    ```
 
-`ReceiveAsync` Metoda asynchronicznie zwraca odebraną wiadomość w momencie odebrania jej przez urządzenie. Zwraca *wartość null* po określonym okresie limitu czasu. W tym przykładzie użyto domyślnie jednej minuty. Gdy aplikacja otrzymuje *wartość null*, powinna nadal czekać na nowe komunikaty. To wymaganie jest przyczyną dla `if (receivedMessage == null) continue` wiersza.
+Metoda `ReceiveAsync` asynchronicznie zwraca odebraną wiadomość w momencie odebrania jej przez urządzenie. Zwraca *wartość null* po określonym okresie limitu czasu. W tym przykładzie użyto domyślnie jednej minuty. Gdy aplikacja otrzymuje *wartość null*, powinna nadal czekać na nowe komunikaty. To wymaganie jest przyczyną `if (receivedMessage == null) continue` wiersza.
 
-Wywołanie `CompleteAsync()` powiadamia IoT Hub, że komunikat został pomyślnie przetworzony. Komunikat można bezpiecznie usunąć z kolejki urządzeń. Jeśli wystąpił problem uniemożliwiający ukończenie przetwarzania komunikatu przez aplikację urządzenia, program IoT Hub go ponownie pomoże. Logika przetwarzania wiadomości w aplikacji urządzenia musi być *idempotentne*, tak aby ten sam komunikat wielokrotnie generował ten sam wynik.
+Wywołanie `CompleteAsync()` powiadamia IoT Hub o pomyślnym przetworzeniu komunikatu. Komunikat można bezpiecznie usunąć z kolejki urządzeń. Jeśli wystąpił problem uniemożliwiający ukończenie przetwarzania komunikatu przez aplikację urządzenia, program IoT Hub go ponownie pomoże. Logika przetwarzania wiadomości w aplikacji urządzenia musi być *idempotentne*, tak aby ten sam komunikat wielokrotnie generował ten sam wynik.
 
 Aplikacja może również tymczasowo porzucić komunikat, co spowoduje, że w usłudze IoT Hub zachowywanie komunikatu w kolejce do użycia w przyszłości. Lub aplikacja może odrzucić komunikat, który trwale usuwa komunikat z kolejki. Aby uzyskać więcej informacji na temat cyklu życia komunikatów z chmury do urządzenia, zobacz [D2C i C2D Messaging with IoT Hub](iot-hub-devguide-messaging.md).
 
    > [!NOTE]
-   > W `ReceiveAsync` przypadku korzystania z protokołu HTTPS zamiast MQTT lub AMQP jako transportu Metoda wraca natychmiast. Obsługiwany wzorzec dla komunikatów z chmury do urządzenia z protokołem HTTPS jest sporadycznie połączonymi urządzeniami, które często sprawdzają obecność komunikatów (mniej niż co 25 minut). Wydawanie większej liczby odbieranych przez protokół HTTPS powoduje IoT Hub ograniczanie żądań. Aby uzyskać więcej informacji o różnicach między obsługą MQTT, AMQP i HTTPS, a IoT Hub ograniczania, zobacz [D2C i C2D Messaging with IoT Hub](iot-hub-devguide-messaging.md).
+   > W przypadku korzystania z protokołu HTTPS zamiast MQTT lub AMQP jako transportu Metoda `ReceiveAsync` zwraca natychmiast. Obsługiwany wzorzec dla komunikatów z chmury do urządzenia z protokołem HTTPS jest sporadycznie połączonymi urządzeniami, które często sprawdzają obecność komunikatów (mniej niż co 25 minut). Wydawanie większej liczby odbieranych przez protokół HTTPS powoduje IoT Hub ograniczanie żądań. Aby uzyskać więcej informacji o różnicach między obsługą MQTT, AMQP i HTTPS, a IoT Hub ograniczania, zobacz [D2C i C2D Messaging with IoT Hub](iot-hub-devguide-messaging.md).
    >
 
 ## <a name="get-the-iot-hub-connection-string"></a>Pobierz parametry połączenia usługi IoT Hub
 
-W tym artykule opisano tworzenie usługi zaplecza do wysyłania komunikatów z chmury do urządzenia za pośrednictwem Centrum IoT utworzonego w artykule wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md). Aby można było wysyłać komunikaty z chmury do urządzenia, usługa wymaga uprawnień do **połączenia z usługą** . Domyślnie każdy IoT Hub jest tworzony przy użyciu zasad dostępu współdzielonego o nazwie **Usługa** , która przyznaje to uprawnienie.
+W tym artykule opisano tworzenie usługi zaplecza do wysyłania komunikatów z chmury do urządzenia za pośrednictwem Centrum IoT utworzonego w artykule [wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md). Aby można było wysyłać komunikaty z chmury do urządzenia, usługa wymaga uprawnień do **połączenia z usługą** . Domyślnie każdy IoT Hub jest tworzony przy użyciu zasad dostępu współdzielonego o nazwie **Usługa** , która przyznaje to uprawnienie.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -113,7 +115,7 @@ Teraz napiszesz aplikację konsolową .NET, która wysyła komunikaty z chmury d
 
    Ten krok spowoduje pobranie, zainstalowanie i dodanie odwołania do [pakietu NuGet zestawu SDK usługi Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/).
 
-1. Dodaj następującą `using` instrukcję w górnej części pliku **program.cs** .
+1. Dodaj następującą instrukcję `using` w górnej części pliku **program.cs** .
 
    ``` csharp
    using Microsoft.Azure.Devices;
@@ -126,7 +128,7 @@ Teraz napiszesz aplikację konsolową .NET, która wysyła komunikaty z chmury d
    static string connectionString = "{iot hub connection string}";
    ```
 
-1. Dodaj następującą metodę do klasy **Program**. Ustaw nazwę urządzenia na wartość używaną podczas definiowania urządzenia w usłudze wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md).
+1. Dodaj następującą metodę do klasy **Program**. Ustaw nazwę urządzenia na wartość używaną podczas definiowania urządzenia w usłudze [wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md).
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
@@ -137,7 +139,7 @@ Teraz napiszesz aplikację konsolową .NET, która wysyła komunikaty z chmury d
    }
    ```
 
-   Ta metoda wysyła do urządzenia nowy komunikat z chmury do urządzenia z IDENTYFIKATORem, `myFirstDevice`. Ten parametr należy zmienić tylko wtedy, gdy został zmodyfikowany z poziomu używanego w wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md).
+   Ta metoda wysyła do urządzenia nowy komunikat z chmury do urządzenia z IDENTYFIKATORem, `myFirstDevice`. Ten parametr należy zmienić tylko wtedy, gdy został zmodyfikowany z poziomu używanego w [wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-dotnet.md).
 
 1. Na koniec Dodaj następujące wiersze do metody **Main** .
 
@@ -153,7 +155,7 @@ Teraz napiszesz aplikację konsolową .NET, która wysyła komunikaty z chmury d
 
 1. W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy, a następnie wybierz pozycję **Ustaw projekty startowe**.
 
-1. W polu**projekt startowy** **Właściwości** > wspólne wybierz opcję **wiele projektów startowych**, a następnie wybierz akcję **Rozpocznij** dla **ReadDeviceToCloudMessages**, **SimulatedDevice**i **SendCloudToDevice** . Aby zapisać zmiany, wybierz pozycję **OK**.
+1. W obszarze **wspólne właściwości** > **projekt startowy**wybierz pozycję **wiele projektów startowych**, a następnie wybierz akcję **Rozpocznij** dla **ReadDeviceToCloudMessages**, **SimulatedDevice**i **SendCloudToDevice**. Aby zapisać zmiany, wybierz pozycję **OK**.
 
 1. Naciśnij klawisz **F5**. Należy uruchomić wszystkie trzy aplikacje. Wybierz **SendCloudToDevice** systemu Windows, a następnie naciśnij klawisz **Enter**. Powinien zostać wyświetlony komunikat, który jest odbierany przez aplikację urządzenia.
 
@@ -190,13 +192,13 @@ W tej sekcji zmodyfikujesz aplikację **SendCloudToDevice** , aby żądać opini
 
     Uwaga Ten wzorzec odbierania jest taki sam, jak w przypadku otrzymywania komunikatów z chmury do urządzenia z aplikacji urządzenia.
 
-1. Dodaj następujący wiersz w metodzie **Main** , po `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)`prawej stronie.
+1. Dodaj następujący wiersz w metodzie **Main** bezpośrednio po `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)`.
 
    ``` csharp
    ReceiveFeedbackAsync();
    ```
 
-1. Aby zażądać opinii o dostarczeniu komunikatu z chmury do urządzenia, należy określić właściwość w metodzie **SendCloudToDeviceMessageAsync** . Dodaj następujący wiersz, bezpośrednio po `var commandMessage = new Message(...);` wierszu.
+1. Aby zażądać opinii o dostarczeniu komunikatu z chmury do urządzenia, należy określić właściwość w metodzie **SendCloudToDeviceMessageAsync** . Dodaj następujący wiersz, bezpośrednio po wierszu `var commandMessage = new Message(...);`.
 
    ``` csharp
    commandMessage.Ack = DeliveryAcknowledgement.Full;

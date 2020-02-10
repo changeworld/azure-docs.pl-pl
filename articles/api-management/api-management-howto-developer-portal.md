@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898834"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108244"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Portal deweloperów API Management platformy Azure — omówienie
 
@@ -39,7 +39,7 @@ W tym artykule opisano różnice między samodzielnymi i zarządzanymi wersjami 
 Portal dla deweloperów można skompilować na dwa sposoby:
 
 - **Wersja zarządzana** — edytując i dostosowując Portal, który jest wbudowany w wystąpienie API Management i jest dostępny za pomocą adresu URL `<your-api-management-instance-name>.developer.azure-api.net`. Zapoznaj się z [tym artykułem dokumentacji](api-management-howto-developer-portal-customize.md) , aby dowiedzieć się, jak uzyskać dostęp do portalu zarządzanego i dostosować go.
-- **Samodzielna wersja** — przez wdrożenie i samodzielne hostowanie portalu poza wystąpieniem API Management. Takie podejście umożliwia edytowanie bazy kodu portalu i poszerzanie podanych funkcji podstawowych. Należy również samodzielnie uaktualnić Portal do najnowszej wersji. Aby uzyskać szczegółowe informacje i instrukcje, zapoznaj się z [repozytorium GitHub za pomocą kodu źródłowego portalu][1] i [samouczka dotyczącego implementacji widżetu][4]. Samouczek dotyczący [zarządzanej wersji](api-management-howto-developer-portal-customize.md) przeprowadzi Cię przez panel administracyjny portalu, który jest również oferowany w wersji samohostowanej.
+- **Samodzielna wersja** — przez wdrożenie i samodzielne hostowanie portalu poza wystąpieniem API Management. Takie podejście umożliwia edytowanie bazy kodu portalu i poszerzanie podanych funkcji podstawowych. Należy również samodzielnie uaktualnić Portal do najnowszej wersji. Aby uzyskać szczegółowe informacje i instrukcje, zapoznaj się z [repozytorium GitHub za pomocą kodu źródłowego portalu][1] i [samouczka dotyczącego implementacji widżetu][3]. Samouczek dotyczący [zarządzanej wersji](api-management-howto-developer-portal-customize.md) przeprowadzi Cię przez panel administracyjny portalu, który jest również oferowany w wersji samohostowanej.
 
 ## <a name="portal-architectural-concepts"></a>Koncepcje architektury portalu
 
@@ -98,13 +98,13 @@ Uwierzytelnianie za pomocą protokołu OAuth w interaktywnej konsoli dewelopera 
 
 ### <a name="has-the-old-portal-been-deprecated"></a>Czy stary Portal jest przestarzały?
 
-Stary Portal deweloperów i wydawców ma teraz *starsze* funkcje — będą otrzymywać tylko aktualizacje zabezpieczeń. Nowe funkcje będą wdrażane tylko w nowym portalu deweloperów.
+Stary Portal deweloperów i wydawców ma teraz *starsze* funkcje — będą otrzymywać tylko aktualizacje zabezpieczeń. Nowe funkcje zostaną zaimplementowane tylko w nowym portalu dla deweloperów.
 
 Wycofanie starszych portali zostanie ogłoszone osobno. Jeśli masz pytania, wątpliwości lub komentarze, zgłoś je [w ramach dedykowanego problemu usługi GitHub](https://github.com/Azure/api-management-developer-portal/issues/121).
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>Wymagana funkcjonalność nie jest obsługiwana w portalu
 
-Użyj samodzielnie hostowanej wersji i [Zaimplementuj własny element widget][4].
+Użyj samodzielnie hostowanej wersji i [Zaimplementuj własny element widget][3].
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Jak można zautomatyzować wdrożenia portalu?
 
@@ -140,7 +140,7 @@ Większość zmian konfiguracji (na przykład Sieć wirtualna, logowanie i warun
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>Otrzymuję błąd CORS podczas korzystania z konsoli interaktywnej
 
-Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z przeglądarki. Problem CORS można rozwiązać, dodając [zasady CORS](api-management-cross-domain-policies.md#CORS) w interfejsach API. Możesz określić wszystkie parametry ręcznie lub użyć symboli wieloznacznych `*`. Przykład:
+Konsola interaktywna wykonuje żądanie interfejsu API po stronie klienta z przeglądarki. Problem CORS można rozwiązać, dodając [zasady CORS](api-management-cross-domain-policies.md#CORS) w interfejsach API. Możesz określić wszystkie parametry ręcznie lub użyć symboli wieloznacznych `*`. Na przykład:
 
 ```XML
 <cors>
@@ -232,14 +232,12 @@ Dowiedz się więcej o nowym portalu dla deweloperów:
 
 - [Dostęp do zarządzanego portalu deweloperów i dostosowywanie go](api-management-howto-developer-portal-customize.md)
 - [Skonfiguruj samodzielną wersję portalu][2]
-- [Implementowanie własnego widżetu][4]
+- [Implementowanie własnego widżetu][3]
 
 Przeglądaj inne zasoby:
 
 - [Repozytorium GitHub z kodem źródłowym][1]
-- [Publiczny plan projektu][3]
 
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
-[3]: https://github.com/Azure/api-management-developer-portal/projects
-[4]: https://aka.ms/apimdevportal/extend
+[3]: https://aka.ms/apimdevportal/extend

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 02/08/2020
 ms.author: helohr
-ms.openlocfilehash: 472b8800a09cb12bc3e703ef53d0aab2b578e0d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 92e11edf3b28017ac73702e3f71dfc491d3986e3
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460218"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110628"
 ---
 # <a name="connect-with-the-ios-client"></a>Nawiązywanie połączenia z klientem systemu iOS
 
@@ -34,12 +34,12 @@ Aby subskrybować źródło danych:
 2. Wprowadź adres URL źródła danych w polu **adres URL źródła danych** . Adres URL źródła danych może być adresem URL lub adresem e-mail.
    - Jeśli używasz adresu URL, użyj tego administratora. Zwykle adres URL jest <https://rdweb.wvd.microsoft.com>.
    - Aby użyć poczty e-mail, wprowadź swój adres e-mail. Oznacza to, że klient może wyszukać adres URL skojarzony z Twoim adresem e-mail, jeśli administrator skonfigurował serwer w taki sposób.
-3. Naciśnij opcję **Dalej**.
+3. Naciśnij przycisk **dalej**.
 4. Po wyświetleniu monitu podaj swoje poświadczenia.
    - W polu **Nazwa użytkownika**Nadaj nazwę użytkownikowi uprawnienia dostępu do zasobów.
    - W polu **hasło**Podaj hasło skojarzone z nazwą użytkownika.
    - Może być również wyświetlony monit o podanie dodatkowych czynników, jeśli administrator skonfigurował uwierzytelnianie w taki sposób.
-5. Wybierz **zapisać**.
+5. Naciśnij pozycję **Zapisz**.
 
 Po wykonaniu tej czynności centrum połączenia powinno wyświetlić zasoby zdalne.
 
@@ -47,4 +47,4 @@ Po zasubskrybowaniu kanału informacyjnego zawartość kanału informacyjnego b�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat korzystania z klienta systemu iOS beta, zapoznaj się z dokumentacją dotyczącą rozpoczynania [pracy z klientem systemu iOS](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios) .
+Aby dowiedzieć się więcej na temat korzystania z klienta systemu iOS, zapoznaj się z dokumentacją dotyczącą rozpoczynania [pracy z klientem systemu iOS](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios) .

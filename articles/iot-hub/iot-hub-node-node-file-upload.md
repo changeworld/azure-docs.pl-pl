@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 8747111921df494b8d5618dc8d6ece99fa821e47
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: db3da5ff2d7e8b6fa493f5338fac93df0d1a7fe2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147629"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110898"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Przekazywanie plików z urządzenia do chmury przy użyciu IoT Hub (Node. js)
 
@@ -26,10 +26,10 @@ W tym samouczku przedstawiono kod w oknie [wysyłanie komunikatów z chmury do u
 
 * Użyj powiadomień przekazywania plików IoT Hub, aby wyzwolić przetwarzanie pliku w zapleczu aplikacji.
 
-Wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-node.md) przedstawia podstawowe funkcje obsługi komunikatów z urządzenia do chmury IoT Hub. Jednak w niektórych scenariuszach nie można łatwo zmapować danych wysyłanych przez urządzenia do bezwzględnie niewielkich komunikatów z urządzenia do chmury, które IoT Hub akceptowane. Na przykład:
+[Wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-node.md) przedstawia podstawowe funkcje obsługi komunikatów z urządzenia do chmury IoT Hub. Jednak w niektórych scenariuszach nie można łatwo zmapować danych wysyłanych przez urządzenia do bezwzględnie niewielkich komunikatów z urządzenia do chmury, które IoT Hub akceptowane. Na przykład:
 
 * Duże pliki zawierające obrazy
-* Wideo
+* Filmy wideo
 * Próbkowanie danych drgań z wysoką częstotliwością
 * Niektóre formy wstępnie przetworzonych danych.
 
@@ -49,6 +49,8 @@ Na końcu tego samouczka uruchomisz dwie aplikacje konsolowe środowiska Node. j
 * Node. js w wersji 10.0. x lub nowszej. [Przygotuj środowisko programistyczne](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) , w którym opisano sposób instalowania środowiska Node. js na potrzeby tego samouczka w systemie Windows lub Linux.
 
 * Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut).
+
+* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -80,7 +82,7 @@ W tej sekcji utworzysz aplikację urządzenia w celu przekazania pliku do centru
     var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
     ```
 
-5. Dodaj zmienną `deviceconnectionstring` i użyj jej do utworzenia wystąpienia **Client**.  Zamień `{deviceconnectionstring}` na nazwę urządzenia utworzonego w sekcji *Tworzenie IoT Hub* :
+5. Dodaj zmienną `deviceconnectionstring` i użyj jej do utworzenia wystąpienia **Client**.  Zastąp `{deviceconnectionstring}` nazwą urządzenia utworzonego w sekcji *tworzenie IoT Hub* :
 
     ```javascript
     var connectionString = '{deviceconnectionstring}';
@@ -115,11 +117,11 @@ W tej sekcji utworzysz aplikację urządzenia w celu przekazania pliku do centru
 
 8. Zapisz i zamknij plik **SimulatedDevice.js**.
 
-9. Skopiuj plik obrazu do `simulateddevice` folderu i `myimage.png`zmień jego nazwę.
+9. Skopiuj plik obrazu do folderu `simulateddevice` i zmień jego nazwę na `myimage.png`.
 
 ## <a name="get-the-iot-hub-connection-string"></a>Pobierz parametry połączenia usługi IoT Hub
 
-W tym artykule opisano tworzenie usługi zaplecza do odbierania komunikatów powiadomień o przekazywaniu plików z Centrum IoT Hub utworzonego w artykule wysyłanie danych telemetrycznych [z urządzenia do centrum IoT Hub](quickstart-send-telemetry-node.md). Aby odbierać komunikaty powiadomień o przekazywaniu plików, usługa musi mieć uprawnienia do **połączenia z usługą** . Domyślnie każdy IoT Hub jest tworzony przy użyciu zasad dostępu współdzielonego o nazwie **Usługa** , która przyznaje to uprawnienie.
+W tym artykule opisano tworzenie usługi zaplecza do odbierania komunikatów powiadomień o przekazywaniu plików z Centrum IoT Hub utworzonego w artykule [wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-node.md). Aby odbierać komunikaty powiadomień o przekazywaniu plików, usługa musi mieć uprawnienia do **połączenia z usługą** . Domyślnie każdy IoT Hub jest tworzony przy użyciu zasad dostępu współdzielonego o nazwie **Usługa** , która przyznaje to uprawnienie.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -127,7 +129,7 @@ W tym artykule opisano tworzenie usługi zaplecza do odbierania komunikatów pow
 
 W tej sekcji utworzysz aplikację konsolową środowiska Node. js, która odbiera komunikaty powiadomień o przekazaniu plików z IoT Hub.
 
-Możesz użyć parametrów połączenia **iothubowner** z IoT Hub, aby ukończyć tę sekcję. Parametry połączenia można znaleźć w [Azure Portal](https://portal.azure.com/) w bloku **zasady dostępu** współużytkowanego.
+Możesz użyć parametrów połączenia **iothubowner** z IoT Hub, aby ukończyć tę sekcję. Parametry połączenia można znaleźć w [Azure Portal](https://portal.azure.com/) w bloku **zasady dostępu współużytkowanego** .
 
 1. Utwórz pusty folder o nazwie ```fileuploadnotification```.  W folderze ```fileuploadnotification``` utwórz plik package.json, uruchamiając następujące polecenie w wierszu polecenia.  Zaakceptuj wszystkie ustawienia domyślne:
 
@@ -135,15 +137,15 @@ Możesz użyć parametrów połączenia **iothubowner** z IoT Hub, aby ukończy�
     npm init
     ```
 
-2. W wierszu polecenia w ```fileuploadnotification``` folderze Uruchom następujące polecenie, aby zainstalować pakiet **Azure-iothub** SDK:
+2. W wierszu polecenia w folderze ```fileuploadnotification``` Uruchom następujące polecenie, aby zainstalować pakiet **Azure-iothub** SDK:
 
     ```cmd/sh
     npm install azure-iothub --save
     ```
 
-3. Za pomocą edytora tekstów Utwórz plik **FileUploadNotification. js** w `fileuploadnotification` folderze.
+3. Za pomocą edytora tekstów Utwórz plik **FileUploadNotification. js** w folderze `fileuploadnotification`.
 
-4. Dodaj następujące `require` instrukcje na początku pliku **FileUploadNotification. js** :
+4. Dodaj następujące instrukcje `require` na początku pliku **FileUploadNotification. js** :
 
     ```javascript
     'use strict';
@@ -151,7 +153,7 @@ Możesz użyć parametrów połączenia **iothubowner** z IoT Hub, aby ukończy�
     var Client = require('azure-iothub').Client;
     ```
 
-5. Dodaj zmienną `iothubconnectionstring` i użyj jej do utworzenia wystąpienia **Client**.  Zastąp wartość [](#get-the-iot-hub-connection-string) symboluzastępczegoparametramipołączeniausługiIoTHub,którezostaływcześniejskopiowanewpoluPobierzparametrypołączeniausługiIoT`{iothubconnectionstring}` Hub:
+5. Dodaj zmienną `iothubconnectionstring` i użyj jej do utworzenia wystąpienia **Client**.  Zastąp `{iothubconnectionstring}` wartość symbolu zastępczego parametrami połączenia usługi IoT Hub skopiowanymi wcześniej w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string):
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -194,13 +196,13 @@ Możesz użyć parametrów połączenia **iothubowner** z IoT Hub, aby ukończy�
 
 Teraz wszystko jest gotowe do uruchomienia aplikacji.
 
-W wierszu polecenia w `fileuploadnotification` folderze Uruchom następujące polecenie:
+W wierszu polecenia w folderze `fileuploadnotification` Uruchom następujące polecenie:
 
 ```cmd/sh
 node FileUploadNotification.js
 ```
 
-W wierszu polecenia w `simulateddevice` folderze Uruchom następujące polecenie:
+W wierszu polecenia w folderze `simulateddevice` Uruchom następujące polecenie:
 
 ```cmd/sh
 node SimulatedDevice.js

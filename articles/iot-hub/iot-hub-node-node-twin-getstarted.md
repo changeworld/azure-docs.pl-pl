@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: 02ff65b27e03db9e9a48910e23d8ebf46de905a5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 55dc7f73a3e5bbff2e6e331ba0bd7d4088a86536
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060729"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110835"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Rozpoczynanie pracy z usługą Device bliźniaczych reprezentacji (Node. js)
 
@@ -37,6 +37,8 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut).
 
+* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
@@ -55,7 +57,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 W tej sekcji utworzysz aplikację konsolową środowiska Node. js, która dodaje metadane lokalizacji do sznurka urządzenia skojarzonego z **myDeviceId**. Następnie wysyła zapytanie do bliźniaczych reprezentacji urządzenia przechowywanego w usłudze IoT Hub, wybierając urządzenia znajdujące się w Stanach Zjednoczonych, a następnie te, które zgłaszają połączenie komórkowe.
 
-1. Utwórz nowy pusty folder o nazwie **addtagsandqueryapp**. W folderze **addtagsandqueryapp** Utwórz nowy plik Package. JSON przy użyciu następującego polecenia z poziomu wiersza polecenia. `--yes` Parametr akceptuje wszystkie wartości domyślne.
+1. Utwórz nowy pusty folder o nazwie **addtagsandqueryapp**. W folderze **addtagsandqueryapp** Utwórz nowy plik Package. JSON przy użyciu następującego polecenia z poziomu wiersza polecenia. Parametr `--yes` akceptuje wszystkie wartości domyślne.
 
     ```cmd/sh
     npm init --yes
@@ -69,7 +71,7 @@ W tej sekcji utworzysz aplikację konsolową środowiska Node. js, która dodaje
 
 3. Za pomocą edytora tekstów Utwórz nowy plik **AddTagsAndQuery. js** w folderze **addtagsandqueryapp** .
 
-4. Dodaj następujący kod do pliku **AddTagsAndQuery. js** . Zamień `{iot hub connection string}` na IoT Hub parametry połączenia, które zostały skopiowane w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string).
+4. Dodaj następujący kod do pliku **AddTagsAndQuery. js** . Zastąp `{iot hub connection string}` parametrami połączenia IoT Hub skopiowanymi w polu [Pobierz parametry połączenia z usługą IoT Hub](#get-the-iot-hub-connection-string).
 
    ``` javascript
         'use strict';
@@ -150,7 +152,7 @@ W następnej sekcji utworzysz aplikację urządzenia, która zgłosi informacje 
 
 W tej sekcji utworzysz aplikację konsolową w języku Node. js, która łączy się z centrum jako **myDeviceId**, a następnie aktualizuje raportowane właściwości z użyciem sznurka urządzenia, aby zawierała informacje, które są połączone z siecią komórkową.
 
-1. Utwórz nowy pusty folder o nazwie **reportconnectivity**. W folderze **reportconnectivity** Utwórz nowy plik Package. JSON przy użyciu następującego polecenia z poziomu wiersza polecenia. `--yes` Parametr akceptuje wszystkie wartości domyślne.
+1. Utwórz nowy pusty folder o nazwie **reportconnectivity**. W folderze **reportconnectivity** Utwórz nowy plik Package. JSON przy użyciu następującego polecenia z poziomu wiersza polecenia. Parametr `--yes` akceptuje wszystkie wartości domyślne.
 
     ```cmd/sh
     npm init --yes
@@ -164,7 +166,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Node. js, która łączy 
 
 3. Za pomocą edytora tekstów Utwórz nowy plik **ReportConnectivity. js** w folderze **ReportConnectivity** .
 
-4. Dodaj następujący kod do pliku **ReportConnectivity. js** . Zamień `{device connection string}` na parametry połączenia urządzenia skopiowane podczas tworzenia tożsamości urządzenia **myDeviceId** w temacie [Rejestrowanie nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
+4. Dodaj następujący kod do pliku **ReportConnectivity. js** . Zastąp `{device connection string}` parametrami połączenia urządzenia skopiowanymi podczas tworzenia tożsamości urządzenia **myDeviceId** w temacie [Rejestrowanie nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
 
     ```javascript
         'use strict';

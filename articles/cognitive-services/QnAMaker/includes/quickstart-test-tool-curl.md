@@ -8,69 +8,477 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 11/20/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 0677a361e853f778894b6a62a054636e3276b364
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 24299ea999ecb45f60f00d8b84c70cf748e9d0c2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424412"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109635"
 ---
 Ten przewodnik Szybki Start przeprowadzi Cię przez proces uzyskiwania odpowiedzi z bazy wiedzy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Najnowsze [**zwinięcie**](https://curl.haxx.se/).
-* Konieczne jest posiadanie [usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md) oraz [bazy wiedzy zawierającej pytania i odpowiedzi](../Tutorials/create-publish-query-in-portal.md).
+* Musisz mieć
+    * [Usługa QNA Maker](../How-To/set-up-qnamaker-service-azure.md)
+    * Przeszkolony i opublikowany baza wiedzy z pytaniami i odpowiedziami, z poprzedniego [przewodnika Szybki Start](../Quickstarts/add-question-metadata-portal.md), skonfigurowanych za pomocą metadanych i Chit Chat.
 
-## <a name="publish-to-get-endpoint"></a>Publikowanie w celu pobrania punktu końcowego
+> [!NOTE]
+> Gdy wszystko jest gotowe do wygenerowania odpowiedzi na pytanie z bazy wiedzy, należy przeprowadzić [uczenie](../Quickstarts/create-publish-knowledge-base.md#save-and-train) i [opublikować](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) bazę wiedzy. Po opublikowaniu bazy wiedzy na stronie **Publikowanie** zostaną wyświetlone ustawienia żądania HTTP do generowania odpowiedzi. Na karcie **zwinięcie** są wyświetlane ustawienia wymagane do wygenerowania odpowiedzi z narzędzia wiersza polecenia.
 
-Aby wygenerować odpowiedź na pytanie z bazy wiedzy, [opublikuj](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) bazę wiedzy.
+## <a name="use-metadata-to-filter-answer"></a>Filtrowanie odpowiedzi przy użyciu metadanych
 
-## <a name="use-production-endpoint-with-curl"></a>Użyj punktu końcowego produkcji z zwinięciem
+Skorzystaj z bazy wiedzy z poprzedniej szybkiej kwerendy, aby uzyskać odpowiedzi na podstawie metadanych.
 
-Po opublikowaniu bazy wiedzy na stronie **Publikowanie** zostaną wyświetlone ustawienia żądania HTTP do generowania odpowiedzi. Na karcie **zwinięcie** są wyświetlane ustawienia wymagane do wygenerowania odpowiedzi z narzędzia wiersza polecenia, [zwinięcie](https://www.getpostman.com).
-
-[![Publikowanie wyników](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
-
-Aby wygenerować odpowiedź z ZWINIĘCIEm, wykonaj następujące czynności:
-
-1. Skopiuj tekst na karcie ZWINIĘCIE. 
-1. Otwórz wiersz polecenia lub terminal i wklej tekst.
-1. Edytuj pytanie, aby mieć istotne znaczenie dla bazy wiedzy. Należy zachować ostrożność, aby nie usuwać zawierającej kodu JSON otaczającego pytanie.
-1. Wprowadź polecenie. 
-1. Odpowiedź zawiera odpowiednie informacje dotyczące odpowiedzi. 
+1. Na stronie **Ustawienia** bazy wiedzy wybierz kartę **zwinięcie** , aby zobaczyć przykładowe polecenie zwinięcie użyte do wygenerowania odpowiedzi z bazy wiedzy.
+1. Skopiuj polecenie do środowiska do edycji (takiego jak plik tekstowy), aby można było edytować polecenie. Edytuj wartość pytania w następujący sposób, aby metadane `service:qna_maker` były używane jako filtr dla zestawów QnA.
 
     ```bash
-    > curl -X POST https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/1111f8c-d01b-4698-a2de-85b0dbf3358c/generateAnswer -H "Authorization: EndpointKey 111841fb-c208-4a72-9412-03b6f3e55ca1" -H "Content-type: application/json" -d "{'question':'How do I programmatically update my Knowledge Base?'}"
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
+    ```
+
+    Pytanie jest tylko pojedynczym słowem `size`, które może zwrócić jeden z dwóch zestawów QnA. Tablica `strictFilters` informuje odpowiedź, aby zmniejszyć do zaledwie `qna_maker` odpowiedzi.
+
+1. Odpowiedź zawiera tylko odpowiedź, która spełnia kryteria filtru. Następująca odpowiedź programu zwinięcie została sformatowana w celu zapewnienia czytelności:
+
+    ```JSON
     {
-      "answers": [
-        {
-          "questions": [
-            "How do I programmatically update my Knowledge Base?"
-          ],
-          "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update",
-          "score": 100.0,
-          "id": 18,
-          "source": "Custom Editorial",
-          "metadata": [
+        "answers": [
             {
-              "name": "category",
-              "value": "api"
+                "questions": [
+                    "How large a knowledge base can I create?",
+                    "What is the max size of a knowledge base?",
+                    "How many GB of data can a knowledge base hold?"
+                ],
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment)for more details.",
+                "score": 68.76,
+                "id": 3,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [
+                    {
+                        "name": "link_in_answer",
+                        "value": "true"
+                    },
+                    {
+                        "name": "service",
+                        "value": "qna_maker"
+                    }
+                ],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
             }
-          ]
-        }
-      ]
+        ],
+        "debugInfo": null
     }
     ```
 
-## <a name="use-staging-endpoint-with-curl"></a>Korzystanie z przejściowego punktu końcowego przy użyciu programu cURL
+    Jeśli istnieje pytanie i odpowiedź, które nie spełniły wyszukiwanego terminu, ale spełniały filtr, nie zostanie on zwrócony. Zamiast tego zostanie zwrócona ogólna `No good match found in KB.` odpowiedzi.
 
-Jeśli chcesz uzyskać odpowiedź z punktu końcowego przemieszczania, użyj właściwości `isTest` Body.
+## <a name="use-debug-query-property"></a>Użyj właściwości zapytania debugowania
+
+Informacje debugowania pomagają zrozumieć, w jaki sposób została określona zwrócona odpowiedź. Chociaż jest to przydatne, nie jest to konieczne. Aby wygenerować odpowiedź z informacjami o debugowaniu, Dodaj właściwość `debug`:
+
+```json
+Debug: {Enable:true}
+```
+
+1. Edytuj zwinięcie polecenia, aby dołączyć Właściwość Debug, aby wyświetlić więcej informacji.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
+    ```
+
+1. Odpowiedź zawiera odpowiednie informacje dotyczące odpowiedzi. W poniższych danych wyjściowych JSON niektóre szczegóły debugowania zostały zastąpione wielokropkiem dla zwięzłości.
+
+    ```console
+    {
+        "answers": [
+            {
+                "questions": [
+                    "How do I share a knowledge base with others?"
+                ],
+                "answer": "Sharing works at the level of a QnA Maker service, that is, all knowledge bases in the service will be shared. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/collaborate-knowledge-base) how to collaborate on a knowledge base.",
+                "score": 56.07,
+                "id": 5,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
+            }
+        ],
+        "debugInfo": {
+            "userQuery": {
+                "question": "How do I programmatically update my Knowledge Base?",
+                "top": 1,
+                "userId": null,
+                "strictFilters": [],
+                "isTest": false,
+                "debug": {
+                    "enable": true,
+                    "recordL1SearchLatency": false,
+                    "mockQnaL1Content": null
+                },
+                "rankerType": 0,
+                "context": null,
+                "qnaId": 0,
+                "scoreThreshold": 0.0
+            },
+            "rankerInfo": {
+                "specialFuzzyQuery": "how do i programmatically~6 update my knowledge base",
+                "synonyms": "what s...",
+                "rankerLanguage": "English",
+                "rankerFileName": "https://qnamakerstore.blob.core.windows.net/qnamakerdata/rankers/ranker-English.ini",
+                "rankersDirectory": "D:\\home\\site\\wwwroot\\Data\\QnAMaker\\rd0003ffa60fc45.24.0\\RankerData\\Rankers",
+                "allQnAsfeatureValues": {
+                    "WordnetSimilarity": {
+                        "5": 0.54706300120043716,...
+                    },
+                    ...
+                },
+                "rankerVersion": "V2",
+                "rankerModelType": "TreeEnsemble",
+                "rankerType": 0,
+                "indexResultsCount": 25,
+                "reRankerResultsCount": 1
+            },
+            "runtimeVersion": "5.24.0",
+            "indexDebugInfo": {
+                "indexDefinition": {
+                    "name": "064a4112-bd65-42e8-b01d-141c4c9cd09e",
+                    "fields": [...
+                    ],
+                    "scoringProfiles": [],
+                    "defaultScoringProfile": null,
+                    "corsOptions": null,
+                    "suggesters": [],
+                    "analyzers": [],
+                    "tokenizers": [],
+                    "tokenFilters": [],
+                    "charFilters": [],
+                    "@odata.etag": "\"0x8D7A920EA5EE6FE\""
+                },
+                "qnaCount": 117,
+                "parameters": {},
+                "azureSearchResult": {
+                    "continuationToken": null,
+                    "@odata.count": null,
+                    "@search.coverage": null,
+                    "@search.facets": null,
+                    "@search.nextPageParameters": null,
+                    "value": [...],
+                    "@odata.nextLink": null
+                }
+            },
+            "l1SearchLatencyInMs": 0,
+            "qnaL1Results": {...}
+        },
+        "activeLearningEnabled": true
+    }
+    ```
+
+## <a name="use-test-knowledge-base"></a>Korzystanie z bazy wiedzy testowej
+
+Jeśli chcesz uzyskać odpowiedź z bazy wiedzy testowej, użyj właściwości `isTest` Body.
+
+Właściwość jest wartością logiczną.
 
 ```json
 isTest:true
 ```
 
+Zwinięcie polecenia wygląda następująco:
 
+```bash
+curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
+```
+
+Odpowiedź JSON używa tego samego schematu co opublikowana kwerenda bazy wiedzy.
+
+> [!NOTE]
+> Jeśli testy i opublikowane bazy wiedzy są dokładnie takie same, nadal może być niewielka odmiana, ponieważ indeks testu jest współużytkowany przez wszystkie bazy wiedzy w zasobie.
+
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Użyj Zwinięciea, aby wykonać zapytanie o odpowiedź Chit-Chat
+
+1. W terminalu z włączoną funkcją wypełniania należy użyć instrukcji bot-kończącej konwersację od użytkownika, np. `Thank you` jako pytanie. Nie ma żadnych innych właściwości do ustawienia.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
+    ```
+
+1. Uruchom polecenie zwinięcie i odbierz odpowiedź JSON, łącznie z oceną i odpowiedzią.
+
+    ```json
+    {
+      "answers": [
+          {
+              "questions": [
+                  "I thank you",
+                  "Oh, thank you",
+                  "My sincere thanks",
+                  "My humblest thanks to you",
+                  "Marvelous, thanks",
+                  "Marvelous, thank you kindly",
+                  "Marvelous, thank you",
+                  "Many thanks to you",
+                  "Many thanks",
+                  "Kthx",
+                  "I'm grateful, thanks",
+                  "Ahh, thanks",
+                  "I'm grateful for that, thank you",
+                  "Perfecto, thanks",
+                  "I appreciate you",
+                  "I appreciate that",
+                  "I appreciate it",
+                  "I am very thankful for that",
+                  "How kind, thank you",
+                  "Great, thanks",
+                  "Great, thank you",
+                  "Gracias",
+                  "Gotcha, thanks",
+                  "Gotcha, thank you",
+                  "Awesome thanks!",
+                  "I'm grateful for that, thank you kindly",
+                  "thank you pal",
+                  "Wonderful, thank you!",
+                  "Wonderful, thank you very much",
+                  "Why thank you",
+                  "Thx",
+                  "Thnx",
+                  "That's very kind",
+                  "That's great, thanks",
+                  "That is lovely, thanks",
+                  "That is awesome, thanks!",
+                  "Thanks bot",
+                  "Thanks a lot",
+                  "Okay, thanks!",
+                  "Thank you so much",
+                  "Perfect, thanks",
+                  "Thank you my friend",
+                  "Thank you kindly",
+                  "Thank you for that",
+                  "Thank you bot",
+                  "Thank you",
+                  "Right on, thanks very much",
+                  "Right on, thanks a lot",
+                  "Radical, thanks",
+                  "Rad, thanks",
+                  "Rad thank you",
+                  "Wonderful, thanks!",
+                  "Thanks"
+              ],
+              "answer": "You're welcome.",
+              "score": 100.0,
+              "id": 75,
+              "source": "qna_chitchat_Professional.tsv",
+              "metadata": [
+                  {
+                      "name": "editorial",
+                      "value": "chitchat"
+                  }
+              ],
+              "context": {
+                  "isContextOnly": false,
+                  "prompts": []
+              }
+          }
+      ],
+      "debugInfo": null,
+      "activeLearningEnabled": true
+    }
+    ```
+
+    Ponieważ pytanie `Thank you` było dokładnie zgodne z pytaniem w konwersacji, usługa QnA Maker jest całkowicie pewna odpowiedzi (ocena 100%). QnA Maker zwrócić także wszystkie powiązane pytania, a także Właściwość metadanych zawierająca informacje znacznika metadanych Chit-Chat.
+
+## <a name="use-curl-with-threshold-and-default-answer"></a>Użycie zwinięcie z wartością progową i domyślną odpowiedzią
+
+Możesz poprosić o minimalny próg odpowiedzi. Jeśli próg nie jest spełniony, zostanie zwrócona odpowiedź domyślna.
+
+1. Użyj następującego polecenia zastępowania, zastępując nazwę zasobu, identyfikator bazy wiedzy i klucz punktu końcowego, aby zażądać odpowiedzi na `size` z progiem 80% lub lepszą. Baza wiedzy nie powinna znaleźć odpowiedzi, ponieważ Ocena pytania wynosi 71%, a zamiast tego zwraca domyślną odpowiedź podaną podczas tworzenia bazy wiedzy.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
+    ```
+
+1. Uruchom polecenie zwinięcie i odbierz odpowiedź JSON, łącznie z oceną i odpowiedzią.
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [],
+                "answer": "No good match found in KB.",
+                "score": 0.0,
+                "id": -1,
+                "source": null,
+                "metadata": []
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```
+
+    QnA Maker zwróciła wynik `0`, co oznacza brak pewności. Zwraca również odpowiedź domyślną.
+
+    ```json
+    {
+      "answers": [
+          {
+              "questions": [
+                  "I thank you",
+                  "Oh, thank you",
+                  "My sincere thanks",
+                  "My humblest thanks to you",
+                  "Marvelous, thanks",
+                  "Marvelous, thank you kindly",
+                  "Marvelous, thank you",
+                  "Many thanks to you",
+                  "Many thanks",
+                  "Kthx",
+                  "I'm grateful, thanks",
+                  "Ahh, thanks",
+                  "I'm grateful for that, thank you",
+                  "Perfecto, thanks",
+                  "I appreciate you",
+                  "I appreciate that",
+                  "I appreciate it",
+                  "I am very thankful for that",
+                  "How kind, thank you",
+                  "Great, thanks",
+                  "Great, thank you",
+                  "Gracias",
+                  "Gotcha, thanks",
+                  "Gotcha, thank you",
+                  "Awesome thanks!",
+                  "I'm grateful for that, thank you kindly",
+                  "thank you pal",
+                  "Wonderful, thank you!",
+                  "Wonderful, thank you very much",
+                  "Why thank you",
+                  "Thx",
+                  "Thnx",
+                  "That's very kind",
+                  "That's great, thanks",
+                  "That is lovely, thanks",
+                  "That is awesome, thanks!",
+                  "Thanks bot",
+                  "Thanks a lot",
+                  "Okay, thanks!",
+                  "Thank you so much",
+                  "Perfect, thanks",
+                  "Thank you my friend",
+                  "Thank you kindly",
+                  "Thank you for that",
+                  "Thank you bot",
+                  "Thank you",
+                  "Right on, thanks very much",
+                  "Right on, thanks a lot",
+                  "Radical, thanks",
+                  "Rad, thanks",
+                  "Rad thank you",
+                  "Wonderful, thanks!",
+                  "Thanks"
+              ],
+              "answer": "You're welcome.",
+              "score": 100.0,
+              "id": 75,
+              "source": "qna_chitchat_Professional.tsv",
+              "metadata": [
+                  {
+                      "name": "editorial",
+                      "value": "chitchat"
+                  }
+              ],
+              "context": {
+                  "isContextOnly": false,
+                  "prompts": []
+              }
+          }
+      ],
+      "debugInfo": null,
+      "activeLearningEnabled": true
+    }
+    ```
+
+    Ponieważ pytanie `Thank you` było dokładnie zgodne z pytaniem w konwersacji, usługa QnA Maker jest całkowicie pewna odpowiedzi (ocena 100%). QnA Maker zwrócić także wszystkie powiązane pytania, a także Właściwość metadanych zawierająca informacje znacznika metadanych Chit-Chat.
+
+## <a name="use-curl-with-threshold-and-default-answer"></a>Użycie zwinięcie z wartością progową i domyślną odpowiedzią
+
+Możesz poprosić o minimalny próg odpowiedzi. Jeśli próg nie jest spełniony, zostanie zwrócona odpowiedź domyślna.
+
+1. Dodaj właściwość `threshold`, aby uzyskać odpowiedź na `size` z progiem równym 80% lub lepszym. Baza wiedzy nie powinna znaleźć tej odpowiedzi, ponieważ Ocena pytania wynosi 71%. Wynik zwraca domyślną odpowiedź podaną podczas tworzenia bazy wiedzy.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
+    ```
+
+1. Uruchom polecenie zwinięcie i odbierz odpowiedź JSON.
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [],
+                "answer": "No good match found in KB.",
+                "score": 0.0,
+                "id": -1,
+                "source": null,
+                "metadata": []
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```
+
+    QnA Maker zwróciła wynik `0`, co oznacza brak pewności. Zwraca również odpowiedź domyślną.
+
+1. Zmień wartość progową na 60% i ponownie Zażądaj zapytania:
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
+    ```
+    ```
+
+    The returned JSON found the answer.
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [
+                    "How large a knowledge base can I create?",
+                    "What is the max size of a knowledge base?",
+                    "How many GB of data can a knowledge base hold?"
+                ],
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.",
+                "score": 71.1,
+                "id": 3,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [
+                    {
+                        "name": "link_in_answer",
+                        "value": "true"
+                    },
+                    {
+                        "name": "server",
+                        "value": "qna_maker"
+                    }
+                ],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```

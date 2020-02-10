@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6084eca4f7d2d6040eb3f32a9b28cfc50922d200
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896094"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110448"
 ---
 # <a name="about-point-to-site-vpn"></a>Informacje o sieci VPN typu punkt-lokacja
 
@@ -45,7 +45,7 @@ Sprawdzanie poprawności certyfikatu klienta jest wykonywane przez bramę sieci 
 
 ### <a name="authenticate-using-native-azure-active-directory-authentication"></a>Uwierzytelnianie przy użyciu natywnego uwierzytelniania Azure Active Directory
 
-Uwierzytelnianie usługi Azure AD umożliwia użytkownikom nawiązywanie połączeń z platformą Azure przy użyciu poświadczeń Azure Active Directory. Natywne uwierzytelnianie w usłudze Azure AD jest obsługiwane tylko dla protokołów OpenVPN i Windows 10 i wymaga użycia [klienta sieci VPN platformy Azure (wersja zapoznawcza)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab).
+Uwierzytelnianie usługi Azure AD umożliwia użytkownikom nawiązywanie połączeń z platformą Azure przy użyciu poświadczeń Azure Active Directory. Natywne uwierzytelnianie w usłudze Azure AD jest obsługiwane tylko dla protokołów OpenVPN i Windows 10 i wymaga użycia [klienta sieci VPN platformy Azure](https://go.microsoft.com/fwlink/?linkid=2117554).
 
 Przy użyciu natywnego uwierzytelniania usługi Azure AD można korzystać z dostępu warunkowego usługi Azure AD oraz funkcji Multi-Factor Authentication (MFA) dla sieci VPN.
 
@@ -55,7 +55,7 @@ Na wysokim poziomie należy wykonać następujące kroki, aby skonfigurować uwi
 
 2. [Włączanie uwierzytelniania usługi Azure AD na bramie](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-3. [Pobieranie i Konfigurowanie klienta sieci VPN platformy Azure (wersja zapoznawcza)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Pobieranie i Konfigurowanie klienta sieci VPN platformy Azure](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Uwierzytelnianie przy użyciu serwera domeny Active Directory (AD)
@@ -68,7 +68,7 @@ Serwer RADIUS można także zintegrować z usługami certyfikatów usługi AD. P
 
 Serwer RADIUS można także zintegrować z innymi zewnętrznymi systemami tożsamości. Spowoduje to otwarcie dużej liczby opcji uwierzytelniania dla sieci VPN P2S, w tym opcji wieloskładnikowych.
 
-![punkt-lokacja](./media/point-to-site-about/p2s.png "punkt-lokacja")
+![punkt-lokacja](./media/point-to-site-about/p2s.png "Punkt-lokacja")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>Jakie są wymagania dotyczące konfiguracji klienta?
 
@@ -139,7 +139,7 @@ Plik zip zawiera również wartości niektórych ważnych ustawień po stronie p
 | AES256    | SHA1 | GROUP_NONE |
 
 ## <a name="TLS policies"></a>Jakie zasady protokołu TLS są skonfigurowane na bramach sieci VPN dla usługi P2S?
-**TLS**
+**Protokół**
 
 |**Zasady** |
 |---| 

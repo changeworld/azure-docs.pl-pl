@@ -5,16 +5,16 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 02/07/2020
 ms.author: alzam
-ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 045d1cad130adad34d74009b34b193ce0d3d4dc9
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647921"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110563"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>Konfigurowanie klienta VPN dla połączeń protokołu P2S OpenVPN: uwierzytelnianie usługi Azure AD (wersja zapoznawcza)
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurowanie klienta VPN dla połączeń protokołu P2S OpenVPN: uwierzytelnianie usługi Azure AD
 
 Ten artykuł pomaga skonfigurować klienta sieci VPN do łączenia się z siecią wirtualną przy użyciu sieci VPN typu punkt-lokacja i uwierzytelniania Azure Active Directory. Aby można było nawiązać połączenie i uwierzytelnić się za pomocą usługi Azure AD, należy najpierw skonfigurować dzierżawę usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Konfigurowanie dzierżawy usługi Azure AD](openvpn-azure-ad-tenant.md).
 
@@ -24,17 +24,17 @@ Ten artykuł pomaga skonfigurować klienta sieci VPN do łączenia się z sieci�
 
 ## <a name="profile"></a>Praca z profilami klientów
 
-Aby nawiązać połączenie, należy pobrać klienta sieci VPN platformy Azure (wersja zapoznawcza) i skonfigurować profil klienta sieci VPN na każdym komputerze, który chce nawiązać połączenie z siecią wirtualną. Można utworzyć profil klienta na komputerze, wyeksportować go, a następnie zaimportować do dodatkowych komputerów.
+Aby nawiązać połączenie, należy pobrać klienta sieci VPN platformy Azure i skonfigurować profil klienta sieci VPN na każdym komputerze, który chce nawiązać połączenie z siecią wirtualną. Można utworzyć profil klienta na komputerze, wyeksportować go, a następnie zaimportować do dodatkowych komputerów.
 
 ### <a name="to-download-the-azure-vpn-client"></a>Aby pobrać klienta sieci VPN platformy Azure
 
-Użyj tego [linku](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) , aby pobrać klienta sieci VPN platformy Azure (wersja zapoznawcza).
+Użyj tego [linku](https://go.microsoft.com/fwlink/?linkid=2117554) , aby pobrać klienta sieci VPN platformy Azure.
 
 ### <a name="cert"></a>Aby utworzyć profil klienta oparty na certyfikacie
 
 Podczas pracy z profilem opartym na certyfikatach upewnij się, że odpowiednie certyfikaty są zainstalowane na komputerze klienckim. Aby uzyskać więcej informacji o certyfikatach, zobacz [Instalowanie certyfikatów klienta](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-  ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
+  ![zarchiwizowan](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
 ### <a name="radius"></a>Aby utworzyć profil klienta usługi RADIUS
 
@@ -50,33 +50,33 @@ Gdy dysponujesz profilem roboczym i chcesz go rozesłać do innych użytkownikó
 
 1. Zaznacz profil klienta sieci VPN, który chcesz wyeksportować, wybierz pozycję **...** , a następnie wybierz pozycję **Eksportuj**.
 
-    ![export](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![wywozu](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Wybierz lokalizację, w której chcesz zapisać ten profil, pozostaw nazwę pliku, a następnie wybierz pozycję **Zapisz** , aby zapisać plik XML.
 
-    ![export](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![wywozu](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="import"></a>Aby zaimportować profil klienta
 
 1. Na stronie wybierz pozycję **Importuj**.
 
-    ![importowanie](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![zaimportować](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Przejdź do pliku XML profilu i wybierz go. Po wybraniu pliku wybierz pozycję **Otwórz**.
 
-    ![importowanie](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![zaimportować](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Określ nazwę profilu i wybierz pozycję **Zapisz**.
 
-    ![importowanie](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![zaimportować](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. Wybierz pozycję **Połącz** , aby nawiązać połączenie z siecią VPN.
 
-    ![importowanie](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![zaimportować](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. Po nawiązaniu połączenia ikona zmieni kolor na zielony i powiedzie **się.**
 
-    ![importowanie](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![zaimportować](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>Aby usunąć profil klienta
 

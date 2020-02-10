@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: db4824203f63fa2fe0d4256a475d18a501b17e0e
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 7925ca5c69d01b098764ff744fb832eaa43118d6
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147733"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108959"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Planowanie i emitowanie zadań (.NET)
 
@@ -31,9 +31,9 @@ Zadanie otacza jedną z tych akcji i śledzi wykonywanie na zestawie urządzeń,
 
 Aby dowiedzieć się więcej o każdej z tych funkcji, zobacz:
 
-* Sznurki i właściwości urządzenia: [Wprowadzenie do bliźniaczych reprezentacji urządzeń](iot-hub-csharp-csharp-twin-getstarted.md) i [samouczek: Jak korzystać z właściwości sznurka urządzenia](tutorial-device-twins.md)
+* Sznurki i właściwości urządzenia: [wprowadzenie do bliźniaczych reprezentacjii urządzeń](iot-hub-csharp-csharp-twin-getstarted.md) i [Samouczek: jak korzystać z właściwości sznurka urządzenia](tutorial-device-twins.md)
 
-* Metody bezpośrednie: [Przewodnik dla deweloperów IoT Hub — bezpośrednie metody](iot-hub-devguide-direct-methods.md) i [samouczek: Korzystanie z metod bezpośrednich](quickstart-control-device-dotnet.md)
+* Metody bezpośrednie: [przewodnik dewelopera IoT Hub — bezpośrednie metody](iot-hub-devguide-direct-methods.md) i [Samouczek: Używanie metod bezpośrednich](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -54,6 +54,8 @@ Na końcu tego samouczka masz dwie aplikacje konsolowe programu .NETC#():
 * Program Visual Studio.
 
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
+
+* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
@@ -164,7 +166,7 @@ W tej sekcji utworzysz aplikację konsolową .NET, która reaguje na metodę bez
 
 W tej sekcji utworzysz aplikację konsolową .NET (przy użyciu C#), która używa zadań do wywołania metody **LockDoor** Direct i wysyłania wymaganych aktualizacji właściwości na wiele urządzeń.
 
-1. W programie Visual Studio, wybierz **pliku** > **New** > **projektu**. W obszarze **Utwórz nowy projekt**wybierz pozycję **aplikacja konsoli (.NET Framework)** , a następnie wybierz przycisk **dalej**.
+1. W programie Visual Studio wybierz pozycje **Plik** > **Nowy** > **Projekt**. W obszarze **Utwórz nowy projekt**wybierz pozycję **aplikacja konsoli (.NET Framework)** , a następnie wybierz przycisk **dalej**.
 
 1. W obszarze **Konfigurowanie nowego projektu**Nadaj projektowi nazwę *ScheduleJob*. W obszarze **rozwiązanie**wybierz opcję **Dodaj do rozwiązania**, a następnie wybierz pozycję **Utwórz**.
 
@@ -183,7 +185,7 @@ W tej sekcji utworzysz aplikację konsolową .NET (przy użyciu C#), która uży
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Dodaj następującą `using` instrukcję, jeśli nie jest jeszcze obecna w instrukcjach domyślnych.
+1. Dodaj następującą instrukcję `using`, jeśli nie występuje już w instrukcjach domyślnych.
 
     ```csharp
     using System.Threading;
@@ -292,9 +294,9 @@ Teraz można przystąpić do uruchomienia aplikacji.
 
 1. W Eksplorator rozwiązań Visual Studio, kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz polecenie **Ustaw projekty startowe**.
 
-1. Wybierz kolejno pozycje **wspólne właściwości** > **projekt startowy**, a następnie wybierz **wiele projektów startowych**.
+1. Wybierz pozycję **wspólne właściwości** > **projekt startowy**, a następnie wybierz **wiele projektów startowych**.
 
-1. Upewnij się `SimulateDeviceMethods` , że znajduje się w górnej części listy, `ScheduleJob`a następnie. Ustaw obie akcje do **uruchomienia** i wybierz **przycisk OK**.
+1. Upewnij się, że `SimulateDeviceMethods` znajduje się u góry listy, a następnie `ScheduleJob`. Ustaw obie akcje do **uruchomienia** i wybierz **przycisk OK**.
 
 1. Uruchom projekty, klikając przycisk **Start** lub przejdź do menu **Debuguj** , a następnie kliknij **Rozpocznij debugowanie**.
 
@@ -306,6 +308,6 @@ Teraz można przystąpić do uruchomienia aplikacji.
 
 W tym samouczku użyto zadania do zaplanowania metody bezpośredniej dla urządzenia i aktualizacji właściwości sznurka urządzenia.
 
-* Aby nadal zacząć korzystać z wzorców IoT Hub i zarządzania urządzeniami, takimi jak zdalne przez aktualizację oprogramowania układowego [, przeczytaj samouczek: Jak wykonać aktualizację](tutorial-firmware-update.md)oprogramowania układowego.
+* Aby nadal zacząć korzystać z wzorców IoT Hub i zarządzania urządzeniami, takimi jak zdalne przez aktualizację oprogramowania układowego, Przeczytaj [Samouczek: jak wykonać aktualizację oprogramowania układowego](tutorial-firmware-update.md).
 
 * Aby dowiedzieć się więcej o wdrażaniu AI na urządzeniach brzegowych za pomocą Azure IoT Edge, zobacz [wprowadzenie do IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

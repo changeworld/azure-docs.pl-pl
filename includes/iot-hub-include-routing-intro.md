@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 863989f8e2cb90fe5ec0921ea6e080b61fc1b4ae
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 9a20dca71727e83db98c4c97567949bd127fc7fb
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808853"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77111193"
 ---
 [Routing komunikatów](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) umożliwia wysyłanie danych telemetrycznych z urządzeń IoT do wbudowanych punktów końcowych zgodnych z centrum zdarzeń lub niestandardowych punktów końcowych, takich jak BLOB storage, Service Bus Queues, tematy Service Bus i Event Hubs. Aby skonfigurować niestandardowy Routing komunikatów, tworzysz [zapytania routingu](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) w celu dostosowania trasy zgodnej z określonym warunkiem. Po zakończeniu konfiguracji dane przychodzące są automatycznie rozsyłane do punktów końcowych przez usługę IoT Hub. Jeśli komunikat nie jest zgodny z żadną z określonych zapytań routingu, jest kierowany do domyślnego punktu końcowego.
 
@@ -43,8 +43,9 @@ Aby ukończyć części 1 i 2 tego samouczka, należy wykonać następujące zad
 
 * W przypadku części 2 tego samouczka:
   - Należy wykonać część 1 tego samouczka i nadal dostępne zasoby.
-  - Instalacja programu [Visual Studio](https://www.visualstudio.com/).
+  - Zainstalować program [Visual Studio](https://www.visualstudio.com/).
   - Uzyskaj dostęp do konta Power BI, aby analizować usługę Stream Analytics domyślnego punktu końcowego. ([Wypróbuj bezpłatnie usługę Power BI](https://app.powerbi.com/signupredirect?pbi_source=web)).
   - Posiadanie konta Office 365 do wysyłania wiadomości e-mail z powiadomieniami.
+  - Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie w tym samouczku jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]

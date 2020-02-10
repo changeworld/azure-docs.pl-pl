@@ -2,13 +2,13 @@
 title: Przycisk Wdróż na platformie Azure
 description: Użyj przycisku, aby wdrożyć szablony Azure Resource Manager z repozytorium GitHub.
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: cf22203b843f4483f495b6eba9a522267c010a79
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/07/2020
+ms.openlocfilehash: 88436eac970b252d7b0bc7bccee4131e06e9e0cf
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050592"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109052"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Użyj przycisku wdrożenia, aby wdrożyć szablony z repozytorium GitHub
 
@@ -62,7 +62,15 @@ Masz pełny adres URL linku.
 
 ## <a name="create-deploy-to-azure-button"></a>Przycisk Utwórz wdrożenie na platformie Azure
 
-Na koniec Umieść link i obraz razem. Możesz dodać ten kod HTML do pliku README.md w repozytorium GitHub lub stronie sieci Web.
+Na koniec Umieść link i obraz razem.
+
+Aby dodać przycisk z opcją inpromocji w pliku README.md w repozytorium GitHub lub stronie sieci Web, użyj:
+
+```markdown
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
+```
+
+W przypadku języka HTML należy użyć:
 
 ```html
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
@@ -73,10 +81,8 @@ Na koniec Umieść link i obraz razem. Możesz dodać ten kod HTML do pliku READ
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
 Aby przetestować pełne rozwiązanie, wybierz następujący przycisk:
-<br><br>
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
-  <img src="https://aka.ms/deploytoazurebutton"/>
-</a>
+
+[![Wdrażanie na platformie Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 
 W portalu zostanie wyświetlone okienko pozwalające łatwo podawać wartości parametrów. Parametry są wstępnie wypełnione wartościami domyślnymi z szablonu.
 

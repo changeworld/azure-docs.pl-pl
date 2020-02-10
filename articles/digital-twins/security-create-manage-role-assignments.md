@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438063"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110409"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Tworzenie przypisań ról i zarządzanie nimi w usłudze Azure Digital bliźniaczych reprezentacji
 
@@ -36,12 +36,12 @@ Każde przypisanie roli jest zgodne z następującą definicją:
 
 W poniższej tabeli opisano każdy atrybut:
 
-| Atrybut | Nazwa | Wymagane | Typ | Opis |
+| Atrybut | Name (Nazwa) | Wymagany | Typ | Opis |
 | --- | --- | --- | --- | --- |
-| roleId | Identyfikator definicji roli | Tak | Ciąg | Unikatowy identyfikator żądanego przypisania roli. Znajdź definicje ról i ich identyfikatory, wykonując zapytania dotyczące systemowego interfejsu API lub tabeli przeglądu poniżej. |
-| Identyfikator obiektu | Identyfikator obiektu | Tak | Ciąg | Identyfikator Azure Active Directory, identyfikator obiektu jednostki usługi lub nazwa domeny. Do czego jest przypisane przypisanie roli. Przypisanie roli musi być sformatowane zgodnie ze skojarzonym z nim typem. Identyfikator obiektu `DomainName` objectIdtype musi rozpoczynać się od znaku `“@”`. |
-| objectIdtype | Typ identyfikatora obiektu | Tak | Ciąg | Rodzaj używanego identyfikatora obiektu. Zobacz sekcję **obsługiwane ObjectIdTypes** poniżej. |
-| Ścieżka | Ścieżka miejsca | Tak | Ciąg | Pełna ścieżka dostępu do obiektu `Space`. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, określ `"/"`. Ten znak określa katalog główny, ale jego użycie nie jest zalecane. Zawsze stosuj zasadę najniższych uprawnień. |
+| roleId | Identyfikator definicji roli | Yes | Ciąg | Unikatowy identyfikator żądanego przypisania roli. Znajdź definicje ról i ich identyfikatory, wykonując zapytania dotyczące systemowego interfejsu API lub tabeli przeglądu poniżej. |
+| Identyfikator obiektu | Identyfikator obiektu | Yes | Ciąg | Identyfikator Azure Active Directory, identyfikator obiektu jednostki usługi lub nazwa domeny. Do czego jest przypisane przypisanie roli. Przypisanie roli musi być sformatowane zgodnie ze skojarzonym z nim typem. Identyfikator obiektu `DomainName` objectIdtype musi rozpoczynać się od znaku `“@”`. |
+| objectIdtype | Typ identyfikatora obiektu | Yes | Ciąg | Rodzaj używanego identyfikatora obiektu. Zobacz sekcję **obsługiwane ObjectIdTypes** poniżej. |
+| ścieżka | Ścieżka miejsca | Yes | Ciąg | Pełna ścieżka dostępu do obiektu `Space`. Może to być na przykład `/{Guid}/{Guid}`. Jeśli identyfikator wymaga przypisania roli dla całego wykresu, określ `"/"`. Ten znak określa katalog główny, ale jego użycie nie jest zalecane. Zawsze stosuj zasadę najniższych uprawnień. |
 | tenantId | Identyfikator dzierżawy | Różna | Ciąg | W większości przypadków Azure Active Directory identyfikator dzierżawy. Niedozwolone dla `DeviceId` i `TenantId` ObjectIdTypes. Wymagane dla `UserId` i `ServicePrincipalId` ObjectIdTypes. Opcjonalne dla nazwa_domeny. |
 
 ### <a name="supported-role-definition-identifiers"></a>Obsługiwane Identyfikatory definicji ról
@@ -94,7 +94,7 @@ Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 
 Użytkownik z rolą **administratora** może następnie przypisać do użytkownika rolę administratora miejsca, wykonując UWIERZYTELNIONE żądanie HTTP post na adres URL:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -116,7 +116,7 @@ Z następującą treścią JSON:
 
 Aby wyświetlić listę wszystkich dostępnych ról (definicje ról), wykonaj uwierzytelnione żądanie HTTP GET:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
@@ -157,16 +157,16 @@ Pomyślne żądanie zwróci tablicę JSON z wpisami dla każdej roli, która mo�
 
 Aby sprawdzić konkretne przypisanie roli, wykonaj uwierzytelnione żądanie HTTP GET:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
 | **Wartość parametru** | **Wymagane** |  **Typ** |  **Opis** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  Prawda | Ciąg |   Identyfikator obiektu dla identyfikatora obiektu UserIdtype. |
-| YOUR_PATH | Prawda | Ciąg |   Wybrana ścieżka do sprawdzenia dostępu. |
-| YOUR_ACCESS_TYPE |  Prawda | Ciąg |   *Odczytaj*, *Utwórz*, *zaktualizuj*lub *Usuń* |
-| YOUR_RESOURCE_TYPE | Prawda | Ciąg |  *Device*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *rozszerzonytype*, *punkt końcowy*, *Magazyn*kluczy, *odpowiednika*, *Ontology*, *raport*, *definicji*, *czujnik*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *system*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*lub *UserExtendedProperty* |
+| YOUR_USER_ID |  True | Ciąg |   Identyfikator obiektu dla identyfikatora obiektu UserIdtype. |
+| YOUR_PATH | True | Ciąg |   Wybrana ścieżka do sprawdzenia dostępu. |
+| YOUR_ACCESS_TYPE |  True | Ciąg |   *Odczytaj*, *Utwórz*, *zaktualizuj*lub *Usuń* |
+| YOUR_RESOURCE_TYPE | True | Ciąg |  *Device*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *rozszerzonytype*, *punkt końcowy*, *Magazyn*kluczy, *odpowiednika*, *Ontology*, *raport*, *definicji*, *czujnik*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *system*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*lub *UserExtendedProperty* |
 
 Pomyślne żądanie zwróci wartość logiczną `true` lub `false`, aby wskazać, czy typ dostępu został przypisany do użytkownika dla danej ścieżki i zasobu.
 
@@ -174,7 +174,7 @@ Pomyślne żądanie zwróci wartość logiczną `true` lub `false`, aby wskazać
 
 Aby uzyskać wszystkie przypisania ról dla ścieżki, wykonaj uwierzytelnione żądanie HTTP GET:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
@@ -200,7 +200,7 @@ Pomyślne żądanie zwróci tablicę JSON z każdym przypisaniem roli skojarzony
 
 Aby odwołać uprawnienie od adresata, usuń przypisanie roli, wykonując uwierzytelnione żądanie HTTP DELETE:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
@@ -214,7 +214,7 @@ Pomyślne żądanie usunięcia zwróci 204 stan odpowiedzi. Sprawdź, czy usuni�
 
 Aby utworzyć przypisanie roli, wykonaj uwierzytelnione żądanie HTTP POST na adres URL:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
