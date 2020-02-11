@@ -4,17 +4,17 @@ description: Plik dyrektywy include
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 02/07/2020
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 8537db1e5703abd8df92a2950455bee556731d08
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013943"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123140"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Ogólna dostępność i porównanie wersji zapoznawczej
 
@@ -37,7 +37,7 @@ Poniższa tabela zawiera podsumowanie kilku najważniejszych różnic między og
 
 Limity właściwości Time Series Insights wzrosły do 1 000 z maksymalną ilością 800 w przypadku. Podane właściwości zdarzenia mają odpowiednie kolumny JSON, CSV i wykresu, które można wyświetlić w [eksploratorze Time Series Insights w wersji zapoznawczej](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
 
-| JSZ | Właściwości maksymalne |
+| SKU | Właściwości maksymalne |
 | --- | --- |
 | Podgląd PAYG | Właściwości 1 000 (kolumny) |
 | GA S1 | Właściwości 600 (kolumny) |
@@ -50,7 +50,7 @@ Obsługiwane są maksymalnie dwa źródła zdarzeń na wystąpienie.
 * Dowiedz się, jak [dodać Źródło centrum zdarzeń](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * Skonfiguruj [Źródło Centrum IoT](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
 
-Domyślnie środowiska w [wersji zapoznawczej obsługują stawki](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress) za transfer danych przychodzących do **1 MB na sekundę (MB/s) na środowisko**. W razie potrzeby klienci mogą skalować swoje środowiska w wersji zapoznawczej do **16 MB/s** . Istnieje również limit partycji wynoszący **0,5 MB/s**. 
+Domyślnie środowiska w [wersji zapoznawczej obsługują stawki](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations) za transfer danych przychodzących do **1 MB na sekundę (MB/s) na środowisko**. W razie potrzeby klienci mogą skalować swoje środowiska w wersji zapoznawczej do **16 MB/s** . Istnieje również limit partycji wynoszący **0,5 MB/s**. 
 
 ### <a name="api-limits"></a>Limity interfejsu API
 

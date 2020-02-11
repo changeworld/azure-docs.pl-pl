@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ed80ad87d81c2ec1bdfe50e9cd4556f141507b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907476"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120087"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Tworzenie kolekcji w portalu My Apps
 
@@ -30,7 +30,7 @@ Użytkownicy mogą używać portalu My Apps do wyświetlania i uruchamiania apli
 > [!NOTE]
 > W tym artykule opisano sposób, w jaki administrator może włączyć i utworzyć kolekcje. Informacje dla użytkownika końcowego dotyczące korzystania z portalu Moje aplikacje i kolekcji znajdują się w temacie [Access and use Collections](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
 
-## <a name="enable-my-apps-preview-features"></a>Włącz funkcje w wersji zapoznawczej moich aplikacji
+## <a name="enable-the-latest-my-apps-features"></a>Włącz najnowsze funkcje my Apps
 
 1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako administrator użytkownika lub Administrator globalny.
 
@@ -39,8 +39,8 @@ Użytkownicy mogą używać portalu My Apps do wyświetlania i uruchamiania apli
 3. W obszarze **Podgląd funkcji użytkownika**wybierz pozycję **Zarządzaj ustawieniami wersji zapoznawczej funkcji użytkownika**.
 
 4. W obszarze **Użytkownicy mogą używać funkcji w wersji zapoznawczej dla moich aplikacji**, wybierz jedną z następujących opcji:
-   * **Wybrane** — włącza funkcje w wersji zapoznawczej dla określonej grupy. Użyj opcji **Wybierz grupę** , aby wybrać grupę, dla której chcesz włączyć funkcje w wersji zapoznawczej.  
-   * **Wszystkie** — włącza funkcje w wersji zapoznawczej dla wszystkich użytkowników.
+   * **Zaznaczone** — włącza funkcje dla określonej grupy. Użyj opcji **Wybierz grupę** , aby wybrać grupę, dla której chcesz włączyć funkcje.  
+   * **Wszystkie** — włącza funkcje dla wszystkich użytkowników.
 
 > [!NOTE]
 > Aby otworzyć Portal moje aplikacje, użytkownicy mogą korzystać z linku `https://myapps.microsoft.com` lub niestandardowego linku dla organizacji, takiego jak `https://myapps.microsoft.com/contoso.com`. Po włączeniu środowiska moje aplikacje zostanie wyświetlony transparent " **zaktualizowane środowisko moje aplikacje** " w górnej części strony Moje aplikacje, a użytkownicy mogą wybrać opcję **Wypróbuj** , aby wyświetlić nowe środowisko. Aby zrezygnować z korzystania z nowego środowiska, użytkownicy mogą wybrać opcję **tak** z transparentu **Opuść nowe środowisko** w górnej części strony.

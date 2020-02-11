@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 1766b536043d8c404addb1877aa3ef9b57344ef4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722258"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116764"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Planowanie potoków uczenia maszynowego za pomocą zestawu SDK Azure Machine Learning dla języka Python
 
@@ -55,6 +55,13 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 ## <a name="create-a-schedule"></a>Utwórz harmonogram
 
 Aby uruchomić potok cyklicznie, należy utworzyć harmonogram. `Schedule` kojarzy potok, eksperyment i wyzwalacz. Wyzwalacz może być`ScheduleRecurrence`, który opisuje oczekiwanie między uruchomieniami lub ścieżkę magazynu danych określającą katalog do śledzenia zmian. W obu przypadkach potrzebny będzie identyfikator potoku i nazwa eksperymentu, w którym ma zostać utworzony harmonogram.
+
+W górnej części pliku języka Python zaimportuj klasy `Schedule` i `ScheduleRecurrence`:
+
+```python
+
+from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
+```
 
 ### <a name="create-a-time-based-schedule"></a>Tworzenie harmonogramu opartego na czasie
 
@@ -141,3 +148,4 @@ Aby uzyskać więcej informacji, zobacz:
 
 * Dowiedz się więcej o [potokach](concept-ml-pipelines.md)
 * Dowiedz się więcej o [eksplorowaniu Azure Machine Learning za pomocą Jupyter](samples-notebooks.md)
+

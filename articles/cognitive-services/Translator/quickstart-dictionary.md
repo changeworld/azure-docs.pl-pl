@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 42e883a7563072fca771482998bdcdbebec50ae9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0ba1e1cc4f470e24922fc3cf3be2bf6833696982
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975775"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118855"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Szybki Start: wyszukiwanie wyrazów przy użyciu słownika dwujęzycznego
 
@@ -54,7 +54,7 @@ Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](http
 
 ::: zone-end
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Tłumaczenie tekstu](quickstart-translate.md)
 * [Transliteracja tekstu](quickstart-transliterate.md)

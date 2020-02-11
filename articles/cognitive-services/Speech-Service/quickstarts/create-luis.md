@@ -3,19 +3,19 @@ title: 'Szybki Start: Tworzenie klucza LUIS'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start dowiesz się, jak utworzyć aplikację LUIS i uzyskać klucz.
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.author: wolfma
-ms.openlocfilehash: 23f0b459b67088518375fbb4fd0b106da3aaf57c
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 5b1a5ac4867379457d161d07f4f4f2fc2d8ee6c3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815845"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119597"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Szybki Start: Pobieranie klucza punktu końcowego LUIS
 
@@ -35,7 +35,7 @@ LUIS używa trzech rodzajów kluczy:
 |--------|-------|
 |Tworzenie|Umożliwia programowe tworzenie i modyfikowanie aplikacji LUIS|
 |Starter (początkowy)|Umożliwia testowanie aplikacji LUIS przy użyciu tylko tekstu|
-|Punkt końcowy |Autoryzuje dostęp do określonej aplikacji LUIS|
+|Endpoint |Autoryzuje dostęp do określonej aplikacji LUIS|
 
 W tym samouczku potrzebny jest typ klucza punktu końcowego. W tym samouczku jest używana przykładowa aplikacja LUIS Automation, którą można utworzyć, korzystając z [prebudowanego](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) przewodnika Szybki Start dla aplikacji do automatyzacji domowej. Jeśli utworzono własną aplikację LUIS, można jej użyć zamiast niej.
 

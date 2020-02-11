@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b41b68725b6747cbada13a9acc321724b3f89d67
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984171"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118581"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Samouczek: Tworzenie aplikacji do kolby za pomocą usługi Azure Cognitive Services
 
@@ -59,7 +59,7 @@ Zapoznaj się z oprogramowaniem i kluczami subskrypcji, które będą potrzebne 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Tworzenie konta i subskrybowanie zasobów
 
 Jak wspomniano wcześniej, będziesz potrzebować trzech kluczy subskrypcji dla tego samouczka. Oznacza to, że musisz utworzyć zasób na koncie platformy Azure dla:
-* Tłumaczenie tekstu w usłudze Translator
+* Tekst usługi Translator
 * Analiza tekstu
 * Usługi mowy
 
@@ -103,12 +103,12 @@ Utwórzmy środowisko wirtualne dla naszej aplikacji w kolbie przy użyciu `virt
 
 2. Polecenia umożliwiające aktywację środowiska wirtualnego będą się różnić w zależności od platformy/powłoki:   
 
-   | Platforma | Shell | Polecenie |
+   | Platforma | Powłoka | Polecenie |
    |----------|-------|---------|
    | macOS/Linux | bash/ZSH | `source venv/bin/activate` |
-   | Windows | bash | `source venv/Scripts/activate` |
+   | System Windows | bash | `source venv/Scripts/activate` |
    | | Wiersz polecenia | `venv\Scripts\activate.bat` |
-   | | PowerShell | `venv\Scripts\Activate.ps1` |
+   | | Program PowerShell | `venv\Scripts\Activate.ps1` |
 
    Po uruchomieniu tego polecenia, w wierszu polecenia lub sesji terminalu należy przed`venv`.
 
@@ -182,7 +182,7 @@ Ten kod gwarantuje, że gdy użytkownik nawiguje do `http://your-web-app.com/abo
 
 Chociaż te przykłady ilustrują sposób renderowania stron HTML dla użytkownika, trasy mogą być również używane do wywoływania interfejsów API po naciśnięciu przycisku lub podjęcia dowolnej liczby akcji bez konieczności nawigowania po stronie głównej. Ta akcja zostanie wyświetlona podczas tworzenia tras do translacji, tonacji i syntezy mowy.
 
-### <a name="get-started"></a>Rozpocznij
+### <a name="get-started"></a>Wprowadzenie
 
 1. Otwórz projekt w środowisku IDE, a następnie utwórz plik o nazwie `app.py` w katalogu głównym katalogu roboczego. Następnie skopiuj ten kod do `app.py` i Zapisz:
 
@@ -474,7 +474,7 @@ Naciśnij **klawisze CTRL + c** , aby skasować aplikację, a następnie przejd�
 
 ## <a name="analyze-sentiment"></a>Analiza tonacji
 
-[Interfejs API analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) można użyć do przeprowadzenia analizy tonacji, wyodrębnienia kluczowych fraz z tekstu lub wykrycia języka źródłowego. W tej aplikacji będziemy używać analizy tonacji, aby określić, czy podany tekst jest dodatni, neutralny, czy ujemny. Interfejs API zwraca wynik liczbowy z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną tonację, a wyniki zbliżone do wartości 0 wskazują na negatywną tonację.
+[Interfejs API analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) można użyć do przeprowadzenia analizy tonacji, wyodrębnienia kluczowych fraz z tekstu lub wykrycia języka źródłowego. W tej aplikacji będziemy używać analizy tonacji, aby określić, czy podany tekst jest dodatni, neutralny, czy ujemny. Interfejs API zwraca wynik liczbowy z zakresu od 0 do 1. Wyniki zbliżone do 1 oznaczają pozytywne tonacji, a wyniki zbliżone do 0 wskazują na ujemne tonacji.
 
 W tej sekcji nastąpi kilka rzeczy:
 

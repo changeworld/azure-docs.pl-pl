@@ -5,15 +5,15 @@ services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 11/21/2019
+ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: b9f434f2d3c06d3db0bfda7c5853cc835ff64035
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047763"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123135"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generuj plik żądania podpisania certyfikatu
 
@@ -26,10 +26,9 @@ Wygeneruj plik żądania podpisania certyfikatu (CSR), którego firma Apple uży
 1. Wybierz pozycję **dostęp do łańcucha kluczy**, rozwiń węzeł **Asystent certyfikatów**, a następnie wybierz pozycję **Żądaj certyfikatu z urzędu certyfikacji**.
 
     ![Żądanie nowego certyfikatu za pomocą narzędzia Keychain Access](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
-    
-> [!NOTE]
-> Domyślnie system OS X wybiera pierwszy element w kategorii, która została wybrana w narzędziu dostępu do łańcucha kluczy. Może to być problematyczne, jeśli użytkownik znajduje się w sekcji **Certyfikaty** , a **urząd certyfikacji relacji deweloperów firmy Apple na całym świecie** *nie* jest pierwszym elementem na liście. Przed zażądaniem certyfikatu upewnij się, że znajdujesz się w sekcji **Certyfikaty** , a następnie wybierz **urząd certyfikacji relacji deweloperów Apple Worldwide**.
 
+   > [!NOTE]
+   > Domyślnie dostęp do łańcucha kluczy wybiera pierwszy element z listy. Może to być problem, jeśli jesteś w kategorii **Certyfikaty** i **urząd certyfikacji relacji deweloperów firmy Apple Worldwide** nie jest pierwszym elementem na liście. Przed wygenerowaniem CSR (żądanie podpisania certyfikatu) Upewnij się, że masz element niebędący kluczem lub wybrano klucz **urzędu certyfikacji relacji deweloperów firmy Apple Worldwide** .
 
 1. Wybierz **adres E-mail użytkownika**, wprowadź wartość **Nazwa pospolita** , upewnij się, że określono opcję **Zapisano na dysku**, a następnie wybierz pozycję **Kontynuuj**. Pozostaw puste **adresy E-mail urzędu certyfikacji** , ponieważ nie jest to wymagane.
 

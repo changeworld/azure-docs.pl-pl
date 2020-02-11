@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: spelluru
-ms.openlocfilehash: e615170952ea2987639a0bfc269ad5a1692e1e59
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68a27a325a0ef02c6eeea9867a21ba0e24ab5321
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480803"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117136"
 ---
 # <a name="enable-automatic-shutdown-of-vms-on-disconnect"></a>Włącz automatyczne zamykanie maszyn wirtualnych przy rozłączaniu
 W tym artykule opisano sposób włączania lub wyłączania automatycznego zamykania maszyn wirtualnych z **systemem Windows 10** Lab (szablonu lub ucznia) po odłączeniu połączenia z pulpitem zdalnym. Możesz również określić, jak długo maszyny wirtualne powinny czekać, aby użytkownik mógł ponownie nawiązać połączenie przed automatycznym zamknięciem.
@@ -34,6 +34,9 @@ Na stronie krok 3 Kreatora tworzenia laboratorium można włączyć lub wyłącz
 To ustawienie można skonfigurować na stronie **Ustawienia** , jak pokazano na poniższej ilustracji: 
 
 ![Konfiguruj po utworzeniu laboratorium](../media/how-to-enable-shutdown-disconnect/configure-lab-automatic-shutdown.png)
+
+> [!WARNING]
+> Jeśli system operacyjny Windows zostanie zamknięty na maszynie wirtualnej przed rozłączeniem sesji RDP z maszyną wirtualną, funkcja Autozamykania nie będzie działać prawidłowo.  
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:

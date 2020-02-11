@@ -2,19 +2,19 @@
 title: 'Szybki Start: Tworzenie indeksu wyszukiwania w programie Poster przy użyciu interfejsów API REST'
 titleSuffix: Azure Cognitive Search
 description: W tym przewodniku szybki start interfejsu API REST dowiesz się, jak wywoływać interfejsy API REST platformy Azure Wyszukiwanie poznawcze przy użyciu programu Poster oraz dane przykładowe i definicje.
-author: HeidiSteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 11/04/2019
-ms.openlocfilehash: 9014a83596a3eee71f43d12a73188c1c43b832af
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/10/2020
+ms.openlocfilehash: c502886aac9d13f7a470a9b83f1fc12334913beb
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406953"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121638"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure w programie Poster przy użyciu interfejsów API REST
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "74406953"
 > * [C#](search-create-index-dotnet.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-get-started-portal.md)
-> * [Program PowerShell](search-howto-dotnet-sdk.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
 Jednym z najprostszych sposobów eksplorowania [interfejsów API REST platformy Azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice) jest użycie programu Poster lub innego narzędzia do testowania sieci Web w celu sformułowania żądań HTTP i sprawdzenia odpowiedzi. Za pomocą odpowiednich narzędzi i niniejszej instrukcji możesz wysyłać żądania i wyświetlać odpowiedzi przed napisaniem jakiegokolwiek kodu.

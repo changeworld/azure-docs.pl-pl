@@ -1,14 +1,14 @@
 ---
 title: Środowiska zarządzania wieloma dzierżawami
 description: Zarządzanie zasobami delegowanymi przez platformę Azure umożliwia korzystanie z funkcji zarządzania między dzierżawcami.
-ms.date: 01/06/2020
+ms.date: 02/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 661ada4e5d620d4977290986f5649b91363202fe
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: f5d68be1226a026f8fdfd7595cb2812ce51dfdb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75706992"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122048"
 ---
 # <a name="cross-tenant-management-experiences"></a>Środowiska zarządzania wieloma dzierżawami
 
@@ -55,8 +55,9 @@ Większość zadań i usług można wykonać w odniesieniu do zasobów delegowan
 [Azure Backup](../../backup/index.yml):
 
 - Tworzenie kopii zapasowych i przywracanie danych klienta w dzierżawach klientów
+- Użyj [Eksploratora kopii zapasowych](../../backup/monitor-azure-backup-with-backup-explorer.md) , aby ułatwić wyświetlanie informacji operacyjnych dotyczących elementów kopii zapasowej (w tym zasobów platformy Azure, które nie zostały jeszcze skonfigurowane do tworzenia kopii zapasowych) i informacji o monitorowaniu (zadania i alerty) dla delegowanych subskrypcji Eksplorator kopii zapasowych jest obecnie dostępny tylko dla danych maszyny wirtualnej platformy Azure.
 
-[Azure Kubernetes Service (AKS)](../../aks/index.yml):
+[Usługa Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
 - Zarządzanie hostowanymi środowiskami Kubernetes oraz wdrażanie aplikacji kontenerowych i zarządzanie nimi w ramach dzierżawców klientów
 
@@ -117,7 +118,7 @@ Większość zadań i usług można wykonać w odniesieniu do zasobów delegowan
 - Dostęp do maszyn wirtualnych za pomocą konsoli szeregowej w dzierżawach klientów
 - Należy pamiętać, że nie można użyć Azure Active Directory do zdalnego logowania do maszyny wirtualnej i nie można zintegrować maszyny wirtualnej z Key Vault hasła, wpisów tajnych lub kluczy kryptograficznych na potrzeby szyfrowania dysków
 
-[Azure Virtual Network](../../virtual-network/index.yml):
+[Virtual Network platformy Azure](../../virtual-network/index.yml):
 
 - Wdrażaj sieci wirtualne i karty interfejsu sieci wirtualnej (vNICs) w ramach dzierżawców klientów i zarządzaj nimi
 

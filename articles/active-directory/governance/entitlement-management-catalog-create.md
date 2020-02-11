@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422641"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120244"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Tworzenie wykazu zasobów i zarządzanie nim w usłudze Azure AD uprawnienia zarządzania
 
@@ -51,6 +51,10 @@ Katalog jest kontenerem zasobów i pakietów dostępu. Katalog można utworzyć,
 
 1. Kliknij przycisk **Utwórz** , aby utworzyć wykaz.
 
+### <a name="creating-a-catalog-programmatically"></a>Programistyczne tworzenie katalogu
+
+Możesz również utworzyć katalog przy użyciu Microsoft Graph.  Użytkownik w odpowiedniej roli z aplikacją, która ma delegowane uprawnienia `EntitlementManagement.ReadWrite.All`, może wywołać interfejs API, aby [utworzyć accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+
 ## <a name="add-resources-to-a-catalog"></a>Dodawanie zasobów do wykazu
 
 Aby uwzględnić zasoby w pakiecie dostępu, zasoby muszą znajdować się w wykazie. Typy zasobów, które można dodać, to grupy, aplikacje i witryny usługi SharePoint Online. Grupy mogą być utworzonymi w chmurze grupami programu Office 365 lub grupami zabezpieczeń usługi Azure AD utworzonych w chmurze. Mogą to być aplikacje dla przedsiębiorstw usługi Azure AD, w tym zarówno aplikacje SaaS, jak i własne aplikacje federacyjne w usłudze Azure AD. Lokacje mogą być witrynami usługi SharePoint Online lub kolekcjami witryn usługi SharePoint Online.
@@ -76,6 +80,10 @@ Aby uwzględnić zasoby w pakiecie dostępu, zasoby muszą znajdować się w wyk
 1. Po zakończeniu kliknij przycisk **Dodaj**.
 
     Te zasoby można teraz dołączać do pakietów dostępu w katalogu.
+
+### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Programistyczne Dodawanie zasobu do katalogu
+
+Możesz również dodać zasób do wykazu przy użyciu Microsoft Graph.  Użytkownik w odpowiedniej roli lub katalogu i właściciel zasobu z aplikacją, która ma delegowane uprawnienia `EntitlementManagement.ReadWrite.All`, może wywołać interfejs API, aby [utworzyć accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
 
 ## <a name="remove-resources-from-a-catalog"></a>Usuwanie zasobów z wykazu
 
@@ -129,7 +137,7 @@ Można edytować nazwę i opis wykazu. Użytkownicy zobaczą te informacje w szc
 
     ![Edytuj ustawienia katalogu](./media/entitlement-management-shared/catalog-edit.png)
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 ## <a name="delete-a-catalog"></a>Usuwanie wykazu
 
@@ -144,6 +152,10 @@ Katalog można usunąć, ale tylko wtedy, gdy nie ma żadnych pakietów dostępu
 1. Na stronie **Przegląd**wykazu kliknij pozycję **Usuń**.
 
 1. W wyświetlonym oknie komunikatu kliknij przycisk **tak**.
+
+### <a name="deleting-a-catalog-programmatically"></a>Programistyczne usuwanie katalogu
+
+Możesz również usunąć katalog przy użyciu Microsoft Graph.  Użytkownik w odpowiedniej roli z aplikacją, która ma delegowane uprawnienia `EntitlementManagement.ReadWrite.All`, może wywołać interfejs API, aby [usunąć accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: 4850a58ae96b9fc5e8293efbac0de447915289ca
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 02/10/2020
+ms.openlocfilehash: 3dc0af3f0d1236e902f6fa845fae95e3f2a500d1
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763355"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116470"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Samouczek: Tworzenie potoku Azure Machine Learning na potrzeby oceniania partii
 
@@ -35,12 +35,12 @@ W tym samouczku wykonasz następujące zadania:
 > * Kompilowanie, uruchamianie i publikowanie potoku
 > * Włączanie punktu końcowego REST dla potoku
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Jeśli nie masz jeszcze Azure Machine Learning obszaru roboczego lub notesu maszyny wirtualnej, Ukończ [część 1 samouczka instalacji](tutorial-1st-experiment-sdk-setup.md).
-* Po zakończeniu pracy z samouczkiem Instalatora Użyj tego samego serwera notesu, aby otworzyć Notes */tutorial-Pipeline-Batch-Scoring-Classification. ipynb* .
+* Po zakończeniu pracy z samouczkiem Instalatora Użyj tego samego serwera notesu, aby otworzyć Notes */Machine-Learning-Pipelines-Advanced/tutorial-Pipeline-Batch-Scoring-Classification. ipynb* .
 
 Jeśli chcesz uruchomić samouczek instalacji we własnym [środowisku lokalnym](how-to-configure-environment.md#local), możesz uzyskać dostęp do samouczka w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Uruchom `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests`, aby uzyskać wymagane pakiety.
 

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053733"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122115"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Omówienie zabezpieczeń przedsiębiorstwa w usłudze Azure HDInsight
 
@@ -87,9 +87,9 @@ Poniższa tabela zawiera linki do zasobów dla każdego typu rozwiązania zabezp
 |  | Zapewnianie [stosowania poprawek systemu operacyjnego](../hdinsight-os-patching.md) w regularnych odstępach czasu | Klient |
 | Bezpieczeństwo sieci | Konfigurowanie [sieci wirtualnej](../hdinsight-plan-virtual-network-deployment.md) |
 |  | Skonfiguruj [reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) dla ruchu przychodzącego](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | Klient |
-|  | Konfigurowanie [ograniczenia ruchu wychodzącego](../hdinsight-restrict-outbound-traffic.md) za pomocą zapory (wersja zapoznawcza) | Klient |
-| Zwirtualizowana infrastruktura | ND | HDInsight (dostawca usług w chmurze) |
-| Zabezpieczenia infrastruktury fizycznej | ND | HDInsight (dostawca usług w chmurze) |
+|  | Konfigurowanie [ograniczenia ruchu wychodzącego](../hdinsight-restrict-outbound-traffic.md) za pomocą zapory | Klient |
+| Zwirtualizowana infrastruktura | Nie dotyczy | HDInsight (dostawca usług w chmurze) |
+| Zabezpieczenia infrastruktury fizycznej | Nie dotyczy | HDInsight (dostawca usług w chmurze) |
 
 ## <a name="next-steps"></a>Następne kroki
 

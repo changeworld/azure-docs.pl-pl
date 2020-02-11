@@ -2,18 +2,18 @@
 title: Utwórz indeks wyszukiwania w Azure Portal
 titleSuffix: Azure Cognitive Search
 description: W tym przewodniku szybki start dowiesz się, jak za pomocą Kreatora importu danych utworzyć, załadować i zbadać pierwszy indeks wyszukiwania w usłudze Azure Wyszukiwanie poznawcze.
-author: HeidiSteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 02/10/2020
+ms.openlocfilehash: 6a3bbdae0d3fa898621c1c805388252beb891ecf
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901000"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121672"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure w Azure Portal
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "74901000"
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Node.js](search-get-started-nodejs.md)
-> * [Program PowerShell](search-get-started-powershell.md)
+> * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
@@ -102,13 +102,13 @@ W kreatorze **importu danych** kliknij pozycję **Indeksator** > **Nazwa**, a na
 
 Ten obiekt definiuje proces wykonywalny. Możesz go uruchamiać w ramach harmonogramu cyklicznego, ale na razie użyj opcji domyślnej, aby od razu uruchomić indeksator jeden raz.
 
-Kliknij przycisk **Prześlij**, aby utworzyć i od razu uruchomić indeksator.
+Kliknij przycisk **Prześlij**, aby utworzyć i jednocześnie uruchomić indeksator.
 
   ![Indeksator hoteli](media/search-get-started-portal/hotels-indexer.png)
 
 ## <a name="monitor-progress"></a>Monitorowanie postępu
 
-Kreator powinien przenieść Cię do listy Indeksatory, gdzie można monitorować postęp. W przypadku samodzielnej nawigacji przejdź do strony Przegląd i kliknij opcję **Indeksatory**.
+Kreator powinien przenieść Cię do listy Indeksatory, gdzie można monitorować postęp. W przypadku samodzielnej nawigacji przejdź do strony Przegląd, a następnie kliknij przycisk **Indeksatory**.
 
 Aktualizacja strony w portalu może wymagać kilku minut, ale na liście powinien być widoczny nowo utworzony indeksator w stanie wskazującym na trwające indeksowanie lub jego pomyślne zakończenie wraz z liczbą zindeksowanych dokumentów.
 
@@ -260,7 +260,7 @@ Przedstawiono również sposób znajdowania indeksów, indeksatorów i źródeł
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W przypadku pracy w ramach własnej subskrypcji warto sprawdzić po zakończeniu projektu, czy dalej potrzebuje się utworzonych zasobów. Uruchomione zasoby mogą generować koszty. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów w celu usunięcia całego zestawu zasobów.
+Gdy pracujesz nad własną subskrypcją, dobrym pomysłem jest zakończenie projektu w celu ustalenia, czy nadal potrzebujesz utworzonych zasobów. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
 
 Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystkie zasoby** lub **grupy zasobów** w okienku nawigacji po lewej stronie.
 

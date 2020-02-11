@@ -4,12 +4,12 @@ description: Instrukcje dotyczące przenoszenia magazynu usług Recovery Service
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 7d0a6c47fa08774161d3a2b7507cdfecaf8c7197
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: fed42c578da2e4f27f42e11d5ac67d698bbcd939
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172887"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120715"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Przenoszenie magazynu Recovery Services w ramach subskrypcji i grup zasobów platformy Azure
 
@@ -18,6 +18,10 @@ W tym artykule wyjaśniono, jak przenieść magazyn Recovery Services skonfiguro
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
 Przenoszenie zasobów dla magazynu Recovery Services jest obsługiwane w Australii Wschodniej, Australia Południowo-Wschodnia, Kanada środkowa, Kanada Wschodnia, Południowe Azja Wschodnia, Azja Wschodnia, środkowe stany USA, Północno-środkowe stany USA, Wschodnie stany USA, Wschodnie stany USA 2, Południowe stany USA Indie Środkowe, Indie Południowe, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa, Europa Północna, Europa Zachodnia, Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki, Południowe Zjednoczone Królestwo i Zachodnie Zjednoczone Królestwo.
+
+## <a name="unsupported-regions"></a>Nieobsługiwane regiony
+
+Francja środkowa, Francja Południowa, Niemcy Południowe, Niemcy środkowe, US Gov Iowa, Chiny Północne, Chiny North2, Chiny Wschodnie Chiny 2
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Wymagania wstępne dotyczące przeniesienia magazynu Recovery Services
 
@@ -44,7 +48,7 @@ Przenoszenie zasobów dla magazynu Recovery Services jest obsługiwane w Austral
 
 Aby przenieść magazyn usługi Recovery Services i skojarzone z nim zasoby do innej grupy zasobów
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Otwórz listę **magazynów Recovery Services** i wybierz magazyn, który chcesz przenieść. Gdy zostanie otwarty pulpit nawigacyjny magazynu, zostanie on wyświetlony jak pokazano na poniższej ilustracji.
 
    ![Otwórz magazyn usługi odzyskiwania](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -73,7 +77,7 @@ Aby przenieść magazyn usługi Recovery Services i skojarzone z nim zasoby do i
 
 Magazyn Recovery Services i powiązane z nim zasoby można przenieść do innej subskrypcji
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Otwórz listę magazynów Recovery Services i wybierz magazyn, który chcesz przenieść. Po otwarciu pulpitu nawigacyjnego magazynu pojawia się on jak pokazano na poniższej ilustracji.
 
     ![Otwórz magazyn usługi odzyskiwania](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -128,7 +132,7 @@ Aby przenieść magazyn Recovery Services do innej grupy zasobów, użyj następ
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 
-Aby przejść do nowej subskrypcji, podać `--destination-subscription-id` parametru.
+Aby przejść do nowej subskrypcji, podaj parametr `--destination-subscription-id`.
 
 ## <a name="post-migration"></a>Po migracji
 

@@ -3,18 +3,18 @@ title: Połącz z serwerem IBM MQ
 description: Wysyłanie i pobieranie wiadomości za pomocą serwera platformy Azure lub lokalnego programu IBM MQ oraz Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: valrobb
-ms.author: valthom
-ms.reviewer: chrishou, logicappspm
+author: ChristopherHouser
+ms.author: chrishou
+ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: ef9e91b526055ece58ce283572deb98cff951653
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789575"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118054"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Nawiązywanie połączenia z serwerem IBM MQ z poziomu usługi Azure Logic Apps
 
@@ -36,9 +36,9 @@ ms.locfileid: "74789575"
 
 * Oficjalnie obsługiwane wersje oprogramowania IBM WebSphere MQ:
 
-  * MQ 7,5
-  * MQ 8,0
-  * MQ 9,0
+  * MQ 7.5
+  * MQ 8.0
+  * MQ 9.0
 
 * Aplikacja logiki, do której ma zostać dodana akcja MQ. Ta aplikacja logiki musi używać tej samej lokalizacji co lokalne połączenie bramy danych i musi już mieć wyzwalacz, który uruchamia przepływ pracy. 
 

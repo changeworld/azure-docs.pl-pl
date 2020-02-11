@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 02/10/2020
+ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77082957"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116718"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Tworzenie zestawów danych Azure Machine Learning
 
@@ -172,7 +172,9 @@ Aby utworzyć zestaw danych w programie Studio:
 1. Wybierz pozycję **zestawy danych** w sekcji **elementy zawartości** okienka po lewej stronie. 
 1. Wybierz pozycję **Utwórz zestaw danych** , aby wybrać źródło zestawu danych. To źródło może być plikami lokalnymi, magazynem danych lub publicznymi adresami URL.
 1. Wybierz **tabelaryczną** lub **plik** dla typu zestawu danych.
-1. Wybierz pozycję **dalej** , aby przejrzeć formularze **Ustawienia i Podgląd**, **schemat** i **Potwierdź szczegóły** . są one inteligentnie wypełniane na podstawie typu pliku. Za pomocą tych formularzy Sprawdź wybrane opcje i jeszcze bardziej Skonfiguruj zestaw danych przed utworzeniem.  
+1. Wybierz pozycję **dalej** , aby otworzyć formularz **Magazyn danych i wybór pliku** . Na tym formularzu wybierz lokalizację, w której ma zostać zachowany zestaw danych, a także wybierz pliki danych, które mają być używane dla zestawu danych. 
+1. Wybierz pozycję **dalej** , aby wypełnić **Ustawienia, Podgląd** i formularze **schematów** ; są one inteligentnie wypełniane na podstawie typu pliku i można później skonfigurować zestaw danych przed utworzeniem w tych formularzach. 
+1. Wybierz pozycję **dalej** , aby przejrzeć formularz **Potwierdź szczegóły** . Sprawdź wybrane opcje i Utwórz opcjonalny profil danych dla zestawu danych. Dowiedz się więcej na temat [profilowania danych](how-to-create-portal-experiments.md#profile). 
 1. Wybierz pozycję **Utwórz** , aby zakończyć tworzenie zestawu danych.
 
 ## <a name="register-datasets"></a>Rejestrowanie zestawów danych

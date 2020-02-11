@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowej Azure Files przy użyciu programu PowerShell
 description: W tym artykule dowiesz się, jak utworzyć kopię zapasową Azure Files przy użyciu usługi Azure Backup i programu PowerShell.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086947"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120520"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Tworzenie kopii zapasowej Azure Files przy użyciu programu PowerShell
 
@@ -250,9 +250,9 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 ## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Ważna uwaga — identyfikacja elementu kopii zapasowej dla kopii zapasowych AFS
 
-Ta sekcja zawiera opis zmian w pobieraniu elementów kopii zapasowej dla kopii zapasowych z wersji zapoznawczej do usługi GA.
+Ta sekcja zawiera opis ważnej zmiany w kopii zapasowej AFS w przygotowaniu do ogólnego użytku.
 
-Podczas włączania tworzenia kopii zapasowej dla programu AFS użytkownik dostarcza przyjazną nazwę udziału plików klienta jako nazwę jednostki i tworzony jest element kopii zapasowej. Element kopii zapasowej "name" jest unikatowym identyfikatorem utworzonym przez usługę Azure Backup. Zazwyczaj identyfikator obejmuje przyjazną nazwę użytkownika. Jednak wprowadzono zmiany w sposobie, w jaki usługi platformy Azure wewnętrznie identyfikują udział plików platformy Azure w sposób unikatowy. Oznacza to, że unikatowa nazwa elementu kopii zapasowej dla tworzenia kopii w ramach programu AFS będzie identyfikatorem GUID i nie będzie miała żadnego powiązania z przyjazną nazwą klienta. Aby poznać unikatową nazwę każdego elementu, wystarczy uruchomić polecenie ```Get-AzRecoveryServicesBackupItem``` z odpowiednimi filtrami dla backupManagementType i Obciążeniatype, aby uzyskać wszystkie odpowiednie elementy, a następnie obserwować pole Name w zwracanym obiekcie/odpowiedzi PS. Jest zawsze zalecane, aby wyświetlić listę elementów, a następnie pobrać ich unikatową nazwę z pola "nazwa" w odpowiedzi. Ta wartość umożliwia filtrowanie elementów za pomocą parametru "name". W przeciwnym razie użyj parametru FriendlyName, aby pobrać element z przyjazną nazwą/identyfikatorem klienta.
+Podczas włączania tworzenia kopii zapasowej dla programu AFS użytkownik dostarcza przyjazną nazwę udziału plików klienta jako nazwę jednostki i tworzony jest element kopii zapasowej. Element kopii zapasowej "name" jest unikatowym identyfikatorem utworzonym przez usługę Azure Backup. Zazwyczaj identyfikator obejmuje przyjazną nazwę użytkownika. Jednak aby obsłużyć ważny scenariusz usuwania nietrwałego, w którym można usunąć udział plików, a można utworzyć inny udział plików o tej samej nazwie, unikatowa tożsamość udziału plików platformy Azure będzie teraz IDENTYFIKATORem, a nie przyjazną nazwą klienta. Aby poznać unikatową tożsamość/nazwę każdego elementu, wystarczy uruchomić polecenie ```Get-AzRecoveryServicesBackupItem``` z odpowiednimi filtrami dla backupManagementType i Obciążeniatype, aby uzyskać wszystkie odpowiednie elementy, a następnie obserwować pole Name w zwracanym obiekcie/odpowiedzi PS. Jest zawsze zalecane, aby wyświetlić listę elementów, a następnie pobrać ich unikatową nazwę z pola "nazwa" w odpowiedzi. Ta wartość umożliwia filtrowanie elementów za pomocą parametru "name". W przeciwnym razie użyj parametru FriendlyName, aby pobrać element z przyjazną nazwą/identyfikatorem klienta.
 
 > [!WARNING]
 > Upewnij się, że wersja PS została uaktualniona do wersji minimalnej dla "AZ. RecoveryServices 2.6.0" dla kopii zapasowych AFS. W tej wersji filtr "FriendlyName" jest dostępny dla polecenia ```Get-AzRecoveryServicesBackupItem```. Przekaż nazwę udziału plików platformy Azure do parametru FriendlyName. W przypadku przekazania nazwy udziału plików platformy Azure do parametru "name" Ta wersja zgłasza ostrzeżenie, aby przekazać przyjazną nazwę do parametru przyjaznej nazwy. Nieinstalowanie tej minimalnej wersji może spowodować niepowodzenie istniejących skryptów. Zainstaluj minimalną wersję PS przy użyciu poniższego polecenia.

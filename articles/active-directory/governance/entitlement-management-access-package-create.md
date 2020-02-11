@@ -16,18 +16,18 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d34046a16787ca1c6790880592fb30667ff2dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422690"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120487"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Utwórz nowy pakiet dostępu w usłudze Azure AD uprawnienia do zarządzania
 
 Pakiet dostępu umożliwia jednorazowe skonfigurowanie zasobów i zasad, które automatycznie zarządzają dostępem do czasu życia pakietu dostępu. W tym artykule opisano sposób tworzenia nowego pakietu dostępu.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Wszystkie pakiety dostępu muszą być umieszczone w kontenerze o nazwie wykaz. Katalog definiuje zasoby, które można dodać do pakietu dostępu. Jeśli nie określisz katalogu, pakiet dostępu zostanie umieszczony w katalogu ogólnym. Obecnie nie można przenieść istniejącego pakietu dostępu do innego katalogu.
 
@@ -57,7 +57,7 @@ Poniżej przedstawiono procedurę wysokiego poziomu służącą do tworzenia now
 
 **Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. Kliknij **Azure Active Directory** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
@@ -119,7 +119,7 @@ W zależności od tego, kto ma być w stanie zażądać tego pakietu dostępu, w
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
-## <a name="review--create"></a>Przeglądanie i tworzenie
+## <a name="review--create"></a>Przegląd + tworzenie
 
 Na karcie **Przegląd i tworzenie** możesz przejrzeć ustawienia i sprawdzić, czy występują błędy walidacji.
 
@@ -131,7 +131,18 @@ Na karcie **Przegląd i tworzenie** możesz przejrzeć ustawienia i sprawdzić, 
 
     Nowy pakiet dostępu zostanie wyświetlony na liście pakietów dostępu.
 
+## <a name="creating-an-access-package-programmatically"></a>Programistyczne tworzenie pakietu dostępu
+
+Możesz również utworzyć pakiet dostępu przy użyciu Microsoft Graph.  Użytkownik w odpowiedniej roli z aplikacją, która ma delegowane uprawnienia `EntitlementManagement.ReadWrite.All`, może wywołać interfejs API, aby
+
+1. [Wyświetl listę accessPackageResources w wykazie](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) i [Utwórz accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) dla wszystkich zasobów, które nie znajdują się jeszcze w wykazie.
+1. [Wyświetl listę accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) każdego AccessPackageResource w accessPackageCatalog. Ta lista ról będzie następnie używana do wybierania roli podczas tworzenia accessPackageResourceRoleScope.
+1. [Utwórz element accessPackage](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta).
+1. [Utwórz element accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
+1. [Utwórz accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) dla każdej roli zasobu wymaganej w pakiecie dostępu.
+
 ## <a name="next-steps"></a>Następne kroki
 
 - [Link udostępniania do żądania pakietu dostępu](entitlement-management-access-package-settings.md)
 - [Zmiana ról zasobów dla pakietu dostępu](entitlement-management-access-package-resources.md)
+- [Bezpośrednie przypisywanie użytkownika do pakietu dostępu](entitlement-management-access-package-assignments.md)

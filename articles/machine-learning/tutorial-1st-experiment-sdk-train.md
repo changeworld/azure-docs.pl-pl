@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: c38347a03ddc0ef5f6c1bd3118696062db9a8254
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533426"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116539"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Samouczek: uczenie swojego pierwszego modelu ML
 
@@ -35,7 +35,7 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 
 Jedynym wymaganiem wstępnym jest uruchomienie części jednego z tego samouczka, [Ustawienia środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
 
-W tej części samouczka uruchomiono kod w notesie przykładowej Jupyter `tutorials/tutorial-1st-experiment-sdk-train.ipynb` otwartym na końcu części pierwszej. Ten artykuł zawiera ten sam kod, który znajduje się w notesie.
+W tej części samouczka uruchamiasz kod w przykładowym samouczku notesu Jupyter */Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-Train. ipynb* otwartym na końcu części pierwszej. Ten artykuł zawiera ten sam kod, który znajduje się w notesie.
 
 ## <a name="open-the-notebook"></a>Otwieranie notesu
 
@@ -45,7 +45,7 @@ W tej części samouczka uruchomiono kod w notesie przykładowej Jupyter `tutori
 
 
 > [!Warning]
-> **Nie** Twórz *nowego* notesu w interfejsie Jupyter. Notes `tutorials/tutorial-1st-experiment-sdk-train.ipynb` obejmuje **cały kod i dane, które są zbędne** dla tego samouczka.
+> **Nie** Twórz *nowego* notesu w interfejsie Jupyter. *Samouczki notesu/Create-First-ml-Experiment/tutorial-1st-Experiment-SDK-Train. ipynb* obejmują **Wszystkie kod i dane, które są zbędne** dla tego samouczka.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Połącz obszar roboczy i Utwórz eksperyment
 
@@ -87,7 +87,7 @@ y_df = x_df.pop("Y")
 X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
 ```
 
-## <a name="train-a-model"></a>Trenowanie modelu
+## <a name="train-a-model"></a>Szkolenie modelu
 
 Uczenie prostego modelu uczenia się w scikit można łatwo wykonać lokalnie w przypadku szkolenia na małą skalę, ale w przypadku szkolenia wielu iteracji z dziesiątami z różnych permutacji funkcji i ustawień parametrów, można łatwo utracić śledzenie modeli, które zostały przeszkolone i jak przeszkolone. Poniższy Wzorzec projektowy pokazuje, jak korzystać z zestawu SDK, aby łatwo śledzić szkolenia w chmurze.
 
@@ -133,7 +133,7 @@ Po zakończeniu szkolenia Wywołaj zmienną `experiment`, aby pobrać link do ek
 experiment
 ```
 
-<table style="width:100%"><tr><th>Nazwa</th><th>Obszar roboczy</th><th>Strona raportu</th><th>Strona dokumentacji</th></tr><tr><td>cukrzycą — eksperyment</td><td>Nazwa Twojego obszaru roboczego</td><td>Łącze do Azure Portal</td><td>Link do dokumentacji</td></tr></table>
+<table style="width:100%"><tr><th>Name (Nazwa)</th><th>Obszar roboczy</th><th>Strona raportu</th><th>Strona docs</th></tr><tr><td>cukrzycą — eksperyment</td><td>Nazwa Twojego obszaru roboczego</td><td>Łącze do Azure Portal</td><td>Link do dokumentacji</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Wyświetlanie wyników szkolenia w portalu
 

@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866980"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120673"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Konfigurowanie Azure Files w kontenerze systemu Windows na App Service
 
@@ -38,6 +38,7 @@ W tym przewodniku pokazano, jak uzyskać dostęp do usługi Azure Storage w kont
 - Usługa Azure Storage w kontenerach systemu Windows nie jest obecnie **obsługiwana** w celu przeprowadzenia własnych scenariuszy kodu w planach App Service systemu Windows.
 - Usługa Azure Storage w kontenerach systemu Windows **nie obsługuje** korzystania z konfiguracji **zapory magazynu** z powodu ograniczeń infrastruktury.
 - Usługa Azure Storage w kontenerach systemu Windows umożliwia określenie **maksymalnie pięciu** punktów instalacji na aplikację.
+- Usługa Azure Storage zainstalowana w aplikacji nie jest dostępna za pomocą App Service punktów końcowych FTP/FTPs. Użyj [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 - Usługa Azure Storage jest rozliczana niezależnie i **nie jest uwzględniana** w aplikacji sieci Web. Dowiedz się więcej o [cenach usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage).
 
 ## <a name="link-storage-to-your-web-app-preview"></a>Łączenie magazynu z aplikacją internetową (wersja zapoznawcza)

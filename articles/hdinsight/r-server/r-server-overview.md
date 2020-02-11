@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/12/2019
-ms.openlocfilehash: b04cc3a5e3a5680f7a16e890c39a4a7d83002bd7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 02/10/2020
+ms.openlocfilehash: a77771880da962298f6e80782e5f3e251f5f4641
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321670"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122375"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co to jest usługa ML w usłudze Azure HDInsight
 
@@ -35,7 +35,7 @@ Usługi ML w usłudze HDInsight zapewniają następujące korzyści:
 
 ### <a name="ai-innovation-from-microsoft-and-open-source"></a>Innowacje AI firmy Microsoft i Open-Source
 
-  Usługa l Services obejmuje wysoce skalowalny, rozproszony zestaw algorytmów, takich jak [kolekcję funkcji revoscaler](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [biblioteki revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)i [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) , które mogą pracować z rozmiarem danych większym od rozmiaru pamięci fizycznej i uruchamiać na wielu różnych platformach w sposób dystrybuowany. Dowiedz się więcej na temat kolekcji niestandardowych [pakietów języka R](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) firmy Microsoft i [pakietów Python](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) zawartych w produkcie.
+  Usługi ML obejmują wysoce skalowalny, rozproszony zestaw algorytmów, takich jak [kolekcję funkcji revoscaler](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [biblioteki revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)i [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) , które mogą pracować na rozmiarach danych o rozmiarze większym niż rozmiar pamięci fizycznej i uruchamiać na wielu różnych platformach w sposób rozproszony. Dowiedz się więcej na temat kolekcji niestandardowych [pakietów języka R](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) firmy Microsoft i [pakietów Python](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) zawartych w produkcie.
   
   Usługi ML mostkuje te innowacje i wkłady firmy Microsoft pochodzące z społeczności typu "open source" (zestawu narzędzi języka R, Python i AI) na jednej platformie klasy korporacyjnej. Każdy pakiet uczenia maszynowego "open source" w języku R lub Python może współpracować ze wszystkimi zastrzeżonymi innowacyjnymi firmy Microsoft.
 
@@ -50,6 +50,9 @@ Usługi ML w usłudze HDInsight zapewniają następujące korzyści:
 
   Individuals embarking on the journey of making their applications intelligent or simply wanting to learn the new world of AI and machine learning, need the right resources to help them get started. In addition to this documentation, Microsoft provides several learning resources and has engaged several training partners to help you ramp up and become productive quickly.
 --->
+
+> [!NOTE]  
+> Typ klastra usług ML w usłudze HDInsight jest obsługiwany tylko w usłudze HDInsight 3,6. Zaplanowano wycofanie usługi HDInsight 3,6 w dniu 31 grudnia 2020.
 
 ## <a name="key-features-of-ml-services-on-hdinsight"></a>Najważniejsze funkcje usługi ML Services w usłudze HDInsight
 
@@ -134,7 +137,7 @@ Ponadto można zainstalować środowisko IDE pulpitu i używać go do uzyskiwani
 
 Ponadto możesz uzyskać dostęp do konsoli języka R w węźle brzegowym, wpisując **R** w wierszu polecenia systemu Linux po nawiązaniu połączenia za pośrednictwem protokołu SSH lub wyciągania. W przypadku korzystania z interfejsu konsoli można uruchomić Edytor tekstu dla tworzenia skryptów języka R w innym oknie, a następnie wyciąć i wkleić sekcje skryptu do konsoli języka R zgodnie z potrzebami.
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Ceny skojarzone z klastrem usługi HDInsight usług w usłudze ML mają strukturę podobną do cen dla innych typów klastrów HDInsight. Są one oparte na wymiarach podstawowych maszyn wirtualnych w obrębie nazwy, danych i węzłów brzegowych, z dodaniem wzroście-godzinowego. Aby uzyskać więcej informacji, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 

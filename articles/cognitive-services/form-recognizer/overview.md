@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379445"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118546"
 ---
 # <a name="what-is-form-recognizer"></a>Co to jest rozpoznawanie formularzy?
 
@@ -51,17 +51,9 @@ Aparat rozpoznawania formularzy zawiera również model służący do odczytywan
 
 Aparat rozpoznawania formularzy może również wyodrębnić strukturę tekstu i tabeli (numery wierszy i kolumn skojarzonych z tekstem) za pomocą optycznego rozpoznawania znaków (OCR) o wysokiej rozdzielczości. 
 
-## <a name="where-do-i-start"></a>Od czego zacząć?
+## <a name="get-started"></a>Wprowadzenie
 
-**Krok 1:** Żądaj dostępu:
-
-Aparat rozpoznawania formularzy jest dostępny w wersji zapoznawczej o ograniczonym dostępie. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) . Formularz żąda informacji o użytkowniku, firmie i scenariuszu, w którym będzie używany aparat rozpoznawania formularzy.
-
-**Krok 2:** Utwórz zasób aparatu rozpoznawania formularzy w Azure Portal:
-
-Po otrzymaniu dostępu do aparatu rozpoznawania formularzy otrzymasz powitalną wiadomość e-mail z kilkoma łączami i zasobami. Użyj linku "Azure Portal" w tym komunikacie, aby otworzyć Azure Portal i utworzyć zasób aparatu rozpoznawania formularza.
-
-**Krok 3.** Wyodrębnij dane z formularzy:
+Skorzystaj z przewodnika Szybki Start, aby rozpocząć wyodrębnianie danych z formularzy. Zalecamy korzystanie z bezpłatnej usługi podczas nauki technologii. Należy pamiętać, że liczba bezpłatnych stron jest ograniczona do 500 miesięcznie.
 
 * Niestandardowa — uczenie modelu do formularzy
   * Uczenie bez etykiet
@@ -76,13 +68,11 @@ Po otrzymaniu dostępu do aparatu rozpoznawania formularzy otrzymasz powitalną 
 * Układ — Wyodrębnij strukturę tekstu i tabeli z formularzy
   * [Szybki Start: wyodrębnianie danych układu przy użyciu języka Python](quickstarts/python-layout.md)
 
-Zalecamy korzystanie z bezpłatnej usługi podczas nauki technologii. Należy pamiętać, że liczba bezpłatnych stron jest ograniczona do 500 miesięcznie.
-
-**Krok 4.** Zapoznaj się z interfejsami API REST:
+### <a name="review-the-rest-apis"></a>Przeglądanie interfejsów API REST
 
 Poniższe interfejsy API służą do uczenia modeli i wyodrębnienia danych strukturalnych z formularzy.
 
-|Nazwa |Opis |
+|Name (Nazwa) |Opis |
 |---|---|
 | **Uczenie modelu niestandardowego**| Uczenie nowego modelu do analizowania formularzy przy użyciu pięciu postaci tego samego typu. Ustaw parametr _useLabelFile_ , aby `true` do uczenia się z ręcznie oznaczonymi danymi. |
 | **Analiza formularza** |Analizuj pojedynczy dokument, który został przesłany jako strumień, aby wyodrębnić pary klucz-wartość i tabele z formularza z modelem niestandardowym.  |

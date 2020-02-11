@@ -2,14 +2,14 @@
 author: trrwilson
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 5/23/2019
+ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: 5c0b6400c6dc346597329c82e82801403a888a4d
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: a7ce6bc2b6fa272c8dd3c4bf95bc06a37d1fe28f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675563"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119748"
 ---
 1. Uruchom Android Studio i wybierz pozycję **Rozpocznij nowy projekt Android Studio** w oknie **powitalnym** .
 
@@ -27,14 +27,14 @@ Przygotowanie nowego projektu Android w programie Android Studio zajmie trochę 
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Bieżąca wersja zestawu SDK mowy Cognitive Services to 1.7.0.
+Bieżąca wersja zestawu SDK mowy Cognitive Services to 1.9.0.
 
 Zestaw Speech SDK dla systemu Android znajduje się w pakiecie o nazwie [AAR (biblioteka Android)](https://developer.android.com/studio/projects/android-library) i zawiera niezbędne biblioteki oraz wymagane uprawnienia systemu Android.
-Jest ona hostowana w repozytorium Maven przy użyciu protokołu https: \//csspeechstorage.blob.core.windows.net/maven/.
+Jest ona hostowana w repozytorium Maven przy użyciu protokołu https:\//csspeechstorage.blob.core.windows.net/maven/.
 
-Skonfiguruj projekt do korzystania z zestawu Speech SDK. Otwórz okno **struktury projektu** , wybierając pozycję **plik**  > **struktura projektu** na pasku menu Android Studio. W oknie **Struktura projektu** wprowadź następujące zmiany:
+Skonfiguruj projekt do korzystania z zestawu Speech SDK. Otwórz okno **struktury projektu** , wybierając pozycję **plik** > **struktura projektu** na pasku menu Android Studio. W oknie **Struktura projektu** wprowadź następujące zmiany:
 
-1. Na liście po lewej stronie okna wybierz pozycję **Project** (Project). Edytuj **domyślne ustawienia repozytorium bibliotek** , dołączając przecinek i nasz adres URL repozytorium Maven ujęty w znaki pojedynczego cudzysłowu: "https: \//csspeechstorage.blob.Core.Windows.NET/Maven/"
+1. Na liście po lewej stronie okna wybierz pozycję **Project** (Project). Edytuj **domyślne ustawienia repozytorium bibliotek** , dołączając przecinek i nasz adres URL repozytorium Maven ujęty w znaki pojedynczego cudzysłowu: "https:\//csspeechstorage.blob.Core.Windows.NET/Maven/"
 
    ![Zrzut ekranu okna Project Structure (Struktura projektu)](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-06-add-maven-repository.png)
 
@@ -42,12 +42,12 @@ Skonfiguruj projekt do korzystania z zestawu Speech SDK. Otwórz okno **struktur
 
    ![Zrzut ekranu przedstawiający zależność biblioteki](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. W wyświetlonym oknie wprowadź nazwę i wersję zestawu Speech SDK dla systemu Android, *com. Microsoft. cognitiveservices. Speech: Client-SDK: 1.7.0*. Następnie wybierz przycisk **OK**.
+1. W wyświetlonym oknie wprowadź nazwę i wersję zestawu Speech SDK dla systemu Android, *com. Microsoft. cognitiveservices. Speech: Client-SDK: 1.9.0*. Następnie wybierz przycisk **OK**.
    Zestaw mowy SDK należy dodać do listy zależności teraz, jak pokazano poniżej:
 
    ![Zrzut ekranu zestawu Speech SDK na liście zależności](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
 
-1. Wybierz kartę **Właściwości** . W przypadku **zgodności źródłowej** i **zgodności docelowej**wybierz pozycję **1,8**.
+1. Wybierz kartę **Właściwości** . W przypadku **zgodności źródłowej** i **zgodności docelowej**wybierz pozycję **1,9**.
 
    ![Zrzut ekranu przedstawiający zgodność źródłową i docelową zgodność](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-09-dependency-added.png)
 

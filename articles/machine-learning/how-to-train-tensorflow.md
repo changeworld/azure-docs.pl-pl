@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c68206eda008b93220fdde8f2666c0495499bdef
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a1c3e1948d53a168ce9a3e99cd932fa04e2fafc4
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311380"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114374"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Twórz TensorFlow model uczenia głębokiego na dużą skalę dzięki Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -162,7 +162,7 @@ est = TensorFlow(source_directory=script_folder,
 ```
 
 > [!TIP]
-> Dodano obsługę **Tensorflow 2,0** do klasy Tensorflow szacowania. Zobacz [wpis w blogu](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/), aby uzyskać więcej informacji.
+> Dodano obsługę **Tensorflow 2,0** do klasy Tensorflow szacowania. Aby uzyskać więcej informacji, zobacz [wpis w blogu](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/) .
 
 Aby uzyskać więcej informacji na temat dostosowywania środowiska języka Python, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md). 
 
@@ -247,7 +247,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 ### <a name="parameter-server"></a>Serwer parametrów
 
-Można również uruchomić [native rozproszonych TensorFlow](https://www.tensorflow.org/deploy/distributed), parametr modelem serwera, który używa. W przypadku tej metody szkolenie w klastrze serwerów parametru i procesów roboczych. Procesy robocze obliczania gradientów podczas szkolenia, gdy serwery parametr agregacji gradientów.
+Można również uruchomić [natywne rozproszone TensorFlow](https://www.tensorflow.org/deploy/distributed), które korzysta z modelu serwera parametrów. W przypadku tej metody szkolenie w klastrze serwerów parametru i procesów roboczych. Procesy robocze obliczania gradientów podczas szkolenia, gdy serwery parametr agregacji gradientów.
 
 Aby użyć metody serwera parametrów, należy określić obiekt [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) dla parametru `distributed_training` w konstruktorze TensorFlow.
 
@@ -258,7 +258,7 @@ distributed_training = TensorflowConfiguration()
 distributed_training.worker_count = 2
 
 # Tensorflow constructor
-estimator= TensorFlow(source_directory=project_folder,
+tf_est= TensorFlow(source_directory=project_folder,
                       compute_target=compute_target,
                       script_params=script_params,
                       entry_script='script.py',
@@ -276,7 +276,7 @@ run = exp.submit(tf_est)
 
 Potrzebne są również adresy sieciowe i porty klastra dla [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec), więc Azure Machine Learning ustawia zmienną środowiskową `TF_CONFIG`.
 
-`TF_CONFIG` Zmienna środowiskowa jest ciąg JSON. Oto przykład zmiennej serwera parametru:
+Zmienna środowiskowa `TF_CONFIG` jest ciągiem JSON. Oto przykład zmiennej serwera parametru:
 
 ```JSON
 TF_CONFIG='{
@@ -305,7 +305,7 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
-## <a name="deployment"></a>Wdrażanie
+## <a name="deployment"></a>Wdrożenie
 
 Właśnie zarejestrowany model można wdrożyć w taki sam sposób jak każdy inny zarejestrowany model w Azure Machine Learning, niezależnie od tego, który szacowania używany do uczenia się. Wdrożenie How-to zawiera sekcję dotyczącą rejestrowania modeli, ale możesz przejść bezpośrednio do tworzenia celu [obliczeń](how-to-deploy-and-where.md#choose-a-compute-target) dla wdrożenia, ponieważ istnieje już zarejestrowany model.
 
@@ -323,6 +323,6 @@ Pełne [Omówienie](how-to-deploy-and-where.md) wdrażania w Azure Machine Learn
 
 W tym artykule został przeszkolony i zarejestrowany model TensorFlow oraz zapoznaj się z opcjami wdrażania. Zapoznaj się z innymi artykułami, aby dowiedzieć się więcej na temat Azure Machine Learning.
 
-* [Śledzenie metryk są uruchamiane podczas szkolenia](how-to-track-experiments.md)
-* [Dostosowywanie hiperparametrów](how-to-tune-hyperparameters.md)
+* [Śledzenie metryk uruchamiania podczas szkolenia](how-to-track-experiments.md)
+* [Dostrajanie parametrów](how-to-tune-hyperparameters.md)
 * [Architektura referencyjna na potrzeby rozproszonego szkolenia uczenia głębokiego na platformie Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

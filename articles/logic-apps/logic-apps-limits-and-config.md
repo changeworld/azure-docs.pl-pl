@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 01/18/2020
-ms.openlocfilehash: 95960a0af628526eb11335ea5c2fcec51f3c66b5
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/10/2020
+ms.openlocfilehash: 348c393a623f0059eec011faf823f9b5131508f3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548547"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122131"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -23,7 +23,7 @@ W tym artykule opisano limity i szczegóły konfiguracji dotyczące tworzenia i 
 
 Poniżej przedstawiono limity dla jednej definicji aplikacji logiki:
 
-| Nazwa | Limit | Uwagi |
+| Name (Nazwa) | Limit | Uwagi |
 | ---- | ----- | ----- |
 | Akcje na przepływ pracy | 500 | Aby zwiększyć ten limit, można w razie potrzeby dodać zagnieżdżone przepływy pracy. |
 | Dozwolona głębokość zagnieżdżenia dla akcji | 8 | Aby zwiększyć ten limit, można w razie potrzeby dodać zagnieżdżone przepływy pracy. |
@@ -45,7 +45,7 @@ Poniżej przedstawiono limity dla jednej definicji aplikacji logiki:
 
 Poniżej przedstawiono limity dla pojedynczego uruchomienia aplikacji logiki:
 
-| Nazwa | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
+| Name (Nazwa) | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
 |------|--------------------|---------------------------------------|-------|
 | Czas trwania przebiegu | 90 dni | 366 dni | Czas wykonywania jest obliczany przy użyciu czasu rozpoczęcia przebiegu i limitu określonego *w czasie rozpoczęcia* według ustawienia przepływu pracy, [**w ciągu dni**](#change-duration). <p><p>Aby zmienić domyślny limit, który jest 90 dni, zobacz [zmiana czasu trwania](#change-duration). |
 | Uruchom przechowywanie w magazynie | 90 dni | 366 dni | Przechowywanie danych jest obliczane przy użyciu czasu rozpoczęcia przebiegu i limitu, który jest określony *w bieżącym czasie* przez ustawienie przepływu pracy, [**w ciągu dni przechowywania historii uruchamiania**](#change-retention). Niezależnie od tego, czy uruchomienie przebiegu lub przekroczenia limitu czasu, obliczenia przechowywania zawsze używają czasu rozpoczęcia uruchomienia. Gdy czas trwania uruchomienia przekracza *bieżący* limit przechowywania, przebieg zostanie usunięty z historii uruchamiania. <p><p>Jeśli zmienisz to ustawienie, bieżący limit jest zawsze używany do obliczania przechowywania, niezależnie od poprzedniego limitu. Jeśli na przykład obniży się limit przechowywania z 90 dni do 30 dni, w historii uruchamiania zostanie usunięte uruchomienie o 60 dni starszej. Jeśli okres przechowywania zostanie zwiększony z 30 dni do 60 dni, w 40 historii uruchomień zostanie uruchomionych 20 dni, które zostały już starsze. <p><p>Aby zmienić domyślny limit, który jest 90 dni, zobacz [zmiana przebiegu przechowywania w magazynie](#change-retention). |
@@ -82,14 +82,14 @@ Aby zmienić domyślny limit czasu wykonywania i uruchomić przechowywanie w mag
 
 Poniżej przedstawiono limity dla pojedynczego uruchomienia aplikacji logiki:
 
-| Nazwa | Limit | Uwagi |
+| Name (Nazwa) | Limit | Uwagi |
 | ---- | ----- | ----- |
 | Współbieżność wyzwalacza | -Nieograniczone, gdy kontrola współbieżności jest wyłączona <p><p>-25 jest domyślnym limitem, gdy włączony jest formant współbieżności, którego nie można cofnąć po włączeniu formantu. Można zmienić wartość domyślną z przedziału od 1 do 50 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które mogą być uruchamiane w tym samym czasie lub równolegle. <p><p>**Uwaga**: po włączeniu współbieżności limit SplitOn zostaje zredukowany do 100 elementów na potrzeby tworzenia [wsadowych tablic](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Aby zmienić domyślny limit na wartość z przedziału od 1 do 50 włącznie, zobacz [Zmienianie wyzwalacza współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [wystąpień wyzwalaczy sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maksymalna liczba oczekujących przebiegów | -Bez współbieżności minimalna liczba oczekujących uruchomień wynosi 1, a maksymalna liczba to 50. <p><p>— Za pomocą współbieżności minimalna liczba oczekujących uruchomień wynosi 10 i liczbę współbieżnych uruchomień (współbieżność wyzwalacza). Można zmienić maksymalną liczbę do 100 włącznie. | Ten limit opisuje największą liczbę wystąpień aplikacji logiki, które mogą czekać na uruchomienie, gdy w aplikacji logiki jest już uruchomiona Maksymalna liczba wystąpień współbieżnych. <p><p>Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | Elementy tablicy foreach | 100 000 | Ten limit opisuje największą liczbę elementów tablicy, które może przetworzyć pętla for each. <p><p>Aby filtrować większe tablice, można użyć [akcji zapytania](logic-apps-perform-data-operations.md#filter-array-action). |
 | Współbieżność foreach | 20 jest domyślnym limitem, gdy kontrola współbieżności jest wyłączona. Można zmienić wartość domyślną z przedziału od 1 do 50 włącznie. | Ten limit to największą liczbę iteracji pętli "for each", które mogą być uruchamiane w tym samym czasie lub równolegle. <p><p>Aby zmienić domyślny limit na wartość z przedziału od 1 do 50 włącznie, zobacz [zmiana "dla każdego" ograniczenia współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [uruchomienie "dla każdej" pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
 | Elementy SplitOn | -100 000 bez współbieżności wyzwalacza <p><p>-100 z współbieżnością wyzwalacza | Dla wyzwalaczy, które zwracają tablicę, można określić wyrażenie używające właściwości "SplitOn", które [dzieli lub departia elementy tablicy w wielu wystąpieniach przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) do przetworzenia, zamiast używać pętli "foreach". To wyrażenie odwołuje się do tablicy, która ma zostać użyta do utworzenia i uruchomienia wystąpienia przepływu pracy dla każdego elementu tablicy. <p><p>**Uwaga**: po włączeniu współbieżności limit SplitOn zostanie zmniejszony do 100 elementów. |
-| Iteracje Until | 5000 | |
+| Do czasu iteracji | 5000 | |
 ||||
 
 <a name="throughput-limits"></a>
@@ -100,7 +100,7 @@ Poniżej przedstawiono limity dla jednej definicji aplikacji logiki:
 
 ### <a name="multi-tenant-logic-apps-service"></a>Usługa Logic Apps z wieloma dzierżawcami
 
-| Nazwa | Limit | Uwagi |
+| Name (Nazwa) | Limit | Uwagi |
 | ---- | ----- | ----- |
 | Akcja: wykonania na 5 minut | 100 000 jest limitem domyślnym, ale 300 000 jest maksymalnym limitem. | Aby zmienić domyślny limit, zobacz [Uruchamianie aplikacji logiki w trybie "Wysoka przepływność"](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), która jest w wersji zapoznawczej. Można też rozłożyć obciążenie na więcej niż jedną aplikację logiki w razie potrzeby. |
 | Akcja: współbieżne wywołania wychodzące | ~2,500 | Możesz zmniejszyć liczbę równoczesnych żądań lub skrócić czas trwania w razie potrzeby. |
@@ -114,7 +114,7 @@ Poniżej przedstawiono limity dla jednej definicji aplikacji logiki:
 
 Poniżej przedstawiono limity przepływności dla jednostki SKU w warstwie Premium:
 
-| Nazwa | Limit | Uwagi |
+| Name (Nazwa) | Limit | Uwagi |
 |------|-------|-------|
 | Limit wykonywania jednostki podstawowej | Ograniczanie systemu w przypadku, gdy pojemność infrastruktury osiągnie 80% | Zapewnia 4 000 wykonania akcji na minutę, czyli ~ 160 000 000 wykonań akcji miesięcznie | |
 | Limit wykonywania jednostek skalowania | Ograniczanie systemu w przypadku, gdy pojemność infrastruktury osiągnie 80% | Każda jednostka skalowania może dostarczyć ~ 2 000 dodatkowych wykonań akcji na minutę, czyli ~ 80 000 000 więcej wykonań akcji miesięcznie | |
@@ -143,7 +143,7 @@ Poniżej przedstawiono limity pojedynczego wychodzącego lub przychodzącego wyw
 
 Niektóre operacje łączników powodują wywołania asynchroniczne lub Nasłuchuj żądań elementu webhook, dlatego limit czasu dla tych operacji może być dłuższy niż te limity. Aby uzyskać więcej informacji, zobacz szczegóły techniczne dla określonego łącznika oraz [wyzwalacze i akcje przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
-| Nazwa | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
+| Name (Nazwa) | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
 |------|--------------------|---------------------------------------|-------|
 | Żądanie wychodzące | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Przykłady żądań wychodzących obejmują wywołania wykonywane przez wyzwalacze protokołu HTTP. <p><p>**Porada**: Aby uzyskać więcej uruchomionych operacji, użyj [asynchronicznego wzorca sondowania](../logic-apps/logic-apps-create-api-app.md#async-pattern) lub [pętli do until](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
 | Żądanie przychodzące | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Przykładowe żądania przychodzące obejmują wywołania odbierane przez wyzwalacze żądań i wyzwalacze elementu webhook. <p><p>**Uwaga**: Aby uzyskać odpowiedzi dla oryginalnego obiektu wywołującego, wszystkie kroki odpowiedzi muszą zakończyć się w ramach limitu, chyba że zostanie wywołana inna aplikacja logiki jako zagnieżdżony przepływ pracy. Aby uzyskać więcej informacji, zobacz [wywoływanie, wyzwalanie lub zagnieżdżanie aplikacji logiki](../logic-apps/logic-apps-http-endpoint.md). |
@@ -151,27 +151,27 @@ Niektóre operacje łączników powodują wywołania asynchroniczne lub Nasłuch
 
 #### <a name="message-size"></a>Rozmiar komunikatu
 
-| Nazwa | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
+| Name (Nazwa) | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
 |------|--------------------|---------------------------------------|-------|
 | Rozmiar komunikatu | 100 MB | 200 MB | Aby obejść ten limit, zobacz [Obsługa dużych komunikatów przy użyciu fragmentów](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API mogą nie obsługiwać fragmentacji lub nawet domyślnego limitu. |
-| Rozmiar komunikatu z fragmentem | 1 GB | 5 GB | Ten limit ma zastosowanie do akcji, które natywnie obsługują fragmenty i umożliwiają włączenie fragmentu w konfiguracji środowiska uruchomieniowego. <p>W przypadku środowiska usługi integracji aparat Logic Apps obsługuje ten limit, ale łączniki mają własne ograniczenia dotyczące limitu aparatu, na przykład informacje o [interfejsie API łącznika usługi Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/). Aby uzyskać więcej informacji, zobacz [Obsługa dużych komunikatów przy użyciu fragmentów](../logic-apps/logic-apps-handle-large-messages.md). |
+| Rozmiar komunikatu z fragmentem | 1 GB | 5 GB | Ten limit ma zastosowanie do akcji, które natywnie obsługują fragmenty i umożliwiają włączenie fragmentu w konfiguracji środowiska uruchomieniowego. <p>W przypadku środowiska usługi integracji aparat Logic Apps obsługuje ten limit, ale łączniki mają własne ograniczenia dotyczące limitu aparatu, na przykład informacje o [interfejsie API łącznika usługi Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/). Aby uzyskać więcej informacji, zobacz [Obsługa dużych komunikatów przy użyciu fragmentów](../logic-apps/logic-apps-handle-large-messages.md). |
 |||||   
 
 #### <a name="character-limits"></a>Limity znaków
 
-| Nazwa | Uwagi |
+| Name (Nazwa) | Uwagi |
 |------|-------|
-| Limit oceniania wyrażeń | 131 072 znaki | Wyrażenia `@concat()`, `@base64()``@string()` nie mogą być dłuższe niż ten limit. |
+| Limit szacowania wyrażeń | 131 072 znaków | Wyrażenia `@concat()`, `@base64()``@string()` nie mogą być dłuższe niż ten limit. |
 | Limit znaków w adresie URL żądania | 16 384 znaków |
 |||
 
 #### <a name="retry-policy"></a>Zasady ponawiania
 
-| Nazwa | Limit | Uwagi |
+| Name (Nazwa) | Limit | Uwagi |
 | ---- | ----- | ----- |
 | Liczba ponownych prób | 90 | Wartość domyślna to 4. Aby zmienić wartość domyślną, użyj [parametru zasady ponawiania](../logic-apps/logic-apps-workflow-actions-triggers.md). |
-| Maksymalna opóźnienie ponowienia próby | 1 dzień | Aby zmienić wartość domyślną, użyj [parametru zasady ponawiania](../logic-apps/logic-apps-workflow-actions-triggers.md). |
-| Minimalne opóźnienie ponowienia próby | 5 sekund | Aby zmienić wartość domyślną, użyj [parametru zasady ponawiania](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Maksymalne opóźnienie ponawiania | 1 dzień | Aby zmienić wartość domyślną, użyj [parametru zasady ponawiania](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+| Opóźnienie minimalnej próby | 5 sekund | Aby zmienić wartość domyślną, użyj [parametru zasady ponawiania](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 ||||
 
 <a name="custom-connector-limits"></a>
@@ -180,7 +180,7 @@ Niektóre operacje łączników powodują wywołania asynchroniczne lub Nasłuch
 
 Poniżej przedstawiono limity łączników niestandardowych, które można tworzyć z interfejsów API sieci Web.
 
-| Nazwa | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
+| Name (Nazwa) | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
 |------|--------------------|---------------------------------------|-------|
 | Liczba łączników niestandardowych | 1000 na subskrypcję platformy Azure | 1000 na subskrypcję platformy Azure ||
 | Liczba żądań na minutę dla łącznika niestandardowego | 500 żądań na minutę za połączenie | 2 000 żądań na minutę na *Łącznik niestandardowy* ||
@@ -188,11 +188,12 @@ Poniżej przedstawiono limity łączników niestandardowych, które można tworz
 
 <a name="managed-identity"></a>
 
-## <a name="managed-identities"></a>Tożsamości zarządzane
+## <a name="managed-identities"></a>Zarządzane tożsamości
 
-| Nazwa | Limit |
-| ---- | ----- |
-| Liczba aplikacji logiki, które mają tożsamość przypisaną do systemu w ramach subskrypcji platformy Azure na region | 100 |
+| Name (Nazwa) | Limit |
+|------|-------|
+| Zarządzane tożsamości na aplikację logiki | Tożsamość przypisana przez system lub 1 tożsamość przypisana przez użytkownika |
+| Liczba aplikacji logiki, które mają zarządzaną tożsamość w ramach subskrypcji platformy Azure na region | 100 |
 |||
 
 <a name="integration-account-limits"></a>
@@ -225,13 +226,13 @@ Stawki cenowe znajdują się w temacie [Logic Apps cenniku](https://azure.micros
 > [!NOTE]
 > Korzystaj z warstwy Bezpłatna tylko w scenariuszach poznawczych, a nie w scenariuszach produkcyjnych. Ta warstwa ogranicza przepływność i użycie oraz nie ma umowy dotyczącej poziomu usług (SLA).
 
-| Artefakt | Bezpłatnie | Basic | Standardowa |
+| Artefakt | Bezpłatna | Podstawowa | Standard |
 |----------|------|-------|----------|
 | Umowy handlowe EDI | 10 | 1 | 1000 |
 | Partnerzy handlowi EDI | 25 | 2 | 1000 |
-| Mapy | 25 | 500 | 1000 |
+| Maps | 25 | 500 | 1000 |
 | Schematy | 25 | 500 | 1000 |
-| Zestawy | 10 | 25 | 1000 |
+| Zestawów | 10 | 25 | 1000 |
 | Certyfikaty | 25 | 2 | 1000 |
 | Konfiguracje partii | 5 | 1 | 50 |
 ||||
@@ -261,11 +262,11 @@ Stawki cenowe znajdują się w temacie [Logic Apps cenniku](https://azure.micros
 
 Poniżej przedstawiono limity rozmiaru komunikatów, które dotyczą protokołów B2B:
 
-| Nazwa | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
+| Name (Nazwa) | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 — 100 MB<br>V1 – 50 MB | v2 — 200 MB <br>V1 – 50 MB | Dotyczy kodowania i kodowania |
-| X12 | 50 MB | 50 MB | Dotyczy kodowania i kodowania |
-| EDIFACT | 50 MB | 50 MB | Dotyczy kodowania i kodowania |
+| X12 | 50 MB | 50 MB | Dotyczy kodowania i kodowania |
+| EDIFACT | 50 MB | 50 MB | Dotyczy kodowania i kodowania |
 ||||
 
 <a name="disable-delete"></a>
@@ -307,7 +308,7 @@ Adresy IP używane przez Azure Logic Apps dla wywołań przychodzących i wychod
 
 ### <a name="inbound-ip-addresses---logic-apps-service-only"></a>Przychodzące adresy IP — tylko usługa Logic Apps
 
-| Region | IP |
+| Region | Adres IP |
 |--------|----|
 | Australia Wschodnia | 13.75.153.66, 104.210.89.222, 104.210.89.244, 52.187.231.161 |
 | Australia Południowo-Wschodnia | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |

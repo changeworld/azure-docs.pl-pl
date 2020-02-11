@@ -3,19 +3,19 @@ title: Jak rozpoznać intencje z mowy przy użyciu zestawu Speech SDKC#
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku dowiesz się, jak rozpoznać intencje z mowy przy użyciu zestawu Speech SDK C#dla programu.
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2019
-ms.author: wolfma
-ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805896"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120046"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Jak rozpoznać intencje z mowy przy użyciu zestawu Speech SDK dlaC#
 
@@ -52,7 +52,7 @@ LUIS używa trzech rodzajów kluczy:
 | --------- | ----------------------------------------------------- |
 | Tworzenie | Umożliwia programowe tworzenie i modyfikowanie aplikacji LUIS |
 | Starter (początkowy)   | Umożliwia testowanie aplikacji LUIS przy użyciu tylko tekstu   |
-| Punkt końcowy  | Autoryzuje dostęp do określonej aplikacji LUIS            |
+| Endpoint  | Autoryzuje dostęp do określonej aplikacji LUIS            |
 
 W tym przewodniku potrzebny jest typ klucza punktu końcowego. W tym przewodniku użyto przykładowej aplikacji LUIS Automation, którą można utworzyć, korzystając z przewodnika Szybki Start dla [aplikacji do automatyzacji domowej](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) . Jeśli utworzono własną aplikację LUIS, można jej użyć zamiast niej.
 
@@ -91,12 +91,15 @@ Następnie Dodaj kod do projektu.
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. W ramach podanej metody `Main()` Dodaj następujący kod:
+1. Zastąp podaną metodę `Main()` następującym odpowiednikiem asynchronicznym:
 
    ```csharp
-   RecognizeIntentAsync().Wait();
-   Console.WriteLine("Please press Enter to continue.");
-   Console.ReadLine();
+   public static async Task Main()
+   {
+       await RecognizeIntentAsync();
+       Console.WriteLine("Please press Enter to continue.");
+       Console.ReadLine();
+   }
    ```
 
 1. Utwórz pustą metodę asynchroniczną `RecognizeIntentAsync()`, jak pokazano poniżej:
@@ -173,7 +176,7 @@ Aplikacja nie analizuje wyniku JSON. Wyświetla tekst JSON tylko w oknie konsoli
 
 ## <a name="specify-recognition-language"></a>Określanie języka na potrzeby rozpoznawania
 
-Domyślnie usługa LUIS rozpoznaje intencje w języku angielskim (Stany Zjednoczone) (`en-us`). Przypisanie kodu ustawień regionalnych do właściwości `SpeechRecognitionLanguage` konfiguracji mowy umożliwia rozpoznawanie intencji w innych językach. Na przykład Dodaj `config.SpeechRecognitionLanguage = "de-de";` w naszej aplikacji przed utworzeniem aparatu rozpoznawania, aby rozpoznawać intencje w języku niemieckim. Aby uzyskać więcej informacji, zobacz [obsługiwane języki](language-support.md#speech-to-text).
+Domyślnie usługa LUIS rozpoznaje intencje w języku angielskim (Stany Zjednoczone) (`en-us`). Przypisanie kodu ustawień regionalnych do właściwości `SpeechRecognitionLanguage` konfiguracji mowy umożliwia rozpoznawanie intencji w innych językach. Na przykład Dodaj `config.SpeechRecognitionLanguage = "de-de";` w naszej aplikacji przed utworzeniem aparatu rozpoznawania, aby rozpoznawać intencje w języku niemieckim. Aby uzyskać więcej informacji, zobacz [Luis Language Support](../LUIS/luis-language-support.md#languages-supported).
 
 ## <a name="continuous-recognition-from-a-file"></a>Ciągłe rozpoznawanie z pliku
 

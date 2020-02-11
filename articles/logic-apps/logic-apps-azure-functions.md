@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453472"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116902"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Wywoływanie usługi Azure Functions z Azure Logic Apps
 
@@ -125,7 +125,7 @@ Aby można było utworzyć funkcję platformy Azure rozpoczynającą się od wew
 
    1. W polu **kod** Dodaj kod do szablonu funkcji, łącznie z odpowiedzią i ładunkiem, która ma zostać zwrócona do aplikacji logiki po zakończeniu działania funkcji. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
 
-   Przykład:
+   Na przykład:
 
    ![Zdefiniuj funkcję](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
@@ -200,11 +200,11 @@ Gdy chcesz wyzwolić aplikację logiki z wewnątrz funkcji platformy Azure, apli
 
 Aby uwierzytelnić dostęp do zasobów w innych dzierżawach usługi Azure Active Directory (Azure AD) bez konieczności logowania i dostarczania poświadczeń lub wpisów tajnych, aplikacja logiki może używać [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) (znanej wcześniej jako tożsamość usługi ZARZĄDZANEJ lub MSI). Platforma Azure zarządza tą tożsamością i pomaga zabezpieczyć Twoje poświadczenia, ponieważ nie trzeba podawać ani obrócić wpisów tajnych. Dowiedz się więcej [na temat usług platformy Azure, które obsługują tożsamości zarządzane na potrzeby uwierzytelniania w usłudze Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-W przypadku skonfigurowania aplikacji logiki do korzystania z tożsamości zarządzanej przypisanej do systemu usługi Azure Functions w aplikacji logiki mogą również używać tej samej tożsamości do uwierzytelniania. Aby uzyskać więcej informacji na temat obsługi uwierzytelniania dla usługi Azure Functions w usłudze Logic Apps, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+W przypadku skonfigurowania aplikacji logiki do korzystania z tożsamości przypisanej do systemu lub ręcznie utworzonej tożsamości przypisanej do użytkownika usługi Azure Functions w aplikacji logiki mogą również używać tej samej tożsamości do uwierzytelniania. Aby uzyskać więcej informacji na temat obsługi uwierzytelniania dla usługi Azure Functions w usłudze Logic Apps, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-Aby skonfigurować i użyć tożsamości przypisanej do systemu z funkcją, wykonaj następujące kroki:
+Aby skonfigurować tożsamość zarządzaną i korzystać z niej, wykonaj następujące kroki:
 
-1. Włącz tożsamość przypisaną przez system w aplikacji logiki i Skonfiguruj dostęp tej tożsamości do zasobu docelowego. Zobacz temat [uwierzytelnianie dostępu do zasobów platformy Azure przy użyciu tożsamości zarządzanych w Azure Logic Apps](../logic-apps/create-managed-service-identity.md).
+1. Włącz zarządzaną tożsamość w aplikacji logiki i Skonfiguruj dostęp tej tożsamości do zasobu docelowego. Zobacz temat [uwierzytelnianie dostępu do zasobów platformy Azure przy użyciu tożsamości zarządzanych w Azure Logic Apps](../logic-apps/create-managed-service-identity.md).
 
 1. Aby włączyć uwierzytelnianie w funkcji i aplikacji funkcji platformy Azure, wykonaj następujące czynności:
 
@@ -215,7 +215,7 @@ Aby skonfigurować i użyć tożsamości przypisanej do systemu z funkcją, wyko
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>Konfigurowanie uwierzytelniania anonimowego w funkcji
 
-Aby użyć tożsamości przypisanej do systemu aplikacji logiki w funkcji platformy Azure, ustawiono poziom uwierzytelniania funkcji anonimowy. W przeciwnym razie aplikacja logiki zgłosi błąd "nieprawidłowego żądania".
+Aby użyć zarządzanej tożsamości aplikacji logiki w funkcji platformy Azure, ustaw poziom uwierzytelniania funkcji na anonimowy. W przeciwnym razie aplikacja logiki zgłosi błąd "nieprawidłowego żądania".
 
 1. W [Azure Portal](https://portal.azure.com)Znajdź i wybierz swoją aplikację funkcji. W tych krokach użyto "FabrikamFunctionApp" jako przykładowej aplikacji funkcji.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064147"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121449"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie miejsca pracy przez serwis Facebook w celu automatycznego aprowizacji użytkowników
 
@@ -43,7 +43,9 @@ Jeśli integracja z miejscem pracy odbywa się w kwarantannie, należy ponownie 
 
 https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
 
- 
+#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Jak sprawdzić, czy moja aplikacja została zmigrowana? 
+Po przeprowadzeniu migracji aplikacji transparent w sekcji autoryzacji dotyczącej zmian do przeniesień zostanie usunięty, a pole token tajne zostanie zastąpione przyciskiem "niebieska autoryzacja". 
+
 #### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>Sekcja poświadczeń administratora jest wyszarzona w mojej aplikacji i nie mogę jej zapisać. Dlaczego?
 Sekcja poświadczeń administratora została zablokowana dla istniejących klientów w miejscu pracy. Po przeprowadzeniu migracji dzierżawy do nowej aplikacji w miejscu pracy można ponownie zaktualizować sekcję poświadczenia administratora. Jeśli nie możesz czekać, możesz użyć powyższego adresu URL, aby edytować aplikację. 
 

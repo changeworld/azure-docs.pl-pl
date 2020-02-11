@@ -3,17 +3,17 @@ title: C#Samouczek dotyczący używania aspektów do nawigacji
 titleSuffix: Azure Cognitive Search
 description: W tym samouczku przedstawiono projekt "wyniki wyszukiwania na stronie spisu — Wyszukiwanie poznawcze platformy Azure", aby dodać nawigację aspektu. Dowiedz się, jak można użyć aspektów, aby łatwo zawęzić wyszukiwanie.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9f0d716e9077b2d9702f26b1afe92d9e4faf4a77
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794080"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121567"
 ---
 # <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C#Samouczek: używanie aspektów w celu ułatwienia nawigacji — Wyszukiwanie poznawcze platformy Azure
 

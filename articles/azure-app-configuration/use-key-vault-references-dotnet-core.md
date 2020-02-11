@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b35c23e6dd88af01391bf7f01a7e736a1a744fff
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4e896c5fa6f8656be29eed7eb8d4e8854a94ecfa
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714428"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116622"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Samouczek: Używanie odwołań Key Vault w aplikacji ASP.NET Core
 
@@ -172,7 +172,7 @@ Aby dodać wpis tajny do magazynu, należy wykonać zaledwie kilka dodatkowych k
     using Azure.Identity;
     ```
 
-1. Zaktualizuj metodę `CreateWebHostBuilder`, aby użyć konfiguracji aplikacji przez wywołanie metody `config.AddAzureAppConfiguration`. Dołącz opcję `UseAzureKeyVault`, aby przekazać nowe odwołanie `KeyVaultClient` do Key Vault.
+1. Zaktualizuj metodę `CreateWebHostBuilder`, aby użyć konfiguracji aplikacji przez wywołanie metody `config.AddAzureAppConfiguration`. Dołącz opcję `ConfigureKeyVault` i przekaż poprawne poświadczenia do Key Vault.
 
     #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -217,7 +217,7 @@ Aby dodać wpis tajny do magazynu, należy wykonać zaledwie kilka dodatkowych k
             .UseStartup<Startup>());
     ```
 
-1. Po zainicjowaniu połączenia z konfiguracją aplikacji przeszedł odwołanie `KeyVaultClient` do metody `UseAzureKeyVault`. Po zainicjowaniu można uzyskać dostęp do wartości odwołań Key Vault w ten sam sposób, w jaki uzyskuje się dostęp do wartości zwykłych kluczy konfiguracji aplikacji.
+1. Po zainicjowaniu połączenia z konfiguracją aplikacji należy skonfigurować połączenie do Key Vault przez wywołanie metody `ConfigureKeyVault`. Po zainicjowaniu można uzyskać dostęp do wartości odwołań Key Vault w ten sam sposób, w jaki uzyskuje się dostęp do wartości zwykłych kluczy konfiguracji aplikacji.
 
     Aby wyświetlić ten proces w działaniu, Otwórz *index. cshtml* w **widokach** > folder **macierzysty** . Zastąp jego zawartość następującym kodem:
 

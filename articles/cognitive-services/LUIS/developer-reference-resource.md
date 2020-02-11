@@ -1,25 +1,18 @@
 ---
 title: Zasoby dla deweloperów — Language Understanding
-titleSuffix: Azure Cognitive Services
-description: Deweloperzy mają interfejsy API REST i zestawy SDK dla Language Understanding.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 01/22/2020
-ms.author: diberry
-ms.openlocfilehash: 2f351ac570080c83e78697bbca94340bb96cbcf7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+description: Zestawy SDK, interfejsy API REST, interfejs wiersza polecenia ułatwiają tworzenie aplikacji Language Understanding (LUIS) w języku programowania. Zarządzaj zasobami platformy Azure i przewidywaniami LUIS.
+ms.topic: reference
+ms.date: 02/09/2020
+ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716139"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119963"
 ---
-# <a name="developer-resources-for-language-understanding"></a>Zasoby dla deweloperów Language Understanding
+# <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Zasoby deweloperskie zestawu SDK, REST i interfejsu wiersza polecenia dla Language Understanding (LUIS)
 
-Deweloperzy mogą używać interfejsów API REST i zestawów SDK dla Language Understanding.
+Zestawy SDK, interfejsy API REST, interfejs wiersza polecenia ułatwiają tworzenie aplikacji Language Understanding (LUIS) w języku programowania. Zarządzaj zasobami platformy Azure i przewidywaniami LUIS. 
 
 ## <a name="azure-resource-management"></a>Zarządzanie zasobami platformy Azure
 
@@ -31,11 +24,17 @@ Zapoznaj się z dokumentacją referencyjną opartą na narzędziu:
 
 * [Azure RM PowerShell](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
+
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Language Understanding tworzenia i przewidywania żądań
 
-Usługa Language Understanding jest dostępna z zasobów platformy Azure, które należy utworzyć. Istnieją dwa zasoby: Tworzenie i prognozowanie zasobów punktów końcowych. Oba te zasoby umożliwiają kontrolowanie zasobów LUIS.
+Usługa Language Understanding jest dostępna z zasobów platformy Azure, które należy utworzyć. Istnieją dwa zasoby:
+
+* Użyj zasobu **tworzenia** do szkolenia do tworzenia, edytowania, uczenia i publikowania.
+* Użyj **prognozowania** dla środowiska uruchomieniowego, aby wysłać tekst użytkownika i otrzymać prognozę.
 
 Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
+
+Użyj [Cognitive Services przykładowego kodu](https://github.com/Azure-Samples/cognitive-services-quickstart-code) , aby poznać i korzystać z najbardziej typowych zadań.
 
 ### <a name="rest-apis"></a>Interfejsy API REST
 
@@ -77,7 +76,7 @@ Bot Framework udostępnia [kilka narzędzi](https://github.com/microsoft/botbuil
 * [Interfejs wiersza polecenia Luis](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) — tworzenie aplikacji Luis.AI i zarządzanie nimi
 * [Wysyłanie](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)— Zarządzanie aplikacjami nadrzędnymi i podrzędnymi
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) — automatycznie Generuj zapasowe C#klasy/TypeScript dla Twoich Luis i jednostek.
-* [Emulator bot](https://github.com/Microsoft/BotFramework-Emulator/releases) — aplikacja klasyczna, która umożliwia deweloperom bot testowanie i debugowanie botów utworzonych przy użyciu zestawu SDK bot Framework
+* [Emulator bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases) — aplikacja klasyczna, która umożliwia deweloperom bot testowanie i debugowanie botów utworzonych przy użyciu zestawu SDK bot Framework
 
 
 ## <a name="next-steps"></a>Następne kroki

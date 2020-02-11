@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: pafarley
-ms.openlocfilehash: ea716caf575fce1197c12f3cb3cea8348c7a04c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 476763e1cb354edb8cdc4cbbae0d3aa7017faa16
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473948"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118748"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Szybki Start: wyodrębnianie informacji o tekście i układzie przy użyciu interfejsu API REST aparatu rozpoznawania formularzy w języku Python
 
@@ -25,7 +25,6 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
-- Dostęp do programu rozpoznawania formularzy z ograniczonym dostępem. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) .
 - Zainstalowana w języku [Python](https://www.python.org/downloads/) (Jeśli chcesz uruchomić przykład lokalnie).
 - Dokument formularza. Możesz pobrać obraz z [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start.
 
@@ -76,7 +75,7 @@ Aby rozpocząć analizowanie układu, należy wywołać interfejs API **[Analizo
 
 1. Zapisz kod w pliku z rozszerzeniem. pr. Na przykład *form-Recognizer-Layout.py*.
 1. Otwórz okno wiersza polecenia.
-1. W monicie użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python form-recognizer-layout.py`.
+1. W tym oknie użyj polecenia `python`, aby uruchomić przykładowy kod. Na przykład `python form-recognizer-layout.py`.
 
 Otrzymasz odpowiedź `202 (Success)`, która zawiera nagłówek z **lokalizacją operacji** , który skrypt będzie drukowany w konsoli programu. Ten nagłówek zawiera identyfikator operacji, którego można użyć do zbadania stanu operacji asynchronicznej i uzyskania wyników. W poniższym przykładzie wartość ciąg po `operations/` jest IDENTYFIKATORem operacji.
 

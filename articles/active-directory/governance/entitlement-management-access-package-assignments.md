@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74553995"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120435"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Wyświetlanie, Dodawanie i usuwanie przypisań pakietu dostępu w usłudze Azure AD uprawnienia zarządzania
 
@@ -48,6 +48,10 @@ W usłudze Azure AD uprawnienia do zarządzania można zobaczyć, kto został pr
 1. Aby wyświetlić wygasłe przypisania, kliknij stan filtru i wybierz pozycję **wygasłe**.
 
 1. Aby pobrać plik CSV z filtrowanej listy, kliknij przycisk **Pobierz**.
+
+### <a name="viewing-assignments-programmatically"></a>Programistyczne Wyświetlanie przypisań
+
+Możesz również pobrać przypisania w pakiecie dostępu przy użyciu Microsoft Graph.  Użytkownik w odpowiedniej roli z aplikacją, która ma delegowane uprawnienia `EntitlementManagement.ReadWrite.All`, może wywołać interfejs API, aby [wyświetlić listę accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
 
 ## <a name="directly-assign-a-user"></a>Bezpośrednie przypisanie użytkownika
 
@@ -76,6 +80,10 @@ W niektórych przypadkach może być konieczne bezpośrednie przypisanie określ
 1. Kliknij przycisk **Dodaj** , aby bezpośrednio przypisać wybranych użytkowników do pakietu dostępu.
 
     Po kilku chwilach kliknij pozycję **Odśwież** , aby wyświetlić użytkowników na liście przydziałów.
+
+### <a name="directly-assigning-users-programmatically"></a>Programowe przypisywanie użytkowników bezpośrednio
+
+Możesz również bezpośrednio przypisać użytkownika do pakietu dostępu przy użyciu Microsoft Graph.  Użytkownik w odpowiedniej roli z aplikacją, która ma delegowane uprawnienia `EntitlementManagement.ReadWrite.All`, może wywołać interfejs API, aby [utworzyć accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
 
 ## <a name="remove-an-assignment"></a>Usuwanie przypisania
 

@@ -3,17 +3,17 @@ title: C#Samouczek dotyczący autouzupełniania i sugestii
 titleSuffix: Azure Cognitive Search
 description: W tym samouczku przedstawiono sposób automatycznego uzupełniania i sugestii w celu zebrania danych wejściowych terminu wyszukiwania od użytkowników przy użyciu listy rozwijanej. Jest ona oparta na istniejącym projekcie hoteli.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: b542476ac1c9b6d4368d97eb4db76518eb2dba03
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114559"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121537"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C#Samouczek: Dodawanie autouzupełniania i sugestii — Azure Wyszukiwanie poznawcze
 

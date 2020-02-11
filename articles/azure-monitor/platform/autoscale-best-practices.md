@@ -4,12 +4,12 @@ description: Automatyczne skalowanie wzorców na platformie Azure dla Web Apps, 
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d9f04e0af4349f6b149619f13dac8ca2f59b560e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397000"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117118"
 ---
 # <a name="best-practices-for-autoscale"></a>Najlepsze rozwiązania dotyczące automatycznego skalowania
 Automatyczne skalowanie Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)i [usług API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -113,7 +113,7 @@ Podobnie, gdy automatyczne skalowanie przełącza się z powrotem do domyślnego
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Zagadnienia dotyczące skalowania w przypadku skonfigurowania wielu reguł w profilu
 
-Istnieją przypadki, w których może być konieczne ustawienie wielu reguł w profilu. Następujące reguły automatycznego skalowania są używane przez usługi w przypadku ustawienia wielu reguł.
+Istnieją przypadki, w których może być konieczne ustawienie wielu reguł w profilu. Następujące reguły automatycznego skalowania są używane przez aparat skalowania automatycznego, gdy ustawiono wiele reguł.
 
 W przypadku *skalowania w poziomie*funkcja automatycznego skalowania jest uruchamiana, jeśli dowolna reguła zostanie spełniona.
 W przypadku *skalowania w*poziomie Funkcja automatycznego skalowania wymaga spełnienia wszystkich reguł.
@@ -133,13 +133,13 @@ Następnie następuje:
 Z drugiej strony, jeśli procesor CPU wynosi 25%, a pamięć jest 51, Skalowanie automatyczne nie **jest skalowane.** Aby można było skalować w poziomie, procesor musi mieć 29% i pamięć 49%.
 
 ### <a name="always-select-a-safe-default-instance-count"></a>Zawsze wybieraj bezpieczną domyślną liczbę wystąpień
-Domyślna liczba wystąpień to ważne automatyczne skalowanie usługi do tej liczby, gdy metryki są niedostępne. W związku z tym wybierz domyślną liczbę wystąpień, która jest bezpieczna dla obciążeń.
+Domyślna liczba wystąpień jest ważna, ponieważ Skalowanie automatyczne skaluje usługę do tej liczby, gdy metryki są niedostępne. W związku z tym wybierz domyślną liczbę wystąpień, która jest bezpieczna dla obciążeń.
 
 ### <a name="configure-autoscale-notifications"></a>Konfigurowanie powiadomień dotyczących automatycznego skalowania
 Automatyczne skalowanie będzie ogłaszane w dzienniku aktywności w przypadku wystąpienia dowolnego z następujących warunków:
 
-* Automatyczne skalowanie problemów z operacją skalowania
-* Usługa automatycznego skalowania pomyślnie ukończy akcję skalowania
+* Automatyczne skalowanie problemów z operacją skalowania.
+* Usługa automatycznego skalowania pomyślnie ukończy akcję skalowania.
 * Usługa automatycznego skalowania nie może wykonać akcji skalowania.
 * Metryki nie są dostępne dla usługi automatycznego skalowania, aby podejmować decyzje dotyczące skalowania.
 * Metryki są dostępne ponownie (Odzyskiwanie), aby przeprowadzić decyzję skalowania.

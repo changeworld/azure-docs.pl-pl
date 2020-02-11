@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025915"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118377"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Uczenie modelu aparatu rozpoznawania formularzy z etykietami przy użyciu narzędzia do etykietowania przykładowego
 
@@ -25,12 +25,12 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
-- Dostęp do programu rozpoznawania formularzy z ograniczonym dostępem. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess). Otrzymasz wiadomość e-mail z linkiem umożliwiającym utworzenie zasobu aparatu rozpoznawania formularza.
+
 - Zestaw składający się z co najmniej sześciu formularzy tego samego typu. Te dane będą używane do uczenia modelu i testowania formularza. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż pliki szkoleniowe do katalogu głównego kontenera magazynu obiektów BLOB na koncie usługi Azure Storage.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Konfigurowanie przykładowego narzędzia do etykietowania
 
-Użyjesz aparatu platformy Docker, aby uruchomić przykładowe narzędzie do etykietowania. Wykonaj następujące kroki, aby skonfigurować kontener platformy Docker. Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).
+Użyjesz aparatu platformy Docker, aby uruchomić przykładowe narzędzie do etykietowania. Wykonaj następujące kroki, aby skonfigurować kontener platformy Docker. Podstawowe informacje dotyczące platformy Docker i kontenera można znaleźć w temacie [Omówienie platformy Docker](https://docs.docker.com/engine/docker-overview/).
 1. Najpierw zainstaluj platformę Docker na komputerze-hoście. Komputer hosta może być komputerem lokalnym ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/)lub [Linux](https://docs.docker.com/install/)). Można też użyć usługi hostingu platformy Docker na platformie Azure, takiej jak [usługa Azure Kubernetes](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)lub klaster Kubernetes [wdrożony w Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). Komputer hosta musi spełniać następujące wymagania sprzętowe:
 
     | Kontener | Minimalne | Zalecane|

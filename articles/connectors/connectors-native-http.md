@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888145"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117960"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Wysyłaj wywołania wychodzące do punktów końcowych HTTP lub HTTPS za pomocą Azure Logic Apps
 
@@ -40,7 +40,7 @@ Na podstawie możliwości docelowego punktu końcowego łącznik protokołu HTTP
 
 Ten wbudowany wyzwalacz wykonuje wywołanie HTTP do określonego adresu URL dla punktu końcowego i zwraca odpowiedź.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
 
 1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź ciąg "http" jako filtr. Z listy **wyzwalacze** Wybierz wyzwalacz **http** .
 
@@ -50,9 +50,12 @@ Ten wbudowany wyzwalacz wykonuje wywołanie HTTP do określonego adresu URL dla 
 
 1. Podaj wartości [parametrów wyzwalacza http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger) , które mają zostać uwzględnione w wywołaniu docelowego punktu końcowego. Skonfiguruj Cykl dla tego, jak często wyzwalacz ma sprawdzać docelowy punkt końcowy.
 
-   W przypadku wybrania typu uwierzytelniania innego niż **none**ustawienia uwierzytelniania różnią się w zależności od wybranej opcji. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
-
    ![Wprowadź parametry wyzwalacza HTTP](./media/connectors-native-http/http-trigger-parameters.png)
+
+   W przypadku wybrania typu uwierzytelniania innego niż **none**ustawienia uwierzytelniania różnią się w zależności od wybranej opcji. Aby uzyskać więcej informacji o typach uwierzytelniania dostępnych dla protokołu HTTP, zobacz następujące tematy:
+
+   * [Dodawanie uwierzytelniania do wywołań wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [Uwierzytelnianie dostępu do zasobów za pomocą tożsamości zarządzanych](../logic-apps/create-managed-service-identity.md)
 
 1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
 
@@ -64,7 +67,7 @@ Ten wbudowany wyzwalacz wykonuje wywołanie HTTP do określonego adresu URL dla 
 
 Ta wbudowana akcja powoduje wywołanie HTTP do określonego adresu URL dla punktu końcowego i zwraca odpowiedź.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
    Ten przykład używa wyzwalacza HTTP jako pierwszego kroku.
 
@@ -80,9 +83,12 @@ Ta wbudowana akcja powoduje wywołanie HTTP do określonego adresu URL dla punkt
 
 1. Podaj wartości [parametrów akcji http](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) , które mają zostać uwzględnione w wywołaniu docelowego punktu końcowego.
 
-   W przypadku wybrania typu uwierzytelniania innego niż **none**ustawienia uwierzytelniania różnią się w zależności od wybranej opcji. Aby uzyskać więcej informacji, zobacz [Dodawanie uwierzytelniania do połączeń wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
-
    ![Wprowadź parametry akcji HTTP](./media/connectors-native-http/http-action-parameters.png)
+
+   W przypadku wybrania typu uwierzytelniania innego niż **none**ustawienia uwierzytelniania różnią się w zależności od wybranej opcji. Aby uzyskać więcej informacji o typach uwierzytelniania dostępnych dla protokołu HTTP, zobacz następujące tematy:
+
+   * [Dodawanie uwierzytelniania do wywołań wychodzących](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [Uwierzytelnianie dostępu do zasobów za pomocą tożsamości zarządzanych](../logic-apps/create-managed-service-identity.md)
 
 1. Aby dodać inne dostępne parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry.
 
@@ -148,14 +154,14 @@ Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacz
 | Nazwa właściwości | Typ | Opis |
 |---------------|------|-------------|
 | nagłówki | obiekt | Nagłówki żądania |
-| treść | obiekt | JSON — Obiekt | Obiekt z zawartością treści z żądania |
+| jednostce | obiekt | JSON — Obiekt | Obiekt z zawartością treści z żądania |
 | kod stanu | int | Kod stanu z żądania |
 |||
 
 | Kod stanu | Opis |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Zaakceptowano |
+| 202 | Accepted |
 | 400 | Nieprawidłowe żądanie |
 | 401 | Brak autoryzacji |
 | 403 | Forbidden |

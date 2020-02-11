@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862836"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116275"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorowanie konta magazynu w Azure Portal
 
@@ -25,6 +25,8 @@ Zalecamy zapoznanie się [Azure monitor z magazynem](../../azure-monitor/insight
 > Istnieją koszty związane z badaniem danych monitorowania w Azure Portal. Aby uzyskać więcej informacji, zobacz [analityka magazynu](storage-analytics.md).
 >
 > Azure Files obecnie obsługuje metryki analityka magazynu, ale nie obsługuje jeszcze rejestrowania.
+>
+> Konta magazynu blokowych obiektów BLOB wydajności w warstwie Premium nie obsługują metryk analitycznych magazynu, ale obsługują rejestrowanie. Rejestrowanie można włączyć programowo za pośrednictwem interfejsu API REST lub biblioteki klienta. Aby wyświetlić metryki z kontami magazynu obiektów BLOB wydajności Premium, należy rozważyć użycie [metryk usługi Azure Storage w Azure monitor](storage-metrics-in-azure-monitor.md).
 >
 > Aby uzyskać szczegółowy przewodnik dotyczący używania analityka magazynu i innych narzędzi do identyfikowania, diagnozowania i rozwiązywania problemów związanych z usługą Azure Storage, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów z Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 >
@@ -53,7 +55,7 @@ Domyślny zestaw metryk jest wyświetlany na wykresach w bloku konta magazynu, a
 Zbieranie metryk i rejestrowanie można wyłączyć, ustawiając **stan** na **wyłączone**.
 
 > [!NOTE]
-> Usługa Azure Storage używa [magazynu tabel](storage-introduction.md#table-storage) do przechowywania metryk dla konta magazynu i przechowuje metryki w tabelach na Twoim koncie. Więcej informacji można znaleźć w temacie . [Jak są przechowywane metryki](storage-analytics-metrics.md#how-metrics-are-stored).
+> Usługa Azure Storage używa [magazynu tabel](storage-introduction.md#table-storage) do przechowywania metryk dla konta magazynu i przechowuje metryki w tabelach na Twoim koncie. Więcej informacji można znaleźć w temacie [Jak są przechowywane metryki](storage-analytics-metrics.md#how-metrics-are-stored).
 >
 
 ## <a name="customize-metrics-charts"></a>Dostosuj wykresy metryk
@@ -136,7 +138,7 @@ Można nakazać usłudze Azure Storage zapisywanie dzienników diagnostycznych d
 1. Upewnij się, że **stan** jest ustawiony na **włączone**, a następnie wybierz **usługi** , dla których chcesz włączyć rejestrowanie.
 
     ![Skonfiguruj rejestrowanie w Azure Portal.](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 Dzienniki diagnostyczne są zapisywane w kontenerze obiektów BLOB o nazwie *$Logs* na koncie magazynu. Dane dziennika można wyświetlić za pomocą Eksploratora usługi Storage, takiego jak [Microsoft Eksplorator usługi Storage](https://storageexplorer.com), lub programowo przy użyciu biblioteki klienta usługi Storage lub programu PowerShell.
 

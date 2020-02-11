@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 321f985bd375e6fa4337e060bb15d318ea306ab4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024914"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116732"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Wdróż model uczenia maszynowego w Azure Functions (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Za pomocą Azure Machine Learning można tworzyć obrazy platformy Docker z prze
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz artykuł [Tworzenie obszaru roboczego](how-to-manage-workspace.md) .
-* [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Model uczenia maszynowego zarejestrowany w Twoim obszarze roboczym. Jeśli nie masz modelu, Skorzystaj z [samouczka klasyfikacji obrazów: uczenie modelu](tutorial-train-models-with-aml.md) do uczenia i zarejestrowania go.
 
     > [!IMPORTANT]
@@ -42,7 +42,7 @@ Za pomocą Azure Machine Learning można tworzyć obrazy platformy Docker z prze
     >
     > Aby uzyskać więcej informacji na temat ustawiania tych zmiennych, zobacz [Deploying Models with Azure Machine Learning](how-to-deploy-and-where.md).
 
-## <a name="prepare-for-deployment"></a>Przygotowywanie do wdrażania
+## <a name="prepare-for-deployment"></a>Przygotowanie do wdrożenia
 
 Przed wdrożeniem należy zdefiniować, co jest potrzebne do uruchomienia modelu jako usługi sieci Web. Na poniższej liście opisano podstawowe elementy, które są związane z wdrożeniem:
 
@@ -58,7 +58,7 @@ Przed wdrożeniem należy zdefiniować, co jest potrzebne do uruchomienia modelu
 
 * **Zależności**, takie jak skrypty pomocnika lub pakiety Python/Conda wymagane do uruchomienia skryptu lub modelu wprowadzania
 
-Te jednostki są hermetyzowane w __konfiguracji wnioskowania__. Konfiguracja wnioskowania przywołuje skrypt wejściowy i inne zależności.
+Te jednostki są hermetyzowane w __konfiguracji wnioskowania__. Konfiguracja wnioskowania odwołuje się do skryptu wejścia i innych zależności.
 
 > [!IMPORTANT]
 > Podczas tworzenia konfiguracji wnioskowania do użytku z Azure Functions należy użyć obiektu [środowiska](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) . Należy pamiętać, że w przypadku definiowania środowiska niestandardowego należy dodać polecenie "Azure-default" z wersją > = 1.0.45 jako zależność PIP. Ten pakiet zawiera funkcje, które są konieczne do hostowania modelu jako usługi sieci Web. Poniższy przykład ilustruje tworzenie obiektu środowiska i używanie go z konfiguracją wnioskowania:
@@ -118,7 +118,7 @@ Gdy `show_output=True`, zostanie wyświetlony wynik procesu kompilacji platformy
 
 ## <a name="deploy-image-as-a-web-app"></a>Wdrażanie obrazu jako aplikacji sieci Web
 
-1. Użyj poniższego polecenia, aby uzyskać poświadczenia logowania dla Azure Container Registry zawierającej obraz. Zastąp `<acrinstance>` wartością zwróconą wcześniej z `package.location`: 
+1. Użyj poniższego polecenia, aby uzyskać poświadczenia logowania dla Azure Container Registry zawierającej obraz. Zastąp `<myacr>` wartością zwróconą wcześniej z `package.location`: 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -177,7 +177,7 @@ Gdy `show_output=True`, zostanie wyświetlony wynik procesu kompilacji platformy
 1. Utwórz konto magazynu, które ma być używane na potrzeby magazynu wyzwalacza obiektów blob, i Pobierz jego parametry połączenia. Zastąp `<triggerStorage>` nazwą, której chcesz użyć.
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
@@ -252,5 +252,5 @@ W tym momencie aplikacja funkcji rozpocznie ładowanie obrazu.
 * Dowiedz się, jak skonfigurować aplikację funkcji w dokumentacji [funkcji](/azure/azure-functions/functions-create-function-linux-custom-image) .
 * Dowiedz się więcej o usłudze BLOB Storage wyzwala [powiązania usługi Azure Blob Storage](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
 * [Wdróż model do Azure App Service](how-to-deploy-app-service.md).
-* [Korzystanie z modelu uczenia Maszynowego, wdrożyć jako usługę sieci web](how-to-consume-web-service.md)
+* [Korzystanie z modelu ML wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
 * [Dokumentacja interfejsu API](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

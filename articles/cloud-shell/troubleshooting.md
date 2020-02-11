@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024283"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120233"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów & ograniczenia Azure Cloud Shell
 
@@ -28,6 +28,11 @@ Znane rozwiązania dotyczące rozwiązywania problemów w Azure Cloud Shell obej
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>Ogólne rozwiązywanie problemów
+
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>Błąd uruchamiania poleceń cmdlet AzureAD w programie PowerShell
+
+- **Szczegóły**: po uruchomieniu poleceń cmdlet AzureAD, takich jak `Get-AzureADUser` w Cloud Shell, może zostać wyświetlony komunikat o błędzie: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`. 
+- **Rozwiązanie**: Uruchom polecenie cmdlet `Connect-AzureAD`. Wcześniej polecenie cmdlet Cloud Shell uruchamiane automatycznie podczas uruchamiania programu PowerShell. Aby przyspieszyć czas rozpoczęcia, polecenie cmdlet nie jest już uruchamiane automatycznie. Można przywrócić poprzednie zachowanie, dodając `Connect-AzureAD` do pliku $PROFILE w programie PowerShell.
 
 ### <a name="early-timeouts-in-firefox"></a>Wczesne przekroczenia limitu czasu w programie FireFox
 
@@ -163,7 +168,7 @@ Azure Cloud Shell poważnie potraktuje dane osobowe, dane przechwycone i przecho
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>Eksportuj
+### <a name="export"></a>Eksportowanie
 W celu **wyeksportowania** ustawień użytkownika Cloud Shell zapisywanych danych, takich jak preferowana powłoka, rozmiar czcionki i typ czcionki, uruchom następujące polecenia.
 
 1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
@@ -183,7 +188,7 @@ Program PowerShell:
   ((Invoke-WebRequest -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}).Content | ConvertFrom-Json).properties | Format-List
 ```
 
-### <a name="delete"></a>Usuń
+### <a name="delete"></a>Usuwanie
 Aby **usunąć** ustawienia użytkownika Cloud Shell zapisywanych danych, takich jak preferowana powłoka, rozmiar czcionki i typ czcionki, uruchom następujące polecenia. Przy następnym uruchomieniu Cloud Shell zostanie wyświetlony monit o ponowne dołączenie udziału plików. 
 
 >[!Note]

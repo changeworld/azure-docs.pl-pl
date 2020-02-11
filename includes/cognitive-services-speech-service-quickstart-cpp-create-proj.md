@@ -2,16 +2,16 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 942636a6ff6dcfe74a04a66d67a4490224b4538e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2f9e02af0652108fe10e4b73e7bb43c48451ca77
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391727"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123211"
 ---
-Aby utworzyć projekt programu Visual Studio na C++ potrzeby tworzenia aplikacji klasycznych, należy skonfigurować opcje programistyczne programu Visual Studio, utworzyć projekt, wybrać architekturę docelową i zainstalować zestaw Speech SDK. 
+Aby utworzyć projekt programu Visual Studio na C++ potrzeby tworzenia aplikacji klasycznych, należy skonfigurować opcje programistyczne programu Visual Studio, utworzyć projekt, wybrać architekturę docelową i zainstalować zestaw Speech SDK.
 
 ### <a name="set-up-visual-studio-development-options"></a>Konfigurowanie opcji programistycznych programu Visual Studio
 
@@ -19,11 +19,11 @@ Aby rozpocząć, upewnij się, że program Visual Studio jest poprawnie skonfigu
 
 1. Otwórz program Visual Studio 2019, aby wyświetlić okno **uruchamiania** .
 
-   ![Okno uruchamiania — Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png) 
+   ![Okno uruchamiania — Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png)
 
 1. Wybierz pozycję **Kontynuuj bez kodu** , aby przejść do środowiska IDE programu Visual Studio.
 
-1. Na pasku menu programu Visual Studio wybierz kolejno pozycje **narzędzia** > **Pobierz narzędzia i funkcje** , aby otworzyć Instalator programu Visual Studio i wyświetlić okno dialogowe **Modyfikowanie** .
+1. Na pasku menu programu Visual Studio wybierz pozycję **narzędzia** > **Pobierz narzędzia i funkcje** , aby otworzyć Instalator programu Visual Studio i wyświetlić okno dialogowe **Modyfikowanie** .
 
    ![Karta obciążenia, modyfikowanie okna dialogowego, Instalator programu Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
@@ -77,4 +77,4 @@ Na koniec zainstaluj [pakiet NuGet zestawu Speech SDK](https://aka.ms/csspeech/n
 
 1. W oknie dialogowym **Podgląd zmian** wybierz **przycisk OK**.
 
-1. W oknie dialogowym **Akceptacja licencji** Wyświetl licencję, a następnie wybierz pozycję **Akceptuję**. Rozpocznie się instalacja pakietu i po zakończeniu instalacji w okienku **dane wyjściowe** zostanie wyświetlony komunikat podobny do następującego: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.7.0' to helloworld`. 
+1. W oknie dialogowym **Akceptacja licencji** Wyświetl licencję, a następnie wybierz pozycję **Akceptuję**. Rozpocznie się instalacja pakietu i po zakończeniu instalacji w okienku **dane wyjściowe** zostanie wyświetlony komunikat podobny do następującego: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.9.0' to helloworld`.

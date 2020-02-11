@@ -1,36 +1,29 @@
 ---
-title: Polecenie interfejsu wiersza polecenia platformy Azure w trybie Menedżer zasobów | Microsoft Docs
-description: Polecenia interfejsu wiersza polecenia platformy Azure do zarządzania zasobami w Menedżer zasobów modelu wdrażania
-services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
-documentationcenter: ''
+title: Klasyczne polecenie interfejsu wiersza polecenia platformy Azure
+description: Polecenia interfejsu wiersza polecenia platformy Azure do zarządzania zasobami.
 author: cynthn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
-ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: command-line-interface
-ms.devlang: na
+ms.service: virtual-machines
+ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355933"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122455"
 ---
-# <a name="azure-cli-commands-in-resource-manager-mode"></a>Polecenie interfejsu wiersza polecenia platformy Azure w trybie Menedżer zasobów
-Ten artykuł zawiera informacje o składni i opcjach poleceń interfejsu wiersza polecenia (CLI) platformy Azure, które są często używane do tworzenia zasobów platformy Azure i zarządzania nimi w ramach modelu wdrażania Azure Resource Manager. Dostęp do tych poleceń można uzyskać, uruchamiając interfejs wiersza polecenia w trybie Menedżer zasobów (ARM). To nie jest kompletne odwołanie, a wersja interfejsu wiersza polecenia może być nieznacznie różna. Ogólne omówienie zasobów i grup zasobów platformy Azure można znaleźć w temacie [omówienie Azure Resource Manager](../azure-resource-manager/management/overview.md).  
+# <a name="azure-classic-cli-commands"></a>Klasyczne polecenie interfejsu wiersza polecenia platformy Azure 
 
-> [!NOTE]
-> W tym artykule przedstawiono polecenia dotyczące trybu Menedżer zasobów w interfejsie wiersza polecenia platformy Azure, nazywane czasem klasycznym interfejsem wiersza polecenia platformy Azure. Aby móc korzystać z modelu Menedżer zasobów, możesz również wypróbować [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2), nasz interfejs wiersza polecenia nowej generacji dla wielu platform.
->Dowiedz się więcej na temat [starych i nowych platform Azure interfejsów wiersza polecenia](/cli/azure/old-and-new-clis).
->
+> [!IMPORTANT]
+> W tym temacie opisano sposób instalowania klasycznego interfejsu wiersza polecenia platformy Azure. Klasyczny interfejs wiersza polecenia jest przestarzały i należy go używać jedynie w przypadku klasycznego modelu wdrażania.
+> W przypadku wszystkich innych wdrożeń Użyj [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/).
 
-Aby rozpocząć, najpierw [Zainstaluj interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md) i [Nawiąż połączenie z subskrypcją platformy Azure](/cli/azure/authenticate-azure-cli).
+Ten artykuł zawiera składnię i opcje dla klasycznych poleceń interfejsu wiersza polecenia (CLI) platformy Azure, które są często używane do tworzenia zasobów platformy Azure i zarządzania nimi. To nie jest kompletne odwołanie, a wersja interfejsu wiersza polecenia może być nieznacznie różna. 
+
+Aby rozpocząć, najpierw [Zainstaluj klasyczny interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md) i [Nawiąż połączenie z subskrypcją platformy Azure](/cli/azure/authenticate-azure-cli).
 
 Dla bieżącej składni polecenia i opcji w wierszu polecenia w trybie Menedżer zasobów wpisz `azure help` lub, aby wyświetlić pomoc dla określonego polecenia, `azure help [command]`. Przykłady interfejsu wiersza polecenia można znaleźć w dokumentacji dotyczącej tworzenia określonych usług platformy Azure i zarządzania nimi.
 
@@ -45,10 +38,10 @@ Użyj poniższego polecenia, aby włączyć polecenia w trybie Menedżer zasobó
 
 > [!NOTE]
 > Tryb Azure Resource Manager interfejsu wiersza polecenia i tryb zarządzania usługami platformy Azure wykluczają się wzajemnie. Oznacza to, że zasoby utworzone w jednym trybie nie mogą być zarządzane z innego trybu.
-> 
-> 
+>
 
-## <a name="azure-account-manage-your-account-information"></a>konto platformy Azure: zarządzanie informacjami o koncie
+
+## <a name="account-information"></a>Informacje o koncie
 Informacje o subskrypcji platformy Azure są używane przez narzędzie do nawiązywania połączenia z Twoim kontem.
 
 **Wystaw zaimportowane subskrypcje**
@@ -75,7 +68,7 @@ Informacje o subskrypcji platformy Azure są używane przez narzędzie do nawią
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure AD: polecenia służące do wyświetlania Active Directory obiektów
+## <a name="active-directory-objects"></a>Obiekty Active Directory
 **Polecenia do wyświetlania aplikacji usługi Active Directory**
 
     ad app create [options]
@@ -102,7 +95,7 @@ Informacje o subskrypcji platformy Azure są używane przez narzędzie do nawią
     ad user list [options]
     ad user show [options]
 
-## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>Azure availset: polecenia do zarządzania zestawami dostępności
+## <a name="availability-sets"></a>Zestawy dostępności
 **Tworzy zestaw dostępności w grupie zasobów**
 
     availset create [options] <resource-group> <name> <location> [tags]
@@ -119,7 +112,7 @@ Informacje o subskrypcji platformy Azure są używane przez narzędzie do nawią
 
     availset delete [options] <resource-group> <name>
 
-## <a name="azure-config-commands-to-manage-your-local-settings"></a>Konfiguracja platformy Azure: polecenia służące do zarządzania ustawieniami lokalnymi
+## <a name="local-settings"></a>Ustawienia lokalne
 **Wyświetl listę ustawień konfiguracji interfejsu wiersza polecenia platformy Azure**
 
     config list [options]
@@ -137,7 +130,7 @@ Informacje o subskrypcji platformy Azure są używane przez narzędzie do nawią
     config mode [options] <modename>
 
 
-## <a name="azure-feature-commands-to-manage-account-features"></a>Funkcja platformy Azure: polecenia do zarządzania funkcjami konta
+## <a name="account-features"></a>Funkcje konta
 **Wyświetl listę wszystkich funkcji dostępnych dla Twojej subskrypcji**
 
     feature list [options]
@@ -150,7 +143,7 @@ Informacje o subskrypcji platformy Azure są używane przez narzędzie do nawią
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Grupa platformy Azure: polecenia służące do zarządzania grupami zasobów
+## <a name="resource-groups"></a>Grupy zasobów
 **Tworzy grupę zasobów**
 
     group create [options] <name> <location>
@@ -189,12 +182,13 @@ Informacje o subskrypcji platformy Azure są używane przez narzędzie do nawią
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Azure HDInsight: polecenia służące do zarządzania klastrami usługi HDInsight
+## <a name="hdinsight-clusters"></a>Klastry usługi HDInsight
 **Polecenia do tworzenia lub dodawania do pliku konfiguracji klastra**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
+
 
 Przykład: Utwórz plik konfiguracji, który zawiera akcję skryptu do uruchomienia podczas tworzenia klastra.
 
@@ -307,17 +301,17 @@ Opcje parametrów:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: polecenia związane z monitorowaniem szczegółowych informacji (zdarzenia, reguły alertów, ustawienia automatycznego skalowania, metryki)
+## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>Szczegółowe informacje (zdarzenia, reguły alertów, ustawienia automatycznego skalowania, metryki)
 **Pobieranie dzienników operacji dla subskrypcji, korelacji, grupy zasobów, zasobu lub dostawcy zasobów**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Lokalizacja platformy Azure: polecenia umożliwiające uzyskanie dostępnych lokalizacji dla wszystkich typów zasobów
+## <a name="locations"></a>Lokalizacje 
 **Wyświetl listę dostępnych lokalizacji**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>Sieć platformy Azure: polecenia umożliwiające zarządzanie zasobami sieciowymi
+## <a name="network-resources"></a>Zasoby sieciowe
 **Polecenia do zarządzania sieciami wirtualnymi**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -1509,7 +1503,7 @@ Opcje parametrów:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Dostawca platformy Azure: polecenia służące do zarządzania rejestracjami dostawcy zasobów
+## <a name="resource-provider-registrations"></a>Rejestracje dostawcy zasobów
 **Wyświetl listę obecnie zarejestrowanych dostawców w Menedżer zasobów**
 
     provider list [options]
@@ -1526,7 +1520,7 @@ Opcje parametrów:
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>zasób platformy Azure: polecenia służące do zarządzania zasobami
+## <a name="resources"></a>Zasoby
 **Tworzy zasób w grupie zasobów**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1547,7 +1541,7 @@ Opcje parametrów:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Rola platformy Azure: polecenia do zarządzania rolami platformy Azure
+## <a name="azure-roles"></a>Role platformy Azure
 **Pobierz wszystkie dostępne definicje ról**
 
     role list [options]
@@ -1562,7 +1556,7 @@ Opcje parametrów:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure Storage: polecenia służące do zarządzania obiektami magazynu
+## <a name="storage-objects"></a>Obiekty magazynu
 **Polecenia służące do zarządzania kontami magazynu**
 
     storage account list [options]
@@ -1685,7 +1679,7 @@ Opcje parametrów:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Azure Tag: polecenia do zarządzania tagiem usługi Resource Manager
+## <a name="tags"></a>Tagi
 **Dodaj tag**
 
     tag create [options] <name> <value>
@@ -1702,7 +1696,7 @@ Opcje parametrów:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Maszyna wirtualna platformy Azure: polecenia służące do zarządzania usługą Azure Virtual Machines
+## <a name="virtual-machines"></a>Maszyny wirtualne
 **Tworzenie maszyny wirtualnej**
 
     vm create [options] <resource-group> <name> <location> <os-type>

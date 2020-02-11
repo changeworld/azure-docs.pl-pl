@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046113"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116889"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Twórz, eksploruj i wdrażaj zautomatyzowane eksperymenty uczenia maszynowego za pomocą programu Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,11 +27,11 @@ ms.locfileid: "77046113"
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 * Obszar roboczy Azure Machine Learning z typem **wersji Enterprise Edition**. Zobacz [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md).  Aby uaktualnić istniejący obszar roboczy do wersji Enterprise, zobacz [uaktualnianie do wersji Enterprise Edition](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>Rozpoczynanie pracy
+## <a name="get-started"></a>Wprowadzenie
 
 1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com). 
 
@@ -60,7 +60,7 @@ W przeciwnym razie zostanie wyświetlona lista ostatnich zautomatyzowanych ekspe
 
     1. Nadaj zestawowi danych unikatową nazwę i podaj opcjonalny opis. 
 
-    1. Wybierz pozycję **dalej**, aby przekazać ją do domyślnego kontenera magazynu, który jest automatycznie tworzony w obszarze roboczym, lub wybierz kontener magazynu, który ma być używany do eksperymentu. 
+    1. Wybierz pozycję **dalej** , aby otworzyć **formularz magazyn danych i wybór pliku**. Na tym formularzu wybierasz miejsce przekazania zestawu danych; domyślny kontener magazynu, który jest automatycznie tworzony razem z obszarem roboczym, lub wybierz kontener magazynu, który ma być używany do eksperymentu. 
 
     1. Przejrzyj **Ustawienia i Podgląd** w formularzu pod kątem dokładności. Formularz jest inteligentnie wypełniany na podstawie typu pliku. 
 
@@ -78,7 +78,7 @@ W przeciwnym razie zostanie wyświetlona lista ostatnich zautomatyzowanych ekspe
             
         Wybierz pozycję **Dalej.**
 
-    1. Formularz **Potwierdź szczegóły** to podsumowanie informacji poprzednio wypełnionych w **podstawowych informacjach** i ustawieniach oraz w formularzach **wersji zapoznawczej** . Istnieje również możliwość profilowania zestawu danych przy użyciu obliczeń z włączoną obsługą profilowania. Dowiedz się więcej na temat [profilowania danych](#profile).
+    1. Formularz **Potwierdź szczegóły** to podsumowanie informacji poprzednio wypełnionych w **podstawowych informacjach** i ustawieniach oraz w formularzach **wersji zapoznawczej** . Istnieje również możliwość utworzenia profilu danych dla zestawu danych przy użyciu obliczeń z włączoną obsługą profilowania. Dowiedz się więcej na temat [profilowania danych](#profile).
 
         Wybierz opcję **Dalej**.
 1. Wybierz nowo utworzony zestaw danych, gdy zostanie wyświetlony. Możliwe jest również wyświetlanie podglądu zestawu danych i przykładowych statystyk. 
@@ -190,13 +190,13 @@ Spójność danych szeregów czasowych|**Przeniesione** <br><br><br><br> **FIXED
 
 ## <a name="run-experiment-and-view-results"></a>Uruchamianie eksperymentu i wyświetlanie wyników
 
-Wybierz pozycję **Zakończ** , aby uruchomić eksperyment. Proces przygotowywania eksperymentu może potrwać do 10 minut. Zadania szkoleniowe mogą zająć więcej niż 2-3 minut więcej czasu dla każdego potoku.
+Wybierz pozycję **Zakończ** , aby uruchomić eksperyment. Proces przygotowywania eksperymentu może potrwać do 10 minut. Zadania trenowania mogą zająć kolejne 2–3 minuty dla każdego potoku.
 
 ### <a name="view-experiment-details"></a>Wyświetl szczegóły eksperymentu
 
 Zostanie otwarty ekran Szczegóły **uruchamiania** na karcie **szczegóły** . Na tym ekranie przedstawiono podsumowanie przebiegu eksperymentu, w tym pasek stanu u góry obok numeru uruchomienia. 
 
-Karta **modele** zawiera listę modeli utworzonych uporządkowaną według wyniku pomiaru. Domyślnie model, który ocenia najwyższy poziom w oparciu o wybraną metrykę, znajduje się w górnej części listy. Gdy zadanie szkoleniowe próbuje więcej modeli, zostaną dodane do listy. Użyj tego, aby szybko porównać metryki dla modeli produkowanych do tej pory.
+Karta **Modele** zawiera listę utworzonych modeli uporządkowaną według wyników metryk. Domyślnie model, który dla wybranej metryki uzyska najlepszy wynik, znajduje się na początku listy. W miarę wypróbowywania przez zadanie trenowania kolejnych modeli są one dodawane do listy. Umożliwia ona szybkie porównanie metryk modeli wyprodukowanych do tej pory.
 
 [Pulpit nawigacyjny szczegółów uruchamiania ![](media/how-to-create-portal-experiments/run-details.png)](media/how-to-create-portal-experiments/run-details-expanded.png#lightbox)
 

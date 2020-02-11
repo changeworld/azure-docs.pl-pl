@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840591"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114387"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -151,7 +151,7 @@ Aby analizować ruch, musisz mieć istniejący obserwator sieci lub [włączyć 
 
 Przed włączeniem rejestrowania przepływu sieciowej grupy zabezpieczeń należy mieć sieciową grupę zabezpieczeń, aby rejestrować przepływy dla programu. Jeśli nie masz sieciowej grupy zabezpieczeń, zobacz [Tworzenie sieciowej grupy zabezpieczeń](../virtual-network/manage-network-security-group.md#create-a-network-security-group) , aby ją utworzyć.
 
-Po lewej stronie Azure Portal wybierz pozycję **monitor**, a następnie **obserwator sieci**, a następnie wybierz pozycję **dzienniki przepływów sieciowej grupy zabezpieczeń**. Wybierz sieciową grupę zabezpieczeń, dla której chcesz włączyć dziennik przepływu sieciowej grupy zabezpieczeń, jak pokazano na poniższej ilustracji:
+W Azure Portal przejdź do **monitora sieci**, a następnie wybierz pozycję **dzienniki przepływów sieciowej grupy zabezpieczeń**. Wybierz sieciową grupę zabezpieczeń, dla której chcesz włączyć dziennik przepływu sieciowej grupy zabezpieczeń, jak pokazano na poniższej ilustracji:
 
 ![Wybór sieciowych grup zabezpieczeń, które wymagają włączenia dziennika przepływu sieciowej grupy zabezpieczeń](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -210,7 +210,7 @@ Po lewej stronie portalu wybierz pozycję **wszystkie usługi**, a następnie wp
 
 Po raz pierwszy pulpit nawigacyjny może potrwać do 30 minut, ponieważ Analiza ruchu musi najpierw agregować wystarczającą ilość danych, aby uzyskać istotny wgląd, zanim będzie mógł generować raporty.
 
-## <a name="usage-scenarios"></a>Scenariusze użycia
+## <a name="usage-scenarios"></a>Scenariusze użytkowania
 
 Niektóre szczegółowe informacje, które można uzyskać po skonfigurowaniu Analiza ruchu jest w pełni skonfigurowane, są następujące:
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 169f1b78cf8e67fb1d5934532077dfa99bd210a1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 475f0deb3b9da863a8e7b84abb7ebef54c9cb201
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975741"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118834"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Szybki Start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator, aby uzyskać listę obsługiwanych języków
 
@@ -52,7 +52,7 @@ W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrz
 
 ::: zone-end
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Tłumaczenie tekstu](quickstart-translate.md)
 * [Transliteracja tekstu](quickstart-transliterate.md)

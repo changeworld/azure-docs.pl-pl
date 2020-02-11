@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b3d5e1f814a8eb083ab01623051f1b5b3723a9f1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049624"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114226"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Informacje o wersji Azure Media Services v3
 
@@ -35,14 +35,33 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 > Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub jednego z obsługiwanych zestawów SDK.
 
 Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3](migrate-from-v2-to-v3.md#known-issues).
-
+ 
 ## <a name="january-2020"></a>Styczeń 2020 r.
 
 ### <a name="improvements-in-media-processors"></a>Ulepszenia procesorów multimediów
 
 - Ulepszona obsługa źródeł z przeplotem w analizie wideo — taka zawartość jest teraz niewłaściwie odtworzona przed wysłaniem do aparatów wnioskowania.
 - Podczas generowania miniatur z trybem "Najlepsza" koder wyszukuje teraz więcej niż 30 sekund, aby wybrać ramkę, która nie jest funkcją unchromatyczną.
- 
+
+### <a name="azure-government-cloud-updates"></a>Azure Government aktualizacje w chmurze
+
+Media Services GA'ed w następujących Azure Government regionach: *USGov Arizona* i *USGov Texas*.
+
+## <a name="december-2019"></a>Grudzień 2019 r.
+
+Dodano obsługę usługi CDN dla nagłówków *pochodzenie z wyprzedzeniem* w przypadku przesyłania strumieniowego na żywo i wideo na żądanie; dostępne dla klientów z bezpośrednią umową z usługą Akamai CDN. Funkcja pochodzenie do usługi CDN — pobieranie z wyprzedzeniem obejmuje następujące wymiany z nagłówka HTTP między Akamai CDN i pochodzeniem Azure Media Services:
+
+|Nagłówek HTTP|Wartości|Nadawca|Odbiornik|Przeznaczenie|
+| ---- | ---- | ---- | ---- | ----- |
+|Sieć CDN-pochodzenie-pomoc — z obsługą pobierania z wyprzedzeniem | 1 (wartość domyślna) lub 0 |CDN|Origin|Aby wskazać, że Usługa CDN jest włączona z wyprzedzeniem|
+|CDN-Origin-Assist-Prefetch-Path| Przykład: <br/>Fragmenty (wideo = 1400000000, format = MPD-Time-CMAF)|Origin|CDN|Aby zapewnić ścieżkę pobierania z wyprzedzeniem do sieci CDN|
+|Sieć CDN — pochodzenie-pomoc-pobieranie z wyprzedzeniem|1 (żądanie pobrania z wyprzedzeniem) lub 0 (regularne żądanie)|CDN|Origin|Aby wskazać żądanie z usługi CDN, należy wykonać pobieranie z wyprzedzeniem|
+
+Aby wyświetlić część działania wymiany nagłówka, możesz spróbować wykonać następujące czynności:
+
+1. Użyj programu Poster lub zwinięciea, aby wydać żądanie Media Services pochodzenia dla segmentu audio lub wideo lub fragmentu. Pamiętaj o dodaniu nagłówka CDN-Origin-Assist-Prefetch-Enabled: 1 w żądaniu.
+2. W odpowiedzi powinna zostać wyświetlona nagłówek CDN-Origin-Assist-Prefetch-Path z ścieżką względną jako wartość.
+
 ## <a name="november-2019"></a>Listopad 2019 r.
 
 ### <a name="live-transcription-preview"></a>Podgląd transkrypcji na żywo

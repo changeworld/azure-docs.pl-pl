@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24ad492f622fa9a3e494c7ead724fb3980f6668
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066852"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121368"
 ---
 # <a name="how-provisioning-works"></a>Jak działa aprowizacja
 
@@ -86,6 +86,8 @@ Filtry zakresu umożliwiają definiowanie reguł opartych na atrybutach, które 
 ### <a name="b2b-guest-users"></a>Użytkownicy B2B (gość)
 
 Możliwe jest użycie usługi aprowizacji użytkowników w usłudze Azure AD w celu udostępnienia użytkownikom B2B (lub gościa) w usłudze Azure AD w celu SaaS aplikacji. Jednak aby użytkownicy B2B mogli logować się do aplikacji SaaS przy użyciu usługi Azure AD, aplikacja SaaS musi mieć skonfigurowaną funkcję logowania jednokrotnego opartego na protokole SAML. Aby uzyskać więcej informacji na temat sposobu konfigurowania aplikacji SaaS do obsługi logowań użytkowników B2B, zobacz [Konfigurowanie aplikacji SaaS na potrzeby współpracy B2B](../b2b/configure-saas-apps.md).
+
+Należy pamiętać, że element userPrincipalName dla użytkownika-gościa jest często przechowywany jako "alias # EXT #@domain.com". gdy element userPrincipalName zostanie uwzględniony w mapowaniu atrybutów jako atrybut źródłowy, #EXT # jest usuwany z elementu userPrincipalName. Jeśli potrzebujesz #EXT #, Zamień element userPrincipalName na originalUserPrincipalName jako atrybut source. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Cykle aprowizacji: początkowe i przyrostowe
 

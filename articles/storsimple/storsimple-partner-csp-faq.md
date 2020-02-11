@@ -1,5 +1,5 @@
 ---
-title: Często zadawane pytania dotyczące Microsoft Azure StorSimple i programu Cloud Solutions Provider for Partners | Microsoft Docs
+title: 'Często zadawane pytania dotyczące partnerów: StorSimple for Cloud Solutions Provider'
 description: Znajdź odpowiedzi na niektóre często zadawane pytania dotyczące StorSimple i dostawcy usług kryptograficznych dla partnerów.
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 893e8de5efc523df34e2c1e139082d2b471cb63e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828524"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116166"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple for Cloud Solutions Provider program: często zadawane pytania
 

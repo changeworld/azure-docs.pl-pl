@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 06a247c9e65ce386034a50650e46994bbbe9074a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152174"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122426"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Przykład: Tworzenie niestandardowej umiejętności przy użyciu języka Python
 
@@ -57,7 +57,7 @@ Szablon projektu usługi Azure Functions w programie Visual Studio Code umożliw
 
 Program Visual Studio Code utworzy projekt aplikacji funkcji w nowym obszarze roboczym. Ten projekt zawiera pliki konfiguracyjne [host.json](../azure-functions/functions-host-json.md) i [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file), a także wszystkie specyficzne dla języka pliki projektu. 
 
-Nowa funkcja wyzwalana przez protokół HTTP jest również tworzona w folderze **złączer** projektu aplikacji funkcji. Wewnątrz niego będzie plik o nazwie "\__init__. pr" z tą zawartością:
+Nowa funkcja wyzwalana przez protokół HTTP jest również tworzona w folderze **złączer** projektu aplikacji funkcji. W tym miejscu będzie dostępny plik o nazwie "\_\_init__. pr" z następującą zawartością:
 
 ```py
 import logging

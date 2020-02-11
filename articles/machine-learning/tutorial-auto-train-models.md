@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: 83c4ad92cc367deb52e4e9e5cd8b76ddab409933
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: 75e61ea3f4fa6c2b346f912a9effd66ad94e7e93
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533279"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116452"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Samouczek: Używanie automatycznego uczenia maszynowego do przewidywania opłat za taksówkę
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,12 +31,12 @@ W tym samouczku przedstawiono następujące zadania:
 > * Uczenie zautomatyzowanego modelu regresji uczenia maszynowego
 > * Oblicz dokładność modelu
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję](https://aka.ms/AMLFree) Azure Machine Learning dzisiaj.
+Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję](https://aka.ms/AMLFree) Azure Machine Learning dzisiaj.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Ukończ [Samouczek instalacji](tutorial-1st-experiment-sdk-setup.md) , jeśli nie masz jeszcze obszaru roboczego Azure Machine Learning lub maszyny wirtualnej notesu.
-* Po zakończeniu pracy z samouczkiem Instalatora Otwórz Notes **samouczków/Regression-Automated-ml. ipynb** przy użyciu tego samego serwera notesu.
+* Po zakończeniu pracy z samouczkiem Instalatora Otwórz Notes *samouczków/Regression-automl-NYC-Taxi-Data/Regression-Automated-ml. ipynb* przy użyciu tego samego serwera notesu.
 
 Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz uruchomić go w [środowisku lokalnym](how-to-configure-environment.md#local). Uruchom `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets`, aby uzyskać wymagane pakiety.
 
@@ -115,8 +115,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -139,8 +139,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0.69</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -163,8 +163,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -187,8 +187,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0.00</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -211,8 +211,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0.50</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -235,8 +235,8 @@ green_taxi_df.head(10)
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1,10</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -259,14 +259,14 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
       <td>Przyciski ...</td>
       <td>2</td>
-      <td>6,00</td>
+      <td>6.00</td>
       <td>0.00</td>
       <td>0.50</td>
       <td>0,3</td>
@@ -283,8 +283,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -307,8 +307,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -331,8 +331,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -416,8 +416,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -440,8 +440,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0.69</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -464,8 +464,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -488,8 +488,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0.00</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -512,8 +512,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0.50</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -536,8 +536,8 @@ green_taxi_df.head(10)
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1,10</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -560,8 +560,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -584,8 +584,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -608,8 +608,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -632,8 +632,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Brak</td>
-      <td>Brak</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -769,7 +769,7 @@ green_taxi_df.describe()
       <th>25%</th>
       <td>2.00</td>
       <td>1.00</td>
-      <td>1.06</td>
+      <td>1,06</td>
       <td>-73,96</td>
       <td>40,70</td>
       <td>-73,97</td>
@@ -822,7 +822,7 @@ green_taxi_df.describe()
       <td>450,00</td>
       <td>12,00</td>
       <td>30,00</td>
-      <td>6,00</td>
+      <td>6.00</td>
       <td>23,00</td>
     </tr>
   </tbody>
@@ -898,7 +898,7 @@ Zdefiniuj parametr eksperymentu i ustawienia modelu dla szkolenia. Wyświetl pe�
 |----|----|---|
 |**iteration_timeout_minutes**|2|Limit czasu w minutach dla każdej iteracji. Zmniejszenie tej wartości powoduje skrócenie całkowitego czasu wykonywania.|
 |**experiment_timeout_minutes**|20|Maksymalny czas (w minutach), przez jaki połączone wszystkie iteracje mogą upłynąć przed zakończeniem eksperymentu.|
-|**enable_early_stopping**|Prawda|Oflaguj, aby włączyć wczesne zakończenie, jeśli wynik nie zostanie ulepszony w krótkim czasie.|
+|**enable_early_stopping**|True|Oflaguj, aby włączyć wczesne zakończenie, jeśli wynik nie zostanie ulepszony w krótkim czasie.|
 |**primary_metric**| spearman_correlation | Metryka, który ma być optymalizowana. Na podstawie tej metryki zostanie wybrany model o najlepszym dopasowaniu.|
 |**cechowania**| auto | Przy użyciu **opcji**autoeksperymenty mogą wstępnie przetwarzać dane wejściowe (obsługujące brakujące dane, konwertowanie tekstu na liczbowe itd.)|
 |**verbosity**| logging.INFO | Steruje poziomem rejestrowania.|

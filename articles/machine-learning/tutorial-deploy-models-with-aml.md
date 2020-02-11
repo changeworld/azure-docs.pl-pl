@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/26/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122087"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116507"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: Wdrażanie modelu klasyfikacji obrazów w Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Usługa Container Instances to doskonałe rozwiązanie do testowania i interpret
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uruchomić Notes, najpierw Ukończ szkolenia modelu w [samouczku (część 1): uczenie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md).   Następnie Otwórz Notes **IMG-klasyfikacyjn-part2-Deploy. ipynb** w folderze sklonowanych **samouczków** .
+Aby uruchomić Notes, najpierw Ukończ szkolenia modelu w [samouczku (część 1): uczenie modelu klasyfikacji obrazów](tutorial-train-models-with-aml.md).   Następnie Otwórz Notes *IMG-klasyfikacyjn-part2-Deploy. ipynb* w folderze klony */Klasyfikacja obrazu-mnist ręcznie-Data* .
 
 Ten samouczek jest również dostępny w witrynie [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz używać go w [środowisku lokalnym](how-to-configure-environment.md#local).  Upewnij się, że w środowisku zainstalowano `matplotlib` i `scikit-learn`. 
 
@@ -268,7 +268,7 @@ Skonfiguruj i wdróż obraz. Poniższy kod wykonuje następujące kroki:
 1. Utworzenie obrazu za pomocą następujących plików:
    * plik oceniania (`score.py`),
    * plik środowiska (`myenv.yml`),
-   * plik modelu.
+   * Plik modelu
 1. Zarejestrowanie tego obrazu w obszarze roboczym. 
 1. Wysłanie obrazu do kontenera usługi Container Instances.
 1. Uruchomienie kontenera w usłudze Container Instances przy użyciu obrazu.

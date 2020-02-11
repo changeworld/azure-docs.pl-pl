@@ -3,19 +3,19 @@ title: 'Szybki Start: niestandardowy asystenta C# głosowego (platformy UWP) —
 titleSuffix: Azure Cognitive Services
 description: W tym artykule opisano tworzenie aplikacji C# platforma uniwersalna systemu Windows (platformy UWP) za pomocą zestawu Cognitive Services Speech Software Development Kit (SDK). Możesz połączyć aplikację kliencką z wcześniej utworzonym bot Framework bot skonfigurowanym do korzystania z kanału bezpośredniej linii mowy. Aplikacja została skompilowana z pakietem NuGet zestawu mowy SDK i Microsoft Visual Studio 2019.
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: af9395b8f75a9097d4449571fd54be6259a7b9f3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816226"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119784"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>Szybki Start: Tworzenie asystenta głosowego za pomocą zestawu Speech SDK, platformy UWP
 
@@ -30,7 +30,7 @@ W tym artykule opisano tworzenie aplikacji C# platforma uniwersalna systemu Wind
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
+* [Program Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go na [Azure Portal](https://portal.azure.com).
 * Wcześniej utworzono bot skonfigurowany za pomocą [kanału bezpośredniej linii mowy](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
@@ -419,7 +419,7 @@ Teraz możesz przystąpić do kompilowania i testowania aplikacji.
 > [!div class="nextstepaction"]
 > [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Asystenci głosu — informacje](voice-assistants.md)
 - [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)

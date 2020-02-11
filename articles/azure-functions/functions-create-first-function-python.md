@@ -4,12 +4,12 @@ description: Utwórz i Wdróż kod języka Python bezserwerowy w chmurze przy u�
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 529a992178fae5566c8e315956388c4cd4b80257
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898569"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116219"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Szybki Start: Tworzenie wyzwalanej przez protokół HTTP funkcji języka Python na platformie Azure
 
@@ -52,7 +52,7 @@ Jeśli środowisko Python nie zainstalowało pakietu venv na dystrybucji systemu
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -m venv .venv
@@ -107,7 +107,7 @@ W Azure Functions, projekt funkcji jest kontenerem dla jednej lub kilku poszczeg
 
 W razie potrzeby możesz pominąć, aby [uruchomić funkcję lokalnie](#run-the-function-locally) i później przejrzeć zawartość pliku.
 
-### <a name="__init__py"></a>\_\_init\_\_. PR
+#### <a name="__init__py"></a>\_\_init\_\_. PR
 
 *\_\_init\_\_. pr* `main()` zawiera funkcję języka Python, która jest wyzwalana zgodnie z konfiguracją w *funkcji Function. JSON*.
 
@@ -140,7 +140,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 W przypadku wyzwalacza HTTP funkcja otrzymuje dane żądania w zmiennej `req` zgodnie z definicją w *funkcji Function. JSON*. `req` to wystąpienie [klasy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Obiekt zwracany, zdefiniowany jako `$return` w *funkcji Function. JSON*, jest wystąpieniem [klasy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Aby dowiedzieć się więcej, zobacz [Azure Functions wyzwalacze i powiązania HTTP](functions-bindings-http-webhook.md).
 
-### <a name="functionjson"></a>function.json
+#### <a name="functionjson"></a>function.json
 
 *Function. JSON* to plik konfiguracji, który definiuje wejściowe i wyjściowe `bindings` dla funkcji, w tym typ wyzwalacza. W razie potrzeby można zmienić `scriptFile` w taki sposób, aby wywoływać inny plik w języku Python.
 
@@ -199,7 +199,7 @@ Gdy wszystko będzie gotowe, **naciśnij klawisz Ctrl**+**C** , aby zatrzymać h
 
 ## <a name="create-supporting-azure-resources-for-your-function"></a>Tworzenie obsługi zasobów platformy Azure dla funkcji
 
-Aby wdrożyć kod funkcji na platformie Azure, musisz utworzyć trzy zasoby:
+Aby można było wdrożyć kod funkcji na platformie Azure, należy utworzyć trzy zasoby:
 
 - Grupa zasobów, która jest kontenerem logicznym dla powiązanych zasobów.
 - Konto usługi Azure Storage, które zachowuje stan i inne informacje o Twoich projektach.

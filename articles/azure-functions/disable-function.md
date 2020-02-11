@@ -3,18 +3,21 @@ title: Jak wyłączyć funkcje w Azure Functions
 description: Dowiedz się, jak wyłączyć i włączyć funkcje w Azure Functions.
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: bffb3136c77074ecd50e839fd7c73144ad910967
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970979"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116144"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Jak wyłączyć funkcje w Azure Functions
 
 W tym artykule wyjaśniono, jak wyłączyć funkcję w Azure Functions. Aby *wyłączyć* funkcję oznacza, że środowisko uruchomieniowe zignoruje automatyczny wyzwalacz, który jest zdefiniowany dla funkcji. Dzięki temu można zapobiec uruchamianiu określonej funkcji bez zatrzymywania całej aplikacji funkcji.
 
 Zalecanym sposobem wyłączenia funkcji jest użycie ustawienia aplikacji w formacie `AzureWebJobs.<FUNCTION_NAME>.Disabled`. To ustawienie aplikacji można utworzyć i zmodyfikować na wiele sposobów, w tym za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/) oraz z karty **zarządzanie** funkcją w [Azure Portal](https://portal.azure.com). 
+
+> [!NOTE]  
+> Po wyłączeniu funkcji wyzwalanej przez protokół HTTP przy użyciu metod opisanych w tym artykule punkt końcowy może nadal być dostępny, gdy działa na komputerze lokalnym.  
 
 ## <a name="use-the-azure-cli"></a>Używanie interfejsu wiersza polecenia platformy Azure
 

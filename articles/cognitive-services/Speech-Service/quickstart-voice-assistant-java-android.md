@@ -3,19 +3,19 @@ title: 'Szybki Start: niestandardowy asystent głosowy, Java (Android) — usłu
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak utworzyć aplikację asystenta głosowego w języku Java w systemie Android przy użyciu zestawu Speech SDK
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: travisw
-ms.openlocfilehash: 70031513d6f120e539e80d6befad4bf9320fb9c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: d4f84bad6139210dcff3d3f3726d8b7a17d92a5b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975962"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119728"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Szybki Start: Tworzenie asystenta głosowego w języku Java w systemie Android przy użyciu zestawu Speech SDK
 
@@ -283,9 +283,9 @@ Po uruchomieniu aplikacji i jej działania kliknij przycisk, aby rozpocząć roz
 > [!div class="nextstepaction"]
 > [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 - [Asystenci głosu — informacje](voice-assistants.md)
 - [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)
 - [Niestandardowe słowa kluczowe](speech-devices-sdk-create-kws.md)
 - [Połącz bezpośrednią mowę wiersza z bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-- [Zapoznaj się z przykładami dla języka Java w usłudze GitHub](https://aka.ms/csspeech/samples)
+- [Zapoznaj się z przykładami dla języka Java w serwisie GitHub](https://aka.ms/csspeech/samples)

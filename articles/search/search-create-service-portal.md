@@ -3,17 +3,17 @@ title: 'Szybki Start: Tworzenie usługi wyszukiwania w portalu'
 titleSuffix: Azure Cognitive Search
 description: W tym przewodniku szybki start dowiesz się, jak skonfigurować zasób platformy Azure Wyszukiwanie poznawcze w Azure Portal. Wybierz grupy zasobów, regiony i jednostki SKU lub warstwę cenową.
 manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: ec794f66866f9773f8b7c0fc57b644d8a13d697a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 02/10/2020
+ms.openlocfilehash: bd4798ba4faa1808ecafb6d09eee09ba734c293d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534567"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121707"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Szybki Start: Tworzenie usługi Azure Wyszukiwanie poznawcze w portalu
 
@@ -33,7 +33,7 @@ Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.m
 
 ## <a name="find-azure-cognitive-search"></a>Znajdź Wyszukiwanie poznawcze platformy Azure
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Kliknij znak plus („+ Utwórz zasób”) w lewym górnym rogu.
 3. Użyj paska wyszukiwania, aby znaleźć "Wyszukiwanie poznawcze platformy Azure" lub przejdź do zasobu za pomocą Wyszukiwanie poznawcze **sieci Web** > **Azure**.
 

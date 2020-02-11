@@ -3,19 +3,19 @@ title: 'Szybki Start: niestandardowy asystent głosowy dla języka Java (Windows
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku szybki start dowiesz się, jak używać zestawu SDK mowy Cognitive Services w aplikacji konsolowej Java. Dowiesz się, jak połączyć aplikację kliencką z wcześniej utworzonym bot Framework bot skonfigurowanym do korzystania z kanału mowy linii Direct i włączyć asystenta głosowego.
 services: cognitive-services
-author: bidishac
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: bidishac
-ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815858"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119681"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Szybki Start: Tworzenie asystenta głosowego za pomocą zestawu Speech SDK, Java (wersja zapoznawcza)
 
@@ -469,15 +469,15 @@ W tym momencie Porozmawiaj z angielską frazą lub zdaniem bot. Twoja Zamiana je
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dodatkowe przykłady, dotyczące np. sposobu odczytywania mowy z pliku audio, są dostępne w witrynie GitHub.
+Dodatkowe przykłady, dotyczące m.in. odczytywania mowy z pliku audio, są dostępne w serwisie GitHub.
 
 > [!div class="nextstepaction"]
 > [Tworzenie i wdrażanie podstawowego bota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Asystenci głosu — informacje](voice-assistants.md)
 - [Uzyskaj bezpłatnie klucz subskrypcji usługi mowy](get-started.md)
 - [Niestandardowe słowa kluczowe](speech-devices-sdk-create-kws.md)
 - [Połącz bezpośrednią mowę wiersza z bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-- [Zapoznaj się z przykładami dla języka Java w usłudze GitHub](https://aka.ms/csspeech/samples)
+- [Zapoznaj się z przykładami dla języka Java w serwisie GitHub](https://aka.ms/csspeech/samples)

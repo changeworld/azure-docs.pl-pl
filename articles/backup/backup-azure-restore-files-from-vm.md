@@ -3,12 +3,12 @@ title: Odzyskiwanie plików i folderów z kopii zapasowej maszyny wirtualnej pla
 description: W tym artykule dowiesz się, jak odzyskiwać pliki i foldery z punktu odzyskiwania maszyny wirtualnej platformy Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 86a46e606e9425cf4951817ca3afa23fe57dae52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294086"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114326"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -56,6 +56,8 @@ Aby przywrócić pliki lub foldery z punktu odzyskiwania, przejdź do maszyny wi
 7. W lokalizacji pobierania (zazwyczaj folder pobierania) kliknij prawym przyciskiem myszy plik wykonywalny lub skrypt, a następnie uruchom go z poświadczeniami administratora. Po wyświetleniu monitu wpisz hasło lub wklej hasło z pamięci, a następnie naciśnij klawisz **Enter**. Po wprowadzeniu prawidłowego hasła skrypt nawiązuje połączenie z punktem odzyskiwania.
 
     ![Menu odzyskiwania plików](./media/backup-azure-restore-files-from-vm/executable-output.png)
+
+8. W przypadku maszyn z systemem Linux jest generowany skrypt języka Python. Jeden z nich musi pobrać skrypt i skopiować go do odpowiedniego/zgodnego serwera z systemem Linux. Może być konieczne zmodyfikowanie uprawnień, aby wykonać je za pomocą ```chmod +x <python file name>```. Następnie uruchom plik Python z ```./<python file name>```.
 
 Zapoznaj się z sekcją [wymagania dostępu](#access-requirements) , aby upewnić się, że skrypt został pomyślnie uruchomiony.
 
@@ -165,7 +167,7 @@ W poniższej tabeli przedstawiono zgodność między systemami operacyjnymi serw
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Dla systemu operacyjnego Linux
 
@@ -191,10 +193,10 @@ Skrypt wymaga również, aby składniki Python i bash były bezpiecznie wykonywa
 |Składnik | Wersja  |
 | --------------- | ---- |
 | bash | 4 i nowsze |
-| Python | 2.6.6 i nowsze  |
+| python | 2.6.6 i nowsze  |
 | TLS | 1,2 powinna być obsługiwana  |
 
-## <a name="access-requirements"></a>Wymagania dotyczące uzyskiwania dostępu
+## <a name="access-requirements"></a>Wymagania dotyczące dostępu
 
 W przypadku uruchamiania skryptu na komputerze z ograniczonym dostępem upewnij się, że masz dostęp do:
 
@@ -261,7 +263,7 @@ Jeśli występują problemy podczas odzyskiwania plików z maszyn wirtualnych, z
 | Specyficzne dla systemu Linux: nie można wyświetlić żądanych woluminów | System operacyjny maszyny, na której jest uruchamiany skrypt, może nie rozpoznać podstawowego systemu plików chronionej maszyny wirtualnej | Sprawdź, czy punkt odzyskiwania jest spójny pod kątem awarii lub spójny z plikiem. Jeśli plik jest spójny, uruchom skrypt na innym komputerze, którego system operacyjny rozpoznaje chronioną system plików maszyny wirtualnej. |
 | Specyficzne dla systemu Windows: nie można wyświetlić żądanych woluminów | Dyski mogły zostać dołączone, ale nie skonfigurowano woluminów | Na ekranie Zarządzanie dyskami Zidentyfikuj dodatkowe dyski związane z punktem odzyskiwania. Jeśli którykolwiek z tych dysków znajduje się w stanie offline, spróbuj przełączyć je w tryb online, klikając dysk prawym przyciskiem myszy, a następnie kliknij pozycję **online**.|
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
 W tej sekcji omówiono różne miary zabezpieczeń związane z wdrażaniem odzyskiwania plików z kopii zapasowych maszyn wirtualnych platformy Azure.
 

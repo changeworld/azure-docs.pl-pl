@@ -1,20 +1,19 @@
 ---
 title: Kody błędów dla maszyn wirtualnych i wystąpień zestawów skalowania platformy Azure
 description: Informacje o kodach błędów, które mogą być widoczne podczas korzystania z maszyn wirtualnych na miejscu i wystąpień zestawów skalowania.
-services: virtual-machines-windows
 author: cynthn
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: cynthn
-ms.openlocfilehash: 97e68f4d0d671ffa0f697c484c502b9070a3f20f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 1863c510967dcf80044d768aee1a37643a068ce4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781945"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115856"
 ---
 # <a name="preview-error-messages-for-spot-vms-and-scale-sets"></a>Wersja zapoznawcza: komunikaty o błędach dotyczące dodatkowych maszyn wirtualnych i zestawów skalowania
 
@@ -27,7 +26,7 @@ ms.locfileid: "74781945"
 Poniżej przedstawiono niektóre możliwe kody błędów, które można odbierać podczas korzystania z maszyn wirtualnych i zestawów skalowania.
 
 
-| Klucz | Wiadomość | Opis |
+| Klucz | Komunikat | Opis |
 |-----|---------|-------------|
 | SkuNotAvailable | Żądana warstwa dla zasobu "\<Resource\>" jest obecnie niedostępna w lokalizacji "\<lokalizacji\>" dla subskrypcji "\<subskrypcji\>". Wypróbuj inną warstwę lub Wdróż ją w innej lokalizacji. | W tej lokalizacji nie ma wystarczającej pojemności platformy Azure, aby utworzyć maszynę wirtualną lub wystąpienie zestawu skalowania. |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  Zasady wykluczania można ustawić tylko w Virtual Machines w miejscu na platformie Azure. | Ta maszyna wirtualna nie jest maszyną wirtualną, dlatego nie można ustawić zasad wykluczania. |

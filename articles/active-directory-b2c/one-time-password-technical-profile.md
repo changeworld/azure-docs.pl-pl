@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982793"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114058"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Zdefiniuj profil techniczny hasła jednorazowego w zasadach niestandardowych Azure AD B2C
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) zapewnia obsługę zarządzania genero
 
 Profil techniczny hasła jednorazowego może również zwrócić komunikat o błędzie podczas weryfikacji kodu. Zaprojektuj integrację z hasłem jednorazowym przy użyciu **profilu technicznego weryfikacji**. Profil techniczny weryfikacji jest wywoływany przy użyciu profilu technicznego hasła jednorazowego w celu zweryfikowania kodu. Profil techniczny weryfikacji weryfikuje dane dostarczone przez użytkownika przed kontynuowaniem podróży użytkownika. W profilu technicznym weryfikacji na stronie z potwierdzeniem zostanie wyświetlony komunikat o błędzie.
 
-## <a name="protocol"></a>Protocol (Protokół)
+## <a name="protocol"></a>Protokół
 
 Atrybut **name** elementu **Protocol** musi mieć wartość `Proprietary`. Atrybut **programu obsługi** musi zawierać w pełni kwalifikowaną nazwę zestawu programu obsługi protokołu, który jest używany przez Azure AD B2C:
 
@@ -51,9 +51,9 @@ Pierwszy tryb tego profilu technicznego to generowanie kodu. Poniżej przedstawi
 
 Element **InputClaims** zawiera listę oświadczeń wymaganych do wysłania do dostawcy protokołu hasła jednorazowego. Możesz również zmapować nazwę swojego zgłoszenia na nazwę zdefiniowaną poniżej.
 
-| ClaimReferenceId | Wymagane | Opis |
+| ClaimReferenceId | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Tak | Identyfikator identyfikujący użytkownika, który musi weryfikować kod później. Jest on często używany jako identyfikator miejsca docelowego, do którego został dostarczony kod, na przykład adres e-mail lub numer telefonu. |
+| Identyfikator | Yes | Identyfikator identyfikujący użytkownika, który musi weryfikować kod później. Jest on często używany jako identyfikator miejsca docelowego, do którego został dostarczony kod, na przykład adres e-mail lub numer telefonu. |
 
 Element **InputClaimsTransformations** może zawierać kolekcję elementów **InputClaimsTransformation** , które są używane do modyfikowania oświadczeń wejściowych lub generować nowe przed wysłaniem do dostawcy protokołu hasła jednorazowego.
 
@@ -61,9 +61,9 @@ Element **InputClaimsTransformations** może zawierać kolekcję elementów **In
 
 Element **OutputClaims** zawiera listę oświadczeń wygenerowanych przez dostawcę protokołu hasła jednorazowego. Możesz również zmapować nazwę swojego zgłoszenia na nazwę zdefiniowaną poniżej.
 
-| ClaimReferenceId | Wymagane | Opis |
+| ClaimReferenceId | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| otpGenerated | Tak | Wygenerowany kod, którego sesja jest zarządzana przez Azure AD B2C. |
+| otpGenerated | Yes | Wygenerowany kod, którego sesja jest zarządzana przez Azure AD B2C. |
 
 Element **OutputClaimsTransformations** może zawierać kolekcję elementów **OutputClaimsTransformation** , które są używane do modyfikowania oświadczeń wyjściowych lub generowania nowych.
 
@@ -71,13 +71,13 @@ Element **OutputClaimsTransformations** może zawierać kolekcję elementów **O
 
 Następujące ustawienia mogą służyć do konfigurowania generowania i obsługi kodu:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | Nie | Czas (w sekundach) do wygaśnięcia kodu. Minimum: `60`; Wartość maksymalna: `1200`; Wartość domyślna: `600`. |
 | CodeLength | Nie | Długość kodu. Wartością domyślną jest `6`. |
 | CharacterSet | Nie | Zestaw znaków dla kodu sformatowany do użycia w wyrażeniu regularnym. Na przykład `a-z0-9A-Z`. Wartością domyślną jest `0-9`. Zestaw znaków musi zawierać co najmniej 10 różnych znaków w określonym zestawie. |
 | NumRetryAttempts | Nie | Liczba prób weryfikacji przed kodem jest uznawana za nieprawidłową. Wartością domyślną jest `5`. |
-| Operacja | Tak | Operacja do wykonania. Możliwe wartości: `GenerateCode`lub `VerifyCode`. |
+| Operacja | Yes | Operacja do wykonania. Możliwe wartości: `GenerateCode`lub `VerifyCode`. |
 | ReuseSameCode | Nie | Czy należy określić zduplikowany kod zamiast generować nowy kod, gdy dany kod nie wygasł i jest nadal ważny. Wartością domyślną jest `false`. |
 
 ### <a name="returning-error-message"></a>Zwracany komunikat o błędzie
@@ -117,10 +117,10 @@ Drugi tryb tego profilu technicznego polega na sprawdzeniu kodu. Poniżej przeds
 
 Element **InputClaims** zawiera listę oświadczeń wymaganych do wysłania do dostawcy protokołu hasła jednorazowego. Możesz również zmapować nazwę swojego zgłoszenia na nazwę zdefiniowaną poniżej.
 
-| ClaimReferenceId | Wymagane | Opis |
+| ClaimReferenceId | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Tak | Identyfikator identyfikujący użytkownika, który wcześniej wygenerował kod. Jest on często używany jako identyfikator miejsca docelowego, do którego został dostarczony kod, na przykład adres e-mail lub numer telefonu. |
-| otpToVerify | Tak | Kod weryfikacyjny dostarczony przez użytkownika. |
+| Identyfikator | Yes | Identyfikator identyfikujący użytkownika, który wcześniej wygenerował kod. Jest on często używany jako identyfikator miejsca docelowego, do którego został dostarczony kod, na przykład adres e-mail lub numer telefonu. |
+| otpToVerify | Yes | Kod weryfikacyjny dostarczony przez użytkownika. |
 
 Element **InputClaimsTransformations** może zawierać kolekcję elementów **InputClaimsTransformation** , które są używane do modyfikowania oświadczeń wejściowych lub generować nowe przed wysłaniem do dostawcy protokołu hasła jednorazowego.
 
@@ -134,7 +134,7 @@ Element **OutputClaimsTransformations** może zawierać kolekcję elementów **O
 
 Poniższe ustawienia mogą służyć do konfigurowania komunikatu o błędzie wyświetlanego podczas niepowodzenia weryfikacji kodu:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Nie | Komunikat, który ma być wyświetlany użytkownikowi, jeśli sesja weryfikacji kodu wygasła. To albo kod wygasł albo kod nigdy nie został wygenerowany dla danego identyfikatora. |
 | UserMessageIfMaxRetryAttempted | Nie | Komunikat, który ma być wyświetlany użytkownikowi w przypadku przekroczenia maksymalnej dozwolonej liczby prób weryfikacji. |
@@ -168,3 +168,10 @@ Poniższy przykład `TechnicalProfile` służy do sprawdzania kodu:
     </InputClaims>
 </TechnicalProfile>
 ```
+
+## <a name="next-steps"></a>Następne kroki
+
+Zapoznaj się z poniższym artykułem, aby uzyskać przykład użycia jednorazowego profilu technial haseł z weryfikacją niestandardowej wiadomości e-mail:
+
+- [Niestandardowa Weryfikacja poczty e-mail w Azure Active Directory B2C](custom-email.md)
+

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5a2ff4d78c1e0e67b390f607da69cc299e2dce4a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261368"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116481"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Dowiedz się, jak wykonać następujące czynności:
 
 Tego, jak wybrać i wdrożyć model, dowiesz się z [drugiej części tego samouczka](tutorial-deploy-models-with-aml.md).
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 >[!NOTE]
 > Kod w tym artykule został przetestowany przy użyciu [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.65.
@@ -46,7 +46,7 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
     * Sklonuj Notes samouczków do folderu w obszarze roboczym.
     * Tworzenie wystąpienia obliczeniowego opartego na chmurze.
 
-* W folderze sklonowanych **samouczków** Otwórz Notes **IMG-klasyfikacyjn-part1-Training. ipynb** . 
+* W folderze sklonowane *samouczki/mnist ręcznie-Data (Klasyfikacja obrazu* ) Otwórz Notes *IMG-klasyfikacyjn-part1-Train. ipynb* . 
 
 
 Samouczek i towarzyszący plik **utils.py** są również dostępne w usłudze [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) , jeśli chcesz korzystać z niego w [środowisku lokalnym](how-to-configure-environment.md#local). Uruchom `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib`, aby zainstalować zależności dla tego samouczka.

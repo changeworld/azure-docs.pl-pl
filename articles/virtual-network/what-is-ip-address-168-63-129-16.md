@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 287f881fb17dd84357f540ee562e21c66c11ab95
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196667"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114362"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Co to jest adres IP 168.63.129.16?
 
@@ -34,10 +34,11 @@ Adres IP 168.63.129.16 to wirtualny publiczny adres IP, który służy do ułatw
 
 ## <a name="scope-of-ip-address-1686312916"></a>Zakres adresów IP 168.63.129.16
 
-Publiczny adres IP 168.63.129.16 jest używany we wszystkich regionach i wszystkich chmurach narodowych. Ten specjalny publiczny adres IP należy do firmy Microsoft i nie zmieni się. Jest to dozwolone przez domyślną regułę sieciowej grupy zabezpieczeń. Zalecamy Zezwalanie na ten adres IP w ramach wszelkich lokalnych zasad zapory w obu kierunkach ruchu przychodzącego i wychodzącego. Komunikacja między tym specjalnym adresem IP a zasobami jest bezpieczna, ponieważ tylko wewnętrzna platforma platformy Azure może uzyskać komunikat z tego adresu IP. Jeśli ten adres jest zablokowany, może wystąpić nieoczekiwane zachowanie w różnych scenariuszach.
-Należy otworzyć co najmniej następujące porty, aby umożliwić komunikację z WireServer: 80, 443 i 32526.
+Publiczny adres IP 168.63.129.16 jest używany we wszystkich regionach i wszystkich chmurach narodowych. Ten specjalny publiczny adres IP należy do firmy Microsoft i nie zmieni się. Zalecamy Zezwalanie na ten adres IP w ramach zasad zapory lokalnych (w maszynie wirtualnej) (kierunek wychodzący). Komunikacja między tym specjalnym adresem IP a zasobami jest bezpieczna, ponieważ tylko wewnętrzna platforma platformy Azure może uzyskać komunikat z tego adresu IP. Jeśli ten adres jest zablokowany, może wystąpić nieoczekiwane zachowanie w różnych scenariuszach. 168.63.129.16 jest [wirtualnym adresem IP węzła hosta](../virtual-network/security-overview.md#azure-platform-considerations) i nie podlega trasom zdefiniowanym przez użytkownika.
 
-[Sondy kondycji Azure Load Balancer](../load-balancer/load-balancer-custom-probe-overview.md) pochodzą z tego adresu IP. Jeśli zablokujesz ten adres IP, sondy zakończą się niepowodzeniem.
+- Agent maszyny wirtualnej wymaga komunikacji wychodzącej przez porty 80, 443, 32526 z WireServer (168.63.129.16). Powinny być one otwarte w lokalnej zaporze na maszynie wirtualnej. Komunikacja na tych portach z 168.63.129.16 nie podlega skonfigurowanym grupom zabezpieczeń sieci.
+- 168.63.129.16 mogą udostępniać usługi DNS dla maszyny wirtualnej. Jeśli nie jest to potrzebne, ten ruch może być blokowany w lokalnej zaporze na maszynie wirtualnej. Domyślnie komunikacja DNS nie podlega skonfigurowanym grupom zabezpieczeń sieci, chyba że jest to celowe wykorzystanie tagu usługi [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) .
+- Jeśli maszyna wirtualna jest częścią puli zaplecza modułu równoważenia obciążenia, komunikacja z [sondą kondycji](../load-balancer/load-balancer-custom-probe-overview.md) powinna być dozwolona z 168.63.129.16. Domyślna konfiguracja grupy zabezpieczeń sieci ma regułę, która zezwala na tę komunikację. Ta reguła wykorzystuje tag usługi [AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags) . W razie potrzeby można zablokować ten ruch przez skonfigurowanie sieciowej grupy zabezpieczeń, co spowoduje niepowodzenie sond.
 
 W scenariuszu sieci niewirtualnej (klasyczny) sonda kondycji pochodzi z prywatnego adresu IP, a 168.63.129.16 nie jest używana.
 

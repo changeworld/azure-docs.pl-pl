@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 8fd938e685c712cda60c171ccf9092ff42e6037e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b9db9daf06b59e1a26a9b03a93aff63984841862
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446491"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118351"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Szybki Start: Biblioteka klienta aparatu rozpoznawania formularzy dla platformy .NET
 
@@ -33,7 +33,6 @@ Biblioteka klienta aparatu rozpoznawania w programie .NET umożliwia:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/).
-* Dostęp do programu rozpoznawania formularzy z ograniczonym dostępem. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) .
 * Obiekt BLOB usługi Azure Storage zawierający zestaw danych szkoleniowych. Zapoznaj się z tematem [Tworzenie zestawu danych szkoleniowych dla modelu niestandardowego](../build-training-data-set.md) w celu uzyskania wskazówek i opcji tworzenia danych szkoleniowych. W tym przewodniku szybki start można użyć plików w folderze **uczenie** [zestawu danych przykładowych](https://go.microsoft.com/fwlink/?linkid=2090451).
 * Bieżąca wersja [platformy .NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
@@ -91,7 +90,7 @@ Jeśli używasz środowiska IDE programu Visual Studio, Biblioteka kliencka jest
 
 Poniższe klasy obsługują główne funkcje zestawu SDK aparatu rozpoznawania formularzy.
 
-|Nazwa|Opis|
+|Name (Nazwa)|Opis|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Ta klasa jest wymagana dla wszystkich funkcji aparatu rozpoznawania formularzy. Tworzysz wystąpienie z informacjami o subskrypcji i używasz ich do tworzenia wystąpień innych klas.|
 |[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Ta klasa jest używana do uczenia niestandardowego modelu aparatu rozpoznawania formularzy przy użyciu własnych danych wejściowych szkoleniowych. |

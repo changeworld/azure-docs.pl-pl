@@ -2,13 +2,13 @@
 title: Funkcje szablonu — zasoby
 description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Manager można pobrać wartości dotyczące zasobów.
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: cfcc9ff3af33fe9de813d8a31b7d102f00725ce4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048800"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120527"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -752,14 +752,14 @@ Powyższy przykład zwraca obiekt, w następującym formacie:
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Zwraca unikatowy identyfikator zasobu. Aby użyć tej funkcji, jeśli nazwa zasobu jest niejednoznaczny lub nie jest aprowizowany w ramach tego samego szablonu.
+Zwraca unikatowy identyfikator zasobu. Aby użyć tej funkcji, jeśli nazwa zasobu jest niejednoznaczny lub nie jest aprowizowany w ramach tego samego szablonu. Format zwróconego identyfikatora różni się w zależności od tego, czy wdrożenie występuje w zakresie grupy zasobów, subskrypcji, grupy zarządzania czy dzierżawcy.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nie |ciąg (format identyfikatora GUID w) |Wartością domyślną jest bieżąca subskrypcja. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej subskrypcji. |
-| resourceGroupName |Nie |ciąg |Wartość domyślna to bieżącej grupie zasobów. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej grupie zasobów. |
+| resourceGroupName |Nie |ciąg |Wartość domyślna to bieżącej grupie zasobów. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej grupie zasobów. Podaj tę wartość tylko w przypadku wdrażania w zakresie grupy zasobów. |
 | resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
 | resourceName1 |Yes |ciąg |Nazwa zasobu. |
 | resourceName2 |Nie |ciąg |Następny segment nazwy zasobu, w razie konieczności. |
@@ -768,7 +768,7 @@ Kontynuuj dodawanie nazw zasobów jako parametrów, gdy typ zasobu zawiera więc
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Identyfikator zasobu jest zwracany w następującym formacie:
+Gdy szablon zostanie wdrożony w zakresie grupy zasobów, identyfikator zasobu jest zwracany w następującym formacie:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -778,6 +778,12 @@ W przypadku użycia w ramach [wdrożenia na poziomie subskrypcji](deploy-to-subs
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+W przypadku użycia we [wdrożeniu na poziomie grupy zarządzania](deploy-to-management-group.md) lub na poziomie dzierżawy identyfikator zasobu jest zwracany w następującym formacie:
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 Aby uzyskać identyfikator w innych formatach, zobacz:

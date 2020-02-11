@@ -3,17 +3,17 @@ title: C#Samouczek dotyczący dzielenia na strony wyników wyszukiwania
 titleSuffix: Azure Cognitive Search
 description: W tym samouczku przedstawiono stronicowanie wyników wyszukiwania. Jest ona oparta na istniejącym projekcie hoteli, ze stronicowaniem według przycisków pierwszy, następny, poprzedni, ostatni i numerowany. Drugi system stronicowania używa Nieskończonego przewijania wyzwalanego przez przeniesienie pionowego paska przewijania do jego dolnego limitu.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113771"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121525"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#Samouczek: przeszukiwanie wyników wyszukiwania na platformie Azure Wyszukiwanie poznawcze
 

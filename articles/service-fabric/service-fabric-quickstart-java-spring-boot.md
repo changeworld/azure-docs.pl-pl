@@ -6,73 +6,56 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c12cd53b55cac48aae3d69506204c9d107e34aa6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eb96989b4a2731e78471b848d690b48352408d1c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464383"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121481"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Szybki Start: wdrażanie aplikacji do rozruchu ze sprężyną Java na platformie Azure Service Fabric
 
-Ten przewodnik Szybki Start przedstawia sposób wdrażania aplikacji do rozruchu ze sprężyną Java na platformie Azure Service Fabric. Usługa Azure Service Fabric to platforma systemów rozproszonych umożliwiająca wdrażanie mikrousług i kontenerów, a także zarządzanie nimi. 
-
-W tym przewodniku Szybki start użyto przykładu [Wprowadzenie](https://spring.io/guides/gs/spring-boot/) z witryny internetowej platformy Spring. W tym przewodniku Szybki start objaśniono wdrażanie przykładu ze środowiska Spring Boot jako aplikacji usługi Service Fabric za pomocą znanych narzędzi wiersza polecenia. Po zakończeniu w usłudze Service Fabric będzie działać przykład Wprowadzenie środowiska Spring Boot.
-
-![Przykład Service Fabric rozruchu sprężynowego](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
-
-W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
-
-* Wdrażanie aplikacji Spring Boot w usłudze Service Fabric
-* Wdrażanie aplikacji w klastrze lokalnym
-* Skalowanie aplikacji w poziomie na wiele węzłów
-* Przenoszenie usługi w tryb failover bez wywierania wpływu na jej dostępność
+W tym przewodniku szybki start wdrożono aplikację rozruchu ze sprężyną Java do usługi Azure Service Fabric przy użyciu znanych narzędzi wiersza polecenia w systemie Linux lub MacOS. Usługa Azure Service Fabric to platforma systemów rozproszonych umożliwiająca wdrażanie mikrousług i kontenerów, a także zarządzanie nimi. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start:
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-1. Zainstaluj zestaw SDK i interfejs wiersza polecenia usługi Service Fabric
+- [Środowisko Java](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) i [Narzędzia Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Service Fabric SDK & Service Fabric interfejs wiersza polecenia (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Usługa Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
-    
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+#### <a name="macostabmacos"></a>[MacOS](#tab/macos)
 
-1. [Zainstaluj oprogramowanie Git](https://git-scm.com/)
-1. Instalowanie narzędzia Yeoman
+- [Środowisko Java i narzędzia Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+- [Service Fabric SDK & Service Fabric interfejs wiersza polecenia (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
+- [Usługa Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-1. Skonfiguruj środowisko Java
-
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-    
-    b.  [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)
+--- 
 
 ## <a name="download-the-sample"></a>Pobierz przykład
 
-W oknie terminala uruchom następujące polecenie, aby sklonować przykładową aplikację Wprowadzenie środowiska Spring Boot na komputer lokalny.
+W oknie terminalu uruchom następujące polecenie, aby sklonować przykładową aplikację z rozruchem sprężyny [wprowadzenie](https://github.com/spring-guides/gs-spring-boot) do komputera lokalnego.
 
 ```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 
 ## <a name="build-the-spring-boot-application"></a>Kompilowanie aplikacji Spring Boot 
-1. W katalogu `gs-spring-boot/complete` uruchom poniższe polecenie, aby skompilować aplikację 
+W katalogu *GS-Boot-rozruch/pełny* uruchom poniższe polecenie, aby skompilować aplikację 
 
-    ```bash
-    ./gradlew build
-    ``` 
+```bash
+./gradlew build
+``` 
 
 ## <a name="package-the-spring-boot-application"></a>Tworzenie pakietu aplikacji Spring Boot 
-1. W sklonowanym katalogu `gs-spring-boot` uruchom polecenie `yo azuresfguest`. 
+1. W sklonowanym katalogu *rozruchowym GS* , uruchom polecenie `yo azuresfguest`. 
 
 1. Wprowadź następujące szczegóły dla każdego monitu.
 
     ![Wpisy narzędzia Yeoman rozruchu sprężynowego](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
-1. W folderze `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` utwórz plik o nazwie `entryPoint.sh`. Dodaj następującą zawartość do pliku `entryPoint.sh`. 
+1. W folderze *SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/Code* Utwórz plik o nazwie *EntryPoint.sh*. Dodaj następujący kod do pliku *EntryPoint.sh* . 
 
     ```bash
     #!/bin/bash
@@ -91,7 +74,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
        </Resources>
     ```
 
-    Plik **ServiceManifest.xml** wygląda teraz następująco: 
+    Plik *ServiceManifest.xml* wygląda teraz następująco: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -136,17 +119,17 @@ Na tym etapie utworzono aplikację usługi Service Fabric dla przykładu Wprowad
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    Uruchamianie klastra lokalnego zajmuje nieco czasu. Aby potwierdzić, że klaster jest w pełni uruchomiony, otwórz narzędzie Service Fabric Explorer dostępne pod adresem **http://localhost:19080** . Pięć węzłów w dobrej kondycji oznacza, że klaster lokalny jest uruchomiony. 
+    Uruchamianie klastra lokalnego zajmuje nieco czasu. Aby upewnić się, że klaster jest w pełni skonfigurowany, uzyskaj dostęp do Service Fabric Explorer w `http://localhost:19080`. Pięć węzłów w dobrej kondycji oznacza, że klaster lokalny jest uruchomiony. 
     
     ![Service Fabric Explorer wyświetla węzły w dobrej kondycji](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
-1. Otwórz folder `gs-spring-boot/SpringServiceFabric`.
+1. Otwórz folder *GS-sprężyn-Boot/SpringServiceFabric* .
 1. Uruchom następujące polecenie, aby połączyć się z klastrem lokalnym.
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
-1. Uruchom skrypt `install.sh`.
+1. Uruchom skrypt *install.sh* .
 
     ```bash
     ./install.sh
@@ -157,6 +140,8 @@ Na tym etapie utworzono aplikację usługi Service Fabric dla przykładu Wprowad
     ![Przykład Service Fabric rozruchu sprężynowego](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 Teraz możesz uzyskiwać dostęp do aplikacji Spring Boot, która została wdrożona w klastrze usługi Service Fabric.
+
+Aby uzyskać więcej informacji, zobacz przykładowy [wprowadzenie](https://spring.io/guides/gs/spring-boot/) rozruchu sprężynowego w witrynie sieci Web sprężyny.
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalowanie aplikacji i usług w klastrze
 

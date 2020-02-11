@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 2b800cbc2f836d415afbb53a8415e9e400f40d0e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2224ec64712ff9d1745231f39a1521ae941304ff
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901972"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118770"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Szybki Start: wyodrębnianie danych przyjęcia przy użyciu interfejsu API REST aparatu rozpoznawania w języku Python
 
@@ -25,7 +25,6 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
-- Dostęp do programu rozpoznawania formularzy z ograniczonym dostępem. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) .
 - Zainstalowana w języku [Python](https://www.python.org/downloads/) (Jeśli chcesz uruchomić przykład lokalnie).
 - Adres URL obrazu potwierdzenia. Możesz użyć [przykładowego obrazu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) dla tego przewodnika Szybki Start.
 
@@ -81,7 +80,7 @@ Aby rozpocząć analizowanie paragonu, należy wywołać interfejs API **[analiz
 
 1. Zapisz kod w pliku z rozszerzeniem. pr. Na przykład *form-Recognizer-Receipts.py*.
 1. Otwórz okno wiersza polecenia.
-1. W monicie użyj polecenia `python`, aby uruchomić próbkę. Na przykład `python form-recognizer-receipts.py`.
+1. W tym oknie użyj polecenia `python`, aby uruchomić przykładowy kod. Na przykład `python form-recognizer-receipts.py`.
 
 Otrzymasz odpowiedź `202 (Success)`, która zawiera nagłówek z **lokalizacją operacji** , który skrypt będzie drukowany w konsoli programu. Ten nagłówek zawiera identyfikator operacji, którego można użyć do zbadania stanu operacji asynchronicznej i uzyskania wyników. W poniższym przykładzie wartość ciąg po `operations/` jest IDENTYFIKATORem operacji.
 

@@ -1,73 +1,78 @@
 ---
-title: Azure Monitor dla dostawców usług | Microsoft Docs
-description: Azure Monitor może pomóc zarządzanym dostawcom usług (msp), dużymi przedsiębiorstwami, niezależnymi dostawcami oprogramowania (ISV) i dostawcami usług hostingu oraz monitorować serwery w infrastrukturze lokalnej lub w chmurze klienta.
+title: Dzienniki Azure Monitor dla dostawców usług | Microsoft Docs
+description: Dzienniki Azure Monitor mogą pomóc zarządzanym dostawcom usług (msp), dużymi przedsiębiorstwami, niezależnymi dostawcami oprogramowania (ISV) i dostawcami usług hostingowych oraz zarządzać serwerami w infrastrukturze lokalnej lub w chmurze klienta.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
-ms.date: 08/06/2019
-ms.openlocfilehash: b0f25d01421edd329b03d8f2b7e1aafaa2ba67d5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 02/03/2020
+ms.openlocfilehash: 1b5c181569ea569ecc4808284683501cb20f7bf5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932061"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117060"
 ---
-# <a name="azure-monitor-for-service-providers"></a>Azure Monitor dla dostawców usług
-Log Analytics obszary robocze w Azure Monitor mogą pomóc zarządzanym dostawcom usług (msp), dużymi przedsiębiorstwami, niezależnymi dostawcami oprogramowania (ISV) i dostawcami usług hostingowych oraz zarządzać serwerami w infrastrukturze lokalnej i w chmurze klienta. 
+# <a name="azure-monitor-logs-for-service-providers"></a>Dzienniki Azure Monitor dla dostawców usług
 
-Duże przedsiębiorstwa współużytkują wiele podobieństw z dostawcami usług, szczególnie w przypadku scentralizowanego zespołu IT, który jest odpowiedzialny za zarządzanie nim dla wielu różnych jednostek roboczych. Dla uproszczenia w tym dokumencie jest stosowany *dostawca usług* , ale te same funkcje są również dostępne dla przedsiębiorstw i innych klientów.
+Log Analytics obszary robocze w Azure Monitor mogą pomóc zarządzanym dostawcom usług (msp), dużymi przedsiębiorstwami, niezależnymi dostawcami oprogramowania (ISV) i dostawcami usług hostingowych oraz zarządzać serwerami w infrastrukturze lokalnej i w chmurze klienta.
 
-W przypadku partnerów i dostawców usług, którzy są częścią programu [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) , Log Analytics w Azure monitor to jedna z usług platformy Azure dostępnych w ramach [subskrypcji CSP platformy Azure](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
+Duże przedsiębiorstwa mają wiele wspólnego z dostawcami usług, zwłaszcza w przypadku scentralizowane zespół IT, który jest odpowiedzialny za zarządzanie IT dla wielu różnych jednostek biznesowych. Dla uproszczenia w tym dokumencie jest stosowany *dostawca usług* , ale te same funkcje są również dostępne dla przedsiębiorstw i innych klientów.
+
+W przypadku partnerów i dostawców usług, którzy są częścią programu [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) , Log Analytics w Azure monitor to jedna z usług platformy Azure dostępnych w ramach subskrypcji CSP platformy Azure.
+
+Log Analytics w Azure Monitor może być również używany przez dostawcę usług do zarządzania zasobami klienta za pomocą funkcji zarządzania zasobami delegowanymi platformy Azure w [usłudze Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview).
 
 ## <a name="architectures-for-service-providers"></a>Architektury dla dostawców usług
 
-Log Analytics obszary robocze umożliwiają administratorowi sterowanie przepływem i izolacją danych [dziennika](data-platform-logs.md) oraz tworzenie architektury, która odpowiada konkretnym potrzebom biznesowym. W [tym artykule](design-logs-deployment.md) wyjaśniono zagadnienia dotyczące projektowania, wdrażania i migracji dla obszaru roboczego, a w artykule [Zarządzanie dostępem](manage-access.md) omówiono sposób stosowania uprawnień i zarządzania nimi w celu uzyskania danych dziennika. Dostawcy usług mają dodatkowe uwagi.
+Log Analytics obszary robocze umożliwiają administratorowi sterowanie przepływem i izolacją danych [dziennika](data-platform-logs.md) oraz tworzenie architektury, która odpowiada konkretnym potrzebom biznesowym. W [tym artykule](design-logs-deployment.md) wyjaśniono zagadnienia dotyczące projektowania, wdrażania i migracji dla obszaru roboczego, a w artykule [Zarządzanie dostępem](manage-access.md) omówiono sposób stosowania uprawnień i zarządzania nimi w celu uzyskania danych dziennika. Dostawcy usług mają dodatkowe zagadnienia.
 
-Istnieją trzy możliwe architektury dla dostawców usług, które dotyczą Log Analytics obszarów roboczych:
+Istnieją trzy możliwe architektury dla dostawców usług dotyczących obszarów roboczych usługi Log Analytics:
 
-### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. dzienniki rozproszone są przechowywane w obszarach roboczych znajdujących się w dzierżawie klienta 
+### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. dzienniki rozproszone są przechowywane w obszarach roboczych znajdujących się w dzierżawie klienta
 
-W tej architekturze obszar roboczy jest wdrażany w dzierżawie klienta, który jest używany dla wszystkich dzienników tego klienta. Administratorzy dostawcy usług uzyskują dostęp do tego obszaru roboczego przy użyciu [Azure Active Directory użytkowników-Gości (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). Administratorzy dostawcy usług będą musieli przełączyć się do katalogu klienta w Azure Portal, aby mogli uzyskać dostęp do tych obszarów roboczych.
+W ramach tej architektury obszar roboczy jest wdrażany w dzierżawie klienta, używany dla wszystkich dzienników z tego klienta.
 
-Zalety tej architektury są następujące:
-* Klient może zarządzać dostępem do dzienników przy użyciu własnego [dostępu opartego na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview).
-* Każdy klient może mieć różne ustawienia dla swojego obszaru roboczego, takie jak przechowywanie danych i ich limit.
-* Izolacja klientów na potrzeby regulacji i zgodności.
-* Opłata za poszczególne obszary robocze zostanie przeniesiona na subskrypcję klienta.
-* Dzienniki mogą być zbierane z wszystkich typów zasobów, a nie tylko na podstawie agenta. Na przykład dzienniki inspekcji platformy Azure.
+Istnieją dwa sposoby, które Administratorzy dostawcy usług mogą uzyskać dostęp do obszaru roboczego Log Analytics w dzierżawie klienta:
 
-Wady tej architektury są następujące:
-* W przypadku dostawcy usług trudniejsze jest zarządzanie dużą liczbą dzierżawców klientów jednocześnie.
-* Administratorzy dostawcy usług muszą być obsługiwani w katalogu klienta.
-* Dostawca usług nie może analizować danych w swoich klientach.
+- Klient może dodawać poszczególnych użytkowników od usługodawcy jako [Azure Active Directory użytkowników-Gości (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). Administratorzy dostawcy usług będą musieli zalogować się do katalogu każdego klienta w Azure Portal, aby mogli uzyskać dostęp do tych obszarów roboczych. Wymaga to również od klientów zarządzania indywidualnym dostępem każdego administratora dostawcy usług.
+- Aby zapewnić lepszą skalowalność i elastyczność, dostawcy usług mogą korzystać z funkcji [zarządzania zasobami delegowanymi przez platformę Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) [Lighthouse na platformie Azure](https://docs.microsoft.com/azure/lighthouse/overview) w celu uzyskania dostępu do dzierżawy klienta. Ta metoda polega na tym, że Administratorzy dostawcy usług są włączeni do grupy użytkowników usługi Azure AD w dzierżawie dostawcy usług, a podczas procesu dołączania dla każdego klienta zostaje udzielony dostęp do tej grupy. Ci Administratorzy mogą następnie uzyskiwać dostęp do obszarów roboczych każdego klienta z własnej dzierżawy usługodawcy, zamiast logować się do każdej dzierżawy każdego klienta osobno. W ten sposób uzyskuje się dostęp do zasobów obszarów roboczych Log Analytics w ten sposób, co zmniejsza pracę wymaganą przez klienta i może ułatwić zbieranie i analizowanie danych przez wielu klientów zarządzanych przez tego samego dostawcę usług za pośrednictwem takich narzędzi, jak [Azure monitor skoroszytów](https://docs.microsoft.com/azure//azure-monitor/platform/workbooks-overview). Aby uzyskać więcej informacji, zobacz [monitorowanie zasobów klienta w odpowiedniej skali](https://docs.microsoft.com/azure/lighthouse/how-to/monitor-at-scale).
+
+Zalety architektury rozproszonej są następujące:
+
+* Klient może potwierdzić określone poziomy uprawnień za pośrednictwem funkcji [zarządzania zasobami delegowanymi przez platformę Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)lub zarządzać dostępem do dzienników przy użyciu własnego [dostępu opartego na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview).
+* Dzienniki mogą być zbierane z wszystkich typów zasobów, a nie tylko z danych maszyn wirtualnych opartych na agentach. Na przykład dzienników inspekcji platformy Azure.
+* Każdy klient może mieć różne ustawienia dla ich obszarze roboczym, takich jak przechowywanie i danych są takie same.
+* Izolację między klientów przepisów i zgodności.
+* Opłaty za każdy obszar roboczy zostanie wycofana do subskrypcji klienta.
+
+Wady architektury rozproszonej są następujące:
+
+* Centralne wizualizacje i analizowanie danych w dzierżawach klientów dzięki narzędziom, takim jak skoroszyty Azure Monitor mogą powodować wolniejsze środowiska, szczególnie podczas analizowania danych w ponad 50 obszarach roboczych.
+* Jeśli klienci nie zostaną dołączeni do zarządzania zasobami delegowanymi przez platformę Azure, Administratorzy dostawcy usług muszą być obsługiwani w katalogu klienta i trudniejsze jest użycie dostawcy usług w celu jednoczesnego zarządzania dużą liczbą dzierżawców klientów.
 
 ### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. dzienniki centralne są przechowywane w obszarze roboczym znajdującym się w dzierżawie dostawcy usług
 
-W tej architekturze dzienniki nie są przechowywane w dzierżawach klienta, ale tylko w centralnej lokalizacji w ramach subskrypcji dostawcy usług. Agenci zainstalowani na maszynach wirtualnych klienta są skonfigurowani do wysyłania dzienników do tego obszaru roboczego przy użyciu identyfikatora obszaru roboczego i klucza tajnego.
+W tej architekturze dzienniki nie są przechowywane w dzierżawach klienta, ale tylko w centralnej lokalizacji, w ramach jednej subskrypcji do dostawcy usług. Agenci, którzy są instalowane na maszynach wirtualnych klienta są skonfigurowane do wysyłania dzienników do tego obszaru roboczego za pomocą Identyfikatora obszaru roboczego i klucz tajny.
 
-Zalety tej architektury są następujące:
-* Zarządzanie dużą liczbą klientów i integrowanie ich z różnymi systemami zaplecza jest proste.
+Zalety scentralizowanej architektury są następujące:
 
-* Dostawca usług ma pełną własność w odniesieniu do dzienników i różnych artefaktów, takich jak funkcje i zapisane zapytania.
+* To ułatwia zarządzanie dużą liczbą klientów i zintegrowanie ich do różnych systemów zaplecza.
+* Dostawcy usług mają pełne prawa własności w zakresie dzienników oraz różnych artefaktów, takich jak funkcje i zapisane kwerendy.
+* Usługodawcy mogą wykonywać analizy we wszystkich jej klientów.
 
-* Dostawca usług może przeprowadzić analizę we wszystkich swoich klientach.
+Wady centralnej architektury są następujące:
 
-Wady tej architektury są następujące:
-* Ta architektura ma zastosowanie tylko do danych maszyn wirtualnych opartych na agencie, ale nie obejmuje źródeł danych PaaS, SaaS i Azure Fabric.
-
-* Po scaleniu z jednym obszarem roboczym może być trudno rozdzielić dane między klientami. Jedyną dobrą metodą jest użycie w pełni kwalifikowanej nazwy domeny (FQDN) komputera lub identyfikatora subskrypcji platformy Azure. 
-
-* Wszystkie dane ze wszystkich klientów będą przechowywane w tym samym regionie z pojedynczym rachunkiem i tymi samymi ustawieniami przechowywania i konfiguracji.
-
-* Usługi Azure Fabric i PaaS Services, takie jak Diagnostyka Azure i dzienniki inspekcji platformy Azure, wymagają, aby obszar roboczy znajdował się w tej samej dzierżawie co zasób, dlatego nie może wysyłać dzienników do centralnego obszaru roboczego.
-
-* Wszyscy agenci maszyn wirtualnych wszyscy klienci będą uwierzytelniani w centralnym obszarze roboczym przy użyciu tego samego identyfikatora i klucza obszaru roboczego. Nie ma metody blokowania dzienników od określonego klienta bez zakłócania pracy przez innych klientów.
+* Ta architektura ma zastosowanie tylko do danych opartej o agentów maszyny Wirtualnej, nie zapewnią źródeł danych sieci szkieletowej PaaS i SaaS oraz platformy Azure.
+* Może być trudny do oddzielania danych od klientów, gdy są one scalane w jeden obszar roboczy. Jedynym dobrym metody, w tym celu jest użycie komputera w pełni kwalifikowaną nazwę domeny (FQDN) lub za pośrednictwem subskrypcji platformy Azure identyfikatora. 
+* Wszystkie dane ze wszystkich klientów będą przechowywane w tym samym regionie, z jednym rachunku i te same ustawienia przechowywania i konfiguracji.
+* Sieci szkieletowej platformy Azure i usług PaaS usług, takich jak usługi Azure Diagnostics i dzienników inspekcji platformy Azure wymaga obszar, aby być w tej samej dzierżawie, co zasób, dlatego nie mogą wysyłać dzienniki do obszaru roboczego centralnej.
+* Wszyscy agenci maszyn wirtualnych wszyscy klienci będą uwierzytelniani w centralnym obszarze roboczym przy użyciu tego samego identyfikatora i klucza obszaru roboczego. Nie istnieje metoda blokowania dzienników z określonego klienta bez przerywania pracy innych klientów.
 
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. dzienniki hybrydowe są przechowywane w obszarze roboczym znajdującym się w dzierżawie klienta, a niektóre z nich są ściągane do lokalizacji centralnej.
 
-Trzecia architektura między tymi dwiema opcjami. Jest on oparty na pierwszej architekturze rozproszonej, w której dzienniki są lokalne dla każdego klienta, ale przy użyciu pewnego mechanizmu można utworzyć centralne repozytorium dzienników. Część dzienników jest pobierana do centralnej lokalizacji na potrzeby raportowania i analizy. Ta część może być małą liczbą typów danych lub podsumowaniem działania, na przykład Statystyka dzienna.
+Architektura trzeci łączyć się z dwóch opcji. Jest on oparty na pierwszym architektura rozproszona, gdzie dzienniki są lokalne w poszczególnych klientów, ale tworzenie centralne repozytorium dzienników przy użyciu mechanizmu. Część dzienników jest pobierane do centralnej lokalizacji w celu raportowania i analizy. Ta część może być małą liczbą typów danych lub podsumowanie działań, takich jak statystyki dzienny.
 
 Istnieją dwie opcje implementowania dzienników w centralnej lokalizacji:
 
@@ -85,4 +90,4 @@ Istnieją dwie opcje implementowania dzienników w centralnej lokalizacji:
 
 * Generowanie raportów podsumowujących przy użyciu [Power BI](../../azure-monitor/platform/powerbi.md)
 
-* Przegląd procesu [konfigurowania log Analytics i Power BI do monitorowania wielu klientów programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)
+* Dołączanie klientów do [zarządzania zasobami delegowanymi przez platformę Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).

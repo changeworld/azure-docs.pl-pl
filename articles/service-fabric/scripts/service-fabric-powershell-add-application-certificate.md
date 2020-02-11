@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 069ad55136101c0b57c9faee95578f816b5efef4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 61c22a3949008d61bbe3472f601d2d0dd597a0ac
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614880"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114345"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Dodawanie certyfikatu aplikacji do klastra usługi Service Fabric
 
@@ -63,7 +63,7 @@ $content = [System.Convert]::ToBase64String($contentbytes)
 $SecretValue = ConvertTo-SecureString -String $content -AsPlainText -Force
 
 # Upload the certificate to the key vault as a secret
-$Secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $CertName -SecretValue $SecretValue
+$Secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $CertName -SecretValue $SecretValue
 
 ```
 

@@ -1,20 +1,18 @@
 ---
-title: Używanie portalu do obsługi powiadomień dotyczących maszyn wirtualnych platformy Azure
+title: Używanie portalu do powiadomień o konserwacji
 description: Wyświetlaj powiadomienia dotyczące konserwacji maszyn wirtualnych działających na platformie Azure i uruchamiaj samoobsługową konserwację przy użyciu portalu.
-services: virtual-machines
 author: shants123
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 759fbc5ba3c5eaa78fec1045bcf41969108d39b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535823"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115743"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Obsługa powiadomień dotyczących planowanej konserwacji przy użyciu portalu
 
@@ -24,7 +22,7 @@ Po zaplanowaniu [planowanej fazy konserwacji](maintenance-notifications.md) moż
 
 Możesz użyć Azure Portal i wyszukać maszyny wirtualne zaplanowane do konserwacji.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 2. W lewym okienku nawigacji kliknij pozycję **Virtual Machines**.
 

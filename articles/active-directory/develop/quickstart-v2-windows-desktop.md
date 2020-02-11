@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: be4646631a63a82458a975683f949a2a00398aaf
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 745d7335f70fb082ced16341742e3eb77a34f563
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703239"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120472"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Szybki start: uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji klasycznej w systemie Windows
 
@@ -49,7 +49,7 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 >      - W sekcji **Obsługiwane typy kont** wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft (na przykład Skype, Xbox, Outlook.com)** .
 >      - Wybierz pozycję **Zarejestruj**, aby utworzyć aplikację.
 > 1. Na liście stron dla aplikacji wybierz pozycję **Uwierzytelnianie**.
-> 1. W sekcji **identyfikatory URI przekierowania** | **sugerowane identyfikatory URI przekierowań dla klientów publicznych (Mobile, Desktop)** zaznacz pozycję **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+> 1. W sekcji **identyfikatory URI przekierowania** | **sugerowane identyfikatory URI przekierowań dla klientów publicznych (Mobile, desktop)** Użyj **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > 1. Wybierz pozycję **Zapisz**.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -80,7 +80,7 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 > > Ten przewodnik Szybki Start obsługuje Enter_the_Supported_Account_Info_Here.
 
 > [!div renderon="docs"]
-> Miejsce:
+> Gdzie:
 > - `Enter_the_Application_Id_here` jest **identyfikatorem aplikacji (klienta)** dla zarejestrowanej aplikacji.
 > - `Enter_the_Tenant_Info_Here` to wartość ustawiana na jedną z następujących opcji:
 >   - Jeśli aplikacja obsługuje tryb **Konta w tym katalogu organizacyjnym**, zastąp tę wartość za pomocą wartości **Identyfikator dzierżawy** lub **Nazwa dzierżawy** (na przykład contoso.microsoft.com)
@@ -113,11 +113,12 @@ Następnie zainicjuj bibliotekę MSAL, używając następującego kodu:
 ```csharp
 public static IPublicClientApplication PublicClientApp;
 PublicClientApplicationBuilder.Create(ClientId)
+                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
                 .WithAuthority(AzureCloudInstance.AzurePublic, Tenant)
                 .Build();
 ```
 
-> |Miejsce: ||
+> |Gdzie: ||
 > |---------|---------|
 > | `ClientId` | Jest **identyfikatorem aplikacji (klienta)** dla aplikacji zarejestrowanej w witrynie Azure Portal. Tę wartość można znaleźć na stronie **Przegląd** aplikacji w witrynie Azure Portal. |
 
@@ -139,7 +140,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Miejsce:||
+> |Gdzie:||
 > |---------|---------|
 > | `_scopes` | Zawiera żądane zakresy, takie jak `{ "user.read" }` dla programu Microsoft Graph lub `{ "api://<Application ID>/access_as_user" }` dla niestandardowych interfejsów internetowych API. |
 
@@ -154,7 +155,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Miejsce: ||
+> |Gdzie: ||
 > |---------|---------|
 > | `scopes` | Zawiera żądane zakresy, takie jak `{ "user.read" }` dla programu Microsoft Graph lub `{ "api://<Application ID>/access_as_user" }` dla niestandardowych interfejsów internetowych API. |
 > | `firstAccount` | Określa pierwszego użytkownika w pamięci podręcznej (biblioteka MSAL obsługuje wielu użytkowników w jednej aplikacji). |

@@ -2,13 +2,13 @@
 title: Wdrażanie zasobów w grupie zarządzania
 description: Opisuje sposób wdrażania zasobów w zakresie grupy zarządzania w szablonie Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/10/2020
+ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121917"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117039"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Tworzenie zasobów na poziomie grupy zarządzania
 
@@ -63,8 +63,20 @@ W przypadku wdrożeń grup zarządzania istnieją pewne ważne zagadnienia dotyc
 
 * Funkcja [przesourceing ()](template-functions-resource.md#resourcegroup) **nie** jest obsługiwana.
 * Funkcja [Subscription ()](template-functions-resource.md#subscription) **nie** jest obsługiwana.
-* Funkcja [ResourceID ()](template-functions-resource.md#resourceid) jest obsługiwana. Służy do uzyskiwania identyfikatora zasobu dla zasobów używanych w wdrożeniach na poziomie grupy zarządzania. Na przykład Pobierz identyfikator zasobu dla definicji zasad z `resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))`. Zwraca identyfikator zasobu w formacie `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`.
 * Obsługiwane są funkcje [Reference ()](template-functions-resource.md#reference) i [list ()](template-functions-resource.md#list) .
+* Funkcja [ResourceID ()](template-functions-resource.md#resourceid) jest obsługiwana. Służy do uzyskiwania identyfikatora zasobu dla zasobów używanych w wdrożeniach na poziomie grupy zarządzania. Nie należy podawać wartości parametru grupy zasobów.
+
+  Aby na przykład uzyskać identyfikator zasobu definicji zasad, należy użyć:
+  
+  ```json
+  resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+  ```
+  
+  Identyfikator zwróconego zasobu ma następujący format:
+  
+  ```json
+  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
 
 ## <a name="create-policies"></a>Tworzenie zasad
 
@@ -101,7 +113,7 @@ Poniższy przykład pokazuje, jak [zdefiniować](../../governance/policy/concept
 }
 ```
 
-### <a name="assign-policy"></a>Przypisz zasady
+### <a name="assign-policy"></a>Przypisywanie zasad
 
 Poniższy przykład przypisuje istniejącą definicję zasad do grupy zarządzania. Jeśli zasady pobierają parametry, podaj je jako obiekt. Jeśli zasady nie przyjmują parametrów, Użyj domyślnego pustego obiektu.
 
@@ -136,9 +148,13 @@ Poniższy przykład przypisuje istniejącą definicję zasad do grupy zarządzan
 }
 ```
 
+## <a name="template-sample"></a>Przykładowy szablon
+
+* Tworzenie grupy zasobów, zasad i przypisania zasad.  Zobacz [tutaj](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
+
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej na temat przypisywania ról, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu usług RBAC i Azure Resource Manager templates](../../role-based-access-control/role-assignments-template.md).
 * Przykład wdrażania ustawień obszaru roboczego dla Azure Security Center można znaleźć w pliku [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
-* Aby dowiedzieć się więcej na temat tworzenia szablonów Azure Resource Manager, zobacz Tworzenie [szablonów](template-syntax.md). 
+* Aby dowiedzieć się więcej na temat tworzenia szablonów Azure Resource Manager, zobacz Tworzenie [szablonów](template-syntax.md).
 * Aby uzyskać listę dostępnych funkcji w szablonie, zobacz [funkcje szablonu](template-functions.md).

@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/05/2020
-ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046034"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121385"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitoruj Azure AD B2C z Azure Monitor
 
@@ -24,9 +24,9 @@ Użyj Azure Monitor, aby kierować dzienniki logowania i [inspekcji](view-audit-
 
 Zdarzenia dziennika można kierować do:
 
-* Konto usługi Azure Storage.
-* Centrum zdarzeń platformy Azure (i integracja z wystąpieniami logiki Splunk i Sumo).
-* Obszar roboczy usługi Azure Log Analytics (do analizowania danych, tworzenia pulpitów nawigacyjnych i alertów dotyczących określonych zdarzeń).
+* Konto usługi Azure [Storage](../storage/blobs/storage-blobs-introduction.md).
+* [Centrum zdarzeń](../event-hubs/event-hubs-about.md) platformy Azure (i integracja z wystąpieniami logiki Splunk i Sumo).
+* [Obszar roboczy log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) (do analizowania danych, tworzenia pulpitów nawigacyjnych i alertów dotyczących określonych zdarzeń).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -42,15 +42,15 @@ Można również użyć [Azure Cloud Shell](https://shell.azure.com), która zaw
 
 Azure AD B2C wykorzystuje [monitorowanie Azure Active Directory](../active-directory/reports-monitoring/overview-monitoring.md). Aby włączyć *Ustawienia diagnostyczne* w Azure Active Directory w dzierżawie Azure AD B2C, należy użyć [delegowanego zarządzania zasobami](../lighthouse/concepts/azure-delegated-resource-management.md).
 
-Użytkownik autoryzuje użytkownika w katalogu Azure AD B2C ( **Dostawca usługi**), aby skonfigurować wystąpienie Azure monitor w ramach dzierżawy, które zawiera subskrypcję platformy Azure ( **klienta**). Aby utworzyć autoryzację, należy wdrożyć szablon [Azure Resource Manager](../azure-resource-manager/index.yml) w dzierżawie usługi Azure AD zawierającym subskrypcję programu. W poniższych sekcjach omówiono proces.
+Użytkownik lub grupa jest autoryzowana w katalogu Azure AD B2C ( **Dostawca usługi**), aby skonfigurować wystąpienie Azure monitor w ramach dzierżawy, które zawiera subskrypcję platformy Azure ( **klienta**). Aby utworzyć autoryzację, należy wdrożyć szablon [Azure Resource Manager](../azure-resource-manager/index.yml) w dzierżawie usługi Azure AD zawierającym subskrypcję programu. W poniższych sekcjach omówiono proces.
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-or-choose-resource-group"></a>Utwórz lub wybierz grupę zasobów
 
-W dzierżawie usługi Azure Active Directory (Azure AD), która zawiera subskrypcję platformy Azure (*nie* katalog zawierający dzierżawę Azure AD B2C), [Utwórz grupę zasobów](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). Wprowadź następujące wartości:
+Jest to grupa zasobów zawierająca docelowe konto usługi Azure Storage, centrum zdarzeń lub Log Analytics obszar roboczy do odbierania danych z Azure Monitor. Podczas wdrażania szablonu Azure Resource Manager należy określić nazwę grupy zasobów.
 
-* **Subskrypcja**: wybierz subskrypcję platformy Azure.
-* **Grupa zasobów**: Wprowadź nazwę grupy zasobów. Na przykład *usługa Azure-AD-B2C-monitor*.
-* **Region**: Wybierz lokalizację platformy Azure. Na przykład *Środkowe stany USA*.
+[Utwórz grupę zasobów](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) lub wybierz istniejącą w dzierżawie usługi Azure Active Directory (Azure AD), która zawiera subskrypcję platformy Azure, a *nie* katalog zawierający dzierżawę Azure AD B2C.
+
+Ten przykład używa grupy zasobów o nazwie *Azure-AD-B2C-monitor* w regionie *środkowe stany USA* .
 
 ## <a name="delegate-resource-management"></a>Delegowanie zarządzania zasobami
 
@@ -209,7 +209,17 @@ Po wdrożeniu szablonu i poczekaj kilka minut na ukończenie projekcji zasobów 
 
 ## <a name="configure-diagnostic-settings"></a>Konfigurowanie ustawień diagnostycznych
 
-Po przeprowadzeniu delegowania zarządzania zasobami i wybraniu subskrypcji możesz [utworzyć ustawienia diagnostyczne](../active-directory/reports-monitoring/overview-monitoring.md) w Azure Portal.
+Ustawienia diagnostyczne definiują, gdzie należy wysyłać dzienniki i metryki dla zasobu. Możliwe miejsca docelowe to:
+
+- [Konto usługi Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md)
+- Rozwiązania [centrów zdarzeń](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+- [Obszar roboczy usługi Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md)
+
+Jeśli jeszcze tego nie zrobiono, Utwórz wystąpienie wybranego typu docelowego w grupie zasobów określonej w [szablonie Azure Resource Manager](#create-an-azure-resource-manager-template).
+
+### <a name="create-diagnostic-settings"></a>Tworzenie ustawień diagnostycznych
+
+Możesz przystąpić do [tworzenia ustawień diagnostycznych](../active-directory/reports-monitoring/overview-monitoring.md) w Azure Portal.
 
 Aby skonfigurować ustawienia monitorowania dla Azure AD B2C dzienników aktywności:
 
@@ -217,12 +227,24 @@ Aby skonfigurować ustawienia monitorowania dla Azure AD B2C dzienników aktywno
 1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. Wybierz **Azure Active Directory**
 1. W obszarze **monitorowanie**wybierz pozycję **Ustawienia diagnostyczne**.
-1. Wybierz pozycję **+ Dodaj ustawienie diagnostyczne**.
+1. Jeśli w zasobie istnieją istniejące ustawienia, zostanie wyświetlona lista ustawień, które zostały już skonfigurowane. Wybierz opcję **Dodaj ustawienie diagnostyczne** , aby dodać nowe ustawienie, lub **Edytuj** ustawienie, aby edytować istniejące. Każde ustawienie nie może mieć więcej niż jednego z typów docelowych...
 
     ![Okienko ustawień diagnostycznych w Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
+1. Nadaj ustawieniu nazwę, jeśli jeszcze jej nie ma.
+1. Zaznacz pole wyboru dla każdego miejsca docelowego, aby wysłać dzienniki. Wybierz pozycję **Konfiguruj** , aby określić swoje ustawienia zgodnie z opisem w poniższej tabeli.
+
+    | Ustawienie | Opis |
+    |:---|:---|
+    | Archiwizowanie na koncie magazynu | Nazwa konta magazynu. |
+    | Przesyłanie strumieniowe do centrum zdarzeń | Przestrzeń nazw, w której jest tworzony centrum zdarzeń (jeśli jest to pierwsze dzienniki przesyłania strumieniowego) lub przesyłane strumieniowo do programu (jeśli istnieją już zasoby, które są przesyłane strumieniowo do tej przestrzeni nazw).
+    | Wysyłanie do usługi Log Analytics | Nazwa obszaru roboczego. |
+
+1. Wybierz pozycję **AuditLogs** i **SignInLogs**.
+1. Wybierz pozycję **Zapisz**.
+
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat dodawania i konfigurowania ustawień diagnostycznych w Azure Monitor, zobacz ten samouczek w dokumentacji Azure Monitor:
+Aby uzyskać więcej informacji na temat dodawania i konfigurowania ustawień diagnostycznych w Azure Monitor, zobacz [Samouczek: zbieranie i analizowanie dzienników zasobów z zasobów platformy Azure](../azure-monitor/insights/monitor-azure-resource.md).
 
-[Samouczek: zbieranie i analizowanie dzienników zasobów z zasobów platformy Azure](/azure-monitor/learn/tutorial-resource-logs.md)
+Aby uzyskać informacje o przesyłaniu strumieniowym dzienników usługi Azure AD do centrum zdarzeń, zobacz [Samouczek: przesyłanie strumieniowe dzienników Azure Active Directory do centrum zdarzeń platformy Azure](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).

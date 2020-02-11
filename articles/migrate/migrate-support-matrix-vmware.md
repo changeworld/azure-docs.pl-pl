@@ -3,12 +3,12 @@ title: Obsługa oceny VMware w Azure Migrate
 description: Dowiedz się więcej o obsłudze oceny VMware w Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1b3e81653ba934b209755391f08e60ef603e645a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086781"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121326"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Macierz obsługi dla oceny oprogramowania VMware 
 
@@ -42,7 +42,7 @@ Oprócz odnajdywania maszyn Azure Migrate: Ocena serwera może wykrywać aplikac
 **System operacyjny maszyny** | Wszystkie wersje systemów Windows i Linux.
 **poświadczenia vCenter** | Konto vCenter Server z dostępem tylko do odczytu i uprawnienia do Virtual Machines > operacji gościa.
 **Poświadczenia maszyny wirtualnej** | Obecnie obsługuje użycie jednego poświadczenia dla wszystkich serwerów z systemem Windows i jedno poświadczenie dla wszystkich serwerów z systemem Linux.<br/><br/> Tworzysz konto użytkownika-gościa dla maszyn wirtualnych z systemem Windows oraz normalne/normalne konto użytkownika (dostęp sudo) dla wszystkich maszyn wirtualnych z systemem Linux.
-**Narzędzia VMware** | Narzędzia VMware muszą być zainstalowane i uruchomione na maszynach wirtualnych, które mają zostać odnajdywane.
+**Narzędzia VMware** | Narzędzia VMware muszą być zainstalowane i uruchomione na maszynach wirtualnych, które mają zostać odnajdywane. <br/> Jeśli wersja narzędzi VMware jest z zakresu od 9,10 do 10.2.0, upewnij się, że została ona uaktualniona do ponad 10.2.0.
 **Dostęp do portu** | Na hostach ESXi z uruchomionymi maszynami wirtualnymi urządzenie Azure Migrate musi mieć możliwość nawiązania połączenia z portem TCP 443.
 **Limity** | W przypadku odnajdywania aplikacji można odkryć do 10000 na urządzenie. 
 

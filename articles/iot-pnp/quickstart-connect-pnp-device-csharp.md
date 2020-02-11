@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b86f58a1b6b9e3a952861dbe7dbeef4dfe06a644
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964839"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121020"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Szybki Start: łączenie przykładowej aplikacji urządzenia IoT Plug and Play w wersji zapoznawczej do IoT Hub (C#)
 
@@ -25,7 +25,7 @@ W tym przewodniku szybki start przedstawiono sposób tworzenia przykładowej apl
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki Start, musisz zainstalować platformę .NET Core 2,2 na swoim komputerze deweloperskim. Tę wersję zestaw .NET Core SDK można pobrać z wielu platform [pobrać z programu .NET Core 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2).
+Aby ukończyć ten przewodnik Szybki Start, musisz zainstalować platformę .NET Core 3,0 na swoim komputerze deweloperskim. Tę wersję zestaw .NET Core SDK można pobrać z wielu platform [pobrać z programu .NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0).
 
 Możesz sprawdzić wersję programu .NET, która znajduje się na komputerze deweloperskim, uruchamiając następujące polecenie w lokalnym oknie terminalu: 
 
@@ -72,7 +72,7 @@ Sklonowany przykładowy kod służy do kompilowania aplikacji symulowanej na urz
 1. Uruchom przykładową aplikację, aby symulować urządzenie Plug and Play IoT, które wysyła telemetrię do centrum IoT. W tym samym oknie terminalu, aby skompilować wymagane pakiety i uruchomić przykładową aplikację, użyj następującego polecenia:
 
     ```cmd\sh
-        dotnet run
+    dotnet run --framework=netcoreapp3.0
     ```
 
 Zobaczysz komunikat informujący o tym, że urządzenie zostało pomyślnie zarejestrowane i oczekuje na aktualizacje z chmury. Oznacza to, że urządzenie jest teraz gotowe do odbierania poleceń i aktualizacji właściwości i rozpoczęło wysyłanie danych telemetrycznych do centrum. Kontynuuj działanie przykładu w przypadku wykonywania następnych kroków.

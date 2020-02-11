@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 1/05/2020
-ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 2/10/2020
+ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768658"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116192"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
@@ -242,7 +242,7 @@ Ze względu na to, że każde wystąpienie jest izolowane w własnej sieci wirtu
 Można utworzyć grupę trybu failover między wystąpieniami zarządzanymi w dwóch różnych subskrypcjach. Korzystając z interfejsu API programu PowerShell, można to zrobić, określając parametr `PartnerSubscriptionId` wystąpienia pomocniczego. W przypadku korzystania z interfejsu API REST każdy identyfikator wystąpienia uwzględniony w parametrze `properties.managedInstancePairs` może mieć własną wartość identyfikatora subskrypcji.
   
 > [!IMPORTANT]
-> Witryna Azure Portal nie obsługuje grup trybu failover w różnych subskrypcjach.
+> Azure Portal nie obsługuje tworzenia grup trybu failover w różnych subskrypcjach. Ponadto w przypadku istniejących grup trybu failover w różnych subskrypcjach i/lub grupach zasobów nie można zainicjować trybu failover ręcznie za pośrednictwem portalu z wystąpienia podstawowego. Zamiast tego zainicjuj go z wystąpienia geograficznego.
 
 ### <a name="managing-failover-to-secondary-instance"></a>Zarządzanie przejściem do trybu failover do wystąpienia dodatkowego
 
@@ -390,7 +390,7 @@ Należy pamiętać o następujących ograniczeniach:
 
 Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geograficznej mogą być również zarządzane programowo przy użyciu Azure PowerShell i interfejsu API REST. W poniższych tabelach opisano zestaw dostępnych poleceń. Aktywna replikacja geograficzna obejmuje zestaw Azure Resource Manager interfejsów API do zarządzania, w tym [Azure SQL Database interfejsu API REST](https://docs.microsoft.com/rest/api/sql/) i [poleceń cmdlet Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). Te interfejsy API wymagają użycia grup zasobów i obsługują zabezpieczenia oparte na rolach (RBAC). Aby uzyskać więcej informacji na temat implementowania ról dostępu, zobacz [Access Control oparte na rolach platformy Azure](../role-based-access-control/overview.md).
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Zarządzanie trybem failover bazy danych SQL przy użyciu pojedynczych baz danych i pul elastycznych
 
@@ -400,7 +400,7 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Usuwa grupę trybu failover z serwera |
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Pobiera konfigurację grupy trybu failover |
 | [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Modyfikuje konfigurację grupy trybu failover |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Wyzwala tryb failover grupy trybu failover na serwerze pomocniczym |
+| [Przełącznik-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Wyzwala tryb failover grupy trybu failover na serwerze pomocniczym |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Dodaje co najmniej jedną bazę danych do grupy trybu failover|
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Zarządzanie grupami trybu failover bazy danych SQL z wystąpieniami zarządzanymi
@@ -442,7 +442,7 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>Interfejs API REST: Zarządzanie grupami trybu failover usługi SQL Database przy użyciu jednej i puli baz danych
 
-| API | Opis |
+| Interfejs API | Opis |
 | --- | --- |
 | [Utwórz lub Zaktualizuj grupę trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Tworzy lub aktualizuje grupę trybu failover |
 | [Usuń grupę trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Usuwa grupę trybu failover z serwera |
@@ -454,7 +454,7 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>Interfejs API REST: Zarządzanie grupami trybu failover z wystąpieniami zarządzanymi
 
-| API | Opis |
+| Interfejs API | Opis |
 | --- | --- |
 | [Utwórz lub Zaktualizuj grupę trybu failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Tworzy lub aktualizuje konfigurację grupy trybu failover |
 | [Usuń grupę trybu failover](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Usuwa grupę trybu failover z wystąpienia |

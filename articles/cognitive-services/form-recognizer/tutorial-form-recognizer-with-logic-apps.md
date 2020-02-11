@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773078"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118270"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Samouczek: używanie aparatu rozpoznawania formularzy z Azure Logic Apps do analizowania faktur
 
@@ -34,10 +34,6 @@ Oto, co obejmuje ten samouczek:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/).
-
-## <a name="request-access-for-form-recognizer"></a>Żądaj dostępu do aparatu rozpoznawania formularzy
-
-Aparat rozpoznawania formularzy jest dostępny w wersji zapoznawczej o ograniczonym dostępie. Aby uzyskać dostęp do wersji zapoznawczej, Wypełnij i Prześlij formularz [żądania dostępu do aparatu rozpoznawania formularza](https://aka.ms/FormRecognizerRequestAccess) . Gdy żądanie zostanie zatwierdzone przez zespół usługi Azure Cognitive Services, otrzymasz wiadomość e-mail z instrukcjami dotyczącymi uzyskiwania dostępu do usługi.
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>Zrozumienie faktury do analizy
 
@@ -85,7 +81,7 @@ Wykonaj następujące kroki, aby skonfigurować przepływ pracy.
    |----------|-------|-------------|
    | **Nazwa** | <> *logiki — nazwa aplikacji* | Nazwa aplikacji logiki, która może zawierać tylko litery, cyfry, łączniki (`-`), podkreślenia (`_`), nawiasów (`(`, `)`) i okresów (`.`). W tym przykładzie zastosowano "My-First-Logic-App". |
    | **Subskrypcja** | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |
-   | **Grupa zasobów** | <*Azure-resource-group-name*> | Nazwa [grupy zasobów platformy Azure](./../../azure-resource-manager/management/overview.md) używanej do organizowania powiązanych zasobów. W tym przykładzie jest stosowana wartość "My-First-LA-RG". |
+   | **Grupa zasobów** | <*Azure-Resource-Group-name*> | Nazwa [grupy zasobów platformy Azure](./../../azure-resource-manager/management/overview.md) używanej do organizowania powiązanych zasobów. W tym przykładzie jest stosowana wartość "My-First-LA-RG". |
    | **Lokalizacja** | <> *platformy Azure* | Region, w którym są przechowywane informacje o aplikacji logiki. W tym przykładzie zastosowano "zachodnie stany USA". |
    | **Log Analytics** | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. |
    ||||
@@ -131,7 +127,7 @@ Aby można było analizować faktury przy użyciu usługi rozpoznawania formular
     > [!div class="mx-imgBorder"]
     > ![nazwę połączenia dla aparatu rozpoznawania formularzy](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    Kliknij pozycję **Utwórz**.
+    Kliknij przycisk **Utwórz**.
 
 1. W oknie dialogowym **model uczenia** w polu **Źródło**wprowadź adres URL kontenera, do którego zostały przekazane przykładowe dane.
 
@@ -175,7 +171,7 @@ W tej sekcji skonfigurujesz aplikację logiki, aby wyodrębnić informacje z tab
     > [!div class="mx-imgBorder"]
     > ![Wyodrębnij informacje z tabeli z faktury](media/tutorial-form-recognizer-with-logic-apps/select-tables.png)
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 ## <a name="test-your-logic-app"></a>Testowanie aplikacji logiki
 

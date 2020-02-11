@@ -2,13 +2,13 @@
 title: Wdrażanie zasobów w ramach subskrypcji
 description: Opisuje sposób tworzenia grupy zasobów w szablonie Azure Resource Manager. Przedstawiono w nim również sposób wdrażania zasobów w zakresie subskrypcji platformy Azure.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: b11668466fe3954dc5bc90435d5dfd016ca9791c
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 02/10/2020
+ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086720"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120615"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Tworzenie grup zasobów i zasobów na poziomie subskrypcji
 
@@ -86,8 +86,22 @@ Dla każdej nazwy wdrożenia lokalizacja jest niezmienna. Nie można utworzyć w
 W przypadku wdrożeń na poziomie subskrypcji istnieją pewne ważne zagadnienia dotyczące korzystania z funkcji szablonu:
 
 * Funkcja [przesourceing ()](template-functions-resource.md#resourcegroup) **nie** jest obsługiwana.
-* Funkcja [ResourceID ()](template-functions-resource.md#resourceid) jest obsługiwana. Służy do uzyskiwania identyfikatora zasobu dla zasobów używanych w ramach wdrożeń na poziomie subskrypcji. Na przykład Pobierz identyfikator zasobu dla definicji zasad z `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`. Można też użyć funkcji [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) w celu pobrania identyfikatora zasobu dla zasobu poziomu subskrypcji.
 * Obsługiwane są funkcje [Reference ()](template-functions-resource.md#reference) i [list ()](template-functions-resource.md#list) .
+* Funkcja [ResourceID ()](template-functions-resource.md#resourceid) jest obsługiwana. Służy do uzyskiwania identyfikatora zasobu dla zasobów używanych w ramach wdrożeń na poziomie subskrypcji. Nie należy podawać wartości parametru grupy zasobów.
+
+  Aby na przykład uzyskać identyfikator zasobu definicji zasad, należy użyć:
+  
+  ```json
+  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  ```
+  
+  Identyfikator zwróconego zasobu ma następujący format:
+
+  ```json
+  /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
+
+  Można też użyć funkcji [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) w celu pobrania identyfikatora zasobu dla zasobu poziomu subskrypcji.
 
 ## <a name="create-resource-groups"></a>Tworzenie grup zasobów
 
@@ -98,7 +112,7 @@ Poniższy szablon tworzy pustą grupę zasobów.
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"
@@ -126,7 +140,7 @@ Użyj [kopiowania elementu](create-multiple-instances.md) z grupami zasobów, ab
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgNamePrefix": {
       "type": "string"
@@ -167,7 +181,7 @@ Poniższy przykład tworzy grupę zasobów i wdraża konto magazynu w grupie zas
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"

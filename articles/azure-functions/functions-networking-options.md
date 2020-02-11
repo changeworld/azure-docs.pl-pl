@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7b47e7b0672716141f62e3f7df4b0d3ed95c663d
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846452"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114300"
 ---
 # <a name="azure-functions-networking-options"></a>Opcje sieci Azure Functions
 
@@ -111,7 +111,7 @@ Aby zapewnić wyższy poziom zabezpieczeń, można ograniczyć liczbę usług pl
 
 ### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Ograniczanie konta magazynu do sieci wirtualnej
 
-Podczas tworzenia aplikacji funkcji należy utworzyć konto usługi Azure Storage ogólnego przeznaczenia lub połączyć się z nim, które obsługuje magazyn obiektów blob, kolejek i tabel. Na tym koncie nie można obecnie używać żadnych ograniczeń sieci wirtualnej. W przypadku skonfigurowania punktu końcowego usługi sieci wirtualnej na koncie magazynu używanym przez aplikację funkcji, która spowoduje przerwanie działania aplikacji.
+Podczas tworzenia aplikacji funkcji należy utworzyć konto usługi Azure Storage ogólnego przeznaczenia lub połączyć się z nim, które obsługuje magazyn obiektów blob, kolejek i tabel. Na tym koncie nie można obecnie używać żadnych ograniczeń sieci wirtualnej. W przypadku skonfigurowania punktu końcowego usługi sieci wirtualnej na koncie magazynu używanym przez aplikację funkcji, która spowoduje przerwanie działania aplikacji. Ta funkcja jest obecnie dostępna przy użyciu planu Premium i integracji sieci wirtualnej.
 
 [Dowiedz się więcej o wymaganiach dotyczących kont magazynu.](./functions-create-function-app-portal.md#storage-account-requirements)
 
@@ -141,7 +141,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Wyzwalacze sieci wirtualnej są obsługiwane w wersji 2. x i powyżej środowiska uruchomieniowego funkcji. Obsługiwane są następujące typy wyzwalaczy inne niż HTTP.
 
-| Rozszerzenie | Wersja minimalna |
+| Wewnętrzny | Wersja minimalna |
 |-----------|---------| 
 |[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 lub nowszy |
 |[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 lub nowszy|
@@ -158,7 +158,7 @@ Gdy aplikacja funkcji działa w planie App Service lub App Service Environment, 
 
 Załóżmy na przykład, że chcesz skonfigurować Azure Cosmos DB, aby akceptować tylko ruch z sieci wirtualnej. W takim przypadku należy wdrożyć aplikację funkcji w planie App Service, która zapewnia integrację sieci wirtualnej z tą siecią wirtualną. Umożliwia to wyzwolenie funkcji przez ten zasób Azure Cosmos DB. 
 
-## <a name="hybrid-connections"></a>Hybrydowe
+## <a name="hybrid-connections"></a>Połączenia hybrydowe
 
 [Połączenia hybrydowe](../service-bus-relay/relay-hybrid-connections-protocol.md) to funkcja Azure Relay, z której można korzystać w celu uzyskania dostępu do zasobów aplikacji w innych sieciach. Zapewnia dostęp z aplikacji do punktu końcowego aplikacji. Nie można używać go do uzyskiwania dostępu do aplikacji. Połączenia hybrydowe jest dostępny dla funkcji działających w systemie Windows we wszystkich, ale w planie zużycia.
 

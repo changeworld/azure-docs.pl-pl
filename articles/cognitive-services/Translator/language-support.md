@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ec8d389c99ad96e59bf49d4345855fa44d6c7aa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902002"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118814"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejs API tłumaczenia tekstu w usłudze Translator
 
@@ -42,81 +42,81 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 
 |Język|  Kod języka|  INTERFEJS API V3|
 |:-----|:-----:|:-----|
-|Afrikaans| `af`|   Neuronowa|
-|Arabski|    `ar`    |   Neuronowa|
-|Bengalski|    `bn`    |   Neuronowa|
-|Bośniacki (łaciński)|   `bs`    |   Neuronowa|
-|Bułgarski| `bg`    |   Neuronowa|
+|Afrikaans| `af`|   Neuronowych|
+|Arabski|    `ar`    |   Neuronowych|
+|Bengalski|    `bn`    |   Neuronowych|
+|Bośniacki (łaciński)|   `bs`    |   Neuronowych|
+|Bułgarski| `bg`    |   Neuronowych|
 |Kantoński (tradycyjny)|   `yue`|  Statystyczn|
 |Kataloński|   `ca`    |   Statystyczn|
-|Chiński uproszczony|    `zh-Hans`|Neuronowa|
-|Chiński tradycyjny|   `zh-Hant`       |Neuronowa|
-|Chorwacki|  `hr`    |Neuronowa|
-|Czeski| `cs`    |   Neuronowa|
-|Duński|    `da`        |Neuronowa|
-|Holenderski| `nl`|   Neuronowa|
-|Polski|   `en`    |   Neuronowa|
-|Estoński|  `et`    |   Neuronowa|
+|Chiński uproszczony|    `zh-Hans`|Neuronowych|
+|Chiński tradycyjny|   `zh-Hant`       |Neuronowych|
+|Chorwacki|  `hr`    |Neuronowych|
+|Czeski| `cs`    |   Neuronowych|
+|Duński|    `da`        |Neuronowych|
+|Holenderski| `nl`|   Neuronowych|
+|Polski|   `en`    |   Neuronowych|
+|Estoński|  `et`    |   Neuronowych|
 |Fidżi|    `fj`    |   Statystyczn|
 |Filipino|  `fil`   |   Statystyczn|
-|Fiński|   `fi`    |   Neuronowa|
-|Francuski|    `fr`    |   Neuronowa|
-|Niemiecki|    `de`    |   Neuronowa|
-|Grecki| `el`    |   Neuronowa|
+|Fiński|   `fi`    |   Neuronowych|
+|Francuski|    `fr`    |   Neuronowych|
+|Niemiecki|    `de`    |   Neuronowych|
+|Grecki| `el`    |   Neuronowych|
 |Haitański|    `ht`        |Statystyczn|
-|Hebrajski |`he`   |Neuronowa
-|Hindi| `hi`    |   Neuronowa|
+|Hebrajski |`he`   |Neuronowych
+|Hindi| `hi`    |   Neuronowych|
 |Hmong Daw| `mww`   |   Statystyczn|
-|węgierski| `hu`    |   Neuronowa|
-|Islandzki| `is`    |   Neuronowa|
+|Węgierski| `hu`    |   Neuronowych|
+|Islandzki| `is`    |   Neuronowych|
 |Indonezyjski|    `id`    |   Statystyczn|
-|Irlandzki | `ga`| Neuronowa
-|Włoski|   `it`    |   Neuronowa|
-|Japoński|  `ja`    |   Neuronowa|
-|Kannada|`kn`| Neuronowa
+|Irlandzki | `ga`| Neuronowych
+|Włoski|   `it`    |   Neuronowych|
+|Japoński|  `ja`    |   Neuronowych|
+|Kannada|`kn`| Neuronowych
 |Suahili| `sw`    |   Statystyczn|
 |Klingon|   `tlh`   |   Statystyczn|
 |Klingon (plqaD)|   `tlh-Qaak`  |   Statystyczn|
-|Koreański |`ko`   |   Neuronowa|
-|Łotewski|   `lv`    |   Neuronowa|
-|Litewski|    `lt`    |   Neuronowa|
+|Koreański |`ko`   |   Neuronowych|
+|Łotewski|   `lv`    |   Neuronowych|
+|Litewski|    `lt`    |   Neuronowych|
 |Malgaski|  `mg`    |   Statystyczn|
 |Malajski| `ms`        |Statystyczn|
-|Malajalam| `ml` | Neuronowa
+|Malajalam| `ml` | Neuronowych
 |Maltański|   `mt`    |   Statystyczn|
-|Maoryjski| `mi`  | Neuronowa|
-|Norweski| `nb`    |   Neuronowa|
-|Perski|   `fa`    |   Neuronowa|
-|Polski|    `pl`    |   Neuronowa|
-|Portugalski (Brazylia)|   `pt-br` |   Neuronowa|
-|Portugalski (Portugalia)| `pt-pt` | Neuronowa
-|Punjabi|`pa`|Neuronowa
+|Maoryjski| `mi`  | Neuronowych|
+|Norweski| `nb`    |   Neuronowych|
+|Perski|   `fa`    |   Neuronowych|
+|Polski|    `pl`    |   Neuronowych|
+|Portugalski (Brazylia)|   `pt-br` |   Neuronowych|
+|Portugalski (Portugalia)| `pt-pt` | Neuronowych
+|Pendżabski|`pa`|Neuronowych
 |Queretaro Otomi|   `otq`   |   Statystyczn|
-|Rumuński|  `ro`    |   Neuronowa|
-|Rosyjski|   `ru`    |   Neuronowa|
+|Rumuński|  `ro`    |   Neuronowych|
+|Rosyjski|   `ru`    |   Neuronowych|
 |(Samoa)|    `sm`    |   Statystyczn|
 |Serbski (Cyrylica)|    `sr-Cyrl`|  Statystyczn|
 |Serbski (łaciński)|   `sr-Latn`       |Statystyczn|
-|Słowacki|    `sk`    |   Neuronowa|
-|Słoweński| `sl`    |   Neuronowa|
-|Hiszpański|   `es`    |   Neuronowa|
-|Szwedzki|   `sv`    |Neuronowa|
+|Słowacki|    `sk`    |   Neuronowych|
+|Słoweński| `sl`    |   Neuronowych|
+|Hiszpański|   `es`    |   Neuronowych|
+|Szwedzki|   `sv`    |Neuronowych|
 |Tahitian|  `ty`    |Statystyczn|
-|Tamilski| `ta`    |   Neuronowa|
-|Telugu|    `te`    |   Neuronowa|
-|Tajlandzki|  `th`    |   Neuronowa|
+|Tamilski| `ta`    |   Neuronowych|
+|Telugu|    `te`    |   Neuronowych|
+|Tajlandzki|  `th`    |   Neuronowych|
 |Pa'anga|    `to`    |   Statystyczn|
-|Turecki|   `tr`        |Neuronowa|
-|Ukraiński| `uk`    |   Neuronowa|
+|Turecki|   `tr`        |Neuronowych|
+|Ukraiński| `uk`    |   Neuronowych|
 |Urdu|  `ur`    |   Statystyczn|
-|Wietnamski|    `vi`    |   Neuronowa|
-|Walijski| `cy`    |   Neuronowa|
+|Wietnamski|    `vi`    |   Neuronowych|
+|Walijski| `cy`    |   Neuronowych|
 |Yucatec Maya|  `yua`   |   Statystyczn|
 
 > [!NOTE]
 > Kod języka `pt` zostanie domyślnie `pt-br`, portugalski (Brazylia).
 
-## <a name="transliteration"></a>Transliteracja
+## <a name="transliteration"></a>Transliteracji
 
 Metoda transliteracji obsługuje następujące języki. W polu "do/z" <--> "wskazuje, że język można zatransliteracjć z lub do jednego z wymienionych skryptów. "-->" Wskazuje, że język może być zatransliteracji tylko z jednego skryptu do drugiego.
 
@@ -128,7 +128,7 @@ Metoda transliteracji obsługuje następujące języki. W polu "do/z" <--> "wska
 | Chiński uproszczony | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Chiński tradycyjny `Hant`|
 | Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | `Latn` łaciński |
 | Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Chiński uproszczony `Hans` |
-| Gujarati | `gu`  | `Gujr` gudżarati | --> | `Latn` łaciński |
+| Gudżarati | `gu`  | `Gujr` gudżarati | --> | `Latn` łaciński |
 | Hebrajski | `he` | `Hebr` hebrajski | <--> | `Latn` łaciński |
 | Hindi | `hi` | Devanagari `Deva` | <--> | `Latn` łaciński |
 | Japoński | `ja` | `Jpan` japoński | <--> | `Latn` łaciński |
@@ -136,7 +136,7 @@ Metoda transliteracji obsługuje następujące języki. W polu "do/z" <--> "wska
 | Malajalam | `ml` | `Mlym` malajalam | --> | `Latn` łaciński |
 | Marathi | `mr` | Devanagari `Deva` | --> | `Latn` łaciński |
 | Orija | `or` | `Orya` orija | <--> | `Latn` łaciński |
-| Punjabi | `pa` | Gurmukhi `Guru`  | <--> | `Latn` łaciński  |
+| Pendżabski | `pa` | Gurmukhi `Guru`  | <--> | `Latn` łaciński  |
 | Serbski (Cyrylica) | `sr-Cyrl` | `Cyrl` cyrylicy  | --> | `Latn` łaciński |
 | Serbski (łaciński) | `sr-Latn` | `Latn` łaciński | --> | `Cyrl` cyrylicy|
 | Tamilski | `ta` | `Taml` tamilski | --> | `Latn` łaciński |
@@ -169,7 +169,7 @@ Słownik obsługuje następujące języki w języku angielskim lub z niego przy 
 | Hebrajski      | `he`          |
 | Hindi      | `hi`          |
 | Hmong Daw      | `mww`          |
-| węgierski      | `hu`          |
+| Węgierski      | `hu`          |
 | Islandzki    | `is`  |
 | Indonezyjski      | `id`          |
 | Włoski      | `it`          |
@@ -235,7 +235,7 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Grecki      | `el`          |
 | Hebrajski      | `he`          |
 | Hindi      | `hi`          |
-| węgierski      | `hu`          |
+| Węgierski      | `hu`          |
 | Islandzki | `is` |
 | Indonezyjski|   `id`    |
 | Irlandzki | `ga`  |

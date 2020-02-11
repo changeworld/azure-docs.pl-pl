@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 990adf73211e96370fd06f5e322301128321e81f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937292"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121718"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS często zadawane pytania
 
 ## <a name="about-azure-dns"></a>Informacje o Azure DNS
 
-### <a name="what-is-azure-dns"></a>Co to jest usługa System DNS Azure?
+### <a name="what-is-azure-dns"></a>Co to jest system DNS platformy Azure?
 
 System nazw domen (DNS) tłumaczy lub rozpoznaje nazwę witryny sieci Web lub usługi na adres IP. Azure DNS to usługa hostingu dla domen DNS. Zapewnia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
 
@@ -32,17 +32,17 @@ Model rozliczeń Azure DNS jest oparty na liczbie stref DNS hostowanych w Azure 
 
 Aby uzyskać więcej informacji, zobacz [stronę z cennikiem Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
 
-### <a name="what-is-the-sla-for-azure-dns"></a>Jaka jest umowa SLA dla usługi Azure DNS?
+### <a name="what-is-the-sla-for-azure-dns"></a>Co to jest umowa SLA dla Azure DNS?
 
 Platforma Azure gwarantuje, że prawidłowe żądania DNS odbierają odpowiedź od co najmniej jednego Azure DNS nazwy serwera 100% czasu.
 
 Aby uzyskać więcej informacji, zobacz [stronę umów SLA Azure DNS](https://azure.microsoft.com/support/legal/sla/dns).
 
-### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Co to jest strefa DNS? Czy to jest to samo co „domena DNS”? 
+### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Co to jest strefa DNS? Czy jest taka sama jak domena DNS? 
 
 Domena jest unikatową nazwą w systemie nazw domen. Przykładowa domena to contoso.com.
 
-Strefa DNS służy do hostowania rekordów systemu DNS dla określonej domeny. Na przykład domena contoso.com może zawierać kilka rekordów DNS. Rekordy mogą zawierać mail.contoso.com dla serwera poczty i www\.contoso.com dla witryny sieci Web. Te rekordy są hostowane w strefie DNS contoso.com.
+Strefa DNS jest używana do hostowania rekordów DNS dla konkretnej domeny. Na przykład domena contoso.com może zawierać kilka rekordów DNS. Rekordy mogą zawierać mail.contoso.com dla serwera poczty i www\.contoso.com dla witryny sieci Web. Te rekordy są hostowane w strefie DNS contoso.com.
 
 Nazwa domeny jest *tylko nazwą*. Strefa DNS jest zasobem danych zawierającym rekordy DNS dla nazwy domeny. Usługa Azure DNS umożliwia hostowanie strefy DNS i zarządzanie rekordami DNS dla domeny na platformie Azure. Zapewnia również serwerom nazw DNS odpowiedzi na zapytania DNS z Internetu.
 
@@ -50,7 +50,7 @@ Nazwa domeny jest *tylko nazwą*. Strefa DNS jest zasobem danych zawierającym r
 
 Niekoniecznie.
 
-Nie trzeba kupować domeny w celu hostowania strefy DNS w Azure DNS. Strefę DNS można utworzyć w dowolnej chwili bez konieczności posiadania nazwy domeny. Zapytania DNS dla tej strefy są rozwiązywane tylko wtedy, gdy są kierowane do Azure DNS serwerów nazw przypisanych do strefy.
+Nie trzeba kupować domeny w celu hostowania strefy DNS w Azure DNS. Strefę DNS można utworzyć w dowolnym momencie bez właściciela nazwy domeny. Zapytania DNS dla tej strefy są rozwiązywane tylko wtedy, gdy są kierowane do Azure DNS serwerów nazw przypisanych do strefy.
 
 Aby połączyć strefę DNS z globalną hierarchią DNS, należy zakupić nazwę domeny. Następnie zapytania DNS z dowolnego miejsca na świecie znajdą strefę DNS i odpowiadają za pomocą rekordów DNS.
 
@@ -149,7 +149,7 @@ Tak. Azure DNS obsługuje domeny współhostingu z innymi usługami DNS.
 
 Aby skonfigurować współhosting, należy zmodyfikować rekordy NS dla domeny w taki sposób, aby wskazywały serwery nazw obu dostawców. Rekordy serwera nazw (NS) określają, którzy dostawcy odbierają zapytania DNS dla domeny. Te rekordy NS można modyfikować w Azure DNS, w drugim dostawcy i w strefie nadrzędnej. Strefa nadrzędna jest zazwyczaj konfigurowana za pośrednictwem rejestratora nazw domen. Aby uzyskać więcej informacji na temat delegowania usługi DNS, zobacz [delegowanie domeny DNS](dns-domain-delegation.md).
 
-Upewnij się również, że rekordy DNS dla domeny są zsynchronizowane między obydwoma dostawcami DNS. Azure DNS nie obsługuje obecnie transferów stref DNS. Rekordy DNS należy synchronizować przy użyciu [portalu zarządzania Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/az.dns), [zestawu SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md)lub [Narzędzia interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
+Upewnij się również, że rekordy DNS dla domeny są zsynchronizowane między obydwoma dostawcami DNS. Azure DNS nie obsługuje obecnie transferów stref DNS. Rekordy DNS należy synchronizować przy użyciu [portalu zarządzania Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/rest/api/dns/), [zestawu SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md)lub [Narzędzia interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Czy muszę delegować domenę do wszystkich czterech Azure DNS serwerów nazw?
 

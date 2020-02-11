@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 02e9553b9704c96794e0c1113ab3e06458f0f7c8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391736"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123221"
 ---
 Agent Azure File Sync jest regularnie aktualizowany, aby można było dodać nowe funkcje i rozwiązać problemy. Zalecamy skonfigurowanie Microsoft Update do pobierania aktualizacji dla agenta Azure File Sync, gdy są one dostępne.
 
@@ -40,7 +40,7 @@ W poniższych instrukcjach opisano, jak zmienić ustawienia po zakończeniu inst
 Otwórz konsolę programu PowerShell i przejdź do katalogu, w którym zainstalowano agenta synchronizacji, a następnie zaimportuj polecenia cmdlet serwera. Domyślnie będzie to wyglądać następująco:
 ```powershell
 cd 'C:\Program Files\Azure\StorageSyncAgent'
-Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
+Import-Module -Name .\StorageSync.Management.ServerCmdlets.dll
 ```
 
 Można uruchomić `Get-StorageSyncAgentAutoUpdatePolicy`, aby sprawdzić bieżące ustawienie zasad i określić, czy chcesz je zmienić.

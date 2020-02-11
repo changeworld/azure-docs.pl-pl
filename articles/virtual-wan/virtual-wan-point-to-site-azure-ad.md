@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: cad502dc759a4d481f3071a8a27ddeca79fbc18c
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108322"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122034"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Samouczek: Tworzenie połączenia sieci VPN użytkownika przy użyciu wirtualnej sieci WAN platformy Azure
 
@@ -123,7 +123,7 @@ Użyj profilu sieci VPN, aby skonfigurować klientów.
 
 ## <a name="configure-user-vpn-clients"></a>Konfigurowanie klientów VPN użytkowników
 
-Aby nawiązać połączenie, należy pobrać klienta sieci VPN platformy Azure (wersja zapoznawcza) i zaimportować profil klienta sieci VPN, który został pobrany w poprzednich krokach na każdym komputerze, który chce nawiązać połączenie z siecią wirtualną.
+Aby nawiązać połączenie, należy pobrać klienta sieci VPN platformy Azure i zaimportować profil klienta sieci VPN, który został pobrany w poprzednich krokach na każdym komputerze, który chce nawiązać połączenie z siecią wirtualną.
 
 > [!NOTE]
 > Uwierzytelnianie usługi Azure AD jest obsługiwane tylko dla połączeń protokołu OpenVPN®.
@@ -131,7 +131,7 @@ Aby nawiązać połączenie, należy pobrać klienta sieci VPN platformy Azure (
 
 #### <a name="to-download-the-azure-vpn-client"></a>Aby pobrać klienta sieci VPN platformy Azure
 
-Użyj tego [linku](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) , aby pobrać klienta sieci VPN platformy Azure (wersja zapoznawcza).
+Użyj tego [linku](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) , aby pobrać klienta sieci VPN platformy Azure.
 
 #### <a name="import"></a>Aby zaimportować profil klienta
 

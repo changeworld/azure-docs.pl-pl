@@ -8,247 +8,252 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 1bad4ab6320e757ac766776a95b8dbe6ebaa3259
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016429"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122063"
 ---
-# <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Samouczek: Tworzenie aplikacji do monitorowania zużycia wody w IoT Central
+# <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Samouczek: Tworzenie aplikacji do monitorowania zużycia wody przy użyciu usługi Azure IoT Central
 
+W tym samouczku pokazano, jak utworzyć aplikację monitorowania zużycia wody na platformie Azure IoT Central przy użyciu szablonu aplikacji do monitorowania zużycia wody IoT Central platformy Azure.
 
-
-Ten samouczek przedstawia sposób tworzenia aplikacji do monitorowania zużycia wody przez usługę Azure IoT Central przy użyciu szablonu aplikacji do monitorowania zużycia wody IoT Central. 
-
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności: 
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie aplikacji do monitorowania zużycia wody przy użyciu szablonu **monitorowania zużycia wody** IoT Central platformy Azure
-> * Eksplorowanie i dostosowywanie pulpitu nawigacyjnego operatora 
-> * Eksploruj szablon urządzenia
-> * Eksplorowanie symulowanych urządzeń
-> * Eksplorowanie i konfigurowanie reguł
-> * Konfigurowanie zadań
-> * Dostosowywanie oznakowania aplikacji za pomocą Whitelabeling
+> * Użyj szablonu monitorowania zużycia wody IoT Central platformy Azure, aby utworzyć aplikację monitorowania zużycia wody.
+> * Eksploruj i dostosowuj pulpit nawigacyjny operatora.
+> * Eksploruj szablony urządzeń.
+> * Eksploruj symulowane urządzenia.
+> * Eksplorowanie i konfigurowanie reguł.
+> * Konfigurowanie zadań.
+> * Dostosuj znakowanie aplikacji, używając białych etykiet.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
--  Zalecana jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz ją utworzyć na [stronie rejestracji na platformie Azure](https://aka.ms/createazuresubscription).
 
-## <a name="create-water-consumption-monitoring-app-in-iot-central"></a>Tworzenie aplikacji do monitorowania zużycia wody w IoT Central
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz ją utworzyć na [stronie rejestracji na platformie Azure](https://aka.ms/createazuresubscription).
 
-W tej sekcji **Szablon monitorowania zużycia wody** IoT Central platformy Azure służy do tworzenia aplikacji do monitorowania zużycia wody w IoT Central.
+## <a name="create-a-water-consumption-monitoring-app-with-azure-iot-central"></a>Tworzenie aplikacji do monitorowania zużycia wody przy użyciu usługi Azure IoT Central
 
-Aby utworzyć nową aplikację monitorowania zużycia wody w usłudze Azure IoT Central:  
+W tej sekcji Szablon monitorowania zużycia wody IoT Central platformy Azure służy do tworzenia aplikacji do monitorowania zużycia wody w usłudze Azure IoT Central.
+
+Aby utworzyć nową aplikację monitorowania zużycia wody w usłudze Azure IoT Central:
 
 1. Przejdź do witryny sieci Web [strony głównej platformy Azure IoT Central](https://aka.ms/iotcentral) .
 
-    Jeśli masz subskrypcję platformy Azure, zaloguj się przy użyciu poświadczeń, których używasz, aby uzyskać do niej dostęp. w przeciwnym razie zaloguj się przy pomocy konto Microsoft:
+    Jeśli masz subskrypcję platformy Azure, zaloguj się przy użyciu poświadczeń, których używasz, aby uzyskać do niej dostęp. W przeciwnym razie zaloguj się przy użyciu konto Microsoft.
 
     ![Określanie konta organizacji](media/tutorial-waterconsumptionmonitoring/sign-in.png)
 
-2. W lewym okienku kliknij pozycję **kompilacja** , a następnie wybierz pozycję Karta **rządowa** . Na stronie Administracja jest wyświetlana kilka szablonów aplikacji rządowych.
+1. Wybierz pozycję **kompilacja** w okienku po lewej stronie, a następnie wybierz pozycję Karta **rządowa** . Na stronie **Administracja** jest wyświetlana kilka szablonów aplikacji rządowych.
 
    ![Kompiluj szablony aplikacji dla instytucji rządowych](./media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png)
 
-1. Wybierz szablon aplikacja do **monitorowania zużycia wody** . Ten szablon obejmuje przykładowy szablon urządzenia do wykorzystania wody, symulowane urządzenie, pulpit nawigacyjny operatora i wstępnie skonfigurowane reguły monitorowania.    
+1. Wybierz szablon aplikacja do **monitorowania zużycia wody** .
+Ten szablon zawiera przykładowy szablon urządzenia do zużycia wody, symulowane urządzenie, pulpit nawigacyjny operatora i wstępnie skonfigurowane reguły monitorowania.
 
-2. Kliknij pozycję **Utwórz aplikację**. spowoduje to otwarcie formularza tworzenia **nowej aplikacji** z następującymi polami:
-    * **Nazwa aplikacji**: Domyślnie aplikacja używa *monitorowania zużycia wody* oraz unikatowego ciągu identyfikatora, który IoT Central generowany. Opcjonalnie możesz wybrać przyjazną nazwę aplikacji. Nazwę aplikacji można zmienić później.
-    * **Adres URL**: IoT Central automatycznie generuje adres URL na podstawie nazwy aplikacji. Możesz zaktualizować adres URL do swoich potrzeb. Adres URL można zmienić później. 
-    * Jeśli masz subskrypcję platformy Azure, wprowadź swój *katalog, subskrypcję platformy Azure i region*. Jeśli nie masz subskrypcji, możesz włączyć **7-dniową bezpłatną wersję próbną** i uzupełnić wymagane informacje kontaktowe.  
+1. Wybierz pozycję **Utwórz aplikację** , aby otworzyć formularz tworzenia **nowej aplikacji** z następującymi polami:
+    * **Nazwa aplikacji**: Domyślnie aplikacja używa *monitorowania zużycia wody* oraz unikatowego ciągu identyfikatora, który generuje usługa Azure IoT Central. Opcjonalnie możesz wybrać przyjazną nazwę aplikacji. Nazwę aplikacji można zmienić później.
+    * **Adres URL**: usługa Azure IoT Central automatycznie generuje adres URL na podstawie nazwy aplikacji. Możesz zaktualizować adres URL do swoich potrzeb. Możesz również zmienić adres URL później.
+    * Jeśli masz subskrypcję platformy Azure, wprowadź swój **katalog**, **subskrypcję platformy Azure**i informacje o **lokalizacji** . Jeśli nie masz subskrypcji, możesz wybrać opcję **7-dniowa bezpłatna wersja próbna** i uzupełnić wymagane informacje kontaktowe.
 
-    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](../core/quick-deploy-iot-central.md).
+    Aby uzyskać więcej informacji na temat katalogów i subskrypcji, zobacz [Tworzenie aplikacji — szybki start](../core/quick-deploy-iot-central.md).
 
-5. Kliknij przycisk **Utwórz** w dolnej części strony. 
+1. Wybierz pozycję **Utwórz** w dolnej części strony.
 
-    ![Strona Tworzenie aplikacji usługi Azure IoT Central](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
+    ![Strona nowej aplikacji IoT Central platformy Azure](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
 
-    ![Azure IoT Central tworzenie informacji dotyczących rozliczeń aplikacji](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
+    ![Strona informacji dotyczących rozliczeń w usłudze Azure IoT Central](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 
-6. Aplikacja do monitorowania zużycia wody została już utworzona przy użyciu szablonu **monitorowania zużycia wody** w usłudze Azure IoT Central.
+Aplikacja do monitorowania zużycia wody została już utworzona przy użyciu szablonu monitorowania zużycia wody w usłudze Azure IoT Central.
 
-Gratulacje! Ukończono tworzenie aplikacji do monitorowania jakości wody, która zawiera wstępnie skonfigurowane:
-* Przykładowe pulpity nawigacyjne operatorów
-* Przykład wstępnie zdefiniowanego przepływu wody i szablonów urządzeń z zaworem
-* Symulowany przepływ wody i urządzenia przenośne
-* Wstępnie skonfigurowane reguły i zadania
-* Przykładowe oznakowanie przy użyciu białej etykietki 
+Aplikacja do monitorowania zużycia wody jest wstępnie skonfigurowana:
 
-Jest to Twoja aplikacja i możesz ją zmodyfikować w dowolnym momencie. Teraz eksplorujemy aplikację i wprowadzasz pewne dostosowania.  
+* Przykładowe pulpity nawigacyjne operatora.
+* Przykład wstępnie zdefiniowanego przepływu wody i szablonów urządzeń z zaworem.
+* Symulowany przepływ wody i urządzenia przenośne.
+* Zasady i zadania.
+* Przykładowe oznakowanie przy użyciu białych etykiet.
 
-## <a name="explore-and-customize-operator-dashboard"></a>Eksplorowanie i dostosowywanie pulpitu nawigacyjnego operatora 
-Po utworzeniu aplikacji na pulpicie nawigacyjnym przykładowego operatora o nazwie **pulpit nawigacyjny monitorowania zużycia wody Wide World**.
+Jest to Twoja aplikacja i możesz ją zmodyfikować w dowolnym momencie. Teraz eksplorujmy aplikację i wprowadzasz pewne dostosowania.
+
+## <a name="explore-and-customize-the-operator-dashboard"></a>Eksplorowanie i dostosowywanie pulpitu nawigacyjnego operatora
+
+Po utworzeniu aplikacji zostanie otwarty **pulpit nawigacyjny panoramicznego zużycia wody** .
 
    ![Pulpit nawigacyjny monitorowania zużycia wody](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboardfull.png)
 
-Jako Konstruktor można tworzyć i dostosowywać widoki na pulpicie nawigacyjnym dla operatorów. Przed rozpoczęciem dostosowywania skontaktuj się z pulpitem nawigacyjnym. 
+Jako Konstruktor można tworzyć i dostosowywać widoki na pulpicie nawigacyjnym dla operatorów. Przeanalizujmy pulpit nawigacyjny przed próbą dostosowania go.
 
 > [!NOTE]
-> Wszystkie dane wyświetlane na pulpicie nawigacyjnym są oparte na symulowanych danych urządzenia, które zostaną omówione w następnej sekcji. 
+> Wszystkie dane wyświetlane na pulpicie nawigacyjnym są oparte na symulowanych danych urządzenia, które zostaną omówione w następnej sekcji.
   
 Pulpit nawigacyjny składa się z różnych rodzajów kafelków:
 
-* **Kafelek obrazu narzędzia Wide World wodne**: pierwszy kafelek na pulpicie nawigacyjnym to kafelek obrazu fikcyjnej wody "Wide World". Możesz dostosować kafelek i umieścić własny obraz lub usunąć go. 
-
-* **KAFELEK KWW średniego przepływu wody**: kafelek KPI jest skonfigurowany do wyświetlania jako przykład *średniej w ciągu ostatnich 30 minut*. Można dostosować kafelki KPI i ustawić je na inny typ i zakres czasu.
-
-* Następnie ma prawo na kafelkach *poleceń* pulpitu nawigacyjnego, aby **zamknąć zawór**, **zawór otwarty**lub **ustawić położenie zaworu**. Kliknięcie poleceń spowoduje przejście do strony polecenia symulowanego urządzenia. W IoT Central *polecenie* to typ *możliwości urządzenia* , który można eksplorować później w **sekcji szablon urządzenia** w tym samouczku.
-
-*  **Mapa obszaru dystrybucji wody**: mapa używa Azure Maps, którą można skonfigurować bezpośrednio w usłudze Azure IoT Central. Kafelek Mapa Wyświetla lokalizację urządzenia. Spróbuj umieścić kursor na mapie i wypróbuj kontrolki na mapie, takie jak *powiększenie*, *Powiększ* lub *Rozwiń*. 
+* **Kafelek obrazu narzędzia Wide World wodne**: pierwszy kafelek na pulpicie nawigacyjnym to kafelek obrazu fikcyjnej wody w całej sieci. Kafelek można dostosować, wstawiając własny obraz lub usuwając go.
+* **KAFELEK KWW średniego przepływu wody**: kafelek KPI jest skonfigurowany do wyświetlania jako przykład *średniej w ciągu ostatnich 30 minut*. Można dostosować kafelek KPI i ustawić go na inny typ i zakres czasu.
+* **Kafelki poleceń urządzeń**: te kafelki obejmują kafelki **zamknięcia**, **zawór otwarty**i **Ustaw położenie zaworów** . Wybranie poleceń spowoduje przejście do strony polecenia symulowanego urządzenia. Na platformie Azure IoT Central *polecenie* jest typem *możliwości urządzenia* . Omawiane koncepcje zostaną omówione później w sekcji "szablon urządzenia" w tym samouczku.
+* **Mapa obszaru dystrybucji wody**: mapa używa Azure Maps, które można skonfigurować bezpośrednio w usłudze Azure IoT Central. Kafelek Mapa przedstawia lokalizację urządzenia. Umieść kursor nad mapą i wypróbuj kontrolki na mapie, takie jak *Powiększ*, *Powiększ*lub *Rozwiń*.
 
     ![Mapa pulpitu nawigacyjnego monitorowania zużycia wody](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboard-map.png)
 
-* Wykres liniowy **wykresu** liniowego i **warunków środowiska**: można wizualizować jeden lub wiele telemetrii urządzeń, które są kreślone jako wykres liniowy w żądanym zakresie czasu.  
+* Wykres liniowy ( **średnia przepływów** ) i **schemat warunków środowiska**: można wizualizować jeden lub wiele telemetrii urządzeń, które są kreślone jako wykres liniowy w żądanym zakresie czasu.
+* **Średni wykres mapę cieplnąego ciśnienia zaworu**: można wybrać typ wizualizacji mapę cieplną danych telemetrycznych urządzenia, które mają być rozłożone w ramach przedziału czasu z indeksem koloru.
+* **Kafelek resetowania progów alertów**: można dołączyć kafelki zawartości z wezwaniem do działania i osadzić łącze ze stroną akcji. W takim przypadku próg resetowania alertu prowadzi do **zadań**aplikacji, w którym można uruchamiać aktualizacje właściwości urządzenia. Ta opcja zostanie zbadana później w sekcji "Konfigurowanie zadań" w tym samouczku.
+* **Kafelki właściwości**: pulpit nawigacyjny wyświetla **informacje operacyjne zaworu**, **progi alertów przepływu**oraz kafelki **informacji o konserwacji** .
 
-* **Średni wykres mapę cieplnąego naciskania zaworów**: możesz wybrać typ wizualizacji mapę cieplną dane telemetryczne urządzenia, które chcesz przyjrzeć rozkładowi w zakresie czasu z indeksem koloru.
+### <a name="customize-the-dashboard"></a>Dostosowywanie pulpitu nawigacyjnego
 
-* **Kafelek resetowania zawartości progu alertu**: możesz dołączyć wywołanie do kafelków zawartości akcji osadzania linku do strony akcji. W tym przypadku wartość progowa resetowania alertu spowoduje przejście do **zadań** aplikacji, w których można uruchomić aktualizacje właściwości urządzeń, które będziemy omawiać później w sekcji **Konfigurowanie zadań** w tym samouczku.
+Jako Konstruktor można dostosować widoki na pulpicie nawigacyjnym dla operatorów.
 
-* **Kafelki właściwości**: pulpit nawigacyjny wyświetla **informacje operacyjne zaworu**, **progi alertów przepływu**i **Informacje o konserwacji**. 
-
-
-### <a name="customize-dashboard"></a>Dostosowywanie pulpitu nawigacyjnego 
-
-Jako Konstruktor można dostosować widoki na pulpicie nawigacyjnym dla operatorów. Możesz spróbować:
-1. Kliknij pozycję **Edytuj** , aby dostosować **pulpit nawigacyjny monitorowania zużycia**na całym świecie. Możesz dostosować pulpit nawigacyjny, klikając menu **Edycja** . Gdy pulpit nawigacyjny jest w trybie **edycji** , możesz dodać nowe kafelki lub skonfigurować 
+1. Wybierz pozycję **Edytuj** , aby dostosować **pulpit nawigacyjny wykorzystania całego świata**. Możesz dostosować pulpit nawigacyjny, wybierając menu **Edycja** . Gdy pulpit nawigacyjny jest w trybie **edycji** , można dodawać nowe kafelki lub je konfigurować.
 
      ![Edytuj pulpit nawigacyjny](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-edit-dashboard.png)
 
-2. Kliknij pozycję **+ Nowy** , aby utworzyć nowy pulpit nawigacyjny i skonfigurować go od podstaw. Możesz mieć wiele pulpitów nawigacyjnych i można przechodzić między pulpitami nawigacyjnymi z menu Pulpit nawigacyjny. 
+1. Wybierz pozycję **+ Nowy** , aby utworzyć nowy pulpit nawigacyjny i skonfigurować go od podstaw. Możesz mieć wiele pulpitów nawigacyjnych i można przechodzić między pulpitami nawigacyjnymi w menu Pulpit nawigacyjny.
 
-## <a name="explore-device-template"></a>Eksploruj szablon urządzenia
-Szablon urządzenia w usłudze Azure IoT Central definiuje możliwość urządzenia, które może być Telemetria, właściwości lub polecenia. Jako Konstruktor można zdefiniować co najmniej jeden szablon urządzenia w IoT Central, który reprezentuje możliwość nawiązania połączenia. 
- 
+## <a name="explore-the-device-template"></a>Eksplorowanie szablonu urządzenia
 
-Aplikacja do **monitorowania zużycia wody** obejmuje dwa szablony urządzeń referencyjnych przedstawiające *Miernik przepływu* *i urządzenie przenośne* . 
+Szablon urządzenia w usłudze Azure IoT Central definiuje możliwość urządzenia, które może być Telemetria, właściwości lub polecenia. Jako Konstruktor można zdefiniować co najmniej jeden szablon urządzenia w usłudze Azure IoT Central, który reprezentuje możliwość łączenia urządzeń.
+
+Aplikacja do monitorowania zużycia wody obejmuje dwa szablony urządzeń referencyjnych, które reprezentują *Miernik przepływu* *i urządzenie przenośne* .
 
 Aby wyświetlić szablon urządzenia:
 
-1. Kliknij pozycję **Szablony urządzeń** w lewym okienku nawigacji aplikacji w IoT Central. 
-    Na liście szablony urządzeń będą widoczne dwa **mierniki przepływu** szablonów urządzeń i **zawory inteligentne**
+1. Wybierz pozycję **Szablony urządzeń** w lewym okienku aplikacji na platformie Azure IoT Central. Na liście **Szablony urządzeń** zostaną wyświetlone dwa szablony urządzeń, **zawory inteligentne** i **Miernik przepływu**.
 
    ![Szablon urządzenia](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 
-2. Kliknij szablon urządzenia **miernika przepływu** i zapoznaj się z możliwościami urządzenia 
+1. Wybierz szablon urządzenia **miernika przepływu** i zapoznaj się z możliwościami urządzenia.
 
      ![Licznik przepływu szablonu urządzenia](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-flowmeter.png)
 
-### <a name="customizing-the-device-template"></a>Dostosowywanie szablonu urządzenia
+### <a name="customize-the-device-template"></a>Dostosowywanie szablonu urządzenia
 
-Spróbuj dostosować następujące elementy:
-1. Przejdź do **dostosowywania** z menu szablonu urządzenia
-2. Znajdź `Temperature` typ telemetrii
-3. Zaktualizuj **nazwę wyświetlaną** `Temperature` do `Reported temperature`
-4. Zaktualizuj jednostkę miary lub ustaw wartość *minimalną* oraz *wartość maksymalną* .
-5. **Zapisz** wszystkie zmiany 
+Aby dostosować szablon urządzenia:
 
-### <a name="add-a-cloud-property"></a>Dodaj właściwość chmury 
-1. Przejdź do **właściwości chmury** z menu szablonu urządzenia
-2. Dodaj nową właściwość chmury, klikając pozycję **+ Dodaj właściwość chmury**. 
-    W IoT Central można dodać właściwość, która jest istotna dla urządzenia. Przykładowo Właściwość chmury może być progiem alertu specyficznym dla obszaru instalacji, informacji o zasobach lub innych informacji o obsłudze. 
-3. **Zapisz** wszystkie zmiany 
- 
-### <a name="views"></a>Widoki 
-Szablon urządzenia monitora zużycia wody jest dostarczany ze wstępnie zdefiniowanymi widokami. Przejrzyj widoki i możesz wprowadzić aktualizacje. Widoki definiują sposób, w jaki operatory zobaczą dane urządzenia, ale również umieszczają właściwości chmury. 
+1. Przejdź do pozycji **Dostosowywanie** w menu **Szablony urządzeń** .
+1. Znajdź `Temperature` typ telemetrii.
+1. Zaktualizuj **nazwę wyświetlaną** `Temperature`, aby `Reported temperature`.
+1. Zaktualizuj jednostkę miary lub ustaw wartość **minimalną** oraz **wartość maksymalną**.
+1. Wybierz pozycję **Zapisz** , aby zapisać zmiany.
+
+### <a name="add-a-cloud-property"></a>Dodaj właściwość chmury
+
+1. Przejdź do pozycji **właściwości chmury** w menu **Szablony urządzeń** .
+1. Dodaj nową właściwość chmury, wybierając pozycję **+ Dodaj właściwość chmury**.
+    Na platformie Azure IoT Central można dodać właściwość, która jest odpowiednia dla urządzenia. Przykładowo Właściwość chmury może być progiem alertu specyficznym dla obszaru instalacji, informacji o zasobach lub innych informacji o obsłudze.
+1. Wybierz pozycję **Zapisz** , aby zapisać zmiany.
+
+### <a name="views"></a>Widoki
+
+Szablon urządzenia monitora zużycia wody jest dostępny ze wstępnie zdefiniowanymi widokami. Przejrzyj widoki i możesz wprowadzić aktualizacje. Widoki definiują sposób, w jaki operatory widzą dane urządzenia, ale również wprowadzają właściwości chmury.
 
   ![Widoki szablonów urządzeń](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
-### <a name="publish"></a>Publikuj 
-W przypadku wprowadzenia jakichkolwiek zmian upewnij się, że szablon urządzenia jest **opublikowany** . 
+### <a name="publish"></a>Publikowanie
 
-### <a name="create-a-new-device-template"></a>Tworzenie nowego szablonu urządzenia 
-- Wybierz pozycję **+ Nowy** , aby utworzyć nowy szablon urządzenia i postępuj zgodnie z procesem tworzenia. Można utworzyć niestandardowy szablon urządzenia od podstaw lub wybrać szablon urządzenia z wykazu urządzeń platformy Azure. 
+W przypadku wprowadzenia jakichkolwiek zmian upewnij się, że szablon urządzenia jest **opublikowany** .
+
+### <a name="create-a-new-device-template"></a>Tworzenie nowego szablonu urządzenia
+
+Wybierz pozycję **+ Nowy** , aby utworzyć nowy szablon urządzenia i postępuj zgodnie z procesem tworzenia.
+Możesz utworzyć niestandardowy szablon urządzenia od podstaw lub wybrać szablon urządzenia z wykazu urządzeń platformy Azure.
 
 ## <a name="explore-simulated-devices"></a>Eksplorowanie symulowanych urządzeń
-W IoT Central można tworzyć symulowane urządzenia do testowania szablonu i aplikacji urządzenia. Aplikacja do **monitorowania zużycia wody** ma dwa symulowane urządzenia zamapowane na *Miernik przepływu* i *inteligentne* szablony urządzeń. 
 
-### <a name="to-view-the-devices"></a>Aby wyświetlić urządzenia:
-1. Przejdź do **urządzenia** z IoT Central okienku nawigacji po lewej stronie. 
+Na platformie Azure IoT Central można tworzyć symulowane urządzenia do testowania szablonu i aplikacji urządzenia. Aplikacja do monitorowania zużycia wody ma dwa symulowane urządzenia zamapowane na **Miernik przepływu** i **inteligentne** szablony urządzeń.
 
-   ![Urządzenia](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devices.png)
+### <a name="view-the-devices"></a>Wyświetlanie urządzeń
 
-2. Kliknij jeden **zawór inteligentny 1** 
+1. Wybierz pozycję **urządzenia** > **wszystkie urządzenia** w lewym okienku.
 
-    ![Urządzenie 1](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitor-device1.png)
+   ![Okienko wszystkie urządzenia](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devices.png)
 
-3.  W **poleceniach dotyczących urządzeń** można zobaczyć trzy *polecenia, zawór* *zamka*i *ustawić położenie zaworu* , które są możliwościami zdefiniowanymi w szablonie *urządzenia* przenośnego. 
-4. Eksploruj kartę **Właściwości urządzenia** i kartę **pulpit nawigacyjny urządzenia** . 
+1. Wybierz pozycję **inteligentny zawór 1**.
+
+    ![Zawór inteligentny 1](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitor-device1.png)
+
+1. Na karcie **polecenia** można zobaczyć trzy polecenia urządzenia (**zawory zamykające**, **zawór otwarty**i **Ustaw zawór**), które są możliwościami zdefiniowanymi w **szablonie urządzenia** przenośnego.
+
+1. Przejrzyj kartę **Właściwości urządzenia** i kartę **pulpit nawigacyjny urządzenia** .
 
 > [!NOTE]
-> Należy pamiętać, że wszystkie karty zostały skonfigurowane z widoków szablonów urządzeń.
+> Należy pamiętać, że wszystkie karty są konfigurowane z widoków szablonów urządzeń.
 
 ### <a name="add-new-devices"></a>Dodaj nowe urządzenia
-* Dodaj nowe urządzenia, klikając pozycję **+ Nowy** na karcie **urządzenia** . 
+
+Dodaj nowe urządzenia, wybierając pozycję **+ Nowy** na karcie **urządzenia** .
 
 ## <a name="explore-and-configure-rules"></a>Eksplorowanie i konfigurowanie reguł
 
-Na platformie Azure IoT Central można tworzyć reguły automatycznego monitorowania danych telemetrycznych urządzeń oraz wyzwalać akcje po spełnieniu jednego lub większej liczby warunków. Akcje mogą obejmować wysyłanie powiadomień e-mail lub wyzwalanie akcji Microsoft Flow lub akcji elementu webhook w celu wysyłania danych do innych usług.
+Na platformie Azure IoT Central można utworzyć reguły, aby automatycznie monitorować dane telemetryczne i wyzwalacze urządzenia po spełnieniu co najmniej jednego warunku. Akcje mogą obejmować wysyłanie powiadomień e-mail lub wyzwalanie akcji programu Microsoft PowerShell lub akcji elementu webhook w celu wysyłania danych do innych usług.
 
-Utworzona przez Ciebie aplikacja do **monitorowania zużycia wody** ma trzy wstępnie skonfigurowane reguły.
+Utworzona aplikacja do monitorowania zużycia wody ma trzy wstępnie skonfigurowane reguły.
 
-### <a name="to-view-rules"></a>Aby wyświetlić reguły:
-1. Przejdź do **reguły** , IoT Central okienku nawigacji po lewej stronie. 
+### <a name="view-rules"></a>Wyświetl reguły
 
-   ![Reguły](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
+1. Wybierz pozycję **reguły** w okienku po lewej stronie.
 
-2. Wybierz i kliknij **alert o wysokim poziomie pH**, który jest jednym ze wstępnie skonfigurowanych reguł w aplikacji.
+   ![Okienko reguł](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
+
+1. Wybierz **alert o wysokim poziomie pH**, który jest jednym ze wstępnie skonfigurowanych reguł w aplikacji.
 
      ![Alert o wysokim poziomie pH](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    Reguła `High flow alert` jest skonfigurowana do sprawdzania pod kątem warunku, `Acidity (pH)` `greater than` `Max flow threshold`. Maksymalny próg przepływu to właściwość chmury zdefiniowana w *szablonie urządzenia przenośnego urządzenia* przenośnego. Wartość `Max flow threshold` jest ustawiana na wystąpienie urządzenia. 
+    Reguła `High flow alert` jest skonfigurowana do sprawdzania pod kątem warunku, `Acidity (pH)` `greater than` `Max flow threshold`. Maksymalny próg przepływu to właściwość chmury zdefiniowana w **szablonie urządzenia** przenośnego. Wartość `Max flow threshold` jest ustawiana na wystąpienie urządzenia.
 
 Teraz Utwórzmy akcję poczty e-mail.
 
 Aby dodać akcję do reguły:
 
-1. Wybierz pozycję **+ poczta e-mail**. 
-1. Wprowadź *alert o wysokim poziomie pH* jako przyjazną **nazwę wyświetlaną** dla akcji.
-    * Wprowadź adres e-mail skojarzony z kontem IoT Central w programie **do**. 
+1. Wybierz pozycję **+ poczta e-mail**.
+1. Wprowadź **alert o wysokim poziomie pH** jako przyjazną **nazwę wyświetlaną** dla akcji.
+1. Wprowadź adres e-mail **skojarzony z kontem**usługi Azure IoT Central w systemie.
 1. Opcjonalnie wprowadź notatkę, która ma zostać dołączona do tekstu wiadomości e-mail.
 1. Wybierz pozycję **gotowe** , aby zakończyć akcję.
-1. Wybierz pozycję **Zapisz** , aby zapisać i aktywować nową regułę. 
+1. Wybierz pozycję **Zapisz** , aby zapisać i aktywować nową regułę.
 
-W ciągu kilku minut powinna zostać wysłana wiadomość e-mail, gdy zostanie spełniony skonfigurowany **warunek** .
+W ciągu kilku minut otrzymasz wiadomość e-mail po spełnieniu skonfigurowanego warunku.
 
 > [!NOTE]
-> Aplikacja wyśle wiadomość e-mail za każdym razem, gdy warunek zostanie spełniony. **Wyłączenie** reguły w celu zatrzymania otrzymywania wiadomości e-mail z reguły zautomatyzowanej. 
+> Aplikacja wysyła wiadomość e-mail za każdym razem, gdy spełniony jest warunek. Wybierz pozycję **Wyłącz** , aby wyłączyć zasadę, aby nie otrzymywać wiadomości e-mail z reguły zautomatyzowanej.
   
-Aby utworzyć nową regułę: 
-- Wybierz pozycję **+ Nowy** w obszarze **reguły** w okienku nawigacji po lewej stronie.
+Aby utworzyć nową regułę:
+
+* Wybierz pozycję **+ Nowy** na karcie **zasady** w okienku po lewej stronie.
 
 ## <a name="configure-jobs"></a>Konfigurowanie zadań
 
-W IoT Central zadania umożliwiają wyzwalanie aktualizacji właściwości urządzenia lub chmury na wielu urządzeniach. Oprócz właściwości można także użyć zadań do wyzwalania poleceń urządzenia na wielu urządzeniach. IoT Central automatyzuje przepływ pracy. 
+Na platformie Azure IoT Central zadania umożliwiają wyzwalanie aktualizacji właściwości urządzenia lub chmury na wielu urządzeniach. Oprócz właściwości można także użyć zadań do wyzwalania poleceń urządzenia na wielu urządzeniach. Usługa Azure IoT Central automatyzuje przepływ pracy.
 
-1. Przejdź do obszaru **zadania** w okienku nawigacji po lewej stronie. 
-2. Kliknij pozycję **+ Nowy** i skonfiguruj co najmniej jedno zadanie. 
+1. Wybierz pozycję **zadania** w okienku po lewej stronie.
+1. Wybierz pozycję **+ Nowy**i skonfiguruj co najmniej jedno zadanie.
 
+## <a name="customize-your-application"></a>Dostosowywanie aplikacji
 
-## <a name="customize-your-application"></a>Dostosowywanie aplikacji 
 Jako Konstruktor można zmienić kilka ustawień, aby dostosować środowisko użytkownika w aplikacji.
 
-1.  Przejdź do pozycji **administracja > Dostosuj aplikację**.
-3. Użyj przycisku **Zmień** , aby wybrać obraz do przekazania jako **logo aplikacji**.
-4. Użyj przycisku **Zmień** , aby wybrać obraz **ikony przeglądarki** , który będzie wyświetlany na kartach przeglądarki.
-5. Możesz również zastąpić domyślne **kolory przeglądarki** , dodając szesnastkowe kody kolorów html.
+1. Wybierz pozycję **administracja** > **Dostosuj aplikację**.
+1. Aby wybrać obraz do przekazania jako **logo aplikacji**, wybierz przycisk **Zmień** .
+1. Aby wybrać obraz **ikony przeglądarki** , który będzie wyświetlany na kartach przeglądarki, wybierz przycisk **Zmień** .
+1. Możesz również zastąpić domyślne **kolory przeglądarki** , dodając szesnastkowe kody kolorów html.
 
-   ![IoT Central dostosowywanie aplikacji przez platformę Azure](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-customize-your-application.png)
+   ![Opcje dla logo aplikacji, ikony przeglądarki i kolory przeglądarki](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-customize-your-application.png)
 
-1.  Możesz również zmienić obrazy aplikacji, przechodząc do opcji **administracja > Ustawienia aplikacji** i **Wybierz obraz** przycisk, aby wybrać obraz do przekazania jako obraz aplikacji. 
-2. Na koniec możesz również zmienić **kompozycję** , klikając pozycję **Ustawienia** w obszarze tytuł aplikacji. 
+1. Możesz również zmienić obrazy aplikacji, wybierając pozycję **administracja** > **Ustawienia aplikacji**. Aby wybrać obraz do przekazania jako obraz aplikacji, wybierz przycisk **Wybierz obraz** .
+1. Na koniec możesz również zmienić **motyw** , wybierając ikonę **Ustawienia** w prawym górnym rogu aplikacji.
 
-  
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń aplikację, wykonując następujące czynności:
+Jeśli nie chcesz nadal korzystać z tej aplikacji, usuń ją.
 
-1. Otwórz kartę Administracja w lewym okienku aplikacji IoT Central. 
-2. Wybierz pozycję Ustawienia aplikacji, a następnie kliknij przycisk Usuń u dołu strony. 
-
+1. Wybierz pozycję **Administracja** w lewym okienku aplikacji IoT Central platformy Azure.
+1. Wybierz pozycję **Ustawienia aplikacji**, a następnie wybierz pozycję **Usuń** w dolnej części strony.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Więcej informacji o [pojęciach dotyczących monitorowania zużycia wody](./concepts-waterconsumptionmonitoring-architecture.md)
+* Dowiedz się więcej o [pojęciach dotyczących monitorowania zużycia wody](./concepts-waterconsumptionmonitoring-architecture.md).

@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930009"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121416"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Obsługuj zawartość z usługi Azure Storage w App Service w systemie Linux
 
@@ -34,6 +34,7 @@ W tym przewodniku przedstawiono sposób dołączania usługi Azure Storage do Ap
 - Usługa Azure Storage z App Service obsługuje instalowanie **kontenerów Azure Files** (odczyt/zapis) i **kontenery obiektów blob platformy Azure** (tylko do odczytu)
 - Usługa Azure Storage z App Service **nie obsługuje** korzystania z konfiguracji **zapory magazynu** z powodu ograniczeń infrastruktury.
 - Usługa Azure Storage z App Service umożliwia określenie **maksymalnie pięciu** punktów instalacji na aplikację.
+- Usługa Azure Storage zainstalowana w aplikacji nie jest dostępna za pomocą App Service punktów końcowych FTP/FTPs. Użyj [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
 - Usługa Azure Storage **nie jest dołączona** do Twojej aplikacji sieci Web i rozliczana osobno. Dowiedz się więcej o [cenach usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage).
 
 > [!WARNING]
@@ -69,7 +70,7 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 Usługę Azure Storage można zainstalować za pomocą aplikacji wielokontenerowych przy użyciu identyfikatora niestandardowego. Aby wyświetlić nazwę niestandardowego ID, uruchom [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
 
-W pliku *Docker-Compose. yml* zamapuj opcję `volumes`, aby `custom-id`. Przykład:
+W pliku *Docker-Compose. yml* zamapuj opcję `volumes`, aby `custom-id`. Na przykład:
 
 ```yaml
 wordpress:

@@ -3,8 +3,8 @@ title: Planowanie migracji z wersji klasycznej do Azure Resource Manager
 description: Planowanie migracji zasobów IaaS z klasycznej do Azure Resource Manager
 services: virtual-machines-linux
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: 460db5a3c836ecb35fd6c5943c88d32516d91674
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 91af575e0326d773143fe15711694f939144974a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969877"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121988"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS z klasycznej do Azure Resource Manager
 Chociaż Azure Resource Manager oferuje wiele niezwykłych funkcji, ważne jest zaplanowanie podróży migracji, aby upewnić się, że elementy są bezproblemowo. Czas wydatków na planowanie zapewnia niespotykanie problemów podczas wykonywania działań migracji.
@@ -31,7 +31,7 @@ Istnieją cztery ogólne etapy podróży migracji:
 
 ![Etapy migracji](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plan
+## <a name="plan"></a>Planowanie
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Zagadnienia techniczne i kompromisy
 
@@ -44,7 +44,7 @@ W zależności od wielkości wymagań technicznych, lokalizacje geograficzne i p
 5. Czy zespoły operacyjne będą teraz obsługiwać aplikacje/maszyny wirtualne w klasycznym i Azure Resource Manager?
 6. Jak (Jeśli w ogóle) Azure Resource Manager zmieniać procesów wdrożenia maszyny wirtualnej, zarządzania, monitorowania i raportowania?  Czy należy zaktualizować skrypty wdrażania?
 7. Co to jest plan komunikacji dotyczący zgłaszania udziałowców (użytkowników końcowych, właścicieli aplikacji i właścicieli infrastruktury)?
-8. W zależności od stopnia złożoności środowiska, w przypadku, gdy aplikacja jest niedostępna dla użytkowników końcowych i właścicieli aplikacji?  Jeśli tak, przez jak długi czas?
+8. W zależności od stopnia złożoności środowiska, w przypadku, gdy aplikacja jest niedostępna dla użytkowników końcowych i właścicieli aplikacji?  Jeśli tak, na czas?
 9. Co to jest plan szkoleniowy, aby upewnić się, że zainteresowane strony są merytoryczne i bardziej pomocne w Azure Resource Manager?
 10. Co to jest zarządzanie programem lub plan zarządzania projektami migracji?
 11. Jakie są osie czasu dla migracji Azure Resource Manager i innych powiązanych map dróg technologicznych?  Czy są one optymalnie wyrównane?
@@ -118,7 +118,7 @@ W wielu większych migracjach wykryto następujące problemy. Nie jest to pełna
   - Publiczne adresy IP
   - Statyczne publiczne adresy IP
   - Rdzenie
-  - Sieciowe grupy zabezpieczeń
+  - Grupy zabezpieczeń sieci
   - Tabele tras
 
     Bieżące przydziały Azure Resource Manager można sprawdzić przy użyciu następujących poleceń z najnowszą wersją interfejsu wiersza polecenia platformy Azure.

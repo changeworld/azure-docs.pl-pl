@@ -16,18 +16,18 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d780e6e11d2c067261f6862e1678ef5de0aaa9bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f40ed05391c36f820940d5351373ecd8f9492b17
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422503"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120139"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Typowe scenariusze zarządzania prawami w usłudze Azure AD
 
 Istnieje kilka sposobów konfigurowania zarządzania prawami dla organizacji. Jednak jeśli dopiero zaczynasz pracę, warto zrozumieć typowe scenariusze dla administratorów, właścicieli wykazu, menedżerów pakietów dostępu, osób zatwierdzających i osoby żądające.
 
-## <a name="delegate"></a>Deleguj
+## <a name="delegate"></a>Wierz
 
 ### <a name="administrator-delegate-management-of-resources"></a>Administrator: delegowanie zarządzania zasobami
 
@@ -61,7 +61,7 @@ Istnieje kilka sposobów konfigurowania zarządzania prawami dla organizacji. Je
 
 1. [Logowanie się do portalu My Access](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
 1. Znajdź pakiet dostępu
-1. [Poproś o dostęp](entitlement-management-request-access.md#request-an-access-package)
+1. [Żądaj dostępu](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Osoba zatwierdzająca: zatwierdzanie żądań do zasobów
 
@@ -94,7 +94,7 @@ Istnieje kilka sposobów konfigurowania zarządzania prawami dla organizacji. Je
 
 1. Znajdź link pakietu dostępu otrzymany od kontaktu
 1. [Logowanie się do portalu My Access](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
-1. [Poproś o dostęp](entitlement-management-request-access.md#request-an-access-package)
+1. [Żądaj dostępu](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Osoba zatwierdzająca: zatwierdzanie żądań do zasobów
 
@@ -150,6 +150,10 @@ Istnieje kilka sposobów konfigurowania zarządzania prawami dla organizacji. Je
 
 1. [Wyświetlanie pakietów dostępu dla użytkownika](entitlement-management-reports.md#view-access-packages-for-a-user)
 1. [Wyświetlanie przypisań zasobów dla użytkownika](entitlement-management-reports.md#view-resource-assignments-for-a-user)
+
+## <a name="programmatic-administration"></a>Administracja programowa
+
+Można także zarządzać pakietami dostępu, katalogami, zasadami, żądaniami i przypisaniami przy użyciu Microsoft Graph.  Użytkownik w odpowiedniej roli z aplikacją, która ma delegowane uprawnienia `EntitlementManagement.ReadWrite.All`, może wywołać [interfejs API zarządzania uprawnieniami](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Następne kroki
 

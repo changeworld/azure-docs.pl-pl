@@ -4,12 +4,12 @@ description: Dowiedz się, jak używać akcji skalowania automatycznego do wywo�
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364207"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120693"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Użyj akcji skalowania automatycznego do wysyłania powiadomień o alertach poczty e-mail i elementów webhook w Azure Monitor
 W tym artykule pokazano, jak skonfigurować wyzwalacze, aby umożliwić wywoływanie określonych adresów URL sieci Web lub wysyłanie wiadomości e-mail na podstawie akcji skalowania automatycznego na platformie Azure.  
@@ -17,11 +17,11 @@ W tym artykule pokazano, jak skonfigurować wyzwalacze, aby umożliwić wywoływ
 ## <a name="webhooks"></a>Elementy webhook
 Elementy webhook umożliwiają kierowanie powiadomień o alertach platformy Azure do innych systemów na potrzeby powiadomień po zakończeniu przetwarzania lub niestandardowych. Na przykład, kierowanie alertu do usług, które mogą obsługiwać przychodzące żądanie sieci Web w celu wysyłania wiadomości SMS, rejestrowania usterek, powiadamiania zespołu przy użyciu usług rozmowy lub Messaging itp. Identyfikator URI elementu webhook musi być prawidłowym punktem końcowym HTTP lub HTTPS.
 
-## <a name="email"></a>Adres e-mail
+## <a name="email"></a>Email
 Wiadomości e-mail można wysyłać na dowolny prawidłowy adres e-mail. Administratorzy i współadministratorzy subskrypcji, w której uruchomiona jest reguła, również będą powiadamiani.
 
-## <a name="cloud-services-and-web-apps"></a>Cloud Services i Web Apps
-Możesz zdecydować się na podstawie Azure Portal dla Cloud Services i farm serwerów (Web Apps).
+## <a name="cloud-services-and-app-services"></a>Cloud Services i App Services
+Możesz zdecydować się na podstawie Azure Portal dla Cloud Services i farm serwerów (App Services).
 
 * Wybierz pozycję **skalowanie według** metryki.
 
@@ -105,16 +105,16 @@ Po wygenerowaniu powiadomienia skalowania automatycznego następujące metadane 
 | operation |tak |W przypadku zwiększenia liczby wystąpień będzie to "skalowalne w poziomie", a w przypadku spadku wystąpień będzie to "skalowane". |
 | context |tak |Kontekst akcji skalowania automatycznego |
 | sygnatura czasowa |tak |Sygnatura czasowa, gdy akcja skalowania automatycznego została wyzwolona |
-| id |Tak |Identyfikator Menedżer zasobów ustawienia skalowania automatycznego |
-| name |Tak |Nazwa ustawienia automatycznego skalowania |
-| details informacje |Tak |Wyjaśnienie akcji podjętej przez usługę automatycznego skalowania i zmianę liczby wystąpień |
-| subscriptionId |Tak |Identyfikator subskrypcji zasobu docelowego, który jest skalowany |
-| resourceGroupName |Tak |Nazwa grupy zasobów dla zasobu docelowego, który jest skalowany |
-| resourceName |Tak |Nazwa zasobu docelowego, który jest skalowany |
-| resourceType |Tak |Trzy obsługiwane wartości: "Microsoft. classiccompute/DomainNames/Slots/role" — role usługi w chmurze "Microsoft. COMPUTE/virtualmachinescalesets"-Virtual Machine Scale Sets i "Microsoft. Web/dopuszczalna" — aplikacja sieci Web |
-| resourceId |Tak |Identyfikator Menedżer zasobów zasobu docelowego, który jest skalowany |
-| portalLink |Tak |Azure Portal Połącz ze stroną podsumowania zasobu docelowego |
-| oldCapacity |Tak |Bieżąca (stara) liczba wystąpień, gdy automatyczne skalowanie zajęło akcję skalowania |
-| newCapacity |Tak |Nowe wystąpienie, które automatycznie skaluje zasób do |
-| properties |Nie |Element opcjonalny. Zestaw < klucza, wartości > par (na przykład < słownika, ciąg >). Pole właściwości jest opcjonalne. W niestandardowym interfejsie użytkownika lub przepływie pracy opartym na aplikacji logiki można wprowadzać klucze i wartości, które mogą być przesyłane przy użyciu ładunku. Alternatywny sposób przekazywania właściwości niestandardowych z powrotem do wychodzącego wywołania elementu webhook polega na użyciu samego identyfikatora URI elementu webhook (jako parametrów zapytania). |
+| id |Yes |Identyfikator Menedżer zasobów ustawienia skalowania automatycznego |
+| name |Yes |Nazwa ustawienia automatycznego skalowania |
+| details informacje |Yes |Wyjaśnienie akcji podjętej przez usługę automatycznego skalowania i zmianę liczby wystąpień |
+| subscriptionId |Yes |Identyfikator subskrypcji zasobu docelowego, który jest skalowany |
+| resourceGroupName |Yes |Nazwa grupy zasobów dla zasobu docelowego, który jest skalowany |
+| resourceName |Yes |Nazwa zasobu docelowego, który jest skalowany |
+| resourceType |Yes |Trzy obsługiwane wartości: "Microsoft. classiccompute/DomainNames/Slots/role" — role usługi w chmurze "Microsoft. COMPUTE/virtualmachinescalesets"-Virtual Machine Scale Sets i "Microsoft. Web/dopuszczalna" — aplikacja sieci Web |
+| resourceId |Yes |Identyfikator Menedżer zasobów zasobu docelowego, który jest skalowany |
+| portalLink |Yes |Azure Portal Połącz ze stroną podsumowania zasobu docelowego |
+| oldCapacity |Yes |Bieżąca (stara) liczba wystąpień, gdy automatyczne skalowanie zajęło akcję skalowania |
+| newCapacity |Yes |Nowe wystąpienie, które automatycznie skaluje zasób do |
+| properties |Nie |Opcjonalny. Zestaw < klucza, wartości > par (na przykład < słownika, ciąg >). Pole właściwości jest opcjonalne. W niestandardowym interfejsie użytkownika lub przepływie pracy opartym na aplikacji logiki można wprowadzać klucze i wartości, które mogą być przesyłane przy użyciu ładunku. Alternatywny sposób przekazywania właściwości niestandardowych z powrotem do wychodzącego wywołania elementu webhook polega na użyciu samego identyfikatora URI elementu webhook (jako parametrów zapytania). |
 

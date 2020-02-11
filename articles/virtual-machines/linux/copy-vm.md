@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a6a8b766efdc781df1fea29da81dc48090875ad7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4612d15dd5d3ab6e814f09210d5ff3991fef0328
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036575"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121879"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Tworzenie kopii maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure i Managed Disks
 
@@ -133,4 +133,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak korzystać z interfejsu wiersza polecenia platformy Azure do zarządzania nową maszyną wirtualną, zobacz [polecenia interfejsu CLI platformy Azure dla Azure Resource Manager](../azure-cli-arm-commands.md).
+Aby dowiedzieć się, jak używać [galerii obrazów udostępnionych](shared-images.md) do zarządzania obrazami maszyn wirtualnych.

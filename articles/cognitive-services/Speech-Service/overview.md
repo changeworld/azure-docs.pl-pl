@@ -3,19 +3,19 @@ title: Czym jest usługa rozpoznawania mowy?
 titleSuffix: Azure Cognitive Services
 description: Usługa mowy to zjednoczenie zamiany mowy na tekst, zamiany tekstu na mowę i Tłumaczenie mowy na pojedynczą subskrypcję platformy Azure. Dodaj mowę do aplikacji, narzędzi i urządzeń za pomocą zestawu Speech SDK, zestawu Speech Devices SDK lub interfejsów API REST.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 11/05/2019
-ms.author: erhopf
-ms.openlocfilehash: df0ce5efefe86ed3b7e2e8ccf5a2bd9011e168e6
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261436"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119921"
 ---
 # <a name="what-is-the-speech-service"></a>Czym jest usługa rozpoznawania mowy?
 
@@ -26,35 +26,17 @@ Usługa mowy to zjednoczenie zamiany mowy na tekst, tekstu na mowę i tłumaczen
 
 Te funkcje składają się na usługę Speech. Skorzystaj z łączy w tej tabeli, aby dowiedzieć się więcej na temat typowych przypadków użycia dla każdej funkcji lub przejrzeć odwołanie do interfejsu API.
 
-| Usługa | Funkcja | Opis | SDK | REST |
+| Usługa | Cecha | Opis | SDK | REST |
 | ------- | ------- | ----------- | --- | ---- |
 | [Zamiana mowy na tekst](speech-to-text.md) | Zamiana mowy na tekst | Funkcja zamiany mowy na tekst przekształca strumienie audio do tekstu w czasie rzeczywistym, które mogą być używane przez aplikacje, narzędzia lub urządzenia. Używaj zamiany mowy na tekst za pomocą [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) , aby uzyskać intencje użytkownika z uzyskanego mowy i korzystać z poleceń głosowych. | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Transkrypcja partii](batch-transcription.md) | Transkrypcja partii umożliwia asynchroniczne transkrypcja mowy na tekst w dużych ilościach danych. Jest to usługa oparta na protokole REST, która używa tego samego punktu końcowego jako dostosowania i zarządzania modelami. | Nie | [Tak](https://westus.cris.ai/swagger/ui/index) |
-| | [Konwersacja z obsługą kilku urządzeń](multi-device-conversation.md) | Łączenie wielu urządzeń lub klientów w konwersacji w celu wysyłania komunikatów na mowę lub tekstowych przy użyciu łatwej obsługi transkrypcji i tłumaczenia| Tak | Nie |
-| | [Transkrypcja konwersacji](conversation-transcription-service.md) | Włącza rozpoznawanie mowy w czasie rzeczywistym, identyfikację głosu i diarization. Doskonale nadaje się do jego przepisywaniach spotkań osób z możliwością odróżniania głośników. | Tak | Nie |
+| | [Konwersacja z obsługą kilku urządzeń](multi-device-conversation.md) | Łączenie wielu urządzeń lub klientów w konwersacji w celu wysyłania komunikatów na mowę lub tekstowych przy użyciu łatwej obsługi transkrypcji i tłumaczenia| Yes | Nie |
+| | [Transkrypcja konwersacji](conversation-transcription-service.md) | Włącza rozpoznawanie mowy w czasie rzeczywistym, identyfikację głosu i diarization. Doskonale nadaje się do jego przepisywaniach spotkań osób z możliwością odróżniania głośników. | Yes | Nie |
 | | [Tworzenie modeli Custom Speech](#customize-your-speech-experience) | Jeśli używasz funkcji zamiany mowy na tekst do rozpoznawania i transkrypcji w unikatowym środowisku, możesz tworzyć i uczenia niestandardowych modeli akustycznych, językowych i wymowych w celu obsługi szumów otoczenia lub słownictwa specyficznego dla branż. | Nie | [Tak](https://westus.cris.ai/swagger/ui/index) |
 | [Zamiana tekstu na mowę](text-to-speech.md) | Zamiana tekstu na mowę | Zamiana tekstu na mowę polega na konwertowaniu tekstu wejściowego na wymowę przez człowieka, który używa [języka SSML (Speech syntezing Language)](speech-synthesis-markup.md). Wybieraj spośród standardowych głosów i głosów neuronowych (zobacz [Obsługa języka](language-support.md)). | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Tworzenie niestandardowych głosów](#customize-your-speech-experience) | Twórz niestandardowe czcionki głosowe, które są unikatowe dla danej marki lub produktu. | Nie | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Tłumaczenie mowy](speech-translation.md) | Tłumaczenie mowy | Tłumaczenie mowy umożliwia tłumaczenie mowy w czasie rzeczywistym na wiele języków w aplikacjach, narzędziach i urządzeniach. Ta usługa umożliwia tłumaczenie mowy na mowę i zamianę mowy na tekst. | [Tak](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nie |
 | [Asystenci głosu](voice-assistants.md) | Asystenci głosowi | Asystenci głosu korzystający z usługi mowy umożliwiają deweloperom tworzenie naturalnych, przypominających konwersacje interfejsów dla aplikacji i środowisk. Usługa asystenta głosowego zapewnia szybką i niezawodną interakcję między urządzeniem a implementacją asystenta, która korzysta z kanału mowy linii Direct line lub zintegrowanego polecenia niestandardowego (wersja zapoznawcza) w celu ukończenia zadania. | [Tak](voice-assistants.md) | Nie |
-
-## <a name="news-and-updates"></a>Wiadomości i aktualizacje
-
-Dowiedz się, co nowego w usłudze Speech.
-
-- Listopad 2019 r.
-  - Dodano dwie nowe style mówienia, [`newscast`](speech-synthesis-markup.md#adjust-speaking-styles) i [`customerservice`](speech-synthesis-markup.md#adjust-speaking-styles) dla głosu `en-US-JessaNeural`.
-- Wrzesień 2019 r.
-  - Wydano 1.7.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
-- Sierpień 2019 r.
-  - **Nowy samouczek**: [Voice Enable bot with Speech SDK, C# ](tutorial-voice-enable-your-bot-speech-sdk.md)
-  - Dodano nowy styl mówiący, [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)w przypadku głosu `en-US-JessaNeural`.
-- Czerwiec 2019 r.
-  - Wydano 1.6.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
-- 2019 — dokumentacja jest teraz dostępna na potrzeby [transkrypcji konwersacji](conversation-transcription-service.md), [transkrypcji centrum połączeń](call-center-transcription.md)i [asystentów głosowych](voice-assistants.md).
-- Maj 2019 r.
-  - Wydano 1.5.1 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
-  - Wydano 1.5.0 zestawu mowy SDK. Aby zapoznać się z pełną listą aktualizacji, ulepszeń i znanych problemów, zobacz [Informacje o wersji](releasenotes.md).
 
 ## <a name="try-the-speech-service"></a>Wypróbuj usługę mowy
 
@@ -90,10 +72,10 @@ Usługa mowy dobrze współpracuje z wbudowanymi modelami, ale warto dodatkowo d
 
 | Usługa rozpoznawania mowy | Platforma | Opis |
 | -------------- | -------- | ----------- |
-| Zamiana mowy na tekst | [Custom Speech](https://aka.ms/customspeech) | Dostosuj modele rozpoznawania mowy do Twoich potrzeb i dostępnych danych. Pokonaj bariery rozpoznawania mowy, takie jak styl wypowiedzi, słownictwo i hałas w tle. |
+| Zamiana mowy na tekst | [Custom Speech](https://aka.ms/customspeech) | Dostosuj modele rozpoznawania mowy do Twoich potrzeb i dostępnych danych. Przezwyciężenie barier rozpoznawania mowy, takich jak styl mowy, słownictwo i hałas w tle. |
 | Zamiana tekstu na mowę | [Niestandardowy głos](https://aka.ms/customvoice) | Utwórz rozpoznawalny, unikatowy głos dla aplikacji zamieniających tekst na mowę, które korzystają z Twoich dostępnych danych mowy. Można dokładniej dostosować dane wyjściowe głosu przez dostosowanie zestawu parametrów głosowych. |
 
-## <a name="reference-docs"></a>Dokumentacja
+## <a name="reference-docs"></a>Dokumentacja dokumentacji
 
 - [Zestaw SDK rozpoznawania mowy](speech-sdk-reference.md)
 - [Zestaw SDK urządzeń mowy](speech-devices-sdk.md)

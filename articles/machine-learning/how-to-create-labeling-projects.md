@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 864cccc4629140754a326823cbaebd7ad8933d3d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8c6b7b4d64b3a4f504cc9aef275b3d48cd62a3d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765073"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116851"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Utwórz projekt etykietowania danych i Eksportuj etykiety 
 
@@ -125,7 +125,7 @@ W przypadku pól ograniczenia ważne pytania obejmują:
 
 ## <a name="initialize-the-labeling-project"></a>Inicjowanie projektu etykietowania
 
-Po zainicjowaniu projektu etykietowania niektóre aspekty projektu są niezmienne. Nie można zmienić typu zadania lub zestawu danych. *Możesz* zmodyfikować etykiety i adres URL opisu zadania. Uważnie przejrzyj ustawienia przed utworzeniem projektu. Po przesłaniu projektu nastąpi powrót do strony głównej **etykietowania** , która będzie pokazywała projekt jako **inicjujący**. Ta strona nie jest automatycznie odświeżana. Dlatego po wstrzymaniu ręcznie Odśwież stronę, aby zobaczyć stan projektu jako **utworzony**.
+Po zainicjowaniu projektu etykietowania niektóre aspekty projektu są niezmienne. Nie można zmienić typu zadania lub zestawu danych. *Możesz* zmodyfikować etykiety i adres URL opisu zadania. Uważnie przejrzyj ustawienia przed utworzeniem projektu. Po przesłaniu projektu nastąpi powrót do strony głównej **etykietowania danych** , co spowoduje wyświetlenie projektu jako **inicjującego**. Ta strona nie jest automatycznie odświeżana. Dlatego po wstrzymaniu ręcznie Odśwież stronę, aby zobaczyć stan projektu jako **utworzony**.
 
 ## <a name="manage-teams-and-people"></a>Zarządzanie zespołami i osobami
 
@@ -139,7 +139,7 @@ Aby wysłać wiadomość e-mail do zespołu, wybierz zespół, aby wyświetlić 
 
 ## <a name="run-and-monitor-the-project"></a>Uruchamianie i monitorowanie projektu
 
-Po zainicjowaniu projektu platforma Azure rozpocznie działanie. Wybierz projekt na stronie głównej **etykietki** , aby przejść do **szczegółów projektu**. Karta **pulpit nawigacyjny** pokazuje postęp zadania etykietowania.
+Po zainicjowaniu projektu platforma Azure rozpocznie działanie. Wybierz projekt na stronie **etykietowanie danych** głównych, aby przejść do **szczegółów projektu**. Karta **pulpit nawigacyjny** pokazuje postęp zadania etykietowania.
 
 Na karcie **dane** można zobaczyć zestaw danych i przejrzeć dane z etykietami. Jeśli zobaczysz nieprawidłowe etykiety danych, zaznacz ją i wybierz polecenie **Odrzuć**, co spowoduje usunięcie etykiet i umieszczenie danych z powrotem w kolejce bez etykiety.
 
@@ -148,6 +148,24 @@ Za pomocą karty **zespół** Przypisz lub Cofnij przypisanie zespołów do proj
 Aby wstrzymać lub ponownie uruchomić projekt, wybierz przycisk **wstrzymaj**/**Rozpocznij** . Dane można etykietować tylko wtedy, gdy projekt jest uruchomiony.
 
 Dane można oznaczyć bezpośrednio na stronie **szczegółów projektu** , wybierając pozycję **dane etykiet**.
+
+## <a name="add-labels-to-a-project"></a>Dodawanie etykiet do projektu
+
+Podczas tworzenia etykiet może się okazać, że do klasyfikowania obrazów są potrzebne dodatkowe etykiety.  Na przykład możesz chcieć dodać etykietę "nieznany" lub "inne", aby wskazać mylące obrazy.
+
+Wykonaj następujące kroki, aby dodać jedną lub więcej etykiet do projektu:
+
+1. Wybierz projekt na stronie **etykietowanie danych** głównych.
+1. W górnej części strony wybierz pozycję **Wstrzymaj** , aby zatrzymać etykietki w swoich działaniach.
+1. Wybierz kartę **szczegóły** .
+1. Na liście po lewej stronie wybierz pozycję **klasy etykiet**.
+1. W górnej części listy wybierz pozycję **+ Dodaj etykiety** ![dodaj etykietę](media/how-to-create-labeling-projects/add-label.png)
+1. W formularzu Dodaj nową etykietę i wybierz sposób wykonywania czynności.  Ze względu na to, że zmieniono etykiety dostępne dla obrazu, wybierz sposób traktowania danych, które zostały oznaczone etykietą:
+    * Zacznij od początku, usuwając wszystkie istniejące etykiety.  Wybierz tę opcję, jeśli chcesz wymazać wszystkie istniejące etykiety, aby można było użyć pełnego zestawu, aby oznaczyć wszystkie obrazy.
+    * Zacznij od początku, zachowując wszystkie istniejące etykiety.  Wybierz tę opcję, aby oznaczyć wszystkie dane jako bez etykiet, ale zachować istniejące etykiety jako tag domyślny dla obrazów, które zostały oznaczone etykietą.
+    * Kontynuuj, zachowując wszystkie istniejące etykiety. Wybierz tę opcję, aby zapewnić, że wszystkie dane mają już etykietę, i zacznij korzystać z nowej etykiety dla danych, które nie zostały jeszcze sklasyfikowane.
+1. Zmodyfikuj stronę z instrukcjami w razie potrzeby dla nowych etykiet.
+1. Po dodaniu wszystkich nowych etykiet w górnej części strony wybierz pozycję **Rozpocznij** , aby ponownie uruchomić projekt.  
 
 ## <a name="export-the-labels"></a>Eksportowanie etykiet
 

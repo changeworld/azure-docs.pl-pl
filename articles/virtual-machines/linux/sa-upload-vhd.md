@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 378b802602576c4cf50862149f5d31d16d721be0
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458676"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115835"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Przekazywanie i Tworzenie maszyny wirtualnej z systemem Linux z dysku niestandardowego przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -79,7 +79,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-Docelowe konto magazynu musi być takie samo, jak miejsce przekazania dysku wirtualnego. Należy również określić lub odpowiedzieć na pytanie, wszystkie dodatkowe parametry wymagane przez polecenie **AZ VM Create** , takie jak sieć wirtualna, publiczny adres IP, nazwa użytkownika i klucze SSH. Więcej informacji na temat [dostępnych parametrów Menedżer zasobów interfejsu wiersza polecenia](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)można znaleźć w artykule.
+Docelowe konto magazynu musi być takie samo, jak miejsce przekazania dysku wirtualnego. Należy również określić lub odpowiedzieć na pytanie, wszystkie dodatkowe parametry wymagane przez polecenie **AZ VM Create** , takie jak sieć wirtualna, publiczny adres IP, nazwa użytkownika i klucze SSH. Więcej informacji na temat [dostępnych klasycznych parametrów Menedżer zasobów interfejsu wiersza polecenia](../azure-cli-arm-commands.md#virtual-machines)można znaleźć w artykule.
 
 ## <a name="requirements"></a>Wymagania
 Aby wykonać następujące kroki, potrzebne są:
@@ -121,7 +121,7 @@ Zapoznaj się również z **[informacjami o instalacji systemu Linux](create-upl
 > 
 > 
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 Grupy zasobów logicznie łączą wszystkie zasoby platformy Azure w celu obsługi maszyn wirtualnych, takich jak wirtualne sieci i magazyn. Aby uzyskać więcej informacji na temat grup zasobów, zobacz [Omówienie grup zasobów](../../azure-resource-manager/management/overview.md). Przed przekazaniem niestandardowego dysku i utworzeniem maszyn wirtualnych należy najpierw utworzyć grupę zasobów za pomocą [AZ Group Create](/cli/azure/group).
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
