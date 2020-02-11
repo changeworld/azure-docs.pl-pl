@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/29/2020
+ms.date: 02/09/2020
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 81083a9d94f782201a8eb765ac1f88093c0337c4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c6dd2e9ce01205b34b95fa224e8bd16d21588b70
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024096"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114261"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Łączenie maszyn hybrydowych z platformą Azure z poziomu Azure Portal
 
@@ -160,7 +160,7 @@ Aby rozłączyć maszynę z usługi Azure ARC dla serwerów (wersja zapoznawcza)
 
     a. Zaloguj się na komputerze przy użyciu konta z uprawnieniami administratora.  
     b. W **Panelu sterowania**wybierz **aplet Programy i funkcje**.  
-    d. W obszarze **programy i funkcje**wybierz pozycję **Agent połączonej maszyny Azure**, wybierz pozycję **Odinstaluj**, a następnie wybierz pozycję **tak**.  
+    c. W obszarze **programy i funkcje**wybierz pozycję **Agent połączonej maszyny Azure**, wybierz pozycję **Odinstaluj**, a następnie wybierz pozycję **tak**.  
 
     >[!NOTE]
     > Możesz również uruchomić Kreatora instalacji agenta, klikając dwukrotnie pakiet Instalatora **AzureConnectedMachineAgent. msi** .
@@ -169,7 +169,7 @@ Aby rozłączyć maszynę z usługi Azure ARC dla serwerów (wersja zapoznawcza)
     
     a. Otwórz Edytor rejestru.  
     b. W obszarze klucz rejestru `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`, Wyszukaj i skopiuj identyfikator GUID kodu produktu.  
-    d. Następnie można odinstalować agenta za pomocą msiexec.
+    c. Następnie można odinstalować agenta za pomocą msiexec.
 
     Poniższy przykład ilustruje sposób odinstalowywania agenta:
 
@@ -188,5 +188,6 @@ Aby rozłączyć maszynę z usługi Azure ARC dla serwerów (wersja zapoznawcza)
 
 ## <a name="next-steps"></a>Następne kroki
 
-> [!div class="nextstepaction"]
-> [Przypisywanie zasad do połączonych maszyn](../../governance/policy/assign-policy-portal.md)
+- Dowiedz się, jak zarządzać maszyną za pomocą [Azure Policy](../../governance/policy/overview.md), na przykład w [konfiguracji gościa](../../governance/policy/concepts/guest-configuration.md)maszyny wirtualnej, sprawdzając, czy komputer jest raportowany do oczekiwanego log Analytics obszaru roboczego, włącz monitorowanie za pomocą [Azure monitor z maszynami wirtualnymi](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)i wiele więcej.
+
+- Dowiedz się więcej o [agencie log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics dla systemów Windows i Linux jest wymagany, gdy użytkownik chce aktywnie monitorować system operacyjny i obciążenia uruchomione na komputerze, zarządzać nim za pomocą elementów Runbook usługi Automation lub rozwiązań, takich jak Update Management, lub używać innych usług platformy Azure, takich jak [Azure Security Center](../../security-center/security-center-intro.md).

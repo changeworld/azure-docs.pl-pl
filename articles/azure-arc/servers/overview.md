@@ -7,15 +7,15 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarządzanie aktualizacjami, śledzenie zmian, spis, elementy Runbook, Python, graficzne, hybrydowe
-ms.date: 01/29/2020
+ms.date: 02/03/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c38bc2d5d9a7e23c0bb3041a5cb3b5cd1da9adb1
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899202"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114247"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co to jest usługa Azure ARC dla serwerów (wersja zapoznawcza)
 
@@ -55,6 +55,12 @@ Następujące wersje systemu operacyjnego Windows i Linux są oficjalnie obsług
 >Ta wersja zapoznawcza agenta połączonej maszyny dla systemu Windows obsługuje tylko system Windows Server skonfigurowany do korzystania z języka angielskiego.
 >
 
+### <a name="required-permissions"></a>Wymagane uprawnienia
+
+- Aby dodać maszyny, musisz być członkiem roli **dołączania maszyny połączonej z platformą Azure** .
+
+- Aby odczytywać, modyfikować, przełączać i usuwać maszynę, jesteś członkiem roli **administratora zasobów maszyny połączonej z platformą Azure** . 
+
 ### <a name="azure-subscription-and-service-limits"></a>Limity subskrypcji i usług platformy Azure
 
 Przed skonfigurowaniem maszyn przy użyciu usługi Azure ARC dla serwerów (wersja zapoznawcza) należy przejrzeć limity [subskrypcji](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager) Azure Resource Manager i [limity grup zasobów](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) , aby zaplanować liczbę maszyn, które mają być połączone.
@@ -75,7 +81,7 @@ Adresy
 | Zasób agenta | Opis |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
-|login.windows.net|Usługa Active Directory systemu Azure|
+|login.windows.net|Azure Active Directory|
 |dc.services.visualstudio.com|Application Insights|
 |agentserviceapi.azure-automation.net|Konfiguracja gościa|
 |*-agentservice-prod-1.azure-automation.net|Konfiguracja gościa|
