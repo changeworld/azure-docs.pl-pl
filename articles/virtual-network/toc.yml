@@ -35,118 +35,91 @@
       href: policy-samples.md
 - name: Pojęcia
   items:
-    - name: Grupy zabezpieczeń
-      href: security-overview.md
-    - name: Routing
-      href: virtual-networks-udr-overview.md
-    - name: Tagi usługi
-      href: service-tags-overview.md
-    - name: Punkty końcowe usługi
-      href: virtual-network-service-endpoints-overview.md
-    - name: Zasady punktów końcowych usługi
-      href: virtual-network-service-endpoint-policies-overview.md
-    - name: Komunikacja równorzędna
-      href: virtual-network-peering-overview.md
-    - name: Virtual Network TAP
-      href: virtual-network-tap-overview.md
-    - name: Sieć wirtualna dla usług platformy Azure
-      href: virtual-network-for-azure-services.md
-    - name: Sieć kontenerów
-      href: container-networking-overview.md
-    - name: Zasady sieciowe platformy Kubernetes
-      href: kubernetes-network-policies.md
     - name: Ciągłość działalności biznesowej
       href: virtual-network-disaster-recovery-guidance.md
-    - name: Adresowanie IP
-      href: virtual-network-ip-addresses-overview-arm.md
-    - name: Prefiks publicznego adresu IP
-      href: public-ip-address-prefix.md
-    - name: Protokół IPv6 dla sieci wirtualnej platformy Azure
-      href: ipv6-overview.md
-    - name: Prefiks publicznego adresu IPv6
-      href: ipv6-public-ip-address-prefix.md
-    - name: Ochrona przed atakami DDOS
-      href: ddos-protection-overview.md
-    - name: Rozszerzenie podsieci
-      href: subnet-extension.md
-    - name: Delegowanie podsieci
-      href: subnet-delegation-overview.md
-    - name: Współdziałanie łączności z zapleczem
+    - name: Łączność
       items:
-        - name: Wstęp i konfiguracja testu
-          href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: Ustawienia konfiguracji testu
-          href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: Analiza płaszczyzny kontroli
-          href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-        - name: Analiza płaszczyzny danych
-          href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-    - name: Łączność między sieciami
-      href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Współdziałanie łączności z zapleczem
+          items:
+            - name: Wstęp i konfiguracja testu
+              href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Ustawienia konfiguracji testu
+              href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Analiza płaszczyzny kontroli
+              href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: Analiza płaszczyzny danych
+              href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Sieć kontenerów
+          href: container-networking-overview.md
+        - name: Łączność między sieciami
+          href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Komunikacja równorzędna
+          href: virtual-network-peering-overview.md
+        - name: Sieć wirtualna dla usług platformy Azure
+          href: virtual-network-for-azure-services.md
+    - name: Usługi protokołu IP
+      items:
+        - name: Adresowanie IP
+          href: virtual-network-ip-addresses-overview-arm.md
+        - name: Prefiks publicznego adresu IP
+          href: public-ip-address-prefix.md
+        - name: Protokół IPv6 dla sieci wirtualnej platformy Azure
+          href: ipv6-overview.md
+        - name: Prefiks publicznego adresu IPv6
+          href: ipv6-public-ip-address-prefix.md
+    - name: Zabezpieczenia
+      items:
+        - name: Ochrona przed atakami DDOS
+          href: ddos-protection-overview.md
+        - name: Zasady sieciowe platformy Kubernetes
+          href: kubernetes-network-policies.md
+        - name: Routing
+          href: virtual-networks-udr-overview.md
+        - name: Grupy zabezpieczeń
+          href: security-overview.md
+        - name: Tagi usługi
+          href: service-tags-overview.md
+        - name: Punkty końcowe usługi
+          href: virtual-network-service-endpoints-overview.md
+        - name: Zasady punktów końcowych usługi
+          href: virtual-network-service-endpoint-policies-overview.md
+        - name: Virtual Network TAP
+          href: virtual-network-tap-overview.md
+    - name: Podsieci
+      items:
+        - name: Rozszerzenie podsieci
+          href: subnet-extension.md
+        - name: Delegowanie podsieci
+          href: subnet-delegation-overview.md
     - name: Wdrożenie klasyczne
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic'
 - name: Przewodniki z instrukcjami
   items:
-    - name: Planowanie
+    - name: Planowanie i konfigurowanie
       items:
         - name: Sieci wirtualne
           href: virtual-network-vnet-plan-design-arm.md
-        - name: Dostosowywanie wydajności protokołu TCP/IP dla maszyn wirtualnych platformy Azure
-          href: virtual-network-tcpip-performance-tuning.md
-    - name: Wdrażanie
+        - name: Rozpoznawanie nazw dla maszyn wirtualnych i usług w chmurze
+          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+        - name: Używanie dynamicznej usługi DNS z własnym serwerem DNS
+          href: virtual-networks-name-resolution-ddns.md
+        - name: Optymalizowanie przepływności sieci
+          href: virtual-network-optimize-network-bandwidth.md
+        - name: Wyświetlanie i modyfikowanie nazw hostów
+          href: virtual-networks-viewing-and-modifying-hostnames.md
+        - name: Dzienniki
+          href: virtual-network-nsg-manage-log.md
+    - name: Łączność
       items:
-        - name: Protokół IPv6 dla sieci wirtualnej
-          items:
-            - name: Publiczny moduł równoważenia obciążenia w warstwie Podstawowa
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: virtual-network-ipv4-ipv6-dual-stack-cli.md
-                - name: Szablon usługi Resource Manager
-                  href: ipv6-configure-template-json.md
-            - name: Dodawanie protokołu IPv6 do aplikacji obsługującej protokół IPv4
-              items:
-                - name: Azure PowerShell
-                  href: ipv6-add-to-existing-vnet-powershell.md
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: ipv6-add-to-existing-vnet-cli.md
-            - name: Publiczny moduł równoważenia obciążenia w warstwie Standardowa
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
-                - name: Szablon usługi Resource Manager
-                  href: ipv6-configure-standard-load-balancer-template-json.md
-            - name: Wewnętrzny moduł równoważenia obciążenia w warstwie Standardowa
-              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
-            - name: Zestaw skalowania maszyn wirtualnych z protokołem IPv6
-              href: ipv6-virtual-machine-scale-set.md
-        - name: Grupy zabezpieczeń sieci
-          items:
-            - name: Azure PowerShell
-              href: tutorial-filter-network-traffic-powershell.md
-            - name: Interfejs wiersza polecenia platformy Azure
-              href: tutorial-filter-network-traffic-cli.md
-        - name: Tabele tras
-          items:
-            - name: Azure PowerShell
-              href: tutorial-create-route-table-powershell.md
-            - name: Interfejs wiersza polecenia platformy Azure
-              href: tutorial-create-route-table-cli.md
-            - name: Ansible
-              href: /azure/ansible/ansible-create-configure-route-table
-              maintainContext: true
-        - name: Punkty końcowe usługi
-          items:
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Interfejs wiersza polecenia platformy Azure
-              href: tutorial-restrict-network-access-to-resources-cli.md
-        - name: Zasady punktów końcowych usługi — portal
-          href: virtual-network-service-endpoint-policies-portal.md
-        - name: Wirtualne sieci równorzędne
+        - name: Zarządzanie kartami interfejsów sieciowych
+          href: virtual-network-network-interface.md
+        - name: Zarządzanie siecią wirtualną
+          href: manage-virtual-network.md
+        - name: Zarządzanie podsieciami
+          href: virtual-network-manage-subnet.md
+        - name: Zarządzanie delegowaniem podsieci
+          href: manage-subnet-delegation.md
+        - name: Tworzenie komunikacji równorzędnych sieci wirtualnych
           items:
             - name: Ten sam model wdrażania — ta sama subskrypcja
               items:
@@ -160,59 +133,8 @@
               href: create-peering-different-deployment-models.md
             - name: Różne modele wdrażania — różne subskrypcje
               href: create-peering-different-deployment-models-subscriptions.md
-        - name: Virtual Network TAP
-          items:
-            - name: Interfejs wiersza polecenia platformy Azure
-              href: tutorial-tap-virtual-network-cli.md
-        - name: Sieć kontenerów
-          href: deploy-container-networking.md
-        - name: Maszyny wirtualne
-          items:
-            - name: Tworzenie maszyny wirtualnej — statyczny publiczny adres IP
-              items:
-                - name: Azure Portal
-                  href: virtual-network-deploy-static-pip-arm-portal.md
-                - name: Azure PowerShell
-                  href: virtual-network-deploy-static-pip-arm-ps.md
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: virtual-network-deploy-static-pip-arm-cli.md
-            - name: Dodawanie publicznego adresu IP do istniejącej maszyny wirtualnej
-              href: associate-public-ip-address-vm.md
-            - name: Usuwanie skojarzenia publicznego adresu IP z maszyną wirtualną
-              href: remove-public-ip-address-vm.md
-            - name: Tworzenie maszyny wirtualnej — statyczny prywatny adres IP
-              items:
-                - name: Azure Portal
-                  href: virtual-networks-static-private-ip-arm-pportal.md
-                - name: Azure PowerShell
-                  href: virtual-networks-static-private-ip-arm-ps.md
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: virtual-networks-static-private-ip-arm-cli.md
-            - name: Tworzenie maszyny wirtualnej — wiele interfejsów sieciowych
-              items:
-                - name: Azure PowerShell
-                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-            - name: Tworzenie maszyny wirtualnej — wiele adresów IP
-              items:
-                - name: Azure Portal
-                  href: virtual-network-multiple-ip-addresses-portal.md
-                - name: Azure PowerShell
-                  href: virtual-network-multiple-ip-addresses-powershell.md
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: virtual-network-multiple-ip-addresses-cli.md
-            - name: Tworzenie maszyny wirtualnej — przyspieszona sieć
-              items:
-                - name: Azure PowerShell
-                  href: create-vm-accelerated-networking-powershell.md
-                - name: Interfejs wiersza polecenia platformy Azure
-                  href: create-vm-accelerated-networking-cli.md
-                  items:
-                    - name: Instalacja zestawu DPDK
-                      href: setup-dpdk.md
-            - name: Przepływność sieci maszyny wirtualnej
-              href: virtual-machine-network-throughput.md
+        - name: Zarządzanie komunikacją równorzędnych sieci wirtualnych
+          href: virtual-network-manage-peering.md
         - name: Scenariusze łączności
           items:
             - name: Z sieci wirtualnej do sieci wirtualnej
@@ -225,58 +147,140 @@
               href: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json
             - name: Wysoko dostępna hybrydowa architektura sieci
               href: ../guidance/guidance-hybrid-network-expressroute-vpn-failover.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Konfigurowanie punktu dostępu terminalu sieci wirtualnej
+          href: tutorial-tap-virtual-network-cli.md
+        - name: Wdrażanie sieci kontenerów
+          href: deploy-container-networking.md
+    - name: Usługi protokołu IP
+      items:
+        - name: Protokół IPv6 dla sieci wirtualnej
+          items:
+            - name: Dodawanie protokołu IPv6 do aplikacji obsługującej protokół IPv4
+              items:
+                - name: Azure PowerShell
+                  href: ipv6-add-to-existing-vnet-powershell.md
+                - name: Interfejs wiersza polecenia platformy Azure
+                  href: ipv6-add-to-existing-vnet-cli.md
+            - name: Publiczny moduł równoważenia obciążenia w warstwie Podstawowa
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+                - name: Interfejs wiersza polecenia platformy Azure
+                  href: virtual-network-ipv4-ipv6-dual-stack-cli.md
+                - name: Szablon usługi Resource Manager
+                  href: ipv6-configure-template-json.md
+            - name: Publiczny moduł równoważenia obciążenia w warstwie Standardowa
+              items:
+                - name: Azure PowerShell
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+                - name: Interfejs wiersza polecenia platformy Azure
+                  href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+                - name: Szablon usługi Resource Manager
+                  href: ipv6-configure-standard-load-balancer-template-json.md
+            - name: Wewnętrzny moduł równoważenia obciążenia w warstwie Standardowa
+              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
+            - name: Zestaw skalowania maszyn wirtualnych z protokołem IPv6
+              href: ipv6-virtual-machine-scale-set.md
+            - name: Prefiks publicznego adresu IPv6
+              href: ipv6-reserve-public-ip-address-prefix.md
+        - name: Adresowanie IP
+          items:
+            - name: Zarządzanie publicznymi adresami IP
+              href: virtual-network-public-ip-address.md
+            - name: Zarządzanie prefiksami publicznych adresów IP
+              href: manage-public-ip-address-prefix.md
+            - name: Dodawanie lub usuwanie adresów IP z kart interfejsów sieciowych
+              href: virtual-network-network-interface-addresses.md
+    - name: Zabezpieczenia
+      items:
+        - name: Zarządzanie ochroną przed atakami DDoS
+          href: manage-ddos-protection.md
+        - name: Zarządzanie sieciowymi grupami zabezpieczeń
+          href: manage-network-security-group.md
+        - name: Dołączanie partnerów do usługi DDoS Protection w warstwie Standardowa
+          href: ddos-protection-partner-onboarding.md
+        - name: Filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń
+          items:
+            - name: Azure PowerShell
+              href: tutorial-filter-network-traffic-powershell.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: tutorial-filter-network-traffic-cli.md
+        - name: Kierowanie ruchu przy użyciu wirtualnego urządzenia sieciowego
+          items:
+            - name: Azure PowerShell
+              href: tutorial-create-route-table-powershell.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: tutorial-create-route-table-cli.md
+            - name: Ansible
+              href: /azure/ansible/ansible-create-configure-route-table
+              maintainContext: true
+        - name: Zarządzanie tabelami tras
+          href: manage-route-table.md
+        - name: Korzystanie z punktów końcowych usługi
+          items:
+            - name: Azure PowerShell
+              href: tutorial-restrict-network-access-to-resources-powershell.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: tutorial-restrict-network-access-to-resources-cli.md
+        - name: Tworzenie zasad punktów końcowych usługi — portal
+          href: virtual-network-service-endpoint-policies-portal.md
         - name: Scenariusze zabezpieczeń
           items:
             - name: Zabezpieczanie sieci przy użyciu urządzeń wirtualnych
               href: virtual-network-scenario-udr-gw-nva.md
             - name: Strefa DMZ między platformą Azure i Internetem
               href: ../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-    - name: Konfigurowanie
+    - name: Sieć maszyn wirtualnych
       items:
-        - name: Rozpoznawanie nazw dla maszyn wirtualnych i usług w chmurze
-          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
-        - name: Używanie dynamicznej usługi DNS z własnym serwerem DNS
-          href: virtual-networks-name-resolution-ddns.md
-        - name: Optymalizowanie przepływności sieci
-          href: virtual-network-optimize-network-bandwidth.md
-        - name: Wyświetlanie i modyfikowanie nazw hostów
-          href: virtual-networks-viewing-and-modifying-hostnames.md
-    - name: Zarządzanie
-      items:
-        - name: Sieci wirtualne
-          href: manage-virtual-network.md
+        - name: Tworzenie maszyny wirtualnej — statyczny publiczny adres IP
           items:
-            - name: Podsieci
-              href: virtual-network-manage-subnet.md
-            - name: Delegowanie podsieci
-              href: manage-subnet-delegation.md
-            - name: Komunikacja równorzędna
-              href: virtual-network-manage-peering.md
-            - name: Ochrona przed atakami DDOS
-              href: manage-ddos-protection.md
-            - name: Dołączanie partnerów do usługi DDoS Protection w warstwie Standardowa
-              href: ddos-protection-partner-onboarding.md
-        - name: Grupy zabezpieczeń sieci
-          href: manage-network-security-group.md
+            - name: Azure Portal
+              href: virtual-network-deploy-static-pip-arm-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-deploy-static-pip-arm-ps.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: virtual-network-deploy-static-pip-arm-cli.md
+            - name: Dodawanie publicznego adresu IP do istniejącej maszyny wirtualnej
+              href: associate-public-ip-address-vm.md
+            - name: Usuwanie skojarzenia publicznego adresu IP z maszyną wirtualną
+              href: remove-public-ip-address-vm.md
+        - name: Tworzenie maszyny wirtualnej — statyczny prywatny adres IP
           items:
-            - name: Dzienniki
-              href: virtual-network-nsg-manage-log.md
-        - name: Tabele tras
-          href: manage-route-table.md
-        - name: Sieć maszyny wirtualnej
+            - name: Azure Portal
+              href: virtual-networks-static-private-ip-arm-pportal.md
+            - name: Azure PowerShell
+              href: virtual-networks-static-private-ip-arm-ps.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: virtual-networks-static-private-ip-arm-cli.md
+        - name: Tworzenie maszyny wirtualnej — wiele adresów IP
           items:
-            - name: Tworzenie lub usuwanie interfejsu sieciowego
-              href: virtual-network-network-interface.md
+            - name: Azure Portal
+              href: virtual-network-multiple-ip-addresses-portal.md
+            - name: Azure PowerShell
+              href: virtual-network-multiple-ip-addresses-powershell.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: virtual-network-multiple-ip-addresses-cli.md
             - name: Dodawanie lub usuwanie interfejsów sieciowych
               href: virtual-network-network-interface-vm.md
-            - name: Dodawanie lub usuwanie adresów IP
-              href: virtual-network-network-interface-addresses.md
-        - name: Publiczne adresy IP
-          href: virtual-network-public-ip-address.md
-        - name: Prefiks publicznego adresu IP
-          href: manage-public-ip-address-prefix.md
-        - name: Prefiks publicznego adresu IPv6
-          href: ipv6-reserve-public-ip-address-prefix.md
+            - name: Tworzenie maszyny wirtualnej — wiele kart interfejsów sieciowych
+              items:
+                - name: Azure PowerShell
+                  href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Interfejs wiersza polecenia platformy Azure
+                  href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+        - name: Tworzenie maszyny wirtualnej — przyspieszona sieć
+          items:
+            - name: Azure PowerShell
+              href: create-vm-accelerated-networking-powershell.md
+            - name: Interfejs wiersza polecenia platformy Azure
+              href: create-vm-accelerated-networking-cli.md
+              items:
+                - name: Instalacja zestawu DPDK
+                  href: setup-dpdk.md
+        - name: Dostosowywanie wydajności protokołu TCP/IP dla maszyn wirtualnych platformy Azure
+          href: virtual-network-tcpip-performance-tuning.md
+        - name: Przepływność sieci maszyny wirtualnej
+          href: virtual-machine-network-throughput.md
     - name: Przechodzenie między regionami
       items:
         - name: Sieciowe grupy zabezpieczeń — portal
@@ -291,34 +295,6 @@
           href: move-across-regions-publicip-portal.md
         - name: Publiczne adresy IP — program PowerShell
           href: move-across-regions-publicip-powershell.md
-    - name: Rozwiązywanie problemów
-      items:
-        - name: Rozwiązywanie problemów dotyczących komunikacji równorzędnej sieci wirtualnych
-          href: virtual-network-troubleshoot-peering-issues.md
-        - name: Konfigurowanie i weryfikowanie połączeń sieci wirtualnej lub sieci VPN
-          href: virtual-network-configure-vnet-connections.md
-        - name: Grupy zabezpieczeń sieci
-          href: diagnose-network-traffic-filter-problem.md
-        - name: Trasy
-          href: diagnose-network-routing-problem.md
-        - name: Testowanie przepływności
-          href: virtual-network-bandwidth-testing.md
-        - name: Testowanie opóźnienia sieci maszyn wirtualnych
-          href: virtual-network-test-latency.md
-        - name: Nie można usunąć sieci wirtualnych
-          href: virtual-network-troubleshoot-cannot-delete-vnet.md
-        - name: Problemy z łącznością między maszynami wirtualnymi
-          href: virtual-network-troubleshoot-connectivity-problem-between-vms.md
-        - name: Konfigurowanie rekordu PTR na potrzeby kontroli baneru SMTP
-          href: create-ptr-for-smtp-service.md
-        - name: Lista kontrolna rozwiązywania problemów z urządzeniami wirtualnymi
-          href: virtual-network-troubleshoot-nva.md
-        - name: Rozwiązywanie problemów z wychodzącą łącznością SMTP
-          href: troubleshoot-outbound-smtp-connectivity.md
-        - name: Informacje o adresie IP 168.63.129.16
-          href: what-is-ip-address-168-63-129-16.md
-        - name: Rozwiązywanie problemów z łącznością z maszyną wirtualną platformy Azure
-          href: troubleshoot-vm-connectivity.md
     - name: Wdrożenie klasyczne
       href: 'https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic'
 - name: Dokumentacja

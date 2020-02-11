@@ -53,6 +53,9 @@
             - name: Wsadowe ocenianie modelu klasyfikacji
               displayName: pipelines
               href: tutorial-pipeline-batch-scoring-classification.md
+        - name: Przechodzenie od eksperymentu do produkcji
+          displayName: 'mlops, mlopspython, production'
+          href: tutorial-convert-ml-experiment-to-production.md
     - name: Zestaw SDK języka R
       items:
         - name: Tworzenie pierwszego eksperymentu uczenia maszynowego (R)
@@ -125,6 +128,8 @@
               href: how-to-enable-virtual-network.md
             - name: Zabezpieczanie usług internetowych przy użyciu protokołu SSL
               href: how-to-secure-web-service.md
+            - name: Korzystanie z tożsamości usługi Azure AD we wdrożeniach usługi AKS
+              href: how-to-use-azure-ad-identity.md
             - name: Ponowne generowanie kluczy dostępu do magazynu
               href: how-to-change-storage-access-key.md
         - name: Konfigurowanie uwierzytelniania
@@ -348,6 +353,8 @@
           href: how-to-create-your-first-pipeline.md
         - name: Planowanie potoku (Python)
           href: how-to-schedule-pipelines.md
+        - name: Wyzwalanie potoku
+          href: how-to-trigger-published-pipeline.md
         - name: Debugowanie potoków i rozwiązywanie związanych z nimi problemów
           href: how-to-debug-pipelines.md
         - name: Debugowanie potoków w usłudze Application Insights

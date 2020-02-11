@@ -255,8 +255,6 @@
         - name: Konfigurowanie koderów lokalnych do użycia z koderem w chmurze
           href: media-services-live-encoders-overview.md
           items:
-            - name: Koder FMLE
-              href: media-services-configure-fmle-live-encoder.md
             - name: Koder Haivision KB
               href: media-services-configure-kb-live-encoder.md
             - name: Koder NewTek TriCaster

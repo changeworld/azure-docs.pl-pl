@@ -5,7 +5,7 @@
     - name: Co to jest Azure Lighthouse?
       displayName: 'management at scale, service providers'
       href: overview.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Indeks
       displayName: 'template, sample'
@@ -44,6 +44,9 @@
     - name: Wyświetlanie klientów i zarządzanie nimi
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: Używanie dzienników usługi Azure Monitor na dużą skalę
+      displayName: 'log, analytics, analyze, activity'
+      href: ./how-to/monitor-at-scale.md
     - name: Integracja z usługą Azure Policy
       items:
         - name: Wdrażanie zasad w dużej skali

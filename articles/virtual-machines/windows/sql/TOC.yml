@@ -14,7 +14,7 @@
       href: quickstart-sql-vm-create-powershell.md
 - name: Pojęcia
   items:
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       items:
         - name: Najlepsze rozwiązania w zakresie wydajności
           href: virtual-machines-windows-sql-performance.md
@@ -97,6 +97,8 @@
               href: virtual-machines-windows-sql-availability-group-quickstart-template.md
             - name: Wiele regionów
               href: virtual-machines-windows-portal-sql-availability-group-dr.md
+            - name: Niezależne od domeny (grupa robocza)
+              href: virtual-machines-windows-sql-workgroup-availability-group.md
             - name: Konfigurowanie ręczne
               items:
                 - name: Wymagania wstępne
