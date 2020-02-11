@@ -73,7 +73,7 @@ Można skonfigurować zasady filtrowania geograficznego dla drzwi z przodu przy 
 | CZ | Czechy|
 | DE | Niemcy|
 | DK | Dania|
-| DO | Republika Dominikańska|
+| DO | Dominikana|
 | DZ | Algieria|
 | EC | Ekwador|
 | EE | Estonia|

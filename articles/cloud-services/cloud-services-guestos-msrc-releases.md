@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/24/2020
+ms.date: 02/07/2020
 ms.author: raiye
-ms.openlocfilehash: a38685ba4cca4df2c2ae1a52e46626072135408d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: HT
+ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049875"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087230"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Response Center (MSRC) zastosowane do systemu operacyjnego gościa platformy Azure. Przeszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczy systemu operacyjnego gościa, którego używasz. Aktualizacje są zawsze przenoszone dla określonej [rodziny][family-explain] , w której zostały wprowadzone.
@@ -42,9 +42,9 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 |  Rel 20-01  |  [4494174]  |  Włączenia mikrokodu v4  | [6,15] | 29 sierpnia 2019 |
 |  Rel 20-01  |  [4532947]  |  Zabezpieczenia systemu Windows  | [6,15] | 14 stycznia 2020 |
 |  Rel 20-01  |  [4534273]  |  LCU  | [6,15] | 14 stycznia 2020 |
-|  Rel 20-01  |  [4530734]  |  Niezwiązane z zabezpieczeniami  | [2,94] | 10 grudnia 2019 |
+|  Rel 20-01  |  [4530734]  |  Zestawienie miesięczne  | [2,94] | 10 grudnia 2019 |
 |  Rel 20-01  |  [4530691]  |  Zestawienie miesięczne   | [3,81] | 10 grudnia 2019 |
-|  Rel 20-01  |  [4530702]  |  Niezwiązane z zabezpieczeniami  | [4,74] | 10 grudnia 2019 |
+|  Rel 20-01  |  [4530702]  |  Zestawienie miesięczne  | [4,74] | 10 grudnia 2019 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251
@@ -218,10 +218,10 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 |  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 i 4.7.2   |  [6,11]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4516044]  |  Najnowsza aktualizacja zbiorcza   |  [5,35]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4516064]  |  Zabezpieczenia systemu Windows   |  [4,70]  |  Września 10, 2019  |
-|  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4,70]  |  Września 10, 2019  |
+|  Rel 19-09   |  [4514350]  |  Program .NET Framework 3,5   |  [4,70]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4,70]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4516062]  |  Zabezpieczenia systemu Windows   |  [3,77]  |  Września 10, 2019  |
-|  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3,77]  |  Września 10, 2019  |
+|  Rel 19-09   |  [4514349]  |  Program .NET Framework 3,5   |  [3,77]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3,77]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4516033]  |  Zabezpieczenia systemu Windows   |  [2,90]  |  Września 12, 2019  |
 |  Rel 19-09   |  [4512488]  |  Niezwiązane z zabezpieczeniami   |  [4,70]  |  13 sierpnia 2019  |

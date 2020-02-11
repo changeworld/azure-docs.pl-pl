@@ -131,7 +131,7 @@ W poniższej tabeli przedstawiono różne regiony, które można określić dla 
 | CY         | Cypr               | EUR               |
 | CZ         | Czechy       | CZK               |
 | DK         | Dania              | DKK               |
-| DO         | Republika Dominikańska   | USD               |
+| DO         | Dominikana   | USD               |
 | EC         | Ekwador              | USD               |
 | EG         | Egipt                | EGP               |
 | SV         | Salwador          | USD               |
