@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: a48ce60dca9f4221e364d53567f5b53719deb18c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 443b021b266a202775e94e44acac3a91a2b70617
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314525"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137584"
 ---
 # <a name="apply-transformation-module"></a>Zastosuj przekształcenie modułu
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do modyfikowania wejściowego zestawu danych na podstawie wcześniej obliczonego przekształcenia.  
   
@@ -32,9 +32,9 @@ Azure Machine Learning zapewnia obsługę tworzenia i stosowania wielu różnych
 
 ## <a name="how-to-use-apply-transformation"></a>Jak używać transformacji zastosowania  
   
-1. Dodaj moduł **przekształcenia Zastosuj** do potoku. Ten moduł można znaleźć w obszarze **Machine Learning**, w kategorii **wynik** . 
+1. Dodaj moduł **przekształcenia Zastosuj** do potoku. Ten moduł można znaleźć w kategorii **oceny &** oceniania. 
   
-2. Znajdź istniejącą transformację do użycia jako dane wejściowe.  Wcześniej zapisane przekształcenia można znaleźć w grupie **transformacje** w okienku nawigacji po lewej stronie.  
+2. Znajdź istniejącą transformację do użycia jako dane wejściowe. Wcześniej zapisane przekształcenia można znaleźć w grupie **Moje zestawy danych** w obszarze Kategorie **zestawów danych** w lewym drzewie modułu.  
   
    
   

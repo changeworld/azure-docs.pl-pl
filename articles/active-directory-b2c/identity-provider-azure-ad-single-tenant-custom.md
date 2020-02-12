@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1802c3a92ed18dec5cba974c54c92f01324245eb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 64934dd5bc591415c0bad6ac3dc6a4a2d98dd005
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847617"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136305"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konta Azure Active Directory przy użyciu zasad niestandardowych w programie Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure 
 
 Aby włączyć Logowanie użytkowników z określonej organizacji usługi Azure AD, musisz zarejestrować aplikację w ramach organizacji dzierżawy usługi Azure AD.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Upewnij się, że używasz katalogu zawierającego swoją organizacyjną dzierżawę usługi Azure AD (na przykład contoso.com). Wybierz **Filtr katalog + subskrypcja** w górnym menu, a następnie wybierz katalog zawierający dzierżawę usługi Azure AD.
 1. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 1. Wybierz pozycję **Nowa rejestracja**.
@@ -49,6 +49,19 @@ Aby włączyć Logowanie użytkowników z określonej organizacji usługi Azure 
 1. Wybierz pozycję **Zarejestruj**. Zapisz **Identyfikator aplikacji (klienta)** do użycia w późniejszym kroku.
 1. Wybierz pozycję **certyfikaty & wpisy tajne**, a następnie wybierz pozycję **nowy klucz tajny klienta**.
 1. Wprowadź **Opis** wpisu tajnego, wybierz pozycję Wygaśnięcie, a następnie wybierz pozycję **Dodaj**. Zapisz **wartość** wpisu tajnego do użycia w późniejszym kroku.
+
+## <a name="configuring-optional-claims"></a>Konfigurowanie oświadczeń opcjonalnych
+
+Jeśli chcesz uzyskać `family_name` i `given_name` oświadczenia z usługi Azure AD, możesz skonfigurować opcjonalne oświadczenia dla aplikacji w Azure Portal interfejsie użytkownika lub manifeście aplikacji. Aby uzyskać więcej informacji, zobacz [jak dostarczyć opcjonalne oświadczenia do aplikacji usługi Azure AD](../active-directory/develop/active-directory-optional-claims.md).
+
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wyszukaj i wybierz **Azure Active Directory**.
+1. W sekcji **Zarządzanie** wybierz pozycję **rejestracje aplikacji**.
+1. Wybierz aplikację, dla której chcesz skonfigurować oświadczenia opcjonalne.
+1. W sekcji **Zarządzanie** wybierz pozycję **Konfiguracja tokenu (wersja zapoznawcza)** .
+1. Wybierz pozycję **Dodaj opcjonalne**pole.
+1. Wybierz typ tokenu, który chcesz skonfigurować.
+1. Wybierz opcjonalne oświadczenia do dodania.
+1. Kliknij pozycję **Add** (Dodaj).
 
 ## <a name="create-a-policy-key"></a>Tworzenie klucza zasad
 
@@ -73,23 +86,20 @@ Usługę Azure AD można zdefiniować jako dostawcę oświadczeń, dodając usł
 1. Otwórz plik *TrustFrameworkExtensions. XML* .
 2. Znajdź element **ClaimsProviders** . Jeśli nie istnieje, Dodaj ją do elementu głównego.
 3. Dodaj nową **ClaimsProvider** w następujący sposób:
-
-    ```XML
+    ```xml
     <ClaimsProvider>
       <Domain>Contoso</Domain>
       <DisplayName>Login using Contoso</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="ContosoProfile">
+        <TechnicalProfile Id="OIDC-Contoso">
           <DisplayName>Contoso Employee</DisplayName>
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration</Item>
-            <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
-            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="METADATA">https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration</Item>
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="response_types">code</Item>
-            <Item Key="scope">openid</Item>
+            <Item Key="scope">openid profile</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="UsePolicyInRedirectUri">false</Item>
@@ -125,12 +135,11 @@ Usługę Azure AD można zdefiniować jako dostawcę oświadczeń, dodając usł
 
 Aby uzyskać token z punktu końcowego usługi Azure AD, należy zdefiniować protokoły, które Azure AD B2C powinny być używane do komunikacji z usługą Azure AD. Jest to wykonywane w elemencie **profilu technicznym** elementu **ClaimsProvider**.
 
-1. Zaktualizuj identyfikator elementu **profilu technicznym** . Ten identyfikator służy do odwoływania się do tego profilu technicznego z innych części zasad.
+1. Zaktualizuj identyfikator elementu **profilu technicznym** . Ten identyfikator służy do odwoływania się do tego profilu technicznego z innych części zasad, na przykład `OIDC-Contoso`.
 1. Zaktualizuj wartość parametru **DisplayName**. Ta wartość będzie wyświetlana na przycisku logowania na ekranie logowania.
 1. Zaktualizuj wartość w polu **Opis**.
 1. Usługa Azure AD korzysta z protokołu Connect OpenID Connect, więc upewnij się, że wartość **protokołu** jest `OpenIdConnect`.
-1. Ustaw wartość **metadanych** do `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`, gdzie `your-AD-tenant-name` jest nazwą dzierżawy usługi Azure AD. Na przykład: `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
-1. Otwórz przeglądarkę i przejdź do adresu URL **metadanych** , który właśnie został zaktualizowany, Wyszukaj obiekt **Issuer** , a następnie skopiuj i wklej wartość do wartości **ProviderName** w pliku XML.
+1. Ustaw wartość **metadanych** do `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`, gdzie `tenant-name` jest nazwą dzierżawy usługi Azure AD. Na przykład: `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 1. Ustaw **client_id** na identyfikator aplikacji z rejestracji aplikacji.
 1. W obszarze **CryptographicKeys**zaktualizuj wartość **identyfikatorze storagereferenceid** do nazwy utworzonego wcześniej klucza zasad. Na przykład `B2C_1A_ContosoAppSecret`.
 
@@ -171,10 +180,10 @@ Teraz, gdy masz już przycisk, musisz połączyć go z akcją. W tym przypadku a
 1. Dodaj następujący element **ClaimsExchange** , aby upewnić się, że używasz tej samej wartości dla **identyfikatora** , który został użyty dla **TargetClaimsExchangeId**:
 
     ```XML
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
+    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
     ```
 
-    Zaktualizuj wartość **TechnicalProfileReferenceId** na **Identyfikator** utworzonego wcześniej profilu technicznego. Na przykład `ContosoProfile`.
+    Zaktualizuj wartość **TechnicalProfileReferenceId** na **Identyfikator** utworzonego wcześniej profilu technicznego. Na przykład `OIDC-Contoso`.
 
 1. Zapisz plik *TrustFrameworkExtensions. XML* i przekaż go ponownie w celu weryfikacji.
 

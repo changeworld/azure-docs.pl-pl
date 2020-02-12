@@ -6,25 +6,25 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 46034c8392dc1720fe5e03fc5e419dba6ed20e0b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5851b294e52fdcc03dbf3b889ff32898a823f655
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314474"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137567"
 ---
 # <a name="clean-missing-data-module"></a>Wyczyść nieobecny moduł danych
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do usuwania, zastępowania lub wnioskowania brakujących wartości. 
 
 Analityki danych często sprawdzają dane pod kątem brakujących wartości, a następnie wykonują różne operacje, aby naprawić dane lub wstawić nowe wartości. Celem takich operacji czyszczenia jest zapobieganie problemom spowodowanym brakiem danych, które mogą wystąpić podczas uczenia modelu. 
 
-Ten moduł obsługuje wiele typów operacji w przypadku braku wartości "czyszczących", w tym:
+Ten moduł obsługuje wiele typów operacji czyszczenia brakujących wartości, takich jak:
 
 + Zastępowanie brakujących wartości symbolem zastępczym, średnim lub inną wartością
 + Całkowite usuwanie wierszy i kolumn, które mają brakujące wartości
@@ -37,11 +37,11 @@ Ten moduł również wyprowadza definicję przekształcenia użytego do oczyszcz
 
 ## <a name="how-to-use-clean-missing-data"></a>Jak używać czystego brakujących danych
 
-Ten moduł umożliwia zdefiniowanie operacji czyszczenia. Możesz również zapisać operację czyszczenia, aby później można było zastosować ją do nowych danych. Aby uzyskać opis sposobu tworzenia i zapisywania procesu czyszczenia, zobacz następujące linki: 
+Ten moduł umożliwia zdefiniowanie operacji czyszczenia. Możesz również zapisać operację czyszczenia, aby później można było zastosować ją do nowych danych. Zapoznaj się z następującymi sekcjami, jak utworzyć i zapisać proces czyszczenia: 
  
-+ Aby zastąpić brakujące wartości
++ [Aby zastąpić brakujące wartości](#replace-missing-values)
   
-+ Aby zastosować transformację czyszczącą do nowych danych
++ [Aby zastosować transformację czyszczącą do nowych danych](#apply-a-saved-cleaning-operation-to-new-data)
  
 > [!IMPORTANT]
 > Metoda czyszcząca używana do obsługi brakujących wartości może znacząco wpłynąć na wyniki. Zalecamy, aby eksperymentować z różnymi metodami. Rozważ zarówno uzasadnienie użycia określonej metody, jak i jakość wyników.
@@ -56,12 +56,9 @@ Za każdym razem, gdy moduł [czystych danych](./clean-missing-data.md) nie zost
 
     Na przykład, aby sprawdzić brakujące wartości we wszystkich kolumnach liczbowych:
 
-    1. Otwórz selektor kolumny i wybierz pozycję **z regułami**.
-    2. W obszarze **Rozpocznij**od wybierz pozycję **brak kolumn**.
+    1. Wybierz **czysty moduł danych** , a następnie kliknij pozycję **Edytuj kolumnę** w prawym panelu modułu.
 
-        Możesz również zacząć od wszystkich kolumn, a następnie wykluczać kolumny. Początkowo reguły nie są wyświetlane, jeśli najpierw klikniesz pozycję **wszystkie kolumny**, ale możesz kliknąć opcję **brak kolumn** , a następnie ponownie kliknąć pozycję **wszystkie kolumny** , aby rozpocząć od wszystkich kolumn, a następnie odfiltrować (Wyklucz) kolumny na podstawie nazwy, typu danych lub indeksu kolumn.
-
-    3. W polu **Uwzględnij**wybierz pozycję **Typ kolumny** na liście rozwijanej, a następnie wybierz wartość **numeryczną**lub bardziej konkretny typ liczbowy. 
+    3. W polu **Uwzględnij**wybierz opcję **typy kolumn** z listy rozwijanej, a następnie wybierz wartość **numeryczną**. 
   
     Wszystkie wybrane metody czyszczenia lub zamiany muszą być stosowane do **wszystkich** kolumn w zaznaczeniu. Jeśli dane w dowolnej kolumnie są niezgodne z określoną operacją, moduł zwróci błąd i zatrzyma potok.
   
@@ -109,7 +106,7 @@ Za każdym razem, gdy moduł [czystych danych](./clean-missing-data.md) nie zost
   
 6. **Wartość zastępcza** opcji jest dostępna w przypadku wybrania opcji, **niestandardowej wartości podstawienia**. Wpisz nową wartość, która będzie używana jako wartość zastępcza dla wszystkich brakujących wartości w kolumnie.  
   
-    Należy pamiętać, że można użyć tej opcji tylko w kolumnach, które mają typy danych Integer, Double, Boolean lub Date. W przypadku kolumn dat wartość zastępcza może być również wprowadzana jako liczba taktów 100-nanosekund od 1/1/0001 12:00 rano  
+    Należy pamiętać, że można użyć tej opcji tylko w kolumnach, które mają liczbę całkowitą, podwójną, logiczną lub ciąg.
   
 7. **Generuj kolumnę wskaźnika brakującej wartości**: zaznacz tę opcję, jeśli chcesz, aby dane wyjściowe wskazywały, czy wartości w kolumnie spełniały kryteria czyszczenia wartości brakujące. Ta opcja jest szczególnie przydatna podczas konfigurowania nowej operacji czyszczenia i upewnienia się, że działa ona zgodnie z założeniami.
   

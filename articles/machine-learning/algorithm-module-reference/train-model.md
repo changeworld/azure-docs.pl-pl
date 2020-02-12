@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548411"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137915"
 ---
 # <a name="train-model-module"></a>Train Model modułu
 
@@ -39,7 +39,7 @@ W Azure Machine Learning tworzenie i Używanie modelu uczenia maszynowego jest z
 
 3. Po zakończeniu szkolenia Użyj modelu przeszkolonego z jednym z [modułów oceniania](./score-model.md), aby tworzyć przewidywania dotyczące nowych danych.
 
-## <a name="how-to-use-train-model"></a>Jak używać **modelu uczenia**  
+## <a name="how-to-use-train-model"></a>Jak używać modelu uczenia 
   
 1.  W Azure Machine Learning Skonfiguruj model klasyfikacji lub model regresji.
     
@@ -49,7 +49,7 @@ W Azure Machine Learning tworzenie i Używanie modelu uczenia maszynowego jest z
 
     Zestaw danych szkoleniowych musi zawierać kolumnę Label. Wszystkie wiersze bez etykiet są ignorowane.
   
-4.  Dla **kolumny etykieta**kliknij pozycję **Uruchom selektor kolumny**i wybierz pojedynczą kolumnę zawierającą wyniki, które będą używane przez model do szkoleń.
+4.  Dla **kolumny etykieta**kliknij pozycję **Edytuj kolumnę** w prawym panelu modułu, a następnie wybierz pojedynczą kolumnę zawierającą wyniki, które będą używane przez model do szkoleń.
   
     - W przypadku problemów z klasyfikacją kolumna Label musi zawierać wartości **kategorii** lub wartości **dyskretnych** . Niektóre przykłady mogą być klasyfikacją tak/bez, kodem klasyfikacji lub grupą przychodów.  W przypadku wybrania kolumny noncategorical moduł zwróci błąd podczas szkolenia.
   

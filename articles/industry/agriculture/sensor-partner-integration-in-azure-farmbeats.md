@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ef84c5f1d1c3f3b9e7cd76d7fab327426ea6e313
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530650"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132827"
 ---
 # <a name="sensor-partner-integration"></a>Integracja z partnerami obsługującymi czujniki
 
@@ -92,7 +92,7 @@ Poniżej znajdują się najczęstsze nagłówki żądań, które należy określ
 --- | ---
 Content-Type | Format żądania (Content-Type: Application/<format>). W przypadku interfejsów API usługi FarmBeats Data Hub format jest JSON. Content-Type: Application/JSON
 Autoryzacja | Określa token dostępu wymagany do wywołania interfejsu API. Autoryzacja: < tokenu dostępu >
-Zaakceptuj | Format odpowiedzi. W przypadku interfejsów API usługi FarmBeats Data Hub format jest JSON. Akceptuj: Application/JSON
+Akceptuj | Format odpowiedzi. W przypadku interfejsów API usługi FarmBeats Data Hub format jest JSON. Akceptuj: Application/JSON
 
 **Żądania interfejsu API**
 
@@ -132,16 +132,16 @@ FarmBeats Data Hub udostępnia następujące interfejsy API, które umożliwiaj�
   Producent  | Nazwa producenta |
   ProductCode  | Kod produktu urządzenia lub nazwa modelu lub numer. Na przykład EnviroMonitor # 6800. |
   Porty  | Nazwa i typ portu, które są cyfrowe lub analogowe.  |
-  Nazwa  | Nazwa identyfikująca zasób. Na przykład nazwa modelu lub nazwa produktu. |
+  Name (Nazwa)  | Nazwa identyfikująca zasób. Na przykład nazwa modelu lub nazwa produktu. |
   Opis  | Podaj znaczący opis modelu. |
   Właściwości  | Dodatkowe właściwości producenta. |
-  **urządzenia** |  |
+  **Pliku** |  |
   DeviceModelId  |Identyfikator skojarzonego modelu urządzenia. |
   HardwareId   |Unikatowy identyfikator urządzenia, na przykład adres MAC.  |
   ReportingInterval |Interwał raportowania (w sekundach). |
   Lokalizacja    |Urządzenia Latitude (-90 do + 90), długości geograficznej (-180 do 180) i podniesienia uprawnień (w metrach). |
   ParentDeviceId | Identyfikator urządzenia nadrzędnego, z którym jest połączone to urządzenie. Na przykład jeśli węzeł jest połączony z bramą, węzeł ma parentDeviceID jako bramę. |
-  Nazwa  | Nazwa identyfikująca zasób. Partnerzy urządzeń muszą wysłać nazwę zgodną z nazwą urządzenia po stronie partnera urządzeń. Jeśli nazwa urządzenia jest zdefiniowana przez użytkownika po stronie partnera urządzeń, ta sama nazwa zdefiniowana przez użytkownika powinna być propagowana do FarmBeats.  |
+  Name (Nazwa)  | Nazwa identyfikująca zasób. Partnerzy urządzeń muszą wysłać nazwę zgodną z nazwą urządzenia po stronie partnera urządzeń. Jeśli nazwa urządzenia jest zdefiniowana przez użytkownika po stronie partnera urządzeń, ta sama nazwa zdefiniowana przez użytkownika powinna być propagowana do FarmBeats.  |
   Opis  | Podaj znaczący opis.  |
   Właściwości  |Dodatkowe właściwości producenta.  |
   **SensorModel** |  |
@@ -155,7 +155,7 @@ FarmBeats Data Hub udostępnia następujące interfejsy API, które umożliwiaj�
   SensorMeasures > agregacji  | None, Average, maksimum, minimum lub StandardDeviation.
   Głębokość > SensorMeasures  | Głębokość czujnika w centymetrach. Na przykład pomiar wilgoci 10 cm pod ziemią.
   SensorMeasures > Opis  | Podaj znaczący opis miary.
-  Nazwa  | Nazwa identyfikująca zasób. Na przykład nazwa modelu lub nazwa produktu.
+  Name (Nazwa)  | Nazwa identyfikująca zasób. Na przykład nazwa modelu lub nazwa produktu.
   Opis  | Podaj znaczący opis modelu.
   Właściwości  | Dodatkowe właściwości producenta.
   **Czujnik**  |  |
@@ -164,7 +164,7 @@ FarmBeats Data Hub udostępnia następujące interfejsy API, które umożliwiaj�
   Lokalizacja  | Czujnik Latitude (-90 do + 90), Długość geograficzna (-180 do 180) i podniesienie (w metrach).
   Nazwa > portu  |Nazwa i typ portu, z którym jest połączony czujnik na urządzeniu. Ta nazwa musi być taka sama jak zdefiniowana w modelu urządzenia.
   DeviceId  | Identyfikator urządzenia, z którym jest połączony czujnik.
-  Nazwa  | Nazwa identyfikująca zasób. Na przykład nazwa czujnika lub nazwa produktu oraz numer modelu lub kod produktu.
+  Name (Nazwa)  | Nazwa identyfikująca zasób. Na przykład nazwa czujnika lub nazwa produktu oraz numer modelu lub kod produktu.
   Opis  | Podaj znaczący opis.
   Właściwości  | Dodatkowe właściwości producenta.
 
@@ -345,4 +345,4 @@ Producenci urządzeń lub partnerzy mogą użyć poniższej listy kontrolnej, ab
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat interfejsu API REST, zobacz [interfejs API REST](references-for-azure-farmbeats.md#rest-api).
+Aby uzyskać więcej informacji na temat interfejsu API REST, zobacz [interfejs API REST](rest-api-in-azure-farmbeats.md).

@@ -159,7 +159,7 @@ Planista wdrażania usługi Azure Site Recovery może wygenerować raport koszt�
 |KRW|Won koreański (₩)||MXN|Peso meksykańskie (MXN$)||MYR|Ringgit malezyjski (RM$)|
 |NOK|Korona norweska (kr)||NZD|Dolar nowozelandzki ($)||RUB|Rubel rosyjski (руб)|
 |SAR|Rial saudyjski (SR)||SEK|Korona szwedzka (kr)||TWD|Dolar tajwański (NT$)|
-|TRY|Lira turecka (TL)||USD| Dolar amerykański ($)||ZAR|Rand RPA (R)|
+|TRY|Lira turecka (TL)||USD| Dolar amerykański ($)||ZAR|Rand południowoafrykański (R)|
 
 ## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej na temat ochrony [maszyn wirtualnych VMware na platformie Azure przy użyciu usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure).

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 25dd4810cf8cccab8bcbf211da4f6abbcd147056
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40659414848adb9be86b6163cf456809e9cb750f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020033"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134590"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Samouczek: Tworzenie puli hostów przy użyciu witryny Azure Marketplace
 
@@ -32,9 +32,9 @@ Przed rozpoczęciem [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do [Portalu Azure](https://portal.azure.com).
+Zaloguj się do [Azure portal](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Uruchamianie oferty portalu Azure Marketplace w celu aprowizacji nowej puli hostów
 
@@ -65,6 +65,10 @@ Oto co należy zrobić w przypadku bloku **podstawy** :
 W bloku **Konfiguruj maszyny wirtualne** :
 
 1. Zaakceptuj wartości domyślne lub Dostosuj liczbę i rozmiar maszyn wirtualnych.
+    
+    >[!NOTE]
+    >Jeśli określony rozmiar maszyny wirtualnej nie jest wyświetlany w selektorze rozmiaru maszyny wirtualnej, jest to spowodowane tym, że nie zostało to jeszcze zrobione w narzędziu Azure Marketplace. Aby zażądać rozmiaru maszyny wirtualnej, Utwórz żądanie lub zagłosuj na istniejące żądanie na [forum Windows Virtual Desktop UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    
 2. Wprowadź prefiks nazw maszyn wirtualnych. Na przykład w przypadku wprowadzenia nazwy "prefiks" maszyny wirtualne będą nazywane "prefiksem-0", "prefiksem-1" i tak dalej.
 3. Wybierz pozycję **Dalej: ustawienia maszyny wirtualnej**.
 

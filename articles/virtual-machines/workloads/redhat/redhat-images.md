@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 211ac68fd10cd745faf68a5efae7392345008d7b
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 5ed5d9337dd4e7acdbba25c4cb66d2690793f250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941447"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134390"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Przegląd obrazów Red Hat Enterprise Linux
 W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące ich nazewnictwa i przechowywania.
@@ -30,7 +30,7 @@ Informacje o zasadach obsługi systemu Red Hat dla wszystkich wersji programu RH
 >[!NOTE]
 > Wszelkie problemy związane z obrazami RHEL w portalu Azure Marketplace można znaleźć na stronie pomocy technicznej firmy Microsoft.
 
-## <a name="images-available-in-azure"></a>Obrazy dostępne na platformie Azure
+## <a name="viewing-images-available-in-azure"></a>Wyświetlanie obrazów dostępnych na platformie Azure
 Podczas wyszukiwania "Red Hat" w portalu Marketplace lub podczas tworzenia zasobu w Azure Portal interfejsie użytkownika zobaczysz tylko podzestaw wszystkich dostępnych obrazów RHEL. Pełny zestaw dostępnych obrazów maszyn wirtualnych można zawsze uzyskać przy użyciu interfejsu wiersza polecenia platformy Azure/programu PowerShell/interfejsu API.
 
 Aby wyświetlić pełny zestaw dostępnych obrazów Red Hat na platformie Azure, uruchom następujące polecenie:
@@ -60,45 +60,48 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:lat
 
 >[!NOTE]
 > Ogólnie porównanie wersji do określenia najnowszych jest zgodne z regułami [metody CompareTo](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
+To porównanie wersji obrazu jest wykonywane przez porównanie wartości jako obiektu [wersji](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) — nie jako ciągu.
 
-### <a name="rhel-6-image-types"></a>RHEL 6 — typy obrazów
+## <a name="rhel-6-image-types"></a>RHEL 6 — typy obrazów
 W przypadku obrazów RHEL 6. x typy obrazów są następujące:
 
-|Publisher | Oferta | Wartość jednostki SKU | Wersja | Szczegóły
+|Wydawca | Oferta | Wartość jednostki SKU | Wersja | Szczegóły
 |----------|-------|-----------|---------|--------
-|RedHat | RHEL | Wersja pomocnicza (np. 6,9) | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 6.9.2018010506) | Wszystkie obrazy standardowego RHEL 6. x są zgodne z tą konwencją
-|RedHat | RHEL — BYOS | RHEL — raw69 | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 6.9.20181023) | Ten obraz jest obrazem RHEL 6,9 BYOS.
-|RedHat | RHEL | RHEL — SAP-APPS | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 6.8.2017053118) | Jest to obraz RHEL 6,8 for SAP Applications. Jest on uprawniony do uzyskiwania dostępu do repozytoriów aplikacji SAP, a także podstawowych repozytoriów RHEL.
-|RedHat | RHEL | RHEL-SAP-HANA | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 6.7.2017053121) | Jest to RHEL 6,7 dla obrazu SAP HANA. Jest on uprawniony do uzyskiwania dostępu SAP HANA repozytoriów, a także podstawowych repozytoriów RHEL.
+|Redhat | RHEL | Wersja pomocnicza (np. 6,9) | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 6.9.2018010506) | Wszystkie obrazy standardowego RHEL 6. x są zgodne z tą konwencją
+|Redhat | RHEL — BYOS | RHEL — raw69 | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 6.9.20181023) | Ten obraz jest obrazem RHEL 6,9 BYOS.
+|Redhat | RHEL | RHEL — SAP-APPS | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 6.8.2017053118) | Jest to obraz RHEL 6,8 for SAP Applications. Jest on uprawniony do uzyskiwania dostępu do repozytoriów aplikacji SAP, a także podstawowych repozytoriów RHEL.
+|Redhat | RHEL | RHEL-SAP-HANA | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 6.7.2017053121) | Jest to RHEL 6,7 dla obrazu SAP HANA. Jest on uprawniony do uzyskiwania dostępu SAP HANA repozytoriów, a także podstawowych repozytoriów RHEL.
 
-### <a name="rhel-7-image-types"></a>RHEL 7 — typy obrazów
+## <a name="rhel-7-image-types"></a>RHEL 7 — typy obrazów
 W przypadku obrazów RHEL 7. x istnieje kilka różnych typów obrazów. W poniższej tabeli przedstawiono różne zestawy oferowanych przez nas obrazów. Pełną listę można wyświetlić za pomocą polecenia AZ CLI `az vm image list --publisher redhat --all`.
 
 >[!NOTE]
 > O ile nie wskazano inaczej, wszystkie obrazy są LVM na partycje i będą łączyć się z regularnymi repozytoriami RHEL (tj. nie EUS, a nie E4S). Przechodząc do przodu, przejdziemy do publikowania tylko LVM obrazów z podziałem na partycje, ale są otwarte do przesyłania opinii na temat tej decyzji. Szczegółowe informacje na temat rozszerzonej obsługi aktualizacji i usług aktualizacji dla oprogramowania SAP są dostępne na [stronie cykl życia Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata).
 
-|Publisher | Oferta | Wartość jednostki SKU | Wersja | Szczegóły
+|Wydawca | Oferta | Wartość jednostki SKU | Wersja | Szczegóły
 |----------|-------|------------|---------|--------
-|RedHat | RHEL | Wersja pomocnicza (np. 7,6) | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019102813) | Obrazy opublikowane przed 2019 kwietnia zostaną dołączone do standardowych repozytoriów RHEL. Obrazy opublikowane po kwietnia 2019 zostaną dołączone do repozytoriów pomocy technicznej aktualizacji programu Red Hat (EUS) w celu umożliwienia blokowania wersji określonej wersji pomocniczej. Klienci chcący regularne repozytoria powinni używać obrazów zawierających 7-LVM lub 7-RAW w wartości SKU (szczegóły poniżej). Obrazy RHEL 7,7 i nowsze będą LVM z podziałem na partycje. Wszystkie inne obrazy z tej kategorii są podzielone na partycje.
-|RedHat | RHEL | 7 — NIEPRZETWORZONY | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019102813) | Obrazy te są podzielone na partycje (tj. żadne woluminy logiczne nie zostały dodane).
-|RedHat | RHEL | 7-RAW-CI | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019072418) | Obrazy te są podzielone na partycje (tj. żadne woluminy logiczne nie zostały dodane) i będą używać usługi Cloud-init do aprowizacji.
-|RedHat | RHEL | 7 — LVM | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019062414) | Te obrazy są LVM na partycje.
-|RedHat | RHEL — BYOS | RHEL — {LVM, RAW} | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.7.20190819) | Te obrazy to obrazy w programie RHEL 7 BYOS. Nie są one dołączone do żadnych repozytoriów i nie będą naliczane opłaty za usługę RHEL Premium. Jeśli interesują Cię obrazy RHEL BYOS, [Zażądaj dostępu](https://aka.ms/rhel-byos). Wartości jednostki SKU kończą się wersją pomocniczą i oznaczają, czy obraz jest nieprzetworzony lub LVM. Na przykład wartość SKU RHEL-lvm77 wskazuje obraz RHEL 7,7 z partycją LVM.
-|RedHat | RHEL | RHEL-SAP | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019071300) | Obrazy te są RHEL dla obrazów SAP. Są one uprawnione do uzyskiwania dostępu do repozytoriów SAP HANA i aplikacji oraz repozytoriów E4S RHEL. Rozliczenia obejmują RHEL Premium i SAP Premium na podstawie podstawowej opłaty za obliczenia.
-|RedHat | RHEL | RHEL — SAP-HA | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019062320) | Te obrazy są RHEL dla oprogramowania SAP z obrazami wysokiej dostępności i aktualizacji usług. Są one uprawnione do uzyskiwania dostępu do repozytoriów SAP HANA i aplikacji oraz repozytoriów o wysokiej dostępności, a także repozytoriów E4S RHEL. Rozliczanie obejmuje RHEL Premium, SAP Premium i HA Premium na podstawie podstawowej opłaty za obliczenia.
-|RedHat | RHEL | RHEL – HA | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019062019) | Są to obrazy RHEL, które są również uprawnione do uzyskiwania dostępu do dodatku o wysokiej dostępności. Opłaty są naliczane nieco z góry na RHEL i podstawowa opłata za obliczanie ze względu na dodatkową wersję Premium.
-|RedHat | RHEL | RHEL — SAP-APPS | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.3.2017053118) | Te obrazy są nieaktualne, ponieważ aplikacje SAP i repozytoria SAP HANA zostały połączone z repozytoriami SAP. Są to RHEL dla obrazów aplikacji SAP. Są one uprawnione do uzyskiwania dostępu do repozytoriów aplikacji SAP, a także podstawowych repozytoriów RHEL.
-|RedHat | RHEL | RHEL-SAP-HANA | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.3.2018051421) | Te obrazy są nieaktualne, ponieważ aplikacje SAP i repozytoria SAP HANA zostały połączone z repozytoriami SAP. Są to RHEL for SAP HANA obrazy. Są one uprawnione do uzyskiwania dostępu SAP HANA repozytoriów, a także podstawowych repozytoriów RHEL.
+|Redhat | RHEL | Wersja pomocnicza (np. 7,6) | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019102813) | Obrazy opublikowane przed 2019 kwietnia zostaną dołączone do standardowych repozytoriów RHEL. Obrazy opublikowane po kwietnia 2019 zostaną dołączone do repozytoriów pomocy technicznej aktualizacji programu Red Hat (EUS) w celu umożliwienia blokowania wersji określonej wersji pomocniczej. Klienci chcący regularne repozytoria powinni używać obrazów zawierających 7-LVM lub 7-RAW w wartości SKU (szczegóły poniżej). Obrazy RHEL 7,7 i nowsze będą LVM z podziałem na partycje. Wszystkie inne obrazy z tej kategorii są podzielone na partycje.
+|Redhat | RHEL | 7 — NIEPRZETWORZONY | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019102813) | Obrazy te są podzielone na partycje (tj. żadne woluminy logiczne nie zostały dodane).
+|Redhat | RHEL | 7-RAW-CI | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019072418) | Obrazy te są podzielone na partycje (tj. żadne woluminy logiczne nie zostały dodane) i będą używać usługi Cloud-init do aprowizacji.
+|Redhat | RHEL | 7 — LVM | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019062414) | Te obrazy są LVM na partycje.
+|Redhat | RHEL — BYOS | RHEL — {LVM, RAW} | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.7.20190819) | Te obrazy to obrazy w programie RHEL 7 BYOS. Nie są one dołączone do żadnych repozytoriów i nie będą naliczane opłaty za usługę RHEL Premium. Jeśli interesują Cię obrazy RHEL BYOS, [Zażądaj dostępu](https://aka.ms/rhel-byos). Wartości jednostki SKU kończą się wersją pomocniczą i oznaczają, czy obraz jest nieprzetworzony lub LVM. Na przykład wartość SKU RHEL-lvm77 wskazuje obraz RHEL 7,7 z partycją LVM.
+|Redhat | RHEL | RHEL-SAP | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019071300) | Obrazy te są RHEL dla obrazów SAP. Są one uprawnione do uzyskiwania dostępu do repozytoriów SAP HANA i aplikacji oraz repozytoriów E4S RHEL. Rozliczenia obejmują RHEL Premium i SAP Premium na podstawie podstawowej opłaty za obliczenia.
+|Redhat | RHEL | RHEL — SAP-HA | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019062320) | Te obrazy są RHEL dla oprogramowania SAP z obrazami wysokiej dostępności i aktualizacji usług. Są one uprawnione do uzyskiwania dostępu do repozytoriów SAP HANA i aplikacji oraz repozytoriów o wysokiej dostępności, a także repozytoriów E4S RHEL. Rozliczanie obejmuje RHEL Premium, SAP Premium i HA Premium na podstawie podstawowej opłaty za obliczenia.
+|Redhat | RHEL | RHEL – HA | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.6.2019062019) | Są to obrazy RHEL, które są również uprawnione do uzyskiwania dostępu do dodatku o wysokiej dostępności. Opłaty są naliczane nieco z góry na RHEL i podstawowa opłata za obliczanie ze względu na dodatkową wersję Premium.
+|Redhat | RHEL | RHEL — SAP-APPS | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.3.2017053118) | Te obrazy są nieaktualne, ponieważ aplikacje SAP i repozytoria SAP HANA zostały połączone z repozytoriami SAP. Są to RHEL dla obrazów aplikacji SAP. Są one uprawnione do uzyskiwania dostępu do repozytoriów aplikacji SAP, a także podstawowych repozytoriów RHEL.
+|Redhat | RHEL | RHEL-SAP-HANA | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 7.3.2018051421) | Te obrazy są nieaktualne, ponieważ aplikacje SAP i repozytoria SAP HANA zostały połączone z repozytoriami SAP. Są to RHEL for SAP HANA obrazy. Są one uprawnione do uzyskiwania dostępu SAP HANA repozytoriów, a także podstawowych repozytoriów RHEL.
 
-### <a name="rhel-8-image-types"></a>RHEL 8 — typy obrazów
+## <a name="rhel-8-image-types"></a>RHEL 8 — typy obrazów
 Szczegóły dotyczące typów obrazów RHEL 8 są poniżej.
 
-|Publisher | Oferta | Wartość jednostki SKU | Wersja | Szczegóły
+|Wydawca | Oferta | Wartość jednostki SKU | Wersja | Szczegóły
 |----------|-------|------------|---------|--------
-|RedHat | RHEL | 8 | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 8.0.20191023) | Te obrazy to RHEL 8,0 LVM — obrazy partycjonowane połączone z standardowymi repozytoriami Red Hat.
-|RedHat | RHEL | 8 — Gen2 | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 8.0.20191024) | Są to obrazy z funkcją Hyper-V Generation 2 RHEL 8,0 LVM-obrazy połączone z standardowymi repozytoriami Red Hat. Więcej informacji o maszynach wirtualnych 2. generacji na platformie Azure jest dostępnych [tutaj](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
+|Redhat | RHEL | 8 | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 8.0.20191023) | Te obrazy to RHEL 8,0 LVM — obrazy partycjonowane połączone z standardowymi repozytoriami Red Hat.
+|Redhat | RHEL | 8 — Gen2 | Połączone wartości wersji pomocniczej RHEL i Data publikacji (np. 8.0.20191024) | Są to obrazy z funkcją Hyper-V Generation 2 RHEL 8,0 LVM-obrazy połączone z standardowymi repozytoriami Red Hat. Więcej informacji o maszynach wirtualnych 2. generacji na platformie Azure jest dostępnych [tutaj](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
 
-## <a name="extended-update-support-eus"></a>Rozszerzona obsługa aktualizacji (EUS)
+## <a name="rhel-longer-support-add-ons"></a>RHEL dłużej obsługiwać Dodatki
+
+### <a name="extended-update-support-eus"></a>Rozszerzona obsługa aktualizacji (EUS)
 Od kwietnia 2019 obrazy RHEL są dostępne, które są domyślnie dołączone do repozytoriów pomocy technicznej aktualizacji (EUS). Więcej szczegółów na temat RHEL EUS są dostępne w [dokumentacji Red Hat](https://access.redhat.com/articles/rhel-eus).
 
 Możliwe jest przełączenie do repozytoriów EUS i jest ono obsługiwane. Instrukcje dotyczące przełączenia maszyny wirtualnej do EUS i więcej szczegółów na temat EUS z punktu końcowego pomocy technicznej są dostępne [tutaj](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
@@ -106,7 +109,7 @@ Możliwe jest przełączenie do repozytoriów EUS i jest ono obsługiwane. Instr
 >[!NOTE]
 > EUS nie są obsługiwane w dodatkach RHEL. Oznacza to, że w przypadku instalowania pakietu, który jest zazwyczaj dostępny w kanale RHEL Extras, nie będzie można wykonać tego działania w EUS. Cykl życia produktu Red Hat jest szczegółowo opisany w [tym miejscu](https://access.redhat.com/support/policy/updates/extras/).
 
-### <a name="differentiating-between-regular-and-eus-images"></a>Rozróżnianie obrazów zwykłych i EUS.
+#### <a name="differentiating-between-regular-and-eus-images"></a>Rozróżnianie obrazów zwykłych i EUS.
 Klienci, którzy chcą korzystać z obrazów dołączonych do repozytoriów EUS, powinni używać obrazu RHEL zawierającego numer pomocniczej RHEL w jednostce SKU.
 
 Na przykład mogą zostać wyświetlone następujące dwa dostępne obrazy z RHEL 7,4:
@@ -131,13 +134,18 @@ Wersja pomocnicza |Przykład obrazu EUS              |Stan EUS                  
 RHEL 7,4      |RedHat:RHEL:7.4:7.4.2019041718 | Obrazy opublikowane w kwietniu 2019 i nowszych będą domyślnie EUS|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Obrazy opublikowane czerwiec 2019 i nowsze będą domyślnie EUS |
 RHEL 7,6      |RedHat:RHEL:7.6:7.6.2019052206 | Obrazy opublikowane z maja 2019 i nowsze będą domyślnie EUS  |
-RHEL 8,0      |ND                            | Brak EUS dostępnych w witrynie Red Hat                               |
+RHEL 8,0      |Nie dotyczy                            | Brak EUS dostępnych w witrynie Red Hat                               |
 
+### <a name="update-services-for-sap-e4s"></a>Update Services for SAP (E4S)
+Najnowsze RHEL obrazów SAP zostaną połączone z usługami Update Services for SAP Solutions subscriptions (E4S). Więcej informacji na temat E4S są dostępne w [dokumentacji](https://access.redhat.com/support/policy/updates/errata#Update_Services_for_SAP_Solutions)Red Hat.
 
+#### <a name="rhel-images-with-e4s"></a>Obrazy RHEL z E4S
+Obrazy z następujących ofert utworzonych po grudniu 2019 zostaną połączone z repozytoriami E4S.
 
+* RHEL — SAP (RHEL for SAP)
+* RHEL-SAP-HA (RHEL for SAP with HA i Update Services)
 
-
-### <a name="other-available-offers-and-skus"></a>Inne dostępne oferty i jednostki SKU
+## <a name="other-available-offers-and-skus"></a>Inne dostępne oferty i jednostki SKU
 Pełna lista dostępnych ofert i jednostek SKU może zawierać dodatkowe obrazy poza wymienionymi w powyższej tabeli, na przykład `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Oferty te mogą służyć do świadczenia pomocy technicznej dotyczącej określonych rozwiązań w witrynie Marketplace lub mogą być publikowane na potrzeby wersji zapoznawczych i testowych. Mogą zostać zmienione lub usunięte w dowolnym momencie bez ostrzeżenia. Nie należy ich używać, chyba że ich obecność została publicznie udokumentowana przez firmę Microsoft lub Red Hat.
 
 ## <a name="publishing-policy"></a>Zasady publikowania

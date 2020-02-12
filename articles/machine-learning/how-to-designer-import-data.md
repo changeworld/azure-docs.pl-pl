@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314032"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138154"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer"></a>Importowanie danych do programu Azure Machine Learning Designer
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Importowanie danych do programu Azure Machine Learning Designer (wersja zapoznawcza)
 
 W tym artykule dowiesz się, jak zaimportować własne dane do projektanta w celu utworzenia niestandardowych rozwiązań. Istnieją dwa sposoby importowania danych do projektanta: 
 
@@ -45,7 +45,7 @@ Zarejestrowane zestawy danych można znaleźć w palecie modułów w obszarze **
 
 ![Zrzut ekranu przedstawiający lokalizację zapisanych zestawów danych w palecie projektanta](media/how-to-designer-import-data/use-datasets-designer.png)
 
-Każdy [zestaw danych pliku](how-to-create-register-datasets.md#dataset-types) zarejestrowany w obszarze roboczym uczenia maszynowego zostanie wyświetlony w palecie modułu. Nie można używać zestawów danych utworzonych w projektancie.
+
 
 > [!NOTE]
 > Projektant obecnie obsługuje tylko przetwarzanie [tabelarycznych zestawów danych](how-to-create-register-datasets.md#dataset-types). Jeśli chcesz użyć [zestawów danych plików](how-to-create-register-datasets.md#dataset-types), użyj zestawu SDK Azure Machine Learning dostępnego dla języków Python i R.
@@ -78,9 +78,9 @@ Projektant wewnętrznie rozpoznaje następujące typy danych:
 
 * Ciąg
 * Liczba całkowita
-* Decimal
+* Dziesiętna
 * Wartość logiczna
-* Data
+* Date
 
 Projektant używa wewnętrznego typu danych do przekazywania danych między modułami. Dane można jawnie przekonwertować na format tabeli danych przy użyciu modułu [Konwertuj na zestaw](algorithm-module-reference/convert-to-dataset.md) danych. Każdy moduł, który akceptuje formaty inne niż format wewnętrzny, przekonwertuje dane w trybie dyskretnym przed przekazaniem go do następnego modułu.
 

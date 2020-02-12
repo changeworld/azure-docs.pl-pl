@@ -1,6 +1,6 @@
 ---
-title: Lista Odmów przydziały dla zasobów platformy Azure przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wyświetlić listę użytkowników, grup, nazw głównych usług i zarządzanych tożsamości, na których nastąpiła odmowa dostępu do akcji określony zasób platformy Azure, w szczególności zakresów przy użyciu programu Azure PowerShell.
+title: Wyświetl listę odrzuconych przypisań zasobów platformy Azure za pomocą Azure PowerShell
+description: Dowiedz się, jak wyświetlić listę użytkowników, grup, nazw podmiotów usługi i zarządzanych tożsamości, dla których odmówiono dostępu do określonych akcji zasobów platformy Azure w określonych zakresach przy użyciu Azure PowerShell.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,32 +13,32 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c1ea26fdb4d60262f89ea6ab0f87220a08c01e68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ba18b89bd37dbd55350321c503e37ab0590ab87
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110487"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137391"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>Lista Odmów przydziały dla zasobów platformy Azure przy użyciu programu Azure PowerShell
+# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>Wyświetl listę odrzuconych przypisań zasobów platformy Azure przy użyciu Azure PowerShell
 
-[Odmów przypisania](deny-assignments.md) Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. W tym artykule opisano sposób wyświetlenia listy Odmów przypisania przy użyciu programu Azure PowerShell.
+[Odmowa przypisania](deny-assignments.md) uniemożliwia użytkownikom wykonywanie określonych akcji zasobów platformy Azure nawet wtedy, gdy przypisanie roli przyznaje im dostęp. W tym artykule opisano sposób wyświetlania listy zablokowanych przypisań przy użyciu Azure PowerShell.
 
 > [!NOTE]
-> Nie można bezpośrednio utworzyć własne Odmów przypisania. Aby uzyskać informacje na temat nie zezwoli na przydziały są tworzone, zobacz [Odmów przypisania](deny-assignments.md).
+> Nie można bezpośrednio tworzyć własnych przypisań Odmów. Aby uzyskać informacje na temat sposobu tworzenia przypisań Odmów, zobacz [odmowa przypisań](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uzyskać informacje o przypisaniu Odmów, musisz mieć:
+Aby uzyskać informacje o przypisaniu odmowy, należy dysponować:
 
-- `Microsoft.Authorization/denyAssignments/read` uprawnienie, który jest dostępny w większości [wbudowane role zasobów platformy Azure](built-in-roles.md)
-- [Program PowerShell w usłudze Azure Cloud Shell](/azure/cloud-shell/overview) lub [programu Azure PowerShell](/powershell/azure/install-az-ps)
+- uprawnienie `Microsoft.Authorization/denyAssignments/read`, które jest zawarte w większości [wbudowanych ról dla zasobów platformy Azure](built-in-roles.md)
+- Program [PowerShell w Azure Cloud Shell](/azure/cloud-shell/overview) lub [Azure PowerShell](/powershell/azure/install-az-ps)
 
-## <a name="list-deny-assignments"></a>Lista Odmów przypisania
+## <a name="list-deny-assignments"></a>Lista przypisań odmowy
 
-### <a name="list-all-deny-assignments"></a>Lista wszystkich Odmów przypisania
+### <a name="list-all-deny-assignments"></a>Wyświetl listę wszystkich przypisań Odmów
 
-Aby wyświetlić listę wszystkich Odmów przypisania w ramach bieżącej subskrypcji, użyj [Get AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment).
+Aby wyświetlić listę wszystkich przypisań Odmów dla bieżącej subskrypcji, użyj polecenie [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment).
 
 ```azurepowershell
 Get-AzDenyAssignment
@@ -90,9 +90,9 @@ ExcludePrincipals       : {
 IsSystemProtected       : True
 ```
 
-### <a name="list-deny-assignments-at-a-resource-group-scope"></a>Lista Odmów przypisania w zakresie grupy zasobów
+### <a name="list-deny-assignments-at-a-resource-group-scope"></a>Wyświetl listę odrzuconych przydziałów w grupie zasobów
 
-Aby wyświetlić listę wszystkich Odmów przypisania w zakresie grupy zasobów, użyj [Get AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment).
+Aby wyświetlić listę wszystkich przypisań Odmów w zakresie grupy zasobów, użyj polecenie [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment).
 
 ```azurepowershell
 Get-AzDenyAssignment -ResourceGroupName <resource_group_name>
@@ -111,9 +111,9 @@ Principals         : {
                      }
 ```
 
-### <a name="list-deny-assignments-at-a-subscription-scope"></a>Lista Odmów przypisania w zakresie subskrypcji
+### <a name="list-deny-assignments-at-a-subscription-scope"></a>Wyświetl listę odrzuconych przypisań w zakresie subskrypcji
 
-Aby wyświetlić listę wszystkich Odmów przypisania w zakresie subskrypcji, użyj [Get AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment). Aby uzyskać identyfikator subskrypcji, możesz go znaleźć na **subskrypcje** bloku w witrynie Azure portal albo można używać [Get AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
+Aby wyświetlić listę wszystkich przypisań Odmów w zakresie subskrypcji, użyj polecenie [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment). Aby uzyskać identyfikator subskrypcji, możesz go znaleźć w bloku **subskrypcje** w Azure Portal lub użyć polecenie [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
 
 ```azurepowershell
 Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>
@@ -123,8 +123,8 @@ Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>
 PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Zrozumienie Odmów przydziały dla zasobów platformy Azure](deny-assignments.md)
-- [Lista Odmów przydziały dla zasobów platformy Azure przy użyciu witryny Azure portal](deny-assignments-portal.md)
-- [Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST](deny-assignments-rest.md)
+- [Informacje o odmowie przypisań zasobów platformy Azure](deny-assignments.md)
+- [Wyświetl listę odrzuconych przypisań zasobów platformy Azure przy użyciu Azure Portal](deny-assignments-portal.md)
+- [Wyświetlanie listy Odmów przypisań zasobów platformy Azure przy użyciu interfejsu API REST](deny-assignments-rest.md)

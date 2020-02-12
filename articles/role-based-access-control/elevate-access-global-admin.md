@@ -1,5 +1,5 @@
 ---
-title: Podnieś poziom dostępu do zarządzania wszystkimi subskrypcjami i grupami zarządzania platformy Azure | Microsoft Docs
+title: Podnieś poziom dostępu do zarządzania wszystkimi subskrypcjami i grupami zarządzania platformy Azure
 description: Opisuje sposób podniesienia uprawnień dostępu administratora globalnego do zarządzania wszystkimi subskrypcjami i grupami zarządzania w Azure Active Directory przy użyciu Azure Portal lub interfejsu API REST.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/03/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b27a97d95f224513dd03293b9bd0082c5ed6d1b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772265"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137459"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Podnieś poziom dostępu do zarządzania wszystkimi subskrypcjami i grupami zarządzania platformy Azure
 
@@ -47,7 +47,7 @@ Ten podwyższony poziom dostępu należy usunąć po wprowadzeniu zmian, które 
 
 ![Podnoszenie poziomu dostępu](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>Portal Azure
+## <a name="azure-portal"></a>Portalu Azure
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Podnieś poziom dostępu dla administratora globalnego
 
@@ -102,7 +102,7 @@ Aby usunąć przypisanie roli administratora dostępu użytkownika w zakresie ka
 
     ![Usuwanie przypisań ról z zakresem głównym](./media/elevate-access-global-admin/iam-root-remove.png)
 
-## <a name="azure-powershell"></a>Program Azure PowerShell
+## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 

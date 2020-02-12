@@ -4,12 +4,12 @@ description: W tym artykule opisano sposób migrowania maszyn fizycznych na plat
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 3fbc94464c139add6e275890e1a1e415b2826f0d
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069527"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134936"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrowanie maszyn jako serwerów fizycznych na platformę Azure
 
@@ -61,9 +61,6 @@ Przed rozpoczęciem tego samouczka należy:
 Skonfiguruj uprawnienia platformy Azure przed migracją do Azure Migrate migracji serwera.
 
 - **Utwórz projekt**: Twoje konto platformy Azure wymaga uprawnień do utworzenia projektu Azure Migrate. 
-- **Zarejestruj urządzenie replikacji Azure Migrate**: urządzenie do replikacji tworzy i rejestruje aplikację Azure Active Directory na koncie platformy Azure. Delegowanie uprawnień dla tego elementu.
-- **Tworzenie Key Vault**: w celu migrowania maszyn Azure Migrate tworzy Key Vault w grupie zasobów, aby zarządzać kluczami dostępu do konta magazynu replikacji w ramach subskrypcji. Aby utworzyć magazyn, musisz mieć uprawnienia do przypisywania ról w grupie zasobów, w której znajduje się projekt Azure Migrate. 
-
 
 ### <a name="assign-permissions-to-create-project"></a>Przypisywanie uprawnień do tworzenia projektu
 
@@ -73,43 +70,6 @@ Skonfiguruj uprawnienia platformy Azure przed migracją do Azure Migrate migracj
     - Jeśli właśnie utworzono bezpłatne konto platformy Azure, jesteś właścicielem subskrypcji.
     - Jeśli nie jesteś właścicielem subskrypcji, Pracuj z właścicielem, aby przypisać rolę.
 
-### <a name="assign-permissions-to-register-the-replication-appliance"></a>Przypisywanie uprawnień do rejestrowania urządzenia replikacji
-
-W przypadku migracji opartej na agencie delegowanie uprawnień do migracji serwera Azure Migrate do tworzenia i rejestrowania aplikacji usługi Azure AD na Twoim koncie. Uprawnienia można przypisywać przy użyciu jednej z następujących metod:
-
-- Dzierżawa/Administrator globalny może udzielić uprawnień użytkownikom w dzierżawie, aby tworzyć i rejestrować aplikacje usługi Azure AD.
-- Dzierżawa/Administrator globalny może przypisać rolę dewelopera aplikacji (z uprawnieniami) do konta.
-
-Warto zauważyć, że:
-
-- Aplikacje nie mają żadnych innych uprawnień dostępu do subskrypcji innych niż opisane powyżej.
-- Te uprawnienia są potrzebne tylko podczas rejestrowania nowego urządzenia replikacji. Po skonfigurowaniu urządzenia replikacji można usunąć uprawnienia. 
-
-
-#### <a name="grant-account-permissions"></a>Udziel uprawnień konta
-
-Dzierżawy/Administrator globalny mogą udzielić uprawnień w następujący sposób
-
-1. W usłudze Azure AD dzierżawca/Administrator globalny powinien przejść do **Azure Active Directory** > **użytkowników** > **ustawień użytkownika**.
-2. Administrator powinien ustawić **rejestracje aplikacji** na **wartość tak**.
-
-    ![Uprawnienia usługi Azure AD](./media/tutorial-migrate-physical-virtual-machines/aad.png)
-
-> [!NOTE]
-> Jest to ustawienie domyślne, które nie jest poufne. [Dowiedz się więcej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
-
-#### <a name="assign-application-developer-role"></a>Przypisywanie roli Deweloper aplikacji 
-
-Dzierżawa/Administrator globalny może przypisać rolę dewelopera aplikacji do konta. [Dowiedz się więcej](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
-
-## <a name="assign-permissions-to-create-key-vault"></a>Przypisywanie uprawnień do tworzenia Key Vault
-
-Przypisz uprawnienia do przypisywania ról do grupy zasobów, w której znajduje się projekt Azure Migrate, w następujący sposób:
-
-1. W grupie zasobów w Azure Portal wybierz pozycję **Kontrola dostępu (IAM)** .
-2. W obszarze **Sprawdź dostęp**Znajdź odpowiednie konto i kliknij je, aby wyświetlić uprawnienia. Wymagane są uprawnienia **właściciela** (lub **współautora** oraz **administrator dostępu użytkowników**).
-3. Jeśli nie masz wymaganych uprawnień, poproś ich od właściciela grupy zasobów. 
-
 ## <a name="prepare-for-migration"></a>Przygotowanie do migracji
 
 ### <a name="check-machine-requirements-for-migration"></a>Sprawdź wymagania dotyczące maszyn pod kątem migracji
@@ -117,7 +77,7 @@ Przypisz uprawnienia do przypisywania ról do grupy zasobów, w której znajduje
 Upewnij się, że maszyny są zgodne z wymaganiami dotyczącymi migracji na platformę Azure. 
 
 > [!NOTE]
-> Migracja oparta na agencie z migracją Azure Migrate Server jest oparta na funkcjach Azure Site Recovery usługi. Niektóre wymagania mogą być połączone z dokumentacją Site Recovery.
+> Migracja oparta na agentach z migracją na serwer Azure Migrate ma taką samą architekturę jak funkcja odzyskiwania po awarii w ramach agenta usługi Azure Site Recovery, a niektóre składniki korzystają z tej samej bazy kodu. Niektóre wymagania mogą być połączone z dokumentacją Site Recovery.
 
 1. [Sprawdź](migrate-support-matrix-physical-migration.md#physical-server-requirements) wymagania dotyczące serwera fizycznego.
 2. Sprawdź ustawienia maszyny wirtualnej. Maszyny lokalne replikowane na platformę Azure muszą być zgodne z [wymaganiami maszyny wirtualnej platformy Azure](migrate-support-matrix-physical-migration.md#azure-vm-requirements).

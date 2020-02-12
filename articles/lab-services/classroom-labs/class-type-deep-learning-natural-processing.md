@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0aa30c114153521258842fc5f1e9150053b766f4
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332298"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133761"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Skonfiguruj laboratorium ukierunkowane na głębokie uczenie się w przetwarzaniu języka naturalnego przy użyciu Azure Lab Services
 W tym artykule opisano sposób konfigurowania laboratorium ukierunkowanego na głębokie uczenie w ramach przetwarzania języka naturalnego (NLP) przy użyciu Azure Lab Services. Przetwarzanie języka naturalnego (NLP) jest formą sztucznej analizy (AI), która umożliwia komputerom z translacją, rozpoznawanie mowy i innymi funkcjami interpretacji języka.  
@@ -32,7 +32,7 @@ Po utworzeniu konta laboratorium należy włączyć następujące ustawienia na 
 
 | Ustawienie konta laboratorium | Instrukcje |
 | ----------- | ------------ |  
-| Obrazy z witryny Marketplace | Włącz obraz Data Science Virtual Machine dla systemu Linux (Ubuntu) do użycia w ramach konta laboratorium.  Zobacz następujące artykuły, aby uzyskać instrukcje: [Określ obrazy z witryny Marketplace dostępne dla twórców laboratorium](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators). | 
+| Obrazy z witryny Marketplace | Włącz obraz Data Science Virtual Machine dla systemu Linux (Ubuntu) do użycia w ramach konta laboratorium.  Zobacz następujące artykuły, aby uzyskać instrukcje: [Określ obrazy z witryny Marketplace dostępne dla twórców laboratorium](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators). | 
 
 Postępuj zgodnie z [tym samouczkiem](tutorial-setup-classroom-lab.md) , aby utworzyć nowe laboratorium i zastosować następujące ustawienia:
 
@@ -44,7 +44,7 @@ Postępuj zgodnie z [tym samouczkiem](tutorial-setup-classroom-lab.md) , aby utw
 
 Obraz Data Science Virtual Machine dla systemu Linux zapewnia niezbędne platformy uczenia głębokiego i narzędzia wymagane dla tego typu klasy. W związku z tym po utworzeniu komputera szablonu nie trzeba będzie go jeszcze modyfikować. Można je opublikować dla uczniów. Wybierz przycisk **Publikuj** na stronie szablon, aby opublikować szablon w laboratorium.  
 
-## <a name="cost"></a>Koszt
+## <a name="cost"></a>Koszty
 Jeśli chcesz oszacować koszt tego laboratorium, możesz użyć poniższego przykładu: 
 
 W przypadku klasy 25 studentów z upływem 20 godzin planowanego czasu zajęć i 10 godzin przydziału dla prac domowych lub przydziałów cena za laboratorium wynosi-25 studentów * (20 + 10) godz. * 139 jednostek laboratoryjnych * 0,01 USD za godzinę = 1042,5 USD

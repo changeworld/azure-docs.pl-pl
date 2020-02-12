@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29816d158cf1428727b7ff17bcc2c347f402dedf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647343"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134527"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Określ grupę zasobów dla maszyn wirtualnych laboratorium w Azure DevTest Labs
 
@@ -31,12 +31,12 @@ Jako właściciel laboratorium można skonfigurować maszyny wirtualne laborator
 Za pomocą tej funkcji można określić nową lub istniejącą grupę zasobów w ramach subskrypcji platformy Azure dla wszystkich maszyn wirtualnych laboratorium. Obecnie Azure DevTest Labs obsługuje tę funkcję za poorednictwem interfejsu API.
 
 > [!NOTE]
-> Wszystkie limity subskrypcji są stosowane podczas tworzenia laboratoriów w DevTest Labs. Pomyśl o laboratorium jako innego zasobu w ramach subskrypcji. W przypadku grup zasobów limit dotyczy [980 grup zasobów na subskrypcję](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
+> Wszystkie limity subskrypcji są stosowane podczas tworzenia laboratoriów w DevTest Labs. Pomyśl o laboratorium jako innego zasobu w ramach subskrypcji. W przypadku grup zasobów limit dotyczy [980 grup zasobów na subskrypcję](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). 
 
 ## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
 Wykonaj następujące kroki, aby określić grupę zasobów dla wszystkich maszyn wirtualnych utworzonych w laboratorium. 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Wybierz pozycję **wszystkie usługi** w menu nawigacji po lewej stronie. 
 3. Wybierz z listy pozycję **DevTest Labs**.
 4. Z listy laboratoriów wybierz **laboratorium**.  
@@ -47,7 +47,7 @@ Wykonaj następujące kroki, aby określić grupę zasobów dla wszystkich maszy
 
     ![Wybierz grupę zasobów dla wszystkich maszyn wirtualnych laboratorium](./media/resource-group-control/select-resource-group.png)
 
-## <a name="use-powershell"></a>Używanie programu PowerShell 
+## <a name="use-powershell"></a>Korzystanie z programu PowerShell 
 Poniższy przykład pokazuje, jak używać skryptu programu PowerShell do tworzenia wszystkich maszyn wirtualnych laboratorium w nowej grupie zasobów.
 
 ```powershell

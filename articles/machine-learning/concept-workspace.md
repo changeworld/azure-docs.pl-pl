@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: f3c2b1aa8f41b382bea96b33108d23bf09850c78
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba3e677b98406a5f126649aafc2f89fb9d20c895
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984765"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137614"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co to jest obszar roboczy Azure Machine Learning?
 
@@ -28,7 +28,7 @@ Dostępne ceny i funkcje zależą od tego, czy jest wybrana [wersja podstawowa, 
 
 Taksonomia obszaru roboczego przedstawiono na poniższym diagramie:
 
-[![Taksonomia obszaru roboczego](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
+[![taksonomii obszaru roboczego](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
 
 Na diagramie przedstawiono następujące składniki obszaru roboczego:
 
@@ -70,7 +70,7 @@ Zadania uczenia maszynowego odczytują i/lub zapisują artefakty w obszarze robo
 
 Można również wykonać następujące zadania zarządzania obszarem roboczym:
 
-| Zadanie zarządzania obszarem roboczym   | Portal              | Studio | Zestaw SDK języka Python/SDK       | Interfejs CLI        |
+| Zadanie zarządzania obszarem roboczym   | Portal              | Studio | Zestaw SDK języka Python/SDK       | Interfejs wiersza polecenia        |
 |---------------------------|---------|---------|------------|------------|
 | Tworzenie obszaru roboczego        | **&check;**     | | **&check;** | **&check;** |
 | Zarządzanie dostępem do obszaru roboczego    | **&check;**   || |  **&check;**    |
@@ -81,6 +81,9 @@ Można również wykonać następujące zadania zarządzania obszarem roboczym:
 > [!NOTE]
 > Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
 >Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.
+
+> [!WARNING]
+> Przeniesienie obszaru roboczego Azure Machine Learning do innej subskrypcji lub przeniesienie subskrypcji będącej właścicielem do nowej dzierżawy nie jest obsługiwane. Wykonanie tej operacji może spowodować błędy.
 
 ## <a name='create-workspace'></a>Tworzenie obszaru roboczego
 

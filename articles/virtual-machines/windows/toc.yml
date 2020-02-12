@@ -581,8 +581,6 @@
               href: disks-benchmarks.md
         - name: Znajdowanie niedołączonych dysków
           href: find-unattached-disks.md
-        - name: Korzystanie z usługi File Storage
-          href: ../../storage/files/storage-files-quick-create-use-windows.md
         - name: Często zadawane pytania dotyczące dysków
           href: faq-for-disks.md
     - name: Zarządzanie siecią

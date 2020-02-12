@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5b039221f3a25bddf7953cbe8d517275f76d6f37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479061"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136339"
 ---
 # <a name="display-controls"></a>Kontrolki wyświetlania
 
@@ -90,7 +90,7 @@ Niektóre typy kontrolek wyświetlania są wymagane przez określone oświadczen
 
 **Oświadczenia wyjściowe** kontrolki wyświetlania nie są wysyłane do następnego kroku aranżacji. Są one zapisywane tymczasowo tylko dla bieżącej sesji kontrolki wyświetlania. Te tymczasowe oświadczenia mogą być współużytkowane między różnymi akcjami tej samej kontrolki wyświetlania.
 
-Aby przeprowadzić bąbelki do danych wyjściowych oświadczeń do kolejnego kroku aranżacji, użyj **OutputClaims** rzeczywistego profilu technicznego z własnym potwierdzeniem, który odwołuje się do tej kontrolki wyświetlania.
+Aby wyrównać dane wyjściowe oświadczeń do kolejnego kroku aranżacji, należy użyć **OutputClaims** rzeczywistego profilu technicznego z własnym potwierdzeniem, który odwołuje się do tej kontrolki wyświetlania.
 
 ### <a name="display-control-actions"></a>Akcje kontrolki wyświetlania
 

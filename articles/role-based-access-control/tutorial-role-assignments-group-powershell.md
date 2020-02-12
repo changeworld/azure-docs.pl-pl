@@ -1,5 +1,5 @@
 ---
-title: Samouczek — udzielanie grupie dostępu do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell
+title: 'Samouczek: udzielanie grupie dostępu do zasobów platformy Azure za pomocą RBAC i Azure PowerShell'
 description: Dowiedz się, jak przyznać grupie dostęp do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach (RBAC) i Azure PowerShell w tym samouczku.
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: fb26e603ebb867bda47a93162ffef9bf716d3db6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418595"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138242"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Samouczek: udzielanie grupie dostępu do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell
 
@@ -46,9 +46,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli. Przypisanie roli składa się z trzech elementów: podmiotu zabezpieczeń, definicji roli i zakresu. W tym samouczku utworzysz dwa przypisania ról:
 
-| Podmiot zabezpieczeń | Definicja roli | Scope |
+| Podmiot zabezpieczeń | Definicja roli | Zakres |
 | --- | --- | --- |
-| Grupa<br>(Grupa samouczka kontroli dostępu opartej na rolach) | [Czytelnik](built-in-roles.md#reader) | Subscription |
+| Grupa<br>(Grupa samouczka kontroli dostępu opartej na rolach) | [Czytelnik](built-in-roles.md#reader) | Subskrypcja |
 | Grupa<br>(Grupa samouczka kontroli dostępu opartej na rolach)| [Współautor](built-in-roles.md#contributor) | Grupa zasobów<br>(rbac-tutorial-resource-group) |
 
    ![Przypisania ról dla grupy](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
@@ -72,7 +72,7 @@ Do przypisania roli potrzebny jest użytkownik, grupa lub jednostka usługi. Je�
 
 Jeśli nie masz uprawnień do tworzenia grup, możesz spróbować skorzystać z [samouczka: Udziel użytkownikom dostępu do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell](tutorial-role-assignments-user-powershell.md) zamiast tego.
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Za pomocą grupy zasobów można zademonstrować przypisywanie roli w zakresie grupy zasobów.
 

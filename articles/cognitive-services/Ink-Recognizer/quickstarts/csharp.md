@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: c5379452449188f17b75036eb09c3ca15bae0c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1cf519d8d8c25877b49bf14aefd1c0be3afa8023
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448176"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137891"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Szybki Start: Rozpoznawanie cyfrowego pisma odręcznego za pomocą interfejsu API REST rozpoznawania atramentu iC#
 
@@ -32,7 +32,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Dowolna wersja programu [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
-- [Newtonsoft.Json](https://www.newtonsoft.com/json)
+- [Newtonsoft. JSON](https://www.newtonsoft.com/json)
     - Aby zainstalować plik Newtonsoft. JSON jako pakiet NuGet w programie Visual Studio:
         1. Kliknij prawym przyciskiem myszy **Menedżera rozwiązań**
         2. Kliknij pozycję **Zarządzaj pakietami NuGet...**
@@ -49,11 +49,11 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
 
 1. W programie Visual Studio Utwórz nowe rozwiązanie konsoli i Dodaj następujące pakiety. 
     
-    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
+    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
 2. Utwórz zmienne dla klucza subskrypcji i punktu końcowego oraz przykładowy plik JSON. Punkt końcowy zostanie później połączony z `inkRecognitionUrl`, aby uzyskać dostęp do interfejsu API. 
 
-    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
+    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Utwórz funkcję do wysyłania żądań
 
@@ -63,7 +63,7 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
  
 3. Wyślij żądanie przy użyciu `PutAsync()`. Jeśli żądanie zakończy się pomyślnie, zwróć odpowiedź.  
     
-    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=request)]
+    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
 ## <a name="send-an-ink-recognition-request"></a>Wyślij żądanie rozpoznawania pisma odręcznego
 
@@ -71,13 +71,13 @@ Kod źródłowy dla tego przewodnika Szybki Start można znaleźć w witrynie [G
 
 2. Deserializacji obiektu JSON i Zapisz go w konsoli. 
     
-    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
+    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
 
 ## <a name="load-your-digital-ink-data"></a>Ładowanie danych cyfrowego atramentu
 
 Utwórz funkcję o nazwie `LoadJson()`, aby załadować plik JSON danych pisma odręcznego. Użyj `StreamReader` i `JsonTextReader`, aby utworzyć `JObject` i zwrócić go.
 
-[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
+[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
 ## <a name="send-the-api-request"></a>Wyślij żądanie interfejsu API
 
@@ -85,7 +85,7 @@ Utwórz funkcję o nazwie `LoadJson()`, aby załadować plik JSON danych pisma o
 
 2. Wywołaj wcześniej utworzoną funkcję `recognizeInk()`. Użyj `System.Console.ReadKey()`, aby zachować otwarte okno konsoli po uruchomieniu aplikacji.
     
-    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=main)]
+    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 
 
 ## <a name="run-the-application-and-view-the-response"></a>Uruchom aplikację i Wyświetl odpowiedź

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 5ac1f3e4bf629a2e12eb0461b932a5865228c79c
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 6dd8246d5751609e2f20ee9d5e519529752940f7
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546711"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137529"
 ---
 # <a name="cross-validate-model"></a>Krzyżowa weryfikacja modelu
 
@@ -62,21 +62,19 @@ W tym scenariuszu nauczysz się i testujesz model przy użyciu modelu krzyżoweg
 
 2. Połącz dane wyjściowe z dowolnym modelem klasyfikacji lub regresji. 
 
-    Na przykład jeśli używasz **dwóch klas Bayesa punktów** do klasyfikacji, skonfiguruj model przy użyciu żądanych parametrów. Następnie przeciągnij łącznik z **nauczenia portu modelu** klasyfikatora do zgodnego portu modelu krzyżowego sprawdzania poprawności. 
+    Na przykład jeśli korzystasz z **dwuetapowego drzewa decyzyjnego klasy** do klasyfikacji, skonfiguruj model przy użyciu żądanych parametrów. Następnie przeciągnij łącznik z **nauczenia portu modelu** klasyfikatora do zgodnego portu modelu krzyżowego sprawdzania poprawności. 
 
     > [!TIP] 
     > Nie jest konieczne uczenie modelu, ponieważ model weryfikacji krzyżowej automatycznie pociąga za siebie model w ramach oceny.  
 3.  W porcie **zestawu danych** modelu krzyżowego sprawdzania poprawności Połącz każdy zestaw danych szkolenia z etykietą.  
 
-4.  W okienku **Właściwości** modelu krzyżowego sprawdzania poprawności wybierz pozycję **Uruchom selektor kolumny**. Wybierz pojedynczą kolumnę zawierającą etykietę klasy lub wartość przewidywalną. 
+4.  W prawym panelu modelu krzyżowego walidacji kliknij pozycję **Edytuj kolumnę**. Wybierz pojedynczą kolumnę zawierającą etykietę klasy lub wartość przewidywalną. 
 
 5. Ustaw wartość parametru **losowego inicjatora** , jeśli chcesz powtórzyć wyniki weryfikacji krzyżowej po kolejnych uruchomieniach na tych samych danych.  
 
 6. Uruchamianie potoku.
 
 7. Opis raportów można znaleźć w sekcji [Results (wyniki](#results) ).
-
-    Aby później uzyskać kopię modelu do ponownego użycia, przejdź do karty dane **wyjściowe** w prawym panelu modułu zawierającego algorytm (na przykład, **maszyna Bayesa punkt**). Następnie wybierz ikonę **zarejestruj zestaw danych** , aby zapisać kopię przeszkolonego modelu w drzewie modułów.
 
 ## <a name="results"></a>Wyniki
 

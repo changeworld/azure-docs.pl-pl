@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69582291ca1da95003e26a6922899defd7d5e477
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f3a9265c1f9a5c6c63931798718e4d0679cd126b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982402"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136257"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informacje o profilach technicznych w Azure Active Directory B2C zasadach niestandardowych
 
@@ -48,21 +48,25 @@ Wszystkie typy profilów technicznych mają takie same koncepcje. Wysyłasz ośw
 
 ![Diagram ilustrujący przepływ profilu technicznego](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **InputClaimsTransformation** — oświadczenia wejściowe dla każdej [transformacji oświadczeń](claimstransformations.md) wejściowych są pobierane z zbioru oświadczeń i po wykonaniu oświadczenia wyjściowe są umieszczane w zbiorze oświadczeń. Oświadczenia wyjściowe przekształcenia oświadczeń wejściowych mogą być oświadczeniami wejściowymi kolejnych transformacji oświadczeń wejściowych.
-2. **InputClaims** — oświadczenia są pobierane z zbioru oświadczeń i są używane w profilu technicznym. Na przykład [samodzielnie potwierdzony profil techniczny](self-asserted-technical-profile.md) używa oświadczeń wejściowych do wstępnego wypełniania oświadczeń wyjściowych dostarczanych przez użytkownika. Profil techniczny interfejsu API REST używa oświadczeń wejściowych do wysyłania parametrów wejściowych do punktu końcowego interfejsu API REST. Azure Active Directory używa jako unikatowego identyfikatora do odczytywania, aktualizowania lub usuwania konta.
-3. **Wykonywanie profilu technicznego** — profil techniczny wymienia oświadczenia ze skonfigurowaną stroną. Przykład:
+1. **Zarządzanie sesjami logowania** jednokrotnego — przywraca stan sesji profilu technicznego przy użyciu funkcji [zarządzania sesjami logowania jednokrotnego](custom-policy-reference-sso.md). 
+1. **Przekształcanie oświadczeń wejściowych** — oświadczenia wejściowe dla każdej [transformacji oświadczeń](claimstransformations.md) wejściowych są pobierane z zbioru oświadczeń.  Oświadczenia wyjściowe przekształcenia oświadczeń wejściowych mogą być oświadczeniami wejściowymi kolejnych transformacji oświadczeń wejściowych.
+1. **Oświadczenia wejściowe** — oświadczenia są pobierane z zbioru oświadczeń i są używane w profilu technicznym. Na przykład [samodzielnie potwierdzony profil techniczny](self-asserted-technical-profile.md) używa oświadczeń wejściowych do wstępnego wypełniania oświadczeń wyjściowych dostarczanych przez użytkownika. Profil techniczny interfejsu API REST używa oświadczeń wejściowych do wysyłania parametrów wejściowych do punktu końcowego interfejsu API REST. Azure Active Directory używa jako unikatowego identyfikatora do odczytywania, aktualizowania lub usuwania konta.
+1. **Wykonywanie profilu technicznego** — profil techniczny wymienia oświadczenia ze skonfigurowaną stroną. Na przykład:
     - Przekieruj użytkownika do dostawcy tożsamości, aby zakończyć logowanie. Po pomyślnym zalogowaniu użytkownik wraca do tyłu, a wykonywanie profilu technicznego będzie kontynuowane.
     - Wywołaj interfejs API REST podczas wysyłania parametrów jako InputClaims i pobierania informacji z powrotem jako OutputClaims.
     - Utwórz lub zaktualizuj konto użytkownika.
     - Wysyła i weryfikuje wiadomość tekstową usługi MFA.
-4. **ValidationTechnicalProfiles** — w przypadku [samodzielnego profilu technicznego](self-asserted-technical-profile.md)można wywołać [profil techniczny weryfikacji](validation-technical-profile.md)danych wejściowych. Profil techniczny weryfikacji weryfikuje dane profilowane przez użytkownika i zwraca komunikat o błędzie lub OK, z lub bez oświadczeń wyjściowych. Na przykład przed Azure AD B2C tworzenia nowego konta sprawdza, czy użytkownik już istnieje w usługach katalogowych. Aby dodać własną logikę biznesową, można wywołać profil techniczny interfejsu API REST.<p>Zakres oświadczeń wyjściowych dla profilu technicznego weryfikacji jest ograniczony do profilu technicznego, który wywołuje profil techniczny weryfikacji i inne profile techniczne weryfikacji w ramach tego samego profilu technicznego. Jeśli chcesz użyć oświadczeń wyjściowych w następnym kroku aranżacji, musisz dodać oświadczenia wyjściowe do profilu technicznego, który wywoła profil techniczny weryfikacji.
-5. **OutputClaims** — oświadczenia są zwracane z powrotem do zbioru oświadczeń. Możesz użyć tych oświadczeń w następnych krokach aranżacji lub przekształceń oświadczeń wyjściowych.
-6. **OutputClaimsTransformations** — oświadczenia wejściowe wszystkich [przekształceń oświadczeń](claimstransformations.md) wyjściowych są pobierane z zbioru oświadczeń. Oświadczenia wyjściowe profilu technicznego z poprzednich kroków mogą być oświadczeniami wejściowymi transformacji oświadczeń wyjściowych. Po wykonaniu oświadczenia wyjściowe są umieszczane w zbiorze oświadczeń. Oświadczenia wyjściowe transformacji oświadczeń wyjściowych mogą również być oświadczeniami wejściowymi dla kolejnej transformacji oświadczeń wyjściowych.
-7. **Zarządzanie sesją logowania** jednokrotnego - kontrola [zarządzania sesją SSO](custom-policy-reference-sso.md) interakcja z użytkownikiem po uwierzytelnieniu użytkownika. Administrator może na przykład określić, czy jest wyświetlany wybór dostawców tożsamości, czy też należy wprowadzić ponownie szczegóły konta lokalnego.
+1. **Sprawdzanie poprawności profilów technicznych** — [profil techniczny z własnym potwierdzeniem](self-asserted-technical-profile.md) może wywoływać [Sprawdzanie poprawności profilów technicznych](validation-technical-profile.md). Profil techniczny weryfikacji weryfikuje dane profilowane przez użytkownika i zwraca komunikat o błędzie lub OK, z lub bez oświadczeń wyjściowych. Na przykład przed Azure AD B2C tworzenia nowego konta sprawdza, czy użytkownik już istnieje w usługach katalogowych. Aby dodać własną logikę biznesową, można wywołać profil techniczny interfejsu API REST.<p>Zakres oświadczeń wyjściowych profilu technicznego weryfikacji jest ograniczony do profilu technicznego, który wywołuje profil techniczny weryfikacji. i inne profile techniczne weryfikacji pod tym samym profilem technicznym. Jeśli chcesz użyć oświadczeń wyjściowych w następnym kroku aranżacji, musisz dodać oświadczenia wyjściowe do profilu technicznego, który wywoła profil techniczny weryfikacji.
+1. **Oświadczenia wyjściowe** — oświadczenia są zwracane z powrotem do zbioru oświadczeń. Możesz użyć tych oświadczeń w następnych krokach aranżacji lub przekształceń oświadczeń wyjściowych.
+1. **Przekształcenia oświadczeń wyjściowych** — oświadczenia wejściowe każdej [przekształcenia oświadczeń](claimstransformations.md) wyjściowych są pobierane z zbioru oświadczeń. Oświadczenia wyjściowe profilu technicznego z poprzednich kroków mogą być oświadczeniami wejściowymi transformacji oświadczeń wyjściowych. Po wykonaniu oświadczenia wyjściowe są umieszczane w zbiorze oświadczeń. Oświadczenia wyjściowe transformacji oświadczeń wyjściowych mogą również być oświadczeniami wejściowymi dla kolejnej transformacji oświadczeń wyjściowych.
+1. **Zarządzanie sesjami logowania jednokrotnego (SSO)** — utrzymuje dane profilu technicznego w sesji przy użyciu funkcji [zarządzania sesjami logowania jednokrotnego](custom-policy-reference-sso.md).
 
-Profil techniczny może dziedziczyć z innego profilu technicznego, aby zmienić ustawienia lub dodać nową funkcję.  Element **IncludeTechnicalProfile** jest odwołaniem do podstawowego profilu technicznego, z którego pochodzi profil techniczny.
 
-Na przykład profil techniczny **AAD-UserReadUsingAlternativeSecurityId-NOERROR** obejmuje usługi **AAD-UserReadUsingAlternativeSecurityId**. Ten profil techniczny ustawia element metadanych **RaiseErrorIfClaimsPrincipalDoesNotExist** na `true`i zgłasza błąd, jeśli konto społecznościowe nie istnieje w katalogu. **AAD-UserReadUsingAlternativeSecurityId-NOERROR** zastępuje to zachowanie i wyłącza komunikat o błędzie, jeśli użytkownik nie istniał.
+## <a name="technical-profile-inclusion"></a>Włączenie profilu technicznego
+
+Profil techniczny może zawierać inny profil techniczny, aby zmienić ustawienia lub dodać nową funkcję.  Element `IncludeTechnicalProfile` jest odwołaniem do podstawowego profilu technicznego, z którego pochodzi profil techniczny. Nie ma żadnego limitu liczby poziomów. 
+
+Na przykład profil techniczny **AAD-UserReadUsingAlternativeSecurityId-NOERROR** obejmuje usługi **AAD-UserReadUsingAlternativeSecurityId**. Ten profil techniczny ustawia `RaiseErrorIfClaimsPrincipalDoesNotExist` element metadanych do `true`i zgłasza błąd, jeśli konto społecznościowe nie istnieje w katalogu. **AAD-UserReadUsingAlternativeSecurityId-NOERROR** zastępuje to zachowanie i wyłącza ten komunikat o błędzie.
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
@@ -97,7 +101,7 @@ Usługi **AAD-UserReadUsingAlternativeSecurityId** zawierają profil techniczny 
 </TechnicalProfile>
 ```
 
-W przypadku usługi AAD **-UserReadUsingAlternativeSecurityId-NOERROR** i **AAD-UserReadUsingAlternativeSecurityId** nie należy określać wymaganego elementu **protokołu** , ponieważ jest on określony w profilu technicznym usługi **AAD-Common** .
+W przypadku usługi **AAD-UserReadUsingAlternativeSecurityId-NOERROR** i **AAD-UserReadUsingAlternativeSecurityId** nie określono wymaganego elementu **Protocol** , ponieważ jest on określony w profilu technicznym usługi **AAD-Common** .
 
 ```XML
 <TechnicalProfile Id="AAD-Common">
@@ -106,16 +110,3 @@ W przypadku usługi AAD **-UserReadUsingAlternativeSecurityId-NOERROR** i **AAD-
   ...
 </TechnicalProfile>
 ```
-
-Profil techniczny może obejmować lub dziedziczyć inny profil techniczny, który może zawierać kolejny z nich. Nie ma żadnego limitu liczby poziomów. W zależności od wymagań firmy podróż użytkownika może wywołać metodę **AAD-UserReadUsingAlternativeSecurityId** , która zgłasza błąd, jeśli konto społecznościowe użytkownika nie istnieje lub **AAD-UserReadUsingAlternativeSecurityId-NOERROR** , które nie zgłasza błędu.
-
-
-
-
-
-
-
-
-
-
-

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159879"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138017"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
@@ -36,7 +36,7 @@ Ten artykuł zawiera informacje ułatwiające:
 ## <a name="cloud-security-advantages"></a>Zalety chmury
 Ważne jest zrozumienie [działu odpowiedzialności](shared-responsibility.md) między ty i firmą Microsoft. W środowisku lokalnym jest własnością całego stosu, ale podczas przechodzenia do chmury niektóre odpowiedzialności są przekazywane do firmy Microsoft.
 
-Istnieją [zalety zabezpieczeń w chmurze](shared-responsibility.md#cloud security advantages). W środowisku lokalnym organizacje mogą korzystać z niewypełnienia obowiązków i ograniczonych zasobów w celu inwestowania w zabezpieczeniach, co tworzy środowisko, w którym atakujący mogą wykorzystać luki we wszystkich warstwach.
+Istnieją [zalety zabezpieczeń w chmurze](shared-responsibility.md#cloud-security-advantages). W środowisku lokalnym organizacje mogą korzystać z niewypełnienia obowiązków i ograniczonych zasobów w celu inwestowania w zabezpieczeniach, co tworzy środowisko, w którym atakujący mogą wykorzystać luki we wszystkich warstwach.
 
 Organizacje mogą ulepszyć czas wykrywania zagrożeń i czasy odpowiedzi przy użyciu opartych na chmurze funkcji zabezpieczeń i analizy chmury.  Dzięki przesunięciu obowiązków do dostawcy usług w chmurze organizacje mogą uzyskać więcej informacji o zabezpieczeniach, co umożliwia im ponowne przydzielanie zasobów zabezpieczeń i budżetu do innych priorytetów firmy.
 
@@ -98,11 +98,11 @@ Użyj standardowych protokołów uwierzytelniania, takich jak OAuth2 i Kerberos.
 
 Poniższa tabela zawiera listę zagrożeń związanych z KROKami i zawiera przykładowe środki zaradcze, które korzystają z funkcji platformy Azure. Te środki zaradcze nie będą działały w każdej sytuacji.
 
-| Ważną | Właściwość zabezpieczeń | Potencjalne ograniczenia dotyczące platformy Azure |
+| Zagrożenie | Właściwość zabezpieczeń | Potencjalne ograniczenia dotyczące platformy Azure |
 | --- | --- | --- |
 | Fałszowaniem | Uwierzytelnianie | Wymagaj połączeń HTTPS. |
-| Manipulowanie | Integralność | Sprawdź poprawność certyfikatów SSL. |
-| Rzuca | Brak wyparcia | Włącz [monitorowanie i diagnostykę](/azure/architecture/best-practices/monitoring)platformy Azure. |
+| Naruszeniu | Integralność | Sprawdź poprawność certyfikatów SSL. |
+| rzuca | Brak wyparcia | Włącz [monitorowanie i diagnostykę](/azure/architecture/best-practices/monitoring)platformy Azure. |
 | Ujawnienie informacji | Poufne | Szyfruj poufne dane przy użyciu [certyfikatów usługi](/rest/api/appservice/certificates). |
 | Odmowa usługi | Dostępność | Monitoruj metryki wydajności dla potencjalnych warunków odmowy usług. Implementuj filtry połączeń. |
 | Podniesienie uprawnień | Autoryzacja | Użyj [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
@@ -119,7 +119,7 @@ Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z App Servi
 **Szczegóły**: ograniczanie dostępu jest konieczne dla organizacji, które chcą wymusić zasady zabezpieczeń dostępu do danych. Za pomocą RBAC można przypisywać uprawnienia użytkownikom, grupom i aplikacjom w określonym zakresie. Aby dowiedzieć się więcej o udzielaniu użytkownikom dostępu do aplikacji, zobacz Wprowadzenie do [zarządzania dostępem](/azure/role-based-access-control/overview).
 
 **Najlepsze rozwiązanie**: Ochrona kluczy.   
-**Szczegóły**: Azure Key Vault pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Za pomocą Key Vault można szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych). Pliki i hasła PFX) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). W celu zapewnienia dodatkowej ochrony można importować lub generować klucze w sprzętowych modułach zabezpieczeń. Aby dowiedzieć się więcej, zobacz [Azure Key Vault](/azure/key-vault/key-vault-overview) . Za pomocą Key Vault można także zarządzać certyfikatami TLS przy użyciu autoodnawiania.
+**Szczegóły**: Azure Key Vault pomaga chronić klucze kryptograficzne i wpisy tajne używane przez aplikacje i usługi w chmurze. Za pomocą Key Vault można szyfrować klucze i wpisy tajne (takie jak klucze uwierzytelniania, klucze konta magazynu, klucze szyfrowania danych). Pliki i hasła PFX) przy użyciu kluczy chronionych przez sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). W celu zapewnienia dodatkowego bezpieczeństwa możesz zaimportować lub wygenerować klucze w modułach HSM. Aby dowiedzieć się więcej, zobacz [Azure Key Vault](/azure/key-vault/key-vault-overview) . Za pomocą Key Vault można także zarządzać certyfikatami TLS przy użyciu autoodnawiania.
 
 **Najlepsze rozwiązanie**: ograniczanie przychodzących źródłowych adresów IP.   
 **Szczegóły**: [App Service Environment](/azure/app-service/environment/intro) ma funkcję integracji sieci wirtualnej, która pomaga ograniczyć przychodzące źródłowe adresy IP za pomocą sieciowych grup zabezpieczeń. Sieci wirtualne umożliwiają umieszczanie zasobów platformy Azure w nieinternetowej, rutowanej sieci, do której kontroluje się dostęp. Aby dowiedzieć się więcej, zobacz [Integrowanie aplikacji z siecią wirtualną platformy Azure](/azure/app-service/web-sites-integrate-with-vnet).

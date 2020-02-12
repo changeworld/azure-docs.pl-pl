@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 11/04/2019
-ms.openlocfilehash: 4d22fd39eae5d5cf207d6d44819f0ce7ab2eceb5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: f15f50e372d0bfe58018b16ebfa5d5d85644ae1a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963245"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137783"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Kompiluj klasyfikator, aby przewidzieć kategorię firmy przy użyciu programu Azure Machine Learning Designer.
 
@@ -39,11 +39,11 @@ Podstawowe kroki związane z modelem uczenia maszynowego z danymi tekstowymi są
 
    Konwertuj funkcję tekstu na funkcję liczbową za pomocą modułu wyodrębniania funkcji, takiego jak mieszanie funkcji, Wyodrębnij funkcję n-gramową z danych tekstowych.
 
-1. Trenowanie modelu
+1. Uczenie modelu
 
 1. Zestaw danych oceny
 
-1. Ocenianie modelu
+1. Oceń model
 
 Oto końcowy, ukończony wykres potoku, nad którym pracujemy. Udostępnimy uzasadnienie dla wszystkich modułów, dzięki czemu będziesz w stanie podjąć podobne decyzje.
 
@@ -63,7 +63,7 @@ Nie można znaleźć artykułów dla niektórych firm, więc liczba rekordów je
 
 ## <a name="pre-process-the-text-data"></a>Wstępne przetwarzanie danych tekstowych
 
-Moduł **tekstu przetwarzania wstępnego** jest używany do wstępnego przetwarzania danych tekstowych, takich jak wykrywanie zdań, tokenize zdania i tak dalej. Wszystkie obsługiwane opcje można znaleźć w artykule [**wstępnego przetwarzania tekstu**](algorithm-module-reference/preprocess-text.md) . Po wstępnym przetwarzaniu danych Tex korzystamy z modułu **Split Data** , aby losowo podzielić dane wejściowe, tak aby zestaw danych szkoleniowy zawierał 50% danych oryginalnych, a test dataset zawiera 50% oryginalnych danych.
+Moduł **tekstu przetwarzania wstępnego** jest używany do wstępnego przetwarzania danych tekstowych, takich jak wykrywanie zdań, tokenize zdania i tak dalej. Wszystkie obsługiwane opcje można znaleźć w artykule [**wstępnego przetwarzania tekstu**](algorithm-module-reference/preprocess-text.md) . Po wstępnym przetwarzaniu danych tekstowych używamy modułu **Split Data** , aby losowo podzielić dane wejściowe, tak aby zestaw danych szkoleniowy zawierał 50% danych oryginalnych, a test dataset zawiera 50% oryginalnych danych.
 
 ## <a name="feature-engineering"></a>Inżynieria funkcji
 W tym przykładzie będziemy używać dwóch metod wykonywania zadań inżynieryjnych.
@@ -79,11 +79,11 @@ W potoku próbkowania ustawiamy liczbę bitów mieszania do 14 i ustawimy liczb�
 
 N-gram jest ciągłą sekwencją n terminów od danej sekwencji tekstu. N-gram o rozmiarze 1 jest określany jako unigram; n-gram o rozmiarze 2 to dwugramowa; n-gram o rozmiarze 3 to trigram. N-gramy większych rozmiarów są czasami określane przez wartość n, na przykład "cztery-gramy", "pięć-gram" itd.
 
-Używamy [**funkcji Wyodrębnij N-gram z modułu tekstowego**](algorithm-module-reference/extract-n-gram-features-from-text.md)jako innego rozwiązania dla inżynierów funkcji. Ten moduł najpierw wyodrębnia zestaw n-gramów, oprócz n-gramów, liczbę dokumentów, w których każde n-gram pojawia się w tekście jest zliczane (DF). W tym przykładzie Metryka TF-IDF jest używana do obliczania wartości funkcji. Następnie konwertuje niestrukturalne dane tekstowe na wektorowe funkcje liczbowe o stałej długości, gdzie każda funkcja reprezentuje TF-IDF dla n-gram w wystąpieniu tekstu.
+Używamy [**funkcji Wyodrębnij N-gram z modułu tekstowego**](algorithm-module-reference/extract-n-gram-features-from-text.md) jako innego rozwiązania dla inżynierów funkcji. Ten moduł najpierw wyodrębnia zestaw n-gramów, oprócz n-gramów, liczbę dokumentów, w których każde n-gram pojawia się w tekście jest zliczane (DF). W tym przykładzie Metryka TF-IDF jest używana do obliczania wartości funkcji. Następnie konwertuje niestrukturalne dane tekstowe na wektorowe funkcje liczbowe o stałej długości, gdzie każda funkcja reprezentuje TF-IDF dla n-gram w wystąpieniu tekstu.
 
 Po przeprowadzeniu konwersji danych tekstowych do wektorów funkcji liczbowych, moduł **SELECT Column** służy do usuwania danych tekstowych z zestawu danych. 
 
-## <a name="train-the-model"></a>Trenowanie modelu
+## <a name="train-the-model"></a>Uczenie modelu
 
 Wybór algorytmu często zależy od wymagań dotyczących przypadku użycia. Ponieważ celem tego potoku jest przewidywanie kategorii firmy, model klasyfikatora wieloklasowego jest dobrym wyborem. Biorąc pod uwagę, że liczba funkcji jest duża i są one rozrzedzone, używamy modelu **regresji logistycznej** dla tego potoku.
 

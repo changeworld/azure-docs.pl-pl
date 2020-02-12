@@ -9,8 +9,8 @@
   items:
     - name: Włączanie samoobsługowego resetowania hasła
       href: tutorial-enable-sspr.md
-    - name: Włączanie uwierzytelniania wieloskładnikowego dla aplikacji
-      href: tutorial-mfa-applications.md
+    - name: Włączanie usługi Azure Multi-Factor Authentication
+      href: tutorial-enable-azure-mfa.md
     - name: Włączanie integracji samoobsługowego resetowania hasła ze środowiskiem lokalnym
       href: tutorial-enable-writeback.md
     - name: Integracja z usługą Azure Identity Protection

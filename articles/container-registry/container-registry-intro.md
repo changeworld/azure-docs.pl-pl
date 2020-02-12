@@ -3,15 +3,15 @@ title: Zarządzane rejestry kontenerów
 description: Wprowadzenie do usługi Azure Container Registry dostarczającej oparte na chmurze, zarządzane rejestry prywatne platformy Docker.
 author: stevelas
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445726"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132028"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Wprowadzenie do prywatnych rejestrów kontenerów platformy Docker na platformie Azure
 
@@ -41,7 +41,7 @@ Platforma Azure udostępnia narzędzia, w tym interfejs wiersza polecenia platfo
 * **Zabezpieczenia i dostęp** — Zaloguj się do rejestru przy użyciu interfejsu wiersza polecenia platformy Azure lub standardowego `docker login`. Azure Container Registry transferuje obrazy kontenerów za pośrednictwem protokołu HTTPS i obsługuje protokół TLS w celu zabezpieczania połączeń klientów. 
 
   > [!IMPORTANT]
-  > Od 13 stycznia 2020, Azure Container Registry będą wymagały wszystkich bezpiecznych połączeń z serwerów i aplikacji do korzystania z protokołu TLS 1,2. Obsługa protokołu TLS 1,0 i 1,1 zostanie wycofana.
+  > Od 13 stycznia 2020, Azure Container Registry będą wymagały wszystkich bezpiecznych połączeń z serwerów i aplikacji do korzystania z protokołu TLS 1,2. Włącz protokół TLS 1,2 przy użyciu dowolnego ostatniego klienta platformy Docker (wersja 18.03.0 lub nowsza). Obsługa protokołu TLS 1,0 i 1,1 zostanie wycofana. 
 
   Możesz [kontrolować dostęp](container-registry-authentication.md) do rejestru kontenerów za pomocą tożsamości platformy Azure, [jednostki usługi](../active-directory/develop/app-objects-and-service-principals.md) wspieranej przez usługę Azure Active Directory lub podanego konta administratora. Za pomocą kontroli dostępu opartej na rolach (RBAC) można przypisywać użytkownikom lub systemom szczegółowe uprawnienia do rejestru.
 

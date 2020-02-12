@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/02/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 27517c375265b552d2e1dec4d8c167d1bc86549d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018979"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137642"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Zarządzaj IoT Central z Azure Portal
 
@@ -23,19 +23,17 @@ Zamiast tworzyć aplikacje IoT Central i zarządzać nimi w witrynie sieci Web p
 
 ## <a name="create-iot-central-applications"></a>Tworzenie aplikacji IoT Central
 
-Aby utworzyć aplikację, przejdź do [Azure Portal](https://ms.portal.azure.com) i wybierz pozycję **Utwórz zasób** w okienku głównym po lewej stronie.
+Aby utworzyć aplikację, przejdź do [Azure Portal](https://ms.portal.azure.com) i wybierz pozycję **Utwórz zasób**.
 
-![Portal zarządzania: menu nawigacji](media/howto-manage-iot-central-from-portal/image0.png)
-
-Na pasku wyszukiwania wpisz **IoT Central**.
+W obszarze **Wyszukaj na pasku Marketplace** wpisz *IoT Central*:
 
 ![Portal zarządzania: wyszukiwanie](media/howto-manage-iot-central-from-portal/image0a1.png)
 
-Wybierz **IoT Central wiersz aplikacji** w wynikach wyszukiwania.
+Wybierz kafelek **aplikacji IoT Central** w wynikach wyszukiwania:
 
 ![Portal zarządzania: wyniki wyszukiwania](media/howto-manage-iot-central-from-portal/image0b1.png)
 
-Następnie wybierz pozycję **Utwórz**.
+Teraz wybierz pozycję **Utwórz**:
 
 ![Portal zarządzania: zasób IoT Central](media/howto-manage-iot-central-from-portal/image0c1.png)
 
@@ -55,19 +53,17 @@ Jeśli masz już aplikację IoT Central platformy Azure, możesz ją usunąć lu
 > [!NOTE]
 > W Azure Portal nie są wyświetlane aplikacje utworzone w ramach bezpłatnego planu cenowego, ponieważ nie są one skojarzone z Twoją subskrypcją.
 
-Aby rozpocząć, wybierz pozycję **wszystkie zasoby** w okienku głównym po lewej stronie. Użyj pola wyszukiwania, aby wpisać nazwę aplikacji, aby znaleźć ją na liście zasobów. Następnie wybierz aplikację IoT Central, którą chcesz zarządzać.
+Aby rozpocząć, wybierz pozycję **wszystkie zasoby** w portalu. Wybierz pozycję **Pokaż ukryte typy** i zacznij wpisywać nazwę aplikacji w polu **Filtruj według nazwy** , aby je znaleźć. Następnie wybierz aplikację IoT Central, którą chcesz zarządzać.
 
-![Portal zarządzania: zarządzanie zasobami](media/howto-manage-iot-central-from-portal/image2a.png)
-
-Aby przejść do aplikacji, wybierz adres URL aplikacji IoT Central.
+Aby przejść do aplikacji, wybierz **adres URL aplikacji IoT Central**:
 
 ![Portal zarządzania: zarządzanie zasobami](media/howto-manage-iot-central-from-portal/image3.png)
 
-Aby przenieść aplikację do innej grupy zasobów, wybierz pozycję **Zmień** obok grupy zasobów. Na stronie **przenoszenie zasobów** wybierz grupę zasobów, do której chcesz migrować tę aplikację.
+Aby przenieść aplikację do innej grupy zasobów, wybierz pozycję **Zmień** obok grupy zasobów. Na stronie **przenoszenie zasobów** wybierz grupę zasobów, do której chcesz przenieść tę aplikację:
 
 ![Portal zarządzania: zarządzanie zasobami](media/howto-manage-iot-central-from-portal/image4a.png)
 
-Aby przenieść aplikację do innej subskrypcji, wybierz łącze **Zmień** obok subskrypcji. Wybierz subskrypcję, do której chcesz migrować tę aplikację w wyświetlonym oknie dialogowym.
+Aby przenieść aplikację do innej subskrypcji, wybierz pozycję **Zmień** obok subskrypcji. Na stronie **przenoszenie zasobów** wybierz subskrypcję, do której chcesz przenieść tę aplikację:
 
 ![Portal zarządzania: zarządzanie zasobami](media/howto-manage-iot-central-from-portal/image5a.png)
 

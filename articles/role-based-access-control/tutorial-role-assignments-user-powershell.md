@@ -1,5 +1,5 @@
 ---
-title: Samouczek — udzielanie użytkownikom dostępu do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell
+title: 'Samouczek: udzielanie użytkownikom dostępu do zasobów platformy Azure za pomocą RBAC i Azure PowerShell'
 description: Dowiedz się, jak przyznać użytkownikom dostęp do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach (RBAC) i Azure PowerShell w tym samouczku.
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: c5570c6b1d2cdd168dbaeb0a91d80a61e171e5d1
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f4ba56bf79d707200bf361ab4c717bb63d081953
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418629"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138225"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Samouczek: udzielanie użytkownikom dostępu do zasobów platformy Azure przy użyciu RBAC i Azure PowerShell
 
@@ -46,9 +46,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy się przypisanie roli. Przypisanie roli składa się z trzech elementów: podmiotu zabezpieczeń, definicji roli i zakresu. W tym samouczku utworzysz dwa przypisania ról:
 
-| Podmiot zabezpieczeń | Definicja roli | Scope |
+| Podmiot zabezpieczeń | Definicja roli | Zakres |
 | --- | --- | --- |
-| Użytkownik<br>(Użytkownik samouczka kontroli dostępu opartej na rolach) | [Czytelnik](built-in-roles.md#reader) | Subscription |
+| Użytkownik<br>(Użytkownik samouczka kontroli dostępu opartej na rolach) | [Czytelnik](built-in-roles.md#reader) | Subskrypcja |
 | Użytkownik<br>(Użytkownik samouczka kontroli dostępu opartej na rolach)| [Współautor](built-in-roles.md#contributor) | Grupa zasobów<br>(rbac-tutorial-resource-group) |
 
    ![Przypisania ról dla użytkownika](./media/tutorial-role-assignments-user-powershell/rbac-role-assignments-user.png)
@@ -77,7 +77,7 @@ Do przypisania roli potrzebny jest użytkownik, grupa lub jednostka usługi. Je�
     11111111-1111-1111-1111-111111111111 RBAC Tutorial User rbacuser@example.com Member
     ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Za pomocą grupy zasobów można zademonstrować przypisywanie roli w zakresie grupy zasobów.
 

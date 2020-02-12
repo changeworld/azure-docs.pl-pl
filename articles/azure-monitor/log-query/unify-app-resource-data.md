@@ -6,13 +6,13 @@ ms.author: bwren
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 07dd4c96ba51b1ac1e0cb2807c9e26df87a6daa7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/02/2020
+ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364972"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137496"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Ujednolicenie wielu zasobów Application Insights Azure Monitor 
 W tym artykule opisano sposób wykonywania zapytań i wyświetlania wszystkich danych dziennika Application Insights w jednym miejscu, nawet w przypadku, gdy znajdują się one w różnych subskrypcjach platformy Azure, jako zamiennik dla zaniechania Application Insights Connector. Liczba zasobów Application Insights, które można uwzględnić w pojedynczym zapytaniu, jest ograniczona do 100.
@@ -20,12 +20,7 @@ W tym artykule opisano sposób wykonywania zapytań i wyświetlania wszystkich d
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Zalecane podejście do wykonywania zapytań dotyczących wielu zasobów Application Insights 
 Wyświetlanie listy wielu zasobów Application Insights w zapytaniu może być uciążliwe i trudne do utrzymania. Zamiast tego można wykorzystać funkcję do oddzielenia logiki zapytania od zakresu aplikacji.  
 
-W tym przykładzie pokazano, jak można monitorować wiele zasobów Application Insights i wizualizować liczbę nieudanych żądań według nazwy aplikacji. Przed rozpoczęciem Uruchom to zapytanie w obszarze roboczym, który jest połączony z zasobami Application Insights, aby uzyskać listę połączonych aplikacji: 
-
-```
-ApplicationInsights
-| summarize by ApplicationName
-```
+W tym przykładzie pokazano, jak można monitorować wiele zasobów Application Insights i wizualizować liczbę nieudanych żądań według nazwy aplikacji.
 
 Utwórz funkcję używającą operatora UNION z listą aplikacji, a następnie Zapisz zapytanie w obszarze roboczym jako funkcję z aliasem *applicationsScoping*. 
 
@@ -61,32 +56,8 @@ Zapytanie używa schematu Application Insights, mimo że zapytanie jest wykonywa
 
 ![Przykład wyników między zapytaniami](media/unify-app-resource-data/app-insights-query-results.png)
 
-## <a name="query-across-application-insights-resources-and-workspace-data"></a>Wykonywanie zapytań dotyczących zasobów Application Insights i danych obszaru roboczego 
-Po zatrzymaniu łącznika i zalogowaniu się w przedziale czasowym, który został przycięty przez Application Insights przechowywanie danych (90 dni), należy wykonać [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) w obszarze roboczym i Application Insights zasoby dla okresu pośredniego. Jest to do momentu, aż dane aplikacji będą gromadzone na nowe Application Insights przechowywanie danych wymienionych powyżej. Zapytanie wymaga pewnego manipulowania, ponieważ schematy w Application Insights i obszar roboczy są różne. Zapoznaj się z tabelą w dalszej części tej sekcji, aby wyróżnić różnice między schematami. 
-
 >[!NOTE]
 >[Zapytanie między zasobami](../log-query/cross-workspace-query.md) w ramach alertów dziennika jest obsługiwane w nowym [interfejsie API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Domyślnie Azure Monitor używa [starszego interfejsu API alertów log Analytics](../platform/api-alerts.md) na potrzeby tworzenia nowych reguł alertów dziennika z Azure Portal, chyba że zostanie przełączony w [STARSZEJ wersji interfejsu API alertów dziennika](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po przełączeniu nowy interfejs API zostanie ustawiony jako domyślny dla nowych reguł alertów w Azure Portal i umożliwia tworzenie reguł alertów dziennika zapytań dla wielu zasobów. Można tworzyć reguły alertów dziennika [zapytań dla wielu zasobów](../log-query/cross-workspace-query.md) bez przełączenia przy użyciu [szablonu ARM dla interfejsu API scheduledQueryRules](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , ale ta reguła alertu jest możliwa do zarządzania, chociaż [interfejs API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , a nie z Azure Portal.
-
-Na przykład, jeśli łącznik przestanie działać na 2018-11-01, podczas wykonywania zapytania dotyczącego dzienników w Application Insights zasobów i aplikacji w obszarze roboczym zapytanie zostanie skonstruowane jak w poniższym przykładzie:
-
-```
-applicationsScoping //this brings data from Application Insights resources 
-| where timestamp between (datetime("2018-11-01") .. now()) 
-| where success == 'False' 
-| where duration > 1000 
-| union ( 
-    ApplicationInsights //this is Application Insights data in Log Analytics workspace 
-    | where TimeGenerated < (datetime("2018-12-01") 
-    | where RequestSuccess == 'False' 
-    | where RequestDuration > 1000 
-    | extend duration = RequestDuration //align to Application Insights schema 
-    | extend timestamp = TimeGenerated //align to Application Insights schema 
-    | extend name = RequestName //align to Application Insights schema 
-    | extend resultCode = ResponseCode //align to Application Insights schema 
-    | project-away RequestDuration , RequestName , ResponseCode , TimeGenerated 
-) 
-| project timestamp , duration , name , resultCode 
-```
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights i Log Analytics różnice w schemacie obszaru roboczego
 W poniższej tabeli przedstawiono różnice schematu między Log Analytics i Application Insights.  
@@ -107,17 +78,17 @@ W poniższej tabeli przedstawiono różnice schematu między Log Analytics i App
 | Przeglądarka | client_browser |
 | Miasto | client_city |
 | ClientIP | client_IP |
-| Computer (Komputer) | cloud_RoleInstance | 
+| Computer | cloud_RoleInstance | 
 | Kraj | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | name | 
 | DeviceModel | client_Model | 
-| DeviceType | client_Type | 
+| Typ urządzenia | client_Type | 
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
-| ExceptionType | type |
+| Typ | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | System operacyjny | client_OS | 
@@ -127,7 +98,7 @@ W poniższej tabeli przedstawiono różnice schematu między Log Analytics i App
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
-| Identyfikator żądania | id | 
+| RequestID | id | 
 | RequestName | name | 
 | RequestSuccess | powodzenie | 
 | ResponseCode | resultCode | 
@@ -141,4 +112,4 @@ W poniższej tabeli przedstawiono różnice schematu między Log Analytics i App
 
 ## <a name="next-steps"></a>Następne kroki
 
-Użyj [wyszukiwanie w dzienniku](../../azure-monitor/log-query/log-query-overview.md) Aby wyświetlić szczegółowe informacje o aplikacjach Application Insights.
+Użyj [wyszukiwania w dzienniku](../../azure-monitor/log-query/log-query-overview.md) , aby wyświetlić szczegółowe informacje dotyczące Application Insights aplikacji.

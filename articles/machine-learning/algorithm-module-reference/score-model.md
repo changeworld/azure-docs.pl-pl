@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314100"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138174"
 ---
 # <a name="score-model-module"></a>Moduł Score Model (Generowanie wyników przez model)
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do generowania prognoz przy użyciu przeszkolonego modelu klasyfikacji lub regresji.
 
@@ -44,7 +44,7 @@ Wynik lub przewidywana wartość może być w wielu różnych formatach, w zale�
 
 - W przypadku modeli klasyfikacji [model oceny](./score-model.md) generuje prognozowaną wartość klasy, a także prawdopodobieństwo wartości przewidywanej.
 - W przypadku modeli regresji [model oceny](./score-model.md) generuje tylko przewidywaną wartość liczbową.
-- W przypadku modeli klasyfikacji obrazów wynikiem może być Klasa obiektu w obrazie lub wartość logiczna wskazująca, czy dana funkcja została znaleziona.
+
 
 ## <a name="publish-scores-as-a-web-service"></a>Publikowanie wyników jako usługi sieci Web
 

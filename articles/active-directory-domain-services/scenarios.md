@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474445"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132279"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Typowe przypadki użycia i scenariusze dla Azure Active Directory Domain Services
 
@@ -48,7 +48,7 @@ Następujące zagadnienia dotyczące wdrażania dotyczą tego przykładowego prz
 
 W przykładowym scenariuszu firma Contoso ma aplikację lokalną, która została zakupiona przez wiele lat temu. Aplikacja jest obecnie w trybie konserwacji przez niezależnego dostawcę oprogramowania i żądanie zmian w aplikacji jest niezwykle drogie. Ta aplikacja ma oparty na sieci Web fronton, który zbiera poświadczenia użytkownika przy użyciu formularza sieci Web, a następnie uwierzytelnia użytkowników, wykonując powiązanie LDAP z lokalnym środowiskiem AD DS.
 
-![Powiązanie LDAP](./media/active-directory-domain-services-scenarios/ldap-bind.png)
+![Wiązanie LDAP](./media/active-directory-domain-services-scenarios/ldap-bind.png)
 
 Firma Contoso chce przeprowadzić migrację tej aplikacji na platformę Azure. Aplikacja powinna nadal działać w niezmienionej postaci, bez konieczności wprowadzania zmian. Ponadto użytkownicy powinni mieć możliwość uwierzytelniania przy użyciu istniejących poświadczeń firmowych i bez dodatkowego szkolenia. Powinna być widoczna dla użytkowników końcowych, na których działa aplikacja.
 
@@ -65,7 +65,7 @@ Następujące zagadnienia dotyczące wdrażania dotyczą tego przykładowego prz
 
 Podobnie jak w przypadku poprzedniego przykładowego scenariusza Załóżmy, że firma Contoso ma lokalną aplikację biznesową (LOB), która została opracowana niemal dekady temu. Ta aplikacja jest świadoma katalogu i została zaprojektowana pod kątem używania protokołu LDAP do odczytywania informacji/atrybutów o użytkownikach z AD DS. Aplikacja nie modyfikuje atrybutów ani nie zapisuje ich w innym katalogu.
 
-Firma Contoso chce przeprowadzić migrację tej aplikacji na platformę Azure i wycofać sprzęt lokalny, który aktualnie obsługuje tę aplikację. Aplikacji nie można zapisać w celu używania nowoczesnych interfejsów API katalogów, takich jak usługa Azure interfejs API programu Graph AD oparta na protokole REST. Wymagana jest opcja podnoszenia i przesunięcia, w której można przeprowadzić migrację aplikacji do działania w chmurze bez modyfikowania kodu lub ponownego zapisywania aplikacji.
+Firma Contoso chce przeprowadzić migrację tej aplikacji na platformę Azure i wycofać sprzęt lokalny, który aktualnie obsługuje tę aplikację. Nie można zapisać aplikacji w celu używania nowoczesnych interfejsów API usługi, takich jak interfejs API Microsoft Graph oparty na protokole REST. Wymagana jest opcja podnoszenia i przesunięcia, w której można przeprowadzić migrację aplikacji do działania w chmurze bez modyfikowania kodu lub ponownego zapisywania aplikacji.
 
 Aby pomóc w tym scenariuszu, usługa Azure AD DS umożliwia aplikacjom wykonywanie operacji odczytu protokołu LDAP dla domeny zarządzanej w celu uzyskania potrzebnych informacji o atrybutach. Aplikacja nie musi być ponownie zapisywana, więc przekazanie i przesunięcia na platformę Azure umożliwi użytkownikom dalsze korzystanie z aplikacji bez konieczności wprowadzania zmian w lokalizacji, w której działa.
 

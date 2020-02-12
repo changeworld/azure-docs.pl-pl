@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: c0b32bfba61f1c6f3f00c5189f611d84069dd9da
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
-ms.translationtype: MT
+ms.openlocfilehash: 7cc74ca19d2194a7319ab1b88ab7847b04b0d895
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779675"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134566"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurowanie wymuszonego tunelowania przy użyciu modelu wdrażania usługi Azure Resource Manager
 
@@ -47,9 +47,9 @@ Wymuszone tunelowanie na platformie Azure jest konfigurowane za pośrednictwem t
 
 * Każda podsieć sieci wirtualnej ma wbudowane i tabelę routingu systemu. Tabela routingu system ma trzy następujące grupy trasy:
   
-  * **Lokalne trasy sieci wirtualnej:** bezpośrednio do lokalizacji docelowej maszyny wirtualne w tej samej sieci wirtualnej.
-  * **W środowisku lokalnym trasy:** bramy do sieci VPN platformy Azure.
-  * **Trasa domyślna:** bezpośrednio do Internetu. Pakiety przeznaczone dla prywatnych adresów IP, które nie są objęte poprzednimi dwiema trasami, są usuwane.
+  * **Lokalne trasy sieci wirtualnej:** Bezpośrednio do docelowych maszyn wirtualnych w tej samej sieci wirtualnej.
+  * **Trasy lokalne:** Z bramą sieci VPN platformy Azure.
+  * **Trasa domyślna:** Bezpośrednio z Internetem. Pakiety przeznaczone dla prywatnych adresów IP, które nie są objęte poprzednimi dwiema trasami, są usuwane.
 * Ta procedura powoduje użycie tras zdefiniowanych przez użytkownika (UDR) w celu utworzenia tabeli routingu w celu dodania trasy domyślnej, a następnie skojarzenie tabeli routingu z podsieciami sieci wirtualnej w celu włączenia wymuszonego tunelowania w tych podsieciach.
 * Wymuszone tunelowanie musi być skojarzone z siecią wirtualną, która ma bramę sieci VPN opartą na trasach. Należy ustawić "Domyślna witryna" wśród wielu lokacji lokalnych podłączone do sieci wirtualnej. Ponadto lokalne urządzenie sieci VPN musi być skonfigurowane przy użyciu 0.0.0.0/0 jako selektorów ruchu. 
 * Usługa ExpressRoute wymuszonego tunelowania nie jest skonfigurowany za pomocą tego mechanizmu, ale zamiast tego można włączyć, konfigurując anonsuje trasę domyślną za pośrednictwem sesje komunikacji równorzędnej BGP usługi ExpressRoute. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
@@ -71,7 +71,7 @@ Zainstaluj najnowszą wersję poleceń cmdlet programu PowerShell usługi Azure 
 
 ### <a name="to-log-in"></a>Aby się zalogować
 
-[!INCLUDE [To log in](../../includes/vpn-gateway-ps-login-include.md)]
+[!INCLUDE [To log in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ## <a name="configure-forced-tunneling"></a>Konfigurowanie wymuszonego tunelowania
 

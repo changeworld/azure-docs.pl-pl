@@ -3,13 +3,13 @@ title: Ograniczenia i limity subskrypcji platformy Azure
 description: Zawiera listę typowych limitów subskrypcji i usług platformy Azure, przydziałów i ograniczeń. Ten artykuł zawiera informacje o sposobach zwiększania limitów oraz wartości maksymalnych.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
-ms.translationtype: MT
+ms.date: 02/10/2020
+ms.openlocfilehash: 0891a18c782d4d60970ccba8efa7c9bfc98f19df
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087434"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133690"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usług platformy Azure, przydziały i ograniczenia
 
@@ -28,8 +28,6 @@ Aby uzyskać ograniczenia dotyczące nazw zasobów, zobacz [reguły nazewnictwa 
 ## <a name="limits-and-azure-resource-manager"></a>Limity i Azure Resource Manager
 
 Wiele zasobów platformy Azure można połączyć w jedną grupę zasobów platformy Azure. W przypadku korzystania z grup zasobów limity, które były globalne, są zarządzane na poziomie regionalnym z Azure Resource Manager. Aby uzyskać więcej informacji na temat grup zasobów platformy Azure, zobacz [omówienie Azure Resource Manager](overview.md).
-
-Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w limitach w przypadku używania Azure Resource Manager. Na przykład istnieje tabela **limitów subskrypcji** i **limity subskrypcji — Azure Resource Manager** tabeli. Gdy limit dotyczy obu scenariuszy, jest wyświetlany tylko w pierwszej tabeli. O ile nie wskazano inaczej, limity są globalne dla wszystkich regionów.
 
 > [!NOTE]
 > Przydziały zasobów w grupach zasobów platformy Azure są dostępne dla poszczególnych regionów, a nie dla subskrypcji, w ramach których są przydziały zarządzania usługami. Użyjmy przydziałów vCPU jako przykładu. Aby zażądać zwiększenia limitu przydziału z obsługą procesorów wirtualnych vCPU, należy określić liczbę procesorów wirtualnych vCPU, które mają być używane w regionach. Następnie należy wykonać określone żądanie dla grupy zasobów platformy Azure vCPU przydziały dla żądanych ilości i regionów. Jeśli konieczne jest użycie 30 procesorów wirtualnych vCPU w Europie Zachodniej, aby uruchomić aplikację, należy zażądać 30 procesorów wirtualnych vCPU w Europie Zachodniej. Limit przydziału vCPU nie został zwiększony w żadnym innym regionie — tylko Europa Zachodnia ma przydział 30-vCPU.
@@ -115,13 +113,7 @@ Na poniższej liście limitów Nowa tabela odzwierciedla wszelkie różnice w li
 
 ### <a name="subscription-limits"></a>Limity subskrypcji
 
-#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Limity subskrypcji — zarządzanie usługami platformy Azure (klasyczny model wdrażania)
-
-[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
-
-#### <a name="subscription-limits---azure-resource-manager"></a>Limity subskrypcji — Azure Resource Manager
-
-W przypadku używania Azure Resource Manager i grup zasobów platformy Azure obowiązują następujące ograniczenia. Nie są wyświetlane limity, które nie uległy zmianie przy użyciu Azure Resource Manager. Te limity można znaleźć w poprzedniej tabeli.
+W przypadku używania Azure Resource Manager i grup zasobów platformy Azure obowiązują następujące ograniczenia.
 
 Aby uzyskać informacje na temat limitów odczytu i zapisu interfejsu API Menedżer zasobów, zobacz [ograniczanie Menedżer zasobów żądań](request-limits-and-throttling.md).
 
@@ -485,6 +477,12 @@ Aby uzyskać SQL Database limitów, zobacz [SQL Database limitów zasobów dla p
 ### <a name="sql-data-warehouse-limits"></a>Limity SQL Data Warehouse
 
 Aby uzyskać SQL Data Warehouse limitów, zobacz [SQL Data Warehouse limitów zasobów](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+
+### <a name="classic-deployment-model-limits"></a>Ograniczenia klasycznego modelu wdrażania
+
+W przypadku korzystania z klasycznego modelu wdrażania zamiast Azure Resource Managergo modelu wdrażania obowiązują następujące ograniczenia.
+
+[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
 
 ## <a name="see-also"></a>Zobacz też
 

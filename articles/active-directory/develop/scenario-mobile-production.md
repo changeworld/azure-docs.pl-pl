@@ -1,6 +1,7 @@
 ---
-title: Przenoszenie aplikacji mobilnych wywoływanie interfejsów API sieci Web do produkcji — platforma tożsamości firmy Microsoft | Azure
-description: Dowiedz się, jak utworzyć aplikację mobilną wywołującą interfejsy API sieci Web (Przenieś do środowiska produkcyjnego)
+title: Przygotowanie aplikacji mobilnej — wywoływanie interfejsów API sieci Web dla środowiska produkcyjnego | Azure
+titleSuffix: Microsoft identity platform
+description: Dowiedz się, jak utworzyć aplikację mobilną, która wywołuje interfejsy API sieci Web. (Przygotuj aplikacje dla środowiska produkcyjnego).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,36 +16,39 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1a82fc7dc1b18fa21657170af29f7de7e84d7c1f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1ea19b8b76f4eb4a2c984f0e39eb0fd373c8b83c
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702032"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132386"
 ---
-# <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — Przenieś do środowiska produkcyjnego
+# <a name="prepare-mobile-apps-for-production"></a>Przygotuj aplikacje mobilne dla środowiska produkcyjnego
 
-Ten artykuł zawiera szczegółowe informacje na temat ulepszania jakości i niezawodności aplikacji przed przeniesieniem ich do środowiska produkcyjnego.
+Ten artykuł zawiera szczegółowe informacje na temat ulepszania jakości i niezawodności aplikacji mobilnej przed przeniesieniem ich do środowiska produkcyjnego.
 
-## <a name="handling-errors-in-mobile-applications"></a>Obsługa błędów w aplikacjach mobilnych
+## <a name="handle-errors"></a>Obsługa błędów
 
-W tym momencie może wystąpić wiele warunków błędu. Główne scenariusze obsługi są cichymi awariami i powrotu do interakcji. Inne warunki, które należy wziąć pod uwagę w przypadku produkcji, obejmują między innymi sytuacje braku sieci, przestoje usług, wymagania dotyczące zgody administratora oraz inne przypadki specyficzne dla scenariusza.
+Podczas przygotowywania aplikacji mobilnej do produkcji może wystąpić kilka warunków błędu. Główne przypadki, które będą obsługiwane, to ciche awarie i powrotu do interakcji. Inne warunki, które należy wziąć pod uwagę, obejmują między innymi sytuacje braku sieci, awarię usługi, wymagania dotyczące zgody administratora oraz inne przypadki specyficzne dla scenariusza.
 
-Każda biblioteka MSAL ma przykładowy kod i zawartość typu wiki opisującą sposób obsługi tych warunków:
+Dla każdego typu biblioteki uwierzytelniania firmy Microsoft (MSAL) można znaleźć przykładowy kod i zawartość typu wiki opisującą sposób obsługi warunków błędów:
 
 - [MSAL wiki systemu Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)
 - [MSAL wiki systemu iOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
 - [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
-## <a name="mitigating-and-investigating-issues"></a>Eliminowanie i badanie problemów
+## <a name="mitigate-and-investigate-issues"></a>Eliminowanie i badanie problemów
 
-Aby zdiagnozować problemy w aplikacji, można zbierać dane. Aby uzyskać informacje na temat rodzajów danych, które można zbierać, zobacz wiki platformy MSAL.
+Aby lepiej zdiagnozować problemy w aplikacji, Zbierz dane. Aby uzyskać informacje na temat rodzajów danych, które można zbierać, zobacz [Rejestrowanie w aplikacjach MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-logging).
 
-- Użytkownicy mogą poproszeni o pomoc w przypadku wystąpienia problemów. Najlepszym rozwiązaniem jest przechwycenie i tymczasowe przechowywanie dzienników oraz zapewnienie lokalizacji, w której użytkownicy mogą je przekazywać. MSAL udostępnia rozszerzenia rejestrowania do przechwytywania szczegółowych informacji o uwierzytelnianiu.
-- Jeśli jest dostępna, Włącz telemetrię za poorednictwem MSAL, aby zebrać dane dotyczące sposobu logowania użytkowników do aplikacji.
+Oto kilka sugestii dotyczących zbierania danych:
+
+- Użytkownicy mogą poproszeni o pomoc w przypadku wystąpienia problemów. Najlepszym rozwiązaniem jest przechwycenie i tymczasowe przechowywanie dzienników. Podaj lokalizację, w której użytkownicy mogą przekazywać dzienniki. MSAL udostępnia rozszerzenia rejestrowania do przechwytywania szczegółowych informacji o uwierzytelnianiu.
+
+- Jeśli dane telemetryczne są dostępne, włącz je za poorednictwem MSAL w celu zebrania danych dotyczących sposobu logowania użytkowników do aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-Wypróbuj dodatkowe przykłady dostępne w [przykładach | Publiczne aplikacje dla komputerów stacjonarnych i mobilnych](sample-v2-code.md#desktop-and-mobile-public-client-apps)
+Aby wypróbować dodatkowe przykłady, zobacz [publiczne aplikacje dla komputerów stacjonarnych i mobilnych](sample-v2-code.md#desktop-and-mobile-public-client-apps).

@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 173e483710c3fa96ae542f7941f0912ed07ea2ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 57a211c6ffab9a960c013008410f4b52b909d360
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312208"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137508"
 ---
 # <a name="edit-metadata-module"></a>Edytuj moduł metadanych
 
-W tym artykule opisano moduł dostępny w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł dostępny w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj modułu Edytuj dane, aby zmienić metadane skojarzone z kolumnami w zestawie danych. Wartość i typ danych zestawu danych zmienią się po użyciu modułu Edytowanie metadanych.
 
@@ -40,9 +40,9 @@ Typowe zmiany metadanych mogą obejmować:
   
 ## <a name="configure-edit-metadata"></a>Konfiguruj Edytowanie metadanych
   
-1. W Azure Machine Learning Dodaj moduł Edytuj metadane do potoku i Połącz zestaw danych, który chcesz zaktualizować. Zestaw danych można znaleźć w obszarze **Przekształcanie danych** w kategorii **manipulowanie** .
+1. W programie Azure Machine Learning Designer Dodaj moduł Edytowanie metadanych do potoku i Połącz zestaw danych, który chcesz zaktualizować. Moduł można znaleźć w kategorii **Przekształcanie danych** .
   
-1. Wybierz pozycję **Uruchom selektor kolumny** i wybierz kolumnę lub zestaw kolumn, z którymi chcesz współpracować. Możesz wybrać kolumny osobno według nazwy lub indeksu lub wybrać grupę kolumn według typu.  
+1. Kliknij pozycję **Edytuj kolumnę** w prawym panelu modułu i wybierz kolumnę lub zestaw kolumn, z którymi chcesz współpracować. Możesz wybrać kolumny osobno według nazwy lub indeksu lub wybrać grupę kolumn według typu.  
   
 1. Wybierz opcję **Typ danych** , jeśli musisz przypisać inny typ danych do wybranych kolumn. Może zajść potrzeba zmiany typu danych dla niektórych operacji. Na przykład, Jeśli źródłowy zestaw danych zawiera liczby obsługiwane jako tekst, należy zmienić je na typ danych liczbowych przed użyciem operacji matematycznych.
 

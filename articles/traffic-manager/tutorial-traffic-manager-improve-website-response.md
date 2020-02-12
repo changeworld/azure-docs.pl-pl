@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: rohink
-ms.openlocfilehash: 9027b1574144e2addbc84fceb16deba9014826fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f7778b60a5e84f5d8900b8e37bfa655a7915d403
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938410"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136382"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Samouczek: ulepszanie odpowiedzi witryny sieci Web przy użyciu Traffic Manager
 
 W tym samouczku opisano, jak za pomocą programu Traffic Manager utworzyć witrynę sieci Web o wysokiej dostępności przez kierowanie ruchu użytkowników do witryny sieci Web przy najniższym opóźnieniu. Zwykle centrum danych o najniższym opóźnieniu jest tym, co jest najbliższe odległości geograficznej.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie dwóch maszyn wirtualnych z podstawową witryną internetową w usługach IIS
@@ -41,9 +41,9 @@ Aby w tym samouczku zobaczyć usługi Traffic Manager w działaniu, trzeba wdro�
 - Dwa wystąpienia podstawowych witryn sieci Web działających w różnych regionach platformy Azure — **Wschodnie stany USA** i **Europa Zachodnia**.
 - Dwie testowe maszyny wirtualne do testowania Traffic Manager-jednej maszyny wirtualnej w **regionie Wschodnie stany USA** oraz druga maszyna wirtualna w **Europie zachodniej**. Testowe maszyny wirtualne służą do zilustrowania sposobu, w jaki Traffic Manager kieruje ruchem użytkownika do witryny sieci Web działającej w tym samym regionie, co zapewnia najniższy czas oczekiwania.
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ### <a name="create-websites"></a>Tworzenie witryn internetowych
 
@@ -141,7 +141,7 @@ Utwórz profil Traffic Manager, który kieruje ruchem użytkownika przez wysłan
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Nazwa                   | Ta nazwa musi być unikatowa w obrębie strefy trafficmanager.net. Na jej podstawie zostanie utworzona nazwa DNS trafficmanager.net służąca do uzyskiwania dostępu do profilu usługi Traffic Manager.                                   |
+    | Name (Nazwa)                   | Ta nazwa musi być unikatowa w obrębie strefy trafficmanager.net. Na jej podstawie zostanie utworzona nazwa DNS trafficmanager.net służąca do uzyskiwania dostępu do profilu usługi Traffic Manager.                                   |
     | Metoda routingu          | Wybierz metodę routingu **wydajności** .                                       |
     | Subskrypcja            | Wybierz subskrypcję.                          |
     | Grupa zasobów          | Wybierz grupę zasobów *myResourceGroupTM1*. |
@@ -161,7 +161,7 @@ Dodaj dwie maszyny wirtualne, na których działają serwery IIS — *myIISVMEas
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
     | Typ                    | Punkt końcowy platformy Azure                                   |
-    | Nazwa           | myEastUSEndpoint                                        |
+    | Name (Nazwa)           | myEastUSEndpoint                                        |
     | Typ zasobu docelowego           | Publiczny adres IP                          |
     | Zasób docelowy          | **Wybierz publiczny adres IP**, aby wyświetlić listę zasobów z publicznymi adresami IP w ramach tej samej subskrypcji. W obszarze **Zasób** wybierz publiczny adres IP o nazwie *myIISVMEastUS-ip*. Jest to publiczny adres IP serwera usług IIS maszyny wirtualnej w regionie Wschodnie stany USA.|
     |        |           |

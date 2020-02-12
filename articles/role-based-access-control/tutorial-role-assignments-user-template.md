@@ -1,5 +1,5 @@
 ---
-title: Samouczek — udzielanie użytkownikom dostępu do zasobów platformy Azure za pomocą RBAC i szablonu Menedżer zasobów
+title: 'Samouczek: udzielanie użytkownikom dostępu do zasobów platformy Azure za pomocą RBAC i szablonu Menedżer zasobów'
 description: Dowiedz się, jak przyznać użytkownikom dostęp do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach (RBAC) przy użyciu szablonu Azure Resource Manager w tym samouczku.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: ed143f85b4372348baa1d74b4ec7a7447943a74f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418493"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138217"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Samouczek: udzielanie użytkownikom dostępu do zasobów platformy Azure za pomocą RBAC i szablonu Menedżer zasobów
 
@@ -63,7 +63,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="validate-the-deployment"></a>Weryfikowanie wdrożenia
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Otwórz grupę zasobów utworzoną w ostatniej procedurze. Nazwa domyślna to nazwa projektu z dołączoną **RG** .
 1. Z menu po lewej stronie wybierz opcję **Kontrola dostępu (IAM)** .
 1. Wybierz pozycję **Przypisania ról**. 

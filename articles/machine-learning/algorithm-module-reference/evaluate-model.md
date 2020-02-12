@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546694"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137547"
 ---
 # <a name="evaluate-model-module"></a>Oceń moduł modelu
 
@@ -80,10 +80,10 @@ Ponieważ jest to Model klastrowania, wyniki oceny różnią się od tego, czy p
 
 W tej sekcji opisano metryki zwracane dla określonych typów modeli obsługiwanych do użycia z **modelem oszacowania**:
 
-+ [modele klasyfikacji](#bkmk_classification)
-+ [modele regresji](#bkmk_regression)
++ [modele klasyfikacji](#metrics-for-classification-models)
++ [modele regresji](#metrics-for-regression-models)
 
-###  <a name="bkmk_classification"></a>Metryki dla modeli klasyfikacji
+### <a name="metrics-for-classification-models"></a>Metryki dla modeli klasyfikacji
 
 Podczas oceniania modeli klasyfikacji są raportowane następujące metryki. W przypadku porównywania modeli są one klasyfikowane według metryki wybranej do oceny.  
   
@@ -101,7 +101,7 @@ Podczas oceniania modeli klasyfikacji są raportowane następujące metryki. W p
   
 - **Utrata dzienników szkoleń** to pojedynczy wynik, który reprezentuje zalety klasyfikatora w przypadku prognoz losowych. Utrata dziennika mierzy niepewność modelu, porównując prawdopodobieństwa, które wyprowadza do znanych wartości (podstawa prawdy) w etykietach. Chcesz zminimalizować utratę dzienników dla modelu jako całości.
 
-##  <a name="bkmk_regression"></a>Metryki dla modeli regresji
+### <a name="metrics-for-regression-models"></a>Metryki dla modeli regresji
  
 Metryki zwracane dla modeli regresji zaprojektowano w celu oszacowania ilości błędu.  Model jest traktowany jak dopasować dane, jeśli różnica między wartościami obserwowanymi a przewidywanymi jest mała. Jednak, patrząc na wzorzec reszt (różnica między dowolnym przewidzianym punktem a odpowiadającą jej wartością rzeczywistą), może postanowić dużo o potencjalną bias w modelu.  
   
@@ -115,7 +115,7 @@ Metryki zwracane dla modeli regresji zaprojektowano w celu oszacowania ilości b
   
 - **Względny kwadratowy błąd (RSE)** podobnie normalizuje łączny kwadratowy błąd przewidywanych wartości przez podzielenie przez łączny kwadrat błędów rzeczywistych wartości.  
   
-- **Średnia zero jeden błąd (mzoe)** wskazuje, czy Prognoza była poprawna.  Innymi słowy: `ZeroOneLoss(x,y) = 1`, gdy `x!=y`; w przeciwnym razie `0`.
+
   
 - **Współczynnik wyznaczania**, często określany jako R<sup>2</sup>, reprezentuje siłę predykcyjną modelu jako wartość z przedziału od 0 do 1. Zero oznacza, że model jest losowo (wyjaśnia nic); 1 oznacza, że jest idealnym dopasowaniem. Należy zachować ostrożność w interpretacji wartości R<sup>2</sup> , ponieważ niskie wartości mogą być całkowicie normalne i mogą być podejrzane wysokie wartości.
   

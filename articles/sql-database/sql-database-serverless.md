@@ -1,5 +1,5 @@
 ---
-title: Bez serwerów
+title: Praca bezserwerowa
 description: W tym artykule opisano nową warstwę obliczeniową bez serwera i porównuje ją z istniejącą zainicjowaną warstwą obliczeniową
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372334"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131962"
 ---
-# <a name="azure-sql-database-serverless"></a>Bezserwerowa usługa Azure SQL Database
+# <a name="azure-sql-database-serverless"></a>Azure SQL Database bezserwerowe
 
 Azure SQL Database bezserwerowe jest warstwą obliczeniową dla pojedynczych baz danych, która automatycznie skaluje obliczenia na podstawie zapotrzebowania na obciążenia i rachunków dla ilości użytych obliczeń na sekundę. Warstwa obliczeniowa bezserwerowa również automatycznie wstrzymuje bazy danych w trakcie okresów nieaktywnych, gdy są naliczane opłaty za magazyn i automatycznie wznawiają bazy danych po powrocie działania.
 
@@ -33,7 +33,7 @@ Warstwa obliczeń bezserwerowych dla pojedynczej bazy danych jest sparametryzowa
 - **Minimalna rdzeni wirtualnych** i **Maksymalna rdzeni wirtualnych** to konfigurowalne parametry, które definiują zakres wydajności obliczeniowej dostępny dla bazy danych. Limity pamięci i operacji we/wy są proporcjonalne do określonego zakresu rdzeń wirtualny.  
 - **Opóźnienie AutoPause** to konfigurowalny parametr, który określa okres czasu, przez który baza danych musi być nieaktywna, zanim zostanie automatycznie wstrzymana. Baza danych zostanie automatycznie wznowiona po wystąpieniu następnego logowania lub innego działania.  Alternatywnie można wyłączyć autowstrzymywanie.
 
-### <a name="cost"></a>Koszt
+### <a name="cost"></a>Koszty
 
 - Koszt bazy danych bezserwerowej to podsumowanie kosztów i kosztów magazynu obliczeniowego.
 - Gdy użycie obliczeniowe ma wartość z przedziału minimalnego i maksymalnego skonfigurowanego limitu, koszt obliczeń jest oparty na rdzeń wirtualny i używanej pamięci.
@@ -66,8 +66,8 @@ W poniższej tabeli zestawiono różnice między warstwą obliczeniową bezserwe
 | | **Obliczenia bezserwerowe** | **Zainicjowane obliczenie** |
 |:---|:---|:---|
 |**Wzorzec użycia bazy danych**| Sporadyczne, nieprzewidywalne użycie z niższym średnim wykorzystaniem obliczeń w czasie. |  Bardziej regularne wzorce użycia z wyższym średnim wykorzystaniem obliczeń w czasie lub wielu bazach danych korzystających z pul elastycznych.|
-| **Nakład pracy zarządzania wydajnością** |Niższe|Wyższe|
-|**Skalowanie obliczeniowe**|Automatyczny|Ręczna|
+| **Nakład pracy zarządzania wydajnością** |Dołu|Większych|
+|**Skalowanie obliczeniowe**|Automatyczny|Ręcznie|
 |**Czas odpowiedzi obliczeń**|Poniżej nieaktywnych okresów|Natychmiastowe|
 |**Stopień szczegółowości rozliczeń**|Na sekundę|Za godzinę|
 
@@ -124,14 +124,14 @@ Autowstrzymywanie jest tymczasowo uniemożliwiane podczas wdrażania niektórych
 
 Autowznawianie jest wyzwalane, jeśli w dowolnym momencie spełniony jest którykolwiek z następujących warunków:
 
-|Funkcja|Wyzwalacz autowznawiania|
+|Cecha|Wyzwalacz autowznawiania|
 |---|---|
-|Uwierzytelnianie i autoryzacja|Zaloguj się|
+|Uwierzytelnianie i autoryzacja|Login|
 |Wykrywanie zagrożeń|Włączanie/wyłączanie ustawień wykrywania zagrożeń na poziomie bazy danych lub serwera.<br>Modyfikowanie ustawień wykrywania zagrożeń na poziomie bazy danych lub serwera.|
 |Odnajdowanie i klasyfikacja danych|Dodawanie, modyfikowanie, usuwanie lub wyświetlanie etykiet czułości|
 |Inspekcja|Wyświetlanie rekordów inspekcji.<br>Aktualizowanie lub przeglądanie zasad inspekcji.|
 |Maskowanie danych|Dodawanie, modyfikowanie, usuwanie lub wyświetlanie reguł maskowania danych|
-|Przezroczyste szyfrowanie danych|Wyświetlanie stanu lub stanu przezroczystego szyfrowania danych|
+|Transparent Data Encryption|Wyświetlanie stanu lub stanu przezroczystego szyfrowania danych|
 |Zapytanie (wydajność) — magazyn danych|Modyfikowanie lub wyświetlanie ustawień magazynu zapytań|
 |Autodostrajanie|Aplikacja i weryfikacja zalecenia autodostrajania, takie jak indeksowanie automatycznego|
 |Kopiowanie bazy danych|Utwórz bazę danych jako kopię.<br>Eksportuj do pliku BACPAC.|
@@ -155,17 +155,17 @@ Tworzenie nowej bazy danych lub przeniesienie istniejącej bazy danych do warstw
 
 1. Określ nazwę celu usługi. Cel usługi określa warstwę usług, generowanie sprzętu i maksymalną rdzeni wirtualnych. W poniższej tabeli przedstawiono opcje celu usługi:
 
-   |Nazwa celu usługi|Warstwa usługi|Generowanie sprzętu|Maksymalna rdzeni wirtualnych|
+   |Nazwa celu usługi|Warstwa usług|Generowanie sprzętu|Maksymalna rdzeni wirtualnych|
    |---|---|---|---|
-   |GP_S_Gen5_1|Ogólne zastosowanie|5\. generacji|1|
-   |GP_S_Gen5_2|Ogólne zastosowanie|5\. generacji|2|
-   |GP_S_Gen5_4|Ogólne zastosowanie|5\. generacji|4|
-   |GP_S_Gen5_6|Ogólne zastosowanie|5\. generacji|6|
-   |GP_S_Gen5_8|Ogólne zastosowanie|5\. generacji|8|
-   |GP_S_Gen5_10|Ogólne zastosowanie|5\. generacji|10|
-   |GP_S_Gen5_12|Ogólne zastosowanie|5\. generacji|12|
-   |GP_S_Gen5_14|Ogólne zastosowanie|5\. generacji|14|
-   |GP_S_Gen5_16|Ogólne zastosowanie|5\. generacji|16|
+   |GP_S_Gen5_1|Ogólnego przeznaczenia|5 rdzeń|1|
+   |GP_S_Gen5_2|Ogólnego przeznaczenia|5 rdzeń|2|
+   |GP_S_Gen5_4|Ogólnego przeznaczenia|5 rdzeń|4|
+   |GP_S_Gen5_6|Ogólnego przeznaczenia|5 rdzeń|6|
+   |GP_S_Gen5_8|Ogólnego przeznaczenia|5 rdzeń|8|
+   |GP_S_Gen5_10|Ogólnego przeznaczenia|5 rdzeń|10|
+   |GP_S_Gen5_12|Ogólnego przeznaczenia|5 rdzeń|12|
+   |GP_S_Gen5_14|Ogólnego przeznaczenia|5 rdzeń|14|
+   |GP_S_Gen5_16|Ogólnego przeznaczenia|5 rdzeń|16|
 
 2. Opcjonalnie można określić opóźnienie rdzeni wirtualnych i pauzę, aby zmienić wartości domyślne. W poniższej tabeli przedstawiono dostępne wartości tych parametrów.
 
@@ -184,7 +184,7 @@ Poniżej przedstawiono przykłady tworzenia nowej bazy danych w warstwie oblicze
 Zobacz [Szybki Start: Tworzenie pojedynczej bazy danych w Azure SQL Database przy użyciu Azure Portal](sql-database-single-database-get-started.md).
 
 
-#### <a name="use-powershell"></a>Używanie programu PowerShell
+#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
 ```powershell
 New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
@@ -214,7 +214,7 @@ Aby uzyskać szczegółowe informacje, zobacz [CREATE DATABASE](/sql/t-sql/state
 
 Poniższe przykłady przenosiją bazę danych z zainicjowanej warstwy obliczeniowej do warstwy obliczeń bezserwerowych. Przykłady jawnie określają minimalną rdzeni wirtualnych, maks rdzeni wirtualnych i pauzę AutoPause.
 
-#### <a name="use-powershell"></a>Używanie programu PowerShell
+#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
 
 ```powershell
@@ -248,7 +248,7 @@ Bezserwerowa baza danych może zostać przeniesiona do warstwy obliczeń aprowiz
 
 ## <a name="modifying-serverless-configuration"></a>Modyfikowanie konfiguracji bezserwerowej
 
-### <a name="use-powershell"></a>Używanie programu PowerShell
+### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
 Modyfikacja wartości maksymalnej lub minimalnej rdzeni wirtualnych oraz opóźnienia AutoPause odbywa się przy użyciu polecenia [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) w programie PowerShell przy użyciu argumentów `MaxVcore`, `MinVcore`i `AutoPauseDelayInMinutes`.
 
@@ -277,14 +277,14 @@ Metryki monitorowania użycia zasobów pakietu aplikacji i puli użytkowników b
 
 |Jednostka|Metryka|Opis|Jednostki|
 |---|---|---|---|
-|Pakiet aplikacji|app_cpu_percent|Procent rdzeni wirtualnych używany przez aplikację względem maksymalnej rdzeni wirtualnych dozwolony dla aplikacji.|Wartość procentowa|
+|Pakiet aplikacji|app_cpu_percent|Procent rdzeni wirtualnych używany przez aplikację względem maksymalnej rdzeni wirtualnych dozwolony dla aplikacji.|Procent|
 |Pakiet aplikacji|app_cpu_billed|Kwota obliczeń rozliczanych dla aplikacji w okresie raportowania. Kwota płacona w tym okresie jest iloczynem tej metryki i ceny jednostkowej rdzeń wirtualny. <br><br>Wartości tej metryki są określane przez agregowanie w czasie, gdy jest używana wartość maksymalna procesora CPU i używana pamięć. Jeśli użyta kwota jest mniejsza niż minimalna ilość określona przez minimalną rdzeni wirtualnych i minimalną pamięć, jest naliczana opłata w wysokości minimalnej. Aby porównać procesor z pamięcią na potrzeby rozliczeń, pamięć jest znormalizowana do jednostek rdzeni wirtualnych przez ponowne skalowanie ilości pamięci w GB przez 3 GB na rdzeń wirtualny.|Rdzeń wirtualny sekund|
-|Pakiet aplikacji|app_memory_percent|Procent pamięci używanej przez aplikację względem maksymalnej pamięci dozwolonej dla aplikacji.|Wartość procentowa|
-|Pula użytkowników|cpu_percent|Procent rdzeni wirtualnych używany przez obciążenie użytkowników względem maksymalnej rdzeni wirtualnych dozwolony dla obciążenia użytkownika.|Wartość procentowa|
-|Pula użytkowników|data_IO_percent|Procent operacji we/wy danych używanych przez obciążenie użytkownikami względem maksymalnej liczby operacji we/wy na sekundę dozwolonych dla obciążenia użytkownikami.|Wartość procentowa|
-|Pula użytkowników|log_IO_percent|Procent zdarzeń dzienników używanych przez obciążenie użytkowników względem maksymalnej liczby MB dzienników/s dozwolony dla obciążenia użytkownika.|Wartość procentowa|
-|Pula użytkowników|workers_percent|Procent procesów roboczych używanych przez obciążenie użytkowników względem maksymalnej liczby procesów roboczych dozwolonych dla obciążenia użytkownikami.|Wartość procentowa|
-|Pula użytkowników|sessions_percent|Procent sesji używanych przez obciążenie użytkownikami względem maksymalnej liczby sesji dozwolonych dla obciążenia użytkownika.|Wartość procentowa|
+|Pakiet aplikacji|app_memory_percent|Procent pamięci używanej przez aplikację względem maksymalnej pamięci dozwolonej dla aplikacji.|Procent|
+|Pula użytkowników|cpu_percent|Procent rdzeni wirtualnych używany przez obciążenie użytkowników względem maksymalnej rdzeni wirtualnych dozwolony dla obciążenia użytkownika.|Procent|
+|Pula użytkowników|data_IO_percent|Procent operacji we/wy danych używanych przez obciążenie użytkownikami względem maksymalnej liczby operacji we/wy na sekundę dozwolonych dla obciążenia użytkownikami.|Procent|
+|Pula użytkowników|log_IO_percent|Procent zdarzeń dzienników używanych przez obciążenie użytkowników względem maksymalnej liczby MB dzienników/s dozwolony dla obciążenia użytkownika.|Procent|
+|Pula użytkowników|workers_percent|Procent procesów roboczych używanych przez obciążenie użytkowników względem maksymalnej liczby procesów roboczych dozwolonych dla obciążenia użytkownikami.|Procent|
+|Pula użytkowników|sessions_percent|Procent sesji używanych przez obciążenie użytkownikami względem maksymalnej liczby sesji dozwolonych dla obciążenia użytkownika.|Procent|
 
 ### <a name="pause-and-resume-status"></a>Stan wstrzymania i wznowienia
 
@@ -292,7 +292,7 @@ W Azure Portal stan bazy danych jest wyświetlany w okienku Przegląd serwera za
 
 Użyj następujących poleceń, aby wykonać zapytanie o stan wstrzymania i wznowienia bazy danych:
 
-#### <a name="use-powershell"></a>Używanie programu PowerShell
+#### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
 ```powershell
 Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
@@ -342,7 +342,7 @@ Dokładniejszy rachunek obliczeń w tym przykładzie jest obliczany w następuj�
 |8:00-24:00|0|0|Nie jest naliczana żadna stawka w trakcie wstrzymania|0 rdzeń wirtualny sekund|
 |Łącznie rdzeń wirtualny s rozliczane w ciągu 24 godzin||||50400 rdzeń wirtualny sekund|
 
-Załóżmy, że cena jednostkowa obliczeń to $0.000073/rdzeń wirtualny/s.  Następnie obliczenia naliczane za ten 24-godzinny okres jest iloczynem ceny jednostkowej obliczeń i rdzeń wirtualny s rozliczane: $0.000073/rdzeń wirtualny/sekundę * 50400 rdzeń wirtualny sekund = $3,68
+Załóżmy, że cena jednostkowa obliczeń to $0.000145/rdzeń wirtualny/s.  Następnie obliczenia naliczane za ten 24-godzinny okres jest iloczynem ceny jednostkowej obliczeń i rdzeń wirtualny s rozliczane: $0.000145/rdzeń wirtualny/sekundę * 50400 rdzeń wirtualny sekund ~ $7,31
 
 ### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Korzyść użycia hybrydowego platformy Azure i zarezerwowana pojemność
 

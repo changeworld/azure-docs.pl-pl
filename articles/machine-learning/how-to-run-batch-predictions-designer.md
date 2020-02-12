@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie prognoz wsadowych za pomocą narzędzia Azure Machine Learning Designer
+title: Uruchamianie prognoz wsadowych przy użyciu programu Azure Machine Learning Designer (wersja zapoznawcza)
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak szkolić model i skonfigurować potok prognozowania usługi Batch przy użyciu narzędzia Projektant. Wdróż potok jako sparametryzowanej usługi sieci Web, która może być wyzwalana z dowolnej biblioteki HTTP.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: d2653699a69cb468e8490c2cba579b73e526d1ed
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 95a3c1b892cacd802f359fdc03de74fa60a1e118
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311890"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138102"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Uruchamianie prognoz wsadowych za pomocą narzędzia Azure Machine Learning Designer
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Potok szkoleniowy musi być uruchamiany co najmniej raz, aby można było utworz
 
 1. Przejdź do karty **Projektant** w obszarze roboczym.
 
-1. Wybierz potok szkoleniowy łączący model, którego chcesz użyć do prognozowania.
+1. Wybierz potok szkoleniowy łączący model, który ma być używany do prognozowania.
 
 1. **Uruchamianie** potoku.
 

@@ -1,6 +1,6 @@
 ---
-title: Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wyświetlić listę Odmów przydziały dla użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure oraz interfejsu API REST.
+title: Wyświetlanie listy Odmów przypisań zasobów platformy Azure za pomocą interfejsu API REST
+description: Dowiedz się, jak lista odrzuconych przypisań dla użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure i interfejsu API REST.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,47 +15,47 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0bc49456f5965846a2de542b4a063bab2d1838bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e6214b3cb2cdca2d80ebae43771b206e3396d8b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118282"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137318"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST
+# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Wyświetlanie listy Odmów przypisań zasobów platformy Azure przy użyciu interfejsu API REST
 
-[Odmów przypisania](deny-assignments.md) Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. W tym artykule opisano sposób wyświetlenia listy Odmów przydziałów za pomocą interfejsu API REST.
+[Odmowa przypisania](deny-assignments.md) uniemożliwia użytkownikom wykonywanie określonych akcji zasobów platformy Azure nawet wtedy, gdy przypisanie roli przyznaje im dostęp. W tym artykule opisano sposób wyświetlania listy zablokowanych przypisań przy użyciu interfejsu API REST.
 
 > [!NOTE]
-> Nie można bezpośrednio utworzyć własne Odmów przypisania. Aby uzyskać informacje na temat nie zezwoli na przydziały są tworzone, zobacz [Odmów przypisania](deny-assignments.md).
+> Nie można bezpośrednio tworzyć własnych przypisań Odmów. Aby uzyskać informacje na temat sposobu tworzenia przypisań Odmów, zobacz [odmowa przypisań](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uzyskać informacje o przypisaniu Odmów, musisz mieć:
+Aby uzyskać informacje o przypisaniu odmowy, należy dysponować:
 
-- `Microsoft.Authorization/denyAssignments/read` uprawnienie, który jest dostępny w większości [wbudowane role zasobów platformy Azure](built-in-roles.md).
+- uprawnienie `Microsoft.Authorization/denyAssignments/read`, które jest zawarte w większości [wbudowanych ról dla zasobów platformy Azure](built-in-roles.md).
 
-## <a name="list-a-single-deny-assignment"></a>Lista jednej Odmów przypisania
+## <a name="list-a-single-deny-assignment"></a>Utwórz listę jednego przypisania odmowy
 
-1. Uruchom przy użyciu następującego żądania:
+1. Rozpocznij od następującego żądania:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments/{deny-assignment-id}?api-version=2018-07-01-preview
     ```
 
-1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę przypisań Odmów.
+1. W identyfikatorze URI Zastąp wartość *{SCOPE}* zakresem, dla którego chcesz wyświetlić listę przypisań Odmów.
 
-    | Scope | Typ |
+    | Zakres | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Zasób |
 
-1. Zastąp *{identyfikator Odmów przypisania}* o identyfikatorze przypisania Odmów chcesz pobrać.
+1. Zastąp *ciąg {Deny-przypisania-ID}* identyfikatorem przypisania Odmów, który chcesz pobrać.
 
-## <a name="list-multiple-deny-assignments"></a>Lista wielu Odmów przypisania
+## <a name="list-multiple-deny-assignments"></a>Wyświetl wiele przypisań Odmów
 
-1. Rozpocznij od jednego z następujących żądań:
+1. Zacznij od jednego z następujących żądań:
 
     ```http
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview
@@ -67,25 +67,25 @@ Aby uzyskać informacje o przypisaniu Odmów, musisz mieć:
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę przypisań Odmów.
+1. W identyfikatorze URI Zastąp wartość *{SCOPE}* zakresem, dla którego chcesz wyświetlić listę przypisań Odmów.
 
-    | Scope | Typ |
+    | Zakres | Typ |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Zasób |
 
-1. Zastąp *{filter}* z warunek, który chcesz zastosować, aby filtrować listę przypisania Odmów.
+1. Zastąp wartość *{Filter}* warunkiem, którą chcesz zastosować, aby odfiltrować listę przypisań Odmów.
 
     | Filtr | Opis |
     | --- | --- |
-    | (bez filtrowania) | Lista wszystkich odmówić przypisania w powyżej i poniżej określonego zakresu. |
-    | `$filter=atScope()` | Lista odmówić przypisań dla określonego zakresu lub nowszej. Nie ma przypisań Odmów w subscopes. |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Lista odmówić przypisania o określonej nazwie. |
+    | (brak filtru) | Wyświetl listę wszystkich przypisań Odmów w, powyżej i poniżej określonego zakresu. |
+    | `$filter=atScope()` | Wyświetl listę odrzuconych przypisań tylko dla określonego zakresu i powyżej. Nie obejmuje przypisań Odmów w podzakresach. |
+    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Wyświetl listę odrzuconych przypisań o określonej nazwie. |
 
-## <a name="list-deny-assignments-at-the-root-scope-"></a>Lista Odmów przypisania w zakresie głównym (/)
+## <a name="list-deny-assignments-at-the-root-scope-"></a>Wyświetl listę odrzuconych przypisań w zakresie głównym (/)
 
-1. Podniesienie poziomu dostępu, zgodnie z opisem w [podniesienie poziomu dostępu administratora globalnego usługi Azure Active Directory](elevate-access-global-admin.md).
+1. Podnieś poziom dostępu zgodnie z opisem w temacie [Podnieś poziom dostępu dla administratora globalnego w Azure Active Directory](elevate-access-global-admin.md).
 
 1. Użyj następującego żądania:
 
@@ -93,17 +93,17 @@ Aby uzyskać informacje o przypisaniu Odmów, musisz mieć:
     GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. Zastąp *{filter}* z warunek, który chcesz zastosować, aby filtrować listę przypisania Odmów. Filtr jest wymagany.
+1. Zastąp wartość *{Filter}* warunkiem, którą chcesz zastosować, aby odfiltrować listę przypisań Odmów. Wymagany jest filtr.
 
     | Filtr | Opis |
     | --- | --- |
-    | `$filter=atScope()` | Lista odmówić przypisania tylko zakres głównego. Nie ma przypisań Odmów w subscopes. |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Lista odmówić przypisania o określonej nazwie. |
+    | `$filter=atScope()` | Wyświetl listę odrzuconych przypisań tylko dla zakresu głównego. Nie obejmuje przypisań Odmów w podzakresach. |
+    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Wyświetl listę odrzuconych przypisań o określonej nazwie. |
 
-1. Usuń podwyższonego poziomu dostępu.
+1. Usuń dostęp z podwyższonym poziomem uprawnień.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Zrozumienie Odmów przydziały dla zasobów platformy Azure](deny-assignments.md)
+- [Informacje o odmowie przypisań zasobów platformy Azure](deny-assignments.md)
 - [Podnoszenie poziomu dostępu administratora globalnego w usłudze Azure Active Directory](elevate-access-global-admin.md)
 - [Dokumentacja interfejsu API REST platformy Azure](/rest/api/azure/)

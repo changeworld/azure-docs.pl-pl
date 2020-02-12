@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem do zasobów platformy Azure za pomocą usługi Azure AD Privileged Identity Management (PIM)
-description: Więcej informacji na temat zarządzania dostępem do zasobów platformy Azure przy użyciu usługi Azure Active Directory Privileged Identity Management (PIM) i kontrola dostępu oparta na rolach (RBAC).
+title: Zarządzanie dostępem do zasobów platformy Azure za pomocą usługi Azure AD i usług PIM
+description: Dowiedz się więcej na temat zarządzania dostępem do zasobów platformy Azure przy użyciu usług Azure Active Directory Privileged Identity Management (PIM) i kontroli dostępu opartej na rolach (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,22 +15,22 @@ ms.workload: identity
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 757068034868744b408c9402b521a0e4c73950f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 53c6375ce04425eae27f4c935e613cc27d058dc8
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344618"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138038"
 ---
-# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Zarządzanie dostępem do zasobów platformy Azure z usługą Azure AD Privileged Identity Management
+# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Zarządzanie dostępem do zasobów platformy Azure za pomocą Azure AD Privileged Identity Management
 
-Aby chronić uprzywilejowanych kont przed złośliwymi atakami cybernetycznymi, Azure Active Directory Privileged Identity Management (PIM) służy do zmniejszyć czas narażenia uprawnień i lepszy wgląd w ich używanie przez raporty i alerty. Usługa PIM robi to poprzez ograniczenie użytkowników do uwzględnienia tylko swoje uprawnienia "dokładnie na czas" (JIT), lub przypisując uprawnienia skróconą czas, po upływie którego uprawnienia są odwoływane automatycznie. 
+Aby chronić konta uprzywilejowane przed złośliwymi atakami cybernetycznymiymi, możesz użyć Azure Active Directory Privileged Identity Management (PIM), aby skrócić czas ekspozycji uprawnień i zwiększyć widoczność do użycia w raportach i alertach. W tym celu program PIM ogranicza użytkowników do podejmowania tylko uprawnień "just in Time" (JIT) lub przez przypisanie uprawnień przez skrócenie czasu trwania, po którym uprawnienia zostaną odwołane automatycznie. 
 
-Można teraz używać aplikacji PIM przy użyciu kontroli dostępu opartej na rolach na platformie Azure (RBAC), zarządzanie, sterowanie i monitorowanie dostępu do zasobów platformy Azure. PIM można zarządzać członkostwem ról wbudowanych i niestandardowych ułatwią Ci: 
+Możesz teraz używać programu PIM z kontrolą dostępu opartą na rolach (RBAC) na platformie Azure do zarządzania, kontrolowania i monitorowania dostępu do zasobów platformy Azure. PIM może zarządzać członkostwem wbudowanych i niestandardowych ról w celu ułatwienia: 
 
-- Włącz na żądanie, "just in time" dostęp do zasobów platformy Azure
-- Unieważnij dostęp zasobów automatycznie dla przypisanych użytkowników i grup
-- Przypisz tymczasowego dostępu do zasobów platformy Azure dla szybkich zadań lub harmonogramów dyżurów
-- Otrzymuj alerty, gdy nowych użytkowników lub grup są przypisywane dostęp do zasobów, a podczas aktywacji z kwalifikującymi się przypisaniami
+- Włącz dostęp do zasobów platformy Azure na żądanie "just in Time"
+- Automatyczne wygasanie dostępu do zasobów dla przypisanych użytkowników i grup
+- Przypisywanie tymczasowego dostępu do zasobów platformy Azure na potrzeby szybkich zadań lub harmonogramów połączeń
+- Otrzymuj alerty w przypadku przydzielenia dostępu do zasobów nowym użytkownikom lub grupom, gdy aktywują kwalifikujące się przypisania
 
-Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md).
+Aby uzyskać więcej informacji, zobacz [co to jest Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md).

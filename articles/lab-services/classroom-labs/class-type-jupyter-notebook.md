@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 695b87540178fb5c1012a095c2a86937a189ef24
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75530684"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133750"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Konfigurowanie laboratorium do uczenia się danych za pomocą notesów Python i Jupyter
 
@@ -30,7 +30,7 @@ Aby rozpocząć pracę z tym laboratorium, musisz zacząć korzystać z subskryp
 
 ### <a name="lab-account-settings"></a>Ustawienia konta laboratorium
 
-Włącz ustawienia opisane w poniższej tabeli dla konta laboratorium. Aby uzyskać więcej informacji na temat włączania obrazów z witryny Marketplace, zobacz [Określanie obrazów z portalu Marketplace dostępnych dla twórców laboratorium](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators).
+Włącz ustawienia opisane w poniższej tabeli dla konta laboratorium. Aby uzyskać więcej informacji na temat włączania obrazów z witryny Marketplace, zobacz [Określanie obrazów z portalu Marketplace dostępnych dla twórców laboratorium](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators).
 
 | Ustawienie konta laboratorium | Instrukcje |
 | ------------------- | ------------ |
@@ -46,7 +46,7 @@ W poniższej tabeli przedstawiono ustawienia, które należy wykonać podczas ko
 | Ustawienia laboratorium | Wartość/instrukcje |
 | ------------ | ------------------ |
 |Rozmiar maszyny wirtualnej| Mały procesor GPU (COMPUTE). Ten rozmiar najlepiej nadaje się w przypadku aplikacji intensywnie korzystających z obliczeń i sieci, takich jak sztuczna inteligencja i uczenie głębokie. |
-|Obraz maszyny wirtualnej| Maszyna wirtualna do analizy danych — Windows 2016|
+|Obraz maszyny wirtualnej| Data Science Virtual Machine — Windows 2016|
 
 ## <a name="template-machine"></a>Komputer szablonu
 
@@ -54,7 +54,7 @@ Obraz [Data Science Virtual Machine-Windows 2016](https://azuremarketplace.micro
 
 Pozostałe zadanie konfigurowania klasy polega na udostępnianiu lokalnych notesów.  Instrukcje dotyczące korzystania z przykładów Azure Machine Learning można znaleźć w temacie [How to Configure a Environment with Jupyter Notess](../../machine-learning/how-to-configure-environment.md#jupyter).  Możesz również udostępniać własne Notesy na komputerze szablonu.  Notesy zostaną skopiowane do wszystkich komputerów uczniów po opublikowaniu szablonu.
 
-## <a name="cost-estimate"></a>Szacowany koszt
+## <a name="cost-estimate"></a>Oszacowanie kosztów
 
 Przyjrzyjmy się możliwemu szacunkowi kosztów dla tej klasy.  Będziemy używać klasy 25 studentów.  Zaplanowana godzina klasy wynosi 20 godzin.  Ponadto każdy student otrzymuje limit 10 godzin dla prac domowych lub przydziałów poza zaplanowanym czasem klasy.  Wybrany rozmiar maszyny wirtualnej to mały procesor GPU (COMPUTE), czyli 139 jednostek laboratorium.
 

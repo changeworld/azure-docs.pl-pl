@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 6f4fe941cc44211f9f5d5e77b11043257b43a8ea
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: 58adbc7607b0b32e79123b701c37f55ce7cc1d2e
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963301"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138130"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Korzystanie z regresji do przewidywania cen samochodów za pomocą narzędzia Azure Machine Learning Designer
 
@@ -31,8 +31,8 @@ Podstawowe kroki związane z modelem uczenia maszynowego są następujące:
 
 1. Pobieranie danych
 1. Wstępnie przetwórz dane
-1. Trenowanie modelu
-1. Ocenianie modelu
+1. Uczenie modelu
+1. Oceń model
 
 Oto końcowy, ukończony wykres potoku. Ten artykuł zawiera uzasadnienie dla wszystkich modułów, dzięki czemu można podejmować podobne decyzje.
 
@@ -57,11 +57,11 @@ Użyj modułu **SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych**
 
 ![Przetwarzanie wstępne danych](./media/how-to-designer-sample-regression-automobile-price-basic/data-processing.png)
 
-## <a name="train-the-model"></a>Trenowanie modelu
+## <a name="train-the-model"></a>Uczenie modelu
 
 Problemy dotyczące uczenia maszynowego są różne. Typowe zadania uczenia maszynowego obejmują klasyfikację, klastrowanie, regresję i systemy zalecające, z których każdy może wymagać innego algorytmu. Wybór algorytmu często zależy od wymagań dotyczących przypadku użycia. Po wybraniu algorytmu należy dostosować jego parametry, aby szkolić dokładniejszy model. Następnie należy oszacować wszystkie modele na podstawie metryk, takich jak dokładność, intelligibility i wydajność.
 
-Ponieważ celem tego przykładu jest przewidywanie cen samochodów, a kolumna etykiety (cena) zawiera liczby rzeczywiste, model regresji jest dobrym rozwiązaniem. Biorąc pod uwagę, że liczba funkcji jest stosunkowo mała (mniej niż 100) i te funkcje nie są rozrzedzone, granica decyzji może być nieliniowa. Dlatego używamy **regresji lasów decyzyjnych** dla tego potoku.
+Ponieważ celem tego przykładu jest przewidywanie cen samochodów, a kolumna etykiety (cena) jest ciągła, model regresji może być dobrym wyborem. Używamy **regresji liniowej** dla tego potoku.
 
 Użyj modułu **Split Data** , aby losowo podzielić dane wejściowe, tak aby zestaw danych szkoleniowy zawierał 70% danych oryginalnych, a test DataSet zawiera 30% oryginalnych danych.
 

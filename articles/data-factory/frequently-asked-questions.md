@@ -8,13 +8,13 @@ ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2e50d226282536fa4e8c044d2ee3d91df4cfd1ee
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644702"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131472"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące Azure Data Factory.  
@@ -81,7 +81,7 @@ Począwszy od początkowej publicznej wersji zapoznawczej w 2017, Data Factory d
 -   Obsługa trzech więcej konfiguracji/wariantów Azure SQL Database do hostowania bazy danych SSIS (SSISDB) projektów/pakietów:
 -   SQL Database z punktami końcowymi usługi sieci wirtualnej
 -   Wystąpienie zarządzane
--   Pula elastyczna
+-   Elastyczna pula
 -   Obsługa Azure Resource Manager sieci wirtualnej na podstawie klasycznej sieci wirtualnej, która ma zostać wycofana w przyszłości, dzięki czemu można wstrzyknąć lub dołączyć do środowiska Azure-SSIS Integration Runtime do sieci wirtualnej skonfigurowanej do SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/dostępu do danych lokalnych. Aby uzyskać więcej informacji, zobacz również [dołączanie środowiska Azure-SSIS Integration Runtime do sieci wirtualnej](join-azure-ssis-integration-runtime-virtual-network.md).
 -   Obsługa uwierzytelniania Azure Active Directory (Azure AD) i uwierzytelniania SQL w celu łączenia się z SSISDB, co pozwala na uwierzytelnianie usługi Azure AD za pomocą tożsamości zarządzanej Data Factory dla zasobów platformy Azure
 -   Obsługa tworzenia własnej lokalnej licencji SQL Server w celu zdobycia znacznego oszczędności kosztów z poziomu opcji Korzyść użycia hybrydowego platformy Azure
@@ -195,6 +195,9 @@ Działanie kopiowania służy do przemieszczania danych z dowolnego innego łąc
 
 Samoobsługowe środowisko IR to konstrukcja potoków ADF, której można używać z działaniem kopiowania do uzyskiwania lub przenoszenia danych do i z Premium lub źródeł danych opartych na maszynach wirtualnych. Najpierw umieść dane za pomocą kopii, a następnie przepływ danych do przekształcenia, a następnie kolejną kopię, jeśli chcesz przenieść te przekształcone dane z powrotem do magazynu Premium.
 
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Czy aparat obliczeniowy przepływu danych obsługuje wiele dzierżawców?
+Klastry nigdy nie są udostępniane. Gwarantujemy izolację każdego zadania w ramach przebiegów produkcyjnych. W przypadku scenariusza debugowania jedna osoba otrzymuje jeden klaster, a wszystkie debugowanie spowoduje przejście do tego klastra, który jest inicjowany przez tego użytkownika.
+
 ## <a name="wrangling-data-flows"></a>Przetwarzanie przepływy danych
 
 ### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Jakie są obsługiwane regiony dla przepływu danych przetwarzanie?
@@ -244,7 +247,7 @@ Azure Data Factory (ADF) to zarządzana usługa integracji danych, która umożl
 
 Przepływ danych przetwarzanie obsługuje następujące typy danych w programie SQL Server. Zostanie wyświetlony błąd sprawdzania poprawności przy użyciu nieobsługiwanego typu danych.
 
-* short
+* wybierak
 * double
 * real
 * float
@@ -259,7 +262,7 @@ Przepływ danych przetwarzanie obsługuje następujące typy danych w programie 
 * smallint
 * tinyint
 * bigint
-* długi
+* long
 * tekst
 * date
 * datetime

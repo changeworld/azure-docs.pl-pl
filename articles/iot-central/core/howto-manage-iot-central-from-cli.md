@@ -1,19 +1,19 @@
 ---
 title: Zarządzanie IoT Central z poziomu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
-description: W tym artykule opisano sposób tworzenia aplikacji IoT Central i zarządzania nią przy użyciu interfejsu wiersza polecenia. Możesz wyświetlać, modyfikować i usuwać aplikację przy użyciu interfejsu wiersza polecenia.
+description: W tym artykule opisano sposób tworzenia aplikacji IoT Central i zarządzania nią przy użyciu interfejsu wiersza polecenia. Można wyświetlać, modyfikować i usuwać aplikację przy użyciu interfejsu wiersza polecenia.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 8526eb50faf300892c66ac186eac25adecf62231
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: cf0414531d363ab5401e8c9574943a40ecf2d449
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019030"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137816"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Zarządzanie IoT Central z poziomu interfejsu wiersza polecenia platformy Azure
 
@@ -31,7 +31,7 @@ Jeśli wolisz uruchomić interfejs wiersza polecenia platformy Azure na komputer
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
 
-Użyj polecenia [AZ iotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) , aby utworzyć aplikację IoT Central w ramach subskrypcji platformy Azure. Przykład:
+Użyj polecenia [AZ iotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) , aby utworzyć aplikację IoT Central w ramach subskrypcji platformy Azure. Na przykład:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -44,7 +44,7 @@ az group create --location "East US" \
 az iotcentral app create \
   --resource-group "MyIoTCentralResourceGroup" \
   --name "myiotcentralapp" --subdomain "mysubdomain" \
-  --sku ST1 --template "iotc-demo@1.0.0" \
+  --sku ST1 --template "iotc-pnp-preview@1.0.0" \
   --display-name "My Custom Display Name"
 ```
 
@@ -53,30 +53,14 @@ Te polecenia najpierw tworzą grupę zasobów w regionie Wschodnie stany USA dla
 | Parametr         | Opis |
 | ----------------- | ----------- |
 | resource-group    | Grupa zasobów zawierająca aplikację. Ta grupa zasobów musi już istnieć w Twojej subskrypcji. |
-| location          | Domyślnie to polecenie używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w regionach **Wschodnie stany USA**, **zachodnie stany USA**, **Europa Północna**lub **Europa Zachodnia** lub w **Australii** lub **Azja i Pacyfik** lokalizacje geograficzne. |
+| location          | Domyślnie to polecenie używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w **Australii**, **Azja i Pacyfik**, **Europie**lub **Stany Zjednoczone** lokalizacje geograficzne. |
 | name              | Nazwa aplikacji w Azure Portal. |
 | poddomeny         | Poddomena w adresie URL aplikacji. W tym przykładzie adres URL aplikacji jest https://mysubdomain.azureiotcentral.com. |
 | sku               | Obecnie można użyć opcji **ST1** lub **ST2**. Zobacz [Cennik usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-| szablon          | Szablon aplikacji do użycia. Aby uzyskać więcej informacji, zobacz następującą tabelę: |
+| szablon          | Szablon aplikacji do użycia. Aby uzyskać więcej informacji, zobacz poniższą tabelę. |
 | Nazwa wyświetlana      | Nazwa aplikacji wyświetlana w interfejsie użytkownika. |
 
-**Szablony aplikacji**
-
-| Nazwa szablonu            | Opis |
-| ------------------------ | ----------- |
-| iotc-default@1.0.0       | Tworzy pustą aplikację, którą wypełnisz własnymi urządzeniami i szablonami urządzeń.
-| iotc-pnp-preview@1.0.0   | Tworzy pustą aplikację Plug and Play (wersja zapoznawcza) do zapełniania własnymi szablonami urządzeń i urządzeniami. |
-| iotc-condition@1.0.0     | Tworzy aplikację z szablonem monitorowania stanu w sklepie. Ten szablon służy do łączenia i monitorowania środowiska magazynu. |
-| iotc-consumption@1.0.0   | Tworzy aplikację z szablonem monitorowania zużycia wody. Ten szablon służy do monitorowania i kontrolowania przepływu wody. |
-| iotc-distribution@1.0.0  | Tworzy aplikację z szablonem dystrybucji cyfrowej. Ten szablon umożliwia zwiększenie wydajności produkcji magazynu przez zasoby i akcje kluczy digitalizing. |
-| iotc-inventory@1.0.0     | Tworzy aplikację z szablonem zarządzania magazynem inteligentnym. Ten szablon służy do automatyzowania otrzymywania, przenoszenia produktów, zliczania cykli i śledzenia czujników. |
-| iotc-logistics@1.0.0     | Tworzy aplikację z połączonym szablonem logistyki. Ten szablon służy do śledzenia wysyłki w czasie rzeczywistym między powietrzem, wodą i ziemią oraz monitorowaniem lokalizacji i warunków. |
-| iotc-meter@1.0.0         | Tworzy aplikację z szablonem monitorowania z użyciem miernika inteligentnego. Ten szablon służy do monitorowania zużycia energii, stanu sieci i identyfikowania trendów pozwalających ulepszyć obsługę klienta i inteligentne zarządzanie pomiarami.  |
-| iotc-patient@1.0.0       | Tworzy aplikację z szablonem monitorowania ciągłego pacjenta. Użyj tego szablonu, aby zwiększyć opiekę pacjenta, ponowne przyjmowanie i zarządzanie chorobami. |
-| iotc-power@1.0.0         | Tworzy aplikację z szablonem monitorowania panelu słonecznym. Ten szablon służy do monitorowania stanu panelu słonecznego i trendów generowania energii. |
-| iotc-quality@1.0.0       | Tworzy aplikację z szablonem monitorowania jakości wody. Ten szablon służy do cyfrowego monitorowania jakości wody.|
-| iotc-store@1.0.0         | Tworzy aplikację z szablonem analizy w sklepie — wyewidencjonowywanie. Ten szablon służy do monitorowania i zarządzania przepływem wyewidencjonowania w sklepie. |
-| iotc-waste@1.0.0         | Tworzy aplikację z połączonym szablonem zarządzania odpadami. Ten szablon służy do monitorowania pojemników odpadów i operatorów pól wysyłania. |
+[!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
 
 ## <a name="view-your-applications"></a>Wyświetl swoje aplikacje
 
@@ -94,7 +78,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Usuwanie aplikacji
 
-Użyj polecenia [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) , aby usunąć aplikację IoT Central. Przykład:
+Użyj polecenia [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) , aby usunąć aplikację IoT Central. Na przykład:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \

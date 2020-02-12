@@ -1,5 +1,5 @@
 ---
-title: Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD | Microsoft Docs
+title: Role administratora subskrypcji klasycznej, role RBAC platformy Azure i role usługi Azure AD
 description: W tym artykule opisano różne role na platformie Azure — role klasycznego administratora subskrypcji, role kontroli dostępu opartej na rolach (RBAC) platformy Azure i role administratora usługi Azure Active Directory (Azure AD)
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1d0966737964c44fc4a6778cdb811a4ecc732ffc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 08c14135ba17df4de446de5625352c8cffdc60a1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979308"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138073"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD
 
@@ -93,7 +93,7 @@ Po kliknięciu karty **Role** zostanie wyświetlona lista wbudowanych i niestand
 
 Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal](role-assignments-portal.md).
 
-## <a name="azure-ad-administrator-roles"></a>Role administratora usługi Azure AD
+## <a name="azure-ad-administrator-roles"></a>i role administratora usługi Azure AD
 
 Role administratora usługi Azure AD służą do zarządzania zasobami usługi Azure AD w katalogu, takimi jak tworzenie lub edytowanie użytkowników, przypisywanie ról administracyjnych innym osobom, resetowanie haseł użytkowników, zarządzanie licencjami użytkowników i zarządzanie domenami. W poniższej tabeli opisano kilka najważniejszych ról administratora usługi Azure AD.
 
@@ -111,7 +111,7 @@ Listę ról administratora usługi Azure AD można wyświetlić w bloku **Role i
 
 Na wysokim poziomie role RBAC platformy Azure kontrolują uprawnienia do zarządzania zasobami platformy Azure, natomiast role administratora usługi Azure AD kontrolują uprawnienia do zarządzania zasobami usługi Azure Active Directory. W poniższej tabeli porównano niektóre różnice.
 
-| Role RBAC platformy Azure | Role administratora usługi Azure AD |
+| Role RBAC platformy Azure | i role administratora usługi Azure AD |
 | --- | --- |
 | Zarządzanie dostępem do zasobów platformy Azure | Zarządzanie dostępem do zasobów usługi Azure Active Directory |
 | Obsługa ról niestandardowych | Obsługa ról niestandardowych |

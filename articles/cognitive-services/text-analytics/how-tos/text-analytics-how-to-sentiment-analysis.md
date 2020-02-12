@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/17/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 214c071e0d01908e2d46c932fcf87906de834102
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644685"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137955"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Instrukcje: wykrywanie tonacji przy użyciu interfejs API analizy tekstu
 
@@ -42,7 +42,7 @@ Interfejs API analizy tekstu oferuje dwie wersje analiza tonacji-v2 i v3. Analiz
 > * Format żądania analiza tonacji v3 i [limity danych](../overview.md#data-limits) są takie same jak w poprzedniej wersji.
 > * Analiza tonacji V3 jest dostępny w następujących regionach: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`i `West US 2`.
 
-| Funkcja                                   | analiza tonacji v2 | analiza tonacji v3 |
+| Cecha                                   | analiza tonacji v2 | analiza tonacji v3 |
 |-------------------------------------------|-----------------------|-----------------------|
 | Metody dla żądań pojedynczych i wsadowych    | X                     | X                     |
 | Tonacji wyniki dla całego dokumentu  | X                     | X                     |
@@ -50,14 +50,7 @@ Interfejs API analizy tekstu oferuje dwie wersje analiza tonacji-v2 i v3. Analiz
 | Etykietowanie tonacji                        |                       | X                     |
 | Przechowywanie wersji modelu                   |                       | X                     |
 
-#### <a name="version-2tabversion-2"></a>[Wersja 2](#tab/version-2)
-
-### <a name="sentiment-scoring"></a>Ocenianie tonacji
-
-Analizator tonacji klasyfikuje tekst jako "dodatnie" lub ujemne. Przypisuje wynik z zakresu od 0 do 1. Wartości zbliżone do 0,5 oznaczają opinię neutralną lub brak opinii. Wynik 0,5 oznacza opinię neutralną. Gdy nie można przeanalizować ciągu dla tonacji lub nie ma tonacji, wynik jest zawsze 0,5 dokładnie. Na przykład jeśli przekażesz ciąg w języku hiszpańskim z kodem języka angielskiego, wynik będzie wynosić 0,5.
-
-
-#### <a name="version-3-public-previewtabversion-3"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>Ocenianie tonacji
 
@@ -85,11 +78,18 @@ Analiza tonacji v3 może zwracać wyniki i etykiety na poziomie zdania i dokumen
 
 Przykładową C# aplikację, która wywołuje tę wersję analiza tonacji w serwisie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs), można znaleźć.
 
+
+#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+
+### <a name="sentiment-scoring"></a>Ocenianie tonacji
+
+Analizator tonacji klasyfikuje tekst jako "dodatnie" lub ujemne. Przypisuje wynik z zakresu od 0 do 1. Wartości zbliżone do 0,5 oznaczają opinię neutralną lub brak opinii. Wynik 0,5 oznacza opinię neutralną. Gdy nie można przeanalizować ciągu dla tonacji lub nie ma tonacji, wynik jest zawsze 0,5 dokładnie. Na przykład jeśli przekażesz ciąg w języku hiszpańskim z kodem języka angielskiego, wynik będzie wynosić 0,5.
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>Wysyłanie żądania interfejsu API REST 
 
-### <a name="preparation"></a>Przygotowywanie
+### <a name="preparation"></a>Przygotowanie
 
 Analiza tonacji daje wynik wyższej jakości, gdy zostanie nadana mniejsza ilość tekstu do pracy. Jest to przeciwieństwo wyodrębniania kluczowych fraz, które działa lepiej na większych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
 
@@ -101,27 +101,28 @@ Rozmiar dokumentu musi zawierać 5 120 znaków na dokument. Możesz mieć do 1 0
 
 Utwórz żądanie POST. Możesz [użyć programu Poster](text-analytics-how-to-call-api.md) lub **konsoli testowania interfejsu API** w poniższych linkach referencyjnych, aby szybko ją i ją wysłać. 
 
-#### <a name="version-2tabversion-2"></a>[Wersja 2](#tab/version-2)
-
-[Dokumentacja analiza tonacji v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
-
-#### <a name="version-3-public-previewtabversion-3"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 [Informacje dotyczące analiza tonacji v3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
+#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+
+[Dokumentacja analiza tonacji v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+
 ---
 
-Ustaw punkt końcowy HTTPS na potrzeby analizy tonacji przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musisz podać prawidłowy adres URL używanej wersji. Przykład:
-    
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+Ustaw punkt końcowy HTTPS na potrzeby analizy tonacji przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musisz podać prawidłowy adres URL używanej wersji. Na przykład:
 
-#### <a name="version-2tabversion-2"></a>[Wersja 2](#tab/version-2)
+> [!NOTE]
+> Klucz i punkt końcowy dla zasobu analiza tekstu można znaleźć w witrynie Azure Portal. Zostaną one umieszczone na stronie **szybkiego startu** zasobu w obszarze **Zarządzanie zasobami**. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
+
+#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 ---
 
@@ -161,26 +162,7 @@ Analizator tonacji klasyfikuje tekst jako "dodatnie" lub ujemne. Przypisuje wyni
 
 Dane wyjściowe są zwracane natychmiast. Można przesyłać strumieniowo wyniki do aplikacji, która akceptuje kod JSON lub zapisuje dane wyjściowe do pliku w systemie lokalnym. Następnie zaimportuj dane wyjściowe do aplikacji, która może być używana do sortowania, wyszukiwania i manipulowania danymi.
 
-#### <a name="version-2tabversion-2"></a>[Wersja 2](#tab/version-2)
-
-### <a name="sentiment-analysis-v2-example-response"></a>Przykładowa odpowiedź analiza tonacji v2
-
-Odpowiedzi z analiza tonacji v2 zawierają wyniki tonacji dla każdego wysłanego dokumentu.
-
-```json
-{
-  "documents": [{
-    "id": "1",
-    "score": 0.98690706491470337
-  }, {
-    "id": "2",
-    "score": 0.95202046632766724
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>Przykładowa odpowiedź analiza tonacji v3
 
@@ -255,6 +237,26 @@ Odpowiedzi z analiza tonacji v3 zawierają etykiety i oceny tonacji dla każdego
     "errors": []
 }
 ```
+
+#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+
+### <a name="sentiment-analysis-v2-example-response"></a>Przykładowa odpowiedź analiza tonacji v2
+
+Odpowiedzi z analiza tonacji v2 zawierają wyniki tonacji dla każdego wysłanego dokumentu.
+
+```json
+{
+  "documents": [{
+    "id": "1",
+    "score": 0.98690706491470337
+  }, {
+    "id": "2",
+    "score": 0.95202046632766724
+  }],
+  "errors": []
+}
+```
+
 ---
 
 ## <a name="summary"></a>Podsumowanie
@@ -266,7 +268,7 @@ W tym artykule przedstawiono koncepcje i przepływ pracy analizy tonacji przy u�
 + Żądanie POST jest punktem końcowym `/sentiment` przy użyciu spersonalizowanego [klucza dostępu i punktu końcowego](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , który jest prawidłowy dla Twojej subskrypcji.
 + Dane wyjściowe odpowiedzi, które składają się z wyniku tonacji dla każdego identyfikatora dokumentu, mogą być przesyłane strumieniowo do dowolnej aplikacji, która akceptuje kod JSON. Na przykład program Excel i Power BI.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Text Analytics overview (Omówienie analizy tekstu)](../overview.md)
 * [Korzystanie z biblioteki klienta analiza tekstu](../quickstarts/text-analytics-sdk.md)

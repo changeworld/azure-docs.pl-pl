@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: a0c9a654d0ee49dc2bdb6efb7370a3ad2b199e10
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481311"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132204"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Jak obiekty i poświadczenia są synchronizowane w Azure AD Domain Servicesej domenie zarządzanej
 
@@ -97,7 +97,7 @@ W poniższej tabeli przedstawiono, w jaki sposób konkretne atrybuty obiektów g
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Synchronizacja z AD DS lokalnych do usługi Azure AD i platformy Azure AD DS
 
-Azure AD Connect służy do synchronizowania kont użytkowników, członkostw w grupach i skrótów poświadczeń z lokalnego środowiska AD DS do usługi Azure AD. Są synchronizowane atrybuty kont użytkowników, takich jak nazwy UPN i Lokalny identyfikator zabezpieczeń (SID). Aby zalogować się przy użyciu Azure AD Domain Services, do usługi Azure AD są również synchronizowane starsze skróty haseł wymagane do uwierzytelniania NTLM i Kerberos.
+Azure AD Connect służy do synchronizowania kont użytkowników, członkostw w grupach i skrótów poświadczeń z lokalnego środowiska AD DS do usługi Azure AD. Są synchronizowane atrybuty kont użytkowników, takich jak nazwy UPN i Lokalny identyfikator zabezpieczeń (SID). Aby zalogować się przy użyciu usługi Azure AD DS, starsze skróty haseł wymagane do uwierzytelniania NTLM i Kerberos są również synchronizowane z usługą Azure AD.
 
 > [!IMPORTANT]
 > Azure AD Connect należy instalować i konfigurować tylko na potrzeby synchronizacji z lokalnymi środowiskami AD DS. Instalowanie Azure AD Connect w domenie zarządzanej AD DS platformy Azure nie jest obsługiwane do synchronizowania obiektów z powrotem do usługi Azure AD.
@@ -113,7 +113,7 @@ Wiele organizacji ma dość skomplikowane środowisko lokalne AD DS, które obej
 
 Usługa Azure AD ma znacznie prostszy i płaski obszar nazw. Aby umożliwić użytkownikom niezawodne uzyskiwanie dostępu do aplikacji zabezpieczonych za pomocą usługi Azure AD, Rozwiąż konflikty nazw UPN między kontami użytkowników w różnych lasach. Domeny zarządzane AD DS platformy Azure używają płaskiej struktury jednostek organizacyjnych, podobnie jak w przypadku usługi Azure AD. Wszystkie konta i grupy użytkowników są przechowywane w kontenerze *AADDC users* , mimo że są synchronizowane z różnych domen lokalnych lub lasów, nawet jeśli skonfigurowano hierarchiczną strukturę organizacyjną w środowisku lokalnym. Domena zarządzana AD DS platformy Azure Spłaszcza wszystkie hierarchiczne struktury jednostek organizacyjnych.
 
-Jak wspomniano wcześniej, nie istnieje żadna synchronizacja z platformy Azure AD DS z powrotem do usługi Azure AD. Można [utworzyć niestandardową jednostkę organizacyjną (OU)](create-ou.md) w usłudze Azure AD DS, a następnie użytkowników, grupy lub konta usług w ramach tych niestandardowych jednostek organizacyjnych. Żaden z obiektów utworzonych w niestandardowych jednostkach organizacyjnych nie jest synchronizowany z powrotem do usługi Azure AD. Te obiekty są dostępne tylko w ramach domeny zarządzanej platformy Azure AD DS i nie są widoczne przy użyciu poleceń cmdlet programu PowerShell usługi Azure AD, usługi Azure AD interfejs API programu Graph lub przy użyciu interfejsu użytkownika zarządzania usługą Azure AD.
+Jak wspomniano wcześniej, nie istnieje żadna synchronizacja z platformy Azure AD DS z powrotem do usługi Azure AD. Można [utworzyć niestandardową jednostkę organizacyjną (OU)](create-ou.md) w usłudze Azure AD DS, a następnie użytkowników, grupy lub konta usług w ramach tych niestandardowych jednostek organizacyjnych. Żaden z obiektów utworzonych w niestandardowych jednostkach organizacyjnych nie jest synchronizowany z powrotem do usługi Azure AD. Te obiekty są dostępne tylko w ramach domeny zarządzanej platformy Azure AD DS i nie są widoczne przy użyciu poleceń cmdlet programu PowerShell usługi Azure AD, interfejsu API Microsoft Graph lub przy użyciu interfejsu użytkownika zarządzania usługą Azure AD.
 
 ## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>Co nie jest zsynchronizowane z usługą Azure AD DS
 
@@ -128,9 +128,13 @@ Następujące obiekty lub atrybuty nie są zsynchronizowane z lokalnego środowi
 
 ## <a name="password-hash-synchronization-and-security-considerations"></a>Synchronizacja skrótów haseł i zagadnienia dotyczące zabezpieczeń
 
-Po włączeniu usługi Azure AD DS wymagane są starsze skróty haseł dla uwierzytelniania NTLM + Kerberos. Usługa Azure AD nie przechowuje haseł w postaci zwykłego tekstu, przez co nie można automatycznie generować tych skrótów dla istniejących kont użytkowników. Po wygenerowaniu i zapisaniu skróty haseł zgodne z NTLM i Kerberos są zawsze przechowywane w sposób zaszyfrowany w usłudze Azure AD. Klucze szyfrowania są unikatowe dla każdej dzierżawy usługi Azure AD. Te skróty są szyfrowane w taki sposób, że tylko usługa Azure AD DS ma dostęp do kluczy odszyfrowywania. Żadna inna usługa lub składnik w usłudze Azure AD nie ma dostępu do kluczy odszyfrowywania. Starsze skróty haseł są następnie synchronizowane z usługi Azure AD z kontrolerami domeny dla domeny zarządzanej AD DS platformy Azure. Dyski dla tych zarządzanych kontrolerów domeny w usłudze Azure AD DS są szyfrowane w stanie spoczynku. Te skróty haseł są przechowywane i zabezpieczane na tych kontrolerach domeny, podobnie jak w przypadku przechowywania i zabezpieczania haseł w środowisku lokalnym AD DS.
+Po włączeniu usługi Azure AD DS wymagane są starsze skróty haseł dla uwierzytelniania NTLM + Kerberos. Usługa Azure AD nie przechowuje haseł w postaci zwykłego tekstu, przez co nie można automatycznie generować tych skrótów dla istniejących kont użytkowników. Po wygenerowaniu i zapisaniu skróty haseł zgodne z NTLM i Kerberos są zawsze przechowywane w sposób zaszyfrowany w usłudze Azure AD.
 
-W przypadku środowisk usługi Azure AD tylko w chmurze [Użytkownicy muszą zresetować/zmienić hasło](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , aby można było generować i przechowywać w usłudze Azure AD odpowiednie skróty haseł. W przypadku wszystkich kont użytkowników w chmurze utworzonych w usłudze Azure AD po włączeniu Azure AD Domain Services skróty haseł są generowane i przechowywane w formacie zgodnym z NTLM i Kerberos. Te nowe konta nie muszą zresetować/zmienić hasła generują starsze skróty haseł.
+Klucze szyfrowania są unikatowe dla każdej dzierżawy usługi Azure AD. Te skróty są szyfrowane w taki sposób, że tylko usługa Azure AD DS ma dostęp do kluczy odszyfrowywania. Żadna inna usługa lub składnik w usłudze Azure AD nie ma dostępu do kluczy odszyfrowywania.
+
+Starsze skróty haseł są następnie synchronizowane z usługi Azure AD z kontrolerami domeny dla domeny zarządzanej AD DS platformy Azure. Dyski dla tych zarządzanych kontrolerów domeny w usłudze Azure AD DS są szyfrowane w stanie spoczynku. Te skróty haseł są przechowywane i zabezpieczane na tych kontrolerach domeny, podobnie jak w przypadku przechowywania i zabezpieczania haseł w środowisku lokalnym AD DS.
+
+W przypadku środowisk usługi Azure AD tylko w chmurze [Użytkownicy muszą zresetować/zmienić hasło](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , aby można było generować i przechowywać w usłudze Azure AD odpowiednie skróty haseł. W przypadku wszystkich kont użytkowników w chmurze utworzonych w usłudze Azure AD po włączeniu Azure AD Domain Services skróty haseł są generowane i przechowywane w formacie zgodnym z NTLM i Kerberos. Te nowe konta nie muszą resetować ani zmieniać hasła generują starsze skróty haseł.
 
 W przypadku kont użytkowników hybrydowych synchronizowanych z lokalnego środowiska AD DS przy użyciu Azure AD Connect, należy [skonfigurować Azure AD Connect do synchronizowania skrótów haseł w formatach zgodnych z protokołem NTLM i Kerberos](tutorial-configure-password-hash-sync.md).
 

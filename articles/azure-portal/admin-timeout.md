@@ -5,26 +5,26 @@ services: azure-portal
 keywords: Ustawienia, limit czasu
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 87de67eec9171825a1ebff9ab60782fea8836039
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310802"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132077"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Ustaw limit czasu nieaktywności poziomu katalogu
 
-Ustawienie limitu czasu bezczynności pomaga chronić swoje zasoby przed nieautoryzowanym dostępem, jeśli użytkownicy zapomnią zabezpieczyć swoją stację roboczą. Gdy użytkownik jest bezczynny przez pewien czas, sesja Azure Portal zostanie wylogowana automatycznie. Administratorzy mogą wymusić maksymalny czas bezczynności przed wylogowaniem sesji. Ustawienie limitu czasu nieaktywności dotyczy poziomu katalogu. Aby uzyskać więcej informacji o katalogach, zobacz [Active Directory Domain Services Omówienie](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+Ustawienie limitu czasu bezczynności pomaga chronić swoje zasoby przed nieautoryzowanym dostępem, jeśli użytkownicy zapomnią zabezpieczyć swoją stację roboczą. Gdy użytkownik jest bezczynny przez pewien czas, sesja Azure Portal zostanie wylogowana automatycznie. Administratorzy w [roli administratora globalnego](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) mogą wymusić maksymalny czas bezczynności przed wylogowaniem sesji. Ustawienie limitu czasu nieaktywności dotyczy poziomu katalogu. Aby uzyskać więcej informacji o katalogach, zobacz [Active Directory Domain Services Omówienie](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 ## <a name="configure-the-inactive-timeout-setting"></a>Skonfiguruj ustawienie nieaktywnego limitu czasu
 
-Jeśli jesteś administratorem i chcesz wymusić ustawienie limitu czasu bezczynności dla wszystkich użytkowników Azure Portal, wykonaj następujące czynności:
+Jeśli jesteś administratorem globalnym i chcesz wymusić ustawienie limitu czasu bezczynności dla wszystkich użytkowników Azure Portal, wykonaj następujące czynności:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Wybierz pozycję **Ustawienia** z globalnego nagłówka strony.
 3. Wybierz pozycję tekst linku **Skonfiguruj limit czasu na poziomie katalogu**.
 

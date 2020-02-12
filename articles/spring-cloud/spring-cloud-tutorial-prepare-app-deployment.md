@@ -1,21 +1,21 @@
 ---
-title: Samouczek — przygotowywanie aplikacji sprężynowej do wdrożenia w chmurze Azure wiosennej
-description: W tym samouczku przygotowasz aplikację ze sprężyną Java do wdrożenia.
+title: Samouczek — przygotowanie aplikacji ze sprężyną Java do wdrożenia w chmurze Azure wiosennej
+description: W tym samouczku przygotowasz aplikację ze sprężyną Java do wdrożenia w chmurze z systemem Azure wiosną.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 7a879fa942046376e8cf0acc40a62039e8f3de25
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1af4bdcfc0fea319b9e5c9f39a1ade3f4492404f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064720"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137631"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Przygotowywanie aplikacji ze sprężyną Java do wdrożenia w chmurze Azure wiosennej
 
-Ten przewodnik Szybki Start przedstawia sposób przygotowania istniejącej aplikacji w chmurze ze sprężyną Java na potrzeby wdrożenia w chmurze z możliwością korzystania z platformy Azure. W przypadku poprawnego skonfigurowania chmurowa usługa Azure wiosenna zapewnia niezawodne usługi do monitorowania, skalowania i aktualizowania aplikacji w chmurze ze sprężyną Java.
+Ten przewodnik Szybki Start przedstawia sposób przygotowania istniejącej aplikacji ze sprężyną Java do wdrożenia w chmurze z usługą Azure wiosną. W przypadku poprawnego skonfigurowania chmurowa usługa Azure wiosenna zapewnia niezawodne usługi do monitorowania, skalowania i aktualizowania aplikacji w chmurze ze sprężyną Java.
 
 ## <a name="java-runtime-version"></a>Wersja środowiska uruchomieniowego języka Java
 

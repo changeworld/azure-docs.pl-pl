@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: d15da0c0cb00f640d2ffc647475f66b76119f609
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 112a7f7aa61984b2ce9bd8400c629fe62db55584
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548377"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137901"
 ---
 # <a name="tune-model-hyperparameters"></a>Dostrajanie hiperparametrów modelu
 
@@ -43,17 +43,13 @@ W tej sekcji opisano, jak wykonać podstawowe odwzorowanie parametrów, które p
 
 2.  Połącz niepociąg model z lewej strony wejściowej. 
 
-3. Ustaw opcję **tworzenia trybu Trainer** na **zakres parametrów**. Użyj **konstruktora zakresu** , aby określić zakres wartości do użycia w wyczyszczeniu parametrów.  
 
-    Prawie wszystkie moduły klasyfikacji i regresji obsługują odchylenia zintegrowanego parametru. W przypadku dowiedzenia, które nie obsługują konfigurowania zakresu parametrów, można testować tylko dostępne wartości parametrów.
-
-    Można ręcznie ustawić wartość dla jednego lub kilku parametrów, a następnie odszukać pozostałe parametry. Może to spowodować oszczędność czasu.
 
 4.  Dodaj zestaw danych, który ma być używany na potrzeby szkolenia, i połącz go z środkowym wejściem parametrów strojenia modelu.  
 
     Opcjonalnie, jeśli masz oznakowany zestaw danych, możesz połączyć go z najbardziej przyłączonym portem wejściowym (**opcjonalny zestaw danych walidacji**). Pozwala to mierzyć dokładność podczas uczenia i dostrajania.
 
-5.  W okienku **Właściwości** okna strojenie modelu dostrajania wybierz wartość dla **trybu odchylenia parametru**. Ta opcja określa, jak są wybierane parametry.
+5.  W prawym panelu strojenia parametrów modelu wybierz wartość dla **trybu odchylenia parametru**. Ta opcja określa, jak są wybierane parametry.
 
     - **Cała siatka**: w przypadku wybrania tej opcji moduł jest pętlą względem siatki wstępnie zdefiniowanej przez system, aby wypróbować różne kombinacje i zidentyfikować najlepszą naukę. Ta opcja jest przydatna, gdy nie wiesz, jakie są ustawienia najlepszych parametrów, i chcesz wypróbować wszystkie możliwe kombinacje wartości.
 
@@ -64,8 +60,6 @@ W tej sekcji opisano, jak wykonać podstawowe odwzorowanie parametrów, które p
 7.  Wybierz liczbę uruchomień:
 
     1. **Maksymalna liczba przebiegów na losowym wyczyszczeniu: w**przypadku wybrania losowego wycierania można określić, ile razy model ma być szkolony, używając losowej kombinacji wartości parametrów.
-
-    2. **Maksymalna liczba przebiegów w losowej siatce**: Ta opcja określa również liczbę iteracji w losowym próbkowaniu wartości parametrów, ale wartości nie są generowane losowo z podanego zakresu. Zamiast tego moduł tworzy macierz wszystkich możliwych kombinacji wartości parametrów. Następnie pobiera losowe próbkowanie w macierzy. Ta metoda jest wydajniejsza i mniej podatna na Przepróbkowanie regionalne lub Podpróbkowanie.
 
 8.  W celu **określania rankingu**wybierz pojedynczą metrykę, która ma być używana do klasyfikowania modeli.
 

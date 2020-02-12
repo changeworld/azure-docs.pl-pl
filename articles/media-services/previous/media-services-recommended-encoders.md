@@ -9,22 +9,31 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 89b01a3fb066f181f5ec54b481b71feaa7a6ae08
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74886575"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131403"
 ---
 # <a name="recommended-on-premises-encoders"></a>Zalecane kodery lokalne
+
 W przypadku przesyłania strumieniowego na żywo z Azure Media Services można określić, w jaki sposób kanał ma odbierać strumień wejściowy. Jeśli zdecydujesz się użyć kodera lokalnego z kanałem kodowania na żywo, koder powinien wypchnąć strumień o pojedynczej szybkości transmisji bitów o wysokiej jakości jako dane wyjściowe. Jeśli zdecydujesz się użyć kodera lokalnego z przekazaniem kanału, koder powinien wypchnąć strumień o różnej szybkości transmisji bitów jako dane wyjściowe ze wszystkimi żądanymi jakością wyjściową. Aby uzyskać więcej informacji, zobacz [przesyłanie strumieniowe na żywo z użyciem koderów lokalnych](media-services-live-streaming-with-onprem-encoders.md).
 
+## <a name="encoder-requirements"></a>Wymagania dotyczące kodera
+
+Kodery muszą obsługiwać protokół TLS 1,2 w przypadku używania protokołów HTTPS lub RTMP.
+
+## <a name="live-encoders-that-output-rtmp"></a>Kodery dynamiczne, które wyprowadzają dane RTMP 
+
 Azure Media Services zaleca użycie jednego z następujących koderów na żywo, które mają RTMP jako dane wyjściowe:
+
 - Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Wirecast Telestream (wersja 13.0.2 lub nowsza ze względu na wymaganie TLS 1,2)
+
+  Kodery muszą obsługiwać protokół TLS 1,2 w przypadku używania protokołów RTMP.
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -33,11 +42,16 @@ Azure Media Services zaleca użycie jednego z następujących koderów na żywo,
 - xStream
 - Switcher Studio (iOS)
 
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Kodery dynamiczne, które wyprowadzają pofragmentowany plik MP4 
+
 Azure Media Services zaleca się użycie jednego z następujących koderów na żywo, które mają wieloszybkościową fragmentację plików MP4 (Smooth Streaming) jako dane wyjściowe:
+
 - Media Excel Hero Live i Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
+- Element aktywny (wersja 2.14.15 i nowsza ze względu na wymaganie TLS 1,2)
+
+  Kodery muszą obsługiwać protokół TLS 1,2 w przypadku używania protokołów HTTPS.
 - Envivio 4Caster C4 Gen III
 - Wyobraź sobie komunikację Selenio MCP3
 
@@ -45,6 +59,7 @@ Azure Media Services zaleca się użycie jednego z następujących koderów na �
 > Koder na żywo może wysyłać strumień o pojedynczej szybkości transmisji bitów do kanału przekazującego, ale ta konfiguracja nie jest zalecana, ponieważ nie zezwala na przesyłanie strumieniowe transmisji bitów do klienta.
 
 ## <a name="how-to-become-an-on-premises-encoder-partner"></a>Jak przełączyć się do lokalnego partnera kodera
+
 Jako Azure Media Services lokalnego partnera kodera Media Services promować produkt, zalecając koder do klientów korporacyjnych. Aby stać się lokalnym partnerem kodera, należy sprawdzić zgodność kodera lokalnego z Media Services. Aby to zrobić, wykonaj następujące weryfikacje:
 
 Weryfikacja kanału przekazującego

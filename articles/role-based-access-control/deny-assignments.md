@@ -1,5 +1,5 @@
 ---
-title: Informacje o Odmów przypisań dla zasobów platformy Azure | Microsoft Docs
+title: Informacje o odmowie przypisań zasobów platformy Azure
 description: Informacje o odmowie przypisań w ramach kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479356"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137377"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Informacje o odmowie przypisań zasobów platformy Azure
 
@@ -54,21 +54,21 @@ Odmowa przypisania jest zgodna z podobnym wzorcem jako przypisaniem roli, ale r�
  Przypisanie Odmów ma następujące właściwości:
 
 > [!div class="mx-tableFixed"]
-> | Właściwość | Wymagane | Typ | Opis |
+> | Właściwość | Wymagany | Typ | Opis |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Tak | String | Nazwa wyświetlana przypisania Odmów. Nazwy muszą być unikatowe dla danego zakresu. |
-> | `Description` | Nie | String | Opis przypisania Odmów. |
+> | `DenyAssignmentName` | Yes | Ciąg | Nazwa wyświetlana przypisania Odmów. Nazwy muszą być unikatowe dla danego zakresu. |
+> | `Description` | Nie | Ciąg | Opis przypisania Odmów. |
 > | `Permissions.Actions` | Co najmniej jedno działanie lub jedna akcja dataactions | Ciąg [] | Tablica ciągów, które określają operacje zarządzania, do których blok przypisania Odmów dostępu. |
 > | `Permissions.NotActions` | Nie | Ciąg [] | Tablica ciągów, które określają operacje zarządzania, które mają zostać wykluczone z przypisania Odmów. |
 > | `Permissions.DataActions` | Co najmniej jedno działanie lub jedna akcja dataactions | Ciąg [] | Tablica ciągów, które określają operacje na danych, do których blok przypisania Odmów dostępu. |
 > | `Permissions.NotDataActions` | Nie | Ciąg [] | Tablica ciągów, które określają operacje na danych, które mają zostać wykluczone z przypisania Odmów. |
-> | `Scope` | Nie | String | Ciąg określający zakres, do którego odnosi się przypisanie odmowy. |
-> | `DoNotApplyToChildScopes` | Nie | Boolean | Określa, czy przypisanie odmowy dotyczy zakresów podrzędnych. Wartość domyślna to false. |
-> | `Principals[i].Id` | Tak | Ciąg [] | Tablica identyfikatorów obiektów podmiotu zabezpieczeń usługi Azure AD (użytkownik, Grupa, nazwa główna usługi lub tożsamość zarządzana), do której ma zastosowanie przypisanie odmowy. Ustaw na pusty identyfikator GUID `00000000-0000-0000-0000-000000000000` reprezentujący wszystkie podmioty zabezpieczeń. |
+> | `Scope` | Nie | Ciąg | Ciąg określający zakres, do którego odnosi się przypisanie odmowy. |
+> | `DoNotApplyToChildScopes` | Nie | Wartość logiczna | Określa, czy przypisanie odmowy dotyczy zakresów podrzędnych. Wartość domyślna to false. |
+> | `Principals[i].Id` | Yes | Ciąg [] | Tablica identyfikatorów obiektów podmiotu zabezpieczeń usługi Azure AD (użytkownik, Grupa, nazwa główna usługi lub tożsamość zarządzana), do której ma zastosowanie przypisanie odmowy. Ustaw na pusty identyfikator GUID `00000000-0000-0000-0000-000000000000` reprezentujący wszystkie podmioty zabezpieczeń. |
 > | `Principals[i].Type` | Nie | Ciąg [] | Tablica typów obiektów reprezentowana przez podmioty zabezpieczeń [i]. ID. ustawione na `SystemDefined` reprezentujące wszystkie podmioty zabezpieczeń. |
 > | `ExcludePrincipals[i].Id` | Nie | Ciąg [] | Tablica identyfikatorów obiektów podmiotu zabezpieczeń usługi Azure AD (użytkownik, Grupa, nazwa główna usługi lub tożsamość zarządzana), do której nie ma zastosowania przypisanie odmowy. |
 > | `ExcludePrincipals[i].Type` | Nie | Ciąg [] | Tablica typów obiektów reprezentowana przez ExcludePrincipals [i]. ID. |
-> | `IsSystemProtected` | Nie | Boolean | Określa, czy to przypisanie odmowy zostało utworzone przez platformę Azure i nie można go edytować ani usunąć. Obecnie wszystkie przydziały Odmów są chronione przez system. |
+> | `IsSystemProtected` | Nie | Wartość logiczna | Określa, czy to przypisanie odmowy zostało utworzone przez platformę Azure i nie można go edytować ani usunąć. Obecnie wszystkie przydziały Odmów są chronione przez system. |
 
 ## <a name="the-all-principals-principal"></a>Główne wszystkie podmioty zabezpieczeń
 

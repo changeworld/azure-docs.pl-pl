@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: e1c5504b30c2784e8657ccc0dc4ec18689fe2a68
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: ef5cc0fb561d385a1b1d7b4c14db8c10343508cf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806817"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133663"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Przegląd typów klas — Azure Lab Services
 
@@ -45,6 +45,22 @@ Można skonfigurować laboratorium dla klasy, która koncentruje się na dowodow
 W klasie etycznej działanie hakerskie studenci mogą uczyć się nowoczesnych technik obrony przed lukami w zabezpieczeniach. Każdy student otrzymuje maszynę wirtualną hosta systemu Windows Server, która ma dwie zagnieżdżone maszyny wirtualne — jedną maszynę wirtualną z obrazem [Metasploitable3](https://github.com/rapid7/metasploitable3) i inną maszynę z obrazem [Kali Linux](https://www.kali.org/) . Maszyna wirtualna Metasploitable jest używana do wykorzystania w celach.  Maszyna wirtualna z systemem Kali Linux zapewnia dostęp do narzędzi wymaganych do wykonywania zadań śledczej.
 
 Aby uzyskać szczegółowe informacje na temat sposobu konfigurowania tego typu laboratorium, zobacz [Konfigurowanie laboratorium do uczenia klasy etycznej działanie hakerskie](class-type-ethical-hacking.md).
+
+## <a name="database-management"></a>Zarządzanie bazami danych
+Pojęcia dotyczące baz danych są jednym z kursów wprowadzających w większości działów nauki komputerowych w szkole. W Azure Lab Services można skonfigurować laboratorium dla podstawowej klasy zarządzania bazami danych. Na przykład można skonfigurować szablon maszyny wirtualnej w laboratorium z serwerem bazy danych [MySQL](https://www.mysql.com/) lub serwerem [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) .
+
+Aby uzyskać szczegółowe informacje na temat sposobu konfigurowania tego typu laboratorium, zobacz [Konfigurowanie laboratorium do uczenia zarządzania bazami danych dla relacyjnych baz danych](class-type-database-management.md).
+
+## <a name="python-and-jupyter-notebooks"></a>Notesy Python i Jupyter
+Można skonfigurować maszynę szablonu w Azure Lab Services z narzędziami wymaganymi do nauki uczniów, jak korzystać z [notesów Jupyter](http://jupyter-notebook.readthedocs.io). Notesy Jupyter to projekt typu "open source", który umożliwia łatwe łączenie tekstu sformatowanego i wykonywalnego kodu źródłowego języka [Python](https://www.python.org/) na jednej kanwie o nazwie Notes. Uruchamianie notesu skutkuje liniowym rekordem danych wejściowych i wyjściowych.  Mogą one obejmować tekst, tabele informacji, wykresy punktowe i wiele innych.
+
+Aby uzyskać szczegółowe informacje na temat sposobu konfigurowania tego typu laboratorium, zobacz [Konfigurowanie laboratorium do uczenia danych przy użyciu notesów Python i Jupyter](class-type-jupyter-notebook.md).
+
+## <a name="mobile-app-development-with-android-studio"></a>Tworzenie aplikacji mobilnych za pomocą programu Android Studio
+Można skonfigurować laboratorium w Azure Lab Services, aby nauczyć się wprowadzenia klasy opracowywania aplikacji mobilnych. Ta klasa koncentruje się na aplikacjach mobilnych systemu Android, które można opublikować w [sklep Google Play](https://play.google.com/store/apps).  Studenci mogą dowiedzieć się, jak używać [Android Studio](https://developer.android.com/studio) do kompilowania aplikacji.  [Emulator programu Visual Studio dla systemu Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) służy do lokalnego testowania aplikacji.
+
+Aby uzyskać szczegółowe informacje na temat sposobu konfigurowania tego typu laboratorium, zobacz [Konfigurowanie laboratorium do uczenia opracowywania aplikacji mobilnych za pomocą Android Studio](class-type-mobile-dev-android-studio.md).
+
 
 ## <a name="next-steps"></a>Następne kroki
 

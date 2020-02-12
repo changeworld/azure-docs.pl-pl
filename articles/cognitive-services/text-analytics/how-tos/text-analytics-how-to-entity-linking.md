@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/27/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774134"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137970"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
 Interfejs API analizy tekstu umożliwia przyjęcie tekstu bez struktury i zwrócenie listy niejednoznacznych jednostek z linkami do dodatkowych informacji w sieci Web. Interfejs API obsługuje jednocześnie rozpoznawanie jednostek nazwanych (NER) i łączenie jednostek.
 
-### <a name="entity-linking"></a>Łączenie podmiotów
+### <a name="entity-linking"></a>Łączenie jednostek
 
 Łączenie jednostek to możliwość identyfikowania i odróżnienia tożsamości jednostki znalezionej w tekście (na przykład w przypadku określenia, czy wystąpienie słowa `Mars` odwołuje się do globalnej, czy do rzymskie akty Boże wojny). Ten proces wymaga obecności bazy wiedzy w odpowiednim języku do łączenia rozpoznanych jednostek w tekście. Łączenie jednostek używa [witryny Wikipedia](https://www.wikipedia.org/) jako tej bazy wiedzy.
 
@@ -34,7 +34,7 @@ Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania 
 
 Interfejs API analizy tekstu oferuje dwie wersje nazwanego rozpoznawania jednostek — v2 i v3. Wersja 3 (Public Preview) zawiera bardziej szczegółowe informacje na temat jednostek, które mogą być wykrywane i klasyfikowane.
 
-| Funkcja                                                         | NER v2 | NER v3 |
+| Cecha                                                         | NER v2 | NER v3 |
 |-----------------------------------------------------------------|--------|--------|
 | Metody dla żądań pojedynczych i wsadowych                          | X      | X      |
 | Podstawowe rozpoznawanie jednostek w różnych kategoriach              | X      | X      |
@@ -44,46 +44,8 @@ Interfejs API analizy tekstu oferuje dwie wersje nazwanego rozpoznawania jednost
 
 Aby uzyskać informacje, zobacz temat [Obsługa języków](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
-#### <a name="version-2tabversion-2"></a>[Wersja 2](#tab/version-2)
 
-### <a name="entity-types"></a>Typy jednostek
-
-> [!NOTE]
-> Rozpoznawanie jednostek nazwanych (NER) w wersji 2 obsługuje tylko następujące jednostki. NER V3 jest dostępna w publicznej wersji zapoznawczej i znacząco rozszerza liczbę i głębokość jednostek rozpoznawanych w tekście.   
-
-| Typ  | SubType | Przykład |
-|:-----------   |:------------- |:---------|
-| Osoba        | Nie dotyczy\*         | "Jan", "bramy Bill"     |
-| Lokalizacja      | Nie dotyczy\*         | „Redmond, Washington”, „Paris”  |
-| Organizacja  | Nie dotyczy\*         | „Microsoft”   |
-| Ilość      | Liczba        | „6”, „six”     |
-| Ilość      | Wartość procentowa    | „50%”, „fifty percent”|
-| Ilość      | Liczba porządkowa       | „2nd”, „second”     |
-| Ilość      | Wiek           | "90 dzień dawna", "30 lat starych"    |
-| Ilość      | Waluta      | „$10,99”     |
-| Ilość      | Wymiar     | „10 miles”, „40 cm”     |
-| Ilość      | Temperatura   | „32 degrees”    |
-| Data i godzina      | Nie dotyczy\*         | „6:30PM February 4, 2012”      |
-| Data i godzina      | Data          | „May 2nd, 2017”, „05/02/2017”   |
-| Data i godzina      | Czas          | "8:00", "8:00"  |
-| Data i godzina      | Zakres dat     | „May 2nd to May 5th”    |
-| Data i godzina      | Zakres czasu     | „6pm to 7pm”     |
-| Data i godzina      | Czas trwania      | „1 minute and 45 seconds”   |
-| Data i godzina      | Zestaw           | „every Tuesday”     |
-| Adres URL           | Nie dotyczy\*         | "https:\//www.bing.com"    |
-| Adres e-mail         | Nie dotyczy\*         | „support@contoso.com” |
-| Numer telefonu USA  | Nie dotyczy\*         | (Tylko numery telefonów US) "(312) 555-0176" |
-| Adres IP    | Nie dotyczy\*         | "10.0.0.100" |
-
-\* w zależności od danych wejściowych i wyodrębnionych, niektóre jednostki mogą pominąć `SubType`.  Wszystkie obsługiwane typy jednostek są dostępne tylko w językach angielskim, chińskim, francuskim, niemieckim i hiszpańskim.
-
-### <a name="request-endpoints"></a>Punkty końcowe żądania
-
-Rozpoznawanie jednostek nazwanych v2 używa jednego punktu końcowego dla żądań NER i konsolidacji jednostek:
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 ### <a name="entity-types"></a>Typy jednostek
 
@@ -110,11 +72,50 @@ NER
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
+#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+
+### <a name="entity-types"></a>Typy jednostek
+
+> [!NOTE]
+> Rozpoznawanie jednostek nazwanych (NER) w wersji 2 obsługuje tylko następujące jednostki. NER V3 jest dostępna w publicznej wersji zapoznawczej i znacząco rozszerza liczbę i głębokość jednostek rozpoznawanych w tekście.   
+
+| Typ  | SubType | Przykład |
+|:-----------   |:------------- |:---------|
+| Person (Osoba)        | Nie dotyczy\*         | "Jan", "bramy Bill"     |
+| Lokalizacja      | Nie dotyczy\*         | "Redmond, Waszyngton", "Paryż"  |
+| Organizacja  | Nie dotyczy\*         | Programu   |
+| Liczba      | Liczba        | "6", "sześć"     |
+| Liczba      | Procent    | "50%", "50 procent"|
+| Liczba      | Liczbą       | "druga", "s"     |
+| Liczba      | Wiek           | "90 dzień dawna", "30 lat starych"    |
+| Liczba      | Waluta      | "$10,99"     |
+| Liczba      | Elementów     | "10 mil", "40 cm"     |
+| Liczba      | Temperatura   | "32 stopni"    |
+| DateTime      | Nie dotyczy\*         | "6:30 4 lutego 2012"      |
+| DateTime      | Date          | "Maj druga, 2017", "05/02/2017"   |
+| DateTime      | Time          | "8:00", "8:00"  |
+| DateTime      | DateRange     | "Od 1 maja do 5 maja"    |
+| DateTime      | TimeRange     | "18:00 do 7pm"     |
+| DateTime      | Czas trwania      | "1 minuta i 45 s"   |
+| DateTime      | Set           | "każdy wtorek"     |
+| Adres URL           | Nie dotyczy\*         | "https:\//www.bing.com"    |
+| Email         | Nie dotyczy\*         | „support@contoso.com” |
+| Numer telefonu USA  | Nie dotyczy\*         | (Tylko numery telefonów US) "(312) 555-0176" |
+| Adres IP    | Nie dotyczy\*         | "10.0.0.100" |
+
+\* w zależności od danych wejściowych i wyodrębnionych, niektóre jednostki mogą pominąć `SubType`.  Wszystkie obsługiwane typy jednostek są dostępne tylko w językach angielskim, chińskim, francuskim, niemieckim i hiszpańskim.
+
+### <a name="request-endpoints"></a>Punkty końcowe żądania
+
+Rozpoznawanie jednostek nazwanych v2 używa jednego punktu końcowego dla żądań NER i konsolidacji jednostek:
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>Wysyłanie żądania interfejsu API REST
 
-### <a name="preparation"></a>Przygotowywanie
+### <a name="preparation"></a>Przygotowanie
 
 Musisz mieć dokumenty JSON w tym formacie: ID, text, language.
 
@@ -124,17 +125,10 @@ Każdy dokument musi mieć 5 120 znaków i może mieć do 1 000 elementów (iden
 
 Utwórz żądanie POST. Można [użyć programu Poster](text-analytics-how-to-call-api.md) lub **konsoli testowania interfejsu API** w poniższych linkach, aby szybko przeprowadzić strukturę i wysłać ją. 
 
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+> [!NOTE]
+> Klucz i punkt końcowy dla zasobu analiza tekstu można znaleźć w witrynie Azure Portal. Zostaną one umieszczone na stronie **szybkiego startu** zasobu w obszarze **Zarządzanie zasobami**. 
 
-#### <a name="version-2tabversion-2"></a>[Wersja 2](#tab/version-2)
-
-[Dokumentacja rozpoznawania jednostek nazwanych (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
-Wersja 2 używa następującego punktu końcowego do konsolidacji obiektów i żądań NER: 
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3tabversion-3"></a>[Wersja 3](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 [Odwołanie do nazwanego rozpoznawania jednostek v3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -147,6 +141,14 @@ NER
 
 Łączenie jednostek
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+
+[Dokumentacja rozpoznawania jednostek nazwanych (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+Wersja 2 używa następującego punktu końcowego do konsolidacji obiektów i żądań NER: 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
@@ -180,44 +182,8 @@ Wszystkie żądania POST zwracają sformatowaną w formacie JSON odpowiedź z id
 
 Dane wyjściowe są zwracane natychmiast. Wyniki można przesłać strumieniowo do aplikacji, która akceptuje kod JSON, lub zapisać do pliku w systemie lokalnym, a następnie zaimportować do aplikacji, która umożliwia sortowanie i wyszukiwanie danych oraz manipulowanie nimi.
 
-#### <a name="version-2tabversion-2"></a>[Wersja 2](#tab/version-2)
 
-### <a name="example-ner-v2-response"></a>Przykładowa odpowiedź NER v2
-```json
-{
-  "documents": [{
-    "id": "1",
-    "entities": [{
-      "name": "Seattle",
-      "matches": [{
-        "wikipediaScore": 0.15046201222847677,
-        "entityTypeScore": 0.80624294281005859,
-        "text": "Seattle",
-        "offset": 26,
-        "length": 7
-      }],
-      "wikipediaLanguage": "en",
-      "wikipediaId": "Seattle",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
-      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-      "type": "Location"
-    }, {
-      "name": "last week",
-      "matches": [{
-        "entityTypeScore": 0.8,
-        "text": "last week",
-        "offset": 34,
-        "length": 9
-      }],
-      "type": "DateTime",
-      "subType": "DateRange"
-    }]
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[3 (publiczna wersja zapoznawcza)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Przykładowe odpowiedzi v3
 
@@ -271,6 +237,43 @@ Wersja 3 zapewnia oddzielne punkty końcowe dla NER i konsolidacji jednostek. Od
   }],
   "errors": [],
   "modelVersion": "2019-10-01"
+}
+```
+
+#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+
+### <a name="example-ner-v2-response"></a>Przykładowa odpowiedź NER v2
+```json
+{
+  "documents": [{
+    "id": "1",
+    "entities": [{
+      "name": "Seattle",
+      "matches": [{
+        "wikipediaScore": 0.15046201222847677,
+        "entityTypeScore": 0.80624294281005859,
+        "text": "Seattle",
+        "offset": 26,
+        "length": 7
+      }],
+      "wikipediaLanguage": "en",
+      "wikipediaId": "Seattle",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
+      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+      "type": "Location"
+    }, {
+      "name": "last week",
+      "matches": [{
+        "entityTypeScore": 0.8,
+        "text": "last week",
+        "offset": 34,
+        "length": 9
+      }],
+      "type": "DateTime",
+      "subType": "DateRange"
+    }]
+  }],
+  "errors": []
 }
 ```
 

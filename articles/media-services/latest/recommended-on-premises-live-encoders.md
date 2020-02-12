@@ -6,21 +6,21 @@ keywords: encoding;encoders;media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 11/18/2019
+ms.date: 02/04/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: MT
+ms.openlocfilehash: bccdb49c22bce983fe8cb2aba1387c4b1645b62c
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186032"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132707"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery przesyłania strumieniowego na żywo
 
 W Azure Media Services wydarzenie na [żywo](https://docs.microsoft.com/rest/api/media/liveevents) (kanał) reprezentuje potok do przetwarzania zawartości przesyłania strumieniowego na żywo. Zdarzenie na żywo odbiera strumienie wejściowe na żywo na jeden z dwóch sposobów.
 
-* Lokalny koder na żywo wysyła strumień RTMP o dużej szybkości transmisji bitów lub Smooth Streaming (pofragmentowany plik MP4) do zdarzenia na żywo, które nie ma włączonej obsługi kodowania na żywo z Media Services. Pozyskiwane strumienie przechodzą przez zdarzenia na żywo bez dalszej obróbki. Ta metoda jest nazywana **przekazywaniem**. Koder na żywo może wysyłać strumień o pojedynczej szybkości transmisji bitów do kanału przekazującego. Ta konfiguracja nie jest zalecana, ponieważ nie zezwala na przesyłanie strumieniowe transmisji bitów na klienta.
+* Lokalny koder na żywo wysyła strumień RTMP o dużej szybkości transmisji bitów lub Smooth Streaming (pofragmentowany plik MP4) do zdarzenia na żywo, które nie ma włączonej obsługi kodowania na żywo z Media Services. Pozyskiwane strumienie przechodzą przez zdarzenia na żywo bez dalszej obróbki. Ta metoda jest nazywana **przekazywaniem**. Zalecamy, aby koder na żywo wysyłał strumienie o szybkości transmisji bitów zamiast strumienia o pojedynczej szybkości transmisji bitów do zdarzenia przekazywania na żywo, aby umożliwić przesyłanie strumieniowe transmisji bitów do klienta.
 
   > [!NOTE]
   > Użycie metody przekazującej to najbardziej ekonomiczny sposób na przesyłanie strumieniowe na żywo.
@@ -29,21 +29,28 @@ W Azure Media Services wydarzenie na [żywo](https://docs.microsoft.com/rest/api
 
 Aby uzyskać szczegółowe informacje na temat kodowania na żywo z Media Services, zobacz [przesyłanie strumieniowe na żywo z Media Services v3](live-streaming-overview.md).
 
+## <a name="encoder-requirements"></a>Wymagania dotyczące kodera
+
+Kodery muszą obsługiwać protokół TLS 1,2 w przypadku używania protokołów HTTPS lub RTMP.
+
 ## <a name="live-encoders-that-output-rtmp"></a>Kodery dynamiczne, które wyprowadzają dane RTMP
 
 Usługa Media Services zaleca używanie jednego z następujących koderów na żywo, które jako dane wyjściowe mają pliki RTMP. Obsługiwane schematy adresów URL to `rtmp://` lub `rtmps://`.
 
+Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP sprawdź ustawienia zapory i/lub serwera proxy, aby upewnić się, że porty TCP ruchu wychodzącego 1935 i 1936 są otwarte.<br/><br/>
+Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMPS sprawdź ustawienia zapory i/lub serwera proxy, aby upewnić się, że porty TCP ruchu wychodzącego 2935 i 2936 są otwarte.
+
 > [!NOTE]
-> Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMP sprawdź ustawienia zapory i/lub serwera proxy, aby upewnić się, że porty TCP ruchu wychodzącego 1935 i 1936 są otwarte.
+> Kodery muszą obsługiwać protokół TLS 1,2 w przypadku używania protokołów RTMP.
 
 - Adobe Flash Media Live Encoder 3.2
 - [Cambria na żywo 4,3](https://www.capellasystems.net/products/cambria-live/)
+- Element aktywny (wersja 2.14.15 i nowsze)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Wirecast Telestream (wersja 13.0.2 lub nowsza ze względu na wymaganie TLS 1,2)
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -57,17 +64,19 @@ Usługa Media Services zaleca używanie jednego z następujących koderów na ż
 
 Media Services zaleca użycie jednego z następujących koderów na żywo, które mają Smooth Streaming o wielu szybkościach transmisji bitów (fragmentacja MP4) jako dane wyjściowe. Obsługiwane schematy adresów URL to `http://` lub `https://`.
 
+> [!NOTE]
+> Kodery muszą obsługiwać protokół TLS 1,2 w przypadku używania protokołów HTTPS.
+
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
-- Envivio 4Caster C4 Gen III
+- Element aktywny (wersja 2.14.15 i nowsza ze względu na wymaganie TLS 1,2)
+- Envivio 4Caster C4 Gen III 
 - Wyobraź sobie komunikację Selenio MCP3
 - Media Excel Hero Live i Hero 4K (UHD/HEVC)
 - [Narzędzia FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Jeśli przesyłasz strumieniowo wydarzenia na żywo w wielu językach (na przykład jedną angielską ścieżką audio i jedną Hiszpańska ścieżką audio), możesz to zrobić za pomocą kodera programu Excel Live Encoder skonfigurowanego do wysyłania kanału informacyjnego na żywo do zdarzenia przekazywania na żywo.
-
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurowanie ustawień lokalnego kodera na żywo
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 77e6ab588f74c8b810f211e069c1c24043155111
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982117"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132854"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Architektura referencyjna Azure DevTest Labs dla przedsiębiorstw
 Ten artykuł zawiera architekturę referencyjną, która pomaga wdrożyć rozwiązanie na podstawie Azure DevTest Labs w przedsiębiorstwie. Obejmuje następujące elementy:
@@ -41,7 +41,7 @@ Są to kluczowe elementy architektury referencyjnej:
     - Chcesz wymusić ruch sieciowy w środowisku chmury i poza nim za pomocą lokalnej zapory na potrzeby zabezpieczeń/zgodności.
 - **Sieciowe grupy zabezpieczeń**: typowy sposób ograniczania ruchu do środowiska chmury (lub w środowisku chmury) na podstawie źródłowych i docelowych adresów IP polega na użyciu [sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md). Na przykład, chcesz zezwolić tylko na ruch pochodzący z sieci firmowej do sieci laboratorium.
 - **Brama usług pulpitu zdalnego**: przedsiębiorstwa zwykle blokują wychodzące połączenia pulpitu zdalnego w zaporze firmowej. Istnieje kilka sposobów włączania łączności do środowiska opartego na chmurze w usłudze DevTest Labs, w tym:
-  - Użyj [bramy usług pulpitu zdalnego](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)i dozwolonych statyczny adres IP modułu równoważenia obciążenia bramy.
+  - Użyj [bramy usług pulpitu zdalnego](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)i zezwól na statyczny adres IP modułu równoważenia obciążenia bramy.
   - [Kierowanie całego ruchu przychodzącego RDP](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) za pośrednictwem połączenia sieci VPN ExpressRoute/lokacja-lokacja. Ta funkcja jest powszechnym zagadnieniem, gdy przedsiębiorstwa planują wdrożenie DevTest Labs.
 - **Usługi sieciowe (sieci wirtualne, podsieci)** : topologia [sieci platformy Azure](../networking/networking-overview.md) to kolejny element klucza w architekturze DevTest Labs. Określa, czy zasoby z laboratorium mogą komunikować się i mieć dostęp do zasobów lokalnych i internetowych. Nasz diagram architektury zawiera najpopularniejsze sposoby korzystania z usługi DevTest Labs: Wszystkie laboratoria nawiązują połączenie za pośrednictwem [komunikacji równorzędnej sieci wirtualnej](../virtual-network/virtual-network-peering-overview.md) przy użyciu [modelu gwiazdy](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) do połączenia sieci VPN typu lokacja-lokacja z siecią lokalną. Jednak DevTest Labs bezpośrednio korzysta z platformy Azure Virtual Network, więc nie ma żadnych ograniczeń dotyczących konfigurowania infrastruktury sieciowej.
 - **DevTest Labs**: DevTest Labs jest kluczową częścią ogólnej architektury. Aby dowiedzieć się więcej na temat usługi, zobacz [Informacje o DevTest Labs](devtest-lab-overview.md).
@@ -50,7 +50,7 @@ Są to kluczowe elementy architektury referencyjnej:
 ## <a name="scalability-considerations"></a>Zagadnienia dotyczące skalowalności
 Mimo że DevTest Labs nie ma wbudowanych przydziałów ani limitów, inne zasoby platformy Azure, które są używane w typowej operacji laboratorium, mają [przydziały na poziomie subskrypcji](../azure-resource-manager/management/azure-subscription-service-limits.md). Dlatego w typowym wdrożeniu przedsiębiorstwa potrzebna jest wiele subskrypcji platformy Azure, które obejmują duże wdrożenie DevTest Labs. Poniżej przedstawiono limity przydziałów:
 
-- **Grupy zasobów**: w konfiguracji domyślnej DevTest Labs tworzy grupę zasobów dla każdej nowej maszyny wirtualnej lub użytkownik tworzy środowisko przy użyciu usługi. Subskrypcje mogą zawierać [do 980 grup zasobów](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). Oznacza to, że jest to limit maszyn wirtualnych i środowisk w ramach subskrypcji. Istnieją dwie inne konfiguracje, które należy wziąć pod uwagę:
+- **Grupy zasobów**: w konfiguracji domyślnej DevTest Labs tworzy grupę zasobów dla każdej nowej maszyny wirtualnej lub użytkownik tworzy środowisko przy użyciu usługi. Subskrypcje mogą zawierać [do 980 grup zasobów](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). Oznacza to, że jest to limit maszyn wirtualnych i środowisk w ramach subskrypcji. Istnieją dwie inne konfiguracje, które należy wziąć pod uwagę:
     - **[Wszystkie maszyny wirtualne przechodzą do tej samej grupy zasobów](resource-group-control.md)** : Mimo że ta konfiguracja ułatwia spełnienie limitu grupy zasobów, ma wpływ na limit typu zasobu na zasób.
     - **Przy użyciu udostępnionych publicznych adresów IP**: wszystkie maszyny wirtualne o tym samym rozmiarze i regionie należy umieścić w tej samej grupie zasobów. Ta konfiguracja to "Ziemia Środkowa" między przydziałami grup zasobów i przydziałami zasobów typu zasób, jeśli maszyny wirtualne mogą mieć publiczne adresy IP.
 - **Zasoby na grupę zasobów według typu zasobu**: domyślny limit zasobów dla [grupy zasobów dla każdego typu zasobu to 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits).  Jeśli używasz *wszystkich maszyn wirtualnych, przejdź do tej samej konfiguracji grupy zasobów* , użytkownicy trafią na tę subskrypcję, szczególnie jeśli maszyny wirtualne mają wiele dodatkowych dysków.

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9364c344c58d17f9f6e6404dd8aa850af032cee9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715576"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138368"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Pobierz dane czujnika z partnerów czujników
 
@@ -40,27 +40,32 @@ Po rozpoczęciu przesyłania strumieniowego danych czujników można rozpocząć
 Powyższe informacje można wygenerować, wykonując następujące czynności: (należy pamiętać, że te kroki muszą zostać wykonane na platformie Azure, aby uzyskać dostęp do subskrypcji platformy Azure, w której wdrożono FarmBeats).
 
 1. Pobierz [plik zip](https://aka.ms/farmbeatspartnerscriptv2)i wyodrębnij go na dysk lokalny. Plik zip będzie zawierać jeden plik.
-2. Zaloguj się do https://portal.azure.com/ i przejdź do pozycji Azure Active Directory-> rejestracji aplikacji
 
-3. Kliknij rejestrację aplikacji, która została utworzona w ramach wdrożenia FarmBeats. Będzie ona mieć taką samą nazwę jak centrum danych FarmBeats.
+2. Zaloguj się do https://portal.azure.com/.
 
-4. Kliknij pozycję "Uwidacznianie interfejsu API" — > kliknij pozycję "Dodaj aplikację kliencką" i wprowadź **04b07795-8ddb-461a-bbee-02f9e1bf7b46** i zaznacz pole wyboru Autoryzuj zakres. Zapewni to dostęp do interfejsu wiersza polecenia platformy Azure (Cloud Shell), aby wykonać poniższe kroki.
+3. **Jeśli korzystasz z FarmBeats w wersji 1.2.7 lub nowszej, Pomiń kroki 3A, 3b i 3C i przejdź do kroku 4.** . Możesz sprawdzić wersję FarmBeats, klikając ikonę ustawienia w prawym górnym rogu interfejsu użytkownika FarmBeats.
 
-5. Otwórz usługę Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu Azure Portal.
+3a. Przejdź do Azure Active Directory — > rejestracji aplikacji
+
+3b. Kliknij rejestrację aplikacji, która została utworzona w ramach wdrożenia FarmBeats. Będzie ona mieć taką samą nazwę jak centrum danych FarmBeats.
+
+3c. Kliknij pozycję "Uwidacznianie interfejsu API" — > kliknij pozycję "Dodaj aplikację kliencką" i wprowadź **04b07795-8ddb-461a-bbee-02f9e1bf7b46** i zaznacz pole wyboru Autoryzuj zakres. Zapewni to dostęp do interfejsu wiersza polecenia platformy Azure (Cloud Shell), aby wykonać poniższe kroki.
+
+4. Otwórz usługę Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu Azure Portal.
 
     ![Azure Portal pasek narzędzi](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. Upewnij się, że środowisko jest ustawione na **PowerShell**. Domyślnie jest ono ustawione na bash.
+5. Upewnij się, że środowisko jest ustawione na **PowerShell**. Domyślnie jest ono ustawione na bash.
 
     ![Ustawienie paska narzędzi programu PowerShell](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. Przekaż plik z kroku 1 w wystąpieniu Cloud Shell.
+6. Przekaż plik z kroku 1 w wystąpieniu Cloud Shell.
 
     ![Przekaż przycisk paska narzędzi](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-8. Przejdź do katalogu, w którym plik został przekazany. Domyślnie pliki są przekazywane do katalogu macierzystego w ramach nazwy użytkownika.
+7. Przejdź do katalogu, w którym plik został przekazany. Domyślnie pliki są przekazywane do katalogu macierzystego w ramach nazwy użytkownika.
 
-9. Uruchom następujący skrypt. Skrypt pyta o identyfikator dzierżawy, który można uzyskać ze strony Przegląd Azure Active Directory->.
+8. Uruchom następujący skrypt. Skrypt pyta o identyfikator dzierżawy, który można uzyskać ze strony Przegląd Azure Active Directory->.
 
     ```azurepowershell-interactive 
 
@@ -68,7 +73,7 @@ Powyższe informacje można wygenerować, wykonując następujące czynności: (
 
     ```
 
-10. Postępuj zgodnie z instrukcjami na ekranie, aby przechwycić wartości dla **punktów końcowych interfejsu API**, **identyfikatora dzierżawy**, **identyfikatora klienta**, **klucza tajnego klienta**i **parametrów połączenia centrum EventHub**.
+9. Postępuj zgodnie z instrukcjami na ekranie, aby przechwycić wartości dla **punktów końcowych interfejsu API**, **identyfikatora dzierżawy**, **identyfikatora klienta**, **klucza tajnego klienta**i **parametrów połączenia centrum EventHub**.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrowanie danych urządzenia przy użyciu wygenerowanych poświadczeń
 

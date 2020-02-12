@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/01/2019
+ms.date: 10/02/2019
 ms.author: juliako
-ms.openlocfilehash: 5b5956094da497cfbb72608587b2e0389ceec8fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3520b7d6b0fd67fdbff3e1dd78d038f36ad5f0af
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427129"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133421"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3
 
@@ -115,7 +115,7 @@ W poniższej tabeli przedstawiono różnice w kodzie między wersjami 2 i V3 dla
 * Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub jednego z obsługiwanych zestawów SDK.
 * Musisz zainicjować obsługę jednostek zarezerwowanych multimediów (MRUs) na koncie, aby kontrolować współbieżność i wydajność zadań, w szczególności na potrzeby analizy wideo lub audio. Aby uzyskać więcej informacji, zobacz [Scaling Media Processing](../previous/media-services-scale-media-processing-overview.md) (Skalowanie przetwarzania multimediów). MRUs można zarządzać za pomocą [interfejsu wiersza polecenia 2,0 dla Media Services v3](media-reserved-units-cli-how-to.md)przy użyciu [Azure Portal](../previous/media-services-portal-scale-media-processing.md)lub przy użyciu [interfejsów API v2](../previous/media-services-dotnet-encoding-units.md). Należy udostępnić MRUs, niezależnie od tego, czy są Media Services używane interfejsy API w wersji 2 i v3.
 * Media Services jednostek utworzonych za pomocą interfejsu API V3 nie można zarządzać za pomocą interfejsu API v2.  
-* Nie zaleca się zarządzania jednostkami utworzonymi przy użyciu interfejsów API v2 za pośrednictwem interfejsów API v3. Poniżej przedstawiono przykłady różnic, które sprawiają, że jednostki w dwóch wersjach są niezgodne:   
+* Nie wszystkie jednostki w interfejsie API v2 są automatycznie wyświetlane w interfejsie API v3.  Poniżej przedstawiono przykłady jednostek w dwóch niezgodnych wersjach:  
     * Zadania i zadania utworzone w wersji 2 nie są wyświetlane w programie v3, ponieważ nie są skojarzone z przekształceniem. Zaleca się przełączenie na transformacje v3 i zadania. Podczas przełączenia będzie konieczne monitorowanie zadań numerów porządkowych określających w wersji 2.
     * Kanały i programy utworzone przy użyciu wersji 2 (które są mapowane na zdarzenia na żywo i wyjście na żywo w programie v3) nie mogą być nadal zarządzane przy użyciu wersji 3. Zalecenie polega na przełączeniu się do wydarzeń na żywo i danych wyjściowych na żywo w wygodnym stopniu kanału.<br/>Obecnie nie można migrować ciągle uruchomionych kanałów.  
 

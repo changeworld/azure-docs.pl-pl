@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec34ed723e9b0743a9a5fbbe6413659dd63b0e8a
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895910"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134928"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
 > [!NOTE]
 > Od 12 maja 2018 kanały na żywo nie będą już obsługiwać protokołu pozyskiwania strumienia transportowego RTP/MPEG-2. Przeprowadź migrację z protokołów RTP/MPEG-2 do protokołu RTMP lub pofragmentowanych plików MP4 (Smooth Streaming).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W Azure Media Services (AMS) **kanał** reprezentuje potok służący do przetwarzania zawartości przesyłania strumieniowego na żywo. **Kanał** odbiera strumienie wejściowe na żywo na jeden z dwóch sposobów:
 
 * Lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do kanału, w którym włączono obsługę kodowania na żywo za pomocą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (fragmentacja MP4). Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
-* Lokalny koder na żywo wysyła protokół **RTMP** o dużej szybkości transmisji bitów lub **Smooth Streaming** (pofragmentowany plik MP4) do kanału, w którym nie włączono kodowania na żywo z użyciem usługi AMS. Pozyskiwane strumienie są przekazywane przez **kanał**bez żadnego dalszego przetwarzania. Ta metoda jest nazywana **przekazywaniem**. Można użyć następujących koderów na żywo, które wychodzące z wieloszybkościowej transmisji bitów Smooth Streaming: MediaExcel, ATEME, Wyobraź Communications, Envivio, Cisco i element. Następujące kodery na żywo wyprowadzają RTMP: Adobe Flash Media Live Encoder (KODER FMLE), webstream Wirecast, Haivision, Teradek i TriCaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła protokół **RTMP** o dużej szybkości transmisji bitów lub **Smooth Streaming** (pofragmentowany plik MP4) do kanału, w którym nie włączono kodowania na żywo z użyciem usługi AMS. Pozyskiwane strumienie są przekazywane przez **kanał**bez żadnego dalszego przetwarzania. Ta metoda jest nazywana **przekazywaniem**. Można użyć następujących koderów na żywo, które wychodzące z wieloszybkościowej transmisji bitów Smooth Streaming: MediaExcel, ATEME, Wyobraź Communications, Envivio, Cisco i element. Następujące kodery na żywo wyjściowe RTMP: Telestream Wirecast, Haivision, Teradek i TriCaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
   > [!NOTE]
   > Użycie metody przekazującej to najbardziej ekonomiczny sposób na przesyłanie strumieniowe na żywo.
@@ -60,20 +60,20 @@ Użytkownik jest odpowiedzialny za zatrzymywanie kanałów po zakończeniu pracy
 ### <a id="states"></a>Stany kanału i sposób ich mapowania do trybu rozliczania
 Bieżący stan kanału. Możliwe wartości obejmują:
 
-* **Zatrzymano**. Jest to początkowy stan kanału po jego utworzeniu (o ile Autostart nie został wybrany w portalu). W tym stanie nie ma rozliczeń. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
-* **Rozpoczęcie**. Kanał jest uruchamiany. W tym stanie nie ma rozliczeń. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał wróci do stanu Zatrzymany.
-* **Uruchomione**. Kanał może przetwarzać transmisje strumieniowe na żywo. Jest teraz użycie rozliczeń. Należy zatrzymać kanał, aby zapobiec dalszemu rozliczeniu. 
-* **Zatrzymywanie**. Kanał jest zatrzymywany. W tym stanie przejściowym nie ma rozliczeń. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
-* **Usuwanie**. Kanał jest usuwany. W tym stanie przejściowym nie ma rozliczeń. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Zatrzymano**. Jest to początkowy stan kanału po jego utworzeniu (o ile Autostart nie został wybrany w portalu). W tym stanie nie ma rozliczeń. W tym stanie właściwości kanału mogą być aktualizowane, ale przesyłanie strumieniowe jest niedozwolone.
+* **Rozpoczęcie**. Kanał jest uruchamiany. W tym stanie nie ma rozliczeń. W tym stanie nie są dozwolone żadne aktualizacje ani przesyłanie strumieniowe. Jeśli wystąpi błąd, kanał powróci do stanu zatrzymany.
+* **Uruchomione**. Kanał może przetwarzać strumienie na żywo. Jest teraz użycie rozliczeń. Należy zatrzymać kanał, aby zapobiec dalszemu rozliczeniu. 
+* **Zatrzymywanie**. Kanał jest zatrzymywany. W tym stanie przejściowym nie ma rozliczeń. W tym stanie nie są dozwolone żadne aktualizacje ani przesyłanie strumieniowe.
+* **Usuwanie**. Kanał jest usuwany. W tym stanie przejściowym nie ma rozliczeń. W tym stanie nie są dozwolone żadne aktualizacje ani przesyłanie strumieniowe.
 
-W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie opłat. 
+W poniższej tabeli przedstawiono sposób, w jaki Stany kanałów mapują się do trybu rozliczania. 
 
-| Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Czy jest to rozliczenia? |
+| Stan kanału | Wskaźniki interfejsu użytkownika portalu | Czy jest to rozliczenia? |
 | --- | --- | --- |
 | Uruchamianie |Uruchamianie |Nie (stan przejściowy) |
-| Działanie |Gotowy (brak uruchomionych programów)<br/>lub<br/>Transmisja strumieniowa (co najmniej jeden uruchomiony program) |TAK |
+| Działanie |Gotowe (brak uruchomionych programów)<br/>lub<br/>Przesyłanie strumieniowe (co najmniej jeden uruchomiony program) |OPCJĘ |
 | Zatrzymywanie |Zatrzymywanie |Nie (stan przejściowy) |
-| Zatrzymane |Zatrzymane |Nie |
+| Zatrzymano |Zatrzymano |Nie |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Automatyczne wyłączenie dla nieużywanych kanałów
 Począwszy od 25 stycznia 2016, Media Services wycofał aktualizację, która automatycznie przerywa kanał (z włączonym kodowaniem na żywo) po uruchomieniu w nieużywanym stanie przez długi czas. Dotyczy to kanałów, które nie mają aktywnych programów, a które nie otrzymały źródła danych wejściowych przez dłuższy czas.
@@ -260,7 +260,7 @@ Koder na żywo można skonfigurować w taki sposób, aby przełączać się do o
 Czas trwania (w sekundach). Ta wartość musi być wartością dodatnią różną od zera, aby można było zacząć od siebie. W przypadku korzystania z ciągłego nałożenia, gdy zostanie określony czas trwania zero, ten, który zostanie zamknięty, zostanie zakończony.
 
 ### <a name="insert-slate-on-ad-marker"></a>Wstaw znacznik z Niemnie do usługi AD
-Po ustawieniu na wartość true, to ustawienie konfiguruje koder na żywo, aby wstawić obraz obrazu w trakcie przerwy w usłudze AD. Wartość domyślna to true. 
+Po ustawieniu na wartość true, to ustawienie konfiguruje koder na żywo, aby wstawić obraz obrazu w trakcie przerwy w usłudze AD. Wartością domyślną jest true. 
 
 ### <a id="default_slate"></a>Domyślny identyfikator elementu zawartości
 
@@ -302,20 +302,20 @@ Gdy Live Encoding jest włączona, możesz teraz uzyskać podgląd kanału infor
 ## <a id="states"></a>Stany kanału i sposób, w jaki Stany są mapowane do trybu rozliczania
 Bieżący stan kanału. Możliwe wartości obejmują:
 
-* **Zatrzymano**. To jest wstępny stan kanału po jego utworzeniu. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
-* **Rozpoczęcie**. Kanał jest uruchamiany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał wróci do stanu Zatrzymany.
-* **Uruchomione**. Kanał może przetwarzać transmisje strumieniowe na żywo.
-* **Zatrzymywanie**. Kanał jest zatrzymywany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
-* **Usuwanie**. Kanał jest usuwany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Zatrzymano**. Jest to początkowy stan kanału po jego utworzeniu. W tym stanie właściwości kanału mogą być aktualizowane, ale przesyłanie strumieniowe jest niedozwolone.
+* **Rozpoczęcie**. Kanał jest uruchamiany. W tym stanie nie są dozwolone żadne aktualizacje ani przesyłanie strumieniowe. Jeśli wystąpi błąd, kanał powróci do stanu zatrzymany.
+* **Uruchomione**. Kanał może przetwarzać strumienie na żywo.
+* **Zatrzymywanie**. Kanał jest zatrzymywany. W tym stanie nie są dozwolone żadne aktualizacje ani przesyłanie strumieniowe.
+* **Usuwanie**. Kanał jest usuwany. W tym stanie nie są dozwolone żadne aktualizacje ani przesyłanie strumieniowe.
 
-W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie opłat. 
+W poniższej tabeli przedstawiono sposób, w jaki Stany kanałów mapują się do trybu rozliczania. 
 
-| Stan kanału | Wskaźniki w interfejsie użytkownika portalu | Naliczanie opłat? |
+| Stan kanału | Wskaźniki interfejsu użytkownika portalu | Rozliczane? |
 | --- | --- | --- |
 | Uruchamianie |Uruchamianie |Nie (stan przejściowy) |
-| Działanie |Gotowy (brak uruchomionych programów)<br/>lub<br/>Transmisja strumieniowa (co najmniej jeden uruchomiony program) |Tak |
+| Działanie |Gotowe (brak uruchomionych programów)<br/>lub<br/>Przesyłanie strumieniowe (co najmniej jeden uruchomiony program) |Yes |
 | Zatrzymywanie |Zatrzymywanie |Nie (stan przejściowy) |
-| Zatrzymane |Zatrzymane |Nie |
+| Zatrzymano |Zatrzymano |Nie |
 
 > [!NOTE]
 > Obecnie średnia wartość początku kanału wynosi około 2 minuty, ale czasami może potrwać do 20 minut. Resetowanie kanału może potrwać do 5 minut.
@@ -350,7 +350,7 @@ Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Powiązane tematy

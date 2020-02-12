@@ -1,34 +1,28 @@
 ---
 title: Co nowego — Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
 description: Ten artykuł jest regularnie aktualizowany za pomocą wiadomości o interfejs API usługi Language Understanding usługi Azure Cognitive Services.
-author: diberry
-manager: nitinme
-ms.custom: experiment-luis-0519
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: diberry
-ms.openlocfilehash: e03c7489268f3ad7076481de4498c5e202f654b6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 02/11/2020
+ms.openlocfilehash: 716860b54e7d8e75984c0365cac61d14153c09ff
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280294"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137807"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co nowego w Language Understanding
 
-Dowiedz się, co nowego w usłudze. Te elementy obejmują informacje o wersji, klipy wideo, wpisy w blogu i inne rodzaje informacji. Oznacz Tę stronę zakładką, aby zapewnić aktualność usługi.  
+Dowiedz się, co nowego w usłudze. Te elementy obejmują informacje o wersji, klipy wideo, wpisy w blogu i inne rodzaje informacji. Oznacz Tę stronę zakładką, aby zapewnić aktualność usługi.
 
-## <a name="release-notes"></a>Informacje o wersji 
+## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="november-4-2019---ignite"></a>4 listopada 2019 — zapłon
 
+* [Language Understanding zaawansowane modele wideo (NLU) z Luis i Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+
 * Ulepszona produktywność dla deweloperów
-    * Ogólna dostępność naszego [punktu końcowego przewidywania v3](luis-migration-api-v3.md). 
-    * Możliwość importowania i eksportowania aplikacji z formatem. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). To paves sposób na efektywny proces ciągłej integracji/ciągłego dostarczania. 
+    * Ogólna dostępność naszego [punktu końcowego przewidywania v3](luis-migration-api-v3.md).
+    * Możliwość importowania i eksportowania aplikacji z formatem. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). To paves sposób na efektywny proces ciągłej integracji/ciągłego dostarczania.
 * Rozwinięcie języka
     * [Język arabski i hindi](luis-language-support.md) w publicznej wersji zapoznawczej.
 * Wstępnie utworzone modele
@@ -37,8 +31,8 @@ Dowiedz się, co nowego w usłudze. Te elementy obejmują informacje o wersji, k
     * Włoskie wstępnie [skompilowane jednostki](luis-reference-prebuilt-entities.md#italian-entity-support) — wiek, waluta, wymiar, numer i rozdzielczość procentową zmieniono z wersji 2.
 * Ulepszone środowisko użytkownika w [portalu Preview.Luis.AI](https://preview.luis.ai) — środowisko etykietowania odnowionych umożliwiające tworzenie i debugowanie modeli złożonych. Wypróbuj samouczki dotyczące portalu w wersji zapoznawczej:
     * [Tylko intencje](tutorial-intents-only.md)
-    * [Odtworzona jednostka pouczenia maszynowego](tutorial-machine-learned-entity.md) 
-* Dokładniejsze Omówienie języka — [tworzenie zaawansowanych modeli języków](luis-concept-entity-types.md) z mniejszym nakładem pracy. 
+    * [Odtworzona jednostka pouczenia maszynowego](tutorial-machine-learned-entity.md)
+* Dokładniejsze Omówienie języka — [tworzenie zaawansowanych modeli języków](luis-concept-entity-types.md) z mniejszym nakładem pracy.
 * Zdefiniuj funkcje uczenia maszynowego na poziomie modelu i Włącz modele, które mają być używane jako sygnały do innych modeli, na przykład użycie jednostek jako funkcji do intencji i innych jednostek.
 * Nowe, rozwinięte [limity](luis-boundaries.md) — większa liczba list fraz i łączna liczba fraz, nowy model jako limity funkcji
 * Wyodrębnij informacje z tekstu w formacie głębokiej struktury hierarchii, co sprawia, że aplikacje do konwersacji są bardziej wydajne.
@@ -74,7 +68,7 @@ Następujące funkcje zostały wydane na konferencji Build 2019:
 
 * [Przewodnik migracji interfejsu API v3](luis-migration-api-v3.md)
 * [Udoskonalony pulpit nawigacyjny analizy](luis-how-to-use-dashboard.md)
-* [Ulepszone prebudowane domeny](luis-reference-prebuilt-domains.md) 
+* [Ulepszone prebudowane domeny](luis-reference-prebuilt-domains.md)
 * [Jednostki listy dynamicznej](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Jednostki zewnętrzne](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
@@ -83,6 +77,10 @@ Następujące funkcje zostały wydane na konferencji Build 2019:
 [Bot Framework](https://blog.botframework.com/)
 
 ## <a name="videos"></a>Filmy wideo
+
+### <a name="2019-ignite-videos"></a>wideo o zapłonie 2019
+
+[Zaawansowane modele naturalnych Language Understanding (NLU) korzystające z LUIS i platformy Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
 ### <a name="2019-build-videos"></a>wideo kompilacji 2019
 

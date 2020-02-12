@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989845"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133837"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux Przenieś własne obrazy z subskrypcji na platformę Azure
 
@@ -177,7 +177,7 @@ Red Hat Enterprise Linux można zabezpieczyć obrazy ze stosu do własnych subsk
 
 Azure Disk Encryption nie są obsługiwane w [obrazach niestandardowych Red Hat](/linux/redhat-create-upload-vhd). Dodatkowe wymagania dotyczące programu ADE i wymagania wstępne są udokumentowane w [Azure Disk Encryption dla maszyn wirtualnych z systemem Linux](../../linux/disk-encryption-overview.md#additional-vm-requirements).
 
-Kroki dotyczące stosowania Azure Disk Encryption są dostępne w [Azure Disk Encryption scenariuszach na maszynach wirtualnych z systemem Linux i w](../../linux/disk-encryption-linux.md) powiązanych artykułach.  
+Kroki dotyczące stosowania Azure Disk Encryption są dostępne w [Azure Disk Encryption scenariuszach na maszynach wirtualnych z systemem Linux i w](../../linux/disk-encryption-linux.md) powiązanych artykułach.
 
 ## <a name="additional-information"></a>Dodatkowe informacje
 
@@ -186,7 +186,7 @@ Kroki dotyczące stosowania Azure Disk Encryption są dostępne w [Azure Disk En
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
-    
+
     W takim przypadku skontaktuj się z firmą Microsoft lub Red Hat, aby włączyć subskrypcję.
 
 - Jeśli zmodyfikujesz migawkę z obrazu RHEL BYOS i spróbujesz opublikować ten obraz niestandardowy w [galerii obrazów udostępnionych](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries), musisz podać informacje o planie zgodne z oryginalnym źródłem migawki. Na przykład polecenie może wyglądać następująco:

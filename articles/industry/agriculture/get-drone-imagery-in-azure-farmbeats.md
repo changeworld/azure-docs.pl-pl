@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a64627028ea4ecc732924d0c9fca196204f7951d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482558"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132051"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Pobieranie obrazów drona z partnerów drona
 
@@ -38,7 +38,7 @@ Podaj następujące informacje dla dostawcy urządzenia, aby włączyć integrac
 Wykonaj następujące kroki.
 
 1. Pobierz ten [skrypt](https://aka.ms/farmbeatspartnerscript)i wyodrębnij go na dysk lokalny. Dwa pliki znajdują się w pliku zip.
-2. Zaloguj się do [witryny Azure Portal](https://portal.azure.com/) i otwórz usługę Azure Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu portalu.
+2. Zaloguj się do [Azure Portal](https://portal.azure.com/) i Otwórz Azure Cloud Shell. Ta opcja jest dostępna na pasku narzędzi w prawym górnym rogu portalu.
 
     ![Otwórz Azure Cloud Shell w prawym górnym rogu portalu](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -91,4 +91,4 @@ Pliki i obrazy przekazane przez dostawcę drona są wyświetlane w sekcji **Maps
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak używać [interfejsów API](references-for-azure-farmbeats.md#rest-api) FarmBeats Datahub, aby uzyskać obraz drona.
+Dowiedz się, jak używać [interfejsów API](rest-api-in-azure-farmbeats.md) FarmBeats Datahub, aby uzyskać obraz drona.

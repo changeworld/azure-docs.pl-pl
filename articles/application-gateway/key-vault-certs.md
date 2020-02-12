@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 76807c8ed10e30c554b6aa06ec096c830a86e36e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571976"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137700"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>Kończenie połączeń SSL z certyfikatami Key Vault
 
@@ -33,6 +33,9 @@ Integracja Application Gateway z Key Vault oferuje wiele korzyści, w tym:
 - Obsługa automatycznego odnawiania certyfikatów przechowywanych w magazynie kluczy.
 
 Application Gateway obecnie obsługuje tylko certyfikaty zweryfikowane przez oprogramowanie. Sprzętowy moduł zabezpieczeń (HSM) — zweryfikowane certyfikaty nie są obsługiwane. Gdy Application Gateway jest skonfigurowany do korzystania z certyfikatów Key Vault, jego wystąpienia pobierają certyfikat z Key Vault i instalują je lokalnie w celu zakończenia protokołu SSL. Wystąpienia są również sondowane Key Vault co 24 godziny w celu pobrania odnowionej wersji certyfikatu (jeśli istnieje). W przypadku znalezienia zaktualizowanego certyfikatu certyfikat SSL aktualnie skojarzony z odbiornikiem HTTPS jest automatycznie obracany.
+
+> [!NOTE]
+> Azure Portal obsługuje tylko certyfikaty magazynu kluczy, a nie wpisy tajne. Application Gateway nadal obsługuje odwołania do wpisów tajnych z magazynu kluczy, ale tylko za pośrednictwem zasobów nienależących do portalu, takich jak program PowerShell, interfejs wiersza polecenia, interfejsy API, szablony ARM itd. 
 
 ## <a name="how-integration-works"></a>Jak działa integracja
 
