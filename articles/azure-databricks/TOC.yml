@@ -320,26 +320,45 @@
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
-    - name: Narzędzia do analizy biznesowej
+    - name: Integracje
       items:
-        - name: Łączenie z narzędziami do analizy biznesowej
-          href: /azure/databricks/bi/jdbc-odbc-bi
+        - name: Omówienie integracji
+          href: /azure/databricks/integrations/index
           maintainContext: true
-        - name: Tableau
-          href: /azure/databricks/bi/tableau
-          maintainContext: true
-        - name: Power BI
-          href: /azure/databricks/bi/power-bi
-          maintainContext: true
-        - name: Alteryx
-          href: /azure/databricks/bi/alteryx
-          maintainContext: true
-        - name: Looker
-          href: /azure/databricks/bi/looker
-          maintainContext: true
-        - name: SQL Workbench/J
-          href: /azure/databricks/bi/workbenchj
-          maintainContext: true
+        - name: Narzędzia do analizy biznesowej
+          items:
+            - name: Łączenie z narzędziami do analizy biznesowej
+              href: /azure/databricks/bi/jdbc-odbc-bi
+              maintainContext: true
+            - name: Tableau
+              href: /azure/databricks/bi/tableau
+              maintainContext: true
+            - name: Power BI
+              href: /azure/databricks/bi/power-bi
+              maintainContext: true
+            - name: Alteryx
+              href: /azure/databricks/bi/alteryx
+              maintainContext: true
+            - name: Looker
+              href: /azure/databricks/bi/looker
+              maintainContext: true
+            - name: SQL Workbench/J
+              href: /azure/databricks/bi/workbenchj
+              maintainContext: true
+        - name: Integracje danych partnerów
+          items:
+            - name: Omówienie integracji partnerów
+              href: /azure/databricks/integrations/ingestion/index
+            - name: Integracja z usługą Qlik
+              href: /azure/databricks/integrations/ingestion/qlik
+            - name: Integracja z usługą Fivetran
+              href: /azure/databricks/integrations/ingestion/fivetran
+            - name: Integracja z usługą InfoWorks
+              href: /azure/databricks/integrations/ingestion/infoworks
+            - name: Integracja z usługą StreamSets
+              href: /azure/databricks/integrations/ingestion/streamsets
+            - name: Integracja z usługą Syncsort
+              href: /azure/databricks/integrations/ingestion/syncsort
     - name: Delta Lake
       items:
         - name: Wprowadzenie do usługi Delta Lake
@@ -1818,9 +1837,9 @@
         - name: Typy wersji
           href: /azure/databricks/release-notes/release-types
           maintainContext: true
-        - name: Strona stanu usługi Azure Databricks
-          href: /azure/databricks/status
-          maintainContext: true
+    - name: Strona stanu usługi Azure Databricks
+      href: /azure/databricks/status
+      maintainContext: true
     - name: Przewodnik dewelopera języka R
       href: /azure/machine-learning/r-developers-guide
     - name: Harmonogram działania dla platformy Azure

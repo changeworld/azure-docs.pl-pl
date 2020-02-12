@@ -78,6 +78,8 @@
           href: os-upgrade-hana-large-instance.md
         - name: Konfigurowanie serwera SMT dla serwera z systemem SUSE Linux
           href: hana-setup-smt.md
+        - name: Migracja z funkcji HANA — duże wystąpienia na maszynę wirtualną platformy Azure
+          href: hana-large-instance-virtual-machine-migration.md
 - name: Oprogramowanie SAP HANA na maszynach wirtualnych platformy Azure
   items:
     - name: Instalacja SAP HANA z jednym wystąpieniem

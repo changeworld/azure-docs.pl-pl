@@ -346,6 +346,8 @@
               href: ./spark/apache-azure-spark-history-server.md
             - name: Włączanie buforowania za pomocą pamięci podręcznej we/wy
               href: ./spark/apache-spark-improve-performance-iocache.md
+            - name: Zarządzanie zależnościami plików jar
+              href: ./spark/manage-jar-dependency.md
             - name: Korzystanie z notesów z usługą Apache Spark
               items:
                 - name: Używanie lokalnego notesu programu Jupyter

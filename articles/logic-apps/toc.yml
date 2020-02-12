@@ -135,7 +135,7 @@
           href: logic-apps-enterprise-integration-certificates.md
         - name: Metadane artefaktów
           href: logic-apps-enterprise-integration-metadata.md
-        - name: Odbieranie komunikatów B2B
+        - name: Odbieranie i wysyłanie komunikatów B2B
           href: logic-apps-enterprise-integration-b2b.md
         - name: Wymienianie komunikatów AS2
           href: logic-apps-enterprise-integration-as2.md

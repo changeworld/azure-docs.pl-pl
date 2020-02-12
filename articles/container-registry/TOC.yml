@@ -84,12 +84,14 @@
               items:
                 - name: Omówienie uwierzytelniania
                   href: container-registry-authentication.md
-                - name: Uwierzytelnianie jednostki usługi
+                - name: Uwierzytelnianie za pomocą jednostki usługi
                   href: container-registry-auth-service-principal.md
-                - name: Uwierzytelnianie tożsamości zarządzanej
+                - name: Uwierzytelnianie przy użyciu tożsamości zarządzanej
                   href: container-registry-authentication-managed-identity.md
                 - name: Uwierzytelnianie w usłudze Azure Container Instances
                   href: container-registry-auth-aci.md
+                - name: Uwierzytelnianie na platformie Kubernetes przy użyciu wpisu tajnego ściągnięcia
+                  href: container-registry-auth-kubernetes.md
                 - name: Uwierzytelnianie w usłudze Azure Kubernetes Service (AKS)
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
             - name: Kontrola dostępu oparta na rolach
@@ -149,7 +151,7 @@
               href: container-registry-tutorial-base-image-update.md
             - name: Planowanie zadania
               href: container-registry-tasks-scheduled.md
-    - name: Przykłady
+    - name: Samples
       expanded: false
       items:
         - name: Pliki YAML i Dockerfile
