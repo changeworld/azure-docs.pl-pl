@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d601d19a786613f674f7b941becc5e97d84e6fce
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939276"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149936"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Samouczek: konfigurowanie rekordu aliasu w celu odwoływania się do publicznego adresu IP platformy Azure 
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie infrastruktury sieci.
@@ -30,13 +30,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do testowania niezbędna jest nazwa domeny, którą można hostować w usłudze Azure DNS. Musisz mieć pełną kontrolę nad tą domeną. Pełna kontrola obejmuje możliwość ustawiania dla domeny rekordów serwera nazw (NS).
 
-Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
+Aby uzyskać instrukcje dotyczące hostowania własnej domeny w usłudze Azure DNS, zobacz temat [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Przykładowa domena używana w tym samouczku to contoso.com, ale skorzystaj z własnej nazwy domeny.
 
 ## <a name="create-the-network-infrastructure"></a>Tworzenie infrastruktury sieci
 Najpierw utwórz sieć wirtualną i podsieć, aby umieścić w nich serwery internetowe.
-1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób**. W polu wyszukiwania wprowadź *grupę zasobów*, a następnie utwórz grupę zasobów o nazwie **RG-DNS-Alias-pip**.
 3. Wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
 4. Utwórz sieć wirtualną o nazwie **VNet-Servers**. Umieść ją w grupie zasobów **RG-DNS-Alias-pip**, a następnie nadaj podsieci nazwę **SN-Web**.
@@ -69,7 +69,7 @@ Utwórz rekord aliasu wskazujący na publiczny adres IP.
 1. Wybierz strefę usługi Azure DNS, aby ją otworzyć.
 2. Wybierz pozycję **Zestaw rekordów**.
 3. W polu tekstowym **Nazwa** wybierz pozycję **web01**.
-4. Pozostaw pole **Typ** ustawione na rekord **A**.
+4. Pozostaw pole **Typ** z ustawieniem rekordu **A**.
 5. Zaznacz pole wyboru **Zestaw rekordów aliasów**.
 6. Wybierz pozycję **Wybierz usługę Azure**, a następnie wybierz publiczny adres IP **Web-01-ip**.
 
@@ -77,7 +77,7 @@ Utwórz rekord aliasu wskazujący na publiczny adres IP.
 
 1. W grupie zasobów **RG-DNS-Alias-pip** wybierz maszynę wirtualną **Web-01**. Zanotuj publiczny adres IP.
 1. Z poziomu przeglądarki internetowej przejdź do w pełni kwalifikowanej nazwy domeny dla maszyny wirtualnej Web01-01. Przykładowa domena to **web01.contoso.com**. Teraz zostanie wyświetlona domyślna strona internetowa usług IIS.
-2. Zamknij przeglądarkę internetową.
+2. Zamknij przeglądarkę sieci Web.
 3. Zatrzymaj maszynę wirtualną **Web-01**, a następnie uruchom ją ponownie.
 4. Po ponownym uruchomieniu maszyny wirtualnej zanotuj jej nowy publiczny adres IP.
 5. Otwórz nową przeglądarkę. Ponownie przejdź do w pełni kwalifikowanej nazwy domeny dla maszyny wirtualnej Web01-01. Przykładowa domena to **web01.contoso.com**.

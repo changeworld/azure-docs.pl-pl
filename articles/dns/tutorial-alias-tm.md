@@ -8,19 +8,19 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937921"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149953"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Samouczek: konfigurowanie rekordu aliasu w celu obsługi nazw domen wierzchołkowych przy użyciu usługi Traffic Manager 
 
 Można utworzyć rekord aliasu wierzchołka nazwy domeny, aby odwoływać się do profilu usługi Azure Traffic Manager. Przykładowa domena to contoso.com. Zamiast używać usługi przekierowania, skonfiguruj usługę Azure DNS, aby odwoływać się do profilu usługi Traffic Manager bezpośrednio z poziomu strefy. 
 
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie maszyny wirtualnej hosta i infrastruktury sieciowej.
@@ -40,7 +40,7 @@ Przykładowa domena używana w tym samouczku to contoso.com, ale skorzystaj z w�
 
 ## <a name="create-the-network-infrastructure"></a>Tworzenie infrastruktury sieci
 Najpierw utwórz sieć wirtualną i podsieć, aby umieścić w nich serwery internetowe.
-1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób**. W polu wyszukiwania wprowadź *grupę zasobów*, a następnie utwórz grupę zasobów o nazwie **RG-DNS-Alias-TM**.
 3. Wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
 4. Utwórz sieć wirtualną o nazwie **VNet-Servers**. Umieść ją w grupie zasobów **RG-DNS-Alias-TM**, a następnie nadaj podsieci nazwę **SN-Web**.
@@ -102,13 +102,13 @@ Utwórz rekord aliasu wskazujący na profil usługi Traffic Manager.
 1. Wybierz strefę usługi Azure DNS, aby ją otworzyć.
 2. Wybierz pozycję **Zestaw rekordów**.
 3. Pozostaw puste pole tekstowe **Nazwa**, aby reprezentować wierzchołek nazwy domeny. Przykładowa domena to contoso.com.
-4. Pozostaw pole **Typ** ustawione na rekord **A**.
+4. Pozostaw pole **Typ** z ustawieniem rekordu **A**.
 5. Zaznacz pole wyboru **Zestaw rekordów aliasów**.
 6. Wybierz pozycję **Wybierz usługę platformy Azure** i wybierz profil usługi Traffic Manager **TM-alias-test**.
 
 ## <a name="test-the-alias-record"></a>Testowanie rekordu aliasu
 
-1. Z poziomu przeglądarki internetowej przejdź do wierzchołka nazwy domeny. Przykładowa domena to contoso.com. Zostanie wyświetlona domyślna strona internetowa usług IIS. Zamknij przeglądarkę internetową.
+1. Z poziomu przeglądarki internetowej przejdź do wierzchołka nazwy domeny. Przykładowa domena to contoso.com. Zostanie wyświetlona domyślna strona internetowa usług IIS. Zamknij przeglądarkę sieci Web.
 2. Zamknij maszynę wirtualną **Web-01**. Zaczekaj kilka minut na jej całkowite zamknięcie.
 3. Otwórz nową przeglądarkę internetową i przejdź ponownie do wierzchołka nazwy domeny.
 4. Ponownie zostanie wyświetlona domyślna strona internetowa usług IIS, ponieważ usługa Traffic Manager obsługiwała tę sytuację i kierowała ruch do maszyny wirtualnej **Web-02**.

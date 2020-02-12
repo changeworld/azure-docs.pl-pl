@@ -15,14 +15,14 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dbc7f8068ed84f42ec41ebd969e0aa91ffbb264
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473321"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149817"
 ---
-# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
+# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect często zadawane pytania
 
 ## <a name="general-installation"></a>Instalacja ogólna
 
@@ -101,7 +101,7 @@ Poniżej znajduje się dokument informacyjny, który przedstawia niektóre z naj
     - Klucze kopii zapasowych
     - Reguły synchronizacji kopii zapasowych
     - Konfiguracja serwera kopii zapasowej
-    - SQL Database kopii zapasowej
+    - Kopia zapasowa bazy danych SQL
 - Upewnij się, że nie ma żadnych agentów kopii zapasowych innych firm, których kopie zapasowe są wykonywane bez składnika zapisywania usługi VSS programu SQL Server (typowe w przypadku serwerów wirtualnych z migawkami innych firm)
 - Ogranicz liczbę niestandardowych reguł synchronizacji, które są używane podczas dodawania złożoności
 - Traktuj serwery Azure AD Connect jako serwery warstwy 0
@@ -113,7 +113,7 @@ Poniżej znajduje się dokument informacyjny, który przedstawia niektóre z naj
 - Serwery przejściowe nie powinny być rozwiązaniem o wysokiej dostępności, ale można mieć wiele serwerów przejściowych
 - Wprowadzenie "zwłok" serwery przejściowe mogą wyeliminować potencjalne przestoje w przypadku wystąpienia błędu
 - Najpierw Przetestuj i Weryfikuj wszystkie uaktualnienia na serwerze tymczasowym
-- Zawsze Weryfikuj eksporty przed przełączeniem do przemieszczania serverLeverage serwer tymczasowy na potrzeby pełnego importu i pełnej synchronizacji, aby zmniejszyć wpływ na działalność
+- Zawsze Weryfikuj eksporty przed przełączeniem na serwer przejściowy.  Korzystanie z serwera przemieszczania w celu pełnego importu i pełnych synchronizacji w celu zmniejszenia wpływu na działalność biznesową
 - Zachowanie spójności wersji między serwerami Azure AD Connect jak największej ilości 
 
 **P: Czy można zezwolić Azure AD Connect na tworzenie konta łącznika usługi Azure AD na komputerze grupy roboczej?**

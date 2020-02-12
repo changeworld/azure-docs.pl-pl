@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 494141cc580d80ff1d025228406d53f9788b5d97
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 320eba16511036df77dcdbb7ddb628eaa34b2450
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837752"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153557"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Debuguj model w Azure Machine Learning Studio (klasyczny)
 
@@ -27,7 +27,7 @@ Podczas uruchamiania modelu mogą wystąpić następujące błędy:
 W tym artykule wyjaśniono potencjalne przyczyny tych błędów.
 
 
-## <a name="train-model-module-produces-an-error"></a>Moduł uczenia modelu generuje błąd
+## <a name="train-model-module-produces-an-error"></a>Generuje błąd, Train Model modułu
 
 ![image1](./media/debug-models/train_model-1.png)
 
@@ -36,36 +36,36 @@ Moduł [uczenie modelu][train-model] oczekuje dwóch danych wejściowych:
 1. Typ modelu uczenia maszynowego z kolekcji modeli dostarczonych przez Azure Machine Learning Studio (klasyczny).
 2. Dane szkoleniowe z określoną kolumną etykieta, która określa zmienną do przewidywania (w przypadku innych kolumn przyjęto, że są to funkcje).
 
-Ten moduł może generować błąd w następujących przypadkach:
+Ten moduł może powodować błąd w następujących przypadkach:
 
-1. Kolumna etykiety jest określona nieprawidłowo. Może się tak zdarzyć, jeśli wybrano więcej niż jedną kolumnę jako etykietę lub wybrano niepoprawny indeks kolumny. Na przykład drugi przypadek stosuje się, jeśli indeks kolumny 30 jest używany z wejściowym zestawem danych, który ma tylko 25 kolumn.
+1. Kolumna etykiety została określona nieprawidłowo. Może to nastąpić, jeśli wybrano więcej niż jedną kolumnę jako etykieta lub wybrano nieprawidłowy indeks. Na przykład drugi przypadek stosuje się, jeśli indeks kolumny 30 jest używany z wejściowym zestawem danych, który ma tylko 25 kolumn.
 
-2. Zestaw danych nie zawiera żadnych kolumn funkcji. Na przykład, jeśli wejściowy zestaw danych ma tylko jedną kolumnę, która jest oznaczona jako kolumna etykiety, nie będzie żadnych funkcji, dla których można skompilować model. W takim przypadku moduł [uczenie modelu][train-model] generuje błąd.
+2. Zestaw danych nie zawiera żadnych kolumn funkcji. Na przykład jeśli wejściowy zestaw danych zawiera tylko jedną kolumnę, która jest oznaczona jako kolumna etykiety, będą istnieć żadne funkcje, dzięki którym można utworzyć modelu. W takim przypadku moduł [uczenie modelu][train-model] generuje błąd.
 
-3. Wejściowy zestaw danych (funkcje lub etykieta) zawiera nieskończoność jako wartość.
+3. Wejściowy zestaw danych (funkcji lub etykietę) zawiera nieskończoności jako wartość.
 
-## <a name="score-model-module-produces-incorrect-results"></a>Moduł modelu oceny generuje nieprawidłowe wyniki
+## <a name="score-model-module-produces-incorrect-results"></a>Moduł score Model generuje nieprawidłowe wyniki
 
 ![image2](./media/debug-models/train_test-2.png)
 
-W typowym doświadczeniu szkoleniowym/testowym w celu uczenia nadzorowanego moduł [Split Data][split] dzieli oryginalny zestaw danych na dwie części: jedna część jest używana do uczenia modelu, a jedna część jest używana do oceny, jak dobrze przeszkolony model wykonuje. Model przeszkolony jest następnie używany do oceny danych testowych, po upływie którego wyniki są oceniane w celu określenia dokładności modelu.
+W typowym doświadczeniu szkoleniowym/testowym w celu uczenia nadzorowanego moduł [Split Data][split] dzieli oryginalny zestaw danych na dwie części: jedna część jest używana do uczenia modelu, a jedna część jest używana do oceny, jak dobrze przeszkolony model wykonuje. Uczony model jest następnie używany do oceniania dane z badań, po upływie którego wyniki są oceniane w celu sprawdzenia prawidłowości modelu.
 
 Moduł [modelu oceny][score-model] wymaga dwóch danych wejściowych:
 
 1. Przeszkolony model danych wyjściowych z modułu [uczenie modelu][train-model] .
-2. Zestaw danych oceniania, który różni się od zestawu danych używanego do uczenia modelu.
+2. Oceniania zestawu danych, który różni się od zbioru danych używanego do nauczenia modelu.
 
 Istnieje możliwość, że mimo że eksperyment zakończy się pomyślnie, moduł [modelu oceny][score-model] generuje nieprawidłowe wyniki. Kilka scenariuszy może spowodować wystąpienie tego problemu:
 
-1. Jeśli określona etykieta to kategorii, a model regresji jest szkolony na danych, moduł [modelu wynikowego][score-model] będzie generował nieprawidłowe dane wyjściowe. Wynika to z faktu, że regresja wymaga zmiennej ciągłej odpowiedzi. W takim przypadku bardziej odpowiednie byłoby użycie modelu klasyfikacji. 
+1. Jeśli określona etykieta to kategorii, a model regresji jest szkolony na danych, moduł [modelu wynikowego][score-model] będzie generował nieprawidłowe dane wyjściowe. Jest to spowodowane regresji wymaga zmiennej ciągłej odpowiedzi. W takim wypadku byłoby bardziej odpowiednie do użycia model klasyfikacji. 
 
-2. Podobnie, jeśli model klasyfikacji jest przeszkolony na zestawie danych zawierającym liczby zmiennoprzecinkowe w kolumnie etykieta, może to spowodować niepożądane wyniki. Wynika to z faktu, że klasyfikacja wymaga oddzielnej zmiennej odpowiedzi, która zezwala tylko na wartości, które przenoszą zakres na skończoną i niewielki zestaw klas.
+2. Podobnie jeśli model klasyfikacji zostały przeszkolone na zestaw danych o liczb zmiennoprzecinkowych w kolumnie Etykieta, może powodować niepożądane wyniki. Wynika to z faktu, że klasyfikacja wymaga oddzielnej zmiennej odpowiedzi, która zezwala tylko na wartości, które przenoszą zakres na skończoną i niewielki zestaw klas.
 
 3. Jeśli zestaw danych oceniania nie zawiera wszystkich funkcji używanych do uczenia modelu, [model wyniku][score-model] generuje błąd.
 
 4. Jeśli wiersz w zestawie danych oceniania zawiera brakującą wartość lub nieskończoną wartość dla którejkolwiek z jej funkcji, [model wyniku][score-model] nie tworzy żadnych danych wyjściowych odpowiadających temu wierszowi.
 
-5. [Model wynikowy][score-model] może generować identyczne dane wyjściowe dla wszystkich wierszy w zestawie danych oceniania. Może się to zdarzyć na przykład podczas próby klasyfikacji przy użyciu lasów decyzyjnych, jeśli minimalna liczba próbek na węzeł liścia została wybrana jako większa niż liczba dostępnych przykładów szkoleniowych.
+5. [Model wynikowy][score-model] może generować identyczne dane wyjściowe dla wszystkich wierszy w zestawie danych oceniania. To może być fakt, na przykład podczas próby klasyfikacji przy użyciu decyzji lasów, jeśli minimalna liczba próbek na węzeł liścia jest wybierany być większa niż liczba dostępnych przykładów szkoleniowych.
 
 <!-- Module References -->
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/

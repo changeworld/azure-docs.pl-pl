@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778026"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148336"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Omówienie konfiguracji urządzeń partnerskiej sieci VPN
 Ten artykuł zawiera omówienie konfigurowania lokalnych urządzeń sieci VPN w celu nawiązania połączenia z bramami sieci VPN platformy Azure. Przykładowa konfiguracja sieci wirtualnej platformy Azure i bramy sieci VPN służy do pokazywania sposobu nawiązywania połączenia z różnymi konfiguracjami lokalnych urządzeń sieci VPN przy użyciu tych samych parametrów.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="device-requirements"></a>Wymagania dotyczące urządzeń
 Bramy sieci VPN platformy Azure używają standardowych pakietów protokołu IPsec/IKE dla tuneli VPN typu lokacja-lokacja (S2S). Aby uzyskać listę parametrów protokołu IPsec/IKE i algorytmów kryptograficznych dla bram sieci VPN platformy Azure, zobacz [Informacje o urządzeniach sieci VPN](vpn-gateway-about-vpn-devices.md). Można również określić dokładne algorytmy i siły klucza dla określonego połączenia, zgodnie z opisem w [temacie Informacje o wymaganiach kryptograficznych](vpn-gateway-about-compliance-crypto.md).
@@ -32,7 +32,7 @@ Aby uzyskać instrukcje krok po kroku dotyczące konfigurowania pojedynczego tun
 ### <a name="connection-parameters"></a>Parametry połączenia
 Ta sekcja zawiera listę parametrów, które zostały opisane w poprzednich sekcjach.
 
-| **Parametr**                | **Wartość**                    |
+| **Konstruktora**                | **Wartość**                    |
 | ---                          | ---                          |
 | Prefiksy adresów sieci wirtualnej        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Adres IP bramy sieci VPN platformy Azure         | Adres IP VPN Gateway platformy Azure         |

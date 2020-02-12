@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 823ce8d523a231875705d7c4d3f46cfd8fd24994
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270582"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152605"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Uwierzytelnianie i autoryzacja w kotwicach przestrzennych platformy Azure
 
@@ -96,6 +96,13 @@ W przypadku aplikacji przeznaczonych dla użytkowników Azure Active Directory Z
 
 1. Konfiguracja w Azure Portal
     1.  Zarejestruj swoją aplikację w usłudze Azure AD jako **aplikację natywną**. W ramach rejestracji należy określić, czy aplikacja powinna mieć dostęp do wielu dzierżawców, a także podać adresy URL przekierowania dozwolone dla aplikacji.
+        1.  Przejdź do karty **uprawnienia interfejsu API**
+        2.  Wybierz pozycję **Dodaj uprawnienie**
+            1.  Wybieranie **dostawcy zasobów rzeczywistości mieszanej** w obszarze **interfejsy API Moja organizacja używa** karty
+            2.  Wybierz **uprawnienia delegowane**
+            3.  Zaznacz pole wyboru dla **mixedreality. Zaloguj się** w obszarze **mixedreality**
+            4.  Wybierz pozycję **Dodaj uprawnienia**
+        3.  Wybierz pozycję **Udziel zgody administratora**
     2.  Udziel aplikacji lub użytkownikom dostępu do zasobu:
         1.  Przejdź do zasobu zakotwiczenia przestrzennego w Azure Portal
         2.  Przełącz na kartę **Kontrola dostępu (IAM)**

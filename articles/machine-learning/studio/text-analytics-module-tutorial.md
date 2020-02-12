@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 313b9c92b10d3170eb71bb8290a9388bb8dcc67c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1041954f5cd3456fe24e17c8ffc0a586bca2d954
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427521"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152826"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Tworzenie modelu analizy tonacji w Azure Machine Learning Studio (klasyczny)
 
@@ -33,16 +33,16 @@ W ramach tego samouczka nauczysz się, jak przeprowadzimy przez model analizy to
 
 Można znaleźć eksperymenty omówione w tym samouczku w galerii sztucznej Inteligencji platformy Azure:
 
-[Przewidywanie przeglądy książki](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
+[Prognozowanie przeglądów książek](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
 
-[Przewidywanie przeglądy książki — eksperyment predykcyjny](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
+[Prognozowanie przeglądów książek — eksperyment predykcyjny](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
 ## <a name="step-1-clean-and-preprocess-text-dataset"></a>Krok 1: Czyszczenie i wstępne przetwarzanie tekstu zestawu danych
-Zaczniemy eksperymentu, dzieląc wyniki przeglądu na kategorii niski i wysoki zasobników, aby sformułować problem dwuklasowych klasyfikacji. Używamy [edytować metadane](https://msdn.microsoft.com/library/azure/dn905986.aspx) i [wartości podzielonych na kategorie grupy](https://msdn.microsoft.com/library/azure/dn906014.aspx) modułów.
+Zaczniemy eksperymentu, dzieląc wyniki przeglądu na kategorii niski i wysoki zasobników, aby sformułować problem dwuklasowych klasyfikacji. Korzystamy z modułów [Edytuj metadane](https://msdn.microsoft.com/library/azure/dn905986.aspx) i [Grupuj kategorii wartości](https://msdn.microsoft.com/library/azure/dn906014.aspx) .
 
 ![Utwórz etykietę](./media/text-analytics-module-tutorial/create-label.png)
 
-Następnie możemy wyczyścić tekstu przy użyciu języka [wstępne przetwarzanie tekstu](https://msdn.microsoft.com/library/azure/mt762915.aspx) modułu. Czyszczenie zmniejsza szumu w zestawie danych, odnaleźć najważniejsze funkcje i zwiększyć dokładność końcowego modelu. Usuwamy Stop-słowa - popularne wyrazy, takie jak "" lub "-" i cyfry, znaki specjalne, zduplikowane znaki, adresy e-mail i adresów URL. Możemy również Konwertuj tekst na małe litery, lemmatize wyrazy i wykrywa granic zdanie, które następnie są wskazywane przez "|||" symboli w tekście wstępnie przetworzone.
+Następnie wyczyśćmy tekst przy użyciu [wstępnie przetworzonego modułu tekstu](https://msdn.microsoft.com/library/azure/mt762915.aspx) . Czyszczenie zmniejsza szumu w zestawie danych, odnaleźć najważniejsze funkcje i zwiększyć dokładność końcowego modelu. Usuwamy Stop-słowa - popularne wyrazy, takie jak "" lub "-" i cyfry, znaki specjalne, zduplikowane znaki, adresy e-mail i adresów URL. Możemy również Konwertuj tekst na małe litery, lemmatize wyrazy i wykrywa granic zdanie, które następnie są wskazywane przez "|||" symboli w tekście wstępnie przetworzone.
 
 ![Wstępne przetwarzanie tekstu](./media/text-analytics-module-tutorial/preprocess-text.png)
 
@@ -51,7 +51,7 @@ Co zrobić, jeśli chcesz użyć niestandardowej listy Stop-słowa? Możesz prze
 Po zakończeniu przetwarzania wstępnego, możemy podzielić dane na szkolenie i zestawów testów.
 
 ## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Krok 2: Wyodrębniania tekstu wstępnie przetworzonego wektorów funkcji numerycznych
-Aby utworzyć model danych tekstowych, zwykle trzeba przekonwertować tekst w dowolnej postaci wektorów funkcji liczbowych. W tym przykładzie używamy [wyodrębnić N-Gram funkcji z pliku tekstowego](https://msdn.microsoft.com/library/azure/mt762916.aspx) modułu do przekształcania danych tekstowych na taki format. Ten moduł przyjmuje kolumny rozdzielonych odstępu słów i oblicza słownika wyrazy lub N-gramy, słów, które pojawiają się w zestawie danych. Następnie zlicza zlicza liczbę razy każdy wyraz lub N-gram, pojawia się w każdym rekordzie, a następnie tworzy funkcję wektorów od tych. W tym samouczku ustawimy N-gram rozmiar 2, dzięki naszym wektorów funkcji obejmują pojedynczego słowa i kombinacji dwa kolejne wyrazy.
+Aby utworzyć model danych tekstowych, zwykle trzeba przekonwertować tekst w dowolnej postaci wektorów funkcji liczbowych. W tym przykładzie używamy [funkcji Wyodrębnij funkcje N-gramów z modułu tekstowego](https://msdn.microsoft.com/library/azure/mt762916.aspx) do przekształcania danych tekstowych w taki format. Ten moduł przyjmuje kolumny rozdzielonych odstępu słów i oblicza słownika wyrazy lub N-gramy, słów, które pojawiają się w zestawie danych. Następnie zlicza zlicza liczbę razy każdy wyraz lub N-gram, pojawia się w każdym rekordzie, a następnie tworzy funkcję wektorów od tych. W tym samouczku ustawimy N-gram rozmiar 2, dzięki naszym wektorów funkcji obejmują pojedynczego słowa i kombinacji dwa kolejne wyrazy.
 
 ![Wyodrębnij N-gramy](./media/text-analytics-module-tutorial/extract-ngrams.png)
 
@@ -61,12 +61,12 @@ Takie funkcje tekstowe często mają wysokie wymiarach. Na przykład jeśli Twoj
 
 Ponadto możesz użyć funkcji wyboru można wybrać tylko te funkcje, które są najbardziej skorelowane z docelowych prognozowania. Używamy chi funkcji wyboru cech, aby wybrać funkcje 1000. Słownictwa wybrane wyrazy lub N-gramy można wyświetlić, klikając odpowiednie dane wyjściowe wyodrębniania N-gramy modułu.
 
-Jako alternatywne podejście do korzystania z funkcji wyodrębnić N-Gram umożliwia tworzenie skrótu funkcji modułu. Pamiętaj jednak, że [Tworzenie skrótu funkcji](https://msdn.microsoft.com/library/azure/dn906018.aspx) nie ma możliwości wyboru funkcji kompilacji lub TF * IDF o wadze.
+Jako alternatywne podejście do korzystania z funkcji wyodrębnić N-Gram umożliwia tworzenie skrótu funkcji modułu. Należy pamiętać, że [Funkcja tworzenia skrótów](https://msdn.microsoft.com/library/azure/dn906018.aspx) nie ma możliwości wyboru funkcji kompilacji ani TF * IDF.
 
 ## <a name="step-3-train-classification-or-regression-model"></a>Krok 3: Train model klasyfikacji lub regresji
 Teraz tekst została przekształcona z kolumnami funkcji liczbowych. Zestaw danych nadal zawiera kolumny parametry z poprzednich etapów, dlatego używamy Wybieranie kolumn w zestawie danych, aby je wykluczyć.
 
-Następnie używamy [regresji logistycznej Two-Class](https://msdn.microsoft.com/library/azure/dn905994.aspx) do prognozowania naszym celem: wysokiej lub niskiej przeglądu oceny. W tym momencie problem regularne klasyfikacji została przekształcona problem analizy tekstu. Aby ulepszyć model, można użyć narzędzi dostępnych w Azure Machine Learning Studio (klasyczne). Na przykład możesz eksperymentować z różnych klasyfikatorów, aby dowiedzieć się, jak dokładne wyniki, które zapewniają lub użyć hiperparametrycznego strojenia w celu zwiększenia dokładności.
+Następnie korzystamy z [dwuklasowej regresji logistycznej](https://msdn.microsoft.com/library/azure/dn905994.aspx) , aby przewidzieć nasz cel: wysoki lub niski wynik przeglądu. W tym momencie problem regularne klasyfikacji została przekształcona problem analizy tekstu. Aby ulepszyć model, można użyć narzędzi dostępnych w Azure Machine Learning Studio (klasyczne). Na przykład możesz eksperymentować z różnych klasyfikatorów, aby dowiedzieć się, jak dokładne wyniki, które zapewniają lub użyć hiperparametrycznego strojenia w celu zwiększenia dokładności.
 
 ![Szkolenie i ocenianie](./media/text-analytics-module-tutorial/scoring-text.png)
 
@@ -87,5 +87,5 @@ Firma Microsoft Wybieranie kolumn do wstawienia w module zestawu danych przed mo
 Teraz mamy eksperymentu, które mogą być publikowane jako usługi sieci web i wywoływany przy użyciu odpowiedzi na żądanie lub partii wykonywania interfejsów API.
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o moduły analizy tekstu z [dokumentacji MSDN](https://msdn.microsoft.com/library/azure/dn905886.aspx).
+Informacje o modułach analizy tekstu z [dokumentacji MSDN](https://msdn.microsoft.com/library/azure/dn905886.aspx).
 

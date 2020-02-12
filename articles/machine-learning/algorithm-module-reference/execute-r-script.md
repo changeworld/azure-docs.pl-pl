@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: peterlu
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 0be7e1ac0f505f227c46e63a80a954a5dd176d66
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312281"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152299"
 ---
 # <a name="execute-r-script"></a>Wykonywanie skryptu języka R
 
-W tym artykule opisano, jak używać modułu **skryptu języka r** do uruchamiania kodu języka r w potoku programu Azure Machine Learning Designer.
+W tym artykule opisano, jak używać modułu **skryptu języka r** do uruchamiania kodu języka r w potoku programu Azure Machine Learning Designer (wersja zapoznawcza).
 
 Za pomocą języka R można wykonywać zadania, które nie są obecnie obsługiwane przez istniejące moduły, takie jak: 
 - Tworzenie niestandardowych transformacji danych
@@ -260,29 +260,29 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 
-| {1&gt;base&lt;1}         | 3.5.1      | 
-| base64enc    | 0.1-3      | 
+| opiera         | 3.5.1      | 
+| base64enc    | 0,1 – 3      | 
 | BH           | 1.69.0-1   | 
-| bindr        | 0.1.1      | 
+| powiązanie        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
-| bitops       | 1.0-6      | 
+| co górne       | 1.0-6      | 
 | rozruch         | 1.3 — 22     | 
 | broom        | 0.5.2      | 
-| callr        | 3.2.0      | 
-| caret        | 6.0 — 84     | 
+| wywołujący        | 3.2.0      | 
+| użyciu        | 6.0 — 84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
-| class        | 7.3-15     | 
-| cli          | 1.1.0      | 
+| Klasa        | 7.3-15     | 
+| Interfejs          | 1.1.0      | 
 | Program Cliper        | 0.6.0      | 
-| cluster      | 2.0.7-1    | 
+| hosta      | 2.0.7-1    | 
 | codetools    | 0,2 – 16     | 
 | colorspace   | 1.4-1      | 
-| compiler     | 3.5.1      | 
+| Compiler     | 3.5.1      | 
 | crayon       | 1.3.4      | 
-| curl         | 3.3        | 
-| data.table   | 1.12.2     | 
-| datasets     | 3.5.1      | 
+| Odsłon         | 3.3        | 
+| Data. Table   | 1.12.2     | 
+| zbiory danych     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
 | digest       | 0.6.19     | 
@@ -298,7 +298,7 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | typy ogólne     | 0.0.2      | 
 | ggplot2      | 3.2.0      | 
 | glmnet       | 2.0 – 18     | 
-| glue         | 1.3.1      | 
+| Glue         | 1.3.1      | 
 | gower        | 0.2.1      | 
 | gplots       | 3.0.1.1    | 
 | grafika     | 3.5.1      | 
@@ -307,36 +307,36 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | haven        | 2.1.0      | 
-| highr        | 0,8        | 
+| duża        | 0,8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
 | ipred        | 0.9-9      | 
 | iteratory    | 1.0.10     | 
 | jsonlite     | 1.6        | 
-| KernSmooth   | 2.23-15    | 
+| KernSmooth   | 2.23 — 15    | 
 | knitr        | 1,23       | 
-| labeling     | 0,3        | 
-| lattice      | 0,20-38    | 
+| etykietowania     | 0,3        | 
+| kratowych      | 0,20-38    | 
 | lava         | 1.6.5      | 
 | lazyeval     | 0.2.2      | 
 | lubridate    | 1.7.4      | 
 | magrittr     | 1.5        | 
-| markdown     | 1          | 
-| MASS         | 7.3 — 51.4   | 
+| promocji     | 1          | 
+| MASOWA         | 7.3 — 51.4   | 
 | Matrix       | 1.2 – 17     | 
 | metody      | 3.5.1      | 
 | mgcv         | 1.8 — 28     | 
-| mime         | 0,7        | 
+| MIME         | 0,7        | 
 | ModelMetrics | 1.2.2      | 
-| modelr       | 0.1.4      | 
+| Modeler       | 0.1.4      | 
 | munsell      | 0.5.0      | 
 | nlme         | 3.1 – 140    | 
-| nnet         | 7.3-12     | 
+| nnet         | 7.3 — 12     | 
 | numDeriv     | 2016.8 — 1.1 | 
-| openssl      | 1.4        | 
+| OpenSSL      | 1.4        | 
 | parallel     | 3.5.1      | 
-| pillar       | 1.4.1      | 
+| słup       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
 | plyr         | 1.8.4      | 
@@ -346,59 +346,59 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | postęp     | 1.2.2      | 
 | iloczyn           | 1.3.0      | 
 | purrr        | 0.3.2      | 
-| quadprog     | 1.5-7      | 
-| quantmod     | 0.4-15     | 
+| quadprog     | 1,5 – 7      | 
+| quantmod     | 0.4 — 15     | 
 | R6           | 2.4.0      | 
-| randomForest | 4.6-14     | 
-| RColorBrewer | 1.1-2      | 
+| randomForest | 4.6 — 14     | 
+| RColorBrewer | 1.1 — 2      | 
 | Rcpp         | 1.0.1      | 
 | RcppRoll     | 0.3.0      | 
-| readr        | 1.3.1      | 
+| element odczytujący        | 1.3.1      | 
 | readxl       | 1.3.1      | 
-| przepisy      | 0.1.5      | 
-| rematch      | 1.0.1      | 
+| przepisami      | 0.1.5      | 
+| dopasowanie      | 1.0.1      | 
 | reprex       | 0.3.0      | 
 | reshape2     | 1.4.3      | 
-| reticulate   | 1.12       | 
+| reticulate   | 1,12       | 
 | rlang        | 0.4.0      | 
-| rmarkdown    | 1.13       | 
-| ROCR         | 1.0-7      | 
+| rmarkdown    | 1,13       | 
+| ROCR         | 1.0 — 7      | 
 | rpart        | 4.1-15     | 
 | rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
-| scales       | 1.0.0      | 
-| selectr      | 0.4-1      | 
-| spatial      | 7.3-11     | 
+| skalowany       | 1.0.0      | 
+| Selektor      | 0.4-1      | 
+| przestrzennych      | 7.3 — 11     | 
 | krzywe      | 3.5.1      | 
 | SQUAREM      | 2017.10-1  | 
-| stats        | 3.5.1      | 
+| Statystyki        | 3.5.1      | 
 | stats4       | 3.5.1      | 
 | stringi      | 1.4.3      | 
-| stringr      | 1.3.1      | 
-| survival     | 2.44 — 1.1   | 
-| sys          | 3,2        | 
+| ciąg tekstowy      | 1.3.1      | 
+| ratownicz     | 2.44 — 1.1   | 
+| widoku          | 3,2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
 | tidyr        | 0.8.3      | 
 | tidyselect   | 0.2.5      | 
 | tidyverse    | 1.2.1      | 
-| timeDate     | 3043.102   | 
-| tinytex      | 0.13       | 
+| timeDate     | 3043,102   | 
+| tinytex      | 0,13       | 
 | narzędzia        | 3.5.1      | 
 | tseries      | 0.10-47    | 
-| TTR          | 0.23-4     | 
-| utf8         | 1.1.4      | 
-| narzędzia        | 3.5.1      | 
+| REMEDIATE          | 0.23-4     | 
+| kodowania         | 1.1.4      | 
+| uaktualniania        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 
-| whisker      | 0.3-2      | 
-| withr        | 2.1.2      | 
+| whisker      | 0,3-2      | 
+| z usługą        | 2.1.2      | 
 | xfun         | 0,8        | 
 | xml2         | 1.2.0      | 
-| xts          | 0,11-2     | 
-| yaml         | 2.2.0      | 
+| XTS          | 0,11-2     | 
+| YAML         | 2.2.0      | 
 | zeallot      | 0.1.0      | 
-| zoo          | 1.8-6      | 
+| Zoo          | 1.8 – 6      | 
 
 ## <a name="next-steps"></a>Następne kroki
 

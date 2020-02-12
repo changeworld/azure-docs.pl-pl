@@ -4,12 +4,12 @@ description: Dowiedz się więcej na temat grup zarządzania, sposobu działania
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 507f4575e6d8daa16a1ed7db3d429d2810a63a7c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a8b087eeaa2f087e79a4d05764199e3b72b6ec66
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750251"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151976"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -87,7 +87,7 @@ Na przykład można przypisać do grupy zarządzania rolę RBAC Współautor mas
 
 Na poniższym wykresie przedstawiono listę ról i obsługiwane akcje na grupach zarządzania.
 
-| Nazwa roli RBAC             | Create | Zmiana nazwy | Przenoszenie** | Usuń | Przypisywanie dostępu | Przypisywanie zasad | Odczyt  |
+| Nazwa roli RBAC             | Tworzenie | Zmiana nazwy | Przenoszenie** | Usuwanie | Przypisywanie dostępu | Przypisywanie zasad | Odczytywanie  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Właściciel                       | X      | X      | X      | X      | X             | X             | X     |
 |Współautor                 | X      | X      | X      | X      |               |               | X     |
@@ -102,7 +102,7 @@ Na poniższym wykresie przedstawiono listę ról i obsługiwane akcje na grupach
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>Niestandardowa definicja roli RBAC i przypisanie
 
-Obsługa niestandardowych ról RBAC dla grup zarządzania jest obecnie obsługiwana z pewnymi [ograniczeniami](#limitations).  Zakres grupy zarządzania można zdefiniować w zakresie możliwym do przypisania definicji roli.  Ta niestandardowa rola RBAC będzie następnie dostępna do przypisywania do tej grupy zarządzania oraz dla każdej grupy zarządzania, subskrypcji, grupy zasobów lub zasobu. Ta rola niestandardowa odziedziczy hierarchię, jak każda wbudowana rola.    
+Obsługa niestandardowych ról RBAC dla grup zarządzania jest obecnie w wersji zapoznawczej z pewnymi [ograniczeniami](#limitations).  Zakres grupy zarządzania można zdefiniować w możliwym do przypisania zakresie definicji roli.  Ta niestandardowa rola RBAC będzie wówczas dostępna do przypisania w tej grupie zarządzania oraz we wszystkich zawartych w niej grupach zarządzania, subskrypcjach, grupach zasobów lub zasobach. Ta rola niestandardowa będzie dziedziczyć hierarchię tak jak każda wbudowana rola.    
 
 ### <a name="example-definition"></a>Przykładowa definicja
 [Definiowanie i tworzenie roli niestandardowej](../../role-based-access-control/custom-roles.md) nie zmienia się wraz z uwzględnieniem grup zarządzania. Użyj pełnej ścieżki, aby zdefiniować grupę zarządzania **/providers/Microsoft.Management/managementgroups/{GroupID}** . 

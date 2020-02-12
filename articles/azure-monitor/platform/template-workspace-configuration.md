@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 9ba4fe318db86760e0dbc326730d03ad09203a88
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 936008a074944c79b8b0bab3beaf3a5aaa5ecc12
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834222"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151823"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Zarządzanie obszarem roboczym Log Analytics przy użyciu szablonów Azure Resource Manager
 
@@ -41,11 +41,11 @@ W poniższej tabeli wymieniono wersje interfejsu API dla zasobów używanych w t
 | Zasób | Typ zasobu | Wersja interfejsu API |
 |:---|:---|:---|
 | Obszar roboczy   | obszary robocze    | 2017-03-15 — wersja zapoznawcza |
-| Search      | savedSearches | 2015-03-20 |
+| Wyszukiwanie      | savedSearches | 2015-03-20 |
 | Źródło danych | źródła danych   | 2015-11-01 — wersja zapoznawcza |
 | Rozwiązanie    | rozwiązania     | 2015-11-01 — wersja zapoznawcza |
 
-## <a name="create-a-log-analytics-workspace"></a>Tworzenie obszaru roboczego usługi Log Analytics
+## <a name="create-a-log-analytics-workspace"></a>Tworzenie obszaru roboczego Log Analytics
 
 Poniższy przykład tworzy obszar roboczy przy użyciu szablonu z komputera lokalnego. Szablon JSON jest skonfigurowany tak, aby wymagał tylko nazwy i lokalizacji nowego obszaru roboczego. Używa wartości określonych dla innych parametrów obszaru roboczego, takich jak [Tryb kontroli dostępu](design-logs-deployment.md#access-control-mode), warstwa cenowa, przechowywanie i poziom rezerwacji pojemności.
 
@@ -147,8 +147,8 @@ W przypadku rezerwacji pojemności należy określić wybraną rezerwację pojem
     }
     ```
 
-2. Edytuj szablon do własnych wymagań. Przegląd [szablonu Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) odwołania, aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
-3. Zapisz ten plik jako **deploylaworkspacetemplate.json** do folderu lokalnego.
+2. Edytuj szablon do własnych wymagań. Zapoznaj się z tematem dokumentacja [szablonu Microsoft. OperationalInsights/Workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) , aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
+3. Zapisz ten plik jako **deploylaworkspacetemplate. JSON** w folderze lokalnym.
 4. Wszystko jest teraz gotowe do wdrożenia tego szablonu. Za pomocą programu PowerShell lub wiersza polecenia można utworzyć obszar roboczy, określając nazwę i lokalizację obszaru roboczego w ramach polecenia. Nazwa obszaru roboczego musi być globalnie unikatowa w ramach wszystkich subskrypcji platformy Azure.
 
    * W przypadku programu PowerShell Użyj następujących poleceń z folderu zawierającego szablon:
@@ -301,9 +301,7 @@ Poniższy przykładowy szablon ilustruje sposób wykonywania następujących czy
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]",
-          "name": "CapacityReservation",
-          "capacityReservationLevel": 100
+          "name": "[parameters('pricingTier')]"
         }
       },
       "resources": [
@@ -630,7 +628,7 @@ Aby wdrożyć przykładowy szablon:
 2. Edytuj szablon, aby skonfigurować żądaną konfigurację
 3. Wdrażanie szablonu przy użyciu programu PowerShell lub wiersza polecenia
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Program PowerShell
 
 ```powershell
 New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
