@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 58e9b4204e2d563d8e4e1af8353870880f98b065
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133588"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150190"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Tworzenie strefowo nadmiarowej bramy sieci wirtualnej w Strefy dostępności platformy Azure
 
@@ -21,27 +21,11 @@ Bramy sieci VPN i ExpressRoute można wdrożyć w Strefy dostępności platformy
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Można użyć programu PowerShell zainstalowane lokalnie na komputerze lub Azure Cloud Shell. Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie, ta funkcja wymaga najnowszej wersji modułu programu PowerShell.
-
-[!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
-
-### <a name="to-use-powershell-locally"></a>Aby używać programu PowerShell lokalnie
-
-Jeśli używasz programu PowerShell lokalnie na komputerze, zamiast używać Cloud Shell, musisz zainstalować moduł PowerShell 1.0.0 lub nowszy. Aby sprawdzić zainstalowaną wersję programu PowerShell, użyj następującego polecenia:
-
-```azurepowershell
-Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
-```
-
-Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
-
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="variables"></a>1. Zadeklaruj zmienne
 
-Poniżej przedstawiono wartości, które są używane dla przykładowych kroków. Ponadto niektóre przykłady używają zadeklarowanych zmiennych w ramach kroków. Jeśli używasz tych kroków w środowisku własnym, pamiętaj, aby zastąpić te wartości własnymi. Podczas określania lokalizacji Sprawdź, czy określony region jest obsługiwany. Aby uzyskać więcej informacji, zobacz [często zadawane pytania](#faq).
+Zadeklaruj zmienne, których chcesz użyć. Użyj poniższego przykładu, podstawiając własne wartości tam, gdzie to konieczne. Jeśli zamkniesz sesję programu PowerShell/Cloud Shell w dowolnym momencie podczas wykonywania, po prostu skopiuj i wklej ponownie wartości, aby ponownie zadeklarować zmienne. Podczas określania lokalizacji Sprawdź, czy określony region jest obsługiwany. Aby uzyskać więcej informacji, zobacz [często zadawane pytania](#faq).
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"

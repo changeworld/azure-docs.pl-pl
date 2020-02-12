@@ -1,5 +1,6 @@
 ---
-title: ContentDefinitions — Azure Active Directory B2C | Microsoft Docs
+title: ContentDefinitions
+titleSuffix: Azure AD B2C
 description: Określ element ContentDefinitions zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3a940c7676a59ed85d5cf16c76f72a12ce0026d5
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 724736bedd81ea45d7472a615fa22cde6916f21c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136268"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148865"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -56,7 +57,6 @@ Metadane **LocalAccountSignUpWithLogonEmail** z własnym profilem technicznym za
   ...
 ```
 
-
 ## <a name="contentdefinition"></a>ContentDefinition
 
 Element **ContentDefinition** zawiera następujący atrybut:
@@ -72,22 +72,59 @@ Element **ContentDefinition** zawiera następujące elementy:
 | LoadUri | 1:1 | Ciąg, który zawiera adres URL strony HTML5 dla definicji zawartości. |
 | RecoveryUri | 0:1 | Ciąg, który zawiera adres URL strony HTML służącej do wyświetlania błędu związanego z definicją zawartości. |
 | DataUri | 1:1 | Ciąg zawierający względny adres URL pliku HTML, który udostępnia środowisko użytkownika do wywołania dla kroku. |
-| Metadane | 1:1 | Kolekcja par klucz/wartość, które zawierają metadane wykorzystane w definicji zawartości. |
+| Metadane | 0:1 | Kolekcja par klucz/wartość, które zawierają metadane wykorzystane w definicji zawartości. |
 | LocalizedResourcesReferences | 0:1 | Kolekcja zlokalizowanych zasobów. Użyj tego elementu, aby dostosować lokalizację interfejsu użytkownika i atrybutu oświadczeń. |
 
 ### <a name="datauri"></a>DataUri
 
-Element **DataUri** jest używany do określania identyfikatora strony. Azure AD B2C używa identyfikatora strony do ładowania i inicjowania elementów interfejsu użytkownika oraz języka JavaScript po stronie klienta. Format wartości jest `urn:com:microsoft:aad:b2c:elements:page-name:version`.  W poniższej tabeli wymieniono wartości i opisy identyfikatorów stron, których można użyć.
+Element **DataUri** jest używany do określania identyfikatora strony. Azure AD B2C używa identyfikatora strony do ładowania i inicjowania elementów interfejsu użytkownika oraz języka JavaScript po stronie klienta. Format wartości jest `urn:com:microsoft:aad:b2c:elements:page-name:version`. Poniższa tabela zawiera listę identyfikatorów stron, których można użyć.
 
-| Wartość |   Opis |
+| Identyfikator strony | Opis |
 | ----- | ----------- |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Wyświetla stronę błędu w przypadku napotkania wyjątku lub błędu. |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Wyświetla listę dostawców tożsamości, spośród których użytkownicy mogą wybierać podczas logowania. |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | Wyświetla formularz służący do logowania się przy użyciu konta lokalnego, które jest oparte na adresie e-mail lub nazwie użytkownika. Ta wartość udostępnia również funkcję "Przechowuj mnie" i "nie pamiętasz hasła?". link. |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | Wyświetla formularz służący do logowania się przy użyciu konta lokalnego, które jest oparte na adresie e-mail lub nazwie użytkownika. |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | Weryfikuje numery telefonów przy użyciu tekstu lub głosu podczas rejestracji lub logowania. |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | Wyświetla formularz, który umożliwia użytkownikom tworzenie lub aktualizowanie profilu. |
+| `globalexception` | Wyświetla stronę błędu w przypadku napotkania wyjątku lub błędu. |
+| `providerselection` | Wyświetla listę dostawców tożsamości, spośród których użytkownicy mogą wybierać podczas logowania. |
+| `unifiedssp` | Wyświetla formularz służący do logowania się przy użyciu konta lokalnego, które jest oparte na adresie e-mail lub nazwie użytkownika. Ta wartość udostępnia również funkcję "Przechowuj mnie" i "nie pamiętasz hasła?". link. |
+| `unifiedssp` | Wyświetla formularz służący do logowania się przy użyciu konta lokalnego, które jest oparte na adresie e-mail lub nazwie użytkownika. |
+| `multifactor` | Weryfikuje numery telefonów przy użyciu tekstu lub głosu podczas rejestracji lub logowania. |
+| `selfasserted` | Wyświetla formularz, który umożliwia użytkownikom tworzenie lub aktualizowanie profilu. |
 
+## <a name="select-a-page-layout"></a>Wybierz układ strony
+
+[Kod po stronie klienta JavaScript](javascript-samples.md) można włączyć, wstawiając `contract` między `elements` a typem strony. Na przykład `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+Część [wersji](page-layout.md) `DataUri` określa pakiet zawartości zawierający kod HTML, CSS i JavaScript dla elementów interfejsu użytkownika w ramach zasad. Jeśli zamierzasz włączyć kod po stronie klienta JavaScript, elementy, które opierają się na języku JavaScript, muszą być niezmienne. Jeśli nie są one niezmienne, wszelkie zmiany mogą spowodować nieoczekiwane zachowanie na stronach użytkownika. Aby uniknąć tych problemów, Wymuś korzystanie z układu strony i określ wersję układu strony. Dzięki temu wszystkie definicje zawartości oparte na języku JavaScript są niezmienne. Nawet jeśli nie zamierzasz włączać języka JavaScript, nadal musisz określić wersję układu strony dla stron.
+
+W poniższym przykładzie przedstawiono **DataUri** wersji `selfasserted` `1.2.0`:
+
+```xml
+<ContentDefinition Id="api.localaccountpasswordreset">
+<LoadUri>~/tenant/templates/AzureBlue/selfAsserted.cshtml</LoadUri>
+<RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+<DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+<Metadata>
+    <Item Key="DisplayName">Local account change password page</Item>
+</Metadata>
+</ContentDefinition>
+```
+
+#### <a name="migrating-to-page-layout"></a>Migrowanie do układu strony
+
+Format wartości musi zawierać słowo `contract`: _urn: com: Microsoft: AAD: B2C: elementy:**Contract**:p Age-Name: Version_. Aby określić układ strony w niestandardowych zasadach, które używają starej wartości **DataUri** , użyj poniższej tabeli do przeprowadzenia migracji do nowego formatu.
+
+| Stara wartość identyfikator URI | Nowa wartość identyfikator URI |
+| ----------------- | ----------------- |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -103,19 +140,6 @@ Element **LocalizedResourcesReferences** zawiera następujące atrybuty:
 | --------- | -------- | ----------- |
 | Język | Yes | Ciąg, który zawiera obsługiwany język dla zasad zgodnie ze specyfikacją RFC 5646-Tagi dla identyfikacji języków. |
 | LocalizedResourcesReferenceId | Yes | Identyfikator elementu **LocalizedResources** . |
-
-W poniższym przykładzie przedstawiono definicję rejestracji lub zawartości logowania:
-
-```XML
-<ContentDefinition Id="api.signuporsignin">
-  <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
-  <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-  <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
-  <Metadata>
-    <Item Key="DisplayName">Signin and Signup</Item>
-  </Metadata>
-</ContentDefinition>
-```
 
 W poniższym przykładzie przedstawiono definicję rejestracji lub zawartości logowania z odwołaniem do lokalizacji w języku angielskim, francuskim i hiszpańskim:
 
@@ -154,3 +178,8 @@ Atrybut ID elementu **ContentDefinition** określa typ strony, która odnosi si�
 | **API. selfasserted. profileupdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Strona aktualizacji profilu** — wyświetla formularz, do którego użytkownicy mogą uzyskać dostęp w celu zaktualizowania swojego profilu. Ta strona jest podobna do strony rejestracji konta społecznościowego, z wyjątkiem pól wprowadzania hasła. |
 | **API. signuporsignin** | [Unified. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Zunifikowana Rejestracja lub strona logowania** — obsługuje proces tworzenia konta i logowania użytkownika. Użytkownicy mogą korzystać z dostawców tożsamości przedsiębiorstwa, dostawców tożsamości społecznościowych, takich jak Facebook, Google + lub konta lokalnego. |
 
+## <a name="next-steps"></a>Następne kroki
+
+Aby zapoznać się z przykładem dostosowywania interfejsu użytkownika przy użyciu definicji zawartości, zobacz:
+
+[Dostosowywanie interfejsu użytkownika aplikacji przy użyciu zasad niestandardowych](custom-policy-ui-customization.md)

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 7626714812b44119099344b52fe7506989555a57
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c164a487ef94ea1eae4b369105cb785d1e8d0f66
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314304"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150305"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Jak korzystać z usługi sieci Web Azure Machine Learning Studio (klasycznej)
 
@@ -24,12 +24,12 @@ Po wdrożeniu modelu predykcyjnego Azure Machine Learning Studio (klasyczny) jak
 Więcej informacji na temat sposobu tworzenia i wdrażania usługi sieci Web Machine Learning przy użyciu Machine Learning Studio (klasyczny) można znaleźć tutaj:
 
 * Aby zapoznać się z samouczkiem dotyczącym tworzenia eksperymentu w Machine Learning Studio (klasyczny), zobacz [Tworzenie pierwszego eksperymentu](create-experiment.md).
-* Aby uzyskać więcej informacji na temat wdrażania usługi sieci Web, zobacz [wdrażanie usługi Machine Learning w sieci Web](deploy-a-machine-learning-web-service.md).
-* Aby uzyskać więcej informacji na temat usługi Machine Learning ogólnie rzecz biorąc, odwiedź stronę [Centrum dokumentacji usługi Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
+* Aby uzyskać szczegółowe informacje na temat wdrażania usługi sieci Web, zobacz [wdrażanie usługi sieci web Machine Learning](deploy-a-machine-learning-web-service.md).
+* Aby uzyskać więcej informacji na temat ogólnie Machine Learning, odwiedź [centrum dokumentacji Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Za pomocą usługi Azure Machine Learning w sieci Web aplikacji zewnętrznej komunikowanie się z modelem oceniania przepływu pracy usługi Machine Learning w czasie rzeczywistym. Wywołanie usługi Machine Learning w sieci Web zwraca wyniki prognozowania do aplikacji zewnętrznej. Wywołanie usługi Machine Learning w sieci Web polega na przekazaniu klucza interfejsu API, który jest tworzony podczas wdrożenia przewidywanie. Usługa Machine Learning w sieci Web jest oparta na interfejsu REST — popularnej architektury w projektach programistycznych w sieci web.
 
 Azure Machine Learning Studio (klasyczny) ma dwa typy usług:
@@ -37,27 +37,27 @@ Azure Machine Learning Studio (klasyczny) ma dwa typy usług:
 * Usługa Request-Response (RR) — małe opóźnienia i wysoce skalowalna usługa udostępniająca interfejs do modeli bezstanowych utworzonych i wdrożonych z Machine Learning Studio (klasyczny).
 * Usługa wykonywania wsadowego Service (BES) — asynchroniczna Usługa przeznaczona do oceniania partii rekordów danych.
 
-Aby uzyskać więcej informacji na temat usługi Machine Learning w sieci Web, zobacz [wdrażanie usługi Machine Learning w sieci Web](deploy-a-machine-learning-web-service.md).
+Aby uzyskać więcej informacji na temat Machine Learning usług sieci Web, zobacz [wdrażanie usługi sieci web Machine Learning](deploy-a-machine-learning-web-service.md).
 
 ## <a name="get-an-authorization-key"></a>Pobieranie klucza autoryzacji
 Podczas wdrażania eksperymentu klucze interfejsu API są generowane przez usługę sieci Web. Klucze można pobrać z kilku lokalizacjach.
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Z poziomu portalu usług sieci Web Microsoft Azure Machine Learning
-Zaloguj się do [usług sieci Web Microsoft Azure Machine Learning](https://services.azureml.net) portalu.
+Zaloguj się do portalu [usług sieci Web Microsoft Azure Machine Learning](https://services.azureml.net) .
 
 Aby pobrać klucz interfejsu API usługi nowe Machine Learning w sieci Web:
 
-1. W portalu usług sieci Web Azure Machine Learning, kliknij przycisk **usług sieci Web** menu u góry.
+1. W portalu usług sieci Web Azure Machine Learning kliknij pozycję **usługi sieci Web** w górnym menu.
 2. Kliknij usługę sieci Web, dla którego chcesz pobrać klucza.
-3. W górnym menu, kliknij przycisk **zużywania**.
+3. W górnym **menu kliknij pozycję**Użyj.
 4. Skopiuj i Zapisz **klucz podstawowy**.
 
 Aby pobrać klucz interfejsu API usługi sieci Web Machine Learning:
 
-1. W portalu usług sieci Web Azure Machine Learning, kliknij przycisk **klasycznych usług sieci Web** menu u góry.
+1. W portalu usług sieci Web Azure Machine Learning kliknij pozycję **klasyczne usługi sieci Web** w górnym menu.
 2. Kliknij usługę sieci Web, z którym pracujesz.
 3. Kliknij punkt końcowy, dla którego chcesz pobrać klucza.
-4. W górnym menu, kliknij przycisk **zużywania**.
+4. W górnym **menu kliknij pozycję**Użyj.
 5. Skopiuj i Zapisz **klucz podstawowy**.
 
 ### <a name="classic-web-service"></a>Klasyczne usługi sieci Web
@@ -65,40 +65,40 @@ Aby pobrać klucz interfejsu API usługi sieci Web Machine Learning:
 
 #### <a name="machine-learning-studio-classic"></a>Usługa Machine Learning Studio (klasyczna)
 1. W Machine Learning Studio (klasyczny) kliknij pozycję **usługi sieci Web** po lewej stronie.
-2. Kliknij opcję usługi sieci Web. **Klucz interfejsu API** znajduje się na **pulpit NAWIGACYJNY** kartę.
+2. Kliknij opcję usługi sieci Web. **Klucz interfejsu API** znajduje się na karcie **pulpit nawigacyjny** .
 
-## <a id="connect"></a>Łączenie z usługą Machine Learning w sieci Web
+## <a id="connect"></a>Nawiązywanie połączenia z usługą sieci Web Machine Learning
 Możesz połączyć się z usługą Machine Learning w sieci Web, za pomocą dowolnego języka programowania, który obsługuje żądania HTTP i odpowiedzi. Możesz wyświetlić przykłady w C#, Python i R ze strony pomocy usługi Machine Learning w sieci Web.
 
-**Usługi Machine Learning API Pomocy** pomocy interfejsu API usługi Machine Learning jest tworzona, gdy wdrażasz usługę sieci Web. Zobacz [samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md).
+**Pomoc interfejsu API Machine Learning** Pomoc interfejsu API Machine Learning jest tworzona podczas wdrażania usługi sieci Web. Zobacz [samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md).
 Pomoc interfejsu API usługi Machine Learning zawiera szczegóły dotyczące prognoz usługi sieci Web.
 
 1. Kliknij usługę sieci Web, z którym pracujesz.
 2. Kliknij punkt końcowy, dla którego chcesz wyświetlić na stronie pomocy interfejsu API.
-3. W górnym menu, kliknij przycisk **zużywania**.
-4. Kliknij przycisk **strona pomocy interfejsu API** w odpowiedzi na żądanie lub wykonywanie wsadowe punktów końcowych.
+3. W górnym **menu kliknij pozycję**Użyj.
+4. Kliknij pozycję **Pomoc interfejsu API** w obszarze punkty końcowe odpowiedzi na żądanie lub wykonanie wsadowe.
 
-**Widok interfejsu API usługi Machine Learning Pomoc dla usługi sieci Web nowy**
+**Aby wyświetlić Pomoc interfejsu API Machine Learning dla nowej usługi sieci Web**
 
-W [usługi Azure Machine Learning Web Services Portal](https://services.azureml.net/):
+W [portalu Azure Machine Learning Web Services](https://services.azureml.net/):
 
-1. Kliknij przycisk **usług sieci WEB** w górnym menu.
+1. Kliknij pozycję **usługi sieci Web** w górnym menu.
 2. Kliknij usługę sieci Web, dla którego chcesz pobrać klucza.
 
 Kliknij pozycję **Użyj usługi sieci Web** , aby pobrać identyfikatory URI dla usług żądanie-odpowiedź i wykonywanie wsadowe oraz C#przykładowego kodu w, R i Python.
 
-Kliknij przycisk **interfejsu API struktury Swagger** pobrania struktury Swagger dla interfejsów API o nazwie z podane identyfikatory URI na podstawie dokumentacji.
+Kliknij pozycję **interfejs API struktury Swagger** , aby uzyskać dokumentację opartą na strukturze interfejsów API wywoływaną z dostarczonych identyfikatorów URI.
 
 ### <a name="c-sample"></a>Przykładowy języka C#
-Aby połączyć się z usługą Machine Learning w sieci Web, użyj **HttpClient** przekazywanie ScoreData. ScoreData zawiera FeatureVector, n wymiarowy wektor liczbowe funkcje reprezentuje ScoreData. Uwierzytelnianie w usłudze Machine Learning przy użyciu klucza interfejsu API.
+Aby nawiązać połączenie z usługą sieci Web Machine Learning, użyj **HttpClient** Pass ScoreData. ScoreData zawiera FeatureVector, n wymiarowy wektor liczbowe funkcje reprezentuje ScoreData. Uwierzytelnianie w usłudze Machine Learning przy użyciu klucza interfejsu API.
 
-Aby nawiązać połączenie z usługą Machine Learning w sieci Web, **Microsoft.AspNet.WebApi.Client** musi być zainstalowany pakiet NuGet.
+Aby nawiązać połączenie z usługą sieci Web Machine Learning, należy zainstalować pakiet NuGet **Microsoft. ASPNET. WebApi. Client** .
 
-**Instalowania Menedżera Microsoft.AspNet.WebApi.Client NuGet w programie Visual Studio**
+**Zainstaluj pakiet NuGet Microsoft. AspNet. WebApi. Client w programie Visual Studio**
 
 1. Publikowanie zestawu pobierania danych z UCI: 2 treści dla dorosłych klasy dataset usługi sieci Web.
 2. Kliknij pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów**.
-3. Wybierz **Microsoft.AspNet.WebApi.Client Install-Package**.
+3. Wybierz polecenie **install-package Microsoft. ASPNET. WebApi. Client**.
 
 **Aby uruchomić przykładowy kod**
 
@@ -106,7 +106,7 @@ Aby nawiązać połączenie z usługą Machine Learning w sieci Web, **Microsoft
 2. Przypisz apiKey przy użyciu klucza z usługi sieci Web. Zobacz **Pobieranie klucza autoryzacji** powyżej.
 3. Przypisz serviceUri o identyfikatorze URI żądania.
 
-**Oto, jak będzie wyglądać kompletne żądanie.**
+**Oto, jak będzie wyglądać pełne żądanie.**
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -194,7 +194,7 @@ namespace CallRequestResponseService
 ```
 
 ### <a name="python-sample"></a>Przykład środowiska Python
-Aby połączyć się z usługą Machine Learning w sieci Web, użyj **urllib2** biblioteki dla języka Python 2.X i **urllib.request** biblioteki dla języka Python 3.X. Zostaną spełnione ScoreData, zawierającą FeatureVector, n wymiarowy wektor liczbowe funkcje reprezentuje ScoreData. Uwierzytelnianie w usłudze Machine Learning przy użyciu klucza interfejsu API.
+Aby nawiązać połączenie z usługą sieci Web Machine Learning, użyj biblioteki **urllib2** dla języka Python 2. x i **urllib. Request** Library dla języka Python 3. x. Zostaną spełnione ScoreData, zawierającą FeatureVector, n wymiarowy wektor liczbowe funkcje reprezentuje ScoreData. Uwierzytelnianie w usłudze Machine Learning przy użyciu klucza interfejsu API.
 
 **Aby uruchomić przykładowy kod**
 
@@ -202,7 +202,7 @@ Aby połączyć się z usługą Machine Learning w sieci Web, użyj **urllib2** 
 2. Przypisz apiKey przy użyciu klucza z usługi sieci Web. Zobacz sekcję **Pobieranie klucza autoryzacji na** początku tego artykułu.
 3. Przypisz serviceUri o identyfikatorze URI żądania.
 
-**Oto, jak będzie wyglądać kompletne żądanie.**
+**Oto, jak będzie wyglądać pełne żądanie.**
 ```python
 import urllib2 # urllib.request and urllib.error for Python 3.X
 import json
@@ -248,9 +248,9 @@ except urllib2.HTTPError, error:
 
 ### <a name="r-sample"></a>Przykładowy języka R
 
-Aby nawiązać połączenie usługi internetowej Machine Learning, należy użyć **RCurl** i **rjson** biblioteki, aby wysłać żądanie i przetworzyć zwrócona odpowiedź w formacie JSON. Zostaną spełnione ScoreData, zawierającą FeatureVector, n wymiarowy wektor liczbowe funkcje reprezentuje ScoreData. Uwierzytelnianie w usłudze Machine Learning przy użyciu klucza interfejsu API.
+Aby nawiązać połączenie z usługą sieci Web Machine Learning, użyj bibliotek **RCurl** i **rjson** , aby wykonać żądanie i przetworzyć zwróconą odpowiedź JSON. Zostaną spełnione ScoreData, zawierającą FeatureVector, n wymiarowy wektor liczbowe funkcje reprezentuje ScoreData. Uwierzytelnianie w usłudze Machine Learning przy użyciu klucza interfejsu API.
 
-**Oto, jak będzie wyglądać kompletne żądanie.**
+**Oto, jak będzie wyglądać pełne żądanie.**
 ```r
 library("RCurl")
 library("rjson")
@@ -304,9 +304,9 @@ print(fromJSON(result))
 
 ### <a name="javascript-sample"></a>Przykład JavaScript
 
-Aby nawiązać połączenie usługi internetowej Machine Learning, należy użyć **żądania** pakietu npm w projekcie. Ponadto `JSON` obiekt do formatu dane wejściowe i przeanalizować wyniki. Instalowanie przy użyciu `npm install request --save`, lub Dodaj `"request": "*"` do pliku package.json w obszarze `dependencies` i uruchom `npm install`.
+Aby nawiązać połączenie z usługą sieci Web Machine Learning, Użyj pakietu **Request** npm w projekcie. Użyjesz również obiektu `JSON`, aby sformatować dane wejściowe i przeanalizować wynik. Zainstaluj program przy użyciu `npm install request --save`lub Dodaj `"request": "*"` do pliku Package. JSON w obszarze `dependencies` i uruchom `npm install`.
 
-**Oto, jak będzie wyglądać kompletne żądanie.**
+**Oto, jak będzie wyglądać pełne żądanie.**
 ```js
 let req = require("request");
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e32e3ddd99efe1d389b65f7a4134633a40b29a9a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2e95c4bfbe7342e251e6d845fd4acfed6ff6109a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839721"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150106"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Zużywanie Azure Machine Learning Studio (klasycznej) usługi sieci Web z programu Excel
 
@@ -26,7 +26,7 @@ Jeśli używasz programu Excel 2013 (lub nowszego) lub usługi Excel Online, zal
 
 
 ## <a name="steps"></a>Kroki
-Opublikuj usługę sieci Web. [Samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md) wyjaśnia, jak to zrobić. Obecnie funkcja skoroszytu programu Excel jest obsługiwana tylko w przypadku usług żądania/odpowiedzi z pojedynczym wyjściem (czyli pojedynczą etykietą oceny). 
+Publikowanie usługi sieci web. [Samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md) wyjaśnia, jak to zrobić. Obecnie funkcja skoroszytu programu Excel jest obsługiwana tylko dla usług żądań/odpowiedzi, które mają jeden z (czyli pojedynczej oceniania etykiety). 
 
 Gdy masz usługę sieci Web, kliknij sekcję **usługi sieci Web** po lewej stronie programu Studio, a następnie wybierz usługę sieci Web, która ma być wykorzystana z programu Excel.
 
@@ -48,21 +48,21 @@ Gdy masz usługę sieci Web, kliknij sekcję **usługi sieci Web** po lewej stro
 2. Zostanie wyświetlone ostrzeżenie o zabezpieczeniach. Kliknij przycisk **Włącz edycję** .
 
     ![Włącz edytowanie, aby usunąć ostrzeżenie o zabezpieczeniach widoku chronionego](./media/consuming-from-excel/enableeditting.png)
-3. Zostanie wyświetlone ostrzeżenie dotyczące zabezpieczeń. Kliknij przycisk **Włącz zawartość** , aby uruchomić makra w arkuszu kalkulacyjnym.
+3. Zostanie wyświetlone ostrzeżenie o zabezpieczeniach. Kliknij przycisk **Włącz zawartość** , aby uruchomić makra w arkuszu kalkulacyjnym.
 
     ![Włącz zawartość, aby odrzucić makra ostrzeżenia o wyłączaniu zabezpieczeń](./media/consuming-from-excel/enablecontent.png)
-4. Po włączeniu makr jest generowana tabela. Kolumny w kolorze niebieskim są wymagane jako dane wejściowe do usługi sieci Web RR lub **parametrów**. Zwróć uwagę na dane wyjściowe usługi RR, **wartości przewidywane** w kolorze zielonym. Gdy wypełniono wszystkie kolumny dla danego wiersza, skoroszyt automatycznie wywoła interfejs API oceniania i wyświetla wyniki wynikowe.
+4. Po włączeniu makra, generowany jest tabelą. Kolumny w kolorze niebieskim są wymagane jako dane wejściowe do usługi sieci Web RR lub **parametrów**. Zwróć uwagę na dane wyjściowe usługi RR, **wartości przewidywane** w kolorze zielonym. Gdy wszystkie kolumny dla danego wiersza są wypełnione, skoroszyt automatycznie wywołuje interfejs API oceniania i wyświetla wyniki ocenami.
 
     ![Tabela dla danych wejściowych parametrów i wyniki przewidywane](./media/consuming-from-excel/sampletable.png)
-5. Aby wyrównać więcej niż jeden wiersz, Wypełnij drugi wiersz danymi, a przewidywane wartości są generowane. Można nawet wkleić kilka wierszy jednocześnie.
+5. Zdobycie więcej niż jeden wiersz, wypełnienie drugi wiersz z danymi i przewidywane wartości są tworzone. Jednocześnie można wkleić nawet kilka wierszy.
 
-Możesz użyć dowolnej z funkcji programu Excel (wykresy, Mapa napięcia, formatowanie warunkowe itp.) z wartościami przewidywanymi, aby ułatwić wizualizowanie danych.
+Umożliwia dowolnej funkcji programu Excel (wykresy, power map, formatowanie warunkowe itp.) z przewidywane wartości pomagają wizualizować dane.
 
 ## <a name="sharing-your-workbook"></a>Udostępnianie skoroszytu
-Aby makra działały, klucz interfejsu API musi być częścią arkusza kalkulacyjnego. Oznacza to, że należy udostępnić skoroszyt tylko z zaufanymi jednostkami i osobami.
+Makr do pracy klucz interfejsu API musi być częścią arkusza kalkulacyjnego. Oznacza to, że należy udostępnić skoroszyt tylko w przypadku jednostek/osób, którym ufasz.
 
 ## <a name="automatic-updates"></a>Automatyczne aktualizacje
-W następujących dwóch sytuacjach jest wykonywane wywołanie RR:
+Wykonano wywołanie rekordy zasobów w tych dwóch sytuacji:
 
 1. Pierwszy raz wiersz zawiera zawartość we wszystkich jego **parametrach**
 2. Wszystkie parametry każdego z **parametrów** zmieniają się w wierszu, który miał wszystkie wprowadzone **Parametry** .

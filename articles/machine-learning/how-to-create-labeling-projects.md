@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8c6b7b4d64b3a4f504cc9aef275b3d48cd62a3d8
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: e469837c8e374e62824bd8f7a7feb110ed1be9c9
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116851"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153115"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Utwórz projekt etykietowania danych i Eksportuj etykiety 
 
@@ -161,9 +161,9 @@ Wykonaj następujące kroki, aby dodać jedną lub więcej etykiet do projektu:
 1. Na liście po lewej stronie wybierz pozycję **klasy etykiet**.
 1. W górnej części listy wybierz pozycję **+ Dodaj etykiety** ![dodaj etykietę](media/how-to-create-labeling-projects/add-label.png)
 1. W formularzu Dodaj nową etykietę i wybierz sposób wykonywania czynności.  Ze względu na to, że zmieniono etykiety dostępne dla obrazu, wybierz sposób traktowania danych, które zostały oznaczone etykietą:
-    * Zacznij od początku, usuwając wszystkie istniejące etykiety.  Wybierz tę opcję, jeśli chcesz wymazać wszystkie istniejące etykiety, aby można było użyć pełnego zestawu, aby oznaczyć wszystkie obrazy.
-    * Zacznij od początku, zachowując wszystkie istniejące etykiety.  Wybierz tę opcję, aby oznaczyć wszystkie dane jako bez etykiet, ale zachować istniejące etykiety jako tag domyślny dla obrazów, które zostały oznaczone etykietą.
-    * Kontynuuj, zachowując wszystkie istniejące etykiety. Wybierz tę opcję, aby zapewnić, że wszystkie dane mają już etykietę, i zacznij korzystać z nowej etykiety dla danych, które nie zostały jeszcze sklasyfikowane.
+    * Zacznij od początku, usuwając wszystkie istniejące etykiety.  Wybierz tę opcję, jeśli chcesz zacząć od początku do nowego pełnego zestawu etykiet. 
+    * Zacznij od początku, zachowując wszystkie istniejące etykiety.  Wybierz tę opcję, aby oznaczyć wszystkie dane jako bez etykiet, ale zachować istniejące etykiety jako tag domyślny dla obrazów, które zostały wcześniej oznaczone etykietami.
+    * Kontynuuj, zachowując wszystkie istniejące etykiety. Wybierz tę opcję, aby zapewnić, że wszystkie dane mają już etykietę, i Zacznij używać nowej etykiety dla danych, które nie zostały jeszcze oznaczone etykietami.
 1. Zmodyfikuj stronę z instrukcjami w razie potrzeby dla nowych etykiet.
 1. Po dodaniu wszystkich nowych etykiet w górnej części strony wybierz pozycję **Rozpocznij** , aby ponownie uruchomić projekt.  
 

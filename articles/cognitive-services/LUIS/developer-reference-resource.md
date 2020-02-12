@@ -2,17 +2,17 @@
 title: Zasoby dla deweloperów — Language Understanding
 description: Zestawy SDK, interfejsy API REST, interfejs wiersza polecenia ułatwiają tworzenie aplikacji Language Understanding (LUIS) w języku programowania. Zarządzaj zasobami platformy Azure i przewidywaniami LUIS.
 ms.topic: reference
-ms.date: 02/09/2020
-ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/11/2020
+ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119963"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152690"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Zasoby deweloperskie zestawu SDK, REST i interfejsu wiersza polecenia dla Language Understanding (LUIS)
 
-Zestawy SDK, interfejsy API REST, interfejs wiersza polecenia ułatwiają tworzenie aplikacji Language Understanding (LUIS) w języku programowania. Zarządzaj zasobami platformy Azure i przewidywaniami LUIS. 
+Zestawy SDK, interfejsy API REST, interfejs wiersza polecenia ułatwiają tworzenie aplikacji Language Understanding (LUIS) w języku programowania. Zarządzaj zasobami platformy Azure i przewidywaniami LUIS.
 
 ## <a name="azure-resource-management"></a>Zarządzanie zasobami platformy Azure
 
@@ -36,6 +36,10 @@ Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v
 
 Użyj [Cognitive Services przykładowego kodu](https://github.com/Azure-Samples/cognitive-services-quickstart-code) , aby poznać i korzystać z najbardziej typowych zadań.
 
+### <a name="rest-specifications"></a>Specyfikacje REST
+
+[Specyfikacje REST Luis](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/cognitiveservices/data-plane/LUIS)wraz ze wszystkimi [specyfikacjami REST platformy Azure](https://github.com/Azure/azure-rest-api-specs)są dostępne publicznie w witrynie GitHub.
+
 ### <a name="rest-apis"></a>Interfejsy API REST
 
 Interfejsy API tworzenia i przewidywania są dostępne w interfejsach API REST:
@@ -44,6 +48,29 @@ Interfejsy API tworzenia i przewidywania są dostępne w interfejsach API REST:
 |--|--|
 |Tworzenie|[V](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[wersja zapoznawcza v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
 |Prognozy|[V](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[Czytanie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
+
+### <a name="rest-endpoints"></a>Punkty końcowe REST
+
+LUIS ma obecnie 2 typy punktów końcowych:
+
+* Tworzenie w punkcie końcowym szkolenia
+* przewidywanie zapytania w punkcie końcowym środowiska uruchomieniowego.
+
+|Przeznaczenie|Adres URL|
+|--|--|
+|Tworzenie w punkcie końcowym szkolenia|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|Środowisko uruchomieniowe v2 — wszystkie przewidywania w punkcie końcowym środowiska uruchomieniowego|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|V3 Runtime — przewidywanie wersji w punkcie końcowym środowiska uruchomieniowego|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V3 Runtime — przewidywanie gniazda w punkcie końcowym środowiska uruchomieniowego|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+
+W poniższej tabeli objaśniono parametry oznaczone nawiasami klamrowymi `{}`w poprzedniej tabeli.
+
+|Parametr|Przeznaczenie|
+|--|--|
+|`your-resource-name`|Nazwa zasobu platformy Azure|
+|`q` lub `query`|tekstowe wypowiedź wysyłane z aplikacji klienckiej, takich jak czatbot|
+|`version`|10-znakowa Nazwa wersji|
+|`slot`| `production` lub `staging`|
 
 ### <a name="language-based-sdks"></a>Zestawy SDK oparte na języku
 
@@ -77,7 +104,7 @@ Bot Framework udostępnia [kilka narzędzi](https://github.com/microsoft/botbuil
 * [Wysyłanie](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)— Zarządzanie aplikacjami nadrzędnymi i podrzędnymi
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) — automatycznie Generuj zapasowe C#klasy/TypeScript dla Twoich Luis i jednostek.
 * [Emulator bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases) — aplikacja klasyczna, która umożliwia deweloperom bot testowanie i debugowanie botów utworzonych przy użyciu zestawu SDK bot Framework
-
+* [Układacz bot Framework](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) — zintegrowane narzędzie programistyczne dla deweloperów i zespołów wielodyscyplinarnych do kompilowania botów i konwersacji z platformą Microsoft bot Framework
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie i monitorowanie — Omówienie
-description: Przegląd monitorowania i zarządzania w celu wykorzystania zasobów, działania dzienników i zapytań, zalecenia oraz ochrona danych (kopia zapasowa i przywracanie) w Azure SQL Data Warehouse.
+description: Przegląd monitorowania i zarządzania w zakresie wykorzystania zasobów, działania dzienników i zapytań, zalecenia oraz ochrona danych (kopia zapasowa i przywracanie) przy użyciu puli SQL.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 54dbf7bcac92f7536d4e4579045c474914264935
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 31a12a60fc6f02a935ff98278e69d1ed2dd68ce5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760746"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153268"
 ---
-# <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Zarządzanie i monitorowanie za pomocą Azure SQL Data Warehouse
+# <a name="manageability-and-monitoring-with-sql-pool"></a>Zarządzanie i monitorowanie za pomocą puli SQL
 
-Zapoznaj się z możliwościami, które ułatwiają zarządzanie SQL Data Warehouseami i ich monitorowanie. W poniższych artykułach przedstawiono sposoby optymalizowania wydajności i użycia magazynu danych.
+Program SQL Analytics umożliwia obsługę administracyjną magazynu danych za pośrednictwem puli SQL. Poniższe artykuły ułatwią Ci Zarządzanie magazynem danych i monitorowanie go. Dowiesz się również, jak zoptymalizować użycie i wydajność magazynu danych.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 * [Informacje na temat zarządzania i elastyczności obliczeniowej](sql-data-warehouse-manage-compute-overview.md)
 * [Informacje o metrykach i dziennikach dostępnych w Azure Portal](sql-data-warehouse-concept-resource-utilization-query-activity.md)
@@ -33,4 +33,4 @@ Zapoznaj się z możliwościami, które ułatwiają zarządzanie SQL Data Wareho
 
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać instrukcje dotyczące przewodników, zobacz [monitorowanie i dostrajanie magazynu danych](sql-data-warehouse-manage-monitor.md).
+Aby uzyskać instrukcje dotyczące przewodników, zobacz [monitorowanie i dostrajanie puli SQL](sql-data-warehouse-manage-monitor.md).

@@ -1,5 +1,5 @@
 ---
-title: Trenuj ponownie usługę sieci Web
+title: Ponowne uczenie usługi sieci Web
 titleSuffix: ML Studio (classic) - Azure
 description: Dowiedz się, jak zaktualizować usługę sieci Web, aby korzystała z nowo przeszkolonego modelu uczenia maszynowego w Azure Machine Learning Studio (klasyczny).
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: c24eb50688efcf220b26b5a0f352d012876dbab3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 867d104b58980679dc815238fef14050e7d9e8c7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838679"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152860"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Ponowne uczenie i wdrażanie modelu uczenia maszynowego
 
@@ -31,7 +31,7 @@ Wykonaj następujące kroki, aby ponownie przeprowadzić uczenie i wdrożyć now
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="deploy-the-retraining-web-service"></a>Wdrażanie usługi sieci Web reszkoleniowej
+## <a name="deploy-the-retraining-web-service"></a>Wdrażanie ponownego trenowania usługi sieci web
 
 Usługa sieci Web do przeszkolenia umożliwia ponowne uczenie modelu z nowym zestawem parametrów, takimi jak nowe dane, i zapisywanie go w przyszłości. Po podłączeniu **danych wyjściowych usługi sieci Web** do **modelu uczenia**eksperyment szkoleniowy wysyła nowy model do użycia.
 
@@ -72,7 +72,7 @@ Poniższy zrzut ekranu przedstawia stronę **Korzystanie** z portalu usług siec
 
 ![Użyj strony](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
-### <a name="update-the-apikey-declaration"></a>Aktualizowanie deklaracji apikey
+### <a name="update-the-apikey-declaration"></a>Aktualizacja deklaracji apikey
 
 Znajdź deklarację **apikey** :
 
@@ -80,13 +80,13 @@ Znajdź deklarację **apikey** :
 
 W sekcji **podstawowe informacje o zużyciu** na stronie **Używanie** Znajdź klucz podstawowy i skopiuj go do deklaracji **apikey** .
 
-### <a name="update-the-azure-storage-information"></a>Aktualizowanie informacji o usłudze Azure Storage
+### <a name="update-the-azure-storage-information"></a>Zaktualizuj informacje o usłudze Azure Storage
 
 Przykładowy kod BES przekazuje plik z dysku lokalnego (na przykład "C:\temp\CensusInput.csv") do usługi Azure Storage, przetwarza go i zapisuje wyniki z powrotem do usługi Azure Storage.
 
 1. Logowanie do witryny Azure Portal
 1. W lewej kolumnie nawigacji kliknij pozycję **więcej usług**, Wyszukaj pozycję **konta magazynu**i wybierz ją.
-1. Z listy kont magazynu wybierz jedną z nich, aby zachować ponownie przemieszczony model.
+1. Z listy kont magazynu wybierz jeden do przechowywania retrained modelu.
 1. W lewej kolumnie nawigacji kliknij pozycję **klucze dostępu**.
 1. Skopiuj i Zapisz **podstawowy klucz dostępu**.
 1. W lewej kolumnie nawigacji kliknij pozycję **obiekty blob**.
@@ -100,7 +100,7 @@ Znajdź deklaracje *StorageAccountName*, *StorageAccountKey*i *StorageContainerN
 
 Należy również upewnić się, że plik wejściowy jest dostępny w lokalizacji określonej w kodzie.
 
-### <a name="specify-the-output-location"></a>Określ lokalizację wyjściową
+### <a name="specify-the-output-location"></a>Określanie lokalizacji wyjściowej
 
 Gdy określisz lokalizację wyjściową w ładunku żądania, rozszerzenie pliku, który jest określony w *RelativeLocation* , musi być określone jako `ilearner`.
 
@@ -116,7 +116,7 @@ Gdy określisz lokalizację wyjściową w ładunku żądania, rozszerzenie pliku
 
 Oto przykład reszkoleniowych danych wyjściowych:
 
-![Dane wyjściowe ponownego uczenia](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
+![Ponowne szkolenie danych wyjściowych](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
 ### <a name="evaluate-the-retraining-results"></a>Oceń wyniki ponownego szkolenia
 
@@ -140,7 +140,7 @@ Następnie Pobierz obiekt definicji usługi sieci Web, wywołując polecenie cmd
 
     $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-Aby określić nazwę grupy zasobów istniejącej usługi sieci Web, uruchom polecenie cmdlet Get-AzMlWebService bez żadnych parametrów, aby wyświetlić usługi sieci Web w Twojej subskrypcji. Znajdź usługę sieci Web, a następnie sprawdź jej identyfikator usługi sieci Web. Nazwa grupy zasobów to czwarty element w IDENTYFIKATORze, po prostu po elemencie *resourceGroups* . W poniższym przykładzie nazwa grupy zasobów to Default-MachineLearning-SouthCentralUS.
+Aby określić nazwę grupy zasobów istniejącej usługi sieci Web, uruchom polecenie cmdlet Get-AzMlWebService bez żadnych parametrów, aby wyświetlić usługi sieci Web w Twojej subskrypcji. Znajdź usługę sieci web, a następnie Przyjrzyj się jego identyfikatora usługi internetowej. Nazwa grupy zasobów to czwarty element w IDENTYFIKATORze, po prostu po elemencie *resourceGroups* . W poniższym przykładzie nazwa grupy zasobów jest domyślna-MachineLearning-SouthCentralUS.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -149,7 +149,7 @@ Aby określić nazwę grupy zasobów istniejącej usługi sieci Web, uruchom pol
     Type : Microsoft.MachineLearning/webServices
     Tags : {}
 
-Alternatywnie, aby określić nazwę grupy zasobów istniejącej usługi sieci Web, zaloguj się do portalu usług sieci Web Azure Machine Learning. Wybierz usługę sieci Web. Nazwa grupy zasobów jest piątym elementem adresu URL usługi sieci Web, po prostu po elemencie *resourceGroups* . W poniższym przykładzie nazwa grupy zasobów to Default-MachineLearning-SouthCentralUS.
+Alternatywnie, aby określić nazwę grupy zasobów istniejącej usługi sieci Web, zaloguj się do portalu usług sieci Web Azure Machine Learning. Wybierz usługę sieci web. Nazwa grupy zasobów jest piątym elementem adresu URL usługi sieci Web, po prostu po elemencie *resourceGroups* . W poniższym przykładzie nazwa grupy zasobów jest domyślna-MachineLearning-SouthCentralUS.
 
     https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
@@ -182,7 +182,7 @@ Użyj polecenia cmdlet [Import-AzMlWebService](https://docs.microsoft.com/powers
 
     $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
-### <a name="update-the-web-service"></a>Aktualizowanie usługi sieci Web
+### <a name="update-the-web-service"></a>Aktualizacja usługi sieci web
 
 Na koniec użyj polecenia cmdlet [Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) , aby zaktualizować eksperyment predykcyjny.
 

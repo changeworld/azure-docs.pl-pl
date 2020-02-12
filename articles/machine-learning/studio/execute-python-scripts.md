@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a5512069ec609783d166b8417a7006ec4ab17fe1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427649"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153438"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Wykonywanie skryptów w języku Python Machine Learning w Azure Machine Learning Studio (klasyczny)
 
@@ -181,7 +181,7 @@ Obecnie jedynym sposobem dodawania niestandardowych modułów języka Python jes
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji, zobacz [Centrum deweloperów Python](https://azure.microsoft.com/develop/python/).
+Więcej informacji możesz znaleźć w [Centrum deweloperów języka Python](https://azure.microsoft.com/develop/python/).
 
 <!-- Module References -->
 [execute-python-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-python-script

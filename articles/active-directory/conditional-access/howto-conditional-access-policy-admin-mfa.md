@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e972228923654ca73063aad370d087e550138dbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fb396429c95dbed090283752c5a0d9ff5cc176af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043375"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148202"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Dostęp warunkowy: Wymagaj uwierzytelniania wieloskładnikowego dla administratorów
 
@@ -24,14 +24,14 @@ Kontami przypisanymi prawami administracyjnymi są osoby atakujące. Wymaganie u
 
 Firma Microsoft zaleca wymaganie uwierzytelniania wieloskładnikowego na następujących rolach:
 
-* Administrator globalny
-* Administrator programu SharePoint
-* Administrator programu Exchange
+* Administrator rozliczeń
 * Administrator dostępu warunkowego
-* Administrator zabezpieczeń
+* Administrator programu Exchange
+* Administrator globalny
 * Administrator pomocy technicznej (hasło)
 * Administrator haseł
-* Administrator rozliczeń
+* Administrator zabezpieczeń
+* Administrator programu SharePoint
 * Administrator użytkowników
 
 Organizacje mogą zdecydować się na dołączenie lub wykluczenie ról w miarę ich dopasowania.
@@ -55,14 +55,14 @@ Poniższe kroki pomogą utworzyć zasady dostępu warunkowego, aby wymagać przy
 1. Nadaj zasadom nazwę. Firma Microsoft zaleca, aby organizacje utworzyły znaczący Standard nazw swoich zasad.
 1. W obszarze **przypisania**wybierz pozycję **Użytkownicy i grupy**
    1. W obszarze **dołączanie**wybierz pozycję **role katalogu (wersja zapoznawcza)** i wybierz co najmniej następujące role:
-      * Administrator globalny
-      * Administrator programu SharePoint
-      * Administrator programu Exchange
+      * Administrator rozliczeń
       * Administrator dostępu warunkowego
-      * Administrator zabezpieczeń
+      * Administrator programu Exchange
+      * Administrator globalny
       * Administrator pomocy technicznej
       * Administrator haseł
-      * Administrator rozliczeń
+      * Administrator zabezpieczeń
+      * Administrator programu SharePoint
       * Administrator użytkowników
    1. W obszarze **Wyklucz**wybierz pozycję **Użytkownicy i grupy** , a następnie wybierz opcję dostęp awaryjny lub konta w ramach swojej organizacji. 
    1. Wybierz pozycję **Done** (Gotowe).

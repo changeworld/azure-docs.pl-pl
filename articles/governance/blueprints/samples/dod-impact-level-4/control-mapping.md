@@ -1,24 +1,24 @@
 ---
-title: Kontrolki przykładowe wysokiej strategii FedRAMP
-description: Sterowanie mapowaniem przykładu FedRAMP High plan. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
-ms.date: 01/31/2020
+title: Poziom wpływu 4 — przykładowe kontrolki planu
+description: Sterowanie mapowaniem przykładu planu wpływu na poziom 4. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
+ms.date: 02/09/2020
 ms.topic: sample
-ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
+ms.openlocfilehash: 15ab3bc8bf53d54161ecc3b1f0dc138c3ff923c1
 ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150616"
+ms.locfileid: "77154844"
 ---
-# <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Sterowanie mapowaniem przykładu FedRAMP High plan
+# <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu wpływu na poziom DoD 4
 
-W tym artykule szczegółowo opisano sposób, w jaki plan platformy Azure FedRAMP wysoce plan jest mapowany na FedRAMP o wysokiej kontroli. Aby uzyskać więcej informacji na temat kontrolek, zobacz [FedRAMP Security Controls Baseline](https://www.fedramp.gov/).
+W tym artykule szczegółowo przedstawiono sposób, w jaki dział planu usługi Azure planuje wpływ obrony na poziom 4 (DoD IL4) jest mapowany na kontrolki poziomu 4. Aby uzyskać więcej informacji na temat kontrolek, zobacz [dod Cloud obliczeniowe Requirements Guide (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf). Agencja ds. systemów informatycznych (DISA) jest agencją Departamentu Obrony Stanów Zjednoczonych (DoD), która jest odpowiedzialna za opracowywanie i utrzymywanie przewodnika dotyczącego wymagań w zakresie zabezpieczeń w chmurze DoD (SRG). SRG definiuje podstawowe wymagania dotyczące zabezpieczeń dla dostawców usług w chmurze (CSP), którzy hostią informacje, systemy i aplikacje, oraz do korzystania z usług w chmurze w wysokości DoD.  
 
-Poniższe mapowania są elementami **FedRAMP High** Controls. Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz\[w **wersji za\]poznawczej: Inspekcja FedRAMP wysoka kontrola i wdrażanie określonych rozszerzeń maszyn wirtualnych w celu obsługi funkcji inspekcji wbudowanych wymagań** zasad.
+Następujące mapowania są przyłączone do formantów **poziomu wpływu na wartość dod 4** . Użyj nawigacji po prawej stronie, aby przejść bezpośrednio do określonego mapowania formantów. Wiele zamapowanych formantów jest implementowanych z inicjatywą [Azure Policy](../../../policy/overview.md) . Aby zapoznać się z pełną inicjatywą, Otwórz **zasady** w Azure Portal i wybierz stronę **definicje** . Następnie Znajdź i wybierz\[w **wersji za\]poznawczej: poziom wpływu na 4** .
 
 > [!IMPORTANT]
 > Każda kontrolka poniżej jest skojarzona z co najmniej jedną definicją [Azure Policy](../../../policy/overview.md) . Te zasady mogą pomóc w [ocenie zgodności](../../../policy/how-to/get-compliance-data.md) z kontrolką; Niemniej jednak często nie jest to 1:1 ani kompletna zgodność między kontrolką a co najmniej jedną zasadą. W związku z tym **zgodność** w Azure Policy odnosi się tylko do samych zasad; nie gwarantuje to, że jest w pełni zgodne ze wszystkimi wymaganiami formantu. Ponadto Standard zgodności zawiera kontrolki, które nie są obecnie rozwiązywane przez żadną Azure Policy definicje. W związku z tym zgodność w Azure Policy jest tylko częściowym widokiem ogólnego stanu zgodności. Skojarzenia między kontrolkami i definicjami Azure Policy dla tego przykładowego planu zgodności mogą ulec zmianie z upływem czasu.
-> Aby wyświetlić historię zmian, zobacz [historię zatwierdzeń usługi GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/fedramp-h/control-mapping.md).
+> Aby wyświetlić historię zmian, zobacz [historię zatwierdzeń usługi GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/DoDIL4/control-mapping.md).
 
 ## <a name="ac-2-account-management"></a>Zarządzanie kontami AC-2
 
@@ -261,7 +261,7 @@ Ponadto ten plan przypisuje również definicje zasad, które monitorują niechr
 
 - Reguły sieciowej grupy zabezpieczeń dla maszyn wirtualnych mających dostęp do Internetu powinny być zaostrzone
 - Dostęp za poorednictwem punktu końcowego połączonego z Internetem powinien być ograniczony
-- Porty sieci Web powinny być ograniczone do sieciowych grup zabezpieczeń skojarzonych z maszyną wirtualną
+- Reguły sieciowych grup zabezpieczeń dla aplikacji sieci Web w usłudze IaaS powinny być zaostrzone
 - Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) ochrona granic | Punkty dostępu
@@ -359,11 +359,11 @@ Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage wykrywa niety
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po przejrzeniu mapowania kontroli FedRAMP wysokiego planu zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej na temat planu i sposobu wdrażania tego przykładu:
+Po przejrzeniu mapowania kontroli planu "4" poziomu wpływu na plan, odwiedź następujące artykuły, aby dowiedzieć się więcej na temat planu i sposobu wdrażania tego przykładu:
 
 > [!div class="nextstepaction"]
-> [FedRAMP High plan — przegląd](./index.md)
-> [FedRAMP High plan — wdrażanie kroków](./deploy.md)
+> [Poziom wpływu na plan 4 — omówienie](./index.md)
+> [dod poziom wpływu 4 plan — kroki wdrażania](./deploy.md)
 
 Dodatkowe artykuły na temat strategii i sposobu ich używania:
 

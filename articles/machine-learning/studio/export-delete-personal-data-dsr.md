@@ -1,5 +1,5 @@
 ---
-title: Wyeksportuj i usuń swoje dane
+title: Eksportuj i usuwaj dane
 titleSuffix: ML Studio (classic) - Azure
 description: Dane w produkcie przechowywane przez Azure Machine Learning Studio (klasyczne) są dostępne do eksportowania i usuwania za pomocą Azure Portal a także za pomocą uwierzytelnionych interfejsów API REST. Dostęp do danych telemetrycznych można uzyskać za pomocą portalu ochrony prywatności systemu Azure. W tym artykule przedstawiono, jak.
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 51aad01d5b03335bd1b57f6e5a9c775556187cca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6b815057a6c79eb55303b8d8a349bc5a4a9bfb43
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427585"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153064"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Eksportuj i usuwaj dane użytkownika w ramach produktu z Azure Machine Learning Studio (klasyczne)
 

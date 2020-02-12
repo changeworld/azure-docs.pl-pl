@@ -4,16 +4,16 @@ description: Utwórz certyfikaty testowe i Dowiedz się, jak zainstalować je na
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/03/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cf073572cd5b371ec484c99f14cbefb4cba75ce7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fe46e968aa2dcebaa483cd38fd2e050ccfe43054
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509907"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149902"
 ---
 # <a name="install-production-certificates-on-an-iot-edge-device"></a>Instalowanie certyfikatów produkcyjnych na urządzeniu IoT Edge
 
@@ -68,7 +68,7 @@ Na przykład jeśli użyto przykładowych skryptów do [tworzenia certyfikatów 
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-3. Ustaw właściwości **certyfikatu** w pliku config. YAML na identyfikator URI pliku certyfikatu i plików kluczy na urządzeniu IoT Edge. Usuń znak `#` przed właściwościami certyfikatu, aby usunąć komentarz z czterech wierszy. Upewnij się, że w wierszu **Certyfikaty:** nie ma powyższego odstępu, a elementy zagnieżdżone są wcięte o dwie spacje. Przykład:
+3. Ustaw właściwości **certyfikatu** w pliku config. YAML na identyfikator URI pliku certyfikatu i plików kluczy na urządzeniu IoT Edge. Usuń znak `#` przed właściwościami certyfikatu, aby usunąć komentarz z czterech wierszy. Upewnij się, że w wierszu **Certyfikaty:** nie ma powyższego odstępu, a elementy zagnieżdżone są wcięte o dwie spacje. Na przykład:
 
    * W systemie Windows:
 
@@ -89,6 +89,12 @@ Na przykład jeśli użyto przykładowych skryptów do [tworzenia certyfikatów 
       ```
 
 4. Na urządzeniach z systemem Linux upewnij się, że użytkownik **iotedge** ma uprawnienia do odczytu w katalogu zawierającym certyfikaty.
+
+5. Jeśli przed uruchomieniem lub ponownym IoT Edge uruchomieniem usługi IoT Edge na urządzeniu zostały wcześniej użyte inne certyfikaty, usuń je z następujących dwóch katalogów:
+
+   * Windows: `C:\ProgramData\iotedge\hsm\certs` i `C:\ProgramData\iotedge\hsm\cert_keys`
+
+   * Linux: `/var/lib/iotedge/hsm/certs` i `/var/lib/iotedge/hsm/cert_keys`
 
 ## <a name="next-steps"></a>Następne kroki
 

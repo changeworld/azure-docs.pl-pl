@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: e440d9d882d0459d04a15b8f39ea6877707ea096
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6976f0bb671b94f71b71287483c2ab88d0959899
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427447"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152775"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Migrowanie analizy z programu Excel do Azure Machine Learning Studio (wersja klasyczna)
 
@@ -54,8 +54,8 @@ W pierwszej kolejności model programu Excel jest jasno przeszukiwany model Stud
 |  | Excel | Studio (klasyczna) |
 | --- |:---:|:---:|
 | Wydajność | | |
-| <ul style="list-style-type: none;"><li>Dostosowany kwadrat R</li></ul> |0.96 |ND |
-| <ul style="list-style-type: none;"><li>Współczynnik <br />Określon</li></ul> |ND |0.78<br />(niska dokładność) |
+| <ul style="list-style-type: none;"><li>Dostosowany kwadrat R</li></ul> |0.96 |Nie dotyczy |
+| <ul style="list-style-type: none;"><li>Współczynnik <br />Określon</li></ul> |Nie dotyczy |0.78<br />(niska dokładność) |
 | Średni błąd bezwzględny |$9,5 m |$19.4 m |
 | Średni błąd bezwzględny (%) |6.03% |12.2% |
 
@@ -73,15 +73,15 @@ Po zastosowaniu zaleceń osiągniemy tę samą wydajność bazową w programie S
 | --- |:---:|:---:|:---:|
 | Wartość oznaczona etykietą |Wartości rzeczywiste (liczbowe) |Ten |Ten |
 | Learner |Program Excel — analiza danych > — > regresji |Regresja liniowa. |Regresja liniowa |
-| Opcje dowiedzenia |ND |Wartości domyślne |zwykłe najmniejsze kwadraty<br />L2 = 0,005 |
+| Opcje dowiedzenia |Nie dotyczy |Wartości domyślne |zwykłe najmniejsze kwadraty<br />L2 = 0,005 |
 | Zestaw danych |26 wierszy, 3 funkcje, 1 etykieta. Wszystkie wartości numeryczne. |Ten |Ten |
 | Podział: szkolenie |Program Excel przeszkolony na pierwszych 18 wierszach, przetestowanych w ciągu ostatnich 8 wierszy. |Ten |Ten |
 | Podziel: test |Formuła regresji programu Excel zastosowana do ostatnich 8 wierszy |Ten |Ten |
 | **Wydajność** | | | |
-| Dostosowany kwadrat R |0.96 |ND | |
-| Współczynnik wyznaczania |ND |0.78 |0.952049 |
+| Dostosowany kwadrat R |0.96 |Nie dotyczy | |
+| Współczynnik wyznaczania |Nie dotyczy |0.78 |0.952049 |
 | Średni błąd bezwzględny |$9,5 m |$19.4 m |$9,5 m |
-| Średni błąd bezwzględny (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
+| Średni błąd bezwzględny (%) |<span style="background-color: 00FF00;">6,03%</span> |12.2% |<span style="background-color: 00FF00;">6,03%</span> |
 
 Ponadto współczynniki programu Excel porównane z wagami funkcji w modelu przeszkolonym przez platformę Azure:
 
@@ -115,7 +115,7 @@ Następnie planujemy dołączenie dodatkowych algorytmów, takich jak [bayesowsk
 
 Jeśli chcesz eksperymentować z regresją, dobry zestaw danych do wypróbowania jest przykładowym zestawem danych regresji wydajności energii, który ma wiele atrybutów liczbowych. Zestaw danych jest dostarczany jako część przykładowych zestawów danych w programie Studio (klasyczny). Możesz użyć różnych modułów szkoleniowych, aby przewidzieć obciążenie ogrzewania lub obciążenie chłodzenia. Wykres poniżej to porównanie wydajności różnej regresji w odniesieniu do zestawu danych efektywności energetycznej przewidywalnego dla zmiennej docelowej obciążenie chłodzenia: 
 
-| Model | Średni błąd bezwzględny | Średni błąd oznaczający pierwiastek | Względny błąd bezwzględny | Względny kwadratowy błąd | Współczynnik wyznaczania |
+| Modelowanie | Średni błąd bezwzględny | Średni błąd oznaczający pierwiastek | Względny błąd bezwzględny | Względny kwadratowy błąd | Współczynnik wyznaczania |
 | --- | --- | --- | --- | --- | --- |
 | Drzewo podwyższanych decyzji |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
 | Regresja liniowa (z gradientem) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |

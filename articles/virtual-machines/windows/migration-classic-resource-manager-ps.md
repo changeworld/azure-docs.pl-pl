@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0c145c84f9dea3b6212bb6c608eb1a4eb586ff60
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 802d97e2c9b64fd9d8caeaf479af3f4aec356607
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77056822"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153132"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrowanie zasobów IaaS z klasycznej do Azure Resource Manager przy użyciu programu PowerShell
 W tych krokach pokazano, jak za pomocą poleceń Azure PowerShell przeprowadzić migrację zasobów infrastruktury jako usługi (IaaS) z klasycznego modelu wdrażania do modelu wdrażania Azure Resource Manager.
@@ -125,7 +125,7 @@ Ustaw subskrypcję platformy Azure dla bieżącej sesji. W tym przykładzie usta
 <br>
 
 ## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>Krok 5. posiadanie wystarczającej Menedżer zasobów procesorów wirtualnych vCPU maszyny wirtualnej
-Upewnij się, że masz wystarczającą Azure Resource Manager procesorów wirtualnych vCPU maszyny wirtualnej w regionie świadczenia usługi Azure bieżącego wdrożenia lub sieci wirtualnej. Aby sprawdzić bieżącą liczbę procesorów wirtualnych vCPU w Azure Resource Manager, można użyć następującego polecenia programu PowerShell. Aby dowiedzieć się więcej o przydziałach vCPU, zobacz [limity i Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager).
+Upewnij się, że masz wystarczającą Azure Resource Manager procesorów wirtualnych vCPU maszyny wirtualnej w regionie świadczenia usługi Azure bieżącego wdrożenia lub sieci wirtualnej. Aby sprawdzić bieżącą liczbę procesorów wirtualnych vCPU w Azure Resource Manager, można użyć następującego polecenia programu PowerShell. Aby dowiedzieć się więcej o przydziałach vCPU, zobacz [limity i Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits).
 
 Ten przykład sprawdza dostępność w regionie **zachodnie stany USA** . Zamień nazwę przykładowego regionu na własny.
 

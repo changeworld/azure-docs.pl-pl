@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 18a9578cc454ea5259b9564d64dcd4308ee5ef87
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045784"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148984"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Tworzenie i Instalowanie plików konfiguracji klienta sieci VPN dla natywnych konfiguracji P2S uwierzytelniania certyfikatu platformy Azure
 
@@ -28,7 +28,7 @@ Pliki konfiguracyjne klienta są specyficzne dla konfiguracji sieci VPN w przypa
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="generate"></a>Generowanie plików konfiguracji klienta sieci VPN
+## <a name="generate"></a>Generuj pliki konfiguracji klienta sieci VPN
 
 Przed rozpoczęciem upewnij się, że na urządzeniu użytkownika jest zainstalowany prawidłowy certyfikat dla wszystkich użytkowników nawiązujących połączenie. Aby uzyskać więcej informacji na temat instalowania certyfikatu klienta, zobacz [Instalowanie certyfikatu klienta](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
@@ -46,9 +46,8 @@ Można generować pliki konfiguracji klienta przy użyciu programu PowerShell lu
 
 ### <a name="zipps"></a>Generowanie plików przy użyciu programu PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Podczas generowania plików konfiguracji klienta sieci VPN wartość "-bioEapTls" jest równa "{0}". Wygeneruj pliki konfiguracji klienta VPN za pomocą następującego polecenia:
+1. Podczas generowania plików konfiguracji klienta sieci VPN wartość "-bioEapTls" jest równa "". Wygeneruj pliki konfiguracji klienta VPN za pomocą następującego polecenia:
 
    ```azurepowershell-interactive
    $profile=New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
@@ -57,7 +56,7 @@ Można generować pliki konfiguracji klienta przy użyciu programu PowerShell lu
    ```
 2. Skopiuj adres URL do przeglądarki, aby pobrać plik zip, a następnie Rozpakuj plik, aby wyświetlić foldery.
 
-## <a name="installwin"></a>Windows
+## <a name="installwin"></a>Systemy
 
 Tego samego pakietu konfiguracyjnego klienta sieci VPN można użyć na każdym komputerze klienckim z systemem Windows, o ile wersja jest zgodna z architekturą klienta. Listę obsługiwanych systemów operacyjnych klienta znajduje się w sekcji "punkt-lokacja [" VPN Gateway często zadawane pytania](vpn-gateway-vpn-faq.md#P2S).
 
@@ -112,10 +111,10 @@ Wykonaj następujące kroki, aby skonfigurować natywnego klienta sieci VPN na k
    ![certyfikat](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Wybierz tożsamość** wyświetla listę certyfikatów do wyboru. Wybierz odpowiedni certyfikat, a następnie kliknij przycisk **Kontynuuj**.
 
-   ![tożsamość](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. W polu **Identyfikator lokalny** Określ nazwę certyfikatu (z kroku 6). W tym przykładzie jest to "ikev2Client.com". Następnie kliknij przycisk **Zastosuj** , aby zapisać zmiany.
 
-   ![zgłoś się](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![stosowa](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. W oknie dialogowym **Sieć** kliknij pozycję **Zastosuj** , aby zapisać wszystkie zmiany. Następnie kliknij przycisk **Połącz** , aby rozpocząć połączenie P2S z siecią wirtualną platformy Azure.
 
 ## <a name="linuxgui"></a>Linux (klient strongswan GUI)

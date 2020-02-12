@@ -2,13 +2,13 @@
 title: Ograniczenia dotyczące nazw zasobów
 description: Pokazuje reguły i ograniczenia dotyczące nazewnictwa zasobów platformy Azure.
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 9d685e2852dee25e03bdd98ea5463fd40e795f23
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/11/2020
+ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157807"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153166"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Reguły i ograniczenia nazewnictwa zasobów platformy Azure
 
@@ -34,11 +34,11 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | usługa | globalna | 1-50 | Znaki alfanumeryczne.<br><br>Zacznij od litery. |
+> | usługa | global | 1-50 | Znaki alfanumeryczne.<br><br>Zacznij od litery. |
 > | Usługa/interfejsy API | usługa | 1-256 | Nie można użyć:<br> `*#&+:<>?` |
 > | Usługa/interfejsy API/problemy | api | 1-256 | Nie można użyć:<br> `*#&+:<>?` |
-> | Usługa/interfejsy API/problemy/załączniki | Wykonaj | 1-256 | Nie można użyć:<br> `*#&+:<>?` |
-> | Usługa/interfejsy API/problemy/Komentarze | Wykonaj | 1-256 | Nie można użyć:<br> `*#&+:<>?` |
+> | Usługa/interfejsy API/problemy/załączniki | wykonaj | 1-256 | Nie można użyć:<br> `*#&+:<>?` |
+> | Usługa/interfejsy API/problemy/Komentarze | wykonaj | 1-256 | Nie można użyć:<br> `*#&+:<>?` |
 > | Usługa/interfejsy API/operacje | api | 1-256 | Nie można użyć:<br> `*#&+:<>?` |
 > | Usługa/interfejsy API/operacje/Tagi | operation | 1-256 | Nie można użyć:<br> `*#&+:<>?` |
 > | Usługa/interfejsy API/wersje | api | 1-80 | Alfanumeryczne, podkreślenia i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym lub podkreśleniem. |
@@ -115,14 +115,14 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | blockchainMembers | globalna | 2-20 | Małe litery i cyfry.<br><br>Zacznij od małej litery. |
+> | blockchainMembers | global | 2-20 | Małe litery i cyfry.<br><br>Zacznij od małej litery. |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | botServices | globalna | 2-64 |  Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. |
+> | botServices | global | 2-64 |  Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. |
 > | botServices/kanały | Usługa bot | 2-64 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. |
 > | botServices/połączenia | Usługa bot | 2-64 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. |
 > | enterpriseChannels | grupa zasobów | 2-64 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. |
@@ -132,7 +132,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | Redis | globalna | 1-63 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. Kolejne łączniki są niedozwolone. |
+> | Redis | global | 1-63 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. Kolejne łączniki są niedozwolone. |
 > | Redis/firewallRules | Redis | 1-256 | Znaki alfanumeryczne |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -140,8 +140,8 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | profiles | grupa zasobów | 1-260 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
-> | Profile/punkty końcowe | globalna | 1-50 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | profile | grupa zasobów | 1-260 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | Profile/punkty końcowe | global | 1-50 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
@@ -166,9 +166,9 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | diskEncryptionSets | grupa zasobów | 1-80 | Znaki alfanumeryczne i znaki podkreślenia. |
 > | dysku | grupa zasobów | 1-80 | Znaki alfanumeryczne i znaki podkreślenia. |
 > | znajduj | grupa zasobów | 1-80 | Alfanumeryczne i kropki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
-> | Galerie/aplikacje | galeria | 1-80 | Alfanumeryczne, łączniki i kropki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
-> | Galerie/aplikacje/wersje | aplikacja | 32-bitowa liczba całkowita | Liczby i kropki. |
-> | Galerie/obrazy | galeria | 1-80 | Alfanumeryczne, łączniki i kropki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | Galerie/aplikacje | zdjęć | 1-80 | Alfanumeryczne, łączniki i kropki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | Galerie/aplikacje/wersje | Aplikacja | 32-bitowa liczba całkowita | Liczby i kropki. |
+> | Galerie/obrazy | zdjęć | 1-80 | Alfanumeryczne, łączniki i kropki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | Galerie/obrazy/wersje | image | 32-bitowa liczba całkowita | Liczby i kropki. |
 > | images | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończy się znakiem alfanumerycznym lub podkreśleniem. |
 > | Migawki | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończy się znakiem alfanumerycznym lub podkreśleniem. |
@@ -183,14 +183,14 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | containerGroups | grupa zasobów | 1-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. Następujące po sobie łączniki nie są dozwolone. |
+> | containerGroups | grupa zasobów | 1-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. Kolejne łączniki nie są dozwolone. |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | wołuje | globalna | 5-50 | Znaki alfanumeryczne. |
+> | wołuje | global | 5-50 | Znaki alfanumeryczne. |
 > | rejestry/buildTasks | rejestr | 5-50 | Znaki alfanumeryczne. |
 > | rejestry/buildTasks/kroki | zadanie kompilacji | 5-50 | Znaki alfanumeryczne. |
 > | rejestry/replikacje | rejestr | 5-50 | Znaki alfanumeryczne. |
@@ -212,19 +212,19 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | koncentratory, | grupa zasobów | 1-64 | Znaki alfanumeryczne.<br><br>Zacznij od litery.  |
-> | Centra/authorizationPolicies | centrum | 1-50 | Alfanumeryczne, podkreślenia i kropki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
-> | Centra/łączniki | centrum | 1-128 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
+> | węzłów | grupa zasobów | 1-64 | Znaki alfanumeryczne.<br><br>Zacznij od litery.  |
+> | Centra/authorizationPolicies | Centralny | 1-50 | Alfanumeryczne, podkreślenia i kropki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | Centra/łączniki | Centralny | 1-128 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
 > | Centra/łączniki/mapowania | łącznik | 1-128 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
-> | Centra/interakcje | centrum | 1-128 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
-> | Centra/KWW | centrum | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
-> | Centra/linki | centrum | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
-> | Centra/przewidywania | centrum | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
-> | Centra/profile | centrum | 1-128 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
-> | Centra/relationshipLinks | centrum | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
-> | Centra/relacje | centrum | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
-> | Centra/roleAssignments | centrum | 1-128 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
-> | Centra/widoki | centrum | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
+> | Centra/interakcje | Centralny | 1-128 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
+> | Centra/KWW | Centralny | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
+> | Centra/linki | Centralny | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
+> | Centra/przewidywania | Centralny | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
+> | Centra/profile | Centralny | 1-128 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
+> | Centra/relationshipLinks | Centralny | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
+> | Centra/relacje | Centralny | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
+> | Centra/roleAssignments | Centralny | 1-128 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
+> | Centra/widoki | Centralny | 1-512 | Znaki alfanumeryczne i znaki podkreślenia.<br><br>Zacznij od litery. |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
@@ -239,7 +239,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | zadania | grupa zasobów | 3-24 | Alfanumeryczne, łączniki, podkreślenia i kropki. |
+> | Zadania | grupa zasobów | 3-24 | Alfanumeryczne, łączniki, podkreślenia i kropki. |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
@@ -253,7 +253,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | fabryki | globalna | 3-63 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | fabryki | global | 3-63 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | fabryki/dataflows | indywidual | 1-260 | Nie można użyć:<br>`<>*#.%&:\\+?/`<br><br>Zacznij od znaków alfanumerycznych. |
 > | fabryki/zestawy danych | indywidual | 1-260 | Nie można użyć:<br>`<>*#.%&:\\+?/`<br><br>Zacznij od znaków alfanumerycznych. |
 > | fabryki/integrationRuntimes | indywidual | 3-63 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
@@ -267,7 +267,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | accounts | globalna | 3-24 | Małe litery i cyfry. |
+> | accounts | global | 3-24 | Małe litery i cyfry. |
 > | konta/computePolicies | account | 3-60 | Alfanumeryczne, łączniki i podkreślenia. |
 > | konta/dataLakeStoreAccounts | account | 3-24 | Małe litery i cyfry. |
 > | konta/firewallRules | account | 3-50 | Alfanumeryczne, łączniki i podkreślenia. |
@@ -278,7 +278,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | accounts | globalna | 3-24 | Małe litery i cyfry. |
+> | accounts | global | 3-24 | Małe litery i cyfry. |
 > | konta/firewallRules | account | 3-50 | Alfanumeryczne, łączniki i podkreślenia. |
 > | konta/virtualNetworkRules | account | 3-50 | Alfanumeryczne, łączniki i podkreślenia. |
 
@@ -295,7 +295,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | serwery | globalna | 3-63 | Małe litery, łączniki i cyfry.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
+> | serwery | global | 3-63 | Małe litery, łączniki i cyfry.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
 > | Serwery/bazy danych | serwery | 1-63 | Alfanumeryczne i łączniki. |
 > | serwery/firewallRules | serwery | 1-128 | Alfanumeryczne, łączniki i podkreślenia. |
 > | serwery/virtualNetworkRules | serwery | 1-128 | Alfanumeryczne i łączniki. |
@@ -305,7 +305,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | serwery | globalna | 3-63 | Małe litery, łączniki i cyfry.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
+> | serwery | global | 3-63 | Małe litery, łączniki i cyfry.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
 > | Serwery/bazy danych | serwery | 1-63 | Alfanumeryczne i łączniki. |
 > | serwery/firewallRules | serwery | 1-128 | Alfanumeryczne, łączniki i podkreślenia. |
 > | serwery/virtualNetworkRules | serwery | 1-128 | Alfanumeryczne i łączniki. |
@@ -315,7 +315,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | serwery | globalna | 3-63 | Małe litery, łączniki i cyfry.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
+> | serwery | global | 3-63 | Małe litery, łączniki i cyfry.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
 > | Serwery/bazy danych | serwery | 1-63 | Alfanumeryczne i łączniki. |
 > | serwery/firewallRules | serwery | 1-128 | Alfanumeryczne, łączniki i podkreślenia. |
 > | serwery/virtualNetworkRules | serwery | 1-128 | Alfanumeryczne i łączniki. |
@@ -325,7 +325,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | IotHubs | globalna | 3-50 | Alfanumeryczne i łączniki.<br><br>Nie można kończyć się łącznikiem. |
+> | IotHubs | global | 3-50 | Alfanumeryczne i łączniki.<br><br>Nie można kończyć się łącznikiem. |
 > | IotHubs/certyfikaty | Centrum IoT | 1-64 | Alfanumeryczne, łączniki, kropki i znaki podkreślenia. |
 > | IotHubs/eventHubEndpoints/ConsumerGroups | eventHubEndpoints | 1-50 | Alfanumeryczne, łączniki, kropki i znaki podkreślenia. |
 > | provisioningServices | grupa zasobów | 3-64 | Alfanumeryczne i łączniki.<br><br>Kończy się znakiem alfanumerycznym. |
@@ -346,7 +346,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | databaseAccounts | globalna | 3-31 | Małe litery, cyfry i łączniki.<br><br>Zacznij od małej litery lub cyfry. |
+> | databaseAccounts | global | 3-31 | Małe litery, cyfry i łączniki.<br><br>Zacznij od małej litery lub cyfry. |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
@@ -354,9 +354,9 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
 > | domeny | grupa zasobów | 3-50 | Alfanumeryczne i łączniki. |
-> | domeny/tematy | domain | 3-50 | Alfanumeryczne i łączniki. |
+> | domeny/tematy | domeny | 3-50 | Alfanumeryczne i łączniki. |
 > | eventSubscriptions | grupa zasobów | 3-64 | Alfanumeryczne i łączniki. |
-> | — tematy | grupa zasobów | 3-50 | Alfanumeryczne i łączniki. |
+> | opisano | grupa zasobów | 3-50 | Alfanumeryczne i łączniki. |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
@@ -364,7 +364,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
 > | oparty | grupa zasobów | 6-50 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. Kończy się literą lub cyfrą. |
-> | przestrzenie nazw | globalna | 6-50 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. Kończy się literą lub cyfrą. |
+> | przestrzenie nazw | global | 6-50 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. Kończy się literą lub cyfrą. |
 > | przestrzenie nazw/reguł autoryzacji | przestrzeń nazw | 1-50 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Początek i koniec z literą lub cyfrą. |
 > | przestrzenie nazw/disasterRecoveryConfigs | przestrzeń nazw | 1-50 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Początek i koniec z literą lub cyfrą. |
 > | przestrzenie nazw/eventhubs | przestrzeń nazw | 1-50 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Początek i koniec z literą lub cyfrą. |
@@ -376,28 +376,28 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | oparty | globalna | 3-59 | Alfanumeryczne i łączniki<br><br>Początek i koniec z literą lub cyfrą. |
+> | oparty | global | 3-59 | Alfanumeryczne i łączniki<br><br>Początek i koniec z literą lub cyfrą. |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | zadania | grupa zasobów | 2-64 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. |
+> | Zadania | grupa zasobów | 2-64 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | IoTApps | globalna | 2-63 | Małe litery, cyfry i łączniki.<br><br>Zacznij od małej litery lub cyfry. |
+> | IoTApps | global | 2-63 | Małe litery, cyfry i łączniki.<br><br>Zacznij od małej litery lub cyfry. |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | magazynów | globalna | 3-24 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. Kończy się literą lub cyfrą. Nie może zawierać kolejnych łączników. |
+> | magazynów | global | 3-24 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. Kończy się literą lub cyfrą. Nie może zawierać kolejnych łączników. |
 > | magazyny/wpisy tajne | Magazyn | 1-127 | Alfanumeryczne i łączniki. |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
@@ -405,10 +405,10 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | oparty | globalna | 4-22 | Małe litery i cyfry.<br><br>Zacznij od litery. |
-> | /Clusters/bazy danych | cluster | 1-260 | Alfanumeryczne, łączniki, spacje i kropki. |
-> | /Clusters/Databases/dataconnections | baza danych | 1-40 | Alfanumeryczne, łączniki, spacje i kropki. |
-> | /Clusters/Databases/eventhubconnections | baza danych | 1-40 | Alfanumeryczne, łączniki, spacje i kropki. |
+> | oparty | global | 4-22 | Małe litery i cyfry.<br><br>Zacznij od litery. |
+> | /Clusters/bazy danych | hosta | 1-260 | Alfanumeryczne, łączniki, spacje i kropki. |
+> | /Clusters/Databases/dataconnections | database | 1-40 | Alfanumeryczne, łączniki, spacje i kropki. |
+> | /Clusters/Databases/eventhubconnections | database | 1-40 | Alfanumeryczne, łączniki, spacje i kropki. |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -483,7 +483,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | expressRouteCircuits | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | firewallPolicies | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | firewallPolicies / ruleGroups | zasady zapory | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
-> | Usługi frontdoor | globalna | 5-64 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | Usługi frontdoor | global | 5-64 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | loadBalancers | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | loadBalancers/inboundNatRules | Moduł równoważenia obciążenia | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | localNetworkGateways | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
@@ -500,11 +500,11 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | routeTables | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | routeTables/trasy | tabela tras | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | serviceEndpointPolicies | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
-> | trafficmanagerprofiles | globalna | 1-63 | Alfanumeryczne, łączniki i kropki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | trafficmanagerprofiles | global | 1-63 | Alfanumeryczne, łączniki i kropki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | virtualNetworkGateways | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | virtualNetworks | grupa zasobów | 2-64 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
-> | virtualnetworks/podsieci | sieć wirtualna | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
-> | virtualNetworks/virtualNetworkPeerings | sieć wirtualna | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
+> | virtualnetworks/podsieci | Sieć wirtualna | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
+> | virtualNetworks/virtualNetworkPeerings | Sieć wirtualna | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | virtualWans | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | vpnGateways | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | vpnGateways / vpnConnections | Brama sieci VPN | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
@@ -515,7 +515,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | przestrzenie nazw | globalna | 6-50 | Alfanumeryczne i łączniki<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | przestrzenie nazw | global | 6-50 | Alfanumeryczne i łączniki<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | przestrzenie nazw/reguł autoryzacji | przestrzeń nazw | 1-256 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Rozpocznij alfanumeryczne. |
 > | przestrzenie nazw/notificationHubs | przestrzeń nazw | 1-260 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Rozpocznij alfanumeryczne. |
 > | przestrzenie nazw/notificationHubs/reguł autoryzacji | Centrum powiadomień | 1-256 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Rozpocznij alfanumeryczne. |
@@ -527,6 +527,13 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | --- | --- | --- | --- |
 > | oparty | grupa zasobów | 4-63 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | obszary robocze | grupa zasobów | 4-63 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+
+## <a name="microsoftportal"></a>Microsoft.Portal
+
+> [!div class="mx-tableFixed"]
+> | Jednostka | Zakres | Długość | Prawidłowe znaki |
+> | --- | --- | --- | --- |
+> | pulpity nawigacyjne | grupa zasobów | 3-160 | Alfanumeryczne i łączniki.<br><br>Aby użyć znaków z ograniczeniami, Dodaj tag o nazwie **Hidden-title** z nazwą pulpitu nawigacyjnego, której chcesz użyć. Podczas wyświetlania pulpitu nawigacyjnego w portalu zostanie wyświetlona nazwa. |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
@@ -555,7 +562,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | przestrzenie nazw | globalna | 6-50 | Alfanumeryczne i łączniki.<br><br>Wpisywanie zacznij od litery. Kończy się literą lub cyfrą. |
+> | przestrzenie nazw | global | 6-50 | Alfanumeryczne i łączniki.<br><br>Wpisywanie zacznij od litery. Kończy się literą lub cyfrą. |
 > | przestrzenie nazw/reguł autoryzacji | przestrzeń nazw | 1-50 |  Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | przestrzenie nazw/HybridConnections | przestrzeń nazw | 1-260 | Alfanumeryczne, kropki, łączniki, podkreślenia i ukośniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | przestrzenie nazw/HybridConnections/reguł autoryzacji | połączenie hybrydowe | 1-50 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
@@ -568,7 +575,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
 > | komputerów | grupa zasobów | 1-64 | Alfanumeryczne, podkreślenia, nawiasy, łączniki i kropki. |
-> | ResourceGroups | subskrypcja | 1-90 | Alfanumeryczne, podkreślenia, nawiasy, łączniki, kropki i znaki Unicode, które pasują do [dokumentacji wyrażenia regularnego](/rest/api/resources/resourcegroups/createorupdate).<br><br>Nie może kończyć się kropką. |
+> | ResourceGroups | subskrypcję | 1-90 | Alfanumeryczne, podkreślenia, nawiasy, łączniki, kropki i znaki Unicode, które pasują do [dokumentacji wyrażenia regularnego](/rest/api/resources/resourcegroups/createorupdate).<br><br>Nie może kończyć się kropką. |
 > | tagNames | resource | 1-512 | Nie można użyć:<br>`<>%&\?/` |
 > | tagNames/tagValues | nazwa tagu | 1-256 | Wszystkie znaki. |
 
@@ -577,16 +584,16 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | przestrzenie nazw | globalna | 6-50 | Alfanumeryczne i łączniki.<br><br>Wpisywanie zacznij od litery. Kończy się literą lub cyfrą.<br><br>Aby uzyskać więcej informacji, zobacz [Tworzenie przestrzeni nazw](/rest/api/servicebus/create-namespace). |
+> | przestrzenie nazw | global | 6-50 | Alfanumeryczne i łączniki.<br><br>Wpisywanie zacznij od litery. Kończy się literą lub cyfrą.<br><br>Aby uzyskać więcej informacji, zobacz [Tworzenie przestrzeni nazw](/rest/api/servicebus/create-namespace). |
 > | przestrzenie nazw/reguł autoryzacji | przestrzeń nazw | 1-50 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Zacznij i Zakończ z alphnumeric. |
-> | przestrzenie nazw/disasterRecoveryConfigs | globalna | 6-50 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. Kończy się znakiem alfanumerycznym. |
+> | przestrzenie nazw/disasterRecoveryConfigs | global | 6-50 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. Kończy się znakiem alfanumerycznym. |
 > | przestrzenie nazw/migrationConfigurations | przestrzeń nazw |  | Zawsze powinna być **$default**. |
 > | przestrzenie nazw/kolejki | przestrzeń nazw | 1-260 | Alfanumeryczne, kropki, łączniki, podkreślenia i ukośniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | przestrzenie nazw/kolejki/reguł autoryzacji | kolejka | 1-50 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Zacznij i Zakończ z alphnumeric. |
 > | obszary nazw/tematy | przestrzeń nazw | 1-260 | Alfanumeryczne, kropki, łączniki, podkreślenia i ukośniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | przestrzenie nazw/tematy/reguł autoryzacji | temat | 1-50 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Zacznij i Zakończ z alphnumeric. |
 > | obszary nazw/tematy/subskrypcje | temat | 1-50 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Zacznij i Zakończ z alphnumeric. |
-> | obszary nazw/tematy/subskrypcje/reguły | subskrypcja | 1-50 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Zacznij i Zakończ z alphnumeric. |
+> | obszary nazw/tematy/subskrypcje/reguły | subskrypcję | 1-50 | Alfanumeryczne, kropki, łączniki i podkreślenia.<br><br>Zacznij i Zakończ z alphnumeric. |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
@@ -600,19 +607,19 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | signalR | globalna | 3-63 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. Kończy się literą lub cyfrą.  |
+> | signalR | global | 3-63 | Alfanumeryczne i łączniki.<br><br>Zacznij od litery. Kończy się literą lub cyfrą.  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | managedInstances | globalna | 1-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
-> | serwery | globalna | 1-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
+> | managedInstances | global | 1-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
+> | serwery | global | 1-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
 > | Serwery/bazy danych | serwer | 1-128 | Nie można użyć:<br>`<>*%&:\/?`<br><br>Nie może kończyć się kropką ani spacją. |
-> | Serwery/bazy danych/syncGroups | baza danych | 1-150 | Alfanumeryczne, łączniki i podkreślenia. |
+> | Serwery/bazy danych/syncGroups | database | 1-150 | Alfanumeryczne, łączniki i podkreślenia. |
 > | serwery/elasticPools | serwer | 1-128 | Nie można użyć:<br>`<>*%&:\/?`<br><br>Nie może kończyć się kropką ani spacją. |
-> | serwery/failoverGroups | globalna | 1-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
+> | serwery/failoverGroups | global | 1-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
 > | serwery/firewallRules | serwer | 1-128 | Nie można użyć:<br>`<>*%&:;\/?`<br><br>Nie może kończyć się kropką. |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
@@ -620,7 +627,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | storageAccounts | globalna | 3-24 | Małe litery i cyfry. |
+> | storageAccounts | global | 3-24 | Małe litery i cyfry. |
 > | storageAccounts/blobServices | konto magazynu |  | Musi być `default`. |
 > | storageAccounts/blobServices/kontenery | konto magazynu | 3-63 | Małe litery, cyfry i łączniki.<br><br>Zacznij od małej litery lub cyfry. Nie można używać kolejnych łączników. |
 > | storageAccounts/fileServices | konto magazynu |  | Musi być `default`. |
@@ -628,7 +635,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | storageAccounts/managementPolicies | konto magazynu |  | Musi być `default`. |
 > | blob | kontener | 1-1024 | Wszystkie znaki adresu URL, z uwzględnieniem wielkości liter |
 > | kolejka | konto magazynu | 3-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. Nie można używać kolejnych łączników. |
-> | table | konto magazynu | 3-63 | Znaki alfanumeryczne.<br><br>Zacznij od litery. |
+> | tabela | konto magazynu | 3-63 | Znaki alfanumeryczne.<br><br>Zacznij od litery. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
@@ -672,7 +679,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
 > | dopuszczalna | grupa zasobów | 1-40 | Alfanumeryczne i łączniki. |
-> | lokacje | globalna | 2-60 | Zawiera znaki alfanumeryczne i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
+> | teren | global | 2-60 | Zawiera znaki alfanumeryczne i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. |
 > | Lokacje/miejsca | site | 2-59 | Alfanumeryczne i łączniki. |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -2,17 +2,17 @@
 title: Co to jest model i pakiet usługi w chmurze | Microsoft Docs
 description: Opisuje model usług w chmurze (. csdef,. cscfg) i pakiet (. cspkg) na platformie Azure
 services: cloud-services
-author: tgore03
+author: tanmaygore
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 0d04236861287074087cc125d7b0d44dc65eccbf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360705"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148313"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co to jest model usługi w chmurze i jak go spakować?
 Usługa w chmurze jest tworzona na podstawie trzech składników: definicji usługi *(. csdef)* , konfiguracji usługi *(. cscfg)* i pakietu usługi *(. cspkg)* . Pliki **ServiceDefinition. csdef** i **ServiceConfig. cscfg** są oparte na języku XML i opisują strukturę usługi w chmurze oraz sposób jej konfiguracji; nazywana zbiorczo modelem. **Servicepackage. cspkg** to plik zip, który jest generowany na podstawie elementu **ServiceDefinition. csdef** i między innymi, zawiera wszystkie wymagane zależności oparte na plikach binarnych. Platforma Azure tworzy usługę w chmurze zarówno z **servicepackage. cspkg** , jak i **ServiceConfig. cscfg**.
@@ -106,7 +106,7 @@ Zawiera definicje zasobów magazynu lokalnego. Lokalny zasób magazynu jest kata
 **Importowania**  
 Zawiera definicje importowanych modułów. Poprzedni przykład kodu przedstawia moduły Podłączanie pulpitu zdalnego i Azure Connect.
 
-**Startup**  
+**Folderze**  
 Zawiera zadania, które są uruchamiane, gdy zostanie uruchomiona rola. Zadania są zdefiniowane w pliku cmd lub wykonywalnym.
 
 <a name="cscfg"></a>
@@ -136,7 +136,7 @@ Plik konfiguracji usługi nie jest spakowany z aplikacją, ale jest przekazywany
 
 Aby lepiej zrozumieć schemat XML użyty w tym miejscu, można zapoznać się ze [schematem konfiguracji usługi](/previous-versions/azure/reference/ee758710(v=azure.100)) , ale poniżej przedstawiono krótkie wyjaśnienie elementów:
 
-**Wystąpienia**  
+**Liczba**  
 Konfiguruje liczbę uruchomionych wystąpień dla roli. Aby zapobiec ewentualnej niedostępności usługi w chmurze podczas uaktualniania, zalecamy wdrożenie więcej niż jednego wystąpienia ról dostępnych w sieci Web. Wdrażając więcej niż jedno wystąpienie, przestrzegasz wytycznych dotyczących usługi [Azure Compute umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/), co gwarantuje 99,95% łączności zewnętrznej dla ról mających dostęp do Internetu po wdrożeniu co najmniej dwóch wystąpień roli dla usługi.
 
 **ConfigurationSettings**  
@@ -216,6 +216,9 @@ Konfigurację usługi w chmurze można zaktualizować, gdy jest ona uruchomiona 
 <a name="cspkg"></a>
 
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
+> [!NOTE]
+> Maksymalny rozmiar pakietu, który można wdrożyć, to 600MB
+
 Aby wdrożyć aplikację jako usługę w chmurze na platformie Azure, musisz najpierw spakować aplikację w odpowiednim formacie. Aby utworzyć plik pakietu jako alternatywę dla programu Visual Studio, można użyć narzędzia wiersza polecenia **CSPack** (zainstalowanego z [zestawem Azure SDK](https://azure.microsoft.com/downloads/)).
 
 **CSPack** używa zawartości pliku definicji usługi i pliku konfiguracji usługi do definiowania zawartości pakietu. **CSPack** generuje plik pakietu aplikacji (. cspkg), który można przekazać do platformy Azure za pomocą [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Domyślnie pakiet nosi nazwę `[ServiceDefinitionFileName].cspkg`, ale można określić inną nazwę przy użyciu opcji `/out` **CSPack**.
@@ -264,7 +267,7 @@ Gdzie zmienne są zdefiniowane w następujący sposób:
 | \[DirectoryName\] |Podkatalog w katalogu głównym projektu, który zawiera plik. csdef projektu platformy Azure. |
 | \[\] definicji |Nazwa pliku definicji usługi. Domyślnie ten plik nosi nazwę ServiceDefinition. csdef. |
 | \[OutputFileName\] |Nazwa wygenerowanego pliku pakietu. Zazwyczaj jest to nazwa aplikacji. Jeśli nazwa pliku nie zostanie określona, pakiet aplikacji zostanie utworzony jako \[ApplicationName\]. cspkg. |
-| \[RoleName\] |Nazwa roli zdefiniowanej w pliku definicji usługi. |
+| \[rolename\] |Nazwa roli zdefiniowanej w pliku definicji usługi. |
 | \[RoleBinariesDirectory] |Lokalizacja plików binarnych dla roli. |
 | \[VirtualPath\] |Katalogi fizyczne dla każdej ścieżki wirtualnej zdefiniowanej w sekcji Lokacje definicji usługi. |
 | \[PhysicalPath\] |Katalogi fizyczne zawartości dla każdej ścieżki wirtualnej zdefiniowanej w węźle lokacja definicji usługi. |

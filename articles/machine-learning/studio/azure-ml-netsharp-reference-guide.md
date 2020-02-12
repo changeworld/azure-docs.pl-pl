@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cf6e07e3bbad6b98fcce9cc0e39cdab97375a2a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427668"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148576"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Przewodnik dotyczący języka specyfikacji sieci NET # neuronowych dla Azure Machine Learning Studio (klasyczny)
 
@@ -56,7 +56,7 @@ Ponadto NET # obsługuje cztery następujące rodzaje zaawansowanych pakietów p
 
 ## <a name="supported-customizations"></a>Obsługiwane dostosowania
 
-Architektura modeli sieci neuronowych utworzonych w Azure Machine Learning Studio (klasyczny) może być szeroko dostosowywana przy użyciu usługi net #. Przekonaj się:
+Architektura modeli sieci neuronowych utworzonych w Azure Machine Learning Studio (klasyczny) może być szeroko dostosowywana przy użyciu usługi net #. Możesz:
 
 + Utwórz ukryte warstwy i kontroluj liczbę węzłów w każdej warstwie.
 + Określ, w jaki sposób warstwy mają być połączone ze sobą.
@@ -89,17 +89,17 @@ Na przykład następująca instrukcja definiuje stałą `x`:
 
 `Const X = 28;`
 
-Aby zdefiniować dwie lub więcej stałych jednocześnie, należy ująć nazwy i wartości identyfikatorów w nawiasach klamrowych i oddzielić je średnikami. Przykład:
+Aby zdefiniować dwie lub więcej stałych jednocześnie, należy ująć nazwy i wartości identyfikatorów w nawiasach klamrowych i oddzielić je średnikami. Na przykład:
 
 `Const { X = 28; Y = 4; }`
 
-Prawa strona każdego wyrażenia przypisania może być liczbą całkowitą, liczbą rzeczywistą, wartością logiczną (true lub false) lub wyrażeniem matematycznym. Przykład:
+Prawa strona każdego wyrażenia przypisania może być liczbą całkowitą, liczbą rzeczywistą, wartością logiczną (true lub false) lub wyrażeniem matematycznym. Na przykład:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Deklaracja warstwy
 
-Deklaracja warstwy jest wymagana. Definiuje rozmiar i źródło warstwy, łącznie z pakietami połączeń i atrybutami. Instrukcja deklaracji zaczyna się od nazwy warstwy (dane wejściowe, ukryte lub wyjściowe), po której następuje wymiary warstwy (spójna kolekcja liczb całkowitych). Przykład:
+Deklaracja warstwy jest wymagana. Definiuje rozmiar i źródło warstwy, łącznie z pakietami połączeń i atrybutami. Instrukcja deklaracji zaczyna się od nazwy warstwy (dane wejściowe, ukryte lub wyjściowe), po której następuje wymiary warstwy (spójna kolekcja liczb całkowitych). Na przykład:
 
 ```Net#
 input Data auto;
@@ -460,6 +460,6 @@ output Digit [10] from Hid3 all;
 + Łączna liczba węzłów można obliczyć przy użyciu deklarowanej wartości wymiaru warstwy [50, 5, 5] w następujący sposób: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + Ponieważ `Sharing[d]` ma wartość false tylko dla `d == 0`, liczba jądra jest `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
-## <a name="acknowledgements"></a>Potwierdzanie
+## <a name="acknowledgements"></a>Podziękowania
 
 Język NET # do dostosowywania architektury sieci neuronowych został opracowany przez firmę Microsoft przez Shon Katzenberger (architekt, Machine Learning) i Alexey Kamenev (inżynier oprogramowania, Microsoft Research). Jest używany wewnętrznie w przypadku projektów i aplikacji usługi Machine Learning w zakresie od wykrywania obrazów do analizy tekstu. Aby uzyskać więcej informacji, zobacz [neuronowych sieci w Azure Machine Learning Studio — wprowadzenie do usługi NET #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)

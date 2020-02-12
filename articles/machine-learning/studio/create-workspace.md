@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 91ba4d1f7d32071cce0de1de528abf02982ce7be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 419fbd987c1deb95a7c903d85105958443d06b01
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427614"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153608"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Tworzenie i udostępnianie obszaru roboczego Azure Machine Learning Studio (klasyczny)
 
@@ -30,14 +30,14 @@ Aby użyć Azure Machine Learning Studio (klasyczny), musisz mieć obszar robocz
     >
     > 
 
-2. Kliknij przycisk **+ nowe**
+2. Kliknij pozycję **+ Nowy**
 
 3. W polu wyszukiwania wpisz **Machine Learning Studio (klasyczny) obszar roboczy** i wybierz pasujący element. Następnie wybierz pozycję **Utwórz** w dolnej części strony.
 
 4. Wprowadź swoje informacje o obszarze roboczym:
 
-   - *Nazwa obszaru roboczego* może być maksymalnie 260 znaków, nie kończy się spacją. Nazwa nie może zawierać następujących znaków: `< > * % & : \ ? + /`
-   - *Planu usługi sieci web* możesz wybrać (lub Utwórz), wraz ze skojarzonego *warstwy cenowej* wybrać, jest używany w przypadku wdrożenia usługi sieci web z obszaru roboczego.
+   - *Nazwa obszaru roboczego* może zawierać maksymalnie 260 znaków, a nie kończy się spacją. Nazwa nie może zawierać następujących znaków: `< > * % & : \ ? + /`
+   - W przypadku wdrażania usług sieci Web z tego obszaru roboczego jest używana wybrana (lub utworzona) *Usługa sieci Web* oraz skojarzona z nią *warstwa cenowa* .
 
      ![Tworzenie nowego obszaru roboczego programu Studio (klasycznego)](./media/create-workspace/create-new-workspace.png)
 
@@ -55,7 +55,7 @@ Po wdrożeniu obszaru roboczego można go otworzyć w Machine Learning Studio (k
 
     ![Wybór obszaru roboczego](./media/create-workspace/open-workspace.png)
 
-3. Kliknij przycisk **eksperymenty**.
+3. Kliknij pozycję **Moje eksperymenty**.
 
     ![Otwórz eksperymentów](./media/create-workspace/my-experiments.png)
 
@@ -66,8 +66,8 @@ Jeśli wystąpi problem podczas tworzenia obszaru roboczego, zobacz [Przewodnik 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Udostępnianie obszaru roboczego Azure Machine Learning Studio (klasyczny)
 Po utworzeniu obszaru roboczego Machine Learning Studio (klasycznego) możesz zapraszać użytkowników do obszaru roboczego, aby udostępniać dostęp do obszaru roboczego i wszystkich jego eksperymentów, zestawów danych, notesów itp. Możesz dodać użytkowników w jednej z dwóch ról:
 
-* **Użytkownik** — użytkownik obszar roboczy można utworzyć, Otwórz, modyfikowanie i usuwanie eksperymenty, zestawy danych itp., w obszarze roboczym.
-* **Właściciel** — właściciel może zapraszać i usuwanie użytkowników w obszarze roboczym, oprócz co można zrobić.
+* **Użytkownik — użytkownik** obszaru roboczego może tworzyć, otwierać, modyfikować i usuwać eksperymenty, zestawy danych itp. w obszarze roboczym.
+* **Właściciel** — właściciel może zapraszać i usuwać użytkowników w obszarze roboczym, a także do tego, co użytkownik może zrobić.
 
 > [!NOTE]
 > Konto administratora, który tworzy obszar roboczy jest automatycznie dodawane do obszaru roboczego jako właściciela obszaru roboczego. Jednak innych administratorów lub użytkowników w tej subskrypcji nie automatycznie uzyskają dostęp do obszaru roboczego — należy zaprosić go jawnie.
@@ -78,11 +78,11 @@ Po utworzeniu obszaru roboczego Machine Learning Studio (klasycznego) możesz za
 
 1. Zaloguj się do Machine Learning Studio (klasyczny) w [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
-2. W okienku po lewej stronie kliknij **ustawienia**
+2. W lewym panelu kliknij pozycję **Ustawienia** .
 
-3. Kliknij przycisk **użytkowników** kartę
+3. Kliknij kartę **Użytkownicy** .
 
-4. Kliknij przycisk **ZAPROŚ więcej użytkowników** w dolnej części strony
+4. Kliknij pozycję **Zaproś więcej użytkowników** u dołu strony
 
     ![Ustawienia programu Studio](./media/create-workspace/settings.png)
 
@@ -90,7 +90,7 @@ Po utworzeniu obszaru roboczego Machine Learning Studio (klasycznego) możesz za
 
 6. Wybierz, czy chcesz dodać użytkowników jako właściciela lub użytkowników.
 
-7. Kliknij przycisk **OK** przycisk znacznika wyboru.
+7. Kliknij przycisk znacznik wyboru **OK** .
 
 Każdy użytkownik dodawanych otrzyma wiadomość e-mail z instrukcjami dotyczącymi sposobu Zaloguj się w udostępnionym obszarze roboczym.
 

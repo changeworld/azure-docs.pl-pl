@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 35814de74fa03f9969cdd48882a5f672cfe306a1
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9d72a64bcc494385384accb75061fffa19fd9337
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67183092"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149200"
 ---
 Z maszyną wirtualną, która jest wdrażana w sieci wirtualnej, można się połączyć, tworząc połączenie pulpitu zdalnego z tą maszyną. Najlepszym sposobem na zweryfikowanie, czy można połączyć się z maszyną wirtualną, jest połączenie się z nią za pomocą jej prywatnego adresu IP, a nie nazwy komputera. W ten sposób można przetestować możliwość połączenia się, a nie poprawność skonfigurowania rozpoznawania nazw.
 
@@ -23,7 +23,7 @@ Z maszyną wirtualną, która jest wdrażana w sieci wirtualnej, można się po�
 
    - Program PowerShell — skorzystaj z przykładu, aby wyświetlić listę maszyn wirtualnych i prywatnych adresów IP z grup zasobów. Przed użyciem tego przykładu nie trzeba go modyfikować.
 
-     ```powershell
+     ```azurepowershell-interactive
      $VMs = Get-AzVM
      $Nics = Get-AzNetworkInterface | Where VirtualMachine -ne $null
 

@@ -3,12 +3,12 @@ title: Opcje uwierzytelniania rejestru
 description: Opcje uwierzytelniania dla prywatnego rejestru kontenerów platformy Azure, w tym logowanie za pomocą tożsamości Azure Active Directory, korzystanie z jednostek usługi i używanie opcjonalnych poświadczeń administratora.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 384f401a986c58dc6ce63384ce3e2a43b8db27fa
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5459ac29c1264b18404cb2863b9d4209907ac029
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029881"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152947"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Uwierzytelnianie przy użyciu usługi Azure Container Registry
 
@@ -23,7 +23,7 @@ W poniższej tabeli wymieniono dostępne metody uwierzytelniania i zalecane scen
 | Metoda                               | Jak uwierzytelniać                                           | Scenariusze                                                            | Kontrola dostępu oparta na rolach                             | Ograniczenia                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [Indywidualna tożsamość usługi AD](#individual-login-with-azure-ad)                |  `az acr login`w interfejsie wiersza polecenia platformy Azure                             | Interaktywny Wypychanie/Ściąganie przez deweloperów, testerów                                    | Yes                              | Token usługi AD musi być odnawiany co 3 godziny     |
-|   [główna usługi AD](#service-principal)                 | `docker login`<br/><br/>`az acr login` w interfejsie wiersza polecenia platformy Azure<br/><br/> Ustawienia logowania do rejestru w interfejsach API lub narzędziach<br/><br/> Kubernetes     ściągnięcia                                       | Nienadzorowane wypychanie z potoku ciągłej integracji/ciągłego wdrażania<br/><br/> Nienadzorowane ściąganie do platformy Azure lub usług zewnętrznych  | Yes                              | Domyślne wygaśnięcie hasła SP to 1 rok       |                                                           
+|   [główna usługi AD](#service-principal)                 | `docker login`<br/><br/>`az acr login` w interfejsie wiersza polecenia platformy Azure<br/><br/> Ustawienia logowania do rejestru w interfejsach API lub narzędziach<br/><br/> [Kubernetes     ściągnięcia](container-registry-auth-kubernetes.md)                                       | Nienadzorowane wypychanie z potoku ciągłej integracji/ciągłego wdrażania<br/><br/> Nienadzorowane ściąganie do platformy Azure lub usług zewnętrznych  | Yes                              | Domyślne wygaśnięcie hasła SP to 1 rok       |                                                           
 | [Integracja z usługą AKS](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | Dołącz rejestr podczas tworzenia lub aktualizowania klastra AKS  | Nienadzorowany ściąganie do klastra AKS                                                  | Nie, tylko dostęp do ściągania             | Dostępne tylko z klastrem AKS            |
 | [Zarządzana tożsamość dla zasobów platformy Azure](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>  `az acr login`w interfejsie wiersza polecenia platformy Azure                                       | Nienadzorowane wypychanie z potoku ciągłej integracji/ciągłego wdrażania platformy Azure<br/><br/> Nienadzorowane ściąganie do usług platformy Azure<br/><br/>   | Yes                              | Używaj tylko z usług platformy Azure, które [obsługują tożsamości zarządzane dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)              |
 |   [użytkownika administracyjnego](#admin-account)                           | `docker login`                                          | Interaktywny Wypychanie/Ściąganie przez indywidualnych deweloperów lub testerów                           | Nie, zawsze Uzyskuj dostęp do ściągania i wypychania  | Pojedyncze konto na rejestr, niezalecane dla wielu użytkowników         |

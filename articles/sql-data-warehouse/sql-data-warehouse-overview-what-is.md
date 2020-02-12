@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 68d39b4f363794d50fd05c2067502fc55d5d0170
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760763"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153251"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co to jest Azure Synapse Analytics (dawniej SQL DW)?
 
-Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, przy użyciu bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali. Usługa Azure Synapse udostępnia te dwa światy wraz z ujednoliconym doświadczeniem w zakresie pozyskiwania, przygotowywania i zarządzania danymi oraz do obsługi danych w celu natychmiastowej analizy biznesowej i uczenia maszynowego
+Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie danych przedsiębiorstwa z analizą danych big data. Zapewnia swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z bezserwerowych zasobów na żądanie lub aprowizowanych zasobów — w dużej skali. Usługa Azure Synapse udostępnia te dwa światy wraz z ujednoliconym doświadczeniem w zakresie pozyskiwania, przygotowywania i zarządzania danymi oraz do obsługi danych w celu natychmiastowej analizy biznesowej i uczenia maszynowego
 
 Usługa Azure Synapse ma cztery składniki:
 - Analiza SQL: Kompletna Analiza oparta na języku T-SQL — ogólnie dostępna

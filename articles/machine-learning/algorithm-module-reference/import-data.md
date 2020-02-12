@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 161c6816bbef31142c576f52fd122d9dd8af7883
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.openlocfilehash: 930ff1abf77c4e28d377daf12174ff3fbb60cf23
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546660"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152248"
 ---
 # <a name="import-data-module"></a>Importuj moduł danych
 
@@ -35,7 +35,7 @@ Moduł **Importuj dane** obsługuje odczyt danych z następujących źródeł:
     - Udział plików platformy Azure
     - Azure Data Lake
     - Azure Data Lake Gen2
-    - Baza danych SQL Azure
+    - Azure SQL Database
     - Azure PostgreSQL    
 
 Przed rozpoczęciem korzystania z magazynu w chmurze musisz najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [jak uzyskać dostęp do danych](../how-to-access-data.md). 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 11ee8f52a8fd4db2d052eeaeef1387b011d23050
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131549"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152503"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>Użyj kodera TriCaster NewTek, aby wysłać strumień na żywo o pojedynczej szybkości transmisji bitów  
 > [!div class="op_single_selector"]
@@ -34,10 +34,10 @@ W tym artykule pokazano, jak skonfigurować koder [NewTek TriCaster](https://new
 
 W tym samouczku przedstawiono sposób zarządzania usługi Azure Media Services (AMS) przy użyciu narzędzia Azure Media Services Explorer (AMSE). To narzędzie jest uruchamiane tylko na komputerze Windows. Jeśli jesteś w systemie Mac lub Linux, użyj Azure Portal, aby utworzyć [kanały](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) i [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
+W przypadku korzystania z TriCaster w celu wysyłania danych w kanale informacyjnym do kanałów usługi AMS, w których włączono obsługę kodowania na żywo, w zdarzeniu na żywo mogą występować problemy z odtwarzaniem wideo/audio, jeśli używasz niektórych funkcji TriCaster, takich jak szybkie wycinanie między źródłami danych lub przełączanie do/z kart. Zespół AMS pracuje nad rozwiązaniem tych problemów, dopóki nie jest to zalecane.
+
 > [!NOTE]
-> W przypadku korzystania z TriCaster w celu wysyłania danych w kanale informacyjnym do kanałów usługi AMS, w których włączono obsługę kodowania na żywo, w zdarzeniu na żywo mogą występować problemy z odtwarzaniem wideo/audio, jeśli używasz niektórych funkcji TriCaster, takich jak szybkie wycinanie między źródłami danych lub przełączanie do/z kart. Zespół AMS pracuje nad rozwiązaniem tych problemów, dopóki nie jest to zalecane.
->
->
+>  Rozważ przejście do protokołu TLS 1,2, wersji prefferred TLS.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

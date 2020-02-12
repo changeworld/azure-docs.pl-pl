@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 8eea568217dc5f47c45433e5fdd755682e322b2f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134050"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153863"
 ---
 # <a name="azure-serial-console"></a>Konsola szeregowa platformy Azure
 
@@ -66,37 +66,6 @@ Konsola szeregowa jest dostępna dla zestawów skalowania maszyn wirtualnych, kt
   1. W sekcji **Pomoc techniczna i rozwiązywanie problemów** wybierz pozycję **konsola szeregowa**. Nowe okienko z konsolą szeregową otwiera się i rozpoczyna połączenie.
 
      ![Konsola szeregowa zestawu skalowania maszyn wirtualnych z systemem Linux](./media/virtual-machines-serial-console/vmss-start-console.gif)
-
-## <a name="serial-console-rbac-role"></a>Rola RBAC konsoli szeregowej
-Jak wspomniano powyżej, konsola szeregowa wymaga współautora maszyny wirtualnej lub większy dostęp do maszyny wirtualnej lub zestawu skalowania maszyn wirtualnych. Jeśli nie chcesz przyznawać współautor maszyny wirtualnej użytkownikowi, ale mimo to chcesz umożliwić użytkownikowi dostęp do konsoli szeregowej, możesz to zrobić z następującą rolą:
-
-```
-{
-  "Name": "Serial Console Role",
-  "IsCustom": true,
-  "Description": "Role for Serial Console Users that provides significantly reduced access than VM Contributor",
-  "Actions": [
-      "Microsoft.Compute/virtualMachines/*/write",
-      "Microsoft.Compute/virtualMachines/*/read",
-      "Microsoft.Storage/storageAccounts/*"
-  ],
-  "NotActions": [],
-  "DataActions": [],
-  "NotDataActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<subscriptionId>"
-  ]
-}
-```
-
-### <a name="to-create-and-use-the-role"></a>Aby utworzyć rolę i korzystać z niej:
-*   Zapisz kod JSON we wskazanej lokalizacji — np. `~/serialconsolerole.json`.
-*   Aby utworzyć definicję roli, użyj następującego polecenia AZ CLI: `az role definition create --role-definition serialconsolerole.json -o=json`
-*   Jeśli musisz zaktualizować rolę, użyj następującego polecenia: `az role definition update --role-definition serialconsolerole.json -o=json`
-*   Rola zostanie wyświetlona w Access Control (IAM) w portalu (może to potrwać kilka minut)
-*   Możesz dodać użytkowników do maszyny wirtualnej i konta magazynu diagnostyki rozruchu z rolą roli niestandardowej
-    *   Należy pamiętać, że użytkownik musi mieć przydzielone rolę niestandardową na maszynie wirtualnej *i* koncie magazynu diagnostyki rozruchu
-
 
 ## <a name="advanced-uses-for-serial-console"></a>Zaawansowane zastosowania konsoli szeregowej
 Poza dostępem konsoli do maszyny wirtualnej można również użyć konsoli szeregowej platformy Azure dla następujących zasobów:

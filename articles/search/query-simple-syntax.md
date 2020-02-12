@@ -1,5 +1,5 @@
 ---
-title: Składnia prostego zapytania
+title: Prosta składnia zapytań
 titleSuffix: Azure Cognitive Search
 description: Odwołanie do prostej składni zapytania używanej na potrzeby zapytań wyszukiwania pełnotekstowego w usłudze Azure Wyszukiwanie poznawcze.
 manager: nitinme
@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,19 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fb98be9975de38ec9f65e723e078a1db8755b4ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792552"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152673"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Prosta Składnia zapytania w usłudze Azure Wyszukiwanie poznawcze
 
 Platforma Azure Wyszukiwanie poznawcze implementuje dwa języki zapytań opartych na Lucene: [prosty Analizator zapytań](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) i [Analizator zapytań Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). W przypadku usługi Azure Wyszukiwanie poznawcze prosta Składnia zapytania wyklucza opcje rozmyte/slop.  
 
-> [!NOTE]  
->  Usługa Azure Wyszukiwanie poznawcze udostępnia alternatywną [składnię zapytań Lucene](query-lucene-syntax.md) dla bardziej złożonych zapytań. Aby dowiedzieć się więcej o architekturze analizy zapytań i korzyściach każdej z nich, zobacz [jak działa wyszukiwanie pełnotekstowe w usłudze Azure wyszukiwanie poznawcze](search-lucene-query-architecture.md).
+> [!NOTE]
+> Prosta Składnia zapytania jest używana dla wyrażeń zapytania, które przechodzą w parametr **wyszukiwania** interfejsu API [dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) , nie należy mylić ze [składnią OData](query-odata-filter-orderby-syntax.md) UŻYTĄ dla parametru [$Filter](search-filters.md) tego interfejsu API. Te różne składni mają własne reguły tworzenia zapytań, ciągów ucieczki i tak dalej.
+>
+> Usługa Azure Wyszukiwanie poznawcze udostępnia alternatywną, [pełną składnię zapytań Lucene](query-lucene-syntax.md) dla bardziej złożonych zapytań w parametrze **wyszukiwania** . Aby dowiedzieć się więcej o architekturze analizy zapytań i korzyściach każdej z nich, zobacz [jak działa wyszukiwanie pełnotekstowe w usłudze Azure wyszukiwanie poznawcze](search-lucene-query-architecture.md).
 
 ## <a name="how-to-invoke-simple-parsing"></a>Jak wywołać prostą analizę
 
@@ -72,7 +74,7 @@ Operatorem sufiksu jest gwiazdka `*`. Na przykład `lux*` będzie wyszukiwać do
 
 ## <a name="phrase-search-operator"></a>Operator wyszukiwania frazy
 
-Operator phrase ujmuje frazę w cudzysłowie `" "`. Na przykład, podczas `Roach Motel` (bez cudzysłowów) Wyszukiwanie dokumentów zawierających `Roach` i/lub `Motel` w dowolnym porządku, `"Roach Motel"` (z cudzysłowami) będzie pasować tylko do dokumentów zawierających całą frazę i w tej kolejności (analiza tekstu nadal ma zastosowanie).
+Operator phrase ujmuje frazę w cudzysłowie `" "`. Na przykład, gdy `Roach Motel` (bez cudzysłowów) przeszuka dokumenty zawierające `Roach` i/lub `Motel` w dowolnym porządku, `"Roach Motel"` (z cudzysłowami) będzie pasować tylko do dokumentów zawierających całą frazę i w tej kolejności (analiza tekstu nadal dotyczy).
 
 ## <a name="precedence-operator"></a>Operator pierwszeństwa
 
@@ -88,7 +90,7 @@ Operator pierwszeństwa ujmuje ciąg w nawiasach `( )`. Na przykład `motel+(wif
 > [!NOTE]  
 >  Mimo że ucieczki przechowuje tokeny, analiza tekstu może je podzielić, w zależności od trybu analizy. Aby uzyskać szczegółowe informacje, zobacz temat [Obsługa &#40;języka Azure wyszukiwanie poznawcze REST API&#41; ](index-add-language-analyzers.md) .  
 
-## <a name="see-also"></a>Zobacz także  
+## <a name="see-also"></a>Zobacz też  
 
 + [Wyszukaj dokumenty &#40;w interfejsie API REST usługi Azure wyszukiwanie poznawcze&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
 + [Składnia zapytań Lucene](query-lucene-syntax.md)

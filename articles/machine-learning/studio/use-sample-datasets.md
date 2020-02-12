@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211a2a83d2668c3240daca11e9063b31d42655ae
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427442"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152758"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Korzystanie z przykładowych zestawów danych w Azure Machine Learning Studio (klasyczny)
 [top]: #machine-learning-sample-datasets
@@ -259,7 +259,7 @@ Podzbiór danych z Narodowego Instytutu cukrzycą oraz baza danych z chorobami t
 </tr>
 
 <tr>
-  <td>Dane klienta restauracji</td>
+  <td>Restauracje — dane klienta</td>
   <td>
 Zestaw metadanych o klientach, w tym dane demograficzne i preferencje.
 <p></p>
@@ -270,7 +270,7 @@ Zestaw metadanych o klientach, w tym dane demograficzne i preferencje.
 </tr>
 
 <tr>
-  <td>Dane cech restauracji</td>
+  <td>Dane funkcji restauracji</td>
   <td>
 Zestaw metadanych dotyczących restauracji i ich funkcji, takich jak typ żywności, styl rekomendowanych lokali i lokalizacja.
 <p></p>
@@ -281,7 +281,7 @@ Zestaw metadanych dotyczących restauracji i ich funkcji, takich jak typ żywno�
 </tr>
 
 <tr>
-  <td>Oceny restauracji</td>
+  <td>Klasyfikacje restauracji</td>
   <td>
 Zawiera klasyfikacje nadawane przez użytkowników dla restauracji w skali od 0 do 2.
 <p></p>
@@ -358,28 +358,28 @@ Należy zauważyć, że w niektórych firmach nie znaleziono artykułu, więc li
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">plik direct_marketing. csv</a></td>
   <td>
 Zestaw danych zawiera dane klienta i informacje o ich odpowiedzi na bezpośrednią kampanię korespondencyjną. Każdy wiersz reprezentuje klienta. Zestaw danych zawiera dziewięć funkcji dotyczących elementów demograficznych użytkownika i przeszłe zachowanie oraz trzy kolumny etykiet (odwiedzin, konwersji i wydatków).  Odwiedzanie jest kolumną binarną, która wskazuje, że klient odwiedził po kampanii marketingowej. Konwersja wskazuje, że klient kupił coś. Wydatki to kwota, która została pobrana.  Zestaw danych został udostępniony przez Jan Hillstrom na potrzeby analizy poczty E-Mail MineThatData i wyzwania wyszukiwania danych.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">plik lyrl2004_tokens_test. csv</a></td>
   <td>
 Przykłady testów w zestawie danych Aktualności RCV1-v2 firmy Reuters. Zestaw danych zawiera 781K artykuły z wiadomościami oraz ich identyfikatory (pierwsza kolumna zestawu danych). Każdy artykuł ma tokeny, stopworded i odszukane. Zestaw danych został udostępniony przez David. D. Lewis przedstawiają.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">plik lyrl2004_tokens_train. csv</a></td>
   <td>
 Przykłady szkoleń w zestawie danych RCV1-v2 Reuters News. Zestaw danych zawiera 23K artykuły z wiadomościami oraz ich identyfikatory (pierwsza kolumna zestawu danych). Każdy artykuł ma tokeny, stopworded i odszukane. Zestaw danych został udostępniony przez David. D. Lewis przedstawiają.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">plik network_intrusion_detection. csv</a><br></td>
   <td>
 Zestaw danych z KDD 1999 wiedzy dotyczącej narzędzi do odnajdywania i wyszukiwania danych (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99. html</a>).
 <p></p>
@@ -388,14 +388,14 @@ Zestaw danych został pobrany i zapisany w usłudze Azure Blob Storage (<a href=
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. temats. qrels. csv</a></td>
   <td>
 Przypisania tematu dotyczące artykułów z wiadomościami w zestawie danych RCV1-v2 Reuters News. Artykuł z wiadomościami można przypisać do kilku tematów. Każdy wiersz jest w formacie "&lt;nazwa tematu&gt; &lt;identyfikator dokumentu&gt; 1". Zestaw danych zawiera 2,6 M przypisań tematu. Zestaw danych został udostępniony przez David. D. Lewis przedstawiają.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
   <td>
 Te dane pochodzą z wyzwania testowego oceny wydajności KDD filiżanki 2010 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Ocena wydajności ucznia</a>). Używane dane to Algebra_2008_2009 zestawu szkoleniowego (Sygnatura, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebry I 2008-2009. Zestaw danych wyzwania z KDD 2010 filiżanki — wyzwanie dla wyszukiwania danych edukacyjnych. Znajdź go przy <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">pobieraniu. jsp</a>.
 <p></p>

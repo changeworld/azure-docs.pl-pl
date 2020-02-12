@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 81e232e37e437c4fa9d23a49a720b88511423905
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3972fb3c0717069f84b177c54e8fc002ec52f469
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427579"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152877"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Wprowadzenie do języka programowania R w Azure Machine Learning Studio (klasyczny)
 
@@ -163,7 +163,7 @@ Zaczniemy od ładowania pliku **csdairydata. csv** do Azure Machine Learning Stu
 Teraz, gdy mamy pewne dane w Machine Learning Studio (klasyczne), musimy utworzyć eksperyment, aby przeprowadzić analizę.  
 
 1. Wybierz pozycję **+ Nowy** w lewym dolnym rogu, a następnie wybierz pozycję **eksperymenty**, a następnie przycisk **pusty eksperyment**.
-1. Można określić nazwę eksperymentu wybierając i modyfikowanie **eksperymentu utworzony na...** tytuł w górnej części strony. Na przykład zmiana na **przeanalizowanie mleczarni urzędu certyfikacji**.
+1. Możesz nazwać eksperyment poprzez wybranie i zmodyfikowanie **eksperymentu utworzonego w...** title w górnej części strony. Na przykład zmiana na **przeanalizowanie mleczarni urzędu certyfikacji**.
 1. Po lewej stronie eksperymentu rozwiń pozycję **zapisane zestawy danych**, a następnie **Moje zestawy danych**. Powinien zostać wyświetlony wcześniej przekazany plik **cadairydata. csv** .
 1. Przeciągnij i upuść **zestaw danych csdairydata. csv** na eksperyment.
 1. W polu **Wyszukaj elementy eksperymentu** w górnej części okienka po lewej stronie wpisz polecenie [Execute R Script][execute-r-script]. Moduł zostanie wyświetlony na liście wyszukiwania.
@@ -503,7 +503,7 @@ Uruchom ten kod w eksperymentie i sprawdź wynik z dziennika danych wyjściowych
 
 *Rysunek 11. Podsumowanie ramki Dataframe zawierającej dwie kolumny usunięte.*
 
-Dobre wiadomości! Otrzymamy oczekiwane wyniki.
+Dobra wiadomość! Otrzymamy oczekiwane wyniki.
 
 ### <a name="add-a-new-column"></a>Dodaj nową kolumnę
 

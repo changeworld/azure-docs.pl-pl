@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19ae6e8fd8e8a3118343ed8734abb67bc817c3d5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454701"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153472"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretowanie wyników modelu w Azure Machine Learning Studio (klasyczny)
 W tym temacie wyjaśniono, jak wizualizować i interpretować wyniki prognozowania w Azure Machine Learning Studio (klasyczny). Po przeprowadzeniu szkolenia modelu i zakończeniu przewidywania względem niego ("Ocena modelu") należy zrozumieć i zinterpretować wynik przewidywania.
@@ -224,7 +224,7 @@ W przypadku systemów zalecanych można użyć problemu z zaleceniem restauracji
 
 * Klasyfikacje restauracji od klientów
 * Dane funkcji klienta
-* Dane cech restauracji
+* Dane funkcji restauracji
 
 Istnieje kilka rzeczy, które można wykonać za pomocą modułu [polecania szkolenia Matchbox][train-matchbox-recommender] w Azure Machine Learning Studio (klasyczny):
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: ba7afb506a21df7fc2fe4cc4b7194549b6efde83
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050566"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150701"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie programu TeamViewer do automatycznej aprowizacji użytkowników
 
@@ -40,7 +40,8 @@ Scenariusz opisany w tym samouczku założono, że masz już następujące wymag
 
 * [Dzierżawa usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Konto użytkownika w usłudze Azure AD z [uprawnieniami](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) do konfigurowania aprowizacji (np. Administrator aplikacji, administrator aplikacji w chmurze, właściciel aplikacji lub Administrator globalny). 
-* Konto programu TeamViewer z uprawnieniami administratora.
+* Prawidłowa [licencja](https://www.teamviewer.com/de/teamviewer-tensor/) na Dwuelementowy dla programu TeamViewer.
+* Dostępny jest prawidłowy identyfikator niestandardowy z konfiguracji [logowania jednokrotnego](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723) .
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Planowanie wdrożenia aprowizacji
 1. Dowiedz się [, jak działa usługa aprowizacji](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
@@ -49,7 +50,7 @@ Scenariusz opisany w tym samouczku założono, że masz już następujące wymag
 
 ## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurowanie programu TeamViewer do obsługi aprowizacji za pomocą usługi Azure AD
 
-1. Zaloguj się do konsoli administracyjnej aplikacji TeamViewer. Przejdź do **edytowania profilu**.
+1. Zaloguj się do [konsoli zarządzania programu TeamViewer](https://login.teamviewer.com). Przejdź do **edytowania profilu**.
 
     ![Konsola administracyjna programu TeamViewer](./media/teamviewer-provisioning-tutorial/admin.png)
 

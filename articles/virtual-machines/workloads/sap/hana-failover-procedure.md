@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2c8483948deae41edbe3922dc77361ba2c58a94
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 40511aac29182dafbe01408960376589198ceb64
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099863"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151925"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Procedura przechodzenia w tryb failover odzyskiwania po awarii
 
@@ -34,12 +34,12 @@ Istnieją dwa przypadki, które należy wziąć pod uwagę w przypadku przełąc
 >[!NOTE]
 >Poniższe kroki należy wykonać w jednostce dużego wystąpienia HANA, która reprezentuje jednostkę odzyskiwania po awarii. 
  
-Aby przywrócić najnowsze zreplikowane migawki magazynu, wykonaj kroki opisane w sekcji "wykonywanie pełnej pracy awaryjnej trybu failover — azure_hana_dr_failover" w [narzędziu Microsoft Snapshot Tools for SAP HANA na platformie Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf). 
+Aby przywrócić najnowsze zreplikowane migawki magazynu, wykonaj kroki opisane w sekcji "wykonywanie pełnego trybu failover odzyskiwania po awarii — azure_hana_dr_failover" w [narzędziu Microsoft Snapshot Tools dla SAP HANA na platformie Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
 
 Jeśli chcesz, aby wiele wystąpień SAP HANA przekroczyć do trybu failover, uruchom polecenie azure_hana_dr_failover kilka razy. Gdy jest to wymagane, wprowadź SAP HANA identyfikator SID, który chcesz przełączyć i przywrócić. 
 
 
-Można testować tryb failover odzyskiwania po awarii bez wywierania wpływu na rzeczywistą relację replikacji. Aby przeprowadzić test pracy w trybie failover, wykonaj kroki opisane w sekcji "Przeprowadź test pracy w trybie failover DR-azure_hana_test_dr_failover" w [narzędziu Microsoft Snapshot Tools for SAP HANA na platformie Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf). 
+Można testować tryb failover odzyskiwania po awarii bez wywierania wpływu na rzeczywistą relację replikacji. Aby przeprowadzić test pracy w trybie failover, wykonaj kroki opisane w sekcji "Przeprowadź test pracy w trybie failover DR azure_hana_test_dr_failover" w [narzędziu Microsoft Snapshot Tools dla SAP HANA na platformie Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
 
 >[!IMPORTANT]
 >*Nie* należy uruchamiać żadnych transakcji produkcyjnych w wystąpieniu, które zostało utworzone w witrynie odzyskiwania po awarii, za pomocą procesu **testowania trybu failover**. Polecenie azure_hana_test_dr_failover tworzy zestaw woluminów, które nie mają relacji z lokacją główną. W związku z tym synchronizacja z powrotem do lokacji głównej *nie* jest możliwa. 
@@ -117,7 +117,7 @@ Wykonaj następujące kroki:
 
 Aby monitorować stan postępu replikacji magazynu, uruchom skrypt `azure_hana_replication_status`. To polecenie musi zostać uruchomione z jednostki, która działa w lokalizacji odzyskiwania po awarii, aby działać zgodnie z oczekiwaniami. Polecenie działa niezależnie od tego, czy replikacja jest aktywna. Polecenie można uruchomić dla każdej jednostki usługi HANA o dużej instancji w ramach dzierżawy w lokalizacji odzyskiwania po awarii. Nie można jej użyć do uzyskania szczegółowych informacji o woluminie rozruchowym. 
 
-Aby uzyskać więcej informacji na temat polecenia i jego danych wyjściowych, zobacz "Pobierz DR Replication status-azure_hana_replication_status" w [narzędziu Microsoft Snapshot Tools for SAP HANA na platformie Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf).
+Aby uzyskać więcej informacji na temat polecenia i jego danych wyjściowych, zobacz "Pobierz stan replikacji DR-azure_hana_replication_status" w [narzędziu Microsoft Snapshot Tools for SAP HANA na platformie Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf).
 
 
 ## <a name="next-steps"></a>Następne kroki

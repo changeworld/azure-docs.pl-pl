@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: ce232fc9216166e94520203bb4afbf4c152aaf6f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314933"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152129"
 ---
 # <a name="partition-and-sample-module"></a>Partycja i Przykładowa moduł
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Ten moduł służy do wykonywania próbkowania w zestawie danych lub tworzenia partycji z zestawu danych.
 
@@ -44,7 +44,7 @@ Próbkowanie jest ważnym narzędziem w uczeniu maszynowym, ponieważ umożliwia
 
 Ten moduł obsługuje wiele metod dzielenia danych na partycje lub do próbkowania. Najpierw wybierz metodę, a następnie ustaw dodatkowe opcje wymagane przez metodę.
 
-- Główny
+- Head
 - Próbkowanie
 - Przypisz do zagięć
 - Wybierz złożenie

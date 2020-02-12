@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680957"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152996"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokalne wdrożenie narzędzia Git do Azure App Service
 
@@ -50,6 +50,9 @@ Aby uzyskać adres URL umożliwiający lokalne wdrożenie narzędzia Git dla ist
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
+> [!NOTE]
+> Jeśli używasz planu usługi App-Service-system dla systemu Linux, musisz dodać ten parametr:--Runtime Python | 3.7
+
 
 Lub, aby utworzyć nową aplikację z obsługą git, uruchom [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) w Cloud Shell z parametrem `--deployment-local-git`. Zastąp \<App-Name >, \<nazwy grupy > i \<Zaplanuj nazwę > nazwami nowej aplikacji git, jej grupą zasobów platformy Azure i planem Azure App Service.
 
@@ -142,7 +145,7 @@ Aby włączyć lokalne wdrożenie narzędzia Git dla aplikacji przy użyciu Azur
 
 W przypadku publikowania w aplikacji App Service na platformie Azure przy użyciu narzędzia Git mogą pojawić się następujące typowe komunikaty o błędach:
 
-|Wiadomość|Przyczyna|Rozdzielczość
+|Komunikat|Przyczyna|Rozwiązanie
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Aplikacja nie działa.|Uruchom aplikację w Azure Portal. Wdrożenie narzędzia Git jest niedostępne, gdy aplikacja sieci Web jest zatrzymana.|
 |`Couldn't resolve host 'hostname'`|Informacje o adresie dla elementu zdalnego "Azure" są nieprawidłowe.|Użyj polecenia `git remote -v`, aby wyświetlić listę wszystkich zdalnych, wraz z skojarzonym adresem URL. Sprawdź, czy adres URL dla zdalnego "Azure" jest prawidłowy. W razie konieczności Usuń i Utwórz ponownie ten zdalny przy użyciu poprawnego adresu URL.|
@@ -151,7 +154,7 @@ W przypadku publikowania w aplikacji App Service na platformie Azure przy użyci
 |`RPC failed; result=22, HTTP code = 5xx.`|Ten błąd może wystąpić, jeśli spróbujesz wypchnąć duże repozytorium Git za pośrednictwem protokołu HTTPS.|Zmień konfigurację Git na komputerze lokalnym, aby zwiększyć `postBuffer`. Na przykład: `git config --global http.postBuffer 524288000`.|
 |`Error - Changes committed to remote repository but your web app not updated.`|Aplikacja Node. js została wdrożona przy użyciu pliku _Package. JSON_ , który określa dodatkowe wymagane moduły.|Przed wystąpieniem tego błędu Przejrzyj `npm ERR!` komunikaty o błędach, aby uzyskać więcej kontekstu. Poniżej przedstawiono znane przyczyny tego błędu oraz odpowiadające im komunikaty `npm ERR!`:<br /><br />**Nieprawidłowo sformułowany plik Package. JSON**: `npm ERR! Couldn't read dependencies.`<br /><br />**Moduł macierzysty nie ma dystrybucji binarnej dla systemu Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />lub <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Dokumentacja programu Project kudu](https://github.com/projectkudu/kudu/wiki)
 - [Ciągłe wdrażanie do Azure App Service](deploy-continuous-deployment.md)

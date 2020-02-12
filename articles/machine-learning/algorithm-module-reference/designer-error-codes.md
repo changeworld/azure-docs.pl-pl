@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: a6aeb4022ee7cbce465f88a246303f80acfb883b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: cf343773695275bc5600ab59e1cd719374d65700
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311669"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152367"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer"></a>Wyjątki i kody błędów dla projektanta
+# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Wyjątki i kody błędów dla projektanta (wersja zapoznawcza)
 
-W tym artykule opisano komunikaty o błędach i kody wyjątków w programie Azure Machine Learning Designer, które ułatwiają rozwiązywanie problemów z potokami uczenia maszynowego.
+W tym artykule opisano komunikaty o błędach i kody wyjątków w programie Azure Machine Learning Designer (wersja zapoznawcza), które ułatwiają rozwiązywanie problemów z potokami uczenia maszynowego.
 
 Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w projektancie:  
 
@@ -63,7 +63,7 @@ Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w projekt
 
  Ten błąd zostanie wyświetlony w Azure Machine Learning, jeśli jakiekolwiek dane wejściowe lub parametry modułu mają wartość null lub są puste.  Ten błąd może wystąpić na przykład wtedy, gdy nie została wpisana żadna wartość parametru. Może się to zdarzyć również w przypadku wybrania zestawu danych, który ma brakujące wartości, lub pustego zestawu danych.  
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 + Otwórz moduł, który wygenerował wyjątek, i sprawdź, czy zostały określone wszystkie dane wejściowe. Upewnij się, że wszystkie wymagane dane wejściowe są określone. 
 + Upewnij się, że dane, które są ładowane z usługi Azure Storage, są dostępne i że nazwa lub klucz konta nie uległ zmianie.  
@@ -126,7 +126,7 @@ Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w projekt
 
  Ten błąd może również pojawić się, jeśli określisz dwa zestawy danych, które muszą być zgodne w jakiś sposób. Na przykład, jeśli zmieniasz nazwy kolumn i określisz kolumny według indeksu, liczba dostarczonych nazw musi być zgodna z liczbą indeksów kolumn. Innym przykładem może być operacja matematyczna korzystająca z dwóch kolumn, gdzie kolumny muszą zawierać taką samą liczbę wierszy. 
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
  + Otwórz dany moduł i przejrzyj wszystkie ustawienia właściwości liczbowych.
  + Upewnij się, że wszystkie wartości parametrów mieszczą się w obsługiwanym zakresie wartości dla tej właściwości.
@@ -171,7 +171,7 @@ Ten błąd występuje w projektancie Azure Machine Learning podczas określania 
  + Nie określono w pełni ścieżki pliku (ścieżka do obiektu BLOB)
    
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 Takie problemy często występują podczas próby ręcznego wprowadzenia nazwy konta, hasła lub ścieżki kontenera. Zalecamy używanie nowego kreatora dla modułu [Importuj dane](import-data.md) , który ułatwia wyszukiwanie i sprawdzanie nazw.
 
@@ -238,7 +238,7 @@ Jeśli podano pełną ścieżkę do obiektu BLOB, należy sprawdzić, czy ście�
 
  Ten błąd występuje zawsze, gdy szkolony model jest niezgodny z połączonym modułem oceniania. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the pipeline is run.  -->
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 Określ typ, który jest wytwarzany przez moduł szkoleń, i określ moduł oceniający, który jest odpowiedni dla tego samouczka. 
 
@@ -272,7 +272,7 @@ Jeśli model został przeszkolony przy użyciu dowolnego z wyspecjalizowanych mo
 
  Ten błąd występuje, gdy kolumna zawiera zbyt wiele unikatowych wartości.  Na przykład ten błąd może pojawić się, jeśli określisz, że kolumna będzie obsługiwana jako dane kategorii, ale w kolumnie jest zbyt wiele unikatowych wartości, aby zezwolić na ukończenie przetwarzania. Ten błąd może również pojawić się, jeśli występuje niezgodność między liczbą unikatowych wartości w dwóch danych wejściowych.   
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 Otwórz moduł, który wygenerował błąd, i zidentyfikuj kolumny używane jako dane wejściowe. W przypadku niektórych modułów można kliknąć prawym przyciskiem myszy dane wejściowe zestawu danych i wybrać polecenie **Wizualizuj** , aby uzyskać statystyki dla poszczególnych kolumn, w tym liczbę unikatowych wartości i ich rozkład.
 
@@ -324,7 +324,7 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 
  Na przykład ten błąd może pojawić się w Azure Machine Learning, jeśli wybór kolumny zawiera kolumnę o typie danych, który nie może być przetwarzany przez moduł, taki jak kolumna ciągów dla operacji matematycznych, lub kolumna oceny, w której znajduje się kolumna funkcji kategorii Wymagane.  
 
-**Rozwiązanie:**
+**Tłumaczenia**
  1. Określ kolumnę, której dotyczy problem.
  2. Zapoznaj się z wymaganiami modułu.
  3. Zmodyfikuj kolumnę, aby była zgodna z wymaganiami. Może być konieczne użycie kilku z następujących modułów, aby wprowadzić zmiany, w zależności od kolumny i konwersji, którą próbujesz wykonać:
@@ -348,7 +348,7 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 ## <a name="error-0018"></a>0018 błędów  
  Wyjątek występuje, jeśli wejściowy zestaw danych jest nieprawidłowy.  
 
-**Rozwiązanie:** Ten błąd w Azure Machine Learning może występować w wielu kontekstach, więc nie istnieje pojedyncze rozwiązanie. Ogólnie rzecz biorąc, błąd wskazuje, że dane podane jako dane wejściowe modułu mają nieprawidłową liczbę kolumn lub że typ danych nie jest zgodny z wymaganiami modułu. Przykład:  
+**Rozwiązanie:** Ten błąd w Azure Machine Learning może występować w wielu kontekstach, więc nie istnieje pojedyncze rozwiązanie. Ogólnie rzecz biorąc, błąd wskazuje, że dane podane jako dane wejściowe modułu mają nieprawidłową liczbę kolumn lub że typ danych nie jest zgodny z wymaganiami modułu. Na przykład:  
 
 -   Moduł wymaga kolumny etykieta, ale żadna kolumna nie jest oznaczona jako etykieta lub nie wybrano jeszcze kolumny etykieta.  
   
@@ -407,7 +407,7 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 
  Ten błąd pojawia się w Azure Machine Learning, gdy w zestawie danych nie ma wystarczającej liczby wierszy do wykonania określonej operacji. Na przykład ten błąd może pojawić się, jeśli wejściowy zestaw danych jest pusty lub jeśli próbujesz wykonać operację, która wymaga podania pewnej minimalnej liczby wierszy. Takie operacje mogą obejmować (ale nie ograniczone do) grupowanie lub klasyfikację na podstawie metod statystycznych, niektórych typów pakowania i uczenia się z liczbą.  
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
  + Otwórz moduł, który zwrócił błąd, i sprawdź wejściowy zestaw danych i właściwości modułu. 
  + Sprawdź, czy wejściowy zestaw danych nie jest pusty i czy jest wystarczająco dużo wierszy danych, aby spełnić wymagania opisane w pomocy modułu.  
@@ -427,7 +427,7 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 ## <a name="error-0022"></a>0022 błędów  
  Wyjątek występuje, jeśli liczba wybranych kolumn w wejściowym zestawie danych nie jest równa oczekiwanej liczbie.  
 
- Ten błąd w Azure Machine Learning może wystąpić, gdy moduł podrzędny lub operacja wymaga określonej liczby kolumn lub danych wejściowych, a podano zbyt mało lub zbyt wiele kolumn lub danych wejściowych. Przykład:  
+ Ten błąd w Azure Machine Learning może wystąpić, gdy moduł podrzędny lub operacja wymaga określonej liczby kolumn lub danych wejściowych, a podano zbyt mało lub zbyt wiele kolumn lub danych wejściowych. Na przykład:  
 
 -   Należy określić pojedynczą kolumnę etykiety lub kolumnę klucza i przypadkowo zaznaczyć wiele kolumn.  
   
@@ -477,7 +477,7 @@ Wyjątek występuje, jeśli zestaw danych nie zawiera kolumny Label.
 
 Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danych, ale nie została prawidłowo wykryta przez Azure Machine Learning.
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 + Otwórz moduł, który wygenerował błąd, i ustal, czy kolumna etykieta jest obecna. Nazwa lub typ danych kolumny nie ma znaczenia, pod warunkiem, że kolumna zawiera pojedynczy wynik (lub zmienną zależną), którą próbujesz przewidzieć. Jeśli nie masz pewności, która kolumna ma etykietę, poszukaj nazwy generycznej, takiej jak *Class* lub *Target*. 
 +  Jeśli zestaw danych nie zawiera kolumny etykieta, istnieje możliwość, że kolumna etykieta została jawnie lub przypadkowo usunięta. Może to być również, że zestaw danych nie jest danymi wyjściowymi nadrzędnego modułu oceniania.
@@ -645,7 +645,7 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
 
  Ten błąd w Azure Machine Learning powoduje, że próbujesz użyć modelu rekomendacji do oceniania, ale nie można odnaleźć wektora funkcji.  
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 Zalecenie Matchbox ma pewne wymagania, które należy spełnić podczas korzystania z funkcji elementu lub funkcji użytkownika.  Ten błąd wskazuje, że brakuje wektora funkcji dla użytkownika lub elementu, który został dostarczony jako dane wejściowe. Upewnij się, że wektor funkcji jest dostępny w danych dla każdego użytkownika lub elementu.  
 
@@ -718,7 +718,7 @@ Na przykład można wybrać kolumnę i spróbować skonwertować ją na typ dany
 
 Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej liczby zmiennoprzecinkowe lub wiele unikatowych wartości jako kolumny kategorii. 
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 + Otwórz stronę pomocy dla modułu, który wygenerował błąd, i Sprawdź wymagania dotyczące typu danych.
 + Przejrzyj typy danych kolumn w wejściowym zestawie danych.
@@ -879,7 +879,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 
   <!--For example, the [Convert to Indicator Values](convert-to-indicator-values.md) module requires that columns be categorical, and will raise this error if you select a feature column or label column.  -->
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 1.  Sprawdź typ danych aktualnie wybranych kolumn. 
 
@@ -900,7 +900,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 
  Ten wyjątek występuje, gdy używasz modułu [eksportu danych](export-data.md) lub innego modułu do zapisywania wyników potoku w Azure Machine Learning do magazynu obiektów blob platformy Azure, ale podjęto próbę utworzenia pliku lub obiektu BLOB, który już istnieje.   
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
  Ten błąd zostanie wyświetlony tylko wtedy, gdy wcześniej ustawisz właściwość **tryb zapisu magazynu obiektów blob platformy Azure** na **błąd**. Zgodnie z projektem ten moduł zgłasza błąd w przypadku próby zapisania zestawu danych do obiektu BLOB, który już istnieje.
 
@@ -1058,7 +1058,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 
  Ten błąd w Azure Machine Learning występuje, jeśli w skrypcie Hive QL występują błędy składniowe lub jeśli interpreter Hive napotka błąd podczas wykonywania zapytania lub skryptu.  
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 Komunikat o błędzie z usługi Hive jest zwykle raportowany ponownie w dzienniku błędów, aby można było wykonać akcję na podstawie konkretnego błędu. 
 
@@ -1148,7 +1148,7 @@ Wyjątek występuje, gdy podczas quantizing zestawu danych zostanie użyta niepr
 
 Ten błąd w Azure Machine Learning występuje podczas próby zapełnienia danych za pomocą nieobsługiwanej metody lub w przypadku, gdy kombinacje parametrów są nieprawidłowe.  
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wersji Azure Machine Learning, która pozwala na dalsze dostosowywanie metod pakowania. Obecnie wszystkie metody pakowania są oparte na wyborze z listy rozwijanej, więc nie powinno być już możliwe uzyskanie tego błędu.
 
@@ -1254,7 +1254,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 
  Ten błąd w Azure Machine Learning występuje, jeśli spróbujesz użyć jednego z modułów do oceny modelu z danymi wyjściowymi skryptu języka R, który zawiera wyniki.  
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 |Komunikaty o wyjątkach|
 |------------------------|
@@ -1320,7 +1320,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 ## <a name="error-0125"></a>Błąd 0125  
  Zgłaszany, gdy schemat dla wielu zestawów danych nie jest zgodny.  
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 |Komunikaty o wyjątkach|
 |------------------------|
@@ -1348,7 +1348,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 ## <a name="error-0128"></a>Błąd 0128  
  Liczba prawdopodobieństwa warunkowego dla kolumn kategorii przekracza limit.  
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 |Komunikaty o wyjątkach|
 |------------------------|
@@ -1359,7 +1359,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 ## <a name="error-0129"></a>Błąd 0129  
  Liczba kolumn w zestawie danych przekracza dozwolony limit.  
 
-**Rozwiązanie:**
+**Tłumaczenia**
 
 |Komunikaty o wyjątkach|
 |------------------------|

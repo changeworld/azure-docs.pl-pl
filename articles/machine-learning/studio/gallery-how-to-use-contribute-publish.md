@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 492f6ed2775004c6fb013c6a9ead602cb3d2cea0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5049bdfdc84df16c4b8070decf47fd2d726d7777
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427552"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153030"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Udostępnianie i odnajdywanie zasobów w Azure AI Gallery
 
@@ -55,7 +55,7 @@ Możesz współtworzyć **eksperymenty**, **samouczki**i **kolekcje** w galerii.
 Aby pobrać zasób z galerii AI:
 
 1. Otwórz zasób w galerii AI.
-1. Kliknij przycisk **Otwórz w programie Studio**.
+1. Kliknij pozycję **Otwórz w programie Studio**.
 
 ![Otwórz element z galerii AI](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
@@ -88,9 +88,9 @@ Możesz też zalogować się za pomocą narzędzia do dyskusji, takiego jak Disq
 
 1. W galerii wprowadź **nazwę** i **Tagi** , które są opisowe. Wyróżnij stosowane techniki lub problemy, które są rozwiązywane. Na przykład eksperymentu opisowy tytuł "Klasyfikacja binarna: analiza tonacji w usłudze Twitter."
 
-1. W **podsumowania** wprowadź podsumowanie eksperymentu. Zwięźle opisz problem rozwiązuje eksperymentu, a jak złożoną.
+1. W polu **Podsumowanie** wprowadź podsumowanie eksperymentu. Zwięźle opisz problem rozwiązuje eksperymentu, a jak złożoną.
 
-1. W **szczegółowy opis** polu, opisano czynności wykonanej w każdej części eksperymentu. Kilka przydatnych tematów, aby uwzględnić to:
+1. W polu **szczegółowy opis** opisz kroki wykonane w każdej części eksperymentu. Kilka przydatnych tematów, aby uwzględnić to:
    * Zrzut ekranu przedstawiający eksperymentu wykres
    * Wyjaśnienie i źródeł danych
    * Przetwarzanie danych
@@ -98,19 +98,19 @@ Możesz też zalogować się za pomocą narzędzia do dyskusji, takiego jak Disq
    * Opis modelu
    * Wyniki i ocena wydajności modelu
 
-   Można używać języka markdown do formatowania opis. Aby zobaczyć, jak wpisy na stronie eksperymentu opis będzie wyglądać po opublikowaniu eksperymentu, wybierz **Podgląd**.
+   Można używać języka markdown do formatowania opis. Aby zobaczyć, jak wpisy na stronie Opis eksperymentu będą wyglądały po opublikowaniu eksperymentu, wybierz pozycję **wersja zapoznawcza**.
 
    > [!TIP]
    > Pola tekstowe, podana edycji języka markdown i (wersja zapoznawcza) są małe. Zalecamy zapisanie dokumentacji eksperymentu w edytorze promocji (np. [Visual Studio Code](https://aka.ms/vscode)), a następnie skopiowanie i wklejenie gotowej dokumentacji do pola tekstowego w galerii.
 
-1. Na **wybór obrazu** wybierz obraz miniatury swojego eksperymentu. Obraz miniatury pojawia się u góry strony szczegółów eksperymentu, a na kafelku eksperymentu. Inni użytkownicy zobaczą obraz miniatury, podczas przeglądania galerii. Możesz przekazać obraz z komputera lub Wybierz podstawowy obraz z galerii.
+1. Na stronie **wybór obrazu** wybierz obraz miniatury dla eksperymentu. Obraz miniatury pojawia się u góry strony szczegółów eksperymentu, a na kafelku eksperymentu. Inni użytkownicy zobaczą obraz miniatury, podczas przeglądania galerii. Możesz przekazać obraz z komputera lub Wybierz podstawowy obraz z galerii.
 
-1. Na **ustawienia** w obszarze **widoczność**, wybierz, czy do publikowania zawartości publicznie (**publicznych**) lub jest dostępny tylko dla osób, które mają łącza do (strony **Nieznajdujące się na liście**).
+1. Na stronie **Ustawienia** w obszarze **widoczność**Zdecyduj, czy zawartość ma być publikowana publicznie (**publiczna**), czy ma być dostępna tylko dla osób, które mają link do strony (bez**listy**).
 
    > [!TIP]
-   > Jeśli chcesz upewnić się, w dokumentacji poprawne przed udostępnieniem publicznie, należy najpierw opublikować eksperymentu jako **Unlisted**. Później można zmienić ustawienie widoczności **publicznych** na stronie szczegółów eksperymentu. Należy pamiętać, że po ustawieniu eksperymentu na **publiczny** nie można później zmienić go na **nieznajdujący**się na liście.
+   > Jeśli chcesz upewnić się, że dokumentacja będzie wyglądała prawidłowo przed udostępnieniem jej publicznie, możesz najpierw opublikować eksperyment jako **nieznajdujący**się na liście. Później można zmienić ustawienie widoczność na **publiczne** na stronie Szczegóły eksperymentu. Należy pamiętać, że po ustawieniu eksperymentu na **publiczny** nie można później zmienić go na **nieznajdujący**się na liście.
 
-1. Aby opublikować eksperymentu do galerii, wybierz **OK** znacznik wyboru.
+1. Aby opublikować eksperyment w galerii, zaznacz znacznik wyboru **OK** .
 
 ### <a name="update-your-experiment"></a>Aktualizuj eksperymentu
 
@@ -121,23 +121,23 @@ Do swojego eksperymentu bezpośrednio w galerii, można zmienić dowolne z nast�
 * Nazwa eksperymentu
 * Podsumowanie lub opisu
 * Tagi
-* Obraz
-* Ustawienie widoczności (**publicznych** lub **Unlisted**)
+* Image (Obraz)
+* Ustawienie widoczności (**publiczne** lub **nieznajdujące**się na liście)
 
 Możesz również usunąć eksperymentu z galerii.
 
 Możesz wprowadzić te zmiany lub usunięcia eksperymentu, na stronie szczegółów eksperymentu lub na stronie profilu w galerii.
 
-* Na stronie szczegółów eksperyment, aby zmienić szczegóły swojego eksperymentu, wybierz **Edytuj**. Na stronie szczegółów przejdzie do trybu edycji. Aby wprowadzić zmiany, wybierz **Edytuj** obok nazwy eksperymentu, podsumowanie lub tagów. Po zakończeniu wprowadzania zmian wybierz **gotowe**. Aby zmienić ustawienia widoczność eksperymentu (**publicznych** lub **Unlisted**), lub aby usunąć doświadczenia z galerii, wybierz **ustawienia** ikonę.
+* Aby zmienić szczegóły eksperymentu, na stronie Szczegóły eksperymentu wybierz pozycję **Edytuj**. Na stronie szczegółów przejdzie do trybu edycji. Aby wprowadzić zmiany, wybierz opcję **Edytuj** obok nazwy eksperymentu, podsumowania lub tagów. Po zakończeniu wprowadzania zmian wybierz pozycję **gotowe**. Aby zmienić ustawienia widoczności dla eksperymentu (**publiczne** lub **nieznajdujące**się na liście) lub usunąć eksperyment z galerii, wybierz ikonę **Ustawienia** .
 
-* Na stronie profilu, wybierz strzałkę w dół eksperymentu, a następnie wybierz **Edytuj**. Spowoduje to przejście do strony szczegółów do swojego eksperymentu, w trybie edycji. Po zakończeniu wprowadzania zmian, wybierz **gotowe**. Aby usunąć doświadczenia z galerii, wybierz **Usuń**.
+* Na stronie Twój profil wybierz strzałkę w dół dla eksperymentu, a następnie wybierz pozycję **Edytuj**. Spowoduje to przejście do strony szczegółów do swojego eksperymentu, w trybie edycji. Po zakończeniu wprowadzania zmian wybierz pozycję **gotowe**. Aby usunąć eksperyment z galerii, wybierz pozycję **Usuń**.
 
 ### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Porady dotyczące Dokumentowanie i publikowania eksperymentu
 
 * Można założyć, że czytelnik ma do nauki o danych z wcześniejszego doświadczenia, ale może być przydatne prostego języka. Opisano elementy szczegółowo, jeśli to możliwe.
 * Podaj wystarczająco dużo informacji i instrukcje krok po kroku wyjaśnień ułatwiające czytelnicy Przejdź eksperymentu.
 * Wizualizacje mogą być pomocne dla czytników zawartości do interpretacji i korzystać z dokumentacją eksperymentu poprawnie. Wizualizacje obejmują wykresów eksperymentów i zrzuty ekranu danych.
-* Jeśli dołączysz zestaw danych do eksperymentu (oznacza to, że nie importujesz zestawu danych za pomocą modułu import danych), zestaw danych jest częścią eksperymentu i jest publikowany w galerii. Upewnij się, że publikowany zestaw danych zawiera warunki licencjonowania umożliwiające udostępnianie i pobieranie przez każdego użytkownika. Wkład do galerii znajdują się w obszarze Azure [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+* Jeśli dołączysz zestaw danych do eksperymentu (oznacza to, że nie importujesz zestawu danych za pomocą modułu import danych), zestaw danych jest częścią eksperymentu i jest publikowany w galerii. Upewnij się, że publikowany zestaw danych zawiera warunki licencjonowania umożliwiające udostępnianie i pobieranie przez każdego użytkownika. Materiały z galerii są objęte [warunkiem użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/)platformy Azure.
 
 ## <a name="contribute-tutorials-and-collections"></a>Tworzenie samouczków i kolekcji
 
@@ -156,7 +156,7 @@ Możesz pomóc innym, pisząc **samouczek** w galerii, który objaśnia koncepcj
 1. Na stronie **Ustawienia** , w obszarze **widoczność**wybierz, czy Twój udział jest **publiczny** (może go wyświetlać każdy użytkownik) lub bez **listy** (tylko osoby z linkiem bezpośrednim mogą ją wyświetlać).
 
    > [!TIP]
-   > Jeśli chcesz upewnić się, w dokumentacji poprawne przed udostępnieniem publicznie, należy najpierw opublikować eksperymentu jako **Unlisted**. Później można zmienić ustawienie widoczności **publicznych** na stronie szczegółów eksperymentu. Należy pamiętać, że po ustawieniu eksperymentu na **publiczny** nie można później zmienić go na **nieznajdujący**się na liście.
+   > Jeśli chcesz upewnić się, że dokumentacja będzie wyglądała prawidłowo przed udostępnieniem jej publicznie, możesz najpierw opublikować eksperyment jako **nieznajdujący**się na liście. Później można zmienić ustawienie widoczność na **publiczne** na stronie Szczegóły eksperymentu. Należy pamiętać, że po ustawieniu eksperymentu na **publiczny** nie można później zmienić go na **nieznajdujący**się na liście.
 
 1. Wybierz pozycję **Utwórz**.
 
@@ -185,20 +185,20 @@ Obrazy przesyłane wraz z Twoim udziałem są używane do tworzenia kafelków. Z
 
 **Co się stanie z zestawem danych, który został użyty w eksperymentie? Czy zestaw danych jest również publikowany w galerii?**
 
-Jeśli zestaw danych jest częścią eksperymentu i nie zostanie zaimportowany za pomocą modułu Importuj dane, zestaw danych zostanie opublikowany w galerii w ramach eksperymentu. Upewnij się, że zestaw danych, który jest publikowany przy użyciu eksperymentu, ma odpowiednie postanowienia licencyjne. Postanowienia licencyjne powinno umożliwić wszystkim użytkownikom udostępnianie i Pobierz dane. Wkład do galerii znajdują się w obszarze Azure [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+Jeśli zestaw danych jest częścią eksperymentu i nie zostanie zaimportowany za pomocą modułu Importuj dane, zestaw danych zostanie opublikowany w galerii w ramach eksperymentu. Upewnij się, że zestaw danych, który jest publikowany przy użyciu eksperymentu, ma odpowiednie postanowienia licencyjne. Postanowienia licencyjne powinno umożliwić wszystkim użytkownikom udostępnianie i Pobierz dane. Materiały z galerii są objęte [warunkiem użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/)platformy Azure.
 
 **Mam eksperyment, który używa modułu import danych do ściągania danych z usługi Azure HDInsight lub SQL Server. Używa moich poświadczeń do pobrania danych. Czy mogę opublikować ten rodzaj eksperymentu? Jak można mieć pewność, że moje poświadczenia nie będą udostępniane?**
 
 Obecnie nie można opublikować w galerii eksperymentu, który używa poświadczeń.
 
-**Jak wprowadzić wiele tagów?**
+**Jak mogę wprowadzić wiele tagów?**
 
 Po wprowadzeniu tag, aby wprowadzić inny znacznik, naciśnij klawisz Tab.
 
-## <a name="we-want-to-hear-from-you"></a>Chcemy poznać Twoją opinię.
+## <a name="we-want-to-hear-from-you"></a>Chcemy poznać Twoją opinię!
 
 Chcemy, aby Galeria była obsługiwana przez naszych użytkowników i dla naszych użytkowników. Skorzystaj z uśmiechu po prawej stronie, aby powiedzieć nam, co Ci się podoba lub lubimy o galerii.  
 
 ![Opinia](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[PRZEJDŹ DO GALERII &GT;&GT;](https://gallery.azure.ai)**
+**[Zapoznaj się z GALERIą > >](https://gallery.azure.ai)**

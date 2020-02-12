@@ -3,12 +3,12 @@ title: Kontrolki przykładowe FedRAMP umiarkowanego planu
 description: Sterowanie mapowaniem przykładowej strategii FedRAMP umiarkowanej. Każda kontrolka jest zamapowana na co najmniej jedną zasadę platformy Azure, która pomaga w ocenie.
 ms.date: 10/31/2019
 ms.topic: sample
-ms.openlocfilehash: 0ecf5430f643ee795f81759f3d07a062e433f5b6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 3fd6762f4f0a76b560a37dd1ed4f727aa76385fd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544552"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150482"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>Sterowanie mapowaniem przykładowej strategii FedRAMP umiarkowanej
 
@@ -79,7 +79,7 @@ Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , któ
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja w programie SQL Server powinna być włączona
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 
 ## <a name="au-12-audit-generation"></a>Generowanie inspekcji w usłudze AU-12
 
@@ -95,7 +95,7 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 - Przeprowadzanie inspekcji ustawienia diagnostyki
 - Inspekcja w programie SQL Server powinna być włączona
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Wdrażanie inspekcji na serwerach SQL
 - Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń
@@ -170,7 +170,7 @@ Ten plan pomaga wymusić silne hasła, przypisując definicje [Azure Policy](../
 Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacji przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują luki w zabezpieczeniach systemu operacyjnego, luki w zabezpieczeniach SQL i luki w zabezpieczeniach maszyn wirtualnych w programie Azure Security Center. Azure Security Center udostępnia funkcje raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym. Ten plan przypisuje również definicje zasad, które przeprowadzają inspekcję i wymuszanie zaawansowanych zabezpieczeń danych na serwerach SQL. Zaawansowane zabezpieczenia danych obejmują ocenę luk w zabezpieczeniach i zaawansowane funkcje ochrony przed zagrożeniami, które ułatwiają zrozumienie luk w zabezpieczeniach wdrożonych zasobów.
 
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Luki w zabezpieczeniach konfiguracji zabezpieczeń w zestawach skalowania maszyn wirtualnych należy skorygować
 - Luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach wirtualnych należy skorygować
@@ -190,7 +190,7 @@ Ponadto ten plan przypisuje również definicje zasad, które monitorują niechr
 
 - Reguły sieciowej grupy zabezpieczeń dla maszyn wirtualnych mających dostęp do Internetu powinny być zaostrzone
 - Dostęp za poorednictwem punktu końcowego połączonego z Internetem powinien być ograniczony
-- Reguły sieciowych grup zabezpieczeń dla aplikacji sieci Web w usłudze IaaS powinny być zaostrzone
+- Porty sieci Web powinny być ograniczone do sieciowych grup zabezpieczeń skojarzonych z maszyną wirtualną
 - Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) ochrona granic | Punkty dostępu
@@ -212,7 +212,7 @@ Ten plan pomaga chronić poufne i integralność przesyłanych informacji przez 
 - Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS
 - Inspekcja serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
 - Wdróż wymagania w celu inspekcji serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
-- aplikacja funkcji powinna być dostępna tylko za pośrednictwem protokołu HTTPS
+- Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS
 - Należy włączyć tylko bezpieczne połączenia z Redis Cache
 - Należy włączyć bezpieczny transfer do kont magazynu
 - Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS
@@ -222,7 +222,7 @@ Ten plan pomaga chronić poufne i integralność przesyłanych informacji przez 
 Ten plan pomaga wymusić zasady korzystania z formantów cryptograph, aby chronić informacje przechowywane przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które wymuszają określone kontrolki cryptograph i inspekcji używają słabych ustawień kryptograficznych. Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną konfigurację kryptograficzną, może pomóc w podejmowaniu działań naprawczych w celu zapewnienia, że zasoby są skonfigurowane zgodnie z zasadami zabezpieczeń informacji. Definicje zasad przypisane przez ten plan wymagają szyfrowania dla kont usługi Data Lake Storage; Wymagaj przezroczystego szyfrowania danych w bazach danych SQL; i Przeprowadź inspekcję braku szyfrowania dla baz danych SQL, dysków maszyny wirtualnej i zmiennych konta usługi Automation.
 
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Wdróż przezroczyste szyfrowanie danych SQL DB
 - Szyfrowanie dysków powinno być stosowane na maszynach wirtualnych
@@ -268,7 +268,7 @@ Ten plan ułatwia monitorowanie systemu przez inspekcjonowanie i wymuszanie reje
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla systemu Windows VM Scale Sets (VMSS)
 - \[wersji zapoznawczej\]: wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
-- Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
+- Zaawansowana ochrona danych powinna być włączona na serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Wdróż zaawansowaną ochronę przed zagrożeniami na kontach magazynu
 - Wdrażanie inspekcji na serwerach SQL

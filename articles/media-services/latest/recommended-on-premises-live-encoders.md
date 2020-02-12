@@ -6,21 +6,23 @@ keywords: encoding;encoders;media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 02/04/2020
+ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: bccdb49c22bce983fe8cb2aba1387c4b1645b62c
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: c8cf8883c80dad7988793a898dcaf01dd8f860c3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132707"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152639"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery przesyłania strumieniowego na żywo
 
 W Azure Media Services wydarzenie na [żywo](https://docs.microsoft.com/rest/api/media/liveevents) (kanał) reprezentuje potok do przetwarzania zawartości przesyłania strumieniowego na żywo. Zdarzenie na żywo odbiera strumienie wejściowe na żywo na jeden z dwóch sposobów.
 
-* Lokalny koder na żywo wysyła strumień RTMP o dużej szybkości transmisji bitów lub Smooth Streaming (pofragmentowany plik MP4) do zdarzenia na żywo, które nie ma włączonej obsługi kodowania na żywo z Media Services. Pozyskiwane strumienie przechodzą przez zdarzenia na żywo bez dalszej obróbki. Ta metoda jest nazywana **przekazywaniem**. Zalecamy, aby koder na żywo wysyłał strumienie o szybkości transmisji bitów zamiast strumienia o pojedynczej szybkości transmisji bitów do zdarzenia przekazywania na żywo, aby umożliwić przesyłanie strumieniowe transmisji bitów do klienta.
+* Lokalny koder na żywo wysyła strumień RTMP o dużej szybkości transmisji bitów lub Smooth Streaming (pofragmentowany plik MP4) do zdarzenia na żywo, które nie ma włączonej obsługi kodowania na żywo z Media Services. Pozyskiwane strumienie przechodzą przez zdarzenia na żywo bez dalszej obróbki. Ta metoda jest nazywana **przekazywaniem**. Zalecamy, aby koder na żywo wysyłał strumienie o szybkości transmisji bitów zamiast strumienia o pojedynczej szybkości transmisji bitów do zdarzenia przekazywania na żywo, aby umożliwić przesyłanie strumieniowe transmisji bitów do klienta. 
+
+    Jeśli używasz strumieni o różnej szybkości transmisji bitów dla zdarzenia przekazywania na żywo, rozmiar grupę GOP wideo i fragmenty wideo na różnych szybkościach transmisji bitów muszą być zsynchronizowane, aby uniknąć nieoczekiwanych zachowań po stronie odtwarzania.
 
   > [!NOTE]
   > Użycie metody przekazującej to najbardziej ekonomiczny sposób na przesyłanie strumieniowe na żywo.

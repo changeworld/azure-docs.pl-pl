@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024589"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149834"
 ---
 # <a name="what-are-security-defaults"></a>Co to są wartości domyślne zabezpieczeń?
 
@@ -74,7 +74,7 @@ Aby zapewnić użytkownikom łatwy dostęp do aplikacji w chmurze, usługa Azure
 
 Dzisiaj większość nieżądanych prób logowania pochodzi ze starszego uwierzytelniania. Starsza wersja uwierzytelniania nie obsługuje Multi-Factor Authentication. Nawet jeśli masz zasady Multi-Factor Authentication włączone w katalogu, osoba atakująca może się uwierzytelnić przy użyciu starszego protokołu i Multi-Factor Authentication obejścia. 
 
-Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie zostaną zablokowane wszystkie żądania uwierzytelnienia podejmowane przez starszy protokół. Ustawienia domyślne zabezpieczeń nie blokują programu Exchange ActiveSync.
+Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie zostaną zablokowane wszystkie żądania uwierzytelnienia podejmowane przez starszy protokół. Domyślne ustawienia zabezpieczeń są blokowane Exchange Active Sync uwierzytelniania podstawowego.
 
 > [!WARNING]
 > Przed włączeniem ustawień domyślnych zabezpieczeń upewnij się, że administratorzy nie używają starszych protokołów uwierzytelniania. Aby uzyskać więcej informacji, zobacz [jak przenieść się z starszego uwierzytelniania](concept-fundamentals-block-legacy-authentication.md).
@@ -83,8 +83,8 @@ Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie zostaną zablok
 
 Organizacje korzystają z różnych usług platformy Azure zarządzanych za pomocą interfejsu API Azure Resource Manager, w tym:
 
-- Portal Azure 
-- Program Azure PowerShell 
+- Portalu Azure 
+- Azure PowerShell 
 - Interfejs wiersza polecenia platformy Azure
 
 Używanie Azure Resource Manager do zarządzania usługami to wysoce uprzywilejowana akcja. Azure Resource Manager mogą zmieniać konfiguracje dla całej dzierżawy, takie jak ustawienia usługi i rozliczenia subskrypcji. Uwierzytelnianie wieloskładnikowe jest podatne na różne ataki, takie jak phishing i rozpylanie haseł. 

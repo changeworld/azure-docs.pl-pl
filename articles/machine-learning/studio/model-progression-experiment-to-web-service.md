@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: ce1e7d3b3b9908d5c4608f6ab62e9b743f80c0b0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f7f8989cd1a174ecd66f23324a7760fb5cbb665b
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838009"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148080"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Jak model Machine Learning Studio (klasyczny) postępuje z eksperymentu z usługą sieci Web
 Azure Machine Learning Studio (klasyczny) zapewnia interaktywną kanwę, która umożliwia tworzenie, uruchamianie, testowanie i Iterowanie ***eksperymentu*** reprezentującego model analizy predykcyjnej. Dostępne są szeroką gamę modułów, które mogą:
@@ -49,7 +49,7 @@ Poniżej przedstawiono etapy, które zwykle są używane podczas opracowywania i
 ***Eksperyment szkoleniowy*** to początkowa faza tworzenia usługi sieci Web w Machine Learning Studio (klasyczny). Celem eksperymentu szkoleniowego jest stworzenie miejsca do opracowania, testowania, iteracji i ostatecznie uczenia modelu uczenia maszynowego. Możesz nawet przeszkolić wiele modeli jednocześnie, gdy szukasz najlepszego rozwiązania, ale po zakończeniu eksperymentowania wybierzesz jeden szkolony model i usuniesz resztę z eksperymentu. Aby zapoznać się z przykładem opracowywania eksperymentu analizy predykcyjnej, zobacz [opracowywanie rozwiązania do analizy predykcyjnej w celu oceny ryzyka kredytowego w Azure Machine Learning Studio (klasyczny)](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>Eksperyment predykcyjny
-Gdy w eksperymentie szkoleniowym masz model szkolony, kliknij pozycję **Skonfiguruj usługę sieci Web** i wybierz pozycję **Usługa predykcyjna** w Machine Learning Studio (klasyczny), aby zainicjować proces konwersji eksperymentu szkoleniowego na ***predykcyjny eksperyment***. Celem eksperymentu predykcyjnego jest użycie przeszkolonego modelu do oceny nowych danych, a celem ostatecznie staje się to usługa sieci Web platformy Azure.
+Gdy w doświadczeniu szkoleniowym masz model szkolony, kliknij pozycję **Skonfiguruj usługę sieci Web** i wybierz opcję **predykcyjna usługa internetowa** w Machine Learning Studio (klasyczny), aby zainicjować proces konwertowania eksperymentu szkoleniowego na ***eksperyment predykcyjny***. Celem eksperymentu predykcyjnego jest użycie przeszkolonego modelu do oceny nowych danych, a celem ostatecznie staje się to usługa sieci Web platformy Azure.
 
 Ta konwersja jest wykonywana przez następujące kroki:
 
@@ -95,14 +95,14 @@ Oto przykład: Załóżmy, że eksperyment predykcyjny zwraca cały wiersz danyc
 
 Jeśli chcesz zachować model uczenia maszynowego, ale chcesz go ponownie przeszkolić przy użyciu nowych danych, będziesz mieć dwie możliwości:
 
-1. **Przeszkol model w trakcie działania usługi sieci Web** — Jeśli chcesz ponownie przeprowadzić uczenie modelu podczas działania usługi sieci Web predykcyjnej, możesz to zrobić, wprowadzając kilka modyfikacji eksperymentu szkoleniowego, aby przeprowadzić ***eksperyment szkoleniowy***, a następnie można go wdrożyć jako **usługę *sieci Web do przeszkolenia*** . Aby uzyskać instrukcje, jak to zrobić, zobacz temat ponowne [uczenie Machine Learning modeli](/azure/machine-learning/studio/retrain-machine-learning-model).
+1. **Przeszkol model w trakcie działania usługi sieci Web** — Jeśli chcesz ponownie przeprowadzić uczenie modelu podczas działania usługi sieci Web predykcyjnej, możesz to zrobić, wprowadzając kilka modyfikacji eksperymentu szkoleniowego w celu przeprowadzenia ***eksperymentu***szkoleniowego, a następnie możesz go wdrożyć jako **usługę *sieci Web do przeszkolenia*** . Aby uzyskać instrukcje, jak to zrobić, zobacz temat ponowne [uczenie Machine Learning modeli](/azure/machine-learning/studio/retrain-machine-learning-model).
 2. Wróć **do oryginalnego eksperymentu szkoleniowego i Użyj różnych danych szkoleniowych do opracowania modelu** — eksperyment predykcyjny jest połączony z usługą sieci Web, ale eksperyment szkoleniowy nie jest bezpośrednio połączony w ten sposób. Jeśli zmodyfikujesz oryginalny eksperyment szkoleniowy i klikniesz pozycję **Konfiguruj usługę sieci Web**, zostanie utworzony *Nowy* eksperyment predykcyjny, który po wdrożeniu spowoduje utworzenie *nowej* usługi sieci Web. Nie tylko aktualizuje oryginalną usługę sieci Web.
 
    Jeśli musisz zmodyfikować eksperyment szkoleniowy, otwórz go, a następnie kliknij pozycję **Zapisz jako** , aby utworzyć kopię. Spowoduje to pozostawienie oryginalnego eksperymentu szkoleniowego, eksperymentu predykcyjnego i usługi sieci Web. Teraz można utworzyć nową usługę sieci Web ze zmianami. Po wdrożeniu nowej usługi sieci Web możesz zdecydować, czy zatrzymać poprzednią usługę sieci Web, czy będzie ona działać obok nowej.
 
 **Chcesz nauczyć inny model**
 
-Jeśli chcesz wprowadzić zmiany do oryginalnego eksperymentu predykcyjnego, na przykład wybierając inny algorytm uczenia maszynowego, próbuje zastosować inną metodę uczenia itp., należy wykonać drugą procedurę opisaną powyżej w celu przeprowadzenia ponownego szkolenia modelu: Otwórz eksperyment szkoleniowy, kliknij pozycję **Zapisz jako** , aby utworzyć kopię, a następnie uruchom nową ścieżkę tworzenia modelu, tworząc eksperyment predykcyjny i wdrażając usługę sieci Web. Spowoduje to utworzenie nowej usługi sieci Web, która nie jest powiązana z oryginalną. możesz zdecydować, która z nich ma być uruchomiona.
+Jeśli chcesz wprowadzić zmiany w oryginalnym eksperymentie predykcyjnym, na przykład wybranie innego algorytmu uczenia maszynowego, podjęcie innej metody szkoleniowej itp., należy wykonać poniższą procedurę w celu przeprowadzenia ponownego szkolenia modelu: Otwórz eksperyment szkoleniowy, kliknij pozycję **Zapisz jako** , aby utworzyć kopię, a następnie uruchom nową ścieżkę tworzenia modelu, tworząc eksperyment predykcyjny i wdrażając usługę sieci Web. Spowoduje to utworzenie nowej usługi sieci Web, która nie jest powiązana z oryginalną. możesz zdecydować, która z nich ma być uruchomiona.
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat procesu opracowywania i eksperymentowania, zobacz następujące artykuły:

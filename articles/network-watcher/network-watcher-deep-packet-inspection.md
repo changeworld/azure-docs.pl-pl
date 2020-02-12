@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845080"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152928"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Inspekcja pakietów przy użyciu usługi Azure Network Watcher
 
@@ -39,7 +39,7 @@ W tym scenariuszu:
 
 W tym scenariuszu pokazujemy, jak wyświetlić początkowy czas błądzenia (RTT) konwersacji Transmission Control Protocol (TCP) występujący między dwoma punktami końcowymi.
 
-Po nawiązaniu połączenia TCP pierwsze trzy pakiety wysyłane w ramach połączenia są zgodne ze wzorcem często określanym jako uzgadnianie trzykrotne. Badając pierwsze dwa pakiety wysyłane w ramach tego uzgadniania, początkowe żądanie od klienta i odpowiedź z serwera, możemy obliczyć opóźnienie, gdy to połączenie zostało nawiązane. To opóźnienie jest określane jako czas błądzenia (RTT). Aby uzyskać więcej informacji na temat protokołu TCP i uzgadniania 3-kierunkowego, zapoznaj się z poniższym zasobem. https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+Po nawiązaniu połączenia TCP pierwsze trzy pakiety wysyłane w ramach połączenia są zgodne ze wzorcem często określanym jako uzgadnianie trzykrotne. Badając pierwsze dwa pakiety wysyłane w ramach tego uzgadniania, początkowe żądanie od klienta i odpowiedź z serwera, możemy obliczyć opóźnienie, gdy to połączenie zostało nawiązane. To opóźnienie jest określane jako czas błądzenia (RTT). Aby uzyskać więcej informacji na temat protokołu TCP i uzgadniania 3-kierunkowego, zapoznaj się z poniższym zasobem. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>Krok 1
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 16689982156743f5dc4e2ed09a0f9bc097a51b9b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 6e1b162d17e2369b579fc1210c57e0409b0546bc
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903035"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148474"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Tworzenie i Instalowanie plików konfiguracji klienta sieci VPN na potrzeby uwierzytelniania P2S RADIUS
 
@@ -38,7 +38,6 @@ Przepływ konfiguracji dla uwierzytelniania usługi P2S RADIUS jest następując
 
 Aby skorzystać z sekcji w tym artykule, najpierw należy wybrać typ uwierzytelniania, który ma być używany: Nazwa użytkownika/hasło, certyfikat lub inne typy uwierzytelniania. Każda sekcja zawiera kroki dla systemów Windows, Mac OS X i Linux (w tym momencie dostępne są ograniczone kroki).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="adeap"></a>Uwierzytelnianie nazwy użytkownika/hasła
 
@@ -50,7 +49,7 @@ Podczas konfigurowania uwierzytelniania nazwy użytkownika/hasła można utworzy
 
 Pliki konfiguracji klienta sieci VPN można generować przy użyciu Azure Portal lub Azure PowerShell.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Portalu Azure
 
 1. Przejdź do bramy sieci wirtualnej.
 2. Kliknij pozycję **Konfiguracja punktu do lokacji**.
@@ -59,7 +58,7 @@ Pliki konfiguracji klienta sieci VPN można generować przy użyciu Azure Portal
 5. Kliknij przycisk **Pobierz** , aby wygenerować plik. zip.
 6. Plik. zip zostanie pobrany, zazwyczaj do folderu downloads.
 
-#### <a name="azure-powershell"></a>Program Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 Generuj pliki konfiguracji klienta sieci VPN do użycia z uwierzytelnianiem przy użyciu nazwy użytkownika/hasła. Pliki konfiguracji klienta sieci VPN można generować przy użyciu następującego polecenia:
 

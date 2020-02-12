@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312207"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152265"
 ---
 # <a name="feature-hashing-module-reference"></a>Odwołanie do modułu wyznaczania wartości skrótu funkcji
 
-W tym artykule opisano moduł dostępny w programie Azure Machine Learning Designer.
+W tym artykule opisano moduł dostępny w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
 Użyj modułu wyznaczania wartości skrótu funkcji, aby przekształcić strumień tekstu w języku angielskim do zestawu funkcji całkowitych. Następnie można przekazać tę funkcję skrótu do algorytmu uczenia maszynowego, aby szkolić model analizy tekstu.
 
@@ -50,9 +50,9 @@ Można kontrolować rozmiar n-gramów przy użyciu właściwości **n-Grams** . 
 
 |Termin (unigrams)|Częstotliwość|
 |------------|---------------|
-|książka|3|
+|typu|3|
 |I|3|
-|książki|1|
+|stad|1|
 |błędu|1|
 
 Po skompilowaniu słownika moduł tworzenia skrótów funkcji konwertuje warunki słownika na wartości skrótu. Następnie oblicza, czy funkcja została użyta w każdym przypadku. Dla każdego wiersza danych tekstowych moduł wyprowadza zestaw kolumn, jedną kolumnę dla każdej funkcji skrótu.
@@ -111,7 +111,7 @@ Po zakończeniu przetwarzania moduł wyprowadza przekształcony zestaw danych, w
 
 Po utworzeniu przekształconego zestawu danych można go użyć jako danych wejściowych modułu uczenie modelu.
  
-### <a name="best-practices"></a>Najlepsze rozwiązania
+### <a name="best-practices"></a>Najlepsze praktyki
 
 Poniższe najlepsze rozwiązania mogą pomóc w optymalnym wykorzystaniu modułu tworzenia skrótów funkcji:
 

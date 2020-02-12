@@ -1,5 +1,6 @@
 ---
-title: Przykłady kodu JavaScript — Azure Active Directory B2C | Microsoft Docs
+title: Przykłady skryptów w języku JavaScript
+titleSuffix: Azure AD B2C
 description: Informacje o używaniu języka JavaScript w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,21 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42dc09ef4518bfda8c63ee183499b1b2e8c22991
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1381ddb16697b1e892794604bbfafda815bd6182
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841935"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149081"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Przykładowe skrypty JavaScript do użycia w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Możesz dodać własny kod po stronie klienta JavaScript do aplikacji Azure Active Directory B2C (Azure AD B2C). Aby włączyć obsługę języka JavaScript dla aplikacji, musisz dodać element do [zasad niestandardowych](custom-policy-overview.md), wybrać [Układ strony](page-layout.md)i użyć [b2clogin.com](b2clogin.md) w swoich żądaniach. W tym artykule opisano sposób zmiany zasad niestandardowych w celu włączenia wykonywania skryptu.
+Możesz dodać własny kod po stronie klienta JavaScript do aplikacji Azure Active Directory B2C (Azure AD B2C).
+
+Aby włączyć język JavaScript dla aplikacji:
+
+* Dodawanie elementu do [zasad niestandardowych](custom-policy-overview.md)
+* Wybierz [Układ strony](page-layout.md)
+* Używanie [b2clogin.com](b2clogin.md) w żądaniach
+
+W tym artykule opisano sposób zmiany zasad niestandardowych w celu włączenia wykonywania skryptu.
 
 > [!NOTE]
 > Jeśli chcesz włączyć język JavaScript dla przepływów użytkownika, zobacz [wersje JavaScript i układ strony w Azure Active Directory B2C](user-flow-javascript-overview.md).
@@ -30,16 +39,16 @@ Możesz dodać własny kod po stronie klienta JavaScript do aplikacji Azure Acti
 
 ### <a name="select-a-page-layout"></a>Wybierz układ strony
 
-* [Wybierz układ strony](page-layout.md) dla elementów interfejsu użytkownika aplikacji.
+* Wybierz [Układ strony](contentdefinitions.md#select-a-page-layout) dla elementów interfejsu użytkownika aplikacji.
 
-    Jeśli zamierzasz używać języka JavaScript, musisz [zdefiniować wersję układu strony](page-layout.md#replace-datauri-values) dla *wszystkich* definicji zawartości w niestandardowych zasadach.
+    Jeśli zamierzasz używać języka JavaScript, musisz [zdefiniować wersję układu strony](contentdefinitions.md#migrating-to-page-layout) z wersją `contract` strony dla *wszystkich* definicji zawartości w niestandardowych zasadach.
 
 ## <a name="add-the-scriptexecution-element"></a>Dodaj ScriptExecution element
 
-Włącz wykonywanie skryptu, dodając **ScriptExecution** elementu [RelyingParty](relyingparty.md) elementu.
+Wykonanie skryptu jest włączane przez dodanie elementu **ScriptExecution** do elementu [RelyingParty](relyingparty.md) .
 
-1. Otwórz plik zasad niestandardowych. Na przykład *SignUpOrSignin.xml*.
-2. Dodaj **ScriptExecution** elementu **UserJourneyBehaviors** elementu **RelyingParty**:
+1. Otwórz plik zasad niestandardowych. Na przykład *SignUpOrSignin. XML*.
+2. Dodaj element **ScriptExecution** do elementu **UserJourneyBehaviors** **RelyingParty**:
 
     ```XML
     <RelyingParty>
@@ -52,31 +61,13 @@ Włącz wykonywanie skryptu, dodając **ScriptExecution** elementu [RelyingParty
     ```
 3. Zapisz i przekazać plik.
 
-## <a name="guidelines-for-using-javascript"></a>Wytyczne dotyczące przy użyciu języka JavaScript
-
-Podczas dostosowywania interfejsu aplikacji przy użyciu języka JavaScript, należy przestrzegać następujących wytycznych:
-
-- Nie wiążą Zdarzenie kliknięcia w `<a>` elementów HTML.
-- Nie wykona zależności kodu usługi Azure AD B2C lub komentarzy.
-- Zmienianie kolejności lub hierarchia elementów HTML w usłudze Azure AD B2C. Można określić kolejność elementów interfejsu użytkownika, należy użyć zasad usługi Azure AD B2C.
-- Można wywołać dowolną usługę RESTful za pomocą tych zagadnień:
-    - Może być konieczne ustawienie usługi RESTful CORS, aby umożliwić połączeń HTTP klienta.
-    - Upewnij się, że usługi RESTful są bezpieczne i korzystają z protokołu HTTPS.
-    - Nie bezpośrednio za pomocą języka JavaScript wywoływanie punktów końcowych usługi Azure AD B2C.
-- Możesz osadzić Twój kod JavaScript, lub można połączyć z zewnętrznych plików JavaScript. Korzystając z zewnętrznego pliku JavaScript, upewnij się użyć bezwzględnego adresu URL i nie względnym adresem URL.
-- Struktury języka JavaScript:
-    - Usługa Azure AD B2C używa określonej wersji jQuery. Nie dołączaj inna wersja jQuery. Na tej samej stronie przy użyciu więcej niż jedna wersja powoduje problemy.
-    - Za pomocą RequireJS nie jest obsługiwane.
-    - Większość platform JavaScript nie są obsługiwane przez usługę Azure AD B2C.
-- Ustawienia usługi Azure AD B2C, może zostać odczytany przez wywołanie `window.SETTINGS`, `window.CONTENT` obiektów, takich jak bieżący język interfejsu użytkownika. Nie zmieniaj wartości tych obiektów.
-- Aby dostosować komunikat o błędzie usługi Azure AD B2C, należy użyć lokalizacji w zasadach.
-- Jeśli wszystko można osiągnąć za pomocą zasad, zazwyczaj jest to zalecany sposób.
+[!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>Przykłady skryptów w języku JavaScript
 
 ### <a name="show-or-hide-a-password"></a>Pokaż lub Ukryj hasło
 
-Typowym sposobem pomóc klientom w ich Powodzenie rejestracji jest aby umożliwić im zobaczyć, jakie wprowadzono jako jego hasło. Ta opcja pomaga użytkownikom zarejestrować się, co pozwala na łatwe Zobacz oraz wprowadzić korekty do swojego hasła, jeśli to konieczne. Dowolne pole o typie hasło ma pole wyboru przy użyciu **hasło Show** etykiety.  Dzięki temu użytkownika, aby wyświetlić hasło w postaci zwykłego tekstu. Uwzględnij ten fragment kodu w szablonie rejestracji lub logowania dla strony samodzielnie:
+Typowym sposobem pomóc klientom w ich Powodzenie rejestracji jest aby umożliwić im zobaczyć, jakie wprowadzono jako jego hasło. Ta opcja pomaga użytkownikom zarejestrować się, co pozwala na łatwe Zobacz oraz wprowadzić korekty do swojego hasła, jeśli to konieczne. Każde pole typu hasło ma pole wyboru z etykietą **Pokaż hasło** .  Dzięki temu użytkownika, aby wyświetlić hasło w postaci zwykłego tekstu. Uwzględnij ten fragment kodu w szablonie rejestracji lub logowania dla strony samodzielnie:
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -122,7 +113,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>Dodawanie warunków użytkowania
 
-Zawrzyj następujący kod na stronę, której chcesz dołączyć **warunki użytkowania** pola wyboru. To pole wyboru jest zazwyczaj potrzebne na swoich stronach rejestracji konta rejestracji i społecznościowych konta lokalnego.
+Dołącz następujący kod do strony, na której chcesz dołączyć pole wyboru **warunki użytkowania** . To pole wyboru jest zazwyczaj potrzebne na swoich stronach rejestracji konta rejestracji i społecznościowych konta lokalnego.
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -147,8 +138,8 @@ function addTermsOfUseLink() {
 }
 ```
 
-W kodzie, Zastąp `termsOfUseUrl` z linkiem do Twoich warunków użytkowania. Dla katalogu Utwórz nowy atrybut użytkownika o nazwie **termsOfUse** , a następnie Dołącz **termsOfUse** jako atrybut użytkownika.
+W kodzie Zastąp `termsOfUseUrl` linkiem do warunków użytkowania. Dla katalogu Utwórz nowy atrybut użytkownika o nazwie **termsOfUse** , a następnie Dołącz **termsOfUse** jako atrybut użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Znajdź więcej informacji na temat w jaki sposób dostosować interfejs użytkownika aplikacji w [Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](custom-policy-ui-customization.md).
+Więcej informacji o sposobach dostosowywania interfejsu użytkownika aplikacji można znaleźć w temacie [Dostosowywanie interfejsu użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C](custom-policy-ui-customization.md).

@@ -7,19 +7,19 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: ff9c123c0fecd26aba6ecbbda4a915d928b99f2f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d7311dce938ea575a27cf006e7469670813b7f10
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454717"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153506"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Wdróż obszar roboczy Azure Machine Learning Studio (klasyczny) przy użyciu Azure Resource Manager
 
-Za pomocą usługi Azure Resource Manager Szablon wdrożenia zapisuje czas, oferując skalowalne sposób wdrażania składników połączonych ze sobą za pomocą weryfikacji i mechanizm ponawiania prób. Aby skonfigurować obszary robocze Azure Machine Learning Studio (klasyczne), na przykład należy najpierw skonfigurować konto usługi Azure Storage, a następnie wdrożyć obszar roboczy. Wyobraź sobie zrobić to ręcznie setek obszarów roboczych. Łatwiejszym rozwiązaniem jest użycie szablonu Azure Resource Manager do wdrożenia obszaru roboczego programu Studio (klasycznego) i jego wszystkich zależności. Ten artykuł przeprowadzi Cię przez ten proces krok po kroku. Aby uzyskać doskonałe Omówienie usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/management/overview.md).
+Za pomocą usługi Azure Resource Manager Szablon wdrożenia zapisuje czas, oferując skalowalne sposób wdrażania składników połączonych ze sobą za pomocą weryfikacji i mechanizm ponawiania prób. Aby skonfigurować obszary robocze Azure Machine Learning Studio (klasyczne), na przykład należy najpierw skonfigurować konto usługi Azure Storage, a następnie wdrożyć obszar roboczy. Wyobraź sobie zrobić to ręcznie setek obszarów roboczych. Łatwiejszym rozwiązaniem jest użycie szablonu Azure Resource Manager do wdrożenia obszaru roboczego programu Studio (klasycznego) i jego wszystkich zależności. Ten artykuł przeprowadzi Cię przez ten proces krok po kroku. Aby uzyskać więcej informacji na temat Azure Resource Manager, zobacz [Azure Resource Manager omówienie](../../azure-resource-manager/management/overview.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -105,14 +105,14 @@ Ten krok należy powtórzyć dla każdej sesji. Po uwierzytelnieniu powinny być
 
 Skoro mamy już dostęp do platformy Azure, możemy utworzyć grupę zasobów.
 
-* Tworzenie grupy zasobów
+* Utwórz grupę zasobów
 
 ```powershell
 $rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central US"
 $rg
 ```
 
-Upewnij się, że grupa zasobów jest prawidłowo aprowizowane. **ProvisioningState** powinien być "powiodło się."
+Upewnij się, że grupa zasobów jest prawidłowo aprowizowane. **ProvisioningState** powinna mieć wartość "powodzenie".
 Nazwa grupy zasobów jest używany przez szablon do generowania nazwy konta magazynu. Nazwa konta magazynu musi mieć długość od 3 do 24 znaków długości i użyć tylko cyfry i małe litery.
 
 ![Grupa zasobów](./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png)
@@ -141,9 +141,9 @@ Po aprowizacji obszaru roboczego można także zautomatyzować wiele zadań Azur
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [tworzenia szablonów usługi Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md).
+* Dowiedz się więcej na temat [tworzenia szablonów Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md).
 * Zapoznaj się z [repozytorium szablonów szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates).
-* Obejrzyj ten film wideo o [usługi Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39).
+* Obejrzyj to wideo dotyczące [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39).
 * Zobacz [Pomoc dotyczącą szablonu Menedżer zasobów](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)
 
 <!--Link references-->

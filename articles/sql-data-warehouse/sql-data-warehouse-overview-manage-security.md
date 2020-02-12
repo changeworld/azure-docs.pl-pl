@@ -1,6 +1,6 @@
 ---
 title: Zabezpieczanie bazy danych
-description: Porady dotyczące zabezpieczania bazy danych w Azure SQL Data Warehouse tworzenia rozwiązań.
+description: Porady dotyczące zabezpieczania bazy danych i tworzenia rozwiązań w ramach zasobu puli SQL w usłudze SQL Analytics.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5eeb1c25264c36909774ec689b7410765881c8e2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064737"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153285"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Zabezpieczanie bazy danych w SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -27,21 +27,21 @@ ms.locfileid: "77064737"
 > 
 > 
 
-W tym artykule przedstawiono podstawowe informacje dotyczące zabezpieczania bazy danych Azure SQL Data Warehouse. W szczególności ten artykuł ułatwia rozpoczęcie pracy z zasobami w celu ograniczania dostępu, ochrony danych i monitorowania działań w bazie danych.
+W tym artykule przedstawiono podstawowe informacje dotyczące zabezpieczania puli SQL w ramach usługi SQL Analytics. W szczególności ten artykuł ułatwia rozpoczęcie pracy z zasobami w celu ograniczania dostępu, ochrony danych i monitorowania działań w bazie danych udostępnionej przy użyciu puli SQL.
 
 ## <a name="connection-security"></a>Zabezpieczenia połączeń
 Zabezpieczenia połączeń dotyczą sposobu ograniczania i zabezpieczania połączeń z bazą danych przy użyciu reguł zapory i szyfrowania połączeń.
 
 Reguły zapory są używane przez serwer i bazę danych w celu odrzucania prób połączenia z adresów IP, które nie zostały jawnie listy dozwolonych. Aby zezwolić na połączenia z publicznego adresu IP aplikacji lub komputera klienckiego, należy najpierw utworzyć regułę zapory na poziomie serwera przy użyciu Azure Portal, interfejsu API REST lub programu PowerShell. 
 
-Najlepszym rozwiązaniem jest maksymalne ograniczenie zakresu adresów IP przepuszczanych przez zaporę serwera.  Aby uzyskać dostęp do Azure SQL Data Warehouse z komputera lokalnego, upewnij się, że Zapora w sieci i komputer lokalny zezwalają na komunikację wychodzącą na porcie TCP 1433.  
+Najlepszym rozwiązaniem jest maksymalne ograniczenie zakresu adresów IP przepuszczanych przez zaporę serwera.  Aby można było uzyskać dostęp do puli SQL z komputera lokalnego, należy upewnić się, że Zapora w sieci i komputer lokalny zezwalają na komunikację wychodzącą na porcie TCP 1433.  
 
-Usługa Azure Synapse używa reguł zapory adresów IP na poziomie serwera. Nie obsługuje reguł zapory adresów IP na poziomie bazy danych. Aby uzyskać więcej informacji, zobacz [Azure SQL Database regułami zapory](../sql-database/sql-database-firewall-configure.md)
+Usługa Azure Synapse Analytics używa reguł zapory adresów IP na poziomie serwera. Nie obsługuje reguł zapory adresów IP na poziomie bazy danych. Aby uzyskać więcej informacji, zobacz temat [Azure SQL Database regułami zapory](../sql-database/sql-database-firewall-configure.md)
 
-Połączenia z SQL Data Warehouse są domyślnie szyfrowane.  Modyfikowanie ustawień połączenia w celu wyłączenia szyfrowania jest ignorowane.
+Połączenia z pulą SQL są domyślnie szyfrowane.  Modyfikowanie ustawień połączenia w celu wyłączenia szyfrowania jest ignorowane.
 
 ## <a name="authentication"></a>Uwierzytelnianie
-Uwierzytelnianie to sposób potwierdzenia tożsamości podczas nawiązywania połączenia z bazą danych. SQL Data Warehouse obecnie obsługuje uwierzytelnianie SQL Server przy użyciu nazwy użytkownika i hasła oraz Azure Active Directory. 
+Uwierzytelnianie to sposób potwierdzenia tożsamości podczas nawiązywania połączenia z bazą danych. Pula SQL obecnie obsługuje uwierzytelnianie SQL Server przy użyciu nazwy użytkownika i hasła oraz z Azure Active Directory. 
 
 Po utworzeniu serwera logicznego bazy danych należy określić nazwę logowania „server admin” przy użyciu nazwy użytkownika i hasła. Przy użyciu tych poświadczeń można uwierzytelniać się w dowolnej bazie danych na tym serwerze jako właściciel bazy danych lub "dbo" za pośrednictwem SQL Server uwierzytelniania.
 
@@ -55,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Następnie nawiąż połączenie z **bazą danych SQL Data Warehouse** za pomocą identyfikatora logowania administratora serwera i Utwórz użytkownika bazy danych na podstawie utworzonego identyfikatora logowania serwera.
+Następnie nawiąż połączenie z **bazą danych puli SQL** przy użyciu identyfikatora logowania administratora serwera i Utwórz użytkownika bazy danych na podstawie utworzonego identyfikatora logowania serwera.
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -98,4 +98,4 @@ W SQL Database klucz szyfrowania bazy danych jest chroniony przez wbudowany cert
 Bazę danych można zaszyfrować przy użyciu [Azure Portal](sql-data-warehouse-encryption-tde.md) lub [T-SQL](sql-data-warehouse-encryption-tde-tsql.md).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać szczegółowe informacje i przykłady dotyczące łączenia się z magazynem przy użyciu różnych protokołów, zobacz [Connect to SQL Data Warehouse](sql-data-warehouse-connect-overview.md).
+Aby uzyskać szczegółowe informacje i przykłady dotyczące łączenia się z magazynem przy użyciu różnych protokołów, zobacz [nawiązywanie połączenia z pulą SQL](sql-data-warehouse-connect-overview.md).

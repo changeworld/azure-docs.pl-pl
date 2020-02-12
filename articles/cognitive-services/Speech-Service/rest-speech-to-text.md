@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: ea37dc9ee6c9249aa9d18f7ee7ab1fdbe1230930
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f5d1fff7d1343ad569fa015ebdb65d0152f04376
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975843"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153217"
 ---
 # <a name="speech-to-text-rest-api"></a>Interfejs API REST zamiany mowy na tekst
 
@@ -42,26 +42,26 @@ Te parametry mogą być zawarte w ciągu zapytania żądania REST.
 
 | Parametr | Opis | Wymagane / opcjonalne |
 |-----------|-------------|---------------------|
-| `language` | Określa język mówiony, który jest rozpoznawany. Zobacz [obsługiwane języki](language-support.md#speech-to-text). | Wymagane |
-| `format` | Określa format wyniku. Akceptowane wartości to `simple` i `detailed`. Proste wyniki obejmują `RecognitionStatus`, `DisplayText`, `Offset`, i `Duration`. Precyzyjne reakcje obejmują wiele wyników z wartościami zaufania i cztery różne reprezentacje. Ustawieniem domyślnym jest `simple`. | Opcjonalne |
-| `profanity` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `masked`, które zastępują braki z gwiazdkami, `removed`, które usuwają wszystkie niewulgarności z wyniku lub `raw`, które zawierają braki w wyniku. Ustawieniem domyślnym jest `masked`. | Opcjonalne |
+| `language` | Określa język mówiony, który jest rozpoznawany. Zobacz [obsługiwane języki](language-support.md#speech-to-text). | Wymagany |
+| `format` | Określa format wyniku. Akceptowane wartości to `simple` i `detailed`. Proste wyniki obejmują `RecognitionStatus`, `DisplayText`, `Offset`i `Duration`. Precyzyjne reakcje obejmują wiele wyników z wartościami zaufania i cztery różne reprezentacje. Ustawieniem domyślnym jest `simple`. | Optional (Opcjonalność) |
+| `profanity` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `masked`, które zastępują braki z gwiazdkami, `removed`, które usuwają wszystkie niewulgarności z wyniku lub `raw`, które zawierają braki w wyniku. Ustawieniem domyślnym jest `masked`. | Optional (Opcjonalność) |
 
-## <a name="request-headers"></a>Nagłówki żądań
+## <a name="request-headers"></a>Nagłówki żądania
 
 Ta tabela zawiera wymagane i opcjonalne nagłówki dla żądania zamiany mowy na tekst.
 
 |Nagłówek| Opis | Wymagane / opcjonalne |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Klucz subskrypcji usługi rozpoznawania mowy. | Albo tego pliku nagłówkowego lub `Authorization` jest wymagana. |
-| `Authorization` | Token autoryzacji poprzedzone wyrazem `Bearer`. Aby uzyskać więcej informacji, zobacz [Authentication](#authentication) (Uwierzytelnianie). | Albo tego pliku nagłówkowego lub `Ocp-Apim-Subscription-Key` jest wymagana. |
-| `Content-type` | W tym artykule opisano format i kodera-dekodera audio podanych danych. Akceptowane wartości to `audio/wav; codecs=audio/pcm; samplerate=16000` i `audio/ogg; codecs=opus`. | Wymagane |
-| `Transfer-Encoding` | Określa, czy fragmentaryczne dane audio są wysyłane, zamiast pojedynczego pliku. Ten nagłówek należy używać tylko, jeśli dane audio. | Opcjonalne |
-| `Expect` | Jeśli używasz fragmentaryczne transferu, Wyślij `Expect: 100-continue`. Usługa mowy potwierdza wstępne żądanie i czeka na dodatkowe dane.| Wymagany, jeśli wysyłanie danych audio podzielonego. |
-| `Accept` | Jeśli podano, musi on być `application/json`. Usługa mowy zapewnia wyniki w formacie JSON. Niektóre platformy żądań zapewniają niezgodną wartość domyślną. Dobrym sposobem jest zawsze uwzględnienie `Accept`. | Opcjonalne, ale zalecane. |
+| `Ocp-Apim-Subscription-Key` | Klucz subskrypcji usługi rozpoznawania mowy. | Wymagany jest ten nagłówek lub `Authorization`. |
+| `Authorization` | Token autoryzacji poprzedzony słowem `Bearer`. Aby uzyskać więcej informacji, zobacz [Authentication](#authentication) (Uwierzytelnianie). | Wymagany jest ten nagłówek lub `Ocp-Apim-Subscription-Key`. |
+| `Content-type` | W tym artykule opisano format i kodera-dekodera audio podanych danych. Akceptowane wartości to `audio/wav; codecs=audio/pcm; samplerate=16000` i `audio/ogg; codecs=opus`. | Wymagany |
+| `Transfer-Encoding` | Określa, czy fragmentaryczne dane audio są wysyłane, zamiast pojedynczego pliku. Ten nagłówek należy używać tylko, jeśli dane audio. | Optional (Opcjonalność) |
+| `Expect` | W przypadku używania transferu fragmentarycznego Wyślij `Expect: 100-continue`. Usługa mowy potwierdza wstępne żądanie i czeka na dodatkowe dane.| Wymagany, jeśli wysyłanie danych audio podzielonego. |
+| `Accept` | Jeśli jest podany, musi być `application/json`. Usługa mowy zapewnia wyniki w formacie JSON. Niektóre platformy żądań zapewniają niezgodną wartość domyślną. Dobrym sposobem jest zawsze uwzględnienie `Accept`. | Opcjonalne, ale zalecane. |
 
 ## <a name="audio-formats"></a>Formaty audio
 
-Dźwięku w treści HTTP `POST` żądania. Musi być w jednym z formatów w tej tabeli:
+Dźwięk jest wysyłany w treści żądania HTTP `POST`. Musi być w jednym z formatów w tej tabeli:
 
 | Format | Koder-dekoder | Szybkość transmisji bitów | Częstotliwość próbkowania |
 |--------|-------|---------|-------------|
@@ -69,7 +69,7 @@ Dźwięku w treści HTTP `POST` żądania. Musi być w jednym z formatów w tej 
 | OGG | DZIELE | 16-bitowych | 16 kHz, narzędzie mono |
 
 >[!NOTE]
->Powyższe formaty są obsługiwane za pomocą interfejsu API REST i protokołu WebSocket w usłudze Speech. [Zestaw SDK rozpoznawania mowy](speech-sdk.md) aktualnie obsługuje tylko WAV Formatuj przy użyciu kodera-dekodera PCM.
+>Powyższe formaty są obsługiwane za pomocą interfejsu API REST i protokołu WebSocket w usłudze Speech. [Zestaw Speech SDK](speech-sdk.md) obecnie obsługuje format WAV z koderem-dekoder PCM oraz [innymi formatami](how-to-use-codec-compressed-audio-input-streams.md).
 
 ## <a name="sample-request"></a>Przykładowe żądanie
 
@@ -101,7 +101,7 @@ Kod stanu HTTP dla każdej odpowiedzi wskazuje sukces lub typowych błędów.
 
 Przenoszenie fragmentaryczne (`Transfer-Encoding: chunked`) może pomóc w zmniejszeniu opóźnienia rozpoznawania. Dzięki temu usługa mowy może rozpocząć przetwarzanie pliku audio podczas jego przesyłania. Interfejs API REST nie zapewnia tymczasowe lub częściowe wyniki.
 
-Ten przykładowy kod przedstawia sposób wysłania audio we fragmentach. Tylko pierwszy fragment może zawierać nagłówek pliku audio. `request` Obiekt HTTPWebRequest podłączonego do odpowiedniego punktu końcowego REST. `audioFile` jest to ścieżka do pliku audio na dysku.
+Ten przykładowy kod przedstawia sposób wysłania audio we fragmentach. Tylko pierwszy fragment może zawierać nagłówek pliku audio. `request` to obiekt HTTPWebRequest połączony z odpowiednim punktem końcowym REST. `audioFile` jest ścieżką do pliku audio na dysku.
 
 ```csharp
 
@@ -142,31 +142,31 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="response-parameters"></a>Parametrów odpowiedzi
 
-Wyniki są dostarczane w formacie JSON. `simple` Formatu zawiera następujące pola najwyższego poziomu.
+Wyniki są dostarczane w formacie JSON. Format `simple` obejmuje te pola najwyższego poziomu.
 
 | Parametr | Opis  |
 |-----------|--------------|
-|`RecognitionStatus`|Stan, takich jak `Success` rozpoznawania się pomyślnie. Zobacz następną tabelę.|
+|`RecognitionStatus`|Stan, na przykład `Success` pomyślnego rozpoznania. Zobacz następną tabelę.|
 |`DisplayText`|Rozpoznany tekst po kapitalizacji, interpunkcji, normalizacji tekstu odwrotnego (konwersja mówionego tekstu na krótsze formularze, takie jak 200 dla "200" lub "Dr. Smith" dla "lekarza Kowalski") i maskowania niewulgarności. Istnieje tylko w przypadku powodzenia.|
 |`Offset`|Czas (w jednostkach 100-nanosekundowych), jaką rozpoznawanym mowy rozpoczyna się w strumienia audio.|
 |`Duration`|Czas trwania (w jednostkach 100-nanosekundowych) rozpoznawaną mowy w strumienia audio.|
 
-`RecognitionStatus` Pole może zawierać następujące wartości:
+Pole `RecognitionStatus` może zawierać następujące wartości:
 
 | Stan | Opis |
 |--------|-------------|
-| `Success` | Rozpoznawanie zakończyło się pomyślnie i `DisplayText` pole jest obecny. |
+| `Success` | Rozpoznawanie zakończyło się pomyślnie, a pole `DisplayText` jest obecne. |
 | `NoMatch` | Wykryto mowy strumienia audio, ale bez wyrazów z języka docelowego zostały dopasowane. Zwykle oznacza, że rozpoznawanie jest inny język niż te, które użytkownik mówiącego Prezydenta. |
 | `InitialSilenceTimeout` | Początek strumienia audio zawiera tylko wyciszenia, a usługa upłynął limit czasu oczekiwania podczas rozpoznawania mowy. |
 | `BabbleTimeout` | Początek strumienia audio zawiera tylko hałasu i usługi, upłynął limit czasu oczekiwania podczas rozpoznawania mowy. |
 | `Error` | Usługa rozpoznawania napotkał błąd wewnętrzny i nie może kontynuować działania. Spróbuj ponownie, jeśli to możliwe. |
 
 > [!NOTE]
-> Jeśli audio składa się tylko z wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwróciła wynik mowy.
+> Jeśli dźwięk składa się tylko z niewulgarności, a `profanity` parametr zapytania jest ustawiony na `remove`, usługa nie zwraca wyniku mowy.
 
-`detailed` format zawiera te same dane, co format `simple`, oraz `NBest`, listę alternatywnych interpretacji tego samego wyniku rozpoznawania. Te wyniki są uszeregowane od najbardziej najprawdopodobniej do najmniej najprawdopodobniej. Pierwszy wpis jest taki sam jak główny wynik rozpoznawania.  Korzystając z `detailed` formacie `DisplayText` jest dostarczana jako `Display` dla każdego wyniku `NBest` listy.
+`detailed` format zawiera te same dane, co format `simple`, oraz `NBest`, listę alternatywnych interpretacji tego samego wyniku rozpoznawania. Te wyniki są uszeregowane od najbardziej najprawdopodobniej do najmniej najprawdopodobniej. Pierwszy wpis jest taki sam jak główny wynik rozpoznawania.  W przypadku korzystania z formatu `detailed` `DisplayText` jest dostępny jako `Display` dla każdego wyniku na liście `NBest`.
 
-Każdy obiekt w `NBest` lista zawiera:
+Każdy obiekt na liście `NBest` obejmuje:
 
 | Parametr | Opis |
 |-----------|-------------|
@@ -174,7 +174,7 @@ Każdy obiekt w `NBest` lista zawiera:
 | `Lexical` | Leksykalne formularza rozpoznany tekst: rzeczywistymi słowami został rozpoznany. |
 | `ITN` | Znormalizowane tekstu odwrotność ("") forma kanoniczna rozpoznany, za pomocą telefonu liczb, liczby, skróty ("lekarzem smith" do "odzyskiwania po awarii smith") i inne zastosowane przekształcenia. |
 | `MaskedITN` | Formularz podczas przy użyciu maskowania wulgaryzmów stosowane, jeśli jest to wymagane. |
-| `Display` | Formularz wyświetlania rozpoznany tekst, znaki interpunkcyjne i dodaje wielkie litery. Ten parametr jest taka sama jak `DisplayText` pod warunkiem, gdy skonfigurowano format `simple`. |
+| `Display` | Formularz wyświetlania rozpoznany tekst, znaki interpunkcyjne i dodaje wielkie litery. Ten parametr jest taki sam jak `DisplayText` podany, gdy format jest ustawiony na `simple`. |
 
 ## <a name="sample-responses"></a>Przykład odpowiedzi
 

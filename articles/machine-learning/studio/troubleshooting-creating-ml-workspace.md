@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 3f2cc3dcc5c9e34590d1cb2d0d3747fd1255f0e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a4385d88912e7c4d391baa8f5bc50be1e07f4fa7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427462"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152792"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>Przewodnik rozwiązywania problemów: Tworzenie obszaru roboczego Azure Machine Learning Studio (klasyczny) i nawiązywanie z nim połączenia
 Ten przewodnik zawiera rozwiązania niektórych często spotykanych problemów podczas konfigurowania obszarów roboczych Azure Machine Learning Studio (klasycznych).
@@ -53,7 +53,7 @@ Po utworzeniu nowego obszaru roboczego Machine Learning Studio (klasyczny) może
 
 3. W oknie dialogowym **usuwanie historii przeglądania** upewnij się, że **pliki cookie i dane witryny sieci Web** są zaznaczone, a następnie kliknij pozycję **Usuń**.
 
-   ![Usuwanie plików cookie](media/troubleshooting-creating-ml-workspace/screen6.png)
+   ![Usuń pliki cookie](media/troubleshooting-creating-ml-workspace/screen6.png)
 
 Po usunięciu plików cookie ponownie uruchom przeglądarkę, a następnie przejdź do strony [Microsoft Azure Machine Learning Studio (klasyczne)](https://studio.azureml.net) . Gdy zostanie wyświetlony monit o podanie nazwy użytkownika i hasła, wprowadź tę samą konto Microsoft, która została użyta do utworzenia obszaru roboczego.
 

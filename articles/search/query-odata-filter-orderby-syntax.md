@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e0db41098287ff011416932a0d44a1cb9f76127d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786158"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153880"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Omówienie języka OData dla `$filter`, `$orderby`i `$select` na platformie Azure Wyszukiwanie poznawcze
 
@@ -91,9 +91,9 @@ W tym przykładzie zmienna zakresu `room` pojawia się w ścieżce pola `room/Ty
 
 Ścieżki pól są używane w wielu parametrach [interfejsów API REST platformy Azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice/). W poniższej tabeli wymieniono wszystkie miejsca, w których można ich używać oraz ograniczenia dotyczące ich użycia:
 
-| API | Nazwa parametru | Ograniczenia |
+| Interfejs API | Nazwa parametru | Ograniczenia |
 | --- | --- | --- |
-| [Utwórz](https://docs.microsoft.com/rest/api/searchservice/create-index) lub [zaktualizuj](https://docs.microsoft.com/rest/api/searchservice/update-index) indeks | `suggesters/sourceFields` | Brak |
+| [Utwórz](https://docs.microsoft.com/rest/api/searchservice/create-index) lub [zaktualizuj](https://docs.microsoft.com/rest/api/searchservice/update-index) indeks | `suggesters/sourceFields` | None |
 | [Utwórz](https://docs.microsoft.com/rest/api/searchservice/create-index) lub [zaktualizuj](https://docs.microsoft.com/rest/api/searchservice/update-index) indeks | `scoringProfiles/text/weights` | Może odwoływać się tylko do pól z **możliwością wyszukiwania** |
 | [Utwórz](https://docs.microsoft.com/rest/api/searchservice/create-index) lub [zaktualizuj](https://docs.microsoft.com/rest/api/searchservice/update-index) indeks | `scoringProfiles/functions/fieldName` | Może odwoływać się tylko do pól z możliwością **filtrowania** |
 | [Wyszukiwanie](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`, gdy `queryType` jest `full` | Może odwoływać się tylko do pól z **możliwością wyszukiwania** |
@@ -105,7 +105,7 @@ W tym przykładzie zmienna zakresu `room` pojawia się w ścieżce pola `room/Ty
 | [Wyszukaj](https://docs.microsoft.com/rest/api/searchservice/search-documents) i [Sugeruj](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Może odwoływać się tylko do pól do **sortowania** |
 | [Wyszukiwanie](https://docs.microsoft.com/rest/api/searchservice/search-documents), [sugerowanie](https://docs.microsoft.com/rest/api/searchservice/suggestions)i [Wyszukiwanie](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Może odwoływać się tylko do pól do **pobierania** |
 
-## <a name="constants"></a>Stałe
+## <a name="constants"></a>{1&gt;Stałe&lt;1}
 
 Stałe w protokole OData są wartościami literalnymi dla danego typu [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM). Zobacz [obsługiwane typy danych](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , aby uzyskać listę obsługiwanych typów w usłudze Azure wyszukiwanie poznawcze. Stałe typów kolekcji nie są obsługiwane.
 
@@ -121,6 +121,17 @@ W poniższej tabeli przedstawiono przykłady stałych dla każdego z typów dany
 | `Edm.Int32` | `123`, `-456` |
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
+
+### <a name="escaping-special-characters-in-string-constants"></a>Znaki specjalne ucieczki w stałych ciągu
+
+Stałe w postaci ciągów w protokole OData są rozdzielane pojedynczymi cudzysłowami. Jeśli konieczne jest skonstruowanie zapytania z stałą typu String, która może zawierać pojedyncze cudzysłowy, można wypróbować osadzone cudzysłowy, podwajając je.
+
+Na przykład fraza z niesformatowanym apostrofem, taka jak "samochód", będzie reprezentowana w protokole OData jako stała w postaci ciągu `'Alice''s car'`.
+
+> [!IMPORTANT]
+> W przypadku programistycznego konstruowania filtrów ważne jest, aby pamiętać o stałych ciągach ucieczki, które pochodzą z danych wejściowych użytkownika. Jest to ograniczenie możliwości [ataków iniekcji](https://wikipedia.org/wiki/SQL_injection), szczególnie w przypadku używania filtrów do zaimplementowania [przycinania zabezpieczeń](search-security-trimming-for-azure-search.md).
+
+### <a name="constants-syntax"></a>Stałe — składnia
 
 Następujący EBNF ([Extended back-Naura form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definiuje gramatykę dla większości stałych przedstawionych w powyższej tabeli. Gramatykę dla typów geoprzestrzennych można znaleźć w [funkcjach geograficznych OData w usłudze Azure wyszukiwanie poznawcze](search-query-odata-geo-spatial-functions.md).
 
@@ -218,7 +229,7 @@ Dostępny jest również interaktywny diagram składni:
 > [!NOTE]
 > Zapoznaj się z informacjami o [składni wyrażenia OData dla usługi Azure wyszukiwanie poznawcze](search-query-odata-syntax-reference.md) , aby uzyskać pełną EBNF.
 
-Parametry **$OrderBy** i **$SELECT** są rozdzielanymi przecinkami listami prostszych wyrażeń. **$Filter** parametr jest wyrażeniem logicznym, które składa się z prostszych wyrażeń podrzędnych. Te wyrażenia podrzędne są łączone za pomocą operatorów logicznych, takich jak [`and`, `or`i `not`](search-query-odata-logical-operators.md), operatory porównania, takie jak [`eq`, `lt`, `gt`](search-query-odata-comparison-operators.md)itd., i operatory kolekcji, takie jak [`any` i `all`](search-query-odata-collection-operators.md).
+Parametry **$OrderBy** i **$SELECT** są rozdzielanymi przecinkami listami prostszych wyrażeń. **$Filter** parametr jest wyrażeniem logicznym, które składa się z prostszych wyrażeń podrzędnych. Te wyrażenia podrzędne są łączone za pomocą operatorów logicznych, takich jak [`and`, `or`i `not`](search-query-odata-logical-operators.md), operatory porównania, takie jak [`eq`, `lt`, `gt`i tak dalej](search-query-odata-comparison-operators.md), oraz operatory kolekcji, takie jak [`any` i `all`](search-query-odata-collection-operators.md).
 
 Parametry **$Filter**, **$OrderBy**i **$SELECT** zostały omówione bardziej szczegółowo w następujących artykułach:
 
@@ -226,7 +237,7 @@ Parametry **$Filter**, **$OrderBy**i **$SELECT** zostały omówione bardziej szc
 - [Składnia $orderby OData na platformie Azure Wyszukiwanie poznawcze](search-query-odata-orderby.md)
 - [Składnia $select OData na platformie Azure Wyszukiwanie poznawcze](search-query-odata-select.md)
 
-## <a name="see-also"></a>Zobacz także  
+## <a name="see-also"></a>Zobacz też  
 
 - [Nawigacja aspektowa na platformie Azure Wyszukiwanie poznawcze](search-faceted-navigation.md)
 - [Filtry na platformie Azure Wyszukiwanie poznawcze](search-filters.md)

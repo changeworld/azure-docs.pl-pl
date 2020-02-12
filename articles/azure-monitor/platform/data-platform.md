@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: b5d35fc14d69da2246c0ef5d4ef6d19a9e0c8462
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 74ede523c9747de4746fe1854bd1e352eba2f7e3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751001"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148899"
 ---
 # <a name="azure-monitor-data-platform"></a>Platforma danych Azure Monitor
 
@@ -38,7 +38,7 @@ Zasoby platformy Azure generują znaczną ilość danych monitorowania. Azure Mo
 
 Metryki w Azure Monitor są przechowywane w bazie danych szeregów czasowych, która jest zoptymalizowana pod kątem analizowania danych z sygnaturami czasowymi. Dzięki temu metryki są szczególnie odpowiednie dla alertów i szybkiego wykrywania problemów. Mogą oni powiedzieć, jak działa system, ale zazwyczaj musi być połączony z dziennikami, aby identyfikować główną przyczynę problemów.
 
-Metryki są dostępne dla interaktywnej analizy w Azure Portal z [Eksplorator metryk](../app/metrics-explorer.md). Można je dodać do [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-app-dashboards.md) w celu wizualizacji w połączeniu z innymi danymi, które są używane do wysyłania [alertów](alerts-metric.md)w czasie niemal w czasie rzeczywistym.
+Metryki są dostępne dla interaktywnej analizy w Azure Portal za pomocą [usługi Azure Eksplorator metryk](../platform/metrics-getting-started.md). Można je dodać do [pulpitu nawigacyjnego platformy Azure](../learn/tutorial-app-dashboards.md) w celu wizualizacji w połączeniu z innymi danymi, które są używane do wysyłania [alertów](alerts-metric.md)w czasie niemal w czasie rzeczywistym.
 
 Przeczytaj więcej na temat Azure Monitor metryk, w tym ich źródeł danych, w [Azure monitor](data-platform-metrics.md).
 
@@ -83,7 +83,7 @@ Zobacz [metryki w Azure monitor](data-platform-metrics.md) i [dzienniki w Azure 
 
 
 ## <a name="stream-data-to-external-systems"></a>Data Stream z systemami zewnętrznymi
-Oprócz używania narzędzi na platformie Azure do analizowania danych monitorowania, może być wymagane ją przesłać do zewnętrznego narzędzia, takie jak informacje o zabezpieczeniach i produktów do zarządzania (SIEM) zdarzenia. Przekazywanie ten jest zazwyczaj wykonywane bezpośrednio z monitorowanych zasobów za pomocą [usługi Azure Event Hubs](/azure/event-hubs/). Niektóre źródła można skonfigurować tak, aby wysyłali dane bezpośrednio do centrum zdarzeń, podczas gdy można użyć innego procesu, takiego jak aplikacja logiki, aby pobrać wymagane dane. Aby uzyskać szczegółowe informacje [, zobacz Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń w celu użycia przez zewnętrzne narzędzie](stream-monitoring-data-event-hubs.md) .
+Oprócz używania narzędzi na platformie Azure do analizowania danych monitorowania, może być wymagane ją przesłać do zewnętrznego narzędzia, takie jak informacje o zabezpieczeniach i produktów do zarządzania (SIEM) zdarzenia. Takie przekazywanie zazwyczaj odbywa się bezpośrednio z monitorowanych zasobów za pomocą [usługi Azure Event Hubs](/azure/event-hubs/). Niektóre źródła można skonfigurować tak, aby wysyłali dane bezpośrednio do centrum zdarzeń, podczas gdy można użyć innego procesu, takiego jak aplikacja logiki, aby pobrać wymagane dane. Aby uzyskać szczegółowe informacje [, zobacz Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń w celu użycia przez zewnętrzne narzędzie](stream-monitoring-data-event-hubs.md) .
 
 
 
@@ -91,4 +91,4 @@ Oprócz używania narzędzi na platformie Azure do analizowania danych monitorow
 
 - Przeczytaj więcej [na temat metryk w Azure monitor](data-platform-metrics.md).
 - Przeczytaj więcej [na temat dzienników w Azure monitor](data-platform-logs.md).
-- Dowiedz się więcej o [dostępne dane monitorowania](data-sources.md) dla różnych zasobów na platformie Azure.
+- Poznaj [dane monitorowania dostępne](data-sources.md) dla różnych zasobów na platformie Azure.

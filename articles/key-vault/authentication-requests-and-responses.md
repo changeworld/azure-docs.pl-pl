@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2b4f198d596ddcb475e123c355c38ada784d21d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b023b49955f642f1cafcb5f26ae67e657718bcd6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884000"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148236"
 ---
 # <a name="authentication-requests-and-responses"></a>Uwierzytelnianie, żądania i odpowiedzi
 
@@ -27,20 +27,20 @@ W tym temacie omówiono specyficzne dla usługi Azure Key Vault. Aby uzyskać og
 
  Aby można było korzystać z obiektów w Azure Key Vault, przykładowe adresy URL:  
 
-- Aby utworzyć klucz o nazwie TESTKEY w Key Vault use-`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- Aby utworzyć klucz o nazwie TESTKEY w Key Vault użyciu `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
-- Aby ZAIMPORTOWAĆ klucz o nazwie IMPORTEDKEY do Key Vault Użyj-`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- Aby ZAIMPORTOWAĆ klucz o nazwie IMPORTEDKEY do Key Vault Użyj `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
-- Aby uzyskać wpis tajny o nazwie dbsecret w Key Vault use-`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- Aby uzyskać wpis tajny o nazwie "dbsecret" w Key Vault użyciu `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
-- Aby PODPISać skrót przy użyciu klucza o nazwie TESTKEY w Key Vault use-`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- Aby PODPISać skrót przy użyciu klucza o nazwie TESTKEY w Key Vault użyciu `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  Urząd żądania do Key Vault jest zawsze następujący:`https://{keyvault-name}.vault.azure.net/`  
+  Urząd żądania do Key Vault jest zawsze następujący, `https://{keyvault-name}.vault.azure.net/`  
 
   Klucze są zawsze przechowywane pod ścieżką/Keys, wpisy tajne są zawsze przechowywane pod ścieżką/Secrets.  
 
 ## <a name="api-version"></a>Wersja interfejsu API  
- Usługa Azure Key Vault obsługuje przechowywanie wersji protokołów w celu zapewnienia zgodności z klientami niskiego poziomu, chociaż nie wszystkie możliwości będą dostępne dla tych klientów. Klienci muszą użyć parametru `api-version` ciągu zapytania, aby określić wersję protokołu, którą obsługują, ponieważ nie ma wartości domyślnej.  
+ Usługa Azure Key Vault obsługuje przechowywanie wersji protokołów w celu zapewnienia zgodności z klientami niskiego poziomu, chociaż nie wszystkie możliwości będą dostępne dla tych klientów. Klienci muszą używać parametru ciągu zapytania `api-version`, aby określić wersję protokołu, którą obsługują, ponieważ nie ma wartości domyślnej.  
 
  Wersje protokołów Azure Key Vault są zgodne ze schematem numerowania dat przy użyciu funkcji {rrrr}. {MM}. Format {DD}.  
 
@@ -60,13 +60,13 @@ W tym temacie omówiono specyficzne dla usługi Azure Key Vault. Aby uzyskać og
 ## <a name="error-responses"></a>Odpowiedzi na błędy  
  Obsługa błędów będzie używać kodów stanu HTTP. Typowe wyniki to:  
 
-- 2xx — sukces: Używany do normalnego działania. Treść odpowiedzi będzie zawierać oczekiwany wynik  
+- 2xx — sukces: używany do normalnego działania. Treść odpowiedzi będzie zawierać oczekiwany wynik  
 
 - 3xx — przekierowanie: 304 "nie zmodyfikowano" może zostać zwrócony do spełnienia warunkowego GET. Inne kody 3xx mogą być używane w przyszłości, aby wskazać zmiany w systemie DNS i ścieżce.  
 
-- 4xx — Błąd klienta: Używane dla nieprawidłowych żądań, brakujące klucze, błędy składniowe, nieprawidłowe parametry, błędy uwierzytelniania itd. Treść odpowiedzi będzie zawierać szczegółowe wyjaśnienie błędu.  
+- 4xx — Błąd klienta: używany dla nieprawidłowych żądań, brakujące klucze, błędy składniowe, nieprawidłowe parametry, błędy uwierzytelniania itd. Treść odpowiedzi będzie zawierać szczegółowe wyjaśnienie błędu.  
 
-- 5xx — błąd serwera: Używany do wewnętrznego błędu serwera. Treść odpowiedzi będzie zawierać podsumowanie informacji o błędzie.  
+- 5xx — błąd serwera: używany do wewnętrznego błędu serwera. Treść odpowiedzi będzie zawierać podsumowanie informacji o błędzie.  
 
   System został zaprojektowany tak, aby działał za serwerem proxy lub zaporą. W związku z tym klient może otrzymać inne kody błędów.  
 
@@ -87,7 +87,7 @@ W tym temacie omówiono specyficzne dla usługi Azure Key Vault. Aby uzyskać og
 
 ```  
 
-## <a name="authentication"></a>Authentication  
+## <a name="authentication"></a>Uwierzytelnianie  
  Wszystkie żądania do Azure Key Vault muszą być uwierzytelnione. Azure Key Vault obsługuje tokeny dostępu Azure Active Directory, które można uzyskać za pomocą OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)]. 
  
  Aby uzyskać więcej informacji na temat rejestrowania aplikacji i uwierzytelniania w celu korzystania z Azure Key Vault, zobacz [Rejestrowanie aplikacji klienckiej w usłudze Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).
@@ -110,9 +110,9 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
  Parametry w nagłówku WWW-Authenticate są następujące:  
 
--   Zgody Adres usługi autoryzacji OAuth2, który może służyć do uzyskania tokenu dostępu dla żądania.  
+-   Autoryzacja: adres usługi autoryzacji OAuth2, która może zostać użyta w celu uzyskania tokenu dostępu dla żądania.  
 
--   Zasoby Nazwa zasobu do użycia w żądaniu autoryzacji.  
+-   zasób: nazwa zasobu (https://vault.azure.net) do użycia w żądaniu autoryzacji).  
 
 ## <a name="see-also"></a>Zobacz też  
  [Informacje o kluczach, wpisach tajnych i certyfikatach](about-keys-secrets-and-certificates.md)

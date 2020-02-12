@@ -7,14 +7,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.date: 04/25/2019
-ms.openlocfilehash: bc4eea53c026eef9dc8f390976442426e2ba1067
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d465c27621464d840555edb1a0f513fbc195e13
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427545"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148117"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Moduły programu PowerShell dla Azure Machine Learning Studio (klasyczne)
 
@@ -51,7 +51,7 @@ Aby rozpocząć pracę z klasycznym programem PowerShell, Pobierz [pakiet Releas
 ## <a name="support-table"></a>Tabela obsługi programu PowerShell
 
 
-| | **Az** |  **PowerShell — model klasyczny** |
+| | **AZ** |  **PowerShell — model klasyczny** |
 | --- | --- | --- |
 | Tworzenie/usuwanie obszarów roboczych | [Szablony usługi Resource Manager](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | Zarządzanie planami zobowiązań obszaru roboczego | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |

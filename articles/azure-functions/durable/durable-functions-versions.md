@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849806"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152894"
 ---
 # <a name="durable-functions-versions-overview"></a>Omówienie wersji Durable Functions
 
@@ -59,6 +59,10 @@ Durable Functions 2. x używa nowego schematu pliku host. JSON. Główne zmiany 
 * `"notifications"` (i podsekcja `"eventGrid"`) dla konfiguracji powiadomień usługi Event Grid.
 
 Aby uzyskać szczegółowe informacje, zobacz [dokumentację dotyczącą Durable Functions pliku host. JSON](durable-functions-bindings.md#durable-functions-2-0-host-json) .
+
+#### <a name="default-taskhub-name-changes"></a>Domyślne zmiany nazwy taskhub
+
+W wersji 1. x, jeśli nazwa centrum zadań nie została określona w pliku host. JSON, wartość domyślna to "DurableFunctionsHub". W wersji 2. x domyślna nazwa centrum zadań jest teraz pochodną nazwy aplikacji funkcji. W związku z tym, jeśli nie określisz nazwy centrum zadań podczas uaktualniania do wersji 2. x, kod będzie działać z nowym centrum zadań, a wszystkie aranżacje w locie nie będą już miały przetwarzania aplikacji. Aby obejść ten krok, można jawnie ustawić nazwę centrum zadań jako wartość domyślną v1. x "DurableFunctionsHub" lub skorzystać z naszych [wskazówek dotyczących wdrażania bez przestojów](durable-functions-zero-downtime-deployment.md) , aby uzyskać szczegółowe informacje na temat sposobu obsługi istotnych zmian dla aranżacji w locie.
 
 #### <a name="public-interface-changes-net-only"></a>Zmiany interfejsu publicznego (tylko platforma .NET)
 

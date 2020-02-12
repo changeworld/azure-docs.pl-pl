@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 6e5c1a1bfc82460ad7e53cc8444a4bb42aa4ef19
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 429ddd62cccb8657aa18ec844968cc12df778f55
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548394"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153795"
 ---
 # <a name="remove-duplicate-rows-module"></a>Usuń moduł zduplikowanych wierszy
 
@@ -26,15 +26,15 @@ Załóżmy na przykład, że dane wyglądają jak poniżej, i reprezentują wiel
 
 | PatientID | Inicjały| Płeć|Wiek|Przyjęte|
 |----|----|----|----|----|
-|1|F.M.| milionów| 53| Sty|
-|2| F.A.M.| milionów| 53| Sty|
-|3| F.A.M.| milionów| 24| Sty|
-|3| F.M.| milionów| 24| Lut|
-|4| F.M.| milionów| 23| Lut|
-| | F.M.| milionów| 23| |
-|5| F.A.M.| milionów| 53| |
-|6| F.A.M.| milionów| NaN| |
-|7| F.A.M.| milionów| NaN| |
+|1|F.M.| M| 53| Stycznia|
+|2| F.A.M.| M| 53| Stycznia|
+|3| F.A.M.| M| 24| Stycznia|
+|3| F.M.| M| 24| Lutego|
+|4| F.M.| M| 23| Lutego|
+| | F.M.| M| 23| |
+|5| F.A.M.| M| 53| |
+|6| F.A.M.| M| {1&gt;NaN&lt;1}| |
+|7| F.A.M.| M| {1&gt;NaN&lt;1}| |
 
 Jasno ten przykład zawiera wiele kolumn, które mogą duplikować dane. Bez względu na to, czy są one w rzeczywistości duplikatami, zależy od wiedzy o danych. 
 

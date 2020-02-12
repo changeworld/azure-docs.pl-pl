@@ -7,19 +7,19 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: ac3aa0dc619ec05dcd79a4f8740026b1eabc19aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c74388a376a4f45a8e07cfed69bd497f856f1b37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427712"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148678"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Wybierz parametry, aby zoptymalizować algorytmy w Azure Machine Learning Studio (klasyczny)
 
-W tym temacie opisano, jak wybrać prawy parametr ustawiony dla algorytmu w Azure Machine Learning Studio (klasyczny). Większość algorytmów uczenia maszynowego parametrów wymaganych do zestawu. Ucząc model, konieczne jest podanie wartości tych parametrów. Skuteczność uczonego modelu zależy od parametrów modelu, które wybierzesz. Proces odnajdywania optymalny zestaw parametrów jest znany jako *modelu zaznaczenia*.
+W tym temacie opisano, jak wybrać prawy parametr ustawiony dla algorytmu w Azure Machine Learning Studio (klasyczny). Większość algorytmów uczenia maszynowego parametrów wymaganych do zestawu. Ucząc model, konieczne jest podanie wartości tych parametrów. Skuteczność uczonego modelu zależy od parametrów modelu, które wybierzesz. Proces znajdowania optymalnego zestawu parametrów jest znany jako *wybór modelu*.
 
 
 
@@ -27,21 +27,21 @@ Istnieją różne sposoby modelu zaznaczenia. W uczeniu maszynowym, krzyżowe sp
 
 Istnieją cztery kroki w procesie wyszukiwania najlepszy zestaw parametrów:
 
-1. **Definiowanie przestrzeni parametru**: algorytm, najpierw zdecyduj, wartości parametrów dokładnie chcesz wziąć pod uwagę.
-2. **Zdefiniuj ustawienia krzyżowego sprawdzania poprawności**: Zdecyduj, jak wybrać złożeń krzyżowego sprawdzania poprawności dla zestawu danych.
-3. **Zdefiniuj Metryka**: Zdecyduj, jakie metryki używaną do określania najlepszy zestaw parametrów, takich jak dokładność, mean głównego kwadrat błąd, dokładności, odwołań lub wynik f.
-4. **Uczenie, ocenę i porównywanie**: każda unikatowa kombinacja wartości parametrów krzyżowego sprawdzania poprawności jest przeprowadzane przez i oparte na metryce błąd, należy zdefiniować. Po ocenie i porównanie możesz wybrać sprzedające modelu.
+1. **Zdefiniuj miejsce parametru**: dla algorytmu należy najpierw określić dokładne wartości parametrów, które mają być brane pod uwagę.
+2. **Zdefiniuj ustawienia dotyczące krzyżowego sprawdzania poprawności**: Zdecyduj, jak wybierać zgięcia krzyżowe dla zestawu danych.
+3. **Zdefiniuj metrykę**: Zdecyduj, która Metryka ma być używana do określania najlepszego zestawu parametrów, takich jak dokładność, główny znak średnika, precyzja, odwołanie lub f-Score.
+4. **Uczenie, szacowanie i porównywanie**: dla każdej unikatowej kombinacji wartości parametrów, wzajemne sprawdzanie poprawności jest wykonywane w oparciu o określoną metrykę błędu. Po ocenie i porównanie możesz wybrać sprzedające modelu.
 
 Na poniższej ilustracji przedstawiono, jak można to osiągnąć w Azure Machine Learning Studio (klasyczny).
 
 ![Znajdź najlepsze zestaw parametrów](./media/algorithm-parameters-optimize/fig1.png)
 
 ## <a name="define-the-parameter-space"></a>Zdefiniuj obszaru parametrów
-Można zdefiniować parametrem ustawionym na etapie inicjowania modelu. Okienko parametru wszystkich algorytmów uczenia maszynowego w dwóch trybach trainer: *pojedynczy parametr* i *zakres parametru*. Wybierz tryb parametru zakresu. W trybie parametru zakresu można wprowadzić wiele wartości dla każdego parametru. W polu tekstowym, można wprowadzić wartości rozdzielanych przecinkami.
+Można zdefiniować parametrem ustawionym na etapie inicjowania modelu. Okienko parametrów wszystkich algorytmów uczenia maszynowego ma dwa tryby Trainer: *pojedynczy parametr* i *zakres parametrów*. Wybierz tryb parametru zakresu. W trybie parametru zakresu można wprowadzić wiele wartości dla każdego parametru. W polu tekstowym, można wprowadzić wartości rozdzielanych przecinkami.
 
 ![Dwuklasowych wzmocnione drzewo decyzyjnego, jeden parametr](./media/algorithm-parameters-optimize/fig2.png)
 
- Alternatywnie można zdefiniować maksymalne i minimalne punkty siatki i całkowita liczba punktów do można wygenerować za pomocą **Użyj zakresu konstruktora**. Domyślne wartości parametrów są generowane na skali liniowej. Ale w tym przypadku **skali logarytmicznej** jest zaznaczone, wartości są generowane w skali logarytmicznej (współczynnik sąsiadujące punkty jest stałe zamiast ich różnicy). Dla parametrów, liczba całkowita można zdefiniować zakres przy użyciu łącznika. Na przykład "1-10" oznacza, że wszystkie liczby całkowite z zakresu od 1 do 10 (oba włącznie) tworzą zestaw parametrów. Tryb mieszany jest również obsługiwany. Na przykład, ustaw parametr "1-10, 20, 50" obejmuje liczb całkowitych 1-10, 20 do 50.
+ Alternatywnie można zdefiniować maksymalne i minimalne punkty siatki oraz całkowitą liczbę punktów do wygenerowania przy użyciu **konstruktora zakresu użycia**. Domyślne wartości parametrów są generowane na skali liniowej. Jeśli jednak **skalowanie dziennika** jest zaznaczone, wartości są generowane w skali dziennika (to oznacza, że proporcja sąsiadujących punktów jest stała, a nie różnica). Dla parametrów, liczba całkowita można zdefiniować zakres przy użyciu łącznika. Na przykład "1-10" oznacza, że wszystkie liczby całkowite z zakresu od 1 do 10 (oba włącznie) tworzą zestaw parametrów. Tryb mieszany jest również obsługiwany. Na przykład, ustaw parametr "1-10, 20, 50" obejmuje liczb całkowitych 1-10, 20 do 50.
 
 ![Dwuklasowych wzmocnione drzewo decyzyjnego, parametr zakresu](./media/algorithm-parameters-optimize/fig3.png)
 
@@ -51,7 +51,7 @@ Na [partycji i przykładowym][partition-and-sample] module można używać do lo
 ![Partycja i próbka](./media/algorithm-parameters-optimize/fig4.png)
 
 ## <a name="define-the-metric"></a>Zdefiniuj wartość metryki
-Moduł " [dostrajanie modelu][tune-model-hyperparameters] " pozwala obsłużyć doświadczalnie Wybieranie najlepszego zestawu parametrów dla danego algorytmu i zestawu danych. Oprócz innych informacji dotyczących uczenia modelu, **właściwości** okienko ten moduł zawiera metryki określania najlepszy zestaw parametrów. Ma dwa pola listy rozwijanej różnych algorytmów klasyfikacji i regresji, odpowiednio. Jeśli algorytm pod uwagę jest to algorytm klasyfikacji, metryki regresji jest ignorowany i na odwrót. W tym konkretnym przykładzie Metryka to **dokładność**.   
+Moduł " [dostrajanie modelu][tune-model-hyperparameters] " pozwala obsłużyć doświadczalnie Wybieranie najlepszego zestawu parametrów dla danego algorytmu i zestawu danych. Oprócz innych informacji dotyczących uczenia modelu, okienko **Właściwości** tego modułu zawiera metrykę służącą do określenia najlepszego zestawu parametrów. Ma dwa pola listy rozwijanej różnych algorytmów klasyfikacji i regresji, odpowiednio. Jeśli algorytm pod uwagę jest to algorytm klasyfikacji, metryki regresji jest ignorowany i na odwrót. W tym konkretnym przykładzie Metryka jest **dokładnością**.   
 
 ![Odchylenia parametrów](./media/algorithm-parameters-optimize/fig5.png)
 
@@ -65,7 +65,7 @@ Moduł zawiera również opcjonalny zestaw danych wejściowych. Połącz z zesta
 
 ![Klasyfikator drzewa decyzyjnego](./media/algorithm-parameters-optimize/fig6a.png)
 
-Model jest następnie oceniany na zestawie danych sprawdzania poprawności. Lewy port wyjściowy modułu różne metryki jest wyświetlany jako funkcji wartości parametrów. Port wyjściowy w prawo powoduje sprzedające modelu zgodnie z wybranym metryki trenowanego modelu, który odpowiada (**dokładność** w tym przypadku).  
+Model jest następnie oceniany na zestawie danych sprawdzania poprawności. Lewy port wyjściowy modułu różne metryki jest wyświetlany jako funkcji wartości parametrów. Prawidłowy port wyjściowy zapewnia szkolony model, który odpowiada modelowi najlepiej działającemu zgodnie z wybraną metryką (**dokładność** w tym przypadku).  
 
 ![Sprawdzanie poprawności zestawu danych](./media/algorithm-parameters-optimize/fig6b.png)
 

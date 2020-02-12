@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: Azure Machine Learning Studio (klasyczny) to narzędzie do przeciągania i upuszczania umożliwiające szybkie tworzenie modeli z gotowej do użycia biblioteki algorytmów i modułów.
 services: machine-learning
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: f3be29dc222e0e9b98ed51d8f921fb9926b018ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 07629a17492d0c898bbd76aeeab6c84cf39b4b55
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314078"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152707"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Co to jest Machine Learning Studio (klasyczny)?
 
@@ -38,18 +38,18 @@ Nie jest wymagane programowanie, wizualne łączenie zestawów danych i modułó
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Jak Machine Learning Studio (klasyczny) różni się od Azure Machine Learning?
 
-[Azure Machine Learning](../overview-what-is-azure-ml.md) udostępnia zestawy SDK **i** projektanta Azure Machine Learning, aby szybko przygotowywać dane, uczeniować i wdrażać modele uczenia maszynowego. Projektant oferuje podobne środowisko przeciągania i upuszczania do programu Studio (klasyczne). Jednak, w przeciwieństwie do własnościowej platformy obliczeniowej programu Studio (klasycznej), projektant używa własnych zasobów obliczeniowych i jest w pełni zintegrowany z Azure Machine Learning.
+[Azure Machine Learning](../overview-what-is-azure-ml.md) udostępnia zestawy SDK **i** projektanta Azure Machine Learning (wersja zapoznawcza), aby szybko przygotowywać dane, uczeniować i wdrażać modele uczenia maszynowego. Projektant oferuje podobne środowisko przeciągania i upuszczania do programu Studio (klasyczne). Jednak, w przeciwieństwie do własnościowej platformy obliczeniowej programu Studio (klasycznej), projektant używa własnych zasobów obliczeniowych i jest w pełni zintegrowany z Azure Machine Learning.
 
 Oto krótkie porównanie:
 
 || Usługa Machine Learning Studio (klasyczna) | Azure Machine Learning |
 |---| --- | --- |
-| Przeciąganie i upuszczanie interfejsu | Tak | Tak — [projektant Azure Machine Learning](../concept-designer.md) |
+| Przeciąganie i upuszczanie interfejsu | Yes | Tak — [Azure Machine Learning Designer (wersja zapoznawcza)](../concept-designer.md) |
 | Experiment | Skalowalne (limit danych szkolenia 10 GB) | Skalowanie za pomocą elementu docelowego obliczeń |
 | Moduły dla interfejsu metodą "przeciągnij i upuść" | Ilość | Początkowy zestaw popularnych [modułów](../algorithm-module-reference/module-reference.md)|
 |Szkoleniowe cele obliczeniowe| Własnościowy obiekt docelowy obliczeń, tylko obsługa procesora CPU| Azure Machine Learning obsługuje maszyny wirtualne z maszynami wirtualnymi obliczeniowymi (procesor GPU lub procesor CPU) i notesy.<br/>([Inne obliczenia obsługiwane w zestawie SDK](../concept-compute-target.md#train))|
 |Inferencing cele obliczeń| Własny format usługi sieci Web, niedostosowywalny |  Azure Kubernetes Service i AML COMPUTE <br/>([Inne obliczenia obsługiwane w zestawie SDK](../how-to-deploy-and-where.md)) |
-| Potok ML | Brak obsługi | Obsługiwane [potoki](../concept-ml-pipelines.md) |
+| Potok ML | Nieobsługiwane | Obsługiwane [potoki](../concept-ml-pipelines.md) |
 | MLOps | Podstawowe Zarządzanie modelami i wdrażanie | Konfigurowalne i śledzenie wersji i śledzenia potoków wdrożenia |
 | Format modelu | Format własnościowy, Studio (klasyczny) | Format standardowy w zależności od typu zadania szkoleniowego |
 |Automatyczne szkolenie modelu i dostrajanie parametrów | Nie | Jeszcze nie w projektancie <br/> ([Obsługiwane w zestawie SDK i stronie docelowej obszaru roboczego](../concept-automated-ml.md)) | 
