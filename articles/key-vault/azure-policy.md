@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 01/28/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c32d2fb45bbd4f4a9b4845bb4ef27a439d536677
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9bf33aae5de600d6e5b0ab836c99da1d56935db3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905857"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169377"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integracja Azure Key Vault z usługą Azure Policy
 
@@ -152,5 +152,4 @@ Przypisanie zasad z efektem "odmowa" może potrwać do 30 minut (średni przypad
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej na temat [usługi Azure Policy](../governance/policy/overview.md)
-- Zobacz przykład: [magazyny Key Vault bez punktów końcowych sieci wirtualnych](../governance/policy/samples/keyvault-no-vnet-rules.md)
-
+- Zobacz przykłady Key Vault: [Key Vault wbudowane definicje zasad](../governance/policy/samples/built-in-policies.md#key-vault)

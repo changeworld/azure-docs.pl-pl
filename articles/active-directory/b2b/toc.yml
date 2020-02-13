@@ -15,7 +15,9 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Samouczki
       items:
-        - name: Zbiorcze zapraszanie użytkowników-gości B2B
+        - name: Zapraszanie zbiorcze za pośrednictwem programu PowerShell
+          href: bulk-invite-powershell.md
+        - name: Zapraszanie zbiorcze za pośrednictwem portalu (wersja zapoznawcza)
           href: tutorial-bulk-invite.md
         - name: Wymuszanie uwierzytelniania wieloskładnikowego
           href: b2b-tutorial-require-mfa.md

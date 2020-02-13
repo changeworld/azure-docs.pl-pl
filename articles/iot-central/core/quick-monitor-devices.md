@@ -3,18 +3,18 @@ title: Szybki Start — monitorowanie urządzeń na platformie Azure IoT Central
 description: Dowiedz się, jak używać aplikacji IoT Central platformy Azure do monitorowania urządzeń.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e5185d78b0ffc17e861f49d294af65ddcd200d07
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027748"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168720"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Szybki Start: korzystanie z usługi Azure IoT Central do monitorowania urządzeń
 
@@ -41,8 +41,6 @@ Widok **omówienia** symulowanego urządzenia utworzonego w poprzednich przewodn
 ## <a name="investigate-an-issue"></a>Badanie problemu
 
 Jako operator można wyświetlić informacje o urządzeniu w widokach **Przegląd**, **informacje**i **polecenia** . Konstruktor utworzył widok **Zarządzanie urządzeniem** służący do edytowania informacji o urządzeniu i ustawiania właściwości urządzeń.
-
-Wybierz widok **Przegląd** , aby wyświetlić informacje o urządzeniu.
 
 Wykres na pulpicie nawigacyjnym pokazuje wykreśloną temperaturę urządzenia. Należy określić, że temperatura urządzenia jest zbyt wysoka.
 

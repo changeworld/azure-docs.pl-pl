@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76270870"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Przeniesienie własności rozliczeń subskrypcji platformy Azure na inne konto
@@ -52,7 +52,7 @@ Jeśli jesteś klientem z Umową Enterprise (EA), administratorzy w Twoim przeds
 
     ![Strona wysyłania przeniesienia](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
-1. Wybierz pozycję **Wyślij żądanie przeniesienia**.
+1. Wybierz opcję **Wyślij żądanie przeniesienia**.
 
 1. Użytkownik otrzymuje wiadomość e-mail z instrukcjami dotyczącymi przeglądania żądania transferu.
 
@@ -86,7 +86,7 @@ Subskrypcje programu Visual Studio i Microsoft Partner Network zawierają comies
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Przenoszenie własności rozliczeń subskrypcji w ramach Umowy Enterprise (EA)
 
-Administrator przedsiębiorstwa może przenieść własność subskrypcji między kontami w ramach rejestracji. Aby uzyskać więcej informacji, zobacz [zmiana właściciela konta](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) w portalu EA.
+Administrator przedsiębiorstwa może przenieść własność subskrypcji między kontami w ramach rejestracji. Aby uzyskać więcej informacji, zobacz sekcję [Zmienianie właściciela konta](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) w witrynie EA Portal.
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>Kroki po zaakceptowaniu własności rozliczeń
 
@@ -190,7 +190,7 @@ Nawet jeśli [przypisania kontroli dostępu opartej na rolach (RBAC)](../../role
 
 Jeśli odbiorca musi ograniczyć dostęp do swoich zasobów platformy Azure, powinien rozważyć zaktualizowanie wszystkich wpisów tajnych skojarzonych z usługą. Większość zasobów można zaktualizować, wykonując następujące czynności:
 
-  1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+  1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
   2. W menu Centrum wybierz pozycję **Wszystkie zasoby**.
   3. Wybierz zasób.
   4. Na stronie zasobu kliknij opcję **Ustawienia**. Możesz tu wyświetlać i aktualizować istniejące wpisy tajne.

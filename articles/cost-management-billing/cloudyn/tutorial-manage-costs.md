@@ -1,31 +1,30 @@
 ---
 title: Samouczek — zarządzanie kosztami przy użyciu rozwiązania Cloudyn na platformie Azure | Microsoft Docs
 description: Ten samouczek przedstawia zarządzanie kosztami metodą przydzielania kosztów oraz przy użyciu raportów przewidywanych kosztów i obciążeń zwrotnych.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: d4117e8a40f277c6ac0213272176b75a1c161eb1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987411"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769908"
 ---
-# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Samouczek: zarządzanie kosztami przy użyciu rozwiązania Cloudyn
+# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Samouczek: Zarządzanie kosztami przy użyciu rozwiązania Cloudyn
 
 Rozwiązanie Cloudyn umożliwia zarządzanie kosztami i tworzenie raportów przewidywanych kosztów przez przydzielanie kosztów na podstawie tagów. W procesie przydzielania kosztów do wykorzystywanych zasobów w chmurze przypisywane są koszty. Koszty są w pełni przydzielone, gdy wszystkie zasoby są skategoryzowane przy użyciu tagów. Po przydzieleniu kosztów można udostępnić użytkownikom analizę przewidywanych kosztów i obciążeń zwrotnych za pomocą pulpitów nawigacyjnych i raportów. Jednak na początku korzystania z rozwiązania Cloudyn wiele zasobów może nie mieć przypisanych tagów lub przypisanie im tagów może być niemożliwe.
 
 Na przykład może być konieczne uzyskanie zwrotu kosztów inżynieryjnych. Potrzebna jest możliwość przedstawienia zespołowi inżynierów tego, że wymagane jest określona kwota — na podstawie kosztów zasobów. Można pokazać im raport dotyczący wszystkich wykorzystanych zasobów z tagiem *inżynieria*.
 
-W tym artykule tagi i kategorie mają czasami to samo znaczenie. Kategorie to obszerne kolekcje mogące zawierać wiele elementów. Mogą to być na przykład jednostki biznesowe, centra kosztów, usługi internetowe lub inne dowolne elementy oznaczone tagami. Tagi to pary nazwa/wartość, które umożliwiają kategoryzowanie zasobów oraz wyświetlanie skonsolidowanych informacji rozliczeniowych i zarządzanie nimi przez zastosowanie tego samego tagu do wielu zasobów i grup zasobów. We wcześniejszych wersjach witryny Azure Portal *nazwa tagu* była określana jako *klucz*. Tagi są tworzone i przechowywane dla pojedynczej subskrypcji platformy Azure. Tagi w usługach AWS składają się z pary klucz/wartość. Ponieważ zarówno na platformie Azure, jak i w usługach AWS jest używany termin *klucz*, rozwiązanie Cloudyn korzysta też z tego terminu. Narzędzie Category Manager korzysta z kluczy (nazw tagów) do scalania tagów.
+W tym artykule tagi i kategorie mają czasami to samo znaczenie. Kategorie to obszerne kolekcje mogące zawierać wiele elementów. Mogą to być na przykład jednostki biznesowe, centra kosztów, usługi internetowe lub inne dowolne elementy oznaczone tagami. Tagi to pary kluczy i wartości umożliwiające kategoryzowanie zasobów, wyświetlanie skonsolidowanych informacji na temat rozliczeń oraz zarządzanie nimi przez zastosowanie tego samego tagu względem wielu zasobów i grup zasobów. We wcześniejszych wersjach witryny Azure Portal *nazwa tagu* była określana jako *klucz*. Tagi są tworzone i przechowywane dla pojedynczej subskrypcji platformy Azure. Tagi w usługach AWS składają się z pary klucz/wartość. Ponieważ zarówno na platformie Azure, jak i w usługach AWS jest używany termin *klucz*, rozwiązanie Cloudyn korzysta też z tego terminu. Narzędzie Category Manager korzysta z kluczy (nazw tagów) do scalania tagów.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Przydzielanie kosztów za pomocą tagów niestandardowych.
@@ -51,7 +50,7 @@ Należy pamiętać, że informacje o tagu nie są wyświetlane dla tych zasobów
 
 Podczas przydzielania kosztów w pierwszej kolejności należy zdefiniować zakres przy użyciu modelu kosztów. Model kosztów nie zmienia kosztów, lecz je dystrybuuje. Tworzenie modelu kosztów polega na segmentacji danych według jednostek kosztów, kont lub subskrypcji, a także według wielu tagów. Przykłady typowych tagów to kod rozliczeń, centrum kosztu lub nazwa grupy. Tagi ułatwiają też analizę przewidywanych kosztów i obciążeń zwrotnych do innych części organizacji.
 
-Aby utworzyć niestandardowy model przydzielania kosztów, wybierz pozycję **koszty** &gt; **Cost Management** &gt; **alokacji kosztów 360 °** w menu raportu.
+Aby utworzyć niestandardowy model alokacji kosztów, wybierz pozycję **Costs** (Koszty) &gt; **Cost Management** (Zarządzanie kosztami) &gt; **Cost Allocation 360°** (Alokacja kosztu 360°) w menu raportu.
 
 ![Przykład przedstawiający pulpit nawigacyjny z wybraną pozycją Alokacja kosztu 360](./media/tutorial-manage-costs/cost-allocation-360.png)
 
@@ -81,7 +80,7 @@ Jeśli masz nieprzydzielone wystąpienia zarezerwowane usługi Amazon Web Servic
 
 Aby wyświetlić informacje o wybranych opcjach przydzielania kosztów, wybierz pozycję **Summary** (Podsumowanie). Aby zapisać informacje i kontynuować pracę nad dodatkowymi regułami później, wybierz pozycję **Save As Draft** (Zapisz jako wersję roboczą). Ewentualnie aby zapisać informacje i rozpocząć przetwarzanie przez usługę Cloudyn modelu przydzielania kosztów, wybierz pozycję **Save and Activate** (Zapisz i aktywuj).
 
-Na liście modeli kosztów nowy model kosztów będzie wyświetlany ze stanem **Processing** (Przetwarzanie). Może upłynąć pewien czas, zanim baza danych Cloudyn zostanie aktualizowana o ten model kosztów. Po zakończeniu przetwarzania stan zostanie zaktualizowany do **Completed** (Ukończono). Następnie możesz wyświetlać dane z modelu kosztów w raporcie analizy kosztów w obszarze **filtry rozszerzone** &gt; **modelu kosztów**.
+Na liście modeli kosztów nowy model kosztów będzie wyświetlany ze stanem **Processing** (Przetwarzanie). Może upłynąć pewien czas, zanim baza danych Cloudyn zostanie aktualizowana o ten model kosztów. Po zakończeniu przetwarzania stan zostanie zaktualizowany do **Completed** (Ukończono). Dane z modelu kosztów będzie wtedy można wyświetlić w raporcie analizy kosztów w obszarze **Extended Filters** (Rozszerzone filtry) &gt; **Cost Model** (Modelu kosztów).
 
 ### <a name="category-manager"></a>Narzędzie Category Manager
 

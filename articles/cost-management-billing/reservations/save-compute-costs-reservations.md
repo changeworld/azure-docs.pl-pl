@@ -7,16 +7,16 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: 2e8c477aea7a11eefa606ab9cd084ca3ed9f400f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75995652"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76841884"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
-Rezerwacje platformy Azure pomagają zaoszczędzić pieniądze dzięki zobowiązaniu do korzystania z planów dla maszyn wirtualnych, usługi Azure Blob Storage lub Azure Data Lake Storage Gen2, pojemności obliczeniowej bazy danych SQL Database, przepływności bazy danych Azure Cosmos DB lub innych zasobów platformy Azure przez jeden rok lub trzy lata. Zobowiązanie umożliwia uzyskanie rabatu dotyczącego używanych zasobów. Rezerwacje mogą znacznie obniżyć koszty zasobów, nawet o 72% w porównaniu do cen przy płatności zgodnie z rzeczywistym użyciem. Rezerwacje umożliwiają skorzystanie z rabatu na rozliczenia i nie mają wpływu na stan środowiska uruchomieniowego Twoich zasobów.
+Rezerwacje platformy Azure pomagają zaoszczędzić pieniądze dzięki zobowiązaniu do korzystania z planów dla maszyn wirtualnych, usługi Azure Blob Storage lub Azure Data Lake Storage Gen2, pojemności obliczeniowej bazy danych SQL Database, usługi Azure Disk Storage, przepływności bazy danych Azure Cosmos DB lub innych zasobów platformy Azure przez jeden rok lub trzy lata. Zobowiązanie umożliwia uzyskanie rabatu dotyczącego używanych zasobów. Rezerwacje mogą znacznie obniżyć koszty zasobów, nawet o 72% w porównaniu do cen przy płatności zgodnie z rzeczywistym użyciem. Rezerwacje umożliwiają skorzystanie z rabatu na rozliczenia i nie mają wpływu na stan środowiska uruchomieniowego Twoich zasobów.
 
 Za rezerwację można zapłacić z góry lub w miesięcznych ratach. Łączny koszt rezerwacji w przypadku płatności z góry i miesięcznych rat jest taki sam, a wybór płatności miesięcznych nie pociąga za sobą dodatkowych opłat. Opcja płatności miesięcznych jest dostępna w przypadku rezerwacji platformy Azure, a nie produktów innych firm.
 
@@ -32,6 +32,7 @@ Plany usługi:
 
 - **Wystąpienie zarezerwowane maszyny wirtualnej** — rezerwacja obejmuje tylko koszty obliczeń na maszynie wirtualnej. Nie dotyczy dodatkowych opłat za oprogramowanie, sieć ani magazyn.
 - **Pojemność zarezerwowana usługi Azure Storage** — rezerwacja obejmuje pojemność magazynu dla kont magazynu w warstwie Standardowa dla magazynu obiektów blob lub magazynu usługi Azure Data Lake Gen2. Rezerwacja nie obejmuje stawek za przepustowość lub transakcje.
+- **Rezerwacje usługi Azure Disk Storage** — rezerwacja obejmuje tylko dyski SSD w warstwie Premium o rozmiarze P30 lub większym. Nie obejmują żadnych innych typów dysków ani rozmiarów mniejszych niż P30.
 - **Pojemność zarezerwowana usługi Azure Cosmos DB** — rezerwacja obejmuje przepływność przydzieloną dla zasobów. Nie dotyczy opłat za magazyn i sieć.
 - **Zarezerwowany rdzeń wirtualny w usłudze SQL Database** — w rezerwacji są uwzględniane tylko koszty obliczeń. Opłata za licencję jest naliczana oddzielnie.
 - **SQL Data Warehouse** — rezerwacja obejmuje użycie jednostek cDWU. Nie pokrywa kosztów magazynu i sieci wynikających z użycia usługi SQL Data Warehouse.
@@ -40,7 +41,6 @@ Plany usługi:
 - Azure Database for PostgreSQL
 - Azure Database for MariaDB
 - Azure Data Explorer
-- Funkcja Dyski zarządzane z dyskami SSD w warstwie Premium
 
 
 W przypadku maszyn wirtualnych z systemem Windows i usługi SQL Database koszty licencji można pokryć za pomocą opcji [Korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
@@ -105,9 +105,9 @@ Zakres rezerwacji nie jest automatycznie aktualizowany w przypadku przenoszenia 
 
 Rabaty na rezerwacje dotyczą następujących kwalifikujących się subskrypcji i typów ofert.
 
-- Umowa Enterprise Agreement (numery ofert: MS-AZR-0017P lub MS-AZR-0148P)
+- Umowy Enterprise Agreement (oferty o numerach: MS-AZR-0017P i MS-AZR-0148P)
 - Subskrypcje w ramach umów klienta firmy Microsoft
-- Indywidualne plany z stawką płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P)
+- Indywidualne plany ze stawką płatności zgodnie z rzeczywistym użyciem (oferty o numerach: MS-AZR-0003P i MS-AZR-0023P)
 - Subskrypcje CSP
 
 Zasoby działające w ramach subskrypcji z innymi typami ofert nie otrzymują rabatu na rezerwację.
@@ -116,7 +116,7 @@ Zasoby działające w ramach subskrypcji z innymi typami ofert nie otrzymują ra
 
 Kosztem rezerwacji jest obciążana forma płatności powiązana z subskrypcją. Koszt rezerwacji jest odejmowany od salda zobowiązania pieniężnego, jeśli jest dostępne. Gdy saldo zobowiązania pieniężnego nie pokrywa kosztu rezerwacji, są naliczane opłaty za użycie nadwyżkowe. Jeśli masz subskrypcję z planu indywidualnego z płatnością zgodnie z rzeczywistym użyciem, karta kredytowa powiązana z kontem jest obciążana natychmiast w przypadku zakupów płatnych z góry. Płatności miesięczne są widoczne na fakturze, a karta kredytowa jest obciążana co miesiąc. W przypadku rozliczania z użyciem faktury opłaty pojawią się na następnej fakturze.
 
-## <a name="how-reservation-discount-is-applied"></a>Jak jest naliczany rabat za rezerwację
+## <a name="how-reservation-discount-is-applied"></a>Jak jest stosowany rabat na rezerwacje
 
 Rabat związany z rezerwacją dotyczy użycia zasobów pasującego do atrybutów wybranych podczas zakupu rezerwacji. Atrybuty obejmują zakres, w którym są uruchamiane zgodne maszyny wirtualne, bazy danych SQL, bazy danych Azure Cosmos DB lub inne zasoby. Jeśli na przykład chcesz uzyskać rabat na rezerwację dla czterech standardowych maszyn wirtualnych D2 w regionie Zachodnie stany USA, wybierz subskrypcję, w której działają te maszyny wirtualne.
 
@@ -140,10 +140,10 @@ W przypadku zakupu rezerwacji rabat może być stosowany do innych wystąpień z
 
 Plany usługi:
 
-- Wystąpienia zarezerwowane maszyn wirtualnych: w przypadku zakupienia rezerwacji i wybrania opcji **zoptymalizowane pod kątem elastyczności rozmiaru wystąpienia**pokrycie rabatu zależy od wybranego rozmiaru maszyny wirtualnej. Rezerwacja może dotyczyć rozmiarów maszyn wirtualnych w tej samej grupie serii rozmiarów. Aby uzyskać więcej informacji, zobacz artykuł [Elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
-- Zarezerwowana pojemność usługi Azure Storage: możesz zakupić zarezerwowaną pojemność dla standardowych kont usługi Azure Storage w jednostkach 100 TiB lub 1 PiB miesięcznie. Pojemność zarezerwowana usługi Azure Storage jest dostępna we wszystkich regionach dla dowolnej warstwy dostępu (Gorąca, Chłodna lub Archiwalna) i dla dowolnej opcji replikacji (magazyn lokalnie nadmiarowy, magazyn geograficznie nadmiarowy lub magazyn strefowo nadmiarowy).
-- SQL Database zarezerwowana pojemność: pokrycie rabatu zależy od wybranej warstwy wydajności. Aby uzyskać więcej informacji, zobacz [opis sposobu stosowania rabatu na rezerwację platformy Azure](understand-reservation-charges.md).
-- Azure Cosmos DB zarezerwowana pojemność: pokrycie rabatu zależy od alokowanej przepływności. Aby uzyskać więcej informacji, zobacz [opis sposobu stosowania rabatu na rezerwację usługi Azure Cosmos DB](understand-cosmosdb-reservation-charges.md).
+- Wystąpienia zarezerwowane maszyn wirtualnych: Po zakupieniu rezerwacji i wybraniu opcji **Zoptymalizowane pod kątem elastyczności rozmiaru wystąpienia** zastosowanie rabatu zależy od wybranego rozmiaru maszyny wirtualnej. Rezerwacja może dotyczyć rozmiarów maszyn wirtualnych w tej samej grupie serii rozmiarów. Aby uzyskać więcej informacji, zobacz artykuł [Elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- Pojemność zarezerwowana usługi Azure Storage: Możesz kupić pojemność zarezerwowaną dla kont usługi Azure Storage w warstwie Standardowa w jednostkach po 100 TiB lub 1 PiB na miesiąc. Pojemność zarezerwowana usługi Azure Storage jest dostępna we wszystkich regionach dla dowolnej warstwy dostępu (Gorąca, Chłodna lub Archiwalna) i dla dowolnej opcji replikacji (magazyn lokalnie nadmiarowy, magazyn geograficznie nadmiarowy lub magazyn strefowo nadmiarowy).
+- Pojemność zarezerwowana usługi SQL Database: Zastosowanie rabatu zależy od wybranej warstwy wydajności. Aby uzyskać więcej informacji, zobacz [opis sposobu stosowania rabatu na rezerwację platformy Azure](understand-reservation-charges.md).
+- Pojemność zarezerwowana usługi Azure Cosmos DB: Zastosowanie rabatu zależy od alokowanej przepływności. Aby uzyskać więcej informacji, zobacz [opis sposobu stosowania rabatu na rezerwację usługi Azure Cosmos DB](understand-cosmosdb-reservation-charges.md).
 
 ## <a name="reservation-notifications"></a>Powiadomienia dotyczące rezerwacji
 

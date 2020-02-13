@@ -3,17 +3,17 @@ title: Szybki Start — Dodawanie symulowanego urządzenia do usługi Azure IoT 
 description: Ten przewodnik Szybki Start przedstawia sposób tworzenia szablonu urządzenia i dodawania symulowanego urządzenia do aplikacji IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: cb8f0c806435a6c623d14e50263844db7aac61bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 489bf81388c1bb889756d54957e791282054f0f7
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027762"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169608"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Szybki Start: Dodawanie symulowanego urządzenia do aplikacji IoT Central
 
@@ -70,8 +70,8 @@ Szablon urządzenia może zawierać właściwości chmury. Właściwości chmury
 
     | Nazwa wyświetlana      | Typ semantyczny | Schemat |
     | ----------------- | ------------- | ------ |
-    | Data ostatniego serwisowania | Brak          | Data   |
-    | Nazwa klienta     | Brak          | Ciąg |
+    | Data ostatniego serwisowania | None          | Date   |
+    | Nazwa klienta     | None          | Ciąg |
 
 1. Wybierz pozycję **Zapisz** , aby zapisać zmiany:
 

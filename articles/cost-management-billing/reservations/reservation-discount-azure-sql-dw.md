@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: banders
 ms.openlocfilehash: 24a673dc7949d5ce05aa1a701cc8b939a766fd99
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76313930"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Stosowanie rabatów na rezerwacje usługi Azure SQL Data Warehouse
@@ -31,11 +31,11 @@ W przypadku magazynów, które pozostają wyłączone przez pełną godzinę, re
 
 W poniższych przykładach pokazano, jak jest stosowany rabat na pojemność zarezerwowaną usługi SQL Data Warehouse w zależności od wdrożeń.
 
-- **Przykład 1**: zakup 5 jednostek 100 cDWU zarezerwowanej pojemności. Uruchomiono na jedną godzinę wystąpienie usługi SQL Data Warehouse DW1500c. W takim przypadku użycie jest emitowane dla 15 jednostek po 100 jednostek cDWU użycia każda. Rabat związany z rezerwacją dotyczy 5 wykorzystywanych jednostek. Opłata jest naliczana według stawek płatności zgodnie z rzeczywistym użyciem dla pozostałych 10 jednostek po 100 jednostek cDWU użycia każda. Innymi słowy, w przypadku wielu rezerwacji jest możliwe częściowe pokrycie.
+- **Przykład 1**: Zakupiono 5 jednostek po 100 obliczeniowych jednostek magazynu danych (cDWU) pojemności zarezerwowanej. Uruchomiono na jedną godzinę wystąpienie usługi SQL Data Warehouse DW1500c. W takim przypadku użycie jest emitowane dla 15 jednostek po 100 jednostek cDWU użycia każda. Rabat związany z rezerwacją dotyczy 5 wykorzystywanych jednostek. Opłata jest naliczana według stawek płatności zgodnie z rzeczywistym użyciem dla pozostałych 10 jednostek po 100 jednostek cDWU użycia każda. Innymi słowy, w przypadku wielu rezerwacji jest możliwe częściowe pokrycie.
 
-- **Przykład 2**: zakup 5 jednostek 100 cDWU zarezerwowanej pojemności. Uruchomiono na jedną godzinę dwa wystąpienia usługi SQL Data Warehouse DW100c. W takim przypadku dwa zdarzenia użycia są emitowane dla 1 jednostki obejmującej 100 jednostek cDWU użycia. Oba zdarzenia użycia mają rabaty dotyczące pojemności zarezerwowanej. Pozostałe 3 jednostki po 100 jednostek cDWU pojemności zarezerwowanej każda są tracone i nie są przenoszone do użytku w przyszłości. Innymi słowy pojedyncze rezerwacje można dopasować do wielu wystąpień SQL Data Warehouse.
+- **Przykład 2**: Zakupiono 5 jednostek po 100 obliczeniowych jednostek magazynu danych (cDWU) pojemności zarezerwowanej. Uruchomiono na jedną godzinę dwa wystąpienia usługi SQL Data Warehouse DW100c. W takim przypadku dwa zdarzenia użycia są emitowane dla 1 jednostki obejmującej 100 jednostek cDWU użycia. Oba zdarzenia użycia mają rabaty dotyczące pojemności zarezerwowanej. Pozostałe 3 jednostki po 100 jednostek cDWU pojemności zarezerwowanej każda są tracone i nie są przenoszone do użytku w przyszłości. Innymi słowy, pojedyncze rezerwacje można dopasować do wielu wystąpień usługi SQL Data Warehouse.
 
-- **Przykład 3**: zakup 1 jednostki 100 cDWU zarezerwowanej pojemności. Uruchomiono dwa wystąpienia usługi SQL Data Warehouse DW100c. Każdy przebieg trwał 30 minut. W takim przypadku oba zdarzenia użycia mają rabaty dotyczące pojemności zarezerwowanej. Nie jest naliczana opłata za użycie według stawek płatności zgodnie z rzeczywistym użyciem.
+- **Przykład 3**: Zakupiono 1 jednostkę obejmującą 100 obliczeniowych jednostek magazynu danych (cDWU) pojemności zarezerwowanej. Uruchomiono dwa wystąpienia usługi SQL Data Warehouse DW100c. Każdy przebieg trwał 30 minut. W takim przypadku oba zdarzenia użycia mają rabaty dotyczące pojemności zarezerwowanej. Nie jest naliczana opłata za użycie według stawek płatności zgodnie z rzeczywistym użyciem.
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 
@@ -43,7 +43,7 @@ W poniższych przykładach pokazano, jak jest stosowany rabat na pojemność zar
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usługi Azure Reservations, zobacz następujące artykuły:
+Aby dowiedzieć się więcej na temat rezerwacji platformy Azure, zobacz następujące artykuły:
 
 - [Co to są rezerwacje platformy Azure?](save-compute-costs-reservations.md)
 - [Wyświetlanie transakcji rezerwacji](view-reservations.md)

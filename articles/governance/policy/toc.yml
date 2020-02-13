@@ -37,218 +37,30 @@
 - name: Samples
   items:
     - name: Indeks
-      displayName: 'list, examples'
+      displayName: 'list, builtins'
       href: ./samples/index.md
-    - name: Ogólne
+    - name: Wbudowane zasady
+      href: ./samples/built-in-policies.md
+    - name: Wbudowane inicjatywy
+      href: ./samples/built-in-initiatives.md
+    - name: Wzorce użycia
       items:
-        - name: Nazewnictwo
-          items:
-            - name: Zezwalanie na wiele wzorców nazw
-              displayName: 'deny, indexed'
-              href: samples/allow-multiple-name-patterns.md
-            - name: Wymaganie wzorca podobieństwa
-              displayName: 'deny, indexed'
-              href: samples/enforce-like-pattern.md
-            - name: Wymaganie wzorca zgodności
-              displayName: 'deny, indexed'
-              href: samples/enforce-match-pattern.md
-            - name: Wymaganie wzorca zgodności z tagiem
-              displayName: 'deny, all'
-              href: samples/enforce-tag-match-pattern.md
-        - name: Tagi
-          items:
-            - name: Stosowanie tagu i jego wartości domyślnej
-              displayName: 'append, builtin, concat'
-              href: samples/apply-tag-default-value.md
-            - name: Inicjatywa zasad tagów rozliczeń
-              href: samples/billing-tags-policy-initiative.md
-            - name: Enforce tag and its value (Wymuś tag i jego wartość)
-              displayName: 'deny, concat, builtin'
-              href: samples/enforce-tag-value.md
-            - name: Wymuszanie tagu i jego wartości na grupach zasobów
-              displayName: 'deny, concat'
-              href: samples/enforce-tag-on-resource-groups.md
-        - name: Lokalizacje
-          items:
-            - name: Dozwolone lokalizacje
-              displayName: 'deny, builtin, location'
-              href: samples/allowed-locations.md
-        - name: Typy zasobów
-          items:
-            - name: Dozwolone typy zasobów
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/allowed-resource-types.md
-            - name: Niedozwolone typy zasobów
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/not-allowed-resource-types.md
-    - name: Wystąpienia obliczeniowe
-      items:
-        - name: Maszyny wirtualne
-          items:
-            - name: Zezwalanie na korzystanie z niestandardowego obrazu maszyny wirtualnej pochodzącego z grupy zasobów
-              displayName: 'deny, concat, ExistingResourceGroups'
-              href: samples/allow-custom-vm-image.md
-            - name: Dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
-              displayName: 'initiative, vmSKUs, storageSKUs'
-              href: samples/allowed-skus-storage.md
-            - name: Zatwierdzone obrazy maszyn wirtualnych
-              displayName: deny
-              href: samples/allowed-custom-images.md
-            - name: 'Sprawdzanie, czy rozszerzenie nie istnieje'
-              displayName: auditIfNotExists
-              href: samples/audit-extension-not-exist.md
-            - name: Niedozwolone rozszerzenia maszyny wirtualnej
-              displayName: deny
-              href: samples/not-allowed-vm-extension.md
-        - name: Zestawy skalowania maszyn wirtualnych
-          items:
-            - name: 'Sprawdzanie, czy maszyna wirtualna nie używa dysku zarządzanego'
-              displayName: audit
-              href: samples/create-vm-managed-disk.md
-            - name: Tworzenie maszyny wirtualnej używającej dysku zarządzanego
-              displayName: deny
-              href: samples/use-managed-disk-vm.md
-            - name: Uniemożliwianie użycia korzyści użycia hybrydowego
-              displayName: deny
-              href: samples/deny-hybrid-use.md
-            - name: Zezwalanie tylko na obraz określonej platformy maszyn wirtualnych
-              displayName: deny
-              href: samples/allow-certain-vm-image.md
-    - name: Data Lake
-      items:
-        - name: Wymuszanie szyfrowania w usłudze Data Lake Store
-          displayName: deny
-          href: samples/enforce-data-lake-store-encryption.md
-    - name: Konfiguracja gościa
-      items:
-        - name: Aplikacje inspekcji nie są zainstalowane w systemie Linux
-          displayName: 'audit, vm'
-          href: samples/guest-configuration-applications-installed-linux.md
-    - name: Magazyny kluczy
-      items:
-        - name: Przeprowadzanie inspekcji magazynów pod kątem braku punktów końcowych sieci wirtualnej
-          displayName: 'audit, KeyVault, indexed'
-          href: samples/keyvault-no-vnet-rules.md
-    - name: Monitorowanie
-      items:
-        - name: Przeprowadzanie inspekcji ustawienia diagnostyki
-          displayName: 'auditIfNotExists, resourceTypes'
-          href: samples/audit-diagnostic-setting.md
-    - name: Sieć
-      items:
-        - name: Interfejsy sieciowe
-          items:
-            - name: Sieciowa grupa zabezpieczeń X na każdej karcie sieciowej
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: Używanie zatwierdzonej podsieci dla interfejsów sieciowych maszyny wirtualnej
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: Używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
-              displayName: 'deny, concat'
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: Sieci wirtualne
-          items:
-            - name: Dozwolone jednostki SKU bramy aplikacji
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-            - name: Dozwolone jednostki SKU bramy sieci wirtualnej
-              displayName: deny
-              href: samples/allowed-vnet-gateway-sku.md
-            - name: Dozwolone jednostki SKU modułu równoważenia obciążenia
-              displayName: deny
-              href: samples/allowed-load-balancer-skus.md
-            - name: Uniemożliwianie korzystania z sieci równorzędnych w sieci ER
-              displayName: 'deny, all, concat, ExistingResourceGroups'
-              href: samples/no-peering-express-route-network.md
-            - name: Uniemożliwianie używania tabeli tras zdefiniowanej przez użytkownika
-              displayName: 'deny, all'
-              href: samples/no-user-defined-route-table.md
-            - name: Sieciowa grupa zabezpieczeń X w każdej podsieci
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-            - name: Używanie zatwierdzonej podsieci dla interfejsów sieciowych maszyny wirtualnej
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: Używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
-              displayName: deny
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: Grupy zabezpieczeń sieci
-          items:
-            - name: Sieciowa grupa zabezpieczeń X na każdej karcie sieciowej
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: Sieciowa grupa zabezpieczeń X w każdej podsieci
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-        - name: ExpressRoute
-          items:
-            - name: Dozwolona przepustowość usługi ExpressRoute
-              displayName: deny
-              href: samples/allowed-express-route-bandwidth.md
-            - name: Dozwolone jednostki SKU usługi ExpressRoute
-              displayName: deny
-              href: samples/allowed-express-route-skus.md
-            - name: Dozwolone lokalizacje komunikacji równorzędnej usługi ExpressRoute
-              displayName: 'deny, Location'
-              href: samples/allowed-express-route-peering.md
-        - name: Obserwatorzy sieciowi
-          items:
-            - name: Przeprowadzanie inspekcji stanu włączenia usług Network Watcher w danym regionie
-              displayName: 'auditIfNotExists, Location'
-              href: samples/network-watcher-not-enabled.md
-        - name: Bramy aplikacji
-          items:
-            - name: Dozwolone jednostki SKU bramy aplikacji
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-    - name: SQL
-      items:
-        - name: Serwery SQL Server
-          items:
-            - name: 'Sprawdzanie, czy nie skonfigurowano konta administratora usługi Azure Active Directory'
-              displayName: auditIfNotExists
-              href: samples/audit-no-aad-admin.md
-            - name: Przeprowadzanie inspekcji ustawienia wykrywania zagrożeń na poziomie serwera
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-threat-detection-setting.md
-            - name: Przeprowadzanie inspekcji ustawień inspekcji programu SQL Server
-              displayName: 'auditIfNotExists, builtin'
-              href: samples/sql-server-audit.md
-            - name: Przeprowadzanie inspekcji ustawień inspekcji na poziomie programu SQL Server
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-audit-setting.md
-        - name: Bazy danych SQL
-          items:
-            - name: Dozwolone jednostki SKU usługi SQL DB
-              displayName: deny
-              href: samples/allowed-sql-db-skus.md
-            - name: Przeprowadzanie inspekcji ustawienia wykrywania zagrożeń na poziomie usługi SQL DB
-              displayName: auditIfNotExists
-              href: samples/audit-db-threat-detection-setting.md
-            - name: Przeprowadzanie inspekcji szyfrowania usługi SQL DB
-              displayName: 'auditIfNotExists, disabled, indexed, builtin'
-              href: samples/sql-database-encryption-audit.md
-            - name: Przeprowadzanie inspekcji ustawień inspekcji na poziomie usługi SQL Database
-              displayName: auditIfNotExists
-              href: samples/audit-sql-db-audit-setting.md
-    - name: Magazyn
-      items:
-        - name: Dozwolone jednostki SKU dla konta magazynu i maszyn wirtualnych
-          displayName: 'initiative, vmSKUs, storageSKUs'
-          href: samples/allowed-skus-storage.md
-        - name: Dozwolone jednostki SKU konta magazynu
-          displayName: 'deny, builtin, storageSKUs'
-          href: samples/allowed-storage-account-skus.md
-        - name: Uniemożliwianie użycia warstwy dostępu Chłodna dla kont magazynu
-          displayName: 'deny, all'
-          href: samples/deny-cool-access-tiering.md
-        - name: Zapewnianie używania tylko ruchu HTTPS dla konta magazynu
-          displayName: 'deny, all'
-          href: samples/ensure-https-storage-account.md
-        - name: Zapewnianie szyfrowania plików w magazynie
-          displayName: 'deny, all'
-          href: samples/ensure-storage-file-encryption.md
+        - name: Operatory logiczne
+          href: ./samples/pattern-logical-operators.md
+        - name: Pola
+          href: ./samples/pattern-fields.md
+        - name: Parametry
+          href: ./samples/pattern-parameters.md
+        - name: Szczegóły efektu
+          href: ./samples/pattern-effect-details.md
+        - name: Operator wartości
+          href: ./samples/pattern-value-operator.md
+        - name: Operator liczby
+          href: ./samples/pattern-count-operator.md
+        - name: Grupowanie do postaci inicjatywy
+          href: ./samples/pattern-group-with-initiative.md
+        - name: Wdrażanie zasobów
+          href: ./samples/pattern-deploy-resources.md
 - name: Pojęcia
   items:
     - name: Struktura definicji zasad platformy Azure

@@ -2,21 +2,21 @@
 title: Zadania administratora konta w witrynie Azure Portal
 description: Opisuje sposób wykonywania operacji płatności w witrynie Azure Portal
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 2fadd0b6eb0951031a9d577b2fd3a3d497076dd8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 2f858fa7715145d55cf1c978b9c368e1f6586dce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75990114"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132132"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Zadania administratora konta w witrynie Azure Portal
 
@@ -29,13 +29,18 @@ Aby wykonać dowolne z tych zadań, musisz być administratorem konta.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Przechodzenie do form płatności dla subskrypcji
 
-1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com) jako administrator konta.
+1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com) jako administrator konta. 
+
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
     
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeniami ](./media/account-admin-tasks/search-bar.png)
 
-1. Na liście **Moje subskrypcje** wybierz subskrypcję, do której chcesz dodać kartę kredytową.
-    ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+1. Na liście **Moje subskrypcje** wybierz subskrypcję, do której chcesz dodać kartę kredytową. 
+   
+   ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   
+   > [!NOTE]
+   > Jeśli niektóre subskrypcje nie są tutaj widoczne, może to oznaczać, że w pewnym momencie zmieniono katalog subskrypcji. Dla tych subskrypcji należy przełączyć katalog na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2. 
 
 1. Wybierz pozycję **Formy płatności**.
 
@@ -119,10 +124,13 @@ Limit wydatków nie jest dostępny dla subskrypcji z planami zobowiązań lub z 
 
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeniami ](./media/account-admin-tasks/search-bar.png)
 
-1. Na liście **Moje subskrypcje** wybierz subskrypcję Visual Studio Enterprise.
-    
-    ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+1. Na liście **Moje subskrypcje** wybierz subskrypcję Visual Studio Enterprise. 
 
+   ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Jeśli niektóre subskrypcje Visual Studio nie są tutaj widoczne, może to oznaczać, że w pewnym momencie zmieniono katalog subskrypcji. Dla tych subskrypcji należy przełączyć katalog na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2.
+    
 1. W przeglądzie subskrypcji kliknij pomarańczowy baner, aby usunąć limit wydatków.
     
     ![Zrzut ekranu przedstawiający baner umożliwiający usunięcie limitu wydatków](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
@@ -144,10 +152,13 @@ Jeśli masz subskrypcję platformy Azure w ramach programu licencjonowania Open,
 
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeniami ](./media/account-admin-tasks/search-bar.png)
 
-1. Na liście **Moje subskrypcje** wybierz subskrypcję platformy Azure w ramach programu licencjonowania Open.
-   
+1. Na liście **Moje subskrypcje** wybierz subskrypcję platformy Azure w ramach programu licencjonowania Open. 
+
     ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
+   > [!NOTE]
+   > Jeśli Twoja subskrypcja nie jest tutaj widoczna, może to oznaczać, że w pewnym momencie zmieniono jej katalog. Należy przełączyć katalog subskrypcji na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2.
+    
 1. Wybierz pozycję **Historia środków**.
     
     ![Zrzut ekranu przedstawiający historię środków](./media/account-admin-tasks/aio-credit-history-blade.png)

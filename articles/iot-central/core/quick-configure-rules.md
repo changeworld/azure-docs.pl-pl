@@ -3,18 +3,18 @@ title: Szybki Start — Konfigurowanie reguł i akcji na platformie Azure IoT Ce
 description: W tym przewodniku szybki start pokazano, jak za pomocą konstruktora, jak skonfigurować reguły i akcje na podstawie danych telemetrycznych w aplikacji IoT Central platformy Azure.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a63e77fb3c50d4387c27912336d65f9f84d2d5c9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027804"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169513"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Szybki Start: Konfigurowanie reguł i akcji dla urządzenia w usłudze Azure IoT Central
 
@@ -34,7 +34,7 @@ Przed rozpoczęciem należy wykonać dwa poprzednie Przewodniki Szybki Start [Tw
 
 1. Wprowadź **temperaturę środowiska** jako nazwę reguły.
 
-1. W sekcji **urządzenia docelowe** wybierz pozycję **zestawu deweloperskiego IoT DevKit** jako szablon urządzenia. Ta opcja umożliwia filtrowanie urządzeń, do których odnosi się reguła według typu szablonu urządzenia. Możesz dodać więcej kryteriów filtrowania, wybierając pozycję **+ Filtr**.
+1. W sekcji **urządzenia docelowe** wybierz pozycję **zestawu deweloperskiego IoT DevKit** jako szablon urządzenia. Ta opcja umożliwia filtrowanie urządzeń, do których odnosi się reguła według typu szablonu urządzenia. Aby dodać więcej kryteriów filtrowania, wybierz pozycję **+ Filtr**.
 
 1. W sekcji **warunki** definiujesz, co wyzwala regułę. Poniższe informacje służą do definiowania warunków opartych na telemetrii temperatury:
 

@@ -1,71 +1,70 @@
 ---
-title: Konfigurowanie kont magazynu na platformie Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania konta usługi Azure storage i zasobników magazynu AWS na platformie Cloudyn.
-services: cost-management
+title: Konfigurowanie kont magazynu dla platformy Cloudyn na platformie Azure | Microsoft Docs
+description: W tym artykule opisano sposób konfigurowania kont magazynu platformy Azure i zasobników magazynu platformy AWS dla platformy Cloudyn.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: 2a8f3645dcf2987d0c0a204e7e8a86cd6d718e47
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: ec6c68d209f867ab3547e855f3cf754bc27d53c5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994872"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117629"
 ---
-# <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurowanie kont magazynu na platformie Cloudyn
+# <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurowanie kont magazynu dla platformy Cloudyn
 
 <!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-Raporty usługi Cloudyn można zapisać w portalu Cloudyn, usługi Azure storage lub usług AWS magazyn zasobników. Zapisywanie raportów w portalu Cloudyn jest bezpłatne. Jednak zapisywanie raportów magazynu dostawcy usług chmury jest opcjonalna i spowoduje naliczenie dodatkowych kosztów. Ten artykuł pomoże Ci skonfigurować konto magazynu Azure i Amazon Web Services (AWS) zasobników magazynu do przechowywania raportów.
+Raporty Cloudyn można zapisywać w portalu Cloudyn, magazynie platformy Azure lub zasobnikach magazynu platformy AWS. Zapisywanie raportów w portalu Cloudyn jest bezpłatne. Natomiast zapisywanie raportów w magazynie dostawcy usług w chmurze jest opcjonalne i wiąże się z dodatkowymi kosztami. Ten artykuł pomaga w konfigurowaniu kont magazynu platformy Azure oraz zasobników magazynu platformy Amazon Web Services (AWS) w celu przechowywania raportów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć konto usługi Azure storage lub zasobnika magazynu Amazon.
+Musisz mieć konto magazynu platformy Azure lub zasobnik magazynu Amazon.
 
-Jeśli nie masz konta usługi Azure storage, należy ją utworzyć. Aby uzyskać więcej informacji na temat tworzenia konta usługi Azure storage, zobacz [Tworzenie konta magazynu](../../storage/common/storage-account-create.md).
+Jeśli nie masz konta magazynu platformy Azure, musisz je utworzyć. Aby uzyskać więcej informacji na temat tworzenia konta magazynu platformy Azure, zobacz [Tworzenie konta magazynu](../../storage/common/storage-account-create.md).
 
-Jeśli nie masz usługi AWS simple storage service (S3) zasobnik, należy ją utworzyć. Aby uzyskać więcej informacji na temat tworzenia przedział S3, zobacz [Tworzenie koszyka](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+Jeśli nie masz zasobnika usługi Simple Storage Service (S3) AWS, musisz go utworzyć. Aby uzyskać więcej informacji na temat tworzenia zasobnika S3, zobacz [Create a Bucket (Tworzenie zasobnika)](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-## <a name="configure-your-azure-storage-account"></a>Konfigurowanie konta usługi Azure storage
+## <a name="configure-your-azure-storage-account"></a>Konfigurowanie konta magazynu platformy Azure
 
-Możesz konfigurowania usługi Azure storage na potrzeby używania przez firmę Cloudyn jest bardzo proste. Zbieranie informacji o koncie magazynu, a następnie skopiuj je w portalu Cloudyn.
+Konfigurowanie magazynu platformy Azure do użycia przez platformę Cloudyn jest proste. Zbierz szczegółowe informacje o koncie magazynu i skopiuj je do portalu Cloudyn.
 
-1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
-2. Kliknij przycisk **wszystkich usług**, wybierz opcję **kont magazynu**, przewiń do konta magazynu, który chcesz użyć, a następnie wybierz konto.
-3. Na stronie Twojego konta magazynu w ramach **ustawienia**, kliknij przycisk **klucze dostępu**.
-4. Kopiuj usługi **nazwa konta magazynu** i **parametry połączenia** w obszarze klucz1.  
-   ![Skopiuj parametry połączenia i nazwę konta magazynu](./media/storage-accounts/azure-storage-access-keys.png)  
-5. Otwórz portal Cloudyn z poziomu witryny Azure Portal lub przejdź na stronę https://azure.cloudyn.com i zaloguj się.
-6. Kliknij symbol koła zębatego, a następnie wybierz pozycję **raporty zarządzania magazynem**.
-7. Kliknij przycisk **Dodaj nowe +** i upewnij się, że wybrano Microsoft Azure. Wklej nazwę konta usługi Azure storage w **nazwa** obszaru. Wklej swoje **parametry połączenia** w odpowiadający mu obszar. Wprowadź nazwę kontenera, a następnie kliknij przycisk **Zapisz**.  
-   ![Wklej konta magazynu platformy Azure, że nazwa i połączenia ciąg w oknie Dodaj nowe okno przechowywania raportu](./media/storage-accounts/azure-cloudyn-storage.png)
+1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+2. Kliknij pozycję **Wszystkie usługi**, wybierz pozycję **Konta magazynu**, przewiń do konta magazynu, którego chcesz użyć, a następnie wybierz konto.
+3. Na stronie konta magazynu w sekcji **Ustawienia** kliknij pozycję **Klucze dostępu**.
+4. Skopiuj wartości pól **Nazwa konta magazynu** i **Parametry połączenia** w obszarze klucz1.  
+   ![Kopiowanie nazwy konta magazynu i parametrów połączenia](./media/storage-accounts/azure-storage-access-keys.png)  
+5. Otwórz portal Cloudyn z poziomu witryny Azure Portal lub przejdź na stronę [https://azure.cloudyn.com](https://azure.cloudyn.com) i zaloguj się.
+6. Kliknij symbol koła zębatego, a następnie wybierz pozycję **Zarządzanie magazynem raportów**.
+7. Kliknij pozycję **Dodaj nowy +** i upewnij się, że wybrano platformę Microsoft Azure. Wklej nazwę konta magazynu platformy Azure w obszarze **Nazwa**. Wklej **parametry połączenia** w odpowiednim obszarze. Wprowadź nazwę kontenera, a następnie kliknij przycisk **Zapisz**.  
+   ![Wklejanie nazwy konta magazynu platformy Azure i parametrów połączenia w oknie Dodawanie nowego magazynu raportów](./media/storage-accounts/azure-cloudyn-storage.png)
 
-   Nowy wpis raport usługi Azure storage, zostanie wyświetlony na liście kont magazynu.  
-    ![Nowy wpis raport usługi Azure storage, na liście](./media/storage-accounts/azure-storage-entry.png)
+   Nowy wpis magazynu raportów platformy Azure zostanie wyświetlony na liście kont magazynu.  
+    ![Nowy wpis magazynu raportów platformy Azure na liście](./media/storage-accounts/azure-storage-entry.png)
 
 
-Raporty można zapisać teraz w usłudze Azure storage. W dowolnym raporcie kliknij **akcje** , a następnie wybierz **zaplanować raport**. Nazywanie raportu i następnie dodać własnego adresu URL lub użyć automatycznie utworzonego adresu URL. Wybierz **zapisywanie w magazynie** i następnie wybierz konto magazynu. Wprowadź prefiks, który pobiera dołączany do nazwy pliku raportu. Wybierz format pliku CSV lub JSON, a następnie Zapisz raport.
+Teraz możesz zapisywać raporty w magazynie platformy Azure. W dowolnym raporcie kliknij pozycję **Akcje**, a następnie wybierz pozycję **Zaplanuj raport**. Nazwij raport, a następnie dodaj własny adres URL lub użyj automatycznie utworzonego adresu URL. Wybierz pozycję **Zapisz w magazynie**, a następnie wybierz konto magazynu. Wprowadź prefiks, który zostanie dołączony do nazwy pliku raportu. Wybierz format pliku CSV lub JSON, a następnie zapisz raport.
 
-## <a name="configure-an-aws-storage-bucket"></a>Konfigurowanie przedziału magazyn AWS
+## <a name="configure-an-aws-storage-bucket"></a>Konfigurowanie zasobnika magazynu platformy AWS
 
-Cloudyn przy użyciu istniejących poświadczeń usługi AWS: użytkownika lub roli, aby zapisać raporty do zasobnika usługi. Aby przetestować dostęp, Cloudyn próbuje zapisać to mały plik tekstowy do zasobnika z nazwą pliku _wyboru zasobnika permission.txt_.
+Platforma Cloudyn używa istniejących poświadczeń platformy AWS: Użytkownik lub Rola, aby zapisywać raporty w zasobniku. W celu przetestowania dostępu platforma Cloudyn próbuje zapisać w zasobniku mały plik tekstowy o nazwie _check-bucket-permission.txt_.
 
-Podasz roli Cloudyn lub użytkownika z uprawnieniami PutObject do zasobnika usługi. Następnie użyj istniejącego zasobnika, lub Utwórz nowy, aby zapisywać raporty. Na koniec zdecyduj, jak zarządzać klasę magazynu, Ustaw zasady cyklu życia lub usuń niepotrzebne pliki.
+Rolę lub użytkownika platformy Cloudyn udostępnij za pomocą uprawnienia PutObject w zasobniku. Następnie użyj istniejącego zasobnika lub utwórz nowy zasobnik, aby zapisywać raporty. Na koniec zdecyduj, jak zarządzać klasą magazynu, ustaw reguły cyklu życia lub usuń zbędne pliki.
 
-###  <a name="assign-permissions-to-your-aws-user-or-role"></a>Przypisz uprawnienia użytkownika usług AWS lub roli
+###  <a name="assign-permissions-to-your-aws-user-or-role"></a>Przypisywanie uprawnień do użytkownika lub roli platformy AWS
 
-Podczas tworzenia nowych zasad, musisz podać uprawnienia potrzebne, aby zapisać raport przedział S3.
+Podczas tworzenia nowych zasad należy podać dokładne uprawnienia potrzebne do zapisywania raportów w zasobniku S3.
 
-1. Zaloguj się do konsoli usług AWS, a następnie wybierz pozycję **usług**.
-2. Wybierz **IAM** z listy usług.
-3. Wybierz **zasady** po lewej stronie konsoli, a następnie kliknij przycisk **Utwórz zasady**.
-4. Kliknij przycisk **JSON** kartę.
-5. Następujące zasady umożliwia zapisywanie raportu przedział S3. Skopiuj i wklej poniższy przykład zasad do karty **JSON** . Zastąp &lt;&gt; nazwą przedziału.
+1. Zaloguj się do konsoli platformy AWS i wybierz pozycję **Services (Usługi)** .
+2. Wybierz pozycję **IAM (Zarządzanie dostępem i tożsamościami)** z listy usług.
+3. Wybierz pozycję **Policies (Zasady)** po lewej stronie konsoli, a następnie kliknij pozycję **Create Policy (Utwórz zasady)** .
+4. Kliknij kartę **JSON**.
+5. Poniższe zasady umożliwiają zapisanie raportu w zasobniku S3. Skopiuj i wklej poniższy przykład zasad do karty **JSON**. Zastąp zmienną &lt;bucketname&gt; nazwą Twojego zasobnika.
 
    ```json
    {
@@ -85,42 +84,42 @@ Podczas tworzenia nowych zasad, musisz podać uprawnienia potrzebne, aby zapisa�
    }
    ```
 
-6. Kliknij przycisk **Przejrzyj zasady**.  
-    ![Zasad usług AWS JSON przedstawiający przykładowe informacje](./media/storage-accounts/aws-policy.png)  
-7. Na stronie Przegląd zasad wpisz nazwę dla zasad. Na przykład _CloudynSaveReport2S3_.
-8. Kliknij przycisk **Tworzenie zasad**.
+6. Kliknij przycisk **Review policy (Przejrzyj zasady)** .  
+    ![Zasady JSON platformy AWS z przykładowymi informacjami](./media/storage-accounts/aws-policy.png)  
+7. Na stronie Review policy (Przegląd zasad) wpisz nazwę zasad. Na przykład _CloudynSaveReport2S3_.
+8. Kliknij pozycję **Create policy (Utwórz zasady)** .
 
-### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>Dołącz zasady do rozwiązania Cloudyn roli lub użytkownika w ramach Twojego konta
+### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>Dołączanie zasad do roli lub użytkownika platformy Cloudyn w ramach konta
 
-Aby dołączyć nowe zasady, otwórz konsolę usług AWS i edytować rolę Cloudyn lub użytkownika.
+Aby dołączyć nowe zasady, należy otworzyć konsolę platformy AWS i edytować rolę lub użytkownika platformy Cloudyn.
 
-1. Zaloguj się do konsoli usług AWS, a następnie wybierz pozycję **usług**, a następnie wybierz **IAM** z listy usług.
-2. Wybierz opcję **role** lub **użytkowników** po lewej stronie konsoli.
+1. Zaloguj się do konsoli platformy AWS i wybierz pozycję **Services (Usługi)** , a następnie z listy usług wybierz pozycję **IAM (Zarządzanie dostępem i tożsamościami)** .
+2. Wybierz opcję **Roles (Role)** lub **Users (Użytkownicy)** z lewej strony konsoli.
 
-**Dla ról:**
+**W przypadku ról:**
 
-  1. Kliknij nazwę roli Cloudyn.
-  2. Na **uprawnienia** kliknij pozycję **Dołącz zasady**.
-  3. Wyszukiwanie zasad, który został utworzony i wybierz ją, a następnie kliknij przycisk **Dołącz zasady**.
-    ![Przykładowe zasady dołączone do Twojej roli Cloudyn](./media/storage-accounts/aws-attach-policy-role.png)
+  1. Kliknij nazwę roli platformy Cloudyn.
+  2. Na karcie **Permissions (Uprawnienia)** kliknij pozycję **Attach Policy (Dołącz zasady)** .
+  3. Wyszukaj utworzone zasady i wybierz je, a następnie kliknij przycisk **Attach Policy (Dołącz zasady)** .
+    ![Przykładowe zasady dołączone do roli platformy Cloudyn](./media/storage-accounts/aws-attach-policy-role.png)
 
-**Dla użytkowników:**
+**W przypadku użytkowników:**
 
 1. Wybierz użytkownika platformy Cloudyn.
-2. Na **uprawnienia** kliknij pozycję **Dodaj uprawnienia**.
-3. W **Udziel uprawnienia** zaznacz **Dołącz istniejące zasady bezpośrednio**.
-4. Wyszukiwanie zasad, który został utworzony i wybierz ją, a następnie kliknij przycisk **dalej: Przejrzyj**.
-5. Dodaj uprawnienia do roli nazwy strony, kliknij przycisk **Dodaj uprawnienia**.  
-    ![Przykładowe zasady dołączone do użytkowników platformy Cloudyn](./media/storage-accounts/aws-attach-policy-user.png)
+2. Na karcie **Permissions (Uprawnienia)** kliknij pozycję **Add permissions (Dodaj uprawnienia)** .
+3. W sekcji **Grant Permission (Udzielanie uprawnienia)** wybierz pozycję **Attach existing policies directly (Dołącz istniejące zasady bezpośrednio)** .
+4. Wyszukaj utworzone zasady i wybierz je, a następnie kliknij przycisk **Next: Review** (Dalej: przegląd).
+5. Na stronie Add permissions to role name (Dodawanie uprawnień do nazwy roli) kliknij pozycję **Add permissions (Dodaj uprawnienia)** .  
+    ![Przykładowe zasady dołączone do użytkownika platformy Cloudyn](./media/storage-accounts/aws-attach-policy-user.png)
 
 
-### <a name="optional-set-permission-with-bucket-policy"></a>Opcjonalnie: Ustawianie uprawnień za pomocą zasad zasobnika
+### <a name="optional-set-permission-with-bucket-policy"></a>Opcjonalnie: Ustawianie uprawnienia przy użyciu zasad zasobnika
 
-Można również ustawić uprawnienia do tworzenia raportów w Twojej przedział S3 przy użyciu zasad zasobnika. W widoku klasycznym S3:
+Uprawnienie do tworzenia raportów w zasobniku S3 możesz również ustawić przy użyciu zasad zasobników. W klasycznym widoku S3:
 
-1. Utwórz lub wybierz istniejące przedziału.
-2. Wybierz **uprawnienia** kartę, a następnie kliknij przycisk **zasobnika zasad**.
-3. Skopiuj i wklej poniższy przykład zasad. Zastąp &lt;zasobnika\_nazwa&gt; i &lt;Cloudyn\_zasady&gt; z ARN z przedziału sieci. Zastąp ARN roli lub użytkownik w rozwiązaniu Cloudyn.
+1. Utwórz lub wybierz istniejący zasobnik.
+2. Wybierz kartę **Permissions (Uprawnienia)** , a następnie kliknij pozycję **Bucket policy (Zasady zasobnika)** .
+3. Skopiuj i wklej następujący przykład zasad. Zastąp zmienne &lt;bucket\_name&gt; i &lt;Cloudyn\_principle&gt; nazwą ARN zasobnika. Zastąp nazwę ARN roli lub użytkownika używanych przez platformę Cloudyn.
 
    ```
    {
@@ -144,23 +143,23 @@ Można również ustawić uprawnienia do tworzenia raportów w Twojej przedział
    }
    ```
 
-4. W edytorze zasad zasobnika kliknij **Zapisz**.
+4. W edytorze Bucket policy (Zasady zasobnika) kliknij przycisk **Save (Zapisz)** .
 
-### <a name="add-aws-report-storage-to-cloudyn"></a>Dodaj magazyn raportu usług AWS do rozwiązania Cloudyn
+### <a name="add-aws-report-storage-to-cloudyn"></a>Dodawanie magazynu raportów platformy AWS do platformy Cloudyn
 
-1. Otwórz portal Cloudyn z poziomu witryny Azure Portal lub przejdź na stronę https://azure.cloudyn.com i zaloguj się.
-2. Kliknij symbol koła zębatego, a następnie wybierz pozycję **raporty zarządzania magazynem**.
-3. Kliknij przycisk **Dodaj nowe +** i upewnij się, że wybrano AWS.
-4. Wybierz przedział konta i magazynu. Nazwa zasobnika magazynu AWS jest wypełniane automatycznie.  
-    ![Przykładowe informacje przedstawione w Dodaj nowe okno przechowywania raportu](./media/storage-accounts/aws-cloudyn-storage.png)  
-5. Kliknij przycisk **Zapisz** a następnie kliknij przycisk **Ok**.
+1. Otwórz portal Cloudyn z poziomu witryny Azure Portal lub przejdź na stronę [https://azure.cloudyn.com](https://azure.cloudyn.com) i zaloguj się.
+2. Kliknij symbol koła zębatego, a następnie wybierz pozycję **Zarządzanie magazynem raportów**.
+3. Kliknij pozycję **Dodaj nowy +** i upewnij się, że wybrano platformę AWS.
+4. Wybierz konto i zasobnik magazynu. Nazwa zasobnika magazynu platformy AWS zostanie automatycznie wypełniona.  
+    ![Przykładowe informacje w oknie Dodawanie nowego magazynu raportów](./media/storage-accounts/aws-cloudyn-storage.png)  
+5. Kliknij przycisk **Zapisz**, a następnie przycisk **OK**.
 
-    Nowy wpis magazynu raportu AWS pojawia się na liście kont magazynu.  
-    ![Nowe usługi AWS raportów magazynu wpis show liście kont magazynu](./media/storage-accounts/aws-storage-entry.png)
+    Nowy wpis magazynu raportów platformy AWS zostanie wyświetlony na liście kont magazynu.  
+    ![Nowy wpis magazynu raportów platformy AWS wyświetlany na liście kont magazynu](./media/storage-accounts/aws-storage-entry.png)
 
 
-Raporty można zapisać teraz w usłudze Azure storage. W dowolnym raporcie kliknij **akcje** , a następnie wybierz **zaplanować raport**. Nazywanie raportu i następnie dodać własnego adresu URL lub użyć automatycznie utworzonego adresu URL. Wybierz **zapisywanie w magazynie** i następnie wybierz konto magazynu. Wprowadź prefiks, który pobiera dołączany do nazwy pliku raportu. Wybierz format pliku CSV lub JSON, a następnie Zapisz raport.
+Teraz możesz zapisywać raporty w magazynie platformy Azure. W dowolnym raporcie kliknij pozycję **Akcje**, a następnie wybierz pozycję **Zaplanuj raport**. Nazwij raport, a następnie dodaj własny adres URL lub użyj automatycznie utworzonego adresu URL. Wybierz pozycję **Zapisz w magazynie**, a następnie wybierz konto magazynu. Wprowadź prefiks, który zostanie dołączony do nazwy pliku raportu. Wybierz format pliku CSV lub JSON, a następnie zapisz raport.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przegląd [Cloudyn zrozumienia raporty](understanding-cost-reports.md) informacje na temat podstawowej struktury oraz funkcji Raporty usługi Cloudyn.
+- Zapoznaj się z artykułem [Informacje o raportach platformy Cloudyn](understanding-cost-reports.md), aby poznać podstawową strukturę i funkcje raportów platformy Cloudyn.

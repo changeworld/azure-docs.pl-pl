@@ -907,22 +907,6 @@
           href: platform/rest-api-walkthrough.md
     - name: Wizualizowanie danych
       items:
-        - name: Widoki
-          items:
-            - name: Projektant widoków
-              href: platform/view-designer.md
-            - name: Dokumentacja dotycząca kafelków
-              href: platform/view-designer-tiles.md
-            - name: Dokumentacja części wizualizacji
-              href: platform/view-designer-parts.md
-            - name: Filtry
-              href: platform/view-designer-filters.md
-        - name: Power BI
-          items:
-            - name: Eksportowanie danych dziennika
-              href: platform/powerbi.md
-            - name: Eksportowanie danych aplikacji
-              href: app/export-power-bi.md
         - name: Skoroszyty
           items:
             - name: Omówienie
@@ -949,6 +933,36 @@
                       href: platform/workbooks-time.md
                     - name: Parametry tekstu
                       href: platform/workbooks-text.md
+        - name: Widoki
+          items:
+            - name: Konwertowanie widoków na skoroszyty
+              items:
+                - name: Omówienie konwersji
+                  href: platform/view-designer-conversion-overview.md
+                - name: Opcje konwersji
+                  href: platform/view-designer-conversion-options.md
+                - name: Omówienie i dostęp
+                  href: platform/view-designer-conversion-access.md
+                - name: Typowe zadania
+                  href: platform/view-designer-conversion-tasks.md
+                - name: Konwertowanie kafelka
+                  href: platform/view-designer-conversion-tiles.md
+                - name: Przykłady
+                  href: platform/view-designer-conversion-examples.md
+            - name: Projektant widoków
+              href: platform/view-designer.md
+            - name: Dokumentacja dotycząca kafelków
+              href: platform/view-designer-tiles.md
+            - name: Dokumentacja części wizualizacji
+              href: platform/view-designer-parts.md
+            - name: Filtry
+              href: platform/view-designer-filters.md
+        - name: Power BI
+          items:
+            - name: Eksportowanie danych dziennika
+              href: platform/powerbi.md
+            - name: Eksportowanie danych aplikacji
+              href: app/export-power-bi.md
         - name: Pulpity nawigacyjne
           items:
             - name: Pulpit nawigacyjny przy użyciu danych dziennika

@@ -1,33 +1,32 @@
 ---
-title: Często zadawane pytania dotyczące platformy Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania dotyczące platformy Cloudyn.
-services: cost-management
+title: Często zadawane pytania dotyczące platformy Cloudyn na platformie Azure | Microsoft Docs
+description: W tym artykule podano odpowiedzi na niektóre często zadawane pytania dotyczące platformy Cloudyn.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 01/24/2020
 ms.topic: troubleshooting
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 70f5edfb186cb7a9c05fe8ee59533193cee4fcd4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 5c770d83d59edf0a56184f8eea0bda6b0603893c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75990764"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770078"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Często zadawane pytania dotyczące platformy Cloudyn
 
-W tym artykule opisano często zadawane pytania dotyczące platformy Cloudyn. Jeśli masz pytania dotyczące platformy Cloudyn, można zadawać w [często zadawane pytania dotyczące platformy Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn).
+W tym artykule podano odpowiedzi na niektóre często zadawane pytania dotyczące platformy Cloudyn. Jeśli masz pytania na temat platformy Cloudyn, możesz je zadawać na stronie [często zadawanych pytań dotyczących platformy Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn).
 
-## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Jak można rozwiązać typowe problemy z instalacją pośrednich enterprise?
+## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Jak mogę rozwiązać typowe problemy z pośrednią konfiguracją przedsiębiorstwa?
 
 Przy pierwszym użyciu portalu Cloudyn możesz zobaczyć poniższe komunikaty, jeśli jesteś użytkownikiem z umową Enterprise Agreement lub dostawcą rozwiązań w chmurze (CSP, Cloud Solution Provider):
 
-- "Określony klucz interfejsu API nie jest kluczem najwyższego poziomu rejestrowania" wyświetlana w **Ustaw Cloudyn** kreatora.
-- "Rejestracja bezpośrednia — nie" wyświetlana w portalu Enterprise Agreement.
-- "Brak danych użycia został znaleziony w ciągu ostatnich 30 dni. Skontaktuj się z dystrybutora, aby upewnić się, że znaczników został włączony dla Twojego konta platformy Azure"wyświetlana w portalu Cloudyn.
+- Komunikat „Wybrany klucz interfejsu API nie jest kluczem rejestracji najwyższego poziomu” wyświetlany w kreatorze **Konfigurowanie platformy Cloudyn**.
+- Komunikat „Bezpośrednia rejestracja — nie” wyświetlany w portalu umowy Enterprise Agreement.
+- Komunikat „Nie znaleziono danych użycia z ostatnich 30 dni. Skontaktuj się z dystrybutorem i upewnij się, że dla konta platformy Azure włączono znaczniki” wyświetlany w portalu Cloudyn.
 
 Poprzednie komunikaty oznaczają, że umowa Azure Enterprise Agreement została zakupiona od odsprzedawcy lub dostawcy rozwiązań w chmurze. Odsprzedawca lub dostawca rozwiązań w chmurze musi włączyć _znaczniki_ dla konta platformy Azure, aby można było wyświetlać dane na platformie Cloudyn.
 
@@ -35,7 +34,7 @@ Oto sposoby rozwiązywania tych problemów:
 
 1. Odsprzedawca musi włączyć _znaczniki_ dla Twojego konta. Aby uzyskać instrukcje, zapoznaj się z dokumentem [Indirect Customer Onboarding Guide (Przewodnik dołączania klienta pośredniego)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Wygenerujesz klucz umowy Azure Enterprise Agreement do użycia na platformie Cloudyn. Aby uzyskać instrukcje, zobacz [Dodawanie Your Azure EA](quick-register-ea.md#register-with-cloudyn) lub [jak znaleźć swój identyfikator rejestracji EA i klucz interfejsu API](https://youtu.be/u_phLs_udig).
+2. Wygenerujesz klucz umowy Azure Enterprise Agreement do użycia na platformie Cloudyn. Aby uzyskać instrukcje, zobacz [Dodawanie umowy EA na platformie Azure](quick-register-ea.md#register-with-cloudyn) lub [How to Find Your EA Enrollment ID and API Key (Jak znaleźć klucz interfejsu API oraz identyfikator rejestracji umowy EA)](https://youtu.be/u_phLs_udig).
 
 Tylko administrator usług platformy Azure może włączyć platformę Cloudyn. Uprawnienia współadministratora są niewystarczające.
 
@@ -47,115 +46,115 @@ Przed wygenerowaniem klucza interfejsu API umowy Azure Enterprise Agreement w ce
 
 Być może trzeba będzie również nadać administratorom działów, właścicielom kont i administratorom przedsiębiorstwa uprawnienia do _wyświetlania opłat_ przy użyciu interfejsu API rozliczeń.
 
-## <a name="why-dont-i-see-optimizer-recommendations"></a>Dlaczego nie widzę Optymalizator zalecenia
+## <a name="why-dont-i-see-optimizer-recommendations"></a>Dlaczego nie widzę zaleceń optymalizatora?
 
-Zalecenie dotyczące informacji jest dostępna tylko dla kont, które są aktywowane. Nie zobaczysz żadnych informacji zalecenie w **Optymalizator** raportu kategorie dla konta, które są *nieaktywowani*, w tym:
+Zalecenia są dostępne tylko dla aktywowanych kont. W kategoriach raportów **Optymalizator** nie będą wyświetlane żadne informacje w przypadku *nieaktywowanych* kont, w tym:
 
 - Menedżer optymalizacji
 - Optymalizacja rozmiaru
-- Czynniki
+- Nieefektywności
 
-Jeśli nie można wyświetlić wszystkie dane zalecenie Optymalizator, najprawdopodobniej musisz kont, które są nieaktywowani. Aby aktywować konto, należy zarejestrować go za pomocą swoich poświadczeń platformy Azure.
+Jeśli nie możesz wyświetlić żadnych danych zaleceń optymalizatora, najprawdopodobniej masz konta, które nie są aktywowane. Aby aktywować konto, musisz je zarejestrować przy użyciu poświadczeń platformy Azure.
 
 Aby aktywować konto:
 
 1.  W portalu Cloudyn kliknij pozycję **Ustawienia** w górnym prawym rogu i wybierz pozycję **Konta w chmurze**.
-2.  Na karcie kont usługi Microsoft Azure, wyszukaj kont, które mają **nieaktywowani** subskrypcji.
-3.  Po prawej stronie nieaktywowani konta **Edytuj** symbol, który przypomina ołówka.
-4.  Dzierżawy, identyfikator i Identyfikatora stawki jest wykrywany automatycznie. Kliknij przycisk **Dalej**.
-5.  Użytkownik jest przekierowywany do witryny Azure portal. Zaloguj się do portalu i autoryzować rozwiązanie Cloudyn moduł zbierający, aby uzyskiwać dostęp do danych platformy Azure.
-6.  Następnie jest przekierowanie do strony zarządzania kontami Cloudyn i subskrypcja zostanie zaktualizowana przy użyciu **active** stan konta. Przedstawia on zielony znacznik wyboru.
-7.  Jeśli nie widzisz symbolu zielony znacznik wyboru dla przynajmniej jednej subskrypcji, oznacza to, że nie masz uprawnień do tworzenia aplikacji reader (CloudynCollector) dla subskrypcji. Użytkownik mający wyższych uprawnień dla subskrypcji musi Powtórz kroki 3 i 4.  
+2.  Na karcie Konta platformy Microsoft Azure wyszukaj konta, które mają **nieaktywowaną** subskrypcję.
+3.  Po prawej stronie nieaktywowanego konta kliknij symbol **edycji**, który przypomina ołówek.
+4.  Identyfikator dzierżawy i identyfikator stawki zostaną automatycznie wykryte. Kliknij przycisk **Dalej**.
+5.  Nastąpi przekierowywanie do witryny Azure Portal. Zaloguj się do portalu i autoryzuj dostęp modułu zbierającego platformy Cloudyn do danych platformy Azure.
+6.  Następnie nastąpi przekierowanie do strony zarządzania kontami platformy Cloudyn, a subskrypcja zostanie zaktualizowana przy użyciu stanu konta **Aktywne**. Będzie wyświetlany symbol zielonego znacznika wyboru.
+7.  Jeśli nie widzisz symbolu zielonego znacznika wyboru dla co najmniej jednej z subskrypcji, oznacza to, że nie masz uprawnień do tworzenia aplikacji czytnika (CloudynCollector) dla subskrypcji. Użytkownik z wyższymi uprawnieniami do subskrypcji musi powtórzyć kroki 3 i 4.  
 
-Po wykonaniu powyższych kroków, możesz wyświetlić zalecenia optymalizator w jeden lub dwa dni. Jednak może upłynąć do pięciu dni przed Pełna optymalizacja dane są dostępne.
+Po wykonaniu powyższych kroków zalecenia optymalizatora staną się widoczne w ciągu od jednego do dwóch dni. Jednak może upłynąć do pięciu dni, zanim staną się dostępne pełne dane optymalizacji.
 
 
-## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>Jak włączyć wstrzymania lub zablokowanego użytkowników?
+## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>Jak mogę włączyć zawieszonych lub zablokowanych użytkowników?
 
-Najpierw Przyjrzyjmy się najbardziej typowy scenariusz, który powoduje, że konta użytkowników uzyskać *initiallySuspended*.
+Najpierw przyjrzyjmy się najbardziej typowemu scenariuszowi powodującemu uzyskanie przez konta użytkowników stanu *initiallySuspended*.
 
-> Admin1 może być dostawcą rozwiązań Microsoft Cloud lub Umowa Enterprise użytkownika. Organizacja jest gotowa do rozpoczęcia korzystania z usługi Cloudyn.  Użytkownik rejestruje się w witrynie Azure portal i zaloguje się do portalu Cloudyn. Jako osoba, która rejestruje usługę Cloudyn i loguje się do portalu Cloudyn, admin1 stać się *administratorem głównym*. Admin1 nie utworzyć kont użytkowników. Jednak korzystając z portalu Cloudyn, tworzy ona konta platformy Azure i konfiguruje hierarchię jednostek. Admin1 informuje Admin2, administratora dzierżawy, że muszą się zarejestrować w usłudze Cloudyn i zalogować się do portalu Cloudyn.
+> Admin1 to użytkownik z umową Enterprise Agreement lub dostawca Microsoft Cloud Solution Provider. Jego organizacja jest gotowa do rozpoczęcia korzystania z platformy Cloudyn.  Rejestruje się za pośrednictwem witryny Azure Portal i loguje do portalu Cloudyn. Ponieważ jest osobą, która rejestruje usługę Cloudyn i loguje się do portalu Cloudyn, użytkownik Admin1 staje się *głównym administratorem*. Użytkownik Admin1 nie tworzy żadnych kont użytkowników. Jednak przy użyciu portalu Cloudyn tworzy konta platformy Azure i konfiguruje hierarchię jednostek. Użytkownik Admin1 informuje użytkownika Admin2, administratora dzierżawy, że musi on zarejestrować się na platformie Cloudyn i zalogować do portalu Cloudyn.
 >
-> Admin2 rejestruje się w witrynie Azure portal. Jednak podczas próby zalogowania się do portalu Cloudyn pojawia się błąd informujący o tym, że konto jest **zawieszone**. Administrator podstawowy Admin1, jest powiadamiany o zawieszenie konta. Admin1 musi aktywować firmy Admin2 konto i przyznać *dostęp do jednostki administracyjnej* dla odpowiednich jednostek i umożliwia użytkownika zarządzania dostępem i aktywne konta użytkownika.
+> Użytkownik Admin2 rejestruje się za pomocą witryny Azure Portal. Jednak podczas próby zalogowania się do portalu Cloudyn pojawia się błąd informujący o tym, że konto jest **zawieszone**. Główny administrator, Admin1, jest powiadamiany o zawieszeniu konta. Użytkownik Admin1 musi aktywować konto użytkownika Admin2 i przyznać *dostęp jednostki administracyjnej* dla odpowiednich jednostek, a także zezwolić na dostęp do zarządzania użytkownikami i aktywowanie konta użytkownika.
 
 
-Jeśli zostanie wyświetlony alert o żądanie, aby zezwolić użytkownikowi na dostęp, musisz aktywować konto użytkownika.
+W przypadku otrzymania alertu z żądaniem zezwolenia na dostęp użytkownika należy aktywować konto użytkownika.
 
 Aby aktywować konto użytkownika:
 
-1. Zaloguj się do rozwiązania Cloudyn przy użyciu konta użytkownika administracyjnego platformy Azure, którego użyto do skonfigurowania Cloudyn. Lub zaloguj się przy użyciu konta użytkownika, który otrzymał prawa dostępu administratora.
-2. Wybierz symbol koła zębatego w prawym górnym rogu, a następnie wybierz pozycję **Zarządzanie użytkownikami**.
-3. Znajdź użytkownika, wybierz symbol ołówka, a następnie edytować użytkownika.
-4. W obszarze **stan użytkownika**, Zmień stan z **zawieszone** do **Active**.
+1. Zaloguj się do platformy Cloudyn przy użyciu konta użytkownika administracyjnego platformy Azure, którego użyto do skonfigurowania platformy Cloudyn. Alternatywnie zaloguj się przy użyciu konta użytkownika, któremu przyznano dostęp administratora.
+2. Wybierz symbol koła zębatego w prawym górnym rogu i wybierz pozycję **Zarządzanie użytkownikami**.
+3. Znajdź użytkownika, wybierz symbol ołówka, a następnie edytuj użytkownika.
+4. W obszarze **Stan użytkownika** zmień stan z **Zawieszony** na **Aktywny**.
 
-Łączenie konta użytkowników platformy Cloudyn przy użyciu logowania jednokrotnego z platformy Azure. Jeśli użytkownik mistypes swojego hasła, ich może zabezpieczenie przed zablokowaniem dostępu Cloudyn, mimo że nadal mogą uzyskiwać dostęp do platformy Azure.
+Konta użytkowników platformy Cloudyn łączą się przy użyciu logowania jednokrotnego z platformą Azure. Jeśli użytkownik popełni błąd podczas wpisywania hasła, jego konto platformy Cloudyn może zostać zablokowane, choć nadal będzie mógł uzyskiwać dostęp do platformy Azure.
 
-Jeśli zmienisz adres e-mail w programie Cloudyn z adresu domyślnego na platformie Azure, Twoje konto może zostać zablokowane. Może on zawierać "status initiallySuspended". Jeśli Twoje konto użytkownika jest zablokowane, skontaktuj się z alternatywnych administratorem, aby zresetował Twoje konto.
+Konto może zostać zablokowane w przypadku zmiany adresu e-mail na platformie Cloudyn na adres inny niż adres domyślny na platformie Azure. Może być wyświetlana informacja „stan initiallySuspended”. W przypadku zablokowania konta użytkownika skontaktuj się z alternatywnym administratorem w celu zresetowania konta.
 
-Firma Microsoft zaleca utworzenie co najmniej dwóch kont administratorów platformy Cloudyn, w przypadku, gdy jedno z kont zostanie zablokowane.
+Zalecamy utworzenie co najmniej dwóch kont administratorów platformy Cloudyn na wypadek, gdyby jedno z kont zostało zablokowane.
 
-Jeśli nie można zalogować się do portalu Cloudyn, upewnij się, że używasz prawidłowego adresu URL do logowania się na platformie Cloudyn. Użyj [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
+Jeśli nie możesz zalogować się do portalu Cloudyn, upewnij się, że używasz poprawnego adresu URL, aby zalogować się do platformy Cloudyn. Użyj witryny [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
-Należy unikać bezpośredniego adresu URL Cloudyn https://app.cloudyn.com.
+Unikaj używania bezpośredniego adresu URL platformy Cloudyn: https://app.cloudyn.com.
 
-## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak uaktywnić nieaktywowani kont przy użyciu poświadczeń platformy Azure?
+## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak mogę aktywować nieaktywowane konta przy użyciu poświadczeń platformy Azure?
 
-Jak najszybciej kont systemu Azure są wykrywane przez firmę Cloudyn, danych rozwiązania cost natychmiast znajduje się w raportów na podstawie kosztów. Jednak na platformie Cloudyn dostarczający dane użycia i wydajności, należy zarejestrować swoje poświadczenia platformy Azure dla kont. Aby uzyskać instrukcje, zobacz [Dodaj konto lub zaktualizować subskrypcji](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
+Gdy tylko konta platformy Azure zostaną odnalezione przez platformę Cloudyn, dane kosztów będą od razu udostępniane w raportach opartych na kosztach. Jednak aby platforma Cloudyn udostępniała dane dotyczące użycia i wydajności, należy zarejestrować poświadczenia platformy Azure dla kont. Aby uzyskać instrukcje, zobacz [Dodawanie konta lub aktualizowanie subskrypcji](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
 
-Aby dodać poświadczenia platformy Azure dla konta w portalu Cloudyn, wybierz symbol edycji z prawej strony nazwy konta, a nie w ramach subskrypcji.
+Aby dodać poświadczenia platformy Azure dla konta, w portalu Cloudyn wybierz symbol edycji z prawej strony nazwy konta, a nie subskrypcji.
 
-Dopóki poświadczenia platformy Azure zostaną dodane do rozwiązania Cloudyn, konto jest wyświetlane jako _nie aktywowano_.
+Dopóki poświadczenia platformy Azure nie zostaną dodane do platformy Cloudyn, konto będzie wyświetlane jako _nieaktywowane_.
 
-## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Jak dodać wiele kont i jednostek do istniejącej subskrypcji?
+## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Jak mogę dodać wiele kont i jednostek do istniejącej subskrypcji?
 
-Dodatkowe jednostki są używane do dodawania dodatkowych umowy Enterprise z subskrypcją platformy Cloudyn. Aby uzyskać więcej informacji, zobacz [tworzenie i zarządzanie jednostkami](tutorial-user-access.md#create-and-manage-entities).
+Dodatkowe jednostki są używane do dodawania kolejnych umów Enterprise Agreement do subskrypcji platformy Cloudyn. Aby uzyskać więcej informacji, zobacz [Tworzenie jednostek i zarządzanie nimi](tutorial-user-access.md#create-and-manage-entities).
 
-Dla dostawców usług kryptograficznych:
+Dla dostawców CSP:
 
-Aby dodać dodatkowe konta programu CSP do jednostki, wybierz **dostępu do pliku MSP** zamiast **Enterprise** podczas tworzenia nowej jednostki. Jeśli Twoje konto jest zarejestrowany jako umowy Enterprise Agreement, które chcesz dodać poświadczenia dostawcy usług Kryptograficznych platformy Cloudyn personel pomocy technicznej może się okazać zmodyfikowanie ustawień konta. Jeśli masz płatne subskrybenta platformy Azure, możesz utworzyć nowe żądanie pomocy technicznej w witrynie Azure portal. Wybierz **Pomoc i obsługa techniczna**, a następnie wybierz pozycję **nowe żądanie obsługi**.
+Aby dodać kolejne konta CSP do jednostki, wybierz pozycję **Dostęp dostawcy usług zarządzanych** zamiast **Przedsiębiorstwo** podczas tworzenia nowej jednostki. Jeśli konto jest zarejestrowane jako konto z umową Enterprise Agreement, a chcesz dodać poświadczenia CSP, może być konieczna modyfikacja ustawień konta przez personel pomocy technicznej platformy Cloudyn. Jeśli jesteś subskrybentem mającym płatną subskrypcję platformy Azure, możesz utworzyć nowy wniosek o pomoc techniczną w witrynie Azure Portal. Wybierz pozycję **Pomoc i obsługa techniczna**, a następnie pozycję **Nowy wniosek o pomoc techniczną**.
 
-## <a name="currency-symbols-in-cloudyn-reports"></a>Symbole waluty w raportach usługi Cloudyn
+## <a name="currency-symbols-in-cloudyn-reports"></a>Symbole walut w raportach Cloudyn
 
-Może mieć wielu kont platformy Azure przy użyciu różnych walutach. Jednak raportach kosztów w rozwiązaniu Cloudyn nie pokazuj więcej niż jeden typ waluty na raport.
+Być może masz wiele kont platformy Azure korzystających z różnych walut. Jednak raporty kosztów na platformie Cloudyn nie wyświetlają więcej niż jednego typu waluty na raport.
 
-Jeśli masz wiele subskrypcji przy użyciu różnych walutach, jednostka nadrzędna i jego waluty jednostki podrzędne są wyświetlane w USD **$** . Nasze sugerowane najlepszym rozwiązaniem jest należy unikać używania różnych walutach są w tej samej hierarchii jednostki. Innymi słowy wszystkie swoje subskrypcje strukturę jednostki należy używać tej samej walucie.
+Jeśli masz wiele subskrypcji korzystających z różnych walut, wartości walut w jednostce nadrzędnej i jej jednostce podrzędnej są wyświetlane w USD ( **$** ). Sugerowane najlepsze rozwiązanie to unikanie korzystania z różnych walut w tej samej hierarchii jednostek. Innymi słowy wszystkie subskrypcje zorganizowane w strukturze jednostek powinny używać tej samej waluty.
 
-Cloudyn automatycznie wykrywa walucie subskrypcji Enterprise Agreement i prezentuje je poprawnie w raportach.  Jednak Cloudyn wyświetlane są tylko USD **$** dla dostawcy usług Kryptograficznych i kont platformy Azure bezpośrednio w sieci web.
+Platforma Cloudyn automatycznie wykrywa walutę subskrypcji Enterprise Agreement i prawidłowo przedstawia ją w raportach.  Jednak w przypadku kont platformy Azure Web-Direct i CSP platforma Cloudyn wyświetla tylko walutę USD ( **$** ).
 
-## <a name="what-are-cloudyn-data-refresh-timelines"></a>Co to są dane Cloudyn odświeżyć osi czasu?
+## <a name="what-are-cloudyn-data-refresh-timelines"></a>Jakie są osie czasu odświeżania danych platformy Cloudyn?
 
-Cloudyn ma następujące osie czasu odświeżania danych:
+Platforma Cloudyn ma następujące osie czasu odświeżania danych:
 
-- **Początkowa**: po skonfigurowaniu, może upłynąć do 24 godzin, aby wyświetlić dane kosztów w rozwiązaniu Cloudyn. Może to również przybrać rozwiązanie Cloudyn do zbierania wystarczającej ilości danych, aby wyświetlić zalecenia dotyczące ustalania rozmiaru w ciągu 10 dni.
-- **Codzienne**: od dziesiątego na koniec każdego miesiąca Cloudyn powinny pokazywać dane na bieżąco z poprzedniego dnia po o UTC + 3 następnego dnia.
-- **Miesięczne**: od pierwszego dnia do dziesiątego dnia każdego miesiąca Cloudyn może wyświetlać dane tylko do końca poprzedniego miesiąca.
+- **Początkowa**: Po skonfigurowaniu mogą upłynąć nawet 24 godziny, zanim będzie możliwe wyświetlanie danych kosztów na platformie Cloudyn. Zebranie wystarczającej ilości danych, aby platforma Cloudyn wyświetlała zalecenia dotyczące rozmiaru, może zająć do 10 dni.
+- **Codzienna**: Od dziesiątego dnia do końca każdego miesiąca platforma Cloudyn powinna wyświetlać aktualne dane z poprzedniego dnia mniej więcej od godziny UTC+3 następnego dnia.
+- **Miesięczna**: Od pierwszego do dziesiątego dnia każdego miesiąca platforma Cloudyn może pokazywać tylko dane do końca poprzedniego miesiąca.
 
-Cloudyn przetwarza dane z poprzedniego dnia, gdy jest dostępna pełna danych z poprzedniego dnia. Poprzedniego dnia, dane są zwykle dostępne w rozwiązaniu Cloudyn przez o UTC + 3 każdego dnia. Niektórych danych, takich jak tagi oraz może być dodatkowe 24 godziny do przetwarzania.
+Platforma Cloudyn przetwarza dane z poprzedniego dnia, gdy dostępne są pełne dane z poprzedniego dnia. Dane z poprzedniego dnia są zwykle dostępne na platformie Cloudyn około godziny UTC+3 każdego dnia. Przetworzenie niektórych danych, takich jak tagi, może zająć kolejne 24 godziny.
 
-Dane dla bieżącego miesiąca są niedostępne dla kolekcji na początku każdego miesiąca. W okresie usługodawców finalize ich rozliczanie w poprzednim miesiącu. Poprzedni miesiąc dane zostaną wyświetlone w rozwiązaniu Cloudyn 5 do 10 dni, po rozpoczęciu dnia każdego miesiąca. W tym czasie mogą być wyświetlane tylko zamortyzowany koszt z poprzedniego miesiąca. Mogą nie być wyświetlane dane dotyczące dziennego rozliczeń lub użycia. Po udostępnieniu danych Cloudyn przetwarza je wstecznie. Po zakończeniu przetwarzania miesięczne dane jest wyświetlany między piątym dzień i dziesiątym dniu każdego miesiąca.
+Danych z bieżącego miesiąca nie można zbierać na początku każdego miesiąca. W tym okresie dostawcy usług finalizują rozliczenia za poprzedni miesiąc. Dane z poprzedniego miesiąca są wyświetlane na platformie Cloudyn od 5 do 10 dni po rozpoczęciu każdego miesiąca. W tym czasie mogą być widoczne tylko koszty zamortyzowane z poprzedniego miesiąca. Codzienne dane dotyczące rozliczeń i użycia mogą nie być wyświetlane. Gdy dane staną się dostępne, platforma Cloudyn przetworzy je wstecznie. Po przetworzeniu wszystkie miesięczne dane staną się widoczne między piątym i dziesiątym dniem każdego miesiąca.
 
-Jeśli występuje opóźnienie wysyłania danych z platformy Azure do rozwiązania Cloudyn, dane są nadal zapisywane na platformie Azure. Dane są przesyłane do rozwiązania Cloudyn po przywróceniu połączenia.
+W przypadku opóźnienia wysyłania danych z platformy Azure do platformy Cloudyn dane są nadal rejestrowane na platformie Azure. Dane są przesyłane do platformy Cloudyn po przywróceniu połączenia.
 
-## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Koszt wahania w raportach kosztów Cloudyn
+## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Wahania kosztów w raportach kosztów Cloudyn
 
-Raportach kosztów może być wahania kosztów, zawsze wtedy, gdy dostawców usług w chmurze wysyłania zaktualizowanych plików rozliczeń. Koszty obsługi wystąpić, gdy nowe pliki są odbierane z dostawcy usług w chmurze poza zwykłe codziennie lub co miesiąc, raportowanie harmonogramu. Koszt zmiany nie są wynikiem ponowne obliczenie Cloudyn.
+Koszty w raportach kosztów mogą się zmieniać, gdy dostawcy usług w chmurze wyślą zaktualizowane pliki rozliczeń. Wahania kosztów występują po otrzymaniu nowych plików od dostawcy usług w chmurze poza zwykłym codziennym lub comiesięcznym harmonogramem raportowania. Zmiany kosztów nie są spowodowane ponownym obliczaniem przez platformę Cloudyn.
 
-W ciągu miesiąca wszystkie pliki rozliczeń wysyłane przez dostawcę usługi w chmurze znajdują się szacowanie codziennego koszty. Czasami dane są często aktualizowane — od czasu do czasu kilka razy dziennie. Aktualizacje są za pomocą usług AWS częściej niż platformy Azure. Całkowite koszty powinny być trwałe, po zakończeniu obliczeń rozliczenia dla poprzedniego miesiąca i ostateczną rozliczeń została odebrana. Zazwyczaj przez 10 dnia miesiąca.
+Wszystkie pliki rozliczeń wysyłane przez dostawcę usług w chmurze w ciągu miesiąca to szacunki dziennych kosztów. Czasami dane są aktualizowane często — niekiedy kilka razy dziennie. Aktualizacje są wykonywane częściej w przypadku platformy AWS niż platformy Azure. Sumy kosztów nie powinny się zmieniać po ukończeniu obliczeń dotyczących rozliczeń za poprzedni miesiąc i otrzymaniu końcowego pliku rozliczeń. Zwykle ma to miejsce do 10 dnia miesiąca.
 
-Zmiany zostaną wprowadzone po otrzymaniu korekty kosztów od dostawcy usług w chmurze. Odbieranie środków jest jednym z przykładów. Zmiany mogą być miesięcy po danym miesiącu została zamknięta. Zmiany są wyświetlane zawsze, gdy ponowne obliczenie jest tworzone przez dostawcę usługi w chmurze. Cloudyn aktualizuje jego danych historycznych, aby upewnić się, że wszystkie zmiany są ponownie obliczane. Sprawdza także, że koszty są wyświetlane w dokładnie raportuje.
+Zmiany występują, jeśli otrzymasz korekty kosztów od dostawcy usług w chmurze. Przykładem takiej sytuacji jest uzyskanie środków. Zmiany mogą nastąpić wiele miesięcy po zamknięciu danego miesiąca. Zmiany są widoczne za każdym razem, gdy dostawca usług w chmurze dokona ponownego obliczenia. Platforma Cloudyn aktualizuje dane historyczne, aby upewnić się, że wszystkie korekty zostały ponownie obliczone. Sprawdza także dokładność kosztów wyświetlanych w raportach.
 
-## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Jak bezpośredniego programu CSP skonfigurować Cloudyn dostęp dla klientów bezpośredniego programu CSP lub partnerów?
+## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Jak bezpośredni dostawca CSP może skonfigurować dostęp do platformy Cloudyn dla pośrednich klientów lub partnerów dostawcy CSP?
 
-Aby uzyskać instrukcje, zobacz [skonfigurować bezpośredni dostęp do programu CSP w rozwiązaniu Cloudyn](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn).
+Aby uzyskać instrukcje, zobacz [Konfigurowanie dostępu dla pośrednich dostawców CSP na platformie Cloudyn](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn).
 
-## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>Co powoduje, że element menu Optymalizator pojawiają się?
+## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>Co powoduje wyświetlenie elementu menu Optymalizator?
 
-Po dodaniu dostęp do usługi Azure Resource Manager i dane są zbierane, powinien zostać wyświetlony **Optymalizator** opcji. Aby aktywować dostęp do usługi Azure Resource Manager, zobacz [jak aktywować nieaktywowani kont przy użyciu poświadczeń platformy Azure?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
+Po dodaniu dostępu do usługi Azure Resource Manager i zebraniu danych opcja **Optymalizator** powinna być widoczna. Aby aktywować dostęp do usługi Azure Resource Manager, zobacz [Jak mogę aktywować nieaktywowane konta przy użyciu poświadczeń platformy Azure?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
 
-## <a name="is-cloudyn-agent-based"></a>Oparte na agentach Cloudyn
+## <a name="is-cloudyn-agent-based"></a>Czy platforma Cloudyn jest oparta na agentach?
 
-Nie. Agenci nie są używane. Dane metryk maszyny wirtualnej platformy Azure dla maszyn wirtualnych są zbierane z interfejsu API usługi Microsoft Insights. Jeśli chcesz zbierać dane metryk z maszyn wirtualnych platformy Azure muszą mieć włączonych ustawień diagnostycznych.
+Nie. Agenci nie są używani. Dane metryk maszyn wirtualnych platformy Azure są zbierane z interfejsu API usługi Microsoft Insights. Aby zbierać dane metryk z maszyn wirtualnych platformy Azure, muszą one mieć włączone ustawienia diagnostyki.
 
-## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Raporty usługi Cloudyn, są wyświetlane więcej niż jednej dzierżawy usługi AD na raport?
+## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Czy w jednym raporcie platformy Cloudyn jest wyświetlana więcej niż jedna dzierżawa usługi AD?
 
-Tak. Możesz [tworzenie odpowiedniej jednostki konta chmury](tutorial-user-access.md#create-and-manage-entities) dla każdej dzierżawy usługi AD, czy masz. Następnie możesz wyświetlić wszystkie dane dzierżawy usługi Azure AD i innych dostawców platformy chmury, w tym usług Amazon Web Services i Google Cloud Platform.
+Tak. Możesz [utworzyć odpowiednią jednostkę konta w chmurze](tutorial-user-access.md#create-and-manage-entities) dla każdej dzierżawy usługi AD. Następnie można wyświetlać dane wszystkich dzierżaw usługi Azure AD i innych dostawców platform w chmurze, w tym Amazon Web Services i Google Cloud Platform.

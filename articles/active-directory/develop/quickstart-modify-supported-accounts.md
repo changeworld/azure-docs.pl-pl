@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 59c1b7dbb4c47b6963cd4bbcfdeb1b2b9a2d3bb6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704123"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160693"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Szybki Start: modyfikowanie kont obsługiwanych przez aplikację
 
@@ -63,7 +63,7 @@ Jeśli piszesz aplikację, którą ma być dostępna dla klientów lub partneró
 
 Aplikacje jednostronicowe (SPA) mają zwykle utworzony przy użyciu języka JavaScript fronton działający w przeglądarce, który wywołuje internetowy interfejs API aplikacji zaplecza w celu wykonania logiki biznesowej. W przypadku aplikacji jednostronicowych hostowanych w usłudze Azure AD do uwierzytelniania użytkownika w usłudze Azure AD i uzyskiwania tokenu, którego można używać do zabezpieczania wywołań z klienta JavaScript aplikacji do internetowego interfejsu API zaplecza, używane jest przyznawanie niejawne protokołu OAuth 2.0.
 
-Po udzieleniu zgody przez użytkownika tego samego protokołu uwierzytelniania można użyć w celu uzyskania tokenów służących do zabezpieczania wywołań między klientem i innymi zasobami internetowego interfejsu API skonfigurowanymi dla aplikacji. Aby dowiedzieć się więcej o niejawnym przyznawaniu autoryzacji i ułatwić sobie podjęcie decyzji, czy jest to rozwiązanie odpowiednie dla Twojego scenariusza aplikacji, poznaj przepływ niejawnego udzielenia uwierzytelniania OAuth 2.0 w usłudze Azure AD [1.0](v1-oauth2-implicit-grant-flow.md) i [2.0](v2-oauth2-implicit-grant-flow.md).
+Po udzieleniu zgody przez użytkownika tego samego protokołu uwierzytelniania można użyć w celu uzyskania tokenów służących do zabezpieczania wywołań między klientem i innymi zasobami internetowego interfejsu API skonfigurowanymi dla aplikacji. Aby dowiedzieć się więcej o niejawnym przyznawaniu autoryzacji i ułatwić sobie podjęcie decyzji, czy jest to rozwiązanie odpowiednie dla Twojego scenariusza aplikacji, poznaj przepływ niejawnego udzielenia uwierzytelniania OAuth 2.0 w usłudze Azure AD [1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md) i [2.0](v2-oauth2-implicit-grant-flow.md).
 
 Domyślnie niejawne udzielenie protokołu OAuth 2.0 jest wyłączone dla aplikacji. Niejawne udzielenie protokołu OAuth 2.0 można włączyć dla aplikacji, wykonując kroki opisane poniżej.
 

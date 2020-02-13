@@ -64,7 +64,7 @@
   items:
     - name: Samoobsługowe resetowanie haseł
       items:
-        - name: Wdrażanie samoobsługowego resetowania haseł
+        - name: Podręcznik wdrażania
           href: howto-sspr-deployment.md
         - name: Wstępne rejestrowanie danych uwierzytelniania
           href: howto-sspr-authenticationdata.md
@@ -74,7 +74,7 @@
           href: howto-sspr-windows.md
     - name: Uwierzytelnianie wieloskładnikowe oparte na chmurze
       items:
-        - name: Wdrażanie uwierzytelniania wieloskładnikowego opartego na chmurze
+        - name: Podręcznik wdrażania
           href: howto-mfa-getstarted.md
         - name: Uwierzytelnianie wieloskładnikowe dla poszczególnych użytkowników
           href: howto-mfa-userstates.md

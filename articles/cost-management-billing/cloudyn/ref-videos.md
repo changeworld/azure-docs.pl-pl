@@ -1,25 +1,24 @@
 ---
-title: Szkolenia wideo na platformie Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
-description: Szkoleniowe filmy wideo na platformie Cloudyn prowadzą użytkownika przez proces pracę i używania jej funkcji.
-services: cost-management
+title: Wideo szkoleniowe dotyczące rozwiązania Cloudyn na platformie Azure | Microsoft Docs
+description: Wideo szkoleniowe dotyczące rozwiązania Cloudyn przeprowadzą Cię przez rozpoczynanie pracy i korzystanie z jego funkcji.
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 9cb075791e57889279ecbd3505792bddbecbb139
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: b6605f160ded47d134588d637cbd7e6a14eb3525
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75993936"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774025"
 ---
-# <a name="cloudyn-walk-through-training-videos"></a>Filmy szkoleniowe przewodniku Cloudyn
+# <a name="cloudyn-walk-through-training-videos"></a>Wideo szkoleniowe z przewodnikiem dotyczące rozwiązania Cloudyn
 
-Następujące filmy zawierające pokazów przeprowadzi Cię przez wprowadzenie do korzystania z platformy Cloudyn i używania jej funkcji. Cloudyn obsługuje kosztami wielu chmur, śledzenie i optymalizację, m.in. Microsoft Azure, Amazon Web Services i Google Cloud Platform.
+Poniższe klipy wideo zawierają pokazy przeprowadzające przez rozpoczynanie pracy z rozwiązaniem Cloudyn i korzystanie z jego funkcji. Rozwiązanie Cloudyn obsługuje optymalizowanie i śledzenie kosztów w wielu chmurach, w tym w usługach Microsoft Azure, Amazon Web Services i Google Cloud Platform.
 
 ## <a name="overview-video"></a>Klip wideo z omówieniem
 
@@ -27,9 +26,9 @@ Następujące filmy zawierające pokazów przeprowadzi Cię przez wprowadzenie d
 
 >[!VIDEO https://www.youtube.com/embed/NWIRny6Wpsk]
 
-## <a name="walk-through-videos"></a>Przewodnik wideo
+## <a name="walk-through-videos"></a>Filmy wideo z przewodnikiem
 
-[Analizowanie danych rozliczeń chmury, a razem z platformy Cloudyn](https://youtu.be/7LsVPHglM0g)
+[Analizowanie danych rozliczeń dla chmury na przestrzeni czasu przy użyciu rozwiązania Cloudyn](https://youtu.be/7LsVPHglM0g)
 
 >[!VIDEO https://www.youtube.com/embed/7LsVPHglM0g]
 
@@ -41,34 +40,34 @@ Następujące filmy zawierające pokazów przeprowadzi Cię przez wprowadzenie d
 
 >[!VIDEO https://www.youtube.com/embed/dAd9G7u0FmU?ecver=1]
 
-[Optymalizacja rozmiaru maszyny Wirtualnej w rozwiązaniu Cloudyn](https://youtu.be/1xaZBNmV704)
+[Optymalizowanie rozmiaru maszyny wirtualnej w rozwiązaniu Cloudyn](https://youtu.be/1xaZBNmV704)
 
 >[!VIDEO https://www.youtube.com/embed/1xaZBNmV704?ecver=1]
 
-[Definiowanie Model przydzielania kosztów w rozwiązaniu Cloudyn](https://youtu.be/FJzof_agKHY)
+[Definiowanie modelu alokacji kosztów w rozwiązaniu Cloudyn](https://youtu.be/FJzof_agKHY)
 
 >[!VIDEO https://www.youtube.com/embed/FJzof_agKHY?ecver=1]
 
-[Definiowanie opłaty niestandardowe w rozwiązaniu Cloudyn](https://youtu.be/3HcgkGPQjXE)
+[Definiowanie opłat niestandardowych w rozwiązaniu Cloudyn](https://youtu.be/3HcgkGPQjXE)
 
 >[!VIDEO https://www.youtube.com/embed/3HcgkGPQjXE?ecver=1]
 
-[Jak znaleźć swój identyfikator rejestracji EA i klucz interfejsu API do użytku w rozwiązaniu Cloudyn](https://youtu.be/u_phLs_udig)
+[Jak znaleźć swój identyfikator rejestracji umowy EA i klucz interfejsu API do użytku w rozwiązaniu Cloudyn](https://youtu.be/u_phLs_udig)
 
 >[!VIDEO https://www.youtube.com/embed/u_phLs_udig?ecver=1]
 
-[Znajdowanie Twojego identyfikatora GUID katalogu i Identyfikatora stawki do użytku w rozwiązaniu Cloudyn](https://youtu.be/PaRjnyaNGMI)
+[Wyszukiwanie identyfikatora GUID katalogu i identyfikatora stawki do używania w rozwiązaniu Cloudyn](https://youtu.be/PaRjnyaNGMI)
 
 >[!VIDEO https://www.youtube.com/embed/PaRjnyaNGMI?ecver=1]
 
-[Przypisywanie kont i subskrypcji do jednostek w rozwiązaniu Cloudyn](https://youtu.be/d9uTWSdoQYo)
+[Przypisywanie kont i subskrypcji do jednostek kosztów w rozwiązaniu Cloudyn](https://youtu.be/d9uTWSdoQYo)
 
 >[!VIDEO https://www.youtube.com/embed/d9uTWSdoQYo?ecver=1]
 
-[Połączenie do usługi Azure Resource Manager z usługą Cloudyn](https://youtu.be/oCIwvfBB6kk)
+[Łączenie z usługą Azure Resource Manager przy użyciu rozwiązania Cloudyn](https://youtu.be/oCIwvfBB6kk)
 
 >[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 
-[Analizowanie danych rozliczeń w chmurze z usługą Cloudyn](https://youtu.be/G0pvI3iLH-Y)
+[Analizowanie danych rozliczeń dla chmury przy użyciu rozwiązania Cloudyn](https://youtu.be/G0pvI3iLH-Y)
 
 >[!VIDEO https://www.youtube.com/embed/G0pvI3iLH-Y?ecver=1]

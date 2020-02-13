@@ -1,207 +1,206 @@
 ---
-title: Opis Cloudyn koszt raporty zarządzania na platformie Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł ułatwia zrozumienie struktury podstawowe raporty zarządzania kosztów Cloudyn i funkcji.
-services: cost-management
+title: Interpretacja raportów dotyczących zarządzania kosztami usługi Cloudyn na platformie Azure | Microsoft Docs
+description: Ten artykuł ułatwia zapoznanie się z podstawowymi strukturami i funkcjami raportów dotyczących zarządzania kosztami w usłudze Cloudyn.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: fff08bc30e0d1bae77a2aee641f6e211cea40beb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989113"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773982"
 ---
-# <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn Understanding management raportów kosztów
+# <a name="understanding-cloudyn-cost-management-reports"></a>Interpretacja raportów dotyczących zarządzania kosztami w usłudze Cloudyn
 
-Ten artykuł ułatwia zrozumienie struktury podstawowe raporty zarządzania kosztów Cloudyn i funkcji. Większość raportów Cloudyn są intuicyjne i jednolity wygląd i sposób działania. Po przeczytaniu tego artykułu, są gotowe do użycia wszystkich raportów rozwiązania cost management. Wiele standardowych funkcji są dostępne w całej różne raporty, umożliwiające przejście raporty z łatwością. Raporty są możliwe do dostosowania i możesz wybrać kilka opcji obliczają i wyświetlają wyniki.
+Ten artykuł ułatwia zapoznanie się z podstawowymi strukturami i funkcjami raportów dotyczących zarządzania kosztami w usłudze Cloudyn. Większość raportów usługi Cloudyn jest intuicyjna i ma jednolity wygląd i sposób działania. Zapoznanie się z tym artykułem pozwoli Ci używać wszystkich raportów dotyczących zarządzania kosztami. Wiele standardowych funkcji jest dostępnych w różnych raportach, co pozwoli Ci na łatwe nawigowanie po raportach. Możesz dostosowywać raporty i wybierać z kilku opcji obliczania i wyświetlania wyników.
 
-## <a name="report-fields-and-options"></a>Pola raportu i opcje
+## <a name="report-fields-and-options"></a>Pola i opcje raportu
 
-Poniżej przedstawiono przykładowy raport kosztu w czasie. Większość raportów Cloudyn mają podobny układ.
+Oto przykład raportu Koszt w czasie. Większość raportów usługi Cloudyn ma podobny układ.
 
-![Przykładowy raport kosztu w czasie z obszarami numerowane odpowiadający opisów](./media/understanding-cost-reports/sample-report.png)
+![Przykład raportu Koszt w czasie z ponumerowanymi obszarami odpowiadającymi opisom](./media/understanding-cost-reports/sample-report.png)
 
-Każdy ponumerowany obszar na wcześniejszej ilustracji są szczegółowo opisane w następujących informacji:
+Każdy ponumerowany obszar na powyższym obrazie został szczegółowo opisany za pomocą następujących informacji:
 
 1. **Zakres dat**
 
-    Użyj listy zakres dat, aby zdefiniować przedział czasu raportu za pomocą wstępnie ustawionych lub niestandardowy.
+    Użyj listy Zakres dat, aby zdefiniować interwał czasu raportowania za pomocą ustawień wstępnych lub niestandardowych.
 2. **Zapisany filtr**
 
-    Użyj listy zapisany filtr, aby zapisać bieżące grupy i filtry, które są stosowane do raportu. Zapisane filtry są dostępne przez raportów kosztów i wydajności, w tym:
+    Użyj listy Zapisany filtr, aby zapisać bieżące grupy i filtry stosowane względem raportu. Zapisane filtry są dostępne w raportach dotyczących kosztów i wydajności, takich jak:
 
       - Analiza kosztów
       - Alokacja
       - Zarządzanie zasobami
       - Optymalizacja
 
-   Wpisz nazwę filtru, a następnie kliknij **Zapisz**.
+   Wpisz nazwę filtru, a następnie kliknij pozycję **Zapisz**.
 
 3. **Tagi**
 
-    Według tagów kategorii, należy użyć obszaru tagów do grupy. Znaczniki wyświetlane w menu są działu na platformie Azure lub tagów Centrum kosztu lub są kosztu firmy Cloudyn tagi jednostki i subskrypcji. Wybierz tagi do filtrowania wyników. Możesz również wpisać nazwę tagu (słowo kluczowe), aby filtrować wyniki.
+    Użyj obszaru Tagi, aby przeprowadzić grupowanie według kategorii tagów. Tagi wymienione w menu to dział platformy Azure lub tagi centrum kosztów. Tagi mogą również dotyczyć jednostek kosztów i subskrypcji usługi Cloudyn. Wybierz tagi, aby przefiltrować wyniki. Aby przefiltrować wyniki, możesz również wpisać nazwę tagu (słowo kluczowe).
 
-    ![Przykład listy tagów, aby przefiltrować wyniki według](./media/understanding-cost-reports/select-options.png)
+    ![Przykładowa lista tagów, według których mają być filtrowane wyniki](./media/understanding-cost-reports/select-options.png)
 
-    Kliknij przycisk **Dodaj** można dodać nowego filtru.
+    Kliknij pozycję **Dodaj**, aby dodać nowy filtr.
 
-    ![Dodaj pole filtru przedstawiający opcje i warunki, aby filtrować według](./media/understanding-cost-reports/add-filter.png)
+    ![Dodaj pole filtru zawierające opcje i warunki, według których ma być przeprowadzone filtrowanie](./media/understanding-cost-reports/add-filter.png)
 
-    Tag, grupowanie i filtrowanie nie odnosi się do zasobów platformy Azure lub tagi z grupy zasobów.
+    Grupowanie lub filtrowanie tagów nie odnosi się do tagów zasobów ani grup zasobów platformy Azure.
 
-    Alokacja kosztów tag grupowania i filtrowania są dostępne w **grup** opcji menu.
+    Grupowanie i filtrowanie tagów alokacji kosztów jest dostępne w ramach opcji menu **Grupy**.
 
-4. **Grupami w raportach**
+4. **Grupy w raportach**
 
-    Używanie grup w analizy kosztów raporty muszą pokazywać w warstwie standardowa podzielonych na kategorie z danych w raporcie rozliczeń.  Jednak grupy alokacji kosztów raporty pokazu wyświetlić kategorie na podstawie tagów. Kategorie na podstawie tagów są zdefiniowane w model przydzielania kosztów oraz standardowe kategorie dla pozycji z danych dotyczących rozliczeń.
+    Użyj grup w raportach Analiza kosztów, aby wyświetlić w raporcie standardowe, wyszczególnione kategorie na podstawie danych rozliczeń.  Grupy w raportach Alokacja kosztów zawierają jednak kategorie wyświetlania oparte na tagach. Kategorie oparte na tagach są definiowane w ramach modelu alokacji kosztów i standardowych wyszczególnionych kategoriach na podstawie danych rozliczeń.
 
-    ![Pierwszy przykład listę znaczników, które można pogrupować wg](./media/understanding-cost-reports/groups-tags01.png)
+    ![Pierwsza przykładowa lista tagów, według których można przeprowadzić grupowanie](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![Drugi przykład listę znaczników, które można pogrupować wg](./media/understanding-cost-reports/groups-tags02.png)
+    ![Druga przykładowa lista tagów, według których można przeprowadzić grupowanie](./media/understanding-cost-reports/groups-tags02.png)
 
-    W raportach alokacji kosztów grup w kategorie na podstawie tagu grupy mogą być następujące:
+    W raportach Alokacja kosztów grupy w kategoriach grup opartych na tagach mogą zawierać:
       - Tagi
-      - Pozycja znaczniki grupy zasobów
-      - Koszt tagi jednostek Cloudyn
-      - Kategorie tag subskrypcji na potrzeby przydzielania kosztów
+      - Tagi grupy zasobów
+      - Tagi jednostek kosztów usługi Cloudyn
+      - Kategorie tagów subskrypcji na potrzeby alokacji kosztów
 
-   Przykładami mogą być następujące:
+   Przykłady mogą obejmować:
    - Centrum kosztu
    - Dział
    - Aplikacja
    - Środowisko
-   - Kod kosztów
+   - Kod kosztu
 
-     Oto lista wbudowanej grupy dostępne w raportach:
+     Oto lista wbudowanych grup dostępnych w raportach:
 
      - **Typ kosztu**
-     - Wybierz typ kosztu lub wiele typów kosztów, albo wybierz wszystko. Typy kosztów:
-       - Jednorazowa opłata
+     - Wybierz typ kosztu, wiele typów kosztów lub wybierz wszystko. Typy kosztów obejmują:
+       - Opłata jednorazowa
        - Pomoc techniczna
        - Koszt użycia
-     - **Odbiorcy**
-       - Wybierz określonego odbiorcy, wielu klientów lub wszystkich klientów.
+     - **Klient**
+       - Wybierz określonego klienta, wielu klientów lub wszystkich klientów.
      - **Nazwa konta**
-       - Nazwa konta lub subskrypcji. Na platformie Azure jest nazwa subskrypcji platformy Azure.
-     - **Brak konta**
-       - Wybierz konto, wiele kont lub wszystkich kont. Na platformie Azure jest identyfikator GUID subskrypcji platformy Azure.
-     - **Konta nadrzędne**
-       - Wybierz konto nadrzędne, wiele kont lub wybierz opcję.
+       - Nazwa konta lub subskrypcji. Na platformie Azure jest to nazwa subskrypcji platformy Azure.
+     - **Nr konta**
+       - Wybierz konto, wiele kont lub wszystkie konta. Na platformie Azure jest to identyfikator GUID subskrypcji platformy Azure.
+     - **Konto nadrzędne**
+       - Wybierz konto nadrzędne, wiele kont lub wybierz wszystko.
      - **Usługa**
-       - Wybierz usługę, wiele usług lub wszystkich usług.
+       - Wybierz usługę, wiele usług lub wybierz wszystkie usługi.
      - **Dostawca**
-       - Dostawca chmury, gdzie są skojarzone zasoby i wydatki związane z.
+       - Dostawca usług w chmurze, dla którego zasoby i wydatki są skojarzone.
      - **Region**
-       - Region, w którym znajduje się zasób.
+       - Region, w którym zasób jest hostowany.
      - **Strefa dostępności**
-       - Usługi AWS samodzielnie lokalizacje w regionie.
+       - Izolowane lokalizacje platformy AWS w regionie.
      - **Typ zasobu**
-       - Typ zasobu w użyciu.
-     - **Sub-Type**
-       - Wybierz typ podrzędnych.
+       - Typ używanego zasobu.
+     - **Podtyp**
+       - Wybierz podtyp.
      - **Operacja**
-       - Wybierz operację lub **Pokaż wszystko**.
-     - **Model cen**
-       - Wszystkie z wyprzedzeniem
-       - Brak ponoszonych z góry kosztów
-       - Partial ponoszonych z góry kosztów
+       - Wybierz operację lub wybierz pozycję **Pokaż wszystko**.
+     - **Model cenowy**
+       - Wszystkie koszty z góry
+       - Brak kosztów z góry
+       - Częściowe koszty z góry
        - Na żądanie
        - Rezerwacja
        - Spot
      - **Typ opłaty**
-       - Wybierz typ opłaty ujemne lub dodatni, lub obu.
-     - **Tenancy**
-       - Czy maszyna jest uruchomiona jako dedykowane maszyny.
+       - Wybierz typ opłaty Ujemna lub Dodatnia (bądź oba).
+     - **Dzierżawa**
+       - Określa, czy komputer jest uruchomiony jako dedykowany.
      - **Typ użycia**
-       - Typ użycia może być opłat jednorazowych lub opłat cyklicznych.
+       - Z typem użycia mogą być związane opłaty jednorazowe lub cykliczne.
 
 5. **Filtry**
 
-    Użyj filtrów pojedynczego lub wielokrotnego wyboru, aby ustawić zakresy adresów wybrane wartości. Aby ustawić filtr, kliknij **Dodaj** a następnie wybierz filtr kategorie i wartości.
+    Użyj filtrów pojedynczego lub wielokrotnego wyboru, aby ustawić zakresy na wybrane wartości. Aby ustawić filtr, kliknij pozycję **Dodaj**, a następnie wybierz kategorie i wartości filtrowania.
 
 6. **Model kosztów**
 
-    Użyj modelu kosztów, aby wybrać model kosztów, która została wcześniej utworzona za pomocą Cost Allocation 360. Możesz mieć wiele modeli kosztów Cloudyn, w zależności od wymagań alokacji kosztów. Niektóre zespołom w organizacji mogą kosztów alokacji wymagania, które różnią się od innych użytkowników. Każdy zespół może mieć własne modelu kosztów dedykowanych.
+    Użyj modelu kosztów, aby wybrać model kosztów, który został wcześniej utworzony przy użyciu usługi Cost Allocation 360. Możesz mieć wiele modeli kosztów usługi Cloudyn w zależności od wymagań dotyczących alokacji kosztów. Niektóre z Twoich zespołów organizacyjnych mogą mieć wymagania dotyczące alokacji kosztów, które różnią się od wymagań innych zespołów. Każdy zespół może mieć własny dedykowany model kosztów.
 
-    Aby uzyskać informacji na temat tworzenia definicji model alokacji kosztów, zobacz [przydzielanie kosztów za pomocą tagów niestandardowych](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+    Aby uzyskać informacje na temat tworzenia definicji modelu alokacji kosztów, zobacz [Przydzielanie kosztów za pomocą tagów niestandardowych](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
 7. **Amortyzacja**
 
-    Użyj amortyzacji w raportach alokacji kosztów, aby wyświetlić dane bez użycia na podstawie opłat za usługę lub koszty płatne jednorazowe i rozłożona równomiernie podczas ich czas na ich kosztów. Przykłady jednorazowe opłaty mogą być następujące:
-    - Opłaty roczne pomocy technicznej
-    - Opłaty roczne składniki zabezpieczeń
-    - Opłaty za zakupu wystąpień zarezerwowanych
-    - Niektóre elementy w portalu Azure Marketplace.
+    Użyj raportów Amortyzacja w alokacji kosztów do wyświetlania opłat za usługę nieopartych na użyciu lub kosztów jednorazowych należności i rozłożyć je równomiernie w ich okresie obowiązywania. Opłaty jednorazowe mogą na przykład obejmować:
+    - Roczne opłaty za pomoc techniczną
+    - Roczne opłaty za składniki zabezpieczeń
+    - Opłaty za zakup wystąpień zarezerwowanych
+    - Niektóre elementy w witrynie Azure Marketplace.
 
-   W obszarze amortyzacji wybierz **amortyzowanego kosztu** lub **rzeczywistego kosztu**.
+   W obszarze Amortyzacja wybierz pozycję **Koszt amortyzowany** lub **Koszt rzeczywisty**.
 
 8. **Rozdzielczość**
 
-    Użyj rozwiązania, aby wybrać czas rozdzielczość w ramach wybranego zakresu dat. Rozdzielczość czasu określa, jak jednostki są wyświetlane w raporcie i można:
-    - Codziennie
-    - Co tydzień
-    - Miesięczne
-    - Kwartalnie
-    - Roczne
+    Użyj pozycji Rozdzielczość, aby wybrać rozdzielczość czasu w ramach wybranego zakresu dat. Rozdzielczość czasu określa, w jaki sposób jednostki są wyświetlane w raporcie. Może być następująca:
+    - Dzienna
+    - Tygodniowa
+    - Co miesiąc
+    - Kwartalna
+    - Roczna
 
-9. **Zasady alokacji**
+9. **Reguły alokacji**
 
-    Użyj reguł alokacji zastosować lub wyłączyć obliczanie kosztu alokacji kosztów. Można włączyć lub wyłączyć Obliczanie alokacji kosztów dla danych dotyczących rozliczeń. Ponowne obliczanie mają zastosowanie do kategorii wybranych w raporcie. Umożliwia ocenę wpływu ponowne obliczenie alokacji kosztów względem nieprzetworzonych danych dotyczących rozliczeń.
+    Użyj pozycji Reguły alokacji, aby zastosować lub wyłączyć ponowne obliczanie alokacji kosztów. Dla danych rozliczeń możesz włączyć lub wyłączyć ponowne obliczanie alokacji kosztów. Ponowne obliczanie dotyczy wybranych kategorii w raporcie. Umożliwia ocenę wpływu ponownego obliczania alokacji kosztów na pierwotne dane rozliczeń.
 
 10. **Bez kategorii**
 
-    Użyj kategorii do dołączania lub wykluczania bez kategorii kosztów w raporcie.
+    Użyj pozycji Bez kategorii, aby uwzględnić lub wykluczyć nieskategoryzowane koszty w raporcie.
 
-11. **Pokaż/Ukryj pola**
+11. **Pokaż/ukryj pola**
 
-    Opcja Pokaż/Ukryj nie ma żadnego efektu w raportach.
+    Opcja Pokaż/ukryj pola nie ma żadnego wpływu na raporty.
 
 12. **Formaty wyświetlania**
 
-    Użyj formatów wyświetlania, aby wybrać różne widoki wykres lub tabelę.
+    Użyj pozycji Formaty wyświetlania, aby wybrać różne widoki wykresu lub tabeli.
 
-    ![Symbole formaty wyświetlania, które można wybierać](./media/understanding-cost-reports/display-formats.png)
+    ![Symbole formatów wyświetlania, które możesz wybrać](./media/understanding-cost-reports/display-formats.png)
 
-13. **Wielu kolorów**
+13. **Wiele kolorów**
 
-    Użycie wielu kolor, aby ustawić kolor wykresów w raporcie.
+    Użyj pozycji Wiele kolorów, aby ustawić kolor wykresów w raporcie.
 
 14. **Akcje**
 
-    Aby zapisać, eksportowanie lub ustalania harmonogramu raportu za pomocą akcji.
+    Użyj pozycji Akcje, aby zapisać, wyeksportować lub zaplanować raport.
 
 15. **Zasady**
 
-    Mimo że nie na zdjęciu niektóre raporty obejmują zasady przewidywany koszt obliczeń. W tych raportach **skonsolidowanych** zasad zawiera zalecenia dotyczące wszystkich kont i subskrypcji w ramach bieżącej jednostki, takich jak rejestracja w usłudze Microsoft lub usług AWS płatnika. **Autonomiczny** zasad zawiera zalecenia dotyczące jednego konta lub subskrypcji, tak, jakby nie istnieją żadne inne subskrypcje. Zasady, które możesz wybrać zmienia się od strategii optymalizacji używany przez Twoją organizację. Projekcji kosztów są oparte na ostatnich 30 dni użytkowania.
+    Chociaż nie zostało to przedstawione, niektóre raporty uwzględniają zasady obliczania przewidywanych kosztów. W tych raportach zasady **Skonsolidowane** przedstawiają rekomendacje dotyczące wszystkich kont i subskrypcji w ramach bieżącej jednostki, takiej jak rejestracja firmy Microsoft lub płatnik platformy AWS. Zasady **Autonomiczne** przedstawiają rekomendacje dotyczące jednego konta lub subskrypcji, jak gdyby żadne inne subskrypcje nie istniały. Wybrane zasady różnią się w zależności od strategii optymalizacji używanej przez organizację. Projekcje kosztów są oparte na ostatnich 30 dniach użytkowania.
 
-## <a name="save-and-schedule-reports"></a>Zapisz i planowania raportów
+## <a name="save-and-schedule-reports"></a>Zapisywanie i planowanie raportów
 
-Po utworzeniu raportu można zapisać go do użytku w przyszłości. Zapisane raporty są dostępne w **Moje narzędzia** > **Moje raporty**. Jeśli wprowadzasz zmiany do istniejącego raportu i zapisz go, raport jest zapisywany jako nową wersję. Lub zapisz go jako nowy raport.
+Po utworzeniu raportu możesz go zapisać w celu użycia w przyszłości. Zapisane raporty są dostępne po wybraniu pozycji **Moje narzędzia** > **Moje raporty**. Jeśli wprowadzisz zmiany w istniejącym raporcie i zapiszesz go, raport zostanie zapisany jako nowa wersja. Możesz również zapisać go jako nowy raport.
 
 ### <a name="save-a-report-to-the-cloudyn-portal"></a>Zapisywanie raportu w portalu Cloudyn
 
-Podczas wyświetlania dowolnego raportu, kliknij przycisk **akcje** , a następnie wybierz **Zapisz moje raporty**. Nazywanie raportu, a następnie dodaj własny adres URL lub użyj automatycznie utworzone adresu URL. Można opcjonalnie **udostępnianie** raportu publicznie innym osobom w organizacji lub udostępnić go do jednostki. Nie udostępniono raport, pozostaje osobistych raportów i można tylko wyświetlić. Zapisz raport.
+Podczas przeglądania dowolnego raportu kliknij pozycję **Akcje**, a następnie wybierz pozycję **Zapisz w moich raportach**. Nazwij raport, a następnie dodaj własny adres URL lub użyj automatycznie utworzonego adresu URL. Opcjonalnie możesz **udostępnić** raport publicznie innym osobom w organizacji lub udostępnić go w swojej jednostce. Jeśli raport nie zostanie udostępniony, będzie on raportem osobistym możliwym do wyświetlenia tylko przez Ciebie. Zapisz raport.
 
 
-### <a name="save-a-report-to-cloud-provider-storage"></a>Zapisywanie raportu do dostawcy magazynu w chmurze
+### <a name="save-a-report-to-cloud-provider-storage"></a>Zapisywanie raportu w magazynie dostawcy chmury
 
-Aby zapisać raport do dostawcy usług w chmurze, możesz muszą być już skonfigurowane na koncie magazynu. Podczas wyświetlania dowolnego raportu, kliknij przycisk **akcje** , a następnie wybierz **zaplanować raport**. Nazywanie raportu, a następnie dodaj własny adres URL lub użyj automatycznie utworzone adresu URL. Wybierz **zapisywanie w magazynie** a następnie wybierz konto magazynu lub dodać nowy. Wprowadź prefiks, który pobiera dołączany do nazwy pliku raportu. Wybierz format pliku CSV lub JSON, a następnie Zapisz raport.
+Aby możliwe było zapisanie raportu u dostawcy usług w chmurze, należy wcześniej skonfigurować konto magazynu. Podczas przeglądania dowolnego raportu kliknij pozycję **Akcje**, a następnie wybierz pozycję **Zaplanuj raport**. Nazwij raport, a następnie dodaj własny adres URL lub użyj automatycznie utworzonego adresu URL. Wybierz pozycję **Zapisz do magazynu**, a następnie wybierz konto magazynu lub dodaj nowe. Wprowadź prefiks, który zostanie dołączony do nazwy pliku raportu. Wybierz format pliku CSV lub JSON, a następnie zapisz raport.
 
-### <a name="schedule-a-report"></a>Harmonogram raportu
+### <a name="schedule-a-report"></a>Planowanie raportu
 
-Możesz uruchomić raporty w zaplanowanych odstępach czasu i wysłała je do adresatów listy lub w chmurze usługi dostawcy konta magazynu. Podczas wyświetlania dowolnego raportu, kliknij przycisk **akcje** , a następnie wybierz **zaplanować raport**. Można wysłać raport za pośrednictwem poczty e-mail i zapisać na koncie magazynu. W obszarze **harmonogram**, wybierz interwał (codziennie, co tydzień lub co miesiąc). Co tydzień i co miesiąc wybierz dzień lub daty do dostarczania i wybierz godzinę. Zapisz zaplanowany raport. Jeśli wybierzesz format raportu programu Excel, raport jest wysyłany jako załącznik. Po wybraniu format zawartości wiadomości e-mail, raportu dotyczącego wyników, które są wyświetlane w formacie wykresu są dostarczane jako wykres.
+Raporty możesz uruchamiać w zaplanowanych interwałach i wysyłać je do listy adresatów lub konta magazynu dostawcy usług w chmurze. Podczas przeglądania dowolnego raportu kliknij pozycję **Akcje**, a następnie wybierz pozycję **Zaplanuj raport**. Raport możesz wysłać za pomocą poczty e-mail i zapisać na koncie magazynu. W obszarze **Planowanie** wybierz interwał (codziennie, co tydzień lub co miesiąc). W przypadku interwału tygodniowego i miesięcznego wybierz dzień lub daty dostarczania oraz godzinę. Zapisz zaplanowany raport. W przypadku wybrania formatu raportu programu Excel zostanie on wysłany jako załącznik. W przypadku wybrania formatu zawartości wiadomości e-mail wyniki raportów wyświetlane w formacie wykresu będą dostarczane jako graf.
 
-### <a name="export-a-report-as-a-csv-file"></a>Raport można wyeksportować jako plik CSV
+### <a name="export-a-report-as-a-csv-file"></a>Eksportowanie raportu jako pliku CSV
 
-Podczas wyświetlania dowolnego raportu, kliknij przycisk **akcje** , a następnie wybierz **wyeksportować wszystkie dane raportów**. Pojawi się okno podręczne i zostanie pobrany plik CSV.
+Podczas przeglądania dowolnego raportu kliknij pozycję **Akcje**, a następnie wybierz pozycję **Eksportuj wszystkie dane raportów**. Zostanie wyświetlone okno podręczne i zostanie pobrany plik CSV.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Więcej informacji na temat raportów, które znajdują się w rozwiązaniu Cloudyn w [raporty użycia Cloudyn](../../cost-management/use-reports.md).
-- Dowiedz się więcej o tym, jak używać raportów do tworzenia [pulpity nawigacyjne](../../cost-management/dashboards.md).
+- Aby dowiedzieć się więcej o raportach dostępnych w usłudze Cloudyn, zobacz [Raporty platformy Cloudyn](../../cost-management/use-reports.md).
+- Dowiedz się, jak używać raportów do tworzenia [pulpitów nawigacyjnych](../../cost-management/dashboards.md).

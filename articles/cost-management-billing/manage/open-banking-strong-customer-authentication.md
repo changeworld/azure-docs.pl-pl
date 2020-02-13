@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75996042"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Otwarta bankowość (PSD2) i silne uwierzytelnianie klienta (SCA) dla klientów platformy Azure
@@ -48,7 +48,7 @@ Jeśli Twój bank odrzuci opłaty, stan konta platformy Azure w witrynie Azure P
 
 1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com/) jako administrator konta.
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
-3. Na stronie **przegląd** **Cost Management i rozliczeń** Przejrzyj kolumnę Stan w siatce **Moje subskrypcje** .
+3. Na stronie **Zarządzanie kosztami i rozliczenia** **Przegląd** przejrzyj kolumnę stanu w siatce **Moje subskrypcje**.
 4. Jeśli Twoja subskrypcja ma etykietę **Upłynął termin**, kliknij pozycję **Ureguluj saldo**. Zostanie wyświetlony monit o ukończenie uwierzytelniania wieloskładnikowego.
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>Rozliczanie zaległych opłat za zakupy w witrynie Marketplace i rezerwacje

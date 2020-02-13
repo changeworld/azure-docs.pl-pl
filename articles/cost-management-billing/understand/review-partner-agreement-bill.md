@@ -1,5 +1,5 @@
 ---
-title: Zapoznaj się z fakturą umowy partnerskiej firmy Microsoft — Azure
+title: Przeglądanie faktury dla umowy partnerskiej firmy Microsoft na platformie Azure
 description: Dowiedz się, jak przejrzeć informacje o rozliczeniach i użyciu zasobów oraz sprawdzić opłaty za fakturę dotyczącą umowy partnerskiej firmy Microsoft.
 author: jureid
 manager: jureid
@@ -12,34 +12,34 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: banders
 ms.openlocfilehash: e3823a9eb2e0713f7f42e4e02808ef957efc5944
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990842"
 ---
-# <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Samouczek: przegląd faktury dotyczącej umowy partnerskiej firmy Microsoft
+# <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Samouczek: Przeglądanie faktury dla umowy partnerskiej firmy Microsoft
 
- Na koncie rozliczeniowym umowy partnerskiej firmy Microsoft co miesiąc generowana jest jedna faktura na każdy profil rozliczeniowy. Faktura zawiera wszystkie opłaty dla klienta z poprzedniego miesiąca. Aby zrozumieć opłaty widoczne na fakturze, przeanalizuj poszczególne transakcje w witrynie Azure Portal. Możesz również wyświetlić faktury w Azure Portal i porównać opłaty z plikiem szczegółów użycia.
+ Na koncie rozliczeniowym umowy partnerskiej firmy Microsoft co miesiąc generowana jest jedna faktura na każdy profil rozliczeniowy. Faktura zawiera wszystkie opłaty dla klienta z poprzedniego miesiąca. Aby zrozumieć opłaty widoczne na fakturze, przeanalizuj poszczególne transakcje w witrynie Azure Portal. W witrynie Azure Portal możesz również wyświetlić faktury i porównać opłaty ze szczegółowym zestawieniem użycia.
 
 Aby uzyskać więcej informacji, zobacz [Pobieranie faktur z witryny Azure Portal](download-azure-invoice.md).
 
-Ten samouczek dotyczy tylko partnerów platformy Azure z umową Partnerskią firmy Microsoft.
+Ten samouczek dotyczy tylko partnerów platformy Azure z umową partnerską firmy Microsoft.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Przejrzyj zafakturowane transakcje w Azure Portal
+> * Przeglądanie zafakturowanych transakcji w witrynie Azure Portal
 > * Szacowanie kwoty kolejnej faktury na podstawie oczekujących opłat
 > * Analizowanie opłat za użycie platformy Azure
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć dostęp do konta rozliczeniowego umowy partnerskiej firmy Microsoft.
+Musisz mieć dostęp do konta rozliczeniowego związanego z umową partnerską firmy Microsoft.
 
-Musi ona być dłuższa niż 30 dni od dnia, w którym zasubskrybujesz platformę Azure. Na platformie Azure opłaty są naliczane na koniec okresu fakturowania.
+Od dnia zasubskrybowania platformy Azure musi upłynąć więcej niż 30 dni. Na platformie Azure opłaty są naliczane na koniec okresu fakturowania.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 - Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
@@ -47,21 +47,21 @@ Musi ona być dłuższa niż 30 dni od dnia, w którym zasubskrybujesz platform�
 
 Sprawdź typ umowy, aby określić, czy masz dostęp do konta rozliczeniowego umowy partnerskiej firmy Microsoft.
 
-W Azure Portal wpisz *Cost Management + rozliczenia* w polu wyszukiwania, a następnie wybierz pozycję **Cost Management + rozliczenia**.
+W witrynie Azure Portal wpisz w polu wyszukiwania *zarządzanie kosztami i rozliczenia*, a następnie wybierz pozycję **Zarządzanie kosztami i rozliczenia**.
 
 ![Zrzut ekranu przedstawiający wyszukiwanie w witrynie Azure Portal](./media/review-partner-agreement-bill/billing-search-cost-management-billing.png)
 
 Jeśli masz dostęp tylko do jednego zakresu rozliczeniowego, wybierz pozycję **Właściwości** po lewej stronie. Masz dostęp do konta rozliczeniowego umowy partnerskiej firmy Microsoft, jeśli typ konta rozliczeniowego to **Umowa partnerska firmy Microsoft**.
 
-![Zrzut ekranu przedstawiający umowę partner firmy Microsoft na stronie właściwości](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
+![Zrzut ekranu przedstawiający umowę partnerską firmy Microsoft na stronie właściwości](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
 
 Jeśli masz dostęp do wielu zakresów rozliczeniowych, sprawdź typ w kolumnie konta rozliczeniowego. Masz dostęp do konta rozliczeniowego umowy partnerskiej firmy Microsoft, jeśli typ konta rozliczeniowego w dowolnym z Twoich zakresów to **Umowa partnerska firmy Microsoft**.
 
-![Zrzut ekranu przedstawiający umowę partnera firmy Microsoft na stronie listy kont rozliczeń](./media/review-partner-agreement-bill/mpa-in-the-list.png)
+![Zrzut ekranu przedstawiający umowę partnerską firmy Microsoft na stronie listy kont rozliczeniowych](./media/review-partner-agreement-bill/mpa-in-the-list.png)
 
-## <a name="review-invoiced-transactions-in-the-azure-portal"></a>Przejrzyj zafakturowane transakcje w Azure Portal
+## <a name="review-invoiced-transactions-in-the-azure-portal"></a>Przeglądanie zafakturowanych transakcji w witrynie Azure Portal
 
-W obszarze Cost Management i rozliczanie wybierz pozycję **wszystkie transakcje** z lewej strony. W zależności od uprawnień dostępu może być konieczne wybranie konta rozliczeniowego, profilu rozliczeniowego lub klienta, a następnie wybranie pozycji **Wszystkie transakcje**.
+W obszarze Zarządzanie kosztami i rozliczenia wybierz pozycję **Wszystkie transakcje** po lewej stronie. W zależności od uprawnień dostępu może być konieczne wybranie konta rozliczeniowego, profilu rozliczeniowego lub klienta, a następnie wybranie pozycji **Wszystkie transakcje**.
 
 Na stronie Wszystkie transakcje są wyświetlane następujące informacje:
 
@@ -74,10 +74,10 @@ Na stronie Wszystkie transakcje są wyświetlane następujące informacje:
 |Typ transakcji     |  Typ transakcji, na przykład zakup, anulowanie, opłaty za użycie  |
 |Rodzina produktów     | Kategoria produktu, na przykład obliczenia w przypadku maszyn wirtualnych lub baza danych w przypadku usługi Azure SQL Database|
 |SDKU produktu     | Unikatowy kod identyfikujący wystąpienie produktu |
-|Ilość     |  Kwota transakcji      |
+|Kwota     |  Kwota transakcji      |
 |Profil rozliczeniowy     | Profil rozliczeniowy, na którego fakturze jest widoczna ta transakcja |
 
-Wyszukaj Identyfikator faktury, aby odfiltrować transakcje dla faktury.
+Możesz wyszukać identyfikator faktury, aby odfiltrować transakcje z tej faktury.
 
 ## <a name="review-pending-charges-to-estimate-your-next-invoice"></a>Szacowanie kwoty kolejnej faktury na podstawie oczekujących opłat
 
@@ -87,7 +87,7 @@ Opłaty mają charakter szacunkowy i są uznawane za oczekujące, dopóki nie zo
 
 Gdy znajdziesz oczekujące opłaty, możesz je wyjaśnić, analizując poszczególne transakcje, które im odpowiadają. Obecnie oczekujące opłaty za użycie nie są wyświetlane na stronie Wszystkie transakcje. Możesz wyświetlić je na stronie subskrypcji platformy Azure.
 
-W obszarze Cost Management i rozliczanie wybierz profil rozliczania. W zależności od uprawnień dostępu może być konieczne wybranie konta rozliczeniowego. Z poziomu konta rozliczeniowego wybierz pozycję **Profile rozliczeniowe**, a następnie wybierz profil rozliczeniowy.
+W obszarze Zarządzanie kosztami i rozliczenia wybierz profil rozliczeniowy. W zależności od uprawnień dostępu może być konieczne wybranie konta rozliczeniowego. Z poziomu konta rozliczeniowego wybierz pozycję **Profile rozliczeniowe**, a następnie wybierz profil rozliczeniowy.
 
 Wybierz pozycję **Wszystkie transakcje** po lewej stronie.
 
@@ -97,7 +97,7 @@ Wyszukaj *oczekujące*. Użyj filtru **Przedział czasu**, aby wyświetlić opł
 
 ### <a name="view-pending-charges-by-customer"></a>Wyświetlanie oczekujących opłat według klienta
 
-W obszarze Cost Management i rozliczanie wybierz profil rozliczania. W zależności od uprawnień dostępu może być konieczne wybranie konta rozliczeniowego. Z poziomu konta rozliczeniowego wybierz pozycję **Profile rozliczeniowe**, a następnie wybierz profil rozliczeniowy.
+W obszarze Zarządzanie kosztami i rozliczenia wybierz profil rozliczeniowy. W zależności od uprawnień dostępu może być konieczne wybranie konta rozliczeniowego. Z poziomu konta rozliczeniowego wybierz pozycję **Profile rozliczeniowe**, a następnie wybierz profil rozliczeniowy.
 
 Wybierz pozycję **Klienci** w lewej części strony.
 
@@ -107,7 +107,7 @@ Na stronie Klienci są wyświetlane opłaty za bieżący i ubiegły miesiąc, do
 
 ### <a name="view-pending-usage-charges"></a>Wyświetlanie oczekujących opłat za użycie
 
-W obszarze Cost Management i rozliczanie wybierz profil rozliczania. W zależności od uprawnień dostępu może być konieczne wybranie konta rozliczeniowego. Z poziomu konta rozliczeniowego wybierz pozycję **Profile rozliczeniowe**, a następnie wybierz profil rozliczeniowy.
+W obszarze Zarządzanie kosztami i rozliczenia wybierz profil rozliczeniowy. W zależności od uprawnień dostępu może być konieczne wybranie konta rozliczeniowego. Z poziomu konta rozliczeniowego wybierz pozycję **Profile rozliczeniowe**, a następnie wybierz profil rozliczeniowy.
 
 Wybierz pozycję **Subskrypcje platformy Azure** w lewej części strony. Na stronie subskrypcji platformy Azure są wyświetlane opłaty za bieżący i ubiegły miesiąc, dotyczące poszczególnych subskrypcji z profilu rozliczeniowego. Opłaty za bieżący miesiąc to oczekujące opłaty naliczone w tym miesiącu, które zostaną rozliczone w momencie wygenerowania faktury za ten miesiąc. Jeśli jeszcze nie wygenerowano faktury za poprzedni miesiąc, opłaty z tego miesiąca również będą oznaczone jako oczekujące.
 
@@ -130,11 +130,11 @@ Jeśli już zapłacono za rachunek, możesz sprawdzić stan płatności na stron
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Przejrzyj zafakturowane transakcje w Azure Portal
+> * Przeglądanie zafakturowanych transakcji w witrynie Azure Portal
 > * Szacowanie kwoty kolejnej faktury na podstawie oczekujących opłat
 > * Analizowanie opłat za użycie platformy Azure
 
-Dowiedz się więcej na temat korzystania z Azure Cost Management dla partnerów.
+Dowiedz się więcej o korzystaniu z usługi Azure Cost Management dla partnerów.
 
 > [!div class="nextstepaction"]
-> [Wprowadzenie do Azure Cost Management dla partnerów](../costs/get-started-partners.md)
+> [Wprowadzenie do usługi Azure Cost Management dla partnerów](../costs/get-started-partners.md)

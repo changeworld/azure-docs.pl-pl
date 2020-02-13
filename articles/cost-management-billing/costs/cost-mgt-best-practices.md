@@ -1,6 +1,6 @@
 ---
-title: Optymalizowanie inwestycję w chmurę dzięki usłudze Azure Cost Management | Dokumentacja firmy Microsoft
-description: Ten artykuł pomaga osiągnięcie jak największych korzyści z inwestycji w chmurę, zmniejszenia kosztów i ocenić, gdzie jest poświęcony pieniądze.
+title: Optymalizowanie inwestycji w chmurę za pomocą usługi Azure Cost Management | Microsoft Docs
+description: Ten artykuł pomaga zmaksymalizować korzyści z inwestycji w chmurę, ograniczyć koszty i ocenić, na co wydawane są pieniądze.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,185 +11,185 @@ ms.service: cost-management-billing
 manager: vitavor
 ms.custom: seodec18
 ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988385"
 ---
-# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak zoptymalizować inwestycję w chmurę dzięki usłudze Azure Cost Management
+# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak zoptymalizować inwestycję w chmurę za pomocą usługi Azure Cost Management
 
-Usługa Azure Cost Management zapewnia narzędzia do planowania, analizowania i Zmniejsz wydatki w celu maksymalizacji inwestycji w chmurę. W tym dokumencie przedstawiono metodyczny podejście do zarządzania kosztami oraz wyróżnia narzędzia dostępne dla użytkownika jako adresu wyzwania koszt Twojej organizacji. Dzięki systemowi Azure ułatwia tworzenie i wdrażanie rozwiązań w chmurze. Jest ważne, że te rozwiązania są optymalizowane w celu zminimalizowania kosztów dla organizacji. Zgodnie z zasadami opisane w tym dokumencie i za pomocą naszych narzędzi ma na celu upewnić się, że Twoja organizacja jest gotowa do poprawnego działania.
+Usługa Azure Cost Management oferuje narzędzia do planowania, analizowania i ograniczania wydatków w celu zmaksymalizowania korzyści z inwestycji w chmurę. Ten dokument przedstawia metodyczne podejście do zarządzania kosztami i wyszczególnia narzędzia pozwalające sprostać wyzwaniom kosztowym organizacji. Platforma Azure ułatwia tworzenie i wdrażanie rozwiązań w chmurze. Należy jednak pamiętać, aby te rozwiązania były zoptymalizowane pod kątem zminimalizowania kosztów dla organizacji. Postępowanie zgodnie z zasadami opisanymi w tym dokumencie i używanie naszych narzędzi pomoże osiągnąć sukces organizacji.
 
 ## <a name="methodology"></a>Metodologia
 
-Usługa Cost management organizacji problemu i powinna być trwająca praktyka, która rozpoczyna się przed można kupować zasobów w chmurze. Aby pomyślnie wdrożyć Zarządzanie kosztami i Optymalizowanie kosztów, Twoja organizacja musi:
+Zarządzanie kosztami jest problemem o charakterze organizacyjnym i powinno być stałą praktyką, która zaczyna się przed poniesieniem wydatków na zasoby w chmurze. Aby pomyślnie wdrożyć zarządzanie kosztami i zoptymalizować koszty, organizacja musi:
 
-- Należy przygotować za pomocą odpowiednich narzędzi w celu osiągnięcia sukcesu
-- Odpowiada za koszty
-- Podejmij odpowiednią akcję, aby zoptymalizować wydatki
+- być przygotowana na sukces dzięki odpowiednim narzędziom,
+- odpowiadać za koszty,
+- podejmować odpowiednie działania w celu optymalizacji wydatków.
 
-Trzy grupy kluczy opisane poniżej, muszą być wyrównane w Twojej organizacji, aby upewnić się, czy pomyślnie Zarządzanie kosztami.
+Trzy najważniejsze grupy, wymienione poniżej, muszą być dopasowane w organizacji, aby zapewnić skuteczne zarządzanie kosztami.
 
-- **Finanse** -osób odpowiedzialnych za zatwierdzanie żądań budżetu w organizacji oparte na chmurze wydatków prognozy. One zapłacić rachunku odpowiedniego i przypisać koszty do różnych zespołów na zapewnienie odpowiedzialności.
-- **Menedżerowie** — biznesowe osoby podejmujące decyzje w organizacji, które są niezbędne do zrozumienia chmury wydatków, aby znaleźć najlepszy wydatków wyników.
-- **Zespoły aplikacji mogą** — inżynierów zarządzania zasobami chmury na podstawie codziennych, tworzenia usług w celu spełnienia potrzeb organizacji użytkownika. Te zespoły muszą mieć możliwość dostarczania największych korzyści z ich budżetów zdefiniowane.
+- **Finanse** — osoby odpowiedzialne za zatwierdzanie żądań budżetowych w organizacji w oparciu o prognozy wydatków w chmurze. Opłacają one odpowiednie rachunki i przypisują koszty różnym zespołom, aby zwiększyć odpowiedzialność.
+- **Menedżerowie** — osoby podejmujące decyzje biznesowe w organizacji, które muszą zrozumieć wydatki na chmurę, aby znaleźć najlepsze sposoby wydatkowania.
+- **Zespoły odpowiedzialne za aplikacje** — inżynierowie zarządzający zasobami w chmurze na co dzień, tworzący usługi pod kątem zaspokajania potrzeb organizacji. Zespoły te potrzebują elastyczności, aby zapewnić możliwie największą wartość w ramach zdefiniowanych budżetów.
 
-### <a name="key-principles"></a>Podstawowe zasady
+### <a name="key-principles"></a>Najważniejsze zasady
 
-Użyj zasad przedstawionych poniżej w celu umieść organizacji w celu osiągnięcia sukcesu w chmurze kosztów zarządzania.
+Skorzystaj z zasad przedstawionych poniżej, aby zapewnić swojej organizacji odpowiednie warunki do skutecznego zarządzania kosztami w chmurze.
 
 #### <a name="planning"></a>Planowanie
 
-Kompleksowe, ponoszonych z góry planowania pozwala na dostosowywanie użycie chmury do konkretnych potrzeb biznesowych. Zadaj sobie:
+Kompleksowe, wstępne planowanie pozwala na dostosowanie wykorzystania chmury do konkretnych wymagań biznesowych. Zadaj sobie pytania:
 
-- Jaki problem biznesowy jestem rozwiązywania?
-- Wzorce użycia, jakie oczekiwać od Moje zasoby?
+- Jaki problem biznesowy chcę rozwiązać?
+- Jakich wzorców użycia oczekuję w odniesieniu do swoich zasobów?
 
-Twoje odpowiedzi pomogą wybierz oferty, które są dla Ciebie odpowiednia. Określają one infrastruktury i sposobie ich użycia, aby zmaksymalizować wydajność platformy Azure.
+Twoje odpowiedzi pomogą Ci wybrać odpowiednią ofertę. Określają one infrastrukturę, z jakiej należy korzystać, oraz sposób jej używania w celu maksymalizacji wydajności platformy Azure.
 
 #### <a name="visibility"></a>Widoczność
 
-Gdy dobrze pełną Cost Management pomaga informował o koszty platformy Azure, w których są one odpowiedzialnej za pieniądze, jaki poświęcają lub. Platforma Azure oferuje usługi, umożliwiają wgląd w *gdzie* odbywa się pieniądze. Skorzystaj z tych narzędzi. Mogą one pomóc Ci znaleźć zasoby, które są w pełni wykorzystany, Usuń strat i maksymalizowanie oszczędne możliwości.
+Przy dobrej strukturze usługa Cost Management ułatwia informowanie użytkowników o kosztach związanych z platformą Azure, za które są odpowiedzialni, lub wydatkach, które generują. Platforma Azure oferuje usługi pozwalające uzyskać wgląd w informacje dotyczące tego, *gdzie* wydatkowane są pieniądze. Korzystaj z tych narzędzi. Mogą one pomóc znajdować marnowane i nieużywane zasoby oraz maksymalizować możliwości w zakresie oszczędzania kosztów.
 
 #### <a name="accountability"></a>Odpowiedzialność
 
-Atrybut koszty w Twojej organizacji, aby upewnić się, że osoby odpowiedzialne wykonywanych przez ich zespołu wydatków. Aby w pełni zrozumieć wydatków platformy Azure w Twojej organizacji, należy zorganizować zasobów w celu zmaksymalizowania wgląd w koszty autorstwa. Dobre organizacji ułatwia zarządzanie i obniżenie kosztów i przytrzymaj osób odpowiedzialni wydajne wydatków w Twojej organizacji.
+Przypisuj koszty w organizacji, aby upewnić się, że odpowiednie osoby przejmą odpowiedzialność za wydatki swojego zespołu. Aby w pełni zrozumieć wydatki związane z platformą Azure w organizacji, należy zorganizować zasoby w sposób pozwalający zmaksymalizować uzyskiwanie szczegółowych informacji o przypisywaniu kosztów. Dobra organizacja pomaga zarządzać kosztami i ograniczać je oraz wymusza na pracownikach odpowiedzialność za efektywne wydatkowanie środków w organizacji.
 
 #### <a name="optimization"></a>Optymalizacja
 
-Działanie, aby ograniczyć wydatki. Maksymalne wykorzystanie go na podstawie otrzymanych wyników zebrane przez proces planowania i Zwiększanie widoczności kosztów. Należy rozważyć zakup i licencjonowania optymalizacje wraz z infrastruktury wdrażania zmiany, które opisano szczegółowo w dalszej części tego dokumentu.
+Podejmij działania w celu zmniejszenia wydatków. Uzyskaj maksymalne wyniki w oparciu o ustalenia zebrane na drodze planowania i zwiększenie widoczności kosztów. Możesz rozważyć optymalizację w zakresie zakupów i licencjonowania oraz zmiany dotyczące wdrażania infrastruktury omówione w dalszej części tego dokumentu.
 
 #### <a name="iteration"></a>Iteracja
 
-Wszyscy w Twojej organizacji muszą angażować się w cyklu życia zarządzania kosztami. Muszą one pozostać zaangażowanych w sposób ciągły, aby zoptymalizować koszty. Być rygorystyczne o ten proces iteracyjny i ułatwiają obejmując nadzoru odpowiada chmury w organizacji.
+Wszyscy w organizacji muszą uczestniczyć w cyklu życia zarządzania kosztami. Muszą oni być zaangażowani na bieżąco, aby zoptymalizować koszty. Rygorystycznie podchodź do tego iteracyjnego procesu i uczyń z niego kluczową zasadę odpowiedzialnego zapewniania ładu w chmurze w swojej organizacji.
 
-![Podstawowe zasady diagram przedstawiający widoczność, odpowiedzialność i optymalizacja](./media/cost-mgt-best-practices/principles.png)
+![Diagram najważniejszych zasad pokazujący widoczność, odpowiedzialność i optymalizację](./media/cost-mgt-best-practices/principles.png)
 
-## <a name="plan-with-cost-in-mind"></a>Planowanie kosztów na uwadze
+## <a name="plan-with-cost-in-mind"></a>Planowanie z myślą o kosztach
 
-Przed przystąpieniem do wdrażania zasobów w chmurze, oceń następujące elementy:
+Przed wdrożeniem zasobów w chmurze dokonaj oceny następujących elementów:
 
-- Oferta platformy Azure, która najlepiej spełnia Twoje potrzeby
-- Zasoby, których zamierzasz używać
-- Ile może kosztować
+- Oferta platformy Azure, która najlepiej odpowiada Twoim potrzebom
+- Zasoby, których planujesz użyć
+- Ile mogą kosztować
 
-System Azure oferuje narzędzia pomocne podczas w procesie oceny. Narzędzia można nadać dobrze inwestycje wymagane do włączenia obciążeń. Następnie możesz wybrać configuration najlepiej w danej sytuacji.
+Platforma Azure udostępnia narzędzia ułatwiające proces oceny. Narzędzia te mogą zapewnić dobre wyobrażenie o inwestycji niezbędnej do obsługi Twoich obciążeń. Następnie możesz wybrać najlepszą konfigurację dla danej sytuacji.
 
-### <a name="azure-onboarding-options"></a>Opcje dołączania do platformy Azure
+### <a name="azure-onboarding-options"></a>Opcje dołączania platformy Azure
 
-Pierwszym etapem maksymalizując środowiska w ramach Cost Management jest badanie i zdecyduj, która oferta platformy Azure jest odpowiedni dla Ciebie. Zastanów się, jak zamierzasz w przyszłości korzystać z platformy Azure. Należy również rozważyć, jak chcesz, aby Twój model rozliczeń, które zostały skonfigurowane. Podczas podejmowania decyzji, należy wziąć pod uwagę następujące kwestie:
+Pierwszym krokiem w celu zmaksymalizowania doświadczenia w ramach usługi Cost Management jest zbadanie i wybór najlepszej dla siebie oferty platformy Azure. Pomyśl nad tym, w jaki sposób zamierzasz używać platformy Azure w przyszłości. Zastanów się również, jak ma być skonfigurowany model rozliczeń. Przy podejmowaniu decyzji należy wziąć pod uwagę następujące pytania:
 
-- Jak długo planujesz korzystanie z systemu Azure? Jestem testowania, czy zaplanować do tworzenia długoterminowych infrastruktury?
-- Jak chcesz zapłacić dla platformy Azure? Należy I Zapłać z góry za obniżonej cenie lub uzyskaj doliczany do faktury na końcu miesiąca?
+- Jak długo zamierzam używać platformy Azure? Czy przeprowadzam testy, czy też planuję budowę długoterminowej infrastruktury?
+- W jaki sposób chcę płacić za platformę Azure? Czy mam płacić z góry i uzyskać obniżoną cenę, czy otrzymać fakturę na koniec miesiąca?
 
-Aby dowiedzieć się więcej na temat różnych opcji, odwiedź stronę [jak kupić platformę Azure](https://azure.microsoft.com/pricing/purchase-options/). Kilka typowych modeli rozliczeń są identyfikowane poniżej.
+Aby dowiedzieć się więcej o różnych opcjach, odwiedź stronę [Kupowanie platformy Azure](https://azure.microsoft.com/pricing/purchase-options/). Poniżej przedstawiono kilka najczęstszych modeli rozliczeń.
 
 #### <a name="freehttpsazuremicrosoftcomfree"></a>[Bezpłatna](https://azure.microsoft.com/free/)
 
-- 12 miesięcy korzystania z popularnych bezpłatnych usług
-- 200 USD środków w celu poznania usług przez 30 dni
-- ponad 25 usług zawsze są bezpłatne
+- 12 miesięcy popularnych bezpłatnych usług
+- 200 USD środków na zapoznawanie się z usługami przez 30 dni
+- Ponad 25 usług, które są zawsze bezpłatne
 
 #### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p)
 
-- Brak zobowiązań minimalnych
+- Brak kwot minimalnych oraz zobowiązań
 - Konkurencyjne ceny
 - Płatność wyłącznie za rzeczywiste użycie
-- Możliwość anulowania w dowolnej chwili
+- Możliwość anulowania w dowolnym momencie
 
 #### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[Umowa Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-- Opcje ponoszonych z góry zobowiązań pieniężnych
-- Dostęp do obniżonej ceny systemu Azure
+- Możliwości w zakresie zobowiązań pieniężnych z góry
+- Dostęp do niższych cen platformy Azure
 
-## <a name="estimate-the-cost-of-your-solution"></a>Oszacuj koszt rozwiązania
+## <a name="estimate-the-cost-of-your-solution"></a>Szacowanie kosztów rozwiązania
 
-Przed wdrożeniem infrastruktury ocenić rozwiązania ile będzie kosztować. Oceny są pomocne podczas tworzenia budżetu dla Twojej organizacji, w przypadku obciążeń z góry. Następnie przy użyciu budżetu wraz z upływem czasu przeprowadzenie testu porównawczego ważności Twoje początkowe oszacowanie. I porównać go z rzeczywisty koszt rozwiązania wdrożone.
+Przed wdrożeniem infrastruktury należy ocenić, ile będzie kosztować rozwiązanie. Ocena ta pomoże w przygotowaniu z góry budżetu dla obciążenia w organizacji. Następnie można użyć budżetu w czasie, aby dokonać porównania prawidłowości wstępnego oszacowania. Można też porównać go z rzeczywistym kosztem wdrożonego rozwiązania.
 
 ### <a name="azure-pricing-calculator"></a>Kalkulator cen platformy Azure
 
-Kalkulator cen platformy Azure umożliwia mieszanie i dopasowywanie różne kombinacje usług platformy Azure, aby wyświetlić oszacowanie kosztów. Można zaimplementować rozwiązania przy użyciu różnych sposobów na platformie Azure — każdy może mieć wpływ na ogólnych wydatków. Ułatwiały wcześnie wszystkie wdrożenia w chmurze w zakresie infrastruktury pomoże Ci najbardziej efektywnie za pomocą narzędzia. Może pomóc Ci solid oszacowanie szacowane wydatki na platformie Azure.
+Kalkulator cen platformy Azure umożliwia mieszanie i dopasowywanie różnych kombinacji usług platformy Azure pod kątem sprawdzenia szacunkowych kosztów. Platforma Azure umożliwia wdrażanie rozwiązań z wykorzystaniem różnych sposobów — każdy może mieć wpływ na całkowite wydatki. Wczesne przeanalizowanie wszystkich potrzeb infrastrukturalnych związanych z wdrożeniem chmury pomaga efektywniej wykorzystywać to narzędzie. Może to pomóc w uzyskaniu wiarygodnej wyceny szacunkowych wydatków na platformie Azure.
 
-Aby uzyskać więcej informacji, zobacz [kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator).
+Aby uzyskać więcej informacji, zobacz [Kalkulator cen platformy Azure](https://azure.microsoft.com/pricing/calculator).
 
 ### <a name="azure-migrate"></a>Azure Migrate
 
-Usługa Azure Migrate to usługa, która ocenia organizacji bieżących obciążeń w lokalnych centrach danych. Udostępnia wgląd w czym może być konieczne z rozwiązania Azure zastępczy. Po pierwsze Migrate analizuje maszyn lokalnych do ustalenia, czy migracja jest to możliwe. Następnie zaleca rozmiaru maszyny Wirtualnej na platformie Azure w celu zmaksymalizowania wydajności. Na koniec tworzy również szacowania kosztów dla rozwiązania oparte na platformie Azure.
+Azure Migrate to usługa, która ocenia bieżące obciążenia organizacji w lokalnych centrach danych. Zapewnia ona szczegółowe informacje o tym, czego możesz potrzebować od zastępczego rozwiązania platformy Azure. Na początek usługa Migrate przeprowadza analizę lokalnych maszyn w celu sprawdzenia, czy migracja jest możliwa. Następnie proponuje rozmiary maszyn wirtualnych na platformie Azure zapewniające zmaksymalizowanie wydajności. Wreszcie przygotowuje również oszacowanie kosztów rozwiązania opartego na platformie Azure.
 
-Aby uzyskać więcej informacji, zobacz [usługi Azure Migrate](../../site-recovery/migrate-overview.md).
+Aby uzyskać więcej informacji, zobacz [Azure Migrate](../../site-recovery/migrate-overview.md).
 
-## <a name="analyze-and-manage-your-costs"></a>Analizowanie i zarządzanie nimi z tego względu koszt
+## <a name="analyze-and-manage-your-costs"></a>Analizowanie kosztów i zarządzanie nimi
 
-Śledź na bieżąco jak koszty swojej organizacji rozwijać się wraz z upływem czasu. Za pomocą następujących technik prawidłowo oraz zarządzać swoimi wydatkami.
+Śledź na bieżąco zmiany kosztów organizacji w czasie. Użyj następujących technik, aby właściwie zrozumieć swoje wydatki i zarządzać nimi.
 
 ### <a name="organize-and-tag-your-resources"></a>Organizowanie i tagowanie zasobów
 
-Organizowanie zasobów przy użyciu koszt na uwadze. Podczas tworzenia subskrypcji i grup zasobów, należy wziąć pod uwagę zespołów, które są odpowiedzialne za powiązanych z nimi kosztów. Upewnij się, że raportowania przechowuje organizacji na uwadze. Subskrypcji i grup zasobów zapewniają dobrą zasobników do organizowania i atrybutu wydatków w ramach organizacji. Tagi umożliwiają dobre koszt atrybutu. Tagi można użyć jako filtr. I używać ich do grupy podczas analizowania danych oraz badanie kosztów. Klienci z umową Enterprise Agreement mogą również utworzyć działów i umieścić subskrypcje w ramach ich. Na podstawie kosztów organizacji na platformie Azure pomaga odpowiednich osób w Twojej organizacji odpowiedzialni zmniejszenie wydatków ich zespołu.
+Organizuj zasoby z uwzględnieniem kosztów. Podczas tworzenia subskrypcji i grup zasobów weź pod uwagę zespoły odpowiedzialne za powiązane koszty. Upewnij się, że w raportowaniu uwzględniana jest Twoja organizacja. Subskrypcje i grupy zasobów stanowią dobre zasobniki do organizowania wydatków i przyporządkowywania ich w całej organizacji. Tagi stanowią dobrą metodę przyporządkowywania kosztów. Możesz używać tagów jako filtrów. Dodatkowo możesz używać ich jako kryterium grupowania podczas analizowania danych i badania kosztów. Klienci z umową Enterprise Agreement mogą również tworzyć działy i umieszczać w nich subskrypcje. Organizacja oparta na kosztach na platformie Azure pomaga zapewnić odpowiedzialność właściwych osób w organizacji za zmniejszanie wydatków ich zespołów.
 
-### <a name="use-cost-analysis"></a>Użyj analizy kosztów
+### <a name="use-cost-analysis"></a>Używanie analizy kosztów
 
-Analiza kosztów pozwala analizować szczegółowe koszty organizacji, dzielenie i grupowanie koszty przy użyciu właściwości standardowych zasobów. Przewodnik analizy, należy wziąć pod uwagę poniższe często zadawane pytania. Odpowiedzi na te pytania, na bieżąco pomoże Ci na bieżąco bardziej i włączenia więcej koszt świadome decyzje.
+Analiza kosztów pozwala na dokładne analizowanie kosztów organizacyjnych przez podział i grupowanie kosztów z użyciem standardowych właściwości zasobów. Weź pod uwagę poniższe typowe pytania jako wytyczne podczas analizy. Regularne odpowiadanie na te pytania pozwoli Ci mieć dostęp do szerszych informacji i umożliwi bardziej świadome podejmowanie decyzji.
 
-- **Szacowane koszty w bieżącym miesiącu** — ile poniesionymi do tej pory w tym miesiącu? Będą przechowywane w ramach budżetu?
-- **Badanie anomalii** — czy rutynowych testów, aby upewnić się, że koszty pozostają w zakresie uzasadnione normalnego użycia. Jakie są trendy? Czy istnieją jakiekolwiek elementy odstające?
-- **Faktury uzgadniania** — jest Moje najnowsze invoiced droższe niż poprzedniego miesiąca? Jak wydatków nawyków zmienić miesiąc do miesiąca?
-- **Wewnętrzny obciążenia zwrotnego** — teraz, aby sprawdzić, ile opłata została naliczona, jak należy je podzielić dla mojej organizacji?
+- **Szacunkowe koszty dla bieżącego miesiąca** — jakie koszty poniesiono do tej pory w tym miesiącu? Czy zmieszczę się w budżecie?
+- **Badanie anomalii** — przeprowadzaj rutynowe kontrole, aby upewnić się, że koszty mieszczą się w rozsądnym zakresie normalnego użytkowania. Jakie są trendy? Czy istnieją jakieś elementy odstające?
+- **Uzgadnianie faktur** — czy mój ostatni zafakturowany koszt jest większy w porównaniu z poprzednim miesiącem? Jak zmieniały się wydatki z miesiąca na miesiąc?
+- **Wewnętrzne obciążenie zwrotne** — teraz, gdy znam wysokość naliczanych opłat, w jaki sposób należy je rozbić na moją organizację?
 
 Aby uzyskać więcej informacji, zobacz [analiza kosztów](quick-acm-cost-analysis.md).
 
-### <a name="export-billing-data-on-a-schedule"></a>Eksportowanie danych dotyczących rozliczeń zgodnie z harmonogramem
+### <a name="export-billing-data-on-a-schedule"></a>Eksportowanie danych dotyczących rozliczeń według harmonogramu
 
-Potrzebujesz do importowania danych dotyczących rozliczeń do systemu zewnętrznego, podobnie jak pulpit nawigacyjny lub finansowych systemu? Skonfiguruj automatyczne eksportowanie do usługi Azure Storage i uniknąć ręcznego pobierania plików co miesiąc. Możesz następnie łatwo skonfigurować automatyczne integracji z innymi systemami do synchronizowania danych dotyczących rozliczeń.
+Czy potrzebujesz importować dane dotyczące rozliczeń do systemu zewnętrznego, takiego jak pulpit nawigacyjny lub system finansowy? Skonfiguruj automatyczne eksporty do usługi Azure Storage i uniknij konieczności ręcznego pobierania plików co miesiąc. Następnie możesz łatwo skonfigurować automatyczną integrację z innymi systemami, aby zapewnić stałą synchronizację danych rozliczeniowych.
 
-Aby uzyskać więcej informacji na temat eksportowania danych dotyczących rozliczeń, zobacz [tworzenie i zarządzanie nimi wyeksportowane dane](tutorial-export-acm-data.md).
+Aby uzyskać więcej informacji na temat eksportowania danych dotyczących rozliczeń, zobacz [Eksportowanie danych i zarządzanie nimi](tutorial-export-acm-data.md).
 
 ### <a name="create-budgets"></a>Tworzenie budżetów
 
-Po utworzeniu zidentyfikowane i analizowane Twoich wzorców wydatków, należy rozpocząć Ustawianie limitów dla siebie i Twoje zespoły. Budżetów platformy Azure zapewniają możliwość ustawiania koszt lub na podstawie użycia budżetu za pomocą wielu progów i alertów. Upewnij się zapoznać się z budżety, które tworzysz regularnie Wyświetl postęp budżetu postępów w dół i wprowadź wymagane zmiany. Azure budżetów pozwalają również na konfigurowanie wyzwalacza usługi automation, po osiągnięciu progu przez dany budżetu. Na przykład można skonfigurować usługi w celu wyłączania maszyn wirtualnych. Lub infrastruktury można przenieść do innej warstwy cenowej w odpowiedzi na wyzwalacz budżetu.
+Po zidentyfikowaniu i przeanalizowaniu wzorców wydatków ważne jest, aby zacząć ustalać limity dla siebie i swoich zespołów. Budżety platformy Azure umożliwiają tworzenie budżetu opartego na kosztach lub opartego na użyciu z wieloma progami i alertami. Pamiętaj o regularnym przeglądaniu budżetów, które tworzysz, aby sprawdzić stan wykorzystania budżetu i w razie potrzeby wprowadzić zmiany. Budżety platformy Azure umożliwiają również skonfigurowanie automatycznego wyzwalacza, gdy zostanie osiągnięty określony próg budżetu. Można na przykład skonfigurować usługę do zamykania maszyn wirtualnych. Można też przenieść infrastrukturę do innej warstwy cenowej w odpowiedzi na wyzwalacz budżetu.
 
-Aby uzyskać więcej informacji, zobacz [budżetów Azure](tutorial-acm-create-budgets.md).
+Aby uzyskać więcej informacji, zobacz [Budżety platformy Azure](tutorial-acm-create-budgets.md).
 
-Aby uzyskać więcej informacji o automatyzacji w budżecie, zobacz [budżetu na podstawie Automation](../manage/cost-management-budget-scenario.md).
+Aby uzyskać więcej informacji na temat automatyzacji opartej na budżecie, zobacz [Automatyzacja oparta na budżecie](../manage/cost-management-budget-scenario.md).
 
-## <a name="act-to-optimize"></a>Działania w celu optymalizacji
-Użyj poniższych metod Optymalizowanie wydatków.
+## <a name="act-to-optimize"></a>Podejmij działania w celu optymalizacji
+Aby zoptymalizować wydatki, użyj następujących sposobów.
 
-### <a name="cut-out-waste"></a>Wytnij strat
+### <a name="cut-out-waste"></a>Eliminowanie marnowanych zasobów
 
-Po wdrożeniu infrastruktury na platformie Azure ważne jest, aby upewnić się, że jest ona używana. Najprostszą metodą, aby natychmiast rozpocząć oszczędności jest przejrzenie zasobów i usunięcie wszystkich, które nie są używane. W tym miejscu należy określić, jeśli zasoby są używane jak najbardziej wydajny.
+Po wdrożeniu infrastruktury na platformie Azure ważne jest, aby upewnić się, że jest ona używana. Najprostszą metodą, aby natychmiast rozpocząć oszczędności jest przejrzenie zasobów i usunięcie wszystkich, które nie są używane. Następnie należy ustalić, czy zasoby są wykorzystywane tak efektywnie, jak to możliwe.
 
 #### <a name="azure-advisor"></a>Azure Advisor
 
-Usługa Azure Advisor to usługa, która między innymi identyfikuje maszyny wirtualne z niskim użyciem z punktu widzenia użycia procesora CPU lub sieci. Z tego miejsca możesz zdecydować się na zamknięty lub zmienianie rozmiaru maszyny, oparte na szacowany koszt nadal będą uruchamiane na maszynach. Advisor zawiera także zalecenia dotyczące zakupów wystąpień zarezerwowanych. Zalecenia są oparte na przez ostatnie 30 dni użytkowania maszyny wirtualnej. Gdy zrealizowany, zalecenia może spowodować zmniejszenie wydatków.
+Azure Advisor to usługa, która między innymi identyfikuje maszyny wirtualne o niskim stopniu wykorzystania z punktu widzenia użycia procesora lub sieci. Dzięki temu możesz podjąć decyzję o wyłączeniu lub zmianie rozmiaru maszyny w oparciu o szacowany koszt jej dalszego użytkowania. Usługa Advisor dostarcza również rekomendacje dotyczące zakupów wystąpień zarezerwowanych. Rekomendacje te bazują na ostatnich 30 dniach użytkowania maszyn wirtualnych. Rekomendacje te mogą pomóc w zmniejszeniu wydatków.
 
-Aby uzyskać więcej informacji, zobacz [usługi Azure Advisor](../../advisor/advisor-overview.md).
+Aby uzyskać więcej informacji, zobacz [Azure Advisor](../../advisor/advisor-overview.md).
 
-### <a name="size-your-vms-properly"></a>Poprawnie rozmiar maszyn wirtualnych
+### <a name="size-your-vms-properly"></a>Prawidłowe dopasowanie rozmiaru maszyn wirtualnych
 
-Ustalanie rozmiaru maszyny Wirtualnej ma znaczący wpływ na koszt całkowity platformy Azure. Liczbę maszyn wirtualnych potrzebnych na platformie Azure nie może być równa się co aktualnie wdrożone w lokalnym centrum danych. Upewnij się, że Twoje wybierz rozmiar odpowiednie dla obciążeń, które mają być uruchamiane.
+Rozmiar maszyn wirtualnych ma znaczący wpływ na ogólny koszt platformy Azure. Liczba maszyn wirtualnych wymaganych na platformie Azure może nie odpowiadać liczbie obecnie wdrożonych maszyn w lokalnym centrum danych. Upewnij się, że dobierasz odpowiedni rozmiar do obciążeń, które planujesz uruchamiać.
 
-Aby uzyskać więcej informacji, zobacz [IaaS platformy Azure: odpowiedniego rozmiaru i kosztów](https://azure.microsoft.com/resources/videos/azurecon-2015-azure-iaas-proper-sizing-and-cost/).
+Aby uzyskać więcej informacji, zobacz [Azure IaaS: prawidłowe określanie rozmiaru i koszty](https://azure.microsoft.com/resources/videos/azurecon-2015-azure-iaas-proper-sizing-and-cost/).
 
-### <a name="use-purchase-discounts"></a>Użyj rabaty zakupu
+### <a name="use-purchase-discounts"></a>Korzystanie z rabatów przy zakupie
 
-Platforma Azure oferuje wiele rabatów, które Twoja organizacja powinna korzystać z oszczędzać pieniądze.
+Platforma Azure oferuje wiele rabatów, z których Twoja organizacja powinna skorzystać, aby zaoszczędzić pieniądze.
 
 #### <a name="azure-reservations"></a>Rezerwacje platformy Azure
 
-Rezerwacje platformy Azure umożliwiają Zapłać z góry za rok lub trzech lat maszyny wirtualnej lub bazy danych SQL moc obliczeniową. Wstępnie płacenia pozwoli uzyskać rabat na zasoby, których używasz. Azure rezerwacji może znacznie zmniejszyć Twojej maszyny wirtualnej lub koszty operacji obliczeniowych bazy danych SQL — do 72% na ceny zgodnie z rzeczywistym użyciem dzięki jeden rok lub trzy lata zobowiązań z góry. Rezerwacje umożliwiają skorzystanie z rabatu na rozliczenia i nie mają wpływu na stan środowiska uruchomieniowego maszyn wirtualnych lub baz danych SQL.
+Rezerwacje platformy Azure umożliwiają przedpłatę za pojemność obliczeniową maszyn wirtualnych lub usługi SQL Database za rok lub trzy lata. Przedpłaty umożliwiają uzyskanie rabatu na używane zasoby. Rezerwacje platformy Azure mogą znacząco obniżyć koszty obliczeniowe maszyny wirtualnej lub usługi SQL Database — do 72% w przypadku płatności zgodnie z rzeczywistym użyciem ze zobowiązaniem do zapłaty z góry za jeden rok lub trzy lata. Rezerwacje umożliwiają skorzystanie z rabatu na rozliczenia i nie mają wpływu na stan środowiska uruchomieniowego maszyn wirtualnych lub baz danych SQL.
 
-Aby uzyskać więcej informacji, zobacz [co to jest Azure rezerwacje?](../reservations/save-compute-costs-reservations.md).
+Aby uzyskać więcej informacji, zobacz [Co to są rezerwacje platformy Azure?](../reservations/save-compute-costs-reservations.md).
 
 #### <a name="use-azure-hybrid-benefit"></a>Korzystaj z zalet użycia hybrydowego platformy Azure
 
-Jeśli już masz licencje systemu Windows Server lub SQL Server we wdrożeniach w środowisku lokalnym, można użyć programu korzyści użycia hybrydowego platformy Azure, można zapisać na platformie Azure. W przypadku korzystania z systemu Windows Server każda licencja obejmuje koszt systemu operacyjnego (na maksymalnie dwóch maszynach wirtualnych), a Ty ponosisz tylko koszty według podstawowej stawki obliczeniowej. Możesz korzystać z istniejących licencji na program SQL Server, aby zaoszczędzić do 55% na opcjach usługi SQL Database opartych na rdzeniach wirtualnych. Opcje obejmują program SQL Server w usłudze Azure Virtual Machines i usługę SQL Server Integration Services.
+Jeśli masz już licencje na system Windows Server lub program SQL Server w ramach wdrożeń lokalnych, możesz użyć programu Korzyść użycia hybrydowego platformy Azure i oszczędzać na platformie Azure. W przypadku korzystania z systemu Windows Server każda licencja obejmuje koszt systemu operacyjnego (na maksymalnie dwóch maszynach wirtualnych), a Ty ponosisz tylko koszty według podstawowej stawki obliczeniowej. Możesz korzystać z istniejących licencji na program SQL Server, aby zaoszczędzić do 55% na opcjach usługi SQL Database opartych na rdzeniach wirtualnych. Opcje obejmują program SQL Server w usłudze Azure Virtual Machines i usługę SQL Server Integration Services.
 
 Aby uzyskać więcej informacji, zobacz [Kalkulator korzyści użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 ### <a name="other-resources"></a>Inne zasoby
 
-Platforma Azure ma to usługa, która umożliwia tworzenie usług, które wykorzystują nadwyżkę wydajności na platformie Azure dla obniżonych stawek. Aby uzyskać więcej informacji, zobacz [— niski priorytet maszyn wirtualnych za pomocą usługi Batch](../../batch/batch-low-pri-vms.md).
+Platforma Azure oferuje również usługę pozwalającą tworzyć usługi, które wykorzystują nadwyżki wydajności na platformie Azure po obniżonych stawkach. Aby uzyskać więcej informacji, zobacz [Używanie maszyn wirtualnych o niskim priorytecie z usługą Batch](../../batch/batch-low-pri-vms.md).
 
 ## <a name="next-steps"></a>Następne kroki
-- Jeśli jesteś nowym użytkownikiem Cost Management, zapoznaj się z [co to jest Azure Cost Management?](../cost-management-billing-overview.md) Dowiedz się, jak ułatwia monitorowanie i kontrolowanie wydatków platformy Azure i zoptymalizować wykorzystanie zasobów.
+- Jeśli dopiero zaczynasz pracę z usługą Cost Management, przeczytaj [Co to jest usługa Azure Cost Management?](../cost-management-billing-overview.md), aby dowiedzieć się, w jaki sposób ułatwia ona monitorowanie i kontrolowanie wydatków na platformie Azure oraz optymalizowanie użycia zasobów.

@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: Usługa Azure Active Directory dla deweloperów
+summary: Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami w chmurze, która umożliwia deweloperom tworzenie aplikacji zapewniających bezpieczne logowanie użytkowników mających konta służbowe Microsoft. Usługa Azure AD obsługuje zarówno deweloperów tworzących aplikacje biznesowe dla pojedynczej dzierżawy, jak i deweloperów chcących tworzyć aplikacje wielodostępne. Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej Azure Active Directory (Azure AD). W przypadku nowych aplikacji zalecamy korzystanie z platformy tożsamości Microsoft (wersja 2.0) i biblioteki MSAL w celu uzyskiwania tokenów i dostępu do zabezpieczonych internetowych interfejsów API.
+metadata:
+  ms.topic: landing-page
+  ms.date: 01/27/2020
+  author: CelesteDG
+  ms.author: celested
+  ms.service: active-directory
+  ms.subservice: azuread-dev
+  ms.workload: identity
+  ms.openlocfilehash: 5af100e7e5a1456dae4bc4e68334299d1fd12794
+  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77163215"
+landingContent:
+- title: Usługa Azure Active Directory dla deweloperów
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Usługa Azure Active Directory dla deweloperów (wersja 1.0)
+      url: v1-overview.md
+    - text: Ewolucja platformy tożsamości firmy Microsoft
+      url: ../develop/about-microsoft-identity-platform.md
+    - text: Platforma tożsamości firmy Microsoft (wersja 2.0)
+      url: ../develop/v2-overview.md
+  - linkListType: concept
+    links:
+    - text: Dlaczego warto wykonać aktualizację do platformy tożsamości Microsoft (wersja 2.0)?
+      url: azure-ad-endpoint-comparison.md
+    - text: Typy aplikacji i scenariusze
+      url: app-types.md
+- title: Protokoły uwierzytelniania
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Podstawowe informacje o uwierzytelnianiu
+      url: v1-authentication-scenarios.md
+  - linkListType: concept
+    links:
+    - text: Przepływ kodu autoryzacji OAuth 2.0
+      url: v1-protocols-oauth-code.md
+    - text: Przepływ kodu dla protokołu OpenID Connect
+      url: v1-protocols-openid-connect-code.md
+    - text: Przepływ przyznawania poświadczeń klienta uwierzytelniania OAuth 2.0
+      url: v1-oauth2-client-creds-grant-flow.md
+- title: Samples
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Przykładowe aplikacje
+      url: sample-v1-code.md

@@ -1,5 +1,5 @@
 ---
-title: Szybki Start — Eksplorowanie kosztów platformy Azure dzięki analizie kosztów | Microsoft Docs
+title: Szybki start — eksplorowanie kosztów platformy Azure za pomocą analizy kosztów | Microsoft Docs
 description: Ten przewodnik Szybki start ułatwia eksplorowanie i analizowanie kosztów organizacyjnych platformy Azure za pomocą funkcji analizy kosztów.
 services: cost-management
 keywords: ''
@@ -11,15 +11,15 @@ ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
 ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76294154"
 ---
-# <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki Start: Eksplorowanie i analizowanie kosztów za pomocą analizy kosztów
+# <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki start: Eksplorowanie i analizowanie kosztów za pomocą analizy kosztów
 
-Aby poprawnie kontrolować i optymalizować koszty platformy Azure, trzeba zrozumieć, skąd pochodzą koszty w organizacji. Warto również wiedzieć, ile pieniędzy jest kosztem usług i w jakim są obsługiwane środowiska i systemy. Widoczność pełnego zakresu kosztów to kluczowy element wymagany do dokładnego zrozumienia wzorca wydatków organizacji. Wzorców wydatków można użyć do wymuszania mechanizmów kontroli kosztów, takich jak budżety.
+Aby poprawnie kontrolować i optymalizować koszty platformy Azure, trzeba zrozumieć, skąd pochodzą koszty w organizacji. Warto również wiedzieć, ile kosztują usługi oraz które środowiska i systemy obsługują. Widoczność pełnego zakresu kosztów to kluczowy element wymagany do dokładnego zrozumienia wzorca wydatków organizacji. Za pomocą wzorców wydatków możesz wymuszać mechanizmy kontroli kosztów, takie jak budżety.
 
 Ten przewodnik Szybki start ułatwia eksplorowanie i analizowanie kosztów organizacyjnych przy użyciu funkcji analizy kosztów. Możesz wyświetlić zagregowane koszty według organizacji, aby dowiedzieć się, gdzie występują koszty w miarę upływu czasu, i zidentyfikować trendy wydatków. Zakumulowane koszty w czasie można wyświetlać w celu oszacowania miesięcznych, kwartalnych, a nawet rocznych trendów kosztów w odniesieniu do budżetu. Budżet pomaga działać zgodnie z ograniczeniami finansowymi. Budżet jest również używany do wyświetlania kosztów dziennych lub miesięcznych w celu odizolowania nieprawidłowości wydatków. Ponadto można pobrać dane bieżącego raportu do dalszej analizy lub do użycia w systemie zewnętrznym.
 
@@ -32,33 +32,33 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Analiza kosztów obsługuje różne rodzaje typów kont platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Aby wyświetlić dane kosztów, potrzebujesz przynajmniej dostępu do odczytu dla Twojego konta platformy Azure.
+Analiza kosztów obsługuje różne typy kont platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Aby wyświetlić dane kosztów, potrzebujesz przynajmniej dostępu do odczytu dla Twojego konta platformy Azure.
 
-Aby uzyskać informacje o przypisywaniu dostępu do danych Azure Cost Management, zobacz [Przypisywanie dostępu do danych](../../cost-management/assign-access-acm-data.md).
+Aby uzyskać informacje na temat przypisywania dostępu do danych usługi Azure Cost Management, zobacz [Przypisywanie dostępu do danych](../../cost-management/assign-access-acm-data.md).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 - Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="review-costs-in-cost-analysis"></a>Przeglądanie kosztów w obrębie analizy kosztów
 
-Aby sprawdzić koszty w analizie kosztów, Otwórz zakres w Azure Portal a następnie wybierz pozycję **Analiza kosztów** w menu. Na przykład przejdź do pozycji **subskrypcje**, wybierz subskrypcję z listy, a następnie wybierz pozycję **Analiza kosztów** w menu. Użyj kapsułki **Zakres**, aby przełączyć na inny zakres w analizie kosztów. Aby uzyskać więcej informacji na temat zakresów, zobacz [Opis i współpraca z zakresami](understand-work-scopes.md).
+Aby sprawdzić swoje koszty w analizie kosztów, otwórz zakres w witrynie Azure Portal, a następnie wybierz pozycję **Analiza kosztów** w menu. Na przykład przejdź do obszaru **Subskrypcje**, wybierz subskrypcję z listy, a następnie wybierz pozycję **Analiza kosztów** w menu. Użyj kapsułki **Zakres**, aby przełączyć na inny zakres w analizie kosztów. Aby uzyskać więcej informacji na temat zakresów, zobacz [Omówienie zakresów i praca z nimi](understand-work-scopes.md).
 
-Wybrany zakres jest używany w całym Cost Management, aby zapewnić konsolidację danych i kontrolować dostęp do informacji o kosztach. Gdy używasz zakresów, nie wybierasz równocześnie wielu z nich. Zamiast tego należy wybrać większy zakres, którego mogą dotyczyć inne, a następnie odfiltrować do zakresów zagnieżdżonych, które są potrzebne. Ta metoda jest ważna, ponieważ niektóre osoby mogą nie mieć dostępu do jednego zakresu nadrzędnego, który obejmuje wiele zakresów zagnieżdżonych.
+Wybrany zakres będzie używany w całej usłudze Cost Management w celu zapewnienia konsolidacji danych i kontrolowania dostępu do informacji o kosztach. Gdy używasz zakresów, nie wybierasz równocześnie wielu z nich. W zamian wybierasz większy zakres obejmujący inne zakresy, a następnie filtrujesz zawartość do zagnieżdżonych zakresów, których potrzebujesz. Zrozumienie tej metody jest istotne, ponieważ niektóre osoby mogą nie mieć dostępu do pojedynczego zakresu nadrzędnego, który obejmuje wiele zakresów zagnieżdżonych.
 
-Początkowy widok kosztów analizy obejmuje następujące obszary.
+Początkowy widok analizy kosztów zawiera poniższe obszary.
 
-**Widok skumulowanego kosztu**: przedstawia wstępnie zdefiniowaną konfigurację widoku analizy kosztów. Każdy widok obejmuje ustawienia zakresu dat, stopnia szczegółowości, grupowania i filtrowania. Widok domyślny pokazuje skumulowane koszty bieżącego okresu rozliczeniowego, ale można go zmienić na inne wbudowane widoki. Aby uzyskać więcej informacji, zobacz [Dostosowywanie widoków kosztów](#customize-cost-views).
+**Widok kosztów skumulowanych**: Przedstawia wstępnie zdefiniowaną konfigurację widoku analizy kosztów. Każdy widok zawiera ustawienia zakresu dat, stopnia szczegółowości, sposobu grupowania i filtrowania. W widoku domyślnym wyświetlane są skumulowane koszty dla bieżącego okresu rozliczeniowego, ale można go zmienić na inne wbudowane widoki. Aby uzyskać więcej informacji, zobacz [Dostosowywanie widoków kosztów](#customize-cost-views).
 
-**Rzeczywisty koszt**: pokazuje łączne koszty użycia i zakupu dla bieżącego miesiąca, gdy są naliczane i będą wyświetlane na rachunku.
+**Rzeczywisty koszt**: Przedstawia sumę kosztów użycia i zakupów dla bieżącego miesiąca, które będą widoczne na fakturze, w miarę ich naliczania.
 
-**Prognoza**: pokazuje łączną liczbę przewidywanych kosztów w wybranym okresie. (Prognoza jest w wersji zapoznawczej).
+**Prognoza**: Przedstawia sumę prognozowanych kosztów w wybranym okresie. (Prognoza jest w wersji zapoznawczej).
 
-**Budżet**: pokazuje planowany limit wydatków dla wybranego zakresu, jeśli jest dostępny.
+**Budżet**: Przedstawia limit planowanych wydatków w wybranym zakresie, jeśli jest dostępny.
 
-**Skumulowany stopień szczegółowości**: pokazuje łączną sumę dziennych kosztów od początku okresu rozliczeniowego. Po [utworzeniu budżetu](tutorial-acm-create-budgets.md) subskrypcji lub konta billingowego możesz szybko wyświetlić trend wydatków w odniesieniu do budżetu. Umieść kursor nad datą, aby wyświetlić skumulowany koszt w tym dniu.
+**Skumulowany stopień szczegółowości**: Przedstawia sumę zagregowanych kosztów dziennych od początku okresu rozliczeniowego. Po [utworzeniu budżetu](tutorial-acm-create-budgets.md) subskrypcji lub konta billingowego możesz szybko wyświetlić trend wydatków w odniesieniu do budżetu. Umieść kursor nad datą, aby wyświetlić skumulowany koszt w tym dniu.
 
-**Wykresy przestawne (pierścieniowe)** : zapewniają dynamiczne przestawne, dzieląc łączny koszt przez wspólny zestaw standardowych właściwości. Dzięki nim można wyświetlić koszty dla bieżącego miesiąca posortowane od największych do najmniejszych. Wykresy przestawne można zmieniać w dowolnym momencie, wybierając inny element przestawny. Koszty są domyślnie dzielone na kategorie według usługi (kategorii miernika), lokalizacji (regionu) i zakresu podrzędnego. Są to na przykład konta rejestracji w ramach kont rozliczeniowych, grupy zasobów w ramach subskrypcji i zasoby w ramach grup zasobów.
+**Wykresy przestawne (pierścieniowe)** : Są to dynamiczne elementy przestawne, które przedstawiają podział kosztów według typowego zestawu właściwości standardowych. Przedstawiają one koszty w bieżącym miesiącu, w kolejności od największych do najmniejszych. Wykresy przestawne można zmieniać w dowolnym momencie, wybierając inny element przestawny. Koszty są domyślnie dzielone na kategorie według usługi (kategorii miernika), lokalizacji (regionu) i zakresu podrzędnego. Na przykład konta rejestracji należą do kont rozliczeniowych, grupy zasobów należą do subskrypcji, a zasoby należą do grup zasobów.
 
 ![Początkowy widok analizy kosztów w witrynie Azure Portal](./media/quick-acm-cost-analysis/cost-analysis-01.png)
 
@@ -66,24 +66,24 @@ Początkowy widok kosztów analizy obejmuje następujące obszary.
 
 Analiza kosztów ma cztery wbudowane widoki zoptymalizowane pod kątem najpopularniejszych celów:
 
-Wyświetl | Odpowiedzi na pytania
+Widok | Odpowiada na pytania
 --- | ---
-Koszt skumulowany | Jaka jest kwota dotychczasowych wydatków w bieżącym miesiącu? Czy wydatki zmieściły się w budżecie?
-Dzienny koszt | Czy w ciągu ostatnich 30 dni wystąpiły wzrost kosztów dziennych?
-Koszt według usługi | Jak moje miesięczne użycie różni się od ostatnich trzech faktur?
-Koszt według zasobu | Które zasoby wygenerowały do tej pory najwięcej kosztów w tym miesiącu?
+Skumulowany koszt | Ile wynoszą dotychczasowe wydatki w tym miesiącu? Czy wydatki zmieściły się w budżecie?
+Dzienny koszt | Czy w ciągu ostatnich 30 dni wystąpiły jakiekolwiek wzrosty kosztów dziennych?
+Koszt według usługi | Jak moje miesięczne użycie zmieniało się w okresie objętym przez trzy ostatnie faktury?
+Koszt według zasobu | Które zasoby kosztowały dotychczas najwięcej w tym miesiącu?
 
-![Selektor widoku pokazujący przykład wyboru dla tego miesiąca](./media/quick-acm-cost-analysis/view-selector.png)
+![Selektor widoku przedstawiający przykładowy wybór dla tego miesiąca](./media/quick-acm-cost-analysis/view-selector.png)
 
 W większości przypadków będziesz jednak potrzebować dokładniejszej analizy. Dostosowywanie rozpoczyna się od wybrania daty w górnej części strony.
 
-Analiza kosztów domyślnie przedstawia dane z bieżącego miesiąca. Selektor dat ułatwia szybkie przełączanie się między najczęściej używanymi zakresami dat. Przykładowe zakresy: ostatnie siedem dni, ostatni miesiąc, bieżący rok lub niestandardowy zakres dat. Subskrypcje z płatnością zgodnie z rzeczywistym użyciem obejmują również zakresy dat bazujące na okresie rozliczeniowym, który nie jest powiązany z miesiącem kalendarzowym. Mogą to być na przykład bieżący okres rozliczeniowy lub ostatnia faktura. Użyj linków **< poprzednie** i **Next >** w górnej części menu, aby przejść odpowiednio do poprzedniego lub następnego okresu. Na przykład **< poprzedni** zostanie przełączony z **ostatnich 7 dni** do **8-14 dni temu** lub **15-21 dni temu**.
+Analiza kosztów domyślnie przedstawia dane z bieżącego miesiąca. Selektor daty służy do szybkiego przełączania typowych zakresów dat. Przykłady to: ostatnie siedem dni, ostatni miesiąc, bieżący rok lub niestandardowy zakres dat. Subskrypcje płatne zgodnie z rzeczywistym użyciem obejmują również zakresy dat oparte na okresie rozliczeniowym, który nie jest powiązany z miesiącem kalendarzowym, takie jak bieżący okres rozliczeniowy lub ostatnia faktura. Aby przejść odpowiednio do poprzedniego lub następnego okresu, skorzystaj z linków **< WSTECZ** i **DALEJ >** u góry menu. Na przykład kliknięcie linku **< WSTECZ** spowoduje przełączenie z okresu **Ostatnie 7 dni** do okresu **8–14 dni temu** lub **15–21 dni temu**.
 
 ![Selektor daty przedstawiający przykładowy wybór dla tego miesiąca](./media/quick-acm-cost-analysis/date-selector.png)
 
-Analiza kosztów domyślnie przedstawia **skumulowane** koszty. Koszty skumulowane obejmują wszystkie koszty dla każdego dnia oraz poprzednich dni i umożliwiają tworzenie wciąż rosnącego widoku zagregowanych kosztów dziennych. Ten widok jest optymalizowany w celu pokazania trendów względem budżetu dla wybranego zakresu czasu.
+Analiza kosztów domyślnie przedstawia **skumulowane** koszty. Skumulowane koszty obejmują wszystkie koszty dla każdego dnia oraz poprzednich dni i umożliwiają tworzenie wciąż rosnącego widoku zagregowanych kosztów dziennych. Ten widok jest optymalizowany w celu pokazania trendów względem budżetu dla wybranego zakresu czasu.
 
-Widok wykresu prognozy służy do identyfikowania potencjalnych naruszeń budżetu. W przypadku wystąpienia potencjalnego naruszenia budżetu przewidywane przekroczenie jest pokazane na czerwono. Symbol wskaźnika jest również pokazywany na wykresie. Umieszczenie wskaźnika myszy nad tym symbolem powoduje wyświetlenie szacowanej daty naruszenia budżetu.
+Widok wykresu prognozy służy do identyfikowania potencjalnych naruszeń budżetu. Gdy istnieje możliwość naruszenia budżetu, przewidywane przekroczenie jest wyświetlane na czerwono. Na wykresie jest również widoczny symbol wskaźnika. Umieszczając wskaźnik myszy nad symbolem, można zobaczyć szacowaną datę naruszenia budżetu.
 
 ![Przykład pokazujący potencjalne naruszenie budżetu](./media/quick-acm-cost-analysis/budget-breach.png)
 
@@ -91,99 +91,99 @@ Istnieje również widok **dzienny** przedstawiający koszty danego dnia. Widok 
 
 Jeśli koszty dzienne stale przekraczają szacowany budżet dzienny, można oczekiwać przekroczenia kwoty budżetu miesięcznego. Szacowany budżet dzienny to metoda ułatwiająca wizualizowanie budżetu na niższym poziomie. W przypadku wahań kosztów dziennych porównanie szacowanego budżetu dziennego z budżetem miesięcznym jest mniej dokładne.
 
-Oto dzienny widok ostatnich wydatków dzięki włączonej prognozie wydatków.
-Widok dzienny ![przedstawiający przykład dziennych kosztów dla bieżącego miesiąca](./media/quick-acm-cost-analysis/daily-view.png)
+Oto widok dzienny ostatnich wydatków z włączoną prognozą wydatków.
+![Widok dzienny przedstawiający przykładowe koszty dzienne dla bieżącego miesiąca](./media/quick-acm-cost-analysis/daily-view.png)
 
-Po wyłączeniu prognozy wydatków nie widzisz prognozowanych wydatków w przyszłości. Ponadto podczas przeglądania kosztów dla ostatnich okresów prognoza kosztów nie pokazuje kosztów.
+Po wyłączeniu prognozy wydatków nie widać przewidywanych wydatków w przyszłości. Ponadto podczas przeglądania kosztów dla ostatnich okresów prognoza kosztów nie pokazuje kosztów.
 
-Ogólnie rzecz biorąc, można oczekiwać, że dane lub powiadomienia dotyczące zużytych zasobów są widoczne w ciągu 8 do 12 godzin.
+Ogólnie rzecz biorąc, w ciągu 8–12 godzin można spodziewać się danych lub powiadomień dotyczących wykorzystanych zasobów.
 
 
-**Grupuj według** wspólnych właściwości, aby podzielić koszty i identyfikować najważniejszych współautorów. Aby grupować według tagów zasobów, na przykład wybierz klucz tagu, według którego chcesz grupować. Koszt jest podzielony na poszczególne wartości tagów, z dodatkowym segmentem dla zasobów, które nie mają zastosowanych tagów.
+**Grupuj według** typowych właściwości, aby dzielić koszty i identyfikować ich najważniejsze składniki. Na przykład aby grupować według tagów zasobów, wybierz klucz tagu, według którego chcesz grupować. Koszty zostaną podzielone według poszczególnych wartości tagu oraz dodatkowego segmentu dla zasobów, do których nie zastosowano tego tagu.
 
-Większość [zasobów platformy Azure obsługuje tagowanie](../../azure-resource-manager/management/tag-support.md). Niektóre Tagi nie są jednak dostępne w Cost Management i rozliczeń. Ponadto nie są obsługiwane tagi grup zasobów. Obsługa tagów ma zastosowanie do użycia zgłoszonego *po* zastosowaniu znacznika do zasobu. Tagi nie są stosowane z mocą wsteczną dla pakietów zbiorczych kosztów.
+Większość [zasobów platformy Azure obsługuje tagowanie](../../azure-resource-manager/management/tag-support.md). Jednak niektóre tagi nie są dostępne na stronie Zarządzanie kosztami i rozliczenia. Ponadto nie są obsługiwane tagi grup zasobów. Obsługa tagów dotyczy użycia zgłaszanego *po tym*, gdy tag został zastosowany do zasobu. Tagi nie są stosowane wstecznie dla celów zestawień kosztów.
 
-Zapoznaj się z [tematem jak przeglądać zasady tagów za pomocą Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) wideo, aby dowiedzieć się więcej o korzystaniu z zasad tagów platformy Azure w celu zwiększenia widoczności danych kosztów
+Obejrzyj film wideo [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) (Jak przeglądać zasady tagów za pomocą usługi Azure Cost Management), aby dowiedzieć się więcej o korzystaniu z zasad tagów platformy Azure w celu zwiększenia widoczności danych dotyczących kosztów.
 
-Oto widok kosztów usługi platformy Azure dla bieżącego miesiąca.
+Oto widok kosztów usług platformy Azure dla bieżącego miesiąca.
 
 ![Skumulowany, zgrupowany widok dzienny przedstawiający przykładowe koszty usług platformy Azure w ostatnim miesiącu](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Domyślnie analiza kosztów pokazuje wszystkie koszty użycia i zakupu w miarę ich naliczania i będzie wyświetlana na fakturze, znane także jako **rzeczywisty koszt**. Wyświetlanie kosztu rzeczywistego nadaje się doskonale do uzgadniania faktury. Jednak widoczne w kosztach nagłe wzrosty kwot zakupów mogą być alarmujące, jeśli śledzisz anomalie wydatków i inne zmiany kosztów. Aby spłaszczyć wzrosty wynikające z zastrzeżeń zakupu, należy przełączyć się na **amortyzowany koszt**.
+Domyślnie analiza kosztów pokazuje wszystkie koszty użycia i zakupów, które będą widoczne na fakturze, w miarę ich naliczania. Ta funkcja nosi również nazwę **rzeczywistego kosztu**. Wyświetlanie rzeczywistego kosztu idealnie nadaje się do uzgadniania faktury. Jednak skokowe wzrosty kosztu zakupów mogą być alarmujące, gdy pilnujesz anomalii w wydatkach i innych zmian kosztów. Aby wyrównać wzrosty wynikające z kosztów zakupu rezerwacji, przełącz się na **koszt zamortyzowany**.
 
-![Zmiana między rzeczywistym i amortyzowanym kosztem w celu wyświetlenia rezerwacji zakupów rozmieszczonych w całym okresie i przydzielenia do zasobów, które używały rezerwacji](./media/quick-acm-cost-analysis/metric-picker.png)
+![Zmiana kosztu rzeczywistego na zamortyzowany w celu wyświetlenia zakupów rezerwacji rozłożonych w całym okresie i przydzielonych do zasobów, które używały rezerwacji](./media/quick-acm-cost-analysis/metric-picker.png)
 
-W widoku Koszt zamortyzowany zakupy rezerwacji są rozłożone na dzienne fragmenty obejmujące cały czas trwania okresu rezerwacji. Na przykład zamiast $1 korzystania z $365 zakupu w dniu 1 stycznia zobaczysz od 1 stycznia do 31 grudnia. Oprócz podstawowej amortyzacji te koszty są również ponownie przydzielane i kojarzone przy użyciu określonych zasobów, które używały rezerwacji. Na przykład, jeśli opłata dzienna $1 została podzielona między dwie maszyny wirtualne, zobaczysz $2 0,50 opłaty za dzień. Jeśli część rezerwacji nie zostanie wykorzystana na dzień, zobaczysz opłatę $1 0,50 skojarzoną z odpowiednią maszyną wirtualną i inną opłatą $0,50 z typem opłaty `UnusedReservation`. Należy pamiętać, że nieużywane koszty rezerwacji mogą być widoczne tylko w przypadku wyświetlania amortyzowanego kosztu.
+Koszt zamortyzowany dzieli zakupy rezerwacji na dzienne fragmenty i rozkłada je w czasie trwania terminu rezerwacji. Na przykład zamiast zakupu na kwotę 365 USD w dniu 1 stycznia, każdego dnia w okresie od 1 stycznia do 31 grudnia będzie wyświetlany zakup w wysokości 1 USD. Oprócz podstawowej amortyzacji te koszty są również ponownie przydzielane i kojarzone przy użyciu określonych zasobów, które używały rezerwacji. Na przykład jeśli opłata dzienna w wysokości 1 USD została podzielona między dwie maszyny wirtualne, każdego dnia będą widoczne dwie opłaty w wysokości 0,50 USD. Jeśli część rezerwacji nie została wykorzystana danego dnia, zobaczysz jedną opłatę 0,50 USD skojarzoną z odpowiednią maszyną wirtualną i drugą opłatę 0,50 USD typu `UnusedReservation`. Pamiętaj, że koszty niewykorzystanych rezerwacji są widoczne tylko w przypadku wyświetlania kosztu zamortyzowanego.
 
-Ze względu na zmianę sposobu reprezentowania kosztów należy pamiętać, że widoki kosztu rzeczywistego i amortyzowanego będą wyświetlały różne łączne kwoty. Ogólnie rzecz biorąc, łączny koszt w miesiącach z zakupem rezerwacji będzie mniejszy, jeśli zostaną wyświetlone koszty zamortyzowane, a koszt w miesiącach następujących po zakupie rezerwacji będzie większy. Amortyzacja jest dostępna tylko w przypadku zakupów rezerwacji i nie dotyczy zakupów w portalu Azure Marketplace.
+W związku ze zmianą sposobu reprezentowania kosztów trzeba pamiętać, że w widokach kosztów rzeczywistych i zamortyzowanych będą wyświetlane różne sumy. Ogólnie rzecz biorąc, podczas przeglądania kosztów zamortyzowanych suma kosztów w miesiącach z zakupem rezerwacji będzie się zmniejszała, a w miesiącach po zakupie rezerwacji — zwiększała. Amortyzacja jest dostępna tylko w przypadku zakupów rezerwacji i w tej chwili nie dotyczy zakupów w witrynie Azure Marketplace.
 
-Na poniższej ilustracji przedstawiono nazwy grup zasobów. Możesz grupować według tagów, aby wyświetlić łączne koszty na tag, lub użyć widoku **Koszt według zasobów** , aby wyświetlić wszystkie Tagi dla określonego zasobu.
+Na poniższej ilustracji pokazano nazwy grup zasobów. Możesz grupować według tagów, aby wyświetlić sumę kosztów każdego tagu, lub użyć widoku **Koszt według zasobu**, aby wyświetlić wszystkie tagi dla określonego zasobu.
 
 ![Pełne dane dla bieżącego widoku, w którym są wyświetlane nazwy grup zasobów](./media/quick-acm-cost-analysis/full-data-set.png)
 
-Gdy grupujesz koszty według określonego atrybutu, 10 głównych współpracowników jest pokazywanych od najwyższego do najniższego. Jeśli jest więcej niż 10, pierwsze dziewięciu współautorów kosztów są pokazywane z **innymi** grupami, które reprezentują wszystkie pozostałe połączone grupy. Gdy grupujesz według tagów, **nieoznakowana** grupa pojawia się w przypadku kosztów, w których nie zastosowano klucza tagu. **Nieoznakowany** jest zawsze ostatni, nawet jeśli nieoznakowane koszty są wyższe niż oznakowane koszty. Nieoznakowane koszty będą częścią **innych**, jeśli istnieją co najmniej 10 wartości tagów. Przejdź do widoku tabeli i zmień poziom szczegółowości na **wartość Brak** , aby wyświetlić wszystkie wartości sklasyfikowane od najwyższego do najniższego kosztu.
+Podczas grupowania kosztów według konkretnego atrybutu 10 największych składników kosztów jest pokazanych od najwyższego do najniższego. Jeśli jest ich więcej niż 10, pokazanych jest dziewięć największych składników kosztów oraz grupa **Inne**, która przedstawia wszystkie pozostałe grupy łącznie. W przypadku grupowania według tagów wyświetlana jest także grupa **Bez tagów** dla kosztów, w których nie zastosowano klucza tagu. Grupa **Bez tagów** jest zawsze wyświetlana jako ostatnia, nawet jeśli koszty bez tagów są wyższe niż koszty z tagami. Jeśli istnieje 10 lub więcej wartości tagów, koszty bez tagów będą częścią grupy **Inne**. Przejdź do widoku tabeli i zmień poziom szczegółowości na **Brak**, aby wyświetlić wszystkie wartości sklasyfikowane od najwyższego do najniższego kosztu.
 
 Klasyczne maszyny wirtualne, sieci i zasoby magazynu nie udostępniają szczegółowych danych dotyczących rozliczeń. Są one scalane jako **Usługi klasyczne** podczas grupowania kosztów.
 
-Wykresy przestawne na wykresie głównym przedstawiają różne grupowania, które zapewniają szersze zdjęcie ogólnych kosztów w wybranym okresie i filtrach. Wybierz właściwość lub tag, aby wyświetlić zagregowane koszty według dowolnego wymiaru.
+Wykresy przestawne w obszarze wykresu głównego przedstawiają różne sposoby grupowania, które dają szerszy obraz kosztów ogólnych dla wybranego przedziału czasu i filtrów. Wybierz właściwość lub tag, aby wyświetlić zagregowane koszty według dowolnego wymiaru.
 
 ![Przykład przedstawiający wykresy przestawne](./media/quick-acm-cost-analysis/pivot-charts.png)
 
-Możesz wyświetlić pełny zestaw danych dla dowolnego widoku. Wybrane opcje lub filtry mają wpływ na prezentowane dane. Aby wyświetlić pełny zestaw danych, wybierz listę **Typ wykresu** , a następnie wybierz pozycję Widok **tabeli** .
+Możesz wyświetlić pełny zestaw danych dla dowolnego widoku. Wszelkie zastosowane opcje lub filtry wpływają na prezentowane dane. Aby wyświetlić pełny zestaw danych, wybierz listę **typ wykresu**, a następnie wybierz widok **tabeli**.
 
 ![Dane dla bieżącego widoku w widoku tabeli](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
 
 ## <a name="understanding-grouping-and-filtering-options"></a>Omówienie opcji grupowania i filtrowania
 
-W poniższej tabeli wymieniono niektóre z najpopularniejszych opcji grupowania i filtrowania oraz kiedy należy ich używać.
+W poniższej tabeli wymieniono niektóre z najpopularniejszych opcji grupowania i filtrowania oraz ich przeznaczenie.
 
 | Właściwość | Kiedy stosować | Uwagi |
 | --- | --- | --- |
-| **Strefy dostępności** | Podziel koszty AWS według strefy dostępności. | Dotyczy tylko zakresów AWS i grup zarządzania. Dane platformy Azure nie obejmują strefy dostępności i będą widoczne jako **nie dotyczy**. |
-| **Okres rozliczeniowy** | Podziel koszty PAYG na miesiąc, w którym zostały wystawione faktury. | Użyj **okresu rozliczeniowego** , aby uzyskać dokładną reprezentację opłat za zafakturowane płatności. Uwzględnij 2 dodatkowe dni przed okresem rozliczeniowym i po nim w przypadku filtrowania do niestandardowego zakresu dat. Ograniczenie do dokładnych dat okresu rozliczeniowego nie będzie zgodne z fakturą. Spowoduje wyświetlenie kosztów ze wszystkich faktur w okresie rozliczeniowym. Użyj **identyfikatora faktury** , aby odfiltrować do określonej faktury. Dotyczy tylko subskrypcji PAYG, ponieważ umowy EA i MCA są rozliczane według miesięcy kalendarzowych. Konta EA/MCA mogą używać miesięcy kalendarzowych w selektorze dat lub w celu osiągnięcia tego samego celu. |
-| **Typ opłaty** | Przerwij użycie, zakup, zwrot i niewykorzystane koszty rezerwacji. | Zakup rezerwacji i zwroty są dostępne tylko w przypadku korzystania z rzeczywistych kosztów, a nie w przypadku korzystania z amortyzowanych kosztów. Niewykorzystane koszty rezerwacji są dostępne tylko w przypadku ponoszenia kosztów z amortyzacją. |
-| **Department** | Rozbicie kosztów według działu EA. | Dostępne tylko dla grup EA i grupy zarządzania. Subskrypcje PAYG nie mają działu i będą wyświetlane jako **niemające zastosowania** lub **nieprzypisane**. |
-| **Konto rejestracji** | Podziel koszty na właściciela konta EA. | Dostępne tylko dla kont, działów i grup zarządzania umowy EA. Subskrypcje PAYG nie mają kont rejestracji EA i będą wyświetlane jako **niedotyczyjące** lub **nieprzypisane**. |
+| **Strefy dostępności** | Podział kosztów platformy AWS według strefy dostępności. | Dotyczy tylko zakresów platformy AWS i grup zarządzania. Dane platformy Azure nie zawierają strefy dostępności i będą wyświetlane jako **Nie dotyczy**. |
+| **Okres rozliczeniowy** | Podział kosztów płatności zgodnie z rzeczywistym użyciem według miesiąca, w którym zostały (lub zostaną) zafakturowane. | Aby uzyskać dokładną reprezentację zafakturowanych płatności zgodnie z rzeczywistym użyciem, użyj właściwości **Okres rozliczeniowy**. W przypadku filtrowania do niestandardowego zakresu dat uwzględnij 2 dodatkowe dni przed okresem rozliczeniowym i po nim. Ograniczenie do dokładnych dat okresu rozliczeniowego nie będzie pasować do faktury. Zostaną wyświetlone koszty ze wszystkich faktur w okresie rozliczeniowym. Aby filtrować do określonej faktury, użyj właściwości **Identyfikator faktury**. Dotyczy tylko subskrypcji płatnych zgodnie z rzeczywistym użyciem, ponieważ umowy EA i umowy klienta Microsoft (MCA) są rozliczane według miesięcy kalendarzowych. Konta umów EA/MCA mogą używać miesięcy kalendarzowych w selektorze daty lub miesięcznego stopnia szczegółowości do osiągnięcia tego samego celu. |
+| **Typ opłaty** | Podział kosztów użycia, zakupów, zwrotów i niewykorzystanych rezerwacji. | Zakupy rezerwacji i zwroty są dostępne tylko w przypadku korzystania z kosztów rzeczywistych, a nie w przypadku korzystania z kosztów zamortyzowanych. Koszty niewykorzystanych rezerwacji są dostępne tylko podczas przeglądania kosztów zamortyzowanych. |
+| **Dział** | Podział kosztów według działów EA. | Dostępne tylko w przypadku umów EA i grup zarządzania. Subskrypcje płatne zgodnie z rzeczywistym użyciem nie mają działu i będą wyświetlane jako **Nie dotyczy** lub **nieprzypisane**. |
+| **Konto rejestracji** | Podział kosztów według właściciela konta EA. | Dostępne tylko w przypadku kont rozliczeniowych, działów i grup zarządzania umowy EA. Subskrypcje płatne zgodnie z rzeczywistym użyciem nie mają kont rejestracji umowy EA i będą wyświetlane jako **Nie dotyczy** lub **nieprzypisane**. |
 | **Częstotliwość** | Podział kosztów opartych na użyciu, jednorazowych i cyklicznych. | |
-| **Identyfikator faktury** | Rozbicie kosztów według faktury. | Nieobciążane opłaty nie mają jeszcze identyfikatora faktury, a koszty umowy EA nie zawierają informacji o fakturze i są wyświetlane jako **nie dotyczy**.  |
-| **Wyższy** | Rozbicie kosztów według licznika użycia. | W przypadku zakupów i użycia witryny Marketplace będzie wyświetlana wartość **nie dotyczy**. Zapoznaj się z **typem opłaty** , aby zidentyfikować zakupy i **Typ wydawcy** w celu identyfikowania opłat z witryny Marketplace. |
-| **Operacja** | Podziel koszty AWS według operacji. | Dotyczy tylko zakresów AWS i grup zarządzania. Dane platformy Azure nie obejmują operacji i będą wyświetlane jako **nie dotyczy** — zamiast tego użyj **miernika** . |
-| **Model cen** | Podziel koszty na żądanie, rezerwacja lub użycie na miejscu. | Zakupy są wyświetlane jako **OnDemand**. Jeśli zobaczysz, że **nie ma zastosowania**, Grupuj według **rezerwacji** , aby określić, czy użycie jest rezerwacja lub użycie na żądanie i **Typ opłaty** , aby zidentyfikować zakupy.
-| **Dostawca** | Podziel koszty na AWS i platformę Azure. | Dostępne tylko dla grup zarządzania. |
-| **Typ wydawcy** | Podziel się kosztami AWS, Azure i Marketplace. |  |
-| **Przyszł** | Rozbicie kosztów według rezerwacji. | Wszelkie użycie lub zakupy, które nie są skojarzone z rezerwacją, nie będą wyświetlane jako **nie dotyczy**. Grupuj według **typu wydawcy** , aby identyfikować inne zakupy na platformie Azure, AWS lub w portalu Marketplace. |
-| **Zasób** | Podziel koszty według zasobu. | Zakupy są wyświetlane jako **nie dotyczy**, ponieważ są stosowane na koncie rozliczania EA/PAYG lub na poziomie profilu rozliczania MCA i nieskojarzonym z określonym zasobem. Grupuj według **typu wydawcy** , aby identyfikować inne zakupy na platformie Azure, AWS lub w portalu Marketplace. |
-| **Grupa zasobów** | Podziel koszty według grupy zasobów. | Zakupy, zasoby dzierżawy nieskojarzone z subskrypcjami, zasoby subskrypcji nie zostały wdrożone w grupie zasobów, a zasoby klasyczne nie mają grupy zasobów i będą widoczne jako **inne**, **klasyczne usługi**, **$system**lub **nie ma zastosowania**. |
-| **Typ zasobu** | Podziel koszty według typu zasobu. | Zakupy i usługi klasyczne nie mają Azure Resource Managergo typu zasobu i będą widoczne jako **inne**, **klasyczne usługi**lub **nie mają zastosowania**. |
-| **Lokalizacja zasobu** | Podziel koszty według lokalizacji lub regionu. | Zakupy i użycie w witrynie Marketplace mogą być wyświetlane jako **nieprzypisane**, **nieznane**, **niezamapowane**lub **nie ma zastosowania**. |
-| **Nazwa usługi** lub **Kategoria licznika** | Podziel koszt według usługi platformy Azure. | Zakupy i użycie w witrynie Marketplace będą widoczne jako **niedotyczyjące** lub **nieprzypisane**. |
-| Podkategoria **warstwy usług** lub **miernika** | Obniżenie kosztów według podklasyfikacji licznika użycia platformy Azure. | Zakupy i użycie w witrynie Marketplace będą widoczne jako **niedotyczyjące** lub **nieprzypisane**. |
-| **Subskrypcja** | Rozbicie kosztów według subskrypcji platformy Azure i AWS połączonego konta. | Zakupy i zasoby dzierżawy mogą być wyświetlane jako **nie dotyczy**. |
-| **Tag** | Podziel koszty na wartości tagów dla określonego klucza tagu. | Tagi nie są dostępne do zakupów, zasoby dzierżawy nie są skojarzone z subskrypcjami, zasoby subskrypcji nie zostały wdrożone w grupie zasobów lub w klasycznych zasobach. Uwaga Niektóre usługi nie obejmują tagów w danych użycia. Dowiedz się więcej o [obsłudze tagów dla każdego typu zasobu](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
+| **Identyfikator faktury** | Podział kosztów według naliczonej faktury. | Nienaliczone opłaty nie mają jeszcze identyfikatora faktury, a koszty umowy EA nie zawierają szczegółów faktury i są wyświetlane jako **Nie dotyczy**.  |
+| **Miernik** | Podział kosztów według miernika użycia. | Zakupy i użycie witryny Marketplace będą wyświetlane jako **Nie dotyczy**. Zapoznaj się z właściwością **Typ opłaty**, aby zidentyfikować zakupy, oraz **Typ wydawcy**, aby zidentyfikować opłaty z witryny Marketplace. |
+| **Operacja** | Podział kosztów platformy AWS według operacji. | Dotyczy tylko zakresów platformy AWS i grup zarządzania. Dane platformy Azure nie zawierają operacji i będą wyświetlane jako **Nie dotyczy**. Zamiast nich użyj właściwości **Miernik**. |
+| **Model cen** | Podział kosztów na żądanie, rezerwacji lub użycia na miejscu. | Zakupy są wyświetlane jako **Na żądanie**. Jeśli widoczny jest komunikat **Nie dotyczy**, grupuj według **rezerwacji**, aby ustalić, czy użycie jest rezerwacją, czy użyciem na żądanie, oraz **typu opłaty** w celu zidentyfikowania zakupów.
+| **Dostawca** | Podział kosztów według platformy AWS i platformy Azure. | Dostępne tylko w przypadku grup zarządzania. |
+| **Typ wydawcy** | Podział kosztów platformy AWS, platformy Azure i witryny Marketplace. |  |
+| **Rezerwacja** | Podział kosztów według rezerwacji. | Każde użycie lub wszystkie zakupy, które nie są skojarzone z rezerwacją, będą wyświetlane jako **Nie dotyczy**. Grupuj według **typu wydawcy**, aby zidentyfikować inne zakupy na platformie Azure, na platformie AWS lub w witrynie Marketplace. |
+| **Zasób** | Podział kosztów według zasobu. | Zakupy są wyświetlane jako **Nie dotyczy**, ponieważ są stosowane na koncie rozliczeniowym umowy EA/płatności zgodnie z rzeczywistym użyciem lub na poziomie profilu rozliczeniowego umowy MCA i nie są skojarzone z określonym zasobem. Grupuj według **typu wydawcy**, aby zidentyfikować inne zakupy na platformie Azure, na platformie AWS lub w witrynie Marketplace. |
+| **Grupa zasobów** | Podział kosztów według grupy zasobów. | Zakupy, zasoby dzierżawy nieskojarzone z subskrypcjami, zasoby subskrypcji niewdrożone w grupie zasobów i zasoby klasyczne nie mają grupy zasobów i będą wyświetlane jako **inne**, **usługi klasyczne**, **$system** lub **Nie dotyczy**. |
+| **Typ zasobu** | Podział kosztów według typu zasobu. | Zakupy i usługi klasyczne nie mają typu zasobu usługi Azure Resource Manager i będą wyświetlane jako **inne**, **usługi klasyczne** lub **Nie dotyczy**. |
+| **Lokalizacja zasobu** | Podział kosztów według lokalizacji lub regionu. | Zakupy i użycie witryny Marketplace mogą być wyświetlane jako **nieprzypisane**, **nieznane**, **niezamapowane** lub **Nie dotyczy**. |
+| **Nazwa usługi** lub **Kategoria miernika** | Podział kosztów według usługi platformy Azure. | Zakupy i użycie witryny Marketplace będą wyświetlane jako **Nie dotyczy** lub **nieprzypisane**. |
+| **Warstwa usługi** lub **Podkategoria miernika** | Podział kosztów według podklasyfikacji miernika użycia platformy Azure. | Zakupy i użycie witryny Marketplace będą wyświetlane jako **Nie dotyczy** lub **nieprzypisane**. |
+| **Subskrypcja** | Podział kosztów według subskrypcji platformy Azure i połączonego konta platformy AWS. | Zakupy i zasoby dzierżawy mogą być wyświetlane jako **Nie dotyczy**. |
+| **Tag** | Podział kosztów według wartości tagów dla określonego klucza tagu. | Tagi są niedostępne w przypadku zakupów, zasobów dzierżawy nieskojarzonych z subskrypcjami, zasobów subskrypcji niewdrożonych w grupie zasobów lub zasobów klasycznych. Pamiętaj, że niektóre usługi nie zawierają tagów w danych dotyczących użycia. Dowiedz się więcej na temat [obsługi tagów dla każdego typu zasobu](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
 
-Aby uzyskać więcej informacji na temat terminów, zobacz [Opis terminów używanych w pliku użycia i opłat na platformie Azure](../understand/understand-usage.md).
+Aby uzyskać więcej informacji na temat terminów, zobacz [Omówienie terminów używanych w pliku użycia i opłat platformy Azure](../understand/understand-usage.md).
 
 
-## <a name="saving-and-sharing-customized-views"></a>Zapisywanie i Udostępnianie widoków niestandardowych
+## <a name="saving-and-sharing-customized-views"></a>Zapisywanie i udostępnianie dostosowanych widoków
 
-Zapisuj i udostępniaj widoki niestandardowe innym osobom, przypinając analizę kosztów do pulpitu nawigacyjnego Azure Portal lub kopiując łącze do analizy kosztów.
+Dostosowane widoki można zapisywać i udostępniać innym osobom, przypinając analizę kosztów do pulpitu nawigacyjnego witryny Azure Portal lub kopiując link do analizy kosztów.
 
-Aby przypiąć analizę kosztów, wybierz ikonę pinezki w prawym górnym rogu. Przypinanie analizy kosztów spowoduje zapisanie tylko głównego wykresu lub widoku tabeli. Udostępnij pulpit nawigacyjny, aby umożliwić innym użytkownikom dostęp do kafelka. Należy pamiętać, że ta wartość udostępnia tylko konfigurację pulpitu nawigacyjnego i nie udziela innym dostępu do danych źródłowych. Jeśli nie masz dostępu do kosztów, ale masz dostęp do udostępnionego pulpitu nawigacyjnego, zobaczysz komunikat "odmowa dostępu".
+Aby przypiąć analizę kosztów, wybierz ikonę pinezki w prawym górnym rogu. Przypięcie analizy kosztów spowoduje zapisanie tylko głównego wykresu lub widoku tabeli. Udostępnij pulpit nawigacyjny, aby umożliwić innym użytkownikom dostęp do kafelka. Pamiętaj, że spowoduje to tylko udostępnienie konfiguracji pulpitu nawigacyjnego i nie udzieli innym użytkownikom dostępu do danych źródłowych. Jeśli nie masz dostępu do kosztów, ale masz dostęp do udostępnionego pulpitu nawigacyjnego, zobaczysz komunikat „odmowa dostępu”.
 
-Aby udostępnić link do analizy kosztów, wybierz pozycję **Udostępnij** w górnej części bloku. Zostanie wyświetlony niestandardowy adres URL, który otwiera ten konkretny widok dla określonego zakresu. Jeśli nie masz dostępu do kosztów i uzyskasz ten adres URL, zobaczysz komunikat "odmowa dostępu".
+Aby udostępnić link do analizy kosztów, wybierz pozycję **Udostępnij** w górnej części bloku. Zostanie wyświetlony niestandardowy adres URL, który otwiera ten konkretny widok dla określonego zakresu. Jeśli nie masz dostępu do kosztów i uzyskasz ten adres URL, zobaczysz komunikat „odmowa dostępu”.
 
-Aby dowiedzieć się więcej o udzielaniu dostępu do kosztów dla każdego z obsługiwanych zakresów, przejrzyj [Opis i pracuj z zakresami](understand-work-scopes.md).
+Aby dowiedzieć się więcej o udzielaniu dostępu do kosztów dla każdego obsługiwanego zakresu, przejrzyj artykuł [Omówienie zakresów i praca z nimi](understand-work-scopes.md).
 
 ## <a name="automation-and-offline-analysis"></a>Automatyzacja i analiza w trybie offline
 
-Czasami trzeba będzie pobrać dane do dalszej analizy, scalić je ze swoimi danymi lub zintegrować je z własnymi systemami. Cost Management oferuje kilka różnych opcji. Jako punkt początkowy, jeśli potrzebujesz podsumowania wysokiego poziomu ad hoc, takiego jak to, co otrzymujesz w analizie kosztów, Utwórz potrzebny widok. Następnie pobierz go, wybierając pozycję **Eksportuj** i wybierając pozycję **Pobierz dane do pliku CSV** , lub **Pobierz dane do programu Excel**. Pobieranie z programu Excel zawiera dodatkowy kontekst w widoku używanym do generowania pobierania, taki jak zakres, konfiguracja zapytania, suma i Data wygenerowania.
+Czasami musisz pobrać dane do dalszej analizy, scalić je z własnymi danymi lub zintegrować ze swoimi systemami. Usługa Cost Management oferuje kilka różnych opcji. Na początek, jeśli potrzebujesz podsumowania wysokiego poziomu ad hoc, takiego jak to, które otrzymujesz w ramach analizy kosztów, utwórz potrzebny widok. Następnie pobierz go, wybierając pozycję **Eksportuj**, a następnie pozycję **Pobierz dane do pliku CSV** lub **Pobierz dane do programu Excel**. Pobranie danych do programu Excel zapewnia dodatkowy kontekst w widoku użytym do wygenerowania pobierania, taki jak zakres, konfiguracja zapytania, suma i data wygenerowania.
 
-Jeśli potrzebujesz pełnego, niezagregowanego zestawu danych, Pobierz go z konta rozliczeniowego. Następnie na liście usług w lewym okienku nawigacji portalu przejdź do pozycji **Cost Management + rozliczenia**. Wybierz konto rozliczeniowe, jeśli ma zastosowanie. Przejdź do pozycji **użycie i opłaty**, a następnie wybierz ikonę **pobierania** dla żądanego okresu rozliczeniowego.
+Jeśli potrzebujesz pełnego, niezagregowanego zestawu danych, pobierz go z konta rozliczeniowego. Następnie na liście usług w okienku nawigacji po lewej stronie portalu przejdź do pozycji **Zarządzanie kosztami i rozliczenia**. Wybierz konto rozliczeniowe, jeśli ma to zastosowanie. Przejdź do pozycji **Użycie + opłaty**, a następnie wybierz ikonę **Pobierz** dla żądanego okresu rozliczeniowego.
 
-W celu zautomatyzowania otrzymywania danych kosztów należy zastosować podobne podejście. Za pomocą [interfejsu API zapytań](/rest/api/cost-management/query) można bogatszej analizy z filtrowaniem dynamicznym, grupowaniem i agregacją lub użyć [interfejsu API UsageDetails](/rest/api/consumption/usageDetails) dla pełnego, niezagregowanego zestawu danych. Wersja ogólna dostępności tych interfejsów API to 2019-01-01. Skorzystaj z **2019-04-01 — wersja zapoznawcza** , aby uzyskać dostęp do wersji zapoznawczej rezerwacji i zakupów w portalu Marketplace w ramach tych interfejsów API.
+Aby zautomatyzować otrzymywanie danych dotyczących kosztów, zastosuj podobne podejście. Użyj [interfejsu API Query](/rest/api/cost-management/query) do zaawansowanej analizy z dynamicznym filtrowaniem, grupowaniem i agregacją lub użyj [interfejsu API UsageDetails](/rest/api/consumption/usageDetails), aby uzyskać pełny, niezagregowany zestaw danych. Ogólnie dostępna wersja tych interfejsów API to 2019-01-01. Aby uzyskać dostęp do wersji zapoznawczej rezerwacji i zakupów w witrynie Marketplace w ramach tych interfejsów API, użyj wersji **2019-04-01-preview**.
 
-Poniżej znajduje się na przykład Zagregowany widok kosztów amortyzowanych podzielony według typu opłaty (użycie, zakup lub zwrot), typ wydawcy (Azure lub Marketplace), Grupa zasobów (pusta dla zakupów) i rezerwacja (wartość pusta, jeśli nie dotyczy).
+Na przykład poniżej przedstawiono zagregowany widok kosztów zamortyzowanych podzielony według typu opłaty (użycie, zakup lub zwrot), typu wydawcy (Azure lub Marketplace), grupy zasobów (pusta w przypadku zakupów) i rezerwacji (pusta, jeśli nie dotyczy).
 
 ```
 POST https://management.azure.com/{scope}/providers/Microsoft.CostManagement/query?api-version=2019-04-01-preview
@@ -218,9 +218,9 @@ A jeśli nie potrzebujesz agregacji i wolisz pełny, nieprzetworzony zestaw dany
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
 ```
 
-Jeśli potrzebujesz rzeczywistych kosztów, aby pokazać zakupy w miarę ich naliczania, Zmień **typ**/**metryki** na **ActualCost**. Aby uzyskać więcej informacji na temat tych interfejsów API, zobacz dokumentację interfejsu API [zapytań](/rest/api/cost-management/query) i [UsageDetails](/rest/api/consumption/usageDetails) . Zwróć uwagę na to, że opublikowane dokumenty są przeznaczone dla wersji GA. Jednak obie te działania działają tak samo w przypadku wersji interfejsu API *2019-04-01-Preview* poza nowym atrybutem typu/metryki i zmienionymi nazwami właściwości. (Więcej informacji na temat nazw właściwości znajduje się poniżej).
+Jeśli potrzebujesz kosztów rzeczywistych, aby wyświetlać zakupy w miarę ich naliczania, zmień atrybut **typu**/**miernika** na **ActualCost**. Aby uzyskać więcej informacji na temat tych interfejsów API, zobacz dokumentację interfejsów API [Query](/rest/api/cost-management/query) i [UsageDetails](/rest/api/consumption/usageDetails). Pamiętaj, że opublikowane dokumenty dotyczą wersji ogólnie dostępnej. Jednak oba działają tak samo w przypadku interfejsu API w wersji *2019-04-01-preview* poza nowym atrybutem typu/metryki i zmienionymi nazwami właściwości. (Więcej informacji na temat nazw właściwości znajduje się poniżej).
 
-Cost Management interfejsy API działają między wszystkimi zakresami powyżej zasobów: grupą zasobów, subskrypcją i grupą zarządzania za pośrednictwem dostępu do usługi Azure RBAC, kontami rozliczeniowymi EA (rejestracje), działów i kont rejestracji za pośrednictwem dostępu do portalu EA. Dowiedz się więcej o zakresach, w tym o sposobach określania identyfikatora zakresu lub zarządzaniu dostępem, w temacie [Omówienie i współpraca z zakresami](understand-work-scopes.md).
+Interfejsy API usługi Cost Management działają we wszystkich zakresach powyżej zasobów: w grupie zasobów, subskrypcji i grupie zarządzania w przypadku funkcji RBAC na platformie Azure, na kontach rozliczeniowych umowy EA (rejestracjach), w działach i na kontach rejestracji w przypadku dostępu do portalu EA. Dowiedz się więcej o zakresach, w tym o sposobach określania identyfikatora zakresu lub zarządzania dostępem, korzystając z artykułu [Omówienie zakresów i praca z nimi](understand-work-scopes.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

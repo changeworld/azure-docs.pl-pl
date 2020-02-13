@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
 ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988203"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Uzyskiwanie własności rozliczeń subskrypcji platformy Azure dla konta umowy partnerskiej firmy Microsoft
@@ -53,7 +53,7 @@ Ten artykuł dotyczy kont rozliczeniowych dla umów partnerskich firmy Microsoft
 
    ![Zrzut ekranu przedstawiający wybieranie żądań przeniesienia](./media/mpa-request-ownership/mpa-select-transfer-requests.png)
 
-5. Wprowadź adres e-mail użytkownika w organizacji klienta, który będzie akceptował żądanie przeniesienia. Użytkownik musi być właścicielem konta umowy Enterprise Agreement. Wybierz opcję **Wyślij żądanie przeniesienia**.
+5. Wprowadź adres e-mail użytkownika w organizacji klienta, który będzie akceptował żądanie przeniesienia. Użytkownik musi być właścicielem konta umowy Enterprise Agreement. Wybierz pozycję **Wyślij żądanie przeniesienia**.
 
    ![Zrzut ekranu przedstawiający wysyłanie żądania przeniesienia](./media/mpa-request-ownership/mpa-send-transfer-requests.png)
 
@@ -67,7 +67,7 @@ Ten artykuł dotyczy kont rozliczeniowych dla umów partnerskich firmy Microsoft
 
 ## <a name="check-the-transfer-request-status"></a>Sprawdzanie stanu żądania przeniesienia
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
@@ -102,11 +102,11 @@ Ten artykuł dotyczy kont rozliczeniowych dla umów partnerskich firmy Microsoft
    |Anulowane|Ktoś z dostępem do żądania przeniesienia anulował żądanie|
    |Odrzucone|Użytkownik odrzucił żądanie przeniesienia|
 
-6. Wybierz żądanie przeniesienia, aby wyświetlić szczegóły. Na stronie Szczegóły transferu są wyświetlane następujące informacje: ![zrzut ekranu przedstawiający listę przesłanych subskrypcji](./media/mpa-request-ownership/mpa-transfer-completed.png)
+6. Wybierz żądanie przeniesienia, aby wyświetlić szczegóły. Strona szczegółów przeniesienia zawiera następujące informacje: ![Zrzut ekranu przedstawiający listę przeniesionych subskrypcji](./media/mpa-request-ownership/mpa-transfer-completed.png)
 
    |Kolumna  |Definicja|
    |---------|---------|
-   |Identyfikator żądania przeniesienia|Unikatowy identyfikator żądania przeniesienia. Jeśli przesyłasz wniosek o pomoc techniczną, podaj ten identyfikator, aby przyspieszyć obsługę wniosku przez zespół pomocy technicznej platformy Azure|
+   |Identyfikator żądania przeniesienia|Unikatowy identyfikator żądania przeniesienia. Jeśli przesyłasz wniosek o pomoc techniczną, przekaż ten identyfikator do działu pomocy technicznej platformy Azure|
    |Przeniesienia zażądano w dniu|Data wysłania żądania przeniesienia|
    |Żądanie przeniesienia zgłoszone przez|Adres e-mail użytkownika, który wysłał żądanie przeniesienia|
    |Żądanie przeniesienia wygasa| Data wygaśnięcia żądania przeniesienia|
@@ -126,7 +126,7 @@ Możesz zażądać własności rozliczeń wymienionych poniżej typów subskrypc
 
 W poniższej sekcji przedstawiono dodatkowe informacje na temat przenoszenia subskrypcji.
 
-### <a name="no-service-downtime"></a>Brak przestojów usługi
+### <a name="no-service-downtime"></a>Bez przestoju usługi
 
 Usługi platformy Azure w ramach subskrypcji będą działały bez jakiejkolwiek przerwy. W przypadku subskrypcji platformy Azure, które użytkownik wybierze do przeniesienia, przeniesiemy tylko relację rozliczeń.
 
@@ -148,7 +148,7 @@ Rezerwacje platformy Azure nie są automatycznie przenoszone wraz z subskrypcjam
 
 ### <a name="access-to-azure-services"></a>Dostęp do usług platformy Azure
 
-W trakcie przejścia nie wpłynie to na dostęp do istniejących użytkowników, grup lub jednostek usługi przypisanych przy użyciu funkcji [kontroli dostępu opartej na rolach na platformie Azure](../../role-based-access-control/overview.md) . Partner nie będzie mógł uzyskać żadnych nowych dostępu RBAC do subskrypcji.  
+Przejście nie wpływa na dostęp do istniejących użytkowników, grup lub jednostek usługi, które zostały przypisane przy użyciu usługi [Azure RBAC (kontroli dostępu opartej na rolach)](../../role-based-access-control/overview.md). Partner nie uzyska nowego dostępu RBAC do subskrypcji.  
 
 Partnerzy powinni skontaktować się z klientem w celu uzyskania dostępu do subskrypcji.  Partnerzy muszą uzyskać [Dostęp administratora w imieniu — AOBO (Admin on Behalf Of)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) lub [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider), aby otwierać bilety pomocy technicznej.
 

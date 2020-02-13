@@ -1,78 +1,77 @@
 ---
-title: Połącz konto Google Cloud Platform do rozwiązania Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
-description: Połącz konto Google Cloud Platform, aby wyświetlić kosztów i użycia danych w raportach usługi Cloudyn.
-services: cost-management
+title: Łączenie konta Google Cloud Platform z usługą Cloudyn na platformie Azure | Microsoft Docs
+description: Połącz konto Google Cloud Platform, aby wyświetlać dane dotyczące kosztów i użycia w raportach usługi Cloudyn.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 8849811560c7e3d35a40b4725dbbb63c82745123
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 09989337b2e78277c6182630ce0f1cdf57a0e0c1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994573"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770202"
 ---
-# <a name="connect-a-google-cloud-platform-account"></a>Nawiązać połączenie z kontem Google Cloud Platform
+# <a name="connect-a-google-cloud-platform-account"></a>Nawiązywanie połączenia z kontem Google Cloud Platform
 
-Do rozwiązania Cloudyn można połączyć z istniejącym kontem usługi Google Cloud Platform. Po połączeniu konta platformy Cloudyn dane kosztów i użycia są dostępne w raportach usługi Cloudyn. Ten artykuł pomaga skonfigurować i połączyć z kontem Google z usługą Cloudyn.
+Istniejące konto Google Cloud Platform można połączyć z usługą Cloudyn. Po połączeniu konta z usługą Cloudyn dane dotyczące kosztów i użycia będą dostępne w raportach usługi Cloudyn. Ten artykuł pomaga w konfigurowaniu i łączeniu konta Google z usługą Cloudyn.
 
 
 ## <a name="collect-project-information"></a>Zbieranie informacji o projekcie
 
-Należy rozpocząć od zbierania informacji o projekcie.
+Zacznij od zebrania informacji o projekcie.
 
-1. Zaloguj się do konsoli usługi Google Cloud Platform na [ https://console.cloud.google.com ](https://console.cloud.google.com).
-2. Przejrzyj informacje o projekcie, który chcesz dołączyć do rozwiązania Cloudyn i zanotuj **Nazwa projektu** i **identyfikator projektu**. Zachowaj informacje przydatne do wykonania kolejnych kroków.  
-    ![Nazwa projektu i pokazany w konsoli usługi Google Cloud Platform identyfikator projektu](./media/connect-google-account/gcp-console01.png)
-3. Jeśli rozliczeń nie jest włączone i połączone z projektem, należy utworzyć konta rozliczeniowego. Aby uzyskać więcej informacji, zobacz [Utwórz nowe konto rozliczeniowe](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
+1. Zaloguj się do konsoli Google Cloud Platform w witrynie [https://console.cloud.google.com](https://console.cloud.google.com).
+2. Przejrzyj informacje o projekcie, które mają zostać dołączone do usługi Cloudyn, i zanotuj **Nazwę projektu** i **Identyfikator projektu**. Zachowaj te informacje w celu użycia w kolejnych krokach.  
+    ![Nazwa projektu i identyfikator projektu wyświetlane w konsoli Google Cloud Platform](./media/connect-google-account/gcp-console01.png)
+3. Jeśli rozliczenia nie są włączone i połączone z Twoim projektem, utwórz konto rozliczeniowe. Aby uzyskać więcej informacji, zobacz temat [Tworzenie nowego konta rozliczeniowego](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
 
-## <a name="enable-storage-bucket-billing-export"></a>Włącz eksportowanie rozliczeń zasobnika magazynu
+## <a name="enable-storage-bucket-billing-export"></a>Włączanie eksportowania rozliczeń z zasobnika magazynu
 
-Cloudyn pobiera Twoich danych rozliczeniowych Google z zasobnika magazynu. Zachowaj **Nazwa zasobnika** i **przedrostek raportu** informacji do późniejszego użycia podczas rejestracji rozwiązania Cloudyn.
+Usługa Cloudyn pobiera dane rozliczeniowe firmy Google z zasobnika magazynu. Zachowaj **Nazwę zasobnika** i **Prefiks raportu** do późniejszego użycia podczas rejestracji usługi Cloudyn.
 
-Za pomocą usłudze Google Cloud Storage do przechowywania raportów użycia spowoduje naliczenie opłaty minimalnej. Aby uzyskać więcej informacji, zobacz [cennik magazynu w chmurze](https://cloud.google.com/storage/pricing).
+Użycie usługi Google Cloud Storage do przechowywania raportów użycia minimalizuje opłaty. Aby uzyskać więcej informacji, zobacz [Cloud Storage Pricing (Cennik usługi Cloud Storage)](https://cloud.google.com/storage/pricing).
 
-1. Jeśli nie włączono rozliczeń Eksport do pliku, postępuj zgodnie z instrukcjami w artykule [włączania rozliczeń Eksport do pliku](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). Można użyć JSON lub CSV rozliczeń format eksportu.
-2. W przeciwnym razie w konsoli usługi Google Cloud Platform, przejdź do **rozliczeń** > **eksportu rozliczeń**. Należy pamiętać, rozliczeniami **Nazwa zasobnika** i **przedrostek raportu**.  
-    ![Rozliczenia eksportowanie informacji wyświetlany na stronie Eksportowanie rozliczeń](./media/connect-google-account/billing-export.png)
+1. Jeśli nie włączono eksportowania rozliczeń do pliku, postępuj zgodnie z instrukcjami w artykule [How to enable billing export to a file (Jak włączyć eksport rozliczeń do pliku)](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). Do eksportowania rozliczeń możesz użyć formatu JSON lub CSV.
+2. W przeciwnym razie w konsoli Google Cloud Platform przejdź do obszaru **Płatności** > **Eksport płatności**. Zanotuj **Nazwę zasobnika** i **Prefiks raportu**.  
+    ![Informacje o eksporcie rozliczeń widoczne na stronie eksportowania rozliczeń](./media/connect-google-account/billing-export.png)
 
-## <a name="enable-google-cloud-platform-apis"></a>Włącz interfejsy API platformy Google Cloud
+## <a name="enable-google-cloud-platform-apis"></a>Włączanie interfejsów API Google Cloud Platform
 
-Aby zebrać informacje użycia i zasobów, Cloudyn musi następujące Google Cloud Platform interfejsy API włączone:
+Aby móc zbierać informacje dotyczące użycia i zasobów, usługa Cloudyn wymaga włączenia następujących interfejsów API Google Cloud Platform:
 
-- BigQuery interfejsu API
+- BigQuery API
 - Google Cloud SQL
-- Usługa Google Cloud Datastore interfejsu API
+- Google Cloud Datastore API
 - Google Cloud Storage
-- Interfejsu API JSON usługi Google Cloud Storage
-- Google Compute Engine interfejsu API
+- Google Cloud Storage JSON API
+- Google Compute Engine API
 
-### <a name="enable-or-verify-apis"></a>Włącz lub upewnij się, interfejsów API
+### <a name="enable-or-verify-apis"></a>Włączanie lub weryfikowanie interfejsów API
 
-1. W konsoli usługi Google Cloud Platform wybierz projekt, który ma zostać zarejestrowany w rozwiązaniu cloudyn.
-2. Przejdź do **interfejsów API i usługi** > **biblioteki**.
-3. Użyj funkcji wyszukiwania można znaleźć każdą wcześniej wymienione interfejsu API.
-4. Dla każdego interfejsu API upewnij się, że **włączony interfejs API** jest wyświetlany. W przeciwnym razie kliknij przycisk **Włącz**.
+1. W konsoli Google Cloud Platform wybierz projekt, który chcesz zarejestrować w usłudze Cloudyn.
+2. Przejdź do obszaru **Interfejsy API i usługi** > **Biblioteka**.
+3. Użyj funkcji wyszukiwania, aby znaleźć poszczególne wymienione wcześniej interfejsy API.
+4. Dla każdego interfejsu API sprawdź, czy jest wyświetlany komunikat **Włączono interfejs API**. W przeciwnym razie kliknij przycisk **WŁĄCZ**.
 
-## <a name="add-a-google-cloud-account-to-cloudyn"></a>Dodawanie konta usługi Google Cloud do rozwiązania Cloudyn
+## <a name="add-a-google-cloud-account-to-cloudyn"></a>Dodawanie konta usługi Google Cloud do usługi Cloudyn
 
-1. Otwórz Cloudyn portal z witryny Azure portal lub przejdź do [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) i zaloguj się.
-2. Kliknij przycisk **ustawienia** (symbol koła zębatego), a następnie wybierz **kont w chmurze**.
-3. W **Zarządzanie kontami**, wybierz opcję **kont Google** kartę, a następnie kliknij przycisk **Dodaj nowe +** .
-4. W **nazwa konta Google**, wprowadź adres e-mail konta rozliczeniowego, a następnie kliknij przycisk **dalej**.
-5. W oknie dialogowym uwierzytelniania Google, wybierz lub wprowadź konto Google i następnie **Zezwalaj** cloudyn.com dostęp do Twojego konta.
-6. Dodaj informacje o projekcie żądania zauważyć, że mamy poprzedniego. Obejmują one **identyfikator projektu**, **projektu** nazwy **rozliczeń** Nazwa zasobnika i **rozliczeń pliku** prefiks raportu, a następnie kliknij przycisk  **Zapisz**.  
-    ![Dodaj projekt Google do konta platformy Cloudyn](./media/connect-google-account/add-project.png)
+1. Otwórz portal Cloudyn z poziomu witryny Azure Portal lub przejdź na stronę [https://azure.cloudyn.com](https://azure.cloudyn.com/) i zaloguj się.
+2. Kliknij pozycję **Ustawienia** (symbol koła zębatego), a następnie wybierz pozycję **Cloud Accounts** (Konta w chmurze).
+3. W obszarze **Accounts Management** (Zarządzanie kontami) wybierz kartę **Google Accounts** (Konta Google), a następnie kliknij przycisk **Add new +** (Dodaj nowe +).
+4. W obszarze **Google Account Name** (Nazwa konta Google) wprowadź adres e-mail dla konta rozliczeniowego i kliknij przycisk **Dalej**.
+5. W oknie dialogowym uwierzytelniania Google wybierz lub wprowadź nazwę konta Google, a następnie w polu **ALLOW** (Zezwól) pozwól na dostęp z witryny cloudyn.com do Twojego konta.
+6. Dodaj zanotowane wcześniej informacje o projekcie żądania. Są to informacje, takie jak **identyfikator projektu**, **nazwa projektu**, **nazwa zasobnika rozliczeń** i **prefiks pliku raportu rozliczeniowego**, a następnie kliknij przycisk **Save** (Zapisz).  
+    ![Dodawanie projektu Google do konta usługi Cloudyn](./media/connect-google-account/add-project.png)
 
-Konto Google, który pojawia się na liście kont i powinna być widoczna nazwa **uwierzytelniony**. Znajdujący się w nim swoją nazwę projektu Google i identyfikator należy pojawiają się i ma zielony znacznik wyboru. Stan konta powinna być widoczna nazwa **Ukończono**.
+Twoje konto Google zostanie wyświetlone na liście kont i powinno być oznaczone jako **Authenticated** (Uwierzytelnione). Pod nazwą konta powinny być wyświetlone nazwa i identyfikator projektu Google z zielonym znacznikiem wyboru. Stan konta powinien być wyświetlany jako **Completed** (Ukończony).
 
-W ciągu kilku godzin Cloudyn raporty zawierają informacje dotyczące kosztów i użycia Google.
+W ciągu kilku godzin w raportach usługi Cloudyn zostaną wyświetlone informacje o kosztach i użyciu konta Google.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat platformy Cloudyn, przejdź do [przeglądanie użycia i kosztów](tutorial-review-usage.md) samouczek dotyczący platformy Cloudyn.
+- Aby dowiedzieć się więcej na temat usługi Cloudyn, przejdź do samouczka usługi Cloudyn [Przeglądanie użycia i kosztów](tutorial-review-usage.md).

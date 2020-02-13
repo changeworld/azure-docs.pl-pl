@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   author: iainfoulds
   ms.author: iainfou
-  ms.date: 08/20/2019
+  ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 01e1fe5ed73275078fc37dbec9a0857a8c4a8619
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: 3c431b81c0da54045e9b9b020de5275912b394c6
+  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74847155"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77166419"
 landingContent:
 - title: Informacje dotyczące uwierzytelniania
   linkLists:
@@ -39,16 +39,16 @@ landingContent:
       url: concept-sspr-howitworks.md
     - text: Zapisywanie zwrotne haseł
       url: concept-sspr-writeback.md
-  - linkListType: quickstart
+  - linkListType: tutorial
     links:
-    - text: Szybki start — samoobsługowe resetowanie haseł
-      url: quickstart-sspr.md
+    - text: Włączanie samoobsługowego resetowania hasła
+      url: tutorial-enable-sspr.md
+    - text: Włączanie funkcji zapisywania zwrotnego haseł w środowisku lokalnym
+      url: tutorial-enable-writeback.md
   - linkListType: deploy
     links:
-    - text: Wdrażanie samoobsługowego resetowania haseł w usłudze Azure AD
+    - text: Przewodnik wdrażania funkcji samoobsługowego resetowania haseł
       url: howto-sspr-deployment.md
-    - text: Włączanie zapisywania zwrotnego haseł
-      url: howto-sspr-writeback.md
     - text: Włączanie resetowania haseł z ekranu logowania systemu Windows
       url: howto-sspr-windows.md
 - title: Włączanie usługi Azure Multi-Factor Authentication
@@ -59,13 +59,13 @@ landingContent:
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: Pilotażowe zastosowanie usługi Azure MFA dla określonych aplikacji
-      url: tutorial-mfa-applications.md
-    - text: Wyzwalanie uwierzytelniania wieloskładnikowego i zmiany hasła przy użyciu wykryć ryzyka
+    - text: Włączanie usługi Azure Multi-Factor Authentication
+      url: tutorial-enable-azure-mfa.md
+    - text: Włączanie usługi Azure Multi-Factor Authentication bazującej na ryzyku
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Wdrażanie usługi Azure Multi-Factor Authentication
+    - text: Przewodnik wdrażania usługi Azure Multi-Factor Authentication
       url: howto-mfa-getstarted.md
     - text: Korzystanie z rozszerzenia serwera NPS do integrowania aplikacji lokalnych
       url: howto-mfa-nps-extension.md

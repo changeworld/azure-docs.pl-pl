@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987826"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetlanie i pobieranie faktury platformy Microsoft Azure
@@ -50,7 +50,7 @@ Może istnieć kilka przyczyn, dla których faktura nie jest widoczna:
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Pobieranie faktur w witrynie Azure Portal
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wyszukaj pozycję *Zarządzanie kosztami i rozliczenia*.
 1. W zależności od praw dostępu może być konieczne wybranie konta rozliczeniowego lub profilu rozliczeniowego.
 1. W menu po lewej stronie wybierz pozycję **Faktury** w obszarze **Rozliczenia**.
@@ -87,51 +87,51 @@ Aby zrezygnować z otrzymywania faktur za pośrednictwem poczty e-mail, wykonaj 
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Otrzymywanie faktur dla umowy klienta firmy Microsoft w wiadomości e-mail
 
-Jeśli masz konto rozliczeniowe dla umowy klienta firmy Microsoft, możesz zrezygnować z, aby otrzymać fakturę w wiadomości e-mail. Wszyscy użytkownicy z rolą właściciela, współautora, czytelnik lub Menedżer faktury w profilu rozliczania otrzymają fakturę w wiadomości e-mail. 
+Jeśli masz konto rozliczeniowe dla Umowy z Klientem Microsoft, możesz wyrazić zgodę na otrzymywanie faktur w wiadomości e-mail. Wszyscy użytkownicy z rolą właściciela, współautora, czytelnika lub menedżera faktur w profilu rozliczeniowym otrzymują fakturę w wiadomości e-mail. 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu przedstawiający wyszukiwanie subskrypcji w portalu](./media/download-azure-invoice/search-cmb.png)
 
-1. Wybierz pozycję **Profile rozliczeń** z lewej strony. Z listy profile rozliczeń wybierz profil rozliczania, aby otrzymywać faktury w wiadomości e-mail.
+1. Po lewej stronie wybierz pozycję **Profile rozliczeniowe**. Z listy profilów rozliczeniowych wybierz profil rozliczeniowy, który będzie otrzymywać faktury w wiadomości e-mail.
 
-   [Zrzut ekranu ![pokazujący listę profilów rozliczeń](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Zrzut ekranu przedstawiający listę profilów rozliczeniowych](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-1. Wybierz pozycję **Właściwości** po lewej stronie, a następnie wybierz pozycję **Aktualizuj preferencję faktury e-mail**.
+1. Wybierz pozycję **Właściwości** z lewej strony, a następnie wybierz pozycję **Aktualizuj preferencje dotyczące wysyłania faktur pocztą e-mail**.
 
-   [Zrzut ekranu ![pokazujący listę profilów rozliczeń](./media/download-azure-invoice/mca-select-update-email-preferences.png)](./media/download-azure-invoice/mca-select-update-email-preferences.png#lightbox)
+   [![Zrzut ekranu przedstawiający listę profilów rozliczeniowych](./media/download-azure-invoice/mca-select-update-email-preferences.png)](./media/download-azure-invoice/mca-select-update-email-preferences.png#lightbox)
 
-1. Wybierz pozycję zgadzam **się** , a następnie kliknij przycisk **Aktualizuj**.
+1. Wybierz pozycję **Wyraź zgodę**, a następnie kliknij pozycję **Aktualizuj**.
 
-   [Zrzut ekranu ![pokazujący listę profilów rozliczeń](./media/download-azure-invoice/mca-select-email-opt-in.png)](./media/download-azure-invoice/mca-select-email-opt-in.png#lightbox)
+   [![Zrzut ekranu przedstawiający listę profilów rozliczeniowych](./media/download-azure-invoice/mca-select-email-opt-in.png)](./media/download-azure-invoice/mca-select-email-opt-in.png#lightbox)
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Rezygnacja z otrzymywania faktur dla umowy klienta firmy Microsoft w wiadomości e-mail
 
-Aby zrezygnować z pobierania faktury za pośrednictwem poczty e-mail, wykonaj powyższe kroki i kliknij pozycję **Zrezygnuj**. Wszyscy użytkownicy z rolą właściciela, współautora, czytelnik lub Menedżer faktury nie pobierają faktury w wiadomości e-mail. 
+Aby zrezygnować z otrzymywania faktur za pośrednictwem poczty e-mail, wykonaj powyższe kroki, a następnie kliknij pozycję **Zrezygnuj**. Rezygnacja z otrzymywania faktur w wiadomości e-mail obejmuje wszystkich użytkowników z rolą właściciela, współautora, czytelnika lub menedżera faktur. 
 
-## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Przyznaj innym osobom dostęp do faktur umów dla klientów firmy Microsoft
+## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Przyznawanie innym osobom dostępu do faktur dla Umowy z Klientem Microsoft
 
-Możesz dać innym osobom dostęp do wyświetlania, pobierania i płacenia faktur, przypisując im rolę Menedżer faktury dla profilu rozliczeń. Jeśli wybrano opcję pobierania faktury w wiadomości e-mail, użytkownicy otrzymują również faktury w wiadomości e-mail. 
+Możesz dać innym osobom dostęp do wyświetlania, pobierania i opłacania faktur, przypisując im rolę menedżera faktury dla profilu rozliczeniowego. Jeśli wybrano opcję otrzymywania faktury w wiadomości e-mail, użytkownicy ci również otrzymują faktury w wiadomości e-mail. 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
    ![Zrzut ekranu przedstawiający wyszukiwanie subskrypcji w portalu](./media/download-azure-invoice/search-cmb.png)
 
-1. Wybierz pozycję **Profile rozliczeń** z lewej strony. Z listy profile rozliczeń wybierz profil rozliczeniowy, dla którego chcesz przypisać rolę Menedżera faktur.
+1. Po lewej stronie wybierz pozycję **Profile rozliczeniowe**. Z listy profilów rozliczeniowych wybierz profil rozliczeniowy, dla którego chcesz przypisać rolę menedżera faktur.
 
-   [Zrzut ekranu ![pokazujący listę profilów rozliczeń](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Zrzut ekranu przedstawiający listę profilów rozliczeniowych](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-1. Wybierz pozycję **Access Control (IAM)** z lewej strony, a następnie wybierz pozycję **Dodaj** w górnej części strony.
+1. Wybierz pozycję **Kontrola dostępu (IAM)** po lewej stronie, a następnie wybierz pozycję **Dodaj** w górnej części strony.
 
-   [Zrzut ekranu ![pokazujący stronę kontroli dostępu](./media/download-azure-invoice/mca-select-access-control.png)](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png#lightbox)
+   [![Zrzut ekranu przedstawiający stronę kontroli dostępu](./media/download-azure-invoice/mca-select-access-control.png)](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png#lightbox)
 
-1. Z listy rozwijanej rola wybierz pozycję **Menedżer faktur**. Wprowadź adres e-mail użytkownika, któremu chcesz przyznać dostęp. Wybierz przycisk **Zapisz**, aby przypisać rolę.
+1. Z listy rozwijanej Rola wybierz pozycję **Menedżer faktur**. Wprowadź adres e-mail użytkownika, któremu chcesz przyznać dostęp. Wybierz przycisk **Zapisz**, aby przypisać rolę.
 
-   [![zrzut ekranu, który pokazuje Dodawanie użytkownika jako Menedżera faktury](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
+   [![Zrzut ekranu pokazujący dodawanie użytkownika jako menedżera faktur](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
 
 ## <a name="check-your-billing-account-type"></a>Sprawdzanie typu konta rozliczeniowego
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]

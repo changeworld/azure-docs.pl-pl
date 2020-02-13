@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f47f55252c6274360f200a4bce0ed0b739e3d8a3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931403"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166566"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotażowa aprowizacja w chmurze dla istniejącego zsynchronizowanego lasu usługi AD 
 
 Ten samouczek przeprowadzi Cię przez pilotażowe Inicjowanie obsługi administracyjnej chmury dla Active Directory lasu testowego, która jest już synchronizowana przy użyciu usługi Azure Active Directory (Azure AD) Connect Sync.
 
-![Create](media/tutorial-migrate-aadc-aadccp/diagram.png)
+![Tworzenie](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 Przed podjęciem próby wykonania tego samouczka należy wziąć pod uwagę następujące elementy:
@@ -67,8 +67,7 @@ Synchronizacja Azure AD Connect synchronizuje zmiany występujące w katalogu lo
  3. Na stronie **Opis** wprowadź następujące opcje i kliknij przycisk **dalej**:
 
     **Nazwa:** Nadaj regule nazwę zrozumiałą<br>
-    **Opis:** Dodaj opis istotny<br> 
-    
+    **Opis:** Dodaj opis istotny<br>
     **Połączony system:** Wybierz łącznik usługi AD, dla którego chcesz napisać regułę synchronizacji niestandardowej<br>
     **Typ połączonego obiektu systemowego:** Użytkownicy<br>
     **Typ obiektu metaverse:** Sprzedawca<br>
@@ -87,7 +86,7 @@ Synchronizacja Azure AD Connect synchronizuje zmiany występujące w katalogu lo
     ![Reguła niestandardowa](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Na stronie reguły **sprzężenia** kliknij przycisk **dalej**.
- 6. Na stronie **przekształcenia** Dodaj stałą transformację: przepływaj do cloudNoFlow atrybutu. Kliknij pozycję **Dodaj**.
+ 6. Na stronie **przekształcenia** Dodaj stałą transformację: przepływaj do cloudNoFlow atrybutu. Kliknij pozycję **Add** (Dodaj).
  ![](media/how-to-cloud-custom-user-rule/user4.png) regułę niestandardową</br>
 
 Należy wykonać te same czynności dla wszystkich typów obiektów (użytkownik, Grupa i kontakt). Powtórz kroki według skonfigurowanego łącznika usługi AD/dla każdego lasu usługi AD. 

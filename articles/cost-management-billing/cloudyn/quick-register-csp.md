@@ -1,21 +1,20 @@
 ---
-title: Rejestrowanie przy użyciu informacji o partnerze CSP z Cloudyn na platformie Azure
+title: Rejestrowanie przy użyciu informacji o partnerze programu CSP w rozwiązaniu Cloudyn na platformie Azure
 description: W tym przewodniku Szybki start opisano szczegółowo proces rejestracji niezbędny do utworzenia subskrypcji wersji próbnej rozwiązania Cloudyn i zalogowania w portalu Cloudyn.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/18/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
-manager: benshy
-ms.openlocfilehash: 420bca89903b3b88d7930165f95742ebb4f74d5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: ea156e8efabcb73b324f0a102945b227558cece9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987670"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117777"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Rejestrowanie w programie partnerskim programu CSP i wyświetlanie danych kosztów
 
@@ -31,11 +30,11 @@ Jako partner programu CSP możesz zarejestrować się w rozwiązaniu Cloudyn. Re
 >
 > Dostęp do rozwiązania Cloudyn można zapewnić odsprzedawcom programu CSP Indirect po ich zarejestrowaniu w rozwiązaniu Cloudyn przez dostawcę programu CSP Indirect. Odsprzedawcy programu CSP Indirect mogą wtedy zapewniać dostęp do rozwiązania Cloudyn posiadaczom subskrypcji oraz klientom platformy Azure.
 >
->Chmura jest skargą modelu bezpiecznego aplikacji firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Włączanie struktury bezpiecznego modelu aplikacji](/partner-center/develop/enable-secure-app-model).
+>Rozwiązanie Cloudyn jest zgodne z modelem aplikacji zabezpieczonej firmy Microsoft. Aby uzyskać więcej informacji, zobacz [Włączanie środowiska modelu aplikacji zabezpieczonej](/partner-center/develop/enable-secure-app-model).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-- Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+- Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="register-with-cloudyn"></a>Rejestrowanie w rozwiązaniu Cloudyn
 
@@ -61,7 +60,7 @@ Jako partner programu CSP możesz zarejestrować się w rozwiązaniu Cloudyn. Re
 
 Domyślnie interfejs API Centrum partnerskiego jest dostępny tylko dla bezpośrednich programów CSP. Jednak dostawca bezpośredniego programu CSP może skonfigurować dostęp dla swoich klientów lub partnerów pośredniego programu CSP, używając grup jednostek w rozwiązaniu Cloudyn.
 
-Aby umożliwić dostęp pośrednim klientom lub partnerom programu CSP, wykonaj kroki opisane w temacie [Rejestrowanie w usłudze Cloudyn](#register-with-cloudyn) , aby skonfigurować rejestrację próbną. Następnie wykonaj następujące czynności, aby posegmentować dane pośredniego programu CSP przy użyciu grup jednostek rozwiązania Cloudyn. Przypisz odpowiednie uprawnienia użytkowników do grup jednostek.
+Aby włączyć dostęp dla partnerów lub klientów pośredniego programu CSP, wykonaj czynności opisane w sekcji [Rejestrowanie w rozwiązaniu Cloudyn](#register-with-cloudyn) i skonfiguruj rejestrację wersji próbnej. Następnie wykonaj następujące czynności, aby posegmentować dane pośredniego programu CSP przy użyciu grup jednostek rozwiązania Cloudyn. Przypisz odpowiednie uprawnienia użytkowników do grup jednostek.
 
 1. Utwórz grupę jednostek, korzystając z informacji zawartych w sekcji [Tworzenie jednostek](tutorial-user-access.md#create-and-manage-entities).
 2. Wykonaj czynności opisane w artykule [Przypisywanie subskrypcji do jednostek kosztów](https://www.youtube.com/watch?v=d9uTWSdoQYo). Skojarz konto klienta pośredniego programu CSP i jego subskrypcje z uprzednio utworzoną jednostką.

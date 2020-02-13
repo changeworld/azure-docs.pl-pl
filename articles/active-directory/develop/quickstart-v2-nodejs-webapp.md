@@ -11,16 +11,14 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 0d69f762cea53f2a4c022ad6dddb52faeced1adf
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4aa0cce83f9adc8c648656899ec6dc12d498e26b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703341"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160452"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Szybki Start: Dodawanie logowania za pomocą usługi OpenID Connect łączenie się z aplikacją sieci Web w języku Node. js
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 W tym przewodniku szybki start dowiesz się, jak skonfigurować uwierzytelnianie OpenID Connect Connect w aplikacji sieci Web skompilowanej przy użyciu środowiska Node. js z programem Express. Przykład jest przeznaczony do uruchamiania na dowolnej platformie.
 
@@ -70,7 +68,7 @@ Do uruchomienia tego przykładu potrzebne są:
 
 Następnie Sklonuj przykładowe repozytorium i zainstaluj moduły NPM.
 
-Z powłoki lub wiersza polecenia:
+Z poziomu powłoki lub wiersza polecenia:
 
 `$ git clone git@github.com:AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
@@ -120,7 +118,7 @@ $ npm install -g bunyan
 $ node app.js | bunyan
 ```
 
-### <a name="youre-done"></a>To koniec, wszystko gotowe!
+### <a name="youre-done"></a>Wszystko gotowe!
 
 Serwer będzie działał pomyślnie na `http://localhost:3000`.
 

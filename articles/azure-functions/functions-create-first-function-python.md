@@ -1,17 +1,17 @@
 ---
-title: Tworzenie wyzwalanej przez protokół HTTP funkcji języka Python na platformie Azure
+title: Tworzenie bezserwerowej funkcji języka Python dla żądań HTTP w Azure Functions
 description: Utwórz i Wdróż kod języka Python bezserwerowy w chmurze przy użyciu Azure Functions.
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 529a992178fae5566c8e315956388c4cd4b80257
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116219"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157894"
 ---
-# <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Szybki Start: Tworzenie wyzwalanej przez protokół HTTP funkcji języka Python na platformie Azure
+# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Szybki Start: Tworzenie funkcji języka Python na platformie Azure, która odpowiada na żądania HTTP
 
 W tym artykule opisano użycie narzędzi wiersza polecenia w celu utworzenia funkcji języka Python, która reaguje na żądania HTTP. Po przetestowaniu kodu lokalnie należy wdrożyć go w środowisku bezserwerowym Azure Functions. W ramach tego przewodnika Szybki Start powiąże się niewielką opłatą za kilka centów USD lub mniej na koncie platformy Azure.
 

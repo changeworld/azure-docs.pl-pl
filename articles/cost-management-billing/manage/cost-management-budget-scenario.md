@@ -15,10 +15,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: e183a622910c7690b566537311661789253efbfb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992727"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Zarządzanie kosztami przy użyciu budżetów platformy Azure
@@ -135,7 +135,7 @@ Każda aplikacja logiki musi rozpoczynać się od wyzwalacza, który jest aktywo
 3.  Wybierz pozycję **Nowy krok** > **Dodaj akcję**.
 
     ![Azure — Nowy krok — Dodaj akcję](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-4.  Wyszukaj ciąg "Analizuj kod JSON" w polu wyszukiwania programu **Logic Apps Designer** , aby znaleźć i wybrać [akcję](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **JSON analizowanie danych** .
+4.  Wyszukaj ciąg „Przeanalizuj kod JSON” w polu wyszukiwania **Projektanta aplikacji usługi Logic Apps**, aby znaleźć i wybrać [akcję](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **Operacje na danych — Przeanalizuj dane JSON**.
 
     ![Azure — Aplikacja logiki — Dodawanie akcji analizy danych JSON](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 5.  Wprowadź „Ładunek” jako nazwę **zawartości** dla ładunku Przeanalizuj dane JSON” użyj tagu „Treść” z zawartości dynamicznej.
