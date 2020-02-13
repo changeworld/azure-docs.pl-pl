@@ -9,9 +9,9 @@
   expanded: true
   items:
     - name: Łączenie maszyn z usługą Azure Arc z poziomu witryny Azure Portal
-      href: ./servers/quickstart-onboard-portal.md
+      href: ./servers/onboard-portal.md
     - name: Łączenie maszyn na dużą skalę przy użyciu jednostki usługi
-      href: ./servers/quickstart-onboard-powershell.md
+      href: ./servers/onboard-service-principal.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia agenta komputera połączonego z platformą Azure
