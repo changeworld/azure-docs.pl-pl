@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: acd02f143fe35edd867ce26f26a4cba74bd6f10b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6439393b72eb724ca017edc17ce7a7c36c275fca
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847344"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166963"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Uwagi dla deweloperów dotyczące zasad niestandardowych w Azure Active Directory B2C
 
@@ -61,35 +61,35 @@ Niestandardowe i szybkie opracowywanie możliwości struktury środowiska obsłu
 
 ### <a name="identity-providers-tokens-protocols"></a>Dostawcy tożsamości, tokeny, protokoły
 
-| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | IDP-OpenIDConnect |  |  | X | Na przykład Google +.  |
 | IDP-OAUTH2 |  |  | X | Na przykład w serwisie Facebook.  |
 | DOSTAWCY tożsamości — OAUTH1 (Twitter) |  | X |  | Na przykład serwis Twitter. |
-| DOSTAWCY tożsamości-OAUTH1 (np. do usługi Twitter) |  |  |  | Brak obsługi |
+| DOSTAWCY tożsamości-OAUTH1 (np. do usługi Twitter) |  |  |  | Nieobsługiwane |
 | IDP-SAML |  |   | X | Na przykład usługi Salesforce, ADFS. |
 | IDP-WSFED | X |  |  |  |
-| OAUTH1 jednostki uzależnionej |  |  |  | Bez pomocy technicznej. |
+| OAUTH1 jednostki uzależnionej |  |  |  | Nieobsługiwane. |
 | OAUTH2 jednostki uzależnionej |  |  | X |  |
 | OIDC jednostki uzależnionej |  |  | X |  |
-| Element SAML jednostki uzależnionej | X |  |  |  |
+| Element SAML jednostki uzależnionej |  |X  |  |  |
 | WSFED jednostki uzależnionej | X |  |  |  |
 | Interfejs API REST z uwierzytelnianiem Basic i certyfikatem |  |  | X | Na przykład Azure Logic Apps. |
 
 ### <a name="component-support"></a>Obsługa składników
 
-| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Usługa Azure Multi-Factor Authentication |  |  | X |  |
+| Uwierzytelnianie wieloskładnikowe systemu Azure |  |  | X |  |
 | Azure Active Directory jako katalog lokalny |  |  | X |  |
 | Weryfikacja podsystemu wiadomości E-mail platformy Azure do wiadomości e-mail |  |  | X |  |
 | Obsługa wielu języków|  |  | X |  |
 | Walidacje predykatu |  |  | X | Na przykład złożoność hasła. |
-| Korzystanie z dostawców usług poczty e-mail innych firm | X |  |  |  |
+| Korzystanie z dostawców usług poczty e-mail innych firm |  |X  |  |  |
 
 ### <a name="content-definition"></a>Definicja zawartości
 
-| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Strona błędu, interfejs API. błąd |  |  | X |  |
 | Strona wyboru dostawcy tożsamości, interfejs API. idpselections |  |  | X |  |
@@ -105,7 +105,7 @@ Niestandardowe i szybkie opracowywanie możliwości struktury środowiska obsłu
 
 ### <a name="app-ief-integration"></a>Integracja App-IEF
 
-| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Domain_hint parametru ciągu zapytania |  |  | X | Dostępne jako roszczeń mogą być przesyłane do dostawcy tożsamości. |
 | Login_hint parametru ciągu zapytania |  |  | X | Dostępne jako roszczeń mogą być przesyłane do dostawcy tożsamości. |
@@ -115,16 +115,16 @@ Niestandardowe i szybkie opracowywanie możliwości struktury środowiska obsłu
 
 ### <a name="session-management"></a>Zarządzanie sesjami
 
-| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Dostawca sesji logowania jednokrotnego |  |  | X |  |
 | Dostawca sesji logowania zewnętrznego |  |  | X |  |
 | Dostawca sesji SSO protokołu SAML |  |  | X |  |
 | Domyślny dostawca sesji SSO |  |  | X |  |
 
-### <a name="security"></a>Zabezpieczenia
+### <a name="security"></a>Bezpieczeństwo
 
-| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Klucze zasad — generowanie, ręczne, przekazywanie |  |  | X |  |
 | Klucze zasad — RSA/certyfikat, wpisy tajne |  |  | X |  |
@@ -132,7 +132,7 @@ Niestandardowe i szybkie opracowywanie możliwości struktury środowiska obsłu
 
 ### <a name="developer-interface"></a>Interfejs dewelopera
 
-| Funkcja | Tworzenie oprogramowania | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
+| Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Witryna Azure Portal — środowisko IEF |  |  | X |  |
 | Application Insights dzienników UserJourney |  | X |  | Używane do rozwiązywania problemów podczas opracowywania.  |
