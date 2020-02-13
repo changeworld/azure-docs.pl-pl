@@ -10,7 +10,7 @@
     - name: Wdrażanie szablonu rozwiązania Ansible w systemie CentOS
       href: ./ansible-deploy-solution-template.md
     - name: Instalowanie rozwiązania Ansible na maszynach wirtualnych z systemem Linux
-      href: /azure/virtual-machines/linux/ansible-install-configure
+      href: ./ansible-install-configure.md
       maintainContext: true
     - name: Uruchamianie podręczników w usłudze Cloud Shell
       href: ./ansible-run-playbook-in-cloudshell.md
@@ -18,10 +18,10 @@
       expanded: true
       items:
         - name: Konfigurowanie maszyn wirtualnych z systemem Linux
-          href: /azure/virtual-machines/linux/ansible-create-vm
+          href: ./ansible-create-vm.md
           maintainContext: true
         - name: Zarządzanie maszynami wirtualnymi z systemem Linux
-          href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+          href: ./ansible-manage-linux-vm.md
           maintainContext: true
 - name: Samouczki
   items:
@@ -59,7 +59,7 @@
           href: ./ansible-service-bus-queue-configure.md
         - name: Konfigurowanie tematów
           href: ./ansible-service-bus-topic-configure.md
-    - name: Database (Baza danych)
+    - name: baza danych
       items:
         - name: Konfigurowanie usługi Azure Database for MySQL
           href: ./ansible-create-configure-mysql.md
@@ -93,7 +93,7 @@
           href: ./ansible-vnet-peering-configure.md
         - name: Konfigurowanie tabel tras
           href: ./ansible-create-configure-route-table.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Laboratoria Ansible dla platformy Azure
       href: 'https://github.com/microsoft/ansiblelabs'
@@ -111,7 +111,7 @@
       href: ./ansible-matrix.md
     - name: Wszystkie moduły dla platformy Azure
       href: 'https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure'
-- name: Narzędzia
+- name: narzędzia
   items:
     - name: Rozszerzenie programu Visual Studio Code dla rozwiązania Ansible
       href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'

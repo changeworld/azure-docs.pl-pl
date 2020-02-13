@@ -176,6 +176,8 @@
   items:
     - name: Słownik
       href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Filmy wideo
+      href: videos.md
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Blog dotyczący usługi Azure AD

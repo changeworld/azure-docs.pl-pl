@@ -327,7 +327,15 @@
     - name: Wyzwalacze i powiązania
       items:
         - name: Blob Storage
-          href: functions-bindings-storage-blob.md
+          items:
+            - name: Omówienie
+              href: functions-bindings-storage-blob.md
+            - name: Wyzwalacz
+              href: functions-bindings-storage-blob-trigger.md
+            - name: Dane wejściowe
+              href: functions-bindings-storage-blob-input.md
+            - name: Dane wyjściowe
+              href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
           items:
             - name: Functions w wersji 1.x
