@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5a32d92dd8a44602034d84262f2e502a60ac23a9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d819d4f7b3049a5c034ec8ac5170175f3ad3e9bb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760644"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190845"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Szybki Start: korzystanie z kolejek Azure Service Bus w języku Java do wysyłania i odbierania wiadomości
 
@@ -31,7 +31,7 @@ W ramach tego samouczka nauczysz się tworzyć aplikacje Java do wysyłania komu
 > Przykłady dla języka Java w witrynie GitHub można znaleźć w [repozytorium Azure-Service-Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Jeśli nie masz kolejki do współpracy z programem, postępuj zgodnie z instrukcjami w temacie [Use Azure Portal, aby utworzyć](service-bus-quickstart-portal.md) kolejkę Service Bus w celu utworzenia kolejki.
     1. Zapoznaj się z krótkim omówieniem **kolejek**Service Bus. 
     2. Utwórz **przestrzeń nazw**Service Bus. 
@@ -124,9 +124,9 @@ Podstawowym sposobem odbierania komunikatów z kolejki jest użycie obiektu **Se
 W przypadku korzystania z trybu **ReceiveAndDelete** odbieranie jest operacją pojedynczego zrzutu, czyli gdy Service Bus odbiera żądanie odczytu komunikatu w kolejce, oznacza komunikat jako używany i zwraca go do aplikacji. Tryb **ReceiveAndDelete** (który jest domyślnym trybem) jest najprostszym modelem i najlepiej sprawdza się w scenariuszach, w których aplikacja może tolerować nieprzetwarzanie komunikatu w przypadku awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem.
 Ponieważ Service Bus oznaczył komunikat jako używany, wtedy, gdy aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, zostanie pominięty komunikat, który był używany przed awarią.
 
-W trybie **PeekLock** , odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niezawodny w przyszłości), kończy drugi etap procesu odbierania, wywołując polecenie **delete** dla odebranego komunikatu. Gdy Service Bus widzi wywołanie **usuwania** , oznacza komunikat jako używany i usunąć go z kolejki.
+W trybie **PeekLock** , odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niezawodny w przyszłości), kończy drugi etap procesu odbierania, wywołując metodę **Complete ()** dla odebranego komunikatu. Gdy Service Bus widzi **kompletne ()** wywołanie, oznacza komunikat jako używany i usuń go z kolejki. 
 
-W poniższym przykładzie pokazano, jak można odbierać i przetwarzać komunikaty przy użyciu trybu **PeekLock** (a nie trybu domyślnego). Poniższy przykład zawiera pętlę nieskończoną i przetwarza komunikaty w miarę ich nadejścia do `TestQueue`:
+W poniższym przykładzie pokazano, jak można odbierać i przetwarzać komunikaty przy użyciu trybu **PeekLock** (a nie trybu domyślnego). W poniższym przykładzie zastosowano model wywołania zwrotnego z zarejestrowaną obsługą komunikatów i przetwarza komunikaty w miarę ich nadejścia do `TestQueue`. Ten tryb wywołuje **pełny ()** automatycznie, gdy wywołanie zwrotne zwraca się normalnie i wywołuje metodę **Abandon ()** , jeśli wywołanie zwrotne zgłasza wyjątek. 
 
 ```java
     public void run() throws Exception {
@@ -179,11 +179,11 @@ W poniższym przykładzie pokazano, jak można odbierać i przetwarzać komunika
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Sposób obsługi awarii aplikacji i komunikatów niemożliwych do odczytania
-Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie może przetworzyć komunikatu z jakiegoś powodu, może wywołać metodę **unlockMessage** dla odebranego komunikatu (zamiast metody **deleteMessage** ). Powoduje to odblokowanie komunikatu w kolejce przez usługę Service Bus i ponowne udostępnienie go do odebrania przez tę samą lub inną odbierającą aplikację.
+Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiornika nie może przetworzyć komunikatu z jakiegoś powodu, może wywołać metodę **Abandon ()** w obiekcie Client z tokenem blokady otrzymanej wiadomości uzyskanym za pośrednictwem **getLockToken ()** . Powoduje to odblokowanie komunikatu w kolejce przez usługę Service Bus i ponowne udostępnienie go do odebrania przez tę samą lub inną odbierającą aplikację.
 
 Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed upływem limitu czasu blokady (na przykład jeśli awaria aplikacji), Service Bus odblokować komunikat automatycznie i spowoduje, że dostępne do ponownego odebrania.
 
-W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed wystawieniem żądania **deleteMessage** , komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *przetwarzaniem co najmniej raz*, co oznacza, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu metody **getmessageid** komunikatu, która pozostaje stała między kolejnymi próbami dostarczenia.
+W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed wystawieniem **kompletnego żądania ()** , komunikat zostanie ponownie dostarczony do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *przetwarzaniem co najmniej raz*, co oznacza, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu metody **getmessageid** komunikatu, która pozostaje stała między kolejnymi próbami dostarczenia.
 
 > [!NOTE]
 > Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 

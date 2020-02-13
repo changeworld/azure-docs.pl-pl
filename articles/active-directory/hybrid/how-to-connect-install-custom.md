@@ -14,17 +14,17 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 301fe9c213ec6d78d32d6ccde84a689c4659acb3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c99a6e018edd0806daac7cd429135e522f217f23
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888973"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159832"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](how-to-connect-install-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
 
-Przed rozpoczęciem instalacji należy [pobrać program Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) i wykonać czynności związane z wymaganiami wstępnymi opisane w temacie [Azure AD Connect: sprzęt i wymagania wstępne](how-to-connect-install-prerequisites.md). Sprawdź także, czy dostępne są wymagane konta, zgodnie z opisem w temacie [Konta i uprawnienia w programie Azure AD Connect](reference-connect-accounts-permissions.md).
+Przed rozpoczęciem instalacji pamiętaj o [pobraniu programu Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) i wykonaniu czynności związanych z wymaganiami wstępnymi opisanych w temacie [Azure AD Connect: sprzęt i wymagania wstępne](how-to-connect-install-prerequisites.md). Sprawdź także, czy dostępne są wymagane konta, zgodnie z opisem w temacie [Konta i uprawnienia w programie Azure AD Connect](reference-connect-accounts-permissions.md).
 
 Jeśli dostosowane ustawienia nie są zgodne z topologią, na przykład w celu uaktualnienia narzędzia DirSync zapoznaj się z innymi scenariuszami.
 
@@ -97,7 +97,7 @@ Ta strona umożliwia przeglądanie domen UPN obecnych w lokalnych usługach AD D
 ![Niezweryfikowane domeny](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
 Sprawdź wszystkie domeny z oznaczeniem **Nie dodano** lub **Nie zweryfikowano**. Upewnij się, że używane domeny zostały zweryfikowane w usłudze Azure AD. Po zweryfikowaniu domen kliknij symbol Odśwież. Więcej informacji znajduje się w temacie zawierającym opis sposobów [dodawania i weryfikowania domeny](../active-directory-domains-add-azure-portal.md)
 
-**UserPrincipalName** — atrybut userPrincipalName jest używany podczas logowania się w usługach Azure AD i Office 365. Używane domeny, zwane również sufiksem głównej nazwy użytkownika, należy zweryfikować w usłudze Azure AD przed zsynchronizowaniem użytkowników. Firma Microsoft zaleca zachowanie domyślnego atrybutu userPrincipalName. Jeśli atrybut ten jest nierutowalny i nie można go zweryfikować, możliwe jest wybranie innego atrybutu. Można na przykład wybrać adres e-mail jako atrybut zawierający identyfikator logowania. Użycie atrybutu innego niż userPrincipalName jest określane jako **alternatywny identyfikator**. Wartość atrybutu alternatywnego identyfikatora musi być zgodna ze standardem RFC822. Alternatywny identyfikator może być używany na potrzeby synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. Atrybut nie może zostać zdefiniowany w usłudze Active Directory jako wielowartościowy nawet wtedy, gdy ma tylko jedną wartość. Aby uzyskać więcej informacji na temat identyfikatora alternatywnego, [kliknij tutaj.](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)
+**UserPrincipalName** — atrybut userPrincipalName jest używany podczas logowania się w usługach Azure AD i Office 365. Używane domeny, zwane również sufiksem głównej nazwy użytkownika, należy zweryfikować w usłudze Azure AD przed zsynchronizowaniem użytkowników. Firma Microsoft zaleca zachowanie domyślnego atrybutu userPrincipalName. Jeśli atrybut ten jest nierutowalny i nie można go zweryfikować, możliwe jest wybranie innego atrybutu. Można na przykład wybrać adres e-mail jako atrybut zawierający identyfikator logowania. Użycie atrybutu innego niż userPrincipalName jest określane jako **alternatywny identyfikator**. Wartość atrybutu alternatywnego identyfikatora musi być zgodna ze standardem RFC822. Alternatywny identyfikator może być używany na potrzeby synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. Atrybut nie może zostać zdefiniowany w usłudze Active Directory jako wielowartościowy nawet wtedy, gdy ma tylko jedną wartość. Aby uzyskać więcej informacji na temat alternatywnego identyfikatora, zobacz [często zadawane pytania](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname) .
 
 >[!NOTE]
 > Po włączeniu funkcji uwierzytelniania przekazywanego trzeba mieć co najmniej jedną zweryfikowaną domenę, aby można było kontynuować pracę w kreatorze.
@@ -163,9 +163,9 @@ Na tym ekranie można wybrać funkcje opcjonalne dla określonych scenariuszy.
 >[!WARNING]
 >Wersje **1.0.8641.0** i starsze programu Azure AD Connect polegają na usłudze Azure Access Control w ramach zapisywania zwrotnego haseł.  Ta usługa zostanie wycofana w dniu **7 listopada 2018 r**.  Jeśli używasz jakiejkolwiek z tych wersji programu Azure AD Connect i masz włączoną funkcję zapisywania zwrotnego haseł, użytkownicy mogą stracić możliwość zmiany lub resetowania haseł po wycofaniu usługi. Zapisywanie zwrotne haseł w tych wersjach programu Azure AD Connect nie będzie obsługiwane.
 >
->Aby uzyskać więcej informacji o usłudze Azure Access Control, zobacz [Instrukcje: migrowanie z usługi Azure Access Control Service](../develop/active-directory-acs-migration.md)
+>Aby uzyskać więcej informacji o usłudze Azure Access Control, zobacz [Instrukcje: migrowanie z usługi Azure Access Control Service](../azuread-dev/active-directory-acs-migration.md)
 >
->Aby pobrać najnowszą wersję programu Azure AD Connect, kliknij [tutaj](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+>Aby pobrać najnowszą wersję programu Azure AD Connect, kliknij [tutaj](https://www.microsoft.com/download/details.aspx?id=47594).
 
 ![Funkcje opcjonalne](./media/how-to-connect-install-custom/optional2.png)
 
@@ -359,7 +359,7 @@ Na tej stronie wykonywane jest konfigurowanie.
 >
 
 
-![Wszystko gotowe do skonfigurowania](./media/how-to-connect-install-custom/readytoconfigure2.png)
+![Wszystko gotowe do konfiguracji](./media/how-to-connect-install-custom/readytoconfigure2.png)
 
 ### <a name="staging-mode"></a>Tryb przejściowy
 Istnieje możliwość skonfigurowania nowego serwera synchronizacji równolegle z trybem przejściowym. Obsługiwany jest tylko jeden serwer synchronizacji wykonujący eksport do jednego katalogu w chmurze. W przypadku przenoszenia z innego serwera, np. takiego, na którym jest uruchomione narzędzie DirSync, można przełączyć program Azure AD Connect w tryb przejściowy. Po włączeniu aparat synchronizacji importuje i synchronizuje dane w zwykły sposób, ale nie eksportuje żadnych elementów do usługi Azure AD lub AD. W trybie przejściowym funkcje synchronizacji haseł i zapisywania zwrotnego haseł są wyłączone.
@@ -382,7 +382,7 @@ Po kliknięciu przycisku Weryfikuj program Azure AD Connect sprawdza ustawienia 
 
 * Rozpoznawanie federacyjnej nazwy FQDN: program Azure AD Connect sprawdza, czy federacyjna nazwa FQDN może zostać rozpoznana przez serwer DNS w celu zapewnienia łączności.
 
-![Kompletne](./media/how-to-connect-install-custom/completed.png)
+![Complete](./media/how-to-connect-install-custom/completed.png)
 
 ![Weryfikuj](./media/how-to-connect-install-custom/adfs7.png)
 

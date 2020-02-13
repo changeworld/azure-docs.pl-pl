@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984850"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169833"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co to jest wystąpienie obliczeniowe Azure Machine Learning?
 
@@ -26,9 +26,6 @@ Użyj wystąpienia obliczeniowego jako w pełni skonfigurowanego i zarządzanego
 
 Wystąpienia obliczeniowe są zwykle używane jako środowiska deweloperskie.  Mogą one również służyć jako cel obliczeniowy do szkolenia i inferencing na potrzeby programowania i testowania.  W przypadku dużych zadań [klaster obliczeniowy Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) z funkcjami skalowania wielu węzłów jest lepszym rozwiązaniem docelowym obliczeń.
 
-> [!NOTE]
-> Wystąpienia obliczeniowe są obecnie dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**z obsługą innych regionów już wkrótce.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
 
 ## <a name="why-use-a-compute-instance"></a>Dlaczego warto używać wystąpienia obliczeniowego?
 
@@ -72,7 +69,7 @@ Te narzędzia i środowiska są zainstalowane w wystąpieniu obliczeniowym:
 |Jupyter i rozszerzenia||
 |Jupyterlab i rozszerzenia||
 |Visual Studio Code ||
-[Usługi Azure Machine Learning zestawu SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>z PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
+[Zestaw SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>z PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
 |Inne pakiety PyPI|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Pakiety Conda|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Pakiety uczenia głębokiego|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -124,7 +121,7 @@ Można wykonać następujące czynności:
 
 Dla każdego wystąpienia obliczeniowego w obszarze roboczym możesz:
 
-* Dostęp do Jupyter, JupyterLab, RStudio, identyfikatorów URI VS Code w wystąpieniu obliczeniowym
+* Dostęp do Jupyter, JupyterLab, RStudio w wystąpieniu obliczeniowym
 * Użyj protokołu SSH do wystąpienia obliczeniowego. Dostęp SSH jest domyślnie wyłączony, ale można go włączyć podczas tworzenia wystąpienia obliczeniowego. Dostęp SSH odbywa się za pośrednictwem mechanizmu publicznego/prywatnego klucza. Karta przekaże szczegóły dotyczące połączenia SSH, takie jak adres IP, nazwa użytkownika i numer portu.
 * Pobierz szczegóły dotyczące określonego wystąpienia obliczeniowego, takiego jak adres IP i region.
 

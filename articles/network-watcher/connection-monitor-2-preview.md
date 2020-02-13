@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 43c49cce1dd53edd5c2b13b01a31f94752579dff
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049616"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169334"
 ---
 # <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Ujednolicone Monitorowanie łączności z monitorem połączeń (wersja zapoznawcza)
 
@@ -403,7 +403,7 @@ Aby utworzyć grupę testową w monitorze połączeń, należy określić warto�
 
       ![Dodaj miejsca docelowe 2](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-   2. Kliknij kartę "punkty końcowe", aby wybrać maszyny wirtualne platformy Azure jako miejsca docelowe. Lista punktów końcowych zostanie wypełniona przy użyciu adresów URL testów usługi O365 i D365, pogrupowanych według nazwy.  Możesz również wybrać punkt końcowy utworzony w innych grupach testowych w tym samym monitorze połączeń. Aby dodać nowy punkt końcowy, kliknij "+ punkt końcowy" w prawym górnym rogu ekranu i podaj adres URL punktu końcowego/IP/FQDN i nazwę
+   2. Kliknij kartę "punkty końcowe", aby wybrać punkty końcowe jako miejsca docelowe. Lista punktów końcowych zostanie wypełniona przy użyciu adresów URL testów usługi O365 i D365, pogrupowanych według nazwy.  Możesz również wybrać punkt końcowy utworzony w innych grupach testowych w tym samym monitorze połączeń. Aby dodać nowy punkt końcowy, kliknij "+ punkt końcowy" w prawym górnym rogu ekranu i podaj adres URL punktu końcowego/IP/FQDN i nazwę
 
       ![Dodaj punkty końcowe](./media/connection-monitor-2-preview/add-endpoints.png)
 
@@ -550,7 +550,7 @@ Aby wyświetlić trendy testów zakończonych niepowodzeniem% i RTT dla:
    5. Zmień przedział czasu, aby wyświetlić więcej danych
    6. Widok można zmienić w kroku b i wybrać opcję wyświetlania według źródeł, miejsc docelowych lub konfiguracji testów. Następnie wybierz jednostkę, aby zbadać 5 najważniejszych testów zakończonych niepowodzeniem.  Na przykład: Wybierz widok według: źródła i miejsca docelowe, aby zbadać wszystkie testy, które są wykonywane między tą kombinacją w wybranym monitorze połączenia.
 
-3. Test
+3. Testowanie
    1. Kliknij konfigurację źródłową i docelową i testową, którą chcesz szczegółowo zbadać
    2. W przypadku wybranego interwału czasowego dla operacji sprawdzania nie powiodło się, zobaczysz wartości progowe i rzeczywiste. W przypadku czasu RTT MS można zobaczyć wartości progowe, średnie, minimalne i maksymalne. Zobaczysz również wyzwolone alerty specyficzne dla wybranego testu.
 

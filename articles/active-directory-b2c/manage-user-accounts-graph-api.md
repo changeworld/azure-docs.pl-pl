@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9e55edcb7c107a3dfa91f61aaa1fea64bc62f21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 71b437f57f9d9e6e18af88d6413269cac6f66c47
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848878"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161668"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: korzystanie z usługi Azure AD interfejs API programu Graph
 
@@ -26,7 +26,7 @@ Może być konieczne przeprowadzenie migracji istniejącego magazynu użytkownik
 W przypadku dzierżawców B2C istnieją dwa podstawowe tryby komunikacji z interfejs API programu Graph:
 
 * W przypadku **interakcyjnych**zadań uruchamianych jednokrotnie należy działać jako konto administratora w dzierżawie B2C podczas wykonywania zadań podrzędnych. Ten tryb wymaga od administratora zalogowania się przy użyciu poświadczeń, aby administrator mógł wykonać jakiekolwiek wywołania do interfejs API programu Graph.
-* W przypadku **zautomatyzowanych**, ciągłych zadań należy używać określonego typu konta usługi z uprawnieniami do wykonywania zadań zarządzania. W usłudze Azure AD można to zrobić przez zarejestrowanie aplikacji i uwierzytelnienie w usłudze Azure AD. Jest to realizowane przy użyciu *identyfikatora aplikacji* , który używa [przyznania poświadczeń klienta OAuth 2,0](../active-directory/develop/service-to-service.md). W takim przypadku aplikacja działa jako sama, a nie jako użytkownik, aby wywołać interfejs API programu Graph.
+* W przypadku **zautomatyzowanych**, ciągłych zadań należy używać określonego typu konta usługi z uprawnieniami do wykonywania zadań zarządzania. W usłudze Azure AD można to zrobić przez zarejestrowanie aplikacji i uwierzytelnienie w usłudze Azure AD. Jest to realizowane przy użyciu *identyfikatora aplikacji* , który używa [przyznania poświadczeń klienta OAuth 2,0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). W takim przypadku aplikacja działa jako sama, a nie jako użytkownik, aby wywołać interfejs API programu Graph.
 
 W tym artykule dowiesz się, jak wykonać zautomatyzowany przypadek użycia. Utworzysz `B2CGraphClient` .NET 4,5, który wykonuje operacje tworzenia, odczytu, aktualizacji i usuwania (CRUD) użytkownika. Klient będzie miał interfejs wiersza polecenia (CLI) systemu Windows, który umożliwia wywoływanie różnych metod. Jednak kod jest zapisywana, aby zachować zachowanie w nieinteraktywny, zautomatyzowany sposób.
 
@@ -60,7 +60,7 @@ Przyznane wcześniej uprawnienie *Odczyt i zapis danych katalogu* **nie obejmuje
 
 Jeśli chcesz, aby aplikacja mogła usuwać użytkowników lub aktualizować hasła, musisz przyznać mu rolę *administratora* .
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. W obszarze **Zarządzanie**wybierz pozycję **role i Administratorzy**.
@@ -73,7 +73,7 @@ Aplikacja Azure AD B2C ma teraz dodatkowe uprawnienia wymagane do usuwania użyt
 
 ## <a name="get-the-sample-code"></a>Pobieranie przykładowego kodu
 
-Przykładowy kod jest aplikacją konsolową .NET, która używa [Active Directory Authentication Library (ADAL)](../active-directory/develop/active-directory-authentication-libraries.md) do współdziałania z usługą Azure AD interfejs API programu Graph. W jego kodzie pokazano, jak wywołać interfejs API, aby programowo zarządzać użytkownikami w dzierżawie Azure AD B2C.
+Przykładowy kod jest aplikacją konsolową .NET, która używa [Active Directory Authentication Library (ADAL)](../active-directory/azuread-dev/active-directory-authentication-libraries.md) do współdziałania z usługą Azure AD interfejs API programu Graph. W jego kodzie pokazano, jak wywołać interfejs API, aby programowo zarządzać użytkownikami w dzierżawie Azure AD B2C.
 
 Możesz [pobrać przykładowe archiwum](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*. zip) lub sklonować repozytorium GitHub:
 
@@ -288,7 +288,7 @@ B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-Przykład:
+Na przykład:
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
@@ -330,7 +330,7 @@ B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-Dane wyjściowe ujawniają szczegóły każdego z atrybutów niestandardowych. Przykład:
+Dane wyjściowe ujawniają szczegóły każdego z atrybutów niestandardowych. Na przykład:
 
 ```json
 {

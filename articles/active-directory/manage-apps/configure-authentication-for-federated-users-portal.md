@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 174cdc31d7e5f29716febc7f68bbb410f33926c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274631"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159169"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurowanie zachowania Azure Active Directory logowania dla aplikacji przy użyciu zasad odnajdywania obszaru głównego
 
@@ -271,4 +271,4 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ## <a name="next-steps"></a>Następne kroki
 - Aby uzyskać więcej informacji na temat sposobu działania uwierzytelniania w usłudze Azure AD, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](../develop/authentication-scenarios.md).
 - Aby uzyskać więcej informacji na temat logowania jednokrotnego użytkownika, zobacz Logowanie jednokrotne [do aplikacji w Azure Active Directory](what-is-single-sign-on.md).
-- Zapoznaj się z [przewodnikiem dewelopera Active Directory](../develop/v1-overview.md) , aby zapoznać się z omówieniem całej zawartości związanej z deweloperem.
+- Odwiedź [platformę tożsamości firmy Microsoft](../develop/v2-overview.md) , aby zapoznać się z omówieniem całej zawartości związanej z deweloperem.

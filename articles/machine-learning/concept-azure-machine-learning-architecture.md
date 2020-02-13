@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 927014ed0c2b261351df786ad8a6b56f20c573a8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5f5522201534a54f5d132257553469eed5addab3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984867"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169867"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa Azure Machine Learning: architektura i koncepcje
 
@@ -29,8 +29,8 @@ Przepływ pracy modelu uczenia maszynowego jest zwykle następujący:
 
 1. **Trasy**
     + Opracowywanie skryptów szkoleniowych dotyczących uczenia maszynowego w języku **Python** lub przy użyciu projektanta wizualnego.
-    + Tworzenie i konfigurowanie **obliczeniowego elementu docelowego**.
-    + **Przesyłanie skryptów usługi** docelową obliczeń skonfigurowany do uruchamiania w środowisku. Podczas szkoleń skrypty mogą odczytywać dane z **magazynu**danych lub zapisywać do niego. Rekordy wykonywania są zapisywane jako **uruchomienia** w **obszarze roboczym** i pogrupowane w obszarze **eksperymenty**.
+    + Utwórz i skonfiguruj **obiekt docelowy obliczeń**.
+    + **Prześlij skrypty** do skonfigurowanego obiektu docelowego obliczeń do uruchomienia w tym środowisku. Podczas szkoleń skrypty mogą odczytywać dane z **magazynu**danych lub zapisywać do niego. Rekordy wykonywania są zapisywane jako **uruchomienia** w **obszarze roboczym** i pogrupowane w obszarze **eksperymenty**.
 
 1. **Pakiet** — po znalezieniu zadowalającego przebiegu Zarejestruj trwały model w **rejestrze modelu**.
 
@@ -63,7 +63,7 @@ Użyj tych narzędzi dla Azure Machine Learning:
 + <a href="#experiments">Eksperymenty</a>
 + <a href="#github-tracking-and-integration">Śledzenie git</a>
 + <a href="#iot-module-endpoints">Moduły IoT</a>
-+ <a href="#logging">Rejestrowanie</a>
++ <a href="#logging">Rejestrować</a>
 + <a href="#ml-pipelines">Potoki ML</a>
 + <a href="#models">Przykładów</a>
 + <a href="#runs">Run</a>
@@ -71,7 +71,7 @@ Użyj tych narzędzi dla Azure Machine Learning:
 + <a href="#snapshots">Zdjęcie</a>
 + <a href="#training-scripts">Skrypt szkoleniowy</a>
 + <a href="#web-service-endpoint">Usługi sieci Web</a>
-+ <a href="#workspaces">Workspace</a>
++ <a href="#workspaces">Obszary</a>
 
 ### <a name="activities"></a>Działania
 
@@ -84,9 +84,6 @@ Działania mogą udostępniać powiadomienia za pomocą zestawu SDK lub internet
 
 ### <a name="compute-instance"></a>Wystąpienie obliczeniowe (wersja zapoznawcza)
 
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
 
 **Wystąpienie obliczeniowe Azure Machine Learning** (dawniej jest maszyną wirtualną) to w pełni zarządzana stacja robocza oparta na chmurze, która obejmuje wiele narzędzi i środowisk zainstalowanych na potrzeby uczenia maszynowego. Wystąpienia obliczeniowe mogą służyć jako element docelowy obliczeń dla zadań szkoleniowych i inferencing. W przypadku dużych zadań [Azure Machine Learning klastrów obliczeniowych](how-to-set-up-training-targets.md#amlcompute) z możliwościami skalowania wielu węzłów jest lepszym rozwiązaniem docelowym obliczeń.
 
@@ -199,7 +196,7 @@ Nie można usunąć zarejestrowanego modelu, który jest używany przez aktywne 
 
 Aby zapoznać się z przykładem rejestrowania modelu, zobacz [uczenie modelu klasyfikacji obrazów przy użyciu Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-### <a name="runs"></a>Uruchomienia
+### <a name="runs"></a>Wyczerpani
 
 Uruchomienie to pojedyncze wykonanie skryptu szkoleniowego. Azure Machine Learning rejestruje wszystkie uruchomienia i przechowuje następujące informacje:
 
@@ -239,5 +236,5 @@ Aby zapoznać się z przykładem, zobacz [Samouczek: uczenie modelu klasyfikacji
 Aby rozpocząć pracę z Azure Machine Learning, zobacz:
 
 * [Co to jest Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md)
+* [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md)
 * [Samouczek (część 1): uczenie modelu](tutorial-train-models-with-aml.md)

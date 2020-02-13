@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 56d6e8642ffd127f0982485902c466b76cbaaeed
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 32db7b19b7ec63135c3359f9685dd767dd0921f5
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986516"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169859"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -50,17 +50,13 @@ Aby zainstalować środowisko zestawu SDK dla [komputera lokalnego](#local), [Ju
 - W systemie Linux lub macOS potrzebna jest powłoka bash.
 
     > [!TIP]
-    > Jeśli korzystasz z systemu Linux lub macOS i używasz powłoki innej niż bash (na przykład ZSH), podczas uruchamiania niektórych poleceń mogą pojawić się błędy. Aby obejść ten problem, należy użyć `bash` polecenie, aby rozpocząć nową powłokę bash, a następnie uruchom polecenia istnieje.
+    > Jeśli korzystasz z systemu Linux lub macOS i używasz powłoki innej niż bash (na przykład ZSH), podczas uruchamiania niektórych poleceń mogą pojawić się błędy. Aby obejść ten problem, użyj `bash` polecenia, aby uruchomić nową powłokę bash i uruchomić w niej polecenia.
 
 - W Windows należy wiersz polecenia lub wiersz Anaconda (zainstalowanych w ramach pakietu Anaconda i Miniconda).
 
 ## <a id="compute-instance"></a>Własne wystąpienie obliczeniowe oparte na chmurze
 
 [Wystąpienie obliczeniowe Azure Machine Learning (wersja zapoznawcza)](concept-compute-instance.md) to bezpieczna, oparta na chmurze stacja robocza platformy Azure, która zapewnia analitykom danych za pomocą serwera Jupyter notesu, JupyterLab i w pełni przygotowanego środowiska ml.
-
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.
 
 Nie ma nic do zainstalowania lub skonfigurowania wystąpienia obliczeniowego.  Utwórz ją w dowolnym momencie w obszarze roboczym Azure Machine Learning. Podaj tylko nazwę i określ typ maszyny wirtualnej platformy Azure. Wypróbuj teraz ten [Samouczek: Konfigurowanie środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
 
@@ -69,7 +65,7 @@ Dowiedz się więcej o [wystąpieniach obliczeniowych](concept-compute-instance.
 
 Aby zatrzymać naliczanie opłat za obliczenia, [Zatrzymaj wystąpienie obliczeniowe](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
-## <a id="dsvm"></a>Maszyna wirtualna do nauki o danych
+## <a id="dsvm"></a>Data Science Virtual Machine
 
 DSVM to dostosowany obraz maszyny wirtualnej (VM). Została zaprojektowana do pracy z nauką o danych, która została wstępnie skonfigurowana za pomocą:
 
@@ -208,9 +204,9 @@ Jeśli używasz komputera lokalnego (co może być również zdalną maszyną wi
     pip install <new package>
     ```
 
-### <a id="jupyter"></a>Program Jupyter Notebooks
+### <a id="jupyter"></a>Notesy Jupyter
 
-Program Jupyter Notebooks są częścią [projektu Jupyter](https://jupyter.org/). Zapewniają one interaktywne środowisko kodowania, w której utworzono dokumenty, które mieszać kodu na żywo z tekstu opisowego i grafiki. Notesy Jupyter są również doskonałym sposobem udostępniania wyników innym osobom, ponieważ można zapisać dane wyjściowe sekcji kodu w dokumencie. Notesy Jupyter notebook można zainstalować na wielu różnych platformach.
+Notesy Jupyter są częścią [projektu Jupyter](https://jupyter.org/). Zapewniają one interaktywne środowisko kodowania, w której utworzono dokumenty, które mieszać kodu na żywo z tekstu opisowego i grafiki. Notesy Jupyter są również doskonałym sposobem udostępniania wyników innym osobom, ponieważ można zapisać dane wyjściowe sekcji kodu w dokumencie. Notesy Jupyter notebook można zainstalować na wielu różnych platformach.
 
 Procedura opisana w sekcji [komputer lokalny](#local) instaluje niezbędne składniki do uruchamiania notesów Jupyter w środowisku Anaconda.
 
@@ -251,7 +247,7 @@ Aby włączyć te składniki w środowisku Jupyter Notebook:
 1. Aby skonfigurować Jupyter Notebook do korzystania z obszaru roboczego Azure Machine Learning, przejdź do sekcji [Tworzenie pliku konfiguracji obszaru roboczego](#workspace) .
 
 
-### <a id="vscode"></a>Program Visual Studio Code
+### <a id="vscode"></a>Visual Studio Code
 
 Visual Studio Code to bardzo popularny edytor kodu dla wielu platform, który obsługuje obszerny zestaw języków programowania i narzędzi za pomocą rozszerzeń dostępnych w [witrynie Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode). [Rozszerzenie Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) instaluje rozszerzenie języka [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) do kodowania we wszystkich typach środowisk Python (Virtual, Anaconda itp.). Ponadto oferuje wygodne funkcje do pracy z zasobami Azure Machine Learning i uruchamiania Azure Machine Learning eksperymentów bez opuszczania Visual Studio Code.
 
@@ -293,14 +289,14 @@ Utwórz [klaster datakostki](https://docs.microsoft.com/azure/azure-databricks/q
 
 Użyj tych ustawień:
 
-| Ustawienie |Informacje zawarte w tym artykule dotyczą| Wartość |
+| Ustawienie |Dotyczy| Wartość |
 |----|---|---|
 | Nazwa klastra |stałego| yourclustername |
 | Środowisko uruchomieniowe usługi Databricks |stałego|Środowisko uruchomieniowe inne niż ML 6,0 (Scala 2,11, Spark 2.4.3) |
 | Wersja języka Python |stałego| 3 |
 | Ochotnik |stałego| 2 lub nowszy |
 | Typy maszyn wirtualnych węzła procesu roboczego <br>(określa maksymalną liczbę współbieżnych iteracji) |Zautomatyzowane uczenie maszynowe<br>jedyn| Preferowana maszyna wirtualna zoptymalizowana pod kątem pamięci |
-| Włączanie skalowania automatycznego |Zautomatyzowane uczenie maszynowe<br>jedyn| Usuń zaznaczenie |
+| Włącz Skalowanie automatyczne |Zautomatyzowane uczenie maszynowe<br>jedyn| Usuń zaznaczenie |
 
 Przed kontynuowaniem Zaczekaj, aż klaster zostanie uruchomiony.
 
@@ -311,7 +307,7 @@ Po uruchomieniu klastra [Utwórz bibliotekę](https://docs.databricks.com/user-g
 
 1. Wybierz **tylko jedną** opcję (nie jest obsługiwana żadna inna instalacja zestawu SDK)
 
-   |Dodatki&nbsp;pakietu SDK&nbsp;|Źródło|PyPi&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |Dodatki&nbsp;pakietu SDK&nbsp;|Element źródłowy|PyPi&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Dla kostek datakostki| Przekaż Język Python lub PyPI | azureml-sdk[databricks]|
    |Dla kostek datakostks — with-<br> możliwości zautomatyzowanej ML| Przekaż Język Python lub PyPI | Azure-SDK [automl]|
@@ -365,7 +361,7 @@ Plik konfiguracji obszaru roboczego to plik JSON, który informuje zestaw SDK, j
 
 Ten plik JSON musi znajdować się w strukturze katalogów zawierającej skrypty języka Python lub notesy Jupyter. Może znajdować się w tym samym katalogu, podkatalogu o nazwie *. Azure*lub w katalogu nadrzędnym.
 
-Aby użyć tego pliku w kodzie, należy użyć `ws=Workspace.from_config()`. Ten kod ładuje dane z pliku i nawiązuje połączenie z obszarem roboczym.
+Aby użyć tego pliku z kodu, użyj `ws=Workspace.from_config()`. Ten kod ładuje dane z pliku i nawiązuje połączenie z obszarem roboczym.
 
 Plik konfiguracji można utworzyć na trzy sposoby:
 
@@ -373,7 +369,7 @@ Plik konfiguracji można utworzyć na trzy sposoby:
 
 * **Pobierz plik**: w [Azure Portal](https://ms.portal.azure.com)wybierz opcję Pobierz plik **config. JSON** z sekcji **Przegląd** w obszarze roboczym.
 
-     ![Portal Azure](./media/how-to-configure-environment/configure.png)
+     ![Portalu Azure](./media/how-to-configure-environment/configure.png)
 
 * **Utwórz plik programowo**: w poniższym fragmencie kodu Nawiąż połączenie z obszarem roboczym, podając Identyfikator subskrypcji, grupę zasobów i nazwę obszaru roboczego. Następnie zapisuje konfigurację obszaru roboczego do pliku:
 

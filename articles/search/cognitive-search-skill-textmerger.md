@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791836"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162348"
 ---
 #   <a name="text-merge-cognitive-skill"></a>Umiejętność scalania tekstu
 
@@ -23,7 +23,7 @@ Umiejętność **scalania tekstu** konsoliduje tekst z kolekcji pól w jedno pol
 > Ta umiejętność nie jest powiązana z interfejsem API Cognitive Services i nie jest naliczana opłata za korzystanie z niego. Mimo to należy [dołączyć zasób Cognitive Services](cognitive-search-attach-cognitive-services.md), aby zastąpić opcję **bezpłatnych** zasobów, która ogranicza liczbę codziennych wzbogacań dziennie.
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. umiejętności. Text. MergeSkill
+Microsoft.Skills.Text.MergeSkill
 
 ## <a name="skill-parameters"></a>Parametry umiejętności
 
@@ -31,8 +31,8 @@ W parametrach jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| insertPreTag  | Ciąg do uwzględnienia przed każdym wstawieniem. Wartość domyślna to `" "`. Aby pominąć miejsce, ustaw wartość na `""`.  |
-| insertPostTag | Ciąg do uwzględnienia po każdym wstawieniu. Wartość domyślna to `" "`. Aby pominąć miejsce, ustaw wartość na `""`.  |
+| insertPreTag  | Ciąg do uwzględnienia przed każdym wstawieniem. Wartością domyślną jest `" "`. Aby pominąć miejsce, ustaw wartość na `""`.  |
+| insertPostTag | Ciąg do uwzględnienia po każdym wstawieniu. Wartością domyślną jest `" "`. Aby pominąć miejsce, ustaw wartość na `""`.  |
 
 
 ##  <a name="sample-input"></a>Przykładowe dane wejściowe
@@ -47,7 +47,7 @@ Dokument JSON, który zapewnia użyteczne dane wejściowe dla tego umiejętnośc
       {
         "text": "The brown fox jumps over the dog",
         "itemsToInsert": ["quick", "lazy"],
-        "offsets": [3, 28],
+        "offsets": [3, 28]
       }
     }
   ]
@@ -140,7 +140,7 @@ W powyższym przykładzie przyjęto założenie, że istnieje znormalizowane pol
 }
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

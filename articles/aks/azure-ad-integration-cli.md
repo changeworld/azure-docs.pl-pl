@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: mlearned
-ms.openlocfilehash: 5b99d76ef20c288d6ae0bd33e1e2b6a75a359d3a
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 520557c80bf2630a359188dd86ec0987e0d5326b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616274"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158149"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrowanie Azure Active Directory z usługą Azure Kubernetes przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -77,8 +77,8 @@ serverApplicationSecret=$(az ad sp credential reset \
 
 Usługa Azure AD wymaga uprawnień do wykonywania następujących czynności:
 
-* Odczytaj dane katalogu
-* Loguj się i odczytuj profil użytkownika
+* Odczyt danych katalogu
+* Zaloguj się i odczytaj profil użytkownika
 
 Przypisz te uprawnienia za pomocą polecenia [AZ AD App uprawnienie Add][az-ad-app-permission-add] :
 
@@ -98,7 +98,7 @@ az ad app permission admin-consent --id  $serverApplicationId
 
 ## <a name="create-azure-ad-client-component"></a>Tworzenie składnika klienta usługi Azure AD
 
-Druga aplikacja usługi Azure AD jest używana, gdy użytkownik loguje się do klastra AKS przy użyciu interfejsu wiersza`kubectl`polecenia Kubernetes (). Ta aplikacja kliencka pobiera żądanie uwierzytelnienia od użytkownika i weryfikuje ich poświadczenia i uprawnienia. Utwórz aplikację usługi Azure AD dla składnika klienta za pomocą polecenia [AZ AD App Create][az-ad-app-create] :
+Druga aplikacja usługi Azure AD jest używana, gdy użytkownik loguje się do klastra AKS przy użyciu interfejsu wiersza polecenia Kubernetes (`kubectl`). Ta aplikacja kliencka pobiera żądanie uwierzytelnienia od użytkownika i weryfikuje ich poświadczenia i uprawnienia. Utwórz aplikację usługi Azure AD dla składnika klienta za pomocą polecenia [AZ AD App Create][az-ad-app-create] :
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \
@@ -129,7 +129,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 
 ## <a name="deploy-the-cluster"></a>Wdróż klaster
 
-Po utworzeniu dwóch aplikacji usługi Azure AD teraz Utwórz klaster AKS. Najpierw utwórz grupę zasobów za pomocą polecenia [AZ Group Create][az-group-create] . Poniższy przykład tworzy grupę zasobów w regionie wschodnim  :
+Po utworzeniu dwóch aplikacji usługi Azure AD teraz Utwórz klaster AKS. Najpierw utwórz grupę zasobów za pomocą polecenia [AZ Group Create][az-group-create] . Poniższy przykład tworzy grupę zasobów w regionie *wschodnim* :
 
 Utwórz grupę zasobów dla klastra:
 
@@ -197,7 +197,7 @@ kubectl apply -f basic-azure-ad-binding.yaml
 
 ## <a name="access-cluster-with-azure-ad"></a>Dostęp do klastra przy użyciu usługi Azure AD
 
-Teraz Przetestujmy integrację uwierzytelniania usługi Azure AD dla klastra AKS. Ustaw kontekst `kubectl` konfiguracji w celu używania zwykłych poświadczeń użytkownika. Ten kontekst przekazuje wszystkie żądania uwierzytelniania z powrotem za pomocą usługi Azure AD.
+Teraz Przetestujmy integrację uwierzytelniania usługi Azure AD dla klastra AKS. Ustaw kontekst konfiguracji `kubectl` na używanie zwykłych poświadczeń użytkownika. Ten kontekst przekazuje wszystkie żądania uwierzytelniania z powrotem za pomocą usługi Azure AD.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
@@ -209,7 +209,7 @@ Teraz Użyj [polecenia kubectl GetBinding][kubectl-get] , aby wyświetlić wszys
 kubectl get pods --all-namespaces
 ```
 
-Zostanie wyświetlony monit logowania służący do uwierzytelniania przy użyciu poświadczeń usługi Azure AD przy użyciu przeglądarki sieci Web. Po pomyślnym uwierzytelnieniu `kubectl` polecenie wyświetla zasobniki w klastrze AKS, jak pokazano w następujących przykładowych danych wyjściowych:
+Zostanie wyświetlony monit logowania służący do uwierzytelniania przy użyciu poświadczeń usługi Azure AD przy użyciu przeglądarki sieci Web. Po pomyślnym uwierzytelnieniu polecenie `kubectl` wyświetla zasobniki w klastrze AKS, jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -228,7 +228,7 @@ kube-system   metrics-server-7b97f9cd9-btxzz          1/1     Running   0       
 kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0          23h
 ```
 
-Token uwierzytelniania odebrany dla `kubectl` jest w pamięci podręcznej. Zostanie wyświetlony monit o zalogowanie się tylko po wygaśnięciu tokenu lub ponownym utworzeniu pliku konfiguracji Kubernetes.
+Token uwierzytelniania otrzymany dla `kubectl` jest buforowany. Zostanie wyświetlony monit o zalogowanie się tylko po wygaśnięciu tokenu lub ponownym utworzeniu pliku konfiguracji Kubernetes.
 
 Jeśli zostanie wyświetlony komunikat o błędzie autoryzacji po pomyślnym zalogowaniu się przy użyciu przeglądarki sieci Web, jak w poniższym przykładzie danych wyjściowych, sprawdź następujące możliwe problemy:
 
@@ -238,7 +238,7 @@ error: You must be logged in to the server (Unauthorized)
 
 * W zależności od tego, czy konto użytkownika znajduje się w tej samej dzierżawie usługi Azure AD, jest zdefiniowany odpowiedni identyfikator obiektu, czy nazwa UPN.
 * Użytkownik nie jest członkiem więcej niż 200 grup.
-* Wpis tajny zdefiniowany w rejestracji aplikacji dla serwera jest zgodny z wartością skonfigurowaną przy użyciu`--aad-server-app-secret`
+* Wpis tajny zdefiniowany w rejestracji aplikacji dla serwera jest zgodny z wartością skonfigurowaną za pomocą `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -260,7 +260,7 @@ Najlepsze rozwiązania dotyczące tożsamości i kontroli zasobów można znale�
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
-[open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md
+[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-ad-app-create]: /cli/azure/ad/app#az-ad-app-create
 [az-ad-app-update]: /cli/azure/ad/app#az-ad-app-update

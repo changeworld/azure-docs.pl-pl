@@ -17,16 +17,14 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4d06e5a2bfe05a530fe369f70880ea04f0bc3dd3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b45ba0c0b417be9cf308fedbb7fad2f6ad5fceaf
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700519"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159735"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity platform i autoryzacja autoryzacji urządzeń z uwierzytelnianiem OAuth 2,0
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Platforma tożsamości firmy Microsoft obsługuje [przyznawanie autoryzacji urządzeń](https://tools.ietf.org/html/rfc8628), co pozwala użytkownikom na logowanie się na urządzeniach z ograniczeniami, takich jak inteligentna telewizja, urządzenie IoT lub drukarka.  Aby włączyć ten przepływ, na urządzeniu zostanie wyświetlona strona sieci Web w przeglądarce na innym urządzeniu w celu zalogowania się.  Po zalogowaniu się użytkownika urządzenie będzie w stanie uzyskać tokeny dostępu i odświeżać tokeny zgodnie z wymaganiami.  
 
@@ -62,8 +60,8 @@ scope=user.read%20openid%20profile
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagane | Może być/typowe,/consumers lub/Organizations.  Może to być również dzierżawca katalogu, do którego chcesz zażądać uprawnień w formacie GUID lub przyjaznych nazw.  |
-| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
+| `tenant` | Wymagany | Może być/typowe,/consumers lub/Organizations.  Może to być również dzierżawca katalogu, do którego chcesz zażądać uprawnień w formacie GUID lub przyjaznych nazw.  |
+| `client_id` | Wymagany | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
 | `scope` | Zalecane | Rozdzielana spacjami lista [zakresów](v2-permissions-and-consent.md) , do których użytkownik ma wyrazić zgodę.  |
 
 ### <a name="device-authorization-response"></a>Odpowiedź na autoryzację urządzenia
@@ -99,12 +97,12 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Parametr | Wymagane | Opis|
+| Parametr | Wymagany | Opis|
 | -------- | -------- | ---------- |
-| `tenant`  | Wymagane | Ten sam alias dzierżawcy lub dzierżawy używany w żądaniu początkowym. | 
-| `grant_type` | Wymagane | Musi być `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Wymagane | Musi pasować do `client_id` użytego w żądaniu początkowym. |
-| `device_code`| Wymagane | `device_code` zwrócona w żądaniu autoryzacji urządzenia.  |
+| `tenant`  | Wymagany | Ten sam alias dzierżawcy lub dzierżawy używany w żądaniu początkowym. | 
+| `grant_type` | Wymagany | Musi być `urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Wymagany | Musi pasować do `client_id` użytego w żądaniu początkowym. |
+| `device_code`| Wymagany | `device_code` zwrócona w żądaniu autoryzacji urządzenia.  |
 
 ### <a name="expected-errors"></a>Oczekiwane błędy
 

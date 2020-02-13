@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0635be14937a3688792f65208dcb9d482b9e6d44
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 110e935671ab1d640b2ff3dc26c203b262e999fe
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781997"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163096"
 ---
 # <a name="preview-deploy-spot-vms-using-the-azure-cli"></a>Wersja zapoznawcza: wdrażanie maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -35,10 +35,10 @@ Proces tworzenia maszyny wirtualnej przy użyciu interfejsu wiersza polecenia pl
 > Wystąpienia punktowe są obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> W przypadku wczesnej części publicznej wersji zapoznawczej wystąpienia usługi będą miały ustaloną cenę, więc nie będzie żadnych wykluczeń opartych na cenach.
 
 
-## <a name="install-azure-cli"></a>Instalowanie interfejsu wiersza polecenia platformy Azure
+
+## <a name="install-azure-cli"></a>Zainstaluj interfejs wiersza polecenia platformy Azure
 
 Aby tworzyć maszyny wirtualne, musisz uruchomić interfejs wiersza polecenia platformy Azure w wersji 2.0.74 lub nowszej. Aby odnaleźć wersję, uruchom polecenie **az --version**. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 8062428ae63a572b81a5432c8b29910fe8422e24
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547459"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167505"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz Event Grid dla Azure Functions
 
@@ -97,7 +97,7 @@ namespace Company.Function
 
 Poniższy przykład pokazuje powiązanie wyzwalacza w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania.
 
-Oto powiązanie danych w *function.json* pliku:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -149,7 +149,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania.
 
-Oto powiązanie danych w *function.json* pliku:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -180,7 +180,7 @@ module.exports = function (context, eventGridEvent) {
 
 Poniższy przykład pokazuje powiązanie wyzwalacza w pliku *Function. JSON* i [funkcji języka Python](functions-reference-python.md) , która używa powiązania.
 
-Oto powiązanie danych w *function.json* pliku:
+Oto dane powiązania w pliku *Function. JSON* :
 
 ```json
 {
@@ -224,19 +224,7 @@ Ta sekcja zawiera następujące przykłady:
 * [Wyzwalacz Event Grid, parametr ciągu](#event-grid-trigger-string-parameter)
 * [Wyzwalacz Event Grid, parametr POJO](#event-grid-trigger-pojo-parameter)
 
-W poniższych przykładach pokazano powiązanie wyzwalacza w pliku *Function. JSON* oraz [funkcje języka Java](functions-reference-java.md) , które używają powiązania i wydrukują zdarzenie, najpierw odebrano zdarzenie jako ```String``` i drugie jako Pojo.
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ]
-}
-```
+W poniższych przykładach pokazano powiązanie wyzwalacza w [języku Java](functions-reference-java.md) , które używa powiązania i drukuje zdarzenie, po raz pierwszy otrzymuje zdarzenie jako `String` i drugie jako Pojo.
 
 ### <a name="event-grid-trigger-string-parameter"></a>Wyzwalacz Event Grid, parametr ciągu
 
@@ -332,7 +320,7 @@ Adnotacja [EventGridTrigger](https://github.com/Azure/azure-functions-java-libra
 
 ---
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* . Brak parametrów lub właściwości konstruktora do ustawienia w atrybucie `EventGridTrigger`.
 
@@ -340,9 +328,9 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 |---------|---------|
 | **type** | Wymagane — musi być ustawiony na `eventGridTrigger`. |
 | **direction** | Wymagane — musi być ustawiony na `in`. |
-| **Nazwa** | Wymagane — nazwa zmiennej używana w kodzie funkcji dla parametru, który odbiera dane zdarzenia. |
+| **Nazwij** | Wymagane — nazwa zmiennej używana w kodzie funkcji dla parametru, który odbiera dane zdarzenia. |
 
-## <a name="usage"></a>Użycie
+## <a name="usage"></a>Sposób użycia
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -428,7 +416,7 @@ Typ `EventGridEvent` definiuje tylko właściwości najwyższego poziomu; Właś
 
 Aby rozpocząć otrzymywanie Event Grid żądania HTTP, Utwórz subskrypcję Event Grid, która określa adres URL punktu końcowego, który wywołuje funkcję.
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 W przypadku funkcji, które tworzysz w Azure Portal z wyzwalaczem Event Grid, wybierz pozycję **Dodaj subskrypcję Event Grid**.
 
@@ -600,7 +588,7 @@ Funkcja wyzwalacza Event Grid wykonuje i pokazuje dzienniki podobne do poniższe
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
+> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o Event Grid](../event-grid/overview.md)

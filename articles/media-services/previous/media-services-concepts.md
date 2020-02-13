@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2126fed5231f2264ba9a0bbc13be9410bb8294da
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978836"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162909"
 ---
 # <a name="azure-media-services-concepts"></a>Koncepcje Azure Media Services 
 
@@ -29,7 +29,7 @@ Ten temat zawiera omówienie najważniejszych koncepcji Media Services.
 
 ## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>zasobów i magazynu
 ### <a name="assets"></a>Elementy zawartości
-[Zasobów](https://docs.microsoft.com/rest/api/media/operations/asset) zawiera pliki cyfrowe (w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów) oraz metadane dotyczące tych plików. Przekazane pliki cyfrowe do elementu zawartości mogą one używane w usłudze Media Services, kodowanie i przesyłanie strumieniowe przepływów pracy.
+Element [zawartości](https://docs.microsoft.com/rest/api/media/operations/asset) zawiera pliki cyfrowe (w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów) oraz metadane dotyczące tych plików. Przekazane pliki cyfrowe do elementu zawartości mogą one używane w usłudze Media Services, kodowanie i przesyłanie strumieniowe przepływów pracy.
 
 Zasób jest mapowany do kontenera obiektów BLOB na koncie usługi Azure Storage, a pliki w elemencie zawartości są przechowywane jako blokowe obiekty blob w tym kontenerze. Stronicowe obiekty blob nie są obsługiwane przez Azure Media Services.
 
@@ -108,10 +108,10 @@ Media Services obsługuje następujące kodery na żądanie, które zostały opi
 
 Aby uzyskać informacje na temat obsługiwanych koderów, zobacz [kodery](media-services-encode-asset.md).
 
-## <a name="live-streaming"></a>Przesyłanie strumieniowe na żywo
+## <a name="live-streaming"></a>Transmisja strumieniowa na żywo
 W Azure Media Services kanał reprezentuje potok służący do przetwarzania zawartości przesyłania strumieniowego na żywo. Kanał odbiera strumienie wejściowe na żywo na jeden z dwóch sposobów:
 
-* Lokalny koder na żywo wysyła do kanału protokół RTMP o dużej szybkości transmisji bitów lub Smooth Streaming (pofragmentowany plik MP4). Można użyć następujących koderów na żywo, które wychodzące z wieloszybkościowej transmisji bitów Smooth Streaming: MediaExcel, ATEME, Wyobraź Communications, Envivio, Cisco i element. Następujące kodery na żywo wyprowadzają RTMP: Adobe Flash Live Encoder, webstream Wirecast, Teradek, Haivision i TriCaster. Pozyskiwane strumienie przechodzą przez kanały bez dalszego transkodowania i kodowania. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła do kanału protokół RTMP o dużej szybkości transmisji bitów lub Smooth Streaming (pofragmentowany plik MP4). Można użyć następujących koderów na żywo, które wychodzące z wieloszybkościowej transmisji bitów Smooth Streaming: MediaExcel, ATEME, Wyobraź Communications, Envivio, Cisco i element. Następujące kodery na żywo wyprowadzają RTMP: Adobe Flash Live Encoder, [webstream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision i TriCaster. Pozyskiwane strumienie przechodzą przez kanały bez dalszego transkodowania i kodowania. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 * Strumień o pojedynczej szybkości transmisji bitów (w jednym z następujących formatów: RTMP lub Smooth Streaming (fragmentacja MP4)) jest wysyłany do kanału, w którym włączono obsługę kodowania na żywo z Media Services. Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
 ### <a name="channel"></a>Kanał
@@ -214,19 +214,19 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 
 {Nazwa punktu końcowego przesyłania strumieniowego — nazwa konta usługi Media Services}. Streaming. MediaServices. Windows. NET/{Locator ID}/{Nazwa pliku (format = MPD-Time-CSF)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = MPD-Time-CSF)
 
 * Apple HTTP Live Streaming (HLS) v4
 
 {Nazwa punktu końcowego przesyłania strumieniowego — nazwa konta usługi Media Services}. Streaming. MediaServices. Windows. NET/{Locator ID}/{Nazwa pliku (format = M3U8-AAPL)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = M3U8-AAPL)
 
 * Apple HTTP Live Streaming (HLS) v3
 
 {Nazwa punktu końcowego przesyłania strumieniowego — nazwa konta usługi Media Services}. Streaming. MediaServices. Windows. NET/{Locator ID}/{Nazwa pliku (format = M3U8-AAPL-v3)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = M3U8-AAPL-v3)
 
 ## <a name="additional-notes"></a>Uwagi dodatkowe
 
@@ -235,6 +235,6 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

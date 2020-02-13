@@ -6,23 +6,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0eabd918b5f8f52049792ceb28ef8055945d6475
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892910"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162178"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Samouczek: Tworzenie aplikacji o wysokiej dostępności przy użyciu magazynu obiektów BLOB
 
 Niniejszy samouczek jest pierwszą częścią serii. Z tego samouczka dowiesz się, jak uzyskać wysoką dostępność danych aplikacji na platformie Azure.
 
-Po ukończeniu tego samouczka będziesz mieć aplikację konsolową, która przekazuje obiekt blob na konto magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) i pobiera go z tego konta.
+Po ukończeniu tego samouczka będziesz mieć aplikację konsolową, która przekazuje obiekt blob na konto magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy.md) (RA-GRS) i pobiera go z tego konta.
 
 Działanie magazynu RA-GRS polega na replikowaniu transakcji z regionu podstawowego do pomocniczego. Ten proces replikacji gwarantuje, że dane w regionie pomocniczym ostatecznie uzyskają spójność. Aplikacja korzysta z wzorca [Wyłącznika](/azure/architecture/patterns/circuit-breaker) do określania punktu końcowego, z którym ma się połączyć, i automatycznego przełączania między punktami końcowymi podczas symulacji awarii i odzyskiwania.
 
@@ -52,13 +52,13 @@ W celu ukończenia tego samouczka:
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 
-* Zainstalowanie środowiska [Node.js](https://nodejs.org).
+* Zainstaluj program [Node. js](https://nodejs.org).
 
 ---
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
@@ -76,7 +76,7 @@ Wykonaj następujące kroki, aby utworzyć konto magazynu geograficznie nadmiaro
    | **Nazwa** | mystorageaccount | Unikatowa wartość konta magazynu |
    | **Model wdrażania** | Resource Manager  | Usługa Resource Manager oferuje najnowsze funkcje.|
    | **Rodzaj konta** | StorageV2 | Aby uzyskać więcej informacji na temat typów kont, zobacz [Typy kont magazynu](../common/storage-introduction.md#types-of-storage-accounts) |
-   | **Wydajność** | Standardowa (Standard) | Warstwa Standardowa jest wystarczająca na potrzeby przykładowego scenariusza. |
+   | **Wydajność** | Standard | Warstwa Standardowa jest wystarczająca na potrzeby przykładowego scenariusza. |
    | **Replikacja**| Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS) | Jest to niezbędne do działania przykładu. |
    |**Subskrypcja** | Twoja subskrypcja |Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.azure.com/Subscriptions). |
    |**ResourceGroup** | myResourceGroup |Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
@@ -118,7 +118,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 W aplikacji należy wprowadzić parametry połączenia konta magazynu. Te parametry połączenia można przechowywać w zmiennej środowiskowej na maszynie lokalnej z uruchomioną aplikacją. Postępuj zgodnie z jednym z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienną środowiskową.
 
-W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Kopiuj **ciąg połączenia** z klucza podstawowego lub dodatkowego. Uruchom jedno z następujących poleceń w zależności od używanego systemu operacyjnego, zastępując \<yourconnectionstring\> z rzeczywistymi parametrami połączenia. To polecenie zapisuje zmienną środowiskową na maszynie lokalnej. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**.
+W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **Klucze dostępu** w obszarze **Ustawienia** konta magazynu. Skopiuj **parametry połączenia** z klucza podstawowego lub pomocniczego. Uruchom jedno z następujących poleceń w zależności od używanego systemu operacyjnego, zastępując \<yourconnectionstring\> z rzeczywistymi parametrami połączenia. To polecenie zapisuje zmienną środowiskową na maszynie lokalnej. W systemie Windows zmienna środowiskowa nie jest dostępna do czasu ponownego załadowania używanej powłoki lub **wiersza polecenia**.
 
 ### <a name="linux"></a>Linux
 
@@ -126,7 +126,7 @@ W witrynie Azure Portal przejdź do swojego konta magazynu. Wybierz pozycję **K
 export storageconnectionstring=<yourconnectionstring>
 ```
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
 ```powershell
 setx storageconnectionstring "<yourconnectionstring>"
@@ -145,7 +145,7 @@ export accountname=<youraccountname>
 export accountkey=<youraccountkey>
 ```
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
 ```powershell
 setx accountname "<youraccountname>"

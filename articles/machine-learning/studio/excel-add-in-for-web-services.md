@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: f7b5ca7112a6fb79586dc66b385e8015fe10e0b0
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: cb91d51770c15914ff23e839cef8e7626ffd241f
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153455"
+ms.locfileid: "77168634"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Dodatek programu Excel dla usług sieci Web Azure Machine Learning Studio (klasyczny)
 Excel ułatwia wywołują usługi sieci web bezpośrednio, bez konieczności pisania kodu.

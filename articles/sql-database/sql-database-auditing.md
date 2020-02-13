@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: 8f82f0539432418f967d51f00e659ce92d1fa9b6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/11/2020
+ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719810"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161957"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Wprowadzenie do inspekcji bazy danych SQL
 
@@ -27,9 +27,6 @@ Inspekcja usługi Azure [SQL Database](sql-database-technical-overview.md) i [SQ
 
 > [!NOTE] 
 > Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 
 ## <a id="subheading-1"></a>Omówienie inspekcji usługi Azure SQL Database
 
@@ -44,11 +41,11 @@ Inspekcji bazy danych SQL można użyć do:
 >
 > - Obsługiwane są wszystkie rodzaje magazynów (v1, v2, BLOB).
 > - Wszystkie konfiguracje replikacji magazynu są obsługiwane.
+> - Magazyn za siecią wirtualną i zaporą jest obsługiwana.
 > - Usługa **Premium Storage** nie jest obecnie **obsługiwana**.
-> - **Magazyn w sieci wirtualnej** nie jest obecnie **obsługiwany**.
-> - **Magazyn za zaporą** nie jest obecnie **obsługiwany**.
 > - **Hierarchiczna przestrzeń nazw** dla **konta usługi Azure Data Lake Storage Gen2 Storage** nie jest obecnie **obsługiwana**.
-
+> - Włączanie inspekcji wstrzymanej **Azure SQL Data Warehouse** nie jest obsługiwane. Aby włączyć inspekcję, Wznów działanie hurtowni danych.
+   
 ## <a id="subheading-8"></a>Definiowanie zasad inspekcji na poziomie serwera i na poziomie bazy danych
 
 Zasady inspekcji można zdefiniować dla konkretnej bazy danych lub jako domyślne zasady serwera:
@@ -66,60 +63,51 @@ Zasady inspekcji można zdefiniować dla konkretnej bazy danych lub jako domyśl
    >
    > W przeciwnym razie zalecamy włączenie tylko inspekcji obiektów BLOB na poziomie serwera i pozostawienie wyłączonej inspekcji na poziomie bazy danych dla wszystkich baz danych.
 
-## <a id="subheading-2"></a>Skonfiguruj inspekcję bazy danych
+## <a id="subheading-2"></a>Skonfiguruj inspekcję serwera
 
 W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
 
+  > [!NOTE]
+   >Teraz masz wiele opcji konfigurowania lokalizacji dzienników inspekcji. Dzienniki można zapisywać na koncie usługi Azure Storage, w obszarze roboczym Log Analytics do użycia przez dzienniki Azure Monitor lub do centrum zdarzeń w celu użycia przy użyciu centrum zdarzeń. Można skonfigurować dowolną kombinację tych opcji, a dzienniki inspekcji będą zapisywane w każdym z nich.
+
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 2. Przejdź do opcji **Inspekcja** pod nagłówkiem zabezpieczenia w okienku baza danych SQL/serwer.
-
-    <a id="auditing-screenshot"></a>![okienku nawigacji][1]
-
 3. Jeśli wolisz skonfigurować zasady inspekcji serwera, możesz wybrać łącze **Wyświetl ustawienia serwera** na stronie Inspekcja bazy danych. Następnie można wyświetlić lub zmodyfikować ustawienia inspekcji serwera. Zasady inspekcji serwera dotyczą wszystkich istniejących i nowo utworzonych baz danych na tym serwerze.
 
     ![Okienko nawigacji][2]
 
-4. Jeśli wolisz włączyć inspekcję na poziomie bazy danych, przełącz **inspekcję** na wartość **włączone**.
-
-    Jeśli Inspekcja serwera jest włączona, inspekcja skonfigurowana dla bazy danych będzie istnieć równolegle z inspekcją serwera.
+4. Jeśli wolisz włączyć inspekcję na poziomie bazy danych, przełącz **inspekcję** na wartość **włączone**. Jeśli Inspekcja serwera jest włączona, inspekcja skonfigurowana dla bazy danych będzie istnieć równolegle z inspekcją serwera.
 
     ![Okienko nawigacji][3]
 
-5. **Nowość** — masz teraz wiele opcji konfigurowania lokalizacji, w której będą zapisywane dzienniki inspekcji. Dzienniki można zapisywać na koncie usługi Azure Storage, w obszarze roboczym Log Analytics do użycia przez dzienniki Azure Monitor lub do centrum zdarzeń w celu użycia przy użyciu centrum zdarzeń. Można skonfigurować dowolną kombinację tych opcji, a dzienniki inspekcji będą zapisywane w każdym z nich.
-  
-  > [!NOTE]
-   >Klient chcący skonfigurować niezmienny magazyn dzienników dla zdarzeń inspekcji na poziomie serwera lub bazy danych powinien postępować zgodnie z [instrukcjami dostarczonymi przez usługę Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)
-  
-  > [!WARNING]
-   > Włączenie inspekcji do Log Analytics będzie powodować naliczanie kosztów na podstawie stawek za pozyskiwanie. Zapoznaj się z powiązanym kosztem przy użyciu tej [opcji](https://azure.microsoft.com/pricing/details/monitor/)lub Rozważ przechowywanie dzienników inspekcji na koncie usługi Azure Storage.
+### <a id="audit-storage-destination">Inspekcja w miejscu docelowym magazynu</a>
 
-    ![Opcje magazynu](./media/sql-database-auditing-get-started/auditing-select-destination.png)
-
-6. Aby skonfigurować zapisywanie dzienników inspekcji na koncie magazynu, wybierz pozycję **Magazyn** i Otwórz **szczegóły magazynu**. Wybierz konto usługi Azure Storage, na którym będą zapisywane dzienniki, a następnie wybierz okres przechowywania. Stare dzienniki zostaną usunięte. Następnie kliknij przycisk **OK**.
+Aby skonfigurować zapisywanie dzienników inspekcji na koncie magazynu, wybierz pozycję **Magazyn** i Otwórz **szczegóły magazynu**. Wybierz konto usługi Azure Storage, na którym będą zapisywane dzienniki, a następnie wybierz okres przechowywania. Następnie kliknij przycisk **OK**. Dzienniki starsze niż okres przechowywania są usuwane.
 
    > [!IMPORTANT]
    > - Wartość domyślna okresu przechowywania to 0 (nieograniczony czas przechowywania). Tę wartość można zmienić, przesuwając suwak **przechowywanie (dni)** w **ustawieniach magazynu** podczas konfigurowania konta magazynu na potrzeby inspekcji.
    > - Jeśli zmienisz okres przechowywania z 0 (nieograniczony czas przechowywania) na inną wartość, należy pamiętać, że przechowywanie będzie dotyczyło tylko dzienników pisanych po zmianie wartości przechowywania (dzienniki zapisane w okresie, w którym czas przechowywania był ustawiony na nieograniczone, są zachowywane nawet po przechowywanie jest włączone)
 
-    ![konto magazynu](./media/sql-database-auditing-get-started/auditing_select_storage.png)
+   ![konto magazynu](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. Aby skonfigurować zapisywanie dzienników inspekcji do obszaru roboczego Log Analytics, wybierz pozycję **log Analytics (wersja zapoznawcza)** i Otwórz **log Analytics szczegóły**. Wybierz lub Utwórz obszar roboczy Log Analytics, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**.
+Aby skonfigurować konto magazynu w ramach sieci wirtualnej lub zapory, na serwerze musi być [Active Directory administrator](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) , Włącz opcję **Zezwalaj zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu** na koncie magazynu. Ponadto należy mieć uprawnienie "Microsoft. Authorization/roleAssignments/Write" na wybranym koncie magazynu.
 
-    ![Obszar roboczy usługi Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+Zalecamy, aby być [administratorem dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) w celu udzielenia tożsamości zarządzanej roli "Współautor danych obiektu blob magazynu". Aby dowiedzieć się więcej o uprawnieniach i kontroli dostępu opartej na rolach, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure?](../role-based-access-control/overview.md) i [Dodawanie lub usuwanie przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure Portal](../role-based-access-control/role-assignments-portal.md)
 
-8. Aby skonfigurować zapisywanie dzienników inspekcji do centrum zdarzeń, wybierz pozycję **centrum zdarzeń (wersja zapoznawcza)** i Otwórz **szczegóły centrum zdarzeń**. Wybierz centrum zdarzeń, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**. Upewnij się, że centrum zdarzeń znajduje się w tym samym regionie, w którym znajduje się baza danych i serwer.
+### <a id="audit-log-analytics-destination">Inspekcja w celu Log Analytics lokalizacji docelowej</a>
+  
+Aby skonfigurować zapisywanie dzienników inspekcji do obszaru roboczego Log Analytics, wybierz pozycję **log Analytics (wersja zapoznawcza)** i Otwórz **log Analytics szczegóły**. Wybierz lub Utwórz obszar roboczy Log Analytics, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**.
 
-    ![Centrum zdarzeń](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+   ![LogAnalyticsworkspace](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    
+  > [!WARNING]
+   > Włączenie inspekcji do Log Analytics będzie powodować naliczanie kosztów na podstawie stawek za pozyskiwanie. Zapoznaj się z powiązanym kosztem przy użyciu tej [opcji](https://azure.microsoft.com/pricing/details/monitor/)lub Rozważ przechowywanie dzienników inspekcji na koncie usługi Azure Storage.
 
-9. Kliknij przycisk **Save** (Zapisz).
-10. Jeśli chcesz dostosować zdarzenia poddane inspekcji, możesz to zrobić za pomocą [poleceń cmdlet programu PowerShell](#subheading-7) lub [interfejsu API REST](#subheading-9).
-11. Po skonfigurowaniu ustawień inspekcji można włączyć nową funkcję wykrywania zagrożeń i skonfigurować wiadomości e-mail w celu otrzymywania alertów zabezpieczeń. W przypadku korzystania z wykrywania zagrożeń otrzymywane są aktywne alerty dotyczące nietypowych działań bazy danych, które mogą wskazywać na potencjalne zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wykrywania zagrożeń](sql-database-threat-detection-get-started.md).
+### <a id="audit-event-hub-destination">Inspekcja w miejscu docelowym centrum zdarzeń</a>
 
-> [!IMPORTANT]
-> Włączanie inspekcji wstrzymanej Azure SQL Data Warehouse nie jest możliwe. Aby ją włączyć, Cofnij wstrzymanie magazynu danych.
+Aby skonfigurować zapisywanie dzienników inspekcji do centrum zdarzeń, wybierz pozycję **centrum zdarzeń (wersja zapoznawcza)** i Otwórz **szczegóły centrum zdarzeń**. Wybierz centrum zdarzeń, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**. Upewnij się, że centrum zdarzeń znajduje się w tym samym regionie, w którym znajduje się baza danych i serwer.
 
-> [!WARNING]
-> Włączenie inspekcji na serwerze, na którym znajduje się Azure SQL Data Warehouse, **spowoduje, że magazyn danych zostanie wznowiony i ponownie wstrzymany** , co może pociągnąć za sobą naliczanie opłat.
+   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
 ## <a id="subheading-3"></a>Analizowanie dzienników i raportów inspekcji
 
@@ -171,7 +159,7 @@ W przypadku wybrania opcji zapisania dzienników inspekcji na koncie usługi Azu
 
        ![Okienko nawigacji][8]
 
-- Użyj funkcji system **sys. fn_get_audit_file** (T-SQL), aby zwrócić dane dziennika inspekcji w formacie tabelarycznym. Aby uzyskać więcej informacji na temat korzystania z tej funkcji, zobacz [sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
+- Użyj funkcji system **sys. fn_get_audit_file** (T-SQL), aby zwrócić dane dziennika inspekcji w formacie tabelarycznym. Aby uzyskać więcej informacji na temat korzystania z tej funkcji, zobacz [sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - Użyj **plików inspekcji scalania** w SQL Server Management Studio (począwszy od programu SSMS 17):
     1. Z menu programu SSMS wybierz pozycję **plik** > **Otwórz** > **Scal pliki inspekcji**.
@@ -226,6 +214,9 @@ W środowisku produkcyjnym można okresowo odświeżać klucze magazynu. Podczas
 
 ## <a name="additional-information"></a>Dodatkowe informacje
 
+- Jeśli chcesz dostosować zdarzenia poddane inspekcji, możesz to zrobić za pomocą [poleceń cmdlet programu PowerShell](#subheading-7) lub [interfejsu API REST](#subheading-9).
+
+- Po skonfigurowaniu ustawień inspekcji można włączyć nową funkcję wykrywania zagrożeń i skonfigurować wiadomości e-mail w celu otrzymywania alertów zabezpieczeń. W przypadku korzystania z wykrywania zagrożeń otrzymywane są aktywne alerty dotyczące nietypowych działań bazy danych, które mogą wskazywać na potencjalne zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wykrywania zagrożeń](sql-database-threat-detection-get-started.md).
 - Aby uzyskać szczegółowe informacje na temat formatu dziennika, hierarchii folderu magazynu i konwencji nazewnictwa, zobacz [dokumentacja formatu dziennika inspekcji obiektów BLOB](https://go.microsoft.com/fwlink/?linkid=829599).
 
     > [!IMPORTANT]
@@ -233,7 +224,6 @@ W środowisku produkcyjnym można okresowo odświeżać klucze magazynu. Podczas
 
 - Dzienniki inspekcji są zapisywane w celu **dołączania obiektów BLOB** w usłudze Azure Blob Storage w ramach subskrypcji platformy Azure:
   - **Premium Storage** nie jest obecnie **obsługiwana** przez dołączenie obiektów BLOB.
-  - **Magazyn w sieci wirtualnej** nie jest obecnie **obsługiwany**.
 
 - Domyślne zasady inspekcji obejmują wszystkie akcje i następujący zestaw grup akcji, który przeprowadzi inspekcję wszystkich zapytań i procedur składowanych wykonywanych w bazie danych, jak również pomyślnie i nieudanych logowań:
 
@@ -247,7 +237,7 @@ W środowisku produkcyjnym można okresowo odświeżać klucze magazynu. Podczas
 
 - Inspekcja Azure SQL Database jest zoptymalizowana pod kątem dostępności & wydajności. Podczas bardzo dużego działania Azure SQL Database umożliwia wykonywanie operacji i może nie rejestrować niektórych zdarzeń poddawanych inspekcji.
 
-- Aby skonfigurować niezmienne inspekcje na koncie magazynu, zobacz [Zezwalanie na chronione Dodawanie obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes). Należy pamiętać, że nazwa kontenera do inspekcji to **sqldbauditlogs**.
+- Aby skonfigurować niezmienne inspekcje na koncie magazynu, zobacz [Zezwalanie na chronione Dodawanie obiektów BLOB](../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes). Należy pamiętać, że nazwa kontenera do inspekcji to **sqldbauditlogs**.
 
     > [!IMPORTANT]
     > Ustawienie Zezwalaj na chronione Dodawanie obiektów BLOB w obszarze przechowywanie na podstawie czasu jest obecnie dostępne i widoczne tylko w następujących regionach:
@@ -260,12 +250,12 @@ W środowisku produkcyjnym można okresowo odświeżać klucze magazynu. Podczas
 
 **Polecenia cmdlet programu PowerShell (w tym obsługa dodatkowych funkcji filtrowania)** :
 
-- [Tworzenie lub aktualizowanie zasad inspekcji bazy danych (Set-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseaudit)
-- [Tworzenie lub aktualizowanie zasad inspekcji serwera (Set-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit)
-- [Pobierz zasady inspekcji bazy danych (Get-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseaudit)
-- [Pobierz zasady inspekcji serwera (Get-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveraudit)
-- [Usuń zasady inspekcji bazy danych (Remove-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseaudit)
-- [Usuń zasady inspekcji serwera (Remove-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserveraudit)
+- [Tworzenie lub aktualizowanie zasad inspekcji bazy danych (Set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [Tworzenie lub aktualizowanie zasad inspekcji serwera (Set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
+- [Pobierz zasady inspekcji bazy danych (Get-AzSqlDatabaseAudit)](/powershell/module/az.sql/get-azsqldatabaseaudit)
+- [Pobierz zasady inspekcji serwera (Get-AzSqlServerAudit)](/powershell/module/az.sql/get-azsqlserveraudit)
+- [Usuń zasady inspekcji bazy danych (Remove-AzSqlDatabaseAudit)](/powershell/module/az.sql/remove-azsqldatabaseaudit)
+- [Usuń zasady inspekcji serwera (Remove-AzSqlServerAudit)](/powershell/module/az.sql/remove-azsqlserveraudit)
 
 Aby zapoznać się z przykładem skryptu, zobacz [Konfigurowanie inspekcji i wykrywania zagrożeń przy użyciu programu PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
@@ -273,21 +263,21 @@ Aby zapoznać się z przykładem skryptu, zobacz [Konfigurowanie inspekcji i wyk
 
 **REST API**:
 
-- [Utwórz lub zaktualizuj zasady inspekcji bazy danych](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [Tworzenie lub aktualizowanie zasad inspekcji serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Pobierz zasady inspekcji bazy danych](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [Pobierz zasady inspekcji serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Utwórz lub zaktualizuj zasady inspekcji bazy danych](/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [Tworzenie lub aktualizowanie zasad inspekcji serwera](/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Pobierz zasady inspekcji bazy danych](/rest/api/sql/database%20auditing%20settings/get)
+- [Pobierz zasady inspekcji serwera](/rest/api/sql/server%20auditing%20settings/get)
 
 Rozszerzone zasady z klauzulą WHERE obsługują dodatkowe filtrowanie:
 
-- [Utwórz lub zaktualizuj zasady *rozszerzonej* inspekcji bazy danych](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [Tworzenie lub aktualizowanie zasad inspekcji *rozszerzonej* serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Pobierz zasady inspekcji *rozszerzonej* bazy danych](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [Pobieranie zasad inspekcji *rozszerzonej* serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Utwórz lub zaktualizuj zasady *rozszerzonej* inspekcji bazy danych](/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [Tworzenie lub aktualizowanie zasad inspekcji *rozszerzonej* serwera](/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Pobierz zasady inspekcji *rozszerzonej* bazy danych](/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [Pobieranie zasad inspekcji *rozszerzonej* serwera](/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-9"></a>Zarządzanie usługą Azure SQL Server i inspekcją bazy danych przy użyciu szablonów Azure Resource Manager
 
-Inspekcją usługi Azure SQL Database można zarządzać przy użyciu szablonów [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) , jak pokazano w poniższych przykładach:
+Inspekcją usługi Azure SQL Database można zarządzać przy użyciu szablonów [Azure Resource Manager](../azure-resource-manager/management/overview.md) , jak pokazano w poniższych przykładach:
 
 - [Wdrożenie SQL Server platformy Azure z włączoną inspekcją w celu zapisania dzienników inspekcji na koncie usługi Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
 - [Wdróż SQL Server platformy Azure z włączoną inspekcją w celu zapisania dzienników inspekcji do Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
@@ -316,4 +306,4 @@ Inspekcją usługi Azure SQL Database można zarządzać przy użyciu szablonów
 [7]: ./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png
 [9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
-[10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png
+[10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png 

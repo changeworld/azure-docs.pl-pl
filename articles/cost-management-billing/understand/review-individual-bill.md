@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2019
 ms.author: banders
-ms.openlocfilehash: 1249758e5dd5b7e823c11890e57549195da22529
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 969fbc3fe0aa614d4284e1442f507f263d48b499
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987348"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117158"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Samouczek: Przeglądanie indywidualnego rachunku za korzystanie z platformy Azure
 
@@ -40,7 +40,7 @@ Od dnia zasubskrybowania platformy Azure musi upłynąć więcej niż 30 dni. Na
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-- Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+- Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="compare-invoiced-charges-with-usage-file"></a>Porównywanie zafakturowanych opłat z plikiem użycia
 

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 1dacc59ee0bf79128efd8920a91f3c3d54e5584a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116596"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77165980"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Samouczek: wprowadzenie do tworzenia pierwszego eksperymentu z użyciem zestawu SDK języka Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,10 +99,6 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
 1. Gdy maszyna wirtualna będzie dostępna, zostanie wyświetlona na górnym pasku narzędzi.  Można teraz uruchomić Notes przy użyciu opcji **Uruchom wszystko** na pasku narzędzi lub naciskając **klawisze SHIFT + ENTER** w komórkach kodu notesu.
 
 Jeśli masz niestandardowe widżety lub Preferuj przy użyciu Jupyter/JupyterLab wybierz listę rozwijaną **Jupyter** po prawej stronie, a następnie wybierz pozycję **Jupyter** lub **JupyterLab**. Zostanie otwarte nowe okno przeglądarki.
-
-> [!NOTE]
-> Wystąpienia obliczeniowe (wersja zapoznawcza) są obecnie dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej.  Do uruchomienia notesu można użyć maszyny wirtualnej lub wystąpienia obliczeniowego. Maszyna wirtualna będzie kontynuowała pracę i ponoszenia kosztów, chyba że zostanie zatrzymana. Możesz ją zatrzymać ręcznie z karty **obliczenia** w Studio lub zobaczyć [wpis w blogu](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342) na temat włączania zaplanowanego automatycznego zamknięcia dla maszyn wirtualnych platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 

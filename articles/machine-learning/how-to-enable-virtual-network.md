@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988225"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169959"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure ML w ramach Virtual Network platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,10 +124,6 @@ Aby korzystać z funkcji eksperymentowania Azure Machine Learning z Azure Key Va
 <a id="amlcompute"></a>
 
 ## <a name="compute-instance"></a>Użyj środowisko obliczeniowe usługi Machine Learning
-
-> [!NOTE]
-> Wystąpienia obliczeniowe (wersja zapoznawcza) są obecnie dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA** lub **Południowe Zjednoczone Królestwo**z obsługą innych regionów już wkrótce.
-> Użyj jednego z tych regionów, aby utworzyć wystąpienie obliczeniowe, które można dodać do sieci wirtualnej.
 
 Aby użyć wystąpienia obliczeniowego Azure Machine Learning lub klastra obliczeniowego w sieci wirtualnej, należy spełnić następujące wymagania dotyczące sieci:
 
@@ -255,7 +251,7 @@ Aby utworzyć klaster środowisko obliczeniowe usługi Machine Learning, wykonaj
 
     b. Z listy rozwijanej __Grupa zasobów__ wybierz grupę zasobów zawierającą sieć wirtualną.
 
-    d. Z listy rozwijanej __Sieć wirtualna__ wybierz sieć wirtualną, która zawiera podsieć.
+    c. Z listy rozwijanej __Sieć wirtualna__ wybierz sieć wirtualną, która zawiera podsieć.
 
     d. Z listy rozwijanej __podsieć__ wybierz podsieć, która ma zostać użyta.
 

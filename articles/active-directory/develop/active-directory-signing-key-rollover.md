@@ -12,18 +12,18 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d3994b56b55a7aac0ba3ab64d53b6436bc19c45b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f3585cfa7ea6f0d8afc61e899f9641d415a2e354
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698547"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161192"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Przerzucanie klucza podpisywania w Azure Active Directory
 W tym artykule omówiono, co należy wiedzieć o kluczach publicznych, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy pamiętać, że te klucze są okresowo przenoszone i w nagłych przypadkach mogą być natychmiast rzutowane. Wszystkie aplikacje, które korzystają z usługi Azure AD, powinny być w stanie programowo obsłużyć proces przerzucania kluczy lub ustanawiać okresowy proces ręcznego przerzucania. Kontynuuj odczytywanie, aby zrozumieć, jak działają klucze, jak oceniać wpływ przerzucania do aplikacji oraz jak aktualizować aplikację lub ustanawiać okresowe ręczne Przerzucanie w razie potrzeby.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Omówienie kluczy podpisywania w usłudze Azure AD
-Usługa Azure AD korzysta z kryptografii klucza publicznego opartej na standardach branżowych, aby ustanowić relację zaufania między nim i aplikacjami, które go używają. W praktyce działa to w następujący sposób: usługa Azure AD używa klucza podpisywania, który składa się z pary kluczy publiczny i prywatny. Gdy użytkownik loguje się do aplikacji korzystającej z usługi Azure AD do uwierzytelniania, usługa Azure AD tworzy token zabezpieczający zawierający informacje o użytkowniku. Ten token jest podpisany przez usługę Azure AD przy użyciu jego klucza prywatnego przed wysłaniem go z powrotem do aplikacji. Aby sprawdzić, czy token jest prawidłowy i pochodzi z usługi Azure AD, aplikacja musi sprawdzić poprawność podpisu tokenu przy użyciu klucza publicznego uwidocznionego przez usługę Azure AD, który znajduje się w [dokumencie OpenID Connect Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) lub [metadanych Federacji](azure-ad-federation-metadata.md)protokołu SAML/WS-karmionego.
+Usługa Azure AD korzysta z kryptografii klucza publicznego opartej na standardach branżowych, aby ustanowić relację zaufania między nim i aplikacjami, które go używają. W praktyce działa to w następujący sposób: usługa Azure AD używa klucza podpisywania, który składa się z pary kluczy publiczny i prywatny. Gdy użytkownik loguje się do aplikacji korzystającej z usługi Azure AD do uwierzytelniania, usługa Azure AD tworzy token zabezpieczający zawierający informacje o użytkowniku. Ten token jest podpisany przez usługę Azure AD przy użyciu jego klucza prywatnego przed wysłaniem go z powrotem do aplikacji. Aby sprawdzić, czy token jest prawidłowy i pochodzi z usługi Azure AD, aplikacja musi sprawdzić poprawność podpisu tokenu przy użyciu klucza publicznego uwidocznionego przez usługę Azure AD, który znajduje się w [dokumencie OpenID Connect Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) lub [metadanych Federacji](../azuread-dev/azure-ad-federation-metadata.md)protokołu SAML/WS-karmionego.
 
 Ze względów bezpieczeństwa klucz podpisywania usługi Azure AD jest okresowo uwzględniany, a w przypadku awarii może być natychmiast rzutowany. Wszystkie aplikacje, które integrują się z usługą Azure AD, powinny być przygotowane do obsługi zdarzenia przerzucania klucza niezależnie od tego, jak często mogą wystąpić. Jeśli tak nie jest, a aplikacja próbuje użyć wygasłego klucza do zweryfikowania podpisu w tokenie, żądanie logowania zakończy się niepowodzeniem.
 
@@ -281,7 +281,7 @@ Wykonaj poniższe kroki, aby sprawdzić, czy logika przerzucania kluczy działa.
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. W ustawieniu **\<Dodaj odcisk palca = "" >** Zmień wartość odcisku palca, zastępując dowolny znak innym. Zapisz plik **Web.config**.
+2. W ustawieniu **\<Dodaj odcisk palca = "" >** Zmień wartość odcisku palca, zastępując dowolny znak innym. Zapisz plik **Web. config** .
 3. Skompiluj aplikację, a następnie uruchom ją. Jeśli możesz zakończyć proces logowania, aplikacja pomyślnie zaktualizuje klucz, pobierając wymagane informacje z dokumentu metadanych Federacji katalogu. Jeśli masz problemy z logowaniem się, upewnij się, że zmiany w aplikacji są poprawne, odczytując [Dodawanie logowania do aplikacji sieci Web przy użyciu artykułu usługi Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) lub pobierając i sprawdzając następujący przykład kodu: [wielodostępna aplikacja w chmurze dla Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Aplikacje sieci Web chroniące zasoby i utworzone za pomocą programu Visual Studio 2008 lub 2010 oraz Windows Identity Foundation (WIF) v 1.0 dla programu .NET 3,5

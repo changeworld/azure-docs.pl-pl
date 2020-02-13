@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 20b667ae345e468bcd3db25d85b7c9de561af4bc
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 447e8a67cedbb8f78e4db9602f603fefd382693c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111482"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162943"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Używanie bazy danych programu do uzupełniania w celu dołączania baz danych na platformie Azure Eksplorator danych
 
@@ -206,8 +206,8 @@ Szablon Azure Resource Manager można wdrożyć za [pomocą Azure Portal](https:
 
 |**Ustawienie**  |**Opis**  |
 |---------|---------|
-|Nazwa klastra z flagami     |  Nazwa klastra programu z instrukcjami. Jest to klaster, na którym zostanie wdrożony ten szablon.  |
-|Nazwa dołączonych konfiguracji bazy danych    |    Nazwa dołączonego obiektu konfiguracji bazy danych. Nazwa może być dowolnym ciągiem, o ile jest unikatowa na poziomie klastra.     |
+|Nazwa klastra z flagami     |  Nazwa klastra programu monitujących; gdzie szablon zostanie wdrożony.  |
+|Nazwa dołączonych konfiguracji bazy danych    |    Nazwa dołączonego obiektu konfiguracji bazy danych. Nazwa może być dowolnym ciągiem, który jest unikatowy na poziomie klastra.     |
 |Nazwa bazy danych     |      Nazwa bazy danych, która ma zostać zastosowana. Jeśli chcesz postępować zgodnie z bazami danych lidera, użyj znaku "*".   |
 |Identyfikator zasobu klastra lidera    |   Identyfikator zasobu dla klastra lidera.      |
 |Rodzaj modyfikacji domyślnych podmiotów zabezpieczeń    |   Domyślny rodzaj modyfikacji głównej. Może być `Union`, `Replace` lub `None`. Aby uzyskać więcej informacji na temat domyślnego rodzaju modyfikacji podmiotu zabezpieczeń, zobacz [Podstawowe polecenie kontroli rodzaju modyfikacji](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |

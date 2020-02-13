@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/06/2019
+ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8124aea96ab00e7f09782531702dcb5cfa4ccdf2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eb75aa53051e7e3c424ffe131cda61324fe86b1a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701828"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159968"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Aplikacja jednostronicowa: Logowanie i wylogowywanie
 
@@ -47,7 +47,7 @@ W aplikacji nie można używać obu metod podręcznych i przekierowania. Wybór 
 
 ## <a name="sign-in-with-a-pop-up-window"></a>Logowanie za pomocą okna podręcznego
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const loginRequest = {
@@ -63,7 +63,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Otoka kątowa MSAL umożliwia Zabezpieczanie określonych tras w aplikacji przez dodanie `MsalGuard` do definicji trasy. Ta funkcja Guard wywoła metodę w celu zalogowania się, gdy zostanie uzyskany dostęp do tej trasy.
 
@@ -89,10 +89,11 @@ W przypadku okna podręcznego Włącz opcję konfiguracji `popUp`. Możesz równ
             })]
          })
 ```
+---
 
 ## <a name="sign-in-with-redirect"></a>Logowanie przy użyciu przekierowania
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Metody przekierowania nie zwracają obietnicy ze względu na przejście z głównej aplikacji. Aby przetworzyć zwrócone tokeny i uzyskać do nich dostęp, należy zarejestrować wywołania zwrotne sukcesu i błędów przed wywołaniem metod przekierowania.
 
@@ -110,12 +111,14 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Kod jest taki sam, jak opisano wcześniej w sekcji dotyczącej logowania przy użyciu okna podręcznego. Domyślny przepływ jest przekierowywany.
 
 > [!NOTE]
 > Token identyfikatora nie zawiera zgodnych zakresów i reprezentuje tylko uwierzytelnionego użytkownika. Wysłane zakresy są zwracane w tokenie dostępu, który zostanie pozyskany w następnym kroku.
+
+---
 
 ## <a name="sign-out"></a>Wylogowywanie
 
@@ -123,7 +126,7 @@ Biblioteka MSAL zapewnia metodę `logout`, która czyści pamięć podręczną w
 
 Można skonfigurować identyfikator URI, do którego ma zostać przekierowany po wylogowaniu, ustawiając `postLogoutRedirectUri`. Ten identyfikator URI powinien być również zarejestrowany jako identyfikator URI wylogowania w rejestracji aplikacji.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -140,7 +143,7 @@ userAgentApplication.logout();
 
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts
@@ -154,6 +157,8 @@ userAgentApplication.logout();
 // In app.component.ts
 this.authService.logout();
 ```
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 

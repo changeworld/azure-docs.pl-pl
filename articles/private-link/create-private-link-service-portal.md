@@ -8,16 +8,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: f62adbaea8d6549af0137f49542ee89e7531b9ef
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136168"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191098"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Szybki Start: Tworzenie usługi linku prywatnego przy użyciu Azure Portal
 
-Usługa łącza prywatnego platformy Azure odnosi się do własnej usługi, która jest zarządzana przez link prywatny. Możesz dać prywatny link do usługi lub zasobu, który działa za Azure Load Balancer. Konsumenci Twojej usługi mogą uzyskać do nich dostęp prywatnie z własnych sieci wirtualnych. W tym przewodniku szybki start dowiesz się, jak utworzyć usługę linku prywatnego przy użyciu Azure Portal.
+Usługa łącza prywatnego platformy Azure odnosi się do własnej usługi, która jest zarządzana przez link prywatny. Możesz dać prywatny link do usługi lub zasobu, który działa za usługa Load Balancer w warstwie Standardowa platformy Azure. Konsumenci Twojej usługi mogą uzyskać do nich dostęp prywatnie z własnych sieci wirtualnych. W tym przewodniku szybki start dowiesz się, jak utworzyć usługę linku prywatnego przy użyciu Azure Portal.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -37,9 +37,9 @@ W tej sekcji utworzysz sieć wirtualną. Należy również utworzyć podsieć, k
 
 1. W okienku **Tworzenie sieci wirtualnej** wprowadź lub wybierz następujące wartości:
 
-   - **Nazwa**: wprowadź **MyVNet**.
-   - **ResourceName**: wybierz pozycję **Utwórz nową**, wprowadź **MyResourceGroupLB**i wybierz **przycisk OK**.
-   - **Nazwa** > **podsieci** : wprowadź **MyBackendSubnet**.
+   - **Nazwa**: wprowadź **myVNet**.
+   - **ResourceName**: wybierz pozycję **Utwórz nową**, wprowadź **myResourceGroupLB**i wybierz **przycisk OK**.
+   - **Nazwa** > **podsieci** : wprowadź **myBackendSubnet**.
 
 1. Wybierz pozycję **Utwórz**.
 
@@ -56,12 +56,12 @@ Użyj portalu do utworzenia standardowego wewnętrznego modułu równoważenia o
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
     | **Subskrypcja**               | Wybierz subskrypcję.    |
-    | **Grupa zasobów**         | W polu Wybierz pozycję **MyResourceGroupLB** .|
+    | **Grupa zasobów**         | W polu Wybierz pozycję **myResourceGroupLB** .|
     | **Nazwa**                   | Wprowadź **myLoadBalancer**.                                   |
     | **Region**         | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).                                        |
     | **Typ**          | wybierz pozycję **Wewnętrzny**.                                        |
     | **SKU**           | Wybierz opcję **Standardowa**.                          |
-    | **Sieć wirtualna**           | Wybierz wartość **MojaSiećWirtualna**.                          |
+    | **Sieć wirtualna**           | Wybierz pozycję **myVNet**.                          |
     | **Przypisanie adresu IP**              | Wybierz wartość **Statyczny**.   |
     | **Prywatny adres IP**|Wprowadź adres znajdujący się w przestrzeni adresowej sieci wirtualnej i podsieci. Przykładem jest 10.3.0.7.  |
 
@@ -88,13 +88,13 @@ Użyj sondy kondycji, aby umożliwić usłudze równoważenia obciążenia monit
 
 Aby utworzyć sondę kondycji do monitorowania kondycji zasobów:
 
-1. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** z listy zasobów.
+1. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **myLoadBalancer** z listy zasobów.
 
 1. W obszarze **Ustawienia** wybierz pozycję **Sondy kondycji**, a następnie wybierz pozycję **Dodaj**.
 
 1. Na stronie **Dodawanie sondy kondycji** wprowadź lub wybierz następujące wartości:
 
-   - **Nazwa**: wprowadź **MyHealthProbe**.
+   - **Nazwa**: wprowadź **myHealthProbe**.
    - **Protokół**: wybierz pozycję **TCP**.
    - **Port**: wprowadź **80**.
    - **Interwał**: wprowadź **15**. Ta wartość to liczba sekund między próbami sondy.
@@ -110,23 +110,23 @@ Reguła modułu równoważenia obciążenia definiuje sposób dystrybucji ruchu 
 - Pula adresów IP zaplecza do odbierania ruchu sieciowego.
 - Wymagane porty źródłowe i docelowe.
 
-Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nasłuchuje na porcie 80 w frontonie **LoadBalancerFrontEnd** . Reguła wysyła ruch sieciowy do puli adresów zaplecza **MyBackendPool** na tym samym porcie 80.
+Reguła modułu równoważenia obciążenia o nazwie **myLoadBalancerRule** nasłuchuje na porcie 80 w frontonie **LoadBalancerFrontEnd** . Reguła wysyła ruch sieciowy do puli adresów zaplecza **myBackendPool** na tym samym porcie 80.
 
 Aby utworzyć regułę modułu równoważenia obciążenia:
 
-1. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **MyLoadBalancer** z listy zasobów.
+1. Wybierz pozycję **wszystkie zasoby** w menu po lewej stronie, a następnie wybierz pozycję **myLoadBalancer** z listy zasobów.
 
 1. W obszarze **Ustawienia**wybierz pozycję **reguły równoważenia obciążenia**, a następnie wybierz pozycję **Dodaj**.
 
 1. Na stronie **Dodaj regułę równoważenia obciążenia** wprowadź lub wybierz następujące wartości, jeśli nie są one jeszcze obecne:
 
-   - **Nazwa**: wprowadź **MyLoadBalancerRule**.
+   - **Nazwa**: wprowadź **myLoadBalancerRule**.
    - **Adres IP frontonu:** Wprowadź **LoadBalancerFrontEnd**.
    - **Protokół**: wybierz pozycję **TCP**.
    - **Port**: wprowadź **80**.
    - **Port zaplecza**: wprowadź **80**.
-   - **Pula zaplecza**: wybierz pozycję **MyBackendPool**.
-   - **Sonda kondycji**: wybierz pozycję **MyHealthProbe**. 
+   - **Pula zaplecza**: wybierz pozycję **myBackendPool**.
+   - **Sonda kondycji**: wybierz pozycję **myHealthProbe**. 
 
 1. Kliknij przycisk **OK**.
 
@@ -144,7 +144,7 @@ W tej sekcji utworzysz usługę link prywatny za usługą równoważenia obcią�
     |-------------------|------------------------------------------------------------------------------|
     | Szczegóły projektu:  |                                                                              |
     | **Subskrypcja**      | Wybierz subskrypcję.                                                     |
-    | **Grupa zasobów**    | Wybierz pozycję **MyResourceGroupLB**.                                                    |
+    | **Grupa zasobów**    | Wybierz pozycję **myResourceGroupLB**.                                                    |
     | Szczegóły wystąpienia: |                                                                              |
     | **Nazwa**              | Wprowadź **myPrivateLinkService**. |
     | **Region**            | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).                                                        |
@@ -155,9 +155,9 @@ W tej sekcji utworzysz usługę link prywatny za usługą równoważenia obcią�
 
     | Ustawienie                           | Wartość                                                                           |
     |-----------------------------------|---------------------------------------------------------------------------------|
-    | **Load Balancer**                     | Wybierz pozycję **MyLoadBalancer**.                                                           |
-    | **Load Balancer adres IP frontonu** | Wybierz adres IP frontonu **MyLoadBalancer**.                                |
-    | **Źródłowa sieć wirtualna translatora adresów sieciowych**        | Wybierz pozycję **myVNET**.                                                                   |
+    | **Load Balancer**                     | Wybierz pozycję **myLoadBalancer**.                                                           |
+    | **Load Balancer adres IP frontonu** | Wybierz adres IP frontonu **myLoadBalancer**.                                |
+    | **Źródłowa sieć wirtualna translatora adresów sieciowych**        | Wybierz pozycję **myVNet**.                                                                   |
     | **Źródłowa podsieć NAT**                 | Wybierz pozycję **myBackendSubnet**.                                                          |
     | **Włącz serwer proxy TCP v2**               | Wybierz opcję **tak** lub **nie** , w zależności od tego, czy aplikacja oczekuje nagłówka proxy protokołu TCP v2. |
     | **Ustawienia prywatnego adresu IP**       | Skonfiguruj metodę alokacji i adres IP dla każdego adresu IP translatora adresów sieciowych.                  |

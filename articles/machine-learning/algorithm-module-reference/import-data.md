@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 930ff1abf77c4e28d377daf12174ff3fbb60cf23
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152248"
+ms.locfileid: "77163198"
 ---
 # <a name="import-data-module"></a>Importuj moduł danych
 
@@ -42,7 +42,7 @@ Przed rozpoczęciem korzystania z magazynu w chmurze musisz najpierw zarejestrow
 
 Po zdefiniowaniu danych, które chcesz połączyć ze źródłem, **[Importowanie danych](./import-data.md)** powoduje, że dane są uwzględniane w poszczególnych kolumnach na podstawie wartości, które zawiera, i ładowania danych do potoku projektanta. Dane wyjściowe **importu** są zestawem danych, który może być używany z dowolnym potokiem projektanta.
 
-Jeśli dane źródłowe zmienią się, można odświeżyć zestaw danych i dodać nowe dane przez ponowne uruchomienie [importowania danych](./import-data.md). Jeśli jednak nie chcesz powtarzać odczytu ze źródła przy każdym uruchomieniu potoku, ustaw opcję **Użyj wyników z pamięci podręcznej** na wartość true. Gdy ta opcja jest zaznaczona, moduł sprawdza, czy potok został wcześniej uruchomiony przy użyciu tych samych danych źródłowych i tych samych opcji. W przypadku znalezienia poprzedniego przebiegu dane w pamięci podręcznej są używane zamiast ponownego ładowania danych ze źródła.
+Jeśli dane źródłowe zmienią się, można odświeżyć zestaw danych i dodać nowe dane przez ponowne uruchomienie [importowania danych](./import-data.md).
 
 ## <a name="how-to-configure-import-data"></a>Jak skonfigurować Importowanie danych
 
@@ -60,11 +60,7 @@ Jeśli dane źródłowe zmienią się, można odświeżyć zestaw danych i doda�
 
     ![Importowanie danych — wersja zapoznawcza](media/module/import-data.png)
 
-1. Wybierz opcję **Użyj zbuforowanych wyników** , jeśli chcesz buforować zestaw danych do ponownego użycia przy kolejnych uruchomieniach.
 
-    Przy założeniu, że nie zostały wprowadzone żadne inne zmiany parametrów modułu, potok ładuje dane tylko przy pierwszym uruchomieniu modułu, a następnie używa buforowanej wersji zestawu danych.
-
-    Usuń zaznaczenie tej opcji, jeśli konieczne jest ponowne załadowanie danych przy każdym uruchomieniu potoku.
 
 1. Uruchamianie potoku.
 

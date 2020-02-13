@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 6c5c09d0214b8ab0d427b15e5637adb5e7cbfdee
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: d6174459237399ea370ee9c36ba537391104a917
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153047"
+ms.locfileid: "77168553"
 ---
 # <a name="azure-machine-learning-studio-classic-extend-your-experiment-with-r"></a>Azure Machine Learning Studio (klasyczny): poszerzanie eksperymentu przy użyciu języka R 
 Funkcjonalność Azure Machine Learning Studio (klasyczny) można zwiększyć za pośrednictwem języka R przy użyciu modułu [skryptu wykonywania języka r][execute-r-script] .

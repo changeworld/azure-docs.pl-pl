@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 23c292a950deea262ee063b4141b07a4f64f9f84
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/05/2020
+ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061330"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162399"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Używanie Data Lake Storage Gen1 z klastrami usługi Azure HDInsight
 
@@ -43,11 +43,11 @@ Obecnie tylko niektóre typy/wersje klastrów usługi HDInsight obsługują Data
 | Typ klastra usługi HDInsight | Data Lake Storage Gen1 jako magazyn domyślny | Data Lake Storage Gen1 jako dodatkowy magazyn| Uwagi |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight w wersji 4,0 | Nie | Nie |ADLS Gen1 nie jest obsługiwana w usłudze HDInsight 4,0 |
-| HDInsight w wersji 3.6 | Tak | Tak | Z wyjątkiem bazy danych HBase|
-| HDInsight w wersji 3.5 | Tak | Tak | Z wyjątkiem bazy danych HBase|
-| HDInsight w wersji 3.4 | Nie | Tak | |
+| HDInsight w wersji 3.6 | Yes | Yes | Z wyjątkiem bazy danych HBase|
+| HDInsight w wersji 3.5 | Yes | Yes | Z wyjątkiem bazy danych HBase|
+| HDInsight w wersji 3.4 | Nie | Yes | |
 | HDInsight w wersji 3.3 | Nie | Nie | |
-| HDInsight w wersji 3.2 | Nie | Tak | |
+| HDInsight w wersji 3.2 | Nie | Yes | |
 | Storm | | |Za pomocą Data Lake Storage Gen1 można pisać dane z topologii burzowej. Data Lake Storage można również użyć do danych referencyjnych, które mogą być następnie odczytywane przez topologię burzy.|
 
 > [!WARNING]  
@@ -130,6 +130,8 @@ Aby skonfigurować dostęp Data Lake Storage z klastra usługi HDInsight, musisz
 
 > [!NOTE]  
 > Jeśli zamierzasz używać Azure Data Lake Storage Gen1 jako dodatkowego magazynu dla klastra usługi HDInsight, zdecydowanie zalecamy wykonanie tej czynności podczas tworzenia klastra zgodnie z opisem w tym artykule. Dodawanie Azure Data Lake Storage Gen1 jako dodatkowego magazynu do istniejącego klastra usługi HDInsight nie jest obsługiwanym scenariuszem.
+
+Aby uzyskać więcej informacji na temat podstaw modelu kontroli dostępu dla Data Lake Storage Gen1, zobacz [Kontrola dostępu w Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="access-files-from-the-cluster"></a>Dostęp do plików z klastra
 

@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 02/07/2020
+ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162879"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162212"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura platformy Apache Hadoop w usłudze HDInsight
 
@@ -46,6 +46,27 @@ NodeManagers uruchamia zadania wchodzące w skład aplikacji, a następnie rapor
 Wszystkie typy klastrów usługi HDInsight wdrażają PRZĘDZę. Program ResourceManager został wdrożony w celu zapewnienia wysokiej dostępności z wystąpieniem podstawowym i pomocniczym, które działa odpowiednio do pierwszego i drugiego węzła głównego w klastrze. Tylko jedno wystąpienie obiektu ResourceManager jest aktywne w danym momencie. Wystąpienia Nodemanager działają w ramach dostępnych węzłów procesu roboczego w klastrze.
 
 ![Usługa Apache PRZĘDZ w usłudze Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+
+## <a name="soft-delete"></a>Usuwanie nietrwałe
+
+Aby cofnąć usunięcie pliku z konta magazynu, zobacz:
+
+### <a name="azure-storage"></a>Azure Storage
+
+* [Soft delete for Azure Storage blobs](../storage/blobs/storage-blob-soft-delete.md) (Usuwanie nietrwałe dla obiektów blob usługi Azure Storage)
+* [Cofanie usunięcia obiektu BLOB](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
+
+[Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+[Znane problemy z Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-known-issues.md)
+
+## <a name="trash-purging"></a>Przeczyszczanie kosza
+
+Właściwość `fs.trash.interval` z systemu **HDFS** > **Zaawansowane Lokacje** muszą pozostać w wartości domyślnej `0` ponieważ nie należy przechowywać żadnych danych w lokalnym systemie plików. Ta wartość nie ma wpływu na konta magazynu zdalnego (WASB, ADLS GEN1, ABFS)
 
 ## <a name="next-steps"></a>Następne kroki
 

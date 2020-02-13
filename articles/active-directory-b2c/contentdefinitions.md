@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 724736bedd81ea45d7472a615fa22cde6916f21c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148865"
+ms.locfileid: "77157877"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -84,11 +84,11 @@ Element **DataUri** jest używany do określania identyfikatora strony. Azure AD
 | `globalexception` | Wyświetla stronę błędu w przypadku napotkania wyjątku lub błędu. |
 | `providerselection` | Wyświetla listę dostawców tożsamości, spośród których użytkownicy mogą wybierać podczas logowania. |
 | `unifiedssp` | Wyświetla formularz służący do logowania się przy użyciu konta lokalnego, które jest oparte na adresie e-mail lub nazwie użytkownika. Ta wartość udostępnia również funkcję "Przechowuj mnie" i "nie pamiętasz hasła?". link. |
-| `unifiedssp` | Wyświetla formularz służący do logowania się przy użyciu konta lokalnego, które jest oparte na adresie e-mail lub nazwie użytkownika. |
+| `unifiedssd` | Wyświetla formularz służący do logowania się przy użyciu konta lokalnego, które jest oparte na adresie e-mail lub nazwie użytkownika. |
 | `multifactor` | Weryfikuje numery telefonów przy użyciu tekstu lub głosu podczas rejestracji lub logowania. |
 | `selfasserted` | Wyświetla formularz, który umożliwia użytkownikom tworzenie lub aktualizowanie profilu. |
 
-## <a name="select-a-page-layout"></a>Wybierz układ strony
+### <a name="select-a-page-layout"></a>Wybierz układ strony
 
 [Kod po stronie klienta JavaScript](javascript-samples.md) można włączyć, wstawiając `contract` między `elements` a typem strony. Na przykład `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
@@ -126,6 +126,29 @@ Format wartości musi zawierać słowo `contract`: _urn: com: Microsoft: AAD: B2
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+
+### <a name="metadata"></a>Metadane
+
+Element **Metadata** zawiera następujące elementy:
+
+| Element | Wystąpień | Opis |
+| ------- | ----------- | ----------- |
+| Element | 0: n | Metadane odnoszące się do definicji zawartości. |
+
+Element **Item** elementu **Metadata** zawiera następujące atrybuty:
+
+| Atrybut | Wymagany | Opis |
+| --------- | -------- | ----------- |
+| Klucz | Yes | Klucz metadanych.  |
+
+#### <a name="metadata-keys"></a>Klucze metadanych
+
+Definicja zawartości obsługuje następujące elementy metadanych: 
+
+| Klucz | Wymagany | Opis |
+| --------- | -------- | ----------- |
+| DisplayName | Nie | Ciąg, który zawiera nazwę definicji zawartości. |
+
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 Element **LocalizedResourcesReferences** zawiera następujące elementy:
@@ -134,7 +157,7 @@ Element **LocalizedResourcesReferences** zawiera następujące elementy:
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | Lista zlokalizowanych odwołań do zasobów dla definicji zawartości. |
 
-Element **LocalizedResourcesReferences** zawiera następujące atrybuty:
+Element **LocalizedResourcesReference** zawiera następujące atrybuty:
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933334"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167328"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Wyzwalacz rozgrzewania Azure Functions
 
@@ -80,7 +80,7 @@ Poniższy przykład przedstawia wyzwalacz rozgrzewania w pliku *Function. JSON* 
 
 Funkcja musi mieć nazwę ```warmup``` (bez uwzględniania wielkości liter) i może istnieć tylko jedna funkcja rozgrzewania na aplikację.
 
-Oto *function.json* pliku:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -94,7 +94,7 @@ Oto *function.json* pliku:
 }
 ```
 
-[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
+W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
 
 Kod C# skryptu, który wiąże się z `HttpRequest`:
 
@@ -111,7 +111,7 @@ Poniższy przykład przedstawia wyzwalacz rozgrzewania w pliku *Function. JSON* 
 
 Funkcja musi mieć nazwę ```warmup``` (bez uwzględniania wielkości liter) i może istnieć tylko jedna funkcja rozgrzewania na aplikację.
 
-Oto *function.json* pliku:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -125,7 +125,7 @@ Oto *function.json* pliku:
 }
 ```
 
-[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
+W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
 
 Poniżej przedstawiono kod JavaScript:
 
@@ -142,7 +142,7 @@ Poniższy przykład przedstawia wyzwalacz rozgrzewania w pliku *Function. JSON* 
 
 Funkcja musi mieć nazwę ```warmup``` (bez uwzględniania wielkości liter) i może istnieć tylko jedna funkcja rozgrzewania na aplikację.
 
-Oto *function.json* pliku:
+Oto plik *Function. JSON* :
 
 ```json
 {
@@ -156,7 +156,7 @@ Oto *function.json* pliku:
 }
 ```
 
-[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
+W sekcji [Konfiguracja](#trigger---configuration) objaśniono te właściwości.
 
 Oto kod języka Python:
 
@@ -171,25 +171,9 @@ def main(warmupContext: func.Context) -> None:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Poniższy przykład przedstawia wyzwalacz rozgrzewania w pliku *Function. JSON* oraz [funkcje języka Java](functions-reference-java.md) , które będą uruchamiane w każdym nowym wystąpieniu po dodaniu go do aplikacji.
+Poniższy przykład przedstawia wyzwalacz rozgrzewania, który jest uruchamiany, gdy każde nowe wystąpienie zostanie dodane do aplikacji.
 
-Funkcja musi mieć nazwę ```warmup``` (bez uwzględniania wielkości liter) i może istnieć tylko jedna funkcja rozgrzewania na aplikację.
-
-Oto *function.json* pliku:
-
-```json
-{
-    "bindings": [
-        {
-            "type": "warmupTrigger",
-            "direction": "in",
-            "name": "warmupContext"
-        }
-    ]
-}
-```
-
-Oto kodu Java:
+Funkcja musi mieć nazwę `warmup` (bez uwzględniania wielkości liter) i może istnieć tylko jedna funkcja rozgrzewania na aplikację.
 
 ```java
 @FunctionName("Warmup")
@@ -241,13 +225,13 @@ Wyzwalacz rozgrzewania nie jest obsługiwany w języku Java jako atrybut.
 
 ## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku i `WarmupTrigger` atrybutu.
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `WarmupTrigger` atrybutu.
 
 |Właściwość Function.JSON | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-| **type** | nd.| Wymagane — musi być ustawiony na `warmupTrigger`. |
-| **direction** | nd.| Wymagane — musi być ustawiony na `in`. |
-| **Nazwa** | nd.| Wymagane — nazwa zmiennej używana w kodzie funkcji.|
+| **type** | Nie dotyczy| Wymagane — musi być ustawiony na `warmupTrigger`. |
+| **direction** | Nie dotyczy| Wymagane — musi być ustawiony na `in`. |
+| **Nazwij** | Nie dotyczy| Wymagane — nazwa zmiennej używana w kodzie funkcji.|
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
@@ -262,4 +246,4 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
+[Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)

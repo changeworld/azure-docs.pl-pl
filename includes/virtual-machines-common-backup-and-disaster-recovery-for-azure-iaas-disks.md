@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76530904"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179130"
 ---
 W tym artykule wyjaśniono, jak planować tworzenie kopii zapasowych i odzyskiwanie po awarii (DR) maszyn wirtualnych IaaS i dysków na platformie Azure. Ten dokument dotyczy zarówno dysków zarządzanych, jak i niezarządzanych.
 
@@ -33,7 +33,7 @@ Zanim zaczniemy korzystać z opcji tworzenia kopii zapasowych i odzyskiwania po 
 
 ### <a name="azure-iaas-resiliency"></a>Odporność na usługę Azure IaaS
 
-*Odporność* to tolerancja dla normalnych błędów występujących w składnikach sprzętowych. Odporność to zdolność do odzyskiwania po awarii i kontynuowania działania. Nie dotyczy to unikania awarii, ale odpowiadania na awarie w taki sposób, który pozwala uniknąć przestoju lub utraty danych. Celem odporności jest przywrócenie aplikacji do stanu pełnej funkcjonalności po wystąpieniu awarii. Usługi Azure Virtual Machines i disks zostały zaprojektowane z myślą o odporności na typowe błędy sprzętu. Przyjrzyjmy się, jak platforma Azure IaaS zapewnia tę odporność.
+*Odporność* to tolerancja dla normalnych błędów występujących w składnikach sprzętowych. Odporność to zdolność do odzyskiwania po awarii i kontynuowania działania. Nie dotyczy to unikania błędów, ale reagowanie na błędy w taki sposób, aby uniknąć przestoju lub utraty danych. Celem odporności jest przywrócenie aplikacji do stanu pełnej funkcjonalności po wystąpieniu awarii. Usługi Azure Virtual Machines i disks zostały zaprojektowane z myślą o odporności na typowe błędy sprzętu. Przyjrzyjmy się, jak platforma Azure IaaS zapewnia tę odporność.
 
 Maszyna wirtualna składa się głównie z dwóch części: serwera obliczeniowego i dysków trwałych. Oba mają wpływ na odporność na uszkodzenia maszyny wirtualnej.
 
@@ -51,7 +51,7 @@ Aby chronić obciążenia aplikacji przed przestojem z powodu tymczasowej niedos
 
 Ze względu na te oddzielne domeny błędów zlokalizowane awarie sprzętu zazwyczaj nie mają wpływu na wiele maszyn wirtualnych w zestawie w tym samym czasie. Posiadanie oddzielnych domen błędów zapewnia wysoką dostępność aplikacji. Jest to dobre rozwiązanie, aby korzystać z zestawów dostępności, gdy wymagana jest wysoka dostępność. W następnej sekcji omówiono aspekt odzyskiwania po awarii.
 
-### <a name="backup-and-disaster-recovery"></a>Kopia zapasowa i odzyskiwanie po awarii
+### <a name="backup-and-disaster-recovery"></a>Tworzenie kopii zapasowych i odzyskiwanie po awarii
 
 Odzyskiwanie po awarii to możliwość odzyskania danych z rzadkich, ale głównych, zdarzeń. Zdarzenia te obejmują nieprzejściowe, szerokie błędy skalowania, takie jak zakłócenia usługi, które mają wpływ na cały region. Odzyskiwanie awaryjne obejmuje tworzenie kopii zapasowych i archiwizowanie danych oraz może obejmować interwencję ręczną, taką jak przywracanie bazy danych z kopii zapasowej.
 
@@ -103,17 +103,17 @@ Jeśli używasz [dysków SSD Premium](../articles/virtual-machines/windows/disks
 W przypadku dysków niezarządzanych można użyć lokalnie nadmiarowego typu magazynu dla dysków IaaS, ale upewnij się, że Azure Backup jest włączona z opcją magazynu geograficznie nadmiarowego dla magazynu usługi Recovery Services.
 
 > [!NOTE]
-> W przypadku korzystania z [magazynu geograficznie nadmiarowego](../articles/storage/common/storage-redundancy-grs.md) lub [magazynu geograficznie nadmiarowego do odczytu](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) dla dysków niezarządzanych nadal potrzebne są spójne migawki na potrzeby tworzenia kopii zapasowych i odzyskiwania po awarii. Użyj zarówno [Azure Backup](https://azure.microsoft.com/services/backup/) , jak i [spójnych migawek](#alternative-solution-consistent-snapshots).
+> W przypadku korzystania z [magazynu geograficznie nadmiarowego](../articles/storage/common/storage-redundancy-grs.md) lub [magazynu geograficznie nadmiarowego do odczytu](../articles/storage/common/storage-redundancy.md) dla dysków niezarządzanych nadal potrzebne są spójne migawki na potrzeby tworzenia kopii zapasowych i odzyskiwania po awarii. Użyj zarówno [Azure Backup](https://azure.microsoft.com/services/backup/) , jak i [spójnych migawek](#alternative-solution-consistent-snapshots).
 
  Poniższa tabela zawiera podsumowanie rozwiązań dostępnych na potrzeby odzyskiwania po awarii.
 
 | Scenariusz | Automatyczna replikacja | Rozwiązanie DR |
 | --- | --- | --- |
-| Dyski SSD w warstwie Premium | Lokalna ([Magazyn lokalnie nadmiarowy](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| SSD w warstwie Premium dyski | Lokalna ([Magazyn lokalnie nadmiarowy](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Dyski zarządzane | Lokalna ([Magazyn lokalnie nadmiarowy](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Niezarządzane lokalnie nadmiarowe dyski magazynu | Lokalna ([Magazyn lokalnie nadmiarowy](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Niezarządzane geograficznie nadmiarowe dyski magazynu | Między regionami ([Magazyn Geograficznie nadmiarowy](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Spójne migawki](#alternative-solution-consistent-snapshots) |
-| Niezarządzane dyski magazynu geograficznie nadmiarowego do odczytu | Między regionami ([Magazyn Geograficznie nadmiarowy do odczytu](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Spójne migawki](#alternative-solution-consistent-snapshots) |
+| Niezarządzane dyski magazynu geograficznie nadmiarowego do odczytu | Między regionami ([Magazyn Geograficznie nadmiarowy do odczytu](../articles/storage/common/storage-redundancy.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Spójne migawki](#alternative-solution-consistent-snapshots) |
 
 Wysoka dostępność jest Najlepsza w przypadku korzystania z dysków zarządzanych w zestawie dostępności wraz z Azure Backup. W przypadku korzystania z dysków niezarządzanych można nadal używać Azure Backup do odzyskiwania po awarii. Jeśli nie możesz użyć Azure Backup, a następnie pobierając [spójne migawki](#alternative-solution-consistent-snapshots), zgodnie z opisem w dalszej części, to alternatywne rozwiązanie do tworzenia kopii zapasowych i odzyskiwania po awarii.
 
@@ -121,10 +121,10 @@ Opcje wysokiej dostępności, tworzenia kopii zapasowych i odzyskiwania po awari
 
 | Poziom |   Wysoka dostępność   | Kopia zapasowa lub odzyskiwanie po awarii |
 | --- | --- | --- |
-| Aplikacja | SQL Server AlwaysOn | Usługa Azure Backup |
+| Aplikacja | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktura    | Zestaw dostępności  | Magazyn Geograficznie nadmiarowy ze spójnymi migawkami |
 
-### <a name="using-azure-backup"></a>Korzystanie z usługi Azure Backup 
+### <a name="using-azure-backup"></a>Używanie Azure Backup 
 
 [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) może tworzyć kopie zapasowe maszyn wirtualnych z systemem Windows lub Linux do magazynu usługi Azure Recovery Services. Tworzenie kopii zapasowych i przywracanie danych o kluczowym znaczeniu dla firmy jest skomplikowane przez fakt, że należy utworzyć kopię zapasową danych o krytycznym znaczeniu dla firmy, gdy aplikacje generujące dane są uruchomione. 
 
@@ -229,7 +229,7 @@ W przypadku maszyn wirtualnych z wieloma dyskami należy skopiować wszystkie mi
 
 ## <a name="other-options"></a>Inne opcje
 
-### <a name="sql-server"></a>SQL Server
+### <a name="sql-server"></a>Oprogramowanie SQL Server
 
 SQL Server uruchomiony na maszynie wirtualnej ma wbudowane funkcje tworzenia kopii zapasowej bazy danych SQL Server w usłudze Azure Blob Storage lub w udziale plików. Jeśli konto magazynu jest magazynem geograficznie nadmiarowym lub magazyn Geograficznie nadmiarowy z dostępem do odczytu, możesz uzyskać dostęp do tych kopii zapasowych w dodatkowym centrum danych konta magazynu w przypadku awarii, z tymi samymi ograniczeniami, które zostały opisane wcześniej. Aby uzyskać więcej informacji, zobacz [wykonywanie kopii zapasowych i przywracanie SQL Server w usłudze Azure Virtual Machines](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md). Oprócz tworzenia kopii zapasowych i przywracania, [SQL Server zawsze włączonych grup dostępności](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md) mogą obsługiwać pomocnicze repliki baz danych. Ta możliwość znacznie skraca czas odzyskiwania po awarii.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: abe40898643fa2fd11952d2fb6626034fb408133
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e1ea2a90d8eaf26d514457fbf7d4b08f9204dad3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503241"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156706"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -46,10 +46,14 @@ ms.locfileid: "73503241"
            try {
                // Replace below with your own subscription key
                String speechSubscriptionKey = "YourSubscriptionKey";
-               // Replace below with your own service region (e.g., "westus").
+
+               // Replace below with your own service region (e.g., "westus", use the one of SpeechSDKParameters
+               // from here: https://aka.ms/speech/sdkregion).               
                String serviceRegion = "YourServiceRegion";
+
                // Replace below with your own filename.
                String audioFileName = "helloworld.wav";
+
                // Replace below with your own filename.
                String text = "Hello world!";
 
@@ -100,7 +104,7 @@ ms.locfileid: "73503241"
 
 1. Zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.
 
-1. Zastąp ciąg `YourServiceRegion` [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
+1. Zastąp ciąg `YourServiceRegion`[regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją (na przykład `westus` w przypadku subskrypcji bezpłatnej wersji próbnej).
 
 1. Zastąp ciąg `helloworld.wav` własnymi nazwami.
 

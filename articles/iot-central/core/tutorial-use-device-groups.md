@@ -3,27 +3,25 @@ title: Używanie grup urządzeń w aplikacji IoT Central platformy Azure | Micro
 description: Dowiedz się, jak używać grup urządzeń do analizowania danych telemetrycznych z urządzeń w aplikacji IoT Central platformy Azure.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 4fd05631e7f54b6258978f70fdd5dfb9705f989b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 758ac037fcd224d02f62239b3408b41b50390147
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026967"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167214"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Samouczek: używanie grup urządzeń do analizowania danych telemetrycznych urządzenia
-
-
 
 W tym artykule opisano, jak operator, aby użyć grup urządzeń do analizowania danych telemetrycznych urządzenia w aplikacji IoT Central platformy Azure.
 
 Grupa urządzeń to lista urządzeń zgrupowanych ze sobą, ponieważ są one zgodne z określonymi kryteriami. Grupy urządzeń ułatwiają zarządzanie, wizualizowanie i analizowanie urządzeń w dużej skali przez grupowanie urządzeń w mniejsze, logiczne grupy. Na przykład możesz utworzyć grupę urządzeń, aby wyświetlić listę wszystkich urządzeń z warunkiem klimatyzacyjnym w Seattle, aby umożliwić pracownikom znalezienie urządzeń, dla których są odpowiedzialni.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie grupy urządzeń
@@ -31,15 +29,15 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem należy ukończyć [Tworzenie aplikacji IoT Central platformy Azure](./quick-deploy-iot-central.md) i [dodać symulowane urządzenie do aplikacji IoT Central](./quick-create-pnp-device.md) przewodników Szybki Start, aby utworzyć szablon urządzenia **czujnika środowiska** do pracy z programem.
+Przed rozpoczęciem należy ukończyć [Tworzenie aplikacji IoT Central platformy Azure](./quick-deploy-iot-central.md) i [dodać symulowane urządzenie do aplikacji IoT Central](./quick-create-pnp-device.md) przewodników Szybki Start, aby utworzyć szablon urządzenia **zestawu deweloperskiego IoT DevKit** do pracy z usługą.
 
 ## <a name="create-simulated-devices"></a>Tworzenie symulowanych urządzeń
 
-Przed utworzeniem grupy urządzeń należy dodać co najmniej pięć symulowanych urządzeń z szablonu urządzenia **czujnika środowiska** do użycia w tym samouczku:
+Przed utworzeniem grupy urządzeń należy dodać co najmniej pięć symulowanych urządzeń z szablonu urządzenia **zestawu deweloperskiego IoT DevKit** do użycia w tym samouczku:
 
-![Pięć symulowanych urządzeń czujnika środowiska](./media/tutorial-use-device-groups/simulated-devices.png)
+![Pięć symulowanych urządzeń czujników](./media/tutorial-use-device-groups/simulated-devices.png)
 
-W przypadku czterech urządzeń czujnika środowiska użyj widoku **Właściwości czujnika środowiska** , aby ustawić nazwę klienta na **contoso**:
+W przypadku czterech symulowanych urządzeń czujników użyj widoku **Zarządzanie urządzeniem** , aby ustawić nazwę klienta na *contoso*:
 
 ![Ustaw nazwę klienta na contoso](./media/tutorial-use-device-groups/customer-name.png)
 
@@ -49,17 +47,17 @@ Aby utworzyć grupę urządzeń:
 
 1. W okienku po lewej stronie wybierz pozycję **grupy urządzeń** .
 
-1. Wybierz pozycję **+ Nowy**.
+1. Wybierz **+** :
 
     ![Nowa grupa urządzeń](media/tutorial-use-device-groups/image1.png)
 
-1. Nadaj grupie urządzeń nazwę, taką jak **urządzenia contoso**. Można również dodać opis. Grupa urządzeń może zawierać tylko urządzenia z jednego szablonu urządzenia. Wybierz szablon urządzenia **czujnika środowiska** , który ma być używany dla tej grupy.
+1. Nadaj grupie urządzeń nazwę *contoso Devices*. Można również dodać opis. Grupa urządzeń może zawierać tylko urządzenia z jednego szablonu urządzenia. Wybierz szablon urządzenia **zestawu deweloperskiego IoT DevKit** , który ma być używany dla tej grupy.
 
-1. Utwórz zapytanie, aby zidentyfikować urządzenia należące do firmy **contoso** dla grupy urządzeń, wybierając Właściwość **Nazwa klienta** , operator porównania **równa** się i **contoso** jako wartość. Można dodać wiele zapytań i urządzeń, które spełniają **wszystkie** kryteria, są umieszczane w grupie urządzeń. Utworzona grupa urządzeń jest dostępna dla każdego, kto ma dostęp do aplikacji, więc każda osoba może wyświetlać, modyfikować lub usuwać grupę urządzeń.
+1. Aby dostosować grupę urządzeń w celu uwzględnienia tylko urządzeń należących do firmy **contoso**, wybierz pozycję **+ Filtr**. Wybierz właściwość **Nazwa klienta** , operator porównania **równa** się i **contoso** jako wartość. Można dodać wiele filtrów i urządzeń spełniających **wszystkie** kryteria filtrowania są umieszczane w grupie urządzeń. Utworzona grupa urządzeń jest dostępna dla każdego, kto ma dostęp do aplikacji, więc każda osoba może wyświetlać, modyfikować lub usuwać grupę urządzeń:
 
     ![Zapytanie grupy urządzeń](media/tutorial-use-device-groups/image2.png)
 
-    > [!NOTE]
+    > [!TIP]
     > Grupa urządzeń jest kwerendą dynamiczną. Za każdym razem, gdy oglądasz listę urządzeń, na liście mogą znajdować się różne urządzenia. Lista zależy od tego, które urządzenia spełniają kryteria zapytania.
 
 1. Wybierz pozycję **Zapisz**.

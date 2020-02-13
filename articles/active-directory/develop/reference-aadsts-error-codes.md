@@ -16,19 +16,19 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 03f88b0b1369020d0ba5e8cb1e1b416059def21d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7798cb86606c206f027a1014802770a74aba909a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703052"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160381"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kody błędów autoryzacji i uwierzytelniania usługi Azure AD
 
 Szukasz informacji o kodach błędów AADSTS, które są zwracane z usługi tokenu zabezpieczającego (STS) Azure Active Directory (Azure AD)? Przeczytaj ten dokument, aby znaleźć AADSTS opisów błędów, poprawek i niektórych sugerowanych obejść.
 
 > [!NOTE]
-> Niniejsze informacje mają charakter wstępny i mogą ulec zmianom. Masz pytanie lub nie możesz znaleźć tego, czego szukasz? Utwórz problem w usłudze GitHub lub zapoznaj się z [pomocą techniczną i opcjami pomocy dla deweloperów](active-directory-develop-help-support.md) , aby dowiedzieć się więcej na temat innych sposobów uzyskiwania pomocy i obsługi technicznej.
+> Te informacje mają charakter wstępny i mogą ulec zmianie. Masz pytanie lub nie możesz znaleźć tego, czego szukasz? Utwórz problem w usłudze GitHub lub zapoznaj się z [pomocą techniczną i opcjami pomocy dla deweloperów](active-directory-develop-help-support.md) , aby dowiedzieć się więcej na temat innych sposobów uzyskiwania pomocy i obsługi technicznej.
 >
 > Ta dokumentacja jest dostępna dla wskazówek dotyczących deweloperów i administratorów, ale nigdy nie powinna być używana przez klienta. Kody błędów mogą ulec zmianie w dowolnym momencie w celu zapewnienia bardziej szczegółowych komunikatów o błędach, które są przeznaczone do ułatwienia deweloperom podczas kompilowania aplikacji. Aplikacje, które są zależne od tekstu lub numerów kodów błędów, zostaną złamane z upływem czasu.
 
@@ -152,7 +152,7 @@ Wyszukaj w liczbowej części zwróconego kodu błędu.  Na przykład jeśli wys
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant — uwierzytelnianie nie powiodło się. Token odświeżania jest nieprawidłowy. Błąd może być spowodowany następującymi przyczynami:<ul><li>Nagłówek powiązania tokenu jest pusty</li><li>Wartość skrótu powiązania tokenu nie jest zgodna</li></ul> |
 | AADSTS70001 | UnauthorizedClient — aplikacja jest wyłączona. |
-| AADSTS70002 | InvalidClient — błąd podczas walidacji poświadczeń. Określony client_secret nie jest zgodny z oczekiwaną wartością tego klienta. Popraw client_secret i spróbuj ponownie. Aby uzyskać więcej informacji, zobacz [Używanie kodu autoryzacji do żądania tokenu dostępu](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token). |
+| AADSTS70002 | InvalidClient — błąd podczas walidacji poświadczeń. Określony client_secret nie jest zgodny z oczekiwaną wartością tego klienta. Popraw client_secret i spróbuj ponownie. Aby uzyskać więcej informacji, zobacz [Używanie kodu autoryzacji do żądania tokenu dostępu](v2-oauth2-auth-code-flow.md#request-an-access-token). |
 | AADSTS70003 | UnsupportedGrantType — aplikacja zwróciła nieobsługiwany typ dotacji. |
 | AADSTS70004 | InvalidRedirectUri — aplikacja zwróciła nieprawidłowy identyfikator URI przekierowania. Adres przekierowania określony przez klienta nie pasuje do żadnych skonfigurowanych adresów ani żadnych adresów na liście zatwierdzonych dostawców OIDC. |
 | AADSTS70005 | UnsupportedResponseType — aplikacja zwróciła nieobsługiwany typ odpowiedzi z następujących powodów:<ul><li>typ odpowiedzi "token" nie jest włączony dla aplikacji</li><li>typ odpowiedzi „id_token” wymaga zakresu OpenID — zawiera nieobsługiwaną wartość parametru OAuth w zakodowanym kanale wctx</li></ul> |

@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: fff92057bc9812a5ef1488a46ed469382ad3ace3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85b59c6549a62f7d9945f5739d1d0fde8c0fa3b8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806885"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158914"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Używanie prywatnych punktów końcowych usługi Azure Storage (wersja zapoznawcza)
 
@@ -50,7 +50,7 @@ Podczas tworzenia prywatnego punktu końcowego należy określić konto magazynu
 > [!TIP]
 > Utwórz oddzielny prywatny punkt końcowy dla dodatkowego wystąpienia usługi Storage, aby uzyskać lepszą wydajność odczytu na kontach RA-GRS.
 
-Aby uzyskać informacje o dostępności na [koncie magazynu geograficznie nadmiarowego do odczytu](storage-redundancy-grs.md#read-access-geo-redundant-storage), musisz oddzielić prywatne punkty końcowe zarówno dla wystąpienia podstawowego, jak i pomocniczego usługi. Nie musisz tworzyć prywatnego punktu końcowego dla wystąpienia dodatkowego do **pracy w trybie failover**. Prywatny punkt końcowy będzie automatycznie łączyć się z nowym wystąpieniem podstawowym po przejściu w tryb failover.
+Aby uzyskać dostęp do odczytu do regionu pomocniczego z kontem magazynu skonfigurowanym dla magazynu geograficznie nadmiarowego, należy oddzielić prywatne punkty końcowe zarówno dla głównych, jak i dodatkowych wystąpień usługi. Nie musisz tworzyć prywatnego punktu końcowego dla wystąpienia dodatkowego do **pracy w trybie failover**. Prywatny punkt końcowy będzie automatycznie łączyć się z nowym wystąpieniem podstawowym po przejściu w tryb failover. Aby uzyskać więcej informacji na temat opcji nadmiarowości magazynu, zobacz [nadmiarowość usługi Azure Storage](storage-redundancy.md).
 
 #### <a name="resources"></a>Zasoby
 
@@ -78,7 +78,7 @@ Po rozwiązaniu adresu URL punktu końcowego magazynu spoza sieci wirtualnej z p
 
 W przykładzie przedstawionym powyżej, rekordy zasobów DNS dla konta magazynu "StorageAccountA", po rozwiązaniu spoza sieci wirtualnej obsługującej prywatny punkt końcowy, będą:
 
-| Nazwa                                                  | Typ  | Wartość                                                 |
+| Name (Nazwa)                                                  | Typ  | Wartość                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<publiczny punkt końcowy usługi Storage\>                   |
@@ -88,7 +88,7 @@ Jak wspomniano wcześniej, można odmówić lub kontrolować dostęp dla klient�
 
 Rekordy zasobów DNS dla StorageAccountA, po rozwiązaniu przez klienta w sieci wirtualnej hostującym prywatnego punktu końcowego, będą:
 
-| Nazwa                                                  | Typ  | Wartość                                                 |
+| Name (Nazwa)                                                  | Typ  | Wartość                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
@@ -104,10 +104,10 @@ Zalecane nazwy stref DNS dla prywatnych punktów końcowych usług magazynu to:
 
 | Usługa magazynu        | Nazwa strefy                            |
 | :--------------------- | :----------------------------------- |
-| Usługa Obiekty Blob           | `privatelink.blob.core.windows.net`  |
-| Data Lake Storage 2. generacji | `privatelink.dfs.core.windows.net`   |
+| Blob service           | `privatelink.blob.core.windows.net`  |
+| Usługa Data Lake Storage 2. generacji | `privatelink.dfs.core.windows.net`   |
 | Usługa plików           | `privatelink.file.core.windows.net`  |
-| Usługa kolejki          | `privatelink.queue.core.windows.net` |
+| usługa kolejki          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
 | Statyczne witryny sieci Web        | `privatelink.web.core.windows.net`   |
 
@@ -118,7 +118,7 @@ Aby uzyskać więcej informacji na temat konfigurowania własnego serwera DNS do
 - [Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
 - [Konfiguracja DNS dla prywatnych punktów końcowych](/azure/private-link/private-endpoint-overview#dns-configuration)
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Aby uzyskać szczegółowe informacje o cenach, zobacz [Cennik usługi Azure Private link](https://azure.microsoft.com/pricing/details/private-link).
 

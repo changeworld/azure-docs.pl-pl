@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f9135d0a602bfa1f36f9723311e82a4d26abe6c9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d3e4a794a948dd6bd9860c9b7e6f06ac981f86b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934555"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162501"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -43,7 +43,7 @@ Azure Load Balancer i powiązane zasoby są jawnie definiowane podczas korzystan
 | SKU | Scenariusz | Metoda | Protokoły IP | Opis |
 | --- | --- | --- | --- | --- |
 | Standardowa, podstawowa | [1. maszyna wirtualna z publicznym adresem IP (z Load Balancer lub bez niej)](#ilpip) | Reportcy adresów sieciowych, nie użyto zamaskowanego portu | TCP, UDP, ICMP, ESP | Platforma Azure używa publicznego adresu IP przypisanego do konfiguracji protokołu IP karty sieciowej tego wystąpienia. Dla tego wystąpienia są dostępne wszystkie porty tymczasowe. W przypadku korzystania z usługa Load Balancer w warstwie Standardowa należy używać [reguł ruchu wychodzącego](load-balancer-outbound-rules-overview.md) w celu jawnego definiowania łączności wychodzącej |
-| Standardowa, podstawowa | [2. publiczne Load Balancer skojarzone z maszyną wirtualną (brak publicznego adresu IP w wystąpieniu)](#lb) | Reportcy adresów sieciowych z użyciem zamaskowanego portu przy użyciu Load Balancer frontonów | TCP, UDP |Platforma Azure udostępnia publiczny adres IP publicznych frontonów Load Balancer z wieloma prywatnymi adresami IP. Platforma Azure używa tymczasowych portów frontonów do usługi. |
+| Standardowa, podstawowa | [1. maszyna wirtualna z publicznym adresem IP na poziomie wystąpienia (z lub bez Load Balancer)](#ilpip) | Reportcy adresów sieciowych, nie użyto zamaskowanego portu | TCP, UDP, ICMP, ESP | Platforma Azure używa publicznego adresu IP przypisanego do konfiguracji protokołu IP karty sieciowej tego wystąpienia. Dla tego wystąpienia są dostępne wszystkie porty tymczasowe. W przypadku korzystania z usługa Load Balancer w warstwie Standardowa [reguły wychodzące](load-balancer-outbound-rules-overview.md) nie są obsługiwane, jeśli publiczny adres IP jest przypisany do maszyny wirtualnej |
 | Brak lub podstawowa | [3. autonomiczna maszyna wirtualna (bez Load Balancer, brak publicznego adresu IP)](#defaultsnat) | Reportcy adresów sieciowych z zamaskowanem portów | TCP, UDP | Platforma Azure automatycznie wyznacza publiczny adres IP dla translatora adresów sieciowych, udostępnia ten publiczny adres IP z wieloma prywatnymi adresami IP zestawu dostępności i korzysta z portów tymczasowych tego publicznego adresu IP. Ten scenariusz jest alternatywą dla powyższych scenariuszy. Nie zalecamy jej, jeśli potrzebujesz widoczności i kontroli. |
 
 Jeśli nie chcesz, aby maszyna wirtualna mogła komunikować się z punktami końcowymi poza platformą Azure w publicznej przestrzeni adresów IP, możesz użyć sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń) w celu zablokowania dostępu zgodnie z potrzebami. Sekcja [zapobiegająca łączności wychodzącej](#preventoutbound) omawia sieciowych grup zabezpieczeń bardziej szczegółowo. Wskazówki dotyczące projektowania i wdrażania sieci wirtualnej oraz zarządzania nią bez dostępu wychodzącego wykraczają poza zakres tego artykułu.
@@ -91,7 +91,7 @@ Przykładem jest wdrożenie Azure Resource Manager, w którym aplikacja opiera s
 
 ### <a name="multife"></a>Wiele frontonów dla przepływów wychodzących
 
-#### <a name="standard-load-balancer"></a>Usługa Load Balancer w warstwie Standardowa
+#### <a name="standard-load-balancer"></a>usługa Load Balancer w warstwie Standardowa
 
 Usługa Load Balancer w warstwie Standardowa używa wszystkich kandydatów na przepływy wychodzące w tym samym czasie, gdy istnieje [wiele publicznych frontonów IP](load-balancer-multivip-overview.md) . Każdy fronton mnoży liczbę dostępnych wstępnie przyznanych portów podłączania, jeśli włączono regułę równoważenia obciążenia dla połączeń wychodzących.
 
@@ -161,9 +161,9 @@ W poniższej tabeli przedstawiono alokacje wstępne portów adresów sieciowych 
 | Rozmiar puli (wystąpienia maszyn wirtualnych) | Wstępnie przydzielony porty dla konfiguracji protokołu IP|
 | --- | --- |
 | 1-50 | 1,024 |
-| 51–100 | 512 |
-| 101–200 | 256 |
-| 201–400 | 128 |
+| 51-100 | 512 |
+| 101-200 | 256 |
+| 201-400 | 128 |
 | 401-800 | 64 |
 | 801-1000 | 32 |
 

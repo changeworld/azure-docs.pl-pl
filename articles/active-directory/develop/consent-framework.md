@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 3f95a0743ca6fadff0c7a26a796ef20659adfb80
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: cb9441e6ce19094ff72e902cdeea151041ceb963
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697748"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161146"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory struktura wyrażania zgody
 
@@ -28,7 +28,7 @@ Struktura jest oparta na użytkowniku lub administratorze, który wyraża zgodę
 
 Struktura zgody jest oparta na uwierzytelnianiu OAuth 2,0 i jego różnych przepływach, takich jak przyznawanie kodu autoryzacji i udzielanie poświadczeń klienta, przy użyciu klientów publicznych lub poufnych. Dzięki użyciu protokołu OAuth 2,0 usługa Azure AD umożliwia tworzenie wielu różnych typów aplikacji klienckich — takich jak telefon, tablet, serwer lub aplikacja sieci Web — i uzyskiwanie dostępu do wymaganych zasobów.
 
-Aby uzyskać więcej informacji na temat korzystania z struktury zgody z przyznanymi autoryzacją OAuth 2.0, zobacz [Autoryzuj dostęp do aplikacji sieci Web przy użyciu protokołu oauth 2,0 i usługi Azure AD](v1-protocols-oauth-code.md) oraz [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md). Aby uzyskać informacje na temat uzyskiwania autoryzowanego dostępu do pakietu Office 365 za pomocą Microsoft Graph, zobacz [uwierzytelnianie aplikacji z Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
+Aby uzyskać więcej informacji na temat korzystania z struktury zgody z przyznanymi autoryzacją OAuth 2.0, zobacz [Autoryzuj dostęp do aplikacji sieci Web przy użyciu protokołu oauth 2,0 i usługi Azure AD](v2-oauth2-auth-code-flow.md) oraz [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md). Aby uzyskać informacje na temat uzyskiwania autoryzowanego dostępu do pakietu Office 365 za pomocą Microsoft Graph, zobacz [uwierzytelnianie aplikacji z Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
 
 ## <a name="consent-experience---an-example"></a>Środowisko zgody — przykład
 
@@ -42,13 +42,13 @@ Poniższe kroki pokazują, jak środowisko zgody działa zarówno dla deweloper�
 
 1. Jeśli użytkownik nie jest już uwierzytelniony, punkt końcowy `/authorize` usługi Azure AD poprosi użytkownika o zalogowanie się.
 
-    ![Użytkownik lub administrator loguje się do usługi Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![Użytkownik lub administrator loguje się do usługi Azure AD](./media/consent-framework/usersignin.png)
 
 1. Po zalogowaniu się użytkownika usługa Azure AD określi, czy użytkownik musi zostać pokazany na stronie zgody. Jest to uzależnione do tego, czy użytkownik (lub administrator w jego organizacji) już wyraził zgodę na aplikację. Jeśli wyrażanie zgody nie zostało jeszcze przyznane, usługa Azure AD wyświetli komunikat z prośbą o zgodę i wyświetli wymagane uprawnienia potrzebne do działania. Zestaw uprawnień, które są wyświetlane w oknie dialogowym wyrażania zgody, są zgodne z wybranymi **uprawnieniami delegowanymi** w Azure Portal.
 
-    ![Pokazuje przykład uprawnień wyświetlanych w oknie dialogowym zgody](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Pokazuje przykład uprawnień wyświetlanych w oknie dialogowym zgody](./media/consent-framework/consent.png)
 
-1. Po udzieleniu zgody przez użytkownika kod autoryzacji jest zwracany do aplikacji, która jest realizowana w celu uzyskania tokenu dostępu i tokenu odświeżania. Aby uzyskać więcej informacji o tym przepływie, zobacz [Typ aplikacji interfejsu API sieci Web](web-api.md).
+1. Po udzieleniu zgody przez użytkownika kod autoryzacji jest zwracany do aplikacji, która jest realizowana w celu uzyskania tokenu dostępu i tokenu odświeżania. Aby uzyskać więcej informacji o tym przepływie, zobacz [przepływ kodu autoryzacji OAuth 2,0](v2-oauth2-auth-code-flow.md).
 
 1. Jako administrator możesz także wyrazić zgodę na uprawnienia delegowane aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgoda na administrowanie uniemożliwia wyświetlenie okna dialogowego wyrażania zgody dla każdego użytkownika w dzierżawie i może zostać wykonana w [Azure Portal](https://portal.azure.com) przez użytkowników z rolą administratora. Aby dowiedzieć się, które role administratorów mogą wyrazić zgodę na delegowane uprawnienia, zobacz [uprawnienia roli administratora w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 

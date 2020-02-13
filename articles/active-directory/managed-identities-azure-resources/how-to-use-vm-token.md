@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 443f1eb1576f2d6eb28d0de16f37e37912b707b9
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9ac0f4d5c10cf128b6161163a81cc171bcafbd36
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547354"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158999"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak używać tożsamości zarządzanych dla zasobów platformy Azure na maszynie wirtualnej platformy Azure w celu uzyskania tokenu dostępu 
 
@@ -43,9 +43,9 @@ Jeśli planujesz użyć przykładów Azure PowerShell w tym artykule, pamiętaj,
 > [!IMPORTANT]
 > - Granica zabezpieczeń zarządzanych tożsamości dla zasobów platformy Azure jest zasobem używanym przez program. Wszystkie kod/skrypty uruchomione na maszynie wirtualnej mogą żądać i pobierać tokeny dla wszystkich zarządzanych tożsamości. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Aplikacja kliencka może zażądać tożsamości zarządzanych dla [tokenu dostępu tylko do aplikacji](../develop/developer-glossary.md#access-token) platformy Azure w celu uzyskania dostępu do danego zasobu. Token jest [oparty na tożsamościach zarządzanych dla jednostki usługi Azure Resources](overview.md#how-does-the-managed-identities-for-azure-resources-work). W związku z tym klient nie musi rejestrować się w celu uzyskania tokenu dostępu w ramach własnej nazwy głównej usługi. Token jest odpowiedni do użycia jako token okaziciela w [wywołaniach między usługami wymagającymi poświadczeń klienta](../develop/v1-oauth2-client-creds-grant-flow.md).
+Aplikacja kliencka może zażądać tożsamości zarządzanych dla [tokenu dostępu tylko do aplikacji](../develop/developer-glossary.md#access-token) platformy Azure w celu uzyskania dostępu do danego zasobu. Token jest [oparty na tożsamościach zarządzanych dla jednostki usługi Azure Resources](overview.md#how-does-the-managed-identities-for-azure-resources-work). W związku z tym klient nie musi rejestrować się w celu uzyskania tokenu dostępu w ramach własnej nazwy głównej usługi. Token jest odpowiedni do użycia jako token okaziciela w [wywołaniach między usługami wymagającymi poświadczeń klienta](../develop/v2-oauth2-client-creds-grant-flow.md).
 
 |  |  |
 | -------------- | -------------------- |
@@ -381,7 +381,7 @@ Ta sekcja dokumentuje możliwe odpowiedzi na błędy. Stan "200 OK" jest pomyśl
 |           | access_denied | Właściciel zasobu lub serwer autoryzacji odrzucił żądanie. |  |
 |           | unsupported_response_type | Serwer autoryzacji nie obsługuje uzyskiwania tokenu dostępu przy użyciu tej metody. |  |
 |           | invalid_scope | Żądany zakres jest nieprawidłowy, nieznany lub źle sformułowany. |  |
-| Błąd wewnętrzny serwera 500 | znana | Nie można pobrać tokenu z usługi Active Directory. Aby uzyskać szczegółowe informacje, zobacz dzienniki w *\<ścieżka pliku\>* | Sprawdź, czy na maszynie wirtualnej została włączona tożsamość zarządzana dla zasobów platformy Azure. Aby uzyskać pomoc dotyczącą konfiguracji maszyny wirtualnej [, zobacz Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej przy użyciu Azure Portal](qs-configure-portal-windows-vm.md) .<br><br>Sprawdź również, czy identyfikator URI żądania HTTP GET jest poprawnie sformatowany, szczególnie identyfikator URI zasobu określony w ciągu zapytania. Zapoznaj się z sekcją "Przykładowe żądanie" w poprzedniej sekcji REST, aby zapoznać się z przykładem lub [usługami platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](services-support-msi.md) w celu uzyskania listy usług i odpowiednich identyfikatorów zasobów.
+| Błąd wewnętrzny serwera 500 | nieznany | Nie można pobrać tokenu z usługi Active Directory. Aby uzyskać szczegółowe informacje, zobacz dzienniki w *\<ścieżka pliku\>* | Sprawdź, czy na maszynie wirtualnej została włączona tożsamość zarządzana dla zasobów platformy Azure. Aby uzyskać pomoc dotyczącą konfiguracji maszyny wirtualnej [, zobacz Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej przy użyciu Azure Portal](qs-configure-portal-windows-vm.md) .<br><br>Sprawdź również, czy identyfikator URI żądania HTTP GET jest poprawnie sformatowany, szczególnie identyfikator URI zasobu określony w ciągu zapytania. Zapoznaj się z sekcją "Przykładowe żądanie" w poprzedniej sekcji REST, aby zapoznać się z przykładem lub [usługami platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](services-support-msi.md) w celu uzyskania listy usług i odpowiednich identyfikatorów zasobów.
 
 ## <a name="retry-guidance"></a>Wskazówki dotyczące ponawiania prób 
 

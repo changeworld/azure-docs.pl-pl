@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 6fd9166168a5b21900aa49d42a1dd5b81039dbcd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428757"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191278"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Szybki Start: Tworzenie pierwszego przepływu pracy przy użyciu Azure Logic Apps-Azure Portal
 
@@ -46,7 +46,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu po
    |----------|-------|-------------|
    | **Nazwa** | <> *logiki — nazwa aplikacji* | Nazwa aplikacji logiki, która może zawierać tylko litery, cyfry, łączniki (`-`), podkreślenia (`_`), nawiasów (`(`, `)`) i okresów (`.`). W tym przykładzie zastosowano "My-First-Logic-App". |
    | **Subskrypcja** | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |
-   | **Grupa zasobów** | <*Azure-resource-group-name*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/management/overview.md) używanej do organizowania powiązanych zasobów. W tym przykładzie jest stosowana wartość "My-First-LA-RG". |
+   | **Grupa zasobów** | <*Azure-Resource-Group-name*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/management/overview.md) używanej do organizowania powiązanych zasobów. W tym przykładzie jest stosowana wartość "My-First-LA-RG". |
    | **Lokalizacja** | <> *platformy Azure* | Region, w którym są przechowywane informacje o aplikacji logiki. W tym przykładzie zastosowano "zachodnie stany USA". |
    | **Log Analytics** | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. |
    ||||
@@ -116,7 +116,7 @@ Teraz Dodaj [akcję](../logic-apps/logic-apps-overview.md#logic-app-concepts) , 
 1. Jeśli wybrany łącznik poczty e-mail będzie monitował o uwierzytelnienie tożsamości, wykonaj ten krok teraz, aby utworzyć połączenie między aplikacją logiki a usługą poczty e-mail.
 
    > [!NOTE]
-   > W tym konkretnym przykładzie ręcznie uwierzytelniasz swoją tożsamość. Jednak łączniki, które wymagają uwierzytelniania, różnią się w typach uwierzytelniania, które są przez nie obsługiwane. Dostępne są również opcje konfigurowania sposobu obsługi uwierzytelniania. Na przykład w przypadku używania szablonów Azure Resource Manager do wdrożenia można Sparametryzuj i zabezpieczyć dane wejściowe, które chcesz zmienić często lub łatwo, na przykład informacje o połączeniu. Aby uzyskać więcej informacji zobacz następujące tematy:
+   > W tym konkretnym przykładzie ręcznie uwierzytelniasz swoją tożsamość. Jednak łączniki, które wymagają uwierzytelniania, różnią się w typach uwierzytelniania, które są przez nie obsługiwane. Dostępne są również opcje konfigurowania sposobu obsługi uwierzytelniania. Na przykład w przypadku używania szablonów Azure Resource Manager do wdrożenia można Sparametryzuj i poprawić zabezpieczenia danych wejściowych, które mają być często lub łatwo zmieniane, takie jak informacje o połączeniu. Aby uzyskać więcej informacji zobacz następujące tematy:
    >
    > * [Parametry szablonu dla wdrożenia](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [Autoryzuj połączenia OAuth](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)

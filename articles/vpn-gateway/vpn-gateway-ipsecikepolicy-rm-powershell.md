@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eaca48fc354f1cf37635e9729b04eaaaa882ba1c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514922"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161906"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurowanie zasad protokołu IPsec/IKE dla połączeń sieci VPN S2S lub Sieć wirtualna-sieć wirtualna
 
 W tym artykule przedstawiono procedurę konfigurowania zasad protokołu IPsec/IKE dla połączeń sieci VPN typu lokacja-lokacja lub połączenia między siecią wirtualną przy użyciu modelu wdrażania Menedżer zasobów i programu PowerShell.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about"></a>Informacje o parametrach zasad protokołu IPsec i IKE dla bram sieci VPN platformy Azure
 Standard protokołu IPsec i IKE obsługuje szeroką gamę algorytmów kryptograficznych w różnych kombinacjach. Zapoznaj się z [informacjami o wymaganiach kryptograficznych i bramami sieci VPN platformy Azure](vpn-gateway-about-compliance-crypto.md) , aby dowiedzieć się, jak to może pomóc w zapewnieniu łączności między lokalizacjami i połączeniem między sieciami wirtualnymi.

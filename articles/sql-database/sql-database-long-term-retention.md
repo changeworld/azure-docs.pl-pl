@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 0cd4c45403d59819bf7ba729ea99de76ccf967ca
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819906"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162161"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Przechowywanie Azure SQL Database kopii zapasowych przez maksymalnie 10 lat
 
-Wiele aplikacji ma przepisy prawne, zgodność lub inne cele biznesowe, które wymagają zachowania kopii zapasowych bazy danych ponad 7-35 dni udostępnionych przez Azure SQL Database [Automatyczne kopie zapasowe](sql-database-automated-backups.md). Za pomocą funkcji długoterminowego przechowywania (LTR) można przechowywać określone kopie zapasowe bazy danych SQL w usłudze [GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) BLOB Storage przez maksymalnie 10 lat. Następnie możesz przywrócić dowolną kopię zapasową jako nową bazę danych.
+Wiele aplikacji ma przepisy prawne, zgodność lub inne cele biznesowe, które wymagają zachowania kopii zapasowych bazy danych ponad 7-35 dni udostępnionych przez Azure SQL Database [Automatyczne kopie zapasowe](sql-database-automated-backups.md). Za pomocą funkcji długoterminowego przechowywania (LTR) można przechowywać określone pełne kopie zapasowe bazy danych SQL w usłudze Azure Blob Storage za pomocą magazynu geograficznie nadmiarowego do odczytu przez maksymalnie 10 lat. Następnie można przywrócić wszystkie kopie zapasowe jako nową bazę danych. Aby uzyskać więcej informacji o nadmiarowości usługi Azure Storage, zobacz [nadmiarowość usługi Azure Storage](../storage/common/storage-redundancy.md).
 
 > [!NOTE]
 > Można włączyć funkcję LTR dla jednej bazy danych i puli. Nie jest jeszcze dostępna dla baz danych wystąpień w zarządzanych wystąpieniach. Zadań programu SQL Agent można użyć do zaplanowania [kopii zapasowych bazy danych tylko do kopiowania](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) jako alternatywy dla listy odwołującej więcej niż 35 dni.
@@ -32,15 +32,15 @@ Długoterminowe przechowywanie kopii zapasowych (LTR) wykorzystuje pełne kopie 
 
 Przykłady zasad LTR:
 
--  W = 0, M = 0, Y = 5, WeekOfYear = 3
+-  W=0, M=0, Y=5, WeekOfYear=3
 
    Trzecia pełna kopia zapasowa każdego roku będzie utrzymywana przez pięć lat.
    
-- W = 0, M = 3, Y = 0
+- W=0, M=3, Y=0
 
    Pierwsza pełna kopia zapasowa każdego miesiąca będzie utrzymywana przez trzy miesiące.
 
-- W = 12, M = 0, Y = 0
+- W=12, M=0, Y=0
 
    Każde cotygodniowe pełne kopie zapasowe będą przechowywane przez 12 tygodni.
 

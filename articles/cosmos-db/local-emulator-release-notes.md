@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 3878f6d01a2adfff2adc6a22aad20a5f83992b8d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719691"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168650"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos emulator — informacje o wersji i pobrania
 
@@ -25,6 +25,10 @@ W tym artykule przedstawiono informacje o wersji emulatora usługi Azure Cosmos 
 |**Rozpoczęcie pracy**|[Opracowywanie lokalnie za pomocą emulatora usługi Azure Cosmos](local-emulator.md)|
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="291"></a>2.9.1
+
+- W tej wersji rozwiązano kilka problemów z obsługą interfejsu API zapytań i przywraca zgodność ze starszymi serwerami OSs, takimi jak Windows Server 2012.
 
 ### <a name="290"></a>2.9.0
 

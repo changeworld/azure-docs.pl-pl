@@ -6,22 +6,22 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 0d8d1b37e7f5ebb6eef1c76e4324041c48ab8986
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 021d00b9fb02f2f5ea2560038741efec11b8cbc0
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995747"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169182"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autoryzuj dostęp do zasobów Event Hubs przy użyciu Azure Active Directory
 Usługa Azure Event Hubs obsługuje używanie Azure Active Directory (Azure AD) do autoryzacji żądań Event Hubs zasobów. Za pomocą usługi Azure AD można używać kontroli dostępu opartej na rolach (RBAC) do udzielania uprawnień podmiotowi zabezpieczeń, który może być użytkownikiem lub podmiotem usługi aplikacji. Aby dowiedzieć się więcej o rolach i przypisaniach ról, zobacz [opis różnych ról](../role-based-access-control/overview.md).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Gdy podmiot zabezpieczeń (użytkownik lub aplikacja) próbuje uzyskać dostęp do zasobu Event Hubs, żądanie musi być autoryzowane. W przypadku usługi Azure AD dostęp do zasobu jest procesem dwuetapowym. 
 
- 1. Najpierw jest uwierzytelniana tożsamość podmiotu zabezpieczeń i zwracany jest token OAuth 2,0. Nazwa zasobu do żądania tokenu to `https://eventhubs.azure.net/`.
+ 1. Najpierw jest uwierzytelniana tożsamość podmiotu zabezpieczeń i zwracany jest token OAuth 2,0. Nazwa zasobu do żądania tokenu jest `https://eventhubs.azure.net/`.
  1. Następnie token jest przesyłany w ramach żądania do usługi Event Hubs, aby autoryzować dostęp do określonego zasobu.
 
 Krok uwierzytelniania wymaga, aby żądanie aplikacji zawierało token dostępu OAuth 2,0 w czasie wykonywania. Jeśli aplikacja jest uruchomiona w ramach jednostki platformy Azure, takiej jak maszyna wirtualna platformy Azure, zestaw skalowania maszyn wirtualnych lub aplikacja funkcji platformy Azure, może używać tożsamości zarządzanej do uzyskiwania dostępu do zasobów. Aby dowiedzieć się, jak uwierzytelniać żądania wysyłane przez zarządzaną tożsamość do usługi Event Hubs, zobacz temat [uwierzytelnianie dostępu do zasobów usługi azure Event Hubs za pomocą Azure Active Directory i zarządzanych tożsamości dla zasobów platformy Azure](authenticate-managed-identity.md). 
@@ -38,25 +38,33 @@ Gdy rola RBAC jest przypisana do podmiotu zabezpieczeń usługi Azure AD, platfo
 ## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Wbudowane role RBAC dla usługi Azure Event Hubs
 Platforma Azure udostępnia następujące wbudowane role RBAC do autoryzowania dostępu do danych Event Hubs przy użyciu usługi Azure AD i uwierzytelniania OAuth:
 
-- [Właściciel danych Event Hubs platformy Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Ta rola umożliwia pełen dostęp do zasobów Event Hubs.
-- [Nadawca danych Event Hubs platformy Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Ta rola służy do nadawania dostępu Event Hubs do zasobów.
-- [Usługa Azure Event Hubs Data Receiver](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Ta rola umożliwia nadanie dostępu do zasobów Event Hubs lub otrzymywanie do nich.
+- [Właściciel danych Event Hubs platformy Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Użyj tej roli, aby zapewnić pełen dostęp do zasobów Event Hubs.
+- [Nadawca danych Event Hubs platformy Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Ta rola umożliwia nadanie dostępu Event Hubs do zasobów.
+- [Usługa Azure Event Hubs Data Receiver](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Użyj tej roli, aby przyznać dostęp do zasobów Event Hubs i odbierać do nich.
 
 ## <a name="resource-scope"></a>Zakres zasobów 
 Przed przypisaniem roli RBAC do podmiotu zabezpieczeń należy określić zakres dostępu, który powinien mieć podmiot zabezpieczeń. Najlepsze rozwiązania określają, że zawsze najlepiej jest przyznać tylko najwęższy możliwy zakres.
 
 Na poniższej liście opisano poziomy, w których można określić zakres dostępu do zasobów Event Hubs, rozpoczynając od najwęższego zakresu:
 
-- **Grupy użytkowników**: W tym zakresie przypisanie roli ma zastosowanie tylko do tej jednostki. Obecnie Azure Portal nie obsługuje przypisywania roli RBAC do podmiotu zabezpieczeń na tym poziomie. 
-- **Centrum zdarzeń**: Przypisanie roli dotyczy jednostki centrum zdarzeń i grupy konsumentów.
-- **Przestrzeń nazw**: Przypisanie roli obejmuje całą topologię Event Hubs w przestrzeni nazw oraz do skojarzonej z nią grupy odbiorców.
-- **Grupa zasobów**: Przypisanie roli dotyczy wszystkich zasobów Event Hubs w grupie zasobów.
-- **Subskrypcja**: Przypisanie roli dotyczy wszystkich zasobów Event Hubs we wszystkich grupach zasobów w subskrypcji.
+- **Grupa konsumentów**: w tym zakresie przypisanie roli ma zastosowanie tylko do tej jednostki. Obecnie Azure Portal nie obsługuje przypisywania roli RBAC do podmiotu zabezpieczeń na tym poziomie. 
+- **Centrum zdarzeń**: przypisanie roli dotyczy jednostki centrum zdarzeń i grupy konsumentów.
+- **Przestrzeń nazw**: przypisanie roli obejmuje całą topologię Event Hubs w przestrzeni nazw oraz do skojarzonej z nią grupy odbiorców.
+- **Grupa zasobów**: przypisanie roli dotyczy wszystkich zasobów Event Hubs w grupie zasobów.
+- **Subskrypcja**: przypisanie roli dotyczy wszystkich zasobów Event Hubs we wszystkich grupach zasobów w subskrypcji.
 
 > [!NOTE]
 > Należy pamiętać, że propagacja ról RBAC może potrwać do 5 minut. 
 
 Aby uzyskać więcej informacji na temat sposobu definiowania wbudowanych ról, zobacz [Omówienie definicji ról](../role-based-access-control/role-definitions.md#management-and-data-operations). Aby uzyskać informacje na temat tworzenia niestandardowych ról RBAC, zobacz [Tworzenie ról niestandardowych dla Access Control opartej na rolach](../role-based-access-control/custom-roles.md).
+
+## <a name="samples"></a>Przykłady
+- [Przykłady Microsoft. Azure. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
+    
+    Te przykłady używają starej biblioteki **Microsoft. Azure. EventHubs** , ale można ją łatwo zaktualizować do korzystania z najnowszej biblioteki **Azure. Messaging. EventHubs** . Aby przenieść przykład z używania starej biblioteki do nowej, zapoznaj się z [przewodnikiem migrowania z Microsoft. Azure. EventHubs do platformy Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
+- [Przykłady dla platformy Azure. Messaging. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+
+    Ten przykład został zaktualizowany, aby można było użyć najnowszej biblioteki **Azure. Messaging. EventHubs** .
 
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się, jak przypisać wbudowaną rolę RBAC do podmiotu zabezpieczeń, zobacz temat [uwierzytelnianie dostępu do zasobów Event Hubs przy użyciu Azure Active Directory](authenticate-application.md).

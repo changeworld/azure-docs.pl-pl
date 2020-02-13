@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: ec34ed723e9b0743a9a5fbbe6413659dd63b0e8a
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134928"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162535"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
@@ -31,7 +31,7 @@ ms.locfileid: "77134928"
 W Azure Media Services (AMS) **kanał** reprezentuje potok służący do przetwarzania zawartości przesyłania strumieniowego na żywo. **Kanał** odbiera strumienie wejściowe na żywo na jeden z dwóch sposobów:
 
 * Lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów do kanału, w którym włączono obsługę kodowania na żywo za pomocą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (fragmentacja MP4). Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
-* Lokalny koder na żywo wysyła protokół **RTMP** o dużej szybkości transmisji bitów lub **Smooth Streaming** (pofragmentowany plik MP4) do kanału, w którym nie włączono kodowania na żywo z użyciem usługi AMS. Pozyskiwane strumienie są przekazywane przez **kanał**bez żadnego dalszego przetwarzania. Ta metoda jest nazywana **przekazywaniem**. Można użyć następujących koderów na żywo, które wychodzące z wieloszybkościowej transmisji bitów Smooth Streaming: MediaExcel, ATEME, Wyobraź Communications, Envivio, Cisco i element. Następujące kodery na żywo wyjściowe RTMP: Telestream Wirecast, Haivision, Teradek i TriCaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła protokół **RTMP** o dużej szybkości transmisji bitów lub **Smooth Streaming** (pofragmentowany plik MP4) do kanału, w którym nie włączono kodowania na żywo z użyciem usługi AMS. Pozyskiwane strumienie są przekazywane przez **kanał**bez żadnego dalszego przetwarzania. Ta metoda jest nazywana **przekazywaniem**. Można użyć następujących koderów na żywo, które wychodzące z wieloszybkościowej transmisji bitów Smooth Streaming: MediaExcel, ATEME, Wyobraź Communications, Envivio, Cisco i element. Następujące kodery na żywo wyjściowe RTMP: [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek i TriCaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
   > [!NOTE]
   > Użycie metody przekazującej to najbardziej ekonomiczny sposób na przesyłanie strumieniowe na żywo.
@@ -146,7 +146,7 @@ Zagadnienia do rozważenia:
 * częstotliwość próbkowania 44,1 kHz
 * Pakowanie ADTS w stylu MPEG-2
 * Zalecane kodery obejmują:
-* Wirecast telestrumienia
+* [Wirecast telestrumienia](media-services-configure-wirecast-live-encoder.md)
 * Koder na żywo usługi Flash Media
 
 #### <a name="single-bitrate-fragmented-mp4-smooth-streaming"></a>Pojedyncza szybkość transmisji bitów podzielonej zawartości w formacie MP4 (Smooth Streaming)

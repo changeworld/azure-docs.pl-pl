@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 483603b8ff2f4b51f85d21d6ff4f02ad6f8a8272
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046084"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162093"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -73,7 +73,7 @@ Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem
 
 Polecenie cmdlet do oceny można zainstalować, instalując moduł AZ PowerShell module, który można zainstalować, postępując zgodnie z instrukcjami tutaj: [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-#### <a name="usage"></a>Użycie  
+#### <a name="usage"></a>Sposób użycia  
 Narzędzie do oceny można wywołać na kilka różnych sposobów: można wykonać testy systemowe, zestawy danych lub oba te elementy. Aby przeprowadzić testy systemu i zestawu danych: 
 
 ```powershell
@@ -122,7 +122,7 @@ Aby wyświetlić wyniki w formacie CSV:
 
 ### <a name="file-system-features"></a>Funkcje systemu plików
 
-| Funkcja | Stan obsługi | Uwagi |
+| Cecha | Stan pomocy technicznej | Uwagi |
 |---------|----------------|-------|
 | Listy kontroli dostępu (ACL) | W pełni obsługiwane | Listy ACL systemu Windows są zachowywane przez Azure File Sync i są wymuszane przez system Windows Server w punktach końcowych serwera. Listy ACL systemu Windows nie są jeszcze obsługiwane przez Azure Files, jeśli pliki są dostępne bezpośrednio w chmurze. |
 | Twarde linki | Pominięto | |
@@ -145,9 +145,9 @@ Aby wyświetlić wyniki w formacie CSV:
 | Desktop.ini | Plik specyficzny dla systemu |
 | thumbs.db | Plik tymczasowy dla miniatur |
 | ehThumbs. DB | Plik tymczasowy dla miniatur multimediów |
-| ~$\*.\* | Plik tymczasowy pakietu Office |
-| \*.tmp | Plik tymczasowy |
-| \*.laccdb | Plik blokowania dostępu do bazy danych|
+| \*~$.\* | Plik tymczasowy pakietu Office |
+| \*. tmp | Plik tymczasowy |
+| \*. LACCDB | Plik blokowania dostępu do bazy danych|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Plik synchronizacji wewnętrznej|
 | Informacje o woluminie systemowym \\ | Folder określony dla woluminu |
 | $RECYCLE. OKREŚLONEJ| Folder |
@@ -170,7 +170,7 @@ Zwróć uwagę, że oszczędności woluminu dotyczą tylko serwera programu; Two
 > [!Note]  
 > Aby zapewnić obsługę deduplikacji danych na woluminach z włączoną obsługą warstw w chmurze w systemie Windows Server 2019, należy zainstalować usługę Windows Update [KB4520062](https://support.microsoft.com/help/4520062) , a wymagany jest Agent Azure File Sync w wersji 9.0.0.0 lub nowszej.
 
-**Windows Server 2012 R2**  
+**System Windows Server 2012 R2**  
 Azure File Sync nie obsługuje deduplikacji danych i warstw w chmurze na tym samym woluminie w systemie Windows Server 2012 R2. Jeśli Deduplikacja danych jest włączona w woluminie, Obsługa warstw w chmurze musi być wyłączona. 
 
 **Uwagi**
@@ -206,10 +206,10 @@ Aby Azure File Sync i DFS-R działały obok siebie:
 
 Aby uzyskać więcej informacji, zobacz [Replikacja systemu plików DFS przegląd](https://technet.microsoft.com/library/jj127250).
 
-### <a name="sysprep"></a>Narzędzie Sysprep
+### <a name="sysprep"></a>Dzia
 Korzystanie z programu Sysprep na serwerze z zainstalowanym agentem Azure File Sync nie jest obsługiwane i może prowadzić do nieoczekiwanych wyników. Po wdrożeniu obrazu serwera i zakończeniu miniinstalacji programu Sysprep należy przeprowadzić instalację agenta i rejestrację serwera.
 
-### <a name="windows-search"></a>Windows Search
+### <a name="windows-search"></a>Wyszukiwanie w systemie Windows
 Jeśli Obsługa warstw w chmurze jest włączona w punkcie końcowym serwera, pliki, które są warstwami, są pomijane i nie są indeksowane przez funkcję wyszukiwania systemu Windows. Pliki niewarstwowe są indeksowane prawidłowo.
 
 ### <a name="antivirus-solutions"></a>Rozwiązania antywirusowe
@@ -246,52 +246,52 @@ Ogólnie rzecz biorąc Azure File Sync powinien obsługiwać współdziałanie z
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Inne rozwiązania do zarządzania magazynem hierarchicznym (HSM)
 W przypadku Azure File Sync nie należy używać innych rozwiązań modułu HSM.
 
-## <a name="region-availability"></a>Dostępność w poszczególnych regionach
+## <a name="region-availability"></a>Dostępność w danym regionie
 Azure File Sync jest dostępna tylko w następujących regionach:
 
 | Region | Lokalizacja centrum danych |
 |--------|---------------------|
-| Australia Wschodnia | Stan Nowa Południowa Walia |
+| Australia Wschodnia | Nowa Południowa Walia |
 | Australia Południowo-Wschodnia | Stan Wiktoria |
-| Brazylia Południowa | Sao Paulo (stan) |
+| Brazylia Południowa | Stan Świętego Paulo |
 | Kanada Środkowa | Toronto |
-| Kanada Wschodnia | Quebec |
+| Kanada Wschodnia | Miasto Quebec |
 | Indie Środkowe | Pune |
 | Środkowe stany USA | Iowa |
 | Azja Wschodnia | SRA Hongkong |
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Francja Środkowa | Paryż |
-| Francja Południowa * | Marsylia |
+| Francja Południowa * | Marsylii |
 | Korea Środkowa | Seul |
 | Korea Południowa | Pusan |
-| Japonia Wschodnia | Tokyo, Saitama |
+| Japonia Wschodnia | Tokio, Prefektura Saitama |
 | Japonia Zachodnia | Osaka |
 | Północno-środkowe stany USA | Illinois |
 | Europa Północna | Irlandia |
 | Północna Republika Południowej Afryki | Johannesburg |
-| Zachodnia Republika Południowej Afryki * | Kapsztad |
-| Południowo-środkowe stany USA | Teksas |
+| Zachodnia Republika Południowej Afryki * | Miasto Wyspy Zielonego |
+| Południowo-środkowe stany USA | Texas |
 | Indie Południowe | Chennai |
 | Azja Południowo-Wschodnia | Singapur |
 | Południowe Zjednoczone Królestwo | Londyn |
 | Zachodnie Zjednoczone Królestwo | Cardiff |
 | US Gov Arizona | Arizona |
-| US Gov Teksas | Teksas |
+| US Gov Teksas | Texas |
 | US Gov Wirginia | Wirginia |
 | Północne Zjednoczone Emiraty Arabskie | Dubaj |
 | Środkowe Zjednoczone Emiraty Arabskie * | Abu Zabi |
 | Europa Zachodnia | Holandia |
 | Zachodnio-środkowe stany USA | Wyoming |
-| Zachodnie stany USA | Kalifornia |
-| Zachodnie stany USA 2 | Waszyngton |
+| Zachodnie stany USA | Obywateli |
+| Zachodnie stany USA 2 | Węgier |
 
 Azure File Sync obsługuje synchronizowanie tylko z udziałem plików platformy Azure, który znajduje się w tym samym regionie co usługa synchronizacji magazynu.
 
 W przypadku regionów oznaczonych gwiazdkami należy skontaktować się z pomocą techniczną platformy Azure, aby zażądać dostępu do usługi Azure Storage w tych regionach. Proces został przedstawiony w [tym dokumencie](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 ### <a name="azure-disaster-recovery"></a>Odzyskiwanie po awarii platformy Azure
-Aby chronić przed utratą w regionie świadczenia usługi Azure, Azure File Sync integruje się z opcją [nadmiarowości magazynu geograficznie nadmiarowego](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). Magazyn GRS działa przy użyciu asynchronicznej replikacji bloków między magazynem w regionie podstawowym, z którym zwykle odbywa się praca, i magazynu w sparowanym regionie pomocniczym. W przypadku awarii, która powoduje tymczasowe lub trwałe przejście regionu platformy Azure do trybu offline, firma Microsoft przejdzie w tryb failover do sparowanego regionu. 
+Aby chronić przed utratą w regionie świadczenia usługi Azure, Azure File Sync integruje się z [magazynem geograficznie nadmiarowym](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). Magazyn GRS działa przy użyciu asynchronicznej replikacji bloków między magazynem w regionie podstawowym, z którym zwykle odbywa się praca, i magazynu w sparowanym regionie pomocniczym. W przypadku awarii, która powoduje tymczasowe lub trwałe przejście regionu platformy Azure do trybu offline, firma Microsoft przejdzie w tryb failover do sparowanego regionu. 
 
 > [!Warning]  
 > Jeśli używasz udziału plików platformy Azure jako punktu końcowego w chmurze na koncie magazynu GRS, nie należy inicjować trybu failover dla konta magazynu. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych. W przypadku utraty regionu platformy Azure firma Microsoft będzie wyzwalać tryb failover na koncie magazynu w sposób zgodny z Azure File Sync.

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67fe048c5afb07c65dcddc797e3a1d8461b1893f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965949"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163113"
 ---
-# <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
+# <a name="get-started-guide-for-azure-developers"></a>Przewodnik wprowadzenie dla deweloperów platformy Azure
 
 ## <a name="what-is-azure"></a>Co to jest platforma Azure?
 
@@ -92,11 +92,11 @@ Zamiast martwić się o tworzenie całej aplikacji lub infrastruktury do urucham
 
 Azure Service Fabric to platforma systemów rozproszonych. Ta platforma ułatwia tworzenie, pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi. Zapewnia również kompleksowe funkcje zarządzania aplikacjami, takie jak:
 
-* Inicjowanie obsługi administracyjnej
+* Inicjowanie obsługi
 * Wdrażanie
 * Monitorowanie
 * Uaktualnianie/stosowanie poprawek
-* Usuwanie
+* Usunąć
 
 Aplikacje, które są uruchamiane w udostępnionej puli maszyn, mogą być uruchamiane w miarę potrzeby na setkach lub tysiącach maszyn.
 
@@ -163,7 +163,7 @@ Platforma Azure oferuje kilka sposobów korzystania z kontenerów w aplikacjach.
   >
   > **Wprowadzenie**: [Użyj niestandardowego obrazu platformy docker dla App Service w systemie Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 
 Niezwykle ważne jest, aby nie tylko wiedzieć, kto korzysta z aplikacji, ale również aby uniemożliwić nieautoryzowany dostęp do zasobów. Platforma Azure oferuje kilka metod uwierzytelniania klientów aplikacji.
 
@@ -171,7 +171,7 @@ Niezwykle ważne jest, aby nie tylko wiedzieć, kto korzysta z aplikacji, ale r�
 
   > **Kiedy używać**: gdy chcesz zapewnić obsługę logowania jednokrotnego, Pracuj z danymi opartymi na grafie lub Uwierzytelniaj użytkowników opartych na domenie.
   >
-  > **Wprowadzenie**: Aby dowiedzieć się więcej, zobacz [przewodnik dewelopera Azure Active Directory](../../active-directory/develop/v1-overview.md).
+  > **Wprowadzenie**: Aby dowiedzieć się więcej, zobacz [przewodnik dewelopera Azure Active Directory](../../active-directory/develop/v2-overview.md).
 
 - **Uwierzytelnianie App Service**: w przypadku wybrania App Service do hostowania aplikacji można także skorzystać z wbudowanej obsługi uwierzytelniania dla usługi Azure AD oraz dostawców tożsamości społecznościowych — w tym Facebook, Google, Microsoft i Twitter.
 
@@ -193,12 +193,12 @@ Gdy aplikacja działa na platformie Azure, musisz monitorować wydajność, śle
 
     >**Wprowadzenie:** wprowadzenie [do Azure monitor](../../monitoring-and-diagnostics/monitoring-get-started.md).
 
-### <a name="devops-integration"></a>Integracja metodyki DevOps
+### <a name="devops-integration"></a>Integracja DevOps
 
 Niezależnie od tego, czy udostępniasz maszyny wirtualne, czy publikujesz aplikacje sieci Web z ciągłą integracją, platforma Azure integruje się z większością popularnych narzędzi DevOps. Możesz korzystać z narzędzi, które już masz, i zmaksymalizować istniejące środowisko, korzystając z pomocy technicznej dla narzędzi takich jak:
 
 * Jenkins
-* Witryna GitHub
+* GitHub
 * Puppet
 * Chef
 * TeamCity
@@ -210,7 +210,7 @@ Niezależnie od tego, czy udostępniasz maszyny wirtualne, czy publikujesz aplik
 > **Wypróbuj teraz:** [Wypróbuj kilka DevOps integracji](https://azure.microsoft.com/try/devops/).
 
 
-## <a name="azure-regions"></a>Regiony systemu Azure
+## <a name="azure-regions"></a>Regiony świadczenia usługi Azure
 
 Azure to globalna platforma w chmurze, która jest ogólnie dostępna w wielu regionach na całym świecie. Podczas aprowizacji usługi, aplikacji lub maszyny wirtualnej na platformie Azure zostanie wyświetlony monit o wybranie regionu. Ten region reprezentuje konkretne centrum danych, w którym jest uruchomiona aplikacja lub gdzie przechowywane są dane. Regiony te odpowiadają konkretnym lokalizacjom publikowanym na stronie [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/) .
 
@@ -238,9 +238,9 @@ Platforma Azure oferuje dwa sposoby zarządzania aplikacjami i usługami z pozio
 
 -   [Azure PowerShell](../../powershell-install-configure.md): zawiera zestaw modułów z poleceniami cmdlet, które umożliwiają zarządzanie zasobami platformy Azure przy użyciu programu Windows PowerShell.
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
-[Azure Portal](https://portal.azure.com) jest aplikacją opartą na sieci Web. Za pomocą Azure Portal można tworzyć i usuwać zasoby i usługi platformy Azure oraz zarządzać nimi. Obejmuje ona:
+[Azure Portal](https://portal.azure.com) jest aplikacją opartą na sieci Web. Za pomocą Azure Portal można tworzyć i usuwać zasoby i usługi platformy Azure oraz zarządzać nimi. Obejmuje:
 
 * Konfigurowalny pulpit nawigacyjny
 * Narzędzia do zarządzania zasobami platformy Azure
@@ -298,7 +298,7 @@ W przypadku inicjowania obsługi administracyjnej nowych usług platformy Azure 
 
 Azure Resource Explorer to doskonałe narzędzie do wizualizacji zasobów, które zostały już utworzone w ramach subskrypcji. Aby dowiedzieć się więcej, zobacz [używanie Azure Resource Explorer do wyświetlania i modyfikowania zasobów](../../resource-manager-resource-explorer.md).
 
-#### <a name="grant-access-to-resources"></a>Przyznanie dostępu do zasobów
+#### <a name="grant-access-to-resources"></a>Udzielanie dostępu do zasobów
 
 Gdy zezwolisz na dostęp do zasobów platformy Azure, zawsze najlepszym rozwiązaniem jest zapewnienie użytkownikom najniższych uprawnień, które są wymagane do wykonania danego zadania.
 
@@ -320,7 +320,7 @@ Azure Resource Manager pozwala przypisywać niestandardowe znaczniki do poszczeg
 * W szablonie Azure Resource Manager
 * Korzystanie z interfejsu API REST
 * Korzystanie z interfejsu wiersza polecenia platformy Azure
-* Używanie programu PowerShell
+* Korzystanie z programu PowerShell
 
 Do każdego zasobu można przypisać wiele tagów. Aby dowiedzieć się więcej, zobacz [Używanie tagów do organizowania zasobów platformy Azure](../../resource-group-using-tags.md).
 

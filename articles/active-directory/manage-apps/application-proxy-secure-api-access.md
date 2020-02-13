@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: celested
+ms.date: 02/12/2020
+ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063034"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166008"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Bezpieczny dostęp do lokalnych interfejsów API przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -24,7 +24,7 @@ Mogą być dostępne interfejsy API logiki biznesowej działające lokalnie lub 
 
 W tym artykule przedstawiono sposób konfigurowania rozwiązania serwer proxy aplikacji usługi Azure AD platformy Azure do hostowania usługi internetowego interfejsu API, do której aplikacje natywne mogą uzyskać dostęp. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Na poniższym diagramie przedstawiono tradycyjny sposób publikowania lokalnych interfejsów API. To podejście wymaga otwarcia portów przychodzących 80 i 443.
 
@@ -53,19 +53,19 @@ Aby opublikować interfejs API sieci Web SecretAPI za pomocą serwera proxy apli
 
 1. Kompilowanie i publikowanie przykładowego projektu SecretAPI jako aplikacji sieci Web ASP.NET na komputerze lokalnym lub w intranecie. Upewnij się, że masz dostęp do aplikacji sieci Web lokalnie. 
    
-1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Azure Active Directory** na lewym pasku nawigacyjnym. Następnie na stronie **Przegląd** wybierz pozycję aplikacje dla **przedsiębiorstw**.
+1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Azure Active Directory**. Następnie wybierz pozycję **aplikacje dla przedsiębiorstw**.
    
 1. W górnej części strony **aplikacje dla przedsiębiorstw — wszystkie aplikacje** wybierz pozycję **Nowa aplikacja**.
    
-1. Na stronie **przeglądanie galerii usługi Azure AD** w obszarze **aplikacje lokalne**wybierz pozycję **Dodaj aplikację lokalną**. Zostanie wyświetlona strona **Dodawanie własnej aplikacji lokalnej** .
+1. Na stronie **Dodawanie aplikacji** wybierz pozycję **aplikacje lokalne**. Zostanie wyświetlona strona **Dodawanie własnej aplikacji lokalnej** .
    
 1. Jeśli nie masz zainstalowanego łącznika serwera proxy aplikacji, zostanie wyświetlony monit o jego zainstalowanie. Wybierz pozycję **Pobierz łącznik serwera proxy aplikacji** , aby pobrać i zainstalować łącznik. 
    
 1. Po zainstalowaniu łącznika serwera proxy aplikacji na stronie **Dodawanie własnej aplikacji lokalnej** :
    
-   1. Wprowadź *SecretAPI* obok pozycji **Nazwa**.
+   1. Obok pozycji **Nazwa**wprowadź *SecretAPI*.
       
-   1. Wprowadź adres URL używany do uzyskiwania dostępu do interfejsu API z intranetu obok **wewnętrznego adresu URL**. 
+   1. W polu **wewnętrzny adres URL**wprowadź adres URL używany do uzyskiwania dostępu do interfejsu API z intranetu.
       
    1. Upewnij się, że **wstępne uwierzytelnianie** jest ustawione na **Azure Active Directory**. 
       

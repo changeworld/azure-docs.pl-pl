@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: e70d2e07f74a48e1d99e04c5369a933cfd9cede1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905353"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162062"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Repozytoria Git z przykładami dla usługi Azure Event Hubs 
-Przykłady usługi Event Hubs można znaleźć na [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Te przykłady pokazują kluczowe funkcje [usługi Azure Event Hubs](/azure/event-hubs/). W tym artykule kategoryzuje i opisuje dostępna, wraz z łączami do każdego przykładów.
+Przykłady Event Hubs można znaleźć w witrynie [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Te przykłady przedstawiają kluczowe funkcje [platformy Azure Event Hubs](/azure/event-hubs/). W tym artykule kategoryzuje i opisuje dostępna, wraz z łączami do każdego przykładów.
 
-## <a name="net-samples"></a>Przykłady w języku .NET
+## <a name="net-samples"></a>Przykłady dla platformy .NET
 
 | Wersja | Lokalizacja przykładów |
 | ------- | ---------------- | 
-| Azure. Messaging. EventHubs w wersji 5 (Najnowsza wersja) | [Przykłady usługi Event Hubs w usłudze GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[Przykłady procesora Event Hubs w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
+| Azure. Messaging. EventHubs w wersji 5 (Najnowsza wersja) | [Przykłady Event Hubs w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[Przykłady procesora Event Hubs w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
 | Microsoft. Azure. EventHubs w wersji 4 (starsza wersja) | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
 
 ## <a name="java-samples"></a>Przykłady w języku Java
@@ -46,7 +46,7 @@ Przykłady usługi Event Hubs można znaleźć na [GitHub](https://github.com/Az
 | Azure — eventhub w wersji 5 (Najnowsza wersja) | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
 | Azure — eventhub w wersji 1 (starsza wersja) | [Lokalizacja usługi GitHub](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
-## <a name="nodejs-samples"></a>Przykłady dla platformy Node.js
+## <a name="javascript-samples"></a>Przykłady skryptów w języku JavaScript
 
 | Wersja | Lokalizacja przykładów |
 | ------- | ---------------- | 
@@ -55,20 +55,20 @@ Przykłady usługi Event Hubs można znaleźć na [GitHub](https://github.com/Az
 
 
 ## <a name="go-samples"></a>Przykłady kodu języka go
-Możesz znaleźć przykładów kodu Go dla usługi Azure Event Hubs w [centra pracy, azure zdarzeń w-](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) repozytorium GitHub.
+Przykłady dla usługi Azure Event Hubs można znaleźć w repozytorium [Azure-Event-Hubs-go](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) .
 
 ## <a name="azure-cli-samples"></a>Przykłady interfejsu wiersza polecenia platformy Azure
-Możesz znaleźć przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Event Hubs w [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI) repozytorium GitHub.
+Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Event Hubs można znaleźć w repozytorium GitHub [usługi Azure Event Hub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI) .
 
 ## <a name="azure-powershell-samples"></a>Przykłady programu Azure PowerShell
-Możesz znaleźć przykładów programu Azure PowerShell dla usługi Azure Event Hubs w [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) repozytorium GitHub.
+Przykłady Azure PowerShell dla Event Hubs platformy Azure można znaleźć w repozytorium GitHub [usługi Azure Event Hub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) .
  
 ## <a name="apache-kafka-samples"></a>Przykłady dla platformy Apache Kafka
-Możesz znaleźć przykłady dla usługi Event Hubs dla platformy Apache Kafka funkcji [azure — zdarzeń hubs dla — platformy kafka](https://github.com/Azure/azure-event-hubs-for-kafka) repozytorium GitHub.
+Przykłady dla Event Hubs funkcji Apache Kafka można znaleźć w repozytorium [Azure-Event-Hubs-for-Kafka](https://github.com/Azure/azure-event-hubs-for-kafka) GitHub.
 
 ## <a name="next-steps"></a>Następne kroki
 Możesz dowiedzieć się więcej o usłudze Event Hubs w następujących artykułach:
 
-- [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md)
+- [Omówienie usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Funkcje usługi Event Hubs](event-hubs-features.md)
 - [Event Hubs — często zadawane pytania](event-hubs-faq.md)

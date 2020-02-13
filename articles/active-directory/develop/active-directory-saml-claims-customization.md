@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 7a4a58943b251628780694c001ca441a14e9c09a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698683"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161260"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -69,9 +69,9 @@ Przejściowa NameID jest również obsługiwana, ale nie jest dostępna na liśc
 
 Wybierz żądane źródło dla żądania `NameIdentifier` (lub NameID). Można wybrać jedną z następujących opcji.
 
-| Nazwa | Opis |
+| Name (Nazwa) | Opis |
 |------|-------------|
-| Adres e-mail | Adres e-mail użytkownika |
+| Email | Adres e-mail użytkownika |
 | userprincipalName | Główna nazwa użytkownika (UPN) użytkownika |
 | onpremisessamaccount | Nazwa konta SAM, które zostało zsynchronizowane z lokalnej usługi Azure AD |
 | obiektu | Identyfikator obiektu użytkownika w usłudze Azure AD |
@@ -103,7 +103,7 @@ Można również użyć funkcji przekształcenia oświadczeń.
 |----------|-------------|
 | **ExtractMailPrefix()** | Usuwa sufiks domeny z adresu e-mail lub głównej nazwy użytkownika. Spowoduje to wyodrębnienie tylko pierwszej części nazwy użytkownika, która jest przenoszona przez (na przykład "joe_smith" zamiast joe_smith@contoso.com). |
 | **Join ()** | Sprzęga atrybut z zweryfikowaną domeną. Jeśli wybrana wartość identyfikatora użytkownika ma domenę, Wyodrębnij nazwę użytkownika w celu dołączenia wybranej zweryfikowanej domeny. Na przykład w przypadku wybrania adresu e-mail (joe_smith@contoso.com) jako wartości identyfikatora użytkownika i wybrania opcji contoso.onmicrosoft.com jako zweryfikowanej domeny spowoduje to joe_smith@contoso.onmicrosoft.com. |
-| **ToLower()** | Konwertuje znaki wybranego atrybutu do małych liter. |
+| **ToLower ()** | Konwertuje znaki wybranego atrybutu do małych liter. |
 | **ToUpper ()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |
 
 ## <a name="adding-application-specific-claims"></a>Dodawanie oświadczeń specyficznych dla aplikacji
@@ -130,7 +130,7 @@ Aby przekształcić oświadczenia, można użyć następujących funkcji.
 |----------|-------------|
 | **ExtractMailPrefix()** | Usuwa sufiks domeny z adresu e-mail lub głównej nazwy użytkownika. Spowoduje to wyodrębnienie tylko pierwszej części nazwy użytkownika, która jest przenoszona przez (na przykład "joe_smith" zamiast joe_smith@contoso.com). |
 | **Join ()** | Tworzy nową wartość przez Sprzęganie dwóch atrybutów. Opcjonalnie można użyć separatora między dwoma atrybutami. W przypadku transformacji roszczeń NameID przyłączanie jest ograniczone do zweryfikowanej domeny. Jeśli wybrana wartość identyfikatora użytkownika ma domenę, Wyodrębnij nazwę użytkownika w celu dołączenia wybranej zweryfikowanej domeny. Na przykład w przypadku wybrania adresu e-mail (joe_smith@contoso.com) jako wartości identyfikatora użytkownika i wybrania opcji contoso.onmicrosoft.com jako zweryfikowanej domeny spowoduje to joe_smith@contoso.onmicrosoft.com. |
-| **ToLower()** | Konwertuje znaki wybranego atrybutu do małych liter. |
+| **ToLower ()** | Konwertuje znaki wybranego atrybutu do małych liter. |
 | **ToUpper ()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |
 | **Zawiera ()** | Wyprowadza atrybut lub stałą, jeśli dane wejściowe pasują do określonej wartości. W przeciwnym razie można określić inne dane wyjściowe, jeśli nie ma żadnego dopasowania.<br/>Na przykład jeśli chcesz emitować, gdzie wartość jest adresem e-mail użytkownika, jeśli zawiera on domenę "@contoso.com", w przeciwnym razie chcesz utworzyć dane wyjściowe głównej nazwy użytkownika. W tym celu należy skonfigurować następujące wartości:<br/>*Parametr 1 (dane wejściowe)* : User. email<br/>*Wartość*: "@contoso.com"<br/>Parametr 2 (dane wyjściowe): User. email<br/>Parametr 3 (dane wyjściowe w przypadku braku dopasowania): User. userPrincipalName |
 | **EndWith()** | Wyprowadza atrybut lub stałą, jeśli dane wejściowe kończą się określoną wartością. W przeciwnym razie można określić inne dane wyjściowe, jeśli nie ma żadnego dopasowania.<br/>Na przykład, jeśli chcesz emitować, gdzie wartość jest identyfikator pracownika użytkownika, jeśli identyfikator pracownika zostanie zakończony znakiem "000", w przeciwnym razie chcesz wyprowadzić atrybut rozszerzenia. W tym celu należy skonfigurować następujące wartości:<br/>*Parametr 1 (dane wejściowe)* : User. IDPracownika<br/>*Wartość*: "000"<br/>Parametr 2 (Output): User. IDPracownika<br/>Parametr 3 (dane wyjściowe w przypadku braku dopasowania): User. extensionAttribute1 |
@@ -180,4 +180,4 @@ Najpierw usługa Azure AD weryfikuje, czy typ użytkownika Brita jest `All guest
 
 * [Zarządzanie aplikacjami w usłudze Azure AD](../manage-apps/what-is-application-management.md)
 * [Konfigurowanie logowania jednokrotnego w aplikacjach, które nie znajdują się w galerii aplikacji usługi Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [Rozwiązywanie problemów z logowaniem jednokrotnym opartym na protokole SAML](howto-v1-debug-saml-sso-issues.md)
+* [Rozwiązywanie problemów z logowaniem jednokrotnym opartym na protokole SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

@@ -3,12 +3,12 @@ title: Szczegóły struktury definicji zasad
 description: Opisuje, w jaki sposób definicje zasad są używane do ustanawiania Konwencji dla zasobów platformy Azure w organizacji.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: ba974228d63c542027ea5191d2c5877e7288b331
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050020"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169773"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -255,7 +255,7 @@ Warunek oblicza, czy **pole** lub metoda dostępu do **wartości** spełniają o
 W przypadku używania warunków **like** i **notLike** , w wartości należy podać symbol wieloznaczny `*`.
 Wartość nie może mieć więcej niż jednego `*`symbolu wieloznacznego.
 
-W przypadku używania warunków **Match** i **notMatch** Podaj `#` w celu dopasowania do cyfry, `?` dla litery, `.` aby dopasować dowolny znak i dowolny inny znak, aby dopasować go do rzeczywistego znaku. While, **Match** i **notMatch** uwzględnia wielkość liter, a wszystkie inne warunki, które szacują _stringValue_ , nie uwzględniają wielkości liter. Alternatywy bez uwzględniania wielkości liter są dostępne w **matchInsensitively** i **notMatchInsensitively**. Aby zapoznać się z przykładami, zobacz [Zezwalanie na kilka wzorców nazw](../samples/allow-multiple-name-patterns.md).
+W przypadku używania warunków **Match** i **notMatch** Podaj `#` w celu dopasowania do cyfry, `?` dla litery, `.` aby dopasować dowolny znak i dowolny inny znak, aby dopasować go do rzeczywistego znaku. While, **Match** i **notMatch** uwzględnia wielkość liter, a wszystkie inne warunki, które szacują _stringValue_ , nie uwzględniają wielkości liter. Alternatywy bez uwzględniania wielkości liter są dostępne w **matchInsensitively** i **notMatchInsensitively**.
 
 W **\[\*\] alias** wartości pola tablicy, każdy element w tablicy jest obliczany pojedynczo za pomocą logicznych **i** między elementami. Aby uzyskać więcej informacji, zobacz [ocenę aliasu \] \*\[](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
@@ -271,7 +271,7 @@ Obsługiwane są następujące pola:
 - `kind`
 - `type`
 - `location`
-  - Użyj **globalnych** dla zasobów, które są lokalizacją niezależny od. Aby zapoznać się z przykładem, zobacz sekcję [dozwolone lokalizacje](../samples/allowed-locations.md).
+  - Użyj **globalnych** dla zasobów, które są lokalizacją niezależny od.
 - `identity.type`
   - Zwraca typ [zarządzanej tożsamości](../../../active-directory/managed-identities-azure-resources/overview.md) włączonej dla zasobu.
 - `tags`

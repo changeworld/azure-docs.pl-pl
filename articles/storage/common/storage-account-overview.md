@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274537"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157276"
 ---
 # <a name="storage-account-overview"></a>Omówienie kont magazynu
 
@@ -31,7 +31,7 @@ Aby dowiedzieć się, jak utworzyć konto usługi Azure Storage, zobacz [Tworzen
 Konta magazynu ogólnego przeznaczenia w wersji 2 obsługują najnowsze funkcje usługi Azure Storage i obejmują wszystkie funkcje kont w ramach ogólnego przeznaczenia w wersji 1 i usługi BLOB Storage. Konta ogólnego przeznaczenia w wersji 2 zapewniają najniższy poziom wydajności dla usługi Azure Storage, a także konkurencyjne w branży ceny transakcji. Konta magazynu ogólnego przeznaczenia w wersji 2 obsługują te usługi Azure Storage:
 
 - Obiekty blob (wszystkie typy: Block, append, Page)
-- Usługa Data Lake 2. generacji
+- Data Lake Gen2
 - Pliki
 - Dyski
 - Kolejki
@@ -78,7 +78,7 @@ Konta FileStorage oferują unikatowe charakterystyki wydajności, takie jak roze
 
 Podczas określania nazwy konta magazynu należy pamiętać o następujących regułach:
 
-- Nazwy kont usługi Magazyn muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
+- Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery.
 - Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Każde konto magazynu musi mieć inną nazwę.
 
 ## <a name="performance-tiers"></a>Warstwy wydajności
@@ -115,11 +115,9 @@ W przypadku zmiany wzorca użycia danych można w dowolnym momencie przełączy�
 > [!IMPORTANT]
 > Zmiana warstwy dostępu dla istniejącego konta magazynu lub obiektu BLOB może spowodować naliczenie dodatkowych opłat. Aby uzyskać więcej informacji, zobacz [sekcję rozliczanie konta magazynu](#storage-account-billing).
 
-## <a name="replication"></a>Replikacja
+## <a name="redundancy"></a>Nadmiarowość
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-Aby uzyskać więcej informacji na temat replikacji magazynu, zobacz [Replikacja usługi Azure Storage](storage-redundancy.md).
 
 ## <a name="encryption"></a>Szyfrowanie
 

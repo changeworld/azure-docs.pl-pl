@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544790"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162688"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Wersja zapoznawcza: maszyny wirtualne platformy Azure dla zestawów skalowania maszyn wirtualnych 
 
@@ -25,9 +25,8 @@ Ilość dostępnej pojemności może się różnić w zależności od rozmiaru, 
 > Wystąpienia punktowe są obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> W przypadku wczesnej części publicznej wersji zapoznawczej wystąpienia usługi będą miały ustaloną cenę, więc nie będzie żadnych wykluczeń opartych na cenach.
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Cennik wystąpień dodatkowych to zmienna, na podstawie regionu i jednostki SKU. Aby uzyskać więcej informacji, zobacz cennik dla systemów [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) i [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/). 
 
@@ -74,7 +73,7 @@ az vmss create \
     --max-price -1 
 ```
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershell"></a>Program PowerShell
 
 Proces tworzenia zestawu skalowania z maszynami wirtualnymi jest taki sam jak szczegółowy w [artykule wprowadzenie](quick-create-powershell.md).
 Po prostu Dodaj opcję "-Priority" i podaj `-max-price` do nowego elementu [-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig).
@@ -89,7 +88,7 @@ $vmssConfig = New-AzVmssConfig `
     --max-price -1
 ```
 
-## <a name="resource-manager-templates"></a>Szablony Menedżera zasobów
+## <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 
 Proces tworzenia zestawu skalowania, który korzysta z maszyn wirtualnych, jest taki sam jak szczegółowy w artykule wprowadzenie do systemu [Linux](quick-create-template-linux.md) lub [Windows](quick-create-template-windows.md). 
 
@@ -160,11 +159,11 @@ Odp **.:** Zapoznaj się z tabelą poniżej, aby uzyskać dostęp do dodatkowych
 
 | Kanały platformy Azure               | Dostępność maszyn wirtualnych na platformie Azure       |
 |------------------------------|-----------------------------------|
-| Umowa Enterprise         | Tak                               |
-| Płatność zgodnie z rzeczywistym użyciem                | Tak                               |
+| Enterprise Agreement         | Yes                               |
+| Płatność zgodnie z rzeczywistym użyciem                | Yes                               |
 | Dostawca usług w chmurze (CSP) | [Skontaktuj się z partnerem](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Korzyści                     | Niedostępne                     |
-| Sponsorowane                    | Niedostępne                     |
+| Sponsorowan                    | Niedostępne                     |
 | Bezpłatna wersja próbna                   | Niedostępne                     |
 
 

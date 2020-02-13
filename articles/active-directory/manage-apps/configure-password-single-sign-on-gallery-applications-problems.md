@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e933c82229415a71182096a6aca9a2e535934d89
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274192"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159050"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Problem podczas konfigurowania logowania jednokrotnego przy użyciu hasła dla aplikacji z galerii usługi Azure AD
 
@@ -31,7 +31,7 @@ Ten problem zwykle występuje, gdy dostawca aplikacji zmienił stronę logowania
 
 Chociaż firma Microsoft ma technologie wykrywające przerwy w integracji, mogą nie być możliwe do wyszukania problemów od razu lub problemy są rozwiązywane nieco czasu. W przypadku, gdy jedna z tych integracji nie działa prawidłowo, należy otworzyć sprawę pomocy technicznej, aby można było ją rozwiązać tak szybko, jak to możliwe.
 
-**Jeśli jesteś w kontakcie z dostawcą aplikacji,** Wyślij je, aby firma Microsoft mogła współpracować z nimi w celu natywnej integracji swojej aplikacji z Azure Active Directory. Aby rozpocząć pracę, możesz wysłać dostawcę do [listy aplikacji w galerii aplikacji Azure Active Directory](../develop/howto-app-gallery-listing.md) .
+**Jeśli jesteś w kontakcie z dostawcą aplikacji,** Wyślij je, aby firma Microsoft mogła współpracować z nimi w celu natywnej integracji swojej aplikacji z Azure Active Directory. Aby rozpocząć pracę, możesz wysłać dostawcę do [listy aplikacji w galerii aplikacji Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md) .
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Poświadczenia są wypełnione i przesłane, ale strona wskazuje, że poświadczenia są niepoprawne
 
@@ -59,7 +59,7 @@ Na wypadek, gdyby poprzednie sugestie nie zadziałały, może się zdarzyć, że
 
 Firma Microsoft ma technologie umożliwiające automatyczne wykrywanie w przypadku przerwania integracji aplikacji, jednak może nie być możliwe znalezienie problemów od razu lub problemy mogą zostać naprawione. Jeśli integracja nie działa prawidłowo, można otworzyć przypadek pomocy technicznej w celu jego ustalenia tak szybko, jak to możliwe. 
 
-Oprócz tego, **Jeśli kontaktuje się z dostawcą aplikacji,** **Wysyłaj je do nas** , aby możemy z nich współpracować, aby w sposób natywny zintegrować swoją aplikację z Azure Active Directory. Aby rozpocząć pracę, możesz wysłać dostawcę do [listy aplikacji w galerii aplikacji Azure Active Directory](../develop/howto-app-gallery-listing.md) .
+Oprócz tego, **Jeśli kontaktuje się z dostawcą aplikacji,** **Wysyłaj je do nas** , aby możemy z nich współpracować, aby w sposób natywny zintegrować swoją aplikację z Azure Active Directory. Aby rozpocząć pracę, możesz wysłać dostawcę do [listy aplikacji w galerii aplikacji Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md) .
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>Rozszerzenie działa w przeglądarce Chrome i Firefox, ale nie w programie Internet Explorer
 
@@ -73,7 +73,7 @@ Istnieją dwa główne przyczyny tego problemu:
 
   * Niestety, ta sytuacja może się różnić w zależności od wersji przeglądarki, szybkości komputera lub odwiedzonej witryny. W tym przypadku zalecamy, aby skontaktować się z pomocą techniczną, aby można było naprawić integrację tej konkretnej aplikacji.
 
-Oprócz tego, **Jeśli kontaktuje się z dostawcą aplikacji,** **Wysyłaj je do nas** , aby możemy z nich współpracować, aby w sposób natywny zintegrować swoją aplikację z Azure Active Directory. Aby rozpocząć pracę, możesz wysłać dostawcę do [listy aplikacji w galerii aplikacji Azure Active Directory](../develop/howto-app-gallery-listing.md) .
+Oprócz tego, **Jeśli kontaktuje się z dostawcą aplikacji,** **Wysyłaj je do nas** , aby możemy z nich współpracować, aby w sposób natywny zintegrować swoją aplikację z Azure Active Directory. Aby rozpocząć pracę, możesz wysłać dostawcę do [listy aplikacji w galerii aplikacji Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md) .
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Sprawdź, czy strona logowania aplikacji ostatnio się zmieniła lub wymaga dodatkowego pola
 
@@ -81,7 +81,7 @@ Jeśli strona logowania aplikacji została zmieniona drastycznie, czasami może 
 
 Firma Microsoft ma technologie umożliwiające automatyczne wykrywanie w przypadku przerwania integracji aplikacji, jednak może nie być możliwe znalezienie problemów od razu lub problemy mogą zostać naprawione. Jeśli integracja nie działa prawidłowo, można otworzyć przypadek pomocy technicznej w celu jego ustalenia tak szybko, jak to możliwe. 
 
-Oprócz tego, **Jeśli kontaktuje się z dostawcą aplikacji,** **Wysyłaj je do nas** , aby możemy z nich współpracować, aby w sposób natywny zintegrować swoją aplikację z Azure Active Directory. Aby rozpocząć pracę, możesz wysłać dostawcę do [listy aplikacji w galerii aplikacji Azure Active Directory](../develop/howto-app-gallery-listing.md) .
+Oprócz tego, **Jeśli kontaktuje się z dostawcą aplikacji,** **Wysyłaj je do nas** , aby możemy z nich współpracować, aby w sposób natywny zintegrować swoją aplikację z Azure Active Directory. Aby rozpocząć pracę, możesz wysłać dostawcę do [listy aplikacji w galerii aplikacji Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md) .
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Jak zainstalować rozszerzenie przeglądarki panelu dostępu
 

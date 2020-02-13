@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 9858fdb7da80fe03498392ea93bf3c83b8a7e4dd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 595a89ca58e970a9c886d0b6c2dd05aecd1411ef
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699873"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159390"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co się stało z moim projektem WebAPI (usługa połączona Azure Active Directory Visual Studio)
 
@@ -32,7 +32,7 @@ Aby uzyskać informacje na temat pracy z połączoną usługą, zobacz [wprowadz
 
 Wpływa na plik projektu *. NET References) i `packages.config` (odwołania NuGet).
 
-| Typ | Informacje ogólne |
+| Typ | Dokumentacja |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -45,7 +45,7 @@ Wpływa na plik projektu *. NET References) i `packages.config` (odwołania NuGe
 
 Dodatkowe odwołania w przypadku wybrania opcji **Odczytaj dane katalogu** :
 
-| Typ | Informacje ogólne |
+| Typ | Dokumentacja |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (tylko w programie Visual Studio 2015) |
@@ -59,7 +59,7 @@ Dodatkowe odwołania w przypadku wybrania opcji **Odczytaj dane katalogu** :
 
 Następujące odwołania są usuwane (tylko projekty ASP.NET 4, jak w programie Visual Studio 2015):
 
-| Typ | Informacje ogólne |
+| Typ | Dokumentacja |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -129,4 +129,4 @@ Podczas dodawania połączonej usługi program Visual Studio 2015 tworzy kopie z
 ## <a name="next-steps"></a>Następne kroki
 
 - [Scenariusze uwierzytelniania dla Azure Active Directory](authentication-scenarios.md)
-- [Dodawanie logowania z firmą Microsoft do aplikacji sieci Web ASP.NET](quickstart-v1-aspnet-webapp.md)
+- [Dodawanie logowania z firmą Microsoft do aplikacji sieci Web ASP.NET](quickstart-v2-aspnet-webapp.md)

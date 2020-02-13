@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023127"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161583"
 ---
 # <a name="what-is-password-writeback"></a>Co to jest zapisywanie zwrotne haseł?
 
@@ -29,7 +29,7 @@ Zapisywanie zwrotne haseł jest obsługiwane w środowiskach, w których są uż
 * [Uwierzytelnianie przekazywane](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> Zapisywanie zwrotne haseł przestanie działać dla klientów korzystających z Azure AD Connect wersji 1.0.8641.0 i starszych, gdy [usługa Azure Access Control Service (ACS) zostanie wycofana w dniu 7 listopada, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect wersje 1.0.8641.0 i starsze nie będą już zezwalały na zapisywanie zwrotne haseł, ponieważ zależą one od usług ACS dla tej funkcji.
+> Zapisywanie zwrotne haseł przestanie działać dla klientów korzystających z Azure AD Connect wersji 1.0.8641.0 i starszych, gdy [usługa Azure Access Control Service (ACS) zostanie wycofana w dniu 7 listopada, 2018](../azuread-dev/active-directory-acs-migration.md). Azure AD Connect wersje 1.0.8641.0 i starsze nie będą już zezwalały na zapisywanie zwrotne haseł, ponieważ zależą one od usług ACS dla tej funkcji.
 >
 > Aby uniknąć przerw w działaniu usługi, należy uaktualnić poprzednią wersję Azure AD Connect do nowszej wersji, zapoznaj się z artykułem [Azure AD Connect: uaktualnienie z poprzedniej wersji do najnowszej](../hybrid/how-to-upgrade-previous-version.md)
 >

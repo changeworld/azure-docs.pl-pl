@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 11c6da0b79f169b250dc0178f76dcd885ce91668
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015836"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162892"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak wykonać transmisję strumieniową na żywo za pomocą koderów lokalnych przy użyciu platformy .NET
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Do wykonania czynności przedstawionych w tym samouczku są niezbędne następuj
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
 * Upewnij się, że punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, ma stan **Uruchomiony**. 
 * Skonfiguruj środowisko deweloperskie. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska](media-services-set-up-computer.md).
-* Kamera internetowa. Na przykład [koder Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm).
+* Kamera internetowa. Na przykład [koder Telestream Wirecast](media-services-configure-wirecast-live-encoder.md).
 
 Zalecane do przejrzenia następujących artykułów:
 
@@ -404,6 +404,6 @@ Przejrzyj ścieżki szkoleniowe Media Services
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

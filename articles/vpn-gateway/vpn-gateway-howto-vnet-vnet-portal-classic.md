@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca24cbdd9541456cbaa3f384587fee17d47f5ca2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864115"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157911"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurowanie połączenia Sieć wirtualna-sieć wirtualna (klasyczna)
 
@@ -23,7 +23,7 @@ Ten artykuł pomaga utworzyć połączenie bramy sieci VPN między sieciami wirt
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [Program PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Interfejs wiersza polecenia platformy Azure](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Portal Azure (klasyczny)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Łączenie różnych modeli wdrażania — witryna Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -33,7 +33,7 @@ Ten artykuł pomaga utworzyć połączenie bramy sieci VPN między sieciami wirt
 
 ![Diagram łączności między sieciami wirtualnymi](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-vnet-to-vnet-connections"></a>Informacje o połączeniach między sieciami wirtualnymi
 
@@ -65,7 +65,7 @@ Więcej informacji na temat połączeń między sieciami wirtualnymi znajduje si
 
 Przed rozpoczęciem tego ćwiczenia Pobierz i zainstaluj najnowszą wersję poleceń cmdlet programu PowerShell dla usługi Azure Service Management (SM). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). W przypadku większości kroków używamy portalu, ale należy użyć programu PowerShell do utworzenia połączeń między sieci wirtualnych. Nie można utworzyć połączeń przy użyciu Azure Portal.
 
-## <a name="plan"></a>Krok 1 — planowanie zakresów adresów IP
+## <a name="plan"></a>Krok 1 — Planowanie zakresów adresów IP
 
 Ważne jest, aby określić zakresy, które będą używane do konfigurowania sieci wirtualnych. W przypadku tej konfiguracji należy upewnić się, że żaden z zakresów sieci wirtualnej nie nakłada się na siebie lub z żadnym z sieci lokalnych, z którymi się łączą.
 
@@ -73,7 +73,7 @@ W poniższej tabeli przedstawiono przykład sposobu definiowania sieci wirtualny
 
 **Przykład**
 
-| Sieć wirtualna | Przestrzeń adresowa | Region | Nawiązuje połączenie z lokacją sieci lokalnej |
+| Virtual Network | Przestrzeń adresowa | Region | Nawiązuje połączenie z lokacją sieci lokalnej |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Wschodnie stany USA |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Zachodnie stany USA |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -135,7 +135,7 @@ Na przykład program sieci testvnet1 nawiązuje połączenie z lokalną lokacją
 
 Lokacja lokalna dla każdej sieci wirtualnej to inna Sieć wirtualna. W naszej konfiguracji są używane następujące przykładowe wartości:
 
-| Sieć wirtualna | Przestrzeń adresowa | Region | Nawiązuje połączenie z lokacją sieci lokalnej |
+| Virtual Network | Przestrzeń adresowa | Region | Nawiązuje połączenie z lokacją sieci lokalnej |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Wschodnie stany USA |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Zachodnie stany USA |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -199,7 +199,7 @@ Po utworzeniu bram sieci wirtualnej dla obu sieci wirtualnych należy dostosowa�
    ![Modyfikuj witrynę](./media/vpn-gateway-howto-vnet-vnet-portal-classic/connections.png)
 5. Zaktualizuj **adres IP bramy sieci VPN** i kliknij przycisk **OK** , aby zapisać ustawienia.
 
-   ![Adres IP bramy](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
+   ![adres IP bramy](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
 6. Zamknij inne strony.
 7. Powtórz te kroki dla sieci testvnet4.
 

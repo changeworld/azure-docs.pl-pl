@@ -17,16 +17,15 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 92e4376108de02b912c05459411adfacf926c448
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 37ce80c94478d2250eae321f7a42bda64d441dea
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700468"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159646"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma tożsamości firmy Microsoft i protokół OAuth 2,0 w imieniu użytkownika
 
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Przepływ uwierzytelniania OAuth 2,0 w imieniu (OBO) obsługuje przypadek użycia, w którym aplikacja wywołuje usługę/interfejs API sieci Web, co z kolei musi wywołać inną usługę/internetowy interfejs API. Pomysłem jest propagowanie tożsamości i uprawnień delegowanych użytkowników za pomocą łańcucha żądań. W przypadku usługi warstwy środkowej aby żądania były uwierzytelniane w usłudze podrzędnej, należy zabezpieczyć token dostępu z platformy tożsamości firmy Microsoft w imieniu użytkownika.
 
@@ -70,12 +69,12 @@ Gdy jest używany wspólny klucz tajny, żądanie tokenu dostępu między usług
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| `grant_type` | Wymagane | Typ żądania tokenu. Dla żądania korzystającego z tokenu JWT wartość musi być `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Wymagane | Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala](https://go.microsoft.com/fwlink/?linkid=2083908) została przypisana do aplikacji. |
-| `client_secret` | Wymagane | Wpis tajny klienta wygenerowany dla aplikacji na stronie Azure Portal-Rejestracje aplikacji. |
-| `assertion` | Wymagane | Wartość tokenu użytego w żądaniu.  Ten token musi mieć odbiorców aplikacji wykonujących to żądanie OBO (aplikacja oznaczona przez pole `client-id`). |
-| `scope` | Wymagane | Rozdzielana spacjami lista zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md). |
-| `requested_token_use` | Wymagane | Określa, w jaki sposób żądanie powinno być przetwarzane. W przepływie OBO wartość musi być ustawiona na `on_behalf_of`. |
+| `grant_type` | Wymagany | Typ żądania tokenu. Dla żądania korzystającego z tokenu JWT wartość musi być `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `client_id` | Wymagany | Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala](https://go.microsoft.com/fwlink/?linkid=2083908) została przypisana do aplikacji. |
+| `client_secret` | Wymagany | Wpis tajny klienta wygenerowany dla aplikacji na stronie Azure Portal-Rejestracje aplikacji. |
+| `assertion` | Wymagany | Wartość tokenu użytego w żądaniu.  Ten token musi mieć odbiorców aplikacji wykonujących to żądanie OBO (aplikacja oznaczona przez pole `client-id`). |
+| `scope` | Wymagany | Rozdzielana spacjami lista zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md). |
+| `requested_token_use` | Wymagany | Określa, w jaki sposób żądanie powinno być przetwarzane. W przepływie OBO wartość musi być ustawiona na `on_behalf_of`. |
 
 #### <a name="example"></a>Przykład
 
@@ -102,13 +101,13 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| `grant_type` | Wymagane | Typ żądania tokenu. Dla żądania korzystającego z tokenu JWT wartość musi być `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
-| `client_id` | Wymagane |  Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala](https://go.microsoft.com/fwlink/?linkid=2083908) została przypisana do aplikacji. |
-| `client_assertion_type` | Wymagane | Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
-| `client_assertion` | Wymagane | Potwierdzenie (token sieci Web JSON), które należy utworzyć i podpisać przy użyciu certyfikatu zarejestrowanego jako poświadczenia dla aplikacji. Aby dowiedzieć się, jak zarejestrować certyfikat i format potwierdzenia, zobacz [poświadczenia certyfikatu](active-directory-certificate-credentials.md). |
-| `assertion` | Wymagane | Wartość tokenu użytego w żądaniu. |
-| `requested_token_use` | Wymagane | Określa, w jaki sposób żądanie powinno być przetwarzane. W przepływie OBO wartość musi być ustawiona na `on_behalf_of`. |
-| `scope` | Wymagane | Rozdzielana spacjami lista zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
+| `grant_type` | Wymagany | Typ żądania tokenu. Dla żądania korzystającego z tokenu JWT wartość musi być `urn:ietf:params:oauth:grant-type:jwt-bearer`. |
+| `client_id` | Wymagany |  Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala](https://go.microsoft.com/fwlink/?linkid=2083908) została przypisana do aplikacji. |
+| `client_assertion_type` | Wymagany | Wartość musi być `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion` | Wymagany | Potwierdzenie (token sieci Web JSON), które należy utworzyć i podpisać przy użyciu certyfikatu zarejestrowanego jako poświadczenia dla aplikacji. Aby dowiedzieć się, jak zarejestrować certyfikat i format potwierdzenia, zobacz [poświadczenia certyfikatu](active-directory-certificate-credentials.md). |
+| `assertion` | Wymagany | Wartość tokenu użytego w żądaniu. |
+| `requested_token_use` | Wymagany | Określa, w jaki sposób żądanie powinno być przetwarzane. W przepływie OBO wartość musi być ustawiona na `on_behalf_of`. |
+| `scope` | Wymagany | Rozdzielana spacjami lista zakresów dla żądania tokenu. Aby uzyskać więcej informacji, zobacz [zakresy](v2-permissions-and-consent.md).|
 
 Zwróć uwagę, że parametry są prawie takie same, jak w przypadku żądania przez wspólny klucz tajny, z tą różnicą, że parametr `client_secret` jest zastępowany przez dwa parametry: `client_assertion_type` i `client_assertion`.
 

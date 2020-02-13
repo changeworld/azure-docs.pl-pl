@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33e1037a0fe261f9fb0d06a9ebb0b3b323fe8d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701267"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159884"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji JavaScript jednostronicowej (SPA)
 
@@ -50,8 +50,8 @@ W tym przewodniku jest stosowana następująca Biblioteka:
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Biblioteka uwierzytelniania firmy Microsoft dla wersji zapoznawczej języka JavaScript|
 
 > [!NOTE]
-> *Msal. js* jest przeznaczony dla punktu końcowego platformy tożsamości firmy Microsoft, który umożliwia konto osobiste i konto służbowe do logowania i uzyskiwania tokenów. Punkt końcowy platformy tożsamości firmy Microsoft ma [pewne ograniczenia](azure-ad-endpoint-comparison.md#limitations).
-> Aby zrozumieć różnice między punktami końcowymi v 1.0 i 2.0, zobacz [Przewodnik po porównaniu do punktu końcowego](azure-ad-endpoint-comparison.md).
+> *Msal. js* jest przeznaczony dla punktu końcowego platformy tożsamości firmy Microsoft, który umożliwia konto osobiste i konto służbowe do logowania i uzyskiwania tokenów. Punkt końcowy platformy tożsamości firmy Microsoft ma [pewne ograniczenia](../azuread-dev/azure-ad-endpoint-comparison.md#limitations).
+> Aby zrozumieć różnice między punktami końcowymi v 1.0 i 2.0, zobacz [Przewodnik po porównaniu do punktu końcowego](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 <!--end-collapse-->
 
@@ -325,7 +325,7 @@ Dodaj następujący kod do pliku `index.html` w tagach `<script></script>`:
 
 ## <a name="register-your-application"></a>Rejestrowanie aplikacji
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 1. Jeśli Twoje konto zapewnia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu z dzierżawą usługi Azure AD, której chcesz użyć.
 1. Przejdź do strony Microsoft Identity Platform for Developers [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) .
@@ -377,7 +377,7 @@ Dodaj następujący kod do pliku `index.html` w tagach `<script></script>`:
     };
     ```
 
-    Miejsce:
+    Gdzie:
     - *\<Enter_the_Application_Id_here >* to **Identyfikator aplikacji (klienta)** dla zarejestrowanej aplikacji.
     - *\<Enter_the_Tenant_info_here >* jest ustawiona na jedną z następujących opcji:
        - Jeśli aplikacja obsługuje *konta w tym katalogu organizacyjnym*, Zastąp tę wartość **identyfikatorem dzierżawy** lub **nazwą dzierżawy** (na przykład *contoso.Microsoft.com*).

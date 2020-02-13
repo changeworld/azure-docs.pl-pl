@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a45a3412a1ceb8e8a9bd9fd1a34dfdbd10ba1c75
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425792"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162433"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurowanie klientów OpenVPN dla platformy Azure VPN Gateway
 
@@ -20,7 +20,7 @@ Ten artykuł pomaga w konfigurowaniu klientów **OpenVPN® Protocol** .
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 Sprawdź, czy zostały wykonane kroki konfigurowania usługi OpenVPN dla bramy sieci VPN. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie OpenVPN dla platformy Azure VPN Gateway](vpn-gateway-howto-openvpn.md).
 
@@ -105,7 +105,7 @@ Sprawdź, czy zostały wykonane kroki konfigurowania usługi OpenVPN dla bramy s
 
 13. Uruchom aplikację OpenVPN i przesuń przełącznik na stronę **profilu** w prawo, aby nawiązać połączenie
 
-    ![Łączenie](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+    ![Połączenie](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
 
 
 ## <a name="linux"></a>Klienci z systemem Linux

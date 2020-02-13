@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895460"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163045"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Samouczek: wdrażanie usługi Azure Digital bliźniaczych reprezentacji Preview i Konfigurowanie wykresu przestrzennego
 
@@ -52,7 +52,7 @@ Wykonaj kroki opisane w tej sekcji, aby utworzyć nowe wystąpienie usługi Azur
 
 ## <a name="grant-permissions-to-your-app"></a>Udzielanie uprawnień dla Twojej aplikacji
 
-Usługa Digital Twins steruje [dostępem do odczytu/zapisu](../active-directory/develop/v1-permissions-and-consent.md) w usłudze, korzystając z usługi [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD). Każda aplikacja, która wymaga połączenia z wystąpieniem usługi Digital Twins, musi być zarejestrowana w usłudze Azure AD. W tej sekcji opisano procedurę rejestrowania przykładowej aplikacji.
+Usługa Digital Twins steruje [dostępem do odczytu/zapisu](../active-directory/fundamentals/active-directory-whatis.md) w usłudze, korzystając z usługi [Azure Active Directory](../active-directory/develop/v2-permissions-and-consent.md) (Azure AD). Każda aplikacja, która wymaga połączenia z wystąpieniem usługi Digital Twins, musi być zarejestrowana w usłudze Azure AD. W tej sekcji opisano procedurę rejestrowania przykładowej aplikacji.
 
 Jeśli już masz zarejestrowaną aplikację, możesz wykorzystać ją jako przykład. Jednak przejrzyj tę sekcję, aby upewnić się, że Twoja rejestracja aplikacji jest poprawnie skonfigurowana.
 
@@ -149,7 +149,7 @@ Plik **provisionSample.yaml** zawiera następujące węzły:
 
 - **devices**: miejsca mogą zawierać urządzenia (`devices`) będące jednostkami fizycznymi lub wirtualnymi, które zarządzają pewną liczbą czujników. Na przykład urządzeniem może być telefon użytkownika, zasobnik czujników urządzenia Raspberry Pi lub brama. W wymyślonym budynku z Twojego przykładu zwróć uwagę na sposób umieszczenia urządzenia **Raspberry Pi 3 A1** w pomieszczeniu **Focus Room**. Każdy węzeł urządzenia jest identyfikowany przez unikatowy identyfikator `hardwareId` trwale zakodowany w przykładzie. Aby skonfigurować ten przykład na potrzeby rzeczywistego środowiska produkcyjnego, zamień te wartości na wartości z Twojej konfiguracji.  
 
-- **sensors**: urządzenie może zawierać wiele czujników (`sensors`). Umożliwiają one wykrywanie i rejestrowanie zmian fizycznych, takich jak temperatura, ruch i poziom naładowania baterii. Każdy węzeł czujnika jest jednoznacznie identyfikowany przez `hardwareId`, stałe tutaj. Na potrzeby rzeczywistej aplikacji zamień te identyfikatory, używając unikatowych identyfikatorów czujników z Twojej konfiguracji. Plik provisionSample.yaml ma dwa czujniki umożliwiające rejestrowanie ruchu (*Motion*) i dwutlenku węgla (*CarbonDioxide*). Dodaj kolejny czujnik, aby rejestrować temperaturę (*Temperature*), dodając poniższe wiersze pod wierszami dotyczącymi czujnika CarbonDioxide. Są one dostępne w provisionSample. YAML jako wiersze z komentarzem. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza. 
+- **sensors**: urządzenie może zawierać wiele czujników (`sensors`). Umożliwiają one wykrywanie i rejestrowanie zmian fizycznych, takich jak temperatura, ruch i poziom naładowania baterii. Każdy węzeł czujnika jest unikatowo identyfikowany za pomocą identyfikatora `hardwareId` trwale zapisanego w tym miejscu. Na potrzeby rzeczywistej aplikacji zamień te identyfikatory, używając unikatowych identyfikatorów czujników z Twojej konfiguracji. Plik provisionSample.yaml ma dwa czujniki umożliwiające rejestrowanie ruchu (*Motion*) i dwutlenku węgla (*CarbonDioxide*). Dodaj kolejny czujnik, aby rejestrować temperaturę (*Temperature*), dodając poniższe wiersze pod wierszami dotyczącymi czujnika CarbonDioxide. Są one dostępne w provisionSample. YAML jako wiersze z komentarzem. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza. 
 
     ```yaml
             - dataType: Temperature

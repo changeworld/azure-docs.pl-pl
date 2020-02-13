@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67737aed3bd9961a37dc761fddf608d9bcfe3ffe
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f1fa447312ad6a1f92eaed1164020cb6ee95606e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847256"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161600"
 ---
 # <a name="how-to-configure-password-writeback"></a>Instrukcje: Konfigurowanie zapisywania zwrotnego haseł
 
@@ -35,7 +35,7 @@ W poniższych krokach przyjęto założenie, że Azure AD Connect w środowisku 
 Typowe zadania związane z rozwiązywaniem problemów dotyczące funkcji zapisywania zwrotnego haseł znajdują się w sekcji [Rozwiązywanie problemów z funkcją zapisywania zwrotnego haseł](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) w naszym artykule
 
 > [!WARNING]
-> Zapisywanie zwrotne haseł przestanie działać dla klientów korzystających z Azure AD Connect wersji 1.0.8641.0 i starszych, gdy [usługa Azure Access Control Service (ACS) zostanie wycofana w dniu 7 listopada, 2018](../develop/active-directory-acs-migration.md). Azure AD Connect wersje 1.0.8641.0 i starsze nie będą już zezwalały na zapisywanie zwrotne haseł, ponieważ zależą one od usług ACS dla tej funkcji.
+> Zapisywanie zwrotne haseł przestanie działać dla klientów korzystających z Azure AD Connect wersji 1.0.8641.0 i starszych, gdy [usługa Azure Access Control Service (ACS) zostanie wycofana w dniu 7 listopada, 2018](../azuread-dev/active-directory-acs-migration.md). Azure AD Connect wersje 1.0.8641.0 i starsze nie będą już zezwalały na zapisywanie zwrotne haseł, ponieważ zależą one od usług ACS dla tej funkcji.
 >
 > Aby uniknąć przerw w działaniu usługi, należy uaktualnić poprzednią wersję Azure AD Connect do nowszej wersji, zapoznaj się z artykułem [Azure AD Connect: uaktualnienie z poprzedniej wersji do najnowszej](../hybrid/how-to-upgrade-previous-version.md)
 >

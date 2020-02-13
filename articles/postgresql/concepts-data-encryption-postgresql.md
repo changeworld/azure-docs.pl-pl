@@ -6,21 +6,21 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 917dc85672fcc5e4c3f1431f80d1f6eb68207392
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 125f92b64ee745a595d15ccacafb6a62414955a9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050034"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157537"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL szyfrowanie danych na jednym serwerze z kluczem zarządzanym przez klienta
 
 > [!NOTE]
 > W tej chwili należy zażądać dostępu do korzystania z tej funkcji. Aby to zrobić, skontaktuj się z AskAzureDBforPostgreSQL@service.microsoft.com.
 
-Azure Database for PostgreSQL szyfrowanie danych za pomocą jednego serwera z kluczem zarządzanym przez klienta umożliwia Bring Your Own Key (BYOK) na potrzeby ochrony danych w spoczynku. Pozwala to również organizacjom na wdrażanie rozdzieleń obowiązków związanych z zarządzaniem kluczami i danymi. W przypadku szyfrowania zarządzanego przez klienta użytkownik jest odpowiedzialny za oraz w pełni kontrolujący cykl życia klucza, uprawnienia do użycia klucza i inspekcje operacji na kluczach.
+Szyfrowanie danych za pomocą kluczy zarządzanych przez klienta dla Azure Database for PostgreSQL jednym serwerze umożliwia wprowadzenie klucza qwn (BYOK) w celu zapewnienia ochrony danych w spoczynku. Pozwala to również organizacjom na wdrażanie rozdzieleń obowiązków związanych z zarządzaniem kluczami i danymi. W przypadku szyfrowania zarządzanego przez klienta użytkownik jest odpowiedzialny za oraz w pełni kontrolujący cykl życia klucza, uprawnienia do użycia klucza i inspekcje operacji na kluczach.
 
-W przypadku Azure Database for PostgreSQL jednego serwera należy ustawić szyfrowanie danych na poziomie serwera. W przypadku tej formy szyfrowania danych należy użyć klucza w celu szyfrowania klucza szyfrowania danych. Klucz szyfrowania danych jest kluczem zarządzanym przez klienta, który jest przechowywany w wystąpieniu [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) klienta i zarządzanym przez klienta. W dalszej części tego artykułu został opisany bardziej szczegółowo.
+Szyfrowanie danych z kluczami zarządzanymi przez klienta dla Azure Database for PostgreSQL pojedynczego serwera, jest ustawiany na poziomie serwera. Dla danego serwera klucz zarządzany przez klienta o nazwie klucz szyfrowania klucza (KEK) jest używany do szyfrowania klucza szyfrowania danych używanego przez usługę. KEK jest kluczem asymetrycznym przechowywanym w wystąpieniu [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) klienta i zarządzanym przez klienta. Klucz szyfrowania klucza (KEK) i klucz szyfrowania danych (w tym artykule) opisano szczegółowo w dalszej części tego artykułu.
 
 Key Vault to oparty na chmurze zewnętrzny system zarządzania kluczami. Jest ona wysoce dostępna i zapewnia skalowalny, bezpieczny magazyn dla kluczy kryptograficznych RSA, opcjonalnie obsługiwane przez program FIPS 140-2 Level 2 sprawdzone sprzętowe moduły zabezpieczeń (sprzętowych modułów zabezpieczeń). Nie zezwala na bezpośredni dostęp do przechowywanego klucza, ale zapewnia usługi szyfrowania i odszyfrowywania do autoryzowanych jednostek. Key Vault może wygenerować klucz, zaimportować go lub [przetransferować z lokalnego urządzenia HSM](../key-vault/key-Vault-hsm-protected-keys.md).
 
@@ -31,11 +31,10 @@ Key Vault to oparty na chmurze zewnętrzny system zarządzania kluczami. Jest on
 
 Szyfrowanie danych dla Azure Database for PostgreSQL pojedynczego serwera zapewnia następujące korzyści:
 
-* Większa przejrzystość, szczegółowa kontrola i zarządzanie kluczem szyfrowania.
-* Centralne zarządzanie i organizacja kluczy, udostępniając je w Azure Key Vault.
-* Możliwość wdrożenia separacji obowiązków w zakresie zarządzania kluczami i danymi w organizacji.
-* Możliwość oddzielenia zarządzania kluczami od zarządzania danymi w organizacji, dzięki czemu administrator Key Vault może odwołać uprawnienia dostępu do klucza, aby uniemożliwić dostęp do zaszyfrowanej bazy danych.
-* Większe zaufanie od użytkowników końcowych, ponieważ firma Microsoft nie może wyświetlić lub wyodrębnić kluczy szyfrowania w Key Vault.
+* Dostęp do danych jest w pełni kontrolowany przez użytkownika przez możliwość usuwania klucza i uzyskiwania dostępu do bazy danych 
+*   Pełna kontrola nad cyklem życia klucza, włącznie z rotacją klucza do dopasowania do zasad firmowych
+*   Centralne zarządzanie i organizacja kluczy w Azure Key Vault
+*   Możliwość wdrożenia separacji obowiązków między biurami zabezpieczeń i administratorami systemów i administratorów systemu
 
 ## <a name="terminology-and-description"></a>Terminologia i opis
 

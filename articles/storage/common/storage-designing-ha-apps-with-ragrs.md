@@ -10,12 +10,12 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 592be1710893791e80dfe4b20e1323e789b33e69
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945449"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157096"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Projektowanie aplikacji o wysokiej dostępności przy użyciu magazynu geograficznie nadmiarowego do odczytu
 
@@ -23,8 +23,8 @@ Typową cechą infrastruktury opartej na chmurze, takiej jak usługa Azure Stora
 
 Konta magazynu skonfigurowane na potrzeby replikacji geograficznie nadmiarowej są replikowane synchronicznie w regionie podstawowym, a następnie asynchronicznie replikowane do regionu pomocniczego, który ma setki kilometrów. Usługa Azure Storage oferuje dwa typy replikacji geograficznie nadmiarowej:
 
-* [Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza)](storage-redundancy-gzrs.md) zapewnia replikację scenariuszy wymagających zarówno wysokiej dostępności, jak i maksymalnej trwałości. Dane są replikowane synchronicznie w trzech strefach dostępności platformy Azure w regionie podstawowym przy użyciu magazynu Strefowo nadmiarowego (ZRS), a następnie replikowana asynchronicznie do regionu pomocniczego. Aby uzyskać dostęp do odczytu do danych w regionie pomocniczym, Włącz strefę geograficzną z dostępem do odczytu (RA-GZRS).
-* [Magazyn Geograficznie nadmiarowy (GRS)](storage-redundancy-grs.md) zapewnia replikację między regionami w celu ochrony przed awarią regionalną. Dane są replikowane synchronicznie w regionie podstawowym przy użyciu magazynu lokalnie nadmiarowego (LRS), a następnie replikowana asynchronicznie do regionu pomocniczego. Aby uzyskać dostęp do odczytu do danych w regionie pomocniczym, Włącz magazyn Geograficznie nadmiarowy z dostępem do odczytu (RA-GRS).
+* [Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza)](storage-redundancy.md) zapewnia replikację scenariuszy wymagających zarówno wysokiej dostępności, jak i maksymalnej trwałości. Dane są replikowane synchronicznie w trzech strefach dostępności platformy Azure w regionie podstawowym przy użyciu magazynu Strefowo nadmiarowego (ZRS), a następnie replikowana asynchronicznie do regionu pomocniczego. Aby uzyskać dostęp do odczytu do danych w regionie pomocniczym, Włącz strefę geograficzną z dostępem do odczytu (RA-GZRS).
+* [Magazyn Geograficznie nadmiarowy (GRS)](storage-redundancy.md) zapewnia replikację między regionami w celu ochrony przed awarią regionalną. Dane są replikowane synchronicznie w regionie podstawowym przy użyciu magazynu lokalnie nadmiarowego (LRS), a następnie replikowana asynchronicznie do regionu pomocniczego. Aby uzyskać dostęp do odczytu do danych w regionie pomocniczym, Włącz magazyn Geograficznie nadmiarowy z dostępem do odczytu (RA-GRS).
 
 W tym artykule przedstawiono sposób projektowania aplikacji w celu obsługi awarii w regionie podstawowym. Jeśli region podstawowy stanie się niedostępny, aplikacja może dostosowywać się do wykonywania operacji odczytu w regionie pomocniczym. Przed rozpoczęciem upewnij się, że konto magazynu jest skonfigurowane dla usługi RA-GRS lub RA-GZRS.
 
@@ -200,52 +200,21 @@ Magazyn Geograficznie nadmiarowy działa przez replikowanie transakcji z podstaw
 
 W poniższej tabeli przedstawiono przykład takiej sytuacji, w której mogą wystąpić informacje o tym, co się stanie w przypadku zaktualizowania szczegółów pracownika, aby uczynić je członkiem roli *administratorzy* . Na potrzeby tego przykładu należy zaktualizować jednostkę **Employee** i zaktualizować jednostkę **roli administratora** z liczbą całkowitej liczby administratorów. Zwróć uwagę, w jaki sposób aktualizacje są stosowane poza kolejnością w regionie pomocniczym.
 
-| **czas** | **Transakcja**                                            | **Replikacja**                       | **Czas ostatniej synchronizacji** | **wynik** |
+| **Pierwszym** | **Transaction**                                            | **Replikacja**                       | **Czas ostatniej synchronizacji** | **Wynika** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Transakcja A: <br> Wstaw pracownika <br> jednostka w podstawowym |                                   |                    | Transakcja wstawiona do elementu podstawowego,<br> jeszcze nie zreplikowane. |
 | T1       |                                                            | Transakcja A <br> zreplikowane do<br> dodatkowych | T1 | Transakcja jest replikowana do pomocniczej. <br>Czas ostatniej synchronizacji został zaktualizowany.    |
 | T2       | Transakcja B:<br>Aktualizacja<br> Jednostka Employee<br> w podstawowym  |                                | T1                 | Transakcja B zapisywana w podstawowym,<br> jeszcze nie zreplikowane.  |
 | T3       | Transakcja C:<br> Aktualizacja <br>administrator<br>Jednostka roli w<br>podstawowy |                    | T1                 | Transakcja C została zapisywana na podstawową,<br> jeszcze nie zreplikowane.  |
-| *T4*     |                                                       | Transakcja C <br>zreplikowane do<br> dodatkowych | T1         | Transakcja C została zreplikowana do pomocniczej.<br>LastSyncTime nie został zaktualizowany, ponieważ <br>transakcja B nie została jeszcze zreplikowana.|
-| *T5*     | Odczytaj jednostki <br>z pomocniczego                           |                                  | T1                 | Otrzymujesz nieodświeżoną wartość dla pracownika <br> jednostka, ponieważ transakcja B nie została <br> zreplikowane jeszcze. Otrzymujesz nową wartość dla<br> Jednostka roli administratora, ponieważ C ma<br> powtórzon. Czas ostatniej synchronizacji nadal nie<br> Zaktualizowano, ponieważ transakcja B<br> nie zreplikowane. Możesz powiedzieć<br>Jednostka roli administratora jest niespójna <br>ponieważ data/godzina jednostki przypada po <br>Czas ostatniej synchronizacji. |
+| *Twórz*     |                                                       | Transakcja C <br>zreplikowane do<br> dodatkowych | T1         | Transakcja C została zreplikowana do pomocniczej.<br>LastSyncTime nie został zaktualizowany, ponieważ <br>transakcja B nie została jeszcze zreplikowana.|
+| *Otrzymując*     | Odczytaj jednostki <br>z pomocniczego                           |                                  | T1                 | Otrzymujesz nieodświeżoną wartość dla pracownika <br> jednostka, ponieważ transakcja B nie została <br> zreplikowane jeszcze. Otrzymujesz nową wartość dla<br> Jednostka roli administratora, ponieważ C ma<br> powtórzon. Czas ostatniej synchronizacji nadal nie<br> Zaktualizowano, ponieważ transakcja B<br> nie zreplikowane. Możesz powiedzieć<br>Jednostka roli administratora jest niespójna <br>ponieważ data/godzina jednostki przypada po <br>Czas ostatniej synchronizacji. |
 | *T6*     |                                                      | Transakcja B<br> zreplikowane do<br> dodatkowych | T6                 | *T6* — wszystkie transakcje za poorednictwem języka C <br>zreplikowane, czas ostatniej synchronizacji<br> został zaktualizowany. |
 
 W tym przykładzie Załóżmy, że klient przełącza się do odczytu z regionu pomocniczego w T5. Teraz może pomyślnie odczytać jednostkę **roli administrator** , ale jednostka zawiera wartość dla liczby administratorów, która nie jest spójna z liczbą jednostek **pracowników** , które są w tym momencie oznaczone jako administratorzy w regionie pomocniczym. Klient może po prostu wyświetlić tę wartość, z ryzykiem, że informacje są niespójne. Klient może także próbować określić, że **rola administratora** jest w stanie potencjalnie niespójnym, ponieważ aktualizacje wystąpiły poza kolejnością, a następnie informują użytkownika o tym fakcie.
 
 Aby rozpoznać, że ma ona potencjalnie niespójne dane, klient może użyć wartości *czasu ostatniej synchronizacji* , który można uzyskać w dowolnym momencie, wykonując zapytania dotyczące usługi magazynu. Oznacza to czas, w którym dane w regionie pomocniczym były ostatnio spójne i gdy usługa zastosowała wszystkie transakcje przed tym punktem w czasie. W powyższym przykładzie, gdy usługa wstawia jednostkę **Employee** w regionie pomocniczym, czas ostatniej synchronizacji jest ustawiany na *T1*. Pozostanie o *T1* do momentu, aż usługa zaktualizuje jednostkę **pracownika** w regionie pomocniczym, gdy zostanie ustawiona na *T6*. Jeśli klient Pobiera czas ostatniej synchronizacji, gdy odczytuje jednostkę w *T5*, może ją porównać z sygnaturą czasową w jednostce. Jeśli sygnatura czasowa w jednostce jest późniejsza niż godzina ostatniej synchronizacji, jednostka jest w stanie potencjalnie niespójnym i można wykonać dowolną czynność dla aplikacji. Użycie tego pola wymaga, aby wiadomo, kiedy Ostatnia aktualizacja podstawowa została ukończona.
 
-## <a name="getting-the-last-sync-time"></a>Pobieranie czasu ostatniej synchronizacji
-
-Możesz użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby pobrać czas ostatniej synchronizacji w celu ustalenia, kiedy dane były ostatnio zapisywane do pomocniczego.
-
-### <a name="powershell"></a>PowerShell
-
-Aby uzyskać ostatnią godzinę synchronizacji dla konta magazynu za pomocą programu PowerShell, zainstaluj moduł w wersji zapoznawczej usługi Azure Storage, który obsługuje pobieranie statystyk replikacji geograficznej. Na przykład:
-
-```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
-```
-
-Następnie sprawdź Właściwość **GeoReplicationStats. LastSyncTime** konta magazynu. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami:
-
-```powershell
-$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
-    -Name <storage-account> `
-    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
-```
-
-### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-
-Aby uzyskać czas ostatniej synchronizacji konta magazynu za pomocą interfejsu wiersza polecenia platformy Azure, sprawdź Właściwość **geoReplicationStats. lastSyncTime** konta magazynu. Użyj parametru `--expand`, aby zwrócić wartości właściwości zagnieżdżonych w obszarze **geoReplicationStats**. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami:
-
-```azurecli
-$lastSyncTime=$(az storage account show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --expand geoReplicationStats \
-    --query geoReplicationStats.lastSyncTime \
-    --output tsv)
-```
+Aby dowiedzieć się, jak sprawdzić czas ostatniej synchronizacji, zobacz [Sprawdź Właściwość godzina ostatniej synchronizacji dla konta magazynu](last-sync-time-get.md).
 
 ## <a name="testing"></a>Testowanie
 

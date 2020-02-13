@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: 3c1df04e96aff55ae5b9f7130b1593638e3ea1b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6097d38d3335be356ca75f5a9d0eadeed414b03
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395084"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166949"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Automatyzacja procesów dzienników Azure Monitor przy użyciu łącznika dla Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) umożliwia tworzenie zautomatyzowanych przepływów pracy przy użyciu setek akcji dla różnych usług. Dane wyjściowe z jednej akcji mogą służyć jako dane wejściowe, aby umożliwić tworzenie integracji między różnymi usługami.  Łącznik usługi Azure Log Analytics dla Microsoft Flow umożliwia tworzenie przepływów pracy zawierających dane pobierane przez zapytania dzienników z obszaru roboczego Log Analytics w Azure Monitor.
@@ -36,7 +36,7 @@ W samouczku w tym artykule przedstawiono sposób tworzenia przepływu, który au
 
 
 ## <a name="step-3-add-a-log-analytics-action"></a>Krok 3. Dodawanie akcji Log Analytics
-1. Kliknij opcję **+ Nowy krok**, a następnie kliknij przycisk **Dodaj akcję**.
+1. Kliknij pozycję **+ nowy krok**, a następnie kliknij pozycję **Dodaj akcję**.
 2. Wyszukaj **log Analytics**.
 3. Kliknij pozycję **Azure log Analytics — uruchom zapytanie i Wizualizuj wyniki**.<br><br>![Log Analytics uruchomienia okna zapytania](media/flow-tutorial/flow02.png)
 
@@ -77,6 +77,5 @@ W samouczku w tym artykule przedstawiono sposób tworzenia przepływu, który au
 
 - Dowiedz się więcej [na temat zapytań dzienników w Azure monitor](../log-query/log-query-overview.md).
 - Dowiedz się więcej o [Microsoft Flow](https://ms.flow.microsoft.com).
-
 
 

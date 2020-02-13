@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 018d0c3bc009f6063de75b9a479be650b2c06e7c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084017"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160848"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Obsługa wyjątków i błędów MSAL
 
@@ -506,7 +506,7 @@ Następujący przykładowy kod języka C przedstawia najlepsze rozwiązania doty
 
 ## <a name="conditional-access-and-claims-challenges"></a>Wyzwania dotyczące dostępu warunkowego i oświadczeń
 
-W przypadku odzyskania tokenów w trybie dyskretnym aplikacja może otrzymywać błędy w przypadku, gdy interfejs API, do którego próbujesz uzyskać dostęp, wymaga [żądania oświadczeń dostępu warunkowego](conditional-access-dev-guide.md) , takiego jak zasady MFA.
+W przypadku odzyskania tokenów w trybie dyskretnym aplikacja może otrzymywać błędy w przypadku, gdy interfejs API, do którego próbujesz uzyskać dostęp, wymaga [żądania oświadczeń dostępu warunkowego](../azuread-dev/conditional-access-dev-guide.md) , takiego jak zasady MFA.
 
 Wzorzec obsługi tego błędu polega na interaktywnej pozyskaniu tokenu przy użyciu MSAL. Interaktywny pozyskiwanie tokenu wyświetla użytkownika i daje im możliwość spełnienia wymaganych zasad dostępu warunkowego.
 
@@ -520,7 +520,7 @@ Aby obsłużyć wyzwanie żądania, należy użyć metody `.WithClaim()` klasy `
 
 ### <a name="javascript"></a>JavaScript
 
-W przypadku odzyskania tokenów w trybie dyskretnym (przy użyciu `acquireTokenSilent`) przy użyciu MSAL. js aplikacja może otrzymywać błędy, gdy do interfejsu API, do którego próbujesz uzyskać dostęp, jest wymagane [wyzwanie żądania dostępu warunkowego](conditional-access-dev-guide.md) , takie jak zasady MFA.
+W przypadku odzyskania tokenów w trybie dyskretnym (przy użyciu `acquireTokenSilent`) przy użyciu MSAL. js aplikacja może otrzymywać błędy, gdy do interfejsu API, do którego próbujesz uzyskać dostęp, jest wymagane [wyzwanie żądania dostępu warunkowego](../azuread-dev/conditional-access-dev-guide.md) , takie jak zasady MFA.
 
 Wzorzec do obsługi tego błędu polega na tym, że wywołanie interaktywne umożliwia uzyskanie tokenu w MSAL. js, takiego jak `acquireTokenPopup` lub `acquireTokenRedirect`, tak jak w poniższym przykładzie:
 

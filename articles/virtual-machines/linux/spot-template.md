@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 2e94c48188d0eed22b338d0d7238c0d27a5d1862
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782205"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162450"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Wdrażanie maszyn wirtualnych przy użyciu szablonu Menedżer zasobów
 
@@ -33,7 +33,7 @@ Dla maszyny wirtualnej można ustawić maksymalną cenę, która ma być płacon
 > Wystąpienia punktowe są obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> W przypadku wczesnej części publicznej wersji zapoznawczej wystąpienia usługi będą miały ustaloną cenę, więc nie będzie żadnych wykluczeń opartych na cenach.
+
 
 
 ## <a name="use-a-template"></a>Korzystanie z szablonu 
@@ -48,9 +48,6 @@ W przypadku wdrożeń szablonów dodatkowych Użyj`"apiVersion": "2019-03-01"` l
                 }
 ```
 
-
-> [!IMPORTANT]
-> W przypadku wczesnej części publicznej wersji zapoznawczej można ustawić cenę maksymalną, ale zostanie ona zignorowana. Na maszynach wirtualnych będzie dostępna stała cena, dlatego nie będzie żadnych wykluczeń opartych na cenach.
 
 
 Oto przykładowy szablon z dodanymi właściwościami dla maszyny wirtualnej. Zastąp nazwy zasobów własnymi i `<password>` przy użyciu hasła dla konta administratora lokalnego na maszynie wirtualnej.

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: 290b0073ea6736141bca035f82f7aa37bdf364ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701930"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160070"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Aplikacja jednostronicowa: uzyskiwanie tokenu do wywoływania interfejsu API
 
@@ -42,7 +42,7 @@ Można ustawić zakresy interfejsów API, które mają być uwzględniane przez 
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Uzyskiwanie tokenu za pomocą okna podręcznego
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Poniższy kod łączy opisany wcześniej wzorzec z metodami podręcznych czynności:
 
@@ -69,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Otoka kątowa MSAL zapewnia Interceptor HTTP, który automatycznie uzyskuje tokeny dostępu w trybie dyskretnym i dołącza je do żądań HTTP do interfejsów API.
 
@@ -111,9 +111,11 @@ ngOnDestroy() {
 
 Alternatywnie można jawnie uzyskać tokeny przy użyciu metod pozyskiwania tokenów, zgodnie z opisem w podstawowej bibliotece MSAL. js.
 
+---
+
 ## <a name="acquire-a-token-with-a-redirect"></a>Pozyskiwanie tokenu z przekierowaniem
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Poniższy wzorzec jest opisany wcześniej, ale przedstawia metodę Redirect, która umożliwia interaktywną pozyskiwanie tokenów. Należy zarejestrować wywołanie zwrotne przekierowania jak wspomniano wcześniej.
 
@@ -142,6 +144,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 ```
 
 ## <a name="request-optional-claims"></a>Żądaj opcjonalnych oświadczeń
+
 Możesz użyć opcjonalnych oświadczeń do następujących celów:
 
 - Uwzględnij dodatkowe oświadczenia w tokenach aplikacji.
@@ -150,7 +153,6 @@ Możesz użyć opcjonalnych oświadczeń do następujących celów:
 
 Aby zażądać opcjonalnych oświadczeń w `IdToken`, można wysłać obiekt oświadczeń skonwertowanej do pola `claimsRequest` klasy `AuthenticationParameters.ts`.
 
-### <a name="javascript"></a>JavaScript
 ```javascript
 "optionalClaims":  
    {
@@ -168,12 +170,14 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
+
 Aby dowiedzieć się więcej, zobacz [opcjonalne oświadczenia](active-directory-optional-claims.md).
 
-
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Ten kod jest taki sam, jak opisano wcześniej.
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 

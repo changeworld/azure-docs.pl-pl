@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902022"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179030"
 ---
 Korzystanie z maszyn wirtualnych na miejscu pozwala korzystać z nieużywanej pojemności przy znaczącym obciążeniu kosztów. W dowolnym momencie, gdy platforma Azure wymaga przywrócenia pojemności, infrastruktura platformy Azure wyłączy maszyny wirtualne. W związku z tym maszyny wirtualne są doskonałe dla obciążeń, które mogą obsłużyć przerwy, takie jak zadania przetwarzania wsadowego, środowiska deweloperskie/testowe, duże obciążenia obliczeniowe i inne.
 
@@ -23,16 +23,12 @@ Ilość dostępnej pojemności może się różnić w zależności od rozmiaru, 
 > Wystąpienia punktowe są obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> W przypadku wczesnej części publicznej wersji zapoznawczej wystąpienia usługi będą miały ustaloną cenę, więc nie będzie żadnych wykluczeń opartych na cenach.
 
 ## <a name="eviction-policy"></a>Zasady wykluczania
 
 Maszyny wirtualne można wykluczyć w oparciu o pojemność lub maksymalną ustawioną cenę. W przypadku maszyn wirtualnych zasady wykluczenia są ustawiane na wartość *unallocate* , która przenosi wykluczone maszyny wirtualne do stanu zatrzymania bez alokacji, umożliwiając ponowne wdrożenie wykluczonych maszyn wirtualnych w późniejszym czasie. Ponowne przydzielanie dodatkowych maszyn wirtualnych będzie jednak zależne od dostępnej pojemności. Cofnięte alokacje maszyn wirtualnych będą wliczane do limitu przydziału usługi vCPUe i zostanie naliczona opłata za dyski bazowe. 
 
 Użytkownicy mogą zrezygnować z otrzymywania powiadomień w ramach maszyny wirtualnej za pomocą [usługi Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md). Spowoduje to powiadomienie użytkownika, jeśli maszyny wirtualne zostaną wykluczone, a użytkownik będzie miał 30 sekund na ukończenie zadań i wykonanie zadań zamknięcia przed wykluczeniem. 
-
-> [!IMPORTANT]
-> W przypadku wczesnej części publicznej wersji zapoznawczej można ustawić cenę maksymalną, ale zostanie ona zignorowana. Na maszynach wirtualnych będzie dostępna stała cena, dlatego nie będzie żadnych wykluczeń opartych na cenach.
 
 
 | Opcja | Wynik |
@@ -54,9 +50,9 @@ Następujące rozmiary maszyn wirtualnych nie są obsługiwane w przypadku maszy
 
 Na maszynach wirtualnych nie można obecnie używać tymczasowych dysków systemu operacyjnego.
 
-Dodatkowe maszyny wirtualne można wdrożyć w dowolnym regionie, z wyjątkiem Microsoft Azure Chiny 21Vianet i Departament Obrony (DoD) w regionie Azure Government.
+Dodatkowe maszyny wirtualne można wdrożyć w dowolnym regionie, z wyjątkiem Microsoft Azure Chinach 21Vianet.
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Ceny maszyn wirtualnych na miejscu są zmienne, na podstawie regionu i jednostki SKU. Aby uzyskać więcej informacji, zobacz cennik maszyn wirtualnych dla [systemów](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) i Windows. 
 
@@ -94,11 +90,11 @@ Odp **.:** Zapoznaj się z tabelą poniżej, aby uzyskać dostęp do dodatkowych
 
 | Kanały platformy Azure               | Dostępność maszyn wirtualnych na platformie Azure       |
 |------------------------------|-----------------------------------|
-| Umowa Enterprise         | Tak                               |
-| Płatność zgodnie z rzeczywistym użyciem                | Tak                               |
+| Enterprise Agreement         | Yes                               |
+| Płatność zgodnie z rzeczywistym użyciem                | Yes                               |
 | Dostawca usług w chmurze (CSP) | [Skontaktuj się z partnerem](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Korzyści                     | Niedostępne                     |
-| Sponsorowane                    | Niedostępne                     |
+| Sponsorowan                    | Niedostępne                     |
 | Bezpłatna wersja próbna                   | Niedostępne                     |
 
 

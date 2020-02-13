@@ -7,14 +7,14 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 8752522e4b5a7b91778d6eb2cd8e4ba3bac95da0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782127"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158948"
 ---
 # <a name="preview-deploy-spot-vms-using-azure-powershell"></a>Wersja zapoznawcza: wdrażanie maszyn wirtualnych przy użyciu Azure PowerShell
 
@@ -29,7 +29,7 @@ Dla maszyny wirtualnej można ustawić maksymalną cenę, która ma być płacon
 > Wystąpienia punktowe są obecnie dostępne w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> W przypadku wczesnej części publicznej wersji zapoznawczej wystąpienia usługi będą miały ustaloną cenę, więc nie będzie żadnych wykluczeń opartych na cenach.
+
 
 
 ## <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej
@@ -37,9 +37,6 @@ Dla maszyny wirtualnej można ustawić maksymalną cenę, która ma być płacon
 Utwórz element spotVM przy użyciu polecenia [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) , aby utworzyć konfigurację. Uwzględnij `-Priority Spot` i ustaw `-MaxPrice` na:
 - `-1` tak, aby maszyna wirtualna nie została wykluczona na podstawie ceny.
 - kwota dolara (do 5 cyfr). Na przykład `-MaxPrice .98765` oznacza, że zostanie cofnięta alokacja maszyny wirtualnej po cenie za spotVM o godzinie 98765 USD.
-
-> [!IMPORTANT]
-> W przypadku wczesnej części publicznej wersji zapoznawczej można ustawić cenę maksymalną, ale zostanie ona zignorowana. Na maszynach wirtualnych będzie dostępna stała cena, dlatego nie będzie żadnych wykluczeń opartych na cenach.
 
 
 Ten przykład tworzy spotVM, które nie zostaną cofnięte w oparciu o Cennik (tylko wtedy, gdy platforma Azure wymaga powrotu do tyłu pojemności).

@@ -1,6 +1,6 @@
 ---
-title: Dostęp do interfejsu API usługi Azure Media Services przy użyciu uwierzytelniania usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Poznaj koncepcje i kroki, aby korzystać z usługi Azure Active Directory (Azure AD) do uwierzytelniania dostępu do interfejsu API usługi Azure Media Services.
+title: Dostęp do interfejsu API Azure Media Services przy użyciu uwierzytelniania Azure Active Directory | Microsoft Docs
+description: Informacje o pojęciach i krokach, które należy wykonać w celu uwierzytelniania dostępu do interfejsu API Azure Media Services za pomocą usługi Azure Active Directory (Azure AD).
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,148 +13,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826141"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157860"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD  
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Dostęp do interfejsu API Azure Media Services przy użyciu uwierzytelniania usługi Azure AD  
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
-Interfejsu API usługi Azure Media Services to API typu RESTful. Służy do wykonywania operacji na zasoby multimediów, za pomocą interfejsu API REST lub przy użyciu zestawów SDK klienta dostępne. Usługa Azure Media Services oferuje zestaw SDK klienta usługi Media Services dla programu Microsoft .NET. Autoryzowanie dostępu do zasobów usługi Media Services i interfejsu API usług Media Services, użytkownik musi najpierw zostać uwierzytelnione. 
+Interfejs API Azure Media Services jest interfejsem API RESTful. Można jej używać do wykonywania operacji na zasobach multimedialnych przy użyciu interfejsu API REST lub z dostępnych zestawów SDK klienta. Azure Media Services oferuje zestaw SDK klienta Media Services dla Microsoft .NET. Aby uzyskać autoryzację w celu uzyskania dostępu do zasobów Media Services i interfejsu API Media Services, należy najpierw uwierzytelnić się. 
 
-Usługa Media Services obsługuje [usługi Azure Active Directory (Azure AD) — uwierzytelnianie oparte na](../../active-directory/fundamentals/active-directory-whatis.md). Usługa Azure Media REST wymaga, czy użytkownik lub aplikacja, która sprawia, że interfejs API REST żądań, jeden **Współautor** lub **właściciela** roli dostęp do zasobów. Aby uzyskać więcej informacji, zobacz [wprowadzenie opartej na rolach kontrola dostępu w witrynie Azure portal](../../role-based-access-control/overview.md).  
+Media Services obsługuje [uwierzytelnianie oparte na Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md). Usługa Azure Media REST wymaga, aby użytkownik lub aplikacja, która wykonuje żądania interfejsu API REST, miała rolę **współautor** lub **właściciela** , aby uzyskać dostęp do zasobów. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z Access Controlami opartymi na rolach w Azure Portal](../../role-based-access-control/overview.md).  
 
-Ten dokument zawiera omówienie sposobu dostępu do interfejsu API usługi Media za pomocą REST lub interfejsów API platformy .NET.
+Ten dokument zawiera omówienie sposobu uzyskiwania dostępu do interfejsu API Media Services przy użyciu interfejsów API REST lub .NET.
 
 > [!NOTE]
-> Autoryzację kontroli dostępu została zakończona w dniu 1 czerwca 2018 r.
+> Autoryzacja Access Control była przestarzała 1 czerwca 2018.
 
 ## <a name="access-control"></a>Kontrola dostępu
 
-Dla żądania REST multimediów Azure została wykonana pomyślnie wywoływania użytkownik musi mieć rolę współautora lub właściciela dla konta usługi Media Services, który próbuje uzyskać dostęp.  
-Tylko użytkownik mający rolę właściciela umożliwiają dostęp do zasobów (konto) nośnika do nowych użytkowników lub aplikacji. Roli współautora mogą korzystać tylko z zasobu multimediów.
-Nieautoryzowane żądania zakończyć się niepowodzeniem z kodem stanu 401. Jeśli widzisz tego kodu błędu, sprawdź, czy użytkownik ma rolę współautora lub właściciela, przypisany do konta usługi Media Services. Możesz to sprawdzić w witrynie Azure portal. Wyszukaj kontem multimediów, a następnie kliknij przycisk **kontroli dostępu** kartę. 
+Aby żądanie REST usługi Azure Media zakończyło się pomyślnie, użytkownik wywołujący musi mieć rolę współautora lub właściciela dla konta Media Services, do którego próbuje uzyskać dostęp.  
+Tylko użytkownik mający rolę właściciela może udzielić dostępu do nowych użytkowników lub aplikacji na potrzeby zasobów multimedialnych. Rola współautor może uzyskać dostęp tylko do zasobu multimedialnego.
+Nieautoryzowane żądania kończą się niepowodzeniem z kodem stanu 401. Jeśli widzisz ten kod błędu, sprawdź, czy użytkownik ma przypisaną rolę współautora lub właściciela dla konta Media Services użytkownika. Możesz to sprawdzić w Azure Portal. Wyszukaj swoje konto multimediów, a następnie kliknij kartę **Kontrola dostępu** . 
 
-![Karty Kontrola dostępu](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
+![Karta kontroli dostępu](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
 
 ## <a name="types-of-authentication"></a>Typy uwierzytelniania 
  
-Gdy używasz uwierzytelniania usługi Azure AD za pomocą usługi Azure Media Services, masz dwie opcje uwierzytelniania:
+W przypadku korzystania z uwierzytelniania usługi Azure AD z usługą Azure Media Services dostępne są dwie opcje uwierzytelniania:
 
-- **Uwierzytelnianie użytkownika**. Uwierzytelnianie osobę, która jest za pomocą aplikacji do interakcji z zasobami usługi Media Services. Interaktywna aplikacja najpierw powinien zostać wyświetlony monit użytkownika o poświadczenia użytkownika. Przykładem jest aplikacja do konsoli zarządzania używany przez użytkowników autoryzowanych do monitorowania zadań kodowania lub transmisja strumieniowa na żywo. 
-- **Uwierzytelnianie jednostki usługi**. Uwierzytelnianie usługi. Aplikacje, które często używają tej metody uwierzytelniania są aplikacje, które działają usługi demona, usługi warstwy środkowej lub zaplanowanych zadań. Przykłady to aplikacje sieci web, aplikacji funkcji, logic apps, API i mikrousług.
+- **Uwierzytelnianie użytkownika**. Uwierzytelnij osobę, która korzysta z aplikacji, aby korzystać z zasobów Media Services. Aplikacja interaktywna powinna najpierw monitować użytkownika o podanie poświadczeń użytkownika. Przykładem jest aplikacja konsoli zarządzania używana przez autoryzowanych użytkowników do monitorowania zadań kodowania lub przesyłania strumieniowego na żywo. 
+- **Uwierzytelnianie nazwy głównej usługi**. Uwierzytelnianie usługi. Aplikacje, które często używają tej metody uwierzytelniania, to aplikacje, które uruchamiają usługi demonów, usługi warstwy środkowej lub zaplanowane zadania. Przykłady to aplikacje sieci Web, aplikacje funkcji, Aplikacje logiki, interfejs API i mikrousługi.
 
 ### <a name="user-authentication"></a>Uwierzytelnianie użytkowników 
 
-Aplikacje, które powinny używać metody uwierzytelniania użytkownika są zarządzania i monitorowania aplikacji natywnych: aplikacje mobilne, aplikacje Windows i aplikacji konsoli. Tego typu rozwiązań jest przydatne, gdy chcesz, aby interakcji z usługą w jednym z następujących scenariuszy:
+Aplikacje, które powinny używać metody uwierzytelniania użytkownika, to zarządzanie lub monitorowanie natywnych aplikacji: aplikacje mobilne, aplikacje systemu Windows i aplikacje konsolowe. Ten typ rozwiązania jest przydatny, jeśli chcesz, aby człowiek korzystał z usługi w jednym z następujących scenariuszy:
 
-- Pulpit nawigacyjny do kodowania zadań monitorowania.
-- Pulpit nawigacyjny monitorowania dla strumieni na żywo.
-- Aplikacji do zarządzania dla użytkowników w komputerze lub urządzeniu przenośnym można administrować zasobami w ramach konta usługi Media Services.
-
-> [!NOTE]
-> Ta metoda uwierzytelniania nie powinny służyć do aplikacji dla użytkowników. 
-
-Natywna aplikacja musi najpierw uzyskać token dostępu z usługi Azure AD, a następnie użyć go po wprowadzeniu żądania HTTP do interfejsu API REST usługi Media Services. Dodaj token dostępu do żądanego nagłówka. 
-
-Na poniższym diagramie przedstawiono przepływ uwierzytelniania Typowa aplikacja interakcyjne: 
-
-![Aplikacje natywne w diagramie](./media/media-services-use-aad-auth-to-access-ams-api/media-services-native-aad-app1.png)
-
-Na powyższym diagramie liczby reprezentują przepływ żądań w porządku chronologicznym.
+- Pulpit nawigacyjny monitorowania zadań kodowania.
+- Pulpit nawigacyjny monitorowania strumieni na żywo.
+- Aplikacja do zarządzania dla komputerów stacjonarnych i mobilnych do administrowania zasobami na koncie Media Services.
 
 > [!NOTE]
-> Użycie metody uwierzytelniania użytkownika, wszystkie aplikacje współużytkować ten sam identyfikator klienta aplikacji natywnej (ustawienie domyślne) i identyfikator URI przekierowania aplikacji natywnej. 
+> Tej metody uwierzytelniania nie należy używać w przypadku aplikacji przeznaczonych dla klientów. 
+
+Aplikacja natywna musi najpierw uzyskać token dostępu z usługi Azure AD, a następnie użyć go podczas żądania HTTP do interfejsu API REST Media Services. Dodaj token dostępu do nagłówka żądania. 
+
+Na poniższym diagramie przedstawiono typowy przepływ uwierzytelniania aplikacji interaktywnej: 
+
+![Diagram natywnych aplikacji](./media/media-services-use-aad-auth-to-access-ams-api/media-services-native-aad-app1.png)
+
+Na powyższym diagramie liczba reprezentuje przepływ żądań w kolejności chronologicznej.
+
+> [!NOTE]
+> W przypadku korzystania z metody uwierzytelniania użytkownika wszystkie aplikacje używają tego samego (domyślnego) macierzystego identyfikatora klienta aplikacji i identyfikatora URI przekierowania aplikacji natywnych. 
 
 1. Monituj użytkownika o poświadczenia.
-2. Żądanie tokenu dostępu usługi Azure AD z następującymi parametrami:  
+2. Zażądaj tokenu dostępu usługi Azure AD z następującymi parametrami:  
 
    * Punkt końcowy dzierżawy usługi Azure AD.
 
-       W witrynie Azure portal można pobrać informacji o dzierżawie. Umieść kursor na nazwie zalogowanego użytkownika w prawym górnym rogu.
-   * Identyfikator URI zasobu usługi Media Services. 
+       Informacje o dzierżawie można pobrać z Azure Portal. Umieść kursor nad nazwą zalogowanego użytkownika w prawym górnym rogu.
+   * Media Services identyfikator URI zasobu. 
 
-       Ten identyfikator URI jest taka sama dla konta usługi Media Services, które znajdują się w tym samym środowisku platformy Azure (na przykład https://rest.media.azure.net).
+       Ten identyfikator URI jest taki sam dla kont Media Services, które znajdują się w tym samym środowisku platformy Azure (na przykład https://rest.media.azure.net).
 
-   * Identyfikator klienta aplikacji Media Services (macierzysty).
-   * Identyfikator URI przekierowania aplikacji Media Services (macierzysty).
-   * Identyfikator URI dla usługi Media Services REST zasobu.
+   * Identyfikator klienta aplikacji Media Services (natywny).
+   * Media Services (natywny) identyfikator URI przekierowania aplikacji.
+   * Identyfikator URI zasobu dla Media Services REST.
         
        Identyfikator URI reprezentuje punkt końcowy interfejsu API REST (na przykład https://test03.restv2.westus.media.azure.net/api/).
 
-     Aby uzyskać wartości dla tych parametrów, zobacz [użyj witryny Azure portal, aby uzyskać dostęp ustawienia uwierzytelniania usługi Azure AD](media-services-portal-get-started-with-aad.md) przy użyciu opcji Uwierzytelnianie użytkownika.
+     Aby uzyskać wartości dla tych parametrów, zobacz [używanie Azure Portal do uzyskiwania dostępu do ustawień uwierzytelniania usługi Azure AD](media-services-portal-get-started-with-aad.md) przy użyciu opcji uwierzytelnianie użytkownika.
 
-3. Token dostępu usługi Azure AD są wysyłane do klienta.
+3. Token dostępu usługi Azure AD jest wysyłany do klienta.
 4. Klient wysyła żądanie do interfejsu API REST usługi Azure Media przy użyciu tokenu dostępu usługi Azure AD.
-5. Klient otrzymuje dane z usługi Media Services.
+5. Klient pobiera dane z Media Services.
 
-Aby uzyskać informacje o sposobie używania uwierzytelniania usługi Azure AD do komunikacji z żądania REST przy użyciu klienta usługi Media Services .NET SDK, zobacz [uwierzytelnianie usługi Azure AD dostęp do interfejsu API usługi multimediów za pomocą platformy .NET](media-services-dotnet-get-started-with-aad.md). 
+Aby uzyskać informacje dotyczące sposobu korzystania z uwierzytelniania usługi Azure AD w celu komunikowania się z żądaniami REST przy użyciu zestawu SDK klienta Media Services .NET, zobacz [używanie uwierzytelniania usługi Azure AD w celu uzyskania dostępu do interfejsu API Media Services przy użyciu platformy .NET](media-services-dotnet-get-started-with-aad.md). 
 
-Jeśli nie używasz zestawu SDK klienta platformy .NET usług Media Services, należy ręcznie utworzyć żądanie tokenu dostępu do usługi Azure AD przy użyciu parametrów opisanych w kroku 2. Aby uzyskać więcej informacji, zobacz [jak uzyskiwanie tokenu usługi Azure AD za pomocą usługi Azure AD Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md).
+Jeśli nie używasz zestawu SDK klienta Media Services .NET, musisz ręcznie utworzyć żądanie tokenu dostępu usługi Azure AD przy użyciu parametrów opisanych w kroku 2. Aby uzyskać więcej informacji, zobacz [jak używać biblioteki uwierzytelniania usługi Azure AD w celu uzyskania tokenu usługi Azure AD](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
 ### <a name="service-principal-authentication"></a>Uwierzytelnianie jednostki usługi
 
-Aplikacje, które często używają tej metody uwierzytelniania są aplikacje, które działają usługi warstwy środkowej i zaplanowane zadania: sieci web, aplikacji, aplikacje funkcji, logic apps, interfejsów API i mikrousług. Ta metoda uwierzytelniania jest również odpowiedni dla aplikacji interaktywnych, w których możesz chcieć użyć konta usługi do zarządzania zasobami.
+Aplikacje, które często używają tej metody uwierzytelniania, to aplikacje, które uruchamiają usługi warstwy środkowej i zaplanowane zadania: aplikacje sieci Web, aplikacje funkcji, Aplikacje logiki, interfejsy API i mikrousługi. Ta metoda uwierzytelniania jest również odpowiednia dla aplikacji interaktywnych, w których można używać konta usługi do zarządzania zasobami.
 
-Gdy używasz metody uwierzytelniania jednostki usługi do tworzenia scenariusze konsumenckie uwierzytelniania zwykle odbywa się w warstwie środkowej (za pośrednictwem niektórych interfejsu API), a nie bezpośrednio w aplikacji mobilnej lub klasycznej. 
+W przypadku korzystania z metody uwierzytelniania jednostki usługi w celu tworzenia scenariuszy klientów uwierzytelnianie zwykle jest obsługiwane w warstwie środkowej (za pomocą pewnego interfejsu API), a nie bezpośrednio w aplikacji mobilnej lub klasycznej. 
 
-Aby użyć tej metody, utworzyć jednostkę w jego własnej dzierżawy aplikacji usługi Azure AD i usługi. Po utworzeniu aplikacji, udzielić aplikacji dostępu do roli współautora lub właściciela do konta usługi Media Services. Można w tym w witrynie Azure portal przy użyciu wiersza polecenia platformy Azure lub za pomocą skryptu programu PowerShell. Możesz również użyć istniejącej aplikacji usługi Azure AD. Można rejestrować i zarządzania aplikacji usługi Azure AD i jednostkę usługi [w witrynie Azure portal](media-services-portal-get-started-with-aad.md). Możesz również można to zrobić za pomocą [wiersza polecenia platformy Azure](media-services-use-aad-auth-to-access-ams-api.md) lub [PowerShell](media-services-powershell-create-and-configure-aad-app.md). 
+Aby użyć tej metody, Utwórz aplikację usługi Azure AD i nazwę główną usługi w swojej dzierżawie. Po utworzeniu aplikacji nadaj współautorowi aplikacji lub dostęp do roli właściciela do konta Media Services. Można to zrobić w Azure Portal przy użyciu interfejsu wiersza polecenia platformy Azure lub skryptu programu PowerShell. Możesz również użyć istniejącej aplikacji usługi Azure AD. [W Azure Portal](media-services-portal-get-started-with-aad.md)możesz zarejestrować swoją aplikację usługi Azure AD i jej nazwę główną. Można to zrobić również przy użyciu [interfejsu wiersza polecenia platformy Azure](media-services-use-aad-auth-to-access-ams-api.md) lub [programu PowerShell](media-services-powershell-create-and-configure-aad-app.md). 
 
 ![Aplikacje warstwy środkowej](./media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
-Po utworzeniu aplikacji usługi Azure AD, można uzyskać wartości dla następujących ustawień. Te wartości będą potrzebne do uwierzytelniania:
+Po utworzeniu aplikacji usługi Azure AD uzyskasz wartości dla następujących ustawień. Te wartości są wymagane do uwierzytelniania:
 
 - Identyfikator klienta 
 - Klucz tajny klienta 
 
-Na poprzednim rysunku liczby reprezentują przepływ żądań w kolejności chronologicznej:
+Na powyższym rysunku liczba reprezentuje przepływ żądań w kolejności chronologicznej:
     
-1. Aplikacja warstwy środkowej, (interfejs API sieci web lub aplikacji sieci web) żąda tokenu dostępu usługi Azure AD, która ma następujące parametry:  
+1. Aplikacja warstwy środkowej (interfejs API sieci Web lub aplikacja sieci Web) żąda tokenu dostępu usługi Azure AD, który ma następujące parametry:  
 
    * Punkt końcowy dzierżawy usługi Azure AD.
 
-       W witrynie Azure portal można pobrać informacji o dzierżawie. Umieść kursor na nazwie zalogowanego użytkownika w prawym górnym rogu.
-   * Identyfikator URI zasobu usługi Media Services. 
+       Informacje o dzierżawie można pobrać z Azure Portal. Umieść kursor nad nazwą zalogowanego użytkownika w prawym górnym rogu.
+   * Media Services identyfikator URI zasobu. 
 
-       Ten identyfikator URI jest taka sama dla konta usługi Media Services, które znajdują się w tym samym środowisku platformy Azure (na przykład https://rest.media.azure.net).
+       Ten identyfikator URI jest taki sam dla kont Media Services, które znajdują się w tym samym środowisku platformy Azure (na przykład https://rest.media.azure.net).
 
-   * Identyfikator URI dla usługi Media Services REST zasobu.
+   * Identyfikator URI zasobu dla Media Services REST.
 
        Identyfikator URI reprezentuje punkt końcowy interfejsu API REST (na przykład https://test03.restv2.westus.media.azure.net/api/).
 
-   * Wartości aplikacji w usłudze Azure AD: identyfikator klienta oraz klucz tajny klienta.
+   * Wartości aplikacji usługi Azure AD: identyfikator klienta i klucz tajny klienta.
     
-     Aby uzyskać wartości dla tych parametrów, zobacz [użyj witryny Azure portal, aby uzyskać dostęp ustawienia uwierzytelniania usługi Azure AD](media-services-portal-get-started-with-aad.md) przy użyciu opcji Uwierzytelnianie jednostki usługi.
+     Aby uzyskać wartości dla tych parametrów, zobacz [używanie Azure Portal do uzyskiwania dostępu do ustawień uwierzytelniania usługi Azure AD](media-services-portal-get-started-with-aad.md) przy użyciu opcji uwierzytelniania głównego usługi.
 
 2. Token dostępu usługi Azure AD jest wysyłany do warstwy środkowej.
-4. Warstwa środkowa wysyła żądanie do interfejsu API REST usługi Azure Media z tokenem usługi Azure AD.
-5. Warstwa środkowa otrzymuje dane z usługi Media Services.
+4. Warstwa środkowa wysyła żądanie do interfejsu API REST usługi Azure Media przy użyciu tokenu usługi Azure AD.
+5. Warstwa środkowa pobiera dane z Media Services.
 
-Aby uzyskać więcej informacji na temat korzystania z uwierzytelniania usługi Azure AD do komunikacji z żądania REST przy użyciu klienta usługi Media Services .NET SDK, zobacz [uwierzytelnianie usługi Azure AD dostęp do interfejsu API usługi multimediów Azure przy użyciu platformy .NET](media-services-dotnet-get-started-with-aad.md). 
+Aby uzyskać więcej informacji na temat sposobu korzystania z uwierzytelniania usługi Azure AD w celu komunikowania się z żądaniami REST przy użyciu zestawu SDK klienta Media Services .NET, zobacz [używanie uwierzytelniania usługi Azure AD w celu uzyskania dostępu do interfejsu API Azure Media Services przy użyciu platformy .NET](media-services-dotnet-get-started-with-aad.md). 
 
-Jeśli nie używasz zestawu SDK klienta platformy .NET usług Media Services, należy ręcznie utworzyć żądanie tokenu usługi Azure AD przy użyciu parametrów opisanych w kroku 1. Aby uzyskać więcej informacji, zobacz [jak uzyskiwanie tokenu usługi Azure AD za pomocą usługi Azure AD Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md).
+Jeśli nie używasz zestawu SDK klienta Media Services .NET, musisz ręcznie utworzyć żądanie tokenu usługi Azure AD przy użyciu parametrów opisanych w kroku 1. Aby uzyskać więcej informacji, zobacz [jak używać biblioteki uwierzytelniania usługi Azure AD w celu uzyskania tokenu usługi Azure AD](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Wystąpił wyjątek: "Serwer zdalny zwrócił błąd: (401) nieautoryzowane."
+Wyjątek: "serwer zdalny zwrócił błąd: (401) Brak autoryzacji".
 
-Rozwiązanie: Dla żądania REST usługi Media zakończyło się sukcesem użytkownika wywołującego musi być roli współautora lub właściciela w ramach konta usługi Media Services, który próbuje uzyskać dostęp. Aby uzyskać więcej informacji, zobacz [kontroli dostępu](media-services-use-aad-auth-to-access-ams-api.md#access-control) sekcji.
+Rozwiązanie: aby żądanie REST Media Services powiodło się, użytkownik wywołujący musi być rolą współautor lub właściciela na koncie Media Services, do którego próbuje uzyskać dostęp. Aby uzyskać więcej informacji, zobacz sekcję [Kontrola dostępu](media-services-use-aad-auth-to-access-ams-api.md#access-control) .
 
 ## <a name="resources"></a>Zasoby
 
-Omówienie pojęć dotyczących uwierzytelniania usługi Azure AD są następujące artykuły: 
+Poniższe artykuły zawierają omówienia pojęć związanych z uwierzytelnianiem w usłudze Azure AD: 
 
-- [Scenariusze uwierzytelniania obsługiwane przez usługi Azure AD](../../active-directory/develop/authentication-scenarios.md)
+- [Scenariusze uwierzytelniania rozwiązywane przez usługę Azure AD](../../active-directory/develop/authentication-scenarios.md)
 - [Dodawanie, aktualizowanie lub usuwanie aplikacji w usłudze Azure AD](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
-- [Konfigurowanie i zarządzanie kontrolą dostępu opartą na rolach przy użyciu programu PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+- [Konfigurowanie Access Control opartego na rolach i zarządzanie nimi przy użyciu programu PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Użyj portalu Azure w celu [uwierzytelniania dostępu do usługi Azure AD, korzystanie z interfejsu API usługi Azure Media Services](media-services-portal-get-started-with-aad.md).
-* Uwierzytelnianie usługi Azure AD do [dostęp do interfejsu API usługi multimediów Azure przy użyciu platformy .NET](media-services-dotnet-get-started-with-aad.md).
+* Użyj Azure Portal, aby [uzyskać dostęp do uwierzytelniania usługi Azure AD w celu korzystania z interfejsu API Azure Media Services](media-services-portal-get-started-with-aad.md).
+* Użyj uwierzytelniania usługi Azure AD, aby [uzyskać dostęp do interfejsu API Azure Media Services przy użyciu platformy .NET](media-services-dotnet-get-started-with-aad.md).
 

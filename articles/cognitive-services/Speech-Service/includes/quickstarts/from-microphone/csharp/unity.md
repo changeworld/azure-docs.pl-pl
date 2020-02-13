@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 149ec84732171cd57b3f8a9590d5340107536eac
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 894c9d34f3e9874a51f5939021f908ac4ecaaaa9
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75928153"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156544"
 ---
 > [!NOTE]
 > Zestaw Speech SDK for Unity obsługuje Pulpity systemu Windows (x86 i x64) lub platforma uniwersalna systemu Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) i iOS (x64 symulator, ARM32 i ARM64)
@@ -90,7 +90,7 @@ Aby dodać przykładowy kod skryptu dla projektu Unity, wykonaj następujące kr
 
 1. Znajdź i Zastąp ciąg `YourSubscriptionKey`m kluczem subskrypcji usługi rozpoznawania mowy.
 
-1. Znajdź i Zamień ciąg `YourServiceRegion` z [regionem](~/articles/cognitive-services/Speech-Service/regions.md) skojarzonym z subskrypcją. Jeśli na przykład używasz bezpłatnej wersji próbnej, region to `westus`.
+1. Znajdź i Zamień ciąg `YourServiceRegion` z "parametrem zestawu Speech SDK" z [regionu](https://aka.ms/speech/sdkregion) skojarzonego z subskrypcją. Jeśli na przykład używasz bezpłatnej wersji próbnej, region to `westus`.
 
 1. Zapisz zmiany skryptu.
 

@@ -11,47 +11,34 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f1379202fc59e9cca7a3543be201f8ebff276bef
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816653"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168357"
 ---
 # <a name="speech-service-supported-regions"></a>Obsługiwane regiony usługi Speech
 
 Usługa mowy umożliwia aplikacji konwertowanie dźwięku na tekst, wykonać tłumaczenie mowy i konwertowania tekstu na mowę. Usługa jest dostępna w wielu regionach za pomocą punktów końcowych unikatowy zestaw SDK rozpoznawania mowy i interfejsów API REST.
 
-Należy upewnić się, że punkt końcowy, który odpowiada regionie dla Twojej subskrypcji.
+Portal mowy do wykonywania niestandardowych konfiguracji w środowisku mowy dla wszystkich regionów jest dostępny tutaj: https://speech.microsoft.com
 
-## <a name="speech-sdk"></a>Zestaw SDK usługi Mowa
+W przypadku wywołań usługi mowy upewnij się, że wywołanie jest zgodne z regionem subskrypcji.
+
+## <a name="speech-sdk"></a>Zestaw SDK rozpoznawania mowy
 
 W [zestawie mowy SDK](speech-sdk.md)regiony są określane jako ciąg (na przykład jako parametr do `SpeechConfig.FromSubscription` w zestawie mowy SDK dla C#).
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Zamiana mowy na tekst, zamiana tekstu na mowę i tłumaczenie
 
-Zestaw Speech SDK jest dostępny w tych regionach na potrzeby **rozpoznawania mowy**, zamiany **tekstu na mowę**i **tłumaczenia**:
+Portal dostosowania mowy jest dostępny tutaj: https://speech.microsoft.com
 
-| Region           | Parametr zestaw SDK rozpoznawania mowy | Portal dostosowania mowy    |
-| ---------------- | -------------------- | ------------------------------ |
-| Zachodnie stany USA          | `westus`             | https://westus.cris.ai         |
-| Zachodnie stany USA 2        | `westus2`            | https://westus2.cris.ai        |
-| Wschodnie stany USA          | `eastus`             | https://eastus.cris.ai         |
-| Wschodnie stany USA 2        | `eastus2`            | https://eastus2.cris.ai        |
-| Środkowe stany USA       | `centralus`          | https://centralus.cris.ai      |
-| Północno-środkowe stany USA | `northcentralus`     | https://northcentralus.cris.ai |
-| Południowo-środkowe stany USA | `southcentralus`     | https://southcentralus.cris.ai |
-| Indie Środkowe    | `centralindia`       | https://centralindia.cris.ai   |
-| Azja Wschodnia        | `eastasia`           | https://eastasia.cris.ai       |
-| Azja Południowo-Wschodnia   | `southeastasia`      | https://southeastasia.cris.ai  |
-| Japonia Wschodnia       | `japaneast`          | https://japaneast.cris.ai      |
-| Korea Środkowa    | `koreacentral`       | https://koreacentral.cris.ai   |
-| Australia Wschodnia   | `australiaeast`      | https://australiaeast.cris.ai  |
-| Kanada Środkowa   | `canadacentral`      | https://canadacentral.cris.ai  |
-| Europa Północna     | `northeurope`        | https://northeurope.cris.ai    |
-| Europa Zachodnia      | `westeurope`         | https://westeurope.cris.ai     |
-| Południowe Zjednoczone Królestwo         | `uksouth`            | https://uksouth.cris.ai        |
-| Francja Środkowa   | `francecentral`      | https://francecentral.cris.ai  |
+Usługa Speech jest dostępna w tych regionach na potrzeby **rozpoznawania mowy**, **zamiany tekstu na mowę**i **tłumaczenia**:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+Jeśli używasz [zestawu Speech SDK](speech-sdk.md), regiony są określane przez **Identyfikator regionu** (na przykład jako parametr do `SpeechConfig.FromSubscription`). Upewnij się, że region jest zgodny z regionem subskrypcji.
 
 ### <a name="intent-recognition"></a>Rozpoznawanie intencji
 
@@ -96,7 +83,18 @@ Usługa rozpoznawania mowy udostępnia również punkty końcowe REST dla żąda
 
 Aby zapoznać się z dokumentacją dotyczącą zamiany mowy na tekst, zobacz [interfejs API REST zamiany mowy na tekst](rest-speech-to-text.md).
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+Punkt końcowy interfejsu API REST ma następujący format:
+
+```
+https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
+```
+
+Zastąp `<REGION_IDENTIFIER>` identyfikatorem odpowiadającym regionowi subskrypcji z tej tabeli:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> Parametr Language musi być dołączony do adresu URL, aby uniknąć otrzymania błędu HTTP 4xx. Na przykład język ustawiony na angielski (Zachodnie stany USA) to: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
 
 ### <a name="text-to-speech"></a>Zamiana tekstu na mowę
 

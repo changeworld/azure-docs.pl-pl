@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 522ed13681a98535c35552128fc8432782ec1ca2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892451"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162705"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Samouczek: symulowanie błędu podczas odczytywania danych z regionu podstawowego
 
-Ten samouczek jest drugą częścią serii. Poznasz w nim korzyści wynikające z [dostępu do odczytu z magazynu geograficznie nadmiarowego](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) poprzez symulowanie błędu.
+Niniejszy samouczek jest drugą częścią serii. W tym artykule omówiono zalety [magazynu geograficznie nadmiarowego dostępnego do odczytu](../common/storage-redundancy.md) (RA-GRS), symulując awarię.
 
-W celu symulowania awarii można użyć [statycznego routingu](#simulate-a-failure-with-an-invalid-static-route) lub [programu Fiddler](#simulate-a-failure-with-fiddler). Obie metody umożliwią symulowanie niepowodzeń żądań do podstawowego punktu końcowego konta magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS), powodując zamianę aplikacji z pomocniczego punktu końcowego.
+W celu symulowania awarii można użyć [statycznego routingu](#simulate-a-failure-with-an-invalid-static-route) lub [programu Fiddler](#simulate-a-failure-with-fiddler). Obie metody umożliwią symulowanie niepowodzeń żądań do podstawowego punktu końcowego konta magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy.md) (RA-GRS), powodując zamianę aplikacji z pomocniczego punktu końcowego.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -41,7 +41,7 @@ Aby symulować awarię przy użyciu programu Fiddler, Pobierz i [Zainstaluj prog
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Symulowanie błędu przy użyciu nieprawidłowej trasy statycznej
 
-Możesz utworzyć nieprawidłową trasę statyczną dla wszystkich żądań kierowanych do podstawowego punktu końcowego konta magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS). W tym samouczku host lokalny jest używany jako brama na potrzeby kierowania żądań do konta magazynu. Dzięki użyciu hosta lokalnego brama powoduje, że wszystkie żądania kierowane do podstawowego punktu końcowego konta magazynu wywołują sprzężenie zwrotne wewnątrz hosta, co następnie prowadzi do wystąpienia błędu. Wykonaj poniższe kroki, aby symulować błąd i przywracanie podstawowego punktu końcowego przy użyciu nieprawidłowej trasy statycznej.
+Możesz utworzyć nieprawidłową trasę statyczną dla wszystkich żądań kierowanych do podstawowego punktu końcowego konta magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy.md) (RA-GRS). W tym samouczku host lokalny jest używany jako brama na potrzeby kierowania żądań do konta magazynu. Dzięki użyciu hosta lokalnego brama powoduje, że wszystkie żądania kierowane do podstawowego punktu końcowego konta magazynu wywołują sprzężenie zwrotne wewnątrz hosta, co następnie prowadzi do wystąpienia błędu. Wykonaj poniższe kroki, aby symulować błąd i przywracanie podstawowego punktu końcowego przy użyciu nieprawidłowej trasy statycznej.
 
 ### <a name="start-and-pause-the-application"></a>Uruchamianie i zatrzymywanie aplikacji
 
@@ -69,7 +69,7 @@ Aby dodać trasę statyczną dla hosta docelowego, wpisz następujące polecenie
 route add <destination_ip> gw <gateway_ip>
 ```
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
 ```
 route add <destination_ip> <gateway_ip>
@@ -87,7 +87,7 @@ Aby symulować podstawowy punkt końcowy ponownie działał, Usuń nieprawidłow
 route del <destination_ip> gw <gateway_ip>
 ```
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
 ```
 route delete <destination_ip>

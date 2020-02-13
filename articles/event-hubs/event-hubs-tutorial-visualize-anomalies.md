@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 01/15/2020
-ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906385"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163181"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Samouczek: wizualizowanie anomalii dotyczących danych w zdarzeniach w czasie rzeczywistym wysyłanych do usługi Azure Event Hubs
 
@@ -22,7 +22,7 @@ Dzięki usłudze Azure Event Hubs można za pomocą usługi Azure Stream Analyti
 
 W tym samouczku przeprowadzamy symulację takiej sytuacji. Możesz uruchomić aplikację, która tworzy i wysyła transakcje kart kredytowych do centrum zdarzeń. Następnie można odczytać strumień danych w czasie rzeczywistym za pomocą Azure Stream Analytics, który oddziela prawidłowe transakcje od nieprawidłowych transakcji, a następnie używa Power BI do wizualnego identyfikowania transakcji, które są otagowane jako nieprawidłowe.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie przestrzeni nazw usługi Event Hubs
 > * Tworzenie centrum zdarzeń
@@ -38,7 +38,7 @@ Do wykonania kroków tego samouczka potrzebna jest subskrypcja platformy Azure. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-- Instalacja programu [Visual Studio](https://www.visualstudio.com/). 
+- Zainstalować program [Visual Studio](https://www.visualstudio.com/). 
 - Aby analizować dane wyjściowe z zadania usługi Stream Analytics, potrzebne jest konto usługi Power BI. Możesz [wypróbować bezpłatnie usługę Power BI](https://app.powerbi.com/signupredirect?pbi_source=web).
 
 ## <a name="set-up-resources"></a>Konfigurowanie zasobów
@@ -186,7 +186,7 @@ Teraz możesz przesyłać strumieniowo dane do centrum zdarzeń. Aby użyć tych
 
    ![Zrzut ekranu pokazujący sposób tworzenia nowego zadania usługi Azure Stream Analytics.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Zaakceptuj wartości domyślne w pozostałych polach. Kliknij pozycję **Utwórz**. 
+    Zaakceptuj wartości domyślne w pozostałych polach. Kliknij przycisk **Utwórz**. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Dodawanie danych wejściowych do zadania usługi Stream Analytics
 
@@ -217,7 +217,7 @@ Danymi wejściowymi dla zadania usługi Stream Analytics są transakcje kart kre
 
    ![Zrzut ekranu przedstawiający sposób dodawania strumienia wejściowego do zadania usługi Stream Analytics.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Dodawanie danych wyjściowych do zadania usługi Stream Analytics
 
@@ -239,7 +239,7 @@ Danymi wejściowymi dla zadania usługi Stream Analytics są transakcje kart kre
 
 4. Zaakceptuj wartości domyślne w pozostałych polach.
 
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurowanie zapytania zadania usługi Stream Analytics
 
@@ -268,7 +268,7 @@ To zapytanie służy do pobierania danych, które ostatecznie są wysyłane do w
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. Kliknij pozycję **Zapisz**.
+4. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>Testowanie zapytania dla zadania usługi Stream Analytics 
 
@@ -384,6 +384,6 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Przejdź do następnego artykułu, aby dowiedzieć się więcej na temat usługi Azure Event Hubs.
 
 > [!div class="nextstepaction"]
-> [Wprowadzenie do wysyłania komunikatów do usługi Azure Event Hubs przy użyciu biblioteki .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
+> [Wprowadzenie do wysyłania komunikatów do usługi Azure Event Hubs przy użyciu biblioteki .NET Standard](get-started-dotnet-standard-send-v2.md)
 
 [utwórz bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

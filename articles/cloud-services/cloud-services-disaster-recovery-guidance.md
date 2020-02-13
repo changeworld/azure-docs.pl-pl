@@ -10,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: f65b61d7265268b33d2c9a113503cc1b5a87db8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361215"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157511"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Co zrobić w przypadku przerw w działaniu usługi platformy Azure mających wpływ na platformę Azure Cloud Services
 Firma Microsoft chce, aby upewnić się, że nasze usługi są zawsze dostępne dla Ciebie, gdy będą potrzebne. Siły wykraczające poza nasze kontrolki czasami wpływają na metody, które powodują nieplanowane zakłócenia usługi.
@@ -27,7 +27,7 @@ Platforma Azure ma już wiele wbudowanych funkcji platformy, które obsługują 
 W tym artykule opisano prawdziwe scenariusze odzyskiwania po awarii, gdy cały region napotyka awarię z powodu poważnych awarii lub szerokiej przerwy w działaniu usługi. Są to rzadkie wystąpienia, ale należy przygotować się na możliwość wystąpienia awarii całego regionu. Jeśli w całym regionie wystąpi zakłócenia usługi, lokalnie nadmiarowe kopie danych byłyby tymczasowo niedostępne. Jeśli włączono replikację geograficzną, trzy dodatkowe kopie obiektów blob i tabel usługi Azure Storage są przechowywane w innym regionie. W przypadku kompletnej awarii regionalnej lub awarii, w której region podstawowy nie jest możliwy do odzyskania, platforma Azure ponownie mapuje wszystkie wpisy DNS do regionu replikowanego geograficznie.
 
 > [!NOTE]
-> Należy pamiętać, że nie masz żadnej kontroli nad tym procesem i wystąpi tylko w przypadku przerw w działaniu usługi w całym centrum danych. W związku z tym należy również korzystać z innych strategii tworzenia kopii zapasowych specyficznych dla aplikacji, aby osiągnąć najwyższy poziom dostępności. Aby uzyskać więcej informacji, zobacz [odzyskiwanie po awarii i wysoka dostępność dla aplikacji utworzonych na Microsoft Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Jeśli chcesz mieć możliwość wpływania na własne przejście w tryb failover, warto rozważyć użycie [magazynu geograficznie nadmiarowego do odczytu (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage), który tworzy kopię danych tylko do odczytu w innym regionie.
+> Należy pamiętać, że nie masz żadnej kontroli nad tym procesem i wystąpi tylko w przypadku przerw w działaniu usługi w całym centrum danych. W związku z tym należy również korzystać z innych strategii tworzenia kopii zapasowych specyficznych dla aplikacji, aby osiągnąć najwyższy poziom dostępności. Aby uzyskać więcej informacji, zobacz [odzyskiwanie po awarii i wysoka dostępność dla aplikacji utworzonych na Microsoft Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Jeśli chcesz mieć możliwość wpływania na własne przejście w tryb failover, warto rozważyć użycie [magazynu geograficznie nadmiarowego do odczytu (RA-GRS)](../storage/common/storage-redundancy.md), który tworzy kopię danych tylko do odczytu w innym regionie.
 >
 >
 
@@ -46,7 +46,7 @@ Aby uzyskać szczegółowe informacje na temat sposobu tworzenia i wdrażania ap
 
 W zależności od źródeł danych aplikacji może być konieczne sprawdzenie procedur odzyskiwania dla źródła danych aplikacji.
 
-* W przypadku źródeł danych usługi Azure Storage zobacz [Replikacja usługi Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) , aby sprawdzić dostępne opcje w oparciu o wybrany model replikacji dla aplikacji.
+* W przypadku źródeł danych usługi Azure Storage zapoznaj się z opcjami [nadmiarowości usługi Azure Storage](../storage/common/storage-redundancy.md) , aby sprawdzić dostępne opcje w oparciu o wybrany model nadmiarowości dla aplikacji.
 * Aby uzyskać informacje o SQL Database źródłach, przeczytaj artykuł [Omówienie: ciągłość działania w chmurze i odzyskiwanie po awarii bazy danych za pomocą SQL Database](../sql-database/sql-database-business-continuity.md) , aby sprawdzić dostępne opcje w oparciu o wybrany model replikacji dla aplikacji.
 
 

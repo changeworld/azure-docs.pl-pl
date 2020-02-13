@@ -1,17 +1,17 @@
 ---
-title: Tożsamości zarządzane
+title: Zarządzane tożsamości
 description: Dowiedz się, jak zarządzane tożsamości działają w Azure App Service i Azure Functions, jak skonfigurować tożsamość zarządzaną i wygenerować token dla zasobu zaplecza.
 author: mattchenderson
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834160"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161923"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać tożsamości zarządzanych do App Service i Azure Functions
 
@@ -38,7 +38,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, musisz najpierw utworzy�
 
 3. Wybierz pozycję **tożsamość**.
 
-4. W ramach karty **przypisanej do systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij pozycję **Zapisz**.
+4. W ramach karty **przypisanej do systemu** Przełącz pozycję **stan** na wartość **włączone**. Kliknij przycisk **Save** (Zapisz).
 
     ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
@@ -167,7 +167,7 @@ Najpierw należy utworzyć zasób tożsamości przypisany przez użytkownika.
 
 5. Na karcie **przypisane przez użytkownika** kliknij przycisk **Dodaj**.
 
-6. Wyszukaj utworzoną wcześniej tożsamość i wybierz ją. Kliknij pozycję **Dodaj**.
+6. Wyszukaj utworzoną wcześniej tożsamość i wybierz ją. Kliknij pozycję **Add** (Dodaj).
 
     ![Tożsamość zarządzana w App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -270,7 +270,7 @@ Pomyślne odpowiedź 200 OK zawiera treść JSON o następujących właściwośc
 > |resource|Identyfikator URI identyfikatora aplikacji dla usługi sieci Web odbiorczej.|
 > |token_type|Wskazuje wartość typu tokenu. Jedynym typem obsługiwanym przez usługę Azure AD jest znak. Aby uzyskać więcej informacji o tokenach okaziciela, zobacz [Framework uwierzytelniania OAuth 2,0: użycie tokenu okaziciela (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
-Ta odpowiedź jest taka sama jak [odpowiedź na żądanie tokenu dostępu między usługą AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
+Ta odpowiedź jest taka sama jak [odpowiedź na żądanie tokenu dostępu między usługą AAD](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token).
 
 > [!NOTE]
 > Zmienne środowiskowe są konfigurowane podczas pierwszego uruchomienia procesu, więc po włączeniu tożsamości zarządzanej dla aplikacji może być konieczne ponowne uruchomienie aplikacji lub wdrożenie jej kodu przed `MSI_ENDPOINT` i `MSI_SECRET` są dostępne dla kodu.
@@ -352,7 +352,7 @@ def get_bearer_token(resource_uri):
     return access_token
 ```
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"

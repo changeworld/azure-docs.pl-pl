@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 11f5c07305fa9192097dbcb1386c13707c0d46f7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 25f3cb6f03e3a3c581d8977168e572554b5e0cc7
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711136"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168119"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions wyzwalacze i powiązania HTTP
 
@@ -256,28 +256,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 * [Odczyt parametru z trasy](#read-parameter-from-a-route)
 * [Odczytaj treść POJO z żądania POST](#read-pojo-body-from-a-post-request)
 
-W poniższych przykładach pokazano powiązanie wyzwalacza HTTP w pliku *Function. JSON* oraz odpowiednie [funkcje języka Java](functions-reference-java.md) , które używają tego powiązania. 
-
-Oto plik *Function. JSON* :
-
-```json
-{
-    "disabled": false,    
-    "bindings": [
-        {
-            "authLevel": "anonymous",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "req"
-        },
-        {
-            "type": "http",
-            "direction": "out",
-            "name": "res"
-        }
-    ]
-}
-```
+W poniższych przykładach pokazano powiązanie wyzwalacza HTTP.
 
 #### <a name="read-parameter-from-the-query-string"></a>Odczytaj parametr z ciągu zapytania
 

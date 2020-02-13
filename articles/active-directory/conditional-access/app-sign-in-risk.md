@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9338c1a42737180ec5395f30060b4eed35ce5eda
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be447b001b0b2e14999aac98ba2125f8cbfe9853
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381069"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186612"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki Start: Blokuj dostęp w przypadku wykrycia ryzyka sesji przy użyciu Azure Active Directory dostępu warunkowego  
 
-Aby zachować ochronę środowiska, można zablokować podejrzanych użytkowników przed zalogowaniem się. [Usługa Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analizuje poszczególne logowania i oblicza prawdopodobieństwo, że próba logowania nie została wykonana przez uprawnionego właściciela konta użytkownika. Prawdopodobieństwo (niski, średni, wysoki) jest wskazywane w postaci wartości obliczanej o nazwie [poziomy ryzyka logowania](conditions.md#sign-in-risk). Ustawiając warunek ryzyka związanego z logowaniem, można skonfigurować zasady dostępu warunkowego w celu reagowania na określone poziomy ryzyka związanego z logowaniem.
+Aby zachować ochronę środowiska, można zablokować podejrzanych użytkowników przed zalogowaniem się. [Usługa Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analizuje poszczególne logowania i oblicza prawdopodobieństwo, że próba logowania nie została wykonana przez uprawnionego właściciela konta użytkownika. Prawdopodobieństwo (niski, średni, wysoki) jest wskazywane w postaci wartości obliczanej o nazwie [poziomy ryzyka logowania](concept-conditional-access-conditions.md#sign-in-risk). Ustawiając warunek ryzyka związanego z logowaniem, można skonfigurować zasady dostępu warunkowego w celu reagowania na określone poziomy ryzyka związanego z logowaniem.
 
 Ten przewodnik Szybki Start przedstawia sposób konfigurowania [zasad dostępu warunkowego](../active-directory-conditional-access-azure-portal.md) , które blokują logowanie, gdy wykryto skonfigurowany poziom ryzyka związanego z logowaniem.
 
@@ -66,7 +66,7 @@ W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowe
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako Administrator globalny, administrator zabezpieczeń lub administrator dostępu warunkowego.
 1. W Azure Portal na lewym pasku nawigacyjnym kliknij pozycję **Azure Active Directory**.
 
-   ![Usługa Azure Active Directory](./media/app-sign-in-risk/02.png)
+   ![Azure Active Directory](./media/app-sign-in-risk/02.png)
 
 1. Na stronie **Azure Active Directory** w sekcji **zabezpieczenia** kliknij pozycję **dostęp warunkowy**.
 
@@ -74,11 +74,11 @@ W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowe
 
 1. Na stronie **dostęp warunkowy** na pasku narzędzi u góry kliknij przycisk **Dodaj**.
 
-   ![Nazwa](./media/app-sign-in-risk/108.png)
+   ![Name (Nazwa)](./media/app-sign-in-risk/108.png)
 
 1. Na **nowej** stronie w polu tekstowym **Nazwa** wpisz **blok dostęp dla poziomu średniego ryzyka**.
 
-   ![Nazwa](./media/app-sign-in-risk/104.png)
+   ![Name (Nazwa)](./media/app-sign-in-risk/104.png)
 
 1. W sekcji **przypisanie** kliknij pozycję **Użytkownicy i grupy**.
 
@@ -129,7 +129,7 @@ W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowe
 
    ![Włączanie zasad](./media/app-sign-in-risk/18.png)
 
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Oceń symulowane logowanie
 
@@ -143,7 +143,7 @@ Po uruchomieniu w tym scenariuszu narzędzia do wykonywania działań w **przypa
 
 1. Na stronie [zasady dostępu warunkowego](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) w menu u góry kliknij pozycję **What If**.  
 
-   ![What If](./media/app-sign-in-risk/14.png)
+   ![Co, jeśli](./media/app-sign-in-risk/14.png)
 
 1. Kliknij pozycję **użytkownik**, wybierz pozycję **Artur Charon** na stronie **Użytkownicy** , a następnie kliknij pozycję **Wybierz**.
 

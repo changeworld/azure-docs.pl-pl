@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 2c13956fa84b0bdb1ff694878ff2994bee4b64c9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bdcc93fe84d2fded914f21dfa2a29d9e2a2ab449
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698292"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161362"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Przepływy uwierzytelniania i scenariusze aplikacji
 
@@ -31,8 +31,8 @@ W tym artykule opisano różne przepływy uwierzytelniania i scenariusze aplikac
 
 Tokeny można nabyć z kilku typów aplikacji, takich jak:
 
-- Aplikacje sieci Web
-- Aplikacje mobilne
+- Aplikacje internetowe
+- Aplikacji mobilnych
 - Aplikacje klasyczne
 - Interfejsy API sieci Web
 
@@ -72,7 +72,7 @@ Tokeny zabezpieczające można nabyć z wielu typów aplikacji. Te aplikacje są
 
 - **Publiczne aplikacje klienckie**: aplikacje są zawsze zalogowani użytkownicy:
   - Aplikacje klasyczne wywołujące interfejsy API sieci Web w imieniu zalogowanego użytkownika
-  - Aplikacje mobilne
+  - Aplikacji mobilnych
   - Aplikacje działające na urządzeniach, które nie mają przeglądarki, takie jak procesy działające na iOT
 
   Te aplikacje są reprezentowane przez klasę MSAL [PublicClientApplication](msal-client-applications.md) .
@@ -89,10 +89,10 @@ Tokeny zabezpieczające można nabyć z wielu typów aplikacji. Te aplikacje są
 Punkt końcowy platformy tożsamości firmy Microsoft obsługuje uwierzytelnianie różnych rodzajów architektur aplikacji:
 
 - Aplikacje jednostronicowe
-- Aplikacje sieci Web
+- Aplikacje internetowe
 - Interfejsy API sieci Web
-- Aplikacje mobilne
-- Aplikacje natywne
+- Aplikacji mobilnych
+- Natywne aplikacje
 - Aplikacje demona
 - Aplikacje po stronie serwera
 
@@ -195,7 +195,7 @@ Scenariusze, które obejmują pobieranie tokenów, również są mapowane na prz
 
 <table>
  <thead>
-  <tr><th>Scenariusz</th> <th>Szczegółowy opis scenariusza</th> <th>Przepływ OAuth 2,0 i przyznawanie</th> <th>Odbiorcy</th></tr>
+  <tr><th>Scenariusz</th> <th>Szczegółowy opis scenariusza</th> <th>Przepływ OAuth 2,0 i przyznawanie</th> <th>Grupy odbiorców</th></tr>
  </thead>
  <tbody>
   <tr>
@@ -281,7 +281,7 @@ Biblioteki uwierzytelniania firmy Microsoft obsługują wiele platform:
 - Windows 10/platformy UWP
 - Xamarin.iOS
 - Xamarin.Android
-- Aplikacja natywna systemu iOS
+- Natywny system iOS
 - macOS
 - Natywny system Android
 - Java
@@ -291,7 +291,7 @@ Możesz również użyć różnych języków do kompilowania aplikacji. Należy 
 
 W kolumnie Windows w poniższej tabeli, za każdym razem, gdy jest wymieniony program .NET Core, możliwe jest również .NET Framework. Ten ostatni zostanie pominięty, aby uniknąć bałaganu w tabeli.
 
-|Scenariusz  | Windows | Linux | Mac | iOS | Android
+|Scenariusz  | System Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
 | [Aplikacje z jedną stroną](scenario-spa-overview.md) <br/>[![aplikacji jednostronicowej](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
 | [Aplikacja sieci Web, która loguje użytkowników](scenario-web-app-sign-user-overview.md) <br/>[![aplikacji sieci Web, która loguje się do użytkowników](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core

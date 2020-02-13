@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5406d301f6487753bc13b291db6d22eaedbf67b7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: cf1515bcf2223ae730a47f7105d51206ba638cd7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066813"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161617"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie mapowania atrybutów aprowizacji użytkowników dla aplikacji SaaS w Azure Active Directory
 
@@ -143,7 +143,7 @@ Standard scim RFC definiuje podstawowy schemat użytkownika i grupy, a także um
    4. Wybierz pozycję **Edytuj listę atrybutów dla elementu nazwa_aplikacji**.
    5. W dolnej części listy atrybutów wprowadź informacje o atrybucie niestandardowym w udostępnionych polach. Następnie wybierz pozycję **Dodaj atrybut**.
 
-W przypadku aplikacji Standard scim nazwa atrybutu musi być zgodna ze wzorcem przedstawionym w poniższym przykładzie. Parametry "CustomExtensionName" i "CustomAttribute" można dostosować zgodnie z wymaganiami aplikacji, na przykład: urn: IETF: params: Standard scim: schematy: rozszerzenie: 2.0: CustomExtensionName: CustomAttribute
+W przypadku aplikacji Standard scim nazwa atrybutu musi być zgodna ze wzorcem przedstawionym w poniższym przykładzie. Parametry "CustomExtensionName" i "CustomAttribute" można dostosować zgodnie z wymaganiami aplikacji, na przykład: urn: IETF: params: Standard scim: schematy: Extension: 2.0: CustomExtensionName: CustomAttribute lub urn: IETF: params: Standard scim: schematy: rozszerzenie: CustomExtensionName: 2.0: User. CustomAttributeName: value
 
 Te instrukcje dotyczą tylko aplikacji z obsługą Standard scim. Aplikacje, takie jak usługi ServiceNow i Salesforce, nie są zintegrowane z usługą Azure AD przy użyciu Standard scim i dlatego nie wymagają tej konkretnej przestrzeni nazw podczas dodawania atrybutu niestandardowego.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 6e8c0e1c7fef884844b8aaae9dc4c7e3eaa220a2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5672334ab42ab474d862ae4c9649b94b58bb6af4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274546"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157277"
 ---
 Usługa Azure Storage oferuje kilka typów kont magazynu. Każdy typ obsługuje różne funkcje i ma własny model cen. Te różnice należy wziąć pod uwagę przed utworzeniem konta magazynu w celu określenia typu konta najlepszego dla aplikacji. Oto typy kont magazynu:
 
@@ -27,11 +27,11 @@ W poniższej tabeli opisano typy kont magazynu i ich możliwości:
 
 | Typ konta magazynu | Obsługiwane usługi                       | Obsługiwane warstwy wydajności      | Obsługiwane warstwy dostępu         | Opcje replikacji               | Model wdrażania<div role="complementary" aria-labelledby="deployment-model"><sup>1</sup></div> | Szyfrowanie<div role="complementary" aria-labelledby="encryption"><sup>2</sup></div> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| Ogólnego przeznaczenia w wersji 2   | Obiekty blob, pliki, kolejki, tabele, dyski i Data Lake Gen2<div role="complementary" aria-labelledby="data-lake-gen2"><sup>6</sup></div>      | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Gorąca, chłodna, archiwalna<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS, GZRS (wersja zapoznawcza), RA-GZRS (wersja zapoznawcza)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Resource Manager             | Szyfrowane              |
-| Ogólnego przeznaczenia w wersji 1   | Obiekt BLOB, plik, kolejka, tabela i dysk       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | ND                            | LRS, GRS, RA-GRS                  | Menedżer zasobów, klasyczny    | Szyfrowane              |
-| BlockBlobStorage   | Obiekt BLOB (Blokuj obiekty blob i Dołącz tylko obiekty blob) | Premium                       | ND                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Szyfrowane              |
-| FileStorage   | Tylko plik | Premium                       | ND                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Szyfrowane              |
-| BlobStorage         | Obiekt BLOB (Blokuj obiekty blob i Dołącz tylko obiekty blob) | Standardowa                      | Gorąca, chłodna, archiwalna<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Resource Manager             | Szyfrowane              |
+| Ogólnego przeznaczenia w wersji 2   | Obiekty blob, pliki, kolejki, tabele, dyski i Data Lake Gen2<div role="complementary" aria-labelledby="data-lake-gen2"><sup>6</sup></div>      | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Gorąca, chłodna, archiwalna<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS, GZRS (wersja zapoznawcza), RA-GZRS (wersja zapoznawcza)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Resource Manager             | Zaszyfrowane              |
+| Ogólnego przeznaczenia w wersji 1   | Obiekt BLOB, plik, kolejka, tabela i dysk       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Nie dotyczy                            | LRS, GRS, RA-GRS                  | Menedżer zasobów, klasyczny    | Zaszyfrowane              |
+| BlockBlobStorage   | Obiekt BLOB (Blokuj obiekty blob i Dołącz tylko obiekty blob) | Premium                       | Nie dotyczy                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Zaszyfrowane              |
+| FileStorage   | Tylko plik | Premium                       | Nie dotyczy                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Zaszyfrowane              |
+| BlobStorage         | Obiekt BLOB (Blokuj obiekty blob i Dołącz tylko obiekty blob) | Standard                      | Gorąca, chłodna, archiwalna<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Resource Manager             | Zaszyfrowane              |
 
 <div id="deployment-model"><sup>1</sup> Zalecane jest korzystanie z modelu wdrażania Azure Resource Manager. Konta magazynu korzystające z klasycznego modelu wdrażania można nadal tworzyć w niektórych lokalizacjach, a istniejące konta klasyczne są nadal obsługiwane. Aby uzyskać więcej informacji, zobacz <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager a wdrożenie klasyczne: Omówienie modeli wdrażania i stanu zasobów</a>.</div>
 
@@ -39,7 +39,7 @@ W poniższej tabeli opisano typy kont magazynu i ich możliwości:
 
 <div id="archive"><sup>3</sup> Warstwa archiwum jest dostępna tylko na poziomie pojedynczego obiektu BLOB, a nie na poziomie konta magazynu. Można archiwizować tylko blokowe obiekty blob i dołączanie obiektów BLOB. Aby uzyskać więcej informacji, zobacz <a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers">Azure Blob Storage: warstwy magazynowania gorąca, chłodna i archiwalna</a>.</div>
 
-<div id="zone-redundant-storage"><sup>4</sup> Magazyn strefowo nadmiarowy (ZRS) i geograficznie nadmiarowy magazyn (GZRS/RA-GZRS) (wersja zapoznawcza) są dostępne tylko dla kont standardowych ogólnego przeznaczenia w wersji 2, BlockBlobStorage i FileStorage w określonych regionach. Aby uzyskać więcej informacji na temat ZRS, zobacz <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs">Magazyn strefowo nadmiarowy (ZRS): wysoce dostępne aplikacje usługi Azure Storage</a>. Aby uzyskać więcej informacji na temat GZRS/RA-GZRS, zobacz <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-gzrs">Geograficznie nadmiarowy magazyn w celu zapewnienia wysokiej dostępności i maksymalnej trwałości (wersja zapoznawcza)</a>. Aby uzyskać więcej informacji na temat innych opcji replikacji, zobacz <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Replikacja usługi Azure Storage</a>.</div>
+<div id="zone-redundant-storage"><sup>4</sup> Magazyn strefowo nadmiarowy (ZRS) i geograficznie nadmiarowy magazyn (GZRS/RA-GZRS) (wersja zapoznawcza) są dostępne tylko dla kont standardowych ogólnego przeznaczenia w wersji 2, BlockBlobStorage i FileStorage w określonych regionach. Aby uzyskać więcej informacji na temat opcji nadmiarowości usługi Azure Storage, zobacz <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">nadmiarowość usługi Azure Storage</a>.</div>
 
 <div id="premium-performance"><sup>5</sup> Wydajność warstwy Premium dla kont ogólnego przeznaczenia w wersji 2 i ogólnego przeznaczenia w wersji 1 jest dostępna tylko dla dysków i stron obiektów BLOB. Wydajność warstwy Premium dla obiektów BLOB bloków lub dołączania jest dostępna tylko na kontach BlockBlobStorage. Wydajność warstwy Premium dla plików jest dostępna tylko na kontach FileStorage.</div>
 

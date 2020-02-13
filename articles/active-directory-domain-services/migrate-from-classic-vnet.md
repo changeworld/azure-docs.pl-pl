@@ -9,18 +9,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544161"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161651"
 ---
-# <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Wersja zapoznawcza — Migruj Azure AD Domain Services z klasycznego modelu sieci wirtualnej do Menedżer zasobów
+# <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Przeprowadź migrację Azure AD Domain Services z modelu klasycznej sieci wirtualnej do Menedżer zasobów
 
 Azure Active Directory Domain Services (AD DS) obsługuje jednorazowe przeniesienie dla klientów korzystających obecnie z klasycznego modelu sieci wirtualnej do modelu sieci wirtualnej Menedżer zasobów. Domeny zarządzane AD DS platformy Azure korzystające z modelu wdrażania Menedżer zasobów oferują dodatkowe funkcje, takie jak szczegółowe zasady haseł, dzienniki inspekcji i ochrona blokady konta.
 
-W tym artykule przedstawiono zalety i kwestie związane z migracją, a następnie wymagane kroki w celu pomyślnego przeprowadzenia migracji istniejącego wystąpienia usługi Azure AD DS. Ta funkcja migracji jest obecnie dostępna w wersji zapoznawczej.
+W tym artykule przedstawiono zalety i kwestie związane z migracją, a następnie wymagane kroki w celu pomyślnego przeprowadzenia migracji istniejącego wystąpienia usługi Azure AD DS.
 
 ## <a name="overview-of-the-migration-process"></a>Omówienie procesu migracji
 
@@ -151,13 +151,13 @@ Aby uzyskać więcej informacji o wymaganiach dotyczących sieci wirtualnej, zob
 
 Migracja do modelu wdrażania Menedżer zasobów i sieci wirtualnej jest podzielona na 5 głównych kroków:
 
-| Czynność    | Wykonywane przez  | Szacowany czas  | Przestój  | Czy wycofać/przywrócić? |
+| Krok    | Wykonywane przez  | Szacowany czas  | Przestój  | Czy wycofać/przywrócić? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Krok 1 — aktualizowanie i lokalizowanie nowej sieci wirtualnej](#update-and-verify-virtual-network-settings) | Portal Azure | 15 minut | Brak wymaganego przestoju | ND |
-| [Krok 2. Przygotowanie domeny zarządzanej AD DS platformy Azure do migracji](#prepare-the-managed-domain-for-migration) | PowerShell | średnio 15 – 30 minut | Czas przestoju AD DS platformy Azure zostanie uruchomiony po zakończeniu tego polecenia. | Wycofaj i Przywróć dostępne. |
-| [Krok 3. Przenoszenie domeny zarządzanej platformy Azure AD DS do istniejącej sieci wirtualnej](#migrate-the-managed-domain) | PowerShell | 1 – 3 godziny średnio | Po zakończeniu tego polecenia jest dostępny jeden kontroler domeny, przestoje zakończy się. | W przypadku niepowodzenia dostępne są zarówno wycofywanie (samoobsługowe), jak i przywracanie. |
+| [Krok 1 — aktualizowanie i lokalizowanie nowej sieci wirtualnej](#update-and-verify-virtual-network-settings) | Portalu Azure | 15 minut | Brak wymaganego przestoju | Nie dotyczy |
+| [Krok 2. Przygotowanie domeny zarządzanej AD DS platformy Azure do migracji](#prepare-the-managed-domain-for-migration) | Program PowerShell | średnio 15 – 30 minut | Czas przestoju AD DS platformy Azure zostanie uruchomiony po zakończeniu tego polecenia. | Wycofaj i Przywróć dostępne. |
+| [Krok 3. Przenoszenie domeny zarządzanej platformy Azure AD DS do istniejącej sieci wirtualnej](#migrate-the-managed-domain) | Program PowerShell | 1 – 3 godziny średnio | Po zakończeniu tego polecenia jest dostępny jeden kontroler domeny, przestoje zakończy się. | W przypadku niepowodzenia dostępne są zarówno wycofywanie (samoobsługowe), jak i przywracanie. |
 | [Krok 4. testowanie i oczekiwanie na replikę kontrolera domeny](#test-and-verify-connectivity-after-the-migration)| PowerShell i Azure Portal | 1 godzina lub więcej, w zależności od liczby testów | Oba kontrolery domeny są dostępne i powinny działać normalnie. | Nie dotyczy. Po pomyślnym przeprowadzeniu migracji pierwszej maszyny wirtualnej nie jest dostępna opcja wycofywania ani przywracania. |
-| [Krok 5 — opcjonalne kroki konfiguracji](#optional-post-migration-configuration-steps) | Azure Portal i maszyny wirtualne | ND | Brak wymaganego przestoju | ND |
+| [Krok 5 — opcjonalne kroki konfiguracji](#optional-post-migration-configuration-steps) | Azure Portal i maszyny wirtualne | Nie dotyczy | Brak wymaganego przestoju | Nie dotyczy |
 
 > [!IMPORTANT]
 > Aby uniknąć dodatkowego przestoju, przed rozpoczęciem procesu migracji Przeczytaj wszystkie te artykuły i wskazówki dotyczące migracji. Proces migracji ma wpływ na dostępność kontrolerów domeny AD DS platformy Azure przez pewien czas. Użytkownicy, usługi i aplikacje nie mogą uwierzytelniać się w domenie zarządzanej podczas procesu migracji.

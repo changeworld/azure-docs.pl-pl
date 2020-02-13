@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984816"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169815"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Co to są cele obliczeniowe w Azure Machine Learning? 
 
@@ -50,16 +50,12 @@ Zarządzany zasób obliczeniowy jest tworzony i zarządzany przez Azure Machine 
 
 Możesz tworzyć Azure Machine Learning wystąpienia obliczeniowe (wersja zapoznawcza) lub Klastry obliczeniowe w programie:
 
-| | Studio uczenia maszynowego Azure | Portal Azure | SDK | Szablon usługi Resource Manager | Interfejs CLI |
+| | Studio uczenia maszynowego Azure | Portalu Azure | SDK | Szablon usługi Resource Manager | Interfejs wiersza polecenia |
 |---| ----- | ----- | ----- | ----- | ----- |
 | Wystąpienie obliczeniowe | tak | tak | tak | tak |  |
 | Klaster obliczeniowy | tak | tak | tak | tak | tak |
 
 Po utworzeniu te zasoby obliczeniowe są automatycznie częścią obszaru roboczego w przeciwieństwie do innych rodzajów obiektów docelowych obliczeń.
-
-> [!NOTE]
-> Wystąpienia obliczeniowe są dostępne tylko dla obszarów roboczych z regionem **Północno-środkowe stany USA**, **Wschodnie stany USA 2**, **Europa Północna** lub **Południowe Zjednoczone Królestwo**, z obsługą innych regionów już wkrótce.
->Jeśli obszar roboczy znajduje się w innym regionie, możesz w zamian utworzyć [maszynę wirtualną w notesie](concept-compute-instance.md#notebookvm) i korzystać z niej. 
 
 ### <a name="compute-clusters"></a>Klastry obliczeniowe
 
@@ -78,6 +74,6 @@ Niezarządzany cel obliczeń *nie* jest zarządzany przez Azure Machine Learning
 
 ## <a name="next-steps"></a>Następne kroki
 
-Omawiane kwestie:
+Instrukcje:
 * [Skonfiguruj cel obliczeń do uczenia modelu](how-to-set-up-training-targets.md)
 * [Wdrażanie modelu w obiekcie docelowym obliczeń](how-to-deploy-and-where.md)

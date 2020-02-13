@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6dff1fe974ad4ffa993e4df03b4903d7e46e1990
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363510"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162263"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Przewodnik po interfejsie API REST usługi Azure Monitoring
 
@@ -57,7 +57,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-Aby wykonać zapytanie dotyczące interfejsu API Azure Monitor, aplikacja kliencka powinna używać wcześniej utworzonej jednostki usługi do uwierzytelniania. Poniższy przykładowy skrypt programu PowerShell przedstawia jedno podejście przy użyciu [Active Directory Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) w celu uzyskania tokenu uwierzytelniania JWT. Token JWT jest przesyłany jako część parametru autoryzacji HTTP w żądaniach do interfejsu API REST Azure Monitor.
+Aby wykonać zapytanie dotyczące interfejsu API Azure Monitor, aplikacja kliencka powinna używać wcześniej utworzonej jednostki usługi do uwierzytelniania. Poniższy przykładowy skrypt programu PowerShell przedstawia jedno podejście przy użyciu [Active Directory Authentication Library](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) w celu uzyskania tokenu uwierzytelniania JWT. Token JWT jest przesyłany jako część parametru autoryzacji HTTP w żądaniach do interfejsu API REST Azure Monitor.
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -466,7 +466,7 @@ Po znalezieniu dostępnych definicji metryk można pobrać powiązane wartości 
 
 **Metoda**: pobieranie
 
-**Identyfikator URI żądania**: *https://management.azure.com/subscriptions/ {Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/{resource-*Provider-Namespace}* / *{Resource-type}* / *{nazwa zasobu}* /Providers/Microsoft.Insights/Metrics? $Filter = *{Filter}* & API-Version = *{apiVersion}*
+**Identyfikator URI żądania**: *https://management.azure.com/subscriptions/{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/{resource-*Provider-Namespace}* / *{Resource-type}* / *{nazwa zasobu}* /Providers/Microsoft.Insights/Metrics? $Filter = *{Filter}* & API-Version = *{apiVersion}*
 
 Na przykład aby pobrać punkty danych metryki RunsSucceeded dla danego przedziału czasu i dla ziarna o godzinie 1 godziny, żądanie będzie w następujący sposób:
 
@@ -604,12 +604,12 @@ W przypadku poprzedniego kodu identyfikator zasobu, który ma być używany, to 
 
 Poniższa lista zawiera kilka przykładów formatów identyfikatorów zasobów dla różnych zasobów platformy Azure:
 
-* **IoT Hub** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Devices/IotHubs/ *{iot-hub-name}*
+* **IoT Hub** -/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.Devices/IotHubs/ *{IoT-Hub-Name}*
 * **Elastyczna Pula SQL** -/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.SQL/Servers/ *{Pool-DB}* /elasticpools/ *{SQL-Pool-Name}*
 * **SQL Database (V12)** —/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.SQL/Servers/ *{Server-Name}* /Databases/ *{Database-Name}*
-* **Service Bus** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.ServiceBus/ *{namespace}* / *{servicebus-name}*
+* **Service Bus** -/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.ServiceBus/ *{Namespace}* / *{ServiceBus-Name}*
 * **Zestawy skalowania maszyn wirtualnych** —/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.COMPUTE/virtualMachineScaleSets/ *{VM-Name}*
-* **VMs** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachines/ *{vm-name}*
+* **Maszyny wirtualne** —/subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.COMPUTE/virtualMachines/ *{VM-Name}*
 * **Event Hubs** /subscriptions/ *{Subscription-ID}* /resourceGroups/ *{Resource-Group-Name}* /Providers/Microsoft.EventHub/Namespaces/ *{EventHub-Namespace}*
 
 Istnieją alternatywne podejścia do pobierania identyfikatora zasobu, w tym przy użyciu Azure Resource Explorer, wyświetlania żądanego zasobu w Azure Portal oraz za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
@@ -620,13 +620,13 @@ Aby znaleźć identyfikator zasobu dla żądanego zasobu, pomocne podejście pol
 
 ![Alt "Azure Resource Explorer"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 Identyfikator zasobu można również uzyskać z Azure Portal. W tym celu przejdź do żądanego zasobu, a następnie wybierz pozycję Właściwości. Identyfikator zasobu jest wyświetlany w sekcji właściwości, jak pokazano na poniższym zrzucie ekranu:
 
 ![Alt "Identyfikator zasobu wyświetlany w bloku właściwości w Azure Portal"](./media/rest-api-walkthrough/resourceid_azure_portal.png)
 
-### <a name="azure-powershell"></a>Program Azure PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 Identyfikator zasobu można także pobrać przy użyciu Azure PowerShell poleceń cmdlet. Aby na przykład uzyskać identyfikator zasobu dla aplikacji logiki platformy Azure, wykonaj polecenie cmdlet Get-AzureLogicApp, jak w poniższym przykładzie:
 

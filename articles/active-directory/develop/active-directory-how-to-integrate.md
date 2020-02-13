@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: c5b8c506398af27ced284405dd75e48fb19a17af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698853"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161226"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
 
@@ -32,7 +32,7 @@ Istnieje kilka sposobów integracji aplikacji z usługą Azure AD. Korzystaj z k
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Obsługa usługi Azure AD w celu zalogowania się do aplikacji
 
-**Zmniejsz liczbę logowań i zmniejsz koszty pomocy technicznej.** Przy użyciu usługi Azure AD do logowania się do aplikacji użytkownicy nie będą mieć jeszcze jednej nazwy i hasła. Jako deweloper będziesz mieć co najmniej jedno hasło do przechowywania i ochrony. Nie trzeba obsługiwać resetowania zapomnianych haseł. Usługa Azure AD umożliwia zalogowanie się do niektórych najpopularniejszych aplikacji w chmurze, w tym pakietów Office 365 i Microsoft Azure. Setki milionów użytkowników z milionów organizacji prawdopodobnie użytkownik jest już zalogowany w usłudze Azure AD. Dowiedz się więcej [na temat dodawania obsługi logowania do usługi Azure AD](v1-authentication-scenarios.md).
+**Zmniejsz liczbę logowań i zmniejsz koszty pomocy technicznej.** Przy użyciu usługi Azure AD do logowania się do aplikacji użytkownicy nie będą mieć jeszcze jednej nazwy i hasła. Jako deweloper będziesz mieć co najmniej jedno hasło do przechowywania i ochrony. Nie trzeba obsługiwać resetowania zapomnianych haseł. Usługa Azure AD umożliwia zalogowanie się do niektórych najpopularniejszych aplikacji w chmurze, w tym pakietów Office 365 i Microsoft Azure. Setki milionów użytkowników z milionów organizacji prawdopodobnie użytkownik jest już zalogowany w usłudze Azure AD. Dowiedz się więcej [na temat dodawania obsługi logowania do usługi Azure AD](authentication-scenarios.md).
 
 **Uprość rejestrowanie się w aplikacji.**  Podczas tworzenia konta w aplikacji usługa Azure AD może wysyłać podstawowe informacje o użytkowniku, aby można było wstępnie wypełnić formularz tworzenia konta lub całkowicie wyeliminować. Użytkownicy mogą zarejestrować się w celu korzystania z aplikacji przy użyciu konta usługi Azure AD za pomocą dobrze znanego środowiska, podobnego do tych znajdujących się w multimediach społecznościowych i aplikacjach mobilnych. Każdy użytkownik może utworzyć konto i zalogować się do aplikacji zintegrowanej z usługą Azure AD bez konieczności jej zaangażowania. Dowiedz się więcej o [rejestrowaniu aplikacji na potrzeby logowania do konta usługi Azure AD](../../app-service/configure-authentication-provider-aad.md).
 
@@ -70,7 +70,7 @@ Integracja z usługą Azure AD wiąże się z korzyściami, które nie wymagają
 
 **Usługa Azure AD rozszerza Active Directory do chmury, dzięki czemu aplikacja może zintegrować się z usługą AD.**  Wiele organizacji na całym świecie używa Active Directory jako ich głównego logowania i systemu zarządzania tożsamościami, a także wymaga, aby ich aplikacje pracowały z usługą AD. Integracja z usługą Azure AD integruje aplikację z Active Directory.
 
-### <a name="advanced-security-features"></a>Zaawansowane funkcje bezpieczeństwa
+### <a name="advanced-security-features"></a>Zaawansowane funkcje zabezpieczeń
 
 **Uwierzytelnianie wieloskładnikowe.**  Usługa Azure AD zapewnia natywne uwierzytelnianie wieloskładnikowe. Administratorzy IT mogą wymagać uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do Twojej aplikacji, dzięki czemu nie musisz samodzielnie zakodować tej pomocy technicznej. Dowiedz się więcej o [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
@@ -92,5 +92,5 @@ Integracja z usługą Azure AD wiąże się z korzyściami, które nie wymagają
 
 [Zacznij pisać kod](v2-overview.md#getting-started).
 
-[Logowanie użytkowników przy użyciu platformy tożsamości firmy Microsoft](v1-authentication-scenarios.md)
+[Logowanie użytkowników przy użyciu platformy tożsamości firmy Microsoft](authentication-scenarios.md)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: c852bdeb30efe6acf626ae67028ec1ccb9e0b6db
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 08e10996f633d35ffbf946b61937a0e9a76f7227
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310972"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162229"
 ---
 # <a name="available-event-hubs-apis"></a>Dostępne Event Hubs interfejsy API
 
@@ -34,10 +34,10 @@ Aby uzyskać więcej informacji o bieżącym stanie każdej biblioteki środowis
 | Język/platforma | Pakiet klienta | Pakiet klasy eventprocessorhost | Repozytorium |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
-| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | ND |
+| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | Nie dotyczy |
 | Java | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHub](https://github.com/Azure/azure-event-hubs-java) |
-| Węzeł | [NPM](https://www.npmjs.com/package/azure-event-hubs) | ND | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
-| C | ND | ND | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
+| Węzeł | [NPM](https://www.npmjs.com/package/azure-event-hubs) | Nie dotyczy | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
+| C | Nie dotyczy | Nie dotyczy | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
 
 ### <a name="additional-information"></a>Dodatkowe informacje
 
@@ -47,7 +47,7 @@ Ekosystem .NET ma wiele środowisk uruchomieniowych, więc istnieje wiele biblio
 
 #### <a name="node"></a>Węzeł
 
-[Biblioteka Node. js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) jest obecnie w wersji zapoznawczej i jest utrzymywana jako projekt po stronie firmy Microsoft i zewnętrznych współautorów. Wszystkie wkłady, w tym kod źródłowy, są powitane i zostaną zrecenzowane.
+[Biblioteka JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) jest obecnie w wersji zapoznawczej i jest utrzymywana jako projekt po stronie firmy Microsoft i zewnętrznych współautorów. Wszystkie wkłady, w tym kod źródłowy, są powitane i zostaną zrecenzowane.
 
 ## <a name="management-apis"></a>Interfejsy API zarządzania
 
@@ -60,6 +60,6 @@ W poniższej tabeli wymieniono wszystkie aktualnie dostępne biblioteki specyfic
 ## <a name="next-steps"></a>Następne kroki
 Następujące linki pozwalają dowiedzieć się więcej na temat usługi Event Hubs:
 
-* [Przegląd usługi Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Omówienie usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Tworzenie centrum zdarzeń](event-hubs-create.md)
 * [Event Hubs — często zadawane pytania](event-hubs-faq.md)

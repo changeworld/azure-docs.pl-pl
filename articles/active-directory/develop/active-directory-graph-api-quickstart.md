@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f32d9832f0bad81ca29ab7553d956b593531d1bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9fd5fa943468924c289587285fe7986a73c21dba
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698938"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161345"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Instrukcje: korzystanie z interfejs API programu Graph usługi Azure AD
 
@@ -81,7 +81,7 @@ Na potrzeby tego przewodnika Szybki Start można użyć debugera sieci Web progr
 
 W poniższym przykładzie użyto debugera sieci Web programu Fiddler w celu utworzenia nowej grupy zabezpieczeń "Moja Tester" w katalogu usługi Azure AD.
 
-**Uzyskaj token dostępu**: Aby uzyskać dostęp do programu Azure AD Graph, klienci muszą najpierw przeprowadzić uwierzytelnienie w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](v1-authentication-scenarios.md).
+**Uzyskaj token dostępu**: Aby uzyskać dostęp do programu Azure AD Graph, klienci muszą najpierw przeprowadzić uwierzytelnienie w usłudze Azure AD. Aby uzyskać więcej informacji, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md).
 
 **Tworzenie i uruchamianie zapytania**: wykonaj następujące czynności:
 

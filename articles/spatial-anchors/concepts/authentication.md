@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152605"
+ms.locfileid: "77161685"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Uwierzytelnianie i autoryzacja w kotwicach przestrzennych platformy Azure
 
@@ -92,7 +92,7 @@ Gdy to zrobisz, zestaw SDK będzie obsługiwał wymianę klucza konta dla tokenu
 
 ## <a name="azure-ad-user-authentication"></a>Uwierzytelnianie użytkowników w usłudze Azure AD
 
-W przypadku aplikacji przeznaczonych dla użytkowników Azure Active Directory Zalecanym podejściem jest użycie tokenu usługi Azure AD dla użytkownika, który można uzyskać przy użyciu biblioteki ADAL, zgodnie z opisem w poniższej dokumentacji: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md); należy wykonać czynności opisane w sekcji "szybkie uruchamianie", które obejmują:
+W przypadku aplikacji przeznaczonych dla użytkowników Azure Active Directory Zalecanym podejściem jest użycie tokenu usługi Azure AD dla użytkownika, który można uzyskać przy użyciu [biblioteki MSAL](../../active-directory/develop/msal-overview.md). Należy wykonać czynności opisane w sekcji [Rejestrowanie przewodnika Szybki Start](../../active-directory/develop/quickstart-register-app.md)dotyczącego aplikacji, co obejmuje:
 
 1. Konfiguracja w Azure Portal
     1.  Zarejestruj swoją aplikację w usłudze Azure AD jako **aplikację natywną**. W ramach rejestracji należy określić, czy aplikacja powinna mieć dostęp do wielu dzierżawców, a także podać adresy URL przekierowania dozwolone dla aplikacji.
@@ -118,7 +118,7 @@ W przypadku aplikacji przeznaczonych dla użytkowników Azure Active Directory Z
         3.  Jeśli aplikacja obsługuje **wszystkich konto Microsoft użytkowników**, Zastąp tę wartość **wspólną**
     3.  Na żądanie tokenu Ustaw **zasób** na "https://sts.mixedreality.azure.com". Ten "zasób" wskazuje usłudze Azure AD, że aplikacja żąda tokenu dla usługi zakotwiczeń przestrzennych platformy Azure.
 
-Dzięki temu aplikacja powinna mieć możliwość uzyskania od biblioteki ADAL tokenu usługi Azure AD; Możesz ustawić ten token usługi Azure AD jako **authenticationToken** w obiekcie konfiguracji sesji w chmurze.
+Dzięki temu aplikacja powinna być w stanie uzyskać od MSAL tokenu usługi Azure AD; Możesz ustawić ten token usługi Azure AD jako **authenticationToken** w obiekcie konfiguracji sesji w chmurze.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -168,7 +168,7 @@ Zalecaną opcją wdrożenia aplikacji wykorzystujących kotwice przestrzenne pla
 
 W tym miejscu zakłada się, że aplikacja używa własnego mechanizmu (na przykład: konto Microsoft, PlayFab, Facebook, Google ID, niestandardowej nazwy użytkownika/hasła itp.) w celu uwierzytelnienia w usłudze zaplecza. Po uwierzytelnieniu użytkowników w usłudze wewnętrznej bazy danych usługa ta może pobrać token usługi Azure AD, wymienić go na token dostępu dla kotwic przestrzennych platformy Azure i przywrócić go do aplikacji klienckiej.
 
-Token dostępu usługi Azure AD jest pobierany przy użyciu biblioteki ADAL, zgodnie z opisem w następującej dokumentacji: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md); należy wykonać czynności opisane w sekcji "szybkie uruchamianie", które obejmują:
+Token dostępu usługi Azure AD jest pobierany przy użyciu [biblioteki MSAL](../../active-directory/develop/msal-overview.md). Należy wykonać czynności opisane w sekcji [Rejestrowanie przewodnika Szybki Start](../../active-directory/develop/quickstart-register-app.md)dotyczącego aplikacji, co obejmuje:
 
 1.  Konfiguracja w Azure Portal:
     1.  Zarejestruj swoją aplikację w usłudze Azure AD:

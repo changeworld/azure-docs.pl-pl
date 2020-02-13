@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 141f1a7fc8f966132cb3570fd9d9cfa911127eed
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792456"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191370"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Rozwiązania B2B Enterprise Integration z Azure Logic Apps i Pakiet integracyjny dla przedsiębiorstw
 
-W przypadku rozwiązań Business-to-Business (B2B) i bezproblemowej komunikacji między organizacjami można tworzyć zautomatyzowane przepływy pracy integracji dla przedsiębiorstw przy użyciu Pakiet integracyjny dla przedsiębiorstw (EIP) z [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Chociaż organizacje używają różnych protokołów i formatów, mogą wymieniać wiadomości elektronicznie. Element EIP przekształca różne formaty w format, który systemy organizacji mogą przetwarzać i obsługuje protokoły standardowe branżowe, w tym [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md)i [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Możesz również zabezpieczyć komunikaty za pomocą szyfrowania i podpisów cyfrowych. Element EIP obsługuje te [Łączniki integracji przedsiębiorstwa](../connectors/apis-list.md#integration-account-connectors) oraz następujące standardy branżowe:
+W przypadku rozwiązań Business-to-Business (B2B) i bezproblemowej komunikacji między organizacjami można tworzyć zautomatyzowane przepływy pracy integracji dla przedsiębiorstw przy użyciu Pakiet integracyjny dla przedsiębiorstw (EIP) z [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Chociaż organizacje używają różnych protokołów i formatów, mogą wymieniać wiadomości elektronicznie. Element EIP przekształca różne formaty w format, który systemy organizacji mogą przetwarzać i obsługuje protokoły standardowe branżowe, w tym [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md)i [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Możesz również poprawić zabezpieczenia komunikatów przy użyciu szyfrowania i podpisów cyfrowych. Element EIP obsługuje te [Łączniki integracji przedsiębiorstwa](../connectors/apis-list.md#integration-account-connectors) oraz następujące standardy branżowe:
 
 * Elektronicznej wymiany danych (EDI)
 * Enterprise Application Integration (EAI)
@@ -32,7 +32,7 @@ Jeśli znasz już firmę Microsoft BizTalk Server lub platformę Azure BizTalk S
 
 * Możesz utworzyć niestandardowy kod dla aplikacji logiki za pomocą usługi Azure Functions.
 
-## <a name="how-do-i-get-started"></a>Jak rozpocząć pracę?
+## <a name="how-do-i-get-started"></a>Jak rozpocząć?
 
 Przed rozpoczęciem tworzenia przepływów pracy aplikacji logiki B2B z elementem EIP potrzebne są następujące elementy:
 
@@ -48,7 +48,7 @@ Poniżej przedstawiono ogólne kroki umożliwiające rozpoczęcie tworzenia apli
 
 ![Wymagania wstępne dotyczące tworzenia aplikacji logiki B2B](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
-## <a name="try-now"></a>Wypróbuj
+## <a name="try-now"></a>Wypróbuj teraz
 
 [Wdróż w pełni działającą przykładową aplikację logiki, która wysyła i odbiera komunikaty AS2](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 

@@ -17,12 +17,12 @@ ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.openlocfilehash: 9cb13ea56c39f365ddb888a5d4e94228b1881fc4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758754"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160364"
 ---
 # <a name="whats-new-for-authentication"></a>Co nowego w uwierzytelnianiu? 
 
@@ -156,7 +156,7 @@ Wszystkie aplikacje powinny obsłużyć `invalid_grant`, wyświetlając interakt
 
 Jeśli aplikacja używa kody autoryzacji uzyskiwanie tokenów dla wielu zasobów, zalecamy Użyj kodu, aby uzyskać token odświeżania, a następnie używać tego tokenu odświeżania w celu pobrania dodatkowe tokeny dla innych zasobów. Kody autoryzacji należy używać tylko raz, ale tokenów odświeżania mogą być wielokrotnie używane w wielu zasobach. W przypadku każdej nowej aplikacji próbującej ponownie użyć kodu uwierzytelniania podczas przepływu kodu OAuth Wystąpił błąd invalid_grant.
 
-Aby uzyskać więcej informacji na temat tokenów odświeżania, zobacz [odświeżanie tokenów dostępu](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  W przypadku używania biblioteki ADAL lub MSAL jest to obsługiwane przez bibliotekę — Zastąp drugie wystąpienie elementu "AcquireTokenByAuthorizationCodeAsync" elementem "AcquireTokenSilentAsync". 
+Aby uzyskać więcej informacji na temat tokenów odświeżania, zobacz [odświeżanie tokenów dostępu](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  W przypadku używania biblioteki ADAL lub MSAL jest to obsługiwane przez bibliotekę — Zastąp drugie wystąpienie elementu "AcquireTokenByAuthorizationCodeAsync" elementem "AcquireTokenSilentAsync". 
 
 ## <a name="may-2018"></a>Maj 2018 r.
 
@@ -166,7 +166,7 @@ Aby uzyskać więcej informacji na temat tokenów odświeżania, zobacz [odświe
 
 **Wpływ na punkty końcowe**: 1.0 i v 2.0
 
-**Wpływ na protokoły**: przepływ niejawny i [przepływ OBO](v1-oauth2-on-behalf-of-flow.md)
+**Wpływ na protokoły**: niejawny przepływ i [w imieniu przepływu](v2-oauth2-on-behalf-of-flow.md)
 
 Od 1 maja 2018 id_tokens nie może być używany jako potwierdzenie w przepływie OBO dla nowych aplikacji. Tokeny dostępu należy zamiast tego używać w celu zabezpieczania interfejsów API, nawet między klientem a warstwą środkową tej samej aplikacji. Aplikacje zarejestrowane przed 1 maja 2018 będą nadal działać i mogą być dostępne do wymiany id_tokens dla tokenu dostępu. Jednak ten wzorzec nie jest uważany za najlepsze rozwiązanie.
 

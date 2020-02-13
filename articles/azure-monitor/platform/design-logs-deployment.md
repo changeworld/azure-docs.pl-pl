@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 3d4fe7319e0af9c463bd64483f43a4e73ef8871d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2d530792e1a6f598dbf2ed66889c01cc43467ed
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395757"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162246"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Projektowanie wdrożenia dzienników Azure Monitor
 
@@ -42,7 +42,7 @@ Określenie liczby potrzebnych obszarów roboczych ma wpływ na co najmniej jedn
 
 Obecnie organizacje IT są modelowane zgodnie z scentralizowanym, zdecentralizowanym lub mieszanym hybrydem obu struktur. W związku z tym następujące modele wdrażania obszarów roboczych są często używane do mapowania na jedną z następujących struktur organizacyjnych:
 
-* **Scentralizowany**: wszystkie dzienniki są przechowywane w centralnym obszarze roboczym i zarządzane przez jednego zespołu, z Azure monitor zapewniający zróżnicowany dostęp dla poszczególnych zespołów. W tym scenariuszu można łatwo zarządzać, przeszukiwać zasoby i rejestrować je między sobą. Obszar roboczy może znacząco wzrosnąć w zależności od ilości danych zbieranych z wielu zasobów w ramach subskrypcji, z dodatkowym narzutem administracyjnym w celu utrzymania kontroli dostępu do różnych użytkowników.
+* **Scentralizowany**: wszystkie dzienniki są przechowywane w centralnym obszarze roboczym i zarządzane przez jednego zespołu, z Azure monitor zapewniający zróżnicowany dostęp dla poszczególnych zespołów. W tym scenariuszu można łatwo zarządzać, przeszukiwać zasoby i rejestrować je między sobą. Obszar roboczy może znacząco wzrosnąć w zależności od ilości danych zbieranych z wielu zasobów w ramach subskrypcji, z dodatkowym narzutem administracyjnym w celu utrzymania kontroli dostępu do różnych użytkowników. Ten model jest znany jako "Hub i szprych".
 * **Zdecentralizowane**: każdy zespół ma własny obszar roboczy utworzony w grupie zasobów, której są właścicielami i którymi zarządza, a dane dziennika są segregowane według poszczególnych zasobów. W tym scenariuszu obszar roboczy może być zabezpieczony, a kontrola dostępu jest spójna z dostępem do zasobów, ale trudno jest rejestrować krzyżowe dzienniki. Użytkownicy, którzy potrzebują szerokiego wglądu w wiele zasobów, nie mogą analizować danych w zrozumiały sposób.
 * **Hybrydowe**: wymagania dotyczące zgodności inspekcji zabezpieczeń bardziej komplikują ten scenariusz, ponieważ wiele organizacji jednocześnie implementuje oba modele wdrażania. Często wynika to z skomplikowanej, kosztownej i trudnej do utrzymania konfiguracji z przerwyami w dziennikach.
 
@@ -87,7 +87,7 @@ Użytkownicy mają dwie opcje uzyskiwania dostępu do danych:
     > [!NOTE]
     > Dzienniki są dostępne dla zapytań kontekstu zasobów tylko wtedy, gdy zostały prawidłowo skojarzone z odpowiednim zasobem. Obecnie następujące zasoby mają ograniczenia:
     > - Komputery poza platformą Azure
-    > - Sieć szkieletowa usługi
+    > - Service Fabric
     > - Application Insights
     >
     > Możesz sprawdzić, czy dzienniki są prawidłowo skojarzone ze swoimi zasobami, uruchamiając zapytanie i sprawdzając odpowiednie rekordy. Jeśli w [_ResourceId](log-standard-properties.md#_resourceid) właściwość jest prawidłowy identyfikator zasobu, dane są dostępne dla zapytań skoncentrowanych na zasobach.
@@ -141,7 +141,7 @@ Operation
 ``` 
 
 
-## <a name="recommendations"></a>Polecane elementy
+## <a name="recommendations"></a>Zalecenia
 
 ![Przykład projektu kontekstu zasobów](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 

@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 766ac4f67c0d448f3988eb66c84dddbf44076ab5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 70b13b16e6aca6b0bdb0858a32a219defef6cca3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841147"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162042"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Obsługa maszyn wirtualnych 2. generacji na platformie Azure
 
@@ -58,7 +58,8 @@ Maszyny wirtualne 2. generacji obsługują następujące obrazy w portalu Market
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16,04, 18,04, 19,04, 19,10 
-* RHEL 8,0
+* RHEL 8,0, 7,6, 7,5, 7,4, 7,0
+* Cent OS 8,0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Lokalna a maszyny wirtualne 2. generacji platformy Azure
 
@@ -76,15 +77,15 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji, które są obsługiw
 
 ### <a name="generation-1-vs-generation-2-features"></a>Funkcje generacji 1 a generacja 2
 
-| Funkcja | Generacja 1 | Generacja 2 |
+| Cecha | Generacja 1 | Generacja 2 |
 |---------|--------------|--------------|
-| Rozruch             | PCAT         | UEFI |
+| Wiódł             | PCAT         | UEFI |
 | Kontrolery dysków | IDE          | SCSI |
 | Rozmiary maszyn wirtualnych         | Wszystkie rozmiary maszyn wirtualnych | Tylko maszyny wirtualne obsługujące usługę Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Możliwości generacji 1 a generacja 2
 
-| Możliwość | Generacja 1 | Generacja 2 |
+| Możliwości | Generacja 1 | Generacja 2 |
 |------------|--------------|--------------|
 | Dysk systemu operacyjnego > 2 TB                    | y                | :heavy_check_mark: |
 | Niestandardowy dysk/obraz/system operacyjny wymiany         | :heavy_check_mark: | :heavy_check_mark: |
@@ -100,22 +101,23 @@ Platforma Azure nie obsługuje obecnie niektórych funkcji, które są obsługiw
 
 W Azure Portal lub interfejsie wiersza polecenia platformy Azure można tworzyć maszyny wirtualne 2. generacji z obrazu portalu Marketplace, który obsługuje rozruch z interfejsem UEFI.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Portalu Azure
 
-Obrazy generacji 2 dla systemu Windows i SLES są zawarte w tej samej ofercie serwera co obrazy Gen1. Co to znaczy z perspektywy przepływu, należy wybrać ofertę i jednostkę SKU z portalu dla maszyny wirtualnej. Jeśli jednostka SKU obsługuje zarówno obrazy generacji 1, jak i 2, możesz wybrać opcję utworzenia maszyny wirtualnej generacji 2 z karty *Zaawansowane* w przepływie tworzenia maszyny wirtualnej.
+Poniżej przedstawiono procedurę tworzenia maszyny wirtualnej generacji 2 (Gen2) w Azure Portal.
 
-Obecnie następujące jednostki SKU obsługują obrazy generacji 1 i 2. generacji:
-
-* Windows Server 2012
-* Windows Server 2012 R2
-* Windows Server 2016
-* Windows Server 2019
-
-Po wybraniu jednostki SKU systemu Windows Server jako oferty na karcie **Zaawansowane** można utworzyć maszynę wirtualną **generacji 1** (BIOS) lub **Gen 2** (UEFI). W przypadku wybrania **generacji 2**upewnij się, że rozmiar maszyny wirtualnej wybrany na karcie **podstawy** jest [obsługiwany w przypadku maszyn wirtualnych 2. generacji](#generation-2-vm-sizes).
+1. Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+1. Wybierz pozycję **Utwórz zasób**.
+1. Po lewej stronie kliknij pozycję **Zobacz wszystko** w witrynie Azure Marketplace.
+1. Wybierz obraz, który obsługuje Gen2.
+1. Kliknij przycisk **Utwórz**.
+1. Na karcie **Zaawansowane** w sekcji **generacja maszyny wirtualnej** wybierz opcję **generacji 2** .
+1. Na karcie **podstawowe** w obszarze **szczegóły wystąpienia**przejdź do pozycji **rozmiar** i Otwórz blok **Wybieranie rozmiaru maszyny wirtualnej** .
+1. Wybierz [obsługiwaną maszynę wirtualną generacji 2](#generation-2-vm-sizes).
+1. Przejdź przez [przepływ tworzenia Azure Portal](quick-create-portal.md) , aby zakończyć tworzenie maszyny wirtualnej.
 
 ![Wybierz maszynę wirtualną generacji 1 lub Gen 2](./media/generation-2/gen1-gen2-select.png)
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Program PowerShell
 
 Możesz również użyć programu PowerShell do utworzenia maszyny wirtualnej, bezpośrednio odwołującej się do jednostki SKU generacji 1 lub 2.
 
@@ -144,7 +146,7 @@ Zapoznaj się z sekcją [funkcje i możliwości](#features-and-capabilities) , a
 
 Maszynę wirtualną generacji 2 można utworzyć na podstawie zarządzanego obrazu lub dysku zarządzanego w taki sam sposób jak w przypadku tworzenia maszyny wirtualnej generacji 1.
 
-### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+### <a name="virtual-machine-scale-sets"></a>Zestawy skalowania maszyn wirtualnych
 
 Można również tworzyć maszyny wirtualne 2. generacji przy użyciu zestawów skalowania maszyn wirtualnych. W interfejsie wiersza polecenia platformy Azure Użyj zestawów skalowania platformy Azure, aby utworzyć maszyny wirtualne 2. generacji.
 
@@ -195,6 +197,13 @@ Można również tworzyć maszyny wirtualne 2. generacji przy użyciu zestawów 
 
 * **Czy można migrować maszynę wirtualną z generacji 1 do generacji 2?**  
     Nie, nie można zmienić generacji maszyny wirtualnej po jej utworzeniu. Jeśli chcesz przełączać się między generacjami maszyn wirtualnych, Utwórz nową maszynę wirtualną innej generacji.
+
+* **Dlaczego mój rozmiar maszyny wirtualnej nie jest włączony w selektorze rozmiaru, gdy próbuję utworzyć maszynę wirtualną Gen2?**
+
+    Można to rozwiązać, wykonując następujące czynności:
+
+    1. Sprawdź, czy właściwość **generacja maszyny wirtualnej** ma ustawioną wartość **Gen 2** na karcie **Zaawansowane** .
+    1. Sprawdź, czy szukasz [rozmiaru maszyny wirtualnej, który obsługuje maszyny wirtualne Gen2](#generation-2-vm-sizes).
 
 ## <a name="next-steps"></a>Następne kroki
 

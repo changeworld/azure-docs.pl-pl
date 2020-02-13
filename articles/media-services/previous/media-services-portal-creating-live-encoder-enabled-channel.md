@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3217a2d5ba3d45a069eacdb67a8d69e9abc674b8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015209"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162569"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Wykonaj transmisję strumieniową na żywo za pomocą Media Services, aby utworzyć strumienie o szybkości transmisji bitów z Azure Portal  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [Interfejs API REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 
 > [!NOTE]
@@ -43,8 +43,8 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
 
 1. Podłącz kamerę wideo do komputera. <br/>Aby zapoznać się z pomysłami dotyczącymi konfiguracji, zapoznaj się z [konfiguracją prostego i przenośnego sprzętu wideo]( https://link.medium.com/KNTtiN6IeT).
 
-    Jeśli nie masz dostępu do aparatu, można użyć narzędzi, takich jak [Wirecast usługi NetStream](https://www.telestream.net/wirecast/overview.htm) , wygenerowania na żywo kanału informacyjnego z pliku wideo.
-1. Uruchom i skonfiguruj lokalny koder na żywo, który wysyła strumień o pojedynczej szybkości transmisji bitów przy użyciu jednego z następujących protokołów: RTMP lub Smooth Streaming. Aby uzyskać więcej informacji, zobacz temat [Obsługa protokołu RTMP i kodery na żywo w usłudze Azure Media Services](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Zapoznaj się również z tym blogiem: [Produkcja strumieniowa na żywo z obs](https://link.medium.com/ttuwHpaJeT).
+    Jeśli nie masz dostępu do aparatu, można użyć narzędzi, takich jak [Wirecast usługi NetStream](media-services-configure-wirecast-live-encoder.md) , wygenerowania na żywo kanału informacyjnego z pliku wideo.
+1. Uruchom i skonfiguruj lokalny koder na żywo, który wysyła strumień o pojedynczej szybkości transmisji bitów przy użyciu jednego z następujących protokołów: RTMP lub Smooth Streaming. Aby uzyskać więcej informacji, zobacz temat [Obsługa protokołu RTMP i kodery na żywo w usłudze Azure Media Services](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Zapoznaj się również z tym blogiem: [produkcja przesyłania strumieniowego na żywo z obs](https://link.medium.com/ttuwHpaJeT).
 
     Ten krok można również wykonać po utworzeniu kanału.
 1. Utwórz i uruchom kanał. 
@@ -66,7 +66,7 @@ Poniżej przedstawiono ogólne etapy tworzenia typowych aplikacji transmisji str
 Następujące elementy są wymagane do wykonania czynności przedstawionych w samouczku.
 
 * Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. 
-  Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
+  Aby uzyskać szczegółowe informacje, zobacz temat [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Tworzenie konta](media-services-portal-create-account.md).
 * Kamera internetowa i koder, który może wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów.
 
@@ -94,7 +94,7 @@ Następujące elementy są wymagane do wykonania czynności przedstawionych w sa
         Nie można zmienić opcji protokołu, gdy kanał lub skojarzone z nim wydarzenia/programy są uruchomione. Jeśli potrzebujesz różnych protokołów, utwórz osobny kanał dla każdego protokołu przesyłania strumieniowego.  
    2. Można zastosować ograniczenie adresów IP dotyczące pozyskiwania. 
 
-       Można zdefiniować adresy IP, które mogą pozyskiwać pliki wideo w tym kanale. Dozwolone adresy IP można określić jako pojedynczy adres IP (np. „10.0.0.1”), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (np. „10.0.0.1/22”) lub zakres adresów IP przy użyciu adresu IP i maski podsieci w zapisie kropkowo-cyfrowym (np. „10.0.0.1(255.255.252.0)”).
+       Można zdefiniować adresy IP, które mogą pozyskiwać pliki wideo w tym kanale. Dozwolone adresy IP można określić jako pojedynczy adres IP (np. "10.0.0.1"), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (np. "10.0.0.1/22") lub zakres adresów IP przy użyciu adresu IP i maski podsieci z kropką dziesiętną (np. "10.0.0.1 (255.255.252.0)").
 
        Jeśli adresy IP nie zostaną określone i brakuje definicji reguły, to żaden adres IP nie będzie dozwolony. Aby zezwolić na jakikolwiek adres IP, utwórz regułę i ustaw wartość 0.0.0.0/0.
 6. Na karcie **Podgląd** zastosuj ograniczenie adresów IP do podglądu.
@@ -167,7 +167,7 @@ Jeśli klikniesz pozycję **Zakończ transmisję na żywo**, wszystkie wydarzeni
 ## <a name="watch-the-event"></a>Oglądanie wydarzenia
 Aby oglądać wydarzenie, kliknij przycisk **Oglądaj** w witrynie Azure Portal lub skopiuj adres URL przesyłania strumieniowego i użyj wybranego odtwarzacza. 
 
-![Utworzono](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
+![Utworzone](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
 
 Po zatrzymaniu wydarzenia na żywo wydarzenie jest automatycznie konwertowane na zawartość na żądanie.
 
@@ -194,6 +194,6 @@ Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

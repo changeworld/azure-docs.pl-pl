@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293593"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168159"
 ---
 # <a name="release-notes"></a>Informacje o wersji
 
@@ -34,7 +34,7 @@ ms.locfileid: "76293593"
 - JavaScript: Firma Microsoft honoruje teraz `NODE_TLS_REJECT_UNAUTHORIZED` dzięki udziałowi z [orgads](https://github.com/orgads). Szczegóły można znaleźć [tutaj](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
 
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
 - `OpenSSL` został zaktualizowany do wersji 1.1.1 b i jest statycznie połączony z biblioteką podstawową zestawu Speech SDK dla systemu Linux. Może to spowodować przerwanie w przypadku, gdy skrzynka odbiorcza `OpenSSL` nie została zainstalowana w katalogu `/usr/lib/ssl` w systemie. Aby obejść ten problem, zapoznaj się z [naszą dokumentacją](how-to-configure-openssl-linux.md) w obszarze dokumentacja zestawu Speech SDK.
 - Zmieniono typ danych zwrócony dla C# `WordLevelTimingResult.Offset` z `int`, aby `long` zezwolić na dostęp do `WordLevelTimingResults`, gdy dane mowy są dłuższe niż 2 minuty.
@@ -78,7 +78,7 @@ ms.locfileid: "76293593"
 - Dodano obsługę `KeywordRecognizer` w systemach Windows (platformy UWP), Android i iOS za pomocą pakietów NuGet i programu Unity
 - Dodano interfejs API języka Java konwersacji zdalnych w celu przeprowadzenia transkrypcji konwersacji w partiach asynchronicznych.
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
 - Funkcje Transcriber konwersacji przenoszone w obszarze przestrzeni nazw `Microsoft.CognitiveServices.Speech.Transcription`.
 - Część metod Transcriber konwersacji jest przenoszona do nowej klasy `Conversation`.
@@ -309,7 +309,7 @@ Jest to wersja tylko w języku JavaScript. Nie dodano żadnych funkcji. Wprowadz
 - Android
   - Włączono obsługę funkcji preguard podczas generowania APK.
 
-**Ulepszenia**
+**Poprawek**
 
 - Udoskonalenia wewnętrznego użycia wątku, Zmniejszanie liczby wątków, blokad i muteksów.
 - Ulepszone raportowanie błędów/informacje. W kilku przypadkach komunikaty o błędach nie zostały jeszcze rozpropagowane.
@@ -339,9 +339,9 @@ Jest to wersja tylko w języku JavaScript. Nie dodano żadnych funkcji. Wprowadz
 
 - Obsługa systemu Android x86/x64.
 - Obsługa serwera proxy: w obiekcie `SpeechConfig` można teraz wywołać funkcję, aby ustawić informacje o serwerze proxy (nazwa hosta, port, nazwa użytkownika i hasło). Ta funkcja nie jest jeszcze dostępne w systemie iOS.
-- Kod błędu ulepszone i komunikatów. Jeśli rozpoznawania zwrócił błąd, to już ustawiona `Reason` (w przypadku anulowane) lub `CancellationDetails` (w wyniku rozpoznawania) do `Error`. Anulowano zdarzeń zawiera teraz dwa dodatkowe elementy członkowskie `ErrorCode` i `ErrorDetails`. Jeśli serwer zwrócił dodatkowe informacje o błędzie z zgłoszonego błędu, będzie teraz dostępna w nowych elementów członkowskich.
+- Kod błędu ulepszone i komunikatów. Jeśli rozpoznawanie zwróciło błąd, to właśnie ustawił `Reason` (w anulowanym zdarzeniu) lub `CancellationDetails` (w wyniku rozpoznawania) do `Error`. Zdarzenie anulowane zawiera teraz dwa dodatkowe elementy członkowskie, `ErrorCode` i `ErrorDetails`. Jeśli serwer zwrócił dodatkowe informacje o błędzie z zgłoszonego błędu, będzie teraz dostępna w nowych elementów członkowskich.
 
-**Ulepszenia**
+**Poprawek**
 
 - Dodano dodatkowa weryfikacja w konfiguracji rozpoznawania i dodano dodatkowe komunikat.
 - Ulepszona obsługa wieloletni wyciszenia w środku plik audio.
@@ -376,16 +376,16 @@ Ulepszenia niezawodności i poprawki:
 - JavaScript: Naprawiono dotyczące zdarzenia i ich ładunków.
 - Udoskonalenia dokumentacji.
 
-W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano nowe próbki dla języka JavaScript.
+W naszym [przykładowym repozytorium](https://aka.ms/csspeech/samples)dodano nowy przykład dla języka JavaScript.
 
 ## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Services cognitive mowy wersji zestawu SDK 1.0.0: września 2018 r.
 
 **Nowe funkcje**
 
-- Obsługa języka Objective-C w systemie iOS. Zapoznaj się z naszym [języka Objective-C Przewodnik Szybki Start dla systemu iOS](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md).
-- Obsługa języka JavaScript w przeglądarce. Zapoznaj się z naszym [Szybki Start JavaScript](quickstart-js-browser.md).
+- Obsługa języka Objective-C w systemie iOS. Zapoznaj się z naszym [przewodnikiem Szybki Start dla systemu iOS](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md).
+- Obsługa języka JavaScript w przeglądarce. Zapoznaj się z naszym [przewodnikiem Szybki Start dla języka JavaScript](quickstart-js-browser.md).
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
 - W tej wersji wprowadzono kilka istotnych zmian.
   Sprawdź [Tę stronę](https://aka.ms/csspeech/breakingchanges_1_0_0) , aby uzyskać szczegółowe informacje.
@@ -395,19 +395,19 @@ W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano 
 **Nowe funkcje**
 
 - Aplikacje platformy UWP skompilowanych przy użyciu zestawu SDK rozpoznawania mowy, teraz można przekazywać Windows App certyfikacji Kit (WACK).
-  Zapoznaj się z [Szybki Start platformy uniwersalnej systemu Windows](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp&tabs=uwp).
+  Zapoznaj się z [przewodnikiem Szybki Start platformy UWP](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp&tabs=uwp).
 - Obsługa .NET Standard 2.0 w systemie Linux (Ubuntu 16.04 x 64).
 - Eksperymentalne: Obsługuje Java 8 Windows (wersja 64-bitowa) i systemu Linux (Ubuntu 16.04 x 64).
-  Zapoznaj się z [Szybki Start Java Runtime Environment](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre).
+  Zapoznaj się z [Java Runtime Environment przewodnika Szybki Start](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre).
 
-**Zmiana funkcjonalności**
+**Zmiana funkcjonalna**
 
 - Uwidocznić dodatkowe szczegółowe informacje na temat błędów połączenia.
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
-- W języku Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` funkcja nie wymaga już parametr ścieżki. Teraz ścieżki jest wykrywany automatycznie na wszystkich obsługiwanych platformach.
-- Get akcesora właściwości `EndpointUrl` w środowiskach Java i C# został usunięty.
+- W systemie Java (Android) funkcja `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` nie wymaga już parametru Path. Teraz ścieżki jest wykrywany automatycznie na wszystkich obsługiwanych platformach.
+- Metoda Get-accessor właściwości `EndpointUrl` w języku Java i C# została usunięta.
 
 **Poprawki błędów**
 
@@ -420,34 +420,34 @@ W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano 
 
 **Nowe funkcje**
 
-- Obsługa platformy systemu Android (interfejsu API 23: system Android Marshmallow 6.0 lub nowszej). Zapoznaj się z [Szybki Start dla systemu Android](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android).
-- Obsługa .NET Standard 2.0 na Windows. Zapoznaj się z [Szybki Start platformy .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
+- Obsługa platformy systemu Android (interfejsu API 23: system Android Marshmallow 6.0 lub nowszej). Zapoznaj się z [przewodnikiem Szybki Start dla systemu Android](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android).
+- Obsługa .NET Standard 2.0 na Windows. Zapoznaj się z [przewodnikiem Szybki Start dla platformy .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
 - Eksperymentalne: Obsługa platformy uniwersalnej systemu Windows na Windows (w wersji 1709 lub nowszej).
-  - Zapoznaj się z [Szybki Start platformy uniwersalnej systemu Windows](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp).
+  - Zapoznaj się z [przewodnikiem Szybki Start platformy UWP](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp).
   - Uwaga: Aplikacje platformy UWP skompilowanych przy użyciu zestawu SDK rozpoznawania mowy nie są jeszcze przekazywane Windows App certyfikacji Kit (WACK).
 - Obsługuje rozpoznawanie długotrwałych z automatycznego ponownego połączenia.
 
 **Zmiany funkcjonalne**
 
-- `StartContinuousRecognitionAsync()` obsługuje rozpoznawanie długoterminowych.
-- Wynik rozpoznawania zawiera więcej pól. Są one przesunięcie od początku audio i czas trwania (zarówno w impulsach) rozpoznany tekst i dodatkowe wartości, które reprezentują rozpoznawania stanu, na przykład `InitialSilenceTimeout` i `InitialBabbleTimeout`.
+- `StartContinuousRecognitionAsync()` obsługuje długotrwałe rozpoznawanie.
+- Wynik rozpoznawania zawiera więcej pól. Są one przesunięte od początku i czasu trwania (w taktach) rozpoznanego tekstu oraz wartości dodatkowych reprezentujących stan rozpoznawania, na przykład `InitialSilenceTimeout` i `InitialBabbleTimeout`.
 - Obsługa tworzenia wystąpienia fabryki AuthorizationToken.
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
 - Zdarzenia rozpoznawania: typ zdarzenia `NoMatch` został scalony w zdarzeniu `Error`.
 - Nazwa SpeechOutputFormat C# w programie została zmieniona na `OutputFormat`, aby C++zachować wyrównanie z.
-- Zwracany typ niektóre metody `AudioInputStream` interfejsu nieznacznie zmienione:
-  - W języku Java `read` metoda teraz zwraca `long` zamiast `int`.
-  - W języku C# `Read` metoda teraz zwraca `uint` zamiast `int`.
-  - W języku C++ `Read` i `GetFormat` teraz zwrotu metody `size_t` zamiast `int`.
-- C++: Wystąpienia strumieni dźwiękowych w danych wejściowych teraz może być przekazywany tylko jako `shared_ptr`.
+- Typ zwracany niektórych metod interfejsu `AudioInputStream` zmienił się nieco:
+  - W języku Java Metoda `read` teraz zwraca `long` zamiast `int`.
+  - W C#programie Metoda `Read` teraz zwraca `uint` zamiast `int`.
+  - W C++programie metody `Read` i `GetFormat` teraz zwracają `size_t` zamiast `int`.
+- C++: Wystąpienia strumieni wejściowych audio mogą teraz być przesyłane tylko jako `shared_ptr`.
 
 **Poprawki błędów**
 
-- Naprawiono niepoprawne wartości zwracanych w wyniku podczas `RecognizeAsync()` upłynie limit czasu.
+- Naprawiono nieprawidłowe wartości zwracane w wyniku, gdy `RecognizeAsync()` limit czasu.
 - Usunięto zależność od media foundation bibliotek na Windows. Zestaw SDK używa teraz podstawowe interfejsy API z Audio.
-- Poprawienie dokumentacji: dodano [regionów](regions.md) strony do opisania obsługiwanych regionów.
+- Poprawka do dokumentacji: Dodano stronę [regiony](regions.md) , aby opisać Obsługiwane regiony.
 
 **Znany problem**
 
@@ -459,28 +459,28 @@ W naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples), dodano 
 
 - AudioInputStream
 
-  Aparat rozpoznawania teraz mogą wykorzystywać strumienia jako źródła audio. Aby uzyskać więcej informacji, zobacz powiązane [poradnik](how-to-use-audio-input-streams.md).
+  Aparat rozpoznawania teraz mogą wykorzystywać strumienia jako źródła audio. Aby uzyskać więcej informacji, zobacz temat dotyczący [przewodnika](how-to-use-audio-input-streams.md).
 
 - Format szczegółowych danych wyjściowych
 
-  Po utworzeniu `SpeechRecognizer`, możesz poprosić o `Detailed` lub `Simple` format danych wyjściowych. `DetailedSpeechRecognitionResult` Zawiera współczynnik ufności, rozpoznany tekst, nieprzetworzonej postaci leksykalne, znormalizowana postać i znormalizowana postać z maskowanego wulgaryzmów.
+  Podczas tworzenia `SpeechRecognizer`można zażądać `Detailed` lub `Simple` format wyjściowy. `DetailedSpeechRecognitionResult` zawiera ocenę pewności, rozpoznany tekst, nieprzetworzoną postać leksykalną, znormalizowaną postać i znormalizowaną postać z maską.
 
-**Zmiana powodująca niezgodność**
+**Zmiana podziału**
 
-- Zmieniono na `SpeechRecognitionResult.Text` z `SpeechRecognitionResult.RecognizedText` w języku C#.
+- Zmieniono do `SpeechRecognitionResult.Text` z `SpeechRecognitionResult.RecognizedText` w C#.
 
 **Poprawki błędów**
 
 - Rozwiązano problem z wywołania zwrotnego w warstwie USP podczas zamykania.
 - Jeśli aparat rozpoznawania używany plik audio w wejściowych, jego został utrzymuje dojście do pliku dłużej niż jest to konieczne.
 - Usunięte kilka zakleszczenia między "pompy komunikatów" i aparat rozpoznawania.
-- Ogień `NoMatch` powodować podczas odpowiedź z usługi Przekroczono limit czasu.
+- Wygeneruj `NoMatch` wynik po przekroczeniu limitu czasu odpowiedzi z usługi.
 - Biblioteki foundation multimediów na Windows są ładowane z opóźnieniem. Ta biblioteka jest wymagana do mikrofonu tylko dane wejściowe.
 - Szybkość przekazywania danych audio jest ograniczone do informacje o dwa razy oryginalnego szybkości audio.
 - W Windows zestawy języka C# .NET teraz są silnej nazwy.
-- Poprawienie dokumentacji: `Region` informacja jest wymagana do utworzenia aparat rozpoznawania.
+- Poprawka do dokumentacji: informacje o `Region` są wymagane do utworzenia aparatu rozpoznawania.
 
-Więcej przykładów zostały dodane i są stale aktualizowane. Aby uzyskać najnowszy zestaw przykładów, zobacz [repozytorium GitHub samples zestaw SDK rozpoznawania mowy](https://aka.ms/csspeech/samples).
+Więcej przykładów zostały dodane i są stale aktualizowane. Aby zapoznać się z najnowszym zestawem przykładów, zobacz [repozytorium usługi Speech SDK przykłady](https://aka.ms/csspeech/samples)w witrynie GitHub.
 
 ## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Services cognitive mowy wersji zestawu SDK 0.2.12733: maj 2018 r.
 

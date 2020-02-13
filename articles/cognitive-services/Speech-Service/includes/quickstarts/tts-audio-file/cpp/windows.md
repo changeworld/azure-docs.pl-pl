@@ -1,7 +1,7 @@
 ---
 title: 'Szybki Start: synteza mowy w pliku audio C++ (Windows) — usługa mowy'
 titleSuffix: Azure Cognitive Services
-description: do ustalenia
+description: TBD
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 17e986954e98b7a3c0ea85324afbf77ce1428d68
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8344f83ae032b943479ed313ca2e52bc728d08ab
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468927"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156714"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,7 +35,8 @@ Przed rozpoczęciem upewnij się, że:
    ```C++
 
     // Creates an instance of a speech config with specified subscription key and service region.
-    // Replace with your own subscription key and service region (e.g., "westus").
+    // Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
+    // from here: https://aka.ms/speech/sdkregion).
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
     // Creates a speech synthesizer using file as audio output.
@@ -93,7 +94,7 @@ Przed rozpoczęciem upewnij się, że:
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Tworzenie niestandardowego głosu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [Rejestruj niestandardowe przykłady głosu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

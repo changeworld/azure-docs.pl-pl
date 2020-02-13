@@ -8,39 +8,35 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/11/2020
+ms.openlocfilehash: b6147e45ca686328b1702faa5a8d50d9a75e50d6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466519"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157843"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Zarządzanie usługą Wyszukiwanie poznawcze platformy Azure przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
-> * [Program PowerShell](search-manage-powershell.md)
+> * [PowerShell](search-manage-powershell.md)
 > * [Interfejs API REST](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [Zestaw SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * > [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0) 
 
-Polecenia cmdlet programu PowerShell i skrypty w systemie Windows, Linux lub [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) można uruchomić w celu utworzenia i skonfigurowania usługi Azure wyszukiwanie poznawcze. Moduł **AZ. Search** rozszerza Azure PowerShell] z pełną parzystością do [interfejsów API REST usługi Azure wyszukiwanie poznawcze Management](https://docs.microsoft.com/rest/api/searchmanagement). Za pomocą Azure PowerShell i **AZ. Search**można wykonać następujące zadania:
+Polecenia cmdlet programu PowerShell i skrypty w systemie Windows, Linux lub [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) można uruchomić w celu utworzenia i skonfigurowania usługi Azure wyszukiwanie poznawcze. Moduł **AZ. Search** rozszerza [Azure PowerShell](https://docs.microsoft.com/powershell/) z pełną parzystością do [interfejsów API REST zarządzania wyszukiwaniem](https://docs.microsoft.com/rest/api/searchmanagement) i umożliwia wykonywanie następujących zadań:
 
 > [!div class="checklist"]
-> * [Wyświetl listę wszystkich usług wyszukiwania w ramach subskrypcji](#list-search-services)
-> * [Uzyskaj informacje dotyczące określonej usługi wyszukiwania](#get-search-service-information)
+> * [Wyświetlanie listy usług wyszukiwania w ramach subskrypcji](#list-search-services)
+> * [Informacje o usłudze zwracanej](#get-search-service-information)
 > * [Tworzenie lub usuwanie usługi](#create-or-delete-a-service)
 > * [Ponowne generowanie kluczy interfejsu API administratora](#regenerate-admin-keys)
 > * [Utwórz lub Usuń zapytanie API-Keys](#create-or-delete-query-keys)
-> * [Skalowanie usługi przez zwiększenie lub zmniejszenie replik i partycji](#scale-replicas-and-partitions)
+> * [Skalowanie w górę lub w dół przy użyciu replik i partycji](#scale-replicas-and-partitions)
 
-Nie można użyć programu PowerShell do zmiany nazwy, regionu lub warstwy usługi. Dedykowane zasoby są przydzielane podczas tworzenia usługi. Zmiana podstawowego sprzętu (lokalizacji lub typu węzła) wymaga nowej usługi. Nie ma narzędzi ani interfejsów API do przesyłania zawartości z jednej usługi do innej. Wszystkie zarządzanie zawartością odbywa się za pomocą interfejsów API [rest](https://docs.microsoft.com/rest/api/searchservice/) lub [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) , a jeśli chcesz przenieść indeksy, konieczne będzie ich ponowne utworzenie i ponowne załadowanie w nowej usłudze. 
+Czasami pytania są zadawane o zadaniach, których *nie* ma na powyższej liście. Obecnie nie można używać modułu **AZ. Search** ani interfejsu API REST zarządzania w celu zmiany nazwy serwera, regionu lub warstwy. Dedykowane zasoby są przydzielane podczas tworzenia usługi. W związku z tym zmiana podstawowego sprzętu (lokalizacji lub typu węzła) wymaga nowej usługi. Podobnie nie ma narzędzi ani interfejsów API do przesyłania zawartości, takich jak indeks, z jednej usługi do innej.
 
-Chociaż nie ma żadnych dedykowanych poleceń programu PowerShell do zarządzania zawartością, można napisać skrypt programu PowerShell, który wywołuje REST lub platformę .NET w celu utworzenia i załadowania indeksów. Moduł **AZ. Search** nie udostępnia tych operacji.
-
-Inne zadania nieobsługiwane za poorednictwem programu PowerShell lub dowolnego innego interfejsu API (tylko Portal) obejmują:
-+ [Dołącz zasób usługi poznawczej](cognitive-search-attach-cognitive-services.md) do plików [indeksowanych wzbogaconych od AI](cognitive-search-concept-intro.md). Usługa poznawczej jest dołączona do zestawu umiejętności, a nie do subskrypcji ani usługi.
-+ [Rozwiązania do monitorowania rozwiązań](search-monitor-usage.md#add-on-monitoring-solutions) na potrzeby monitorowania wyszukiwanie poznawcze platformy Azure.
+W ramach usługi Tworzenie zawartości i zarządzanie nią odbywa się za [Search Service pomocą interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/) lub [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search). Chociaż nie ma żadnych dedykowanych poleceń programu PowerShell dla zawartości, można napisać skrypt programu PowerShell, który wywołuje interfejsy API REST lub .NET do tworzenia i ładowania indeksów.
 
 <a name="check-versions-and-load"></a>
 
@@ -92,7 +88,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Wyświetl listę wszystkich usług Wyszukiwanie poznawcze platformy Azure w ramach subskrypcji
+## <a name="list-services-in-a-subscription"></a>Wyświetlanie listy usług w ramach subskrypcji
 
 Następujące polecenia pochodzą z [**AZ. resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), zwracając informacje o istniejących zasobach i usługach, które zostały już zainicjowane w ramach subskrypcji. Jeśli nie wiesz, ile usług wyszukiwania zostało już utworzonych, te polecenia zwracają te informacje, co umożliwia zapisanie podróży do portalu.
 

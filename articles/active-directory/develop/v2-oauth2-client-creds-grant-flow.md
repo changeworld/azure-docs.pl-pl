@@ -17,16 +17,14 @@ ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ebdebd48710e892ec8f1a96eeba0f91228024420
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4bf6d777662ad1ba4843d6e650dfd3a6a357822f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700536"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159764"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform i przepływ poświadczeń klienta OAuth 2,0
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 W celu uzyskania dostępu do zasobów hostowanych przez sieć Web przy użyciu tożsamości aplikacji można użyć przyznanych [poświadczeń klienta oauth 2,0](https://tools.ietf.org/html/rfc6749#section-4.4) *, które*określono w dokumencie RFC 6749. Ten typ dotacji jest często używany w przypadku interakcji między serwerami, które muszą działać w tle bez natychmiastowej interakcji z użytkownikiem. Te typy aplikacji są często określane jako *demony* lub *konta usług*.
 
@@ -69,7 +67,7 @@ Zamiast używać list ACL, można użyć interfejsów API, aby uwidocznić zesta
 * Odczytaj pocztę we wszystkich skrzynkach pocztowych
 * Odczytuj i zapisuj wiadomości e-mail we wszystkich skrzynkach pocztowych
 * Wyślij wiadomość e-mail jako dowolny użytkownik
-* Odczytywanie danych katalogu
+* Odczyt danych katalogu
 
 Aby uzyskać więcej informacji o uprawnieniach aplikacji, przejdź do [Microsoft Graph](https://developer.microsoft.com/graph).
 
@@ -119,9 +117,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagane | Dzierżawa katalogu, z której chcesz zażądać uprawnień. Może to być w formacie identyfikatora GUID lub przyjaznej nazwy. Jeśli nie wiesz, do której dzierżawy należy użytkownik i chcesz zezwolić im na logowanie się przy użyciu dowolnej dzierżawy, użyj `common`. |
-| `client_id` | Wymagane | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
-| `redirect_uri` | Wymagane | Identyfikator URI przekierowania, w którym odpowiedź ma być wysyłana przez aplikację do obsługi. Musi on dokładnie pasować do jednego z identyfikatorów URI przekierowania zarejestrowanych w portalu, z tą różnicą, że musi być zakodowany w adresie URL i może zawierać dodatkowe segmenty ścieżki. |
+| `tenant` | Wymagany | Dzierżawa katalogu, z której chcesz zażądać uprawnień. Może to być w formacie identyfikatora GUID lub przyjaznej nazwy. Jeśli nie wiesz, do której dzierżawy należy użytkownik i chcesz zezwolić im na logowanie się przy użyciu dowolnej dzierżawy, użyj `common`. |
+| `client_id` | Wymagany | **Identyfikator aplikacji (klienta)** , który [Azure Portal — rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) środowisko przypisane do aplikacji. |
+| `redirect_uri` | Wymagany | Identyfikator URI przekierowania, w którym odpowiedź ma być wysyłana przez aplikację do obsługi. Musi on dokładnie pasować do jednego z identyfikatorów URI przekierowania zarejestrowanych w portalu, z tą różnicą, że musi być zakodowany w adresie URL i może zawierać dodatkowe segmenty ścieżki. |
 | `state` | Zalecane | Wartość, która jest zawarta w żądaniu, która jest również zwracana w odpowiedzi tokenu. Może to być ciąg dowolnej zawartości. Ten stan jest używany do kodowania informacji o stanie użytkownika w aplikacji przed wystąpieniem żądania uwierzytelnienia, takiego jak strona lub widok. |
 
 W tym momencie usługa Azure AD wymusza, że tylko administrator dzierżawy może zalogować się w celu ukończenia żądania. Administrator zostanie poproszony o zatwierdzenie wszystkich uprawnień aplikacji bezpośrednich żądanych dla aplikacji w portalu rejestracji aplikacji.
@@ -182,11 +180,11 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagane | Dzierżawca katalogu, w którym aplikacja planuje działać, w formacie GUID lub nazwa domeny. |
-| `client_id` | Wymagane | Identyfikator aplikacji przypisany do aplikacji. Te informacje można znaleźć w portalu, w którym zarejestrowano aplikację. |
-| `scope` | Wymagane | Wartość przekazaną dla parametru `scope` w tym żądaniu powinna być identyfikatorem zasobu (identyfikatorem URI aplikacji), który ma zostać umieszczony przy użyciu sufiksu `.default`. Na przykład Microsoft Graph wartość jest `https://graph.microsoft.com/.default`. <br/>Ta wartość informuje punkt końcowy platformy tożsamości firmy Microsoft o wszystkich bezpośrednich uprawnieniach aplikacji skonfigurowanych dla aplikacji, dlatego punkt końcowy powinien wydać token skojarzony z zasobem, którego chcesz użyć. Aby dowiedzieć się więcej na temat zakresu `/.default`, zapoznaj się z [dokumentacją dotyczącą zgody](v2-permissions-and-consent.md#the-default-scope). |
-| `client_secret` | Wymagane | Wpis tajny klienta wygenerowany dla aplikacji w portalu rejestracji aplikacji. Wpis tajny klienta musi być zakodowany przy użyciu adresu URL przed wysłaniem. |
-| `grant_type` | Wymagane | Musi być równa `client_credentials`. |
+| `tenant` | Wymagany | Dzierżawca katalogu, w którym aplikacja planuje działać, w formacie GUID lub nazwa domeny. |
+| `client_id` | Wymagany | Identyfikator aplikacji przypisany do aplikacji. Te informacje można znaleźć w portalu, w którym zarejestrowano aplikację. |
+| `scope` | Wymagany | Wartość przekazaną dla parametru `scope` w tym żądaniu powinna być identyfikatorem zasobu (identyfikatorem URI aplikacji), który ma zostać umieszczony przy użyciu sufiksu `.default`. Na przykład Microsoft Graph wartość jest `https://graph.microsoft.com/.default`. <br/>Ta wartość informuje punkt końcowy platformy tożsamości firmy Microsoft o wszystkich bezpośrednich uprawnieniach aplikacji skonfigurowanych dla aplikacji, dlatego punkt końcowy powinien wydać token skojarzony z zasobem, którego chcesz użyć. Aby dowiedzieć się więcej na temat zakresu `/.default`, zapoznaj się z [dokumentacją dotyczącą zgody](v2-permissions-and-consent.md#the-default-scope). |
+| `client_secret` | Wymagany | Wpis tajny klienta wygenerowany dla aplikacji w portalu rejestracji aplikacji. Wpis tajny klienta musi być zakodowany przy użyciu adresu URL przed wysłaniem. |
+| `grant_type` | Wymagany | musi być ustawiony na `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: żądanie tokenu dostępu z certyfikatem
 
@@ -204,12 +202,12 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagane | Dzierżawca katalogu, w którym aplikacja planuje działać, w formacie GUID lub nazwa domeny. |
-| `client_id` | Wymagane |Identyfikator aplikacji (klienta) przypisany do aplikacji. |
-| `scope` | Wymagane | Wartość przekazaną dla parametru `scope` w tym żądaniu powinna być identyfikatorem zasobu (identyfikatorem URI aplikacji), który ma zostać umieszczony przy użyciu sufiksu `.default`. Na przykład Microsoft Graph wartość jest `https://graph.microsoft.com/.default`. <br/>Ta wartość informuje punkt końcowy platformy tożsamości firmy Microsoft o wszystkich bezpośrednich uprawnieniach aplikacji skonfigurowanych dla aplikacji, co powinno wydać token dla skojarzonych z zasobem, który ma być używany. Aby dowiedzieć się więcej na temat zakresu `/.default`, zapoznaj się z [dokumentacją dotyczącą zgody](v2-permissions-and-consent.md#the-default-scope). |
-| `client_assertion_type` | Wymagane | Wartość musi być ustawiona na `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
-| `client_assertion` | Wymagane | Potwierdzenie (token sieci Web JSON), które należy utworzyć i podpisać przy użyciu certyfikatu zarejestrowanego jako poświadczenia dla aplikacji. Przeczytaj informacje o [poświadczeniach certyfikatów](active-directory-certificate-credentials.md) , aby dowiedzieć się, jak zarejestrować certyfikat i format potwierdzenia.|
-| `grant_type` | Wymagane | Musi być równa `client_credentials`. |
+| `tenant` | Wymagany | Dzierżawca katalogu, w którym aplikacja planuje działać, w formacie GUID lub nazwa domeny. |
+| `client_id` | Wymagany |Identyfikator aplikacji (klienta) przypisany do aplikacji. |
+| `scope` | Wymagany | Wartość przekazaną dla parametru `scope` w tym żądaniu powinna być identyfikatorem zasobu (identyfikatorem URI aplikacji), który ma zostać umieszczony przy użyciu sufiksu `.default`. Na przykład Microsoft Graph wartość jest `https://graph.microsoft.com/.default`. <br/>Ta wartość informuje punkt końcowy platformy tożsamości firmy Microsoft o wszystkich bezpośrednich uprawnieniach aplikacji skonfigurowanych dla aplikacji, co powinno wydać token dla skojarzonych z zasobem, który ma być używany. Aby dowiedzieć się więcej na temat zakresu `/.default`, zapoznaj się z [dokumentacją dotyczącą zgody](v2-permissions-and-consent.md#the-default-scope). |
+| `client_assertion_type` | Wymagany | Wartość musi być ustawiona na `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion` | Wymagany | Potwierdzenie (token sieci Web JSON), które należy utworzyć i podpisać przy użyciu certyfikatu zarejestrowanego jako poświadczenia dla aplikacji. Przeczytaj informacje o [poświadczeniach certyfikatów](active-directory-certificate-credentials.md) , aby dowiedzieć się, jak zarejestrować certyfikat i format potwierdzenia.|
+| `grant_type` | Wymagany | musi być ustawiony na `client_credentials`. |
 
 Zwróć uwagę, że parametry są prawie takie same, jak w przypadku żądania przez wspólny klucz tajny, z tą różnicą, że parametr client_secret jest zastępowany przez dwa parametry: client_assertion_type i client_assertion.
 
@@ -279,7 +277,7 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph
 
 Przeczytaj [dokumentację dotyczącą przeglądu poświadczeń klienta](https://aka.ms/msal-net-client-credentials) w bibliotece uwierzytelniania firmy Microsoft
 
-| Przykład | Platforma |Opis |
+| Sample | Platforma |Opis |
 |--------|----------|------------|
 |[Active-Directory-dotnetcore-demon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | Konsola programu .NET Core 2,1 | Prosta aplikacja platformy .NET Core, która wyświetla użytkowników dzierżawcy wykonujących zapytania dotyczące Microsoft Graph przy użyciu tożsamości aplikacji, a nie w imieniu użytkownika. Przykład ilustruje również zmiany przy użyciu certyfikatów do uwierzytelniania. |
-|[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Aplikacja sieci Web, która synchronizuje dane z Microsoft Graph przy użyciu tożsamości aplikacji, a nie w imieniu użytkownika. |
+|[Active-Directory-dotnet-demon — wersja 2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Aplikacja sieci Web, która synchronizuje dane z Microsoft Graph przy użyciu tożsamości aplikacji, a nie w imieniu użytkownika. |

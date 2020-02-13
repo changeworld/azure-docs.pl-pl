@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639875"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161940"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionalne odzyskiwanie po awarii dla klastrów Azure Databricks
 
@@ -37,7 +37,7 @@ Aby utworzyć własną regionalną topologię odzyskiwania po awarii, wykonaj na
 
    1. Udostępnianie wielu obszarów roboczych Azure Databricks w oddzielnych regionach świadczenia usługi Azure. Na przykład Utwórz podstawowy obszar roboczy Azure Databricks w regionie Wschodnie stany USA 2. Utwórz pomocniczy obszar roboczy Azure Databricks odzyskiwania po awarii w osobnym regionie, takim jak zachodnie stany USA.
 
-   2. Używaj [magazynu geograficznie nadmiarowego](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage). Dane skojarzone Azure Databricks są domyślnie przechowywane w usłudze Azure Storage. Wyniki zadań z datakostki są również przechowywane w usłudze Azure Blob Storage, aby przetworzone dane były trwałe i pozostawały wysoce dostępne po zakończeniu pracy z klastrem. Ponieważ klaster magazynu i magazynów danych znajduje się na tym samym miejscu, należy użyć magazynu geograficznie nadmiarowego, aby umożliwić dostęp do danych w regionie pomocniczym, jeśli region podstawowy nie jest już dostępny.
+   2. Używaj [magazynu geograficznie nadmiarowego](../storage/common/storage-redundancy.md). Dane skojarzone Azure Databricks są domyślnie przechowywane w usłudze Azure Storage. Wyniki zadań z datakostki są również przechowywane w usłudze Azure Blob Storage, aby przetworzone dane były trwałe i pozostawały wysoce dostępne po zakończeniu pracy z klastrem. Ponieważ klaster magazynu i magazynów danych znajduje się na tym samym miejscu, należy użyć magazynu geograficznie nadmiarowego, aby umożliwić dostęp do danych w regionie pomocniczym, jeśli region podstawowy nie jest już dostępny.
 
    3. Po utworzeniu regionu pomocniczego należy przeprowadzić migrację użytkowników, folderów użytkowników, notesów, konfiguracji klastra, konfiguracji zadań, bibliotek, magazynu, skryptów init i ponownie skonfigurować kontrolę dostępu. Dodatkowe szczegóły zostały opisane w poniższej sekcji.
 

@@ -7,27 +7,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8240b1a01aa39e53b9ae41f73543ccf9774290b2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512916"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161753"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Wykonywanie zapytań dotyczących danych w Azure Data Lake przy użyciu usługi Azure Eksplorator danych
 
-Azure Data Lake Storage to wysoce skalowalne i ekonomiczne rozwiązanie usługi Data Lake do analizy danych Big Data. Połączono w niej wysoce wydajny system plików z ogromną skalą i przystępnością cenową, aby przyspieszyć uzyskiwanie szczegółowych informacji. Usługa Data Lake Storage 2. generacji rozszerza możliwości usługi Azure Blob Storage i jest zoptymalizowana pod kątem obciążeń analitycznych.
+Azure Data Lake Storage to wysoce skalowalne i ekonomiczne rozwiązanie usługi Data Lake do analizy danych Big Data. Łączy on moc systemu plików o wysokiej wydajności z ogromną skalą i oszczędnością, aby pomóc w skróceniu czasu do wglądu w szczegółowe dane. Data Lake Storage Gen2 rozszerza możliwości platformy Azure Blob Storage i jest zoptymalizowany pod kątem obciążeń analitycznych.
  
-Platforma Azure Eksplorator danych integruje się z usługą Azure Blob Storage i Azure Data Lake Storage Gen2, zapewniając szybki, buforowany i indeksowany dostęp do danych w usłudze Lake. Można analizować i wysyłać zapytania dotyczące danych w usłudze Lake bez wcześniejszego pozyskiwania do Eksplorator danych platformy Azure. Możesz również wykonywać zapytania na wyzyskanych i nieprzezyskanych natywnych danych Lake.  
+Platforma Azure Eksplorator danych integruje się z platformą Azure Blob Storage i Azure Data Lake Storage (Gen1 i Gen2), zapewniając szybki, buforowany i indeksowany dostęp do danych w usłudze Lake. Można analizować i wysyłać zapytania dotyczące danych w usłudze Lake bez wcześniejszego pozyskiwania do Eksplorator danych platformy Azure. Możesz również wykonywać zapytania na wyzyskanych i nieprzezyskanych natywnych danych Lake.  
 
 > [!TIP]
-> Najlepsza wydajność zapytań wymaga pozyskiwania danych na platformie Azure Eksplorator danych. Możliwość wykonywania zapytań dotyczących danych w Azure Data Lake Storage Gen2 bez wcześniejszego pozyskiwania powinna być używana tylko w przypadku danych historycznych lub danych, które są rzadko wysyłane zapytania. [Zoptymalizuj wydajność zapytań na Lake,](#optimize-your-query-performance) Aby uzyskać najlepsze wyniki.
+> Najlepsza wydajność zapytań wymaga pozyskiwania danych na platformie Azure Eksplorator danych. Możliwość wykonywania zapytań o dane zewnętrzne bez wcześniejszego pozyskiwania powinna być używana tylko w przypadku danych historycznych lub danych, które są rzadko wysyłane zapytania. [Zoptymalizuj wydajność zapytań na Lake,](#optimize-your-query-performance) Aby uzyskać najlepsze wyniki.
  
 
 ## <a name="create-an-external-table"></a>Tworzenie tabeli zewnętrznej
 
  > [!NOTE]
- > Obecnie obsługiwane konta magazynu to Azure Blob Storage lub Azure Data Lake Storage Gen2. Obecnie obsługiwane są formaty danych JSON, CSV, TSV i txt.
+ > Obecnie obsługiwane konta magazynu to Azure Blob Storage lub Azure Data Lake Storage (Gen1 i Gen2).
 
 1. Użyj `.create external table` polecenie, aby utworzyć tabelę zewnętrzną w usłudze Azure Eksplorator danych. Dodatkowe polecenia tabeli zewnętrznej, takie jak `.show`, `.drop`i `.alter` są udokumentowane w [poleceniach tabeli zewnętrznej](/azure/kusto/management/externaltables).
 
@@ -46,6 +46,7 @@ Platforma Azure Eksplorator danych integruje się z usługą Azure Blob Storage 
     > * Podczas definiowania tabeli zewnętrznej z partycjami, struktura magazynu powinna być taka sama.
 Na przykład jeśli tabela jest zdefiniowana z partycją DateTime w formacie RRRR/MM/DD (domyślnie), ścieżka pliku magazynu URI powinna mieć wartość *container1/rrrr/mm/dd/all_exported_blobs*. 
     > * Jeśli tabela zewnętrzna jest podzielona na partycje przez kolumnę datetime, zawsze Uwzględnij filtr czasu dla zamkniętego zakresu w zapytaniu (na przykład zapytanie-`ArchivedProducts | where Timestamp between (ago(1h) .. 10m)`-powinno działać lepiej niż ten (otwarty zakres) jeden `ArchivedProducts | where Timestamp > ago(1h)`). 
+    > * Wszystkie [obsługiwane formaty](ingest-data-overview.md#supported-data-formats) pozyskiwania można zbadać przy użyciu tabel zewnętrznych.
 
 1. Tabela zewnętrzna jest widoczna w lewym okienku interfejsu użytkownika sieci Web
 

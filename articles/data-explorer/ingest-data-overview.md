@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
-ms.translationtype: MT
+ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091796"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157248"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych Eksplorator danych platformy Azure
 
@@ -90,7 +90,7 @@ Kusto oferuje zestaw SDK klienta, który może służyć do pozyskiwania i wykon
 
 | Metoda | Opóźnienie |
 | --- | --- |
-| **Pozyskiwanie wbudowane** | Natychmiastowe |
+| **Pozyskiwanie wbudowane** | Pośredni |
 | **Pozyskiwanie z zapytania** | Czas wykonywania zapytania + czas przetwarzania |
 | **Pozyskiwanie z magazynu** | Czas pobierania + czas przetwarzania |
 | **Przyjmowanie w kolejce** | Przetwarzanie wsadowe + czas przetwarzania |
@@ -118,7 +118,7 @@ W przypadku organizacji z istniejącą infrastrukturą opartą na usłudze obsł
 ## <a name="supported-data-formats"></a>Obsługiwane formaty danych
 
 W przypadku wszystkich metod pozyskiwania innych niż pozyskiwanie z kwerendy sformatuj dane, aby usługa Azure Eksplorator danych mogła ją przeanalizować. 
-* Obsługiwane formaty danych to: TXT, CSV, TSV, TSVE, PSV, SCSV, raport o kondycji, JSON (rozdzielone wierszami, wiele wierszy), Avro i Parquet. 
+* Obsługiwane formaty danych to: TXT, CSV, TSV, TSVE, PSV, SCSV, raport o kondycji, JSON (rozdzielone wierszami, wiele wierszy), Avro, Orc i Parquet. 
 * Obsługuje kompresję ZIP i GZIP.
 
 > [!NOTE]
@@ -129,7 +129,7 @@ W przypadku wszystkich metod pozyskiwania innych niż pozyskiwanie z kwerendy sf
 * Efektywne zasady przechowywania danych uzyskanych pochodzą z zasad przechowywania bazy danych. Aby uzyskać szczegółowe informacje, zobacz [zasady przechowywania](/azure/kusto/concepts/retentionpolicy) . Pozyskiwanie danych wymaga uprawnień do pozyskiwania **tabel** lub pozyskiwania **baz danych** .
 * Pozyskiwanie obsługuje maksymalny rozmiar pliku wynoszący 5 GB. Zaleca się pozyskiwanie plików z zakresu od 100 MB do 1 GB.
 
-## <a name="schema-mapping"></a>mapowanie schematu
+## <a name="schema-mapping"></a>Mapowanie schematu
 
 Mapowanie schematu pomaga powiązać pola danych źródłowych z kolumnami tabeli docelowej.
 

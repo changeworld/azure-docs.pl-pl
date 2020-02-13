@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c43f1fe0d5850b53f0f72f05633e498a94d871c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149308"
+ms.locfileid: "77166452"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Samouczek: zbiorcze Zapraszanie użytkowników współpracy B2B usługi Azure AD (wersja zapoznawcza)
 
@@ -27,7 +27,7 @@ ms.locfileid: "77149308"
 
 > [!NOTE]
 > Od 12/22/2019 funkcja zbiorczych zaproszonych użytkowników (wersja zapoznawcza) została tymczasowo wyłączona.
-> Nie ma obecnie znanej daty, gdy ta funkcja zostanie włączona w Azure Portal. Aby zapraszać użytkowników-Gości w sposób zbiorczy przy użyciu programu PowerShell, zobacz [kod B2B i przykłady programu PowerShell](code-samples.md).
+> Nie ma obecnie znanej daty, gdy ta funkcja zostanie włączona w Azure Portal. Aby zapraszać użytkowników-Gości w sposób zbiorczy przy użyciu programu PowerShell, zobacz [Samouczek dotyczący zaproszeń zbiorczych B2B](bulk-invite-powershell.md) lub [kod B2B oraz przykłady programu PowerShell](code-samples.md).
 
 Jeśli używasz funkcji współpracy B2B w usłudze Azure Active Directory (Azure AD) do pracy z partnerami zewnętrznymi, możesz równocześnie zapraszać wielu użytkowników-gości do swojej organizacji. W ramach tego samouczka nauczysz się używać Azure Portal do wysyłania zaproszeń zbiorczych do użytkowników zewnętrznych. W szczególności należy wykonać następujące czynności:
 

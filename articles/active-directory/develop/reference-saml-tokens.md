@@ -17,12 +17,12 @@ ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 01ea64a56d43976d319618350e68e03bba775e8e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2eb279d8f5871a0c6738ecc89fb7d01730187564
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702899"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160308"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Odwołanie do tokenu SAML usługi Azure AD
 
@@ -31,9 +31,9 @@ Azure Active Directory (Azure AD) emituje kilka typów tokenów zabezpieczający
 ## <a name="claims-in-saml-tokens"></a>Oświadczenia w tokenach SAML
 
 > [!div class="mx-codeBreakAll"]
-> | Nazwa | Równoważnego odszkodowania JWT | Opis | Przykład |
+> | Name (Nazwa) | Równoważnego odszkodowania JWT | Opis | Przykład |
 > | --- | --- | --- | ------------|
-> |Odbiorcy | `aud` |Zamierzony odbiorca tokenu. Aplikacja, która otrzymuje token musi sprawdzić, czy wartość odbiorców jest poprawna i odrzucać tokeny przeznaczone dla różnych odbiorców. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
+> |Grupy odbiorców | `aud` |Zamierzony odbiorca tokenu. Aplikacja, która otrzymuje token musi sprawdzić, czy wartość odbiorców jest poprawna i odrzucać tokeny przeznaczone dla różnych odbiorców. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | Błyskawiczne uwierzytelnianie | |Rejestruje datę i godzinę wystąpienia uwierzytelniania. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
 > |Metoda uwierzytelniania | `amr` |Określa sposób uwierzytelniania podmiotu tokenu. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |Imię | `given_name` |Zawiera imię i nazwisko użytkownika, zgodnie z ustawieniem obiektu użytkownika usługi Azure AD. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
@@ -43,10 +43,10 @@ Azure Active Directory (Azure AD) emituje kilka typów tokenów zabezpieczający
 > |IssuedAt | `iat` |Przechowuje czas wystawienia tokenu. Często służy do mierzenia Aktualności tokenu. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Wystawca | `iss` |Identyfikuje usługę tokenu zabezpieczającego (STS), która konstruuje i zwraca token. W tokenach zwracanych przez usługę Azure AD wystawcy jest sts.windows.net. Identyfikator GUID w polu wartość żądania wystawcy jest IDENTYFIKATORem dzierżawy katalogu usługi Azure AD. Identyfikator dzierżawy jest niezmiennym i niezawodnym identyfikatorem katalogu. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |Nazwisko | `family_name` |Zawiera nazwisko, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika usługi Azure AD. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Nazwa | `unique_name` |Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. Ta wartość nie gwarantuje, że jest unikatowa w dzierżawie i jest przeznaczona do użycia tylko w celach wyświetlania. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |Name (Nazwa) | `unique_name` |Udostępnia zrozumiałą wartość identyfikującą podmiot tokenu. Ta wartość nie gwarantuje, że jest unikatowa w dzierżawie i jest przeznaczona do użycia tylko w celach wyświetlania. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |Identyfikator obiektu | `oid` |Zawiera unikatowy identyfikator obiektu w usłudze Azure AD. Ta wartość jest niezmienna i nie można jej ponownie przypisać ani ponownie użyć. Identyfikator obiektu służy do identyfikowania obiektu w zapytaniach do usługi Azure AD. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |Role | `roles` |Reprezentuje wszystkie role aplikacji, których podmiot został przyznany zarówno bezpośrednio, jak i pośrednio za pośrednictwem członkostwa w grupie i może służyć do wymuszania kontroli dostępu opartej na rolach. Role aplikacji są definiowane dla poszczególnych aplikacji, za pomocą właściwości `appRoles` manifestu aplikacji. Właściwość `value` każdej roli aplikacji jest wartością, która pojawia się w ramach żądania role. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
-> |Temat | `sub` |Identyfikuje podmiot zabezpieczeń, w którym token potwierdza informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienna i nie może zostać ponownie przypisana ani ponownie użyta, dlatego może być używana do bezpiecznego wykonywania kontroli autoryzacji. Ponieważ podmiot jest zawsze obecny w tokenach, których dotyczy problem z usługą Azure AD, zalecamy użycie tej wartości w systemie autoryzacji ogólnego przeznaczenia. <br> `SubjectConfirmation` nie jest zgłoszeniem. Opisano sposób weryfikacji tematu tokenu. `Bearer` wskazuje, że podmiot został potwierdzony przez ich posiadanie tokenu. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
+> |Podmiot | `sub` |Identyfikuje podmiot zabezpieczeń, w którym token potwierdza informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienna i nie może zostać ponownie przypisana ani ponownie użyta, dlatego może być używana do bezpiecznego wykonywania kontroli autoryzacji. Ponieważ podmiot jest zawsze obecny w tokenach, których dotyczy problem z usługą Azure AD, zalecamy użycie tej wartości w systemie autoryzacji ogólnego przeznaczenia. <br> `SubjectConfirmation` nie jest zgłoszeniem. Opisano sposób weryfikacji tematu tokenu. `Bearer` wskazuje, że podmiot został potwierdzony przez ich posiadanie tokenu. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |Identyfikator dzierżawy | `tid` |Niezmienny identyfikator, który nie jest wielokrotnego użytku, który identyfikuje dzierżawcę katalogu, który wystawił token. Możesz użyć tej wartości, aby uzyskać dostęp do zasobów katalogu specyficznych dla dzierżawy w aplikacji wielodostępnej. Na przykład możesz użyć tej wartości, aby zidentyfikować dzierżawcę w wywołaniu interfejs API programu Graph. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |Czas życia tokenu | `nbf`, `exp` |Definiuje przedział czasu, przez który token jest prawidłowy. Usługa, która sprawdza poprawność tokenu, powinna sprawdzić, czy bieżąca data jest w okresie istnienia tokenu, w przeciwnym razie należy odrzucić token. Usługa może zezwalać na maksymalnie pięć minut poza zakresem czasu istnienia tokenu, aby uwzględnić różnice w czasie zegara ("pochylenie") między usługą Azure AD i usługami. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 
@@ -157,7 +157,7 @@ Jest to przykład typowego tokenu SAML.
 ## <a name="related-content"></a>Powiązana zawartość
 
 * Aby dowiedzieć się więcej o zarządzaniu zasadami okresu istnienia tokenu za pośrednictwem usługi Azure AD interfejs API programu Graph, zobacz [operacje zasad](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) wykresów usługi Azure AD i [Jednostka zasad](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity).
-* Aby uzyskać więcej informacji i przykładów dotyczących zarządzania zasadami za pomocą poleceń cmdlet programu PowerShell, w tym przykładów, zobacz [konfigurowalne okresy istnienia tokenu w usłudze Azure AD](active-directory-configurable-token-lifetimes.md). 
-* Dodawanie [niestandardowych i opcjonalnych oświadczeń](active-directory-optional-claims.md) do tokenów aplikacji.
+* Aby uzyskać więcej informacji i przykładów dotyczących zarządzania zasadami za pomocą poleceń cmdlet programu PowerShell, w tym przykładów, zobacz [konfigurowalne okresy istnienia tokenu w usłudze Azure AD](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). 
+* Dodawanie [niestandardowych i opcjonalnych oświadczeń](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) do tokenów aplikacji.
 * Użyj logowania jednokrotnego [(SSO) z użyciem protokołu SAML](single-sign-on-saml-protocol.md).
 * Korzystanie z [protokołu SAML logowania](single-sign-out-saml-protocol.md) jednokrotnego na platformie Azure

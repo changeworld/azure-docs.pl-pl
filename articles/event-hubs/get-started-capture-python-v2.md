@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 788fcf15ebd68aae525c2895340f437594c9c58c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906410"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187244"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Przechwytywanie danych Event Hubs w usłudze Azure Storage i odczytywanie ich przy użyciu języka Python (Azure-eventhub w wersji 5)
 
-Centrum zdarzeń można skonfigurować tak, aby dane wysyłane do centrum zdarzeń były przechwytywane na koncie usługi Azure Storage lub w Azure Data Lake Storage. W tym artykule opisano sposób pisania kodu w języku Python w celu wysyłania zdarzeń do centrum zdarzeń i odczytywania przechwyconych danych z usługi Azure Blob Storage. Aby uzyskać więcej informacji na temat tej funkcji, zobacz [Omówienie funkcji przechwytywania Event Hubs](event-hubs-capture-overview.md).
+Centrum zdarzeń można skonfigurować w taki sposób, aby dane wysyłane do centrum zdarzeń były przechwytywane na koncie usługi Azure Storage lub Azure Data Lake Storage generacji 1 lub Gen 2. W tym artykule opisano sposób pisania kodu w języku Python w celu wysyłania zdarzeń do centrum zdarzeń i odczytywania przechwyconych danych z **usługi Azure Blob Storage**. Aby uzyskać więcej informacji na temat tej funkcji, zobacz [Omówienie funkcji przechwytywania Event Hubs](event-hubs-capture-overview.md).
 
 Ten przewodnik Szybki Start używa [zestawu Azure Python SDK](https://azure.microsoft.com/develop/python/) do zademonstrowania funkcji przechwytywania. Aplikacja *Sender.py* wysyła symulowane dane telemetryczne środowiska do centrów zdarzeń w formacie JSON. Centrum zdarzeń jest skonfigurowany do używania funkcji przechwytywania do zapisywania tych danych do magazynu obiektów Blob w partiach. Aplikacja *capturereader.py* odczytuje te obiekty blob i tworzy plik dołączany dla każdego urządzenia. Następnie aplikacja zapisuje dane w plikach CSV.
 
@@ -55,7 +55,7 @@ W ramach tego przewodnika Szybki start wykonasz następujące czynności:
 W tej sekcji utworzysz skrypt języka Python, który wysyła zdarzenia 200 (10 urządzeń * 20 zdarzeń) do centrum zdarzeń. Te zdarzenia są przykładowym odczytywaniem w środowisku, który jest wysyłany w formacie JSON. 
 
 1. Otwórz swój ulubiony Edytor Python, taki jak [Visual Studio Code][Visual Studio Code].
-2. Tworzenie skryptu o nazwie *sender.py*. 
+2. Utwórz skrypt o nazwie *Sender.py*. 
 3. Wklej poniższy kod do *Sender.py*. 
    
     ```python

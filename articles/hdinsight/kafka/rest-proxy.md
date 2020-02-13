@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b53fc3af71ce872c9ca9f513139c8179fd4165ed
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bc6859d29a574cea0d97989977ba9a333b20f6c4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031411"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157141"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Korzystanie z klastrów Apache Kafka w usłudze Azure HDInsight przy użyciu serwera proxy REST
 
@@ -24,6 +24,8 @@ Serwer proxy REST Kafka umożliwia współdziałanie z klastrem Kafka za pośred
 
 Bez serwera proxy REST Kafka klienci muszą znajdować się w tej samej sieci wirtualnej co klaster Kafka lub w równorzędnej sieci wirtualnej. Serwer proxy REST umożliwia łączenie się z producentami danych lub konsumentami znajdującymi się w dowolnym miejscu. Wdrożenie serwera proxy REST tworzy nowy Publiczny punkt końcowy dla klastra, który można znaleźć w ustawieniach portalu.
 
+![Architektura serwera proxy REST Kafka](./media/rest-proxy/rest-proxy-architecture.png)
+
 Pełną specyfikację operacji obsługiwanych przez interfejs API można znaleźć w temacie [Apache KAFKA API REST proxy](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
 
 ### <a name="security"></a>Bezpieczeństwo
@@ -32,7 +34,7 @@ Dostęp do serwera proxy REST Kafka jest zarządzany przy użyciu grup zabezpiec
 
 Podczas tworzenia klastra Kafka z włączonym serwerem proxy REST zostanie podaną grupę zabezpieczeń usługi AAD, która powinna mieć dostęp do punktu końcowego REST. Klienci Kafka (aplikacje), którzy muszą mieć dostęp do serwera proxy REST, powinny być zarejestrowani do tej grupy przez właściciela grupy. Właściciel grupy może to zrobić za pośrednictwem portalu lub za pomocą programu PowerShell.
 
-Przed przekazaniem żądań do punktu końcowego serwera proxy REST aplikacja kliencka powinna uzyskać token OAuth w celu zweryfikowania członkostwa odpowiednich grup zabezpieczeń. Aby uzyskać więcej informacji na temat działania tokenów OAuth, zobacz [Autoryzuj dostęp do aplikacji sieci web Azure Active Directory przy użyciu przepływu przyznawania kodu OAuth 2,0](../../active-directory/develop/v1-protocols-oauth-code.md). Aby zapoznać się z przykładem pobierania tokenu OAuth w języku Python, zobacz [przykład aplikacji klienckiej](#client-application-sample)
+Przed przekazaniem żądań do punktu końcowego serwera proxy REST aplikacja kliencka powinna uzyskać token OAuth w celu zweryfikowania członkostwa odpowiednich grup zabezpieczeń. Aby uzyskać więcej informacji na temat działania tokenów OAuth, zobacz [Autoryzuj dostęp do aplikacji sieci web Azure Active Directory przy użyciu przepływu przyznawania kodu OAuth 2,0](../../active-directory/azuread-dev/v1-protocols-oauth-code.md). Aby zapoznać się z przykładem pobierania tokenu OAuth w języku Python, zobacz [przykład aplikacji klienckiej](#client-application-sample)
 
 Gdy aplikacja kliencka ma token OAuth, musi przekazać ten token w żądaniu HTTP wprowadzonym do serwera proxy REST.
 

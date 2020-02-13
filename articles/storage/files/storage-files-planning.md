@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062867"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157225"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -93,7 +93,7 @@ Jeśli chcesz dowiedzieć się, jak utworzyć udział plików w warstwie Premium
 Obecnie nie można bezpośrednio konwertować między standardowym udziałem plików a udziałem plików w warstwie Premium. Jeśli chcesz przełączyć się do jednej z warstw, musisz utworzyć nowy udział plików w tej warstwie i ręcznie skopiować dane z oryginalnego udziału do utworzonego nowego udziału. Można to zrobić przy użyciu dowolnego Azure Files obsługiwanych narzędzi do kopiowania, takich jak Robocopy lub AzCopy.
 
 > [!IMPORTANT]
-> Udziały plików w warstwie Premium są dostępne z LRS w większości regionów, które oferują konta magazynu i ZRS w mniejszych podzestawach regionów. Aby dowiedzieć się, czy w Twoim regionie są obecnie dostępne udziały plików w warstwie Premium, zobacz stronę [dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=storage) na platformie Azure. Aby dowiedzieć się, które regiony obsługują ZRS, zobacz [zasięg pomocy technicznej i dostępność regionalna](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
+> Udziały plików w warstwie Premium są dostępne z LRS w większości regionów, które oferują konta magazynu i ZRS w mniejszych podzestawach regionów. Aby dowiedzieć się, czy w Twoim regionie są obecnie dostępne udziały plików w warstwie Premium, zobacz stronę [dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=storage) na platformie Azure. Aby uzyskać informacje na temat regionów, które obsługują ZRS, zobacz [nadmiarowość usługi Azure Storage](../common/storage-redundancy.md).
 >
 > Aby ułatwić nam określanie priorytetów nowych regionów i funkcji warstwy Premium, Wypełnij tę [ankietę](https://aka.ms/pfsfeedback).
 
@@ -155,41 +155,14 @@ Nowe udziały plików zaczynają się od pełnej liczby kredytów w swoim zasobn
 
 ## <a name="file-share-redundancy"></a>Nadmiarowość udziałów plików
 
-Azure Files udziały standardowe obsługują cztery opcje nadmiarowości danych: Magazyn lokalnie nadmiarowy (LRS), magazyn strefowo nadmiarowy (ZRS), magazyn Geograficznie nadmiarowy (GRS) i magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza).
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Azure Files udziały w warstwie Premium obsługują zarówno LRS, jak i ZRS, ZRS jest obecnie dostępne w mniejszych podzestawie regionów.
-
-W poniższych sekcjach opisano różnice między różnymi opcjami nadmiarowości:
-
-### <a name="locally-redundant-storage"></a>Magazyn lokalnie nadmiarowy
-
-[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
-
-### <a name="zone-redundant-storage"></a>Magazyn strefowo nadmiarowy
-
-[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
-
-### <a name="geo-redundant-storage"></a>Magazyn geograficznie nadmiarowy
+W przypadku wybrania opcji magazyn Geograficznie nadmiarowy do odczytu (RA-GRS) należy wiedzieć, że usługa Azure File nie obsługuje magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS) w dowolnym regionie. Udziały plików na koncie magazynu RA-GRS działają tak samo jak w przypadku kont GRS i są obciążane cenami GRS.
 
 > [!Warning]  
 > Jeśli używasz udziału plików platformy Azure jako punktu końcowego w chmurze na koncie magazynu GRS, nie należy inicjować trybu failover dla konta magazynu. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych. W przypadku utraty regionu platformy Azure firma Microsoft będzie wyzwalać tryb failover na koncie magazynu w sposób zgodny z Azure File Sync.
 
-Magazyn Geograficznie nadmiarowy (GRS) został zaprojektowany z założenia, że co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku przez replikowanie danych do regionu pomocniczego, który znajduje się w setki kilometrów od regionu podstawowego. Jeśli konto magazynu ma włączone GRS, dane są trwałe nawet w przypadku pełnej awarii regionalnej lub awarii, w której region podstawowy nie jest możliwy do odzyskania.
-
-W przypadku wybrania opcji magazyn Geograficznie nadmiarowy do odczytu (RA-GRS) należy wiedzieć, że usługa Azure File nie obsługuje magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS) w dowolnym regionie. Udziały plików na koncie magazynu RA-GRS działają tak samo jak w przypadku kont GRS i są obciążane cenami GRS.
-
-GRS replikuje dane do innego centrum danych w regionie pomocniczym, ale dane te są dostępne tylko do odczytu, jeśli firma Microsoft zainicjuje tryb failover z regionu podstawowego do pomocniczego.
-
-W przypadku konta magazynu z włączonym GRS wszystkie dane są najpierw replikowane przy użyciu magazynu lokalnie nadmiarowego (LRS). Aktualizacja jest najpierw zatwierdzana do lokalizacji podstawowej i replikowana przy użyciu LRS. Aktualizacja jest następnie replikowana asynchronicznie do regionu pomocniczego za pomocą GRS. Gdy dane są zapisywane w lokalizacji dodatkowej, są również replikowane w tej lokalizacji przy użyciu LRS.
-
-Zarówno region podstawowy, jak i pomocniczy zarządzają replikami w osobnych domenach błędów i uaktualniania domen w ramach jednostki skalowania magazynu. Jednostka skali magazynu jest podstawową jednostką replikacji w centrum danych. Replikacja na tym poziomie jest zapewniana przez LRS; Aby uzyskać więcej informacji, zobacz [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](../common/storage-redundancy-lrs.md).
-
-Przed wybraniem opcji replikacji należy pamiętać o następujących kwestiach:
-
-* Magazyn strefy Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza) zapewnia wysoką dostępność wraz z maksymalną trwałością przez replikację danych synchronicznie w trzech strefach dostępności platformy Azure, a następnie replikowanie danych asynchronicznie do regionu pomocniczego. Możesz również włączyć dostęp do odczytu do regionu pomocniczego. GZRS zaprojektowano w celu udostępnienia co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku. Aby uzyskać więcej informacji na temat GZRS, zobacz [Geograficznie nadmiarowy magazyn w celu zapewnienia wysokiej dostępności i maksymalnej trwałości (wersja zapoznawcza)](../common/storage-redundancy-gzrs.md).
-* Magazyn strefowo nadmiarowy (ZRS) zapewnia wysoką dostępność z replikacją synchroniczną i może być lepszym wyborem w przypadku niektórych scenariuszy niż GRS. Aby uzyskać więcej informacji na temat ZRS, zobacz [ZRS](../common/storage-redundancy-zrs.md).
-* Replikacja asynchroniczna polega na opóźnieniu od momentu zapisania danych w regionie podstawowym, gdy zostanie ono zreplikowane do regionu pomocniczego. W przypadku awarii regionalnej zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone, jeśli nie można odzyskać tych danych z regionu podstawowego.
-* W programie GRS replika nie jest dostępna do odczytu lub zapisu, chyba że firma Microsoft zainicjuje przejście w tryb failover do regionu pomocniczego. W przypadku przejścia w tryb failover będziesz mieć dostęp do odczytu i zapisu do tych danych po zakończeniu pracy w trybie failover. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące odzyskiwania po awarii](../common/storage-disaster-recovery-guidance.md).
+Azure Files udziały w warstwie Premium obsługują zarówno LRS, jak i ZRS, ZRS jest obecnie dostępne w mniejszych podzestawie regionów.
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Dołączanie do większych udziałów plików (warstwa standardowa)
 
