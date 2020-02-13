@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 8d1b032ff1805b34359dfa4ca8269bbf82c9ef27
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 084cd852e0211ea494504a0d6e2350df567de0b1
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774086"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117800"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Rejestrowanie indywidualnej subskrypcji platformy Azure i wyświetlanie informacji o koszcie
 
@@ -22,7 +22,7 @@ Korzystając z subskrypcji platformy Azure, możesz zarejestrować się w rozwi�
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-- Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
+- Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="register-with-cloudyn"></a>Rejestrowanie w rozwiązaniu Cloudyn
 
