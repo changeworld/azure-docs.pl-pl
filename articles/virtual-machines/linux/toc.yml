@@ -160,6 +160,8 @@
           href: disk-scalability-targets.md
         - name: Kopia zapasowa i odzyskiwanie po awarii dla dysków
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Dyski udostępnione
+          href: disks-shared.md
         - name: Efemeryczne dyski systemu operacyjnego
           href: ephemeral-os-disks.md
     - name: Networking
@@ -553,6 +555,8 @@
         - name: Wdrażanie dysków za pomocą szablonu
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: Włączanie dysków udostępnionych
+          href: disks-shared-enable.md
         - name: Przekazywanie dysku VHD na dysk — interfejs wiersza polecenia
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Zmienianie rozmiaru dysku

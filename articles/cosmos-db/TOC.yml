@@ -554,6 +554,8 @@
           href: cassandra-introduction.md
         - name: Obsługa protokołu przewodowego
           href: cassandra-support.md
+        - name: Elastyczne skalowanie
+          href: manage-scale-cassandra.md
         - name: Przewodniki Szybki start
           items:
             - name: .NET
@@ -1071,6 +1073,8 @@
           href: migrate-cosmosdb-data.md
         - name: Migrowanie danych relacyjnych jeden-do-kilku
           href: migrate-relational-to-cosmos-db-sql-api.md
+        - name: Migrowanie — baza danych Couchbase do interfejsu API SQL
+          href: couchbase-cosmos-migration.md
     - name: Biblioteka funkcji wykonawczej operacji zbiorczych
       items:
         - name: Informacje o funkcji wykonywania zbiorczego

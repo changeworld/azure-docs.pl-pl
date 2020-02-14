@@ -52,6 +52,8 @@
           href: how-to-manage-lab-accounts.md
         - name: Konfigurowanie kont laboratoriów
           href: how-to-configure-lab-accounts.md
+        - name: Zezwalanie twórcy laboratorium na wybieranie lokalizacji laboratorium
+          href: allow-lab-creator-pick-lab-location.md
         - name: Łączenie laboratoriów z równorzędną siecią wirtualną
           href: how-to-connect-peer-virtual-network.md
         - name: Dołączanie lub odłączanie galerii obrazów udostępnionych

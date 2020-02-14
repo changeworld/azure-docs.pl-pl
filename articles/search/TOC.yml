@@ -313,14 +313,20 @@
           href: search-pagination-page-layout.md
         - name: Dostrajanie trafności (profile oceniania)
           href: index-add-scoring-profiles.md
-    - name: Zarządzanie i monitorowanie
+    - name: Zarządzanie usługą
       items:
-        - name: Administracja przy użyciu portalu
+        - name: Portal
           href: search-manage.md
-        - name: Administracja przy użyciu programu PowerShell
+        - name: PowerShell
           href: search-manage-powershell.md
-        - name: Działanie monitorowania i rejestrowanie
+    - name: Monitorowanie i rejestrowanie
+      items:
+        - name: Podstawy
           href: search-monitor-usage.md
+        - name: Monitorowanie aktywności zapytań
+          href: search-monitor-queries.md
+        - name: Rejestrowanie diagnostyczne
+          href: search-monitor-logs.md
         - name: Analiza ruchu wyszukiwania
           href: search-traffic-analytics.md
     - name: Rozwiązywanie problemów
