@@ -23,14 +23,18 @@
           href: connect-truffle.md
 - name: Samouczki
   items:
-    - name: Używanie kontraktów inteligentnych
+    - name: Tworzenie kontraktów inteligentnych
       href: send-transaction.md
+    - name: Publikowanie danych przy użyciu usługi Data Manager
+      href: data-manager-cosmosdb.md
 - name: Pojęcia
   items:
     - name: Konsorcjum
       href: consortium.md
     - name: Dostęp do danych i zabezpieczenia
       href: data-security.md
+    - name: Omówienie menedżera danych
+      href: data-manager.md
     - name: Programowanie
       href: develop.md
     - name: Limity
@@ -41,6 +45,10 @@
   items:
     - name: Konfigurowanie dostępu do usługi Azure AD
       href: configure-aad.md
+    - name: Konfigurowanie menedżera danych — portal
+      href: data-manager-portal.md
+    - name: Konfigurowanie menedżera danych — interfejs wiersza polecenia
+      href: data-manager-cli.md
     - name: Konfigurowanie węzłów transakcji
       href: configure-transaction-nodes.md
     - name: Zarządzanie przy użyciu interfejsu wiersza polecenia platformy Azure
@@ -51,16 +59,6 @@
       href: ethereum-logic-app.md
     - name: Monitorowanie usługi Azure Blockchain
       href: monitor-azure-blockchain-service.md
-- name: Menedżer danych łańcucha bloków
-  items:
-    - name: Omówienie menedżera danych
-      href: data-manager.md
-    - name: Konfigurowanie menedżera danych — portal
-      href: data-manager-portal.md
-    - name: Konfigurowanie menedżera danych — interfejs wiersza polecenia
-      href: data-manager-cli.md
-    - name: Publikowanie danych w usłudze Cosmos DB
-      href: data-manager-cosmosdb.md
 - name: Zasoby
   items:
     - name: Zestaw deweloperski usługi Azure Blockchain

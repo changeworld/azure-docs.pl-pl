@@ -21,7 +21,11 @@
 - name: Pojęcia
   items:
     - name: Lokalizacje i partnerzy
-      href: virtual-wan-locations-partners.md
+      items:
+        - name: Lokalizacje centrów i partnerzy
+          href: virtual-wan-locations-partners.md
+        - name: Wskazówki dotyczące automatyzacji dla partnerów
+          href: virtual-wan-configure-automation-providers.md
     - name: Zasady protokołu IPsec
       href: virtual-wan-ipsec.md
 - name: Przewodniki z instrukcjami
@@ -46,8 +50,6 @@
       href: virtual-wan-point-to-site-azure-ad.md
     - name: Konfigurowanie uwierzytelniania w usłudze Azure AD dla wielu aplikacji na potrzeby sieci VPN użytkownika
       href: openvpn-azure-ad-tenant-multi-app.md
-    - name: Konfigurowanie automatyzacji (partnerzy usługi Virtual WAN)
-      href: virtual-wan-configure-automation-providers.md
     - name: Pobieranie profili sieci VPN — globalnych i opartych na koncentratorach
       href: global-hub-profile.md
     - name: Configure routing (Konfigurowanie routingu)
