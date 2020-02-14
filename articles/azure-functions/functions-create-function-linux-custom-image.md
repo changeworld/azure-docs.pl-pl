@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846490"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210195"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Tworzenie funkcji w systemie Linux przy użyciu kontenera niestandardowego
 
@@ -18,7 +18,7 @@ W tym samouczku przedstawiono tworzenie i wdrażanie kodu w języku Python w cel
 
 Można również użyć domyślnego kontenera Azure App Service, zgodnie z opisem w temacie [Tworzenie pierwszej funkcji hostowanej w systemie Linux](functions-create-first-azure-function-azure-cli-linux.md). Obsługiwane obrazy podstawowe dla Azure Functions są dostępne w [repozytorium Azure Functions obrazów podstawowych](https://hub.docker.com/_/microsoft-azure-functions-base).
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Utwórz aplikację funkcji i pliku dockerfile przy użyciu Azure Functions Core Tools.
@@ -47,7 +47,7 @@ Ten samouczek można wykonać na dowolnym komputerze z systemem Windows, Mac OS 
     - [Node.js](https://nodejs.org/en/download/)
     ::: zone-end
     ::: zone pivot="programming-language-powershell"
-    - [Program PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)
+    - [PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)
     ::: zone-end
     ::: zone pivot="programming-language-python"
     - [Python 3,6-64 bit](https://www.python.org/downloads/release/python-3610/) lub [Python 3,7-64 bit](https://www.python.org/downloads/release/python-376/)
@@ -256,7 +256,7 @@ Ten samouczek można wykonać na dowolnym komputerze z systemem Windows, Mac OS 
     docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. Gdy obraz jest uruchomiony w lokalnym kontenerze, Otwórz w przeglądarce, aby `http://localhost:8080`, w którym powinien zostać wyświetlony obraz zastępczy poniżej. Obraz jest wyświetlany w tym momencie, ponieważ funkcja jest uruchomiona w kontenerze lokalnym, tak jak w przypadku platformy Azure, co oznacza, że jest chroniona przez klucz dostępu zdefiniowany w *funkcji Function. JSON* z właściwością `"authLevel": "function"`. Kontener nie został jeszcze opublikowany w aplikacji funkcji na platformie Azure, więc klucz nie jest jeszcze dostępny. Jeśli chcesz przetestować lokalnie, Zatrzymaj platformę Docker, Zmień właściwość autoryzacji na `"authLevel": "anonymous"`, Odbuduj obraz i ponownie uruchom platformę Docker. Następnie zresetuj `"authLevel": "function"` w pliku *Function. JSON*. Aby uzyskać więcej informacji, zobacz [klucze autoryzacji](functions-bindings-http-webhook.md#authorization-keys).
+1. Gdy obraz jest uruchomiony w lokalnym kontenerze, Otwórz w przeglądarce, aby `http://localhost:8080`, w którym powinien zostać wyświetlony obraz zastępczy poniżej. Obraz jest wyświetlany w tym momencie, ponieważ funkcja jest uruchomiona w kontenerze lokalnym, tak jak w przypadku platformy Azure, co oznacza, że jest chroniona przez klucz dostępu zdefiniowany w *funkcji Function. JSON* z właściwością `"authLevel": "function"`. Kontener nie został jeszcze opublikowany w aplikacji funkcji na platformie Azure, więc klucz nie jest jeszcze dostępny. Jeśli chcesz przetestować lokalnie, Zatrzymaj platformę Docker, Zmień właściwość autoryzacji na `"authLevel": "anonymous"`, Odbuduj obraz i ponownie uruchom platformę Docker. Następnie zresetuj `"authLevel": "function"` w pliku *Function. JSON*. Aby uzyskać więcej informacji, zobacz [klucze autoryzacji](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
     ![Obraz zastępczy wskazujący, że kontener jest uruchomiony lokalnie](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -883,7 +883,7 @@ Kolejkę można wyświetlić w [Azure Portal](../storage/queues/storage-quicksta
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
@@ -905,7 +905,7 @@ Kolejkę można wyświetlić w [Azure Portal](../storage/queues/storage-quicksta
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
     
     ```azurecli
     az storage queue list --output tsv
@@ -927,7 +927,7 @@ Kolejkę można wyświetlić w [Azure Portal](../storage/queues/storage-quicksta
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))

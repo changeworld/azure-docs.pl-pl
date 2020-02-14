@@ -1,24 +1,24 @@
 ---
 title: 'Samouczek: Tworzenie aplikacji lokalizatora sklepu przy użyciu Azure Maps | Mapy Microsoft Azure'
 description: W tym samouczku dowiesz się, jak utworzyć aplikację sieci Web lokalizatora magazynu za pomocą Microsoft Azure Maps Web SDK.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5621ed8f9e5d7990ca7b522d6388f855db81618e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987009"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209566"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Samouczek: Tworzenie lokalizatora sklepu za pomocą Azure Maps
 
-Ten samouczek przeprowadzi Cię przez proces tworzenia prostego lokalizatora sklepów przy użyciu usługi Azure Maps. Lokalizatory sklepów są powszechne. Wiele koncepcji używanych w tego typu aplikacjach można stosować w wielu innych typach aplikacji. Oferowanie lokalizatora sklepów jest koniecznością dla większości firm prowadzących sprzedaż detaliczną bezpośrednio dla klientów. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek przeprowadzi Cię przez proces tworzenia prostego lokalizatora sklepów przy użyciu usługi Azure Maps. Lokalizatory sklepów są powszechne. Wiele koncepcji używanych w tego typu aplikacjach można stosować w wielu innych typach aplikacji. Oferowanie lokalizatora sklepów jest koniecznością dla większości firm prowadzących sprzedaż detaliczną bezpośrednio dla klientów. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
     
 > [!div class="checklist"]
 > * Tworzenie nowej strony internetowej przy użyciu interfejsu API kontrolki mapy platformy Azure.
@@ -37,7 +37,7 @@ Przejdź dalej do [przykładu lokalizatora sklepów na żywo](https://azuremapsc
 
 Aby wykonać kroki opisane w tym samouczku, musisz najpierw utworzyć konto Azure Maps i uzyskać klucz podstawowy (klucz subskrypcji). Postępuj zgodnie z instrukcjami w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) , aby utworzyć subskrypcję konta usługi Azure Maps z warstwą cenową S1, i wykonaj kroki opisane w sekcji [Pobieranie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) , aby uzyskać klucz podstawowy dla konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](how-to-manage-authentication.md).
 
-## <a name="design"></a>Projektowanie
+## <a name="design"></a>Projekt
 
 Zanim przejdziesz do kodu, dobrze jest zacząć od projektu. Lokalizator sklepów może być prosty lub złożony — taki, jaki chcesz. W tym samouczku utworzymy prosty lokalizator sklepów. W trakcie tego procesu podamy kilka wskazówek pomocnych w rozszerzeniu niektórych funkcji, jeśli zechcesz to zrobić. Utworzymy lokalizator sklepów dla fikcyjnej firmy o nazwie Contoso Coffee. Na poniższej ilustracji przedstawiono szkielet ogólnego układu lokalizatora sklepów, który utworzymy w tym samouczku:
 
@@ -381,7 +381,7 @@ Uruchom aplikację teraz, zobaczysz nagłówek, pole wyszukiwania i przycisk wys
 
 Wszystko jest teraz skonfigurowane w interfejsie użytkownika. Nadal musimy dodać kod JavaScript w celu załadowania i przeanalizowania danych, a następnie renderowania danych na mapie. Aby rozpocząć, otwórz plik *index.js* i dodaj do niego kod zgodnie z opisem w poniższych krokach.
 
-1. Dodaj opcje globalne, aby ułatwić aktualizowanie ustawień. Zdefiniuj zmienne dla mapy, okna wyskakującego, źródła danych, warstwy ikon, znacznika HTML, który wyświetla centrum obszaru wyszukiwania oraz wystąpienie Azure Maps klienta usługi wyszukiwania.
+1. Dodaj opcje globalne, aby ułatwić aktualizowanie ustawień. Zdefiniuj zmienne dla mapy, okna wyskakującego, źródła danych, warstwy ikon i znacznika HTML. Ustaw znacznik HTML w taki sposób, aby wskazywał środek obszaru wyszukiwania. I zdefiniuj wystąpienie klienta usługi wyszukiwania Azure Maps.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -397,9 +397,9 @@ Wszystko jest teraz skonfigurowane w interfejsie użytkownika. Nadal musimy doda
 
 1. Dodaj kod do pliku *index.js*. Poniższy kod inicjuje mapę. Dodaliśmy [odbiornik zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) czekający na zakończenie ładowania strony. Następnie tworzymy zdarzenia w celu monitorowania ładowania mapy, a następnie przydzielenia funkcji dla przycisku wyszukiwania i przycisku Moje lokalizacje.
 
-   Kiedy użytkownik wybierze przycisk wyszukiwania lub naciśnie klawisz Enter po wprowadzeniu lokalizacji w polu wyszukiwania, inicjowane jest wyszukiwanie rozmyte względem zapytania użytkownika. Aby ograniczyć wyniki wyszukiwania do tych krajów/regionów, należy przekazać tablicę wartości ISO 2 kraju do `countrySet` opcji. Ograniczenie krajów/regionów do wyszukiwania pomaga zwiększyć dokładność zwracanych wyników. 
+   Gdy użytkownik wybierze przycisk Wyszukaj lub wpisze lokalizację w polu wyszukiwania, a następnie naciśnie klawisz ENTER, inicjowane jest Wyszukiwanie rozmyte względem zapytania użytkownika. Aby ograniczyć wyniki wyszukiwania do tych krajów/regionów, należy przekazać tablicę wartości ISO 2 kraju do `countrySet` opcji. Ograniczenie krajów/regionów do wyszukiwania pomaga zwiększyć dokładność zwracanych wyników. 
   
-   Po zakończeniu wyszukiwania weź pierwszy wynik i ustaw aparat mapy na ten obszar. Kiedy użytkownik wybierze przycisk Moja lokalizacja, użyj interfejsu API geolokalizacji języka HTML5, który jest wbudowany w przeglądarce, aby pobrać lokalizację użytkownika i wyśrodkować na niej mapę.  
+   Po zakończeniu wyszukiwania wykonaj pierwszy wynik i ustaw dla niego kamerę mapy. Gdy użytkownik wybierze przycisk Moja lokalizacja, pobierze lokalizację użytkownika przy użyciu interfejsu API geolokalizacji HTML5. Ten interfejs API jest wbudowany w przeglądarkę. Następnie Wyśrodkuj mapę na swojej lokalizacji.  
 
    > [!Tip]
    > W przypadku wyskakujących okienek najlepiej utworzyć jedno wystąpienie `Popup` i używać go ponownie, aktualizując jego zawartość i położenie. Dla każdego wystąpienia `Popup` dodawanego do kodu do strony dodawanych jest wiele elementów DOM. Im więcej elementów DOM na stronie, tym więcej obiektów musi śledzić przeglądarka. W przypadku zbyt wielu elementów przeglądarka może zacząć wolno działać.
@@ -527,7 +527,7 @@ Wszystko jest teraz skonfigurowane w interfejsie użytkownika. Nadal musimy doda
     map.markers.add(centerMarker);
     ```
 
-1. W odbiorniku zdarzeń `ready` mapy dodaj źródło danych. Następnie wykonaj wywołanie, aby załadować i przeanalizować zestaw danych. Włącz klastrowanie na źródle danych. Klastrowanie na źródle danych grupuje nakładające się punkty w klastrze. Klastry są rozdzielane na poszczególne punkty, gdy użytkownik powiększa widok. Poprawia to płynność działania interfejsu użytkownika i zwiększa wydajność.
+1. W odbiorniku zdarzeń `ready` mapy dodaj źródło danych. Następnie wykonaj wywołanie, aby załadować i przeanalizować zestaw danych. Włącz klastrowanie na źródle danych. Klastrowanie na źródle danych grupuje nakładające się punkty w klastrze. Klastry są rozdzielane na poszczególne punkty, gdy użytkownik powiększa widok. Takie zachowanie zapewnia lepszy komfort pracy użytkowników i zwiększa wydajność.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -928,7 +928,7 @@ Kiedy użytkownik wybierze przycisk Moja lokalizacja po raz pierwszy, w przeglą
 
 ![zrzut ekranu żądania przeglądarki w celu uzyskania dostępu do lokalizacji użytkownika](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-Po zastosowaniu wystarczająco dużego powiększenia obszaru zawierającego lokalizacje kawiarni klastry zostaną rozdzielone na poszczególne lokalizacje. Wybierz jedną z ikon na mapie lub wybierz element w panelu bocznym, aby wyświetlić okno podręczne zawierające informacje dla danej lokalizacji.
+Po zastosowaniu wystarczająco dużego powiększenia obszaru zawierającego lokalizacje kawiarni klastry zostaną rozdzielone na poszczególne lokalizacje. Wybierz jedną z ikon mapy lub wybierz element w panelu bocznym, aby wyświetlić okno podręczne. W oknie podręcznym są wyświetlane informacje dotyczące wybranej lokalizacji.
 
 <center>
 

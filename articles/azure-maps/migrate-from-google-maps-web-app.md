@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 67f9168d2b18a98850588554f77c4a5859f365df
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: b954c812bea6c2abf4376c2cee38a3789461ad01
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086418"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208747"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Migrowanie aplikacji internetowej z usługi Google Maps
 
 Większość aplikacji sieci Web korzystających z usługi Google Maps korzysta z zestawu SDK języka JavaScript usługi Google Maps v3. Zestaw SDK sieci Web Azure Maps to odpowiedni zestaw SDK oparty na platformie Azure do migracji. Zestaw SDK sieci Web Azure Maps umożliwia dostosowywanie interaktywnych map przy użyciu własnej zawartości i obrazów. Aplikację można uruchomić zarówno w sieci Web, jak i aplikacji mobilnych. Kontrolka korzysta z technologii WebGL, co umożliwia renderowanie dużych zestawów danych z wysoką wydajnością. Utwórz ten zestaw SDK przy użyciu języka JavaScript lub TypeScript.
 
-W przypadku migrowania istniejącej aplikacji sieci Web sprawdź, czy jest ona używana przez bibliotekę kontroli mapy Open Source. Przykłady biblioteki formantów typu "open source" to: cesium, ulotce i OpenLayers. Jeśli aplikacja korzysta z biblioteki kontroli mapy Open Source i nie chcesz używać Azure Maps Web SDK, nadal możesz przeprowadzić migrację. W takim przypadku Połącz aplikację z usługami kafelków Azure Maps ([kafelki drogowe](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [kafelki satelitarne](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)). Poniższe punkty szczegółowo opisują sposób używania Azure Maps w niektórych najczęściej używanych bibliotekach kontroli mapy Open Source.
+W przypadku migrowania istniejącej aplikacji sieci Web sprawdź, czy jest ona używana przez bibliotekę kontroli mapy Open Source. Przykłady biblioteki formantów typu "open source" to: cesium, ulotce i OpenLayers. Nadal można przeprowadzić migrację aplikacji, nawet jeśli korzysta ona z biblioteki kontroli mapy Open Source i nie chcesz używać Azure Maps Web SDK. W takim przypadku Połącz aplikację z usługami kafelków Azure Maps ([kafelki drogowe](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [kafelki satelitarne](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)). Poniższe punkty szczegółowo opisują sposób używania Azure Maps w niektórych najczęściej używanych bibliotekach kontroli mapy Open Source.
 
 - Cesium — kontrolka mapy 3D dla sieci Web. [Przykładowy kod](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentacja](https://cesiumjs.org/)
 - Ulotek — uproszczona kontrolka mapy 2D dla sieci Web. [Przykładowy kod](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentacja](https://leafletjs.com/)
@@ -62,7 +62,7 @@ Poniżej przedstawiono kilka najważniejszych różnic między usługą Mapy Goo
 
 ## <a name="web-sdk-side-by-side-examples"></a>Przykłady obok siebie zestawu SDK sieci Web
 
-Ta kolekcja zawiera przykłady kodu dla każdej platformy, każdy przykład obejmuje typowy przypadek użycia. Jest ona przeznaczona do ułatwienia migracji aplikacji sieci Web z usługi Google Maps v3 JavaScript SDK do Azure Maps Web SDK. Przykłady kodu związane z aplikacjami sieci Web są udostępniane w języku JavaScript. Jednakże Azure Maps udostępnia również definicje języka TypeScript jako dodatkową opcję za poorednictwem [modułu npm](how-to-use-map-control.md).
+Ta kolekcja zawiera przykłady kodu dla każdej platformy, a każdy przykład obejmuje typowy przypadek użycia. Ma ona na celu ułatwienie migracji aplikacji sieci Web z usługi Google Maps v3 JavaScript SDK do Azure Maps Web SDK. Przykłady kodu związane z aplikacjami sieci Web są udostępniane w języku JavaScript. Jednakże Azure Maps udostępnia również definicje języka TypeScript jako dodatkową opcję za poorednictwem [modułu npm](how-to-use-map-control.md).
 
 ### <a name="load-a-map"></a>Załaduj mapę
 
@@ -80,7 +80,7 @@ Oba zestawy SDK mają te same kroki w celu załadowania mapy:
 - Podczas odwoływania się do `div` elementu, w którym mapa będzie renderowana, Klasa `Map` w Azure Maps tylko wymaga wartości `id`, natomiast usługa Google Maps wymaga obiektu `HTMLElement`.
 - Współrzędne w Azure Maps są zdefiniowane jako obiekty położenia, które można określić jako prostą tablicę liczbową w formacie `[longitude, latitude]`.
 - Poziom powiększenia w Azure Maps to poziom niższy od poziomu powiększenia w usłudze mapy Google. Rozbieżność wynika z tego, że różnica w rozmiarach systemu rozmieszczania dwóch platform.
-- Azure Maps nie dodaje żadnych kontrolek nawigacji do kanwy mapy. Tak więc domyślnie mapa nie ma przycisków powiększenia i przycisków stylu mapy. Ale istnieją formanty umożliwiające dodanie selektora stylu mapy, przycisków powiększenia, kontrolki kompasu lub obrotu oraz kontrolki gęstość.
+- Azure Maps nie dodaje żadnych kontrolek nawigacji do kanwy mapy. Tak więc domyślnie mapa nie ma przycisków powiększenia i przycisków stylu mapy. Jednak dostępne są opcje kontrolne umożliwiające dodanie selektora stylu mapy, przycisków powiększenia, kontrolki kompasu lub obrotu oraz kontrolki gęstość.
 - Procedura obsługi zdarzeń została dodana w Azure Maps do monitorowania zdarzenia `ready` wystąpienia mapy. To zdarzenie zostanie wyzwolone po zakończeniu ładowania przez mapę kontekstu WebGL i wszystkich wymaganych zasobów. Dodaj dowolny kod, który ma zostać uruchomiony po zakończeniu ładowania mapy, do tej procedury obsługi zdarzeń.
 
 Poniższe podstawowe przykłady używają usługi Google Maps do załadowania mapy wyśrodkowanej przez Nowy Jork przy współrzędnych. Długość geograficzna:-73,985, Szerokość geograficzna: 40,747, a mapa jest na poziomie powiększenia 12.
@@ -212,7 +212,7 @@ Oto przykład mapy Google z ustawionym językiem "fr-FR".
 
 **Po: Azure Maps**
 
-Azure Maps oferuje dwa różne sposoby ustawiania języka i widoku regionalnego mapy. Pierwsza opcja polega na tym, aby dodać te informacje do *globalnej przestrzeni* nazw, co spowoduje, że wszystkie wystąpienia kontrolki mapy w aplikacji domyślnie przeprowadzą do tych ustawień. Poniżej ustawia język francuski ("fr-FR") i widok regionalny na "Auto":
+Azure Maps oferuje dwa różne sposoby ustawiania języka i widoku regionalnego mapy. Pierwsza opcja polega na dodaniu tych informacji do globalnej przestrzeni nazw *szczytu* . Spowoduje to, że wszystkie wystąpienia kontrolki mapy w aplikacji domyślnie przeprowadzą do tych ustawień. Poniżej ustawia język francuski ("fr-FR") i widok regionalny na "Auto":
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -246,7 +246,7 @@ Oto przykład Azure Maps z językiem ustawionym na "fr", a regionem użytkownika
 
 ### <a name="setting-the-map-view"></a>Ustawianie widoku mapy
 
-W ramach obu Azure Maps i usługi Google Maps mapy dynamiczne można programistycznie przenieść do nowych lokalizacji geograficznych. Aby to zrobić, wywołaj odpowiednie funkcje w języku JavaScript. W przykładzie pokazano, jak utworzyć mapę wyświetlania zdjęć satelitarnych, Wyśrodkuj mapę na miejscu i zmień poziom powiększenia na 15 w usłudze mapy Google. Używane są następujące współrzędne lokalizacji: Długość geograficzna:-111,0225 i Szerokość geograficzna: 35,0272.
+W ramach obu Azure Maps i usługi Google Maps mapy dynamiczne można programistycznie przenieść do nowych lokalizacji geograficznych. Aby to zrobić, wywołaj odpowiednie funkcje w języku JavaScript. W przykładzie pokazano, jak utworzyć mapę wyświetlania zdjęć satelitarnych, Wyśrodkuj mapę na miejscu i zmień poziom powiększenia. Używane są następujące współrzędne lokalizacji: Długość geograficzna:-111,0225 i Szerokość geograficzna: 35,0272.
 
 > [!NOTE]
 > Usługa mapy Google używa kafelków, które są 256 pikseli w wymiarach, podczas gdy Azure Maps zużywa większy kafelek 512 pikseli. W takim przypadku Azure Maps wymaga mniejszej liczby żądań sieciowych do załadowania tego samego obszaru mapy co Google Maps. Ze względu na sposób, w jaki diagramy kafelków działają w kontrolkach mapy, należy odjęciu poziomu powiększenia używanego w usłudze mapy Google według numeru, który jest używany Azure Maps. Ta operacja arytmetyczna gwarantuje, że większe kafelki w Azure Maps renderują ten sam obszar mapy jak w usłudze mapy Google.
@@ -856,7 +856,7 @@ Określ pojedynczą funkcję wywołania zwrotnego w metodzie `map.data.setStyle`
 
 **Po: Azure Maps**
 
-GEOJSON jest podstawowym typem danych w Azure Maps. Zaimportuj go do źródła danych przy użyciu metody `datasource.importFromUrl`. Użyj warstwy bąbelkowej, która zapewnia funkcje renderowania przeskalowanych kółek na podstawie właściwości funkcji w źródle danych. Zamiast korzystać z funkcji wywołania zwrotnego, logika biznesowa jest konwertowana na wyrażenie i przenoszona do opcji stylu. Wyrażenia definiują sposób działania logiki biznesowej. Wyrażenia mogą być przesyłane do innego wątku i oceniane względem danych funkcji. Wiele źródeł danych i warstw można dodać do Azure Maps, z których każda ma inną logikę biznesową. Ta funkcja umożliwia renderowanie wielu zestawów danych na mapie na różne sposoby.
+GEOJSON jest podstawowym typem danych w Azure Maps. Zaimportuj go do źródła danych przy użyciu metody `datasource.importFromUrl`. Użyj warstwy bąbelkowej. Warstwa bąbelków zapewnia funkcję renderowania okręgów skalowanych na podstawie właściwości funkcji w źródle danych. Zamiast korzystać z funkcji wywołania zwrotnego, logika biznesowa jest konwertowana na wyrażenie i przenoszona do opcji stylu. Wyrażenia definiują sposób działania logiki biznesowej. Wyrażenia mogą być przesyłane do innego wątku i oceniane względem danych funkcji. Wiele źródeł danych i warstw można dodać do Azure Maps, z których każda ma inną logikę biznesową. Ta funkcja umożliwia renderowanie wielu zestawów danych na mapie na różne sposoby.
 
 ```html
 <!DOCTYPE html>
@@ -953,7 +953,7 @@ W poniższych przykładach kod ładuje Źródło GEOJSON danych z ziemi z zeszł
 
 **Wcześniej: Google Maps**
 
-Użyj biblioteki MarkerCluster do znaczników klastra. Ikony klastra są ograniczone do obrazów, które mają numery od jednej do pięciu jako nazwy i są hostowane w tym samym katalogu.
+Użyj biblioteki MarkerCluster do znaczników klastra. Ikony klastra są ograniczone do obrazów, które mają numery od jednej do pięciu jako nazwy. Są one hostowane w tym samym katalogu.
 
 ```html
 <!DOCTYPE html>
@@ -1151,7 +1151,7 @@ Bezpośrednio Importuj dane GEOJSON przy użyciu funkcji `importDataFromUrl` na 
 
 Mapy cieplne, znane także jako mapy gęstości punktów, są typem wizualizacji danych. Są one używane do reprezentowania gęstości danych przy użyciu szeregu kolorów. Są one często używane do wyświetlania danych "gorąca" na mapie. Mapy cieplne to świetny sposób renderowania zestawów danych z dużymi punktami.
 
-Poniższe przykłady ładują strumieniowe źródło danych ze wszystkich trzęsień w formacie JSON dla ostatniego miesiąca z agencji USGS i renderuje je jako ważoną mapę cieplną. Właściwość `"mag"` jest używana jako waga.
+Poniższe przykłady ładują strumieniowe źródło danych ze wszystkich trzęsienia, w ciągu ostatniego miesiąca, z agencji USGS i renderuje je jako ważoną mapy cieplnej. Właściwość `"mag"` jest używana jako waga.
 
 **Wcześniej: Google Maps**
 
@@ -1395,7 +1395,7 @@ Po kliknięciu jednej z ikon ruchu w Azure Maps w oknie podręcznym zostaną wy�
 
 ### <a name="add-a-ground-overlay"></a>Dodawanie nakładki uziemienia
 
-Zarówno platforma Azure, jak i usługa Google Maps obsługują nałożenie obrazów ze spisem na mapie. Obrazy geograficzne są przesuwane i skalowane w miarę kadrowania i powiększania mapy. W usłudze Google Maps obrazy geograficzne są znane jako nakładki naziemne w Azure Maps są one nazywane warstwami obrazu. Są one doskonałe do kompilowania planów piętra, nakładania starych map lub obrazów z drona.
+Zarówno platforma Azure, jak i usługa Google Maps obsługują nałożenie obrazów ze spisem na mapie. Obrazy geograficzne są przesuwane i skalowane w miarę kadrowania i powiększania mapy. W usłudze Google Maps obrazy geograficzne są znane jako nakładki naziemne w Azure Maps są one nazywane warstwami obrazu. Doskonale nadaje się do kompilowania planów piętra, nakładania starych map lub obrazów z drona.
 
 **Wcześniej: Google Maps**
 

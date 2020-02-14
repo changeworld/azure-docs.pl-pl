@@ -1,20 +1,20 @@
 ---
 title: 'Samouczek: Dołączanie danych z czujników z danymi prognoz pogody przy użyciu Azure Notebooks (Python) | Mapy Microsoft Azure'
 description: W tym samouczku pokazano, jak sprzęgać dane czujników z danymi prognoz pogody z Microsoft Azure Maps usługi Pogoda przy użyciu Azure Notebooks (Python).
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d6b82ec0662745fd9c9a05db28595ff84f57f330
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989624"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208033"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Samouczek: Dołączanie danych z czujników z danymi prognoz pogody przy użyciu Azure Notebooks (Python)
 
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Żądaj codziennych danych prognoz
 
-W naszym scenariuszu chcemy zażądać codziennej prognozy dla każdej lokalizacji czujnika. Poniższy skrypt wywołuje [dzienny interfejs API prognozowania](https://aka.ms/AzureMapsWeatherDailyForecast) Azure Maps usługi Pogoda, aby uzyskać dzienną prognozę pogody dla każdego turbiny wiatru w ciągu następnych 15 dni od bieżącej daty.
+W naszym scenariuszu chcemy zażądać codziennej prognozy dla każdej lokalizacji czujnika. Poniższy skrypt wywołuje [dzienny interfejs API prognozowania](https://aka.ms/AzureMapsWeatherDailyForecast) Azure Maps usługi Pogoda. Ten interfejs API zwraca prognozę pogody dla każdego turbiny wiatru w ciągu następnych 15 dni od bieżącej daty.
 
 
 ```python
@@ -129,7 +129,7 @@ display(Image(poi_range_map))
 ![Lokalizacje turbin](./media/weather-service-tutorial/location-map.png)
 
 
-Będziemy grupować dane prognozy z danymi demonstracyjnymi na podstawie identyfikatora stacji centrum danych pogody. To grupowanie rozszerza dane demonstracyjne o dane prognozy. 
+Będziemy grupować dane prognozy z danymi demonstracyjnymi opartymi na IDENTYFIKATORze stacji. Identyfikator stacji dotyczy centrum danych pogody. To grupowanie rozszerza dane demonstracyjne o dane prognozy.
 
 ```python
 # Group forecasted data for all locations

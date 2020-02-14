@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 11eb2e0363682d39a00a3f47cd3cc6c4badc040f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 175625ab9fca9103bde027c3c0ea0986806ad846
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086499"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208306"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>Migrowanie z usługi Google Maps do Azure Maps
 
@@ -22,11 +22,11 @@ Ten samouczek zawiera szczegółowe informacje na temat migrowania aplikacji sie
 
 ## <a name="azure-maps-platform-overview"></a>Omówienie platformy Azure Maps
 
-Azure Maps oferuje deweloperom możliwość korzystania z zaawansowanych możliwości geograficznych. Możliwości są zapakowane przy użyciu regularnie aktualizowanych danych mapy, aby zapewnić kontekst geograficzny dla aplikacji sieci Web i mobilnych. Azure Maps ma zestaw interfejsów API REST zgodny z platformą Azure. Te interfejsy API REST oferują funkcje renderowania, wyszukiwania, routingu, ruchu, strefy czasowej, geolokalizacji, geoprzestrzennia, danych mapy, warunków pogodowych, mobilności i operacji przestrzennych. Do operacji dołączone są zestawy SDK sieci Web i Android, które ułatwiają tworzenie, elastyczne i przenośne Programowanie na wielu platformach.
+Azure Maps oferuje deweloperom możliwość korzystania z zaawansowanych możliwości geograficznych. Możliwości są zapakowane z regularnymi aktualizacjami danych mapy w celu zapewnienia geograficznego kontekstu dla aplikacji internetowych i mobilnych. Azure Maps ma zestaw interfejsów API REST zgodny z platformą Azure. Interfejsy API REST oferują funkcje renderowania, wyszukiwania, routingu, ruchu, strefy czasowej, geolokalizacji, geoprzestrzennia, danych mapy, warunków pogodowych, mobilności i operacji przestrzennych. Do operacji dołączone są zestawy SDK sieci Web i Android, które ułatwiają tworzenie, elastyczne i przenośne Programowanie na wielu platformach.
 
 ## <a name="high-level-platform-comparison"></a>Porównanie platform wysokiego poziomu
 
-Tabela zawiera listę funkcji Azure Maps, które odpowiadają funkcjom usługi Google Maps. Na tej liście nie są wyświetlane wszystkie funkcje Azure Maps. Niektóre dodatkowe funkcje Azure Maps obejmują ułatwienia dostępu, interfejsy API geoogrodzenia, izochron, operacje przestrzenne, bezpośredni dostęp do kafelków, usługi Batch i porównania pokrycia danych (czyli pokrycie obrazów).
+Tabela zawiera listę funkcji Azure Maps, które odpowiadają funkcjom usługi Google Maps. Na tej liście nie są wyświetlane wszystkie funkcje Azure Maps. Dodatkowe funkcje Azure Maps obejmują: ułatwienia dostępu, geoogrodzenie, izochron, operacje przestrzenne, bezpośredni dostęp do kafelków mapy, usługi Batch i porównania pokrycia danych (czyli pokrycie obrazów).
 
 | Funkcja usługi Google Maps         | Obsługa Azure Maps                     |
 |-----------------------------|:--------------------------------------:|
@@ -49,14 +49,14 @@ Tabela zawiera listę funkcji Azure Maps, które odpowiadają funkcjom usługi G
 | Maps — osadzony interfejs API           | Nie dotyczy                                    |
 | Adresy URL map                    | Nie dotyczy                                    |
 
-Usługi Mapy Google zapewniają podstawowe uwierzytelnianie oparte na kluczach. Azure Maps zapewnia podstawowe uwierzytelnianie oparte na kluczach i uwierzytelnianie Azure Active Directory. Azure Active Directory ma więcej funkcji zabezpieczeń w porównaniu do podstawowego uwierzytelniania opartego na kluczach.
+Usługi Mapy Google zapewniają podstawowe uwierzytelnianie oparte na kluczach. Azure Maps zapewnia podstawowe uwierzytelnianie oparte na kluczach i uwierzytelnianie Azure Active Directory. Uwierzytelnianie Azure Active Directory zapewnia więcej funkcji zabezpieczeń w porównaniu do podstawowego uwierzytelniania opartego na kluczach.
 
 ## <a name="licensing-considerations"></a>Zagadnienia dotyczące licencjonowania
 
 Podczas migrowania do Azure Maps z usługi Google Maps należy wziąć pod uwagę następujące kwestie dotyczące licencjonowania.
 
-- Azure Maps opłaty za użycie map interaktywnych, które są oparte na liczbie załadowanych kafelków mapy. Z drugiej strony usługi Google Maps naliczą opłaty za ładowanie formantu mapy. W zestawach SDK interakcyjne Azure Maps kafelki mapy są automatycznie buforowane, aby zmniejszyć koszty tworzenia oprogramowania. Dla każdego 15 ładowanych kafelków mapy jest generowana jedna transakcja Azure Maps. Zestawy SDK Interactive Azure Maps używają kafelków 512-pikselowych, a średnio generują co najmniej jedną transakcję na widok strony.
-- Często jest tańsze, aby zamienić statyczne obrazy map z usług sieci Web usługi Google Maps za pomocą zestawu Azure Maps Web SDK. Zestaw SDK sieci Web Azure Maps używa kafelków mapy, a jeśli użytkownik nie Pans i nie powiększy mapy, usługa często generuje tylko ułamek transakcji na obciążenie mapy. Zestaw SDK sieci Web Azure Maps zawiera opcje wyłączania panoramowania i powiększania w razie potrzeby. Ponadto zestaw SDK sieci Web Azure Maps udostępnia wiele opcji wizualizacji niż usługa sieci Web mapy statycznej.
+- Azure Maps opłaty za użycie map interaktywnych, które są oparte na liczbie załadowanych kafelków mapy. Z drugiej strony usługi Google Maps naliczą opłaty za ładowanie formantu mapy. W zestawach SDK interakcyjne Azure Maps kafelki mapy są automatycznie buforowane, aby zmniejszyć koszty tworzenia oprogramowania. Dla każdego 15 ładowanych kafelków mapy jest generowana jedna transakcja Azure Maps. Interaktywna Azure Maps zestawy SDK wykorzystują 512-pikselowe kafelki, a przeciętnie generuje co najmniej jedną transakcję na widok strony.
+- Często jest to bardziej ekonomiczne, aby zamienić statyczne obrazy map z usług sieci Web usługi Google Maps za pomocą zestawu SDK Azure Maps Web. Zestaw SDK sieci Web Azure Maps używa kafelków mapy. Jeśli użytkownik nie Pans i nie powiększy mapy, usługa często generuje tylko ułamek transakcji na obciążenie mapy. Zestaw SDK sieci Web Azure Maps zawiera opcje wyłączania panoramowania i powiększania w razie potrzeby. Ponadto zestaw SDK sieci Web Azure Maps udostępnia wiele opcji wizualizacji niż usługa sieci Web mapy statycznej.
 - Azure Maps umożliwia przechowywanie danych z platformy na platformie Azure. Ponadto dane mogą być buforowane w innym miejscu przez maksymalnie sześć miesięcy zgodnie z [warunkami użytkowania](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46).
 
 Poniżej przedstawiono kilka powiązanych zasobów Azure Maps:

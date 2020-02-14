@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 855036a5a8e87bd10e9a4d524a1e8ea8bcdccf50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086300"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209736"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Migrowanie aplikacji systemu Android ze sklepu Google Maps
 
@@ -365,7 +365,7 @@ Druga opcja polega na przejściu języka i wyświetleniu informacji w kodzie XML
     />
 ```
 
-Trzecią opcją jest Programowanie języka i widoku mapy regionalnej przy użyciu metody Maps `setStyle`. Ta opcja aktualizuje język i widok regionalny w dowolnym momencie wykonywania kodu.
+Trzecią opcją jest Programowanie języka i widoku mapy regionalnej przy użyciu metody Maps `setStyle`. Ta opcja aktualizuje język i widok regionalny wszędzie tam, gdzie wykonywany jest kod.
 
 ```java
 mapControl.onReady(map -> {
@@ -725,7 +725,7 @@ warstwa kafelków ![Google Maps](media/migrate-google-maps-android-app/google-ma
 Warstwę kafelków można dodać do mapy w podobny sposób, jak każda inna warstwa. Sformatowany adres URL, który ma symbole zastępcze x, y i zoom; `{x}`, `{y}``{z}` odpowiednio używany do określenia warstwy, w której mają być dostępne kafelki. Ponadto warstwy kafelków w Azure Maps obsługują `{quadkey}`, `{bbox-epsg-3857}`i `{subdomain}` symbole zastępcze. Aby warstwa kafelków została częściowo przezroczysta, używana jest wartość nieprzezroczystości 0,8. Nieprzezroczystość i przezroczystość, chociaż podobne, używaj odwróconych wartości. Aby przeprowadzić konwersję między obiema opcjami, Odejmij ich wartość od liczby.
 
 > [!TIP]
-> W Azure Maps jest wygodne renderowanie warstw poniżej innych warstw, w tym warstw mapy podstawowej. Często wskazane jest renderowanie warstw kafelków poniżej etykiet mapy, dzięki czemu można je łatwo odczytać. Metoda `map.layers.add` przyjmuje drugi parametr, który jest identyfikatorem warstwy, w której ma zostać wstawiona Nowa warstwa poniżej. Aby wstawić warstwę kafelków pod etykietami mapy, można użyć następującego kodu: `map.layers.add(myTileLayer, "labels");`
+> W Azure Maps jest wygodne renderowanie warstw poniżej innych warstw, w tym warstw mapy podstawowej. Ponadto często pożądane jest renderowanie warstw kafelków poniżej etykiet mapy, dzięki czemu można je łatwo odczytać. Metoda `map.layers.add` przyjmuje drugi parametr, który jest identyfikatorem warstwy, w której ma zostać wstawiona Nowa warstwa poniżej. Aby wstawić warstwę kafelków pod etykietami mapy, można użyć następującego kodu: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

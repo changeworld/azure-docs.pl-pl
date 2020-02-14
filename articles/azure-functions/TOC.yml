@@ -351,7 +351,13 @@
         - name: Usługa IoT Hub
           href: functions-bindings-event-iot.md
         - name: HTTP i elementy webhook
-          href: functions-bindings-http-webhook.md
+          items:
+            - name: Omówienie
+              href: functions-bindings-http-webhook.md
+            - name: Wyzwalacz
+              href: functions-bindings-http-webhook-trigger.md
+            - name: Dane wyjściowe
+              href: functions-bindings-http-webhook-output.md
         - name: Microsoft Graph
           href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps

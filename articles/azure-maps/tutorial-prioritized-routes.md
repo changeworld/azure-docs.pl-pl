@@ -1,24 +1,24 @@
 ---
 title: 'Samouczek: Znajdowanie wielu tras według trybu podróży | Mapy Microsoft Azure'
 description: W tym samouczku dowiesz się, jak znaleźć trasy dla różnych trybów podróży przy użyciu Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 628a3003cec2cc2ca58f1b133cf3236417dfa94e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989658"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209498"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Samouczek: Znajdowanie tras dla różnych trybów podróży przy użyciu Azure Maps
 
-W tym samouczku pokazano, jak używać konta Azure Maps i usługi Route Service. Usługa Route Service może znaleźć trasę do swojego punktu orientacyjnego, na podstawie którego jest określony tryb podróży. Na mapie można wyświetlić dwie różne trasy, jedną dla samochodów i jeden dla wózków. Usługa routingu bierze pod uwagę ograniczenia ze względu na wysokość i wagę pojazdu lub w przypadku przewozu niebezpiecznego. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak używać konta Azure Maps i usługi Route Service. Usługa Route Service może znaleźć trasę do swojego punktu orientacyjnego, na podstawie którego jest określony tryb podróży. Na mapie można wyświetlić dwie różne trasy, jedną dla samochodów i jeden dla wózków. Usługa routingu bierze pod uwagę ograniczenia ze względu na wysokość i wagę pojazdu lub w przypadku przewozu niebezpiecznego. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie nowej strony internetowej przy użyciu interfejsu API kontrolki mapy
@@ -158,7 +158,7 @@ W tym samouczku na mapie zostaną obliczone i wyrenderowane dwie trasy. Jedna tr
     });
     ```
     
-    W programie obsługi zdarzeń `ready` Maps źródło danych jest tworzone w celu przechowywania linii tras oraz punktów początkowych i końcowych. Tworzona jest warstwa linii, która jest następnie dołączana do źródła danych w celu zdefiniowania sposobu renderowana linii trasy. Za pomocą wyrażeń są pobierane szerokość i kolor linii z właściwości funkcji linii trasy. Podczas dodawania warstwy do mapy przekazywany jest drugi parametr o wartości `'labels'`. Określa on, że ta warstwa ma być renderowana poniżej etykiet mapy. Dzięki temu linia trasy nie zakryje etykiet dróg. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa, jak będą renderowane punkty początkowe i końcowe. W takim przypadku dodano wyrażenia, aby pobrać obraz ikony i informacje o etykiecie tekstowej z właściwości dla każdego obiektu punktu. 
+    W programie obsługi zdarzeń `ready` Maps źródło danych jest tworzone w celu przechowywania linii tras oraz punktów początkowych i końcowych. Tworzona jest warstwa linii, która jest następnie dołączana do źródła danych w celu zdefiniowania sposobu renderowana linii trasy. Za pomocą wyrażeń są pobierane szerokość i kolor linii z właściwości funkcji linii trasy. Podczas dodawania warstwy do mapy przekazywany jest drugi parametr o wartości `'labels'`. Określa on, że ta warstwa ma być renderowana poniżej etykiet mapy. Dzięki temu linia trasy nie obejmuje etykiet dróg. Tworzona jest warstwa symboli, która jest następnie dołączana do źródła danych. Ta warstwa określa, jak będą renderowane punkty początkowe i końcowe. W takim przypadku dodano wyrażenia, aby pobrać obraz ikony i informacje o etykiecie tekstowej z właściwości dla każdego obiektu punktu. 
     
 2. W tym samouczku ustawimy punkt początkowy w lokalizacji fikcyjnej firmy Fabrikam (w Seattle), a punkt docelowy w lokalizacji biura firmy Microsoft. W programie obsługi zdarzeń `ready` Maps Dodaj następujący kod.
 
@@ -200,7 +200,11 @@ W tym samouczku na mapie zostaną obliczone i wyrenderowane dwie trasy. Jedna tr
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>Renderowanie tras z uwzględnieniem priorytetów na podstawie sposobu podróży
 
-W tej sekcji pokazano, jak za pomocą interfejsu API usługi Maps trasy znaleźć wiele tras z danego punktu początkowego do punktu końcowego w zależności od używanego trybu transportu. Usługa Route Service udostępnia interfejsy API do planowania *najszybszej*, *najkrótszej*, *najciekawszej* lub *najbardziej ekologicznej* trasy między dwiema lokalizacjami z uwzględnieniem bieżących warunków drogowych. Umożliwia ona też użytkownikom planowanie tras w przyszłości, korzystając z obszernej historycznej bazy danych ruchu drogowego na platformie Azure i przewidując długość podróży trasami w dowolnym dniu i czasie. Aby uzyskać więcej informacji, zobacz [GetRoute Directions (Uzyskiwanie wskazówek dojazdu)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Wszystkie poniższe bloki kodu powinny zostać dodane **w elemencie eventListener ładowania mapy** w celu zagwarantowania ich załadowania po pełnym załadowaniu mapy.
+W tej sekcji pokazano, jak używać interfejsu API usługi Routes Maps. Interfejs API tras służy do znajdowania wielu tras z danego punktu początkowego do punktu końcowego w zależności od używanego trybu transportu. Usługa Route Service oferuje interfejsy API do planowania *najszybszych*, *najkrótszych*, *ekonomicznych*i *thrillingych* tras. Nie tylko należy zaplanować trasy interfejsów API między dwiema lokalizacjami, ale również uwzględnić bieżące warunki ruchu. 
+
+Interfejs API tras umożliwia użytkownikom planowanie tras w przyszłości przy użyciu bogatej bazy danych o ruchu historycznym platformy Azure. Interfejs API może przewidywać czasy trwania tras dla danego dnia i godziny. Aby uzyskać więcej informacji, zobacz [GetRoute Directions (Uzyskiwanie wskazówek dojazdu)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). 
+
+**W odbiornika obciążenia mapy** należy dodać wszystkie poniższe bloki kodu, aby upewnić się, że są one ładowane po całkowitym załadowaniu mapy.
 
 1. W funkcji GetMap Dodaj następujący kod do kodu JavaScript.
 
@@ -244,7 +248,7 @@ W tej sekcji pokazano, jak za pomocą interfejsu API usługi Maps trasy znaleź�
     });
     ```
 
-    Ten fragment kodu przeprowadzi zapytania do usługi routingu Azure Maps za pomocą metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Linia trasy jest następnie wyodrębniana z kolekcji funkcji GEOJSON z odpowiedzi wyodrębnionej za pomocą metody `geojson.getFeatures()`. Linia trasy jest następnie dodawana do źródła danych. Indeks 0 daje pewność, że jest renderowany przed jakimkolwiek innym wierszem w źródle danych. Ta czynność jest wymagana, ponieważ obliczanie trasy dla samochodów ciężarowych zachodzi często wolniej niż dla samochodów osobowych. Jeśli linia trasy dla samochodów ciężarowych zostanie dodana do źródła danych po trasie dla samochodów osobowych, zostanie wyrenderowana powyżej niej. Do linii trasy ciężarówki dodawane są dwie właściwości, kolor pociągnięcia, który jest całkiem odcień Niebieskia, a szerokość obrysu dziewięciu pikseli.
+    Ten fragment kodu przeprowadzi zapytania do usługi routingu Azure Maps za pomocą metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Linia trasy jest następnie wyodrębniana z kolekcji funkcji GEOJSON z odpowiedzi wyodrębnionej za pomocą metody `geojson.getFeatures()`. Linia trasy jest następnie dodawana do źródła danych. Indeks 0 daje pewność, że jest renderowany przed jakimkolwiek innym wierszem w źródle danych. Jest to realizowane, ponieważ Obliczanie trasy ciężarówki będzie często wolniejsze niż Obliczanie trasy samochodu. Jeśli linia trasa ciężarówki zostanie dodana do źródła danych po tej trasie samochodu, zostanie ona wyrenderowana powyżej. Do linii trasy ciężarówki dodawane są dwie właściwości, kolor pociągnięcia, który jest całkiem odcień Niebieskia, a szerokość obrysu dziewięciu pikseli.
 
 3. Dodaj następujący kod JavaScript, aby utworzyć trasę dla samochodu i wyświetlić wyniki.
 
@@ -270,7 +274,7 @@ W tej sekcji pokazano, jak za pomocą interfejsu API usługi Maps trasy znaleź�
 
     ![Określanie priorytetów tras za pomocą usługi Azure Route Service](./media/tutorial-prioritized-routes/prioritized-routes.png)
 
-    Trasa ciężarówki jest oznaczona grubą, niebieską linią, a trasa samochodu osobowego — cienką, purpurową linią. Trasa samochodu osobowego biegnie drogą I-90, przez Jezioro Waszyngtona, tunelami znajdującymi się pod dzielnicami mieszkaniowymi. Na tej trasie obowiązuje zakaz przewozu niebezpiecznych odpadów. Trasa ciężarówki uwzględnia ładunek należący do klasy 2 materiałów niebezpiecznych i została poprawnie poprowadzona inną autostradą.
+    Trasa ciężarówki jest gruba niebieska, a trasa samochodu jest cienka purpurowa. Trasa samochodowa odbywa się w jeziorach Waszyngton za pośrednictwem I-90, który przechodzi przez tunele w obszarach mieszkalnych. Ze względu na to, że tunele znajdują się blisko obszarów mieszkalnych, odpadi z odpadów niebezpiecznych są ograniczone. Trasa ciężarówki, która określa typ ładunku USHazmatClass2, jest skierowana do korzystania z innego autostrady.
 
 ## <a name="next-steps"></a>Następne kroki
 

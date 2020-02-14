@@ -132,7 +132,16 @@
           displayName: 'linked templates, nested templates'
           href: linked-templates.md
         - name: Tworzenie wielu wystąpień
-          href: create-multiple-instances.md
+          items:
+            - name: Zasoby
+              displayName: 'iteration,copy'
+              href: copy-resources.md
+            - name: Właściwości
+              displayName: 'iteration,copy'
+              href: copy-properties.md
+            - name: Zmienne
+              displayName: 'iteration,copy'
+              href: copy-variables.md
         - name: Zasoby na poziomie subskrypcji
           href: deploy-to-subscription.md
         - name: Zasoby na poziomie grupy zarządzania

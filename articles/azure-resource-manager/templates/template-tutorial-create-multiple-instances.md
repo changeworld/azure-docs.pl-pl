@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94a7218933935aa1a9d38a9fc420bb8d3f669492
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a37178f8dc8ecc3c61ca16f193e2e52c309d46
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472744"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209481"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Samouczek: tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager
 
@@ -108,7 +108,7 @@ Ukończony szablon wygląda następująco:
 }
 ```
 
-Aby uzyskać więcej informacji na temat tworzenia wielu wystąpień, zobacz [Wdrażanie wielu wystąpień zasobu lub właściwości w szablonach usługi Azure Resource Manager](./create-multiple-instances.md)
+Aby uzyskać więcej informacji na temat tworzenia wielu wystąpień, zobacz [Wdrażanie wielu wystąpień zasobu lub właściwości w szablonach usługi Azure Resource Manager](./copy-resources.md)
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
@@ -125,7 +125,7 @@ read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"

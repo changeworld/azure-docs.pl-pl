@@ -1,24 +1,24 @@
 ---
 title: 'Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python) | Mapy Microsoft Azure'
 description: Kierowanie pojazdów elektrycznych przy użyciu Microsoft Azure Maps Routing interfejsów API i Azure Notebooks.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22a8561d69dd0eeb22f9fe025f5b792422db2c17
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844755"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208169"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Samouczek: kierowanie pojazdów elektrycznych przy użyciu Azure Notebooks (Python)
 
-Azure Maps to portfolio interfejsów API usług geoprzestrzennych, które są natywnie zintegrowane z platformą Azure. Korzystając z tych interfejsów API, deweloperzy, przedsiębiorstwa i dostawcy oprogramowania mogą tworzyć aplikacje obsługujące lokalizacje, rozwiązania IoT, mobilności, logistyki i śledzenia zasobów. 
+Azure Maps to portfolio interfejsów API usług geoprzestrzennych, które są natywnie zintegrowane z platformą Azure. Te interfejsy API umożliwiają deweloperom, firmom i dostawcom oprogramowania Tworzenie aplikacji obsługujących lokalizacje, rzeczy, mobilności, logistycznych i rozwiązań do śledzenia zasobów. 
 
 Interfejsy API REST Azure Maps mogą być wywoływane z języków takich jak Python i R, aby umożliwić analizę danych geoprzestrzennych i scenariusze uczenia maszynowego. Azure Maps oferuje niezawodny zestaw [interfejsów API routingu](https://docs.microsoft.com/rest/api/maps/route) , które umożliwiają użytkownikom obliczanie tras między kilkoma punktami danych. Obliczenia są zależne od różnych warunków, takich jak typ pojazdu lub dostępny obszar. 
 
@@ -49,7 +49,7 @@ Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [
 
 Aby wykonać czynności opisane w tym samouczku, należy utworzyć projekt notesu platformy Azure i pobrać i uruchomić plik notesu Jupyter. Plik notesu zawiera kod języka Python, który implementuje scenariusz w tym samouczku. Aby utworzyć projekt notesu platformy Azure i przekazać do niego dokument notesu Jupyter, wykonaj następujące czynności:
 
-1. Przejdź do [notesów usługi Azure](https://notebooks.azure.com) i zaloguj się. Aby uzyskać więcej informacji, zobacz [Szybki Start: Logowanie i Ustawianie identyfikatora użytkownika](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. Przejdź do [Azure Notebooks](https://notebooks.azure.com) i zaloguj się. Aby uzyskać więcej informacji, zobacz [Szybki Start: Logowanie i Ustawianie identyfikatora użytkownika](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. W górnej części strony profilu publicznego wybierz pozycję **Moje projekty**.
 
     ![Przycisk moje projekty](./media/tutorial-ev-routing/myproject.png)
@@ -74,7 +74,7 @@ Aby wykonać czynności opisane w tym samouczku, należy utworzyć projekt notes
 
 1. Po pomyślnym zakończeniu przekazywania plik zostanie wyświetlony na stronie Twojego projektu. Kliknij dwukrotnie plik, aby otworzyć go jako Notes Jupyter.
 
-Aby lepiej zrozumieć funkcje zaimplementowane w pliku notesu, uruchom kod w notesie po jednej komórce naraz. Kod można uruchomić w każdej komórce, wybierając przycisk Run ( **Uruchom** ) w górnej części aplikacji Notes.
+Spróbuj zrozumieć funkcjonalność zaimplementowaną w pliku notesu. Uruchom kod w pliku notesu, po jednej komórce jednocześnie. Kod można uruchomić w każdej komórce, wybierając przycisk Run ( **Uruchom** ) w górnej części aplikacji Notes.
 
   ![Przycisk Uruchom](./media/tutorial-ev-routing/run.png)
 
@@ -83,12 +83,12 @@ Aby lepiej zrozumieć funkcje zaimplementowane w pliku notesu, uruchom kod w not
 Aby uruchomić kod w notesie, zainstaluj pakiety na poziomie projektu, wykonując następujące czynności:
 
 1. Pobierz plik [*Requirements. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [repozytorium Azure Maps Jupyter Notes](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), a następnie Przekaż go do projektu.
-1. Na pulpicie nawigacyjnym projektu wybierz **ustawienia projektu**. 
+1. Na pulpicie nawigacyjnym projektu wybierz pozycję **Ustawienia projektu**. 
 1. W okienku **Ustawienia projektu** wybierz kartę **środowisko** , a następnie wybierz pozycję **Dodaj**.
 1. W obszarze **czynności konfiguracyjne środowiska**wykonaj następujące czynności:   
     a. Z pierwszej listy rozwijanej wybierz pozycję **Requirements. txt**.  
     b. Z drugiej listy rozwijanej wybierz plik *Requirements. txt* .  
-    d. Z trzeciej listy rozwijanej wybierz **wersję 3,6 języka Python** jako wersję.
+    c. Z trzeciej listy rozwijanej wybierz **wersję 3,6 języka Python** jako wersję.
 1. Wybierz pozycję **Zapisz**.
 
     ![Instalowanie pakietów](./media/tutorial-ev-routing/install-packages.png)
@@ -156,7 +156,7 @@ boundsData = {
 
 Po ustaleniu dostępnego zakresu (isochrone) dla pojazdu elektrycznego można wyszukać stacje ładowania w tym zakresie. 
 
-Poniższy skrypt wywołuje Azure Maps [post Search w interfejsie API geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry). Wyszukuje ona stacje naładowania pojazdu elektrycznego w granicach maksymalnego osiągalnego zakresu samochodu, a następnie analizuje odpowiedź do tablicy osiągalnych lokalizacji.
+Poniższy skrypt wywołuje Azure Maps [post Search w interfejsie API geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry). Wyszukuje on stacje opłat dla pojazdu elektrycznego, w granicach maksymalnego osiągalnego zakresu samochodu. Następnie skrypt analizuje odpowiedź do tablicy osiągalnych lokalizacji.
 
 Aby wyszukać stacje opłat za pojazdy elektryczne w dostępnym zakresie, uruchom następujący skrypt:
 

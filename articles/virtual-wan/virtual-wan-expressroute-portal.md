@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 02/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: f9277fae00471bf67682015e017ae6dfa351ad65
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422865"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209430"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Samouczek: Tworzenie skojarzenia ExpressRoute przy użyciu wirtualnej sieci WAN platformy Azure
 
@@ -39,6 +39,8 @@ Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryt
 * Twoja sieć wirtualna nie ma żadnych bram sieci wirtualnej. Jeśli sieć wirtualna ma bramę (VPN lub ExpressRoute), należy usunąć wszystkie bramy. Ta konfiguracja wymaga, aby w zamian były połączone sieci wirtualne z bramą wirtualnego centrum sieci WAN.
 
 * Uzyskaj zakres adresów IP w regionie koncentratora. Centrum jest siecią wirtualną, która jest tworzona i używana przez wirtualną sieć WAN. Zakres adresów określony dla centrum nie może pokrywać się z żadną z istniejących sieci wirtualnych, z którymi się łączysz. Nie może również pokrywać się z zakresami adresów, z którymi łączysz się lokalnie. Jeśli nie znasz zakresów adresów IP znajdujących się w konfiguracji sieci lokalnej, koordynuj się z osobą, która może podać te szczegóły.
+
+* Obwód ExpressRoute musi być obwodem w warstwie Premium, aby można było połączyć się z bramą centrum.
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -103,7 +105,7 @@ W tej sekcji utworzysz połączenie komunikacji równorzędnej między centrum i
 
 ## <a name="connectcircuit"></a>Łączenie obwodu z bramą centrum
 
-Po utworzeniu bramy można podłączyć do niej [obwód ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . Należy zauważyć, że obwody usługi ExpressRoute w warstwie Premium, które znajdują się w lokalizacji obsługiwanej przez usługi ExpressRoute Global Reach, mogą łączyć się z wirtualną bramą ExpressRoute
+Po utworzeniu bramy można podłączyć do niej [obwód ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . Obwody usługi ExpressRoute w warstwie Premium, które znajdują się w ExpressRoute Global Reach — obsługiwane lokalizacje mogą łączyć się z wirtualną bramą ExpressRoute sieci WAN.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Aby połączyć obwód z bramą centrum
 

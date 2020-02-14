@@ -1,24 +1,24 @@
 ---
 title: 'Samouczek: Znajdowanie trasy do lokalizacji | Mapy Microsoft Azure'
 description: W tym samouczku przedstawiono sposób renderowania trasy do lokalizacji (punktu orientacyjnego) na mapie za pomocą usługi Routing Maps Microsoft Azure.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3fedb045773cb975d37e2d866862e7863a6232e3
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba9ef8ad98dd33bdd61875e5c1cf02e15a739c03
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989641"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208084"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Samouczek: kierowanie do punktu orientacyjnego za pomocą Azure Maps
 
-W tym samouczku pokazano, jak używać konta usługi Azure Maps i zestawu Route Service SDK w celu znalezienia trasy do punktu orientacyjnego. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak używać konta usługi Azure Maps i zestawu Route Service SDK w celu znalezienia trasy do punktu orientacyjnego. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie nowej strony internetowej przy użyciu interfejsu API kontrolki mapy
