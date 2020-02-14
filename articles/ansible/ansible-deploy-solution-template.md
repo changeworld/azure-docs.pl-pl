@@ -4,12 +4,12 @@ description: W tym przewodniku szybki start dowiesz się, jak wdrożyć szablon 
 keywords: ansible, azure, devops, szablon rozwiązania, maszyna wirtualna, tożsamości zarządzane dla zasobów platformy azure, centos, red hat
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: ebd01411ff27b0e95be21ef147098a90b6f62742
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: cc3a6c1f0ef36b51b62e6aa58f317aee13149589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156329"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193790"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Szybki Start: Wdrażanie szablonu rozwiązania rozwiązania ansible dla platformy Azure w usłudze CentOS
 
@@ -85,4 +85,4 @@ Szablon rozwiązania Ansible platformy Azure jest zaprojektowany tak, aby umożl
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Szybki Start: Konfigurowanie maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu rozwiązania ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Szybki Start: Konfigurowanie maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu rozwiązania ansible](./ansible-create-vm.md)

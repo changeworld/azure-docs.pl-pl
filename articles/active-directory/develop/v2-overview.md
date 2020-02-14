@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700298"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194504"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) — Omówienie
 
@@ -42,7 +42,11 @@ Korzystając z platformy tożsamości firmy Microsoft, możesz napisać kod jede
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Praca z tożsamościami nie musi być trudna. Wybierz [scenariusz](authentication-flows-app-scenarios.md) , który ma zastosowanie do Ciebie — każda ścieżka scenariusza zawiera Przewodnik Szybki Start i stronę z omówieniem, aby rozpocząć działanie w ciągu kilku minut:
+Praca z tożsamościami nie musi być trudna. 
+
+Obejrzyj [film wideo dotyczący platformy tożsamości firmy Microsoft](identity-videos.md) , aby poznać podstawy. 
+
+Wybierz [scenariusz](authentication-flows-app-scenarios.md) , który ma zastosowanie do Ciebie — każda ścieżka scenariusza zawiera Przewodnik Szybki Start i stronę z omówieniem, aby rozpocząć działanie w ciągu kilku minut:
 
 - [Tworzenie aplikacji jednostronicowej](scenario-spa-overview.md)
 - [Tworzenie aplikacji sieci Web, która umożliwia użytkownikom logowanie się](scenario-web-app-sign-user-overview.md)

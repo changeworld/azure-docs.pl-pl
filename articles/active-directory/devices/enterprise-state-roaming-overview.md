@@ -1,41 +1,41 @@
 ---
-title: Co to jest enterprise roaming stanu dla usługi Azure Active Directory? | Microsoft Docs
-description: Roaming stanu dla przedsiębiorstw udostępnia użytkownikom na ich urządzeniach Windows ujednoliconego środowiska i skraca czas potrzebny do konfigurowania nowego urządzenia.
+title: Co to jest roaming stanu przedsiębiorstwa w Azure Active Directory?
+description: Enterprise State Roaming zapewnia użytkownikom ujednolicone środowisko na urządzeniach z systemem Windows
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5b60970592180a2353860369e637d4b9a9bb8f9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481905"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194283"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Co to jest roaming stanu dla przedsiębiorstw?
 
-W systemie Windows 10 [usługi Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) użytkownicy zyskują możliwość bezpiecznego zsynchronizować swoje ustawienia użytkownika i dane ustawień aplikacji w chmurze. Roaming stanu dla przedsiębiorstw udostępnia użytkownikom na ich urządzeniach Windows ujednoliconego środowiska i skraca czas potrzebny do konfigurowania nowego urządzenia. Roaming stanu dla przedsiębiorstw działa podobnie do standardowych [synchronizację ustawień odbiorcy](https://go.microsoft.com/fwlink/?linkid=2015135) która została wprowadzona w systemie Windows 8. Ponadto Roaming stanu dla przedsiębiorstw oferuje:
+W systemie Windows 10 Użytkownicy [usługi Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) mogą bezpiecznie synchronizować ustawienia użytkownika i dane ustawień aplikacji z chmurą. Enterprise State Roaming zapewnia użytkownikom ujednolicone środowisko na urządzeniach z systemem Windows i skraca czas wymagany do skonfigurowania nowego urządzenia. Enterprise State Roaming działa podobnie do standardowej [synchronizacji ustawień klienta](https://go.microsoft.com/fwlink/?linkid=2015135) , która została wprowadzona po raz pierwszy w systemie Windows 8. Ponadto Enterprise State Roaming oferuje:
 
-* **Rozdzielenie firmowych i dane klienta** — organizacje są kontrolę nad ich danymi i nie ma żadnych mieszanie danych firmowych konsumenta koncie w chmurze lub odbiorcy danych na koncie usługi enterprise cloud.
-* **Zwiększone zabezpieczenia** — dane są automatycznie szyfrowane przed opuszczeniem urządzenia z systemem Windows 10 użytkownika za pomocą usługi Azure Rights Management (Azure RMS) i danych pozostaje zaszyfrowany magazynowanych w chmurze. Cała zawartość pozostaje zaszyfrowany magazynowanych w chmurze, z wyjątkiem przestrzeni nazw, takich jak ustawienia nazwy i nazwy aplikacji Windows.  
-* **Lepsze zarządzanie i monitorowanie** — udostępnia kontroli i widoczności w porównaniu z który synchronizuje ustawienia w Twojej organizacji i na których urządzeniach za pośrednictwem portalu integracji usługi Azure AD. 
+* **Rozdzielenie danych firmowych i konsumenckich** — organizacje mają kontrolę nad swoimi danymi, a dane firmowe nie są używane na koncie w chmurze klienta lub w danych konsumenta na koncie w chmurze przedsiębiorstwa.
+* **Ulepszone zabezpieczenia** — dane są szyfrowane automatycznie przed opuszczeniem urządzenia z systemem Windows 10 przy użyciu usługi Azure Rights Management (Azure RMS), a dane pozostają zaszyfrowane w chmurze. Cała zawartość pozostaje zaszyfrowana w chmurze, z wyjątkiem przestrzeni nazw, takich jak nazwy ustawień i nazwy aplikacji systemu Windows.  
+* **Lepsze zarządzanie i monitorowanie** — zapewnia kontrolę nad tym, kto synchronizuje ustawienia w organizacji oraz na urządzeniach korzystających z integracji portalu usługi Azure AD. 
 
-Roaming stanu dla przedsiębiorstw jest dostępna w wielu regionach platformy Azure. Zaktualizowaną listę dostępnych regionów można znaleźć na [usług platformy Azure według regionów](https://azure.microsoft.com/regions/#services) stronie w obszarze Azure Active Directory.
+Enterprise State Roaming jest dostępny w wielu regionach świadczenia usługi Azure. Zaktualizowaną listę dostępnych regionów można znaleźć na stronie [usługi platformy Azure według regionów](https://azure.microsoft.com/regions/#services) w obszarze Azure Active Directory.
 
 | Artykuł | Opis |
 | --- | --- |
-| [Włączanie roamingu stanu przedsiębiorstwa w usłudze Azure Active Directory](enterprise-state-roaming-enable.md) |Roaming stanu dla przedsiębiorstw jest dostępny dla każdej organizacji z subskrypcją Premium usługi Azure Active Directory (Azure AD). Aby uzyskać szczegółowe informacje na temat sposobu uzyskania subskrypcję usługi Azure AD, zobacz [produktu Azure AD](https://azure.microsoft.com/services/active-directory) strony. |
-| [Często zadawane pytania dotyczące roaming ustawień i danych](enterprise-state-roaming-faqs.md) |W tym temacie odpowiedzi na kilka pytań, na które Administratorzy IT mogą się pojawić w ustawień i synchronizacji danych w aplikacji. |
-| [Zasady grupy i ustawienia zarządzania urządzeniami Przenośnymi w celu ustawienia synchronizacji](enterprise-state-roaming-group-policy-settings.md) |Systemu Windows 10 udostępnia zasady grupy i zarządzanie urządzeniami przenośnymi (MDM) ustawienia zasad w celu ograniczenia synchronizację ustawień. |
-| [Informacje dotyczące ustawień roamingu systemu Windows 10](enterprise-state-roaming-windows-settings-reference.md) |Oto Pełna lista wszystkich ustawień które będą się korzystania z roamingu i/lub kopię w górę w systemie Windows 10. |
-| [Rozwiązywanie problemów](enterprise-state-roaming-troubleshooting.md) |W tym temacie omówiono niektóre podstawowe kroki rozwiązywania problemów i zawiera listę znanych problemów. |
+| [Włącz Enterprise State Roaming w Azure Active Directory](enterprise-state-roaming-enable.md) |Enterprise State Roaming jest dostępna dla każdej organizacji z subskrypcją Azure Active Directory Premium (Azure AD). Aby uzyskać więcej informacji na temat uzyskiwania subskrypcji usługi Azure AD, zobacz stronę [produktu usługi Azure AD](https://azure.microsoft.com/services/active-directory) . |
+| [Ustawienia i roaming danych — często zadawane pytania](enterprise-state-roaming-faqs.md) |W tym artykule znajdują się odpowiedzi na pytania, które mogą być dostępne dla administratorów IT dotyczących ustawień i synchronizacji danych aplikacji. |
+| [Zasady grupy i ustawienia MDM dla synchronizacji ustawień](enterprise-state-roaming-group-policy-settings.md) |System Windows 10 udostępnia ustawienia zasad zasady grupy i zarządzania urządzeniami przenośnymi (MDM) w celu ograniczenia synchronizacji ustawień. |
+| [Dokumentacja ustawień mobilnych systemu Windows 10](enterprise-state-roaming-windows-settings-reference.md) |Lista ustawień, które będą przekazywane i/lub tworzone w systemie Windows 10. |
+| [Rozwiązywanie problemów](enterprise-state-roaming-troubleshooting.md) |W tym artykule przedstawiono kilka podstawowych kroków dotyczących rozwiązywania problemów i zawiera listę znanych problemów. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać informacje na temat włączania, roaming stanu dla przedsiębiorstw, zobacz [włączyć roaming stanu dla przedsiębiorstw](enterprise-state-roaming-enable.md).
+Aby uzyskać informacje na temat włączania roamingu stanu przedsiębiorstwa, zobacz [Włączanie roamingu stanu przedsiębiorstwa](enterprise-state-roaming-enable.md).

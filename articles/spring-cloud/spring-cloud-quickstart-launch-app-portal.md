@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3f461e625101c578cc3029c6804cea801365d092
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137752"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201547"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Szybki Start: uruchamianie istniejącej aplikacji w chmurze platformy Azure przy użyciu Azure Portal
 
@@ -76,9 +76,7 @@ Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetl
 
 1. Przejdź do strony **Przegląd** usługi i wybierz pozycję **serwer konfiguracji**.
 
-1. W sekcji **repozytorium domyślne** Ustaw **Identyfikator URI** na "https\://GitHub.com/Azure-Samples/piggymetrics".
-
-1. Ustaw **etykietę** na "config".
+1. W sekcji **repozytorium domyślne** Ustaw **Identyfikator URI** na "https://github.com/Azure-Samples/piggymetrics-config".
 
 1. Wybierz pozycję **Zastosuj** , aby zapisać zmiany.
 

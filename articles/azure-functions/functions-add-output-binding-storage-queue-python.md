@@ -3,12 +3,12 @@ title: Dodawanie powiązania kolejki usługi Azure Storage do funkcji języka Py
 description: Integrowanie kolejki usługi Azure Storage z funkcją języka Python za pomocą powiązania danych wyjściowych.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: 14a381d13da052fd67679ed17bbb6b6711f7a0e6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715372"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198483"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Dodawanie powiązania kolejki usługi Azure Storage do funkcji języka Python
 
@@ -156,7 +156,7 @@ Zwróć uwagę, że *nie* musisz pisać żadnego kodu do uwierzytelniania, pobie
 1. Gdy skończysz, Zatrzymaj hosta za pomocą **kombinacji klawiszy Ctrl**+**C**.
 
 > [!TIP]
-> Podczas uruchamiania Host pobiera i instaluje [rozszerzenie powiązania magazynu](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) oraz inne rozszerzenia powiązań firmy Microsoft. Ta instalacja jest wykonywana, ponieważ rozszerzenia powiązań są domyślnie włączone w pliku *host. JSON* o następujących właściwościach:
+> Podczas uruchamiania Host pobiera i instaluje [rozszerzenie powiązania magazynu](functions-bindings-storage-blob.md#add-to-your-functions-app) oraz inne rozszerzenia powiązań firmy Microsoft. Ta instalacja jest wykonywana, ponieważ rozszerzenia powiązań są domyślnie włączone w pliku *host. JSON* o następujących właściwościach:
 >
 > ```json
 > {

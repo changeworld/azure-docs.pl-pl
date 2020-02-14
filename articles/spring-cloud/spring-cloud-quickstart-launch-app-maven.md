@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: a8ccda88239a150a24c9abaf6ebb172f0fd01dba
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd8ce6d9b4dc63592e491a06a0055a7d065252b5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278926"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201439"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Szybki Start: uruchamianie aplikacji w chmurze ze sprężyną na platformie Azure przy użyciu wtyczki Maven
 
@@ -33,7 +33,7 @@ Postępując zgodnie z tym przewodnikiem Szybki Start, dowiesz się, jak:
 >[!TIP]
 > Azure Cloud Shell to bezpłatna interaktywna powłoka, której można użyć do uruchomienia poleceń z tego artykułu. Ma ona popularne narzędzia platformy Azure preinstalowane, w tym najnowsze wersje narzędzia Git, zestawu Java Development Kit (JDK), Maven i interfejsu wiersza polecenia platformy Azure. Jeśli logujesz się do subskrypcji platformy Azure, uruchom [Azure Cloud Shell](https://shell.azure.com). Aby uzyskać więcej informacji, zobacz [omówienie Azure Cloud Shell](../cloud-shell/overview.md).
 
-Aby ukończyć ten przewodnik Szybki start:
+Aby ukończyć ten przewodnik Szybki Start:
 
 1. [Zainstaluj oprogramowanie Git](https://git-scm.com/).
 2. [Zainstaluj program JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
@@ -63,7 +63,7 @@ Wdrożenie usługi wymaga około 5 minut. Po wdrożeniu usługi wybierz pozycję
 ## <a name="set-up-your-configuration-server"></a>Konfigurowanie serwera konfiguracji
 
 1. Na stronie **Przegląd** usługi wybierz opcję **serwer konfiguracji**.
-1. W sekcji **repozytorium domyślne** Ustaw **identyfikator URI** na **https://github.com/Azure-Samples/piggymetrics** , ustaw wartość **etykieta** na **config**, a następnie wybierz pozycję **Zastosuj** , aby zapisać zmiany.
+1. W sekcji **repozytorium domyślne** Ustaw **identyfikator URI** na **https://github.com/Azure-Samples/piggymetrics-config** , a następnie wybierz pozycję **Zastosuj** , aby zapisać zmiany.
 
     > [!div class="mx-imgBorder"]
     > ![zdefiniować i zastosować ustawienia konfiguracji](media/maven-qs-apply-config.jpg)
@@ -100,7 +100,7 @@ Wdrożenie usługi wymaga około 5 minut. Po wdrożeniu usługi wybierz pozycję
 
     b. Wybierz subskrypcję i klaster usługi w chmurze Azure wiosennej.
 
-    d. Na liście podanych projektów wprowadź numer, który odpowiada `gateway`, aby przyznać mu publiczny dostęp.
+    c. Na liście podanych projektów wprowadź numer, który odpowiada `gateway`, aby przyznać mu publiczny dostęp.
     
     d. Potwierdź konfigurację.
 
