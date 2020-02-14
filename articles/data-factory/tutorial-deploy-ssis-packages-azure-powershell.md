@@ -1,6 +1,6 @@
 ---
-title: Udostępnianie Azure-SSIS Integration Runtime przy użyciu programu PowerShell
-description: Dowiedz się, jak aprowizować środowisko Azure-SSIS Integration Runtime w usłudze Azure Data Factory za pomocą programu PowerShell w celu wdrażania i uruchamiania pakietów SSIS na platformie Azure.
+title: Konfigurowanie Azure-SSIS Integration Runtime przy użyciu programu PowerShell
+description: Dowiedz się, jak skonfigurować Azure-SSIS Integration Runtime w Azure Data Factory za pomocą programu PowerShell, dzięki czemu możesz wdrażać i uruchamiać pakiety usług SSIS na platformie Azure.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -14,54 +14,63 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: e7baed6e599df6630eb5dc4aa7a2cdf37533c814
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e8dd9f310c303cc5a1c6db6150cf4d350b0da672
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964570"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187499"
 ---
-# <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>Aprowizowanie środowiska Azure-SSIS Integration Runtime w usłudze Azure Data Factory za pomocą programu PowerShell
+# <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Konfigurowanie Azure-SSIS IR w Azure Data Factory przy użyciu programu PowerShell
 
-Ten samouczek zawiera kroki umożliwiające zainicjowanie obsługi Integration Runtime (IR) na platformie SQL Server Integration Services Azure w Azure Data Factory (ADF). Azure-SSIS IR obsługuje uruchamianie pakietów wdrożonych w katalogu usług SSIS (SSISDB) hostowanych przez Azure SQL Database Server/wystąpienie zarządzane (model wdrażania projektu) i te wdrożone w systemach plików/udziałach plików/Azure Files (model wdrażania pakietu). Po zainicjowaniu Azure-SSIS IR można korzystać ze znanych narzędzi, takich jak SQL Server/SQL Management Studio Server Tools (SSDT), a także narzędzi wiersza polecenia, takich jak `dtinstall`/`dtutil`/`dtexec`, aby wdrażać i uruchamiać pakiety na platformie Azure. W tym samouczku wykonasz następujące czynności:
+W tym samouczku przedstawiono sposób tworzenia Integration Runtime SQL Server Integration Services platformy Azure (Azure-SSIS IR) w Azure Data Factory. Azure-SSIS IR obsługuje uruchamianie pakietów wdrożonych w programie:
+* Katalog usług SSIS (SSISDB), który jest hostowany w wystąpieniu serwera Azure SQL Database lub wystąpienia zarządzanego (model wdrażania projektu).
+* Systemy plików, udziały plików lub udział Azure Files (model wdrażania pakietu). 
+
+Po skonfigurowaniu Azure-SSIS IR można używać dobrze znanych narzędzi, takich jak SQL Server Data Tools (SSDT) i SQL Server Management Studio (SSMS), aby wdrażać i uruchamiać pakiety na platformie Azure. Możesz również używać narzędzi wiersza polecenia, takich jak `dtinstall`, `dtutil`i `dtexec`.  
 
 > [!NOTE]
-> W tym artykule zainicjowano Azure-SSIS IR przy użyciu Azure PowerShell. Aby użyć aplikacji Azure Portal/ADF do aprowizacji Azure-SSIS IR, zobacz [Samouczek: Inicjowanie obsługi Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md). 
+> W tym artykule pokazano, jak skonfigurować Azure-SSIS IR za pomocą Azure PowerShell. Aby skonfigurować Azure-SSIS IR za pomocą aplikacji Azure Portal lub Azure Data Factory, zobacz [Samouczek: konfigurowanie Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md). 
 
+W tym samouczku zostaną wykonane następujące czynności:
 > [!div class="checklist"]
 > * Tworzenie fabryki danych.
-> * Tworzenie środowiska Azure SSIS Integration Runtime
-> * Uruchamianie środowiska Azure SSIS Integration Runtime
-> * Przeglądanie kompletnego skryptu
-> * Wdrażanie pakietów usług SSIS
+> * Utwórz Azure-SSIS Integration Runtime.
+> * Uruchom Azure-SSIS Integration Runtime.
+> * Przejrzyj kompletny skrypt.
+> * Wdróż pakiety usług SSIS.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto. Aby uzyskać koncepcyjne informacje dotyczące środowiska Azure SSIS IR, zobacz [Omówienie środowiska Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).
-- **Serwer Azure SQL Database (opcjonalnie)** . Jeśli nie masz jeszcze serwera bazy danych, utwórz go w Azure Portal przed rozpoczęciem pracy. ADF utworzy SSISDB na tym serwerze bazy danych. Zaleca się utworzenie serwera bazy danych w tym samym regionie platformy Azure, co środowisko Integration Runtime. Ta konfiguracja umożliwia wykonywanie dzienników wykonywania zapisu środowiska Integration Runtime w usłudze SSISDB bez przekroczenia regionów świadczenia usługi Azure. 
-    - W zależności od wybranego serwera bazy danych baza danych SSISDB może zostać utworzona w Twoim imieniu jako pojedyncza baza danych, jako część elastycznej puli lub w ramach wystąpienia zarządzanego i może być dostępna w sieci publicznej lub przez dołączenie do sieci wirtualnej. Aby uzyskać wskazówki dotyczące wybierania typu serwera bazy danych do hostowania SSISDB, zobacz [porównanie Azure SQL Database pojedynczej bazy danych, elastycznej puli i wystąpienia zarządzanego](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). Jeśli używasz serwera Azure SQL Database z regułami zapory IP/punktami końcowymi usługi sieci wirtualnej lub wystąpieniem zarządzanym z prywatnym punktem końcowym do hostowania SSISDB lub potrzebujesz dostępu do danych lokalnych bez konfigurowania samoobsługowego środowiska IR, musisz dołączyć Azure-SSIS IR do sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [tworzenie Azure-SSIS IR w sieci wirtualnej](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
-    - Upewnij się, że ustawienie **Zezwalaj na dostęp do usług platformy Azure** jest włączone dla serwera bazy danych. To ustawienie nie ma zastosowania w przypadku używania serwera Azure SQL Database z regułami zapory IP/punktami końcowymi usługi sieci wirtualnej lub wystąpieniem zarządzanym z prywatnym punktem końcowym do hostowania SSISDB. Aby uzyskać więcej informacji, zobacz artykuł [Secure your Azure SQL database (Zabezpieczenia bazy danych Azure SQL Database)](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Aby włączyć to ustawienie przy użyciu programu PowerShell, zobacz polecenie [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
-    - Dodaj adres IP komputera klienckiego lub zakres adresów IP, który zawiera adres IP komputera klienckiego, na listę adres IP klienta w ustawieniach zapory dla serwera bazy danych. Aby uzyskać więcej informacji, zobacz [Reguły zapory na poziomie serwera i na poziomie bazy danych usługi Azure SQL Database](../sql-database/sql-database-firewall-configure.md).
-    - Można nawiązać połączenie z serwerem bazy danych przy użyciu uwierzytelniania SQL z poświadczeniami administratora serwera lub uwierzytelnianiem Azure Active Directory (AAD) z tożsamością zarządzaną dla Twojego ADF.  W przypadku drugiego rozwiązania musisz dodać tożsamość zarządzaną usługi Azure Data Factory do grupy usługi AAD z uprawnieniami dostępu do serwera bazy danych. Aby uzyskać więcej informacji na ten temat, zobacz [Tworzenie środowiska Azure-SSIS IR przy użyciu uwierzytelniania usługi AAD](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
-    - Upewnij się, że serwer bazy danych nie ma już SSISDB. Inicjowanie obsługi Azure-SSIS IR nie obsługuje korzystania z istniejącej SSISDB.
-- Zainstalowanie programu **Azure PowerShell**. Postępuj zgodnie z instrukcjami w temacie [jak zainstalować i skonfigurować Azure PowerShell](/powershell/azure/install-Az-ps), jeśli chcesz uruchomić skrypt programu PowerShell w celu aprowizacji Azure-SSIS IR.
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/). Aby uzyskać informacje koncepcyjne na temat Azure-SSIS IR, zobacz [Azure-SSIS Integration Runtime Omówienie](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+
+- Obowiązkowe Serwer Azure SQL Database. Jeśli nie masz jeszcze serwera bazy danych, utwórz go w witrynie Azure Portal, zanim zaczniesz. Azure Data Factory spowoduje włączenie tworzenia SSISDB na tym serwerze bazy danych. Zaleca się utworzenie serwera bazy danych w tym samym regionie platformy Azure, co środowisko Integration Runtime. Ta konfiguracja pozwala środowisku Integration Runtime zapisywać dzienniki wykonywania SSISDB bez wykraczania poza granice regionów świadczenia usług platformy Azure. 
+    - Na podstawie wybranego serwera bazy danych SSISDB można utworzyć w Twoim imieniu jako pojedynczą bazę danych, część puli elastycznej lub w wystąpieniu zarządzanym i dostępna w sieci publicznej lub przez dołączenie do sieci wirtualnej. Aby uzyskać wskazówki dotyczące wybierania typu serwera bazy danych do hostowania SSISDB, zobacz [porównanie Azure SQL Database pojedynczej bazy danych, elastycznej puli i wystąpienia zarządzanego](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). 
+    
+      W przypadku korzystania z serwera Azure SQL Database z użyciem zapory IP lub punktów końcowych usługi sieci wirtualnej albo wystąpienia zarządzanego z prywatnym punktem końcowym do hostowania SSISDB lub gdy wymagany jest dostęp do danych lokalnych bez konfigurowania samoobsługowego środowiska IR, Dołącz do Azure-SSIS IR Sieć wirtualna. Aby uzyskać więcej informacji, zobacz [tworzenie Azure-SSIS IR w sieci wirtualnej](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+    - Upewnij się, że ustawienie **Zezwalaj na dostęp do usług platformy Azure** jest włączone dla serwera bazy danych. To ustawienie nie ma zastosowania w przypadku używania serwera Azure SQL Database z regułami zapory IP lub punktów końcowych usługi sieci wirtualnej albo wystąpienia zarządzanego z prywatnym punktem końcowym do hostowania SSISDB. Aby uzyskać więcej informacji, zobacz artykuł [Secure your Azure SQL database (Zabezpieczenia bazy danych Azure SQL Database)](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Aby włączyć to ustawienie przy użyciu programu PowerShell, zobacz polecenie [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
+    - Dodaj adres IP komputera klienckiego lub zakres adresów IP, w tym adres IP komputera klienckiego, do listy adres IP klienta w ustawieniach zapory dla serwera bazy danych. Aby uzyskać więcej informacji, zobacz [Reguły zapory na poziomie serwera i na poziomie bazy danych usługi Azure SQL Database](../sql-database/sql-database-firewall-configure.md).
+    - Można nawiązać połączenie z serwerem bazy danych przy użyciu uwierzytelniania SQL z poświadczeniami administratora serwera lub uwierzytelnianie Azure Active Directory (Azure AD) z zarządzaną tożsamością dla fabryki danych. Aby w ramach uwierzytelniania usługi Azure AD dodać tożsamość zarządzaną fabryki danych do grupy usługi Azure AD z uprawnieniami dostępu do serwera bazy danych, zobacz [tworzenie Azure-SSIS IR przy użyciu uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+    - Upewnij się, że serwer bazy danych nie ma jeszcze SSISDB. Skonfigurowanie Azure-SSIS IR nie obsługuje korzystania z istniejącej SSISDB.
+
+- Azure PowerShell. Aby uruchomić skrypt programu PowerShell w celu skonfigurowania Azure-SSIS IR, postępuj zgodnie z instrukcjami podanymi w temacie [Instalowanie i konfigurowanie Azure PowerShell](/powershell/azure/install-Az-ps).
 
 > [!NOTE]
-> - Aby zapoznać się z listą regionów świadczenia usługi Azure, w których obecnie są dostępne ADF i Azure-SSIS IR, zapoznaj się z tematem obsługa systemu APD i usług [SSIS IR](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all) 
+> Listę regionów świadczenia usługi Azure, w których Azure Data Factory i Azure-SSIS IR są obecnie dostępne, można znaleźć w temacie [Azure Data Factory i Azure-SSIS IR dostępność według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
 
-## <a name="launch-windows-powershell-ise"></a>Uruchamianie programu Windows PowerShell ISE
+## <a name="open-the-windows-powershell-ise"></a>Otwórz Windows PowerShell ISE
 
-Uruchom program **Windows PowerShell ISE** przy użyciu uprawnień administracyjnych. 
+Otwórz środowisko Windows PowerShell Integrated Scripting Environment (ISE) z uprawnieniami administratora. 
 
 ## <a name="create-variables"></a>Tworzenie zmiennych
 
-Skopiuj i wklej następujący skrypt — Określ wartości dla zmiennych. 
+Skopiuj następujący skrypt do ISE. Określ wartości zmiennych. 
 
 ```powershell
 ### Azure Data Factory info
-# If your input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$"
+# If your input contains a PSH special character (for example, "$"), precede it with the escape character "`" (for example, "`$")
 $SubscriptionName = "[your Azure subscription name]"
 $ResourceGroupName = "[your Azure resource group name]"
 # Data factory name - Must be globally unique
@@ -69,7 +78,7 @@ $DataFactoryName = "[your data factory name]"
 # For supported regions, see https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all
 $DataFactoryLocation = "EastUS"
 
-### Azure-SSIS integration runtime info - This is a Data Factory compute resource for running SSIS packages
+### Azure-SSIS Integration Runtime info; this is a Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[your Azure-SSIS IR name]"
 $AzureSSISDescription = "[your Azure-SSIS IR description]"
 # For supported regions, see https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all
@@ -79,7 +88,7 @@ $AzureSSISNodeSize = "Standard_D8_v3"
 # 1-10 nodes are currently supported
 $AzureSSISNodeNumber = 2 
 # Azure-SSIS IR edition/license info: Standard or Enterprise 
-$AzureSSISEdition = "Standard" # Standard by default, while Enterprise lets you use advanced/premium features on your Azure-SSIS IR
+$AzureSSISEdition = "Standard" # Standard by default, although Enterprise lets you use advanced/premium features on your Azure-SSIS IR
 # Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
 $AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
 # For a Standard_D1_v2 node, up to 4 parallel executions per node are supported, but for other nodes, up to (2 x number of cores) are currently supported
@@ -89,11 +98,11 @@ $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob contain
 $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or Managed Instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you do not use SSISDB]" # WARNING: If you use SSISDB, please ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
+$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you use SSISDB, please ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication]"
 # For the basic pricing tier, specify "Basic", not "B" - For standard/premium/elastic pool tiers, specify "S0", "S1", "S2", "S3", etc., see https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for Managed Instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for managed instance]"
 
 ### Self-hosted integration runtime info - This can be configured as a proxy for on-premises data access 
 $DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-premises data access 
@@ -101,21 +110,21 @@ $DataProxyStagingLinkedServiceName = "" # OPTIONAL to configure a proxy for on-p
 $DataProxyStagingPath = "" # OPTIONAL to configure a proxy for on-premises data access 
 ```
 
-## <a name="sign-in-and-select-subscription"></a>Logowanie i wybieranie subskrypcji
+## <a name="sign-in-and-select-your-subscription"></a>Zaloguj się i wybierz swoją subskrypcję
 
-Dodaj następujący kod skryptu, aby się zalogować, i wybierz subskrypcję platformy Azure.
+Aby zalogować się i wybrać subskrypcję platformy Azure, Dodaj następujący kod do skryptu:
 
 ```powershell
 Connect-AzAccount
 Select-AzSubscription -SubscriptionName $SubscriptionName
 ```
 
-## <a name="validate-the-connection-to-database-server"></a>Weryfikowanie połączenia z serwerem bazy danych
+## <a name="validate-the-connection-to-your-database-server"></a>Weryfikowanie połączenia z serwerem bazy danych
 
-Dodaj następujący skrypt, aby zweryfikować serwer Azure SQL Database. 
+Aby zweryfikować serwer Azure SQL Database, Dodaj następujący skrypt: 
 
 ```powershell
-# Validate only if you use SSISDB
+# Validate only if you're using SSISDB
 if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
 {
     $SSISDBConnectionString = "Data Source=" + $SSISDBServerEndpoint + ";User ID=" + $SSISDBServerAdminUserName + ";Password=" + $SSISDBServerAdminPassword    
@@ -137,9 +146,7 @@ if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
 }
 ```
 
-Aby utworzyć Azure SQL Database w ramach skryptu, zobacz następujący przykład: 
-
-Ustaw wartości dla zmiennych, które nie zostały jeszcze zdefiniowane. Na przykład: SSISDBServerName, FirewallIPAddress. 
+Aby utworzyć wystąpienie Azure SQL Database jako część skryptu, zapoznaj się z poniższym przykładem. Ustaw wartości dla zmiennych, które nie zostały jeszcze zdefiniowane (na przykład SSISDBServerName, FirewallIPAddress). 
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $ResourceGroupName `
@@ -154,11 +161,11 @@ New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName `
 New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $SSISDBServerName -AllowAllAzureIPs
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
-Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/management/overview.md) za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy.
+Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/management/overview.md) za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Grupa zasobów jest kontenerem logicznym, do którego zasoby platformy Azure są wdrażane i zarządzane jako Grupa.
 
-Jeśli grupa zasobów już istnieje, nie Kopiuj tego kodu do skryptu. 
+Jeśli grupa zasobów już istnieje, nie kopiuj tego kodu do skryptu. 
 
 ```powershell
 New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -174,11 +181,9 @@ Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
     -Name $DataFactoryName
 ```
 
-## <a name="create-an-integration-runtime"></a>Tworzenie środowiska Integration Runtime
+## <a name="create-an-azure-ssis-integration-runtime"></a>Tworzenie Azure-SSIS Integration Runtime
 
-Uruchom następujące polecenia, aby utworzyć środowisko Azure-SSIS Integration Runtime, które uruchamia pakiety usług SSIS na platformie Azure.
-
-Jeśli nie używasz SSISDB, możesz pominąć parametry CatalogServerEndpoint, CatalogPricingTier i CatalogAdminCredential.
+Aby utworzyć Azure-SSIS Integration Runtime, w których są uruchamiane pakiety usług SSIS na platformie Azure, uruchom następujące polecenia. Jeśli nie używasz SSISDB, możesz pominąć parametry CatalogServerEndpoint, CatalogPricingTier i CatalogAdminCredential.
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
@@ -193,7 +198,7 @@ Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
     -LicenseType $AzureSSISLicenseType `
     -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode
 
-# Add CatalogServerEndpoint, CatalogPricingTier, and CatalogAdminCredential parameters if you use SSISDB
+# Add CatalogServerEndpoint, CatalogPricingTier, and CatalogAdminCredential parameters if you're using SSISDB
 if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
 {
     $secpasswd = ConvertTo-SecureString $SSISDBServerAdminPassword -AsPlainText -Force
@@ -254,7 +259,7 @@ if(![string]::IsNullOrEmpty($ExpressCustomSetup))
         -ExpressCustomSetup $setups
 }
 
-# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data accesss
+# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data access
 if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::IsNullOrEmpty($DataProxyStagingLinkedServiceName))
 {
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
@@ -273,9 +278,9 @@ if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::Is
 }
 ```
 
-## <a name="start-integration-runtime"></a>Uruchamianie środowiska Integration Runtime
+## <a name="start-the-azure-ssis-integration-runtime"></a>Uruchom Azure-SSIS Integration Runtime
 
-Uruchom następujące polecenia, aby uruchomić środowisko Azure-SSIS Integration Runtime.
+Aby uruchomić Azure-SSIS IR, uruchom następujące polecenia:
 
 ```powershell
 write-host("##### Starting #####")
@@ -289,24 +294,24 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 ```
 
 > [!NOTE]
-> Bez czasu instalacji niestandardowej ten proces powinien zostać zakończony w ciągu 5 minut.
+> Bez czasu instalacji niestandardowej ten proces powinien zostać zakończony w ciągu pięciu minut.
 >
-> Jeśli używasz SSISDB, usługa ADF będzie łączyć się z serwerem bazy danych w celu przygotowania SSISDB. 
+> Jeśli używasz SSISDB, usługa Azure Data Factory będzie łączyć się z serwerem bazy danych w celu przygotowania SSISDB. 
 > 
-> Podczas aprowizacji Azure-SSIS IR są również instalowane narzędzia do redystrybucyjny i pakiet Azure Feature Pack dla usług SSIS. Te składniki zapewniają łączność z plikami programu Excel/Access i różnymi źródłami danych platformy Azure, a także ze źródłami danych, które są już obsługiwane przez wbudowane składniki. Możesz również zainstalować dodatkowe składniki, zobacz [Konfiguracja niestandardowa dla Azure-SSIS IR](how-to-configure-azure-ssis-ir-custom-setup.md).
+> Po skonfigurowaniu Azure-SSIS IR są również instalowane pakiety redystrybucyjne i Azure Feature Pack dla usług SSIS. Te składniki zapewniają łączność z plikami programu Excel/Access i różnymi źródłami danych platformy Azure, a także ze źródłami danych, które są już obsługiwane przez wbudowane składniki. Możesz również zainstalować dodatkowe składniki, zobacz [Konfiguracja niestandardowa dla Azure-SSIS IR](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ## <a name="full-script"></a>Pełny skrypt
 
 Skrypt programu PowerShell w tej sekcji służy do konfigurowania wystąpienia Azure-SSIS IR, na którym są uruchamiane pakiety usług SSIS. Po pomyślnym uruchomieniu tego skryptu możesz wdrażać i uruchamiać pakiety usług SSIS na platformie Azure.
 
-1. Uruchom środowisko Windows PowerShell Integrated Scripting Environment (ISE).
-2. W środowisku ISE uruchom następujące polecenie w wierszu polecenia.  
+1. Otwórz ISE.
+2. W wierszu polecenia ISE Uruchom następujące polecenie:  
 
     ```powershell
     Set-ExecutionPolicy Unrestricted -Scope CurrentUser
     ```
 
-3. Skopiuj skrypt programu PowerShell w tej sekcji i wklej go do środowiska ISE.
+3. Skopiuj skrypt programu PowerShell z tej sekcji do ISE.
 4. Podaj odpowiednie wartości dla wszystkich parametrów na początku skryptu.
 5. Uruchom skrypt. 
 
@@ -320,7 +325,7 @@ $DataFactoryName = "[your data factory name]"
 # For supported regions, see https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all
 $DataFactoryLocation = "EastUS"
 
-### Azure-SSIS integration runtime info - This is a Data Factory compute resource for running SSIS packages
+### Azure-SSIS Integration Runtime info - This is a Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[your Azure-SSIS IR name]"
 $AzureSSISDescription = "[your Azure-SSIS IR description]"
 # For supported regions, see https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all
@@ -333,18 +338,18 @@ $AzureSSISNodeNumber = 2
 $AzureSSISEdition = "Standard" # Standard by default, while Enterprise lets you use advanced/premium features on your Azure-SSIS IR
 # Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
 $AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
-# For a Standard_D1_v2 node, up to 4 parallel executions per node are supported, but for other nodes, up to (2 x number of cores) are currently supported
+# For a Standard_D1_v2 node, up to 4 parallel executions per node are supported, but for other nodes, up to (2 x the number of cores) are currently supported
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info: Standard/express custom setups
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
 $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or Managed Instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you do not use SSISDB]" # WARNING: If you want to use SSISDB, please ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
+$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you want to use SSISDB, ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication]"
 # For the basic pricing tier, specify "Basic", not "B" - For standard/premium/elastic pool tiers, specify "S0", "S1", "S2", "S3", etc., see https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for Managed Instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for managed instance]"
 
 ### Self-hosted integration runtime info - This can be configured as a proxy for on-premises data access 
 $DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-premises data access 
@@ -356,7 +361,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionName $SubscriptionName
 
 ### Validate the connection to database server
-# Validate only if you use SSISDB
+# Validate only if you're using SSISDB
 if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
 {
     $SSISDBConnectionString = "Data Source=" + $SSISDBServerEndpoint + ";User ID=" + $SSISDBServerAdminUserName + ";Password=" + $SSISDBServerAdminPassword    
@@ -395,7 +400,7 @@ Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
     -LicenseType $AzureSSISLicenseType `
     -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode
 
-# Add CatalogServerEndpoint, CatalogPricingTier, and CatalogAdminCredential parameters if you use SSISDB
+# Add CatalogServerEndpoint, CatalogPricingTier, and CatalogAdminCredential parameters if you're using SSISDB
 if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
 {
     $secpasswd = ConvertTo-SecureString $SSISDBServerAdminPassword -AsPlainText -Force
@@ -456,7 +461,7 @@ if(![string]::IsNullOrEmpty($ExpressCustomSetup))
         -ExpressCustomSetup $setups
 }
 
-# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data accesss
+# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data access
 if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::IsNullOrEmpty($DataProxyStagingLinkedServiceName))
 {
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
@@ -485,18 +490,22 @@ write-host("##### Completed #####")
 write-host("If any cmdlet is unsuccessful, please consider using -Debug option for diagnostics.")   
 ```
 
-## <a name="monitor-and-manage-azure-ssis-ir"></a>Monitorowanie środowiska Azure-SSIS IR
+## <a name="monitor-and-manage-your-azure-ssis-ir"></a>Monitoruj Azure-SSIS IR i zarządzaj nimi
 
-W poniższych artykułach można znaleźć szczegółowe informacje o monitorowaniu środowiska Azure-SSIS IR i zarządzania nim. 
+Aby uzyskać informacje na temat monitorowania Azure-SSIS IR i zarządzania nim, zobacz: 
 
 - [Monitoruj Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime)
-- [Zarządzaj Azure-SSIS IR](manage-azure-ssis-integration-runtime.md)
+- [Zarządzanie Azure-SSIS IR](manage-azure-ssis-integration-runtime.md)
 
 ## <a name="deploy-ssis-packages"></a>Wdrażanie pakietów usług SSIS
 
-Jeśli używasz SSISDB, możesz wdrożyć w nim pakiety i uruchamiać je na Azure-SSIS IR przy użyciu narzędzi SSDT/SSMS, które łączą się z serwerem bazy danych za pośrednictwem swojego punktu końcowego serwera. W przypadku Azure SQL Database serwera/wystąpienia zarządzanego z publicznym punktem końcowym format punktu końcowego serwera jest odpowiednio `<server name>.database.windows.net`/`<server name>.public.<dns prefix>.database.windows.net,3342`. Jeśli nie korzystasz z programu SSISDB, możesz wdrożyć pakiety w systemach plików/udziałach plików/Azure Files i uruchamiać je na Azure-SSIS IR przy użyciu `dtinstall`/`dtutil`/`dtexec` narzędzi wiersza polecenia. Aby uzyskać więcej informacji, zobacz [wdrażanie pakietów SSIS](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). W obu przypadkach wdrożone pakiety można również uruchomić na Azure-SSIS IR przy użyciu działania wykonywania pakietu SSIS w potokach ADF, zobacz [wywołania wykonywania pakietu SSIS jako pierwszej klasy działania ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Jeśli używasz programu SSISDB, możesz wdrożyć w nim pakiety i uruchamiać je na Azure-SSIS IR przy użyciu narzędzi SQL Server Data Tools (SSDT) lub SQL Server Management Studio (SSMS), które łączą się z serwerem bazy danych za pośrednictwem swojego punktu końcowego serwera. W przypadku wystąpienia serwera Azure SQL Database lub wystąpienia zarządzanego z publicznym punktem końcowym formaty punktu końcowego serwera to *<server name>. Database.Windows.NET* i *<server name>. Public.<dns prefix>. Database. Windows. NET, 3342*. 
 
-Zobacz również następujące artykuły z dokumentacji usług SSIS: 
+Jeśli nie korzystasz z programu SSISDB, możesz wdrożyć pakiety w systemach plików, udziałach plików lub udziale Azure Files i uruchamiać je na Azure-SSIS IR przy użyciu `dtinstall`/`dtutil`/`dtexec` narzędzi wiersza polecenia. Aby uzyskać więcej informacji, zobacz [wdrażanie pakietów SSIS](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
+
+W obu przypadkach wdrożone pakiety można również uruchomić na Azure-SSIS IR przy użyciu działania wykonaj pakiet SSIS w potokach Azure Data Factory. Aby uzyskać więcej informacji, zobacz [wywołania wykonywania pakietu SSIS jako działania pierwszej klasy Azure Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+
+Aby uzyskać więcej dokumentacji usług SSIS, zobacz: 
 
 - [Wdrażanie, uruchamianie i monitorowanie pakietów SSIS na platformie Azure](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   
 - [Łączenie się z usługą SSISDB na platformie Azure](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
@@ -509,12 +518,12 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 > [!div class="checklist"]
 > * Tworzenie fabryki danych.
-> * Tworzenie środowiska Azure SSIS Integration Runtime
-> * Uruchamianie środowiska Azure SSIS Integration Runtime
-> * Przeglądanie kompletnego skryptu
-> * Wdrażanie pakietów usług SSIS
+> * Utwórz Azure-SSIS Integration Runtime.
+> * Uruchom Azure-SSIS Integration Runtime.
+> * Przejrzyj kompletny skrypt.
+> * Wdróż pakiety usług SSIS.
 
-Aby dowiedzieć się więcej o dostosowywaniu środowiska Azure-SSIS Integration Runtime, przejdź do następującego artykułu:
+Aby dowiedzieć się więcej o dostosowywaniu Azure-SSIS Integration Runtime, zobacz następujący artykuł:
 
 > [!div class="nextstepaction"]
->[Customize Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup) (Dostosowywanie środowiska Azure-SSIS IR)
+>[Dostosowywanie Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)

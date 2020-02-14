@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935207"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201598"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co to jest Azure SQL Database wystąpienie zarządzane?
 
@@ -53,18 +53,18 @@ Wystąpienie zarządzane łączy najlepsze funkcje, które są dostępne zarówn
 
 W poniższej tabeli przedstawiono najważniejsze funkcje wystąpień zarządzanych:
 
-|Funkcja | Opis|
+|Cecha | Opis|
 |---|---|
 | Wersja SQL Server/kompilacja | Aparat bazy danych SQL Server (Najnowsza stabilna) |
-| Zarządzane automatyczne kopie zapasowe | Tak |
-| Wbudowane wystąpienie i monitorowanie bazy danych oraz metryki | Tak |
-| Automatyczne stosowanie poprawek oprogramowania | Tak |
-| Najnowsze funkcje aparatu bazy danych | Tak |
+| Zarządzane automatyczne kopie zapasowe | Yes |
+| Wbudowane wystąpienie i monitorowanie bazy danych oraz metryki | Yes |
+| Automatyczne stosowanie poprawek oprogramowania | Yes |
+| Najnowsze funkcje aparatu bazy danych | Yes |
 | Liczba plików danych (wierszy) na bazę danych | Wiele |
 | Liczba plików dziennika (dzienników) na bazę danych | 1 |
-| Wdrożenie Azure Resource Manager sieci wirtualnej | Tak |
+| Wdrożenie Azure Resource Manager sieci wirtualnej | Yes |
 | Model wdrażania klasycznego sieci wirtualnej | Nie |
-| Obsługa portalu | Tak|
+| Obsługa portalu | Yes|
 | Wbudowana usługa integracji (SSIS) | Nie — SSIS jest częścią [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Wbudowana usługa analizy (SSAS) | Nie — SSAS jest osobnym [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Wbudowana usługa raportowania (SSRS) | Nie używaj Power BI ani usług SSRS IaaS |
@@ -80,9 +80,6 @@ W modelu rdzeń wirtualny można wybrać między generacjami sprzętu.
 - **5 rdzeń** Logiczne procesory CPU są oparte na procesorach Intel E5-2673 v4 (Broadwell) 2,3-GHz i Intel SP-8160 (Skylake), szybkim SSD interfejsu NVMe, rdzeni logicznej funkcji Hyper-threaded i rozmiarach obliczeniowych z zakresu od 4 do 80 rdzeni.
 
 Znajdź więcej informacji na temat różnic między generacjami sprzętowymi w [limitach zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
-
-> [!IMPORTANT]
-> Nowe bazy danych obliczenia nie są już obsługiwane w regionach Australia Wschodnia lub Brazylia Południowa.
 
 ## <a name="managed-instance-service-tiers"></a>Warstwy usługi wystąpienia zarządzanego
 
@@ -150,10 +147,10 @@ W poniższej tabeli zestawiono operacje i typowe ogólne czasy trwania:
 |Kategoria  |Operacja  |Segment długotrwały  |Szacowany czas trwania  |
 |---------|---------|---------|---------|
 |**Wdrożenie** |Pierwsze wystąpienie w pustej podsieci|Tworzenie klastra wirtualnego|90% operacji zakończonych w ciągu 4 godzin|
-|Wdrażanie |Pierwsze wystąpienie innej generacji sprzętu w niepustej podsieci (na przykład pierwsze wystąpienie generacji 5 w podsieci z wystąpieniami generacji 4)|Tworzenie klastra wirtualnego *|90% operacji zakończonych w ciągu 4 godzin|
-|Wdrażanie |Pierwsze utworzenie wystąpienia 4 rdzeni wirtualnych w pustej lub niepustej podsieci|Tworzenie klastra wirtualnego * *|90% operacji zakończonych w ciągu 4 godzin|
-|Wdrażanie |Kolejne Tworzenie wystąpienia w niepustej podsieci (drugi, trzeci itp. wystąpienie)|Zmienianie rozmiarów klastra wirtualnego|90% operacji zakończonych w ciągu 2,5 godzin|
-|**Aktualizacja** |Zmiana właściwości wystąpienia (hasło administratora, logowanie w usłudze AAD, flaga Korzyść użycia hybrydowego platformy Azure)|ND|Do 1 minuty|
+|Wdrożenie |Pierwsze wystąpienie innej generacji sprzętu w niepustej podsieci (na przykład pierwsze wystąpienie generacji 5 w podsieci z wystąpieniami generacji 4)|Tworzenie klastra wirtualnego *|90% operacji zakończonych w ciągu 4 godzin|
+|Wdrożenie |Pierwsze utworzenie wystąpienia 4 rdzeni wirtualnych w pustej lub niepustej podsieci|Tworzenie klastra wirtualnego * *|90% operacji zakończonych w ciągu 4 godzin|
+|Wdrożenie |Kolejne Tworzenie wystąpienia w niepustej podsieci (drugi, trzeci itp. wystąpienie)|Zmienianie rozmiarów klastra wirtualnego|90% operacji zakończonych w ciągu 2,5 godzin|
+|**Aktualizowanie** |Zmiana właściwości wystąpienia (hasło administratora, logowanie w usłudze AAD, flaga Korzyść użycia hybrydowego platformy Azure)|Nie dotyczy|Do 1 minuty|
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (Ogólnego przeznaczenia warstwy usług)|Dołączanie plików bazy danych|90% operacji zakończonych w ciągu 5 minut|
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (Krytyczne dla działania firmy warstwy usług)|— Zmienianie rozmiarów klastra wirtualnego<br>-Zawsze włączone Określanie rozrzutu grupy dostępności|90% operacji zakończonych w ciągu 2,5 godzin + Time do wypełniania wszystkich baz danych (220 GB/godz.)|
 |Aktualizacja |Skalowanie wystąpienia obliczeniowego (rdzeni wirtualnych) w górę i w dół (Ogólnego przeznaczenia)|— Zmienianie rozmiarów klastra wirtualnego<br>— Dołączanie plików bazy danych|90% operacji zakończonych w ciągu 2,5 godzin|
@@ -190,14 +187,14 @@ Poniższa tabela zawiera podsumowanie możliwości anulowania określonych opera
 
 Kategoria  |Operacja  |Można anulować  |Szacowany czas trwania anulowania  |
 |---------|---------|---------|---------|
-|Wdrażanie |Tworzenie wystąpienia |Nie |  |
+|Wdrożenie |Tworzenie wystąpienia |Nie |  |
 |Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (Ogólnego przeznaczenia) |Nie |  |
-|Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (Krytyczne dla działania firmy) |Tak |90% operacji zakończonych w ciągu 5 minut |
-|Aktualizacja |Skalowanie wystąpienia obliczeniowego (rdzeni wirtualnych) w górę i w dół (Ogólnego przeznaczenia) |Tak |90% operacji zakończonych w ciągu 5 minut |
-|Aktualizacja |Skalowanie wystąpienia obliczeniowego (rdzeni wirtualnych) w górę i w dół (Krytyczne dla działania firmy) |Tak |90% operacji zakończonych w ciągu 5 minut |
-|Aktualizacja |Zmiana warstwy usługi wystąpienia (Ogólnego przeznaczenia do Krytyczne dla działania firmy i na odwrót) |Tak |90% operacji zakończonych w ciągu 5 minut |
-|Usuń |Usunięcie wystąpienia |Nie |  |
-|Usuń |Usuwanie klastra wirtualnego (jako operacja zainicjowana przez użytkownika) |Nie |  |
+|Aktualizacja |Skalowanie magazynu wystąpień w górę/w dół (Krytyczne dla działania firmy) |Yes |90% operacji zakończonych w ciągu 5 minut |
+|Aktualizacja |Skalowanie wystąpienia obliczeniowego (rdzeni wirtualnych) w górę i w dół (Ogólnego przeznaczenia) |Yes |90% operacji zakończonych w ciągu 5 minut |
+|Aktualizacja |Skalowanie wystąpienia obliczeniowego (rdzeni wirtualnych) w górę i w dół (Krytyczne dla działania firmy) |Yes |90% operacji zakończonych w ciągu 5 minut |
+|Aktualizacja |Zmiana warstwy usługi wystąpienia (Ogólnego przeznaczenia do Krytyczne dla działania firmy i na odwrót) |Yes |90% operacji zakończonych w ciągu 5 minut |
+|Usuwanie |Usunięcie wystąpienia |Nie |  |
+|Usuwanie |Usuwanie klastra wirtualnego (jako operacja zainicjowana przez użytkownika) |Nie |  |
 
 Aby anulować operację zarządzania, przejdź do bloku przegląd i kliknij pole powiadomień o trwającej operacji. Po prawej stronie pojawi się ekran z trwającą operacją i zostanie wyświetlony przycisk anulowania operacji. Po pierwszym kliknięciu zostanie wyświetlony monit o ponowne kliknięcie i potwierdzenie, że chcesz anulować operację.
 
@@ -228,7 +225,7 @@ Wystąpienie zarządzane zapewnia dodatkową izolację zabezpieczeń od innych d
 
 Na poniższym diagramie przedstawiono różne opcje łączności dla aplikacji:
 
-![Wysoka dostępność](./media/sql-database-managed-instance/application-deployment-topologies.png)  
+![wysoka dostępność](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 
 Aby dowiedzieć się więcej na temat integracji sieci wirtualnej i wymuszania zasad sieciowych na poziomie podsieci, zobacz [Architektura sieci wirtualnej dla wystąpień zarządzanych](sql-database-managed-instance-connectivity-architecture.md) i [Połącz aplikację z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md).
 
@@ -248,7 +245,7 @@ Azure SQL Database udostępnia zestaw zaawansowanych funkcji zabezpieczeń, któ
 
 Migracja zaszyfrowanej bazy danych do wystąpienia zarządzanego jest obsługiwana za pośrednictwem Azure Database Migration Service (DMS) lub przywracania natywnego. Jeśli planujesz migrację zaszyfrowanej bazy danych przy użyciu funkcji przywracania natywnego, migracja istniejącego certyfikatu TDE z SQL Server lokalnego lub SQL Server na maszynie wirtualnej do wystąpienia zarządzanego jest wymagana. Aby uzyskać więcej informacji na temat opcji migracji, zobacz [SQL Server migracji wystąpień do wystąpienia zarządzanego](sql-database-managed-instance-migrate.md).
 
-## <a name="azure-active-directory-integration"></a>Integracja z usługą Azure Active Directory
+## <a name="azure-active-directory-integration"></a>Integracja Azure Active Directory
 
 Opcja wdrażania wystąpienia zarządzanego obsługuje tradycyjne logowania aparatu bazy danych programu SQL Server i logowania zintegrowane z usługą Azure Active Directory (AAD). Nazwy główne serwera usługi Azure AD (dane logowania) (**publiczna wersja zapoznawcza**) są lokalnymi nazwami logowania w chmurze w systemie Azure, które są używane w środowisku lokalnym. Nazwy główne serwera usługi Azure AD umożliwiają określanie użytkowników i grup z dzierżawy Azure Active Directory jako wystąpień głównych o zakresie wystąpienia, które mogą wykonywać wszystkie operacje na poziomie wystąpienia, w tym zapytania między bazami danych w ramach tego samego zarządzanego np.
 
@@ -258,7 +255,7 @@ Wprowadzono nową składnię do tworzenia podmiotów zabezpieczeń serwera usłu
 
 Opcja wdrożenia wystąpienia zarządzanego umożliwia centralne zarządzanie tożsamościami użytkowników bazy danych i innych usług firmy Microsoft z [integracją Azure Active Directory](sql-database-aad-authentication.md). Ta funkcja upraszcza zarządzanie uprawnieniami i zwiększa bezpieczeństwo. Usługa Azure Active Directory obsługuje [uwierzytelnianie wieloskładnikowe](sql-database-ssms-mfa-authentication-configure.md) (MFA, Multi-Factor Authentication) w celu zwiększenia bezpieczeństwa danych i aplikacji, korzystając z procesu jednokrotnego logowania.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 
 Uwierzytelnianie wystąpienia zarządzanego dotyczy sposobu, w jaki użytkownicy udowadniają swoją tożsamość podczas łączenia się z bazą danych. Usługa SQL Database obsługuje dwa typy uwierzytelniania:  
 
@@ -277,7 +274,7 @@ Autoryzacja odnosi się do tego, co użytkownik może zrobić w ramach Azure SQL
 
 Opcja wdrażania wystąpienia zarządzanego kieruje scenariusze użytkownika z migracją masowej bazy danych z implementacji lokalnych lub IaaS baz danych. Wystąpienie zarządzane obsługuje kilka opcji migracji bazy danych:
 
-### <a name="back-up-and-restore"></a>Tworzenie i przywracanie kopii zapasowej  
+### <a name="back-up-and-restore"></a>Tworzenie kopii zapasowej i przywracanie  
 
 Podejście do migracji wykorzystuje kopie zapasowe SQL do usługi Azure Blob Storage. Kopie zapasowe przechowywane w usłudze Azure Storage BLOB mogą być przywracane bezpośrednio do wystąpienia zarządzanego przy użyciu [polecenia przywracania T-SQL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
 
@@ -299,7 +296,7 @@ Opcja wdrażania wystąpienia zarządzanego obsługuje zgodność z poprzednimi 
   
 Na poniższym diagramie przedstawiono zgodność obszaru powierzchni w wystąpieniu zarządzanym:  
 
-![migracji](./media/sql-database-managed-instance/migration.png)
+![migracja](./media/sql-database-managed-instance/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>Kluczowe różnice między SQL Server lokalnymi i w wystąpieniu zarządzanym
 
@@ -326,9 +323,9 @@ W poniższej tabeli przedstawiono kilka właściwości, które są dostępne za 
 |Właściwość|Wartość|Komentarz|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) — 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ta wartość jest taka sama jak w SQL Database. Nie **oznacza to,** że aparat SQL w wersji 12 (SQL Server 2014). W przypadku wystąpienia zarządzanego zawsze jest uruchomiona najnowsza stabilna wersja aparatu SQL, która jest równa lub większa niż najnowsza dostępna wersja RTM programu SQL Server.  |
-|`SERVERPROPERTY ('Edition')`|SQL Azure|Ta wartość jest taka sama jak w SQL Database.|
+|`SERVERPROPERTY ('Edition')`|Usługi SQL Azure|Ta wartość jest taka sama jak w SQL Database.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ta wartość jednoznacznie identyfikuje wystąpienie zarządzane.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Nazwa DNS pełnego wystąpienia w następującym formacie:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, gdzie `<instanceName>` jest nazwa podana przez klienta, podczas gdy `<dnsPrefix>` jest automatycznie wygenerowany częścią nazwy gwarantujących globalnego unikatowość nazwy DNS ("wcus17662feb9ce98", na przykład)|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Nazwa DNS pełnej instancji w następującym formacie:`<instanceName>`.`<dnsPrefix>`. database.windows.net, gdzie `<instanceName>` jest nazwą dostarczoną przez klienta, podczas gdy `<dnsPrefix>` jest automatycznie generowana częścią nazwy gwarantującej unikalną unikatowość nazw DNS (na przykład "wcus17662feb9ce98")|Example: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Następne kroki
 

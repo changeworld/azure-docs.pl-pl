@@ -7,6 +7,7 @@
     - name: Ewolucja platformy tożsamości firmy Microsoft
       href: about-microsoft-identity-platform.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Konfigurowanie dzierżawy
       href: quickstart-create-new-tenant.md
@@ -90,6 +91,7 @@
 - name: Samples
   href: sample-v2-code.md
 - name: Pojęcia
+  expanded: true
   items:
     - name: Podstawowe informacje o uwierzytelnianiu
       href: authentication-scenarios.md
